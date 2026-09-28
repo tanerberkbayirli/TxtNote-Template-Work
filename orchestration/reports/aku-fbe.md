@@ -156,3 +156,64 @@ The outer-cover text area and the variable-length jury list can already be expre
 - **Outer cover:** should the TxtNote export include it as page 1 (printed onto the purchased cover), or should it only be offered as a separate print sheet?
 - **Director name:** is "Prof. Dr. Bekir YALÇIN" the current institute director? Treat it as an editable placeholder.
 - **Render check:** ideally render the template in real Word once to confirm the INFERRED approval-page positions (±0.5 mm).
+
+## Spec review
+
+Independent review, 2026-09-28. I re-read all 43 guide pages and the template XML. I also rendered the template with LibreOffice: `artifacts/aku-fbe/review/aku_template.pdf` (33 pages). The render is supporting evidence only. It misplaces some page breaks and draws tables about 0.6 mm lower than Word, but its line pitches match Word's. My measuring helper and the script that applies the spec changes are in `artifacts/aku-fbe/review/` (`lines.py` and `apply_review.py`).
+
+**Word line model: confirmed, with one correction to a check**
+- **First baseline:** Word puts the first baseline at the top of the line box plus (lineGap + ascent) = 0.9336 em. The extra 1.5-line spacing goes below the text.
+- **Evidence:**
+  - Guide p.1: 14 pt line at 34.59 mm; the model gives 34.61.
+  - Guide p.4: 12 pt line at 33.92 mm; the model gives 33.95.
+  - Guide p.33: the 12 pt 1.5-spaced line followed by 14 pt lines lands at 50.38 mm; the model gives 50.35.
+  - Line pitches: 13.80, 12.60, 20.70 and 24.15 pt.
+  - The LibreOffice render puts first baselines at 33.95 mm.
+- **Correction:** the `margin-top` check used ascent only (3.77 mm). I changed it to 3.95 mm.
+- **New rules:** `wordModel.firstBaselineOffsetEm`, `wordModel.singleLineEm` and `wordModel.paragraphSpacing`.
+- **Paragraph spacing:** space before or after is added to the line pitch. Bibliography entries are 26.7 pt apart (20.7 + 6). Two cases are UNKNOWN because no source page shows them:
+  - whether space after and space before collapse when both are set;
+  - whether space before is dropped at the top of a page.
+- **Page-number baseline:** 283.7 mm is confirmed; the LibreOffice render gives 283.72 mm.
+
+**Other corrections**
+- **List hanging indent:** `lists.hangingIndentMm` was a flat 16 mm. That is only right for Şekil entries. Çizelge entries use 21.0 mm in both the template (hanging 1191 twips) and the guide (p.42). The rule is now "hanging = width of the label", based on template callout #311.
+- **Missed explicit rules, now added:**
+  - punctuation spacing (p.5);
+  - number formatting (p.11);
+  - figure placement (p.12);
+  - italic variables in inline equations (p.10);
+  - the list of sections that start on a new page.
+- **Foreign-language theses:** the guide allows a thesis in a foreign language (p.6 §2.5) but gives no separate layout. I recorded this as UNKNOWN.
+
+**Decisions on the needsConfirmation conflicts (policy order)**
+1. **ÖZET/ABSTRACT order: reversed.** Keywords now come first, then the year/pages line.
+   - The guide text on p.18 states this order explicitly, and explicit text outranks the template and the example page.
+   - The analyzer chose the opposite order, which breaks the policy.
+   - Still needsConfirmation, because the guide's own example and the template show the other order.
+2. **Inner-cover title: resolved, 1.5 on every line.** The title is one field, formatted like template paragraph #57. A wrapped one-paragraph title is 1.5-spaced on every line, which matches the guide's p.33 example.
+3. **TEŞEKKÜR: resolved, 2 blank lines.** The template marks them explicitly and the guide text is silent.
+4. **Approval page, director block: resolved.** Order is dots, name, "Enstitü Müdürü".
+   - The name is an editable placeholder. The guide shows "(Ünvanı Adı ve SOYADI)", and "Prof. Dr. Bekir YALÇIN" is 2019 sample content.
+   - The name must never be hard-coded or validated.
+5. **Approval page, juror pitch and box: resolved, following the template.**
+   - Juror pitch is 14.29 mm and the box is 150 mm wide, with its top at 189.0 mm.
+   - The LibreOffice render reproduces the 40.5 pt pitch and every relative position in the director block.
+6. **List spacing: resolved.** Single spacing, 6 pt after, left-aligned. This follows the explicit instruction screenshot in the template ("aşağıdaki ayarlar uygulanmalı" = apply the following settings).
+7. **ÖZGEÇMİŞ before EKLER: kept, still needsConfirmation.** The analyzer missed p.29: "Ekler … kaynaklar bölümünün bitişini izleyen sayfa numarası ile devam etmelidir" (appendix numbering continues after KAYNAKLAR). This adds to p.16 and p.28, which both put the CV last.
+8. **Section breaks: resolved.** Plain page breaks with no blank filler pages, because printing is single-sided.
+
+**Outer cover**
+- It is exported as physical page 1, with no page number and not counted. The evidence is §4.1 item 1, the §2.7 list of unnumbered pages and page 1 of the template.
+- All text must stay inside the explicit printed area: x 55–155 mm, y 210–275 mm.
+- The template's mock-up puts the title at 208.4 mm, above the printed area, so I rejected its positions.
+- I downgraded the first baseline (215.53 mm) from MEASURED to INFERRED, because it comes from a scaled illustration. The containment check is the binding one.
+- Open question: when optional lines are absent, is the text block anchored at the top or centred?
+
+**Remaining UNKNOWNs**
+None of these blocks the core implementation:
+- keyword/year order and ÖZGEÇMİŞ/EKLER order (institute confirmation);
+- outer-cover vertical anchoring;
+- master's jury size;
+- whether optional lines keep their empty slot;
+- footnotes, word limit and hyphenation.

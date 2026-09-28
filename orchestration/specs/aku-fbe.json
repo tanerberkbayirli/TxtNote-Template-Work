@@ -43,7 +43,8 @@
    "evidence": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf#p.4 §1 (\"Yüksek Lisans ve Doktora Tezleri\"); Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx#document.xml #38/#53 \"YÜKSEK LİSANS TEZİ / DOKTORA TEZİ\", callout #6 \"YL-DR TEZLERİ\"",
    "differences": [
     "Degree strings: \"YÜKSEK LİSANS TEZİ\" (covers, approval), \"Yüksek Lisans Tezi\" (ÖZET), \"M.Sc. Thesis\" (ABSTRACT)",
-    "Jury size not specified for master (example page drawn with 5); number of juror rows is data"
+    "Jury size not specified for master (example page drawn with 5); number of juror rows is data",
+    "Language: the guide permits a thesis written in a foreign language (p.6 §2.5) but gives no separate layout; only Turkish-language variants are specifiable (see unknowns)."
    ]
   },
   {
@@ -54,7 +55,8 @@
    "evidence": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf#p.4 §1; p.34 callout (\"Doktora savunmasında; eğer ikinci danışman varsa, toplam 7 jüri üyesi\"); Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx#callout #93",
    "differences": [
     "Degree strings: \"DOKTORA TEZİ\", \"Doktora Tezi\", \"Ph.D. Thesis\"",
-    "Approval page: 7 jurors when a second advisor exists (explicit), else as appointed"
+    "Approval page: 7 jurors when a second advisor exists (explicit), else as appointed",
+    "Language: the guide permits a thesis written in a foreign language (p.6 §2.5) but gives no separate layout; only Turkish-language variants are specifiable (see unknowns)."
    ]
   }
  ],
@@ -464,9 +466,13 @@
     {
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.36-43 page number baseline 279.65 mm = 297.01−12.5−4.06(empty 10 pt line)−0.76 → same 12.5 mm model with a 2-paragraph footer"
+    },
+    {
+     "source": "orchestration/artifacts/aku-fbe/review/aku_template.pdf",
+     "locator": "LibreOffice render of the template (supporting): page-number baselines 283.72 mm on pp.7-13 and 14+ (single-paragraph footers, 10 pt)"
     }
    ],
-   "notes": "Model validated on the guide: a 2-paragraph 10 pt footer at 12.5 mm predicts 279.71 mm, measured 279.65 mm."
+   "notes": "Model validated on the guide: a 2-paragraph 10 pt footer at 12.5 mm predicts 279.71 mm, measured 279.65 mm. Reviewer: model = 297 − 12.5 (footer bottom) − 0.2163×10 pt descent (0.76 mm) = 283.74; LO render 283.72 agrees."
   },
   {
    "key": "pagination.coverPages",
@@ -877,7 +883,8 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.32 single-spaced 12 pt pitch 13.80 pt; p.5 1.5-spaced pitch 20.7 pt; p.33 14 pt 1.5-spaced pitch 24.12-24.15 pt"
     }
-   ]
+   ],
+   "notes": "Reviewer: confirmed; see wordModel.* rules for the first-baseline offset (lineGap+ascent) and the placement of the extra 1.5 leading below the text."
   },
   {
    "key": "headings.levels",
@@ -3351,19 +3358,44 @@
   },
   {
    "key": "lists.hangingIndentMm",
-   "value": 16.0,
-   "unit": "mm",
-   "confidence": "TEMPLATE",
+   "value": "labelWidth",
+   "unit": null,
+   "confidence": "EXPLICIT",
    "appliesTo": [
     "*"
    ],
    "evidence": [
     {
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-     "locator": "image2.jpg \"Asılı 1,6 cm\"; #307/#320/#351 hanging=907 (16.0 mm)"
+     "locator": "#311 callout",
+     "quote": "Şekiller, Çizelgeler ve Resimler Dizininde; eğer açıklamalar II. satıra taşıyorsa, II. satır üst satıra hizalanmalı."
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+     "locator": "#307 hanging=907 (16.0 mm), #308/#309 924 (16.3 mm) Şekil; #321/#322 hanging=1191 (21.0 mm) Çizelge; #351 907 Resim"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+     "locator": "image2.jpg 'Asılı 1,6 cm' — its preview row is a 'Şekil 2.1' entry, i.e. 1.6 cm = width of 'Şekil n.n '"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.41 continuation x0 47.04 (Şekil, +17.0 mm); p.42 51.02 (Çizelge, +21.0 mm)"
+    },
+    {
+     "source": "orchestration/artifacts/aku-fbe/review/aku_template.pdf",
+     "locator": "template render continuation x0 46.34 (Şekil) / 51.05 (Çizelge)"
     }
    ],
-   "notes": "Generalised rule (callout #311): continuation aligned with caption text; guide p.41/42 continuations at +17.02 mm (Şekil) and +21.0 mm (Çizelge) = label width."
+   "notes": "Reviewer: the analyzer's flat 16.0 mm is only the Şekil value; Çizelge rows use 21.0 mm in both the template XML and the guide. Rule = hanging equal to the width of '<label> <n.n> ' (bold).",
+   "templateValuesMm": {
+    "figures": [
+     16.0,
+     16.3
+    ],
+    "tables": 21.0,
+    "photos": 16.0
+   }
   },
   {
    "key": "lists.symbols.title",
@@ -3751,6 +3783,172 @@
     }
    ],
    "notes": "Process instruction; affects fidelity expectations of DOCX export."
+  },
+  {
+   "key": "wordModel.firstBaselineOffsetEm",
+   "value": {
+    "single": 0.9336,
+    "onePointFive": 0.9336,
+    "double": 0.9336,
+    "formula": "baseline = lineBoxTop + (hhea lineGap 0.0425 + ascender 0.8911) × fontSize; the extra leading of 1.5/multiple spacing lies entirely BELOW the text (added under the descent), never above the first baseline"
+   },
+   "unit": "em",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.1 'T.C.' 14 pt, 1.5-spaced (pitch 24.12 pt), first line at the 30 mm top margin: baseline 34.59 mm = 30 + 0.9336×14 pt (4.61 mm) → 34.61"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.4 '1. GİRİŞ' 12 pt 1.5: baseline 33.92; pp.5/9 33.96; approval/ÖZET/TEŞEKKÜR/list titles pp.34-42 33.96 → model 30 + 11.20 pt (3.95 mm) = 33.95"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.33 inner cover: support line (12 pt, 1.5) 33.87 → 'AFYON KOCATEPE ÜNİVERSİTESİ' (14 pt, after one empty 14 pt 1.5 line) 50.38; model 33.87 + (20.7−11.20) + 24.15 + 13.07 pt = 50.35"
+    },
+    {
+     "source": "orchestration/artifacts/aku-fbe/review/aku_template.pdf",
+     "locator": "LibreOffice render of the template (supporting only): first baselines 33.95 mm on pp.5,7,8,11,12,13; inner cover 34.62 (14 pt)"
+    }
+   ],
+   "notes": "Refutes an ascent-only model (0.8911 em → 33.77 mm, 0.18 mm too high). For single spacing the same offset applies (a single-spaced first line has the same top part; only the part below the baseline shrinks)."
+  },
+  {
+   "key": "wordModel.singleLineEm",
+   "value": 1.1499,
+   "unit": "em",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.32 12 pt single pitch 13.80 pt (1.15×12); pp.14-15 11 pt caption pitch 12.60 pt (1.15×11=12.65); p.4-7 12 pt 1.5 pitch alternating 20.64/20.76 (mean 20.70 = 1.5×13.80); p.33 14 pt 1.5 pitch 24.12-24.15; footer/callout 10 pt single 11.40-11.55"
+    },
+    {
+     "source": "Times New Roman (msttcorefonts)",
+     "locator": "hhea ascender 1825 + descender 443 + lineGap 87 = 2355/2048 = 1.1499 em"
+    }
+   ],
+   "notes": "Word 'single' for TNR = (ascender+descender+lineGap). '1.5 lines' = 1.5 × single (20.70 pt at 12 pt, 24.15 pt at 14 pt, 17.25 pt at 10 pt). An empty paragraph takes its height from its paragraph-mark run size."
+  },
+  {
+   "key": "wordModel.paragraphSpacing",
+   "value": {
+    "additive": true,
+    "contextualSpacing": "not used (w:contextualSpacing absent from document.xml; only in an unused style)",
+    "collapseWhenBothNonZero": "UNKNOWN",
+    "spaceBeforeAtPageTop": "UNKNOWN",
+    "blankLine": "an empty 1.5-spaced 12 pt paragraph = +20.70 pt between baselines"
+   },
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "pp.23-28 bibliography entries (before 6 pt, after 0, 1.5): entry-to-entry pitch 26.64-26.79 pt = 20.70 + 6 (space before added to the line pitch)"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+     "locator": "#85/#87/#89 affiliation rows after=120 followed by juror rows with no before → template render (LO) pitch 26.70 pt = 20.70 + 6"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "pp.4-5 paragraph → paragraph over one empty 1.5 line: 41.16-41.67 pt = 2 × 20.70"
+    }
+   ],
+   "notes": "Only one-sided spacing (after XOR before) occurs in the sources, so whether Word adds or collapses after(prev)+before(next) is not demonstrated here, and no Word-rendered source page starts with a soft-broken paragraph that has space-before. The implementation must not rely on either behaviour for this target."
+  },
+  {
+   "key": "typography.punctuationSpacing",
+   "value": "no space before punctuation, one space after",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.5 §2.2",
+     "quote": "Yazımda noktalama işaretlerinden önce boşluk bırakılmamalı, sonra ise bir karakterlik boşluk bırakılmalıdır."
+    }
+   ]
+  },
+  {
+   "key": "typography.numbers",
+   "value": {
+    "decimalSeparator": ",",
+    "thousandsGrouping": "groups of three separated by one space (8 245 354), no dot/comma"
+   },
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.11 §2.12",
+     "quote": "Ondalıklı sayılar yazılırken virgül kullanılmalı ... üçerli gruplandırma yapılıp bu gruplar arasında bir karakter boşluk"
+    }
+   ],
+   "notes": "Content rule (author responsibility); the guide's own examples elsewhere use decimal points (e.g. p.14 table), so it is not auto-checkable."
+  },
+  {
+   "key": "figures.placement",
+   "value": "on the page of first reference or the next page; always referenced in the text",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.12 §3.1",
+     "quote": "Şekil, çizelge ve resimler metinde ilk değinildiği sayfada veya bir sonrakinde yer almalıdır."
+    }
+   ]
+  },
+  {
+   "key": "equations.inlineVariablesItalic",
+   "value": true,
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.10",
+     "quote": "Cümle içinde yazılan denklemlere numara verilmez ve değişken olarak kullanılan harfler italik olarak yazılmalıdır."
+    }
+   ]
+  },
+  {
+   "key": "headings.chapterStartsNewPage.sections",
+   "value": "Onay, Etik, Özet, Abstract, Teşekkür, all Dizin pages, every chapter, Kaynaklar, Özgeçmiş, Ekler (and each EK n.)",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.6 §2.6",
+     "quote": "... gibi tezin tüm ana başlık içeren bölümleri daima yeni bir sayfadan başlamalıdır."
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.28-29 §4.3.8",
+     "quote": "her biri ayrı bir sayfadan başlayacak şekilde"
+    }
+   ]
   }
  ],
  "sections": [
@@ -3800,8 +3998,8 @@
      "baselineMm": 215.53,
      "spaceBeforePt": 0,
      "xCenterMm": 105.0,
-     "notes": "caps as typed (example upper case)",
-     "confidence": "MEASURED",
+     "notes": "caps as typed (example upper case) Reviewer: the p.32 figure is a scaled mock-up (page frame 203×290 mm drawn, 21 cm arrow = 205.05 mm, scale 0.976) with unscaled 12 pt text; the text block (with co-advisor) sits 1.58 mm below the drawn box top and 1.8 mm above its bottom, i.e. vertically centred. 215.53 = top anchoring at that inset; whether the block is top-anchored or centred when optional lines are absent is UNKNOWN. The binding check is containment in the box.",
+     "confidence": "INFERRED",
      "evidence": [
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
@@ -4033,7 +4231,8 @@
      "locator": "#0-#45 (NormalWeb 12 pt, single, centered; 35 empty lines then text)"
     }
    ],
-   "notes": "Printed on the official purchased cover (text in a 100 × 65 mm area 21 cm from the top). Template mock-up page starts the text at ≈ 205 mm on a 30 mm-margin page. Typography: TNR 12 centered; title bold (EXPLICIT callout p.32 \"TIMES NEW ROMAN YAZI KARAKTERİ VE 12 PUNTO KULLANILARAK ORTALI\")."
+   "notes": "Printed on the official purchased cover (text in a 100 × 65 mm area 21 cm from the top). Template mock-up page starts the text at ≈ 205 mm on a 30 mm-margin page. Typography: TNR 12 centered; title bold (EXPLICIT callout p.32 \"TIMES NEW ROMAN YAZI KARAKTERİ VE 12 PUNTO KULLANILARAK ORTALI\").",
+   "reviewDecision": "Outer cover IS exported as physical page 1 (not numbered, not counted): guide §4.1 lists 'Dış Kapak (Örnek 1)' as item 1 of the thesis order, §2.7 lists it among the unnumbered pages, and the template carries it as page 1 of section 1 (the inner cover follows by natural flow, lastRenderedPageBreak before #46). It is printed onto the purchased FBE cover (§4.2.1), so its text must stay inside the EXPLICIT printed area x 55-155 mm, y 210-275 mm (p.32 dimension arrows). The template's mock-up page is NOT authoritative for position: LO renders its title at baseline 208.42 mm (line top ≈ 204.5 mm, above the 210 mm box)."
   },
   {
    "id": "inner-cover",
@@ -5781,26 +5980,27 @@
     },
     {
      "kind": "metadata",
-     "text": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} sayfa",
+     "text": "**Anahtar Kelimeler:** {{KEYWORDS}}",
      "font": "Times New Roman",
      "sizePt": 12,
-     "bold": true,
+     "bold": false,
      "italic": false,
-     "align": "left",
+     "align": "justify",
      "lineSpacing": "1.5",
      "baselineMm": 141.07,
-     "notes": "Offsets after the abstract text are relative to its last line (+41.4 pt per line+blank).",
-     "confidence": "MEASURED",
+     "hangingIndentMm": 37.52,
+     "confidence": "EXPLICIT",
      "evidence": [
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
-       "locator": "p.36 Örnek 5 141.07 (1 blank after text)"
+       "locator": "p.36 Örnek 5 155.60"
       },
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-       "locator": "#136 bold"
+       "locator": "#138 ind left=2127 hanging=2127"
       }
-     ]
+     ],
+     "notes": "Reviewer: moved before the year line (p.18 §4.2.5 explicit order); baseline = one empty 1.5 line after the last text line (141.07 for the example's one-line text)."
     },
     {
      "kind": "spacer",
@@ -5821,24 +6021,24 @@
     },
     {
      "kind": "metadata",
-     "text": "**Anahtar Kelimeler:** {{KEYWORDS}}",
+     "text": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} sayfa",
      "font": "Times New Roman",
      "sizePt": 12,
-     "bold": false,
+     "bold": true,
      "italic": false,
-     "align": "justify",
+     "align": "left",
      "lineSpacing": "1.5",
-     "baselineMm": 155.6,
-     "hangingIndentMm": 37.52,
+     "baselineMm": null,
+     "notes": "Offsets after the abstract text are relative to its last line (+41.4 pt per line+blank). Reviewer: after the keywords + one empty 1.5 line (+41.4 pt from the last keyword line); position depends on keyword line count.",
      "confidence": "MEASURED",
      "evidence": [
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
-       "locator": "p.36 Örnek 5 155.60"
+       "locator": "p.36 Örnek 5 141.07 (1 blank after text)"
       },
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-       "locator": "#138 ind left=2127 hanging=2127"
+       "locator": "#136 bold"
       }
      ]
     }
@@ -6151,26 +6351,27 @@
     },
     {
      "kind": "metadata",
-     "text": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} pages",
+     "text": "**Keywords:** {{KEYWORDS_EN}}",
      "font": "Times New Roman",
      "sizePt": 12,
-     "bold": true,
+     "bold": false,
      "italic": false,
-     "align": "left",
+     "align": "justify",
      "lineSpacing": "1.5",
      "baselineMm": 141.07,
-     "notes": "Offsets after the abstract text are relative to its last line (+41.4 pt per line+blank).",
-     "confidence": "MEASURED",
+     "hangingIndentMm": 25.51,
+     "confidence": "EXPLICIT",
      "evidence": [
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
-       "locator": "p.37 Örnek 6 141.07 (1 blank after text)"
+       "locator": "p.37 Örnek 6 155.60"
       },
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-       "locator": "#173 bold"
+       "locator": "#175 ind left=1446 hanging=1446"
       }
-     ]
+     ],
+     "notes": "Reviewer: moved before the year line (p.18 §4.2.5 explicit order); baseline = one empty 1.5 line after the last text line (141.07 for the example's one-line text)."
     },
     {
      "kind": "spacer",
@@ -6191,24 +6392,24 @@
     },
     {
      "kind": "metadata",
-     "text": "**Keywords:** {{KEYWORDS_EN}}",
+     "text": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} pages",
      "font": "Times New Roman",
      "sizePt": 12,
-     "bold": false,
+     "bold": true,
      "italic": false,
-     "align": "justify",
+     "align": "left",
      "lineSpacing": "1.5",
-     "baselineMm": 155.6,
-     "hangingIndentMm": 25.51,
+     "baselineMm": null,
+     "notes": "Offsets after the abstract text are relative to its last line (+41.4 pt per line+blank). Reviewer: after the keywords + one empty 1.5 line (+41.4 pt from the last keyword line); position depends on keyword line count.",
      "confidence": "MEASURED",
      "evidence": [
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
-       "locator": "p.37 Örnek 6 155.60"
+       "locator": "p.37 Örnek 6 141.07 (1 blank after text)"
       },
       {
        "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-       "locator": "#175 ind left=1446 hanging=1446"
+       "locator": "#173 bold"
       }
      ]
     }
@@ -7334,7 +7535,7 @@
    "usedOn": [
     "approval"
    ],
-   "format": "template default \"Prof. Dr. Bekir YALÇIN\" (may be outdated)"
+   "format": "Ünvanı Adı SOYADI; editable, required on the approval page. The template value 'Prof. Dr. Bekir YALÇIN' may be offered only as an editable prefill (2019 sample content, possibly outdated); the guide example shows the placeholder '(Ünvanı Adı ve SOYADI)'. Not validated."
   },
   "SIGN_DATE": {
    "label": "Etik beyan tarihi",
@@ -13197,7 +13398,8 @@
     }
    ],
    "decision": "30 mm: explicit guide text and the template XML agree; the guide PDF's own layout is not an example page and deviates.",
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "reviewDecision": "Agreed: 30 mm (explicit + template). The guide's own body text ends at 181.09 mm and is not an example page."
   },
   {
    "topic": "Page-number vertical position",
@@ -13219,7 +13421,8 @@
     }
    ],
    "decision": "Template footers actually used by the thesis sections (footer3/4, single paragraph, 12.5 mm) win; guide pages only show the guide document's own footer. Guide text fixes only bottom-centre + TNR 10.",
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "reviewDecision": "Agreed: 283.7 mm (template footers + Word model; LO render 283.72). Guide 279.65 = same model + one empty 10 pt footer paragraph (footer5.xml pattern)."
   },
   {
    "topic": "Order of Anahtar Kelimeler and \"yıl, sayfa\" line in ÖZET/ABSTRACT",
@@ -13240,8 +13443,9 @@
      "value": "text → year, pages → Anahtar Kelimeler"
     }
    ],
-   "decision": "year/pages line before keywords (newer template + the guide's own example page agree against the guide sentence).",
-   "needsConfirmation": true
+   "decision": "Keywords → one empty 1.5 line → year/pages line (explicit guide text). needsConfirmation.",
+   "needsConfirmation": true,
+   "reviewDecision": "FLIPPED by reviewer: keywords first, then the year/pages line. Policy order puts explicit guide text above template XML and example geometry; p.18 §4.2.5 states the order explicitly ('Özet/Abstract metninden sonra 1 satır aralığı ... Anahtar Kelimeler ... Ardından yine 1 satır aralığı bırakılarak ... yıl ve sayfa sayısı'); the '(Örnek 5 ve 6)' reference is attached to the format of the year line. The analyzer's choice (template + example order) contradicts the policy. Kept needsConfirmation because 2 official artifacts show the other order."
   },
   {
    "topic": "Inner cover: line spacing of the 2nd title line",
@@ -13258,7 +13462,8 @@
     }
    ],
    "decision": "All inner-cover lines 1.5 (guide example; the template paragraph is the only one of 29 on the page missing line=360 - formatting accident). Template-literal rendering would lift all lines below by 2.84 mm.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Resolved (no confirmation needed): the thesis title is one metadata field → one paragraph whose formatting is the template's title paragraph #57 (14 pt bold, line=360). A wrapped title then has 1.5 spacing on every line, which is exactly the guide example (p.33 pitch 24.12/72.40 pt). #58 is a sample continuation paragraph, not a separate rule; template and guide are therefore consistent."
   },
   {
    "topic": "TEŞEKKÜR: blank lines before the signature",
@@ -13275,7 +13480,8 @@
     }
    ],
    "decision": "Template (newer, explicit markers): 2 blank 1.5 lines (signature +62.1 pt below last text line).",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Resolved by policy: guide text silent → template XML (#195/#196 two explicit '(Bir boşluk)' markers) beats example geometry (p.38 one blank). Signature name baseline = last text baseline + 62.1 pt."
   },
   {
    "topic": "Approval page: institute-director block order",
@@ -13292,7 +13498,8 @@
     }
    ],
    "decision": "Template order (name above title), name as a placeholder with the template value as default.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Resolved by policy: guide text silent → template order (dots / name / 'Enstitü Müdürü'). The name is a PLACEHOLDER: the guide example prints '(Ünvanı Adı ve SOYADI)' and the template value 'Prof. Dr. Bekir YALÇIN' is sample content of a 2019 file; it must be a user-editable field (INSTITUTE_DIRECTOR), never hard-coded, and validators must not check its text."
   },
   {
    "topic": "Approval page: juror row pitch and box geometry",
@@ -13309,7 +13516,8 @@
     }
    ],
    "decision": "Template XML (newer, specific). Box top 189.0 agrees in both. Predicted template baselines are INFERRED (Word 1.5 line model validated on guide body pages); confirm with a Word render of the template.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Resolved by policy: text silent → template XML. Independently confirmed by the LibreOffice render of the template: juror pitch 26.70+13.80 = 40.50 pt (14.29 mm), director-block internal spacing identical to the analyzer's XML computation (LO values uniformly +0.62 mm because LO draws the table 0.62 mm lower; Word geometry of the same table in the guide gives box top 189.04 mm). Box 150 mm wide (8505 twips)."
   },
   {
    "topic": "Approval page: bold values",
@@ -13348,7 +13556,8 @@
     }
    ],
    "decision": "Explicit instruction screenshot of the newest source (single, 6 pt after, left). Guide text is silent on list spacing.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Resolved: the screenshot is an explicit instruction inside the official template ('... Dizininde aşağıdaki ayarlar uygulanmalı' = must be applied): single, 0 before, 6 pt after, left. Explicit instruction > template sample-paragraph XML > guide example geometry. Hanging indent is label width (see lists.hangingIndentMm), not a flat 1.6 cm."
   },
   {
    "topic": "SİMGELER ve KISALTMALAR DİZİNİ: blank after title",
@@ -13406,10 +13615,16 @@
      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#671 ÖZGEÇMİŞ before #703 EKLER; TOC #241/#242",
      "value": "Özgeçmiş then Ekler"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.29 §4.3.8",
+     "value": "“Ekler bölümünün sayfa numaraları, kaynaklar bölümünün bitişini izleyen sayfa numarası ile devam etmelidir” (implies EKLER directly after KAYNAKLAR)"
     }
    ],
    "decision": "ÖZGEÇMİŞ before EKLER (ordered list + template + TOC example).",
-   "needsConfirmation": true
+   "needsConfirmation": true,
+   "reviewDecision": "Kept ÖZGEÇMİŞ → EKLER, needsConfirmation. Explicit texts contradict each other (p.16 + p.28 'en son sayfa' + p.29 EK numbering continues from KAYNAKLAR vs the §4.1 ordered list), so the tie is broken by the template order and the TOC example (p.39: ÖZGEÇMİŞ 62, EKLER 63). The analyzer missed the p.29 sentence, which strengthens the other reading."
   },
   {
    "topic": "Widow/orphan control",
@@ -13443,7 +13658,8 @@
     }
    ],
    "decision": "Plain new-page breaks, no blank filler pages.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Resolved: 'Kâğıdın yalnızca bir yüzü kullanılmalıdır' (p.5, explicit) makes odd/even placement meaningless; the oddPage/evenPage section types are Word artefacts. Plain new-page breaks, no blank filler pages (the LO render inserted none either)."
   },
   {
    "topic": "Guide 2020 vs template 2025 (flag guide-template-version-gap)",
@@ -13513,8 +13729,20 @@
    "why": "No guide example for RESİMLER DİZİNİ (rules stated by analogy)."
   },
   {
-   "key": "renderedTemplateGeometry",
-   "why": "LibreOffice Writer component is not installed in this environment (soffice reports \"source file could not be loaded\" even for a trivial DOCX), so the template could not be rendered; template-based positions are computed from XML with the Word line model."
+   "key": "variants.foreignLanguageThesis",
+   "why": "p.6 §2.5 allows a thesis 'Türkiye Türkçesi veya yabancı bir dilde', but no layout differences (order of ÖZET/ABSTRACT, English section titles, caption labels) are given; no English variant can be specified."
+  },
+  {
+   "key": "wordModel.spaceBeforeAtPageTop",
+   "why": "No Word-rendered source page starts with a soft-broken paragraph that has space-before (e.g. a bibliography entry), so suppression at the page top is not demonstrated."
+  },
+  {
+   "key": "wordModel.spacingCollapse",
+   "why": "No source case with both after(prev) and before(next) non-zero."
+  },
+  {
+   "key": "outer-cover.verticalAnchor",
+   "why": "Whether the cover text is top-anchored (215.53 mm) or vertically centred in the 65 mm area when the optional co-advisor lines are absent (≈ +5.9 mm) is not stated."
   }
  ],
  "engineGaps": [
@@ -13675,12 +13903,12 @@
    "appliesTo": [
     "*"
    ],
-   "what": "first baseline of a body page minus TNR 12 ascent (10.69 pt = 3.77 mm)",
+   "what": "first baseline of a body page minus (lineGap+ascent) of TNR 12 = 11.20 pt = 3.95 mm (wordModel.firstBaselineOffsetEm)",
    "expected": 30.0,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "page.margins.topMm",
-   "notes": "equivalently first baseline ≈ 33.87-33.96 mm"
+   "notes": "equivalently first baseline = 33.95 mm (guide 33.92-33.96); the analyzer's ascent-only offset (3.77 mm) was wrong"
   },
   {
    "id": "margin-bottom",
@@ -13855,7 +14083,7 @@
    "expected": 41.4,
    "unit": "pt",
    "tolerance": 0.2,
-   "sourceRule": "headings.h2.spaceBeforePt"
+   "sourceRule": "typography.paragraph.blankLineBetween"
   },
   {
    "id": "pagenum-pos",
@@ -14097,11 +14325,12 @@
    "appliesTo": [
     "*"
    ],
-   "what": "last text line → \"YIL, x + n sayfa\" (bold) → \"Anahtar Kelimeler:\" each +41.4 pt",
+   "what": "last text line → \"Anahtar Kelimeler:\"/\"Keywords:\" → \"YIL, x + n sayfa\" (bold); each step +41.4 pt from the previous block's last baseline",
    "expected": 41.4,
    "unit": "pt",
    "tolerance": 0.2,
-   "sourceRule": "sections.abstract-tr.layout"
+   "sourceRule": "sections.abstract-tr.layout",
+   "notes": "Order per explicit guide text p.18 (reviewer decision, needsConfirmation)."
   },
   {
    "id": "ack-signature",
@@ -14187,7 +14416,7 @@
    "unit": "pt",
    "tolerance": 0.2,
    "sourceRule": "lists.lineSpacing",
-   "notes": "needsConfirmation: guide example 20.7 pt"
+   "notes": "Reviewer: resolved (explicit template instruction image2.jpg); guide example p.41/42 shows 20.7 pt."
   },
   {
    "id": "caption-size",
@@ -14355,6 +14584,95 @@
    "unit": null,
    "tolerance": null,
    "sourceRule": "abstract.degreeLabel"
+  },
+  {
+   "id": "first-baseline-model",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "first baseline of every page whose first line sits at the top margin: 30 + 0.9336 × fontSize (12 pt → 33.95 mm, 14 pt → 34.61 mm) regardless of line spacing",
+   "expected": {
+    "12pt": 33.95,
+    "14pt": 34.61
+   },
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "wordModel.firstBaselineOffsetEm"
+  },
+  {
+   "id": "lists-hanging",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "list-of-figures/tables/photos continuation line x0 = x of the first character after '<label> <n.n> '",
+   "expected": "labelWidth (≈46.0-47.0 mm Şekil/Resim, ≈51.0 mm Çizelge)",
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "lists.hangingIndentMm"
+  },
+  {
+   "id": "caption-image-gap",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "figure/photo: image bottom → first caption baseline",
+   "expected": 5.96,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "captions.figure.gapImageBottomToCaptionBaselineMm"
+  },
+  {
+   "id": "outer-cover-page",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "physical page 1 is the outer cover: no page number; every text line box within x 55-155 mm, y 210-275 mm; lines centred on x = 105 mm",
+   "expected": {
+    "x": [
+     55,
+     155
+    ],
+    "y": [
+     210,
+     275
+    ]
+   },
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "sections.outer-cover.layout"
   }
- ]
+ ],
+ "reviewedAt": "2026-09-28",
+ "review": {
+  "reviewer": "independent",
+  "changes": [
+   "Added wordModel.firstBaselineOffsetEm (0.9336 em = lineGap+ascent, extra 1.5 leading below; verified on guide pp.1,4,5,33 and LO render), wordModel.singleLineEm (1.1499), wordModel.paragraphSpacing (additive for one-sided spacing; collapse and page-top suppression UNKNOWN).",
+   "pagination.baselineMm 283.7: added LO render corroboration (283.72 mm).",
+   "Added missed EXPLICIT rules: typography.punctuationSpacing, typography.numbers, figures.placement, equations.inlineVariablesItalic, headings.chapterStartsNewPage.sections.",
+   "lists.hangingIndentMm: 16.0 mm (flat) → 'labelWidth' (EXPLICIT callout #311; template 16.0/16.3 mm Şekil/Resim, 21.0 mm Çizelge; guide p.41/42 agrees).",
+   "Outer cover: decided it is exported as unnumbered page 1; first-baseline 215.53 downgraded MEASURED→INFERRED (scaled illustration; containment in 55-155 × 210-275 mm is the binding check).",
+   "Placeholder INSTITUTE_DIRECTOR: marked as editable placeholder, not a requirement.",
+   "measurableChecks: fixed margin-top model (3.95 mm, not 3.77), heading-gap-before sourceRule; added first-baseline-model, lists-hanging, caption-image-gap, outer-cover-page.",
+   "Unknowns: removed 'renderedTemplateGeometry' (template rendered with LibreOffice into review/); added foreign-language thesis, page-top space-before, spacing collapse, outer-cover vertical anchor."
+  ],
+  "decisionsProposed": [
+   "ÖZET/ABSTRACT: keywords BEFORE the 'YIL, x + n sayfa' line (explicit text p.18 beats template/example) — flipped, still needsConfirmation.",
+   "Inner cover title lines all 1.5 (title = one paragraph formatted like template #57; matches guide p.33) — resolved.",
+   "TEŞEKKÜR: 2 empty 1.5 lines before the signature (template markers) — resolved by policy.",
+   "Approval director block: template order dots → name → 'Enstitü Müdürü'; name = editable placeholder (not a requirement) — resolved.",
+   "Approval juror pitch 14.29 mm and 150 mm box (template), box top 189.0 — resolved; LO render confirms the relative positions.",
+   "Lists of figures/tables/photos: single, 6 pt after, left, hanging = label width — resolved (explicit template instruction).",
+   "ÖZGEÇMİŞ before EKLER kept (template + §4.1 list + TOC example), still needsConfirmation (p.16/p.28/p.29 texts say CV last).",
+   "Section breaks: plain new page, no filler pages — resolved (single-sided printing).",
+   "Outer cover = exported page 1, uncounted/unnumbered, text confined to 55–155 × 210–275 mm (explicit p.32); template mock-up position (208.4 mm) rejected."
+  ],
+  "openItems": [
+   "ÖZET/ABSTRACT keywords-vs-year order (guide text vs guide example + template) — institute confirmation recommended.",
+   "ÖZGEÇMİŞ vs EKLER order (p.16/p.28/p.29 vs §4.1 list + TOC example + template).",
+   "Outer cover vertical anchoring when optional lines are absent; whether a border is printed.",
+   "Master's jury size; optional-line slot retention (project line, co-advisor rows); grey 'İmza' hints; CV 'NOT:' line; individual EK entries in TOC.",
+   "Footnotes, abstract word limit, hyphenation remain UNKNOWN (not blocking)."
+  ],
+  "renderEvidence": "orchestration/artifacts/aku-fbe/review/aku_template.pdf (LibreOffice 33 pages; supporting evidence only — LO misplaces some page breaks and table offsets by ~0.6 mm, but line pitches, footer baseline 283.72 mm and relative approval-page geometry match the analyzer's Word-model computations)"
+ }
 }
