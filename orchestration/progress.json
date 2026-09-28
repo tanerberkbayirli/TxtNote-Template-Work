@@ -160,8 +160,8 @@
     }
   },
   "currentUniversity": "aku",
-  "currentTarget": null,
-  "currentPhase": "IMPLEMENTATION (engine extensions batch A)",
+  "currentTarget": "aku-fbe",
+  "currentPhase": "VALIDATION",
   "lastCompletedValidation": null,
   "lastCommit": null,
   "environment": {
@@ -183,14 +183,14 @@
     },
     "aku-fbe": {
       "analysis": "DONE",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
+      "implementation": "DONE",
+      "validation": "IN_PROGRESS",
+      "attempts": 1,
+      "status": "IMPLEMENTED",
       "lastError": null,
       "specPath": "orchestration/specs/aku-fbe.json",
       "reportPath": "orchestration/reports/aku-fbe.md",
-      "commit": null,
+      "commit": "6d73e66",
       "updatedAt": "2026-09-28",
       "specReview": "DONE"
     },
@@ -557,5 +557,9 @@
       "commit": null,
       "updatedAt": null
     }
+  },
+  "engine": {
+    "testsPassing": 466,
+    "extensions": "orchestration/reports/ENGINE_EXTENSIONS.md"
   }
 }
