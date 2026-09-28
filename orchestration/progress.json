@@ -167,16 +167,16 @@
   "environment": {},
   "targets": {
     "aku-sbe": {
-      "analysis": "PENDING",
+      "analysis": "DONE",
       "implementation": "PENDING",
       "validation": "PENDING",
       "attempts": 0,
       "status": "PENDING",
       "lastError": null,
-      "specPath": null,
-      "reportPath": null,
+      "specPath": "orchestration/specs/aku-sbe.json",
+      "reportPath": "orchestration/reports/aku-sbe.md",
       "commit": null,
-      "updatedAt": null
+      "updatedAt": "2026-09-28"
     },
     "aku-fbe": {
       "analysis": "PENDING",
