@@ -156,7 +156,7 @@ const TITLES = { "aku-fbe-": "Dijital Okuryazarlık Düzeylerinin Çevrimiçi Ö
 const titled = Object.entries(TITLES).find(([prefix]) => registryId.startsWith(prefix));
 if (titled && tr) doc.title = titled[1];
 // AKÜ types the English title in capitals (no case transform: Turkish casing would turn i into İ).
-if (registryId.startsWith("aku-fbe-")) { const v = doc.researchData.thesis.values; v.THESIS_TITLE_EN = String(v.THESIS_TITLE_EN || "").toUpperCase(); }
+if (registryId.startsWith("aku-fbe-")) { const v = doc.researchData.thesis.values; Object.assign(v, { DEPARTMENT_NAME: "Biyoloji", DEPARTMENT_NAME_EN: "Biology" }); v.THESIS_TITLE_EN = String(v.THESIS_TITLE_EN || "").toUpperCase(); }
 if (overrides.title) doc.title = overrides.title;
 if (overrides.content) doc.content = overrides.content;
 await writeFile(out, JSON.stringify(doc, null, 1));

@@ -410,8 +410,10 @@ export function thesisSectionCss(section) {
     const eq = section.rules.equations;
     const block = `${scope} .thesis-body .math-formula--block`;
     rules.push(
-      `${block}{background:transparent;border:0;border-radius:0;margin:0;padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}}`,
+      // style.lineHeight / spaceBeforePt / spaceAfterPt (opt-in): the block behaves like one paragraph line, e.g. a 1.5 line with an empty line after it.
+      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.spaceBeforePt || 0}pt 0 ${eq.style?.spaceAfterPt || 0}pt;padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
       `${block} .math-formula__render{padding:0}`,
+      ...(eq.style?.lineHeight ? [`${block} .katex-display{margin:0}`] : []),
       // The formula search / copy toolbar stays available on hover but takes no space in the page.
       `${block} .math-formula__toolbar{position:absolute;top:0;right:0;z-index:2;visibility:hidden}${block}:hover .math-formula__toolbar,${block}:focus-within .math-formula__toolbar{visibility:visible}`,
       `${block}[data-thesis-eq]::after{content:attr(data-thesis-eq);position:absolute;top:50%;transform:translateY(-50%);line-height:1;white-space:nowrap;text-indent:0;${eq.style?.fontFamily ? `font-family:${cssFamily(eq.style.fontFamily)};` : ""}${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.fontWeight ? `font-weight:${eq.style.fontWeight};` : ""}${eq.style?.italic ? "font-style:italic;" : ""}}`,
@@ -447,6 +449,8 @@ export function thesisSectionCss(section) {
     const blocks = [["p", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }]), ...Object.entries(headings).map(([level, style]) => [`h${level}`, style])];
     for (const [previous, before] of blocks) {
       for (const [next, after] of blocks) {
+        // A heading that starts a page (pageBreakBefore) keeps only its own space-before: the previous block's space-after stays on the page before (a forced break does not truncate the margin).
+        if (/^h\d$/.test(next) && after.pageBreakBefore) continue;
         rules.push(`${scope} .thesis-body ${previous}+${next}{margin-top:${Math.round(((before.spaceAfterPt || 0) + (after.spaceBeforePt || 0)) * 1000) / 1000}pt}`);
       }
     }

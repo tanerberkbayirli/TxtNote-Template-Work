@@ -240,7 +240,8 @@ const abstractEn = (degree) => [
 
 const listRule = (kind, title, extra = {}) => ({
   kind, title, leader: "dots", pageHeading: "Sayfa", hanging: "label", labelStyle: bold, indentMm: 0, pageHeadingStyle: { ...bold, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 },
-  style: { lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 6, align: "left" }, ...extra,
+  // Single spaced rows, 6 pt after each entry (the row style is the level-1 style: entries are index rows, not paragraphs).
+  style: { lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" }, levelStyles: { "1": { spaceAfterPt: 6 } }, ...extra,
 });
 const generatedList = (id, type, title, kind, count) => ({
   id, type, title, status: "required", group: "front", mode: "generated", tocEntry: "title", visibleWhen: { count, gte: 1 },
@@ -327,6 +328,7 @@ const base = {
       "Dipnotlar: kaynak sessiz; 10 pt, tek satır, Times New Roman (kaynak dışı, NOT_SPECIFIED). Denklem yazı tipi kılavuzda Cambria Math; bu yazı tipi gömülemez, denklem numarası Times New Roman 12 pt basılır.",
       "Yatay sayfa (gerekirse, sayfa numarası dikey sayfadaki gibi altta ortada): TxtNote'ta yatay sayfa yoktur; sınırlama. A4'ten büyük şekiller katlanarak EKLER'e konur (yazar işi).",
       "Baskı: tek yüz, 70-100 g/m² beyaz kâğıt; savunma nüshası spiral, son nüshalar (en az 7) enstitü kapağıyla ciltlenir; Word'den yazdırılır, PDF'den değil (fiziksel üretim, belge içeriği değildir). Şablonun tek/çift sayfa bölüm sonları tek yüzlü baskıda boş sayfa üretmez.",
+      "Sınırlamalar: şekil/resim için '(Devam)' başlığı yalnız çizelgelerde desteklenir (bölünen şekil yoktur: şekil sayfa içinde bölünmez). Blok denklemin editör tarafından eklenen imleç boşluk satırları nedeniyle önceki paragrafla arası kılavuzdaki 'bir boş satır'dan büyüktür (yazı tipi Cambria Math kullanılamaz).",
       "Kaynak dışı değerler: boşluk (widow/orphan) kılavuzda zorunlu, şablonun Normal stili kapalıdır (kılavuz uygulanır). H3/H4 Baş Harfleri Büyük biçimi örneklerden çıkarılmıştır (INFERRED).",
     ],
   },
@@ -396,7 +398,7 @@ const base = {
   },
   figures: figureCaption("Şekil"),
   captionKinds: { photo: figureCaption("Resim") },
-  equations: { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right", style: { fontSizePt: 12 } },
+  equations: { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right", style: { fontSizePt: 12, lineHeight: 1.5 } },
   bibliography: { heading: "KAYNAKLAR", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0, hangingIndentMm: 12.5 }, hangingIndentMm: 0, citationStyle: "author-year" },
   toc: { heading: "İÇİNDEKİLER DİZİNİ", levels: [1, 2, 3, 4], showPageNumbers: true },
 };

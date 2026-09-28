@@ -159,3 +159,12 @@ describe("generic special-page condition noneFilled", () => {
     assert.equal(resolveSpecialPage([block], { definitions: placeholders, values: { A: "x" } }).blocks.length, 0);
   });
 });
+
+describe("additive paragraph spacing at forced page breaks", () => {
+  it("a page-starting heading is not pushed down by the previous paragraph's space-after", () => {
+    const css = buildThesisCss(compile());
+    const rules = css.split("\n").filter((line) => /"main"\]\) \.thesis-body p\+h/.test(line));
+    assert.ok(rules.some((line) => /p\+h2\{margin-top:20\.7pt\}/.test(line)), "ordinary headings keep the sum");
+    assert.ok(!rules.some((line) => /p\+h1\{/.test(line)), "chapter headings (pageBreakBefore) get no summed margin");
+  });
+});
