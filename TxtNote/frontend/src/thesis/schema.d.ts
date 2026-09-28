@@ -157,7 +157,13 @@ export interface PlaceholderDefinition {
  * "word": Word's "n lines", n × the font's single line of `singleLineEm` (Times New Roman 1.15);
  * DOCX then writes Word's own line spacing (auto, 240 × n).
  */
-export type LineSpacing = { mode: "multiplier" } | { mode: "word"; singleLineEm: number };
+export type LineSpacing = { mode: "multiplier" } | {
+  mode: "word"; singleLineEm: number;
+  /** "word": each line's baseline at line top + lineGap + ascent (extra leading below the text), measured per text style at runtime. Default "css" (centred leading). */
+  baseline?: "css" | "word";
+  /** "additive": paragraphs/headings are after(prev) + before(next) apart like Word; default "collapse" (CSS max). */
+  paragraphSpacing?: "collapse" | "additive";
+};
 export interface ThesisTemplate {
   schemaVersion: 1;
   templateVersion: string;

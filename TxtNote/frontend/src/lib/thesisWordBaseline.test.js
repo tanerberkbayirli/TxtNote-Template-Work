@@ -40,4 +40,12 @@ describe("opt-in Word baseline placement", () => {
     assert.match(css, /:is\(li,td,th,figcaption,caption\) p\{top:0\}/, "nested paragraphs are not lifted twice");
     for (const probe of probes) assert.match(css, new RegExp(`--thesis-wb-${probe.id}`));
   });
+
+  it("additive paragraph spacing puts after(prev) + before(next) between paragraphs and headings", () => {
+    const additive = { ...mcbuMaster, typography: { ...mcbuMaster.typography, lineSpacing: { ...word, paragraphSpacing: "additive" }, paragraph: { ...mcbuMaster.typography.paragraph, spaceBeforePt: 6, spaceAfterPt: 6 } } };
+    assert.deepEqual(validateThesisTemplate(additive), []);
+    const css = buildThesisCss(compileThesisDocument(additive, {}, "T", "<p>a</p><p>b</p>"));
+    assert.match(css, /\.thesis-body p\+p\{margin-top:12pt\}/);
+    assert.doesNotMatch(buildThesisCss(compileThesisDocument(withBaseline, {}, "T", "<p>a</p>")), /p\+p\{margin-top/);
+  });
 });

@@ -321,6 +321,17 @@ export function thesisSectionCss(section) {
     if (index.pageHeading) rules.push(`${scope} .thesis-index-page-heading{${textCss({ ...index.style, ...index.pageHeadingStyle })}text-align:right;text-indent:0;margin:0;}`);
     for (const level of Object.keys(headings)) rules.push(`${scope} [data-index-level="${level}"]{padding-left:${(Number(level) - 1) * index.indentMm}mm;}`);
   }
+  // Opt-in Word paragraph spacing: the gap between two paragraphs/headings is after(prev) + before(next)
+  // instead of CSS's collapsed max(). The next block's top margin carries the sum, so the collapse
+  // yields exactly the sum; unforced page breaks still truncate it (Word drops space at a page top).
+  if (lineSpacing?.paragraphSpacing === "additive") {
+    const blocks = [["p", text], ...Object.entries(headings).map(([level, style]) => [`h${level}`, style])];
+    for (const [previous, before] of blocks) {
+      for (const [next, after] of blocks) {
+        rules.push(`${scope} .thesis-body ${previous}+${next}{margin-top:${Math.round(((before.spaceAfterPt || 0) + (after.spaceBeforePt || 0)) * 1000) / 1000}pt}`);
+      }
+    }
+  }
   for (const [level, style] of Object.entries(headings)) {
     rules.push(`${scope} .thesis-body h${level}{${textCss(style)}break-before:${style.pageBreakBefore ? "page" : "auto"};break-after:${style.keepWithNext ? "avoid" : "auto"};}`);
     rules.push(`${scope} .thesis-body h${level}[data-unnumbered]{break-before:auto;}`);
