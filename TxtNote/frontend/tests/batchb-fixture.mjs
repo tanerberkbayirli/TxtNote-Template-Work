@@ -118,6 +118,17 @@ const scenarios = {
     const body = `<h1>Giriş</h1>${paras(1, "Normal", 1)}${table("Örnek tablo", ["A", "B"], [["1", "2"], ["3", "4"]])}${named("tableNote", "Kaynak: Yazar (2024). Tablo altı notu, tek satır aralıklı ve 10 punto olarak yazılır; uzun olduğu için ikinci satıra taşar ve iki yana yaslanır.")}${paras(1, "Sonra", 1)}${named("blockQuote", "Uzun alıntı metni: blok alıntı iki yandan içeriden, 11 punto italik ve tek satır aralığıyla yazılır; bu metin birkaç satıra yayılacak kadar uzundur, böylece iki yan girinti görülür.")}${paras(1, "Son", 1)}`;
     return documentFor(t, body);
   },
+  // Exceptions: "MATERYAL ve METOT" (uppercase H1) and "Yöntem ve Bulgular ile Tartışma" (capitalized H2).
+  exceptions() {
+    const t = baseTemplate("batchb-exceptions-v1", (t) => {
+      const words = ["ve", "veya", "ile"];
+      Object.assign(t.typography.headings["1"], { textTransform: "uppercase", textTransformExceptions: words, numbering: { enabled: false, format: "{1}" }, align: "center" });
+      Object.assign(t.typography.headings["2"], { textTransform: "capitalize", textTransformExceptions: words });
+      t.sections.find((s) => s.id === "toc").generatedIndex = { kind: "toc", matchHeadingTransform: true };
+    });
+    const body = `<h1>Materyal ve metot</h1><h2>araştırma modeli ile örneklem veya evren</h2>${paras(1, "A", 1)}<h1>bulgular VE tartışma</h1><h2>veri toplama ve analiz</h2>${paras(1, "B", 1)}`;
+    return documentFor(t, body);
+  },
 };
 if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
   const [name, out] = process.argv.slice(2);

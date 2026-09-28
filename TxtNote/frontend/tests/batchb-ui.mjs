@@ -96,5 +96,26 @@ if (scenario === "styles") {
   assert.equal(await page.evaluate(() => document.querySelectorAll('p[data-thesis-style="tableNote"]').length), 1);
   pass("the menu offers the template's named styles; choosing one is saved as source markup, Normal removes it");
 }
+if (scenario === "exceptions") {
+  const spans = () => page.evaluate(() => [...document.querySelectorAll("[data-thesis-flow-section=main] :is(h1,h2) span[data-thesis-lower]")].map((n) => n.textContent));
+  assert.deepEqual(await spans(), ["ve", "ile", "veya", "VE", "ve"]);
+  const lower = await page.evaluate(() => getComputedStyle(document.querySelector("[data-thesis-flow-section=main] h1 span[data-thesis-lower]")).textTransform);
+  assert.equal(lower, "lowercase");
+  // typing at the end of a heading: the caret stays put while the exception spans are re-derived
+  await page.locator("[data-thesis-flow-section=main] h1").first().click();
+  await page.keyboard.press("End");
+  await page.keyboard.type(" ve ile", { delay: 30 });
+  await page.keyboard.type(" son", { delay: 30 });
+  await settle();
+  assert.equal(await page.evaluate(() => document.querySelector("[data-thesis-flow-section=main] h1").textContent), "Materyal ve metot ve ile son");
+  assert.equal((await spans()).filter((w) => /^(ve|ile)$/i.test(w)).length >= 4, true);
+  const saved = await page.evaluate(() => window.thesisTest.getDoc().content);
+  assert.ok(!/data-thesis-lower/.test(saved), "the wrapper spans are never stored");
+  assert.match(saved, /<h1[^>]*>Materyal ve metot ve ile son<\/h1>/);
+  // and the caret is still at the end of the heading (typing goes on there)
+  await page.keyboard.type("X");
+  assert.equal(await page.evaluate(() => document.querySelector("[data-thesis-flow-section=main] h1").textContent), "Materyal ve metot ve ile sonX");
+  pass("exception words are wrapped while typing without moving the caret; nothing is stored");
+}
 assert.deepEqual(errors, []);
 await browser.close();

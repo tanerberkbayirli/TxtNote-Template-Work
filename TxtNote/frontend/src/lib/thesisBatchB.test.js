@@ -391,3 +391,56 @@ describe("Batch B7 named paragraph styles", () => {
     assert.deepEqual(Object.keys(model.sections.find((s) => s.id === "main").rules.paragraphStyles), ["tableNote", "blockQuote"]);
   });
 });
+
+import { transformThesisText } from "../thesis/engine.js";
+import { exceptionSet, wrapExceptionWords } from "../thesis/transformExceptions.js";
+
+describe("textTransformExceptions", () => {
+  const words = ["ve", "veya", "ile"];
+  const styled = () => {
+    const t = template();
+    Object.assign(t.typography.headings["1"], { textTransform: "uppercase", textTransformExceptions: words });
+    Object.assign(t.typography.headings["2"], { textTransform: "capitalize", textTransformExceptions: words });
+    t.sections.find((s) => s.id === "toc").generatedIndex = { kind: "toc", matchHeadingTransform: true };
+    return t;
+  };
+  const html = "<h1>Materyal ve metot</h1><h2>araştırma modeli ile örneklem, veya evren</h2><h1>Iğdır VE Işık</h1>";
+  it("transforms text with the exception words kept lower-case (Turkish locale)", () => {
+    assert.equal(transformThesisText("Materyal ve metot", { textTransform: "uppercase", textTransformExceptions: words }), "MATERYAL ve METOT");
+    assert.equal(transformThesisText("iğdır VE ışık ile", { textTransform: "uppercase", textTransformExceptions: words }), "İĞDIR ve IŞIK ile");
+    assert.equal(transformThesisText("araştırma ve ilke, veya ile", { textTransform: "capitalize", textTransformExceptions: words }), "Araştırma ve İlke, veya ile");
+    // no exceptions / other transforms are unchanged
+    assert.equal(transformThesisText("ve iş", { textTransform: "uppercase" }), "VE İŞ");
+    assert.equal(transformThesisText("Ve İş", { textTransform: "lowercase", textTransformExceptions: words }), "ve iş");
+    assert.equal(transformThesisText("ve iş", { textTransform: "none", textTransformExceptions: words }), "ve iş");
+    assert.equal(exceptionSet({ textTransform: "none", textTransformExceptions: words }), null);
+  });
+  it("validates the list", () => {
+    assert.deepEqual(validateThesisTemplate(styled()), []);
+    const bad = styled(); bad.typography.headings["1"].textTransformExceptions = ["ve ile"];
+    assert.match(validateThesisTemplate(bad).join(), /textTransformExceptions/);
+    const notList = styled(); notList.typography.headings["1"].textTransformExceptions = "ve";
+    assert.match(validateThesisTemplate(notList).join(), /textTransformExceptions/);
+  });
+  it("generated TOC rows and print HTML follow the heading rule; saved HTML never contains the wrapper", () => {
+    const model = compile(styled(), html);
+    const toc = model.sections.find((s) => s.id === "toc");
+    assert.deepEqual(toc.indexRows.map((r) => r.rowTitle), ["MATERYAL ve METOT", "Araştırma Modeli ile Örneklem, veya Evren", "IĞDIR ve IŞIK"]);
+    const print = buildThesisPrintHtml(model);
+    assert.match(print, /<h1[^>]*>Materyal <span data-thesis-lower="true">ve<\/span> metot<\/h1>/);
+    assert.match(print, /<h2[^>]*>araştırma modeli <span data-thesis-lower="true">ile<\/span> örneklem, <span data-thesis-lower="true">veya<\/span> evren<\/h2>/);
+    assert.match(print, /span\[data-thesis-lower\]\{text-transform:lowercase\}/);
+    assert.match(print, /<h1[^>]*>Iğdır <span data-thesis-lower="true">VE<\/span> Işık<\/h1>/);
+    assert.equal(thesisSourceHtml('<h1>Materyal <span data-thesis-lower="true">ve</span> metot</h1>'), "<h1>Materyal ve metot</h1>");
+    assert.equal(model.sections.find((s) => s.id === "main").editableHtml, html);
+    assert.doesNotMatch(buildThesisCss(compile(template(), html)), /data-thesis-lower/);
+    assert.equal(wrapExceptionWords("a <b>ve</b> ve.", new Set(["ve"])), 'a <b><span data-thesis-lower="true">ve</span></b> <span data-thesis-lower="true">ve.</span>');
+  });
+  it("DOCX headings are transformed with the exceptions", async () => {
+    const { xml } = await docx(resolveGeneratedIndexes(compile(styled(), html), {}));
+    const texts = [...xml.matchAll(/<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1]);
+    assert.ok(texts.includes("MATERYAL ve METOT") || texts.some((t) => t.endsWith("MATERYAL ve METOT")));
+    assert.ok(texts.some((t) => t.endsWith("Araştırma Modeli ile Örneklem, veya Evren")));
+    assert.ok(texts.some((t) => t.endsWith("IĞDIR ve IŞIK")));
+  });
+});

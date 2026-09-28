@@ -131,7 +131,22 @@ def styles():
     check('w:before="120"' in paragraph and 'w:after="120"' in paragraph or 'w:after="120" w:before="120"' in paragraph, "DOCX: the note paragraph has 6 pt before/after (120 twips)")
 
 
-SCENARIOS = {"styles": styles, "lists": lists, "footnote": footnote, "photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
+def exceptions():
+    doc, xml = export("exceptions")
+    squash = lambda t: re.sub(r"\s+", "", t)   # word gaps of the word-by-word PDF text are not reliable for grouping
+    text = [[squash(l["text"]) for l in visual_lines(p)] for p in doc]
+    body = [l for page in text[1:] for l in page]
+    check(any(l.endswith("MATERYALveMETOT") for l in body), "H1 in the PDF: uppercase with 've' kept lower-case")
+    check(any(l.endswith("BULGULARveTARTIŞMA") for l in body), "H1 typed 'VE' is drawn lower-case too")
+    check(any(l.endswith("AraştırmaModeliileÖrneklemveyaEvren") for l in body), "H2 capitalised: 'ile' and 'veya' stay lower-case")
+    toc = "|".join(text[0])
+    check("MATERYALveMETOT" in toc and "AraştırmaModeliileÖrneklemveyaEvren" in toc and "BULGULARveTARTIŞMA" in toc, "TOC rows follow the same rule")
+    plain = squash(re.sub(r"<[^>]+>", "", xml))
+    check("MATERYALveMETOT" in plain and "AraştırmaModeliileÖrneklemveyaEvren" in plain, "DOCX heading runs carry the transformed text")
+    check("VE" not in plain.replace("VERİ", ""), "no upper-case exception word anywhere in the DOCX")
+
+
+SCENARIOS = {"exceptions": exceptions, "styles": styles, "lists": lists, "footnote": footnote, "photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
 if __name__ == "__main__":
     for name in sys.argv[1:] or SCENARIOS:
         print(f"== {name} (output in {OUT})")

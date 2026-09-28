@@ -24,6 +24,12 @@ export interface TextStyle {
   /** Text colour, #rrggbb (e.g. a grey signature placeholder). */
   color?: string;
   textTransform?: "none" | "uppercase" | "lowercase" | "capitalize";
+  /**
+   * Words that stay lower-case inside an uppercase/capitalize transform (locale of the template), e.g. ["ve", "veya", "ile"]
+   * for "MATERYAL ve METOT". Applied to headings in the editor/print/PDF (their exception words are drawn lower-case),
+   * to generated TOC rows and to Word runs. Other elements styled with CSS text-transform only honour it in generated text.
+   */
+  textTransformExceptions?: string[];
   pageBreakBefore?: boolean;
   keepWithNext?: boolean;
 }

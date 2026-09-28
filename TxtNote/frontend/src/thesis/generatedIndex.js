@@ -5,6 +5,7 @@ import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, thesisGroup
 const escape = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 import { FOOTNOTE_REF_SELECTOR, renumberFootnoteRefs } from "./footnotes.js";
+import { applyTransformExceptions, exceptionSet, wrapExceptionWords } from "./transformExceptions.js";
 export { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 const text = plainThesisText;
 export const INDEX_ITERATION_CAP = 6;
@@ -79,7 +80,8 @@ export function collectIndexSources(sections, extractHeadings) {
         if (!entry) continue;
         if (entry.level === 1 && !entry.unnumbered) { chapter = formatNumber(entry.counters[0], chapterNumberSequence(section.rules.headings[1]?.numbering?.sequence)); chapterKey += 1; local = {}; }
         const transform = entry.unnumbered ? "none" : section.rules.headings[entry.level]?.textTransform || "none";
-        sources.push({ ...entry, kind: "toc", sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, chapterKey, ...(transform !== "none" ? { textTransform: transform } : {}), ...(section.tocEntry === "none" ? { tocHidden: true } : {}) });
+        const exceptions = transform !== "none" ? section.rules.headings[entry.level]?.textTransformExceptions : undefined;
+        sources.push({ ...entry, kind: "toc", sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, chapterKey, ...(transform !== "none" ? { textTransform: transform, ...(exceptions?.length ? { textTransformExceptions: exceptions } : {}) } : {}), ...(section.tocEntry === "none" ? { tocHidden: true } : {}) });
       } else if (match[7] !== undefined) {
         // Numbered display equation (opt-in: template.equations): its own counter, chapter or document wide.
         const rule = section.rules.equations;
@@ -235,10 +237,11 @@ export function decorateThesisSources(root, model) {
       }
     });
   }
+  applyTransformExceptions(root, model);
 }
 
 /** Print/static HTML uses the same source labels; no independent counters. */
-export function thesisPresentationHtml(section) {
+export function thesisPresentationHtml(section, language = "tr") {
   let heading = 0, caption = 0;
   const headings = (section.indexSources || []).filter((entry) => entry.kind === "toc");
   const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc" && entry.kind !== "equations");
@@ -254,6 +257,11 @@ export function thesisPresentationHtml(section) {
     if (!text(inner)) return tag;
     const entry = captions[caption++];
     return entry ? `<${name}${attrs} data-thesis-caption="${escape(entry.label)} ">${inner}</${name}>` : tag;
+  });
+  // Exception words of headings (textTransformExceptions) are wrapped so the print CSS keeps them lower-case.
+  html = html.replace(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>/gi, (whole, level, attrs, inner) => {
+    const set = exceptionSet(section.rules.headings[level], language);
+    return set ? `<h${level}${attrs}>${wrapExceptionWords(inner, set, language)}</h${level}>` : whole;
   });
   html = html.replace(/(<figure\b[^>]*>)([\s\S]*?)(<figcaption\b[^>]*>[\s\S]*?<\/figcaption>)([\s\S]*?)(<\/figure>)/gi, (whole, open, before, caption, after, close) => captionRuleOf(section.rules, "figure", captionKindOf(open, section.rules)).position === "above" ? `${open}${caption}${before}${after}${close}` : whole);
   return html;

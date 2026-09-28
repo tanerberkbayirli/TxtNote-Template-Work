@@ -8,6 +8,7 @@ import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 import { countFootnoteRefs, resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
+import { exceptionSet, isExceptionToken } from "./transformExceptions.js";
 
 const tokenPattern = /\{\{([A-Z][A-Z0-9_]*)\}\}/g;
 const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -55,9 +56,13 @@ export function resolveChromeText(source, values = {}) {
 
 export function transformThesisText(value, style = {}, language = "tr") {
   const text = String(value ?? "");
+  const capitalize = (word) => word[0].toLocaleUpperCase(language) + word.slice(1);
+  // textTransformExceptions ("ve", "veya", "ile"): those words stay lower-case inside uppercase/capitalize.
+  const exceptions = exceptionSet(style, language);
+  if (exceptions) return text.replace(/\S+/g, (token) => isExceptionToken(token, exceptions, language) ? token.toLocaleLowerCase(language) : style.textTransform === "uppercase" ? token.toLocaleUpperCase(language) : capitalize(token));
   if (style.textTransform === "uppercase") return text.toLocaleUpperCase(language);
   if (style.textTransform === "lowercase") return text.toLocaleLowerCase(language);
-  if (style.textTransform === "capitalize") return text.replace(/\S+/g, (word) => word[0].toLocaleUpperCase(language) + word.slice(1));
+  if (style.textTransform === "capitalize") return text.replace(/\S+/g, capitalize);
   return text;
 }
 
@@ -437,6 +442,8 @@ export function thesisSectionCss(section) {
       }
     }
   }
+  // Exception words of an uppercase/capitalized heading (transformExceptions.js) stay lower-case.
+  if (Object.values(headings).some((style) => exceptionSet(style))) rules.push(`${scope} .thesis-body span[data-thesis-lower]{text-transform:lowercase}`);
   for (const [level, style] of Object.entries(headings)) {
     rules.push(`${scope} .thesis-body h${level}{${textCss(style)}break-before:${style.pageBreakBefore ? "page" : "auto"};break-after:${style.keepWithNext ? "avoid" : "auto"};}`);
     rules.push(`${scope} .thesis-body h${level}[data-unnumbered]{break-before:auto;}`);
@@ -466,7 +473,7 @@ export function buildThesisCss(documentModel) {
 
 export function buildThesisPrintHtml(documentModel, { nonce = "" } = {}) {
   const groups = groupThesisSections(documentModel.sections).filter(thesisGroupHasPageContent);
-  const pages = groups.map((group) => `<section class="thesis-paper" data-thesis-section="${escapeHtml(group.id)}">${group.sections.map((section) => `<section class="thesis-flow-section" data-thesis-flow-section="${escapeHtml(section.id)}"><div class="thesis-body">${withoutInlineStyleAttributes(thesisPresentationHtml(section))}</div></section>`).join("")}</section>`).join("");
+  const pages = groups.map((group) => `<section class="thesis-paper" data-thesis-section="${escapeHtml(group.id)}">${group.sections.map((section) => `<section class="thesis-flow-section" data-thesis-flow-section="${escapeHtml(section.id)}"><div class="thesis-body">${withoutInlineStyleAttributes(thesisPresentationHtml(section, documentModel.language))}</div></section>`).join("")}</section>`).join("");
   const pageRules = groups.map((group) => `@page thesis_${group.id}{size:${group.rules.page.widthMm}mm ${group.rules.page.heightMm}mm;margin:0}.thesis-paper[data-thesis-section="${group.id}"]{page:thesis_${group.id}}`).join("");
   const css = `${buildThesisCss(documentModel)}${pageRules}body{margin:0;background:#fff}.thesis-paper{background:#fff}@media print{.thesis-paper{break-before:page;box-shadow:none}.thesis-paper:first-child{break-before:auto}}`.replace(/<\/style/gi, "<\\/style");
   return `<!doctype html><html lang="${escapeHtml(documentModel.language || "tr")}"><head><meta charset="utf-8"><title>${escapeHtml(documentModel.title)}</title><style${styleNonceAttribute(nonce)}>${css}</style></head><body>${pages}</body></html>`;

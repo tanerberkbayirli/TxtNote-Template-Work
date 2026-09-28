@@ -39,6 +39,7 @@ export function validateTextStyle(style, path = "style") {
   }
   if (style.hangingIndentMm !== undefined && !nonnegative(style.hangingIndentMm)) errors.push(`${path}.hangingIndentMm geçersiz`);
   if (style.tabStopMm !== undefined && !positive(style.tabStopMm)) errors.push(`${path}.tabStopMm geçersiz`);
+  if (style.textTransformExceptions !== undefined && !(Array.isArray(style.textTransformExceptions) && style.textTransformExceptions.every((word) => typeof word === "string" && /^\S+$/.test(word)))) errors.push(`${path}.textTransformExceptions tek sözcüklerden oluşan liste olmalı`);
   if (style.color !== undefined && !/^#[0-9a-f]{6}$/i.test(style.color)) errors.push(`${path}.color #rrggbb olmalı`);
   return errors;
 }

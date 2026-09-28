@@ -12,6 +12,7 @@ import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "
 import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes } from "../../thesis/generatedIndex.js";
 import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
 import { layoutTableContinuations, tableContinuationRows } from "../../thesis/tableContinuation.js";
+import { applyTransformExceptions } from "../../thesis/transformExceptions.js";
 
 const hiddenFields = new Set(["THESIS_TITLE", "UNIVERSITY_NAME", "INSTITUTE_NAME", "DEGREE_TYPE"]);
 // Tailwind's reset removes list markers; the stored ul/ol structure is unchanged.
@@ -136,6 +137,16 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const metadataSection = (heading, keys, extraClass = "") => <section key={heading} className={`border-t border-neutral-200 pt-4 dark:border-neutral-800 ${extraClass}`}><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">{heading}</h4><div className="grid gap-3">{keys.map(metadataInput)}</div></section>;
 
   useLayoutEffect(() => { if (model && papersRef.current) decorateThesisSources(papersRef.current, model); }, [model, zoom]);
+  // No heading markup is rewritten while an IME composition is running (transformExceptions.js); it catches up afterwards.
+  useEffect(() => {
+    const root = papersRef.current;
+    if (!root) return undefined;
+    const start = () => { root.__thesisComposing = true; };
+    const end = () => { root.__thesisComposing = false; if (model) applyTransformExceptions(root, model); };
+    root.addEventListener("compositionstart", start, true);
+    root.addEventListener("compositionend", end, true);
+    return () => { root.removeEventListener("compositionstart", start, true); root.removeEventListener("compositionend", end, true); };
+  }, [model]);
 
   // A bounded fixed point over the SAME browser flow. Only local presentation state changes.
   // Page-bottom notes change body capacity (and so heading pages), so notes are laid out
