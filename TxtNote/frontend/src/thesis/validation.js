@@ -120,6 +120,7 @@ function validateIndex(index, body, headings, path, captionKinds = {}) {
   if (index.pageHeading !== undefined && !text(index.pageHeading)) errors.push(`${path}.pageHeading geçersiz`);
   if (index.pageHeadingStyle !== undefined) errors.push(...validateTextStyle({ ...body, ...index.style, ...index.pageHeadingStyle }, `${path}.pageHeadingStyle`));
   if (index.matchHeadingTransform !== undefined && typeof index.matchHeadingTransform !== "boolean") errors.push(`${path}.matchHeadingTransform geçersiz`);
+  if (index.leaderFlow !== undefined && !["flex", "inline"].includes(index.leaderFlow)) errors.push(`${path}.leaderFlow geçersiz`);
   if (index.labelStyle !== undefined) errors.push(...(object(index.labelStyle) ? validateTextStyle({ ...body, ...index.style, ...index.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
   if (index.hanging !== undefined && index.hanging !== "label") errors.push(`${path}.hanging geçersiz`);
   if (index.levelStyles !== undefined) {

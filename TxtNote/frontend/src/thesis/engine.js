@@ -439,6 +439,15 @@ export function thesisSectionCss(section) {
     for (const [level, style] of Object.entries(index.levelStyles || {})) {
       rules.push(`${scope} .thesis-toc li[data-index-level="${level}"]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}${style.align ? `text-align:${style.align};` : ""}${style.includePageNumber === false ? "display:block;" : ""}}`);
     }
+    // leaderFlow "inline": leader dots and page number are floats inside the title box, i.e. on the last line of a wrapped entry (Word's right tab with leader).
+    if (index.leaderFlow === "inline") rules.push(
+      `${scope} .thesis-toc li{display:block}`,
+      `${scope} .thesis-index-text{display:flex;align-items:baseline;column-gap:0.25em}${scope} .thesis-index-text>.thesis-index-label{flex:none;white-space:nowrap}`,
+      `${scope} .thesis-index-text>.thesis-index-title{flex:1 1 0;min-width:0;overflow:hidden;position:relative}`,
+      // The leader is out of flow at its static position (the end of the last text line); the title box clips it and the page float covers its tail.
+      `${scope} .thesis-index-title>.thesis-index-leader{position:absolute;flex:none;min-width:0;padding-left:0.25em;white-space:nowrap}`,
+      `${scope} .thesis-index-title>.thesis-index-page{float:right;flex:none;min-width:0;background:#fff;padding-left:0.25em}`,
+    );
     // Rows whose heading number is on its own line (numbering.placement "ownLine"): number line, then the title line.
     if (Object.values(headings).some((style) => style.numbering?.placement === "ownLine")) rules.push(`${scope} .thesis-toc li[data-index-label-line] .thesis-index-text{display:block}${scope} .thesis-toc li[data-index-label-line] .thesis-index-label{display:block}`);
   }

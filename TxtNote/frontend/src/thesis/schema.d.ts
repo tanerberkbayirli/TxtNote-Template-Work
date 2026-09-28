@@ -113,6 +113,8 @@ export interface GeneratedIndexRule {
   maxDepth?: number;
   includePageNumbers?: boolean;
   leader?: "dots" | "none";
+  /** "inline": leader dots and page number sit on the last line of a wrapped entry (default "flex": beside the whole entry, on its first line). */
+  leaderFlow?: "flex" | "inline";
   pageNumberAlignment?: "left" | "center" | "right";
   indentMm?: Length;
   style?: Partial<TextStyle>;

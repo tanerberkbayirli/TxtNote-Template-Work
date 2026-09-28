@@ -239,7 +239,7 @@ const abstractEn = (degree) => [
 ];
 
 const listRule = (kind, title, extra = {}) => ({
-  kind, title, leader: "dots", pageHeading: "Sayfa", hanging: "label", labelStyle: bold, indentMm: 0, pageHeadingStyle: { ...bold, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 },
+  kind, title, leader: "dots", leaderFlow: "inline", pageHeading: "Sayfa", hanging: "label", labelStyle: bold, indentMm: 0, pageHeadingStyle: { ...bold, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 },
   // Single spaced rows, 6 pt after each entry (the row style is the level-1 style: entries are index rows, not paragraphs).
   style: { lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" }, levelStyles: { "1": { spaceAfterPt: 6 } }, ...extra,
 });
@@ -264,7 +264,7 @@ function sections(degree) {
       overrides: { page: roman, body: { ...page15, align: "right" } },
       blocks: [blank(1), { type: "metadata", field: "STUDENT_NAME", fallback: "Öğrencinin Adı SOYADI" }, { type: "text", value: "Afyonkarahisar {{YEAR}}" }] },
     { id: "toc", type: "tableOfContents", title: "İÇİNDEKİLER DİZİNİ", status: "required", group: "front", mode: "generated", tocEntry: "title",
-      generatedIndex: { kind: "toc", title: "İÇİNDEKİLER DİZİNİ", leader: "dots", pageHeading: "Sayfa", hanging: "label", indentMm: 5, matchHeadingTransform: true,
+      generatedIndex: { kind: "toc", title: "İÇİNDEKİLER DİZİNİ", leader: "dots", leaderFlow: "inline", pageHeading: "Sayfa", hanging: "label", indentMm: 5, matchHeadingTransform: true,
         pageHeadingStyle: { ...bold, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 }, style: { lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" } },
       overrides: { page: roman, headings: frontTitle(0) } },
     // Symbols: single spaced, definitions aligned on a tab stop (40.69 mm) and hanging under it.

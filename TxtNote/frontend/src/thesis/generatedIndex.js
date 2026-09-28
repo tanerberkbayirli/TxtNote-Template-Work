@@ -125,10 +125,13 @@ export function generatedIndexHtml(entries, rule) {
   const pageHeading = rule.includePageNumbers && rule.pageHeading ? `<div class="thesis-index-page-heading">${escape(rule.pageHeading)}</div>` : "";
   // Label ("Şekil 2.1", "1.2") and title are separate spans so a template can style the label and hang
   // wrapped lines under the title; without those rules they read exactly as one text.
-  const rowText = (entry) => entry.label && entry.rowTitle !== undefined ? `<span class="thesis-index-label">${escape(entry.label)}</span> <span class="thesis-index-title">${escape(entry.rowTitle)}</span>` : escape(entry.text);
+  const inline = rule.leaderFlow === "inline";
+  const rowText = (entry, tail = "") => entry.label && entry.rowTitle !== undefined ? `<span class="thesis-index-label">${escape(entry.label)}</span> <span class="thesis-index-title">${escape(entry.rowTitle)}${tail}</span>` : inline ? `<span class="thesis-index-title">${escape(entry.text)}${tail}</span>` : escape(entry.text);
   // A level may list its rows without page numbers (e.g. centred chapter rows): levelStyles[level].includePageNumber === false.
   const withPage = (entry) => rule.includePageNumbers && rule.levelStyles?.[entry.level]?.includePageNumber !== false;
-  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"${entry.labelLine ? ' data-index-label-line="true"' : ""}><span class="thesis-index-text">${rowText(entry)}</span>${withPage(entry) ? `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(400) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>` : ""}</li>`).join("")}</ol>`;
+  const leader = (entry) => `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(400) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>`;
+  // leaderFlow "inline": leader and page number sit inside the title box, on the last line of a wrapped entry (floats, see engine CSS).
+  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"${entry.labelLine ? ' data-index-label-line="true"' : ""}><span class="thesis-index-text">${rowText(entry, inline && withPage(entry) ? leader(entry) : "")}</span>${!inline && withPage(entry) ? leader(entry) : ""}</li>`).join("")}</ol>`;
 }
 
 /**

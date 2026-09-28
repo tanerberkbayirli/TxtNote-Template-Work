@@ -168,3 +168,18 @@ describe("additive paragraph spacing at forced page breaks", () => {
     assert.ok(!rules.some((line) => /p\+h1\{/.test(line)), "chapter headings (pageBreakBefore) get no summed margin");
   });
 });
+
+describe("index rows with leaderFlow inline", () => {
+  it("puts leader and page number inside the title box; the default flow is unchanged", () => {
+    const model = compile();
+    const toc = section(model, "toc");
+    assert.equal(toc.generatedIndex.leaderFlow, "inline");
+    assert.match(toc.html, /<span class="thesis-index-title">GİRİŞ<span class="thesis-index-leader">\.+<\/span><span class="thesis-index-page">/);
+    assert.match(toc.html, /<span class="thesis-index-title">ÖZET<span class="thesis-index-leader">/, "rows without a label get a title box too");
+    const css = buildThesisCss(model);
+    assert.match(css, /\.thesis-index-title>\.thesis-index-leader\{position:absolute;/);
+    assert.match(css, /\.thesis-index-title>\.thesis-index-page\{float:right;/);
+    const flex = generatedIndexHtml([{ kind: "toc", level: 1, label: "1.", rowTitle: "A", text: "1. A", anchor: "a", page: "3" }], { kind: "toc", title: "T", includePageNumbers: true, leader: "dots" });
+    assert.match(flex, /<span class="thesis-index-title">A<\/span><\/span><span class="thesis-index-leader">/);
+  });
+});

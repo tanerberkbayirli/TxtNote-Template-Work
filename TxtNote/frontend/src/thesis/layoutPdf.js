@@ -140,12 +140,15 @@ function collectGroup(stack, language) {
       // Read the actual clipping box of a dotted index leader. Its hidden tail must
       // not paint over the right-aligned page label in the DOM-based PDF.
       if (node.parentElement.matches(".thesis-index-leader")) {
-        const clip = node.parentElement.getBoundingClientRect();
+        const leader = node.parentElement;
+        // leaderFlow "inline": the dots run inside the title box and stop where the floated page number begins.
+        const page = leader.parentElement?.matches(".thesis-index-title") ? leader.nextElementSibling : null;
+        const clipRight = page ? page.getBoundingClientRect().left : leader.getBoundingClientRect().right;
         let visible = 0;
         for (let i = 0; i < word.length; i += 1) {
           range.setStart(node, start + i); range.setEnd(node, start + i + 1);
           const glyph = range.getBoundingClientRect();
-          if (glyph.right > clip.right + 0.1) break;
+          if (glyph.right > clipRight + 0.1) break;
           visible += 1;
         }
         if (visible) { range.setStart(node, start); range.setEnd(node, start + visible); pushText(word.slice(0, visible), range.getBoundingClientRect(), style, extra); }
