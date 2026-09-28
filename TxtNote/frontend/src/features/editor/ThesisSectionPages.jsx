@@ -40,7 +40,7 @@ function SheetChrome({ rules, values, page }) {
   return <>
     {headerText ? <div className="thesis-page-header absolute" style={{ ...box, fontSize: "10pt", top: `${topMm + shift("top")}mm` }}>{headerText}</div> : null}
     {footerText ? <div className="thesis-page-footer absolute" style={{ ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom")}mm` }}>{footerText}</div> : null}
-    {page.label ? <div className="thesis-page-number absolute" style={{ ...box, fontSize: `${body.fontSizePt}pt`, textAlign: page.numberAlign, ...(page.numberPosition === "top" ? { top: `${topMm}mm` } : { bottom: `${bottomMm}mm` }) }}>{page.label}</div> : null}
+    {page.label ? <div className="thesis-page-number absolute" style={{ ...box, fontFamily: rule.numbering?.style?.fontFamily || body.fontFamily, fontSize: `${rule.numbering?.style?.fontSizePt || body.fontSizePt}pt`, textAlign: page.numberAlign, ...(page.numberPosition === "top" ? { top: `${topMm}mm` } : { bottom: `${bottomMm}mm` }) }}>{page.label}</div> : null}
   </>;
 }
 

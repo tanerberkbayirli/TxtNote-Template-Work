@@ -17,6 +17,12 @@ export interface TextStyle {
   firstLineIndentMm?: Length;
   leftIndentMm?: Length;
   rightIndentMm?: Length;
+  /** Every line but the first starts this far right of the left indent (Word "hanging"); overrides firstLineIndentMm. */
+  hangingIndentMm?: Length;
+  /** Tab stop (mm from the text's left edge) for typed tabs, e.g. definitions aligned in a symbols list. */
+  tabStopMm?: Length;
+  /** Text colour, #rrggbb (e.g. a grey signature placeholder). */
+  color?: string;
   textTransform?: "none" | "uppercase" | "lowercase" | "capitalize";
   pageBreakBefore?: boolean;
   keepWithNext?: boolean;
@@ -28,6 +34,8 @@ export interface NumberingRule {
   format: NumberFormat;
   startAt?: number;
   restart?: boolean;
+  /** Page-number typography when it differs from the body (e.g. Times New Roman 10 pt). */
+  style?: { fontFamily?: string; fontSizePt?: number };
 }
 export interface PageRule {
   size: string;
@@ -51,6 +59,12 @@ export interface CaptionRule {
   spacingAfterPt?: number;
   align?: "left" | "center" | "right";
   captionAlignment?: "left" | "center" | "right" | "justify" | "auto";
+  /** Printed label, `{label}` and `{number}` placeholders. Default "{label} {number}." ("Şekil 2.1."). */
+  labelFormat?: string;
+  /** Typography of the label run only (e.g. bold "Şekil 2.1" before a regular caption text). */
+  labelStyle?: Partial<TextStyle>;
+  /** Continuation lines start under the caption text ("label": measured label width) or at a fixed mm. */
+  hangingIndent?: "label" | Length;
   /** Tables only: typography of the cells (e.g. single spacing, centered values). A cell's own alignment wins; omitted keys inherit the body. */
   cellStyle?: Partial<TextStyle>;
 }
@@ -150,7 +164,8 @@ export interface PlaceholderDefinition {
   required?: boolean;
   defaultValue?: string;
   /** Taken from the laid-out document at render/export time (never an input, never stored). */
-  derived?: "totalPages";
+  /** totalPages: all physical pages; frontLastLabel: label of the last numbered page before the Arabic restart ("ix"); mainPageCount: pages from the Arabic restart to the end. */
+  derived?: "totalPages" | "frontLastLabel" | "mainPageCount";
 }
 /**
  * How a stored lineHeight is drawn. "multiplier" (default): CSS factor of the font size.

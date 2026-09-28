@@ -4,6 +4,6 @@ export const plainThesisText = (html) => String(html || "").replace(/<br\b[^>]*>
 export function thesisSourceHtml(html) {
   return String(html || "")
     .replace(/<span\b[^>]*class=["'][^"']*\bacademic-caption-label\b[^"']*["'][^>]*>[\s\S]*?<\/span>/gi, "")
-    .replace(/\sdata-thesis-(?:number|anchor|caption|caption-auto|fn-stamp|fn-reserve|fn-margin)=["'][^"']*["']/gi, "");
+    .replace(/\sdata-thesis-(?:number|anchor|caption|caption-auto|caption-hang|fn-stamp|fn-reserve|fn-margin)=["'][^"']*["']/gi, "");
 }
 

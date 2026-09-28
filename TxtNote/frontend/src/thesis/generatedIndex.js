@@ -28,6 +28,19 @@ export function formatCaptionNumber(format, chapter, n) {
   return withChapter.replace(/\{n\}/g, n);
 }
 
+/** Printed caption label, e.g. "Şekil 2.1." (default "{label} {number}.") or "Şekil 2.1" ("{label} {number}"). */
+export function formatCaptionLabel(rule, number) {
+  return String(rule.labelFormat || "{label} {number}.").replace(/\{label\}/g, rule.label).replace(/\{number\}/g, number);
+}
+
+/** Width (CSS px) of `text` in the computed font of `style` (canvas, the same measure the layout PDF uses). */
+let widthContext = null;
+export function textWidthPx(style, text) {
+  widthContext ||= document.createElement("canvas").getContext("2d");
+  widthContext.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+  return widthContext.measureText(text).width;
+}
+
 /** One ordered semantic source stream for headings and both caption kinds. */
 export function collectIndexSources(sections, extractHeadings) {
   const sources = [];
@@ -65,7 +78,7 @@ export function collectIndexSources(sections, extractHeadings) {
         const rule = section.rules[kind === "figure" ? "figures" : "tables"];
         const n = rule.numbering.scope === "chapter" ? local[kind] : global[kind];
         const number = formatCaptionNumber(rule.numbering.format, chapter, formatNumber(n, rule.numbering.sequence));
-        const label = `${rule.label} ${number}.`;
+        const label = formatCaptionLabel(rule, number);
         sources.push({ kind: kind === "figure" ? "figures" : "tables", sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, title, label, number, chapterKey });
       }
     }
@@ -94,8 +107,18 @@ export function generatedIndexHtml(entries, rule) {
 export function derivedThesisValues(model, counts = {}) {
   const fields = Object.entries(model.derivedFields || {});
   if (!fields.length) return {};
-  const totalPages = buildThesisPageModel(groupThesisSections(model.sections), counts).reduce((sum, group) => sum + group.pages.length, 0);
-  return Object.fromEntries(fields.map(([key, kind]) => [key, kind === "totalPages" ? String(totalPages) : ""]));
+  const pageModel = buildThesisPageModel(groupThesisSections(model.sections), counts);
+  const totalPages = pageModel.reduce((sum, group) => sum + group.pages.length, 0);
+  // Main matter = from the first group whose numbering restarts in Arabic to the end (appendices included);
+  // front matter = the pages before it, read by the label of its last numbered page ("ix").
+  const mainIndex = pageModel.findIndex((group) => { const rule = model.sections.find((section) => section.id === group.groupId)?.rules.page.numbering; return rule?.restart && rule.format === "arabic"; });
+  const before = mainIndex < 0 ? [] : pageModel.slice(0, mainIndex).flatMap((group) => group.pages);
+  const derived = {
+    totalPages: String(totalPages),
+    frontLastLabel: [...before].reverse().find((page) => page.label)?.label || "",
+    mainPageCount: mainIndex < 0 ? "" : String(pageModel.slice(mainIndex).reduce((sum, group) => sum + group.pages.length, 0)),
+  };
+  return Object.fromEntries(fields.map(([key, kind]) => [key, derived[kind] ?? ""]));
 }
 
 /** A special page that reads derived values, laid out again with them (same resolver, same paths). */
@@ -139,7 +162,7 @@ export function decorateThesisSources(root, model) {
     host.querySelectorAll("[data-thesis-anchor]").forEach((node) => { node.removeAttribute("data-thesis-anchor"); node.removeAttribute("data-thesis-number"); });
     host.querySelectorAll("h1,h2,h3,h4,h5,h6,figcaption,caption").forEach((node) => {
       if (/caption$/i.test(node.tagName)) {
-        node.removeAttribute("data-thesis-caption"); node.removeAttribute("data-thesis-caption-auto");
+        node.removeAttribute("data-thesis-caption"); node.removeAttribute("data-thesis-caption-auto"); node.removeAttribute("data-thesis-caption-hang");
         node.querySelectorAll(".academic-caption-label").forEach((label) => label.remove());
         if (node.tagName === "FIGCAPTION") node.setAttribute("contenteditable", section.editable ? "true" : "false");
         if (section.editable && node.tagName === "FIGCAPTION" && !node.firstChild) node.appendChild(node.ownerDocument.createElement("br"));
@@ -159,6 +182,9 @@ export function decorateThesisSources(root, model) {
         node.querySelectorAll(".academic-caption-label").forEach((label) => label.remove());
         node.setAttribute("data-thesis-caption", `${entry.label} `);
         const rule = section.rules[entry.kind];
+        // Hanging indent equal to the printed label ("Şekil 2.1 "): continuation lines start under the caption text.
+        if (rule.hangingIndent === "label") node.setAttribute("data-thesis-caption-hang", String(Math.round(textWidthPx(getComputedStyle(node, "::before"), `${entry.label} `) * 1000) / 1000));
+        else node.removeAttribute("data-thesis-caption-hang");
         if (rule.captionAlignment === "auto") {
           const range = node.ownerDocument.createRange(); range.selectNodeContents(node);
           const tops = new Set([...range.getClientRects()].filter((r) => r.width && r.height).map((r) => Math.round(r.top)));

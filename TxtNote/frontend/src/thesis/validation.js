@@ -4,7 +4,7 @@ import { validateFootnoteRule } from "./footnotes.js";
 
 export const THESIS_SCHEMA_VERSION = 1;
 /** Values a placeholder may take from the laid-out document instead of user input (never stored). */
-export const THESIS_DERIVED_VALUES = Object.freeze(["totalPages"]);
+export const THESIS_DERIVED_VALUES = Object.freeze(["totalPages", "frontLastLabel", "mainPageCount"]);
 const object = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 const positive = (value) => Number.isFinite(value) && value > 0;
 const nonnegative = (value) => Number.isFinite(value) && value >= 0;
@@ -37,6 +37,9 @@ export function validateTextStyle(style, path = "style") {
   for (const key of ["firstLineIndentMm", "leftIndentMm", "rightIndentMm"]) {
     if (style[key] !== undefined && !Number.isFinite(style[key])) errors.push(`${path}.${key} geçersiz`);
   }
+  if (style.hangingIndentMm !== undefined && !nonnegative(style.hangingIndentMm)) errors.push(`${path}.hangingIndentMm geçersiz`);
+  if (style.tabStopMm !== undefined && !positive(style.tabStopMm)) errors.push(`${path}.tabStopMm geçersiz`);
+  if (style.color !== undefined && !/^#[0-9a-f]{6}$/i.test(style.color)) errors.push(`${path}.color #rrggbb olmalı`);
   return errors;
 }
 
@@ -48,6 +51,7 @@ function validateNumbering(rule, path) {
   if (!["left", "center", "right"].includes(rule.align)) errors.push(`${path}.align geçersiz`);
   if (!numberingFormats.has(rule.format)) errors.push(`${path}.format geçersiz`);
   if (rule.startAt !== undefined && (!Number.isInteger(rule.startAt) || rule.startAt < 1)) errors.push(`${path}.startAt geçersiz`);
+  if (rule.style !== undefined && (!object(rule.style) || (rule.style.fontSizePt !== undefined && !(positive(rule.style.fontSizePt) && rule.style.fontSizePt <= 96)) || (rule.style.fontFamily !== undefined && !text(rule.style.fontFamily)))) errors.push(`${path}.style geçersiz`);
   return errors;
 }
 
@@ -85,6 +89,9 @@ function validateCaption(caption, path) {
   if (caption.captionAlignment !== undefined && ![...aligns, "auto"].includes(caption.captionAlignment)) errors.push(`${path}.captionAlignment geçersiz`);
   for (const key of ["spacingBeforePt", "spacingAfterPt"]) if (caption[key] !== undefined && !nonnegative(caption[key])) errors.push(`${path}.${key} geçersiz`);
   if (caption.cellStyle !== undefined) errors.push(...(object(caption.cellStyle) ? validateTextStyle({ ...caption.style, ...caption.cellStyle }, `${path}.cellStyle`) : [`${path}.cellStyle nesne olmalı`]));
+  if (caption.labelFormat !== undefined && !(text(caption.labelFormat) && caption.labelFormat.includes("{number}"))) errors.push(`${path}.labelFormat {number} içermeli`);
+  if (caption.labelStyle !== undefined) errors.push(...(object(caption.labelStyle) ? validateTextStyle({ ...caption.style, ...caption.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
+  if (caption.hangingIndent !== undefined && caption.hangingIndent !== "label" && !positive(caption.hangingIndent)) errors.push(`${path}.hangingIndent geçersiz`);
   return errors;
 }
 

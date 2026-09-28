@@ -80,7 +80,7 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
     if (block.type === "group") {
       const style = { ...inherited, ...block.style };
       const direction = block.direction === "row" ? "row" : "column";
-      return { ...box, type: "group", direction, gapMm: finite(block.gapMm), blocks: resolveList(block.blocks, style, path, direction === "row") };
+      return { ...box, type: "group", direction, gapMm: finite(block.gapMm), ...(block.border ? { border: resolveBorder(block.border) } : {}), blocks: resolveList(block.blocks, style, path, direction === "row") };
     }
     const style = textStyle(inherited, block);
     if (block.type === "metadata") {
@@ -92,11 +92,29 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
       const text = String(value).trim() ? `${block.prefix || ""}${value}${block.suffix || ""}` : block.fallback ?? `${block.prefix || ""}${block.suffix || ""}`;
       return { ...box, type: "text", field: block.field, text, style };
     }
+    // markup "inline": template text may mark bold runs with **…** ("**Danışman:** {{ADVISOR_NAME}}").
+    // Only the template's own text is parsed; metadata values are never read as markup.
+    if (block.markup === "inline") {
+      const runs = String(block.value ?? "").split("**").map((part, index) => {
+        const value = resolvePlaceholders(part, definitions, values);
+        value.missing.forEach((key) => missing.add(key));
+        return { text: value.text, bold: index % 2 === 1 };
+      }).filter((run) => run.text);
+      return { ...box, type: "text", text: runs.map((run) => run.text).join(""), runs, style };
+    }
     const value = resolvePlaceholders(block.value, definitions, values);
     value.missing.forEach((key) => missing.add(key));
     return { ...box, type: "text", text: value.text, style };
   }).filter(Boolean);
   return { blocks: resolveList(blocks, baseStyle, ""), missing: [...missing] };
+}
+
+/**
+ * A framed group: an outer rule, an optional gap and inner rule (double / thick-thin frames), then
+ * padding. Widths in pt, spaces in mm. `docx` names the Word border (e.g. "thickThinSmallGap").
+ */
+function resolveBorder(border) {
+  return { outerPt: finite(border.outerPt, 0.5), gapPt: finite(border.gapPt), innerPt: finite(border.innerPt), paddingMm: finite(border.paddingMm), color: border.color || "#000000", docx: border.docx || null };
 }
 
 /** Depth-first walk over a resolved tree (groups before their children). */
@@ -114,8 +132,13 @@ export function specialPageHtml(nodes) {
     if (node.type === "image") return `<img class="thesis-layout-image" ${attrs} src="${escapeHtml(node.source)}" alt="">`;
     if (node.type === "spacer") return `<div class="thesis-layout-spacer" ${attrs} aria-hidden="true"></div>`;
     if (node.type === "separator") return `<div class="thesis-layout-separator" ${attrs} role="presentation"></div>`;
-    if (node.type === "group") return `<div class="thesis-layout-group" data-thesis-layout-direction="${node.direction}" ${attrs}>${specialPageHtml(node.blocks)}</div>`;
-    return `<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${escapeHtml(node.text).replace(/\n/g, "<br>") || "&nbsp;"}</div>`;
+    if (node.type === "group") {
+      const group = `<div class="thesis-layout-group" data-thesis-layout-direction="${node.direction}" ${attrs}>${specialPageHtml(node.blocks)}</div>`;
+      // A frame is drawn by real borders (the layout PDF reads borders), double frames by two nested boxes.
+      return node.border ? `<div class="thesis-layout-frame" data-thesis-frame="${node.path}">${node.border.innerPt > 0 ? `<div class="thesis-layout-frame-inner" data-thesis-frame-inner="${node.path}">${group}</div>` : group}</div>` : group;
+    }
+    const content = node.runs ? node.runs.map((run) => (run.bold ? `<b class="thesis-layout-strong">${escapeHtml(run.text)}</b>` : escapeHtml(run.text))).join("").replace(/\n/g, "<br>") : escapeHtml(node.text).replace(/\n/g, "<br>");
+    return `<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${content || "&nbsp;"}</div>`;
   }).join("");
 }
 
@@ -159,7 +182,12 @@ export function specialPageCss(scope, nodes, styleCss) {
   const rules = [];
   const visit = (list, parent) => {
     for (const node of list || []) {
-      rules.push(`${scope} [data-thesis-block="${node.path}"]{${node.type === "text" ? styleCss(node.style) : ""}${specialPageBoxCss(node, parent)}}`);
+      if (node.border) {
+        const { outerPt, gapPt, innerPt, paddingMm, color } = node.border;
+        rules.push(`${scope} [data-thesis-frame="${node.path}"]{border:${outerPt}pt solid ${color};padding:${innerPt > 0 ? `${gapPt}pt` : `${paddingMm}mm`};margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;}`);
+        if (innerPt > 0) rules.push(`${scope} [data-thesis-frame-inner="${node.path}"]{border:${innerPt}pt solid ${color};padding:${paddingMm}mm;}`);
+      }
+      rules.push(`${scope} [data-thesis-block="${node.path}"]{${node.type === "text" ? styleCss(node.style) : ""}${specialPageBoxCss(node, parent)}${node.border ? "margin:0;" : ""}}`);
       if (node.type === "group") visit(node.blocks, node);
     }
   };
@@ -211,6 +239,7 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
       if (block.align !== undefined && !["left", "center", "right"].includes(block.align)) errors.push(`${at}.align geçersiz`);
     } else if (block.type === "text") {
       if (typeof block.value !== "string") errors.push(`${at}.value gerekli`);
+      if (block.markup !== undefined && block.markup !== "inline") errors.push(`${at}.markup geçersiz`);
       for (const match of String(block.value || "").matchAll(/\{\{([A-Z][A-Z0-9_]*)\}\}/g)) {
         if (!placeholders[match[1]]) errors.push(`${at}: ${match[1]} placeholder tanımı eksik`);
       }
@@ -224,6 +253,10 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
       if (block.align !== undefined && !["left", "center", "right"].includes(block.align)) errors.push(`${at}.align geçersiz`);
     } else if (block.type === "group") {
       if (block.direction !== undefined && !["column", "row"].includes(block.direction)) errors.push(`${at}.direction geçersiz`);
+      if (block.border !== undefined) {
+        const b = block.border;
+        if (b === null || typeof b !== "object" || ["outerPt", "gapPt", "innerPt", "paddingMm"].some((key) => b[key] !== undefined && !nonnegative(b[key])) || (b.color !== undefined && !/^#[0-9a-f]{6}$/i.test(b.color))) errors.push(`${at}.border geçersiz`);
+      }
       if (block.gapMm !== undefined && !nonnegative(block.gapMm)) errors.push(`${at}.gapMm geçersiz`);
       errors.push(...validateSpecialPageBlocks(block.blocks, { path: `${at}.blocks`, placeholders, baseStyle: style, validateStyle }, depth + 1));
     }

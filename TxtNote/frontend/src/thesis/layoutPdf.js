@@ -213,8 +213,11 @@ function collectGroup(stack, language) {
     // Generated content the editor shows: heading numbers (::before) and list markers (::marker).
     const number = element.getAttribute("data-thesis-number") || element.getAttribute("data-thesis-caption")?.trim();
     if (number && firstText) {
+      // The label is drawn in its own (::before) typography, e.g. a bold "Şekil 2.1" before a regular caption.
+      const pseudo = getComputedStyle(element, "::before");
+      const labelStyle = { ...typography, fontWeight: pseudo.fontWeight, fontStyle: pseudo.fontStyle, fontSize: pseudo.fontSize, fontFamily: pseudo.fontFamily };
       const label = transformText(number, style.textTransform, typography.lang);
-      pushLabel(label, firstText.x - textWidth(typography, `${label} `), firstText, typography);
+      pushLabel(label, firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle);
     }
     if (element.tagName === "LI" && style.display === "list-item" && style.listStyleType !== "none" && firstText) {
       const marker = markerText(element, style.listStyleType);

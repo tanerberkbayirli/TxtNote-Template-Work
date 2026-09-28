@@ -6,7 +6,7 @@ import {
 } from "docx";
 import { parseAcademicHtml } from "../lib/academicDocument.js";
 import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
-import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, resolveChromeText, transformThesisText } from "./engine.js";
+import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, indentMm, resolveChromeText, transformThesisText } from "./engine.js";
 import { PX_PER_MM, thesisGroupHasPageContent } from "./pageLayout.js";
 import { specialPageRowWidths } from "./specialPages.js";
 import { MM_PER_PT, mmToTwip, ptToTwip } from "./units.js";
@@ -28,11 +28,11 @@ const asBlocks = (section) => {
   let captionIndex = 0;
   return parseAcademicHtml(section.html, { lines: true }).map((block) => {
     if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "" }; }
-    if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionAnchor: entry?.anchor, caption: entry?.title || block.caption }; }
+    if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionLabel: entry?.label || "", captionAnchor: entry?.anchor, caption: entry?.title || block.caption }; }
     return block;
   });
 };
-const captionText = (label, block) => `${label} ${block.captionNumber}. ${block.caption}`;
+const captionText = (label, block) => `${block.captionLabel || `${label} ${block.captionNumber}.`} ${block.caption}`;
 
 function pdfFont(pdf, style) {
   if (/arial|helvetica/i.test(style.fontFamily)) pdf.setFont("helvetica", `${style.fontWeight >= 600 ? "bold" : ""}${style.italic ? "italic" : ""}` || "normal");
@@ -161,7 +161,7 @@ const CELL_BORDER = { style: BorderStyle.SINGLE, size: 6, color: "888888" };
 const plainRuns = (text) => [{ type: "text", text: String(text ?? "") }];
 
 function runProps(style, language) {
-  return { font: style.fontFamily, size: Math.round(style.fontSizePt * 2), bold: style.fontWeight >= 600, italics: Boolean(style.italic), ...(style.characterSpacingPt ? { characterSpacing: pt(style.characterSpacingPt) } : {}), language: { value: language } };
+  return { font: style.fontFamily, size: Math.round(style.fontSizePt * 2), bold: style.fontWeight >= 600, italics: Boolean(style.italic), ...(style.characterSpacingPt ? { characterSpacing: pt(style.characterSpacingPt) } : {}), ...(style.color ? { color: style.color.slice(1).toUpperCase() } : {}), language: { value: language } };
 }
 
 function textRun(text, style, context, inline = {}) {
@@ -189,7 +189,8 @@ function docxRuns(runs, style, context) {
       out.push(new FootnoteReferenceRun(id));
     } else {
       const text = item.text || item.latex || "";
-      if (text) out.push(textRun(text, style, context, item));
+      // A typed tab is a Word tab (aligned on the paragraph's tab stop), never a literal character.
+      text.split("\t").forEach((part, index) => { if (index) out.push(new TextRun({ children: [new Tab()] })); if (part) out.push(textRun(part, style, context, item)); });
     }
   }
   return out;
@@ -202,11 +203,14 @@ const lineSpacingDocx = (style, lineSpacing) => lineSpacing?.mode === "word"
   : { line: pt(style.fontSizePt * (style.lineHeight || 1.5)), lineRule: LineRuleType.AT_LEAST };
 
 function paragraphProps(style, options = {}, lineSpacing = null) {
+  // Word expresses a negative first line as a hanging indent.
+  const indent = indentMm(style);
   return {
     alignment: alignDocx(style.align),
     spacing: { before: pt(style.spaceBeforePt), after: pt(style.spaceAfterPt), ...lineSpacingDocx(style, lineSpacing) },
-    indent: { firstLine: twip(style.firstLineIndentMm || 0), left: twip(style.leftIndentMm || 0), right: twip(style.rightIndentMm || 0) },
+    indent: { ...(indent.first < 0 ? { hanging: twip(-indent.first) } : { firstLine: twip(indent.first) }), left: twip(indent.left), right: twip(style.rightIndentMm || 0) },
     keepNext: Boolean(style.keepWithNext), pageBreakBefore: Boolean(style.pageBreakBefore),
+    ...(style.tabStopMm > 0 ? { tabStops: [{ type: TabStopType.LEFT, position: twip(indent.left + style.tabStopMm) }] } : {}),
     ...options,
   };
 }
@@ -243,7 +247,7 @@ function specialPageDocx(nodes, context, widthMm) {
       out.push(new Paragraph({ alignment: alignDocx(node.align), spacing: { before: 0, after: 0, line: twip(node.heightMm), lineRule: LineRuleType.AT_LEAST }, children: [new ImageRun({ ...image, transformation: { width: node.widthMm * PX_PER_MM, height: node.heightMm * PX_PER_MM } })] }));
       gap(node.marginBottomMm);
     } else if (node.type === "text") {
-      out.push(docxParagraph(plainRuns(node.text), node.style, context));
+      out.push(docxParagraph(node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold })) : plainRuns(node.text), node.style, context));
     } else if (node.type === "spacer") {
       gap(node.marginTopMm); gap(node.heightMm); gap(node.marginBottomMm);
     } else if (node.type === "separator") {
@@ -275,6 +279,19 @@ function specialPageDocx(nodes, context, widthMm) {
           rows: [new TableRow({ cantSplit: true, children: cells })],
         }));
       }
+      gap(node.marginBottomMm);
+    } else if (node.border) {
+      // A framed group is a one-cell table with the frame as its borders and the padding as cell margins.
+      gap(node.marginTopMm);
+      const { outerPt, innerPt, gapPt, paddingMm, color, docx } = node.border;
+      const edge = { style: BorderStyle[(docx?.style || (innerPt > 0 ? "double" : "single")).replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase()] || BorderStyle.SINGLE, size: Math.round((docx?.sizePt ?? outerPt + gapPt + innerPt) * 8), color: color.slice(1).toUpperCase() };
+      const inner = { ...node, border: undefined, marginTopMm: 0, marginBottomMm: 0 };
+      const cellWidth = widthMm;
+      out.push(new Table({
+        width: { size: twip(cellWidth), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [twip(cellWidth)],
+        borders: { top: edge, bottom: edge, left: edge, right: edge, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
+        rows: [new TableRow({ cantSplit: true, children: [new TableCell({ width: { size: twip(cellWidth), type: WidthType.DXA }, margins: { top: twip(paddingMm), bottom: twip(paddingMm), left: twip(paddingMm), right: twip(paddingMm) }, children: specialPageDocx([inner], context, cellWidth - 2 * paddingMm) })] })],
+      }));
       gap(node.marginBottomMm);
     } else {
       gap(node.marginTopMm);
@@ -315,19 +332,40 @@ function tableDocx(block, section, context) {
   const { body, tables } = section.rules;
   const cellStyle = tables.cellStyle || {};
   const out = [];
-  const caption = block.caption ? docxParagraph(plainRuns(captionText(tables.label, block)), { ...captionStyle(tables, block, context), keepWithNext: tables.position === "above" }, context) : null;
+  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above" }) : null;
   if (caption && tables.position === "above") out.push(caption);
-  const rows = (block.rows || []).filter((row) => row.length).map((row) => new TableRow({
+  const preset = tables.borders?.preset;
+  const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
+  const sourceRows = (block.rows || []).filter((row) => row.length);
+  const lastHeader = sourceRows.reduce((last, row, index) => (row.every((cell) => cell.header) ? index : last), -1);
+  const rows = sourceRows.map((row, rowIndex) => new TableRow({
     cantSplit: true, tableHeader: row.every((cell) => cell.header),
     children: row.map((cell) => new TableCell({
       columnSpan: cell.colspan > 1 ? cell.colspan : undefined, rowSpan: cell.rowspan > 1 ? cell.rowspan : undefined,
-      margins: { top: pt(4), bottom: pt(4), left: pt(4), right: pt(4) },
+      // Three-rule tables: the rule below the header row belongs to its cells.
+      ...(preset === "threeRule" && rowIndex === lastHeader ? { borders: { bottom: rule } } : {}),
+      margins: preset ? { top: 0, bottom: 0, left: twip(1.9), right: twip(1.9) } : { top: pt(4), bottom: pt(4), left: pt(4), right: pt(4) },
       children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
   }));
-  if (rows.length) out.push(new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders: { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER } }));
+  // Three-rule table: top and bottom of the table, and below the (repeated) header row.
+  const borders = preset === "threeRule" ? { top: rule, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
+    : preset === "none" ? { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
+    : { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER };
+  if (rows.length) out.push(new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders }));
   if (caption && tables.position !== "above") out.push(caption);
   return out;
+}
+
+/** Caption paragraph: label run in the label style, then the caption text; optional hanging indent. */
+function captionParagraph(rule, block, context, options = {}) {
+  const style = captionStyle(rule, block, context);
+  const hangMm = rule.hangingIndent === "label" ? (context.captionHangs?.[block.captionAnchor] || 0) / PX_PER_MM : rule.hangingIndent > 0 ? rule.hangingIndent : 0;
+  const paragraphStyle = hangMm > 0 ? { ...style, hangingIndentMm: hangMm } : style;
+  const label = block.captionLabel || `${rule.label} ${block.captionNumber}.`;
+  // One run as before unless the label has its own typography (e.g. bold "Şekil 2.1").
+  const children = rule.labelStyle ? [textRun(`${label} `, { ...style, ...rule.labelStyle }, context), ...docxRuns(plainRuns(block.caption), style, context)] : docxRuns(plainRuns(`${label} ${block.caption}`), style, context);
+  return new Paragraph({ ...paragraphProps(paragraphStyle, options, context.lineSpacing), children });
 }
 
 function captionStyle(rule, block, context) {
@@ -371,7 +409,7 @@ function docxChildren(section, context) {
     } else if (block.type === "table") {
       children.push(...tableDocx(block, section, context));
     } else if (block.type === "figure") {
-      const caption = block.caption ? docxParagraph(plainRuns(captionText(figures.label, block)), { ...captionStyle(figures, block, context), keepWithNext: figures.position === "above" }, context) : null;
+      const caption = block.caption ? captionParagraph(figures, block, context, { keepNext: figures.position === "above" }) : null;
       if (caption && figures.position === "above") children.push(caption);
       const image = imageBytes(block.src);
       if (image) {
@@ -400,7 +438,8 @@ function chromeDocx(section, values, context, groupStart) {
   const chromeStyle = { ...body, fontSizePt: 10, align: "left", firstLineIndentMm: 0, leftIndentMm: 0, rightIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1.1, textTransform: "none", fontWeight: 400, italic: false };
   const number = page.numbering;
   const numberEdge = number.position === "top" ? "top" : "bottom";
-  const numberParagraph = () => new Paragraph({ alignment: alignDocx(number.align), children: [new TextRun({ ...runProps({ ...body, fontWeight: 400, italic: false }, context.language), children: [PageNumber.CURRENT] })] });
+  // Page numbers use the template's numbering style (e.g. 10 pt) when given, else the body type.
+  const numberParagraph = () => new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, children: [new TextRun({ ...runProps({ ...body, ...number.style, fontWeight: 400, italic: false }, context.language), children: [PageNumber.CURRENT] })] });
   const part = (edge, text) => {
     const children = [];
     if (number.enabled && numberEdge === edge && edge === "top") children.push(numberParagraph());
@@ -440,10 +479,10 @@ function listLevels(ordered) {
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
-export async function buildThesisDocx(model, { captionAlignments = {} } = {}) {
+export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {} } = {}) {
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
-  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments };
+  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, captionHangs };
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
   const sections = model.sections.map((section, index) => {
     const page = section.rules.page;
