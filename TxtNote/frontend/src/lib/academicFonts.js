@@ -5,10 +5,24 @@
  */
 
 export const ACADEMIC_PDF_FONT = "Tinos";
-import { loadSystemTimesNewRoman } from "./systemPdfFonts.js";
+import { loadSystemFontFamily, systemPdfFontFamily } from "./systemPdfFonts.js";
 
+/** pdf → { default: family, families: { [family]: { normal, bold, italic, bolditalic } } } */
 const registeredFaces = new WeakMap();
-export const academicPdfFont = (pdf, style = "normal") => registeredFaces.get(pdf)?.[style] || ACADEMIC_PDF_FONT;
+/**
+ * Registered PDF font name of `style`. With `family` given, the genuine system family
+ * embedded for it (if any) wins; otherwise the document's default embedded family
+ * (the first system family, else Tinos).
+ */
+export function academicPdfFont(pdf, style = "normal", family) {
+  const registry = registeredFaces.get(pdf);
+  if (!registry) return ACADEMIC_PDF_FONT;
+  const canonical = family ? systemPdfFontFamily(family) : null;
+  return (canonical && registry.families[canonical]?.[style]) || registry.families[registry.default]?.[style] || ACADEMIC_PDF_FONT;
+}
+/** Is `family` embedded as a genuine system font in this PDF? */
+export const hasSystemPdfFont = (pdf, family) => Boolean(registeredFaces.get(pdf)?.families[systemPdfFontFamily(family)]);
+/** MCBÜ v1 notes predate template-driven font lists; they keep requiring Times New Roman. */
 export const requiresTimesNewRoman = (templateId) => /^mcbu-lee-/.test(templateId || "");
 
 const FONT_FILES = {
@@ -82,21 +96,32 @@ async function readFontFile(fileName) {
   return binary;
 }
 
-export async function embedAcademicPdfFonts(pdf, { templateId } = {}) {
-  if (requiresTimesNewRoman(templateId)) {
-    const fonts = await loadSystemTimesNewRoman();
-    const faces = {};
-    for (const [style, font] of Object.entries(fonts)) {
-      const name = font.identity.postscript;
-      const file = `${name}.ttf`;
-      pdf.addFileToVFS(file, bufferToBinary(font.bytes));
-      pdf.addFont(file, name, style);
-      pdf.setFont(name, style);
-      if (!pdf.getFont().metadata?.glyIdsUsed) throw new Error(`Times New Roman ${style} PDF kaydı başarısız.`);
-      faces[style] = name;
+/**
+ * Embed the PDF fonts. `systemFonts` lists families (e.g. ["Times New Roman", "Arial"]) an
+ * official template requires: their genuine system programs are embedded and a missing
+ * font fails the export visibly instead of silently substituting. Without it, Tinos
+ * (metric-compatible, bundled) is embedded as before.
+ */
+export async function embedAcademicPdfFonts(pdf, { templateId, systemFonts = [] } = {}) {
+  const families = [...new Set([...(requiresTimesNewRoman(templateId) ? ["Times New Roman"] : []), ...systemFonts].map(systemPdfFontFamily).filter(Boolean))];
+  if (families.length) {
+    const registry = { default: families[0], families: {} };
+    for (const family of families) {
+      const fonts = await loadSystemFontFamily(family);
+      const faces = {};
+      for (const [style, font] of Object.entries(fonts)) {
+        const name = font.identity.postscript;
+        const file = `${name}.ttf`;
+        pdf.addFileToVFS(file, bufferToBinary(font.bytes));
+        pdf.addFont(file, name, style);
+        pdf.setFont(name, style);
+        if (!pdf.getFont().metadata?.glyIdsUsed) throw new Error(`${family} ${style} PDF kaydı başarısız.`);
+        faces[style] = name;
+      }
+      registry.families[family] = faces;
     }
-    registeredFaces.set(pdf, faces);
-    pdf.setFont(faces.normal, "normal");
+    registeredFaces.set(pdf, registry);
+    pdf.setFont(registry.families[registry.default].normal, "normal");
     return;
   }
   for (const [style, fileName] of Object.entries(FONT_FILES)) {

@@ -22,6 +22,7 @@ fn main() {
                 "write_desktop_file",
                 "write_academic_file",
                 "read_times_new_roman_fonts",
+                "read_system_font_family",
             ]),
         ),
     )

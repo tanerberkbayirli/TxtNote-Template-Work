@@ -8,7 +8,7 @@
  * it and the output is identical at every zoom level.
  */
 import { jsPDF } from "jspdf";
-import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
+import { academicPdfFont, embedAcademicPdfFonts, hasSystemPdfFont, pdfFontStyle } from "../lib/academicFonts.js";
 import { PX_PER_MM, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const MM = 1 / PX_PER_MM;
@@ -55,6 +55,8 @@ function pdfFace(pdf, style, text) {
   const family = String(style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
   const bold = Number(style.fontWeight) >= 600;
   const italic = style.fontStyle === "italic" || style.fontStyle.startsWith("oblique");
+  // A genuine system family embedded for this template draws every word of that family.
+  if (hasSystemPdfFont(pdf, family)) { const faceStyle = pdfFontStyle({ bold, italic }); return { name: academicPdfFont(pdf, faceStyle, family), style: faceStyle }; }
   const builtin = /^(arial|helvetica|sans-serif|liberation sans|arimo)$/.test(family) ? "helvetica" : /^(courier|courier new|monospace|consolas)$/.test(family) ? "courier" : "";
   if (builtin && LATIN1.test(text)) return { name: builtin, style: `${bold ? "bold" : ""}${italic ? "italic" : ""}` || "normal" };
   const faceStyle = pdfFontStyle({ bold, italic });
@@ -303,7 +305,7 @@ export function thesisLayoutPages(root, groups) {
   return thesisPageStacks(root, groups).flatMap(({ group, pages }) => Array.from({ length: pages }, (_, index) => ({ groupId: group.id, index })));
 }
 
-export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId }) {
+export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId, systemFonts = [] }) {
   await document.fonts?.ready;
   const stacks = thesisPageStacks(root, groups);
   let pdf = null;
@@ -320,7 +322,7 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
       if (!pdf) {
         pdf = new jsPDF({ unit: "mm", format: [widthMm, heightMm], orientation, compress: true });
         pdf.setProperties({ title: title || "Tez", creator: "TxtNote" });
-        await embedAcademicPdfFonts(pdf, { templateId });
+        await embedAcademicPdfFonts(pdf, { templateId, systemFonts });
       } else pdf.addPage([widthMm, heightMm], orientation);
       const pageTop = index * metrics.stridePx;
       // Lines and images under text, as in the editor.

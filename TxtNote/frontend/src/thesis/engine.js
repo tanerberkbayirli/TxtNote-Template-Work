@@ -161,6 +161,29 @@ const showsSectionTitle = (section) => typeof section.showTitle === "boolean" ? 
 /** Does a block tree read any of `keys` (a metadata field or a `{{KEY}}` in text)? */
 const usesFields = (blocks, keys) => keys.length > 0 && (blocks || []).some((block) => keys.some((key) => block.field === key || String(block.value ?? "").includes(`{{${key}}}`)) || usesFields(block.blocks, keys));
 
+/**
+ * Every font family a template names (typography, captions, bibliography, indexes,
+ * section overrides and special-page blocks). An official template's PDF embeds the
+ * genuine system programs of these families (see systemPdfFonts.js); demo/generic
+ * templates keep the bundled metric-compatible face.
+ */
+export function templateFontFamilies(template) {
+  const families = new Set();
+  const add = (style) => { if (style?.fontFamily) families.add(String(style.fontFamily)); };
+  const blocks = (list) => { for (const block of list || []) { add(block.style); blocks(block.blocks); } };
+  const typography = template.typography || {};
+  [typography.body, typography.paragraph, typography.footnotes, template.tables?.style, template.tables?.cellStyle, template.tables?.labelStyle, template.figures?.style, template.figures?.labelStyle, template.bibliography?.style, template.page?.numbering].forEach(add);
+  Object.values(typography.headings || {}).forEach(add);
+  for (const kind of Object.values(template.captionKinds || {})) { add(kind?.style); add(kind?.labelStyle); }
+  for (const section of template.sections || []) {
+    const o = section.overrides || {};
+    [o.body, o.paragraph, o.footnotes, o.tables?.style, o.figures?.style, o.page?.numbering, section.generatedIndex?.style, section.generatedIndex?.pageHeadingStyle].forEach(add);
+    Object.values(o.headings || {}).forEach(add);
+    blocks(section.blocks);
+  }
+  return [...families];
+}
+
 /** Resolved document is the sole input to editor rendering and both exporters. */
 export function compileThesisDocument(templateInput, thesisInput = {}, title = "", mainContent = "", bibliographyItems = []) {
   // Stored thesis state may be missing or malformed (old notes, imports); it never breaks compilation.
@@ -212,7 +235,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
   }
   const indexSources = collectIndexSources(sections, extractThesisHeadings);
   for (const section of sections) section.indexSources = indexSources.filter((entry) => entry.sectionId === section.id);
-  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, status: template.status, language: template.language, title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
+  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, status: template.status, language: template.language, systemFonts: template.status === "official" ? templateFontFamilies(template) : [], title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
 }
 
 function serializeStyle(style, lineSpacing) {
