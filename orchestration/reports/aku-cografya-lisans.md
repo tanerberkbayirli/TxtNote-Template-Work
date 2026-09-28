@@ -144,3 +144,28 @@ These are **not gaps** and only need verification: `generatedIndex.pageHeading` 
 4. **Paragraph indent.** Is it 0 mm (text) or 12.5 mm (guide self-formatting)?
 5. **List and bibliography titles.** Should the list of tables be titled "TABLOLAR DİZİNİ" or "ÇİZELGELER DİZİNİ"? Should the bibliography heading be "KAYNAKLAR", and should it be numbered?
 6. **Bibliography line spacing.** Single (text) or 1.5 (screenshot)?
+
+## Spec review
+
+**Reviewer:** independent, 2026-09-28. I re-read every page of the guide (pp.1–23), including the p.13 Word paragraph dialog, and checked `kaynaklar.md`. The "Bitirme Tezi Şablonu" is not listed there and is not available. Measurement script and output are in `artifacts/aku-cografya-lisans/review/first-baselines.{py,txt}`.
+
+**Word line model (verified).** The first baseline sits at 28.963 mm on all 12 Word-rendered body pages (p.2–4, 6–13 and 23), whatever the first line is: a heading, a continuation line or a new indented paragraph. With a 25 mm top margin and the formula (lineGap 0.0425 + ascent 0.891) × 12 pt = 11.20 pt, the predicted value is 28.952 mm, a difference of 0.01 mm. So the extra leading of 1.5 spacing goes below the text. Recorded as `wordModel.firstBaselineOffsetEm` (0.9335 em) and `wordModel.lineHeight` (1.5 → 20.69 pt at 12 pt; single at 11 pt → 12.64 pt, measured 12.72).
+
+**Paragraph spacing.** Every boundary in the guide measures +6 pt, and the only blank line (p.2, "2." → "2.1") adds exactly 20.66 pt. These values fit guide styles set to about 0/6 under *either* the additive or the collapsed model. **The source therefore does not show whether spacing is additive or collapsed. It also does not show whether space before is suppressed at the top of a page.** The p.13 screenshot does show "Aynı stildeki paragrafların arasına boşluk ekleme" unchecked, so contextual spacing is off. Its other settings are Önce 6 / Sonra 0, Asılı 1,25 cm and Yaslanmış, and it shows 1,5 satır, which the text contradicts.
+
+**Decisions proposed:**
+- **Paragraph indent:** 0 mm. The explicit §2.4 text wins over the guide's own 12.45 mm indent. The guide also breaks its own heading-indent rule, so its formatting is not reliable evidence here.
+- **Body paragraphs:** 6 pt before and 6 pt after, with no contextual spacing, combined as Word does (added together). The distance between baselines across a paragraph boundary is then 32.7 pt. The guide's own 6 pt gap is not a target.
+- **Bibliography:**
+  - single line spacing;
+  - 6 pt before and 0 pt after, giving a gap of 19.79 pt whichever spacing model applies;
+  - 12.5 mm hanging indent, justified, 12 pt (now EXPLICIT, from §2.2);
+  - title "KAYNAKLAR": p.9 §4 says this title cannot be changed and prints it as "6. KAYNAKLAR". It is numbered as the next chapter (INFERRED, still open).
+- **List-of-tables title:** "ÇİZELGELER DİZİNİ". It is the only title the guide prescribes in print (§4.2.10). I withdrew the analyzer's inferred "TABLOLAR DİZİNİ".
+- **Headings:**
+  - The text sets one empty 1.5-spaced line (20.69 pt) on each side, so the explicit minimum between a heading and the next paragraph is 41.4 pt.
+  - My proposal is 53.4 pt, which adds the 6/6 paragraph spacing. This remains open.
+
+**Special pages confirmed UNKNOWN.** The text establishes only these points: the outer cover must be bound; the inner cover uses 14 pt bold and its content comes from the missing template; the approval page has "(...)" blanks and the advisor's signature; the ethics page is signed. For the abstract it gives the content items, "Graduation Thesis", 4–6 keywords, and a blank line before the keywords and before the year/page-count line.
+
+**Open items:** the missing template (all special pages), the additive vs collapsed spacing assumption, the heading +6/+12 question, the bibliography heading number, the page-number distance from the edge, and department confirmation of ÇİZELGELER and KAYNAKLAR. Full list: spec `review.openItems`.

@@ -710,7 +710,8 @@
      "locator": "p.2 §2.2",
      "quote": "öncesi-sonrası 6 nk yapılmalıdır"
     }
-   ]
+   ],
+   "needsConfirmation": false
   },
   {
    "key": "typography.paragraph.spaceAfterPt",
@@ -726,7 +727,8 @@
      "locator": "p.2 §2.2",
      "quote": "öncesi-sonrası 6 nk yapılmalıdır"
     }
-   ]
+   ],
+   "needsConfirmation": false
   },
   {
    "key": "typography.paragraph.effectiveGapPt",
@@ -743,7 +745,7 @@
      "quote": "baseline pitch across a paragraph boundary 26.64–26.91 pt = 20.7 + 6.0; heading→heading 20.64–20.88 (0 extra)"
     }
    ],
-   "notes": "The guide’s own paragraphs show a 6 pt effective gap, not 12 pt (6 after + 6 before). See conflict “paragraph spacing accumulation”."
+   "notes": "GUIDE SELF-FORMATTING ONLY, not a thesis requirement and NOT a validation target. Every boundary in the guide body (p.2-13) is +6 pt (body→body 26.64-26.91 pt, body→H 26.67-26.90, H→body 26.64-26.88, pitch 20.65-20.72) and the one blank line (p.2 H1 \"2.\" → empty line → \"2.1\") adds exactly 20.66 pt with no extra. This fits guide styles with ~0/6 settings under either spacing model; it does not show what 6/6 produces."
   },
   {
    "key": "typography.paragraph.firstLineIndentMm",
@@ -760,7 +762,8 @@
      "quote": "Bölüm ve alt bölüm başlıkları ile paragraf başları sayfanın sol çerçeve kenarından ve boşluk bırakılmadan başlamalıdır."
     }
    ],
-   "notes": "CONFLICT: the guide’s own paragraphs start at x0 = 42.44 mm (12.45 mm ≈ 1.25 cm first-line indent). Explicit text chosen; needs confirmation."
+   "notes": "Review decision: explicit §2.4 text (0) wins over the guide's own 12.45 mm self-formatting. §2.3 \"Bu kılavuz belirtilen ölçülere uygun olarak hazırlanmıştır\" covers the stated measurements (margins); the guide also violates its own heading-indent text, so its paragraph indent is not evidence of a requirement.",
+   "needsConfirmation": false
   },
   {
    "key": "typography.paragraph.blankLineBetween",
@@ -943,7 +946,7 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty Word line of 12 pt TNR at 1.5 = 20.7 pt; whether the 6 pt paragraph spacing adds on top is not established. Guide itself shows none (conflict)."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h1.spaceAfter",
@@ -961,7 +964,8 @@
      "locator": "p.3 §2.6",
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
-   ]
+   ],
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h1.lineSpacing",
@@ -1098,7 +1102,7 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty Word line of 12 pt TNR at 1.5 = 20.7 pt; whether the 6 pt paragraph spacing adds on top is not established. Guide itself shows none (conflict)."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h2.spaceAfter",
@@ -1116,7 +1120,8 @@
      "locator": "p.3 §2.6",
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
-   ]
+   ],
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h2.lineSpacing",
@@ -1253,7 +1258,7 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty Word line of 12 pt TNR at 1.5 = 20.7 pt; whether the 6 pt paragraph spacing adds on top is not established. Guide itself shows none (conflict)."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h3.spaceAfter",
@@ -1271,7 +1276,8 @@
      "locator": "p.3 §2.6",
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
-   ]
+   ],
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h3.lineSpacing",
@@ -1408,7 +1414,7 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty Word line of 12 pt TNR at 1.5 = 20.7 pt; whether the 6 pt paragraph spacing adds on top is not established. Guide itself shows none (conflict)."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h4.spaceAfter",
@@ -1426,7 +1432,8 @@
      "locator": "p.3 §2.6",
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
-   ]
+   ],
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
   },
   {
    "key": "headings.h4.lineSpacing",
@@ -1457,7 +1464,8 @@
      "locator": "p.3 §2.6"
     }
    ],
-   "notes": "1 empty 1.5-spaced TNR 12 pt Word line = 1.5 × 13.8 pt. Use for heading spaceBefore/After if the engine has no “empty line” unit."
+   "notes": "Proposed (INFERRED, needs the missing Bitirme Tezi Şablonu to confirm): the blank line adds 20.69 pt to the normal paragraph boundary; headings carry the general §2.2 6/6 (all text). With Word-additive boundaries: heading baseline → first paragraph baseline = 20.69 (line) + 20.69 (blank) + 6 (heading after) + 6 (paragraph before) = 53.4 pt; body → heading = 53.4 pt likewise; H1 → H2 = 53.4 pt. The guaranteed minimum from explicit text is 41.4 pt.",
+   "needsConfirmation": true
   },
   {
    "key": "headings.h1.caps",
@@ -2393,7 +2401,8 @@
      "quote": "13. Kaynaklar"
     }
    ],
-   "notes": "CONFLICT with p.12 §4.3.6 “Kaynakça (KAYNAKÇA)”."
+   "notes": "Review decision: KAYNAKLAR. p.9 §4 prints it in the chapter-heading list (\"6. KAYNAKLAR\") and states that only the titles other than Giriş, Literatür Bilgileri, Tartışma ve Sonuç and Kaynaklar may be changed, i.e. this title is fixed; §2.9 uses \"KAYNAKLAR bölümünde\". §4.3.6 \"Kaynakça (KAYNAKÇA)\" contradicts it; recorded as open item for the department, not blocking.",
+   "needsConfirmation": false
   },
   {
    "key": "bibliography.order",
@@ -2480,7 +2489,8 @@
      "quote": "Satır aralıkları 1 satır olarak uygulanmalıdır."
     }
    ],
-   "notes": "CONFLICT: the embedded Word dialog screenshot on the same page shows “Satır aralığı: 1,5 satır”."
+   "notes": "Review decision: text \"Satır aralıkları 1 satır olarak uygulanmalıdır\" is a separate explicit sentence; the screenshot is referenced (\"bkz. aşağı ekran görüntüsü\") in the following sentence about Aralık ayarları (6/0). Its \"1,5 satır\" is not adopted.",
+   "needsConfirmation": false
   },
   {
    "key": "bibliography.spaceBeforePt",
@@ -2543,7 +2553,7 @@
    "key": "bibliography.fontSizePt",
    "value": 12,
    "unit": "pt",
-   "confidence": "INFERRED",
+   "confidence": "EXPLICIT",
    "appliesTo": [
     "*"
    ],
@@ -2551,7 +2561,7 @@
     {
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.2 §2.2",
-     "quote": "tezin tamamında 12 punto"
+     "quote": "kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır"
     }
    ]
   },
@@ -2830,7 +2840,8 @@
      "quote": "İlk sayfada “ÇİZELGELER DİZİNİ” başlığı olmalı (koyu)"
     }
    ],
-   "notes": "CONFLICT with section name “Tablolar Dizini” (§2.6, §2.7, §4.1) and caption label “Tablo”."
+   "notes": "Review decision: §4.2.10 is the only place that prescribes the printed title (quoted, bold, centred) — more specific than the part name \"Tablolar Dizini\" in the order lists. The analyzer's \"TABLOLAR DİZİNİ\" recommendation was an inference against explicit text and is withdrawn. Likely an editorial slip (captions say \"Tablo\"); open item for the department.",
+   "needsConfirmation": false
   },
   {
    "key": "lists.tables.titleStyle",
@@ -3282,6 +3293,133 @@
     }
    ],
    "notes": "No layout differences for a foreign-language thesis are given."
+  },
+  {
+   "key": "wordModel.firstBaselineOffsetEm",
+   "value": {
+    "lineSpacing1_5": 0.9335,
+    "single": 0.9335,
+    "formula": "baseline = lineBoxTop + (hhea.lineGap 0.0425 + ascent 0.891) × size; the extra leading of 1.5 lines goes below the text"
+   },
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.2 first line (H1 \"1. GİRİŞ\") baseline 28.96 mm"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.3 first line (paragraph continuation) baseline 28.96 mm"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.4 first line (new indented paragraph) baseline 28.96 mm"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.8 first line (H2 \"3.3.\") baseline 28.96 mm"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.6, 7, 9, 10, 11, 12, 13, 23 first lines",
+     "quote": "all 28.963 mm (headings, continuation lines and new paragraphs alike; 12 Word-rendered body pages); pp.14-22 are inserted SBE pages (different mediabox) and excluded"
+    }
+   ],
+   "notes": "Top margin 25 mm + 0.9335 × 12 pt (11.20 pt = 3.952 mm) = 28.952 mm predicted vs 28.96 measured (Δ 0.01 mm); ascent-only (10.69 pt) would give 28.77 (Δ 0.19) and leading-above (+6.9 pt) 31.4 mm — rejected. Measured for 1.5 spacing at 12 pt only; the \"single\" value is INFERRED (no single-spaced line starts a page in this source; the 11 pt single caption pitch 12.72 pt ≈ 1.1495 em × 11 = 12.64 is consistent with the same metrics)."
+  },
+  {
+   "key": "wordModel.lineHeight",
+   "value": {
+    "single_em": 1.1495,
+    "lineSpacing1_5_pt_at12": 20.69,
+    "single_pt_at11": 12.64,
+    "single_pt_at12": 13.79
+   },
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.2 body 119.92→171.08 mm over 7 lines = 20.72 pt mean; single steps quantised 20.64/20.88"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.8 Örnek 1 caption (TNR 11, single) pitch 12.72 pt"
+    }
+   ],
+   "notes": "Word line = (winAscent 0.891 + winDescent 0.216 + lineGap 0.0425) em = 1.1495 em; \"1,5 satır\" = 1.5 × that."
+  },
+  {
+   "key": "wordModel.paragraphSpacing",
+   "value": {
+    "combination": "UNKNOWN from source (Word-additive assumed, see notes)",
+    "contextualSpacing": false,
+    "spaceBeforeAtPageTop": "UNKNOWN (not demonstrated)"
+   },
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.13 embedded Word Paragraf dialog",
+     "quote": "\"Aynı stildeki paragrafların arasına boşluk ekleme\" unchecked (contextualSpacing off) with Önce 6 nk / Sonra 0 nk"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.2 §2.2",
+     "quote": "bitirme tezleri bilgisayar ortamında Microsoft Office vb. yazılımlar kullanılarak yazılmalıdır"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "guide body geometry p.2-13",
+     "quote": "all boundaries +6 pt; p.4 new paragraph at page top on 28.96 mm"
+    }
+   ],
+   "notes": "The source does not demonstrate additive vs collapsed: the guide's own styles are not known and every measured boundary (+6 pt) fits 0/6 settings under both models. Space-before suppression at page top is not demonstrated either (the p.4 top paragraph probably has before = 0). contextualSpacing is shown OFF only in the bibliography screenshot. Implementation assumption (not source-proven): the thesis is a Word document (§2.2, §4.2.7 \"Word programı\"), so paragraph boundaries follow Word: after(prev) + before(next), no collapse."
+  },
+  {
+   "key": "bibliography.contextualSpacing",
+   "value": false,
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.13 embedded Word Paragraf dialog",
+     "quote": "Aynı stildeki paragrafların arasına boşluk ekleme: unchecked"
+    }
+   ]
+  },
+  {
+   "key": "bibliography.numbered",
+   "value": "numbered as the next H1 chapter (\"6. KAYNAKLAR\" with the default chapter set)",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "needsConfirmation": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.9 §4",
+     "quote": "Bitirme tezinin ana konu başlıkları … 1. GİRİŞ 2. LİTERATÜR BİLGİLERİ 3. MATERYAL ve METOT 4. BULGULAR 5. TARTIŞMA ve SONUÇ 6. KAYNAKLAR"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "locator": "p.11 §4.3.1",
+     "quote": "\"1. GİRİŞ\" başlığı altında"
+    }
+   ],
+   "notes": "The same numbered list defines the chapter-heading form of GİRİŞ (confirmed by §4.3.1). Since chapters may be renamed/added (p.9), the number is the next chapter number, not a literal \"6.\". The §4.1 order list (13. Kaynaklar) is an ordinal of parts, not heading numbering."
   }
  ],
  "sections": [
@@ -4553,8 +4691,8 @@
      "value": "12.45 mm (≈1.25 cm) first-line indent"
     }
    ],
-   "decision": "Explicit text wins → 0 mm. The guide’s own formatting is not the thesis spec.",
-   "needsConfirmation": true
+   "decision": "DECIDED (review): explicit §2.4 text → 0 mm. Guide self-formatting (12.45 mm) is lowest-priority evidence and the guide also breaks its own heading-indent rule.",
+   "needsConfirmation": false
   },
   {
    "topic": "Heading indent",
@@ -4587,7 +4725,7 @@
      "value": "only +6 pt; heading→heading 0"
     }
    ],
-   "decision": "Explicit text wins (≈20.7 pt each side). Whether the 6 pt paragraph spacing adds to it is not established.",
+   "decision": "Explicit: one empty 1.5-spaced line (20.69 pt) on each side of every heading. Proposed: + heading/paragraph 6/6 Word-additive → 53.4 pt baseline distance; minimum 41.4 pt. Kept open.",
    "needsConfirmation": true
   },
   {
@@ -4604,8 +4742,8 @@
      "value": "effective 6 pt between paragraphs"
     }
    ],
-   "decision": "Implement before 6 / after 6 as stated; validator should accept the effective gap the export actually produces only after the integrator fixes the model (6 pt collapsed vs 12 pt additive). Word semantics are additive.",
-   "needsConfirmation": true
+   "decision": "DECIDED (review): implement exactly spaceBefore 6 pt / spaceAfter 6 pt on body paragraphs, no contextualSpacing (DOCX w:spacing before=120 after=120). Editor/PDF must combine them like Word (additive) → body paragraph boundary = 20.69 + 12 = 32.7 pt baseline distance. The guide's own +6 pt is self-formatting and not a target. Additivity itself is not demonstrated by this source (wordModel.paragraphSpacing INFERRED).",
+   "needsConfirmation": false
   },
   {
    "topic": "Blank line between ordinary paragraphs",
@@ -4621,7 +4759,7 @@
      "value": "no blank lines between paragraphs"
     }
    ],
-   "decision": "Read as headings↔paragraph only (consistent with §2.6); no blank line between paragraphs. UNKNOWN recorded.",
+   "decision": "Read with §2.6 as heading↔paragraph only; ordinary paragraphs separated only by the §2.2 6/6 spacing. Kept UNKNOWN-flagged but not blocking.",
    "needsConfirmation": true
   },
   {
@@ -4638,8 +4776,8 @@
      "value": "1,5 satır"
     }
    ],
-   "decision": "Explicit text wins → single. Screenshot is cited only for the before/after values (“bkz. aşağı ekran görüntüsü”).",
-   "needsConfirmation": true
+   "decision": "DECIDED (review): single (explicit sentence). Screenshot adopted only for before 6 / after 0, justified, hanging 1.25 cm, contextualSpacing off.",
+   "needsConfirmation": false
   },
   {
    "topic": "Bibliography heading text and numbering",
@@ -4655,8 +4793,8 @@
      "value": "KAYNAKÇA"
     }
    ],
-   "decision": "KAYNAKLAR (three occurrences incl. the structural lists). Numbering (“6.”) left to integrator; unnumbered is the usual engine default.",
-   "needsConfirmation": true
+   "decision": "DECIDED (review): \"KAYNAKLAR\" (fixed title per p.9 §4, printed \"6. KAYNAKLAR\"). Numbering: next H1 number (INFERRED, bibliography.numbered, open).",
+   "needsConfirmation": false
   },
   {
    "topic": "List of tables title",
@@ -4672,8 +4810,8 @@
      "value": "Tablolar Dizini"
     }
    ],
-   "decision": "The quoted printed title “ÇİZELGELER DİZİNİ” is the only explicit printed form, but it contradicts every other mention and the “Tablo” label (likely copy-paste from another guide). Recommend “TABLOLAR DİZİNİ”.",
-   "needsConfirmation": true
+   "decision": "DECIDED (review): \"ÇİZELGELER DİZİNİ\" — the only explicit printed form (§4.2.10, more specific than part names). Not averaged/replaced by inference; flag to department.",
+   "needsConfirmation": false
   },
   {
    "topic": "“Sayfa” column heading on list of figures",
@@ -4943,11 +5081,11 @@
   {
    "id": "margin-top",
    "appliesTo": "derived from Word TNR 12 pt line metrics; primary check is line box top ≥ 25.0 mm",
-   "what": "top of first body line box on a page; first baseline ≈ 25 mm + 11.2 pt (≈28.96 mm) for TNR 12 pt",
-   "expected": 28.96,
+   "what": "first baseline of a 12 pt 1.5-spaced line starting a page (body text) = 25 mm + 0.9335 em",
+   "expected": 28.95,
    "unit": "mm",
-   "tolerance": 0.5,
-   "sourceRule": "page.margins.topMm"
+   "tolerance": 0.25,
+   "sourceRule": "wordModel.firstBaselineOffsetEm"
   },
   {
    "id": "margin-bottom",
@@ -5004,7 +5142,9 @@
   },
   {
    "id": "body-indent",
-   "appliesTo": "subject to conflict confirmation (guide self uses 42.5 mm)",
+   "appliesTo": [
+    "*"
+   ],
    "what": "first line x0 of body paragraphs",
    "expected": 30.0,
    "unit": "mm",
@@ -5013,11 +5153,13 @@
   },
   {
    "id": "para-gap",
-   "appliesTo": "needsConfirmation",
-   "what": "extra baseline distance across a body paragraph boundary (pitch − 20.7)",
-   "expected": "6 (collapsed) or 12 (Word additive) — per integrator decision",
+   "appliesTo": [
+    "main"
+   ],
+   "what": "baseline distance across a body-paragraph boundary (20.69 + 6 after + 6 before, Word-additive)",
+   "expected": 32.7,
    "unit": "pt",
-   "tolerance": 0.2,
+   "tolerance": 0.3,
    "sourceRule": "typography.paragraph.spaceBeforePt"
   },
   {
@@ -5080,9 +5222,9 @@
   },
   {
    "id": "heading-spacing",
-   "appliesTo": "needsConfirmation on +6",
-   "what": "gap between heading baseline and next paragraph baseline ≈ 20.7 (line) + 20.7 (empty 1.5 line) [+6 if additive]",
-   "expected": 41.4,
+   "appliesTo": "INFERRED proposal (open); FAIL only if < 41.2 pt",
+   "what": "heading baseline → first following paragraph baseline",
+   "expected": 53.4,
    "unit": "pt",
    "tolerance": 0.3,
    "sourceRule": "headings.h1.spaceAfter"
@@ -5317,8 +5459,8 @@
    "appliesTo": [
     "*"
    ],
-   "what": "list of tables title bold centred (text per integrator decision) + “Sayfa” right",
-   "expected": true,
+   "what": "list-of-tables title “ÇİZELGELER DİZİNİ” bold, centred (x-centre 105 mm), first page only; “Sayfa” bold right-aligned directly below",
+   "expected": "ÇİZELGELER DİZİNİ",
    "unit": null,
    "tolerance": null,
    "sourceRule": "lists.tables.title"
@@ -5336,7 +5478,9 @@
   },
   {
    "id": "bib-pitch",
-   "appliesTo": "needsConfirmation (screenshot shows 1.5)",
+   "appliesTo": [
+    "bibliography"
+   ],
    "what": "baseline pitch inside a bibliography entry (single TNR 12)",
    "expected": 13.8,
    "unit": "pt",
@@ -5348,8 +5492,8 @@
    "appliesTo": [
     "*"
    ],
-   "what": "extra gap between entries = 6 pt before, 0 after",
-   "expected": 6,
+   "what": "extra baseline gap between bibliography entries = after 0 + before 6 (model-independent) → 13.79 + 6 = 19.79 pt baseline distance",
+   "expected": 19.79,
    "unit": "pt",
    "tolerance": 0.2,
    "sourceRule": "bibliography.spaceBeforePt"
@@ -5397,6 +5541,91 @@
    "unit": null,
    "tolerance": null,
    "sourceRule": "typography.body.fontFamily"
+  },
+  {
+   "id": "body-first-baseline-single",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "first baseline of a single-spaced 12 pt line starting a page (e.g. bibliography) = 25 mm + 11.20 pt",
+   "expected": 28.95,
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "wordModel.firstBaselineOffsetEm"
+  },
+  {
+   "id": "bib-title",
+   "appliesTo": [
+    "bibliography"
+   ],
+   "what": "bibliography heading text “KAYNAKLAR” (H1 style, left, bold 12 pt; number per bibliography.numbered)",
+   "expected": "KAYNAKLAR",
+   "unit": null,
+   "tolerance": null,
+   "sourceRule": "bibliography.title"
+  },
+  {
+   "id": "bib-contextual",
+   "appliesTo": [
+    "bibliography"
+   ],
+   "what": "DOCX bibliography paragraphs: w:spacing before=120 after=0, line single (240 auto), hanging 709 twips (1.25 cm), jc=both, no w:contextualSpacing",
+   "expected": true,
+   "unit": null,
+   "tolerance": null,
+   "sourceRule": "bibliography.contextualSpacing"
+  },
+  {
+   "id": "body-docx-spacing",
+   "appliesTo": [
+    "main"
+   ],
+   "what": "DOCX body paragraphs: w:spacing before=120 after=120 line=360 lineRule=auto, ind firstLine 0, jc=both, no contextualSpacing",
+   "expected": true,
+   "unit": null,
+   "tolerance": null,
+   "sourceRule": "typography.paragraph.spaceBeforePt"
+  },
+  {
+   "id": "caption-docx",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "caption paragraphs 11 pt, single, justified, continuation lines at 30.0 mm",
+   "expected": true,
+   "unit": null,
+   "tolerance": null,
+   "sourceRule": "captions.figure.lineSpacing"
   }
- ]
+ ],
+ "reviewedAt": "2026-09-28",
+ "review": {
+  "reviewer": "independent",
+  "changes": [
+   "Added wordModel.firstBaselineOffsetEm (0.9335 em, MEASURED on p.2/3/4/8 first lines at 28.96 mm vs 28.952 predicted), wordModel.lineHeight, wordModel.paragraphSpacing (INFERRED: source does not demonstrate additive/collapse or page-top suppression; contextualSpacing off per p.13 screenshot).",
+   "typography.paragraph.effectiveGapPt re-labelled guide self-formatting only (not a target); para-gap check set to 32.7 pt (6+6 Word-additive).",
+   "lists.tables.title decided \"ÇİZELGELER DİZİNİ\" (explicit, most specific); analyzer recommendation \"TABLOLAR DİZİNİ\" withdrawn; lot-title check made concrete.",
+   "bibliography.title decided KAYNAKLAR (p.9 §4 fixes this title); added bibliography.numbered (INFERRED, open) and bib-title check.",
+   "bibliography.lineSpacing decided single; added bibliography.contextualSpacing=false (screenshot); bibliography.fontSizePt upgraded INFERRED→EXPLICIT (§2.2).",
+   "Paragraph first-line indent decided 0 mm (needsConfirmation cleared).",
+   "Heading spacing: explicit minimum 41.4 pt, proposal 53.4 pt (blank line + 6/6 additive), still open.",
+   "margin-top check tightened to 28.95 mm ±0.25 via wordModel; added single-spacing first-baseline, DOCX paragraph-property and caption checks.",
+   "Confirmed all special-page layouts (outer/inner cover, approval, ethics, abstract layout) are UNKNOWN: text gives only binding, 14 pt bold inner cover, \"(...)\" blanks + advisor signature, signed ethics page, abstract content items/\"Graduation Thesis\"/keywords 4-6/blank lines; the \"Bitirme Tezi Şablonu\" is not listed in kaynaklar.md."
+  ],
+  "decisionsProposed": [
+   "Paragraph indent 0 mm (explicit §2.4 > guide self-formatting 12.45 mm).",
+   "Body paragraphs before 6 / after 6, Word-additive → 32.7 pt baseline distance across boundaries; guide's own 6 pt not a target.",
+   "Bibliography: single, before 6 / after 0, hanging 12.5 mm, justified, no contextualSpacing, 12 pt; title KAYNAKLAR.",
+   "List of tables title \"ÇİZELGELER DİZİNİ\" (as printed in §4.2.10).",
+   "Heading blank line = 20.69 pt; proposal heading↔paragraph 53.4 pt (open)."
+  ],
+  "openItems": [
+   "Special pages (outer cover, inner cover, approval, ethics, abstract title lines / year-page string) remain UNKNOWN — the referenced \"Bitirme Tezi Şablonu\" is not in the sources; implement as placeholders or BLOCKED per policy.",
+   "Additive vs collapsed paragraph spacing and page-top space-before suppression are not demonstrated by this source (implementation assumes Word behaviour).",
+   "Heading spacing on top of the blank line (41.4 vs 53.4 pt).",
+   "Bibliography heading numbering (next chapter number, INFERRED).",
+   "Page-number distance from the bottom edge UNKNOWN (guide prints no page numbers).",
+   "Department confirmation desirable for ÇİZELGELER vs TABLOLAR and KAYNAKLAR vs KAYNAKÇA."
+  ]
+ }
 }
