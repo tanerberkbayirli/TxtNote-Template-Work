@@ -2,7 +2,169 @@
   "schemaVersion": 1,
   "updatedAt": "2026-09-28",
   "maxAttempts": 3,
+  "policy": "orchestration/README.md#policy-revision-2026-09-28 (supersedes conflicting older rules)",
+  "universityOrder": [
+    "aku",
+    "afsu",
+    "deu",
+    "ege",
+    "dpu",
+    "ksbu",
+    "mcbu",
+    "msku",
+    "pau",
+    "usak",
+    "yasar",
+    "bakircay",
+    "ieu",
+    "ikcu",
+    "iyte"
+  ],
+  "universities": {
+    "aku": {
+      "status": "IN_PROGRESS",
+      "targets": [
+        "aku-sbe",
+        "aku-fbe",
+        "aku-sagbil",
+        "aku-cografya-lisans",
+        "aku-mbg-lisans"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "afsu": {
+      "status": "PENDING",
+      "targets": [
+        "afsu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "deu": {
+      "status": "PENDING",
+      "targets": [
+        "deu-fbe",
+        "deu-ebe",
+        "deu-sagbil",
+        "deu-ataturk",
+        "deu-tip"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ege": {
+      "status": "PENDING",
+      "targets": [
+        "ege-fbe",
+        "ege-sagbil"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "dpu": {
+      "status": "PENDING",
+      "targets": [
+        "dpu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ksbu": {
+      "status": "PENDING",
+      "targets": [
+        "ksbu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "mcbu": {
+      "status": "PENDING",
+      "targets": [
+        "mcbu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "msku": {
+      "status": "PENDING",
+      "targets": [
+        "msku-ebe",
+        "msku-fbe",
+        "msku-sagbil",
+        "msku-sbe"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "pau": {
+      "status": "PENDING",
+      "targets": [
+        "pau-fbe",
+        "pau-ebe",
+        "pau-tip"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "usak": {
+      "status": "PENDING",
+      "targets": [
+        "usak-lee-sosyal",
+        "usak-insaat-lisans"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "yasar": {
+      "status": "PENDING",
+      "targets": [
+        "yasar-lee",
+        "yasar-lee-hukuk"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "bakircay": {
+      "status": "PENDING",
+      "targets": [
+        "bakircay-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ieu": {
+      "status": "PENDING",
+      "targets": [
+        "ieu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ikcu": {
+      "status": "PENDING",
+      "targets": [
+        "ikcu-fbe",
+        "ikcu-sbe"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "iyte": {
+      "status": "PENDING",
+      "targets": [
+        "iyte-lee"
+      ],
+      "gate": null,
+      "commit": null
+    }
+  },
+  "currentUniversity": "aku",
   "currentTarget": null,
+  "currentPhase": "ANALYSIS",
+  "lastCompletedValidation": null,
+  "lastCommit": null,
+  "environment": {},
   "targets": {
     "aku-sbe": {
       "analysis": "PENDING",

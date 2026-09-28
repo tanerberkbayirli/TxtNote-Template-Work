@@ -1,5 +1,27 @@
 # Tez şablonu orkestrasyonu
 
+## Policy revision 2026-09-28
+
+This section supersedes every conflicting rule further below (older rules stay for history).
+
+1. **Source documents are the only source of truth.** Pipeline per target: SOURCE → normalized spec → TxtNote implementation → REAL TxtNote export → independent measurement → PASS. "Looks correct", unit tests or template values are not validation.
+2. **Exact values.** A documented value (e.g. 35 mm) is implemented exactly. Validation tolerance is only measurement noise: explicit dimensions FAIL above **0.5 mm** (target ≤ 0.25 mm where measurable); font size ±0.1 pt; line pitch ±0.2 pt. Older tolerances (±1 mm margins, ±2 mm blocks, ±5 % spacing) are revoked.
+3. **UNKNOWN over invention.** A rule the sources do not establish is recorded `UNKNOWN`; values are never copied from another university. Word defaults in a DOCX are not university requirements unless the template itself carries them (then confidence `TEMPLATE`).
+4. **Engine extension is allowed** (old constraint 8 revoked) when a verified source requirement cannot be represented: generic, backward-compatible, tested, regression-checked. No university-specific branches in engine/editor code.
+5. **Fonts are real requirements.** Tinos/Liberation/Helvetica substitution is not PASS for a Times New Roman / Arial requirement. The export must embed the genuine font (verified from the PDF font program), otherwise the check FAILs or the target is BLOCKED with evidence. `PASS_WITH_GAPS` is not a terminal success state for a requirement the engine can be extended to meet.
+6. **Universities strictly one at a time** in `progress.json.universityOrder`; a university is complete only after its FINAL GATE (all targets PASS or evidenced BLOCKED).
+7. **Attempts**: `maxAttempts` is a checkpoint for re-evaluation, not an automatic BLOCKED. BLOCKED only for genuinely impossible requirements, documented in `failures/<target-id>.md`.
+8. **Independent validation** by a validator context without the integrator's conversation; it tries to disprove correctness using the official source, the spec and the real exported PDF/DOCX.
+
+Confidence levels in specs: `EXPLICIT` (stated in guide text), `TEMPLATE` (read from an official DOCX template's XML/styles), `MEASURED` (measured on an official example page / PDF geometry), `INFERRED` (reasoned, must say why), `UNKNOWN`.
+
+### Tooling (this environment)
+
+- `orchestration/tools/devserver.sh start` — Vite dev server of `TxtNote/frontend` on 127.0.0.1:5175.
+- `orchestration/tools/export.mjs <fixture.json> <outPrefix>` — seeds a deterministic thesis note into the real `ThesisEditor` (tests/thesis.html), waits for the editor's own pagination loop to settle, presses the editor's **PDF** and **Word** buttons and saves the downloads (+ `.layout.json`). Chromium runs with `--enable-blink-features=MulticolColumnWrapping` (paged layout) and the `local-fonts` permission (genuine system fonts embedded by the browser export path).
+- Genuine Microsoft Core Fonts (Times New Roman, Arial, …) are installed under `/usr/share/fonts/truetype/msttcorefonts/` (not committed). PyMuPDF + python-docx for measurement; LibreOffice (`soffice`) for DOCX/DOC → PDF of sources (artifacts only).
+
+
 Bu klasör, `Butun-Sablonlar/` kaynaklarını TxtNote tez motoruna (`TxtNote/frontend/src/thesis/`) aktaran uzun süreli, kesintiye dayanıklı iş akışını yönetir.
 
 - `Butun-Sablonlar/` **salt okunurdur (source of truth)**. Hiçbir ajan oradaki bir dosyayı değiştirmez, taşımaz veya dönüştürülmüş kopyasını yanına yazmaz. Dönüştürmeler (docx→pdf, metin çıkarımı, sayfa görüntüleri) yalnız `orchestration/artifacts/<id>/` altına yazılır.
