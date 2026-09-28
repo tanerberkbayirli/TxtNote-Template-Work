@@ -91,13 +91,16 @@ export function indexEntries(sources, rule, pages = {}, language = "tr") {
     .map((entry) => {
       // matchHeadingTransform: a row reads like its rendered heading (e.g. an uppercase H1).
       const title = rule.matchHeadingTransform && entry.textTransform ? transformThesisText(entry.title, entry, language) : entry.title;
-      return { ...entry, text: [entry.label, title].filter(Boolean).join(" "), page: pages[entry.anchor]?.label ?? "" };
+      return { ...entry, text: [entry.label, title].filter(Boolean).join(" "), rowTitle: title, page: pages[entry.anchor]?.label ?? "" };
     });
 }
 
 export function generatedIndexHtml(entries, rule) {
   const pageHeading = rule.includePageNumbers && rule.pageHeading ? `<div class="thesis-index-page-heading">${escape(rule.pageHeading)}</div>` : "";
-  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"><span class="thesis-index-text">${escape(entry.text)}</span>${rule.includePageNumbers ? `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(80) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>` : ""}</li>`).join("")}</ol>`;
+  // Label ("Şekil 2.1", "1.2") and title are separate spans so a template can style the label and hang
+  // wrapped lines under the title; without those rules they read exactly as one text.
+  const rowText = (entry) => entry.label && entry.rowTitle !== undefined ? `<span class="thesis-index-label">${escape(entry.label)}</span> <span class="thesis-index-title">${escape(entry.rowTitle)}</span>` : escape(entry.text);
+  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"><span class="thesis-index-text">${rowText(entry)}</span>${rule.includePageNumbers ? `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(80) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>` : ""}</li>`).join("")}</ol>`;
 }
 
 /**

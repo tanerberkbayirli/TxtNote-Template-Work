@@ -110,6 +110,12 @@ function validateIndex(index, body, headings, path) {
   if (index.pageHeading !== undefined && !text(index.pageHeading)) errors.push(`${path}.pageHeading geçersiz`);
   if (index.pageHeadingStyle !== undefined) errors.push(...validateTextStyle({ ...body, ...index.style, ...index.pageHeadingStyle }, `${path}.pageHeadingStyle`));
   if (index.matchHeadingTransform !== undefined && typeof index.matchHeadingTransform !== "boolean") errors.push(`${path}.matchHeadingTransform geçersiz`);
+  if (index.labelStyle !== undefined) errors.push(...(object(index.labelStyle) ? validateTextStyle({ ...body, ...index.style, ...index.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
+  if (index.hanging !== undefined && index.hanging !== "label") errors.push(`${path}.hanging geçersiz`);
+  if (index.levelStyles !== undefined) {
+    if (!object(index.levelStyles)) errors.push(`${path}.levelStyles nesne olmalı`);
+    else for (const [level, style] of Object.entries(index.levelStyles)) errors.push(...(/^[1-9]$/.test(level) && object(style) ? validateTextStyle({ ...body, ...index.style, ...style }, `${path}.levelStyles.${level}`) : [`${path}.levelStyles.${level} geçersiz`]));
+  }
   return errors;
 }
 
@@ -138,6 +144,8 @@ export function validateThesisTemplate(template) {
   errors.push(...validatePage(template.page));
   errors.push(...validateTextStyle(template.typography?.body, "typography.body"));
   if (template.typography?.paragraph) errors.push(...validateTextStyle({ ...template.typography.body, ...template.typography.paragraph }, "typography.paragraph"));
+  const firstAfter = template.typography?.paragraph?.firstAfterHeading;
+  if (firstAfter !== undefined) errors.push(...(object(firstAfter) ? validateTextStyle({ ...template.typography.body, ...template.typography.paragraph, ...firstAfter }, "typography.paragraph.firstAfterHeading") : ["typography.paragraph.firstAfterHeading nesne olmalı"]));
   errors.push(...validateFootnoteRule(template.typography?.footnotes, "typography.footnotes", validateTextStyle, template.typography?.body));
   const lineSpacing = template.typography?.lineSpacing;
   if (lineSpacing !== undefined && !(object(lineSpacing) && (lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
@@ -184,6 +192,8 @@ export function validateThesisTemplate(template) {
       if (section.pageBreakBefore !== undefined && typeof section.pageBreakBefore !== "boolean") errors.push(`section ${section.id}.pageBreakBefore geçersiz`);
       if (section.standalone !== undefined && (typeof section.standalone !== "boolean" || !Array.isArray(section.blocks))) errors.push(`section ${section.id}.standalone yalnız blocks ile ve boolean olmalı`);
       if (section.tocEntry !== undefined && !["headings", "title", "none"].includes(section.tocEntry)) errors.push(`section ${section.id}.tocEntry geçersiz`);
+      if (section.verticalAlign !== undefined && !(["top", "bottom"].includes(section.verticalAlign) && Array.isArray(section.blocks))) errors.push(`section ${section.id}.verticalAlign yalnız blocks ile top/bottom olmalı`);
+      if (section.titleNumbering !== undefined && !["none", "continueH1"].includes(section.titleNumbering)) errors.push(`section ${section.id}.titleNumbering geçersiz`);
       if (section.generatedIndex !== undefined) {
         if (section.mode !== "generated") errors.push(`section ${section.id}.generatedIndex: mode generated olmalı`);
         errors.push(...validateIndex(section.generatedIndex, template.typography?.body, headings, `section ${section.id}.generatedIndex`));

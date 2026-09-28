@@ -228,7 +228,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
       ? `<ul class="thesis-bibliography">${bibliographyItems.filter((item) => String(item).trim()).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "";
     const prefixHtml = layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}`;
     const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${bibliographyHtml}`;
-    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || null, layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
+    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, ...(section.verticalAlign ? { verticalAlign: section.verticalAlign } : {}), status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || null, layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
   }
   for (const section of sections) {
     const definition = template.sections.find((item) => item.id === section.id);
@@ -251,7 +251,7 @@ function serializeStyle(style, lineSpacing) {
 }
 
 /** Typography of a caption label run (bold "Şekil 2.1"), when it differs from the caption text. */
-const labelCss = (style = {}) => [style.fontWeight ? `font-weight:${style.fontWeight}` : "", style.italic !== undefined ? `font-style:${style.italic ? "italic" : "normal"}` : "", style.fontSizePt ? `font-size:${style.fontSizePt}pt` : "", style.fontFamily ? `font-family:${cssFamily(style.fontFamily)}` : "", style.decoration ? `text-decoration:${style.decoration}` : ""].filter(Boolean).join(";");
+const labelCss = (style = {}) => [style.fontWeight ? `font-weight:${style.fontWeight}` : "", style.italic !== undefined ? `font-style:${style.italic ? "italic" : "normal"}` : "", style.fontSizePt ? `font-size:${style.fontSizePt}pt` : "", style.fontFamily ? `font-family:${cssFamily(style.fontFamily)}` : "", style.decoration ? `text-decoration:${style.decoration}` : ""].filter(Boolean).map((rule) => `${rule};`).join("");
 
 /** Text styles of a section that draw lines (for the opt-in Word baseline placement). */
 function sectionTextStyles(section) {
@@ -295,12 +295,16 @@ export function thesisSectionCss(section) {
   const rules = [
     `${paperScope}{${styleCss(body)}box-sizing:border-box;position:relative;z-index:1;width:${page.widthMm}mm;min-height:${page.heightMm}mm;padding:${page.margins.topMm}mm ${page.margins.rightMm}mm ${page.margins.bottomMm}mm ${page.margins.leftMm}mm;margin:0;background:transparent;color:#111;text-indent:0;}`,
     `${fragmentScope}{${styleCss(body)}display:block;margin:0;text-indent:0;}`,
+    // A special page anchored to the bottom margin fills its page and puts its content at the bottom.
+    ...(section.verticalAlign === "bottom" ? [`${fragmentScope}{display:flex;flex-direction:column;justify-content:flex-end;min-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm}`] : []),
     // Legacy loose lines keep their geometry. New <p> blocks have real paragraph spacing.
     `${scope} .thesis-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};margin:0;padding:0;text-indent:${text.firstLineIndentMm || 0}mm each-line;white-space:pre-wrap;overflow-wrap:break-word;}`,
     `${scope} .thesis-body :is(ul,ol,table,figure,pre,.academic-code,.academic-table-wrap,.math-formula){text-indent:0;}`,
     `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};color:#111;min-height:0;padding:0;margin:0;overflow:visible;}`,
     `${scope} .thesis-body p{margin:${text.spaceBeforePt || 0}pt 0 ${text.spaceAfterPt || 0}pt;text-indent:${indentMm(text).first}mm;${text.hangingIndentMm > 0 ? `padding-left:${indentMm(text).left}mm;` : ""}${text.tabStopMm > 0 ? `tab-size:${text.tabStopMm}mm;` : ""}${lift(text)}}`,
     ...(lift(text) ? [`${scope} .thesis-body :is(ul,ol):not(.thesis-bibliography,.thesis-toc)>li{${lift(text)}}`, `${scope} .thesis-body :is(li,td,th,figcaption,caption) p{top:0}`] : []),
+    // First paragraph after a heading (Word's separate "first body" style), e.g. without indent.
+    ...(text.firstAfterHeading ? [`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6)+p{text-indent:${indentMm({ ...text, ...text.firstAfterHeading }).first}mm}`] : []),
     `${scope} .thesis-body img{max-width:100%;max-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm;height:auto;object-fit:contain;}`,
     `${scope} .thesis-body table{width:100%;border-collapse:collapse;}`,
     ...(tables.borders?.preset === "threeRule" || tables.borders?.preset === "none" ? [
@@ -342,6 +346,12 @@ export function thesisSectionCss(section) {
     rules.push(`${scope} .thesis-index-text{min-width:0;white-space:normal}${scope} .thesis-index-leader{flex:1;min-width:4mm;overflow:hidden;white-space:nowrap}${scope} .thesis-index-page{flex:none;min-width:8mm;text-align:${index.pageNumberAlignment};}`);
     if (index.pageHeading) rules.push(`${scope} .thesis-index-page-heading{${textCss({ ...index.style, ...index.pageHeadingStyle })}text-align:right;text-indent:0;margin:0;}`);
     for (const level of Object.keys(headings)) rules.push(`${scope} [data-index-level="${level}"]{padding-left:${(Number(level) - 1) * index.indentMm}mm;}`);
+    // Optional: label typography, wrapped lines hanging under the entry title, per-level row styles.
+    if (index.labelStyle) rules.push(`${scope} .thesis-index-label{${labelCss(index.labelStyle)}}`);
+    if (index.hanging === "label") rules.push(`${scope} .thesis-index-text{display:flex;align-items:baseline;column-gap:0.25em}${scope} .thesis-index-text>.thesis-index-label{flex:none;white-space:nowrap}${scope} .thesis-index-text>.thesis-index-title{min-width:0}`);
+    for (const [level, style] of Object.entries(index.levelStyles || {})) {
+      rules.push(`${scope} .thesis-toc li[data-index-level="${level}"]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}}`);
+    }
   }
   // Opt-in Word paragraph spacing: the gap between two paragraphs/headings is after(prev) + before(next)
   // instead of CSS's collapsed max(). The next block's top margin carries the sum, so the collapse

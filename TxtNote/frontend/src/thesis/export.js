@@ -2,7 +2,7 @@ import { jsPDF } from "jspdf";
 import {
   AlignmentType, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
   LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
-  SectionType, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab,
+  SectionType, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
 } from "docx";
 import { parseAcademicHtml } from "../lib/academicDocument.js";
 import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
@@ -382,22 +382,28 @@ function docxChildren(section, context) {
     children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context));
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
     for (const row of section.indexRows) {
-      const style = { ...rule.style, leftIndentMm: (row.level - 1 || 0) * rule.indentMm };
-      const runs = plainRuns(row.text);
+      const levelStyle = rule.levelStyles?.[row.level] || {};
+      const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : 0;
+      const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
+      const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
+      const runs = row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
       if (rule.includePageNumbers) runs.push({ type: "tab" }, ...plainRuns(row.page));
       children.push(docxParagraph(runs, style, context, { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] }));
     }
     return children;
   }
   if (section.layout) children.push(...specialPageDocx(section.layout, context, widthMm));
+  let afterHeading = false;
   for (const block of asBlocks(section)) {
+    const previousHeading = afterHeading;
+    afterHeading = block.type === "heading";
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
       const text = `${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`;
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
       children.push(docxParagraph(plainRuns(text), block.unnumbered ? { ...style, pageBreakBefore: false } : style, context, { heading: level }));
     } else if (block.type === "paragraph" || block.type === "quote") {
-      const style = section.type === "bibliography" ? section.rules.bibliography.style : body;
+      const style = section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
       // Only an alignment the user chose (explicit left included) overrides the template. Lines
       // ended by Enter have no paragraph spacing in the editor; <p> paragraphs do.
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
@@ -479,10 +485,10 @@ function listLevels(ordered) {
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
-export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {} } = {}) {
+export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {} } = {}) {
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
-  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, captionHangs };
+  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, captionHangs, indexHangs };
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
   const sections = model.sections.map((section, index) => {
     const page = section.rules.page;
@@ -497,6 +503,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       properties: {
         type: index === 0 ? undefined : groupStart ? SectionType.NEXT_PAGE : SectionType.CONTINUOUS,
         titlePage: chrome.titlePage,
+        ...(section.verticalAlign === "bottom" ? { verticalAlign: VerticalAlign.BOTTOM } : {}),
         page: {
           size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
           margin: { top: twip(page.margins.topMm), bottom: twip(page.margins.bottomMm), left: twip(page.margins.leftMm), right: twip(page.margins.rightMm), header: twip(page.header?.distanceMm || 10), footer: twip(page.footer?.distanceMm || 10) },

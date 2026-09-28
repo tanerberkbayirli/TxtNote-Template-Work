@@ -209,6 +209,13 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     setCiteText(""); setCiteOpen(false);
   };
 
+  /** Measured indent (unscaled px) of each index row's title after its label, for Word's hanging indent. */
+  const thesisIndexHangs = (root) => Object.fromEntries([...(root?.querySelectorAll("li[data-index-target]") || [])].flatMap((row) => {
+    const text = row.querySelector(".thesis-index-text"), title = row.querySelector(".thesis-index-title");
+    if (!text || !title || getComputedStyle(text).display !== "flex") return [];
+    const scale = new DOMMatrixReadOnly(getComputedStyle(row.closest(".thesis-page-stack")).transform).a || 1;
+    return [[row.dataset.indexTarget, (title.getBoundingClientRect().left - text.getBoundingClientRect().left) / scale]];
+  }));
   const exportFile = async (kind) => {
     if (!model) return;
     setExporting(kind); setMessage("");
@@ -219,7 +226,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
         ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, systemFonts: model.systemFonts || [] }) : await buildThesisPdf(model))
-        : await buildThesisDocx(model, { captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])) });
+        : await buildThesisDocx(model, { captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current) });
       const path = await downloadBlob(blob, `${academicFileStem(plainTitle || "tez")}.${kind}`);
       setMessage(path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`);
     } catch (error) { setMessage(error?.message || "Dışa aktarma başarısız."); }

@@ -96,6 +96,12 @@ export interface GeneratedIndexRule {
   pageHeadingStyle?: Partial<TextStyle>;
   /** TOC rows use their heading level's textTransform (an uppercase H1 is listed in capitals). */
   matchHeadingTransform?: boolean;
+  /** Typography of the entry label ("Şekil 2.1", "1.2"), e.g. bold. */
+  labelStyle?: Partial<TextStyle>;
+  /** "label": wrapped entry lines start under the entry title, after the label. */
+  hanging?: "label";
+  /** Row style per level (weight, spaceBeforePt/After, leftIndentMm override). */
+  levelStyles?: Record<string, Partial<TextStyle>>;
 }
 /** editable: user HTML stored in the note by section id; static: template-owned; generated: built from the document. */
 export type SectionMode = "editable" | "static" | "generated";
@@ -115,6 +121,10 @@ export interface ThesisSection {
   /** Render `title` as the section heading. Default: false for covers, TOC and main content. */
   showTitle?: boolean;
   pageBreakBefore?: boolean;
+  /** Blocks sections only: "bottom" anchors the page content to the bottom margin (e.g. text behind a cover window). */
+  verticalAlign?: "top" | "bottom";
+  /** "continueH1": the printed title is the next numbered chapter heading (e.g. "6. KAYNAKLAR"), numbered in the TOC. */
+  titleNumbering?: "none" | "continueH1";
   /**
    * Blocks sections only. `false`: the block layout flows with its neighbours (lines above or
    * below an editable section on the same page) instead of being its own physical page group.
@@ -194,7 +204,8 @@ export interface ThesisTemplate {
   /** Official sources need `url` or `documentName` (a distributed file) plus `verifiedAt`. */
   source: { type: "official" | "manual" | "imported"; url?: string; documentName?: string; revisionDate?: string; verifiedAt?: string; notes?: string[] };
   page: PageRule;
-  typography: { body: TextStyle; paragraph?: Partial<TextStyle>; headings: Record<string, HeadingRule>; footnotes?: FootnoteRule; lineSpacing?: LineSpacing };
+  /** paragraph.firstAfterHeading: overrides for the first paragraph after any heading (e.g. no indent). */
+  typography: { body: TextStyle; paragraph?: Partial<TextStyle> & { firstAfterHeading?: Partial<TextStyle> }; headings: Record<string, HeadingRule>; footnotes?: FootnoteRule; lineSpacing?: LineSpacing };
   sections: ThesisSection[];
   placeholders: Record<string, PlaceholderDefinition>;
   tables: CaptionRule;
