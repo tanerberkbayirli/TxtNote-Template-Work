@@ -217,7 +217,15 @@ function collectGroup(stack, language) {
       const pseudo = getComputedStyle(element, "::before");
       const labelStyle = { ...typography, fontWeight: pseudo.fontWeight, fontStyle: pseudo.fontStyle, fontSize: pseudo.fontSize, fontFamily: pseudo.fontFamily };
       const label = transformText(number, style.textTransform, typography.lang);
-      pushLabel(label, firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle);
+      if (pseudo.display === "block") {
+        // numbering.placement "ownLine": the number is a line of its own above the title, aligned like the heading.
+        const box = local(element.getBoundingClientRect());
+        const left = box.left + (parseFloat(style.paddingLeft) || 0);
+        const width = box.width - (parseFloat(style.paddingLeft) || 0) - (parseFloat(style.paddingRight) || 0);
+        const labelWidth = textWidth(labelStyle, label);
+        const pitch = (parseFloat(pseudo.lineHeight) || parseFloat(style.lineHeight));
+        pushLabel(label, style.textAlign === "center" ? left + (width - labelWidth) / 2 : style.textAlign === "right" ? left + width - labelWidth : left, { top: firstText.top - pitch, baseline: firstText.baseline - pitch }, labelStyle);
+      } else pushLabel(label, firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle);
     }
     // Equation number (::after of a numbered display equation): flush right/left of the block, centred on the formula.
     const equation = element.getAttribute("data-thesis-eq");

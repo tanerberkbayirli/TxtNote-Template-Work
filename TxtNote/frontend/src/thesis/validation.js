@@ -119,7 +119,10 @@ function validateIndex(index, body, headings, path, captionKinds = {}) {
   if (index.hanging !== undefined && index.hanging !== "label") errors.push(`${path}.hanging geçersiz`);
   if (index.levelStyles !== undefined) {
     if (!object(index.levelStyles)) errors.push(`${path}.levelStyles nesne olmalı`);
-    else for (const [level, style] of Object.entries(index.levelStyles)) errors.push(...(/^[1-9]$/.test(level) && object(style) ? validateTextStyle({ ...body, ...index.style, ...style }, `${path}.levelStyles.${level}`) : [`${path}.levelStyles.${level} geçersiz`]));
+    else for (const [level, style] of Object.entries(index.levelStyles)) {
+      errors.push(...(/^[1-9]$/.test(level) && object(style) ? validateTextStyle({ ...body, ...index.style, ...style }, `${path}.levelStyles.${level}`) : [`${path}.levelStyles.${level} geçersiz`]));
+      if (object(style) && style.includePageNumber !== undefined && typeof style.includePageNumber !== "boolean") errors.push(`${path}.levelStyles.${level}.includePageNumber geçersiz`);
+    }
   }
   return errors;
 }
@@ -170,6 +173,8 @@ export function validateThesisTemplate(template) {
     if (!/^[1-9]\d*$/.test(level)) errors.push(`heading seviyesi ${level} geçersiz`);
     errors.push(...validateTextStyle(style, `typography.headings.${level}`));
     if (style.numbering && !text(style.numbering.format)) errors.push(`typography.headings.${level}.numbering.format geçersiz`);
+    if (style.numbering?.sequence !== undefined && ![...numberingFormats, "alpha-lower", "alpha-upper", "ordinal-tr-upper"].includes(style.numbering.sequence)) errors.push(`typography.headings.${level}.numbering.sequence geçersiz`);
+    if (style.numbering?.placement !== undefined && !["inline", "ownLine"].includes(style.numbering.placement)) errors.push(`typography.headings.${level}.numbering.placement geçersiz`);
   }
   if (!object(template.placeholders)) errors.push("placeholders gerekli");
   else for (const [key, definition] of Object.entries(template.placeholders)) {

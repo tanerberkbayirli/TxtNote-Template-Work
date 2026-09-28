@@ -1,4 +1,4 @@
-import { formatNumber, groupThesisSections, transformThesisText } from "./engine.js";
+import { chapterNumberSequence, formatNumber, groupThesisSections, transformThesisText } from "./engine.js";
 import { flattenSpecialPage, resolveSpecialPage, specialPageHtml } from "./specialPages.js";
 import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
@@ -76,7 +76,7 @@ export function collectIndexSources(sections, extractHeadings) {
       if (match[1]) {
         const entry = outline[headingIndex++];
         if (!entry) continue;
-        if (entry.level === 1 && !entry.unnumbered) { chapter = formatNumber(entry.counters[0], section.rules.headings[1]?.numbering?.sequence || "arabic"); chapterKey += 1; local = {}; }
+        if (entry.level === 1 && !entry.unnumbered) { chapter = formatNumber(entry.counters[0], chapterNumberSequence(section.rules.headings[1]?.numbering?.sequence)); chapterKey += 1; local = {}; }
         const transform = entry.unnumbered ? "none" : section.rules.headings[entry.level]?.textTransform || "none";
         sources.push({ ...entry, kind: "toc", sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, chapterKey, ...(transform !== "none" ? { textTransform: transform } : {}), ...(section.tocEntry === "none" ? { tocHidden: true } : {}) });
       } else if (match[7] !== undefined) {
@@ -123,7 +123,9 @@ export function generatedIndexHtml(entries, rule) {
   // Label ("Şekil 2.1", "1.2") and title are separate spans so a template can style the label and hang
   // wrapped lines under the title; without those rules they read exactly as one text.
   const rowText = (entry) => entry.label && entry.rowTitle !== undefined ? `<span class="thesis-index-label">${escape(entry.label)}</span> <span class="thesis-index-title">${escape(entry.rowTitle)}</span>` : escape(entry.text);
-  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"><span class="thesis-index-text">${rowText(entry)}</span>${rule.includePageNumbers ? `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(80) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>` : ""}</li>`).join("")}</ol>`;
+  // A level may list its rows without page numbers (e.g. centred chapter rows): levelStyles[level].includePageNumber === false.
+  const withPage = (entry) => rule.includePageNumbers && rule.levelStyles?.[entry.level]?.includePageNumber !== false;
+  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"${entry.labelLine ? ' data-index-label-line="true"' : ""}><span class="thesis-index-text">${rowText(entry)}</span>${withPage(entry) ? `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(80) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>` : ""}</li>`).join("")}</ol>`;
 }
 
 /**

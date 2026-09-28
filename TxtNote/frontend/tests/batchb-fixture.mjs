@@ -70,6 +70,21 @@ const scenarios = {
     const body = `<h1>Giriş</h1>${paras(1, "A")}${eq("E = mc^2")}${P("Metin arası.")}${eq("a^2 + b^2 = c^2")}${eq("x = \\frac{a}{b}", false)}<h1>Yöntem</h1>${paras(1, "B")}${eq("\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}")}${P("Denklem (2.1) yukarıdadır.")}`;
     return documentFor(t, body);
   },
+  // B4: "BİRİNCİ BÖLÜM" on its own line above the (uppercase) chapter title, five heading levels, TOC rows.
+  ordinal() {
+    const t = baseTemplate("batchb-ordinal-v1", (t) => {
+      const heading = (level, numbering, extra = {}) => ({ ...structuredClone(t.typography.headings["2"]), fontSizePt: 12, spaceBeforePt: 6, spaceAfterPt: 6, lineHeight: 1.15, align: "left", numbering, ...extra });
+      t.typography.headings = {
+        1: heading(1, { enabled: true, format: "{1} BÖLÜM", sequence: "ordinal-tr-upper", placement: "ownLine" }, { align: "center", textTransform: "uppercase", spaceBeforePt: 12, spaceAfterPt: 12, pageBreakBefore: true }),
+        2: heading(2, { enabled: true, format: "{2}." }), 3: heading(3, { enabled: true, format: "{2}.{3}." }, { fontWeight: 400 }),
+        4: heading(4, { enabled: true, format: "{2}.{3}.{4}." }), 5: heading(5, { enabled: true, format: "{2}.{3}.{4}.{5}." }, { fontWeight: 400 }),
+      };
+      t.toc.levels = [1, 2, 3, 4, 5];
+      t.sections.find((s) => s.id === "toc").generatedIndex = { kind: "toc", matchHeadingTransform: true, levelStyles: { 1: { align: "center", includePageNumber: false, fontWeight: 700, spaceBeforePt: 12, spaceAfterPt: 12 } }, indentMm: 0 };
+    });
+    const chapter = (title, n) => `<h1>${title}</h1>${paras(1, `${n}.0`, 1)}<h2>Alt başlık ${n}</h2>${paras(1, `${n}.1`, 1)}<h3>Üçüncü düzey</h3><h4>Dördüncü Düzey Başlık</h4><h5>Beşinci Düzey Başlık</h5>${paras(1, `${n}.5`, 1)}`;
+    return documentFor(t, [["Kuramsal çerçeve", 1], ["Yöntem", 2], ["Bulgular ve tartışma", 3]].map(([title, n]) => chapter(title, n)).join(""));
+  },
 };
 if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
   const [name, out] = process.argv.slice(2);

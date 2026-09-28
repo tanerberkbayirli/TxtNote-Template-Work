@@ -48,7 +48,13 @@ export interface PageRule {
   numbering: NumberingRule;
 }
 export interface HeadingRule extends TextStyle {
-  numbering?: { format: string; suffix?: string; sequence?: NumberFormat | (string & {}); enabled?: boolean };
+  numbering?: {
+    format: string; suffix?: string; enabled?: boolean;
+    /** Counter style of every {n} in `format`: arabic (default), roman-lower/upper, alpha-lower/upper, or "ordinal-tr-upper" (BİRİNCİ … ONUNCU, then "11."). Caption chapters stay digits. */
+    sequence?: NumberFormat | "alpha-lower" | "alpha-upper" | "ordinal-tr-upper";
+    /** "ownLine": the printed number ("BİRİNCİ BÖLÜM") is a line of its own above the title, same heading style (editor, PDF, print; Word: a line break in the heading; TOC rows likewise). Default "inline". */
+    placement?: "inline" | "ownLine";
+  };
 }
 export interface CaptionRule {
   label: string;
@@ -109,8 +115,8 @@ export interface GeneratedIndexRule {
   labelStyle?: Partial<TextStyle>;
   /** "label": wrapped entry lines start under the entry title, after the label. */
   hanging?: "label";
-  /** Row style per level (weight, spaceBeforePt/After, leftIndentMm override). */
-  levelStyles?: Record<string, Partial<TextStyle>>;
+  /** Row style per level (weight, spaceBeforePt/After, leftIndentMm override, align); `includePageNumber: false` lists the level's rows without leader and page number. */
+  levelStyles?: Record<string, Partial<TextStyle> & { includePageNumber?: boolean }>;
 }
 /** editable: user HTML stored in the note by section id; static: template-owned; generated: built from the document. */
 export type SectionMode = "editable" | "static" | "generated";

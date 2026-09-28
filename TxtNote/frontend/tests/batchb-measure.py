@@ -75,7 +75,23 @@ def equation():
     check('w:tab w:val="right" w:pos="8787"' in xml and xml.count("(1.1)") == 1, "DOCX: centre + right tab stops (155 mm text width), number after the formula")
 
 
-SCENARIOS = {"photo": photo, "continuation": continuation, "equation": equation}
+def ordinal():
+    doc, xml = export("ordinal")
+    text = [visual_lines(p) for p in doc]
+    chapters = [(i, l) for i, page in enumerate(text) for l in page if re.fullmatch(r"(BİRİNCİ|İKİNCİ|ÜÇÜNCÜ) BÖLÜM", l["text"]) and i > 0]
+    check([l["text"] for _, l in chapters] == ["BİRİNCİ BÖLÜM", "İKİNCİ BÖLÜM", "ÜÇÜNCÜ BÖLÜM"], "each chapter page starts with its ordinal label line")
+    for i, label in chapters:
+        lines = text[i]
+        title = lines[lines.index(label) + 1]
+        centre = lambda l: (l["x0"] + l["x1"]) / 2 if "x1" in l else None
+        check(title["baseline"] - label["baseline"] < 6 and abs((label["x0"] + label["x1"]) / 2 - 107.5) < 1.5 and abs((title["x0"] + title["x1"]) / 2 - 107.5) < 1.5, f"page {i + 1}: label {label['baseline']:.1f} mm and title {title['baseline']:.1f} mm, both centred on the text block")
+    toc = [l["text"] for l in text[0]]
+    check("BİRİNCİ BÖLÜM" in toc and "KURAMSAL ÇERÇEVE" in toc and any(t.startswith("1.1.1.1. Beşinci") for t in toc), "the TOC lists label line, title line and the fifth level")
+    plain = re.sub(r"<[^>]+>", "|", xml)
+    check(xml.count('w:pStyle w:val="Heading5"') == 3 and "BÖLÜM" in plain, "DOCX: three Heading5 paragraphs, chapter heading paragraphs carry the label")
+
+
+SCENARIOS = {"photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
 if __name__ == "__main__":
     for name in sys.argv[1:] or SCENARIOS:
         print(f"== {name} (output in {OUT})")

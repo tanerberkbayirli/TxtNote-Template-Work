@@ -179,3 +179,69 @@ describe("Batch B3 equation numbering", () => {
     assert.match(paragraph, /<w:tab w:val="center"/); assert.doesNotMatch(paragraph, /w:val="right" w:pos/);
   });
 });
+
+import { extractThesisHeadings, formatNumber } from "../thesis/engine.js";
+
+describe("Batch B4 ordinal chapter labels on their own line, five heading levels", () => {
+  const ordinalTemplate = () => {
+    const t = template();
+    const h = (n, numbering, extra = {}) => ({ ...t.typography.headings["2"], numbering, ...extra });
+    t.typography.headings = {
+      1: h(1, { enabled: true, format: "{1} BÖLÜM", sequence: "ordinal-tr-upper", placement: "ownLine" }, { align: "center", textTransform: "uppercase" }),
+      2: h(2, { enabled: true, format: "{2}." }), 3: h(3, { enabled: true, format: "{2}.{3}." }), 4: h(4, { enabled: true, format: "{2}.{3}.{4}." }), 5: h(5, { enabled: true, format: "{2}.{3}.{4}.{5}." }),
+    };
+    t.toc.levels = [1, 2, 3, 4, 5];
+    t.sections.find((s) => s.id === "toc").generatedIndex = { kind: "toc", matchHeadingTransform: true, levelStyles: { 1: { align: "center", includePageNumber: false, fontWeight: 700 } } };
+    return t;
+  };
+  const body = `<h1>Kuram</h1><h2>Alt</h2><h3>Üç</h3><h4>Dört</h4><h5>Beş</h5><h2>Alt iki</h2>${table("Veri")}<h1>Yöntem</h1><h2>Yine</h2>${figure("Şema")}`;
+  it("ordinal words, uppercase, with the '11.' fallback", () => {
+    assert.deepEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((n) => formatNumber(n, "ordinal-tr-upper")), ["BİRİNCİ", "İKİNCİ", "ÜÇÜNCÜ", "DÖRDÜNCÜ", "BEŞİNCİ", "ALTINCI", "YEDİNCİ", "SEKİZİNCİ", "DOKUZUNCU", "ONUNCU", "11.", "12."]);
+    assert.equal(formatNumber(0, "ordinal-tr-upper"), "");
+  });
+  it("labels five levels (level 2+ restart per chapter and omit the chapter) and flags own-line labels", () => {
+    const t = ordinalTemplate();
+    const outline = extractThesisHeadings(body, { headings: t.typography.headings });
+    assert.deepEqual(outline.map((h) => h.label), ["BİRİNCİ BÖLÜM", "1.", "1.1.", "1.1.1.", "1.1.1.1.", "2.", "İKİNCİ BÖLÜM", "1."]);
+    assert.deepEqual(outline.map((h) => Boolean(h.labelLine)), [true, false, false, false, false, false, true, false]);
+    assert.deepEqual(validateThesisTemplate(t), []);
+    // Caption chapter numbers stay digits ("Tablo 1.1"), not the ordinal word
+    const model = compile(t, body);
+    assert.deepEqual(model.indexSources.filter((s) => s.kind === "tables" || s.kind === "figures").map((s) => s.label), ["Tablo 1.1.", "Şekil 2.1."]);
+  });
+  it("validates sequence and placement", () => {
+    const t = ordinalTemplate(); t.typography.headings["1"].numbering.sequence = "greek";
+    assert.match(validateThesisTemplate(t).join(), /numbering\.sequence/);
+    const u = ordinalTemplate(); u.typography.headings["1"].numbering.placement = "below";
+    assert.match(validateThesisTemplate(u).join(), /numbering\.placement/);
+    const v = ordinalTemplate(); v.sections.find((s) => s.id === "toc").generatedIndex.levelStyles[1].includePageNumber = "no";
+    assert.match(validateThesisTemplate(v).join(), /includePageNumber/);
+  });
+  it("editor/print CSS puts the number on its own line only for own-line levels; TOC rows split label and title", () => {
+    const model = compile(ordinalTemplate(), body);
+    const css = buildThesisCss(model);
+    assert.match(css, /h1\[data-thesis-number\]::before\{content:attr\(data-thesis-number\);display:block\}/);
+    assert.doesNotMatch(css, /h2\[data-thesis-number\]::before\{content:attr\(data-thesis-number\);display:block/);
+    assert.match(css, /li\[data-index-level="1"\]\{[^}]*text-align:center;display:block;\}/);
+    const toc = model.sections.find((s) => s.id === "toc");
+    assert.deepEqual(toc.indexRows.map((r) => [r.level, r.label, r.rowTitle]).slice(0, 3), [[1, "BİRİNCİ BÖLÜM", "KURAM"], [2, "1.", "Alt"], [3, "1.1.", "Üç"]]);
+    const resolved = resolveGeneratedIndexes(model, Object.fromEntries(model.indexSources.map((s) => [s.anchor, { label: "4" }])));
+    const html = resolved.sections.find((s) => s.id === "toc").html;
+    assert.match(html, /<li data-index-level="1" data-index-target="[^"]+" data-index-label-line="true"><span class="thesis-index-text"><span class="thesis-index-label">BİRİNCİ BÖLÜM<\/span> <span class="thesis-index-title">KURAM<\/span><\/span><\/li>/);
+    assert.match(html, /<li data-index-level="2"[^>]*><span class="thesis-index-text">[^<]*<span class="thesis-index-label">1\.<\/span>[\s\S]*?<span class="thesis-index-page">4<\/span>/);
+    assert.match(buildThesisPrintHtml(model), /<h1 data-thesis-number="BİRİNCİ BÖLÜM">Kuram<\/h1>/);
+    assert.equal(thesisSourceHtml(buildThesisPrintHtml(model)).includes('data-thesis-number="BİRİNCİ'), false);
+  });
+  it("DOCX: label and title share one heading paragraph (line break), Heading5 with outline level 5, TOC label line", async () => {
+    const model = compile(ordinalTemplate(), body);
+    const resolved = resolveGeneratedIndexes(model, Object.fromEntries(model.indexSources.map((s) => [s.anchor, { label: "4" }])));
+    const { xml, styles } = await docx(resolved);
+    const flow = [...xml.matchAll(/<w:br\/>|<w:tab\/>|<w:pStyle w:val="(Heading\d)"\/>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1] ? `[${m[1]}]` : m[2] ?? (m[0] === "<w:br/>" ? "\\n" : "\\t")).join("|");
+    assert.match(flow, /\[Heading1\]\|BİRİNCİ BÖLÜM\|\\n\|KURAM\|/);
+    assert.match(flow, /\[Heading5\]\|1\.1\.1\.1\. Beş/);
+    assert.match(styles, /w:styleId="Heading5"[\s\S]*?w:outlineLvl w:val="4"/);
+    // TOC: chapter row = label paragraph + title paragraph without page number; level 2 keeps its tab + page
+    assert.match(flow, /BİRİNCİ BÖLÜM\|KURAM\|1\. Alt\|\\t\|4/);
+    assert.doesNotMatch(flow, /KURAM\|\\t/);
+  });
+});

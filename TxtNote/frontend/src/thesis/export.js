@@ -30,7 +30,7 @@ const asBlocks = (section) => {
   let equationIndex = 0;
   let captionIndex = 0;
   return parseAcademicHtml(section.html, { lines: true }).map((block) => {
-    if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "" }; }
+    if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "", thesisNumberLine: Boolean(entry?.labelLine) }; }
     if (block.type === "math" && block.numbered && section.rules.equations) return { ...block, equationLabel: equations[equationIndex++]?.label || "" };
     if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionLabel: entry?.label || "", captionAnchor: entry?.anchor, captionKind: entry?.captionKind || "", caption: entry?.title || block.caption }; }
     return block;
@@ -121,7 +121,7 @@ export async function buildThesisPdf(model) {
     for (const block of asBlocks(section)) {
       if (block.type === "heading") {
         const style = headings[block.level] || headings[1] || body;
-        write(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`, block.unnumbered ? { ...style, pageBreakBefore: false } : style);
+        write(`${block.thesisNumber ? `${block.thesisNumber}${block.thesisNumberLine ? "\n" : " "}` : ""}${block.text}`, block.unnumbered ? { ...style, pageBreakBefore: false } : style);
       } else if (block.type === "paragraph" || block.type === "quote") {
         write(blockText(block), section.type === "bibliography" ? section.rules.bibliography.style : body, block.align || body.align);
       } else if (block.type === "list") {
@@ -418,9 +418,13 @@ function docxChildren(section, context) {
       const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : 0;
       const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
       const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
-      const runs = row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
-      if (rule.includePageNumbers) runs.push({ type: "tab" }, ...plainRuns(row.page));
-      children.push(docxParagraph(runs, style, context, { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] }));
+      // A number on its own line (ownLine headings) is a paragraph of its own above the title row.
+      const lineLabel = row.labelLine && row.label && row.rowTitle !== undefined;
+      if (lineLabel) children.push(docxParagraph([{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }], { ...style, hangingIndentMm: undefined }, context, { keepNext: true }));
+      const runs = lineLabel ? plainRuns(row.rowTitle) : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
+      const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
+      if (withPage) runs.push({ type: "tab" }, ...plainRuns(row.page));
+      children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
     }
     return children;
   }
@@ -431,9 +435,10 @@ function docxChildren(section, context) {
     afterHeading = block.type === "heading";
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
-      const text = `${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`;
+      // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
+      const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(plainRuns(text), block.unnumbered ? { ...style, pageBreakBefore: false } : style, context, { heading: level }));
+      children.push(docxParagraph(runs, block.unnumbered ? { ...style, pageBreakBefore: false } : style, context, { heading: level }));
     } else if (block.type === "paragraph" || block.type === "quote") {
       const style = section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
       // Only an alignment the user chose (explicit left included) overrides the template. Lines

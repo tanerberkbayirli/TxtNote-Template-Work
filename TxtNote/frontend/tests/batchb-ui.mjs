@@ -68,5 +68,19 @@ if (scenario === "equation") {
   assert.ok(!/data-thesis-eq/.test(saved), "the equation number is presentation, never stored");
   pass("equation numbers per chapter; switching one off renumbers, the flag is source markup, the number is not stored");
 }
+if (scenario === "ordinal") {
+  await page.locator(".rich-text-body p").first().click();
+  const select = page.getByLabel("Paragraf biçimi");
+  assert.deepEqual(await select.locator("option").allTextContents(), ["Paragraf biçimi", "Normal", "Başlık 1", "Başlık 2", "Başlık 3", "Başlık 4", "Başlık 5"]);
+  await page.locator(".rich-text-body p").first().click();
+  await select.selectOption("5");
+  await settle();
+  const saved = await page.evaluate(() => window.thesisTest.getDoc().content);
+  assert.match(saved, /<h5\b/);
+  assert.deepEqual(await page.evaluate(() => [...document.querySelectorAll("h1[data-thesis-number]")].map((h) => h.dataset.thesisNumber)), ["BİRİNCİ BÖLÜM", "İKİNCİ BÖLÜM", "ÜÇÜNCÜ BÖLÜM"]);
+  const cs = await page.evaluate(() => { const h = document.querySelector("h1[data-thesis-number]"); const p = getComputedStyle(h, "::before"); return [p.display, p.content]; });
+  assert.deepEqual(cs, ["block", '"BİRİNCİ BÖLÜM"']);
+  pass("the editor offers five heading levels (Başlık 5 converts a paragraph) and shows the ordinal label as its own line");
+}
 assert.deepEqual(errors, []);
 await browser.close();

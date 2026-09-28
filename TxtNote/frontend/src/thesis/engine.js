@@ -14,9 +14,15 @@ const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace
 const plainText = plainThesisText;
 const cssFamily = (value) => JSON.stringify(String(value || "Times New Roman"));
 
+/** Turkish ordinal words (uppercase) for chapter labels: BİRİNCİ BÖLÜM. Beyond ten the label falls back to "11.". */
+const ORDINAL_TR_UPPER = ["BİRİNCİ", "İKİNCİ", "ÜÇÜNCÜ", "DÖRDÜNCÜ", "BEŞİNCİ", "ALTINCI", "YEDİNCİ", "SEKİZİNCİ", "DOKUZUNCU", "ONUNCU"];
+/** Caption numbers embed the chapter as digits even when the chapter heading prints an ordinal word. */
+export const chapterNumberSequence = (sequence) => /^ordinal/.test(sequence || "") ? "arabic" : sequence || "arabic";
+
 export function formatNumber(value, format = "arabic") {
   if (!Number.isInteger(value) || value < 1) return "";
   if (format === "arabic") return String(value);
+  if (format === "ordinal-tr-upper") return ORDINAL_TR_UPPER[value - 1] || `${value}.`;
   if (!["roman-lower", "roman-upper", "alpha-lower", "alpha-upper"].includes(format)) return String(value);
   if (format === "alpha-upper" || format === "alpha-lower") {
     let current = value;
@@ -144,7 +150,7 @@ export function extractThesisHeadings(html, rules, counters = []) {
     const rule = rules.headings[level]?.numbering;
     // A level with no heading yet (H2 before any H1) reads 0, as in Word ("0.1", not ".1").
     const label = rule?.enabled === false ? "" : String(rule?.format || `{${level}}`).replace(/\{(\d+)\}/g, (_, n) => formatNumber(counters[Number(n) - 1] || 0, rule?.sequence || "arabic") || "0");
-    headings.push({ level, title: plainText(match[3]), label, id: `heading-${headings.length + 1}`, counters: [...counters] });
+    headings.push({ level, title: plainText(match[3]), label, ...(label && rule?.placement === "ownLine" ? { labelLine: true } : {}), id: `heading-${headings.length + 1}`, counters: [...counters] });
   }
   return headings;
 }
@@ -345,6 +351,8 @@ export function thesisSectionCss(section) {
     `${scope} .thesis-body :is(figcaption,caption)[data-thesis-caption-auto="center"][data-thesis-anchor]{text-align:center}${scope} .thesis-body :is(figcaption,caption)[data-thesis-caption-auto="justify"][data-thesis-anchor]{text-align:justify}`,
     `${scope} .thesis-bibliography{${textCss(section.rules.bibliography.style)}padding-left:${section.rules.bibliography.hangingIndentMm || 0}mm;}`,
     `${scope} .thesis-body [data-thesis-number]::before{content:attr(data-thesis-number) " ";}`,
+    // Heading numbers printed on their own line above the title (numbering.placement "ownLine"): same style, same block.
+    ...Object.entries(headings).filter(([, style]) => style.numbering?.placement === "ownLine").map(([level]) => `${scope} .thesis-body h${level}[data-thesis-number]::before{content:attr(data-thesis-number);display:block}`),
     `${scope} .thesis-fixed{white-space:pre-wrap;}`,
     `${scope} .thesis-layout-text{white-space:normal;overflow-wrap:break-word;}`,
     `${scope} .thesis-layout-spacer{display:block;max-width:100%;}`,
@@ -395,8 +403,10 @@ export function thesisSectionCss(section) {
     if (index.labelStyle) rules.push(`${scope} .thesis-index-label{${labelCss(index.labelStyle)}}`);
     if (index.hanging === "label") rules.push(`${scope} .thesis-index-text{display:flex;align-items:baseline;column-gap:0.25em}${scope} .thesis-index-text>.thesis-index-label{flex:none;white-space:nowrap}${scope} .thesis-index-text>.thesis-index-title{min-width:0}`);
     for (const [level, style] of Object.entries(index.levelStyles || {})) {
-      rules.push(`${scope} .thesis-toc li[data-index-level="${level}"]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}}`);
+      rules.push(`${scope} .thesis-toc li[data-index-level="${level}"]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}${style.align ? `text-align:${style.align};` : ""}${style.includePageNumber === false ? "display:block;" : ""}}`);
     }
+    // Rows whose heading number is on its own line (numbering.placement "ownLine"): number line, then the title line.
+    if (Object.values(headings).some((style) => style.numbering?.placement === "ownLine")) rules.push(`${scope} .thesis-toc li[data-index-label-line] .thesis-index-text{display:block}${scope} .thesis-toc li[data-index-label-line] .thesis-index-label{display:block}`);
   }
   // Opt-in Word paragraph spacing: the gap between two paragraphs/headings is after(prev) + before(next)
   // instead of CSS's collapsed max(). The next block's top margin carries the sum, so the collapse
