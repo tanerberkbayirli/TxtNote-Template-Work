@@ -90,6 +90,8 @@ export interface CaptionRule {
 export interface FootnoteRule extends Partial<Pick<TextStyle, "fontFamily" | "fontSizePt" | "fontWeight" | "italic" | "lineHeight" | "align" | "characterSpacingPt" | "spaceBeforePt" | "spaceAfterPt" | "firstLineIndentMm" | "leftIndentMm" | "rightIndentMm">> {
   /** pageBottom (default): notes at the bottom of the physical page of their reference. sectionEnd: legacy list after the section. */
   placement?: "pageBottom" | "sectionEnd";
+  /** "section" (default): every editable section numbers its notes from 1. "document": one running number through all sections (Word already numbers its notes that way). */
+  numbering?: "section" | "document";
   /** Largest share of the page body the note area may take, 10–90. Longer notes continue on the next page. */
   maxAreaPercent?: number;
   /** Rule between body and notes: length as % of the text width, thickness, space above/below. */

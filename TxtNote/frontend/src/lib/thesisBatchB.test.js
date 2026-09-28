@@ -245,3 +245,45 @@ describe("Batch B4 ordinal chapter labels on their own line, five heading levels
     assert.doesNotMatch(flow, /KURAM\|\\t/);
   });
 });
+
+import { countFootnoteRefs, renumberFootnoteRefs } from "../thesis/footnotes.js";
+
+describe("Batch B5 continuous footnote numbering", () => {
+  const ref = (id, n = 1) => `<sup class="academic-footnote" contenteditable="false" data-fn-id="${id}" data-fn-text="Not ${id}" data-fn-index="${n}">${n}</sup>`;
+  const annex = { id: "annex", type: "custom", title: "Ek", status: "required", group: "back", mode: "editable", showTitle: true };
+  const setup = (numbering) => {
+    const t = template();
+    t.sections.splice(t.sections.findIndex((s) => s.id === "main") + 1, 0, structuredClone(annex));
+    if (numbering) t.typography.footnotes = { numbering };
+    return t;
+  };
+  const state = { sectionContent: { annex: `<p>Ek${ref("c")}${ref("d", 2)}</p>` } };
+  const main = `<p>Bir${ref("a")} iki${ref("b", 2)}</p>`;
+  it("numbers references on through the sections only when the template asks for it", () => {
+    const model = compile(setup("document"), main, state);
+    assert.deepEqual(model.sections.filter((s) => s.mode === "editable" && s.id !== "abstract").map((s) => [s.id, s.footnoteOffset]), [["main", 0], ["annex", 2], ["bibliography", 4]]);
+    assert.equal(model.sections.find((s) => s.id === "main").rules.footnotes.numbering, "document");
+    for (const numbering of [undefined, "section"]) assert.ok(compile(setup(numbering), main, state).sections.every((s) => s.footnoteOffset === undefined), `numbering ${numbering}: per body as before`);
+    assert.equal(compile(setup(undefined), main, state).sections[0].rules.footnotes.numbering, "section");
+  });
+  it("counts and renumbers references in source/print HTML", () => {
+    assert.equal(countFootnoteRefs(`<p>${ref("a")}x${ref("b", 2)}<span class="academic-footnote">3</span></p>`), 3);
+    assert.equal(renumberFootnoteRefs(`<p>A${ref("a")}B${ref("b", 2)}</p>`, 5), `<p>A${ref("a", 6)}B${ref("b", 7)}</p>`);
+    assert.equal(renumberFootnoteRefs('<sup class="academic-footnote">1</sup>', 2), '<sup class="academic-footnote" data-fn-index="3">3</sup>');
+    const html = buildThesisPrintHtml(compile(setup("document"), main, state));
+    assert.deepEqual([...html.matchAll(/data-fn-index="(\d+)">(\d+)<\/sup>/g)].map((m) => `${m[1]}:${m[2]}`), ["1:1", "2:2", "3:3", "4:4"]);
+    assert.doesNotMatch(buildThesisPrintHtml(compile(setup(undefined), main, state)), /data-fn-index="3"/);
+  });
+  it("validates the numbering key; stored HTML keeps its per-body numbers", () => {
+    assert.deepEqual(validateThesisTemplate(setup("document")), []);
+    assert.match(validateThesisTemplate(setup("global")).join(), /footnotes\.numbering/);
+    const model = compile(setup("document"), main, state);
+    assert.equal(model.sections.find((s) => s.id === "annex").editableHtml, state.sectionContent.annex);
+  });
+  it("DOCX footnotes are Word's own, continuous through the sections", async () => {
+    const model = resolveGeneratedIndexes(compile(setup("document"), main, state), {});
+    const { files } = await docx(model);
+    const notes = strFromU8(files["word/footnotes.xml"]);
+    assert.deepEqual([...notes.matchAll(/<w:footnote [^>]*w:id="(\d+)"/g)].map((m) => m[1]).filter((id) => Number(id) > 0), ["1", "2", "3", "4"]);
+  });
+});

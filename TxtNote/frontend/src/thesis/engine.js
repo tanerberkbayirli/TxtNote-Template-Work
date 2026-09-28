@@ -5,7 +5,7 @@ import { flattenSpecialPage, isSpecialPageSection, resolveSpecialPage, specialPa
 import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesisPresentationHtml } from "./generatedIndex.js";
 
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
-import { resolveFootnoteRule } from "./footnotes.js";
+import { countFootnoteRefs, resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
 
@@ -238,6 +238,13 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const prefixHtml = layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}`;
     const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${bibliographyHtml}`;
     sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, ...(section.verticalAlign ? { verticalAlign: section.verticalAlign } : {}), status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || null, layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
+  }
+  // footnotes.numbering "document": references count on through the sections (default: each body restarts at 1).
+  let footnoteCount = 0;
+  for (const section of sections) {
+    if (section.rules.footnotes.numbering !== "document") continue;
+    section.footnoteOffset = footnoteCount;
+    footnoteCount += countFootnoteRefs(section.html);
   }
   for (const section of sections) {
     const definition = template.sections.find((item) => item.id === section.id);

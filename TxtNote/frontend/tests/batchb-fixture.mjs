@@ -85,6 +85,15 @@ const scenarios = {
     const chapter = (title, n) => `<h1>${title}</h1>${paras(1, `${n}.0`, 1)}<h2>Alt başlık ${n}</h2>${paras(1, `${n}.1`, 1)}<h3>Üçüncü düzey</h3><h4>Dördüncü Düzey Başlık</h4><h5>Beşinci Düzey Başlık</h5>${paras(1, `${n}.5`, 1)}`;
     return documentFor(t, [["Kuramsal çerçeve", 1], ["Yöntem", 2], ["Bulgular ve tartışma", 3]].map(([title, n]) => chapter(title, n)).join(""));
   },
+  // B5: footnotes numbered through the whole document (main text 1-2, the following section continues 3-4).
+  footnote() {
+    const t = baseTemplate("batchb-footnote-v1", (t) => {
+      t.typography.footnotes = { numbering: "document", fontSizePt: 10, lineHeight: 1 };
+      t.sections.splice(t.sections.findIndex((s) => s.id === "main") + 1, 0, { id: "annex", type: "custom", title: "Ek bölüm", status: "required", group: "back", mode: "editable", showTitle: true, pageBreakBefore: true });
+    });
+    const main = `<h1>Bölüm</h1>${P(`İlk cümle.${fn("a", "Birinci not metni.")} Devam.`)}${P(`İkinci cümle.${fn("b", "İkinci not metni.")} Son.`)}`;
+    return documentFor(t, main, { sectionContent: { annex: `${P(`Ek metin bir.${fn("c", "Üçüncü not metni.")}`)}${P(`Ek metin iki.${fn("d", "Dördüncü not metni.")}`)}` } });
+  },
 };
 if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
   const [name, out] = process.argv.slice(2);

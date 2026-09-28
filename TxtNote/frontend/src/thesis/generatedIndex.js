@@ -4,6 +4,7 @@ import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, thesisGroup
 
 const escape = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
+import { FOOTNOTE_REF_SELECTOR, renumberFootnoteRefs } from "./footnotes.js";
 export { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 const text = plainThesisText;
 export const INDEX_ITERATION_CAP = 6;
@@ -185,6 +186,12 @@ export function decorateThesisSources(root, model) {
     }
     const host = root.querySelector(`[data-thesis-flow-section="${section.id}"] .thesis-body`);
     if (!host) continue;
+    // Document-wide footnote numbering: the references of this body continue after those of the sections before it.
+    if (section.footnoteOffset !== undefined) host.querySelectorAll(FOOTNOTE_REF_SELECTOR).forEach((node, i) => {
+      const number = String(section.footnoteOffset + i + 1);
+      if (node.getAttribute("data-fn-index") !== number) node.setAttribute("data-fn-index", number);
+      if (node.textContent !== number) node.textContent = number;
+    });
     const entries = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind !== "equations");
     const equations = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind === "equations");
     host.querySelectorAll("[data-thesis-eq]").forEach((node) => { node.removeAttribute("data-thesis-eq"); node.removeAttribute("data-thesis-eq-side"); });
@@ -237,7 +244,7 @@ export function thesisPresentationHtml(section) {
   const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc" && entry.kind !== "equations");
   const equations = (section.indexSources || []).filter((entry) => entry.kind === "equations");
   let equation = 0;
-  let html = thesisSourceHtml(section.html).replace(/<span\b([^>]*\bdata-eq-numbered=["']true["'][^>]*)>/gi, (tag, attrs) => {
+  let html = (section.footnoteOffset !== undefined ? renumberFootnoteRefs(thesisSourceHtml(section.html), section.footnoteOffset) : thesisSourceHtml(section.html)).replace(/<span\b([^>]*\bdata-eq-numbered=["']true["'][^>]*)>/gi, (tag, attrs) => {
     const entry = /math-formula--block|data-display=["']block["']/i.test(attrs) ? equations[equation++] : null;
     return entry ? `${tag.slice(0, -1)} data-thesis-eq="${escape(entry.label)}" data-thesis-eq-side="${section.rules.equations.numberAlign === "left" ? "left" : "right"}">` : tag;
   }).replace(/<h([1-6])\b([^>]*)>/gi, (tag, level, attrs) => {

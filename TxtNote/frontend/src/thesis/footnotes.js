@@ -24,6 +24,7 @@ export function resolveFootnoteRule(base = {}, override = {}, body = {}) {
   for (const key of FOOTNOTE_STYLE_KEYS) if (rule[key] !== undefined) style[key] = rule[key];
   return {
     placement: rule.placement === "sectionEnd" ? "sectionEnd" : "pageBottom",
+    numbering: rule.numbering === "document" ? "document" : "section",
     maxAreaPercent: Number.isFinite(rule.maxAreaPercent) ? Math.min(90, Math.max(10, rule.maxAreaPercent)) : 50,
     separator: { ...SEPARATOR_DEFAULTS, ...base.separator, ...override.separator },
     style,
@@ -34,9 +35,10 @@ export function validateFootnoteRule(rule, path, validateStyle, body = {}) {
   if (rule === undefined) return [];
   if (!rule || typeof rule !== "object" || Array.isArray(rule)) return [`${path} nesne olmalı`];
   const errors = [];
-  const allowed = new Set([...FOOTNOTE_STYLE_KEYS, "placement", "maxAreaPercent", "separator"]);
+  const allowed = new Set([...FOOTNOTE_STYLE_KEYS, "placement", "maxAreaPercent", "separator", "numbering"]);
   for (const key of Object.keys(rule)) if (!allowed.has(key)) errors.push(`${path}.${key} bilinmiyor`);
   if (rule.placement !== undefined && !["pageBottom", "sectionEnd"].includes(rule.placement)) errors.push(`${path}.placement geçersiz`);
+  if (rule.numbering !== undefined && !["section", "document"].includes(rule.numbering)) errors.push(`${path}.numbering geçersiz`);
   if (rule.maxAreaPercent !== undefined && (!Number.isFinite(rule.maxAreaPercent) || rule.maxAreaPercent < 10 || rule.maxAreaPercent > 90)) errors.push(`${path}.maxAreaPercent 10-90 olmalı`);
   const separator = rule.separator;
   if (separator !== undefined) {
@@ -50,6 +52,20 @@ export function validateFootnoteRule(rule, path, validateStyle, body = {}) {
   const style = Object.fromEntries(FOOTNOTE_STYLE_KEYS.filter((key) => rule[key] !== undefined).map((key) => [key, rule[key]]));
   errors.push(...validateStyle({ fontFamily: body.fontFamily || "Times New Roman", fontSizePt: 9, ...style }, path));
   return errors;
+}
+
+/** Footnote references in source HTML (regex twin of FOOTNOTE_REF_SELECTOR). */
+const FOOTNOTE_REF_HTML = /(<(sup|span)\b(?=[^>]*\bclass=["'][^"']*\bacademic-footnote\b)[^>]*>)([^<]*)(<\/\2>)/gi;
+export const countFootnoteRefs = (html) => (String(html || "").match(FOOTNOTE_REF_HTML) || []).length;
+
+/** Print/static HTML of a document-numbered section: reference n becomes offset + n (text and data-fn-index). */
+export function renumberFootnoteRefs(html, offset) {
+  let n = offset;
+  return String(html || "").replace(FOOTNOTE_REF_HTML, (whole, open, tag, text, close) => {
+    n += 1;
+    const opening = /\sdata-fn-index=["'][^"']*["']/.test(open) ? open.replace(/(\sdata-fn-index=)["'][^"']*["']/, `$1"${n}"`) : `${open.slice(0, -1)} data-fn-index="${n}">`;
+    return `${opening}${n}${close}`;
+  });
 }
 
 /** Page-bottom notes need the paged flow plus per-fragment padding and typed attr(). */

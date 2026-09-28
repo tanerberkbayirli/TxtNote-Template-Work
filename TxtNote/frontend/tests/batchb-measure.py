@@ -91,7 +91,17 @@ def ordinal():
     check(xml.count('w:pStyle w:val="Heading5"') == 3 and "BÖLÜM" in plain, "DOCX: three Heading5 paragraphs, chapter heading paragraphs carry the label")
 
 
-SCENARIOS = {"photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
+def footnote():
+    doc, xml = export("footnote")
+    text = pages(doc)
+    numbers = [[l for l in page if l in ("1", "2", "3", "4")][:4] for page in text[1:3]]
+    check(numbers[0] == ["1", "2", "1", "2"] and numbers[1] == ["3", "4", "3", "4"], f"references and page-bottom notes continue through the sections: {numbers}")
+    plain = re.sub(r"<[^>]+>", "", xml)
+    ids = re.findall(r'w:footnoteReference w:id="(\d+)"', xml)
+    check(ids == ["1", "2", "3", "4"], f"DOCX footnote references are continuous: {ids}")
+
+
+SCENARIOS = {"footnote": footnote, "photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
 if __name__ == "__main__":
     for name in sys.argv[1:] or SCENARIOS:
         print(f"== {name} (output in {OUT})")
