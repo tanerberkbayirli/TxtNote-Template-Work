@@ -161,7 +161,7 @@
   },
   "currentUniversity": "aku",
   "currentTarget": null,
-  "currentPhase": "ANALYSIS",
+  "currentPhase": "SPEC_REVIEW",
   "lastCompletedValidation": null,
   "lastCommit": null,
   "environment": {
@@ -181,16 +181,16 @@
       "updatedAt": "2026-09-28"
     },
     "aku-fbe": {
-      "analysis": "PENDING",
+      "analysis": "DONE",
       "implementation": "PENDING",
       "validation": "PENDING",
       "attempts": 0,
       "status": "PENDING",
       "lastError": null,
-      "specPath": null,
-      "reportPath": null,
+      "specPath": "orchestration/specs/aku-fbe.json",
+      "reportPath": "orchestration/reports/aku-fbe.md",
       "commit": null,
-      "updatedAt": null
+      "updatedAt": "2026-09-28"
     },
     "aku-sagbil": {
       "analysis": "DONE",
