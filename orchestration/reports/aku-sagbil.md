@@ -171,3 +171,60 @@ Several details look dated: Harvard vs APA wording, Vancouver replaced, a cellop
 - **Master's approval page:** decide the jury layout. The source only shows the 5-member PhD version. Optional members could use `visibleWhen anyFilled`.
 - **ÖZGEÇMİŞ:** decide whether it is listed in the TOC.
 - **Fonts:** genuine Times New Roman must be embedded (policy 5).
+
+## Spec review
+
+Independent review on 2026-09-28. I re-read all 34 pages and every example raster. The spec was edited in place and now has `review` and `reviewedAt`. The script that applied the edits is `artifacts/aku-sagbil/review/apply_review.py`.
+
+**Changed as a result:** 195 rules, 21 conflicts (only 2 still flagged), 47 measurable checks and 25 unknowns.
+
+### Findings that change the spec
+
+- **Font is an author choice, not TNR 12.**
+  - §1.3 allows any book font, and its list ends with "vb.". The size is 10–14 pt "yazı tipine göre".
+  - Şekil 2 is captioned "Times New Roman 12 punto kullanılan bir sayfa **örneği**", so TNR 12 is only an example.
+  - The spec now records `authorChoice` with a default of TNR 12 (INFERRED). The heading sizes 14 and 12 apply only to that default configuration.
+  - The covers, however, are explicitly TNR (§1.19). This is recorded in the new rule `cover.fontFamily`.
+- **The "Space after H2" conflict was a misreading.** The "1,5 aralık (18 p)" bracket in Şekil 2 sits between body lines 2 and 3. It labels the body line spacing, not the gap after the heading. The gap after H2 is 24 pt.
+- **H1 followed directly by H2 is one 36 pt gap** (Şekil 2, raster ≈ 67 pt baseline-to-baseline). This must be implemented explicitly for both PDF and DOCX, as the new rule `headings.h1ToH2.gapPt`.
+- **Paragraph indent is optional, 5–10 mm** ("başlatılabilir"). The 24 pt paragraph gap is a minimum and applies only when paragraphs are indented.
+- **Word model, measured on the guide's own vector Word 2007 text** (booklet left margin 40.01 mm; top margin taken as 30 mm):
+  - First baseline under single spacing = top + 0.9335 em. This fits to ±0.01 mm at both 12 pt and 15.96 pt.
+  - Single line pitch = 1.15 em.
+  - The 1.5-spacing baseline and the paragraph-spacing model are UNKNOWN from this source.
+- **Missed EXPLICIT rule:** appendices submitted separately are listed at the end of the TOC.
+- **Missed MEASURED fact:** the TOC lists itself (İçindekiler iv).
+- **Example-only observations:**
+  - Captions start at the paragraph-indent position (MEASURED, low confidence; integrator decides).
+  - The example's footnote rule is ≈ 52 mm, Word's default length. The text's 65 mm wins.
+
+### Decisions proposed
+
+| Topic | Decision | Evidence |
+|---|---|---|
+| Harvard vs APA | Implement the author-date rules the guide spells out in §1.12 and §2.4. The label makes no difference. | — |
+| İçindekiler vs Önsöz order | İçindekiler before Önsöz. **Still flagged.** | For: §2.1 ordered list, §1.20, the booklet. Against, and missed by the analyzer: §1.7/§1.8 lists and the Şekil 10 page labels. |
+| Inner cover first line | T.C. | Quoted string in the text; Şekil 6 prints "T. C.". |
+| Abstract line spacing | Single. | — |
+| Space after front-matter titles | ÖNSÖZ, İÇİNDEKİLER, SİMGELER 36 pt. ŞEKİLLER and TABLOLAR 36 pt (INFERRED). | §1.7 |
+| ÖZET / SUMMARY spacing | 24 pt, then 18 pt, then 18 pt. | §2.3 and Şekil 14 agree. |
+| Space after KAYNAKLAR title | 18 pt. | §2.4; Şekil 17 geometry ≈ 18 pt. |
+| Bibliography size | Body −1 pt (default 11) or −2 pt. | §2.4 overrides §1.3. |
+| Bibliography entry gap | 18 pt. | The guide's own unit. Şekil 17's ≈ 6–7 pt is recorded as an example deviation and not averaged. |
+| Table label | Author choice between Tablo (default) and Çizelge. The list title follows the choice. | — |
+| List titles | ŞEKİLLER / TABLOLAR / SİMGELER ve KISALTMALAR. | — |
+| İç Kapak in the TOC | Not listed. | §1.20 ii requires the TOC to follow Şekil 10. |
+| Page numbers | At the top. Author choice between centre and right; default right, flush at x1 = 185 mm. | "ortaya" is ambiguous (105 mm or 112.5 mm). |
+| Master's approval page | Reuse the Şekil 9 grid with optional member rows. The jury count and the Raportör label stay UNKNOWN. | — |
+
+### Remaining UNKNOWNs and open items
+
+None of these blocks a default implementation.
+
+- **Guide version:** 2009 vs 2015.
+- **Page numbers:** distance from the top edge and font. Validation can only require the number to sit inside the top margin.
+- **Spacing and sizes:** space before H1, front-title size, exact caption and footnote sizes.
+- **Master's jury** count.
+- **Heading sizes** when the body size is not the default.
+- **1.5-spacing baseline** in the Word model.
+- **Engine:** a generic `templateChoices` mechanism for font, size, indent, table label and page-number alignment.

@@ -389,7 +389,19 @@
      "quote": "ortaya veya metin bloğu sağ kenar hizasına"
     }
    ],
-   "notes": "Author choice between top-center and top-right (flush with the text block's right edge, x1 = 185 mm). Integrator must pick one default (suggest center) or add a choice mechanism (engine gap)."
+   "notes": "REVIEW: both positions are EXPLICITLY allowed (§1.8). Default proposed: right, because it is the only position whose anchor the text defines (\"metin bloğu sağ kenar hizası\"); \"ortaya\" is ambiguous (page centre 105 mm vs text-block centre 112.5 mm). Engine already has pageNumberAlignment (schema.d.ts) so both are representable. Vertical distance from the top edge is UNKNOWN; validator can only require the number to lie inside the top margin (baseline < 30 mm).",
+   "authorChoice": {
+    "allowed": [
+     "center",
+     "right"
+    ],
+    "default": "right",
+    "defaultConfidence": "INFERRED",
+    "geometry": {
+     "right": "number x1 = 185.0 mm (text-block right edge) - EXPLICIT anchor",
+     "center": "text-block centre x = 112.5 mm (Word header centre tab) - INFERRED; page centre 105 mm is the other reading"
+    }
+   }
   },
   {
    "key": "pagination.distanceFromEdgeMm",
@@ -577,7 +589,7 @@
      "quote": "tek tip yazı tipi (font) kullanılmalı ve kitaplarda kullanılan yazı tiplerinden biri (Times New Roman, Bookman, Palatino, Garamond, Arial vb.) seçilmelidir"
     }
    ],
-   "notes": "One font for the whole main text; script/decorative fonts forbidden. Tables/figure text may use a sans (Helvetica, Arial)."
+   "notes": "One font for the whole main text; script/decorative fonts forbidden. Tables/figure text may use a sans (Helvetica, Arial). REVIEW: list is open-ended (\"vb.\"), see typography.body.fontFamily.authorChoice."
   },
   {
    "key": "typography.body.fontFamily",
@@ -598,7 +610,23 @@
      "quote": "'Times 10 p Koyu', 'Times 14 - 18 p Koyu'"
     }
    ],
-   "notes": "Author may choose any listed book font; TNR is what every annotated example uses. Genuine TNR must be embedded (policy 5)."
+   "notes": "REVIEW: TNR is NOT a requirement. §1.3 lets the author choose any book font (\"... Arial vb. seçilmelidir\"); Şekil 2 caption says it is \"Times New Roman 12 punto kullanılan bir sayfa örneği\" (an example). Represent as an author choice with default TNR (all annotated examples). The template/UI must not present TNR as mandatory; validation checks the fixture's chosen font is genuine+embedded and used uniformly in the main text. Exception: the covers are explicitly TNR (outer cover 24 pt TNR, inner cover 10 pt TNR, §1.19) regardless of the body choice - see cover.fontFamily.",
+   "authorChoice": {
+    "allowed": [
+     "Times New Roman",
+     "Bookman",
+     "Palatino",
+     "Garamond",
+     "Arial",
+     "other book (text) fonts - the list ends with \"vb.\""
+    ],
+    "forbidden": [
+     "handwriting / decorative fonts (Brush Script, Lucida Calligraphy, Monotype Corsiva vb.)"
+    ],
+    "constraint": "exactly one font family throughout the main text (tek tip yazı tipi)",
+    "default": "Times New Roman",
+    "defaultConfidence": "INFERRED"
+   }
   },
   {
    "key": "typography.body.fontSizePt",
@@ -620,7 +648,16 @@
      "quote": "Ana metinde Times New Roman 12 punto kullanılan bir sayfa örneği"
     }
    ],
-   "notes": "Allowed range 10-14 pt (EXPLICIT); 12 pt is the example value."
+   "notes": "REVIEW: allowed range 10-14 pt is EXPLICIT (§1.3, \"yazı tipine göre\" = size depends on the chosen font); 12 pt is only the example configuration (Şekil 2). Author choice, default 12.",
+   "authorChoice": {
+    "rangePt": [
+     10,
+     14
+    ],
+    "dependsOn": "chosen font (\"yazı tipine göre\")",
+    "default": 12,
+    "defaultConfidence": "INFERRED"
+   }
   },
   {
    "key": "typography.body.lineSpacing",
@@ -716,7 +753,16 @@
      "quote": "indented first glyph at x=144 px vs block edge 116 px -> 28 pt = 9.9 mm"
     }
    ],
-   "notes": "Allowed 5-10 mm ('başlatılabilir'); 10 mm per the model page."
+   "notes": "Allowed 5-10 mm ('başlatılabilir'); 10 mm per the model page. REVIEW: §1.5 \"0,5 - 1,0 cm kadar içerden başlatılabilir\" (may) - indent is optional and its size a 5-10 mm choice; default 10 mm from the figure annotation.",
+   "authorChoice": {
+    "rangeMm": [
+     5,
+     10
+    ],
+    "optional": true,
+    "default": 10,
+    "defaultConfidence": "EXPLICIT (Şekil 2 annotation \"7 Karakter (veya 1 cm)\")"
+   }
   },
   {
    "key": "typography.paragraph.firstAfterHeadingIndentMm",
@@ -760,7 +806,7 @@
      "quote": "'2 aralık (24 p)' between paragraphs"
     }
    ],
-   "notes": "'en az' = minimum 24 pt. Modelled as spaceAfterPt 24 (spaceBefore 0). Measured Şekil 2 last-baseline-to-first-baseline across a paragraph break ≈ 51 px (≈ 20.7 + 30 pt) - raster, low precision."
+   "notes": "'en az' = minimum 24 pt. Modelled as spaceAfterPt 24 (spaceBefore 0). Measured Şekil 2 last-baseline-to-first-baseline across a paragraph break ≈ 51 px (≈ 20.7 + 30 pt) - raster, low precision. REVIEW: §1.7 makes this conditional (\"... içerden başlatılıyor ise paragraf aralığı için en az 2 tam aralık\") and a minimum (\"en az\"); 24 pt is the value for the default indented configuration. Paragraph gap for a non-indented configuration is UNKNOWN."
   },
   {
    "key": "typography.paragraph.spaceBeforePt",
@@ -794,7 +840,7 @@
      "quote": "paragraf aralığı için en az 2 tam aralık"
     }
    ],
-   "notes": ""
+   "notes": "REVIEW: §1.7 makes this conditional (\"... içerden başlatılıyor ise paragraf aralığı için en az 2 tam aralık\") and a minimum (\"en az\"); 24 pt is the value for the default indented configuration. Paragraph gap for a non-indented configuration is UNKNOWN."
   },
   {
    "key": "typography.blockQuote",
@@ -912,7 +958,7 @@
    "unit": "pt",
    "confidence": "EXPLICIT",
    "appliesTo": [
-    "*"
+    "bodyConfig:TNR-12 (default)"
    ],
    "evidence": [
     {
@@ -921,7 +967,7 @@
      "quote": "'Times New Roman 14 p Koyu (Bold)' on '1. GİRİŞ'"
     }
    ],
-   "notes": "Stated in the model page annotation (with a 12 pt body)."
+   "notes": "Stated in the model page annotation (with a 12 pt body). REVIEW: the value comes from annotations on the TNR-12 example page (Şekil 2); it is exact for the default body configuration only. For another chosen body size the guide gives no heading size - INFERRED rule: H1 = body + 2 pt, H2/H3 = body size (keeps the example ratio); integrator must document this."
   },
   {
    "key": "headings.h1.caps",
@@ -1063,7 +1109,7 @@
    "unit": "pt",
    "confidence": "EXPLICIT",
    "appliesTo": [
-    "*"
+    "bodyConfig:TNR-12 (default)"
    ],
    "evidence": [
     {
@@ -1072,7 +1118,7 @@
      "quote": "'Times New Roman 12 p Koyu (Bold)' on '1.1. Köpeğin Evrimi'"
     }
    ],
-   "notes": ""
+   "notes": "REVIEW: the value comes from annotations on the TNR-12 example page (Şekil 2); it is exact for the default body configuration only. For another chosen body size the guide gives no heading size - INFERRED rule: H1 = body + 2 pt, H2/H3 = body size (keeps the example ratio); integrator must document this."
   },
   {
    "key": "headings.h3.fontSizePt",
@@ -1080,7 +1126,7 @@
    "unit": "pt",
    "confidence": "INFERRED",
    "appliesTo": [
-    "*"
+    "bodyConfig:TNR-12 (default)"
    ],
    "evidence": [
     {
@@ -1089,7 +1135,7 @@
      "quote": "H2 and H3 are always described together"
     }
    ],
-   "notes": ""
+   "notes": "REVIEW: the value comes from annotations on the TNR-12 example page (Şekil 2); it is exact for the default body configuration only. For another chosen body size the guide gives no heading size - INFERRED rule: H1 = body + 2 pt, H2/H3 = body size (keeps the example ratio); integrator must document this."
   },
   {
    "key": "headings.h2.case",
@@ -1165,7 +1211,7 @@
      "quote": "'2 aralık (24 p)' after '1.2. Türk Çoban Köpeği' (but '1,5 aralık (18 p)' after '1.1.' - conflict)"
     }
    ],
-   "notes": ""
+   "notes": "REVIEW: the analyzer's '1,5 aralık (18 p) after 1.1.' reading is wrong: in Şekil 2 that bracket sits between body lines 2 and 3 of the first paragraph (y ≈ 238-250 pt, baselines ≈ 233/254) - it labels the 1.5 body line spacing, not a heading gap. Measured 1.1.-heading baseline to first body baseline ≈ 49 pt (raster) is consistent with 24 pt, not 18 pt. No conflict."
   },
   {
    "key": "headings.h2.numbering",
@@ -1376,7 +1422,15 @@
      "quote": "Tablo 4. Devam."
     }
    ],
-   "notes": "Both labels allowed; all examples use 'Tablo'. One must be used consistently."
+   "notes": "Both labels allowed; all examples use 'Tablo'. One must be used consistently. REVIEW: Şekil 5 explicitly offers both (\"Çizelge 1.1 ... veya Tablo 1.1\"): author choice, default Tablo; the list title and \"Devam\" caption follow the chosen label.",
+   "authorChoice": {
+    "allowed": [
+     "Tablo",
+     "Çizelge"
+    ],
+    "default": "Tablo",
+    "defaultConfidence": "EXPLICIT (§1.16 example \"Tablo 4. Devam.\" + every figure)"
+   }
   },
   {
    "key": "captions.figure.label",
@@ -1758,7 +1812,7 @@
      "quote": "soldan sağa sayfanın ortasına kadar çizilen sürekli bir çizgi ile ayrılmalıdır"
     }
    ],
-   "notes": "65 mm = 105 - 40 (INFERRED arithmetic). Thickness UNKNOWN."
+   "notes": "65 mm = 105 - 40 (INFERRED arithmetic). Thickness UNKNOWN. REVIEW: Şekil 3 draws the rule ≈ 36 % of the block (≈ 52 mm ≈ Word's default 2-inch separator); the text \"sayfanın ortasına kadar\" wins → 40 → 105 mm (65 mm). If \"ortası\" were read as text-block centre it would be 72.5 mm; page centre is the literal reading."
   },
   {
    "key": "footnotes.separator.spaceBeforePt",
@@ -1855,7 +1909,7 @@
      "quote": "yazar soyadı ve kaynak tarihi belirtilerek atıfta bulunulmalıdır"
     }
    ],
-   "notes": "Two authors: 'Akçapınar ve Özbeyaz, 1999'; >2: 'Clark ve ark., 1975' ('et al.' in foreign text); multiple refs chronological separated by ';'; same author/year a, b. Not enforced by engine (documentation only)."
+   "notes": "REVIEW decision: implement the author-date format the guide spells out itself (§1.12 in-text forms, §2.4 list format: SURNAME, I. (year). ...). The \"Harvard\" (Sunuş) vs \"APA\" (§2.4) label does not change any rule the engine applies; no confirmation needed for implementation. Two authors: 'Akçapınar ve Özbeyaz, 1999'; >2: 'Clark ve ark., 1975' ('et al.' in foreign text); multiple refs chronological separated by ';'; same author/year a, b. Not enforced by engine (documentation only)."
   },
   {
    "key": "bibliography.title",
@@ -1928,9 +1982,14 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
      "locator": "pdf p.27 §2.4",
      "quote": "başlıktan sonra 1,5 aralık bırakılarak dizine geçilmelidir"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.29 Şekil 17 (raster, ≈ 2.18 px/pt from the 145 mm block)",
+     "quote": "title baseline → first entry baseline ≈ 71 px ≈ 32.6 pt ≈ 13.8 (single line) + 18 pt; 36 pt would give ≈ 50 pt"
     }
    ],
-   "notes": "Conflicts with §1.7 generic '3 tam aralık' after kaynak dizini title; §2.4 is more specific."
+   "notes": "Conflicts with §1.7 generic '3 tam aralık' after kaynak dizini title; §2.4 is more specific. REVIEW: §2.4 (specific) overrides §1.7 (3 aralık); the example geometry agrees with 18 pt."
   },
   {
    "key": "bibliography.fontSizePt",
@@ -1952,7 +2011,19 @@
      "quote": "kaynak dizininde ... (8-9 punto) seçilebilir"
     }
    ],
-   "notes": "Exact value is the author's choice within the rule; see conflict."
+   "notes": "REVIEW decision: §2.4 (specific, mandatory \"yazılmalı\") wins over §1.3 (general, permissive \"seçilebilir\", shared with table/figure text). With the default 12 pt body: 11 (default) or 10 pt. 8-9 pt is only compatible when the body is 10 pt, so it is not a separate requirement. Şekil 17 (Palatino) line pitch ≈ 12.8 pt also fits ≈ 11 pt.",
+   "authorChoice": {
+    "allowed": [
+     "body - 1 pt",
+     "body - 2 pt"
+    ],
+    "absoluteRangePt": [
+     7,
+     12
+    ],
+    "default": 11,
+    "defaultConfidence": "INFERRED (body 12 - 1)"
+   }
   },
   {
    "key": "bibliography.lineSpacing",
@@ -1990,7 +2061,7 @@
      "quote": "paragraf aralığı 1,5 olarak seçilmelidir"
     }
    ],
-   "notes": "'1,5' interpreted with the guide's aralık unit (1,5 aralık = 18 p). Şekil 17 shows a much smaller gap (≈7 pt extra at an estimated scale). needsConfirmation."
+   "notes": "REVIEW decision: 18 pt. The guide defines its own unit in figure annotations (\"1,5 aralık (18 p)\", Şekil 3/14) and uses \"paragraf aralığı ... 2 tam aralık\" = 24 p for body paragraphs, so \"paragraf aralığı 1,5\" = 18 pt under the same unit (explicit text > example geometry). Şekil 17 shows only ≈ 6-7 pt extra (entry-to-entry baseline ≈ 1.5 x line pitch) - recorded as an example deviation, not averaged."
   },
   {
    "key": "bibliography.hangingIndentMm",
@@ -2343,7 +2414,7 @@
      "quote": "Şekiller Dizini (section name)"
     }
    ],
-   "notes": "Printed title in the example differs from the section name."
+   "notes": "Printed title in the example differs from the section name. REVIEW decision: printed titles follow the examples; \"... Dizini\" is descriptive (the guide likewise writes \"“İÇİNDEKİLER” dizini\" while the printed title is İÇİNDEKİLER), and Şekil 10 TOC rows read \"Simgeler ve Kısaltmalar / Şekiller / Tablolar\"."
   },
   {
    "key": "lists.figures.required",
@@ -2429,7 +2500,17 @@
      "quote": "Çizelgeler Dizini (section name)"
     }
    ],
-   "notes": "Should follow the chosen table label (Tablo -> TABLOLAR, Çizelge -> ÇİZELGELER; the latter INFERRED)."
+   "notes": "Should follow the chosen table label (Tablo -> TABLOLAR, Çizelge -> ÇİZELGELER; the latter INFERRED). REVIEW decision: printed titles follow the examples; \"... Dizini\" is descriptive (the guide likewise writes \"“İÇİNDEKİLER” dizini\" while the printed title is İÇİNDEKİLER), and Şekil 10 TOC rows read \"Simgeler ve Kısaltmalar / Şekiller / Tablolar\".",
+   "authorChoice": {
+    "allowed": [
+     "TABLOLAR",
+     "ÇİZELGELER"
+    ],
+    "followsCaptionLabel": true,
+    "default": "TABLOLAR",
+    "defaultConfidence": "MEASURED (Şekil 13)",
+    "note": "ÇİZELGELER is INFERRED (label choice Çizelge)"
+   }
   },
   {
    "key": "lists.tables.required",
@@ -2499,7 +2580,7 @@
      "quote": "Simgeler ve Kısaltmalar Dizini"
     }
    ],
-   "notes": ""
+   "notes": "REVIEW decision: printed titles follow the examples; \"... Dizini\" is descriptive (the guide likewise writes \"“İÇİNDEKİLER” dizini\" while the printed title is İÇİNDEKİLER), and Şekil 10 TOC rows read \"Simgeler ve Kısaltmalar / Şekiller / Tablolar\"."
   },
   {
    "key": "lists.symbols.order",
@@ -2723,7 +2804,7 @@
      "quote": "'2 aralık (24 p)'"
     }
    ],
-   "notes": ""
+   "notes": "REVIEW: §2.3 (specific) and the Şekil 14 annotation \"2 aralık (24 p)\" agree; §1.7's general 3 aralık does not apply to ÖZET/SUMMARY."
   },
   {
    "key": "abstract.thesisTitleStyle",
@@ -2786,7 +2867,7 @@
      "quote": "özetin metni 1 aralıkla yazılmalıdır"
     }
    ],
-   "notes": "Şekil 14/15 are drawn at 1.5 lines (pitch ≈ 21 px) - conflict."
+   "notes": "Şekil 14/15 are drawn at 1.5 lines (pitch ≈ 21 px) - conflict. REVIEW decision: single (explicit, specific §2.3). Şekil 14/15 drawn at 1.5 are example geometry and lose under the policy order."
   },
   {
    "key": "abstract.fontSizePt",
@@ -3164,7 +3245,7 @@
      "quote": "'Times 10 p Koyu'; first line printed 'TÜRKİYE CUMHURİYETİ'"
     }
    ],
-   "notes": "Bold from the Şekil 8 annotation. 3 cm = the top margin."
+   "notes": "Bold from the Şekil 8 annotation. 3 cm = the top margin. REVIEW decision: \"T.C.\" - the text quotes the exact string for both covers and the outer-cover example (Şekil 6) prints \"T. C.\"; Şekil 8's \"TÜRKİYE CUMHURİYETİ\" is example content. No confirmation needed."
   },
   {
    "key": "innerCover.headerToTitle",
@@ -3346,7 +3427,7 @@
      "quote": "Doktora example: Jüri Başkanı + Raportör + 3 Üye"
     }
    ],
-   "notes": "Master's jury count UNKNOWN (not in source)."
+   "notes": "Master's jury count UNKNOWN (not in source). REVIEW: master's count remains UNKNOWN in the source (only a 5-member PhD example). Proposed representation (no invented number): reuse the Şekil 9 grid - chair row centred + 2-column member rows; member rows optional (visibleWhen anyFilled) so a 3-member jury renders chair + one 2-column row. Whether \"Raportör\" exists for master's is UNKNOWN (label it \"Üye\" unless the institute confirms). The director signature block uses placeholders, not the fixed name \"Prof.Dr. Zehra BOZKURT\"."
   },
   {
    "key": "structure.order",
@@ -3393,7 +3474,7 @@
      "quote": "ÖZET 89 and SUMMARY 91 after 5. SONUÇ 85, before KAYNAKLAR 93"
     }
    ],
-   "notes": "Özet/Summary come AFTER the main text. Example TOC puts Önsöz before İçindekiler (conflict)."
+   "notes": "Özet/Summary come AFTER the main text. Example TOC puts Önsöz before İçindekiler (conflict). REVIEW: İçindekiler before Önsöz per §2.1 (the dedicated ordered structure list) and §1.20 i-vi, and the guide's own booklet (İÇİNDEKİLER ii, ÖNSÖZ iii). Counter-evidence the analyzer did not cite: §1.7 and §1.8 enumerate \"önsöz, içindekiler, simgeler...\" (Önsöz first) and Şekil 10 page labels (Önsöz iii, İçindekiler iv). §1.7/§1.8 are lists for a spacing/numbering rule (\"gibi\"), not ordering statements, so §2.1 stays decisive; still flagged for institute confirmation."
   },
   {
    "key": "chapters.required",
@@ -3517,6 +3598,199 @@
     }
    ],
    "notes": ""
+  },
+  {
+   "key": "cover.fontFamily",
+   "value": "Times New Roman",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.14 §1.19",
+     "quote": "üç satır halinde ortalanarak, 24 punto Times New Roman fontu kullanarak"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.14 §1.19",
+     "quote": "İç kapak ... 10 punto Times New Roman fontu kullanarak"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.17 Şekil 8",
+     "quote": "'Times 10 p Koyu', 'Times 14 - 18 p Koyu'"
+    }
+   ],
+   "notes": "Outer-cover and inner-cover texts are TNR independent of the body-font choice (inner-cover title/other lines: Şekil 8 annotation \"Times\")."
+  },
+  {
+   "key": "headings.h1ToH2.gapPt",
+   "value": 36,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.8 Şekil 2",
+     "quote": "single '3 aralık (36 p)' bracket between '1. GİRİŞ' and '1.1. Köpeğin Evrimi'"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.7 §1.7",
+     "quote": "bunlara ait başlıklardan sonra 3 tam aralık ... İkinci ve üçüncü dereceden bölüm başlıklarından önce 3"
+    }
+   ],
+   "notes": "One 36 pt gap (not 36+36) when an H2 directly follows an H1. Raster check: GİRİŞ baseline ≈ 96.5 pt, 1.1. baseline ≈ 163.5 pt → 67 pt, consistent with a single 36 pt gap (additive 72 pt would give ≈ 94 pt). Implement explicitly in both PDF and DOCX (do not rely on CSS margin collapsing; Word adds after+before)."
+  },
+  {
+   "key": "abstract.paragraphs",
+   "value": "UNKNOWN (example shows first paragraph flush, later ones indented, blank gap between)",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.25 Şekil 14",
+     "quote": "paragraphs 2-3 start indented, separated by a blank gap; text drawn 1.5-spaced (overridden by §2.3)"
+    }
+   ],
+   "notes": "Paragraph indent/gap inside ÖZET not stated; suggest same indent/gap rule as body (INFERRED) with single line spacing."
+  },
+  {
+   "key": "captions.firstLineIndentMm",
+   "value": 10,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.9 Şekil 3 (raster ≈ 3.37 px/mm)",
+     "quote": "'Şekil 3.1.' and 'Tablo 3.1.' start ≈ 12.6-12.9 mm right of the block edge, same x as the indented body paragraph 'İncelenen ırklarda' (≈ 12.6 mm); continuation lines hang at ≈ 25.6 mm under the caption text"
+    }
+   ],
+   "notes": "Low confidence (raster ±3 mm). Captions in the example start at the paragraph-indent position, with hanging continuation under the caption text. Text only says \"ana metin gibi bloklama tarzında\". Integrator decision: caption first line at the paragraph indent (10 mm) vs flush left; list entries (Şekil 12/13) start flush left."
+  },
+  {
+   "key": "lists.figures.titleSpaceAfterPt",
+   "value": 36,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "list-of-figures",
+    "list-of-tables"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.7 §1.7",
+     "quote": "önsöz, içindekiler, simgeler ve kısaltmalar dizini ... başlıklardan sonra 3 tam aralık (lists of figures/tables not named)"
+    }
+   ],
+   "notes": "Not stated for ŞEKİLLER/TABLOLAR; by analogy with the other front-matter indexes. Şekil 12/13 are zoomed crops and cannot confirm."
+  },
+  {
+   "key": "toc.includesItself",
+   "value": true,
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.20 Şekil 10",
+     "quote": "'İçindekiler ........ iv'"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.19 §1.20 ii",
+     "quote": "Ön kapak dışındaki tüm özel sayfalar ... eksiksiz olarak gösterilmelidir"
+    }
+   ],
+   "notes": "The TOC lists its own page. İç Kapak is not listed: §1.20 ii itself says \"Şekil 10'daki örneğe uygun olmalıdır\", and Şekil 10 starts at Kabul ve Onay."
+  },
+  {
+   "key": "toc.separateAppendices",
+   "value": "listed at the end of the TOC",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.19 §1.20 ii",
+     "quote": "Tezden ayrı olarak sunulması gerekli ekler var ise bunlarda dizinin sonunda gösterilmelidir"
+    }
+   ],
+   "notes": "Missed by the analyzer."
+  },
+  {
+   "key": "wordModel.firstBaselineOffsetEm",
+   "value": {
+    "single": 0.9335,
+    "1.5": null
+   },
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-sagbil/source/guide_body_lines.txt",
+     "locator": "guide_body_lines.txt page 7 (vector Word 2007 text)",
+     "quote": "first line '1.6. Anlatım' TNR-Bold 12 pt baseline 33.96 mm → 3.96 mm below a 30 mm top = 11.22 pt = 0.935 em"
+    },
+    {
+     "source": "orchestration/artifacts/aku-sagbil/source/guide_body_lines.txt",
+     "locator": "guide_body_lines.txt page 5",
+     "quote": "first line '1. BİÇİM STANDARTLARI' TNR-Bold 15.96 pt baseline 35.27 mm → 5.27 mm = 14.94 pt = 0.936 em"
+    }
+   ],
+   "notes": "Single spacing: Word baseline = top + (lineGap 0.0425 + ascent 0.891) em = 0.9335 em - confirmed to ±0.01 mm at two font sizes, assuming the booklet top margin is 30 mm (its left margin measures 40.01 mm, i.e. the booklet uses the thesis margins). 1.5-line spacing: no vector 1.5-spaced text in this source → UNKNOWN here (raster Şekil 2 cannot resolve 0.5 mm)."
+  },
+  {
+   "key": "wordModel.singleLinePitchEm",
+   "value": 1.15,
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-sagbil/source/guide_body_lines.txt",
+     "locator": "guide_body_lines.txt page 5 §1.2/§1.4",
+     "quote": "TNR 12 consecutive baselines 95.27/100.14, 220.59/225.50 mm → 4.87-4.91 mm ≈ 13.8 pt"
+    }
+   ],
+   "notes": "Word single line of TNR = 1.15 em. A line containing a font with larger ascent/descent grows (Lucida Calligraphy line in §1.3: 5.46 mm)."
+  },
+  {
+   "key": "wordModel.paragraphSpacing",
+   "value": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.5-7 (booklet)",
+     "quote": "booklet separates paragraphs with empty paragraphs, not spacing; examples are raster"
+    }
+   ],
+   "notes": "Additive vs collapsed space, contextualSpacing and top-of-page suppression cannot be demonstrated from this source. Only fact: Şekil 2 shows one 36 pt gap between an H1 and a following H2 (see headings.h1ToH2.gapPt)."
   }
  ],
  "sections": [
@@ -5441,8 +5715,8 @@
      "value": "APA standardı benimsenmiştir"
     }
    ],
-   "decision": "Both are author-date; record citationStyle 'author-date (Harvard/APA)'; not enforced by the engine.",
-   "needsConfirmation": true
+   "decision": "REVIEW: implement the author-date rules the guide itself spells out (§1.12, §2.4); the Harvard/APA label changes nothing implementable. Resolved.",
+   "needsConfirmation": false
   },
   {
    "topic": "Order of Önsöz and İçindekiler",
@@ -5456,9 +5730,14 @@
      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
      "locator": "pdf p.20 Şekil 10",
      "value": "Kabul ve Onay ii, Önsöz iii, İçindekiler iv"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.7 §1.7 / §1.8",
+     "value": "lists 'önsöz, içindekiler, simgeler ...' (Önsöz first) - lists for a spacing/numbering rule"
     }
    ],
-   "decision": "Text (stated twice, and followed by the guide's own front matter) wins: İçindekiler before Önsöz.",
+   "decision": "REVIEW: İçindekiler before Önsöz (§2.1 ordered structure list + §1.20 order + booklet). §1.7/§1.8 enumerations and Şekil 10 page labels point the other way; implement İçindekiler→Önsöz, keep for institute confirmation (non-blocking).",
    "needsConfirmation": true
   },
   {
@@ -5475,8 +5754,8 @@
      "value": "TÜRKİYE CUMHURİYETİ"
     }
    ],
-   "decision": "Text quotes the exact string: use 'T.C.'.",
-   "needsConfirmation": true
+   "decision": "REVIEW: 'T.C.' - explicit quoted string in §1.19 for both covers; outer-cover example prints 'T. C.'. Resolved.",
+   "needsConfirmation": false
   },
   {
    "topic": "Outer-cover window height",
@@ -5531,8 +5810,8 @@
      "value": "drawn at 1.5 lines (pitch ≈ 21 pt)"
     }
    ],
-   "decision": "Single (explicit text).",
-   "needsConfirmation": true
+   "decision": "REVIEW: single (explicit specific text beats example geometry). Resolved.",
+   "needsConfirmation": false
   },
   {
    "topic": "Keyword label",
@@ -5570,8 +5849,8 @@
      "value": "KAYNAKLAR: başlıktan sonra 1,5 aralık"
     }
    ],
-   "decision": "Specific sections win for ÖZET/SUMMARY (24 pt) and KAYNAKLAR (18 pt); 36 pt for ÖNSÖZ, İÇİNDEKİLER, SİMGELER (and by default ŞEKİLLER/TABLOLAR, INFERRED).",
-   "needsConfirmation": true
+   "decision": "REVIEW: ÖNSÖZ/İÇİNDEKİLER/SİMGELER 36 pt (§1.7); ÖZET/SUMMARY 24 pt to thesis title then 18 pt (§2.3 + Şekil 14 annotations agree); KAYNAKLAR 18 pt (§2.4, Şekil 17 geometry ≈ 18 pt); ŞEKİLLER/TABLOLAR 36 pt INFERRED. Resolved (specific > general).",
+   "needsConfirmation": false
   },
   {
    "topic": "Space after H2",
@@ -5587,7 +5866,7 @@
      "value": "'1,5 aralık (18 p)' after 1.1.; '2 aralık (24 p)' after 1.2."
     }
    ],
-   "decision": "24 pt (text, and the second instance of the figure).",
+   "decision": "REVIEW: not a conflict - Şekil 2's '1,5 aralık (18 p)' labels body line spacing (between body lines 2-3), not the gap after '1.1.'. 24 pt.",
    "needsConfirmation": false
   },
   {
@@ -5638,8 +5917,8 @@
      "value": "bir veya iki punto küçük (7-12 punto)"
     }
    ],
-   "decision": "§2.4 (specific section): body − 1 or − 2 pt → 11 or 10 pt with a 12 pt body; integrator picks one.",
-   "needsConfirmation": true
+   "decision": "REVIEW: §2.4 (specific, mandatory) → body −1 or −2 pt (author choice, default 11 pt with a 12 pt body). §1.3 8-9 pt is permissive/general. Resolved.",
+   "needsConfirmation": false
   },
   {
    "topic": "Bibliography entry spacing",
@@ -5655,8 +5934,8 @@
      "value": "≈ 7 pt extra between entries (estimated scale)"
     }
    ],
-   "decision": "18 pt (1,5 aralık in the guide's unit) - but ambiguous ('1,5' could also be Word 1.5-line empty paragraph or 6 pt).",
-   "needsConfirmation": true
+   "decision": "REVIEW: 18 pt - the guide's own unit ('1,5 aralık (18 p)') applied to explicit text; Şekil 17's ≈ 6-7 pt is example geometry (policy: text > example; never average). Resolved; deviation documented.",
+   "needsConfirmation": false
   },
   {
    "topic": "Printed titles of the lists",
@@ -5672,8 +5951,8 @@
      "value": "SİMGELER ve KISALTMALAR / ŞEKİLLER / TABLOLAR"
     }
    ],
-   "decision": "Use the printed example titles.",
-   "needsConfirmation": true
+   "decision": "REVIEW: example titles (ŞEKİLLER, TABLOLAR/ÇİZELGELER per label choice, SİMGELER ve KISALTMALAR); 'Dizini' is descriptive as in '“İÇİNDEKİLER” dizini'. Resolved.",
+   "needsConfirmation": false
   },
   {
    "topic": "Table label",
@@ -5689,8 +5968,8 @@
      "value": "Tablo"
     }
    ],
-   "decision": "Both allowed; default 'Tablo' (all examples) with list title TABLOLAR; 'Çizelge'/ÇİZELGELER as an author choice if the engine supports it.",
-   "needsConfirmation": true
+   "decision": "REVIEW: explicit author choice (Şekil 5 \"... veya ...\"), default Tablo; list title and Devam caption follow the choice. Resolved (engine needs a template choice).",
+   "needsConfirmation": false
   },
   {
    "topic": "TOC entry wording",
@@ -5723,8 +6002,8 @@
      "value": "first entry is Kabul ve Onay (no İç Kapak)"
     }
    ],
-   "decision": "Follow the example (İç Kapak not listed).",
-   "needsConfirmation": true
+   "decision": "REVIEW: excluded - §1.20 ii itself requires conformity with Şekil 10, which starts at Kabul ve Onay. Resolved.",
+   "needsConfirmation": false
   },
   {
    "topic": "Page-number position",
@@ -5741,6 +6020,40 @@
     }
    ],
    "decision": "Rule wins; the guide says its own layout is not thesis-conformant (pdf p.4).",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Footnote separator length",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.10 §1.11",
+     "value": "soldan sağa sayfanın ortasına kadar (40 → 105 mm = 65 mm)"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.9 Şekil 3 (raster)",
+     "value": "≈ 36 % of the block ≈ 52 mm (Word default separator)"
+    }
+   ],
+   "decision": "REVIEW: 65 mm (explicit text).",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Body font / size: example vs rule",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.5 §1.3",
+     "value": "any book font (TNR, Bookman, Palatino, Garamond, Arial vb.), 10-14 pt"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+     "locator": "pdf p.8 Şekil 2 caption",
+     "value": "an example page using TNR 12"
+    }
+   ],
+   "decision": "REVIEW: author choice; TNR 12 is the default configuration only. Heading sizes (14/12) exact only for that configuration.",
    "needsConfirmation": false
   }
  ],
@@ -5832,6 +6145,18 @@
   {
    "key": "outer-cover logo asset",
    "why": "only a ≈200 px raster inside Şekil 6; no vector/official file in sources"
+  },
+  {
+   "key": "headings.h*.fontSizePt for non-default body sizes",
+   "why": "only annotated for the TNR-12 example"
+  },
+  {
+   "key": "wordModel.firstBaselineOffsetEm for 1.5 spacing; wordModel.paragraphSpacing",
+   "why": "no vector 1.5-spaced text or spacing-based paragraphs in the source"
+  },
+  {
+   "key": "approval Raportör role for master",
+   "why": "PhD example only"
   }
  ],
  "engineGaps": [
@@ -5994,8 +6319,8 @@
    "appliesTo": [
     "*"
    ],
-   "what": "body span font program",
-   "expected": "Times New Roman (genuine, embedded)",
+   "what": "body span font program; uniform across main-text spans (author choice from typography.body.fontFamily.authorChoice)",
+   "expected": "fixture's chosen body font (default Times New Roman), genuine program embedded, one family across main text",
    "unit": "name",
    "tolerance": 0,
    "sourceRule": "typography.body.fontFamily"
@@ -6005,7 +6330,7 @@
    "appliesTo": [
     "*"
    ],
-   "what": "body span size",
+   "what": "body span size = fixture choice (default 12), must lie in 10-14",
    "expected": 12,
    "unit": "pt",
    "tolerance": 0.1,
@@ -6016,7 +6341,7 @@
    "appliesTo": [
     "*"
    ],
-   "what": "baseline distance of consecutive body lines (Word 1.5 lines TNR 12)",
+   "what": "baseline distance of consecutive body lines (Word 1.5 lines TNR 12) - value for the default TNR-12 configuration (Word 1.5 lines = 1.5 x 1.15 em)",
    "expected": 20.7,
    "unit": "pt",
    "tolerance": 0.2,
@@ -6082,7 +6407,7 @@
    "appliesTo": [
     "*"
    ],
-   "what": "H1: TNR Bold 14 pt, uppercase, centred (centre x = 112.5 mm), new page, number '1. '",
+   "what": "H1: TNR Bold 14 pt, uppercase, centred (centre x = 112.5 mm), new page, number '1. ' [default TNR-12 configuration]",
    "expected": {
     "sizePt": 14,
     "bold": true,
@@ -6108,7 +6433,7 @@
    "appliesTo": [
     "*"
    ],
-   "what": "H2/H3: TNR Bold 12 pt, x0 = 40 mm, numbers '1.1.' / '1.1.1.'",
+   "what": "H2/H3: TNR Bold 12 pt, x0 = 40 mm, numbers '1.1.' / '1.1.1.' [default TNR-12 configuration]",
    "expected": {
     "sizePt": 12,
     "bold": true,
@@ -6137,8 +6462,12 @@
    "appliesTo": [
     "*"
    ],
-   "what": "page number in the top margin, centred on the text block (x centre 112.5 mm) or flush right at 185 mm; no decorations",
-   "expected": "top",
+   "what": "page number inside the top margin (baseline < 30 mm); default choice right: x1 = 185.0 mm; if the centre choice is configured: centre x = 112.5 mm; plain numerals",
+   "expected": {
+    "position": "top",
+    "defaultAlign": "right",
+    "x1Mm": 185.0
+   },
    "unit": "",
    "tolerance": 0.5,
    "sourceRule": "pagination.position"
@@ -6261,7 +6590,7 @@
    "appliesTo": [
     "*"
    ],
-   "what": "KAYNAKLAR bold centred; 18 pt after title; entries single spaced, 10 or 11 pt, justified",
+   "what": "KAYNAKLAR bold centred caps, line top at 38.47 mm; first entry baseline = title baseline + title line + 18 pt; entries single spaced, size = body−1 (default 11 pt), justified",
    "expected": "",
    "unit": "",
    "tolerance": 0.2,
@@ -6370,6 +6699,160 @@
    "unit": "",
    "tolerance": 0,
    "sourceRule": "structure.order"
+  },
+  {
+   "id": "bib-entry-gap",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "extra space between bibliography entries (last baseline → next first baseline minus single pitch of the bib size)",
+   "expected": 18,
+   "unit": "pt",
+   "tolerance": 0.2,
+   "sourceRule": "bibliography.spaceAfterPt"
+  },
+  {
+   "id": "bib-size",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "bibliography entry span size (default body 12 − 1)",
+   "expected": 11,
+   "unit": "pt",
+   "tolerance": 0.1,
+   "sourceRule": "bibliography.fontSizePt"
+  },
+  {
+   "id": "h1-h2-gap",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "H1 directly followed by H2: one 36 pt gap (not 72) in PDF and DOCX",
+   "expected": 36,
+   "unit": "pt",
+   "tolerance": 0.2,
+   "sourceRule": "headings.h1ToH2.gapPt"
+  },
+  {
+   "id": "front-title-after",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "ÖNSÖZ / İÇİNDEKİLER / SİMGELER ve KISALTMALAR title → first content line: 36 pt extra",
+   "expected": 36,
+   "unit": "pt",
+   "tolerance": 0.2,
+   "sourceRule": "preface.titleSpaceAfterPt"
+  },
+  {
+   "id": "abstract-gaps",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "ÖZET/SUMMARY: title → thesis title 24 pt; thesis title → text 18 pt; text → keyword line 18 pt; text single spaced",
+   "expected": [
+    24,
+    18,
+    18
+   ],
+   "unit": "pt",
+   "tolerance": 0.2,
+   "sourceRule": "abstract.titleToThesisTitlePt"
+  },
+  {
+   "id": "caption-gaps",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "figure → caption 12 pt; table caption → table 12 pt; 18 pt before/after the figure/table unit",
+   "expected": [
+    12,
+    18
+   ],
+   "unit": "pt",
+   "tolerance": 0.2,
+   "sourceRule": "captions.spacing.captionToObjectPt"
+  },
+  {
+   "id": "footnote-separator",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "separator rule x0 = 40.0 mm, x1 = 105.0 mm; 24 pt below the last text line",
+   "expected": {
+    "x0Mm": 40.0,
+    "x1Mm": 105.0,
+    "spaceBeforePt": 24
+   },
+   "unit": "mixed",
+   "tolerance": 0.5,
+   "sourceRule": "footnotes.separator"
+  },
+  {
+   "id": "cover-font",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "inner-cover (and outer-cover) text font program = Times New Roman regardless of body-font choice",
+   "expected": "Times New Roman",
+   "unit": "name",
+   "tolerance": 0,
+   "sourceRule": "cover.fontFamily"
+  },
+  {
+   "id": "para-indent-choice",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "first-line indent of non-first paragraphs = configured choice in 5-10 mm (default 10 → x0 = 50.0 mm)",
+   "expected": 50.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "typography.paragraph.firstLineIndentMm"
   }
- ]
+ ],
+ "reviewedAt": "2026-09-28",
+ "review": {
+  "reviewer": "independent",
+  "changes": [
+   "typography.body.fontFamily/fontSizePt: recast as author choices (fonts: any book font, 10-14 pt), default TNR 12 INFERRED; TNR not a requirement.",
+   "headings.h1-h3.fontSizePt: scoped to the default TNR-12 body configuration; other body sizes INFERRED (H1 = body+2, H2/H3 = body).",
+   "added cover.fontFamily = TNR (EXPLICIT §1.19) independent of body choice.",
+   "pagination.align: author choice {center,right}; proposed default right (x1 = 185 mm); centre geometry ambiguity recorded.",
+   "paragraph indent: optional 5-10 mm choice (default 10); 24 pt gap is a minimum, conditional on indentation.",
+   "headings.h2.spaceAfterPt: conflict 'Space after H2' dissolved - Şekil 2's '1,5 aralık (18 p)' labels body line spacing.",
+   "added headings.h1ToH2.gapPt = 36 (single gap, Şekil 2).",
+   "bibliography: size = body-1/-2 choice (default 11); entry gap 18 pt decided; title-after 18 pt corroborated by Şekil 17 geometry.",
+   "added captions.firstLineIndentMm (MEASURED-low): example captions start at the paragraph indent.",
+   "added toc.includesItself, toc.separateAppendices (missed EXPLICIT), lists.figures.titleSpaceAfterPt (INFERRED 36), abstract.paragraphs (UNKNOWN).",
+   "approval: master jury left UNKNOWN; proposed optional-row representation of the Şekil 9 grid.",
+   "added wordModel.firstBaselineOffsetEm (single 0.9335 em, MEASURED on guide vector text; 1.5 UNKNOWN), wordModel.singleLinePitchEm 1.15, wordModel.paragraphSpacing UNKNOWN.",
+   "conflicts: 11 needsConfirmation flags cleared with decisions; added footnote-separator and body-font conflicts; only version/date and Önsöz order remain flagged (non-blocking).",
+   "measurableChecks: body font/size/pitch/headings tied to the default choice; +9 checks (bib gap/size, H1-H2 gap, front-title-after, abstract gaps, caption gaps, footnote separator, cover font, indent choice)."
+  ],
+  "decisionsProposed": [
+   "Body font/size: author choice (any book font, 10-14 pt), default TNR 12 (INFERRED); covers always TNR (EXPLICIT).",
+   "Page number: top; author choice centre/right; default right (x1 185 mm).",
+   "Citation: guide-specified author-date format; Harvard/APA label irrelevant.",
+   "Front order: İçindekiler before Önsöz (§2.1) - still flagged.",
+   "Inner cover first line: T.C.",
+   "Abstract text: single spacing; ÖZET gaps 24/18/18.",
+   "Title-after gaps: ÖNSÖZ/İÇİNDEKİLER/SİMGELER 36, ÖZET 24, KAYNAKLAR 18, ŞEKİLLER/TABLOLAR 36 (INFERRED).",
+   "Bibliography: size body−1 (11) or body−2; entry gap 18 pt.",
+   "Table label: choice Tablo (default)/Çizelge; list title follows.",
+   "List titles: ŞEKİLLER / TABLOLAR / SİMGELER ve KISALTMALAR.",
+   "İç Kapak not in TOC; TOC lists itself.",
+   "Footnote separator 65 mm (to page centre).",
+   "Master's approval: Şekil 9 grid with optional member rows; count UNKNOWN."
+  ],
+  "openItems": [
+   "Guide currency (2009 vs 2015) - institute confirmation.",
+   "Page-number vertical distance / font (UNKNOWN; validator can only require it inside the top margin).",
+   "H1 space before; front-matter title font size; caption/footnote exact sizes (choose, document as non-source).",
+   "Master's jury count and Raportör label.",
+   "Caption first-line indent (example suggests paragraph indent; MEASURED-low).",
+   "Heading sizes for non-default body sizes (INFERRED body+2 / body).",
+   "Engine: templateChoices mechanism for font/size/indent/label/alignment choices (engineGap #4)."
+  ]
+ }
 }
