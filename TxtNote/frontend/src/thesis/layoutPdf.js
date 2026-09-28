@@ -33,7 +33,7 @@ function textWidth(style, text) {
 }
 
 /** Plain copy of the typography a text op needs (computed style objects are live). */
-const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, letterSpacing: style.letterSpacing, textTransform: style.textTransform });
+const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign });
 
 function color(value) {
   const match = String(value || "").match(/rgba?\(([^)]+)\)/);
@@ -116,7 +116,8 @@ function collectGroup(stack, language) {
     // Keep each special-page line as one text run. The browser and embedded PDF
     // font can differ slightly in glyph widths; separately painted words then
     // swallow the visible space as well as losing it during text extraction.
-    if (node.parentElement.closest(".thesis-layout-text")) {
+    // Justified lines are the exception: their word gaps are stretched by the browser, so each word keeps its own position.
+    if (node.parentElement.closest(".thesis-layout-text") && style.textAlign !== "justify") {
       let text = "", box = null;
       const flush = () => { if (text.trim() && box) pushText(transformText(text.trimEnd(), style.textTransform, style.lang), box, style, extra); };
       for (let i = 0; i < data.length; i += 1) {

@@ -41,8 +41,9 @@ const IMAGE = png(420, 210, (x, y) => { for (const [a, b, top, color] of bars) i
 // ---- text building blocks (deterministic)
 const P = (text) => `<p>${text}</p>`;
 const fn = (id, text) => `<sup class="academic-footnote" contenteditable="false" data-fn-id="${id}" data-fn-text="${text}">1</sup>`;
-const figure = (caption) => `<figure class="academic-figure" data-kind="figure" contenteditable="false"><img width="420" height="210" src="${IMAGE}" alt=""><figcaption>${caption}</figcaption></figure>`;
+const figure = (caption, kind = "") => `<figure class="academic-figure" data-kind="figure"${kind ? ` data-caption-kind="${kind}"` : ""} contenteditable="false"><img width="420" height="210" src="${IMAGE}" alt=""><figcaption>${caption}</figcaption></figure>`;
 const table = (caption, head, rows) => `<div class="academic-table-wrap" data-academic-table="true"><table class="academic-table" data-kind="table"><caption>${caption}</caption><thead><tr>${head.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+const pageBreak = `<div class="academic-page-break" data-academic-page-break="true"></div>`;
 const equation = `<span class="math-formula math-formula--block" data-display="block" data-latex="E = mc^2" data-eq-numbered="true">(E = mc^2)</span>`;
 const S_TR = "Çevrimiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri; öz yeterlik, erişim olanakları ve ölçme araçlarının güvenirliği açısından ayrıntılı biçimde incelenmiştir.";
 const S_EN = "The digital literacy levels of pre-service teachers in online learning environments were examined in detail with respect to self-efficacy, access and the reliability of measurement instruments.";
@@ -65,6 +66,8 @@ function mainBody() {
     parts.push(`<h2>${L.sub} ${n}.1</h2>`, paras(2, `${n}.1`), `<h3>${L.sub} ${n}.1.1</h3>`, paras(1, `${n}.1.1`), `<h4>${L.sub} ${n}.1.1.1</h4>`, P(tr ? "Kısa paragraf." : "Short paragraph."));
     if (c === 0) parts.push(list("ul", L.ul), list("ol", L.ol), figure(L.fig), P(S), table(L.tab, L.head, [["Cinsiyet", "Kadın", "64", "53,3"], ["", "Erkek", "56", "46,7"], ["Sınıf", "3", "70", "58,3"], ["", "4", "50", "41,7"]]));
     if (c === 1) parts.push(P(`${S}`), equation, P(S), figure(L.figLong));
+    if (c === 3 && template.captionKinds?.photo) parts.push(P(S), figure(tr ? "Deney düzeneğinin fotoğrafı" : "Photograph of the experimental set-up", "photo"), P(S));
+    if (c === 0 && template.typography?.paragraphStyles?.tableNote) parts.push(`<p data-thesis-style="tableNote">${tr ? "Not: Yüzdeler sütun toplamına göre hesaplanmıştır." : "Note: Percentages are column-based."}</p>`);
     if (c === 2) parts.push(P(Array.from({ length: 14 }, () => S).join(" ")), table(L.tabLong, L.head, longRows));
     parts.push(`<h2>${L.sub} ${n}.2</h2>`, paras(3, `${n}.2`, 3));
   });
@@ -86,10 +89,10 @@ function sectionHtml(section) {
   if (t === "englishAbstract") return P(`Abstract 1. ${S_EN}`) + P(`Abstract 2. ${S_EN} ${S_EN}`);
   if (t === "preface" || t === "acknowledgements") return paras(2, tr ? "Önsöz" : "Preface", 1);
   if (t === "dedication") return P(tr ? "Aileme" : "To my family");
-  if (t === "listOfSymbols" || t === "listOfAbbreviations") return [["BAP", "Bilimsel Araştırma Projeleri"], ["ÖSYM", "Ölçme, Seçme ve Yerleştirme Merkezi"], ["f", "Frekans"], ["%", "Yüzde"]].map(([a, b]) => P(`<b>${a}</b>\t${b}`)).join("");
+  if (t === "listOfSymbols" || t === "listOfAbbreviations") return P("<b>Simgeler</b>") + [["f", "Frekans"], ["%", "Yüzde"], ["α", "Anlamlılık düzeyi; bu tanım iki satıra yayılacak kadar uzun tutulmuştur ki asılı girinti görülebilsin"]].map(([a, b]) => P(`${a}\t${b}`)).join("") + P("") + P("<b>Kısaltmalar</b>") + [["BAP", "Bilimsel Araştırma Projeleri"], ["ÖSYM", "Ölçme, Seçme ve Yerleştirme Merkezi"]].map(([a, b]) => P(`${a}\t${b}`)).join("");
   if (t === "bibliography") return bibliography;
-  if (t === "appendices") return P(tr ? "EK 1. Dijital Okuryazarlık Ölçeği" : "APPENDIX 1. Digital Literacy Scale") + P(S) + P(tr ? "EK 2. Etik Kurul Onayı" : "APPENDIX 2. Ethics Committee Approval") + P(S);
-  if (t === "curriculumVitae") return P(tr ? "Ad Soyad: Çağrı Şükrü ÖZDOĞAN" : "Name: Çağrı Şükrü ÖZDOĞAN") + P(S);
+  if (t === "appendices") return P(tr ? "<b>EK 1.</b> Dijital Okuryazarlık Ölçeği" : "APPENDIX 1. Digital Literacy Scale") + P(S) + pageBreak + P(tr ? "<b>EK 2.</b> Etik Kurul Onayı" : "APPENDIX 2. Ethics Committee Approval") + P(S);
+  if (t === "curriculumVitae") return tr ? ["Adı Soyadı\t: Çağrı Şükrü ÖZDOĞAN", "Doğum Yeri ve Tarihi\t: Afyonkarahisar, 01.01.1995", "Yabancı Dili\t: İngilizce", "İletişim (Telefon / e-posta)\t: 0 555 000 00 00 / ornek@aku.edu.tr", "Eğitim Durumu (Kurum ve Yıl)", "\tLisans\t: Afyon Kocatepe Üniversitesi, Fen Fakültesi, 2018", "\tYüksek Lisans\t: Afyon Kocatepe Üniversitesi, Fen Bilimleri Enstitüsü, 2022"].map(P).join("") : P(S);
   if (t === "introduction") return paras(3, tr ? "Giriş" : "Introduction") + P(`${S}${fn("fi", tr ? "Giriş dipnotu." : "Introduction footnote.")}`);
   if (t === "conclusion") return paras(2, tr ? "Sonuç" : "Conclusion");
   return paras(1, section.title || t);
@@ -100,11 +103,17 @@ function placeholderValue(key, definition) {
     YEAR: "2026", STUDENT_NAME: "Çağrı Şükrü ÖZDOĞAN", STUDENT_NUMBER: "220101001", DEPARTMENT_NAME: tr ? "Eğitim Bilimleri" : "Educational Sciences", DEPARTMENT_NAME_EN: "Educational Sciences",
     PROGRAM_NAME: tr ? "Eğitim Programları ve Öğretim" : "Curriculum and Instruction", ADVISOR_TITLE: "Doç. Dr.", ADVISOR_NAME: "İlknur ÇİÇEK", CO_ADVISOR_TITLE: "Dr. Öğr. Üyesi", CO_ADVISOR_NAME: "Gökhan IŞIK",
     CITY: "Afyonkarahisar", KEYWORDS: "dijital okuryazarlık, çevrimiçi öğrenme, öğretmen adayı, öz yeterlik, uzaktan eğitim", KEYWORDS_EN: "digital literacy, online learning, pre-service teacher, self-efficacy, distance education",
-    THESIS_TITLE_EN: "Examining The Digital Literacy Levels Of Pre-Service Teachers In Online Learning Environments", MONTH: tr ? "Ocak" : "January", DEFENSE_DATE: "2026-01-15",
+    DEFENSE_MONTH: "Ocak", DEFENSE_YEAR: "2026", DECISION: "oy birliği", SIGN_DATE: "15 / 01 / 2026", INSTITUTE_DIRECTOR: "Prof. Dr. Ahmet YILDIZ",
+    ADVISOR_TITLE_EN: "Assoc. Prof.", CO_ADVISOR_TITLE_EN: "Asst. Prof.", PROJECT_NUMBER: "26.FEN.01", PROJECT_FUNDER: "BAP",
+    THESIS_TITLE_EN: "Examining The Digital Literacy Levels Of Pre-Service Teachers In Online Learning Environments", MONTH: tr ? "Ocak" : "January",
   };
   if (definition.derived) return undefined;
   if (known[key] !== undefined) return known[key];
   if (definition.defaultValue !== undefined) return definition.defaultValue;
+  if (key === "DEFENSE_DATE" && definition.type !== "date") return "15 / 01 / 2026";
+  // Jury rows: five by default, rows 6-7 (doctorate with a second advisor) only for doctoral templates.
+  const juror = key.match(/^JURY_(\d+)_(TITLE_NAME|AFFILIATION)$/);
+  if (juror) return Number(juror[1]) > 5 && template.degreeType !== "phd" ? undefined : juror[2] === "AFFILIATION" ? `Örnek Üniversitesi, Fen Fakültesi ${juror[1]}` : `Prof. Dr. Jüri ÜYESİ ${juror[1]}`;
   if (definition.type === "date") return "2026-01-15";
   if (definition.type === "number") return "1";
   if (/MEMBER|JURY|JURI/.test(key)) return /TITLE/.test(key) ? "Prof. Dr." : `Üye ${key.replace(/\D/g, "") || "1"} ADI SOYADI`;
@@ -141,6 +150,12 @@ const doc = {
     },
   },
 };
+// Fixture titles that fit the reviewed layouts (AKÜ FBE: a two-line title on the covers and in the abstracts).
+const TITLES = { "aku-fbe-": "Dijital Okuryazarlık Düzeylerinin Çevrimiçi Öğrenme Ortamlarına Etkisi" };
+const titled = Object.entries(TITLES).find(([prefix]) => registryId.startsWith(prefix));
+if (titled && tr) doc.title = titled[1];
+// AKÜ types the English title in capitals (no case transform: Turkish casing would turn i into İ).
+if (registryId.startsWith("aku-fbe-")) { const v = doc.researchData.thesis.values; v.THESIS_TITLE_EN = String(v.THESIS_TITLE_EN || "").toUpperCase(); }
 if (overrides.title) doc.title = overrides.title;
 if (overrides.content) doc.content = overrides.content;
 await writeFile(out, JSON.stringify(doc, null, 1));

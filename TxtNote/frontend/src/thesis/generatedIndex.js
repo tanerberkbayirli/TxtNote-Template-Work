@@ -128,7 +128,7 @@ export function generatedIndexHtml(entries, rule) {
   const rowText = (entry) => entry.label && entry.rowTitle !== undefined ? `<span class="thesis-index-label">${escape(entry.label)}</span> <span class="thesis-index-title">${escape(entry.rowTitle)}</span>` : escape(entry.text);
   // A level may list its rows without page numbers (e.g. centred chapter rows): levelStyles[level].includePageNumber === false.
   const withPage = (entry) => rule.includePageNumbers && rule.levelStyles?.[entry.level]?.includePageNumber !== false;
-  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"${entry.labelLine ? ' data-index-label-line="true"' : ""}><span class="thesis-index-text">${rowText(entry)}</span>${withPage(entry) ? `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(80) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>` : ""}</li>`).join("")}</ol>`;
+  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"${entry.labelLine ? ' data-index-label-line="true"' : ""}><span class="thesis-index-text">${rowText(entry)}</span>${withPage(entry) ? `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(400) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>` : ""}</li>`).join("")}</ol>`;
 }
 
 /**

@@ -156,8 +156,8 @@ describe("thesis engine", () => {
       const model = compileThesisDocument(template, {}, "T", "<h1>Bir</h1><h2>İki</h2><h3>Üç</h3><h3>Dört</h3>");
       const labels = model.headings.map((heading) => heading.label);
       assert.equal(new Set(labels).size, labels.length, `${entry.id}: ${labels}`);
-      // A template may end its labels with a period (MCBÜ: "1.1.1.").
-      assert.match(labels[2], /^1\.1\.1\.?$/, entry.id);
+      // A template may end its labels with a period (MCBÜ: "1.1.1.") or number an introduction section first (AKÜ: "1. GİRİŞ", so this H1 is chapter 2).
+      assert.match(model.headings.find((heading) => heading.level === 3).label, /^[12]\.1\.1\.?$/, entry.id);
     }
     const early = compileThesisDocument(generic, {}, "T", "<h2>Önce</h2><h1>Bir</h1>");
     assert.deepEqual(early.headings.map((heading) => heading.label), ["0.1", "1"]);

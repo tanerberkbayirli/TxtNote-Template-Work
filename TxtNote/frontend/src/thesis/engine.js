@@ -315,6 +315,8 @@ export function thesisSectionCss(section) {
   // Opt-in Word line placement: a paint-only offset per text style (see wordBaseline.js).
   const lift = (style) => wordBaselineCss(wordBaselineProbe(style, lineSpacing, lh(style?.lineHeight)));
   const styleCss = (style) => serializeStyle(style, lineSpacing);
+  // A hanging indent belongs to the paragraphs (the `.thesis-body p` rule), never to the page/flow container around them.
+  const containerCss = (style) => styleCss({ ...style, hangingIndentMm: 0 });
   const textCss = (style) => serializeStyle(style, lineSpacing) + lift(style);
   const id = section.id;
   const paperScope = `.thesis-paper[data-thesis-section="${id}"]`;
@@ -326,8 +328,8 @@ export function thesisSectionCss(section) {
   const kindIds = Object.keys(section.rules.captionKinds || {});
   const plainFigure = kindIds.length ? `figure:not(:is(${kindIds.map((kind) => `[data-caption-kind="${kind}"]`).join(",")})) ` : "";
   const rules = [
-    `${paperScope}{${styleCss(body)}box-sizing:border-box;position:relative;z-index:1;width:${page.widthMm}mm;min-height:${page.heightMm}mm;padding:${page.margins.topMm}mm ${page.margins.rightMm}mm ${page.margins.bottomMm}mm ${page.margins.leftMm}mm;margin:0;background:transparent;color:#111;text-indent:0;}`,
-    `${fragmentScope}{${styleCss(body)}display:block;margin:0;text-indent:0;}`,
+    `${paperScope}{${containerCss(body)}box-sizing:border-box;position:relative;z-index:1;width:${page.widthMm}mm;min-height:${page.heightMm}mm;padding:${page.margins.topMm}mm ${page.margins.rightMm}mm ${page.margins.bottomMm}mm ${page.margins.leftMm}mm;margin:0;background:transparent;color:#111;text-indent:0;}`,
+    `${fragmentScope}{${containerCss(body)}display:block;margin:0;text-indent:0;}`,
     // A special page anchored to the bottom margin fills its page and puts its content at the bottom.
     ...(section.verticalAlign === "bottom" ? [`${fragmentScope}{display:flex;flex-direction:column;justify-content:flex-end;min-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm}`] : []),
     // Legacy loose lines keep their geometry. New <p> blocks have real paragraph spacing.
