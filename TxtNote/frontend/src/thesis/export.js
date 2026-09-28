@@ -9,6 +9,7 @@ import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/aca
 import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, indentMm, resolveChromeText, transformThesisText } from "./engine.js";
 import { PX_PER_MM, thesisGroupHasPageContent } from "./pageLayout.js";
 import { specialPageRowWidths } from "./specialPages.js";
+import { continuationParts } from "./tableContinuation.js";
 import { MM_PER_PT, mmToTwip, ptToTwip } from "./units.js";
 
 const mmPerPt = MM_PER_PT;
@@ -338,7 +339,7 @@ function tableDocx(block, section, context) {
   const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
   const sourceRows = (block.rows || []).filter((row) => row.length);
   const lastHeader = sourceRows.reduce((last, row, index) => (row.every((cell) => cell.header) ? index : last), -1);
-  const rows = sourceRows.map((row, rowIndex) => new TableRow({
+  const makeRow = (row, rowIndex) => new TableRow({
     cantSplit: true, tableHeader: row.every((cell) => cell.header),
     children: row.map((cell) => new TableCell({
       columnSpan: cell.colspan > 1 ? cell.colspan : undefined, rowSpan: cell.rowspan > 1 ? cell.rowspan : undefined,
@@ -347,12 +348,32 @@ function tableDocx(block, section, context) {
       margins: preset ? { top: 0, bottom: 0, left: twip(1.9), right: twip(1.9) } : { top: pt(4), bottom: pt(4), left: pt(4), right: pt(4) },
       children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
-  }));
+  });
   // Three-rule table: top and bottom of the table, and below the (repeated) header row.
   const borders = preset === "threeRule" ? { top: rule, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : preset === "none" ? { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER };
-  if (rows.length) out.push(new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders }));
+  const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders });
+  // Continuation captions: the table is split at the rows the editor measured as page starts; each later
+  // fragment gets its caption paragraph and the header row(s) again (Word cannot vary a repeated row's text).
+  const headerRows = sourceRows.findIndex((row) => !row.every((cell) => cell.header));
+  const headerCount = headerRows < 0 ? 0 : headerRows;
+  const continuation = tables.continuation && tables.position === "above" ? context.tableContinuations?.[block.captionAnchor] : null;
+  const starts = (continuation?.rows || []).filter((index) => index > headerCount && index < sourceRows.length);
+  if (starts.length) {
+    const bounds = [0, ...starts, sourceRows.length];
+    bounds.slice(0, -1).forEach((from, fragment) => {
+      const rows = sourceRows.slice(from, bounds[fragment + 1]).map((row, i) => makeRow(row, from + i));
+      if (fragment) {
+        out.push(continuationParagraph(tables, block, context, continuation.hang));
+        rows.unshift(...sourceRows.slice(0, headerCount).map((row, i) => makeRow(row, i)));
+      }
+      out.push(tableOf(rows));
+    });
+    return out;
+  }
+  const rows = sourceRows.map(makeRow);
+  if (rows.length) out.push(tableOf(rows));
   if (caption && tables.position !== "above") out.push(caption);
   return out;
 }
@@ -366,6 +387,14 @@ function captionParagraph(rule, block, context, options = {}) {
   // One run as before unless the label has its own typography (e.g. bold "Şekil 2.1").
   const children = rule.labelStyle ? [textRun(`${label} `, { ...style, ...rule.labelStyle }, context), ...docxRuns(plainRuns(block.caption), style, context)] : docxRuns(plainRuns(`${label} ${block.caption}`), style, context);
   return new Paragraph({ ...paragraphProps(paragraphStyle, options, context.lineSpacing), children });
+}
+
+/** Caption paragraph above a continuation fragment ("Çizelge 3.1 (Devam) Başlık"): label text in the label style. */
+function continuationParagraph(rule, block, context, labelHangPx = 0) {
+  const style = captionStyle(rule, block, context);
+  const hangMm = rule.hangingIndent === "label" ? labelHangPx / PX_PER_MM : rule.hangingIndent > 0 ? rule.hangingIndent : 0;
+  const children = continuationParts(rule, { number: block.captionNumber, title: block.caption }).flatMap((part) => rule.labelStyle && !part.title ? [textRun(part.text, { ...style, ...rule.labelStyle }, context)] : docxRuns(plainRuns(part.text), style, context));
+  return new Paragraph({ ...paragraphProps(hangMm > 0 ? { ...style, hangingIndentMm: hangMm } : style, { keepNext: true }, context.lineSpacing), children });
 }
 
 function captionStyle(rule, block, context) {
@@ -487,10 +516,10 @@ function listLevels(ordered) {
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
-export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {} } = {}) {
+export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {}, tableContinuations = {} } = {}) {
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
-  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, captionHangs, indexHangs };
+  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, captionHangs, indexHangs, tableContinuations };
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
   const sections = model.sections.map((section, index) => {
     const page = section.rules.page;

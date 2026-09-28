@@ -1,0 +1,56 @@
+// Browser checks of the Batch B editor behaviour (real ThesisEditor via thesis-batchb.html).
+// usage: node tests/batchb-ui.mjs <photo|continuation> <fixture.json>   (dev server on :5175)
+import assert from "node:assert/strict";
+import { createRequire } from "node:module";
+import { readFile } from "node:fs/promises";
+const { chromium } = createRequire(import.meta.url)(process.env.PLAYWRIGHT_MODULE || "/opt/node22/lib/node_modules/playwright");
+const [scenario, fixture] = process.argv.slice(2);
+const browser = await chromium.launch({ args: ["--enable-blink-features=MulticolColumnWrapping"] });
+const page = await (await browser.newContext({ viewport: { width: 1400, height: 1000 } })).newPage();
+const errors = [];
+page.on("pageerror", (e) => errors.push(e.message));
+await page.goto(`${process.env.BASE_URL || "http://127.0.0.1:5175"}/tests/thesis-batchb.html`);
+await page.evaluate(([k, v]) => { localStorage.clear(); localStorage.setItem(k, v); }, ["txtnote-thesis-regression", await readFile(fixture, "utf8")]);
+await page.reload();
+await page.locator(".thesis-sheet").first().waitFor();
+const settle = async () => { let last = ""; for (let i = 0; i < 40; i += 1) { await page.waitForTimeout(250); const now = await page.evaluate(() => [...document.querySelectorAll(".thesis-sheet")].length + ":" + document.querySelectorAll("tr[data-thesis-cont]").length + ":" + document.body.innerText.length); if (now === last) return now; last = now; } return last; };
+const pass = (message) => console.log(`PASS ${message}`);
+await settle();
+
+if (scenario === "photo") {
+  assert.equal(await page.getByRole("button", { name: "Resim ekle" }).count(), 1);
+  const select = page.getByLabel("Görsel türü");
+  assert.equal(await select.isDisabled(), true);
+  await page.locator("figure.academic-figure img").first().click();
+  assert.equal(await select.isEnabled(), true);
+  await select.selectOption("photo");
+  await settle();
+  const saved = await page.evaluate(() => window.thesisTest.getDoc().content);
+  assert.equal((saved.match(/data-caption-kind="photo"/g) || []).length, 4);
+  assert.deepEqual(await page.evaluate(() => [...document.querySelectorAll("figcaption")].map((n) => n.dataset.thesisCaption)), ["Resim 1.1 ", "Resim 1.2 ", "Resim 1.3 ", "Şekil 2.1 ", "Resim 2.1 "]);
+  pass("the author picks a figure and changes its kind: renumbered, stored as source markup (data-caption-kind)");
+  await page.reload(); await page.locator(".thesis-sheet").first().waitFor(); await settle();
+  assert.equal(await page.evaluate(() => document.querySelectorAll('figure[data-caption-kind="photo"]').length), 4);
+  pass("the kind survives reload");
+}
+if (scenario === "continuation") {
+  const rows = await page.evaluate(() => document.querySelectorAll('tr[data-thesis-cont="caption"]').length);
+  assert.ok(rows >= 4, `continuation rows in the editor: ${rows}`);
+  await page.locator(".rich-text-body p").first().click();
+  await page.keyboard.type("x");
+  await settle();
+  const saved = await page.evaluate(() => JSON.stringify(window.thesisTest.getDoc()));
+  assert.ok(!/data-thesis-cont/.test(saved), "saved note has no continuation rows");
+  assert.equal(await page.evaluate(() => document.querySelectorAll('tr[data-thesis-cont="caption"]').length), rows);
+  assert.ok(!(await page.evaluate(() => document.body.innerText.includes("kararlı hale gelmedi"))), "pagination stabilised");
+  pass(`${rows} continuation rows in the editor, none stored, pagination stable after an edit`);
+  // Editing inside the split table moves the fragments and the rows follow.
+  await page.locator("table.academic-table tbody td").first().click();
+  for (let i = 0; i < 6; i += 1) await page.keyboard.press("Enter");
+  await settle();
+  const after = await page.evaluate(() => [...document.querySelectorAll('tr[data-thesis-cont="caption"]')].map((tr) => tr.dataset.thesisContAt));
+  assert.ok(after.length >= 4 && !/data-thesis-cont/.test(await page.evaluate(() => JSON.stringify(window.thesisTest.getDoc()))));
+  pass("editing inside the table re-derives the continuation rows without storing them");
+}
+assert.deepEqual(errors, []);
+await browser.close();

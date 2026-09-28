@@ -11,6 +11,7 @@ import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections,
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
 import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes } from "../../thesis/generatedIndex.js";
 import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
+import { layoutTableContinuations, tableContinuationRows } from "../../thesis/tableContinuation.js";
 
 const hiddenFields = new Set(["THESIS_TITLE", "UNIVERSITY_NAME", "INSTITUTE_NAME", "DEGREE_TYPE"]);
 // Tailwind's reset removes list markers; the stored ul/ol structure is unchanged.
@@ -147,6 +148,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       const groups = groupThesisSections(sourceModel.sections);
       // A frame budget keeps typing responsive in long, note-heavy groups: an incomplete
       // pass (later pages still to re-lay) continues next frame and is not an iteration.
+      // Continuation caption rows of split tables change the flow, so they are settled before notes and indexes.
+      const continuations = layoutTableContinuations(root, groups, sourceModel);
       const { views: notes, incomplete } = THESIS_PAGE_FOOTNOTES ? layoutThesisFootnotes(root, groups, footnoteState.current, performance.now() + 24) : { views: {} };
       if (incomplete) {
         setFootnoteViews((current) => JSON.stringify(current) === JSON.stringify(notes) ? current : notes);
@@ -154,7 +157,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         return;
       }
       const next = renderedIndexPages(root, groups);
-      const signature = JSON.stringify([next, notes]);
+      const signature = JSON.stringify([next, notes, continuations]);
       if (signature === previous) { settled = true; return; }
       if (iterations++ >= INDEX_ITERATION_CAP) {
         setIndexWarning("Dizin/dipnot sayfalaması kararlı hale gelmedi; son ölçülmüş sonuç kullanılıyor.");
@@ -232,7 +235,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
         ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, systemFonts: model.systemFonts || [] }) : await buildThesisPdf(model))
-        : await buildThesisDocx(model, { captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current) });
+        : await buildThesisDocx(model, { captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), tableContinuations: tableContinuationRows(papersRef.current) });
       const path = await downloadBlob(blob, `${academicFileStem(plainTitle || "tez")}.${kind}`);
       setMessage(path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`);
     } catch (error) { setMessage(error?.message || "Dışa aktarma başarısız."); }

@@ -92,6 +92,11 @@ function validateCaption(caption, path) {
   if (caption.labelFormat !== undefined && !(text(caption.labelFormat) && caption.labelFormat.includes("{number}"))) errors.push(`${path}.labelFormat {number} içermeli`);
   if (caption.labelStyle !== undefined) errors.push(...(object(caption.labelStyle) ? validateTextStyle({ ...caption.style, ...caption.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
   if (caption.hangingIndent !== undefined && caption.hangingIndent !== "label" && !positive(caption.hangingIndent)) errors.push(`${path}.hangingIndent geçersiz`);
+  if (caption.continuation !== undefined) {
+    const tableRule = /(^|\.)tables$/.test(path);
+    if (!tableRule || !object(caption.continuation) || !(text(caption.continuation.format) && caption.continuation.format.includes("{number}"))) errors.push(`${path}.continuation yalnız tables için { format: "... {number} ..." } olmalı`);
+    else if (caption.position !== "above") errors.push(`${path}.continuation için position above olmalı`);
+  }
   return errors;
 }
 

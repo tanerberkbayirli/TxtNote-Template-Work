@@ -54,8 +54,10 @@ describe("generic engine extensions (batch A)", () => {
     const template = withTemplate({ tables: { ...mcbuMaster.tables, borders: { preset: "threeRule", widthPt: 0.5 } } });
     const model = compileThesisDocument(template, {}, "T", `<div class="academic-table-wrap"><table class="academic-table"><caption>Tablo</caption><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr></tbody></table></div>`);
     const css = buildThesisCss(model);
-    assert.match(css, /\.thesis-body table\{border-top:0\.5pt solid #000;border-bottom:0\.5pt solid #000;\}/);
-    assert.match(css, /thead tr:last-child>\*\{border-bottom:0\.5pt solid #000;\}/);
+    assert.match(css, /\.thesis-body table\{border-top:0\.5pt solid #000 !important;border-bottom:0\.5pt solid #000 !important;\}/);
+    // index.css sets cell borders/padding with !important; the template's rule has to outrank it
+    assert.match(css, /td,[^{]*th\{border:0 !important;padding:[^}]*!important;\}/);
+    assert.match(css, /thead tr:last-child>\*\{border-bottom:0\.5pt solid #000 !important;\}/);
     assert.doesNotMatch(css.split("\n").filter((line) => line.includes("mcbu") || true).join(""), /td,[^{]*th\{border:1px solid #888/);
     const xml = await docxXml(model);
     assert.match(xml, /<w:tblBorders><w:top w:val="single" w:color="000000" w:sz="4"\/><w:left w:val="none"/);

@@ -71,3 +71,60 @@ describe("Batch B1 caption kinds", () => {
     assert.match(flow, /Resim 2\.1/); assert.match(flow, /RESİMLER DİZİNİ/);
   });
 });
+
+import { clearTableContinuations, continuationParts, continuationText } from "../thesis/tableContinuation.js";
+
+describe("Batch B2 continuation captions", () => {
+  const tableRule = (format) => ({ label: "Çizelge", continuation: { format } });
+  const rows = (n) => Array.from({ length: n }, (_, i) => `<tr><td>Madde ${i + 1}</td><td>${i}</td></tr>`).join("");
+  const longTable = `<table><caption>Ölçek maddeleri</caption><thead><tr><th>Değişken</th><th>f</th></tr></thead><tbody>${rows(6)}</tbody></table>`;
+  it("formats the documented caption variants", () => {
+    const entry = { number: "3.1", title: "Ölçek" };
+    assert.equal(continuationText(tableRule("{label} {number} (Devam) {title}"), entry), "Çizelge 3.1 (Devam) Ölçek");
+    assert.equal(continuationText(tableRule("{label} {number}. (Devam) {title}"), { number: "1", title: "Başlık" }), "Çizelge 1. (Devam) Başlık");
+    assert.equal(continuationText(tableRule("{label} {number}. Devam."), { number: "4", title: "x" }), "Çizelge 4. Devam.");
+    assert.deepEqual(continuationParts(tableRule("{label} {number} (Devamı) {title}"), entry), [{ text: "Çizelge 3.1 (Devamı) ", title: false }, { text: "Ölçek", title: true }]);
+    assert.deepEqual(continuationParts(tableRule("{label} {number}. Devam."), entry).map((p) => p.title), [false]);
+  });
+  it("validates the rule (tables only, caption above, {number})", () => {
+    const t = template(); t.tables.continuation = { format: "{label} {number} (Devam) {title}" }; t.tables.position = "above";
+    assert.deepEqual(validateThesisTemplate(t), []);
+    t.tables.position = "below"; assert.match(validateThesisTemplate(t).join(), /position above/);
+    t.tables.position = "above"; t.tables.continuation = { format: "Devam" }; assert.match(validateThesisTemplate(t).join(), /tables\.continuation/);
+    const f = template(); f.figures.continuation = { format: "{number}" }; assert.match(validateThesisTemplate(f).join(), /figures\.continuation/);
+    const o = template(); o.tables.position = "above"; o.sections.find((s) => s.id === "main").overrides = { tables: { continuation: { format: "{label} {number} Devam" } } };
+    assert.deepEqual(validateThesisTemplate(o), []);
+  });
+  it("emits continuation row CSS only for templates that opt in, with the caption typography", () => {
+    const plain = template(); plain.tables.position = "above";
+    assert.doesNotMatch(buildThesisCss(compile(plain, longTable)), /thesis-cont/);
+    const t = template(); t.tables.position = "above"; t.tables.continuation = { format: "{label} {number} (Devam) {title}" }; t.tables.labelStyle = { fontWeight: 700 }; t.tables.hangingIndent = "label";
+    const css = buildThesisCss(compile(t, longTable));
+    assert.match(css, /tr\[data-thesis-cont="caption"\]\{break-before:column\}/);
+    assert.match(css, /td\.thesis-cont-caption\{[^}]*font-size:10pt[^}]*border:0 !important;padding:0 0 6pt !important/);
+    assert.match(css, /\.thesis-cont-label\{font-weight:700;\}/);
+    assert.match(css, /thesis-cont-caption\[data-thesis-caption-hang\]\{padding-left:attr\(data-thesis-caption-hang px, 0px\) !important/);
+  });
+  it("never stores presentation rows: saved HTML strips them, clearing removes them", () => {
+    const injected = longTable.replace("<tr><td>Madde 4", '<tr data-thesis-cont="caption" contenteditable="false" data-thesis-cont-at="4"><td colspan="2" class="thesis-cont-caption"><span class="thesis-cont-label">Çizelge 1.1 (Devam) </span><span>Ölçek maddeleri</span></td></tr><tr data-thesis-cont="head" contenteditable="false"><th>Değişken</th><th>f</th></tr><tr><td>Madde 4');
+    assert.equal(thesisSourceHtml(injected), longTable);
+    assert.equal(thesisSourceHtml(thesisSourceHtml(injected)), longTable);
+    assert.equal(compile(template(), injected).sections.find((s) => s.id === "main").editableHtml, longTable);
+    assert.equal(typeof clearTableContinuations, "function");
+  });
+  it("DOCX splits a table at the measured rows: caption paragraph and header row repeat, first page does not", async () => {
+    const t = template(); t.tables.position = "above"; t.tables.continuation = { format: "{label} {number} (Devam) {title}" }; t.tables.labelStyle = { fontWeight: 700 };
+    const model = compile(t, `<h1>Bir</h1>${longTable}`);
+    const measured = { [model.indexSources.find((s) => s.kind === "tables").anchor]: { rows: [4, 7], hang: 0 } }; // thead row 0, body rows 1..6 => starts at rows 4, (7 = past the end: ignored)
+    const resolved = resolveGeneratedIndexes(model, {});
+    const xml = (await (async () => { const files = unzipSync(new Uint8Array(await (await buildThesisDocx(resolved, { tableContinuations: measured })).arrayBuffer())); return strFromU8(files["word/document.xml"]); })());
+    const flow = [...xml.matchAll(/<w:tbl>|<\/w:tbl>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[0] === "<w:tbl>" ? "[T" : m[0] === "</w:tbl>" ? "T]" : m[1]).join("|");
+    // fragment 1: caption, header, Madde 1..3; then the continuation caption; fragment 2: header again, Madde 4..6
+    assert.match(flow, /Tablo 1\.1\. \|Ölçek maddeleri\|\[T\|Değişken\|f\|Madde 1\|0\|Madde 2\|1\|Madde 3\|2\|T\]\|Tablo 1\.1 \(Devam\) \|Ölçek maddeleri\|\[T\|Değişken\|f\|Madde 4/);
+    assert.equal((xml.match(/\(Devam\)/g) || []).length, 1);
+    // without measurements the table stays one Word table with no continuation caption
+    const plain = unzipSync(new Uint8Array(await (await buildThesisDocx(resolved)).arrayBuffer()));
+    assert.equal((strFromU8(plain["word/document.xml"]).match(/<w:tbl>/g) || []).length, 1);
+    assert.doesNotMatch(strFromU8(plain["word/document.xml"]), /Devam/);
+  });
+});

@@ -51,6 +51,18 @@ const scenarios = {
     const body = `<h1>Giriş</h1>${paras(1, "A")}${figure("Kavramsal model")}${figure("Örnek fotoğraf çekimi", "photo")}${figure("İkinci fotoğraf: uzun açıklama satırı, etiket genişliğinden sonra hizalanmalıdır ve ikinci satıra taşmalıdır", "photo")}<h1>Yöntem</h1>${figure("Akış şeması")}${figure("Alan çalışması", "photo")}${paras(1, "B")}`;
     return documentFor(t, body);
   },
+  // B2: a multi-page table (header row repeats natively) with a continuation caption.
+  continuation() {
+    const t = baseTemplate("batchb-continuation-v1", (t) => {
+      t.tables.labelFormat = "{label} {number}"; t.tables.labelStyle = { fontWeight: 700, italic: false };
+      t.tables.numbering = { scope: "chapter", format: "{chapter}.{n}", sequence: "arabic" };
+      t.tables.continuation = { format: "{label} {number} (Devam) {title}" };
+    });
+    const rows = Array.from({ length: 120 }, (_, i) => [`Madde ${i + 1}`, ["A", "B", "C"][i % 3], String(10 + ((i * 7) % 50)), `${(i * 1.7 + 3).toFixed(1).replace(".", ",")}`]);
+    const head = ["Değişken", "Grup", "f", "%"];
+    const body = `<h1>Bulgular</h1>${paras(2, "A")}${table("Ölçek maddelerine ilişkin betimsel istatistikler ve ayrıntılı açıklamalar", head, rows)}${paras(2, "B")}${table("Kısa tablo", head, rows.slice(0, 4))}<h1>Sonuç</h1>${table("Küçük tablo", head, rows.slice(0, 3))}`;
+    return documentFor(t, body);
+  },
 };
 if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
   const [name, out] = process.argv.slice(2);

@@ -314,10 +314,11 @@ export function thesisSectionCss(section) {
     `${scope} .thesis-body table{width:100%;border-collapse:collapse;}`,
     ...(tables.borders?.preset === "threeRule" || tables.borders?.preset === "none" ? [
       // Three-rule table: a rule above the table, below the header row and below the table; no verticals.
-      `${scope} .thesis-body td,${scope} .thesis-body th{border:0;padding:${tables.cellPadding || "0 1.9mm"};}`,
+      // !important: the editor's own table stylesheet (index.css) sets cell borders/padding with it.
+      `${scope} .thesis-body td,${scope} .thesis-body th{border:0 !important;padding:${tables.cellPadding || "0 1.9mm"} !important;}`,
       ...(tables.borders.preset === "threeRule" ? [
-        `${scope} .thesis-body table{border-top:${tables.borders.widthPt || 0.5}pt solid #000;border-bottom:${tables.borders.widthPt || 0.5}pt solid #000;}`,
-        `${scope} .thesis-body thead tr:last-child>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000;}`,
+        `${scope} .thesis-body table{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important;border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
+        `${scope} .thesis-body thead tr:last-child>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
       ] : []),
     ] : [`${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:4pt;}`]),
     `${scope} .thesis-body caption{caption-side:${tables.position === "above" ? "top" : "bottom"};${textCss(tables.style)}text-align:${tables.captionAlignment === "auto" ? "center" : tables.captionAlignment || tables.style.align || "left"};margin-top:${tables.spacingBeforePt ?? tables.style.spaceBeforePt ?? 0}pt;margin-bottom:${tables.spacingAfterPt ?? tables.style.spaceAfterPt ?? 0}pt;}`,
@@ -348,6 +349,21 @@ export function thesisSectionCss(section) {
     `${scope} .thesis-layout-spacer{display:block;max-width:100%;}`,
     ...specialPageCss(scope, section.layout, textCss),
   ];
+  // Continuation caption rows of split tables (tableContinuation.js): a caption cell like the table caption, then the repeated header.
+  if (tables.continuation && tables.position === "above") {
+    const row = `${scope} .thesis-body tr[data-thesis-cont="caption"]>td.thesis-cont-caption`;
+    const align = tables.captionAlignment === "auto" ? "center" : tables.captionAlignment || tables.style.align || "left";
+    rules.push(
+      `${scope} .thesis-body tr[data-thesis-cont]{break-inside:avoid}`,
+      `${scope} .thesis-body tr[data-thesis-cont="caption"]{break-before:column}`,
+      `${row}{${textCss(tables.style)}border:0 !important;padding:0 0 ${tables.spacingAfterPt ?? tables.style.spaceAfterPt ?? 0}pt !important;text-align:${align};}`,
+      `${row}[data-thesis-caption-auto="center"]{text-align:center}${row}[data-thesis-caption-auto="justify"]{text-align:justify}`,
+      ...(tables.labelStyle ? [`${scope} .thesis-body .thesis-cont-label{${labelCss(tables.labelStyle)}}`] : []),
+      ...(tables.hangingIndent === "label" ? [`${row}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px) !important;text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
+        : tables.hangingIndent > 0 ? [`${row}{padding-left:${tables.hangingIndent}mm !important;text-indent:-${tables.hangingIndent}mm}`] : []),
+      ...(tables.borders?.preset === "threeRule" ? [`${scope} .thesis-body tr[data-thesis-cont-first]>*{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important}${scope} .thesis-body tr[data-thesis-cont-last]>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important}`] : []),
+    );
+  }
   // Optional table body rule (e.g. single spacing, centered names/values); a cell's own alignment still wins.
   if (tables.cellStyle) {
     const cell = tables.cellStyle;

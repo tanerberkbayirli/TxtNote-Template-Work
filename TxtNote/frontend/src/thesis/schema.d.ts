@@ -65,6 +65,14 @@ export interface CaptionRule {
   labelStyle?: Partial<TextStyle>;
   /** Continuation lines start under the caption text ("label": measured label width) or at a fixed mm. */
   hangingIndent?: "label" | Length;
+  /**
+   * Tables only (position "above"): a table split over pages repeats its caption above every continuation
+   * fragment, followed by the repeated header row(s). `format` placeholders: {label} {number} {title}, e.g.
+   * "{label} {number} (Devam) {title}", "{label} {number}. (Devam) {title}", "{label} {number}. Devam.".
+   * Editor/PDF: measured after layout, presentation only (never stored). Word: the table is split at the
+   * measured rows and a caption paragraph precedes each continuation fragment (Word cannot vary a repeated row).
+   */
+  continuation?: { format: string };
   /** Tables only: typography of the cells (e.g. single spacing, centered values). A cell's own alignment wins; omitted keys inherit the body. */
   cellStyle?: Partial<TextStyle>;
 }
