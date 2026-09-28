@@ -1,0 +1,61 @@
+// Deterministic real-browser fixtures for the Batch B engine extensions (custom templates, no university).
+//
+// usage: node tests/batchb-fixture.mjs <scenario> <out.json>
+//        THESIS_FIXTURE_PAGE=/tests/thesis-batchb.html node ../../orchestration/tools/export.mjs <out.json> <prefix>
+// The fixture carries its template (`__template`); thesis-batchb-fixture.jsx serves it to the real ThesisEditor.
+import { writeFile } from "node:fs/promises";
+import { deflateSync } from "node:zlib";
+import generic from "../src/thesis/templates/generic.js";
+
+function png(width, height, paint) {
+  const table = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k += 1) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });
+  const crc = (buf) => { let c = 0xffffffff; for (const b of buf) c = table[(c ^ b) & 0xff] ^ (c >>> 8); return (c ^ 0xffffffff) >>> 0; };
+  const chunk = (type, data) => { const len = Buffer.alloc(4); len.writeUInt32BE(data.length); const td = Buffer.concat([Buffer.from(type), data]); const c = Buffer.alloc(4); c.writeUInt32BE(crc(td)); return Buffer.concat([len, td, c]); };
+  const raw = Buffer.alloc((width * 3 + 1) * height);
+  for (let y = 0; y < height; y += 1) for (let x = 0; x < width; x += 1) { const [r, g, b] = paint(x, y); const o = y * (width * 3 + 1) + 1 + x * 3; raw[o] = r; raw[o + 1] = g; raw[o + 2] = b; }
+  const ihdr = Buffer.alloc(13); ihdr.writeUInt32BE(width, 0); ihdr.writeUInt32BE(height, 4); ihdr[8] = 8; ihdr[9] = 2;
+  return `data:image/png;base64,${Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk("IHDR", ihdr), chunk("IDAT", deflateSync(raw)), chunk("IEND", Buffer.alloc(0))]).toString("base64")}`;
+}
+export const IMAGE = png(300, 150, (x, y) => (x > 40 && x < 260 && y > 30 && y < 120 ? [31, 78, 121] : [221, 231, 243]));
+export const P = (text) => `<p>${text}</p>`;
+export const S = "Çevrimiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri; öz yeterlik ve erişim olanakları açısından ayrıntılı biçimde incelenmiştir.";
+export const paras = (count, tag, n = 2) => Array.from({ length: count }, (_, i) => P(`${tag} ${i + 1}. ${Array.from({ length: n }, () => S).join(" ")}`)).join("");
+export const figure = (caption, kind = "") => `<figure class="academic-figure" data-kind="figure"${kind ? ` data-caption-kind="${kind}"` : ""} contenteditable="false"><img width="300" height="150" src="${IMAGE}" alt=""><figcaption>${caption}</figcaption></figure>`;
+export const table = (caption, head, rows) => `<div class="academic-table-wrap" data-academic-table="true"><table class="academic-table" data-kind="table"><caption>${caption}</caption><thead><tr>${head.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+export const fn = (id, text) => `<sup class="academic-footnote" contenteditable="false" data-fn-id="${id}" data-fn-text="${text}">1</sup>`;
+
+/** Generic template without cover/abstract, plus optional generated lists, edited by `patch`. */
+export function baseTemplate(id, patch = () => {}) {
+  const t = structuredClone(generic);
+  t.id = id; t.status = "demo"; t.source = { type: "manual", documentName: "Batch B test" };
+  t.sections = t.sections.filter((s) => !["cover", "abstract", "bibliography", "appendices"].includes(s.id));
+  for (const s of t.sections) if (s.overrides?.page?.numbering) s.overrides.page.numbering.format = "arabic";
+  patch(t);
+  return t;
+}
+export function documentFor(template, content, extra = {}) {
+  return {
+    title: "Batch B", content, __template: template,
+    researchData: { thesis: { templateId: template.id, templateVersion: template.templateVersion, selection: { universityId: template.universityId, degreeType: template.degreeType, language: template.language }, values: { YEAR: "2026" }, sectionContent: extra.sectionContent || {}, enabledSections: template.sections.filter((s) => s.status === "optional").map((s) => s.id) } },
+  };
+}
+
+const scenarios = {
+  // B1: photographs are a caption kind ("Resim 1.1") with their own list.
+  photo() {
+    const t = baseTemplate("batchb-photo-v1", (t) => {
+      t.captionKinds = { photo: { ...structuredClone(t.figures), label: "Resim", position: "below", numbering: { scope: "chapter", format: "{chapter}.{n}", sequence: "arabic" }, labelFormat: "{label} {number}", labelStyle: { fontWeight: 700 }, hangingIndent: "label" } };
+      t.figures.labelFormat = "{label} {number}"; t.figures.labelStyle = { fontWeight: 700, italic: false };
+      t.sections.push({ id: "index-photos", type: "listOfPhotos", title: "RESİMLER DİZİNİ", status: "optional", order: 2.3, group: "front", mode: "generated", generatedIndex: { kind: "photo" }, overrides: { page: { numbering: { format: "arabic" } } } });
+    });
+    const body = `<h1>Giriş</h1>${paras(1, "A")}${figure("Kavramsal model")}${figure("Örnek fotoğraf çekimi", "photo")}${figure("İkinci fotoğraf: uzun açıklama satırı, etiket genişliğinden sonra hizalanmalıdır ve ikinci satıra taşmalıdır", "photo")}<h1>Yöntem</h1>${figure("Akış şeması")}${figure("Alan çalışması", "photo")}${paras(1, "B")}`;
+    return documentFor(t, body);
+  },
+};
+if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
+  const [name, out] = process.argv.slice(2);
+  if (!scenarios[name] || !out) { console.error(`usage: batchb-fixture.mjs <${Object.keys(scenarios).join("|")}> <out.json>`); process.exit(2); }
+  await writeFile(out, JSON.stringify(scenarios[name](), null, 1));
+  console.log(`fixture ${name} -> ${out}`);
+}
+export { scenarios };

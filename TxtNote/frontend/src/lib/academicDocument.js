@@ -207,6 +207,7 @@ function figureBlock(node) {
     width: Number(img?.getAttribute("width") || 0),
     height: Number(img?.getAttribute("height") || 0),
     align: alignOf(node) === "left" ? "center" : alignOf(node),
+    ...(node.getAttribute("data-caption-kind") ? { captionKind: node.getAttribute("data-caption-kind") } : {}),
     caption: captionText.replace(/^(Şekil|Figure)\s+\d+\.\s*/i, "").trim(),
     alt: img?.getAttribute("alt") || captionText,
   };
@@ -470,6 +471,7 @@ function parseWithRegex(html) {
         width: Number(attr(inner, "width") || 0),
         height: Number(attr(inner, "height") || 0),
         align: "center",
+        ...(attr(rawAttr, "data-caption-kind") ? { captionKind: attr(rawAttr, "data-caption-kind") } : {}),
         caption: caption.replace(/^(Şekil|Figure)\s+\d+\.\s*/i, "").trim(),
         alt: caption,
       });

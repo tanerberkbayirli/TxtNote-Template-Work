@@ -328,6 +328,13 @@ export const RichTextBody = forwardRef(({
       });
       emitChange("insert");
     },
+    /** Caption kind of a figure (template captionKinds, e.g. "photo"); "" is a plain figure. Source markup, so it is saved. */
+    setFigureKind: (figure, kind) => {
+      const body = bodyRef.current;
+      if (!body || !figure || !body.contains(figure)) return;
+      if (kind) figure.setAttribute("data-caption-kind", kind); else figure.removeAttribute("data-caption-kind");
+      emitChange("format");
+    },
     toggleEquationNumber: () => {
       const body = bodyRef.current;
       if (!body) return;

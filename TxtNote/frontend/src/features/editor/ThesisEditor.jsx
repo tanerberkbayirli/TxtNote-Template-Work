@@ -34,7 +34,7 @@ const metadataHints = {
   USED_PROGRAMS: "Örnek: MATLAB R2026a, Python 3.13, SPSS 29",
 };
 
-export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange }) {
+export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange, templateRegistry }) {
   const thesis = researchData?.thesis && typeof researchData.thesis === "object" ? researchData.thesis : {};
   const selectionKey = JSON.stringify([thesis.templateId, thesis.selection?.universityId, thesis.selection?.instituteId, thesis.selection?.degreeType, thesis.selection?.language]);
   const [resolution, setResolution] = useState(null);
@@ -58,11 +58,15 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const papersRef = useRef(null);
   const viewportRef = useRef(null);
   const imageInputRef = useRef(null);
+  // Caption kind (template captionKinds) the next inserted image gets; "" = plain figure.
+  const imageKindRef = useRef("");
+  // The figure last clicked in the pages: its caption kind can be changed while the template has kinds.
+  const [pickedFigure, setPickedFigure] = useState(null);
 
   useEffect(() => {
     let live = true;
     const selection = { ...thesis.selection, templateId: thesis.templateId };
-    void resolveThesisTemplate(selection).then((result) => { if (live) setResolution({ key: selectionKey, result }); });
+    void resolveThesisTemplate(selection, templateRegistry).then((result) => { if (live) setResolution({ key: selectionKey, result }); });
     return () => { live = false; };
   }, [selectionKey]);
 
@@ -112,6 +116,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const conditionState = { ...thesis, values: { ...model?.values, degreeType: model?.values.degreeType ?? model?.values.DEGREE_TYPE } };
   const optionalSections = template ? orderedThesisSections(template).filter((section) => section.status === "optional" && thesisSectionConditionMet(section, conditionState)) : [];
   const numberingChoices = template?.captionNumberingChoices || [];
+  const captionKinds = Object.entries(template?.captionKinds || {});
   // Standard metadata fields plus any extra placeholders the template declares; one input per alias pair.
   // Derived values (e.g. the total page count) come from the layout and are never typed in.
   const metadataFields = template ? Object.entries({ ...THESIS_METADATA_FIELDS, ...template.placeholders }).filter(([key, definition], index, all) => !hiddenFields.has(key) && !definition.derived
@@ -197,6 +202,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const run = (command) => { const body = activeBody(); if (!body) return; body.rememberSelection?.(); command(body); };
   const rememberSelection = (event) => { event.preventDefault(); activeBody()?.rememberSelection?.(); };
   const trackSectionPointer = (event) => {
+    setPickedFigure(event.target.closest?.("figure.academic-figure") || null);
     const flow = event.target.closest?.(".thesis-flow-section");
     if (flow && flow.getAttribute("data-thesis-section-mode") !== "editable") { setActiveSectionId(""); setCiteOpen(false); }
   };
@@ -245,7 +251,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   // Same image pipeline as AcademicTools: downscaled data URL + academic figure markup.
   // The page column is ~600 CSS px, so 1200 px (2x) is enough; a smaller data URL keeps
   // every save (localStorage/IndexedDB/sync checksum) of the whole note fast.
-  const insertImage = async (file) => {
+  const insertImage = async (file, kind = "") => {
     const body = activeBody();
     if (!file || !body) return;
     try {
@@ -254,7 +260,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       // scan runs once, only for PNGs over 1 MB, on the downscaled canvas (~130 ms).
       const dataUrl = await readImageAsDataUrl(file, THESIS_IMAGE_MAX_EDGE, { opaqueAsJpeg: true });
       const size = await imageDimensions(dataUrl).catch(() => null);
-      body.insertHtml(figureHtml(dataUrl, "", size));
+      body.insertHtml(figureHtml(dataUrl, "", size, kind));
     } catch (error) { setMessage(error?.message || "Görsel eklenemedi."); }
   };
 
@@ -277,8 +283,12 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         <button type="button" aria-label="Madde işaretli liste" disabled={!activeSection} onMouseDown={keepSelection} onClick={() => run((body) => body.toggleList(false))} className={toolClass}>• Liste</button>
         <button type="button" aria-label="Numaralı liste" disabled={!activeSection} onMouseDown={keepSelection} onClick={() => run((body) => body.toggleList(true))} className={toolClass}>1. Liste</button>
         <button type="button" disabled={!activeSection} onMouseDown={keepSelection} onClick={() => run((body) => body.insertTable(2, 2, ""))} className={toolClass}>Tablo</button>
-        <button type="button" disabled={!activeSection} onMouseDown={rememberSelection} onClick={() => imageInputRef.current?.click()} className={toolClass}>Görsel</button>
-        <input ref={imageInputRef} type="file" accept="image/*" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0]); event.target.value = ""; }} />
+        <button type="button" disabled={!activeSection} onMouseDown={rememberSelection} onClick={() => { imageKindRef.current = ""; imageInputRef.current?.click(); }} className={toolClass}>Görsel</button>
+        {captionKinds.map(([id, rule]) => <button key={id} type="button" disabled={!activeSection} onMouseDown={rememberSelection} onClick={() => { imageKindRef.current = id; imageInputRef.current?.click(); }} className={toolClass}>{rule.label} ekle</button>)}
+        {captionKinds.length ? <select aria-label="Görsel türü" disabled={!pickedFigure?.isConnected} value={pickedFigure?.getAttribute("data-caption-kind") || ""} onChange={(event) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) { bodyRefs.current[owner]?.setFigureKind(figure, event.target.value); setPickedFigure(null); } }} title="Önce görsele tıklayın" className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 disabled:opacity-40 dark:border-neutral-700">
+          <option value="">{template.figures.label} (görsel)</option>{captionKinds.map(([id, rule]) => <option key={id} value={id}>{rule.label}</option>)}
+        </select> : null}
+        <input ref={imageInputRef} type="file" accept="image/*" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
         <div className="relative">
           <button type="button" aria-expanded={citeOpen} disabled={!activeSection} onMouseDown={rememberSelection} onClick={() => setCiteOpen((open) => !open)} className={toolClass}>Atıf</button>
           {citeOpen && activeSection ? <div role="dialog" aria-label="Atıf ekle" className="absolute left-0 top-full z-30 mt-1 w-72 rounded-md border border-neutral-200 bg-white p-2 text-xs text-neutral-900 shadow-lg dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100">

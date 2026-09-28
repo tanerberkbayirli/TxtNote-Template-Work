@@ -41,14 +41,22 @@ export function textWidthPx(style, text) {
   return widthContext.measureText(text).width;
 }
 
+/** Caption kind named by a figure's `data-caption-kind`, when the template defines it ("" otherwise). */
+export const knownCaptionKind = (id, rules) => id && rules.captionKinds && Object.hasOwn(rules.captionKinds, id) ? id : "";
+export const captionKindOf = (attrs, rules) => knownCaptionKind(String(attrs || "").match(/\bdata-caption-kind=["']([^"']*)["']/i)?.[1], rules);
+
+/** Caption rule of a `figure`/`table` element, or of a template caption kind. */
+export const captionRuleOf = (rules, tag, kind = "") => kind ? rules.captionKinds[kind] : rules[tag === "figure" ? "figures" : "tables"];
+
 /** One ordered semantic source stream for headings and both caption kinds. */
 export function collectIndexSources(sections, extractHeadings) {
   const sources = [];
   const headingCounters = [];
   let chapter = "";
   let chapterKey = 0;
-  const global = { figure: 0, table: 0 };
-  let local = { figure: 0, table: 0 };
+  // Counters per caption kind: "figure", "table" and every template caption kind ("photo", ...).
+  const global = {};
+  let local = {};
   for (const section of sections) {
     if (section.mode === "generated" || section.specialPage) {
       // Its title is the only source such a section has: an unnumbered level-1 TOC row.
@@ -59,27 +67,30 @@ export function collectIndexSources(sections, extractHeadings) {
     const outline = extractHeadings(html, section.rules, headingCounters);
     let headingIndex = 0;
     let ordinal = 0;
-    for (const match of html.matchAll(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>|<(figure|table)\b[^>]*>([\s\S]*?)<\/\4>/gi)) {
+    for (const match of html.matchAll(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>|<(figure|table)\b([^>]*)>([\s\S]*?)<\/\4>/gi)) {
       if (match[1]) {
         const entry = outline[headingIndex++];
         if (!entry) continue;
-        if (entry.level === 1 && !entry.unnumbered) { chapter = formatNumber(entry.counters[0], section.rules.headings[1]?.numbering?.sequence || "arabic"); chapterKey += 1; local = { figure: 0, table: 0 }; }
+        if (entry.level === 1 && !entry.unnumbered) { chapter = formatNumber(entry.counters[0], section.rules.headings[1]?.numbering?.sequence || "arabic"); chapterKey += 1; local = {}; }
         const transform = entry.unnumbered ? "none" : section.rules.headings[entry.level]?.textTransform || "none";
         sources.push({ ...entry, kind: "toc", sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, chapterKey, ...(transform !== "none" ? { textTransform: transform } : {}), ...(section.tocEntry === "none" ? { tocHidden: true } : {}) });
       } else {
-        const kind = match[4].toLowerCase();
-        const tag = kind === "figure" ? "figcaption" : "caption";
-        const inner = match[5].match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`, "i"));
+        const tag = match[4].toLowerCase();
+        const captionTag = tag === "figure" ? "figcaption" : "caption";
+        const inner = match[6].match(new RegExp(`<${captionTag}\\b[^>]*>([\\s\\S]*?)<\\/${captionTag}>`, "i"));
         if (!inner) continue;
         // Legacy plain prefixes are accepted; new notes store caption text alone.
         const title = text(inner[1]).replace(/^(Şekil|Tablo|Figure|Table)\s+\d+(?:\.\d+)*\.\s*/i, "");
         if (!title) continue;
-        global[kind] += 1; local[kind] += 1;
-        const rule = section.rules[kind === "figure" ? "figures" : "tables"];
+        // A figure may name a template caption kind (data-caption-kind); an unknown kind is a plain figure.
+        const custom = tag === "figure" ? captionKindOf(match[5], section.rules) : "";
+        const kind = custom || tag;
+        global[kind] = (global[kind] || 0) + 1; local[kind] = (local[kind] || 0) + 1;
+        const rule = captionRuleOf(section.rules, tag, custom);
         const n = rule.numbering.scope === "chapter" ? local[kind] : global[kind];
         const number = formatCaptionNumber(rule.numbering.format, chapter, formatNumber(n, rule.numbering.sequence));
         const label = formatCaptionLabel(rule, number);
-        sources.push({ kind: kind === "figure" ? "figures" : "tables", sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, title, label, number, chapterKey });
+        sources.push({ kind: custom || (tag === "figure" ? "figures" : "tables"), ...(custom ? { captionKind: custom } : {}), sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, title, label, number, chapterKey });
       }
     }
   }
@@ -169,9 +180,9 @@ export function decorateThesisSources(root, model) {
         node.querySelectorAll(".academic-caption-label").forEach((label) => label.remove());
         if (node.tagName === "FIGCAPTION") node.setAttribute("contenteditable", section.editable ? "true" : "false");
         if (section.editable && node.tagName === "FIGCAPTION" && !node.firstChild) node.appendChild(node.ownerDocument.createElement("br"));
-        const rule = section.rules[node.tagName === "FIGCAPTION" ? "figures" : "tables"];
         if (node.tagName === "FIGCAPTION") {
           const figure = node.parentElement;
+          const rule = captionRuleOf(section.rules, "figure", knownCaptionKind(figure.getAttribute("data-caption-kind"), section.rules));
           if (rule.position === "above" && figure.firstElementChild !== node) figure.prepend(node);
           if (rule.position === "below" && figure.lastElementChild !== node) figure.append(node);
         }
@@ -184,7 +195,7 @@ export function decorateThesisSources(root, model) {
       else {
         node.querySelectorAll(".academic-caption-label").forEach((label) => label.remove());
         node.setAttribute("data-thesis-caption", `${entry.label} `);
-        const rule = section.rules[entry.kind];
+        const rule = entry.captionKind ? section.rules.captionKinds[entry.captionKind] : section.rules[entry.kind];
         // Hanging indent equal to the printed label ("Şekil 2.1 "): continuation lines start under the caption text.
         if (rule.hangingIndent === "label") node.setAttribute("data-thesis-caption-hang", String(Math.round(textWidthPx(getComputedStyle(node, "::before"), `${entry.label} `) * 1000) / 1000));
         else node.removeAttribute("data-thesis-caption-hang");
@@ -211,7 +222,7 @@ export function thesisPresentationHtml(section) {
     const entry = captions[caption++];
     return entry ? `<${name}${attrs} data-thesis-caption="${escape(entry.label)} ">${inner}</${name}>` : tag;
   });
-  if (section.rules.figures.position === "above") html = html.replace(/(<figure\b[^>]*>)([\s\S]*?)(<figcaption\b[^>]*>[\s\S]*?<\/figcaption>)([\s\S]*?)(<\/figure>)/gi, "$1$3$2$4$5");
+  html = html.replace(/(<figure\b[^>]*>)([\s\S]*?)(<figcaption\b[^>]*>[\s\S]*?<\/figcaption>)([\s\S]*?)(<\/figure>)/gi, (whole, open, before, caption, after, close) => captionRuleOf(section.rules, "figure", captionKindOf(open, section.rules)).position === "above" ? `${open}${caption}${before}${after}${close}` : whole);
   return html;
 }
 

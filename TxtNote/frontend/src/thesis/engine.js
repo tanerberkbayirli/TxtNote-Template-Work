@@ -77,7 +77,8 @@ function mergeCaption(base, override) {
 export function applyThesisDocumentChoices(template, thesis = {}) {
   const choice = (template.captionNumberingChoices || []).find((item) => item.id === thesis?.captionNumbering);
   if (!choice) return template;
-  return { ...template, tables: { ...template.tables, numbering: { ...template.tables.numbering, ...choice.numbering } }, figures: { ...template.figures, numbering: { ...template.figures.numbering, ...choice.numbering } } };
+  const withChoice = (rule) => ({ ...rule, numbering: { ...rule.numbering, ...choice.numbering } });
+  return { ...template, tables: withChoice(template.tables), figures: withChoice(template.figures), ...(template.captionKinds ? { captionKinds: Object.fromEntries(Object.entries(template.captionKinds).map(([id, rule]) => [id, withChoice(rule)])) } : {}) };
 }
 
 export function resolveSectionRules(template, section) {
@@ -96,6 +97,7 @@ export function resolveSectionRules(template, section) {
     headings: Object.fromEntries(Object.entries(template.typography.headings).map(([level, style]) => [level, { ...style, ...override.headings?.[level], numbering: { ...style.numbering, ...override.headings?.[level]?.numbering } }])),
     tables: mergeCaption(template.tables, override.tables),
     figures: mergeCaption(template.figures, override.figures),
+    ...(template.captionKinds ? { captionKinds: Object.fromEntries(Object.entries(template.captionKinds).map(([id, rule]) => [id, mergeCaption(rule, override.captionKinds?.[id])])) } : {}),
     bibliography: template.bibliography,
     toc: template.toc,
     ...(template.typography.lineSpacing ? { lineSpacing: template.typography.lineSpacing } : {}),
@@ -255,9 +257,9 @@ const labelCss = (style = {}) => [style.fontWeight ? `font-weight:${style.fontWe
 
 /** Text styles of a section that draw lines (for the opt-in Word baseline placement). */
 function sectionTextStyles(section) {
-  const { body, headings, tables, figures, bibliography, footnotes } = section.rules;
+  const { body, headings, tables, figures, bibliography, footnotes, captionKinds } = section.rules;
   const text = section.type === "bibliography" ? bibliography.style : body;
-  const styles = [text, bibliography.style, tables.style, figures.style, ...Object.values(headings)];
+  const styles = [text, bibliography.style, tables.style, figures.style, ...Object.values(headings), ...Object.values(captionKinds || {}).map((rule) => rule.style)];
   if (tables.cellStyle) styles.push({ ...text, ...tables.cellStyle });
   if (section.generatedIndex) styles.push(section.generatedIndex.style, { ...section.generatedIndex.style, ...section.generatedIndex.pageHeadingStyle });
   if (footnotes?.style) styles.push(footnotes.style);
@@ -292,6 +294,9 @@ export function thesisSectionCss(section) {
   const scope = `:is(${paperScope},${fragmentScope})`;
   // What the user types in a bibliography section is bibliography entries (DOCX uses the same style).
   const text = section.type === "bibliography" ? section.rules.bibliography.style : body;
+  // With template caption kinds the plain-figure caption rules must not leak into a kind's figures.
+  const kindIds = Object.keys(section.rules.captionKinds || {});
+  const plainFigure = kindIds.length ? `figure:not(:is(${kindIds.map((kind) => `[data-caption-kind="${kind}"]`).join(",")})) ` : "";
   const rules = [
     `${paperScope}{${styleCss(body)}box-sizing:border-box;position:relative;z-index:1;width:${page.widthMm}mm;min-height:${page.heightMm}mm;padding:${page.margins.topMm}mm ${page.margins.rightMm}mm ${page.margins.bottomMm}mm ${page.margins.leftMm}mm;margin:0;background:transparent;color:#111;text-indent:0;}`,
     `${fragmentScope}{${styleCss(body)}display:block;margin:0;text-indent:0;}`,
@@ -317,15 +322,25 @@ export function thesisSectionCss(section) {
     ] : [`${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:4pt;}`]),
     `${scope} .thesis-body caption{caption-side:${tables.position === "above" ? "top" : "bottom"};${textCss(tables.style)}text-align:${tables.captionAlignment === "auto" ? "center" : tables.captionAlignment || tables.style.align || "left"};margin-top:${tables.spacingBeforePt ?? tables.style.spaceBeforePt ?? 0}pt;margin-bottom:${tables.spacingAfterPt ?? tables.style.spaceAfterPt ?? 0}pt;}`,
     // Captions are document text: the academic editor's muted figcaption colour does not apply.
-    `${scope} .thesis-body figcaption{${textCss(figures.style)}color:#111;text-align:${figures.captionAlignment === "auto" ? "center" : figures.captionAlignment || figures.style.align || "left"};margin-top:${figures.spacingBeforePt ?? figures.style.spaceBeforePt ?? 0}pt;margin-bottom:${figures.spacingAfterPt ?? figures.style.spaceAfterPt ?? 0}pt;}`,
+    `${scope} .thesis-body ${plainFigure}figcaption{${textCss(figures.style)}color:#111;text-align:${figures.captionAlignment === "auto" ? "center" : figures.captionAlignment || figures.style.align || "left"};margin-top:${figures.spacingBeforePt ?? figures.style.spaceBeforePt ?? 0}pt;margin-bottom:${figures.spacingAfterPt ?? figures.style.spaceAfterPt ?? 0}pt;}`,
     `${scope} [data-thesis-caption]::before{content:attr(data-thesis-caption);}`,
-    ...[["caption", tables], ["figcaption", figures]].flatMap(([tag, rule]) => [
+    ...[["caption", tables], [`${plainFigure}figcaption`, figures]].flatMap(([tag, rule]) => [
       ...(rule.labelStyle ? [`${scope} .thesis-body ${tag}[data-thesis-caption]::before{${labelCss(rule.labelStyle)}}`] : []),
       ...(rule.hangingIndent === "label" ? [`${scope} .thesis-body ${tag}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px);text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
         : rule.hangingIndent > 0 ? [`${scope} .thesis-body ${tag}[data-thesis-caption]{padding-left:${rule.hangingIndent}mm;text-indent:-${rule.hangingIndent}mm}`] : []),
     ]),
-    // Measured auto alignment must outrank the caption rules above (same scope + .thesis-body + element).
-    `${scope} .thesis-body :is(figcaption,caption)[data-thesis-caption-auto="center"]{text-align:center}${scope} .thesis-body :is(figcaption,caption)[data-thesis-caption-auto="justify"]{text-align:justify}`,
+    // Template caption kinds ("photo"): a figure marked data-caption-kind gets its own caption typography.
+    ...Object.entries(section.rules.captionKinds || {}).flatMap(([kind, rule]) => {
+      const sel = `${scope} .thesis-body figure[data-caption-kind="${kind}"] figcaption`;
+      return [
+        `${sel}{${textCss(rule.style)}color:#111;text-align:${rule.captionAlignment === "auto" ? "center" : rule.captionAlignment || rule.style.align || "left"};margin-top:${rule.spacingBeforePt ?? rule.style.spaceBeforePt ?? 0}pt;margin-bottom:${rule.spacingAfterPt ?? rule.style.spaceAfterPt ?? 0}pt;}`,
+        ...(rule.labelStyle ? [`${sel}[data-thesis-caption]::before{${labelCss(rule.labelStyle)}}`] : []),
+        ...(rule.hangingIndent === "label" ? [`${sel}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px);text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
+          : rule.hangingIndent > 0 ? [`${sel}[data-thesis-caption]{padding-left:${rule.hangingIndent}mm;text-indent:-${rule.hangingIndent}mm}`] : []),
+      ];
+    }),
+    // Measured auto alignment must outrank the caption rules above (same scope + .thesis-body + element; the extra attribute beats a caption-kind selector).
+    `${scope} .thesis-body :is(figcaption,caption)[data-thesis-caption-auto="center"][data-thesis-anchor]{text-align:center}${scope} .thesis-body :is(figcaption,caption)[data-thesis-caption-auto="justify"][data-thesis-anchor]{text-align:justify}`,
     `${scope} .thesis-bibliography{${textCss(section.rules.bibliography.style)}padding-left:${section.rules.bibliography.hangingIndentMm || 0}mm;}`,
     `${scope} .thesis-body [data-thesis-number]::before{content:attr(data-thesis-number) " ";}`,
     `${scope} .thesis-fixed{white-space:pre-wrap;}`,

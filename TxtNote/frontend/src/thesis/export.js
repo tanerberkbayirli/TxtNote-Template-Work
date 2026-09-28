@@ -24,11 +24,11 @@ const asBlocks = (section) => {
   const outline = (section.indexSources || extractThesisHeadings(section.html, section.rules)).filter((entry) => !entry.kind || entry.kind === "toc");
   let headingIndex = 0;
   // Caption counters and heading labels are compiled once, across the document.
-  const captions = (section.indexSources || []).filter((entry) => entry.kind === "figures" || entry.kind === "tables");
+  const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc");
   let captionIndex = 0;
   return parseAcademicHtml(section.html, { lines: true }).map((block) => {
     if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "" }; }
-    if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionLabel: entry?.label || "", captionAnchor: entry?.anchor, caption: entry?.title || block.caption }; }
+    if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionLabel: entry?.label || "", captionAnchor: entry?.anchor, captionKind: entry?.captionKind || "", caption: entry?.title || block.caption }; }
     return block;
   });
 };
@@ -374,7 +374,7 @@ function captionStyle(rule, block, context) {
 }
 
 function docxChildren(section, context) {
-  const { page, body, headings, figures } = section.rules;
+  const { page, body, headings } = section.rules;
   const widthMm = page.widthMm - page.margins.leftMm - page.margins.rightMm;
   const children = [];
   if (section.generatedIndex) {
@@ -415,6 +415,8 @@ function docxChildren(section, context) {
     } else if (block.type === "table") {
       children.push(...tableDocx(block, section, context));
     } else if (block.type === "figure") {
+      // A figure of a template caption kind ("Resim") uses that kind's rule.
+      const figures = block.captionKind && section.rules.captionKinds?.[block.captionKind] || section.rules.figures;
       const caption = block.caption ? captionParagraph(figures, block, context, { keepNext: figures.position === "above" }) : null;
       if (caption && figures.position === "above") children.push(caption);
       const image = imageBytes(block.src);

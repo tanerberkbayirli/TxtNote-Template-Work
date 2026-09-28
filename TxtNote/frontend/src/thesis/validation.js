@@ -95,10 +95,10 @@ function validateCaption(caption, path) {
   return errors;
 }
 
-function validateIndex(index, body, headings, path) {
+function validateIndex(index, body, headings, path, captionKinds = {}) {
   if (!object(index)) return [`${path} nesne olmalı`];
   const errors = [];
-  if (!["toc", "figures", "tables"].includes(index.kind)) errors.push(`${path}.kind geçersiz`);
+  if (!["toc", "figures", "tables"].includes(index.kind) && !Object.hasOwn(captionKinds || {}, index.kind)) errors.push(`${path}.kind geçersiz`);
   if (index.maxDepth !== undefined && (!Number.isInteger(index.maxDepth) || index.maxDepth < 1 || index.maxDepth > 6)) errors.push(`${path}.maxDepth geçersiz`);
   if (index.levels !== undefined && (!Array.isArray(index.levels) || index.levels.some((n) => !headings?.[n]))) errors.push(`${path}.levels geçersiz`);
   if (index.title !== undefined && !text(index.title)) errors.push(`${path}.title geçersiz`);
@@ -196,7 +196,7 @@ export function validateThesisTemplate(template) {
       if (section.titleNumbering !== undefined && !["none", "continueH1"].includes(section.titleNumbering)) errors.push(`section ${section.id}.titleNumbering geçersiz`);
       if (section.generatedIndex !== undefined) {
         if (section.mode !== "generated") errors.push(`section ${section.id}.generatedIndex: mode generated olmalı`);
-        errors.push(...validateIndex(section.generatedIndex, template.typography?.body, headings, `section ${section.id}.generatedIndex`));
+        errors.push(...validateIndex(section.generatedIndex, template.typography?.body, headings, `section ${section.id}.generatedIndex`, object(template.captionKinds) ? template.captionKinds : {}));
       }
       if (section.visibleWhen !== undefined) {
         const condition = section.visibleWhen;
@@ -221,6 +221,11 @@ export function validateThesisTemplate(template) {
           else errors.push(...validateTextStyle({ ...headings[level], ...style }, `section ${section.id}.headings.${level}`));
         }
         if (overrides.tables) errors.push(...validateCaption({ ...template.tables, ...overrides.tables, style: { ...template.tables?.style, ...overrides.tables.style }, numbering: { ...template.tables?.numbering, ...overrides.tables.numbering } }, `section ${section.id}.tables`));
+        for (const [id, override] of Object.entries(overrides.captionKinds || {})) {
+          const base = template.captionKinds?.[id];
+          if (!base || !object(override)) errors.push(`section ${section.id}.captionKinds.${id} bulunamadı`);
+          else errors.push(...validateCaption({ ...base, ...override, style: { ...base.style, ...override.style }, numbering: { ...base.numbering, ...override.numbering } }, `section ${section.id}.captionKinds.${id}`));
+        }
         if (overrides.figures) errors.push(...validateCaption({ ...template.figures, ...overrides.figures, style: { ...template.figures?.style, ...overrides.figures.style }, numbering: { ...template.figures?.numbering, ...overrides.figures.numbering } }, `section ${section.id}.figures`));
       }
       for (const match of String(section.content || "").matchAll(placeholderPattern)) {
@@ -230,6 +235,13 @@ export function validateThesisTemplate(template) {
     if (!sections.some((section) => section.type === "mainContent" && section.status !== "disabled")) errors.push("mainContent bölümü gerekli");
   }
   errors.push(...validateCaption(template.tables, "tables"), ...validateCaption(template.figures, "figures"));
+  if (template.captionKinds !== undefined) {
+    if (!object(template.captionKinds)) errors.push("captionKinds nesne olmalı");
+    else for (const [id, rule] of Object.entries(template.captionKinds)) {
+      if (!/^[a-z][a-zA-Z0-9]*$/.test(id) || ["toc", "figure", "figures", "table", "tables"].includes(id)) errors.push(`captionKinds.${id} kimliği geçersiz`);
+      errors.push(...validateCaption(rule, `captionKinds.${id}`));
+    }
+  }
   if (template.captionNumberingChoices !== undefined) {
     const choices = template.captionNumberingChoices;
     if (!Array.isArray(choices)) errors.push("captionNumberingChoices liste olmalı");

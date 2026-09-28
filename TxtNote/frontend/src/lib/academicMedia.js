@@ -76,14 +76,14 @@ export function readImageAsDataUrl(file, maxEdge = 1600, { opaqueAsJpeg = false 
   });
 }
 
-export function figureHtml(dataUrl, caption, dimensions) {
+export function figureHtml(dataUrl, caption, dimensions, captionKind = "") {
   const label = String(caption ?? "").trim();
   const description = label.replace(/^(Şekil|Figure)\s+\d+\.\s*/i, "").trim();
   const cap = `<figcaption><span class="academic-caption-label" contenteditable="false">Şekil 1. </span>${escapeHtml(description)}</figcaption>`;
   const size = dimensions ? fitImageSize(dimensions.width, dimensions.height) : null;
   const attrs = size ? ` width="${size.width}" height="${size.height}"` : "";
   const id = `fig-${Math.random().toString(36).slice(2, 10)}`;
-  return `<figure class="academic-figure" data-academic-id="${id}" data-kind="figure" contenteditable="false"><img${attrs} src="${escapeHtml(dataUrl)}" alt="${escapeHtml(description)}">${cap}</figure>\u200B`;
+  return `<figure class="academic-figure" data-academic-id="${id}" data-kind="figure"${captionKind ? ` data-caption-kind="${escapeHtml(captionKind)}"` : ""} contenteditable="false"><img${attrs} src="${escapeHtml(dataUrl)}" alt="${escapeHtml(description)}">${cap}</figure>\u200B`;
 }
 
 export function imageDimensions(src) {

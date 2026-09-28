@@ -82,7 +82,8 @@ export interface FootnoteRule extends Partial<Pick<TextStyle, "fontFamily" | "fo
   separator?: { enabled?: boolean; widthPercent?: number; thicknessPt?: number; spaceBeforePt?: number; spaceAfterPt?: number };
 }
 export interface GeneratedIndexRule {
-  kind: "toc" | "figures" | "tables";
+  /** toc, figures, tables, or the id of a template caption kind (`captionKinds`, e.g. "photo"). */
+  kind: "toc" | "figures" | "tables" | (string & {});
   title?: string;
   levels?: number[];
   maxDepth?: number;
@@ -149,6 +150,7 @@ export interface ThesisSection {
     headings?: Record<string, Partial<HeadingRule>>;
     tables?: Partial<CaptionRule>;
     figures?: Partial<CaptionRule>;
+    captionKinds?: Record<string, Partial<CaptionRule>>;
     footnotes?: FootnoteRule;
   };
 }
@@ -210,6 +212,13 @@ export interface ThesisTemplate {
   placeholders: Record<string, PlaceholderDefinition>;
   tables: CaptionRule;
   figures: CaptionRule;
+  /**
+   * Further caption kinds for figures (e.g. `photo`: "Resim 4.1"). Same shape as `figures`; each kind
+   * has its own counter and can have its own generated list (`generatedIndex.kind: "photo"`). A figure
+   * belongs to a kind through `<figure data-caption-kind="photo">` (source markup, saved with the note);
+   * an unknown/missing kind is a plain figure. The editor offers the choice only when kinds exist.
+   */
+  captionKinds?: Record<string, CaptionRule>;
   bibliography: { heading: string; style: TextStyle; hangingIndentMm?: Length; citationStyle?: string };
   toc: { heading: string; levels: number[]; showPageNumbers: boolean };
   validation?: Record<string, { minItems: number; separator?: string; severity?: "error" | "warning"; message?: string }>;

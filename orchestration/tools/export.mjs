@@ -26,6 +26,8 @@ const outPrefix = resolve(outPrefixArg);
 await mkdir(dirname(outPrefix), { recursive: true });
 const doc = JSON.parse(await readFile(fixturePath, "utf8"));
 const KEY = "txtnote-thesis-regression";
+// Another fixture page (e.g. /tests/thesis-batchb.html, which seeds a custom template) may be named here.
+const fixturePage = process.env.THESIS_FIXTURE_PAGE || "/tests/thesis.html";
 
 const browser = await chromium.launch({ args: ["--enable-blink-features=MulticolColumnWrapping", "--font-render-hinting=none"] });
 const context = await browser.newContext({ viewport: { width: 1400, height: 1000 }, deviceScaleFactor: 1, acceptDownloads: true });
@@ -56,7 +58,7 @@ async function settle() {
 }
 
 try {
-  await page.goto(`${baseUrl}/tests/thesis.html`);
+  await page.goto(`${baseUrl}${fixturePage}`);
   await page.evaluate(([key, value]) => { localStorage.clear(); localStorage.setItem(key, value); }, [KEY, JSON.stringify(doc)]);
   await page.reload();
   await page.locator(".thesis-sheet").first().waitFor({ timeout: 60000 });
