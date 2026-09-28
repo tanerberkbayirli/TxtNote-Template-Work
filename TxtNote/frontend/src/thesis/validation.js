@@ -134,6 +134,7 @@ export function validateThesisTemplate(template) {
   errors.push(...validateFootnoteRule(template.typography?.footnotes, "typography.footnotes", validateTextStyle, template.typography?.body));
   const lineSpacing = template.typography?.lineSpacing;
   if (lineSpacing !== undefined && !(object(lineSpacing) && (lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
+  if (lineSpacing?.baseline !== undefined && !(lineSpacing.mode === "word" && ["css", "word"].includes(lineSpacing.baseline))) errors.push("typography.lineSpacing.baseline geçersiz");
   if (template.validation !== undefined) {
     if (!object(template.validation)) errors.push("validation nesne olmalı");
     else for (const [field, rule] of Object.entries(template.validation)) {

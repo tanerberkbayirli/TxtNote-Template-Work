@@ -3,7 +3,8 @@ import { bibliographyItemsFromResearch, normalizeBibliographyItems } from "../..
 import { figureHtml, imageDimensions, readImageAsDataUrl } from "../../lib/academicMedia.js";
 import { htmlToPlainText } from "../../lib/richText.js";
 import { trustedStyleNonce } from "../../lib/cspStyles.js";
-import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections } from "../../thesis/engine.js";
+import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../thesis/engine.js";
+import { measureWordBaselineCss } from "../../thesis/wordBaseline.js";
 import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/pageLayout.js";
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
 import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, thesisMetadataValue, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
@@ -85,6 +86,19 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
   const onPageCount = useCallback((groupId, count) => setPageCounts((current) => current[groupId] === count ? current : { ...current, [groupId]: count }), []);
   const css = useMemo(() => model ? buildThesisCss(model) + (THESIS_PAGED_LAYOUT ? thesisPagedCss(pageGroups) : "") : "", [model, pageGroups]);
+  // Opt-in Word line placement: measure this browser's baseline of every text style (paint-only offsets).
+  const baselineProbes = useMemo(() => model ? thesisWordBaselineProbes(model) : [], [model]);
+  const baselineProbeKey = baselineProbes.map((probe) => probe.id).join(",");
+  const [baselineCss, setBaselineCss] = useState("");
+  useLayoutEffect(() => {
+    if (!baselineProbes.length) { setBaselineCss(""); return undefined; }
+    let alive = true;
+    const measure = () => { if (alive) setBaselineCss(measureWordBaselineCss(baselineProbes)); };
+    measure();
+    document.fonts?.ready?.then(measure);
+    document.fonts?.addEventListener?.("loadingdone", measure);
+    return () => { alive = false; document.fonts?.removeEventListener?.("loadingdone", measure); };
+  }, [baselineProbeKey]);
   const warning = resolved?.fallback ? resolved.reason : thesis.fallback ? thesis.fallbackReason : "";
   const missingFields = model ? [...new Set(model.sections.flatMap((section) => section.missingPlaceholders))] : [];
   const documentWidth = model ? Math.max(...model.sections.map((section) => pageMetrics(section.rules.page).widthPx)) : 794;
@@ -240,7 +254,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   if (!model) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
 
   return <div className="flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
-    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS}</style>
+    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss}</style>
     <div className="shrink-0 border-b border-neutral-200 bg-white px-4 py-2 dark:border-neutral-800 dark:bg-neutral-900">
       <div className="flex flex-wrap items-center gap-2">
         <button type="button" onClick={() => setDetailsOpen((open) => !open)} aria-expanded={detailsOpen} className="rounded-md border border-neutral-300 px-3 py-1.5 text-xs font-medium dark:border-neutral-700">Tez bilgileri</button>

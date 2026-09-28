@@ -9,6 +9,7 @@
  */
 import { jsPDF } from "jspdf";
 import { academicPdfFont, embedAcademicPdfFonts, hasSystemPdfFont, pdfFontStyle } from "../lib/academicFonts.js";
+import { canvasFontAscent } from "./wordBaseline.js";
 import { PX_PER_MM, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const MM = 1 / PX_PER_MM;
@@ -18,23 +19,13 @@ const SKIP = "button,input,select,textarea,script,style,svg,math,.katex-mathml,.
 const LATIN1 = /^[\x20-\x7e\xa0-\xff]*$/;
 
 let canvasContext = null;
-const metricCache = new Map();
 function measureContext() {
   canvasContext ||= document.createElement("canvas").getContext("2d");
   return canvasContext;
 }
 const canvasFont = (style) => `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-/** Ascent in CSS px: the baseline of a text fragment is its rect top + ascent. */
-function fontAscent(style) {
-  const key = canvasFont(style);
-  if (!metricCache.has(key)) {
-    const context = measureContext();
-    context.font = key;
-    const metrics = context.measureText("Hg");
-    metricCache.set(key, metrics.fontBoundingBoxAscent || parseFloat(style.fontSize) * 0.891);
-  }
-  return metricCache.get(key);
-}
+/** Ascent in CSS px: the baseline of a text fragment is its rect top + ascent (shared with the Word baseline probes). */
+const fontAscent = canvasFontAscent;
 function textWidth(style, text) {
   const context = measureContext();
   context.font = canvasFont(style);
