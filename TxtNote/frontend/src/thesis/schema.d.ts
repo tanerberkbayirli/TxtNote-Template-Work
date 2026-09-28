@@ -221,6 +221,8 @@ export type LineSpacing = { mode: "multiplier" } | {
   baseline?: "css" | "word";
   /** "additive": paragraphs/headings are after(prev) + before(next) apart like Word; default "collapse" (CSS max). */
   paragraphSpacing?: "collapse" | "additive";
+  /** "paragraphPitch": a paragraph/heading after a figure (caption below), table (caption above) or table note starts one body paragraph pitch below the last baseline of that block, as after a paragraph. Needs baseline "word". */
+  blockGap?: "paragraphPitch";
 };
 export interface ThesisTemplate {
   schemaVersion: 1;

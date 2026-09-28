@@ -1,3 +1,4 @@
+import { blockGapActive, blockGapPrevious, blockGapPt } from "./blockGap.js";
 import { jsPDF } from "jspdf";
 import {
   AlignmentType, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
@@ -288,12 +289,13 @@ function specialPageDocx(nodes, context, widthMm) {
       // A framed group is a one-cell table with the frame as its borders and the padding as cell margins.
       gap(node.marginTopMm);
       const { outerPt, innerPt, gapPt, paddingMm, color, docx } = node.border;
-      const edge = { style: BorderStyle[(docx?.style || (innerPt > 0 ? "double" : "single")).replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase()] || BorderStyle.SINGLE, size: Math.round((docx?.sizePt ?? outerPt + gapPt + innerPt) * 8), color: color.slice(1).toUpperCase() };
+      // docx.style names the Word border; docx.sides { top, right, bottom, left } may name another style per side (thickThin / thinThick).
+      const edgeOf = (side) => ({ style: BorderStyle[(docx?.sides?.[side] || docx?.style || (innerPt > 0 ? "double" : "single")).replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase()] || BorderStyle.SINGLE, size: Math.round((docx?.sizePt ?? outerPt + gapPt + innerPt) * 8), color: color.slice(1).toUpperCase() });
       const inner = { ...node, border: undefined, marginTopMm: 0, marginBottomMm: 0 };
       const cellWidth = widthMm;
       out.push(new Table({
         width: { size: twip(cellWidth), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [twip(cellWidth)],
-        borders: { top: edge, bottom: edge, left: edge, right: edge, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
+        borders: { top: edgeOf("top"), bottom: edgeOf("bottom"), left: edgeOf("left"), right: edgeOf("right"), insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
         rows: [new TableRow({ cantSplit: true, children: [new TableCell({ width: { size: twip(cellWidth), type: WidthType.DXA }, margins: { top: twip(paddingMm), bottom: twip(paddingMm), left: twip(paddingMm), right: twip(paddingMm) }, children: specialPageDocx([inner], context, cellWidth - 2 * paddingMm) })] })],
       }));
       gap(node.marginBottomMm);
@@ -430,15 +432,26 @@ function docxChildren(section, context) {
   }
   if (section.layout) children.push(...specialPageDocx(section.layout, context, widthMm));
   let afterHeading = false;
+  // lineSpacing.blockGap: what the previous figure/table/note leaves for the next paragraph (blockGap.js), as its space-before.
+  let gapAfter = null;
+  const useGap = blockGapActive(section.rules);
+  let pending = null;
+  const withGap = (style, block) => {
+    const entry = pending;
+    if (!entry || (block.type === "heading" && style.pageBreakBefore)) return style;
+    return { ...style, spaceBeforePt: Math.max(0, blockGapPt(section.rules, entry.style, style) - entry.after) };
+  };
   for (const block of asBlocks(section)) {
     const previousHeading = afterHeading;
     afterHeading = block.type === "heading";
+    const gapEntry = useGap ? (block.type === "figure" ? blockGapPrevious(section.rules, "figure", { captionKind: block.captionKind }) : block.type === "table" ? blockGapPrevious(section.rules, "table") : block.type === "paragraph" && block.thesisStyle === "tableNote" ? blockGapPrevious(section.rules, "tableNote") : null) : null;
+    pending = gapAfter; gapAfter = gapEntry;
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(runs, block.unnumbered ? { ...style, pageBreakBefore: false } : style, context, { heading: level }));
+      children.push(docxParagraph(runs, withGap(block.unnumbered ? { ...style, pageBreakBefore: false } : style, block), context, { heading: level }));
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
       const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
@@ -447,7 +460,7 @@ function docxChildren(section, context) {
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
       const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
       const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), { ...style, ...spacing, align: align || style.align }, context));
+      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), withGap({ ...style, ...spacing, align: align || style.align }, block), context));
     } else if (block.type === "list") {
       children.push(...listParagraphs(block, section, context));
     } else if (block.type === "table") {

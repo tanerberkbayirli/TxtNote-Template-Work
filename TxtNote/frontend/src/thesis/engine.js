@@ -9,6 +9,7 @@ import { countFootnoteRefs, resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
 import { exceptionSet, isExceptionToken } from "./transformExceptions.js";
+import { blockGapActive, blockGapPrevious, blockGapPt } from "./blockGap.js";
 
 const tokenPattern = /\{\{([A-Z][A-Z0-9_]*)\}\}/g;
 const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -361,7 +362,8 @@ export function thesisSectionCss(section) {
     `${scope} [data-thesis-caption]::before{content:attr(data-thesis-caption);}`,
     ...[["caption", tables], [`${plainFigure}figcaption`, figures]].flatMap(([tag, rule]) => [
       ...(rule.labelStyle ? [`${scope} .thesis-body ${tag}[data-thesis-caption]::before{${labelCss(rule.labelStyle)}}`] : []),
-      ...(rule.hangingIndent === "label" ? [`${scope} .thesis-body ${tag}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px);text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
+      // The label is an inline box exactly as wide as the hang: justification cannot stretch the gap after it, so the caption text starts where the continuation lines start.
+      ...(rule.hangingIndent === "label" ? [`${scope} .thesis-body ${tag}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px);text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`, `${scope} .thesis-body ${tag}[data-thesis-caption-hang]::before{display:inline-block;width:attr(data-thesis-caption-hang px, 0px);text-indent:0;white-space:nowrap}`]
         : rule.hangingIndent > 0 ? [`${scope} .thesis-body ${tag}[data-thesis-caption]{padding-left:${rule.hangingIndent}mm;text-indent:-${rule.hangingIndent}mm}`] : []),
     ]),
     // Figure box (opt-in `box`): image alignment and the figure's own outer spacing (the editor stylesheet's default margin is dropped).
@@ -375,7 +377,7 @@ export function thesisSectionCss(section) {
       return [
         `${sel}{${textCss(rule.style)}color:#111;text-align:${rule.captionAlignment === "auto" ? "center" : rule.captionAlignment || rule.style.align || "left"};margin-top:${rule.spacingBeforePt ?? rule.style.spaceBeforePt ?? 0}pt;margin-bottom:${rule.spacingAfterPt ?? rule.style.spaceAfterPt ?? 0}pt;}`,
         ...(rule.labelStyle ? [`${sel}[data-thesis-caption]::before{${labelCss(rule.labelStyle)}}`] : []),
-        ...(rule.hangingIndent === "label" ? [`${sel}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px);text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
+        ...(rule.hangingIndent === "label" ? [`${sel}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px);text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`, `${sel}[data-thesis-caption-hang]::before{display:inline-block;width:attr(data-thesis-caption-hang px, 0px);text-indent:0;white-space:nowrap}`]
           : rule.hangingIndent > 0 ? [`${sel}[data-thesis-caption]{padding-left:${rule.hangingIndent}mm;text-indent:-${rule.hangingIndent}mm}`] : []),
       ];
     }),
@@ -411,12 +413,14 @@ export function thesisSectionCss(section) {
     const block = `${scope} .thesis-body .math-formula--block`;
     rules.push(
       // style.lineHeight / spaceBeforePt / spaceAfterPt (opt-in): the block behaves like one paragraph line, e.g. a 1.5 line with an empty line after it.
-      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.spaceBeforePt || 0}pt 0 ${eq.style?.spaceAfterPt || 0}pt;padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
+      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.lineHeight ? `calc(${eq.style.spaceBeforePt || 0}pt - attr(data-thesis-eq-pad-before px, 0px)) 0 calc(${eq.style.spaceAfterPt || 0}pt - attr(data-thesis-eq-pad-after px, 0px))` : `${eq.style?.spaceBeforePt || 0}pt 0 ${eq.style?.spaceAfterPt || 0}pt`};padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
       `${block} .math-formula__render{padding:0}`,
       ...(eq.style?.lineHeight ? [`${block} .katex-display{margin:0}`] : []),
+      // fontSizePt is the size of the formula itself (KaTeX scales its glyphs by 1.21 em by default).
+      ...(eq.style?.fontSizePt ? [`${block} .katex{font-size:1em}`] : []),
       // The formula search / copy toolbar stays available on hover but takes no space in the page.
       `${block} .math-formula__toolbar{position:absolute;top:0;right:0;z-index:2;visibility:hidden}${block}:hover .math-formula__toolbar,${block}:focus-within .math-formula__toolbar{visibility:visible}`,
-      `${block}[data-thesis-eq]::after{content:attr(data-thesis-eq);position:absolute;top:50%;transform:translateY(-50%);line-height:1;white-space:nowrap;text-indent:0;${eq.style?.fontFamily ? `font-family:${cssFamily(eq.style.fontFamily)};` : ""}${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.fontWeight ? `font-weight:${eq.style.fontWeight};` : ""}${eq.style?.italic ? "font-style:italic;" : ""}}`,
+      `${block}[data-thesis-eq]::after{content:attr(data-thesis-eq);position:absolute;top:50%;transform:translateY(-50%);line-height:1;white-space:nowrap;text-indent:0;${eq.style?.fontFamily ? `font-family:${cssFamily(eq.style.fontFamily)},${cssFamily(body.fontFamily)};` : ""}${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.fontWeight ? `font-weight:${eq.style.fontWeight};` : ""}${eq.style?.italic ? "font-style:italic;" : ""}}`,
       `${block}[data-thesis-eq-side="right"]::after{right:0}${block}[data-thesis-eq-side="left"]::after{left:0}`,
     );
   }
@@ -461,6 +465,21 @@ export function thesisSectionCss(section) {
         // A heading that starts a page (pageBreakBefore) keeps only its own space-before: the previous block's space-after stays on the page before (a forced break does not truncate the margin).
         if (/^h\d$/.test(next) && after.pageBreakBefore) continue;
         rules.push(`${scope} .thesis-body ${previous}+${next}{margin-top:${Math.round(((before.spaceAfterPt || 0) + (after.spaceBeforePt || 0)) * 1000) / 1000}pt}`);
+      }
+    }
+  }
+  // lineSpacing.blockGap "paragraphPitch": the block after a figure / table / table note keeps the paragraph baseline pitch (blockGap.js).
+  if (blockGapActive(section.rules)) {
+    const previous = [];
+    for (const [kind, rule] of [["", figures], ...Object.entries(section.rules.captionKinds || {})]) {
+      const entry = blockGapPrevious(section.rules, "figure", { captionKind: kind });
+      if (entry) previous.push([kind ? `figure[data-caption-kind="${kind}"]` : (plainFigure ? plainFigure.trim() : "figure"), entry]);
+    }
+    const table = blockGapPrevious(section.rules, "table"); if (table) previous.push([".academic-table-wrap", table]);
+    const note = blockGapPrevious(section.rules, "tableNote"); if (note) previous.push(['p[data-thesis-style="tableNote"]', note]);
+    for (const [selector, entry] of previous) {
+      for (const [next, style] of [["p", text], ...Object.entries(headings).filter(([, heading]) => !heading.pageBreakBefore).map(([level, heading]) => [`h${level}`, heading])]) {
+        rules.push(`${scope} .thesis-body ${selector}+${next}{margin-top:${blockGapPt(section.rules, entry.style, style)}pt}`);
       }
     }
   }

@@ -191,9 +191,10 @@ export function decorateThesisSources(root, model) {
     }
     const host = root.querySelector(`[data-thesis-flow-section="${section.id}"] .thesis-body`);
     if (!host) continue;
-    // Document-wide footnote numbering: the references of this body continue after those of the sections before it.
-    if (section.footnoteOffset !== undefined) host.querySelectorAll(FOOTNOTE_REF_SELECTOR).forEach((node, i) => {
-      const number = String(section.footnoteOffset + i + 1);
+    // Footnote numbers are derived here, never trusted from stored markup: 1, 2, 3 in reading order of this body,
+    // continuing after the sections before it in document numbering (footnoteOffset).
+    host.querySelectorAll(FOOTNOTE_REF_SELECTOR).forEach((node, i) => {
+      const number = String((section.footnoteOffset || 0) + i + 1);
       if (node.getAttribute("data-fn-index") !== number) node.setAttribute("data-fn-index", number);
       if (node.textContent !== number) node.textContent = number;
     });
@@ -204,6 +205,25 @@ export function decorateThesisSources(root, model) {
       if (!equations[i]) return;
       node.setAttribute("data-thesis-eq", equations[i].label);
       node.setAttribute("data-thesis-eq-side", section.rules.equations.numberAlign === "left" ? "left" : "right");
+    });
+    // Editor caret pads (ZWSP text next to a block formula) are line boxes of their own; an equation whose template opts into a
+    // paragraph-like block (equations.style.lineHeight) cancels their height, so editor, PDF and Word space it the same.
+    host.querySelectorAll(".math-formula--block").forEach((node) => {
+      for (const side of ["before", "after"]) node.removeAttribute(`data-thesis-eq-pad-${side}`);
+      if (!section.rules.equations?.style?.lineHeight) return;
+      const scale = new DOMMatrixReadOnly(getComputedStyle(node.closest(".thesis-page-stack") || node).transform).a || 1;
+      const isPad = (sibling) => sibling?.nodeType === 3 && !sibling.data.replace(/[\u200B\s]/g, "");
+      const box = node.getBoundingClientRect(), own = getComputedStyle(node);
+      // A pad is at most a couple of lines: anything larger means the neighbour sits in the next column/page.
+      const most = 3 * (parseFloat(own.lineHeight) || 30);
+      const set = (side, px) => { if (px > 0.5 && px < most) node.setAttribute(`data-thesis-eq-pad-${side}`, String(Math.round(px * 1000) / 1000)); };
+      // Read both neighbours before writing anything: an attribute changes the margins and moves what is measured next.
+      const before = node.previousElementSibling, after = node.nextElementSibling;
+      const beforePad = before && isPad(node.previousSibling) && before.compareDocumentPosition(node.previousSibling) & Node.DOCUMENT_POSITION_FOLLOWING
+        ? (box.top - before.getBoundingClientRect().bottom) / scale - parseFloat(getComputedStyle(before).marginBottom) - parseFloat(own.marginTop) : 0;
+      const afterPad = after && isPad(node.nextSibling)
+        ? (after.getBoundingClientRect().top - box.bottom) / scale - parseFloat(own.marginBottom) - parseFloat(getComputedStyle(after).marginTop) : 0;
+      set("before", beforePad); set("after", afterPad);
     });
     let index = 0;
     host.querySelectorAll("[data-thesis-anchor]").forEach((node) => { node.removeAttribute("data-thesis-anchor"); node.removeAttribute("data-thesis-number"); });
@@ -250,7 +270,7 @@ export function thesisPresentationHtml(section, language = "tr") {
   const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc" && entry.kind !== "equations");
   const equations = (section.indexSources || []).filter((entry) => entry.kind === "equations");
   let equation = 0;
-  let html = (section.footnoteOffset !== undefined ? renumberFootnoteRefs(thesisSourceHtml(section.html), section.footnoteOffset) : thesisSourceHtml(section.html)).replace(/<span\b([^>]*\bdata-eq-numbered=["']true["'][^>]*)>/gi, (tag, attrs) => {
+  let html = renumberFootnoteRefs(thesisSourceHtml(section.html), section.footnoteOffset || 0).replace(/<span\b([^>]*\bdata-eq-numbered=["']true["'][^>]*)>/gi, (tag, attrs) => {
     const entry = /math-formula--block|data-display=["']block["']/i.test(attrs) ? equations[equation++] : null;
     return entry ? `${tag.slice(0, -1)} data-thesis-eq="${escape(entry.label)}" data-thesis-eq-side="${section.rules.equations.numberAlign === "left" ? "left" : "right"}">` : tag;
   }).replace(/<h([1-6])\b([^>]*)>/gi, (tag, level, attrs) => {

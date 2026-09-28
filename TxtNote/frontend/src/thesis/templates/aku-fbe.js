@@ -99,31 +99,44 @@ const innerCover = (degree) => ({
   ],
 });
 
-// Tez Onay Sayfası. The template sets it in a 150 mm cell (x 28.1-178.1 mm) with 1.9 mm cell margins: the page margins
-// are the cell, text lines carry the cell margins as indents. Rows are label | ": value" columns (colon at x 67.47 mm).
-const CELL_MM = 1.9;
-const LABEL_PERCENT = (67.47 - 28.1) / 150 * 100;
-const cellLeft = { leftIndentMm: CELL_MM };
-const cellRight = { rightIndentMm: CELL_MM };
+// Tez Onay Sayfası. The template sets it in a cell whose outer frame edges are x 27.32 and 178.91 mm; the page margins are that box,
+// text lines carry the distance to the text edges (x 30.0 / 176.2 mm) as indents. Rows are label | ": value" columns (colon at x 67.47 mm).
+const FRAME_L_MM = 27.32;
+const FRAME_R_MM = 178.91;
+const FRAME_W_MM = FRAME_R_MM - FRAME_L_MM;
+const cellLeft = { leftIndentMm: 30 - FRAME_L_MM };
+const cellRight = { rightIndentMm: FRAME_R_MM - 176.2 };
+const LABEL_PERCENT = (67.47 - FRAME_L_MM) / FRAME_W_MM * 100;
 const approvalRow = (label, value, labelStyle, valueStyle = {}) => ({ type: "group", direction: "row", blocks: [
   { type: "text", value: label, widthPercent: LABEL_PERCENT, style: { ...bold, ...labelStyle } },
   { type: "text", value: `: ${value}`, style: { ...cellRight, ...valueStyle } },
 ] });
-const juror = (n) => {
+// Juror row: name line + affiliation line (+ the grey signature hint). The template pitch is 14.29 mm (name single, affiliation 1.5, 6 pt after);
+// with jurors 6-7 (doctorate, second advisor) that cannot fit above the 30 mm bottom margin, so all rows use a compact pitch
+// (both lines single, 4 pt after: 11.15 mm) - a non-source layout choice.
+const jurorRow = (n, compact, visibleWhen) => {
   const single = { lineHeight: 1 };
-  return { type: "group", ...(n >= 6 ? { visibleWhen: { anyFilled: [`JURY_${n}_TITLE_NAME`] } } : {}), blocks: [
-    approvalRow(n === 1 ? "Başkan" : "Üye", `{{JURY_${n}_TITLE_NAME}}`, { ...single, leftIndentMm: 42.49 - 28.1 }, single),
+  const after = compact ? 4 : 6;
+  const affil = compact ? single : {};
+  return { type: "group", visibleWhen, blocks: [
+    approvalRow(n === 1 ? "Başkan" : "Üye", `{{JURY_${n}_TITLE_NAME}}`, { ...single, leftIndentMm: 42.49 - FRAME_L_MM }, single),
     { type: "group", direction: "row", blocks: [
-      { type: "text", value: "", widthPercent: LABEL_PERCENT, style: { spaceAfterPt: 6 } },
-      { type: "metadata", field: `JURY_${n}_AFFILIATION`, style: { leftIndentMm: 69.6 - 67.47, spaceAfterPt: 6 } },
-      { type: "text", value: "…… İmza ……", widthPercent: 30, style: { ...grey, ...cellRight, align: "right", spaceAfterPt: 6 } },
+      { type: "text", value: "", widthPercent: LABEL_PERCENT, style: { ...affil, spaceAfterPt: after } },
+      { type: "metadata", field: `JURY_${n}_AFFILIATION`, style: { ...affil, leftIndentMm: 69.6 - 67.47, spaceAfterPt: after } },
+      { type: "text", value: "…… İmza ……", widthPercent: 30, style: { ...affil, ...grey, ...cellRight, align: "right", spaceAfterPt: after } },
     ] },
   ] };
 };
-const APPROVAL_FRAME_INSET_MM = 6.43 - 3 * MM_PER_PT;
+const MANY_JURORS = ["JURY_6_TITLE_NAME", "JURY_7_TITLE_NAME"];
+const jurors = (n) => n <= 5
+  ? [jurorRow(n, false, { noneFilled: MANY_JURORS }), jurorRow(n, true, { anyFilled: MANY_JURORS })]
+  : [jurorRow(n, true, { anyFilled: [`JURY_${n}_TITLE_NAME`] })];
+// Outer frame: Word thickThinSmallGap (top/left) and thinThickSmallGap (bottom/right), drawn as in the guide: thin 0.75 pt outside, gap, thick 3 pt inside.
+const FRAME_BORDER = { outerPt: 0.75, gapPt: 0.75, innerPt: 3, paddingMm: 0, docx: { style: "thickThinSmallGap", sizePt: 3, sides: { top: "thickThinSmallGap", left: "thickThinSmallGap", bottom: "thinThickSmallGap", right: "thinThickSmallGap" } } };
+const FRAME_BORDER_MM = (0.75 + 0.75 + 3) * MM_PER_PT;
 const approval = (degree) => ({
   id: "approval", type: "approval", title: "TEZ ONAY SAYFASI", status: "required", group: "front", mode: "static",
-  overrides: { page: { margins: { leftMm: 28.1, rightMm: 31.9, bottomMm: 12 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
+  overrides: { page: { margins: { leftMm: FRAME_L_MM, rightMm: 210 - FRAME_R_MM, bottomMm: 12 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
   blocks: [
     { type: "text", value: "TEZ ONAY SAYFASI", style: { ...bold, align: "center" } },
     blank(1),
@@ -133,12 +146,12 @@ const approval = (degree) => ({
     approvalRow("Danışman", "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}", cellLeft),
     { type: "group", visibleWhen: { anyFilled: ["CO_ADVISOR_NAME"] }, blocks: [approvalRow("İkinci Danışman", "{{CO_ADVISOR_TITLE}} {{CO_ADVISOR_NAME}}", cellLeft)] },
     blank(1),
-    ...[1, 2, 3, 4, 5, 6, 7].map(juror),
-    // With jurors 6-7 (doctorate, second advisor) the page would overflow: the empty line above the frame is dropped then (non-source).
-    { type: "group", visibleWhen: { noneFilled: ["JURY_6_TITLE_NAME", "JURY_7_TITLE_NAME"] }, blocks: [blank(1)] },
-    // Institute approval: a thick-thin double frame (Word thickThinSmallGap, 3 pt) with its top edge at 189.0 mm.
-    { type: "group", border: { outerPt: 1.5, gapPt: 0.75, innerPt: 0.75, paddingMm: 0, docx: { style: "thickThinSmallGap", sizePt: 3 } }, style: { align: "center" }, blocks: [
-      { type: "spacer", heightMm: APPROVAL_FRAME_INSET_MM },
+    ...[1, 2, 3, 4, 5, 6, 7].flatMap(jurors),
+    // With jurors 6-7 the empty line above the frame is dropped (non-source) so that the block still ends above the bottom margin.
+    { type: "group", visibleWhen: { noneFilled: MANY_JURORS }, blocks: [blank(1)] },
+    // Institute approval frame, top edge at 189.0 mm with five jurors.
+    { type: "group", border: FRAME_BORDER, style: { align: "center" }, blocks: [
+      { type: "spacer", heightMm: 6.43 - FRAME_BORDER_MM },
       { type: "text", value: "Afyon Kocatepe Üniversitesi" },
       { type: "text", value: "Fen Bilimleri Enstitüsü Yönetim Kurulu’nun" },
       { type: "text", value: "…… / …… / ……… tarih ve" },
@@ -147,7 +160,7 @@ const approval = (degree) => ({
       { type: "text", value: "……………………………….", style: grey },
       { type: "metadata", field: "INSTITUTE_DIRECTOR", fallback: "(Ünvanı Adı ve SOYADI)" },
       { type: "text", value: "Enstitü Müdürü" },
-      { type: "spacer", heightMm: 0.6 },
+      { type: "spacer", heightMm: 0.6 - (FRAME_BORDER_MM - 3 * MM_PER_PT) },
     ] },
   ],
 });
@@ -348,8 +361,10 @@ const base = {
       "3": heading("{1}.{2}.{3}"),
       "4": heading("{1}.{2}.{3}.{4}"),
     },
-    footnotes: { placement: "pageBottom", fontFamily: FONT, fontSizePt: 10, lineHeight: 1 },
-    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word", paragraphSpacing: "additive" },
+    // Word numbers footnotes continuously through the document; the guide is silent, so the sections continue.
+    footnotes: { placement: "pageBottom", numbering: "document", fontFamily: FONT, fontSizePt: 10, lineHeight: 1 },
+    // blockGap: a paragraph/heading after a figure, table or table note keeps the paragraph baseline pitch (the guide's empty 1.5 line).
+    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word", paragraphSpacing: "additive", blockGap: "paragraphPitch" },
     // Table notes: below the table, 10 pt, single spaced, block (no indent), 6 pt before and after.
     paragraphStyles: { tableNote: { fontSizePt: 10, lineHeight: 1, align: "justify", spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 0 } },
   },
@@ -398,7 +413,7 @@ const base = {
   },
   figures: figureCaption("Şekil"),
   captionKinds: { photo: figureCaption("Resim") },
-  equations: { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right", style: { fontSizePt: 12, lineHeight: 1.5 } },
+  equations: { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right", style: { fontFamily: "Cambria Math", fontSizePt: 12, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: BLANK_PT } },
   bibliography: { heading: "KAYNAKLAR", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0, hangingIndentMm: 12.5 }, hangingIndentMm: 0, citationStyle: "author-year" },
   toc: { heading: "İÇİNDEKİLER DİZİNİ", levels: [1, 2, 3, 4], showPageNumbers: true },
 };

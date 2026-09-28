@@ -42,6 +42,13 @@ function color(value) {
   return a === 0 ? null : [r, g, b];
 }
 
+/**
+ * Math symbols the embedded Times New Roman lacks, replaced by their closest glyph it has (jsPDF drops a missing glyph silently:
+ * "F = a ⋅ b" printed "F = a   b"). Only look-alikes; glyphs without one (∈ ⇒ ∀ …) need a math font, see failures/aku-fbe/equation-font.md.
+ */
+export const PDF_GLYPH_ALIASES = Object.freeze({ "\u22C5": "\u2219", "\u2215": "/", "\u2044": "/", "\u2010": "-", "\u2011": "-", "\u2223": "|", "\u2236": ":", "\u2032": "'", "\u00A0": " " });
+const aliasGlyphs = (text) => String(text).replace(/[\u22C5\u2215\u2044\u2010\u2011\u2223\u2236\u2032\u00A0]/g, (char) => PDF_GLYPH_ALIASES[char]);
+
 function pdfFace(pdf, style, text) {
   const family = String(style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
   const bold = Number(style.fontWeight) >= 600;
@@ -229,7 +236,11 @@ function collectGroup(stack, language) {
         const labelWidth = textWidth(labelStyle, label);
         const pitch = (parseFloat(pseudo.lineHeight) || parseFloat(style.lineHeight));
         pushLabel(label, style.textAlign === "center" ? left + (width - labelWidth) / 2 : style.textAlign === "right" ? left + width - labelWidth : left, { top: firstText.top - pitch, baseline: firstText.baseline - pitch }, labelStyle);
-      } else pushLabel(label, firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle);
+      } else {
+        // A caption with a measured hang draws its label in an inline box of exactly that width (engine CSS): the text starts one hang after the line start.
+        const hang = parseFloat(element.getAttribute("data-thesis-caption-hang"));
+        pushLabel(label, Number.isFinite(hang) ? firstText.x - hang : firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle);
+      }
     }
     // Equation number (::after of a numbered display equation): flush right/left of the block, centred on the formula.
     const equation = element.getAttribute("data-thesis-eq");
@@ -297,7 +308,7 @@ function drawOp(pdf, op, pageTop) {
   pdf.setTextColor(...op.color);
   const spacing = parseFloat(op.style.letterSpacing) || 0;
   const y = (op.baseline - pageTop) * MM;
-  pdf.text(op.text, op.x * MM, y, { baseline: "alphabetic", ...(spacing ? { charSpace: spacing * MM } : {}) });
+  pdf.text(aliasGlyphs(op.text), op.x * MM, y, { baseline: "alphabetic", ...(spacing ? { charSpace: spacing * MM } : {}) });
   for (const line of op.decoration || []) {
     const size = parseFloat(op.style.fontSize);
     const offset = line === "underline" ? size * 0.12 : -size * 0.28;

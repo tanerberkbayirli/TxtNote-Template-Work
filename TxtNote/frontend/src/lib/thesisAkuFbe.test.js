@@ -40,7 +40,7 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     assert.deepEqual(t.page.margins, { topMm: 30, bottomMm: 30, leftMm: 30, rightMm: 30 });
     assert.equal(t.page.footer.distanceMm, 12.5);
     assert.deepEqual(t.page.numbering.style, { fontFamily: "Times New Roman", fontSizePt: 10 });
-    assert.deepEqual(t.typography.lineSpacing, { mode: "word", singleLineEm: 1.15, baseline: "word", paragraphSpacing: "additive" });
+    assert.deepEqual(t.typography.lineSpacing, { mode: "word", singleLineEm: 1.15, baseline: "word", paragraphSpacing: "additive", blockGap: "paragraphPitch" });
     assert.equal(t.typography.body.spaceAfterPt, 20.7);
     assert.equal(t.typography.body.firstLineIndentMm, 0);
     for (const level of ["1", "2", "3", "4"]) {
@@ -101,7 +101,7 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     assert.ok(Math.abs(cover.margins.topMm + 0.9336 * 12 * 25.4 / 72 - 215.53) < 1e-6);
     // approval: cell x 28.1-178.1, frame is a thick-thin double border
     const approval = section(without, "approval");
-    assert.deepEqual([approval.rules.page.margins.leftMm, approval.rules.page.margins.rightMm], [28.1, 31.9]);
+    assert.ok(Math.abs(approval.rules.page.margins.leftMm - 27.32) < 1e-9 && Math.abs(approval.rules.page.margins.rightMm - 31.09) < 1e-9, "frame outer edges x 27.32 / 178.91");
     assert.equal(approval.layout.find((node) => node.border)?.border.docx.style, "thickThinSmallGap");
   });
 

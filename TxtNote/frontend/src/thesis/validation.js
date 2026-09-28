@@ -171,6 +171,7 @@ export function validateThesisTemplate(template) {
   }
   const lineSpacing = template.typography?.lineSpacing;
   if (lineSpacing !== undefined && !(object(lineSpacing) && (lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
+  if (lineSpacing?.blockGap !== undefined && !(lineSpacing.blockGap === "paragraphPitch" && lineSpacing.mode === "word" && lineSpacing.baseline === "word")) errors.push('typography.lineSpacing.blockGap yalnız "paragraphPitch" ve mode/baseline "word" ile geçerli');
   if (lineSpacing?.paragraphSpacing !== undefined && !["collapse", "additive"].includes(lineSpacing.paragraphSpacing)) errors.push("typography.lineSpacing.paragraphSpacing geçersiz");
   if (lineSpacing?.baseline !== undefined && !(lineSpacing.mode === "word" && ["css", "word"].includes(lineSpacing.baseline))) errors.push("typography.lineSpacing.baseline geçersiz");
   if (template.validation !== undefined) {
