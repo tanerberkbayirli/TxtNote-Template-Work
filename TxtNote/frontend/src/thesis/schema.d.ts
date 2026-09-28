@@ -191,13 +191,16 @@ interface LayoutBox {
 export type SpecialPageBlock =
   | (LayoutBox & { type: "image"; source: string; widthMm: Length; heightMm: Length; align?: "left" | "center" | "right" })
   /** Static template text; `{{KEY}}` placeholders are accepted for older templates. */
-  | (LayoutBox & { type: "text"; value: string; style?: Partial<TextStyle> })
+  | (LayoutBox & { type: "text"; value: string; /** "inline": `**bold**` runs in the template text (metadata values are never parsed). */ markup?: "inline"; style?: Partial<TextStyle> })
   /** One metadata value from thesis.values (placeholder key). prefix/suffix are static; fallback replaces an empty value. */
   | (LayoutBox & { type: "metadata"; field: string; prefix?: string; suffix?: string; fallback?: string; style?: Partial<TextStyle> })
   | (LayoutBox & { type: "spacer"; heightMm: Length })
   | (LayoutBox & { type: "separator"; thicknessPt?: number; align?: "left" | "center" | "right" })
   /** `style` is inherited by every child. Max nesting depth 4. */
-  | (LayoutBox & { type: "group"; direction?: "column" | "row"; gapMm?: Length; style?: Partial<TextStyle>; blocks: SpecialPageBlock[] });
+  | (LayoutBox & { type: "group"; direction?: "column" | "row"; gapMm?: Length; style?: Partial<TextStyle>;
+    /** Frame: outer rule, gap, inner rule (double / thick-thin), padding; `docx` names the Word border (e.g. thickThinSmallGap, sizePt total). */
+    border?: { outerPt?: number; gapPt?: number; innerPt?: number; paddingMm?: Length; color?: string; docx?: { style: string; sizePt?: number } };
+    blocks: SpecialPageBlock[] });
 export interface PlaceholderDefinition {
   label: string;
   type: "text" | "date" | "number" | "multiline" | (string & {});
