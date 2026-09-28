@@ -123,7 +123,7 @@ const juror = (n) => {
 const APPROVAL_FRAME_INSET_MM = 6.43 - 3 * MM_PER_PT;
 const approval = (degree) => ({
   id: "approval", type: "approval", title: "TEZ ONAY SAYFASI", status: "required", group: "front", mode: "static",
-  overrides: { page: { margins: { leftMm: 28.1, rightMm: 31.9, bottomMm: 8 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
+  overrides: { page: { margins: { leftMm: 28.1, rightMm: 31.9, bottomMm: 12 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
   blocks: [
     { type: "text", value: "TEZ ONAY SAYFASI", style: { ...bold, align: "center" } },
     blank(1),
@@ -134,7 +134,8 @@ const approval = (degree) => ({
     { type: "group", visibleWhen: { anyFilled: ["CO_ADVISOR_NAME"] }, blocks: [approvalRow("İkinci Danışman", "{{CO_ADVISOR_TITLE}} {{CO_ADVISOR_NAME}}", cellLeft)] },
     blank(1),
     ...[1, 2, 3, 4, 5, 6, 7].map(juror),
-    blank(1),
+    // With jurors 6-7 (doctorate, second advisor) the page would overflow: the empty line above the frame is dropped then (non-source).
+    { type: "group", visibleWhen: { noneFilled: ["JURY_6_TITLE_NAME", "JURY_7_TITLE_NAME"] }, blocks: [blank(1)] },
     // Institute approval: a thick-thin double frame (Word thickThinSmallGap, 3 pt) with its top edge at 189.0 mm.
     { type: "group", border: { outerPt: 1.5, gapPt: 0.75, innerPt: 0.75, paddingMm: 0, docx: { style: "thickThinSmallGap", sizePt: 3 } }, style: { align: "center" }, blocks: [
       { type: "spacer", heightMm: APPROVAL_FRAME_INSET_MM },
@@ -275,10 +276,12 @@ function sections(degree) {
     { id: "introduction", type: "introduction", title: "GİRİŞ", status: "required", group: "body", mode: "editable", showTitle: true, titleNumbering: "continueH1",
       overrides: { page: { numbering: { format: "arabic", startAt: 1, restart: true } } } },
     { id: "main", type: "mainContent", title: "Bölümler", status: "required", group: "body", mode: "editable" },
-    { id: "bibliography", type: "bibliography", title: "KAYNAKLAR", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1" },
+    { id: "bibliography", type: "bibliography", title: "KAYNAKLAR", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1",
+      // The first entry's 6 pt space-before adds to the title's empty line (Word), which CSS would collapse across the section wrapper.
+      overrides: { headings: { "1": { spaceAfterPt: BLANK_PT + 6 } } } },
     // ÖZGEÇMİŞ (required for both degrees) before EKLER: labels at the margin, colons 50 mm in, education rows indented 12.5 mm.
     { id: "cv", type: "curriculumVitae", title: "ÖZGEÇMİŞ", status: "required", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
-      overrides: { headings: frontTitle(), paragraph: { firstLineIndentMm: 0, align: "left", spaceAfterPt: 0, tabStopMm: 50 } } },
+      overrides: { headings: frontTitle(), paragraph: { firstLineIndentMm: 0, align: "left", spaceAfterPt: 0, tabStopMm: 12.5 } } },
     { id: "appendices", type: "appendices", title: "EKLER", status: "optional", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
       overrides: { headings: frontTitle() } },
   ];
@@ -289,11 +292,14 @@ function sections(degree) {
 const EXCEPTIONS = ["ve", "veya", "ile"];
 const heading = (format, extra = {}) => ({ fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "left", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: BLANK_PT, firstLineIndentMm: 0, keepWithNext: true, textTransform: "capitalize", textTransformExceptions: EXCEPTIONS, numbering: { enabled: true, format, sequence: "arabic" }, ...extra });
 const captionNumbering = { scope: "chapter", format: "{chapter}.{n}", sequence: "arabic" };
-const caption = (label, position) => ({
+// Figure/Resim: the image bottom is 5.96 mm above the first caption baseline (measured); the caption's own ascent is 0.9336 em.
+const FIGURE_GAP_PT = 5.96 / MM_PER_PT - 0.9336 * 11;
+const caption = (label, position, extra = {}) => ({
   label, position, numbering: captionNumbering, labelFormat: "{label} {number}", labelStyle: bold, hangingIndent: "label", captionAlignment: "justify", align: "center",
   style: { fontFamily: FONT, fontSizePt: 11, align: "justify", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 6 },
-  spacingBeforePt: 0, spacingAfterPt: 6,
+  spacingBeforePt: 0, spacingAfterPt: 6, ...extra,
 });
+const figureCaption = (label) => caption(label, "below", { spacingBeforePt: Math.round(FIGURE_GAP_PT * 100) / 100, box: { align: "center", spaceBeforePt: 0, spaceAfterPt: 0 } });
 
 const base = {
   schemaVersion: 1,
@@ -313,7 +319,7 @@ const base = {
       "Kılavuz 2020, şablon dosyası 2025: şablon, kılavuzla birlikte hazırlanan 2019/2020 şablonunun yeniden kaydıdır; daha yeni bir kural seti yoktur (flag guide-template-version-gap). Şablondaki 2019/2020 yılları ve müdür adı (Prof. Dr. Bekir YALÇIN) örnek içeriktir, basılmaz.",
       "Öncelik: kılavuzun açık cümlesi > şablon XML > kılavuzdaki örnek sayfa geometrisi. Sol/üst/sağ/alt kenar boşlukları 3 cm (kılavuzun kendi sayfalarında sağ kenar 28,9 mm; açık kural ve şablon 30 mm).",
       "ÖZET/ABSTRACT: Anahtar Kelimeler, yıl/sayfa satırından önce gelir (kılavuz metni p.18); kılavuzun örnek sayfası ve şablon ters sırayı gösterir (needsConfirmation). ÖZGEÇMİŞ, EKLER'den önce gelir (kılavuzun sıra listesi, İçindekiler örneği ve şablon; metin 'en son sayfa' der, needsConfirmation).",
-      "Onay sayfası: şablon (150 mm hücre, 14,29 mm jüri aralığı, müdür adı sırası) kılavuz örneğinden (154 mm, 12,91 mm) önceliklidir; jüri satırlarının taban çizgileri şablon XML'inden hesaplanmıştır (INFERRED). Jüri sayısı yüksek lisans için belirtilmemiştir: 5 satır varsayılan, 6-7. satırlar yalnızca doldurulunca (doktora, ikinci danışman) görünür; 7 jüri üyesinde sayfa 30 mm alt kenar boşluğunun altına taşar.",
+      "Onay sayfası: şablon (150 mm hücre, 14,29 mm jüri aralığı, müdür adı sırası) kılavuz örneğinden (154 mm, 12,91 mm) önceliklidir; jüri satırlarının taban çizgileri şablon XML'inden hesaplanmıştır (INFERRED). Jüri sayısı yüksek lisans için belirtilmemiştir: 5 satır varsayılan, 6-7. satırlar yalnızca doldurulunca (doktora, ikinci danışman) görünür; 7 jüri üyesinde tek sayfaya sığması için çerçevenin üstündeki boş satır çıkarılır ve içerik 30 mm alt kenar boşluğunun altına (289 mm) uzanır (kaynak dışı).",
       "Enstitü müdürü adı düzenlenebilir alandır; 2019 örnek içeriği yazılmaz. Gri 'İmza' ipuçları şablondaki gibi (BFBFBF) basılır; basılıp basılmayacağı kaynakta belirtilmemiştir.",
       "Dış Kapak: fiziksel 1. sayfa, numarasız ve sayılmaz; metin yalnız x 55-155 mm, y 210-275 mm alanında, üstten hizalı (ilk taban çizgisi 215,53 mm, INFERRED); kapak kartonunun kendisi ve kenarlığı üretilmez. İsteğe bağlı satırlar (proje numarası, ikinci danışman) yoksa yuvasıyla birlikte çıkar (kaynak: belirsiz).",
       "Onay sayfası çerçevesi: Word'ün thickThinSmallGap (3 pt) kenarlığı üst/sol kalın-ince, alt/sağ ince-kalın çizer; motor simetrik çift çerçeve çizer (dış 1,5 pt, ince iç 0,75 pt). Çerçeve sol kenarı 28,1 mm (şablonda dış kenar 27,3 mm).",
@@ -388,8 +394,8 @@ const base = {
     cellStyle: { fontSizePt: 12, lineHeight: 1, align: "left" },
     continuation: { format: "{label} {number} (Devam) {title}" },
   },
-  figures: caption("Şekil", "below"),
-  captionKinds: { photo: caption("Resim", "below") },
+  figures: figureCaption("Şekil"),
+  captionKinds: { photo: figureCaption("Resim") },
   equations: { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right", style: { fontSizePt: 12 } },
   bibliography: { heading: "KAYNAKLAR", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0, hangingIndentMm: 12.5 }, hangingIndentMm: 0, citationStyle: "author-year" },
   toc: { heading: "İÇİNDEKİLER DİZİNİ", levels: [1, 2, 3, 4], showPageNumbers: true },

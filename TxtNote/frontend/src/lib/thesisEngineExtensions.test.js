@@ -54,7 +54,9 @@ describe("generic engine extensions (batch A)", () => {
     const template = withTemplate({ tables: { ...mcbuMaster.tables, borders: { preset: "threeRule", widthPt: 0.5 } } });
     const model = compileThesisDocument(template, {}, "T", `<div class="academic-table-wrap"><table class="academic-table"><caption>Tablo</caption><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr></tbody></table></div>`);
     const css = buildThesisCss(model);
-    assert.match(css, /\.thesis-body table\{border-top:0\.5pt solid #000 !important;border-bottom:0\.5pt solid #000 !important;\}/);
+    // The outer rules sit on the first/last row cells (a border on the table box would enclose an above-table caption).
+    assert.match(css, /table>thead:first-of-type>tr:first-child>\*[^{]*\{border-top:0\.5pt solid #000 !important;\}/);
+    assert.match(css, /table>:is\(tbody,tfoot\):last-child>tr:last-child>\*\{border-bottom:0\.5pt solid #000 !important;\}/);
     // index.css sets cell borders/padding with !important; the template's rule has to outrank it
     assert.match(css, /td,[^{]*th\{border:0 !important;padding:[^}]*!important;\}/);
     assert.match(css, /thead tr:last-child>\*\{border-bottom:0\.5pt solid #000 !important;\}/);

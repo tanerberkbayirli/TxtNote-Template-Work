@@ -93,6 +93,10 @@ function validateCaption(caption, path) {
   if (caption.labelFormat !== undefined && !(text(caption.labelFormat) && caption.labelFormat.includes("{number}"))) errors.push(`${path}.labelFormat {number} içermeli`);
   if (caption.labelStyle !== undefined) errors.push(...(object(caption.labelStyle) ? validateTextStyle({ ...caption.style, ...caption.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
   if (caption.hangingIndent !== undefined && caption.hangingIndent !== "label" && !positive(caption.hangingIndent)) errors.push(`${path}.hangingIndent geçersiz`);
+  if (caption.box !== undefined) {
+    const box = caption.box;
+    if (!object(box) || (box.align !== undefined && !["left", "center", "right"].includes(box.align)) || ["spaceBeforePt", "spaceAfterPt"].some((key) => box[key] !== undefined && !nonnegative(box[key]))) errors.push(`${path}.box { align, spaceBeforePt, spaceAfterPt } olmalı`);
+  }
   if (caption.continuation !== undefined) {
     const tableRule = /(^|\.)tables$/.test(path);
     if (!tableRule || !object(caption.continuation) || !(text(caption.continuation.format) && caption.continuation.format.includes("{number}"))) errors.push(`${path}.continuation yalnız tables için { format: "... {number} ..." } olmalı`);

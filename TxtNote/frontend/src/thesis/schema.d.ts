@@ -85,6 +85,8 @@ export interface CaptionRule {
    * measured rows and a caption paragraph precedes each continuation fragment (Word cannot vary a repeated row).
    */
   continuation?: { format: string };
+  /** Figures and caption kinds: image alignment and the figure block's outer spacing (pt); without it the editor's default figure margin applies. */
+  box?: { align?: "left" | "center" | "right"; spaceBeforePt?: number; spaceAfterPt?: number };
   /** Tables only: typography of the cells (e.g. single spacing, centered values). A cell's own alignment wins; omitted keys inherit the body. */
   cellStyle?: Partial<TextStyle>;
 }
@@ -182,7 +184,7 @@ export interface ThesisSection {
 interface LayoutBox {
   marginTopMm?: Length; marginBottomMm?: Length; /** Width inside a row group. */ widthPercent?: number;
   /** Declarative: the block (and its children) is left out when none of these metadata fields is filled. */
-  visibleWhen?: { anyFilled: string[] };
+  visibleWhen?: { anyFilled: string[] } | { noneFilled: string[] };
 }
 export type SpecialPageBlock =
   | (LayoutBox & { type: "image"; source: string; widthMm: Length; heightMm: Length; align?: "left" | "center" | "right" })

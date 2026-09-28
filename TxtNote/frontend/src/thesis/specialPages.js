@@ -12,7 +12,8 @@
  * - group     `direction: "column" | "row"` container; its `style` is inherited by children
  *
  * Any block may declare `visibleWhen: { anyFilled: ["FIELD", ...] }`: it (with its children)
- * is left out when none of those metadata values is filled, e.g. an optional co-advisor line.
+ * is left out when none of those metadata values is filled, e.g. an optional co-advisor line;
+ * `{ noneFilled: [...] }` is the opposite (shown only while all of them are empty).
  *
  * Typography inherits template body → section `overrides.body` → group `style` → block `style`.
  * Page geometry and numbering stay in the section's existing `overrides.page`.
@@ -29,7 +30,9 @@ const filled = (value) => String(value ?? "").trim().length > 0;
 
 /** Declarative block condition; a block without one is always shown. */
 export function specialPageBlockVisible(block, values = {}) {
-  const fields = block?.visibleWhen?.anyFilled;
+  const condition = block?.visibleWhen;
+  if (Array.isArray(condition?.noneFilled)) return !condition.noneFilled.some((field) => filled(values[field]));
+  const fields = condition?.anyFilled;
   return !Array.isArray(fields) || fields.some((field) => filled(values[field]));
 }
 
@@ -227,8 +230,9 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
     if (!SPECIAL_PAGE_BLOCK_TYPES.includes(block?.type)) { errors.push(`${at}.type geçersiz`); continue; }
     for (const key of ["marginTopMm", "marginBottomMm"]) if (block[key] !== undefined && !nonnegative(block[key])) errors.push(`${at}.${key} geçersiz`);
     if (block.visibleWhen !== undefined) {
-      const fields = block.visibleWhen?.anyFilled;
-      if (!Array.isArray(fields) || !fields.length || Object.keys(block.visibleWhen).length !== 1 || fields.some((field) => !placeholders[field])) errors.push(`${at}.visibleWhen geçersiz`);
+      const keys = Object.keys(block.visibleWhen || {});
+      const fields = block.visibleWhen?.[keys[0]];
+      if (keys.length !== 1 || !["anyFilled", "noneFilled"].includes(keys[0]) || !Array.isArray(fields) || !fields.length || fields.some((field) => !placeholders[field])) errors.push(`${at}.visibleWhen geçersiz`);
     }
     if (block.widthPercent !== undefined && !(Number.isFinite(block.widthPercent) && block.widthPercent > 0 && block.widthPercent <= 100)) errors.push(`${at}.widthPercent geçersiz`);
     const style = { ...baseStyle, ...block.style };

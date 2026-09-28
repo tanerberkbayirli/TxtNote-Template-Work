@@ -349,7 +349,9 @@ export function thesisSectionCss(section) {
       // !important: the editor's own table stylesheet (index.css) sets cell borders/padding with it.
       `${scope} .thesis-body td,${scope} .thesis-body th{border:0 !important;padding:${tables.cellPadding || "0 1.9mm"} !important;}`,
       ...(tables.borders.preset === "threeRule" ? [
-        `${scope} .thesis-body table{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important;border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
+        // The rules sit on the first/last row cells: a border on the table box would also enclose an above-table caption.
+        `${scope} .thesis-body table>thead:first-of-type>tr:first-child>*,${scope} .thesis-body table:not(:has(>thead))>tbody:first-of-type>tr:first-child>*{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
+        `${scope} .thesis-body table>:is(tbody,tfoot):last-child>tr:last-child>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
         `${scope} .thesis-body thead tr:last-child>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
       ] : []),
     ] : [`${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:4pt;}`]),
@@ -361,6 +363,11 @@ export function thesisSectionCss(section) {
       ...(rule.labelStyle ? [`${scope} .thesis-body ${tag}[data-thesis-caption]::before{${labelCss(rule.labelStyle)}}`] : []),
       ...(rule.hangingIndent === "label" ? [`${scope} .thesis-body ${tag}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px);text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
         : rule.hangingIndent > 0 ? [`${scope} .thesis-body ${tag}[data-thesis-caption]{padding-left:${rule.hangingIndent}mm;text-indent:-${rule.hangingIndent}mm}`] : []),
+    ]),
+    // Figure box (opt-in `box`): image alignment and the figure's own outer spacing (the editor stylesheet's default margin is dropped).
+    ...[[plainFigure ? plainFigure.trim() : "figure", figures], ...Object.entries(section.rules.captionKinds || {}).map(([kind, rule]) => [`figure[data-caption-kind="${kind}"]`, rule])].filter(([, rule]) => rule.box).flatMap(([sel, rule]) => [
+      `${scope} .thesis-body ${sel}{margin:${rule.box.spaceBeforePt || 0}pt 0 ${rule.box.spaceAfterPt || 0}pt;}`,
+      `${scope} .thesis-body ${sel} img{display:block;margin-left:${rule.box.align === "left" ? 0 : "auto"};margin-right:${rule.box.align === "right" ? 0 : "auto"};}`,
     ]),
     // Template caption kinds ("photo"): a figure marked data-caption-kind gets its own caption typography.
     ...Object.entries(section.rules.captionKinds || {}).flatMap(([kind, rule]) => {

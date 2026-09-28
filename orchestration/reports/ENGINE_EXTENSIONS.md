@@ -71,3 +71,13 @@ Every key is opt-in; templates without it (generic, demo-*, `mcbu` v1) compile a
 - Landscape pages [fbe, cografya]: conditional rule ("if used"); TxtNote has no landscape page — documented limitation.
 - Printing (duplex, spiral binding, paper weight, copies) [all]: physical production, recorded in `source.notes`.
 - Case of H1/H2 with lower-case "ve/veya/ile": now `TextStyle.textTransformExceptions` (X1); `textTransform: "none"` with author-typed case remains possible.
+
+## Batch C (found while integrating aku-fbe; generic, opt-in or bug fixes)
+| id | change | key / place | notes |
+|---|---|---|---|
+| C1 | figure box (image alignment + own outer spacing) | `CaptionRule.box: { align, spaceBeforePt, spaceAfterPt }` (figures, captionKinds) | without it the editor's default figure margin (1.25 rem) and left-aligned image stay (mcbu unchanged) |
+| C2 | special-page block visible only while fields are empty | `visibleWhen: { noneFilled: [...] }` | complements `anyFilled` |
+| C3 | fix: hanging indent in a paragraph override padded the whole flow container | `thesisSectionCss` `containerCss` | `typography.paragraph`/`overrides.paragraph` `hangingIndentMm` now only hangs the paragraphs |
+| C4 | fix: dotted leaders too short for short TOC rows | `generatedIndex.js` 80 → 400 dots | clipped by the leader box |
+| C5 | fix: justified special-page text (approval sentence, ethics items) was drawn as one unjustified run in the layout PDF | `layoutPdf.js` per-word drawing for `text-align: justify` | `typography` now carries `textAlign` |
+| C6 | fix: three-rule table drew its top rule above an above-table caption | `tables.borders.threeRule` rules on first/last row cells, not the `table` box | Chromium encloses the caption with a collapsed table border |

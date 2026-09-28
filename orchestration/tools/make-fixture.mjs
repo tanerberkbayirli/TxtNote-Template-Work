@@ -92,7 +92,8 @@ function sectionHtml(section) {
   if (t === "listOfSymbols" || t === "listOfAbbreviations") return P("<b>Simgeler</b>") + [["f", "Frekans"], ["%", "Yüzde"], ["α", "Anlamlılık düzeyi; bu tanım iki satıra yayılacak kadar uzun tutulmuştur ki asılı girinti görülebilsin"]].map(([a, b]) => P(`${a}\t${b}`)).join("") + P("") + P("<b>Kısaltmalar</b>") + [["BAP", "Bilimsel Araştırma Projeleri"], ["ÖSYM", "Ölçme, Seçme ve Yerleştirme Merkezi"]].map(([a, b]) => P(`${a}\t${b}`)).join("");
   if (t === "bibliography") return bibliography;
   if (t === "appendices") return P(tr ? "<b>EK 1.</b> Dijital Okuryazarlık Ölçeği" : "APPENDIX 1. Digital Literacy Scale") + P(S) + pageBreak + P(tr ? "<b>EK 2.</b> Etik Kurul Onayı" : "APPENDIX 2. Ethics Committee Approval") + P(S);
-  if (t === "curriculumVitae") return tr ? ["Adı Soyadı\t: Çağrı Şükrü ÖZDOĞAN", "Doğum Yeri ve Tarihi\t: Afyonkarahisar, 01.01.1995", "Yabancı Dili\t: İngilizce", "İletişim (Telefon / e-posta)\t: 0 555 000 00 00 / ornek@aku.edu.tr", "Eğitim Durumu (Kurum ve Yıl)", "\tLisans\t: Afyon Kocatepe Üniversitesi, Fen Fakültesi, 2018", "\tYüksek Lisans\t: Afyon Kocatepe Üniversitesi, Fen Bilimleri Enstitüsü, 2022"].map(P).join("") : P(S);
+  // Colons at 50 mm with Word's default 12.5 mm tab stops; education rows start one tab in.
+  if (t === "curriculumVitae") return tr ? ["Adı Soyadı\t\t\t: Çağrı Şükrü ÖZDOĞAN", "Doğum Yeri ve Tarihi\t\t: Afyonkarahisar, 01.01.1995", "Yabancı Dili\t\t\t: İngilizce", "İletişim (Telefon / e-posta)\t: 0 555 000 00 00 / ornek@aku.edu.tr", "Eğitim Durumu (Kurum ve Yıl)", "\tLise\t\t\t: Afyon Anadolu Lisesi, 2013", "\tLisans\t\t\t: Afyon Kocatepe Üniversitesi, Fen Fakültesi, 2018"].map(P).join("") : P(S);
   if (t === "introduction") return paras(3, tr ? "Giriş" : "Introduction") + P(`${S}${fn("fi", tr ? "Giriş dipnotu." : "Introduction footnote.")}`);
   if (t === "conclusion") return paras(2, tr ? "Sonuç" : "Conclusion");
   return paras(1, section.title || t);
