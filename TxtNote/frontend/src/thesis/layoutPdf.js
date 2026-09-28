@@ -219,6 +219,21 @@ function collectGroup(stack, language) {
       const label = transformText(number, style.textTransform, typography.lang);
       pushLabel(label, firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle);
     }
+    // Equation number (::after of a numbered display equation): flush right/left of the block, centred on the formula.
+    const equation = element.getAttribute("data-thesis-eq");
+    if (equation && firstText) {
+      const pseudo = getComputedStyle(element, "::after");
+      const eqStyle = { ...typography, fontWeight: pseudo.fontWeight, fontStyle: pseudo.fontStyle, fontSize: pseudo.fontSize, fontFamily: pseudo.fontFamily, color: pseudo.color, letterSpacing: "normal", textTransform: "none" };
+      const box = local(element.getBoundingClientRect());
+      const context = measureContext();
+      context.font = canvasFont(eqStyle);
+      const metrics = context.measureText(equation);
+      // line-height:1 box centred on the block: its baseline sits (ascent - descent) / 2 below the centre.
+      const baseline = box.top + box.height / 2 + (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent) / 2;
+      const x = element.getAttribute("data-thesis-eq-side") === "left" ? box.left : box.left + box.width - metrics.width;
+      const fill = color(eqStyle.color);
+      if (fill) ops.push({ type: "text", text: equation, x, top: baseline - metrics.fontBoundingBoxAscent, width: metrics.width, baseline, style: eqStyle, color: fill, decoration: [] });
+    }
     if (element.tagName === "LI" && style.display === "list-item" && style.listStyleType !== "none" && firstText) {
       const marker = markerText(element, style.listStyleType);
       const box = local(element.getClientRects()[0] || element.getBoundingClientRect());

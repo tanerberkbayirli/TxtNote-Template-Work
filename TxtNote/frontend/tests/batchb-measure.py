@@ -56,7 +56,26 @@ def continuation():
     check(plain.count("(Devam)") == len(rest) and xml.count("<w:tbl>") >= len(rest) + 1, f"DOCX: {len(rest)} continuation captions, one table fragment each")
 
 
-SCENARIOS = {"photo": photo, "continuation": continuation}
+def equation():
+    doc, xml = export("equation")
+    right = 210 - 25   # text edge (mm): page 210, right margin 25
+    numbers = []
+    for page in doc:
+        for x0, y0, x1, y1, word, *_ in page.get_text("words"):
+            if re.fullmatch(r"\(\d\.\d\)", word) and x0 * 25.4 / 72 > 150:
+                numbers.append((word, round(x1 * 25.4 / 72, 2), round(y1 * 25.4 / 72, 2)))
+    check([n[0] for n in numbers] == ["(1.1)", "(1.2)", "(2.1)"], f"per-chapter equation numbers in the PDF: {[n[0] for n in numbers]}")
+    check(all(abs(n[1] - right) < 0.3 for n in numbers), f"numbers end at the right text edge ({right} mm): {[n[1] for n in numbers]}")
+    # the formula is centred on the text block (105 - 2.5 mm centre of 30..185) and shares the number's baseline
+    page = doc[1]
+    words = page.get_text("words")
+    formula = [w for w in words if w[4] == "E"][0]
+    number = [w for w in words if w[4] == "(1.1)"][0]
+    check(abs(formula[3] - number[3]) < 0.6 * 72 / 25.4, f"formula and number share a baseline ({formula[3] * 25.4 / 72:.2f} vs {number[3] * 25.4 / 72:.2f} mm)")
+    check('w:tab w:val="right" w:pos="8787"' in xml and xml.count("(1.1)") == 1, "DOCX: centre + right tab stops (155 mm text width), number after the formula")
+
+
+SCENARIOS = {"photo": photo, "continuation": continuation, "equation": equation}
 if __name__ == "__main__":
     for name in sys.argv[1:] or SCENARIOS:
         print(f"== {name} (output in {OUT})")

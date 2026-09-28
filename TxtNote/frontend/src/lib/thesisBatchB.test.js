@@ -128,3 +128,54 @@ describe("Batch B2 continuation captions", () => {
     assert.doesNotMatch(strFromU8(plain["word/document.xml"]), /Devam/);
   });
 });
+
+describe("Batch B3 equation numbering", () => {
+  const eq = (latex, numbered = true) => `<span class="math-formula math-formula--block" data-display="block" data-latex="${latex}"${numbered ? ' data-eq-numbered="true"' : ""}><div class="math-formula__render"><span class="katex"><span>${latex}</span></span></div></span>`;
+  const withEq = (t, rule = { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right", style: { fontFamily: "Cambria Math", fontSizePt: 12 } }) => { t.equations = rule; return t; };
+  const html = `<h1>Bir</h1>${eq("a")}${eq("b", false)}${eq("c")}<h1>İki</h1>${eq("d")}`;
+  it("numbers only numbered display equations, per chapter (or document wide), in document order", () => {
+    const sources = (t) => compile(t, html).indexSources.filter((s) => s.kind === "equations").map((s) => s.label);
+    assert.deepEqual(sources(withEq(template())), ["(1.1)", "(1.2)", "(2.1)"]);
+    assert.deepEqual(sources(withEq(template(), { numbering: { scope: "document", format: "({n})" } })), ["(1)", "(2)", "(3)"]);
+    assert.deepEqual(sources(template()), []);   // opt-in: no equations key, no counters
+    // before the first numbered chapter no made-up "0.1"
+    const intro = compile(withEq(template()), `${eq("z")}<h1>Bir</h1>${eq("y")}`).indexSources.filter((s) => s.kind === "equations").map((s) => s.label);
+    assert.deepEqual(intro, ["(1)", "(1.1)"]);
+  });
+  it("equation entries do not disturb caption pairing or the TOC", () => {
+    const model = compile(withEq(template()), `<h1>Bir</h1>${eq("a")}${figure("Şema")}${eq("b")}${table("Veri")}`);
+    assert.deepEqual(model.indexSources.filter((s) => s.kind !== "equations" && s.label).map((s) => s.label), ["1", "Şekil 1.1.", "Tablo 1.1."]);
+    assert.equal(model.sections.find((s) => s.id === "toc").indexRows.length, 1);
+  });
+  it("validates the equations rule and emits the number CSS only for opting templates", () => {
+    assert.deepEqual(validateThesisTemplate(withEq(template())), []);
+    assert.match(validateThesisTemplate(withEq(template(), { numbering: { scope: "page", format: "({n})" } })).join(), /equations\.numbering/);
+    assert.match(validateThesisTemplate(withEq(template(), { numbering: { scope: "chapter", format: "(x)" } })).join(), /equations\.numbering/);
+    assert.match(validateThesisTemplate(withEq(template(), { numbering: { scope: "chapter", format: "{n}" }, numberAlign: "center" })).join(), /numberAlign/);
+    const css = buildThesisCss(compile(withEq(template()), html));
+    assert.match(css, /math-formula--block\[data-thesis-eq\]::after\{content:attr\(data-thesis-eq\);position:absolute;top:50%;[^}]*font-family:"Cambria Math"/);
+    assert.match(css, /\[data-thesis-eq-side="right"\]::after\{right:0\}/);
+    assert.match(css, /math-formula__render\{padding:0\}/);
+    assert.doesNotMatch(buildThesisCss(compile(template(), html)), /data-thesis-eq/);
+  });
+  it("print HTML carries the numbers; saved HTML never does", () => {
+    const model = compile(withEq(template()), html);
+    const print = buildThesisPrintHtml(model);
+    assert.deepEqual([...print.matchAll(/data-thesis-eq="([^"]+)"/g)].map((m) => m[1]), ["(1.1)", "(1.2)", "(2.1)"]);
+    const stamped = html.replace('data-eq-numbered="true"', 'data-eq-numbered="true" data-thesis-eq="(9)" data-thesis-eq-side="right"');
+    assert.equal(thesisSourceHtml(stamped), html);
+  });
+  it("DOCX: centered formula, number at the right tab stop; left variant puts the number first", async () => {
+    const model = resolveGeneratedIndexes(compile(withEq(template()), html), {});
+    const { xml } = await docx(model);
+    assert.match(xml, /<w:tab w:val="center" w:pos="4394"\/><w:tab w:val="right" w:pos="8787"\/>/);
+    const flow = [...xml.matchAll(/<w:tab\/>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1] ?? "\\t").join("");
+    assert.match(flow, /\\ta\\t\(1\.1\)/); assert.match(flow, /\\tc\\t\(1\.2\)/); assert.match(flow, /\\td\\t\(2\.1\)/);
+    assert.match(flow, /\\tb(?!\\t\()/); // the unnumbered one has no number
+    const left = resolveGeneratedIndexes(compile(withEq(template(), { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "left" }), html), {});
+    const leftXml = (await docx(left)).xml;
+    assert.match([...leftXml.matchAll(/<w:tab\/>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1] ?? "\\t").join(""), /\(1\.1\)\\ta/);
+    const paragraph = leftXml.split("<w:p>").find((p) => p.includes("(1.1)") && p.includes("<w:tabs>"));
+    assert.match(paragraph, /<w:tab w:val="center"/); assert.doesNotMatch(paragraph, /w:val="right" w:pos/);
+  });
+});

@@ -63,6 +63,13 @@ const scenarios = {
     const body = `<h1>Bulgular</h1>${paras(2, "A")}${table("Ölçek maddelerine ilişkin betimsel istatistikler ve ayrıntılı açıklamalar", head, rows)}${paras(2, "B")}${table("Kısa tablo", head, rows.slice(0, 4))}<h1>Sonuç</h1>${table("Küçük tablo", head, rows.slice(0, 3))}`;
     return documentFor(t, body);
   },
+  // B3: numbered display equations, centered with the number flush right, per-chapter counter.
+  equation() {
+    const t = baseTemplate("batchb-equation-v1", (t) => { t.equations = { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right", style: { fontFamily: "Cambria Math", fontSizePt: 12 } }; });
+    const eq = (latex, numbered = true) => `<span class="math-formula math-formula--block" data-display="block" data-latex="${latex}"${numbered ? ' data-eq-numbered="true"' : ""}>${latex}</span>`;
+    const body = `<h1>Giriş</h1>${paras(1, "A")}${eq("E = mc^2")}${P("Metin arası.")}${eq("a^2 + b^2 = c^2")}${eq("x = \\frac{a}{b}", false)}<h1>Yöntem</h1>${paras(1, "B")}${eq("\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}")}${P("Denklem (2.1) yukarıdadır.")}`;
+    return documentFor(t, body);
+  },
 };
 if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
   const [name, out] = process.argv.slice(2);

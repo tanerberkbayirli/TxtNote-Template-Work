@@ -335,6 +335,13 @@ export const RichTextBody = forwardRef(({
       if (kind) figure.setAttribute("data-caption-kind", kind); else figure.removeAttribute("data-caption-kind");
       emitChange("format");
     },
+    /** Numbered (or not) display equation `math` (a `.math-formula--block` of this body); `data-eq-numbered` is source markup. */
+    setEquationNumbered: (math, numbered) => {
+      const body = bodyRef.current;
+      if (!body || !math || !body.contains(math)) return;
+      if (numbered) math.setAttribute("data-eq-numbered", "true"); else math.removeAttribute("data-eq-numbered");
+      emitChange("format");
+    },
     toggleEquationNumber: () => {
       const body = bodyRef.current;
       if (!body) return;
@@ -380,9 +387,10 @@ export const RichTextBody = forwardRef(({
     insertLink: (href, text) => {
       withRange((root) => wrapSelectionWithLink(href, text, root));
     },
-    insertFormula: (display = true) => {
+    insertFormula: (display = true, numbered = false) => {
       withRange((root) => {
         const el = createMathElement("", display);
+        if (display && numbered) el.setAttribute("data-eq-numbered", "true");
         insertNodeAtSelection(el, root);
         beginMathEdit(el);
       });

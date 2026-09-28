@@ -28,6 +28,11 @@ export function formatCaptionNumber(format, chapter, n) {
   return withChapter.replace(/\{n\}/g, n);
 }
 
+/** Equation number: like a caption number, but brackets around `{chapter}` stay ("({chapter}.{n})" → "(1.1)", "(1)" before the first numbered chapter). */
+export function formatEquationNumber(format, chapter, n) {
+  return (chapter ? format.replace(/\{chapter\}/g, chapter) : format.replace(/\{chapter\}[.\-–:/·\s]*/g, "")).replace(/\{n\}/g, n);
+}
+
 /** Printed caption label, e.g. "Şekil 2.1." (default "{label} {number}.") or "Şekil 2.1" ("{label} {number}"). */
 export function formatCaptionLabel(rule, number) {
   return String(rule.labelFormat || "{label} {number}.").replace(/\{label\}/g, rule.label).replace(/\{number\}/g, number);
@@ -67,13 +72,20 @@ export function collectIndexSources(sections, extractHeadings) {
     const outline = extractHeadings(html, section.rules, headingCounters);
     let headingIndex = 0;
     let ordinal = 0;
-    for (const match of html.matchAll(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>|<(figure|table)\b([^>]*)>([\s\S]*?)<\/\4>/gi)) {
+    for (const match of html.matchAll(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>|<(figure|table)\b([^>]*)>([\s\S]*?)<\/\4>|<span\b([^>]*\bdata-eq-numbered=["']true["'][^>]*)>/gi)) {
       if (match[1]) {
         const entry = outline[headingIndex++];
         if (!entry) continue;
         if (entry.level === 1 && !entry.unnumbered) { chapter = formatNumber(entry.counters[0], section.rules.headings[1]?.numbering?.sequence || "arabic"); chapterKey += 1; local = {}; }
         const transform = entry.unnumbered ? "none" : section.rules.headings[entry.level]?.textTransform || "none";
         sources.push({ ...entry, kind: "toc", sectionId: section.id, anchor: `${section.id}-source-${ordinal++}`, chapterKey, ...(transform !== "none" ? { textTransform: transform } : {}), ...(section.tocEntry === "none" ? { tocHidden: true } : {}) });
+      } else if (match[7] !== undefined) {
+        // Numbered display equation (opt-in: template.equations): its own counter, chapter or document wide.
+        const rule = section.rules.equations;
+        if (!rule || !/math-formula--block|data-display=["']block["']/i.test(match[7])) continue;
+        global.equation = (global.equation || 0) + 1; local.equation = (local.equation || 0) + 1;
+        const label = formatEquationNumber(rule.numbering.format, chapter, rule.numbering.scope === "chapter" ? local.equation : global.equation);
+        sources.push({ kind: "equations", sectionId: section.id, label, number: label, chapterKey });
       } else {
         const tag = match[4].toLowerCase();
         const captionTag = tag === "figure" ? "figcaption" : "caption";
@@ -171,7 +183,14 @@ export function decorateThesisSources(root, model) {
     }
     const host = root.querySelector(`[data-thesis-flow-section="${section.id}"] .thesis-body`);
     if (!host) continue;
-    const entries = model.indexSources.filter((entry) => entry.sectionId === section.id);
+    const entries = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind !== "equations");
+    const equations = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind === "equations");
+    host.querySelectorAll("[data-thesis-eq]").forEach((node) => { node.removeAttribute("data-thesis-eq"); node.removeAttribute("data-thesis-eq-side"); });
+    host.querySelectorAll('.math-formula--block[data-eq-numbered="true"], .math-formula[data-display="block"][data-eq-numbered="true"]').forEach((node, i) => {
+      if (!equations[i]) return;
+      node.setAttribute("data-thesis-eq", equations[i].label);
+      node.setAttribute("data-thesis-eq-side", section.rules.equations.numberAlign === "left" ? "left" : "right");
+    });
     let index = 0;
     host.querySelectorAll("[data-thesis-anchor]").forEach((node) => { node.removeAttribute("data-thesis-anchor"); node.removeAttribute("data-thesis-number"); });
     host.querySelectorAll("h1,h2,h3,h4,h5,h6,figcaption,caption").forEach((node) => {
@@ -213,8 +232,13 @@ export function decorateThesisSources(root, model) {
 export function thesisPresentationHtml(section) {
   let heading = 0, caption = 0;
   const headings = (section.indexSources || []).filter((entry) => entry.kind === "toc");
-  const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc");
-  let html = thesisSourceHtml(section.html).replace(/<h([1-6])\b([^>]*)>/gi, (tag, level, attrs) => {
+  const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc" && entry.kind !== "equations");
+  const equations = (section.indexSources || []).filter((entry) => entry.kind === "equations");
+  let equation = 0;
+  let html = thesisSourceHtml(section.html).replace(/<span\b([^>]*\bdata-eq-numbered=["']true["'][^>]*)>/gi, (tag, attrs) => {
+    const entry = /math-formula--block|data-display=["']block["']/i.test(attrs) ? equations[equation++] : null;
+    return entry ? `${tag.slice(0, -1)} data-thesis-eq="${escape(entry.label)}" data-thesis-eq-side="${section.rules.equations.numberAlign === "left" ? "left" : "right"}">` : tag;
+  }).replace(/<h([1-6])\b([^>]*)>/gi, (tag, level, attrs) => {
     const entry = headings[heading++];
     return entry?.label ? `<h${level}${attrs} data-thesis-number="${escape(entry.label)}">` : tag;
   }).replace(/<(figcaption|caption)\b([^>]*)>([\s\S]*?)<\/\1>/gi, (tag, name, attrs, inner) => {

@@ -63,6 +63,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const imageKindRef = useRef("");
   // The figure last clicked in the pages: its caption kind can be changed while the template has kinds.
   const [pickedFigure, setPickedFigure] = useState(null);
+  // The display equation last clicked: its number can be switched on/off while the template numbers equations.
+  const [pickedEquation, setPickedEquation] = useState(null);
 
   useEffect(() => {
     let live = true;
@@ -206,6 +208,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const rememberSelection = (event) => { event.preventDefault(); activeBody()?.rememberSelection?.(); };
   const trackSectionPointer = (event) => {
     setPickedFigure(event.target.closest?.("figure.academic-figure") || null);
+    setPickedEquation(event.target.closest?.(".math-formula--block") || null);
     const flow = event.target.closest?.(".thesis-flow-section");
     if (flow && flow.getAttribute("data-thesis-section-mode") !== "editable") { setActiveSectionId(""); setCiteOpen(false); }
   };
@@ -291,6 +294,10 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         {captionKinds.length ? <select aria-label="Görsel türü" disabled={!pickedFigure?.isConnected} value={pickedFigure?.getAttribute("data-caption-kind") || ""} onChange={(event) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) { bodyRefs.current[owner]?.setFigureKind(figure, event.target.value); setPickedFigure(null); } }} title="Önce görsele tıklayın" className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 disabled:opacity-40 dark:border-neutral-700">
           <option value="">{template.figures.label} (görsel)</option>{captionKinds.map(([id, rule]) => <option key={id} value={id}>{rule.label}</option>)}
         </select> : null}
+        {template.equations ? <>
+          <button type="button" disabled={!activeSection} onMouseDown={rememberSelection} onClick={() => run((body) => body.insertFormula(true, true))} className={toolClass}>Denklem</button>
+          <label className="flex items-center gap-1 text-xs" title="Önce denkleme tıklayın"><input type="checkbox" aria-label="Denklem numarası" disabled={!pickedEquation?.isConnected} checked={pickedEquation?.getAttribute("data-eq-numbered") === "true"} onChange={(event) => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) { bodyRefs.current[owner]?.setEquationNumbered(math, event.target.checked); setPickedEquation(null); } }} />Denklem no</label>
+        </> : null}
         <input ref={imageInputRef} type="file" accept="image/*" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
         <div className="relative">
           <button type="button" aria-expanded={citeOpen} disabled={!activeSection} onMouseDown={rememberSelection} onClick={() => setCiteOpen((open) => !open)} className={toolClass}>Atıf</button>

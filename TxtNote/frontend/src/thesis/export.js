@@ -25,10 +25,13 @@ const asBlocks = (section) => {
   const outline = (section.indexSources || extractThesisHeadings(section.html, section.rules)).filter((entry) => !entry.kind || entry.kind === "toc");
   let headingIndex = 0;
   // Caption counters and heading labels are compiled once, across the document.
-  const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc");
+  const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc" && entry.kind !== "equations");
+  const equations = (section.indexSources || []).filter((entry) => entry.kind === "equations");
+  let equationIndex = 0;
   let captionIndex = 0;
   return parseAcademicHtml(section.html, { lines: true }).map((block) => {
     if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "" }; }
+    if (block.type === "math" && block.numbered && section.rules.equations) return { ...block, equationLabel: equations[equationIndex++]?.label || "" };
     if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionLabel: entry?.label || "", captionAnchor: entry?.anchor, captionKind: entry?.captionKind || "", caption: entry?.title || block.caption }; }
     return block;
   });
@@ -457,6 +460,14 @@ function docxChildren(section, context) {
       if (caption && figures.position !== "above") children.push(caption);
     } else if (block.type === "pageBreak") {
       children.push(new Paragraph({ children: [new PageBreak()] }));
+    } else if (block.type === "math" && section.rules.equations) {
+      // Centered formula with the number flush right (or left) at the text edge: a centre and a right tab stop.
+      const equations = section.rules.equations;
+      const style = { ...body, ...equations.style, firstLineIndentMm: 0, align: "left" };
+      const left = equations.numberAlign === "left";
+      const runs = left ? [...(block.equationLabel ? plainRuns(block.equationLabel) : []), { type: "tab" }, ...plainRuns(block.text || "")]
+        : [{ type: "tab" }, ...plainRuns(block.text || ""), ...(block.equationLabel ? [{ type: "tab" }, ...plainRuns(block.equationLabel)] : [])];
+      children.push(docxParagraph(runs, style, context, { tabStops: [{ type: TabStopType.CENTER, position: twip(widthMm / 2) }, ...(left ? [] : [{ type: TabStopType.RIGHT, position: twip(widthMm) }])] }));
     } else if (block.type === "code" || block.type === "math") {
       children.push(docxParagraph(plainRuns(block.text || ""), { ...body, firstLineIndentMm: 0 }, context));
     }

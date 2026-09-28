@@ -227,6 +227,13 @@ export interface ThesisTemplate {
    * an unknown/missing kind is a plain figure. The editor offers the choice only when kinds exist.
    */
   captionKinds?: Record<string, CaptionRule>;
+  /**
+   * Numbered display equations (`.math-formula--block[data-eq-numbered="true"]`, toggled by the author):
+   * the formula is centered, its number sits flush at the right (default) or left text edge. `numbering.format`
+   * uses {chapter} (counter of the numbered H1) and {n}; scope "chapter" restarts at every numbered H1.
+   * The equation number is presentation (data-thesis-eq, never stored); Word: centre + right tab stops.
+   */
+  equations?: { numbering: { scope: "chapter" | "document"; format: string }; numberAlign?: "left" | "right"; style?: Partial<TextStyle> };
   bibliography: { heading: string; style: TextStyle; hangingIndentMm?: Length; citationStyle?: string };
   toc: { heading: string; levels: number[]; showPageNumbers: boolean };
   validation?: Record<string, { minItems: number; separator?: string; severity?: "error" | "warning"; message?: string }>;

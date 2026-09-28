@@ -240,10 +240,16 @@ export function validateThesisTemplate(template) {
     if (!sections.some((section) => section.type === "mainContent" && section.status !== "disabled")) errors.push("mainContent bölümü gerekli");
   }
   errors.push(...validateCaption(template.tables, "tables"), ...validateCaption(template.figures, "figures"));
+  if (template.equations !== undefined) {
+    const eq = template.equations;
+    if (!object(eq) || !object(eq.numbering) || !["chapter", "document"].includes(eq.numbering.scope) || !(text(eq.numbering.format) && eq.numbering.format.includes("{n}"))) errors.push("equations.numbering { scope, format ({n}) } gerekli");
+    if (object(eq) && eq.numberAlign !== undefined && !["left", "right"].includes(eq.numberAlign)) errors.push("equations.numberAlign geçersiz");
+    if (object(eq) && eq.style !== undefined) errors.push(...(object(eq.style) ? validateTextStyle({ ...template.typography?.body, ...eq.style }, "equations.style") : ["equations.style nesne olmalı"]));
+  }
   if (template.captionKinds !== undefined) {
     if (!object(template.captionKinds)) errors.push("captionKinds nesne olmalı");
     else for (const [id, rule] of Object.entries(template.captionKinds)) {
-      if (!/^[a-z][a-zA-Z0-9]*$/.test(id) || ["toc", "figure", "figures", "table", "tables"].includes(id)) errors.push(`captionKinds.${id} kimliği geçersiz`);
+      if (!/^[a-z][a-zA-Z0-9]*$/.test(id) || ["toc", "figure", "figures", "table", "tables", "equation", "equations"].includes(id)) errors.push(`captionKinds.${id} kimliği geçersiz`);
       errors.push(...validateCaption(rule, `captionKinds.${id}`));
     }
   }

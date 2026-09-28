@@ -98,6 +98,7 @@ export function resolveSectionRules(template, section) {
     tables: mergeCaption(template.tables, override.tables),
     figures: mergeCaption(template.figures, override.figures),
     ...(template.captionKinds ? { captionKinds: Object.fromEntries(Object.entries(template.captionKinds).map(([id, rule]) => [id, mergeCaption(rule, override.captionKinds?.[id])])) } : {}),
+    ...(template.equations ? { equations: template.equations } : {}),
     bibliography: template.bibliography,
     toc: template.toc,
     ...(template.typography.lineSpacing ? { lineSpacing: template.typography.lineSpacing } : {}),
@@ -362,6 +363,19 @@ export function thesisSectionCss(section) {
       ...(tables.hangingIndent === "label" ? [`${row}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px) !important;text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
         : tables.hangingIndent > 0 ? [`${row}{padding-left:${tables.hangingIndent}mm !important;text-indent:-${tables.hangingIndent}mm}`] : []),
       ...(tables.borders?.preset === "threeRule" ? [`${scope} .thesis-body tr[data-thesis-cont-first]>*{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important}${scope} .thesis-body tr[data-thesis-cont-last]>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important}`] : []),
+    );
+  }
+  // Equations (opt-in): blocks lose the editor chrome, the formula is centered, the number sits flush right/left of the block.
+  if (section.rules.equations) {
+    const eq = section.rules.equations;
+    const block = `${scope} .thesis-body .math-formula--block`;
+    rules.push(
+      `${block}{background:transparent;border:0;border-radius:0;margin:0;padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}}`,
+      `${block} .math-formula__render{padding:0}`,
+      // The formula search / copy toolbar stays available on hover but takes no space in the page.
+      `${block} .math-formula__toolbar{position:absolute;top:0;right:0;z-index:2;visibility:hidden}${block}:hover .math-formula__toolbar,${block}:focus-within .math-formula__toolbar{visibility:visible}`,
+      `${block}[data-thesis-eq]::after{content:attr(data-thesis-eq);position:absolute;top:50%;transform:translateY(-50%);line-height:1;white-space:nowrap;text-indent:0;${eq.style?.fontFamily ? `font-family:${cssFamily(eq.style.fontFamily)};` : ""}${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.fontWeight ? `font-weight:${eq.style.fontWeight};` : ""}${eq.style?.italic ? "font-style:italic;" : ""}}`,
+      `${block}[data-thesis-eq-side="right"]::after{right:0}${block}[data-thesis-eq-side="left"]::after{left:0}`,
     );
   }
   // Optional table body rule (e.g. single spacing, centered names/values); a cell's own alignment still wins.

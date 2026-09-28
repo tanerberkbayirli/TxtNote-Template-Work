@@ -52,5 +52,21 @@ if (scenario === "continuation") {
   assert.ok(after.length >= 4 && !/data-thesis-cont/.test(await page.evaluate(() => JSON.stringify(window.thesisTest.getDoc()))));
   pass("editing inside the table re-derives the continuation rows without storing them");
 }
+if (scenario === "equation") {
+  const box = page.getByLabel("Denklem numarası");
+  assert.equal(await box.isDisabled(), true);
+  const labels = () => page.evaluate(() => [...document.querySelectorAll(".math-formula--block")].map((n) => n.dataset.thesisEq || ""));
+  assert.deepEqual(await labels(), ["(1.1)", "(1.2)", "", "(2.1)"]);
+  await page.locator(".math-formula--block .math-formula__render").first().click();
+  assert.equal(await box.isEnabled(), true);
+  assert.equal(await box.isChecked(), true);
+  await box.uncheck();
+  await settle();
+  assert.deepEqual(await labels(), ["", "(1.1)", "", "(2.1)"]);
+  const saved = await page.evaluate(() => window.thesisTest.getDoc().content);
+  assert.equal((saved.match(/data-eq-numbered="true"/g) || []).length, 2);
+  assert.ok(!/data-thesis-eq/.test(saved), "the equation number is presentation, never stored");
+  pass("equation numbers per chapter; switching one off renumbers, the flag is source markup, the number is not stored");
+}
 assert.deepEqual(errors, []);
 await browser.close();
