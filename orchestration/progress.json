@@ -161,8 +161,12 @@
   },
   "currentUniversity": "aku",
   "currentTarget": "aku-fbe",
-  "currentPhase": "VALIDATION",
-  "lastCompletedValidation": null,
+  "currentPhase": "RETRY (aku-fbe attempt 2)",
+  "lastCompletedValidation": {
+    "target": "aku-fbe",
+    "attempt": 1,
+    "verdict": "FAIL"
+  },
   "lastCommit": null,
   "environment": {
     "libreofficeWriter": "libreoffice-writer-nogui installed via apt (analyzer, aku-mbg-lisans)"
@@ -184,10 +188,10 @@
     "aku-fbe": {
       "analysis": "DONE",
       "implementation": "DONE",
-      "validation": "IN_PROGRESS",
+      "validation": "FAIL",
       "attempts": 1,
       "status": "IMPLEMENTED",
-      "lastError": null,
+      "lastError": "validation attempt 1: 11 failing checks (heading spacing after captions/tables, approval frame weights, 7-juror overflow, caption hanging, equation spacing/font/glyphs, footnote labels)",
       "specPath": "orchestration/specs/aku-fbe.json",
       "reportPath": "orchestration/reports/aku-fbe.md",
       "commit": "6d73e66",
