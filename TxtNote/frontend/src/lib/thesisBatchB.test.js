@@ -287,3 +287,52 @@ describe("Batch B5 continuous footnote numbering", () => {
     assert.deepEqual([...notes.matchAll(/<w:footnote [^>]*w:id="(\d+)"/g)].map((m) => m[1]).filter((id) => Number(id) > 0), ["1", "2", "3", "4"]);
   });
 });
+
+describe("Batch B6 lists shown only from n items", () => {
+  const conditional = (count, gte, extra = {}) => {
+    const t = withResim(template());
+    for (const section of t.sections) if (["index-figures", "index-tables", "index-photos"].includes(section.id)) { section.status = "required"; section.tocEntry = "title"; }
+    t.sections.find((s) => s.id === "index-figures").visibleWhen = { count: "figures", gte };
+    t.sections.find((s) => s.id === "index-tables").visibleWhen = { count: "tables", gte };
+    t.sections.find((s) => s.id === "index-photos").visibleWhen = { count: count, gte, ...extra };
+    return t;
+  };
+  const ids = (model) => model.sections.filter((s) => s.id.startsWith("index-")).map((s) => s.id);
+  const html = `<h1>Bir</h1>${table("A")}${table("B")}${table("C")}${figure("F1")}${figure("F2")}${figure("P1", "photo")}${figure("P2", "photo")}${figure("P3", "photo")}`;
+  it("keeps a generated section only when its caption kind reaches the threshold", () => {
+    const model = compile(conditional("photo", 3), html);
+    assert.deepEqual(ids(model), ["index-tables", "index-photos"]);         // 3 tables, 2 figures (photos are their own kind), 3 photos
+    assert.deepEqual(ids(compile(conditional("photo", 4), html)), []);      // nothing reaches 4
+    assert.deepEqual(ids(compile(conditional("photo", 2), html)), ["index-figures", "index-tables", "index-photos"]);
+    assert.deepEqual(model.sections.map((s) => s.order), model.sections.map((_, i) => i));
+  });
+  it("the TOC lists only the sections that remain, and the section shows up when items are added", () => {
+    const model = compile(conditional("photo", 3), html);
+    const toc = model.sections.find((s) => s.id === "toc").indexRows.map((r) => r.text);
+    assert.ok(toc.includes("Tablolar listesi") && toc.includes("RESİMLER DİZİNİ") && !toc.includes("Şekiller listesi"));
+    const more = compile(conditional("photo", 3), `${html}${figure("F3")}`);
+    assert.ok(ids(more).includes("index-figures"));
+    assert.ok(more.sections.find((s) => s.id === "toc").indexRows.some((r) => r.text === "Şekiller listesi"));
+  });
+  it("counts equations and unknown kinds validate", () => {
+    const t = conditional("photo", 1);
+    t.equations = { numbering: { scope: "document", format: "({n})" } };
+    t.sections.find((s) => s.id === "index-photos").visibleWhen = { count: "equations", gte: 1 };
+    const eq = '<span class="math-formula math-formula--block" data-display="block" data-eq-numbered="true">x</span>';
+    assert.ok(ids(compile(t, `<h1>Bir</h1>${eq}`)).includes("index-photos"));
+    assert.ok(!ids(compile(t, "<h1>Bir</h1>")).includes("index-photos"));
+    assert.deepEqual(validateThesisTemplate(t), []);
+    const bad = conditional("nothing", 3); assert.match(validateThesisTemplate(bad).join(), /visibleWhen \{ count, gte \}/);
+    const negative = conditional("photo", -1); assert.match(validateThesisTemplate(negative).join(), /visibleWhen/);
+    const mixed = conditional("photo", 3, { field: "X" }); assert.match(validateThesisTemplate(mixed).join(), /visibleWhen/);
+    const editable = conditional("photo", 3); editable.sections.find((s) => s.id === "main").visibleWhen = { count: "tables", gte: 1 };
+    assert.match(validateThesisTemplate(editable).join(), /yalnız üretilmiş/);
+  });
+  it("DOCX and print output leave the hidden list out", async () => {
+    const model = resolveGeneratedIndexes(compile(conditional("photo", 3), html), {});
+    const { xml } = await docx(model);
+    assert.match(xml, /RESİMLER DİZİNİ/); assert.ok(!xml.includes(">Şekiller listesi<") && xml.includes(">Tablolar listesi<"));
+    assert.doesNotMatch(buildThesisPrintHtml(model), /thesis-toc" data-thesis-generated="figures"/);
+    assert.match(buildThesisPrintHtml(model), /data-thesis-generated="tables"/);
+  });
+});

@@ -1,5 +1,5 @@
 import { migrateThesisTemplate, validateThesisContent, validateThesisTemplate } from "./validation.js";
-import { isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionMode } from "./document.js";
+import { isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionCountMet, thesisSectionMode } from "./document.js";
 import { styleNonceAttribute, withoutInlineStyleAttributes } from "../lib/cspStyles.js";
 import { flattenSpecialPage, isSpecialPageSection, resolveSpecialPage, specialPageCss, specialPageHtml } from "./specialPages.js";
 import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesisPresentationHtml } from "./generatedIndex.js";
@@ -251,7 +251,14 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     section.generatedIndex = section.mode === "generated" ? generatedIndexRule(definition, template.toc, section.rules.body) : null;
     if (section.mode === "generated" && !section.generatedIndex) section.html = `<h1 data-unnumbered="true">${escapeHtml(section.title)}</h1><ol class="thesis-toc"></ol>`;
   }
-  const indexSources = collectIndexSources(sections, extractThesisHeadings);
+  let indexSources = collectIndexSources(sections, extractThesisHeadings);
+  // Count conditions (visibleWhen { count, gte }) read the collected captions; a section left out also leaves the sources.
+  const kept = sections.filter((section) => thesisSectionCountMet(template.sections.find((item) => item.id === section.id), indexSources));
+  if (kept.length !== sections.length) {
+    sections.splice(0, sections.length, ...kept);
+    sections.forEach((section, index) => { section.order = index; });
+    indexSources = collectIndexSources(sections, extractThesisHeadings);
+  }
   for (const section of sections) section.indexSources = indexSources.filter((entry) => entry.sectionId === section.id);
   return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, status: template.status, language: template.language, systemFonts: template.status === "official" ? templateFontFamilies(template) : [], title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
 }

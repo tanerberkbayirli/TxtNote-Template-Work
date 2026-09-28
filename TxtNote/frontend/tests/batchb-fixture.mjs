@@ -94,6 +94,18 @@ const scenarios = {
     const main = `<h1>Bölüm</h1>${P(`İlk cümle.${fn("a", "Birinci not metni.")} Devam.`)}${P(`İkinci cümle.${fn("b", "İkinci not metni.")} Son.`)}`;
     return documentFor(t, main, { sectionContent: { annex: `${P(`Ek metin bir.${fn("c", "Üçüncü not metni.")}`)}${P(`Ek metin iki.${fn("d", "Dördüncü not metni.")}`)}` } });
   },
+  // B6: lists only from three items on (tables 3 -> listed, figures 2 -> no list, photos 3 -> listed).
+  lists() {
+    const t = baseTemplate("batchb-lists-v1", (t) => {
+      t.captionKinds = { photo: { ...structuredClone(t.figures), label: "Resim", position: "below", numbering: { scope: "document", format: "{n}", sequence: "arabic" } } };
+      const list = (id, type, title, kind, gte = 3) => ({ id, type, title, status: "required", group: "front", mode: "generated", order: 2.1, tocEntry: "title", generatedIndex: { kind }, visibleWhen: { count: kind, gte }, overrides: { page: { numbering: { format: "arabic" } } } });
+      t.sections = t.sections.filter((s) => !["index-figures", "index-tables"].includes(s.id));
+      t.sections.push(list("index-tables", "listOfTables", "TABLOLAR LİSTESİ", "tables"), list("index-figures", "listOfFigures", "ŞEKİLLER LİSTESİ", "figures"), list("index-photos", "listOfPhotos", "RESİMLER LİSTESİ", "photo"));
+    });
+    const tab = (n) => table(`Tablo başlığı ${n}`, ["A", "B"], [["1", "2"]]);
+    const body = `<h1>Giriş</h1>${tab(1)}${tab(2)}${tab(3)}${figure("Şema bir")}${figure("Şema iki")}${figure("Fotoğraf bir", "photo")}${figure("Fotoğraf iki", "photo")}${figure("Fotoğraf üç", "photo")}`;
+    return documentFor(t, body);
+  },
 };
 if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
   const [name, out] = process.argv.slice(2);

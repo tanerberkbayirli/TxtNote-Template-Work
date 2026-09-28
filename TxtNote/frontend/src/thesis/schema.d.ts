@@ -151,7 +151,9 @@ export interface ThesisSection {
   tocEntry?: "headings" | "title" | "none";
   generatedIndex?: GeneratedIndexRule;
   /** Exactly one operator; metadata values, no executable expressions. */
-  visibleWhen?: { field: string; equals?: string | number | boolean; notEquals?: string | number | boolean; in?: Array<string | number | boolean> };
+  visibleWhen?: { field: string; equals?: string | number | boolean; notEquals?: string | number | boolean; in?: Array<string | number | boolean> }
+    /** Generated sections only: shown when the document has at least `gte` items of that caption kind ("tables", "figures", "equations" or a `captionKinds` id) — e.g. a list only from three tables on. Evaluated from the collected sources; a hidden list is also left out of the TOC. */
+    | { count: "tables" | "figures" | "equations" | (string & {}); gte: number };
   content?: string;
   /**
    * Special page layout (cover, approval, declaration, ...). A section with `blocks`

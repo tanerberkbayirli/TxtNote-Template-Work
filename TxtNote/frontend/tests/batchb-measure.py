@@ -101,7 +101,18 @@ def footnote():
     check(ids == ["1", "2", "3", "4"], f"DOCX footnote references are continuous: {ids}")
 
 
-SCENARIOS = {"footnote": footnote, "photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
+def lists():
+    doc, xml = export("lists")
+    text = pages(doc)
+    titles = [p[0] for p in text if p]
+    check("TABLOLAR LİSTESİ" in titles and "RESİMLER LİSTESİ" in titles and "ŞEKİLLER LİSTESİ" not in titles, f"list pages present: {[t for t in titles if 'LİSTESİ' in t]} (3 tables, 2 figures, 3 photos)")
+    toc = [l for p in text if p and p[0].startswith("İçindekiler") for l in p]
+    check(any(l.startswith("TABLOLAR LİSTESİ") for l in toc) and not any(l.startswith("ŞEKİLLER") for l in toc), "the TOC lists the visible lists only")
+    plain = re.sub(r"<[^>]+>", "", xml)
+    check("TABLOLAR LİSTESİ" in plain and "RESİMLER LİSTESİ" in plain and "ŞEKİLLER LİSTESİ" not in plain, "DOCX follows")
+
+
+SCENARIOS = {"lists": lists, "footnote": footnote, "photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
 if __name__ == "__main__":
     for name in sys.argv[1:] or SCENARIOS:
         print(f"== {name} (output in {OUT})")

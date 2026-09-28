@@ -210,7 +210,11 @@ export function validateThesisTemplate(template) {
       }
       if (section.visibleWhen !== undefined) {
         const condition = section.visibleWhen;
-        if (!object(condition) || !text(condition.field) || Object.keys(condition).some((key) => !["field", "equals", "notEquals", "in"].includes(key)) || ["equals", "notEquals", "in"].filter((key) => Object.hasOwn(condition, key)).length !== 1 || (condition.in !== undefined && !Array.isArray(condition.in)) || [condition.equals, condition.notEquals, ...(condition.in || [])].some((v) => v !== undefined && !["string", "number", "boolean"].includes(typeof v))) errors.push(`section ${section.id}.visibleWhen geçersiz`);
+        if (object(condition) && condition.count !== undefined) {
+          const counted = ["tables", "figures", "equations", ...Object.keys(object(template.captionKinds) ? template.captionKinds : {})];
+          if (Object.keys(condition).some((key) => !["count", "gte"].includes(key)) || !counted.includes(condition.count) || !Number.isInteger(condition.gte) || condition.gte < 0) errors.push(`section ${section.id}.visibleWhen { count, gte } geçersiz`);
+          if (section.mode !== "generated") errors.push(`section ${section.id}.visibleWhen count yalnız üretilmiş (generated) bölümlerde kullanılabilir`);
+        } else if (!object(condition) || !text(condition.field) || Object.keys(condition).some((key) => !["field", "equals", "notEquals", "in"].includes(key)) || ["equals", "notEquals", "in"].filter((key) => Object.hasOwn(condition, key)).length !== 1 || (condition.in !== undefined && !Array.isArray(condition.in)) || [condition.equals, condition.notEquals, ...(condition.in || [])].some((v) => v !== undefined && !["string", "number", "boolean"].includes(typeof v))) errors.push(`section ${section.id}.visibleWhen geçersiz`);
       }
       if (section.blocks !== undefined) {
         if ((section.mode !== undefined && section.mode !== "static") || section.editable === true) errors.push(`section ${section.id}: özel sayfa blocks düzenlenemez; mode static olmalı`);
