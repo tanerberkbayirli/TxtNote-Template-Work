@@ -324,7 +324,7 @@ function parseNodeList(nodes) {
         continue;
       }
       const runs = runsFromNode(node);
-      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), runs });
+      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs });
     }
   }
   return blocks;
@@ -378,7 +378,7 @@ function parseLineFlow(nodes, align) {
       // A trailing <br> draws no extra line; an empty <p></p> draws nothing at all.
       const drawsLine = paragraphRuns.some((run) => run.type === "break") || node.textContent.length > 0;
       while (paragraphRuns.at(-1)?.type === "break") paragraphRuns.pop();
-      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, runs: paragraphRuns });
+      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs: paragraphRuns });
     } else {
       blocks.push(...parseNodeList([node]));
     }
@@ -513,6 +513,7 @@ function parseWithRegex(html) {
         type: tag === "blockquote" ? "quote" : "paragraph",
         align: /fmt-align-center/.test(rawAttr) ? "center" : /fmt-align-right/.test(rawAttr) ? "right" : /fmt-align-justify/.test(rawAttr) ? "justify" : /fmt-align-left/.test(rawAttr) ? "left" : undefined,
         line: false,
+        ...(attr(rawAttr, "data-thesis-style") ? { thesisStyle: attr(rawAttr, "data-thesis-style") } : {}),
         runs: runs.length ? runs : [{ type: "text", text: stripTags(inner) }],
       });
     }

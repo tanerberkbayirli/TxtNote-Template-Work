@@ -106,6 +106,18 @@ const scenarios = {
     const body = `<h1>Giriş</h1>${tab(1)}${tab(2)}${tab(3)}${figure("Şema bir")}${figure("Şema iki")}${figure("Fotoğraf bir", "photo")}${figure("Fotoğraf iki", "photo")}${figure("Fotoğraf üç", "photo")}`;
     return documentFor(t, body);
   },
+  // B7: named paragraph styles (table note, block quote) next to normal paragraphs.
+  styles() {
+    const t = baseTemplate("batchb-styles-v1", (t) => {
+      t.typography.paragraphStyles = {
+        tableNote: { fontSizePt: 10, lineHeight: 1, align: "justify", firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6 },
+        blockQuote: { fontSizePt: 11, italic: true, lineHeight: 1, leftIndentMm: 12.5, rightIndentMm: 12.5, firstLineIndentMm: 0, spaceBeforePt: 12, spaceAfterPt: 12 },
+      };
+    });
+    const named = (id, text) => `<p data-thesis-style="${id}">${text}</p>`;
+    const body = `<h1>Giriş</h1>${paras(1, "Normal", 1)}${table("Örnek tablo", ["A", "B"], [["1", "2"], ["3", "4"]])}${named("tableNote", "Kaynak: Yazar (2024). Tablo altı notu, tek satır aralıklı ve 10 punto olarak yazılır; uzun olduğu için ikinci satıra taşar ve iki yana yaslanır.")}${paras(1, "Sonra", 1)}${named("blockQuote", "Uzun alıntı metni: blok alıntı iki yandan içeriden, 11 punto italik ve tek satır aralığıyla yazılır; bu metin birkaç satıra yayılacak kadar uzundur, böylece iki yan girinti görülür.")}${paras(1, "Son", 1)}`;
+    return documentFor(t, body);
+  },
 };
 if (process.argv[1] && process.argv[1].endsWith("batchb-fixture.mjs")) {
   const [name, out] = process.argv.slice(2);

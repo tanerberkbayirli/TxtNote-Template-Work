@@ -112,7 +112,26 @@ def lists():
     check("TABLOLAR LİSTESİ" in plain and "RESİMLER LİSTESİ" in plain and "ŞEKİLLER LİSTESİ" not in plain, "DOCX follows")
 
 
-SCENARIOS = {"lists": lists, "footnote": footnote, "photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
+def styles():
+    doc, xml = export("styles")
+    page = next(p for p in doc if any("Tablo altı notu" in l["text"] for l in visual_lines(p)))
+    lines = visual_lines(page)
+    def size(needle):
+        for span in [s for b in page.get_text("dict")["blocks"] for l in b.get("lines", []) for s in l["spans"] if needle in s["text"]]:
+            return round(span["size"], 1)
+    check(size("Tablo altı") == 10.0 or size("Kaynak:") == 10.0, f"table note is 10 pt (normal paragraphs {size('Normal')} pt)")
+    note = [l for l in lines if l["text"].startswith("Kaynak:")][0]
+    normal = [l for l in lines if l["text"].startswith("Normal")][0]
+    check(abs(note["x0"] - 30.0) < 0.6 and normal["x0"] > 39, f"note starts at the margin (no first-line indent): {note['x0']:.1f} mm vs normal paragraph {normal['x0']:.1f} mm")
+    quote = [l for l in lines if l["text"].startswith("Uzun alıntı")][0]
+    check(abs(quote["x0"] - 42.5) < 0.8, f"block quote is indented 12.5 mm on the left: {quote['x0']:.1f} mm")
+    check('w:i w:val="false"' in xml and xml.count('w:ind w:left="709"') >= 1, "DOCX: block quote carries its 12.5 mm indent (709 twips)")
+    paragraph = next(p for p in xml.split("<w:p>") if "Tablo altı notu" in p)
+    check('w:sz w:val="20"' in paragraph and 'w:firstLine="0"' in paragraph and 'w:line="200" w:lineRule="atLeast"' in paragraph, "DOCX: the note paragraph is 10 pt, single, without first-line indent")
+    check('w:before="120"' in paragraph and 'w:after="120"' in paragraph or 'w:after="120" w:before="120"' in paragraph, "DOCX: the note paragraph has 6 pt before/after (120 twips)")
+
+
+SCENARIOS = {"styles": styles, "lists": lists, "footnote": footnote, "photo": photo, "continuation": continuation, "equation": equation, "ordinal": ordinal}
 if __name__ == "__main__":
     for name in sys.argv[1:] or SCENARIOS:
         print(f"== {name} (output in {OUT})")

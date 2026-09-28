@@ -155,6 +155,14 @@ export function validateThesisTemplate(template) {
   const firstAfter = template.typography?.paragraph?.firstAfterHeading;
   if (firstAfter !== undefined) errors.push(...(object(firstAfter) ? validateTextStyle({ ...template.typography.body, ...template.typography.paragraph, ...firstAfter }, "typography.paragraph.firstAfterHeading") : ["typography.paragraph.firstAfterHeading nesne olmalı"]));
   errors.push(...validateFootnoteRule(template.typography?.footnotes, "typography.footnotes", validateTextStyle, template.typography?.body));
+  if (template.typography?.paragraphStyles !== undefined) {
+    const styles = template.typography.paragraphStyles;
+    if (!object(styles)) errors.push("typography.paragraphStyles nesne olmalı");
+    else for (const [id, style] of Object.entries(styles)) {
+      if (!/^[a-z][a-zA-Z0-9]*$/.test(id)) errors.push(`typography.paragraphStyles.${id} kimliği geçersiz`);
+      errors.push(...(object(style) ? validateTextStyle({ ...template.typography.body, ...template.typography.paragraph, ...style }, `typography.paragraphStyles.${id}`) : [`typography.paragraphStyles.${id} nesne olmalı`]));
+    }
+  }
   const lineSpacing = template.typography?.lineSpacing;
   if (lineSpacing !== undefined && !(object(lineSpacing) && (lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
   if (lineSpacing?.paragraphSpacing !== undefined && !["collapse", "additive"].includes(lineSpacing.paragraphSpacing)) errors.push("typography.lineSpacing.paragraphSpacing geçersiz");

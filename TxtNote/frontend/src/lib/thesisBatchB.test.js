@@ -336,3 +336,58 @@ describe("Batch B6 lists shown only from n items", () => {
     assert.match(buildThesisPrintHtml(model), /data-thesis-generated="tables"/);
   });
 });
+
+describe("Batch B7 named paragraph styles", () => {
+  const styled = () => {
+    const t = template();
+    t.typography.paragraphStyles = {
+      tableNote: { fontSizePt: 10, lineHeight: 1, align: "justify", firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6 },
+      blockQuote: { fontSizePt: 11, italic: true, leftIndentMm: 12.5, rightIndentMm: 12.5, firstLineIndentMm: 0, spaceBeforePt: 12, spaceAfterPt: 12, keepWithNext: true },
+    };
+    return t;
+  };
+  const html = `<p>Normal</p><p data-thesis-style="tableNote">Kaynak: Yazar (2024)</p><p data-thesis-style="blockQuote"><strong>Alıntı</strong> metni</p><p data-thesis-style="unknownStyle">Bilinmeyen</p>`;
+  it("validates the style ids and keys", () => {
+    assert.deepEqual(validateThesisTemplate(styled()), []);
+    const bad = styled(); bad.typography.paragraphStyles["Bad Id"] = { fontSizePt: 10 };
+    assert.match(validateThesisTemplate(bad).join(), /paragraphStyles\.Bad Id/);
+    const worse = styled(); worse.typography.paragraphStyles.tableNote.fontSizePt = -3;
+    assert.match(validateThesisTemplate(worse).join(), /paragraphStyles\.tableNote\.fontSizePt/);
+  });
+  it("emits one CSS rule per style, on top of the body paragraph, only for templates that define them", () => {
+    const css = buildThesisCss(compile(styled(), html));
+    assert.match(css, /\.thesis-body p\[data-thesis-style="tableNote"\]\{font-family:"Times New Roman";font-size:10pt;[^}]*text-align:justify;line-height:1;[^}]*margin-top:6pt;margin-bottom:6pt;text-indent:0mm;/);
+    assert.match(css, /p\[data-thesis-style="blockQuote"\]\{[^}]*font-style:italic;[^}]*padding-left:12\.5mm;padding-right:12\.5mm;[^}]*break-after:avoid;\}/);
+    assert.doesNotMatch(buildThesisCss(compile(template(), html)), /data-thesis-style/);
+    assert.ok(!compile(template(), html).sections[0].rules.paragraphStyles);
+  });
+  it("keeps Word-additive spacing between a named style and its neighbours", () => {
+    const t = styled(); t.typography.lineSpacing = { mode: "word", singleLineEm: 1.15, paragraphSpacing: "additive" };
+    const css = buildThesisCss(compile(t, html));
+    // body p (after 6) followed by a table note (before 6) = 12 pt; block quote after 12 + note before 6 = 18 pt
+    assert.match(css, /\.thesis-body p\+p\[data-thesis-style="tableNote"\]\{margin-top:12pt\}/);
+    assert.match(css, /p\[data-thesis-style="blockQuote"\]\+p\[data-thesis-style="tableNote"\]\{margin-top:18pt\}/);
+  });
+  it("the style attribute is source markup: it survives saving and reaches the parser", () => {
+    assert.equal(thesisSourceHtml(html), html);
+    assert.equal(compile(styled(), html).sections.find((s) => s.id === "main").editableHtml, html);
+    const blocks = parseAcademicHtml(html, { lines: true }).filter((b) => b.type === "paragraph");
+    assert.deepEqual(blocks.map((b) => b.thesisStyle), [undefined, "tableNote", "blockQuote", "unknownStyle"]);
+  });
+  it("DOCX applies the style's paragraph properties; an unknown style is a plain paragraph", async () => {
+    const { xml } = await docx(resolveGeneratedIndexes(compile(styled(), html), {}));
+    const paragraph = (needle) => xml.split("<w:p>").find((p) => p.includes(needle));
+    const note = paragraph("Kaynak: Yazar");
+    assert.match(note, /<w:spacing w:after="120" w:before="120" w:line="200" w:lineRule="atLeast"\/><w:ind w:left="0" w:right="0" w:firstLine="0"\/><w:jc w:val="both"\/>/);
+    assert.match(note, /<w:sz w:val="20"\/>/);
+    const quote = paragraph("metni");
+    assert.match(quote, /<w:keepNext\/>/); assert.match(quote, /w:ind w:left="709" w:right="709" w:firstLine="0"/);
+    assert.match(paragraph("Alıntı"), /<w:i\/>/);
+    const plain = paragraph("Bilinmeyen");
+    assert.doesNotMatch(plain, /w:left="709"/); assert.match(plain, /<w:sz w:val="24"\/>/);
+  });
+  it("the compiled model exposes the styles for the editor menu", () => {
+    const model = compile(styled(), html);
+    assert.deepEqual(Object.keys(model.sections.find((s) => s.id === "main").rules.paragraphStyles), ["tableNote", "blockQuote"]);
+  });
+});

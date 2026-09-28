@@ -105,6 +105,7 @@ export function resolveSectionRules(template, section) {
     figures: mergeCaption(template.figures, override.figures),
     ...(template.captionKinds ? { captionKinds: Object.fromEntries(Object.entries(template.captionKinds).map(([id, rule]) => [id, mergeCaption(rule, override.captionKinds?.[id])])) } : {}),
     ...(template.equations ? { equations: template.equations } : {}),
+    ...(template.typography.paragraphStyles ? { paragraphStyles: template.typography.paragraphStyles } : {}),
     bibliography: template.bibliography,
     toc: template.toc,
     ...(template.typography.lineSpacing ? { lineSpacing: template.typography.lineSpacing } : {}),
@@ -182,6 +183,7 @@ export function templateFontFamilies(template) {
   const add = (style) => { if (style?.fontFamily) families.add(String(style.fontFamily)); };
   const blocks = (list) => { for (const block of list || []) { add(block.style); blocks(block.blocks); } };
   const typography = template.typography || {};
+  Object.values(typography.paragraphStyles || {}).forEach(add);
   [typography.body, typography.paragraph, typography.footnotes, template.tables?.style, template.tables?.cellStyle, template.tables?.labelStyle, template.figures?.style, template.figures?.labelStyle, template.bibliography?.style, template.page?.numbering?.style].forEach(add);
   Object.values(typography.headings || {}).forEach(add);
   for (const kind of Object.values(template.captionKinds || {})) { add(kind?.style); add(kind?.labelStyle); }
@@ -278,9 +280,9 @@ const labelCss = (style = {}) => [style.fontWeight ? `font-weight:${style.fontWe
 
 /** Text styles of a section that draw lines (for the opt-in Word baseline placement). */
 function sectionTextStyles(section) {
-  const { body, headings, tables, figures, bibliography, footnotes, captionKinds } = section.rules;
+  const { body, headings, tables, figures, bibliography, footnotes, captionKinds, paragraphStyles } = section.rules;
   const text = section.type === "bibliography" ? bibliography.style : body;
-  const styles = [text, bibliography.style, tables.style, figures.style, ...Object.values(headings), ...Object.values(captionKinds || {}).map((rule) => rule.style)];
+  const styles = [text, bibliography.style, tables.style, figures.style, ...Object.values(headings), ...Object.values(captionKinds || {}).map((rule) => rule.style), ...Object.values(paragraphStyles || {}).map((style) => ({ ...text, ...style }))];
   if (tables.cellStyle) styles.push({ ...text, ...tables.cellStyle });
   if (section.generatedIndex) styles.push(section.generatedIndex.style, { ...section.generatedIndex.style, ...section.generatedIndex.pageHeadingStyle });
   if (footnotes?.style) styles.push(footnotes.style);
@@ -329,6 +331,8 @@ export function thesisSectionCss(section) {
     `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};color:#111;min-height:0;padding:0;margin:0;overflow:visible;}`,
     `${scope} .thesis-body p{margin:${text.spaceBeforePt || 0}pt 0 ${text.spaceAfterPt || 0}pt;text-indent:${indentMm(text).first}mm;${text.hangingIndentMm > 0 ? `padding-left:${indentMm(text).left}mm;` : ""}${text.tabStopMm > 0 ? `tab-size:${text.tabStopMm}mm;` : ""}${lift(text)}}`,
     ...(lift(text) ? [`${scope} .thesis-body :is(ul,ol):not(.thesis-bibliography,.thesis-toc)>li{${lift(text)}}`, `${scope} .thesis-body :is(li,td,th,figcaption,caption) p{top:0}`] : []),
+    // Named paragraph styles (typography.paragraphStyles): <p data-thesis-style="id"> is the body paragraph with the style's keys on top.
+    ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => `${scope} .thesis-body p[data-thesis-style="${id}"]{${textCss({ ...text, ...style })}${style.keepWithNext ? "break-after:avoid;" : ""}}`),
     // First paragraph after a heading (Word's separate "first body" style), e.g. without indent.
     ...(text.firstAfterHeading ? [`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6)+p{text-indent:${indentMm({ ...text, ...text.firstAfterHeading }).first}mm}`] : []),
     `${scope} .thesis-body img{max-width:100%;max-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm;height:auto;object-fit:contain;}`,
@@ -426,7 +430,7 @@ export function thesisSectionCss(section) {
   // instead of CSS's collapsed max(). The next block's top margin carries the sum, so the collapse
   // yields exactly the sum; unforced page breaks still truncate it (Word drops space at a page top).
   if (lineSpacing?.paragraphSpacing === "additive") {
-    const blocks = [["p", text], ...Object.entries(headings).map(([level, style]) => [`h${level}`, style])];
+    const blocks = [["p", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }]), ...Object.entries(headings).map(([level, style]) => [`h${level}`, style])];
     for (const [previous, before] of blocks) {
       for (const [next, after] of blocks) {
         rules.push(`${scope} .thesis-body ${previous}+${next}{margin-top:${Math.round(((before.spaceAfterPt || 0) + (after.spaceBeforePt || 0)) * 1000) / 1000}pt}`);

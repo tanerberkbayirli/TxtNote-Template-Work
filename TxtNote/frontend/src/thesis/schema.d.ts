@@ -225,7 +225,15 @@ export interface ThesisTemplate {
   source: { type: "official" | "manual" | "imported"; url?: string; documentName?: string; revisionDate?: string; verifiedAt?: string; notes?: string[] };
   page: PageRule;
   /** paragraph.firstAfterHeading: overrides for the first paragraph after any heading (e.g. no indent). */
-  typography: { body: TextStyle; paragraph?: Partial<TextStyle> & { firstAfterHeading?: Partial<TextStyle> }; headings: Record<string, HeadingRule>; footnotes?: FootnoteRule; lineSpacing?: LineSpacing };
+  typography: {
+    body: TextStyle; paragraph?: Partial<TextStyle> & { firstAfterHeading?: Partial<TextStyle> }; headings: Record<string, HeadingRule>; footnotes?: FootnoteRule; lineSpacing?: LineSpacing;
+    /**
+     * Named paragraph styles (any id, e.g. tableNote, blockQuote): the body paragraph with these keys on top, applied to
+     * `<p data-thesis-style="id">` in the editor, print and PDF (CSS) and as paragraph properties in Word. The attribute is
+     * source markup (saved). The editor's "Paragraf biçimi" menu offers the styles only when the template defines them.
+     */
+    paragraphStyles?: Record<string, Partial<TextStyle>>;
+  };
   sections: ThesisSection[];
   placeholders: Record<string, PlaceholderDefinition>;
   tables: CaptionRule;

@@ -82,5 +82,19 @@ if (scenario === "ordinal") {
   assert.deepEqual(cs, ["block", '"BİRİNCİ BÖLÜM"']);
   pass("the editor offers five heading levels (Başlık 5 converts a paragraph) and shows the ordinal label as its own line");
 }
+if (scenario === "styles") {
+  const select = page.getByLabel("Paragraf biçimi");
+  await page.locator(".rich-text-body p:not([data-thesis-style])").first().click();
+  assert.deepEqual(await select.locator("option").allTextContents(), ["Paragraf biçimi", "Normal", "Başlık 1", "Başlık 2", "Başlık 3", "Başlık 4", "tableNote", "blockQuote"]);
+  await select.selectOption("style:tableNote");
+  await settle();
+  assert.equal(await page.evaluate(() => document.querySelectorAll('p[data-thesis-style="tableNote"]').length), 2);
+  assert.equal((await page.evaluate(() => window.thesisTest.getDoc().content)).match(/data-thesis-style="tableNote"/g).length, 2);
+  await page.locator('p[data-thesis-style="tableNote"]').first().click();
+  await select.selectOption("0");
+  await settle();
+  assert.equal(await page.evaluate(() => document.querySelectorAll('p[data-thesis-style="tableNote"]').length), 1);
+  pass("the menu offers the template's named styles; choosing one is saved as source markup, Normal removes it");
+}
 assert.deepEqual(errors, []);
 await browser.close();

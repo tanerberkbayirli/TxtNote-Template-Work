@@ -440,7 +440,8 @@ function docxChildren(section, context) {
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
       children.push(docxParagraph(runs, block.unnumbered ? { ...style, pageBreakBefore: false } : style, context, { heading: level }));
     } else if (block.type === "paragraph" || block.type === "quote") {
-      const style = section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
+      const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
+      const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
       // Only an alignment the user chose (explicit left included) overrides the template. Lines
       // ended by Enter have no paragraph spacing in the editor; <p> paragraphs do.
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
