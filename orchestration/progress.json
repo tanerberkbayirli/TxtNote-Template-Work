@@ -164,7 +164,9 @@
   "currentPhase": "ANALYSIS",
   "lastCompletedValidation": null,
   "lastCommit": null,
-  "environment": {},
+  "environment": {
+    "libreofficeWriter": "libreoffice-writer-nogui installed via apt (analyzer, aku-mbg-lisans)"
+  },
   "targets": {
     "aku-sbe": {
       "analysis": "DONE",
@@ -215,16 +217,16 @@
       "updatedAt": "2026-09-28"
     },
     "aku-mbg-lisans": {
-      "analysis": "PENDING",
+      "analysis": "DONE",
       "implementation": "PENDING",
       "validation": "PENDING",
       "attempts": 0,
       "status": "PENDING",
       "lastError": null,
-      "specPath": null,
-      "reportPath": null,
+      "specPath": "orchestration/specs/aku-mbg-lisans.json",
+      "reportPath": "orchestration/reports/aku-mbg-lisans.md",
       "commit": null,
-      "updatedAt": null
+      "updatedAt": "2026-09-28"
     },
     "afsu-lee": {
       "analysis": "PENDING",
