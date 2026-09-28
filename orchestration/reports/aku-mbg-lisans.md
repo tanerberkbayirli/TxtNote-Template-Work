@@ -87,3 +87,74 @@ Rule counts: 189 rules in total. 123 EXPLICIT, 59 TEMPLATE, 1 MEASURED, 4 INFERR
 - **ÖZGEÇMİŞ.** Offer it as an optional page or leave it out?
 - **SİMGELER title alignment.** Centre it to match the other index pages, or keep it left as in the template?
 - **Resim captions.** Implement the generic caption-kind extension (preferred), or map Resim onto figures? Mapping loses the separate numbering and the separate RESİMLER DİZİNİ, so it cannot pass.
+
+## Spec review
+
+Independent review, 2026-09-28. I re-derived the rules from both official sources and changed the spec in place (`review` block, `reviewedAt`). Review artifacts are in `orchestration/artifacts/aku-mbg-lisans/review/`:
+- `guide_all_lines_incl_blank.txt`: every span of the guide, including blank lines, images and rules.
+- `cover_word_model.py` and `cover_word_model_output.txt`: the inner-cover geometry recomputed from `document.xml`.
+- `apply_review.py`: the exact edits made to the spec.
+
+### Word layout model (was UNKNOWN; now measured on the Word-2010 guide PDF)
+- **Where the extra half line goes.** The extra half line of "1,5 satır" goes **below** the text.
+  - On pp.6/15/16/19/20 the first line of a 1.5-spaced paragraph sits 10.9 pt below the top margin (24.99 mm). If the extra went above, it would sit at 17.8 pt.
+  - On p.4 a 1.5-spaced paragraph that follows single-spaced blank lines starts 13.32 pt below the previous baseline. The model predicts 13.45 pt if the extra goes below and 20.35 pt if it goes above.
+- **First baseline.** The first baseline is **0.911 em** below the top of the line box, for both single and 1.5 spacing.
+  - Measured range: 0.906–0.912 em. The hypothesis ascent+lineGap would give 0.934 em, which is 0.1 mm lower at 12 pt.
+  - The first row of the p.7 table (single spacing) confirms the value.
+- **Below the baseline.** The line box extends 0.239 em below the baseline for single spacing and 0.914 em for 1.5 spacing.
+- **Page fit.** A line fits the page when its glyph part is above the bottom margin; the extra half line may hang into the margin. This is INFERRED from the guide's pp.19–21 and from the template cover.
+- **Inline pictures in 1.5-spaced paragraphs.** Word does **not** scale the whole picture line by 1.5. The template's own Word pagination record rules it out: `docProps/app.xml` Pages = 27, which matches LibreOffice page for page, and the `w:lastRenderedPageBreak` positions agree. Full scaling would have pushed the Şekil 2.2 page and the cover onto extra pages.
+- **effectExtent.** Word counts `effectExtent` in the size of an inline picture (ECMA-376 §20.4.2.6).
+- **Paragraph spacing.** Only `contextualSpacing` = off is demonstrated, for bibliography entries (dialog screenshot, p.18). Two points stay UNKNOWN because no source page shows them:
+  - whether space-after and space-before add up;
+  - whether space-before is suppressed at the top of a page.
+
+### Absolute geometry
+- **İç Kapak, recomputed from the XML with the model above.** Baselines in mm:
+
+  | Line | Baseline (mm) |
+  |---|---|
+  | AFYON | 45.00 |
+  | FEN | 53.51 |
+  | BÖLÜMÜ | 62.03 |
+  | BİTİRME TEZİ | 104.63 |
+  | Title | 138.70 (second line 147.22) |
+  | Student | 169.94 |
+  | Danışman | 195.50 |
+  | Advisor | 204.01 |
+  | Ay, Yıl | 263.65 |
+
+  - Logos: x0 32.01 mm and x1 179.79 mm, tops at 10.02 mm.
+  - LibreOffice places every line a constant 1.26 mm higher, because it ignores `effectExtent` and uses a 0.936 em first-baseline offset.
+  - The cover checks are now absolute (`cover-baselines`, `cover-logos`).
+  - Remaining risk: Word may add no text-based extra (8.05 pt) to the logo row. In that case every line below the logos sits 2.84 mm higher. Only a real Word render of the template can settle this.
+- **Other special pages.** Baselines are the LibreOffice values − 0.10 mm (title baseline 33.86 mm). The TOC "Sayfa" line is at 41.16 mm; the LibreOffice value was a mis-render. The ethics-page name is 12 pt at 178.70 mm.
+- **Margin checks.** `margin-top` is now absolute: first baseline 33.86 mm ± 0.25. `margin-bottom`: last baseline ≤ 265.99 mm.
+
+### Decisions on the conflicts
+- **Index-page titles:** centred. The guide is explicit and newer; the template titles are plain Balk1 with no alignment set.
+- **SİMGELER title:** left. The guide is silent, so the template decides; analogy with the other index titles cannot override it.
+- **ÖZET/ABSTRACT order:** the guide's order.
+- **İç Kapak top margin:** 10.02 mm. The guide's 3 cm is generic, and with 3 cm the official cover no longer fits one page: Ay, Yıl would be at 283.6 mm, past the 267 mm limit.
+- **Widow control:** on.
+- **Section breaks.** The template's `oddPage`/`evenPage` section breaks insert **no** blank pages, because every later section restarts numbering at 1. They should be implemented as plain new-page section starts.
+- **ÖZGEÇMİŞ:** optional and off by default. If enabled, it goes between KAYNAKLAR and EKLER (the template's TOC order: 14 / 17 / 18). I moved the section there.
+- **Dış Kapak:** do not generate it (see Still open).
+- **Multi-line title:** a wrapped title keeps its own paragraph's spacing — 1.5 on the cover, single on ÖZET/ABSTRACT. The template's "(Devam)" sample lines are inconsistent, so they cannot set the rule.
+- **Guide (May 2025) vs template (Feb 2025):** the guide's text wins wherever it is explicit. The template's XML supplies every value the guide leaves open.
+
+### New rules and checks
+- **New rules:**
+  - `captions.table.keepWithNext`: the Balk6 style has keepNext.
+  - `printing.fromWordFile`: §4.15 says to print from the Word file, not from a PDF.
+  - `submission.similarityMaxPercent` (30 %).
+  - `wordModel.footerBaselineMm` = 283.65. The analyzer's 283.73 is kept for the check; the difference is 0.08 mm.
+- **18 new checks:** absolute cover baselines, special-page first baseline, no blank pages, widow/orphan, heading and table-caption keep-with-next, "Sayfa" on the list pages, list entry format, keyword hanging indent, Graduation Thesis, acknowledgement signature, ethics name size, table notes, table rules, equation number, İnternet Kaynakları, appendix new page, and DOCX as the print master.
+
+### Still open
+- **Dış Kapak layout: UNKNOWN.** It blocks only that page; a sample from the department is needed.
+- **Logo-row extra:** 0 or 8.05 pt; see Absolute geometry.
+- **ÖZGEÇMİŞ layout:** no sample in either source.
+- **Paragraph spacing:** whether spacing is additive and whether space-before applies at the top of a page.
+- **Footnotes and abstract length:** the sources are silent.
