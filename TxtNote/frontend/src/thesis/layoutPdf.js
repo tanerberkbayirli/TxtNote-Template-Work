@@ -202,7 +202,20 @@ function collectGroup(stack, language) {
     });
   };
 
+  // KaTeX draws the radical (sign and bar) as one SVG path: export it as the real "√" glyph plus the bar as a rule.
+  const radical = (svg) => {
+    const tail = svg.parentElement, viewBox = String(svg.getAttribute("viewBox") || "").split(/\s+/).map(Number);
+    if (!tail || viewBox.length !== 4 || !(viewBox[3] > 0)) return;
+    const box = local(tail.getBoundingClientRect()), em = box.height / (viewBox[3] / 1000), style = getComputedStyle(tail), fill = color(style.color);
+    if (!fill || !(box.width > 0)) return;
+    const typography = { ...textStyle(style), fontSize: `${em * 1.1}px`, fontStyle: "normal", fontWeight: "400" };
+    ops.push({ type: "text", text: "\u221A", x: box.left, top: box.top, width: em * 0.6, baseline: box.top + em * 1.06, style: typography, color: fill, decoration: [] });
+    const y = box.top + em * 0.105;
+    ops.push({ type: "line", points: [box.left + em * 0.6, y, box.left + box.width, y], width: em * 0.05, color: fill, top: y, height: 0 });
+  };
+
   const visit = (element) => {
+    if (element.tagName?.toLowerCase() === "svg" && element.closest(".katex-html .sqrt")) { radical(element); return; }
     if (element.matches(SKIP)) return;
     const style = getComputedStyle(element);
     if (style.display === "none" || style.visibility === "hidden") return;
@@ -273,6 +286,13 @@ function collectGroup(stack, language) {
 
   visit(stack);
   range.detach?.();
+  // KaTeX builds "≠" as an overlay glyph (private use U+E020) in front of "=": print the one real character.
+  for (let i = ops.length - 1; i >= 0; i -= 1) {
+    if (ops[i].type !== "text" || ops[i].text !== "\uE020") continue;
+    const next = ops.slice(i + 1, i + 4).find((op) => op.type === "text" && op.text.startsWith("=") && Math.abs(op.baseline - ops[i].baseline) < 1);
+    if (next) next.text = `\u2260${next.text.slice(1)}`;
+    ops.splice(i, 1);
+  }
   return ops;
 }
 

@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
+import { thesisSourceHtml } from "../thesis/sourceHtml.js";
 import { buildThesisCss, compileThesisDocument, templateFontFamilies, thesisSectionCss } from "../thesis/engine.js";
 import { buildThesisDocx } from "../thesis/export.js";
 import { derivedThesisValues, generatedIndexHtml } from "../thesis/generatedIndex.js";
@@ -181,5 +182,82 @@ describe("index rows with leaderFlow inline", () => {
     assert.match(css, /\.thesis-index-title>\.thesis-index-page\{float:right;/);
     const flex = generatedIndexHtml([{ kind: "toc", level: 1, label: "1.", rowTitle: "A", text: "1. A", anchor: "a", page: "3" }], { kind: "toc", title: "T", includePageNumbers: true, leader: "dots" });
     assert.match(flex, /<span class="thesis-index-title">A<\/span><\/span><span class="thesis-index-leader">/);
+  });
+});
+
+describe("aku-fbe validation attempt 1 fixes", () => {
+  const table3 = `<div class="academic-table-wrap"><table class="academic-table"><caption>T</caption><thead><tr><th>A</th></tr></thead><tbody><tr><td>1</td></tr></tbody></table></div>`;
+  const note = `<p data-thesis-style="tableNote">Not.</p>`;
+
+  it("blockGap: the paragraph after a figure / table / note keeps the 41.4 pt baseline pitch in CSS and DOCX", async () => {
+    const { blockGapPt, blockGapPrevious } = await import("../thesis/blockGap.js");
+    const rules = section(compile(), "main").rules;
+    const pt = (entry) => blockGapPt(rules, entry.style, rules.body);
+    // gap + bottom-of-line-to-baseline + ascent = 41.4 pt
+    assert.ok(Math.abs(pt(blockGapPrevious(rules, "tableNote")) + (10 * 1.15 - 0.9336 * 10) + 0.9336 * 12 - 41.4) < 0.01);
+    assert.ok(Math.abs(pt(blockGapPrevious(rules, "figure")) + (11 * 1.15 - 0.9336 * 11) + 0.9336 * 12 - 41.4) < 0.01);
+    const css = buildThesisCss(compile());
+    assert.match(css, /\.thesis-body p\[data-thesis-style="tableNote"\]\+h2\{margin-top:28\.0\d+pt\}/);
+    assert.match(css, /\.academic-table-wrap\+p\{margin-top:2[67]\.\d+pt\}/);
+    assert.doesNotMatch(css, /tableNote"\]\+h1\{/, "page-starting headings keep their own margin");
+    const model = compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1>${table3}${note}<h2>Sonra</h2><p>x</p>`);
+    const xml = await docxXml(model);
+    // Word: the heading after the note has space-before = gap - note's 6 pt after (28.04 - 6 = 22.04 pt = 441 twips)
+    assert.match(xml, /w:spacing w:after="414" w:before="441"/);
+  });
+
+  it("footnotes are numbered 1, 2, 3 in reading order across sections (document numbering), whatever the stored marks say", async () => {
+    assert.equal(akuFbeMaster.typography.footnotes.numbering, "document");
+    const { thesisPresentationHtml } = await import("../thesis/generatedIndex.js");
+    const fn = (id) => `<sup class="academic-footnote" data-fn-id="${id}" data-fn-text="t">1</sup>`;
+    const model = compileThesisDocument(akuFbeMaster, { values, sectionContent: { introduction: `<p>a${fn("a")}</p>` } }, "T", `<h1>X</h1><p>b${fn("b")} c${fn("c")}</p>`);
+    const html = thesisPresentationHtml(section(model, "main"), "tr");
+    assert.deepEqual([...html.matchAll(/data-fn-index="(\d+)">(\d+)</g)].map((m) => [m[1], m[2]]), [["2", "2"], ["3", "3"]]);
+  });
+
+  it("caption label is an inline box as wide as the hang (no justification stretch)", () => {
+    const css = buildThesisCss(compile());
+    assert.match(css, /figcaption\[data-thesis-caption-hang\]::before\{display:inline-block;width:attr\(data-thesis-caption-hang px, 0px\);text-indent:0;white-space:nowrap\}/);
+    assert.match(css, /caption\[data-thesis-caption-hang\]::before\{display:inline-block/);
+  });
+
+  it("approval frame: thin outside, gap, thick inside; Word styles per side; outer edges 27.32 / 178.91 mm", async () => {
+    const model = compile();
+    const frame = section(model, "approval").layout.find((node) => node.border).border;
+    assert.deepEqual([frame.outerPt, frame.gapPt, frame.innerPt], [0.75, 0.75, 3]);
+    assert.deepEqual(frame.docx.sides, { top: "thickThinSmallGap", left: "thickThinSmallGap", bottom: "thinThickSmallGap", right: "thinThickSmallGap" });
+    const xml = await docxXml(model);
+    assert.match(xml, /<w:top w:val="thickThinSmallGap"[^>]*w:sz="24"/);
+    assert.match(xml, /<w:bottom w:val="thinThickSmallGap"[^>]*w:sz="24"/);
+    assert.match(xml, /<w:right w:val="thinThickSmallGap"/);
+    const page = section(model, "approval").rules.page;
+    assert.ok(Math.abs(210 - page.margins.rightMm - 178.91) < 1e-9);
+  });
+
+  it("7 jurors use a compact pitch so the whole block ends above 267 mm (non-source, recorded in the notes)", () => {
+    const rows = (model) => JSON.stringify(section(model, "approval").layout);
+    const many = compile(akuFbePhd, { values: { JURY_6_TITLE_NAME: "A", JURY_7_TITLE_NAME: "B" } });
+    assert.match(rows(many), /JURY_7_AFFILIATION/);
+    // compact rows: both lines single, 4 pt after; the 5-juror layout keeps the template pitch (6 pt after, affiliation 1.5)
+    const afters = (model) => [...rows(model).matchAll(/"JURY_1_AFFILIATION"[\s\S]*?"spaceAfterPt":(\d+)/g)].map((m) => Number(m[1]));
+    assert.deepEqual(afters(many), [4]);
+    assert.deepEqual(afters(compile()), [6]);
+    assert.ok(akuFbeMaster.source.notes.some((n) => /7 jüri/.test(n) && /kaynak dışı/.test(n)));
+  });
+
+  it("equations: 12 pt formula, Cambria Math in Word, caret pads cancelled through measured attributes, presentation attributes never stored", async () => {
+    const css = buildThesisCss(compile());
+    assert.match(css, /\.math-formula--block \.katex\{font-size:1em\}/);
+    assert.match(css, /math-formula--block\{[^}]*margin:calc\(3\.74pt - attr\(data-thesis-eq-pad-before px, 0px\)\) 0 calc\(22\.48pt - attr\(data-thesis-eq-pad-after px, 0px\)\)/);
+    assert.match(css, /data-thesis-eq\]::after\{[^}]*font-family:"Cambria Math","Times New Roman"/);
+    assert.equal(thesisSourceHtml('<span data-thesis-eq="(1.1)" data-thesis-eq-pad-before="31.6" data-thesis-eq-pad-after="23.5">x</span>'), "<span>x</span>");
+    const xml = await docxXml(compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1><span class="math-formula math-formula--block" data-display="block" data-latex="E=mc^2" data-eq-numbered="true">(E)</span>`));
+    assert.match(xml, /w:ascii="Cambria Math"[^>]*\/>[\s\S]{0,200}<w:sz w:val="24"\/>/);
+    assert.match(xml, /w:spacing w:after="414" w:before="0" w:line="360"[\s\S]{0,200}Cambria Math/, "Word paragraph: no browser-only adjustment");
+  });
+
+  it("layout PDF glyph aliases replace symbols Times New Roman lacks by look-alikes it has", async () => {
+    const { PDF_GLYPH_ALIASES } = await import("../thesis/layoutPdf.js");
+    assert.equal(PDF_GLYPH_ALIASES["⋅"], "∙");
   });
 });

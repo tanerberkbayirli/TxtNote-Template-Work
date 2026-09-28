@@ -413,7 +413,7 @@ export function thesisSectionCss(section) {
     const block = `${scope} .thesis-body .math-formula--block`;
     rules.push(
       // style.lineHeight / spaceBeforePt / spaceAfterPt (opt-in): the block behaves like one paragraph line, e.g. a 1.5 line with an empty line after it.
-      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.lineHeight ? `calc(${eq.style.spaceBeforePt || 0}pt - attr(data-thesis-eq-pad-before px, 0px)) 0 calc(${eq.style.spaceAfterPt || 0}pt - attr(data-thesis-eq-pad-after px, 0px))` : `${eq.style?.spaceBeforePt || 0}pt 0 ${eq.style?.spaceAfterPt || 0}pt`};padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
+      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.lineHeight ? `calc(${(eq.style.spaceBeforePt || 0) + (eq.layoutAdjust?.beforePt || 0)}pt - attr(data-thesis-eq-pad-before px, 0px)) 0 calc(${(eq.style.spaceAfterPt || 0) + (eq.layoutAdjust?.afterPt || 0)}pt - attr(data-thesis-eq-pad-after px, 0px))` : `${eq.style?.spaceBeforePt || 0}pt 0 ${eq.style?.spaceAfterPt || 0}pt`};padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
       `${block} .math-formula__render{padding:0}`,
       ...(eq.style?.lineHeight ? [`${block} .katex-display{margin:0}`] : []),
       // fontSizePt is the size of the formula itself (KaTeX scales its glyphs by 1.21 em by default).

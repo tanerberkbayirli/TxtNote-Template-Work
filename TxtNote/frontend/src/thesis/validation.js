@@ -267,6 +267,7 @@ export function validateThesisTemplate(template) {
   if (template.equations !== undefined) {
     const eq = template.equations;
     if (!object(eq) || !object(eq.numbering) || !["chapter", "document"].includes(eq.numbering.scope) || !(text(eq.numbering.format) && eq.numbering.format.includes("{n}"))) errors.push("equations.numbering { scope, format ({n}) } gerekli");
+    if (object(eq) && eq.layoutAdjust !== undefined && (!object(eq.layoutAdjust) || ["beforePt", "afterPt"].some((key) => eq.layoutAdjust[key] !== undefined && !nonnegative(eq.layoutAdjust[key])))) errors.push("equations.layoutAdjust { beforePt, afterPt } olmalı");
     if (object(eq) && eq.numberAlign !== undefined && !["left", "right"].includes(eq.numberAlign)) errors.push("equations.numberAlign geçersiz");
     if (object(eq) && eq.style !== undefined) errors.push(...(object(eq.style) ? validateTextStyle({ ...template.typography?.body, ...eq.style }, "equations.style") : ["equations.style nesne olmalı"]));
   }
