@@ -135,3 +135,69 @@ Not in the manifest:
 - **Enstitü Onayı:** reproduce the form, or leave a placeholder page for the signed PDF.
 - **Programme line:** confirm its wording on the inner cover.
 - **Declaration and form wording:** implement it per degree through the degree variant.
+
+## Spec review
+
+Independent review, 2026-09-28. I re-read all 53 source pages and re-measured with PyMuPDF. The measurement dump is `orchestration/artifacts/aku-sbe/review/word-model-measurements.json`. The spec was edited in place; see `review` and `reviewedAt` in the JSON.
+
+### Word layout model (new `wordModel.*` rules)
+
+- **`wordModel.firstBaselineOffsetEm` = 0.9335 em (MEASURED).** The first baseline sits (lineGap + ascent) below the top of the text area.
+  - Evidence: 27 page-top lines at 11, 12 and 14 pt. All of them give a top margin of 24.96–25.00 mm. An ascent-only offset (0.891 em) would give 25.14–25.19 mm instead.
+  - The guide's text is set at "multiple 1.08". The extra leading does not appear above the first line, so it goes below the text.
+  - The 1.5-line case is INFERRED: it uses the same `lineRule=auto` mechanism. For the thesis this means a 12 pt line at the top of a page has its baseline at 28.95 mm.
+- **`wordModel.lineHeightEm` (MEASURED):**
+  - single = 1.1497 em
+  - 1.5 lines = 1.7246 em
+  - measured on EK 9, EK 3 and EK 5
+- **`wordModel.paragraphSpacing` = UNKNOWN from the source.** Only a PDF exists, so the paragraphs' input values are unknown. The 6 pt gaps on the EK pages contradict the notes printed on those same pages.
+
+### Missed or over-stated items that were fixed
+
+- **Department line on the inner cover:** it can read "ANASANAT DALI" (§2.1 i says "Anabilim/Anasanat Dalı").
+- **Symbols list:** added the 12.5 mm first-line indent (EK 10 entries start at the text edge + 12.70 mm).
+- **Titles of GİRİŞ, KAYNAKÇA and the other unnumbered parts:** single spacing is EXPLICIT under §2.6 Not. Their spacing stays UNKNOWN.
+- **Page-number weight:** "bold: false" is INFERRED, not EXPLICIT.
+- **Genişletilmiş Türkçe Özet:** removed from the TR variants. A Turkish-language thesis never takes it.
+- **New conflict records:**
+  - block-quote rules differ by citation system;
+  - tanıtım page type size: 12 pt (text) vs 11 pt (example).
+
+### Decisions on the conflicts marked needsConfirmation
+
+Closed:
+
+- **Ön söz:** single spacing.
+- **Abstract:** no indent. §2.4 makes EK 5 normative, and EK 3 and EK 7 are indented while EK 5 and EK 6 are not.
+- **Paragraph spacing:** Word-additive, so 12 pt between paragraphs. §5.2 requires Word for Windows, and §5.5.2 equates "Üst 6nk / Alt 6nk" with "bir satır aralığı".
+- **TOC columns:** the numbers and "Sayfa" end at 180.0 mm, with a dot leader.
+- **TOC section numbers:** left-aligned. The "aynı hizada bitecek" sentence refers to the page-number column.
+
+Still open:
+
+- **Programme line:** print it only when it differs from the department; its wording is UNKNOWN.
+- **Vertical gap before "Sayfa":** the text is ambiguous.
+
+Other decisions:
+
+- **Enstitü Onayı:** a counted placeholder page iii for the official web form with the director's e-signature.
+- **Tanıtım sayfası:** the first sheet, not counted and not numbered. It uses the EK 1 order and its first baseline is at 228.34 mm. The window size needs confirmation.
+
+### Variants
+
+- **Master and PhD TR:** confirmed.
+- **Sanatta Yeterlik and foreign-language (EN master/PhD) theses:** supported by the source but not in the manifest.
+  - Sanatta Yeterlik differs only in wording. Its ethics-declaration wording is UNKNOWN.
+  - For the EN variants the English page titles are UNKNOWN.
+  - The orchestrator must decide whether to register them.
+
+### Measurable checks
+
+- `margin-top` is now defined through the first-baseline model: expected 28.95 mm, tolerance 0.25 mm.
+- 17 checks were added, covering: the first-baseline model, page-number weight, titles of the unnumbered parts, the two-line chapter heading, the heading-to-text gap, the "Kaynak:" line, "Resim" captions, block quotes, the symbols list, the TOC "Sayfa" heading, list thresholds, the abstract (keywords, no indent), the preface indent, the ethics page, the approval placeholder, the tanıtım block, and the absence of the extended summary in TR.
+
+### UNKNOWNs that block implementation
+
+- **Page-number distance from the page edge and footer distance:** needed by the engine. The source only says "alt orta".
+- **Spacing of the unnumbered part titles and of H5:** proposals are 12/12 pt and 6/6 pt.
+- **Tanıtım window geometry.**

@@ -579,7 +579,8 @@
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
    ],
-   "notes": "Bold: not stated; the guide's own page numbers are bold 11 pt, the approval-form page (PDF p.40) has a regular 12 pt number. Regular weight INFERRED."
+   "notes": "Family and size EXPLICIT (§5.3). 'bold: false' is NOT stated in the text: INFERRED (no weight given; the guide's own page numbers are bold on text pages and regular on EK pages, so the source gives no usable evidence). Implement regular.",
+   "boldConfidence": "INFERRED"
   },
   {
    "key": "pagination.decoration",
@@ -1153,7 +1154,11 @@
      "EKLER DİZİNİ / EKLER",
      "GENİŞLETİLMİŞ TÜRKÇE ÖZET"
     ],
-    "style": "uppercase, bold, centred, no number"
+    "style": "uppercase, bold, centred, no number",
+    "lineSpacing": "single",
+    "spaceBeforePt": null,
+    "spaceAfterPt": null,
+    "gapToText": "one line space (§4.1 'başlıktan bir satır aralığı aşağıdan'); realised as 6+6 pt per §5.5.2 definition — INFERRED"
    },
    "unit": "",
    "confidence": "EXPLICIT",
@@ -1180,9 +1185,14 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
      "locator": "PDF p.10 (printed 9) §4.3 Not",
      "quote": "Genişletilmiş Türkçe Özet başlığı büyük harflerle, koyu ve sayfa ortalanarak yazılmalıdır."
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.6 (printed 5) §2.6 Not",
+     "quote": "Tezdeki tüm başlıklar (bölüm numarasını içeren başlık hariç) iki yana yaslı olarak ve paragraf girintisi olmadan (sola dayalı olarak) ve tek satır aralığı ile yazılır."
     }
    ],
-   "notes": "Their space before/after and line spacing are not stated; INFERRED equal to the chapter heading (12/12 pt)."
+   "notes": "Review: line spacing single is EXPLICIT (§2.6 Not covers every heading except the one carrying the chapter number); the centring is explicit per part (§3.1/§3.3/§4.1/§4.3) and overrides the generic 'iki yana yaslı'. Space before/after remain UNKNOWN; proposal 12/12 pt (same as chapter heading, §5.2 'Bölüm Başlıkları') INFERRED. Each part starts a new page (INFERRED from 'Her yeni bölüm yeni bir sayfadan başlar' and the separate-page TOC/lists practice)."
   },
   {
    "key": "headings.h2.numbering",
@@ -3100,7 +3110,7 @@
   },
   {
    "key": "lists.symbols.format",
-   "value": "alphabetical; abbreviation bold + ':' + explanation regular; paragraphs 6 pt before/after, single",
+   "value": "alphabetical; abbreviation bold + ':' + explanation regular; paragraphs 6 pt before/after, single; first-line indent 12.5 mm (general §5.2 paragraph rule; EK 10 entries start 12.70 mm right of the example's text edge)",
    "unit": "",
    "confidence": "EXPLICIT",
    "appliesTo": [
@@ -3116,9 +3126,14 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
      "locator": "PDF p.7 (printed 6) §2.10",
      "quote": "Simgeler ve kısaltmalar dizinde alfabetik sıraya göre yer almalıdır"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.48 (printed 47) EK 10 geometry",
+     "quote": "entries x0 42.38 mm vs example text edge 29.68 mm (= 12.70 mm, same as the EK 7 paragraph indent); wrapped explanation continues at 62.16 mm"
     }
    ],
-   "notes": "Bold abbreviation: MEASURED (EK 10)."
+   "notes": "Bold abbreviation: MEASURED (EK 10). Review: indent added (was missing). Continuation-line position of wrapped explanations not stated (example 62.16 mm ≈ after the label) — UNKNOWN, low impact."
   },
   {
    "key": "lists.appendices.title",
@@ -3416,8 +3431,8 @@
      "T.C.",
      "AFYON KOCATEPE ÜNİVERSİTESİ",
      "SOSYAL BİLİMLER ENSTİTÜSÜ",
-     "<ANABİLİM DALI> ANABİLİM DALI",
-     "<PROGRAM> (program name)",
+     "<ANABİLİM DALI> ANABİLİM DALI | <ANASANAT DALI> ANASANAT DALI",
+     "<PROGRAM ADI> — printed only when it differs from the department line (see conflict 'Programme line')",
      "YÜKSEK LİSANS TEZİ | DOKTORA TEZİ"
     ],
     "sizePt": 12,
@@ -3438,7 +3453,8 @@
      "locator": "PDF p.4 (printed 3) §2.1 i",
      "quote": "Tezin yazılıp sunulduğu kurumun künyesi; T.C., Üniversite, Enstitü, Anabilim/Anasanat Dalı, Program Adı ve tezin yazıldığı lisansüstü eğitim düzeyi/türü (Yüksek Lisans Tezi, Doktora Tezi ve Sanatta Yeterlik Tezi gibi) sırası takip edilerek, 12 puntoyla, koyu (bold) ve büyük harflerle, 1,5 satır aralığıyla sayfa ortalanarak yazılır."
     }
-   ]
+   ],
+   "notes": "Review: §2.1 i says 'Anabilim/Anasanat Dalı' — art departments print 'ANASANAT DALI'. Degree line also admits 'SANATTA YETERLİK TEZİ' (third degree type, not in the manifest)."
   },
   {
    "key": "cover.innerCover.title",
@@ -3638,6 +3654,144 @@
      "quote": "1. Bu sayfa web sayfamızdan indirilebilir. Süreçleri tamamlanan tezin, bu kılavuzda belirtilen yerine bu sayfa eklenecektir."
     }
    ]
+  },
+  {
+   "key": "wordModel.firstBaselineOffsetEm",
+   "value": {
+    "single": 0.9335,
+    "multiple-1.08": 0.9335,
+    "1.5": 0.9335
+   },
+   "unit": "em",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.2–21, 25, 28, 30–34 first line of every text page (continuation pages and page-top headings)",
+     "quote": "27 page-top lines at 11.04 / 12.0 / 14.04 pt (baselines 28.617 / 28.914–28.956 / 29.598 mm) all imply a top margin of 24.96–25.00 mm with offset (lineGap 0.0425 + ascent 0.891) em = 0.9335 em; the ascent-only hypothesis (0.891 em) implies 25.14–25.19 mm (non-round). See orchestration/artifacts/aku-sbe/review/word-model-measurements.json"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "orchestration/artifacts/aku-sbe/review/word-model-measurements.json",
+     "quote": "fit: 0.9335 em → mean implied top 24.977 mm (min 24.962, max 25.004, n=27)"
+    }
+   ],
+   "notes": "Word model: first baseline = top of text area + (hhea lineGap + ascent) × font size = 0.9335 em for Times New Roman. The guide's body text uses 'multiple 1.08' (pitch 13.68 pt at 11 pt), and the extra 8 % leading is NOT added above the first baseline → extra leading of 'multiple'/auto line spacing goes BELOW the text. The 1.5-lines value is INFERRED from the same w:lineRule=auto mechanism (the source has no page that begins with a 1.5-spaced line). Assumes the guide's own top margin is a round 2.5 cm (the only reading that fits all three sizes). For the thesis: 12 pt body line at the top of a page → first baseline 25.0 + 0.9335×12 pt = 28.95 mm."
+  },
+  {
+   "key": "wordModel.lineHeightEm",
+   "value": {
+    "single": 1.1497,
+    "1.5": 1.7246,
+    "multiple-1.08": 1.2417
+   },
+   "unit": "em",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.47 EK 9 first list rows (single, 0/0 per the page's own note)",
+     "quote": "pitch 12.60–12.84 pt at 11.04 pt ≈ 1.15 em"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.39 EK 3 declaration text",
+     "quote": "pitch 18.96–19.08 pt at 11.04 pt = 1.5 × 1.15 em"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.41 EK 5 / all guide text pages",
+     "quote": "pitch 13.56–13.70 pt at 11.04 pt = 1.08 × 1.15 em"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "orchestration/artifacts/aku-sbe/review/word-model-measurements.json"
+    }
+   ],
+   "notes": "Single line of Times New Roman = ascent 0.891 + descent 0.216 + lineGap 0.0425 = 1.1497 em (13.80 pt at 12 pt; 1.5 lines = 20.70 pt)."
+  },
+  {
+   "key": "wordModel.paragraphSpacing",
+   "value": null,
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.36–49 EK pages",
+     "quote": "runs of empty paragraphs: pitch 19.67 pt = 13.67 pt (1.08 line) + 6.0 pt"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.3, p.11 guide text",
+     "quote": "consecutive body paragraphs: baseline gap 18.71 pt = 13.69 + 5.0 pt"
+    }
+   ],
+   "notes": "The source is a PDF only; the paragraphs' w:spacing input values are unknown, so neither additive (after+before) nor collapsed spacing, contextualSpacing, nor suppression of space-before at the top of a page is DEMONSTRATED. The 6-pt gaps of the EK pages contradict their own notes (EK 10 says 6/6, EK 8 says 12/12 for chapter rows) and therefore do not show the rule. Implementation decision (see conflict 'Paragraph spacing semantics'): follow Word semantics because §5.2 mandates 'Kelime İşlem Yazılımı: Word for Windows' and §5.5.2 equates 'Üst: 6nk, Alt: 6nk' with 'bir satır aralığı' (≈12 pt) of space."
+  },
+  {
+   "key": "degrees.sanattaYeterlik",
+   "value": {
+    "degreeLine": "SANATTA YETERLİK TEZİ",
+    "tanitim": "Sanatta Yeterlik Tezi",
+    "approvalCheckbox": "☐Sanatta Yeterlik",
+    "departmentLine": "<X> ANASANAT DALI (usual for art programmes)",
+    "ethicsWording": "UNKNOWN (EK 3 shows only 'Yüksek Lisans tezi / Doktora tezi')",
+    "copies": "UNKNOWN (§5.6 lists only YL and Doktora)"
+   },
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "unregistered: aku-sbe Sanatta Yeterlik"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.2 Sunuş",
+     "quote": "yüksek lisans, doktora ve sanatta yeterlik tezleri bu tez yazım kurallarına tabi olacaktır"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.4 §1, §2.1 i",
+     "quote": "doktora tezi, sanatta yeterlik veya yüksek lisans tezi … (Yüksek Lisans Tezi, Doktora Tezi ve Sanatta Yeterlik Tezi gibi)"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.40 EK 4",
+     "quote": "☐Sanatta Yeterlik"
+    }
+   ],
+   "notes": "Source-supported third degree type. Layout identical to master/PhD; only wording differs. Not in the manifest → orchestrator decision (registry degreeType enum has no value for it)."
+  },
+  {
+   "key": "language.foreignLanguageProgrammes",
+   "value": {
+    "thesisLanguage": "language of instruction",
+    "abstractOrder": "abstract in the thesis language first, then Turkish ÖZET",
+    "extendedTurkishSummary": "mandatory, after the appendices, ≥2000 words, fixed parts (EK 12)",
+    "englishPageTitles": "UNKNOWN (guide gives only Turkish titles; EK 6 shows 'ABSTRACT'/'Keywords:' only)"
+   },
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "unregistered: aku-sbe EN (master/phd)"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.2 Sunuş; p.5 §2.4 Not; p.10 §4.3; p.11 §5.4; p.52 EK 12 (bilingual note: 'required for master's theses and doctoral dissertations written in English')"
+    }
+   ],
+   "notes": "A thesis written in Turkish never takes the Genişletilmiş Türkçe Özet, so this belongs to separate EN variants (master + phd), which are source-supported but under-specified (English titles/labels, inner-cover language, declaration wording unknown)."
   }
  ],
  "sections": [
@@ -3657,7 +3811,7 @@
    },
    "inToc": false,
    "startsNewPage": true,
-   "notes": "Printed sheet placed behind the institute's window cover (the cover itself is bought, not typeset). Content per §1: thesis title, degree, student, advisor, month, year, place.",
+   "notes": "Printed sheet placed behind the institute's window cover (the cover itself is bought, not typeset). Content per §1: thesis title, degree, student, advisor, month, year, place. Review decision: first sheet, before the inner cover, not counted and not numbered (§5.3 counts the inner cover as 'i'; EK 1 has no number). Block content order and case from EK 1 (title bold caps; name; degree; 'Danışman: …'; 'Ay, Yıl'; city — all centred on 105.0 mm). Vertical position: first baseline 228.34 mm from the page top is the only evidence (MEASURED on a full A4 page; absolute page position is what matters for the window, so the example frame caveat does not apply vertically). Size 12 pt (§5.2 general rule) INFERRED, single spacing, window dimensions UNKNOWN → needs confirmation from the institute cover.",
    "layout": [
     {
      "kind": "spacer",
@@ -4101,7 +4255,7 @@
    },
    "inToc": true,
    "startsNewPage": true,
-   "notes": "Official web form inserted as a finished page; reproducing it requires a bordered table with a rotated merged cell and check boxes.",
+   "notes": "Review decision: insert a counted page 'iii' titled ENSTİTÜ ONAYI as a PLACEHOLDER (or user-attached signed PDF page); do not reproduce the form as thesis content. Evidence: §2.3 'Enstitü web sitesinde bulunan … Enstitü Onayı'; EK 4 Notlar 1 'Bu sayfa web sayfamızdan indirilebilir. Süreçleri tamamlanan tezin … yerine bu sayfa eklenecektir'; the form carries the director's electronic signature, so a student-typeset copy is not the official page. Optional reproduction (engine gap: bordered table) only if the integrator wants a fill-in aid; its geometry is in layout[] (MEASURED, example frame).",
    "layout": [
     {
      "kind": "text",
@@ -4793,7 +4947,7 @@
    "kind": "custom",
    "title": "GENİŞLETİLMİŞ TÜRKÇE ÖZET",
    "required": "conditional",
-   "condition": "programmes taught in a foreign language only",
+   "condition": "thesis written in a foreign language of instruction only — never applies to the registered TR variants (belongs to unregistered EN variants)",
    "appliesTo": [
     "*"
    ],
@@ -4816,7 +4970,8 @@
      "locator": "PDF p.10 (printed 9) §4.3 Not",
      "quote": "Genişletilmiş Türkçe Özet başlığı büyük harflerle, koyu ve sayfa ortalanarak yazılmalıdır."
     }
-   ]
+   ],
+   "notes": "Review: in aku-sbe-master-tr-v1 / aku-sbe-phd-tr-v1 this section and its TOC row must not be generated."
   }
  ],
  "placeholders": {
@@ -11829,7 +11984,8 @@
     }
    ],
    "decision": "Section-specific §2.5 wins: single spacing (EK 7 example is also single-spaced).",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Single. §2.5 is the section-specific explicit statement; §5.2's 'Sadece' list is general. Specific > general (policy order). EK 7 agrees."
   },
   {
    "topic": "Names of the first front-matter pages in the TOC and page-numbering text",
@@ -11863,7 +12019,8 @@
     }
    ],
    "decision": "Explicit text wins: include a programme line; wording (e.g. '… PROGRAMI') not given.",
-   "needsConfirmation": true
+   "needsConfirmation": true,
+   "reviewDecision": "Print the programme line (explicit §2.1 i) as the upper-cased programme name supplied by the user, and omit it when it equals the department name — EK 2a/2b (department and programme both 'Turizm İşletmeciliği', cf. EK 4 'Programı: Turizm İşletmeciliği') is consistent with that reading. Exact suffix ('PROGRAMI' or none) remains UNKNOWN → user-typed."
   },
   {
    "topic": "Vertical placement of 'Sayfa' and the first TOC row",
@@ -11880,7 +12037,8 @@
     }
    ],
    "decision": "Explicit text wins (one empty line between title and 'Sayfa'); needs confirmation because the example shows none.",
-   "needsConfirmation": true
+   "needsConfirmation": true,
+   "reviewDecision": "Keep the text: 'Sayfa' baseline two single line pitches below the İÇİNDEKİLER title (one empty single line), first row on the next line below 'Sayfa'. The example's 6-pt gaps are example-frame artefacts. Remains ambiguous because §2.6 v uses 'bir satır aralığı' for an extra gap; the institute must confirm."
   },
   {
    "topic": "TOC leader end and page-number column",
@@ -11897,7 +12055,8 @@
     }
    ],
    "decision": "Numbers and 'Sayfa' both end at the right margin (180.0 mm); dotted leader up to the number column.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Page numbers and 'Sayfa' right-aligned at the right text edge x = 180.0 mm (explicit §2.6 viii); dotted leader via right tab stop at 180.0 mm. '10 harf boşluğu' is not a measurable length → not validated. Example x values (176.16/181.68) are the example frame."
   },
   {
    "topic": "Abstract first-line indent",
@@ -11914,7 +12073,8 @@
     }
    ],
    "decision": "Follow the abstract example (more specific): no indent.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "No indent. §2.4 makes EK 5 normative ('aynı sayfada olmalıdır (Bkz. EK-5)'; EN abstract 'aynen Türkçe Özet'teki gibi'), and the example author deliberately differentiates: EK 3 and EK 7 paragraphs have a 12.3–12.7 mm indent while EK 5/EK 6 have none."
   },
   {
    "topic": "Symbols list paragraph spacing",
@@ -11931,7 +12091,8 @@
     }
    ],
    "decision": "Explicit note wins: 6/6 pt.",
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "reviewDecision": "Agree: 6/6 pt (explicit note on the page) over the example geometry. With Word-additive spacing entries are 12 pt apart."
   },
   {
    "topic": "Paragraph spacing semantics",
@@ -11948,7 +12109,8 @@
     }
    ],
    "decision": "Implement Word values before 6 / after 6 (Word adds them → 12 pt between body paragraphs). The DOCX must carry 6/6 and the PDF must match Word's additive result.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Word-additive: body paragraphs 6 before + 6 after → 12 pt between paragraphs; DOCX writes before=120/after=120 twips, PDF must show 12 pt. Evidence: §5.2 'Kelime İşlem Yazılımı: Word for Windows' (values are Word dialog values) and §5.5.2 i–iii equate '(Üst: 6nk, Alt: 6nk)' with 'bir satır aralığı' of space, which only the additive 12 pt reading approximates. The example pages cannot show it (input values unknown)."
   },
   {
    "topic": "Heading number punctuation",
@@ -11982,7 +12144,8 @@
     }
    ],
    "decision": "Left-aligned numbers as in the example; wrapped lines aligned with the text after the number.",
-   "needsConfirmation": true
+   "needsConfirmation": false,
+   "reviewDecision": "Read the §2.6 Not sentence ('Bölüm numaraları aynı hizada bitecek (noktalar aynı doğrultuda olacak)') together with §2.6 viii as the right-aligned page-number column and aligned leader dots; section numbers start at the left edge (30.0 mm, EK 8) and wrapped lines continue under the heading text. No remaining conflict."
   },
   {
    "topic": "Guide version",
@@ -12000,6 +12163,40 @@
    ],
    "decision": "Treat as the 2026 edition of a 2023 guide; no revision history in the document.",
    "needsConfirmation": false
+  },
+  {
+   "topic": "Block quotation threshold and indents differ by citation system",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.17 §6.3.1 xiv",
+     "value": "bağlaç: > 10 lines, 2 cm in from both sides, 10 pt, single, in quotes; < 10 lines inline italic"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.17–18 §6.3.2",
+     "value": "klasik dipnot: ≥ 6 lines, 2 cm from the left, 10 pt, single, in quotes"
+    }
+   ],
+   "decision": "Not a conflict: each rule applies to its own citation system (both already in rules typography.blockQuote.*). Engine must let the block-quote style depend on the chosen citation system or expose both styles.",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Tanıtım page type size",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.11 §5.2",
+     "value": "Times New Roman 12 pt"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "locator": "PDF p.36 EK 1",
+     "value": "11 pt (whole example set is 11 pt)"
+    }
+   ],
+   "decision": "12 pt (explicit general rule; 11 pt is the example set's global size). Window size unknown → block width ≤ 80 mm kept from the example as a soft limit.",
+   "needsConfirmation": true
   }
  ],
  "unknowns": [
@@ -12056,12 +12253,24 @@
    "why": "Form is downloaded from the institute web site (not included as a file); only the EK 4 picture exists."
   },
   {
-   "key": "page number bold/regular",
-   "why": "Only 'Times New Roman 12 punto' stated."
-  },
-  {
    "key": "ethics-declaration / preface / TOC title sizes",
    "why": "Examples show 11 pt bold; size INFERRED 12 pt."
+  },
+  {
+   "key": "wordModel.paragraphSpacing (additive vs collapsed, top-of-page suppression)",
+   "why": "No DOCX; PDF input values unknown. Decision taken on textual grounds (see conflict)."
+  },
+  {
+   "key": "Sanatta Yeterlik ethics-declaration wording and copies",
+   "why": "EK 3 and §5.6 cover only YL/Doktora."
+  },
+  {
+   "key": "English page titles for foreign-language (EN) theses",
+   "why": "Guide only gives Turkish titles."
+  },
+  {
+   "key": "page number weight",
+   "why": "Only 'Times New Roman (12 punto)'; regular INFERRED."
   }
  ],
  "engineGaps": [
@@ -12186,11 +12395,11 @@
    "appliesTo": [
     "*"
    ],
-   "what": "top of first text line box on a full body page (first baseline − ascent)",
-   "expected": 25.0,
+   "what": "first baseline of a 12 pt body line at the top of a continuation page = 25.0 mm + 0.9335 em (Word model)",
+   "expected": 28.95,
    "unit": "mm",
-   "tolerance": 0.5,
-   "sourceRule": "page.margins.topMm"
+   "tolerance": 0.25,
+   "sourceRule": "page.margins.topMm + wordModel.firstBaselineOffsetEm"
   },
   {
    "id": "margin-bottom",
@@ -12256,7 +12465,8 @@
    "expected": 12.0,
    "unit": "pt",
    "tolerance": 0.2,
-   "sourceRule": "typography.paragraph.spaceAfterPt"
+   "sourceRule": "typography.paragraph.spaceAfterPt",
+   "notes": "Decision: Word-additive (6+6)."
   },
   {
    "id": "body-align",
@@ -12319,7 +12529,7 @@
     "*"
    ],
    "what": "page number font/size",
-   "expected": "Times New Roman 12 pt, no dots/dashes",
+   "expected": "Times New Roman 12 pt regular (weight INFERRED), no dots/dashes",
    "unit": "pt",
    "tolerance": 0.1,
    "sourceRule": "pagination.font"
@@ -12565,7 +12775,8 @@
    "expected": 40.0,
    "unit": "mm",
    "tolerance": 2.0,
-   "sourceRule": "footnotes.separator"
+   "sourceRule": "footnotes.separator",
+   "notes": "Tolerance 2 mm because the text says 'yaklaşık olarak 4 santimetre' (approximate); start x = 30.0 mm is exact (±0.5)."
   },
   {
    "id": "footnote-continuous",
@@ -12836,6 +13047,237 @@
    "unit": "",
    "tolerance": 0,
    "sourceRule": "pagination.front.startsAt(section)"
+  },
+  {
+   "id": "first-baseline-model",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "any page whose first line is a 12 pt single or 1.5-spaced paragraph: baseline − 25.0 mm",
+   "expected": 3.95,
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "wordModel.firstBaselineOffsetEm"
+  },
+  {
+   "id": "pagenum-not-bold",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "page-number font program is regular TimesNewRomanPSMT",
+   "expected": "regular",
+   "unit": "",
+   "tolerance": 0,
+   "sourceRule": "pagination.font"
+  },
+  {
+   "id": "main-part-titles",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "GİRİŞ / TARTIŞMA, SONUÇ VE ÖNERİLER / KAYNAKÇA / EKLER (DİZİNİ): bold caps 12 pt centred on 105.0 mm, no number, single spacing, new page",
+   "expected": 105.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "headings.unnumberedMainParts"
+  },
+  {
+   "id": "h1-two-lines",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "'BİRİNCİ BÖLÜM' line and title line are separate centred lines; title first baseline − ordinal baseline = 20.7 pt (1.5) + Word paragraph spacing if two paragraphs",
+   "expected": "two lines",
+   "unit": "",
+   "tolerance": 0,
+   "sourceRule": "headings.h1.kind"
+  },
+  {
+   "id": "h2-body-gap",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "extra space between a sub-heading and the following body paragraph (6 after + 6 before)",
+   "expected": 12.0,
+   "unit": "pt",
+   "tolerance": 0.2,
+   "sourceRule": "headings.h2.spaceAfterPt"
+  },
+  {
+   "id": "caption-source-line",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "'Kaynak:' line below table/figure/picture, centred, 10 or 11 pt, label bold, rest regular",
+   "expected": "below/centred",
+   "unit": "pt",
+   "tolerance": 0.1,
+   "sourceRule": "captions.source"
+  },
+  {
+   "id": "caption-picture",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "'Resim N.' bold + regular title, 11 pt, centred, ABOVE picture; own RESİMLER LİSTESİ when ≥3",
+   "expected": "above/11pt/bold label",
+   "unit": "pt",
+   "tolerance": 0.1,
+   "sourceRule": "captions.picture"
+  },
+  {
+   "id": "blockquote-authordate",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "block quotation (bağlaç system): 10 pt, single, left x0 = 50.0 mm, right x1 = 160.0 mm",
+   "expected": [
+    10.0,
+    50.0,
+    160.0
+   ],
+   "unit": "pt/mm",
+   "tolerance": 0.5,
+   "sourceRule": "typography.blockQuote.authorDate"
+  },
+  {
+   "id": "symbols-list",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "SİMGELER VE KISALTMALAR DİZİNİ entries: single, 6/6 pt (12 pt extra between entries), first-line x0 = 42.5 mm, abbreviation bold",
+   "expected": [
+    12.0,
+    42.5
+   ],
+   "unit": "pt/mm",
+   "tolerance": 0.5,
+   "sourceRule": "lists.symbols.format"
+  },
+  {
+   "id": "toc-sayfa",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "'Sayfa' ends at 180.0 mm; its baseline 2 × 13.8 pt below the İÇİNDEKİLER title baseline",
+   "expected": [
+    180.0,
+    27.6
+   ],
+   "unit": "mm/pt",
+   "tolerance": 0.5,
+   "sourceRule": "toc.pageNumberHeading"
+  },
+  {
+   "id": "list-threshold",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "tables/figures/pictures/appendices lists exist only when the count ≥ 3; <3 appendices → single 'EKLER' TOC row",
+   "expected": ">=3",
+   "unit": "",
+   "tolerance": 0,
+   "sourceRule": "lists.threshold"
+  },
+  {
+   "id": "abstract-keywords",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "'Anahtar Kelimeler:' / 'Keywords:' bold label directly below the abstract text, ≤5 keywords, continuation lines hang to the label end; abstract text no first-line indent",
+   "expected": "x0=30.0",
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "abstract.keywords.label"
+  },
+  {
+   "id": "preface-indent",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "preface paragraphs single spaced with 12.5 mm first-line indent",
+   "expected": 12.5,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "preface.lineSpacing"
+  },
+  {
+   "id": "ethics-page",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "ETİK VE BİLİMSEL İLKELER SORUMLULUK BEYANI: title bold caps centred; text 12 pt 1.5 justified, indent 12.5 mm; degree wording per variant; page number ii",
+   "expected": "ii",
+   "unit": "",
+   "tolerance": 0,
+   "sourceRule": "declaration.signatureBlock"
+  },
+  {
+   "id": "approval-placeholder",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "counted page iii reserved for the official ENSTİTÜ ONAYI (placeholder or inserted page)",
+   "expected": "iii",
+   "unit": "",
+   "tolerance": 0,
+   "sourceRule": "approval.form"
+  },
+  {
+   "id": "outer-cover-block",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "tanıtım sheet: uncounted, no number; lines title (bold caps) / Ad SOYAD / degree / 'Danışman: …' / 'Ay, Yıl' / city, centred on 105.0 mm, first baseline 228.3 mm (example-only, needs confirmation)",
+   "expected": 228.34,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "pagination.outerCover"
+  },
+  {
+   "id": "no-extended-summary-tr",
+   "appliesTo": [
+    "aku-sbe-master-tr-v1",
+    "aku-sbe-phd-tr-v1"
+   ],
+   "what": "no GENİŞLETİLMİŞ TÜRKÇE ÖZET section or TOC row in TR variants",
+   "expected": "absent",
+   "unit": "",
+   "tolerance": 0,
+   "sourceRule": "language.foreignLanguageProgrammes"
   }
- ]
+ ],
+ "reviewedAt": "2026-09-28",
+ "review": {
+  "reviewer": "independent",
+  "changes": [
+   "pagination.font: bold=false re-labelled INFERRED (text states only TNR 12 pt).",
+   "cover.innerCover.headerBlock: department line may be 'ANASANAT DALI' (§2.1 i 'Anabilim/Anasanat Dalı'); programme line printed only when it differs from the department.",
+   "lists.symbols.format: added the first-line indent (12.5 mm, §5.2 + EK 10 x0 = text edge + 12.70 mm) that the analyzer missed.",
+   "headings.unnumberedMainParts: lineSpacing single made EXPLICIT (§2.6 Not); spacing stays UNKNOWN with 12/12 proposal.",
+   "Added rules wordModel.firstBaselineOffsetEm (MEASURED 0.9335 em, 27 page-top lines), wordModel.lineHeightEm (MEASURED), wordModel.paragraphSpacing (UNKNOWN from source), degrees.sanattaYeterlik, language.foreignLanguageProgrammes.",
+   "Sections: extended-turkish-summary excluded from TR variants; outer-cover and approval decisions recorded in section notes.",
+   "Conflicts: review decisions added to all 7 needsConfirmation conflicts (5 closed, 2 kept open); 2 new conflict records (block-quote rules per citation system; tanıtım size).",
+   "measurableChecks: margin-top redefined via the Word first-baseline model (28.95 mm ±0.25); 17 checks added (first-baseline model, page-number weight, unnumbered part titles, H1 two lines, heading→body gap, Kaynak line, Resim caption, block quote, symbols list, TOC 'Sayfa', list thresholds, keywords/abstract indent, preface indent, ethics page, approval placeholder, tanıtım block, no extended summary in TR)."
+  ],
+  "decisionsProposed": [
+   "Paragraph spacing: Word-additive 6+6 = 12 pt (§5.2 Word for Windows; §5.5.2 '(Üst: 6nk, Alt: 6nk)' = 'bir satır aralığı').",
+   "Ön söz single-spaced (§2.5 specific > §5.2 general).",
+   "Abstract/ABSTRACT without first-line indent (EK 5 normatively referenced in §2.4; EK 3/EK 7 indented, EK 5/6 not).",
+   "TOC: page numbers and 'Sayfa' right-aligned at 180.0 mm with dot leader; section numbers left at 30.0 mm; the 'aynı hizada bitecek' sentence refers to the page-number/leader column.",
+   "Programme line: print user-supplied programme name only when it differs from the department (reconciles §2.1 i with EK 2a/2b).",
+   "Enstitü Onayı: counted placeholder page iii (official e-signed web form is inserted), no reproduction required.",
+   "Tanıtım sayfası: first, uncounted, unnumbered sheet; EK 1 order/case; 12 pt; first baseline 228.34 mm (only evidence) — confirm window.",
+   "Sanatta Yeterlik and foreign-language (EN master/phd) are source-supported but unregistered variants; not modelled in the TR variants; Genişletilmiş Türkçe Özet removed from TR variants."
+  ],
+  "openItems": [
+   "pagination.distanceFromEdgeMm / footer distance: UNKNOWN (text says only 'alt orta'); integrator needs a value — not derivable from the source (guide's own footer is its own frame).",
+   "Space before/after of unnumbered main-part titles (GİRİŞ, KAYNAKÇA …) and of H5: UNKNOWN (12/12 and 6/6 INFERRED).",
+   "TOC 'Sayfa' vertical gap: text ambiguous ('iki satır aralığı'), example shows 6 pt — institute confirmation.",
+   "Programme-line wording ('… PROGRAMI' or bare name) UNKNOWN.",
+   "Tanıtım window position/size UNKNOWN (only EK 1 baselines).",
+   "Manifest decision: register Sanatta Yeterlik and EN (foreign-language) variants or document them as out of scope.",
+   "wordModel.paragraphSpacing is not demonstrated by the source (PDF only); implementation relies on Word's documented behaviour."
+  ]
+ }
 }
