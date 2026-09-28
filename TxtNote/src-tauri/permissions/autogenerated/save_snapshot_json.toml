@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-save-snapshot-json"
+description = "Enables the save_snapshot_json command without any pre-configured scope."
+commands.allow = ["save_snapshot_json"]
+
+[[permission]]
+identifier = "deny-save-snapshot-json"
+description = "Denies the save_snapshot_json command without any pre-configured scope."
+commands.deny = ["save_snapshot_json"]

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-load-shell"
+description = "Enables the load_shell command without any pre-configured scope."
+commands.allow = ["load_shell"]
+
+[[permission]]
+identifier = "deny-load-shell"
+description = "Denies the load_shell command without any pre-configured scope."
+commands.deny = ["load_shell"]

@@ -1,0 +1,9 @@
+export const plainThesisText = (html) => String(html || "").replace(/<br\b[^>]*>/gi, " ").replace(/<[^>]*>/g, "").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&quot;/gi, '"').replace(/&#(?:39|x27);/gi, "'").replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Math.min(0x10ffff, Number(n)))).replace(/\s+/g, " ").trim();
+
+/** Strip only presentation stamps. No DOM round trip (images may be multi-MB). */
+export function thesisSourceHtml(html) {
+  return String(html || "")
+    .replace(/<span\b[^>]*class=["'][^"']*\bacademic-caption-label\b[^"']*["'][^>]*>[\s\S]*?<\/span>/gi, "")
+    .replace(/\sdata-thesis-(?:number|anchor|caption|caption-auto|fn-stamp|fn-reserve|fn-margin)=["'][^"']*["']/gi, "");
+}
+

@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Frontend build
+frontend/dist/
+frontend/.vite/
+
+# Rust / Tauri
+src-tauri/target/
+src-tauri/gen/
+.cargo/config.toml
+.cargo-target/
+
+# Desktop installer & update artifacts (rebuild with npm run desktop:build)
+dist-installer/
+
+# Secrets & local env
+.env
+.env.*
+!.env.example
+
+# OS & editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Local agent / scratch (not part of the app)
+.claude/
+Claude outputs/
+
+# Test / coverage
+coverage/
+
+# Local build targets, test evidence and editor settings
+.cargo-target-build*/
+output/
+.pdf-preview/
+.cursor/

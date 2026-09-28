@@ -1,0 +1,29 @@
+fn main() {
+    tauri_build::try_build(
+        tauri_build::Attributes::new().app_manifest(
+            tauri_build::AppManifest::new().commands(&[
+                "load_shell",
+                "load_notes",
+                "load_snapshot",
+                "load_snapshot_json",
+                "save_snapshot",
+                "save_snapshot_json",
+                "save_note",
+                "append_version",
+                "list_history",
+                "get_version",
+                "write_media",
+                "write_media_chunk",
+                "open_media",
+                "delete_media",
+                "secure_store_secret",
+                "secure_load_secret",
+                "secure_delete_secret",
+                "write_desktop_file",
+                "write_academic_file",
+                "read_times_new_roman_fonts",
+            ]),
+        ),
+    )
+    .expect("failed to run tauri-build");
+}

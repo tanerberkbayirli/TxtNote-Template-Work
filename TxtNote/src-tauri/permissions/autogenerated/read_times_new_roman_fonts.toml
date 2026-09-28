@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-read-times-new-roman-fonts"
+description = "Enables the read_times_new_roman_fonts command without any pre-configured scope."
+commands.allow = ["read_times_new_roman_fonts"]
+
+[[permission]]
+identifier = "deny-read-times-new-roman-fonts"
+description = "Denies the read_times_new_roman_fonts command without any pre-configured scope."
+commands.deny = ["read_times_new_roman_fonts"]

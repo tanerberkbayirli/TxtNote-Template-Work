@@ -1,0 +1,16 @@
+{
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:default",
+    "core:window:allow-close",
+    "core:window:allow-destroy",
+    "opener:default",
+    "updater:default",
+    "process:default",
+    "allow-sqlite",
+    "allow-read-times-new-roman-fonts"
+  ]
+}

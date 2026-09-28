@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-write-media-chunk"
+description = "Enables the write_media_chunk command without any pre-configured scope."
+commands.allow = ["write_media_chunk"]
+
+[[permission]]
+identifier = "deny-write-media-chunk"
+description = "Denies the write_media_chunk command without any pre-configured scope."
+commands.deny = ["write_media_chunk"]

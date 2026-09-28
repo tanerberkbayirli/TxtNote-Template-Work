@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { jsPDF } from '../frontend/node_modules/jspdf/dist/jspdf.es.min.js';
+import { getDocument } from '../frontend/node_modules/pdfjs-dist/legacy/build/pdf.mjs';
+import { embedAcademicPdfFonts, academicPdfFont } from '../frontend/src/lib/academicFonts.js';
+import { loadSystemTimesNewRoman } from '../frontend/src/lib/systemPdfFonts.js';
+import { embeddedPdfFonts, assertTimesNewRomanEmbedded } from '../frontend/tests/pdf-font-compliance.mjs';
+import { compileThesisDocument } from '../frontend/src/thesis/engine.js';
+import { mcbuPhd } from '../frontend/src/thesis/templates/mcbu.js';
+import { buildThesisDocx } from '../frontend/src/thesis/export.js';
+import { mcbuThesis } from '../frontend/tests/task10b-document.mjs';
+
+const out = new URL('../output/font-compliance/', import.meta.url);
+await fs.mkdir(out, { recursive: true });
+const fonts = await loadSystemTimesNewRoman();
+const source = Object.fromEntries(Object.entries(fonts).map(([style, font]) => [style, { source: font.source, ...font.identity, sha256: createHash('sha256').update(font.bytes).digest('hex') }]));
+const pdf = new jsPDF({ compress: true, putOnlyUsedFonts: true });
+await embedAcademicPdfFonts(pdf, { templateId: mcbuPhd.id });
+const turkish = 'İ ı Ş ş Ğ ğ Ü ü Ö ö Ç ç';
+for (const [index, style] of Object.keys(fonts).entries()) {
+  pdf.setFont(academicPdfFont(pdf, style), style);
+  pdf.text(turkish, 20, 30 + index * 20);
+}
+const bytes = new Uint8Array(pdf.output('arraybuffer'));
+await fs.writeFile(new URL('after-variants.pdf', out), bytes);
+const embedded = assertTimesNewRomanEmbedded(bytes);
+const task = getDocument({ data: bytes.slice(), useSystemFonts: false, disableFontFace: true });
+const parsed = await task.promise;
+const extracted = (await (await parsed.getPage(1)).getTextContent()).items.map((item) => item.str).filter(Boolean);
+assert.deepEqual(extracted, Array(4).fill(turkish));
+await task.destroy();
+const before = embeddedPdfFonts(await fs.readFile(new URL('before.pdf', out)));
+const result = { before, after: embedded, source, turkish, extracted, searchable: true, status: 'PASS' };
+await fs.writeFile(new URL('pdf.json', out), JSON.stringify(result, null, 2));
+const image = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aMr8AAAAASUVORK5CYII=';
+const doc = mcbuThesis(image, { degree: 'phd' });
+const model = compileThesisDocument(mcbuPhd, doc.researchData.thesis, doc.title, doc.content);
+await fs.writeFile(new URL('representative.docx', out), new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
+console.log(JSON.stringify(result, null, 2));

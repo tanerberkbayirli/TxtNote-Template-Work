@@ -1,0 +1,27 @@
+[[permission]]
+identifier = "allow-sqlite"
+description = "Local SQLite persistence commands"
+commands.allow = [
+  "load_shell",
+  "load_notes",
+  "load_snapshot",
+  "load_snapshot_json",
+  "save_snapshot",
+  "save_snapshot_json",
+  "save_note",
+  "append_version",
+  "list_history",
+  "get_version",
+  "write_media",
+  "write_media_chunk",
+  "open_media",
+  "delete_media",
+  "load_db_owner",
+  "bind_db_owner",
+  "wipe_local_database",
+  "write_desktop_file",
+  "write_academic_file",
+  "secure_store_secret",
+  "secure_load_secret",
+  "secure_delete_secret"
+]

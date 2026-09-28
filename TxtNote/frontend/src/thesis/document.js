@@ -1,0 +1,136 @@
+/**
+ * A thesis document is a TxtNote note: its title and main rich-text body use
+ * the ordinary note fields; template selection, metadata and other editable
+ * section bodies live in note.researchData.thesis. The template is only read.
+ */
+import { thesisSourceHtml } from "./sourceHtml.js";
+
+export function createThesisDocument(template, selection, year = new Date().getFullYear()) {
+  return {
+    selection: { ...selection },
+    templateId: template.id,
+    templateVersion: template.templateVersion,
+    schemaVersion: template.schemaVersion,
+    values: { YEAR: String(year) },
+    sectionContent: {},
+    enabledSections: [],
+  };
+}
+
+/**
+ * Thesis metadata lives in thesis.values, keyed by placeholder name. The thesis
+ * title is the ordinary note title and is exposed as THESIS_TITLE. These are the
+ * standard fields every template can use; a template may declare more.
+ */
+export const THESIS_METADATA_FIELDS = {
+  THESIS_TITLE_EN: { label: "İngilizce başlık", type: "text" },
+  STUDENT_NAME: { label: "Öğrenci", type: "text" },
+  STUDENT_NUMBER: { label: "Öğrenci numarası", type: "text" },
+  DEPARTMENT_NAME: { label: "Bölüm", type: "text" },
+  ADVISOR_NAME: { label: "Danışman", type: "text" },
+  CO_ADVISOR_NAME: { label: "İkinci danışman", type: "text" },
+  CITY: { label: "Şehir", type: "text" },
+  YEAR: { label: "Yıl", type: "number" },
+  DATE: { label: "Tarih", type: "date" },
+};
+
+/** Old notes use the original keys; newer templates may use the clearer aliases. */
+export const THESIS_METADATA_ALIASES = { CO_ADVISOR_NAME: "SECOND_ADVISOR_NAME", SECOND_ADVISOR_NAME: "CO_ADVISOR_NAME", DEPARTMENT_NAME: "DEPARTMENT", DEPARTMENT: "DEPARTMENT_NAME" };
+
+export function thesisMetadataValue(thesis, key) {
+  return thesis?.values?.[key] ?? thesis?.values?.[THESIS_METADATA_ALIASES[key]];
+}
+
+/** Return new thesis state with one metadata value (and its alias) changed. */
+export function updateThesisMetadata(thesis, key, value) {
+  const text = String(value ?? "");
+  const alias = THESIS_METADATA_ALIASES[key];
+  return { ...thesis, values: { ...thesis?.values, [key]: text, ...(alias ? { [alias]: text } : {}) } };
+}
+
+/**
+ * Section behaviour comes from template data:
+ * - editable: the user writes it; HTML lives in the note, keyed by section id
+ * - static: template-owned content/blocks, read-only
+ * - generated: built from the document (TOC, lists), never user content
+ */
+export const THESIS_SECTION_MODES = Object.freeze(["editable", "static", "generated"]);
+/** Only used for templates that predate `mode`; explicit `mode` always wins. */
+const LEGACY_GENERATED_TYPES = new Set(["tableOfContents", "listOfTables", "listOfFigures"]);
+
+export function thesisSectionMode(section) {
+  if (THESIS_SECTION_MODES.includes(section?.mode)) return section.mode;
+  if (section?.editable === true) return "editable";
+  if (LEGACY_GENERATED_TYPES.has(section?.type)) return "generated";
+  if (section?.editable === false) return "static";
+  return section?.content || Array.isArray(section?.blocks) ? "static" : "editable";
+}
+
+export function isThesisSectionEditable(section) {
+  return thesisSectionMode(section) === "editable";
+}
+
+/** Template sections in display order: optional numeric `order`, otherwise array position. */
+export function orderedThesisSections(template) {
+  return (template?.sections || [])
+    .map((section, index) => ({ section, key: Number.isFinite(section?.order) ? section.order : index, index }))
+    .sort((a, b) => a.key - b.key || a.index - b.index)
+    .map((entry) => entry.section);
+}
+
+/** Ids of the optional sections the user turned on; malformed stored data reads as none. */
+export function thesisEnabledSections(thesis) {
+  return Array.isArray(thesis?.enabledSections) ? thesis.enabledSections : [];
+}
+
+/** The declarative visibleWhen condition alone (no status); true when a section has none. */
+export function thesisSectionConditionMet(section, thesis) {
+  if (!section?.visibleWhen) return true;
+  const { field, equals, notEquals, in: choices } = section.visibleWhen;
+  const value = thesis?.values?.[field] ?? (field === "degreeType" ? thesis?.selection?.degreeType : undefined);
+  if (Object.hasOwn(section.visibleWhen, "equals") && value !== equals) return false;
+  if (Object.hasOwn(section.visibleWhen, "notEquals") && value === notEquals) return false;
+  if (choices && !choices.includes(value)) return false;
+  return true;
+}
+
+/** disabled: never shown; optional: shown once the user enables it; required: always. */
+export function isThesisSectionActive(section, thesis) {
+  if (section?.status === "disabled") return false;
+  if (!thesisSectionConditionMet(section, thesis)) return false;
+  if (section?.status === "optional") return thesisEnabledSections(thesis).includes(section.id);
+  return true;
+}
+
+/** The only thing that identifies stored user HTML is the section's stable id. */
+export function thesisSectionContentKey(section) {
+  return section.id;
+}
+
+export function thesisSectionContent(section, thesis, mainContent = "") {
+  if (!isThesisSectionEditable(section)) return "";
+  return section.type === "mainContent" ? mainContent : thesis?.sectionContent?.[thesisSectionContentKey(section)] ?? "";
+}
+
+/** Return a new note only for editable sections; never write into a template. */
+export function updateThesisNoteSection(note, section, html) {
+  if (!isThesisSectionEditable(section)) return note;
+  const content = thesisSourceHtml(html);
+  if (section.type === "mainContent") {
+    return note.content === content ? note : { ...note, content };
+  }
+  const researchData = note.researchData || {};
+  const thesis = researchData.thesis || {};
+  const key = thesisSectionContentKey(section);
+  if (thesis.sectionContent?.[key] === content) return note;
+  return {
+    ...note,
+    researchData: {
+      ...researchData,
+      thesis: {
+        ...thesis,
+        sectionContent: { ...thesis.sectionContent, [key]: content },
+      },
+    },
+  };
+}

@@ -1,0 +1,15 @@
+# Pamukkale Üniversitesi — tez kaynakları
+
+İncelenen birimler: Fen Bilimleri Enstitüsü, Eğitim Bilimleri Enstitüsü, Tıp Fakültesi; Kimya Mühendisliği Bölümünün lisans tezine ilişkin yönlendirmesi.
+
+## Kaydedilen özgün dosyalar
+
+- **Fen Bilimleri Enstitüsü Tez Yazım Şablonu** — lisansüstü tez kılavuzu/şablonu; yüksek lisans ve doktora; Türkçe; DOCX. Enstitünün güncel tez yazım sayfasında listeleniyor. Kaynak: [FBE tez yazım kuralları](https://www.pau.edu.tr/fenbilimleri/tr/sayfa/tez-yazim-kurallari-3) · [DOCX](https://d.pau.edu.tr/b3331080). Yerel: [PAU_Fen_Bilimleri_Tez_Sablonu.docx](./PAU_Fen_Bilimleri_Tez_Sablonu.docx).
+- **Eğitim Bilimleri Enstitüsü Tez Yazım Kılavuzu** — kılavuz; lisansüstü tezler; Türkçe; DOCX; Enstitü Kurulu onayı 06.08.2025, 2025 güz yarıyılından itibaren geçerli (2025.11 dış kapak güncellemesi duyurulmuş). Kaynak: [2025–2026 yeni kılavuz duyurusu](https://www.pau.edu.tr/egitimbilimleri/tr/sayfa/yeni-tez-yazim-kilavuzlari-2025-2026-egitim-ogretim-yili-eylul-ayi-itibariyle) · [DOCX](https://d.pau.edu.tr/24fa86c9). Yerel: [PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx](./PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx).
+- **Eğitim Bilimleri Enstitüsü yüksek lisans tez şablonu** — şablon; yüksek lisans; Türkçe; DOCX; 2025, aynı yürürlük duyurusuna tabi. Kaynak: [2025–2026 yeni kılavuz duyurusu](https://www.pau.edu.tr/egitimbilimleri/tr/sayfa/yeni-tez-yazim-kilavuzlari-2025-2026-egitim-ogretim-yili-eylul-ayi-itibariyle) · [DOCX](https://d.pau.edu.tr/0688d2c7). Yerel: [PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx](./PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx).
+- **Eğitim Bilimleri Enstitüsü doktora tez şablonu** — şablon; doktora; Türkçe; DOCX; 2025, aynı yürürlük duyurusuna tabi. Kaynak: [2025–2026 yeni kılavuz duyurusu](https://www.pau.edu.tr/egitimbilimleri/tr/sayfa/yeni-tez-yazim-kilavuzlari-2025-2026-egitim-ogretim-yili-eylul-ayi-itibariyle) · [DOCX](https://d.pau.edu.tr/5667996a). Yerel: [PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx](./PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx).
+- **Tıp Fakültesi tıpta uzmanlık tezleri yazım ve basım yönergesi** — kılavuz; tıpta uzmanlık tezi; Türkçe; PDF; üniversitenin mevzuat sayfasında yayımlanıyor, sürüm tarihi dosya başlığında belirtilmemiş. Kaynak: [Tıp Fakültesi yasa ve yönetmelikler](https://www.pau.edu.tr/tip/tr/sayfa/yasa-ve-yonetmelikler) · [PDF](https://cdn.pau.edu.tr/APP/SYBS/255/1/TipFakTiptaUzmTezleriYazimVeBasimYonergesi.pdf). Yerel: [PAU_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Yonergesi.pdf](./PAU_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Yonergesi.pdf).
+
+## Lisans tezi ve seçim notu
+
+Kimya Mühendisliği Bölümünün 17.11.2023 tarihli duyurusu lisans tezlerinde Fen Bilimleri Enstitüsü tez şablonuna yönlendiriyor; ayrı bir lisans tez dosyası değil, yukarıdaki aynı FBE şablonu geçerlidir: [duyuru](https://www.pau.edu.tr/kimyamuhendisligi/tr/haber/lisans-tezi-ogrencileri-icin-tez-yazim-sablonu). Dönem projesi şablonları envantere alınmadı.
