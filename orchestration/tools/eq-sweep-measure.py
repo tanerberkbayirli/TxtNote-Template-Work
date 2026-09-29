@@ -1,7 +1,8 @@
 """Measure the equation sweep PDF (see eq-sweep.mjs): every numbered one-line equation must sit 14.6 mm (41.4 pt, +-0.2 pt)
 below the previous body baseline and 14.6 mm above the next one on the same page. Prints a table; exit 1 on any deviation."""
 import re, sys
-sys.path.insert(0, __file__.rsplit("/", 1)[0])
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from pdfmeasure import open_pdf, visual_lines, MM2PT
 
 NUM = re.compile(r"\(\d+\.\d+\)$")

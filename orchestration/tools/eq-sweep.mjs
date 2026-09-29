@@ -10,9 +10,9 @@
 // Exit code 1 lists the positions that deviate.
 import { writeFile, mkdir } from "node:fs/promises";
 import { execFileSync } from "node:child_process";
-import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const root = resolve(new URL("../..", import.meta.url).pathname);
+const root = fileURLToPath(new URL("../..", import.meta.url));
 const [registryId = "aku-fbe-master-tr-v1", outDir = "/tmp/eq-sweep"] = process.argv.slice(2);
 await mkdir(outDir, { recursive: true });
 const CHAPTERS = Number(process.env.EQ_SWEEP_CHAPTERS || 26);
@@ -29,5 +29,5 @@ await writeFile(`${outDir}/content.json`, JSON.stringify({ title: "Denklem S√ºp√
 const fixture = `${outDir}/fixture.json`;
 execFileSync("node", [`${root}/orchestration/tools/make-fixture.mjs`, registryId, fixture, `${outDir}/content.json`], { stdio: "inherit" });
 execFileSync("node", [`${root}/orchestration/tools/export.mjs`, fixture, `${outDir}/sweep`], { stdio: "inherit", timeout: 900000 });
-try { execFileSync("python3", [`${root}/orchestration/tools/eq-sweep-measure.py`, `${outDir}/sweep.pdf`], { stdio: "inherit" }); }
+try { execFileSync(process.env.THESIS_PYTHON || "python3", [`${root}/orchestration/tools/eq-sweep-measure.py`, `${outDir}/sweep.pdf`], { stdio: "inherit" }); }
 catch { process.exit(1); }

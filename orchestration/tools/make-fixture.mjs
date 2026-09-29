@@ -9,11 +9,10 @@
 // multi-page table, figures, an equation, footnotes and citations, so cumulative
 // spacing errors show up as pagination drift.
 import { readFile, writeFile } from "node:fs/promises";
-import { pathToFileURL } from "node:url";
-import { resolve } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { deflateSync } from "node:zlib";
 
-const root = resolve(new URL("../..", import.meta.url).pathname);
+const root = fileURLToPath(new URL("../..", import.meta.url));
 const { THESIS_TEMPLATE_REGISTRY } = await import(pathToFileURL(`${root}/TxtNote/frontend/src/thesis/registry.js`).href);
 
 const [registryId, out, overridesPath] = process.argv.slice(2);

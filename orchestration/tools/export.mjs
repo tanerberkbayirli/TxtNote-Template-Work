@@ -29,7 +29,10 @@ const KEY = "txtnote-thesis-regression";
 // Another fixture page (e.g. /tests/thesis-batchb.html, which seeds a custom template) may be named here.
 const fixturePage = process.env.THESIS_FIXTURE_PAGE || "/tests/thesis.html";
 
-const browser = await chromium.launch({ args: ["--enable-blink-features=MulticolColumnWrapping", "--font-render-hinting=none"] });
+const browser = await chromium.launch({
+  ...(process.env.THESIS_BROWSER_EXECUTABLE ? { executablePath: process.env.THESIS_BROWSER_EXECUTABLE } : {}),
+  args: ["--enable-blink-features=MulticolColumnWrapping", "--font-render-hinting=none"],
+});
 const context = await browser.newContext({ viewport: { width: 1400, height: 1000 }, deviceScaleFactor: 1, acceptDownloads: true });
 await context.grantPermissions(["local-fonts"], { origin: new URL(baseUrl).origin });
 const page = await context.newPage();
