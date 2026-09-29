@@ -11,5 +11,5 @@ Times New Roman and Arial (single TTF files, name-table verified). The font is l
 
 Result: formula glyphs are drawn in the embedded Times New Roman (KaTeX's own faces are not embedded either); symbols that Times New Roman lacks
 have look-alike aliases (U+22C5 -> U+2219, see `PDF_GLYPH_ALIASES`); the radical is drawn as the "√" glyph plus a rule and "≠" is printed as one
-character. Symbols without a look-alike (∈ ⇒ ∀ ∃ ∇ ⊂ ∪ ∮ ∝) cannot be drawn. A machine with a single-file Cambria Math TTF or a jsPDF TTC path
+character. Symbols without a look-alike (∈ ⇒ ∀ ∃ ∇ ⊂ ∪ ∮ ∝) and accents drawn by KaTeX as glyphs (\vec arrow) cannot be drawn. A machine with a single-file Cambria Math TTF or a jsPDF TTC path
 would remove the limit; nothing in the template needs to change.
