@@ -1,9 +1,10 @@
 import { chapterNumberSequence, formatNumber, groupThesisSections, transformThesisText } from "./engine.js";
 import { flattenSpecialPage, resolveSpecialPage, specialPageHtml } from "./specialPages.js";
-import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
+import { buildThesisPageModel, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const escape = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
+import { blockDescriptors } from "./blockGap.js";
 import { FOOTNOTE_REF_SELECTOR, renumberFootnoteRefs } from "./footnotes.js";
 import { applyTransformExceptions, exceptionSet, wrapExceptionWords } from "./transformExceptions.js";
 export { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
@@ -206,25 +207,63 @@ export function decorateThesisSources(root, model) {
       node.setAttribute("data-thesis-eq", equations[i].label);
       node.setAttribute("data-thesis-eq-side", section.rules.equations.numberAlign === "left" ? "left" : "right");
     });
-    // Editor caret pads (ZWSP text next to a block formula) are line boxes of their own; an equation whose template opts into a
-    // paragraph-like block (equations.style.lineHeight) cancels their height, so editor, PDF and Word space it the same.
-    host.querySelectorAll(".math-formula--block").forEach((node) => {
-      for (const side of ["before", "after"]) node.removeAttribute(`data-thesis-eq-pad-${side}`);
-      if (!section.rules.equations?.style?.lineHeight) return;
-      const scale = new DOMMatrixReadOnly(getComputedStyle(node.closest(".thesis-page-stack") || node).transform).a || 1;
-      const isPad = (sibling) => sibling?.nodeType === 3 && !sibling.data.replace(/[\u200B\s]/g, "");
-      const box = node.getBoundingClientRect(), own = getComputedStyle(node);
-      // A pad is at most a couple of lines: anything larger means the neighbour sits in the next column/page.
-      const most = 3 * (parseFloat(own.lineHeight) || 30);
-      const set = (side, px) => { if (px > 0.5 && px < most) node.setAttribute(`data-thesis-eq-pad-${side}`, String(Math.round(px * 1000) / 1000)); };
-      // Read both neighbours before writing anything: an attribute changes the margins and moves what is measured next.
-      const before = node.previousElementSibling, after = node.nextElementSibling;
-      const beforePad = before && isPad(node.previousSibling) && before.compareDocumentPosition(node.previousSibling) & Node.DOCUMENT_POSITION_FOLLOWING
-        ? (box.top - before.getBoundingClientRect().bottom) / scale - parseFloat(getComputedStyle(before).marginBottom) - parseFloat(own.marginTop) : 0;
-      const afterPad = after && isPad(node.nextSibling)
-        ? (after.getBoundingClientRect().top - box.bottom) / scale - parseFloat(own.marginBottom) - parseFloat(getComputedStyle(after).marginTop) : 0;
-      set("before", beforePad); set("after", afterPad);
-    });
+    // Block equations (template opt-in: equations.style.lineHeight) are placed by the block-gap table plus what is measured here, all
+    // presentation attributes (never stored): the editor's caret pads (ZWSP text next to the formula, a line box of their own) are cancelled,
+    // a one-line formula is lifted/dropped onto the nominal line (baseline 0.9336 em below the top, as a Word paragraph), a taller one keeps
+    // its own taller line box, and a formula wider than the text area is shrunk (not below 8 pt) so it never runs under its number.
+    const eqRule = section.rules.equations;
+    if (eqRule?.style?.lineHeight) {
+      const eqDescriptors = blockDescriptors(section.rules).filter((d) => d.exit);
+      const eqDesc = eqDescriptors.find((d) => d.kind === "eq");
+      const nominal = { ascent: eqDesc.nominal.ascentPt * 96 / 72, below: eqDesc.nominal.belowPt * 96 / 72 };
+      for (const node of host.querySelectorAll(".math-formula--block")) {
+        for (const name of ["pad-before", "pad-after", "lift", "drop", "base", "fit"]) node.removeAttribute(`data-thesis-eq-${name}`);
+        const html = node.querySelector(".katex-html"), base = html?.querySelector(".base, .katex-base");
+        let probe = html?.querySelector("[data-thesis-eq-probe]");
+        if (base && !probe) { probe = node.ownerDocument.createElement("span"); probe.setAttribute("data-thesis-eq-probe", ""); probe.style.cssText = "display:inline-block;width:0;height:0"; base.insertBefore(probe, base.firstChild); }
+      }
+      // Paragraphs are painted with a relative offset (Word baseline placement): their client rect moved, their layout box did not.
+      const layoutEdge = (element, edge) => element.getBoundingClientRect()[edge] - (parseFloat(getComputedStyle(element).top) || 0) * (new DOMMatrixReadOnly(getComputedStyle(element.closest(".thesis-page-stack") || element).transform).a || 1);
+      // The margin a block leaves below itself as the block-gap table models it (a figure caption's margin collapses through the figure, so the figure's own computed margin says 0).
+      const spaceAfterPx = (element) => { const kind = [...eqDescriptors].reverse().find((d) => d.kind !== "eq" && element.matches(d.selector)); return kind ? kind.exit.cssAfter * 96 / 72 : parseFloat(getComputedStyle(element).marginBottom); };
+      const measured = [...host.querySelectorAll(".math-formula--block")].map((node) => {
+        const scale = new DOMMatrixReadOnly(getComputedStyle(node.closest(".thesis-page-stack") || node).transform).a || 1;
+        const box = node.getBoundingClientRect(), own = getComputedStyle(node), probe = node.querySelector("[data-thesis-eq-probe]"), html = node.querySelector(".katex-html");
+        const isPad = (sibling) => sibling?.nodeType === 3 && !sibling.data.replace(/[\u200B\s]/g, "");
+        // A pad is at most a couple of lines: anything larger means the neighbour sits in the next column/page.
+        const most = 3 * (parseFloat(own.lineHeight) || 30);
+        const before = node.previousElementSibling, after = node.nextElementSibling;
+        const padBefore = before && isPad(node.previousSibling) && before.compareDocumentPosition(node.previousSibling) & Node.DOCUMENT_POSITION_FOLLOWING
+          ? (box.top - layoutEdge(before, "bottom")) / scale - spaceAfterPx(before) - parseFloat(own.marginTop) : 0;
+        // First thing in a column (page top after a page break): the pad is what lies between the column top and the block.
+        const flow = node.closest(".thesis-page-flow");
+        let padFirst = 0;
+        if (flow && isPad(node.previousSibling)) {
+          const pitch = flowPagePitchPx(pageMetrics(section.rules.page)), end = (box.top - parseFloat(own.marginTop) * scale - flow.getBoundingClientRect().top) / scale;
+          padFirst = end - Math.floor(end / pitch) * pitch;
+        }
+        const padAfter = after && isPad(node.nextSibling)
+          ? (layoutEdge(after, "top") - box.bottom) / scale - parseFloat(own.marginBottom) - parseFloat(getComputedStyle(after).marginTop) : 0;
+        // Formula width against the room inside the number gutters (the formula wraps at its break points first; only a
+        // formula with an unbreakable run wider than the room is shrunk).
+        const width = html ? html.scrollWidth : 0, room = html ? html.clientWidth : 0;
+        const label = node.getAttribute("data-thesis-eq");
+        return { node, scale, most, padBefore: padBefore > 0.5 && padBefore < most ? padBefore : padFirst, padAfter, width, room, above: probe ? (probe.getBoundingClientRect().bottom - box.top) / scale : null, below: probe ? (box.bottom - probe.getBoundingClientRect().bottom) / scale : null };
+      });
+      for (const m of measured) {
+        const put = (name, value) => m.node.setAttribute(`data-thesis-eq-${name}`, String(Math.round(value * 1000) / 1000));
+        if (m.padBefore > 0.5 && m.padBefore < m.most) put("pad-before", m.padBefore);
+        if (m.padAfter > 0.5 && m.padAfter < m.most) put("pad-after", m.padAfter);
+        const room = m.room;
+        const fit = m.width > room + 1 && room > 0 ? Math.max(room / m.width, 8 / (eqRule.style.fontSizePt || 12)) : 1;
+        if (fit < 0.995) put("fit", Math.floor(fit * 100) / 100);
+        if (m.above !== null) {
+          const scaled = fit < 0.995 ? Math.floor(fit * 100) / 100 : 1;
+          const above = m.above * scaled, below = m.below * scaled;
+          put("lift", Math.max(0, nominal.ascent - above)); put("drop", Math.max(0, nominal.below - below)); put("base", Math.max(above, nominal.ascent));
+        }
+      }
+    }
     let index = 0;
     host.querySelectorAll("[data-thesis-anchor]").forEach((node) => { node.removeAttribute("data-thesis-anchor"); node.removeAttribute("data-thesis-number"); });
     host.querySelectorAll("h1,h2,h3,h4,h5,h6,figcaption,caption").forEach((node) => {

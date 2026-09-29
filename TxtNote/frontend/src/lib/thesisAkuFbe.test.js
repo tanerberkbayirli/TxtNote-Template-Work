@@ -189,21 +189,38 @@ describe("aku-fbe validation attempt 1 fixes", () => {
   const table3 = `<div class="academic-table-wrap"><table class="academic-table"><caption>T</caption><thead><tr><th>A</th></tr></thead><tbody><tr><td>1</td></tr></tbody></table></div>`;
   const note = `<p data-thesis-style="tableNote">Not.</p>`;
 
-  it("blockGap: the paragraph after a figure / table / note keeps the 41.4 pt baseline pitch in CSS and DOCX", async () => {
-    const { blockGapPt, blockGapPrevious } = await import("../thesis/blockGap.js");
+  it("blockGap: ONE table gives the gap between any two block kinds; CSS and DOCX both read it", async () => {
+    const { blockDescriptors, gapBetween } = await import("../thesis/blockGap.js");
     const rules = section(compile(), "main").rules;
-    const pt = (entry) => blockGapPt(rules, entry.style, rules.body);
-    // gap + bottom-of-line-to-baseline + ascent = 41.4 pt
-    assert.ok(Math.abs(pt(blockGapPrevious(rules, "tableNote")) + (10 * 1.15 - 0.9336 * 10) + 0.9336 * 12 - 41.4) < 0.01);
-    assert.ok(Math.abs(pt(blockGapPrevious(rules, "figure")) + (11 * 1.15 - 0.9336 * 11) + 0.9336 * 12 - 41.4) < 0.01);
+    const d = Object.fromEntries(blockDescriptors(rules).map((x) => [x.key, x]));
+    const gap = (a, b) => gapBetween(rules, d[a], d[b]);
+    // pitch check: bottom-of-line-to-baseline + gap + ascent = 41.4 pt for text after every block kind that ends in a line
+    const pitch = (a, b) => d[a].exit.bottomBase + gap(a, b) + d[b].entry.ascent;
+    for (const from of ["p", "h2", "figure", "figure:photo", "table", "p:tableNote", "list", "eq"]) assert.ok(Math.abs(pitch(from, "p") - 41.4) < 0.01 || from === "h2" && Math.abs(pitch(from, "p") - 41.4) < 0.01, `${from} -> p`);
+    assert.equal(gap("table", "p:tableNote"), 6, "a table note follows its table at its own space-before (guide p.14: 5.46 mm rule to baseline)");
+    assert.ok(Math.abs(pitch("p:tableNote", "h2") - 41.4) < 0.01);
+    assert.equal(gap("p", "figure"), 20.7, "a box after a paragraph: one empty body line");
+    assert.equal(gap("eq", "table"), 20.7);
+    for (const from of ["p", "h2", "figure", "table", "p:tableNote", "list", "eq"]) assert.ok(Math.abs(pitch(from, "eq") - 41.4) < 0.01, `${from} -> eq`);
+    assert.equal(gap("h2", "h1"), null, "page-starting headings keep their own margin");
     const css = buildThesisCss(compile());
     assert.match(css, /\.thesis-body p\[data-thesis-style="tableNote"\]\+h2\{margin-top:28\.0\d+pt\}/);
-    assert.match(css, /\.academic-table-wrap\+p\{margin-top:2[67]\.\d+pt\}/);
-    assert.doesNotMatch(css, /tableNote"\]\+h1\{/, "page-starting headings keep their own margin");
+    assert.match(css, /\.academic-table-wrap\+p\[data-thesis-style="tableNote"\]\{margin-top:6pt\}/);
+    assert.doesNotMatch(css, /tableNote"\]\+h1\{/);
     const model = compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1>${table3}${note}<h2>Sonra</h2><p>x</p>`);
     const xml = await docxXml(model);
-    // Word: the heading after the note has space-before = gap - note's 6 pt after (28.04 - 6 = 22.04 pt = 441 twips)
-    assert.match(xml, /w:spacing w:after="414" w:before="441"/);
+    assert.match(xml, /w:spacing w:after="120" w:before="120"[^>]*\/>[\s\S]{0,900}Not\./, "note: 6 pt before, right under the table");
+    assert.match(xml, /w:spacing w:after="414" w:before="441"/, "heading after the note: gap 28.04 pt - note's 6 pt after");
+    // equation in Word: its own 1.5 line, the blank line comes from the previous block's spacing
+    const eqXml = await docxXml(compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1>${table3}<span class="math-formula math-formula--block" data-display="block" data-latex="a=b" data-eq-numbered="true">(a=b)</span><p>x</p>`));
+    assert.match(eqXml, /w:spacing w:after="414" w:before="537" w:line="360"[\s\S]{0,900}Cambria Math/, "equation after a table: gap 26.85 pt (baseline pitch 41.4 pt), 20.7 pt after");
+  });
+
+  it("list rows of the index sections are single spaced with 6 pt after in Word too", async () => {
+    const xml = await docxXml(compile());
+    const rows = [...xml.matchAll(/<w:p>((?:(?!<\/w:p>).)*?)<\/w:p>/gs)].map((m) => m[1]).filter((p) => /<w:tab\/>/.test(p) && /(Şekil|Çizelge|Resim) \d\.\d/.test(p.replace(/<[^>]+>/g, "")));
+    assert.ok(rows.length >= 3);
+    for (const row of rows) assert.match(row, /w:spacing w:after="120" w:before="0" w:line="240"/);
   });
 
   it("footnotes are numbered 1, 2, 3 in reading order across sections (document numbering), whatever the stored marks say", async () => {
@@ -245,15 +262,20 @@ describe("aku-fbe validation attempt 1 fixes", () => {
     assert.ok(akuFbeMaster.source.notes.some((n) => /7 jüri/.test(n) && /kaynak dışı/.test(n)));
   });
 
-  it("equations: 12 pt formula, Cambria Math in Word, caret pads cancelled through measured attributes, presentation attributes never stored", async () => {
+  it("equations: 12 pt formula, Cambria Math in Word, caret pads cancelled through measured attributes, wrapping gutters, presentation attributes never stored", async () => {
     const css = buildThesisCss(compile());
     assert.match(css, /\.math-formula--block \.katex\{font-size:1em\}/);
-    assert.match(css, /math-formula--block\{[^}]*margin:calc\(3\.74pt - attr\(data-thesis-eq-pad-before px, 0px\)\) 0 calc\(22\.48pt - attr\(data-thesis-eq-pad-after px, 0px\)\)/);
+    assert.match(css, /math-formula--block\[data-thesis-eq-pad-before\]\{margin-top:calc\(0pt - attr\(data-thesis-eq-pad-before px, 0px\)\)\}/);
+    assert.match(css, /math-formula--block\[data-thesis-eq-pad-after\]\{margin-bottom:calc\(0pt - attr\(data-thesis-eq-pad-after px, 0px\)\)\}/);
+    assert.match(css, /math-formula--block\{padding-top:attr\(data-thesis-eq-lift px, 0px\);padding-bottom:attr\(data-thesis-eq-drop px, 0px\)\}/);
+    assert.match(css, /math-formula--block \.math-formula__render\{padding:0 3\.6em\}/);
+    assert.match(css, /math-formula--block \.katex\{white-space:normal\}/);
+    assert.match(css, /p\+\.math-formula--block\[data-thesis-eq-pad-before\]\{margin-top:calc\(0pt - attr\(data-thesis-eq-pad-before px, 0px\)\)\}/, "after a paragraph: its own 20.7 pt space-after is the blank line");
     assert.match(css, /data-thesis-eq\]::after\{[^}]*font-family:"Cambria Math","Times New Roman"/);
-    assert.equal(thesisSourceHtml('<span data-thesis-eq="(1.1)" data-thesis-eq-pad-before="31.6" data-thesis-eq-pad-after="23.5">x</span>'), "<span>x</span>");
+    assert.equal(thesisSourceHtml('<span data-thesis-eq="(1.1)" data-thesis-eq-pad-before="31.6" data-thesis-eq-pad-after="23.5" data-thesis-eq-lift="1" data-thesis-eq-drop="2" data-thesis-eq-base="14.9" data-thesis-eq-fit="0.8">x<span data-thesis-eq-probe="" style="display:inline-block"></span></span>'), "<span>x</span>");
     const xml = await docxXml(compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1><span class="math-formula math-formula--block" data-display="block" data-latex="E=mc^2" data-eq-numbered="true">(E)</span>`));
     assert.match(xml, /w:ascii="Cambria Math"[^>]*\/>[\s\S]{0,200}<w:sz w:val="24"\/>/);
-    assert.match(xml, /w:spacing w:after="414" w:before="0" w:line="360"[\s\S]{0,200}Cambria Math/, "Word paragraph: no browser-only adjustment");
+    assert.match(xml, /w:spacing w:after="414" w:before="0" w:line="360"[\s\S]{0,200}Cambria Math/);
   });
 
   it("layout PDF glyph aliases replace symbols Times New Roman lacks by look-alikes it has", async () => {

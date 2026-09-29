@@ -415,8 +415,8 @@ const base = {
   captionKinds: { photo: figureCaption("Resim") },
   equations: { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "right",
     style: { fontFamily: "Cambria Math", fontSizePt: 12, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: BLANK_PT },
-    // KaTeX puts its baseline 1.3 mm above Word's (0.9336 em) inside the line box; editor/PDF only (Word paragraphs are exact): +3.74 pt before, +1.78 pt after give the guide's 14.6 mm baseline pitch on both sides (measured).
-    layoutAdjust: { beforePt: 3.74, afterPt: 1.78 } },
+    // One line of the equation style on the block-gap grid (blank 1.5 line before and after, guide p.9); measured placement in the editor (blockGap.js).
+  },
   bibliography: { heading: "KAYNAKLAR", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0, hangingIndentMm: 12.5 }, hangingIndentMm: 0, citationStyle: "author-year" },
   toc: { heading: "İÇİNDEKİLER DİZİNİ", levels: [1, 2, 3, 4], showPageNumbers: true },
 };

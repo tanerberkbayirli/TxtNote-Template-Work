@@ -9,11 +9,12 @@ import { countFootnoteRefs, resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
 import { exceptionSet, isExceptionToken } from "./transformExceptions.js";
-import { blockGapActive, blockGapPrevious, blockGapPt } from "./blockGap.js";
+import { blockDescriptors, blockGapActive, gapBetween } from "./blockGap.js";
 
 const tokenPattern = /\{\{([A-Z][A-Z0-9_]*)\}\}/g;
 const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const plainText = plainThesisText;
+const round3 = (value) => Math.round(value * 1000) / 1000;
 const cssFamily = (value) => JSON.stringify(String(value || "Times New Roman"));
 
 /** Turkish ordinal words (uppercase) for chapter labels: BİRİNCİ BÖLÜM. Beyond ten the label falls back to "11.". */
@@ -412,9 +413,18 @@ export function thesisSectionCss(section) {
     const eq = section.rules.equations;
     const block = `${scope} .thesis-body .math-formula--block`;
     rules.push(
-      // style.lineHeight / spaceBeforePt / spaceAfterPt (opt-in): the block behaves like one paragraph line, e.g. a 1.5 line with an empty line after it.
-      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.lineHeight ? `calc(${(eq.style.spaceBeforePt || 0) + (eq.layoutAdjust?.beforePt || 0)}pt - attr(data-thesis-eq-pad-before px, 0px)) 0 calc(${(eq.style.spaceAfterPt || 0) + (eq.layoutAdjust?.afterPt || 0)}pt - attr(data-thesis-eq-pad-after px, 0px))` : `${eq.style?.spaceBeforePt || 0}pt 0 ${eq.style?.spaceAfterPt || 0}pt`};padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
-      `${block} .math-formula__render{padding:0}`,
+      // style.lineHeight (opt-in) makes the block one paragraph-like line of the equation style; its vertical placement comes from the
+      // block-gap table (blockGap.js) plus measured presentation attributes (see decorateThesisSources): caret pads cancelled
+      // (pad-before/after), one-line formulas lifted/dropped onto the nominal line (lift/drop), wide formulas fitted (fit).
+      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.lineHeight ? "0" : `${eq.style?.spaceBeforePt || 0}pt`} 0 ${eq.style?.lineHeight ? "0" : `${eq.style?.spaceAfterPt || 0}pt`};padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
+      ...(eq.style?.lineHeight ? [
+        `${block}[data-thesis-eq-pad-before]{margin-top:calc(0pt - attr(data-thesis-eq-pad-before px, 0px))}${block}[data-thesis-eq-pad-after]{margin-bottom:calc(0pt - attr(data-thesis-eq-pad-after px, 0px))}`,
+        `${block}{padding-top:attr(data-thesis-eq-lift px, 0px);padding-bottom:attr(data-thesis-eq-drop px, 0px)}`,
+        `${block}[data-thesis-eq-fit] .katex{font-size:attr(data-thesis-eq-fit em, 1em)}`,
+      ] : []),
+      // With the line-grid opt-in the formula wraps at its break points inside gutters the width of the number, so it never runs under it.
+      `${block} .math-formula__render{padding:${eq.style?.lineHeight ? "0 3.6em" : "0"}}`,
+      ...(eq.style?.lineHeight ? [`${block} .katex{white-space:normal}`] : []),
       ...(eq.style?.lineHeight ? [`${block} .katex-display{margin:0}`] : []),
       // fontSizePt is the size of the formula itself (KaTeX scales its glyphs by 1.21 em by default).
       ...(eq.style?.fontSizePt ? [`${block} .katex{font-size:1em}`] : []),
@@ -422,6 +432,8 @@ export function thesisSectionCss(section) {
       `${block} .math-formula__toolbar{position:absolute;top:0;right:0;z-index:2;visibility:hidden}${block}:hover .math-formula__toolbar,${block}:focus-within .math-formula__toolbar{visibility:visible}`,
       `${block}[data-thesis-eq]::after{content:attr(data-thesis-eq);position:absolute;top:50%;transform:translateY(-50%);line-height:1;white-space:nowrap;text-indent:0;${eq.style?.fontFamily ? `font-family:${cssFamily(eq.style.fontFamily)},${cssFamily(body.fontFamily)};` : ""}${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.fontWeight ? `font-weight:${eq.style.fontWeight};` : ""}${eq.style?.italic ? "font-style:italic;" : ""}}`,
       `${block}[data-thesis-eq-side="right"]::after{right:0}${block}[data-thesis-eq-side="left"]::after{left:0}`,
+      // With a measured baseline the number sits on it (line-height 1 box: baseline 0.8375 em below its top for Times New Roman).
+      ...(eq.style?.lineHeight ? [`${block}[data-thesis-eq][data-thesis-eq-base]::after{top:calc(attr(data-thesis-eq-base px, 0px) - 0.8375em);transform:none}`] : []),
     );
   }
   // Optional table body rule (e.g. single spacing, centered names/values); a cell's own alignment still wins.
@@ -468,20 +480,25 @@ export function thesisSectionCss(section) {
       }
     }
   }
-  // lineSpacing.blockGap "paragraphPitch": the block after a figure / table / table note keeps the paragraph baseline pitch (blockGap.js).
+  // lineSpacing.blockGap "paragraphPitch": the gap between ANY two block kinds comes from one table (blockGap.js), also used by the DOCX writer.
   if (blockGapActive(section.rules)) {
-    const previous = [];
-    for (const [kind, rule] of [["", figures], ...Object.entries(section.rules.captionKinds || {})]) {
-      const entry = blockGapPrevious(section.rules, "figure", { captionKind: kind });
-      if (entry) previous.push([kind ? `figure[data-caption-kind="${kind}"]` : (plainFigure ? plainFigure.trim() : "figure"), entry]);
-    }
-    const table = blockGapPrevious(section.rules, "table"); if (table) previous.push([".academic-table-wrap", table]);
-    const note = blockGapPrevious(section.rules, "tableNote"); if (note) previous.push(['p[data-thesis-style="tableNote"]', note]);
-    for (const [selector, entry] of previous) {
-      for (const [next, style] of [["p", text], ...Object.entries(headings).filter(([, heading]) => !heading.pageBreakBefore).map(([level, heading]) => [`h${level}`, heading])]) {
-        rules.push(`${scope} .thesis-body ${selector}+${next}{margin-top:${blockGapPt(section.rules, entry.style, style)}pt}`);
+    const descriptors = blockDescriptors(section.rules, text, plainFigure ? plainFigure.trim() : "figure");
+    const eqKind = descriptors.find((d) => d.kind === "eq");
+    // Blocks own no editor margins of their own here: the table decides.
+    rules.push(`${scope} .thesis-body .academic-table-wrap{margin:0}${scope} .thesis-body .academic-table-wrap table{margin-bottom:0}${scope} .thesis-body :is(ul,ol):not(.thesis-bibliography,.thesis-toc){margin-top:0;margin-bottom:0}`);
+    for (const prev of descriptors) {
+      for (const next of descriptors) {
+        const gap = gapBetween(section.rules, prev, next);
+        if (gap === null) continue;
+        const pair = `${scope} .thesis-body ${prev.selector}+${next.selector}`;
+        if (next.kind !== "eq") { rules.push(`${pair}{margin-top:${gap}pt}`); continue; }
+        // Before an equation the caret pad (a line box between the two blocks) sits between the margins: subtract the previous
+        // block's own space-after and the pad; after an equation the equation's own negative margin already cancels the pad.
+        rules.push(`${pair}{margin-top:${gap}pt}`, `${pair}[data-thesis-eq-pad-before]{margin-top:calc(${round3(gap - prev.exit.cssAfter)}pt - attr(data-thesis-eq-pad-before px, 0px))}`);
+        if (prev.kind === "eq") rules.push(`${pair}[data-thesis-eq-pad-before]{margin-top:${gap}pt}`);
       }
     }
+    void eqKind;
   }
   // Exception words of an uppercase/capitalized heading (transformExceptions.js) stay lower-case.
   if (Object.values(headings).some((style) => exceptionSet(style))) rules.push(`${scope} .thesis-body span[data-thesis-lower]{text-transform:lowercase}`);

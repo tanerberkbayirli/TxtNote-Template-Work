@@ -152,7 +152,7 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
     <div className="thesis-page-stack" style={{ width: `${page.widthMm}mm`, height: `${stackHeight}px`, transform: `scale(${zoom})`, transformOrigin: "top left" }}>
       {THESIS_PAGED_LAYOUT ? <div className="thesis-sheets" aria-hidden="true">
         {pages.map((entry) => <div key={entry.index} className="thesis-sheet" data-thesis-page={entry.physicalIndex + 1} data-thesis-page-label={entry.label || undefined}
-          style={{ top: `${entry.index * metrics.stridePx}px`, width: `${page.widthMm}mm`, height: `${page.heightMm}mm` }}>
+          style={{ top: `${entry.index * flowPagePitchPx(metrics)}px`, width: `${page.widthMm}mm`, height: `${page.heightMm}mm` }}>
           <SheetChrome rules={group.rules} values={values} page={entry} />
         </div>)}
       </div> : null}

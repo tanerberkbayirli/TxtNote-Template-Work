@@ -1,4 +1,4 @@
-import { blockGapActive, blockGapPrevious, blockGapPt } from "./blockGap.js";
+import { blockDescriptors, blockGapActive, describeBlock, gapBetween } from "./blockGap.js";
 import { jsPDF } from "jspdf";
 import {
   AlignmentType, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
@@ -308,7 +308,7 @@ function specialPageDocx(nodes, context, widthMm) {
   return out;
 }
 
-function listParagraphs(block, section, context, level = 0) {
+function listParagraphs(block, section, context, level = 0, before = null) {
   const { body } = section.rules;
   const out = [];
   const toc = section.type === "tableOfContents" || /\bthesis-toc\b/.test(block.className || "");
@@ -316,7 +316,7 @@ function listParagraphs(block, section, context, level = 0) {
   // One numbering instance per list: it restarts where the editor restarts and
   // continues across page breaks because Word lays it out as one list.
   const instance = context.nextList++;
-  for (const item of block.items || []) {
+  for (const [position, item] of (block.items || []).entries()) {
     const runs = item.runs?.length ? item.runs : plainRuns(item.text);
     if (bibliography) {
       // Editor: unmarked entries indented by the template's hanging indent.
@@ -325,7 +325,7 @@ function listParagraphs(block, section, context, level = 0) {
     } else if (toc) {
       out.push(docxParagraph(runs, { ...body, align: "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 4 }, context));
     } else {
-      out.push(docxParagraph(runs, { ...body, firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context, {
+      out.push(docxParagraph(runs, { ...body, firstLineIndentMm: 0, spaceBeforePt: position === 0 && before !== null ? before : 0, spaceAfterPt: 0 }, context, {
         numbering: { reference: block.ordered ? "thesis-ordered" : "thesis-bullet", level: Math.min(level, 2), instance },
       }));
     }
@@ -334,11 +334,11 @@ function listParagraphs(block, section, context, level = 0) {
   return out;
 }
 
-function tableDocx(block, section, context) {
+function tableDocx(block, section, context, before = null) {
   const { body, tables } = section.rules;
   const cellStyle = tables.cellStyle || {};
   const out = [];
-  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above" }) : null;
+  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above" }, before) : null;
   if (caption && tables.position === "above") out.push(caption);
   const preset = tables.borders?.preset;
   const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
@@ -384,8 +384,8 @@ function tableDocx(block, section, context) {
 }
 
 /** Caption paragraph: label run in the label style, then the caption text; optional hanging indent. */
-function captionParagraph(rule, block, context, options = {}) {
-  const style = captionStyle(rule, block, context);
+function captionParagraph(rule, block, context, options = {}, before = null) {
+  const style = { ...captionStyle(rule, block, context), ...(before === null ? {} : { spaceBeforePt: before }) };
   const hangMm = rule.hangingIndent === "label" ? (context.captionHangs?.[block.captionAnchor] || 0) / PX_PER_MM : rule.hangingIndent > 0 ? rule.hangingIndent : 0;
   const paragraphStyle = hangMm > 0 ? { ...style, hangingIndentMm: hangMm } : style;
   const label = block.captionLabel || `${rule.label} ${block.captionNumber}.`;
@@ -416,7 +416,7 @@ function docxChildren(section, context) {
     children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context));
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
     for (const row of section.indexRows) {
-      const levelStyle = rule.levelStyles?.[row.level] || {};
+      const levelStyle = rule.levelStyles?.[row.level || 1] || {};
       const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : 0;
       const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
       const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
@@ -432,26 +432,25 @@ function docxChildren(section, context) {
   }
   if (section.layout) children.push(...specialPageDocx(section.layout, context, widthMm));
   let afterHeading = false;
-  // lineSpacing.blockGap: what the previous figure/table/note leaves for the next paragraph (blockGap.js), as its space-before.
-  let gapAfter = null;
+  // lineSpacing.blockGap: the gap between two blocks comes from the block-gap table (blockGap.js), the same one the editor CSS uses;
+  // Word adds previous space-after and next space-before, so the next block's space-before is gap - previous space-after.
   const useGap = blockGapActive(section.rules);
-  let pending = null;
-  const withGap = (style, block) => {
-    const entry = pending;
-    if (!entry || (block.type === "heading" && style.pageBreakBefore)) return style;
-    return { ...style, spaceBeforePt: Math.max(0, blockGapPt(section.rules, entry.style, style) - entry.after) };
-  };
+  const descriptors = useGap ? blockDescriptors(section.rules, section.type === "bibliography" ? section.rules.bibliography.style : body, "figure") : [];
+  let previous = null;
   for (const block of asBlocks(section)) {
     const previousHeading = afterHeading;
     afterHeading = block.type === "heading";
-    const gapEntry = useGap ? (block.type === "figure" ? blockGapPrevious(section.rules, "figure", { captionKind: block.captionKind }) : block.type === "table" ? blockGapPrevious(section.rules, "table") : block.type === "paragraph" && block.thesisStyle === "tableNote" ? blockGapPrevious(section.rules, "tableNote") : null) : null;
-    pending = gapAfter; gapAfter = gapEntry;
+    const descriptor = useGap ? describeBlock(descriptors, block) : null;
+    const gap = descriptor && previous ? gapBetween(section.rules, previous, descriptor) : null;
+    const before = gap === null ? null : Math.max(0, gap - previous.exit.after);
+    previous = descriptor;
+    const withGap = (style) => before === null ? style : { ...style, spaceBeforePt: before };
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(runs, withGap(block.unnumbered ? { ...style, pageBreakBefore: false } : style, block), context, { heading: level }));
+      children.push(docxParagraph(runs, withGap(block.unnumbered ? { ...style, pageBreakBefore: false } : style), context, { heading: level }));
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
       const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
@@ -460,11 +459,11 @@ function docxChildren(section, context) {
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
       const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
       const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), withGap({ ...style, ...spacing, align: align || style.align }, block), context));
+      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), withGap({ ...style, ...spacing, align: align || style.align }), context));
     } else if (block.type === "list") {
-      children.push(...listParagraphs(block, section, context));
+      children.push(...listParagraphs(block, section, context, 0, before));
     } else if (block.type === "table") {
-      children.push(...tableDocx(block, section, context));
+      children.push(...tableDocx(block, section, context, before));
     } else if (block.type === "figure") {
       // A figure of a template caption kind ("Resim") uses that kind's rule.
       const figures = block.captionKind && section.rules.captionKinds?.[block.captionKind] || section.rules.figures;
@@ -474,7 +473,7 @@ function docxChildren(section, context) {
       if (image) {
         const width = Math.min(block.width || 400, Math.round(widthMm * PX_PER_MM));
         const height = Math.max(1, Math.round(width * ((block.height || 250) / (block.width || 400))));
-        children.push(new Paragraph({ alignment: AlignmentType.CENTER, keepNext: Boolean(caption && figures.position !== "above"), children: [new ImageRun({ ...image, transformation: { width, height } })] }));
+        children.push(new Paragraph({ alignment: AlignmentType.CENTER, keepNext: Boolean(caption && figures.position !== "above"), ...(before === null ? {} : { spacing: { before: pt(before) } }), children: [new ImageRun({ ...image, transformation: { width, height } })] }));
       }
       if (caption && figures.position !== "above") children.push(caption);
     } else if (block.type === "pageBreak") {
@@ -482,7 +481,7 @@ function docxChildren(section, context) {
     } else if (block.type === "math" && section.rules.equations) {
       // Centered formula with the number flush right (or left) at the text edge: a centre and a right tab stop.
       const equations = section.rules.equations;
-      const style = { ...body, ...equations.style, firstLineIndentMm: 0, align: "left" };
+      const style = withGap({ ...body, ...equations.style, firstLineIndentMm: 0, align: "left" });
       const left = equations.numberAlign === "left";
       const runs = left ? [...(block.equationLabel ? plainRuns(block.equationLabel) : []), { type: "tab" }, ...plainRuns(block.text || "")]
         : [{ type: "tab" }, ...plainRuns(block.text || ""), ...(block.equationLabel ? [{ type: "tab" }, ...plainRuns(block.equationLabel)] : [])];

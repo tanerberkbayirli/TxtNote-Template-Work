@@ -10,7 +10,7 @@
 import { jsPDF } from "jspdf";
 import { academicPdfFont, embedAcademicPdfFonts, hasSystemPdfFont, pdfFontStyle } from "../lib/academicFonts.js";
 import { canvasFontAscent } from "./wordBaseline.js";
-import { PX_PER_MM, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
+import { PX_PER_MM, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const MM = 1 / PX_PER_MM;
 // KaTeX keeps a visually hidden MathML copy next to the drawn formula; only the drawn one is exported.
@@ -47,7 +47,9 @@ function color(value) {
  * "F = a ⋅ b" printed "F = a   b"). Only look-alikes; glyphs without one (∈ ⇒ ∀ …) need a math font, see failures/aku-fbe/equation-font.md.
  */
 export const PDF_GLYPH_ALIASES = Object.freeze({ "\u22C5": "\u2219", "\u2215": "/", "\u2044": "/", "\u2010": "-", "\u2011": "-", "\u2223": "|", "\u2236": ":", "\u2032": "'", "\u00A0": " " });
-const aliasGlyphs = (text) => String(text).replace(/[\u22C5\u2215\u2044\u2010\u2011\u2223\u2236\u2032\u00A0]/g, (char) => PDF_GLYPH_ALIASES[char]);
+/** Greek symbol variants (ϵ ϕ ϑ ϖ ϱ ϰ ϴ), math alphanumerics (𝑥, 𝐑, 𝔸 …) and letterlike symbols (ℝ ℓ …): Times New Roman has none of them; their compatibility decomposition (ε φ θ π ρ κ Θ, x R A, R ℓ) is the letter it does have. */
+const COMPAT_LETTERS = /[\u03D0-\u03F9\u{1D400}-\u{1D7FF}\u2102-\u2124]/gu;
+export const aliasGlyphs = (text) => String(text).replace(/[\u22C5\u2215\u2044\u2010\u2011\u2223\u2236\u2032\u00A0]/g, (char) => PDF_GLYPH_ALIASES[char]).replace(COMPAT_LETTERS, (char) => char.normalize("NFKD"));
 
 function pdfFace(pdf, style, text) {
   const family = String(style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
@@ -265,7 +267,9 @@ function collectGroup(stack, language) {
       context.font = canvasFont(eqStyle);
       const metrics = context.measureText(equation);
       // line-height:1 box centred on the block: its baseline sits (ascent - descent) / 2 below the centre.
-      const baseline = box.top + box.height / 2 + (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent) / 2;
+      // Measured formula baseline (data-thesis-eq-base, unscaled px from the block top) when the template placed the block on the line grid.
+      const measuredBase = parseFloat(element.getAttribute("data-thesis-eq-base"));
+      const baseline = Number.isFinite(measuredBase) ? box.top + measuredBase : box.top + box.height / 2 + (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent) / 2;
       const x = element.getAttribute("data-thesis-eq-side") === "left" ? box.left : box.left + box.width - metrics.width;
       const fill = color(eqStyle.color);
       if (fill) ops.push({ type: "text", text: equation, x, top: baseline - metrics.fontBoundingBoxAscent, width: metrics.width, baseline, style: eqStyle, color: fill, decoration: [] });
@@ -328,7 +332,14 @@ function drawOp(pdf, op, pageTop) {
   pdf.setTextColor(...op.color);
   const spacing = parseFloat(op.style.letterSpacing) || 0;
   const y = (op.baseline - pageTop) * MM;
-  pdf.text(aliasGlyphs(op.text), op.x * MM, y, { baseline: "alphabetic", ...(spacing ? { charSpace: spacing * MM } : {}) });
+  const text = aliasGlyphs(op.text);
+  // The browser shapes a run with kerning; jsPDF advances glyph by glyph without it, so a long line would end past where the browser's
+  // ended (a 151-character title: +1.6 mm over the right margin). The small difference is spread over the run's characters, so every run
+  // ends exactly where the browser's ended.
+  const glyphs = [...text].length, size = parseFloat(op.style.fontSize) * 0.75;
+  const fit = op.width > 0 && glyphs > 1 ? (op.width * MM - pdf.getTextWidth(text)) / glyphs : NaN;
+  const charSpace = Number.isFinite(fit) && Math.abs(fit) <= size * 0.352778 * 0.1 ? fit : spacing * MM;
+  pdf.text(text, op.x * MM, y, { baseline: "alphabetic", ...(charSpace ? { charSpace } : {}) });
   for (const line of op.decoration || []) {
     const size = parseFloat(op.style.fontSize);
     const offset = line === "underline" ? size * 0.12 : -size * 0.28;
@@ -368,7 +379,7 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
     const byPage = Array.from({ length: pages }, () => []);
     for (const op of collectGroup(stack, language)) {
       const middle = op.top + (op.height ?? (op.baseline - op.top)) / 2;
-      byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / metrics.stridePx)))].push(op);
+      byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / flowPagePitchPx(metrics))))].push(op);
     }
     for (const [index, ops] of byPage.entries()) {
       if (!pdf) {
@@ -376,7 +387,9 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
         pdf.setProperties({ title: title || "Tez", creator: "TxtNote" });
         await embedAcademicPdfFonts(pdf, { templateId, systemFonts });
       } else pdf.addPage([widthMm, heightMm], orientation);
-      const pageTop = index * metrics.stridePx;
+      // The browser lays the flow out with column height and row gap truncated to 1/64 px, so page N starts at N * flow pitch (a hair
+      // below N * stride): using the real pitch keeps every page's text at the same offset, however long the document.
+      const pageTop = index * flowPagePitchPx(metrics);
       // Lines and images under text, as in the editor.
       for (const op of ops) if (op.type !== "text") drawOp(pdf, op, pageTop);
       for (const op of ops) if (op.type === "text") drawOp(pdf, op, pageTop);
