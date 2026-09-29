@@ -9,7 +9,7 @@ import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
 import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, thesisMetadataValue, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
-import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes } from "../../thesis/generatedIndex.js";
+import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../thesis/generatedIndex.js";
 import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
 import { layoutTableContinuations, tableContinuationRows } from "../../thesis/tableContinuation.js";
 import { applyTransformExceptions } from "../../thesis/transformExceptions.js";
@@ -246,6 +246,10 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       const [{ buildThesisDocx, buildThesisPdf }, { buildThesisLayoutPdf }, { academicFileStem, downloadBlob }] = await Promise.all([
         import("../../thesis/export.js"), import("../../thesis/layoutPdf.js"), import("../../lib/academicExport.js"),
       ]);
+      const equationRoot = papersRef.current;
+      if (kind === "pdf" && THESIS_PAGED_LAYOUT && equationRoot?.querySelector(".thesis-body .math-formula--block")) {
+        await waitForStableEquationLayout(equationRoot, { prepare: () => decorateThesisSources(equationRoot, model) });
+      }
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
         ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, systemFonts: model.systemFonts || [] }) : await buildThesisPdf(model))

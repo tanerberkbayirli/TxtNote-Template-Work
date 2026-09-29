@@ -187,6 +187,75 @@ export function equationPadAfter(measured, lineHeight, most) {
   return Number.isFinite(lineHeight) && lineHeight > 0.5 && lineHeight < most ? lineHeight : 0;
 }
 
+const equationDataAttributes = ["data-thesis-eq", "data-thesis-eq-side", "data-thesis-eq-pad-before", "data-thesis-eq-pad-after", "data-thesis-eq-lift", "data-thesis-eq-drop", "data-thesis-eq-base", "data-thesis-eq-fit"];
+const roundLayout = (value) => Number.isFinite(value) ? Math.round(value * 1000) / 1000 : null;
+
+/** Geometry and presentation state used by the paged PDF writer for every display equation. */
+export function equationLayoutSignature(root) {
+  if (!root?.querySelectorAll || !root?.ownerDocument?.defaultView) return "[]";
+  const win = root.ownerDocument.defaultView, origin = root.getBoundingClientRect();
+  const element = (node) => {
+    if (!node) return null;
+    const rect = node.getBoundingClientRect(), style = win.getComputedStyle(node);
+    return {
+      rect: [rect.left - origin.left, rect.top - origin.top, rect.right - origin.left, rect.bottom - origin.top].map(roundLayout),
+      style: [style.marginTop, style.marginBottom, style.paddingTop, style.paddingBottom, style.lineHeight, style.fontSize, style.top],
+    };
+  };
+  const equations = [...root.querySelectorAll(".thesis-body .math-formula--block")].map((node) => ({
+    latex: node.getAttribute("data-latex"),
+    attributes: equationDataAttributes.map((name) => node.getAttribute(name)),
+    own: element(node), rendered: element(node.querySelector(".katex-html") || node.querySelector(".katex")),
+    probe: element(node.querySelector("[data-thesis-eq-probe]")), previous: element(node.previousElementSibling), next: element(node.nextElementSibling),
+  }));
+  return JSON.stringify({ fonts: root.ownerDocument.fonts?.status || "unsupported", equations });
+}
+
+/** Wait for font metrics, remeasure equation presentation, and require stable equation geometry before a paged PDF export. */
+export async function waitForStableEquationLayout(root, {
+  prepare = () => {}, stableFrames = 3, maxFrames = 120, readSnapshot = equationLayoutSignature, nextFrame,
+} = {}) {
+  const doc = root?.ownerDocument, fonts = doc?.fonts;
+  const frame = nextFrame || (() => new Promise((resolve, reject) => {
+    const raf = doc?.defaultView?.requestAnimationFrame;
+    if (!raf) { reject(new Error("Equation layout requires animation-frame support.")); return; }
+    raf.call(doc.defaultView, resolve);
+  }));
+  const requiredStableFrames = Math.max(1, Math.trunc(stableFrames) || 1);
+  const frameLimit = Math.max(requiredStableFrames + 1, Math.trunc(maxFrames) || 120);
+  let readyPromise = null, fontsReady = !fonts, prepared = false, previous = null, sameFrames = 0;
+  const watchFonts = () => {
+    const latest = fonts?.ready || null;
+    if (latest === readyPromise) return;
+    readyPromise = latest;
+    fontsReady = !fonts || !latest;
+    prepared = false; previous = null; sameFrames = 0;
+    if (latest) Promise.resolve(latest).then(() => {
+      if (fonts?.ready === latest) fontsReady = true;
+    }, () => {
+      if (fonts?.ready === latest) fontsReady = true;
+    });
+  };
+  if (fonts) watchFonts();
+  for (let i = 0; i < frameLimit; i += 1) {
+    await frame();
+    if (fonts) {
+      watchFonts();
+      if (!fontsReady || fonts.status === "loading") { previous = null; sameFrames = 0; continue; }
+    }
+    if (!prepared) {
+      await prepare(root);
+      prepared = true; previous = null; sameFrames = 0;
+      continue;
+    }
+    const current = readSnapshot(root);
+    sameFrames = current === previous ? sameFrames + 1 : 0;
+    previous = current;
+    if (sameFrames >= requiredStableFrames) return current;
+  }
+  throw new Error(`Equation layout did not stabilize within ${frameLimit} animation frames; PDF export cancelled.`);
+}
+
 export function decorateThesisSources(root, model) {
   for (const section of model.sections) {
     if (section.generatedIndex || section.specialPage) {
