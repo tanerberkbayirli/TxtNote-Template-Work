@@ -180,6 +180,13 @@ export function resolveGeneratedIndexes(model, pages = {}, counts = {}) {
 }
 
 /** Decorate existing source nodes without replacing an editor or its text. */
+/** The caret pad below a block equation: the measured value when it is plausible (the next block is in the same column, at most a few lines
+ *  away), else the line height of the flow (the pad is one anonymous line box). Pure so the stamping rule is testable. */
+export function equationPadAfter(measured, lineHeight, most) {
+  if (Number.isFinite(measured) && measured > 0.5 && measured < most) return measured;
+  return Number.isFinite(lineHeight) && lineHeight > 0.5 && lineHeight < most ? lineHeight : 0;
+}
+
 export function decorateThesisSources(root, model) {
   for (const section of model.sections) {
     if (section.generatedIndex || section.specialPage) {
@@ -242,13 +249,17 @@ export function decorateThesisSources(root, model) {
           const pitch = flowPagePitchPx(pageMetrics(section.rules.page)), end = (box.top - parseFloat(own.marginTop) * scale - flow.getBoundingClientRect().top) / scale;
           padFirst = end - Math.floor(end / pitch) * pitch;
         }
-        const padAfter = after && isPad(node.nextSibling)
-          ? (layoutEdge(after, "top") - box.bottom) / scale - parseFloat(own.marginBottom) - parseFloat(getComputedStyle(after).marginTop) : 0;
+        // The caret pad after the formula is a line box of the flow's own line height. Measuring it needs the next block in the same
+        // column; when the (attribute-free) layout puts that block in the next column or page the measurement is meaningless, so the
+        // pad falls back to the line height it is by construction. Never leave it unset: that made the gap after depend on the position.
+        const padAfter = isPad(node.nextSibling)
+          ? equationPadAfter(after ? (layoutEdge(after, "top") - box.bottom) / scale - parseFloat(own.marginBottom) - parseFloat(getComputedStyle(after).marginTop) : null,
+            parseFloat(getComputedStyle(node.parentElement).lineHeight), most) : 0;
         // Formula width against the room inside the number gutters (the formula wraps at its break points first; only a
         // formula with an unbreakable run wider than the room is shrunk).
         const width = html ? html.scrollWidth : 0, room = html ? html.clientWidth : 0;
         const label = node.getAttribute("data-thesis-eq");
-        return { node, scale, most, padBefore: padBefore > 0.5 && padBefore < most ? padBefore : padFirst, padAfter, width, room, above: probe ? (probe.getBoundingClientRect().bottom - box.top) / scale : null, below: probe ? (box.bottom - probe.getBoundingClientRect().bottom) / scale : null };
+        return { node, scale, most, padBefore: isPad(node.previousSibling) ? equationPadAfter(padBefore > 0.5 && padBefore < most ? padBefore : padFirst, parseFloat(getComputedStyle(node.parentElement).lineHeight), most) : 0, padAfter, width, room, above: probe ? (probe.getBoundingClientRect().bottom - box.top) / scale : null, below: probe ? (box.bottom - probe.getBoundingClientRect().bottom) / scale : null };
       });
       for (const m of measured) {
         const put = (name, value) => m.node.setAttribute(`data-thesis-eq-${name}`, String(Math.round(value * 1000) / 1000));

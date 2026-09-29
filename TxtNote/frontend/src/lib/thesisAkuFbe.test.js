@@ -4,7 +4,7 @@ import { strFromU8, unzipSync } from "fflate";
 import { thesisSourceHtml } from "../thesis/sourceHtml.js";
 import { buildThesisCss, compileThesisDocument, templateFontFamilies, thesisSectionCss } from "../thesis/engine.js";
 import { buildThesisDocx } from "../thesis/export.js";
-import { derivedThesisValues, generatedIndexHtml } from "../thesis/generatedIndex.js";
+import { derivedThesisValues, equationPadAfter, generatedIndexHtml } from "../thesis/generatedIndex.js";
 import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/registry.js";
 import { resolveSpecialPage, specialPageBlockVisible, validateSpecialPageBlocks } from "../thesis/specialPages.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
@@ -291,5 +291,13 @@ describe("aku-fbe validation attempt 1 fixes", () => {
   it("layout PDF glyph aliases replace symbols Times New Roman lacks by look-alikes it has", async () => {
     const { PDF_GLYPH_ALIASES } = await import("../thesis/layoutPdf.js");
     assert.equal(PDF_GLYPH_ALIASES["⋅"], "∙");
+  });
+  it("stamps the equation's caret pad from the flow's line height whenever the layout measurement is meaningless", () => {
+    const most = 82.8, line = 27.6;
+    assert.equal(equationPadAfter(27.588, line, most), 27.588, "a plausible measurement wins");
+    // The next block in another column/page (measured 300-1100 px away), no next block, or a NaN must not leave the pad unset:
+    // that made the gap after (and before) an equation depend on where it landed on the page (eq baseline 238.38 mm, +20 pt).
+    for (const measured of [377.87, 1122.9, 0, -3, null, NaN]) assert.equal(equationPadAfter(measured, line, most), line, String(measured));
+    assert.equal(equationPadAfter(null, NaN, most), 0, "no line height, nothing to cancel");
   });
 });
