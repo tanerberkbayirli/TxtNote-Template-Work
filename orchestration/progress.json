@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28",
+  "updatedAt": "2026-09-30",
   "maxAttempts": 3,
   "policy": "orchestration/README.md#policy-revision-2026-09-28 (supersedes conflicting older rules)",
   "universityOrder": [
@@ -161,10 +161,10 @@
   },
   "currentUniversity": "aku",
   "currentTarget": "aku-fbe",
-  "currentPhase": "VALIDATION FAIL (aku-fbe attempt 4)",
+  "currentPhase": "VALIDATION FAIL (aku-fbe attempt 5)",
   "lastCompletedValidation": {
     "target": "aku-fbe",
-    "attempt": 4,
+    "attempt": 5,
     "verdict": "FAIL"
   },
   "lastCommit": null,
@@ -189,13 +189,13 @@
       "analysis": "DONE",
       "implementation": "DONE",
       "validation": "FAIL",
-      "attempts": 4,
+      "attempts": 5,
       "status": "IMPLEMENTED",
-      "lastError": "validation attempt 4: source DOCX has 30 mm bottom margins in all four sections, but exported approval DOCX uses 12 mm; 89-character approval frame and cover exceed explicit source bounds in both variants; first doctoral export has equation gaps 40.887/42.704 pt versus 41.4 +/-0.2 pt, while a repeat of the same fixture passes (export stability failure)",
+      "lastError": "attempt 5: ordinary master/PhD DOCX sections 1 and 3 violate 30 mm all-sides margins; both 89-character PDFs split the cover date and approval final line onto extra pages; normal PDFs and Cambria Math equation/font checks pass",
       "specPath": "orchestration/specs/aku-fbe.json",
       "reportPath": "orchestration/reports/aku-fbe.md",
       "commit": "6d73e66",
-      "updatedAt": "2026-09-29",
+      "updatedAt": "2026-09-30",
       "specReview": "DONE"
     },
     "aku-sagbil": {

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "target": "aku-fbe",
+  "attempt": 5,
+  "validatedAt": "2026-09-30",
+  "checkpoint": "86c258b",
+  "overall": "FAIL",
+  "sourceCapacity": {
+    "longTitleRule": "UNKNOWN",
+    "search": "Local 2020 guide and 2025 DOCX plus official FBE website/resources pages; no title maximum, scaling, wrapping, or compact approval instruction located.",
+    "officialPages": [
+      "https://fenbil.aku.edu.tr/hizmet-standardi-tablolari/",
+      "https://fenbil.aku.edu.tr/tez-bitirme-asamasinda-yapilmasi-gereken-islemler/",
+      "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2019/12/FBE-Tez-Yaz%C4%B1m-Kilavuzu-2020_WEB_i%C3%A7in-2-1.pdf"
+    ]
+  },
+  "sources": {
+    "guide": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "template": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+    "approvedSpec": "orchestration/specs/aku-fbe.json",
+    "sourceFacts": {
+      "pageMarginsTwips": 1701,
+      "pageMarginsMm": 30.004,
+      "guideMargins": "p.5 §2.3: 3 cm from page edges",
+      "coverPrintAreaMm": { "xMin": 55, "xMax": 155, "yMin": 210, "yMax": 275, "source": "guide p.32" },
+      "approvalSourceLimitBottomMm": 266.996,
+      "equationFont": "Cambria Math",
+      "equationFontSizePt": 12,
+      "equationSpacingPt": 41.4,
+      "equationTolerancePt": 0.2,
+      "templateMargins": "2025 template word/document.xml sectPr#1..#4 all 1701 twips on all four sides"
+    }
+  },
+  "environment": {
+    "realExportPath": "orchestration/tools/export.mjs via TxtNote editor page, editor PDF and Word buttons",
+    "outputDirectory": "C:\\Users\\CASPER\\AppData\\Local\\Temp\\aku-fbe-attempt5",
+    "pdfInspector": "pdfjs-dist textContent transforms and raw PDF font descriptors",
+    "docxInspector": "PowerShell .NET ZipArchive and OOXML",
+    "productionEdited": false
+  },
+  "variants": {
+    "master": {
+      "registryId": "aku-fbe-master-tr-v1",
+      "normal": {
+        "pdfStatus": "PASS",
+        "docxStatus": "FAIL",
+        "overall": "FAIL",
+        "pdfPages": 39,
+        "pageSizeMm": [210.0, 297.0],
+        "pagination": { "unnumberedPhysicalPages": 4, "romanLabels": "i–ix", "arabicLabels": "1–26" },
+        "coverBoxMm": { "xMin": 56.832, "xMax": 153.112, "yMin": 211.29, "yMax": 272.016, "status": "PASS", "sourceBoundsMm": [55, 155, 210, 275] },
+        "body": { "firstBaselineMm": 33.949, "leftTextEdgeMm": 29.997, "longLineRightEdgeMm": 179.98, "font": "Times New Roman (embedded PDF programs)", "fontSizePt": 12, "linePitchRangePt": [20.665, 20.721], "expectedLinePitchPt": 20.7, "status": "PASS" },
+        "headings": { "levels": 4, "fontSizePt": 12, "leftIndentMm": 0, "status": "PASS" },
+        "captions": { "figurePt": 11, "tablePt": 11, "status": "PASS" },
+        "approval": { "physicalPage": 3, "bottomExtentMm": 257.812, "sourceLimitMm": 266.996, "status": "PASS" },
+        "fontEmbedding": { "timesNewRoman": true, "cambriaMath": true, "equationDescriptorHasFontFile2": true, "status": "PASS" },
+        "equation": { "physicalPage": 20, "beforePt": 41.402, "afterPt": 41.389, "expectedPt": 41.4, "tolerancePt": 0.2, "status": "PASS" },
+        "equationSweep": { "pages": 65, "equations": 78, "checkedPairs": 146, "minPt": 41.389, "maxPt": 41.403, "failures": 0, "status": "PASS" },
+        "frontMatter": { "abstractPage": 5, "englishAbstractPage": 6, "acknowledgementPage": 7, "contentsPages": [8, 9], "symbolsPage": 10, "figuresPage": 11, "tablesPage": 12, "photosPage": 13, "status": "PASS" },
+        "docxMargins": {
+          "sourceMmPerSide": 30.004,
+          "sectionCount": 22,
+          "firstFour": [
+            { "section": 1, "twipsTopRightBottomLeft": [11995, 3118, 1247, 3118], "actualMmTopRightBottomLeft": [211.578, 54.998, 21.996, 54.998], "deltaMmTopRightBottomLeft": [181.575, 24.994, -8.008, 24.994], "status": "FAIL" },
+            { "section": 2, "twipsTopRightBottomLeft": [1701, 1701, 1701, 1701], "actualMmTopRightBottomLeft": [30.004, 30.004, 30.004, 30.004], "deltaMmTopRightBottomLeft": [0, 0, 0, 0], "status": "PASS" },
+            { "section": 3, "twipsTopRightBottomLeft": [1701, 1763, 1701, 1549], "actualMmTopRightBottomLeft": [30.004, 31.097, 30.004, 27.323], "deltaMmTopRightBottomLeft": [0, 1.094, 0, -2.681], "status": "FAIL" },
+            { "section": 4, "twipsTopRightBottomLeft": [1701, 1701, 1701, 1701], "actualMmTopRightBottomLeft": [30.004, 30.004, 30.004, 30.004], "deltaMmTopRightBottomLeft": [0, 0, 0, 0], "status": "PASS" }
+          ],
+          "remainingSections": { "count": 18, "twipsPerSide": 1701, "status": "PASS" },
+          "status": "FAIL"
+        }
+      },
+      "long89": {
+        "pdfStatus": "FAIL",
+        "docxStatus": "FAIL",
+        "overall": "FAIL",
+        "titleCharacters": 89,
+        "pdfPages": 41,
+        "unnumberedPhysicalPagesBeforeRoman": 6,
+        "extraPhysicalPagesVsNormal": 2,
+        "outerCover": { "page1BoxMm": [61.669, 148.299, 211.29, 269.9], "page2OnlyText": "Ocak 2026", "page2DatePositionMm": { "x": 95.767, "baselineY": 215.524 }, "status": "FAIL" },
+        "approval": { "approvalPage": 4, "approvalPageBottomMm": 263.409, "lastLine": "Enstitü Müdürü", "lastLinePhysicalPage": 5, "page5OnlyText": "Enstitü Müdürü", "ethicsPage": 6, "romanIPage": 7, "status": "FAIL" }
+      }
+    },
+    "phd": {
+      "registryId": "aku-fbe-phd-tr-v1",
+      "normal": {
+        "pdfStatus": "PASS",
+        "docxStatus": "FAIL",
+        "overall": "FAIL",
+        "pdfPages": 39,
+        "pageSizeMm": [210.0, 297.0],
+        "pagination": { "unnumberedPhysicalPages": 4, "romanLabels": "i–ix", "arabicLabels": "1–26" },
+        "coverBoxMm": { "xMin": 56.832, "xMax": 153.112, "yMin": 211.29, "yMax": 272.016, "status": "PASS", "sourceBoundsMm": [55, 155, 210, 275] },
+        "body": { "firstBaselineMm": 33.949, "leftTextEdgeMm": 29.997, "longLineRightEdgeMm": 179.98, "font": "Times New Roman (embedded PDF programs)", "fontSizePt": 12, "linePitchRangePt": [20.665, 20.721], "expectedLinePitchPt": 20.7, "status": "PASS" },
+        "headings": { "levels": 4, "fontSizePt": 12, "leftIndentMm": 0, "status": "PASS" },
+        "captions": { "figurePt": 11, "tablePt": 11, "status": "PASS" },
+        "approval": { "physicalPage": 3, "bottomExtentMm": 257.084, "sourceLimitMm": 266.996, "status": "PASS" },
+        "fontEmbedding": { "timesNewRoman": true, "cambriaMath": true, "equationDescriptorHasFontFile2": true, "status": "PASS" },
+        "equation": { "physicalPage": 20, "beforePt": 41.402, "afterPt": 41.389, "expectedPt": 41.4, "tolerancePt": 0.2, "status": "PASS" },
+        "equationSweep": { "pages": 65, "equations": 78, "checkedPairs": 146, "minPt": 41.389, "maxPt": 41.403, "failures": 0, "status": "PASS" },
+        "frontMatter": { "abstractPage": 5, "englishAbstractPage": 6, "acknowledgementPage": 7, "contentsPages": [8, 9], "symbolsPage": 10, "figuresPage": 11, "tablesPage": 12, "photosPage": 13, "status": "PASS" },
+        "docxMargins": {
+          "sourceMmPerSide": 30.004,
+          "sectionCount": 22,
+          "firstFour": [
+            { "section": 1, "twipsTopRightBottomLeft": [11995, 3118, 1247, 3118], "actualMmTopRightBottomLeft": [211.578, 54.998, 21.996, 54.998], "deltaMmTopRightBottomLeft": [181.575, 24.994, -8.008, 24.994], "status": "FAIL" },
+            { "section": 2, "twipsTopRightBottomLeft": [1701, 1701, 1701, 1701], "actualMmTopRightBottomLeft": [30.004, 30.004, 30.004, 30.004], "deltaMmTopRightBottomLeft": [0, 0, 0, 0], "status": "PASS" },
+            { "section": 3, "twipsTopRightBottomLeft": [1701, 1763, 1701, 1549], "actualMmTopRightBottomLeft": [30.004, 31.097, 30.004, 27.323], "deltaMmTopRightBottomLeft": [0, 1.094, 0, -2.681], "status": "FAIL" },
+            { "section": 4, "twipsTopRightBottomLeft": [1701, 1701, 1701, 1701], "actualMmTopRightBottomLeft": [30.004, 30.004, 30.004, 30.004], "deltaMmTopRightBottomLeft": [0, 0, 0, 0], "status": "PASS" }
+          ],
+          "remainingSections": { "count": 18, "twipsPerSide": 1701, "status": "PASS" },
+          "status": "FAIL"
+        }
+      },
+      "long89": {
+        "pdfStatus": "FAIL",
+        "docxStatus": "FAIL",
+        "overall": "FAIL",
+        "titleCharacters": 89,
+        "pdfPages": 41,
+        "unnumberedPhysicalPagesBeforeRoman": 6,
+        "extraPhysicalPagesVsNormal": 2,
+        "outerCover": { "page1BoxMm": [61.669, 148.299, 211.29, 269.9], "page2OnlyText": "Ocak 2026", "page2DatePositionMm": { "x": 95.767, "baselineY": 215.524 }, "status": "FAIL" },
+        "approval": { "approvalPage": 4, "approvalPageBottomMm": 263.409, "lastLine": "Enstitü Müdürü", "lastLinePhysicalPage": 5, "page5OnlyText": "Enstitü Müdürü", "ethicsPage": 6, "romanIPage": 7, "status": "FAIL" }
+      }
+    }
+  },
+  "equationDocx": { "ommlNodeCount": 1, "font": "Cambria Math", "sizeHalfPoints": 24, "sizePt": 12, "status": "PASS" },
+  "determinism": {
+    "phdPdfPages": 39,
+    "phdRepeatPdfPages": 39,
+    "pagewiseTextAndTransformsIdentical": true,
+    "pdfByteHashesEqual": false,
+    "pdfDifferingBytes": 62,
+    "pdfDifferenceRanges": 5,
+    "pdfFirstDifference": "The first difference is in the CreationDate metadata value.",
+    "docxContentEntriesEqualExceptCoreProperties": true,
+    "docxDifference": "docProps/core.xml timestamps",
+    "contentGeometryStatus": "PASS",
+    "byteIdentityStatus": "FAIL (metadata timestamps)"
+  },
+  "regression": {
+    "mcbu-lee-master-tr-v1": { "pagesExpected": 34, "pagesActual": 34, "embeddedFont": "Times New Roman", "exportErrors": [], "status": "PASS" },
+    "mcbu-lee-phd-tr-v1": { "pagesExpected": 35, "pagesActual": 35, "embeddedFont": "Times New Roman", "exportErrors": [], "status": "PASS" },
+    "demo-university-a-master-tr-v1": { "pagesExpected": 24, "pagesActual": 24, "embeddedFont": "Tinos", "exportErrors": [], "status": "PASS" }
+  },
+  "frontendChecks": { "npmTestExitCode": 0, "npmRunBuildExitCode": 0, "buildWarning": "Non-fatal oversized chunk warning" },
+  "visualInspection": {
+    "renderer": "pdfjs-dist with @napi-rs/canvas",
+    "inspectedPages": [
+      "Normal master outer cover and approval",
+      "Normal master body/footnote and equation page",
+      "Long89 master outer cover pages 1-2",
+      "Long89 master approval pages 4-5"
+    ],
+    "result": "Visual review confirms the normal page composition and the long-title date/approval spill measured in the PDF text layer."
+  },
+  "rootCauses": [
+    { "failure": "DOCX section margins", "layer": "template-to-DOCX export mapping", "evidence": "TxtNote/frontend/src/thesis/export.js writes each section.rules.page.margins directly to Word sectPr; aku-fbe.js sets outer-cover and approval custom margins. The official source uses 30mm page margins and independently positions those elements." },
+    { "failure": "89-character title pagination", "layer": "template layout/pagination", "evidence": "The long title adds a title line to the outer cover and wraps approval text; the real PDF flow adds a cover continuation and approval continuation sheet. No official compaction rule exists." }
+  ],
+  "limitations": [
+    "Footnote font size is measured as 10pt, but the approved source specification marks the requirement UNKNOWN.",
+    "DOCX was inspected structurally in OOXML but was not independently repaginated by Microsoft Word or LibreOffice."
+  ]
+}
