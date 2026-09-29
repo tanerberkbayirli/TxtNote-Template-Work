@@ -191,12 +191,12 @@ export function templateFontFamilies(template) {
   const blocks = (list) => { for (const block of list || []) { add(block.style); blocks(block.blocks); } };
   const typography = template.typography || {};
   Object.values(typography.paragraphStyles || {}).forEach(add);
-  [typography.body, typography.paragraph, typography.footnotes, template.tables?.style, template.tables?.cellStyle, template.tables?.labelStyle, template.figures?.style, template.figures?.labelStyle, template.bibliography?.style, template.page?.numbering?.style].forEach(add);
+  [typography.body, typography.paragraph, typography.footnotes, template.tables?.style, template.tables?.cellStyle, template.tables?.labelStyle, template.figures?.style, template.figures?.labelStyle, template.bibliography?.style, template.page?.numbering?.style, template.equations?.style].forEach(add);
   Object.values(typography.headings || {}).forEach(add);
   for (const kind of Object.values(template.captionKinds || {})) { add(kind?.style); add(kind?.labelStyle); }
   for (const section of template.sections || []) {
     const o = section.overrides || {};
-    [o.body, o.paragraph, o.footnotes, o.tables?.style, o.figures?.style, o.page?.numbering?.style, section.generatedIndex?.style, section.generatedIndex?.pageHeadingStyle].forEach(add);
+    [o.body, o.paragraph, o.footnotes, o.tables?.style, o.figures?.style, o.page?.numbering?.style, o.equations?.style, section.generatedIndex?.style, section.generatedIndex?.pageHeadingStyle].forEach(add);
     Object.values(o.headings || {}).forEach(add);
     blocks(section.blocks);
   }
@@ -416,7 +416,7 @@ export function thesisSectionCss(section) {
       // style.lineHeight (opt-in) makes the block one paragraph-like line of the equation style; its vertical placement comes from the
       // block-gap table (blockGap.js) plus measured presentation attributes (see decorateThesisSources): caret pads cancelled
       // (pad-before/after), one-line formulas lifted/dropped onto the nominal line (lift/drop), wide formulas fitted (fit).
-      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.lineHeight ? "0" : `${eq.style?.spaceBeforePt || 0}pt`} 0 ${eq.style?.lineHeight ? "0" : `${eq.style?.spaceAfterPt || 0}pt`};padding:0;text-align:center;${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
+      `${block}{background:transparent;border:0;border-radius:0;margin:${eq.style?.lineHeight ? "0" : `${eq.style?.spaceBeforePt || 0}pt`} 0 ${eq.style?.lineHeight ? "0" : `${eq.style?.spaceAfterPt || 0}pt`};padding:0;text-align:center;${eq.style?.fontFamily ? `--thesis-pdf-equation-font:${cssFamily(eq.style.fontFamily)};font-family:${cssFamily(eq.style.fontFamily)};` : ""}${eq.style?.fontSizePt ? `font-size:${eq.style.fontSizePt}pt;` : ""}${eq.style?.lineHeight ? `line-height:${lh(eq.style.lineHeight)};` : ""}}`,
       ...(eq.style?.lineHeight ? [
         `${block}[data-thesis-eq-pad-before]{margin-top:calc(0pt - attr(data-thesis-eq-pad-before px, 0px))}${block}[data-thesis-eq-pad-after]{margin-bottom:calc(0pt - attr(data-thesis-eq-pad-after px, 0px))}`,
         `${block}{padding-top:attr(data-thesis-eq-lift px, 0px);padding-bottom:attr(data-thesis-eq-drop px, 0px)}`,

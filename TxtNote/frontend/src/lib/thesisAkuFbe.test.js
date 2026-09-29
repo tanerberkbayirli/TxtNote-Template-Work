@@ -32,8 +32,8 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     assert.equal(akuFbeMaster.displayName, "Afyon Kocatepe Üniversitesi · Fen Bilimleri Enstitüsü · Yüksek Lisans");
     const normalise = (template, [cover, tr, en]) => JSON.stringify({ ...template, id: "x", degreeType: "x", displayName: "x" }).replaceAll(cover, "C").replaceAll(tr, "T").replaceAll(en, "E");
     assert.equal(normalise(akuFbeMaster, ["YÜKSEK LİSANS TEZİ", "Yüksek Lisans Tezi", "M.Sc. Thesis"]), normalise(akuFbePhd, ["DOKTORA TEZİ", "Doktora Tezi", "Ph.D. Thesis"]));
-    assert.deepEqual(templateFontFamilies(akuFbeMaster), ["Times New Roman"]);
-    assert.deepEqual(compile().systemFonts, ["Times New Roman"]);
+    assert.deepEqual(templateFontFamilies(akuFbeMaster), ["Times New Roman", "Cambria Math"]);
+    assert.deepEqual(compile().systemFonts, ["Times New Roman", "Cambria Math"]);
   });
 
   it("page, body and heading values of the guide (3 cm, 12 pt, 1.5 lines, 20.7 pt gaps, page number 10 pt)", () => {
@@ -100,6 +100,12 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     const cover = section(without, "outer-cover").rules.page;
     assert.deepEqual([cover.margins.leftMm, cover.margins.rightMm], [55, 55]);
     assert.ok(Math.abs(cover.margins.topMm + 0.9336 * 12 * 25.4 / 72 - 215.53) < 1e-6);
+    assert.equal(cover.margins.bottomMm, 22, "the guide's printed cover box ends at y=275 mm on A4");
+    for (const id of ["inner-cover", "approval", "ethics"]) {
+      assert.equal(section(without, id).rules.page.margins.bottomMm, 30, `${id} follows the official 30 mm page margin`);
+    }
+    assert.equal(section(without, "inner-cover").rules.page.trimTerminalTextLeading, true);
+    assert.equal(section(without, "approval").rules.page.trimTerminalTextLeading, undefined);
     // approval: cell x 28.1-178.1, frame is a thick-thin double border
     const approval = section(without, "approval");
     assert.ok(Math.abs(approval.rules.page.margins.leftMm - 27.32) < 1e-9 && Math.abs(approval.rules.page.margins.rightMm - 31.09) < 1e-9, "frame outer edges x 27.32 / 178.91");
@@ -140,7 +146,9 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
   it("DOCX carries the Word values: margins, footer distance, 1.5 lines, 20.7 pt spacing, cover margins", async () => {
     const xml = await docxXml(compile());
     assert.match(xml, /<w:pgMar w:top="1701" w:right="1701" w:bottom="1701" w:left="1701" w:header="709" w:footer="709"/);
-    assert.match(xml, /<w:pgMar w:top="11995" w:right="3118" w:bottom="567" w:left="3118"/);
+    assert.match(xml, /<w:pgMar w:top="11995" w:right="3118" w:bottom="1247" w:left="3118"/);
+    const specialPageBottomTwips = [...xml.matchAll(/<w:pgMar\b[^>]*>/g)].slice(0, 4).map((match) => Number(match[0].match(/w:bottom="(\d+)"/)?.[1]));
+    assert.deepEqual(specialPageBottomTwips, [1247, 1701, 1701, 1701], "outer cover print box, then 30 mm inner-cover/approval/ethics margins in Word output");
     assert.match(xml, /w:spacing[^>]*w:after="414"[^>]*w:line="360" w:lineRule="auto"/);
     assert.match(xml, /w:val="Times New Roman"|w:ascii="Times New Roman"/);
     assert.match(xml, /thickThinSmallGap/);

@@ -11,11 +11,15 @@ export const ARIAL_FACES = {
   italic: { file: "ariali.ttf", postscript: "Arial-ItalicMT" },
   bolditalic: { file: "arialbi.ttf", postscript: "Arial-BoldItalicMT" },
 };
+export const CAMBRIA_MATH_FACES = {
+  // Cambria Math is face 1 in Windows' installed cambria.ttc collection.
+  normal: { file: "cambria.ttc", postscript: "CambriaMath", collectionIndex: 1 },
+};
 /**
  * Families an official template may require in its PDF, keyed by their exact family name.
  * The PDF then embeds these genuine programs (never a metric-compatible substitute).
  */
-export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES });
+export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, "Cambria Math": CAMBRIA_MATH_FACES });
 /** Canonical family name for a CSS/template family (case-insensitive), or null when not a system PDF family. */
 export function systemPdfFontFamily(value) {
   const name = String(value || "").split(",")[0].replace(/["']/g, "").trim().toLowerCase();
@@ -51,6 +55,70 @@ export function systemFontIdentity(bytes) {
   return { family: names.get(1), subfamily: names.get(2), postscript: names.get(6), fsType: os2 == null ? 0 : view.getUint16(os2 + 8) };
 }
 
+const TTC_TAG = 0x74746366;
+const SFNT_TRUETYPE = 0x00010000;
+const CHECKSUM_MAGIC = 0xb1b0afba;
+const align4 = (value) => (value + 3) & ~3;
+
+/** Extract one standalone TrueType face from a TTC. Plain SFNT files pass through unchanged. */
+export function extractTrueTypeCollectionFace(input, faceIndex) {
+  const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
+  if (bytes.byteLength < 4) throw new Error("Font verisi eksik.");
+  const source = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  if (source.getUint32(0) !== TTC_TAG) return bytes;
+  if (bytes.byteLength < 16 || (source.getUint32(4) !== 0x00010000 && source.getUint32(4) !== 0x00020000)) {
+    throw new Error("Desteklenmeyen TrueType koleksiyon başlığı.");
+  }
+  const count = source.getUint32(8);
+  if (!Number.isInteger(faceIndex) || faceIndex < 0 || faceIndex >= count) throw new Error(`TrueType koleksiyon yüzü geçersiz (${faceIndex}).`);
+  const faceOffset = source.getUint32(12 + faceIndex * 4);
+  if (faceOffset + 12 > bytes.byteLength || source.getUint32(faceOffset) !== SFNT_TRUETYPE) throw new Error("TrueType koleksiyonunda desteklenmeyen font yüzü.");
+  const tableCount = source.getUint16(faceOffset + 4);
+  const directoryEnd = faceOffset + 12 + tableCount * 16;
+  if (!tableCount || directoryEnd > bytes.byteLength) throw new Error("TrueType koleksiyonunun tablo dizini bozuk.");
+
+  const tables = [];
+  let outputLength = 12 + tableCount * 16;
+  for (let index = 0; index < tableCount; index += 1) {
+    const record = faceOffset + 12 + index * 16;
+    const tag = String.fromCharCode(...bytes.subarray(record, record + 4));
+    const checksum = source.getUint32(record + 4);
+    const offset = source.getUint32(record + 8);
+    const length = source.getUint32(record + 12);
+    if (offset + length > bytes.byteLength) throw new Error(`TrueType koleksiyonunda ${tag} tablosu bozuk.`);
+    outputLength = align4(outputLength);
+    tables.push({ tag, checksum, offset, length, outputOffset: outputLength });
+    outputLength += length;
+  }
+  const output = new Uint8Array(outputLength);
+  const target = new DataView(output.buffer);
+  target.setUint32(0, SFNT_TRUETYPE);
+  target.setUint16(4, tableCount);
+  target.setUint16(6, source.getUint16(faceOffset + 6));
+  target.setUint16(8, source.getUint16(faceOffset + 8));
+  target.setUint16(10, source.getUint16(faceOffset + 10));
+  tables.forEach((table, index) => {
+    const record = 12 + index * 16;
+    for (let i = 0; i < 4; i += 1) output[record + i] = table.tag.charCodeAt(i);
+    target.setUint32(record + 4, table.checksum);
+    target.setUint32(record + 8, table.outputOffset);
+    target.setUint32(record + 12, table.length);
+    output.set(bytes.subarray(table.offset, table.offset + table.length), table.outputOffset);
+  });
+  const head = tables.find((table) => table.tag === "head");
+  if (!head || head.length < 12) throw new Error("TrueType koleksiyonunda head tablosu bulunamadı.");
+  target.setUint32(head.outputOffset + 8, 0);
+  let checksum = 0;
+  for (let offset = 0; offset < output.length; offset += 4) {
+    const remaining = Math.min(4, output.length - offset);
+    let word = 0;
+    for (let index = 0; index < remaining; index += 1) word |= output[offset + index] << (24 - index * 8);
+    checksum = (checksum + word) >>> 0;
+  }
+  target.setUint32(head.outputOffset + 8, (CHECKSUM_MAGIC - checksum) >>> 0);
+  return output;
+}
+
 const cachedFamilies = new Map();
 /** Genuine regular/bold/italic/bolditalic programs of `family`, verified by their name table. */
 export async function loadSystemFontFamily(family) {
@@ -60,6 +128,7 @@ export async function loadSystemFontFamily(family) {
     cachedFamilies.set(family, readSystemFonts(family, faces).then((fonts) => {
       for (const [style, face] of Object.entries(faces)) {
         const font = fonts[style];
+        font.bytes = extractTrueTypeCollectionFace(font.bytes, face.collectionIndex);
         const identity = systemFontIdentity(font.bytes);
         if (identity.family !== family || identity.postscript !== face.postscript) {
           throw new Error(`Gerçek ${family} ${style} fontu bulunamadı (${font.source}).`);

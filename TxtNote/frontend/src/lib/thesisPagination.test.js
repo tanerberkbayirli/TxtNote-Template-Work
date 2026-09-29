@@ -3,6 +3,7 @@ import { describe, it } from "node:test";
 import generic from "../thesis/templates/generic.js";
 import demoB from "../thesis/templates/demo-b.js";
 import demoC from "../thesis/templates/demo-c.js";
+import { akuFbeMaster } from "../thesis/templates/aku-fbe.js";
 import { compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
 import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, PX_PER_MM, THESIS_MAX_PAGES, THESIS_PAGE_GAP_PX, thesisPagedCss, thesisGroupHasPageContent } from "../thesis/pageLayout.js";
 
@@ -115,6 +116,21 @@ describe("thesis pagination page model", () => {
     assert.match(c, /\[data-thesis-flow-section="main"\] \.thesis-body h1\{break-before:column\}/);
     assert.match(c, /h1\[data-unnumbered\]\{break-before:auto\}/);
     assert.doesNotMatch(c, /h2\{break-before:column\}/);
+  });
+
+  it("trims only the opted-in special page's terminal text leading", () => {
+    const groups = groupsOf(akuFbeMaster);
+    const css = thesisPagedCss(groups);
+    const trimRules = css.split("\n").filter((rule) => rule.includes("text-box-trim"));
+    assert.equal(trimRules.length, 1);
+    assert.match(trimRules[0], /@supports \(text-box-trim:trim-end\)/);
+    assert.match(trimRules[0], /data-thesis-flow-section="inner-cover"/);
+    assert.match(trimRules[0], /data-thesis-block="\d+"\]\.thesis-layout-text/);
+    assert.doesNotMatch(trimRules[0], /outer-cover|approval|ethics/);
+
+    const withoutOptIn = structuredClone(akuFbeMaster);
+    delete withoutOptIn.sections.find((section) => section.id === "inner-cover").overrides.page.trimTerminalTextLeading;
+    assert.doesNotMatch(thesisPagedCss(groupsOf(withoutOptIn)), /text-box-trim/);
   });
 
   it("is presentation-only: computing pages never changes the stored thesis document", () => {

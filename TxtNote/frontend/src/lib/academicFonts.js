@@ -15,10 +15,18 @@ const registeredFaces = new WeakMap();
  * (the first system family, else Tinos).
  */
 export function academicPdfFont(pdf, style = "normal", family) {
+  return academicPdfFontFace(pdf, style, family).name;
+}
+/** Registered font family and style, falling back to a family's regular face if it has no variants. */
+export function academicPdfFontFace(pdf, style = "normal", family) {
   const registry = registeredFaces.get(pdf);
-  if (!registry) return ACADEMIC_PDF_FONT;
+  if (!registry) return { name: ACADEMIC_PDF_FONT, style };
   const canonical = family ? systemPdfFontFamily(family) : null;
-  return (canonical && registry.families[canonical]?.[style]) || registry.families[registry.default]?.[style] || ACADEMIC_PDF_FONT;
+  const familyFaces = canonical && registry.families[canonical];
+  if (familyFaces?.[style]) return { name: familyFaces[style], style };
+  if (familyFaces?.normal) return { name: familyFaces.normal, style: "normal" };
+  const defaultFaces = registry.families[registry.default];
+  return defaultFaces?.[style] ? { name: defaultFaces[style], style } : { name: ACADEMIC_PDF_FONT, style };
 }
 /** Is `family` embedded as a genuine system font in this PDF? */
 export const hasSystemPdfFont = (pdf, family) => Boolean(registeredFaces.get(pdf)?.families[systemPdfFontFamily(family)]);

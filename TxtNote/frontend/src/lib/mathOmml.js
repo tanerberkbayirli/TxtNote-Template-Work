@@ -4,6 +4,7 @@
  */
 
 import {
+  ImportedXmlComponent,
   Math as WordMath,
   MathCurlyBrackets,
   MathFraction,
@@ -170,6 +171,25 @@ const SIZERS = new Set(["left", "right", "big", "Big", "bigg", "Bigg", "bigl", "
 
 const EMPTY = [new MathRun("")];
 
+/** Explicit Word run properties inside OMML; equation typography comes from its template. */
+function mathRunProperties(style) {
+  const wordProps = new ImportedXmlComponent("w:rPr");
+  const font = String(style.fontFamily || "").trim();
+  const size = Math.round(Number(style.fontSizePt) * 2);
+  if (font) wordProps.push(new ImportedXmlComponent("w:rFonts", { "w:ascii": font, "w:hAnsi": font, "w:eastAsia": font, "w:cs": font }));
+  if (Number.isFinite(size) && size > 0) wordProps.push(new ImportedXmlComponent("w:sz", { "w:val": size }));
+  if (Number.isFinite(size) && size > 0) wordProps.push(new ImportedXmlComponent("w:szCs", { "w:val": size }));
+  return wordProps;
+}
+
+function applyMathRunStyle(component, style) {
+  const hasSize = style.fontSizePt !== undefined && style.fontSizePt !== null && Number.isFinite(Number(style.fontSizePt));
+  if (!style.fontFamily && !hasSize) return;
+  if (!component || typeof component !== "object") return;
+  if (component.constructor?.name === "MathRun" && Array.isArray(component.root)) component.root.unshift(mathRunProperties(style));
+  for (const child of Array.isArray(component.root) ? component.root : []) applyMathRunStyle(child, style);
+}
+
 function expandMacros(src) {
   return String(src ?? "")
     .replace(/\\N(?![A-Za-z])/g, "\\mathbb{N}")
@@ -198,7 +218,7 @@ function attachScripts(base, sub, sup) {
   return children;
 }
 
-export function latexToMathComponents(latex) {
+export function latexToMathComponents(latex, { strictUnsupported = false } = {}) {
   const src = expandMacros(latex);
   let i = 0;
 
@@ -377,6 +397,7 @@ export function latexToMathComponents(latex) {
     if (name === "binom" || name === "dbinom" || name === "tbinom") {
       const n = parsePrimary();
       const k = parsePrimary();
+      if (strictUnsupported) return [new MathRun(`[unsupported: \\${name}]`), ...n, new MathRun(","), ...k];
       return [
         new MathRun("C"),
         new MathRoundBrackets({
@@ -402,7 +423,8 @@ export function latexToMathComponents(latex) {
       name === "mathit" ||
       name === "textrm"
     ) {
-      return parsePrimary();
+      const content = parsePrimary();
+      return strictUnsupported ? [new MathRun(`[unsupported: \\${name}]`), ...content] : content;
     }
     if (name === "mathbb") {
       const raw = parseGroupRaw() || latexToPlainText("");
@@ -439,7 +461,8 @@ export function latexToMathComponents(latex) {
       return [new MathSum(options)];
     }
     if (name === "ce") {
-      return [new MathRun(latexToPlainText(`\\ce{${parseGroupRaw()}}`))];
+      const raw = parseGroupRaw();
+      return strictUnsupported ? [new MathRun(`[unsupported: \\ce] ${raw}`)] : [new MathRun(latexToPlainText(`\\ce{${raw}}`))];
     }
     if (GREEK[name]) return [new MathRun(GREEK[name])];
     if (SYMBOLS[name]) return [new MathRun(SYMBOLS[name])];
@@ -451,8 +474,13 @@ export function latexToMathComponents(latex) {
       return [new MathRun(name)];
     }
     skipSpaces();
-    if (src[i] === "{") return parsePrimary();
-    return [new MathRun(name)];
+    if (!strictUnsupported) {
+      skipSpaces();
+      if (src[i] === "{") return parsePrimary();
+      return [new MathRun(name)];
+    }
+    // Thesis DOCX uses strict mode so unsupported syntax is visible instead of silently lost.
+    return [new MathRun(`[unsupported: \\${name}]`)];
   }
 
   function parseExpr(opts = {}) {
@@ -491,14 +519,29 @@ export function latexToMathComponents(latex) {
   return parts.length ? parts : EMPTY;
 }
 
-export function mathFromLatex(latex) {
+export function mathFromLatex(latex, style = {}, { strictUnsupported = false } = {}) {
   const source = String(latex ?? "").trim();
   if (!source) return null;
+  const environment = source.match(/\\begin\s*\{([^}]+)\}/)?.[1]?.replace(/\*$/, "");
+  if (strictUnsupported && environment && !new Set(["equation", "displaymath"]).has(environment)) {
+    const math = new WordMath({ children: [new MathRun(`[unsupported LaTeX: ${source}]`)] });
+    applyMathRunStyle(math, style);
+    return math;
+  }
   try {
-    return new WordMath({ children: latexToMathComponents(source) });
+    const math = new WordMath({ children: latexToMathComponents(source, { strictUnsupported }) });
+    applyMathRunStyle(math, style);
+    return math;
   } catch {
-    const text = latexToPlainText(source);
-    if (!text) return null;
-    return new WordMath({ children: [new MathRun(text)] });
+    if (!strictUnsupported) {
+      const text = latexToPlainText(source);
+      if (!text) return null;
+      const math = new WordMath({ children: [new MathRun(text)] });
+      applyMathRunStyle(math, style);
+      return math;
+    }
+    const math = new WordMath({ children: [new MathRun(`[unsupported LaTeX: ${source}]`)] });
+    applyMathRunStyle(math, style);
+    return math;
   }
 }

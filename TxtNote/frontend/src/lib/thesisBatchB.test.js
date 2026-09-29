@@ -169,12 +169,12 @@ describe("Batch B3 equation numbering", () => {
     const model = resolveGeneratedIndexes(compile(withEq(template()), html), {});
     const { xml } = await docx(model);
     assert.match(xml, /<w:tab w:val="center" w:pos="4394"\/><w:tab w:val="right" w:pos="8787"\/>/);
-    const flow = [...xml.matchAll(/<w:tab\/>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1] ?? "\\t").join("");
+    const flow = [...xml.matchAll(/<w:tab\/>|<(?:w|m):t[^>]*>([^<]*)<\/(?:w|m):t>/g)].map((m) => m[1] ?? "\\t").join("");
     assert.match(flow, /\\ta\\t\(1\.1\)/); assert.match(flow, /\\tc\\t\(1\.2\)/); assert.match(flow, /\\td\\t\(2\.1\)/);
     assert.match(flow, /\\tb(?!\\t\()/); // the unnumbered one has no number
     const left = resolveGeneratedIndexes(compile(withEq(template(), { numbering: { scope: "chapter", format: "({chapter}.{n})" }, numberAlign: "left" }), html), {});
     const leftXml = (await docx(left)).xml;
-    assert.match([...leftXml.matchAll(/<w:tab\/>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1] ?? "\\t").join(""), /\(1\.1\)\\ta/);
+    assert.match([...leftXml.matchAll(/<w:tab\/>|<(?:w|m):t[^>]*>([^<]*)<\/(?:w|m):t>/g)].map((m) => m[1] ?? "\\t").join(""), /\(1\.1\)\\ta/);
     const paragraph = leftXml.split("<w:p>").find((p) => p.includes("(1.1)") && p.includes("<w:tabs>"));
     assert.match(paragraph, /<w:tab w:val="center"/); assert.doesNotMatch(paragraph, /w:val="right" w:pos/);
   });

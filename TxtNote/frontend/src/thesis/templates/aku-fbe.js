@@ -51,7 +51,8 @@ const frontTitle = (spaceAfterPt = BLANK_PT) => ({ "1": { align: "center", textT
 const OUTER_TOP_MM = 215.53 - ascentMm(12);
 const outerCover = (degree) => ({
   id: "outer-cover", type: "outerCover", title: "DIŞ KAPAK", status: "required", group: "cover", mode: "static",
-  overrides: { page: { margins: { topMm: OUTER_TOP_MM, bottomMm: 10, leftMm: 55, rightMm: 55 }, numbering: { enabled: false } }, body: { ...page15, lineHeight: 1, align: "center" } },
+  // The guide's printed cover box ends at y=275 mm on an A4 page (297 - 22 mm).
+  overrides: { page: { margins: { topMm: OUTER_TOP_MM, bottomMm: 22, leftMm: 55, rightMm: 55 }, numbering: { enabled: false } }, body: { ...page15, lineHeight: 1, align: "center" } },
   blocks: [
     { type: "metadata", field: "THESIS_TITLE", fallback: "TEZ BAŞLIĞI", style: { ...bold, ...upper } },
     { type: "text", value: degree.cover, style: { spaceBeforePt: 6 } },
@@ -70,7 +71,7 @@ const outerCover = (degree) => ({
 // İç Kapak: 14 pt bold, 1.5 lines everywhere; the gaps are the guide's own empty lines.
 const innerCover = (degree) => ({
   id: "inner-cover", type: "innerCover", title: "İÇ KAPAK", status: "required", group: "cover", mode: "static",
-  overrides: { page: { margins: { bottomMm: 10 }, numbering: { enabled: false } }, body: { ...page15, align: "center", fontSizePt: 14, fontWeight: 700 } },
+  overrides: { page: { margins: { bottomMm: 30 }, numbering: { enabled: false }, trimTerminalTextLeading: true }, body: { ...page15, align: "center", fontSizePt: 14, fontWeight: 700 } },
   blocks: [
     { type: "group", visibleWhen: { anyFilled: ["PROJECT_NUMBER"] }, blocks: [
       { type: "text", value: "Bu tez çalışması {{PROJECT_NUMBER}} numaralı proje ile {{PROJECT_FUNDER}} tarafından desteklenmiştir.", style: { fontSizePt: 12, fontWeight: 400 } },
@@ -136,7 +137,7 @@ const FRAME_BORDER = { outerPt: 0.75, gapPt: 0.75, innerPt: 3, paddingMm: 0, doc
 const FRAME_BORDER_MM = (0.75 + 0.75 + 3) * MM_PER_PT;
 const approval = (degree) => ({
   id: "approval", type: "approval", title: "TEZ ONAY SAYFASI", status: "required", group: "front", mode: "static",
-  overrides: { page: { margins: { leftMm: FRAME_L_MM, rightMm: 210 - FRAME_R_MM, bottomMm: 12 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
+  overrides: { page: { margins: { leftMm: FRAME_L_MM, rightMm: 210 - FRAME_R_MM, bottomMm: 30 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
   blocks: [
     { type: "text", value: "TEZ ONAY SAYFASI", style: { ...bold, align: "center" } },
     blank(1),
@@ -172,7 +173,7 @@ const ethicsItem = (text) => ({ type: "group", direction: "row", blocks: [
 ] });
 const ethics = {
   id: "ethics", type: "ethicsDeclaration", title: "BİLİMSEL ETİK BİLDİRİM SAYFASI", status: "required", group: "front", mode: "static",
-  overrides: { page: { margins: { bottomMm: 10 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
+  overrides: { page: { margins: { bottomMm: 30 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
   blocks: [
     { type: "text", value: "BİLİMSEL ETİK BİLDİRİM SAYFASI", style: { ...bold, align: "center" } },
     { type: "text", value: "Afyon Kocatepe Üniversitesi", style: { ...bold, align: "center" } },
@@ -341,8 +342,8 @@ const base = {
       "Dipnotlar: kaynak sessiz; 10 pt, tek satır, Times New Roman (kaynak dışı, NOT_SPECIFIED). Denklem yazı tipi kılavuzda Cambria Math; bu yazı tipi gömülemez, denklem numarası Times New Roman 12 pt basılır.",
       "Yatay sayfa (gerekirse, sayfa numarası dikey sayfadaki gibi altta ortada): TxtNote'ta yatay sayfa yoktur; sınırlama. A4'ten büyük şekiller katlanarak EKLER'e konur (yazar işi).",
       "Baskı: tek yüz, 70-100 g/m² beyaz kâğıt; savunma nüshası spiral, son nüshalar (en az 7) enstitü kapağıyla ciltlenir; Word'den yazdırılır, PDF'den değil (fiziksel üretim, belge içeriği değildir). Şablonun tek/çift sayfa bölüm sonları tek yüzlü baskıda boş sayfa üretmez.",
-      "Sınırlamalar: şekil/resim için '(Devam)' başlığı yalnız çizelgelerde desteklenir (bölünen şekil yoktur: şekil sayfa içinde bölünmez). Denklem yazı tipi Cambria Math bu ortamda kurulu değildir ve jsPDF ile TTC olarak gömülemez: PDF'de denklem Times New Roman ile çizilir (12 pt), Word'de Cambria Math 12 pt yazılır (orchestration/failures/aku-fbe/equation-font.md). PDF'de Times New Roman'da bulunmayan matematik simgeleri (∈ ⇒ ∀ …) çizilemez.",
-      "Onay sayfası, uzun başlık: 88+ karakterlik bir başlıkla onay cümlesi 6 satıra çıkar ve kutu yaklaşık 270,1 mm'de biter (yüksek lisans; 7 jüride 269,4 mm; 71 karakterde 262,8 mm). Metin 267 mm'nin üstünde kalır; bu bölümün alt sayfa kenarı 12 mm'dir, Word'de de aynı sabit yerleşim aynı yüksekliktedir. Kaynak sıkıştırma kuralı vermez, bu yüzden sıkıştırılmaz (NOT_SPECIFIED, orchestration/failures/aku-fbe/approval-fit.md).",
+      "Sınırlamalar: şekil/resim için '(Devam)' başlığı yalnız çizelgelerde desteklenir (bölünen şekil yoktur: şekil sayfa içinde bölünmez). Denklemler için Cambria Math gereklidir; PDF ve Word çıktısındaki yazı tipini ve özel matematik simgelerini kontrol edin.",
+      "Uzun tez başlıkları veya isteğe bağlı kapak/jüri bilgileri resmî kapak ve onay alanını aşabilir; çıktıyı baskıdan önce elle gözden geçirin. İç kapak tarihi ayrı sayfaya düşerse PDF'yi kontrol edin.",
       "Dikey ritim tek tabloda (blockGap.js): paragraf, başlık, şekil, çizelge, çizelge notu, liste ve denklem arasındaki boşluk hem editörde/PDF'de hem Word'de aynı tablodan gelir. Liste paragrafları, gövde paragrafları gibi, sonrasında bir boş satır (20,7 pt) bırakır. Denklem tek satırlıksa taban çizgisi önceki/sonraki bloğa 14,6 mm uzaktadır; uzun (kesir, toplam, integral) denklemler kendi satır kutusunu kullanır ve aralığı büyütür (Word'de de). Denklem sayfa başındaysa 33,95 mm'de başlar.",
       "DOCX: içindekiler ve dizin satırlarının sayfa numaraları PAGEREF alanlarıdır (önbellekteki değer editörün etiketi); Word kendi sayfalamasında alanları günceller, LibreOffice ön ekli (i, ii) etiketleri sade rakam gösterebilir. Bölünen çizelgeler için '(Devam)' başlığı DOCX'te editörün sayfa kırılımında sabit metindir (Word kendi kırılımını yapar).",
       "Kaynak dışı değerler: boşluk (widow/orphan) kılavuzda zorunlu, şablonun Normal stili kapalıdır (kılavuz uygulanır). H3/H4 Baş Harfleri Büyük biçimi örneklerden çıkarılmıştır (INFERRED).",

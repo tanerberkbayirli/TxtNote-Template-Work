@@ -6,7 +6,8 @@ import {
   SectionType, SimpleField, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
 } from "docx";
 import { parseAcademicHtml } from "../lib/academicDocument.js";
-import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
+import { mathFromLatex } from "../lib/mathOmml.js";
+import { academicPdfFontFace, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
 import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, indentMm, resolveChromeText, transformThesisText } from "./engine.js";
 import { PX_PER_MM, thesisGroupHasPageContent } from "./pageLayout.js";
 import { specialPageRowWidths } from "./specialPages.js";
@@ -43,7 +44,8 @@ function pdfFont(pdf, style) {
   if (/arial|helvetica/i.test(style.fontFamily)) pdf.setFont("helvetica", `${style.fontWeight >= 600 ? "bold" : ""}${style.italic ? "italic" : ""}` || "normal");
   else {
     const faceStyle = pdfFontStyle({ bold: style.fontWeight >= 600, italic: style.italic });
-    pdf.setFont(academicPdfFont(pdf, faceStyle), faceStyle);
+    const face = academicPdfFontFace(pdf, faceStyle, style.fontFamily);
+    pdf.setFont(face.name, face.style);
   }
   pdf.setFontSize(style.fontSizePt);
   pdf.setTextColor(17, 17, 17);
@@ -183,6 +185,11 @@ function docxRuns(runs, style, context) {
   for (const item of runs || []) {
     if (item.type === "break") out.push(new TextRun({ break: 1 }));
     else if (item.type === "tab") out.push(new TextRun({ children: [new Tab()] }));
+    else if (item.type === "math") {
+      const formula = mathFromLatex(item.latex || item.text, style, { strictUnsupported: true });
+      if (formula) out.push(formula);
+      else out.push(textRun("[empty equation]", style, context));
+    }
     // TOC/list page labels are real PAGEREF fields (cached result = the editor's label): Word/LibreOffice re-read the page of the bookmark.
     else if (item.type === "pageref") out.push(new SimpleField(`PAGEREF ${item.bookmark} \\h`, item.text || ""));
     else if (item.type === "link") out.push(...docxRuns(item.children, style, context));
@@ -492,8 +499,9 @@ function docxChildren(section, context) {
       const equations = section.rules.equations;
       const style = withGap({ ...body, ...equations.style, firstLineIndentMm: 0, align: "left" });
       const left = equations.numberAlign === "left";
-      const runs = left ? [...(block.equationLabel ? plainRuns(block.equationLabel) : []), { type: "tab" }, ...plainRuns(block.text || "")]
-        : [{ type: "tab" }, ...plainRuns(block.text || ""), ...(block.equationLabel ? [{ type: "tab" }, ...plainRuns(block.equationLabel)] : [])];
+      const formula = { type: "math", latex: block.latex, text: block.text };
+      const runs = left ? [...(block.equationLabel ? plainRuns(block.equationLabel) : []), { type: "tab" }, formula]
+        : [{ type: "tab" }, formula, ...(block.equationLabel ? [{ type: "tab" }, ...plainRuns(block.equationLabel)] : [])];
       children.push(docxParagraph(runs, style, context, { tabStops: [{ type: TabStopType.CENTER, position: twip(widthMm / 2) }, ...(left ? [] : [{ type: TabStopType.RIGHT, position: twip(widthMm) }])] }));
     } else if (block.type === "code" || block.type === "math") {
       children.push(docxParagraph(plainRuns(block.text || ""), { ...body, firstLineIndentMm: 0 }, context));

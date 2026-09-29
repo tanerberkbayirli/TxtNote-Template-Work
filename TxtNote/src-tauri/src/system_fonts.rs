@@ -35,12 +35,13 @@ pub async fn read_times_new_roman_fonts() -> Result<Vec<SystemFont>, String> {
     }
 }
 
-/// Four installed faces of a template font family. Only families in this fixed list are
+/// Installed faces of a template font family. Only families in this fixed list are
 /// readable (no caller-supplied file names or paths).
-fn family_files(family: &str) -> Option<[(&'static str, &'static str); 4]> {
+fn family_files(family: &str) -> Option<Vec<(&'static str, &'static str)>> {
     match family {
-        "Times New Roman" => Some([("normal", "times.ttf"), ("bold", "timesbd.ttf"), ("italic", "timesi.ttf"), ("bolditalic", "timesbi.ttf")]),
-        "Arial" => Some([("normal", "arial.ttf"), ("bold", "arialbd.ttf"), ("italic", "ariali.ttf"), ("bolditalic", "arialbi.ttf")]),
+        "Times New Roman" => Some(vec![("normal", "times.ttf"), ("bold", "timesbd.ttf"), ("italic", "timesi.ttf"), ("bolditalic", "timesbi.ttf")]),
+        "Arial" => Some(vec![("normal", "arial.ttf"), ("bold", "arialbd.ttf"), ("italic", "ariali.ttf"), ("bolditalic", "arialbi.ttf")]),
+        "Cambria Math" => Some(vec![("normal", "cambria.ttc")]),
         _ => None,
     }
 }

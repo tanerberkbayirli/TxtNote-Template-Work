@@ -61,6 +61,7 @@ function validatePage(page, path = "page") {
   if (!object(page)) return [`${path} gerekli`];
   if (!positive(page.widthMm) || !positive(page.heightMm)) errors.push(`${path} boyutları geçersiz`);
   if (!["portrait", "landscape"].includes(page.orientation)) errors.push(`${path}.orientation geçersiz`);
+  if (page.trimTerminalTextLeading !== undefined && typeof page.trimTerminalTextLeading !== "boolean") errors.push(`${path}.trimTerminalTextLeading boolean olmalı`);
   const margins = page.margins;
   if (!object(margins)) errors.push(`${path}.margins gerekli`);
   else {

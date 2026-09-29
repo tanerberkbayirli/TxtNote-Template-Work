@@ -8,7 +8,7 @@
  * it and the output is identical at every zoom level.
  */
 import { jsPDF } from "jspdf";
-import { academicPdfFont, embedAcademicPdfFonts, hasSystemPdfFont, pdfFontStyle } from "../lib/academicFonts.js";
+import { academicPdfFont, academicPdfFontFace, embedAcademicPdfFonts, hasSystemPdfFont, pdfFontStyle } from "../lib/academicFonts.js";
 import { canvasFontAscent } from "./wordBaseline.js";
 import { PX_PER_MM, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
@@ -34,6 +34,11 @@ function textWidth(style, text) {
 
 /** Plain copy of the typography a text op needs (computed style objects are live). */
 const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign });
+function pdfTextStyle(element, style, language) {
+  const equation = element.closest?.(".math-formula--block");
+  const equationFamily = equation && getComputedStyle(equation).getPropertyValue("--thesis-pdf-equation-font").trim();
+  return { ...textStyle(style), ...(equationFamily ? { fontFamily: equationFamily, pdfMetricsFontFamily: style.fontFamily } : {}), lang: element.closest?.("[lang]")?.getAttribute("lang") || language };
+}
 
 function color(value) {
   const match = String(value || "").match(/rgba?\(([^)]+)\)/);
@@ -51,12 +56,25 @@ export const PDF_GLYPH_ALIASES = Object.freeze({ "\u22C5": "\u2219", "\u2215": "
 const COMPAT_LETTERS = /[\u03D0-\u03F9\u{1D400}-\u{1D7FF}\u2102-\u2124]/gu;
 export const aliasGlyphs = (text) => String(text).replace(/[\u22C5\u2215\u2044\u2010\u2011\u2223\u2236\u2032\u00A0]/g, (char) => PDF_GLYPH_ALIASES[char]).replace(COMPAT_LETTERS, (char) => char.normalize("NFKD"));
 
+const DOUBLE_STRUCK_SPECIALS = Object.freeze({ C: "ℂ", H: "ℍ", N: "ℕ", P: "ℙ", Q: "ℚ", R: "ℝ", Z: "ℤ", h: "ℎ" });
+/** KaTeX represents `\mathbb{R}` as a regular text R styled with its own font. Preserve its semantic glyph for PDF fonts. */
+export function doubleStruckMathText(text) {
+  return [...String(text)].map((char) => {
+    if (DOUBLE_STRUCK_SPECIALS[char]) return DOUBLE_STRUCK_SPECIALS[char];
+    const point = char.codePointAt(0);
+    if (point >= 65 && point <= 90) return String.fromCodePoint(0x1d538 + point - 65);
+    if (point >= 97 && point <= 122) return String.fromCodePoint(0x1d552 + point - 97);
+    if (point >= 48 && point <= 57) return String.fromCodePoint(0x1d7d8 + point - 48);
+    return char;
+  }).join("");
+}
+
 function pdfFace(pdf, style, text) {
   const family = String(style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
   const bold = Number(style.fontWeight) >= 600;
   const italic = style.fontStyle === "italic" || style.fontStyle.startsWith("oblique");
   // A genuine system family embedded for this template draws every word of that family.
-  if (hasSystemPdfFont(pdf, family)) { const faceStyle = pdfFontStyle({ bold, italic }); return { name: academicPdfFont(pdf, faceStyle, family), style: faceStyle }; }
+  if (hasSystemPdfFont(pdf, family)) return academicPdfFontFace(pdf, pdfFontStyle({ bold, italic }), family);
   const builtin = /^(arial|helvetica|sans-serif|liberation sans|arimo)$/.test(family) ? "helvetica" : /^(courier|courier new|monospace|consolas)$/.test(family) ? "courier" : "";
   if (builtin && LATIN1.test(text)) return { name: builtin, style: `${bold ? "bold" : ""}${italic ? "italic" : ""}` || "normal" };
   const faceStyle = pdfFontStyle({ bold, italic });
@@ -117,18 +135,20 @@ function collectGroup(stack, language) {
     const box = local(rect);
     const fill = color(style.color);
     if (!text || !fill) return;
-    ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(style), style, color: fill, ...extra });
+    const metricsStyle = style.pdfMetricsFontFamily ? { ...style, fontFamily: style.pdfMetricsFontFamily } : style;
+    ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(metricsStyle), style, color: fill, ...extra });
   };
 
   const words = (node, style, extra) => {
     const data = node.data;
+    const mathText = (text) => node.parentElement?.classList.contains("mathbb") ? doubleStruckMathText(text) : text;
     // Keep each special-page line as one text run. The browser and embedded PDF
     // font can differ slightly in glyph widths; separately painted words then
     // swallow the visible space as well as losing it during text extraction.
     // Justified lines are the exception: their word gaps are stretched by the browser, so each word keeps its own position.
     if (node.parentElement.closest(".thesis-layout-text") && style.textAlign !== "justify") {
       let text = "", box = null;
-      const flush = () => { if (text.trim() && box) pushText(transformText(text.trimEnd(), style.textTransform, style.lang), box, style, extra); };
+      const flush = () => { if (text.trim() && box) pushText(transformText(mathText(text.trimEnd()), style.textTransform, style.lang), box, style, extra); };
       for (let i = 0; i < data.length; i += 1) {
         range.setStart(node, i); range.setEnd(node, i + 1);
         const rect = range.getClientRects()[0];
@@ -163,7 +183,7 @@ function collectGroup(stack, language) {
         if (visible) { range.setStart(node, start); range.setEnd(node, start + visible); pushText(word.slice(0, visible), range.getBoundingClientRect(), style, extra); }
         continue;
       }
-      if (rects.length === 1) { pushText(transformText(word, style.textTransform, style.lang), rects[0], style, extra); continue; }
+      if (rects.length === 1) { pushText(transformText(mathText(word), style.textTransform, style.lang), rects[0], style, extra); continue; }
       // A word broken across lines or pages: split it where its glyphs change line.
       let current = ""; let currentRect = null;
       for (let index = 0; index < match[0].length; index += 1) {
@@ -172,9 +192,9 @@ function collectGroup(stack, language) {
         const char = match[0][index].replace(/[​﻿]/g, "");
         if (!rect || !char) continue;
         if (currentRect && Math.abs(rect.top - currentRect.top) < 1) current += char;
-        else { if (current) pushText(transformText(current, style.textTransform, style.lang), currentRect, style, extra); current = char; currentRect = rect; }
+        else { if (current) pushText(transformText(mathText(current), style.textTransform, style.lang), currentRect, style, extra); current = char; currentRect = rect; }
       }
-      if (current) pushText(transformText(current, style.textTransform, style.lang), currentRect, style, extra);
+      if (current) pushText(transformText(mathText(current), style.textTransform, style.lang), currentRect, style, extra);
     }
   };
 
@@ -210,7 +230,7 @@ function collectGroup(stack, language) {
     if (!tail || viewBox.length !== 4 || !(viewBox[3] > 0)) return;
     const box = local(tail.getBoundingClientRect()), em = box.height / (viewBox[3] / 1000), style = getComputedStyle(tail), fill = color(style.color);
     if (!fill || !(box.width > 0)) return;
-    const typography = { ...textStyle(style), fontSize: `${em * 1.1}px`, fontStyle: "normal", fontWeight: "400" };
+    const typography = { ...pdfTextStyle(tail, style, language), fontSize: `${em * 1.1}px`, fontStyle: "normal", fontWeight: "400" };
     ops.push({ type: "text", text: "\u221A", x: box.left, top: box.top, width: em * 0.6, baseline: box.top + em * 1.06, style: typography, color: fill, decoration: [] });
     const y = box.top + em * 0.105;
     ops.push({ type: "line", points: [box.left + em * 0.6, y, box.left + box.width, y], width: em * 0.05, color: fill, top: y, height: 0 });
@@ -229,7 +249,7 @@ function collectGroup(stack, language) {
     }
     const first = ops.length;
     // text-transform follows the language the browser used for this element.
-    const typography = { ...textStyle(style), lang: element.closest("[lang]")?.getAttribute("lang") || language };
+    const typography = pdfTextStyle(element, style, language);
     const decoration = element.firstChild ? decorations(element) : [];
     for (const child of element.childNodes) {
       if (child.nodeType === 1) visit(child);
@@ -337,7 +357,8 @@ function drawOp(pdf, op, pageTop) {
   pdf.setTextColor(...op.color);
   const spacing = parseFloat(op.style.letterSpacing) || 0;
   const y = (op.baseline - pageTop) * MM;
-  const text = aliasGlyphs(op.text);
+  const family = String(op.style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
+  const text = family === "cambria math" && hasSystemPdfFont(pdf, "Cambria Math") ? op.text : aliasGlyphs(op.text);
   // The browser shapes a run with kerning; jsPDF advances glyph by glyph without it, so a long line would end past where the browser's
   // ended (a 151-character title: +1.6 mm over the right margin). The small difference is spread over the run's characters, so every run
   // ends exactly where the browser's ended.
