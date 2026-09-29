@@ -216,6 +216,16 @@ describe("aku-fbe validation attempt 1 fixes", () => {
     assert.match(eqXml, /w:spacing w:after="414" w:before="537" w:line="360"[\s\S]{0,900}Cambria Math/, "equation after a table: gap 26.85 pt (baseline pitch 41.4 pt), 20.7 pt after");
   });
 
+  it("TOC and list rows are PAGEREF fields (cached = the editor's label) whose bookmarks exist", async () => {
+    const xml = await docxXml(compile());
+    const refs = [...xml.matchAll(/PAGEREF (\w+) \\h">/g)];
+    const names = new Set([...xml.matchAll(/<w:bookmarkStart[^>]*w:name="(\w+)"/g)].map((m) => m[1]));
+    assert.ok(refs.length >= 8);
+    for (const [, name] of refs) assert.ok(names.has(name), `${name} has a bookmark`);
+    assert.match(xml, /PAGEREF _ref_abstract_tr_source_title \\h"/, "ÖZET row points at the bookmark of its title");
+    assert.equal(names.size, [...xml.matchAll(/<w:bookmarkStart/g)].length, "bookmark names are unique");
+  });
+
   it("list rows of the index sections are single spaced with 6 pt after in Word too", async () => {
     const xml = await docxXml(compile());
     const rows = [...xml.matchAll(/<w:p>((?:(?!<\/w:p>).)*?)<\/w:p>/gs)].map((m) => m[1]).filter((p) => /<w:tab\/>/.test(p) && /(Şekil|Çizelge|Resim) \d\.\d/.test(p.replace(/<[^>]+>/g, "")));

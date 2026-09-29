@@ -337,7 +337,8 @@ function drawOp(pdf, op, pageTop) {
   // ended (a 151-character title: +1.6 mm over the right margin). The small difference is spread over the run's characters, so every run
   // ends exactly where the browser's ended.
   const glyphs = [...text].length, size = parseFloat(op.style.fontSize) * 0.75;
-  const fit = op.width > 0 && glyphs > 1 ? (op.width * MM - pdf.getTextWidth(text)) / glyphs : NaN;
+  // Only for a genuine embedded family (the browser draws the same font); a substitute face keeps its natural advances.
+  const fit = op.width > 0 && glyphs > 1 && hasSystemPdfFont(pdf, String(op.style.fontFamily).split(",")[0].replace(/["']/g, "").trim()) ? (op.width * MM - pdf.getTextWidth(text)) / glyphs : NaN;
   const charSpace = Number.isFinite(fit) && Math.abs(fit) <= size * 0.352778 * 0.1 ? fit : spacing * MM;
   pdf.text(text, op.x * MM, y, { baseline: "alphabetic", ...(charSpace ? { charSpace } : {}) });
   for (const line of op.decoration || []) {

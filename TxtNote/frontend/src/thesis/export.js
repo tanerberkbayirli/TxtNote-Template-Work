@@ -1,9 +1,9 @@
 import { blockDescriptors, blockGapActive, describeBlock, gapBetween } from "./blockGap.js";
 import { jsPDF } from "jspdf";
 import {
-  AlignmentType, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
+  AlignmentType, Bookmark, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
   LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
-  SectionType, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
+  SectionType, SimpleField, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
 } from "docx";
 import { parseAcademicHtml } from "../lib/academicDocument.js";
 import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
@@ -31,7 +31,7 @@ const asBlocks = (section) => {
   let equationIndex = 0;
   let captionIndex = 0;
   return parseAcademicHtml(section.html, { lines: true }).map((block) => {
-    if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "", thesisNumberLine: Boolean(entry?.labelLine) }; }
+    if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, thesisAnchor: entry?.anchor, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "", thesisNumberLine: Boolean(entry?.labelLine) }; }
     if (block.type === "math" && block.numbered && section.rules.equations) return { ...block, equationLabel: equations[equationIndex++]?.label || "" };
     if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionLabel: entry?.label || "", captionAnchor: entry?.anchor, captionKind: entry?.captionKind || "", caption: entry?.title || block.caption }; }
     return block;
@@ -183,6 +183,8 @@ function docxRuns(runs, style, context) {
   for (const item of runs || []) {
     if (item.type === "break") out.push(new TextRun({ break: 1 }));
     else if (item.type === "tab") out.push(new TextRun({ children: [new Tab()] }));
+    // TOC/list page labels are real PAGEREF fields (cached result = the editor's label): Word/LibreOffice re-read the page of the bookmark.
+    else if (item.type === "pageref") out.push(new SimpleField(`PAGEREF ${item.bookmark} \\h`, item.text || ""));
     else if (item.type === "link") out.push(...docxRuns(item.children, style, context));
     else if (item.type === "footnote") {
       const id = context.nextFootnote++;
@@ -220,9 +222,13 @@ function paragraphProps(style, options = {}, lineSpacing = null) {
   };
 }
 
-function docxParagraph(runs, style, context, options = {}) {
+/** Word bookmark name of an index anchor ("main-source-3" -> "_ref_main_source_3"). */
+export const bookmarkName = (anchor) => `_ref_${String(anchor).replace(/[^A-Za-z0-9]/g, "_")}`.slice(0, 40);
+const bookmarked = (anchor, children) => anchor ? [new Bookmark({ id: `${bookmarkName(anchor)}`, children })] : children;
+
+function docxParagraph(runs, style, context, { anchor, ...options } = {}) {
   const children = docxRuns(runs, style, context);
-  return new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: children.length ? children : [textRun("", style, context)] });
+  return new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
 }
 
 /** Empty paragraph exactly `heightMm` tall (Word has no bare vertical box). */
@@ -391,7 +397,7 @@ function captionParagraph(rule, block, context, options = {}, before = null) {
   const label = block.captionLabel || `${rule.label} ${block.captionNumber}.`;
   // One run as before unless the label has its own typography (e.g. bold "Şekil 2.1").
   const children = rule.labelStyle ? [textRun(`${label} `, { ...style, ...rule.labelStyle }, context), ...docxRuns(plainRuns(block.caption), style, context)] : docxRuns(plainRuns(`${label} ${block.caption}`), style, context);
-  return new Paragraph({ ...paragraphProps(paragraphStyle, options, context.lineSpacing), children });
+  return new Paragraph({ ...paragraphProps(paragraphStyle, options, context.lineSpacing), children: bookmarked(block.captionAnchor, children) });
 }
 
 /** Caption paragraph above a continuation fragment ("Çizelge 3.1 (Devam) Başlık"): label text in the label style. */
@@ -413,7 +419,7 @@ function docxChildren(section, context) {
   const children = [];
   if (section.generatedIndex) {
     const rule = section.generatedIndex;
-    children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context));
+    children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context, { anchor: section.indexSources?.find((entry) => entry.tocTitle)?.anchor }));
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
     for (const row of section.indexRows) {
       const levelStyle = rule.levelStyles?.[row.level || 1] || {};
@@ -425,11 +431,14 @@ function docxChildren(section, context) {
       if (lineLabel) children.push(docxParagraph([{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }], { ...style, hangingIndentMm: undefined }, context, { keepNext: true }));
       const runs = lineLabel ? plainRuns(row.rowTitle) : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
       const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
-      if (withPage) runs.push({ type: "tab" }, ...plainRuns(row.page));
+      if (withPage) runs.push({ type: "tab" }, row.anchor ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? "") } : plainRuns(row.page)[0] || { type: "text", text: "" });
       children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
     }
     return children;
   }
+  // A special page listed in the TOC by its title (ÖZET, ABSTRACT, …): an empty one-twip paragraph carries the bookmark its PAGEREF points to.
+  const titleAnchor = section.layout ? section.indexSources?.find((entry) => entry.tocTitle)?.anchor : null;
+  if (titleAnchor) children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] })] }));
   if (section.layout) children.push(...specialPageDocx(section.layout, context, widthMm));
   let afterHeading = false;
   // lineSpacing.blockGap: the gap between two blocks comes from the block-gap table (blockGap.js), the same one the editor CSS uses;
@@ -450,7 +459,7 @@ function docxChildren(section, context) {
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(runs, withGap(block.unnumbered ? { ...style, pageBreakBefore: false } : style), context, { heading: level }));
+      children.push(docxParagraph(runs, withGap(block.unnumbered ? { ...style, pageBreakBefore: false } : style), context, { heading: level, anchor: block.thesisAnchor }));
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
       const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
