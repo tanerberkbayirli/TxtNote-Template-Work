@@ -191,7 +191,7 @@
       "validation": "FAIL",
       "attempts": 5,
       "status": "IMPLEMENTED",
-      "lastError": "attempt 5: ordinary master/PhD DOCX sections 1 and 3 violate 30 mm all-sides margins; both 89-character PDFs split the cover date and approval final line onto extra pages; normal PDFs and Cambria Math equation/font checks pass",
+      "lastError": "attempt 5 FAIL: 89-character title splits cover and approval in both variants; subsequent targeted repair yields 30 mm in all exported DOCX sections, but Word visual pagination is unverified and independent full revalidation remains pending",
       "specPath": "orchestration/specs/aku-fbe.json",
       "reportPath": "orchestration/reports/aku-fbe.md",
       "commit": "6d73e66",

@@ -3,7 +3,7 @@ import { jsPDF } from "jspdf";
 import {
   AlignmentType, Bookmark, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
   LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
-  SectionType, SimpleField, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
+  SectionType, SimpleField, Table, TableAnchorType, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
 } from "docx";
 import { parseAcademicHtml } from "../lib/academicDocument.js";
 import { mathFromLatex } from "../lib/mathOmml.js";
@@ -321,6 +321,28 @@ function specialPageDocx(nodes, context, widthMm) {
   return out;
 }
 
+/** Position a special page's content independently of its Word section margins. */
+function positionedSpecialPageDocx(nodes, context, frame) {
+  const width = twip(frame.widthMm);
+  const content = specialPageDocx(nodes, context, frame.widthMm);
+  return new Table({
+    width: { size: width, type: WidthType.DXA },
+    columnWidths: [width], layout: TableLayoutType.FIXED,
+    float: {
+      horizontalAnchor: TableAnchorType.PAGE, verticalAnchor: TableAnchorType.PAGE,
+      absoluteHorizontalPosition: twip(frame.xMm), absoluteVerticalPosition: twip(frame.yMm),
+      topFromText: 0, bottomFromText: 0, leftFromText: 0, rightFromText: 0,
+    },
+    borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
+    rows: [new TableRow({ children: [new TableCell({
+      width: { size: width, type: WidthType.DXA },
+      margins: { top: 0, bottom: 0, left: 0, right: 0 },
+      borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER },
+      children: content,
+    })] })],
+  });
+}
+
 function listParagraphs(block, section, context, level = 0, before = null) {
   const { body } = section.rules;
   const out = [];
@@ -446,7 +468,11 @@ function docxChildren(section, context) {
   // A special page listed in the TOC by its title (ÖZET, ABSTRACT, …): an empty one-twip paragraph carries the bookmark its PAGEREF points to.
   const titleAnchor = section.layout ? section.indexSources?.find((entry) => entry.tocTitle)?.anchor : null;
   if (titleAnchor) children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] })] }));
-  if (section.layout) children.push(...specialPageDocx(section.layout, context, widthMm));
+  if (section.layout) {
+    const frame = page.docxContentFrame;
+    if (frame) children.push(positionedSpecialPageDocx(section.layout, context, frame));
+    else children.push(...specialPageDocx(section.layout, context, widthMm));
+  }
   let afterHeading = false;
   // lineSpacing.blockGap: the gap between two blocks comes from the block-gap table (blockGap.js), the same one the editor CSS uses;
   // Word adds previous space-after and next space-before, so the next block's space-before is gap - previous space-after.
@@ -569,6 +595,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
   const sections = model.sections.map((section, index) => {
     const page = section.rules.page;
+    const wordMargins = page.docxMargins || page.margins;
     const groupStart = pageStarts.has(section.id);
     const chrome = chromeDocx(section, model.values, context, groupStart);
     context.body = section.rules.body;
@@ -583,7 +610,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
         ...(section.verticalAlign === "bottom" ? { verticalAlign: VerticalAlign.BOTTOM } : {}),
         page: {
           size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
-          margin: { top: twip(page.margins.topMm), bottom: twip(page.margins.bottomMm), left: twip(page.margins.leftMm), right: twip(page.margins.rightMm), header: twip(page.header?.distanceMm || 10), footer: twip(page.footer?.distanceMm || 10) },
+          margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm || 10), footer: twip(page.footer?.distanceMm || 10) },
           pageNumbers: { start: page.numbering.restart ? (page.numbering.startAt || 1) : undefined, formatType: pageFormat(page.numbering.format) },
         },
       },

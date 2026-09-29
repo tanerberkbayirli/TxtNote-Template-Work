@@ -49,10 +49,11 @@ const frontTitle = (spaceAfterPt = BLANK_PT) => ({ "1": { align: "center", textT
 // Dış Kapak: printed onto the purchased cover; text only inside x 55-155 mm, y 210-275 mm (12 pt, centred).
 // The section margins are that area: first baseline 215.53 mm = top + 0.9336 em.
 const OUTER_TOP_MM = 215.53 - ascentMm(12);
+const DOCX_SOURCE_MARGINS = { topMm: 30, bottomMm: 30, leftMm: 30, rightMm: 30 };
 const outerCover = (degree) => ({
   id: "outer-cover", type: "outerCover", title: "DIŞ KAPAK", status: "required", group: "cover", mode: "static",
   // The guide's printed cover box ends at y=275 mm on an A4 page (297 - 22 mm).
-  overrides: { page: { margins: { topMm: OUTER_TOP_MM, bottomMm: 22, leftMm: 55, rightMm: 55 }, numbering: { enabled: false } }, body: { ...page15, lineHeight: 1, align: "center" } },
+  overrides: { page: { margins: { topMm: OUTER_TOP_MM, bottomMm: 22, leftMm: 55, rightMm: 55 }, docxMargins: DOCX_SOURCE_MARGINS, docxContentFrame: { xMm: 55, yMm: OUTER_TOP_MM, widthMm: 100 }, numbering: { enabled: false } }, body: { ...page15, lineHeight: 1, align: "center" } },
   blocks: [
     { type: "metadata", field: "THESIS_TITLE", fallback: "TEZ BAŞLIĞI", style: { ...bold, ...upper } },
     { type: "text", value: degree.cover, style: { spaceBeforePt: 6 } },
@@ -137,7 +138,7 @@ const FRAME_BORDER = { outerPt: 0.75, gapPt: 0.75, innerPt: 3, paddingMm: 0, doc
 const FRAME_BORDER_MM = (0.75 + 0.75 + 3) * MM_PER_PT;
 const approval = (degree) => ({
   id: "approval", type: "approval", title: "TEZ ONAY SAYFASI", status: "required", group: "front", mode: "static",
-  overrides: { page: { margins: { leftMm: FRAME_L_MM, rightMm: 210 - FRAME_R_MM, bottomMm: 30 }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
+  overrides: { page: { margins: { leftMm: FRAME_L_MM, rightMm: 210 - FRAME_R_MM, bottomMm: 30 }, docxMargins: DOCX_SOURCE_MARGINS, docxContentFrame: { xMm: FRAME_L_MM, yMm: 30, widthMm: FRAME_W_MM }, numbering: { enabled: false } }, body: { ...page15, align: "left" } },
   blocks: [
     { type: "text", value: "TEZ ONAY SAYFASI", style: { ...bold, align: "center" } },
     blank(1),

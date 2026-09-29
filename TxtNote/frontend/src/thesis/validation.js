@@ -71,6 +71,16 @@ function validatePage(page, path = "page") {
     if (positive(page.widthMm) && nonnegative(margins.leftMm) && nonnegative(margins.rightMm) && margins.leftMm + margins.rightMm >= page.widthMm) errors.push(`${path} yatay kenar boşlukları sayfayı aşıyor`);
     if (positive(page.heightMm) && nonnegative(margins.topMm) && nonnegative(margins.bottomMm) && margins.topMm + margins.bottomMm >= page.heightMm) errors.push(`${path} dikey kenar boşlukları sayfayı aşıyor`);
   }
+  if (page.docxMargins !== undefined) {
+    const word = page.docxMargins;
+    if (!object(word) || ["topMm", "bottomMm", "leftMm", "rightMm"].some((key) => !nonnegative(word[key]))
+      || word.leftMm + word.rightMm >= page.widthMm || word.topMm + word.bottomMm >= page.heightMm) errors.push(`${path}.docxMargins geçersiz`);
+  }
+  if (page.docxContentFrame !== undefined) {
+    const frame = page.docxContentFrame;
+    if (!object(frame) || !nonnegative(frame.xMm) || !nonnegative(frame.yMm) || !positive(frame.widthMm)
+      || frame.xMm + frame.widthMm > page.widthMm || frame.yMm >= page.heightMm) errors.push(`${path}.docxContentFrame geçersiz`);
+  }
   for (const kind of ["header", "footer"]) {
     const part = page[kind];
     if (part === undefined) continue;

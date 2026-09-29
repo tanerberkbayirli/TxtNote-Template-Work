@@ -146,9 +146,12 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
   it("DOCX carries the Word values: margins, footer distance, 1.5 lines, 20.7 pt spacing, cover margins", async () => {
     const xml = await docxXml(compile());
     assert.match(xml, /<w:pgMar w:top="1701" w:right="1701" w:bottom="1701" w:left="1701" w:header="709" w:footer="709"/);
-    assert.match(xml, /<w:pgMar w:top="11995" w:right="3118" w:bottom="1247" w:left="3118"/);
-    const specialPageBottomTwips = [...xml.matchAll(/<w:pgMar\b[^>]*>/g)].slice(0, 4).map((match) => Number(match[0].match(/w:bottom="(\d+)"/)?.[1]));
-    assert.deepEqual(specialPageBottomTwips, [1247, 1701, 1701, 1701], "outer cover print box, then 30 mm inner-cover/approval/ethics margins in Word output");
+    assert.match(xml, /<w:tblpPr[^>]*w:tblpX="3118" w:tblpY="11995" w:horzAnchor="page" w:vertAnchor="page"/);
+    assert.match(xml, /<w:tblpPr[^>]*w:tblpX="1549" w:tblpY="1701" w:horzAnchor="page" w:vertAnchor="page"/);
+    const sectionMargins = [...xml.matchAll(/<w:pgMar\b[^>]*>/g)].map((match) =>
+      ["top", "right", "bottom", "left"].map((side) => Number(match[0].match(new RegExp(`w:${side}="(\\d+)"`))?.[1])));
+    assert.ok(sectionMargins.length >= 4);
+    assert.ok(sectionMargins.every((sides) => sides.every((twips) => twips === 1701)), "official DOCX uses 30 mm on all sides of every section");
     assert.match(xml, /w:spacing[^>]*w:after="414"[^>]*w:line="360" w:lineRule="auto"/);
     assert.match(xml, /w:val="Times New Roman"|w:ascii="Times New Roman"/);
     assert.match(xml, /thickThinSmallGap/);
