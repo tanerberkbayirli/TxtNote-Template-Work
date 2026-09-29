@@ -161,10 +161,10 @@
   },
   "currentUniversity": "aku",
   "currentTarget": "aku-fbe",
-  "currentPhase": "RETRY (aku-fbe attempt 2)",
+  "currentPhase": "RETRY (aku-fbe attempt 3)",
   "lastCompletedValidation": {
     "target": "aku-fbe",
-    "attempt": 1,
+    "attempt": 2,
     "verdict": "FAIL"
   },
   "lastCommit": null,
@@ -189,13 +189,13 @@
       "analysis": "DONE",
       "implementation": "DONE",
       "validation": "FAIL",
-      "attempts": 1,
+      "attempts": 2,
       "status": "IMPLEMENTED",
-      "lastError": "validation attempt 1: 11 failing checks (heading spacing after captions/tables, approval frame weights, 7-juror overflow, caption hanging, equation spacing/font/glyphs, footnote labels)",
+      "lastError": "validation attempt 2: 14 failing checks/variant (table-note gap, equation contexts, math glyphs, long-title right margin, long-document drift, DOCX list spacing/labels)",
       "specPath": "orchestration/specs/aku-fbe.json",
       "reportPath": "orchestration/reports/aku-fbe.md",
       "commit": "6d73e66",
-      "updatedAt": "2026-09-28",
+      "updatedAt": "2026-09-29",
       "specReview": "DONE"
     },
     "aku-sagbil": {
