@@ -28,6 +28,12 @@ for pno, page in enumerate(doc, 1):
                 bad.append((pno, round(ln["baseline"], 2), label, round(pt, 2)))
 print(f"{len(doc)} pages, {checked} equation gaps checked, eq baselines {min(r[1] for r in rows):.1f}..{max(r[1] for r in rows):.1f} mm, "
       f"{len({round(r[1], 0) for r in rows})} distinct y positions")
+# Text layer order: a heading number is emitted before its title ("10. BÖLÜM 9" is searchable, no line "10." alone).
+headings = [(pno, page.get_text()) for pno, page in enumerate(doc, 1) if "BÖLÜM" in page.get_text()]
+misordered = [pno for pno, t in headings if re.search(r"^\d+\.$\n[^\n]*BÖLÜM", t, re.M) or not re.search(r"\d+\. BÖLÜM \d+", t)]
+print(f"{len(headings)} chapter pages, text-layer order wrong on {misordered}" if misordered else f"{len(headings)} chapter headings read '<number>. TITLE' in the text layer")
+if misordered:
+    bad.append(("text-layer", misordered))
 if bad:
     print("DEVIATIONS (page, eq baseline mm, side, pt):")
     for b in bad:

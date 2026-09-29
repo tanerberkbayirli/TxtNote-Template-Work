@@ -235,7 +235,7 @@ function collectGroup(stack, language) {
       if (child.nodeType === 1) visit(child);
       else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration });
     }
-    const firstText = ops.slice(first).find((op) => op.type === "text");
+    const firstText = ops.slice(first).find((op) => op.type === "text" && !op.label);
     // Generated content the editor shows: heading numbers (::before) and list markers (::marker).
     const number = element.getAttribute("data-thesis-number") || element.getAttribute("data-thesis-caption")?.trim();
     if (number && firstText) {
@@ -250,11 +250,11 @@ function collectGroup(stack, language) {
         const width = box.width - (parseFloat(style.paddingLeft) || 0) - (parseFloat(style.paddingRight) || 0);
         const labelWidth = textWidth(labelStyle, label);
         const pitch = (parseFloat(pseudo.lineHeight) || parseFloat(style.lineHeight));
-        pushLabel(label, style.textAlign === "center" ? left + (width - labelWidth) / 2 : style.textAlign === "right" ? left + width - labelWidth : left, { top: firstText.top - pitch, baseline: firstText.baseline - pitch }, labelStyle);
+        pushLabel(label, style.textAlign === "center" ? left + (width - labelWidth) / 2 : style.textAlign === "right" ? left + width - labelWidth : left, { top: firstText.top - pitch, baseline: firstText.baseline - pitch }, labelStyle, firstText);
       } else {
         // A caption with a measured hang draws its label in an inline box of exactly that width (engine CSS): the text starts one hang after the line start.
         const hang = parseFloat(element.getAttribute("data-thesis-caption-hang"));
-        pushLabel(label, Number.isFinite(hang) ? firstText.x - hang : firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle);
+        pushLabel(label, Number.isFinite(hang) ? firstText.x - hang : firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle, firstText);
       }
     }
     // Equation number (::after of a numbered display equation): flush right/left of the block, centred on the formula.
@@ -279,13 +279,18 @@ function collectGroup(stack, language) {
       const box = local(element.getClientRects()[0] || element.getBoundingClientRect());
       const contentLeft = box.left + (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.borderLeftWidth) || 0);
       const markerStyle = { ...typography, letterSpacing: "normal", textTransform: "none" };
-      pushLabel(marker, style.listStylePosition === "inside" ? contentLeft : contentLeft - textWidth(markerStyle, `${marker} `), firstText, markerStyle);
+      pushLabel(marker, style.listStylePosition === "inside" ? contentLeft : contentLeft - textWidth(markerStyle, `${marker} `), firstText, markerStyle, firstText);
     }
   };
 
-  const pushLabel = (text, x, anchor, style) => {
+  // A generated label (heading number, caption label, list marker) is emitted before the element's first text op, so the PDF's text layer
+  // reads "1. GİRİŞ" and "a) item" in reading order (searchable), not the title followed by its number.
+  const pushLabel = (text, x, anchor, style, before = null) => {
     const fill = color(style.color);
-    if (fill) ops.push({ type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [] });
+    if (!fill) return;
+    const op = { type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [], label: true };
+    const at = before ? ops.indexOf(before) : -1;
+    if (at >= 0) ops.splice(at, 0, op); else ops.push(op);
   };
 
   visit(stack);
