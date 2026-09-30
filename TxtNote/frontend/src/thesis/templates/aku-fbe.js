@@ -113,26 +113,21 @@ const approvalRow = (label, value, labelStyle, valueStyle = {}) => ({ type: "gro
   { type: "text", value: label, widthPercent: LABEL_PERCENT, style: { ...bold, ...labelStyle } },
   { type: "text", value: `: ${value}`, style: { ...cellRight, ...valueStyle } },
 ] });
-// Juror row: name line + affiliation line (+ the grey signature hint). The template pitch is 14.29 mm (name single, affiliation 1.5, 6 pt after);
-// with jurors 6-7 (doctorate, second advisor) that cannot fit above the 30 mm bottom margin, so all rows use a compact pitch
-// (both lines single, 4 pt after: 11.15 mm) - a non-source layout choice.
-const jurorRow = (n, compact, visibleWhen) => {
+// Juror row: name line + affiliation line (+ the grey signature hint). Extend the official five-row
+// template pitch (14.29 mm: name single, affiliation 1.5, 6 pt after) to additional jurors.
+// The source requires seven jurors in the relevant doctoral case but does not prescribe a tighter pitch.
+const jurorRow = (n, visibleWhen) => {
   const single = { lineHeight: 1 };
-  const after = compact ? 4 : 6;
-  const affil = compact ? single : {};
   return { type: "group", visibleWhen, blocks: [
     approvalRow(n === 1 ? "Başkan" : "Üye", `{{JURY_${n}_TITLE_NAME}}`, { ...single, leftIndentMm: 42.49 - FRAME_L_MM }, single),
     { type: "group", direction: "row", blocks: [
-      { type: "text", value: "", widthPercent: LABEL_PERCENT, style: { ...affil, spaceAfterPt: after } },
-      { type: "metadata", field: `JURY_${n}_AFFILIATION`, style: { ...affil, leftIndentMm: 69.6 - 67.47, spaceAfterPt: after } },
-      { type: "text", value: "…… İmza ……", widthPercent: 30, style: { ...affil, ...grey, ...cellRight, align: "right", spaceAfterPt: after } },
+      { type: "text", value: "", widthPercent: LABEL_PERCENT, style: { spaceAfterPt: 6 } },
+      { type: "metadata", field: `JURY_${n}_AFFILIATION`, style: { leftIndentMm: 69.6 - 67.47, spaceAfterPt: 6 } },
+      { type: "text", value: "…… İmza ……", widthPercent: 30, style: { ...grey, ...cellRight, align: "right", spaceAfterPt: 6 } },
     ] },
   ] };
 };
-const MANY_JURORS = ["JURY_6_TITLE_NAME", "JURY_7_TITLE_NAME"];
-const jurors = (n) => n <= 5
-  ? [jurorRow(n, false, { noneFilled: MANY_JURORS }), jurorRow(n, true, { anyFilled: MANY_JURORS })]
-  : [jurorRow(n, true, { anyFilled: [`JURY_${n}_TITLE_NAME`] })];
+const jurors = (n) => [jurorRow(n, n > 5 ? { anyFilled: [`JURY_${n}_TITLE_NAME`] } : undefined)];
 // Outer frame: Word thickThinSmallGap (top/left) and thinThickSmallGap (bottom/right), drawn as in the guide: thin 0.75 pt outside, gap, thick 3 pt inside.
 const FRAME_BORDER = { outerPt: 0.75, gapPt: 0.75, innerPt: 3, paddingMm: 0, docx: { style: "thickThinSmallGap", sizePt: 3, sides: { top: "thickThinSmallGap", left: "thickThinSmallGap", bottom: "thinThickSmallGap", right: "thinThickSmallGap" } } };
 const FRAME_BORDER_MM = (0.75 + 0.75 + 3) * MM_PER_PT;
@@ -149,8 +144,7 @@ const approval = (degree) => ({
     { type: "group", visibleWhen: { anyFilled: ["CO_ADVISOR_NAME"] }, blocks: [approvalRow("İkinci Danışman", "{{CO_ADVISOR_TITLE}} {{CO_ADVISOR_NAME}}", cellLeft)] },
     blank(1),
     ...[1, 2, 3, 4, 5, 6, 7].flatMap(jurors),
-    // With jurors 6-7 the empty line above the frame is dropped (non-source) so that the block still ends above the bottom margin.
-    { type: "group", visibleWhen: { noneFilled: MANY_JURORS }, blocks: [blank(1)] },
+    blank(1),
     // Institute approval frame, top edge at 189.0 mm with five jurors.
     { type: "group", border: FRAME_BORDER, style: { align: "center" }, blocks: [
       { type: "spacer", heightMm: 6.43 - FRAME_BORDER_MM },
@@ -335,12 +329,13 @@ const base = {
       "Kılavuz 2020, şablon dosyası 2025: şablon, kılavuzla birlikte hazırlanan 2019/2020 şablonunun yeniden kaydıdır; daha yeni bir kural seti yoktur (flag guide-template-version-gap). Şablondaki 2019/2020 yılları ve müdür adı (Prof. Dr. Bekir YALÇIN) örnek içeriktir, basılmaz.",
       "Öncelik: kılavuzun açık cümlesi > şablon XML > kılavuzdaki örnek sayfa geometrisi. Sol/üst/sağ/alt kenar boşlukları 3 cm (kılavuzun kendi sayfalarında sağ kenar 28,9 mm; açık kural ve şablon 30 mm).",
       "ÖZET/ABSTRACT: Anahtar Kelimeler, yıl/sayfa satırından önce gelir (kılavuz metni p.18); kılavuzun örnek sayfası ve şablon ters sırayı gösterir (needsConfirmation). ÖZGEÇMİŞ, EKLER'den önce gelir (kılavuzun sıra listesi, İçindekiler örneği ve şablon; metin 'en son sayfa' der, needsConfirmation).",
-      "Onay sayfası: şablon (dış kenarlar 27,32-178,91 mm, 14,29 mm jüri aralığı, müdür adı sırası) kılavuz örneğinden (154 mm, 12,91 mm) önceliklidir; jüri satırlarının taban çizgileri şablon XML'inden hesaplanmıştır (INFERRED). Jüri sayısı yüksek lisans için belirtilmemiştir: 5 satır varsayılan, 6-7. satırlar yalnızca doldurulunca (doktora, ikinci danışman) görünür. 6 veya 7 jüri üyesinde kaynak kendi içinde çelişir (şablon aralığı 30 mm alt kenar boşluğuna sığmaz): tüm jüri satırları sıkışık aralıkla (iki satır tek aralık, 4 pt sonra: 11,15 mm) yazılır ve çerçevenin üstündeki boş satır çıkarılır; blok 267 mm'nin üstünde biter (7 jüri düzeni kaynak dışı, NOT_SPECIFIED).",
+      "Onay sayfası: şablon (dış kenarlar 27,32-178,91 mm, 14,29 mm jüri aralığı, müdür adı sırası) kılavuz örneğinden (154 mm, 12,91 mm) önceliklidir; jüri satırlarının taban çizgileri şablon XML'inden hesaplanmıştır (INFERRED). Jüri sayısı yüksek lisans için belirtilmemiştir: 5 satır varsayılan, 6-7. satırlar yalnızca doldurulunca (doktora, ikinci danışman) görünür. 6-7. satırlara aynı kaynak satır düzeni INFERRED olarak uygulanır; uzun onay sayfasının sınır içinde kalacağı iddia edilmez.",
       "Enstitü müdürü adı düzenlenebilir alandır; 2019 örnek içeriği yazılmaz. Gri 'İmza' ipuçları şablondaki gibi (BFBFBF) basılır; basılıp basılmayacağı kaynakta belirtilmemiştir.",
       "Dış Kapak: fiziksel 1. sayfa, numarasız ve sayılmaz; metin yalnız x 55-155 mm, y 210-275 mm alanında, üstten hizalı (ilk taban çizgisi 215,53 mm, INFERRED); kapak kartonunun kendisi ve kenarlığı üretilmez. İsteğe bağlı satırlar (proje numarası, ikinci danışman) yoksa yuvasıyla birlikte çıkar (kaynak: belirsiz).",
       "Onay sayfası çerçevesi: kılavuzdaki gibi dışta ince 0,75 pt, boşluk, içte kalın 3 pt çizgi; Word'de şablonun kenarlıkları (üst/sol thickThinSmallGap, alt/sağ thinThickSmallGap, sz 24) kenar başına yazılır. Dış kenarlar x 27,32 ve 178,91 mm.",
       "Liste dizinleri (ŞEKİLLER/ÇİZELGELER/RESİMLER): şablondaki açıklama görselinin ayarı (tek satır aralığı, 6 nk sonra, sola yaslı, etiket genişliği kadar asılı girinti); kılavuz örneği 1,5 satır aralığı gösterir (needsConfirmation). RESİMLER DİZİNİ için örnek sayfa yoktur (Şekil dizini benzetmesi).",
-      "Dipnotlar: kaynak sessiz; 10 pt, tek satır, Times New Roman (kaynak dışı, NOT_SPECIFIED). Denklem yazı tipi kılavuzda Cambria Math; bu yazı tipi gömülemez, denklem numarası Times New Roman 12 pt basılır.",
+      "Dipnotlar: kaynak sessiz; 10 pt, tek satır, Times New Roman (kaynak dışı, NOT_SPECIFIED). Denklem yazı tipi kılavuzda Cambria Math 12 pt; gerçek PDF'de bu font gömülmüş, DOCX'te OMML olarak dışa aktarılmıştır.",
+      "Birimler: kılavuz §2.11 sayısal ve boyutsal değerlendirmelerde SI sistemini zorunlu kılar (EXPLICIT); bu yazar içeriği kuralı yalnız sayfa biçiminden doğrulanamaz.",
       "Yatay sayfa (gerekirse, sayfa numarası dikey sayfadaki gibi altta ortada): TxtNote'ta yatay sayfa yoktur; sınırlama. A4'ten büyük şekiller katlanarak EKLER'e konur (yazar işi).",
       "Baskı: tek yüz, 70-100 g/m² beyaz kâğıt; savunma nüshası spiral, son nüshalar (en az 7) enstitü kapağıyla ciltlenir; Word'den yazdırılır, PDF'den değil (fiziksel üretim, belge içeriği değildir). Şablonun tek/çift sayfa bölüm sonları tek yüzlü baskıda boş sayfa üretmez.",
       "Sınırlamalar: şekil/resim için '(Devam)' başlığı yalnız çizelgelerde desteklenir (bölünen şekil yoktur: şekil sayfa içinde bölünmez). Denklemler için Cambria Math gereklidir; PDF ve Word çıktısındaki yazı tipini ve özel matematik simgelerini kontrol edin.",

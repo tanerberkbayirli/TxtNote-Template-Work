@@ -89,9 +89,9 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     assert.match(text(withCo, "approval"), /JURY_7_AFFILIATION/);
     assert.doesNotMatch(text(without, "approval"), /JURY_6_AFFILIATION|JURY_7_AFFILIATION/);
     assert.match(text(without, "approval"), /JURY_5_AFFILIATION/);
-    // The empty line above the institute frame stays with five jurors and goes with seven.
+    // The source blank line above the institute frame remains for both jury counts.
     const spacers = (model) => section(model, "approval").layout.filter((node) => node.type === "spacer" || (node.type === "group" && node.blocks.every((b) => b.type === "spacer"))).length;
-    assert.equal(spacers(without) - spacers(withCo), 1);
+    assert.equal(spacers(without), spacers(withCo));
     // inner cover: 14 pt bold, gaps of whole 14 pt @ 1.5 lines (24.15 pt = 8.519 mm)
     const spacer = section(without, "inner-cover").layout.find((node) => node.type === "spacer");
     assert.ok(Math.abs(spacer.heightMm - 24.15 * 25.4 / 72) < 1e-6);
@@ -272,15 +272,14 @@ describe("aku-fbe validation attempt 1 fixes", () => {
     assert.ok(Math.abs(210 - page.margins.rightMm - 178.91) < 1e-9);
   });
 
-  it("7 jurors use a compact pitch so the whole block ends above 267 mm (non-source, recorded in the notes)", () => {
+  it("additional jurors retain the official five-row pitch without unsupported compression", () => {
     const rows = (model) => JSON.stringify(section(model, "approval").layout);
     const many = compile(akuFbePhd, { values: { JURY_6_TITLE_NAME: "A", JURY_7_TITLE_NAME: "B" } });
     assert.match(rows(many), /JURY_7_AFFILIATION/);
-    // compact rows: both lines single, 4 pt after; the 5-juror layout keeps the template pitch (6 pt after, affiliation 1.5)
     const afters = (model) => [...rows(model).matchAll(/"JURY_1_AFFILIATION"[\s\S]*?"spaceAfterPt":(\d+)/g)].map((m) => Number(m[1]));
-    assert.deepEqual(afters(many), [4]);
+    assert.deepEqual(afters(many), [6]);
     assert.deepEqual(afters(compile()), [6]);
-    assert.ok(akuFbeMaster.source.notes.some((n) => /7 jüri/.test(n) && /kaynak dışı/.test(n)));
+    assert.ok(akuFbeMaster.source.notes.some((n) => /6-7\. satırlara/.test(n) && /INFERRED/.test(n)));
   });
 
   it("equations: 12 pt formula, Cambria Math in Word, caret pads cancelled through measured attributes, wrapping gutters, presentation attributes never stored", async () => {

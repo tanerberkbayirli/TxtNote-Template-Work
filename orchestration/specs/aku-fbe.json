@@ -3949,6 +3949,20 @@
      "quote": "her biri ayrı bir sayfadan başlayacak şekilde"
     }
    ]
+  },
+  {
+   "key": "content.units.system",
+   "value": "SI",
+   "confidence": "EXPLICIT",
+   "appliesTo": ["*"],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.10 §2.11",
+     "quote": "Tezlerdeki sayısal değerlendirmeler ve boyut değerlendirmelerinde SI birim sistemine uyulması zorunludur."
+    }
+   ],
+   "notes": "This is an author-content requirement; page styling alone cannot certify that values use SI units."
   }
  ],
  "sections": [
@@ -13378,6 +13392,40 @@
   }
  ],
  "conflicts": [
+  {
+   "topic": "2011 FBE guide versus governing 2020 FBE guide: body font",
+   "sources": [
+    {
+     "url": "https://aku.edu.tr/FENBILENS/Genel/tez1.pdf",
+     "locator": "p.5 §2.2 (effective June 2011, p.4)",
+     "value": "Calibri or Times New Roman, 12 pt"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "p.5 §2.2 (effective January 2020, p.4)",
+     "value": "Times New Roman, 12 pt"
+    }
+   ],
+   "decision": "The 2020 guide is explicitly later and is linked from the current FBE thesis resources. Use Times New Roman for the 2020/2025 AKÜ-FBE template. The 2011 Calibri option does not carry forward.",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "2021 university-repository doctoral thesis versus 2020 guide: long cover position and co-advisor jury count",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "PDF p.32 outer-cover dimension diagram; PDF p.34 approval callout",
+     "value": "Cover title starts within the box at y=210 mm (guide example first baseline 215.53 mm); doctorate with second advisor requires seven jurors"
+    },
+    {
+     "url": "https://acikerisim.aku.edu.tr/xmlui/bitstream/handle/11630/8542/10375459.pdf?isAllowed=y&sequence=1",
+     "locator": "Ahmet Burçin BATIBAY, January 2021 doctoral thesis, physical PDF pp.1 and 3",
+     "value": "Three-line outer-cover title first baseline y=203.48 mm, 12 pt; date baseline y=264.79 mm; second advisor present but signed approval page shows five juror rows"
+    }
+   ],
+   "decision": "CONFLICT: the later accepted thesis demonstrates an actual layout but does not state a general exception to the guide's explicit cover dimension or seven-juror instruction. Do not use its upward-shifted cover or five-juror approval as a universal rule; request authoritative resolution before claiming exact compliance for these cases.",
+   "needsConfirmation": true
+  },
   {
    "topic": "Right margin",
    "sources": [
