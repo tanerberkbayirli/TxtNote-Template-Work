@@ -2,6 +2,12 @@
 
 Spec: `orchestration/specs/aku-sbe.json` · Derived files: `orchestration/artifacts/aku-sbe/source/` (`geometry.json` = line/image/drawing geometry of all 53 pages, `guide-text.txt`, 9 page renders of EK 1–EK 9).
 
+## Variant scope correction (2026-09-30)
+
+The official guide explicitly includes **Sanatta Yeterlik Tezi** alongside master's and doctoral theses (PDF p.2 Sunuş, p.4 §2.1, p.40 EK 4). This requires a distinct Turkish registry variant; the current registry degree-type enum needs an extension. The guide also requires theses in English-language programmes to use the programme language, place that language's abstract before the Turkish abstract, and include a Turkish extended summary after the appendices (PDF p.2, p.5 §2.4, p.10 §4.3). EK 12 (p.52) makes the 2,000-word extended summary explicit for English master's and doctoral theses. Two English registry variants are source-confirmed but unregistered. Other-language labels and English sanatta yeterlik details remain UNKNOWN.
+
+The manifest and spec now track these three pending variants. The existing two Turkish variants do not carry the extended Turkish summary. Production implementation remains behind the FBE gate.
+
 ## Summary
 
 The only source is `AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf`, 53 pages. Its cover says "AFYONKARAHİSAR 2023", the file name says 2026, and the PDF CreationDate is 2026-02-06 (Word LTSC). All pages were read.

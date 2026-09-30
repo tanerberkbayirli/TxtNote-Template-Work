@@ -1,10 +1,54 @@
+# AKÜ Sağlık Bilimleri — 2022 source reconciliation (partial, 2026-09-30)
+
+The institute-hosted 2022 guide is the current primary source for reconciliation. The former 195-rule set was extracted from a historical PDF. Every rule now has a current disposition: reconciled, conflict, unknown, or historical-only. Unsupported former values are cleared from the current `value` field and retained only as `historicalValue`.
+
+## Reconciled current rules
+
+| Finding | Current rule | Evidence | Class |
+|---|---|---|---|
+| Page size | A4, 210 × 297 mm | PDF p.4 (printed p.2), §2.1 | EXPLICIT |
+| Margins | 30 mm on every side | PDF p.4 (printed p.2), §2.3 | EXPLICIT |
+| Paper | 70–100 g/m², first-quality white | PDF p.4, §2.1 | EXPLICIT |
+| Printing | Single-sided | PDF p.4, §2.2 | EXPLICIT |
+| Main text | Times New Roman, 12 pt; justified; 1.5 spacing except specified exceptions | PDF p.4, §§2.2–2.4 | EXPLICIT |
+| Paragraph beginnings | Flush at left frame edge, no indent | PDF p.4, §2.4 | EXPLICIT |
+| Heading layout | Up to three levels; bold, left aligned; H1 uppercase, H2/H3 title case with conjunctions lowercase; deeper levels discouraged | PDF p.5, §2.7 | EXPLICIT |
+| Heading sizes | UNKNOWN | PDF p.5, §2.7 contains no sizes | UNKNOWN |
+| Pagination | Bottom center; no adjacent symbol; TNR 11 pt; front matter lower-case Roman, main text Arabic from Giriş=1 | PDF pp.4–5, §§2.3, 2.6 | EXPLICIT |
+| Front-page numbering | Text excludes four preliminary sheets, while Example 8 assigns approval II, ethics III, abstract IV | PDF p.5 §2.6; p.33 Example 8 | CONFLICT |
+| Structure | Covers, approval, ethics declaration, ÖZET, SUMMARY, preface, contents, lists, main text, sources, appendices, CV | PDF pp.13–14, §3.1 | EXPLICIT |
+| Core chapters | GİRİŞ; MATERYAL ve METOT; BULGULAR; TARTIŞMA; SONUÇ ve ÖNERİLER; KAYNAKLAR; EKLER | PDF p.13, §3 | EXPLICIT |
+| Abstract | At most 2 pages; 3–6 alphabetized keywords; label “Anahtar Kelimeler:” | PDF p.15, §3.2.5 | EXPLICIT |
+| Abstract spacing | UNKNOWN pending example measurement; general text rule is 1.5 except special cases | PDF pp.4, 15, 30; §§2.4, 3.2.5, Example 5 | UNKNOWN |
+| Tables/figures | Çizelge caption above, Şekil below; label and number bold, colon separator; independent chapter numbering; continued table retains number + “Devam.” | PDF pp.11–12, §2.14 and example | EXPLICIT |
+| Caption size | Text says main-text size; example specifies 11 pt. Conflict with 12 pt main text. | PDF p.11 §2.14; p.12 example | CONFLICT |
+| Footnotes | Very short; continuous rule after two full spaces; smaller type and narrower spacing than body | PDF p.6, §2.9 | EXPLICIT |
+| Bibliography | 11 pt; single spaced; 1.25 cm hanging indent; 6 nk after each entry; alphabetical rules | PDF p.18, §3.3.6 | EXPLICIT |
+| Appendices | EK 1, EK 2, …; each starts on a new page; page numbers continue | PDF p.23, §3.3.7 | EXPLICIT |
+| Inner cover size | §3.2.2 specifies 14 pt except the 12 pt support statement; Example 2 note specifies 12 pt. | PDF p.14 §3.2.2; p.27 Example 2 | CONFLICT |
+| Supplied outer cover | University cover is obtained from the book sales unit; old cover geometry is unsupported by the 2022 source | PDF p.14, §3.2.1 | EXPLICIT for supplied cover; old dimensions UNKNOWN |
+
+## Structural disposition (2022)
+
+The section order now follows §3.1 and covers the university-supplied cover, cover-under page, inner cover, approval, scientific ethics declaration, ÖZET, SUMMARY, ÖNSÖZ, contents, symbols, optional figure/Çizelge/image indexes, main chapters, KAYNAKLAR, optional appendices, and CV. Missing declaration and image-index records were added. Legacy geometric layouts were moved to `historicalLayout`; current `layout` arrays are empty pending the separate geometry review.
+
+- Sections: 13 RECONCILED, 6 CONFLICT, 1 UNKNOWN, 0 HISTORICAL_ONLY. Conflicts cover the cover-under count/visibility interpretation, inner-cover font, exact index titles, and appendix title/numbering; additional-language abstract placement is UNKNOWN.
+- Placeholders: 22 RECONCILED, 5 HISTORICAL_ONLY, 0 UNKNOWN/CONFLICT. Current cover, approval, declaration, abstract, and preface fields have source citations. Fixed program-name/rapporteur roles and fixed jury-member slots were retired in favor of a repeatable jury-members collection.
+- Pending and untouched: 47 validation checks, source geometry, and engine gaps remain STALE pending later passes.
+
+## Status and next gate
+
+All 195 rules now have a current disposition: 156 RECONCILED, 10 CONFLICT, 22 UNKNOWN, 7 HISTORICAL_ONLY, 0 STALE. The unresolved conflicts are formal effective date, preliminary-page numbering, inner-cover typography, caption size, figure/table index titles, and appendix heading/numbering. UNKNOWN values include unsupported spacing and geometry where the 2022 source provides no numeric rule. Geometry, validation checks, and engine gaps remain explicitly stale and pending. The source-rule disposition audit is complete; implementation remains pending the FBE-first gate.
+
+---
+
 # aku-sagbil — Afyon Kocatepe Üniversitesi, Sağlık Bilimleri Enstitüsü
 
 ## 2022 official guide source audit (2026-09-30)
 
 The official institute-hosted [10.02.2022 PDF](https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf) is now the primary source for this target. The 34-page file named `AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf` is preserved unchanged and marked historical/superseded in the manifest and spec. Its PDF metadata says created/modified 2009-11-13. The newer PDF has 39 pages and metadata created/modified 2022-02-10 11:40:52 +03:00. **Formal effective date remains UNKNOWN/CONFLICT:** the cover prints 2020 and the Senate approval date is blank (PDF p.3, printed p.1).
 
-The pre-existing 195-rule list remains as a historical baseline, with its original citations intact. It is **not yet a reconciled current spec**. The spec `currentRuleAudit` field records this status and current-source deltas so none of those legacy values are silently reused as current requirements.
+The original 195-rule set retains historical citations. The current 2022 disposition above replaces unsupported rule values with source-backed values, explicit UNKNOWNs, conflicts, or historical-only records. The old analysis below is historical context only and does not override current dispositions.
 
 ### Evidence-backed deltas
 
@@ -73,7 +117,7 @@ Several details look dated: Harvard vs APA wording, Vancouver replaced, a cellop
 - There is no other degree difference: ÖZGEÇMİŞ, SUMMARY and every layout rule apply to both degrees.
 - Language is TR only. SUMMARY is a required English abstract inside the TR thesis. RÉSUMÉ or ZUSAMMENFASSUNG is optional.
 
-## Key rules (all in the spec with evidence)
+## Historical key rules from the superseded guide (not current requirements)
 
 **Page**
 - A4, portrait.

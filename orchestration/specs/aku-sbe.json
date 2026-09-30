@@ -54,8 +54,13 @@
   }
  ],
  "variantNotes": [
-  "'Sanatta Yeterlik Tezi' is a third degree type covered by the same guide (inner cover, tanıtım sayfası, approval form) but not registered in the manifest.",
-  "Foreign-language programmes: thesis in the language of instruction, abstract order changes and a ≥2000-word Genişletilmiş Türkçe Özet is added after the appendices (master and PhD). No EN variant is registered; the TR variants carry it as a conditional section."
+  "'Sanatta Yeterlik Tezi' is an EXPLICIT third degree type covered by the guide (PDF pp.2, 4 and EK 4 p.40), but the registry degreeType enum does not yet support it. A distinct Turkish registry variant is required.",
+  "English-language master and doctoral theses are EXPLICIT scope: the instruction-language abstract precedes the Turkish abstract, and a ≥2000-word Genişletilmiş Türkçe Özet is required after appendices (PDF pp.2, 5, 10 and EK 12 p.52). These require distinct English registry variants or an equivalent explicit selector; the two Turkish variants must not carry this section. Other languages and English sanatta yeterlik details remain UNKNOWN."
+ ],
+ "requiredVariantsPending": [
+  {"proposedRegistryId":"aku-sbe-sanatta-yeterlik-tr-v1","degreeType":"sanatta-yeterlik","language":"tr","status":"SOURCE_CONFIRMED_ENGINE_GAP","evidence":"2026 guide PDF p.2 Sunuş; p.4 §2.1; p.40 EK 4"},
+  {"proposedRegistryId":"aku-sbe-master-en-v1","degreeType":"master","language":"en","status":"SOURCE_CONFIRMED_NOT_REGISTERED","evidence":"2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"},
+  {"proposedRegistryId":"aku-sbe-phd-en-v1","degreeType":"phd","language":"en","status":"SOURCE_CONFIRMED_NOT_REGISTERED","evidence":"2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"}
  ],
  "rules": [
   {

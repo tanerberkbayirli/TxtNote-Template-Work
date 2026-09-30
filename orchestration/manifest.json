@@ -36,10 +36,12 @@
       "institute": "Sosyal Bilimler Enstitüsü",
       "degrees": [
         "master",
-        "phd"
+        "phd",
+        "sanatta-yeterlik"
       ],
       "languages": [
-        "tr"
+        "tr",
+        "en"
       ],
       "variants": [
         {
@@ -57,6 +59,11 @@
           "confirmed": true
         }
       ],
+      "requiredVariantsPending": [
+        "aku-sbe-sanatta-yeterlik-tr-v1",
+        "aku-sbe-master-en-v1",
+        "aku-sbe-phd-en-v1"
+      ],
       "templateModule": "TxtNote/frontend/src/thesis/templates/aku-sbe.js",
       "sourceFiles": [
         "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf"
@@ -66,8 +73,8 @@
       "priority": 2,
       "relatedTargets": [],
       "dependencies": [],
-      "flags": [],
-      "notes": ""
+      "flags": ["additional-degree-type-engine-gap", "english-variants-not-registered"],
+      "notes": "2026 guide also explicitly covers Turkish sanatta yeterlik and English-programme master's/doctoral theses. Three source-confirmed registry variants remain pending; arbitrary other-language labels are UNKNOWN."
     },
     {
       "id": "aku-fbe",

@@ -169,21 +169,21 @@
   },
   "lastCommit": null,
   "environment": {
-    "libreofficeWriter": "libreoffice-writer-nogui installed via apt (analyzer, aku-mbg-lisans)"
+    "libreofficeWriter": "Not available on the current Windows host; earlier analyzer note referred to a different environment. Word COM repagination returned 0x80070520."
   },
   "targets": {
     "aku-sbe": {
-      "analysis": "DONE",
+      "analysis": "IN_PROGRESS",
       "implementation": "PENDING",
       "validation": "PENDING",
       "attempts": 0,
       "status": "PENDING",
-      "lastError": null,
+      "lastError": "2026 guide explicitly covers Turkish sanatta yeterlik and English-programme master's/doctoral theses; three required registry variants remain unregistered (orchestration/specs/aku-sbe.json).",
       "specPath": "orchestration/specs/aku-sbe.json",
       "reportPath": "orchestration/reports/aku-sbe.md",
       "commit": null,
-      "updatedAt": "2026-09-28",
-      "specReview": "DONE"
+      "updatedAt": "2026-09-30",
+      "specReview": "IN_PROGRESS"
     },
     "aku-fbe": {
       "analysis": "DONE",
@@ -204,7 +204,7 @@
       "validation": "PENDING",
       "attempts": 0,
       "status": "IN_PROGRESS",
-      "lastError": "2022 institute-hosted guide identified as primary; current spec is STALE pending reconciliation. See orchestration/reports/aku-sagbil.md. Historical rule values are preserved and must not drive implementation.",
+      "lastError": "2022 source rule and section/placeholder disposition audits complete: 156/10/22/7 rules; sections 13 reconciled, 6 conflict, 1 unknown; placeholders 22 reconciled, 5 historical-only. Geometry, validation checks, and engine gaps remain pending the FBE-first gate.",
       "specPath": "orchestration/specs/aku-sagbil.json",
       "reportPath": "orchestration/reports/aku-sagbil.md",
       "commit": null,
