@@ -100,18 +100,22 @@
       ],
       "templateModule": "TxtNote/frontend/src/thesis/templates/aku-fbe.js",
       "sourceFiles": [
+        "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
         "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
         "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf"
       ],
-      "supplementarySources": [],
+      "supplementarySources": [
+        "orchestration/official-sources/aku-fbe/Fen_Bil_Ens_Tez_LaTeX_Sablon_2020.rar"
+      ],
       "status": "IMPLEMENTABLE",
       "priority": 1,
       "relatedTargets": [],
       "dependencies": [],
       "flags": [
-        "guide-template-version-gap"
+        "official-latex-spacing-conflict",
+        "long-title-layout-unknown"
       ],
-      "notes": "Kılavuz 2020, şablon 2025: çelişkide kaynak önceliği analizde belgelenmeli"
+      "notes": "2020 guide is current; live Word template was uploaded in 2023 and local 2025 file is a semantic resave. Official LaTeX sample uses 1.2 baseline stretch against the guide's explicit 1.5 spacing; long-title and seven-juror layout remains unresolved."
     },
     {
       "id": "aku-sagbil",
@@ -144,6 +148,7 @@
       ],
       "templateModule": "TxtNote/frontend/src/thesis/templates/aku-sagbil.js",
       "sourceFiles": [
+        "orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf",
         "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf"
       ],
       "supplementarySources": [],
@@ -152,9 +157,9 @@
       "relatedTargets": [],
       "dependencies": [],
       "flags": [
-        "outdated-source"
+        "current-source-spec-audit-pending"
       ],
-      "notes": "2015 kılavuzu; güncellik teyit edilemedi"
+      "notes": "Official institute-hosted 10.02.2022 guide is primary. Historical 2015-named/2009-created PDF is preserved. Formal approval date and current spec reconciliation remain pending."
     },
     {
       "id": "aku-cografya-lisans",
@@ -1502,8 +1507,8 @@
       "version": "2025 (içerikte 2020 ibaresi)",
       "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
       "target": "aku-fbe",
-      "role": "primary",
-      "notes": ""
+      "role": "supplementary",
+      "notes": "Local resave of official 2023 Word file; identical substantive text, styles, numbering, sizes and margins."
     },
     {
       "id": "aku-fbe-guide",
@@ -1521,6 +1526,36 @@
       "target": "aku-fbe",
       "role": "primary",
       "notes": ""
+    },
+    {
+      "id": "aku-fbe-template-online-2023",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": ["master", "phd"],
+      "version": "Official online file created/modified 2023-12-20",
+      "path": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2023/12/tez-word-sablon-2020_WEB_icin-2-1.docx",
+      "target": "aku-fbe",
+      "role": "primary",
+      "notes": "Downloaded 2026-09-30; SHA256 E067EB268E9E9696158F8AA9BD7C061C65CC998D3C0E7EF83A18EEE05B6D7ADC"
+    },
+    {
+      "id": "aku-fbe-latex-2020",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": ["master", "phd"],
+      "version": "Official 2020/01 LaTeX archive",
+      "path": "orchestration/official-sources/aku-fbe/Fen_Bil_Ens_Tez_LaTeX_Sablon_2020.rar",
+      "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/01/Fen-Bil-Ens-Tez-LaTeX-%C5%9Eablon.rar",
+      "target": "aku-fbe",
+      "role": "supplementary",
+      "notes": "Downloaded 2026-09-30; SHA256 53E7509B5D3956E8276794032C4FE11B5AF095BBAF2F7101A318AFA75EB2F93E; spacing conflicts with guide."
     },
     {
       "id": "aku-mbg-guide",
@@ -1565,11 +1600,11 @@
         "master",
         "phd"
       ],
-      "version": "2015",
+      "version": "Historical file name 2015; PDF metadata 2009-11-13",
       "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
       "target": "aku-sagbil",
-      "role": "primary",
-      "notes": "kaynaklar.md: eski olabilir"
+      "role": "historical-superseded",
+      "notes": "Preserved historical guide; superseded as current authority by the official institute-hosted 2022 guide."
     },
     {
       "id": "aku-sbe-guide",
@@ -2701,6 +2736,24 @@
       "target": "iyte-lee",
       "role": "supplementary",
       "notes": "Makaleden tez hazırlama yönergesi; ayrı varyant gerekip gerekmediği analizde belirlenecek"
+    },
+    {
+      "id": "aku-sagbil-guide-2022",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "PDF URL/name 10.02.2022; cover 2020; metadata 2022-02-10; approval date blank",
+      "path": "orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf",
+      "url": "https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf",
+      "target": "aku-sagbil",
+      "role": "primary",
+      "notes": "Official institute-hosted PDF, 39 pages; downloaded 2026-09-30, SHA256 B9CE1B784277B50B81C9DA027BFE40D06948B78868D8D49145A2ECB730FFD581. Formal effective date not confirmed."
     }
   ],
   "excludedFiles": [

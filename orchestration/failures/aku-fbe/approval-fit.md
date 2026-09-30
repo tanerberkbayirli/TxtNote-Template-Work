@@ -4,7 +4,7 @@
 
 ## Official source bounds
 
-- **Approval page bottom: 266.996 mm.** The 2020 guide says to leave 3 cm from page edges (PDF p.5, §2.3). The 2025 official DOCX has A4 height 16838 twips and `w:bottom="1701"` in all four `sectPr` nodes (`word/document.xml`). 1701 twips = 30.00375 mm; using 297 mm page height gives 266.996 mm. The approved spec records the margin as 30 mm, EXPLICIT. Attempt 4's 11.994 mm generated margin was an implementation override, not an AKÜ exception.
+- **Approval page bottom: 266.996 mm.** The 2020 guide says to leave 3 cm from page edges (PDF p.5, §2.3). The currently linked 2023 official DOCX and its local 2025 resave both have A4 height 16838 twips and `w:bottom="1701"` in all four `sectPr` nodes (`word/document.xml`). 1701 twips = 30.00375 mm; using 297 mm page height gives 266.996 mm. The approved spec records the margin as 30 mm, EXPLICIT. Attempt 4's 11.994 mm generated margin was an implementation override, not an AKÜ exception.
 - **Outer-cover text bottom: 275 mm.** The guide's cover example (PDF p.32 / printed p.29) bounds the print area to x=55–155 mm and y=210–275 mm and says to center Times New Roman 12 pt. Attempt 4's 10 mm generated bottom margin is not evidence for a lower source limit.
 - The guide's approval example (PDF p.34 / printed p.31) uses the title “Tez Onay Sayfası” (16 characters). Its approval sentence occupies five extracted lines. Section 4.2.3 says the example assumes five jurors and instructs authors to adjust for the actual juror count; it gives no title-length or long-title rule.
 

@@ -1,5 +1,36 @@
 # aku-sagbil — Afyon Kocatepe Üniversitesi, Sağlık Bilimleri Enstitüsü
 
+## 2022 official guide source audit (2026-09-30)
+
+The official institute-hosted [10.02.2022 PDF](https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf) is now the primary source for this target. The 34-page file named `AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf` is preserved unchanged and marked historical/superseded in the manifest and spec. Its PDF metadata says created/modified 2009-11-13. The newer PDF has 39 pages and metadata created/modified 2022-02-10 11:40:52 +03:00. **Formal effective date remains UNKNOWN/CONFLICT:** the cover prints 2020 and the Senate approval date is blank (PDF p.3, printed p.1).
+
+The pre-existing 195-rule list remains as a historical baseline, with its original citations intact. It is **not yet a reconciled current spec**. The spec `currentRuleAudit` field records this status and current-source deltas so none of those legacy values are silently reused as current requirements.
+
+### Evidence-backed deltas
+
+| Finding | 2022 value and evidence | Historical-source value | Status |
+|---|---|---|---|
+| Margins | 30 mm on every edge; PDF p.4 (printed p.2), §2.3 | left 40, top/bottom 30, right 25 mm; old PDF p.5 (printed p.1), §1.4 | EXPLICIT; changed |
+| Paper weight | 70–100 g/m²; PDF p.4 (printed p.2), §2.1 | 80–100 g/m²; old PDF p.5 (printed p.1), §1.1 | EXPLICIT; changed |
+| Main font | Times New Roman 12 pt, thesis-wide except inner cover; diagrams/tables/formulas may go to 8 pt; PDF p.4, §2.2 | open choice of listed book fonts and 10–14 pt; old PDF p.5, §1.3 | EXPLICIT; changed |
+| Paragraph starts | flush left, without a leading gap; PDF p.4, §2.4 | 5–10 mm indentation allowed; old PDF p.5–6, §1.5 and examples | EXPLICIT; changed |
+| Heading alignment | all levels start at the left frame edge; PDF p.5, §2.7 | H1 centered in legacy spec | EXPLICIT; changed |
+| Page number | centered in bottom footer; Times New Roman 11 pt; PDF pp.4–5, §§2.3 and 2.6 | top, centered or right; size unknown; old PDF p.7, §1.8 | EXPLICIT; changed |
+| Front matter | approval, ethics statement, Turkish abstract, Summary, preface, TOC, lists, then main text; PDF pp.13–14, §3.1 | abstracts after main text; preface and TOC order differed | EXPLICIT; changed |
+| Main chapter names/order | `GİRİŞ`, `MATERYAL ve METOT`, `BULGULAR`, `TARTIŞMA`, `SONUÇ ve ÖNERİLER`; PDF p.13, §3 | legacy allowed/used `GEREÇ VE YÖNTEM` | EXPLICIT; changed |
+| Abstract keywords | 3–6, alphabetically; PDF p.15, §3.2.5 | legacy spec recorded exactly 5 | EXPLICIT; changed |
+| Outer-cover window/logo band | not specified by the 2022 text/examples; university supplies the outer cover and Example 1 is the cover-under page, §3.2.1, PDF p.14 and Example 1, p.26 | old spec had a measured blue band/window | UNKNOWN for current guide; legacy geometry is unsupported |
+| Roman front-page start/counting | text says cover, inner cover, approval, ethics pages are “not numbered”; Example 8 lists approval II, ethics III, abstract IV (PDF p.33) | prior spec used inner cover i and approval ii | CONFLICT within 2022 guide; start index/counting unresolved |
+
+The current guide retains explicit 1.5 line spacing and justified text (§2.4), and single-sided printing (§2.2). These are corroborated, not deltas. The inner-cover font note also conflicts: §3.2.2 says 14 pt bold except the 12 pt support line, while Example 2 says inner-cover text is 12 pt TNR (PDF p.27); retain both as CONFLICT. The five-juror approval example says member count should be adjusted to the jury (PDF p.14, §3.2.3 and Example 3, p.28); five is not a universal requirement.
+
+**Implementation gate:** source/spec reconciliation is now pending for `aku-sagbil`; do not implement from the legacy 195-rule list. This audit did not modify production templates or generate exports.
+
+
+## Historical 2009/2015-source analysis — superseded for current implementation
+
+The following analysis was written before the institute's 2022 PDF was found. Its measurements and decisions describe the historical file only; the current implementation specification is still being reconciled.
+
 Analysed 2026-09-28. Spec: `orchestration/specs/aku-sagbil.json`. Derived files: `orchestration/artifacts/aku-sagbil/source/`.
 
 ## Summary

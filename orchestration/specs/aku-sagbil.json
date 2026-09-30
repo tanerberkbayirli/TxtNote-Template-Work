@@ -6,22 +6,34 @@
  "unit": "Sağlık Bilimleri Enstitüsü",
  "sources": [
   {
-   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+   "path": "orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf",
    "role": "primary",
+   "type": "guide",
+   "version": "URL/file name 10.02.2022; PDF metadata created/modified 2022-02-10 11:40:52 +03:00; cover prints 2020; Senate approval date blank",
+   "pages": 39,
+   "notes": "Official Sağlık Bilimleri Enstitüsü guide, preserved verbatim from https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf; SHA256 B9CE1B784277B50B81C9DA027BFE40D06948B78868D8D49145A2ECB730FFD581. Current primary source pending formal approval-date confirmation; historical file unchanged."
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+   "role": "historical-superseded",
    "type": "guide",
    "version": "file name says 2015; PDF created 2009-11-13 by Word 2007; adoption date blank; references accessed 2009",
    "pages": 34,
-   "notes": "Text pages are real text (TNR); ALL example pages (Şekil 1-18) are embedded raster JPEGs (72-150 dpi screenshots, several not to scale). flag: outdated-source"
+   "notes": "Preserved historical evidence only. File name says 2015 but metadata dates creation/modification to 2009-11-13; superseded as current authority by the official guide at the 2022 URL. Existing rules cite this historical source and must not be treated as current until reconciled."
   }
  ],
  "sourcePriority": [
   {
-   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf (guide text)",
-   "why": "only source; explicit sentences win over its own raster examples"
+   "path": "orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf (guide text)",
+   "why": "Current primary official guide; explicit text controls, subject to the internal pagination conflict below."
   },
   {
-   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf (example figures Şekil 1-18)",
-   "why": "used for structure/order and where the text is silent; annotated values in figures ('3 aralık (36 p)') treated as explicit"
+   "path": "orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf (Examples 1-14, PDF pp.26-39)",
+   "why": "Examples corroborate structure and fill gaps only where the guide text is silent; example-vs-text conflicts remain conflicts."
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+   "why": "Historical comparison only; not an authority for current requirements. Preserve cited evidence to explain changes."
   }
  ],
  "variants": [
@@ -6854,5 +6866,148 @@
    "Heading sizes for non-default body sizes (INFERRED body+2 / body).",
    "Engine: templateChoices mechanism for font/size/indent/label/alignment choices (engineGap #4)."
   ]
+ },
+ "currentRuleAudit": {
+  "status": "PARTIAL — legacy rule set is not a reconciled 2022 specification",
+  "asOf": "2026-09-30",
+  "primarySource": "https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf",
+  "legacyRuleCount": 195,
+  "legacyRuleNotice": "The existing rules retain their original values and evidence from the superseded historical PDF. Treat every rule as historical until individually reconciled against the 2022 guide; do not implement from the legacy values as a current spec.",
+  "currentDeltas": [
+   {
+    "key": "page.margins.allMm",
+    "value": 30,
+    "unit": "mm",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.4 (printed p.2), §2.3: “Her sayfa kenarından ‘3 cm’ boşluk bırakılmalıdır.” Historical guide: PDF p.5 (printed p.1), §1.4, left 40 mm, top/bottom 30 mm, right 25 mm.",
+    "conflict": null
+   },
+   {
+    "key": "paper.weight",
+    "value": "70–100 g/m², first-quality white paper",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.4 (printed p.2), §2.1. Historical guide p.5 (printed p.1), §1.1, 80–100 g/m².",
+    "conflict": null
+   },
+   {
+    "key": "typography.body.fontFamily",
+    "value": "Times New Roman",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.4 (printed p.2), §2.2.",
+    "conflict": null
+   },
+   {
+    "key": "typography.body.fontSizePt",
+    "value": 12,
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.4 (printed p.2), §2.2: 12 pt through the thesis except the inner cover; figure/table/formula text may be as small as 8 pt.",
+    "conflict": null
+   },
+   {
+    "key": "typography.paragraph.firstLineIndentMm",
+    "value": 0,
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.4 (printed p.2), §2.4: headings, subheadings, and paragraph beginnings start at the left text-frame edge “boşluk bırakılmadan”. Historical guide permitted a 5–10 mm indent.",
+    "conflict": null
+   },
+   {
+    "key": "headings.align",
+    "value": "left",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.5 (printed p.3), §2.7: all headings start at the left frame edge. Historical spec recorded H1 centered.",
+    "conflict": null
+   },
+   {
+    "key": "pagination.position",
+    "value": "bottom",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.4 (printed p.2), §2.3: page number centered in the footer. Historical guide §1.8 placed it at the top, center or right.",
+    "conflict": null
+   },
+   {
+    "key": "pagination.align",
+    "value": "center",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.4 (printed p.2), §2.3: page number is centered in the footer.",
+    "conflict": null
+   },
+   {
+    "key": "pagination.font",
+    "value": "Times New Roman 11 pt",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.5 (printed p.3), §2.6.",
+    "conflict": null
+   },
+   {
+    "key": "structure.order",
+    "value": [
+     "outer cover",
+     "cover-under page (Example 1)",
+     "inner cover (Example 2)",
+     "approval (Example 3)",
+     "scientific ethics declaration (Example 4)",
+     "ÖZET (Example 5)",
+     "SUMMARY (Example 6)",
+     "preface (Example 7)",
+     "contents (Example 8)",
+     "symbols/abbreviations",
+     "figures (optional)",
+     "tables (optional)",
+     "images (optional)",
+     "main text",
+     "references",
+     "appendices (optional)",
+     "curriculum vitae"
+    ],
+    "classification": "EXPLICIT",
+    "evidence": "PDF pp.13–14 (printed pp.11–12), §3.1. Historical spec put contents/preface before symbols and moved ÖZET/SUMMARY after the main text.",
+    "conflict": null
+   },
+   {
+    "key": "chapters.required",
+    "value": [
+     "1. GİRİŞ",
+     "2. MATERYAL ve METOT",
+     "3. BULGULAR",
+     "4. TARTIŞMA",
+     "5. SONUÇ ve ÖNERİLER",
+     "6. KAYNAKLAR",
+     "7. EKLER"
+    ],
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.13 (printed p.11), §3; heading capitalization as printed. Historical spec preferred GEREÇ VE YÖNTEM as the alternative chapter name.",
+    "conflict": null
+   },
+   {
+    "key": "innerCover.fontSizePt",
+    "value": 12,
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.27 (printed p.25), Example 2 note: inner-cover text is 12 pt Times New Roman; the text page §3.2.2 separately says support statement 12 pt bold and other text 14 pt bold, creating an internal source conflict.",
+    "conflict": "Example 2 note says all inner-cover text 12 pt; §3.2.2 says the project-support statement is 12 pt bold and other inner-cover text 14 pt bold. Preserve both until resolved."
+   },
+   {
+    "key": "abstract.keywords.count",
+    "value": "3–6",
+    "classification": "EXPLICIT",
+    "evidence": "PDF p.15 (printed p.13), §3.2.5. Examples 5–6 each show six placeholders; old rule set treated five as exact.",
+    "conflict": null
+   },
+   {
+    "key": "outerCover.window",
+    "value": null,
+    "classification": "UNKNOWN",
+    "evidence": "The 2022 guide says the outer cover is supplied by the university and directs preparation of the cover-under page as Example 1 (§3.2.1, PDF p.14 / printed p.12). The 2022 examples do not document a window, dimensions, or the old blue logo band.",
+    "conflict": "Historical spec records a 100×65 mm window and blue 100×60 mm logo band from the old guide; these are not supported by the current source."
+   },
+   {
+    "key": "pagination.front.initialPage",
+    "value": null,
+    "classification": "UNKNOWN",
+    "evidence": "§2.6 (PDF p.5 / printed p.3) says outer cover, inner cover, approval, and ethics pages are not numbered; Example 8 TOC (PDF p.33 / printed p.31) lists approval as II, ethics as III, and abstract as IV.",
+    "conflict": "Text can mean unnumbered/un-counted or counted with no printed numeral; the example counts these pages. Do not choose a start index without resolution."
+   }
+  ],
+  "formalVersionConflict": "PDF URL/name and metadata indicate 10.02.2022; cover says 2020; the Senate approval date in the introduction is blank (PDF p.3 / printed p.1). Primary-source status follows the newer official institute-hosted publication, but formal adoption/effective date is unverified.",
+  "specStatus": "STALE"
  }
 }

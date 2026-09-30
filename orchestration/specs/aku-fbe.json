@@ -13,11 +13,27 @@
    "pages": 43
   },
   {
-   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+   "path": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
    "role": "primary",
    "type": "template",
-   "version": "2025 file (docProps created/modified 2025-01-23, revision 2); content of the 2019/2020 template generation",
+   "version": "Official FBE resources link; docProps created/modified 2023-12-20, revision 2; SHA256 E067EB268E9E9696158F8AA9BD7C061C65CC998D3C0E7EF83A18EEE05B6D7ADC",
+   "pages": 33,
+   "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2023/12/tez-word-sablon-2020_WEB_icin-2-1.docx"
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+   "role": "supplementary",
+   "type": "template",
+   "version": "Local 2025 resave (docProps created/modified 2025-01-23, revision 2) of the official online 2023-12-20 file; identical paragraph text, styles, numbering, section size and margins; online URL: https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2023/12/tez-word-sablon-2020_WEB_icin-2-1.docx",
    "pages": 33
+  },
+  {
+   "path": "orchestration/official-sources/aku-fbe/Fen_Bil_Ens_Tez_LaTeX_Sablon_2020.rar",
+   "role": "supplementary",
+   "type": "latex-template",
+   "version": "Official FBE resources link, 2020/01 upload path; SHA256 53E7509B5D3956E8276794032C4FE11B5AF095BBAF2F7101A318AFA75EB2F93E",
+   "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/01/Fen-Bil-Ens-Tez-LaTeX-%C5%9Eablon.rar",
+   "notes": "Its main file sets A4 and 30 mm margins but baseline stretch 1.2, conflicting with the guide's explicit 1.5 spacing. Cover and approval examples contain fixed negative vspace and only five signature rows, not a conditional long-title or seven-row rule."
   }
  ],
  "sourcePriority": [
@@ -26,8 +42,8 @@
    "why": "Explicit rule sentences (margins, fonts, spacing, numbering, captions, bibliography, order) win wherever they state something."
   },
   {
-   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-   "why": "Newer distribution (2025) and XML-exact: decides every value the guide does not state (footer distance, TOC tabs/indents, caption spacing, table borders, special-page structure) and wins over the guide's example-page geometry where they differ (flagged needsConfirmation)."
+   "path": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+   "why": "The official online 2023 DOCX and local 2025 resave have the same substantive text, styles, numbering, section sizes and margins. Their XML supplies measured values where the guide is silent (footer distance, TOC tabs/indents, caption spacing, table borders, special-page structure); conflicts with guide examples remain flagged needsConfirmation. The 2025 resave date is not evidence of a newer rule."
   },
   {
    "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf (example pages 29-40)",
@@ -55,7 +71,7 @@
    "evidence": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf#p.4 §1; p.34 callout (\"Doktora savunmasında; eğer ikinci danışman varsa, toplam 7 jüri üyesi\"); Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx#callout #93",
    "differences": [
     "Degree strings: \"DOKTORA TEZİ\", \"Doktora Tezi\", \"Ph.D. Thesis\"",
-    "Approval page: 7 jurors when a second advisor exists (explicit), else as appointed",
+    "Approval page: 7 jurors when a second advisor exists (EXPLICIT count); seven signed panel rows plus separate advisor fields is INFERRED from §4.2.3 and the five-row example, else as appointed",
     "Language: the guide permits a thesis written in a foreign language (p.6 §2.5) but gives no separate layout; only Turkish-language variants are specifiable (see unknowns)."
    ]
   }
@@ -13710,7 +13726,7 @@
    "reviewDecision": "Resolved: 'Kâğıdın yalnızca bir yüzü kullanılmalıdır' (p.5, explicit) makes odd/even placement meaningless; the oddPage/evenPage section types are Word artefacts. Plain new-page breaks, no blank filler pages (the LO render inserted none either)."
   },
   {
-   "topic": "Guide 2020 vs template 2025 (flag guide-template-version-gap)",
+   "topic": "Guide 2020 and official online Word template 2023 vs local 2025 resave",
    "sources": [
     {
      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
@@ -13718,13 +13734,30 @@
      "value": "2020"
     },
     {
-     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-     "locator": "docProps/core.xml created/modified 2025-01-23, revision 2, TotalTime 1 min; content: \"Afyonkarahisar 2020\" (#198), \"2019, ix + 16 sayfa\" (#136), lastPrinted 2019-12-09, callout #6 \"LİSANSÜSTÜ TEZ YAZIM KILAVUZUNA GÖRE HAZIRLANMIŞTIR\"",
-     "value": "2025 file, 2019/2020 content"
+     "path": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+     "locator": "docProps/core.xml created/modified 2023-12-20, revision 2; same text, styles, numbering, page sizes and margins as local 2025 resave",
+     "value": "Official 2023 online file; local 2025 file is a resave, not a newer rule generation"
     }
    ],
-   "decision": "The 2025 template is a re-save of the 2020-era template built for this guide; both are the same rule generation. Explicit guide sentences win where stated; template XML decides unstated geometry; where the guide's example page and the template differ, the template is preferred as the newer distribution but flagged. Hard-coded years/names in the template are placeholders.",
+   "decision": "The local 2025 file is a resave of the official 2023 online Word file; both carry 2019/2020 example content. Explicit guide sentences win where stated; template XML supplies measured values where the guide is silent. Guide-example versus template-layout differences remain separately flagged. Hard-coded years/names in the template are placeholders.",
    "needsConfirmation": false
+  },
+  {
+   "topic": "Official LaTeX sample line spacing vs 2020 guide",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "locator": "PDF p.6 §2.4",
+     "value": "1.5 line spacing for thesis text except stated special cases"
+    },
+    {
+     "path": "orchestration/official-sources/aku-fbe/Fen_Bil_Ens_Tez_LaTeX_Sablon_2020.rar",
+     "locator": "Ana Dosya.tex line 17; 1-kapak.tex lines 47-51; 3-onay.sayfasi.tex lines 11-22",
+     "value": "\\renewcommand{\\baselinestretch}{1.2}; fixed -0.3 cm title/advisor gaps on cover and -0.6 cm between approval rows in a five-row example"
+    }
+   ],
+   "decision": "The LaTeX example's numeric spacing is a source conflict with the explicit guide, not a conditional rule for long titles or seven jurors. Its A4/30 mm geometry corroborates the guide. Do not transfer the fixed negative gaps to the Word/editor template without independent validation.",
+   "needsConfirmation": true
   }
  ],
  "unknowns": [
