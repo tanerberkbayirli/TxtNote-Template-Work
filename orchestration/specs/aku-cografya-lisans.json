@@ -1,6 +1,6 @@
 {
  "id": "aku-cografya-lisans",
- "schemaVersion": 2,
+ "schemaVersion": 3,
  "analyzedAt": "2026-09-28",
  "university": "Afyon Kocatepe Üniversitesi",
  "unit": "Fen Edebiyat Fakültesi, Coğrafya Bölümü (lisans bitirme tezi)",
@@ -47,7 +47,17 @@
      "locator": "p.2 §2.1",
      "quote": "Bitirme tezleri, A4 boyutlarında (21 cm x 29,7 cm)"
     }
-   ]
+   ],
+   "canonicalKey": "page.size",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.widthMm",
@@ -68,7 +78,17 @@
      "locator": "p.1-13,23 page.rect",
      "quote": "595.2 x 841.92 pt = 209.97 x 297.01 mm (MEASURED)"
     }
-   ]
+   ],
+   "canonicalKey": "page.widthMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.heightMm",
@@ -84,7 +104,17 @@
      "locator": "p.2 §2.1",
      "quote": "21 cm x 29,7 cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.heightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.orientation",
@@ -100,7 +130,17 @@
      "quote": "Sayfalar dikey düzende olmalıdır."
     }
    ],
-   "notes": "Landscape placement of wide figures/tables is allowed (p.7 §3.1), see figures.landscape."
+   "notes": "Landscape placement of wide figures/tables is allowed (p.7 §3.1), see figures.landscape.",
+   "canonicalKey": "page.orientation",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.topMm",
@@ -122,7 +162,17 @@
      "quote": "body lines x0=29.99 mm, last glyph right edge 179.95–180.14 mm, first baseline 28.96 mm (82.10 pt), line pitch 20.64/20.88 pt (mean 20.7)"
     }
    ],
-   "notes": "Guide itself: first baseline 82.10 pt = 70.87 pt margin + 11.23 pt (Word TNR 12 pt: half lineGap + ascent) → consistent with 25 mm."
+   "notes": "Guide itself: first baseline 82.10 pt = 70.87 pt margin + 11.23 pt (Word TNR 12 pt: half lineGap + ascent) → consistent with 25 mm.",
+   "canonicalKey": "page.margins.topMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.bottomMm",
@@ -139,7 +189,17 @@
      "quote": "alt ve üst 2,5 cm"
     }
    ],
-   "notes": "Guide body: last baselines ≤ 270.42 mm (< 272 mm) — consistent."
+   "notes": "Guide body: last baselines ≤ 270.42 mm (< 272 mm) — consistent.",
+   "canonicalKey": "page.margins.bottomMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.leftMm",
@@ -160,7 +220,17 @@
      "locator": "p.2-13, p.23 (guide body pages) — orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "body lines x0=29.99 mm, last glyph right edge 179.95–180.14 mm, first baseline 28.96 mm (82.10 pt), line pitch 20.64/20.88 pt (mean 20.7)"
     }
-   ]
+   ],
+   "canonicalKey": "page.margins.leftMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.rightMm",
@@ -182,7 +252,17 @@
      "quote": "body lines x0=29.99 mm, last glyph right edge 179.95–180.14 mm, first baseline 28.96 mm (82.10 pt), line pitch 20.64/20.88 pt (mean 20.7)"
     }
    ],
-   "notes": "Justified lines end at 180.0 mm (rawdict glyph right edge), i.e. right margin 30.0 mm."
+   "notes": "Justified lines end at 180.0 mm (rawdict glyph right edge), i.e. right margin 30.0 mm.",
+   "canonicalKey": "page.margins.rightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.gutterMm",
@@ -199,7 +279,17 @@
      "quote": "sağ ve sol 3 cm"
     }
    ],
-   "notes": "No gutter mentioned; the four margins are stated as totals although the thesis is bound."
+   "notes": "No gutter mentioned; the four margins are stated as totals although the thesis is bound.",
+   "canonicalKey": "page.gutterMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.mirrorMargins",
@@ -215,7 +305,17 @@
      "quote": "Basımda kâğıdın yalnızca bir yüzü kullanılmalıdır."
     }
    ],
-   "notes": "Single-sided printing → no mirrored margins."
+   "notes": "Single-sided printing → no mirrored margins.",
+   "canonicalKey": "page.mirrorMargins",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "printing.duplex",
@@ -230,7 +330,17 @@
      "locator": "p.2 §2.2",
      "quote": "Basımda kâğıdın yalnızca bir yüzü kullanılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "printing.duplex",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "paper.weight",
@@ -245,7 +355,17 @@
      "locator": "p.2 §2.1",
      "quote": "70 ile 100 gram ağırlığında “birinci sınıf hamur” olarak bilinen beyaz kâğıda"
     }
-   ]
+   ],
+   "canonicalKey": "paper.weight",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "binding.required",
@@ -265,7 +385,17 @@
      "locator": "p.23 §4.4 item 3",
      "quote": "bitirme tezini ciltleterek 1 nüshasını danışman hocasına teslim etmeli ve 1 nüsha da kendisi için bastırmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "binding.required",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "binding.type",
@@ -280,7 +410,17 @@
      "locator": "p.10 §4.2.1"
     }
    ],
-   "notes": "Binding type, cover colour/material and spine not specified."
+   "notes": "Binding type, cover colour/material and spine not specified.",
+   "canonicalKey": "binding.type",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "submission.copies",
@@ -294,7 +434,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.23 §4.4 item 3"
     }
-   ]
+   ],
+   "canonicalKey": "submission.copies",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "submission.plagiarismMaxPercent",
@@ -310,7 +460,17 @@
      "locator": "p.23 §4.4 item 3",
      "quote": "benzerlik oranını %30 ve altına düşürmeli"
     }
-   ]
+   ],
+   "canonicalKey": "submission.plagiarismMaxPercent",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.content",
@@ -326,7 +486,17 @@
      "quote": "Metin alanının dışında yalnızca sayfanın alt bilgi bölümünde sayfa numarası ortalanarak yer almalıdır."
     }
    ],
-   "notes": "Nothing but the footer page number may appear outside the text area → no header."
+   "notes": "Nothing but the footer page number may appear outside the text area → no header.",
+   "canonicalKey": "page.header.content",
+   "category": "page-geometry",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.footer.content",
@@ -341,7 +511,17 @@
      "locator": "p.2 §2.3",
      "quote": "yalnızca sayfanın alt bilgi bölümünde sayfa numarası ortalanarak"
     }
-   ]
+   ],
+   "canonicalKey": "page.footer.content",
+   "category": "page-geometry",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.distanceMm",
@@ -356,7 +536,17 @@
      "locator": "p.2 §2.3"
     }
    ],
-   "notes": "No header is used."
+   "notes": "No header is used.",
+   "canonicalKey": "page.header.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.footer.distanceMm",
@@ -376,7 +566,17 @@
      "quote": "The guide PDF itself prints no page numbers, so no placement can be measured."
     }
    ],
-   "notes": "Only “alt orta” is stated."
+   "notes": "Only “alt orta” is stated.",
+   "canonicalKey": "page.footer.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.position",
@@ -391,7 +591,17 @@
      "locator": "p.3 §2.7",
      "quote": "Sayfa numaraları parantez ve çizgi kullanmadan sayfanın alt orta kısmına yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.position",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.align",
@@ -411,7 +621,17 @@
      "locator": "p.2 §2.3",
      "quote": "sayfa numarası ortalanarak"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.align",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.decoration",
@@ -426,7 +646,17 @@
      "locator": "p.3 §2.7",
      "quote": "parantez ve çizgi kullanmadan"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.decoration",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.font",
@@ -445,7 +675,17 @@
      "quote": "(Times New Roman olarak 10 Punto)"
     }
    ],
-   "notes": "The parenthetical follows the main-text sentence; read as applying to page numbers in general (front and main). Bold/regular not stated → regular INFERRED."
+   "notes": "The parenthetical follows the main-text sentence; read as applying to page numbers in general (front and main). Bold/regular not stated → regular INFERRED.",
+   "canonicalKey": "pagination.font",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.distanceFromEdgeMm",
@@ -459,7 +699,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.3 §2.7"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.distanceFromEdgeMm",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.unnumbered",
@@ -479,7 +729,17 @@
      "locator": "p.3 §2.7",
      "quote": "Dış Kapak, İç kapak, Bitirme Tezi Onay sayfası ve Bilimsel Etik Bildirim sayfası numaralandırılmaz."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.unnumbered",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.unnumbered.counted",
@@ -495,7 +755,17 @@
      "quote": "numaralandırılmaz"
     }
    ],
-   "notes": "Whether these pages count toward the Roman sequence is not stated; with Özet = i (below) they are effectively not counted."
+   "notes": "Whether these pages count toward the Roman sequence is not stated; with Özet = i (below) they are effectively not counted.",
+   "canonicalKey": "pagination.unnumbered.counted",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.format",
@@ -510,7 +780,17 @@
      "locator": "p.3 §2.7",
      "quote": "“i, ii, iii, iv, v, vi, ...” şeklinde küçük Romen rakamları ile"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.front.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.startsAt(section)",
@@ -529,7 +809,17 @@
      "quote": "Özet, Abstract, Teşekkür, İçindekiler Dizini, ... ön sayfaları, “i, ii, iii, ...”"
     }
    ],
-   "notes": "Özet is the first page listed with the sequence i, ii, iii; preceding pages are unnumbered."
+   "notes": "Özet is the first page listed with the sequence i, ii, iii; preceding pages are unnumbered.",
+   "canonicalKey": "pagination.front.startsAt(section)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.format",
@@ -544,7 +834,17 @@
      "locator": "p.3 §2.7",
      "quote": "Giriş bölümüyle başlayan tez metni sayfaları ise “1, 2, 3, ...” şeklinde"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.main.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.startsAt(section)",
@@ -562,7 +862,17 @@
      "locator": "p.3 §2.7",
      "quote": "Giriş bölümüyle başlayan tez metni sayfaları ise “1, 2, 3, ...”"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.main.startsAt(section)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.firstPageOfChapterVisible",
@@ -577,7 +887,17 @@
      "locator": "p.3 §2.7"
     }
    ],
-   "notes": "No exception for chapter-opening pages is stated."
+   "notes": "No exception for chapter-opening pages is stated.",
+   "canonicalKey": "pagination.firstPageOfChapterVisible",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.landscapePages",
@@ -592,7 +912,17 @@
      "locator": "p.7 §3.1",
      "quote": "sayfa numarası önceki sayfalarda bulunduğu yerde (alt ortada) olmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.landscapePages",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.appendix",
@@ -607,7 +937,17 @@
      "locator": "p.9 §4, p.3 §2.6"
     }
    ],
-   "notes": "Appendix numbering not stated (continuation of Arabic INFERRED at most)."
+   "notes": "Appendix numbering not stated (continuation of Arabic INFERRED at most).",
+   "canonicalKey": "pagination.appendix",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontFamily",
@@ -627,7 +967,17 @@
      "locator": "p.2-13, p.23 (guide body pages) — orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "body lines x0=29.99 mm, last glyph right edge 179.95–180.14 mm, first baseline 28.96 mm (82.10 pt), line pitch 20.64/20.88 pt (mean 20.7)"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontSizePt",
@@ -648,7 +998,17 @@
      "locator": "p.2-13, p.23 (guide body pages) — orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "body lines x0=29.99 mm, last glyph right edge 179.95–180.14 mm, first baseline 28.96 mm (82.10 pt), line pitch 20.64/20.88 pt (mean 20.7)"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.lineSpacing",
@@ -674,7 +1034,17 @@
      "quote": "body lines x0=29.99 mm, last glyph right edge 179.95–180.14 mm, first baseline 28.96 mm (82.10 pt), line pitch 20.64/20.88 pt (mean 20.7)"
     }
    ],
-   "notes": "Word \"1,5 satır\" of TNR 12 pt = 20.7 pt pitch (single 13.8 pt × 1.5); guide body measured 20.64/20.88 pt alternating (mean 20.7). Exceptions: captions, table notes, symbols list, bibliography (single)."
+   "notes": "Word \"1,5 satır\" of TNR 12 pt = 20.7 pt pitch (single 13.8 pt × 1.5); guide body measured 20.64/20.88 pt alternating (mean 20.7). Exceptions: captions, table notes, symbols list, bibliography (single).",
+   "canonicalKey": "typography.body.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.align",
@@ -694,7 +1064,17 @@
      "locator": "p.2-13, p.23 (guide body pages) — orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "body lines x0=29.99 mm, last glyph right edge 179.95–180.14 mm, first baseline 28.96 mm (82.10 pt), line pitch 20.64/20.88 pt (mean 20.7)"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceBeforePt",
@@ -711,7 +1091,17 @@
      "quote": "öncesi-sonrası 6 nk yapılmalıdır"
     }
    ],
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "canonicalKey": "typography.paragraph.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceAfterPt",
@@ -728,7 +1118,17 @@
      "quote": "öncesi-sonrası 6 nk yapılmalıdır"
     }
    ],
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "canonicalKey": "typography.paragraph.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.effectiveGapPt",
@@ -745,7 +1145,17 @@
      "quote": "baseline pitch across a paragraph boundary 26.64–26.91 pt = 20.7 + 6.0; heading→heading 20.64–20.88 (0 extra)"
     }
    ],
-   "notes": "GUIDE SELF-FORMATTING ONLY, not a thesis requirement and NOT a validation target. Every boundary in the guide body (p.2-13) is +6 pt (body→body 26.64-26.91 pt, body→H 26.67-26.90, H→body 26.64-26.88, pitch 20.65-20.72) and the one blank line (p.2 H1 \"2.\" → empty line → \"2.1\") adds exactly 20.66 pt with no extra. This fits guide styles with ~0/6 settings under either spacing model; it does not show what 6/6 produces."
+   "notes": "GUIDE SELF-FORMATTING ONLY, not a thesis requirement and NOT a validation target. Every boundary in the guide body (p.2-13) is +6 pt (body→body 26.64-26.91 pt, body→H 26.67-26.90, H→body 26.64-26.88, pitch 20.65-20.72) and the one blank line (p.2 H1 \"2.\" → empty line → \"2.1\") adds exactly 20.66 pt with no extra. This fits guide styles with ~0/6 settings under either spacing model; it does not show what 6/6 produces.",
+   "canonicalKey": "typography.paragraph.effectiveGapPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.firstLineIndentMm",
@@ -763,7 +1173,17 @@
     }
    ],
    "notes": "Review decision: explicit §2.4 text (0) wins over the guide's own 12.45 mm self-formatting. §2.3 \"Bu kılavuz belirtilen ölçülere uygun olarak hazırlanmıştır\" covers the stated measurements (margins); the guide also violates its own heading-indent text, so its paragraph indent is not evidence of a requirement.",
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "canonicalKey": "typography.paragraph.firstLineIndentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.blankLineBetween",
@@ -779,7 +1199,17 @@
      "quote": "Alt bölüm başlıkları ile paragraflardan önce ve sonra 1 satır boşluk (1,5 aralıklı) bırakılmalıdır."
     }
    ],
-   "notes": "Sentence can be read as a blank 1.5 line around every paragraph, or only between sub-headings and paragraphs (as §2.6). Guide itself has no blank lines between paragraphs."
+   "notes": "Sentence can be read as a blank 1.5 line around every paragraph, or only between sub-headings and paragraphs (as §2.6). Guide itself has no blank lines between paragraphs.",
+   "canonicalKey": "typography.paragraph.blankLineBetween",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.widowOrphan",
@@ -794,7 +1224,17 @@
      "locator": "p.3 §2.4",
      "quote": "sayfanın başında veya sonunda tek başına bir satır bırakılmamalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "typography.widowOrphan",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.punctuationSpacing",
@@ -809,7 +1249,17 @@
      "locator": "p.2 §2.2"
     }
    ],
-   "notes": "Content rule; not a layout parameter."
+   "notes": "Content rule; not a layout parameter.",
+   "canonicalKey": "typography.punctuationSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.levels",
@@ -824,7 +1274,17 @@
      "locator": "p.4 §2.8",
      "quote": "Dördüncü dereceden daha ileri derecede alt bölüm başlığı kullanılmamalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.levels",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.fontFamily",
@@ -839,7 +1299,17 @@
      "locator": "p.2 §2.2",
      "quote": "tüm metinler için yazı karakteri “Times New Roman”"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.fontSizePt",
@@ -855,7 +1325,17 @@
      "locator": "p.4 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.bold",
@@ -870,7 +1350,17 @@
      "locator": "p.4 §2.8",
      "quote": "ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.italic",
@@ -885,7 +1375,17 @@
      "locator": "p.2-23 guide headings",
      "quote": "all headings TimesNewRomanPS-BoldMT, upright"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.align",
@@ -905,7 +1405,17 @@
      "locator": "p.11 §4.3.1",
      "quote": "başlık sola yaslı olmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.indentMm",
@@ -922,7 +1432,17 @@
      "quote": "Tüm bölüm başlıkları sayfanın sol çerçeve kenarından ve boşluk bırakılmadan numaralandırılmalıdır."
     }
    ],
-   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen."
+   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen.",
+   "canonicalKey": "headings.h1.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceBefore",
@@ -946,7 +1466,17 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h1.spaceBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceAfter",
@@ -965,7 +1495,17 @@
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h1.spaceAfter",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.lineSpacing",
@@ -980,7 +1520,17 @@
      "locator": "p.3 §2.4",
      "quote": "tezin tamamının yazımında 1,5 satır aralığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.fontFamily",
@@ -995,7 +1545,17 @@
      "locator": "p.2 §2.2",
      "quote": "tüm metinler için yazı karakteri “Times New Roman”"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.fontSizePt",
@@ -1011,7 +1571,17 @@
      "locator": "p.4 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.bold",
@@ -1026,7 +1596,17 @@
      "locator": "p.4 §2.8",
      "quote": "ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.italic",
@@ -1041,7 +1621,17 @@
      "locator": "p.2-23 guide headings",
      "quote": "all headings TimesNewRomanPS-BoldMT, upright"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.align",
@@ -1061,7 +1651,17 @@
      "locator": "p.11 §4.3.1",
      "quote": "başlık sola yaslı olmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.indentMm",
@@ -1078,7 +1678,17 @@
      "quote": "Tüm bölüm başlıkları sayfanın sol çerçeve kenarından ve boşluk bırakılmadan numaralandırılmalıdır."
     }
    ],
-   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen."
+   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen.",
+   "canonicalKey": "headings.h2.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceBefore",
@@ -1102,7 +1712,17 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h2.spaceBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceAfter",
@@ -1121,7 +1741,17 @@
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h2.spaceAfter",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.lineSpacing",
@@ -1136,7 +1766,17 @@
      "locator": "p.3 §2.4",
      "quote": "tezin tamamının yazımında 1,5 satır aralığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.fontFamily",
@@ -1151,7 +1791,17 @@
      "locator": "p.2 §2.2",
      "quote": "tüm metinler için yazı karakteri “Times New Roman”"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.fontSizePt",
@@ -1167,7 +1817,17 @@
      "locator": "p.4 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.bold",
@@ -1182,7 +1842,17 @@
      "locator": "p.4 §2.8",
      "quote": "ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.italic",
@@ -1197,7 +1867,17 @@
      "locator": "p.2-23 guide headings",
      "quote": "all headings TimesNewRomanPS-BoldMT, upright"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.align",
@@ -1217,7 +1897,17 @@
      "locator": "p.11 §4.3.1",
      "quote": "başlık sola yaslı olmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.indentMm",
@@ -1234,7 +1924,17 @@
      "quote": "Tüm bölüm başlıkları sayfanın sol çerçeve kenarından ve boşluk bırakılmadan numaralandırılmalıdır."
     }
    ],
-   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen."
+   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen.",
+   "canonicalKey": "headings.h3.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceBefore",
@@ -1258,7 +1958,17 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h3.spaceBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceAfter",
@@ -1277,7 +1987,17 @@
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h3.spaceAfter",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.lineSpacing",
@@ -1292,7 +2012,17 @@
      "locator": "p.3 §2.4",
      "quote": "tezin tamamının yazımında 1,5 satır aralığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.fontFamily",
@@ -1307,7 +2037,17 @@
      "locator": "p.2 §2.2",
      "quote": "tüm metinler için yazı karakteri “Times New Roman”"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.fontSizePt",
@@ -1323,7 +2063,17 @@
      "locator": "p.4 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.bold",
@@ -1338,7 +2088,17 @@
      "locator": "p.4 §2.8",
      "quote": "ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.italic",
@@ -1353,7 +2113,17 @@
      "locator": "p.2-23 guide headings",
      "quote": "all headings TimesNewRomanPS-BoldMT, upright"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.align",
@@ -1373,7 +2143,17 @@
      "locator": "p.11 §4.3.1",
      "quote": "başlık sola yaslı olmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.indentMm",
@@ -1390,7 +2170,17 @@
      "quote": "Tüm bölüm başlıkları sayfanın sol çerçeve kenarından ve boşluk bırakılmadan numaralandırılmalıdır."
     }
    ],
-   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen."
+   "notes": "CONFLICT: the guide’s own headings start at x0 = 36.34 mm (6.35 mm indent). Explicit text chosen.",
+   "canonicalKey": "headings.h4.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.spaceBefore",
@@ -1414,7 +2204,17 @@
      "quote": "Alt bölüm başlıkları ... önce ve sonra 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h4.spaceBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.spaceAfter",
@@ -1433,7 +2233,17 @@
      "quote": "ana başlıkları, alt bölüm başlıkları ve bunları izleyen ilk paragraf arasında 1 satır boşluk (1,5 aralıklı)"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent))."
+   "notes": "One empty 1.5-spaced 12 pt line = 20.69 pt (the only blank line in the guide, p.2, adds exactly 20.66 pt). Applies between heading and preceding text, heading and following heading, heading and first paragraph (§2.6). Whether the §2.2 6/6 paragraph spacing of the heading and neighbouring paragraphs is added on top is NOT stated (see headings.spaceBeforePt(equivalent)).",
+   "canonicalKey": "headings.h4.spaceAfter",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.lineSpacing",
@@ -1448,7 +2258,17 @@
      "locator": "p.3 §2.4",
      "quote": "tezin tamamının yazımında 1,5 satır aralığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.spaceBeforePt(equivalent)",
@@ -1465,7 +2285,17 @@
     }
    ],
    "notes": "Proposed (INFERRED, needs the missing Bitirme Tezi Şablonu to confirm): the blank line adds 20.69 pt to the normal paragraph boundary; headings carry the general §2.2 6/6 (all text). With Word-additive boundaries: heading baseline → first paragraph baseline = 20.69 (line) + 20.69 (blank) + 6 (heading after) + 6 (paragraph before) = 53.4 pt; body → heading = 53.4 pt likewise; H1 → H2 = 53.4 pt. The guaranteed minimum from explicit text is 41.4 pt.",
-   "needsConfirmation": true
+   "needsConfirmation": true,
+   "canonicalKey": "headings.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.caps",
@@ -1485,7 +2315,17 @@
      "locator": "p.9 §4",
      "quote": "3. MATERYAL ve METOT, 5. TARTIŞMA ve SONUÇ"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.caps",
@@ -1500,7 +2340,17 @@
      "locator": "p.4 §2.8",
      "quote": "ikinci derecede alt bölüm başlıkları ise kelimelerin İlk Harfleri Büyük, diğerleri küçük"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.caps",
@@ -1516,7 +2366,17 @@
      "quote": "“4.2.1. Dış Kapak”, “4.2.7. İçindekiler Dizini” are Title Case (MEASURED, guide self-formatting)"
     }
    ],
-   "notes": "Only H1/H2 case is prescribed."
+   "notes": "Only H1/H2 case is prescribed.",
+   "canonicalKey": "headings.h3.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.caps",
@@ -1530,7 +2390,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.4 §2.8"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.pageBreakBefore",
@@ -1550,7 +2420,17 @@
      "locator": "p.3 §2.6",
      "quote": "tüm ana başlık içeren bölümleri daima yeni bir sayfadan başlamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.pageBreakBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.numbering",
@@ -1571,7 +2451,17 @@
      "quote": "1. GİRİŞ … 5. TARTIŞMA ve SONUÇ, 6. KAYNAKLAR"
     }
    ],
-   "notes": "Arabic number followed by a period and a space."
+   "notes": "Arabic number followed by a period and a space.",
+   "canonicalKey": "headings.h1.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.numbering",
@@ -1587,7 +2477,17 @@
      "quote": "2.1., 2.3., 3.1., 4.1. (trailing period)"
     }
    ],
-   "notes": "Guide self-formatting (one slip “2.2.Yazım” without space). Decimal hierarchical numbering is implied by §2.8 “numaralandırılmalıdır”."
+   "notes": "Guide self-formatting (one slip “2.2.Yazım” without space). Decimal hierarchical numbering is implied by §2.8 “numaralandırılmalıdır”.",
+   "canonicalKey": "headings.h2.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.numbering",
@@ -1602,7 +2502,17 @@
      "locator": "p.10-11 guide’s own headings",
      "quote": "4.2.1., 4.2.10., 4.3.1."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.numbering",
@@ -1617,7 +2527,17 @@
      "locator": "p.4 §2.8"
     }
    ],
-   "notes": "By extension of the H2/H3 pattern."
+   "notes": "By extension of the H2/H3 pattern.",
+   "canonicalKey": "headings.h4.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.keepWithNext",
@@ -1632,7 +2552,17 @@
      "locator": "p.3 §2.4",
      "quote": "sayfanın başında veya sonunda tek başına bir satır bırakılmamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.frontMatterTitles",
@@ -1647,7 +2577,17 @@
      "locator": "p.10 §4.2.5-4.2.6"
     }
    ],
-   "notes": "Printed title text/format of ÖZET, ABSTRACT, TEŞEKKÜR, onay and etik pages not given."
+   "notes": "Printed title text/format of ÖZET, ABSTRACT, TEŞEKKÜR, onay and etik pages not given.",
+   "canonicalKey": "headings.frontMatterTitles",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.label",
@@ -1662,7 +2602,17 @@
      "locator": "p.6-7 §3",
      "quote": "her şey “Şekil”, tablolar ise “Tablo” şeklinde başlıklandırılmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.position",
@@ -1687,7 +2637,17 @@
      "locator": "p.8 Örnek 1/2 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "Şekil 3.1 caption below image (baseline 204.61 mm > image bottom 196.13 mm); Tablo 3.1 caption above table (baseline 229.18 mm < grid top 232.14 mm)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.numbering",
@@ -1702,7 +2662,17 @@
      "locator": "p.7 §3.2",
      "quote": "Numaralar ilk bölümden başlayarak birbirini takip eder şekilde, bölüm numarasıyla birlikte verilmelidir. Örnek: Şekil 1.1, Şekil 1.2, Şekil 2.1"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.separator",
@@ -1722,7 +2692,17 @@
      "locator": "p.5, p.7",
      "quote": "“Şekil 2.1 Zemin taşıma gücü”, “Tablo 3.1 Türkiye’de …”"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.separator",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.fontSizePt",
@@ -1743,7 +2723,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "caption spans 11.04 pt (Word 11 pt)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.lineSpacing",
@@ -1763,7 +2753,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "Şekil 3.1 two-line caption pitch 12.72 pt (TNR 11 pt single ≈ 12.65)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.align",
@@ -1788,7 +2788,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "caption line 1 x0 29.99, x1 180.91 (full width)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.labelBold",
@@ -1809,7 +2819,17 @@
      "quote": "examples “Tablo 3.1 …” label bold"
     }
    ],
-   "notes": "Not stated in text; the examples consistently bold only “Şekil n.n”/“Tablo n.n”."
+   "notes": "Not stated in text; the examples consistently bold only “Şekil n.n”/“Tablo n.n”.",
+   "canonicalKey": "captions.figure.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.textBold",
@@ -1823,7 +2843,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.textBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.hangingIndentMm",
@@ -1845,7 +2875,17 @@
      "quote": "Şekil 3.1 caption line 2 x0 = 29.99 mm = line 1 x0"
     }
    ],
-   "notes": "Wording says “asılı” (hanging) but the example aligns the 2nd line with the first line’s start (block). See conflicts."
+   "notes": "Wording says “asılı” (hanging) but the example aligns the 2nd line with the first line’s start (block). See conflicts.",
+   "canonicalKey": "captions.figure.hangingIndentMm",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.xLeftMm",
@@ -1861,7 +2901,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "x0 29.99 mm"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.xLeftMm",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.sourceCitation",
@@ -1876,7 +2926,17 @@
      "locator": "p.5 table",
      "quote": "Şekil 2.1 Zemin taşıma gücü … (TSE ,1997). Tablo 3.4 Sıcaklık değerleri … (MGM, 2023)."
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.sourceCitation",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.label",
@@ -1891,7 +2951,17 @@
      "locator": "p.6-7 §3",
      "quote": "her şey “Şekil”, tablolar ise “Tablo” şeklinde başlıklandırılmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.position",
@@ -1916,7 +2986,17 @@
      "locator": "p.8 Örnek 1/2 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "Şekil 3.1 caption below image (baseline 204.61 mm > image bottom 196.13 mm); Tablo 3.1 caption above table (baseline 229.18 mm < grid top 232.14 mm)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.numbering",
@@ -1931,7 +3011,17 @@
      "locator": "p.7 §3.2",
      "quote": "Numaralar ilk bölümden başlayarak birbirini takip eder şekilde, bölüm numarasıyla birlikte verilmelidir. Örnek: Şekil 1.1, Şekil 1.2, Şekil 2.1"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.separator",
@@ -1951,7 +3041,17 @@
      "locator": "p.5, p.7",
      "quote": "“Şekil 2.1 Zemin taşıma gücü”, “Tablo 3.1 Türkiye’de …”"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.separator",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.fontSizePt",
@@ -1972,7 +3072,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "caption spans 11.04 pt (Word 11 pt)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.lineSpacing",
@@ -1992,7 +3102,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "Şekil 3.1 two-line caption pitch 12.72 pt (TNR 11 pt single ≈ 12.65)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.align",
@@ -2017,7 +3137,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "caption line 1 x0 29.99, x1 180.91 (full width)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.labelBold",
@@ -2038,7 +3168,17 @@
      "quote": "examples “Tablo 3.1 …” label bold"
     }
    ],
-   "notes": "Not stated in text; the examples consistently bold only “Şekil n.n”/“Tablo n.n”."
+   "notes": "Not stated in text; the examples consistently bold only “Şekil n.n”/“Tablo n.n”.",
+   "canonicalKey": "captions.table.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.textBold",
@@ -2052,7 +3192,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.textBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.hangingIndentMm",
@@ -2074,7 +3224,17 @@
      "quote": "Şekil 3.1 caption line 2 x0 = 29.99 mm = line 1 x0"
     }
    ],
-   "notes": "Wording says “asılı” (hanging) but the example aligns the 2nd line with the first line’s start (block). See conflicts."
+   "notes": "Wording says “asılı” (hanging) but the example aligns the 2nd line with the first line’s start (block). See conflicts.",
+   "canonicalKey": "captions.table.hangingIndentMm",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.xLeftMm",
@@ -2090,7 +3250,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "x0 29.99 mm"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.xLeftMm",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.sourceCitation",
@@ -2105,7 +3275,17 @@
      "locator": "p.5 table",
      "quote": "Şekil 2.1 Zemin taşıma gücü … (TSE ,1997). Tablo 3.4 Sıcaklık değerleri … (MGM, 2023)."
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.sourceCitation",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.spaceAfterPt",
@@ -2122,7 +3302,17 @@
      "quote": "Tablo 3.1 caption line box bottom ≈ 230.02 mm, table top border 232.14 mm → 2.12 mm = 6.0 pt"
     }
    ],
-   "notes": "Probably the general 6 pt paragraph spacing."
+   "notes": "Probably the general 6 pt paragraph spacing.",
+   "canonicalKey": "captions.table.spaceAfterPt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.spaceBeforePt",
@@ -2137,7 +3327,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "image bottom 196.13 mm → caption line top ≈ 200.99 mm (4.86 mm = 13.8 pt), includes the image paragraph’s own 1.5-line/6 pt spacing"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.spaceBeforePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.continued",
@@ -2152,7 +3352,17 @@
      "locator": "p.7 §3.1",
      "quote": "bir numara ile aynı başlıkla verilmeli, fakat numarasından sonra “(Devamı)” ibaresi yazılmalıdır. Tablo 3.1 (Devamı) Türkiye’de …"
     }
-   ]
+   ],
+   "canonicalKey": "captions.continued",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.align",
@@ -2172,7 +3382,17 @@
      "locator": "p.8 orchestration/artifacts/aku-cografya-lisans/source/geometry-all-pages.json",
      "quote": "image x0 43.89 w 122.06 → centre 104.92 mm"
     }
-   ]
+   ],
+   "canonicalKey": "figures.align",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.align",
@@ -2191,7 +3411,17 @@
      "locator": "p.7 §3.1",
      "quote": "sayfaya “ortalı” olarak yerleştirilmeli"
     }
-   ]
+   ],
+   "canonicalKey": "tables.align",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.widthPolicy",
@@ -2211,7 +3441,17 @@
      "locator": "p.7 §3.1",
      "quote": "kenarlarında bırakılması gerekli boşluklar kesinlikle aşılmamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "figures.widthPolicy",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.fontSizePt",
@@ -2228,7 +3468,17 @@
      "quote": "tezin tamamında 12 punto ... geniş veya uzun tablolarda vd. en küçük 8 punto kullanılabilir"
     }
    ],
-   "notes": "Default 12; may be reduced to ≥ 8 pt for large tables. The p.8 example table uses 9 pt (9.12) single spacing."
+   "notes": "Default 12; may be reduced to ≥ 8 pt for large tables. The p.8 example table uses 9 pt (9.12) single spacing.",
+   "canonicalKey": "tables.fontSizePt",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.minFontSizePt",
@@ -2244,7 +3494,17 @@
      "locator": "p.2 §2.2",
      "quote": "en küçük 8 punto kullanılabilir"
     }
-   ]
+   ],
+   "canonicalKey": "tables.minFontSizePt",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.lineSpacing",
@@ -2259,7 +3519,17 @@
      "locator": "p.8 example",
      "quote": "9 pt cells at 10.32 pt pitch (single) — example only"
     }
-   ]
+   ],
+   "canonicalKey": "tables.lineSpacing",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.notes",
@@ -2279,7 +3549,17 @@
      "locator": "p.8 §3.3",
      "quote": "bunlar tablonun altında, 11 punto büyüklüğünde ve 1 satır aralıklı olmalıdır ... birinci satır başı aynı hizada başlamalı, blok yazım yapılmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "tables.notes",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.landscape",
@@ -2294,7 +3574,17 @@
      "locator": "p.7 §3.1",
      "quote": "Sayfaya yatay olarak yerleştirilecek şekiller ve tablolar tezin sağ tarafından okunabilecek şekilde"
     }
-   ]
+   ],
+   "canonicalKey": "figures.landscape",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.oversize",
@@ -2308,7 +3598,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.7 §3.1"
     }
-   ]
+   ],
+   "canonicalKey": "figures.oversize",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.numbering",
@@ -2323,7 +3623,17 @@
      "locator": "whole guide",
      "quote": "no equation rule"
     }
-   ]
+   ],
+   "canonicalKey": "equations.numbering",
+   "category": "equations",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.fontSizePt",
@@ -2339,7 +3649,17 @@
      "quote": "footnotes never mentioned"
     }
    ],
-   "notes": "Citation system is author–year; footnotes not addressed."
+   "notes": "Citation system is author–year; footnotes not addressed.",
+   "canonicalKey": "footnotes.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "citations.style",
@@ -2360,7 +3680,17 @@
      "quote": "(Düzgüneş ve Akman 1995), (Savaş vd. 2011), (Samantary 2002, Panda ve Schoenberg 2007, Vernay vd. 2008)"
     }
    ],
-   "notes": "Two authors “ve”, three+ “vd.”; several sources oldest→newest separated by commas; same author same year a, b. Institutional/anonymous examples carry a comma (conflict)."
+   "notes": "Two authors “ve”, three+ “vd.”; several sources oldest→newest separated by commas; same author same year a, b. Institutional/anonymous examples carry a comma (conflict).",
+   "canonicalKey": "citations.style",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "citations.internet",
@@ -2375,7 +3705,17 @@
      "locator": "p.4 §2.9",
      "quote": "metin içinde ise (İnt.Kyn.1, İnt.Kyn.2, …) şeklinde gösterilmelidir"
     }
-   ]
+   ],
+   "canonicalKey": "citations.internet",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.title",
@@ -2402,7 +3742,17 @@
     }
    ],
    "notes": "Review decision: KAYNAKLAR. p.9 §4 prints it in the chapter-heading list (\"6. KAYNAKLAR\") and states that only the titles other than Giriş, Literatür Bilgileri, Tartışma ve Sonuç and Kaynaklar may be changed, i.e. this title is fixed; §2.9 uses \"KAYNAKLAR bölümünde\". §4.3.6 \"Kaynakça (KAYNAKÇA)\" contradicts it; recorded as open item for the department, not blocking.",
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "canonicalKey": "bibliography.title",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.order",
@@ -2417,7 +3767,17 @@
      "locator": "p.13",
      "quote": "İlk Yazarların Soyadlarına Göre ve alfabetik olarak ... yazarın İlk yaptığı yayından itibaren ... harf sırasına göre"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.order",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.maxAuthors",
@@ -2432,7 +3792,17 @@
      "locator": "p.13",
      "quote": "Altı (6) yazara kadar olan yazarlar yazılmalı ... altıncı yazardan sonra “vd.”"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.maxAuthors",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.align",
@@ -2452,7 +3822,17 @@
      "locator": "orchestration/artifacts/aku-cografya-lisans/source/page-13-embedded-word-paragraph-dialog.png (image on p.13)",
      "quote": "Hizalama: Yaslanmış"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.align",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.hangingIndentMm",
@@ -2473,7 +3853,17 @@
      "locator": "p.13 embedded screenshot",
      "quote": "Özel: Asılı, Değer: 1,25 cm"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.hangingIndentMm",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.lineSpacing",
@@ -2490,7 +3880,17 @@
     }
    ],
    "notes": "Review decision: text \"Satır aralıkları 1 satır olarak uygulanmalıdır\" is a separate explicit sentence; the screenshot is referenced (\"bkz. aşağı ekran görüntüsü\") in the following sentence about Aralık ayarları (6/0). Its \"1,5 satır\" is not adopted.",
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "canonicalKey": "bibliography.lineSpacing",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.spaceBeforePt",
@@ -2511,7 +3911,17 @@
      "locator": "p.13 screenshot",
      "quote": "Önce: 6 nk"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.spaceBeforePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.spaceAfterPt",
@@ -2532,7 +3942,17 @@
      "locator": "p.13 screenshot",
      "quote": "Sonra: 0 nk"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.spaceAfterPt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.blankLineBetween",
@@ -2547,7 +3967,17 @@
      "locator": "p.13",
      "quote": "Kaynaklar boşluk bırakılmadan art arda yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.blankLineBetween",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.fontSizePt",
@@ -2563,7 +3993,17 @@
      "locator": "p.2 §2.2",
      "quote": "kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.fontSizePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.internetSources",
@@ -2577,7 +4017,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.4 §2.9"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.internetSources",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.entryFormats",
@@ -2597,7 +4047,17 @@
      "locator": "p.14-22",
      "quote": "reference format tables (inserted pages, mediabox 594.96×842.04 pt)"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.entryFormats",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.title",
@@ -2613,7 +4073,17 @@
      "quote": "İçindekiler başlığı, sayfa ortalanarak, büyük harflerle ve koyu yazılmalıdır."
     }
    ],
-   "notes": "Section is called “İçindekiler Dizini” in §4.1/§2.6; the heading text “İÇİNDEKİLER” vs “İÇİNDEKİLER DİZİNİ” is not certain."
+   "notes": "Section is called “İçindekiler Dizini” in §4.1/§2.6; the heading text “İÇİNDEKİLER” vs “İÇİNDEKİLER DİZİNİ” is not certain.",
+   "canonicalKey": "toc.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.title.style",
@@ -2633,7 +4103,17 @@
      "locator": "p.11 §4.2.7",
      "quote": "sayfa ortalanarak, büyük harflerle ve koyu"
     }
-   ]
+   ],
+   "canonicalKey": "toc.title.style",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.pageNumberHeading",
@@ -2653,7 +4133,17 @@
      "locator": "p.11 §4.2.7",
      "quote": "“Sayfa” yazısı başlığın hemen altında koyu ve sağa yaslı olarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "toc.pageNumberHeading",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.levels",
@@ -2673,7 +4163,17 @@
      "locator": "p.11 §4.2.7",
      "quote": "Bitirme tezi metninde yer alan bütün bölüm ve alt bölüm başlıkları içindekiler dizininde eksiksiz olarak verilmelidir."
     }
-   ]
+   ],
+   "canonicalKey": "toc.levels",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.entriesVerbatim",
@@ -2688,7 +4188,17 @@
      "locator": "p.11 §4.2.7",
      "quote": "her başlık, içindekiler dizininde hiçbir değişiklik olmaksızın aynen yer almalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "toc.entriesVerbatim",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.generated",
@@ -2703,7 +4213,17 @@
      "locator": "p.11 §4.2.7",
      "quote": "mutlaka Word programı yardımıyla otomatik olarak hazırlanmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "toc.generated",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.leader",
@@ -2717,7 +4237,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.11 §4.2.7"
     }
-   ]
+   ],
+   "canonicalKey": "toc.leader",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.indentPerLevelMm",
@@ -2731,7 +4261,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.11 §4.2.7"
     }
-   ]
+   ],
+   "canonicalKey": "toc.indentPerLevelMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.lineSpacing",
@@ -2746,7 +4286,17 @@
      "locator": "p.3 §2.4",
      "quote": "general 1.5 rule would apply (INFERRED)"
     }
-   ]
+   ],
+   "canonicalKey": "toc.lineSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.frontMatterEntries",
@@ -2761,7 +4311,17 @@
      "locator": "p.11 §4.2.7"
     }
    ],
-   "notes": "Whether ÖZET/ABSTRACT/TEŞEKKÜR/dizinler appear as TOC rows is not stated."
+   "notes": "Whether ÖZET/ABSTRACT/TEŞEKKÜR/dizinler appear as TOC rows is not stated.",
+   "canonicalKey": "toc.frontMatterEntries",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.title",
@@ -2776,7 +4336,17 @@
      "locator": "p.11 §4.2.9",
      "quote": "İlk sayfada “ŞEKİLLER DİZİNİ” başlığı olmalı (koyu), başlık ortalanmalı"
     }
-   ]
+   ],
+   "canonicalKey": "lists.figures.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.titleStyle",
@@ -2794,7 +4364,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.11 §4.2.9"
     }
-   ]
+   ],
+   "canonicalKey": "lists.figures.titleStyle",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.titleOnFirstPageOnly",
@@ -2809,7 +4389,17 @@
      "locator": "p.11 §4.2.9",
      "quote": "eğer dizin bir sayfadan uzun ise ikinci ve diğer sayfalara başlık yazılmamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "lists.figures.titleOnFirstPageOnly",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.pageNumberHeading",
@@ -2824,7 +4414,17 @@
      "locator": "p.11 §4.2.9",
      "quote": "no “Sayfa” sentence (present for TOC §4.2.7 and tables list §4.2.10)"
     }
-   ]
+   ],
+   "canonicalKey": "lists.figures.pageNumberHeading",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.title",
@@ -2841,7 +4441,17 @@
     }
    ],
    "notes": "Review decision: §4.2.10 is the only place that prescribes the printed title (quoted, bold, centred) — more specific than the part name \"Tablolar Dizini\" in the order lists. The analyzer's \"TABLOLAR DİZİNİ\" recommendation was an inference against explicit text and is withdrawn. Likely an editorial slip (captions say \"Tablo\"); open item for the department.",
-   "needsConfirmation": false
+   "needsConfirmation": false,
+   "canonicalKey": "lists.tables.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.titleStyle",
@@ -2859,7 +4469,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.11 §4.2.10"
     }
-   ]
+   ],
+   "canonicalKey": "lists.tables.titleStyle",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.titleOnFirstPageOnly",
@@ -2873,7 +4493,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.11 §4.2.10"
     }
-   ]
+   ],
+   "canonicalKey": "lists.tables.titleOnFirstPageOnly",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.pageNumberHeading",
@@ -2892,7 +4522,17 @@
      "locator": "p.11 §4.2.10",
      "quote": "“Sayfa” yazısı başlığın hemen altında koyu ve sağa yaslı olarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "lists.tables.pageNumberHeading",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.generated",
@@ -2907,7 +4547,17 @@
      "locator": "p.11 §4.2.9",
      "quote": "otomatik olarak hazırlanmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "lists.figures.generated",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.generated",
@@ -2922,7 +4572,17 @@
      "locator": "p.11 §4.2.10",
      "quote": "otomatik olarak hazırlanmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "lists.tables.generated",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.title",
@@ -2938,7 +4598,17 @@
      "quote": "“Simgeler ve Kısaltmalar Dizini”"
     }
    ],
-   "notes": "Printed heading text/case not given (probably “SİMGELER ve KISALTMALAR DİZİNİ” by analogy — not established)."
+   "notes": "Printed heading text/case not given (probably “SİMGELER ve KISALTMALAR DİZİNİ” by analogy — not established).",
+   "canonicalKey": "lists.symbols.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.lineSpacing",
@@ -2953,7 +4623,17 @@
      "locator": "p.6 §2.10",
      "quote": "Simgeler ve Kısaltmalar Dizini 1 satır aralıklı olarak hazırlanmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.lineSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.order",
@@ -2968,7 +4648,17 @@
      "locator": "p.5 §2.10",
      "quote": "Simgeler ve kısaltmalar dizinde alfabetik sıraya göre yer almalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.order",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.layout",
@@ -2983,7 +4673,17 @@
      "locator": "p.5 §2.10",
      "quote": "Simgeler sayfanın sol çerçeve kenarından ve boşluk bırakılmadan alt alta yazılmalıdır. ... sekme tuşu ile ayarlanarak blok halinde"
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.layout",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.tabStopMm",
@@ -2997,7 +4697,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.5 §2.10"
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.tabStopMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.content",
@@ -3012,7 +4722,17 @@
      "locator": "p.10 §4.2.5",
      "quote": "Özet/Abstract bölümünde bitirme tezi başlığı, bitirme tezini hazırlayan, bölümü, danışmanı gibi bilgiler yer almalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "abstract.content",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.en.thesisType",
@@ -3027,7 +4747,17 @@
      "locator": "p.10 §4.2.5",
      "quote": "Abstract bölümünde tez türü olarak, “Graduation Thesis” ifadesi kullanılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "abstract.en.thesisType",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.tr.thesisType",
@@ -3042,7 +4772,17 @@
      "locator": "p.10 §4.2.5"
     }
    ],
-   "notes": "Probably “Bitirme Tezi” — not stated."
+   "notes": "Probably “Bitirme Tezi” — not stated.",
+   "canonicalKey": "abstract.tr.thesisType",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.label",
@@ -3060,7 +4800,17 @@
      "locator": "p.10 §4.2.5",
      "quote": "Anahtar Kelimeler/Keywords yazılmalı"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.label",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.count",
@@ -3075,7 +4825,17 @@
      "locator": "p.10 §4.2.5",
      "quote": "anahtar kelime sayısı 4-6 arası olmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.count",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.spaceBefore",
@@ -3093,7 +4853,17 @@
      "locator": "p.10 §4.2.5",
      "quote": "Özet/Abstract metninden sonra 1 satır aralığı (1,5 aralıklı) bırakılarak Anahtar Kelimeler/Keywords yazılmalı"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.spaceBefore",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.yearPages",
@@ -3116,7 +4886,17 @@
      "quote": "Ardından yine 1 satır aralığı (1,5 aralıklı) bırakılarak bitirme tezi savunmasının yapıldığı yıl ve sayfa sayısı formata uygun biçimde yazılmalıdır."
     }
    ],
-   "notes": "“formata uygun” refers to the unsupplied template; the exact string is UNKNOWN."
+   "notes": "“formata uygun” refers to the unsupplied template; the exact string is UNKNOWN.",
+   "canonicalKey": "abstract.yearPages",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.maxWords",
@@ -3130,7 +4910,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.10 §4.2.5"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.maxWords",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.lineSpacing",
@@ -3145,7 +4935,17 @@
      "locator": "p.3 §2.4",
      "quote": "general rule"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.lineSpacing",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.typography",
@@ -3168,7 +4968,17 @@
      "locator": "p.2 §2.2",
      "quote": "“İç Kapak” hariç tezin tamamında 12 punto"
     }
-   ]
+   ],
+   "canonicalKey": "innerCover.typography",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.layout",
@@ -3184,7 +4994,17 @@
      "quote": "İç kapak sayfasının içeriği ve düzeni Bitirme Tezi Şablonu’nda verilmiştir."
     }
    ],
-   "notes": "The “Bitirme Tezi Şablonu” is not among the supplied sources."
+   "notes": "The “Bitirme Tezi Şablonu” is not among the supplied sources.",
+   "canonicalKey": "innerCover.layout",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "outerCover.layout",
@@ -3200,7 +5020,17 @@
      "quote": "Coğrafya Bölümü Bitirme Tezleri ciltletilmelidir."
     }
    ],
-   "notes": "Only binding is required; no content/layout. Guide’s own cover (p.1) is NOT a thesis cover example."
+   "notes": "Only binding is required; no content/layout. Guide’s own cover (p.1) is NOT a thesis cover example.",
+   "canonicalKey": "outerCover.layout",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "approval.layout",
@@ -3216,7 +5046,17 @@
      "quote": "(...) ile boş bırakılan yerler doldurulmalı, danışman hoca imzası alınmalıdır."
     }
    ],
-   "notes": "Form not supplied; requires fill-in blanks and advisor signature."
+   "notes": "Form not supplied; requires fill-in blanks and advisor signature.",
+   "canonicalKey": "approval.layout",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "ethicsDeclaration.layout",
@@ -3232,7 +5072,17 @@
      "quote": "“Bilimsel Etik Bildirim Sayfası”na imzalı olarak yer verilmelidir."
     }
    ],
-   "notes": "Text not supplied; must be signed."
+   "notes": "Text not supplied; must be signed.",
+   "canonicalKey": "ethicsDeclaration.layout",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "acknowledgements.content",
@@ -3246,7 +5096,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
      "locator": "p.10 §4.2.6"
     }
-   ]
+   ],
+   "canonicalKey": "acknowledgements.content",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "sections.startNewPage",
@@ -3261,7 +5121,17 @@
      "locator": "p.3 §2.6",
      "quote": "Onay sayfası, Bilimsel Etik Bildirim Sayfası, Özet, Abstract, Teşekkür, İçindekiler Dizini, ... Kaynaklar ve Ekler (varsa) ... daima yeni bir sayfadan başlamalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "sections.startNewPage",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "mainChapters",
@@ -3276,7 +5146,17 @@
      "locator": "p.9 §4"
     }
    ],
-   "notes": "GİRİŞ, LİTERATÜR BİLGİLERİ, TARTIŞMA ve SONUÇ and KAYNAKLAR titles fixed; others may be renamed by the department (e.g. “Analiz ve Hesaplamalar”, “Sonuç ve Öneriler”)."
+   "notes": "GİRİŞ, LİTERATÜR BİLGİLERİ, TARTIŞMA ve SONUÇ and KAYNAKLAR titles fixed; others may be renamed by the department (e.g. “Analiz ve Hesaplamalar”, “Sonuç ve Öneriler”).",
+   "canonicalKey": "mainChapters",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "language",
@@ -3292,7 +5172,17 @@
      "quote": "kolay ve anlaşılır Türkçe veya yabancı bir dilde"
     }
    ],
-   "notes": "No layout differences for a foreign-language thesis are given."
+   "notes": "No layout differences for a foreign-language thesis are given.",
+   "canonicalKey": "language",
+   "category": "content",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.firstBaselineOffsetEm",
@@ -3328,7 +5218,17 @@
      "quote": "all 28.963 mm (headings, continuation lines and new paragraphs alike; 12 Word-rendered body pages); pp.14-22 are inserted SBE pages (different mediabox) and excluded"
     }
    ],
-   "notes": "Top margin 25 mm + 0.9335 × 12 pt (11.20 pt = 3.952 mm) = 28.952 mm predicted vs 28.96 measured (Δ 0.01 mm); ascent-only (10.69 pt) would give 28.77 (Δ 0.19) and leading-above (+6.9 pt) 31.4 mm — rejected. Measured for 1.5 spacing at 12 pt only; the \"single\" value is INFERRED (no single-spaced line starts a page in this source; the 11 pt single caption pitch 12.72 pt ≈ 1.1495 em × 11 = 12.64 is consistent with the same metrics)."
+   "notes": "Top margin 25 mm + 0.9335 × 12 pt (11.20 pt = 3.952 mm) = 28.952 mm predicted vs 28.96 measured (Δ 0.01 mm); ascent-only (10.69 pt) would give 28.77 (Δ 0.19) and leading-above (+6.9 pt) 31.4 mm — rejected. Measured for 1.5 spacing at 12 pt only; the \"single\" value is INFERRED (no single-spaced line starts a page in this source; the 11 pt single caption pitch 12.72 pt ≈ 1.1495 em × 11 = 12.64 is consistent with the same metrics).",
+   "canonicalKey": "wordModel.firstBaselineOffsetEm",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": 0.02,
+    "unit": "em",
+    "targetValue": 0.02
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.lineHeight",
@@ -3352,7 +5252,17 @@
      "locator": "p.8 Örnek 1 caption (TNR 11, single) pitch 12.72 pt"
     }
    ],
-   "notes": "Word line = (winAscent 0.891 + winDescent 0.216 + lineGap 0.0425) em = 1.1495 em; \"1,5 satır\" = 1.5 × that."
+   "notes": "Word line = (winAscent 0.891 + winDescent 0.216 + lineGap 0.0425) em = 1.1495 em; \"1,5 satır\" = 1.5 × that.",
+   "canonicalKey": "wordModel.lineHeight",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.paragraphSpacing",
@@ -3382,7 +5292,17 @@
      "quote": "all boundaries +6 pt; p.4 new paragraph at page top on 28.96 mm"
     }
    ],
-   "notes": "The source does not demonstrate additive vs collapsed: the guide's own styles are not known and every measured boundary (+6 pt) fits 0/6 settings under both models. Space-before suppression at page top is not demonstrated either (the p.4 top paragraph probably has before = 0). contextualSpacing is shown OFF only in the bibliography screenshot. Implementation assumption (not source-proven): the thesis is a Word document (§2.2, §4.2.7 \"Word programı\"), so paragraph boundaries follow Word: after(prev) + before(next), no collapse."
+   "notes": "The source does not demonstrate additive vs collapsed: the guide's own styles are not known and every measured boundary (+6 pt) fits 0/6 settings under both models. Space-before suppression at page top is not demonstrated either (the p.4 top paragraph probably has before = 0). contextualSpacing is shown OFF only in the bibliography screenshot. Implementation assumption (not source-proven): the thesis is a Word document (§2.2, §4.2.7 \"Word programı\"), so paragraph boundaries follow Word: after(prev) + before(next), no collapse.",
+   "canonicalKey": "wordModel.paragraphSpacing",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.contextualSpacing",
@@ -3397,7 +5317,17 @@
      "locator": "p.13 embedded Word Paragraf dialog",
      "quote": "Aynı stildeki paragrafların arasına boşluk ekleme: unchecked"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.contextualSpacing",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.numbered",
@@ -3419,7 +5349,17 @@
      "quote": "\"1. GİRİŞ\" başlığı altında"
     }
    ],
-   "notes": "The same numbered list defines the chapter-heading form of GİRİŞ (confirmed by §4.3.1). Since chapters may be renamed/added (p.9), the number is the next chapter number, not a literal \"6.\". The §4.1 order list (13. Kaynaklar) is an ordinal of parts, not heading numbering."
+   "notes": "The same numbered list defines the chapter-heading form of GİRİŞ (confirmed by §4.3.1). Since chapters may be renamed/added (p.9), the number is the next chapter number, not a literal \"6.\". The §4.1 order list (13. Kaynaklar) is an ordinal of parts, not heading numbering.",
+   "canonicalKey": "bibliography.numbered",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   }
  ],
  "sections": [
@@ -5627,5 +7567,7 @@
    "Page-number distance from the bottom edge UNKNOWN (guide prints no page numbers).",
    "Department confirmation desirable for ÇİZELGELER vs TABLOLAR and KAYNAKLAR vs KAYNAKÇA."
   ]
- }
+ },
+ "annotatedAt": "2026-09-30",
+ "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md"
 }

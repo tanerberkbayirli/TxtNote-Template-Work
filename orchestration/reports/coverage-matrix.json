@@ -1,0 +1,161 @@
+{
+ "generatedAt": "2026-09-30",
+ "targets": {
+  "aku-cografya-lisans": {
+   "rules": 194,
+   "categories": {
+    "page-geometry": 14,
+    "production": 6,
+    "pagination": 14,
+    "typography": 61,
+    "captions": 27,
+    "objects": 9,
+    "equations": 1,
+    "bibliography": 16,
+    "toc-lists": 25,
+    "abstract": 9,
+    "fixed-page": 6,
+    "structure": 2,
+    "content": 1,
+    "layout-model": 3
+   },
+   "confidence": {
+    "EXPLICIT": 131,
+    "INFERRED": 19,
+    "UNKNOWN": 27,
+    "MEASURED": 17
+   },
+   "rejectionRisk": {
+    "high": 173,
+    "low": 6,
+    "medium": 12,
+    "none": 3
+   }
+  },
+  "aku-fbe": {
+   "rules": 212,
+   "categories": {
+    "page-geometry": 15,
+    "production": 4,
+    "pagination": 14,
+    "typography": 70,
+    "captions": 37,
+    "objects": 11,
+    "equations": 6,
+    "bibliography": 10,
+    "toc-lists": 27,
+    "abstract": 8,
+    "structure": 3,
+    "fixed-page": 3,
+    "layout-model": 3,
+    "content": 1
+   },
+   "confidence": {
+    "EXPLICIT": 138,
+    "TEMPLATE": 47,
+    "INFERRED": 5,
+    "MEASURED": 19,
+    "UNKNOWN": 3
+   },
+   "rejectionRisk": {
+    "high": 187,
+    "low": 4,
+    "medium": 18,
+    "none": 3
+   }
+  },
+  "aku-mbg-lisans": {
+   "rules": 201,
+   "categories": {
+    "page-geometry": 14,
+    "production": 5,
+    "pagination": 14,
+    "typography": 59,
+    "captions": 36,
+    "objects": 8,
+    "equations": 1,
+    "bibliography": 12,
+    "toc-lists": 25,
+    "abstract": 8,
+    "fixed-page": 7,
+    "structure": 3,
+    "layout-model": 9
+   },
+   "confidence": {
+    "EXPLICIT": 126,
+    "TEMPLATE": 61,
+    "INFERRED": 8,
+    "MEASURED": 4,
+    "UNKNOWN": 2
+   },
+   "rejectionRisk": {
+    "high": 178,
+    "low": 5,
+    "medium": 9,
+    "none": 9
+   }
+  },
+  "aku-sagbil": {
+   "rules": 195,
+   "categories": {
+    "page-geometry": 15,
+    "production": 3,
+    "pagination": 12,
+    "typography": 48,
+    "captions": 17,
+    "objects": 3,
+    "equations": 2,
+    "bibliography": 13,
+    "toc-lists": 31,
+    "fixed-page": 23,
+    "abstract": 20,
+    "structure": 4,
+    "content": 1,
+    "layout-model": 3
+   },
+   "confidence": {
+    "EXPLICIT": 112,
+    "INFERRED": 4,
+    "UNKNOWN": 59,
+    "MEASURED": 20
+   },
+   "rejectionRisk": {
+    "high": 178,
+    "low": 3,
+    "medium": 11,
+    "none": 3
+   }
+  },
+  "aku-sbe": {
+   "rules": 197,
+   "categories": {
+    "page-geometry": 15,
+    "production": 6,
+    "pagination": 12,
+    "typography": 70,
+    "captions": 20,
+    "objects": 5,
+    "equations": 1,
+    "bibliography": 13,
+    "toc-lists": 26,
+    "structure": 3,
+    "abstract": 9,
+    "fixed-page": 13,
+    "layout-model": 3,
+    "content": 1
+   },
+   "confidence": {
+    "EXPLICIT": 163,
+    "INFERRED": 14,
+    "UNKNOWN": 8,
+    "MEASURED": 12
+   },
+   "rejectionRisk": {
+    "high": 172,
+    "low": 6,
+    "medium": 16,
+    "none": 3
+   }
+  }
+ }
+}

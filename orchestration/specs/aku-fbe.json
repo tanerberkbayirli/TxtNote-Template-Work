@@ -1,6 +1,6 @@
 {
  "id": "aku-fbe",
- "schemaVersion": 2,
+ "schemaVersion": 3,
  "analyzedAt": "2026-09-28",
  "university": "Afyon Kocatepe Üniversitesi",
  "unit": "Fen Bilimleri Enstitüsü (institute)",
@@ -94,7 +94,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "word/document.xml sectPr#1..#4 w:pgSz w=11904|11906 h=16838"
     }
-   ]
+   ],
+   "canonicalKey": "page.size",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.widthMm",
@@ -115,7 +125,17 @@
      "locator": "sectPr w:pgSz w:w=11906 (s3) / 11904 (s1,s2,s4 = 209.97 mm)"
     }
    ],
-   "notes": "Template sections 1,2,4 use 11904 twips (209.97 mm), section 3 uses 11906 (210.0 mm); difference 0.03 mm is noise. Guide PDF page is 209.97 x 297.01 mm."
+   "notes": "Template sections 1,2,4 use 11904 twips (209.97 mm), section 3 uses 11906 (210.0 mm); difference 0.03 mm is noise. Guide PDF page is 209.97 x 297.01 mm.",
+   "canonicalKey": "page.widthMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.heightMm",
@@ -135,7 +155,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "sectPr w:pgSz w:h=16838 (297.04 mm)"
     }
-   ]
+   ],
+   "canonicalKey": "page.heightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.orientation",
@@ -151,7 +181,17 @@
      "quote": "Sayfaya yatay olarak yerleştirilecek şekil, çizelge ve resimler tezin sağ tarafından okunabilecek şekilde düzenlenmelidir"
     }
    ],
-   "notes": "Landscape only for individual wide figures/tables; page number stays bottom centre."
+   "notes": "Landscape only for individual wide figures/tables; page number stays bottom centre.",
+   "canonicalKey": "page.orientation",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.topMm",
@@ -172,7 +212,17 @@
      "locator": "word/document.xml sectPr#1..#4 w:pgMar w:top=\"1701\" (30.01 mm)"
     }
    ],
-   "notes": "Guide body pages measure text from x=30.02 mm; first baseline 33.87-33.96 mm = 30 mm + TNR ascent (corroborates top 30)."
+   "notes": "Guide body pages measure text from x=30.02 mm; first baseline 33.87-33.96 mm = 30 mm + TNR ascent (corroborates top 30).",
+   "canonicalKey": "page.margins.topMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.bottomMm",
@@ -192,7 +242,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "word/document.xml sectPr#1..#4 w:pgMar w:bottom=\"1701\" (30.01 mm)"
     }
-   ]
+   ],
+   "canonicalKey": "page.margins.bottomMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.leftMm",
@@ -213,7 +273,17 @@
      "locator": "word/document.xml sectPr#1..#4 w:pgMar w:left=\"1701\" (30.01 mm)"
     }
    ],
-   "notes": "Guide body pages measure text from x=30.02 mm; first baseline 33.87-33.96 mm = 30 mm + TNR ascent (corroborates top 30)."
+   "notes": "Guide body pages measure text from x=30.02 mm; first baseline 33.87-33.96 mm = 30 mm + TNR ascent (corroborates top 30).",
+   "canonicalKey": "page.margins.leftMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.rightMm",
@@ -234,7 +304,17 @@
      "locator": "word/document.xml sectPr#1..#4 w:pgMar w:right=\"1701\" (30.01 mm)"
     }
    ],
-   "notes": "Guide own pages justify to x=181.09 mm (right margin 28.9 mm) - guide document deviates from its own 3 cm rule; explicit text + template XML decide 30 mm (see conflicts)."
+   "notes": "Guide own pages justify to x=181.09 mm (right margin 28.9 mm) - guide document deviates from its own 3 cm rule; explicit text + template XML decide 30 mm (see conflicts).",
+   "canonicalKey": "page.margins.rightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.gutterMm",
@@ -249,7 +329,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "sectPr w:pgMar w:gutter=\"0\""
     }
-   ]
+   ],
+   "canonicalKey": "page.gutterMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.mirrorMargins",
@@ -263,7 +353,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "word/settings.xml: no w:mirrorMargins, no w:evenAndOddHeaders"
     }
-   ]
+   ],
+   "canonicalKey": "page.mirrorMargins",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "printing.duplex",
@@ -278,7 +378,17 @@
      "locator": "p.5 §2.2",
      "quote": "Kâğıdın yalnızca bir yüzü kullanılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "printing.duplex",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "paper.weight",
@@ -293,7 +403,17 @@
      "locator": "p.5 §2.1",
      "quote": "70 ile 100 gram ağırlığında “birinci hamur” olarak bilinen beyaz kağıda"
     }
-   ]
+   ],
+   "canonicalKey": "paper.weight",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.content",
@@ -307,7 +427,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "word/_rels/document.xml.rels: no header parts; sectPr has only footerReference"
     }
-   ]
+   ],
+   "canonicalKey": "page.header.content",
+   "category": "page-geometry",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.distanceMm",
@@ -323,7 +453,17 @@
      "locator": "sectPr w:pgMar w:header=\"709\" (s1-s3), \"708\" (s4)"
     }
    ],
-   "notes": "No header content exists; value only matters for DOCX parity."
+   "notes": "No header content exists; value only matters for DOCX parity.",
+   "canonicalKey": "page.header.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.footer.distanceMm",
@@ -338,7 +478,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "sectPr w:pgMar w:footer=\"709\" (12.51 mm, s1-s3) / \"708\" (12.49 mm, s4)"
     }
-   ]
+   ],
+   "canonicalKey": "page.footer.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.footer.content",
@@ -352,7 +502,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "word/footer3.xml (roman, s3), word/footer4.xml (arabic, s4): one paragraph jc=center with PAGE field; footer1/footer2 (s1,s2) empty"
     }
-   ]
+   ],
+   "canonicalKey": "page.footer.content",
+   "category": "page-geometry",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.sectionBreaks",
@@ -372,7 +532,17 @@
      "quote": "Kâğıdın yalnızca bir yüzü kullanılmalıdır."
     }
    ],
-   "notes": "Template uses oddPage section breaks (Word may insert blank pages); single-sided printing is explicit, so blank filler pages are not required. See conflicts."
+   "notes": "Template uses oddPage section breaks (Word may insert blank pages); single-sided printing is explicit, so blank filler pages are not required. See conflicts.",
+   "canonicalKey": "page.sectionBreaks",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.position",
@@ -392,7 +562,17 @@
      "locator": "p.5 §2.3",
      "quote": "alt bilgi bölümünde sayfa numarası ortalanarak"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.position",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.align",
@@ -411,7 +591,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "footer3.xml/footer4.xml w:jc=\"center\""
     }
-   ]
+   ],
+   "canonicalKey": "pagination.align",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.decoration",
@@ -426,7 +616,17 @@
      "locator": "p.6 §2.7",
      "quote": "parantez ve çizgi kullanmadan"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.decoration",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.font",
@@ -448,7 +648,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "footer style Altbilgi basedOn Normal (no w:sz → 10 pt); Normal rFonts Times New Roman"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.font",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.distanceFromEdgeMm",
@@ -464,7 +674,17 @@
      "locator": "sectPr w:footer=\"709\"/\"708\""
     }
    ],
-   "notes": "Footer bottom 12.5 mm above the page edge. Single-line 10 pt footer ⇒ page-number baseline ≈ 297.0 − 12.5 − 0.76 (TNR descent) = 283.7 mm from top (INFERRED). The guide PDF itself prints numbers at baseline 279.65 mm (pp.33-43, footer with an extra empty paragraph, cf. template footer5.xml) and 276.18 mm (pp.2-32); see conflicts."
+   "notes": "Footer bottom 12.5 mm above the page edge. Single-line 10 pt footer ⇒ page-number baseline ≈ 297.0 − 12.5 − 0.76 (TNR descent) = 283.7 mm from top (INFERRED). The guide PDF itself prints numbers at baseline 279.65 mm (pp.33-43, footer with an extra empty paragraph, cf. template footer5.xml) and 276.18 mm (pp.2-32); see conflicts.",
+   "canonicalKey": "pagination.distanceFromEdgeMm",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.baselineMm",
@@ -488,7 +708,17 @@
      "locator": "LibreOffice render of the template (supporting): page-number baselines 283.72 mm on pp.7-13 and 14+ (single-paragraph footers, 10 pt)"
     }
    ],
-   "notes": "Model validated on the guide: a 2-paragraph 10 pt footer at 12.5 mm predicts 279.71 mm, measured 279.65 mm. Reviewer: model = 297 − 12.5 (footer bottom) − 0.2163×10 pt descent (0.76 mm) = 283.74; LO render 283.72 agrees."
+   "notes": "Model validated on the guide: a 2-paragraph 10 pt footer at 12.5 mm predicts 279.71 mm, measured 279.65 mm. Reviewer: model = 297 − 12.5 (footer bottom) − 0.2163×10 pt descent (0.76 mm) = 283.74; LO render 283.72 agrees.",
+   "canonicalKey": "pagination.baselineMm",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.coverPages",
@@ -512,7 +742,17 @@
      "locator": "p.39 Örnek 8",
      "quote": "ÖZET ... i"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.coverPages",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.format",
@@ -531,7 +771,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "sectPr#3 w:pgNumType w:fmt=\"lowerRoman\" w:start=\"1\""
     }
-   ]
+   ],
+   "canonicalKey": "pagination.front.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.startsAt(section)",
@@ -553,7 +803,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "sectPr#3 start=1 (section begins with ÖZET)"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.front.startsAt(section)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.format",
@@ -572,7 +832,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "sectPr#4 w:pgNumType w:start=\"1\" (decimal)"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.main.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.startsAt(section)",
@@ -593,7 +863,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "sectPr#4 start=1; first paragraph \"1. GİRİŞ\""
     }
-   ]
+   ],
+   "canonicalKey": "pagination.main.startsAt(section)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.appendix",
@@ -608,7 +888,17 @@
      "locator": "p.26 §4.3.8",
      "quote": "Ekler bölümünün sayfa numaraları, kaynaklar bölümünün bitişini izleyen sayfa numarası ile devam etmelidir."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.appendix",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.firstPageOfChapterVisible",
@@ -626,7 +916,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.4 \"1. GİRİŞ\" page shows number 1"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.firstPageOfChapterVisible",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.landscapePages",
@@ -641,7 +941,17 @@
      "locator": "p.12 §3.1",
      "quote": "sayfa numarası önceki sayfalarda bulunduğu yerde (alt ortada) olmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "pagination.landscapePages",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontFamily",
@@ -660,7 +970,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "styles.xml Normal w:rFonts ascii/hAnsi=\"Times New Roman\""
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontSizePt",
@@ -680,7 +1000,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "body runs w:sz=24 (Normal style itself has no w:sz = 10 pt; size is direct formatting)"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.minFontSizePt.tablesFormulas",
@@ -696,7 +1026,17 @@
      "locator": "p.5 §2.2",
      "quote": "geniş veya uzun çizelgelerde ve formüllerde en küçük 8 punto kullanılabilir"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.minFontSizePt.tablesFormulas",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.lineSpacing",
@@ -720,7 +1060,17 @@
      "locator": "pp.4-7 measured baseline pitch 20.64-20.78 pt (Word 1.5 × 13.8 = 20.7 pt)"
     }
    ],
-   "notes": "Word \"1,5 satır\": pitch 20.7 pt for TNR 12 (singleLineEm 1.15)."
+   "notes": "Word \"1,5 satır\": pitch 20.7 pt for TNR 12 (singleLineEm 1.15).",
+   "canonicalKey": "typography.body.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.linePitchPt",
@@ -735,7 +1085,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 lines 2.2 block: 20.66/20.75/20.64 pt"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.linePitchPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.align",
@@ -754,7 +1114,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "body paragraphs w:jc=\"both\""
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.firstLineIndentMm",
@@ -778,7 +1148,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "pp.4-7 every paragraph first line x0=30.02 mm"
     }
-   ]
+   ],
+   "canonicalKey": "typography.paragraph.firstLineIndentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceBeforePt",
@@ -793,7 +1173,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "body paragraphs: no w:before; blank line is an empty paragraph"
     }
-   ]
+   ],
+   "canonicalKey": "typography.paragraph.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.blankLineBetween",
@@ -812,7 +1202,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "red \"(Bir boşluk)\" empty paragraphs (12 pt, line=360) between paragraphs, e.g. #357,#362,#366"
     }
-   ]
+   ],
+   "canonicalKey": "typography.paragraph.blankLineBetween",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceAfterPt",
@@ -833,7 +1233,17 @@
      "locator": "pp.4-7 paragraph-to-paragraph baseline gap 41.39-41.41 pt = 2 × 20.7"
     }
    ],
-   "notes": "One empty 1.5-spaced 12 pt line (20.7 pt) expressed as space after; not added again before headings (headings spaceBefore 0)."
+   "notes": "One empty 1.5-spaced 12 pt line (20.7 pt) expressed as space after; not added again before headings (headings spaceBefore 0).",
+   "canonicalKey": "typography.paragraph.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.widowOrphan",
@@ -849,7 +1259,17 @@
      "quote": "sayfanın başında veya sonunda tek başına bir satır bırakılmamalıdır."
     }
    ],
-   "notes": "Template Normal style sets w:widowControl w:val=\"0\" (disabled) - contradicts the guide; guide wins."
+   "notes": "Template Normal style sets w:widowControl w:val=\"0\" (disabled) - contradicts the guide; guide wins.",
+   "canonicalKey": "typography.widowOrphan",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.quotations",
@@ -864,7 +1284,17 @@
      "locator": "p.6 §2.5",
      "quote": "alıntı açıkça görülebilecek şekilde tırnak içinde “……” yazılmalı"
     }
-   ]
+   ],
+   "canonicalKey": "typography.quotations",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.hyphenation",
@@ -882,7 +1312,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "silent"
     }
-   ]
+   ],
+   "canonicalKey": "typography.hyphenation",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.lineSpacing.model",
@@ -900,7 +1340,17 @@
      "locator": "p.32 single-spaced 12 pt pitch 13.80 pt; p.5 1.5-spaced pitch 20.7 pt; p.33 14 pt 1.5-spaced pitch 24.12-24.15 pt"
     }
    ],
-   "notes": "Reviewer: confirmed; see wordModel.* rules for the first-baseline offset (lineGap+ascent) and the placement of the extra 1.5 leading below the text."
+   "notes": "Reviewer: confirmed; see wordModel.* rules for the first-baseline offset (lineGap+ascent) and the placement of the extra 1.5 leading below the text.",
+   "canonicalKey": "typography.lineSpacing.model",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.levels",
@@ -915,7 +1365,17 @@
      "locator": "p.7 §2.8",
      "quote": "Dördüncü dereceden daha ileri derecede alt bölüm başlığı kullanılmamalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.levels",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.fontFamily",
@@ -929,7 +1389,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 §2.2"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.fontSizePt",
@@ -945,7 +1415,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.bold",
@@ -960,7 +1440,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.italic",
@@ -974,7 +1464,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk2/Balk3/Balk4/Balk5 styles, no w:i"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.align",
@@ -998,7 +1498,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "style Balk2 (used for chapters) w:jc=left"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.indentMm",
@@ -1014,7 +1524,17 @@
      "locator": "p.5 §2.4",
      "quote": "Bölüm ve alt bölüm başlıkları ... sol çerçeve kenarından ve boşluk bırakılmadan başlamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.lineSpacing",
@@ -1028,7 +1548,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "heading paragraphs level 1: w:spacing w:line=\"360\" w:lineRule=\"auto\" (direct)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceBeforePt",
@@ -1044,7 +1574,17 @@
      "locator": "heading paragraphs: w:before=\"0\" direct (Balk4/Balk5 style before=200 overridden); the blank line before a heading is the preceding paragraph's blank line"
     }
    ],
-   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt."
+   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt.",
+   "canonicalKey": "headings.h1.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceAfterPt",
@@ -1068,7 +1608,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 heading→paragraph baseline pitch 41.16-41.22 pt"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.keepWithNext",
@@ -1082,7 +1632,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk4/Balk5 styles w:keepNext; general rule no lone line (p.6)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.fontFamily",
@@ -1096,7 +1656,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 §2.2"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.fontSizePt",
@@ -1112,7 +1682,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.bold",
@@ -1127,7 +1707,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.italic",
@@ -1141,7 +1731,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk2/Balk3/Balk4/Balk5 styles, no w:i"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.align",
@@ -1165,7 +1765,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "style Balk3 basedOn Balk2 (left)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.indentMm",
@@ -1181,7 +1791,17 @@
      "locator": "p.5 §2.4",
      "quote": "Bölüm ve alt bölüm başlıkları ... sol çerçeve kenarından ve boşluk bırakılmadan başlamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.lineSpacing",
@@ -1195,7 +1815,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "heading paragraphs level 2: w:spacing w:line=\"360\" w:lineRule=\"auto\" (direct)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceBeforePt",
@@ -1211,7 +1841,17 @@
      "locator": "heading paragraphs: w:before=\"0\" direct (Balk4/Balk5 style before=200 overridden); the blank line before a heading is the preceding paragraph's blank line"
     }
    ],
-   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt."
+   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt.",
+   "canonicalKey": "headings.h2.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceAfterPt",
@@ -1235,7 +1875,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 heading→paragraph baseline pitch 41.16-41.22 pt"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.keepWithNext",
@@ -1249,7 +1899,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk4/Balk5 styles w:keepNext; general rule no lone line (p.6)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.fontFamily",
@@ -1263,7 +1923,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 §2.2"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.fontSizePt",
@@ -1279,7 +1949,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.bold",
@@ -1294,7 +1974,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.italic",
@@ -1308,7 +1998,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk2/Balk3/Balk4/Balk5 styles, no w:i"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.align",
@@ -1332,7 +2032,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "style Balk4 basedOn Normal (left)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.indentMm",
@@ -1348,7 +2058,17 @@
      "locator": "p.5 §2.4",
      "quote": "Bölüm ve alt bölüm başlıkları ... sol çerçeve kenarından ve boşluk bırakılmadan başlamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.lineSpacing",
@@ -1362,7 +2082,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "heading paragraphs level 3: w:spacing w:line=\"360\" w:lineRule=\"auto\" (direct)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceBeforePt",
@@ -1378,7 +2108,17 @@
      "locator": "heading paragraphs: w:before=\"0\" direct (Balk4/Balk5 style before=200 overridden); the blank line before a heading is the preceding paragraph's blank line"
     }
    ],
-   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt."
+   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt.",
+   "canonicalKey": "headings.h3.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceAfterPt",
@@ -1402,7 +2142,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 heading→paragraph baseline pitch 41.16-41.22 pt"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.keepWithNext",
@@ -1416,7 +2166,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk4/Balk5 styles w:keepNext; general rule no lone line (p.6)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.fontFamily",
@@ -1430,7 +2190,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 §2.2"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.fontSizePt",
@@ -1446,7 +2216,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.bold",
@@ -1461,7 +2241,17 @@
      "locator": "p.7 §2.8",
      "quote": "Tüm bölüm başlıkları, yazımda kullanılan punto (12 punto) ile ve koyu olarak"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.italic",
@@ -1475,7 +2265,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk2/Balk3/Balk4/Balk5 styles, no w:i"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.italic",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.align",
@@ -1499,7 +2299,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "style Balk5 basedOn Normal (left)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.indentMm",
@@ -1515,7 +2325,17 @@
      "locator": "p.5 §2.4",
      "quote": "Bölüm ve alt bölüm başlıkları ... sol çerçeve kenarından ve boşluk bırakılmadan başlamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.indentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.lineSpacing",
@@ -1529,7 +2349,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "heading paragraphs level 4: w:spacing w:line=\"360\" w:lineRule=\"auto\" (direct)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.spaceBeforePt",
@@ -1545,7 +2375,17 @@
      "locator": "heading paragraphs: w:before=\"0\" direct (Balk4/Balk5 style before=200 overridden); the blank line before a heading is the preceding paragraph's blank line"
     }
    ],
-   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt."
+   "notes": "Effective gap before a heading = one blank 1.5 line (provided by previous paragraph spaceAfter 20.7 pt). Guide p.5: paragraph→heading baseline pitch 41.64 pt.",
+   "canonicalKey": "headings.h4.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.spaceAfterPt",
@@ -1569,7 +2409,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.5 heading→paragraph baseline pitch 41.16-41.22 pt"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.keepWithNext",
@@ -1583,7 +2433,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "Balk4/Balk5 styles w:keepNext; general rule no lone line (p.6)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.numbering",
@@ -1611,7 +2471,17 @@
      "locator": "p.39 Örnek 8",
      "quote": "1. GİRİŞ / 2. LİTERATÜR BİLGİLERİ"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.numbering",
@@ -1635,7 +2505,17 @@
      "locator": "#363 \"2.1 İkinci Dereceden Başlık\" (Balk3)"
     }
    ],
-   "notes": "No trailing period after level 2-4 numbers."
+   "notes": "No trailing period after level 2-4 numbers.",
+   "canonicalKey": "headings.h2.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.numbering",
@@ -1658,7 +2538,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#373 (Balk3 style!) / #415 (Balk4)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.numbering",
@@ -1681,7 +2571,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#424 (Balk5)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.caps",
@@ -1701,7 +2601,17 @@
      "locator": "#432 \"3. MATERYAL ve METOT\", #622 \"5. TARTIŞMA ve SONUÇ\""
     }
    ],
-   "notes": "A blanket CSS/Word uppercase transform would violate this; text must be typed as required (textTransform none)."
+   "notes": "A blanket CSS/Word uppercase transform would violate this; text must be typed as required (textTransform none).",
+   "canonicalKey": "headings.h1.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.caps",
@@ -1716,7 +2626,17 @@
      "locator": "p.7 §2.8",
      "quote": "ikinci derecede alt bölüm başlıkları ise kelime(ler)nin İlk Harfleri Büyük, diğerleri küçük"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.caps",
@@ -1735,7 +2655,17 @@
      "locator": "p.39 \"2.1.1 Endoplazmik Retikulum Stresi\""
     }
    ],
-   "notes": "Guide states case only for levels 1-2."
+   "notes": "Guide states case only for levels 1-2.",
+   "canonicalKey": "headings.h3.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.caps",
@@ -1749,7 +2679,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#424 \"2.3.1.1 Dördüncü Dereceden Başlık\""
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.pageBreakBefore",
@@ -1769,7 +2709,17 @@
      "locator": "p.7 §2.8",
      "quote": "Her ana bölüm ... sayfa başından başlamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.pageBreakBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.firstBaselineMm",
@@ -1784,7 +2734,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.4 \"1. GİRİŞ\" baseline 33.92 mm, x0 30.02"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.firstBaselineMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.frontMatterTitles",
@@ -1810,7 +2770,17 @@
      "locator": "p.19 §4.2.7",
      "quote": "İçindekiler başlığı, sayfa ortalanarak, büyük harflerle ve koyu yazılmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "headings.frontMatterTitles",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.label",
@@ -1829,7 +2799,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#413 Normal jc=both ind hanging=851 after=120, runs sz=22, \"Şekil 2.1\" bold"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.position",
@@ -1844,7 +2824,17 @@
      "locator": "p.12 §3",
      "quote": "Şekil ve resimlerde başlık şekil ve resimlerin altlarına, çizelgelerde ise başlık çizelgenin üstüne yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.numbering",
@@ -1863,7 +2853,17 @@
      "locator": "p.13 §3.2",
      "quote": "Numaralar ilk bölümden başlayarak birbirini takip eder şekilde, bölüm numarasıyla birlikte verilmelidir. Örnek: Şekil 1.1 ………, Şekil 1.2"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.separator",
@@ -1882,7 +2882,17 @@
      "locator": "#413 Normal jc=both ind hanging=851 after=120, runs sz=22, \"Şekil 2.1\" bold"
     }
    ],
-   "notes": "No period or colon after the number; a single space."
+   "notes": "No period or colon after the number; a single space.",
+   "canonicalKey": "captions.figure.separator",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.fontSizePt",
@@ -1902,7 +2912,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 measured 11.04 pt"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.labelBold",
@@ -1921,7 +2941,17 @@
      "locator": "#413 Normal jc=both ind hanging=851 after=120, runs sz=22, \"Şekil 2.1\" bold"
     }
    ],
-   "notes": "Label and number bold, caption text regular."
+   "notes": "Label and number bold, caption text regular.",
+   "canonicalKey": "captions.figure.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.lineSpacing",
@@ -1940,7 +2970,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 caption line pitch 12.61 pt (11 × 1.15)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.align",
@@ -1955,7 +2995,17 @@
      "locator": "p.13 §3.3",
      "quote": "Şekil, çizelge ve resimlerin başlık ve açıklamalarının yazımında 1 aralık ve 11 punto kullanılmalı ve bunlar iki yana yaslı olacak şekilde, ilk satırdan sonraki satırlar ilk satıra göre hizalı (asılı) olarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.hangingIndent",
@@ -1978,7 +3028,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "callout #381: \"... açıklamaları II. satıra taşıyorsa, II. satır üst satıra hizalanmalı.\""
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.hangingIndent",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.continued",
@@ -1997,7 +3057,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#585 \"Çizelge 4.1 (Devam) ...\""
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.continued",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.label",
@@ -2016,7 +3086,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#381/#478/#516 style Balk6 (keepNext) before=0 after=120 hanging≈label width, runs sz=22, \"Çizelge 2.1\" bold"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.position",
@@ -2031,7 +3111,17 @@
      "locator": "p.12 §3",
      "quote": "Şekil ve resimlerde başlık şekil ve resimlerin altlarına, çizelgelerde ise başlık çizelgenin üstüne yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.numbering",
@@ -2050,7 +3140,17 @@
      "locator": "p.13 §3.2",
      "quote": "Numaralar ilk bölümden başlayarak birbirini takip eder şekilde, bölüm numarasıyla birlikte verilmelidir. Örnek: Şekil 1.1 ………, Şekil 1.2"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.separator",
@@ -2069,7 +3169,17 @@
      "locator": "#381/#478/#516 style Balk6 (keepNext) before=0 after=120 hanging≈label width, runs sz=22, \"Çizelge 2.1\" bold"
     }
    ],
-   "notes": "No period or colon after the number; a single space."
+   "notes": "No period or colon after the number; a single space.",
+   "canonicalKey": "captions.table.separator",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.fontSizePt",
@@ -2089,7 +3199,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 measured 11.04 pt"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.labelBold",
@@ -2108,7 +3228,17 @@
      "locator": "#381/#478/#516 style Balk6 (keepNext) before=0 after=120 hanging≈label width, runs sz=22, \"Çizelge 2.1\" bold"
     }
    ],
-   "notes": "Label and number bold, caption text regular."
+   "notes": "Label and number bold, caption text regular.",
+   "canonicalKey": "captions.table.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.lineSpacing",
@@ -2127,7 +3257,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 caption line pitch 12.61 pt (11 × 1.15)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.align",
@@ -2142,7 +3282,17 @@
      "locator": "p.13 §3.3",
      "quote": "Şekil, çizelge ve resimlerin başlık ve açıklamalarının yazımında 1 aralık ve 11 punto kullanılmalı ve bunlar iki yana yaslı olacak şekilde, ilk satırdan sonraki satırlar ilk satıra göre hizalı (asılı) olarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.hangingIndent",
@@ -2165,7 +3315,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "callout #381: \"... açıklamaları II. satıra taşıyorsa, II. satır üst satıra hizalanmalı.\""
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.hangingIndent",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.continued",
@@ -2184,7 +3344,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#585 \"Çizelge 4.1 (Devam) ...\""
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.continued",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.label",
@@ -2203,7 +3373,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#610 before=120 after=120 hanging=992; #619 hanging=993, \"Resim 4.1\" bold"
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.position",
@@ -2218,7 +3398,17 @@
      "locator": "p.12 §3",
      "quote": "Şekil ve resimlerde başlık şekil ve resimlerin altlarına, çizelgelerde ise başlık çizelgenin üstüne yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.numbering",
@@ -2237,7 +3427,17 @@
      "locator": "p.13 §3.2",
      "quote": "Numaralar ilk bölümden başlayarak birbirini takip eder şekilde, bölüm numarasıyla birlikte verilmelidir. Örnek: Şekil 1.1 ………, Şekil 1.2"
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.separator",
@@ -2256,7 +3456,17 @@
      "locator": "#610 before=120 after=120 hanging=992; #619 hanging=993, \"Resim 4.1\" bold"
     }
    ],
-   "notes": "No period or colon after the number; a single space."
+   "notes": "No period or colon after the number; a single space.",
+   "canonicalKey": "captions.photo.separator",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.fontSizePt",
@@ -2276,7 +3486,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 measured 11.04 pt"
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.labelBold",
@@ -2295,7 +3515,17 @@
      "locator": "#610 before=120 after=120 hanging=992; #619 hanging=993, \"Resim 4.1\" bold"
     }
    ],
-   "notes": "Label and number bold, caption text regular."
+   "notes": "Label and number bold, caption text regular.",
+   "canonicalKey": "captions.photo.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.lineSpacing",
@@ -2314,7 +3544,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 caption line pitch 12.61 pt (11 × 1.15)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.align",
@@ -2329,7 +3569,17 @@
      "locator": "p.13 §3.3",
      "quote": "Şekil, çizelge ve resimlerin başlık ve açıklamalarının yazımında 1 aralık ve 11 punto kullanılmalı ve bunlar iki yana yaslı olacak şekilde, ilk satırdan sonraki satırlar ilk satıra göre hizalı (asılı) olarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.hangingIndent",
@@ -2352,7 +3602,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "callout #381: \"... açıklamaları II. satıra taşıyorsa, II. satır üst satıra hizalanmalı.\""
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.hangingIndent",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.continued",
@@ -2371,7 +3631,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#585 \"Çizelge 4.1 (Devam) ...\""
     }
-   ]
+   ],
+   "canonicalKey": "captions.photo.continued",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.spaceBeforePt",
@@ -2387,7 +3657,17 @@
      "locator": "Balk6 caption paragraphs w:before=\"0\""
     }
    ],
-   "notes": "Preceded by a blank 1.5 line from the previous paragraph (general rule)."
+   "notes": "Preceded by a blank 1.5 line from the previous paragraph (general rule).",
+   "canonicalKey": "captions.table.spaceBeforePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.spaceAfterPt",
@@ -2406,7 +3686,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 last caption baseline 165.17 → table top rule 168.26 mm = 1.0 mm line rest + 2.1 mm (6 pt) ✓"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.spaceAfterPt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.spaceBeforePt",
@@ -2421,7 +3711,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#413/#422 no w:before"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.spaceBeforePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.spaceAfterPt",
@@ -2436,7 +3736,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#413/#422 w:after=\"120\""
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.spaceAfterPt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.gapImageBottomToCaptionBaselineMm",
@@ -2451,7 +3761,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 image bottom 129.10 mm → caption baseline 135.06 mm; p.15 identical (129.10 → 135.06)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.gapImageBottomToCaptionBaselineMm",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.photo.spaceBeforePt",
@@ -2467,7 +3787,17 @@
      "locator": "#610 w:before=\"120\" w:after=\"120\""
     }
    ],
-   "notes": "#619 has no spacing - template inconsistent; figure-like spacing (0/6) is an acceptable alternative (needs confirmation)."
+   "notes": "#619 has no spacing - template inconsistent; figure-like spacing (0/6) is an acceptable alternative (needs confirmation).",
+   "canonicalKey": "captions.photo.spaceBeforePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.source",
@@ -2482,7 +3812,17 @@
      "locator": "p.8 §2.9 table",
      "quote": "Şekil 2.1 Zemin taşıma gücü … (TSE 1997)."
     }
-   ]
+   ],
+   "canonicalKey": "captions.source",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.align",
@@ -2501,7 +3841,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#412/#421/#609 jc=center"
     }
-   ]
+   ],
+   "canonicalKey": "figures.align",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.maxWidth",
@@ -2521,7 +3871,17 @@
      "locator": "p.12 §3.1",
      "quote": "sayfa kenarlarında bırakılması gerekli boşluklar kesinlikle aşılmamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "figures.maxWidth",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.paragraphLineSpacing",
@@ -2540,7 +3900,17 @@
      "locator": "#609/#617 image paragraphs without w:line (single); #412/#421 carry line=360"
     }
    ],
-   "notes": "Template inconsistent; guide geometry shows single."
+   "notes": "Template inconsistent; guide geometry shows single.",
+   "canonicalKey": "figures.paragraphLineSpacing",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.oversize",
@@ -2555,7 +3925,17 @@
      "locator": "p.12 §3.1",
      "quote": "A4 ebadından büyük ise, A4 ebadında katlanmış olarak EKLER bölümünde verilmeli"
     }
-   ]
+   ],
+   "canonicalKey": "figures.oversize",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.align",
@@ -2573,7 +3953,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "tblPr w:jc=\"center\" on all content tables"
     }
-   ]
+   ],
+   "canonicalKey": "tables.align",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.fontSizePt",
@@ -2594,7 +3984,17 @@
      "locator": "cell runs w:sz=24"
     }
    ],
-   "notes": "Guide example table (p.14) uses 10/9 pt (a wide table - allowed ≥ 8 pt)."
+   "notes": "Guide example table (p.14) uses 10/9 pt (a wide table - allowed ≥ 8 pt).",
+   "canonicalKey": "tables.fontSizePt",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.lineSpacing",
@@ -2608,7 +4008,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "cell paragraphs Normal, no w:spacing"
     }
-   ]
+   ],
+   "canonicalKey": "tables.lineSpacing",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.borders",
@@ -2626,7 +4036,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.14 three rules at y 168.26 / 180.41 / 228.59 mm, 0.17 mm thick, no verticals"
     }
-   ]
+   ],
+   "canonicalKey": "tables.borders",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.headerBold",
@@ -2640,7 +4060,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "row 0 runs w:b"
     }
-   ]
+   ],
+   "canonicalKey": "tables.headerBold",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.notes",
@@ -2668,7 +4098,17 @@
      "locator": "#406/#496/#584 w:before=120 w:after=120 jc=both, runs without w:sz (Normal = 10 pt)"
     }
    ],
-   "notes": "Spacing 6/6 pt is TEMPLATE."
+   "notes": "Spacing 6/6 pt is TEMPLATE.",
+   "canonicalKey": "tables.notes",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.font",
@@ -2686,7 +4126,17 @@
      "locator": "p.9 §2.10",
      "quote": "denklem editörü kullanılarak Cambria Math fontu (12 punto)"
     }
-   ]
+   ],
+   "canonicalKey": "equations.font",
+   "category": "equations",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.align",
@@ -2705,7 +4155,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#508 right tab pos=8502 (149.98 mm); callout #503 \"sayfaya ortalı ve numaraları sağa yaslı\""
     }
-   ]
+   ],
+   "canonicalKey": "equations.align",
+   "category": "equations",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.numbering",
@@ -2725,7 +4185,17 @@
      "locator": "p.10",
      "quote": "Cümle içinde yazılan denklemlere numara verilmez"
     }
-   ]
+   ],
+   "canonicalKey": "equations.numbering",
+   "category": "equations",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.spacing",
@@ -2740,7 +4210,17 @@
      "locator": "p.9 §2.10",
      "quote": "denklemlerden önce-sonra 1 satır boşluk (1,5 satır aralıklı) bırakılmalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "equations.spacing",
+   "category": "equations",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.reference",
@@ -2755,7 +4235,17 @@
      "locator": "p.9",
      "quote": "Metin içerisinde denklem ya da formüle atıf yapılırken “d” ya da “f” harfi büyük yazılmaz."
     }
-   ]
+   ],
+   "canonicalKey": "equations.reference",
+   "category": "equations",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.fontSizePt",
@@ -2774,7 +4264,17 @@
      "locator": "styles.xml DipnotMetni basedOn Normal (10 pt) - Word built-in style, no footnotes used (footnotes.xml separators only)"
     }
    ],
-   "notes": "Author-year citation system; footnotes not regulated. If used, 10 pt is only a template style default."
+   "notes": "Author-year citation system; footnotes not regulated. If used, 10 pt is only a template style default.",
+   "canonicalKey": "footnotes.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "citations.style",
@@ -2789,7 +4289,17 @@
      "locator": "p.7-8 §2.9",
      "quote": "Tez içinde kaynak gösterme “Yazar(lar)ın Soyad(lar)ı ve Yıl” sistemine göre yapılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "citations.style",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.title",
@@ -2813,7 +4323,17 @@
      "locator": "p.39",
      "quote": "6. KAYNAKLAR ..... 43"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.title",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.fontSizePt",
@@ -2828,7 +4348,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#629.. runs w:sz=24"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.fontSizePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.lineSpacing",
@@ -2847,7 +4377,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#629.. w:line=\"360\""
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.lineSpacing",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.hangingIndentMm",
@@ -2871,7 +4411,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.23 continuation x0 42.51 mm (=30.02+12.49)"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.hangingIndentMm",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.align",
@@ -2890,7 +4440,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "w:jc=\"both\""
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.align",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.spaceBeforePt",
@@ -2914,7 +4474,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.23 entry-to-entry pitch 26.62-26.76 pt = 20.7 + 6"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.spaceBeforePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.spaceAfterPt",
@@ -2934,7 +4504,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "no w:after"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.spaceAfterPt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.blankLineBetween",
@@ -2949,7 +4529,17 @@
      "locator": "p.21",
      "quote": "Kaynaklar boşluk bırakılmadan ard arda yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.blankLineBetween",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.order",
@@ -2975,7 +4565,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#660 \"İnternet Kaynakları\" bold, before=120, line=360; #662-663 numbering \"%1-\""
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.order",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.title",
@@ -2998,7 +4598,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.39 title"
     }
-   ]
+   ],
+   "canonicalKey": "toc.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.pageNumberHeading",
@@ -3022,7 +4632,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#201 jc=right b \"Sayfa\""
     }
-   ]
+   ],
+   "canonicalKey": "toc.pageNumberHeading",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.levels",
@@ -3046,7 +4666,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#202 TOC \\o \"1-5\""
     }
-   ]
+   ],
+   "canonicalKey": "toc.levels",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.entries",
@@ -3064,7 +4694,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#202-#242"
     }
-   ]
+   ],
+   "canonicalKey": "toc.entries",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.entryText",
@@ -3079,7 +4719,17 @@
      "locator": "p.19",
      "quote": "Tezde kullanılan her başlık, içindekiler dizininde hiçbir değişiklik olmaksızın aynen yer almalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "toc.entryText",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.leader",
@@ -3097,7 +4747,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.39 dotted leaders"
     }
-   ]
+   ],
+   "canonicalKey": "toc.leader",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.pageNumberRightEdgeMm",
@@ -3116,7 +4776,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.39 page-number x1 179.73-179.90 mm"
     }
-   ]
+   ],
+   "canonicalKey": "toc.pageNumberRightEdgeMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.lineSpacing",
@@ -3134,7 +4804,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.39 pitch 20.64 pt"
     }
-   ]
+   ],
+   "canonicalKey": "toc.lineSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.spaceAfterPt",
@@ -3149,7 +4829,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#202-#242 w:after=\"0\" (style T1 after=120 overridden)"
     }
-   ]
+   ],
+   "canonicalKey": "toc.spaceAfterPt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.indentPerLevelMm",
@@ -3169,7 +4859,17 @@
      "locator": "p.39 x0 29.97 / 34.96 / 39.95 / 44.95 mm"
     }
    ],
-   "notes": "Level 1 (chapters and front/back titles) 0 mm, level 2 5 mm, level 3 10 mm, level 4 15 mm."
+   "notes": "Level 1 (chapters and front/back titles) 0 mm, level 2 5 mm, level 3 10 mm, level 4 15 mm.",
+   "canonicalKey": "toc.indentPerLevelMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.bold",
@@ -3187,7 +4887,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "T1-T5 no w:b"
     }
-   ]
+   ],
+   "canonicalKey": "toc.bold",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.wrappedLines",
@@ -3205,7 +4915,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.39 \"4.1 MTT...\" continuation x0 41.98 (entry text start)"
     }
-   ]
+   ],
+   "canonicalKey": "toc.wrappedLines",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.title",
@@ -3223,7 +4943,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#305"
     }
-   ]
+   ],
+   "canonicalKey": "lists.figures.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.title",
@@ -3241,7 +4971,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#318"
     }
-   ]
+   ],
+   "canonicalKey": "lists.tables.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.photos.title",
@@ -3259,7 +4999,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#349"
     }
-   ]
+   ],
+   "canonicalKey": "lists.photos.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.pageNumberHeading",
@@ -3278,7 +5028,17 @@
      "locator": "p.19 §4.2.9-4.2.11",
      "quote": "“Sayfa” yazısı başlığın hemen altında koyu ve sağa yaslı"
     }
-   ]
+   ],
+   "canonicalKey": "lists.pageNumberHeading",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.titleOnFirstPageOnly",
@@ -3293,7 +5053,17 @@
      "locator": "p.19",
      "quote": "eğer dizin bir sayfadan uzun ise ikinci ve diğer sayfalara başlık yazılmamalıdır"
     }
-   ]
+   ],
+   "canonicalKey": "lists.titleOnFirstPageOnly",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.entryFormat",
@@ -3311,7 +5081,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#307.. runs rStyle=Kpr b for label"
     }
-   ]
+   ],
+   "canonicalKey": "lists.entryFormat",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.leader",
@@ -3325,7 +5105,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "ekillerTablosu w:tab right leader=dot pos=8494"
     }
-   ]
+   ],
+   "canonicalKey": "lists.leader",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.lineSpacing",
@@ -3340,7 +5130,17 @@
      "locator": "image2.jpg (instruction screenshot after #316 \"Şekiller, Çizelgeler ve Resimler Dizininde aşağıdaki ayarlar uygulanmalı\"): Hizalama Soldan, Asılı 1,6 cm, Önce 0 nk, Sonra 6 nk, Satır aralığı Tek"
     }
    ],
-   "notes": "CONFLICT: template sample entries (#307..) and guide p.41/42 are 1.5-spaced with 0 after; see conflicts (needsConfirmation)."
+   "notes": "CONFLICT: template sample entries (#307..) and guide p.41/42 are 1.5-spaced with 0 after; see conflicts (needsConfirmation).",
+   "canonicalKey": "lists.lineSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.spaceAfterPt",
@@ -3356,7 +5156,17 @@
      "locator": "image2.jpg \"Sonra: 6 nk\""
     }
    ],
-   "notes": "CONFLICT with sample entries/guide (0 pt)."
+   "notes": "CONFLICT with sample entries/guide (0 pt).",
+   "canonicalKey": "lists.spaceAfterPt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.align",
@@ -3370,7 +5180,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "image2.jpg \"Hizalama: Soldan\""
     }
-   ]
+   ],
+   "canonicalKey": "lists.align",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.hangingIndentMm",
@@ -3411,7 +5231,17 @@
     ],
     "tables": 21.0,
     "photos": 16.0
-   }
+   },
+   "canonicalKey": "lists.hangingIndentMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.title",
@@ -3430,7 +5260,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#246"
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.structure",
@@ -3449,7 +5289,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "table #248 grid 2196/6301 twips; callout #304 \"Kısaltmalar bölümü alfabetik sırada olmalıdır.\""
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.structure",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.lineSpacing",
@@ -3468,7 +5318,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.40 pitch 13.80 pt"
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.lineSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.definitionColumnMm",
@@ -3487,7 +5347,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "column 1 width 2196 twips = 38.74 mm + cell margin 1.9 mm"
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.definitionColumnMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.count",
@@ -3509,7 +5379,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "callout #139"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.count",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.label",
@@ -3530,7 +5410,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#138/#175 label bold"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.label",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.hanging",
@@ -3544,7 +5434,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#138 ind left=2127 hanging=2127; #175 left=1446 hanging=1446; callout #138 \"II. satır üst satıra hizalanmış olmalı\""
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.hanging",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.lineSpacing",
@@ -3562,7 +5462,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.36 pitches 20.64-20.78 pt"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.lineSpacing",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.maxWords",
@@ -3580,7 +5490,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "silent"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.maxWords",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.pageCountLine",
@@ -3603,7 +5523,17 @@
      "locator": "p.18 §4.2.5",
      "quote": "tez savunmasının yapıldığı yıl ve sayfa sayısı formata uygun biçimde"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.pageCountLine",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.degreeLabel",
@@ -3631,7 +5561,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#122, #159"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.degreeLabel",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.englishTitles",
@@ -3653,7 +5593,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "callout #170"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.englishTitles",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "appendices.title",
@@ -3671,7 +5621,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.25 §4.3.8"
     }
-   ]
+   ],
+   "canonicalKey": "appendices.title",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "appendices.itemLabel",
@@ -3690,7 +5650,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#704 \"EK 1.\" bold; #735, #767 \"EK 2. (Devam)\"; callout #769"
     }
-   ]
+   ],
+   "canonicalKey": "appendices.itemLabel",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "appendices.inToc",
@@ -3708,7 +5678,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#242 \"EKLER\""
     }
-   ]
+   ],
+   "canonicalKey": "appendices.inToc",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cv.title",
@@ -3730,7 +5710,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.39 \"ÖZGEÇMİŞ ..... 62\""
     }
-   ]
+   ],
+   "canonicalKey": "cv.title",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cv.required",
@@ -3745,7 +5735,17 @@
      "locator": "p.28 §4.3.7",
      "quote": "Tezi hazırlayan Yüksek Lisans veya Doktora öğrencisi ÖZGEÇMİŞ başlığı altında kısa özgeçmişini ... vermelidir"
     }
-   ]
+   ],
+   "canonicalKey": "cv.required",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cv.layout",
@@ -3763,7 +5763,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
      "locator": "#673.. tabs 1430 + default 708 → 2832 twips (49.96 mm); #679 ind left 709"
     }
-   ]
+   ],
+   "canonicalKey": "cv.layout",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "binding",
@@ -3782,7 +5792,17 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
      "locator": "p.29-30 §4.4"
     }
-   ]
+   ],
+   "canonicalKey": "binding",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "output",
@@ -3798,7 +5818,17 @@
      "quote": "çıktı alınırken .PDF formatına dönüştürülmeden WORD formatında çıktı alınmalıdır !!!"
     }
    ],
-   "notes": "Process instruction; affects fidelity expectations of DOCX export."
+   "notes": "Process instruction; affects fidelity expectations of DOCX export.",
+   "canonicalKey": "output",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.firstBaselineOffsetEm",
@@ -3831,7 +5861,17 @@
      "locator": "LibreOffice render of the template (supporting only): first baselines 33.95 mm on pp.5,7,8,11,12,13; inner cover 34.62 (14 pt)"
     }
    ],
-   "notes": "Refutes an ascent-only model (0.8911 em → 33.77 mm, 0.18 mm too high). For single spacing the same offset applies (a single-spaced first line has the same top part; only the part below the baseline shrinks)."
+   "notes": "Refutes an ascent-only model (0.8911 em → 33.77 mm, 0.18 mm too high). For single spacing the same offset applies (a single-spaced first line has the same top part; only the part below the baseline shrinks).",
+   "canonicalKey": "wordModel.firstBaselineOffsetEm",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": 0.02,
+    "unit": "em",
+    "targetValue": 0.02
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.singleLineEm",
@@ -3851,7 +5891,17 @@
      "locator": "hhea ascender 1825 + descender 443 + lineGap 87 = 2355/2048 = 1.1499 em"
     }
    ],
-   "notes": "Word 'single' for TNR = (ascender+descender+lineGap). '1.5 lines' = 1.5 × single (20.70 pt at 12 pt, 24.15 pt at 14 pt, 17.25 pt at 10 pt). An empty paragraph takes its height from its paragraph-mark run size."
+   "notes": "Word 'single' for TNR = (ascender+descender+lineGap). '1.5 lines' = 1.5 × single (20.70 pt at 12 pt, 24.15 pt at 14 pt, 17.25 pt at 10 pt). An empty paragraph takes its height from its paragraph-mark run size.",
+   "canonicalKey": "wordModel.singleLineEm",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": 0.02,
+    "unit": "em",
+    "targetValue": 0.02
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.paragraphSpacing",
@@ -3880,7 +5930,17 @@
      "locator": "pp.4-5 paragraph → paragraph over one empty 1.5 line: 41.16-41.67 pt = 2 × 20.70"
     }
    ],
-   "notes": "Only one-sided spacing (after XOR before) occurs in the sources, so whether Word adds or collapses after(prev)+before(next) is not demonstrated here, and no Word-rendered source page starts with a soft-broken paragraph that has space-before. The implementation must not rely on either behaviour for this target."
+   "notes": "Only one-sided spacing (after XOR before) occurs in the sources, so whether Word adds or collapses after(prev)+before(next) is not demonstrated here, and no Word-rendered source page starts with a soft-broken paragraph that has space-before. The implementation must not rely on either behaviour for this target.",
+   "canonicalKey": "wordModel.paragraphSpacing",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.punctuationSpacing",
@@ -3895,7 +5955,17 @@
      "locator": "p.5 §2.2",
      "quote": "Yazımda noktalama işaretlerinden önce boşluk bırakılmamalı, sonra ise bir karakterlik boşluk bırakılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "typography.punctuationSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.numbers",
@@ -3914,7 +5984,17 @@
      "quote": "Ondalıklı sayılar yazılırken virgül kullanılmalı ... üçerli gruplandırma yapılıp bu gruplar arasında bir karakter boşluk"
     }
    ],
-   "notes": "Content rule (author responsibility); the guide's own examples elsewhere use decimal points (e.g. p.14 table), so it is not auto-checkable."
+   "notes": "Content rule (author responsibility); the guide's own examples elsewhere use decimal points (e.g. p.14 table), so it is not auto-checkable.",
+   "canonicalKey": "typography.numbers",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.placement",
@@ -3929,7 +6009,17 @@
      "locator": "p.12 §3.1",
      "quote": "Şekil, çizelge ve resimler metinde ilk değinildiği sayfada veya bir sonrakinde yer almalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "figures.placement",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.inlineVariablesItalic",
@@ -3944,7 +6034,17 @@
      "locator": "p.10",
      "quote": "Cümle içinde yazılan denklemlere numara verilmez ve değişken olarak kullanılan harfler italik olarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "equations.inlineVariablesItalic",
+   "category": "equations",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.chapterStartsNewPage.sections",
@@ -3964,13 +6064,25 @@
      "locator": "p.28-29 §4.3.8",
      "quote": "her biri ayrı bir sayfadan başlayacak şekilde"
     }
-   ]
+   ],
+   "canonicalKey": "headings.chapterStartsNewPage.sections",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "content.units.system",
    "value": "SI",
    "confidence": "EXPLICIT",
-   "appliesTo": ["*"],
+   "appliesTo": [
+    "*"
+   ],
    "evidence": [
     {
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
@@ -3978,7 +6090,17 @@
      "quote": "Tezlerdeki sayısal değerlendirmeler ve boyut değerlendirmelerinde SI birim sistemine uyulması zorunludur."
     }
    ],
-   "notes": "This is an author-content requirement; page styling alone cannot certify that values use SI units."
+   "notes": "This is an author-content requirement; page styling alone cannot certify that values use SI units.",
+   "canonicalKey": "content.units.system",
+   "category": "content",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   }
  ],
  "sections": [
@@ -14755,5 +16877,7 @@
    "Footnotes, abstract word limit, hyphenation remain UNKNOWN (not blocking)."
   ],
   "renderEvidence": "orchestration/artifacts/aku-fbe/review/aku_template.pdf (LibreOffice 33 pages; supporting evidence only — LO misplaces some page breaks and table offsets by ~0.6 mm, but line pitches, footer baseline 283.72 mm and relative approval-page geometry match the analyzer's Word-model computations)"
- }
+ },
+ "annotatedAt": "2026-09-30",
+ "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md"
 }

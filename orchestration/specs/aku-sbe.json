@@ -1,6 +1,6 @@
 {
  "id": "aku-sbe",
- "schemaVersion": 2,
+ "schemaVersion": 3,
  "analyzedAt": "2026-09-28",
  "university": "Afyon Kocatepe Üniversitesi",
  "unit": "Sosyal Bilimler Enstitüsü (institute)",
@@ -58,9 +58,27 @@
   "English-language master and doctoral theses are EXPLICIT scope: the instruction-language abstract precedes the Turkish abstract, and a ≥2000-word Genişletilmiş Türkçe Özet is required after appendices (PDF pp.2, 5, 10 and EK 12 p.52). These require distinct English registry variants or an equivalent explicit selector; the two Turkish variants must not carry this section. Other languages and English sanatta yeterlik details remain UNKNOWN."
  ],
  "requiredVariantsPending": [
-  {"proposedRegistryId":"aku-sbe-sanatta-yeterlik-tr-v1","degreeType":"sanatta-yeterlik","language":"tr","status":"SOURCE_CONFIRMED_ENGINE_GAP","evidence":"2026 guide PDF p.2 Sunuş; p.4 §2.1; p.40 EK 4"},
-  {"proposedRegistryId":"aku-sbe-master-en-v1","degreeType":"master","language":"en","status":"SOURCE_CONFIRMED_NOT_REGISTERED","evidence":"2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"},
-  {"proposedRegistryId":"aku-sbe-phd-en-v1","degreeType":"phd","language":"en","status":"SOURCE_CONFIRMED_NOT_REGISTERED","evidence":"2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"}
+  {
+   "proposedRegistryId": "aku-sbe-sanatta-yeterlik-tr-v1",
+   "degreeType": "sanatta-yeterlik",
+   "language": "tr",
+   "status": "SOURCE_CONFIRMED_ENGINE_GAP",
+   "evidence": "2026 guide PDF p.2 Sunuş; p.4 §2.1; p.40 EK 4"
+  },
+  {
+   "proposedRegistryId": "aku-sbe-master-en-v1",
+   "degreeType": "master",
+   "language": "en",
+   "status": "SOURCE_CONFIRMED_NOT_REGISTERED",
+   "evidence": "2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"
+  },
+  {
+   "proposedRegistryId": "aku-sbe-phd-en-v1",
+   "degreeType": "phd",
+   "language": "en",
+   "status": "SOURCE_CONFIRMED_NOT_REGISTERED",
+   "evidence": "2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"
+  }
  ],
  "rules": [
   {
@@ -77,7 +95,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Kâğıt ve Yazı Alanı",
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.size",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.widthMm",
@@ -93,7 +121,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Kâğıt ve Yazı Alanı",
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.widthMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.heightMm",
@@ -109,7 +147,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Kâğıt ve Yazı Alanı",
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.heightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.orientation",
@@ -125,7 +173,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Not",
      "quote": "Yukarıdaki ölçülere göre ayarlanan sayfa alanının kalan kısım yazı alanı olarak kullanılır ve çok zorunlu bir neden (şekil ve tablolardaki bazı küçük taşmalar gibi) olmadıkça bu alanın dışına çıkılmaması gerekmektedir. Yatay sayfa kullanımlarında da söz konusu ölçütler aynı olacaktır."
     }
-   ]
+   ],
+   "canonicalKey": "page.orientation",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.topMm",
@@ -141,7 +199,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Kâğıt ve Yazı Alanı",
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.margins.topMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.bottomMm",
@@ -157,7 +225,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Kâğıt ve Yazı Alanı",
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.margins.bottomMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.leftMm",
@@ -173,7 +251,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Kâğıt ve Yazı Alanı",
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.margins.leftMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.rightMm",
@@ -189,7 +277,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Kâğıt ve Yazı Alanı",
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
-   ]
+   ],
+   "canonicalKey": "page.margins.rightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.gutterMm",
@@ -206,7 +304,17 @@
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
    ],
-   "notes": "No gutter/binding offset is mentioned; left = right = 30 mm."
+   "notes": "No gutter/binding offset is mentioned; left = right = 30 mm.",
+   "canonicalKey": "page.gutterMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.mirrorMargins",
@@ -228,7 +336,17 @@
      "quote": "A4 (210x297 mm) ... Üst boşluk (top) : 2,5cm / Alt boşluk (bottom) : 2,5cm / Sol (left) : 3cm / Sağ (right) : 3cm"
     }
    ],
-   "notes": "Main/back matter is printed duplex (from GİRİŞ), but left and right margins are equal (30 mm), so mirrored margins would give identical geometry. Nothing in the guide asks for mirroring."
+   "notes": "Main/back matter is printed duplex (from GİRİŞ), but left and right margins are equal (30 mm), so mirrored margins would give identical geometry. Nothing in the guide asks for mirroring.",
+   "canonicalKey": "page.mirrorMargins",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.landscape.margins",
@@ -244,7 +362,17 @@
      "locator": "PDF p.10 (printed 9) §5.1 Not",
      "quote": "Yukarıdaki ölçülere göre ayarlanan sayfa alanının kalan kısım yazı alanı olarak kullanılır ve çok zorunlu bir neden (şekil ve tablolardaki bazı küçük taşmalar gibi) olmadıkça bu alanın dışına çıkılmaması gerekmektedir. Yatay sayfa kullanımlarında da söz konusu ölçütler aynı olacaktır."
     }
-   ]
+   ],
+   "canonicalKey": "page.landscape.margins",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.textArea",
@@ -261,7 +389,17 @@
      "quote": "Yukarıdaki ölçülere göre ayarlanan sayfa alanının kalan kısım yazı alanı olarak kullanılır ve çok zorunlu bir neden (şekil ve tablolardaki bazı küçük taşmalar gibi) olmadıkça bu alanın dışına çıkılmaması gerekmektedir. Yatay sayfa kullanımlarında da söz konusu ölçütler aynı olacaktır."
     }
    ],
-   "notes": "Derived: 210-30-30 = 150 mm, 297-25-25 = 247 mm."
+   "notes": "Derived: 210-30-30 = 150 mm, 297-25-25 = 247 mm.",
+   "canonicalKey": "page.textArea",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.content",
@@ -278,7 +416,17 @@
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
    ],
-   "notes": "The guide never mentions a running header. Page numbers are the only chrome (bottom centre)."
+   "notes": "The guide never mentions a running header. Page numbers are the only chrome (bottom centre).",
+   "canonicalKey": "page.header.content",
+   "category": "page-geometry",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.distanceMm",
@@ -295,7 +443,17 @@
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
    ],
-   "notes": "Not stated."
+   "notes": "Not stated.",
+   "canonicalKey": "page.header.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.footer.distanceMm",
@@ -312,7 +470,17 @@
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
    ],
-   "notes": "Not stated. The guide's own pages put the page number baseline at 280.24 mm (PDF p.2–35), and at 281.09 mm on the example pages, i.e. 16.8/15.9 mm above the bottom edge. The guide's own pages do not follow its 25 mm margins, so this is not a requirement."
+   "notes": "Not stated. The guide's own pages put the page number baseline at 280.24 mm (PDF p.2–35), and at 281.09 mm on the example pages, i.e. 16.8/15.9 mm above the bottom edge. The guide's own pages do not follow its 25 mm margins, so this is not a requirement.",
+   "canonicalKey": "page.footer.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "paper.weight",
@@ -328,7 +496,17 @@
      "locator": "PDF p.10 (printed 9) §5.1",
      "quote": "Tezler, beyaz renkli birinci hamur, iyi nitelikte (en az “80 gramajlı”) düz, beyaz (mat) ve A4 (210x297 mm) standardındaki kâğıtlara yazılır. ... ön bölümlerinin basımında kâğıdın tek yüzü kullanılacaktır. Tezin “Giriş” sayfasından itibaren kaynakça ve ekler de dâhil kâğıdın her iki yüzünün de kullanılması gerekmektedir. Tezin tüm bölümleri tamamlandıktan sonra ciltlenme esnasında en son bir yaprak boş bırakılarak basılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "paper.weight",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "printing.duplex",
@@ -344,7 +522,17 @@
      "locator": "PDF p.10 (printed 9) §5.1",
      "quote": "Tezler, beyaz renkli birinci hamur, iyi nitelikte (en az “80 gramajlı”) düz, beyaz (mat) ve A4 (210x297 mm) standardındaki kâğıtlara yazılır. ... ön bölümlerinin basımında kâğıdın tek yüzü kullanılacaktır. Tezin “Giriş” sayfasından itibaren kaynakça ve ekler de dâhil kâğıdın her iki yüzünün de kullanılması gerekmektedir. Tezin tüm bölümleri tamamlandıktan sonra ciltlenme esnasında en son bir yaprak boş bırakılarak basılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "printing.duplex",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "binding.blankLastLeaf",
@@ -361,7 +549,17 @@
      "quote": "Tezler, beyaz renkli birinci hamur, iyi nitelikte (en az “80 gramajlı”) düz, beyaz (mat) ve A4 (210x297 mm) standardındaki kâğıtlara yazılır. ... ön bölümlerinin basımında kâğıdın tek yüzü kullanılacaktır. Tezin “Giriş” sayfasından itibaren kaynakça ve ekler de dâhil kâğıdın her iki yüzünün de kullanılması gerekmektedir. Tezin tüm bölümleri tamamlandıktan sonra ciltlenme esnasında en son bir yaprak boş bırakılarak basılmalıdır."
     }
    ],
-   "notes": "One blank leaf at the end when binding."
+   "notes": "One blank leaf at the end when binding.",
+   "canonicalKey": "binding.blankLastLeaf",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "binding.outerCover",
@@ -377,7 +575,17 @@
      "locator": "PDF p.4 (printed 3) §1 Dış Kapak ve Tez Tanıtım Sayfası",
      "quote": "Enstitü tarafından hazırlanmış dış kapak kurum ismi ve tezi tanımaya yönelik pencereden oluşur. ... Tez tanıtım sayfası, dış kapak penceresinden okunabilecek şekilde hazırlanır. Tanıtım sayfası tezin ismi, doktora tezi, sanatta yeterlik veya yüksek lisans tezi olduğu, tezi hazırlayan kişi, danışmanı, ay, yıl ve teslim edildiği yer bilgilerinden oluşur (Bkz. EK-1)."
     }
-   ]
+   ],
+   "canonicalKey": "binding.outerCover",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "submission.copies",
@@ -398,7 +606,17 @@
      "locator": "PDF p.13 (printed 12) §5.6 Kopya Sayısı ve Dağıtımı",
      "quote": "Yüksek Lisans Öğrencileri İçin; i. 7 adet tez (İmzalı Tezlerin 2 adedinin Enstitüye teslim edilmesi gerekmektedir.) ... Doktora Öğrencileri İçin; i. 9 adet tez (tezlerin 2 adedinin imzalı olarak) Enstitüye teslim edilmesi gerekmektedir."
     }
-   ]
+   ],
+   "canonicalKey": "submission.copies",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "software",
@@ -414,7 +632,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Kelime İşlem Yazılımı: Word for Windows"
     }
-   ]
+   ],
+   "canonicalKey": "software",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.format",
@@ -435,7 +663,17 @@
      "locator": "PDF p.11 (printed 10) §5.3 Sayfaların Numaralanması",
      "quote": "Giriş’e kadar olan ön bölümdeki tüm sayfalar küçük Romen rakamlarıyla (i, ii., iii... şeklinde), ana ve arka bölümler ise 1’den başlayarak 1,2,3... şeklinde numaralandırılmalıdır. Bu doğrultuda tez, “GİRİŞ” sayfasından itibaren 1’den başlar."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.front.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.startsAt(section)",
@@ -451,7 +689,17 @@
      "locator": "PDF p.11 (printed 10) §5.3",
      "quote": "Başlık sayfası (iç kapak) tezin “i” numaralı sayfasıdır. Ancak bu sayfaya numara yazılmamalıdır. Yemin metninden başlayarak “ii” şeklinde devam eder."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.front.startsAt(section)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.outerCover",
@@ -473,7 +721,17 @@
      "quote": "Başlık sayfası (iç kapak) tezin “i” numaralı sayfasıdır. Ancak bu sayfaya numara yazılmamalıdır. Yemin metninden başlayarak “ii” şeklinde devam eder."
     }
    ],
-   "notes": "The guide lists 'Dış Kapak ve Tez Tanıtım Sayfası' separately from ÖN BÖLÜM and makes the inner cover page i. The EK 1 example page itself carries no page number (PDF p.36 is the only unnumbered page of the guide besides its cover)."
+   "notes": "The guide lists 'Dış Kapak ve Tez Tanıtım Sayfası' separately from ÖN BÖLÜM and makes the inner cover page i. The EK 1 example page itself carries no page number (PDF p.36 is the only unnumbered page of the guide besides its cover).",
+   "canonicalKey": "pagination.outerCover",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.format",
@@ -494,7 +752,17 @@
      "locator": "PDF p.11 (printed 10) §5.3 Sayfaların Numaralanması",
      "quote": "Giriş’e kadar olan ön bölümdeki tüm sayfalar küçük Romen rakamlarıyla (i, ii., iii... şeklinde), ana ve arka bölümler ise 1’den başlayarak 1,2,3... şeklinde numaralandırılmalıdır. Bu doğrultuda tez, “GİRİŞ” sayfasından itibaren 1’den başlar."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.main.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.startsAt(section)",
@@ -515,7 +783,17 @@
      "locator": "PDF p.8 (printed 7) §3.1",
      "quote": "tez metninin sayfaları, “Giriş” kısmından başlayarak 1, 2, 3, ... şeklinde numaralandırılır."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.main.startsAt(section)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.appendix",
@@ -531,7 +809,17 @@
      "locator": "PDF p.11 (printed 10) §5.3 Sayfaların Numaralanması",
      "quote": "Giriş’e kadar olan ön bölümdeki tüm sayfalar küçük Romen rakamlarıyla (i, ii., iii... şeklinde), ana ve arka bölümler ise 1’den başlayarak 1,2,3... şeklinde numaralandırılmalıdır. Bu doğrultuda tez, “GİRİŞ” sayfasından itibaren 1’den başlar."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.appendix",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.position",
@@ -547,7 +835,17 @@
      "locator": "PDF p.11 (printed 10) §5.3",
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.position",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.align",
@@ -563,7 +861,17 @@
      "locator": "PDF p.11 (printed 10) §5.3",
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.align",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.font",
@@ -585,7 +893,17 @@
     }
    ],
    "notes": "Family and size EXPLICIT (§5.3). 'bold: false' is NOT stated in the text: INFERRED (no weight given; the guide's own page numbers are bold on text pages and regular on EK pages, so the source gives no usable evidence). Implement regular.",
-   "boldConfidence": "INFERRED"
+   "boldConfidence": "INFERRED",
+   "canonicalKey": "pagination.font",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.decoration",
@@ -601,7 +919,17 @@
      "locator": "PDF p.11 (printed 10) §5.3",
      "quote": "Sayfa numaralarının yanına, nokta, çizgi ve benzeri hiçbir işaret konulmamalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "pagination.decoration",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.firstPageOfChapterVisible",
@@ -618,7 +946,17 @@
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
    ],
-   "notes": "'bütün bölümlerde' – every part; the only exception is the inner cover."
+   "notes": "'bütün bölümlerde' – every part; the only exception is the inner cover.",
+   "canonicalKey": "pagination.firstPageOfChapterVisible",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.distanceFromEdgeMm",
@@ -635,7 +973,17 @@
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
    ],
-   "notes": "Not stated (see page.footer.distanceMm)."
+   "notes": "Not stated (see page.footer.distanceMm).",
+   "canonicalKey": "pagination.distanceFromEdgeMm",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontFamily",
@@ -651,7 +999,17 @@
      "locator": "PDF p.11 (printed 10) §5.2 Yazı Karakteri",
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontSizePt",
@@ -667,7 +1025,17 @@
      "locator": "PDF p.11 (printed 10) §5.2 Yazı Karakteri",
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.lineSpacing",
@@ -684,7 +1052,17 @@
      "quote": "Satır Aralıkları :1,5 satır aralıklı olmalıdır. (Sadece içindekiler, tablo ve şekil listeleri, simge ve kısalmalar dizini, özet, abstract ve kaynakça bölümleri tek satır aralıklı)"
     }
    ],
-   "notes": "Word '1,5 satır' = 1.5 × Times New Roman single line (1.15 em) = 20.7 pt pitch at 12 pt."
+   "notes": "Word '1,5 satır' = 1.5 × Times New Roman single line (1.15 em) = 20.7 pt pitch at 12 pt.",
+   "canonicalKey": "typography.body.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.singleSpacedParts",
@@ -739,7 +1117,17 @@
      "locator": "PDF p.17 (printed 16) §6.3.1 xiv",
      "quote": "Bir kaynaktan doğrudan yapılan alıntı 10 satırdan az ise yazar, yıl ve sayfa (aralığı) bilgilerine yer verilmeli ve italik yazılmalıdır. Eğer doğrudan alıntı 10 satırdan daha fazla ise bu alıntıya yeni bir satırda ... her iki taraftan da 2 cm daha içeriden başlanır; söz konusu alıntı, yazı boyutu 10 punto ve tek satır aralığı ile tırnak içinde verilir."
     }
-   ]
+   ],
+   "canonicalKey": "typography.singleSpacedParts",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.align",
@@ -755,7 +1143,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Paragraf Düzeni : İki yana yaslanmış (Justified)"
     }
-   ]
+   ],
+   "canonicalKey": "typography.body.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.firstLineIndentMm",
@@ -771,7 +1169,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Paragraf Boşluğu : Her paragraf soldan 1,25 cm içeriden başlamalı"
     }
-   ]
+   ],
+   "canonicalKey": "typography.paragraph.firstLineIndentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceBeforePt",
@@ -787,7 +1195,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Paragraf Aralıkları : Paragraflar arasında önce 6nk, sonra 6nk"
     }
-   ]
+   ],
+   "canonicalKey": "typography.paragraph.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceAfterPt",
@@ -804,7 +1222,17 @@
      "quote": "Paragraf Aralıkları : Paragraflar arasında önce 6nk, sonra 6nk"
     }
    ],
-   "notes": "Word semantics: before and after spacing are additive, so two consecutive body paragraphs are 6+6 = 12 pt apart (baseline-to-baseline 20.7 + 12 = 32.7 pt). The guide's own pages show only 6 pt between paragraphs (PDF p.2: 6.94 − 4.83 mm = 5.98 pt), but they do not follow the guide's own rules (11 pt, ~1.08 lines)."
+   "notes": "Word semantics: before and after spacing are additive, so two consecutive body paragraphs are 6+6 = 12 pt apart (baseline-to-baseline 20.7 + 12 = 32.7 pt). The guide's own pages show only 6 pt between paragraphs (PDF p.2: 6.94 − 4.83 mm = 5.98 pt), but they do not follow the guide's own rules (11 pt, ~1.08 lines).",
+   "canonicalKey": "typography.paragraph.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.blankLineBetween",
@@ -821,7 +1249,17 @@
      "quote": "Paragraf Aralıkları : Paragraflar arasında önce 6nk, sonra 6nk"
     }
    ],
-   "notes": "Separation is paragraph spacing only."
+   "notes": "Separation is paragraph spacing only.",
+   "canonicalKey": "typography.paragraph.blankLineBetween",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.minSentences",
@@ -838,7 +1276,17 @@
      "quote": "Bir paragrafın en az üç cümleden oluştuğuna emin olunmalıdır."
     }
    ],
-   "notes": "Content advice, not layout."
+   "notes": "Content advice, not layout.",
+   "canonicalKey": "typography.paragraph.minSentences",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.blockQuote.authorDate",
@@ -862,7 +1310,17 @@
      "locator": "PDF p.17 (printed 16) §6.3.1 xiv",
      "quote": "Bir kaynaktan doğrudan yapılan alıntı 10 satırdan az ise yazar, yıl ve sayfa (aralığı) bilgilerine yer verilmeli ve italik yazılmalıdır. Eğer doğrudan alıntı 10 satırdan daha fazla ise bu alıntıya yeni bir satırda ... her iki taraftan da 2 cm daha içeriden başlanır; söz konusu alıntı, yazı boyutu 10 punto ve tek satır aralığı ile tırnak içinde verilir."
     }
-   ]
+   ],
+   "canonicalKey": "typography.blockQuote.authorDate",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.blockQuote.footnoteSystem",
@@ -885,7 +1343,17 @@
      "locator": "PDF p.17 (printed 16) §6.3.2 (cont. p.18)",
      "quote": "Bir kaynaktan doğrudan yapılan alıntı 6 ve daha fazla satırdan oluşuyorsa bu alıntıya yeni bir satırda sol taraftan 2 cm içeriden başlanır; söz konusu alıntı, yazı boyutu 10 punto ve tek satır aralığı ile tırnak içinde verilir."
     }
-   ]
+   ],
+   "canonicalKey": "typography.blockQuote.footnoteSystem",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.levels",
@@ -912,7 +1380,17 @@
      "quote": "4 alt başlıktan daha fazlasının kullanılmaması önerilmekte birlikte, çok gerekli ise i, ii, ve/veya harflendirme (a,b,c..) yöntemiyle içindekilerde yer almadan gösterilebilir. Tüm ana ve alt Başlıklar iki yana yaslı (sola dayalı) olarak paragraf başı yapılmadan yazılmalıdır."
     }
    ],
-   "notes": "Chapter heading (BİRİNCİ BÖLÜM + title) + four numbered levels 1. / 1.1. / 1.1.1. / 1.1.1.1.; deeper items use i, ii / a, b, c and are not listed in the TOC."
+   "notes": "Chapter heading (BİRİNCİ BÖLÜM + title) + four numbered levels 1. / 1.1. / 1.1.1. / 1.1.1.1.; deeper items use i, ii / a, b, c and are not listed in the TOC.",
+   "canonicalKey": "headings.levels",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.kind",
@@ -948,7 +1426,17 @@
      "locator": "PDF p.14 (printed 13) §5.5 ÖRNEK",
      "quote": "BİRİNCİ BÖLÜM / İNSAN KAYNAKLARI YÖNETİMİNİN TARİHSEL GELİŞİM SÜRECİ / (Önce 12nk ve sonra 12nk)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.kind",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.numbering",
@@ -974,7 +1462,17 @@
      "locator": "PDF p.14 (printed 13) §5.5 ÖRNEK (heading example)",
      "quote": "BİRİNCİ BÖLÜM / İNSAN KAYNAKLARI YÖNETİMİNİN TARİHSEL GELİŞİM SÜRECİ / (Önce 12nk ve sonra 12nk) / 1. BÖLÜM ANA BAŞLIĞI / 1.1. BÖLÜM ALT BAŞLIĞI / 1.1.1. Bölüm Alt Başlığının Alt Başlığı / 1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.fontSizePt",
@@ -991,7 +1489,17 @@
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
    ],
-   "notes": "No heading size is stated; general text rule 'Times New Roman ve 12 punto'. The examples set all headings at the guide's own 11 pt."
+   "notes": "No heading size is stated; general text rule 'Times New Roman ve 12 punto'. The examples set all headings at the guide's own 11 pt.",
+   "canonicalKey": "headings.h1.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.bold",
@@ -1013,7 +1521,17 @@
      "quote": "“BÖLÜM” ve başlığı, büyük harflerle koyu (bold) ve yazı alanı ortalanarak yazılır."
     }
    ],
-   "notes": "Bold is stated for GİRİŞ/TARTIŞMA/KAYNAKÇA and for the TOC rows of chapters; all heading examples (PDF p.6, p.13) are bold."
+   "notes": "Bold is stated for GİRİŞ/TARTIŞMA/KAYNAKÇA and for the TOC rows of chapters; all heading examples (PDF p.6, p.13) are bold.",
+   "canonicalKey": "headings.h1.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.caps",
@@ -1029,7 +1547,17 @@
      "locator": "PDF p.12 (printed 11) §5.5.1 Bölüm Başlıkları",
      "quote": "Her bölümün bir başlığı ve numarası vardır. Bölüm başlığı, büyük harflerle, yazı alanı ortalanarak yazılır. Bir satıra sığmayan başlıklar, normal satır aralıkları ve giderek kısalan satır uzunluklarıyla sürer. ... başlığın birinci satırı BÖLÜM sözcüğü ile bölüm numarasına ayrılır. Bu durumda bölümün adı, bölüm numarasının olduğu satırın alt satırına yine ortalanarak yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.align",
@@ -1045,7 +1573,17 @@
      "locator": "PDF p.12 (printed 11) §5.5.1 Bölüm Başlıkları",
      "quote": "Her bölümün bir başlığı ve numarası vardır. Bölüm başlığı, büyük harflerle, yazı alanı ortalanarak yazılır. Bir satıra sığmayan başlıklar, normal satır aralıkları ve giderek kısalan satır uzunluklarıyla sürer. ... başlığın birinci satırı BÖLÜM sözcüğü ile bölüm numarasına ayrılır. Bu durumda bölümün adı, bölüm numarasının olduğu satırın alt satırına yine ortalanarak yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceBeforePt",
@@ -1061,7 +1599,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Bölüm Başlıkları : Önce 12nk ve sonra 12nk (Örnek: BİRİNCİ BÖLÜM Başlığı)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceAfterPt",
@@ -1077,7 +1625,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Bölüm Başlıkları : Önce 12nk ve sonra 12nk (Örnek: BİRİNCİ BÖLÜM Başlığı)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.lineSpacing",
@@ -1099,7 +1657,17 @@
      "quote": "Her bölümün bir başlığı ve numarası vardır. Bölüm başlığı, büyük harflerle, yazı alanı ortalanarak yazılır. Bir satıra sığmayan başlıklar, normal satır aralıkları ve giderek kısalan satır uzunluklarıyla sürer. ... başlığın birinci satırı BÖLÜM sözcüğü ile bölüm numarasına ayrılır. Bu durumda bölümün adı, bölüm numarasının olduğu satırın alt satırına yine ortalanarak yazılır."
     }
    ],
-   "notes": "'bölüm başlıklarında olduğu gibi, başlık, 1,5 satır aralığıyla ve kısalan satır uzunluklarıyla sürer' and 'normal satır aralıkları'. The single-spacing rule for headings explicitly excludes the chapter heading."
+   "notes": "'bölüm başlıklarında olduğu gibi, başlık, 1,5 satır aralığıyla ve kısalan satır uzunluklarıyla sürer' and 'normal satır aralıkları'. The single-spacing rule for headings explicitly excludes the chapter heading.",
+   "canonicalKey": "headings.h1.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.pageBreakBefore",
@@ -1115,7 +1683,17 @@
      "locator": "PDF p.8 (printed 7) §3.2 Tez Metni",
      "quote": "Her yeni bölüm yeni bir sayfadan başlar ve bölüm numarası ve başlığı sayfanın en üstünde yer alır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.pageBreakBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.positionOnPage",
@@ -1131,7 +1709,17 @@
      "locator": "PDF p.8 (printed 7) §3.2 Tez Metni",
      "quote": "Her yeni bölüm yeni bir sayfadan başlar ve bölüm numarası ve başlığı sayfanın en üstünde yer alır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.positionOnPage",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.multiLine",
@@ -1147,7 +1735,17 @@
      "locator": "PDF p.12 (printed 11) §5.5.1 Bölüm Başlıkları",
      "quote": "Her bölümün bir başlığı ve numarası vardır. Bölüm başlığı, büyük harflerle, yazı alanı ortalanarak yazılır. Bir satıra sığmayan başlıklar, normal satır aralıkları ve giderek kısalan satır uzunluklarıyla sürer. ... başlığın birinci satırı BÖLÜM sözcüğü ile bölüm numarasına ayrılır. Bu durumda bölümün adı, bölüm numarasının olduğu satırın alt satırına yine ortalanarak yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h1.multiLine",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.unnumberedMainParts",
@@ -1197,7 +1795,17 @@
      "quote": "Tezdeki tüm başlıklar (bölüm numarasını içeren başlık hariç) iki yana yaslı olarak ve paragraf girintisi olmadan (sola dayalı olarak) ve tek satır aralığı ile yazılır."
     }
    ],
-   "notes": "Review: line spacing single is EXPLICIT (§2.6 Not covers every heading except the one carrying the chapter number); the centring is explicit per part (§3.1/§3.3/§4.1/§4.3) and overrides the generic 'iki yana yaslı'. Space before/after remain UNKNOWN; proposal 12/12 pt (same as chapter heading, §5.2 'Bölüm Başlıkları') INFERRED. Each part starts a new page (INFERRED from 'Her yeni bölüm yeni bir sayfadan başlar' and the separate-page TOC/lists practice)."
+   "notes": "Review: line spacing single is EXPLICIT (§2.6 Not covers every heading except the one carrying the chapter number); the centring is explicit per part (§3.1/§3.3/§4.1/§4.3) and overrides the generic 'iki yana yaslı'. Space before/after remain UNKNOWN; proposal 12/12 pt (same as chapter heading, §5.2 'Bölüm Başlıkları') INFERRED. Each part starts a new page (INFERRED from 'Her yeni bölüm yeni bir sayfadan başlar' and the separate-page TOC/lists practice).",
+   "canonicalKey": "headings.unnumberedMainParts",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.numbering",
@@ -1223,7 +1831,17 @@
      "locator": "PDF p.14 (printed 13) §5.5 ÖRNEK (heading example)",
      "quote": "BİRİNCİ BÖLÜM / İNSAN KAYNAKLARI YÖNETİMİNİN TARİHSEL GELİŞİM SÜRECİ / (Önce 12nk ve sonra 12nk) / 1. BÖLÜM ANA BAŞLIĞI / 1.1. BÖLÜM ALT BAŞLIĞI / 1.1.1. Bölüm Alt Başlığının Alt Başlığı / 1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.fontSizePt",
@@ -1239,7 +1857,17 @@
      "locator": "PDF p.11 (printed 10) §5.2 Yazı Karakteri",
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.bold",
@@ -1255,7 +1883,17 @@
      "locator": "PDF p.12 (printed 11) §5.5.2 i Ana Başlık",
      "quote": "Sola dayalı olarak 1., 2., 3., ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte büyük harflerle ve koyu (bold) olarak yazılır. Metin, başlıktan bir satır aralığı (Üst: 6nk, Alt: 6nk) aşağıdan ve satırbaşı yapılarak başlar."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.caps",
@@ -1271,7 +1909,17 @@
      "locator": "PDF p.12 (printed 11) §5.5.2 i Ana Başlık",
      "quote": "Sola dayalı olarak 1., 2., 3., ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte büyük harflerle ve koyu (bold) olarak yazılır. Metin, başlıktan bir satır aralığı (Üst: 6nk, Alt: 6nk) aşağıdan ve satırbaşı yapılarak başlar."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.align",
@@ -1292,7 +1940,17 @@
      "locator": "PDF p.12 (printed 11) §5.5.2 i Ana Başlık",
      "quote": "Sola dayalı olarak 1., 2., 3., ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte büyük harflerle ve koyu (bold) olarak yazılır. Metin, başlıktan bir satır aralığı (Üst: 6nk, Alt: 6nk) aşağıdan ve satırbaşı yapılarak başlar."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.lineSpacing",
@@ -1308,7 +1966,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 iv Not",
      "quote": "Tezdeki tüm başlıklar (bölüm numarasını içeren başlık hariç) iki yana yaslı olarak ve paragraf girintisi olmadan (sola dayalı olarak) ve tek satır aralığı ile yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceBeforePt",
@@ -1330,7 +1998,17 @@
      "quote": "Sola dayalı olarak 1.1, 1.2. 1.3; 2.1, 2.2, ….... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte açık (koyu değil) büyük harflerle yazılmalıdır. Yan başlıkla kendinden önceki metin arasında; paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılır."
     }
    ],
-   "notes": "'bir satır aralığı (Üst: 6nk, Alt: 6nk)' – interpreted as the paragraph spacing of the heading, not an additional blank line."
+   "notes": "'bir satır aralığı (Üst: 6nk, Alt: 6nk)' – interpreted as the paragraph spacing of the heading, not an additional blank line.",
+   "canonicalKey": "headings.h2.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceAfterPt",
@@ -1346,7 +2024,17 @@
      "locator": "PDF p.12 (printed 11) §5.5.2 i Ana Başlık",
      "quote": "Sola dayalı olarak 1., 2., 3., ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte büyük harflerle ve koyu (bold) olarak yazılır. Metin, başlıktan bir satır aralığı (Üst: 6nk, Alt: 6nk) aşağıdan ve satırbaşı yapılarak başlar."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.keepWithNext",
@@ -1362,7 +2050,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iv",
      "quote": "Sayfa sonlarına gelen alt bölüm başlıklarından sonra, en az bir ya da iki satır bulunmalıdır. Aksi takdirde, başlık bir sonraki sayfadan başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h2.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.numbering",
@@ -1389,7 +2087,17 @@
      "quote": "BİRİNCİ BÖLÜM / İNSAN KAYNAKLARI YÖNETİMİNİN TARİHSEL GELİŞİM SÜRECİ / (Önce 12nk ve sonra 12nk) / 1. BÖLÜM ANA BAŞLIĞI / 1.1. BÖLÜM ALT BAŞLIĞI / 1.1.1. Bölüm Alt Başlığının Alt Başlığı / 1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı"
     }
    ],
-   "notes": "§5.5.2 writes '1.1, 1.2. 1.3' inconsistently; all examples use a trailing dot."
+   "notes": "§5.5.2 writes '1.1, 1.2. 1.3' inconsistently; all examples use a trailing dot.",
+   "canonicalKey": "headings.h3.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.fontSizePt",
@@ -1405,7 +2113,17 @@
      "locator": "PDF p.11 (printed 10) §5.2 Yazı Karakteri",
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.bold",
@@ -1421,7 +2139,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 ii Yan Başlık",
      "quote": "Sola dayalı olarak 1.1, 1.2. 1.3; 2.1, 2.2, ….... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte açık (koyu değil) büyük harflerle yazılmalıdır. Yan başlıkla kendinden önceki metin arasında; paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.caps",
@@ -1437,7 +2165,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 ii Yan Başlık",
      "quote": "Sola dayalı olarak 1.1, 1.2. 1.3; 2.1, 2.2, ….... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte açık (koyu değil) büyük harflerle yazılmalıdır. Yan başlıkla kendinden önceki metin arasında; paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.align",
@@ -1458,7 +2196,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 ii Yan Başlık",
      "quote": "Sola dayalı olarak 1.1, 1.2. 1.3; 2.1, 2.2, ….... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte açık (koyu değil) büyük harflerle yazılmalıdır. Yan başlıkla kendinden önceki metin arasında; paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.lineSpacing",
@@ -1474,7 +2222,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 iv Not",
      "quote": "Tezdeki tüm başlıklar (bölüm numarasını içeren başlık hariç) iki yana yaslı olarak ve paragraf girintisi olmadan (sola dayalı olarak) ve tek satır aralığı ile yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceBeforePt",
@@ -1490,7 +2248,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 ii Yan Başlık",
      "quote": "Sola dayalı olarak 1.1, 1.2. 1.3; 2.1, 2.2, ….... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte açık (koyu değil) büyük harflerle yazılmalıdır. Yan başlıkla kendinden önceki metin arasında; paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceAfterPt",
@@ -1506,7 +2274,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 ii Yan Başlık",
      "quote": "Sola dayalı olarak 1.1, 1.2. 1.3; 2.1, 2.2, ….... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte açık (koyu değil) büyük harflerle yazılmalıdır. Yan başlıkla kendinden önceki metin arasında; paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.keepWithNext",
@@ -1522,7 +2300,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iv",
      "quote": "Sayfa sonlarına gelen alt bölüm başlıklarından sonra, en az bir ya da iki satır bulunmalıdır. Aksi takdirde, başlık bir sonraki sayfadan başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h3.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.numbering",
@@ -1548,7 +2336,17 @@
      "locator": "PDF p.14 (printed 13) §5.5 ÖRNEK (heading example)",
      "quote": "BİRİNCİ BÖLÜM / İNSAN KAYNAKLARI YÖNETİMİNİN TARİHSEL GELİŞİM SÜRECİ / (Önce 12nk ve sonra 12nk) / 1. BÖLÜM ANA BAŞLIĞI / 1.1. BÖLÜM ALT BAŞLIĞI / 1.1.1. Bölüm Alt Başlığının Alt Başlığı / 1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.fontSizePt",
@@ -1564,7 +2362,17 @@
      "locator": "PDF p.11 (printed 10) §5.2 Yazı Karakteri",
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.bold",
@@ -1580,7 +2388,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iii Alt Başlıklar",
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.caps",
@@ -1596,7 +2414,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iii Alt Başlıklar",
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.align",
@@ -1617,7 +2445,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iii Alt Başlıklar",
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.lineSpacing",
@@ -1633,7 +2471,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 iv Not",
      "quote": "Tezdeki tüm başlıklar (bölüm numarasını içeren başlık hariç) iki yana yaslı olarak ve paragraf girintisi olmadan (sola dayalı olarak) ve tek satır aralığı ile yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.spaceBeforePt",
@@ -1649,7 +2497,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iii Alt Başlıklar",
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.spaceAfterPt",
@@ -1665,7 +2523,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iii Alt Başlıklar",
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.keepWithNext",
@@ -1681,7 +2549,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iv",
      "quote": "Sayfa sonlarına gelen alt bölüm başlıklarından sonra, en az bir ya da iki satır bulunmalıdır. Aksi takdirde, başlık bir sonraki sayfadan başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h4.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.numbering",
@@ -1702,7 +2580,17 @@
      "locator": "PDF p.14 (printed 13) §5.5 ÖRNEK (heading example)",
      "quote": "BİRİNCİ BÖLÜM / İNSAN KAYNAKLARI YÖNETİMİNİN TARİHSEL GELİŞİM SÜRECİ / (Önce 12nk ve sonra 12nk) / 1. BÖLÜM ANA BAŞLIĞI / 1.1. BÖLÜM ALT BAŞLIĞI / 1.1.1. Bölüm Alt Başlığının Alt Başlığı / 1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.fontSizePt",
@@ -1718,7 +2606,17 @@
      "locator": "PDF p.11 (printed 10) §5.2 Yazı Karakteri",
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.bold",
@@ -1739,7 +2637,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 ÖRNEK",
      "quote": "1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı (Sadece İlk Harfler Büyük ve Koyu- Bold- Değil)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.caps",
@@ -1755,7 +2663,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 iv",
      "quote": "Ana bölümler ve başlıkları yazıyla (BİRİNCİ BÖLÜM: PAZARLAMA KARMASI) ve bölüm alt başlıkları Ondalık Sistem kullanılarak numaralandırılır. Bu düzenlemede, bölümün birinci başlığı bölüm numarasına bakılmaksızın sırasıyla 1,2,3,4 şeklinde büyük harfle ve koyu olarak numaralanırken, alt başlık yine hepsi büyük harfle, ve koyu olmayacak şekilde yazılır ve yine numaralandırılır (1.1.,1.2., 1.3. gibi). Alt başlığın alt başlığı ise sadece ilk harfler büyük ve koyu yazılır ve numaralandırılır (1.1.1, 1.1.2., ...). Sonraki alt başlık ise ilk harfler büyük yazılarak numaralandırılır. (1.1.1.1., 1.1.1.2., ...)"
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.align",
@@ -1771,7 +2689,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 iv Not",
      "quote": "Tezdeki tüm başlıklar (bölüm numarasını içeren başlık hariç) iki yana yaslı olarak ve paragraf girintisi olmadan (sola dayalı olarak) ve tek satır aralığı ile yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.lineSpacing",
@@ -1787,7 +2715,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 iv Not",
      "quote": "Tezdeki tüm başlıklar (bölüm numarasını içeren başlık hariç) iki yana yaslı olarak ve paragraf girintisi olmadan (sola dayalı olarak) ve tek satır aralığı ile yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.spaceBeforePt",
@@ -1804,7 +2742,17 @@
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
    ],
-   "notes": "Not stated for the 4th sub-level; same 6/6 as the three sub-levels described in §5.5.2."
+   "notes": "Not stated for the 4th sub-level; same 6/6 as the three sub-levels described in §5.5.2.",
+   "canonicalKey": "headings.h5.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.spaceAfterPt",
@@ -1820,7 +2768,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iii Alt Başlıklar",
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h5.keepWithNext",
@@ -1836,7 +2794,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iv",
      "quote": "Sayfa sonlarına gelen alt bölüm başlıklarından sonra, en az bir ya da iki satır bulunmalıdır. Aksi takdirde, başlık bir sonraki sayfadan başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.h5.keepWithNext",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.numberSeparator",
@@ -1862,7 +2830,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2 iii Alt Başlıklar",
      "quote": "Birinci alt başlık, Sola dayalı olarak 1.1.1, 1.1.2; 2.2.1, 2.2.2, ... şeklinde numaralandırılarak ve noktadan sonra boşlukla birlikte kelimenin ilk harfleri büyük, diğerleri küçük ve koyu yazılmalıdır. Bu başlıktan sonra gelecek metin, paragraf aralığı üst:6nk, alt:6nk olacak şekilde bir satır aralığı boşluk bırakılarak başlatılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "headings.numberSeparator",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.minorItems",
@@ -1883,7 +2861,17 @@
      "locator": "PDF p.13 (printed 12) §5.5.2",
      "quote": "İçindekiler sayfasında görünmesini istemediğimiz küçük başlıklar, küçük Romen rakamlarıyla ve/veya harflerle (i, ii, iii, iv; a, b, c. vb.) gösterilebilir."
     }
-   ]
+   ],
+   "canonicalKey": "headings.minorItems",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.position",
@@ -1899,7 +2887,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.label",
@@ -1920,7 +2918,17 @@
      "locator": "PDF p.31 (printed 30) §6.5.3 Örnekler + Not",
      "quote": "Tablo 1. Turizm Tesislerinde Genel Giderler (11 punto-ortalı) ... Not: Tabloların içindeki yazıların 11 punto olması önerilmekte olup eğer tablo bir sayfaya sığmıyor ise yazı puntosu 9’a kadar düşürülebilir. ... her sayfa başında tablonun bir önceki sayfanın devamı olduğu belirtilmeli ve tablo içinde yer alan başlıklar da eklenmelidir. Tablo 1. (Devam) ..."
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.numbering",
@@ -1942,7 +2950,17 @@
      "quote": "Tablo 1. … Tablo 17."
     }
    ],
-   "notes": "Sequential numbers in every example (Tablo 1 … 17 across chapters in EK 9); 'Tablo 1’de verilmiştir'."
+   "notes": "Sequential numbers in every example (Tablo 1 … 17 across chapters in EK 9); 'Tablo 1’de verilmiştir'.",
+   "canonicalKey": "captions.table.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.separator",
@@ -1963,7 +2981,17 @@
      "locator": "PDF p.31 (printed 30) example",
      "quote": "Tablo 1. Turizm Tesislerinde Genel Giderler"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.separator",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.fontSizePt",
@@ -1979,7 +3007,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.labelBold",
@@ -1996,7 +3034,17 @@
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
    ],
-   "notes": "Only 'Tablo' and its number are bold; the title is regular."
+   "notes": "Only 'Tablo' and its number are bold; the title is regular.",
+   "canonicalKey": "captions.table.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.titleCase",
@@ -2012,7 +3060,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.titleCase",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.align",
@@ -2028,7 +3086,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.lineSpacing",
@@ -2044,7 +3112,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.continuation",
@@ -2060,7 +3138,17 @@
      "locator": "PDF p.31 (printed 30) §6.5.3 Örnekler + Not",
      "quote": "Tablo 1. Turizm Tesislerinde Genel Giderler (11 punto-ortalı) ... Not: Tabloların içindeki yazıların 11 punto olması önerilmekte olup eğer tablo bir sayfaya sığmıyor ise yazı puntosu 9’a kadar düşürülebilir. ... her sayfa başında tablonun bir önceki sayfanın devamı olduğu belirtilmeli ve tablo içinde yer alan başlıklar da eklenmelidir. Tablo 1. (Devam) ..."
     }
-   ]
+   ],
+   "canonicalKey": "captions.table.continuation",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.position",
@@ -2077,7 +3165,17 @@
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
    ],
-   "notes": "Unusual: figure captions go ABOVE the figure, like tables."
+   "notes": "Unusual: figure captions go ABOVE the figure, like tables.",
+   "canonicalKey": "captions.figure.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.label",
@@ -2093,7 +3191,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.numbering",
@@ -2109,7 +3217,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.fontSizePt",
@@ -2125,7 +3243,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.labelBold",
@@ -2142,7 +3270,17 @@
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
    ],
-   "notes": "'Şekiller için de aynı kural geçerlidir.'"
+   "notes": "'Şekiller için de aynı kural geçerlidir.'",
+   "canonicalKey": "captions.figure.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.align",
@@ -2158,7 +3296,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.lineSpacing",
@@ -2174,7 +3322,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "captions.figure.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.picture",
@@ -2208,7 +3366,17 @@
      "locator": "PDF p.32 (printed 31) example",
      "quote": "Resim 1. Sosyal Bilimler Enstitüsü Binasının Dış Görünümü (11 punto-ortalı)"
     }
-   ]
+   ],
+   "canonicalKey": "captions.picture",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.source",
@@ -2236,7 +3404,17 @@
      "locator": "PDF p.31 (printed 30) example",
      "quote": "Kaynak (koyu): Ortalanarak tablonun altına metin içi kaynak gösterim kuralına göre (parantezsiz) koyu olmayacak şekilde yazılır. Kaynak: Pelit, 2003: 66"
     }
-   ]
+   ],
+   "canonicalKey": "captions.source",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.spacingBeforePt",
@@ -2253,7 +3431,17 @@
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
    ],
-   "notes": "Caption paragraph spacing 0/0 inside the table rule; space between caption and surrounding body text not stated."
+   "notes": "Caption paragraph spacing 0/0 inside the table rule; space between caption and surrounding body text not stated.",
+   "canonicalKey": "captions.spacingBeforePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.fontSizePt",
@@ -2270,7 +3458,17 @@
      "quote": "Tablo 1. Turizm Tesislerinde Genel Giderler (11 punto-ortalı) ... Not: Tabloların içindeki yazıların 11 punto olması önerilmekte olup eğer tablo bir sayfaya sığmıyor ise yazı puntosu 9’a kadar düşürülebilir. ... her sayfa başında tablonun bir önceki sayfanın devamı olduğu belirtilmeli ve tablo içinde yer alan başlıklar da eklenmelidir. Tablo 1. (Devam) ..."
     }
    ],
-   "notes": "Recommended 11 pt; may be reduced to 9 pt to fit a page."
+   "notes": "Recommended 11 pt; may be reduced to 9 pt to fit a page.",
+   "canonicalKey": "tables.fontSizePt",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.lineSpacing",
@@ -2286,7 +3484,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "tables.lineSpacing",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.align",
@@ -2302,7 +3510,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Tablolar ve Şekiller",
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
-   ]
+   ],
+   "canonicalKey": "tables.align",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.cellAlign",
@@ -2318,7 +3536,17 @@
      "locator": "PDF p.31 (printed 30) example",
      "quote": "Xxxxxxx (rakamsa ortalı, yazı ise sola dayalı)"
     }
-   ]
+   ],
+   "canonicalKey": "tables.cellAlign",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.color",
@@ -2334,7 +3562,17 @@
      "locator": "PDF p.30 (printed 29) §6.5.3 Not",
      "quote": "Kullanılan şeklin, resmin, görselin özelliğinden dolayı içindeki karakterler (tablolar hariç) renkli olabilir."
     }
-   ]
+   ],
+   "canonicalKey": "tables.color",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.numbering",
@@ -2351,7 +3589,17 @@
      "quote": "Tablolarda satır aralıkları (başlıklar da dâhil) tek olmalıdır. (üst ve alt paragraf boşlukları: üst:0nk, alt:0nk) • Tablo, şekil ve başlıkları sayfa (tablo) ortalanarak yerleştirilmelidir. • Tablo veya şekillerdeki kaynaklar, tablo veya şeklin altına (10 ve/veya 11 punto) ortalanarak yazılmalıdır. ... • Tablonun sıra sayısı ve adı (başlığı) tablonun üstünde (ortalanarak) ... Başlığın her kelimesinin ilk harfi büyük yazılacaktır (Sadece Tablo ve numarası koyu yazılmalı, tablo başlığı koyu yazılmamalı ve 11 punto olmalıdır). • Şekiller için de aynı kural geçerlidir. Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir. (Başlıklar tek satır aralıklı, 11 punto) ... Sadece başlık, resim ise Resim 1., şeklinde olacaktır"
     }
    ],
-   "notes": "Equations are not mentioned anywhere in the guide."
+   "notes": "Equations are not mentioned anywhere in the guide.",
+   "canonicalKey": "equations.numbering",
+   "category": "equations",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.fontFamily",
@@ -2367,7 +3615,17 @@
      "locator": "PDF p.20 (printed 19) §6.4 Dipnotlar",
      "quote": "Dipnotlarda yapılacak açıklamalar, sayfa altında dipnot çizgisinin altına Times New Roman karakteri, 9 punto ve tek satır aralığıyla yazılmalıdır. Dipnotlar içeriden başlatılmaz. ... Dipnotlar çalışmanın başından sonuna kadar birbirini takip edecek biçimde numaralandırılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "footnotes.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.fontSizePt",
@@ -2383,7 +3641,17 @@
      "locator": "PDF p.20 (printed 19) §6.4 Dipnotlar",
      "quote": "Dipnotlarda yapılacak açıklamalar, sayfa altında dipnot çizgisinin altına Times New Roman karakteri, 9 punto ve tek satır aralığıyla yazılmalıdır. Dipnotlar içeriden başlatılmaz. ... Dipnotlar çalışmanın başından sonuna kadar birbirini takip edecek biçimde numaralandırılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "footnotes.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.lineSpacing",
@@ -2399,7 +3667,17 @@
      "locator": "PDF p.20 (printed 19) §6.4 Dipnotlar",
      "quote": "Dipnotlarda yapılacak açıklamalar, sayfa altında dipnot çizgisinin altına Times New Roman karakteri, 9 punto ve tek satır aralığıyla yazılmalıdır. Dipnotlar içeriden başlatılmaz. ... Dipnotlar çalışmanın başından sonuna kadar birbirini takip edecek biçimde numaralandırılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "footnotes.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.firstLineIndentMm",
@@ -2416,7 +3694,17 @@
      "quote": "Dipnotlarda yapılacak açıklamalar, sayfa altında dipnot çizgisinin altına Times New Roman karakteri, 9 punto ve tek satır aralığıyla yazılmalıdır. Dipnotlar içeriden başlatılmaz. ... Dipnotlar çalışmanın başından sonuna kadar birbirini takip edecek biçimde numaralandırılmalıdır."
     }
    ],
-   "notes": "'Dipnotlar içeriden başlatılmaz.' The footnote example on PDF p.20 contradicts this visually (first line at 38.74 mm vs 24.99 mm), but it is set inside a body paragraph with first-line indent."
+   "notes": "'Dipnotlar içeriden başlatılmaz.' The footnote example on PDF p.20 contradicts this visually (first line at 38.74 mm vs 24.99 mm), but it is set inside a body paragraph with first-line indent.",
+   "canonicalKey": "footnotes.firstLineIndentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.numbering",
@@ -2432,7 +3720,17 @@
      "locator": "PDF p.20 (printed 19) §6.4 Dipnotlar",
      "quote": "Dipnotlarda yapılacak açıklamalar, sayfa altında dipnot çizgisinin altına Times New Roman karakteri, 9 punto ve tek satır aralığıyla yazılmalıdır. Dipnotlar içeriden başlatılmaz. ... Dipnotlar çalışmanın başından sonuna kadar birbirini takip edecek biçimde numaralandırılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "footnotes.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.separator",
@@ -2453,7 +3751,17 @@
      "locator": "PDF p.17 (printed 16) §6.3.2 Klasik Dipnot Sistemi",
      "quote": "Dipnot çizgisi, yazı alanı sol kenarından başlayan, yaklaşık olarak 4 santimetre uzunluğunda yatay bir çizgidir. Bilgisayar kelime işlem programlarında dipnot çizgisinin yeri ve dipnot bilgilerinin yerleştirilmesi programın öngördüğü şekilde yapılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "footnotes.separator",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "citations.style",
@@ -2469,7 +3777,17 @@
      "locator": "PDF p.15 (printed 14) §6.3",
      "quote": "Tezlerde kaynakların gösteriminde bağlaç sistemi kullanılacaktır. Tercih edilmesi halinde sadece; Felsefe ve Din Bilimleri, Kamu Hukuku, Maliye, Özel Hukuk, Tarih, Temel İslam Bilimleri, Türk Dili ve Edebiyatı, Siyaset Bilimi ve Kamu Yönetimi Anabilim dallarında yapılan tezlerde “Klasik Dipnot” sistemi kullanılabilir. ... “İSNAD Atıf Sistemi” kullanılabilir."
     }
-   ]
+   ],
+   "canonicalKey": "citations.style",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "citations.multipleOrder",
@@ -2485,7 +3803,17 @@
      "locator": "PDF p.15 (printed 14) §6.3",
      "quote": "en eski yıldaki atıftan en yakın yıla doğru (kronolojik) bir sıralama"
     }
-   ]
+   ],
+   "canonicalKey": "citations.multipleOrder",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "citations.etAl",
@@ -2501,7 +3829,17 @@
      "locator": "PDF p.16 (printed 15) §6.3.1 ii–iii",
      "quote": "Yabancı yazarlar (kaynaklar) için ve yerine & kullanılacaktır ... “vd.” kısaltması (yabancı kaynak olsa dahi)"
     }
-   ]
+   ],
+   "canonicalKey": "citations.etAl",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.title",
@@ -2517,7 +3855,17 @@
      "locator": "PDF p.9 (printed 8) §4.1 Kaynakça",
      "quote": "Kaynaklar, başlıktan bir satır aralığı aşağıdan başlayarak ... Kaynakçaya bölüm numarası verilmeyecektir. Kaynakçadaki eserler yazar soyadına göre alfabetik olarak sıralandığından eserlere sıra numarası verilmeyecek ... her kaynağın ikinci ve sonraki satırlarının 0,5 cm içeriden başlamasıdır. Kaynakça yazılırken kaynakların aralarında herhangi bir boşluk bırakılmaz, paragraflar üst:0nk ve alt:0nk olacak şekilde tek satır aralığı kullanılır. Not: Kaynakça başlığı büyük harflerle, koyu ve sayfa ortalanarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.title",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.titleStyle",
@@ -2538,7 +3886,17 @@
      "locator": "PDF p.32 (printed 31) §6.5.4 Not",
      "quote": "Kaynakça başlığı büyük harflerle, koyu ve satır ortalanarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.titleStyle",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.fontSizePt",
@@ -2555,7 +3913,17 @@
      "quote": "Karakter ve Punto : Times New Roman ve 12 punto"
     }
    ],
-   "notes": "General 12 pt rule; not restated for the bibliography."
+   "notes": "General 12 pt rule; not restated for the bibliography.",
+   "canonicalKey": "bibliography.fontSizePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.lineSpacing",
@@ -2581,7 +3949,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Satır Aralıkları :1,5 satır aralıklı olmalıdır. (Sadece içindekiler, tablo ve şekil listeleri, simge ve kısalmalar dizini, özet, abstract ve kaynakça bölümleri tek satır aralıklı)"
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.lineSpacing",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.spaceBeforePt",
@@ -2597,7 +3975,17 @@
      "locator": "PDF p.9 (printed 8) §4.1 Kaynakça",
      "quote": "Kaynaklar, başlıktan bir satır aralığı aşağıdan başlayarak ... Kaynakçaya bölüm numarası verilmeyecektir. Kaynakçadaki eserler yazar soyadına göre alfabetik olarak sıralandığından eserlere sıra numarası verilmeyecek ... her kaynağın ikinci ve sonraki satırlarının 0,5 cm içeriden başlamasıdır. Kaynakça yazılırken kaynakların aralarında herhangi bir boşluk bırakılmaz, paragraflar üst:0nk ve alt:0nk olacak şekilde tek satır aralığı kullanılır. Not: Kaynakça başlığı büyük harflerle, koyu ve sayfa ortalanarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.spaceBeforePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.spaceAfterPt",
@@ -2613,7 +4001,17 @@
      "locator": "PDF p.9 (printed 8) §4.1 Kaynakça",
      "quote": "Kaynaklar, başlıktan bir satır aralığı aşağıdan başlayarak ... Kaynakçaya bölüm numarası verilmeyecektir. Kaynakçadaki eserler yazar soyadına göre alfabetik olarak sıralandığından eserlere sıra numarası verilmeyecek ... her kaynağın ikinci ve sonraki satırlarının 0,5 cm içeriden başlamasıdır. Kaynakça yazılırken kaynakların aralarında herhangi bir boşluk bırakılmaz, paragraflar üst:0nk ve alt:0nk olacak şekilde tek satır aralığı kullanılır. Not: Kaynakça başlığı büyük harflerle, koyu ve sayfa ortalanarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.spaceAfterPt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.hangingIndentMm",
@@ -2635,7 +4033,17 @@
      "quote": "her kaynağın ikinci ve sonraki satırlarının 0,5 cm içeriden başlamasıdır. Kaynakların aralarında herhangi bir boşluk bırakılmaz ve tek satır aralığı kullanılır."
     }
    ],
-   "notes": "MEASURED on the EK example PDF p.33: continuation lines at 29.94 mm vs 24.99 mm first line = 4.95 mm."
+   "notes": "MEASURED on the EK example PDF p.33: continuation lines at 29.94 mm vs 24.99 mm first line = 4.95 mm.",
+   "canonicalKey": "bibliography.hangingIndentMm",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.order",
@@ -2656,7 +4064,17 @@
      "locator": "PDF p.29 (printed 28) §6.5.1 Not",
      "quote": "“KAYNAKÇA” başlığı altında tüm kaynaklar, alfabetik sıraya göre ... verilmelidir."
     }
-   ]
+   ],
+   "canonicalKey": "bibliography.order",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.startsBelowTitle",
@@ -2673,7 +4091,17 @@
      "quote": "Kaynaklar, başlıktan bir satır aralığı aşağıdan başlayarak ... Kaynakçaya bölüm numarası verilmeyecektir. Kaynakçadaki eserler yazar soyadına göre alfabetik olarak sıralandığından eserlere sıra numarası verilmeyecek ... her kaynağın ikinci ve sonraki satırlarının 0,5 cm içeriden başlamasıdır. Kaynakça yazılırken kaynakların aralarında herhangi bir boşluk bırakılmaz, paragraflar üst:0nk ve alt:0nk olacak şekilde tek satır aralığı kullanılır. Not: Kaynakça başlığı büyük harflerle, koyu ve sayfa ortalanarak yazılmalıdır."
     }
    ],
-   "notes": "Example PDF p.33: title baseline 35.57 → first entry 42.51 mm (one line pitch + 6 pt, no blank line)."
+   "notes": "Example PDF p.33: title baseline 35.57 → first entry 42.51 mm (one line pitch + 6 pt, no blank line).",
+   "canonicalKey": "bibliography.startsBelowTitle",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.firstLineIndentMm",
@@ -2689,7 +4117,17 @@
      "locator": "PDF p.33 (printed 32) example KAYNAKÇA"
     }
    ],
-   "notes": "First lines start at the text-area left edge (24.99 mm in the guide frame)."
+   "notes": "First lines start at the text-area left edge (24.99 mm in the guide frame).",
+   "canonicalKey": "bibliography.firstLineIndentMm",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.title",
@@ -2705,7 +4143,17 @@
      "locator": "PDF p.6 (printed 5) §2.6",
      "quote": "büyük harflerle yazılmış “İÇİNDEKİLER” başlığı ile başlar"
     }
-   ]
+   ],
+   "canonicalKey": "toc.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.titleStyle",
@@ -2721,7 +4169,17 @@
      "locator": "PDF p.44 (printed 43) EK 8",
      "quote": "İÇİNDEKİLER (TimesNewRomanPS-BoldMT, centred 88.49–115.05 mm)"
     }
-   ]
+   ],
+   "canonicalKey": "toc.titleStyle",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.levels",
@@ -2749,7 +4207,17 @@
      "quote": "4 alt başlıktan daha fazlasının kullanılmaması önerilmekte birlikte, çok gerekli ise i, ii, ve/veya harflendirme (a,b,c..) yöntemiyle içindekilerde yer almadan gösterilebilir. Tüm ana ve alt Başlıklar iki yana yaslı (sola dayalı) olarak paragraf başı yapılmadan yazılmalıdır."
     }
    ],
-   "notes": "Chapter + four numbered levels; i/a items excluded."
+   "notes": "Chapter + four numbered levels; i/a items excluded.",
+   "canonicalKey": "toc.levels",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.includesFrontMatter",
@@ -2765,7 +4233,17 @@
      "locator": "PDF p.6 (printed 5) §2.6 İçindekiler i–iii",
      "quote": "i. Başlıktan (İçindekiler) iki satır aralığı aşağıya, yazı alanı sağ kenarında bitecek şekilde, küçük harflerle “Sayfa” sözcüğü yazılır. ii. Bundan bir satır aralığı aşağıdan, yazı alanı sol kenarından başlayarak, büyük harflerle ve tek satır aralığı olarak “ETİK VE BİLİMSEL İLKELER SORUMLULUK BEYANI”, “ENSTİTÜ ONAYI” “ÖZET”, “ABSTRACT”, “ÖN SÖZ”, “İÇİNDEKİLER”, “TABLOLAR LİSTESİ” ve “ŞEKİLLER LİSTESİ”, “SİMGELER VE KISALTMALAR DİZİNİ” başlıkları alt alta yazılır. Sonra “GİRİŞ”e yer verilir. iii. Bunlardan bir satır aralığı aşağıya, altına ana bölüm numaralarının yazıldığı, “BÖLÜM” ve başlığı, büyük harflerle koyu (bold) ve yazı alanı ortalanarak yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "toc.includesFrontMatter",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.backMatter",
@@ -2781,7 +4259,17 @@
      "locator": "PDF p.7 (printed 6) §2.6 vii",
      "quote": "Ana bölümlerin yazımı bittikten sonra bir satır aralığı verilerek, yazı alanı sol kenarından başlayarak, büyük harflerle ve tek satır aralıklarıyla sırasıyla “ TARTIŞMA, SONUÇ VE ÖNERİLER”, “KAYNAKÇA”, “EKLER DİZİNİ” ve “GENİŞLETİLMİŞ TÜRKÇE ÖZET ...” yazılır."
     }
-   ]
+   ],
+   "canonicalKey": "toc.backMatter",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.chapterRows",
@@ -2803,7 +4291,17 @@
      "quote": "(Paragraf: Bölüm Başlıkları İçin: Önce: 12nk, Sonra 12nk, tek satır aralıklı; Paragraf: Alt Başlıklar İçin: Önce: 0nk, Sonra 0nk, tek satır aralıklı)"
     }
    ],
-   "notes": "EK 8 example: chapter rows have no leader or page number."
+   "notes": "EK 8 example: chapter rows have no leader or page number.",
+   "canonicalKey": "toc.chapterRows",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.rowStyle",
@@ -2824,7 +4322,17 @@
      "locator": "PDF p.45 (printed 44) EK 8 (cont.)",
      "quote": "'2.1.1. Örgütsel Güven …' Bold, '2.1.2.1. …' Regular"
     }
-   ]
+   ],
+   "canonicalKey": "toc.rowStyle",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.lineSpacing",
@@ -2845,7 +4353,17 @@
      "locator": "PDF p.44 (printed 43) EK 8 İçindekiler Sayfası Örneği",
      "quote": "(Paragraf: Bölüm Başlıkları İçin: Önce: 12nk, Sonra 12nk, tek satır aralıklı; Paragraf: Alt Başlıklar İçin: Önce: 0nk, Sonra 0nk, tek satır aralıklı)"
     }
-   ]
+   ],
+   "canonicalKey": "toc.lineSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.leader",
@@ -2862,7 +4380,17 @@
      "quote": "viii. Her ana başlık ve alt başlığın hizasına, “Sayfa” sütununun altına, rapordaki başlangıç sayfa numaraları yazılır. Bu amaçla, kısa olan başlıklar, yazı alanı sağ kenarına on harf boşluğu kalıncaya kadar, aynı hizaya gelen, aralıklı noktalarla uzatılır. Sayfa numaraları, yazı alanı sağ kenar çizgisinde bitecek şekilde, ön bölüm küçük Romen rakamları (i, ii, iii, gibi), ana ve arka bölüm Arap rakamları (1, 2, 3 gibi) ile yazılır. ... x. İçindekilerde verilen bilgiler sayfaya sığmazsa, yazı alanı üst kenarından başlayarak ve ayrıca başlık ya da devamı belirten bir işaret kullanmadan, ikinci ve daha sonraki sayfalarda sürdürülür."
     }
    ],
-   "notes": "'kısa olan başlıklar, yazı alanı sağ kenarına on harf boşluğu kalıncaya kadar ... aralıklı noktalarla uzatılır' – the dotted leader stops about ten characters before the right edge, where the page numbers are."
+   "notes": "'kısa olan başlıklar, yazı alanı sağ kenarına on harf boşluğu kalıncaya kadar ... aralıklı noktalarla uzatılır' – the dotted leader stops about ten characters before the right edge, where the page numbers are.",
+   "canonicalKey": "toc.leader",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.pageNumberAlign",
@@ -2879,7 +4407,17 @@
      "quote": "viii. Her ana başlık ve alt başlığın hizasına, “Sayfa” sütununun altına, rapordaki başlangıç sayfa numaraları yazılır. Bu amaçla, kısa olan başlıklar, yazı alanı sağ kenarına on harf boşluğu kalıncaya kadar, aynı hizaya gelen, aralıklı noktalarla uzatılır. Sayfa numaraları, yazı alanı sağ kenar çizgisinde bitecek şekilde, ön bölüm küçük Romen rakamları (i, ii, iii, gibi), ana ve arka bölüm Arap rakamları (1, 2, 3 gibi) ile yazılır. ... x. İçindekilerde verilen bilgiler sayfaya sığmazsa, yazı alanı üst kenarından başlayarak ve ayrıca başlık ya da devamı belirten bir işaret kullanmadan, ikinci ve daha sonraki sayfalarda sürdürülür."
     }
    ],
-   "notes": "EK 8 example: numbers end at 176.16 mm and 'Sayfa' at 181.68 mm in the example's own frame."
+   "notes": "EK 8 example: numbers end at 176.16 mm and 'Sayfa' at 181.68 mm in the example's own frame.",
+   "canonicalKey": "toc.pageNumberAlign",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.pageNumberFormat",
@@ -2895,7 +4433,17 @@
      "locator": "PDF p.7 (printed 6) §2.6 v–x",
      "quote": "viii. Her ana başlık ve alt başlığın hizasına, “Sayfa” sütununun altına, rapordaki başlangıç sayfa numaraları yazılır. Bu amaçla, kısa olan başlıklar, yazı alanı sağ kenarına on harf boşluğu kalıncaya kadar, aynı hizaya gelen, aralıklı noktalarla uzatılır. Sayfa numaraları, yazı alanı sağ kenar çizgisinde bitecek şekilde, ön bölüm küçük Romen rakamları (i, ii, iii, gibi), ana ve arka bölüm Arap rakamları (1, 2, 3 gibi) ile yazılır. ... x. İçindekilerde verilen bilgiler sayfaya sığmazsa, yazı alanı üst kenarından başlayarak ve ayrıca başlık ya da devamı belirten bir işaret kullanmadan, ikinci ve daha sonraki sayfalarda sürdürülür."
     }
-   ]
+   ],
+   "canonicalKey": "toc.pageNumberFormat",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.pageNumberHeading",
@@ -2923,7 +4471,17 @@
      "quote": "underline rule under 'Sayfa' x 172.37–181.65 mm (p.47: y 62.19–62.58 mm)"
     }
    ],
-   "notes": "'küçük harflerle' (not all caps) is explicit; bold+underline is MEASURED from EK 8/EK 9; the vertical distances conflict with the example (see conflicts)."
+   "notes": "'küçük harflerle' (not all caps) is explicit; bold+underline is MEASURED from EK 8/EK 9; the vertical distances conflict with the example (see conflicts).",
+   "canonicalKey": "toc.pageNumberHeading",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.indentPerLevelMm",
@@ -2939,7 +4497,17 @@
      "locator": "PDF p.44 (printed 43) EK 8",
      "quote": "all numbered rows start at x = 29.68 mm (levels 2–5)"
     }
-   ]
+   ],
+   "canonicalKey": "toc.indentPerLevelMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.wrapIndent",
@@ -2956,7 +4524,17 @@
      "quote": "Bölüm başlığı bir satıra sığmazsa, aynı hizadan başlayarak, alt satırdan yazıma devam edilir. Bölüm numaraları aynı hizada bitecek (noktalar aynı doğrultuda olacak) şekilde yazılır."
     }
    ],
-   "notes": "EK 8: continuation at 37.47 mm for '1.3.' rows (7.8 mm after row start), 44.88 mm for '2.1.2.1.' rows (15.2 mm)."
+   "notes": "EK 8: continuation at 37.47 mm for '1.3.' rows (7.8 mm after row start), 44.88 mm for '2.1.2.1.' rows (15.2 mm).",
+   "canonicalKey": "toc.wrapIndent",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.continuationPages",
@@ -2972,7 +4550,17 @@
      "locator": "PDF p.7 (printed 6) §2.6 v–x",
      "quote": "viii. Her ana başlık ve alt başlığın hizasına, “Sayfa” sütununun altına, rapordaki başlangıç sayfa numaraları yazılır. Bu amaçla, kısa olan başlıklar, yazı alanı sağ kenarına on harf boşluğu kalıncaya kadar, aynı hizaya gelen, aralıklı noktalarla uzatılır. Sayfa numaraları, yazı alanı sağ kenar çizgisinde bitecek şekilde, ön bölüm küçük Romen rakamları (i, ii, iii, gibi), ana ve arka bölüm Arap rakamları (1, 2, 3 gibi) ile yazılır. ... x. İçindekilerde verilen bilgiler sayfaya sığmazsa, yazı alanı üst kenarından başlayarak ve ayrıca başlık ya da devamı belirten bir işaret kullanmadan, ikinci ve daha sonraki sayfalarda sürdürülür."
     }
-   ]
+   ],
+   "canonicalKey": "toc.continuationPages",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.title",
@@ -2993,7 +4581,17 @@
      "locator": "PDF p.47 (printed 46) EK 9 Tablolar Listesi Örneği",
      "quote": "(Tablolar Listesi başlığında Paragraf: Aralık Önce: 6nk; Sonra 6nk, tek satır aralıklı; tabloların listelenmesinde Paragraf: Aralık Önce: 0nk; Sonra 0nk, tek satır aralıklı)"
     }
-   ]
+   ],
+   "canonicalKey": "lists.tables.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.title",
@@ -3009,7 +4607,17 @@
      "locator": "PDF p.7 (printed 6) §2.7–2.9",
      "quote": "Üç ya da daha fazla sayıdaki tablolar, “Tablolar Listesi” olarak sıralanır. Tablo sayısı üçün altında ise ayrı bir liste yapılmaz. Tablolar listesinin hazırlanmasında uyulması gereken genel kurallar, “İçindekiler” sayfası ile aynıdır ... Şekiller ... Resimler Listesi ... aynıdır."
     }
-   ]
+   ],
+   "canonicalKey": "lists.figures.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.pictures.title",
@@ -3025,7 +4633,17 @@
      "locator": "PDF p.7 (printed 6) §2.7–2.9",
      "quote": "Üç ya da daha fazla sayıdaki tablolar, “Tablolar Listesi” olarak sıralanır. Tablo sayısı üçün altında ise ayrı bir liste yapılmaz. Tablolar listesinin hazırlanmasında uyulması gereken genel kurallar, “İçindekiler” sayfası ile aynıdır ... Şekiller ... Resimler Listesi ... aynıdır."
     }
-   ]
+   ],
+   "canonicalKey": "lists.pictures.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.threshold",
@@ -3041,7 +4659,17 @@
      "locator": "PDF p.7 (printed 6) §2.7–2.9",
      "quote": "Üç ya da daha fazla sayıdaki tablolar, “Tablolar Listesi” olarak sıralanır. Tablo sayısı üçün altında ise ayrı bir liste yapılmaz. Tablolar listesinin hazırlanmasında uyulması gereken genel kurallar, “İçindekiler” sayfası ile aynıdır ... Şekiller ... Resimler Listesi ... aynıdır."
     }
-   ]
+   ],
+   "canonicalKey": "lists.threshold",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.titleSpacing",
@@ -3057,7 +4685,17 @@
      "locator": "PDF p.47 (printed 46) EK 9 Tablolar Listesi Örneği",
      "quote": "(Tablolar Listesi başlığında Paragraf: Aralık Önce: 6nk; Sonra 6nk, tek satır aralıklı; tabloların listelenmesinde Paragraf: Aralık Önce: 0nk; Sonra 0nk, tek satır aralıklı)"
     }
-   ]
+   ],
+   "canonicalKey": "lists.titleSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.entryFormat",
@@ -3073,7 +4711,17 @@
      "locator": "PDF p.47 (printed 46) EK 9",
      "quote": "Tablo 1. Güven Tanımları …; continuation lines at 42.04 mm vs 29.68 mm (12.36 mm)"
     }
-   ]
+   ],
+   "canonicalKey": "lists.entryFormat",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.hangingIndentMm",
@@ -3090,7 +4738,17 @@
      "quote": "continuation x0 42.04 − row x0 29.68 = 12.36 mm"
     }
    ],
-   "notes": "Probably intended as 1.25 cm (12.5 mm); not stated in text."
+   "notes": "Probably intended as 1.25 cm (12.5 mm); not stated in text.",
+   "canonicalKey": "lists.hangingIndentMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.title",
@@ -3111,7 +4769,17 @@
      "locator": "PDF p.48 (printed 47) EK 10 Simgeler ve Kısaltmalar Dizini Örneği",
      "quote": "(Simgeler ve Kışlatmalar Dizini’nin hazırlanmasında; Paragraf: Önce: 6nk; Sonra 6nk, tek satır aralıklı)"
     }
-   ]
+   ],
+   "canonicalKey": "lists.symbols.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.format",
@@ -3138,7 +4806,17 @@
      "quote": "entries x0 42.38 mm vs example text edge 29.68 mm (= 12.70 mm, same as the EK 7 paragraph indent); wrapped explanation continues at 62.16 mm"
     }
    ],
-   "notes": "Bold abbreviation: MEASURED (EK 10). Review: indent added (was missing). Continuation-line position of wrapped explanations not stated (example 62.16 mm ≈ after the label) — UNKNOWN, low impact."
+   "notes": "Bold abbreviation: MEASURED (EK 10). Review: indent added (was missing). Continuation-line position of wrapped explanations not stated (example 62.16 mm ≈ after the label) — UNKNOWN, low impact.",
+   "canonicalKey": "lists.symbols.format",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.appendices.title",
@@ -3154,7 +4832,17 @@
      "locator": "PDF p.9 (printed 8) §4.2 Ekler Dizini",
      "quote": "Her ek, genellikle, ayrı bir sayfada verilir ... Kullanılan her Ek’e ayrı bir numara ve ad verilir. ... Not: Çalışmada sunulan “Ek” sayısı üç ve üçten fazla ise Kaynakçadan sonra “Ekler Dizini” hazırlanır. Çalışmada kullanılan “Ek” sayısının üçten daha az olması durumunda Ekler Dizini sayfasına gerek olmayıp, İçindekiler Listesinde “Ekler” şeklinde yer alacaktır. Bu sayfanın hazırlanmasında “Tablolar Listesi”, “Şekiller Listesi” hazırlama formatı ... kullanılır."
     }
-   ]
+   ],
+   "canonicalKey": "lists.appendices.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.appendices.format",
@@ -3175,7 +4863,17 @@
      "locator": "PDF p.49 (printed 48) EK 11",
      "quote": "Ek 1: Araştırmada Kullanılan Anket ...."
     }
-   ]
+   ],
+   "canonicalKey": "lists.appendices.format",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "appendices.label",
@@ -3191,7 +4889,17 @@
      "locator": "PDF p.50 (printed 49) Ekler example",
      "quote": "EKLER / Ek 1: Araştırmada Kullanılan Anket Formu (bold)"
     }
-   ]
+   ],
+   "canonicalKey": "appendices.label",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "appendices.threshold",
@@ -3207,7 +4915,17 @@
      "locator": "PDF p.9 (printed 8) §4.2 Ekler Dizini",
      "quote": "Her ek, genellikle, ayrı bir sayfada verilir ... Kullanılan her Ek’e ayrı bir numara ve ad verilir. ... Not: Çalışmada sunulan “Ek” sayısı üç ve üçten fazla ise Kaynakçadan sonra “Ekler Dizini” hazırlanır. Çalışmada kullanılan “Ek” sayısının üçten daha az olması durumunda Ekler Dizini sayfasına gerek olmayıp, İçindekiler Listesinde “Ekler” şeklinde yer alacaktır. Bu sayfanın hazırlanmasında “Tablolar Listesi”, “Şekiller Listesi” hazırlama formatı ... kullanılır."
     }
-   ]
+   ],
+   "canonicalKey": "appendices.threshold",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.maxPages",
@@ -3223,7 +4941,17 @@
      "locator": "PDF p.5 (printed 4) §2.4 Özet",
      "quote": "Tezin özet metni zorunlu haller dışında bir sayfayı aşmamalıdır. Özet metninin hemen altına “Anahtar Kelimeler” yazılır. Anahtar kelimelerin sayısı 5’i geçmemelidir. ... Özet metni, “ÖZET” başlığı altında; tezin adı (büyük harflerle) hazırlayanın adı-soyadı, tezin sunulduğu üniversite, enstitü ve anabilim dalı adları ile tezin kabul tarihi ve danışman öğretim üyesinin unvan ve adıyla aynı sayfada olmalıdır (Bkz. EK-5). ... “ABSTRACT” başlığı ile İngilizce özet ... Türkçe ve İngilizce özet bölümleri tek satır aralığı ile yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "abstract.maxPages",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.maxWords",
@@ -3240,7 +4968,17 @@
      "quote": "Tezin özet metni zorunlu haller dışında bir sayfayı aşmamalıdır. Özet metninin hemen altına “Anahtar Kelimeler” yazılır. Anahtar kelimelerin sayısı 5’i geçmemelidir. ... Özet metni, “ÖZET” başlığı altında; tezin adı (büyük harflerle) hazırlayanın adı-soyadı, tezin sunulduğu üniversite, enstitü ve anabilim dalı adları ile tezin kabul tarihi ve danışman öğretim üyesinin unvan ve adıyla aynı sayfada olmalıdır (Bkz. EK-5). ... “ABSTRACT” başlığı ile İngilizce özet ... Türkçe ve İngilizce özet bölümleri tek satır aralığı ile yazılmalıdır."
     }
    ],
-   "notes": "Only 'bir sayfayı aşmamalıdır'."
+   "notes": "Only 'bir sayfayı aşmamalıdır'.",
+   "canonicalKey": "abstract.maxWords",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.count",
@@ -3256,7 +4994,17 @@
      "locator": "PDF p.5 (printed 4) §2.4 Özet",
      "quote": "Tezin özet metni zorunlu haller dışında bir sayfayı aşmamalıdır. Özet metninin hemen altına “Anahtar Kelimeler” yazılır. Anahtar kelimelerin sayısı 5’i geçmemelidir. ... Özet metni, “ÖZET” başlığı altında; tezin adı (büyük harflerle) hazırlayanın adı-soyadı, tezin sunulduğu üniversite, enstitü ve anabilim dalı adları ile tezin kabul tarihi ve danışman öğretim üyesinin unvan ve adıyla aynı sayfada olmalıdır (Bkz. EK-5). ... “ABSTRACT” başlığı ile İngilizce özet ... Türkçe ve İngilizce özet bölümleri tek satır aralığı ile yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.count",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.label",
@@ -3285,7 +5033,17 @@
      "locator": "PDF p.42 (printed 41) EK 6",
      "quote": "Keywords: (bold label)"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.keywords.label",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.lineSpacing",
@@ -3306,7 +5064,17 @@
      "locator": "PDF p.11 (printed 10) §5.2",
      "quote": "Satır Aralıkları :1,5 satır aralıklı olmalıdır. (Sadece içindekiler, tablo ve şekil listeleri, simge ve kısalmalar dizini, özet, abstract ve kaynakça bölümleri tek satır aralıklı)"
     }
-   ]
+   ],
+   "canonicalKey": "abstract.lineSpacing",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.firstLineIndentMm",
@@ -3323,7 +5091,17 @@
      "quote": "all body lines start at 29.68 mm, including the first"
     }
    ],
-   "notes": "Conflicts with the general 1.25 cm paragraph indent; needs confirmation."
+   "notes": "Conflicts with the general 1.25 cm paragraph indent; needs confirmation.",
+   "canonicalKey": "abstract.firstLineIndentMm",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.content",
@@ -3339,7 +5117,17 @@
      "locator": "PDF p.5 (printed 4) §2.4 Özet",
      "quote": "Tezin özet metni zorunlu haller dışında bir sayfayı aşmamalıdır. Özet metninin hemen altına “Anahtar Kelimeler” yazılır. Anahtar kelimelerin sayısı 5’i geçmemelidir. ... Özet metni, “ÖZET” başlığı altında; tezin adı (büyük harflerle) hazırlayanın adı-soyadı, tezin sunulduğu üniversite, enstitü ve anabilim dalı adları ile tezin kabul tarihi ve danışman öğretim üyesinin unvan ve adıyla aynı sayfada olmalıdır (Bkz. EK-5). ... “ABSTRACT” başlığı ile İngilizce özet ... Türkçe ve İngilizce özet bölümleri tek satır aralığı ile yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "abstract.content",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.order",
@@ -3355,7 +5143,17 @@
      "locator": "PDF p.5 (printed 4) §2.4 Özet",
      "quote": "Tezin özet metni zorunlu haller dışında bir sayfayı aşmamalıdır. Özet metninin hemen altına “Anahtar Kelimeler” yazılır. Anahtar kelimelerin sayısı 5’i geçmemelidir. ... Özet metni, “ÖZET” başlığı altında; tezin adı (büyük harflerle) hazırlayanın adı-soyadı, tezin sunulduğu üniversite, enstitü ve anabilim dalı adları ile tezin kabul tarihi ve danışman öğretim üyesinin unvan ve adıyla aynı sayfada olmalıdır (Bkz. EK-5). ... “ABSTRACT” başlığı ile İngilizce özet ... Türkçe ve İngilizce özet bölümleri tek satır aralığı ile yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "abstract.order",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.lineSpacing",
@@ -3371,7 +5169,17 @@
      "locator": "PDF p.6 (printed 5) §2.5 Ön Söz (cont.)",
      "quote": "Ön söz metni tek satır aralığı ile yazılmalıdır. Tezi hazırlayan öğrencinin adı, ön söz yazısının bir satır aralığı altına ve yazı alanının sağ kenarında bitecek biçimde yazılmalıdır (Bkz. EK-7)."
     }
-   ]
+   ],
+   "canonicalKey": "preface.lineSpacing",
+   "category": "fixed-page",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.signature",
@@ -3387,7 +5195,17 @@
      "locator": "PDF p.6 (printed 5) §2.5 Ön Söz (cont.)",
      "quote": "Ön söz metni tek satır aralığı ile yazılmalıdır. Tezi hazırlayan öğrencinin adı, ön söz yazısının bir satır aralığı altına ve yazı alanının sağ kenarında bitecek biçimde yazılmalıdır (Bkz. EK-7)."
     }
-   ]
+   ],
+   "canonicalKey": "preface.signature",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "extendedTurkishSummary",
@@ -3427,7 +5245,17 @@
      "locator": "PDF p.10 (printed 9) §4.3 Not",
      "quote": "Genişletilmiş Türkçe Özet başlığı büyük harflerle, koyu ve sayfa ortalanarak yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "extendedTurkishSummary",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.headerBlock",
@@ -3459,7 +5287,17 @@
      "quote": "Tezin yazılıp sunulduğu kurumun künyesi; T.C., Üniversite, Enstitü, Anabilim/Anasanat Dalı, Program Adı ve tezin yazıldığı lisansüstü eğitim düzeyi/türü (Yüksek Lisans Tezi, Doktora Tezi ve Sanatta Yeterlik Tezi gibi) sırası takip edilerek, 12 puntoyla, koyu (bold) ve büyük harflerle, 1,5 satır aralığıyla sayfa ortalanarak yazılır."
     }
    ],
-   "notes": "Review: §2.1 i says 'Anabilim/Anasanat Dalı' — art departments print 'ANASANAT DALI'. Degree line also admits 'SANATTA YETERLİK TEZİ' (third degree type, not in the manifest)."
+   "notes": "Review: §2.1 i says 'Anabilim/Anasanat Dalı' — art departments print 'ANASANAT DALI'. Degree line also admits 'SANATTA YETERLİK TEZİ' (third degree type, not in the manifest).",
+   "canonicalKey": "cover.innerCover.headerBlock",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.title",
@@ -3481,7 +5319,17 @@
      "locator": "PDF p.4 (printed 3) §2.1 ii Tezin Başlığı",
      "quote": "Başlık, 16 puntoyla, koyu (bold) ve büyük harflerle, 1,5 satır aralığıyla sayfa ortalanarak yazılır. Bir satıra sığmaması halinde, bölüm başlıklarında olduğu gibi, başlık, 1,5 satır aralığıyla ve kısalan satır uzunluklarıyla sürer."
     }
-   ]
+   ],
+   "canonicalKey": "cover.innerCover.title",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.student",
@@ -3503,7 +5351,17 @@
      "locator": "PDF p.4 (printed 3) §2.1 iii",
      "quote": "Tezi hazırlayan kişinin adı ve soyadına 12 puntoyla, koyu ve adın sadece ilk harfi büyük, soyadı tamamı büyük harflerle yazılarak ve yazı alanı ortalanarak başlık sayfasında yer verilir."
     }
-   ]
+   ],
+   "canonicalKey": "cover.innerCover.student",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.advisor",
@@ -3529,7 +5387,17 @@
      "locator": "PDF p.4 (printed 3) §2.1",
      "quote": "İki danışmanlı tezlerde ise ikinci danışman öğretim üyesinin unvanı, adı ve soyadı bilgilerine yer verilir (Bkz. EK-2b)."
     }
-   ]
+   ],
+   "canonicalKey": "cover.innerCover.advisor",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.cityDate",
@@ -3550,7 +5418,17 @@
      "locator": "PDF p.4 (printed 3) §2.1 v",
      "quote": "Tezin yazılıp sunulduğu kurumun bulunduğu şehir ile tezin yazıldığı tarih, başlık sayfasındaki son bilgi kümesini oluşturur. Bunlar, 12 puntoyla, koyu ve büyük harflerle yazılırlar."
     }
-   ]
+   ],
+   "canonicalKey": "cover.innerCover.cityDate",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.support",
@@ -3566,7 +5444,17 @@
      "locator": "PDF p.5 (printed 4) §2.1 vii Tezin Destekleyicileri",
      "quote": "başlık sayfasının (iç kapağın) altına “Bu tez çalışması; “Afyon Kocatepe Üniversitesi Bilimsel Araştırma Projeleri Koordinasyon Birimi’nce desteklenmiştir. Proje No: 15.SOS.BİL.19” gibi bir açıklama yazılmalıdır."
     }
-   ]
+   ],
+   "canonicalKey": "cover.innerCover.support",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.logo",
@@ -3582,7 +5470,17 @@
      "locator": "PDF p.37 (printed 36) EK 2a",
      "quote": "no image on the page"
     }
-   ]
+   ],
+   "canonicalKey": "cover.innerCover.logo",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.innerCover.verticalLayout",
@@ -3599,7 +5497,17 @@
      "quote": "see sourceGeometry PDF p.37 (blank paragraphs included)"
     }
    ],
-   "notes": "The guide states no distances; the example is set at 11 pt with ~1.08 line spacing and 6 pt paragraph spacing and shifted down by the 'EK 2a' caption, so only line counts transfer, not absolute positions."
+   "notes": "The guide states no distances; the example is set at 11 pt with ~1.08 line spacing and 6 pt paragraph spacing and shifted down by the 'EK 2a' caption, so only line counts transfer, not absolute positions.",
+   "canonicalKey": "cover.innerCover.verticalLayout",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.outerCover.window",
@@ -3616,7 +5524,17 @@
      "quote": "Enstitü tarafından hazırlanmış dış kapak kurum ismi ve tezi tanımaya yönelik pencereden oluşur. ... Tez tanıtım sayfası, dış kapak penceresinden okunabilecek şekilde hazırlanır. Tanıtım sayfası tezin ismi, doktora tezi, sanatta yeterlik veya yüksek lisans tezi olduğu, tezi hazırlayan kişi, danışmanı, ay, yıl ve teslim edildiği yer bilgilerinden oluşur (Bkz. EK-1)."
     }
    ],
-   "notes": "Window position/size is not given. EK 1 places the block at 228.3–273.8 mm (baselines) from the page top, centred at ≈104.5 mm, title lines ≤ 80 mm wide."
+   "notes": "Window position/size is not given. EK 1 places the block at 228.3–273.8 mm (baselines) from the page top, centred at ≈104.5 mm, title lines ≤ 80 mm wide.",
+   "canonicalKey": "cover.outerCover.window",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "declaration.signatureBlock",
@@ -3637,7 +5555,17 @@
      "locator": "PDF p.39 (printed 38) EK 3",
      "quote": "14/10/2016 · İmza · Yusuf GÖKÇE centred at ≈158.5 mm"
     }
-   ]
+   ],
+   "canonicalKey": "declaration.signatureBlock",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "approval.form",
@@ -3658,7 +5586,17 @@
      "locator": "PDF p.40 (printed 39) EK 4 Notlar",
      "quote": "1. Bu sayfa web sayfamızdan indirilebilir. Süreçleri tamamlanan tezin, bu kılavuzda belirtilen yerine bu sayfa eklenecektir."
     }
-   ]
+   ],
+   "canonicalKey": "approval.form",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.firstBaselineOffsetEm",
@@ -3684,7 +5622,17 @@
      "quote": "fit: 0.9335 em → mean implied top 24.977 mm (min 24.962, max 25.004, n=27)"
     }
    ],
-   "notes": "Word model: first baseline = top of text area + (hhea lineGap + ascent) × font size = 0.9335 em for Times New Roman. The guide's body text uses 'multiple 1.08' (pitch 13.68 pt at 11 pt), and the extra 8 % leading is NOT added above the first baseline → extra leading of 'multiple'/auto line spacing goes BELOW the text. The 1.5-lines value is INFERRED from the same w:lineRule=auto mechanism (the source has no page that begins with a 1.5-spaced line). Assumes the guide's own top margin is a round 2.5 cm (the only reading that fits all three sizes). For the thesis: 12 pt body line at the top of a page → first baseline 25.0 + 0.9335×12 pt = 28.95 mm."
+   "notes": "Word model: first baseline = top of text area + (hhea lineGap + ascent) × font size = 0.9335 em for Times New Roman. The guide's body text uses 'multiple 1.08' (pitch 13.68 pt at 11 pt), and the extra 8 % leading is NOT added above the first baseline → extra leading of 'multiple'/auto line spacing goes BELOW the text. The 1.5-lines value is INFERRED from the same w:lineRule=auto mechanism (the source has no page that begins with a 1.5-spaced line). Assumes the guide's own top margin is a round 2.5 cm (the only reading that fits all three sizes). For the thesis: 12 pt body line at the top of a page → first baseline 25.0 + 0.9335×12 pt = 28.95 mm.",
+   "canonicalKey": "wordModel.firstBaselineOffsetEm",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": 0.02,
+    "unit": "em",
+    "targetValue": 0.02
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.lineHeightEm",
@@ -3719,7 +5667,17 @@
      "locator": "orchestration/artifacts/aku-sbe/review/word-model-measurements.json"
     }
    ],
-   "notes": "Single line of Times New Roman = ascent 0.891 + descent 0.216 + lineGap 0.0425 = 1.1497 em (13.80 pt at 12 pt; 1.5 lines = 20.70 pt)."
+   "notes": "Single line of Times New Roman = ascent 0.891 + descent 0.216 + lineGap 0.0425 = 1.1497 em (13.80 pt at 12 pt; 1.5 lines = 20.70 pt).",
+   "canonicalKey": "wordModel.lineHeightEm",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": 0.02,
+    "unit": "em",
+    "targetValue": 0.02
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.paragraphSpacing",
@@ -3741,7 +5699,17 @@
      "quote": "consecutive body paragraphs: baseline gap 18.71 pt = 13.69 + 5.0 pt"
     }
    ],
-   "notes": "The source is a PDF only; the paragraphs' w:spacing input values are unknown, so neither additive (after+before) nor collapsed spacing, contextualSpacing, nor suppression of space-before at the top of a page is DEMONSTRATED. The 6-pt gaps of the EK pages contradict their own notes (EK 10 says 6/6, EK 8 says 12/12 for chapter rows) and therefore do not show the rule. Implementation decision (see conflict 'Paragraph spacing semantics'): follow Word semantics because §5.2 mandates 'Kelime İşlem Yazılımı: Word for Windows' and §5.5.2 equates 'Üst: 6nk, Alt: 6nk' with 'bir satır aralığı' (≈12 pt) of space."
+   "notes": "The source is a PDF only; the paragraphs' w:spacing input values are unknown, so neither additive (after+before) nor collapsed spacing, contextualSpacing, nor suppression of space-before at the top of a page is DEMONSTRATED. The 6-pt gaps of the EK pages contradict their own notes (EK 10 says 6/6, EK 8 says 12/12 for chapter rows) and therefore do not show the rule. Implementation decision (see conflict 'Paragraph spacing semantics'): follow Word semantics because §5.2 mandates 'Kelime İşlem Yazılımı: Word for Windows' and §5.5.2 equates 'Üst: 6nk, Alt: 6nk' with 'bir satır aralığı' (≈12 pt) of space.",
+   "canonicalKey": "wordModel.paragraphSpacing",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "degrees.sanattaYeterlik",
@@ -3775,7 +5743,17 @@
      "quote": "☐Sanatta Yeterlik"
     }
    ],
-   "notes": "Source-supported third degree type. Layout identical to master/PhD; only wording differs. Not in the manifest → orchestrator decision (registry degreeType enum has no value for it)."
+   "notes": "Source-supported third degree type. Layout identical to master/PhD; only wording differs. Not in the manifest → orchestrator decision (registry degreeType enum has no value for it).",
+   "canonicalKey": "degrees.sanattaYeterlik",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "language.foreignLanguageProgrammes",
@@ -3796,7 +5774,17 @@
      "locator": "PDF p.2 Sunuş; p.5 §2.4 Not; p.10 §4.3; p.11 §5.4; p.52 EK 12 (bilingual note: 'required for master's theses and doctoral dissertations written in English')"
     }
    ],
-   "notes": "A thesis written in Turkish never takes the Genişletilmiş Türkçe Özet, so this belongs to separate EN variants (master + phd), which are source-supported but under-specified (English titles/labels, inner-cover language, declaration wording unknown)."
+   "notes": "A thesis written in Turkish never takes the Genişletilmiş Türkçe Özet, so this belongs to separate EN variants (master + phd), which are source-supported but under-specified (English titles/labels, inner-cover language, declaration wording unknown).",
+   "canonicalKey": "language.foreignLanguageProgrammes",
+   "category": "content",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   }
  ],
  "sections": [
@@ -13284,5 +15272,7 @@
    "Manifest decision: register Sanatta Yeterlik and EN (foreign-language) variants or document them as out of scope.",
    "wordModel.paragraphSpacing is not demonstrated by the source (PDF only); implementation relies on Word's documented behaviour."
   ]
- }
+ },
+ "annotatedAt": "2026-09-30",
+ "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md"
 }

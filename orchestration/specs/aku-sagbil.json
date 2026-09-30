@@ -1,6 +1,6 @@
 {
  "id": "aku-sagbil",
- "schemaVersion": 2,
+ "schemaVersion": 3,
  "analyzedAt": "2026-09-28",
  "university": "Afyon Kocatepe Üniversitesi",
  "unit": "Sağlık Bilimleri Enstitüsü",
@@ -82,7 +82,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.size",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.widthMm",
@@ -101,7 +111,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.widthMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.heightMm",
@@ -120,7 +140,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.heightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.orientation",
@@ -138,7 +168,17 @@
     }
    ],
    "notes": "Portrait is shown by examples; landscape exceptions are explicitly permitted.",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.orientation",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.leftMm",
@@ -157,7 +197,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.margins.leftMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.topMm",
@@ -176,7 +226,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.margins.topMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.bottomMm",
@@ -195,7 +255,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.margins.bottomMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.margins.rightMm",
@@ -214,7 +284,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.margins.rightMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.gutterMm",
@@ -233,7 +313,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.gutterMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.mirrorMargins",
@@ -251,7 +341,17 @@
     }
    ],
    "notes": "Single sided printing; equal margins are separately explicit.",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.mirrorMargins",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "printing.duplex",
@@ -269,7 +369,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "printing.duplex",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "paper.weight",
@@ -287,7 +397,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "paper.weight",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.textBlockOverflow",
@@ -305,7 +425,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.textBlockOverflow",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.distanceMm",
@@ -324,7 +454,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.header.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.footer.distanceMm",
@@ -343,7 +483,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.footer.distanceMm",
+   "category": "page-geometry",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.header.content",
@@ -361,7 +511,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.header.content",
+   "category": "page-geometry",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "page.footer.content",
@@ -379,7 +539,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "page.footer.content",
+   "category": "page-geometry",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.position",
@@ -397,7 +567,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.position",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.align",
@@ -427,7 +607,17 @@
      "center": "text-block centre x = 112.5 mm (Word header centre tab) - INFERRED; page centre 105 mm is the other reading"
     }
    },
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.align",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.distanceFromEdgeMm",
@@ -446,7 +636,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.distanceFromEdgeMm",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.decoration",
@@ -464,7 +664,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.decoration",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.format",
@@ -482,7 +692,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.front.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.startsAt(innerCover)",
@@ -500,7 +720,17 @@
     }
    ],
    "notes": "Do not infer Roman start index until unnumbered-page counting is clarified.",
-   "currentStatus": "CONFLICT"
+   "currentStatus": "CONFLICT",
+   "canonicalKey": "pagination.front.startsAt(innerCover)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.front.approvalPage",
@@ -518,7 +748,17 @@
     }
    ],
    "notes": "Conflict: source text says unnumbered; TOC example assigns II.",
-   "currentStatus": "CONFLICT"
+   "currentStatus": "CONFLICT",
+   "canonicalKey": "pagination.front.approvalPage",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.format",
@@ -536,7 +776,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.main.format",
+   "category": "pagination",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.main.startsAt(introduction)",
@@ -554,7 +804,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.main.startsAt(introduction)",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.backMatter",
@@ -573,7 +833,17 @@
    ],
    "notes": "Appendix page numbers continue after the references; CV is the last thesis page.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Appendix page numbers continue after the references; CV is the last thesis page."
+   "currentStatusNote": "Appendix page numbers continue after the references; CV is the last thesis page.",
+   "canonicalKey": "pagination.backMatter",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.font",
@@ -591,7 +861,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.font",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "pagination.firstPageOfChapterVisible",
@@ -609,7 +889,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "pagination.firstPageOfChapterVisible",
+   "category": "pagination",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.allowedFonts",
@@ -629,7 +919,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.body.allowedFonts",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontFamily",
@@ -663,7 +963,17 @@
     "default": "Times New Roman",
     "defaultConfidence": "INFERRED"
    },
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.body.fontFamily",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.fontSizePt",
@@ -691,7 +1001,17 @@
     "default": 12,
     "defaultConfidence": "INFERRED"
    },
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.body.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.lineSpacing",
@@ -709,7 +1029,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.body.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.body.align",
@@ -727,7 +1057,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.body.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.aralikUnitPt",
@@ -746,7 +1086,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.aralikUnitPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.firstLineIndentMm",
@@ -774,7 +1124,17 @@
     "default": 10,
     "defaultConfidence": "EXPLICIT (Şekil 2 annotation \"7 Karakter (veya 1 cm)\")"
    },
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.paragraph.firstLineIndentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.firstAfterHeadingIndentMm",
@@ -793,7 +1153,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.paragraph.firstAfterHeadingIndentMm",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceBetweenPt",
@@ -812,7 +1182,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.paragraph.spaceBetweenPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceBeforePt",
@@ -831,7 +1211,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.paragraph.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.paragraph.spaceAfterPt",
@@ -850,7 +1240,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "typography.paragraph.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.blockQuote",
@@ -873,7 +1273,17 @@
    ],
    "notes": "Long verbatim quotation is a separate paragraph and is enclosed in quotation marks.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Long verbatim quotation is a separate paragraph and is enclosed in quotation marks."
+   "currentStatusNote": "Long verbatim quotation is a separate paragraph and is enclosed in quotation marks.",
+   "canonicalKey": "typography.blockQuote",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "typography.emphasis",
@@ -892,7 +1302,17 @@
    ],
    "notes": "Bold, italic, bold italic and underline are limited to cases required by the field.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Bold, italic, bold italic and underline are limited to cases required by the field."
+   "currentStatusNote": "Bold, italic, bold italic and underline are limited to cases required by the field.",
+   "canonicalKey": "typography.emphasis",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.levels",
@@ -910,7 +1330,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.levels",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.bold",
@@ -928,7 +1358,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h1.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.bold",
@@ -946,7 +1386,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h2.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.bold",
@@ -964,7 +1414,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h3.bold",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.fontSizePt",
@@ -983,7 +1443,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h1.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.caps",
@@ -1001,7 +1471,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h1.caps",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.align",
@@ -1019,7 +1499,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h1.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.pageBreakBefore",
@@ -1037,7 +1527,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h1.pageBreakBefore",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceAfterPt",
@@ -1056,7 +1556,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h1.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.spaceBeforePt",
@@ -1075,7 +1585,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h1.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.numbering",
@@ -1094,7 +1614,17 @@
    ],
    "notes": "All headings are numbered in sequence; example uses “1. GİRİŞ”.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "All headings are numbered in sequence; example uses “1. GİRİŞ”."
+   "currentStatusNote": "All headings are numbered in sequence; example uses “1. GİRİŞ”.",
+   "canonicalKey": "headings.h1.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1.lineSpacing",
@@ -1113,7 +1643,17 @@
    ],
    "notes": "General 1.5 line spacing is stated, but the guide gives no separate H1 line-spacing property.",
    "currentStatus": "UNKNOWN",
-   "currentStatusNote": "General 1.5 line spacing is stated, but the guide gives no separate H1 line-spacing property."
+   "currentStatusNote": "General 1.5 line spacing is stated, but the guide gives no separate H1 line-spacing property.",
+   "canonicalKey": "headings.h1.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.fontSizePt",
@@ -1132,7 +1672,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h2.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.fontSizePt",
@@ -1151,7 +1701,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h3.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.case",
@@ -1169,7 +1729,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h2.case",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.align",
@@ -1187,7 +1757,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h2.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceBeforePt",
@@ -1206,7 +1786,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h2.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.spaceAfterPt",
@@ -1225,7 +1815,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h2.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h2.numbering",
@@ -1244,7 +1844,17 @@
    ],
    "notes": "Example shows 1.1. and 2.1.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example shows 1.1. and 2.1."
+   "currentStatusNote": "Example shows 1.1. and 2.1.",
+   "canonicalKey": "headings.h2.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.case",
@@ -1262,7 +1872,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h3.case",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.align",
@@ -1280,7 +1900,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h3.align",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceBeforePt",
@@ -1299,7 +1929,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h3.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.spaceAfterPt",
@@ -1318,7 +1958,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h3.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h3.numbering",
@@ -1337,7 +1987,17 @@
    ],
    "notes": "Example shows 1.1.1. and 2.1.1.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example shows 1.1.1. and 2.1.1."
+   "currentStatusNote": "Example shows 1.1.1. and 2.1.1.",
+   "canonicalKey": "headings.h3.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.numbering",
@@ -1357,7 +2017,17 @@
    "notes": "Fourth-level numbering comes from the superseded guide; current guide discourages headings beyond third degree and gives no fourth-level format.",
    "currentStatus": "HISTORICAL_ONLY",
    "currentStatusNote": "Fourth-level numbering comes from the superseded guide; current guide discourages headings beyond third degree and gives no fourth-level format.",
-   "historicalValue": "{1}.{2}.{3}.{4}."
+   "historicalValue": "{1}.{2}.{3}.{4}.",
+   "canonicalKey": "headings.h4.numbering",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h4.style",
@@ -1375,7 +2045,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "headings.h4.style",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.position",
@@ -1393,7 +2073,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.table.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.position",
@@ -1411,7 +2101,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.figure.position",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.table.label",
@@ -1437,7 +2137,17 @@
     "default": "Tablo",
     "defaultConfidence": "EXPLICIT (§1.16 example \"Tablo 4. Devam.\" + every figure)"
    },
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.table.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.figure.label",
@@ -1455,7 +2165,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.figure.label",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.numbering",
@@ -1473,7 +2193,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.numbering",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.separatorAfterNumber",
@@ -1491,7 +2221,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.separatorAfterNumber",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.labelBold",
@@ -1509,7 +2249,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.labelBold",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.lineSpacing",
@@ -1528,12 +2278,25 @@
    ],
    "notes": "Whole thesis uses 1.5 spacing except where specifically stated; caption spacing has no exception.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Whole thesis uses 1.5 spacing except where specifically stated; caption spacing has no exception."
+   "currentStatusNote": "Whole thesis uses 1.5 spacing except where specifically stated; caption spacing has no exception.",
+   "canonicalKey": "captions.lineSpacing",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.fontSizePt",
    "value": null,
-   "conflictValues": [12, 11],
+   "conflictValues": [
+    12,
+    11
+   ],
    "unit": "pt",
    "confidence": "UNKNOWN",
    "appliesTo": [
@@ -1548,7 +2311,17 @@
     }
    ],
    "notes": "Internal conflict; retain both values pending resolution.",
-   "currentStatus": "CONFLICT"
+   "currentStatus": "CONFLICT",
+   "canonicalKey": "captions.fontSizePt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.align",
@@ -1566,7 +2339,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.align",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.hangingIndent",
@@ -1584,7 +2367,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.hangingIndent",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.spacing.objectOuterPt",
@@ -1603,7 +2396,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.spacing.objectOuterPt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.spacing.captionToObjectPt",
@@ -1622,7 +2425,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.spacing.captionToObjectPt",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.continued",
@@ -1640,7 +2453,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "captions.continued",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.subparts",
@@ -1659,7 +2482,17 @@
    ],
    "notes": "Related same-page items may share one number and be individually described with a, b, c, d.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Related same-page items may share one number and be individually described with a, b, c, d."
+   "currentStatusNote": "Related same-page items may share one number and be individually described with a, b, c, d.",
+   "canonicalKey": "captions.subparts",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.sourceCitation",
@@ -1678,7 +2511,17 @@
    ],
    "notes": "Figures, tables, images taken from another source must cite the source in the caption.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Figures, tables, images taken from another source must cite the source in the caption."
+   "currentStatusNote": "Figures, tables, images taken from another source must cite the source in the caption.",
+   "canonicalKey": "captions.sourceCitation",
+   "category": "captions",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "figures.placement",
@@ -1696,7 +2539,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "figures.placement",
+   "category": "objects",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.fontSizePt",
@@ -1714,7 +2567,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "tables.fontSizePt",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "tables.lineSpacing",
@@ -1733,7 +2596,17 @@
    ],
    "notes": "The current source specifies caption placement, numbering and frame limits, but not this exact spacing/measurement.",
    "currentStatus": "UNKNOWN",
-   "currentStatusNote": "The current source specifies caption placement, numbering and frame limits, but not this exact spacing/measurement."
+   "currentStatusNote": "The current source specifies caption placement, numbering and frame limits, but not this exact spacing/measurement.",
+   "canonicalKey": "tables.lineSpacing",
+   "category": "objects",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.numbering",
@@ -1752,7 +2625,17 @@
    ],
    "notes": "Equations have separate numbering by main chapter.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Equations have separate numbering by main chapter."
+   "currentStatusNote": "Equations have separate numbering by main chapter.",
+   "canonicalKey": "equations.numbering",
+   "category": "equations",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "equations.spacingPt",
@@ -1773,7 +2656,17 @@
    "notes": "Equation numbering is specified; spacing in points around equations is not.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Equation numbering is specified; spacing in points around equations is not.",
-   "historicalValue": 18
+   "historicalValue": 18,
+   "canonicalKey": "equations.spacingPt",
+   "category": "equations",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.fontSizePt",
@@ -1792,7 +2685,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "footnotes.fontSizePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.lineSpacing",
@@ -1810,7 +2713,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "footnotes.lineSpacing",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.separator",
@@ -1832,7 +2745,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "footnotes.separator",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.separator.spaceBeforePt",
@@ -1851,7 +2774,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "footnotes.separator.spaceBeforePt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.separator.spaceAfterPt",
@@ -1872,7 +2805,17 @@
    "notes": "Two full spaces before the separator are specified; spacing after it is not.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Two full spaces before the separator are specified; spacing after it is not.",
-   "historicalValue": 12
+   "historicalValue": 12,
+   "canonicalKey": "footnotes.separator.spaceAfterPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.marker",
@@ -1891,7 +2834,17 @@
    ],
    "notes": "Footnote use and separator are described; marker style is not.",
    "currentStatus": "UNKNOWN",
-   "currentStatusNote": "Footnote use and separator are described; marker style is not."
+   "currentStatusNote": "Footnote use and separator are described; marker style is not.",
+   "canonicalKey": "footnotes.marker",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "footnotes.usage",
@@ -1910,7 +2863,17 @@
    ],
    "notes": "Footnotes are only for short explanations and may not exceed a few lines.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Footnotes are only for short explanations and may not exceed a few lines."
+   "currentStatusNote": "Footnotes are only for short explanations and may not exceed a few lines.",
+   "canonicalKey": "footnotes.usage",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "citations.style",
@@ -1928,7 +2891,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "citations.style",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.title",
@@ -1946,7 +2919,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "bibliography.title",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.titleStyle",
@@ -1969,7 +2952,17 @@
    ],
    "notes": "Main chapter heading “6. KAYNAKLAR” is uppercase, bold and left aligned.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Main chapter heading “6. KAYNAKLAR” is uppercase, bold and left aligned."
+   "currentStatusNote": "Main chapter heading “6. KAYNAKLAR” is uppercase, bold and left aligned.",
+   "canonicalKey": "bibliography.titleStyle",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.titleSpaceBeforePt",
@@ -1990,7 +2983,17 @@
    "notes": "The current source gives reference order and typography, but not this exact historical property.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "The current source gives reference order and typography, but not this exact historical property.",
-   "historicalValue": 24
+   "historicalValue": 24,
+   "canonicalKey": "bibliography.titleSpaceBeforePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.titleSpaceAfterPt",
@@ -2011,7 +3014,17 @@
    "notes": "The current source gives reference order and typography, but not this exact historical property.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "The current source gives reference order and typography, but not this exact historical property.",
-   "historicalValue": 18
+   "historicalValue": 18,
+   "canonicalKey": "bibliography.titleSpaceAfterPt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.fontSizePt",
@@ -2042,7 +3055,17 @@
     "default": 11,
     "defaultConfidence": "INFERRED (body 12 - 1)"
    },
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "bibliography.fontSizePt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.lineSpacing",
@@ -2060,7 +3083,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "bibliography.lineSpacing",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.spaceAfterPt",
@@ -2079,7 +3112,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "bibliography.spaceAfterPt",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.hangingIndentMm",
@@ -2098,7 +3141,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "bibliography.hangingIndentMm",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.align",
@@ -2117,7 +3170,17 @@
    ],
    "notes": "Reference text is justified.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Reference text is justified."
+   "currentStatusNote": "Reference text is justified.",
+   "canonicalKey": "bibliography.align",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.order",
@@ -2135,7 +3198,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "bibliography.order",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.authorCase",
@@ -2154,7 +3227,17 @@
    ],
    "notes": "Sample author surnames use ordinary capitalization; no upper/small caps rule appears.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Sample author surnames use ordinary capitalization; no upper/small caps rule appears."
+   "currentStatusNote": "Sample author surnames use ordinary capitalization; no upper/small caps rule appears.",
+   "canonicalKey": "bibliography.authorCase",
+   "category": "bibliography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "bibliography.allAuthors",
@@ -2173,7 +3256,17 @@
    ],
    "notes": "All authors’ surnames and initials must be listed; do not use “et al.” / “vd.” in bibliography.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "All authors’ surnames and initials must be listed; do not use “et al.” / “vd.” in bibliography."
+   "currentStatusNote": "All authors’ surnames and initials must be listed; do not use “et al.” / “vd.” in bibliography.",
+   "canonicalKey": "bibliography.allAuthors",
+   "category": "bibliography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.title",
@@ -2192,7 +3285,17 @@
    ],
    "notes": "Contents title is İÇİNDEKİLER.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Contents title is İÇİNDEKİLER."
+   "currentStatusNote": "Contents title is İÇİNDEKİLER.",
+   "canonicalKey": "toc.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.titleStyle",
@@ -2215,7 +3318,17 @@
    ],
    "notes": "Contents title is centered, uppercase and bold.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Contents title is centered, uppercase and bold."
+   "currentStatusNote": "Contents title is centered, uppercase and bold.",
+   "canonicalKey": "toc.titleStyle",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.titleSpaceBeforePt",
@@ -2236,7 +3349,17 @@
    "notes": "Centered/bold title is specified; numeric top spacing is not.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Centered/bold title is specified; numeric top spacing is not.",
-   "historicalValue": 24
+   "historicalValue": 24,
+   "canonicalKey": "toc.titleSpaceBeforePt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.titleSpaceAfterPt",
@@ -2257,7 +3380,17 @@
    "notes": "No numeric title-to-entry gap is specified.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "No numeric title-to-entry gap is specified.",
-   "historicalValue": 36
+   "historicalValue": 36,
+   "canonicalKey": "toc.titleSpaceAfterPt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.contents",
@@ -2276,7 +3409,17 @@
    ],
    "notes": "All headings, CV and appendices are included; Example 8 also lists preliminary pages and the contents page itself.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "All headings, CV and appendices are included; Example 8 also lists preliminary pages and the contents page itself."
+   "currentStatusNote": "All headings, CV and appendices are included; Example 8 also lists preliminary pages and the contents page itself.",
+   "canonicalKey": "toc.contents",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.entryText",
@@ -2295,7 +3438,17 @@
    ],
    "notes": "Each heading appears without change in the contents.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Each heading appears without change in the contents."
+   "currentStatusNote": "Each heading appears without change in the contents.",
+   "canonicalKey": "toc.entryText",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.leader",
@@ -2314,7 +3467,17 @@
    ],
    "notes": "Example uses dotted leaders.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example uses dotted leaders."
+   "currentStatusNote": "Example uses dotted leaders.",
+   "canonicalKey": "toc.leader",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.pageNumberHeading",
@@ -2333,7 +3496,17 @@
    ],
    "notes": "Example prints bold SAYFA above the right-aligned page-number column.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example prints bold SAYFA above the right-aligned page-number column."
+   "currentStatusNote": "Example prints bold SAYFA above the right-aligned page-number column.",
+   "canonicalKey": "toc.pageNumberHeading",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.levels",
@@ -2352,7 +3525,17 @@
    ],
    "notes": "Example shows chapter, second-degree and third-degree rows; §2.7 discourages deeper headings.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example shows chapter, second-degree and third-degree rows; §2.7 discourages deeper headings."
+   "currentStatusNote": "Example shows chapter, second-degree and third-degree rows; §2.7 discourages deeper headings.",
+   "canonicalKey": "toc.levels",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.indentPerLevelMm",
@@ -2372,7 +3555,17 @@
    ],
    "notes": "Approximate starts at 94, 111, 128 px indicate about 5.4 mm per level; example geometry, not textually specified.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Approximate starts at 94, 111, 128 px indicate about 5.4 mm per level; example geometry, not textually specified."
+   "currentStatusNote": "Approximate starts at 94, 111, 128 px indicate about 5.4 mm per level; example geometry, not textually specified.",
+   "canonicalKey": "toc.indentPerLevelMm",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.level1Bold",
@@ -2391,7 +3584,17 @@
    ],
    "notes": "Main chapter rows are bold; subordinate rows are regular.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Main chapter rows are bold; subordinate rows are regular."
+   "currentStatusNote": "Main chapter rows are bold; subordinate rows are regular.",
+   "canonicalKey": "toc.level1Bold",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.blankLineBeforeChapter",
@@ -2411,7 +3614,17 @@
    "notes": "Main chapters are bold and distinct; blank-line count/point spacing before each is not specified.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Main chapters are bold and distinct; blank-line count/point spacing before each is not specified.",
-   "historicalValue": true
+   "historicalValue": true,
+   "canonicalKey": "toc.blankLineBeforeChapter",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.backMatterEntries",
@@ -2430,7 +3643,17 @@
    ],
    "notes": "Main-level rows align with chapters, appendix entries are indented.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Main-level rows align with chapters, appendix entries are indented."
+   "currentStatusNote": "Main-level rows align with chapters, appendix entries are indented.",
+   "canonicalKey": "toc.backMatterEntries",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.lineSpacing",
@@ -2449,7 +3672,17 @@
    ],
    "notes": "No TOC line-spacing exception is stated; general 1.5 rule applies.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "No TOC line-spacing exception is stated; general 1.5 rule applies."
+   "currentStatusNote": "No TOC line-spacing exception is stated; general 1.5 rule applies.",
+   "canonicalKey": "toc.lineSpacing",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.title",
@@ -2469,7 +3702,17 @@
    "notes": "Title wording conflict between section text and Example 10.",
    "currentStatus": "CONFLICT",
    "currentStatusNote": "Title wording conflict between section text and Example 10.",
-   "historicalValue": "ŞEKİLLER"
+   "historicalValue": "ŞEKİLLER",
+   "canonicalKey": "lists.figures.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.required",
@@ -2488,7 +3731,17 @@
    ],
    "notes": "Figure index is marked “if any”.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Figure index is marked “if any”."
+   "currentStatusNote": "Figure index is marked “if any”.",
+   "canonicalKey": "lists.figures.required",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.titleSpaceBeforePt",
@@ -2509,7 +3762,17 @@
    "notes": "Centered bold title is specified; numeric top spacing is not.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Centered bold title is specified; numeric top spacing is not.",
-   "historicalValue": 24
+   "historicalValue": 24,
+   "canonicalKey": "lists.figures.titleSpaceBeforePt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.entryText",
@@ -2528,7 +3791,17 @@
    ],
    "notes": "Example lists number and caption with SAYFA column.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example lists number and caption with SAYFA column."
+   "currentStatusNote": "Example lists number and caption with SAYFA column.",
+   "canonicalKey": "lists.figures.entryText",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.leader",
@@ -2547,7 +3820,17 @@
    ],
    "notes": "Figure list example shows no dotted leaders.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Figure list example shows no dotted leaders."
+   "currentStatusNote": "Figure list example shows no dotted leaders.",
+   "canonicalKey": "lists.figures.leader",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.title",
@@ -2577,7 +3860,17 @@
    },
    "currentStatus": "CONFLICT",
    "currentStatusNote": "Title wording conflict between section text and Example 11.",
-   "historicalValue": "TABLOLAR"
+   "historicalValue": "TABLOLAR",
+   "canonicalKey": "lists.tables.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.required",
@@ -2596,7 +3889,17 @@
    ],
    "notes": "Table index is marked “if any”.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Table index is marked “if any”."
+   "currentStatusNote": "Table index is marked “if any”.",
+   "canonicalKey": "lists.tables.required",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.titleSpaceBeforePt",
@@ -2617,7 +3920,17 @@
    "notes": "Centered bold title is specified; numeric top spacing is not.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Centered bold title is specified; numeric top spacing is not.",
-   "historicalValue": 24
+   "historicalValue": 24,
+   "canonicalKey": "lists.tables.titleSpaceBeforePt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.tables.pageRanges",
@@ -2637,7 +3950,17 @@
    "notes": "The single-page table example does not specify multi-page table ranges in its list.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "The single-page table example does not specify multi-page table ranges in its list.",
-   "historicalValue": "multi-page tables list a range ('16-17')"
+   "historicalValue": "multi-page tables list a range ('16-17')",
+   "canonicalKey": "lists.tables.pageRanges",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.title",
@@ -2656,7 +3979,17 @@
    ],
    "notes": "Section wording and example show this title.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Section wording and example show this title."
+   "currentStatusNote": "Section wording and example show this title.",
+   "canonicalKey": "lists.symbols.title",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.order",
@@ -2675,7 +4008,17 @@
    ],
    "notes": "Symbols/abbreviations are alphabetical; Greek letters are filed with Latin equivalents.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Symbols/abbreviations are alphabetical; Greek letters are filed with Latin equivalents."
+   "currentStatusNote": "Symbols/abbreviations are alphabetical; Greek letters are filed with Latin equivalents.",
+   "canonicalKey": "lists.symbols.order",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.layout",
@@ -2694,7 +4037,17 @@
    ],
    "notes": "Sample entries show a symbol, colon and explanation; no tabbed two-column layout is specified.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Sample entries show a symbol, colon and explanation; no tabbed two-column layout is specified."
+   "currentStatusNote": "Sample entries show a symbol, colon and explanation; no tabbed two-column layout is specified.",
+   "canonicalKey": "lists.symbols.layout",
+   "category": "toc-lists",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.titleSpaceBeforePt",
@@ -2715,7 +4068,17 @@
    "notes": "Title is established, but numeric top spacing is not.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Title is established, but numeric top spacing is not.",
-   "historicalValue": 24
+   "historicalValue": 24,
+   "canonicalKey": "lists.symbols.titleSpaceBeforePt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.symbols.titleSpaceAfterPt",
@@ -2736,7 +4099,17 @@
    "notes": "No numeric title-to-first-entry gap is specified.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "No numeric title-to-first-entry gap is specified.",
-   "historicalValue": 36
+   "historicalValue": 36,
+   "canonicalKey": "lists.symbols.titleSpaceAfterPt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.title",
@@ -2755,7 +4128,17 @@
    ],
    "notes": "Example 7 prints ÖNSÖZ.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example 7 prints ÖNSÖZ."
+   "currentStatusNote": "Example 7 prints ÖNSÖZ.",
+   "canonicalKey": "preface.title",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.titleSpaceBeforePt",
@@ -2776,7 +4159,17 @@
    "notes": "Visual position appears in the example, but no numeric offset is given.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Visual position appears in the example, but no numeric offset is given.",
-   "historicalValue": 24
+   "historicalValue": 24,
+   "canonicalKey": "preface.titleSpaceBeforePt",
+   "category": "fixed-page",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.titleSpaceAfterPt",
@@ -2797,7 +4190,17 @@
    "notes": "No numeric title-to-body gap is prescribed.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "No numeric title-to-body gap is prescribed.",
-   "historicalValue": 36
+   "historicalValue": 36,
+   "canonicalKey": "preface.titleSpaceAfterPt",
+   "category": "fixed-page",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.lineSpacing",
@@ -2816,7 +4219,17 @@
    ],
    "notes": "General 1.5 spacing applies; no single-spacing exception for preface is stated.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "General 1.5 spacing applies; no single-spacing exception for preface is stated."
+   "currentStatusNote": "General 1.5 spacing applies; no single-spacing exception for preface is stated.",
+   "canonicalKey": "preface.lineSpacing",
+   "category": "fixed-page",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.content",
@@ -2835,7 +4248,17 @@
    ],
    "notes": "The preface thanks contributors and records funding and project number when applicable.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "The preface thanks contributors and records funding and project number when applicable."
+   "currentStatusNote": "The preface thanks contributors and records funding and project number when applicable.",
+   "canonicalKey": "preface.content",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "preface.signature",
@@ -2854,7 +4277,17 @@
    ],
    "notes": "Example ends with student name, Afyonkarahisar and year.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example ends with student name, Afyonkarahisar and year."
+   "currentStatusNote": "Example ends with student name, Afyonkarahisar and year.",
+   "canonicalKey": "preface.signature",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.title",
@@ -2873,7 +4306,17 @@
    ],
    "notes": "Uppercase, bold, centered at text-block top.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Uppercase, bold, centered at text-block top."
+   "currentStatusNote": "Uppercase, bold, centered at text-block top.",
+   "canonicalKey": "abstract.title",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.titleSpaceBeforePt",
@@ -2893,7 +4336,17 @@
    ],
    "notes": "Title is at the top of the text block.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Title is at the top of the text block."
+   "currentStatusNote": "Title is at the top of the text block.",
+   "canonicalKey": "abstract.titleSpaceBeforePt",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.titleToThesisTitlePt",
@@ -2913,7 +4366,17 @@
    ],
    "notes": "Two aralık (24 nk) after ÖZET title.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Two aralık (24 nk) after ÖZET title."
+   "currentStatusNote": "Two aralık (24 nk) after ÖZET title.",
+   "canonicalKey": "abstract.titleToThesisTitlePt",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.thesisTitleStyle",
@@ -2936,7 +4399,17 @@
    ],
    "notes": "Title is bold and has initial capitals; example centers it.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Title is bold and has initial capitals; example centers it."
+   "currentStatusNote": "Title is bold and has initial capitals; example centers it.",
+   "canonicalKey": "abstract.thesisTitleStyle",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.thesisTitleToTextPt",
@@ -2956,7 +4429,17 @@
    ],
    "notes": "One line gap (12 nk) follows the thesis title.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "One line gap (12 nk) follows the thesis title."
+   "currentStatusNote": "One line gap (12 nk) follows the thesis title.",
+   "canonicalKey": "abstract.thesisTitleToTextPt",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.lineSpacing",
@@ -2974,7 +4457,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "abstract.lineSpacing",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.fontSizePt",
@@ -2994,7 +4487,17 @@
    ],
    "notes": "Thesis text is 12 pt except inner cover; no smaller abstract exception is stated.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Thesis text is 12 pt except inner cover; no smaller abstract exception is stated."
+   "currentStatusNote": "Thesis text is 12 pt except inner cover; no smaller abstract exception is stated.",
+   "canonicalKey": "abstract.fontSizePt",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.1,
+    "unit": "pt",
+    "targetValue": 0.1
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.maxPages",
@@ -3012,7 +4515,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "abstract.maxPages",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.maxWords",
@@ -3030,7 +4543,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "abstract.maxWords",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.noSubheadings",
@@ -3049,7 +4572,17 @@
    ],
    "notes": "Subheadings such as Aim, Method, Result are prohibited in the abstract.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Subheadings such as Aim, Method, Result are prohibited in the abstract."
+   "currentStatusNote": "Subheadings such as Aim, Method, Result are prohibited in the abstract.",
+   "canonicalKey": "abstract.noSubheadings",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.label",
@@ -3067,7 +4600,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "abstract.keywords.label",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.spaceBeforePt",
@@ -3087,7 +4630,17 @@
    ],
    "notes": "One line gap before keyword label.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "One line gap before keyword label."
+   "currentStatusNote": "One line gap before keyword label.",
+   "canonicalKey": "abstract.keywords.spaceBeforePt",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.count",
@@ -3105,7 +4658,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "abstract.keywords.count",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.order",
@@ -3123,7 +4686,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "abstract.keywords.order",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.keywords.hangingIndent",
@@ -3143,7 +4716,17 @@
    "notes": "Example keeps keywords on one line; no wrapped-line indentation rule is specified.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Example keeps keywords on one line; no wrapped-line indentation rule is specified.",
-   "historicalValue": "continuation aligned after the label"
+   "historicalValue": "continuation aligned after the label",
+   "canonicalKey": "abstract.keywords.hangingIndent",
+   "category": "abstract",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "englishAbstract.title",
@@ -3162,7 +4745,17 @@
    ],
    "notes": "Example 6 title is SUMMARY.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example 6 title is SUMMARY."
+   "currentStatusNote": "Example 6 title is SUMMARY.",
+   "canonicalKey": "englishAbstract.title",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "englishAbstract.format",
@@ -3181,7 +4774,17 @@
    ],
    "notes": "Summary is the English translation and uses the same writing rules.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Summary is the English translation and uses the same writing rules."
+   "currentStatusNote": "Summary is the English translation and uses the same writing rules.",
+   "canonicalKey": "englishAbstract.format",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "englishAbstract.keywords.label",
@@ -3199,7 +4802,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "englishAbstract.keywords.label",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "otherAbstract",
@@ -3218,7 +4831,17 @@
    ],
    "notes": "Another-language abstract may be included if desired.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Another-language abstract may be included if desired."
+   "currentStatusNote": "Another-language abstract may be included if desired.",
+   "canonicalKey": "otherAbstract",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "outerCover.material",
@@ -3238,7 +4861,17 @@
    "notes": "The physical cover is supplied by the university bookstore; the current guide gives no cardboard, cellophane or paper-stock requirement.",
    "currentStatus": "HISTORICAL_ONLY",
    "currentStatusNote": "The physical cover is supplied by the university bookstore; the current guide gives no cardboard, cellophane or paper-stock requirement.",
-   "historicalValue": "200-300 g white chrome cardboard with a cellophane window"
+   "historicalValue": "200-300 g white chrome cardboard with a cellophane window",
+   "canonicalKey": "outerCover.material",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "outerCover.logoBand",
@@ -3264,7 +4897,17 @@
     "color": "blue",
     "position": "top edge, centred",
     "content": "AKÜ logo"
-   }
+   },
+   "canonicalKey": "outerCover.logoBand",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "outerCover.text",
@@ -3295,7 +4938,17 @@
     "caps": true,
     "align": "center",
     "topMm": "≈ 80"
-   }
+   },
+   "canonicalKey": "outerCover.text",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "outerCover.window",
@@ -3328,7 +4981,17 @@
      217,
      282
     ]
-   }
+   },
+   "canonicalKey": "outerCover.window",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "coverUnderPage",
@@ -3347,7 +5010,17 @@
    ],
    "notes": "The under-cover page is to be prepared according to Example 1.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "The under-cover page is to be prepared according to Example 1."
+   "currentStatusNote": "The under-cover page is to be prepared according to Example 1.",
+   "canonicalKey": "coverUnderPage",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.header",
@@ -3379,7 +5052,17 @@
     "caps": true,
     "align": "center",
     "topMm": "≈ 30"
-   }
+   },
+   "canonicalKey": "innerCover.header",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.headerToTitle",
@@ -3399,7 +5082,17 @@
    "notes": "The sample shows separation but gives no numerical gap; historical 5-aralık value is unsupported.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "The sample shows separation but gives no numerical gap; historical 5-aralık value is unsupported.",
-   "historicalValue": "5 aralık (60 pt nominal)"
+   "historicalValue": "5 aralık (60 pt nominal)",
+   "canonicalKey": "innerCover.headerToTitle",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.title",
@@ -3417,7 +5110,17 @@
     }
    ],
    "notes": "Conflict between §3.2.2 (14 pt) and Example 2 note (12 pt).",
-   "currentStatus": "CONFLICT"
+   "currentStatus": "CONFLICT",
+   "canonicalKey": "innerCover.title",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.otherLines",
@@ -3451,7 +5154,17 @@
     ],
     "sizePt": "10-12",
     "bold": "example: bold"
-   }
+   },
+   "canonicalKey": "innerCover.otherLines",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.projectSupport",
@@ -3470,7 +5183,17 @@
    ],
    "notes": "Project support text and project number go at the bottom when applicable.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Project support text and project number go at the bottom when applicable."
+   "currentStatusNote": "Project support text and project number go at the bottom when applicable.",
+   "canonicalKey": "innerCover.projectSupport",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "innerCover.pageNumberVisible",
@@ -3488,7 +5211,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "innerCover.pageNumberVisible",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "approval.title",
@@ -3507,7 +5240,17 @@
    ],
    "notes": "Example 3 prints this title.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example 3 prints this title."
+   "currentStatusNote": "Example 3 prints this title.",
+   "canonicalKey": "approval.title",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "approval.whenAdded",
@@ -3526,7 +5269,17 @@
    ],
    "notes": "Successful candidates fill the fields and reproduce the page for jury signatures.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Successful candidates fill the fields and reproduce the page for jury signatures."
+   "currentStatusNote": "Successful candidates fill the fields and reproduce the page for jury signatures.",
+   "canonicalKey": "approval.whenAdded",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "approval.layout",
@@ -3545,7 +5298,17 @@
    ],
    "notes": "Example assumes five members; page says adjust number of members to actual jury.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example assumes five members; page says adjust number of members to actual jury."
+   "currentStatusNote": "Example assumes five members; page says adjust number of members to actual jury.",
+   "canonicalKey": "approval.layout",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "approval.juryCount",
@@ -3566,7 +5329,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "approval.juryCount",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "structure.order",
@@ -3601,7 +5374,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "structure.order",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "chapters.required",
@@ -3627,7 +5410,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "chapters.required",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "appendices.title",
@@ -3647,7 +5440,17 @@
    "notes": "The main-structure text and TOC example number EKLER as 7, while Example 13 labels it 8.",
    "currentStatus": "CONFLICT",
    "historicalValue": "7. EKLER",
-   "currentStatusNote": "The main-structure text and TOC example number EKLER as 7, while Example 13 labels it 8."
+   "currentStatusNote": "The main-structure text and TOC example number EKLER as 7, while Example 13 labels it 8.",
+   "canonicalKey": "appendices.title",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "appendices.numbering",
@@ -3667,7 +5470,17 @@
    "notes": "Section text says EK 1, EK 2, etc.; examples use 8.1 and 8.2 under EKLER/8. EKLER.",
    "currentStatus": "CONFLICT",
    "historicalValue": "EK 1., EK 2., EK 3., …; each starts on a new page",
-   "currentStatusNote": "Section text says EK 1, EK 2, etc.; examples use 8.1 and 8.2 under EKLER/8. EKLER."
+   "currentStatusNote": "Section text says EK 1, EK 2, etc.; examples use 8.1 and 8.2 under EKLER/8. EKLER.",
+   "canonicalKey": "appendices.numbering",
+   "category": "structure",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "curriculumVitae.title",
@@ -3685,7 +5498,17 @@
     }
    ],
    "notes": "",
-   "currentStatus": "RECONCILED"
+   "currentStatus": "RECONCILED",
+   "canonicalKey": "curriculumVitae.title",
+   "category": "fixed-page",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "binding.submission",
@@ -3704,7 +5527,17 @@
    ],
    "notes": "Final submission specifies copies by recipient and an extra supported-project copy.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Final submission specifies copies by recipient and an extra supported-project copy."
+   "currentStatusNote": "Final submission specifies copies by recipient and an extra supported-project copy.",
+   "canonicalKey": "binding.submission",
+   "category": "production",
+   "check": "lint",
+   "rejectionRisk": "low",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "numbers.format",
@@ -3727,7 +5560,17 @@
    ],
    "notes": "Number groups are separated by a blank, decimal separator is comma, and quantity/unit have a space.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Number groups are separated by a blank, decimal separator is comma, and quantity/unit have a space."
+   "currentStatusNote": "Number groups are separated by a blank, decimal separator is comma, and quantity/unit have a space.",
+   "canonicalKey": "numbers.format",
+   "category": "typography",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "language",
@@ -3746,7 +5589,17 @@
    ],
    "notes": "Prose uses clear Türkiye Turkish; English Summary required, other-language summary optional.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Prose uses clear Türkiye Turkish; English Summary required, other-language summary optional."
+   "currentStatusNote": "Prose uses clear Türkiye Turkish; English Summary required, other-language summary optional.",
+   "canonicalKey": "language",
+   "category": "content",
+   "check": "lint",
+   "rejectionRisk": "medium",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "cover.fontFamily",
@@ -3766,7 +5619,17 @@
    ],
    "notes": "Inner-cover writing is specified as Times New Roman.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Inner-cover writing is specified as Times New Roman."
+   "currentStatusNote": "Inner-cover writing is specified as Times New Roman.",
+   "canonicalKey": "cover.fontFamily",
+   "category": "fixed-page",
+   "check": "render",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "headings.h1ToH2.gapPt",
@@ -3786,7 +5649,17 @@
    ],
    "notes": "One blank line is left before and after subheadings.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "One blank line is left before and after subheadings."
+   "currentStatusNote": "One blank line is left before and after subheadings.",
+   "canonicalKey": "headings.h1ToH2.gapPt",
+   "category": "typography",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "abstract.paragraphs",
@@ -3805,7 +5678,17 @@
    ],
    "notes": "Paragraph starts are flush with the left frame edge; abstract paragraph gap is not separately stated.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Paragraph starts are flush with the left frame edge; abstract paragraph gap is not separately stated."
+   "currentStatusNote": "Paragraph starts are flush with the left frame edge; abstract paragraph gap is not separately stated.",
+   "canonicalKey": "abstract.paragraphs",
+   "category": "abstract",
+   "check": "lint",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "captions.firstLineIndentMm",
@@ -3826,7 +5709,17 @@
    "notes": "The current source specifies caption placement, numbering and frame limits, but not this exact spacing/measurement.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "The current source specifies caption placement, numbering and frame limits, but not this exact spacing/measurement.",
-   "historicalValue": 10
+   "historicalValue": 10,
+   "canonicalKey": "captions.firstLineIndentMm",
+   "category": "captions",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "lists.figures.titleSpaceAfterPt",
@@ -3848,7 +5741,17 @@
    "notes": "Title is centered/bold; exact gap after it is not specified.",
    "currentStatus": "UNKNOWN",
    "currentStatusNote": "Title is centered/bold; exact gap after it is not specified.",
-   "historicalValue": 36
+   "historicalValue": 36,
+   "canonicalKey": "lists.figures.titleSpaceAfterPt",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": 0.2,
+    "unit": "pt",
+    "targetValue": 0.2
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.includesItself",
@@ -3867,7 +5770,17 @@
    ],
    "notes": "Example includes İÇİNDEKİLER VII in its own contents list.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "Example includes İÇİNDEKİLER VII in its own contents list."
+   "currentStatusNote": "Example includes İÇİNDEKİLER VII in its own contents list.",
+   "canonicalKey": "toc.includesItself",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "toc.separateAppendices",
@@ -3886,7 +5799,17 @@
    ],
    "notes": "The example places appendices after references.",
    "currentStatus": "RECONCILED",
-   "currentStatusNote": "The example places appendices after references."
+   "currentStatusNote": "The example places appendices after references.",
+   "canonicalKey": "toc.separateAppendices",
+   "category": "toc-lists",
+   "check": "measure",
+   "rejectionRisk": "high",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.firstBaselineOffsetEm",
@@ -3909,7 +5832,17 @@
    "historicalValue": {
     "single": 0.9335,
     "1.5": null
-   }
+   },
+   "canonicalKey": "wordModel.firstBaselineOffsetEm",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": 0.02,
+    "unit": "em",
+    "targetValue": 0.02
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.singleLinePitchEm",
@@ -3929,7 +5862,17 @@
    "notes": "Numeric line-pitch model was measured from superseded guide vector text and is not stated in the current guide.",
    "currentStatus": "HISTORICAL_ONLY",
    "currentStatusNote": "Numeric line-pitch model was measured from superseded guide vector text and is not stated in the current guide.",
-   "historicalValue": 1.15
+   "historicalValue": 1.15,
+   "canonicalKey": "wordModel.singleLinePitchEm",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": 0.02,
+    "unit": "em",
+    "targetValue": 0.02
+   },
+   "annotatedBy": "spec_annotate_v3"
   },
   {
    "key": "wordModel.paragraphSpacing",
@@ -3948,7 +5891,17 @@
    ],
    "notes": "One blank 1.5-spaced line is required around subheadings/paragraphs, but no general point/em paragraph spacing model is given.",
    "currentStatus": "UNKNOWN",
-   "currentStatusNote": "One blank 1.5-spaced line is required around subheadings/paragraphs, but no general point/em paragraph spacing model is given."
+   "currentStatusNote": "One blank 1.5-spaced line is required around subheadings/paragraphs, but no general point/em paragraph spacing model is given.",
+   "canonicalKey": "wordModel.paragraphSpacing",
+   "category": "layout-model",
+   "check": "measure",
+   "rejectionRisk": "none",
+   "tolerance": {
+    "value": null,
+    "unit": "exact",
+    "targetValue": null
+   },
+   "annotatedBy": "spec_annotate_v3"
   }
  ],
  "sections": [
@@ -7775,5 +9728,7 @@
    "UNKNOWN": 1,
    "HISTORICAL_ONLY": 0
   }
- }
+ },
+ "annotatedAt": "2026-09-30",
+ "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md"
 }
