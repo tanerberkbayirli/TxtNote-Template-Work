@@ -211,8 +211,9 @@ const base = {
   page: {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
     margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 },
-    header: { heightMm: 0, distanceMm: 12, content: "", firstPage: "same" },
-    footer: { heightMm: 8, distanceMm: 12, content: "", firstPage: "same" },
+    // 2025 guide DOCX sectPr w:header="709" w:footer="709" twips = 12.5 mm (MEASURED).
+    header: { heightMm: 0, distanceMm: 12.5, content: "", firstPage: "same" },
+    footer: { heightMm: 8, distanceMm: 12.5, content: "", firstPage: "same" },
     // Kaynakta belirsiz: position not stated; the guide's own pages number bottom center.
     numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false },
   },
