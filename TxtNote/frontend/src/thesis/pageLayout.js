@@ -1,5 +1,6 @@
 import { formatNumber } from "./engine.js";
 import { plainThesisText } from "./sourceHtml.js";
+import { convertLength } from "./units.js";
 
 /** Empty editing scaffolds are not physical pages. Explicit breaks and media are. */
 export function thesisGroupHasPageContent(group) {
@@ -11,7 +12,7 @@ export function thesisGroupHasPageContent(group) {
   });
 }
 
-export const PX_PER_MM = 96 / 25.4;
+export const PX_PER_MM = convertLength(1, "mm", "px");
 export const THESIS_PAGE_GAP_PX = 28;
 /** Fail-safe for pathological content: never render more physical sheets than this per group. */
 export const THESIS_MAX_PAGES = 2000;

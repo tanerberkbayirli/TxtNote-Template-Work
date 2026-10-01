@@ -7,6 +7,7 @@ import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesi
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 import { resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
+import { resolveLayoutNodes, resolveLayoutPage } from "./layoutDocument.js";
 
 const tokenPattern = /\{\{([A-Z][A-Z0-9_]*)\}\}/g;
 const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -189,6 +190,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
   for (const section of orderedThesisSections(template)) {
     if (!isThesisSectionActive(section, { ...thesis, values: { ...values, degreeType: values.degreeType ?? values.DEGREE_TYPE } })) continue;
     const rules = resolveSectionRules(template, section);
+    rules.page = resolveLayoutPage(rules.page, section.id, 0, thesis.layout);
     const mode = thesisSectionMode(section);
     const editable = mode === "editable";
     const source = thesisSourceHtml(thesisSectionContent(section, thesis, mainContent));
@@ -196,14 +198,16 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const fixedHtml = fixed.text ? fixed.text.split("\n").map((line) => `<p class="thesis-fixed">${escapeHtml(line) || "&nbsp;"}</p>`).join("") : "";
     const specialPage = isSpecialPageSection(section);
     const layout = specialPage ? resolveSpecialPage(section.blocks, { definitions: template.placeholders, values, baseStyle: rules.body, language: template.language }) : null;
+    if (layout) layout.blocks = resolveLayoutNodes(layout.blocks, section.id, thesis.layout, rules.body);
     // tocEntry: "headings" (default) lists the section's headings, "title" also its title, "none" nothing.
     const tocEntry = ["title", "none"].includes(section.tocEntry) ? section.tocEntry : "headings";
     const sectionHeading = showsSectionTitle(section) ? `<h1 data-unnumbered="true"${tocEntry === "title" ? ' data-thesis-toc="title"' : ""}>${escapeHtml(section.title)}</h1>` : "";
     const bibliographyHtml = section.type === "bibliography" && bibliographyItems.some((item) => String(item).trim())
       ? `<ul class="thesis-bibliography">${bibliographyItems.filter((item) => String(item).trim()).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "";
-    const prefixHtml = layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}`;
+    const additions = !layout ? resolveLayoutNodes([], section.id, thesis.layout, rules.body) : [];
+    const prefixHtml = layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}${specialPageHtml(additions)}`;
     const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${bibliographyHtml}`;
-    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || null, layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
+    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || (additions.length ? additions : null), layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language, sectionId: section.id, documentLayout: thesis.layout } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
   }
   for (const section of sections) {
     const definition = template.sections.find((item) => item.id === section.id);
@@ -212,7 +216,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
   }
   const indexSources = collectIndexSources(sections, extractThesisHeadings);
   for (const section of sections) section.indexSources = indexSources.filter((entry) => entry.sectionId === section.id);
-  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, status: template.status, language: template.language, title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
+  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, documentLayout: thesis.layout, status: template.status, language: template.language, title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
 }
 
 function serializeStyle(style, lineSpacing) {

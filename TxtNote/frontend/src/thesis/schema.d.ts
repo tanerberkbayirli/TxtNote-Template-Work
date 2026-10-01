@@ -39,6 +39,56 @@ export interface PageRule {
   footer?: { heightMm: Length; distanceMm: Length; content?: string; firstPage?: "same" | "omit" };
   numbering: NumberingRule;
 }
+export type PageOverride = Partial<Omit<PageRule, "margins" | "header" | "footer" | "numbering">> & {
+  margins?: Partial<PageRule["margins"]>;
+  header?: Partial<NonNullable<PageRule["header"]>>;
+  footer?: Partial<NonNullable<PageRule["footer"]>>;
+  numbering?: Partial<PageRule["numbering"]>;
+};
+export type LayoutMode = "flow" | "anchored" | "absolute";
+export type ThesisLayoutTextStyle = Partial<TextStyle> & { /** Restricted to #RRGGBB when imported. */ color?: string };
+export interface ThesisLayoutElementOverride {
+  xMm?: Length;
+  yMm?: Length;
+  widthMm?: Length;
+  heightMm?: Length;
+  layoutMode?: LayoutMode;
+  style?: ThesisLayoutTextStyle;
+  editableContent?: boolean;
+  editableLayout?: boolean;
+  locked?: boolean;
+  lockAspectRatio?: boolean;
+  zIndex?: number;
+  deleted?: boolean;
+  /** Replaces resolved text on a template text node; output remains plain text. */
+  content?: string;
+  /** Accepted compatibility alias for callers that already use a `text` field. */
+  text?: string;
+}
+export type ThesisLayoutAddition = ThesisLayoutElementOverride & (
+  | { id: string; sectionId: string; type: "text"; content?: string; text?: string }
+  | { id: string; sectionId: string; type: "image"; source: string }
+  | { id: string; sectionId: string; type: "separator"; thicknessPt?: number; lengthPercent?: number; align?: "left" | "center" | "right" }
+);
+export interface ThesisLayoutGuide {
+  id: string;
+  axis: "vertical" | "horizontal";
+  positionMm: Length;
+  locked?: boolean;
+}
+/** User layout state is optional on old documents and is always resolved against template rules. */
+export interface ThesisLayout {
+  version: 1;
+  elements: Record<string, ThesisLayoutElementOverride>;
+  additions: ThesisLayoutAddition[];
+  guides: ThesisLayoutGuide[];
+  page: PageOverride;
+  sections: Record<string, PageOverride>;
+  pages: Record<`${string}:${number}`, PageOverride>;
+}
+export interface ThesisDocumentState {
+  layout?: ThesisLayout;
+}
 export interface HeadingRule extends TextStyle {
   numbering?: { format: string; suffix?: string; sequence?: NumberFormat | (string & {}); enabled?: boolean };
 }

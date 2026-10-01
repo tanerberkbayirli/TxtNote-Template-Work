@@ -1,5 +1,6 @@
 import { formatNumber, groupThesisSections, transformThesisText } from "./engine.js";
 import { flattenSpecialPage, resolveSpecialPage, specialPageHtml } from "./specialPages.js";
+import { resolveLayoutNodes } from "./layoutDocument.js";
 import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const escape = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -100,8 +101,9 @@ export function derivedThesisValues(model, counts = {}) {
 
 /** A special page that reads derived values, laid out again with them (same resolver, same paths). */
 function withDerivedLayout(section, values) {
-  const { blocks, definitions, baseStyle, language } = section.derivedLayout;
+  const { blocks, definitions, baseStyle, language, sectionId, documentLayout } = section.derivedLayout;
   const layout = resolveSpecialPage(blocks, { definitions, values, baseStyle, language });
+  layout.blocks = resolveLayoutNodes(layout.blocks, sectionId || section.id, documentLayout, baseStyle);
   const prefixHtml = specialPageHtml(layout.blocks);
   return { ...section, layout: layout.blocks, layoutBlocks: flattenSpecialPage(layout.blocks), prefixHtml, html: `${prefixHtml}${section.editableHtml || ""}${section.suffixHtml || ""}` };
 }
