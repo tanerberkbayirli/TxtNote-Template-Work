@@ -1,0 +1,540 @@
+{
+  "university": "Afyon Kocatepe Üniversitesi",
+  "short_code": "AKU",
+  "checked_at": "2026-10-01",
+  "templates": [
+    {
+      "id": "fbe-tez",
+      "folder": "Fen_Bilimleri_Enstitusu_Tez",
+      "title": "Fen Bilimleri Enstitüsü — Lisansüstü Tez (yüksek lisans / doktora)",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "degree_levels": [
+        "yuksek-lisans",
+        "doktora"
+      ],
+      "files": [
+        {
+          "path": "Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "Ocak 2020 itibarıyla geçerli (kılavuz metni); sunucu Last-Modified 14.12.2020",
+          "status": "CURRENT",
+          "source_url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/12/FBE-Tez-Yazim-Kilavuzu-2020_WEB_icin-3.pdf",
+          "sha256": "2532ade9908edd81e2bab5be4011395d05e8389a71b70a179890cb60598ae690",
+          "page_url": "https://fenbil.aku.edu.tr/doktora-formlari/",
+          "evidence": "Fresh download sha256 identical to repo file. Still the only guide linked on both fenbil.aku.edu.tr/doktora-formlari/ and /yuksek-lisans-formlari-2/ on 2026-10-01 (link text 'Tez Yazım Kılavuzu'). Document text: 'Bu kılavuz, Ocak 2020’den itibaren geçerlidir'; cover AFYONKARAHİSAR 2020. HTTP Last-Modified Mon, 14 Dec 2020 10:30:32 GMT (upload folder 2020/12). No newer Fen guide (2021-2026) found on page or via search.",
+          "role": "kilavuz (kurallar metni)"
+        },
+        {
+          "path": "Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2025-01-23 (core.xml created/modified 2025-01-23T05:50Z; HTTP Last-Modified 23 Jan 2025)",
+          "status": "CURRENT",
+          "source_url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2025/01/tez-word-sablon-2020_WEB_icin-2-1-2.docx",
+          "sha256": "779245da7f25a8dc662a051cfd9897d318b41733e5b616b63e74553610821599",
+          "page_url": "https://fenbil.aku.edu.tr/doktora-formlari/",
+          "evidence": "Fresh download sha256 identical to repo file. Page lists it as 'Tez Yazım Klavuzu (Word Belgesi Şablon)'; newest of two Word templates on the page. The older 2023-12 file (tez-word-sablon-2020_WEB_icin-2-1.docx, sha256 e067eb268e9e9696158f8aa9bd7c061c65cc998d3c0e7ef83a18eee05b6d7adc, core.xml 2023-12-20) differs only by one empty paragraph in document.xml text (885 vs 886 paragraphs). Template file name says '2020'; no 2025 guide exists, so the 2020 guide + 2025 template is the officially offered pair.",
+          "role": "sablon (düzenlenebilir şablon)"
+        },
+        {
+          "path": "Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_LaTeX_Sablonu_2020.rar",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2020-01-13 (HTTP Last-Modified)",
+          "status": "UNVERIFIED",
+          "source_url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/01/Fen-Bil-Ens-Tez-LaTeX-Şablon.rar",
+          "sha256": "53e7509b5d3956e8276794032c4fe11b5af095bbaf2f7101a318afa75eb2f93e",
+          "page_url": "https://fenbil.aku.edu.tr/doktora-formlari/",
+          "evidence": "Listed as 'Tez Yazım Şablonu (Latex)' on both Fen pages; RAR magic bytes 52617221 verified. Predates the Dec 2020 guide; consistency with the guide revision is UNVERIFIED.",
+          "role": "sablon (LaTeX şablonu, RAR arşivi)"
+        },
+        {
+          "path": "Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Sekil_Inceleme_Formu_2026.doc",
+          "doc_type": "form",
+          "language": "tr",
+          "version_or_date": "FB_YLDR-07 Rev.1; HTTP Last-Modified 2026-05-20",
+          "status": "CURRENT",
+          "source_url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2026/05/SON-FB_YLDR-07-R1-6-3.doc",
+          "sha256": "14bd99be5379a0cfa139c6a6afc2aef07fc50cf0a8d7f7fac9e814f11b6992dd",
+          "page_url": "https://fenbil.aku.edu.tr/yuksek-lisans-formlari-2/",
+          "evidence": "Thesis format review form (FB_YLDR-07 Rev.1) listed on current YL forms page; supports formatting checks, not a layout template. OLE doc magic verified.",
+          "role": "form (FB_YLDR-07 Rev.1 Tez Şekil İnceleme Formu)"
+        }
+      ],
+      "notes": [
+        "Kılavuz (Ocak 2020 geçerlilikli) resmî sayfada hâlâ sunulan tek FBE kılavuzudur; daha yeni sürüm bulunamadı.",
+        "Word şablonu 2025-01; 2023-12 sürümü (sha256 e067eb268e9e9696158f8aa9bd7c061c65cc998d3c0e7ef83a18eee05b6d7adc) metin olarak özdeş (1 boş paragraf farkı), arşivlenmedi.",
+        "LaTeX şablonu (2020-01) Aralık 2020 kılavuzundan önce yüklenmiş; kılavuzla uyumu UNVERIFIED. Sayfada hâlâ bağlantılı olduğu için dahil edildi.",
+        "FBE ayrıca TİK Raporu Örnek Şablonu (2023-11) sunuyor; tez değil, arşivlenmedi."
+      ]
+    },
+    {
+      "id": "fbe-is-guvenligi-tezsiz-proje",
+      "folder": "Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje",
+      "title": "Fen Bilimleri Enstitüsü — İş Güvenliği (İ.Ö.) Tezsiz Yüksek Lisans Dönem Projesi",
+      "unit": "Fen Bilimleri Enstitüsü (İş Güvenliği tezsiz programı)",
+      "degree_levels": [
+        "tezsiz-yuksek-lisans"
+      ],
+      "files": [
+        {
+          "path": "Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje/AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2022-08-02 (HTTP Last-Modified)",
+          "status": "CURRENT",
+          "source_url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2022/08/Is-Guvenligi-Donem-Projesi-Formati-2.doc",
+          "sha256": "19d9d19154ad57dc88e9004fb37dfa391a434c9bed5abe633b33e6b2a5a480ed",
+          "page_url": "https://fenbil.aku.edu.tr/yuksek-lisans-formlari-2/",
+          "evidence": "Listed as 'İş Güvenliği (İ.Ö.) Tezsiz Proje Yazım Şablonu (Word)' on current Fen page; OLE doc magic d0cf11e0 verified. Program-specific (tezsiz dönem projesi); no newer version on page.",
+          "role": "sablon (tezsiz dönem projesi Word şablonu)"
+        }
+      ],
+      "notes": [
+        "Programa özgü (İş Güvenliği İ.Ö. tezsiz yüksek lisans) dönem projesi şablonu; FBE tez kılavuzundan ayrı bir şablon grubu olarak tutuldu.",
+        "Eski .doc (OLE) biçimi; yeni sürüm sayfada bulunmuyor."
+      ]
+    },
+    {
+      "id": "sbe-tez",
+      "folder": "Sosyal_Bilimler_Enstitusu_Tez",
+      "title": "Sosyal Bilimler Enstitüsü — Lisansüstü Tez (yüksek lisans / doktora)",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "degree_levels": [
+        "yuksek-lisans",
+        "doktora"
+      ],
+      "files": [
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "2026-02 (HTTP Last-Modified 06 Feb 2026; page label 'Lisansüstü Tez Hazırlama Yazım ve Basım Kılavuzu', version 2026)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/SBE-TEZ-YAZIM-KILAVUZU-2026.pdf",
+          "sha256": "55d134108bc95a83c581595f7618aba1b6ff17d53994a1e602dfba465a6c74f2",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "Fresh download sha256 identical to repo file; only guide on the official page. NOTE: PDF cover reads 'AFYONKARAHİSAR 2023' while upload path, Last-Modified and page label say 2026; examples contain 2023 access dates. Internal revision note not found.",
+          "role": "kilavuz (kurallar metni)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf",
+          "doc_type": "ornek",
+          "language": "tr",
+          "version_or_date": "2026-02-06 (HTTP Last-Modified)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/SBE-ORNEK-TEZ-METNI-2026.pdf",
+          "sha256": "2224321f62c5c533988f0396a2d91b9ad1bad0b0810e3a577de51b2cbd187ec8",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "'Örnek Bir Tez Metni' on official page, uploaded in same batch as the 2026 guide.",
+          "role": "ornek (örnek tez metni)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ornek_Tez_Kapagi_ve_Icindekiler_2026.pdf",
+          "doc_type": "ornek",
+          "language": "tr",
+          "version_or_date": "2026-02-06 (HTTP Last-Modified)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/SBE-ORNEK-TEZ-KAPAGI-VE-ICINDEKILER-BOLUMLENDIRMELER.pdf",
+          "sha256": "5ab459d9d5ca714e3d8e8a5e491fe55846102b0d2cf90e1178e5ad34cf9c4f22",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "'Örnek Tez Kapağı ve İçindekiler-Bölümlendirmeler' on official page.",
+          "role": "ornek (örnek kapak ve içindekiler/bölümlendirme)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_3_Uyeli_2026.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2026-02-06 (core.xml modified 2026-02-06T12:54Z)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-3-Uyeli.docx",
+          "sha256": "5bd948d60e710e784973fbb1a46ad4c3b63d6f969dbd3e3403111fc91e4593e6",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "Inner cover (3-member jury) DOCX on official page.",
+          "role": "sablon (iç kapak, 3 üyeli jüri, Word)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_5_Uyeli_2026.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2026-02-06 (core.xml modified 2026-02-06T12:55Z)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-5-Uyeli.docx",
+          "sha256": "6c68649961de7641dc35da78dd2106ce35cfe628fca63f82accbdbaafec305b3",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "Inner cover (5-member jury) DOCX on official page.",
+          "role": "sablon (iç kapak, 5 üyeli jüri, Word)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_100_2000_2026.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2026-02-06 (core.xml modified 2026-02-06T13:27Z)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-100-2000.docx",
+          "sha256": "5571e57daab6491f65401da852e18ce9a28a905384aeb7c1603caf31b15455bc",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "Inner cover for 100/2000 doctoral scholarship theses, DOCX.",
+          "role": "sablon (iç kapak, YÖK 100/2000 burslu doktora, Word)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_100_2000_2026.pdf",
+          "doc_type": "ornek",
+          "language": "tr",
+          "version_or_date": "2026-02-06 (HTTP Last-Modified)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-100-2000.pdf",
+          "sha256": "5ebc458afce90c80401320691bb21a9104645ad806d9884ef5ae3c02e6e42151",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "PDF rendering of the 100/2000 inner cover.",
+          "role": "ornek (iç kapak 100/2000, PDF görünümü)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Tez_Kontrol_Listesi_2023.docx",
+          "doc_type": "form",
+          "language": "tr",
+          "version_or_date": "2023-11-07 (core.xml)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2023/11/Tez-Inceleme-Kontrol-Listesi.docx",
+          "sha256": "dbdc8b90442f9eb2c8087c2c1150d1bb1d4bfa35e6b0574a614736fb05111982",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "'Tez Şekil İncelemesi Öncesi Kontrol Listesi' on official page; formatting checklist.",
+          "role": "form (tez şekil incelemesi öncesi kontrol listesi)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitu_Onayi_Formu_2024.docx",
+          "doc_type": "form",
+          "language": "tr",
+          "version_or_date": "2024-04-05 (core.xml)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2024/04/Tezler-Icin-Enstitu-Mudurlugu-Onayi.docx",
+          "sha256": "995b79eac5a0a8fe679e5aa5d4a07dbbd30cbdbb64bd90e0f84befcde550a1b6",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "'Tezler İçin Enstitü Müdürlüğü Onayı' (approval page form) on official page.",
+          "role": "form (Enstitü Müdürlüğü onay sayfası)"
+        },
+        {
+          "path": "Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Etik_Beyan_Formu_2022.docx",
+          "doc_type": "form",
+          "language": "tr",
+          "version_or_date": "2022-12-19 (core.xml)",
+          "status": "CURRENT",
+          "source_url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2022/12/ETIK-VE-BILIMSEL-ILKELER-SORUMLULUK-BEYANI-1.docx",
+          "sha256": "8fb01dbe58d36e9a5ac490df138d691b56c2c5ff66fd9f235ee7f75e5ef927d4",
+          "page_url": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+          "evidence": "'Etik ve Bilimsel İlkeler Sorumluluk Beyanı' declaration page, on official page.",
+          "role": "form (Etik ve Bilimsel İlkeler Sorumluluk Beyanı sayfası)"
+        }
+      ],
+      "notes": [
+        "Kılavuz PDF kapağında 'AFYONKARAHİSAR 2023' yazıyor; yükleme yolu (2026/02), HTTP Last-Modified (06.02.2026) ve sayfa etiketi 2026 diyor. İç revizyon notu bulunamadı; içerik değişikliği UNKNOWN.",
+        "SBE'nin 2020 tarihli eski kılavuzları (sosbil /2020/01, /2020/03) güncel sayfada yok; arşivlenmedi.",
+        "Kılavuzdaki örneklerde 2023 erişim tarihleri var."
+      ]
+    },
+    {
+      "id": "sagbil-tez",
+      "folder": "Saglik_Bilimleri_Enstitusu_Tez",
+      "title": "Sağlık Bilimleri Enstitüsü — Lisansüstü Tez",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "degree_levels": [
+        "yuksek-lisans",
+        "doktora"
+      ],
+      "files": [
+        {
+          "path": "Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "10.02.2022 (HTTP Last-Modified 10 Feb 2022); page: adopted by Senate decision dated 04.09.2020 (No. 2020/41-A)",
+          "status": "CURRENT",
+          "source_url": "https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf",
+          "sha256": "b9ce1b784277b50b81c9da027bfe40d06948b78868d8d49145a2ecb730ffd581",
+          "page_url": "https://sagbilens.aku.edu.tr/tez-yazim-klavuzu",
+          "evidence": "Fresh download sha256 identical to repo file; newest of two PDFs on official page (other: Saglik_Bilimleri_Tez_Yazim_Klavuzu_05.09.2020.pdf, sha256 95923aa096f0e29739f3674db7a8c3ddbe18f5554611e3fec20f30eb2ee5c676, Last-Modified 07 Sep 2020; superseded by the 'SON' 2022 file). PDF cover still reads 'AFYONKARAHİSAR 2020' and has a blank senate-date placeholder. No DOCX template offered on page (raw HTML checked).",
+          "role": "kilavuz (kurallar metni)"
+        }
+      ],
+      "notes": [
+        "Şablon (DOCX) sayfada sunulmuyor.",
+        "PDF kapağı 'AFYONKARAHİSAR 2020' yazıyor ve Senato tarihi alanı boş; dosya 10.02.2022 'SON' sürümü.",
+        "05.09.2020 tarihli kılavuz (sha256 95923aa096f0e29739f3674db7a8c3ddbe18f5554611e3fec20f30eb2ee5c676) 2022 dosyasıyla değiştirildi, arşivlenmedi.",
+        "Repodaki eski 2015 kılavuzu kaldırıldı."
+      ]
+    },
+    {
+      "id": "cografya-bitirme",
+      "folder": "Cografya_Bolumu_Bitirme_Tezi",
+      "title": "Fen Edebiyat Fakültesi Coğrafya Bölümü — Lisans Bitirme Tezi",
+      "unit": "Coğrafya Bölümü (Fen-Edebiyat Fakültesi)",
+      "degree_levels": [
+        "lisans"
+      ],
+      "files": [
+        {
+          "path": "Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "2024 (cover 'AFYONKARAHİSAR 2024'; Last-Modified 11 Mar 2024)",
+          "status": "CURRENT",
+          "source_url": "https://cografya.aku.edu.tr/wp-content/uploads/sites/77/2024/03/Cografya-Bolumu-Bitirme-Tezi-Yazim-Kilavuzu.pdf",
+          "sha256": "6d010f61552387a96a675c679bb8ddf8bfd7066c8612441d252937dc0311aa30",
+          "page_url": "https://cografya.aku.edu.tr/",
+          "evidence": "Fresh download sha256 identical to repo; linked on department homepage on 2026-10-01.",
+          "role": "kilavuz (kurallar metni)"
+        },
+        {
+          "path": "Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2024-03-31 (core.xml modified 2024-03-31T17:03Z; Last-Modified 31 Mar 2024)",
+          "status": "CURRENT",
+          "source_url": "https://cografya.aku.edu.tr/wp-content/uploads/sites/77/2024/03/Cografya_Bolumu_Bitirme_Tezi_Sablon-1.docx",
+          "sha256": "63882661bcc0f0e40704e0e104a2f4818cabe840e78207dd71d380342a67935a",
+          "page_url": "https://cografya.aku.edu.tr/",
+          "evidence": "Template DOCX linked beside the guide on the department homepage; MISSING from repo (3.6 MB).",
+          "role": "sablon (düzenlenebilir şablon)"
+        }
+      ],
+      "notes": [
+        "Şablon DOCX daha önce repoda eksikti; bu çalışmada eklendi (3.6 MB)."
+      ]
+    },
+    {
+      "id": "mbg-bitirme",
+      "folder": "MBG_Lisans_Bitirme_Tezi",
+      "title": "Fen Edebiyat Fakültesi Moleküler Biyoloji ve Genetik Bölümü — Lisans Bitirme Tezi",
+      "unit": "Moleküler Biyoloji ve Genetik Bölümü (Fen-Edebiyat Fakültesi)",
+      "degree_levels": [
+        "lisans"
+      ],
+      "files": [
+        {
+          "path": "MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "2025 (cover 'AFYONKARAHİSAR, 2025'; Last-Modified 13 May 2025)",
+          "status": "CURRENT",
+          "source_url": "https://mbg.aku.edu.tr/wp-content/uploads/sites/130/2025/05/MBG-Bolumu-Lisans-Tezi-Yazim-Kilavuzu.pdf",
+          "sha256": "b631d3c7a4bb87a27256b7ad10448dc42dab7d6d09fd4a5e15183b54707d5079",
+          "page_url": "https://mbg.aku.edu.tr/bitirme-tezi-yazim-kilavuzu/",
+          "evidence": "Fresh download sha256 identical to repo; sole guide on official page.",
+          "role": "kilavuz (kurallar metni)"
+        },
+        {
+          "path": "MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2025-05 (Last-Modified 13 May 2025; core.xml modified 2025-02-27)",
+          "status": "CURRENT",
+          "source_url": "https://mbg.aku.edu.tr/wp-content/uploads/sites/130/2025/05/MBG-Lisans-Tezi-Sablonu.docx",
+          "sha256": "33432d858c5601679297e1935cb2f60f3bb3d6b72e39397e22a62775d351dd76",
+          "page_url": "https://mbg.aku.edu.tr/bitirme-tezi-sablonu/",
+          "evidence": "Fresh download sha256 identical to repo; sole template on official page.",
+          "role": "sablon (düzenlenebilir şablon)"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "id": "kimya-bitirme",
+      "folder": "Kimya_Bolumu_Bitirme_Tezi",
+      "title": "Fen Edebiyat Fakültesi Kimya Bölümü — Lisans Bitirme Tezi",
+      "unit": "Kimya Bölümü (Fen-Edebiyat Fakültesi)",
+      "degree_levels": [
+        "lisans"
+      ],
+      "files": [
+        {
+          "path": "Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "2023 (cover 'AFYONKARAHİSAR 2023'; Last-Modified 28 Dec 2023)",
+          "status": "CURRENT",
+          "source_url": "https://kimya.aku.edu.tr/wp-content/uploads/sites/125/2023/12/Kimya-Bolumu-Bitirme-Tezi-Yazim-Kilavuzu.docx.pdf",
+          "sha256": "1b4b3c2569af15a023423a4e33e6b41b50e0a8f5474d243bd1df83874fc8ed7b",
+          "page_url": "https://kimya.aku.edu.tr/bitirme-tezi-yazim-kilavuzu/",
+          "evidence": "Only guide on dedicated official page. Not previously in repo.",
+          "role": "kilavuz (kurallar metni)"
+        },
+        {
+          "path": "Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2026-02-24 (core.xml modified 2026-02-24T17:19Z; Last-Modified 24 Feb 2026)",
+          "status": "CURRENT",
+          "source_url": "https://kimya.aku.edu.tr/wp-content/uploads/sites/125/2026/02/Kimya-Bolumu-Bitirme-Tez-Yazim-Sablonu.docx",
+          "sha256": "d9bdcbb061d897d8b54f61d24d1cc29c121a6f48b81d04e612e44eac36d14d5c",
+          "page_url": "https://kimya.aku.edu.tr/kimya-bolumu-bitirme-tez-yazim-sablonu/",
+          "evidence": "Template on dedicated official page. Template (2026-02) is newer than guide (2023); pairing not stated by sources.",
+          "role": "sablon (düzenlenebilir şablon)"
+        }
+      ],
+      "notes": [
+        "Kılavuz 2023-12, şablon 2026-02; ikisinin eşleşmesi kaynaklarda belirtilmiyor.",
+        "Kılavuz dosya adı kaynakta '.docx.pdf' olarak geçiyor; içerik PDF."
+      ]
+    },
+    {
+      "id": "matematik-lisans-tez",
+      "folder": "Matematik_Bolumu_Bitirme_Tezi",
+      "title": "Fen Edebiyat Fakültesi Matematik Bölümü — Lisans Tezi",
+      "unit": "Matematik Bölümü (Fen-Edebiyat Fakültesi)",
+      "degree_levels": [
+        "lisans"
+      ],
+      "files": [
+        {
+          "path": "Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+          "doc_type": "sablon",
+          "language": "tr",
+          "version_or_date": "2025-10-21 (core.xml modified 2025-10-21T10:10Z; Last-Modified 24 Oct 2025)",
+          "status": "CURRENT",
+          "source_url": "https://matematik.aku.edu.tr/wp-content/uploads/sites/32/2025/10/Lisans-Tez-Sablonu-1.docx",
+          "sha256": "44e9454d5885b867ad42f49029800d69bf0e261dda045469b4be4967857afe97",
+          "page_url": "https://matematik.aku.edu.tr/lisans-tezi/",
+          "evidence": "Template on official 'Lisans Tezi' page; no separate formatting guide offered there. Not previously in repo.",
+          "role": "sablon (düzenlenebilir şablon)"
+        }
+      ],
+      "notes": [
+        "Bölüm sayfasında ayrı bir biçim kılavuzu sunulmuyor; yalnızca şablon var."
+      ]
+    },
+    {
+      "id": "sosyoloji-lisans-tez",
+      "folder": "Sosyoloji_Bolumu_Bitirme_Tezi",
+      "title": "Fen Edebiyat Fakültesi Sosyoloji Bölümü — Lisans Tezi / Seminer / Ödev",
+      "unit": "Sosyoloji Bölümü (Fen-Edebiyat Fakültesi)",
+      "degree_levels": [
+        "lisans"
+      ],
+      "files": [
+        {
+          "path": "Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "Uploaded 2022-04-05 (Last-Modified); core.xml created 2014-11-04 / modified 2015-06-25",
+          "status": "CURRENT",
+          "source_url": "https://sosyoloji.aku.edu.tr/wp-content/uploads/sites/27/2022/04/Lisans-Tez-Yazim-Kilavuzu-1.docx",
+          "sha256": "95bc988c5bf3f62d2d1ca0a5fdd0d9bfd405251b718e500371392e6171d8ddd3",
+          "page_url": "https://sosyoloji.aku.edu.tr/egitim-ogretim/tez-seminer-ve-odev-yazim-kilavuzu/",
+          "evidence": "Only guide on the official 'Tez Seminer ve Ödev Yazım Kılavuzu' page. Content dates to 2014-2015 per core.xml, re-uploaded 2022. CURRENT as the version the department offers; no internal revision date found.",
+          "role": "kilavuz (kurallar metni)"
+        }
+      ],
+      "notes": [
+        "İçerik tarihi core.xml'e göre 2014-11 / 2015-06; dosya 2022-04'te yeniden yüklenmiş. Dahili revizyon tarihi bulunamadı.",
+        "Sayfa başlığı 'Tez, Seminer ve Ödev Yazım Kılavuzu'."
+      ]
+    },
+    {
+      "id": "felsefe-tez-seminer",
+      "folder": "Felsefe_Bolumu_Tez_ve_Seminer",
+      "title": "Fen Edebiyat Fakültesi Felsefe Bölümü — Lisans Bitirme Tezi ve Seminer",
+      "unit": "Felsefe Bölümü (Fen-Edebiyat Fakültesi)",
+      "degree_levels": [
+        "lisans"
+      ],
+      "files": [
+        {
+          "path": "Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "2019 (core.xml modified 2019-09-22; Last-Modified 23 Sep 2019)",
+          "status": "CURRENT",
+          "source_url": "https://felsefe.aku.edu.tr/wp-content/uploads/sites/114/2019/08/FELSEFE-BÖLÜMÜ-TEZ-HAZIRLAMA-KILAVUZU-Güncel.docx",
+          "sha256": "54e0dc8c0cd70dc7de36e4064565f0ac9aba4a429d53d48d0eaa12c2754a724b",
+          "page_url": "https://felsefe.aku.edu.tr/tez-yazim-kilavuzu/",
+          "evidence": "Only guide on dedicated official page ('Güncel' in filename). Not previously in repo. (Cover year 2019 not read from file; web snippet cites 'AFYONKARAHİSAR-2019'.)",
+          "role": "kilavuz (kurallar metni)"
+        },
+        {
+          "path": "Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "2019 (Last-Modified 23 Sep 2019)",
+          "status": "CURRENT",
+          "source_url": "https://felsefe.aku.edu.tr/wp-content/uploads/sites/114/2019/08/FELSEFE-BÖLÜMÜ-SEMİNER-HAZIRLAMA-KILAVUZU-Güncel.docx",
+          "sha256": "03eec8c6c07da6a830329cc1fd8ba84448db53c5cd4731e0a0b30b41c8f6be78",
+          "page_url": "https://felsefe.aku.edu.tr/tez-yazim-kilavuzu/",
+          "evidence": "Seminer (not thesis) writing guide on the same page; include only if seminar documents are in scope.",
+          "role": "kilavuz (seminer — tez değil)"
+        }
+      ],
+      "notes": [
+        "Kapak yılı dosyadan okunmadı (web özeti 'AFYONKARAHİSAR-2019' diyor).",
+        "Seminer kılavuzu tez değil; seminer belgeleri kapsam dışıysa yok sayılabilir."
+      ]
+    }
+  ],
+  "removed_outdated": [
+    {
+      "file": "AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+      "reason": "Repodan silindi: enstitü sayfasında artık sunulmuyor; 10.02.2022 'SON' sürümüyle değiştirildi (eski kaynak sagbilens .../2015/11/Tez-yazım-klavuzu.pdf, sha256 a7a280cd...96dd8fb)."
+    },
+    {
+      "file": "Saglik_Bilimleri_Tez_Yazim_Klavuzu_05.09.2020.pdf",
+      "reason": "Arşivlenmedi: aynı sayfadaki 10.02.2022 'SON' dosyası tarafından geçersiz kılındı (sha256 95923aa096f0e29739f3674db7a8c3ddbe18f5554611e3fec20f30eb2ee5c676)."
+    },
+    {
+      "file": "tez-word-sablon-2020_WEB_icin-2-1.docx (FBE Word şablonu 2023-12)",
+      "reason": "Arşivlenmedi: 2025-01 sürümü tarafından geçersiz kılındı (sha256 e067eb268e9e9696158f8aa9bd7c061c65cc998d3c0e7ef83a18eee05b6d7adc)."
+    },
+    {
+      "file": "aku.edu.tr/FENBILENS/Genel/tez1.pdf (eski FBE kılavuzu, 2019)",
+      "reason": "Arşivlenmedi: güncel enstitü sayfası tarafından geçersiz kılındı (sha256 1f3f6f10...2def2332)."
+    },
+    {
+      "file": "SBE 2020 kılavuzları (sosbil /2020/01 ve /2020/03)",
+      "reason": "Arşivlenmedi: 2026 kılavuzuyla değiştirildi; getirilmedi."
+    }
+  ],
+  "excluded": [
+    {
+      "file": "AKU_Kimya_Muhendisligi_Bitirme_Tezi_Yazim_Formati_2017.pdf",
+      "source_url": "https://kimmuh.aku.edu.tr/wp-content/uploads/sites/124/2016/04/TEZ-YAZIM-FORMATI-1.pdf",
+      "page_url": "",
+      "sha256": "8f17fe7979924ed4afe1f49952eee38a089c999edfd4e9f623161d235720f011",
+      "status": "UNVERIFIED",
+      "reason": "Güncel resmî sayfadan bağlantılı değil; güncellik doğrulanamadı. Found only via web search; file still served by official host but no linking page found on kimmuh.aku.edu.tr (homepage and site search checked). Currency cannot be established."
+    },
+    {
+      "file": "AKU_Maden_Muhendisligi_Bitirme_Projesi_Kilavuzu_2020.doc",
+      "source_url": "https://maden.aku.edu.tr/wp-content/uploads/sites/13/2020/02/Bitirme-Projesi-Kılavuzu-Yeni.doc",
+      "page_url": "https://maden.aku.edu.tr/2022/05/20/bitirme-tezi-ogrencilerimizin-dikkatine/",
+      "sha256": "362c776c199392bd6371ee58c7f7d750f819262c459aa9a4b9af8db89e8c9b0f",
+      "status": "UNVERIFIED",
+      "reason": "Güncel resmî sayfadan bağlantılı değil; güncellik doğrulanamadı. Format guide (A4, Times New Roman 12 etc.) linked from a 2022-05-20 student notice. Same notice links AKU-Maden-Bitirme-Tezi-Esaslari-08.11.2021.doc, which is enrollment/process rules, NOT formatting (not staged). No dedicated page confirms currency."
+    },
+    {
+      "file": "AKU_Turizm_Lisans_Bitirme_Tezi_Kilavuzu_2016.pdf",
+      "source_url": "https://turizm.aku.edu.tr/wp-content/uploads/sites/59/2017/01/lisans_bitirme_tezi_kilavuzu.pdf",
+      "page_url": "https://turizm.aku.edu.tr/2017/01/03/bitirme-tezi-proje-yazim-kilavuzu/",
+      "sha256": "edae39df4a77308085b08828bb2d5138286febc95bb4f0a76a534d47c5ede3ac",
+      "status": "UNVERIFIED",
+      "reason": "Güncel resmî sayfadan bağlantılı değil; güncellik doğrulanamadı. Linked from a 2017 news post only, not from site navigation. No newer version found. Currency cannot be established."
+    },
+    {
+      "file": "AKU-Maden-Bitirme-Tezi-Esaslari-08.11.2021.doc",
+      "reason": "Biçim kuralı değil, kayıt/süreç esasları (sha256 0bca6033...c6e4)."
+    },
+    {
+      "file": "Mekatronik Bitirme_projesi_tez_alma_v1.pdf (2026-02)",
+      "reason": "İdari belge, biçim kılavuzu değil."
+    },
+    {
+      "file": "FBE TIK-RAPORU-ORNEK-SABLONU-OGRENCILER-ICIN.docx (2023-11)",
+      "reason": "Tez değil, TİK raporu şablonu."
+    },
+    {
+      "file": "tip.afsu.edu.tr Tıp Fakültesi uzmanlık tezi kılavuzu (2016)",
+      "reason": "AKÜ'de Tıp Fakültesi yok; AFSÜ'ye devredildi. 2016 yönerge AFSÜ Tıp sitesindedir ve AFSÜ Temmuz 2021 Tıp/Diş Hekimliği Uzmanlık Tez Yazım Kılavuzu ile geçersiz kılınmıştır (AFSÜ klasöründe arşivli)."
+    },
+    {
+      "file": "Teknoloji Fakültesi bitirme tezi kılavuzu 2014 (teknoloji.aku.edu.tr tez.doc)",
+      "reason": "Bağlantı HTTP 404 (ölü)."
+    }
+  ]
+}

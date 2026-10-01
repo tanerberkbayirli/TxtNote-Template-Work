@@ -1,0 +1,158 @@
+{
+  "university": "Manisa Celal Bayar Üniversitesi (MCBÜ)",
+  "short_code": "MCBU",
+  "checked_at": "2026-10-01",
+  "templates": [
+    {
+      "id": "mcbu-lee-tez",
+      "folder": "Lisansustu_Egitim_Enstitusu_Tez",
+      "title": "Lisansüstü Eğitim Enstitüsü (LEE) Tez Yazım Kılavuzu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "degree_levels": [
+        "yuksek_lisans_tezli",
+        "doktora"
+      ],
+      "files": [
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "Upload 2025-10-22 (HTTP Last-Modified 2025-10-22T11:32:06Z; core.xml created=modified 2025-10-22T11:30:00Z)",
+          "status": "CURRENT",
+          "source_url": "https://lee.mcbu.edu.tr/WebSiteContent/66/ShareFileGallery/ShareFileGallery-JUIK221020251432.docx",
+          "sha256": "e607f8f7405ae10eee4880e7d52f660517fb595625f065088ec5f437f08238c7"
+        }
+      ],
+      "manual_download_required": [
+        {
+          "intended_path": "Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "HTTP Last-Modified 2025-10-22T11:45:13Z",
+          "status": "CURRENT",
+          "source_url": "https://lee.mcbu.edu.tr/WebSiteContent/66/ShareFileGallery/ShareFileGallery-GTSM221020251445.pdf",
+          "sha256": "cb7a4a6d433d360e0087f24d27ab8c40aece4c2e8be0819ab63cf19e91a6055f",
+          "reason": "lee.mcbu.edu.tr WAF (SafeLine) returns 403 to non-browser clients; not bypassed"
+        },
+        {
+          "intended_path": "(out of scope, optional) MCBU_Lisansustu_Tezsiz_YL_Donem_Projesi_Yazim_Kilavuzu_2025.docx",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "HTTP Last-Modified 2025-10-22T11:26:56Z",
+          "status": "CURRENT",
+          "source_url": "https://lee.mcbu.edu.tr/WebSiteContent/66/ShareFileGallery/ShareFileGallery-HWQY221020251426.docx",
+          "sha256": "2e7b96fed9089476f65aa0862fafaf9d84464f1e5e3184868ade59c25d25a2ea",
+          "reason": "WAF 403; Tezsiz YL Dönem Projesi is not a thesis"
+        },
+        {
+          "intended_path": "(out of scope, optional) MCBU_Lisansustu_Tezsiz_YL_Donem_Projesi_Yazim_Kilavuzu_2025.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "HTTP Last-Modified 2025-10-22T11:58:57Z",
+          "status": "CURRENT",
+          "source_url": "https://lee.mcbu.edu.tr/WebSiteContent/66/ShareFileGallery/ShareFileGallery-QEWX221020251458.pdf",
+          "sha256": "b76dcbeafc9ce5bf4167980ddb323a36dd8733fcbd4b3b2a633f395557247a5a",
+          "reason": "WAF 403; Tezsiz YL Dönem Projesi is not a thesis"
+        }
+      ],
+      "notes": [
+        "Cover carries template placeholder year 'Manisa, 2023' although uploaded 2025-10-22; currency evidence is upload date/file metadata, not cover year.",
+        "sha256 identical to the live official file (recomputed in-browser 2026-10-01); only tez yazim kilavuzu listed on live LEE homepage.",
+        "No separate cover/approval-page DOCX template; those pages are inside the guide.",
+        "Fen/Sosyal/Sağlık Bilimleri institutes merged into LEE; legacy institute guides SUPERSEDED (INFERRED, no explicit withdrawal text). Possible conflict if some programs still follow institute-era rules: UNKNOWN.",
+        "No separate English guide on LEE.",
+        "Administrative FR-xxx forms are not formatting templates and were not archived."
+      ]
+    },
+    {
+      "id": "mcbu-tip-uzmanlik-tezi",
+      "folder": "Tip_Fakultesi_Uzmanlik_Tezi",
+      "title": "Tıp Fakültesi Uzmanlık Tez Yazım Kılavuzu",
+      "unit": "Tıp Fakültesi",
+      "degree_levels": [
+        "tipta_uzmanlik"
+      ],
+      "files": [
+        {
+          "path": "Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+          "doc_type": "kilavuz",
+          "language": "tr",
+          "version_or_date": "PDF created/modified 2014-08-27 (metadata, MEASURED); undated text; old 'Celal Bayar Üniversitesi' name; still the only guide linked on live Tıp page (checked 2026-10-01)",
+          "status": "CURRENT",
+          "source_url": "https://tip.mcbu.edu.tr/db_images/file/asistantezyazimkilavuzu-43TR.pdf",
+          "sha256": "67f0879296a63db9f18d86e07db5212bc8bbc302d27b9a872eec34923a070883"
+        }
+      ],
+      "manual_download_required": [],
+      "notes": [
+        "Page: https://tip.mcbu.edu.tr/mezuniyet-sonrasi-egitim/tez-ile-iliskili-belgeler.60014.tr.html (also hosts 2023 forms; guide itself undated).",
+        "Aynı bağlantı 2026-10-01'de değişmeden duruyor; daha yeni kılavuz yok. Açık geçerlilik beyanı yok; LEE ile ilişkisi UNKNOWN."
+      ]
+    }
+  ],
+  "removed_outdated": [
+    {
+      "note": "No file was removed from the repo folder; the only repo source file was CURRENT and was renamed (git mv) to Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx. The following legacy institute-era files are SUPERSEDED (INFERRED) and were NOT archived (kept only in scratchpad staging/legacy).",
+      "files": [
+        {
+          "name": "MCBU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf",
+          "source_url": "https://fbe.mcbu.edu.tr/db_images/file/tez-yazim-kilavuzu-3652TR.pdf",
+          "date": "2022-06-26",
+          "sha256": "6d9e432b18250a4607fa4172140084cee5f395bdc92b64033eb8f59babba35b9"
+        },
+        {
+          "name": "MCBU_Fen_Bilimleri_Tez_Yazim_Sablonu_TR_2022.docx",
+          "source_url": "http://fbe.mcbu.edu.tr/db_images/file/tez-yazim-sablonu-448TR.docx",
+          "date": "2022-06-26",
+          "sha256": "97e436af5d30e1dc1e6e135a448a0f50b1ac4a0faa6ea98093e357d9c2e947e0"
+        },
+        {
+          "name": "MCBU_Fen_Bilimleri_Tez_Yazim_Sablonu_TR_2022.pdf",
+          "source_url": "http://fbe.mcbu.edu.tr/db_images/file/tez-yazim-sablonu-448TR.pdf",
+          "date": "2022-06-26",
+          "sha256": "d1cb76e532820d6d9926deef092debca1c555d299d34bc0fb62c27bf17699940"
+        },
+        {
+          "name": "MCBU_Fen_Bilimleri_Tez_Guidelines_EN_2022.docx",
+          "source_url": "http://fbe.mcbu.edu.tr/db_images/file/EN Enstitü Guidelines For Preparation of Master and PhD Thesis.docx",
+          "date": "2022-06-26",
+          "sha256": "f3ad8c8646538c56233bc9e7995e5d0665b3daad63add6590f4c1c447846b918"
+        },
+        {
+          "name": "MCBU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2020.docx",
+          "source_url": "http://sbe.mcbu.edu.tr/db_images/file/MCBÜ SBE TEZ YAZIM KILAVUZU.docx",
+          "date": "2020-07-02",
+          "sha256": "12c3d929407a9b61a1cdce74919ec266c901d2689fb55549d493230f7073f9a9"
+        },
+        {
+          "name": "MCBU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2020.pdf",
+          "source_url": "http://sbe.mcbu.edu.tr/db_images/file/MCBÜ SBE TEZ YAZIM KILAVUZU.pdf",
+          "date": "2020-07-02",
+          "sha256": "d82e29d9b702c228c430fc2033ef1efb82f7a0e235b004b73db1040b6b27eabe"
+        },
+        {
+          "name": "MCBU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2016.pdf",
+          "source_url": "https://sbe.mcbu.edu.tr/db_images/file/Duyurular/SBE%20TEZ%20YAZIM%20KILAVUZU.pdf",
+          "date": "2016-01-28",
+          "sha256": "2f1b537e2be4a2b2b416eb3eed43d793af4dc7cf9e57062631e2c5a172580a66"
+        },
+        {
+          "name": "MCBU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2021.pdf",
+          "source_url": "https://saglikbe.mcbu.edu.tr/db_images/site_301/file/TEZ YAZIM KILAVUZU-05.10.2021..pdf",
+          "date": "2021-10-05 (filename); Last-Modified 2022-02-17",
+          "sha256": "6ba62a6230939b93e59664c61f5a2e68d619ab572479e7e204e30720cbf3d0ad"
+        },
+        {
+          "name": "MCBU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2015.pdf",
+          "source_url": "http://cbuadmin.cbu.edu.tr/db_images/site_301/file/tez-yazim-kilavuzu-%202015.pdf",
+          "date": "2015 (filename); Last-Modified 2018-10-30",
+          "sha256": "a93fc8935cecb94a1ed1801852a919567d20b969497371758553c3f3c65ecd14"
+        }
+      ],
+      "reason": "SUPERSEDED (INFERRED): Fen/Sosyal/Sağlık Bilimleri institute sites frozen Dec 2023-Jan 2024 and redirect to LEE; no explicit withdrawal text found."
+    }
+  ],
+  "not_found": [
+    "Diş Hekimliği Fakültesi: dishekimligi.mcbu.edu.tr ERR_NAME_NOT_RESOLVED (browser+curl); uzmanlık tez kılavuzu alınamadı, başka ağdan tekrar denenmeli"
+  ]
+}

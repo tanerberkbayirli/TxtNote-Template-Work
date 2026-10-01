@@ -14,6 +14,15 @@
 - **Doktora Tezi İngilizce öncül sayfalar şablonu** — şablon; doktora; İngilizce; DOCX; tarih belirtilmiyor. Kaynak: [LEE şablon listesi](https://lisansustu.ieu.edu.tr/tr/tez-yazim-kilavuzu) · [DOCX](https://ieucloud.izmirekonomi.edu.tr/index.php/s/MycYFAYepOvGqly/download). Yerel: [IEU_Doktora_Tez_Oncul_Sayfalar_EN.docx](./IEU_Doktora_Tez_Oncul_Sayfalar_EN.docx).
 - **Doktora Tezi İngilizce, ikinci danışmanlı öncül sayfalar şablonu** — şablon; doktora; İngilizce; DOCX; tarih belirtilmiyor. Kaynak: [LEE şablon listesi](https://lisansustu.ieu.edu.tr/tr/tez-yazim-kilavuzu) · [DOCX](https://ieucloud.izmirekonomi.edu.tr/index.php/s/ZaEl7cJYiLImigG/download). Yerel: [IEU_Doktora_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx](./IEU_Doktora_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx).
 
+## Gastronomi ve Mutfak Sanatlari Bitirme Projesi
+
+Kaynak: [culinary.ieu.edu.tr bitirme projesi sayfası](https://culinary.ieu.edu.tr/tr/bitirme-projesi-kilavuzu)
+
+- **IEU_Gastronomi_Bitirme_Projesi_Kilavuzu_2017.pdf** — kılavuz; lisans bitirme projesi; İngilizce; PDF; 2017-03-15. Kaynak: [PDF](https://phoenix.ieu.edu.tr/betanix/uploads/cms/cam.sams.ieu.edu.tr/7204_1489562340.pdf). SHA256: 049286090a33c9bc700445296830c90c90113d285a9050eaa5aeaa2448798ff1. Durum: UNVERIFIED (2017’den, daha yeni sürüm bulunmamış).
+- **IEU_Gastronomi_Bitirme_Projesi_Basvuru_Formu_2017.pdf** — form; lisans bitirme projesi; İngilizce; PDF; 2017-03-01 (form metni). Kaynak: [PDF](https://phoenix.ieu.edu.tr/betanix/uploads/cms/cam.sams.ieu.edu.tr/7204_1489562685.pdf). SHA256: 6d8ff3562f69ac12c011614f045279ee28d85404ba6afd54413c46442fe493b7. Durum: UNVERIFIED (yönetimsel, biçimsel uygunluk açısından düşük önem).
+
 ## Not
 
-Enstitü sayfası ayrıca altı dil/derece/danışmanlık varyantı listeliyor; indirilen dosyalar bu altı şablonu kapsıyor. Kılavuz PDF’leri ve DOCX şablonları ayrı kaynak olarak sayıldı.
+Lisansüstü Eğitim Enstitüsü: enstitü sayfası altı dil/derece/danışmanlık varyantı listeliyor; indirilen dosyalar bu altı şablonu kapsıyor. Kılavuz PDF’leri ve DOCX şablonları ayrı kaynak olarak sayıldı.
+
+Gastronomi: bölüm düzeyinde kılavuz, Lisansüstü Eğitim Enstitüsü kılavuzlarıyla ilgisiz.

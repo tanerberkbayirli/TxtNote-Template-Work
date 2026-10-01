@@ -1,0 +1,98 @@
+{
+  "university": "Yaşar Üniversitesi",
+  "short_code": "YASAR",
+  "checked_at": "2026-10-01",
+  "templates": [
+    {
+      "id": "yasar_graduate_thesis",
+      "folder": "Lisansustu_Egitim_Enstitusu_Tez",
+      "title": "Graduate Thesis Templates (Lisansüstü Tez)",
+      "unit": "Lisansustu Egitim Enstitusu (Graduate Education Institute)",
+      "degree_levels": [
+        "Master's (Yüksek Lisans)",
+        "PhD (Doktora)"
+      ],
+      "files": [
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+          "doc_type": "template",
+          "language": "TR",
+          "version_or_date": "2024-11-19",
+          "status": "CURRENT",
+          "source_url": "https://lee.yasar.edu.tr/tezli-yl-ve-doktora/tez-sablonlari-ve-stilleri/",
+          "sha256": "a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+          "doc_type": "template",
+          "language": "EN",
+          "version_or_date": "2024-11-19",
+          "status": "CURRENT",
+          "source_url": "https://lee.yasar.edu.tr/tezli-yl-ve-doktora/tez-sablonlari-ve-stilleri/",
+          "sha256": "f4d763b85dab95ba3287e3e24b17e585c2d3468b257a4882eab1c58e7d962e6e"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+          "doc_type": "guide",
+          "language": "TR",
+          "version_or_date": "2025-06",
+          "status": "CURRENT",
+          "source_url": "https://lee.yasar.edu.tr/tezli-yl-ve-doktora/tez-sablonlari-ve-stilleri/",
+          "sha256": "0e49ceb57f431169c9756c6aef17519c1540596f35fc43d58d941a0bb68a4336"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+          "doc_type": "guide",
+          "language": "EN",
+          "version_or_date": "2024-11",
+          "status": "CURRENT",
+          "source_url": "https://lee.yasar.edu.tr/tezli-yl-ve-doktora/tez-sablonlari-ve-stilleri/",
+          "sha256": "1d34350ba78b82f202e4199415b4475493d4706ffe0a56fc1b3aaf149c67dcb9"
+        }
+      ],
+      "notes": [
+        "All files verified as current via prior audit and search snippet"
+      ]
+    },
+    {
+      "id": "yasar_law_thesis",
+      "folder": "Lisansustu_Egitim_Enstitusu_Tez",
+      "title": "Law Programs Thesis Template (Hukuk Programları)",
+      "unit": "Hukuk Programlari (Law Programs)",
+      "degree_levels": [
+        "Master's (Yüksek Lisans)",
+        "PhD (Doktora)"
+      ],
+      "files": [
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+          "doc_type": "template",
+          "language": "TR",
+          "version_or_date": "2025-07",
+          "status": "CURRENT",
+          "source_url": "https://lee.yasar.edu.tr/tezli-yl-ve-doktora/tez-sablonlari-ve-stilleri/",
+          "sha256": "1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c"
+        }
+      ],
+      "notes": [
+        "Search snippet confirms 'LEE Hukuk Tez Şablonu' still listed; live page re-fetch 403 Cloudflare"
+      ]
+    }
+  ],
+  "removed_outdated": [
+    {
+      "filename": "lee.yasar.edu.tr/wp-content/uploads/2023/02/Tez-Yazim-Kilavuzu.pdf",
+      "reason": "2023 guide, outdated"
+    }
+  ],
+  "excluded": [
+    {
+      "item": "Tezsiz Dönem Projesi guides/templates TR/EN",
+      "reason": "out of scope (non-thesis)"
+    }
+  ],
+  "conflicts": [],
+  "manual_check_required": [
+    "https://lee.yasar.edu.tr/tezli-yl-ve-doktora/tez-sablonlari-ve-stilleri/ (returned 403 Cloudflare on 2026-10-01; status rests on prior audit)"
+  ]
+}

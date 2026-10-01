@@ -1,14 +1,52 @@
-# İzmir Kâtip Çelebi Üniversitesi — tez kaynakları
+# Kaynaklar (Sources)
 
-İncelenen birimler: Fen Bilimleri Enstitüsü, Sosyal Bilimler Enstitüsü, Sağlık Bilimleri Enstitüsü.
+## URL Kontrol Tarihi (Checked): 2026-10-01
 
-## Resmî sayfalarda listelenen kaynaklar — yerel kopya alınamadı
+### Fen Bilimleri Enstitüsü (FBE)
 
-- **Fen Bilimleri Enstitüsü tez yazım kılavuzu ve şablonları** — lisansüstü; Türkçe ve İngilizce; kılavuzlar ve Word şablonları; sayfada dosya tarihleri 28.10.2023 olarak geçiyor. Kaynak: [FBE tez yazım kılavuzu/şablonları](https://fenbilimleri.ikcu.edu.tr/S/15367/tez-yazim-kilavuzu-ve-sablonlari). Sayfa ve dosya bağlantıları bu araştırmada 502/zaman aşımı verdi; yerel dosya yok. Sayfanın dönem projesi kaynakları tez kılavuzu olarak sayılmadı.
-- **Sosyal Bilimler Enstitüsü yüksek lisans ve doktora tez şablonları/kılavuzu** — lisansüstü; ayrı yüksek lisans ve doktora Word şablonları; sayfa tarihi 16.12.2025. Kaynak: [SBE lisansüstü tez şablonları](https://sosyalbilimler.ikcu.edu.tr/S/22889/lisansustu-tez-sablonlari). Dosyalar sunucuya erişim hatası nedeniyle indirilemedi.
-- **Sağlık Bilimleri Enstitüsü tez yazım kılavuzu ve şablonu** — lisansüstü; Türkçe; sayfa tarihi 20.04.2018; daha yeni kaynak saptanmadı. Kaynak: [SBEğ tez yazım kılavuzu](https://saglikbilimleri.ikcu.edu.tr/S/16269/tez-yazim-kilavuzu). Sayfa erişim hatası verdi; güncellik ve dosya bağlantıları teyit edilemedi, yerel kopya yok.
-- **Tez yazım kılavuzu bilgilendirme eğitimi** — 07.04.2026 tarihli enstitü etkinliği; kayıt/video bağlantısı bulunmadı. Kaynak: [SBE eğitim duyurusu](https://sosyalbilimler.ikcu.edu.tr/Haber/20011/enstitumuzde-tez-yazim-klavuzu-hakkinda-bilgilendirme-uzerine-hizmet-ici-egitim-gerceklestirildi).
+- **Sayfa (Page):** https://fenbilimleri.ikcu.edu.tr/S/15367/tez-yazim-kilavuzu-ve-sablonlari
+- **Kılavuz TR:** https://fenbilimleri.ikcu.edu.tr/Share/885EAE6CAD3DBC0A99065AA4B6100D26
+- **Şablon TR:** https://fenbilimleri.ikcu.edu.tr/Share/42FD3269D68E16DFC5879C02B86732C9
+- **Guide EN:** https://fenbilimleri.ikcu.edu.tr/Share/F11F2DCBC81495A5C3F26C901C836161
+- **Template EN:** https://fenbilimleri.ikcu.edu.tr/Share/BB4C1559B84EE778BC01185041384814
+- **Kanıt (Evidence):** Tüm linkler sayfada mevcut; belgeler 28.10.2023 tarihli
 
-## Not
+### Sosyal Bilimler Enstitüsü (SBE)
 
-Yalnızca tezli lisansüstü programlara yönelik materyaller seçildi; dönem projesi şablonları hariç tutuldu. Resmî sayfalardaki kayıtlar araştırma tarihindeki erişim sorunlarına rağmen kaynak olarak tutuldu.
+- **Sayfa (Page):** https://sosyalbilimler.ikcu.edu.tr/S/22889/lisansustu-tez-sablonlari
+- **Kılavuz:** https://sosyalbilimler.ikcu.edu.tr/Share/1977533D6C32495F6CC9FA0A8F8560E9
+- **Doktora Şablonu:** https://sosyalbilimler.ikcu.edu.tr/Share/47841ED028ADFBA4E8521022F11443B8
+- **Tezli YL Şablonu:** https://sosyalbilimler.ikcu.edu.tr/Share/E33AD74CAB9AEF7E0180821CDBCB46E8
+- **Kanıt (Evidence):** Tüm linkler sayfada mevcut; sayfa etiketi 2025-12-16
+
+### Sağlık Bilimleri Enstitüsü (Saglik Bilimleri)
+
+- **Sayfa (Page):** https://saglikbilimleri.ikcu.edu.tr/S/16269/tez-yazim-kilavuzu
+- **Kılavuz:** https://saglikbilimleri.ikcu.edu.tr/Share/6637FBBA41D99CDDB317539939F2C32E
+- **Şablon:** https://saglikbilimleri.ikcu.edu.tr/Share/E05668186033D3B7E92B00EDF67A925E
+- **Kanıt (Evidence):** Tüm linkler sayfada mevcut; sayfa etiketi 2018-04-20
+
+### Tıp Fakültesi Uzmanlık Tezi
+
+- **Sayfa (Page):** https://tip.ikcu.edu.tr/S/21696
+- **Kılavuz:** https://tip.ikcu.edu.tr/Share/2A4C6BED49DC47BF5E5421485F4D9795
+- **Kanıt (Evidence):** Sayfa bağlantısı mevcut; docx 2024-03-28 tarihli
+
+### Diş Hekimligi Fakültesi Uzmanlık Tezi
+
+- **Sayfa (Page):** https://dis.ikcu.edu.tr/S/10274
+- **Kılavuz:** https://dis.ikcu.edu.tr/Share/776B6A718FD9C4ABD46470A443889C6F
+- **Kanıt (Evidence):** Sayfa bağlantısı mevcut; sayfa etiketi 2016-01-23
+
+### Su Ürünleri Fakültesi Bitirme Tezi
+
+- **Sayfa (Page):** https://suf.ikcu.edu.tr/S/22174
+- **Kılavuz:** https://suf.ikcu.edu.tr/Share/C7F92D12EF5CA6A4803FDBE1A4C0E9C2
+- **Kanıt (Evidence):** Sayfa bağlantısı mevcut; docx 2025-03-18 tarihli
+
+## Hariç Tutulanlar (Excluded)
+
+- FBE dönem projesi kılavuzu (site de bağlantı bulunmamaktadır)
+- SBE tezsiz Yüksek Lisans şablonu (kapsam dışı)
+- Diğer fakülte bitirme projesi kılavuzları (arama sonuçlarında bulunamadı)
+

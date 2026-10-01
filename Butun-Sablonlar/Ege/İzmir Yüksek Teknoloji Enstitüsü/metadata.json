@@ -1,0 +1,116 @@
+{
+  "university": "İzmir Yüksek Teknoloji Enstitüsü (IYTE)",
+  "short_code": "IYTE",
+  "checked_at": "2026-10-01",
+  "templates": [
+    {
+      "id": "iyte-lisansustu",
+      "folder": "Lisansustu_Egitim_Enstitusu_Tez",
+      "title": "Lisansüstü Tez Kaynakları",
+      "unit": "Lisansüstü Eğitim Enstitüsü (LEE)",
+      "degree_levels": [
+        "yuksek-lisans",
+        "doktora"
+      ],
+      "files": [
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+          "doc_type": "guide",
+          "language": "en",
+          "version_or_date": "2019-12",
+          "status": "CURRENT",
+          "source_url": "https://lee.iyte.edu.tr/wp-content/uploads/sites/110/2019/12/Tez-yaz%C4%B1m-k%C4%B1lavuzu-n.pdf",
+          "sha256": "0364854d1bbadd00c4bb65829cf7d1f431a74e61c7093515ce7c9703ef19eefb"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IYTE_Referans_Sistemleri_Senato_Karari_2024.pdf",
+          "doc_type": "citation-guide",
+          "language": "tr",
+          "version_or_date": "2024-06",
+          "status": "CURRENT",
+          "source_url": "https://lee.iyte.edu.tr/wp-content/uploads/sites/110/2024/06/Tezlerde-Kullan%C4%B1lacak-Referans-sistemleri-Y%C3%B6nelik-Senato-Karar%C4%B1.pdf",
+          "sha256": "11a218602be63103163b0f95020f75377051f4f90769594fb39467fa06d74de0"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IYTE_Kaynak_Gosterme_Yontemleri_2026.pdf",
+          "doc_type": "reference-style",
+          "language": "tr",
+          "version_or_date": "2026-04",
+          "status": "CURRENT",
+          "source_url": "https://lee.iyte.edu.tr/wp-content/uploads/sites/110/2026/04/Reference-style_100420261.pdf",
+          "sha256": "66e1d8ba8260845d2931a20517bb9e1187a0a3e1ac3c075b034c7986121777f0"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IYTE_Makale_Tez_Yonergesi_2026.pdf",
+          "doc_type": "directive",
+          "language": "tr",
+          "version_or_date": "2026-05",
+          "status": "CURRENT",
+          "source_url": "https://lee.iyte.edu.tr/wp-content/uploads/sites/110/2026/05/%C4%B0YTE-Y%C3%BCksek-Lisans-ve-Doktora-Tezlerinin-Bilimsel-Makalelerden-Haz%C4%B1rlanmas%C4%B1na-%C4%B0li%C5%9Fkin-Y%C3%B6nerge.pdf",
+          "sha256": "5dddbaa4b41118cf63a96c14a64ea8c87758b0adeb5573c472fc63b8968ee824"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IYTE_Senate_Decision_Reference_System_EN_2024-08.pdf",
+          "doc_type": "citation-guide",
+          "language": "en",
+          "version_or_date": "2024-08",
+          "status": "CURRENT",
+          "source_url": "https://lee.iyte.edu.tr/wp-content/uploads/sites/110/2024/08/Senate-Decision-on-the-Reference-System.pdf",
+          "sha256": "fdbd220279dc363d041fad14b1867e29c0a16298eb1085a78af6c719f286a831"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IYTE_Doctoral_Theses_from_Articles_Guidelines_EN_2024-08.pdf",
+          "doc_type": "directive",
+          "language": "en",
+          "version_or_date": "2024-08",
+          "status": "OPTIONAL",
+          "source_url": "https://lee.iyte.edu.tr/wp-content/uploads/sites/110/2024/08/Guidelines-on-the-Preparation-of-Doctoral-Theses-from-Scientific-Articles.pdf",
+          "sha256": "43302403c95123b4f3824e1f81ae987d5837d37332bb897bcfd8c7f520cd8f76"
+        }
+      ],
+      "notes": [
+        "All documents from Lee (Lisansüstü Eğitim Enstitüsü) page: https://lee.iyte.edu.tr/tezler-2/",
+        "No Word or LaTeX templates found on official page.",
+        "No Turkish thesis writing guide (only 2019 English version).",
+        "No cover/approval forms or department-specific guides archived."
+      ]
+    },
+    {
+      "id": "iyte-eee-bitirme",
+      "folder": "Elektrik_Elektronik_Muhendisligi_Bitirme",
+      "title": "EEE Lisans Bitirme Projesi Rapor Şablonu",
+      "unit": "Elektrik Elektronik Mühendisliği",
+      "degree_levels": [
+        "lisans"
+      ],
+      "files": [
+        {
+          "path": "Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+          "doc_type": "template",
+          "language": "en",
+          "version_or_date": "2025-12",
+          "status": "CURRENT",
+          "source_url": "https://eee.iyte.edu.tr/wp-content/uploads/sites/88/2025/12/EK3_BScProjectFinalReportFormat_v1210.docx",
+          "sha256": "4480072e4523910d3127f9ce294801db0534899359f33e5125ef5ea9ca053bd8"
+        }
+      ],
+      "notes": [
+        "EE491/EE492 final project report template",
+        "Source: https://eee.iyte.edu.tr/en/project/",
+        "Includes cover, abstract, TOC, and chapter templates"
+      ]
+    }
+  ],
+  "removed_outdated": [],
+  "excluded": [
+    {
+      "item": "Tez Kontrol Sorumlu Listesi",
+      "reason": "administrative checklist, not formatting spec"
+    },
+    {
+      "item": "CD-KAPAK-GÜNCEL.doc (2023/07)",
+      "reason": "CD cover delivery form, out of scope"
+    }
+  ],
+  "conflicts": []
+}

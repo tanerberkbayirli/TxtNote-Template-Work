@@ -1,0 +1,97 @@
+{
+  "university": "İzmir Ekonomi Üniversitesi",
+  "short_code": "IEU",
+  "checked_at": "2026-10-01",
+  "templates": [
+    {
+      "id": "lee_tez",
+      "folder": "Lisansustu_Egitim_Enstitusu_Tez",
+      "title": "Lisansustu Egitim Enstitüsü Tez (Graduate Thesis)",
+      "unit": "Lisansustu Egitim Enstitüsü",
+      "degree_levels": [
+        "Yüksek Lisans",
+        "Doktora"
+      ],
+      "files": [
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_Doktora_Tez_Oncul_Sayfalar_EN.docx",
+          "sha256": "48055686f6c7e44c30158f725a53947f16101ed6347a234c9dcdbefec0486835"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_Doktora_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+          "sha256": "534f5ede86533605c07d18a37096b081d705629b63034ab219f9f15a54554e8a"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_Hukuk_Tezleri_Ek_Aciklamalar.pdf",
+          "sha256": "ce9af6a640943d913f97af7defab73a487c4784285e2db6e5e6e06db8b4c1d54"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+          "sha256": "efc759dbd512c651401a4a71b69af4340bd23270c6f2c980f404fd8d1ebb7c8e"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+          "sha256": "2c7e7db7695417b8a2921f6cf5709f722461393dd1773a3915750f9e475106e5"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_EN.docx",
+          "sha256": "3a0aad66e7e4fc66aa538546fa50da8ae4d3d461ae3c2780bbb842a6b9a30e4b"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+          "sha256": "47f8849a5185d879fac2d2ba22269461e36991780b6ea7654cd94326e68dac3e"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR.docx",
+          "sha256": "9aff063d606294381457fb35ff6a1dd4d63173669de73c3490602779661c2dc6"
+        },
+        {
+          "path": "Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+          "sha256": "23801be007e035a1b4e33088e0d274253134d9292bf283d82cf7498aa80ffef6"
+        }
+      ],
+      "notes": [
+        "No Turkish Doktora oncul sayfalar template exists on live page",
+        "English guide content mirrors Turkish guide"
+      ]
+    },
+    {
+      "id": "gastro_bitirme",
+      "folder": "Gastronomi_ve_Mutfak_Sanatlari_Bitirme_Projesi",
+      "title": "Gastronomi ve Mutfak Sanatlari Bitirme Projesi",
+      "unit": "Gastronomi ve Mutfak Sanatlari Bolumu, Uygulamali Yonetim Bilimleri Okulu",
+      "degree_levels": [
+        "Lisans"
+      ],
+      "files": [
+        {
+          "path": "Gastronomi_ve_Mutfak_Sanatlari_Bitirme_Projesi/IEU_Gastronomi_Bitirme_Projesi_Basvuru_Formu_2017.pdf",
+          "sha256": "6d8ff3562f69ac12c011614f045279ee28d85404ba6afd54413c46442fe493b7"
+        },
+        {
+          "path": "Gastronomi_ve_Mutfak_Sanatlari_Bitirme_Projesi/IEU_Gastronomi_Bitirme_Projesi_Kilavuzu_2017.pdf",
+          "sha256": "049286090a33c9bc700445296830c90c90113d285a9050eaa5aeaa2448798ff1"
+        }
+      ],
+      "notes": [
+        "Department-level guide, not Graduate Education Institute",
+        "Linked from culinary.ieu.edu.tr but no newer version found",
+        "Form is administrative, low formatting relevance"
+      ]
+    }
+  ],
+  "removed_outdated": [
+    {
+      "item": "Sosyal Bilimler Enstitüsü Tez Yazım Kılavuzu (2016)",
+      "reason": "Superseded by unified LEE guides",
+      "legacy_location": "legacy/"
+    }
+  ],
+  "excluded": [
+    {
+      "item": "Other faculty/department bitirme pages",
+      "reason": "Lists of student projects, not writing guides"
+    }
+  ],
+  "conflicts": []
+}
