@@ -74,13 +74,37 @@ export const NOTE_SHAPE = {
   RECTANGLE: "rectangle",
   HEXAGON: "hexagon",
   OVAL: "oval",
+  PARALLELOGRAM: "parallelogram",
+  DIAMOND: "diamond",
+  DOCUMENT: "document",
 };
 
 export const NOTE_SHAPE_LABEL = {
-  [NOTE_SHAPE.RECTANGLE]: "Dikdörtgen",
+  [NOTE_SHAPE.RECTANGLE]: "İşlem",
   [NOTE_SHAPE.HEXAGON]: "Altıgen",
-  [NOTE_SHAPE.OVAL]: "Oval",
+  [NOTE_SHAPE.OVAL]: "Terminal",
+  [NOTE_SHAPE.PARALLELOGRAM]: "Giriş / Çıkış",
+  [NOTE_SHAPE.DIAMOND]: "Karar",
+  [NOTE_SHAPE.DOCUMENT]: "Belge",
 };
+
+/** Akış diyagramı (ISO 5807) anlamı — paletteki ipucu ve yardım için. */
+export const NOTE_SHAPE_HINT = {
+  [NOTE_SHAPE.OVAL]: "Başla / Bitir — diyagramın giriş ve çıkış noktaları",
+  [NOTE_SHAPE.PARALLELOGRAM]: "Veri okuma (input) veya yazdırma (output)",
+  [NOTE_SHAPE.RECTANGLE]: "Hesaplama veya değer atama adımı",
+  [NOTE_SHAPE.DIAMOND]: "Evet / hayır sorusu — akışı dallandırır",
+  [NOTE_SHAPE.DOCUMENT]: "Yazdırılan rapor / belge çıktısı (opsiyonel)",
+};
+
+/** Akış diyagramı sembollerinin sıralı listesi. */
+export const FLOWCHART_SHAPES = [
+  NOTE_SHAPE.OVAL,
+  NOTE_SHAPE.PARALLELOGRAM,
+  NOTE_SHAPE.RECTANGLE,
+  NOTE_SHAPE.DIAMOND,
+  NOTE_SHAPE.DOCUMENT,
+];
 
 export const NOTE_SHAPE_PAINT = {
   [NOTE_COLOR.YELLOW]: "fill-amber-50 stroke-amber-200 dark:fill-amber-950/55 dark:stroke-amber-800/80",

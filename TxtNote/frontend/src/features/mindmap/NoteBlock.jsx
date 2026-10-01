@@ -16,6 +16,7 @@ import {
   NOTE_MIN,
   NOTE_SHAPE,
   NOTE_SHAPE_LABEL,
+  NOTE_SHAPE_HINT,
   NOTE_SHAPE_PAINT,
   NOTE_SHAPE_TEXT,
   NOTE_SWATCH,
@@ -27,6 +28,8 @@ import {
   pointsAttr,
   resolveNoteShape,
   shapePoints,
+  documentPath,
+  minAspect,
 } from "./noteShape";
 
 const stopPointer = (event) => event.stopPropagation();
@@ -40,6 +43,15 @@ const ShapeGlyph = ({ shape, className }) => (
     )}
     {shape === NOTE_SHAPE.OVAL && (
       <ellipse cx="12" cy="12" rx="8.6" ry="5.8" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1.65" />
+    )}
+    {shape === NOTE_SHAPE.PARALLELOGRAM && (
+      <polygon points="7.5,6.5 21.5,6.5 16.5,17.5 2.5,17.5" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
+    )}
+    {shape === NOTE_SHAPE.DIAMOND && (
+      <polygon points="12,3.5 22,12 12,20.5 2,12" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
+    )}
+    {shape === NOTE_SHAPE.DOCUMENT && (
+      <path d="M3.5,5.5 H20.5 V16 Q16,20 12,16 Q8,12 3.5,16 Z" fill="currentColor" fillOpacity="0.18" stroke="currentColor" strokeWidth="1.65" strokeLinejoin="round" />
     )}
     {shape === NOTE_SHAPE.HEXAGON && (
       <polygon
@@ -82,7 +94,10 @@ const NoteFrame = ({ shape, width, height, color, selected }) => {
       {resolved === NOTE_SHAPE.RECTANGLE && (
         <rect x="1.2" y="1.2" width={width - 2.4} height={height - 2.4} rx="14" fill="inherit" stroke="inherit" strokeWidth={stroke} />
       )}
-      {points && (
+      {resolved === NOTE_SHAPE.DOCUMENT && (
+        <path d={documentPath(width, height)} fill="inherit" stroke="inherit" strokeWidth={stroke} strokeLinejoin="round" />
+      )}
+      {points && resolved !== NOTE_SHAPE.DOCUMENT && (
         <polygon points={pointsAttr(points)} fill="inherit" stroke="inherit" strokeWidth={stroke} strokeLinejoin="round" />
       )}
     </svg>
@@ -144,8 +159,9 @@ export const NoteBlock = memo(function NoteBlock({
   const applySize = (nextWidth, nextHeight) => {
     let nextW = clamp(nextWidth, NOTE_MIN.width, NOTE_MAX.width);
     const nextH = clamp(nextHeight, NOTE_MIN.height, NOTE_MAX.height);
-    if (shape === NOTE_SHAPE.HEXAGON) {
-      nextW = clamp(Math.max(nextW, Math.round(nextH * 1.45)), NOTE_MIN.width, NOTE_MAX.width);
+    const aspect = minAspect(shape);
+    if (aspect) {
+      nextW = clamp(Math.max(nextW, Math.round(nextH * aspect)), NOTE_MIN.width, NOTE_MAX.width);
     }
     return { width: nextW, height: nextH };
   };
@@ -183,8 +199,9 @@ export const NoteBlock = memo(function NoteBlock({
   };
 
   const pickShape = (nextShape) => {
-    if (nextShape === NOTE_SHAPE.HEXAGON) {
-      const nextWidth = clamp(Math.max(width, Math.round(height * 1.7)), NOTE_MIN.width, NOTE_MAX.width);
+    const aspect = minAspect(nextShape);
+    if (aspect) {
+      const nextWidth = clamp(Math.max(width, Math.round(height * Math.max(aspect, 1.7))), NOTE_MIN.width, NOTE_MAX.width);
       onChange(node.id, { shape: nextShape, width: nextWidth, height });
     } else {
       onChange(node.id, { shape: nextShape });
@@ -340,7 +357,7 @@ export const NoteBlock = memo(function NoteBlock({
               <button
                 key={item}
                 type="button"
-                title={NOTE_SHAPE_LABEL[item]}
+                title={NOTE_SHAPE_HINT[item] ? `${NOTE_SHAPE_LABEL[item]} — ${NOTE_SHAPE_HINT[item]}` : NOTE_SHAPE_LABEL[item]}
                 aria-label={NOTE_SHAPE_LABEL[item]}
                 aria-pressed={shape === item}
                 onClick={() => pickShape(item)}

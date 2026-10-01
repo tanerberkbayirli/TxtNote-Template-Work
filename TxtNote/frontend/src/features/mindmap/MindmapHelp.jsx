@@ -5,8 +5,8 @@
 import { useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { cn } from "../../lib/cn";
-import { NOTE_SHAPE, NOTE_SHAPE_PAINT, NOTE_SHAPE_LABEL } from "./constants";
-import { elongatedHexagon, pointsAttr } from "./noteShape";
+import { FLOWCHART_SHAPES, NOTE_SHAPE, NOTE_SHAPE_PAINT, NOTE_SHAPE_LABEL } from "./constants";
+import { documentPath, pointsAttr, shapePoints } from "./noteShape";
 
 const Figure = ({ caption, children }) => (
   <figure
@@ -82,10 +82,18 @@ const NoteShapeMini = ({ shape }) => {
       </svg>
     );
   }
-  if (shape === NOTE_SHAPE.HEXAGON) {
+  if (shape === NOTE_SHAPE.DOCUMENT) {
     return (
       <svg viewBox={`0 0 ${w} ${h}`} className={cn("h-9 w-14", paint)} aria-hidden="true">
-        <polygon points={pointsAttr(elongatedHexagon(w, h))} fill="inherit" stroke="inherit" strokeWidth="1.25" />
+        <path d={documentPath(w, h)} fill="inherit" stroke="inherit" strokeWidth="1.25" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+  const points = shapePoints(shape, w, h);
+  if (points) {
+    return (
+      <svg viewBox={`0 0 ${w} ${h}`} className={cn("h-9 w-14", paint)} aria-hidden="true">
+        <polygon points={pointsAttr(points)} fill="inherit" stroke="inherit" strokeWidth="1.25" strokeLinejoin="round" />
       </svg>
     );
   }
@@ -98,8 +106,8 @@ const NoteShapeMini = ({ shape }) => {
 
 const NoteFigure = () => (
   <Figure caption="Üst şeritten taşı, sağ alttan boyut, sağ üstten renk ve şekil.">
-    <div className="flex items-end justify-center gap-3">
-      {[NOTE_SHAPE.RECTANGLE, NOTE_SHAPE.HEXAGON, NOTE_SHAPE.OVAL].map((shape) => (
+    <div className="flex flex-wrap items-end justify-center gap-3">
+      {[...FLOWCHART_SHAPES, NOTE_SHAPE.HEXAGON].map((shape) => (
         <div key={shape} className="flex flex-col items-center gap-1">
           <NoteShapeMini shape={shape} />
           <span className="text-[9px] text-neutral-500">{NOTE_SHAPE_LABEL[shape]}</span>
@@ -234,7 +242,7 @@ const SECTIONS = [
   },
   {
     title: "3. Not",
-    body: "Tek bir not bloğu. Üst şeritten taşı, sağ alttan büyüt veya küçült. Sağ üstteki paletten rengini ve şeklini değiştir: dikdörtgen, uzun altıgen veya oval.",
+    body: "Tek bir not bloğu. Üst şeritten taşı, sağ alttan büyüt veya küçült. Sağ üstteki paletten rengini ve şeklini değiştir: akış diyagramı sembolleri (terminal, giriş/çıkış, işlem, karar, belge) veya uzun altıgen.",
     Figure: NoteFigure,
   },
   {
