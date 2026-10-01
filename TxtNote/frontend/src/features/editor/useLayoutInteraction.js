@@ -20,7 +20,7 @@ function canonicalFor(section, id) {
   return visit(section?.layout) || visit(section?.layoutBlocks) || null;
 }
 
-function readRect(node, root, model, zoom) {
+function readRect(node, root, model, zoom, sheetCache) {
   const paper = node.closest(".thesis-paper[data-thesis-section]");
   if (!paper) return null;
   const sectionId = node.getAttribute("data-layout-section") || paper.getAttribute("data-thesis-section");
@@ -39,12 +39,15 @@ function readRect(node, root, model, zoom) {
   const flow = node.closest(".thesis-flow-section");
   const sectionMode = flow?.getAttribute("data-thesis-section-mode");
   const explicitLock = canonical?.locked ?? node.getAttribute("data-layout-locked") === "true";
-  const sheets = [...(stack?.querySelectorAll(".thesis-sheet") || [])];
-  const sheetIndex = sheets.findIndex((sheet) => {
-    const sheetBox = sheet.getBoundingClientRect(); return box.top >= sheetBox.top && box.top < sheetBox.bottom;
-  });
+  // Sheet rects are cached per measurement pass (stack -> [{ top, bottom }]) so each sheet is read once.
+  let sheetBoxes = stack && sheetCache?.get(stack);
+  if (!sheetBoxes) {
+    sheetBoxes = [...(stack?.querySelectorAll(".thesis-sheet") || [])].map((sheet) => { const sheetBox = sheet.getBoundingClientRect(); return { top: sheetBox.top, bottom: sheetBox.bottom }; });
+    if (stack) sheetCache?.set(stack, sheetBoxes);
+  }
+  const sheetIndex = sheetBoxes.findIndex((sheetBox) => box.top >= sheetBox.top && box.top < sheetBox.bottom);
   const pageIndex = sheetIndex >= 0 ? sheetIndex : 0;
-  const pageTopMm = sheetIndex >= 0 ? (sheets[sheetIndex].getBoundingClientRect().top - paperBox.top) / scale : 0;
+  const pageTopMm = sheetIndex >= 0 ? (sheetBoxes[sheetIndex].top - paperBox.top) / scale : 0;
   return {
     ...canonical, id: node.getAttribute("data-layout-id"), sectionId, type: node.getAttribute("data-layout-type"),
     xMm, yMm, widthMm: Math.max(1, widthMm), heightMm: Math.max(1, heightMm), page, pageIndex, pageTopMm,
@@ -56,10 +59,15 @@ function readRect(node, root, model, zoom) {
   };
 }
 
-function measureAll(root, model, zoom) {
+// `ids` (optional) limits measurement to those layout ids instead of every element in the document.
+function measureAll(root, model, zoom, ids) {
   if (!root) return [];
-  return [...root.querySelectorAll("[data-layout-id][data-layout-section][data-layout-type]")]
-    .filter(editable).map((node) => readRect(node, root, model, zoom)).filter(Boolean);
+  const sheetCache = new Map();
+  const selector = "[data-layout-id][data-layout-section][data-layout-type]";
+  const nodes = ids
+    ? [...new Set(ids)].flatMap((id) => [...root.querySelectorAll(`[data-layout-id="${CSS.escape(String(id))}"]`)].filter((node) => node.matches(selector)))
+    : [...root.querySelectorAll(selector)];
+  return nodes.filter(editable).map((node) => readRect(node, root, model, zoom, sheetCache)).filter(Boolean);
 }
 
 function publish(thesis, callback, next, reason = "action") {
@@ -89,8 +97,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     selectionRef.current = next;
     setSelectedIds(next);
     const { model: currentModel, zoom: currentZoom } = latestRef.current;
-    const all = measureAll(rootRef.current, currentModel, currentZoom);
-    setGeometry(all.filter((entry) => next.includes(entry.id)));
+    setGeometry(measureAll(rootRef.current, currentModel, currentZoom, next));
   }, [rootRef]);
 
   const commitThesis = useCallback((next, reason = "action") => {
@@ -107,7 +114,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
   const patchElements = useCallback((patches, reason = "action") => {
     if (!patches?.length) return;
     const current = latestRef.current.thesis || {};
-    const bounds = measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom);
+    const bounds = measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom, patches.map((patch) => patch.id));
     const materialized = patches.flatMap((patch) => {
       const measured = bounds.find((item) => item.id === patch.id);
       if (measured?.locked) return typeof patch.locked === "boolean" ? [{ id: patch.id, locked: patch.locked }] : [];
@@ -121,14 +128,15 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     commitThesis(next, reason);
     requestAnimationFrame(() => {
       const selected = selectionRef.current;
-      setGeometry(measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom).filter((entry) => selected.includes(entry.id)));
+      setGeometry(measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom, selected));
     });
   }, [rootRef, commitThesis]);
 
   const performAction = useCallback((action) => {
-    const all = measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom);
-    const selected = all.filter((item) => selectionRef.current.includes(item.id));
+    const selected = measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom, selectionRef.current);
     if (!selected.length) return;
+    // Whole-document measurement is only needed to find z-order extremes or newly created copies.
+    const measureEvery = () => measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom);
     if (action === "copy") {
       clipboardRef.current = selected.map((item) => ({ ...item.canonical, ...item.measuredGeometry, layoutMode: "absolute" }));
       const text = clipboardRef.current.map((item) => item.text ?? item.content ?? "").filter(Boolean).join("\n");
@@ -144,6 +152,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       selectIds([]); return;
     }
     if (action === "duplicate") {
+      const all = measureEvery();
       let next = latestRef.current.thesis || {};
       for (const item of movable) next = duplicateLayoutElement(next, { ...item.canonical, ...item.measuredGeometry,
         xMm: item.xMm + 2, yMm: item.yMm + 2, layoutMode: "absolute", content: item.canonical.text ?? item.element.textContent ?? "" });
@@ -153,7 +162,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     }
     if (["lock", "unlock"].includes(action)) patches = selected.map((item) => ({ id: item.id, locked: action === "lock" }));
     else if (["bringForward", "sendBackward", "bringToFront", "sendToBack"].includes(action)) {
-      const max = Math.max(0, ...all.map((item) => Number(item.canonical?.zIndex) || 0));
+      const max = Math.max(0, ...measureEvery().map((item) => Number(item.canonical?.zIndex) || 0));
       patches = selected.filter((item) => item.editableLayout && !item.locked).map((item, index) => ({ id: item.id, layoutMode: "absolute", zIndex: action === "bringToFront" ? max + index + 1 : action === "sendToBack" ? -max - index - 1 : (Number(item.canonical?.zIndex) || 0) + (action === "bringForward" ? 1 : -1) }));
     } else if (action.startsWith("align")) {
       const alignMap = { alignLeft: "left", alignCenter: "centerX", alignRight: "right", alignTop: "top", alignMiddle: "centerY", alignBottom: "bottom" };
@@ -190,7 +199,11 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     if (!root) return undefined;
     if (!root.hasAttribute("tabindex")) root.tabIndex = 0;
     root.setAttribute("data-undo-owner", "local");
-    const updateGeometry = () => setGeometry(measureAll(root, latestRef.current.model, latestRef.current.zoom).filter((entry) => selectionRef.current.includes(entry.id)));
+    let geometryFrame = 0, moveFrame = 0, pendingMove = null;
+    const updateGeometry = () => {
+      if (geometryFrame) return;
+      geometryFrame = requestAnimationFrame(() => { geometryFrame = 0; setGeometry(measureAll(root, latestRef.current.model, latestRef.current.zoom, selectionRef.current)); });
+    };
     const clearTransient = (selector) => overlayRef.current?.querySelectorAll(selector).forEach((node) => node.remove());
     const drawMarquee = (rect) => {
       let box = overlayRef.current?.querySelector("[data-layout-transient-marquee]");
@@ -236,8 +249,11 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
         selectIds(ids);
         root.focus({ preventScroll: true });
         if (!rect.editableLayout || rect.locked) return;
-        const snapshot = measureAll(root, latestRef.current.model, latestRef.current.zoom).filter((item) => ids.includes(item.id));
-        gestureRef.current = { kind: "move", startX: event.clientX, startY: event.clientY, node, rect, snapshot, ids, pageKey: `${rect.sectionId}:${findSheetPage(node, event.clientY)}`, moved: false,
+        const everything = measureAll(root, latestRef.current.model, latestRef.current.zoom);
+        const snapshot = everything.filter((item) => ids.includes(item.id));
+        // Peer geometry is static during a move (only selected elements get transforms), so take it once.
+        const peers = everything.filter((item) => item.sectionId === rect.sectionId && item.pageIndex === rect.pageIndex && !ids.includes(item.id));
+        gestureRef.current = { kind: "move", startX: event.clientX, startY: event.clientY, node, rect, snapshot, peers, ids, pageKey: `${rect.sectionId}:${findSheetPage(node, event.clientY)}`, moved: false,
           inlineStyles: new Map(snapshot.map((item) => [item.id, { transform: item.element.style.transform, width: item.element.style.width, height: item.element.style.height }])) };
         event.preventDefault();
         return;
@@ -251,8 +267,14 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       }
     };
     const pointerMove = (event) => {
+      pendingMove = event;
+      if (!moveFrame) moveFrame = requestAnimationFrame(() => { moveFrame = 0; flushMove(); });
+    };
+    const flushMove = () => {
+      const event = pendingMove; pendingMove = null;
+      if (moveFrame) { cancelAnimationFrame(moveFrame); moveFrame = 0; }
       const gesture = gestureRef.current;
-      if (!gesture) return;
+      if (!gesture || !event) return;
       const dx = event.clientX - gesture.startX, dy = event.clientY - gesture.startY;
       if (!gesture.moved && Math.hypot(dx, dy) <= DRAG_THRESHOLD_PX) return;
       gesture.moved = true;
@@ -274,7 +296,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       const deltaX = dx / scale, deltaY = dy / scale;
       const moved = gesture.snapshot.map((item) => item.editableLayout && !item.locked ? ({ ...item, xMm: item.xMm + deltaX, yMm: item.yMm + deltaY }) : item);
       const primary = moved.find((item) => item.id === gesture.rect.id);
-      const peers = measureAll(root, latestRef.current.model, latestRef.current.zoom).filter((item) => item.sectionId === gesture.rect.sectionId && item.pageIndex === primary.pageIndex && !gesture.ids.includes(item.id));
+      const peers = gesture.peers;
       const guides = (latestRef.current.thesis?.layout?.guides || []).filter((guide) => (guide.sectionId == null || guide.sectionId === primary.sectionId) && (guide.pageIndex == null || guide.pageIndex === primary.pageIndex));
       const localPrimary = { ...primary, yMm: primary.yMm - primary.pageTopMm };
       const localPeers = peers.map((peer) => ({ ...peer, yMm: peer.yMm - primary.pageTopMm }));
@@ -291,6 +313,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       drawGuides(snapped.guides.map((guide) => ({ ...guide, positionMm: guide.axis === "y" ? guide.positionMm + primary.pageTopMm : guide.positionMm, page: primary.page, paper: primary.paper, scale: primary.scale })));
     };
     const pointerUp = (event) => {
+      flushMove();
       const gesture = gestureRef.current;
       if (!gesture) return;
       gestureRef.current = null;
@@ -319,6 +342,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       patchElements(patches);
     };
     const pointerCancel = () => {
+      pendingMove = null; if (moveFrame) { cancelAnimationFrame(moveFrame); moveFrame = 0; }
       const gesture = gestureRef.current;
       if (!gesture) return;
       gestureRef.current = null; drawMarquee(null); drawGuides([]);
@@ -374,17 +398,17 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       if (mod && event.key.toLowerCase() === "z") { event.preventDefault(); event.stopPropagation(); event.shiftKey ? redo() : undo(); }
       else if (mod && event.key.toLowerCase() === "y") { event.preventDefault(); event.stopPropagation(); redo(); }
       else if (mod && event.key.toLowerCase() === "a") { event.preventDefault(); event.stopPropagation(); selectIds(measureAll(root, latestRef.current.model, latestRef.current.zoom).map((item) => item.id)); }
-      else if (mod && event.key.toLowerCase() === "c") { clipboardRef.current = measureAll(root, latestRef.current.model, latestRef.current.zoom).filter((item) => selectionRef.current.includes(item.id)).map((item) => ({ ...item.canonical, ...item.measuredGeometry, layoutMode: "absolute" })); }
-      else if (mod && event.key.toLowerCase() === "x") { clipboardRef.current = measureAll(root, latestRef.current.model, latestRef.current.zoom).filter((item) => selectionRef.current.includes(item.id)); performAction("delete"); }
+      else if (mod && event.key.toLowerCase() === "c") { clipboardRef.current = measureAll(root, latestRef.current.model, latestRef.current.zoom, selectionRef.current).map((item) => ({ ...item.canonical, ...item.measuredGeometry, layoutMode: "absolute" })); }
+      else if (mod && event.key.toLowerCase() === "x") { clipboardRef.current = measureAll(root, latestRef.current.model, latestRef.current.zoom, selectionRef.current); performAction("delete"); }
       else if (mod && event.key.toLowerCase() === "v" && clipboardRef.current.length) {
         event.preventDefault(); let next = latestRef.current.thesis || {};
         for (const item of clipboardRef.current) next = duplicateLayoutElement(next, { ...item, xMm: item.xMm + 2, yMm: item.yMm + 2, content: item.text ?? item.content ?? "" });
         commitThesis(next);
       } else if (event.key === "Escape") { selectIds([]); setContextMenu(null); }
-      else if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key) && selectedIds.length) {
+      else if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key) && selectionRef.current.length) {
         event.preventDefault(); const delta = event.shiftKey ? 2.5 : 0.25;
-        patchElements(measureAll(root, latestRef.current.model, latestRef.current.zoom).filter((item) => selectionRef.current.includes(item.id) && item.editableLayout && !item.locked).map((item) => ({ id: item.id, xMm: item.xMm + (event.key === "ArrowLeft" ? -delta : event.key === "ArrowRight" ? delta : 0), yMm: item.yMm + (event.key === "ArrowUp" ? -delta : event.key === "ArrowDown" ? delta : 0), layoutMode: "absolute" })));
-      } else if (["Delete", "Backspace"].includes(event.key) && selectedIds.length) { event.preventDefault(); performAction("delete"); }
+        patchElements(measureAll(root, latestRef.current.model, latestRef.current.zoom, selectionRef.current).filter((item) => item.editableLayout && !item.locked).map((item) => ({ id: item.id, xMm: item.xMm + (event.key === "ArrowLeft" ? -delta : event.key === "ArrowRight" ? delta : 0), yMm: item.yMm + (event.key === "ArrowUp" ? -delta : event.key === "ArrowDown" ? delta : 0), layoutMode: "absolute" })));
+      } else if (["Delete", "Backspace"].includes(event.key) && selectionRef.current.length) { event.preventDefault(); performAction("delete"); }
     };
     const onContextMenu = (event) => {
       const node = nodeAt(event.target);
@@ -410,6 +434,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       root.removeEventListener("pointerdown", pointerDown); root.removeEventListener("click", suppressObjectClick, true); window.removeEventListener("pointermove", pointerMove); window.removeEventListener("pointerup", pointerUp); window.removeEventListener("pointercancel", pointerCancel);
       root.removeEventListener("dblclick", onDoubleClick); root.removeEventListener("keydown", onKeyDown, true); root.removeEventListener("contextmenu", onContextMenu);
       root.removeEventListener("focusin", updateGeometry); window.removeEventListener("resize", updateGeometry); observer.disconnect();
+      if (geometryFrame) cancelAnimationFrame(geometryFrame); if (moveFrame) cancelAnimationFrame(moveFrame); pendingMove = null; drawMarquee(null); drawGuides([]);
       if (gestureRef.current?.kind === "resize") {
         const { item, inlineStyles } = gestureRef.current; item.element.style.transform = inlineStyles?.transform || ""; item.element.style.width = inlineStyles?.width || ""; item.element.style.height = inlineStyles?.height || "";
       }

@@ -145,42 +145,60 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   // A bounded fixed point over the SAME browser flow. Only local presentation state changes.
   // Page-bottom notes change body capacity (and so heading pages), so notes are laid out
   // first and the generated indexes read the result; one signature covers both.
+  // The observer/listeners live as long as the paginated root exists; content or zoom changes only
+  // reset the fixed-point state (via paginationRef) and re-sync the observed flows.
+  const latestSourceModel = useRef(sourceModel);
+  latestSourceModel.current = sourceModel;
+  const paginationRef = useRef(null);
+  const paginationActive = Boolean(sourceModel) && THESIS_PAGED_LAYOUT;
   useLayoutEffect(() => {
     const root = papersRef.current;
-    if (!sourceModel || !root || !THESIS_PAGED_LAYOUT) return;
+    if (!paginationActive || !root) return undefined;
     let frame = 0, iterations = 0, previous = "", disposed = false, settled = false;
-    setIndexWarning("");
+    // Last serialized values applied to state; avoids re-stringifying the current state each pass.
+    let appliedPages = null, appliedNotes = null;
     const probe = () => {
       if (disposed) return;
-      const groups = groupThesisSections(sourceModel.sections);
+      const groups = groupThesisSections(latestSourceModel.current.sections);
       // A frame budget keeps typing responsive in long, note-heavy groups: an incomplete
       // pass (later pages still to re-lay) continues next frame and is not an iteration.
       const { views: notes, incomplete } = THESIS_PAGE_FOOTNOTES ? layoutThesisFootnotes(root, groups, footnoteState.current, performance.now() + 24) : { views: {} };
+      const notesText = JSON.stringify(notes);
+      const applyNotes = () => { if (notesText !== appliedNotes) { appliedNotes = notesText; setFootnoteViews(notes); } };
       if (incomplete) {
-        setFootnoteViews((current) => JSON.stringify(current) === JSON.stringify(notes) ? current : notes);
+        applyNotes();
         frame = requestAnimationFrame(probe);
         return;
       }
       const next = renderedIndexPages(root, groups);
-      const signature = JSON.stringify([next, notes]);
+      const pagesText = JSON.stringify(next);
+      const signature = `${pagesText}|${notesText}`;
       if (signature === previous) { settled = true; return; }
       if (iterations++ >= INDEX_ITERATION_CAP) {
         setIndexWarning("Dizin/dipnot sayfalaması kararlı hale gelmedi; son ölçülmüş sonuç kullanılıyor.");
         return;
       }
       previous = signature;
-      setIndexResolution((current) => JSON.stringify(current) === JSON.stringify(next) ? current : next);
-      setFootnoteViews((current) => JSON.stringify(current) === JSON.stringify(notes) ? current : notes);
+      if (pagesText !== appliedPages) { appliedPages = pagesText; setIndexResolution(next); }
+      applyNotes();
       frame = requestAnimationFrame(probe);
     };
     const restart = () => { cancelAnimationFrame(frame); if (settled) { iterations = 0; previous = ""; settled = false; } frame = requestAnimationFrame(probe); };
-    restart();
     const observer = new ResizeObserver(restart);
-    root.querySelectorAll(".thesis-page-flow").forEach((flow) => observer.observe(flow));
+    const observeFlows = () => { observer.disconnect(); root.querySelectorAll(".thesis-page-flow").forEach((flow) => observer.observe(flow)); };
+    // Content/zoom change: start a fresh fixed point (even mid-run) and pick up added/removed flows.
+    paginationRef.current = () => { iterations = 0; previous = ""; settled = false; observeFlows(); restart(); };
+    observeFlows();
+    restart();
     root.addEventListener("load", restart, true);
     document.fonts.ready.then(() => { if (!disposed) restart(); });
-    return () => { disposed = true; cancelAnimationFrame(frame); observer.disconnect(); root.removeEventListener("load", restart, true); };
-  }, [sourceModel, zoom]);
+    return () => { disposed = true; paginationRef.current = null; cancelAnimationFrame(frame); observer.disconnect(); root.removeEventListener("load", restart, true); };
+  }, [paginationActive]);
+  useLayoutEffect(() => {
+    if (!paginationActive) return;
+    setIndexWarning("");
+    paginationRef.current?.();
+  }, [sourceModel, zoom, paginationActive]);
 
   const saveThesis = (patch) => onResearchDataChange?.({ ...researchData, thesis: { ...thesis, ...patch } });
   const setValue = (key, value) => onResearchDataChange?.({ ...researchData, thesis: updateThesisMetadata(thesis, key, value) });
