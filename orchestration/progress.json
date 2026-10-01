@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-30",
+  "updatedAt": "2026-10-02",
   "maxAttempts": 3,
   "policy": "orchestration/README.md#policy-revision-2026-09-28 (supersedes conflicting older rules)",
   "universityOrder": [
@@ -173,17 +173,24 @@
   },
   "targets": {
     "aku-sbe": {
-      "analysis": "IN_PROGRESS",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": "2026 guide explicitly covers Turkish sanatta yeterlik and English-programme master's/doctoral theses; three required registry variants remain unregistered (orchestration/specs/aku-sbe.json).",
+      "analysis": "DONE",
+      "implementation": "DONE",
+      "validation": "PASS",
+      "attempts": 1,
+      "status": "PASS",
+      "lastError": null,
       "specPath": "orchestration/specs/aku-sbe.json",
       "reportPath": "orchestration/reports/aku-sbe.md",
       "commit": null,
-      "updatedAt": "2026-09-30",
-      "specReview": "IN_PROGRESS"
+      "updatedAt": "2026-10-02",
+      "specReview": "IN_PROGRESS",
+      "note": "Turkish master and PhD variants implemented and validated (attempt 1: 102/102 checks PASS per variant on the real PDF and DOCX; orchestration/validation/aku-sbe/attempt-1.md). Sanatta Yeterlik and English variants remain unregistered (missing source wording; failures/aku-sbe-variants.md at the university gate). Open human decisions: official inner-cover DOCX forms (14 pt, 25 mm) vs guide text; UNKNOWN items listed in attempt-1.md. Engine: levelStyles.unnumbered, unnumberedAfterNumberedSpaceBeforePt, footnote reserve margin fix (additive spacing).",
+      "validationPath": "orchestration/validation/aku-sbe/attempt-1.md",
+      "templatePath": "TxtNote/frontend/src/thesis/templates/aku-sbe.js",
+      "registryIds": [
+        "aku-sbe-master-tr-v1",
+        "aku-sbe-phd-tr-v1"
+      ]
     },
     "aku-fbe": {
       "analysis": "DONE",
@@ -199,16 +206,16 @@
       "specReview": "DONE"
     },
     "aku-sagbil": {
-      "analysis": "IN_PROGRESS",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "IN_PROGRESS",
+      "analysis": "DONE",
+      "implementation": "DONE",
+      "validation": "PASS (self, attempt-1; independent pending)",
+      "attempts": 1,
+      "status": "IMPLEMENTED",
       "lastError": "2022 source rule and section/placeholder disposition audits complete: 156/10/22/7 rules; sections 13 reconciled, 6 conflict, 1 unknown; placeholders 22 reconciled, 5 historical-only. Geometry, validation checks, and engine gaps remain pending the FBE-first gate.",
       "specPath": "orchestration/specs/aku-sagbil.json",
       "reportPath": "orchestration/reports/aku-sagbil.md",
       "commit": null,
-      "updatedAt": "2026-09-30",
+      "updatedAt": "2026-10-02",
       "specReview": "IN_PROGRESS"
     },
     "aku-cografya-lisans": {

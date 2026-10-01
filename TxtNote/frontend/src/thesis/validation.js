@@ -134,10 +134,11 @@ function validateIndex(index, body, headings, path, captionKinds = {}) {
   if (index.leaderFlow !== undefined && !["flex", "inline"].includes(index.leaderFlow)) errors.push(`${path}.leaderFlow geçersiz`);
   if (index.labelStyle !== undefined) errors.push(...(object(index.labelStyle) ? validateTextStyle({ ...body, ...index.style, ...index.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
   if (index.hanging !== undefined && index.hanging !== "label") errors.push(`${path}.hanging geçersiz`);
+  if (index.unnumberedAfterNumberedSpaceBeforePt !== undefined && !nonnegative(index.unnumberedAfterNumberedSpaceBeforePt)) errors.push(`${path}.unnumberedAfterNumberedSpaceBeforePt geçersiz`);
   if (index.levelStyles !== undefined) {
     if (!object(index.levelStyles)) errors.push(`${path}.levelStyles nesne olmalı`);
     else for (const [level, style] of Object.entries(index.levelStyles)) {
-      errors.push(...(/^[1-9]$/.test(level) && object(style) ? validateTextStyle({ ...body, ...index.style, ...style }, `${path}.levelStyles.${level}`) : [`${path}.levelStyles.${level} geçersiz`]));
+      errors.push(...((/^[1-9]$/.test(level) || level === "unnumbered") && object(style) ? validateTextStyle({ ...body, ...index.style, ...style }, `${path}.levelStyles.${level}`) : [`${path}.levelStyles.${level} geçersiz`]));
       if (object(style) && style.includePageNumber !== undefined && typeof style.includePageNumber !== "boolean") errors.push(`${path}.levelStyles.${level}.includePageNumber geçersiz`);
     }
   }

@@ -10,6 +10,7 @@ import { mathFromLatex } from "../lib/mathOmml.js";
 import { academicPdfFontFace, collectAcademicPdfFontRequests, exactAcademicPdfFont, embedAcademicPdfFonts, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
 import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, indentMm, resolveChromeText, transformThesisText } from "./engine.js";
 import { PX_PER_MM, thesisGroupHasPageContent } from "./pageLayout.js";
+import { indexRowStyle } from "./generatedIndex.js";
 import { flattenSpecialPage, specialPageRowWidths } from "./specialPages.js";
 import { continuationParts } from "./tableContinuation.js";
 import { MM_PER_PT, mmToTwip, ptToTwip } from "./units.js";
@@ -547,8 +548,12 @@ function docxChildren(section, context) {
     const rule = section.generatedIndex;
     children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context, { anchor: section.indexSources?.find((entry) => entry.tocTitle)?.anchor }));
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
+    let previousRow = null;
     for (const row of section.indexRows) {
-      const levelStyle = rule.levelStyles?.[row.level || 1] || {};
+      const levelStyle = { ...(indexRowStyle(rule, row) || {}) };
+      // generatedIndex.unnumberedAfterNumberedSpaceBeforePt: extra space above an unnumbered title row that follows a numbered row.
+      if (rule.unnumberedAfterNumberedSpaceBeforePt > 0 && row.unnumbered && previousRow && !previousRow.unnumbered) levelStyle.spaceBeforePt = (levelStyle.spaceBeforePt ?? rule.style?.spaceBeforePt ?? 0) + rule.unnumberedAfterNumberedSpaceBeforePt;
+      previousRow = row;
       const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : 0;
       const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
       const bold = (rule.labelStyle?.fontWeight || 0) >= 600;

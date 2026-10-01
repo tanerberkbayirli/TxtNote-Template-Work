@@ -124,7 +124,12 @@ function applyStamp(cut, owner) {
   let entry = reserves.get(cut.element);
   if (!entry || cut.element.getAttribute(STAMP) !== "reserve") {
     const style = getComputedStyle(cut.element);
-    entry = { padding: parseFloat(style.paddingBottom) || 0, margin: parseFloat(style.marginBottom) || 0, owners: new Map() };
+    // The reserve (padding) replaces margin-bottom one for one only where that margin is not already collapsed into the next block's
+    // margin-top (Word-additive spacing: 6 pt after + 6 pt before is one 12 pt gap): the part the neighbour's margin covers is not stamped.
+    const next = cut.element.nextElementSibling;
+    const nextTop = next ? Math.max(0, parseFloat(getComputedStyle(next).marginTop) || 0) : 0;
+    const bottom = parseFloat(style.marginBottom) || 0;
+    entry = { padding: parseFloat(style.paddingBottom) || 0, margin: bottom > 0 ? Math.max(bottom - nextTop, 0) : bottom, owners: new Map() };
     reserves.set(cut.element, entry);
   }
   entry.owners.set(owner, cut.amount);

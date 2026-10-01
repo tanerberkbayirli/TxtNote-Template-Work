@@ -180,8 +180,10 @@ export interface GeneratedIndexRule {
   labelStyle?: Partial<TextStyle>;
   /** "label": wrapped entry lines start under the entry title, after the label. */
   hanging?: "label";
-  /** Row style per level (weight, spaceBeforePt/After, leftIndentMm override, align); `includePageNumber: false` lists the level's rows without leader and page number. */
+  /** Row style per level (weight, spaceBeforePt/After, leftIndentMm override, align); `includePageNumber: false` lists the level's rows without leader and page number. The key "unnumbered" styles the unnumbered title rows (section titles such as ÖZET, GİRİŞ, KAYNAKÇA; any level) and wins over the level's own style, so numbered chapter rows and title rows of level 1 can differ. */
   levelStyles?: Record<string, Partial<TextStyle> & { includePageNumber?: boolean }>;
+  /** Extra space (pt) above an unnumbered title row that directly follows a numbered row, i.e. the first back-matter row after the chapters (editor, PDF and Word). */
+  unnumberedAfterNumberedSpaceBeforePt?: number;
 }
 /** editable: user HTML stored in the note by section id; static: template-owned; generated: built from the document. */
 export type SectionMode = "editable" | "static" | "generated";

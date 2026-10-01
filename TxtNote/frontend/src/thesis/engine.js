@@ -459,9 +459,12 @@ export function thesisSectionCss(section) {
     // Optional: label typography, wrapped lines hanging under the entry title, per-level row styles.
     if (index.labelStyle) rules.push(`${scope} .thesis-index-label{${labelCss(index.labelStyle)}}`);
     if (index.hanging === "label") rules.push(`${scope} .thesis-index-text{display:flex;align-items:baseline;column-gap:0.25em}${scope} .thesis-index-text>.thesis-index-label{flex:none;white-space:nowrap}${scope} .thesis-index-text>.thesis-index-title{min-width:0}`);
-    for (const [level, style] of Object.entries(index.levelStyles || {})) {
-      rules.push(`${scope} .thesis-toc li[data-index-level="${level}"]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}${style.align ? `text-align:${style.align};` : ""}${style.includePageNumber === false ? "display:block;" : ""}}`);
+    // "unnumbered" (rows of unnumbered titles) is emitted last, so it overrides the level rule of the same specificity.
+    for (const [level, style] of Object.entries(index.levelStyles || {}).sort(([a], [b]) => Number(a === "unnumbered") - Number(b === "unnumbered"))) {
+      rules.push(`${scope} .thesis-toc li[${level === "unnumbered" ? "data-index-unnumbered" : `data-index-level="${level}"`}]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}${style.align ? `text-align:${style.align};` : ""}${style.includePageNumber === false ? "display:block;" : ""}}`);
     }
+    // Extra space above the first unnumbered title row that follows numbered rows (back matter after the chapters).
+    if (index.unnumberedAfterNumberedSpaceBeforePt > 0) rules.push(`${scope} .thesis-toc li:not([data-index-unnumbered]) + li[data-index-unnumbered]{margin-top:${index.unnumberedAfterNumberedSpaceBeforePt}pt;}`);
     // leaderFlow "inline": leader dots and page number are floats inside the title box, i.e. on the last line of a wrapped entry (Word's right tab with leader).
     if (index.leaderFlow === "inline") rules.push(
       `${scope} .thesis-toc li{display:block}`,
