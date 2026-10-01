@@ -22,8 +22,8 @@ export default function LayoutRulers({ page, zoom = 1, guides = [], onGuidesChan
   const visibleGuides = draftGuides ?? guides;
   const widthPx = cssPx(page?.widthMm ?? 0, zoom);
   const heightPx = cssPx(page?.heightMm ?? 0, zoom);
-  const minorMm = unit === 'in' || unit === 'inch' ? 2.54 : 1;
-  const majorEvery = 10;
+  const minorMm = unit === 'pt' ? convertLength(1, 'pt', 'mm') : unit === 'in' || unit === 'inch' ? 2.54 : 1;
+  const majorEvery = (unit === 'pt' ? 36 : 10) * Math.max(1, Math.ceil(0.65 / zoom));
   const horizontalTicks = useMemo(() => makeTicks(page?.widthMm ?? 0, minorMm, majorEvery), [page?.widthMm, minorMm, majorEvery]);
   const verticalTicks = useMemo(() => makeTicks(page?.heightMm ?? 0, minorMm, majorEvery), [page?.heightMm, minorMm, majorEvery]);
 
@@ -40,9 +40,12 @@ export default function LayoutRulers({ page, zoom = 1, guides = [], onGuidesChan
     };
     window.addEventListener('pointerup', endDrag);
     window.addEventListener('pointercancel', endDrag);
+    const cancelDrag = (event) => { if (event.key === 'Escape' && dragRef.current) endDrag({ type: 'pointercancel' }); };
+    window.addEventListener('keydown', cancelDrag);
     return () => {
       window.removeEventListener('pointerup', endDrag);
       window.removeEventListener('pointercancel', endDrag);
+      window.removeEventListener('keydown', cancelDrag);
     };
   }, []);
 
@@ -113,7 +116,7 @@ export default function LayoutRulers({ page, zoom = 1, guides = [], onGuidesChan
       aria-label={`Horizontal ruler, ${formatPosition(page.widthMm, unit)} wide`} onPointerDown={(event) => startNewGuide(event, 'x')}>
       {horizontalTicks.map((tick) => <span key={tick.index} className={`thesis-ruler-tick${tick.major ? ' is-major' : ''}`}
         style={{ position: 'absolute', left: cssPx(tick.mm, zoom), bottom: 0, height: tick.major ? 14 : 6, borderLeft: '1px solid currentColor', boxSizing: 'border-box', pointerEvents: 'none' }}>
-        {tick.major && <span style={{ position: 'absolute', top: 2, left: 3, whiteSpace: 'nowrap', pointerEvents: 'none' }}>{formatPosition(tick.mm, unit)}</span>}
+        {tick.major && <span style={{ position: 'absolute', top: 2, left: 3, whiteSpace: 'nowrap', pointerEvents: 'none' }}>{Number(convertLength(tick.mm, 'mm', unit).toFixed(unit === 'mm' ? 0 : 2))}</span>}
       </span>)}
       {horizontalRulerGuides.map((guide) => <GuideHandle key={guide.id} guide={guide} offset={cssPx(guide.positionMm, zoom)}
         vertical={true} active={draggingId === guide.id} onPointerDown={(event) => startMoveGuide(event, guide)}
@@ -124,13 +127,13 @@ export default function LayoutRulers({ page, zoom = 1, guides = [], onGuidesChan
       aria-label={`Vertical ruler, ${formatPosition(page.heightMm, unit)} tall`} onPointerDown={(event) => startNewGuide(event, 'y')}>
         {verticalTicks.map((tick) => <span key={tick.index} className={`thesis-ruler-tick${tick.major ? ' is-major' : ''}`}
         style={{ position: 'absolute', top: cssPx(tick.mm, zoom), right: 0, width: tick.major ? 14 : 6, borderTop: '1px solid currentColor', boxSizing: 'border-box', pointerEvents: 'none' }}>
-        {tick.major && <span style={{ position: 'absolute', top: 2, right: 3, whiteSpace: 'nowrap', writingMode: 'vertical-rl', pointerEvents: 'none' }}>{formatPosition(tick.mm, unit)}</span>}
+        {tick.major && <span style={{ position: 'absolute', top: 2, right: 3, whiteSpace: 'nowrap', writingMode: 'vertical-rl', pointerEvents: 'none' }}>{Number(convertLength(tick.mm, 'mm', unit).toFixed(unit === 'mm' ? 0 : 2))}</span>}
       </span>)}
       {verticalRulerGuides.map((guide) => <GuideHandle key={guide.id} guide={guide} offset={cssPx(guide.positionMm, zoom)}
         vertical={false} active={draggingId === guide.id} onPointerDown={(event) => startMoveGuide(event, guide)}
         onDoubleClick={(event) => deleteGuide(event, guide)} onContextMenu={(event) => toggleLock(event, guide)} />)}
     </div>
-    <div className="thesis-ruler-page-content" style={{ gridColumn: 2, gridRow: 2, width: widthPx, height: heightPx, position: 'relative' }}>
+    <div className="thesis-ruler-page-content" style={{ gridColumn: 2, gridRow: 2, width: widthPx, minHeight: heightPx, position: 'relative' }}>
       {children}
       <div aria-hidden="true" data-thesis-editor-only="" style={{ position: 'absolute', inset: 0, overflow: 'visible', pointerEvents: 'none', zIndex: 1000 }}>
         {visibleGuides.map((guide) => guide.axis === 'x'

@@ -893,3 +893,6 @@ export function isBlankAcademicNote(note) {
   const summary = String(note?.researchData?.docAbstract ?? "").trim();
   return !title && !content && !authors && !summary;
 }
+// The shared academic figure block uses physical paragraph spacing in editor and export.
+export const ACADEMIC_FIGURE_MARGIN_PT = 15;
+export const ACADEMIC_TABLE_CELL_PADDING_PT = Object.freeze({ vertical: 6, horizontal: 8 });

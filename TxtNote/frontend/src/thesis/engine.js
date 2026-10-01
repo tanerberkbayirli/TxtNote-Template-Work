@@ -8,6 +8,8 @@ import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 import { resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { resolveLayoutNodes, resolveLayoutPage } from "./layoutDocument.js";
+import { resolveLayoutTypography } from "./layoutProperties.js";
+import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../lib/academicDocument.js";
 
 const tokenPattern = /\{\{([A-Z][A-Z0-9_]*)\}\}/g;
 const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -191,6 +193,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     if (!isThesisSectionActive(section, { ...thesis, values: { ...values, degreeType: values.degreeType ?? values.DEGREE_TYPE } })) continue;
     const rules = resolveSectionRules(template, section);
     rules.page = resolveLayoutPage(rules.page, section.id, 0, thesis.layout);
+    rules.body = resolveLayoutTypography(rules.body, section.id, thesis.layout);
     const mode = thesisSectionMode(section);
     const editable = mode === "editable";
     const source = thesisSourceHtml(thesisSectionContent(section, thesis, mainContent));
@@ -220,7 +223,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
 }
 
 function serializeStyle(style, lineSpacing) {
-  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};line-height:${effectiveLineHeight(style.lineHeight, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${style.firstLineIndentMm || 0}mm;padding-left:${style.leftIndentMm || 0}mm;padding-right:${style.rightIndentMm || 0}mm;`;
+  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};line-height:${effectiveLineHeight(style.lineHeight, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${style.firstLineIndentMm || 0}mm;padding-left:${style.leftIndentMm || 0}mm;padding-right:${style.rightIndentMm || 0}mm;${style.color ? `color:${style.color};` : ""}`;
 }
 
 export function thesisSectionCss(section) {
@@ -239,11 +242,11 @@ export function thesisSectionCss(section) {
     // Legacy loose lines keep their geometry. New <p> blocks have real paragraph spacing.
     `${scope} .thesis-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};margin:0;padding:0;text-indent:${text.firstLineIndentMm || 0}mm each-line;white-space:pre-wrap;overflow-wrap:break-word;}`,
     `${scope} .thesis-body :is(ul,ol,table,figure,pre,.academic-code,.academic-table-wrap,.math-formula){text-indent:0;}`,
-    `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};color:#111;min-height:0;padding:0;margin:0;overflow:visible;}`,
+    `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};color:${text.color || "#111"};min-height:0;padding:0;margin:0;overflow:visible;}`,
     `${scope} .thesis-body p{margin:${text.spaceBeforePt || 0}pt 0 ${text.spaceAfterPt || 0}pt;text-indent:${text.firstLineIndentMm || 0}mm;}`,
     `${scope} .thesis-body img{max-width:100%;max-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm;height:auto;object-fit:contain;}`,
     `${scope} .thesis-body table{width:100%;border-collapse:collapse;}`,
-    `${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:4pt;}`,
+    `${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:${ACADEMIC_TABLE_CELL_PADDING_PT.vertical}pt ${ACADEMIC_TABLE_CELL_PADDING_PT.horizontal}pt;}`,
     `${scope} .thesis-body caption{caption-side:${tables.position === "above" ? "top" : "bottom"};${styleCss(tables.style)}text-align:${tables.captionAlignment === "auto" ? "center" : tables.captionAlignment || tables.style.align || "left"};margin-top:${tables.spacingBeforePt ?? tables.style.spaceBeforePt ?? 0}pt;margin-bottom:${tables.spacingAfterPt ?? tables.style.spaceAfterPt ?? 0}pt;}`,
     // Captions are document text: the academic editor's muted figcaption colour does not apply.
     `${scope} .thesis-body figcaption{${styleCss(figures.style)}color:#111;text-align:${figures.captionAlignment === "auto" ? "center" : figures.captionAlignment || figures.style.align || "left"};margin-top:${figures.spacingBeforePt ?? figures.style.spaceBeforePt ?? 0}pt;margin-bottom:${figures.spacingAfterPt ?? figures.style.spaceAfterPt ?? 0}pt;}`,

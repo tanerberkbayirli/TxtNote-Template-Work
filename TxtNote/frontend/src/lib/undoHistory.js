@@ -200,6 +200,9 @@ export function isRedoHotkey(event) {
 export function shouldHandleUndoHotkey(event) {
   const target = event.target;
   if (!target || typeof target.closest !== "function") return true;
+  // An object controller or transient text editor can explicitly own its undo.
+  // Only the event target opts in; ordinary note bodies inside it still use app history.
+  if (target.getAttribute?.("data-undo-owner") === "local") return false;
   if (target.closest('[role="dialog"], [role="alertdialog"]')) return false;
   const field = target.closest("input, textarea, select");
   if (!field) return true;

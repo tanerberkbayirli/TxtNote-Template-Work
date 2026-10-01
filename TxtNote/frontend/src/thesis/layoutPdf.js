@@ -8,12 +8,12 @@
  * it and the output is identical at every zoom level.
  */
 import { jsPDF } from "jspdf";
-import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
+import { academicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
 import { PX_PER_MM, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const MM = 1 / PX_PER_MM;
 // KaTeX keeps a visually hidden MathML copy next to the drawn formula; only the drawn one is exported.
-const SKIP = "button,input,select,textarea,script,style,svg,math,.katex-mathml,.sr-only,[data-export-ignore],.academic-page-gap";
+const SKIP = "button,input,select,textarea,script,style,svg,math,.katex-mathml,.sr-only,[data-export-ignore],[data-thesis-editor-only],.academic-page-gap";
 // jsPDF's built-in Helvetica/Courier only encode Latin-1; other words use the embedded academic face.
 const LATIN1 = /^[\x20-\x7e\xa0-\xff]*$/;
 
@@ -51,13 +51,18 @@ function color(value) {
   return a === 0 ? null : [r, g, b];
 }
 
-function pdfFace(pdf, style, text) {
+function pdfFace(pdf, style, text, exactFamily = false) {
   const family = String(style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
   const bold = Number(style.fontWeight) >= 600;
   const italic = style.fontStyle === "italic" || style.fontStyle.startsWith("oblique");
+  const faceStyle = pdfFontStyle({ bold, italic });
+  if (exactFamily) {
+    const canonical = normalizeAcademicPdfFamily(family);
+    if (!canonical) throw new Error(`Konumlandırılmış metin için PDF yazı tipi ${family || "(belirtilmemiş)"} izin verilen ailelerden biri değil`);
+    return { name: academicPdfFont(pdf, faceStyle, canonical), style: faceStyle };
+  }
   const builtin = /^(arial|helvetica|sans-serif|liberation sans|arimo)$/.test(family) ? "helvetica" : /^(courier|courier new|monospace|consolas)$/.test(family) ? "courier" : "";
   if (builtin && LATIN1.test(text)) return { name: builtin, style: `${bold ? "bold" : ""}${italic ? "italic" : ""}` || "normal" };
-  const faceStyle = pdfFontStyle({ bold, italic });
   return { name: academicPdfFont(pdf, faceStyle), style: faceStyle };
 }
 
@@ -92,7 +97,7 @@ function markerText(li, type) {
 }
 
 /** Draw operations of one page group, in CSS px relative to its unscaled page stack. */
-function collectGroup(stack, language) {
+function collectGroup(stack, language, exactFamilies = new Set()) {
   const origin = stack.getBoundingClientRect();
   // The exact display scale; offsetWidth is rounded to whole pixels (793.7 → 794 for A4),
   // which would stretch every position by ~0.04%.
@@ -172,7 +177,7 @@ function collectGroup(stack, language) {
     }
   };
 
-  const borders = (element, style) => {
+  const borders = (element, style, zIndex = 0) => {
     if (element.matches(".academic-page-break")) return;
     const sides = ["Top", "Right", "Bottom", "Left"].map((side) => ({
       side, width: parseFloat(style[`border${side}Width`]) || 0, color: color(style[`border${side}Color`]),
@@ -193,7 +198,7 @@ function collectGroup(stack, language) {
           Left: [box.left + half, box.top, box.left + half, box.top + box.height],
           Right: [box.left + box.width - half, box.top, box.left + box.width - half, box.top + box.height],
         }[entry.side];
-        ops.push({ type: "line", points: line, width: entry.width, color: entry.color, top: Math.min(line[1], line[3]), height: Math.abs(line[3] - line[1]) });
+        ops.push({ type: "line", points: line, width: entry.width, color: entry.color, top: Math.min(line[1], line[3]), height: Math.abs(line[3] - line[1]), zIndex });
       }
     });
   };
@@ -202,10 +207,21 @@ function collectGroup(stack, language) {
     if (element.matches(SKIP)) return;
     const style = getComputedStyle(element);
     if (style.display === "none" || style.visibility === "hidden") return;
-    borders(element, style);
+    let layoutAnchor = null;
+    for (let current = element; current && current !== stack; current = current.parentElement) {
+      if (!current.hasAttribute?.("data-layout-id")) continue;
+      const candidateStyle = getComputedStyle(current);
+      if (candidateStyle.position !== "static") { layoutAnchor = current; break; }
+    }
+    const layoutStyle = layoutAnchor ? getComputedStyle(layoutAnchor) : null;
+    const zIndex = Number.parseInt(layoutStyle?.zIndex || "0", 10) || 0;
+    const positioned = layoutStyle?.position === "absolute";
+    const canonicalFamily = normalizeAcademicPdfFamily(style.fontFamily);
+    const exactFont = positioned || (canonicalFamily && exactFamilies.has(canonicalFamily));
+    borders(element, style, zIndex);
     if (element.tagName === "IMG") {
       const box = local(element.getBoundingClientRect());
-      if (box.width > 0 && box.height > 0) ops.push({ type: "image", element, x: box.left, top: box.top, width: box.width, height: box.height });
+      if (box.width > 0 && box.height > 0) ops.push({ type: "image", element, x: box.left, top: box.top, width: box.width, height: box.height, zIndex });
       return;
     }
     const first = ops.length;
@@ -214,7 +230,7 @@ function collectGroup(stack, language) {
     const decoration = element.firstChild ? decorations(element) : [];
     for (const child of element.childNodes) {
       if (child.nodeType === 1) visit(child);
-      else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration });
+      else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration, positioned, exactFont: Boolean(exactFont), zIndex });
     }
     const firstText = ops.slice(first).find((op) => op.type === "text");
     // Generated content the editor shows: heading numbers (::before) and list markers (::marker).
@@ -234,7 +250,7 @@ function collectGroup(stack, language) {
 
   const pushLabel = (text, x, anchor, style) => {
     const fill = color(style.color);
-    if (fill) ops.push({ type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [] });
+    if (fill) ops.push({ type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [], positioned: Boolean(anchor.positioned), exactFont: Boolean(anchor.exactFont), zIndex: anchor.zIndex || 0 });
   };
 
   visit(stack);
@@ -256,7 +272,14 @@ function imageData(element) {
   } catch { return null; }
 }
 
-function drawOp(pdf, op, pageTop) {
+function assertPositionedFont(style, text, templateId) {
+  const family = String(style.fontFamily || "").split(",")[0].replace(/[\"']/g, "").trim();
+  if (!normalizeAcademicPdfFamily(family)) throw new Error(`Konumlandırılmış metin için PDF yazı tipi ${family || "(belirtilmemiş)"} izin verilen ailelerden biri değil`);
+  void text;
+  void templateId;
+}
+
+function drawOp(pdf, op, pageTop, templateId) {
   if (op.type === "line") {
     const [x1, y1, x2, y2] = op.points;
     pdf.setDrawColor(...op.color); pdf.setLineWidth(op.width * MM);
@@ -268,7 +291,8 @@ function drawOp(pdf, op, pageTop) {
     if (image) pdf.addImage(image.data, image.format, op.x * MM, (op.top - pageTop) * MM, op.width * MM, op.height * MM, undefined, "FAST");
     return;
   }
-  const face = pdfFace(pdf, op.style, op.text);
+  if (op.exactFont || op.positioned) assertPositionedFont(op.style, op.text, templateId);
+  const face = pdfFace(pdf, op.style, op.text, op.exactFont || op.positioned);
   pdf.setFont(face.name, face.style);
   pdf.setFontSize(parseFloat(op.style.fontSize) * 0.75);
   pdf.setTextColor(...op.color);
@@ -303,16 +327,19 @@ export function thesisLayoutPages(root, groups) {
   return thesisPageStacks(root, groups).flatMap(({ group, pages }) => Array.from({ length: pages }, (_, index) => ({ groupId: group.id, index })));
 }
 
-export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId }) {
+export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId, documentLayout }) {
   await document.fonts?.ready;
   const stacks = thesisPageStacks(root, groups);
+  const sections = groups.flatMap(group => group.sections || []);
+  const fontRequests = collectAcademicPdfFontRequests(documentLayout, sections);
+  const exactFamilies = new Set(fontRequests.map(value => normalizeAcademicPdfFamily(value) || value));
   let pdf = null;
   for (const { group, stack, metrics, pages } of stacks) {
     if (!pages) continue;
     const { widthMm, heightMm } = group.rules.page;
     const orientation = widthMm > heightMm ? "l" : "p";
     const byPage = Array.from({ length: pages }, () => []);
-    for (const op of collectGroup(stack, language)) {
+    for (const op of collectGroup(stack, language, exactFamilies)) {
       const middle = op.top + (op.height ?? (op.baseline - op.top)) / 2;
       byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / metrics.stridePx)))].push(op);
     }
@@ -320,12 +347,15 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
       if (!pdf) {
         pdf = new jsPDF({ unit: "mm", format: [widthMm, heightMm], orientation, compress: true });
         pdf.setProperties({ title: title || "Tez", creator: "TxtNote" });
-        await embedAcademicPdfFonts(pdf, { templateId });
+        await embedAcademicPdfFonts(pdf, { templateId, extraFontFamilies: fontRequests });
       } else pdf.addPage([widthMm, heightMm], orientation);
       const pageTop = index * metrics.stridePx;
-      // Lines and images under text, as in the editor.
-      for (const op of ops) if (op.type !== "text") drawOp(pdf, op, pageTop);
-      for (const op of ops) if (op.type === "text") drawOp(pdf, op, pageTop);
+      // Higher canonical z-indexes paint later; ties keep the legacy underlay-before-text order.
+      const ordered = ops.map((op, order) => ({ op, order })).sort((left, right) =>
+        (left.op.zIndex || 0) - (right.op.zIndex || 0)
+        || Number(left.op.type === "text") - Number(right.op.type === "text")
+        || left.order - right.order);
+      for (const { op } of ordered) drawOp(pdf, op, pageTop, templateId);
     }
   }
   if (!pdf) throw new Error("Dışa aktarılacak sayfa yok");

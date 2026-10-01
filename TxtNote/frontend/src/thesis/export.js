@@ -1,15 +1,16 @@
 import { jsPDF } from "jspdf";
 import {
   AlignmentType, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
-  LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
+  HeightRule, LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
   SectionType, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab,
 } from "docx";
-import { parseAcademicHtml } from "../lib/academicDocument.js";
-import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
+import { ACADEMIC_FIGURE_MARGIN_PT, ACADEMIC_TABLE_CELL_PADDING_PT, parseAcademicHtml } from "../lib/academicDocument.js";
+import { academicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
 import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, resolveChromeText, transformThesisText } from "./engine.js";
 import { PX_PER_MM, thesisGroupHasPageContent } from "./pageLayout.js";
-import { specialPageRowWidths } from "./specialPages.js";
+import { flattenSpecialPage, specialPageRowWidths } from "./specialPages.js";
 import { MM_PER_PT, mmToTwip, ptToTwip } from "./units.js";
+import { positionedLayoutDocx, splitLayoutNodes } from "./layoutDocx.js";
 
 const mmPerPt = MM_PER_PT;
 const strip = (html) => String(html ?? "").replace(/<[^>]*>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").trim();
@@ -19,14 +20,48 @@ const blockText = (block) => {
   return runs.map((run) => run.type === "break" ? "\n" : run.type === "link" ? (run.children || []).map((child) => child.text || "").join("") : run.text || "").join("") || block.text || "";
 };
 const pageFormat = (value) => ({ "roman-lower": NumberFormat.LOWER_ROMAN, "roman-upper": NumberFormat.UPPER_ROMAN, "alpha-lower": NumberFormat.LOWER_LETTER, "alpha-upper": NumberFormat.UPPER_LETTER }[value] || NumberFormat.DECIMAL);
+const stripSpecialLayoutMarkup = (source) => {
+  const html = String(source ?? "");
+  const tagPattern = /<!--[\s\S]*?-->|<![^>]*>|<[^>]+>/g;
+  const voidTags = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"]);
+  let output = "";
+  let cursor = 0;
+  let skipped = [];
+  for (const match of html.matchAll(tagPattern)) {
+    const token = match[0];
+    const start = match.index;
+    const parsed = token.match(/^<\s*(\/?)\s*([A-Za-z][\w:-]*)/);
+    if (skipped.length) {
+      if (parsed) {
+        const [, closing, rawName] = parsed;
+        const name = rawName.toLowerCase();
+        if (closing) {
+          const index = skipped.lastIndexOf(name);
+          if (index >= 0) skipped.splice(index);
+        } else if (!voidTags.has(name) && !/\/\s*>$/.test(token)) skipped.push(name);
+      }
+      cursor = start + token.length;
+      continue;
+    }
+    output += html.slice(cursor, start);
+    if (/\bdata-thesis-block(?:\s|=|\/?>)/i.test(token) && parsed) {
+      const [, closing, rawName] = parsed;
+      const name = rawName.toLowerCase();
+      if (!closing && !voidTags.has(name) && !/\/\s*>$/.test(token)) skipped = [name];
+    } else output += token;
+    cursor = start + token.length;
+  }
+  if (!skipped.length) output += html.slice(cursor);
+  return output;
+};
 const asBlocks = (section) => {
-  if (section.layoutBlocks) return [];
-  const outline = (section.indexSources || extractThesisHeadings(section.html, section.rules)).filter((entry) => !entry.kind || entry.kind === "toc");
+  const cleanHtml = stripSpecialLayoutMarkup(section.html);
+  const outline = (section.indexSources || extractThesisHeadings(cleanHtml, section.rules)).filter((entry) => !entry.kind || entry.kind === "toc");
   let headingIndex = 0;
   // Caption counters and heading labels are compiled once, across the document.
   const captions = (section.indexSources || []).filter((entry) => entry.kind === "figures" || entry.kind === "tables");
   let captionIndex = 0;
-  return parseAcademicHtml(section.html, { lines: true }).map((block) => {
+  return parseAcademicHtml(cleanHtml, { lines: true }).map((block) => {
     if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "" }; }
     if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionAnchor: entry?.anchor, caption: entry?.title || block.caption }; }
     return block;
@@ -34,8 +69,13 @@ const asBlocks = (section) => {
 };
 const captionText = (label, block) => `${label} ${block.captionNumber}. ${block.caption}`;
 
-function pdfFont(pdf, style) {
-  if (/arial|helvetica/i.test(style.fontFamily)) pdf.setFont("helvetica", `${style.fontWeight >= 600 ? "bold" : ""}${style.italic ? "italic" : ""}` || "normal");
+function pdfFont(pdf, style, exactFamilies = new Set()) {
+  const family = normalizeAcademicPdfFamily(style.fontFamily);
+  if (exactFamilies.has(family || style.fontFamily)) {
+    const faceStyle = pdfFontStyle({ bold: style.fontWeight >= 600, italic: style.italic });
+    pdf.setFont(academicPdfFont(pdf, faceStyle, style.fontFamily), faceStyle);
+  }
+  else if (/arial|helvetica/i.test(style.fontFamily)) pdf.setFont("helvetica", `${style.fontWeight >= 600 ? "bold" : ""}${style.italic ? "italic" : ""}` || "normal");
   else {
     const faceStyle = pdfFontStyle({ bold: style.fontWeight >= 600, italic: style.italic });
     pdf.setFont(academicPdfFont(pdf, faceStyle), faceStyle);
@@ -44,12 +84,12 @@ function pdfFont(pdf, style) {
   pdf.setTextColor(17, 17, 17);
 }
 
-function pdfChrome(pdf, section, pageNumber, firstPage, values) {
+function pdfChrome(pdf, section, pageNumber, firstPage, values, exactFamilies = new Set()) {
   const { page, body } = section.rules;
   const contentWidth = page.widthMm - page.margins.leftMm - page.margins.rightMm;
   const header = page.header;
   const footer = page.footer;
-  pdfFont(pdf, { ...body, fontSizePt: Math.min(10, body.fontSizePt) });
+  pdfFont(pdf, { ...body, fontSizePt: Math.min(10, body.fontSizePt) }, exactFamilies);
   if (header?.content && !(firstPage && header.firstPage === "omit")) pdf.text(resolveChromeText(header.content, values), page.margins.leftMm, header.distanceMm + header.heightMm / 2, { maxWidth: contentWidth });
   if (footer?.content && !(firstPage && footer.firstPage === "omit")) pdf.text(resolveChromeText(footer.content, values), page.margins.leftMm, page.heightMm - footer.distanceMm, { maxWidth: contentWidth });
   const rule = page.numbering;
@@ -60,12 +100,57 @@ function pdfChrome(pdf, section, pageNumber, firstPage, values) {
   pdf.text(label, x, y, { align: rule.align });
 }
 
+function positionedPdfNode(pdf, node, language, lineSpacing, baseStyle = {}, exactFamilies = new Set()) {
+  if (!Number.isFinite(node.xMm) || !Number.isFinite(node.yMm)) throw new Error(`Pozisyonlu öğe ${node.id || "?"} için x/y ölçüleri geçersiz`);
+  const { xMm, yMm } = node;
+  if (node.type === "image") {
+    if (!(Number.isFinite(node.widthMm) && node.widthMm > 0 && Number.isFinite(node.heightMm) && node.heightMm > 0 && /^data:image\/(png|jpe?g);base64,/i.test(node.source || ""))) throw new Error(`Pozisyonlu görsel ${node.id || "?"} için geometri veya kaynak geçersiz`);
+    pdf.addImage(node.source, /png/i.test(node.source.slice(0, 24)) ? "PNG" : "JPEG", xMm, yMm, node.widthMm, node.heightMm);
+    return;
+  }
+  if (node.type === "separator") {
+    if (!(Number.isFinite(node.widthMm) && node.widthMm > 0)) throw new Error(`Pozisyonlu çizgi ${node.id || "?"} için genişlik geçersiz`);
+    const hex = /^#[0-9a-f]{6}$/i.test(node.style?.color || "") ? node.style.color.slice(1) : "111111";
+    pdf.setDrawColor(Number.parseInt(hex.slice(0, 2), 16), Number.parseInt(hex.slice(2, 4), 16), Number.parseInt(hex.slice(4, 6), 16));
+    pdf.setLineWidth((Number(node.thicknessPt) > 0 ? node.thicknessPt : 0.75) * mmPerPt);
+    pdf.line(xMm, yMm, xMm + node.widthMm, yMm);
+    return;
+  }
+  if (node.type !== "text") return;
+  if (!(Number.isFinite(node.widthMm) && node.widthMm > 0)) throw new Error(`Pozisyonlu metin ${node.id || "?"} için genişlik geçersiz`);
+  const style = { ...baseStyle, ...(node.style || {}) };
+  pdfFont(pdf, style, exactFamilies);
+  const hex = /^#[0-9a-f]{6}$/i.test(style.color || "") ? style.color.slice(1) : "111111";
+  pdf.setTextColor(Number.parseInt(hex.slice(0, 2), 16), Number.parseInt(hex.slice(2, 4), 16), Number.parseInt(hex.slice(4, 6), 16));
+  const indent = Number(style.leftIndentMm) || 0;
+  const firstLineIndent = Number(style.firstLineIndentMm) || 0;
+  const width = Math.max(0.1, node.widthMm - indent - (Number(style.rightIndentMm) || 0));
+  const align = style.align || "left";
+  const text = transformThesisText(node.text, style, language);
+  const pitch = style.fontSizePt * effectiveLineHeight(style.lineHeight, lineSpacing) * mmPerPt;
+  let top = yMm + (Number(style.spaceBeforePt) || 0) * mmPerPt;
+  for (const paragraph of text.split("\n")) {
+    const lines = pdf.splitTextToSize(paragraph || " ", width);
+    for (const [lineIndex, line] of lines.entries()) {
+      if (Number.isFinite(node.heightMm) && node.heightMm > 0 && top > yMm + node.heightMm) break;
+      const lineIndent = lineIndex === 0 ? firstLineIndent : 0;
+      const lineWidth = Math.max(0.1, width - lineIndent);
+      const drawX = xMm + indent + lineIndent + (align === "center" ? lineWidth / 2 : align === "right" ? lineWidth : 0);
+      pdf.text(line || " ", drawX, top, { align: align === "justify" ? "left" : align, baseline: "top", maxWidth: width });
+      top += pitch;
+    }
+    top += (Number(style.spaceAfterPt) || 0) * mmPerPt;
+  }
+}
+
 /** Searchable PDF. Pages, margins, type sizes and numbering come from the compiled model. */
 export async function buildThesisPdf(model) {
   const first = model.sections[0]?.rules.page;
+  const fontRequests = collectAcademicPdfFontRequests(model.documentLayout, model.sections);
+  const exactFamilies = new Set(fontRequests.map(value => normalizeAcademicPdfFamily(value) || value));
   const pdf = new jsPDF({ unit: "mm", format: [first?.widthMm || 210, first?.heightMm || 297], compress: true });
   pdf.setProperties({ title: model.title || "Tez", creator: "TxtNote" });
-  await embedAcademicPdfFonts(pdf, { templateId: model.templateId });
+  await embedAcademicPdfFonts(pdf, { templateId: model.templateId, extraFontFamilies: fontRequests });
   let started = false;
   let logicalPage = 0;
   for (const group of groupThesisSections(model.sections)) {
@@ -80,14 +165,14 @@ export async function buildThesisPdf(model) {
       if (started) pdf.addPage([page.widthMm, page.heightMm], page.orientation);
       started = true; sectionPage += 1; logicalPage += 1;
       y = page.margins.topMm;
-      pdfChrome(pdf, group.sections[0], logicalPage, sectionPage === 1, model.values);
+      pdfChrome(pdf, group.sections[0], logicalPage, sectionPage === 1, model.values, exactFamilies);
     };
     startPage();
     const write = (value, style, align = style.align || "left") => {
       if (style.pageBreakBefore && y > page.margins.topMm + 0.5) startPage();
       const source = transformThesisText(value, style, model.language);
       if (!source.trim()) { y += style.fontSizePt * effectiveLineHeight(style.lineHeight, group.rules.lineSpacing) * mmPerPt; return; }
-      pdfFont(pdf, style);
+      pdfFont(pdf, style, exactFamilies);
       const indent = Math.max(0, style.leftIndentMm || 0);
       const available = Math.max(10, width - indent - Math.max(0, style.rightIndentMm || 0));
       const lineHeight = style.fontSizePt * effectiveLineHeight(style.lineHeight, group.rules.lineSpacing) * mmPerPt;
@@ -95,7 +180,7 @@ export async function buildThesisPdf(model) {
       for (const paragraph of source.split("\n")) {
         const lines = pdf.splitTextToSize(paragraph || " ", available);
         for (const line of lines) {
-          if (y + lineHeight > page.heightMm - page.margins.bottomMm) { startPage(); pdfFont(pdf, style); }
+          if (y + lineHeight > page.heightMm - page.margins.bottomMm) { startPage(); pdfFont(pdf, style, exactFamilies); }
           const x = page.margins.leftMm + indent + (align === "center" ? available / 2 : align === "right" ? available : 0);
           pdf.text(line || " ", x, y, { align: align === "justify" ? "left" : align, baseline: "top" });
           y += lineHeight;
@@ -105,7 +190,9 @@ export async function buildThesisPdf(model) {
     };
     for (const section of group.sections) {
     const { body, headings } = section.rules;
-    if (section.layoutBlocks) for (const block of section.layoutBlocks) {
+    const layoutSplit = section.layout ? splitLayoutNodes(section.layout) : { flow: [], positioned: [] };
+    const flowLayout = section.layout ? flattenSpecialPage(layoutSplit.flow) : section.layoutBlocks;
+    if (flowLayout) for (const block of flowLayout) {
       if (block.type === "spacer") y += block.heightMm;
       else if (block.type === "image") {
         const x = page.margins.leftMm + (block.align === "left" ? 0 : block.align === "right" ? width - block.widthMm : (width - block.widthMm) / 2);
@@ -114,6 +201,7 @@ export async function buildThesisPdf(model) {
       }
       else write(block.text, block.style, block.style.align);
     }
+    for (const node of [...layoutSplit.positioned].sort((left, right) => (left.zIndex || 0) - (right.zIndex || 0))) positionedPdfNode(pdf, node, model.language || "tr", section.rules.lineSpacing, body, exactFamilies);
     for (const block of asBlocks(section)) {
       if (block.type === "heading") {
         const style = headings[block.level] || headings[1] || body;
@@ -160,8 +248,14 @@ const NO_BORDER = { style: BorderStyle.NONE, size: 0, color: "FFFFFF" };
 const CELL_BORDER = { style: BorderStyle.SINGLE, size: 6, color: "888888" };
 const plainRuns = (text) => [{ type: "text", text: String(text ?? "") }];
 
+const halfPointSize = (fontSizePt) => {
+  const size = Number(fontSizePt) * 2;
+  if (!Number.isFinite(size) || !Number.isInteger(size)) throw new Error(`DOCX metin boyutu ${fontSizePt} pt yarım punto biriminde tam olarak saklanamıyor`);
+  return size;
+};
+
 function runProps(style, language) {
-  return { font: style.fontFamily, size: Math.round(style.fontSizePt * 2), bold: style.fontWeight >= 600, italics: Boolean(style.italic), ...(style.characterSpacingPt ? { characterSpacing: pt(style.characterSpacingPt) } : {}), language: { value: language } };
+  return { font: style.fontFamily, size: halfPointSize(style.fontSizePt), bold: style.fontWeight >= 600, italics: Boolean(style.italic), ...(style.characterSpacingPt ? { characterSpacing: pt(style.characterSpacingPt) } : {}), language: { value: language } };
 }
 
 function textRun(text, style, context, inline = {}) {
@@ -315,14 +409,18 @@ function tableDocx(block, section, context) {
   const { body, tables } = section.rules;
   const cellStyle = tables.cellStyle || {};
   const out = [];
-  const caption = block.caption ? docxParagraph(plainRuns(captionText(tables.label, block)), { ...captionStyle(tables, block, context), keepWithNext: tables.position === "above" }, context) : null;
+  const caption = block.caption ? docxParagraph(plainRuns(captionText(tables.label, block)), { ...captionStyle(tables, block, context), pageBreakBefore: tables.position === "above" && (context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id)), keepWithNext: tables.position === "above" }, context) : null;
   if (caption && tables.position === "above") out.push(caption);
-  const rows = (block.rows || []).filter((row) => row.length).map((row) => new TableRow({
+  const tableRows = (block.rows || []).filter((row) => row.length);
+  const rows = tableRows.map((row, rowIndex) => new TableRow({
     cantSplit: true, tableHeader: row.every((cell) => cell.header),
+    // Word otherwise uses its glyph box as the row minimum, while CSS uses the
+    // resolved line box plus both paddings and the collapsed border.
+    height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing) + 2 * ACADEMIC_TABLE_CELL_PADDING_PT.vertical + CELL_BORDER.size / 8), rule: HeightRule.ATLEAST },
     children: row.map((cell) => new TableCell({
       columnSpan: cell.colspan > 1 ? cell.colspan : undefined, rowSpan: cell.rowspan > 1 ? cell.rowspan : undefined,
-      margins: { top: pt(4), bottom: pt(4), left: pt(4), right: pt(4) },
-      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
+      margins: { top: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), bottom: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), left: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal), right: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal) },
+      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: rowIndex < tableRows.length - 1, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
   }));
   if (rows.length) out.push(new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders: { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER } }));
@@ -351,7 +449,11 @@ function docxChildren(section, context) {
     }
     return children;
   }
-  if (section.layout) children.push(...specialPageDocx(section.layout, context, widthMm));
+  if (section.layout) {
+    const split = splitLayoutNodes(section.layout);
+    children.push(...specialPageDocx(split.flow, context, widthMm));
+    children.push(...positionedLayoutDocx(split.positioned, { language: context.language, lineSpacing: context.lineSpacing }));
+  }
   for (const block of asBlocks(section)) {
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
@@ -371,13 +473,18 @@ function docxChildren(section, context) {
     } else if (block.type === "table") {
       children.push(...tableDocx(block, section, context));
     } else if (block.type === "figure") {
-      const caption = block.caption ? docxParagraph(plainRuns(captionText(figures.label, block)), { ...captionStyle(figures, block, context), keepWithNext: figures.position === "above" }, context) : null;
+      const figureCaptionStyle = captionStyle(figures, block, context);
+      const caption = block.caption ? docxParagraph(plainRuns(captionText(figures.label, block)), { ...figureCaptionStyle,
+        ...(figures.position === "above" ? { spaceBeforePt: (figureCaptionStyle.spaceBeforePt || 0) + ACADEMIC_FIGURE_MARGIN_PT } : { spaceAfterPt: (figureCaptionStyle.spaceAfterPt || 0) + ACADEMIC_FIGURE_MARGIN_PT }),
+        keepWithNext: figures.position === "above" }, context) : null;
       if (caption && figures.position === "above") children.push(caption);
       const image = imageBytes(block.src);
       if (image) {
         const width = Math.min(block.width || 400, Math.round(widthMm * PX_PER_MM));
         const height = Math.max(1, Math.round(width * ((block.height || 250) / (block.width || 400))));
-        children.push(new Paragraph({ alignment: AlignmentType.CENTER, keepNext: Boolean(caption && figures.position !== "above"), children: [new ImageRun({ ...image, transformation: { width, height } })] }));
+        children.push(new Paragraph({ alignment: AlignmentType.CENTER, pageBreakBefore: context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id), keepNext: Boolean(caption && figures.position !== "above"),
+          spacing: { before: caption && figures.position === "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT), after: caption && figures.position !== "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT) },
+          children: [new ImageRun({ ...image, transformation: { width, height } })] }));
       }
       if (caption && figures.position !== "above") children.push(caption);
     } else if (block.type === "pageBreak") {
@@ -440,10 +547,10 @@ function listLevels(ordered) {
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
-export async function buildThesisDocx(model, { captionAlignments = {} } = {}) {
+export async function buildThesisDocx(model, { captionAlignments = {}, blockPageBreaks = [] } = {}) {
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
-  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments };
+  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, blockPageBreaks: new Set(blockPageBreaks) };
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
   const sections = model.sections.map((section, index) => {
     const page = section.rules.page;
@@ -468,7 +575,7 @@ export async function buildThesisDocx(model, { captionAlignments = {} } = {}) {
   });
   const styles = base ? {
     default: {
-      document: { run: { font: base.body.fontFamily, size: Math.round(base.body.fontSizePt * 2) } },
+      document: { run: { font: base.body.fontFamily, size: halfPointSize(base.body.fontSizePt) } },
       ...Object.fromEntries(Object.keys(base.headings).filter((level) => Number(level) <= 6).map((level) => [`heading${level}`, headingStyle(base.headings[level], context.language, level)])),
     },
   } : undefined;

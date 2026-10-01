@@ -57,7 +57,7 @@ test("normalizeThesisLayout retains valid fields and drops unsafe imported value
   assert.equal(normalized.additions.length, 1);
   assert.equal(normalized.additions[0].text, "Safe");
   assert.equal(normalized.additions[0].layoutMode, "absolute");
-  assert.deepEqual(normalized.guides, [{ id: "g1", axis: "vertical", positionMm: 40 }]);
+  assert.deepEqual(normalized.guides, [{ id: "g1", axis: "x", positionMm: 40 }]);
 });
 
 test("layout updates, additions, deletion and duplication are immutable and persist through JSON", () => {

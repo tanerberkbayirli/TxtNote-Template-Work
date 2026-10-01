@@ -13,6 +13,9 @@ import {fillMcbuThesis,sheetLabels,task10bChecks} from '../frontend/tests/task10
 import {task10b1Checks} from '../frontend/tests/task10b1-checks.mjs';
 import {task10b2Checks} from '../frontend/tests/task10b2-checks.mjs';
 import {blankPageChecks} from '../frontend/tests/blank-page-checks.mjs';
+import {layoutEditorChecks} from '../frontend/tests/layout-editor-checks.mjs';
+import {layoutExportChecks} from '../frontend/tests/layout-export-checks.mjs';
+import {embeddedPdfFonts} from '../frontend/tests/pdf-font-compliance.mjs';
 const require=createRequire(import.meta.url);
 let chromium;
 for(const module of [process.env.PLAYWRIGHT_MODULE,'playwright',path.join(os.homedir(),'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')].filter(Boolean)) {
@@ -490,6 +493,52 @@ try {
     }
     return files;
   });
+  const layoutTitle=`Sayfa düzeni ${identity.buildId}-${Date.now()}`;
+  await page.waitForTimeout(2000);
+  await createThesis(page,layoutTitle,{university:'mcbu',degree:'master'});
+  await fillMcbuThesis(page,{degree:'master',selectTemplate:false,title:layoutTitle});
+  report.pageLayout=await layoutEditorChecks(page,pass,{reload:async()=>{
+    await page.waitForTimeout(2000);await page.reload();await unlock(page);await openTitle(page,layoutTitle);
+  }});
+  const layoutFiles=await exportViaApp();
+  const layoutEvidence=path.join(root,'output/page-layout');fs.mkdirSync(layoutEvidence,{recursive:true});
+  for(const [extension,file] of Object.entries(layoutFiles)) {
+    const copy=path.join(layoutEvidence,`packaged-layout.${extension}`);
+    fs.copyFileSync(file,copy);layoutFiles[extension]=copy;fs.rmSync(file,{force:true});
+  }
+  report.pageLayout.files=layoutFiles;
+  report.pageLayout.semantic=await layoutExportChecks(page,layoutFiles,{toleranceMm:.25,pageCount:await page.locator('.thesis-sheet').count(),elements:[
+    {id:report.pageLayout.id,type:'text',text:'Canonical editable text',xMm:40.25,yMm:42,widthMm:140,fontFamily:'Times New Roman',fontSizePt:12},
+    {selector:'[data-layout-type="image"]',type:'image',...report.pageLayout.imageGeometry},
+  ]});
+  const wordPdf=path.join(layoutEvidence,'packaged-word.pdf'),wordReport=path.join(layoutEvidence,'packaged-word.json'),fidelityReport=path.join(layoutEvidence,'packaged-fidelity.json');
+  for(const [command,args] of [
+    ['powershell.exe',['-NoProfile','-STA','-ExecutionPolicy','Bypass','-File',path.join(root,'scripts/verify-layout-word.ps1'),'-DocumentPath',layoutFiles.docx,'-PdfPath',wordPdf,'-ReportPath',wordReport]],
+    [process.execPath,[path.join(root,'scripts/verify-layout-fidelity.mjs'),layoutFiles.pdf,wordPdf,wordReport,fidelityReport]],
+  ]) {
+    const result=spawnSync(command,args,{cwd:root,windowsHide:true,encoding:'utf8'});
+    if(result.error||result.status!==0)throw Error(`Packaged Word fidelity failed: ${result.error?.message||result.stdout||result.stderr}`);
+  }
+  report.pageLayout.word=JSON.parse(fs.readFileSync(wordReport,'utf8').replace(/^\uFEFF/,''));
+  const fidelity=JSON.parse(fs.readFileSync(fidelityReport,'utf8'));
+  report.pageLayout.visual={status:fidelity.status,differences:fidelity.differences};
+  pass('packaged PDF/DOCX semantic round-trip and real Word-render geometry/page-count fidelity');
+  await page.locator(`[data-layout-id="${report.pageLayout.id}"]`).click();
+  await page.getByLabel('Yazı tipi',{exact:true}).fill('Arial');
+  const arialFiles=await exportViaApp();
+  report.pageLayout.arialFonts=embeddedPdfFonts(fs.readFileSync(arialFiles.pdf || arialFiles['.pdf']));
+  assert.ok(report.pageLayout.arialFonts.some(font=>font.family==='Arial'&&font.postscript==='ArialMT'));
+  assert.ok(report.pageLayout.arialFonts.some(font=>font.family==='Times New Roman'));
+  for(const file of Object.values(arialFiles))fs.rmSync(file,{force:true});
+  await page.getByLabel('Yazı tipi',{exact:true}).fill('Times New Roman');
+  pass('native Windows font command embeds actual Arial alongside Times New Roman in packaged PDF');
+  await page.screenshot({path:path.join(layoutEvidence,'packaged-editor.png')});
+  await page.waitForTimeout(2000);await closeDesktop();await launchDesktop();await openTitle(page,layoutTitle);
+  const persisted=page.locator(`[data-layout-id="${report.pageLayout.id}"]`);
+  assert.equal(await persisted.innerText(),'Canonical editable text');
+  const bounds=await persisted.evaluate(node=>{const r=node.getBoundingClientRect(),p=node.closest('.thesis-paper').getBoundingClientRect();return {xMm:(r.left-p.left)*210/p.width,yMm:(r.top-p.top)*210/p.width,widthMm:r.width*210/p.width};});
+  for(const key of ['xMm','yMm','widthMm']) near(bounds[key],report.pageLayout.saved[key],`layout restart ${key}`,0.02);
+  pass('canonical page geometry, text and styles persist through SQLite and full application restart');
   }
   const blocked=await page.locator('style').evaluateAll(es=>es.filter(e=>!e.sheet).length);assert.equal(blocked,0);
   assert.deepEqual(report.cspViolations,[]);assert.deepEqual(report.securityLogs,[]);assert.deepEqual(report.pageErrors,[]);pass('zero CSP violations, blocked stylesheets, security messages or page errors');

@@ -182,4 +182,9 @@ describe("hotkeys", () => {
     };
     assert.equal(shouldHandleUndoHotkey({ target: appField }), true);
   });
+  it("defers only an explicitly owned event target to the local object controller", () => {
+    const target = { closest: () => null, getAttribute: name => name === "data-undo-owner" ? "local" : null };
+    assert.equal(shouldHandleUndoHotkey({ target }), false);
+    assert.equal(shouldHandleUndoHotkey({ target: { closest: () => null, getAttribute: () => null } }), true);
+  });
 });

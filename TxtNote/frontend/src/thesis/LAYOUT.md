@@ -31,7 +31,7 @@ and export. Selection, handles, rulers and guides are presentation state and mus
 never enter exported content.
 
 Page rules cascade template → document → section → page. Nested margin and
-header/footer rules merge by property. Typography resolves template → section →
+header/footer rules merge by property. Typography resolves template → document → section →
 element style. `locked` allows inspection while preventing accidental manipulation;
 `editableContent` and `editableLayout` independently describe editing permissions.
 
@@ -40,3 +40,22 @@ immutable commands, JSON persistence, inheritance and snap geometry. Browser and
 packaged tests cover actual pointer/keyboard interactions and output. DOCX semantic
 checks inspect the emitted OOXML; PDF checks inspect real text and geometry. A
 semantic check never establishes Word rendering fidelity on its own.
+
+The inspector leaves unset flow coordinates automatic and labels separately measured
+screen geometry. A drag or coordinate edit explicitly materializes page geometry.
+Layout history stores one transaction per gesture, and guide/page/style commands use
+the same history. Content history in the existing body editor remains independent.
+Physical page overrides are exposed only for standalone one-page sections; the
+continuous body fragmentation renderer supports document and section page settings.
+
+DOCX uses editable DrawingML frames for positioned text/images and normal paragraphs,
+tables and inline figures for flowing content. Measured whole-block page transitions
+are export-only hints. Table minimum row heights include the resolved line box,
+padding and border; longer cell content can still grow. Physical Word validation
+compares the real Word-rendered shapes/PDF against editor export geometry.
+
+Custom PDF typography supports installed Arial and Times New Roman, verifies SFNT
+family/PostScript identity and embedding permissions, and embeds their actual font
+programs. Other custom families fail explicitly. DOCX point sizes must be representable
+as half points; unsupported values fail instead of being silently rounded. Absolute
+groups must be represented as individual positioned children for DOCX export.

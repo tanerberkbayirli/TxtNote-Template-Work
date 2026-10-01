@@ -111,7 +111,7 @@ export function* walkSpecialPage(nodes) {
 /** Static HTML only; every visual rule lives in the scoped stylesheet (CSP: no style attributes). */
 export function specialPageHtml(nodes) {
   return (nodes || []).map((node) => {
-    const attrs = `data-thesis-block="${escapeHtml(node.path)}"${node.id ? ` data-layout-id="${escapeHtml(node.id)}" data-layout-section="${escapeHtml(node.sectionId)}" data-layout-type="${node.type}" data-layout-locked="${Boolean(node.locked)}"` : ""}`;
+    const attrs = `data-thesis-block="${escapeHtml(node.path)}"${node.id ? ` data-layout-id="${escapeHtml(node.id)}" data-layout-section="${escapeHtml(node.sectionId)}" data-layout-type="${node.type}" data-layout-locked="${Boolean(node.locked)}" data-layout-aspect="${Boolean(node.lockAspectRatio)}"` : ""}`;
     if (node.type === "image") return `<img class="thesis-layout-image" ${attrs} src="${escapeHtml(node.source)}" alt="">`;
     if (node.type === "spacer") return `<div class="thesis-layout-spacer" ${attrs} aria-hidden="true"></div>`;
     if (node.type === "separator") return `<div class="thesis-layout-separator" ${attrs} role="presentation"></div>`;
@@ -152,7 +152,7 @@ export function specialPageBoxCss(node, parent) {
   if (node.type === "group") {
     rules.push(`display:flex;flex-direction:${node.direction};${node.direction === "row" ? "column-gap" : "row-gap"}:${node.gapMm}mm;align-items:${node.direction === "row" ? "flex-start" : "stretch"};margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;`);
   }
-  if (Number.isFinite(node.zIndex)) rules.push(`z-index:${node.zIndex};`);
+  if (Number.isFinite(node.zIndex)) rules.push(`${node.zIndex !== 0 ? "position:relative;" : ""}z-index:${node.zIndex};`);
   if (node.layoutMode === "absolute" || node.layoutMode === "anchored") {
     rules.push(`position:absolute;left:${finite(node.xMm)}mm;top:${finite(node.yMm)}mm;margin:0;max-width:none;box-sizing:border-box;`);
   }

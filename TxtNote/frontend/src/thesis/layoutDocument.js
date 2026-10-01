@@ -170,8 +170,11 @@ function normalizeGuideList(value) {
   if (!Array.isArray(value)) return [];
   return value.flatMap((guide) => {
     const id = safeId(guide?.id);
-    if (!id || !["vertical", "horizontal"].includes(guide.axis) || !finite(guide.positionMm) || guide.positionMm < 0) return [];
-    return [{ id, axis: guide.axis, positionMm: guide.positionMm, ...(typeof guide.locked === "boolean" ? { locked: guide.locked } : {}) }];
+    const axis = ({ vertical: "x", horizontal: "y" })[guide?.axis] || guide?.axis;
+    if (!id || !["x", "y"].includes(axis) || !finite(guide.positionMm) || guide.positionMm < 0) return [];
+    return [{ id, axis, positionMm: guide.positionMm, ...(typeof guide.locked === "boolean" ? { locked: guide.locked } : {}),
+      ...(safeId(guide.sectionId) ? { sectionId: guide.sectionId } : {}),
+      ...(Number.isInteger(guide.pageIndex) && guide.pageIndex >= 0 ? { pageIndex: guide.pageIndex } : {}) }];
   });
 }
 

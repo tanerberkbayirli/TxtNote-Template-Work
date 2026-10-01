@@ -5,11 +5,49 @@
  */
 
 export const ACADEMIC_PDF_FONT = "Tinos";
-import { loadSystemTimesNewRoman } from "./systemPdfFonts.js";
+import { loadSystemPdfFonts } from "./systemPdfFonts.js";
 
 const registeredFaces = new WeakMap();
-export const academicPdfFont = (pdf, style = "normal") => registeredFaces.get(pdf)?.[style] || ACADEMIC_PDF_FONT;
 export const requiresTimesNewRoman = (templateId) => /^mcbu-lee-/.test(templateId || "");
+
+const FAMILY_NAMES = new Map([["tinos", ACADEMIC_PDF_FONT], ["arial", "Arial"], ["times new roman", "Times New Roman"]]);
+export function normalizeAcademicPdfFamily(value) {
+  const first = String(value || "").split(",")[0].replace(/[\"']/g, "").trim().toLocaleLowerCase("en-US");
+  return FAMILY_NAMES.get(first) || null;
+}
+
+/** Explicit custom document styles and resolved positioned nodes need their stated face. */
+export function collectAcademicPdfFontRequests(documentLayout, sections = []) {
+  const requested = new Map();
+  const addStyle = style => {
+    if (typeof style?.fontFamily !== "string" || !style.fontFamily.trim()) return;
+    const family = normalizeAcademicPdfFamily(style.fontFamily) || style.fontFamily.trim();
+    requested.set(family.toLocaleLowerCase("en-US"), family);
+  };
+  addStyle(documentLayout?.typography?.document);
+  for (const style of Object.values(documentLayout?.typography?.sections || {})) addStyle(style);
+  for (const override of Object.values(documentLayout?.elements || {})) addStyle(override?.style);
+  for (const addition of documentLayout?.additions || []) addStyle(addition?.style);
+  const visit = nodes => {
+    for (const node of nodes || []) {
+      if (node?.layoutMode === "absolute" || node?.layoutMode === "anchored") addStyle(node.style);
+      if (node?.type === "group") visit(node.blocks);
+    }
+  };
+  for (const section of sections || []) visit(section.layout);
+  return [...requested.values()];
+}
+
+export function academicPdfFont(pdf, style = "normal", family) {
+  const state = registeredFaces.get(pdf);
+  if (family != null) {
+    const canonical = normalizeAcademicPdfFamily(family);
+    const name = canonical && state?.families.get(canonical)?.[style];
+    if (!name) throw new Error(`PDF için ${String(family)} ${style} yazı tipi gerçek bir yüz olarak yüklenmedi.`);
+    return name;
+  }
+  return state?.families.get(state.defaultFamily)?.[style] || ACADEMIC_PDF_FONT;
+}
 
 const FONT_FILES = {
   normal: "Tinos-Regular.ttf",
@@ -82,28 +120,42 @@ async function readFontFile(fileName) {
   return binary;
 }
 
-export async function embedAcademicPdfFonts(pdf, { templateId } = {}) {
-  if (requiresTimesNewRoman(templateId)) {
-    const fonts = await loadSystemTimesNewRoman();
+export async function embedAcademicPdfFonts(pdf, { templateId, extraFontFamilies = [] } = {}) {
+  const defaultFamily = requiresTimesNewRoman(templateId) ? "Times New Roman" : ACADEMIC_PDF_FONT;
+  const requested = [...new Set(extraFontFamilies.map(value => {
+    const family = normalizeAcademicPdfFamily(value);
+    if (!family) throw new Error(`PDF yazı tipi ${String(value)} izin verilen font ailelerinden biri değil.`);
+    return family;
+  }))];
+  const required = new Set([defaultFamily, ...requested]);
+  const families = new Map();
+  for (const family of required) {
+    if (family === ACADEMIC_PDF_FONT) {
+      const faces = {};
+      for (const [style, fileName] of Object.entries(FONT_FILES)) {
+        const file = `Tinos-${style}.ttf`;
+        pdf.addFileToVFS(file, await readFontFile(fileName));
+        pdf.addFont(file, ACADEMIC_PDF_FONT, style);
+        faces[style] = ACADEMIC_PDF_FONT;
+      }
+      families.set(family, faces);
+      continue;
+    }
+    const nativeFonts = (await loadSystemPdfFonts([family]))[family];
     const faces = {};
-    for (const [style, font] of Object.entries(fonts)) {
+    for (const [style, font] of Object.entries(nativeFonts)) {
       const name = font.identity.postscript;
       const file = `${name}.ttf`;
       pdf.addFileToVFS(file, bufferToBinary(font.bytes));
       pdf.addFont(file, name, style);
       pdf.setFont(name, style);
-      if (!pdf.getFont().metadata?.glyIdsUsed) throw new Error(`Times New Roman ${style} PDF kaydı başarısız.`);
+      if (!pdf.getFont().metadata?.glyIdsUsed) throw new Error(`${family} ${style} PDF font registration failed.`);
       faces[style] = name;
     }
-    registeredFaces.set(pdf, faces);
-    pdf.setFont(faces.normal, "normal");
-    return;
+    families.set(family, faces);
   }
-  for (const [style, fileName] of Object.entries(FONT_FILES)) {
-    pdf.addFileToVFS(`Tinos-${style}.ttf`, await readFontFile(fileName));
-    pdf.addFont(`Tinos-${style}.ttf`, ACADEMIC_PDF_FONT, style);
-  }
-  pdf.setFont(ACADEMIC_PDF_FONT, "normal");
+  registeredFaces.set(pdf, { families, defaultFamily });
+  pdf.setFont(academicPdfFont(pdf, "normal"), "normal");
 }
 
 export function pdfFontStyle({ bold, italic } = {}) {

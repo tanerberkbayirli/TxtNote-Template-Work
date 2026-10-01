@@ -72,9 +72,11 @@ export type ThesisLayoutAddition = ThesisLayoutElementOverride & (
 );
 export interface ThesisLayoutGuide {
   id: string;
-  axis: "vertical" | "horizontal";
+  axis: "x" | "y";
   positionMm: Length;
   locked?: boolean;
+  sectionId?: string;
+  pageIndex?: number;
 }
 /** User layout state is optional on old documents and is always resolved against template rules. */
 export interface ThesisLayout {
@@ -85,6 +87,7 @@ export interface ThesisLayout {
   page: PageOverride;
   sections: Record<string, PageOverride>;
   pages: Record<`${string}:${number}`, PageOverride>;
+  typography?: { document?: ThesisLayoutTextStyle; sections?: Record<string, ThesisLayoutTextStyle> };
 }
 export interface ThesisDocumentState {
   layout?: ThesisLayout;

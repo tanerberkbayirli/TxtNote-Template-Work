@@ -8,6 +8,8 @@ const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "C:/Users/CASPER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright");
 const browser = await chromium.launch({ channel: "msedge", headless: true });
 const page = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
+// The production PDF writer reads the required system Times New Roman faces.
+await page.context().grantPermissions(["local-fonts"], { origin: new URL(process.argv[2] || "http://127.0.0.1:5175").origin });
 const errors = [], checks = [];
 page.on("pageerror", (e) => errors.push(e.message));
 page.on("console", (e) => { if (/content security policy|refused to|uncaught/i.test(e.text())) errors.push(e.text()); });
