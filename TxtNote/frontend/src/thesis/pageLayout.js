@@ -102,6 +102,13 @@ export function buildThesisPageModel(groups, pageCounts = {}) {
 const cssString = (value) => JSON.stringify(String(value));
 const FLOW = ".thesis-paper[data-thesis-layout=\"paged\"] .thesis-page-flow";
 
+/** Path of the final visible special-page block, only when that block is text. */
+function terminalTextBlockPath(nodes) {
+  const last = nodes?.at(-1);
+  if (last?.type === "group") return terminalTextBlockPath(last.blocks);
+  return last?.type === "text" ? last.path : null;
+}
+
 /**
  * Pagination is delegated to the browser's fragmentation engine: each group's
  * flow is a single-column multicol whose columns are the pages' content boxes
@@ -141,6 +148,14 @@ export function thesisPagedCss(groups) {
     rules.push(`${scope}{column-height:${page.heightMm - topMm - bottomMm}mm;row-gap:calc(${bottomMm}mm + ${THESIS_PAGE_GAP_PX}px + ${topMm}mm)}`);
     for (const section of group.sections) {
       const fragment = `${FLOW} .thesis-flow-section[data-thesis-flow-section=${cssString(section.id)}] .thesis-body`;
+      const terminalTextPath = section.specialPage && section.rules.page.trimTerminalTextLeading === true
+        ? terminalTextBlockPath(section.layout)
+        : null;
+      if (terminalTextPath) {
+        // An opted-in special page may trim unused leading after its terminal text block, without changing line-height or baseline.
+        // Browsers without text-box-trim keep their normal visible extra-page behavior; no spacing fallback is applied.
+        rules.push(`@supports (text-box-trim:trim-end){${fragment} [data-thesis-block=${cssString(terminalTextPath)}].thesis-layout-text{text-box-trim:trim-end}}`);
+      }
       for (const [level, style] of Object.entries(section.rules.headings)) {
         if (!style.pageBreakBefore) continue;
         rules.push(`${fragment} h${level}{break-before:column}`, `${fragment} h${level}[data-unnumbered]{break-before:auto}`);

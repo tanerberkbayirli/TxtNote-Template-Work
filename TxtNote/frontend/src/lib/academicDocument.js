@@ -207,6 +207,7 @@ function figureBlock(node) {
     width: Number(img?.getAttribute("width") || 0),
     height: Number(img?.getAttribute("height") || 0),
     align: alignOf(node) === "left" ? "center" : alignOf(node),
+    ...(node.getAttribute("data-caption-kind") ? { captionKind: node.getAttribute("data-caption-kind") } : {}),
     caption: captionText.replace(/^(Şekil|Figure)\s+\d+\.\s*/i, "").trim(),
     alt: img?.getAttribute("alt") || captionText,
   };
@@ -323,7 +324,7 @@ function parseNodeList(nodes) {
         continue;
       }
       const runs = runsFromNode(node);
-      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), runs });
+      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs });
     }
   }
   return blocks;
@@ -377,7 +378,7 @@ function parseLineFlow(nodes, align) {
       // A trailing <br> draws no extra line; an empty <p></p> draws nothing at all.
       const drawsLine = paragraphRuns.some((run) => run.type === "break") || node.textContent.length > 0;
       while (paragraphRuns.at(-1)?.type === "break") paragraphRuns.pop();
-      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, runs: paragraphRuns });
+      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs: paragraphRuns });
     } else {
       blocks.push(...parseNodeList([node]));
     }
@@ -470,6 +471,7 @@ function parseWithRegex(html) {
         width: Number(attr(inner, "width") || 0),
         height: Number(attr(inner, "height") || 0),
         align: "center",
+        ...(attr(rawAttr, "data-caption-kind") ? { captionKind: attr(rawAttr, "data-caption-kind") } : {}),
         caption: caption.replace(/^(Şekil|Figure)\s+\d+\.\s*/i, "").trim(),
         alt: caption,
       });
@@ -511,6 +513,7 @@ function parseWithRegex(html) {
         type: tag === "blockquote" ? "quote" : "paragraph",
         align: /fmt-align-center/.test(rawAttr) ? "center" : /fmt-align-right/.test(rawAttr) ? "right" : /fmt-align-justify/.test(rawAttr) ? "justify" : /fmt-align-left/.test(rawAttr) ? "left" : undefined,
         line: false,
+        ...(attr(rawAttr, "data-thesis-style") ? { thesisStyle: attr(rawAttr, "data-thesis-style") } : {}),
         runs: runs.length ? runs : [{ type: "text", text: stripTags(inner) }],
       });
     }

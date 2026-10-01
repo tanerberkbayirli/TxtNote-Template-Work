@@ -86,12 +86,24 @@ export function thesisEnabledSections(thesis) {
 /** The declarative visibleWhen condition alone (no status); true when a section has none. */
 export function thesisSectionConditionMet(section, thesis) {
   if (!section?.visibleWhen) return true;
+  // A count condition ({ count, gte }) reads the compiled document, not metadata: see thesisSectionCountMet.
+  if (section.visibleWhen.count !== undefined) return true;
   const { field, equals, notEquals, in: choices } = section.visibleWhen;
   const value = thesis?.values?.[field] ?? (field === "degreeType" ? thesis?.selection?.degreeType : undefined);
   if (Object.hasOwn(section.visibleWhen, "equals") && value !== equals) return false;
   if (Object.hasOwn(section.visibleWhen, "notEquals") && value === notEquals) return false;
   if (choices && !choices.includes(value)) return false;
   return true;
+}
+
+/**
+ * `visibleWhen: { count: "tables" | "figures" | "equations" | <caption kind>, gte: n }`: the section appears only when the
+ * document has at least n such items (e.g. a list of tables from three tables on). `sources` are the collected index sources.
+ */
+export function thesisSectionCountMet(section, sources) {
+  const condition = section?.visibleWhen;
+  if (condition?.count === undefined) return true;
+  return sources.filter((entry) => entry.kind === condition.count).length >= condition.gte;
 }
 
 /** disabled: never shown; optional: shown once the user enables it; required: always. */

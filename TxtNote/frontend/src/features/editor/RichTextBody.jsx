@@ -175,7 +175,7 @@ export const RichTextBody = forwardRef(({
       emitChange("insert");
     },
     /** Normal / heading for the block at the caret; same markup as insertHeading. */
-    setBlockType: (level) => {
+    setBlockType: (level, paragraphStyle = "") => {
       const target = Math.min(6, Math.max(0, Number(level) || 0));
       withRange((root, range) => {
         const anchor = range?.startContainer;
@@ -186,12 +186,14 @@ export const RichTextBody = forwardRef(({
           const next = doc.createElement(target ? `h${target}` : "p");
           if (target) {
             for (const { name, value } of [...heading.attributes]) {
-              if (name !== "class" && name !== "data-academic-heading" && name !== "data-number" && name !== "data-thesis-number") next.setAttribute(name, value);
+              if (name !== "class" && name !== "data-academic-heading" && name !== "data-number" && name !== "data-thesis-number" && name !== "data-thesis-style") next.setAttribute(name, value);
             }
             const kept = [...heading.classList].filter((name) => !/^academic-h\d?$/.test(name));
             next.className = [...kept, "academic-h", `academic-h${target}`].join(" ");
             next.setAttribute("data-academic-heading", String(target));
           }
+          // A named paragraph style (template typography.paragraphStyles) is source markup on a plain <p>.
+          if (!target && paragraphStyle) next.setAttribute("data-thesis-style", paragraphStyle);
           const caret = range ? { node: range.startContainer, offset: range.startOffset } : null;
           while (heading.firstChild) next.appendChild(heading.firstChild);
           if (!next.firstChild) next.appendChild(doc.createElement("br"));
@@ -328,6 +330,20 @@ export const RichTextBody = forwardRef(({
       });
       emitChange("insert");
     },
+    /** Caption kind of a figure (template captionKinds, e.g. "photo"); "" is a plain figure. Source markup, so it is saved. */
+    setFigureKind: (figure, kind) => {
+      const body = bodyRef.current;
+      if (!body || !figure || !body.contains(figure)) return;
+      if (kind) figure.setAttribute("data-caption-kind", kind); else figure.removeAttribute("data-caption-kind");
+      emitChange("format");
+    },
+    /** Numbered (or not) display equation `math` (a `.math-formula--block` of this body); `data-eq-numbered` is source markup. */
+    setEquationNumbered: (math, numbered) => {
+      const body = bodyRef.current;
+      if (!body || !math || !body.contains(math)) return;
+      if (numbered) math.setAttribute("data-eq-numbered", "true"); else math.removeAttribute("data-eq-numbered");
+      emitChange("format");
+    },
     toggleEquationNumber: () => {
       const body = bodyRef.current;
       if (!body) return;
@@ -373,9 +389,10 @@ export const RichTextBody = forwardRef(({
     insertLink: (href, text) => {
       withRange((root) => wrapSelectionWithLink(href, text, root));
     },
-    insertFormula: (display = true) => {
+    insertFormula: (display = true, numbered = false) => {
       withRange((root) => {
         const el = createMathElement("", display);
+        if (display && numbered) el.setAttribute("data-eq-numbered", "true");
         insertNodeAtSelection(el, root);
         beginMathEdit(el);
       });

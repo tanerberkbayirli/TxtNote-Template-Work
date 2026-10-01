@@ -5,12 +5,13 @@
  */
 
 export const ACADEMIC_PDF_FONT = "Tinos";
-import { loadSystemPdfFonts } from "./systemPdfFonts.js";
+import { loadSystemPdfFonts, systemPdfFontFamily } from "./systemPdfFonts.js";
 
+/** pdf → { default: family, families: { [family]: { normal, bold, italic, bolditalic } } } */
 const registeredFaces = new WeakMap();
 export const requiresTimesNewRoman = (templateId) => /^mcbu-lee-/.test(templateId || "");
 
-const FAMILY_NAMES = new Map([["tinos", ACADEMIC_PDF_FONT], ["arial", "Arial"], ["times new roman", "Times New Roman"]]);
+const FAMILY_NAMES = new Map([["tinos", ACADEMIC_PDF_FONT], ["arial", "Arial"], ["times new roman", "Times New Roman"], ["cambria math", "Cambria Math"]]);
 export function normalizeAcademicPdfFamily(value) {
   const first = String(value || "").split(",")[0].replace(/[\"']/g, "").trim().toLocaleLowerCase("en-US");
   return FAMILY_NAMES.get(first) || null;
@@ -38,16 +39,35 @@ export function collectAcademicPdfFontRequests(documentLayout, sections = []) {
   return [...requested.values()];
 }
 
+/** Registered PDF font name of `style` in `family` (its regular face when the family has one face), else the document default. */
 export function academicPdfFont(pdf, style = "normal", family) {
-  const state = registeredFaces.get(pdf);
-  if (family != null) {
-    const canonical = normalizeAcademicPdfFamily(family);
-    const name = canonical && state?.families.get(canonical)?.[style];
-    if (!name) throw new Error(`PDF için ${String(family)} ${style} yazı tipi gerçek bir yüz olarak yüklenmedi.`);
-    return name;
-  }
-  return state?.families.get(state.defaultFamily)?.[style] || ACADEMIC_PDF_FONT;
+  return academicPdfFontFace(pdf, style, family).name;
 }
+/** Exact face of an explicitly requested family; fails instead of substituting another family. */
+export function exactAcademicPdfFont(pdf, style, family) {
+  const canonical = normalizeAcademicPdfFamily(family);
+  const faces = canonical && registeredFaces.get(pdf)?.families.get(canonical);
+  const name = faces?.[style] || faces?.normal;
+  if (!name) throw new Error(`PDF için ${String(family)} ${style} yazı tipi gerçek bir yüz olarak yüklenmedi.`);
+  return name;
+}
+
+/** Registered font name and style; a family without the variant (Cambria Math) uses its regular face. */
+export function academicPdfFontFace(pdf, style = "normal", family) {
+  const state = registeredFaces.get(pdf);
+  if (!state) return { name: ACADEMIC_PDF_FONT, style };
+  const canonical = family ? normalizeAcademicPdfFamily(family) : null;
+  const faces = canonical && state.families.get(canonical);
+  if (faces?.[style]) return { name: faces[style], style };
+  if (faces?.normal) return { name: faces.normal, style: "normal" };
+  const fallback = state.families.get(state.defaultFamily);
+  return fallback?.[style] ? { name: fallback[style], style } : { name: ACADEMIC_PDF_FONT, style };
+}
+/** Is `family` embedded as a genuine system font in this PDF? */
+export const hasSystemPdfFont = (pdf, family) => {
+  const canonical = systemPdfFontFamily(family);
+  return Boolean(canonical && registeredFaces.get(pdf)?.families.get(canonical));
+};
 
 const FONT_FILES = {
   normal: "Tinos-Regular.ttf",
@@ -120,14 +140,21 @@ async function readFontFile(fileName) {
   return binary;
 }
 
-export async function embedAcademicPdfFonts(pdf, { templateId, extraFontFamilies = [] } = {}) {
-  const defaultFamily = requiresTimesNewRoman(templateId) ? "Times New Roman" : ACADEMIC_PDF_FONT;
-  const requested = [...new Set(extraFontFamilies.map(value => {
+/**
+ * Embed the PDF fonts. `systemFonts` lists families an official template requires (e.g.
+ * ["Times New Roman", "Cambria Math"]); `extraFontFamilies` are families the user's layout
+ * styles name explicitly. Genuine system programs are embedded and a missing font fails the
+ * export visibly instead of silently substituting. Otherwise Tinos (bundled) is the default.
+ */
+export async function embedAcademicPdfFonts(pdf, { templateId, extraFontFamilies = [], systemFonts = [] } = {}) {
+  const canonical = (value) => {
     const family = normalizeAcademicPdfFamily(value);
     if (!family) throw new Error(`PDF yazı tipi ${String(value)} izin verilen font ailelerinden biri değil.`);
     return family;
-  }))];
-  const required = new Set([defaultFamily, ...requested]);
+  };
+  const templateFamilies = systemFonts.map(canonical);
+  const defaultFamily = requiresTimesNewRoman(templateId) ? "Times New Roman" : templateFamilies[0] || ACADEMIC_PDF_FONT;
+  const required = new Set([defaultFamily, ...templateFamilies, ...extraFontFamilies.map(canonical)]);
   const families = new Map();
   for (const family of required) {
     if (family === ACADEMIC_PDF_FONT) {

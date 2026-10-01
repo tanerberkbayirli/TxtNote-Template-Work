@@ -1,0 +1,4520 @@
+{
+ "generatedAt": "2026-09-30",
+ "generatedBy": "spec_annotate_v3.py",
+ "domains": {
+  "page": {
+   "category": "page-geometry",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "Sayfa ölçüleri ve kenar boşlukları"
+  },
+  "paper": {
+   "category": "production",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "low",
+   "description": "Baskı/teslim (kâğıt, cilt)"
+  },
+  "wordModel": {
+   "category": "layout-model",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "none",
+   "description": "Word satır/paragraf modeli ölçümleri (motor içi)"
+  },
+  "typography": {
+   "category": "typography",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "Gövde tipografisi"
+  },
+  "headings": {
+   "category": "typography",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "Başlık stilleri H1-H5"
+  },
+  "numbers": {
+   "category": "typography",
+   "tier": 1,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "Sayı gösterimi"
+  },
+  "equations": {
+   "category": "equations",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "medium",
+   "description": "Denklem yerleşimi ve numaralandırma"
+  },
+  "footnotes": {
+   "category": "typography",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "medium",
+   "description": "Dipnotlar"
+  },
+  "pagination": {
+   "category": "pagination",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "Sayfa numaralandırma"
+  },
+  "structure": {
+   "category": "structure",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "high",
+   "description": "Bölüm sırası ve zorunlu yapı"
+  },
+  "sections": {
+   "category": "structure",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "high",
+   "description": "Bölüm davranışı"
+  },
+  "chapters": {
+   "category": "structure",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "high",
+   "description": "Ana bölümler"
+  },
+  "mainChapters": {
+   "category": "structure",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "high",
+   "description": "Ana bölümler"
+  },
+  "frontMatter": {
+   "category": "structure",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "high",
+   "description": "Ön sayfa yapısı"
+  },
+  "degrees": {
+   "category": "structure",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "Derece türü kuralları"
+  },
+  "language": {
+   "category": "content",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "Dil kuralları"
+  },
+  "software": {
+   "category": "production",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "low",
+   "description": "Yazılım/üretim"
+  },
+  "output": {
+   "category": "production",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "low",
+   "description": "Çıktı biçimi"
+  },
+  "cover": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Dış kapak"
+  },
+  "coverUnderPage": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Kapak altı sayfa"
+  },
+  "outerCover": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Dış kapak (kurum baskılı)"
+  },
+  "innerCover": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "İç kapak"
+  },
+  "approval": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Onay/jüri sayfası"
+  },
+  "declaration": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Beyan sayfası"
+  },
+  "preface": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Önsöz"
+  },
+  "acknowledgements": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Teşekkür"
+  },
+  "ethicsDeclaration": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Etik beyan"
+  },
+  "cv": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Özgeçmiş"
+  },
+  "curriculumVitae": {
+   "category": "fixed-page",
+   "tier": 2,
+   "defaultCheck": "render",
+   "defaultRejectionRisk": "high",
+   "description": "Özgeçmiş"
+  },
+  "abstract": {
+   "category": "abstract",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "high",
+   "description": "Özet sayfası"
+  },
+  "englishAbstract": {
+   "category": "abstract",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "high",
+   "description": "İngilizce özet"
+  },
+  "otherAbstract": {
+   "category": "abstract",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "Diğer dil özeti"
+  },
+  "extendedTurkishSummary": {
+   "category": "abstract",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "Uzun Türkçe özet"
+  },
+  "toc": {
+   "category": "toc-lists",
+   "tier": 2,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "İçindekiler"
+  },
+  "lists": {
+   "category": "toc-lists",
+   "tier": 2,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "Dizinler (şekil/tablo/kısaltma/simgeler)"
+  },
+  "captions": {
+   "category": "captions",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "Şekil/tablo açıklamaları"
+  },
+  "figures": {
+   "category": "objects",
+   "tier": 2,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "Şekil yerleşimi"
+  },
+  "tables": {
+   "category": "objects",
+   "tier": 2,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "medium",
+   "description": "Tablo biçimi"
+  },
+  "bibliography": {
+   "category": "bibliography",
+   "tier": 1,
+   "defaultCheck": "measure",
+   "defaultRejectionRisk": "high",
+   "description": "Kaynakça biçimi"
+  },
+  "citations": {
+   "category": "bibliography",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "Atıf stili"
+  },
+  "content": {
+   "category": "content",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "medium",
+   "description": "İçerik kuralları"
+  },
+  "binding": {
+   "category": "production",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "low",
+   "description": "Cilt"
+  },
+  "printing": {
+   "category": "production",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "low",
+   "description": "Baskı"
+  },
+  "submission": {
+   "category": "production",
+   "tier": 3,
+   "defaultCheck": "lint",
+   "defaultRejectionRisk": "low",
+   "description": "Teslim"
+  }
+ },
+ "tolerancePolicy": {
+  "mm": {
+   "value": 0.5,
+   "targetValue": 0.25,
+   "note": "Olcum gurultusu; bilincli sapma degil"
+  },
+  "ptFont": {
+   "value": 0.1
+  },
+  "ptSpacing": {
+   "value": 0.2
+  },
+  "exact": "enum/string: birebir"
+ },
+ "rejectionRiskPolicy": {
+  "high": "Enstitunun reddetme sebebi olabilecek bicim kurali (font, margin, punto, sayfa no, baslik, onay/kapak geometrisi)",
+  "medium": "Reddedilme riski olan ama tartisilabilir kural (icerik, atif stili, tablo notu)",
+  "low": "Fiziksel uretim/teslim kurali; belge bicimi degil",
+  "none": "Motor olcumu; dogrudan universite kurali degil"
+ },
+ "keyMap": {
+  "abstract.content": {
+   "canonical": "abstract.content",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-sbe"
+   ]
+  },
+  "abstract.degreeLabel": {
+   "canonical": "abstract.degreeLabel",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "abstract.en.thesisType": {
+   "canonical": "abstract.en.thesisType",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "abstract.englishTitles": {
+   "canonical": "abstract.englishTitles",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "abstract.firstLineIndentMm": {
+   "canonical": "abstract.firstLineIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "abstract.fontSizePt": {
+   "canonical": "abstract.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.keywords.count": {
+   "canonical": "abstract.keywords.count",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "abstract.keywords.hanging": {
+   "canonical": "abstract.keywords.hanging",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "abstract.keywords.hangingIndent": {
+   "canonical": "abstract.keywords.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.keywords.hangingIndentMm": {
+   "canonical": "abstract.keywords.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "abstract.keywords.label": {
+   "canonical": "abstract.keywords.label",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "abstract.keywords.order": {
+   "canonical": "abstract.keywords.order",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.keywords.spaceBefore": {
+   "canonical": "abstract.keywords.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "abstract.keywords.spaceBeforePt": {
+   "canonical": "abstract.keywords.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.lineSpacing": {
+   "canonical": "abstract.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "abstract.maxPages": {
+   "canonical": "abstract.maxPages",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "abstract.maxWords": {
+   "canonical": "abstract.maxWords",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "abstract.noSubheadings": {
+   "canonical": "abstract.noSubheadings",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.order": {
+   "canonical": "abstract.order",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "abstract.pageCount": {
+   "canonical": "abstract.pageCount",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "abstract.pageCountLine": {
+   "canonical": "abstract.pageCountLine",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "abstract.paragraphs": {
+   "canonical": "abstract.paragraphs",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.structure.en": {
+   "canonical": "abstract.structure.en",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "abstract.structure.tr": {
+   "canonical": "abstract.structure.tr",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "abstract.thesisTitleStyle": {
+   "canonical": "abstract.thesisTitleStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.thesisTitleToTextPt": {
+   "canonical": "abstract.thesisTitleToTextPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.title": {
+   "canonical": "abstract.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.titleSpaceBeforePt": {
+   "canonical": "abstract.titleSpaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.titleToThesisTitlePt": {
+   "canonical": "abstract.titleToThesisTitlePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "abstract.tr.thesisType": {
+   "canonical": "abstract.tr.thesisType",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "abstract.year": {
+   "canonical": "abstract.year",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "abstract.yearPages": {
+   "canonical": "abstract.yearPages",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "acknowledgements.content": {
+   "canonical": "acknowledgements.content",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "acknowledgements.maxPages": {
+   "canonical": "acknowledgements.maxPages",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "acknowledgements.signature": {
+   "canonical": "acknowledgements.signature",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "appendices.inToc": {
+   "canonical": "appendices.inToc",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "appendices.itemLabel": {
+   "canonical": "appendices.itemLabel",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "appendices.label": {
+   "canonical": "appendices.label",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "appendices.numbering": {
+   "canonical": "appendices.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "appendices.threshold": {
+   "canonical": "appendices.threshold",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "appendices.title": {
+   "canonical": "appendices.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sagbil"
+   ]
+  },
+  "appendices.titles": {
+   "canonical": "appendices.titles",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "approval.form": {
+   "canonical": "approval.form",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "approval.juryCount": {
+   "canonical": "approval.juryCount",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "approval.layout": {
+   "canonical": "approval.layout",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "approval.title": {
+   "canonical": "approval.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "approval.whenAdded": {
+   "canonical": "approval.whenAdded",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "bibliography.align": {
+   "canonical": "bibliography.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "bibliography.allAuthors": {
+   "canonical": "bibliography.allAuthors",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "bibliography.authorCase": {
+   "canonical": "bibliography.authorCase",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "bibliography.blankLineBetween": {
+   "canonical": "bibliography.blankLineBetween",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "bibliography.contextualSpacing": {
+   "canonical": "bibliography.contextualSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "bibliography.entryFormat": {
+   "canonical": "bibliography.entryFormat",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "bibliography.entryFormats": {
+   "canonical": "bibliography.entryFormats",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "bibliography.firstLineIndentMm": {
+   "canonical": "bibliography.firstLineIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "bibliography.fontSizePt": {
+   "canonical": "bibliography.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "bibliography.hangingIndentMm": {
+   "canonical": "bibliography.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "bibliography.internetSources": {
+   "canonical": "bibliography.internetSources",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-mbg-lisans"
+   ]
+  },
+  "bibliography.lineSpacing": {
+   "canonical": "bibliography.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "bibliography.maxAuthors": {
+   "canonical": "bibliography.maxAuthors",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "bibliography.numbered": {
+   "canonical": "bibliography.numbered",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "bibliography.order": {
+   "canonical": "bibliography.order",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "bibliography.spaceAfterPt": {
+   "canonical": "bibliography.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "bibliography.spaceBeforePt": {
+   "canonical": "bibliography.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "bibliography.startsBelowTitle": {
+   "canonical": "bibliography.startsBelowTitle",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "bibliography.title": {
+   "canonical": "bibliography.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "bibliography.titleSpaceAfterPt": {
+   "canonical": "bibliography.titleSpaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "bibliography.titleSpaceBeforePt": {
+   "canonical": "bibliography.titleSpaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "bibliography.titleStyle": {
+   "canonical": "bibliography.titleStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "binding": {
+   "canonical": "binding",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "binding.blankLastLeaf": {
+   "canonical": "binding.blankLastLeaf",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "binding.outerCover": {
+   "canonical": "binding.outerCover",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "binding.required": {
+   "canonical": "binding.required",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "binding.submission": {
+   "canonical": "binding.submission",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "binding.type": {
+   "canonical": "binding.type",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.align": {
+   "canonical": "captions.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.continuation": {
+   "canonical": "captions.continuation",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.continued": {
+   "canonical": "captions.continued",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "captions.figure.align": {
+   "canonical": "captions.figure.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.figure.continued": {
+   "canonical": "captions.figure.continued",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.figure.fontSizePt": {
+   "canonical": "captions.figure.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.figure.gapImageBottomToCaptionBaselineMm": {
+   "canonical": "captions.figure.gapImageBottomToCaptionBaselineMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.figure.hangingIndent": {
+   "canonical": "captions.figure.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.figure.hangingIndentMm": {
+   "canonical": "captions.figure.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.figure.label": {
+   "canonical": "captions.figure.label",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "captions.figure.labelBold": {
+   "canonical": "captions.figure.labelBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.figure.lineSpacing": {
+   "canonical": "captions.figure.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.figure.numbering": {
+   "canonical": "captions.figure.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.figure.position": {
+   "canonical": "captions.figure.position",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "captions.figure.separator": {
+   "canonical": "captions.figure.separator",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.figure.sourceCitation": {
+   "canonical": "captions.figure.sourceCitation",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.figure.spaceAfterPt": {
+   "canonical": "captions.figure.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.figure.spaceBeforePt": {
+   "canonical": "captions.figure.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.figure.textBold": {
+   "canonical": "captions.figure.textBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.figure.xLeftMm": {
+   "canonical": "captions.figure.xLeftMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.firstLineIndentMm": {
+   "canonical": "captions.firstLineIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.fontSizePt": {
+   "canonical": "captions.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.hangingIndent": {
+   "canonical": "captions.hangingIndent",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.labelBold": {
+   "canonical": "captions.labelBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.lineSpacing": {
+   "canonical": "captions.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.numbering": {
+   "canonical": "captions.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.photo.align": {
+   "canonical": "captions.photo.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.continued": {
+   "canonical": "captions.photo.continued",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.fontSizePt": {
+   "canonical": "captions.photo.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.hangingIndent": {
+   "canonical": "captions.photo.hangingIndent",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.label": {
+   "canonical": "captions.photo.label",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.labelBold": {
+   "canonical": "captions.photo.labelBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.lineSpacing": {
+   "canonical": "captions.photo.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.numbering": {
+   "canonical": "captions.photo.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.position": {
+   "canonical": "captions.photo.position",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.separator": {
+   "canonical": "captions.photo.separator",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.photo.spaceBeforePt": {
+   "canonical": "captions.photo.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.picture": {
+   "canonical": "captions.picture",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "captions.picture.align": {
+   "canonical": "captions.picture.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.fontSizePt": {
+   "canonical": "captions.picture.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.hangingIndent": {
+   "canonical": "captions.picture.hangingIndent",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.label": {
+   "canonical": "captions.picture.label",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.labelBold": {
+   "canonical": "captions.picture.labelBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.lineSpacing": {
+   "canonical": "captions.picture.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.numbering": {
+   "canonical": "captions.picture.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.position": {
+   "canonical": "captions.picture.position",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.separator": {
+   "canonical": "captions.picture.separator",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.spaceAfterPt": {
+   "canonical": "captions.picture.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.picture.spaceBeforePt": {
+   "canonical": "captions.picture.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.separatorAfterNumber": {
+   "canonical": "captions.separatorAfterNumber",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.source": {
+   "canonical": "captions.source",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sbe"
+   ]
+  },
+  "captions.sourceCitation": {
+   "canonical": "captions.sourceCitation",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "captions.spacing.captionToObjectPt": {
+   "canonical": "captions.spacing.captionToObjectPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.spacing.objectOuterPt": {
+   "canonical": "captions.spacing.objectOuterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.spacingBeforePt": {
+   "canonical": "captions.spacingBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "captions.subparts": {
+   "canonical": "captions.subparts",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "captions.table.align": {
+   "canonical": "captions.table.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.continuation": {
+   "canonical": "captions.table.continuation",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "captions.table.continued": {
+   "canonical": "captions.table.continued",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "captions.table.fontSizePt": {
+   "canonical": "captions.table.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.hangingIndent": {
+   "canonical": "captions.table.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.table.hangingIndentMm": {
+   "canonical": "captions.table.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.table.keepWithNext": {
+   "canonical": "captions.table.keepWithNext",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.table.label": {
+   "canonical": "captions.table.label",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.labelBold": {
+   "canonical": "captions.table.labelBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.lineSpacing": {
+   "canonical": "captions.table.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.numbering": {
+   "canonical": "captions.table.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.position": {
+   "canonical": "captions.table.position",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.separator": {
+   "canonical": "captions.table.separator",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "captions.table.sourceCitation": {
+   "canonical": "captions.table.sourceCitation",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.table.spaceAfterPt": {
+   "canonical": "captions.table.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.table.spaceBeforePt": {
+   "canonical": "captions.table.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "captions.table.textBold": {
+   "canonical": "captions.table.textBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "captions.table.titleCase": {
+   "canonical": "captions.table.titleCase",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "captions.table.xLeftMm": {
+   "canonical": "captions.table.xLeftMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "chapters.required": {
+   "canonical": "chapters.required",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "citations.etAl": {
+   "canonical": "citations.etAl",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "citations.internet": {
+   "canonical": "citations.internet",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "citations.multipleOrder": {
+   "canonical": "citations.multipleOrder",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "citations.style": {
+   "canonical": "citations.style",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "content.units.system": {
+   "canonical": "content.units.system",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "cover.bold": {
+   "canonical": "cover.bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "cover.fontFamily": {
+   "canonical": "cover.fontFamily",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "cover.fontSizePt": {
+   "canonical": "cover.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "cover.innerCover.advisor": {
+   "canonical": "cover.innerCover.advisor",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.innerCover.cityDate": {
+   "canonical": "cover.innerCover.cityDate",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.innerCover.headerBlock": {
+   "canonical": "cover.innerCover.headerBlock",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.innerCover.logo": {
+   "canonical": "cover.innerCover.logo",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.innerCover.student": {
+   "canonical": "cover.innerCover.student",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.innerCover.support": {
+   "canonical": "cover.innerCover.support",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.innerCover.title": {
+   "canonical": "cover.innerCover.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.innerCover.verticalLayout": {
+   "canonical": "cover.innerCover.verticalLayout",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "cover.lineSpacing": {
+   "canonical": "cover.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "cover.logos": {
+   "canonical": "cover.logos",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "cover.margins": {
+   "canonical": "cover.margins",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "cover.outerCover.window": {
+   "canonical": "cover.outerCover.window",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "coverUnderPage": {
+   "canonical": "coverUnderPage",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "curriculumVitae.title": {
+   "canonical": "curriculumVitae.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "cv.layout": {
+   "canonical": "cv.layout",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "cv.required": {
+   "canonical": "cv.required",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "cv.title": {
+   "canonical": "cv.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "declaration.signatureBlock": {
+   "canonical": "declaration.signatureBlock",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "degrees.sanattaYeterlik": {
+   "canonical": "degrees.sanattaYeterlik",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "englishAbstract.format": {
+   "canonical": "englishAbstract.format",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "englishAbstract.keywords.label": {
+   "canonical": "englishAbstract.keywords.label",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "englishAbstract.title": {
+   "canonical": "englishAbstract.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "equations": {
+   "canonical": "equations",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "equations.align": {
+   "canonical": "equations.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "equations.font": {
+   "canonical": "equations.font",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "equations.inlineVariablesItalic": {
+   "canonical": "equations.inlineVariablesItalic",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "equations.numbering": {
+   "canonical": "equations.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "equations.reference": {
+   "canonical": "equations.reference",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "equations.spacing": {
+   "canonical": "equations.spacingPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "equations.spacingPt": {
+   "canonical": "equations.spacingPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "ethicsDeclaration.layout": {
+   "canonical": "ethicsDeclaration.layout",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "extendedTurkishSummary": {
+   "canonical": "extendedTurkishSummary",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "figures.align": {
+   "canonical": "figures.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "figures.landscape": {
+   "canonical": "figures.landscape",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "figures.maxWidth": {
+   "canonical": "figures.maxWidth",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "figures.oversize": {
+   "canonical": "figures.oversize",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "figures.paragraphLineSpacing": {
+   "canonical": "figures.paragraphLineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "figures.placement": {
+   "canonical": "figures.placement",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sagbil"
+   ]
+  },
+  "figures.widthPolicy": {
+   "canonical": "figures.widthPolicy",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "footnotes.firstLineIndentMm": {
+   "canonical": "footnotes.firstLineIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "footnotes.fontFamily": {
+   "canonical": "footnotes.fontFamily",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "footnotes.fontSizePt": {
+   "canonical": "footnotes.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "footnotes.lineSpacing": {
+   "canonical": "footnotes.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "footnotes.marker": {
+   "canonical": "footnotes.marker",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "footnotes.numbering": {
+   "canonical": "footnotes.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "footnotes.separator": {
+   "canonical": "footnotes.separator",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "footnotes.separator.spaceAfterPt": {
+   "canonical": "footnotes.separator.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "footnotes.separator.spaceBeforePt": {
+   "canonical": "footnotes.separator.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "footnotes.usage": {
+   "canonical": "footnotes.usage",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "frontMatter.titleStartsNewPage": {
+   "canonical": "frontMatter.titleStartsNewPage",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "frontMatter.titles.align": {
+   "canonical": "frontMatter.titles.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.chapterStartsNewPage.sections": {
+   "canonical": "headings.chapterStartsNewPage.sections",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "headings.frontMatterTitles": {
+   "canonical": "headings.frontMatterTitles",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "headings.h1.align": {
+   "canonical": "headings.h1.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.bold": {
+   "canonical": "headings.h1.bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.caps": {
+   "canonical": "headings.h1.caps",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.firstBaselineMm": {
+   "canonical": "headings.h1.firstBaselineMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "headings.h1.fontFamily": {
+   "canonical": "headings.h1.fontFamily",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "headings.h1.fontSizePt": {
+   "canonical": "headings.h1.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.indentMm": {
+   "canonical": "headings.h1.indentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h1.italic": {
+   "canonical": "headings.h1.italic",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h1.keepWithNext": {
+   "canonical": "headings.h1.keepWithNext",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "headings.h1.kind": {
+   "canonical": "headings.h1.kind",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.lineSpacing": {
+   "canonical": "headings.h1.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.multiLine": {
+   "canonical": "headings.h1.multiLine",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.numbering": {
+   "canonical": "headings.h1.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.pageBreakBefore": {
+   "canonical": "headings.h1.pageBreakBefore",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.positionOnPage": {
+   "canonical": "headings.h1.positionOnPage",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.spaceAfter": {
+   "canonical": "headings.h1.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h1.spaceAfterPt": {
+   "canonical": "headings.h1.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1.spaceBefore": {
+   "canonical": "headings.h1.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h1.spaceBeforePt": {
+   "canonical": "headings.h1.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h1ToH2.gapPt": {
+   "canonical": "headings.h1ToH2.gapPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "headings.h2.align": {
+   "canonical": "headings.h2.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.bold": {
+   "canonical": "headings.h2.bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.caps": {
+   "canonical": "headings.h2.caps",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.case": {
+   "canonical": "headings.h2.case",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "headings.h2.fontFamily": {
+   "canonical": "headings.h2.fontFamily",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "headings.h2.fontSizePt": {
+   "canonical": "headings.h2.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.indentMm": {
+   "canonical": "headings.h2.indentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h2.italic": {
+   "canonical": "headings.h2.italic",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h2.keepWithNext": {
+   "canonical": "headings.h2.keepWithNext",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.lineSpacing": {
+   "canonical": "headings.h2.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.numbering": {
+   "canonical": "headings.h2.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.pageBreakBefore": {
+   "canonical": "headings.h2.pageBreakBefore",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h2.spaceAfter": {
+   "canonical": "headings.h2.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h2.spaceAfterPt": {
+   "canonical": "headings.h2.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h2.spaceBefore": {
+   "canonical": "headings.h2.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h2.spaceBeforePt": {
+   "canonical": "headings.h2.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.align": {
+   "canonical": "headings.h3.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.bold": {
+   "canonical": "headings.h3.bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.caps": {
+   "canonical": "headings.h3.caps",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.case": {
+   "canonical": "headings.h3.case",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "headings.h3.fontFamily": {
+   "canonical": "headings.h3.fontFamily",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "headings.h3.fontSizePt": {
+   "canonical": "headings.h3.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.indentMm": {
+   "canonical": "headings.h3.indentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h3.italic": {
+   "canonical": "headings.h3.italic",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h3.keepWithNext": {
+   "canonical": "headings.h3.keepWithNext",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.lineSpacing": {
+   "canonical": "headings.h3.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.numbering": {
+   "canonical": "headings.h3.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.pageBreakBefore": {
+   "canonical": "headings.h3.pageBreakBefore",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h3.spaceAfter": {
+   "canonical": "headings.h3.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h3.spaceAfterPt": {
+   "canonical": "headings.h3.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h3.spaceBefore": {
+   "canonical": "headings.h3.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h3.spaceBeforePt": {
+   "canonical": "headings.h3.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.align": {
+   "canonical": "headings.h4.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.bold": {
+   "canonical": "headings.h4.bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.caps": {
+   "canonical": "headings.h4.caps",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.fontFamily": {
+   "canonical": "headings.h4.fontFamily",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "headings.h4.fontSizePt": {
+   "canonical": "headings.h4.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.indentMm": {
+   "canonical": "headings.h4.indentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h4.italic": {
+   "canonical": "headings.h4.italic",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h4.keepWithNext": {
+   "canonical": "headings.h4.keepWithNext",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.lineSpacing": {
+   "canonical": "headings.h4.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.numbering": {
+   "canonical": "headings.h4.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.pageBreakBefore": {
+   "canonical": "headings.h4.pageBreakBefore",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.h4.spaceAfter": {
+   "canonical": "headings.h4.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h4.spaceAfterPt": {
+   "canonical": "headings.h4.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.spaceBefore": {
+   "canonical": "headings.h4.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.h4.spaceBeforePt": {
+   "canonical": "headings.h4.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "headings.h4.style": {
+   "canonical": "headings.h4.style",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "headings.h5.align": {
+   "canonical": "headings.h5.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.bold": {
+   "canonical": "headings.h5.bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.caps": {
+   "canonical": "headings.h5.caps",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.fontSizePt": {
+   "canonical": "headings.h5.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.keepWithNext": {
+   "canonical": "headings.h5.keepWithNext",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.lineSpacing": {
+   "canonical": "headings.h5.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.numbering": {
+   "canonical": "headings.h5.numbering",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.spaceAfterPt": {
+   "canonical": "headings.h5.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.h5.spaceBeforePt": {
+   "canonical": "headings.h5.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.keepWithNext": {
+   "canonical": "headings.keepWithNext",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-mbg-lisans"
+   ]
+  },
+  "headings.levels": {
+   "canonical": "headings.levels",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "headings.minorItems": {
+   "canonical": "headings.minorItems",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.numberSeparator": {
+   "canonical": "headings.numberSeparator",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "headings.spaceBeforePt": {
+   "canonical": "headings.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "headings.unnumberedMainParts": {
+   "canonical": "headings.unnumberedMainParts",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "innerCover.header": {
+   "canonical": "innerCover.header",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "innerCover.headerToTitle": {
+   "canonical": "innerCover.headerToTitle",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "innerCover.layout": {
+   "canonical": "innerCover.layout",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "innerCover.otherLines": {
+   "canonical": "innerCover.otherLines",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "innerCover.pageNumberVisible": {
+   "canonical": "innerCover.pageNumberVisible",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "innerCover.projectSupport": {
+   "canonical": "innerCover.projectSupport",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "innerCover.title": {
+   "canonical": "innerCover.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "innerCover.typography": {
+   "canonical": "innerCover.typography",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "language": {
+   "canonical": "language",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "language.foreignLanguageProgrammes": {
+   "canonical": "language.foreignLanguageProgrammes",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "lists.align": {
+   "canonical": "lists.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.appendices.format": {
+   "canonical": "lists.appendices.format",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "lists.appendices.title": {
+   "canonical": "lists.appendices.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "lists.entryFormat": {
+   "canonical": "lists.entryFormat",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sbe"
+   ]
+  },
+  "lists.figures.entryStyle": {
+   "canonical": "lists.figures.entryStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.figures.entryText": {
+   "canonical": "lists.figures.entryText",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.figures.generated": {
+   "canonical": "lists.figures.generated",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "lists.figures.leader": {
+   "canonical": "lists.figures.leader",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.figures.pageNumberHeading": {
+   "canonical": "lists.figures.pageNumberHeading",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.figures.required": {
+   "canonical": "lists.figures.required",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.figures.title": {
+   "canonical": "lists.figures.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "lists.figures.titleOnFirstPageOnly": {
+   "canonical": "lists.figures.titleOnFirstPageOnly",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "lists.figures.titleSpaceAfterPt": {
+   "canonical": "lists.figures.titleSpaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.figures.titleSpaceBeforePt": {
+   "canonical": "lists.figures.titleSpaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.figures.titleStyle": {
+   "canonical": "lists.figures.titleStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.hangingIndentMm": {
+   "canonical": "lists.hangingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sbe"
+   ]
+  },
+  "lists.leader": {
+   "canonical": "lists.leader",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.lineSpacing": {
+   "canonical": "lists.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.pageNumberHeading": {
+   "canonical": "lists.pageNumberHeading",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.photos.title": {
+   "canonical": "lists.photos.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.pictures.entryStyle": {
+   "canonical": "lists.pictures.entryStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.pictures.pageNumberHeading": {
+   "canonical": "lists.pictures.pageNumberHeading",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.pictures.title": {
+   "canonical": "lists.pictures.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "lists.pictures.titleStyle": {
+   "canonical": "lists.pictures.titleStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.spaceAfterPt": {
+   "canonical": "lists.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.symbols.definitionColumnMm": {
+   "canonical": "lists.symbols.definitionColumnMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.symbols.format": {
+   "canonical": "lists.symbols.format",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "lists.symbols.layout": {
+   "canonical": "lists.symbols.layout",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-mbg-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "lists.symbols.lineSpacing": {
+   "canonical": "lists.symbols.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.symbols.order": {
+   "canonical": "lists.symbols.order",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "lists.symbols.structure": {
+   "canonical": "lists.symbols.structure",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.symbols.tabStopMm": {
+   "canonical": "lists.symbols.tabStopMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "lists.symbols.title": {
+   "canonical": "lists.symbols.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "lists.symbols.titleSpaceAfterPt": {
+   "canonical": "lists.symbols.titleSpaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.symbols.titleSpaceBeforePt": {
+   "canonical": "lists.symbols.titleSpaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.tables.entryStyle": {
+   "canonical": "lists.tables.entryStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.tables.generated": {
+   "canonical": "lists.tables.generated",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "lists.tables.pageNumberHeading": {
+   "canonical": "lists.tables.pageNumberHeading",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.tables.pageRanges": {
+   "canonical": "lists.tables.pageRanges",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.tables.required": {
+   "canonical": "lists.tables.required",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.tables.title": {
+   "canonical": "lists.tables.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "lists.tables.titleOnFirstPageOnly": {
+   "canonical": "lists.tables.titleOnFirstPageOnly",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "lists.tables.titleSpaceBeforePt": {
+   "canonical": "lists.tables.titleSpaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "lists.tables.titleStyle": {
+   "canonical": "lists.tables.titleStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-mbg-lisans"
+   ]
+  },
+  "lists.threshold": {
+   "canonical": "lists.threshold",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "lists.titleOnFirstPageOnly": {
+   "canonical": "lists.titleOnFirstPageOnly",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "lists.titleSpacing": {
+   "canonical": "lists.titleSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "mainChapters": {
+   "canonical": "mainChapters",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "numbers.format": {
+   "canonical": "numbers.format",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "otherAbstract": {
+   "canonical": "otherAbstract",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "outerCover.layout": {
+   "canonical": "outerCover.layout",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "outerCover.logoBand": {
+   "canonical": "outerCover.logoBand",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "outerCover.material": {
+   "canonical": "outerCover.material",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "outerCover.text": {
+   "canonical": "outerCover.text",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "outerCover.window": {
+   "canonical": "outerCover.window",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "output": {
+   "canonical": "output",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "page.footer.content": {
+   "canonical": "page.footer.content",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil"
+   ]
+  },
+  "page.footer.distanceMm": {
+   "canonical": "page.footer.distanceMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.gutterMm": {
+   "canonical": "page.gutterMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.header.content": {
+   "canonical": "page.header.content",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.header.distanceMm": {
+   "canonical": "page.header.distanceMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.heightMm": {
+   "canonical": "page.heightMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.landscape.margins": {
+   "canonical": "page.landscape.margins",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "page.margins.bottomMm": {
+   "canonical": "page.margins.bottomMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.margins.leftMm": {
+   "canonical": "page.margins.leftMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.margins.rightMm": {
+   "canonical": "page.margins.rightMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.margins.topMm": {
+   "canonical": "page.margins.topMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.mirrorMargins": {
+   "canonical": "page.mirrorMargins",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.orientation": {
+   "canonical": "page.orientation",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.sectionBreaks": {
+   "canonical": "page.sectionBreaks",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "page.size": {
+   "canonical": "page.size",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "page.textArea": {
+   "canonical": "page.textArea",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "page.textBlockOverflow": {
+   "canonical": "page.textBlockOverflow",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "page.widthMm": {
+   "canonical": "page.widthMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.align": {
+   "canonical": "pagination.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.appendix": {
+   "canonical": "pagination.appendix",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "pagination.backMatter": {
+   "canonical": "pagination.backMatter",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "pagination.baselineMm": {
+   "canonical": "pagination.baselineMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "pagination.coverPages": {
+   "canonical": "pagination.coverPages",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "pagination.decoration": {
+   "canonical": "pagination.decoration",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.distanceFromEdgeMm": {
+   "canonical": "pagination.distanceFromEdgeMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.firstPageOfChapterVisible": {
+   "canonical": "pagination.firstPageOfChapterVisible",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.font": {
+   "canonical": "pagination.font",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.front.approvalPage": {
+   "canonical": "pagination.front.approvalPage",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "pagination.front.format": {
+   "canonical": "pagination.front.format",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.front.startsAt(innerCover)": {
+   "canonical": "pagination.front.startsAt(innerCover)",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "pagination.front.startsAt(section)": {
+   "canonical": "pagination.front.startsAt(section)",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "pagination.landscapePages": {
+   "canonical": "pagination.landscapePages",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "pagination.main.format": {
+   "canonical": "pagination.main.format",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.main.startsAt(introduction)": {
+   "canonical": "pagination.main.startsAt(introduction)",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "pagination.main.startsAt(section)": {
+   "canonical": "pagination.main.startsAt(section)",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "pagination.outerCover": {
+   "canonical": "pagination.outerCover",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "pagination.position": {
+   "canonical": "pagination.position",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "pagination.unnumbered": {
+   "canonical": "pagination.unnumbered",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "pagination.unnumbered.counted": {
+   "canonical": "pagination.unnumbered.counted",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "pagination.unnumberedSections": {
+   "canonical": "pagination.unnumberedSections",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "pagination.xCenterMm": {
+   "canonical": "pagination.xCenterMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "paper.weight": {
+   "canonical": "paper.weight",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "preface.content": {
+   "canonical": "preface.content",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "preface.lineSpacing": {
+   "canonical": "preface.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "preface.signature": {
+   "canonical": "preface.signature",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "preface.title": {
+   "canonical": "preface.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "preface.titleSpaceAfterPt": {
+   "canonical": "preface.titleSpaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "preface.titleSpaceBeforePt": {
+   "canonical": "preface.titleSpaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "printing.duplex": {
+   "canonical": "printing.duplex",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "printing.fromWordFile": {
+   "canonical": "printing.fromWordFile",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "sections.startNewPage": {
+   "canonical": "sections.startNewPage",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "software": {
+   "canonical": "software",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "structure.order": {
+   "canonical": "structure.order",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "submission.copies": {
+   "canonical": "submission.copies",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-sbe"
+   ]
+  },
+  "submission.plagiarismMaxPercent": {
+   "canonical": "submission.plagiarismMaxPercent",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "submission.similarityMaxPercent": {
+   "canonical": "submission.similarityMaxPercent",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "tables.align": {
+   "canonical": "tables.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "tables.borders": {
+   "canonical": "tables.borders",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "tables.cellAlign": {
+   "canonical": "tables.cellAlign",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "tables.color": {
+   "canonical": "tables.color",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "tables.fontSizePt": {
+   "canonical": "tables.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "tables.headerBold": {
+   "canonical": "tables.headerBold",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "tables.lineSpacing": {
+   "canonical": "tables.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "tables.minFontSizePt": {
+   "canonical": "tables.minFontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "tables.notes": {
+   "canonical": "tables.notes",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "toc.backMatter": {
+   "canonical": "toc.backMatter",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.backMatterEntries": {
+   "canonical": "toc.backMatterEntries",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.blankLineBeforeChapter": {
+   "canonical": "toc.blankLineBeforeChapter",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.bold": {
+   "canonical": "toc.bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "toc.chapterRows": {
+   "canonical": "toc.chapterRows",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.contents": {
+   "canonical": "toc.contents",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.continuationPages": {
+   "canonical": "toc.continuationPages",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.entries": {
+   "canonical": "toc.entries",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "toc.entriesVerbatim": {
+   "canonical": "toc.entriesVerbatim",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "toc.entryStyle": {
+   "canonical": "toc.entryStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "toc.entryText": {
+   "canonical": "toc.entryText",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-sagbil"
+   ]
+  },
+  "toc.frontMatterEntries": {
+   "canonical": "toc.frontMatterEntries",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "toc.generated": {
+   "canonical": "toc.generated",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "toc.includesFrontMatter": {
+   "canonical": "toc.includesFrontMatter",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.includesItself": {
+   "canonical": "toc.includesItself",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.indentPerLevelMm": {
+   "canonical": "toc.indentPerLevelMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "toc.leader": {
+   "canonical": "toc.leader",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "toc.level1Bold": {
+   "canonical": "toc.level1Bold",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.levels": {
+   "canonical": "toc.levels",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "toc.lineSpacing": {
+   "canonical": "toc.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "toc.pageNumberAlign": {
+   "canonical": "toc.pageNumberAlign",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.pageNumberFormat": {
+   "canonical": "toc.pageNumberFormat",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.pageNumberHeading": {
+   "canonical": "toc.pageNumberHeading",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "toc.pageNumberRightEdgeMm": {
+   "canonical": "toc.pageNumberRightEdgeMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "toc.pageNumberTabMm": {
+   "canonical": "toc.pageNumberTabMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "toc.rowStyle": {
+   "canonical": "toc.rowStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.separateAppendices": {
+   "canonical": "toc.separateAppendices",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.spaceAfterPt": {
+   "canonical": "toc.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "toc.title": {
+   "canonical": "toc.title",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "toc.title.style": {
+   "canonical": "toc.title.style",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "toc.titleSpaceAfterPt": {
+   "canonical": "toc.titleSpaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.titleSpaceBeforePt": {
+   "canonical": "toc.titleSpaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "toc.titleStyle": {
+   "canonical": "toc.titleStyle",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "toc.wrap": {
+   "canonical": "toc.wrap",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "toc.wrapIndent": {
+   "canonical": "toc.wrapIndent",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "toc.wrappedLines": {
+   "canonical": "toc.wrappedLines",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "typography.aralikUnitPt": {
+   "canonical": "typography.aralikUnitPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "typography.blockQuote": {
+   "canonical": "typography.blockQuote",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "typography.blockQuote.authorDate": {
+   "canonical": "typography.blockQuote.authorDate",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "typography.blockQuote.footnoteSystem": {
+   "canonical": "typography.blockQuote.footnoteSystem",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "typography.body.align": {
+   "canonical": "typography.body.align",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "typography.body.allowedFonts": {
+   "canonical": "typography.body.allowedFonts",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "typography.body.fontFamily": {
+   "canonical": "typography.body.fontFamily",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "typography.body.fontSizePt": {
+   "canonical": "typography.body.fontSizePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "typography.body.linePitchPt": {
+   "canonical": "typography.body.linePitchPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe",
+    "aku-mbg-lisans"
+   ]
+  },
+  "typography.body.lineSpacing": {
+   "canonical": "typography.body.lineSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "typography.body.minFontSizePt.tablesFormulas": {
+   "canonical": "typography.body.minFontSizePt.tablesFormulas",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "typography.color": {
+   "canonical": "typography.color",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "typography.emphasis": {
+   "canonical": "typography.emphasis",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "typography.hyphenation": {
+   "canonical": "typography.hyphenation",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "typography.lineSpacing.model": {
+   "canonical": "typography.lineSpacing.model",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "typography.numbers": {
+   "canonical": "typography.numbers",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "typography.paragraph.blankLineBetween": {
+   "canonical": "typography.paragraph.blankLineBetween",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sbe"
+   ]
+  },
+  "typography.paragraph.effectiveGapPt": {
+   "canonical": "typography.paragraph.effectiveGapPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "typography.paragraph.firstAfterHeadingIndentMm": {
+   "canonical": "typography.paragraph.firstAfterHeadingIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "typography.paragraph.firstLineIndentMm": {
+   "canonical": "typography.paragraph.firstLineIndentMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "typography.paragraph.minSentences": {
+   "canonical": "typography.paragraph.minSentences",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "typography.paragraph.spaceAfterPt": {
+   "canonical": "typography.paragraph.spaceAfterPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "typography.paragraph.spaceBeforePt": {
+   "canonical": "typography.paragraph.spaceBeforePt",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "typography.paragraph.spaceBetweenPt": {
+   "canonical": "typography.paragraph.spaceBetweenPt",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  },
+  "typography.punctuationSpacing": {
+   "canonical": "typography.punctuationSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "typography.quotations": {
+   "canonical": "typography.quotations",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "typography.singleSpacedParts": {
+   "canonical": "typography.singleSpacedParts",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "typography.widowOrphan": {
+   "canonical": "typography.widowOrphan",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe"
+   ]
+  },
+  "typography.widowOrphanControl": {
+   "canonical": "typography.widowOrphanControl",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.effectExtentInLayout": {
+   "canonical": "wordModel.effectExtentInLayout",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.firstBaselineOffsetEm": {
+   "canonical": "wordModel.firstBaselineOffsetEm",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "wordModel.footerBaselineMm": {
+   "canonical": "wordModel.footerBaselineMm",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.inlinePictureLine": {
+   "canonical": "wordModel.inlinePictureLine",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.lineBoxBelowBaselineEm": {
+   "canonical": "wordModel.lineBoxBelowBaselineEm",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.lineHeight": {
+   "canonical": "wordModel.lineHeight",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans"
+   ]
+  },
+  "wordModel.lineHeightEm": {
+   "canonical": "wordModel.lineHeightEm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sbe"
+   ]
+  },
+  "wordModel.multipleLineSpacing.extraPlacement": {
+   "canonical": "wordModel.multipleLineSpacing.extraPlacement",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.pageFit": {
+   "canonical": "wordModel.pageFit",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.paragraphSpacing": {
+   "canonical": "wordModel.paragraphSpacing",
+   "status": "auto",
+   "presentIn": [
+    "aku-cografya-lisans",
+    "aku-fbe",
+    "aku-mbg-lisans",
+    "aku-sagbil",
+    "aku-sbe"
+   ]
+  },
+  "wordModel.sectionStartParity": {
+   "canonical": "wordModel.sectionStartParity",
+   "status": "auto",
+   "presentIn": [
+    "aku-mbg-lisans"
+   ]
+  },
+  "wordModel.singleLineEm": {
+   "canonical": "wordModel.singleLineEm",
+   "status": "auto",
+   "presentIn": [
+    "aku-fbe"
+   ]
+  },
+  "wordModel.singleLinePitchEm": {
+   "canonical": "wordModel.singleLinePitchEm",
+   "status": "auto",
+   "presentIn": [
+    "aku-sagbil"
+   ]
+  }
+ },
+ "stats": {
+  "distinctKeys": 504,
+  "perSpec": {
+   "aku-cografya-lisans": {
+    "rules": 194,
+    "categories": {
+     "page-geometry": 14,
+     "production": 6,
+     "pagination": 14,
+     "typography": 61,
+     "captions": 27,
+     "objects": 9,
+     "equations": 1,
+     "bibliography": 16,
+     "toc-lists": 25,
+     "abstract": 9,
+     "fixed-page": 6,
+     "structure": 2,
+     "content": 1,
+     "layout-model": 3
+    },
+    "confidence": {
+     "EXPLICIT": 131,
+     "INFERRED": 19,
+     "UNKNOWN": 27,
+     "MEASURED": 17
+    },
+    "rejectionRisk": {
+     "high": 173,
+     "low": 6,
+     "medium": 12,
+     "none": 3
+    }
+   },
+   "aku-fbe": {
+    "rules": 212,
+    "categories": {
+     "page-geometry": 15,
+     "production": 4,
+     "pagination": 14,
+     "typography": 70,
+     "captions": 37,
+     "objects": 11,
+     "equations": 6,
+     "bibliography": 10,
+     "toc-lists": 27,
+     "abstract": 8,
+     "structure": 3,
+     "fixed-page": 3,
+     "layout-model": 3,
+     "content": 1
+    },
+    "confidence": {
+     "EXPLICIT": 138,
+     "TEMPLATE": 47,
+     "INFERRED": 5,
+     "MEASURED": 19,
+     "UNKNOWN": 3
+    },
+    "rejectionRisk": {
+     "high": 187,
+     "low": 4,
+     "medium": 18,
+     "none": 3
+    }
+   },
+   "aku-mbg-lisans": {
+    "rules": 201,
+    "categories": {
+     "page-geometry": 14,
+     "production": 5,
+     "pagination": 14,
+     "typography": 59,
+     "captions": 36,
+     "objects": 8,
+     "equations": 1,
+     "bibliography": 12,
+     "toc-lists": 25,
+     "abstract": 8,
+     "fixed-page": 7,
+     "structure": 3,
+     "layout-model": 9
+    },
+    "confidence": {
+     "EXPLICIT": 126,
+     "TEMPLATE": 61,
+     "INFERRED": 8,
+     "MEASURED": 4,
+     "UNKNOWN": 2
+    },
+    "rejectionRisk": {
+     "high": 178,
+     "low": 5,
+     "medium": 9,
+     "none": 9
+    }
+   },
+   "aku-sagbil": {
+    "rules": 195,
+    "categories": {
+     "page-geometry": 15,
+     "production": 3,
+     "pagination": 12,
+     "typography": 48,
+     "captions": 17,
+     "objects": 3,
+     "equations": 2,
+     "bibliography": 13,
+     "toc-lists": 31,
+     "fixed-page": 23,
+     "abstract": 20,
+     "structure": 4,
+     "content": 1,
+     "layout-model": 3
+    },
+    "confidence": {
+     "EXPLICIT": 112,
+     "INFERRED": 4,
+     "UNKNOWN": 59,
+     "MEASURED": 20
+    },
+    "rejectionRisk": {
+     "high": 178,
+     "low": 3,
+     "medium": 11,
+     "none": 3
+    }
+   },
+   "aku-sbe": {
+    "rules": 197,
+    "categories": {
+     "page-geometry": 15,
+     "production": 6,
+     "pagination": 12,
+     "typography": 70,
+     "captions": 20,
+     "objects": 5,
+     "equations": 1,
+     "bibliography": 13,
+     "toc-lists": 26,
+     "structure": 3,
+     "abstract": 9,
+     "fixed-page": 13,
+     "layout-model": 3,
+     "content": 1
+    },
+    "confidence": {
+     "EXPLICIT": 163,
+     "INFERRED": 14,
+     "UNKNOWN": 8,
+     "MEASURED": 12
+    },
+    "rejectionRisk": {
+     "high": 172,
+     "low": 6,
+     "medium": 16,
+     "none": 3
+    }
+   }
+  }
+ }
+}

@@ -8,8 +8,9 @@
  * it and the output is identical at every zoom level.
  */
 import { jsPDF } from "jspdf";
-import { academicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
-import { PX_PER_MM, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
+import { academicPdfFont, academicPdfFontFace, exactAcademicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts, hasSystemPdfFont, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
+import { canvasFontAscent } from "./wordBaseline.js";
+import { PX_PER_MM, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const MM = 1 / PX_PER_MM;
 // KaTeX keeps a visually hidden MathML copy next to the drawn formula; only the drawn one is exported.
@@ -18,23 +19,13 @@ const SKIP = "button,input,select,textarea,script,style,svg,math,.katex-mathml,.
 const LATIN1 = /^[\x20-\x7e\xa0-\xff]*$/;
 
 let canvasContext = null;
-const metricCache = new Map();
 function measureContext() {
   canvasContext ||= document.createElement("canvas").getContext("2d");
   return canvasContext;
 }
 const canvasFont = (style) => `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
-/** Ascent in CSS px: the baseline of a text fragment is its rect top + ascent. */
-function fontAscent(style) {
-  const key = canvasFont(style);
-  if (!metricCache.has(key)) {
-    const context = measureContext();
-    context.font = key;
-    const metrics = context.measureText("Hg");
-    metricCache.set(key, metrics.fontBoundingBoxAscent || parseFloat(style.fontSize) * 0.891);
-  }
-  return metricCache.get(key);
-}
+/** Ascent in CSS px: the baseline of a text fragment is its rect top + ascent (shared with the Word baseline probes). */
+const fontAscent = canvasFontAscent;
 function textWidth(style, text) {
   const context = measureContext();
   context.font = canvasFont(style);
@@ -42,13 +33,40 @@ function textWidth(style, text) {
 }
 
 /** Plain copy of the typography a text op needs (computed style objects are live). */
-const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, letterSpacing: style.letterSpacing, textTransform: style.textTransform });
+const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign });
+function pdfTextStyle(element, style, language) {
+  const equation = element.closest?.(".math-formula--block");
+  const equationFamily = equation && getComputedStyle(equation).getPropertyValue("--thesis-pdf-equation-font").trim();
+  return { ...textStyle(style), ...(equationFamily ? { fontFamily: equationFamily, pdfMetricsFontFamily: style.fontFamily } : {}), lang: element.closest?.("[lang]")?.getAttribute("lang") || language };
+}
 
 function color(value) {
   const match = String(value || "").match(/rgba?\(([^)]+)\)/);
   if (!match) return null;
   const [r, g, b, a = 1] = match[1].split(/[\s,/]+/).filter(Boolean).map(Number);
   return a === 0 ? null : [r, g, b];
+}
+
+/**
+ * Math symbols the embedded Times New Roman lacks, replaced by their closest glyph it has (jsPDF drops a missing glyph silently:
+ * "F = a ⋅ b" printed "F = a   b"). Only look-alikes; glyphs without one (∈ ⇒ ∀ …) need a math font, see failures/aku-fbe/equation-font.md.
+ */
+export const PDF_GLYPH_ALIASES = Object.freeze({ "\u22C5": "\u2219", "\u2215": "/", "\u2044": "/", "\u2010": "-", "\u2011": "-", "\u2223": "|", "\u2236": ":", "\u2032": "'", "\u00A0": " " });
+/** Greek symbol variants (ϵ ϕ ϑ ϖ ϱ ϰ ϴ), math alphanumerics (𝑥, 𝐑, 𝔸 …) and letterlike symbols (ℝ ℓ …): Times New Roman has none of them; their compatibility decomposition (ε φ θ π ρ κ Θ, x R A, R ℓ) is the letter it does have. */
+const COMPAT_LETTERS = /[\u03D0-\u03F9\u{1D400}-\u{1D7FF}\u2102-\u2124]/gu;
+export const aliasGlyphs = (text) => String(text).replace(/[\u22C5\u2215\u2044\u2010\u2011\u2223\u2236\u2032\u00A0]/g, (char) => PDF_GLYPH_ALIASES[char]).replace(COMPAT_LETTERS, (char) => char.normalize("NFKD"));
+
+const DOUBLE_STRUCK_SPECIALS = Object.freeze({ C: "ℂ", H: "ℍ", N: "ℕ", P: "ℙ", Q: "ℚ", R: "ℝ", Z: "ℤ", h: "ℎ" });
+/** KaTeX represents `\mathbb{R}` as a regular text R styled with its own font. Preserve its semantic glyph for PDF fonts. */
+export function doubleStruckMathText(text) {
+  return [...String(text)].map((char) => {
+    if (DOUBLE_STRUCK_SPECIALS[char]) return DOUBLE_STRUCK_SPECIALS[char];
+    const point = char.codePointAt(0);
+    if (point >= 65 && point <= 90) return String.fromCodePoint(0x1d538 + point - 65);
+    if (point >= 97 && point <= 122) return String.fromCodePoint(0x1d552 + point - 97);
+    if (point >= 48 && point <= 57) return String.fromCodePoint(0x1d7d8 + point - 48);
+    return char;
+  }).join("");
 }
 
 function pdfFace(pdf, style, text, exactFamily = false) {
@@ -59,8 +77,10 @@ function pdfFace(pdf, style, text, exactFamily = false) {
   if (exactFamily) {
     const canonical = normalizeAcademicPdfFamily(family);
     if (!canonical) throw new Error(`Konumlandırılmış metin için PDF yazı tipi ${family || "(belirtilmemiş)"} izin verilen ailelerden biri değil`);
-    return { name: academicPdfFont(pdf, faceStyle, canonical), style: faceStyle };
+    return { name: exactAcademicPdfFont(pdf, faceStyle, canonical), style: faceStyle };
   }
+  // A genuine system family embedded for this template draws every word of that family.
+  if (hasSystemPdfFont(pdf, family)) return academicPdfFontFace(pdf, faceStyle, family);
   const builtin = /^(arial|helvetica|sans-serif|liberation sans|arimo)$/.test(family) ? "helvetica" : /^(courier|courier new|monospace|consolas)$/.test(family) ? "courier" : "";
   if (builtin && LATIN1.test(text)) return { name: builtin, style: `${bold ? "bold" : ""}${italic ? "italic" : ""}` || "normal" };
   return { name: academicPdfFont(pdf, faceStyle), style: faceStyle };
@@ -120,17 +140,20 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
     const box = local(rect);
     const fill = color(style.color);
     if (!text || !fill) return;
-    ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(style), style, color: fill, ...extra });
+    const metricsStyle = style.pdfMetricsFontFamily ? { ...style, fontFamily: style.pdfMetricsFontFamily } : style;
+    ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(metricsStyle), style, color: fill, ...extra });
   };
 
   const words = (node, style, extra) => {
     const data = node.data;
+    const mathText = (text) => node.parentElement?.classList.contains("mathbb") ? doubleStruckMathText(text) : text;
     // Keep each special-page line as one text run. The browser and embedded PDF
     // font can differ slightly in glyph widths; separately painted words then
     // swallow the visible space as well as losing it during text extraction.
-    if (node.parentElement.closest(".thesis-layout-text")) {
+    // Justified lines are the exception: their word gaps are stretched by the browser, so each word keeps its own position.
+    if (node.parentElement.closest(".thesis-layout-text") && style.textAlign !== "justify") {
       let text = "", box = null;
-      const flush = () => { if (text.trim() && box) pushText(transformText(text.trimEnd(), style.textTransform, style.lang), box, style, extra); };
+      const flush = () => { if (text.trim() && box) pushText(transformText(mathText(text.trimEnd()), style.textTransform, style.lang), box, style, extra); };
       for (let i = 0; i < data.length; i += 1) {
         range.setStart(node, i); range.setEnd(node, i + 1);
         const rect = range.getClientRects()[0];
@@ -151,18 +174,21 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
       // Read the actual clipping box of a dotted index leader. Its hidden tail must
       // not paint over the right-aligned page label in the DOM-based PDF.
       if (node.parentElement.matches(".thesis-index-leader")) {
-        const clip = node.parentElement.getBoundingClientRect();
+        const leader = node.parentElement;
+        // leaderFlow "inline": the dots run inside the title box and stop where the floated page number begins.
+        const page = leader.parentElement?.matches(".thesis-index-title") ? leader.nextElementSibling : null;
+        const clipRight = page ? page.getBoundingClientRect().left : leader.getBoundingClientRect().right;
         let visible = 0;
         for (let i = 0; i < word.length; i += 1) {
           range.setStart(node, start + i); range.setEnd(node, start + i + 1);
           const glyph = range.getBoundingClientRect();
-          if (glyph.right > clip.right + 0.1) break;
+          if (glyph.right > clipRight + 0.1) break;
           visible += 1;
         }
         if (visible) { range.setStart(node, start); range.setEnd(node, start + visible); pushText(word.slice(0, visible), range.getBoundingClientRect(), style, extra); }
         continue;
       }
-      if (rects.length === 1) { pushText(transformText(word, style.textTransform, style.lang), rects[0], style, extra); continue; }
+      if (rects.length === 1) { pushText(transformText(mathText(word), style.textTransform, style.lang), rects[0], style, extra); continue; }
       // A word broken across lines or pages: split it where its glyphs change line.
       let current = ""; let currentRect = null;
       for (let index = 0; index < match[0].length; index += 1) {
@@ -171,9 +197,9 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
         const char = match[0][index].replace(/[​﻿]/g, "");
         if (!rect || !char) continue;
         if (currentRect && Math.abs(rect.top - currentRect.top) < 1) current += char;
-        else { if (current) pushText(transformText(current, style.textTransform, style.lang), currentRect, style, extra); current = char; currentRect = rect; }
+        else { if (current) pushText(transformText(mathText(current), style.textTransform, style.lang), currentRect, style, extra); current = char; currentRect = rect; }
       }
-      if (current) pushText(transformText(current, style.textTransform, style.lang), currentRect, style, extra);
+      if (current) pushText(transformText(mathText(current), style.textTransform, style.lang), currentRect, style, extra);
     }
   };
 
@@ -203,7 +229,20 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
     });
   };
 
+  // KaTeX draws the radical (sign and bar) as one SVG path: export it as the real "√" glyph plus the bar as a rule.
+  const radical = (svg) => {
+    const tail = svg.parentElement, viewBox = String(svg.getAttribute("viewBox") || "").split(/\s+/).map(Number);
+    if (!tail || viewBox.length !== 4 || !(viewBox[3] > 0)) return;
+    const box = local(tail.getBoundingClientRect()), em = box.height / (viewBox[3] / 1000), style = getComputedStyle(tail), fill = color(style.color);
+    if (!fill || !(box.width > 0)) return;
+    const typography = { ...pdfTextStyle(tail, style, language), fontSize: `${em * 1.1}px`, fontStyle: "normal", fontWeight: "400" };
+    ops.push({ type: "text", text: "\u221A", x: box.left, top: box.top, width: em * 0.6, baseline: box.top + em * 1.06, style: typography, color: fill, decoration: [] });
+    const y = box.top + em * 0.105;
+    ops.push({ type: "line", points: [box.left + em * 0.6, y, box.left + box.width, y], width: em * 0.05, color: fill, top: y, height: 0 });
+  };
+
   const visit = (element) => {
+    if (element.tagName?.toLowerCase() === "svg" && element.closest(".katex-html .sqrt")) { radical(element); return; }
     if (element.matches(SKIP)) return;
     const style = getComputedStyle(element);
     if (style.display === "none" || style.visibility === "hidden") return;
@@ -226,35 +265,79 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
     }
     const first = ops.length;
     // text-transform follows the language the browser used for this element.
-    const typography = { ...textStyle(style), lang: element.closest("[lang]")?.getAttribute("lang") || language };
+    const typography = pdfTextStyle(element, style, language);
     const decoration = element.firstChild ? decorations(element) : [];
     for (const child of element.childNodes) {
       if (child.nodeType === 1) visit(child);
       else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration, positioned, exactFont: Boolean(exactFont), zIndex });
     }
-    const firstText = ops.slice(first).find((op) => op.type === "text");
+    const firstText = ops.slice(first).find((op) => op.type === "text" && !op.label);
     // Generated content the editor shows: heading numbers (::before) and list markers (::marker).
     const number = element.getAttribute("data-thesis-number") || element.getAttribute("data-thesis-caption")?.trim();
     if (number && firstText) {
+      // The label is drawn in its own (::before) typography, e.g. a bold "Şekil 2.1" before a regular caption.
+      const pseudo = getComputedStyle(element, "::before");
+      const labelStyle = { ...typography, fontWeight: pseudo.fontWeight, fontStyle: pseudo.fontStyle, fontSize: pseudo.fontSize, fontFamily: pseudo.fontFamily };
       const label = transformText(number, style.textTransform, typography.lang);
-      pushLabel(label, firstText.x - textWidth(typography, `${label} `), firstText, typography);
+      if (pseudo.display === "block") {
+        // numbering.placement "ownLine": the number is a line of its own above the title, aligned like the heading.
+        const box = local(element.getBoundingClientRect());
+        const left = box.left + (parseFloat(style.paddingLeft) || 0);
+        const width = box.width - (parseFloat(style.paddingLeft) || 0) - (parseFloat(style.paddingRight) || 0);
+        const labelWidth = textWidth(labelStyle, label);
+        const pitch = (parseFloat(pseudo.lineHeight) || parseFloat(style.lineHeight));
+        pushLabel(label, style.textAlign === "center" ? left + (width - labelWidth) / 2 : style.textAlign === "right" ? left + width - labelWidth : left, { top: firstText.top - pitch, baseline: firstText.baseline - pitch }, labelStyle, firstText);
+      } else {
+        // A caption with a measured hang draws its label in an inline box of exactly that width (engine CSS): the text starts one hang after the line start.
+        const hang = parseFloat(element.getAttribute("data-thesis-caption-hang"));
+        pushLabel(label, Number.isFinite(hang) ? firstText.x - hang : firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle, firstText);
+      }
+    }
+    // Equation number (::after of a numbered display equation): flush right/left of the block, centred on the formula.
+    const equation = element.getAttribute("data-thesis-eq");
+    if (equation && firstText) {
+      const pseudo = getComputedStyle(element, "::after");
+      const eqStyle = { ...typography, fontWeight: pseudo.fontWeight, fontStyle: pseudo.fontStyle, fontSize: pseudo.fontSize, fontFamily: pseudo.fontFamily, color: pseudo.color, letterSpacing: "normal", textTransform: "none" };
+      const box = local(element.getBoundingClientRect());
+      const context = measureContext();
+      context.font = canvasFont(eqStyle);
+      const metrics = context.measureText(equation);
+      // line-height:1 box centred on the block: its baseline sits (ascent - descent) / 2 below the centre.
+      // Measured formula baseline (data-thesis-eq-base, unscaled px from the block top) when the template placed the block on the line grid.
+      const measuredBase = parseFloat(element.getAttribute("data-thesis-eq-base"));
+      const baseline = Number.isFinite(measuredBase) ? box.top + measuredBase : box.top + box.height / 2 + (metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent) / 2;
+      const x = element.getAttribute("data-thesis-eq-side") === "left" ? box.left : box.left + box.width - metrics.width;
+      const fill = color(eqStyle.color);
+      if (fill) ops.push({ type: "text", text: equation, x, top: baseline - metrics.fontBoundingBoxAscent, width: metrics.width, baseline, style: eqStyle, color: fill, decoration: [] });
     }
     if (element.tagName === "LI" && style.display === "list-item" && style.listStyleType !== "none" && firstText) {
       const marker = markerText(element, style.listStyleType);
       const box = local(element.getClientRects()[0] || element.getBoundingClientRect());
       const contentLeft = box.left + (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.borderLeftWidth) || 0);
       const markerStyle = { ...typography, letterSpacing: "normal", textTransform: "none" };
-      pushLabel(marker, style.listStylePosition === "inside" ? contentLeft : contentLeft - textWidth(markerStyle, `${marker} `), firstText, markerStyle);
+      pushLabel(marker, style.listStylePosition === "inside" ? contentLeft : contentLeft - textWidth(markerStyle, `${marker} `), firstText, markerStyle, firstText);
     }
   };
 
-  const pushLabel = (text, x, anchor, style) => {
+  // A generated label (heading number, caption label, list marker) is emitted before the element's first text op, so the PDF's text layer
+  // reads "1. GİRİŞ" and "a) item" in reading order (searchable), not the title followed by its number.
+  const pushLabel = (text, x, anchor, style, before = null) => {
     const fill = color(style.color);
-    if (fill) ops.push({ type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [], positioned: Boolean(anchor.positioned), exactFont: Boolean(anchor.exactFont), zIndex: anchor.zIndex || 0 });
+    if (!fill) return;
+    const op = { type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [], label: true, positioned: Boolean(anchor.positioned), exactFont: Boolean(anchor.exactFont), zIndex: anchor.zIndex || 0 };
+    const at = before ? ops.indexOf(before) : -1;
+    if (at >= 0) ops.splice(at, 0, op); else ops.push(op);
   };
 
   visit(stack);
   range.detach?.();
+  // KaTeX builds "≠" as an overlay glyph (private use U+E020) in front of "=": print the one real character.
+  for (let i = ops.length - 1; i >= 0; i -= 1) {
+    if (ops[i].type !== "text" || ops[i].text !== "\uE020") continue;
+    const next = ops.slice(i + 1, i + 4).find((op) => op.type === "text" && op.text.startsWith("=") && Math.abs(op.baseline - ops[i].baseline) < 1);
+    if (next) next.text = `\u2260${next.text.slice(1)}`;
+    ops.splice(i, 1);
+  }
   return ops;
 }
 
@@ -298,7 +381,16 @@ function drawOp(pdf, op, pageTop, templateId) {
   pdf.setTextColor(...op.color);
   const spacing = parseFloat(op.style.letterSpacing) || 0;
   const y = (op.baseline - pageTop) * MM;
-  pdf.text(op.text, op.x * MM, y, { baseline: "alphabetic", ...(spacing ? { charSpace: spacing * MM } : {}) });
+  const family = String(op.style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
+  const text = family === "cambria math" && hasSystemPdfFont(pdf, "Cambria Math") ? op.text : aliasGlyphs(op.text);
+  // The browser shapes a run with kerning; jsPDF advances glyph by glyph without it, so a long line would end past where the browser's
+  // ended (a 151-character title: +1.6 mm over the right margin). The small difference is spread over the run's characters, so every run
+  // ends exactly where the browser's ended.
+  const glyphs = [...text].length, size = parseFloat(op.style.fontSize) * 0.75;
+  // Only for a genuine embedded family (the browser draws the same font); a substitute face keeps its natural advances.
+  const fit = op.width > 0 && glyphs > 1 && hasSystemPdfFont(pdf, String(op.style.fontFamily).split(",")[0].replace(/["']/g, "").trim()) ? (op.width * MM - pdf.getTextWidth(text)) / glyphs : NaN;
+  const charSpace = Number.isFinite(fit) && Math.abs(fit) <= size * 0.352778 * 0.1 ? fit : spacing * MM;
+  pdf.text(text, op.x * MM, y, { baseline: "alphabetic", ...(charSpace ? { charSpace } : {}) });
   for (const line of op.decoration || []) {
     const size = parseFloat(op.style.fontSize);
     const offset = line === "underline" ? size * 0.12 : -size * 0.28;
@@ -327,7 +419,7 @@ export function thesisLayoutPages(root, groups) {
   return thesisPageStacks(root, groups).flatMap(({ group, pages }) => Array.from({ length: pages }, (_, index) => ({ groupId: group.id, index })));
 }
 
-export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId, documentLayout }) {
+export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId, documentLayout, systemFonts = [] }) {
   await document.fonts?.ready;
   const stacks = thesisPageStacks(root, groups);
   const sections = groups.flatMap(group => group.sections || []);
@@ -341,16 +433,18 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
     const byPage = Array.from({ length: pages }, () => []);
     for (const op of collectGroup(stack, language, exactFamilies)) {
       const middle = op.top + (op.height ?? (op.baseline - op.top)) / 2;
-      byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / metrics.stridePx)))].push(op);
+      byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / flowPagePitchPx(metrics))))].push(op);
     }
     for (const [index, ops] of byPage.entries()) {
       if (!pdf) {
         pdf = new jsPDF({ unit: "mm", format: [widthMm, heightMm], orientation, compress: true });
         pdf.setProperties({ title: title || "Tez", creator: "TxtNote" });
-        await embedAcademicPdfFonts(pdf, { templateId, extraFontFamilies: fontRequests });
+        await embedAcademicPdfFonts(pdf, { templateId, extraFontFamilies: fontRequests, systemFonts });
       } else pdf.addPage([widthMm, heightMm], orientation);
-      const pageTop = index * metrics.stridePx;
-      // Higher canonical z-indexes paint later; ties keep the legacy underlay-before-text order.
+      // The browser lays the flow out with column height and row gap truncated to 1/64 px, so page N starts at N * flow pitch (a hair
+      // below N * stride): using the real pitch keeps every page's text at the same offset, however long the document.
+      const pageTop = index * flowPagePitchPx(metrics);
+      // Higher canonical z-indexes paint later; ties keep lines and images under text, as in the editor.
       const ordered = ops.map((op, order) => ({ op, order })).sort((left, right) =>
         (left.op.zIndex || 0) - (right.op.zIndex || 0)
         || Number(left.op.type === "text") - Number(right.op.type === "text")

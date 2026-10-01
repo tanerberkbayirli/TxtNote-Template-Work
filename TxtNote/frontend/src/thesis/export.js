@@ -1,14 +1,17 @@
+import { blockDescriptors, blockGapActive, describeBlock, gapBetween } from "./blockGap.js";
 import { jsPDF } from "jspdf";
 import {
-  AlignmentType, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
+  AlignmentType, Bookmark, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
   HeightRule, LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
-  SectionType, Table, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab,
+  SectionType, SimpleField, Table, TableAnchorType, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
 } from "docx";
 import { ACADEMIC_FIGURE_MARGIN_PT, ACADEMIC_TABLE_CELL_PADDING_PT, parseAcademicHtml } from "../lib/academicDocument.js";
-import { academicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
-import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, resolveChromeText, transformThesisText } from "./engine.js";
+import { mathFromLatex } from "../lib/mathOmml.js";
+import { academicPdfFontFace, collectAcademicPdfFontRequests, exactAcademicPdfFont, embedAcademicPdfFonts, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
+import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, indentMm, resolveChromeText, transformThesisText } from "./engine.js";
 import { PX_PER_MM, thesisGroupHasPageContent } from "./pageLayout.js";
 import { flattenSpecialPage, specialPageRowWidths } from "./specialPages.js";
+import { continuationParts } from "./tableContinuation.js";
 import { MM_PER_PT, mmToTwip, ptToTwip } from "./units.js";
 import { positionedLayoutDocx, splitLayoutNodes } from "./layoutDocx.js";
 
@@ -59,26 +62,30 @@ const asBlocks = (section) => {
   const outline = (section.indexSources || extractThesisHeadings(cleanHtml, section.rules)).filter((entry) => !entry.kind || entry.kind === "toc");
   let headingIndex = 0;
   // Caption counters and heading labels are compiled once, across the document.
-  const captions = (section.indexSources || []).filter((entry) => entry.kind === "figures" || entry.kind === "tables");
+  const captions = (section.indexSources || []).filter((entry) => entry.kind !== "toc" && entry.kind !== "equations");
+  const equations = (section.indexSources || []).filter((entry) => entry.kind === "equations");
+  let equationIndex = 0;
   let captionIndex = 0;
   return parseAcademicHtml(cleanHtml, { lines: true }).map((block) => {
-    if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "" }; }
-    if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionAnchor: entry?.anchor, caption: entry?.title || block.caption }; }
+    if (block.type === "heading") { const entry = outline[headingIndex++]; return { ...block, thesisAnchor: entry?.anchor, unnumbered: Boolean(entry?.unnumbered), thesisNumber: entry?.label || "", thesisNumberLine: Boolean(entry?.labelLine) }; }
+    if (block.type === "math" && block.numbered && section.rules.equations) return { ...block, equationLabel: equations[equationIndex++]?.label || "" };
+    if ((block.type === "table" || block.type === "figure") && block.caption) { const entry = captions[captionIndex++]; return { ...block, captionNumber: entry?.number || "", captionLabel: entry?.label || "", captionAnchor: entry?.anchor, captionKind: entry?.captionKind || "", caption: entry?.title || block.caption }; }
     return block;
   });
 };
-const captionText = (label, block) => `${label} ${block.captionNumber}. ${block.caption}`;
+const captionText = (label, block) => `${block.captionLabel || `${label} ${block.captionNumber}.`} ${block.caption}`;
 
 function pdfFont(pdf, style, exactFamilies = new Set()) {
   const family = normalizeAcademicPdfFamily(style.fontFamily);
   if (exactFamilies.has(family || style.fontFamily)) {
     const faceStyle = pdfFontStyle({ bold: style.fontWeight >= 600, italic: style.italic });
-    pdf.setFont(academicPdfFont(pdf, faceStyle, style.fontFamily), faceStyle);
+    pdf.setFont(exactAcademicPdfFont(pdf, faceStyle, style.fontFamily), faceStyle);
   }
   else if (/arial|helvetica/i.test(style.fontFamily)) pdf.setFont("helvetica", `${style.fontWeight >= 600 ? "bold" : ""}${style.italic ? "italic" : ""}` || "normal");
   else {
     const faceStyle = pdfFontStyle({ bold: style.fontWeight >= 600, italic: style.italic });
-    pdf.setFont(academicPdfFont(pdf, faceStyle), faceStyle);
+    const face = academicPdfFontFace(pdf, faceStyle, style.fontFamily);
+    pdf.setFont(face.name, face.style);
   }
   pdf.setFontSize(style.fontSizePt);
   pdf.setTextColor(17, 17, 17);
@@ -150,7 +157,7 @@ export async function buildThesisPdf(model) {
   const exactFamilies = new Set(fontRequests.map(value => normalizeAcademicPdfFamily(value) || value));
   const pdf = new jsPDF({ unit: "mm", format: [first?.widthMm || 210, first?.heightMm || 297], compress: true });
   pdf.setProperties({ title: model.title || "Tez", creator: "TxtNote" });
-  await embedAcademicPdfFonts(pdf, { templateId: model.templateId, extraFontFamilies: fontRequests });
+  await embedAcademicPdfFonts(pdf, { templateId: model.templateId, extraFontFamilies: fontRequests, systemFonts: model.systemFonts || [] });
   let started = false;
   let logicalPage = 0;
   for (const group of groupThesisSections(model.sections)) {
@@ -205,7 +212,7 @@ export async function buildThesisPdf(model) {
     for (const block of asBlocks(section)) {
       if (block.type === "heading") {
         const style = headings[block.level] || headings[1] || body;
-        write(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`, block.unnumbered ? { ...style, pageBreakBefore: false } : style);
+        write(`${block.thesisNumber ? `${block.thesisNumber}${block.thesisNumberLine ? "\n" : " "}` : ""}${block.text}`, block.unnumbered ? { ...style, pageBreakBefore: false } : style);
       } else if (block.type === "paragraph" || block.type === "quote") {
         write(blockText(block), section.type === "bibliography" ? section.rules.bibliography.style : body, block.align || body.align);
       } else if (block.type === "list") {
@@ -255,7 +262,7 @@ const halfPointSize = (fontSizePt) => {
 };
 
 function runProps(style, language) {
-  return { font: style.fontFamily, size: halfPointSize(style.fontSizePt), bold: style.fontWeight >= 600, italics: Boolean(style.italic), ...(style.characterSpacingPt ? { characterSpacing: pt(style.characterSpacingPt) } : {}), language: { value: language } };
+  return { font: style.fontFamily, size: halfPointSize(style.fontSizePt), bold: style.fontWeight >= 600, italics: Boolean(style.italic), ...(style.characterSpacingPt ? { characterSpacing: pt(style.characterSpacingPt) } : {}), ...(style.color ? { color: style.color.slice(1).toUpperCase() } : {}), language: { value: language } };
 }
 
 function textRun(text, style, context, inline = {}) {
@@ -272,6 +279,13 @@ function docxRuns(runs, style, context) {
   for (const item of runs || []) {
     if (item.type === "break") out.push(new TextRun({ break: 1 }));
     else if (item.type === "tab") out.push(new TextRun({ children: [new Tab()] }));
+    else if (item.type === "math") {
+      const formula = mathFromLatex(item.latex || item.text, style, { strictUnsupported: true });
+      if (formula) out.push(formula);
+      else out.push(textRun("[empty equation]", style, context));
+    }
+    // TOC/list page labels are real PAGEREF fields (cached result = the editor's label): Word/LibreOffice re-read the page of the bookmark.
+    else if (item.type === "pageref") out.push(new SimpleField(`PAGEREF ${item.bookmark} \\h`, item.text || ""));
     else if (item.type === "link") out.push(...docxRuns(item.children, style, context));
     else if (item.type === "footnote") {
       const id = context.nextFootnote++;
@@ -283,7 +297,8 @@ function docxRuns(runs, style, context) {
       out.push(new FootnoteReferenceRun(id));
     } else {
       const text = item.text || item.latex || "";
-      if (text) out.push(textRun(text, style, context, item));
+      // A typed tab is a Word tab (aligned on the paragraph's tab stop), never a literal character.
+      text.split("\t").forEach((part, index) => { if (index) out.push(new TextRun({ children: [new Tab()] })); if (part) out.push(textRun(part, style, context, item)); });
     }
   }
   return out;
@@ -296,18 +311,25 @@ const lineSpacingDocx = (style, lineSpacing) => lineSpacing?.mode === "word"
   : { line: pt(style.fontSizePt * (style.lineHeight || 1.5)), lineRule: LineRuleType.AT_LEAST };
 
 function paragraphProps(style, options = {}, lineSpacing = null) {
+  // Word expresses a negative first line as a hanging indent.
+  const indent = indentMm(style);
   return {
     alignment: alignDocx(style.align),
     spacing: { before: pt(style.spaceBeforePt), after: pt(style.spaceAfterPt), ...lineSpacingDocx(style, lineSpacing) },
-    indent: { firstLine: twip(style.firstLineIndentMm || 0), left: twip(style.leftIndentMm || 0), right: twip(style.rightIndentMm || 0) },
+    indent: { ...(indent.first < 0 ? { hanging: twip(-indent.first) } : { firstLine: twip(indent.first) }), left: twip(indent.left), right: twip(style.rightIndentMm || 0) },
     keepNext: Boolean(style.keepWithNext), pageBreakBefore: Boolean(style.pageBreakBefore),
+    ...(style.tabStopMm > 0 ? { tabStops: [{ type: TabStopType.LEFT, position: twip(indent.left + style.tabStopMm) }] } : {}),
     ...options,
   };
 }
 
-function docxParagraph(runs, style, context, options = {}) {
+/** Word bookmark name of an index anchor ("main-source-3" -> "_ref_main_source_3"). */
+export const bookmarkName = (anchor) => `_ref_${String(anchor).replace(/[^A-Za-z0-9]/g, "_")}`.slice(0, 40);
+const bookmarked = (anchor, children) => anchor ? [new Bookmark({ id: `${bookmarkName(anchor)}`, children })] : children;
+
+function docxParagraph(runs, style, context, { anchor, ...options } = {}) {
   const children = docxRuns(runs, style, context);
-  return new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: children.length ? children : [textRun("", style, context)] });
+  return new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
 }
 
 /** Empty paragraph exactly `heightMm` tall (Word has no bare vertical box). */
@@ -337,7 +359,7 @@ function specialPageDocx(nodes, context, widthMm) {
       out.push(new Paragraph({ alignment: alignDocx(node.align), spacing: { before: 0, after: 0, line: twip(node.heightMm), lineRule: LineRuleType.AT_LEAST }, children: [new ImageRun({ ...image, transformation: { width: node.widthMm * PX_PER_MM, height: node.heightMm * PX_PER_MM } })] }));
       gap(node.marginBottomMm);
     } else if (node.type === "text") {
-      out.push(docxParagraph(plainRuns(node.text), node.style, context));
+      out.push(docxParagraph(node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold })) : plainRuns(node.text), node.style, context));
     } else if (node.type === "spacer") {
       gap(node.marginTopMm); gap(node.heightMm); gap(node.marginBottomMm);
     } else if (node.type === "separator") {
@@ -370,6 +392,20 @@ function specialPageDocx(nodes, context, widthMm) {
         }));
       }
       gap(node.marginBottomMm);
+    } else if (node.border) {
+      // A framed group is a one-cell table with the frame as its borders and the padding as cell margins.
+      gap(node.marginTopMm);
+      const { outerPt, innerPt, gapPt, paddingMm, color, docx } = node.border;
+      // docx.style names the Word border; docx.sides { top, right, bottom, left } may name another style per side (thickThin / thinThick).
+      const edgeOf = (side) => ({ style: BorderStyle[(docx?.sides?.[side] || docx?.style || (innerPt > 0 ? "double" : "single")).replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase()] || BorderStyle.SINGLE, size: Math.round((docx?.sizePt ?? outerPt + gapPt + innerPt) * 8), color: color.slice(1).toUpperCase() });
+      const inner = { ...node, border: undefined, marginTopMm: 0, marginBottomMm: 0 };
+      const cellWidth = widthMm;
+      out.push(new Table({
+        width: { size: twip(cellWidth), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [twip(cellWidth)],
+        borders: { top: edgeOf("top"), bottom: edgeOf("bottom"), left: edgeOf("left"), right: edgeOf("right"), insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
+        rows: [new TableRow({ cantSplit: true, children: [new TableCell({ width: { size: twip(cellWidth), type: WidthType.DXA }, margins: { top: twip(paddingMm), bottom: twip(paddingMm), left: twip(paddingMm), right: twip(paddingMm) }, children: specialPageDocx([inner], context, cellWidth - 2 * paddingMm) })] })],
+      }));
+      gap(node.marginBottomMm);
     } else {
       gap(node.marginTopMm);
       node.blocks.forEach((child, index) => { if (index) gap(node.gapMm); out.push(...specialPageDocx([child], context, widthMm)); });
@@ -379,7 +415,29 @@ function specialPageDocx(nodes, context, widthMm) {
   return out;
 }
 
-function listParagraphs(block, section, context, level = 0) {
+/** Position a special page's content independently of its Word section margins. */
+function positionedSpecialPageDocx(nodes, context, frame) {
+  const width = twip(frame.widthMm);
+  const content = specialPageDocx(nodes, context, frame.widthMm);
+  return new Table({
+    width: { size: width, type: WidthType.DXA },
+    columnWidths: [width], layout: TableLayoutType.FIXED,
+    float: {
+      horizontalAnchor: TableAnchorType.PAGE, verticalAnchor: TableAnchorType.PAGE,
+      absoluteHorizontalPosition: twip(frame.xMm), absoluteVerticalPosition: twip(frame.yMm),
+      topFromText: 0, bottomFromText: 0, leftFromText: 0, rightFromText: 0,
+    },
+    borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
+    rows: [new TableRow({ children: [new TableCell({
+      width: { size: width, type: WidthType.DXA },
+      margins: { top: 0, bottom: 0, left: 0, right: 0 },
+      borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER },
+      children: content,
+    })] })],
+  });
+}
+
+function listParagraphs(block, section, context, level = 0, before = null) {
   const { body } = section.rules;
   const out = [];
   const toc = section.type === "tableOfContents" || /\bthesis-toc\b/.test(block.className || "");
@@ -387,7 +445,7 @@ function listParagraphs(block, section, context, level = 0) {
   // One numbering instance per list: it restarts where the editor restarts and
   // continues across page breaks because Word lays it out as one list.
   const instance = context.nextList++;
-  for (const item of block.items || []) {
+  for (const [position, item] of (block.items || []).entries()) {
     const runs = item.runs?.length ? item.runs : plainRuns(item.text);
     if (bibliography) {
       // Editor: unmarked entries indented by the template's hanging indent.
@@ -396,7 +454,7 @@ function listParagraphs(block, section, context, level = 0) {
     } else if (toc) {
       out.push(docxParagraph(runs, { ...body, align: "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 4 }, context));
     } else {
-      out.push(docxParagraph(runs, { ...body, firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context, {
+      out.push(docxParagraph(runs, { ...body, firstLineIndentMm: 0, spaceBeforePt: position === 0 && before !== null ? before : 0, spaceAfterPt: 0 }, context, {
         numbering: { reference: block.ordered ? "thesis-ordered" : "thesis-bullet", level: Math.min(level, 2), instance },
       }));
     }
@@ -405,27 +463,75 @@ function listParagraphs(block, section, context, level = 0) {
   return out;
 }
 
-function tableDocx(block, section, context) {
+function tableDocx(block, section, context, before = null) {
   const { body, tables } = section.rules;
   const cellStyle = tables.cellStyle || {};
   const out = [];
-  const caption = block.caption ? docxParagraph(plainRuns(captionText(tables.label, block)), { ...captionStyle(tables, block, context), pageBreakBefore: tables.position === "above" && (context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id)), keepWithNext: tables.position === "above" }, context) : null;
+  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above", pageBreakBefore: tables.position === "above" && (context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id)) }, before) : null;
   if (caption && tables.position === "above") out.push(caption);
-  const tableRows = (block.rows || []).filter((row) => row.length);
-  const rows = tableRows.map((row, rowIndex) => new TableRow({
+  const preset = tables.borders?.preset;
+  const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
+  const sourceRows = (block.rows || []).filter((row) => row.length);
+  const lastHeader = sourceRows.reduce((last, row, index) => (row.every((cell) => cell.header) ? index : last), -1);
+  const makeRow = (row, rowIndex) => new TableRow({
     cantSplit: true, tableHeader: row.every((cell) => cell.header),
     // Word otherwise uses its glyph box as the row minimum, while CSS uses the
     // resolved line box plus both paddings and the collapsed border.
-    height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing) + 2 * ACADEMIC_TABLE_CELL_PADDING_PT.vertical + CELL_BORDER.size / 8), rule: HeightRule.ATLEAST },
+    height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing) + (preset ? 0 : 2 * ACADEMIC_TABLE_CELL_PADDING_PT.vertical + CELL_BORDER.size / 8)), rule: HeightRule.ATLEAST },
     children: row.map((cell) => new TableCell({
       columnSpan: cell.colspan > 1 ? cell.colspan : undefined, rowSpan: cell.rowspan > 1 ? cell.rowspan : undefined,
-      margins: { top: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), bottom: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), left: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal), right: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal) },
-      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: rowIndex < tableRows.length - 1, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
+      // Three-rule tables: the rule below the header row belongs to its cells.
+      ...(preset === "threeRule" && rowIndex === lastHeader ? { borders: { bottom: rule } } : {}),
+      margins: preset ? { top: 0, bottom: 0, left: twip(1.9), right: twip(1.9) } : { top: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), bottom: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), left: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal), right: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal) },
+      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: rowIndex < sourceRows.length - 1, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
-  }));
-  if (rows.length) out.push(new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders: { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER } }));
+  });
+  // Three-rule table: top and bottom of the table, and below the (repeated) header row.
+  const borders = preset === "threeRule" ? { top: rule, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
+    : preset === "none" ? { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
+    : { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER };
+  const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders });
+  // Continuation captions: the table is split at the rows the editor measured as page starts; each later
+  // fragment gets its caption paragraph and the header row(s) again (Word cannot vary a repeated row's text).
+  const headerRows = sourceRows.findIndex((row) => !row.every((cell) => cell.header));
+  const headerCount = headerRows < 0 ? 0 : headerRows;
+  const continuation = tables.continuation && tables.position === "above" ? context.tableContinuations?.[block.captionAnchor] : null;
+  const starts = (continuation?.rows || []).filter((index) => index > headerCount && index < sourceRows.length);
+  if (starts.length) {
+    const bounds = [0, ...starts, sourceRows.length];
+    bounds.slice(0, -1).forEach((from, fragment) => {
+      const rows = sourceRows.slice(from, bounds[fragment + 1]).map((row, i) => makeRow(row, from + i));
+      if (fragment) {
+        out.push(continuationParagraph(tables, block, context, continuation.hang));
+        rows.unshift(...sourceRows.slice(0, headerCount).map((row, i) => makeRow(row, i)));
+      }
+      out.push(tableOf(rows));
+    });
+    return out;
+  }
+  const rows = sourceRows.map(makeRow);
+  if (rows.length) out.push(tableOf(rows));
   if (caption && tables.position !== "above") out.push(caption);
   return out;
+}
+
+/** Caption paragraph: label run in the label style, then the caption text; optional hanging indent. */
+function captionParagraph(rule, block, context, options = {}, before = null) {
+  const style = { ...captionStyle(rule, block, context), ...(before === null ? {} : { spaceBeforePt: before }) };
+  const hangMm = rule.hangingIndent === "label" ? (context.captionHangs?.[block.captionAnchor] || 0) / PX_PER_MM : rule.hangingIndent > 0 ? rule.hangingIndent : 0;
+  const paragraphStyle = hangMm > 0 ? { ...style, hangingIndentMm: hangMm } : style;
+  const label = block.captionLabel || `${rule.label} ${block.captionNumber}.`;
+  // One run as before unless the label has its own typography (e.g. bold "Şekil 2.1").
+  const children = rule.labelStyle ? [textRun(`${label} `, { ...style, ...rule.labelStyle }, context), ...docxRuns(plainRuns(block.caption), style, context)] : docxRuns(plainRuns(`${label} ${block.caption}`), style, context);
+  return new Paragraph({ ...paragraphProps(paragraphStyle, options, context.lineSpacing), children: bookmarked(block.captionAnchor, children) });
+}
+
+/** Caption paragraph above a continuation fragment ("Çizelge 3.1 (Devam) Başlık"): label text in the label style. */
+function continuationParagraph(rule, block, context, labelHangPx = 0) {
+  const style = captionStyle(rule, block, context);
+  const hangMm = rule.hangingIndent === "label" ? labelHangPx / PX_PER_MM : rule.hangingIndent > 0 ? rule.hangingIndent : 0;
+  const children = continuationParts(rule, { number: block.captionNumber, title: block.caption }).flatMap((part) => rule.labelStyle && !part.title ? [textRun(part.text, { ...style, ...rule.labelStyle }, context)] : docxRuns(plainRuns(part.text), style, context));
+  return new Paragraph({ ...paragraphProps(hangMm > 0 ? { ...style, hangingIndentMm: hangMm } : style, { keepNext: true }, context.lineSpacing), children });
 }
 
 function captionStyle(rule, block, context) {
@@ -434,61 +540,101 @@ function captionStyle(rule, block, context) {
 }
 
 function docxChildren(section, context) {
-  const { page, body, headings, figures } = section.rules;
+  const { page, body, headings } = section.rules;
   const widthMm = page.widthMm - page.margins.leftMm - page.margins.rightMm;
   const children = [];
   if (section.generatedIndex) {
     const rule = section.generatedIndex;
-    children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context));
+    children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context, { anchor: section.indexSources?.find((entry) => entry.tocTitle)?.anchor }));
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
     for (const row of section.indexRows) {
-      const style = { ...rule.style, leftIndentMm: (row.level - 1 || 0) * rule.indentMm };
-      const runs = plainRuns(row.text);
-      if (rule.includePageNumbers) runs.push({ type: "tab" }, ...plainRuns(row.page));
-      children.push(docxParagraph(runs, style, context, { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] }));
+      const levelStyle = rule.levelStyles?.[row.level || 1] || {};
+      const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : 0;
+      const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
+      const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
+      // A number on its own line (ownLine headings) is a paragraph of its own above the title row.
+      const lineLabel = row.labelLine && row.label && row.rowTitle !== undefined;
+      if (lineLabel) children.push(docxParagraph([{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }], { ...style, hangingIndentMm: undefined }, context, { keepNext: true }));
+      const runs = lineLabel ? plainRuns(row.rowTitle) : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
+      const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
+      if (withPage) runs.push({ type: "tab" }, row.anchor ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? "") } : plainRuns(row.page)[0] || { type: "text", text: "" });
+      children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
     }
     return children;
   }
+  // A special page listed in the TOC by its title (ÖZET, ABSTRACT, …): an empty one-twip paragraph carries the bookmark its PAGEREF points to.
+  const titleAnchor = section.layout ? section.indexSources?.find((entry) => entry.tocTitle)?.anchor : null;
+  if (titleAnchor) children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] })] }));
   if (section.layout) {
     const split = splitLayoutNodes(section.layout);
-    children.push(...specialPageDocx(split.flow, context, widthMm));
+    const frame = page.docxContentFrame;
+    if (frame) children.push(positionedSpecialPageDocx(split.flow, context, frame));
+    else children.push(...specialPageDocx(split.flow, context, widthMm));
     children.push(...positionedLayoutDocx(split.positioned, { language: context.language, lineSpacing: context.lineSpacing }));
   }
+  let afterHeading = false;
+  // lineSpacing.blockGap: the gap between two blocks comes from the block-gap table (blockGap.js), the same one the editor CSS uses;
+  // Word adds previous space-after and next space-before, so the next block's space-before is gap - previous space-after.
+  const useGap = blockGapActive(section.rules);
+  const descriptors = useGap ? blockDescriptors(section.rules, section.type === "bibliography" ? section.rules.bibliography.style : body, "figure") : [];
+  let previous = null;
   for (const block of asBlocks(section)) {
+    const previousHeading = afterHeading;
+    afterHeading = block.type === "heading";
+    const descriptor = useGap ? describeBlock(descriptors, block) : null;
+    const gap = descriptor && previous ? gapBetween(section.rules, previous, descriptor) : null;
+    const before = gap === null ? null : Math.max(0, gap - previous.exit.after);
+    previous = descriptor;
+    const withGap = (style) => before === null ? style : { ...style, spaceBeforePt: before };
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
-      const text = `${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`;
+      // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
+      const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(plainRuns(text), block.unnumbered ? { ...style, pageBreakBefore: false } : style, context, { heading: level }));
+      children.push(docxParagraph(runs, withGap(block.unnumbered ? { ...style, pageBreakBefore: false } : style), context, { heading: level, anchor: block.thesisAnchor }));
     } else if (block.type === "paragraph" || block.type === "quote") {
-      const style = section.type === "bibliography" ? section.rules.bibliography.style : body;
+      const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
+      const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
       // Only an alignment the user chose (explicit left included) overrides the template. Lines
       // ended by Enter have no paragraph spacing in the editor; <p> paragraphs do.
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
       const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
       const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), { ...style, ...spacing, align: align || style.align }, context));
+      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), withGap({ ...style, ...spacing, align: align || style.align }), context));
     } else if (block.type === "list") {
-      children.push(...listParagraphs(block, section, context));
+      children.push(...listParagraphs(block, section, context, 0, before));
     } else if (block.type === "table") {
-      children.push(...tableDocx(block, section, context));
+      children.push(...tableDocx(block, section, context, before));
     } else if (block.type === "figure") {
+      // A figure of a template caption kind ("Resim") uses that kind's rule.
+      const figures = block.captionKind && section.rules.captionKinds?.[block.captionKind] || section.rules.figures;
+      // Without a template block-gap table the figure keeps the editor's own figure margin around image and caption.
+      const figureMargin = before === null ? ACADEMIC_FIGURE_MARGIN_PT : 0;
       const figureCaptionStyle = captionStyle(figures, block, context);
-      const caption = block.caption ? docxParagraph(plainRuns(captionText(figures.label, block)), { ...figureCaptionStyle,
-        ...(figures.position === "above" ? { spaceBeforePt: (figureCaptionStyle.spaceBeforePt || 0) + ACADEMIC_FIGURE_MARGIN_PT } : { spaceAfterPt: (figureCaptionStyle.spaceAfterPt || 0) + ACADEMIC_FIGURE_MARGIN_PT }),
-        keepWithNext: figures.position === "above" }, context) : null;
+      const caption = block.caption ? captionParagraph({ ...figures, spacingBeforePt: undefined, spacingAfterPt: undefined, style: { ...figureCaptionStyle,
+        ...(figures.position === "above" ? { spaceBeforePt: (figureCaptionStyle.spaceBeforePt || 0) + figureMargin } : { spaceAfterPt: (figureCaptionStyle.spaceAfterPt || 0) + figureMargin }) } }, block, context, { keepNext: figures.position === "above" }) : null;
       if (caption && figures.position === "above") children.push(caption);
       const image = imageBytes(block.src);
       if (image) {
         const width = Math.min(block.width || 400, Math.round(widthMm * PX_PER_MM));
         const height = Math.max(1, Math.round(width * ((block.height || 250) / (block.width || 400))));
-        children.push(new Paragraph({ alignment: AlignmentType.CENTER, pageBreakBefore: context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id), keepNext: Boolean(caption && figures.position !== "above"),
-          spacing: { before: caption && figures.position === "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT), after: caption && figures.position !== "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT) },
-          children: [new ImageRun({ ...image, transformation: { width, height } })] }));
+        const spacing = before === null
+          ? { before: caption && figures.position === "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT), after: caption && figures.position !== "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT) }
+          : { before: pt(before) };
+        children.push(new Paragraph({ alignment: AlignmentType.CENTER, pageBreakBefore: context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id), keepNext: Boolean(caption && figures.position !== "above"), spacing, children: [new ImageRun({ ...image, transformation: { width, height } })] }));
       }
       if (caption && figures.position !== "above") children.push(caption);
     } else if (block.type === "pageBreak") {
       children.push(new Paragraph({ children: [new PageBreak()] }));
+    } else if (block.type === "math" && section.rules.equations) {
+      // Centered formula with the number flush right (or left) at the text edge: a centre and a right tab stop.
+      const equations = section.rules.equations;
+      const style = withGap({ ...body, ...equations.style, firstLineIndentMm: 0, align: "left" });
+      const left = equations.numberAlign === "left";
+      const formula = { type: "math", latex: block.latex, text: block.text };
+      const runs = left ? [...(block.equationLabel ? plainRuns(block.equationLabel) : []), { type: "tab" }, formula]
+        : [{ type: "tab" }, formula, ...(block.equationLabel ? [{ type: "tab" }, ...plainRuns(block.equationLabel)] : [])];
+      children.push(docxParagraph(runs, style, context, { tabStops: [{ type: TabStopType.CENTER, position: twip(widthMm / 2) }, ...(left ? [] : [{ type: TabStopType.RIGHT, position: twip(widthMm) }])] }));
     } else if (block.type === "code" || block.type === "math") {
       children.push(docxParagraph(plainRuns(block.text || ""), { ...body, firstLineIndentMm: 0 }, context));
     }
@@ -507,7 +653,8 @@ function chromeDocx(section, values, context, groupStart) {
   const chromeStyle = { ...body, fontSizePt: 10, align: "left", firstLineIndentMm: 0, leftIndentMm: 0, rightIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1.1, textTransform: "none", fontWeight: 400, italic: false };
   const number = page.numbering;
   const numberEdge = number.position === "top" ? "top" : "bottom";
-  const numberParagraph = () => new Paragraph({ alignment: alignDocx(number.align), children: [new TextRun({ ...runProps({ ...body, fontWeight: 400, italic: false }, context.language), children: [PageNumber.CURRENT] })] });
+  // Page numbers use the template's numbering style (e.g. 10 pt) when given, else the body type.
+  const numberParagraph = () => new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, children: [new TextRun({ ...runProps({ ...body, ...number.style, fontWeight: 400, italic: false }, context.language), children: [PageNumber.CURRENT] })] });
   const part = (edge, text) => {
     const children = [];
     if (number.enabled && numberEdge === edge && edge === "top") children.push(numberParagraph());
@@ -547,13 +694,14 @@ function listLevels(ordered) {
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
-export async function buildThesisDocx(model, { captionAlignments = {}, blockPageBreaks = [] } = {}) {
+export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {}, tableContinuations = {}, blockPageBreaks = [] } = {}) {
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
-  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, blockPageBreaks: new Set(blockPageBreaks) };
+  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, captionHangs, indexHangs, tableContinuations, blockPageBreaks: new Set(blockPageBreaks) };
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
   const sections = model.sections.map((section, index) => {
     const page = section.rules.page;
+    const wordMargins = page.docxMargins || page.margins;
     const groupStart = pageStarts.has(section.id);
     const chrome = chromeDocx(section, model.values, context, groupStart);
     context.body = section.rules.body;
@@ -565,9 +713,10 @@ export async function buildThesisDocx(model, { captionAlignments = {}, blockPage
       properties: {
         type: index === 0 ? undefined : groupStart ? SectionType.NEXT_PAGE : SectionType.CONTINUOUS,
         titlePage: chrome.titlePage,
+        ...(section.verticalAlign === "bottom" ? { verticalAlign: VerticalAlign.BOTTOM } : {}),
         page: {
           size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
-          margin: { top: twip(page.margins.topMm), bottom: twip(page.margins.bottomMm), left: twip(page.margins.leftMm), right: twip(page.margins.rightMm), header: twip(page.header?.distanceMm || 10), footer: twip(page.footer?.distanceMm || 10) },
+          margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm || 10), footer: twip(page.footer?.distanceMm || 10) },
           pageNumbers: { start: page.numbering.restart ? (page.numbering.startAt || 1) : undefined, formatType: pageFormat(page.numbering.format) },
         },
       },

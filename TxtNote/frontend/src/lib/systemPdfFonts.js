@@ -1,26 +1,32 @@
 // Licensed system fonts are read at runtime, never bundled with the application.
-// Paths remain allowlisted here and in the native IPC; callers can request a
-// family name, never an arbitrary filesystem path.
-export const SYSTEM_PDF_FAMILIES = Object.freeze({
-  "Times New Roman": Object.freeze({
-    normal: { file: "times.ttf", postscript: "TimesNewRomanPSMT" },
-    bold: { file: "timesbd.ttf", postscript: "TimesNewRomanPS-BoldMT" },
-    italic: { file: "timesi.ttf", postscript: "TimesNewRomanPS-ItalicMT" },
-    bolditalic: { file: "timesbi.ttf", postscript: "TimesNewRomanPS-BoldItalicMT" },
-  }),
-  Arial: Object.freeze({
-    normal: { file: "arial.ttf", postscript: "ArialMT" },
-    bold: { file: "arialbd.ttf", postscript: "Arial-BoldMT" },
-    italic: { file: "ariali.ttf", postscript: "Arial-ItalicMT" },
-    bolditalic: { file: "arialbi.ttf", postscript: "Arial-BoldItalicMT" },
-  }),
-});
-
-export const TIMES_NEW_ROMAN_FACES = SYSTEM_PDF_FAMILIES["Times New Roman"];
-
-const familyKey = value => String(value ?? "").trim().toLocaleLowerCase("en-US");
-const canonicalSystemFamily = value => Object.keys(SYSTEM_PDF_FAMILIES).find(name => familyKey(name) === familyKey(value)) || null;
-const cachedFamilies = new Map();
+export const TIMES_NEW_ROMAN_FACES = {
+  normal: { file: "times.ttf", postscript: "TimesNewRomanPSMT" },
+  bold: { file: "timesbd.ttf", postscript: "TimesNewRomanPS-BoldMT" },
+  italic: { file: "timesi.ttf", postscript: "TimesNewRomanPS-ItalicMT" },
+  bolditalic: { file: "timesbi.ttf", postscript: "TimesNewRomanPS-BoldItalicMT" },
+};
+export const ARIAL_FACES = {
+  normal: { file: "arial.ttf", postscript: "ArialMT" },
+  bold: { file: "arialbd.ttf", postscript: "Arial-BoldMT" },
+  italic: { file: "ariali.ttf", postscript: "Arial-ItalicMT" },
+  bolditalic: { file: "arialbi.ttf", postscript: "Arial-BoldItalicMT" },
+};
+export const CAMBRIA_MATH_FACES = {
+  // Cambria Math is face 1 in Windows' installed cambria.ttc collection.
+  normal: { file: "cambria.ttc", postscript: "CambriaMath", collectionIndex: 1 },
+};
+/**
+ * Families an official template may require in its PDF, keyed by their exact family name.
+ * The PDF then embeds these genuine programs (never a metric-compatible substitute).
+ */
+export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, "Cambria Math": CAMBRIA_MATH_FACES });
+/** Canonical family name for a CSS/template family (case-insensitive), or null when not a system PDF family. */
+export function systemPdfFontFamily(value) {
+  const name = String(value || "").split(",")[0].replace(/["']/g, "").trim().toLowerCase();
+  return Object.keys(SYSTEM_PDF_FONT_FAMILIES).find((family) => family.toLowerCase() === name) || null;
+}
+/** Allowlisted family table under its earlier name. */
+export const SYSTEM_PDF_FAMILIES = SYSTEM_PDF_FONT_FAMILIES;
 
 /** Read the original SFNT name table; a PDF font alias alone cannot prove identity. */
 export function systemFontIdentity(bytes) {
@@ -52,72 +58,141 @@ export function systemFontIdentity(bytes) {
   return { family: names.get(1), subfamily: names.get(2), postscript: names.get(6), fsType: os2 == null ? 0 : view.getUint16(os2 + 8) };
 }
 
-async function validatedSystemFamily(family) {
-  const faces = SYSTEM_PDF_FAMILIES[family];
-  const fonts = await readSystemFonts(family);
-  const result = {};
-  for (const [style, face] of Object.entries(faces)) {
-    const font = fonts[style];
-    if (!font) throw new Error("System font family " + family + " is missing its " + style + " face.");
-    const identity = systemFontIdentity(font.bytes);
-    if (identity.family !== family || identity.postscript !== face.postscript) {
-      throw new Error("Expected actual " + family + " " + style + " font; found " + String(identity.family) + " / " + String(identity.postscript) + " (" + font.source + ").");
-    }
-    // jsPDF subsets the embedded face: reject restricted, bitmap-only and no-subsetting fonts.
-    if (identity.fsType & (0x0002 | 0x0100 | 0x0200)) throw new Error(family + " " + style + " font does not permit PDF embedding.");
-    result[style] = { ...font, family, identity };
+const TTC_TAG = 0x74746366;
+const SFNT_TRUETYPE = 0x00010000;
+const CHECKSUM_MAGIC = 0xb1b0afba;
+const align4 = (value) => (value + 3) & ~3;
+
+/** Extract one standalone TrueType face from a TTC. Plain SFNT files pass through unchanged. */
+export function extractTrueTypeCollectionFace(input, faceIndex) {
+  const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
+  if (bytes.byteLength < 4) throw new Error("Font verisi eksik.");
+  const source = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  if (source.getUint32(0) !== TTC_TAG) return bytes;
+  if (bytes.byteLength < 16 || (source.getUint32(4) !== 0x00010000 && source.getUint32(4) !== 0x00020000)) {
+    throw new Error("Desteklenmeyen TrueType koleksiyon başlığı.");
   }
-  return result;
+  const count = source.getUint32(8);
+  if (!Number.isInteger(faceIndex) || faceIndex < 0 || faceIndex >= count) throw new Error(`TrueType koleksiyon yüzü geçersiz (${faceIndex}).`);
+  const faceOffset = source.getUint32(12 + faceIndex * 4);
+  if (faceOffset + 12 > bytes.byteLength || source.getUint32(faceOffset) !== SFNT_TRUETYPE) throw new Error("TrueType koleksiyonunda desteklenmeyen font yüzü.");
+  const tableCount = source.getUint16(faceOffset + 4);
+  const directoryEnd = faceOffset + 12 + tableCount * 16;
+  if (!tableCount || directoryEnd > bytes.byteLength) throw new Error("TrueType koleksiyonunun tablo dizini bozuk.");
+
+  const tables = [];
+  let outputLength = 12 + tableCount * 16;
+  for (let index = 0; index < tableCount; index += 1) {
+    const record = faceOffset + 12 + index * 16;
+    const tag = String.fromCharCode(...bytes.subarray(record, record + 4));
+    const checksum = source.getUint32(record + 4);
+    const offset = source.getUint32(record + 8);
+    const length = source.getUint32(record + 12);
+    if (offset + length > bytes.byteLength) throw new Error(`TrueType koleksiyonunda ${tag} tablosu bozuk.`);
+    outputLength = align4(outputLength);
+    tables.push({ tag, checksum, offset, length, outputOffset: outputLength });
+    outputLength += length;
+  }
+  const output = new Uint8Array(outputLength);
+  const target = new DataView(output.buffer);
+  target.setUint32(0, SFNT_TRUETYPE);
+  target.setUint16(4, tableCount);
+  target.setUint16(6, source.getUint16(faceOffset + 6));
+  target.setUint16(8, source.getUint16(faceOffset + 8));
+  target.setUint16(10, source.getUint16(faceOffset + 10));
+  tables.forEach((table, index) => {
+    const record = 12 + index * 16;
+    for (let i = 0; i < 4; i += 1) output[record + i] = table.tag.charCodeAt(i);
+    target.setUint32(record + 4, table.checksum);
+    target.setUint32(record + 8, table.outputOffset);
+    target.setUint32(record + 12, table.length);
+    output.set(bytes.subarray(table.offset, table.offset + table.length), table.outputOffset);
+  });
+  const head = tables.find((table) => table.tag === "head");
+  if (!head || head.length < 12) throw new Error("TrueType koleksiyonunda head tablosu bulunamadı.");
+  target.setUint32(head.outputOffset + 8, 0);
+  let checksum = 0;
+  for (let offset = 0; offset < output.length; offset += 4) {
+    const remaining = Math.min(4, output.length - offset);
+    let word = 0;
+    for (let index = 0; index < remaining; index += 1) word |= output[offset + index] << (24 - index * 8);
+    checksum = (checksum + word) >>> 0;
+  }
+  target.setUint32(head.outputOffset + 8, (CHECKSUM_MAGIC - checksum) >>> 0);
+  return output;
 }
 
-/** Load and SFNT-validate each requested allowlisted native family. */
+const cachedFamilies = new Map();
+/** Genuine regular/bold/italic/bolditalic programs of `family`, verified by their name table. */
+export async function loadSystemFontFamily(family) {
+  const faces = SYSTEM_PDF_FONT_FAMILIES[family];
+  if (!faces) throw new Error(`${family} için sistem font tanımı yok.`);
+  if (!cachedFamilies.has(family)) {
+    cachedFamilies.set(family, readSystemFonts(family, faces).then((fonts) => {
+      for (const [style, face] of Object.entries(faces)) {
+        const font = fonts[style];
+        if (!font) throw new Error(`${family} sistem fontunun ${style} yüzü eksik.`);
+        font.bytes = extractTrueTypeCollectionFace(font.bytes, face.collectionIndex);
+        const identity = systemFontIdentity(font.bytes);
+        if (identity.family !== family || identity.postscript !== face.postscript) {
+          throw new Error(`Gerçek ${family} ${style} fontu bulunamadı (${font.source}).`);
+        }
+        // jsPDF embeds subsets; reject restricted, bitmap-only or no-subsetting fonts.
+        if (identity.fsType & (0x0002 | 0x0100 | 0x0200)) throw new Error(`${family} fontunun PDF embedding izni yok.`);
+        font.identity = identity;
+      }
+      return fonts;
+    }).catch((error) => { cachedFamilies.delete(family); throw error; }));
+  }
+  return cachedFamilies.get(family);
+}
+
+/** Load and SFNT-validate each requested allowlisted family: { [canonical family]: faces }. */
 export async function loadSystemPdfFonts(families = []) {
-  const canonical = [...new Set(families.map(value => {
-    const name = canonicalSystemFamily(value);
-    if (!name) throw new Error("PDF font family " + String(value) + " is not allowlisted.");
+  const canonical = [...new Set(families.map((value) => {
+    const name = systemPdfFontFamily(value);
+    if (!name) throw new Error(`PDF yazı tipi ${String(value)} izin verilen font ailelerinden biri değil (not allowlisted).`);
     return name;
   }))];
-  return Object.fromEntries(await Promise.all(canonical.map(async family => {
-    if (!cachedFamilies.has(family)) {
-      const pending = validatedSystemFamily(family).catch(error => {
-        cachedFamilies.delete(family);
-        throw error;
-      });
-      cachedFamilies.set(family, pending);
-    }
-    return [family, await cachedFamilies.get(family)];
-  })));
+  return Object.fromEntries(await Promise.all(canonical.map(async (family) => [family, await loadSystemFontFamily(family)])));
 }
 
-export async function loadSystemTimesNewRoman() {
-  return (await loadSystemPdfFonts(["Times New Roman"]))["Times New Roman"];
-}
+export const loadSystemTimesNewRoman = () => loadSystemFontFamily("Times New Roman");
 
-async function readSystemFonts(family) {
-  const faces = SYSTEM_PDF_FAMILIES[family];
+/** Font directories searched outside Windows (tests, Linux/macOS builds). */
+const UNIX_FONT_DIRS = ["/usr/share/fonts/truetype/msttcorefonts", "/usr/share/fonts/truetype/mscorefonts", "/usr/local/share/fonts", "/Library/Fonts", "/System/Library/Fonts/Supplementary"];
+
+async function readSystemFonts(family, faces) {
   if (typeof document === "undefined") {
-    if (process.platform !== "win32") throw new Error("PDF export requires the installed Windows " + family + " font.");
     const { readFile } = await import("node:fs/promises");
     const { join } = await import("node:path");
+    const { homedir } = await import("node:os");
     const root = process.env.SystemRoot || process.env.WINDIR;
-    if (!root) throw new Error("Windows font directory was not found.");
+    const dirs = process.platform === "win32" ? (root ? [join(root, "Fonts")] : []) : [...UNIX_FONT_DIRS, join(homedir(), ".fonts"), join(homedir(), ".local/share/fonts")];
+    if (!dirs.length) throw new Error("Windows font dizini bulunamadı.");
     return Object.fromEntries(await Promise.all(Object.entries(faces).map(async ([style, face]) => {
-      const source = join(root, "Fonts", face.file);
-      return [style, { source, bytes: new Uint8Array(await readFile(source)) }];
+      for (const dir of dirs) {
+        for (const name of [face.file, face.file.replace(/^./, (c) => c.toUpperCase())]) {
+          const source = join(dir, name);
+          try { return [style, { source, bytes: new Uint8Array(await readFile(source)) }]; } catch { /* next */ }
+        }
+      }
+      throw new Error(`Sistemde ${family} (${face.file}) gerekli.`);
     })));
   }
   if (window.__TAURI_INTERNALS__) {
     const { invoke } = await import("@tauri-apps/api/core");
-    const fonts = await invoke("read_system_pdf_fonts", { families: [family] }).catch(error => {
-      throw new Error(typeof error === "string" ? error : error?.message || "System " + family + " font could not be loaded.");
+    const fonts = await invoke("read_system_font_family", { family }).catch((error) => {
+      throw new Error(typeof error === "string" ? error : error?.message || `${family} sistem fontu yüklenemedi.`);
     });
     return Object.fromEntries(fonts.filter(font => font.family === family).map(font => [font.style, { source: font.source, bytes: new Uint8Array(font.bytes) }]));
   }
-  if (typeof window.queryLocalFonts !== "function") throw new Error("Browser access to the installed " + family + " font is required. Use the desktop application.");
-  const fonts = await window.queryLocalFonts({ postscriptNames: Object.values(faces).map(face => face.postscript) });
+  // Chromium's local-font API is the browser equivalent of the desktop IPC.
+  if (typeof window.queryLocalFonts !== "function") throw new Error(`Bu şablonun PDF'i için ${family} sistem fontuna erişim gerekli. Masaüstü uygulamasını kullanın.`);
+  const fonts = await window.queryLocalFonts({ postscriptNames: Object.values(faces).map((face) => face.postscript) });
   return Object.fromEntries(await Promise.all(Object.entries(faces).map(async ([style, face]) => {
-    const font = fonts.find(item => item.postscriptName === face.postscript);
-    if (!font) throw new Error(family + " " + style + " system font was not found.");
-    return [style, { source: "local-font:" + font.postscriptName, bytes: new Uint8Array(await (await font.blob()).arrayBuffer()) }];
+    const font = fonts.find((item) => item.postscriptName === face.postscript);
+    if (!font) throw new Error(`${family} ${style} sistemde bulunamadı.`);
+    return [style, { source: `local-font:${font.postscriptName}`, bytes: new Uint8Array(await (await font.blob()).arrayBuffer()) }];
   })));
 }

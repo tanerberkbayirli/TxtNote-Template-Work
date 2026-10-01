@@ -3,12 +3,13 @@ import { bibliographyItemsFromResearch, normalizeBibliographyItems } from "../..
 import { figureHtml, imageDimensions, readImageAsDataUrl } from "../../lib/academicMedia.js";
 import { htmlToPlainText } from "../../lib/richText.js";
 import { trustedStyleNonce } from "../../lib/cspStyles.js";
-import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections } from "../../thesis/engine.js";
+import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../thesis/engine.js";
+import { measureWordBaselineCss } from "../../thesis/wordBaseline.js";
 import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/pageLayout.js";
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
 import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, thesisMetadataValue, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
-import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes } from "../../thesis/generatedIndex.js";
+import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../thesis/generatedIndex.js";
 import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
 import { addLayoutElement, normalizeThesisLayout } from "../../thesis/layoutDocument.js";
 import { applyLayoutPage, applyLayoutTypography, resolveLayoutTypography } from "../../thesis/layoutProperties.js";
@@ -17,6 +18,8 @@ import LayoutSelectionOverlay from "./LayoutSelectionOverlay.jsx";
 import LayoutInspector from "./LayoutInspector.jsx";
 import PageLayoutInspector from "./PageLayoutInspector.jsx";
 import LayoutRulers from "./LayoutRulers.jsx";
+import { layoutTableContinuations, tableContinuationRows } from "../../thesis/tableContinuation.js";
+import { applyTransformExceptions } from "../../thesis/transformExceptions.js";
 
 const hiddenFields = new Set(["THESIS_TITLE", "UNIVERSITY_NAME", "INSTITUTE_NAME", "DEGREE_TYPE"]);
 // Tailwind's reset removes list markers; the stored ul/ol structure is unchanged.
@@ -40,7 +43,7 @@ const metadataHints = {
   USED_PROGRAMS: "Örnek: MATLAB R2026a, Python 3.13, SPSS 29",
 };
 
-export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange }) {
+export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange, templateRegistry }) {
   const thesis = researchData?.thesis && typeof researchData.thesis === "object" ? researchData.thesis : {};
   const selectionKey = JSON.stringify([thesis.templateId, thesis.selection?.universityId, thesis.selection?.instituteId, thesis.selection?.degreeType, thesis.selection?.language]);
   const [resolution, setResolution] = useState(null);
@@ -69,11 +72,17 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const papersRef = useRef(null);
   const viewportRef = useRef(null);
   const imageInputRef = useRef(null);
+  // Caption kind (template captionKinds) the next inserted image gets; "" = plain figure.
+  const imageKindRef = useRef("");
+  // The figure last clicked in the pages: its caption kind can be changed while the template has kinds.
+  const [pickedFigure, setPickedFigure] = useState(null);
+  // The display equation last clicked: its number can be switched on/off while the template numbers equations.
+  const [pickedEquation, setPickedEquation] = useState(null);
 
   useEffect(() => {
     let live = true;
     const selection = { ...thesis.selection, templateId: thesis.templateId };
-    void resolveThesisTemplate(selection).then((result) => { if (live) setResolution({ key: selectionKey, result }); });
+    void resolveThesisTemplate(selection, templateRegistry).then((result) => { if (live) setResolution({ key: selectionKey, result }); });
     return () => { live = false; };
   }, [selectionKey]);
 
@@ -97,6 +106,19 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
   const onPageCount = useCallback((groupId, count) => setPageCounts((current) => current[groupId] === count ? current : { ...current, [groupId]: count }), []);
   const css = useMemo(() => model ? buildThesisCss(model) + (THESIS_PAGED_LAYOUT ? thesisPagedCss(pageGroups) : "") : "", [model, pageGroups]);
+  // Opt-in Word line placement: measure this browser's baseline of every text style (paint-only offsets).
+  const baselineProbes = useMemo(() => model ? thesisWordBaselineProbes(model) : [], [model]);
+  const baselineProbeKey = baselineProbes.map((probe) => probe.id).join(",");
+  const [baselineCss, setBaselineCss] = useState("");
+  useLayoutEffect(() => {
+    if (!baselineProbes.length) { setBaselineCss(""); return undefined; }
+    let alive = true;
+    const measure = () => { if (alive) setBaselineCss(measureWordBaselineCss(baselineProbes)); };
+    measure();
+    document.fonts?.ready?.then(measure);
+    document.fonts?.addEventListener?.("loadingdone", measure);
+    return () => { alive = false; document.fonts?.removeEventListener?.("loadingdone", measure); };
+  }, [baselineProbeKey]);
   const warning = resolved?.fallback ? resolved.reason : thesis.fallback ? thesis.fallbackReason : "";
   const missingFields = model ? [...new Set(model.sections.flatMap((section) => section.missingPlaceholders))] : [];
   const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings] : [];
@@ -125,6 +147,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const conditionState = { ...thesis, values: { ...model?.values, degreeType: model?.values.degreeType ?? model?.values.DEGREE_TYPE } };
   const optionalSections = template ? orderedThesisSections(template).filter((section) => section.status === "optional" && thesisSectionConditionMet(section, conditionState)) : [];
   const numberingChoices = template?.captionNumberingChoices || [];
+  const captionKinds = Object.entries(template?.captionKinds || {});
   // Standard metadata fields plus any extra placeholders the template declares; one input per alias pair.
   // Derived values (e.g. the total page count) come from the layout and are never typed in.
   const metadataFields = template ? Object.entries({ ...THESIS_METADATA_FIELDS, ...template.placeholders }).filter(([key, definition], index, all) => !hiddenFields.has(key) && !definition.derived
@@ -141,6 +164,16 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const metadataSection = (heading, keys, extraClass = "") => <section key={heading} className={`border-t border-neutral-200 pt-4 dark:border-neutral-800 ${extraClass}`}><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">{heading}</h4><div className="grid gap-3">{keys.map(metadataInput)}</div></section>;
 
   useLayoutEffect(() => { if (model && papersRef.current) decorateThesisSources(papersRef.current, model); }, [model, zoom]);
+  // No heading markup is rewritten while an IME composition is running (transformExceptions.js); it catches up afterwards.
+  useEffect(() => {
+    const root = papersRef.current;
+    if (!root) return undefined;
+    const start = () => { root.__thesisComposing = true; };
+    const end = () => { root.__thesisComposing = false; if (model) applyTransformExceptions(root, model); };
+    root.addEventListener("compositionstart", start, true);
+    root.addEventListener("compositionend", end, true);
+    return () => { root.removeEventListener("compositionstart", start, true); root.removeEventListener("compositionend", end, true); };
+  }, [model]);
 
   // A bounded fixed point over the SAME browser flow. Only local presentation state changes.
   // Page-bottom notes change body capacity (and so heading pages), so notes are laid out
@@ -162,6 +195,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       const groups = groupThesisSections(latestSourceModel.current.sections);
       // A frame budget keeps typing responsive in long, note-heavy groups: an incomplete
       // pass (later pages still to re-lay) continues next frame and is not an iteration.
+      // Continuation caption rows of split tables change the flow, so they are settled before notes and indexes.
+      const continuations = layoutTableContinuations(root, groups, latestSourceModel.current);
       const { views: notes, incomplete } = THESIS_PAGE_FOOTNOTES ? layoutThesisFootnotes(root, groups, footnoteState.current, performance.now() + 24) : { views: {} };
       const notesText = JSON.stringify(notes);
       const applyNotes = () => { if (notesText !== appliedNotes) { appliedNotes = notesText; setFootnoteViews(notes); } };
@@ -172,7 +207,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       }
       const next = renderedIndexPages(root, groups);
       const pagesText = JSON.stringify(next);
-      const signature = `${pagesText}|${notesText}`;
+      const signature = `${pagesText}|${notesText}|${JSON.stringify(continuations)}`;
       if (signature === previous) { settled = true; return; }
       if (iterations++ >= INDEX_ITERATION_CAP) {
         setIndexWarning("Dizin/dipnot sayfalaması kararlı hale gelmedi; son ölçülmüş sonuç kullanılıyor.");
@@ -228,6 +263,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const run = (command) => { const body = activeBody(); if (!body) return; body.rememberSelection?.(); command(body); };
   const rememberSelection = (event) => { event.preventDefault(); activeBody()?.rememberSelection?.(); };
   const trackSectionPointer = (event) => {
+    setPickedFigure(event.target.closest?.("figure.academic-figure") || null);
+    setPickedEquation(event.target.closest?.(".math-formula--block") || null);
     const flow = event.target.closest?.(".thesis-flow-section");
     if (flow && flow.getAttribute("data-thesis-section-mode") !== "editable") { setActiveSectionId(""); setCiteOpen(false); }
   };
@@ -240,6 +277,13 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     setCiteText(""); setCiteOpen(false);
   };
 
+  /** Measured indent (unscaled px) of each index row's title after its label, for Word's hanging indent. */
+  const thesisIndexHangs = (root) => Object.fromEntries([...(root?.querySelectorAll("li[data-index-target]") || [])].flatMap((row) => {
+    const text = row.querySelector(".thesis-index-text"), title = row.querySelector(".thesis-index-title");
+    if (!text || !title || getComputedStyle(text).display !== "flex") return [];
+    const scale = new DOMMatrixReadOnly(getComputedStyle(row.closest(".thesis-page-stack")).transform).a || 1;
+    return [[row.dataset.indexTarget, (title.getBoundingClientRect().left - text.getBoundingClientRect().left) / scale]];
+  }));
   const exportFile = async (kind) => {
     if (!model) return;
     setExporting(kind); setMessage("");
@@ -248,10 +292,14 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         import("../../thesis/export.js"), import("../../thesis/layoutPdf.js"), import("../../lib/academicExport.js"),
         import("../../thesis/exportPagination.js"),
       ]);
+      const equationRoot = papersRef.current;
+      if (kind === "pdf" && THESIS_PAGED_LAYOUT && equationRoot?.querySelector(".thesis-body .math-formula--block")) {
+        await waitForStableEquationLayout(equationRoot, { prepare: () => decorateThesisSources(equationRoot, model) });
+      }
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
-        ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, documentLayout: model.documentLayout }) : await buildThesisPdf(model))
-        : await buildThesisDocx(model, { blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])) });
+        ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, documentLayout: model.documentLayout, systemFonts: model.systemFonts || [] }) : await buildThesisPdf(model))
+        : await buildThesisDocx(model, { blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), tableContinuations: tableContinuationRows(papersRef.current) });
       const path = await downloadBlob(blob, `${academicFileStem(plainTitle || "tez")}.${kind}`);
       setMessage(path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`);
     } catch (error) { setMessage(error?.message || "Dışa aktarma başarısız."); }
@@ -270,7 +318,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   // Same image pipeline as AcademicTools: downscaled data URL + academic figure markup.
   // The page column is ~600 CSS px, so 1200 px (2x) is enough; a smaller data URL keeps
   // every save (localStorage/IndexedDB/sync checksum) of the whole note fast.
-  const insertImage = async (file) => {
+  const insertImage = async (file, kind = "") => {
     const body = activeBody();
     if (!file) return;
     try {
@@ -279,7 +327,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       // scan runs once, only for PNGs over 1 MB, on the downscaled canvas (~130 ms).
       const dataUrl = await readImageAsDataUrl(file, THESIS_IMAGE_MAX_EDGE, { opaqueAsJpeg: true });
       const size = await imageDimensions(dataUrl).catch(() => null);
-      if (body) body.insertHtml(figureHtml(dataUrl, "", size));
+      if (body) body.insertHtml(figureHtml(dataUrl, "", size, kind));
       else if (layoutSection) {
         const page = layoutSection.rules.page;
         const maxWidthMm = page.widthMm - page.margins.leftMm - page.margins.rightMm;
@@ -294,8 +342,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   if (!model) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
 
   return <div className="flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
-    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS}</style>
-    <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0]); event.target.value = ""; }} />
+    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss}</style>
+    <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
     <div className="shrink-0 border-b border-neutral-200 bg-white px-3 py-2 dark:border-neutral-800 dark:bg-neutral-900">
       <div className="flex flex-wrap items-center gap-2">
         <button type="button" onClick={() => setDetailsOpen((open) => !open)} aria-expanded={detailsOpen} className="rounded-md border border-neutral-300 px-3 py-1.5 text-xs font-medium dark:border-neutral-700">Tez bilgileri</button>
@@ -305,7 +353,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           {addMenuOpen && <div role="menu" aria-label="Ekle" className="absolute left-0 top-full z-40 mt-1 w-48 rounded-lg border border-neutral-200 bg-white p-1 text-sm text-neutral-900 shadow-xl dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100">
             <button type="button" role="menuitem" onClick={() => { addFrame("text"); setAddMenuOpen(false); }} className="block w-full rounded px-3 py-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">Metin çerçevesi</button>
             <button type="button" role="menuitem" onClick={() => { addFrame("separator"); setAddMenuOpen(false); }} className="block w-full rounded px-3 py-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">Çizgi</button>
-            <button type="button" role="menuitem" onClick={() => { imageInputRef.current?.click(); setAddMenuOpen(false); }} className="block w-full rounded px-3 py-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">Görsel</button>
+            <button type="button" role="menuitem" onClick={() => { imageKindRef.current = ""; imageInputRef.current?.click(); setAddMenuOpen(false); }} className="block w-full rounded px-3 py-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">Görsel</button>
           </div>}
         </div>
         <button type="button" aria-label="Geri al" disabled={!interaction.canUndo} onClick={interaction.undo} className={toolClass}>Geri al</button>
@@ -313,12 +361,22 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         {activeSection && <span className="max-w-44 truncate text-xs text-neutral-500" aria-live="polite">{activeSection.title}</span>}
       </div>
       {activeSection && <div className="mt-2 flex flex-wrap items-center gap-2 border-t border-neutral-100 pt-2 dark:border-neutral-800" aria-label="Metin biçimlendirme araçları">
-        <select aria-label="Paragraf biçimi" defaultValue="" onMouseDown={() => activeBody()?.rememberSelection?.()} onChange={(event) => { const value = event.target.value; event.target.value = ""; if (value !== "") run((body) => body.setBlockType(Number(value))); }} className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 dark:border-neutral-700">
-          <option value="" disabled>Paragraf biçimi</option><option value="0">Normal</option>{Object.keys(activeSection.rules.headings || template.typography.headings).map((level) => <option key={level} value={level}>Başlık {level}</option>)}
+        <select aria-label="Paragraf biçimi" defaultValue="" onMouseDown={() => activeBody()?.rememberSelection?.()} onChange={(event) => { const value = event.target.value; event.target.value = ""; if (value.startsWith("style:")) run((body) => body.setBlockType(0, value.slice(6))); else if (value !== "") run((body) => body.setBlockType(Number(value))); }} className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 dark:border-neutral-700">
+          <option value="" disabled>Paragraf biçimi</option><option value="0">Normal</option>{Object.keys(activeSection.rules.headings || template.typography.headings).map((level) => <option key={level} value={level}>Başlık {level}</option>)}{Object.keys(template.typography.paragraphStyles || {}).map((id) => <option key={id} value={`style:${id}`}>{id}</option>)}
         </select>
         <div className="flex items-center rounded-md border border-neutral-300 dark:border-neutral-700">{[["B", "bold", "Kalın"], ["I", "italic", "İtalik"], ["U", "underline", "Altı çizili"]].map(([label, style, name]) => <button key={style} type="button" title={name} aria-label={name} onMouseDown={keepSelection} onClick={() => run((body) => body.toggleStyle(style))} className={`min-w-8 px-2 py-1.5 text-xs ${style === "bold" ? "font-bold" : style === "italic" ? "italic" : "underline"}`}>{label}</button>)}</div>
         <select aria-label="Hizalama" defaultValue="" onMouseDown={() => activeBody()?.rememberSelection?.()} onChange={(event) => { const align = event.target.value; event.target.value = ""; if (align) run((body) => body.applyAlign(align)); }} className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 dark:border-neutral-700"><option value="">Hizalama</option><option value="left">Sol</option><option value="center">Orta</option><option value="right">Sağ</option><option value="justify">İki yana</option></select>
         <button type="button" aria-label="Madde işaretli liste" onMouseDown={keepSelection} onClick={() => run((body) => body.toggleList(false))} className={toolClass}>• Liste</button><button type="button" aria-label="Numaralı liste" onMouseDown={keepSelection} onClick={() => run((body) => body.toggleList(true))} className={toolClass}>1. Liste</button><button type="button" onMouseDown={keepSelection} onClick={() => run((body) => body.insertTable(2, 2, ""))} className={toolClass}>Tablo</button><button type="button" onMouseDown={rememberSelection} onClick={() => imageInputRef.current?.click()} className={toolClass}>Görsel</button>
+        <button type="button" onMouseDown={keepSelection} onClick={() => run((body) => body.insertTable(2, 2, ""))} className={toolClass}>Tablo</button>
+        <button type="button" onMouseDown={rememberSelection} onClick={() => { imageKindRef.current = ""; imageInputRef.current?.click(); }} className={toolClass}>Görsel</button>
+        {captionKinds.map(([id, rule]) => <button key={id} type="button" onMouseDown={rememberSelection} onClick={() => { imageKindRef.current = id; imageInputRef.current?.click(); }} className={toolClass}>{rule.label} ekle</button>)}
+        {captionKinds.length ? <select aria-label="Görsel türü" disabled={!pickedFigure?.isConnected} value={pickedFigure?.getAttribute("data-caption-kind") || ""} onChange={(event) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) { bodyRefs.current[owner]?.setFigureKind(figure, event.target.value); setPickedFigure(null); } }} title="Önce görsele tıklayın" className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 disabled:opacity-40 dark:border-neutral-700">
+          <option value="">{template.figures.label} (görsel)</option>{captionKinds.map(([id, rule]) => <option key={id} value={id}>{rule.label}</option>)}
+        </select> : null}
+        {template.equations ? <>
+          <button type="button" onMouseDown={rememberSelection} onClick={() => run((body) => body.insertFormula(true, true))} className={toolClass}>Denklem</button>
+          <label className="flex items-center gap-1 text-xs" title="Önce denkleme tıklayın"><input type="checkbox" aria-label="Denklem numarası" disabled={!pickedEquation?.isConnected} checked={pickedEquation?.getAttribute("data-eq-numbered") === "true"} onChange={(event) => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) { bodyRefs.current[owner]?.setEquationNumbered(math, event.target.checked); setPickedEquation(null); } }} />Denklem no</label>
+        </> : null}
         <div className="relative"><button type="button" aria-expanded={citeOpen} onMouseDown={rememberSelection} onClick={() => setCiteOpen((open) => !open)} className={toolClass}>Atıf</button>{citeOpen && <div role="dialog" aria-label="Atıf ekle" className="absolute left-0 top-full z-30 mt-1 w-72 rounded-md border border-neutral-200 bg-white p-2 text-xs text-neutral-900 shadow-lg dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100"><form className="flex gap-1" onSubmit={(event) => { event.preventDefault(); insertCitation(citeText); }}><input autoFocus aria-label="Atıf / dipnot metni" placeholder="Atıf / dipnot metni" value={citeText} onChange={(event) => setCiteText(event.target.value)} onKeyDown={(event) => { if (event.key === "Escape") setCiteOpen(false); }} className="min-w-0 flex-1 rounded border border-neutral-300 bg-transparent px-2 py-1 dark:border-neutral-700" /><button type="submit" disabled={!citeText.trim()} className="rounded border px-2 disabled:opacity-40 dark:border-neutral-700">Ekle</button></form>{citableItems.length ? <><p className="mt-2 text-[11px] text-neutral-500">Kaynakçadan seç</p><ul className="mt-1 max-h-40 overflow-y-auto">{citableItems.map((item, index) => <li key={index}><button type="button" title={item} onClick={() => insertCitation(item)} className="block w-full truncate rounded px-1 py-1 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">{item}</button></li>)}</ul></> : null}</div>}</div>
       </div>}
       <div className="mt-2 flex flex-wrap items-center gap-2 border-t border-neutral-100 pt-2 dark:border-neutral-800">

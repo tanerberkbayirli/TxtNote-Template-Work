@@ -107,3 +107,16 @@ Four generic, opt-in additions; templates that do not use them are unchanged.
 - Per-chapter caption numbers before the first numbered chapter (an unnumbered introduction) leave out the `{chapter}` part (`Şekil 1`, then `Şekil 1.1` in chapter 1) instead of `0.1` (`formatCaptionNumber`).
 - Special page blocks accept `visibleWhen: { anyFilled: [fields] }`; a block or group is left out when none of those metadata values is filled (MCBÜ's optional İkinci Danışman / Co-Supervisor line with its empty line).
 - Placeholders may be `derived: "totalPages"`: not offered as an input, a stored value is ignored, and the value is resolved by `resolveGeneratedIndexes` from the measured page counts of the current layout pass (the same bounded fixed point as the generated indexes, so a 99 → 100 reflow re-measures instead of looping). PDF reads the editor layout; DOCX carries the export-time snapshot (Word does not update it).
+
+## Engine extensions, batch B (structures)
+
+Opt-in template keys, documented in `schema.d.ts` and `orchestration/reports/ENGINE_EXTENSIONS.md`; a template that does not use one is unchanged.
+
+- `captionKinds` (B1): further figure kinds ("Resim 4.1") with their own counter, rule and list (`generatedIndex.kind`); `<figure data-caption-kind>` is source markup.
+- `tables.continuation` (B2): caption ("Çizelge 3.1 (Devam) …") and header row above every continuation fragment of a split table. `tableContinuation.js` measures the page starts after layout and injects presentation rows (`tr[data-thesis-cont]`, never stored); Word splits the table at the measured rows.
+- `equations` (B3): numbered display equations, number flush right (`data-thesis-eq`, presentation), counters per chapter or document.
+- `numbering.sequence: "ordinal-tr-upper"` / `placement: "ownLine"` (B4): "BİRİNCİ BÖLÜM" above the chapter title; `levelStyles[n].align/includePageNumber` for centred TOC rows without page numbers.
+- `footnotes.numbering: "document"` (B5), `visibleWhen: { count, gte }` (B6), `typography.paragraphStyles` + `<p data-thesis-style>` (B7).
+- `textTransformExceptions`: lower-case words inside uppercase/capitalized headings (`transformExceptions.js`; wrapper spans are never stored).
+
+Proofs: `src/lib/thesisBatchB.test.js` (unit), `tests/batchb-measure.py` (real PDF/DOCX export per scenario), `tests/batchb-ui.mjs` (editor behaviour); fixtures in `tests/batchb-fixture.mjs` are served by `tests/thesis-batchb.html` through the editor's `templateRegistry` prop.

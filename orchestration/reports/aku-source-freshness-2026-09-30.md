@@ -1,0 +1,17 @@
+# AKÜ source freshness and scope audit — 2026-09-30
+
+This read-only official-site audit was triggered by a request to search online for the thesis templates. The five-target manifest remains the current implementation plan; newly discovered scope questions below are not silently counted as completed or excluded.
+
+The aggregate source counts at the top of `orchestration/manifest.json` remain the 2026-09-28 index of the read-only `Butun-Sablonlar/` tree. The three newly preserved official files under `orchestration/official-sources/` are additional to that snapshot.
+
+## Current links checked
+
+- **FBE:** The institute's live resources page links the [2020 guide](https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/12/FBE-Tez-Yazim-Kilavuzu-2020_WEB_icin-3.pdf), [Word template uploaded in 2023](https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2023/12/tez-word-sablon-2020_WEB_icin-2-1.docx), and [2020 LaTeX archive](https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/01/Fen-Bil-Ens-Tez-LaTeX-%C5%9Eablon.rar). The guide matches the repository PDF byte for byte. The Word file has the same paragraph text, styles, numbering, page sizes, and margins as the local 2025 resave. Both newly downloaded originals are preserved under `orchestration/official-sources/aku-fbe/`; see `orchestration/failures/aku-fbe/BLOCKED.md` for the LaTeX conflict.
+- **SBE:** The institute's [2026 guide](https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/SBE-TEZ-YAZIM-KILAVUZU-2026.pdf) remains published. A second source audit confirmed three additional required registry variants: Turkish sanatta yeterlik and English master's and doctoral theses. They are now tracked as source-confirmed pending variants in the manifest/spec; see `orchestration/reports/aku-sbe.md`.
+- **Sağlık Bilimleri:** The institute's [current forms page](https://sagbilens.aku.edu.tr/yuksek-lisans-formlari/) links a [2022 PDF guide](https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf). It materially differs from the repository's 2015-named/2009-created guide. The 2022 guide is now marked primary; its detailed specification remains STALE pending reconciliation. See `orchestration/reports/aku-sagbil.md`.
+- **Coğrafya lisans:** The department's [current site](https://cografya.aku.edu.tr/2024/02/26/cografi-bilgi-sistemleri-ve-uzaktan-algilama-laboratuvari/) still links its [2024 thesis guide](https://cografya.aku.edu.tr/wp-content/uploads/sites/77/2024/03/Cografya-Bolumu-Bitirme-Tezi-Yazim-Kilavuzu.pdf) and a separate template. The live template's identity against local sources is UNKNOWN; the guide has no discovered replacement.
+- **Moleküler Biyoloji ve Genetik lisans:** The department still links its [2025 guide](https://mbg.aku.edu.tr/bitirme-tezi-yazim-kilavuzu/) and [template](https://mbg.aku.edu.tr/bitirme-tezi-sablonu/). No newer replacement was found.
+
+## Additional plausible target, applicability UNKNOWN
+
+The [Kimya Mühendisliği Bölümü lisans bitirme tezi guide](https://kimmuh.aku.edu.tr/wp-content/uploads/sites/124/2016/04/TEZ-YAZIM-FORMATI-1.pdf) is a real 36-page official AKÜ thesis-format document. Its cover says 2012, its next title page says 2017, and its upload path says 2016/04. The current department menu does not link a thesis guide, although absence of a menu link alone does not prove withdrawal. Whether this historical guide still applies to current students is **UNKNOWN**. It is a candidate for target-scope confirmation, not a source of values for any other AKÜ unit.

@@ -13,7 +13,7 @@ test("ThesisEditor inserts images through the shared academicMedia pipeline", ()
   // A photo kept as PNG was a 4 MB data URL re-processed on every keystroke (Checkpoint 1).
   assert.match(source, /await readImageAsDataUrl\(file, THESIS_IMAGE_MAX_EDGE, \{ opaqueAsJpeg: true \}\)/);
   assert.match(source, /const THESIS_IMAGE_MAX_EDGE = 1200;/);
-  assert.match(source, /insertHtml\(figureHtml\(dataUrl, "", size\)\)/);
+  assert.match(source, /insertHtml\(figureHtml\(dataUrl, "", size, kind\)\)/);
   assert.doesNotMatch(source, /FileReader/);
 });
 

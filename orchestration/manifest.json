@@ -1,0 +1,2800 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-28",
+  "sourceRoot": "Butun-Sablonlar/",
+  "sourceRootReadOnly": true,
+  "counts": {
+    "validSources": 74,
+    "pdf": 29,
+    "docx": 44,
+    "doc": 1,
+    "primarySources": 68,
+    "supplementarySources": 5,
+    "duplicateFormatSources": 1,
+    "excludedFiles": 1,
+    "universities": 18,
+    "implementableUniversities": 15,
+    "targets": 32,
+    "registryVariants": 71,
+    "unconfirmedVariants": 1
+  },
+  "grouping": {
+    "targetUnit": "Bir target = bir üniversite + enstitü/fakülte/program için TEK veri modülü (templates/<id>.js).",
+    "variantUnit": "Bir variant = bir registry girdisi (degreeType × language [+ selectors]). Mevcut mcbu.js deseni: tek modül, birden çok named export.",
+    "notSeparate": [
+      "İkinci danışman sürümleri (visibleWhen anyFilled)",
+      "Aynı kılavuzun DOC/PDF biçimleri",
+      "Destekleyici atıf/yönerge belgeleri"
+    ]
+  },
+  "targets": [
+    {
+      "id": "aku-sbe",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "instituteId": "sbe",
+      "institute": "Sosyal Bilimler Enstitüsü",
+      "degrees": [
+        "master",
+        "phd",
+        "sanatta-yeterlik"
+      ],
+      "languages": [
+        "tr",
+        "en"
+      ],
+      "variants": [
+        {
+          "registryId": "aku-sbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "aku-sbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "requiredVariantsPending": [
+        "aku-sbe-sanatta-yeterlik-tr-v1",
+        "aku-sbe-master-en-v1",
+        "aku-sbe-phd-en-v1"
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/aku-sbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": ["additional-degree-type-engine-gap", "english-variants-not-registered"],
+      "notes": "2026 guide also explicitly covers Turkish sanatta yeterlik and English-programme master's/doctoral theses. Three source-confirmed registry variants remain pending; arbitrary other-language labels are UNKNOWN."
+    },
+    {
+      "id": "aku-fbe",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "instituteId": "fbe",
+      "institute": "Fen Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "aku-fbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "aku-fbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/aku-fbe.js",
+      "sourceFiles": [
+        "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf"
+      ],
+      "supplementarySources": [
+        "orchestration/official-sources/aku-fbe/Fen_Bil_Ens_Tez_LaTeX_Sablon_2020.rar"
+      ],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "official-latex-spacing-conflict",
+        "long-title-layout-unknown"
+      ],
+      "notes": "2020 guide is current; live Word template was uploaded in 2023 and local 2025 file is a semantic resave. Official LaTeX sample uses 1.2 baseline stretch against the guide's explicit 1.5 spacing; long-title and seven-juror layout remains unresolved."
+    },
+    {
+      "id": "aku-sagbil",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "instituteId": "sagbil",
+      "institute": "Sağlık Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "aku-sagbil-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "aku-sagbil-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/aku-sagbil.js",
+      "sourceFiles": [
+        "orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf",
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 3,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "current-source-spec-audit-pending"
+      ],
+      "notes": "Official institute-hosted 10.02.2022 guide is primary. Historical 2015-named/2009-created PDF is preserved. Formal approval date and current spec reconciliation remain pending."
+    },
+    {
+      "id": "aku-cografya-lisans",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "instituteId": "cografya",
+      "institute": "Coğrafya Bölümü",
+      "degrees": [
+        "undergraduate"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "aku-cografya-lisans-undergrad-tr-v1",
+          "degreeType": "undergraduate",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/aku-cografya-lisans.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 3,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "aku-mbg-lisans",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "instituteId": "mbg",
+      "institute": "Moleküler Biyoloji ve Genetik Bölümü",
+      "degrees": [
+        "undergraduate"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "aku-mbg-lisans-undergrad-tr-v1",
+          "degreeType": "undergraduate",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/aku-mbg-lisans.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "afsu-lee",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "afsu-lee-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "afsu-lee-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-lee.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/AFSÜ_Doktora_Tez_Sablonu_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/AFSÜ_Yuksek_Lisans_Tez_Sablonu_2026.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "deu-fbe",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "instituteId": "fbe",
+      "institute": "Fen Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "en",
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "deu-fbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "deu-fbe-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "deu-fbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "deu-fbe-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/deu-fbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Doktora_Tez_Sablonu_TR_2025-09-04.docx",
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-09-04.docx",
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-09-04.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Tek veri modülü, 4 registry girdisi"
+    },
+    {
+      "id": "deu-ebe",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "instituteId": "ebe",
+      "institute": "Eğitim Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "deu-ebe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "deu-ebe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/deu-ebe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx",
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_2025-11-10.docx"
+      ],
+      "supplementarySources": [
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_APA7_Kaynak_Gosterme_2021.pdf"
+      ],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "APA7 PDF yalnız destekleyici"
+    },
+    {
+      "id": "deu-sagbil",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "instituteId": "sagbil",
+      "institute": "Sağlık Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "deu-sagbil-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "deu-sagbil-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/deu-sagbil.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2021.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "deu-ataturk",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "instituteId": "aiit",
+      "institute": "Atatürk İlkeleri ve İnkılap Tarihi Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "deu-ataturk-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "deu-ataturk-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/deu-ataturk.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2024.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 3,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "deu-tip",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "instituteId": "tip",
+      "institute": "Tıp Fakültesi",
+      "degrees": [
+        "specialization"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "deu-tip-specialization-tr-v1",
+          "degreeType": "specialization",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/deu-tip.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2025.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 3,
+      "relatedTargets": [
+        "pau-tip"
+      ],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Tıpta uzmanlık tezi"
+    },
+    {
+      "id": "ege-fbe",
+      "university": "Ege Üniversitesi",
+      "universityId": "ege",
+      "instituteId": "fbe",
+      "institute": "Fen Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "ege-fbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "template-guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "ege-fbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "template-guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/ege-fbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Ege Üniversitesi/Ege_Fen_Bilimleri_Tez_Yazim_Kilavuzu.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "ege-sagbil",
+      "university": "Ege Üniversitesi",
+      "universityId": "ege",
+      "instituteId": "sagbil",
+      "institute": "Sağlık Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "ege-sagbil-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "ege-sagbil-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/ege-sagbil.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Ege Üniversitesi/Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "dpu-lee",
+      "university": "Kütahya Dumlupınar Üniversitesi",
+      "universityId": "dpu",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "dpu-lee-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "dpu-lee-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/dpu-lee.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/DPÜ_Lisansustu_Tez_Sablonu_2026.docx",
+        "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx"
+      ],
+      "supplementarySources": [
+        "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/DPU_English_Thesis_Format_Appendix.pdf"
+      ],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "possible-en-variant"
+      ],
+      "notes": "EN biçim eki yalnız Ekonometri yabancı öğrencileri içindir; EN varyantı ancak analiz kanıtlarsa eklenir"
+    },
+    {
+      "id": "ksbu-lee",
+      "university": "Kütahya Sağlık Bilimleri Üniversitesi",
+      "universityId": "ksbu",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "ksbu-lee-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "ksbu-lee-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/ksbu-lee.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "mcbu-lee",
+      "university": "Manisa Celal Bayar Üniversitesi",
+      "universityId": "mcbu",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "mcbu-lee-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true,
+          "existing": true,
+          "note": "Mevcut v1 id'si. Yeni kılavuz kural değişikliği gerektirirse yeni id ...-v2 açılır, v1 korunur."
+        },
+        {
+          "registryId": "mcbu-lee-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true,
+          "existing": true,
+          "note": "Mevcut v1 id'si. Yeni kılavuz kural değişikliği gerektirirse yeni id ...-v2 açılır, v1 korunur."
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/mcbu.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/MCBU_Lisansustu_Tez_Yazim_Kilavuzu.docx"
+      ],
+      "supplementarySources": [],
+      "status": "EXISTING_REVIEW",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "existing-implementation"
+      ],
+      "notes": "templates/mcbu.js zaten var (mcbu-lee-master-tr-v1, mcbu-lee-phd-tr-v1) ve farklı bir PDF'ten üretildi. Analiz: yeni DOCX kılavuza karşı fark raporu. Değişiklik gerekiyorsa YENİ id (v2) ile; v1 notları için yüklenebilir kalmalı."
+    },
+    {
+      "id": "msku-ebe",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "instituteId": "ebe",
+      "institute": "Eğitim Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "en",
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "msku-ebe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-ebe-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-ebe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-ebe-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/msku-ebe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Doktora_Tez_Sablonu_TR_2025-10-06.docx",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_TR.pdf",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-10-06.docx",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-10-06.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "guide-template-version-gap"
+      ],
+      "notes": "Kılavuz 2021, şablonlar 2025"
+    },
+    {
+      "id": "msku-fbe",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "instituteId": "fbe",
+      "institute": "Fen Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "en",
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "msku-fbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-fbe-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-fbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-fbe-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/msku-fbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Tez_Sablonu_TR.docx",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.doc",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Thesis_Template_EN.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "DOC ve PDF aynı kılavuz; DOC özgün, PDF ölçüm referansı"
+    },
+    {
+      "id": "msku-sagbil",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "instituteId": "sagbil",
+      "institute": "Sağlık Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "msku-sagbil-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-sagbil-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/msku-sagbil.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Saglik_Bilimleri_Tez_Yazim_Sablonu_2025-11-20.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "msku-sbe",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "instituteId": "sbe",
+      "institute": "Sosyal Bilimler Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "msku-sbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "msku-sbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/msku-sbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "pau-fbe",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "instituteId": "fbe",
+      "institute": "Fen Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "pau-fbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "template-guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "pau-fbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "template-guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/pau-fbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Fen_Bilimleri_Tez_Sablonu.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "pau-ebe",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "instituteId": "ebe",
+      "institute": "Eğitim Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "pau-ebe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "pau-ebe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/pau-ebe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx",
+        "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx",
+        "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "pau-tip",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "instituteId": "tip",
+      "institute": "Tıp Fakültesi",
+      "degrees": [
+        "specialization"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "pau-tip-specialization-tr-v1",
+          "degreeType": "specialization",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/pau-tip.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Yonergesi.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 3,
+      "relatedTargets": [
+        "deu-tip"
+      ],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "usak-lee-sosyal",
+      "university": "Uşak Üniversitesi",
+      "universityId": "usak",
+      "instituteId": "lee-sosyal",
+      "institute": "Lisansüstü Eğitim Enstitüsü (Sosyal alanlar)",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "usak-lee-sosyal-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "usak-lee-sosyal-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/usak-lee-sosyal.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Uşak Üniversitesi/Usak_Sosyal_Alanlar_Tez_Yazim_Kilavuzu_2026.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "selectors: {field: social}; Fen/Sağlık kılavuzu yerelde yok"
+    },
+    {
+      "id": "usak-insaat-lisans",
+      "university": "Uşak Üniversitesi",
+      "universityId": "usak",
+      "instituteId": "insaat",
+      "institute": "İnşaat Mühendisliği Bölümü",
+      "degrees": [
+        "undergraduate"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "usak-insaat-lisans-undergrad-tr-v1",
+          "degreeType": "undergraduate",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/usak-insaat-lisans.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Uşak Üniversitesi/Usak_Insaat_Muhendisligi_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2009.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 3,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "outdated-source"
+      ],
+      "notes": "2009"
+    },
+    {
+      "id": "yasar-lee",
+      "university": "Yaşar Üniversitesi",
+      "universityId": "yasar",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "en",
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "yasar-lee-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "yasar-lee-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "yasar-lee-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "yasar-lee-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/yasar-lee.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+        "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+        "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+        "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [
+        "yasar-lee-hukuk"
+      ],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "yasar-lee-hukuk",
+      "university": "Yaşar Üniversitesi",
+      "universityId": "yasar",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü (Hukuk programları)",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "yasar-lee-hukuk-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "template",
+          "confirmed": true
+        },
+        {
+          "registryId": "yasar-lee-hukuk-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/yasar-lee-hukuk.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [
+        "yasar-lee"
+      ],
+      "dependencies": [
+        "yasar-lee"
+      ],
+      "flags": [
+        "degree-unspecified"
+      ],
+      "notes": "Ayrı Word şablonu (farklı sayfa yapısı olası). Registry'de selectors {program: law}. Genel kurallar yasar-lee-guide-tr'den; önce yasar-lee tamamlanmalı"
+    },
+    {
+      "id": "bakircay-lee",
+      "university": "İzmir Bakırçay Üniversitesi",
+      "universityId": "bakircay",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "bakircay-lee-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "bakircay-lee-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/bakircay-lee.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Bakircay_Lisansustu_Tez_Yazim_Kilavuzu.pdf"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "ieu-lee",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "en",
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "ieu-lee-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+front-matter",
+          "confirmed": true
+        },
+        {
+          "registryId": "ieu-lee-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide+front-matter",
+          "confirmed": true
+        },
+        {
+          "registryId": "ieu-lee-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide+front-matter",
+          "confirmed": true
+        },
+        {
+          "registryId": "ieu-lee-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide-only (doğrulanacak)",
+          "confirmed": false
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/ieu-lee.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Doktora_Tez_Oncul_Sayfalar_EN.docx",
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Doktora_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_EN.docx",
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_TR.docx",
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx"
+      ],
+      "supplementarySources": [
+        "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Hukuk_Tezleri_Ek_Aciklamalar.pdf"
+      ],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "co-advisor-as-metadata",
+        "law-notes-supplement"
+      ],
+      "notes": "6 öncül sayfa DOCX'i = 3 derece/dil × (tek/ikinci danışman). İkinci danışman ayrı template değil. phd-tr için öncül sayfa şablonu yok: analiz kılavuzdan kanıtlamazsa eklenmez"
+    },
+    {
+      "id": "ikcu-fbe",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "instituteId": "fbe",
+      "institute": "Fen Bilimleri Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "en",
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "ikcu-fbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "ikcu-fbe-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "ikcu-fbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "ikcu-fbe-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/ikcu-fbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
+        "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+        "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+        "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Thesis_Template_EN_2023-10-28.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "ikcu-sbe",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "instituteId": "sbe",
+      "institute": "Sosyal Bilimler Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "tr"
+      ],
+      "variants": [
+        {
+          "registryId": "ikcu-sbe-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        },
+        {
+          "registryId": "ikcu-sbe-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "guide+template",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/ikcu-sbe.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_SBE_Doktora_Tez_Sablonu.docx",
+        "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+        "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_SBE_Tezli_Yuksek_Lisans_Tez_Sablonu.docx"
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": ""
+    },
+    {
+      "id": "iyte-lee",
+      "university": "İzmir Yüksek Teknoloji Enstitüsü",
+      "universityId": "iyte",
+      "instituteId": "lee",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "languages": [
+        "en"
+      ],
+      "variants": [
+        {
+          "registryId": "iyte-lee-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide",
+          "confirmed": true
+        },
+        {
+          "registryId": "iyte-lee-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/iyte-lee.js",
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf"
+      ],
+      "supplementarySources": [
+        "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/IYTE_Kaynak_Gosterme_Yontemleri_2026.pdf",
+        "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/IYTE_Makale_Tez_Yonergesi_2026.pdf"
+      ],
+      "status": "IMPLEMENTABLE",
+      "priority": 2,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [
+        "outdated-source",
+        "article-thesis-supplement"
+      ],
+      "notes": "Kılavuz 2019, İngilizce. TR varyantı yalnız kaynak kanıtlarsa"
+    }
+  ],
+  "sources": [
+    {
+      "id": "aku-cografya-guide",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Coğrafya Bölümü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "undergraduate"
+      ],
+      "version": "2024",
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+      "target": "aku-cografya-lisans",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "aku-fbe-template",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025 (içerikte 2020 ibaresi)",
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+      "target": "aku-fbe",
+      "role": "supplementary",
+      "notes": "Local resave of official 2023 Word file; identical substantive text, styles, numbering, sizes and margins."
+    },
+    {
+      "id": "aku-fbe-guide",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2020",
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "target": "aku-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "aku-fbe-template-online-2023",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": ["master", "phd"],
+      "version": "Official online file created/modified 2023-12-20",
+      "path": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2023/12/tez-word-sablon-2020_WEB_icin-2-1.docx",
+      "target": "aku-fbe",
+      "role": "primary",
+      "notes": "Downloaded 2026-09-30; SHA256 E067EB268E9E9696158F8AA9BD7C061C65CC998D3C0E7EF83A18EEE05B6D7ADC"
+    },
+    {
+      "id": "aku-fbe-latex-2020",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": ["master", "phd"],
+      "version": "Official 2020/01 LaTeX archive",
+      "path": "orchestration/official-sources/aku-fbe/Fen_Bil_Ens_Tez_LaTeX_Sablon_2020.rar",
+      "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/01/Fen-Bil-Ens-Tez-LaTeX-%C5%9Eablon.rar",
+      "target": "aku-fbe",
+      "role": "supplementary",
+      "notes": "Downloaded 2026-09-30; SHA256 53E7509B5D3956E8276794032C4FE11B5AF095BBAF2F7101A318AFA75EB2F93E; spacing conflicts with guide."
+    },
+    {
+      "id": "aku-mbg-guide",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Moleküler Biyoloji ve Genetik Bölümü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "undergraduate"
+      ],
+      "version": "2025",
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "target": "aku-mbg-lisans",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "aku-mbg-template",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Moleküler Biyoloji ve Genetik Bölümü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "undergraduate"
+      ],
+      "version": "2025",
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "target": "aku-mbg-lisans",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "aku-sagbil-guide",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "Historical file name 2015; PDF metadata 2009-11-13",
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf",
+      "target": "aku-sagbil",
+      "role": "historical-superseded",
+      "notes": "Preserved historical guide; superseded as current authority by the official institute-hosted 2022 guide."
+    },
+    {
+      "id": "aku-sbe-guide",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2026-02",
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "target": "aku-sbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "afsu-lee-template-phd",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "phd"
+      ],
+      "version": "2026",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/AFSÜ_Doktora_Tez_Sablonu_2026.docx",
+      "target": "afsu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "afsu-lee-guide",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2026-02-16",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+      "target": "afsu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "afsu-lee-template-master",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "2026",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/AFSÜ_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+      "target": "afsu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-ataturk-guide",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Atatürk İlkeleri ve İnkılap Tarihi Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2024.pdf",
+      "target": "deu-ataturk",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-ebe-apa7",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "supplement-citation",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2021-08",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_APA7_Kaynak_Gosterme_2021.pdf",
+      "target": "deu-ebe",
+      "role": "supplementary",
+      "notes": "Kişisel hazırlanmış APA 7 notu; kurum kuralı değil, yalnız atıf bağlamı"
+    },
+    {
+      "id": "deu-ebe-template-phd",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "phd"
+      ],
+      "version": "2025-11-10",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx",
+      "target": "deu-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-ebe-guide",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024-10",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+      "target": "deu-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-ebe-template-master",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "2025-11-10",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_2025-11-10.docx",
+      "target": "deu-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-fbe-template-phd-tr",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "phd"
+      ],
+      "version": "2025-09-04",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Doktora_Tez_Sablonu_TR_2025-09-04.docx",
+      "target": "deu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-fbe-template-phd-en",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
+        "phd"
+      ],
+      "version": "2025-09-04",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
+      "target": "deu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-fbe-guide",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025 v3 (iç kapak Ocak 2022)",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+      "target": "deu-fbe",
+      "role": "primary",
+      "notes": "TR ve EN tez kurallarını birlikte içerir"
+    },
+    {
+      "id": "deu-fbe-template-master-tr",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "2025-09-04",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-09-04.docx",
+      "target": "deu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-fbe-template-master-en",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
+        "master"
+      ],
+      "version": "2025-09-04",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-09-04.docx",
+      "target": "deu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-sagbil-guide",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2021-06-07",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2021.pdf",
+      "target": "deu-sagbil",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "deu-tip-guide",
+      "university": "Dokuz Eylül Üniversitesi",
+      "universityId": "deu",
+      "unit": "Tıp Fakültesi",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "specialization"
+      ],
+      "version": "2025-01",
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2025.pdf",
+      "target": "deu-tip",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ege-fbe-template",
+      "university": "Ege Üniversitesi",
+      "universityId": "ege",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template-guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Ege_Fen_Bilimleri_Tez_Yazim_Kilavuzu.docx",
+      "target": "ege-fbe",
+      "role": "primary",
+      "notes": "Şablon ve kılavuz aynı Word belgesinde"
+    },
+    {
+      "id": "ege-sagbil-guide",
+      "university": "Ege Üniversitesi",
+      "universityId": "ege",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+      "target": "ege-sagbil",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "dpu-ekonometri-en-appendix",
+      "university": "Kütahya Dumlupınar Üniversitesi",
+      "universityId": "dpu",
+      "unit": "Ekonometri Bölümü (yabancı uyruklu öğrenciler)",
+      "documentType": "supplement-format-appendix",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024-03-04",
+      "path": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/DPU_English_Thesis_Format_Appendix.pdf",
+      "target": "dpu-lee",
+      "role": "supplementary",
+      "notes": "20 sayfalık İngilizce biçim eki; EN varyantının kaynağı olabilir, analizde teyit edilecek"
+    },
+    {
+      "id": "dpu-lee-template",
+      "university": "Kütahya Dumlupınar Üniversitesi",
+      "universityId": "dpu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2026-07-16",
+      "path": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/DPÜ_Lisansustu_Tez_Sablonu_2026.docx",
+      "target": "dpu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "dpu-lee-guide",
+      "university": "Kütahya Dumlupınar Üniversitesi",
+      "universityId": "dpu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2026-02-27",
+      "path": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+      "target": "dpu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ksbu-lee-guide",
+      "university": "Kütahya Sağlık Bilimleri Üniversitesi",
+      "universityId": "ksbu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024-04-03",
+      "path": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+      "target": "ksbu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "mcbu-lee-guide",
+      "university": "Manisa Celal Bayar Üniversitesi",
+      "universityId": "mcbu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025-10-22 (yükleme)",
+      "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/MCBU_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+      "target": "mcbu-lee",
+      "role": "primary",
+      "notes": "Mevcut mcbu.js başka bir kaynaktan (ShareFileGallery-GTSM221020251445.pdf) üretildi"
+    },
+    {
+      "id": "msku-ebe-template-phd-tr",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "phd"
+      ],
+      "version": "2025-10-06",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Doktora_Tez_Sablonu_TR_2025-10-06.docx",
+      "target": "msku-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-ebe-template-phd-en",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
+        "phd"
+      ],
+      "version": "2025-10-06",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
+      "target": "msku-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-ebe-guide-en",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2021-01",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+      "target": "msku-ebe",
+      "role": "primary",
+      "notes": "TR kılavuzun çevirisi"
+    },
+    {
+      "id": "msku-ebe-guide-tr",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2021-01",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_TR.pdf",
+      "target": "msku-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-ebe-template-master-tr",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "2025-10-06",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-10-06.docx",
+      "target": "msku-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-ebe-template-master-en",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
+        "master"
+      ],
+      "version": "2025-10-06",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-10-06.docx",
+      "target": "msku-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-fbe-template-tr",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Tez_Sablonu_TR.docx",
+      "target": "msku-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-fbe-guide-doc",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.doc",
+      "target": "msku-fbe",
+      "role": "primary",
+      "notes": "Aynı kılavuzun Word özgünü (kaynaklar.md: Word tercih edildi)"
+    },
+    {
+      "id": "msku-fbe-guide-pdf",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf",
+      "target": "msku-fbe",
+      "role": "duplicate-format",
+      "notes": "msku-fbe-guide-doc ile aynı kılavuz; ölçüm/karşılaştırma referansı, bağımsız kaynak değil"
+    },
+    {
+      "id": "msku-fbe-template-en",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Fen_Bilimleri_Thesis_Template_EN.docx",
+      "target": "msku-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-sagbil-guide",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+      "target": "msku-sagbil",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-sagbil-template",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025-11-20",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Saglik_Bilimleri_Tez_Yazim_Sablonu_2025-11-20.docx",
+      "target": "msku-sagbil",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "msku-sbe-guide",
+      "university": "Muğla Sıtkı Koçman Üniversitesi",
+      "universityId": "msku",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025-07-30",
+      "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+      "target": "msku-sbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "pau-ebe-template-phd",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "phd"
+      ],
+      "version": "2025",
+      "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx",
+      "target": "pau-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "pau-ebe-template-master",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "2025",
+      "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx",
+      "target": "pau-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "pau-ebe-guide",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "unit": "Eğitim Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025-08-06",
+      "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+      "target": "pau-ebe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "pau-fbe-template",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template-guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Fen_Bilimleri_Tez_Sablonu.docx",
+      "target": "pau-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "pau-tip-guide",
+      "university": "Pamukkale Üniversitesi",
+      "universityId": "pau",
+      "unit": "Tıp Fakültesi",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "specialization"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/PAU_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Yonergesi.pdf",
+      "target": "pau-tip",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "usak-insaat-guide",
+      "university": "Uşak Üniversitesi",
+      "universityId": "usak",
+      "unit": "İnşaat Mühendisliği Bölümü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "undergraduate"
+      ],
+      "version": "2009",
+      "path": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Usak_Insaat_Muhendisligi_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2009.docx",
+      "target": "usak-insaat-lisans",
+      "role": "primary",
+      "notes": "Çok eski"
+    },
+    {
+      "id": "usak-lee-sosyal-guide",
+      "university": "Uşak Üniversitesi",
+      "universityId": "usak",
+      "unit": "Lisansüstü Eğitim Enstitüsü (Sosyal alanlar)",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2026-09-11",
+      "path": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Usak_Sosyal_Alanlar_Tez_Yazim_Kilavuzu_2026.docx",
+      "target": "usak-lee-sosyal",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "yasar-hukuk-template",
+      "university": "Yaşar Üniversitesi",
+      "universityId": "yasar",
+      "unit": "Lisansüstü Eğitim Enstitüsü (Hukuk programları)",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025-07",
+      "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+      "target": "yasar-lee-hukuk",
+      "role": "primary",
+      "notes": "Derece kaynakta belirtilmemiş"
+    },
+    {
+      "id": "yasar-lee-template-en",
+      "university": "Yaşar Üniversitesi",
+      "universityId": "yasar",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024-11-19",
+      "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+      "target": "yasar-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "yasar-lee-template-tr",
+      "university": "Yaşar Üniversitesi",
+      "universityId": "yasar",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024-11-19",
+      "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+      "target": "yasar-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "yasar-lee-guide-en",
+      "university": "Yaşar Üniversitesi",
+      "universityId": "yasar",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024-11",
+      "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+      "target": "yasar-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "yasar-lee-guide-tr",
+      "university": "Yaşar Üniversitesi",
+      "universityId": "yasar",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2025-06",
+      "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+      "target": "yasar-lee",
+      "role": "primary",
+      "notes": "yasar-lee-hukuk için de genel kural kaynağı"
+    },
+    {
+      "id": "bakircay-lee-guide",
+      "university": "İzmir Bakırçay Üniversitesi",
+      "universityId": "bakircay",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Bakircay_Lisansustu_Tez_Yazim_Kilavuzu.pdf",
+      "target": "bakircay-lee",
+      "role": "primary",
+      "notes": "Dönem projesi bölümleri kapsam dışı"
+    },
+    {
+      "id": "ieu-lee-frontmatter-phd-en",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "front-matter-template",
+      "language": "en",
+      "degrees": [
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Doktora_Tez_Oncul_Sayfalar_EN.docx",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ieu-lee-frontmatter-phd-en-coadv",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "front-matter-template",
+      "language": "en",
+      "degrees": [
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Doktora_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": "İkinci danışman varyantı → visibleWhen anyFilled ile aynı registry girdisi"
+    },
+    {
+      "id": "ieu-lee-law-notes",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü (Hukuk alanı)",
+      "documentType": "supplement-directive",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2022",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Hukuk_Tezleri_Ek_Aciklamalar.pdf",
+      "target": "ieu-lee",
+      "role": "supplementary",
+      "notes": "Hukuk tezleri ek açıklamaları; ayrı varyant gerekip gerekmediği analizde belirlenecek"
+    },
+    {
+      "id": "ieu-lee-guide-en",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ieu-lee-guide-tr",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2024",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ieu-lee-frontmatter-master-en",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "front-matter-template",
+      "language": "en",
+      "degrees": [
+        "master"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_EN.docx",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ieu-lee-frontmatter-master-en-coadv",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "front-matter-template",
+      "language": "en",
+      "degrees": [
+        "master"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": "İkinci danışman varyantı"
+    },
+    {
+      "id": "ieu-lee-frontmatter-master-tr",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "front-matter-template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_TR.docx",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ieu-lee-frontmatter-master-tr-coadv",
+      "university": "İzmir Ekonomi Üniversitesi",
+      "universityId": "ieu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "front-matter-template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+      "target": "ieu-lee",
+      "role": "primary",
+      "notes": "İkinci danışman varyantı"
+    },
+    {
+      "id": "ikcu-fbe-template-tr",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2023-10-28",
+      "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
+      "target": "ikcu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ikcu-fbe-guide-tr",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2023-10-28",
+      "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+      "target": "ikcu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ikcu-fbe-guide-en",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2023-10-28",
+      "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+      "target": "ikcu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ikcu-fbe-template-en",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2023-10-28",
+      "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_FBE_Thesis_Template_EN_2023-10-28.docx",
+      "target": "ikcu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ikcu-sbe-template-phd",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "phd"
+      ],
+      "version": "belirtilmemiş (sayfa 2025-12-16)",
+      "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_SBE_Doktora_Tez_Sablonu.docx",
+      "target": "ikcu-sbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ikcu-sbe-guide",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+      "target": "ikcu-sbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "ikcu-sbe-template-master",
+      "university": "İzmir Kâtip Çelebi Üniversitesi",
+      "universityId": "ikcu",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
+        "master"
+      ],
+      "version": "belirtilmemiş",
+      "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/IKCU_SBE_Tezli_Yuksek_Lisans_Tez_Sablonu.docx",
+      "target": "ikcu-sbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "iyte-lee-citation",
+      "university": "İzmir Yüksek Teknoloji Enstitüsü",
+      "universityId": "iyte",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "supplement-citation",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2026-04",
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/IYTE_Kaynak_Gosterme_Yontemleri_2026.pdf",
+      "target": "iyte-lee",
+      "role": "supplementary",
+      "notes": "Dil analizde teyit edilecek"
+    },
+    {
+      "id": "iyte-lee-guide",
+      "university": "İzmir Yüksek Teknoloji Enstitüsü",
+      "universityId": "iyte",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "en",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2019",
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+      "target": "iyte-lee",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "iyte-lee-article-thesis",
+      "university": "İzmir Yüksek Teknoloji Enstitüsü",
+      "universityId": "iyte",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "supplement-directive",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "2026-05",
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/IYTE_Makale_Tez_Yonergesi_2026.pdf",
+      "target": "iyte-lee",
+      "role": "supplementary",
+      "notes": "Makaleden tez hazırlama yönergesi; ayrı varyant gerekip gerekmediği analizde belirlenecek"
+    },
+    {
+      "id": "aku-sagbil-guide-2022",
+      "university": "Afyon Kocatepe Üniversitesi",
+      "universityId": "aku",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
+        "master",
+        "phd"
+      ],
+      "version": "PDF URL/name 10.02.2022; cover 2020; metadata 2022-02-10; approval date blank",
+      "path": "orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf",
+      "url": "https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf",
+      "target": "aku-sagbil",
+      "role": "primary",
+      "notes": "Official institute-hosted PDF, 39 pages; downloaded 2026-09-30, SHA256 B9CE1B784277B50B81C9DA027BFE40D06948B78868D8D49145A2ECB730FFD581. Formal effective date not confirmed."
+    }
+  ],
+  "excludedFiles": [
+    {
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/DEU_Fen_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-09-04.docx.download",
+      "reason": "Yarım/indirme artığı uzantı; MD5 deu-fbe-template-master-en ile aynı (59756f47452801f708208608aa362b88). Geçerli kaynak sayılmaz."
+    }
+  ],
+  "nonImplementableUniversities": [
+    {
+      "universityId": "adu",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "reason": "kaynaklar.md çevrimiçi kaynakları listeliyor; yerel belge yok",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/kaynaklar.md"
+    },
+    {
+      "universityId": "idu",
+      "university": "İzmir Demokrasi Üniversitesi",
+      "reason": "kaynaklar.md çevrimiçi SBE kılavuzunu listeliyor; yerel belge yok",
+      "path": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/kaynaklar.md"
+    },
+    {
+      "universityId": "tinaztepe",
+      "university": "İzmir Tınaztepe Üniversitesi",
+      "reason": "kaynaklar.md çevrimiçi LEE kılavuzunu listeliyor; yerel belge yok",
+      "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/kaynaklar.md"
+    }
+  ],
+  "existingTemplates": [
+    "generic-thesis-v1",
+    "demo-university-a-master-tr-v1",
+    "demo-university-b-master-tr-v1",
+    "demo-university-c-phd-en-v1",
+    "mcbu-lee-master-tr-v1",
+    "mcbu-lee-phd-tr-v1"
+  ]
+}

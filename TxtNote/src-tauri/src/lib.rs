@@ -51,6 +51,7 @@ pub fn run() {
             desktop_export::write_academic_file,
             system_fonts::read_times_new_roman_fonts,
             system_fonts::read_system_pdf_fonts,
+            system_fonts::read_system_font_family,
             secure_store::secure_store_secret,
             secure_store::secure_load_secret,
             secure_store::secure_delete_secret,

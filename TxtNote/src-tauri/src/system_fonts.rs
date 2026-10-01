@@ -23,9 +23,11 @@ fn allowlisted_family(
         ("italic", "ariali.ttf"),
         ("bolditalic", "arialbi.ttf"),
     ];
+    const CAMBRIA_MATH: &[(&str, &str)] = &[("normal", "cambria.ttc")];
     match value.trim().to_ascii_lowercase().as_str() {
         "times new roman" => Some(("Times New Roman", TIMES_NEW_ROMAN)),
         "arial" => Some(("Arial", ARIAL)),
+        "cambria math" => Some(("Cambria Math", CAMBRIA_MATH)),
         _ => None,
     }
 }
@@ -78,6 +80,12 @@ async fn read_families(requested: Vec<String>) -> Result<Vec<SystemFont>, String
 #[tauri::command]
 pub async fn read_system_pdf_fonts(families: Vec<String>) -> Result<Vec<SystemFont>, String> {
     read_families(families).await
+}
+
+/// Single-family form used by template font loaders.
+#[tauri::command]
+pub async fn read_system_font_family(family: String) -> Result<Vec<SystemFont>, String> {
+    read_families(vec![family]).await
 }
 
 /// Kept for compatibility with older frontend builds.

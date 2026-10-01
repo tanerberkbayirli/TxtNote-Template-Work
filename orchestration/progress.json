@@ -1,0 +1,569 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-30",
+  "maxAttempts": 3,
+  "policy": "orchestration/README.md#policy-revision-2026-09-28 (supersedes conflicting older rules)",
+  "universityOrder": [
+    "aku",
+    "afsu",
+    "deu",
+    "ege",
+    "dpu",
+    "ksbu",
+    "mcbu",
+    "msku",
+    "pau",
+    "usak",
+    "yasar",
+    "bakircay",
+    "ieu",
+    "ikcu",
+    "iyte"
+  ],
+  "universities": {
+    "aku": {
+      "status": "IN_PROGRESS",
+      "targets": [
+        "aku-sbe",
+        "aku-fbe",
+        "aku-sagbil",
+        "aku-cografya-lisans",
+        "aku-mbg-lisans"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "afsu": {
+      "status": "PENDING",
+      "targets": [
+        "afsu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "deu": {
+      "status": "PENDING",
+      "targets": [
+        "deu-fbe",
+        "deu-ebe",
+        "deu-sagbil",
+        "deu-ataturk",
+        "deu-tip"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ege": {
+      "status": "PENDING",
+      "targets": [
+        "ege-fbe",
+        "ege-sagbil"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "dpu": {
+      "status": "PENDING",
+      "targets": [
+        "dpu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ksbu": {
+      "status": "PENDING",
+      "targets": [
+        "ksbu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "mcbu": {
+      "status": "PENDING",
+      "targets": [
+        "mcbu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "msku": {
+      "status": "PENDING",
+      "targets": [
+        "msku-ebe",
+        "msku-fbe",
+        "msku-sagbil",
+        "msku-sbe"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "pau": {
+      "status": "PENDING",
+      "targets": [
+        "pau-fbe",
+        "pau-ebe",
+        "pau-tip"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "usak": {
+      "status": "PENDING",
+      "targets": [
+        "usak-lee-sosyal",
+        "usak-insaat-lisans"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "yasar": {
+      "status": "PENDING",
+      "targets": [
+        "yasar-lee",
+        "yasar-lee-hukuk"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "bakircay": {
+      "status": "PENDING",
+      "targets": [
+        "bakircay-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ieu": {
+      "status": "PENDING",
+      "targets": [
+        "ieu-lee"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "ikcu": {
+      "status": "PENDING",
+      "targets": [
+        "ikcu-fbe",
+        "ikcu-sbe"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "iyte": {
+      "status": "PENDING",
+      "targets": [
+        "iyte-lee"
+      ],
+      "gate": null,
+      "commit": null
+    }
+  },
+  "currentUniversity": "aku",
+  "currentTarget": "aku-fbe",
+  "currentPhase": "BLOCKED (aku-fbe source conflicts, seven-juror and long-title pagination, Word repagination)",
+  "lastCompletedValidation": {
+    "target": "aku-fbe",
+    "attempt": 5,
+    "verdict": "FAIL"
+  },
+  "lastCommit": null,
+  "environment": {
+    "libreofficeWriter": "Not available on the current Windows host; earlier analyzer note referred to a different environment. Word COM repagination returned 0x80070520."
+  },
+  "targets": {
+    "aku-sbe": {
+      "analysis": "IN_PROGRESS",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": "2026 guide explicitly covers Turkish sanatta yeterlik and English-programme master's/doctoral theses; three required registry variants remain unregistered (orchestration/specs/aku-sbe.json).",
+      "specPath": "orchestration/specs/aku-sbe.json",
+      "reportPath": "orchestration/reports/aku-sbe.md",
+      "commit": null,
+      "updatedAt": "2026-09-30",
+      "specReview": "IN_PROGRESS"
+    },
+    "aku-fbe": {
+      "analysis": "DONE",
+      "implementation": "DONE",
+      "validation": "FAIL",
+      "attempts": 5,
+      "status": "BLOCKED",
+      "lastError": "fresh source audit: 2011 Calibri rule superseded by 2020 Times New Roman; 2021 accepted thesis conflicts with explicit cover/jury guide rules. Without unsupported jury compression, real PhD export splits seven-juror approval (40 pages); long89 splits cover and approval (41 pages). Word repagination and independent revalidation remain pending (orchestration/failures/aku-fbe/BLOCKED.md)",
+      "specPath": "orchestration/specs/aku-fbe.json",
+      "reportPath": "orchestration/reports/aku-fbe.md",
+      "commit": "6d73e66",
+      "updatedAt": "2026-09-30",
+      "specReview": "DONE"
+    },
+    "aku-sagbil": {
+      "analysis": "IN_PROGRESS",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "IN_PROGRESS",
+      "lastError": "2022 source rule and section/placeholder disposition audits complete: 156/10/22/7 rules; sections 13 reconciled, 6 conflict, 1 unknown; placeholders 22 reconciled, 5 historical-only. Geometry, validation checks, and engine gaps remain pending the FBE-first gate.",
+      "specPath": "orchestration/specs/aku-sagbil.json",
+      "reportPath": "orchestration/reports/aku-sagbil.md",
+      "commit": null,
+      "updatedAt": "2026-09-30",
+      "specReview": "IN_PROGRESS"
+    },
+    "aku-cografya-lisans": {
+      "analysis": "DONE",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": "orchestration/specs/aku-cografya-lisans.json",
+      "reportPath": "orchestration/reports/aku-cografya-lisans.md",
+      "commit": null,
+      "updatedAt": "2026-09-28",
+      "specReview": "DONE"
+    },
+    "aku-mbg-lisans": {
+      "analysis": "DONE",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": "orchestration/specs/aku-mbg-lisans.json",
+      "reportPath": "orchestration/reports/aku-mbg-lisans.md",
+      "commit": null,
+      "updatedAt": "2026-09-28",
+      "specReview": "DONE"
+    },
+    "afsu-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "deu-fbe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "deu-ebe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "deu-sagbil": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "deu-ataturk": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "deu-tip": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "ege-fbe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "ege-sagbil": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "dpu-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "ksbu-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "mcbu-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "msku-ebe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "msku-fbe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "msku-sagbil": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "msku-sbe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "pau-fbe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "pau-ebe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "pau-tip": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "usak-lee-sosyal": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "usak-insaat-lisans": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "yasar-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "yasar-lee-hukuk": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "bakircay-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "ieu-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "ikcu-fbe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "ikcu-sbe": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    },
+    "iyte-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": null
+    }
+  },
+  "engine": {
+    "testsPassing": 466,
+    "extensions": "orchestration/reports/ENGINE_EXTENSIONS.md"
+  }
+}
