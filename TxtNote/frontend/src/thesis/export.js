@@ -386,6 +386,30 @@ function specialPageDocx(nodes, context, widthMm) {
         border: { bottom: { style: BorderStyle.SINGLE, size: Math.max(2, Math.round(node.thicknessPt * 8)), color: "000000", space: 0 } },
         children: [new TextRun({ text: "", size: 2 })],
       }));
+    } else if (node.direction === "row" && node.blocks.length && node.blocks.every((child) => child.type === "group" && child.border?.collapse)) {
+      // Opt-in table row (border.collapse): one real Word row whose cells own the rules, so neighbours share a single border;
+      // minHeightMm is the row's "at least" height and verticalAlign the cell alignment.
+      gap(node.marginTopMm);
+      const widths = specialPageRowWidths(node, widthMm);
+      const edge = (child) => ({ style: BorderStyle.SINGLE, size: Math.max(2, Math.round(child.border.outerPt * 8)), color: child.border.color.slice(1).toUpperCase() });
+      const cells = node.blocks.map((child, index) => {
+        const side = edge(child);
+        const padX = child.border.paddingXMm ?? child.border.paddingMm;
+        const padY = child.border.paddingYMm ?? child.border.paddingMm;
+        const inner = { ...child, border: undefined, marginTopMm: 0, marginBottomMm: 0 };
+        return new TableCell({
+          width: { size: twip(widths[index]), type: WidthType.DXA },
+          margins: { top: twip(padY), bottom: twip(padY), left: twip(padX), right: twip(padX) },
+          borders: { top: side, bottom: side, left: side, right: side },
+          ...(child.verticalAlign ? { verticalAlign: { top: VerticalAlign.TOP, center: VerticalAlign.CENTER, bottom: VerticalAlign.BOTTOM }[child.verticalAlign] } : {}),
+          children: specialPageDocx([inner], context, widths[index] - 2 * padX),
+        });
+      });
+      out.push(new Table({
+        width: { size: twip(widthMm), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: widths.map((value) => twip(value)),
+        rows: [new TableRow({ cantSplit: true, ...(node.minHeightMm ? { height: { value: twip(node.minHeightMm), rule: HeightRule.ATLEAST } } : {}), children: cells })],
+      }));
+      gap(node.marginBottomMm);
     } else if (node.direction === "row") {
       gap(node.marginTopMm);
       // Same widths as the editor's flex row; each gap is the right margin of the cell before it.

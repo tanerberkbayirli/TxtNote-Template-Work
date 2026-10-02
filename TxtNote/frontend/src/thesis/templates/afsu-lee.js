@@ -28,7 +28,7 @@ const topFromBaseline = (baselinePt, fontPt) => pt(baselinePt - fontPt * 0.9336 
 const centeredTitle = { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "center", lineHeight: 1 };
 const mainH1 = {
   fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", lineHeight: 1.5,
-  textTransform: "uppercase", pageBreakBefore: true,
+  textTransform: "uppercase", pageBreakBefore: true, spaceAfterPt: 18.5, // official template: one blank 1.5-spaced paragraph follows each H1
   numbering: { enabled: true, format: "{1}.", sequence: "arabic" },
 };
 const heading = (level, format, style = {}) => {
@@ -204,24 +204,31 @@ function innerCoverBlocks(degreeType) {
 
 function approvalBlocks(degreeType) {
   const count = degreeType === "phd" ? 4 : 2;
-  const border = { outerPt: 0.5, paddingMm: pt(5.4) };
-  const headerStyle = { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, lineHeight: 1.15, align: "center", spaceBeforePt: 0, spaceAfterPt: 0 };
-  const cell = (widthPercent, blocks, style = {}) => ({ type: "group", widthPercent, border, style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.15, align: "center", spaceBeforePt: 0, spaceAfterPt: 0, ...style }, blocks });
+  // Official table: single 0.5 pt rules, 5.4 pt cell side margins, rows at least 1127 / 939 twips high, centred cells,
+  // column widths 1702 / 5675 / 1129 twips; paragraph spacing inside cells follows the template XML (Normal 1.15 line).
+  const border = { outerPt: 0.5, paddingXMm: pt(5.4), paddingYMm: 0, collapse: true };
+  const cellStyleBase = { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.15, align: "center", spaceBeforePt: 0, spaceAfterPt: 0 };
+  const cell = (widthPercent, blocks, style = {}) => ({ type: "group", widthPercent, border, verticalAlign: "center", style: { ...cellStyleBase, ...style }, blocks });
   const text = (value, style = {}) => ({ type: "text", value, style });
   const meta = (field, fallback, style = {}) => ({ type: "metadata", field, fallback, style });
-  const row = (cells) => ({ type: "group", direction: "row", gapMm: 0, blocks: cells });
+  const row = (cells, minHeightPt) => ({ type: "group", direction: "row", gapMm: 0, minHeightMm: pt(minHeightPt), blocks: cells });
+  const bold = { fontWeight: 700 };
   const rows = [row([
-    cell(20.01, [text("TEZ SINAV JÜRİSİ", headerStyle)], { fontWeight: 700 }),
-    cell(66.72, [text("Ünvan Adı Soyadı", headerStyle), text("Üniversite/Fakülte/Anabilim - Bilim Dalı Adı", headerStyle)], { fontWeight: 700 }),
-    cell(13.27, [text("İmza", headerStyle)], { fontWeight: 700 }),
-  ])];
-  const memberRow = (label, titleField, nameField, affiliationField) => row([
-    cell(20.01, [text(label, { fontWeight: 700 })], { align: "left" }),
-    cell(66.72, [text(`{{${titleField}}} {{${nameField}}}`), meta(affiliationField, "Üniversite / Fakülte / Anabilim Dalı")], { align: "left" }),
-    cell(13.27, [text(" ")]),
-  ]);
-  rows.push(memberRow("Jüri Başkanı", "JURY_CHAIR_TITLE", "JURY_CHAIR_NAME", "JURY_CHAIR_AFFILIATION"));
-  for (let index = 1; index <= count; index += 1) rows.push(memberRow(`Jüri Üyesi`, `JURY_MEMBER_${index}_TITLE`, `JURY_MEMBER_${index}_NAME`, `JURY_MEMBER_${index}_AFFILIATION`));
+    cell(20.01, [text("TEZ SINAV JÜRİSİ", { ...bold, spaceAfterPt: 10 })], bold),
+    cell(66.72, [text("Ünvan Adı Soyadı", { ...bold, spaceAfterPt: 10 }), text("Üniversite/Fakülte/Anabilim - Bilim Dalı Adı", { ...bold, spaceAfterPt: 10 })], bold),
+    cell(13.27, [text("İmza", { ...bold, spaceAfterPt: 10 })], bold),
+  ], 56.9)];
+  // The template's first member row has "after 0" everywhere; later rows use Word's default 10 pt after the last paragraph of each cell.
+  const memberRow = (first, label, titleField, nameField, affiliationField) => {
+    const after = first ? 0 : 10;
+    return row([
+      cell(20.01, [text(label, { ...bold, spaceAfterPt: after })], { align: "left" }),
+      cell(66.72, [text(`{{${titleField}}} {{${nameField}}}`), meta(affiliationField, "Üniversite / Fakülte / Anabilim Dalı", { spaceAfterPt: after })], { align: "left" }),
+      cell(13.27, [text(" ", { spaceAfterPt: after })]),
+    ], 46.95);
+  };
+  rows.push(memberRow(true, "Jüri Başkanı", "JURY_CHAIR_TITLE", "JURY_CHAIR_NAME", "JURY_CHAIR_AFFILIATION"));
+  for (let index = 1; index <= count; index += 1) rows.push(memberRow(false, "Jüri Üyesi", `JURY_MEMBER_${index}_TITLE`, `JURY_MEMBER_${index}_NAME`, `JURY_MEMBER_${index}_AFFILIATION`));
   return rows;
 }
 
@@ -240,7 +247,8 @@ function sections(degreeType) {
   const romanStart = { page: { numbering: { ...romanNumbering, enabled: true, format: "roman-lower", startAt: 1, restart: true } } };
   const arabic = { enabled: true, format: "arabic", restart: false, ...footerBox };
   return [
-    { id: "outer-cover", type: "outerCover", title: "DIŞ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 12.7, bottomMm: 12.7, leftMm: 12.7, rightMm: 12.7 }, header: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 }, footer: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 } } }, blocks: coverBlocks(degreeType) },
+    { id: "outer-cover", type: "outerCover", title: "DIŞ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, // The official doctorate template's cover section has a right-aligned PAGE footer (prints "1"); the master template has none.
+      ...(degreeType === "phd" ? { numbering: { enabled: true, format: "arabic", startAt: 1, restart: false, baselineFromTopMm: pt(766.18), align: "right" } } : {}), margins: { topMm: 12.7, bottomMm: 12.7, leftMm: 12.7, rightMm: 12.7 }, header: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 }, footer: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 } } }, blocks: coverBlocks(degreeType) },
     { id: "inner-cover", type: "innerCover", title: "İÇ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 } } }, blocks: innerCoverBlocks(degreeType) },
     { id: "ethics", type: "ethicsDeclaration", title: "BİLİMSEL ETİĞE UYGUNLUK", status: "required", group: "front", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 } } }, blocks: [
     positioned("text", "BİLİMSEL ETİĞE UYGUNLUK", { xMm: 40, yMm: topFromBaseline(82.1, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),
@@ -258,21 +266,21 @@ function sections(degreeType) {
       { type: "text", value: "İmza", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 } },
       { type: "metadata", field: "STUDENT_NAME", fallback: "Adı ve Soyadı", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 } },
     ] },
-    { id: "approval", type: "approval", title: "KABUL VE ONAY", status: "required", group: "front", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: pt(100.5), rightMm: pt(69) } } }, blocks: [
+    { id: "approval", type: "approval", title: "KABUL VE ONAY", status: "required", group: "front", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: pt(100.7), rightMm: pt(69.05) } } }, blocks: [
       positioned("text", "KABUL VE ONAY", { xMm: 40, yMm: topFromBaseline(82.1, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),
       { type: "spacer", heightMm: pt(31.56) },
-      { type: "text", value: `{{ADVISOR_TITLE}} {{ADVISOR_NAME}} danışmanlığında {{STUDENT_NAME}} tarafından hazırlanan “{{THESIS_TITLE}}” adlı bu çalışma jürimiz tarafından Afyonkarahisar Sağlık Bilimleri Üniversitesi Lisansüstü Eğitim Enstitüsü {{DEPARTMENT_NAME}} Anabilim Dalı {{PROGRAM_NAME}} Programında ${degreeType === "phd" ? "doktora" : "yüksek lisans"} tezi olarak kabul edilmiştir.`, style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0, leftIndentMm: pt(-1.24), rightIndentMm: pt(1.9) } },
-      { type: "text", value: "{{DEFENSE_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: 0, rightIndentMm: pt(1.8) } },
-      { type: "text", value: "(Tez savunma sınav tarihi yazılacaktır)", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: degreeType === "phd" ? 11.8 : 20.4, rightIndentMm: pt(1.8) } },
+      { type: "text", value: `{{ADVISOR_TITLE}} {{ADVISOR_NAME}} danışmanlığında {{STUDENT_NAME}} tarafından hazırlanan “{{THESIS_TITLE}}” adlı bu çalışma jürimiz tarafından Afyonkarahisar Sağlık Bilimleri Üniversitesi Lisansüstü Eğitim Enstitüsü {{DEPARTMENT_NAME}} Anabilim Dalı {{PROGRAM_NAME}} Programında ${degreeType === "phd" ? "doktora" : "yüksek lisans"} tezi olarak kabul edilmiştir.`, style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0, leftIndentMm: pt(-1.44), rightIndentMm: pt(1.85) } },
+      { type: "text", value: "{{DEFENSE_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: 0, rightIndentMm: pt(1.75) } },
+      { type: "text", value: "(Tez savunma sınav tarihi yazılacaktır)", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: degreeType === "phd" ? 12.4 : 21, rightIndentMm: pt(1.75) } },
       ...approvalBlocks(degreeType),
       { type: "spacer", heightMm: pt(23.9) },
-      { type: "text", value: "ONAY:", style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, lineHeight: 1.5, align: "left", spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: pt(5.84), rightIndentMm: pt(15.9) } },
-      { type: "text", value: "Bu tezin kabulü Enstitü Yönetim Kurulunun ………....… tarih ve …………..…… sayılı kararı ile onaylanmıştır.", style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: pt(5.84), rightIndentMm: pt(15.9) } },
+      { type: "text", value: "ONAY:", style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, lineHeight: 1.5, align: "left", spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: pt(5.64), rightIndentMm: pt(15.85) } },
+      { type: "text", value: "Bu tezin kabulü Enstitü Yönetim Kurulunun ………....… tarih ve …………..…… sayılı kararı ile onaylanmıştır.", style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: pt(5.64), rightIndentMm: pt(15.85) } },
       { type: "spacer", heightMm: pt(degreeType === "phd" ? 13.9 : 27.6) },
-      { type: "text", value: "{{INSTITUTE_DIRECTOR_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.9) } },
+      { type: "text", value: "{{INSTITUTE_DIRECTOR_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.85) } },
       ...(degreeType === "phd" ? [] : [{ type: "spacer", heightMm: pt(20.7) }]),
-      { type: "text", value: "{{INSTITUTE_DIRECTOR}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.9) } },
-      { type: "text", value: "Enstitü Müdürü", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.9) } },
+      { type: "text", value: "{{INSTITUTE_DIRECTOR}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.85) } },
+      { type: "text", value: "Enstitü Müdürü", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.85) } },
     ] },
     { id: "acknowledgements", type: "acknowledgements", title: "TEŞEKKÜR", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "none", overrides: { ...pageUnnumbered, headings: { "1": blankHeading } } },
     { id: "abstract-header", type: "abstract", title: "ÖZET", status: "required", group: "front", mode: "static", standalone: false, tocEntry: "title", overrides: { ...romanStart, body: { ...sharedCommonBase.typography.body, align: "center", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } }, blocks: [
@@ -289,7 +297,8 @@ function sections(degreeType) {
     ] },
     { id: "abstract-en", type: "englishAbstract", title: "Abstract text", status: "required", group: "front", mode: "editable", pageBreakBefore: false, showTitle: false, overrides: { ...roman, body: { ...sharedCommonBase.typography.body, lineHeight: 1, firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6, align: "justify" }, paragraph: { lineHeight: 1, firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6, align: "justify" } } },
     { id: "abstract-en-footer", type: "englishAbstract", title: "Keywords", status: "required", group: "front", mode: "static", standalone: false, pageBreakBefore: false, overrides: { ...roman, body: { fontFamily: FONT, fontSizePt: 12, align: "left", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } }, blocks: [{ type: "metadata", field: "KEYWORDS_EN", prefix: "Keywords: ", fallback: "Keywords: …" }] },
-    { id: "toc", type: "tableOfContents", title: "İÇİNDEKİLER", status: "required", group: "front", mode: "generated", tocEntry: "title", generatedIndex: { kind: "toc", leader: "dots", indentMm: 12.5, pageHeading: "Sayfa", pageHeadingStyle: { fontSizePt: 11, fontWeight: 400 }, levelStyles: { "1": { textTransform: "uppercase", fontWeight: 700 }, "2": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "3": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "4": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] } } }, overrides: { ...roman, headings: { "1": blankHeading } } },
+    { id: "toc", type: "tableOfContents", title: "İÇİNDEKİLER", status: "required", group: "front", mode: "generated", tocEntry: "title", // Official template TOC styles T1/T2/T3 win over the guide prose (user rule): regular weight, single line + 5 pt after, 11 pt per level, 11 pt "Sayfa" label.
+    generatedIndex: { kind: "toc", leader: "dots", indentMm: pt(11), style: { lineHeight: 1.15, spaceBeforePt: 0, spaceAfterPt: 5 }, pageHeading: "Sayfa", pageHeadingStyle: { fontSizePt: 11, fontWeight: 400, lineHeight: 1.073, spaceBeforePt: 12, spaceAfterPt: 0 }, levelStyles: { "1": { textTransform: "uppercase", fontWeight: 400, spaceAfterPt: 5 }, "unnumbered": { fontWeight: 400, spaceAfterPt: 5 }, "2": { spaceAfterPt: 5, textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "3": { spaceAfterPt: 5, textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "4": { spaceAfterPt: 5, textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] } } }, overrides: { ...roman, headings: { "1": { ...blankHeading, spaceAfterPt: 14.2 } } } },
     { id: "abbreviations", type: "listOfAbbreviations", title: "KISALTMALAR VE SİMGELER", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "title", overrides: { ...roman, headings: { "1": blankHeading } } },
     { id: "index-tables", type: "listOfTables", title: "TABLOLAR DİZİNİ", status: "required", group: "front", mode: "generated", tocEntry: "title", generatedIndex: { kind: "tables", leader: "dots" }, overrides: { ...roman, headings: { "1": blankHeading } } },
     { id: "index-figures", type: "listOfFigures", title: "ŞEKİLLER DİZİNİ", status: "required", group: "front", mode: "generated", tocEntry: "title", generatedIndex: { kind: "figures", leader: "dots" }, overrides: { ...roman, headings: { "1": blankHeading } } },

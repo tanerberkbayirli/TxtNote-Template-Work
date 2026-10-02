@@ -7,7 +7,7 @@ import generic from "../thesis/templates/generic.js";
 import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
 import { buildThesisPageModel } from "../thesis/pageLayout.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
-import { specialPageRowWidths, walkSpecialPage } from "../thesis/specialPages.js";
+import { resolveSpecialPage, specialPageCss, specialPageRowWidths, validateSpecialPageBlocks, walkSpecialPage } from "../thesis/specialPages.js";
 import { splitLayoutNodes } from "../thesis/layoutDocx.js";
 
 const page = (template, id, values = {}, extra = {}) => compileThesisDocument(template, { values, ...extra }, "Tez Başlığı", "").sections.find((section) => section.id === id);
@@ -141,5 +141,34 @@ describe("data-driven special pages", () => {
     assert.match(errors, /type geçersiz/);
     template.sections[0].mode = "editable";
     assert.match(validateThesisTemplate(template).join(" "), /özel sayfa blocks düzenlenemez/);
+  });
+});
+
+describe("opt-in table rows (border.collapse, minHeightMm, verticalAlign)", () => {
+  const cell = (extra = {}) => ({ type: "group", widthPercent: 50, border: { outerPt: 0.5, ...extra }, blocks: [{ type: "text", value: "A" }] });
+  const resolve = (blocks) => resolveSpecialPage(blocks, {});
+  it("carries the new properties only when declared", () => {
+    const plain = resolve([{ type: "group", direction: "row", blocks: [cell()] }]).blocks[0];
+    assert.equal("minHeightMm" in plain, false);
+    assert.equal(plain.blocks[0].border.collapse, false);
+    assert.equal("verticalAlign" in plain.blocks[0], false);
+    const table = resolve([{ type: "group", direction: "row", minHeightMm: 10, blocks: [{ ...cell({ collapse: true }), verticalAlign: "center" }] }]).blocks[0];
+    assert.equal(table.minHeightMm, 10);
+    assert.equal(table.blocks[0].border.collapse, true);
+    assert.equal(table.blocks[0].verticalAlign, "center");
+  });
+  it("emits overlap margins and centring css only for opt-in frames", () => {
+    const css = (blocks) => specialPageCss(".s", resolve(blocks).blocks, () => "").join("\n");
+    const plain = css([{ type: "group", direction: "row", blocks: [cell()] }]);
+    assert.doesNotMatch(plain, /calc\(|justify-content/);
+    const table = css([{ type: "group", direction: "row", blocks: [{ ...cell({ collapse: true }), verticalAlign: "center" }] }]);
+    assert.match(table, /margin:calc\(0mm - 0\.75pt\) 0 0mm -0\.75pt/);
+    assert.match(table, /justify-content:center/);
+  });
+  it("validates the new properties", () => {
+    const errors = (block) => validateSpecialPageBlocks([block], { path: "x", placeholders: {} });
+    assert.deepEqual(errors({ type: "group", minHeightMm: 5, verticalAlign: "center", border: { collapse: true }, blocks: [] }), []);
+    assert.ok(errors({ type: "group", verticalAlign: "middle", blocks: [] }).length);
+    assert.ok(errors({ type: "group", minHeightMm: -1, blocks: [] }).length);
   });
 });

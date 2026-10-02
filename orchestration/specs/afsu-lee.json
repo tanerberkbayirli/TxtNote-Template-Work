@@ -849,7 +849,7 @@
           "value": "regular weight entries, single (1.15) line + 5 pt after (20.88 pt pitch), level indents 0/11/22 pt, right tab 410.5 pt, 'Sayfa' column label 11 pt"
         }
       ],
-      "decision": "UNRESOLVED. Implementation follows the explicit guide prose (bold level 1, 1.5 spacing, 12.5 mm indent) and adds the template's 'Sayfa' label. TOC entry baselines therefore differ from the template render (first entry -2.8 pt, 'Sayfa' -14.2 pt). Needs orchestrator decision."
+      "decision": "RESOLVED by user rule (official template wins over guide prose): implemented T1/T2/T3 styles (regular weight, 1.15 line + 5 pt after, 11 pt per level, 'Sayfa' 11 pt label). Overridden guide values: bold level-1 entries, 1.5 spacing, 1.25 cm indent. Measured vs official render: 'Sayfa' 109.12 vs 109.10 pt, first entry 123.62 vs 123.62, pitch 20.86 vs 20.88, level indents 0/11/22 pt (editor and Word)."
     }
   ],
   "unknowns": [
@@ -882,33 +882,32 @@
       "why": "The guide says quotations beyond reasonable limits are an ethical violation, but states no numeric quotation-length/page limit."
     },
     {
-      "key": "headings.blankLineAfterH1",
-      "why": "The template example XML puts one empty 1.5-spaced paragraph after each H1 (first body line 40.7 pt below the H1 baseline vs 28.3 pt in the export). The guide states no such blank line; not implemented."
-    },
-    {
       "key": "ethics.bulletGlyph",
       "why": "Template ethics list uses a Symbol-font bullet (numId 3, left 720 / hanging 360 twips). Export uses U+2022 in Times New Roman (Symbol glyph not available through the text engine); geometry matches, glyph font differs."
     },
     {
-      "key": "phd.outerCoverPageNumber",
-      "why": "The doctorate Word render shows a page number '1' (11 pt, baseline 766.18 pt) on the outer cover; the guide does not call for one, so the export has none."
-    },
-    {
       "key": "approval.rowHeights",
       "why": "Template rows have trHeight 1127/939 twips with centred cells and mixed after-spacing (first member row 48.1 pt, others 58.1 pt); the guide gives no row-height rule."
-    }
-  ],
-  "engineGaps": [
+    },
     {
-      "key": "approval.juryTable",
-      "requirement": "Official approval table: borders collapsed to a single 0.5 pt rule, minimum row heights (1127/939 twips), vertically centred cells, table 425.8 pt wide starting 12.9 pt left of the text margin.",
-      "evidence": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx tbl[1] (tblInd -147, gridCol 1702/5675/1129, trHeight, vAlign center); word-render p.4 rule geometry",
-      "why": "Special-page row groups give each cell its own border (adjacent rules double to 1 pt; measured 2 rules 0.7 pt apart), have no min-height or vertical alignment in DOCX, so row heights follow content. Column x positions and widths now match the source (100.5/185.7/469.8/526.3 pt)."
+      "key": "headings.blankLineAfterH2H3",
+      "why": "The template also has blank paragraphs before and after H2/H3 (source gaps 43.3 pt before and 48.4 pt after H2); only the blank line after H1 was implemented per orchestrator decision."
+    },
+    {
+      "key": "phd.coverPageNumberFont",
+      "why": "PhD template cover footer number is Calibri 11 pt (document default via AltBilgi style); the PDF exporter allows only Times New Roman faces, so the '1' is Times New Roman in editor PDF and DOCX. Position matches (x -0.05 mm, baseline 766.17 vs 766.18 pt)."
     }
   ],
+  "engineGaps": [],
   "validationSelf4": {
     "date": "2026-10-03",
     "exports": "orchestration/validation/afsu-lee/self-4/{master,phd}.{pdf,docx} (real editor export, 35 sheets each); Word renders {master,phd}-word.pdf (38 pages)",
     "summary": "Footer (Roman/Arabic, 1-2 digits) PASS: editor PDF baseline exact, x within 0.06 mm; Word DOCX x exact, baseline +0.04 mm. Covers/inner cover PASS: max 0.14 mm editor, 0.17 mm Word. Ethics page, approval text blocks, TR/EN abstract headers PASS (<=0.2 mm). H3/H4 sample casing fixed in fixture. FAIL: approval table borders/row heights (engine gap), TOC entry positions (source conflict), editor-vs-Word pagination (Word 38 vs editor 35 pages: line-fit differences between Chrome and Word)."
+  },
+  "engineExtensionsSelf5": "Generic opt-in: group.minHeightMm, group.verticalAlign, border.collapse, border.paddingXMm/paddingYMm (schema, editor CSS, PDF via DOM, Word table row/cell); negative leftIndentMm/rightIndentMm now render as negative margins instead of being clipped.",
+  "validationSelf5": {
+    "date": "2026-10-03",
+    "dir": "orchestration/validation/afsu-lee/self-5",
+    "summary": "TOC, blank line after H1, approval table (header 56.9 pt, single rules, x 100.3/185.5/469.4/525.8 vs 100.5/185.6/469.4/525.8 pt) and PhD cover page number implemented from the official template. Word DOCX renders 39 pages vs editor 36 (line-fit differences); geometry within 0.2 mm."
   }
 }

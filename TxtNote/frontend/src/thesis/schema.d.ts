@@ -270,7 +270,9 @@ export type SpecialPageBlock =
   /** `style` is inherited by every child. Max nesting depth 4. */
   | (LayoutBox & { type: "group"; direction?: "column" | "row"; gapMm?: Length; style?: Partial<TextStyle>;
     /** Frame: outer rule, gap, inner rule (double / thick-thin), padding; `docx` names the Word border (e.g. thickThinSmallGap, sizePt total). */
-    border?: { outerPt?: number; gapPt?: number; innerPt?: number; paddingMm?: Length; color?: string; docx?: { style: string; sizePt?: number } };
+    border?: { outerPt?: number; gapPt?: number; innerPt?: number; paddingMm?: Length; color?: string; docx?: { style: string; sizePt?: number }; /** Horizontal / vertical padding (mm) overriding paddingMm. */ paddingXMm?: Length; paddingYMm?: Length; /** Opt-in table-like frame: neighbouring framed cells/rows share one rule (editor, PDF and Word) instead of doubling it. */ collapse?: boolean };
+    /** Opt-in: minimum height of the group (a table row's height; Word "at least"). */ minHeightMm?: Length;
+    /** Opt-in: vertical position of the content inside a framed cell (editor, PDF and Word cell alignment). */ verticalAlign?: "top" | "center" | "bottom";
     blocks: SpecialPageBlock[] });
 export interface PlaceholderDefinition {
   label: string;

@@ -96,7 +96,7 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
     if (block.type === "group") {
       const style = { ...inherited, ...block.style };
       const direction = block.direction === "row" ? "row" : "column";
-      return { ...box, type: "group", direction, gapMm: finite(block.gapMm), ...(block.border ? { border: resolveBorder(block.border) } : {}), blocks: resolveList(block.blocks, style, path, direction === "row") };
+      return { ...box, type: "group", direction, gapMm: finite(block.gapMm), ...(Number.isFinite(block.minHeightMm) ? { minHeightMm: block.minHeightMm } : {}), ...(["top", "center", "bottom"].includes(block.verticalAlign) ? { verticalAlign: block.verticalAlign } : {}), ...(block.border ? { border: resolveBorder(block.border) } : {}), blocks: resolveList(block.blocks, style, path, direction === "row") };
     }
     const style = textStyle(inherited, block);
     if (block.type === "metadata") {
@@ -130,7 +130,7 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
  * padding. Widths in pt, spaces in mm. `docx` names the Word border (e.g. "thickThinSmallGap").
  */
 function resolveBorder(border) {
-  return { outerPt: finite(border.outerPt, 0.5), gapPt: finite(border.gapPt), innerPt: finite(border.innerPt), paddingMm: finite(border.paddingMm), color: border.color || "#000000", docx: border.docx || null };
+  return { outerPt: finite(border.outerPt, 0.5), gapPt: finite(border.gapPt), innerPt: finite(border.innerPt), paddingMm: finite(border.paddingMm), color: border.color || "#000000", docx: border.docx || null, collapse: border.collapse === true, ...(Number.isFinite(border.paddingXMm) ? { paddingXMm: border.paddingXMm } : {}), ...(Number.isFinite(border.paddingYMm) ? { paddingYMm: border.paddingYMm } : {}) };
 }
 
 /** Depth-first walk over a resolved tree (groups before their children). */
@@ -212,8 +212,12 @@ export function specialPageCss(scope, nodes, styleCss) {
     for (const node of list || []) {
       if (node.border) {
         const { outerPt, gapPt, innerPt, paddingMm, color } = node.border;
-        const flexShare = parent?.direction === "row" ? (node.widthPercent !== null ? `flex:0 1 ${node.widthPercent}%;` : "flex:1 1 0;") : "";
-        rules.push(`${scope} [data-thesis-frame="${node.path}"]{border:${outerPt}pt solid ${color};padding:${innerPt > 0 ? `${gapPt}pt` : `${paddingMm}mm`};margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;${flexShare}min-width:0;box-sizing:border-box;${parent?.direction === "row" ? "align-self:stretch;" : ""}}`);
+        // A collapsed frame overlaps its neighbours by one rendered rule (browsers draw borders at least one device pixel, 0.75pt)
+        // and its row grows to take the width those overlaps free, so the table keeps the row's full width.
+        const rule = node.border.collapse ? Math.max(outerPt, 0.75) : outerPt;
+        const flexShare = parent?.direction === "row" ? (node.widthPercent !== null ? `flex:${node.border.collapse ? 1 : 0} 1 ${node.widthPercent}%;` : "flex:1 1 0;") : "";
+        rules.push(`${scope} [data-thesis-frame="${node.path}"]{border:${outerPt}pt solid ${color};padding:${innerPt > 0 ? `${gapPt}pt` : `${node.border.paddingYMm ?? paddingMm}mm ${node.border.paddingXMm ?? paddingMm}mm`};margin:${node.border.collapse ? `calc(${node.marginTopMm}mm - ${rule}pt) 0 ${node.marginBottomMm}mm -${rule}pt` : `${node.marginTopMm}mm 0 ${node.marginBottomMm}mm`};${flexShare}min-width:0;box-sizing:border-box;${parent?.direction === "row" ? "align-self:stretch;" : ""}${node.verticalAlign ? `display:flex;flex-direction:column;justify-content:${{ top: "flex-start", center: "center", bottom: "flex-end" }[node.verticalAlign]};` : ""}}`);
+        if (node.verticalAlign) rules.push(`${scope} [data-thesis-frame="${node.path}"]>[data-thesis-block]{width:100%;}`);
         if (innerPt > 0) rules.push(`${scope} [data-thesis-frame-inner="${node.path}"]{border:${innerPt}pt solid ${color};padding:${paddingMm}mm;}`);
       }
       rules.push(`${scope} [data-thesis-block="${node.path}"]{${node.type === "text" ? styleCss(node.style) : ""}${specialPageBoxCss(node, parent)}${node.border ? "margin:0;" : ""}}`);
@@ -295,9 +299,12 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
       if (block.direction !== undefined && !["column", "row"].includes(block.direction)) errors.push(`${at}.direction geçersiz`);
       if (block.border !== undefined) {
         const b = block.border;
-        if (b === null || typeof b !== "object" || ["outerPt", "gapPt", "innerPt", "paddingMm"].some((key) => b[key] !== undefined && !nonnegative(b[key])) || (b.color !== undefined && !/^#[0-9a-f]{6}$/i.test(b.color))) errors.push(`${at}.border geçersiz`);
+        if (b === null || typeof b !== "object" || ["outerPt", "gapPt", "innerPt", "paddingMm", "paddingXMm", "paddingYMm"].some((key) => b[key] !== undefined && !nonnegative(b[key])) || (b.color !== undefined && !/^#[0-9a-f]{6}$/i.test(b.color))) errors.push(`${at}.border geçersiz`);
       }
       if (block.gapMm !== undefined && !nonnegative(block.gapMm)) errors.push(`${at}.gapMm geçersiz`);
+      if (block.minHeightMm !== undefined && !nonnegative(block.minHeightMm)) errors.push(`${at}.minHeightMm geçersiz`);
+      if (block.verticalAlign !== undefined && !["top", "center", "bottom"].includes(block.verticalAlign)) errors.push(`${at}.verticalAlign geçersiz`);
+      if (block.border?.collapse !== undefined && typeof block.border.collapse !== "boolean") errors.push(`${at}.border.collapse geçersiz`);
       errors.push(...validateSpecialPageBlocks(block.blocks, { path: `${at}.blocks`, placeholders, baseStyle: style, validateStyle }, depth + 1));
     }
   }

@@ -51,8 +51,8 @@ test("self-4 geometry: ethics bullets, approval frame, English abstract position
   const model = compileThesisDocument(master, { values: {} }, "Test Tezi", "<p>Metin</p>");
   const section = (id) => model.sections.find((entry) => entry.id === id);
   const approvalMargins = master.sections.find((entry) => entry.id === "approval").overrides.page.margins;
-  assert.ok(Math.abs(approvalMargins.leftMm - 100.5 * 25.4 / 72) < 1e-6);
-  assert.ok(Math.abs(approvalMargins.rightMm - 69 * 25.4 / 72) < 1e-6);
+  assert.ok(Math.abs(approvalMargins.leftMm - 100.7 * 25.4 / 72) < 1e-6);
+  assert.ok(Math.abs(approvalMargins.rightMm - 69.05 * 25.4 / 72) < 1e-6);
   const ethics = [...walkSpecialPage(section("ethics").layout)].filter((node) => node.type === "text" && node.text.startsWith("•"));
   assert.equal(ethics.length, 6);
   const english = [...walkSpecialPage(section("abstract-en-header").layout)].find((node) => node.text === "ABSTRACT");
