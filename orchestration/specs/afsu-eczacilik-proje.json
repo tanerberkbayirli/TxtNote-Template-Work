@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "targetId": "afsu-eczacilik-proje",
+  "title": "Eczacılık Fakültesi Araştırma Projesi Raporu",
+  "status": "SOURCE_EXTRACTED_PENDING_IMPLEMENTATION",
+  "source": {
+    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Eczacilik_Arastirma_Projesi/AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+    "sha256": "ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4",
+    "pageCount": 13,
+    "pdfPageSizePt": [
+      595.32,
+      841.92
+    ],
+    "metadataVersion": "Yönerge 16.01.2024; PDF created 2024-01-19 (13 pages)",
+    "authority": "Official AFSÜ Faculty of Pharmacy directive; report format in Appendix EK-1"
+  },
+  "supportedProfile": {
+    "degreeLevels": [
+      "undergraduate"
+    ],
+    "degreeStatus": "EXPLICIT",
+    "reportLanguage": "tr",
+    "reportLanguageStatus": "EXPLICIT",
+    "requiredAbstractLanguage": "en",
+    "abstractLanguageStatus": "EXPLICIT",
+    "registryVariant": "UNKNOWN / not assigned"
+  },
+  "scope": {
+    "documentKind": "Course research-project report, not a thesis.",
+    "primarySections": "Appendix EK-1 report-writing requirements, especially §§1.3–1.12, §2, §§2.2–2.5, plus labeled examples EK-1.1–1.4.",
+    "excludedFromReportLayout": "Course administration, grading table and poster rules are not thesis/report pages. EK-2 poster is a separate deliverable; page 2 Table 1 is assessment criteria, not a report-table template."
+  },
+  "requirements": [
+    {
+      "id": "page-and-print",
+      "classification": "EXPLICIT",
+      "value": {
+        "paper": "A4, 21 x 29.7 cm, white",
+        "print": "computer prepared; print on one side only",
+        "marginsCm": {
+          "top": 3.5,
+          "left": 4,
+          "bottom": 2,
+          "right": 2
+        },
+        "minimumMainReportPages": 20,
+        "minimumPageCountExcludes": [
+          "Beyan",
+          "Önsöz",
+          "Özet",
+          "Abstract",
+          "İçindekiler",
+          "Tablolar dizini",
+          "Şekiller dizini",
+          "Resimler dizini",
+          "Semboller ve Kısaltmalar dizini"
+        ]
+      },
+      "evidence": [
+        "PDF p.3, EK-1 §1.1–1.2",
+        "PDF p.3, Madde 20(1)",
+        "PDF p.4, EK-1 §1.4"
+      ]
+    },
+    {
+      "id": "font-and-type",
+      "classification": "EXPLICIT",
+      "value": {
+        "bodyFont": "Times New Roman",
+        "bodyPointSize": 12,
+        "mainHeadingPointSize": 14,
+        "mainHeadingWeight": "bold",
+        "subheadingPointSize": "same as body (12 pt)",
+        "subheadingWeight": "bold",
+        "footnoteFont": "Times New Roman",
+        "footnotePointSize": 10,
+        "decorativeEmphasis": "Use bold/italic/underline only when subject matter requires; no arbitrary emphasis."
+      },
+      "evidence": [
+        "PDF p.3, EK-1 §1.3",
+        "PDF p.4, EK-1 §1.9"
+      ]
+    },
+    {
+      "id": "paragraph-and-lines",
+      "classification": "EXPLICIT",
+      "value": {
+        "bodyLineSpacing": "1.5 lines",
+        "firstLineIndent": "none; paragraph starts at same alignment as body",
+        "captionsCitationsFootnotesReferencesLineSpacing": "single",
+        "referenceEntrySpacingAfter": "6 pt",
+        "footnotes": "single spacing; a few lines maximum",
+        "paragraphSpacingBetweenParagraphs": "12 pt total; the source does not specify distribution between Word before/after fields.",
+        "bodyAlignment": "Paragraphs start at the same text-block left edge; left/justified alignment is UNKNOWN."
+      },
+      "evidence": [
+        "PDF p.4, EK-1 §1.5, §1.7",
+        "PDF p.4, EK-1 §1.9",
+        "PDF p.11, EK-1 §2.4.1"
+      ]
+    },
+    {
+      "id": "headings",
+      "classification": "EXPLICIT",
+      "value": {
+        "level1": {
+          "position": "centered",
+          "case": "UPPERCASE",
+          "starts": "new page",
+          "font": "Times New Roman 14 pt bold"
+        },
+        "levels2to4": {
+          "position": "left aligned at text-block edge",
+          "case": "Title Case; conjunctions such as ve/veya/ile remain lowercase",
+          "font": "Times New Roman 12 pt bold"
+        },
+        "maximumNumberedLevel": 4,
+        "deeperHeadings": "Only if necessary: unnumbered and omitted from table of contents.",
+        "spacing": "12 pt after main heading before text; 12 pt between section end and next subsection; subsection text starts at body left edge."
+      },
+      "evidence": [
+        "PDF p.3, EK-1 §1.3",
+        "PDF p.4, EK-1 §1.5, §1.7–1.8"
+      ]
+    },
+    {
+      "id": "writing-numerals",
+      "classification": "EXPLICIT",
+      "value": {
+        "language": "Clear Turkish following Turkish spelling rules; third-person passive is preferred.",
+        "sentenceInitialNumerals": "Write out numbers beginning a sentence or line, except dates.",
+        "numbersInText": "Numbers up to ten are written as words; larger numbers as digits.",
+        "punctuation": "One character space after comma, semicolon, period."
+      },
+      "evidence": [
+        "PDF p.3, EK-1 §1.3, §1.6"
+      ]
+    },
+    {
+      "id": "report-order",
+      "classification": "EXPLICIT_WITH_SOURCE_CONFLICT",
+      "value": [
+        "Dış kapak",
+        "İç kapak",
+        "Onay sayfası",
+        "Beyan",
+        "Önsöz (Teşekkür)",
+        "Özet (Turkish)",
+        "Abstract (English)",
+        "İçindekiler",
+        "Tablolar dizini (if any tables)",
+        "Şekiller dizini (if any figures)",
+        "Resimler dizini (if any photos)",
+        "Semboller/Kısaltmalar dizini (if any)",
+        "Giriş",
+        "Genel Bilgiler",
+        "Materyal ve Yöntem",
+        "Bulgular",
+        "Tartışma ve Sonuç",
+        "Kaynaklar",
+        "Özgeçmiş (maximum one page)"
+      ],
+      "evidence": [
+        "PDF p.7, §2 lists outline/front matter and five main sections; the short outline omits Onay.",
+        "PDF p.10, §2.2 describes and orders Onay before Beyan, with signature requirements.",
+        "PDF p.13, EK-1.3 and EK-1.4 provide labeled approval and declaration examples."
+      ],
+      "resolution": "Use Onay after İç Kapak and before Beyan: the detailed §2.2 and labeled EK-1.3 example establish the approval page; §2 outline omission is recorded as a conflict."
+    },
+    {
+      "id": "cover-pages",
+      "classification": "EXPLICIT_PLUS_MEASURED_EXAMPLE",
+      "value": {
+        "outerCoverFields": [
+          "student first/last name",
+          "research-project title / identity",
+          "department name",
+          "year",
+          "advisor name"
+        ],
+        "outerCoverTypography": "14 pt Times New Roman (as stated for outer-cover contents)",
+        "innerCoverPaper": "same normal paper as the report",
+        "innerCoverProjectTitle": "uppercase, 14 pt, centered, bold",
+        "exampleOuterCoverAdditionalContent": [
+          "T.C.",
+          "university name",
+          "faculty name",
+          "department placeholder",
+          "LİSANS ARAŞTIRMA PROJESİ",
+          "advisor title/name",
+          "AFYONKARAHİSAR",
+          "year"
+        ],
+        "exampleOuterCoverLogos": "Two logos are present in labeled EK-1.1 example; text does not explicitly mandate logos.",
+        "innerCoverExampleContent": [
+          "T.C.",
+          "university name",
+          "faculty name",
+          "department placeholder",
+          "project subject",
+          "Hazırlayan / student name",
+          "LİSANS ARAŞTIRMA PROJESİ",
+          "advisor title/name",
+          "AFYONKARAHİSAR",
+          "year"
+        ]
+      },
+      "evidence": [
+        "PDF p.7, §2.1",
+        "PDF p.8, EK-1.1 Dış Kapak Örneği",
+        "PDF p.9, EK-1.2 İç Kapak Örneği"
+      ],
+      "measuredExampleOnly": {
+        "coordinateSystem": "PDF page coordinates, top-left origin; points and approximate mm, measured on source directive page 8 (not normalized cover coordinates)",
+        "outerCoverLogoBoxesPt": [
+          {
+            "x0": 46.25,
+            "x1": 175.85,
+            "top": 78.35,
+            "bottom": 163.6,
+            "x0_mm": 16.32,
+            "x1_mm": 62.04,
+            "top_mm": 27.64,
+            "bottom_mm": 57.71
+          },
+          {
+            "x0": 445.85,
+            "x1": 501.15,
+            "top": 76.85,
+            "bottom": 163.25,
+            "x0_mm": 157.29,
+            "x1_mm": 176.79,
+            "top_mm": 27.11,
+            "bottom_mm": 57.59
+          }
+        ],
+        "exampleTextTopsPt": {
+          "T.C.": 193.17,
+          "institutionLine": 206.97,
+          "departmentLine": 234.6,
+          "projectTitle": 328.56,
+          "studentLine": 403.58,
+          "projectType": 486.38,
+          "advisorLine": 569.21,
+          "city": 665.81,
+          "year": 679.61
+        },
+        "warning": "These coordinates measure the cover sample placed inside the guide PDF page. They are not stated as required page-relative cover coordinates."
+      }
+    },
+    {
+      "id": "approval-declaration",
+      "classification": "EXPLICIT_PLUS_MEASURED_EXAMPLE",
+      "value": {
+        "approvalPage": "Contains approval by Ana Bilim Dalı Başkanı and research-project advisor; both sign; Roman-numbered.",
+        "approvalExampleFields": [
+          "project title",
+          "statement of evaluation/acceptance under applicable regulation",
+          "acceptance date",
+          "Ana Bilim Dalı Başkanı signature/name area",
+          "Araştırma Projesi Danışmanı signature/name area"
+        ],
+        "declarationPage": "Student signs a statement covering originality, ethical conduct, sourcing, and no patent/copyright infringement. Roman-numbered.",
+        "declarationExampleSignature": "Student name and signature label shown at right in EK-1.4."
+      },
+      "evidence": [
+        "PDF p.10, §2.2 Onay Sayfası and Beyan Sayfası",
+        "PDF p.13, EK-1.3 and EK-1.4"
+      ],
+      "exampleFiller": "EK-1.3 contains a named 2022 project and date; treat these as illustrative sample text, not fixed fields."
+    },
+    {
+      "id": "abstracts-and-indexes",
+      "classification": "EXPLICIT",
+      "value": {
+        "abstractTr": "One page maximum; single-spaced; Roman-numbered; answers what/why/how and summarizes findings/results; no internal headings such as Amaç/Yöntem/Sonuç; no in-text citations; avoid abbreviations/numbering unless needed; end with bold “Anahtar Sözcükler:” and up to five alphabetized Turkish keywords, initial letters uppercase, comma separated.",
+        "abstractEn": "English translation of Turkish abstract/title/keywords; same limits, single-spaced, one page maximum, Roman-numbered; up to five alphabetized keywords after bold “Keywords”.",
+        "tableOfContents": "All special pages except outer cover, all headings/subheadings in document order, both abstracts, references and appendices; show page numbers; Roman-numbered.",
+        "indexes": "Tables/figures/photos list only when relevant. Symbols/abbreviations list only when needed. Lists alphabetical where specified and Roman-numbered. Index heading centered; list captions match in-text wording/format."
+      },
+      "evidence": [
+        "PDF p.10, §2.2",
+        "PDF p.10–11, §2.2 Dizinler and Simgeler ve Kısaltmalar Dizini"
+      ]
+    },
+    {
+      "id": "page-numbering",
+      "classification": "EXPLICIT_WITH_UNKNOWN_COVER_DISPLAY",
+      "value": {
+        "position": "bottom center",
+        "consistency": "same font and size on all page numbers",
+        "frontMatter": "small Roman numerals from report beginning through immediately before Giriş",
+        "mainAndBackMatter": "Arabic numerals from Giriş through end of report"
+      },
+      "unknown": [
+        "Exact page-number font and point size.",
+        "Whether either cover counts as a page and whether a number is visibly printed on it. The rule says the front section from the report beginning through Giriş is Roman-numbered but does not give a cover display exception."
+      ],
+      "evidence": [
+        "PDF p.4, EK-1 §1.7",
+        "PDF p.10, §2.2 (Onay and Beyan Roman numbering)"
+      ]
+    },
+    {
+      "id": "citations-and-references",
+      "classification": "EXPLICIT_WITH_WORDING_AMBIGUITY",
+      "value": {
+        "inText": "§1.10 gives Harvard author-year citation examples; author surname/year may appear at sentence start or end. Two authors joined by “ve”; three or more use first author + “ve ark.” + year. Multiple sources ordered oldest to newest; same author by year; same-author same-year works use a/b/c. Non-author sources use title/year. Web sources include access date; software citations identify name/version; personal communications may be cited in text with type/date but are omitted from references; avoid indirect citations, and if unavoidable limit to two sources.",
+        "referenceList": "Alphabetical by author surname; unnumbered; include all cited works and cite every listed work in text; retain source language; Index Medicus journal abbreviations; if >6 authors list first six then et al. for English or ve ark. for Turkish; one-spaced with 6 pt between references.",
+        "formats": "Examples/formulas are provided for books, book chapters, journal articles, conference papers, reports, theses, authorless sources, laws/regulations, newspapers, electronic journals and websites."
+      },
+      "evidence": [
+        "PDF p.4–6, EK-1 §1.10 and subsections",
+        "PDF p.11–12, EK-1 §2.4.1"
+      ],
+      "ambiguity": "§1.10 concretely demonstrates Harvard, while §2.4.1 says reference rendering follows the selected citation system. No alternative system is specified in this directive; preserve the explicit Harvard examples and alphabetical reference-list rules."
+    },
+    {
+      "id": "tables-figures-equations",
+      "classification": "EXPLICIT",
+      "value": {
+        "placement": "Visuals no larger than one page centered; larger objects on consecutive pages immediately after first discussion; do not exceed text block. Captions do not exceed object width and are centered.",
+        "numbering": "Tables, figures and equations have independent sequences, numbered per main chapter with chapter and sequence digits (e.g., Tablo 1.1, Şekil 1.1); cite captions in text.",
+        "tableCaption": "Above table, centered within table edges; 10 pt, single spacing; 6 pt between last caption line and table top. Extra table explanation below table, 10 pt single-spaced.",
+        "figureCaption": "Below figure; description 10 pt, single-spaced; 6 pt gap from the figure lower edge to the caption; keep 12 pt between the main text and the complete visual-plus-caption block.",
+        "images": "Photo reproductions should retain near-original quality; copies of color photographs remain color."
+      },
+      "evidence": [
+        "PDF p.4, §1.7",
+        "PDF p.6, §1.12",
+        "PDF p.10–11, §2.2 index description"
+      ]
+    },
+    {
+      "id": "symbols-units",
+      "classification": "EXPLICIT",
+      "value": {
+        "abbreviations": "Use nonstandard abbreviations only when needed; define once at first use; include an alphabetical preliminary list of symbols/abbreviations.",
+        "units": "Use SI units and standard symbols/prefixes; do not add periods to unit symbols; place a space between quantity and unit."
+      },
+      "evidence": [
+        "PDF p.6, EK-1 §1.11"
+      ]
+    }
+  ],
+  "conflictsAndUnknowns": [
+    {
+      "classification": "CONFLICT",
+      "issue": "Outline §2 on p.7 omits Onay although detailed §2.2 on p.10 and sample EK-1.3 on p.13 establish it.",
+      "handling": "Approval page is included after inner cover and before declaration, citing detailed rule/example."
+    },
+    {
+      "classification": "CONFLICT",
+      "issue": "Heading example in §1.7 on p.4 says “Giriş ve Amaç”; the actual section outline and §2.3 use “GİRİŞ” and instruct aims/hypothesis at the end of that section.",
+      "handling": "Use GİRİŞ as the required section title; include aim/hypothesis in final paragraph per §2.3. The parenthetical heading wording remains a source inconsistency."
+    },
+    {
+      "classification": "UNKNOWN",
+      "issue": "Exact page-number point size/font and visible numbering of covers are not specified."
+    },
+    {
+      "classification": "UNKNOWN",
+      "issue": "Font and point size of cover fields other than explicit 14pt Times outer cover and 14pt bold inner title are not specified."
+    },
+    {
+      "classification": "UNKNOWN",
+      "issue": "Signatory-name and date typesetting beyond labels/roles in sample is not prescribed; do not freeze sample names/date."
+    }
+  ],
+  "labeledExamples": [
+    {
+      "label": "EK-1.1 Dış Kapak Örneği",
+      "pdfPage": 8,
+      "kind": "report cover example",
+      "fields": "T.C., university/faculty/department, project title, student, Lisans Araştırma Projesi, advisor/title, city, year; two logo images measured in example."
+    },
+    {
+      "label": "EK-1.2 İç Kapak Örneği",
+      "pdfPage": 9,
+      "kind": "report cover example",
+      "fields": "T.C., university/faculty/department, project title, prepared-by/student, Lisans Araştırma Projesi, advisor/title, city, year."
+    },
+    {
+      "label": "EK-1.3 Onay Sayfası Örneği",
+      "pdfPage": 13,
+      "kind": "required report approval-page example",
+      "fields": "Approval statement/date; Ana Bilim Dalı Başkanı and research-project advisor signature labels."
+    },
+    {
+      "label": "EK-1.4 Beyan Sayfası Örneği",
+      "pdfPage": 13,
+      "kind": "required report declaration-page example",
+      "fields": "Ethics/originality/sourcing statement; student name/signature label."
+    },
+    {
+      "label": "EK-2 Poster Hazırlama Kuralları",
+      "pdfPage": 13,
+      "kind": "separate course poster deliverable, excluded from report layout",
+      "fields": "Poster dimensions and poster typography only; not a thesis/report page."
+    }
+  ],
+  "measuredSourcePdf": {
+    "classification": "MEASURED",
+    "pageSize": "595.32 x 841.92 pt (A4)",
+    "fontsObserved": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "note": "PDF text extraction reports predominantly 12 pt guide-body glyphs. This is the directive’s own layout, not evidence that required report body/headings are 12/12; explicit §1.3 says report body 12 pt and main headings 14 pt."
+  },
+  "visualEvidence": [
+    "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-07.png",
+    "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-08.png",
+    "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-09.png",
+    "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-10.png",
+    "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-11.png",
+    "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-12.png",
+    "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-13.png"
+  ]
+}

@@ -185,16 +185,16 @@
   },
   "currentUniversity": "afsu",
   "currentTarget": "afsu-lee",
-  "currentPhase": "ENGINE_EXTENSION (PAGE geometry and framed-row correction; Eczacilik real export; independent LEE FAIL closure)",
+  "currentPhase": "CHECKPOINT (user requested wind-down; source, implementation, fixtures and partial validation saved; outstanding Word and geometry checks recorded)",
   "lastCompletedValidation": {
     "target": "aku-fbe",
     "attempt": 5,
     "verdict": "FAIL"
   },
-  "lastCommit": "94be0af",
+  "lastCommit": "1977a1c",
   "environment": {
     "libreofficeWriter": "Not available on the current Windows host; earlier analyzer note referred to a different environment.",
-    "wordCom": "Source-copy rendering succeeds with reviewed require_escalated execution; default sandbox execution returns 0x80070520. Only one worker holds the Word lease at a time."
+    "wordCom": "Earlier source-copy rendering succeeded with reviewed require_escalated execution; default sandbox returns 0x80070520. Current generated-DOCX Open stalled >2 minutes. Auto-review rejected force termination due to insufficient PID ownership proof and risk to unsaved user documents; no force termination or workaround is authorized. One worker holds the Word lease; safe source-copy diagnosis and other checks continue."
   },
   "targets": {
     "aku-sbe": {
@@ -346,10 +346,10 @@
     "afsu-lee": {
       "analysis": "DONE (common rules and official Word structure reconciled; decisions recorded in AFSU_ADU_PLAN_2026-10-02.md)",
       "implementation": "IN_PROGRESS",
-      "validation": "FAIL (independent master-1: footer, cover baseline, approval table and H3/H4 sample case; Word and corrected exports pending)",
+      "validation": "IN_PROGRESS (master/phd v5 real pairs saved; master approval spot review corrected; final Word and independent geometry pending)",
       "attempts": 0,
       "status": "IN_PROGRESS",
-      "lastError": "Master self-3 closes fallback/abstract pagination/numbering findings. Independent master-1 records footer baseline +2.488 mm, cover baseline >0.5 mm, broken approval cell borders/widths, H3/H4 second-word uppercase and duplicated metadata suffixes. Generic PAGE geometry and framed-row fixes assigned to Luna owner; filled-source and generated DOCX Word comparison pending.",
+      "lastError": "Generic PAGE geometry and framed-row fixes committed; v5 master/phd real pairs saved. Master p4 root visual review closes broken table borders and duplicated metadata suffixes for that sample. Full source-filled Word comparison, real generated-DOCX Word geometry and final independent rerun remain pending; see closing handoff and final self-check.",
       "specPath": "orchestration/specs/afsu-lee.json",
       "reportPath": "orchestration/reports/afsu-lee-source-rules.md",
       "commit": "b2a76f5",
@@ -368,8 +368,8 @@
       "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
     },
     "afsu-eczacilik-proje": {
-      "analysis": "DONE", "implementation": "IN_PROGRESS", "validation": "PENDING", "attempts": 0, "status": "IN_PROGRESS",
-      "lastError": "Source-specific module and registry descriptor added. Generic omitted header/footer validator correction passes focused tests; first real export is assigned. Local review identified nested numbering override, English title casing and source scaffold text corrections for the Luna author.", "specPath": "orchestration/specs/afsu-eczacilik-proje.json", "reportPath": "orchestration/reports/afsu-eczacilik-proje-source.md", "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "DONE", "implementation": "IN_PROGRESS", "validation": "FAIL (v5 horizontal page-number center +9.99 mm; caption gaps not measured; Word/independent QA pending)", "attempts": 0, "status": "IN_PROGRESS",
+      "lastError": "Real v5 PDF/DOCX pair: 68 pages,30 verified targets,matching maps and actual TNR fonts. Generic default closes bottom-edge placement issue. Physical page center must be105 mm; measured glyph center114.99 mm follows body frame, so horizontal centering FAIL. Required6/12 pt visual gaps not measured. Word render and independent review pending; numerical source footer distance remains UNKNOWN.", "specPath": "orchestration/specs/afsu-eczacilik-proje.json", "reportPath": "orchestration/reports/afsu-eczacilik-proje-source.md", "commit": null, "updatedAt": "2026-10-02"
     },
     "adu-fbe": {
       "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
@@ -725,7 +725,7 @@
     }
   },
   "engine": {
-    "testsPassing": 466,
+    "testsPassing": 626,
     "extensions": "orchestration/reports/ENGINE_EXTENSIONS.md"
   }
 }

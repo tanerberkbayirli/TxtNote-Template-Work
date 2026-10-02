@@ -1,0 +1,4 @@
+import fs from 'node:fs';
+import * as pdfjsLib from 'file:///C:/Users/CASPER/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/pdfjs-dist/legacy/build/pdf.mjs';
+const pdf=await pdfjsLib.getDocument({data:new Uint8Array(fs.readFileSync(process.argv[2]))}).promise;
+for(let n=1;n<=13;n++) { const p=await pdf.getPage(n),tc=await p.getTextContent(); const lines=[];for(const x of tc.items){if(!x.str?.trim())continue;const baseline=(p.view[3]-x.transform[5])*25.4/72;const top=(baseline-x.height*25.4/72);lines.push({text:x.str,size:x.height,x:x.transform[4]*25.4/72,top,baseline});} console.log('\nPAGE',n); for(const l of lines){if(n<=11 || /GİRİŞ|KAYNAKLAR|ÖZET|ABSTRACT|Kabul|ETİĞE|ONAY|Anahtar|Keywords/.test(l.text)) console.log(JSON.stringify({...l,top:+l.top.toFixed(2),baseline:+l.baseline.toFixed(2),x:+l.x.toFixed(2)}));}}

@@ -17,7 +17,7 @@
     "universities": 18,
     "implementableUniversities": 16,
     "targets": 42,
-    "registryVariants": 71,
+    "registryVariants": 72,
     "unconfirmedVariants": 1
   },
   "grouping": {
@@ -364,7 +364,9 @@
     "languages": [
         "tr"
     ],
-    "variants": [],
+    "variants": [
+        { "registryId": "afsu-eczacilik-proje-lisans-tr-v1", "degreeType": "undergraduate", "language": "tr", "evidence": "official 2024 course-project directive", "confirmed": true }
+    ],
     "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-eczacilik-proje.js",
     "sourceFiles": [
         "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Eczacilik_Arastirma_Projesi/AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf"
@@ -375,7 +377,7 @@
     "relatedTargets": [],
     "dependencies": [],
     "flags": [],
-    "notes": "Course project report rules; not a thesis. Exact variant registrations pending source-specific extraction; no registry IDs assigned."
+    "notes": "Undergraduate Turkish course-project report with a required English abstract; no full-English variant established. Registry entry added; real exports and final Word/independent validation remain in progress."
 },
 {
     "id": "adu-fbe",

@@ -58,7 +58,7 @@
       "degreeType": "master",
       "language": "tr",
       "confirmed": true,
-      "evidence": "Guide foreword P45 identifies both Yüksek Lisans and Doktora theses; 2026 YL checklist source files; guide Table 1 row 1 and Table 3 jury paragraph.",
+      "evidence": "Guide foreword P45 applies to both master and doctoral theses; jury count: guide rule paragraph p56 and labeled YL example table 3.",
       "differences": [
         "Three thesis jury members (guide Table 1, row 1, Kabul ve Onay subsection).",
         "At least six bound copies for accepted theses (guide Table 1, row 2, Kabul Edilen Tezlerin Teslimi subsection).",
@@ -70,7 +70,7 @@
       "degreeType": "phd",
       "language": "tr",
       "confirmed": true,
-      "evidence": "Guide foreword P45 identifies both Yüksek Lisans and Doktora theses; 2026 doctoral checklists; guide Table 1 jury and delivery paragraphs.",
+      "evidence": "Guide foreword P45 applies to both master and doctoral theses; jury count: guide rule paragraph p56 and labeled doctoral example table 4.",
       "differences": [
         "Five thesis jury members (guide Table 1, row 1, Kabul ve Onay subsection).",
         "At least eight bound copies for accepted theses (guide Table 1, row 2, Kabul Edilen Tezlerin Teslimi subsection).",
@@ -726,6 +726,33 @@
         }
       ],
       "notes": "Figure caption below centered; table caption above left aligned. Only the table/figure number is bold. Caption/body separation single-spaced."
+    },
+    {
+      "key": "jury.totalMembers",
+      "value": {
+        "master": 3,
+        "phd": 5,
+        "includesChair": true
+      },
+      "unit": "members",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "master",
+        "phd"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[6]/w:tc[1]/w:p[56], Kabul ve Onay Sayfası",
+          "quote": "Yüksek lisans tezleri için 3 (üç) jüri üyesi, doktora tezleri için 5 (beş) jüri üyesi olmalıdır."
+        },
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[4]/w:tr[1-4] and /w:body/w:tbl[5]/w:tr[1-6], labeled approval examples",
+          "quote": "YL example has a header plus Jüri Başkanı and two Jüri Üyesi rows (3 total); doctorate example has a header plus Jüri Başkanı and four Jüri Üyesi rows (5 total)."
+        }
+      ],
+      "notes": "The chair is included in the total. The advisor is one of the jury members; when the chair is the advisor, the guide says to label the name with (Danışman varsa İkinci Danışman). The institute director also signs the approval page but is not a jury member."
     },
     {
       "key": "delivery.boundCopies",
