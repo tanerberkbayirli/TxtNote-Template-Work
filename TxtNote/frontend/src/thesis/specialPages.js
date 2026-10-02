@@ -182,7 +182,7 @@ export function specialPageBoxCss(node, parent) {
   // A group's left/right indent also frames an image: centred images sit in the indented content box, aligned ones keep their side.
   if (node.type === "image" && (node.leftIndentMm || node.rightIndentMm)) rules.push(node.align === "left" ? `margin-left:${node.leftIndentMm}mm;` : node.align === "right" ? `margin-right:${node.rightIndentMm}mm;` : `position:relative;left:${(node.leftIndentMm - node.rightIndentMm) / 2}mm;`);
   // Shares may shrink (never grow) so a row never exceeds its content box; see specialPageRowWidths.
-  if (parent?.direction === "row") rules.push(node.widthPercent !== null ? `flex:0 1 ${node.widthPercent}%;` : "flex:1 1 0;", "min-width:0;");
+  if (parent?.direction === "row" && !node.border) rules.push(node.widthPercent !== null ? `flex:0 1 ${node.widthPercent}%;` : "flex:1 1 0;", "min-width:0;");
   if (node.type === "spacer") rules.push(`height:${node.heightMm}mm;margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;`);
   if (node.type === "separator") {
     const left = node.align === "left" ? "0" : "auto";
@@ -190,7 +190,7 @@ export function specialPageBoxCss(node, parent) {
     rules.push(`height:0;border:0;border-top:${node.thicknessPt}pt solid currentColor;width:${node.lengthPercent}%;margin:${node.marginTopMm}mm ${right} ${node.marginBottomMm}mm ${left};`);
   }
   if (node.type === "group") {
-    rules.push(`display:flex;flex-direction:${node.direction};${node.direction === "row" ? "column-gap" : "row-gap"}:${node.gapMm}mm;align-items:${node.direction === "row" ? "flex-start" : "stretch"};margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;`);
+    rules.push(`display:flex;flex-direction:${node.direction};${node.direction === "row" ? "column-gap" : "row-gap"}:${node.gapMm}mm;align-items:stretch;margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;`);
   }
   // A positioned frame (layoutMode absolute/anchored) at z 0 and 'in flow' siblings that are positioned by the Word baseline lift
   // (position:relative, z-index 0) would tie and paint in DOM order, hiding the frame under later lines; frames at z >= 0 sit one layer higher.
@@ -212,7 +212,8 @@ export function specialPageCss(scope, nodes, styleCss) {
     for (const node of list || []) {
       if (node.border) {
         const { outerPt, gapPt, innerPt, paddingMm, color } = node.border;
-        rules.push(`${scope} [data-thesis-frame="${node.path}"]{border:${outerPt}pt solid ${color};padding:${innerPt > 0 ? `${gapPt}pt` : `${paddingMm}mm`};margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;}`);
+        const flexShare = parent?.direction === "row" ? (node.widthPercent !== null ? `flex:0 1 ${node.widthPercent}%;` : "flex:1 1 0;") : "";
+        rules.push(`${scope} [data-thesis-frame="${node.path}"]{border:${outerPt}pt solid ${color};padding:${innerPt > 0 ? `${gapPt}pt` : `${paddingMm}mm`};margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;${flexShare}min-width:0;box-sizing:border-box;${parent?.direction === "row" ? "align-self:stretch;" : ""}}`);
         if (innerPt > 0) rules.push(`${scope} [data-thesis-frame-inner="${node.path}"]{border:${innerPt}pt solid ${color};padding:${paddingMm}mm;}`);
       }
       rules.push(`${scope} [data-thesis-block="${node.path}"]{${node.type === "text" ? styleCss(node.style) : ""}${specialPageBoxCss(node, parent)}${node.border ? "margin:0;" : ""}}`);

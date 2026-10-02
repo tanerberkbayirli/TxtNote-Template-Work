@@ -116,6 +116,22 @@ describe("data-driven special pages", () => {
     assert.deepEqual([signature.lengthPercent, signature.align], [40, "right"]);
   });
 
+  it("applies row shares to framed flex children and stretches their borders with the row", () => {
+    const template = structuredClone(generic);
+    template.sections[0].blocks = [{ type: "group", direction: "row", gapMm: 2, blocks: [
+      { type: "group", direction: "column", widthPercent: 30, border: { outerPt: 0.5, paddingMm: 1 }, blocks: [{ type: "text", value: "Chair" }] },
+      { type: "group", direction: "column", widthPercent: 70, border: { outerPt: 0.5, paddingMm: 1 }, blocks: [{ type: "text", value: "Members" }] },
+    ] }];
+    assert.deepEqual(validateThesisTemplate(template), []);
+    const cover = page(template, "cover");
+    const html = cover.html;
+    assert.match(html, /data-thesis-frame="0-0"[^>]*>[^]*data-thesis-block="0-0"/);
+    const css = buildThesisCss({ sections: [cover] });
+    assert.match(css, /data-thesis-block="0"\]\{[^}]*display:flex;flex-direction:row;column-gap:2mm;align-items:stretch;/);
+    assert.match(css, /data-thesis-frame="0-0"\]\{[^}]*flex:0 1 30%;min-width:0;box-sizing:border-box;align-self:stretch;/);
+    assert.match(css, /data-thesis-frame="0-1"\]\{[^}]*flex:0 1 70%;min-width:0;box-sizing:border-box;align-self:stretch;/);
+  });
+
   it("rejects invalid layout data instead of rendering it", () => {
     const template = structuredClone(generic);
     template.sections[0].blocks.push({ type: "metadata", field: "UNKNOWN_FIELD" }, { type: "group", direction: "diagonal", blocks: [{ type: "html", value: "<b>x</b>" }] });

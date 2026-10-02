@@ -8,13 +8,15 @@ import {
 import { ACADEMIC_FIGURE_MARGIN_PT, ACADEMIC_TABLE_CELL_PADDING_PT, parseAcademicHtml } from "../lib/academicDocument.js";
 import { mathFromLatex } from "../lib/mathOmml.js";
 import { academicPdfFontFace, collectAcademicPdfFontRequests, exactAcademicPdfFont, embedAcademicPdfFonts, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
-import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, indentMm, resolveChromeText, transformThesisText } from "./engine.js";
+import { effectiveLineHeight, extractThesisHeadings, formatNumber, groupThesisSections, indentMm, resolveChromeText, resolvePageNumberStyle, transformThesisText } from "./engine.js";
 import { PX_PER_MM, thesisGroupHasPageContent } from "./pageLayout.js";
 import { indexRowStyle } from "./generatedIndex.js";
 import { flattenSpecialPage, specialPageRowWidths } from "./specialPages.js";
 import { continuationParts } from "./tableContinuation.js";
 import { MM_PER_PT, mmToTwip, ptToTwip } from "./units.js";
-import { positionedLayoutDocx, splitLayoutNodes } from "./layoutDocx.js";
+import { positionedLayoutDocx, positionedPageNumberDocx, splitLayoutNodes } from "./layoutDocx.js";
+import { wordBaselineProbe } from "./wordBaseline.js";
+import { ENGINE_DEFAULT_HEADER_DISTANCE_MM } from "./engineDefaults.js";
 
 const mmPerPt = MM_PER_PT;
 const strip = (html) => String(html ?? "").replace(/<[^>]*>/g, " ").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").trim();
@@ -103,9 +105,17 @@ function pdfChrome(pdf, section, pageNumber, firstPage, values, exactFamilies = 
   const rule = page.numbering;
   if (!rule.enabled) return;
   const label = formatNumber(pageNumber, rule.format);
-  const x = rule.align === "left" ? page.margins.leftMm : rule.align === "right" ? page.widthMm - page.margins.rightMm : page.widthMm / 2;
-  const y = rule.position === "top" ? Math.max(6, page.margins.topMm / 2) : page.heightMm - Math.max(6, page.margins.bottomMm / 2);
-  pdf.text(label, x, y, { align: rule.align });
+  const explicitBaseline = Number.isFinite(rule.baselineFromTopMm);
+  const numberingStyle = resolvePageNumberStyle(body, rule);
+  if (explicitBaseline) pdfFont(pdf, numberingStyle, exactFamilies);
+  const defaultX = rule.align === "left" ? page.margins.leftMm : rule.align === "right" ? page.widthMm - page.margins.rightMm : page.widthMm / 2;
+  const x = Number.isFinite(rule.xMm) && Number.isFinite(rule.widthMm)
+    ? rule.xMm + (rule.align === "left" ? 0 : rule.align === "right" ? rule.widthMm : rule.widthMm / 2)
+    : defaultX;
+  const y = explicitBaseline
+    ? rule.baselineFromTopMm
+    : rule.position === "top" ? Math.max(6, page.margins.topMm / 2) : page.heightMm - Math.max(6, page.margins.bottomMm / 2);
+  pdf.text(label, x, y, { align: rule.align, ...(explicitBaseline ? { baseline: "alphabetic" } : {}) });
 }
 
 function positionedPdfNode(pdf, node, language, lineSpacing, baseStyle = {}, exactFamilies = new Set()) {
@@ -680,7 +690,20 @@ function chromeDocx(section, values, context, groupStart) {
   const number = page.numbering;
   const numberEdge = number.position === "top" ? "top" : "bottom";
   // Page numbers use the template's numbering style (e.g. 10 pt) when given, else the body type.
-  const numberParagraph = () => new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, children: [new TextRun({ ...runProps({ ...body, ...number.style, fontWeight: 400, italic: false }, context.language), children: [PageNumber.CURRENT] })] });
+  const numberParagraph = () => {
+    const style = resolvePageNumberStyle(body, number);
+    if (Number.isFinite(number.baselineFromTopMm)) {
+      const fontSizePt = number.style?.fontSizePt || body.fontSizePt;
+      const xMm = Number.isFinite(number.xMm) ? number.xMm : page.margins.leftMm;
+      const widthMm = Number.isFinite(number.widthMm) ? number.widthMm : page.widthMm - page.margins.leftMm - page.margins.rightMm;
+      const baseline = wordBaselineProbe({ ...style, fontSizePt }, { mode: "word", baseline: "word", singleLineEm: 1 }, 1);
+      if (!baseline) throw new Error("DOCX PAGE baseline measurement is unsupported for " + (style.fontFamily || "the configured font"));
+      const baselineAscentMm = baseline.targetPt * mmPerPt;
+      const heightMm = fontSizePt * 1.25 * mmPerPt;
+      return positionedPageNumberDocx({ xMm, yMm: number.baselineFromTopMm - baselineAscentMm, widthMm, heightMm, fontFamily: style.fontFamily, fontSizePt, align: number.align }, context.language);
+    }
+    return new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, children: [new TextRun({ ...runProps(style, context.language), children: [PageNumber.CURRENT] })] });
+  };
   const part = (edge, text) => {
     const children = [];
     if (number.enabled && numberEdge === edge && edge === "top") children.push(numberParagraph());
@@ -742,7 +765,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
         ...(section.verticalAlign === "bottom" ? { verticalAlign: VerticalAlign.BOTTOM } : {}),
         page: {
           size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
-          margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm || 10), footer: twip(page.footer?.distanceMm || 10) },
+          margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM), footer: twip(page.footer?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM) },
           pageNumbers: { start: page.numbering.restart ? (page.numbering.startAt || 1) : undefined, formatType: pageFormat(page.numbering.format) },
         },
       },

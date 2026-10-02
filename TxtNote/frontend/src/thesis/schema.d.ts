@@ -46,6 +46,11 @@ export interface NumberingRule {
   indexLabelWhenHidden?: boolean;
   /** Page-number typography when it differs from the body (e.g. Times New Roman 10 pt). */
   style?: { fontFamily?: string; fontSizePt?: number };
+  /** Optional page-top baseline for the number glyph; when absent, the existing edge placement is preserved. */
+  baselineFromTopMm?: Length;
+  /** Optional page-anchored text box for the number. Both values are required together. */
+  xMm?: Length;
+  widthMm?: Length;
 }
 export interface PageRule {
   size: string;

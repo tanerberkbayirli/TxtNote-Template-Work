@@ -13,6 +13,7 @@ import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../lib/academicDocument.js";
 import { wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
 import { exceptionSet, isExceptionToken } from "./transformExceptions.js";
 import { blockDescriptors, blockGapActive, gapBetween } from "./blockGap.js";
+import { ENGINE_DEFAULT_HEADER_DISTANCE_MM } from "./engineDefaults.js";
 
 const tokenPattern = /\{\{([A-Z][A-Z0-9_]*)\}\}/g;
 const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -59,6 +60,18 @@ export function resolveChromeText(source, values = {}) {
   return String(source || "").replace(tokenPattern, (_, key) => String(values[key] ?? ""));
 }
 
+/** Explicit page-number typography is shared by the browser, PDF, and DOCX renderers. */
+export function resolvePageNumberStyle(body = {}, numbering = {}) {
+  return {
+    ...body,
+    ...(numbering.style || {}),
+    fontFamily: numbering.style?.fontFamily || body.fontFamily,
+    fontSizePt: numbering.style?.fontSizePt || body.fontSizePt,
+    fontWeight: numbering.style?.fontWeight ?? body.fontWeight ?? 400,
+    italic: numbering.style?.italic ?? body.italic ?? false,
+  };
+}
+
 export function transformThesisText(value, style = {}, language = "tr") {
   const text = String(value ?? "");
   const capitalize = (word) => word[0].toLocaleUpperCase(language) + word.slice(1);
@@ -99,14 +112,21 @@ export function applyThesisDocumentChoices(template, thesis = {}) {
 
 export function resolveSectionRules(template, section) {
   const override = section.overrides || {};
+  const chromePart = (kind) => {
+    const base = template.page[kind];
+    const local = override.page?.[kind];
+    return base === undefined && local === undefined
+      ? { heightMm: 0, distanceMm: ENGINE_DEFAULT_HEADER_DISTANCE_MM }
+      : { heightMm: 0, distanceMm: ENGINE_DEFAULT_HEADER_DISTANCE_MM, ...base, ...local };
+  };
   return {
     page: {
       ...template.page,
       ...override.page,
       margins: { ...template.page.margins, ...override.page?.margins },
       numbering: { ...template.page.numbering, ...override.page?.numbering },
-      header: { ...template.page.header, ...override.page?.header },
-      footer: { ...template.page.footer, ...override.page?.footer },
+      header: chromePart("header"),
+      footer: chromePart("footer"),
     },
     body: { ...template.typography.body, ...template.typography.paragraph, ...override.body, ...override.paragraph },
     footnotes: resolveFootnoteRule(template.typography.footnotes, override.footnotes, { ...template.typography.body, ...override.body }),
@@ -123,8 +143,25 @@ export function resolveSectionRules(template, section) {
 }
 
 function sharedPageSignature(page) {
-  const { enabled, position, align, format } = page.numbering;
-  return JSON.stringify({ widthMm: page.widthMm, heightMm: page.heightMm, orientation: page.orientation, margins: page.margins, header: page.header, footer: page.footer, numbering: { enabled, position, align, format } });
+  const numbering = page.numbering || {};
+  return JSON.stringify({
+    widthMm: page.widthMm,
+    heightMm: page.heightMm,
+    orientation: page.orientation,
+    margins: page.margins,
+    header: page.header,
+    footer: page.footer,
+    numbering: {
+      enabled: numbering.enabled,
+      position: numbering.position,
+      align: numbering.align,
+      format: numbering.format,
+      baselineFromTopMm: numbering.baselineFromTopMm,
+      xMm: numbering.xMm,
+      widthMm: numbering.widthMm,
+      style: numbering.style,
+    },
+  });
 }
 
 /**

@@ -54,6 +54,10 @@ function validateNumbering(rule, path) {
   if (!numberingFormats.has(rule.format)) errors.push(`${path}.format geçersiz`);
   if (rule.startAt !== undefined && (!Number.isInteger(rule.startAt) || rule.startAt < 1)) errors.push(`${path}.startAt geçersiz`);
   if (rule.style !== undefined && (!object(rule.style) || (rule.style.fontSizePt !== undefined && !(positive(rule.style.fontSizePt) && rule.style.fontSizePt <= 96)) || (rule.style.fontFamily !== undefined && !text(rule.style.fontFamily)))) errors.push(`${path}.style geçersiz`);
+  if (rule.baselineFromTopMm !== undefined && !nonnegative(rule.baselineFromTopMm)) errors.push(`${path}.baselineFromTopMm geçersiz`);
+  if ((rule.xMm === undefined) !== (rule.widthMm === undefined)) errors.push(`${path}.xMm ve widthMm birlikte gerekli`);
+  if (rule.xMm !== undefined && (!nonnegative(rule.xMm) || !positive(rule.widthMm))) errors.push(`${path}.xMm/widthMm geçersiz`);
+  if ((rule.xMm !== undefined || rule.widthMm !== undefined) && rule.baselineFromTopMm === undefined) errors.push(`${path}.xMm/widthMm için baselineFromTopMm gerekli`);
   return errors;
 }
 
@@ -89,6 +93,8 @@ function validatePage(page, path = "page") {
     if (part?.firstPage !== undefined && !["same", "omit"].includes(part.firstPage)) errors.push(`${path}.${kind}.firstPage geçersiz`);
   }
   errors.push(...validateNumbering(page.numbering, `${path}.numbering`));
+  if (positive(page.heightMm) && page.numbering?.baselineFromTopMm !== undefined && page.numbering.baselineFromTopMm > page.heightMm) errors.push(`${path}.numbering.baselineFromTopMm sayfayı aşıyor`);
+  if (positive(page.widthMm) && page.numbering?.xMm !== undefined && positive(page.numbering.widthMm) && page.numbering.xMm + page.numbering.widthMm > page.widthMm) errors.push(`${path}.numbering metin kutusu sayfayı aşıyor`);
   return errors;
 }
 
@@ -254,7 +260,11 @@ export function validateThesisTemplate(rawTemplate) {
       const overrides = section.overrides;
       if (overrides) {
         if (overrides.page) {
-          const merged = { ...template.page, ...overrides.page, margins: { ...template.page?.margins, ...overrides.page.margins }, numbering: { ...template.page?.numbering, ...overrides.page.numbering }, header: { ...template.page?.header, ...overrides.page.header }, footer: { ...template.page?.footer, ...overrides.page.footer } };
+          const merged = { ...template.page, ...overrides.page, margins: { ...template.page?.margins, ...overrides.page.margins }, numbering: { ...template.page?.numbering, ...overrides.page.numbering } };
+          for (const kind of ["header", "footer"]) {
+            if (template.page?.[kind] === undefined && overrides.page[kind] === undefined) delete merged[kind];
+            else merged[kind] = { ...template.page?.[kind], ...overrides.page[kind] };
+          }
           errors.push(...validatePage(merged, `section ${section.id}.page`));
         }
         if (overrides.body) errors.push(...validateTextStyle({ ...template.typography?.body, ...overrides.body }, `section ${section.id}.body`));

@@ -2,9 +2,10 @@ import { memo, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { footnotesFromHtml } from "../../lib/academicDocument.js";
 import { focusEditableStart } from "../../lib/richText.js";
-import { resolveChromeText } from "../../thesis/engine.js";
+import { resolveChromeText, resolvePageNumberStyle } from "../../thesis/engine.js";
 import { flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, thesisGroupHasPageContent } from "../../thesis/pageLayout.js";
 import { pageFootnotesSupported } from "../../thesis/footnotes.js";
+import { cssLineBaselineOffset } from "../../thesis/wordBaseline.js";
 import { RichTextBody } from "./RichTextBody";
 
 /** Pages come from the browser's fragmentation engine; engines without multicol row wrapping keep the Task 6 continuous surface. */
@@ -40,7 +41,24 @@ function SheetChrome({ rules, values, page }) {
   return <>
     {headerText ? <div className="thesis-page-header absolute" style={{ ...box, fontSize: "10pt", top: `${topMm + shift("top")}mm` }}>{headerText}</div> : null}
     {footerText ? <div className="thesis-page-footer absolute" style={{ ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom")}mm` }}>{footerText}</div> : null}
-    {page.label ? <div className="thesis-page-number absolute" style={{ ...box, fontFamily: rule.numbering?.style?.fontFamily || body.fontFamily, fontSize: `${rule.numbering?.style?.fontSizePt || body.fontSizePt}pt`, textAlign: page.numberAlign, ...(page.numberPosition === "top" ? { top: `${topMm}mm` } : { bottom: `${bottomMm}mm` }) }}>{page.label}</div> : null}
+  {page.label ? (() => {
+    const number = rule.numbering || {};
+    const numberStyle = resolvePageNumberStyle(body, number);
+    const fontSizePt = numberStyle.fontSizePt;
+    const numberBox = Number.isFinite(page.numberXmm) && Number.isFinite(page.numberWidthMm)
+      ? { left: `${page.numberXmm}mm`, width: `${page.numberWidthMm}mm` }
+      : { left: `${margins.leftMm}mm`, width: `${rule.widthMm - margins.leftMm - margins.rightMm}mm` };
+    const baselineTopMm = page.numberBaselineFromTopMm;
+    const fontFamily = numberStyle.fontFamily;
+    const cssBaselinePx = Number.isFinite(baselineTopMm)
+      ? cssLineBaselineOffset({ fontFamily, fontSize: `${fontSizePt}pt`, fontWeight: numberStyle.fontWeight || 400, fontStyle: numberStyle.italic ? "italic" : "normal", lineHeight: 1 })
+      : null;
+    if (Number.isFinite(baselineTopMm) && !Number.isFinite(cssBaselinePx)) throw new Error(`Could not measure the page-number font baseline for ${fontFamily}`);
+    const baselineStyle = Number.isFinite(baselineTopMm)
+      ? { top: `${baselineTopMm - cssBaselinePx * 25.4 / 96}mm`, lineHeight: 1 }
+      : (page.numberPosition === "top" ? { top: `${topMm}mm` } : { bottom: `${bottomMm}mm` });
+    return <div className="thesis-page-number absolute" style={{ ...box, ...numberBox, fontFamily, fontSize: `${fontSizePt}pt`, fontWeight: numberStyle.fontWeight || 400, fontStyle: numberStyle.italic ? "italic" : "normal", textAlign: page.numberAlign, ...baselineStyle }}>{page.label}</div>;
+  })() : null}
   </>;
 }
 

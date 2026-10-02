@@ -64,6 +64,37 @@ export function canvasFontAscent(style) {
   return ascentCache.get(font);
 }
 
+const cssLineBaselineCache = new Map();
+const cssFontSetListeners = new WeakSet();
+/** CSS-pixel baseline offset inside a one-line CSS line box for the actual installed font. */
+export function cssLineBaselineOffset(style, doc = document) {
+  if (!doc?.body || !style?.fontFamily || !style?.fontSize) return null;
+  if (doc.fonts && !cssFontSetListeners.has(doc.fonts)) {
+    doc.fonts.addEventListener("loadingdone", () => cssLineBaselineCache.clear());
+    doc.fonts.addEventListener("loadingerror", () => cssLineBaselineCache.clear());
+    cssFontSetListeners.add(doc.fonts);
+  }
+  const key = `${style.fontFamily}|${style.fontSize}|${style.fontWeight || 400}|${style.fontStyle || "normal"}|${style.lineHeight || 1}`;
+  if (cssLineBaselineCache.has(key)) return cssLineBaselineCache.get(key);
+  const host = doc.createElement("div");
+  Object.assign(host.style, { position: "absolute", left: "-20000px", top: "0", visibility: "hidden", pointerEvents: "none" });
+  const node = doc.createElement("div");
+  Object.assign(node.style, { margin: "0", padding: "0", border: "0", whiteSpace: "nowrap", display: "block", fontFamily: style.fontFamily, fontSize: style.fontSize, fontWeight: String(style.fontWeight || 400), fontStyle: style.fontStyle || "normal", lineHeight: String(style.lineHeight || 1) });
+  node.textContent = "HgŞİ";
+  host.append(node);
+  doc.body.append(host);
+  let baseline = null;
+  try {
+    const top = node.getBoundingClientRect().top;
+    const range = doc.createRange();
+    range.selectNodeContents(node);
+    const rect = [...range.getClientRects()].find((item) => item.height);
+    if (rect) baseline = rect.top - top + canvasFontAscent(getComputedStyle(node));
+  } finally { host.remove(); }
+  if (Number.isFinite(baseline)) cssLineBaselineCache.set(key, baseline);
+  return baseline;
+}
+
 /**
  * Measure every probe in this browser: baseline = first text rect top + canvas ascent, exactly
  * as the layout PDF computes it, relative to the line top. Returns `:root{--thesis-wb-*: …}` so

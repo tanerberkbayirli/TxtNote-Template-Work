@@ -97,6 +97,9 @@ export function buildThesisPageModel(groups, pageCounts = {}) {
       indexLabel: numbers[groupIndex].indexLabels[index],
       numberPosition: numbering.position === "top" ? "top" : "bottom",
       numberAlign: ["left", "center", "right"].includes(numbering.align) ? numbering.align : "center",
+      numberBaselineFromTopMm: numbering.baselineFromTopMm,
+      numberXmm: numbering.xMm,
+      numberWidthMm: numbering.widthMm,
       showHeader: !(index === 0 && header?.firstPage === "omit"),
       showFooter: !(index === 0 && footer?.firstPage === "omit"),
     }));

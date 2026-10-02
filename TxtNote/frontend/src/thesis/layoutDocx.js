@@ -1,7 +1,7 @@
 /** Editable Word export primitives for positioned special-page layout nodes. */
 import {
   AlignmentType, BorderStyle, FrameAnchorType, FrameWrap, HeightRule, HorizontalPositionRelativeFrom,
-  ImageRun, LineRuleType, Paragraph, TextRun, TextWrappingType, VerticalPositionRelativeFrom, WpsShapeRun,
+  ImageRun, LineRuleType, PageNumber, Paragraph, TextRun, TextWrappingType, VerticalPositionRelativeFrom, WpsShapeRun,
 } from "docx";
 import { convertLength, mmToTwip, ptToTwip } from "./units.js";
 import { transformThesisText } from "./engine.js";
@@ -140,4 +140,32 @@ export function positionedLayoutDocx(nodes, options = {}) {
     else if (node.type === "separator") { const frame = lineFrame(node); if (frame) out.push(frame); }
   }
   return out;
+}
+
+/** A real PAGE field inside a page-anchored editable text box. */
+export function positionedPageNumberDocx({ xMm, yMm, widthMm, heightMm, fontFamily, fontSizePt, align = "right" }, language = "tr") {
+  if (![xMm, yMm, widthMm, heightMm, fontSizePt].every(Number.isFinite) || xMm < 0 || yMm < 0 || widthMm <= 0 || heightMm <= 0 || fontSizePt <= 0 || !fontFamily) {
+    throw new Error("Pozisyonlu sayfa numarası için kutu geometrisi ve tipografi gerekli");
+  }
+  if (!Number.isInteger(fontSizePt * 2)) throw new Error(`Word metin boyutu ${fontSizePt} pt yarım punto biriminde saklanamıyor`);
+  const content = new Paragraph({
+    alignment: aligned(align),
+    spacing: { before: 0, after: 0, line: 240, lineRule: LineRuleType.AUTO },
+    children: [new TextRun({ font: fontFamily, size: fontSizePt * 2, language: { value: language }, children: [PageNumber.CURRENT] })],
+  });
+  const shape = new WpsShapeRun({
+    type: "wps",
+    transformation: { width: convertLength(widthMm, "mm", "px"), height: convertLength(heightMm, "mm", "px") },
+    floating: {
+      horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(xMm, "mm", "emu")) },
+      verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(yMm, "mm", "emu")) },
+      allowOverlap: true, lockAnchor: false, layoutInCell: false,
+      wrap: { type: TextWrappingType.NONE }, zIndex: relativeHeight(0),
+    },
+    nonVisualProperties: { txBox: "1" },
+    altText: { name: "TxtNote page number", title: "TxtNote page number" },
+    bodyProperties: { margins: { top: 0, bottom: 0, left: 0, right: 0 }, noAutoFit: true },
+    children: [content],
+  });
+  return new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [shape] });
 }
