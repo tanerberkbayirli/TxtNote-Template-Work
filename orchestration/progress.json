@@ -185,13 +185,13 @@
   },
   "currentUniversity": "afsu",
   "currentTarget": "afsu-lee",
-  "currentPhase": "IMPLEMENTATION (AFSU LEE real-export correction; Eczacilik localized implementation)",
+  "currentPhase": "ENGINE_EXTENSION (PAGE geometry and framed-row correction; Eczacilik real export; independent LEE FAIL closure)",
   "lastCompletedValidation": {
     "target": "aku-fbe",
     "attempt": 5,
     "verdict": "FAIL"
   },
-  "lastCommit": "0a38e36",
+  "lastCommit": "94be0af",
   "environment": {
     "libreofficeWriter": "Not available on the current Windows host; earlier analyzer note referred to a different environment.",
     "wordCom": "Source-copy rendering succeeds with reviewed require_escalated execution; default sandbox execution returns 0x80070520. Only one worker holds the Word lease at a time."
@@ -346,10 +346,10 @@
     "afsu-lee": {
       "analysis": "DONE (common rules and official Word structure reconciled; decisions recorded in AFSU_ADU_PLAN_2026-10-02.md)",
       "implementation": "IN_PROGRESS",
-      "validation": "PENDING",
+      "validation": "FAIL (independent master-1: footer, cover baseline, approval table and H3/H4 sample case; Word and corrected exports pending)",
       "attempts": 0,
       "status": "IN_PROGRESS",
-      "lastError": "First draft export used invalid-template fallback and is not validation evidence. Worker is correcting descriptor validation and will regenerate through the real editor; font compliance remains unverified.",
+      "lastError": "Master self-3 closes fallback/abstract pagination/numbering findings. Independent master-1 records footer baseline +2.488 mm, cover baseline >0.5 mm, broken approval cell borders/widths, H3/H4 second-word uppercase and duplicated metadata suffixes. Generic PAGE geometry and framed-row fixes assigned to Luna owner; filled-source and generated DOCX Word comparison pending.",
       "specPath": "orchestration/specs/afsu-lee.json",
       "reportPath": "orchestration/reports/afsu-lee-source-rules.md",
       "commit": "b2a76f5",
@@ -369,7 +369,7 @@
     },
     "afsu-eczacilik-proje": {
       "analysis": "DONE", "implementation": "IN_PROGRESS", "validation": "PENDING", "attempts": 0, "status": "IN_PROGRESS",
-      "lastError": null, "specPath": "orchestration/specs/afsu-eczacilik-proje.json", "reportPath": "orchestration/reports/afsu-eczacilik-proje-source.md", "commit": null, "updatedAt": "2026-10-02"
+      "lastError": "Source-specific module and registry descriptor added. Generic omitted header/footer validator correction passes focused tests; first real export is assigned. Local review identified nested numbering override, English title casing and source scaffold text corrections for the Luna author.", "specPath": "orchestration/specs/afsu-eczacilik-proje.json", "reportPath": "orchestration/reports/afsu-eczacilik-proje-source.md", "commit": null, "updatedAt": "2026-10-02"
     },
     "adu-fbe": {
       "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",

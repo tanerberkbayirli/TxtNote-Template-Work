@@ -49,3 +49,15 @@ ADÜ arşivi Fen Bilimleri Türkçe ve İngilizce lisansüstü tezleri, Sosyal B
 ## AFSÜ tez önerisi ön kapsam incelemesi
 
 Ana ajan öneri kılavuzunun 1–10. sayfalarını okumuştur; dar çalışan görevinin çıkarım ve doğrulaması henüz yapılmamıştır. Sayfa 2 yüksek lisans ve doktora kapsamını açıkça doğrular. Sayfa 3 / §1.1 tez yazım kılavuzunun biçim kurallarına ve APA'ya açıkça gönderme yapar: aynı üniversitenin LEE ortak biçim kuralları bu gönderme kapsamında tekrar kullanılabilir. Sayfa 5 kapak örneğinin kendi 12/14 punto istisnaları ayrıca korunmalıdır; nihai tez kapağı öneri kapağının yerine geçirilemez. Kaynakta çalışma takvimi ve diğer projeler için yinelenen 1.10 numarası ile takvime yanlış 3.9 göndermesi vardır; bunlar içerik sırasını kaybettirmeden çıkarım raporunda belgelenmelidir. Başvuru/savunma formu bağlantıları idari teslim bağlamıdır; örnek proje metnine otomatik onay/jüri sayfası ekleme gerekçesi değildir.
+
+## AFSÜ Tıp / Diş Hekimliği ön kapsam incelemesi
+
+Ana ajan Tıp 2021 kılavuzunun PDF 4–16. sayfalarını ön incelemiştir. Uygulama görevi ve bağımsız çıkarım henüz atanmadı. Tıp ve DHF belgelerinin 4–15. sayfa gövde metinleri birleşik ve boşluksuz karşılaştırıldığında yalnız altı tek basamaklı sayı farkı bulunmuştur; bunların sayfa numarası olduğunun ayrıca doğrulanması gerekir. Ortak çıkarım bir kez yapılıp kendi eklerindeki birim farkları ayrı çıkarılmalıdır; otomatik tam eşitlik veya bütün kuralların eşitliği iddia edilmez.
+
+- Tıp PDF p.4 / §2.2: A4 tek yüz, üst/alt/sağ 25 mm, sol 40 mm; gövde iki yana yaslı ve ilk satır girintisi 12,5 mm. Bu girinti LEE'nin sıfır girintisinden farklıdır.
+- PDF pp.5–6 / §§2.5–2.7: TNR 12; H1 14 punto, koyu, büyük harf ve ortalı, yeni sayfa. H2–H4 her kelimenin ilk harfi büyük, bağlaçlar küçük. Başlık sonrasında ve sonraki alt başlığın önünde 12 nk; gövde 1,5 satır. Önce/sonra paragraf boşluğunun ayrı Word alanlarına dağılımı ayrıca kanıtlanmalıdır.
+- PDF pp.4,8–10: alt ortada numara; dış kapak sonrası numarasız boş sayfa; iç kapak görünür Roma i, kabul/onay ii, teşekkür iii, özet iv, abstract v, içindekiler vi. İçindekiler listesinde bilimsel etik sayfası vardır, ayrıntılı ön sayfa anlatımı ve açık Roma dizisi onu atlar; kaynak çelişkisi çözülmeden LEE etik sayfası kopyalanamaz.
+- PDF p.9 / özet: en fazla bir sayfa ve tek satır; amaç/yöntem/bulgu/sonuç etiketleri isteğe bağlıdır. Başlık, yazar, üniversite, anabilim/bilim dalı, yıl ve danışman kimliği gerekir. LEE'nin en az 250 kelime şartı bu belgeye aktarılamaz.
+- PDF p.13 / §3.3.1: Vancouver, ilk kullanım sırası; parantez veya üst simge tutarlı seçilir. Kaynaklar tek satır, aralarında 6 nk. LEE APA ve Eczacılık Harvard buraya aktarılamaz.
+- PDF p.7: görsel + açıklama bütünü ile metin arasında 12 nk, nesne–açıklama 6 nk. Tablo altı ek not 10 punto tek satır; geniş tablo için 10 veya 8 punto özel izin vardır. Grafik ve resimler şekil kabul edilir; LEE/Eczacılık bağımsız resim listesi varsayılmaz.
+- PDF p.15: 12 punto tez sırtı istenir. Bu çıktının ayrı teslim biçimi ve gereken genel döndürme yeteneği görev kapsamında açıkça değerlendirilmeli, sessizce atlanmamalıdır.
