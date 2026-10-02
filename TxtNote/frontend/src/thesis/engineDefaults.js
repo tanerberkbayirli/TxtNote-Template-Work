@@ -3,7 +3,7 @@
  * A template that omits one of them renders with the engine's own default instead of having to carry a placeholder value:
  * - `typography.headings` absent -> levels 1-3 in the body font/size, bold, no numbering;
  * - `tables` / `figures` absent -> label "Tablo"/"Şekil" ("Table"/"Figure" for language "en"), tables above, figures below,
- *   body font/size, document-wide arabic numbering "{n}"; an absent `style` / `numbering` of a given rule gets the same default;
+ *   body font/size, document-wide arabic numbering "{n}"; an absent `position` / `style` / `numbering` of a given rule gets the same default;
  * - `bibliography` absent -> heading "Kaynakça"/"References", body font/size; an absent `style` likewise;
  * - `page.header` / `page.footer` without `heightMm` / `distanceMm` -> 0 / 12.5 mm (Word's own default header/footer distance).
  * Only ABSENT keys are filled, never keys a template sets, so a fully specified template is returned unchanged (same object).
@@ -26,9 +26,14 @@ export function withEngineDefaults(template) {
   }
   const caption = (rule, label, position) => {
     if (rule === undefined) { changed = true; return { label, position, style: { ...inherit }, numbering: numbering() }; }
-    if (!isObject(rule) || (isObject(rule.style) && isObject(rule.numbering))) return rule;
+    if (!isObject(rule) || (rule.position !== undefined && isObject(rule.style) && isObject(rule.numbering))) return rule;
     changed = true;
-    return { ...rule, style: isObject(rule.style) ? rule.style : { ...inherit }, numbering: isObject(rule.numbering) ? rule.numbering : numbering() };
+    return {
+      ...rule,
+      position: rule.position === undefined ? position : rule.position,
+      style: isObject(rule.style) ? rule.style : { ...inherit },
+      numbering: isObject(rule.numbering) ? rule.numbering : numbering(),
+    };
   };
   out.tables = caption(template.tables, english ? "Table" : "Tablo", "above");
   out.figures = caption(template.figures, english ? "Figure" : "Şekil", "below");

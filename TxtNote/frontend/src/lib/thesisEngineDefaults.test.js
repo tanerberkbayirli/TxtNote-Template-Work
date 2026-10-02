@@ -31,6 +31,24 @@ describe("engine defaults for rules a source does not define", () => {
     assert.deepEqual(filled.tables.numbering, { scope: "document", format: "{n}", sequence: "arabic" });
     assert.deepEqual(validateThesisTemplate(t), []);
   });
+  it("fills an omitted position on a partial caption rule, but preserves explicit invalid positions", () => {
+    const t = structuredClone(generic);
+    t.tables = { label: "Tablo", style: structuredClone(generic.tables.style), numbering: structuredClone(generic.tables.numbering) };
+    const filled = withEngineDefaults(t);
+    assert.equal(filled.tables.position, "above");
+    assert.equal(filled.figures.position, generic.figures.position);
+    assert.deepEqual(validateThesisTemplate(t), []);
+
+    const invalid = { ...t, tables: { ...t.tables, position: "top" } };
+    assert.equal(withEngineDefaults(invalid).tables.position, "top");
+    assert.ok(validateThesisTemplate(invalid).some((e) => /tables\.position geçersiz/.test(e)));
+  });
+  it("preserves the identity of fully specified caption rules", () => {
+    const t = structuredClone(generic);
+    const filled = withEngineDefaults(t);
+    assert.equal(filled.tables, t.tables);
+    assert.equal(filled.figures, t.figures);
+  });
   it("still rejects a malformed value the template does set", () => {
     const t = structuredClone(generic);
     t.page.header = { heightMm: -1 };
