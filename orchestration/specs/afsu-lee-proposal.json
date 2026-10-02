@@ -34,35 +34,71 @@
    "source": "page rects"
   },
   {
-   "id": "page.margins",
-   "value": "25 mm left (measured example page); top/bottom/right",
-   "status": "UNKNOWN",
-   "note": "carrier 25 mm required by validator"
-  },
-  {
-   "id": "page.numbering",
-   "value": null,
-   "status": "UNKNOWN"
-  },
-  {
-   "id": "body",
-   "value": "12 pt TNR justified 1.5 +8pt after, no indent (guide's own pages)",
-   "status": "MEASURED",
-   "note": "not a stated rule"
-  },
-  {
-   "id": "headings",
-   "value": "12 bold left unnumbered",
-   "status": "MEASURED",
-   "note": "guide headings; numbering UNKNOWN"
-  },
-  {
    "id": "master.cover.parenthetical",
    "value": "(Yuksek Lisans Tez Onerisi)",
    "status": "INFERRED"
+  },
+  {
+   "id": "page.margins",
+   "value": "top/bottom/right 25, left 40 mm",
+   "status": "EXPLICIT-by-reference",
+   "source": "proposal guide p.3 §1.1/§1.2 -> AFSÜ LEE guide (orchestration/specs/afsu-lee.json page.margins.*)"
+  },
+  {
+   "id": "body",
+   "value": "TNR 12, 1.5, justified, indent 0, 6 pt before/after",
+   "status": "EXPLICIT-by-reference",
+   "source": "proposal guide p.3 §1.1/§1.2 -> AFSÜ LEE guide (orchestration/specs/afsu-lee.json typography.body.*/paragraph.*)"
+  },
+  {
+   "id": "headings",
+   "value": "H1 upper bold 14 centred own page numbered; H2 bold 14 left title-case; H3 bold 12; H4 bold italic 12 unnumbered",
+   "status": "EXPLICIT-by-reference",
+   "source": "proposal guide p.3 §1.1/§1.2 -> AFSÜ LEE guide (orchestration/specs/afsu-lee.json headings.level*)"
+  },
+  {
+   "id": "footnotes",
+   "value": "TNR 10",
+   "status": "EXPLICIT-by-reference",
+   "source": "proposal guide p.3 §1.1/§1.2 -> AFSÜ LEE guide (orchestration/specs/afsu-lee.json footnotes.fontFamilyAndSize)"
+  },
+  {
+   "id": "captions",
+   "value": "12 pt; figure below centred, table above left; content 10 pt",
+   "status": "EXPLICIT-by-reference",
+   "source": "proposal guide p.3 §1.1/§1.2 -> AFSÜ LEE guide (orchestration/specs/afsu-lee.json captions/tablesFigures)"
+  },
+  {
+   "id": "references",
+   "value": "10 pt, single, 6 pt between entries",
+   "status": "EXPLICIT-by-reference",
+   "source": "proposal guide p.3 §1.1/§1.2 -> AFSÜ LEE guide (orchestration/specs/afsu-lee.json references.*)"
+  },
+  {
+   "id": "page.numbering.position",
+   "value": "bottom right",
+   "status": "EXPLICIT-by-reference",
+   "source": "proposal guide p.3 §1.1/§1.2 -> AFSÜ LEE guide (orchestration/specs/afsu-lee.json pagination.position)"
+  },
+  {
+   "id": "page.numbering.start",
+   "value": "Arabic from first body page, cover unnumbered",
+   "status": "INFERRED",
+   "note": "LEE rule starts numbering at main text"
+  },
+  {
+   "id": "headings.mapping",
+   "value": "proposal outline sections treated as H1 (numbered, own page); sub-heading formats 1.1./1.1.1.",
+   "status": "INFERRED"
+  },
+  {
+   "id": "cover.margins",
+   "value": "symmetric 25 mm to keep the page-centred sample",
+   "status": "UNKNOWN"
   }
  ],
  "engineGaps": [
   "static table block for p.9 landscape work-calendar grid"
- ]
+ ],
+ "revision": "self-2: carriers replaced by by-reference LEE guide values"
 }

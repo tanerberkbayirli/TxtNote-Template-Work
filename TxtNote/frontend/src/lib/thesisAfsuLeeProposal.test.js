@@ -18,6 +18,20 @@ describe("AFSÜ LEE tez önerisi (afsu-lee-proposal-{master,phd}-tr-v1)", () => 
     assert.equal(afsuLeeProposalPhd.degreeType, "phd");
   });
 
+  it("applies the AFSÜ LEE guide rules the proposal guide refers to (§1.1/§1.2)", () => {
+    const t = afsuLeeProposalPhd;
+    assert.deepEqual(t.page.margins, { topMm: 25, leftMm: 40, bottomMm: 25, rightMm: 25 });
+    assert.equal(t.typography.body.lineHeight, 1.5);
+    assert.equal(t.typography.body.spaceBeforePt, 6);
+    assert.equal(t.typography.body.spaceAfterPt, 6);
+    assert.equal(t.typography.headings["1"].fontSizePt, 14);
+    assert.equal(t.typography.headings["1"].textTransform, "uppercase");
+    assert.equal(t.typography.headings["3"].fontSizePt, 12);
+    assert.equal(t.typography.footnotes.fontSizePt, 10);
+    assert.equal(t.bibliography.style.fontSizePt, 10);
+    assert.equal(t.page.numbering.align, "right");
+  });
+
   it("keeps the source outline and cover example values", () => {
     const ids = afsuLeeProposalPhd.sections.map((section) => section.id);
     assert.deepEqual(ids, ["cover", "purpose-scope", "general-information", "method", "success-criteria", "originality", "impact", "facilities", "schedule", "other-projects", "ethics-permits", "budget"]);
