@@ -185,15 +185,16 @@
   },
   "currentUniversity": "afsu",
   "currentTarget": "afsu-lee",
-  "currentPhase": "IMPLEMENTATION (AFSU LEE common rules extracted; Word structure reconciliation in progress)",
+  "currentPhase": "IMPLEMENTATION (AFSU LEE real-export correction; Eczacilik localized implementation)",
   "lastCompletedValidation": {
     "target": "aku-fbe",
     "attempt": 5,
     "verdict": "FAIL"
   },
-  "lastCommit": null,
+  "lastCommit": "0a38e36",
   "environment": {
-    "libreofficeWriter": "Not available on the current Windows host; earlier analyzer note referred to a different environment. Word COM repagination returned 0x80070520."
+    "libreofficeWriter": "Not available on the current Windows host; earlier analyzer note referred to a different environment.",
+    "wordCom": "Source-copy rendering succeeds with reviewed require_escalated execution; default sandbox execution returns 0x80070520. Only one worker holds the Word lease at a time."
   },
   "targets": {
     "aku-sbe": {
@@ -343,15 +344,15 @@
       "updatedAt": "2026-10-02"
     },
     "afsu-lee": {
-      "analysis": "IN_PROGRESS (common guide extracted; template conflicts being reconciled)",
+      "analysis": "DONE (common rules and official Word structure reconciled; decisions recorded in AFSU_ADU_PLAN_2026-10-02.md)",
       "implementation": "IN_PROGRESS",
       "validation": "PENDING",
       "attempts": 0,
       "status": "IN_PROGRESS",
-      "lastError": null,
+      "lastError": "First draft export used invalid-template fallback and is not validation evidence. Worker is correcting descriptor validation and will regenerate through the real editor; font compliance remains unverified.",
       "specPath": "orchestration/specs/afsu-lee.json",
       "reportPath": "orchestration/reports/afsu-lee-source-rules.md",
-      "commit": "e80a937",
+      "commit": "b2a76f5",
       "updatedAt": "2026-10-02"
     },
     "afsu-lee-proposal": {
@@ -367,8 +368,8 @@
       "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
     },
     "afsu-eczacilik-proje": {
-      "analysis": "IN_PROGRESS", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "IN_PROGRESS",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "DONE", "implementation": "IN_PROGRESS", "validation": "PENDING", "attempts": 0, "status": "IN_PROGRESS",
+      "lastError": null, "specPath": "orchestration/specs/afsu-eczacilik-proje.json", "reportPath": "orchestration/reports/afsu-eczacilik-proje-source.md", "commit": null, "updatedAt": "2026-10-02"
     },
     "adu-fbe": {
       "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
