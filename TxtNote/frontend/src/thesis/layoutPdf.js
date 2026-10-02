@@ -235,6 +235,8 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
       visible: !/^(none|hidden)$/.test(style[`border${side}Style`]),
     }));
     if (!sides.some((entry) => entry.width > 0 && entry.visible && entry.color)) return;
+    // Opt-in (border.collapse frames): browsers draw borders at least one device pixel wide, so the stroke uses the declared rule width, centred on the drawn border.
+    const nominalRule = Number.parseFloat(element.getAttribute?.("data-thesis-rule-pt")) * 96 / 72 || 0;
     const rects = [...element.getClientRects()].map(local);
     rects.forEach((box, index) => {
       for (const entry of sides) {
@@ -249,7 +251,7 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
           Left: [box.left + half, box.top, box.left + half, box.top + box.height],
           Right: [box.left + box.width - half, box.top, box.left + box.width - half, box.top + box.height],
         }[entry.side];
-        ops.push({ type: "line", points: line, width: entry.width, color: entry.color, top: Math.min(line[1], line[3]), height: Math.abs(line[3] - line[1]), zIndex });
+        ops.push({ type: "line", points: line, width: nominalRule || entry.width, color: entry.color, top: Math.min(line[1], line[3]), height: Math.abs(line[3] - line[1]), zIndex });
       }
     });
   };

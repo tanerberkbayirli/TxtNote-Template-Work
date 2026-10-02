@@ -4,7 +4,7 @@ import { existsSync } from "node:fs";
 import { jsPDF } from "jspdf";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { academicPdfFont, academicPdfFontFace, embedAcademicPdfFonts, hasSystemPdfFont } from "./academicFonts.js";
-import { ARIAL_FACES, CAMBRIA_MATH_FACES, loadSystemFontFamily, systemPdfFontFamily, TIMES_NEW_ROMAN_FACES } from "./systemPdfFonts.js";
+import { ARIAL_FACES, CALIBRI_FACES, CAMBRIA_MATH_FACES, loadSystemFontFamily, systemPdfFontFamily, TIMES_NEW_ROMAN_FACES } from "./systemPdfFonts.js";
 import { embeddedPdfFonts } from "../../tests/pdf-font-compliance.mjs";
 import { compileThesisDocument, templateFontFamilies } from "../thesis/engine.js";
 import { mcbuMaster } from "../thesis/templates/mcbu.js";
@@ -84,5 +84,14 @@ describe("template-driven genuine PDF fonts", () => {
     const pdf = new jsPDF({ compress: true });
     await embedAcademicPdfFonts(pdf, { templateId: generic.id });
     assert.equal(academicPdfFont(pdf, "bold", "Arial"), "Tinos");
+  });
+
+  it("allows Calibri as an exact opt-in family and embeds the genuine program (fails when it is not installed)", { skip: process.platform !== "win32" || !existsSync("C:/Windows/Fonts/calibri.ttf") }, async () => {
+    assert.equal(systemPdfFontFamily("calibri, sans-serif"), "Calibri");
+    const pdf = new jsPDF({ compress: true, putOnlyUsedFonts: true });
+    await embedAcademicPdfFonts(pdf, { templateId: "any-official-v1", systemFonts: ["Times New Roman", "Calibri"] });
+    assert.equal(academicPdfFont(pdf, "normal", "Calibri"), CALIBRI_FACES.normal.postscript);
+    assert.equal(academicPdfFont(pdf, "bold", "Calibri"), CALIBRI_FACES.bold.postscript);
+    await assert.rejects(() => embedAcademicPdfFonts(new jsPDF(), { templateId: "x", systemFonts: ["Comic Sans MS"] }), /izin verilen/);
   });
 });

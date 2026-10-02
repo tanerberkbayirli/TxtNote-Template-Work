@@ -888,14 +888,6 @@
     {
       "key": "approval.rowHeights",
       "why": "Template rows have trHeight 1127/939 twips with centred cells and mixed after-spacing (first member row 48.1 pt, others 58.1 pt); the guide gives no row-height rule."
-    },
-    {
-      "key": "headings.blankLineAfterH2H3",
-      "why": "The template also has blank paragraphs before and after H2/H3 (source gaps 43.3 pt before and 48.4 pt after H2); only the blank line after H1 was implemented per orchestrator decision."
-    },
-    {
-      "key": "phd.coverPageNumberFont",
-      "why": "PhD template cover footer number is Calibri 11 pt (document default via AltBilgi style); the PDF exporter allows only Times New Roman faces, so the '1' is Times New Roman in editor PDF and DOCX. Position matches (x -0.05 mm, baseline 766.17 vs 766.18 pt)."
     }
   ],
   "engineGaps": [],
@@ -909,5 +901,10 @@
     "date": "2026-10-03",
     "dir": "orchestration/validation/afsu-lee/self-5",
     "summary": "TOC, blank line after H1, approval table (header 56.9 pt, single rules, x 100.3/185.5/469.4/525.8 vs 100.5/185.6/469.4/525.8 pt) and PhD cover page number implemented from the official template. Word DOCX renders 39 pages vs editor 36 (line-fit differences); geometry within 0.2 mm."
+  },
+  "validationSelf6": {
+    "date": "2026-10-03",
+    "dir": "orchestration/validation/afsu-lee/self-6",
+    "summary": "H2/H3 blank lines implemented (gaps 43.31/48.36 and 41.44/46.78 vs source 43.32/48.36 and 41.4/46.83). PhD cover number now Calibri 11 pt (embedded font name Calibri, baseline 766.17 vs 766.18). Table rules stroke 0.5 pt in the PDF (declared width via data-thesis-rule-pt, opt-in with border.collapse); Word rules sz 4 = 0.5 pt."
   }
 }

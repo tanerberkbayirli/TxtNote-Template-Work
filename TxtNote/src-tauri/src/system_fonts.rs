@@ -23,10 +23,17 @@ fn allowlisted_family(
         ("italic", "ariali.ttf"),
         ("bolditalic", "arialbi.ttf"),
     ];
+    const CALIBRI: &[(&str, &str)] = &[
+        ("normal", "calibri.ttf"),
+        ("bold", "calibrib.ttf"),
+        ("italic", "calibrii.ttf"),
+        ("bolditalic", "calibriz.ttf"),
+    ];
     const CAMBRIA_MATH: &[(&str, &str)] = &[("normal", "cambria.ttc")];
     match value.trim().to_ascii_lowercase().as_str() {
         "times new roman" => Some(("Times New Roman", TIMES_NEW_ROMAN)),
         "arial" => Some(("Arial", ARIAL)),
+        "calibri" => Some(("Calibri", CALIBRI)),
         "cambria math" => Some(("Cambria Math", CAMBRIA_MATH)),
         _ => None,
     }

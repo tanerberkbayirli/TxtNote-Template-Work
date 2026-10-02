@@ -151,7 +151,7 @@ export function specialPageHtml(nodes) {
     if (node.type === "group") {
       const group = `<div class="thesis-layout-group" data-thesis-layout-direction="${node.direction}" ${attrs}>${specialPageHtml(node.blocks)}</div>`;
       // A frame is drawn by real borders (the layout PDF reads borders), double frames by two nested boxes.
-      return node.border ? `<div class="thesis-layout-frame" data-thesis-frame="${node.path}">${node.border.innerPt > 0 ? `<div class="thesis-layout-frame-inner" data-thesis-frame-inner="${node.path}">${group}</div>` : group}</div>` : group;
+      return node.border ? `<div class="thesis-layout-frame" data-thesis-frame="${node.path}"${node.border.collapse ? ` data-thesis-rule-pt="${node.border.outerPt}"` : ""}>${node.border.innerPt > 0 ? `<div class="thesis-layout-frame-inner" data-thesis-frame-inner="${node.path}">${group}</div>` : group}</div>` : group;
     }
     const content = node.runs ? node.runs.map((run) => (run.bold ? `<b class="thesis-layout-strong">${escapeHtml(run.text)}</b>` : escapeHtml(run.text))).join("").replace(/\n/g, "<br>") : escapeHtml(node.text).replace(/\n/g, "<br>");
     return `<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${content || "&nbsp;"}</div>`;

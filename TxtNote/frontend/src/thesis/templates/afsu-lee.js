@@ -31,6 +31,7 @@ const mainH1 = {
   textTransform: "uppercase", pageBreakBefore: true, spaceAfterPt: 18.5, // official template: one blank 1.5-spaced paragraph follows each H1
   numbering: { enabled: true, format: "{1}.", sequence: "arabic" },
 };
+// H2/H3: the official template has an empty 1.5-spaced paragraph before and after each (measured +14.75 pt before, +20.1 pt after the guide's 6 pt).
 const heading = (level, format, style = {}) => {
   const { numbering: numberingOverride, ...styleProperties } = style;
   return {
@@ -80,10 +81,10 @@ export const sharedCommonBase = {
     paragraph: { firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6, lineHeight: 1.5, align: "justify" },
     headings: {
       "1": mainH1,
-      "2": heading(2, "{1}.{2}.", { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }),
+      "2": heading(2, "{1}.{2}.", { spaceBeforePt: 20.75, spaceAfterPt: 26.09, textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }),
       // Preserve author-entered sentence case. The source requires only the first word
       // to start uppercase; automatic CSS capitalize would uppercase every word.
-      "3": heading(3, "{1}.{2}.{3}.", { textTransform: "none" }),
+      "3": heading(3, "{1}.{2}.{3}.", { spaceBeforePt: 20.75, spaceAfterPt: 26.09, textTransform: "none" }),
       // Source says level four and deeper are not numbered; map the engine's H4 to this rule.
       "4": heading(4, "{1}.{2}.{3}.{4}.", { numbering: { enabled: false }, italic: true, textTransform: "none" }),
     },
@@ -248,7 +249,7 @@ function sections(degreeType) {
   const arabic = { enabled: true, format: "arabic", restart: false, ...footerBox };
   return [
     { id: "outer-cover", type: "outerCover", title: "DIŞ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, // The official doctorate template's cover section has a right-aligned PAGE footer (prints "1"); the master template has none.
-      ...(degreeType === "phd" ? { numbering: { enabled: true, format: "arabic", startAt: 1, restart: false, baselineFromTopMm: pt(766.18), align: "right" } } : {}), margins: { topMm: 12.7, bottomMm: 12.7, leftMm: 12.7, rightMm: 12.7 }, header: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 }, footer: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 } } }, blocks: coverBlocks(degreeType) },
+      ...(degreeType === "phd" ? { numbering: { enabled: true, format: "arabic", startAt: 1, restart: false, baselineFromTopMm: pt(766.18), align: "right", style: { fontFamily: "Calibri", fontSizePt: 11 } } } : {}), margins: { topMm: 12.7, bottomMm: 12.7, leftMm: 12.7, rightMm: 12.7 }, header: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 }, footer: { heightMm: 0, distanceMm: degreeType === "phd" ? 12.4888889 : 6.4381944 } } }, blocks: coverBlocks(degreeType) },
     { id: "inner-cover", type: "innerCover", title: "İÇ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 } } }, blocks: innerCoverBlocks(degreeType) },
     { id: "ethics", type: "ethicsDeclaration", title: "BİLİMSEL ETİĞE UYGUNLUK", status: "required", group: "front", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 } } }, blocks: [
     positioned("text", "BİLİMSEL ETİĞE UYGUNLUK", { xMm: 40, yMm: topFromBaseline(82.1, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),

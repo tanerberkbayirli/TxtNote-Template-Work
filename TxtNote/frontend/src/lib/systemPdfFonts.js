@@ -11,6 +11,12 @@ export const ARIAL_FACES = {
   italic: { file: "ariali.ttf", postscript: "Arial-ItalicMT" },
   bolditalic: { file: "arialbi.ttf", postscript: "Arial-BoldItalicMT" },
 };
+export const CALIBRI_FACES = {
+  normal: { file: "calibri.ttf", postscript: "Calibri" },
+  bold: { file: "calibrib.ttf", postscript: "Calibri-Bold" },
+  italic: { file: "calibrii.ttf", postscript: "Calibri-Italic" },
+  bolditalic: { file: "calibriz.ttf", postscript: "Calibri-BoldItalic" },
+};
 export const CAMBRIA_MATH_FACES = {
   // Cambria Math is face 1 in Windows' installed cambria.ttc collection.
   normal: { file: "cambria.ttc", postscript: "CambriaMath", collectionIndex: 1 },
@@ -19,7 +25,7 @@ export const CAMBRIA_MATH_FACES = {
  * Families an official template may require in its PDF, keyed by their exact family name.
  * The PDF then embeds these genuine programs (never a metric-compatible substitute).
  */
-export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, "Cambria Math": CAMBRIA_MATH_FACES });
+export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, Calibri: CALIBRI_FACES, "Cambria Math": CAMBRIA_MATH_FACES });
 /** Canonical family name for a CSS/template family (case-insensitive), or null when not a system PDF family. */
 export function systemPdfFontFamily(value) {
   const name = String(value || "").split(",")[0].replace(/["']/g, "").trim().toLowerCase();

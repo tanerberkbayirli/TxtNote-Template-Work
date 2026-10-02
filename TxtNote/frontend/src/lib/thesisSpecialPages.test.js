@@ -7,7 +7,7 @@ import generic from "../thesis/templates/generic.js";
 import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
 import { buildThesisPageModel } from "../thesis/pageLayout.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
-import { resolveSpecialPage, specialPageCss, specialPageRowWidths, validateSpecialPageBlocks, walkSpecialPage } from "../thesis/specialPages.js";
+import { resolveSpecialPage, specialPageCss, specialPageHtml, specialPageRowWidths, validateSpecialPageBlocks, walkSpecialPage } from "../thesis/specialPages.js";
 import { splitLayoutNodes } from "../thesis/layoutDocx.js";
 
 const page = (template, id, values = {}, extra = {}) => compileThesisDocument(template, { values, ...extra }, "Tez Başlığı", "").sections.find((section) => section.id === id);
@@ -170,5 +170,10 @@ describe("opt-in table rows (border.collapse, minHeightMm, verticalAlign)", () =
     assert.deepEqual(errors({ type: "group", minHeightMm: 5, verticalAlign: "center", border: { collapse: true }, blocks: [] }), []);
     assert.ok(errors({ type: "group", verticalAlign: "middle", blocks: [] }).length);
     assert.ok(errors({ type: "group", minHeightMm: -1, blocks: [] }).length);
+  });
+  it("marks collapsed frames with their declared rule width for the PDF only", () => {
+    const html = (blocks) => specialPageHtml(resolve(blocks).blocks);
+    assert.doesNotMatch(html([{ type: "group", border: { outerPt: 0.5 }, blocks: [] }]), /data-thesis-rule-pt/);
+    assert.match(html([{ type: "group", border: { outerPt: 0.5, collapse: true }, blocks: [] }]), /data-thesis-rule-pt="0\.5"/);
   });
 });

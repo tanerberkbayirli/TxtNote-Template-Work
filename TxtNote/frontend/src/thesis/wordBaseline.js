@@ -17,6 +17,7 @@
 export const WORD_FONT_METRICS = Object.freeze({
   "times new roman": { ascent: 1825 / 2048, descent: 443 / 2048, lineGap: 87 / 2048 },
   arial: { ascent: 1854 / 2048, descent: 434 / 2048, lineGap: 67 / 2048 },
+  calibri: { ascent: 1536 / 2048, descent: 512 / 2048, lineGap: 452 / 2048 },
 });
 
 const familyName = (value) => String(value || "").split(",")[0].replace(/["']/g, "").trim();
