@@ -1,0 +1,1142 @@
+{
+ "id": "aku-sosyoloji-lisans",
+ "schemaVersion": 2,
+ "analyzedAt": "2026-10-02",
+ "university": "Afyon Kocatepe Üniversitesi",
+ "unit": "Fen Edebiyat Fakültesi · Sosyoloji Bölümü · Lisans Bitirme Tezi",
+ "sources": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+   "role": "primary",
+   "type": "guide (Word-made DOCX)",
+   "version": "Last-Modified 2022-04-05; core.xml 2014-11/2015-06",
+   "pages": 11
+  }
+ ],
+ "sourcePriority": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+   "why": "only source; prose EXPLICIT; example pages Ek-1..Ek-6 MEASURED and win over prose on conflict (user decision); the guide's own sectPr/styles describe the guide, not the thesis"
+  }
+ ],
+ "variants": [
+  {
+   "registryId": "aku-sosyoloji-lisans-tr-v1",
+   "degreeType": "undergraduate",
+   "language": "tr",
+   "confirmed": true,
+   "evidence": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx#p.1-2",
+   "differences": []
+  }
+ ],
+ "rules": [
+  {
+   "key": "page.size",
+   "value": "A4",
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide silent",
+     "quote": ""
+    }
+   ],
+   "notes": "Not stated; A4 is the engine default, not a source value."
+  },
+  {
+   "key": "page.margins.topMm",
+   "value": 45,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "üst: 4.5 cm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.bottomMm",
+   "value": 45,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "alt: 4.5 cm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.leftMm",
+   "value": 45,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "sol: 4.5 cm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.rightMm",
+   "value": 30,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "sağ: 3 cm"
+    }
+   ],
+   "notes": "The guide's own sectPr (25 mm all round) describes the guide document, not the thesis."
+  },
+  {
+   "key": "typography.body.fontFamily",
+   "value": "Times New Roman",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "Times New Roman fontunda"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "12 puntoda"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.lineSpacing",
+   "value": "1.5",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "1,5 satır aralığında"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.paragraph.firstLineIndentMm",
+   "value": 12.5,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "1,25 cm içeriden başlayan paragraf başı"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.paragraph.spaceBeforePt",
+   "value": 6,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "önceki 6nk"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.paragraph.spaceAfterPt",
+   "value": 6,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "sonraki 6nk"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.align",
+   "value": "justify",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37)",
+     "quote": "Her iki yana hizalanmış metin"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.blockQuote",
+   "value": "11 pt, single, 10 mm left+right",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37) para 37",
+     "quote": "11 punto ve 1 satır aralığı ile sağdan ve solda 1 cm daraltılmış"
+    }
+   ],
+   "notes": "Quotes over three lines or 40 words."
+  },
+  {
+   "key": "tables.fontSizePt",
+   "value": "smaller allowed, no number",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "'Tezin genel biçimi' (word/document.xml paragraphs 28-37) para 37",
+     "quote": "daha küçük punto ve satır aralığı kullanılabilir"
+    }
+   ],
+   "notes": "Value UNKNOWN; template keeps 12 pt."
+  },
+  {
+   "key": "pagination.position",
+   "value": "bottom",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 55",
+     "quote": "altında ve ortasında"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "pagination.align",
+   "value": "center",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 55",
+     "quote": "altında ve ortasında"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "pagination.front.format",
+   "value": "roman-lower",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 55",
+     "quote": "küçük Romen rakamlarıyla (i, ii, iii, …)"
+    }
+   ],
+   "notes": "Up to Giriş (Ön Bölüm: Önsöz ... Simgeler)."
+  },
+  {
+   "key": "pagination.main.format",
+   "value": "arabic",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 55",
+     "quote": "1'den başlayarak Arap rakamlarıyla"
+    }
+   ],
+   "notes": "Ana ve arka bölüm."
+  },
+  {
+   "key": "pagination.font",
+   "value": "Times New Roman 12 pt",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 29-31",
+     "quote": "metnin tamamı"
+    }
+   ],
+   "notes": "Page-number font not stated; general text rule."
+  },
+  {
+   "key": "pagination.cover",
+   "value": "covers not numbered",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "numbering.xml numId 4 vs 6",
+     "quote": "Dış Kapak / İç Kapak form a list group separate from Ön Bölüm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "pagination.distanceFromEdgeMm",
+   "value": null,
+   "unit": "mm",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide silent",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.header.content",
+   "value": null,
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide silent",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "citations.style",
+   "value": "author-year (Soyad, yıl: sayfa)",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 59-60 + examples 1-10",
+     "quote": "(Sezer, 1990: 35)"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography.order",
+   "value": "alphabetical by surname",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 59",
+     "quote": "eser yazarının soyadına göre alfabetik"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography.title",
+   "value": "Kaynakça",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 53/59",
+     "quote": "Kaynakça başlığı altında"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 29-31",
+     "quote": "metnin tamamı"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography.hangingIndentMm",
+   "value": null,
+   "unit": "mm",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide examples show content only",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "footnotes.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 59",
+     "quote": "dip not kullanılabilir"
+    }
+   ],
+   "notes": "Only permission is stated; size by general rule."
+  },
+  {
+   "key": "headings.h1",
+   "value": "'{ordinal} BÖLÜM' own line + title, centred bold",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3 (pict 3) jc=center + b",
+     "quote": "BİRİNCİ BÖLÜM / KENTLEŞME"
+    }
+   ],
+   "notes": "No heading typography in the guide; hierarchy only in the İçindekiler example."
+  },
+  {
+   "key": "headings.h2",
+   "value": "'1.' capitals, regular",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3",
+     "quote": "1. ORTA BAŞLIK 1"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h3",
+   "value": "'1.1.' capitals, regular",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3",
+     "quote": "1.1. YAN BAŞLIK 1"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h4",
+   "value": "'1.1.1.' Title Case bold",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3",
+     "quote": "2.1.1. Alt Başlık 1"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.spacing",
+   "value": null,
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide silent",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.pageBreakBefore",
+   "value": null,
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide silent",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.table.position",
+   "value": null,
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide silent",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.numbering",
+   "value": "document-wide 'Tablo 1.' / 'Şekil 1.'",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-4/Ek-5 list rows",
+     "quote": "Tablo 1. ... Tablo 10.; Şekil 1. ... Şekil 4."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.title",
+   "value": "İÇİNDEKİLER",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "lists.tables.title",
+   "value": "TABLOLAR LİSTESİ",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3 and para 45; Ek-4 says TABLOLAR DİZİNİ",
+     "quote": "TABLOLAR LİSTESİ"
+    }
+   ],
+   "notes": "CONFLICT recorded."
+  },
+  {
+   "key": "lists.figures.title",
+   "value": "ŞEKİLLER LİSTESİ",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3, Ek-5 and para 46",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "lists.abbreviations.title",
+   "value": "KISALTMALAR DİZİNİ",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3, Ek-6",
+     "quote": "KISALTMALAR DİZİNİ"
+    }
+   ],
+   "notes": "Prose says Simgeler ve Kısaltmalar; example pages win (user decision)."
+  },
+  {
+   "key": "lists.rows.fontSizePt",
+   "value": 11.5,
+   "unit": "pt",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-4/Ek-5 runs sz=23",
+     "quote": ""
+    }
+   ],
+   "notes": "Conflicts with '12 puntoda' prose; example page applied."
+  },
+  {
+   "key": "lists.rows.weight",
+   "value": "bold",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-4/Ek-5 runs <w:b/>",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "lists.rows.lineSpacing",
+   "value": "single, 0 pt",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "style 'Stil 12 nk...' after=0 line=240; Word render pitch 4.7 mm",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "abbreviations.entries",
+   "value": "11.5 pt regular, 1.5 lines, firstLine 902 tw (15.9 mm), 0 pt after",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-6 pPr line=360 ind firstLine=902",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "cover.outer",
+   "value": "14 pt header x4 (after 6), 2 empty, 18 pt title, 12 pt blocks, 1.5 lines, unset after = 10 pt",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-1 pict 1 txbxContent; Word render baselines",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "cover.inner",
+   "value": "T.C. + 4 lines 12 pt (after 6), 2 empty 14 pt, 14 pt title, öğrenci no, 1.5 lines",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-2 pict 2",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "abstract",
+   "value": "not defined",
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "guide has no Özet/Abstract/approval/declaration",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  }
+ ],
+ "sections": [
+  {
+   "id": "outer-cover",
+   "title": "DIŞ KAPAK",
+   "required": "required"
+  },
+  {
+   "id": "inner-cover",
+   "title": "İÇ KAPAK",
+   "required": "required"
+  },
+  {
+   "id": "preface",
+   "title": "ÖNSÖZ",
+   "required": "optional"
+  },
+  {
+   "id": "toc",
+   "title": "İÇİNDEKİLER",
+   "required": "required"
+  },
+  {
+   "id": "list-tables",
+   "title": "TABLOLAR LİSTESİ",
+   "required": "conditional"
+  },
+  {
+   "id": "list-figures",
+   "title": "ŞEKİLLER LİSTESİ",
+   "required": "conditional"
+  },
+  {
+   "id": "symbols",
+   "title": "KISALTMALAR DİZİNİ",
+   "required": "optional"
+  },
+  {
+   "id": "introduction",
+   "title": "GİRİŞ",
+   "required": "required"
+  },
+  {
+   "id": "main",
+   "title": "Bölümler",
+   "required": "required"
+  },
+  {
+   "id": "conclusion",
+   "title": "SONUÇ VE ÖNERİLER",
+   "required": "required"
+  },
+  {
+   "id": "bibliography",
+   "title": "KAYNAKÇA",
+   "required": "required"
+  },
+  {
+   "id": "appendices",
+   "title": "EKLER",
+   "required": "optional"
+  }
+ ],
+ "placeholders": {
+  "THESIS_TITLE": {
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ]
+  },
+  "STUDENT_NAME": {
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ]
+  },
+  "STUDENT_NUMBER": {
+   "usedOn": [
+    "inner-cover"
+   ]
+  },
+  "ADVISOR_TITLE": {
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ]
+  },
+  "ADVISOR_NAME": {
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ]
+  },
+  "SUBMISSION_YEAR": {
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ]
+  }
+ },
+ "sourceGeometry": [],
+ "conflicts": [
+  {
+   "topic": "Prose 12 pt vs list examples 11.5 pt",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 31",
+     "value": "12 puntoda"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-4/5/6 runs sz=23",
+     "value": "11.5 pt"
+    }
+   ],
+   "decision": "example pages applied (user decision)",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Guide's own body vs its text rule",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "paras 21-24 pPr",
+     "value": "1.15 lines, firstLine 567 tw, after 10 pt"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "paras 31-35",
+     "value": "1.5 lines, 1.25 cm, 6/6 pt"
+    }
+   ],
+   "decision": "text rule (guide body is not an example page)",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Tablolar list title",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 45, Ek-3",
+     "value": "TABLOLAR LİSTESİ"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-4",
+     "value": "TABLOLAR DİZİNİ"
+    }
+   ],
+   "decision": "LİSTESİ (2 of 3)",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Simgeler ve Kısaltmalar title",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 47",
+     "value": "Simgeler ve Kısaltmalar"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3, Ek-6",
+     "value": "KISALTMALAR DİZİNİ"
+    }
+   ],
+   "decision": "example pages",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Sayfa alignment in lists",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-4",
+     "value": "center"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-5",
+     "value": "right"
+    }
+   ],
+   "decision": "right",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Cover font name",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-2 rFonts",
+     "value": "Times"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "para 30",
+     "value": "Times New Roman"
+    }
+   ],
+   "decision": "Times New Roman",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Example pages inconsistent among themselves",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-3",
+     "value": "page numbers vi/v swapped; '3.1 YANBAŞLIK1' no dot"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "locator": "Ek-4/5/6",
+     "value": "1/2/2 leading empty paragraphs; hand-shifted rows"
+    }
+   ],
+   "decision": "typos/hand shifts not reproduced",
+   "needsConfirmation": false
+  }
+ ],
+ "unknowns": [
+  {
+   "key": "page-number font/distance",
+   "why": "guide silent"
+  },
+  {
+   "key": "header",
+   "why": "guide silent"
+  },
+  {
+   "key": "heading spacing/page breaks",
+   "why": "guide silent"
+  },
+  {
+   "key": "caption position/size",
+   "why": "guide silent"
+  },
+  {
+   "key": "table borders",
+   "why": "guide silent"
+  },
+  {
+   "key": "equations",
+   "why": "guide silent"
+  },
+  {
+   "key": "footnote format",
+   "why": "guide silent"
+  },
+  {
+   "key": "bibliography indent/spacing",
+   "why": "guide silent"
+  },
+  {
+   "key": "Önsöz format",
+   "why": "guide silent"
+  },
+  {
+   "key": "appendix pages",
+   "why": "guide silent"
+  },
+  {
+   "key": "abstract/approval/declaration pages (not in guide)",
+   "why": "guide silent"
+  },
+  {
+   "key": "page size",
+   "why": "guide silent"
+  }
+ ],
+ "engineGaps": [],
+ "measurableChecks": [
+  {
+   "id": "margin-left",
+   "expected": 45.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "page.margins.leftMm"
+  },
+  {
+   "id": "margin-right",
+   "expected": 180.0,
+   "unit": "mm (max x1)",
+   "tolerance": 0.5,
+   "sourceRule": "page.margins.rightMm"
+  },
+  {
+   "id": "margin-top",
+   "expected": 45.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "page.margins.topMm"
+  },
+  {
+   "id": "body-bottom",
+   "expected": 252.0,
+   "unit": "mm (max y1)",
+   "tolerance": 0.5,
+   "sourceRule": "page.margins.bottomMm"
+  },
+  {
+   "id": "line-pitch",
+   "expected": 20.7,
+   "unit": "pt",
+   "tolerance": 0.3,
+   "sourceRule": "12pt x1.15 x1.5"
+  }
+ ]
+}
