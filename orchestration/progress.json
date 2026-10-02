@@ -6,6 +6,7 @@
   "universityOrder": [
     "aku",
     "afsu",
+    "adu",
     "deu",
     "ege",
     "dpu",
@@ -42,7 +43,24 @@
     "afsu": {
       "status": "IN_PROGRESS",
       "targets": [
-        "afsu-lee"
+        "afsu-lee",
+        "afsu-lee-proposal",
+        "afsu-tip",
+        "afsu-dis-hekimligi",
+        "afsu-eczacilik-proje"
+      ],
+      "gate": null,
+      "commit": null
+    },
+    "adu": {
+      "status": "PENDING",
+      "targets": [
+        "adu-fbe",
+        "adu-sbe",
+        "adu-sagbil",
+        "adu-tip",
+        "adu-ziraat-lisans",
+        "adu-muhendislik-lisans"
       ],
       "gate": null,
       "commit": null
@@ -167,7 +185,7 @@
   },
   "currentUniversity": "afsu",
   "currentTarget": "afsu-lee",
-  "currentPhase": "SOURCE_ANALYSIS (user scope override: AFSU then ADU; AKU open queue preserved)",
+  "currentPhase": "IMPLEMENTATION (AFSU LEE common rules extracted; Word structure reconciliation in progress)",
   "lastCompletedValidation": {
     "target": "aku-fbe",
     "attempt": 5,
@@ -325,16 +343,56 @@
       "updatedAt": "2026-10-02"
     },
     "afsu-lee": {
-      "analysis": "IN_PROGRESS",
-      "implementation": "PENDING",
+      "analysis": "IN_PROGRESS (common guide extracted; template conflicts being reconciled)",
+      "implementation": "IN_PROGRESS",
       "validation": "PENDING",
       "attempts": 0,
       "status": "IN_PROGRESS",
       "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
+      "specPath": "orchestration/specs/afsu-lee.json",
+      "reportPath": "orchestration/reports/afsu-lee-source-rules.md",
+      "commit": "e80a937",
+      "updatedAt": "2026-10-02"
+    },
+    "afsu-lee-proposal": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "afsu-tip": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "afsu-dis-hekimligi": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "afsu-eczacilik-proje": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "adu-fbe": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "adu-sbe": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "adu-sagbil": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "adu-tip": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "adu-ziraat-lisans": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+    },
+    "adu-muhendislik-lisans": {
+      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
+      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
     },
     "deu-fbe": {
       "analysis": "PENDING",

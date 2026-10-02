@@ -28,3 +28,10 @@ ADÜ arşivi Fen Bilimleri Türkçe ve İngilizce lisansüstü tezleri, Sosyal B
 - `afsu_lee_structure`: 2026 derece şablonları/onay sayfaları ve 2024 kapak dosyasının XML/Word ölçümleri; bu aşamada üretim kodu değiştirmez. Word lease bu çalışandadır.
 
 Özgün kaynak dosyalar salt okunur; geçici dönüştürmeler ve büyük render çıktıları üretim koduna veya toplu Git eklemesine karıştırılmaz.
+
+## AFSÜ LEE kaynak kararları
+
+- Genel 12 punto ifadesinin yanında tablo/şekil/formül içeriği ve kaynakça için açık 10 punto istisnası vardır. İstisna yalnız belirtilen kapsamda uygulanır; başlıklar ve tablo/şekil açıklamaları kendi kurallarını korur.
+- Kılavuzun açık 1,5 satır ve 6 punto önce/sonra kuralı 2026 kontrol listesiyle desteklenir. Şablondaki gövde stilinin tek satır değeri doğrudan paragraf özellikleriyle geçersiz kılınır: kullanılan gövde örnekleri `line=360, before=120, after=120` içerir. Etkin şablon biçimi kılavuzla uyumludur; stil tanımını tek başına okumak gerçek bir çelişki ortaya koymaz.
+- Kılavuz numaralamanın ÖZET'ten başlamasını söyler. Doktora şablon kapağındaki 1 ve bağımsız onay belgelerindeki numaralar tez çıktısına taşınmaz. ÖZET küçük Roma i, GİRİŞ Arap 1 ile başlar.
+- Kılavuz `word/document.xml /w:body/w:tbl[2]/w:tr[6]/w:tc[1]/w:p[56]` danışmanın jüri üyeleri arasında olduğunu ve yüksek lisans için toplam 3, doktora için toplam 5 üye istediğini açıkça söyler. Kılavuz, tez şablonları ve ayrı onay formları başkan + 2/4 üye ile uyumludur. Ayrı formların toplam 4/6 tablo satırı başlık satırını da içerir; ilk çalışan bildirimindeki fazla üye yorumu ana ajanın ham XML kontrolüyle düzeltilmiştir. Mavi mürekkeple imza fiziksel imza koşuludur, basılı metin rengi değildir.
