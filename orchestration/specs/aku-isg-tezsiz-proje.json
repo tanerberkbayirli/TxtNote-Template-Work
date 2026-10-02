@@ -1,0 +1,543 @@
+{
+ "id": "aku-isg-tezsiz-proje",
+ "schemaVersion": 2,
+ "analyzedAt": "2026-10-02",
+ "university": "Afyon Kocatepe Üniversitesi",
+ "unit": "Fen Bilimleri Enstitüsü / İş Güvenliği Anabilim Dalı / Tezsiz Yüksek Lisans (İÖ) Dönem Projesi",
+ "sources": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje/AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+   "role": "primary",
+   "type": "template",
+   "version": "2022-08-02",
+   "pages": 16
+  }
+ ],
+ "sourcePriority": [
+  {
+   "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+   "why": "Word conversion of the only source; XML primary, isg.pdf baselines for geometry"
+  }
+ ],
+ "variants": [
+  {
+   "registryId": "aku-isg-tezsiz-proje-tr-v1",
+   "degreeType": "master",
+   "language": "tr",
+   "confirmed": true,
+   "evidence": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje/AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc (tezsiz yüksek lisans dönem projesi)",
+   "differences": []
+  }
+ ],
+ "rules": [
+  {
+   "key": "page.margins.cover",
+   "value": {
+    "top": 30,
+    "bottom": 30,
+    "left": 40,
+    "right": 25
+   },
+   "unit": "mm",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "sectPr#1 pgMar 1701/1418/1701/2268"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.front",
+   "value": {
+    "top": 25,
+    "bottom": 25,
+    "left": 30,
+    "right": 30
+   },
+   "unit": "mm",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "sectPr#2 pgMar 1418/1701"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.body",
+   "value": {
+    "top": 30,
+    "bottom": 30,
+    "left": 30,
+    "right": 30
+   },
+   "unit": "mm",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "sectPr#3 pgMar 1701"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.footer.distanceMm",
+   "value": 12.5,
+   "unit": "mm",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "pgMar footer=709"
+    }
+   ],
+   "notes": "Word PDF page-number baseline 278.8 mm = 12.5 + trailing empty footer paragraph (4.87)"
+  },
+  {
+   "key": "page.numbering.style",
+   "value": {
+    "font": "Times New Roman",
+    "sizePt": 11,
+    "align": "center",
+    "position": "bottom"
+   },
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "footer1/2.xml PAGE field sz=22, jc center"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.numbering.front",
+   "value": "lowerRoman start 1; cover not counted; inner cover i not printed (titlePg, no first footer)",
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.numbering.body",
+   "value": "decimal restart at 1 at GİRİŞ, printed on first page",
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "sectPr#3 pgNumType start=1, no titlePg"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "body.font",
+   "value": "Times New Roman 12 pt",
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "styles.xml Normal rFonts TNR sz24"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "body.paragraph",
+   "value": {
+    "align": "both",
+    "lineSpacing": 1.5,
+    "before": 0,
+    "after": 0,
+    "firstLineIndent": 0
+   },
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "document.xml paragraph 'Baykal vd. (2015)...' (only real body text)"
+    }
+   ],
+   "notes": "Placeholder paragraphs under GİRİŞ carry firstLine 709 (CONFLICT)"
+  },
+  {
+   "key": "heading.1",
+   "value": {
+    "bold": true,
+    "caps": true,
+    "line": "single",
+    "before": 6,
+    "after": 6,
+    "numbering": "1."
+   },
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "paragraphs '2. LİTERATÜR…','3. DEĞERLENDİRME…','KAYNAKÇA' style T1 (toc 1)"
+    }
+   ],
+   "notes": "CONFLICT: '1. GİRİŞ' uses Balk1 (1.5 lines, before 12)"
+  },
+  {
+   "key": "heading.2",
+   "value": {
+    "bold": true,
+    "line": 1.5,
+    "before": 12,
+    "after": 0,
+    "numbering": "2.1."
+   },
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "style Balk2"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "heading.3",
+   "value": {
+    "bold": true,
+    "line": 1.5,
+    "before": 6,
+    "after": 6,
+    "numbering": "2.1.1."
+   },
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "style T2 used by '2.1.1. Üçüncü Dereceden Alt Başlık'"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "heading.4",
+   "value": {
+    "bold": false,
+    "line": "single",
+    "before": 6,
+    "after": 6,
+    "numbering": "3.1.1.1."
+   },
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "instruction plan paragraph '3.1.1.1. Sadece İlk Harfleri Büyük ve Koyu Değil'"
+    }
+   ],
+   "notes": "No body sample"
+  },
+  {
+   "key": "bibliography.entry",
+   "value": {
+    "line": 1.5,
+    "before": 6,
+    "hangingMm": 12.5,
+    "align": "both"
+   },
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "entry paragraphs ind left709 hanging709"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.rows",
+   "value": "toc 1: bold single; right dot tab 8210 twips (144.8 mm); toc 2 bold 1.5 lines 6/6",
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "styles T1/T2"
+    }
+   ],
+   "notes": ""
+  }
+ ],
+ "sections": [
+  {
+   "id": "outer-cover",
+   "title": "DIŞ KAPAK",
+   "required": "required"
+  },
+  {
+   "id": "inner-cover",
+   "title": "İÇ KAPAK",
+   "required": "required"
+  },
+  {
+   "id": "ethics",
+   "title": "BİLİMSEL ETİK BİLDİRİM SAYFASI",
+   "required": "required"
+  },
+  {
+   "id": "approval",
+   "title": "ONAY SAYFASI",
+   "required": "required"
+  },
+  {
+   "id": "abstract",
+   "title": "ÖZET",
+   "required": "required"
+  },
+  {
+   "id": "abstract-en",
+   "title": "ABSTRACT",
+   "required": "required"
+  },
+  {
+   "id": "toc",
+   "title": "İÇİNDEKİLER",
+   "required": "required"
+  },
+  {
+   "id": "list-tables",
+   "title": "ÇİZELGELER DİZİNİ",
+   "required": "required"
+  },
+  {
+   "id": "list-figures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "required": "required"
+  },
+  {
+   "id": "symbols",
+   "title": "SİMGELER VE KISALTMALAR DİZİNİ",
+   "required": "required"
+  },
+  {
+   "id": "introduction",
+   "title": "GİRİŞ",
+   "required": "required"
+  },
+  {
+   "id": "main",
+   "title": "1.-n. bölümler (örnekte LİTERATÜR BİLGİLERİ; DEĞERLENDİRME, TARTIŞMA ve SONUÇ)",
+   "required": "required"
+  },
+  {
+   "id": "bibliography",
+   "title": "KAYNAKÇA",
+   "required": "required"
+  },
+  {
+   "id": "appendices",
+   "title": "EKLER (VARSA)",
+   "required": "optional"
+  },
+  {
+   "id": "cv",
+   "title": "ÖZGEÇMİŞ (ZORUNLU DEĞİL)",
+   "required": "optional"
+  }
+ ],
+ "placeholders": {},
+ "conflicts": [
+  {
+   "topic": "H1 paragraph format",
+   "sources": [
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "1. GİRİŞ (Balk1: 1.5 lines, before 12, after 0)",
+     "value": "heading 1"
+    },
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "2./3./KAYNAKÇA (T1: single, 6/6)",
+     "value": "toc 1"
+    }
+   ],
+   "decision": "T1 (3 of 4); GİRİŞ differs",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Instruction plan vs body pages",
+   "sources": [
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "ÖRNEK (GEÇİCİ TASLAK) PLAN: BİRİNCİ BÖLÜM centred caps, 2.1 caps regular, per-chapter restart, unnumbered GİRİŞ",
+     "value": "plan"
+    },
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "body pages: 1. GİRİŞ, 2.1 bold title case, no BÖLÜM",
+     "value": "body"
+    }
+   ],
+   "decision": "body pages implemented (real XML); plan not implemented",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "First-line indent of body text",
+   "sources": [
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "Baykal paragraph: none",
+     "value": 0
+    },
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "GİRİŞ placeholders: 709",
+     "value": 12.5
+    }
+   ],
+   "decision": "0 (only real text)",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Etik page title",
+   "sources": [
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "page title",
+     "value": "BİLİMSEL ETİK BİLDİRİM SAYFASI"
+    },
+    {
+     "path": "orchestration/artifacts/aku-isg-tezsiz-proje/source/isg.docx",
+     "locator": "TOC sample row",
+     "value": "BİLİMSEL ETİK SAYFASI"
+    }
+   ],
+   "decision": "page title used for page and TOC",
+   "needsConfirmation": false
+  }
+ ],
+ "unknowns": [
+  {
+   "key": "caption label/position/style/numbering (tables, figures)",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "footnote typography",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "block quote",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "equations",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "appendix layout",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "CV layout",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "list-of-tables/figures/symbols entry format",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "table borders",
+   "why": "template defines nothing"
+  },
+  {
+   "key": "bold/alignment intent of abstract text (Balk1 bleed)",
+   "why": "template defines nothing"
+  }
+ ],
+ "engineGaps": [
+  {
+   "requirement": "Word collapses adjacent space-after/before; editor sums",
+   "evidence": "engine fact",
+   "whyEngineCannot": "lineSpacing.paragraphSpacing additive",
+   "suggestedGenericCapability": "special pages carry spacing in spacers (done); H1->H2 adjacency differs (6+12 vs max)"
+  },
+  {
+   "requirement": "TOC right tab at 8210 twips (144.8 mm, 5.2 mm short of margin)",
+   "evidence": "styles.xml T1/T2",
+   "whyEngineCannot": "generatedIndex has no right-tab position",
+   "suggestedGenericCapability": "generatedIndex.rightTabMm"
+  },
+  {
+   "requirement": "Footer holds a trailing empty paragraph",
+   "evidence": "footer1/2.xml",
+   "whyEngineCannot": "footer has one line",
+   "suggestedGenericCapability": "modelled by footer.distanceMm 17.4"
+  }
+ ],
+ "measurableChecks": [
+  "page margins per section",
+  "page-number baseline 278.8 mm and 11 pt",
+  "cover/inner/ethics/approval baselines vs isg.pdf (<=0.25 mm)",
+  "heading gaps",
+  "roman/arabic labels"
+ ]
+}
