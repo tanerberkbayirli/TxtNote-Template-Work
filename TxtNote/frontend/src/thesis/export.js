@@ -305,7 +305,11 @@ function docxRuns(runs, style, context) {
       const rule = context.footnoteStyle;
       const noteStyle = rule ? { ...rule, decoration: "none", textTransform: "none" } : { ...context.body, fontSizePt: FOOTNOTE_PT, align: "left", firstLineIndentMm: 0, textTransform: "none" };
       const props = rule ? paragraphProps(noteStyle, { keepNext: false, pageBreakBefore: false }, context.lineSpacing) : {};
-      context.footnotes[id] = { children: [new Paragraph({ ...props, children: [textRun(item.text || "", noteStyle, context)] })] };
+      // The note number Word inserts in the note area inherits its size from the paragraph style, so each footnote size gets a
+      // paragraph style carrying the note's own font and size (otherwise the mark falls back to the document default and the first line grows).
+      const noteStyleId = `ThesisFootnote${halfPointSize(noteStyle.fontSizePt || FOOTNOTE_PT)}`;
+      (context.footnoteParagraphStyles ||= new Map()).set(noteStyleId, { id: noteStyleId, name: `Thesis Footnote ${noteStyle.fontSizePt || FOOTNOTE_PT} pt`, basedOn: "Normal", quickFormat: false, run: { font: noteStyle.fontFamily || context.body.fontFamily, size: halfPointSize(noteStyle.fontSizePt || FOOTNOTE_PT) } });
+      context.footnotes[id] = { children: [new Paragraph({ ...props, style: noteStyleId, children: [textRun(item.text || "", noteStyle, context)] })] };
       out.push(new FootnoteReferenceRun(id));
     } else {
       const text = item.text || item.latex || "";
@@ -779,6 +783,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       document: { run: { font: base.body.fontFamily, size: halfPointSize(base.body.fontSizePt) } },
       ...Object.fromEntries(Object.keys(base.headings).filter((level) => Number(level) <= 6).map((level) => [`heading${level}`, headingStyle(base.headings[level], context.language, level)])),
     },
+    ...(context.footnoteParagraphStyles?.size ? { paragraphStyles: [...context.footnoteParagraphStyles.values()] } : {}),
   } : undefined;
   return Packer.toBlob(new Document({
     title: model.title || "Tez", creator: "TxtNote", features: { updateFields: true }, styles,

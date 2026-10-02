@@ -17,7 +17,14 @@ const pt = (value) => value * PT_TO_MM;
 const positioned = (type, value, box, style = {}) => ({ type, value, layoutMode: "absolute", ...box, style: { fontFamily: FONT, fontSizePt: 12, align: "center", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0, ...style } });
 const positionedMeta = (field, fallback, box, style = {}, metadata = {}) => ({ type: "metadata", field, fallback, ...metadata, layoutMode: "absolute", ...box, style: { fontFamily: FONT, fontSizePt: 12, align: "center", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0, ...style } });
 // TxtEngine's measured Word text-box first-line model is approximately 0.9336 em.
-const topFromBaseline = (baselinePt, fontPt) => pt(baselinePt - fontPt * 0.9336);
+// Half of the measured editor-PDF residual per font size (the Word DOCX shows the opposite residual), so both exports stay within 0.15 mm of the official baselines
+
+const ABSTRACT_TITLE_LEAD = 37.33;
+const ABSTRACT_TITLE_LEAD_EN = 51.49;
+const ABSTRACT_TITLE_GAP = 25.92;
+const SIGN_GAP = 20.65;
+const BASELINE_RESIDUAL_PT = { 12: -0.37, 14: -0.17, 16: -0.36 };
+const topFromBaseline = (baselinePt, fontPt) => pt(baselinePt - fontPt * 0.9336 - (BASELINE_RESIDUAL_PT[fontPt] ?? 0));
 const centeredTitle = { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "center", lineHeight: 1 };
 const mainH1 = {
   fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", lineHeight: 1.5,
@@ -155,16 +162,16 @@ function coverBlocks(degreeType) {
   const font14 = { fontSizePt: 14, fontWeight: 700 };
   const common = { xMm: pt(95), widthMm: pt(405) };
   const lines = [
-    positioned("text", "T.C.", { ...common, yMm: topFromBaseline(phd ? 175.5 : 176.1, 14), heightMm: pt(18) }, font14),
-    positioned("text", "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ", { ...common, yMm: topFromBaseline(phd ? 191.5 : 192.1, 14), heightMm: pt(18) }, font14),
-    positioned("text", "LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ", { ...common, yMm: topFromBaseline(phd ? 207.6 : 208.2, 14), heightMm: pt(18) }, font14),
-    positionedMeta("DEPARTMENT_NAME", "…… ANABİLİM DALI", { ...common, yMm: topFromBaseline(phd ? 248.2 : 242.8, 14), heightMm: pt(18) }, { ...font14, textTransform: "uppercase" }, { suffix: " ANABİLİM DALI" }),
-    positionedMeta("THESIS_TITLE", "TEZ BAŞLIĞI", { ...common, yMm: topFromBaseline(phd ? 353.4 : 352.6, 16), heightMm: pt(20) }, { fontSizePt: 16, fontWeight: 700 }),
-    positionedMeta("STUDENT_NAME", "Ad SOYAD", { ...common, yMm: topFromBaseline(phd ? 466.6 : 465.9, 14), heightMm: pt(18) }, font14),
-    positioned("text", phd ? "DOKTORA TEZİ" : "YÜKSEK LİSANS TEZİ", { ...common, yMm: topFromBaseline(phd ? 497.0 : 496.1, 12), heightMm: pt(16) }, { fontWeight: 700 }),
-    positioned("text", "Danışman", { ...common, yMm: topFromBaseline(phd ? 577.0 : 576.3, 14), heightMm: pt(18) }, font14),
-    positioned("text", "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}", { ...common, yMm: topFromBaseline(phd ? 593.1 : 592.4, 14), heightMm: pt(18) }, font14),
-    positioned("text", "{{YEAR}}–{{CITY}}", { ...common, yMm: topFromBaseline(phd ? 754.2 : 753.3, 14), heightMm: pt(18) }, { ...font14, textTransform: "uppercase" }),
+    positioned("text", "T.C.", { ...common, yMm: topFromBaseline(phd ? 175.46 : 176.06, 14), heightMm: pt(18) }, font14),
+    positioned("text", "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ", { ...common, yMm: topFromBaseline(phd ? 191.54 : 192.14, 14), heightMm: pt(18) }, font14),
+    positioned("text", "LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ", { ...common, yMm: topFromBaseline(phd ? 207.62 : 208.22, 14), heightMm: pt(18) }, font14),
+    positionedMeta("DEPARTMENT_NAME", "…… ANABİLİM DALI", { ...common, yMm: topFromBaseline(phd ? 248.18 : 242.78, 14), heightMm: pt(18) }, { ...font14, textTransform: "uppercase" }, { suffix: " ANABİLİM DALI" }),
+    positionedMeta("THESIS_TITLE", "TEZ BAŞLIĞI", { ...common, yMm: topFromBaseline(phd ? 353.45 : 352.61, 16), heightMm: pt(20) }, { fontSizePt: 16, fontWeight: 700 }),
+    positionedMeta("STUDENT_NAME", "Ad SOYAD", { ...common, yMm: topFromBaseline(phd ? 466.63 : 465.91, 14), heightMm: pt(18) }, font14),
+    positioned("text", phd ? "DOKTORA TEZİ" : "YÜKSEK LİSANS TEZİ", { ...common, yMm: topFromBaseline(phd ? 496.99 : 496.15, 12), heightMm: pt(16) }, { fontWeight: 700 }),
+    positioned("text", "Danışman", { ...common, yMm: topFromBaseline(phd ? 577.03 : 576.31, 14), heightMm: pt(18) }, font14),
+    positioned("text", "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}", { ...common, yMm: topFromBaseline(phd ? 593.11 : 592.39, 14), heightMm: pt(18) }, font14),
+    positioned("text", "{{YEAR}}–{{CITY}}", { ...common, yMm: topFromBaseline(phd ? 754.18 : 753.34, 14), heightMm: pt(18) }, { ...font14, textTransform: "uppercase" }),
   ];
   return [
     { type: "image", source: phd ? afsu_cover_top_phd : afsu_cover_top_master, layoutMode: "absolute", xMm: pt(phd ? 37.5 : 36.9), yMm: pt(phd ? 35.5 : 35), widthMm: pt(phd ? 528.7 : 525.5), heightMm: pt(phd ? 122 : 121), zIndex: 0 },
@@ -197,21 +204,21 @@ function innerCoverBlocks(degreeType) {
 
 function approvalBlocks(degreeType) {
   const count = degreeType === "phd" ? 4 : 2;
-  const border = { outerPt: 0.5, paddingMm: 1 };
-  const headerStyle = { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, lineHeight: 1, align: "center", spaceBeforePt: 0, spaceAfterPt: 0 };
-  const cell = (widthPercent, blocks, style = {}) => ({ type: "group", widthPercent, border, style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1, align: "center", spaceBeforePt: 0, spaceAfterPt: 0, ...style }, blocks });
+  const border = { outerPt: 0.5, paddingMm: pt(5.4) };
+  const headerStyle = { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, lineHeight: 1.15, align: "center", spaceBeforePt: 0, spaceAfterPt: 0 };
+  const cell = (widthPercent, blocks, style = {}) => ({ type: "group", widthPercent, border, style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.15, align: "center", spaceBeforePt: 0, spaceAfterPt: 0, ...style }, blocks });
   const text = (value, style = {}) => ({ type: "text", value, style });
   const meta = (field, fallback, style = {}) => ({ type: "metadata", field, fallback, style });
   const row = (cells) => ({ type: "group", direction: "row", gapMm: 0, blocks: cells });
   const rows = [row([
-    cell(20, [text("TEZ SINAV JÜRİSİ", headerStyle)], { fontWeight: 700 }),
-    cell(67, [text("Ünvanı Adı Soyadı", headerStyle), text("Üniversite/Fakülte/Anabilim - Bilim Dalı Adı", headerStyle)], { fontWeight: 700 }),
-    cell(13, [text("İmza", headerStyle)], { fontWeight: 700 }),
+    cell(20.01, [text("TEZ SINAV JÜRİSİ", headerStyle)], { fontWeight: 700 }),
+    cell(66.72, [text("Ünvan Adı Soyadı", headerStyle), text("Üniversite/Fakülte/Anabilim - Bilim Dalı Adı", headerStyle)], { fontWeight: 700 }),
+    cell(13.27, [text("İmza", headerStyle)], { fontWeight: 700 }),
   ])];
   const memberRow = (label, titleField, nameField, affiliationField) => row([
-    cell(20, [text(label, { fontWeight: 700 })]),
-    cell(67, [meta(titleField, "Unvanı"), meta(nameField, "Adı Soyadı"), meta(affiliationField, "Üniversite / Fakülte / Anabilim Dalı")], { align: "left" }),
-    cell(13, [text(" ")]),
+    cell(20.01, [text(label, { fontWeight: 700 })], { align: "left" }),
+    cell(66.72, [text(`{{${titleField}}} {{${nameField}}}`), meta(affiliationField, "Üniversite / Fakülte / Anabilim Dalı")], { align: "left" }),
+    cell(13.27, [text(" ")]),
   ]);
   rows.push(memberRow("Jüri Başkanı", "JURY_CHAIR_TITLE", "JURY_CHAIR_NAME", "JURY_CHAIR_AFFILIATION"));
   for (let index = 1; index <= count; index += 1) rows.push(memberRow(`Jüri Üyesi`, `JURY_MEMBER_${index}_TITLE`, `JURY_MEMBER_${index}_NAME`, `JURY_MEMBER_${index}_AFFILIATION`));
@@ -237,51 +244,52 @@ function sections(degreeType) {
     { id: "inner-cover", type: "innerCover", title: "İÇ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 } } }, blocks: innerCoverBlocks(degreeType) },
     { id: "ethics", type: "ethicsDeclaration", title: "BİLİMSEL ETİĞE UYGUNLUK", status: "required", group: "front", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 } } }, blocks: [
     positioned("text", "BİLİMSEL ETİĞE UYGUNLUK", { xMm: 40, yMm: topFromBaseline(82.1, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),
-      { type: "spacer", heightMm: pt(24) },
+      { type: "spacer", heightMm: pt(21.6) },
       { type: "text", value: "Afyonkarahisar Sağlık Bilimleri Üniversitesi Lisansüstü Eğitim Enstitüsü Tez Yazım Kurallarına uygun olarak hazırladığım bu tez çalışmasında;", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "text", value: "Tez içinde sunduğum verileri, bilgileri ve dokümanları akademik ve etik kurallar çerçevesinde elde ettiğimi,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "text", value: "Tüm bilgi, belge, değerlendirme ve sonuçları bilimsel etik ve ahlak kurallarına uygun olarak sunduğumu,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "text", value: "Tez çalışmasında yararlandığım eserlerin tümüne uygun atıfta bulunarak kaynak gösterdiğimi,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "text", value: "Kullanılan verilerde ve ortaya çıkan sonuçlarda herhangi bir değişiklik yapmadığımı,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "text", value: "Yapay Zeka kullanıldığı durumlarda: Yükseköğretim Kurulunun belirlediği üretken yapay zeka kullanım rehberine uygun davrandığımı,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "text", value: "Bu tezde sunduğum çalışmanın özgün olduğunu bildirir, aksi bir durumda aleyhime doğabilecek tüm hak kayıplarını kabullendiğimi beyan ederim.", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "spacer", heightMm: pt(120) },
-      { type: "text", value: "{{DECLARATION_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } },
-      { type: "text", value: "İmza", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } },
-      { type: "metadata", field: "STUDENT_NAME", fallback: "Adı ve Soyadı", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } },
+      { type: "text", value: "•	Tez içinde sunduğum verileri, bilgileri ve dokümanları akademik ve etik kurallar çerçevesinde elde ettiğimi,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceAfterPt: 0, firstLineIndentMm: 0, spaceBeforePt: 0.96, leftIndentMm: pt(18), hangingIndentMm: pt(18), tabStopMm: pt(18) } },
+      { type: "text", value: "•	Tüm bilgi, belge, değerlendirme ve sonuçları bilimsel etik ve ahlak kurallarına uygun olarak sunduğumu,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceAfterPt: 0, firstLineIndentMm: 0, spaceBeforePt: 0.96, leftIndentMm: pt(18), hangingIndentMm: pt(18), tabStopMm: pt(18) } },
+      { type: "text", value: "•	Tez çalışmasında yararlandığım eserlerin tümüne uygun atıfta bulunarak kaynak gösterdiğimi,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceAfterPt: 0, firstLineIndentMm: 0, spaceBeforePt: 0.96, leftIndentMm: pt(18), hangingIndentMm: pt(18), tabStopMm: pt(18) } },
+      { type: "text", value: "•	Kullanılan verilerde ve ortaya çıkan sonuçlarda herhangi bir değişiklik yapmadığımı,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceAfterPt: 0, firstLineIndentMm: 0, spaceBeforePt: 0.96, leftIndentMm: pt(18), hangingIndentMm: pt(18), tabStopMm: pt(18) } },
+      { type: "text", value: "•	Yapay Zeka kullanıldığı durumlarda: Yükseköğretim Kurulunun belirlediği üretken yapay zeka kullanım rehberine uygun davrandığımı,", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceAfterPt: 0, firstLineIndentMm: 0, spaceBeforePt: 0.96, leftIndentMm: pt(18), hangingIndentMm: pt(18), tabStopMm: pt(18) } },
+      { type: "text", value: "•	Bu tezde sunduğum çalışmanın özgün olduğunu bildirir, aksi bir durumda aleyhime doğabilecek tüm hak kayıplarını kabullendiğimi beyan ederim.", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 2, spaceAfterPt: 0, firstLineIndentMm: 0, spaceBeforePt: 8.98, leftIndentMm: pt(18), hangingIndentMm: pt(18), tabStopMm: pt(18) } },
+      { type: "spacer", heightMm: pt(SIGN_GAP) },
+      { type: "text", value: "{{DECLARATION_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "left", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: pt(319.2) } },
+      { type: "spacer", heightMm: pt(20.7) },
+      { type: "text", value: "İmza", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 } },
+      { type: "metadata", field: "STUDENT_NAME", fallback: "Adı ve Soyadı", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 } },
     ] },
-    { id: "approval", type: "approval", title: "KABUL VE ONAY", status: "required", group: "front", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: 40, rightMm: 25 } } }, blocks: [
+    { id: "approval", type: "approval", title: "KABUL VE ONAY", status: "required", group: "front", mode: "static", tocEntry: "none", overrides: { ...pageUnnumbered, page: { ...pageUnnumbered.page, margins: { topMm: 25, bottomMm: 25, leftMm: pt(100.5), rightMm: pt(69) } } }, blocks: [
       positioned("text", "KABUL VE ONAY", { xMm: 40, yMm: topFromBaseline(82.1, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),
-      { type: "spacer", heightMm: pt(18) },
-      { type: "text", value: `{{ADVISOR_TITLE}} {{ADVISOR_NAME}} danışmanlığında {{STUDENT_NAME}} tarafından hazırlanan “{{THESIS_TITLE}}” adlı bu çalışma jürimiz tarafından Afyonkarahisar Sağlık Bilimleri Üniversitesi Lisansüstü Eğitim Enstitüsü {{DEPARTMENT_NAME}} Anabilim Dalı {{PROGRAM_NAME}} Programında ${degreeType === "phd" ? "doktora" : "yüksek lisans"} tezi olarak kabul edilmiştir.`, style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } },
-      { type: "spacer", heightMm: pt(18) },
-      { type: "text", value: "{{DEFENSE_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: 0 } },
-      { type: "text", value: "(Tez savunma sınav tarihi yazılacaktır)", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: 12 } },
+      { type: "spacer", heightMm: pt(31.56) },
+      { type: "text", value: `{{ADVISOR_TITLE}} {{ADVISOR_NAME}} danışmanlığında {{STUDENT_NAME}} tarafından hazırlanan “{{THESIS_TITLE}}” adlı bu çalışma jürimiz tarafından Afyonkarahisar Sağlık Bilimleri Üniversitesi Lisansüstü Eğitim Enstitüsü {{DEPARTMENT_NAME}} Anabilim Dalı {{PROGRAM_NAME}} Programında ${degreeType === "phd" ? "doktora" : "yüksek lisans"} tezi olarak kabul edilmiştir.`, style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0, leftIndentMm: pt(-1.24), rightIndentMm: pt(1.9) } },
+      { type: "text", value: "{{DEFENSE_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: 0, rightIndentMm: pt(1.8) } },
+      { type: "text", value: "(Tez savunma sınav tarihi yazılacaktır)", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 10, spaceAfterPt: degreeType === "phd" ? 11.8 : 20.4, rightIndentMm: pt(1.8) } },
       ...approvalBlocks(degreeType),
-      { type: "spacer", heightMm: pt(16) },
-      { type: "text", value: "ONAY:", style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, lineHeight: 1.5, align: "left", spaceBeforePt: 0, spaceAfterPt: 0 } },
-      { type: "text", value: "Bu tezin kabulü Enstitü Yönetim Kurulunun ………....… tarih ve …………..…… sayılı kararı ile onaylanmıştır.", style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0 } },
-      { type: "spacer", heightMm: pt(12) },
-      { type: "text", value: "{{INSTITUTE_DIRECTOR_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } },
-      { type: "text", value: "{{INSTITUTE_DIRECTOR}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } },
-      { type: "text", value: "Enstitü Müdürü", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } },
+      { type: "spacer", heightMm: pt(23.9) },
+      { type: "text", value: "ONAY:", style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, lineHeight: 1.5, align: "left", spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: pt(5.84), rightIndentMm: pt(15.9) } },
+      { type: "text", value: "Bu tezin kabulü Enstitü Yönetim Kurulunun ………....… tarih ve …………..…… sayılı kararı ile onaylanmıştır.", style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, align: "justify", spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: pt(5.84), rightIndentMm: pt(15.9) } },
+      { type: "spacer", heightMm: pt(degreeType === "phd" ? 13.9 : 27.6) },
+      { type: "text", value: "{{INSTITUTE_DIRECTOR_DATE}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.9) } },
+      ...(degreeType === "phd" ? [] : [{ type: "spacer", heightMm: pt(20.7) }]),
+      { type: "text", value: "{{INSTITUTE_DIRECTOR}}", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.9) } },
+      { type: "text", value: "Enstitü Müdürü", style: { fontFamily: FONT, fontSizePt: 12, align: "right", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, rightIndentMm: pt(1.9) } },
     ] },
     { id: "acknowledgements", type: "acknowledgements", title: "TEŞEKKÜR", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "none", overrides: { ...pageUnnumbered, headings: { "1": blankHeading } } },
     { id: "abstract-header", type: "abstract", title: "ÖZET", status: "required", group: "front", mode: "static", standalone: false, tocEntry: "title", overrides: { ...romanStart, body: { ...sharedCommonBase.typography.body, align: "center", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } }, blocks: [
       positioned("text", "ÖZET", { xMm: 40, yMm: topFromBaseline(94.1, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),
-      positionedMeta("THESIS_TITLE", "TEZ BAŞLIĞI", { xMm: 40, yMm: topFromBaseline(135.4, 12), widthMm: 145, heightMm: pt(20) }, { ...blankHeading, textTransform: "uppercase" }),
-      { type: "spacer", heightMm: pt(95) },
+      { type: "spacer", heightMm: pt(ABSTRACT_TITLE_LEAD) },
+      { type: "metadata", field: "THESIS_TITLE", fallback: "TEZ BAŞLIĞI", style: { ...blankHeading, textTransform: "uppercase", spaceAfterPt: ABSTRACT_TITLE_GAP } },
     ] },
     { id: "abstract-tr", type: "abstract", title: "Özet metni", status: "required", group: "front", mode: "editable", pageBreakBefore: false, showTitle: false, overrides: { ...roman, body: { ...sharedCommonBase.typography.body, lineHeight: 1, firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6, align: "justify" }, paragraph: { lineHeight: 1, firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6, align: "justify" } } },
     { id: "abstract-tr-footer", type: "abstract", title: "Anahtar kelimeler", status: "required", group: "front", mode: "static", standalone: false, pageBreakBefore: false, overrides: { ...roman, body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "left", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } }, blocks: [{ type: "metadata", field: "KEYWORDS", prefix: "Anahtar Kelimeler: ", fallback: "Anahtar Kelimeler: …" }] },
     { id: "abstract-en-header", type: "englishAbstract", title: "ABSTRACT", status: "required", group: "front", mode: "static", standalone: false, tocEntry: "title", overrides: { ...roman, body: { ...sharedCommonBase.typography.body, align: "center", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } }, blocks: [
-      positioned("text", "ABSTRACT", { xMm: 40, yMm: topFromBaseline(94.1, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),
-      positionedMeta("THESIS_TITLE_EN", "THESIS TITLE", { xMm: 40, yMm: topFromBaseline(135.4, 12), widthMm: 145, heightMm: pt(20) }, { ...blankHeading, textTransform: "none" }),
-      { type: "spacer", heightMm: pt(95) },
+      positioned("text", "ABSTRACT", { xMm: 40, yMm: topFromBaseline(107.9, 12), widthMm: 145, heightMm: pt(16) }, { ...blankHeading }),
+      { type: "spacer", heightMm: pt(ABSTRACT_TITLE_LEAD_EN) },
+      { type: "metadata", field: "THESIS_TITLE_EN", fallback: "THESIS TITLE", style: { ...blankHeading, textTransform: "none", spaceAfterPt: ABSTRACT_TITLE_GAP } },
     ] },
     { id: "abstract-en", type: "englishAbstract", title: "Abstract text", status: "required", group: "front", mode: "editable", pageBreakBefore: false, showTitle: false, overrides: { ...roman, body: { ...sharedCommonBase.typography.body, lineHeight: 1, firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6, align: "justify" }, paragraph: { lineHeight: 1, firstLineIndentMm: 0, spaceBeforePt: 6, spaceAfterPt: 6, align: "justify" } } },
     { id: "abstract-en-footer", type: "englishAbstract", title: "Keywords", status: "required", group: "front", mode: "static", standalone: false, pageBreakBefore: false, overrides: { ...roman, body: { fontFamily: FONT, fontSizePt: 12, align: "left", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } }, blocks: [{ type: "metadata", field: "KEYWORDS_EN", prefix: "Keywords: ", fallback: "Keywords: …" }] },
-    { id: "toc", type: "tableOfContents", title: "İÇİNDEKİLER", status: "required", group: "front", mode: "generated", tocEntry: "title", generatedIndex: { kind: "toc", leader: "dots", indentMm: 12.5, levelStyles: { "1": { textTransform: "uppercase", fontWeight: 700 }, "2": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "3": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "4": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] } } }, overrides: { ...roman, headings: { "1": blankHeading } } },
+    { id: "toc", type: "tableOfContents", title: "İÇİNDEKİLER", status: "required", group: "front", mode: "generated", tocEntry: "title", generatedIndex: { kind: "toc", leader: "dots", indentMm: 12.5, pageHeading: "Sayfa", pageHeadingStyle: { fontSizePt: 11, fontWeight: 400 }, levelStyles: { "1": { textTransform: "uppercase", fontWeight: 700 }, "2": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "3": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }, "4": { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] } } }, overrides: { ...roman, headings: { "1": blankHeading } } },
     { id: "abbreviations", type: "listOfAbbreviations", title: "KISALTMALAR VE SİMGELER", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "title", overrides: { ...roman, headings: { "1": blankHeading } } },
     { id: "index-tables", type: "listOfTables", title: "TABLOLAR DİZİNİ", status: "required", group: "front", mode: "generated", tocEntry: "title", generatedIndex: { kind: "tables", leader: "dots" }, overrides: { ...roman, headings: { "1": blankHeading } } },
     { id: "index-figures", type: "listOfFigures", title: "ŞEKİLLER DİZİNİ", status: "required", group: "front", mode: "generated", tocEntry: "title", generatedIndex: { kind: "figures", leader: "dots" }, overrides: { ...roman, headings: { "1": blankHeading } } },
