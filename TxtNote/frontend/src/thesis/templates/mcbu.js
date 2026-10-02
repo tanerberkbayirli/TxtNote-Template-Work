@@ -32,6 +32,10 @@ const emptyLinesPt = (lines, spacing = 1) => Math.round(lines * 12 * spacing * S
 const blank = (lines, sizePt = 12) => ({ type: "spacer", heightMm: lines * sizePt * SINGLE_LINE_EM * MM_PER_PT });
 // The optional co-advisor line (with the empty line above it) is left out when neither value is given.
 const coAdvisor = (value) => ({ type: "group", visibleWhen: { anyFilled: ["CO_ADVISOR_TITLE", "CO_ADVISOR_NAME"] }, blocks: [blank(1), { type: "text", value }] });
+/** Inner cover G[1]–G[32] `w:ind left="567"`: 567 tw = 10.0 mm. */
+const COVER_INDENT_MM = 567 * MM_PER_TWIP;
+/** One typed space of 12 pt Times New Roman (0,25 em = 3 pt) in mm: the example indents sub-entries with spaces. */
+const SPACE_MM = 3 * MM_PER_PT;
 const bold = { fontWeight: 700 };
 const bold14 = { fontWeight: 700, fontSizePt: 14 };
 const upper = { textTransform: "uppercase" };
@@ -57,8 +61,10 @@ function sections(degree) {
     // title 411.1, student 523.5, advisor 606.3, city/year 744.3.
     { id: "inner-cover", type: "innerCover", title: "İç Kapak", status: "required", group: "cover", mode: "static",
       overrides: { page: { numbering: { enabled: false } }, body: { ...pageLines, align: "center", fontWeight: 700 } },
+      // C4: G[1]–G[32] carry ind left=567 tw (10 mm → centre 117.5 mm), the city line G[40] none; the red label G[0] is not cover text, so no leading blank line.
+      // C3: every gap is the example's own count of paragraphs between the lines (G[10]–G[16] = 7, G[19]–G[23] = 5 at 14 pt, G[25]–G[29] = 5, G[32]–G[39] = 8).
       blocks: [
-        blank(1),
+        { type: "group", style: { leftIndentMm: COVER_INDENT_MM }, blocks: [
         { type: "text", value: "T.C.", style: bold14 },
         { type: "text", value: "MANİSA CELAL BAYAR ÜNİVERSİTESİ", style: bold14 },
         { type: "text", value: "LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ", style: bold14 },
@@ -68,14 +74,15 @@ function sections(degree) {
         { type: "text", value: degree.cover },
         { type: "metadata", field: "DEPARTMENT_NAME", suffix: " ANABİLİM DALI", fallback: `${dots} ANABİLİM DALI`, style: upper },
         { type: "metadata", field: "PROGRAM_NAME", suffix: " PROGRAMI", fallback: `${dots} PROGRAMI`, style: upper },
-        { type: "spacer", heightMm: 98 * MM_PER_PT },
+        blank(7),
         { type: "metadata", field: "THESIS_TITLE", fallback: "TEZ BAŞLIĞI", style: { ...bold14, ...upper } },
         blank(5, 14),
         { type: "metadata", field: "STUDENT_NAME", fallback: "Ad SOYAD" },
         blank(5, 12),
         { type: "text", value: "Danışman" },
         { type: "text", value: "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}" },
-        { type: "spacer", heightMm: 96.6 * MM_PER_PT },
+        ] },
+        blank(8),
         { type: "text", value: "{{CITY}}–{{YEAR}}", style: upper },
       ] },
     // Counted physical page, no visible number: Roman numbering starts at ÖZET (= I).
@@ -112,10 +119,10 @@ function sections(degree) {
         coAdvisor("İkinci Danışman: {{CO_ADVISOR_TITLE}} {{CO_ADVISOR_NAME}}"),
         blank(2),
       ] },
-    // Kaynakta çelişkili: "tek satır aralıklı, paragraflar arası bir satır" vs the page note and the
-    // example's own geometry (1,5 satır, 1,25 cm). The general body paragraph rule applies unchanged.
+    // C2 resolved by the example XML: G[96]–G[97] jc=both line=360 (1,5) ind left=60 tw firstLine=360 tw, no w:after (Normal → docDefaults 200 tw = 10 pt).
     { id: "abstract", type: "abstract", title: "Özet metni", status: "required", group: "front", mode: "editable", pageBreakBefore: false, showTitle: false,
-      overrides: { page: { numbering: roman } } },
+      overrides: { page: { numbering: roman }, body: { lineHeight: 1.5, firstLineIndentMm: 360 * MM_PER_TWIP, leftIndentMm: 60 * MM_PER_TWIP, spaceAfterPt: 10 },
+        paragraph: { lineHeight: 1.5, align: "justify", firstLineIndentMm: 360 * MM_PER_TWIP, leftIndentMm: 60 * MM_PER_TWIP, spaceAfterPt: 10 } } },
     { id: "abstract-footer", type: "abstract", title: "Özet anahtar kelimeler", status: "required", group: "front", mode: "static", standalone: false, pageBreakBefore: false,
       overrides: { page: { numbering: roman }, body: { ...pageLines, align: "left", fontWeight: 700 } },
       blocks: [
@@ -142,8 +149,10 @@ function sections(degree) {
         blank(2),
       ] },
     // A faithful translation of ÖZET, written by the author; never translated automatically.
+    // C2: the English example G[122] differs from the Turkish one and is applied as shown: jc=both, single (line=240), after=0, firstLine=709 tw (12.5 mm), no left indent.
     { id: "abstract-en", type: "englishAbstract", title: "Abstract text", status: "required", group: "front", mode: "editable", pageBreakBefore: false, showTitle: false,
-      overrides: { page: { numbering: roman } } },
+      overrides: { page: { numbering: roman }, body: { lineHeight: 1, firstLineIndentMm: 709 * MM_PER_TWIP, leftIndentMm: 0, spaceAfterPt: 0 },
+        paragraph: { lineHeight: 1, align: "justify", firstLineIndentMm: 709 * MM_PER_TWIP, leftIndentMm: 0, spaceAfterPt: 0 } } },
     { id: "abstract-en-footer", type: "englishAbstract", title: "Abstract keywords", status: "required", group: "front", mode: "static", standalone: false, pageBreakBefore: false,
       overrides: { page: { numbering: roman }, body: { ...pageLines, align: "left", fontWeight: 700 } },
       blocks: [
@@ -178,7 +187,17 @@ function sections(degree) {
       overrides: { page: { numbering: roman }, headings: centeredTitle(emptyLinesPt(1)) } },
     // The example lists ÖZET … İÇİNDEKİLER in Roman and GİRİŞ as 1, all bold, without dot leaders.
     { id: "toc", type: "tableOfContents", title: "İÇİNDEKİLER", status: "required", group: "front", mode: "generated", tocEntry: "title",
-      generatedIndex: { kind: "toc", leader: "none", matchHeadingTransform: true, style: { ...bold, lineHeight: 1, spaceAfterPt: 0 } },
+      // C1/C6 (TOC example G[288]–G[318], one page): front rows single (line=240, tab 7513 tw); chapter rows "BİRİNCİ BÖLÜM" + title centred bold without page number,
+      // line=360 (1,5), one empty 1,5 line before each; "1.1." flush, "1.1.1." 7 typed spaces, "1.1.1.1." 17 typed spaces (TNR 12 pt space = 3 pt → 7,41 / 17,99 mm).
+      generatedIndex: { kind: "toc", leader: "none", matchHeadingTransform: true, style: { ...bold, lineHeight: 1, spaceAfterPt: 0 },
+        levelStyles: {
+          "1": { fontWeight: 700, align: "center", includePageNumber: false, lineHeight: 1.5, spaceBeforePt: emptyLinesPt(1, 1.5) },
+          "2": { fontWeight: 700, lineHeight: 1.5, leftIndentMm: 0 },
+          "3": { fontWeight: 700, lineHeight: 1.5, leftIndentMm: 7 * SPACE_MM },
+          "4": { fontWeight: 700, lineHeight: 1.5, leftIndentMm: 17 * SPACE_MM },
+          // front-matter rows (ÖZET … GİRİŞ, KAYNAKÇA, EKLER): single, flush left with page number (G[290]–G[297]).
+          unnumbered: { fontWeight: 700, align: "left", includePageNumber: true, lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, leftIndentMm: 0 },
+        } },
       overrides: { page: { numbering: roman }, headings: centeredTitle(emptyLinesPt(1)) } },
     // Arabic numbering starts at GİRİŞ. The chapters after it are free (the guide suggests different
     // structures for social sciences, experimental work and sport sciences), so none is imposed.
@@ -236,7 +255,8 @@ const base = {
     paragraph: { firstLineIndentMm: 12.5, spaceBeforePt: 0, spaceAfterPt: 6, lineHeight: 1.5, align: "justify" },
     headings: {
       // Chapter headings: bold, 12 pt, all capitals, justified, new page, one empty line after.
-      "1": heading("{1}.", { textTransform: "uppercase", pageBreakBefore: true, spaceAfterPt: emptyLinesPt(1, 1.5) }),
+      // "BİRİNCİ BÖLÜM" on its own line (mirrors the TOC example G[299]–G[300]; no chapter-opening page example exists: INFERRED); alignment per prose G[332] (justified).
+      "1": heading("{1} BÖLÜM", { textTransform: "uppercase", pageBreakBefore: true, spaceAfterPt: emptyLinesPt(1, 1.5), numbering: { enabled: true, format: "{1} BÖLÜM", sequence: "ordinal-tr-upper", placement: "ownLine" } }),
       "2": heading("{1}.{2}."),
       "3": heading("{1}.{2}.{3}."),
       "4": heading("{1}.{2}.{3}.{4}."),

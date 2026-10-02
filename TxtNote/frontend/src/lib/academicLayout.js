@@ -538,29 +538,29 @@ export function layoutAcademicPages(article, options = {}) {
 
 // Scoped deliberately: export must never restyle the surrounding application.
 export const ACADEMIC_CSS = `
-.academic-document { box-sizing:border-box; width:210mm; padding:25mm; margin:0; background:#fff; color:#111; font:12pt/1.75 "Times New Roman",Times,"Liberation Serif",serif; text-align:left; }
+.academic-document { box-sizing:border-box; width:210mm; padding:25mm; margin:0; background:#fff; color:#000; font:12pt/1.75 "Times New Roman",Times,"Liberation Serif",serif; text-align:left; }
 .academic-document * { box-sizing:border-box; }
 .academic-document .document-title { font:700 16pt/1.35 "Times New Roman",Times,serif; text-align:center; margin:0 0 14pt; padding:0; }
-.academic-document .authors,.academic-document .institution,.academic-document .keywords { display:block; width:100%; height:auto; padding:0; border:0; border-radius:0; margin:0 0 4pt; background:transparent; color:#111; font:inherit; text-align:center; }
+.academic-document .authors,.academic-document .institution,.academic-document .keywords { display:block; width:100%; height:auto; padding:0; border:0; border-radius:0; margin:0 0 4pt; background:transparent; color:#000; font:inherit; text-align:center; }
 .academic-document .institution { font-style:italic; margin-bottom:8pt; }
 .academic-document .keywords { font-size:10.5pt; font-style:italic; margin-bottom:16pt; }
 .academic-document .abstract { margin:0 0 18pt; font-size:11pt; text-align:justify; white-space:pre-wrap; }
 .academic-document .abstract h2 { font:700 12pt/1.4 "Times New Roman",Times,serif; margin:0 0 8pt; text-align:center; }
 .academic-document .abstract p { margin:0; }
-.academic-document .abstract textarea { width:100%; display:block; min-height:1.6em; padding:0; border:0; resize:none; overflow:hidden; background:transparent; color:#111; font:inherit; line-height:inherit; text-align:inherit; }
+.academic-document .abstract textarea { width:100%; display:block; min-height:1.6em; padding:0; border:0; resize:none; overflow:hidden; background:transparent; color:#000; font:inherit; line-height:inherit; text-align:inherit; }
 .academic-document .bibliography { margin:22pt 0 0; font-size:12pt; text-align:left; white-space:normal; }
 .academic-document .bibliography h2 { font:700 12pt/1.4 "Times New Roman",Times,serif; margin:0 0 12pt; text-align:left; text-transform:uppercase; letter-spacing:0.02em; }
-.academic-document .bibliography ul { list-style:none; padding:0; margin:0; font:inherit; color:#111; }
+.academic-document .bibliography ul { list-style:none; padding:0; margin:0; font:inherit; color:#000; }
 .academic-document .bibliography li { position:relative; padding-left:18pt; margin:0 0 10pt; line-height:1.55; text-align:left; }
 .academic-document .bibliography li::before { content:""; position:absolute; left:0; top:0.55em; width:5.5pt; height:5.5pt; border-radius:50%; background:#000; }
-.academic-document .body { display:flow-root; padding:0; margin:0; color:#111; font:inherit; white-space:pre-wrap; overflow-wrap:break-word; word-break:normal; tab-size:4; min-height:0; }
+.academic-document .body { display:flow-root; padding:0; margin:0; color:#000; font:inherit; white-space:pre-wrap; overflow-wrap:break-word; word-break:normal; tab-size:4; min-height:0; }
 .academic-document .body p,.academic-document .body > div:not(.academic-page-gap) { margin:0 0 8pt; }
-.academic-document .academic-code,.academic-document pre.academic-code { display:block; max-width:100%; margin:10pt 0; padding:0; border:0; background:transparent; color:#111; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; tab-size:4; text-align:left; overflow:hidden; }
+.academic-document .academic-code,.academic-document pre.academic-code { display:block; max-width:100%; margin:10pt 0; padding:0; border:0; background:transparent; color:#000; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; tab-size:4; text-align:left; overflow:hidden; }
 .academic-document .code-block { display:block; max-width:100%; overflow:hidden; margin:10pt 0; padding:0; background:transparent; border:0; white-space:normal; }
 .academic-document .code-block__toolbar,.academic-document .code-block__copy,.academic-document .code-block__lang { display:none !important; }
 .academic-document .code-block__render { margin:0; padding:0; max-width:100%; overflow:hidden; background:transparent; }
-.academic-document .code-block__source,.academic-document .code-block__editor { display:block; max-width:100%; box-sizing:border-box; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap !important; overflow-wrap:anywhere; word-break:break-word; tab-size:4; color:#111; }
-.academic-document .code-block__source *,.academic-document .code-block .hljs-keyword,.academic-document .code-block .hljs-selector-tag,.academic-document .code-block .hljs-literal,.academic-document .code-block .hljs-section,.academic-document .code-block .hljs-link,.academic-document .code-block .hljs-string,.academic-document .code-block .hljs-bullet,.academic-document .code-block .hljs-addition,.academic-document .code-block .hljs-comment,.academic-document .code-block .hljs-quote,.academic-document .code-block .hljs-deletion,.academic-document .code-block .hljs-number,.academic-document .code-block .hljs-attr,.academic-document .code-block .hljs-variable,.academic-document .code-block .hljs-template-variable,.academic-document .code-block .hljs-type,.academic-document .code-block .hljs-title,.academic-document .code-block .hljs-built_in,.academic-document .code-block .hljs-name,.academic-document .code-block .hljs-meta,.academic-document .code-block .hljs-doctag,.academic-document .code-block .hljs-symbol { color:#111 !important; white-space:inherit; overflow-wrap:inherit; word-break:inherit; font-weight:inherit; }
+.academic-document .code-block__source,.academic-document .code-block__editor { display:block; max-width:100%; box-sizing:border-box; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap !important; overflow-wrap:anywhere; word-break:break-word; tab-size:4; color:#000; }
+.academic-document .code-block__source *,.academic-document .code-block .hljs-keyword,.academic-document .code-block .hljs-selector-tag,.academic-document .code-block .hljs-literal,.academic-document .code-block .hljs-section,.academic-document .code-block .hljs-link,.academic-document .code-block .hljs-string,.academic-document .code-block .hljs-bullet,.academic-document .code-block .hljs-addition,.academic-document .code-block .hljs-comment,.academic-document .code-block .hljs-quote,.academic-document .code-block .hljs-deletion,.academic-document .code-block .hljs-number,.academic-document .code-block .hljs-attr,.academic-document .code-block .hljs-variable,.academic-document .code-block .hljs-template-variable,.academic-document .code-block .hljs-type,.academic-document .code-block .hljs-title,.academic-document .code-block .hljs-built_in,.academic-document .code-block .hljs-name,.academic-document .code-block .hljs-meta,.academic-document .code-block .hljs-doctag,.academic-document .code-block .hljs-symbol { color:#000 !important; white-space:inherit; overflow-wrap:inherit; word-break:inherit; font-weight:inherit; }
 .academic-document h1,.academic-document h2,.academic-document .fmt-size-heading { font-size:14pt; font-weight:700; line-height:1.4; }
 .academic-document h3,.academic-document .fmt-size-subheading { font-size:12.5pt; font-weight:700; line-height:1.45; }
 .academic-document h1,.academic-document h2,.academic-document h3 { margin:10pt 0 8pt; break-after:avoid; }
@@ -600,7 +600,7 @@ export const ACADEMIC_CSS = `
 .academic-document .fmt-underline.fmt-strike { text-decoration:underline line-through; text-underline-offset:0.18em; }
 .academic-document .fmt-overline.fmt-strike { text-decoration:overline line-through; }
 .academic-document .fmt-underline.fmt-overline.fmt-strike { text-decoration:underline overline line-through; text-underline-offset:0.18em; }
-.academic-document .fmt-color-black { color:#111; }
+.academic-document .fmt-color-black { color:#000; }
 .academic-document .fmt-color-red { color:#be123c; }
 .academic-document .fmt-color-blue { color:#0369a1; }
 .academic-document .fmt-color-green { color:#047857; }
@@ -613,10 +613,10 @@ export const ACADEMIC_CSS = `
 .academic-document .academic-link { color:#123; text-decoration:underline; }
 .academic-document .academic-figure { position:relative; display:block; margin:14pt 0; max-width:100%; text-align:center; white-space:normal; break-inside:avoid; }
 .academic-document img { display:inline-block; max-width:100%; max-height:160mm; height:auto; object-fit:contain; border-radius:0; vertical-align:middle; }
-.academic-document .academic-figure figcaption { font:italic 10pt/1.5 "Times New Roman",Times,serif; color:#111; margin:6pt 0 0; }
+.academic-document .academic-figure figcaption { font:italic 10pt/1.5 "Times New Roman",Times,serif; color:#000; margin:6pt 0 0; }
 .academic-document .academic-bibliography { margin:22pt 0 0; padding:0; border:0; font:inherit; white-space:normal; }
-.academic-document .academic-bibliography__title { font-size:14pt; font-weight:700; color:#111; margin:0 0 8pt; }
-.academic-document .academic-bibliography ol { list-style:none; padding:0; margin:0; font:inherit; color:#111; }
+.academic-document .academic-bibliography__title { font-size:14pt; font-weight:700; color:#000; margin:0 0 8pt; }
+.academic-document .academic-bibliography ol { list-style:none; padding:0; margin:0; font:inherit; color:#000; }
 .academic-document .academic-bibliography li { padding-left:12mm; text-indent:-12mm; margin:0 0 6pt; }
 .academic-document ul,.academic-document ol { padding-left:24pt; margin:0 0 10pt; white-space:normal; }
 .academic-document ul { list-style:disc; }
@@ -627,7 +627,7 @@ export const ACADEMIC_CSS = `
 .academic-document thead { display:table-header-group; }
 .academic-document tbody { display:table-row-group; }
 .academic-document tr { display:table-row; break-inside:avoid; }
-.academic-document th,.academic-document td { display:table-cell; border:1px solid #737373; padding:6pt 8pt; vertical-align:top; white-space:normal; color:#111; background:#fff; min-width:1.6em; }
+.academic-document th,.academic-document td { display:table-cell; border:1px solid #737373; padding:6pt 8pt; vertical-align:top; white-space:normal; color:#000; background:#fff; min-width:1.6em; }
 .academic-document pre { max-width:100%; overflow:hidden; font:10pt/1.5 Consolas,"Courier New",monospace; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; }
 `;
 

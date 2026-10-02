@@ -76,7 +76,7 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
     if (!specialPageBlockVisible(block, values)) return null;
     const path = prefix ? `${prefix}-${index}` : String(index);
     const box = { path, marginTopMm: finite(block.marginTopMm), marginBottomMm: finite(block.marginBottomMm), widthPercent: Number.isFinite(block.widthPercent) ? block.widthPercent : null };
-    if (block.type === "image") return { ...box, type: "image", source: block.source, widthMm: block.widthMm, heightMm: block.heightMm, align: block.align || "center" };
+    if (block.type === "image") return { ...box, type: "image", source: block.source, widthMm: block.widthMm, heightMm: block.heightMm, align: block.align || "center", leftIndentMm: finite(inherited?.leftIndentMm, 0), rightIndentMm: finite(inherited?.rightIndentMm, 0) };
     if (block.type === "spacer") return { ...box, type: "spacer", heightMm: finite(block.heightMm) };
     if (block.type === "separator") {
       return { ...box, type: "separator", lengthPercent: inRow ? 100 : finite(block.widthPercent, 100), thicknessPt: finite(block.thicknessPt, 0.75), align: block.align || "center" };
@@ -167,6 +167,8 @@ export function specialPageRowWidths(node, widthMm) {
 export function specialPageBoxCss(node, parent) {
   const rules = [];
   if (node.type === "image") rules.push(`display:block;object-fit:contain;width:${node.widthMm}mm;height:${node.heightMm}mm;max-width:100%;margin:${node.marginTopMm}mm ${node.align === "right" ? "0" : "auto"} ${node.marginBottomMm}mm ${node.align === "left" ? "0" : "auto"};`);
+  // A group's left/right indent also frames an image: centred images sit in the indented content box, aligned ones keep their side.
+  if (node.type === "image" && (node.leftIndentMm || node.rightIndentMm)) rules.push(node.align === "left" ? `margin-left:${node.leftIndentMm}mm;` : node.align === "right" ? `margin-right:${node.rightIndentMm}mm;` : `position:relative;left:${(node.leftIndentMm - node.rightIndentMm) / 2}mm;`);
   // Shares may shrink (never grow) so a row never exceeds its content box; see specialPageRowWidths.
   if (parent?.direction === "row") rules.push(node.widthPercent !== null ? `flex:0 1 ${node.widthPercent}%;` : "flex:1 1 0;", "min-width:0;");
   if (node.type === "spacer") rules.push(`height:${node.heightMm}mm;margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;`);

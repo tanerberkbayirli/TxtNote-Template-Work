@@ -203,7 +203,8 @@ export async function buildThesisPdf(model) {
     if (flowLayout) for (const block of flowLayout) {
       if (block.type === "spacer") y += block.heightMm;
       else if (block.type === "image") {
-        const x = page.margins.leftMm + (block.align === "left" ? 0 : block.align === "right" ? width - block.widthMm : (width - block.widthMm) / 2);
+        const indentL = block.leftIndentMm || 0; const indentR = block.rightIndentMm || 0;
+        const x = page.margins.leftMm + (block.align === "left" ? indentL : block.align === "right" ? width - indentR - block.widthMm : indentL + (width - indentL - indentR - block.widthMm) / 2);
         pdf.addImage(block.source, /png/i.test(block.source.slice(0, 20)) ? "PNG" : "JPEG", x, y, block.widthMm, block.heightMm);
         y += block.heightMm;
       }
@@ -357,7 +358,7 @@ function specialPageDocx(nodes, context, widthMm) {
     if (node.type === "image") {
       gap(node.marginTopMm);
       const image = imageBytes(node.source);
-      out.push(new Paragraph({ alignment: alignDocx(node.align), spacing: { before: 0, after: 0, line: twip(node.heightMm), lineRule: LineRuleType.AT_LEAST }, children: [new ImageRun({ ...image, transformation: { width: node.widthMm * PX_PER_MM, height: node.heightMm * PX_PER_MM } })] }));
+      out.push(new Paragraph({ alignment: alignDocx(node.align), ...(node.leftIndentMm || node.rightIndentMm ? { indent: { left: twip(node.leftIndentMm || 0), right: twip(node.rightIndentMm || 0) } } : {}), spacing: { before: 0, after: 0, line: twip(node.heightMm), lineRule: LineRuleType.AT_LEAST }, children: [new ImageRun({ ...image, transformation: { width: node.widthMm * PX_PER_MM, height: node.heightMm * PX_PER_MM } })] }));
       gap(node.marginBottomMm);
     } else if (node.type === "text") {
       out.push(docxParagraph(node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold })) : plainRuns(node.text), node.style, context));

@@ -19,6 +19,7 @@ const compile = (template = mcbuPhd, state = thesis()) => compileThesisDocument(
 const section = (model, id) => model.sections.find((item) => item.id === id);
 const texts = (nodes) => nodes.flatMap((node) => node.type === "group" ? texts(node.blocks) : node.type === "text" ? [node.text] : []);
 const mm = (pt) => pt * 25.4 / 72;
+const flat = (nodes) => nodes.flatMap((node) => node.type === "group" ? flat(node.blocks) : [node]);
 
 describe("Task 10B.2 final details", () => {
   it("old metadata without English department opens with an advisory warning and neutral placeholder", () => {
@@ -83,10 +84,10 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     const cover = section(compile(), "inner-cover");
     assert.equal(cover.specialPage, true); assert.equal(cover.rules.page.numbering.enabled, false);
     assert.deepEqual(texts(cover.layout), ["T.C.", "MANİSA CELAL BAYAR ÜNİVERSİTESİ", "LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ", "DOKTORA TEZİ", "Eğitim Bilimleri ANABİLİM DALI", "Eğitim Programları ve Öğretim PROGRAMI", "Çevrimiçi öğrenme", "Çağrı ÖZDOĞAN", "Danışman", "Doç. Dr. İlknur ÇİÇEK", "Manisa–2026"]);
-    const nodes = cover.layout;
+    const nodes = flat(cover.layout);
     const spacers = nodes.filter((node) => node.type === "spacer").map((node) => Math.round(node.heightMm * 100) / 100);
     // "n satır boşluk" = n empty Word lines (1.15 em per line of Times New Roman).
-    assert.deepEqual(spacers, [13.8, 16.1, 13.8, 98, 80.5, 69, 96.6].map((pt) => Math.round(mm(pt) * 100) / 100));
+    assert.deepEqual(spacers, [16.1, 13.8, 96.6, 80.5, 69, 110.4].map((pt) => Math.round(mm(pt) * 100) / 100));
     const logo = nodes.find((node) => node.type === "image");
     assert.ok(logo.source.startsWith("data:image/png;base64,"));
     assert.ok(Math.abs(logo.heightMm - mm(105.74)) < 1e-9);
@@ -133,12 +134,12 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
 
   it("I/K: H1–H4 numbering, chapter headings uppercase on a new page; TOC and indexes are derived", () => {
     const model = compile();
-    assert.deepEqual(model.headings.map((h) => h.label), ["1.", "1.1.", "1.1.1.", "1.1.1.1.", "2."]);
+    assert.deepEqual(model.headings.map((h) => h.label), ["BİRİNCİ BÖLÜM", "1.1.", "1.1.1.", "1.1.1.1.", "İKİNCİ BÖLÜM"]);
     const h1 = section(model, "main").rules.headings[1];
     assert.deepEqual([h1.fontSizePt, h1.fontWeight, h1.align, h1.textTransform, h1.pageBreakBefore, h1.spaceAfterPt], [12, 700, "justify", "uppercase", true, 20.7]);
     const pages = Object.fromEntries(model.indexSources.map((entry, i) => [entry.anchor, { label: String(i + 1) }]));
     const resolved = resolveGeneratedIndexes(model, pages);
-    assert.deepEqual(section(resolved, "toc").indexRows.map((row) => row.text), ["ÖZET", "ABSTRACT", "ÖNSÖZ VE TEŞEKKÜR", "SİMGELER VE KISALTMALAR DİZİNİ", "ŞEKİLLER DİZİNİ", "TABLOLAR DİZİNİ", "İÇİNDEKİLER", "GİRİŞ", "1. KURAMSAL ÇERÇEVE", "1.1. Alt", "1.1.1. Alt alt", "1.1.1.1. Dört", "2. YÖNTEM", "KAYNAKÇA", "EKLER"]);
+    assert.deepEqual(section(resolved, "toc").indexRows.map((row) => row.text), ["ÖZET", "ABSTRACT", "ÖNSÖZ VE TEŞEKKÜR", "SİMGELER VE KISALTMALAR DİZİNİ", "ŞEKİLLER DİZİNİ", "TABLOLAR DİZİNİ", "İÇİNDEKİLER", "GİRİŞ", "BİRİNCİ BÖLÜM KURAMSAL ÇERÇEVE", "1.1. Alt", "1.1.1. Alt alt", "1.1.1.1. Dört", "İKİNCİ BÖLÜM YÖNTEM", "KAYNAKÇA", "EKLER"]);
     assert.ok(section(resolved, "toc").indexRows.every((row) => row.page === pages[row.anchor].label));
     assert.deepEqual(section(resolved, "index-figures").indexRows.map((row) => row.text), ["Şekil 1. Bir şekil", "Şekil 2. İkinci şekil"]);
     assert.deepEqual(section(resolved, "index-tables").indexRows.map((row) => row.text), ["Tablo 1. Bir tablo"]);
@@ -195,7 +196,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.ok(numbering.some((attrs) => /w:start="1"/.test(attrs) && /decimal/.test(attrs)));
     has(notes, /Dipnot metni\./, "footnote text"); has(notes, /<w:sz w:val="20"\/>/, "footnote 10 pt"); has(notes, /Times New Roman/, "footnote font");
     // Captions also appear as index rows; compare positions inside the main body.
-    const start = xml.indexOf("1. KURAMSAL ÇERÇEVE");
+    const start = xml.indexOf("KURAMSAL ÇERÇEVE", xml.indexOf("KURAMSAL ÇERÇEVE") + 1);
     const order = (a, b) => assert.ok(start > 0 && xml.indexOf(a, start) >= 0 && xml.indexOf(a, start) < xml.indexOf(b, start), `${a} before ${b}`);
     order("Tablo 1. Bir tablo", "<w:tbl>"); order("<w:drawing>", "Şekil 1. Bir şekil");
     for (const text of ["TAAHHÜTNAME", "Anahtar Kelimeler: a, b, c, d, e", ">Sayfa<", "ÇEVRİMİÇİ ÖĞRENME"]) assert.ok(xml.includes(text), text);
@@ -213,7 +214,7 @@ describe("Task 10B.1: MCBÜ final polish", () => {
     const lineHeight = (selector) => Number(css.match(new RegExp(`data-thesis-flow-section="main"\\]\\) ${selector}\\{[^}]*line-height:([\\d.]+)`))?.[1]);
     assert.equal(Math.round(lineHeight("\\.thesis-body") * 12 * 100) / 100, 20.7, "body 1.5 lines = 20.7 pt (official PDF)");
     assert.equal(Math.round(lineHeight("\\.thesis-body h1") * 12 * 100) / 100, 20.7, "headings 1.5 lines");
-    assert.match(css, /data-thesis-flow-section="inner-cover"\]\) \[data-thesis-block="1"\]\{[^}]*line-height:1\.15;/, "special page single line = 1.15 em");
+    assert.match(css, /data-thesis-flow-section="inner-cover"\]\) \[data-thesis-block="0-0"\]\{[^}]*line-height:1\.15;/, "special page single line = 1.15 em");
     assert.equal(section(model, "main").rules.body.lineHeight, 1.5, "stored semantics unchanged");
     const xml = await docxXml(model);
     assert.match(xml, /w:line="240" w:lineRule="auto"/, "single lines are Word's auto 240");
@@ -239,7 +240,7 @@ describe("Task 10B.1: MCBÜ final polish", () => {
     const resolved = resolveGeneratedIndexes(chapter);
     assert.deepEqual(section(resolved, "index-figures").indexRows.map((row) => row.text), ["Şekil 1. Giriş şekli", "Şekil 2. Giriş şekli 2", "Şekil 1.1. Bir şekil", "Şekil 2.1. İkinci şekil"]);
     assert.deepEqual(section(resolved, "index-tables").indexRows.map((row) => row.text), ["Tablo 1. Giriş tablosu", "Tablo 1.1. Bir tablo"]);
-    assert.deepEqual(chapter.headings.map((h) => h.label), ["1.", "1.1.", "1.1.1.", "1.1.1.1.", "2."]);
+    assert.deepEqual(chapter.headings.map((h) => h.label), ["BİRİNCİ BÖLÜM", "1.1.", "1.1.1.", "1.1.1.1.", "İKİNCİ BÖLÜM"]);
   });
 
   it("C: İkinci Danışman / Co-Supervisor lines appear only when a title or name is given", () => {

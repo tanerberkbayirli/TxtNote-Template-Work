@@ -55,22 +55,22 @@ export const EXPORT_WIDGET_CSS = `
 .math-formula { white-space:normal; background:transparent !important; border:0 !important; box-shadow:none !important; }
 .math-formula--block { display:block; margin:10pt 0; padding:0 !important; text-align:center; border-radius:0 !important; }
 .math-formula--inline { display:inline-flex; align-items:center; padding:0 !important; vertical-align:middle; border-radius:0 !important; }
-.math-formula__render { overflow:visible; text-align:center; color:#111; }
-.math-formula .katex, .math-formula .katex * { color:#111 !important; }
+.math-formula__render { overflow:visible; text-align:center; color:#000; }
+.math-formula .katex, .math-formula .katex * { color:#000 !important; }
 .math-formula .katex-display { margin:0; }
 .math-formula .katex-display>.katex { text-align:center; }
 .code-block { display:block; margin:10pt 0; padding:0; max-width:100%; overflow:hidden; background:transparent; border:0; border-radius:0 !important; white-space:normal; font-family:Consolas,"Courier New",monospace; }
 .code-block__toolbar,.code-block__copy,.code-block__lang { display:none !important; }
 .code-block__render { margin:0; padding:0; max-width:100%; overflow:hidden; text-align:left; background:transparent; }
-.code-block__source { display:block; max-width:100%; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap !important; overflow-wrap:anywhere !important; word-break:break-word; color:#111; }
-.code-block__source * { white-space:inherit; overflow-wrap:inherit; word-break:inherit; color:#111 !important; }
-.academic-code { display:block; max-width:100%; margin:10pt 0; padding:0; border:0; background:transparent; color:#111; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; tab-size:4; text-align:left; overflow:hidden; }
+.code-block__source { display:block; max-width:100%; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap !important; overflow-wrap:anywhere !important; word-break:break-word; color:#000; }
+.code-block__source * { white-space:inherit; overflow-wrap:inherit; word-break:inherit; color:#000 !important; }
+.academic-code { display:block; max-width:100%; margin:10pt 0; padding:0; border:0; background:transparent; color:#000; font:10.5pt/1.55 Consolas,"Courier New",monospace; white-space:pre-wrap; overflow-wrap:anywhere; word-break:break-word; tab-size:4; text-align:left; overflow:hidden; }
 .academic-export-stack { position:relative; width:210mm; min-width:210mm; background:#fff; }
 .academic-export-stack .academic-sheet { box-shadow:none !important; background:#fff !important; }
 .academic-export-stack .academic-page { background:transparent !important; box-shadow:none !important; }
 .academic-document .academic-table-wrap { display:block; width:100%; max-width:100%; margin:12pt 0; overflow:visible; white-space:normal; }
 .academic-document table { display:table; width:100%; table-layout:fixed; border-collapse:collapse; margin:10pt 0; white-space:normal; background:#fff; }
-.academic-document th,.academic-document td { display:table-cell; border:1px solid #737373; padding:6pt 8pt; vertical-align:top; white-space:normal; color:#111; }
+.academic-document th,.academic-document td { display:table-cell; border:1px solid #737373; padding:6pt 8pt; vertical-align:top; white-space:normal; color:#000; }
 .academic-bibliography-list { list-style:none; padding:0; margin:0; }
 .academic-bibliography-list li { position:relative; display:block; padding-left:18pt; margin:0 0 10pt; }
 .academic-bibliography-list li::before { content:""; position:absolute; left:0; top:0.55em; width:5.5pt; height:5.5pt; border-radius:50%; background:#000; }
@@ -212,16 +212,16 @@ function cleanWidgets(root, { keepPageGaps = false } = {}) {
 
 function forcePrintSurface(root) {
   root.style.background = root.classList.contains("academic-page") ? "transparent" : "#fff";
-  root.style.color = "#111";
+  root.style.color = "#000";
   root.querySelectorAll(".math-formula").forEach((el) => {
     el.style.background = "transparent";
     el.style.border = "0";
-    el.style.color = "#111";
+    el.style.color = "#000";
   });
   root.querySelectorAll(".code-block, .academic-code").forEach((el) => {
     el.style.background = "transparent";
     el.style.border = "0";
-    el.style.color = "#111";
+    el.style.color = "#000";
     el.style.maxWidth = "100%";
     el.style.overflow = "hidden";
     el.style.whiteSpace = el.classList.contains("academic-code") ? "pre-wrap" : "normal";
@@ -235,7 +235,7 @@ function forcePrintSurface(root) {
     el.style.whiteSpace = "pre-wrap";
     el.style.overflowWrap = "anywhere";
     el.style.wordBreak = "break-word";
-    el.style.color = "#111";
+    el.style.color = "#000";
   });
 }
 

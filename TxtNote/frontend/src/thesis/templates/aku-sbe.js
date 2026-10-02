@@ -188,8 +188,10 @@ const abstractEn = [
 
 /** Front-matter title: bold centred (H1 style), single spaced, unnumbered; 6 pt before and `after` pt after. */
 const frontTitle = (after = 6, before = 6) => ({ "1": { align: "center", textTransform: "none", lineHeight: 1, spaceBeforePt: before, spaceAfterPt: after, numbering: { enabled: false } } });
-/** Titles of the main and back parts (GİRİŞ, TARTIŞMA…, KAYNAKÇA, EKLER): uppercase bold centred, single (EXPLICIT), 12/12 pt (INFERRED). */
-const mainTitle = { "1": { align: "center", textTransform: "none", lineHeight: 1, spaceBeforePt: 12, spaceAfterPt: 12, numbering: { enabled: false } } };
+/** Titles of the main and back parts (GİRİŞ, TARTIŞMA…, KAYNAKÇA, EKLER): uppercase bold centred, single (EXPLICIT),
+ *  one blank single line after the title (EXPLICIT §4.1 "bir satır boşluk"; the official sample measures 27.6 pt
+ *  title→first entry = one blank 13.8 pt line), 12 pt before (INFERRED). */
+const mainTitle = { "1": { align: "center", textTransform: "none", lineHeight: 1, spaceBeforePt: 12, spaceAfterPt: SINGLE_PT, numbering: { enabled: false } } };
 
 // Row style of the lists (TABLOLAR / ŞEKİLLER / RESİMLER LİSTESİ): the TOC rules; entries single, 0/0 pt, bold label, wrapped lines hang under the title.
 const listRule = (kind, title) => ({

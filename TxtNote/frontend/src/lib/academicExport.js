@@ -719,7 +719,7 @@ export async function buildAcademicDocx(doc) {
   if (doc?.article && typeof document !== "undefined") {
     const clone = await snapshotAcademicArticle(doc.article);
     const host = document.createElement("div");
-    host.style.cssText = "position:fixed;left:-10000px;top:0;width:210mm;background:#fff;color:#111;z-index:-1;";
+    host.style.cssText = "position:fixed;left:-10000px;top:0;width:210mm;background:#fff;color:#000;z-index:-1;";
     const style = document.createElement("style");
     style.textContent = `${A4_CSS}\n${EXPORT_WIDGET_CSS}`;
     host.appendChild(style);

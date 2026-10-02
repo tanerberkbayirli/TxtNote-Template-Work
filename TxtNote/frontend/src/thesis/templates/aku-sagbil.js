@@ -231,7 +231,7 @@ const abstractEn = () => [
 // Örnek 8-12: contents and lists. Rows are 1.5 lines (pitch 7.3 mm measured); "SAYFA" is bold and right aligned under the title;
 // the page numbers are centred in that column (x centres 172.7 mm measured); no leader line is printed (checked on the vector page).
 const indexBase = (kind, title, extra = {}) => ({
-  kind, title, leader: "none", pageHeading: "SAYFA", hanging: "label", indentMm: 5.29, pageNumberAlignment: "right",
+  kind, title, leader: "none", pageHeading: "SAYFA", hanging: "label", indentMm: 5.29, pageNumberAlignment: "center", pageColumnWidthMm: 14.6,
   pageHeadingStyle: { ...bold, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 },
   style: { lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" }, ...extra,
 });

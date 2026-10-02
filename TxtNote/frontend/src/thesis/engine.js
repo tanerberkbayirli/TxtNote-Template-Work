@@ -462,9 +462,16 @@ export function thesisSectionCss(section) {
     if (index.hanging === "label") rules.push(`${scope} .thesis-index-text{display:flex;align-items:baseline;column-gap:0.25em}${scope} .thesis-index-text>.thesis-index-label{flex:none;white-space:nowrap}${scope} .thesis-index-text>.thesis-index-title{min-width:0}`);
     // hanging as a length: wrapped entry lines start that far right of the first line (Word "hanging"), independent of the label width.
     if (index.hanging > 0) rules.push(`${scope} .thesis-index-text{padding-left:${index.hanging}mm;text-indent:-${index.hanging}mm}`);
+    // A row with its own lineHeight: its paint-only Word baseline offset replaces the one the list already carries (offsets of nested elements add up).
+    const rowLift = (rowStyle) => {
+      const own = wordBaselineProbe({ ...index.style, ...rowStyle }, lineSpacing, lh(rowStyle.lineHeight));
+      if (!own) return "";
+      const inherited = wordBaselineProbe(index.style, lineSpacing, lh(index.style?.lineHeight));
+      return `position:relative;top:calc(-1 * var(--thesis-wb-${own.id}, ${own.fallbackPt}pt)${inherited ? ` + var(--thesis-wb-${inherited.id}, ${inherited.fallbackPt}pt)` : ""});`;
+    };
     // "unnumbered" (rows of unnumbered titles) is emitted last, so it overrides the level rule of the same specificity.
     for (const [level, style] of Object.entries(index.levelStyles || {}).sort(([a], [b]) => Number(a === "unnumbered") - Number(b === "unnumbered"))) {
-      rules.push(`${scope} .thesis-toc li[${level === "unnumbered" ? "data-index-unnumbered" : `data-index-level="${level}"`}]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}${style.align ? `text-align:${style.align};` : ""}${style.includePageNumber === false ? "display:block;" : ""}}`);
+      rules.push(`${scope} .thesis-toc li[${level === "unnumbered" ? "data-index-unnumbered" : `data-index-level="${level}"`}]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}${style.align ? `text-align:${style.align};` : ""}${style.includePageNumber === false ? "display:block;" : style.includePageNumber === true && level === "unnumbered" && index.leaderFlow !== "inline" ? "display:flex;" : ""}${style.lineHeight ? `line-height:${lh(style.lineHeight)};${rowLift(style)}` : ""}}`);
     }
     // Extra space above the first unnumbered title row that follows numbered rows (back matter after the chapters).
     if (index.unnumberedAfterNumberedSpaceBeforePt > 0) rules.push(`${scope} .thesis-toc li:not([data-index-unnumbered]) + li[data-index-unnumbered]{margin-top:${index.unnumberedAfterNumberedSpaceBeforePt}pt;}`);

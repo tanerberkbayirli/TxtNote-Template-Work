@@ -285,7 +285,7 @@ textarea::selection,
     margin: 0 auto 2rem;
     padding: 18mm 18mm 24mm;
     background: #fff;
-    color: #111;
+    color: #000;
     box-shadow: 0 8px 28px rgb(0 0 0 / 0.08);
   }
 
@@ -383,11 +383,11 @@ textarea::selection,
     padding-top: 8pt;
     border-top: 1px solid #d4d4d4;
     font: 9pt/1.4 "Times New Roman", Times, serif;
-    color: #111;
+    color: #000;
   }
 
   .academic-page .rich-text-title {
-    color: #111;
+    color: #000;
   }
 
   .academic-meta {
@@ -399,7 +399,7 @@ textarea::selection,
     font-family: "Times New Roman", Times, "Liberation Serif", serif;
     font-size: 12pt;
     line-height: 1.5;
-    color: #111;
+    color: #000;
     outline: none;
   }
 
@@ -424,7 +424,7 @@ textarea::selection,
     display: block;
     text-align: center;
     font: 700 12pt/1.4 "Times New Roman", Times, serif;
-    color: #111;
+    color: #000;
     margin-bottom: 6pt;
   }
 
@@ -437,7 +437,7 @@ textarea::selection,
     border: 0;
     background: transparent;
     font: 11pt/1.6 "Times New Roman", Times, "Liberation Serif", serif;
-    color: #111;
+    color: #000;
     outline: none;
     padding: 0;
   }
@@ -457,7 +457,7 @@ textarea::selection,
   .academic-bibliography-field > span {
     display: block;
     font: 700 12pt/1.4 "Times New Roman", Times, serif;
-    color: #111;
+    color: #000;
     margin-bottom: 12pt;
     text-transform: uppercase;
     letter-spacing: 0.02em;
@@ -498,7 +498,7 @@ textarea::selection,
     border: 0;
     background: transparent;
     font: 12pt/1.55 "Times New Roman", Times, "Liberation Serif", serif;
-    color: #111;
+    color: #000;
     outline: none;
     padding: 0;
   }
@@ -540,7 +540,7 @@ textarea::selection,
   }
 
   .academic-bibliography-add:hover {
-    color: #111;
+    color: #000;
   }
 
   .academic-page .academic-body,
@@ -550,7 +550,7 @@ textarea::selection,
     font-family: "Times New Roman", Times, "Liberation Serif", serif;
     font-size: 12pt;
     line-height: 1.75;
-    color: #111;
+    color: #000;
     overflow-wrap: break-word;
     word-break: normal;
     height: auto !important;
@@ -579,7 +579,7 @@ textarea::selection,
   .academic-document .code-block__source,
   .academic-document .code-block__editor {
     max-width: 100%;
-    color: #111;
+    color: #000;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
     word-break: break-word;
@@ -674,7 +674,7 @@ textarea::selection,
 
   .academic-page .academic-cite {
     background: transparent;
-    color: #111;
+    color: #000;
     font-style: italic;
   }
 
@@ -1389,7 +1389,7 @@ html.theme-black .code-block .hljs-symbol {
   margin: 0 0 2pt;
   white-space: normal !important;
   background: #fff;
-  color: #111;
+  color: #000;
 }
 
 .academic-table-wrap thead,
@@ -1424,7 +1424,7 @@ html.theme-black .code-block .hljs-symbol {
   padding: 6pt 8pt !important;
   vertical-align: top;
   white-space: normal !important;
-  color: #111;
+  color: #000;
   background: #fff;
   min-width: 1.6em;
 }
@@ -1439,7 +1439,7 @@ html.theme-black .code-block .hljs-symbol {
   background: transparent;
   font: 700 16pt/1.35 "Times New Roman", Times, serif;
   text-align: center;
-  color: #111;
+  color: #000;
   outline: none;
 }
 

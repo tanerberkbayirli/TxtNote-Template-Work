@@ -71,7 +71,7 @@ describe("generic engine extensions (batch A)", () => {
     assert.deepEqual(validateThesisTemplate(template), []);
     const model = compileThesisDocument(template, { sectionContent: { bibliography: "<p>Ref</p>" } }, "T", "<h1>Bir</h1><h1>İki</h1>");
     const entry = model.headings.find((heading) => heading.title === "KAYNAKÇA");
-    assert.equal(entry.label, "3.");
+    assert.equal(entry.label, "ÜÇÜNCÜ BÖLÜM");
   });
 
   it("special pages: inline bold runs, frames, colour", async () => {
