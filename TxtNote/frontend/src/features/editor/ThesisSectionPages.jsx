@@ -19,7 +19,7 @@ function PageChrome({ section, values }) {
   const { margins, header, footer } = page;
   const headerText = header?.firstPage === "omit" ? "" : resolveChromeText(header?.content, values);
   const footerText = footer?.firstPage === "omit" ? "" : resolveChromeText(footer?.content, values);
-  const font = { fontFamily: body.fontFamily, fontSize: "10pt", lineHeight: 1.1, color: "#111" };
+  const font = { fontFamily: body.fontFamily, fontSize: "10pt", lineHeight: 1.1, color: "#000" };
   return <>
     {headerText ? <div className="absolute" style={{ ...font, left: `${margins.leftMm}mm`, top: `${(header?.distanceMm || 0) + (header?.heightMm || 0) / 2}mm`, width: `${page.widthMm - margins.leftMm - margins.rightMm}mm` }}>{headerText}</div> : null}
     {footerText ? <div className="absolute" style={{ ...font, left: `${margins.leftMm}mm`, bottom: `${footer?.distanceMm || 0}mm`, width: `${page.widthMm - margins.leftMm - margins.rightMm}mm` }}>{footerText}</div> : null}
@@ -32,7 +32,7 @@ function SheetChrome({ rules, values, page }) {
   const { margins, header, footer } = rule;
   const headerText = page.showHeader ? resolveChromeText(header?.content, values) : "";
   const footerText = page.showFooter ? resolveChromeText(footer?.content, values) : "";
-  const box = { left: `${margins.leftMm}mm`, width: `${rule.widthMm - margins.leftMm - margins.rightMm}mm`, fontFamily: body.fontFamily, lineHeight: 1.1, color: "#111" };
+  const box = { left: `${margins.leftMm}mm`, width: `${rule.widthMm - margins.leftMm - margins.rightMm}mm`, fontFamily: body.fontFamily, lineHeight: 1.1, color: "#000" };
   const topMm = (header?.distanceMm || 0) + (header?.heightMm || 0) / 2;
   const bottomMm = footer?.distanceMm || 0;
   // A number on the same edge as header/footer text stays nearest the paper edge; the text moves one line inward.

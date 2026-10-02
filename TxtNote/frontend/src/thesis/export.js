@@ -557,13 +557,14 @@ function docxChildren(section, context) {
       const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : rule.hanging > 0 ? rule.hanging : 0;
       const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
       const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
-      // A number on its own line (ownLine headings) is a paragraph of its own above the title row.
+      // A number on its own line (ownLine headings) is a label paragraph + a title paragraph
+      // with no space between them (the PDF/editor show them as one block); keepNext holds them together.
       const lineLabel = row.labelLine && row.label && row.rowTitle !== undefined;
-      if (lineLabel) children.push(docxParagraph([{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }], { ...style, hangingIndentMm: undefined }, context, { keepNext: true }));
+      if (lineLabel) children.push(docxParagraph([{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }], { ...style, hangingIndentMm: undefined, spaceAfterPt: 0 }, context, { keepNext: true }));
       const runs = lineLabel ? plainRuns(row.rowTitle) : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
       const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
       if (withPage) runs.push({ type: "tab" }, row.anchor ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? "") } : plainRuns(row.page)[0] || { type: "text", text: "" });
-      children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
+      children.push(docxParagraph(runs, lineLabel ? { ...style, spaceBeforePt: 0 } : style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
     }
     return children;
   }
