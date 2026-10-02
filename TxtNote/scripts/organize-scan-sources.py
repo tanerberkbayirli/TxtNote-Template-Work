@@ -14,6 +14,8 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
+import urllib.parse
 import json
 import shutil
 from collections import defaultdict
@@ -26,6 +28,22 @@ DEFAULT_REPORT = SCRIPT_DIR.parent / "output" / "turkey-thesis-scan.json"
 DEFAULT_CONFIG = SCRIPT_DIR / "turkey-universities.json"
 DEFAULT_TARGET = REPO_ROOT / "Butun-Sablonlar"
 SCAN_MARKER = "<!-- organize-scan-sources -->"
+
+
+def load_scanner():
+    spec = importlib.util.spec_from_file_location("thesis_scanner", SCRIPT_DIR / "scan-ege-thesis-templates.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+SCANNER = load_scanner()
+
+
+def still_relevant(item: dict) -> bool:
+    """Re-apply the scanner's current exclusions to a report made by an older run."""
+    context = " ".join((item.get("link_text") or "", urllib.parse.unquote(item["document_url"])))
+    return not SCANNER.is_match(context, SCANNER.EXCLUDED_TERMS)
 
 
 def sha256(path: Path) -> str:
@@ -46,8 +64,12 @@ def main() -> int:
     report = json.loads(args.report.read_text(encoding="utf-8"))
     universities = {u["id"]: u for u in json.loads(args.config.read_text(encoding="utf-8"))["universities"]}
     items_by_university: dict[str, list[dict]] = defaultdict(list)
+    excluded = 0
     for item in report["template_candidates"] + report["guides"]:
-        items_by_university[item["university_id"]].append(item)
+        if still_relevant(item):
+            items_by_university[item["university_id"]].append(item)
+        else:
+            excluded += 1
 
     summary = []
     for result in report["results_by_university"]:
@@ -82,6 +104,7 @@ def main() -> int:
     write_summary(args.target, report, summary)
     write_manifest(args.target, report, summary)
     found = sum(1 for _, _, items, _ in summary if items)
+    print(f"{excluded} kayıt güncel eleme kurallarıyla çıkarıldı.")
     print(f"{found}/{len(summary)} üniversitede kaynak bulundu; {sum(c for *_, c in summary)} yeni dosya kopyalandı → {args.target}")
     return 0
 

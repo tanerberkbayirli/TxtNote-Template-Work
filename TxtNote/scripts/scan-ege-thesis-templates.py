@@ -18,6 +18,7 @@ import json
 import re
 import socket
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -60,7 +61,7 @@ EXCLUDED_TERMS = (
     "faaliyet raporu", "stratejik plan", "akademik takvim", "takvim", "calendar",
     "el kitabı", "el kitabi", "handbook", "ders planı", "ders plani", "müfredat", "mufredat",
     "kontenjan", "tezsiz", "non-thesis", "tez önerisi", "tez onerisi", "thesis proposal",
-    "bitirme projesi",
+    "bitirme projesi", "seminer", "seminar", "proje yazım", "proje yazim",
 )
 # Linked from a guide page, these still describe thesis layout without saying "tez".
 LAYOUT_TERMS = ("yazım", "yazim", "kapak", "cover", "format", "biçim", "bicim", "şablon", "sablon", "template", "kılavuz", "kilavuz", "klavuz", "guide")
@@ -179,11 +180,13 @@ class PageParser(HTMLParser):
 
 
 class SiteCrawler:
-    def __init__(self, university: dict, max_pages: int, delay: float):
+    def __init__(self, university: dict, max_pages: int, delay: float, max_seconds: float = 0):
         self.university = university
         self.domain = university["domain"].lower()
         self.max_pages = max_pages
         self.delay = delay
+        self.deadline = time.monotonic() + max_seconds if max_seconds > 0 else None
+        self.deadline_reached = False
         self.robot_parsers: dict[str, urllib.robotparser.RobotFileParser] = {}
         self.robots_checked: set[str] = set()
         self.sitemaps_by_origin: dict[str, list[str]] = {}
@@ -402,12 +405,15 @@ class SiteCrawler:
         for seed in page_seeds:
             self.priority[canonical_url(seed)] = 100
         while queue and len(self.pages_visited) < self.max_pages:
+            if self.deadline and time.monotonic() > self.deadline:
+                self.deadline_reached = True
+                break
             best = max(range(len(queue)), key=lambda index: (self.priority.get(canonical_url(queue[index]), self.relevance(queue[index])), -index))
             url = queue[best]
             del queue[best]
             self.parse_page(url, queue)
         homepage_reachable = canonical_url(self.university["start_url"]) in self.pages_fetched
-        page_limit_reached = len(self.pages_visited) >= self.max_pages and bool(queue)
+        page_limit_reached = (len(self.pages_visited) >= self.max_pages or self.deadline_reached) and bool(queue)
         scan_status = "erişilemedi" if not self.pages_fetched else ("kısmi" if self.errors or page_limit_reached or not homepage_reachable else "tarandı")
         return {
             "university_id": self.university["id"],
@@ -418,6 +424,7 @@ class SiteCrawler:
             "pages_fetched": len(self.pages_fetched),
             "homepage_reachable": homepage_reachable,
             "page_limit_reached": page_limit_reached,
+            "deadline_reached": self.deadline_reached,
             "scan_status": scan_status,
             "template_candidates": sorted(self.candidates.values(), key=lambda item: item["document_url"]),
             "guides": sorted(self.guides.values(), key=lambda item: item["document_url"]),
@@ -506,12 +513,29 @@ def download_templates(report: dict, config: dict, output_base: Path, delay: flo
     return download_root
 
 
-def build_report(config: dict, max_pages: int, delay: float, workers: int = 4) -> dict:
+def load_checkpoint(path: Path | None) -> dict[str, dict]:
+    done: dict[str, dict] = {}
+    if path and path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            try:
+                result = json.loads(line)
+            except json.JSONDecodeError:
+                continue  # a line cut off by an interrupted write
+            done[result["university_id"]] = result
+    return done
+
+
+def build_report(config: dict, max_pages: int, delay: float, workers: int = 4, checkpoint: Path | None = None, max_seconds: float = 0) -> dict:
     universities = config["universities"]
+    results_by_id = {key: value for key, value in load_checkpoint(checkpoint).items() if key in {u["id"] for u in universities}}
+    if results_by_id:
+        print(f"Ara kayıttan {len(results_by_id)} üniversite alındı; kalanlar taranacak.", file=sys.stderr, flush=True)
+    checkpoint_lock = threading.Lock()
+
     def scan_one(index: int, university: dict) -> dict:
         print(f"[{index}/{len(universities)}] {university['name']} taranıyor...", file=sys.stderr, flush=True)
         try:
-            result = SiteCrawler(university, max_pages, delay).scan()
+            result = SiteCrawler(university, max_pages, delay, max_seconds).scan()
         except KeyboardInterrupt:
             raise
         except Exception as error:
@@ -530,12 +554,17 @@ def build_report(config: dict, max_pages: int, delay: float, workers: int = 4) -
                 "errors": [{"url": university["start_url"], "error": str(error)[:240]}],
             }
         print(f"    tamamlandı: {result['pages_fetched']}/{result['pages_scanned']} sayfa yüklendi, {len(result['template_candidates'])} aday", file=sys.stderr, flush=True)
+        if checkpoint:
+            with checkpoint_lock, checkpoint.open("a", encoding="utf-8") as output_file:
+                output_file.write(json.dumps(result, ensure_ascii=False) + "\n")
         return result
 
-    results_by_id = {}
-    workers = max(1, min(workers, len(universities)))
+    pending = [(index, university) for index, university in enumerate(universities, 1) if university["id"] not in results_by_id]
+    workers = max(1, min(workers, len(pending) or 1))
+    if checkpoint:
+        checkpoint.parent.mkdir(parents=True, exist_ok=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(scan_one, index, university) for index, university in enumerate(universities, 1)]
+        futures = [executor.submit(scan_one, index, university) for index, university in pending]
         for future in concurrent.futures.as_completed(futures):
             result = future.result()
             results_by_id[result["university_id"]] = result
@@ -575,6 +604,8 @@ def main() -> int:
     parser.add_argument("--region", help="Yalnız bu bölgedeki üniversiteleri tara (yapılandırmadaki region alanı).")
     parser.add_argument("--only", help="Virgülle ayrılmış üniversite id listesi.")
     parser.add_argument("--workers", type=int, default=4, help="Aynı anda taranan üniversite sayısı (her siteye istekler yine sıralı).")
+    parser.add_argument("--max-seconds", type=float, default=600, help="Üniversite başına en uzun tarama süresi (saniye, 0 = sınırsız).")
+    parser.add_argument("--no-checkpoint", action="store_true", help="Her üniversiteden sonra <output>.partial.jsonl ara kaydını yazma/okuma.")
     args = parser.parse_args()
     if args.max_pages < 1 or args.delay < 0:
         parser.error("--max-pages en az 1, --delay en az 0 olmalı.")
@@ -590,7 +621,8 @@ def main() -> int:
         if not config["universities"]:
             print("Seçime uyan üniversite yok.", file=sys.stderr)
             return 2
-        report = build_report(config, args.max_pages, args.delay, args.workers)
+        checkpoint = None if args.no_checkpoint else args.output.with_name(args.output.name + ".partial.jsonl")
+        report = build_report(config, args.max_pages, args.delay, args.workers, checkpoint, args.max_seconds)
         if args.download_files:
             download_templates(report, config, args.output, args.delay, args.download_guides)
         json_path, csv_path = write_reports(report, args.output)

@@ -57,8 +57,8 @@ def tr_title(value: str) -> str:
         elif index and tr_lower(word) in LOWER_WORDS:
             words.append(tr_lower(word))
         else:
-            lower = tr_lower(word)
-            words.append(tr_upper(lower[:1]) + lower[1:])
+            parts = [tr_lower(part) for part in word.split("-")]
+            words.append("-".join(part if index and len(part) == 1 else tr_upper(part[:1]) + part[1:] for index, part in enumerate(parts)))
     return " ".join(words)
 
 
