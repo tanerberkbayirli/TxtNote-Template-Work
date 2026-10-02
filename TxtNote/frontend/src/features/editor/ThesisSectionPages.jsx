@@ -47,6 +47,7 @@ function SheetChrome({ rules, values, page }) {
     const fontSizePt = numberStyle.fontSizePt;
     const numberBox = Number.isFinite(page.numberXmm) && Number.isFinite(page.numberWidthMm)
       ? { left: `${page.numberXmm}mm`, width: `${page.numberWidthMm}mm` }
+      : number.centerOnPage && number.align === "center" ? { left: "0mm", width: `${rule.widthMm}mm` }
       : { left: `${margins.leftMm}mm`, width: `${rule.widthMm - margins.leftMm - margins.rightMm}mm` };
     const baselineTopMm = page.numberBaselineFromTopMm;
     const fontFamily = numberStyle.fontFamily;

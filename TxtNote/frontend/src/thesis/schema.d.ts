@@ -51,6 +51,8 @@ export interface NumberingRule {
   /** Optional page-anchored text box for the number. Both values are required together. */
   xMm?: Length;
   widthMm?: Length;
+  /** With align "center" and no xMm/widthMm box: centre the number on the physical page instead of the text frame (matters when left and right margins differ). Vertical placement is unchanged. Default false. */
+  centerOnPage?: boolean;
 }
 export interface PageRule {
   size: string;
@@ -292,6 +294,8 @@ export type LineSpacing = { mode: "multiplier" } | {
   paragraphSpacing?: "collapse" | "additive";
   /** "paragraphPitch": a paragraph/heading after a figure (caption below), table (caption above) or table note starts one body paragraph pitch below the last baseline of that block, as after a paragraph. Needs baseline "word". */
   blockGap?: "paragraphPitch";
+  /** With blockGap "paragraphPitch": "spacing" makes the gap from a figure caption (below the figure) to the next paragraph/heading/note exactly the body space-after (a box gap) instead of one body paragraph pitch. Default "pitch" (unchanged). */
+  figureExitGap?: "pitch" | "spacing";
 };
 export interface ThesisTemplate {
   schemaVersion: 1;

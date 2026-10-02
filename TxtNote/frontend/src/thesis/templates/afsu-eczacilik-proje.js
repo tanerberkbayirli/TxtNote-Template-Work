@@ -13,9 +13,9 @@ import { afsuEczacilikUniversitySeal as universitySeal, afsuEczacilikFacultySeal
 
 const FONT = "Times New Roman";
 const BODY = { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0 };
-const ROMAN_PAGE = { numbering: { enabled: true, position: "bottom", align: "center", format: "roman-lower", restart: false } };
-const ARABIC_PAGE = { numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", restart: false } };
-const ARABIC_START_PAGE = { numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: true } };
+const ROMAN_PAGE = { numbering: { enabled: true, position: "bottom", align: "center", centerOnPage: true, format: "roman-lower", restart: false } };
+const ARABIC_PAGE = { numbering: { enabled: true, position: "bottom", align: "center", centerOnPage: true, format: "arabic", restart: false } };
+const ARABIC_START_PAGE = { numbering: { enabled: true, position: "bottom", align: "center", centerOnPage: true, format: "arabic", startAt: 1, restart: true } };
 const CENTER_TITLE = { fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0, numbering: { enabled: false } };
 const H1 = { fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", textTransform: "uppercase", lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0, pageBreakBefore: true, keepWithNext: true, numbering: { enabled: true, format: "{1}.", sequence: "arabic" } };
 const subheading = (level) => ({ fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "left", textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"], lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0, keepWithNext: true, numbering: { enabled: true, format: Array.from({ length: level }, (_, i) => `{${i + 1}}`).join(".") + ".", sequence: "arabic" } });
@@ -167,7 +167,7 @@ const template = {
   page: {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
     margins: { topMm: 35, leftMm: 40, bottomMm: 20, rightMm: 20 },
-    numbering: { enabled: true, position: "bottom", align: "center", format: "roman-lower" },
+    numbering: { enabled: true, position: "bottom", align: "center", centerOnPage: true, format: "roman-lower" },
   },
   typography: {
     body: BODY,
@@ -175,7 +175,7 @@ const template = {
     headings: { "1": H1, "2": subheading(2), "3": subheading(3), "4": subheading(4) },
     footnotes: { placement: "pageBottom", fontFamily: FONT, fontSizePt: 10, lineHeight: 1, firstLineIndentMm: 0 },
     // Word-compatible single-line calibration only; source requirement is 1.5 lines.
-    lineSpacing: { mode: "word", singleLineEm: 1.15, baseline: "word", paragraphSpacing: "additive", blockGap: "paragraphPitch" },
+    lineSpacing: { mode: "word", singleLineEm: 1.15, baseline: "word", paragraphSpacing: "additive", blockGap: "paragraphPitch", figureExitGap: "spacing" },
   },
   placeholders: {
     PROJECT_TITLE: { label: "Araştırma projesi konusu", type: "multiline", required: true },

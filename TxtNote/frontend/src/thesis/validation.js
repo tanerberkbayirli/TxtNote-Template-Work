@@ -54,6 +54,7 @@ function validateNumbering(rule, path) {
   if (!numberingFormats.has(rule.format)) errors.push(`${path}.format geçersiz`);
   if (rule.startAt !== undefined && (!Number.isInteger(rule.startAt) || rule.startAt < 1)) errors.push(`${path}.startAt geçersiz`);
   if (rule.style !== undefined && (!object(rule.style) || (rule.style.fontSizePt !== undefined && !(positive(rule.style.fontSizePt) && rule.style.fontSizePt <= 96)) || (rule.style.fontFamily !== undefined && !text(rule.style.fontFamily)))) errors.push(`${path}.style geçersiz`);
+  if (rule.centerOnPage !== undefined && typeof rule.centerOnPage !== "boolean") errors.push(`${path}.centerOnPage geçersiz`);
   if (rule.baselineFromTopMm !== undefined && !nonnegative(rule.baselineFromTopMm)) errors.push(`${path}.baselineFromTopMm geçersiz`);
   if ((rule.xMm === undefined) !== (rule.widthMm === undefined)) errors.push(`${path}.xMm ve widthMm birlikte gerekli`);
   if (rule.xMm !== undefined && (!nonnegative(rule.xMm) || !positive(rule.widthMm))) errors.push(`${path}.xMm/widthMm geçersiz`);
@@ -193,6 +194,7 @@ export function validateThesisTemplate(rawTemplate) {
   const lineSpacing = template.typography?.lineSpacing;
   if (lineSpacing !== undefined && !(object(lineSpacing) && (lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
   if (lineSpacing?.blockGap !== undefined && !(lineSpacing.blockGap === "paragraphPitch" && lineSpacing.mode === "word" && lineSpacing.baseline === "word")) errors.push('typography.lineSpacing.blockGap yalnız "paragraphPitch" ve mode/baseline "word" ile geçerli');
+  if (lineSpacing?.figureExitGap !== undefined && !((["pitch", "spacing"].includes(lineSpacing.figureExitGap)) && lineSpacing.blockGap === "paragraphPitch")) errors.push('typography.lineSpacing.figureExitGap yalnız "pitch"|"spacing" ve blockGap "paragraphPitch" ile geçerli');
   if (lineSpacing?.paragraphSpacing !== undefined && !["collapse", "additive"].includes(lineSpacing.paragraphSpacing)) errors.push("typography.lineSpacing.paragraphSpacing geçersiz");
   if (lineSpacing?.baseline !== undefined && !(lineSpacing.mode === "word" && ["css", "word"].includes(lineSpacing.baseline))) errors.push("typography.lineSpacing.baseline geçersiz");
   if (template.validation !== undefined) {

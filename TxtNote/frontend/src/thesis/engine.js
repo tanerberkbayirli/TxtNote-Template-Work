@@ -160,6 +160,7 @@ function sharedPageSignature(page) {
       xMm: numbering.xMm,
       widthMm: numbering.widthMm,
       style: numbering.style,
+      centerOnPage: numbering.centerOnPage,
     },
   });
 }

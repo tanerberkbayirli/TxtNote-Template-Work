@@ -418,5 +418,14 @@
     "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-11.png",
     "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-12.png",
     "orchestration/artifacts/afsu-eczacilik-proje/source/source-page-13.png"
-  ]
+  ],
+  "validationNotes": {
+    "self-2 (2026-10-02, real export export-v6.pdf/.docx)": [
+      "Page number horizontal centre (EXPLICIT bottom-centre): physical centre 105 mm; measured glyph centre 104.993-105.038 mm on all 66 numbered pages (Roman 1-4 chars, Arabic 1-3 digits; 3-digit checked with a temporary startAt 95 export, then reverted). PASS. Implemented via generic numbering.centerOnPage. Vertical distance from page bottom remains UNKNOWN in the source (engine default baseline 283.551 mm is not a source value).",
+      "Figure lower edge -> caption: EXPLICIT 6 pt; measured 5.99 pt (Word line model). PASS.",
+      "Figure+caption block <-> body text: EXPLICIT 12 pt; text -> figure 12 pt (DOCX before=240, DOM margin 12 pt; not measurable in PDF because the single fixture figure starts a page); caption -> next text measured 11.99 pt after generic lineSpacing.figureExitGap \"spacing\" (v5/default paragraph-pitch rule gave 19.3 pt = FAIL). PASS.",
+      "Table caption -> table top: EXPLICIT 6 pt; measured 6.74 pt to the outer edge of the 0.75 pt rule (0.26 mm; 6.37 pt to rule centre). Table -> next text: EXPLICIT 12 pt; measured 12.75 pt to the outer edge (0.26 mm). PASS at the 0.5 mm default tolerance; not <=0.25 mm to the rule's outer edge.",
+      "Interpretation (INFERRED): '12 pt gap' is treated as a Word paragraph-spacing box gap (line box to line box), the same reading used for the 12 pt paragraph gap; Word line model line top = baseline - 0.9336 em, line height 1.15 em x multiple."
+    ]
+  }
 }

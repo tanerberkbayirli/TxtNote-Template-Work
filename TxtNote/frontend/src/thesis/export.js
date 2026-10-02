@@ -702,7 +702,10 @@ function chromeDocx(section, values, context, groupStart) {
       const heightMm = fontSizePt * 1.25 * mmPerPt;
       return positionedPageNumberDocx({ xMm, yMm: number.baselineFromTopMm - baselineAscentMm, widthMm, heightMm, fontFamily: style.fontFamily, fontSizePt, align: number.align }, context.language);
     }
-    return new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, children: [new TextRun({ ...runProps(style, context.language), children: [PageNumber.CURRENT] })] });
+    // centerOnPage: shift the centred text frame so its centre is the physical page centre (right indent = leftMargin - rightMargin).
+    const pageShiftMm = number.centerOnPage && number.align === "center" ? page.margins.leftMm - page.margins.rightMm : 0;
+    const shiftIndent = pageShiftMm > 0 ? { right: twip(pageShiftMm) } : pageShiftMm < 0 ? { left: twip(-pageShiftMm) } : null;
+    return new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, ...(shiftIndent ? { indent: shiftIndent } : {}), children: [new TextRun({ ...runProps(style, context.language), children: [PageNumber.CURRENT] })] });
   };
   const part = (edge, text) => {
     const children = [];

@@ -106,4 +106,29 @@ describe("page-number baseline and text-box geometry", () => {
     first.rules.page.numbering.style = { fontFamily: "Times New Roman", fontSizePt: 11 };
     assert.equal(groupThesisSections([first, second]).length, 2, "different number typography cannot share page chrome");
   });
+
+  it("centerOnPage centres the number on the physical page (editor box, DOCX indent) and is opt-in", async () => {
+    const t = structuredClone(generic);
+    t.page.margins = { ...t.page.margins, leftMm: 40, rightMm: 20 };
+    t.page.numbering = { ...t.page.numbering, align: "center", centerOnPage: true };
+    assert.deepEqual(validateThesisTemplate(t), []);
+    const bad = structuredClone(t);
+    bad.page.numbering.centerOnPage = "yes";
+    assert.match(validateThesisTemplate(bad).join(" "), /centerOnPage/);
+    const docx = async (tpl) => {
+      const model = compileThesisDocument(tpl, {}, "Test", "<h1>Giriş</h1><p>Metin.</p>");
+      const files = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
+      return Object.entries(files).filter(([name]) => /^word\/footer\d+\.xml$/.test(name)).map(([, b]) => strFromU8(b)).join(" ");
+    };
+    // left 40 - right 20 = 20 mm = 1134 twips of right indent => centre of text region = 105 mm
+    assert.match(await docx(t), /<w:ind w:right="1134"/);
+    const off = structuredClone(t);
+    delete off.page.numbering.centerOnPage;
+    assert.doesNotMatch(await docx(off), /<w:ind /);
+    const a = compileThesisDocument(t, {}, "Test", "<p>x</p>").sections.find((s) => s.id === "main");
+    const b = compileThesisDocument(off, {}, "Test", "<p>x</p>").sections.find((s) => s.id === "main");
+    const c = structuredClone(a); c.rules.page.numbering.centerOnPage = false;
+    assert.equal(a.rules.page.numbering.centerOnPage, true);
+    assert.equal(groupThesisSections([a, { ...b, id: "o", pageBreakBefore: false }]).length, 2, "different centring cannot share page chrome");
+  });
 });
