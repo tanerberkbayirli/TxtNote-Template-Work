@@ -40,24 +40,37 @@ const errors = [];
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 page.on("console", (e) => { if (e.type() === "error" || /content security policy|refused to|uncaught/i.test(e.text())) errors.push(`console: ${e.text()}`); });
 
-const frames = (n = 3) => page.evaluate((n) => new Promise((r) => { const step = (i) => (i ? requestAnimationFrame(() => step(i - 1)) : r()); step(n); }), n);
-/** Stable when sheet labels, index rows and footnote areas stop changing. */
-const snapshot = () => page.evaluate(() => JSON.stringify({
-  sheets: [...document.querySelectorAll(".thesis-sheet")].map((s) => s.dataset.thesisPageLabel || ""),
-  index: [...document.querySelectorAll("[data-thesis-generated] li")].map((li) => li.textContent),
-  notes: [...document.querySelectorAll(".thesis-footnote-area:not([data-thesis-footnote-measure])")].map((a) => a.getBoundingClientRect().top + ":" + a.textContent.length),
-  warn: document.body.innerText.includes("kararlı hale gelmedi"),
-}));
 async function settle() {
-  let last = "", same = 0;
-  for (let i = 0; i < 200 && same < 3; i += 1) {
-    await frames(3);
-    await page.waitForTimeout(150);
-    const now = await snapshot();
-    same = now === last ? same + 1 : 0;
-    last = now;
-  }
-  return JSON.parse(last);
+  await page.waitForFunction(() => {
+    const root = document.querySelector('[aria-label="Belge sayfaları"]');
+    return ["true", "fallback"].includes(root?.getAttribute("data-thesis-pagination-ready"))
+      || document.body.innerText.includes("Dizin sayfa eşlemesi tamamlanmadı")
+      || document.body.innerText.includes("sayfalaması kararlı hale gelmedi");
+  }, undefined, { timeout: 120000 });
+  return page.evaluate(() => {
+    const root = document.querySelector('[aria-label="Belge sayfaları"]');
+    const pageMap = JSON.parse(root?.getAttribute("data-thesis-pagination-map") || "{}");
+    const targets = JSON.parse(root?.getAttribute("data-thesis-pagination-targets") || "[]");
+    const missingTargets = targets.filter((target) => !Object.hasOwn(pageMap, target));
+    const mismatchedLabels = [...document.querySelectorAll("[data-thesis-generated] li[data-index-target]")].flatMap((row) => {
+      const pageNode = row.querySelector(".thesis-index-page");
+      if (!pageNode) return [];
+      const target = row.dataset.indexTarget;
+      const expected = pageMap[target]?.indexLabel ?? pageMap[target]?.label ?? "";
+      const actual = pageNode.textContent.trim();
+      return actual === expected ? [] : [{ target, expected, actual }];
+    });
+    return {
+      pagedLayout: Boolean(document.querySelector('.thesis-paper[data-thesis-layout="paged"]')),
+      paginationReady: root?.getAttribute("data-thesis-pagination-ready") || "missing",
+      pageMap,
+      targets,
+      missingTargets,
+      mismatchedLabels,
+      sheets: [...document.querySelectorAll(".thesis-sheet")].map((s) => ({ label: s.dataset.thesisPageLabel || "", group: s.dataset.thesisPageGroup || s.dataset.thesisGroup || "" })),
+      warn: document.body.innerText.includes("sayfalaması kararlı hale gelmedi") || document.body.innerText.includes("Dizin sayfa eşlemesi tamamlanmadı"),
+    };
+  });
 }
 
 try {
@@ -69,11 +82,17 @@ try {
   if (await zoom.count()) await zoom.selectOption("100");
   await page.evaluate(() => document.fonts.ready);
   const state = await settle();
-  if (state.warn) errors.push("editor: Dizin/dipnot sayfalaması kararlı hale gelmedi");
+  if (state.warn) errors.push("editor: pagination readiness stopped with an actionable warning");
+  if (state.paginationReady === "true" && (state.missingTargets.length || state.mismatchedLabels.length)) {
+    errors.push(`editor: ready state has unresolved generated-index mappings: missing=${state.missingTargets.length}, mismatched=${state.mismatchedLabels.length}`);
+  }
+  if (state.warn || state.paginationReady !== "true" || state.missingTargets.length || state.mismatchedLabels.length) {
+    throw new Error(`editor pagination is not exportable: ready=${state.paginationReady}, missing=${state.missingTargets.length}, mismatched=${state.mismatchedLabels.length}, warning=${state.warn}`);
+  }
   const layout = await page.evaluate(() => ({
     pagedLayout: Boolean(document.querySelector('.thesis-paper[data-thesis-layout="paged"]')),
-    templateNotice: document.body.innerText.match(/Şablon yüklenemedi[^\n]*|kayıtlı tez şablonu bulunamadı[^\n]*/)?.[0] || "",
     sheets: [...document.querySelectorAll(".thesis-sheet")].map((s) => ({ label: s.dataset.thesisPageLabel || "", group: s.dataset.thesisPageGroup || s.dataset.thesisGroup || "" })),
+    templateNotice: document.body.innerText.match(/Şablon yüklenemedi[^\n]*|kayıtlı tez şablonu bulunamadı[^\n]*/)?.[0] || "",
     validation: [...document.querySelectorAll("[data-thesis-validation], .thesis-validation")].map((n) => n.textContent),
   }));
   for (const [button, extension] of [["PDF", "pdf"], ["Word", "docx"]]) {
@@ -89,11 +108,15 @@ try {
     if (!outcome.download) throw new Error(`${button} export failed in the editor: ${outcome.message}`);
     await outcome.download.saveAs(`${outPrefix}.${extension}`);
   }
-  await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, errors }, null, 2));
-  if (!layout.pagedLayout) throw new Error("paged layout not active: PDF would come from the fallback writer");
+  await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, warn: state.warn,
+    pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
+      targets: state.targets.map((target) => ({ target, label: state.pageMap[target]?.indexLabel ?? state.pageMap[target]?.label ?? "" })) }, errors }, null, 2));
+  if (state.paginationReady !== "true") throw new Error(`paged export readiness unavailable: ${state.paginationReady}`);
+  if (!state.pagedLayout) throw new Error("paged layout not active: PDF would come from the fallback writer");
+  if (state.missingTargets.length || state.mismatchedLabels.length) throw new Error(`generated index verification failed: missing=${state.missingTargets.length}, mismatched=${state.mismatchedLabels.length}`);
   if (layout.templateNotice) throw new Error(`template fallback: ${layout.templateNotice}`);
   if (errors.length) throw new Error(errors.join("\n"));
-  console.log(`exported ${outPrefix}.{pdf,docx} (${layout.sheets.length} sheets)`);
+  console.log(`exported ${outPrefix}.{pdf,docx} (${state.sheets.length} sheets; ${state.targets.length} generated page targets verified)`);
 } catch (error) {
   await page.screenshot({ path: `${outPrefix}.failure.png`, fullPage: false }).catch(() => {});
   console.error(error?.stack || error);

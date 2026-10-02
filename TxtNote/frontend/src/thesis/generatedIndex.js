@@ -126,6 +126,22 @@ export function indexEntries(sources, rule, pages = {}, language = "tr") {
 /** Row style of a generated-index entry: `levelStyles.unnumbered` for unnumbered title rows, else `levelStyles[level]`. */
 export const indexRowStyle = (rule, entry) => (entry.unnumbered && rule.levelStyles?.unnumbered) || rule.levelStyles?.[entry.level || 1];
 
+/** Targets whose resolved page mapping must be present before a generated-index export. */
+export function generatedIndexPageTargets(model) {
+  return [...new Set((model.sections || []).flatMap((section) => {
+    const rule = section.generatedIndex;
+    if (!rule?.includePageNumbers) return [];
+    return indexEntries(model.indexSources || [], rule, {}, model.language)
+      .filter((entry) => indexRowStyle(rule, entry)?.includePageNumber !== false)
+      .map((entry) => entry.anchor)
+      .filter(Boolean);
+  }))];
+}
+
+export function missingGeneratedIndexPages(model, pages = {}) {
+  return generatedIndexPageTargets(model).filter((target) => !Object.hasOwn(pages, target));
+}
+
 export function generatedIndexHtml(entries, rule) {
   const pageHeading = rule.includePageNumbers && rule.pageHeading ? `<div class="thesis-index-page-heading">${escape(rule.pageHeading)}</div>` : "";
   // Label ("Şekil 2.1", "1.2") and title are separate spans so a template can style the label and hang
@@ -349,6 +365,7 @@ export function decorateThesisSources(root, model) {
           put("lift", Math.max(0, nominal.ascent - above)); put("drop", Math.max(0, nominal.below - below)); put("base", Math.max(above, nominal.ascent));
         }
       }
+
     }
     let index = 0;
     host.querySelectorAll("[data-thesis-anchor]").forEach((node) => { node.removeAttribute("data-thesis-anchor"); node.removeAttribute("data-thesis-number"); });
@@ -442,4 +459,22 @@ export function renderedIndexPages(root, groups) {
     });
   });
   return { pages: result, counts };
+}
+
+/**
+ * Confirm that a stable pagination candidate was committed by React and still matches the
+ * measured flow on a later frame. Snapshot stability by itself is insufficient: generated
+ * indexes can be stably blank while their page-map update is still queued.
+ */
+export async function confirmCommittedPagination({
+  expectedState, expectedMeasurement, readCommittedState, readMeasurement, isCurrent = () => true,
+  generation, nextFrame = () => new Promise((resolve) => requestAnimationFrame(resolve)),
+}) {
+  const canonical = (value) => Array.isArray(value) ? value.map(canonical)
+    : value && typeof value === "object" ? Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonical(value[key])])) : value;
+  const same = (left, right) => JSON.stringify(canonical(left)) === JSON.stringify(canonical(right));
+  await nextFrame();
+  if (!isCurrent(generation) || !same(readCommittedState(), expectedState) || !same(readMeasurement(), expectedMeasurement)) return false;
+  await nextFrame();
+  return isCurrent(generation) && same(readCommittedState(), expectedState) && same(readMeasurement(), expectedMeasurement);
 }

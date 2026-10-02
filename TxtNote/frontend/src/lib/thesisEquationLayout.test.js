@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { equationLayoutSignature, waitForStableEquationLayout } from "../thesis/generatedIndex.js";
+import { confirmCommittedPagination, equationLayoutSignature, generatedIndexPageTargets, missingGeneratedIndexPages, waitForStableEquationLayout } from "../thesis/generatedIndex.js";
 
 function equationRoot(fonts = undefined) {
   const document = { fonts, defaultView: { getComputedStyle: (node) => node.computedStyle } };
@@ -30,6 +30,79 @@ function equationRoot(fonts = undefined) {
 }
 
 describe("generic thesis equation export readiness", () => {
+  it("waits for delayed generated-index state to commit and match a later measurement", async () => {
+    const expectedState = { pages: { "toc-source-one": { label: "3", indexLabel: "iii", physicalPage: 3 } }, renderedPages: { "toc-source-one": "iii" } };
+    const expectedMeasurement = { pages: expectedState.pages, counts: { toc: 4 } };
+    let committedState = { pages: { "toc-source-one": { label: "", indexLabel: "", physicalPage: 3 } }, renderedPages: { "toc-source-one": "" } };
+    let measured = { pages: committedState.pages, counts: { toc: 4 } };
+    let frames = 0, exportReady = false;
+    const confirm = () => confirmCommittedPagination({
+      expectedState, expectedMeasurement,
+      readCommittedState: () => committedState,
+      readMeasurement: () => measured,
+      nextFrame: () => {
+        frames += 1;
+        if (frames === 3) { committedState = expectedState; measured = expectedMeasurement; }
+        return Promise.resolve();
+      },
+    });
+    exportReady = await confirm();
+    assert.equal(exportReady, false, "a stable but stale blank page label must block export");
+    exportReady = await confirm();
+    assert.equal(exportReady, false, "export remains blocked while the page-map update is still queued");
+    exportReady = await confirm();
+    assert.equal(exportReady, true, "the committed page map must match on two later frames");
+    assert.equal(frames, 4);
+
+    const intentionallyBlank = { pages: { "toc-source-one": { label: "", indexLabel: "", physicalPage: 3 } }, renderedPages: { "toc-source-one": "" } };
+    assert.equal(await confirmCommittedPagination({
+      expectedState: intentionallyBlank,
+      expectedMeasurement: { pages: intentionallyBlank.pages, counts: { toc: 4 } },
+      readCommittedState: () => intentionallyBlank,
+      readMeasurement: () => ({ pages: intentionallyBlank.pages, counts: { toc: 4 } }),
+      nextFrame: () => Promise.resolve(),
+    }), true, "an intentionally blank expected label remains valid when the committed target map agrees");
+  });
+
+  it("rejects stale generations and measurements that change before the next frame", async () => {
+    const state = { pages: { target: { label: "2" } } };
+    const measurement = { pages: state.pages, counts: { body: 2 } };
+    let generation = 4;
+    assert.equal(await confirmCommittedPagination({
+      expectedState: state, expectedMeasurement: measurement,
+      readCommittedState: () => state, readMeasurement: () => measurement,
+      isCurrent: (candidate) => candidate === generation,
+      generation: 4,
+      nextFrame: () => { generation += 1; return Promise.resolve(); },
+    }), false, "a source/zoom/font generation change invalidates an in-flight confirmation");
+
+    let frame = 0;
+    assert.equal(await confirmCommittedPagination({
+      expectedState: state, expectedMeasurement: measurement,
+      readCommittedState: () => state,
+      readMeasurement: () => { frame += 1; return frame === 1 ? measurement : { pages: state.pages, counts: { body: 3 } }; },
+      generation: 4,
+      nextFrame: () => Promise.resolve(),
+    }), false, "a page-map measurement change on the confirmation frame blocks readiness");
+  });
+
+  it("requires measured mappings only for index rows that display page numbers", () => {
+    const model = {
+      language: "tr",
+      indexSources: [
+        { kind: "toc", anchor: "visible", level: 1, title: "Visible" },
+        { kind: "toc", anchor: "hidden-page-number", level: 2, title: "No printed number" },
+      ],
+      sections: [
+        { generatedIndex: { kind: "toc", includePageNumbers: true, maxDepth: 2, levelStyles: { 2: { includePageNumber: false } } } },
+        { generatedIndex: { kind: "figures", includePageNumbers: false } },
+      ],
+    };
+    assert.deepEqual(generatedIndexPageTargets(model), ["visible"]);
+    assert.deepEqual(missingGeneratedIndexPages(model, {}), ["visible"]);
+    assert.deepEqual(missingGeneratedIndexPages(model, { visible: { label: "", indexLabel: "", physicalPage: 1 } }), [], "presence is required but an intentionally blank page label is not rejected");
+  });
+
   it("signs equation measurement attributes and adjacent block geometry", () => {
     const { root, equation, next } = equationRoot({ status: "loaded" });
     const original = equationLayoutSignature(root);

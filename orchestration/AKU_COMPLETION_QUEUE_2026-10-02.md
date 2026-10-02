@@ -33,6 +33,8 @@ Starting checkpoint: `a80e81c` on `integrate/aku-mcbu`; engine fix `8e9bb83`. Ex
 
 User requested wrapping up this turn. Finish only the active readiness verification and ISG independent evidence report; do not start the queued Felsefe/FBE/other production work in this closeout. Keep the AKÜ university IN_PROGRESS and supported unresolved targets FAIL. Save a tested readiness checkpoint if repeated real exports succeed; otherwise preserve worker evidence/patch and restore only the unverified readiness edits. The queue above remains the authorized remaining AKÜ scope, with no overall completion claim.
 
+Closeout results: `d5d1405` saves the independent ISG interim FAIL report and footer inspection tools. Readiness verification passed on two identical Sosyoloji real exports: 35 pages, 33/33 targets, zero blank DOCX cached fields or label mismatches, identical 4,162 text/position/font-size records; full frontend suite 615/615 and production build passed. This closes the export-cache race stage, not the AKÜ university gate. Felsefe source implementation, FBE production fixes/full validation, ISG source fixes, Sağlık 2022 implementation, remaining source/default/independent audits, Matematik and shared-engine gaps remain queued.
+
 ## Completion gate
 
 SOURCE → SPEC → IMPLEMENTATION → REAL EXPORT → INDEPENDENT VALIDATION → PASS → REGRESSION → CHECKPOINT. UNKNOWN remains UNKNOWN; supported violations are FAIL. BLOCKED requires concrete unavailable evidence or a demonstrated unsolvable technical obstacle, not unfinished work. Physical print items and unsupported variants are documented explicitly; no invented layouts or text.

@@ -9,7 +9,7 @@ import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
 import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, thesisMetadataValue, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
-import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../thesis/generatedIndex.js";
+import { confirmCommittedPagination, decorateThesisSources, generatedIndexPageTargets, INDEX_ITERATION_CAP, missingGeneratedIndexPages, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../thesis/generatedIndex.js";
 import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
 import { addLayoutElement, normalizeThesisLayout } from "../../thesis/layoutDocument.js";
 import { applyLayoutPage, applyLayoutTypography, resolveLayoutTypography } from "../../thesis/layoutProperties.js";
@@ -65,6 +65,10 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [pageCounts, setPageCounts] = useState({});
   const [indexResolution, setIndexResolution] = useState({});
   const [indexWarning, setIndexWarning] = useState("");
+  const [paginationReady, setPaginationReady] = useState(false);
+  const paginationEpochRef = useRef(0);
+  const paginationReadyEpochRef = useRef(-1);
+  const committedPaginationStateRef = useRef({ indexResolution, footnoteViews: {} });
   // Page-bottom notes per group/page, derived from the current pagination. Never written to the note.
   const [footnoteViews, setFootnoteViews] = useState({});
   const footnoteState = useRef({});
@@ -101,9 +105,11 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const bibliographyItems = normalizeBibliographyItems(bibliographyItemsFromResearch(researchData));
   const sourceModel = useMemo(() => template ? compileThesisDocument(template, thesis, plainTitle, content, bibliographyItems) : null, [template, thesis, plainTitle, content, researchData]);
   const model = useMemo(() => sourceModel ? resolveGeneratedIndexes(sourceModel, indexResolution.pages || {}, indexResolution.counts) : null, [sourceModel, indexResolution]);
+  const generatedPageTargets = useMemo(() => sourceModel ? generatedIndexPageTargets(sourceModel) : [], [sourceModel]);
   const pageGroups = useMemo(() => model ? groupThesisSections(model.sections) : [], [model]);
   const pageModel = useMemo(() => buildThesisPageModel(pageGroups, pageCounts), [pageGroups, pageCounts]);
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
+  useLayoutEffect(() => { committedPaginationStateRef.current = { indexResolution, footnoteViews }; }, [indexResolution, footnoteViews]);
   const onPageCount = useCallback((groupId, count) => setPageCounts((current) => current[groupId] === count ? current : { ...current, [groupId]: count }), []);
   const css = useMemo(() => model ? buildThesisCss(model) + (THESIS_PAGED_LAYOUT ? thesisPagedCss(pageGroups) : "") : "", [model, pageGroups]);
   // Opt-in Word line placement: measure this browser's baseline of every text style (paint-only offsets).
@@ -187,30 +193,82 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   useLayoutEffect(() => {
     const root = papersRef.current;
     if (!paginationActive || !root) return undefined;
-    let frame = 0, iterations = 0, previous = "", disposed = false, settled = false;
+    let frame = 0, iterations = 0, previous = "", disposed = false, settled = false, failed = false, confirming = false;
     // Last serialized values applied to state; avoids re-stringifying the current state each pass.
     let appliedPages = null, appliedNotes = null;
+    const measure = () => {
+      const groups = groupThesisSections(latestSourceModel.current.sections);
+      const continuations = layoutTableContinuations(root, groups, latestSourceModel.current);
+      const { views: notes, incomplete } = THESIS_PAGE_FOOTNOTES ? layoutThesisFootnotes(root, groups, footnoteState.current, performance.now() + 24) : { views: {} };
+      if (incomplete) return { incomplete: true, groups, continuations, notes };
+      const indexes = renderedIndexPages(root, groups);
+      return { incomplete: false, groups, continuations, notes, indexes,
+        signature: `${JSON.stringify(indexes)}|${JSON.stringify(notes)}|${JSON.stringify(continuations)}` };
+    };
     const probe = () => {
       if (disposed) return;
-      const groups = groupThesisSections(latestSourceModel.current.sections);
       // A frame budget keeps typing responsive in long, note-heavy groups: an incomplete
       // pass (later pages still to re-lay) continues next frame and is not an iteration.
       // Continuation caption rows of split tables change the flow, so they are settled before notes and indexes.
-      const continuations = layoutTableContinuations(root, groups, latestSourceModel.current);
-      const { views: notes, incomplete } = THESIS_PAGE_FOOTNOTES ? layoutThesisFootnotes(root, groups, footnoteState.current, performance.now() + 24) : { views: {} };
-      const notesText = JSON.stringify(notes);
-      const applyNotes = () => { if (notesText !== appliedNotes) { appliedNotes = notesText; setFootnoteViews(notes); } };
-      if (incomplete) {
+      const current = measure();
+      const notesText = JSON.stringify(current.notes);
+      const applyNotes = () => { if (notesText !== appliedNotes) { appliedNotes = notesText; setFootnoteViews(current.notes); } };
+      if (current.incomplete) {
         applyNotes();
         frame = requestAnimationFrame(probe);
         return;
       }
-      const next = renderedIndexPages(root, groups);
+      const next = current.indexes;
       const pagesText = JSON.stringify(next);
-      const signature = `${pagesText}|${notesText}|${JSON.stringify(continuations)}`;
-      if (signature === previous) { settled = true; return; }
+      const signature = current.signature;
+      if (signature === previous) {
+        if (settled || failed || confirming) return;
+        const missingTargets = missingGeneratedIndexPages(latestSourceModel.current, next.pages);
+        if (missingTargets.length) {
+          if (iterations++ >= INDEX_ITERATION_CAP) {
+            failed = true;
+            paginationReadyEpochRef.current = -1;
+            setPaginationReady(false);
+            setIndexWarning(`Dizindeki ${missingTargets.length} öğenin sayfa numarası hesaplanamadı; dışa aktarma engellendi. İçeriği gözden geçirip yeniden deneyin.`);
+            return;
+          }
+          frame = requestAnimationFrame(probe);
+          return;
+        }
+        confirming = true;
+        const generation = paginationEpochRef.current;
+        const targets = generatedIndexPageTargets(latestSourceModel.current);
+        const expectedRenderedPages = Object.fromEntries(targets.map((target) => [target, next.pages[target]?.indexLabel ?? next.pages[target]?.label ?? ""]));
+        const readRenderedPages = () => Object.fromEntries([...(root.querySelectorAll("[data-thesis-generated] li[data-index-target]") || [])].flatMap((row) => {
+          const pageNode = row.querySelector(".thesis-index-page");
+          return pageNode && targets.includes(row.dataset.indexTarget) ? [[row.dataset.indexTarget, pageNode.textContent.trim()]] : [];
+        }));
+        const expectedState = { indexResolution: next, footnoteViews: current.notes, renderedPages: expectedRenderedPages };
+        void confirmCommittedPagination({
+          expectedState,
+          expectedMeasurement: signature,
+          readCommittedState: () => ({ ...committedPaginationStateRef.current, renderedPages: readRenderedPages() }),
+          readMeasurement: () => measure().signature ?? null,
+          isCurrent: (candidate) => !disposed && paginationEpochRef.current === candidate,
+          generation,
+        }).then((ready) => {
+          confirming = false;
+          if (disposed || generation !== paginationEpochRef.current) return;
+          if (ready) {
+            settled = true;
+            paginationReadyEpochRef.current = generation;
+            setPaginationReady(true);
+            return;
+          }
+          frame = requestAnimationFrame(probe);
+        });
+        return;
+      }
       if (iterations++ >= INDEX_ITERATION_CAP) {
-        setIndexWarning("Dizin/dipnot sayfalaması kararlı hale gelmedi; son ölçülmüş sonuç kullanılıyor.");
+        failed = true;
+        paginationReadyEpochRef.current = -1;
+        setPaginationReady(false);
+        setIndexWarning("Dizin/dipnot sayfalaması kararlı hale gelmedi; dışa aktarma engellendi. İçeriği gözden geçirip yeniden deneyin.");
         return;
       }
       previous = signature;
@@ -218,20 +276,39 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       applyNotes();
       frame = requestAnimationFrame(probe);
     };
-    const restart = () => { cancelAnimationFrame(frame); if (settled) { iterations = 0; previous = ""; settled = false; } frame = requestAnimationFrame(probe); };
-    const observer = new ResizeObserver(restart);
+    const restart = (invalidate = true, resetBudget = false) => {
+      cancelAnimationFrame(frame);
+      if (invalidate) {
+        paginationEpochRef.current += 1;
+        paginationReadyEpochRef.current = -1;
+        setPaginationReady(false);
+      }
+      if (settled || failed || resetBudget) {
+        iterations = 0; previous = ""; settled = false; failed = false; confirming = false;
+        appliedPages = null; appliedNotes = null;
+      } else if (invalidate) confirming = false;
+      setIndexWarning("");
+      frame = requestAnimationFrame(probe);
+    };
+    const observer = new ResizeObserver(() => {
+      if (settled) { restart(true, true); return; }
+      if (failed) return;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(probe);
+    });
     const observeFlows = () => { observer.disconnect(); root.querySelectorAll(".thesis-page-flow").forEach((flow) => observer.observe(flow)); };
     // Content/zoom change: start a fresh fixed point (even mid-run) and pick up added/removed flows.
-    paginationRef.current = () => { iterations = 0; previous = ""; settled = false; observeFlows(); restart(); };
+    paginationRef.current = () => { observeFlows(); restart(true, true); };
     observeFlows();
-    restart();
-    root.addEventListener("load", restart, true);
-    document.fonts.ready.then(() => { if (!disposed) restart(); });
-    return () => { disposed = true; paginationRef.current = null; cancelAnimationFrame(frame); observer.disconnect(); root.removeEventListener("load", restart, true); };
+    restart(true, true);
+    const onLoad = () => restart(true, true);
+    root.addEventListener("load", onLoad, true);
+    document.fonts.ready.then(() => { if (!disposed) restart(true, true); });
+    document.fonts.addEventListener?.("loadingdone", onLoad);
+    return () => { disposed = true; paginationRef.current = null; cancelAnimationFrame(frame); observer.disconnect(); root.removeEventListener("load", onLoad, true); document.fonts.removeEventListener?.("loadingdone", onLoad); };
   }, [paginationActive]);
   useLayoutEffect(() => {
     if (!paginationActive) return;
-    setIndexWarning("");
     paginationRef.current?.();
   }, [sourceModel, zoom, paginationActive]);
 
@@ -286,20 +363,30 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   }));
   const exportFile = async (kind) => {
     if (!model) return;
+    const exportGeneration = paginationEpochRef.current;
+    const assertPaginationReady = () => {
+      if (paginationActive && (paginationReadyEpochRef.current !== exportGeneration || exportGeneration !== paginationEpochRef.current)) {
+        throw new Error(indexWarning || "Sayfalama henüz son ölçüm ve dizin eşlemesiyle doğrulanmadı; dışa aktarma engellendi.");
+      }
+    };
+    try { assertPaginationReady(); } catch (error) { setMessage(error.message); return; }
     setExporting(kind); setMessage("");
     try {
       const [{ buildThesisDocx, buildThesisPdf }, { buildThesisLayoutPdf }, { academicFileStem, downloadBlob }, { collectThesisBlockPageBreaks }] = await Promise.all([
         import("../../thesis/export.js"), import("../../thesis/layoutPdf.js"), import("../../lib/academicExport.js"),
         import("../../thesis/exportPagination.js"),
       ]);
+      assertPaginationReady();
       const equationRoot = papersRef.current;
       if (kind === "pdf" && THESIS_PAGED_LAYOUT && equationRoot?.querySelector(".thesis-body .math-formula--block")) {
         await waitForStableEquationLayout(equationRoot, { prepare: () => decorateThesisSources(equationRoot, model) });
       }
+      assertPaginationReady();
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
         ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, documentLayout: model.documentLayout, systemFonts: model.systemFonts || [] }) : await buildThesisPdf(model))
         : await buildThesisDocx(model, { blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), tableContinuations: tableContinuationRows(papersRef.current) });
+      assertPaginationReady();
       const path = await downloadBlob(blob, `${academicFileStem(plainTitle || "tez")}.${kind}`);
       setMessage(path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`);
     } catch (error) { setMessage(error?.message || "Dışa aktarma başarısız."); }
@@ -308,10 +395,18 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
 
   const print = () => {
     if (!model) return;
+    const generation = paginationEpochRef.current;
+    const ready = !paginationActive || paginationReadyEpochRef.current === generation;
+    if (!ready) { setMessage(indexWarning || "Sayfalama henüz doğrulanmadı; yazdırma/dışa aktarma engellendi."); return; }
     const frame = document.createElement("iframe");
     frame.style.cssText = "position:fixed;width:0;height:0;border:0;visibility:hidden";
     frame.srcdoc = buildThesisPrintHtml(model, { nonce: trustedStyleNonce() });
-    frame.onload = () => { frame.contentWindow?.focus(); frame.contentWindow?.print(); setTimeout(() => frame.remove(), 30000); };
+    frame.onload = () => {
+      if (paginationActive && (generation !== paginationEpochRef.current || paginationReadyEpochRef.current !== generation)) {
+        frame.remove(); setMessage("Sayfalama yazdırma sırasında değişti; sayfa eşlemesi yeniden doğrulanmalı."); return;
+      }
+      frame.contentWindow?.focus(); frame.contentWindow?.print(); setTimeout(() => frame.remove(), 30000);
+    };
     document.body.appendChild(frame);
   };
 
@@ -384,11 +479,11 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         {THESIS_PAGED_LAYOUT ? <span className="text-xs text-neutral-500" data-thesis-total-pages={totalPages}>{totalPages} sayfa</span> : null}
         {(warning || missingFields.length || indexWarning || model.validation.errors.length + model.validation.warnings.length) ? <details open={warningsOpen} onToggle={(event) => setWarningsOpen(event.currentTarget.open)} className="relative"><summary className="cursor-pointer list-none rounded-full bg-amber-50 px-2.5 py-1 text-xs text-amber-800">{validationIssues.length ? <span role="status" title={validationIssues.map((issue) => issue.message).join("\n")}>{validationIssues.length} belge uyarısı</span> : <>{missingFields.length + (warning ? 1 : 0) + (indexWarning ? 1 : 0)} uyarı</>}</summary><div className="absolute left-0 top-full z-30 grid w-80 gap-2 rounded-lg border border-amber-200 bg-white p-3 text-xs text-amber-900 shadow-lg">{warning && <p role="alert">{warning}</p>}{missingFields.length > 0 && <p>{missingFields.length} eksik tez bilgisi: {missingFields.map((key) => template.placeholders[key]?.label || key).join(", ")}</p>}{indexWarning && <p role="alert">{indexWarning}</p>}{[...model.validation.errors, ...model.validation.warnings].map((issue, index) => <p key={index}>{issue.message}</p>)}</div></details> : null}
         {message && <span role="status" className="max-w-56 truncate text-xs text-neutral-500" title={message}>{message}</span>}
-        <div className="ml-auto flex gap-2"><button type="button" onClick={print} className="rounded border px-2 py-1 text-xs dark:border-neutral-700">Yazdır</button><button type="button" disabled={Boolean(exporting)} onClick={() => void exportFile("pdf")} className="rounded border px-2 py-1 text-xs dark:border-neutral-700">{exporting === "pdf" ? "Hazırlanıyor…" : "PDF"}</button><button type="button" disabled={Boolean(exporting)} onClick={() => void exportFile("docx")} className="rounded border px-2 py-1 text-xs dark:border-neutral-700">{exporting === "docx" ? "Hazırlanıyor…" : "Word"}</button></div>
+        <div className="ml-auto flex gap-2"><button type="button" onClick={print} disabled={paginationActive && !paginationReady} className="rounded border px-2 py-1 text-xs dark:border-neutral-700 disabled:cursor-not-allowed disabled:opacity-40">Yazdır</button><button type="button" data-thesis-export-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} disabled={Boolean(exporting) || (paginationActive && !paginationReady)} onClick={() => void exportFile("pdf")} className="rounded border px-2 py-1 text-xs dark:border-neutral-700">{exporting === "pdf" ? "Hazırlanıyor…" : "PDF"}</button><button type="button" data-thesis-export-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} disabled={Boolean(exporting) || (paginationActive && !paginationReady)} onClick={() => void exportFile("docx")} className="rounded border px-2 py-1 text-xs dark:border-neutral-700">{exporting === "docx" ? "Hazırlanıyor…" : "Word"}</button></div>
       </div>
     </div>    <div className="flex min-h-0 flex-1">
       <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
-        <div ref={papersRef} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
+        <div ref={papersRef} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
           {pageGroups.map((group, index) => {
             const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={setActiveSectionId} onTextChange={onTextChange} onPageCount={onPageCount} footnotes={footnoteViews[group.id]} />;
             const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);
