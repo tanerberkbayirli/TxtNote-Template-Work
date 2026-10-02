@@ -1,0 +1,68 @@
+{
+ "target": "afsu-lee-proposal",
+ "source": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+ "report": "orchestration/reports/afsu-lee-proposal.md",
+ "rules": [
+  {
+   "id": "cover.sizes",
+   "value": "12 bold; title 14 bold; year 12 regular",
+   "status": "EXPLICIT",
+   "source": "p.5 Sekil 1 annotations"
+  },
+  {
+   "id": "cover.positions",
+   "value": "vertical gaps 28.7/33.4/33.4/66.8 mm (scaled /0.975)",
+   "status": "MEASURED",
+   "source": "p.5"
+  },
+  {
+   "id": "citations",
+   "value": "APA",
+   "status": "EXPLICIT",
+   "source": "p.3 s1.1"
+  },
+  {
+   "id": "sections",
+   "value": "s1.3-s1.12 outline",
+   "status": "EXPLICIT",
+   "source": "pp.6-10"
+  },
+  {
+   "id": "page.size",
+   "value": "A4 portrait",
+   "status": "MEASURED",
+   "source": "page rects"
+  },
+  {
+   "id": "page.margins",
+   "value": "25 mm left (measured example page); top/bottom/right",
+   "status": "UNKNOWN",
+   "note": "carrier 25 mm required by validator"
+  },
+  {
+   "id": "page.numbering",
+   "value": null,
+   "status": "UNKNOWN"
+  },
+  {
+   "id": "body",
+   "value": "12 pt TNR justified 1.5 +8pt after, no indent (guide's own pages)",
+   "status": "MEASURED",
+   "note": "not a stated rule"
+  },
+  {
+   "id": "headings",
+   "value": "12 bold left unnumbered",
+   "status": "MEASURED",
+   "note": "guide headings; numbering UNKNOWN"
+  },
+  {
+   "id": "master.cover.parenthetical",
+   "value": "(Yuksek Lisans Tez Onerisi)",
+   "status": "INFERRED"
+  }
+ ],
+ "engineGaps": [
+  "static table block for p.9 landscape work-calendar grid"
+ ]
+}
