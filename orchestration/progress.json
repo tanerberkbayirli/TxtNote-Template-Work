@@ -282,10 +282,10 @@
       "validation": "PENDING (independent)",
       "attempts": 1,
       "status": "IN_PROGRESS",
-      "lastError": "Source-less optional-rule audit in progress; official list-title conflict under source review.",
+      "lastError": "Source-less cleanup checkpoint d4a3a7e; dedicated official list uses DIZINI while prose/TOC says LISTESI, both recorded. Independent validation and shared export-readiness regression remain open.",
       "specPath": "orchestration/specs/aku-sosyoloji-lisans.json",
       "reportPath": "orchestration/reports/aku-sosyoloji-lisans.md",
-      "commit": "88c0961",
+      "commit": "d4a3a7e",
       "updatedAt": "2026-10-02"
     },
     "aku-felsefe-lisans": {
@@ -297,7 +297,7 @@
       "lastError": "Independent source audit: supported covers missing; additive export produces 12/6 pt instead of explicit 6/6 pt. Official cover/TOC/citation examples are being measured. See orchestration/validation/aku-felsefe-independent-2/REPORT.md.",
       "specPath": "orchestration/specs/aku-felsefe-lisans.json",
       "reportPath": "orchestration/reports/aku-felsefe-lisans.md",
-      "commit": "7ea3928",
+      "commit": "d4a3a7e",
       "updatedAt": "2026-10-02"
     },
     "aku-felsefe-seminer": {
@@ -309,7 +309,7 @@
       "lastError": "Independent source audit: required cover missing; additive export produces 12/6 pt instead of explicit 6/6 pt. Official cover/citation examples are being measured. See orchestration/validation/aku-felsefe-independent-2/REPORT.md.",
       "specPath": "orchestration/specs/aku-felsefe-seminer.json",
       "reportPath": "orchestration/reports/aku-felsefe-seminer.md",
-      "commit": "7ea3928",
+      "commit": "d4a3a7e",
       "updatedAt": "2026-10-02"
     },
     "aku-isg-tezsiz-proje": {
@@ -318,10 +318,10 @@
       "validation": "PENDING (independent and engine-fix-3 regression)",
       "attempts": 1,
       "status": "IN_PROGRESS",
-      "lastError": "Source-less caption/header/footer-height audit in progress.",
+      "lastError": "Source-less cleanup checkpoint d4a3a7e; independent source/Word validation and engine-fix-3 regression in progress, especially source 12.5 mm footer distance versus 17.4 mm compensation.",
       "specPath": "orchestration/specs/aku-isg-tezsiz-proje.json",
       "reportPath": "orchestration/reports/aku-isg-tezsiz-proje.md",
-      "commit": "3a7883c",
+      "commit": "d4a3a7e",
       "updatedAt": "2026-10-02"
     },
     "afsu-lee": {
