@@ -1,6 +1,7 @@
 import { validateSpecialPageBlocks } from "./specialPages.js";
 import { MM_PER_PT } from "./units.js";
 import { validateFootnoteRule } from "./footnotes.js";
+import { withEngineDefaults } from "./engineDefaults.js";
 
 export const THESIS_SCHEMA_VERSION = 1;
 /** Values a placeholder may take from the laid-out document instead of user input (never stored). */
@@ -156,9 +157,11 @@ export function validateThesisContent(template, thesis, values = thesis?.values 
   return result;
 }
 
-export function validateThesisTemplate(template) {
+export function validateThesisTemplate(rawTemplate) {
   const errors = [];
-  if (!object(template)) return ["Şablon nesne olmalı"];
+  if (!object(rawTemplate)) return ["Şablon nesne olmalı"];
+  // Rules a source may not define (heading styles, caption rules, bibliography, header distance) fall back to engine defaults.
+  const template = withEngineDefaults(rawTemplate);
   if (template.schemaVersion !== THESIS_SCHEMA_VERSION) errors.push(`schemaVersion ${THESIS_SCHEMA_VERSION} olmalı`);
   for (const key of ["id", "templateVersion", "universityId", "universityName", "degreeType", "language"]) {
     if (!text(template[key])) errors.push(`${key} gerekli`);
@@ -322,6 +325,6 @@ export function validateThesisRegistry(registry) {
 
 /** Future versions enter here with explicit migration functions. */
 export function migrateThesisTemplate(raw) {
-  if (raw?.schemaVersion === THESIS_SCHEMA_VERSION) return raw;
+  if (raw?.schemaVersion === THESIS_SCHEMA_VERSION) return withEngineDefaults(raw);
   throw new Error(`Desteklenmeyen tez şema sürümü: ${raw?.schemaVersion ?? "yok"}`);
 }

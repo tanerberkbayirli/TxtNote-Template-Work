@@ -221,7 +221,7 @@ describe("aku-fbe validation attempt 1 fixes", () => {
     const model = compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1>${table3}${note}<h2>Sonra</h2><p>x</p>`);
     const xml = await docxXml(model);
     assert.match(xml, /w:spacing w:after="120" w:before="120"[^>]*\/>[\s\S]{0,900}Not\./, "note: 6 pt before, right under the table");
-    assert.match(xml, /w:spacing w:after="414" w:before="441"/, "heading after the note: gap 28.04 pt - note's 6 pt after");
+    assert.match(xml, /w:spacing w:after="414" w:before="561"/, "heading after the note: the whole gap 28.04 pt on space-before (Word renders max(after, before), the note's 6 pt after stays)");
     // equation in Word: its own 1.5 line, the blank line comes from the previous block's spacing
     const eqXml = await docxXml(compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1>${table3}<span class="math-formula math-formula--block" data-display="block" data-latex="a=b" data-eq-numbered="true">(a=b)</span><p>x</p>`));
     assert.match(eqXml, /w:spacing w:after="414" w:before="537" w:line="360"[\s\S]{0,900}Cambria Math/, "equation after a table: gap 26.85 pt (baseline pitch 41.4 pt), 20.7 pt after");
@@ -295,7 +295,7 @@ describe("aku-fbe validation attempt 1 fixes", () => {
     assert.equal(thesisSourceHtml('<span data-thesis-eq="(1.1)" data-thesis-eq-pad-before="31.6" data-thesis-eq-pad-after="23.5" data-thesis-eq-lift="1" data-thesis-eq-drop="2" data-thesis-eq-base="14.9" data-thesis-eq-fit="0.8">x<span data-thesis-eq-probe="" style="display:inline-block"></span></span>'), "<span>x</span>");
     const xml = await docxXml(compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1><span class="math-formula math-formula--block" data-display="block" data-latex="E=mc^2" data-eq-numbered="true">(E)</span>`));
     assert.match(xml, /w:ascii="Cambria Math"[^>]*\/>[\s\S]{0,200}<w:sz w:val="24"\/>/);
-    assert.match(xml, /w:spacing w:after="414" w:before="0" w:line="360"[\s\S]{0,200}Cambria Math/);
+    assert.match(xml, /w:spacing w:after="414" w:before="414" w:line="360"[\s\S]{0,200}Cambria Math/);
   });
 
   it("layout PDF glyph aliases replace symbols Times New Roman lacks by look-alikes it has", async () => {

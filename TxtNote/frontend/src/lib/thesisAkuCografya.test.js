@@ -142,9 +142,10 @@ describe("AKÜ Coğrafya lisans bitirme tezi template (aku-cografya-lisans-tr-v1
   it("DOCX carries the Word values: 25/30 mm margins, 1.5 lines, 6/6 pt, 12.5 mm indent, heading gaps, footer 12.5 mm", async () => {
     const xml = await docxXml(compile());
     assert.match(xml, /<w:pgMar w:top="1417" w:right="1701" w:bottom="1417" w:left="1701" w:header="709" w:footer="709"/);
-    assert.match(xml, /w:spacing w:after="120" w:before="120" w:line="360" w:lineRule="auto"/);
+    // paragraph after a heading: Word renders max(after, before), so space-before carries the whole 14.7 pt gap (heading 14.7 pt after + 6 pt before = 20.7 pt = 414 twips), previous space-after stays
+    assert.match(xml, /w:spacing w:after="120" w:before="414" w:line="360" w:lineRule="auto"/);
     assert.match(xml, /w:firstLine="709"/);
-    assert.match(xml, /w:spacing w:after="294" w:before="294" w:line="360" w:lineRule="auto"/);
+    assert.match(xml, /w:spacing w:after="294" w:before="588" w:line="360" w:lineRule="auto"/); // heading after heading: 14.7 + 14.7 pt on space-before (Word max)
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="lowerRoman"\/>/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="decimal"\/>/);
   });

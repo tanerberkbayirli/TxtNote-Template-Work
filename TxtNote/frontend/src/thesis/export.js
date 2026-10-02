@@ -474,8 +474,10 @@ function tableDocx(block, section, context, before = null) {
   const preset = tables.borders?.preset;
   const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
   const sourceRows = (block.rows || []).filter((row) => row.length);
+  // A caption below the table must stay with its last row (keep-with-next on the last row too).
+  const captionBelow = Boolean(caption && tables.position !== "above");
   const lastHeader = sourceRows.reduce((last, row, index) => (row.every((cell) => cell.header) ? index : last), -1);
-  const makeRow = (row, rowIndex) => new TableRow({
+  const makeRow = (row, rowIndex, keepRow = rowIndex < sourceRows.length - 1 || captionBelow) => new TableRow({
     cantSplit: true, tableHeader: row.every((cell) => cell.header),
     // Word otherwise uses its glyph box as the row minimum, while CSS uses the
     // resolved line box plus both paddings and the collapsed border.
@@ -485,7 +487,7 @@ function tableDocx(block, section, context, before = null) {
       // Three-rule tables: the rule below the header row belongs to its cells.
       ...(preset === "threeRule" && rowIndex === lastHeader ? { borders: { bottom: rule } } : {}),
       margins: preset ? { top: 0, bottom: 0, left: twip(1.9), right: twip(1.9) } : { top: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), bottom: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), left: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal), right: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal) },
-      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: rowIndex < sourceRows.length - 1, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
+      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: keepRow, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
   });
   // Three-rule table: top and bottom of the table, and below the (repeated) header row.
@@ -502,10 +504,15 @@ function tableDocx(block, section, context, before = null) {
   if (starts.length) {
     const bounds = [0, ...starts, sourceRows.length];
     bounds.slice(0, -1).forEach((from, fragment) => {
-      const rows = sourceRows.slice(from, bounds[fragment + 1]).map((row, i) => makeRow(row, from + i));
+      // A continued table: Word's pages differ slightly from the editor's, and a keep-with-next chain over a whole page-tall fragment is
+      // broken arbitrarily (it stranded the "(Devam)" caption at a page bottom). Keep only caption + header rows + first data row +
+      // the last two rows together, so a caption can never be separated from its table.
+      const end = bounds[fragment + 1];
+      const keep = (index) => index < end - 1 && (index - from <= headerCount || index === end - 2);
+      const rows = sourceRows.slice(from, end).map((row, i) => makeRow(row, from + i, keep(from + i)));
       if (fragment) {
         out.push(continuationParagraph(tables, block, context, continuation.hang));
-        rows.unshift(...sourceRows.slice(0, headerCount).map((row, i) => makeRow(row, i)));
+        rows.unshift(...sourceRows.slice(0, headerCount).map((row, i) => makeRow(row, i, true)));
       }
       out.push(tableOf(rows));
     });
@@ -585,20 +592,32 @@ function docxChildren(section, context) {
   const useGap = blockGapActive(section.rules);
   const descriptors = useGap ? blockDescriptors(section.rules, section.type === "bibliography" ? section.rules.bibliography.style : body, "figure") : [];
   let previous = null;
+  let pendingAfter = null;
   for (const block of asBlocks(section)) {
     const previousHeading = afterHeading;
     afterHeading = block.type === "heading";
     const descriptor = useGap ? describeBlock(descriptors, block) : null;
     const gap = descriptor && previous ? gapBetween(section.rules, previous, descriptor) : null;
-    const before = gap === null ? null : Math.max(0, gap - previous.exit.after);
+    // Word renders the gap between paragraph A (space-after) and B (space-before) as max(after, before), never the sum (measured, compat 12/14/15).
+    // So the whole intended gap goes on the next block's space-before (previous space-after stays: max(after, gap) = gap whenever gap >= after).
+    const before = gap === null ? null : Math.max(0, gap);
     previous = descriptor;
-    const withGap = (style) => before === null ? style : { ...style, spaceBeforePt: before };
+    // paragraphSpacing "additive" (no block-gap table): the editor sums after(prev) + before(next) for paragraph/heading pairs; same rule, carried on space-before.
+    const additiveAfter = pendingAfter;
+    pendingAfter = null;
+    const additive = before === null && additiveAfter !== null && section.rules.lineSpacing?.paragraphSpacing === "additive";
+    const withGap = (style) => {
+      if (before !== null) return { ...style, spaceBeforePt: before };
+      if (additive && !style.pageBreakBefore) return { ...style, spaceBeforePt: (style.spaceBeforePt || 0) + additiveAfter };
+      return style;
+    };
+    const chain = (style) => { pendingAfter = style.spaceAfterPt || 0; return style; };
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(runs, withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, pageBreakBefore: false } : style), context, { heading: level, anchor: block.thesisAnchor }));
+      children.push(docxParagraph(runs, chain(withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, pageBreakBefore: false } : style)), context, { heading: level, anchor: block.thesisAnchor }));
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
       const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
@@ -607,7 +626,7 @@ function docxChildren(section, context) {
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
       const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
       const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), withGap({ ...style, ...spacing, align: align || style.align }), context));
+      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), chain(withGap({ ...style, ...spacing, align: align || style.align })), context));
     } else if (block.type === "list") {
       children.push(...listParagraphs(block, section, context, 0, before));
     } else if (block.type === "table") {

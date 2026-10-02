@@ -1,4 +1,5 @@
 import generic from "./templates/generic.js";
+import { withEngineDefaults } from "./engineDefaults.js";
 import { validateThesisRegistry, validateThesisTemplate } from "./validation.js";
 
 /** Selection reads only these small descriptors. The template module loads on demand. */
@@ -62,7 +63,7 @@ export async function resolveThesisTemplate(selection, registry = THESIS_TEMPLAT
         if ((template[key] || "") !== (descriptor[key] || "")) errors.push(`${key}: registry ile şablon farklı`);
       }
       if (errors.length) throw new Error(errors.join("; "));
-      cache.set(descriptor.id, template);
+      cache.set(descriptor.id, template = withEngineDefaults(template));
     }
     return { template, fallback: false, reason: "" };
   } catch (error) {

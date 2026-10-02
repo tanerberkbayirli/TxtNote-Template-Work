@@ -153,6 +153,8 @@ describe("thesis engine", () => {
     // Demo B used "{1}.{2}" for H3 too, so H2 and H3 both read 1.1 (editor, TOC, PDF, DOCX).
     for (const entry of THESIS_TEMPLATE_REGISTRY) {
       const { template } = await resolveThesisTemplate({ templateId: entry.id });
+      // Only templates that enable heading numbering (a source may define none; the engine then renders unnumbered headings).
+      if (!Object.values(template.typography.headings).some((style) => style.numbering)) continue;
       const model = compileThesisDocument(template, {}, "T", "<h1>Bir</h1><h2>İki</h2><h3>Üç</h3><h3>Dört</h3>");
       const labels = model.headings.map((heading) => heading.label);
       assert.equal(new Set(labels).size, labels.length, `${entry.id}: ${labels}`);
