@@ -1,0 +1,374 @@
+{
+ "id": "aku-felsefe-lisans",
+ "schemaVersion": 3,
+ "analyzedAt": "2026-10-02",
+ "university": "Afyon Kocatepe Üniversitesi",
+ "unit": "Fen Edebiyat Fakültesi · Felsefe Bölümü · Lisans Bitirme Tezi",
+ "sources": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+   "role": "primary",
+   "type": "guide",
+   "version": "2019",
+   "pages": null
+  }
+ ],
+ "sourcePriority": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+   "why": "only source; prose-only DOCX guide, no template or example thesis pages"
+  }
+ ],
+ "variants": [
+  {
+   "registryId": "aku-felsefe-lisans-tr-v1",
+   "degreeType": "undergraduate",
+   "language": "tr",
+   "confirmed": true,
+   "evidence": "AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+   "differences": [
+    "see report"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "key": "page.margins.topMm",
+   "value": 30,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 35-36 (Sayfa kenar boşluğu)",
+     "quote": "üst: 3 cm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.bottomMm",
+   "value": 30,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 35-36 (Sayfa kenar boşluğu)",
+     "quote": "alt: 3 cm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.leftMm",
+   "value": 35,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 35-36 (Sayfa kenar boşluğu)",
+     "quote": "sol: 3.5 cm"
+    }
+   ],
+   "notes": "guide sectPr (30 mm) describes the guide document; text wins"
+  },
+  {
+   "key": "page.margins.rightMm",
+   "value": 20,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 35-36 (Sayfa kenar boşluğu)",
+     "quote": "sağ: 2 cm"
+    }
+   ],
+   "notes": "guide sectPr right 1418 tw = 25 mm conflicts (guide document geometry, not a rule)"
+  },
+  {
+   "key": "typography.body.fontFamily",
+   "value": "Times New Roman",
+   "unit": null,
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34 (Tez içerisinde kullanılacak metin)",
+     "quote": "Times New Roman fontunda"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34 (Tez içerisinde kullanılacak metin)",
+     "quote": "12 puntoda"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.lineHeight",
+   "value": 1.5,
+   "unit": "lines",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34 (Tez içerisinde kullanılacak metin)",
+     "quote": "1,5 satır aralığında"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.firstLineIndentMm",
+   "value": 12.5,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34 (Tez içerisinde kullanılacak metin)",
+     "quote": "1,25 cm içeriden başlayan paragraf başı"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.spaceBeforePt",
+   "value": 6,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34 (Tez içerisinde kullanılacak metin)",
+     "quote": "önceki 6nk"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.spaceAfterPt",
+   "value": 6,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34 (Tez içerisinde kullanılacak metin)",
+     "quote": "sonraki 6nk"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.align",
+   "value": "justify",
+   "unit": null,
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34 (Tez içerisinde kullanılacak metin)",
+     "quote": "Her iki yana hizalanmış metin"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.paragraphStyles.blockQuote",
+   "value": {
+    "fontSizePt": 11,
+    "lineHeight": 1,
+    "leftIndentMm": 10,
+    "rightIndentMm": 10
+   },
+   "unit": null,
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 37",
+     "quote": "11 punto ve 1 satır aralığı ile sağdan ve solda 1 cm daraltılmış paragraf"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.numbering",
+   "value": {
+    "position": "bottom",
+    "align": "center",
+    "format": "arabic",
+    "startAt": 1
+   },
+   "unit": null,
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 60",
+     "quote": "Sayfa numaraları ... altında ve ortasında"
+    }
+   ],
+   "notes": "numbers have no other sign; font size UNKNOWN"
+  },
+  {
+   "key": "bibliography.citationStyle",
+   "value": "author-year",
+   "unit": null,
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 63-64",
+     "quote": "APA ALINTI SİSTEMİ; alfabetik KAYNAKÇA"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "cover (Dış/İç Kapak) layout",
+   "value": null,
+   "unit": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [],
+   "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  },
+  {
+   "key": "heading typography/numbering",
+   "value": null,
+   "unit": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [],
+   "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  },
+  {
+   "key": "table/figure caption format and position",
+   "value": null,
+   "unit": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [],
+   "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  },
+  {
+   "key": "footnote typography",
+   "value": null,
+   "unit": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [],
+   "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  },
+  {
+   "key": "page-number font size",
+   "value": null,
+   "unit": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [],
+   "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  },
+  {
+   "key": "reference-list indents/size",
+   "value": null,
+   "unit": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [],
+   "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  },
+  {
+   "key": "appendix layout",
+   "value": null,
+   "unit": null,
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [],
+   "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  }
+ ],
+ "conflicts": [
+  {
+   "topic": "margins: guide text vs guide sectPr",
+   "values": {
+    "text": "top/bottom 3 cm, left 3.5 cm, right 2 cm",
+    "sectPr": "30/30/30/25 mm"
+   },
+   "resolution": "text (rule) over sectPr (guide document geometry)"
+  }
+ ],
+ "engineGaps": [
+  "shared engine test requires numbered headings although the source defines no heading numbering"
+ ]
+}
