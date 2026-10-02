@@ -67,8 +67,9 @@ export function resolvePageNumberStyle(body = {}, numbering = {}) {
     ...(numbering.style || {}),
     fontFamily: numbering.style?.fontFamily || body.fontFamily,
     fontSizePt: numbering.style?.fontSizePt || body.fontSizePt,
-    fontWeight: numbering.style?.fontWeight ?? body.fontWeight ?? 400,
-    italic: numbering.style?.italic ?? body.italic ?? false,
+    // Weight/italic never inherit from the section body (a bold special-page body must not bold the number); only numbering.style sets them.
+    fontWeight: numbering.style?.fontWeight ?? 400,
+    italic: numbering.style?.italic ?? false,
   };
 }
 

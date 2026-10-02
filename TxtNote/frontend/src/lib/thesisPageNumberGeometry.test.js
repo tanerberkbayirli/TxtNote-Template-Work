@@ -38,6 +38,16 @@ describe("page-number baseline and text-box geometry", () => {
     assert.equal(zeroPage.footer.distanceMm, 0);
   });
 
+  it("does not let a bold or italic section body leak into the page number; only numbering.style sets weight", () => {
+    const bold = { fontFamily: "Times New Roman", fontSizePt: 12, fontWeight: 700, italic: true };
+    const plain = resolvePageNumberStyle(bold, {});
+    assert.equal(plain.fontWeight, 400);
+    assert.equal(plain.italic, false);
+    const explicit = resolvePageNumberStyle(bold, { style: { fontWeight: 700, italic: true } });
+    assert.equal(explicit.fontWeight, 700);
+    assert.equal(explicit.italic, true);
+  });
+
   it("preserves legacy default numbering and resolves distinct front/body baselines and centered boxes", () => {
     assert.deepEqual(
       (({ fontFamily, fontSizePt, fontWeight, italic }) => ({ fontFamily, fontSizePt, fontWeight, italic }))(resolvePageNumberStyle({ fontFamily: "Times New Roman", fontSizePt: 12, fontWeight: 400 }, {})),

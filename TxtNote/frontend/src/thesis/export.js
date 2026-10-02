@@ -107,7 +107,7 @@ function pdfChrome(pdf, section, pageNumber, firstPage, values, exactFamilies = 
   const label = formatNumber(pageNumber, rule.format);
   const explicitBaseline = Number.isFinite(rule.baselineFromTopMm);
   const numberingStyle = resolvePageNumberStyle(body, rule);
-  if (explicitBaseline) pdfFont(pdf, numberingStyle, exactFamilies);
+  pdfFont(pdf, numberingStyle, exactFamilies);
   const defaultX = rule.align === "left" ? page.margins.leftMm : rule.align === "right" ? page.widthMm - page.margins.rightMm : page.widthMm / 2;
   const x = Number.isFinite(rule.xMm) && Number.isFinite(rule.widthMm)
     ? rule.xMm + (rule.align === "left" ? 0 : rule.align === "right" ? rule.widthMm : rule.widthMm / 2)
