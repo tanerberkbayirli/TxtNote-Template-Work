@@ -315,10 +315,10 @@
     "aku-isg-tezsiz-proje": {
       "analysis": "DONE",
       "implementation": "IN_PROGRESS",
-      "validation": "PENDING (independent and engine-fix-3 regression)",
+      "validation": "FAIL (independent interim; source structure and PDF pagination)",
       "attempts": 1,
-      "status": "IN_PROGRESS",
-      "lastError": "Source-less cleanup checkpoint d4a3a7e; independent source/Word validation and engine-fix-3 regression in progress, especially source 12.5 mm footer distance versus 17.4 mm compensation.",
+      "status": "FAIL",
+      "lastError": "Independent ISG audit: footer baseline matches but output uses 17.4 mm/one PAGE paragraph instead of source 12.5 mm/PAGE plus trailing blank paragraph; two-line inner-cover title spills city/year in editor PDF while Word fits. See orchestration/validation/aku-isg-independent-2/REPORT.md; fixes pending.",
       "specPath": "orchestration/specs/aku-isg-tezsiz-proje.json",
       "reportPath": "orchestration/reports/aku-isg-tezsiz-proje.md",
       "commit": "d4a3a7e",
