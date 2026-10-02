@@ -40,7 +40,7 @@
       "commit": null
     },
     "afsu": {
-      "status": "PENDING",
+      "status": "IN_PROGRESS",
       "targets": [
         "afsu-lee"
       ],
@@ -165,9 +165,9 @@
       "commit": null
     }
   },
-  "currentUniversity": "aku",
-  "currentTarget": "aku-fbe",
-  "currentPhase": "BLOCKED (aku-fbe source conflicts, seven-juror and long-title pagination, Word repagination)",
+  "currentUniversity": "afsu",
+  "currentTarget": "afsu-lee",
+  "currentPhase": "SOURCE_ANALYSIS (user scope override: AFSU then ADU; AKU open queue preserved)",
   "lastCompletedValidation": {
     "target": "aku-fbe",
     "attempt": 5,
@@ -325,11 +325,11 @@
       "updatedAt": "2026-10-02"
     },
     "afsu-lee": {
-      "analysis": "PENDING",
+      "analysis": "IN_PROGRESS",
       "implementation": "PENDING",
       "validation": "PENDING",
       "attempts": 0,
-      "status": "PENDING",
+      "status": "IN_PROGRESS",
       "lastError": null,
       "specPath": null,
       "reportPath": null,

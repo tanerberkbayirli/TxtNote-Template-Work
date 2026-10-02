@@ -1,0 +1,843 @@
+{
+  "id": "afsu-lee",
+  "schemaVersion": 2,
+  "analyzedAt": "2026-10-02",
+  "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi (AFSÜ)",
+  "unit": "Lisansüstü Eğitim Enstitüsü (LEE) – yüksek lisans ve doktora final tezi",
+  "note": "Common LEE final-thesis rules extracted from the official 2025 guide and four 2026 defense checklists. DOCX paragraphs/tables have no stable printed-page pagination in this inspection; locators use python-docx paragraph indices (P[n]) and WordprocessingML table/row/paragraph paths. Guide table indices are zero-based in the extracted inventory; OOXML tbl/tr/p indices below are one-based. Diagram labels in w:txbxContent are explicitly included. Proposal-writing guide is a separate target and is not extracted here. Template-specific cover and approval XML/measurements are owned by the companion analysis.",
+  "sources": [
+    {
+      "id": "guide",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "role": "primary",
+      "type": "official guide",
+      "version": "December 2025; foreword says accepted by LEE Board decision 20/10/2025, no. 04/04"
+    },
+    {
+      "id": "yl-pre",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
+      "role": "supplementary",
+      "type": "official pre-defense checklist",
+      "version": "2026 filename; embedded form publication date 13/07/2023, rev 0"
+    },
+    {
+      "id": "yl-post",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
+      "role": "supplementary",
+      "type": "official post-defense checklist",
+      "version": "2026 filename; embedded form publication date 13/07/2023, rev 0"
+    },
+    {
+      "id": "phd-pre",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
+      "role": "supplementary",
+      "type": "official pre-defense checklist",
+      "version": "2026 filename; embedded form publication date 13/07/2023, rev 0"
+    },
+    {
+      "id": "phd-post",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
+      "role": "supplementary",
+      "type": "official post-defense checklist",
+      "version": "2026 filename; embedded form publication date 13/07/2023, rev 0"
+    }
+  ],
+  "sourcePriority": [
+    {
+      "path": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "why": "Primary source for actual formatting requirements; foreword says it was adopted by the LEE Board. Checklists confirm selected requirements but mostly refer back to the guide."
+    },
+    {
+      "path": "four official 2026 checklists",
+      "why": "Supplementary defense-stage conformity evidence; where concise checklist language differs in scope, retain the guide's detailed rule and record the checklist wording rather than infer a change."
+    }
+  ],
+  "variants": [
+    {
+      "registryId": "afsu-lee-master-tr-v1",
+      "degreeType": "master",
+      "language": "tr",
+      "confirmed": true,
+      "evidence": "Guide foreword P45 identifies both Yüksek Lisans and Doktora theses; 2026 YL checklist source files; guide Table 1 row 1 and Table 3 jury paragraph.",
+      "differences": [
+        "Three thesis jury members (guide Table 1, row 1, Kabul ve Onay subsection).",
+        "At least six bound copies for accepted theses (guide Table 1, row 2, Kabul Edilen Tezlerin Teslimi subsection).",
+        "YL-specific labels and cover/approval content are deferred to companion template evidence."
+      ]
+    },
+    {
+      "registryId": "afsu-lee-phd-tr-v1",
+      "degreeType": "phd",
+      "language": "tr",
+      "confirmed": true,
+      "evidence": "Guide foreword P45 identifies both Yüksek Lisans and Doktora theses; 2026 doctoral checklists; guide Table 1 jury and delivery paragraphs.",
+      "differences": [
+        "Five thesis jury members (guide Table 1, row 1, Kabul ve Onay subsection).",
+        "At least eight bound copies for accepted theses (guide Table 1, row 2, Kabul Edilen Tezlerin Teslimi subsection).",
+        "Guide includes Özgeçmiş as a final-thesis component generally; no degree-specific exclusion was found."
+      ]
+    },
+    {
+      "registryId": "afsu-lee-master-en-v1",
+      "degreeType": "master",
+      "language": "en",
+      "confirmed": false,
+      "evidence": "No English full-thesis variant found among the listed LEE guide/checklist sources.",
+      "differences": [
+        "UNKNOWN: English-language full thesis requirements and English cover/approval variant are not established by these sources. The guide requires an English abstract (ABSTRACT), which does not establish an English thesis variant."
+      ]
+    },
+    {
+      "registryId": "afsu-lee-phd-en-v1",
+      "degreeType": "phd",
+      "language": "en",
+      "confirmed": false,
+      "evidence": "No English full-thesis variant found among the listed LEE guide/checklist sources.",
+      "differences": [
+        "UNKNOWN: English-language full thesis requirements and English cover/approval variant are not established by these sources. The guide requires an English abstract (ABSTRACT), which does not establish an English thesis variant."
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "key": "page.size",
+      "value": "A4",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "*"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Sayfa Düzeni",
+          "quote": "A4 is stated at guide Table 1 row 1 second paragraph (accepted theses: ‘A4 kâğıda kitap formatında’); exact page dimensions otherwise not stated in the prose."
+        }
+      ],
+      "notes": "Document section XML exists but exact template section geometry is reserved for companion inspection."
+    },
+    {
+      "key": "page.margins.topMm",
+      "value": 25,
+      "unit": "mm",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "*"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Sayfa Düzeni",
+          "quote": "Üst kenardan 2,5 cm"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "page.margins.leftMm",
+      "value": 40,
+      "unit": "mm",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "*"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Sayfa Düzeni",
+          "quote": "sol kenardan 4 cm"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "page.margins.rightMm",
+      "value": 25,
+      "unit": "mm",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "*"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Sayfa Düzeni",
+          "quote": "sağ kenardan 2,5 cm"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "page.margins.bottomMm",
+      "value": 25,
+      "unit": "mm",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "*"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Sayfa Düzeni",
+          "quote": "alt kenardan 2,5 cm"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "typography.body.fontFamily",
+      "value": "Times New Roman",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "*"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "Tezin tüm bölümlerinde Times New Roman yazı karakteri"
+        },
+        {
+          "source": "yl-post",
+          "locator": "word/document.xml /w:body/w:p[12]",
+          "quote": "Ana metin ... Times New Roman karakteri"
+        },
+        {
+          "source": "phd-post",
+          "locator": "word/document.xml /w:body/w:p[12]",
+          "quote": "Ana metin ... Times New Roman karakteri"
+        }
+      ],
+      "notes": "The guide's explicit 10 pt exceptions below are scoped exceptions to the general font-size rule, not conflicts."
+    },
+    {
+      "key": "typography.body.fontSizePt",
+      "value": 12,
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main",
+        "front-matter",
+        "abstract",
+        "abstract-en",
+        "headings"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "Tezin tüm bölümlerinde ... 12 punto yazı büyüklüğü"
+        },
+        {
+          "source": "yl-post",
+          "locator": "word/document.xml /w:body/w:p[12]",
+          "quote": "Ana metin harf büyüklüğü 12 punto"
+        }
+      ],
+      "notes": "Specific table/figure/formula and reference rules set 10 pt within their stated scope."
+    },
+    {
+      "key": "typography.body.lineSpacing",
+      "value": "1.5",
+      "unit": "lines",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "Tez metninde paragraf içerisindeki satırlar arasında 1,5 satır aralığı"
+        },
+        {
+          "source": "yl-post",
+          "locator": "word/document.xml /w:body/w:p[14]",
+          "quote": "Ana metin aralığı 1,5 satır"
+        }
+      ],
+      "notes": "Abstract, references, and contents have their own specific rules."
+    },
+    {
+      "key": "typography.paragraph.firstLineIndentMm",
+      "value": 0,
+      "unit": "mm",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main",
+        "abstract",
+        "abstract-en"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "Paragraf girintisi yapılmamalıdır"
+        },
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Özetler subsection",
+          "quote": "paragraf girintisi yapılmamalıdır"
+        }
+      ],
+      "notes": "Contents entries have their own 1.25 cm heading indent rule."
+    },
+    {
+      "key": "typography.paragraph.spaceBeforePt",
+      "value": 6,
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "Alt bölüm başlıkları ile bunların ilk paragrafları arasında ve metin içindeki diğer paragraflar arasında paragraf öncesi ... 6 nk boşluk"
+        }
+      ],
+      "notes": "Literal before spacing is 6 pt."
+    },
+    {
+      "key": "typography.paragraph.spaceAfterPt",
+      "value": 6,
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "Alt bölüm başlıkları ile bunların ilk paragrafları arasında ve metin içindeki diğer paragraflar arasında paragraf ... sonrası 6 nk boşluk"
+        }
+      ],
+      "notes": "Guide states both before and after. Keep these as literal Word spacing values; do not convert to an additive paragraph-gap interpretation."
+    },
+    {
+      "key": "typography.body.align",
+      "value": "justified",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main",
+        "captions"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Sayfa Düzeni",
+          "quote": "Tez metni, tablo ve şekil açıklamaları iki yana yasla düzeninde olmalıdır"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "numbering.frontMatter",
+      "value": "lowercase Roman numerals; inside cover unnumbered; numbering begins at abstract",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "abstract",
+        "abstract-en",
+        "toc",
+        "index-figures",
+        "index-tables",
+        "symbols"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[6]/w:tc[1]/w:p[1], Sayfaların Numaralandırılması",
+          "quote": "Özet, Abstract, İçindekiler, Şekiller Dizini, Tablolar Dizini ile Kısaltmalar ve Simgeler Dizini i, ii, iii, iv, v, ... şeklinde küçük harf Roma rakamı ile yazılmalıdır. ... İç kapak numaralandırılmamalıdır ve sayfa numarası özet bölümünden başlamalıdır."
+        },
+        {
+          "source": "yl-post",
+          "locator": "word/document.xml /w:body/w:p[9]",
+          "quote": "ön bölüm ... ‘1. GİRİŞ’ bölümüne kadar i, ii, iii, … şeklinde küçük Roma rakamları"
+        }
+      ],
+      "notes": "Arabic numbering begins at Giriş as rule below."
+    },
+    {
+      "key": "numbering.main",
+      "value": "Arabic numerals beginning with 1 at GİRİŞ",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[6]/w:tc[1]/w:p[1], Sayfaların Numaralandırılması",
+          "quote": "Sayfa numaralaması ‘Giriş’ bölümünden itibaren 1, 2, 3, … şeklinde başlamalıdır."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "pagination.position",
+      "value": "bottom-right",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "*"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1], Sayfa Düzeni",
+          "quote": "Sayfa numaraları sağ alt köşede olmalıdır."
+        },
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[6]/w:tc[1]/w:p[1], Sayfaların Numaralandırılması",
+          "quote": "Sayfa numaraları, sayfaların alt kenarında sağa gelecek şekilde"
+        }
+      ],
+      "notes": "Exact footer distance and page-number point size are UNKNOWN from the guide prose."
+    },
+    {
+      "key": "headings.mainSection",
+      "value": "numbered sequentially from 1 GİRİŞ through KAYNAKLAR; each starts on a new page",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[4]/w:tc[1]/w:p[1], Bölüm Başlıklarının Yazım Kuralları",
+          "quote": "Bütün ana bölümler yeni bir sayfadan başlamalıdır. ... 1. GİRİŞ bölümünden başlayarak KAYNAKLAR bölümüne kadar 1., 2., 3., 4., 5., … şeklinde numaralandırılmalıdır."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "headings.level1.format",
+      "value": "uppercase, bold, 14 pt, centered",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[4]/w:tc[1]/w:p[2], Bölüm Başlıklarının Yazım Kuralları; diagram labels in /w:txbxContent",
+          "quote": "Birinci derece bölüm başlıkları büyük harf, kalın (bold), 14 punto ve sayfa ortasında"
+        },
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body//w:txbxContent, labeled heading hierarchy example",
+          "quote": "GİRİŞ (14 Punto, kalın, ortalı)"
+        }
+      ],
+      "notes": "The guide also separately calls the thesis-text main headings numbered; exact number placement/layout to be correlated with the companion template evidence."
+    },
+    {
+      "key": "headings.level2.format",
+      "value": "bold, 14 pt, left aligned; initial letter of each word uppercase except conjunctions such as ve/veya/ile",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[4]/w:tc[1]/w:p[2], Bölüm Başlıklarının Yazım Kuralları and shape example",
+          "quote": "İkinci derece bölüm başlıkları her kelimenin ilk harfi büyük ... 14 punto ve kalın, sola dayalı"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "headings.level3.format",
+      "value": "bold, 12 pt, left aligned; only first word begins uppercase",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[4]/w:tc[1]/w:p[2], Bölüm Başlıklarının Yazım Kuralları and shape example",
+          "quote": "üçüncü derece ... birinci kelimenin ilk harfi büyük ... kalın olarak 12 punto ... sola dayalı"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "headings.level4Plus.format",
+      "value": "bold italic, 12 pt, left aligned; only first word begins uppercase; unnumbered",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[4]/w:tc[1]/w:p[2], Bölüm Başlıklarının Yazım Kuralları and shape example",
+          "quote": "dördüncü derece ve daha fazla ... kalın ve italik olarak 12 punto ... yazılmalıdır. ... Dördüncü derece ve daha fazla alt bölüm başlıkları numaralandırılmamalıdır."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "headings.appendicesResume",
+      "value": "unnumbered, uppercase, bold, 14 pt",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "appendices",
+        "resume"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[4]/w:tc[1]/w:p[1], Bölüm Başlıklarının Yazım Kuralları",
+          "quote": "KAYNAKLAR bölümünden sonra EKLER ve ÖZGEÇMİŞ dahil başlıklar numarasız, büyük harfle, 14 punto ve kalın olarak yazılmalıdır."
+        }
+      ],
+      "notes": "Appendices heading is also explicitly bold and centered in guide Table 2 row 2 (Ekler Bölümü)."
+    },
+    {
+      "key": "abstract.minimumWords",
+      "value": 250,
+      "unit": "words",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "abstract",
+        "abstract-en"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[5]/w:tc[1]/w:p[1], Tezin Özetleri subsection",
+          "quote": "başlık ve anahtar kelimeler hariç en az 250 kelime olmalı"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "abstract.maximumPages",
+      "value": 1,
+      "unit": "page",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "abstract",
+        "abstract-en"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[5]/w:tc[1]/w:p[1], Tezin Özetleri subsection",
+          "quote": "bir sayfayı aşmamalıdır"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "abstract.lineSpacing",
+      "value": "single",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "abstract",
+        "abstract-en"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[5]/w:tc[1]/w:p[1], Tezin Özetleri subsection",
+          "quote": "Özet bölümü 12 punto, 1 (bir) satır aralığı olmalı"
+        }
+      ],
+      "notes": "Guide's 1.5 main-text rule is scoped to thesis text."
+    },
+    {
+      "key": "abstract.keywords.count",
+      "value": "3–5",
+      "unit": "keywords",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "abstract",
+        "abstract-en"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[5]/w:tc[1]/w:p[1], Tezin Özetleri subsection",
+          "quote": "en az 3, en fazla 5 Anahtar kelime (Keywords)"
+        }
+      ],
+      "notes": "Alphabetical, comma separated; first word initial uppercase and subsequent keywords initial lowercase. Turkish terms use Türkiye Bilim Terimleri; English terms use MeSH."
+    },
+    {
+      "key": "abstract.bodyStructure",
+      "value": "separate paragraphs for aim, materials/methods, findings, conclusion; do not label the paragraphs with those headings; no citations or abbreviations in abstract",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "abstract",
+        "abstract-en"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[5]/w:tc[1]/w:p[1], Tezin Özetleri subsection",
+          "quote": "amaç, gereç ve yöntemi, bulguları ve sonuçları ayrı ayrı paragraflarda yazılmalı ... Özet metni içerisinde kaynak verilmemelidir. Özet içinde kısaltma kullanılmamalı ve açıklanmamalıdır."
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "toc.format",
+      "value": "main entries uppercase bold TNR 12; subentries title case TNR 12; all entries 1.5-spaced; headings begin with 1.25 cm indent; preserve full heading text and align page numbers",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "toc"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[5]/w:tc[1]/w:p[2], İçindekiler Sayfası subsection",
+          "quote": "ana bölüm başlıkları Times New Roman, 12 punto, bold ve TAMAMI BÜYÜK HARFLE, alt bölüm başlıkları ... 12 punto, yalnızca BAŞ HARFLERİ BÜYÜK ... 1,5 satır aralıklarla ... başlık 1,25 cm. girinti ... hiçbir kısaltma yapılmaz ... karşısına ... sayfa numarası hizalı"
+        }
+      ],
+      "notes": "Specific level indent depths other than the stated 1.25 cm, leader style, and exact tab-stop positions are UNKNOWN from prose."
+    },
+    {
+      "key": "citations.style",
+      "value": "current APA Reference System; references alphabetized by author surname; bibliography unnumbered; every listed work must be cited in text; cite sourced figures/tables at point of use and include sources in references",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "main",
+        "references",
+        "captions"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[3]/w:tr[1]/w:tc[1]/w:p[6] and p[22], General Bilgiler / Kaynaklar",
+          "quote": "All sources in thesis use current APA; cite borrowed material including paraphrases; cite sourced images/figures where used; references alphabetical by author surname, unnumbered, every listed work cited in text."
+        }
+      ],
+      "notes": "Current APA is the stated style. The guide includes examples and an APA explanation; do not infer edition/version beyond the phrase ‘current APA’."
+    },
+    {
+      "key": "references.fontSizePt",
+      "value": 10,
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "references"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "KAYNAKLAR’ın yazımında 10 punto yazı büyüklüğü"
+        },
+        {
+          "source": "yl-post",
+          "locator": "word/document.xml /w:body/w:p[15]",
+          "quote": "Kaynaklar, kaynak gösterme ilkelerine ve kurallarına uygun"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "references.lineSpacing",
+      "value": "single",
+      "unit": "",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "references"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "tek satır aralığı kullanılmalı"
+        }
+      ],
+      "notes": ""
+    },
+    {
+      "key": "references.spaceBetweenEntriesPt",
+      "value": 6,
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "references"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "kaynaklar arasında 6 nk boşluk bırakılmalıdır"
+        }
+      ],
+      "notes": "The guide requires the current APA edition for references (Table 2 row 1, General Bilgiler subsection)."
+    },
+    {
+      "key": "tablesFigures.formula.fontSizePt",
+      "value": 10,
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "tables",
+        "figures",
+        "formulas"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[3]/w:tc[1]/w:p[1], Yazım Şekli ve Karakteri",
+          "quote": "Tablo, Şekil veya Formül kullanılması durumunda 10 punto"
+        }
+      ],
+      "notes": "Specific scope exception to general all-sections 12 pt. Table/figure captions are separately 12 pt."
+    },
+    {
+      "key": "captions.fontSizePt",
+      "value": 12,
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "captions"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[6]/w:tc[1]/w:p[2], Tablo ve Şekiller subsection",
+          "quote": "Tablo ve şekil başlıkları 12 punto"
+        }
+      ],
+      "notes": "Figure caption below centered; table caption above left aligned. Only the table/figure number is bold. Caption/body separation single-spaced."
+    },
+    {
+      "key": "delivery.boundCopies",
+      "value": {
+        "master": 6,
+        "phd": 8,
+        "minimum": true
+      },
+      "unit": "copies",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "master",
+        "phd"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[2], Kabul Edilen Tezlerin Teslimi",
+          "quote": "yüksek lisans için en az 6 adet, doktora için en az 8 adet"
+        }
+      ],
+      "notes": "Accepted theses bound in white chrome card stock; cover text black. Physical production rules, not document-page rendering."
+    },
+    {
+      "key": "submission.preDefenseSimilarityMaxPercent",
+      "value": 30,
+      "unit": "percent",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "master",
+        "phd"
+      ],
+      "evidence": [
+        {
+          "source": "guide",
+          "locator": "word/document.xml /w:body/w:tbl[3]/w:tr[2]/w:tc[1]/w:p[16], Tez Savunma Sınavı Öncesinde Tez Teslimi",
+          "quote": "İntihal raporundaki benzerlik oranı %30’u geçmemelidir."
+        }
+      ],
+      "notes": "A separate similarity-report submission/check requirement, not a formatting rule."
+    },
+    {
+      "key": "footnotes.fontFamilyAndSize",
+      "value": "Times New Roman, 10",
+      "unit": "pt",
+      "confidence": "EXPLICIT",
+      "appliesTo": [
+        "footnotes"
+      ],
+      "evidence": [
+        {
+          "source": "yl-post",
+          "locator": "word/document.xml /w:body/w:p[13]",
+          "quote": "Dipnot harf büyüklüğü 10 punto Times New Roman karakteri ile yazıldı."
+        },
+        {
+          "source": "phd-post",
+          "locator": "word/document.xml /w:body/w:p[13]",
+          "quote": "Dipnot harf büyüklüğü 10 punto Times New Roman karakteri ile yazıldı."
+        }
+      ],
+      "notes": "Spacing, separator, and numbering scope remain UNKNOWN."
+    }
+  ],
+  "conflicts": [
+    {
+      "topic": "2026 YL post-defense checklist uses generic YL-or-doctorate wording",
+      "sources": [
+        {
+          "path": "AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
+          "locator": "word/document.xml /w:body/w:p[4]",
+          "value": "Kapak ve iç kapak sayfalarında YÜKSEK LİSANS ve ya DOKTORA şeklinde elde edilen unvan yazıldı."
+        },
+        {
+          "path": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+          "locator": "word/document.xml /w:body/w:tbl[2]/w:tr[2]/w:tc[1]/w:p[2] and foreword P45",
+          "value": "Guide applies to master and doctoral theses, with distinct degree labels and specific 3-member/5-member jury sizes."
+        }
+      ],
+      "decision": "The YL checklist text is generic and its file/document title is YL; it is not evidence that a master's thesis should say Doktora. Preserve as checklist wording; follow degree-specific content from guide and official template. No formatting-value conflict established.",
+      "needsConfirmation": false
+    }
+  ],
+  "unknowns": [
+    {
+      "key": "language.fullThesisEnglish",
+      "why": "Only English ABSTRACT requirements are established; no English-language full-thesis variant is present in the supplied LEE sources."
+    },
+    {
+      "key": "pagination.footerFontSize",
+      "why": "Guide states same font character as body and bottom-right position, but does not establish page-number point size or exact footer distance in guide prose."
+    },
+    {
+      "key": "toc.leadersAndSublevelIndents",
+      "why": "Guide specifies 1.25 cm heading indent and aligned page numbers, but not dot leaders, tab stops, or exact indent depth per subheading level."
+    },
+    {
+      "key": "abstract.exactPresentationBeyondProse",
+      "why": "Abstract prose rules are explicit, but exact line positions/spacing beyond stated one-line spacing and 6 nk paragraph spacing depend on template example XML and are reserved for companion inspection."
+    },
+    {
+      "key": "tableCellAlignment",
+      "why": "Guide specifies table content numeric/text alignment in some contexts and overall table centered placement, but does not establish a universal cell alignment rule."
+    },
+    {
+      "key": "footnoteSpacingSeparatorAndNumbering",
+      "why": "The post-defense checklists specify footnotes as 10 pt Times New Roman, but the guide/checklists do not establish line spacing, separator, or numbering behavior."
+    },
+    {
+      "key": "citations.maximumQuotationLength",
+      "why": "The guide says quotations beyond reasonable limits are an ethical violation, but states no numeric quotation-length/page limit."
+    }
+  ],
+  "engineGaps": []
+}

@@ -1,0 +1,32 @@
+# AFSÜ LEE final-thesis source rules
+
+Source extraction covers the official 2025 LEE thesis-writing guide and the four supplied 2026 master’s/doctoral pre-defense and post-defense checklists. The guide foreword says the guide was approved by the LEE Board on 20 October 2025 (decision 04/04) and applies to master’s and doctoral theses. The checklists mainly verify compliance with the guide; they do not establish a new formatting regime. Their embedded form metadata lists publication date 13 July 2023, revision 0, despite the source filenames carrying 2026.
+
+The structured rules and evidence locators are in [afsu-lee.json](../specs/afsu-lee.json). DOCX sources do not have a stable page map in this extraction, so evidence points to paragraph sequence or `word/document.xml` table rows. The guide’s labeled heading diagram text was extracted from `w:txbxContent`; it confirms examples for first through fourth heading levels and labels line-spacing diagrams. No cover or approval-page geometry/XML was measured here, as that is handled by the companion analysis.
+
+## Common final-thesis requirements
+
+- Paper/margins: A4 output is specified for accepted bound theses; the text area margins are top 25 mm, left 40 mm, right 25 mm, and bottom 25 mm. The margins are explicit guide prose (table “Sayfa Düzeni”).
+- Body typography: Times New Roman 12 pt, 1.5 line spacing, justified text, no paragraph first-line indent. The guide explicitly states 6 pt before and 6 pt after paragraphs, including the gap between a subsection heading and its first paragraph. Preserve those as literal before/after spacing fields; they do not authorize converting the two fields into a different additive gap.
+- Scoped type-size exceptions: tables, figures, and formulas use 10 pt content; references use 10 pt and single spacing with 6 pt between references. Table/figure captions use 12 pt; figure captions sit centered below, table captions sit left above; only the caption number is bold. These specific requirements apply within their scope and resolve the guide’s general “all sections 12 pt” statement without a formatting conflict.
+- Pagination: inner cover is unnumbered; front matter from the abstract uses lowercase Roman numerals; Arabic numbering starts at 1 with GİRİŞ. Page numbers go at bottom right. Point size and exact footer distance are UNKNOWN.
+- Headings: main thesis divisions start on new pages and are numbered from GİRİŞ through KAYNAKLAR. Heading level 1 is uppercase, bold, 14 pt, centered; level 2 is bold, 14 pt, left aligned and title case; level 3 is bold, 12 pt and left aligned with only the first word capitalized; level 4 and deeper are bold italic, 12 pt, left aligned, and unnumbered. EKLER and ÖZGEÇMİŞ are unnumbered, uppercase, bold, 14 pt after KAYNAKLAR. The guide’s embedded labeled diagram examples corroborate levels 1–4.
+- Abstracts: Turkish ÖZET and English ABSTRACT each have at least 250 words excluding title and keywords, fit on at most one page, use 12 pt and single spacing, and have no first-line indent. The abstract should use separate paragraphs for aim, methods, findings, and conclusion, without those labels, citations, or abbreviations. Provide 3–5 alphabetized, comma-separated keywords; Turkish terms should follow Türkiye Bilim Terimleri and English terms MeSH.
+- Contents: list abstracts, symbols/abbreviations and figure/table lists, thesis headings, references, CV, and appendices. Main entries are uppercase bold TNR 12; subentries use title case TNR 12; all are 1.5 spaced. Headings have a stated 1.25 cm indent and page numbers align opposite their headings. Dot leaders, tab stops, and exact indentation by sublevel remain UNKNOWN from prose.
+- Degree differences: the guide requires three jury members for master’s and five for doctoral theses, and at least six bound copies for master’s versus eight for doctoral theses. The guide’s prescribed full thesis is in Turkish with an English abstract; no English full-thesis variant was found.
+
+## Checklist and source notes
+
+The post-defense checklists repeat the main text 12 pt Times New Roman, footnotes 10 pt Times New Roman, 1.5 line spacing, small-Roman front matter through GİRİŞ, and guide-based page layout. The checklists provide no footnote spacing or numbering specification, so those remain UNKNOWN. Pre-defense checklists classify layout, pagination, headings, tables/figures, citations, abstracts, and front matter as items to inspect but defer detailed values to the guide.
+
+The YL post-defense checklist’s item uses generic wording “YÜKSEK LİSANS ve ya DOKTORA” although the document is the YL checklist. This is preserved in the JSON as checklist wording; it does not establish that a master’s thesis should use the doctorate label. There is no supported formatting conflict. The inventory and contents example differ in which front-matter items are visible, but that omission alone does not establish order; exact ordering is left for the official template evidence.
+
+The guide’s English abstract section explicitly uses English decimal points and comma-separated thousands, while Turkish uses decimal commas and periods in thousands. This language-specific numeric convention applies to abstracts as written; do not infer an English full-thesis variant from it.
+
+The thesis-proposal preparation guide is a separate scope. It was identified but not extracted.
+
+## Engine representability
+
+The extracted common requirements use ordinary page margins, typography, paragraph spacing, heading hierarchy, Roman/Arabic page-number transitions, abstract fields, and caption settings. No generic engine capability gap is demonstrated by this evidence-only stage. Physical print, binding, and copy-count rules are not page-layout settings. Exact template example behavior, full TOC tab/leader structure, footer size/distance, and footnotes require template/XML or additional authoritative evidence before configuration.
+
+The guide also requires the current APA Reference System across the thesis, alphabetizes an unnumbered references list by author surname, and requires every listed work to be cited in the text. Borrowed figures and tables should be cited at point of use and listed among the references. The guide prohibits quotations beyond reasonable limits but gives no numeric quote-length limit (UNKNOWN). Before defense, the similarity report must not exceed 30%; treat this as a submission check, not a typography setting.
