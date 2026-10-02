@@ -151,3 +151,13 @@ test("resolved nodes keep stable identities, preserve template data and apply te
   assert.equal(resolved[1].style.fontFamily, "Times New Roman");
   assert.equal(resolved[1].style.color, "#123456");
 });
+
+test("template positioned-node lock flags survive unless the document explicitly overrides them", () => {
+  const nodes = [{ path: "0", type: "image", locked: true, lockAspectRatio: true, layoutMode: "absolute", xMm: 3, yMm: 4, widthMm: 20, heightMm: 10 }];
+  const sourceDefaults = resolveLayoutNodes(nodes, "cover", {}).find((node) => node.type === "image");
+  assert.equal(sourceDefaults.locked, true);
+  assert.equal(sourceDefaults.lockAspectRatio, true);
+  const overridden = resolveLayoutNodes(nodes, "cover", { elements: { "cover:block:0": { locked: false, lockAspectRatio: false } } }).find((node) => node.type === "image");
+  assert.equal(overridden.locked, false);
+  assert.equal(overridden.lockAspectRatio, false);
+});

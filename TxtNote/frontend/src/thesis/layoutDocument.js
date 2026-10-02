@@ -272,12 +272,12 @@ function resolvedBaseNode(node, id, sectionId, override) {
   const resolved = applyElementOverride(node, id, override);
   if (!resolved) return null;
   resolved.sectionId = sectionId;
-  resolved.layoutMode = override?.layoutMode || "flow";
-  resolved.locked = override?.locked ?? false;
+  resolved.layoutMode = override?.layoutMode || node.layoutMode || "flow";
+  resolved.locked = override?.locked ?? node.locked ?? false;
   resolved.editableLayout = override?.editableLayout ?? true;
   resolved.editableContent = override?.editableContent ?? (resolved.type === "text");
-  resolved.lockAspectRatio = override?.lockAspectRatio ?? false;
-  resolved.zIndex = override?.zIndex ?? 0;
+  resolved.lockAspectRatio = override?.lockAspectRatio ?? node.lockAspectRatio ?? false;
+  resolved.zIndex = override?.zIndex ?? node.zIndex ?? 0;
   return resolved;
 }
 

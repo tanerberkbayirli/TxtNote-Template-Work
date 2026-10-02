@@ -246,6 +246,9 @@ export interface ThesisSection {
 /** Common box properties. Lengths in mm; on text, margins are shorthand for spaceBefore/After. */
 interface LayoutBox {
   marginTopMm?: Length; marginBottomMm?: Length; /** Width inside a row group. */ widthPercent?: number;
+  /** Positioned leaf blocks use page-origin coordinates in millimetres, shared by HTML and DOCX. */
+  id?: string; layoutMode?: "flow" | "absolute" | "anchored"; xMm?: Length; yMm?: Length; widthMm?: Length; heightMm?: Length;
+  zIndex?: number; locked?: boolean; lockAspectRatio?: boolean;
   /** Declarative: the block (and its children) is left out when none of these metadata fields is filled. */
   visibleWhen?: { anyFilled: string[] } | { noneFilled: string[] };
 }

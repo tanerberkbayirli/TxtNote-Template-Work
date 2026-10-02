@@ -75,7 +75,19 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
   const resolveList = (list, inherited, prefix, inRow = false) => (list || []).map((block, index) => {
     if (!specialPageBlockVisible(block, values)) return null;
     const path = prefix ? `${prefix}-${index}` : String(index);
-    const box = { path, marginTopMm: finite(block.marginTopMm), marginBottomMm: finite(block.marginBottomMm), widthPercent: Number.isFinite(block.widthPercent) ? block.widthPercent : null };
+    // Positioning is declarative template data and uses the same page-origin mm
+    // coordinates consumed by layoutDocx.js. Preserve it through the resolved tree.
+    const box = {
+      path,
+      marginTopMm: finite(block.marginTopMm),
+      marginBottomMm: finite(block.marginBottomMm),
+      widthPercent: Number.isFinite(block.widthPercent) ? block.widthPercent : null,
+      ...(typeof block.layoutMode === "string" ? { layoutMode: block.layoutMode } : {}),
+      ...["xMm", "yMm", "widthMm", "heightMm", "zIndex"].filter((key) => Number.isFinite(block[key])).reduce((out, key) => ({ ...out, [key]: block[key] }), {}),
+      ...(typeof block.id === "string" ? { id: block.id } : {}),
+      ...(typeof block.locked === "boolean" ? { locked: block.locked } : {}),
+      ...(typeof block.lockAspectRatio === "boolean" ? { lockAspectRatio: block.lockAspectRatio } : {}),
+    };
     if (block.type === "image") return { ...box, type: "image", source: block.source, widthMm: block.widthMm, heightMm: block.heightMm, align: block.align || "center", leftIndentMm: finite(inherited?.leftIndentMm, 0), rightIndentMm: finite(inherited?.rightIndentMm, 0) };
     if (block.type === "spacer") return { ...box, type: "spacer", heightMm: finite(block.heightMm) };
     if (block.type === "separator") {
@@ -241,6 +253,16 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
   for (const [index, block] of blocks.entries()) {
     const at = `${path}.${index}`;
     if (!SPECIAL_PAGE_BLOCK_TYPES.includes(block?.type)) { errors.push(`${at}.type geçersiz`); continue; }
+    if (block.layoutMode !== undefined) {
+      if (!["flow", "absolute", "anchored"].includes(block.layoutMode)) errors.push(`${at}.layoutMode geçersiz`);
+      else if (block.layoutMode !== "flow") {
+        if (block.type === "group") errors.push(`${at}: pozisyonlu grup desteklenmiyor; çocuk öğeleri ayrı konumlandırın`);
+        if (!["text", "metadata", "image", "separator"].includes(block.type)) errors.push(`${at}: pozisyonlu ${block.type} öğesi desteklenmiyor`);
+        for (const key of ["xMm", "yMm", "widthMm"]) if (!Number.isFinite(block[key]) || (key === "widthMm" && block[key] <= 0)) errors.push(`${at}.${key} geçersiz`);
+        if (block.type === "image" && !(Number.isFinite(block.heightMm) && block.heightMm > 0)) errors.push(`${at}.heightMm geçersiz`);
+        if (block.zIndex !== undefined && !Number.isFinite(block.zIndex)) errors.push(`${at}.zIndex geçersiz`);
+      }
+    }
     for (const key of ["marginTopMm", "marginBottomMm"]) if (block[key] !== undefined && !nonnegative(block[key])) errors.push(`${at}.${key} geçersiz`);
     if (block.visibleWhen !== undefined) {
       const keys = Object.keys(block.visibleWhen || {});

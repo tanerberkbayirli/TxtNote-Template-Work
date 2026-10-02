@@ -8,6 +8,7 @@ import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../t
 import { buildThesisPageModel } from "../thesis/pageLayout.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
 import { specialPageRowWidths, walkSpecialPage } from "../thesis/specialPages.js";
+import { splitLayoutNodes } from "../thesis/layoutDocx.js";
 
 const page = (template, id, values = {}, extra = {}) => compileThesisDocument(template, { values, ...extra }, "Tez Başlığı", "").sections.find((section) => section.id === id);
 
@@ -24,6 +25,30 @@ describe("data-driven special pages", () => {
     template.sections[0].blocks[0].heightMm = -1;
     assert.match(validateThesisTemplate(template).join(" "), /source/);
     assert.match(validateThesisTemplate(template).join(" "), /heightMm/);
+  });
+  it("preserves page-positioned special-page leaves through HTML and DOCX splits", () => {
+    const template = structuredClone(generic);
+    template.sections[0].blocks = [
+      { type: "metadata", field: "STUDENT_NAME", layoutMode: "absolute", xMm: 12.7, yMm: 61.3, widthMm: 90, heightMm: 7, zIndex: 2, style: { fontFamily: "Times New Roman", fontSizePt: 12 } },
+      { type: "image", source: "data:image/png;base64,aGVsbG8=", layoutMode: "anchored", xMm: 2, yMm: 278, widthMm: 206, heightMm: 12 },
+    ];
+    assert.deepEqual(validateThesisTemplate(template), []);
+    const cover = page(template, "cover", { STUDENT_NAME: "Page anchored" });
+    const positioned = cover.layout.filter((node) => ["text", "image", "separator"].includes(node.type) && node.layoutMode !== "flow");
+    assert.deepEqual(positioned.map(({ layoutMode, xMm, yMm, widthMm, heightMm, zIndex }) => [layoutMode, xMm, yMm, widthMm, heightMm, zIndex]), [
+      ["absolute", 12.7, 61.3, 90, 7, 2], ["anchored", 2, 278, 206, 12, 0],
+    ]);
+    assert.match(buildThesisCss({ sections: [cover] }), /position:absolute;left:12\.7mm;top:61\.3mm/);
+    assert.match(cover.html, /data-thesis-field="STUDENT_NAME">Page anchored/);
+    const split = splitLayoutNodes(positioned);
+    assert.equal(split.flow.length, 0);
+    assert.equal(split.positioned.length, 2);
+    assert.equal(split.positioned[0].xMm, 12.7);
+    assert.equal(split.positioned[1].layoutMode, "anchored");
+    template.sections[0].blocks = [{ type: "group", layoutMode: "absolute", xMm: 1, yMm: 1, widthMm: 10, blocks: [] }];
+    assert.match(validateThesisTemplate(template).join(" "), /pozisyonlu grup desteklenmiyor/);
+    template.sections[0].blocks = [{ type: "text", value: "missing geometry", layoutMode: "absolute", xMm: 1 }];
+    assert.match(validateThesisTemplate(template).join(" "), /yMm geçersiz/);
   });
   it("renders the cover from template data and follows metadata changes", () => {
     const before = page(demoA, "cover", { STUDENT_NAME: "Ster" });
