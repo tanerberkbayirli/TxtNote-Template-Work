@@ -181,10 +181,10 @@
     "aku-sbe": {
       "analysis": "DONE",
       "implementation": "DONE",
-      "validation": "PASS",
+      "validation": "PENDING (current independent recheck; prior report contains FAIL findings)",
       "attempts": 1,
-      "status": "PASS",
-      "lastError": null,
+      "status": "IN_PROGRESS",
+      "lastError": "Independent-1 reported six FAIL findings; some were subsequently fixed, but a complete current source/output recheck is not recorded. See AKU_COMPLETION_QUEUE_2026-10-02.md.",
       "specPath": "orchestration/specs/aku-sbe.json",
       "reportPath": "orchestration/reports/aku-sbe.md",
       "commit": null,
