@@ -1,0 +1,1508 @@
+{
+ "id": "aku-matematik-lisans",
+ "schemaVersion": 2,
+ "analyzedAt": "2026-10-02",
+ "university": "Afyon Kocatepe Üniversitesi",
+ "unit": "Fen Edebiyat Fakültesi · Matematik Bölümü (lisans tezi)",
+ "sources": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+   "role": "primary",
+   "type": "template",
+   "version": "core.xml 2025-10-21 (Last-Modified 24 Oct 2025)",
+   "pages": 26,
+   "notes": "Only source; no guide. Instruction text inside the DOCX = EXPLICIT. Word COM render: orchestration/artifacts/aku-matematik-lisans/source/official.pdf"
+  }
+ ],
+ "sourcePriority": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+   "why": "single source; XML (sectPr/styles/direct formatting/empty-paragraph structure) is the authority, instruction texts and the embedded Word screenshot are EXPLICIT, undefined = UNKNOWN"
+  }
+ ],
+ "variants": [
+  {
+   "registryId": "aku-matematik-lisans-tr-v1",
+   "degreeType": "undergraduate",
+   "language": "tr",
+   "confirmed": true,
+   "evidence": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx#whole document",
+   "differences": []
+  }
+ ],
+ "rules": [
+  {
+   "key": "page.margins.topMm",
+   "value": 30.0,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "word/document.xml sectPr (all 3 sections) w:pgMar",
+     "quote": "w:top=1701"
+    }
+   ],
+   "notes": "1701 tw = 30.0 mm"
+  },
+  {
+   "key": "page.margins.bottomMm",
+   "value": 30.0,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "word/document.xml sectPr (all 3 sections) w:pgMar",
+     "quote": "w:bottom=1701"
+    }
+   ],
+   "notes": "1701 tw = 30.0 mm"
+  },
+  {
+   "key": "page.margins.leftMm",
+   "value": 30.0,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "word/document.xml sectPr (all 3 sections) w:pgMar",
+     "quote": "w:left=1701"
+    }
+   ],
+   "notes": "1701 tw = 30.0 mm"
+  },
+  {
+   "key": "page.margins.rightMm",
+   "value": 30.0,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "word/document.xml sectPr (all 3 sections) w:pgMar",
+     "quote": "w:right=1701"
+    }
+   ],
+   "notes": "1701 tw = 30.0 mm"
+  },
+  {
+   "key": "page.size",
+   "value": "A4",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sectPr w:pgSz",
+     "quote": "w:w=11904/11906 w:h=16838"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.header.distanceMm",
+   "value": 12.5,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sectPr w:pgMar w:header",
+     "quote": "709 (sect 1-2), 708 (sect 3)"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.footer.distanceMm",
+   "value": 12.5,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sectPr w:pgMar w:footer",
+     "quote": "709 / 708"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "pagination.position",
+   "value": "bottom-center",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "footer2/3.xml jc=center, PAGE field",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "pagination.font",
+   "value": "Times New Roman 10 pt, plain",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Altbilgi basedOn Normal (no sz); docDefaults no sz; official render",
+     "quote": "official p3 footer size 10.0"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "pagination.front.format",
+   "value": "lower-roman",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sectPr#2 w:pgNumType",
+     "quote": "fmt=lowerRoman start=1"
+    }
+   ],
+   "notes": "TEŞEKKÜR = i"
+  },
+  {
+   "key": "pagination.main.format",
+   "value": "arabic start 1",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sectPr#3 w:pgNumType",
+     "quote": "start=1"
+    }
+   ],
+   "notes": "1. GİRİŞ = 1"
+  },
+  {
+   "key": "pagination.covers",
+   "value": "none",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sectPr#1 footer1.xml (empty paragraph)",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.fontFamily",
+   "value": "Times New Roman",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Normal w:rFonts",
+     "quote": "TNR"
+    }
+   ],
+   "notes": "3 body paragraphs and most bibliography entries carry direct Calibri runs: CONFLICT/UNKNOWN, style TNR applied"
+  },
+  {
+   "key": "typography.body.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml body runs w:sz=24 (Normal has no size)",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.lineSpacing",
+   "value": "1.5",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml body paragraphs w:spacing w:line=360 auto",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.body.align",
+   "value": "justify",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml body paragraphs w:jc=both",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.paragraph.firstLineIndentMm",
+   "value": 0,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml body paragraphs have no w:ind",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.paragraph.spaceBeforePt",
+   "value": 0,
+   "unit": "pt",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Normal / docDefaults pPrDefault empty",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "typography.paragraph.blankLineBetween",
+   "value": "1 empty 1.5-spaced 12 pt line",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "red notes '(Bir boşluk)' between heading/paragraph/paragraph",
+     "quote": "(Bir boşluk)"
+    }
+   ],
+   "notes": "engine: spaceAfterPt 20.7"
+  },
+  {
+   "key": "typography.paragraph.widowControl",
+   "value": false,
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Normal w:widowControl=0",
+     "quote": ""
+    }
+   ],
+   "notes": "engine gap: no widow key"
+  },
+  {
+   "key": "headings.h1.style",
+   "value": "TNR 12 bold, left, 1.5 lines, 0 pt before/after, no indent",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Balk2 + document.xml direct w:spacing line=360",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h2.style",
+   "value": "TNR 12 bold, left, 1.5 lines, 0 pt before/after, no indent",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Balk3 + document.xml direct w:spacing line=360",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h3.style",
+   "value": "TNR 12 bold, left, 1.5 lines, 0 pt before/after, no indent",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Balk3/Balk4 + document.xml direct w:spacing line=360",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h4.style",
+   "value": "TNR 12 bold, left, 1.5 lines, 0 pt before/after, no indent",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Balk5 + document.xml direct w:spacing line=360",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h1.numbering",
+   "value": "1. / 2. / 3. ... (typed)",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml '1. GİRİŞ' ... '6. KAYNAKLAR' typed text",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h2-h4.numbering",
+   "value": "2.1 / 2.2.1 / 2.3.1.1 (typed, no trailing dot)",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml sample headings",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h1.caps",
+   "value": "uppercase, 've' lower-case",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "all five H1 samples + TOC",
+     "quote": "MATERYAL ve METOT"
+    }
+   ],
+   "notes": "no rule text; sample pattern"
+  },
+  {
+   "key": "headings.h1.pageBreakBefore",
+   "value": true,
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml w:br page before 2.,3.,4.,5.,6.; section break before 1.",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h2-h4.caps",
+   "value": "UNKNOWN",
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "samples are Title Case but no rule",
+     "quote": ""
+    }
+   ],
+   "notes": "as typed"
+  },
+  {
+   "key": "captions.label+numbering",
+   "value": "Şekil 2.1 / Çizelge 3.1 / Resim 4.1 (chapter.n, space only)",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml caption paragraphs",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.fontSizePt",
+   "value": 11,
+   "unit": "pt",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "caption runs w:sz=22; call-out: 'Şekil başlıklarının yazımında 1 aralık ve 11 Punto kullanılmalı'",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.table.position",
+   "value": "above",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml caption before w:tbl",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.figure.position",
+   "value": "below",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml caption after drawing",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.labelBold",
+   "value": true,
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml first run w:b only",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.lineSpacing",
+   "value": "single, justified, 0 pt before / 6 pt after",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "caption pPr w:spacing before=0 after=120; w:jc both",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.hanging",
+   "value": "second line under first-line text",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "call-out textbox",
+     "quote": "II. satır üst satıra hizalanmalı"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.figure.imageToCaptionMm",
+   "value": 6.1,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "official Word render p14 image bottom 101.62 / caption baseline 107.67",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "tables.continuation",
+   "value": "Çizelge 4.1 (Devam) <title>",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml page 20 sample + call-out 'Çizelge bir sayfayı aşıyorsa'",
+     "quote": "Çizelge 4.1 (Devam)"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "tables.borders",
+   "value": "three horizontal rules 0.5 pt (top, under header, bottom), no verticals",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "tblBorders per cell w:sz=4, left/right nil",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "tables.align",
+   "value": "centered",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "tblPr w:jc=center; call-out 'Çizelgeler sayfaya ortalanmalıdır'",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "tables.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "2 of 4 sample tables 12 pt, 2 mix 10/11 pt",
+     "quote": ""
+    }
+   ],
+   "notes": "UNKNOWN requirement"
+  },
+  {
+   "key": "tables.note",
+   "value": "10 pt single, 6 pt before/after",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "red note",
+     "quote": "Çizelge altındaki açıklamalar 10 punto ve 1 satır aralığıyla yazılmalıdır"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "tables.rowHeightMm",
+   "value": "UNKNOWN",
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sample rows exact 398 tw (7.0 mm) / atLeast 340-351",
+     "quote": ""
+    }
+   ],
+   "notes": "engine has no row height"
+  },
+  {
+   "key": "figures.align",
+   "value": "centered, inside margins",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "call-out textbox",
+     "quote": "Şekiller, Çizelgeler ve Resimler sayfaya ortalanmalıdır. Ayrıca kenar boşluklarına taşmamalıdır."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "equations.align",
+   "value": "centered, number right",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "call-out textbox",
+     "quote": "ortalı ve numaraları sağa yaslı"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "equations.numbering",
+   "value": "(4.1) chapter.n",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml sample '(4.1)'",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "equations.spacing",
+   "value": "1 empty line before and after",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "(Bir Boşluk) paragraphs around equation",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.title",
+   "value": "İÇİNDEKİLER DİZİNİ (bold, centred) + 'Sayfa' bold right below",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml P84-85",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.rows",
+   "value": "12 pt, 1.5 lines, 0 pt after, right tab 8494 tw dot leader",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles T1-T5 + direct w:spacing after=0 line=360",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.indentPerLevelMm",
+   "value": [
+    0,
+    5,
+    10,
+    15
+   ],
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles T2 0 / T3 284 tw / T4 567 tw / T5 851 tw",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.levels",
+   "value": 4,
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "TOC \\o \"1-5\" field, 4 heading levels used",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.wrap",
+   "value": "second line aligned under first line",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "call-out textbox",
+     "quote": "II. satır üst satıra hizalanmalı"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "lists.titles",
+   "value": [
+    "ŞEKİLLER DİZİNİ",
+    "ÇİZELGELER DİZİNİ",
+    "RESİMLER DİZİNİ",
+    "SİMGELER ve KISALTMALAR DİZİNİ"
+   ],
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml Balk1 titles",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "lists.figures.paragraph",
+   "value": "left, hanging 1.6 cm, 0 pt before, 6 pt after, single",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "embedded Word 'Paragraf' screenshot + red text 'aşağıdaki ayarlar uygulanmalı'",
+     "quote": "Hizalama Soldan; Özel Asılı 1,6 cm; Önce 0 nk Sonra 6 nk; Satır aralığı Tek"
+    }
+   ],
+   "notes": "CONFLICT with sample rows (1.5 / 0 pt after)"
+  },
+  {
+   "key": "lists.abbreviations",
+   "value": "alphabetical, single-spaced 12 pt rows, definitions at 40.7 mm",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "call-out textbox + table",
+     "quote": "Kısaltmalar bölümü alfabetik sırada olmalıdır."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography.title",
+   "value": "KAYNAKLAR numbered as next chapter ('6. KAYNAKLAR')",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml P339 Balk2",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography.style",
+   "value": "12 pt, 1.5 lines, 6 pt before, 0 after, justified, hanging 12.5 mm",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "pPr w:spacing before=120 line=360; w:ind left=709 hanging=709",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "citations.style",
+   "value": "author-year ('Soyad Yıl', 'vd.', 've')",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "body samples (FAO 2007), Dixit vd. 2002, Beer ve Kasprzak 2002",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography.order",
+   "value": "alphabetical by surname",
+   "unit": "",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "sample list order",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "cover.outer.layout",
+   "value": "12 pt single; lines after one 10 pt + 35 empty 12 pt lines; title bold; LİSANS TEZİ / name / Danışman (6 pt before) ... Ay Yıl",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml P0-P45 (NormalWeb style)",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "cover.inner.layout",
+   "value": "14 pt bold 1.5; AKÜ / FEF / 3 blank / LİSANS TEZİ / 3 blank / title / 2 blank / name / 3 blank / Danışman+title name / 3 blank / MATEMATİK BÖLÜMÜ / 1 blank / Ay Yıl",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml P46-P72; official render p2",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "cover.inner.fontSizePt",
+   "value": 14,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "call-out textbox",
+     "quote": "Yukarıdaki destek yazısı hariç sadece bu sayfada 14 punto kullanılmalıdır."
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "cover.logos",
+   "value": "none",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml: the two images (image1.jpg, image2.png) are sample figures/screenshots",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "acknowledgements.layout",
+   "value": "bold centred title, blank, justified 1.5 paragraphs separated by blank, 2 blank, right-aligned name + 'Afyonkarahisar <yıl>'",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml P74-P82",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "footnotes.fontSizePt",
+   "value": 10,
+   "unit": "pt",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles DipnotMetni basedOn Normal (no sz): Word default 10 pt single",
+     "quote": ""
+    }
+   ],
+   "notes": "no footnote sample in document"
+  },
+  {
+   "key": "sections.absent",
+   "value": [
+    "approval",
+    "ethics",
+    "abstract-tr",
+    "abstract-en"
+   ],
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml has no such pages",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  }
+ ],
+ "sections": [
+  {
+   "id": "outer-cover",
+   "kind": "outerCover",
+   "title": "(Dış Kapak)",
+   "required": "required",
+   "pageNumbering": {
+    "counted": true,
+    "visible": false,
+    "format": "none"
+   },
+   "inToc": false
+  },
+  {
+   "id": "inner-cover",
+   "kind": "innerCover",
+   "title": "İÇ KAPAK",
+   "required": "required",
+   "pageNumbering": {
+    "counted": true,
+    "visible": false,
+    "format": "none"
+   },
+   "inToc": false
+  },
+  {
+   "id": "acknowledgements",
+   "kind": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "required": "required",
+   "pageNumbering": {
+    "counted": true,
+    "visible": true,
+    "format": "roman-lower",
+    "startAt": 1
+   },
+   "inToc": true
+  },
+  {
+   "id": "toc",
+   "kind": "tableOfContents",
+   "title": "İÇİNDEKİLER DİZİNİ",
+   "required": "required",
+   "inToc": true
+  },
+  {
+   "id": "symbols",
+   "kind": "listOfAbbreviations",
+   "title": "SİMGELER ve KISALTMALAR DİZİNİ",
+   "required": "optional",
+   "inToc": true
+  },
+  {
+   "id": "list-figures",
+   "kind": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "required": "conditional",
+   "inToc": true
+  },
+  {
+   "id": "list-tables",
+   "kind": "listOfTables",
+   "title": "ÇİZELGELER DİZİNİ",
+   "required": "conditional",
+   "inToc": true
+  },
+  {
+   "id": "list-photos",
+   "kind": "custom",
+   "title": "RESİMLER DİZİNİ",
+   "required": "conditional",
+   "inToc": true
+  },
+  {
+   "id": "introduction",
+   "kind": "introduction",
+   "title": "1. GİRİŞ",
+   "required": "required",
+   "pageNumbering": {
+    "format": "arabic",
+    "startAt": 1
+   },
+   "inToc": true
+  },
+  {
+   "id": "main",
+   "kind": "mainContent",
+   "title": "2.-5. bölümler (LİTERATÜR BİLGİLERİ, MATERYAL ve METOT, BULGULAR, TARTIŞMA ve SONUÇ)",
+   "required": "required"
+  },
+  {
+   "id": "bibliography",
+   "kind": "bibliography",
+   "title": "6. KAYNAKLAR",
+   "required": "required",
+   "inToc": true
+  },
+  {
+   "id": "cv",
+   "kind": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "required": "optional",
+   "inToc": true
+  },
+  {
+   "id": "appendices",
+   "kind": "appendices",
+   "title": "EKLER",
+   "required": "optional",
+   "inToc": true,
+   "notes": "named only in the stale cached TOC"
+  }
+ ],
+ "placeholders": {
+  "THESIS_TITLE": {},
+  "STUDENT_NAME": {},
+  "ADVISOR_TITLE": {},
+  "ADVISOR_NAME": {},
+  "SUBMISSION_MONTH": {},
+  "SUBMISSION_YEAR": {},
+  "COVER_DEPARTMENT": {
+   "format": "template wording 'ANABİLİM DALI'"
+  },
+  "YEAR": {}
+ },
+ "conflicts": [
+  {
+   "topic": "Şekil/Çizelge/Resim listesi paragraf ayarı",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "embedded Word screenshot p7 + red text",
+     "value": "Soldan, asılı 1,6 cm, öncesi 0 sonrası 6 nk, Tek"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml P136-138 sample rows + style 'table of figures'",
+     "value": "line=360 (1.5), after=0, hanging 907-1191 tw"
+    }
+   ],
+   "decision": "explicit instruction (screenshot) followed; pitch differs by 0.9 pt for one-line rows; hanging = label width (call-out 'II. satır üst satıra hizalanmalı')",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Gövde/kaynakça yazı tipi",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "styles.xml Normal",
+     "value": "Times New Roman"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "document.xml P298, P306, P328 and ~22/30 bibliography entries",
+     "value": "direct Calibri runs"
+    }
+   ],
+   "decision": "style TNR (Normal; majority of body paragraphs); Calibri treated as paste residue",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Dış Kapak bölüm satırı",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "P43",
+     "value": "ANABİLİM DALI"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "P70",
+     "value": "MATEMATİK BÖLÜMÜ (İç Kapak)"
+    }
+   ],
+   "decision": "COVER_DEPARTMENT placeholder, default = template wording",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Çizelge hücre yazı boyutu",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "tables 1-2",
+     "value": "12 pt"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "tables 3-4",
+     "value": "10-11 pt / unspecified (10 pt default)"
+    }
+   ],
+   "decision": "12 pt (majority of explicit sizes), UNKNOWN requirement",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Resimler Dizini 'Sayfa' başlığı",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "P179",
+     "value": "first-line indent 7603 tw justified"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+     "locator": "P135/P148",
+     "value": "right aligned"
+    }
+   ],
+   "decision": "all three lists: right aligned (rendered x identical 169.9 mm)",
+   "needsConfirmation": false
+  }
+ ],
+ "unknowns": [
+  {
+   "key": "headings.h2-h4.caps",
+   "why": "sample text only"
+  },
+  {
+   "key": "tables.rowHeightMm",
+   "why": "sample rows exact/atLeast heights; no rule"
+  },
+  {
+   "key": "tables.fontSizePt",
+   "why": "samples mixed"
+  },
+  {
+   "key": "appendices.layout",
+   "why": "EKLER named only in stale TOC"
+  },
+  {
+   "key": "cv.rows",
+   "why": "author-fill skeleton, not reproduced"
+  },
+  {
+   "key": "footnotes",
+   "why": "no footnote in template; style chain gives 10 pt"
+  },
+  {
+   "key": "multi-line title spacing (cover pages)",
+   "why": "sample shows 2 lines with (Devam) single-spaced; derived rule single lines + 8.05 pt after"
+  },
+  {
+   "key": "approval/ethics/abstract pages",
+   "why": "not in template (absent, not generated)"
+  }
+ ],
+ "engineGaps": [
+  {
+   "requirement": "Word spacing between paragraphs is max(after, before), measured with Word COM (after 20 / before 30 -> 30)",
+   "evidence": "PowerShell Word COM experiment 2026-10-02, both compat modes 14 and 15; mat.word.pdf vs mat.pdf before the template workaround",
+   "whyEngineCannot": "typography.lineSpacing.paragraphSpacing 'additive' and DOCX writer emit before = gap - previous after, assuming Word adds them",
+   "suggestedGenericCapability": "DOCX writer: emit before = gap when previous after < gap (max semantics), or a lineSpacing.paragraphSpacing 'max' mode"
+  },
+  {
+   "requirement": "Word: continuation caption 'Çizelge 4.1 (Devam) ...' stranded alone at page bottom; table fragment starts on the next page",
+   "evidence": "mat.word.pdf p22 (baseline 255.0 mm) -> p23 starts with header row; editor PDF p22/p23 correct",
+   "whyEngineCannot": "caption paragraph before the continuation fragment lacks effective keep-with-next in Word after the measured split",
+   "suggestedGenericCapability": "keepNext on continuation caption + table first row"
+  },
+  {
+   "requirement": "blockGap pitch after table note/figure caption is 41.4 pt baseline-to-baseline; template: 40.0 pt (note->heading 14.09 mm vs 14.6 mm)",
+   "evidence": "selfcheck.out.txt 'table note -> next heading'",
+   "whyEngineCannot": "blockGap.js gapBetween uses one body pitch for all kinds",
+   "suggestedGenericCapability": "per-template blockGap pitch override"
+  },
+  {
+   "requirement": "table row height (exact 7.0 mm sample rows) and cell vertical padding",
+   "evidence": "document.xml T130/T211 trHeight exact 398",
+   "whyEngineCannot": "schema.d.ts CaptionRule.cellStyle is TextStyle only",
+   "suggestedGenericCapability": "tables.rowMinHeightMm / cellPaddingPt"
+  },
+  {
+   "requirement": "widow/orphan control off (Normal w:widowControl=0)",
+   "evidence": "styles.xml Normal",
+   "whyEngineCannot": "no widowControl key in TextStyle",
+   "suggestedGenericCapability": "typography.widowControl boolean"
+  },
+  {
+   "requirement": "symbols table text starts at 32.0 mm (table cell margin) while tab stop 40.7 mm",
+   "evidence": "official p6 x0 32.0 / 70.7",
+   "whyEngineCannot": "paragraph leftIndentMm shifts the hanging block (tested); no first-line offset independent of hanging",
+   "suggestedGenericCapability": "separate firstLineIndent + tab stop for hanging definitions"
+  }
+ ],
+ "measurableChecks": [
+  {
+   "id": "margin-left",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "body x0",
+   "expected": 30.0,
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "page.margins.leftMm"
+  },
+  {
+   "id": "body-pitch",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "body baseline pitch",
+   "expected": 20.7,
+   "unit": "pt",
+   "tolerance": 0.2,
+   "sourceRule": "typography.body.lineSpacing"
+  },
+  {
+   "id": "h1-to-text",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "H1 baseline -> first text baseline",
+   "expected": 14.6,
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "typography.paragraph.blankLineBetween"
+  },
+  {
+   "id": "page-number-size",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "footer number",
+   "expected": 10.0,
+   "unit": "pt",
+   "tolerance": 0.05,
+   "sourceRule": "pagination.font"
+  }
+ ],
+ "ruleCounts": {
+  "MEASURED": 50,
+  "EXPLICIT": 10,
+  "INFERRED": 4,
+  "UNKNOWN": 2
+ }
+}
