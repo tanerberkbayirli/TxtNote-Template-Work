@@ -20,7 +20,7 @@ const CENTER_TITLE = { fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align:
 const H1 = { fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", textTransform: "uppercase", lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0, pageBreakBefore: true, keepWithNext: true, numbering: { enabled: true, format: "{1}.", sequence: "arabic" } };
 const subheading = (level) => ({ fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "left", textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"], lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0, keepWithNext: true, numbering: { enabled: true, format: Array.from({ length: level }, (_, i) => `{${i + 1}}`).join(".") + ".", sequence: "arabic" } });
 const line = (value, style = {}) => ({ type: "text", value, style: { fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", lineHeight: 1.5, spaceAfterPt: 0, firstLineIndentMm: 0, ...style } });
-const meta = (field, fallback, style = {}) => ({ type: "metadata", field, fallback, style: { fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", lineHeight: 1.5, spaceAfterPt: 0, firstLineIndentMm: 0, ...style } });
+const meta = (field, fallback, style = {}, extra = {}) => ({ type: "metadata", field, fallback, ...extra, style: { fontFamily: FONT, fontSizePt: 14, fontWeight: 700, align: "center", lineHeight: 1.5, spaceAfterPt: 0, firstLineIndentMm: 0, ...style } });
 const gap = (heightMm) => ({ type: "spacer", heightMm });
 const staticPage = (id, type, title, blocks, { group = "front", tocEntry = "title", page = ROMAN_PAGE, body = BODY } = {}) => ({
   id, type, title, status: "required", group, mode: "static", tocEntry,
@@ -46,7 +46,8 @@ const outerCover = {
     line("T.C."),
     line("AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ"),
     line("ECZACILIK FAKÜLTESİ"),
-    meta("DEPARTMENT_NAME", "…… ANABİLİM DALI"),
+    // EK-1.1: "……….. ANABİLİM DALI" (capitals): the value is the department name only; the fixed words are added.
+    meta("DEPARTMENT_NAME", "…… ANABİLİM DALI", { textTransform: "uppercase" }, { suffix: " ANABİLİM DALI" }),
     gap(20),
     meta("PROJECT_TITLE", "ARAŞTIRMA PROJESİ KONUSU", { textTransform: "uppercase" }),
     gap(14),
@@ -70,7 +71,7 @@ const innerCover = {
     line("T.C.", { fontSizePt: 12 }),
     line("AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ", { fontSizePt: 12 }),
     line("ECZACILIK FAKÜLTESİ", { fontSizePt: 12 }),
-    meta("DEPARTMENT_NAME", "…… ANABİLİM DALI", { fontSizePt: 12 }),
+    meta("DEPARTMENT_NAME", "…… ANABİLİM DALI", { fontSizePt: 12, textTransform: "uppercase" }, { suffix: " ANABİLİM DALI" }),
     gap(19),
     meta("PROJECT_TITLE", "ARAŞTIRMA PROJESİ KONUSU", { fontSizePt: 14, fontWeight: 700, textTransform: "uppercase" }),
     gap(8),
@@ -89,7 +90,7 @@ const innerCover = {
 
 const approval = staticPage("approval", "approval", "ONAY", [
   line("Ana Bilim Dalı Onayı", { fontSizePt: 12, align: "left" }),
-  { type: "text", value: "{{STUDENT_NAME}}'ın “{{PROJECT_TITLE}}” başlıklı, {{DEPARTMENT_NAME}}'ndaki araştırma projesi, Afyonkarahisar Sağlık Bilimleri Üniversitesi Ön lisans ve Lisans Eğitim-Öğretim ve Sınav Yönetmeliği'nin ilgili maddeleri uyarınca değerlendirilerek {{APPROVAL_DATE}} tarihinde kabul edilmiştir.", style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0 } },
+  { type: "text", value: "{{STUDENT_NAME}}'ın “{{PROJECT_TITLE}}” başlıklı, {{DEPARTMENT_NAME}} Ana Bilim Dalı’ndaki araştırma projesi, Afyonkarahisar Sağlık Bilimleri Üniversitesi Ön lisans ve Lisans Eğitim-Öğretim ve Sınav Yönetmeliği'nin ilgili maddeleri uyarınca değerlendirilerek {{APPROVAL_DATE}} tarihinde kabul edilmiştir.", style: { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, spaceAfterPt: 12, firstLineIndentMm: 0 } },
   gap(18),
   { type: "group", direction: "row", gapMm: 0, blocks: [
     { type: "group", direction: "column", widthPercent: 50, style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "center", lineHeight: 1.5 }, blocks: [
@@ -112,7 +113,8 @@ const abstractTitlePage = (id, title) => ({
   id, type: id === "abstract-tr-title" ? "abstract" : "englishAbstract", title, status: "required", group: "front", mode: "static", standalone: false, tocEntry: "title",
   overrides: { page: { ...ROMAN_PAGE }, body: { ...BODY, align: "center", spaceAfterPt: 0 } },
   blocks: [
-    line(title, { fontSizePt: 14, textTransform: "uppercase" }),
+    // §1.7: 12 nk after the heading (as ÖNSÖZ / the other front-matter titles).
+    line(title, { fontSizePt: 14, textTransform: "uppercase", spaceAfterPt: 12 }),
     meta(id === "abstract-tr-title" ? "PROJECT_TITLE" : "PROJECT_TITLE_EN", id === "abstract-tr-title" ? "ARAŞTIRMA PROJESİ KONUSU" : "RESEARCH PROJECT TITLE", { fontSizePt: 12, ...(id === "abstract-tr-title" ? { textTransform: "uppercase" } : {}) }),
   ],
 });
@@ -180,7 +182,7 @@ const template = {
   placeholders: {
     PROJECT_TITLE: { label: "Araştırma projesi konusu", type: "multiline", required: true },
     STUDENT_NAME: { label: "Öğrencinin adı soyadı", type: "text", required: true },
-    DEPARTMENT_NAME: { label: "Anabilim dalı", type: "text", required: true },
+    DEPARTMENT_NAME: { label: "Anabilim dalı adı (yalnız adı; sonuna ‘Ana Bilim Dalı’ eklemeyin)", type: "text", required: true },
     ADVISOR_NAME: { label: "Araştırma projesi danışmanı", type: "text", required: true },
     PROJECT_YEAR: { label: "Yıl", type: "number", required: true },
     APPROVAL_DATE: { label: "Onay tarihi", type: "date", required: true },

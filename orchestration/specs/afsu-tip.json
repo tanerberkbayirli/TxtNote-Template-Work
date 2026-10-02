@@ -28,7 +28,8 @@
    "confirmed": true,
    "evidence": "Tıp PDF EK 6/7/8: TIP FAKÜLTESİ, TIPTA UZMANLIK TEZİ",
    "differences": [
-    "faculty/degree strings only"
+    "faculty/degree strings",
+    "example-page geometry (EK 7/8/9/11/12/13) per guide copy: see conflicts[-2] and afsu-tip.js GEO"
    ]
   },
   {
@@ -38,7 +39,8 @@
    "confirmed": true,
    "evidence": "Joint guide title page 'TIP VE DİŞ HEKİMLİĞİ FAKÜLTELERİ'; EK 9/14/15 'TIP/DİŞ HEKİMLİĞİ FAKÜLTESİ', 'TIPTA/DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ'",
    "differences": [
-    "DİŞ HEKİMLİĞİ FAKÜLTESİ / DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ resolved from the '/' alternatives (INFERRED); English faculty UNKNOWN"
+    "faculty/degree strings",
+    "example-page geometry (EK 7/8/9/11/12/13) per guide copy: see conflicts[-2] and afsu-tip.js GEO"
    ]
   }
  ],
@@ -540,6 +542,35 @@
    ],
    "decision": "example applied",
    "needsConfirmation": false
+  },
+  {
+   "topic": "Example-page geometry differs between the Tıp and DHF guide copies (same prose)",
+   "status": "RECORDED; resolved per registry entry (each entry follows its OWN copy's examples; user rule: official example geometry wins over prose)",
+   "sources": [
+    {
+     "path": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf (Tıp copy, PDF 2021-08-26)",
+     "locator": "EK 7 p.23 / EK 9 p.25 / EK 13 p.29 (page-absolute baselines, mm)",
+     "value": "EK 7: T.C. 52.96, univ 57.83, fac 62.70, dept 72.43, title 113.81, student 169.78, degree 179.51, Danışman 206.29, advisor 211.16, year 259.84; EK 9: univ 73.26, fac 82.38, dept 91.50, Tez Başlığı 118.83 (field step 9.12-9.15), jüri text 160.19/165.06, JÜRİ 184.53, Başkan 189.40, Üye 221.89, ONAY 248.81, DEKAN 257.79 (Üye->ONAY 26.92); EK 13: title 47.05, Sayfa 54.70 (7.65), first row 64.11 (9.41)"
+    },
+    {
+     "path": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf (DHF copy, PDF 2021-09-21)",
+     "locator": "EK 7 p.22 / EK 8 p.23 / EK 9 p.24 / EK 13 p.28",
+     "value": "EK 7: T.C. 59.10, univ 63.97, fac 68.84, dept 78.58, title 105.39, student 139.46, degree 149.20, Danışman 173.55, advisor 178.42, year 263.60; EK 8: title 117.53, student 151.61, degree 161.36, Danışman 188.15, advisor 193.02, BAP 234.39/239.26, year 266.01; EK 9: univ 54.07, fac 58.94, dept 63.80, Tez Başlığı 78.32 (single-line steps 4.87), jüri text 102.68/107.54, JÜRİ 131.89, Başkan 151.36, Üye 175.71, ONAY 239.01, DEKAN 243.88 (Üye->ONAY 63.30); EK 13: title 39.46, Sayfa 46.40 (6.94), first row 55.84 (9.44); EK 11 first baseline 48.61 (Tıp 47.96), EK 12 44.37 (Tıp 47.24)"
+    }
+   ],
+   "resolution": "afsu-tip.js GEO.tip / GEO.dhf. EK 6 (dış kapak) is a schematic frame in both copies (INFERRED fractional mapping, unchanged). Centred lines: both copies centre special-page lines at 105.50-105.56 mm (sheet centre), not at the 112.5 mm text-block centre; templates centre on 105.5 mm (absolute boxes x 25..186; flow blocks through leftIndentMm -15 / rightIndentMm -1; thesis-title boxes keep the earlier 145 mm width centred on 105.5)."
+  },
+  {
+   "topic": "EKLER row in İÇİNDEKİLER (EK 13) has no page number; export prints one",
+   "status": "ENGINE GAP, documented (template note corrected)",
+   "sources": [
+    {
+     "path": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf (Tıp copy, PDF 2021-08-26)",
+     "locator": "EK 13 p.29",
+     "value": "'EKLER' row without leader/page number"
+    }
+   ],
+   "resolution": "No generic option to list a title row without page number was used here; export prints the EKLER page number (21 in the validation fixture)."
   }
  ],
  "unknowns": [
@@ -580,6 +611,18 @@
    "evidence": "p.15",
    "whyEngineCannot": "no separate rotated deliverable",
    "suggestedGenericCapability": "optional rotated spine page"
+  },
+  {
+   "requirement": "Vancouver reference numbering (§3.3.1: numbers in order of first citation, in text and in the list)",
+   "evidence": "EK 2; §3.3.1",
+   "whyEngineCannot": "bibliography.citationStyle 'Vancouver' is a label only; the engine neither numbers citations by order of appearance nor numbers the list",
+   "suggestedGenericCapability": "citation style 'numeric' with order-of-appearance numbering and numbered bibliography entries"
+  },
+  {
+   "requirement": "Footnote single spacing in the editor PDF (A4), DOCX table row height / stranded multi-page table caption (A5) from independent-1 report",
+   "evidence": "orchestration/validation/afsu-tip/independent-1/REPORT.md",
+   "whyEngineCannot": "shared engine items, out of scope for this template fix",
+   "suggestedGenericCapability": "see engine task"
   }
  ]
 }
