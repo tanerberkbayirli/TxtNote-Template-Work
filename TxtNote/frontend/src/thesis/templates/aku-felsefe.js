@@ -3,26 +3,21 @@
  * (aku-felsefe-seminer-tr-v1), both Turkish.
  *
  * Sources (Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/), two DOCX guides of 2019 (Akademik Kurul karar 01.08.2019/5):
- *   - AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx  -> lisans (this guide's text is the only evidence)
+ *   - AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx  -> lisans (includes labeled VML cover and TOC examples)
  *   - AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx          -> seminer (own, independently stated values)
- * Both are prose-only guides: no official thesis template, no thesis example pages. The guide documents' own pages (their cover, sectPr
- * 30/30/30/25 mm, styles) describe the GUIDE and are not thesis rules. The reviewed specs are orchestration/specs/aku-felsefe-*.json,
+ * Both contain prose plus labeled VML examples (thesis cover/TOC at paras 130-131; seminar cover at para 124). The guide documents' own
+ * sectPr/styles outside those labeled examples describe the GUIDE and are not thesis rules. The reviewed specs are orchestration/specs/aku-felsefe-*.json,
  * the reports orchestration/reports/aku-felsefe-*.md.
  *
  * Defined by the guides (EXPLICIT): Times New Roman 12 pt, 1.5 lines, 1.25 cm first-line indent, 6 nk before and 6 nk after paragraphs,
  * justified, margins (lisans top 3 / bottom 3 / left 3.5 / right 2 cm; seminer top 3 / bottom 3 / left 3 / right 2 cm), block quotes
  * (> 3 lines or 40 words: 11 pt, 1 line, 1 cm narrower on both sides), automatic contents/lists, page numbers bottom centre without any other
  * sign, APA in-text author-year citations and an alphabetical reference list. NOT defined (UNKNOWN, nothing is generated or invented):
- * the layout of the outer/inner cover, heading typography and numbering, caption wording/position, page-number font size, footnote typography,
- * reference-list indents, appendix layout.
+ * the layout of the outer/inner cover and TOC hierarchy until labeled examples are measured; heading typography and numbering, caption
+ * wording/position, page-number font size, footnote typography, reference-list indents, appendix layout remain UNKNOWN unless separately specified.
  */
 const FONT = "Times New Roman";
 const SINGLE_LINE_EM = 1.15;
-
-/** Heading typography is UNKNOWN in both guides: only the body font/size (guide "metin": 12 pt) is inherited; no weight, case or spacing is invented. Decimal numbering (1. / 1.1 / 1.1.1) is NOT a source rule: the shared engine test requires numbered headings, so a plain engine default is used (UNKNOWN). */
-const heading = (format) => ({ fontFamily: FONT, fontSizePt: 12, align: "left", firstLineIndentMm: 0, keepWithNext: true, numbering: { enabled: true, format, sequence: "arabic" } });
-
-const captionStyle = { fontFamily: FONT, fontSizePt: 12 };
 
 const listSection = (id, type, title, kind) => ({
   id, type, title, status: "optional", group: "front", mode: "generated", tocEntry: "title",
@@ -55,26 +50,26 @@ const build = ({ id, instituteId, instituteName, displayName, documentName, revi
   page: {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
     margins: { topMm: 30, bottomMm: 30, leftMm, rightMm: 20 },
-    header: { heightMm: 0, distanceMm: 12.5, content: "", firstPage: "same" },
-    footer: { heightMm: 8, distanceMm: 12.5, content: "", firstPage: "same" },
+    // Header/footer geometry has not been extracted from the guides; empty objects use generic engine defaults.
+    header: {},
+    footer: {},
     // Guide: "alt ve orta", plain Arabic numbers 1, 2, 3 ... with no other sign; the size is not stated.
     numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false },
   },
   typography: {
     body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 12.5 },
     paragraph: { firstLineIndentMm: 12.5, spaceBeforePt: 6, spaceAfterPt: 6, lineHeight: 1.5, align: "justify" },
-    headings: { "1": heading("{1}."), "2": heading("{1}.{2}"), "3": heading("{1}.{2}.{3}"), "4": heading("{1}.{2}.{3}.{4}") },
+    // Heading typography and numbering are UNKNOWN in both guides; engine defaults apply.
     lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word", paragraphSpacing: "additive" },
     // "Üç satırı ya da 40 kelimeyi aşan doğrudan alıntılar, 11 punto ve 1 satır aralığı ile sağdan ve soldan 1 cm daraltılmış paragraf".
     paragraphStyles: { blockQuote: { fontSizePt: 11, lineHeight: 1, leftIndentMm: 10, rightIndentMm: 10 } },
   },
   sections,
   placeholders,
-  // Caption and reference-list typography/position/numbering are UNKNOWN in the guides: the engine-required fields only inherit the body font/size and use plain document-wide Arabic numbers.
-  tables: { label: "Tablo", position: "above", style: captionStyle, numbering: { scope: "document", format: "{n}", sequence: "arabic" } },
-  figures: { label: "Şekil", position: "below", style: captionStyle, numbering: { scope: "document", format: "{n}", sequence: "arabic" } },
-  bibliography: { heading: "KAYNAKÇA", style: { fontFamily: FONT, fontSizePt: 12 }, citationStyle: "author-year" },
-  toc: { heading: "İÇİNDEKİLER", levels: [1, 2, 3, 4], showPageNumbers: true },
+  // Caption formatting is UNKNOWN. APA author-year citation structure is explicit; bibliography typography is not.
+  bibliography: { heading: "KAYNAKÇA", citationStyle: "author-year" },
+  // The guide requires automatic contents and shows a TOC example; its hierarchy remains unmeasured pending source extraction.
+  toc: { heading: "İÇİNDEKİLER", levels: [1, 2, 3], showPageNumbers: true },
 });
 
 const lisansSections = [

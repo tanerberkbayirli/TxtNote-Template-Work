@@ -118,7 +118,7 @@ const sections = () => [
         unnumbered: { fontWeight: 700, align: "left", includePageNumber: true, lineHeight: 1.15, spaceBeforePt: 0, spaceAfterPt: NORMAL_AFTER_PT },
       } },
     overrides: { page: roman, headings: frontTitle(NORMAL_AFTER_PT) } },
-  generatedList("list-tables", "listOfTables", "TABLOLAR LİSTESİ", "tables", "tables"),
+  generatedList("list-tables", "listOfTables", "TABLOLAR DİZİNİ", "tables", "tables"),
   generatedList("list-figures", "listOfFigures", "ŞEKİLLER LİSTESİ", "figures", "figures"),
   // KISALTMALAR DİZİNİ (Ek-6): 11.5 pt bold title, one empty 1.5 line below, entries 11.5 pt regular, 1.5 lines, 0 pt after, justified, 15.9 mm (902 tw) first-line indent.
   { id: "symbols", type: "listOfAbbreviations", title: "KISALTMALAR DİZİNİ", status: "optional", group: "front", mode: "editable", showTitle: true, tocEntry: "title",
@@ -144,13 +144,8 @@ const sections = () => [
 const headingBase = { fontFamily: FONT, fontSizePt: 12, lineHeight: 1.5, spaceBeforePt: PARA_GAP_PT, spaceAfterPt: PARA_GAP_PT, firstLineIndentMm: 0, keepWithNext: true };
 const subHeading = (format, extra) => ({ ...headingBase, fontWeight: 400, align: "left", numbering: { enabled: true, format, sequence: "arabic" }, ...extra });
 const chapterHeading = { ...headingBase, fontWeight: 700, align: "center", textTransform: "uppercase", numbering: { enabled: true, format: "{1} BÖLÜM", sequence: "ordinal-tr-upper", placement: "ownLine" } };
-// Captions: the guide's list examples number "Tablo 1." / "Şekil 1." through the whole thesis (label + period); caption position, size and alignment are UNKNOWN
-// (12 pt TNR by the general rule; table above / figure below is an engine-required choice, not a source value).
-const captionNumbering = { scope: "document", format: "{n}", sequence: "arabic" };
-const caption = (label, position, extra = {}) => ({
-  label, position, numbering: captionNumbering, labelFormat: "{label} {number}.", labelStyle: bold, captionAlignment: "center", align: "center",
-  style: { fontFamily: FONT, fontSizePt: 12, align: "center", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: PARA_GAP_PT }, spacingBeforePt: 0, spacingAfterPt: PARA_GAP_PT, ...extra,
-});
+// Caption labels are INFERRED from list rows; the guide has no caption paragraphs to establish position or styling.
+const caption = (label) => ({ label });
 
 const base = {
   schemaVersion: 1,
@@ -175,18 +170,19 @@ const base = {
       "Bölüm sırası (metin): Dış Kapak, İç Kapak, [Ön Bölüm: Önsöz (isteğe bağlı), İçindekiler, Tablolar Listesi, Şekiller Listesi, Simgeler ve Kısaltmalar], [Ana Bölüm: Giriş, Tez Metni, Sonuç ve Öneriler], [Arka Bölüm: Kaynakça, Ekler]. Dış/İç Kapak listede Ön Bölümden ayrı bir liste grubundadır (numbering.xml): numarasız sayılır (INFERRED); Önsöz = i. Onay, bildirim, özet/abstract, teşekkür, özgeçmiş sayfaları kaynakta tanımlı DEĞİL: üretilmedi.",
       "Dış Kapak (Ek-1): 14 pt koyu ortalı dört satır (6 nk sonra), iki boş 14 pt paragraf, 18 pt koyu başlık, Hazırlayan/Danışman blokları, AFYONKARAHİSAR yıl; tüm paragraflar 1,5 satır, açık 'sonra' yazılmamış paragraflarda Word varsayılanı 10 nk (Word çıktısında taban çizgisi aralıklarıyla doğrulandı). İç Kapak (Ek-2): 'T.C.' + dört 12 pt satır, iki boş 14 pt paragraf, 14 pt başlık, öğrenci numarası. Örneklerin başlık satırları 'Times' yazı tipi adıyla yazılmıştır; kılavuz metni tüm metin için Times New Roman der: Times New Roman uygulandı (ÇELİŞKİ kaydı).",
       "Başlıklar: kılavuz metni başlık biçimi tanımlamaz. Yalnız Ek-3 örneği düzeyleri gösterir: 'BİRİNCİ BÖLÜM' + bölüm adı ortalı koyu; '1. ORTA BAŞLIK' ve '1.1. YAN BAŞLIK' büyük harf, normal ağırlık; '2.1.1. Alt Başlık' Baş Harfleri Büyük koyu; numaralar her bölümde yeniden başlar. İçindekiler satırı ağırlıkları başlığa yansıtıldı (INFERRED). Başlık aralığı UNKNOWN: genel paragraf kuralı (1,5 satır, 6/6 nk) uygulandı. Bölümlerin yeni sayfada başlaması UNKNOWN (zorlanmadı). Ek-3'te 3. düzey '3.1 YANBAŞLIK1' sonu noktasız yazılmıştır, diğerleri noktalıdır: noktalı (çoğunluk).",
-      "ÇELİŞKİ (başlıklar): metin 'Tablolar Listesi' ve 'Simgeler ve Kısaltmalar' der; Ek-3 'TABLOLAR LİSTESİ' ve 'KISALTMALAR DİZİNİ', Ek-4 sayfası 'TABLOLAR DİZİNİ', Ek-5 'ŞEKİLLER LİSTESİ', Ek-6 'KISALTMALAR DİZİNİ' yazar. Uygulanan: TABLOLAR LİSTESİ (metin + Ek-3, 2/3), ŞEKİLLER LİSTESİ (metin + Ek-3 + Ek-5), KISALTMALAR DİZİNİ (örnek sayfalar önceliği). Tablolar sayfa başlığındaki DİZİNİ insan kararı gerektirir.",
+      "CONFLICT (table-list title): prose paragraph 45 and the Ek-3 TOC row say 'TABLOLAR LİSTESİ'; the dedicated actual list-page example Ek-4 is headed 'TABLOLAR DİZİNİ'. Applied 'TABLOLAR DİZİNİ' because the dedicated example is more specific to the generated page than its TOC label and prose section name; the counter-evidence remains explicit.",
       "Listeler (Ek-4/Ek-5): başlık 12 pt koyu ortalı; 'Sayfa' 11,5 pt normal tek satır (Ek-4'te ortalı, Ek-5'te sağa yaslı: ÇELİŞKİ, sağa yaslı seçildi); satırlar 11,5 pt KOYU (etiket, başlık, noktalar, sayfa), tek satır, 0 nk, iki yana yaslı, noktalı kılavuz. Örnek sayfalardaki 11,5 pt metindeki '12 punto' kuralına aykırıdır (ÇELİŞKİ; kullanıcı kararı gereği örnek sayfa). Başlık ile 'Sayfa' arasında bir boş Normal paragraf (Ek-4 ölçümü 51,7 pt). Ek-6: başlık 11,5 pt koyu, satırlar 11,5 pt normal 1,5 satır, 15,9 mm (902 tw) ilk satır girintisi; örnekte 'Bkz' ve 'SBE' satırları elle kaydırılmıştır (kural değil, atlandı). Örnek sayfaların başındaki boş paragraf sayısı (Ek-4: 1, Ek-5: 2, Ek-6: 2) kendi içinde tutarsız ve sayfa konumu çizimin parçası: üretilmedi (UNKNOWN).",
       "İçindekiler (Ek-3): başlık 12 pt koyu ortalı, satırlar 12 pt; ÖNSÖZ/GİRİŞ/liste/SONUÇ/KAYNAKÇA/EKLER satırları koyu; bölüm satırları ('BİRİNCİ BÖLÜM', bölüm adı) koyu ortalı sayfa numarasız; ORTA/YAN BAŞLIK normal, Alt Başlık koyu; örnekte alt düzeyler 4,3 mm basamakla boşlukla kaydırılmıştır (ölçüm). Örnek sayfa satır aralığı (koyu üst satırlar 1,15 satır + 10 nk, numaralı satırlar tek satır 0 nk) uygulandı. Örnekteki sayfa numaraları hatalıdır (şekiller 'vi', kısaltmalar 'v'): kural değil, görsel örnek.",
-      "UNKNOWN (üretilmedi veya motor varsayılanı): sayfa numarası yazı tipi/boyutu (genel 'metnin tamamı 12 punto' kuralından 12 pt INFERRED) ve alt kenara uzaklığı (şema zorunlu değer 12,5 mm, kaynak değeri değil); üst bilgi; dipnot biçimi (yalnız 'dip not kullanılabilir'; 12 pt INFERRED); Önsöz biçimi; tablo/şekil başlığı konumu, boyutu, hizası (numaralama belge boyunca 'Tablo 1.' listelerden); tablo çizgileri; denklem; blok alıntı ilk satır girintisi ve aralığı (genel paragraf kuralı devralınır); kaynakça girinti ve aralığı (kılavuz örnekleri yalnız içerik: 'SOYAD, Ad. (yıl), Başlık...'; genel paragraf kuralı INFERRED); Ek sayfası biçimi; özet/abstract (kaynakta yok). Kılavuzdaki 'sayfa sayısı/kaynak sayısı' ve yazı biçimi örnekleri belge içeriği/kural dışıdır.",
+      "UNKNOWN (missing evidence): page-number font/size (12 pt INFERRED from general text-size rule) and bottom distance; thesis header/footer geometry; footnote style; preface layout; caption position, typography, alignment and style (Ek-4/Ek-5 show list rows only); table rules; equations; block-quote first-line indent and spacing; bibliography-specific indent/spacing beyond the general paragraph rule; appendices; abstract (absent). Caption labels and document-wide Arabic number pattern are INFERRED from the official index rows 'Tablo 1.' / 'Şekil 1.'; no caption paragraphs were found. General paragraph rule applies to reference entries only as an INFERRED fallback. The guide's page/source-count and writing-format examples are not document rules.",
       "Kılavuz belgesinin kendi paragrafları (1,15 satır, ilk satır 1,0 cm, 10 nk sonra, iki yana yaslı) kendi metin kuralına (1,5 satır, 1,25 cm, 6/6 nk) uymaz: ÇELİŞKİ kaydı; metin kuralı uygulandı (örnek sayfa değil, kılavuz belgesinin kendi gövdesi).",
     ],
   },
   page: {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
     margins: { topMm: 45, bottomMm: 45, leftMm: 45, rightMm: 30 },
-    header: { heightMm: 0, distanceMm: 12.5, content: "", firstPage: "same" },
-    footer: { heightMm: 8, distanceMm: 12.5, content: "", firstPage: "same" },
+    // The guide's own section settings describe the guide, not the thesis. Thesis header/footer geometry is unknown.
+    header: {},
+    footer: {},
     numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, style: { fontFamily: FONT, fontSizePt: 12 } },
   },
   typography: {
@@ -211,12 +207,10 @@ const base = {
     ADVISOR_NAME: { label: "Danışman Adı SOYADI", type: "text", required: true },
     SUBMISSION_YEAR: { label: "Tezin teslim yılı (kapak)", type: "number", required: true },
   },
-  tables: {
-    ...caption("Tablo", "above", { spacingAfterPt: 0, style: { fontFamily: FONT, fontSizePt: 12, align: "center", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } }),
-    cellStyle: { fontSizePt: 12, lineHeight: 1, align: "left" },
-  },
-  figures: caption("Şekil", "below"),
-  bibliography: { heading: "KAYNAKÇA", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceBeforePt: PARA_GAP_PT, spaceAfterPt: PARA_GAP_PT, firstLineIndentMm: PARA_INDENT_MM }, hangingIndentMm: 0, citationStyle: "author-year" },
+  tables: caption("Tablo"),
+  figures: caption("Şekil"),
+  // The heading and alphabetical author-year reference structure are explicit; bibliography-specific typography is unknown.
+  bibliography: { heading: "KAYNAKÇA", citationStyle: "author-year" },
   toc: { heading: "İÇİNDEKİLER", levels: [1, 2, 3, 4], showPageNumbers: true },
 };
 

@@ -13,10 +13,13 @@ Source: one guide DOCX (Word-made). Prose = EXPLICIT. Its example pages Ek-1..Ek
 - Observation: Word render shows text up to x = 181.1 mm on several pages (TOC/list rows), 1.1 mm beyond the 180 mm right margin; engine PDF stays at 180.0. Not investigated further (likely right-tab/leader handling in the DOCX export).
 
 ## Conflicts (recorded in spec and `source.notes`)
-Prose 12 pt vs list/abbreviation examples 11.5 pt (example applied); TABLOLAR LİSTESİ (prose, Ek-3) vs TABLOLAR DİZİNİ (Ek-4) (LİSTESİ chosen, needs confirmation); "Simgeler ve Kısaltmalar" vs KISALTMALAR DİZİNİ (example); "Sayfa" centred (Ek-4) vs right (Ek-5) (right); cover font name "Times" in examples vs Times New Roman rule (TNR); guide body (1.15 lines, 10 mm indent, 10 pt after) vs its own text rule (text rule); example-page typos/hand shifts not reproduced.
+Prose 12 pt vs list/abbreviation examples 11.5 pt (example applied); `TABLOLAR LİSTESİ` (prose para 45 and Ek-3) vs `TABLOLAR DİZİNİ` (dedicated page Ek-4), with DİZİNİ selected for that page based on page-specificity; "Simgeler ve Kısaltmalar" vs KISALTMALAR DİZİNİ (example); "Sayfa" centred (Ek-4) vs right (Ek-5) (right); cover font name "Times" in examples vs Times New Roman rule (TNR); guide body (1.15 lines, 10 mm indent, 10 pt after) vs its own text rule (text rule); example-page typos/hand shifts not reproduced.
 
 ## UNKNOWN (not invented)
 Heading typography/spacing/page breaks (only the Ek-3 hierarchy mirrored, INFERRED), page-number font/distance, header, footnote format, caption position/size, table borders, equations, bibliography indent/spacing, Önsöz format, appendix pages, page size. Özet/Abstract, approval and declaration pages are not in this guide and were not generated. Dış/İç kapak numbering: covers unnumbered (INFERRED from numbering.xml list grouping).
 
 ## Engine gaps
 None blocking. Approximations: TOC chapter row (label + title lines) takes one 10 pt after (example has 10 pt after each line); example-page leading empty paragraphs before list titles (1/2/2, inconsistent) not reproduced.
+
+## Optional-rule audit (2026-10-02)
+The [current optional-rule audit report](../validation/aku-optional-audit/REPORT.md) and real-export artifacts record caption/bibliography/header-footer UNKNOWNs and the revised table-list title decision. Ek-4’s dedicated list page supports `TABLOLAR DİZİNİ`; para 45 and the Ek-3 TOC row remain contrary evidence for `TABLOLAR LİSTESİ`. The specificity rationale resolves the implementation choice for the page, while the generated TOC currently reuses that title. Caption label/number patterns are INFERRED from Ek-4/Ek-5 index rows only; they were not observed in caption paragraphs.

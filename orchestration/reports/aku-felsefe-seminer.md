@@ -1,6 +1,6 @@
 # aku-felsefe-seminer (Seminer) — self-check report 2026-10-02
 Registry: aku-felsefe-seminer-tr-v1 (instituteId fef-felsefe-seminer, undergraduate). Module templates/aku-felsefe.js, test src/lib/thesisAkuFelsefe.test.js, spec orchestration/specs/aku-felsefe-seminer.json.
-Source: prose-only 2019 DOCX guide (no template, no thesis example pages). Guide sectPr/styles/cover describe the guide document, not the thesis.
+Source: 2019 official DOCX guide. It contains a labeled VML seminar-cover example at paragraph 124 and detailed prose/citation examples. The cover example is source evidence; its content and geometry must be measured before implementation. The guide's sectPr/styles outside that labeled example describe the guide document, not automatically the seminar.
 
 ## Measured real export (orchestration/validation/aku-felsefe-seminer/self-1/fel.pdf|docx, Word render checked)
 | check | expected (EXPLICIT) | measured | result |
@@ -11,13 +11,16 @@ Source: prose-only 2019 DOCX guide (no template, no thesis example pages). Guide
 | top / bottom | 30 / 30 mm | top first line 30.18 mm; pgMar 1701 tw | PASS |
 | body font/size | Times New Roman 12 | TimesNewRomanPSMT 12.0 (docx TNR) | PASS |
 | line pitch | 1.5 lines | 20.7 pt (Word and PDF) | PASS |
-| paragraph spacing 6+6 | additive in editor | 26.7 pt pitch between paragraphs in PDF and Word render | PASS (engine sums; source ambiguous under Word collapse) |
+| paragraph spacing 6+6 | 6 pt before and after; collapse behavior per source/Word semantics | earlier export measured 26.7 pt paragraph pitch; independent DOCX inspection found exported before/after spacing 12/6 pt under additive compensation | FAIL (source-backed collapse semantics not yet implemented) |
 | page number | bottom centre, no sign | centre of text block, plain digits, 12 pt | PASS (size UNKNOWN) |
 
-## UNKNOWN (not generated)
-Dış/İç Kapak layout, heading typography (only body font/size inherited; decimal numbering is an engine-required default, not a source rule), caption format/position, footnote format, page-number size, reference-list indents, appendix layout.
+## Pending independent source extraction
+The official guide includes a labeled seminar-cover example (para 124) and detailed citation examples. Their supported content/layout, heading rules, and bibliography implications have not yet been extracted into the approved spec. Caption/footnote/page-number/reference/appendix requirements remain UNKNOWN pending source-specific review.
 ## Conflicts
 Margins: guide text vs guide sectPr (30/30/30/25 mm); text followed.
 ## Engine gaps
-Shared test thesisEngine.test.js requires numbered headings for every template. No guide-defined block-quote first-line indent (inherits body 12.5 mm).
-Status: PASS (self-check, for the defined values only; cover/headings UNKNOWN).
+No guide-defined block-quote first-line indent (generic body fallback is 12.5 mm). The current optional-rule audit supersedes the former numbered-heading test-gap note; see below.
+Status: INTERIM FAIL. The earlier self-check missed the official labeled cover example and treated additive paragraph spacing as compliant. Existing cover/TOC implementation and source mapping require revalidation; the independent source audit is authoritative for the next corrections.
+
+## Optional-rule audit (2026-10-02)
+Current audit and real-export artifacts: [optional-rule audit report](../validation/aku-optional-audit/REPORT.md). The prior optional audit's characterization of the guide as prose-only and its blanket source-UNKNOWN statements are superseded: an official cover example exists and requires measured extraction. No exact-conformance PASS is claimed pending those corrections and the source-backed paragraph-spacing fix.

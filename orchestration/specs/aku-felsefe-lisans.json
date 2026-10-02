@@ -16,7 +16,7 @@
  "sourcePriority": [
   {
    "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
-   "why": "only source; prose-only DOCX guide, no template or example thesis pages"
+   "why": "only identified primary source; DOCX guide includes labeled VML thesis-cover and TOC examples whose geometry/hierarchy require extraction"
   }
  ],
  "variants": [
@@ -369,6 +369,6 @@
   }
  ],
  "engineGaps": [
-  "shared engine test requires numbered headings although the source defines no heading numbering"
+  "Heading typography and numbering are UNKNOWN in the source; template leaves heading behavior to generic engine defaults (numbering is not configured as a university-specific rule)."
  ]
 }

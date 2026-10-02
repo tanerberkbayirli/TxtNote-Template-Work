@@ -225,8 +225,6 @@ const headings = {
   "4": { ...headingBase, fontWeight: 400, lineHeight: 1, spaceBeforePt: 6, spaceAfterPt: 6, numbering: { enabled: true, format: "{1}.{2}.{3}.{4}.", sequence: "arabic" } },
 };
 
-const captionStyle = { fontFamily: FONT, fontSizePt: 12 };
-
 export const akuIsgTezsizProje = {
   schemaVersion: 1,
   templateVersion: "1.0.0",
@@ -246,18 +244,20 @@ export const akuIsgTezsizProje = {
     verifiedAt: "2026-10-02",
     notes: [
       "Tek kaynak bir Word şablonudur (.doc; Word ile .docx/.pdf'e çevrildi). Biçim kanıtı: üç bölümün sectPr'ı, stiller, paragraf/çalışma özellikleri, boş paragraf yapısı, altbilgi alanı ve Word PDF taban çizgileri. Şablonun yönerge metinleri açık kuraldır. AKÜ FBE tez şablonu (aku-fbe.js) değer kaynağı DEĞİLDİR.",
-      "Kenar boşlukları (TEMPLATE): dış kapak üst/alt 30, sol 40, sağ 25 mm; iç kapak ile giriş öncesi sayfalar (etik, onay, özet, abstract, içindekiler, dizinler) üst/alt 25, sol/sağ 30 mm; giriş ve sonrası 30/30/30/30 mm. Üstbilgi/altbilgi mesafesi 12,5 mm (709 twip).",
+      "Kenar boşlukları (TEMPLATE): dış kapak üst/alt 30, sol 40, sağ 25 mm; iç kapak ile giriş öncesi sayfalar (etik, onay, özet, abstract, içindekiler, dizinler) üst/alt 25, sol/sağ 30 mm; giriş ve sonrası 30/30/30/30 mm. Header/footer sectPr distance is 709 twips (12.5 mm). Footer height is UNKNOWN; the 17.4 mm configured distance reproduces the measured page-number baseline with the footer's trailing empty paragraph.",
       "Sayfa numarası (TEMPLATE): altta ortada, 11 punto Times New Roman, PAGE alanı. Dış kapak sayılmaz; iç kapak 'i' sayılır ama numarası basılmaz (titlePg, ilk sayfa altbilgisi yok); etik 'ii'dir; ön kısım küçük Romen rakamı; GİRİŞ Arapça 1'den başlar.",
       "Gövde (MEASURED, tek gerçek örnek paragraf): Times New Roman 12, iki yana yaslı, 1,5 satır, önce/sonra 0, ilk satır girintisi yok. Özet örnek satırlarında 12,5 mm girinti vardır (özet/abstract paragraflarında uygulandı); GİRİŞ örnek satırlarında da 12,5 mm girinti vardır ama gerçek metin paragrafında yoktur (ÇELİŞKİ, bkz. rapor).",
       "Başlıklar (gerçek gövde sayfaları): H1 kalın, büyük harf, tek satır, 6/6 nk ('toc 1' biçimi; yalnız GİRİŞ 'heading 1' biçimindedir: 1,5 satır, önce 12 nk: ÇELİŞKİ); H2 kalın 1,5 satır önce 12; H3 kalın 1,5 satır 6/6; H4 gövdede yok, yönerge planında normal ağırlık. Numaralandırma 1. / 2.1. / 2.1.1. (bölüm numarası dahil, yazılı). Şablonun 'ÖRNEK (GEÇİCİ TASLAK) PLAN' metni 'BİRİNCİ BÖLÜM' ortalı başlıkları ve bölüm başına yeniden başlayan numaralar gösterir; gerçek sayfalarla çeliştiği için uygulanmadı (ÇELİŞKİ).",
-      "UNKNOWN / zorlanan alanlar: tablo ve şekil başlığı etiketi, konumu, biçimi ve numaralandırması (şablonda yalnız 'ÇİZELGELER DİZİNİ' ve 'ŞEKİLLER DİZİNİ' başlıkları vardır; etiketler Çizelge/Şekil ÇIKARIM), dipnot biçimi, blok alıntı, denklem, ek düzeni, özgeçmiş düzeni, dizin satır biçimleri (örnek satır yok), tablo çizgileri.",
+      "UNKNOWN / zorlanan alanlar: caption position/style/numbering (there are no caption paragraphs; 'Çizelgeler/Şekiller Dizini' only supports labels Çizelge/Şekil as INFERRED), footnote style, block quote, equations, appendix/CV layouts, index-row formatting, table borders, footer height. Header/footer distance is directly measured from sectPr; the page-number baseline model includes the empty trailing footer paragraph.",
     ],
   },
   page: {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
     margins: BODY_MARGINS,
-    header: { heightMm: 0, distanceMm: 12.5, content: "", firstPage: "same" },
-    footer: { heightMm: 4.9, distanceMm: 17.4, content: "", firstPage: "same" },
+    header: { distanceMm: 12.5 },
+    // This reproduces the measured page-number baseline including the trailing empty footer paragraph.
+    // Footer height is not a section property; omit it so the engine uses its generic default.
+    footer: { distanceMm: 17.4 },
     numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, style: { fontFamily: FONT, fontSizePt: 11 } },
   },
   typography: {
@@ -282,9 +282,9 @@ export const akuIsgTezsizProje = {
     KEYWORDS: { label: "Anahtar Kelimeler", type: "text" },
     KEYWORDS_EN: { label: "Keywords", type: "text" },
   },
-  // Caption rules are UNKNOWN in the template: label from the list titles (INFERRED), the remaining fields are engine-required and neutral.
-  tables: { label: "Çizelge", position: "above", style: captionStyle, numbering: { scope: "document", format: "{n}", sequence: "arabic" } },
-  figures: { label: "Şekil", position: "below", style: captionStyle, numbering: { scope: "document", format: "{n}", sequence: "arabic" } },
+  // Labels are inferred from the index titles; position, style and numbering are unknown. Omitted position uses generic engine defaults.
+  tables: { label: "Çizelge" },
+  figures: { label: "Şekil" },
   // KAYNAKÇA entries (sample): 1.5 lines, 6 pt before, hanging 709 twips (12.5 mm), justified; in-text "Baykal vd. (2015)", "(Petrucci ve Harwood 1993)" = author-year.
   bibliography: { heading: "KAYNAKÇA", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0, hangingIndentMm: 12.5 }, hangingIndentMm: 0, citationStyle: "author-year" },
   toc: { heading: "İÇİNDEKİLER", levels: [1, 2, 3, 4], showPageNumbers: true },

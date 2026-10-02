@@ -17,6 +17,13 @@ Starting checkpoint: `a80e81c` on `integrate/aku-mcbu`; engine fix `8e9bb83`. Ex
 9. SBE: old independent report has six FAIL findings; subsequent commits address some. Recheck current evidence and close remaining heading, cell alignment, appendix-index, title-gap and export issues as applicable. Do not rely on the older PASS progress label.
 10. Update progress and source/evidence reports after validated stages; checkpoint meaningful completed work. Do not commit bulky reproducible exports, debug files or converted source artifacts.
 
+## Completed stages
+
+- `617fe32`: FBE initial official Word measurement and faithful long89/seven-juror test. The dates remain on cover pages, director flows to the ethics page, and there is no encoded approval-to-ethics new-page boundary. Remaining source geometry checks are listed in the evidence report. This is an evidence checkpoint, not a production PASS.
+- Worker `fbe_word_evidence` independently validates the Felsefe thesis/seminar pair and measures labeled official cover/TOC examples previously overlooked. Supported missing covers and DOCX 12/6 versus explicit 6/6 paragraph properties reopen both targets as FAIL. Reuse the existing `paragraphSpacing: "collapse"` mechanism for the source's native Word behavior; do not invent a new spacing mechanism.
+- Worker `optional_rule_audit` completed partial-caption defaults and source-less cleanup (612 tests passed). Equivalent current models exposed a separate browser export race: stable page snapshots can precede committed generated-index page labels. Root approved a minimal shared editor readiness fix with an async race test and repeated real-export checks; writer implements it before template closeout. Earlier old/new comparison was confounded by an intervening template edit; Word field-refresh comparison is measured identical, not a browser-readiness PASS.
+- Word COM ownership is coordinated explicitly; official Felsefe source-guide renders are complete and the lease is currently free. No simultaneous Word automation.
+
 ## Completion gate
 
 SOURCE → SPEC → IMPLEMENTATION → REAL EXPORT → INDEPENDENT VALIDATION → PASS → REGRESSION → CHECKPOINT. UNKNOWN remains UNKNOWN; supported violations are FAIL. BLOCKED requires concrete unavailable evidence or a demonstrated unsolvable technical obstacle, not unfinished work. Physical print items and unsupported variants are documented explicitly; no invented layouts or text.

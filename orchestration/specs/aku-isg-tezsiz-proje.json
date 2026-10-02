@@ -107,7 +107,7 @@
      "locator": "pgMar footer=709"
     }
    ],
-   "notes": "Word PDF page-number baseline 278.8 mm = 12.5 + trailing empty footer paragraph (4.87)"
+   "notes": "The source sectPr value is 12.5 mm (709 twips). The current template uses 17.4 mm to reproduce the separately measured Word-render page-number baseline (278.8 mm), accounting for the trailing empty footer paragraph (~4.87 mm); this mapping is an implementation inference, not a source sectPr value. Footer height is UNKNOWN."
   },
   {
    "key": "page.numbering.style",
@@ -477,8 +477,8 @@
  ],
  "unknowns": [
   {
-   "key": "caption label/position/style/numbering (tables, figures)",
-   "why": "template defines nothing"
+   "key": "caption position/style/numbering (tables, figures)",
+   "why": "No caption paragraphs found. Çizelge/Şekil labels are INFERRED from the Çizelgeler/Şekiller index titles; caption placement, typography and numbering remain UNKNOWN."
   },
   {
    "key": "footnote typography",

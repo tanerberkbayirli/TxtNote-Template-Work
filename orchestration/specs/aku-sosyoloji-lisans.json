@@ -629,7 +629,7 @@
    "key": "captions.numbering",
    "value": "document-wide 'Tablo 1.' / 'Şekil 1.'",
    "unit": "",
-   "confidence": "MEASURED",
+   "confidence": "INFERRED",
    "appliesTo": [
     "*"
    ],
@@ -640,7 +640,7 @@
      "quote": "Tablo 1. ... Tablo 10.; Şekil 1. ... Şekil 4."
     }
    ],
-   "notes": ""
+   "notes": "The Ek-4/Ek-5 index rows show these label-number strings, but no caption paragraphs were found. Their use as caption labels and a document-wide numbering pattern is INFERRED from index entries only; caption format/position remain UNKNOWN."
   },
   {
    "key": "toc.title",
@@ -661,7 +661,7 @@
   },
   {
    "key": "lists.tables.title",
-   "value": "TABLOLAR LİSTESİ",
+   "value": "TABLOLAR DİZİNİ",
    "unit": "",
    "confidence": "MEASURED",
    "appliesTo": [
@@ -674,7 +674,7 @@
      "quote": "TABLOLAR LİSTESİ"
     }
    ],
-   "notes": "CONFLICT recorded."
+   "notes": "CONFLICT retained: para 45 and the Ek-3 TOC row say TABLOLAR LİSTESİ; the dedicated table-list page in Ek-4 says TABLOLAR DİZİNİ. The implementation uses DİZİNİ for the actual list page because Ek-4 is the page-specific example; the template currently reuses this title in its TOC row."
   },
   {
    "key": "lists.figures.title",
@@ -853,7 +853,7 @@
   },
   {
    "id": "list-tables",
-   "title": "TABLOLAR LİSTESİ",
+   "title": "TABLOLAR DİZİNİ",
    "required": "conditional"
   },
   {
@@ -979,8 +979,8 @@
      "value": "TABLOLAR DİZİNİ"
     }
    ],
-   "decision": "LİSTESİ (2 of 3)",
-   "needsConfirmation": true
+   "decision": "DİZİNİ for the dedicated list page: Ek-4 is the page-specific example. Para 45 and the Ek-3 TOC row remain counter-evidence; the current template also reuses DİZİNİ in the generated TOC.",
+   "needsConfirmation": false
   },
   {
    "topic": "Simgeler ve Kısaltmalar title",

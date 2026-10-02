@@ -23,11 +23,14 @@ Source: one .doc template (2022-08-02) -> Word -> isg.docx/isg.pdf. AKÜ FBE the
 6. Literal source typo `Keywords::` kept; `EKLER (VARSA)` / `ÖZGEÇMİŞ (ZORUNLU DEĞİL)` printed as EKLER / ÖZGEÇMİŞ (annotations dropped).
 
 ## UNKNOWN (nothing invented)
-Table/figure caption label/position/style/numbering (Çizelge/Şekil labels inferred from list titles), footnotes, block quote, equations, appendix and CV layout, list/symbol entry formats, table borders, H4 sample (taken from the instruction plan: INFERRED).
+Table/figure caption position/style/numbering (Çizelge/Şekil labels are INFERRED from list titles; no caption paragraphs), footnotes, block quote, equations, appendix and CV layout, list/symbol entry formats, table borders, H4 sample (taken from the instruction plan: INFERRED).
 
 ## Engine gaps / forced fields
-- Forced by validation, not defined by source: `tables`/`figures` rules (label Çizelge/Şekil, position above/below, style = body font 12, numbering document `{n}` arabic); `footer.heightMm` 4.9; `header.heightMm` 0 (no header in source).
+- Caption labels remain INFERRED from the index titles; caption position/style/numbering and footer height are UNKNOWN. The template omits position so the generic engine default supplies above/below placement without attributing it to AKÜ. The current audit supersedes the former forced-field defaults; generic header/footer geometry is unscored.
 - Word collapses space after/before, editor sums: special pages use spacers with 0/0 spacing (exact); on body pages H1 (after 6) followed by H2 (before 12) gives 18 pt vs Word 12 pt.
 - TOC right tab at 8210 twips (144.8 mm, 5.2 mm short of the margin) not expressible; footer's trailing empty paragraph modelled by `footer.distanceMm` 17.4 (= 12.5 + 4.87).
 - Inner cover overflows to a second page if the 16 pt title wraps to two lines (same behaviour as the Word original, which has 9 trailing empty lines).
 - Internet-sources numbered list under KAYNAKÇA (`1- http...`) not generated.
+
+## Optional-rule audit (2026-10-02)
+See the [current optional-rule audit report](../validation/aku-optional-audit/REPORT.md) and its real-export artifacts. Unsupported custom caption formatting/numbering and header/footer heights were removed. Caption details and footer height remain UNKNOWN; the 12.5 mm source footer distance versus the 17.4 mm effective baseline model is retained as an unresolved structure-to-output mapping, not a source value.
