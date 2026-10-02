@@ -1,0 +1,1010 @@
+{
+ "id": "aku-kimya-lisans",
+ "schemaVersion": 3,
+ "analyzedAt": "2026-10-02",
+ "university": "Afyon Kocatepe Üniversitesi",
+ "unit": "Fen Edebiyat Fakültesi · Kimya Bölümü · Lisans Bitirme Tezi",
+ "sources": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+   "role": "primary",
+   "type": "guide",
+   "version": "2023-12 (cover AFYONKARAHİSAR 2023)",
+   "pages": 29
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+   "role": "primary",
+   "type": "template",
+   "version": "2026-02-24 (core.xml)",
+   "pages": 32
+  }
+ ],
+ "derivedArtifacts": [
+  "orchestration/artifacts/aku-kimya-lisans/source/template.pdf (Word COM render of the official template)"
+ ],
+ "sourcePriority": [
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+   "why": "USER DECISION: official DOCX XML and its Word render win over the guide"
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+   "why": "explicit guide text fills what the DOCX does not define"
+  }
+ ],
+ "variants": [
+  {
+   "registryId": "aku-kimya-lisans-tr-v1",
+   "degreeType": "undergraduate",
+   "language": "tr",
+   "confirmed": true,
+   "evidence": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+   "differences": []
+  }
+ ],
+ "rules": [
+  {
+   "key": "page.size",
+   "value": "A4",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5 §2.1",
+     "quote": "A4 boyutlarında (21 cm x 29.7 cm)"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "document.xml sectPr pgSz",
+     "quote": "w=11904 h=16838"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.margins.all",
+   "value": 30,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5 §2.3",
+     "quote": "sayfa kenarlarından 3 cm boşluk"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "sectPr 2-4 pgMar",
+     "quote": "top/right/bottom/left=1701 tw"
+    }
+   ],
+   "notes": "guide and template agree"
+  },
+  {
+   "key": "page.margins.top.innerCover",
+   "value": 10.02,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "sectPr 1 pgMar top=568",
+     "quote": "568 tw = 10.02 mm"
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.1 seal image bbox",
+     "quote": "y 10.02 mm"
+    }
+   ],
+   "notes": "template wins over the guide's 3 cm (user decision); implemented as 5.29 mm (logo top) because the logo floats above the margin, see engineGaps"
+  },
+  {
+   "key": "page.header.footer.distance",
+   "value": 12.51,
+   "unit": "mm",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "sectPr 1-3 pgMar header/footer=709; sectPr 4 =708",
+     "quote": "709 tw = 12.51 mm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.number.position",
+   "value": "bottom-center",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.6 §2.2 and p.6-7 §2.7",
+     "quote": "Metin alanının dışında yalnızca sayfanın alt bilgi bölümünde sayfa numarası ortalanarak"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "footer3.xml/footer4.xml",
+     "quote": "AltBilgi jc=center, PAGE field"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "page.number.font",
+   "value": "Times New Roman 10 pt, no ornaments",
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.7 §2.7",
+     "quote": "(Times New Roman olarak 10 Punto)"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "footer3.xml run without sz; styles Normal no sz",
+     "quote": "Word default 10 pt"
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.4 page number i",
+     "quote": "10.0 pt at y 280.63"
+    }
+   ],
+   "notes": "guide and template agree"
+  },
+  {
+   "key": "page.number.scheme",
+   "value": "cover/onay/etik none; ÖZET.. lower roman from i; GİRİŞ.. arabic from 1; KAYNAKLAR/ÖZGEÇMİŞ/EKLER continue",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.6-7 §2.7",
+     "quote": "Dış Kapak, İç kapak, Onay ve Etik numaralandırılmaz ... i, ii, iii ... 1, 2, 3"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "sectPr 3 pgNumType lowerRoman start=1; sectPr 4 start=1",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "body.font",
+   "value": "Times New Roman 12 pt",
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5 §2.2",
+     "quote": "yazı karakteri Times New Roman ... 12 punto"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "styles Normal rFonts TNR; runs sz=24",
+     "quote": ""
+    }
+   ],
+   "notes": "İç Kapak 14 pt (guide §4.2.2 and template sz=28); table cells 8 pt minimum allowed (§2.2)"
+  },
+  {
+   "key": "body.lineSpacing",
+   "value": 1.5,
+   "unit": "lines",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5-6 §2.4",
+     "quote": "1,5 satır aralığı kullanılmalıdır"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "body paragraphs w:spacing line=360 auto",
+     "quote": ""
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.14 line pitch",
+     "quote": "7.28-7.33 mm = 20.7 pt"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "body.align",
+   "value": "justify",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5 §2.3",
+     "quote": "tüm metin satırları iki yana yaslı"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "body paragraphs jc=both",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "body.firstLineIndent",
+   "value": 0,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5 §2.4",
+     "quote": "paragraf başları ... boşluk bırakılmadan başlamalıdır"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "body paragraphs without w:ind",
+     "quote": ""
+    }
+   ],
+   "notes": "guide and template agree (no indent)"
+  },
+  {
+   "key": "body.paragraphGap",
+   "value": 20.7,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5-6 §2.4/§2.6",
+     "quote": "paragraflardan önce ve sonra 1 satır boşluk (1,5 aralıklı)"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "empty 1.5-spaced paragraphs between all paragraphs/headings",
+     "quote": ""
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.14",
+     "quote": "last line 110.50 -> next paragraph 125.11 mm (14.61 mm = 2 lines)"
+    }
+   ],
+   "notes": "implemented as paragraph spacing after 20.7 pt, heading before 0 (Word additive)"
+  },
+  {
+   "key": "headings.format",
+   "value": "TNR 12 pt bold, left, no indent, 1.5 lines, typed numbers 1. / 2.1 / 2.2.1 / 2.3.1.1, max 4 levels",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.7 §2.8",
+     "quote": "12 punto ve koyu ... sayfanın sol çerçeve kenarından ... Dördüncü dereceden daha ileri ... kullanılmamalıdır"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "styles Balk2-Balk5 (outlineLvl 1-4), runs rFonts TNR b sz24",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h1.case",
+   "value": "UPPERCASE, ve/veya/ile lower-case, new page",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.7 §2.8",
+     "quote": "birinci derece bölüm başlıkları BÜYÜK HARF ... ve/veya/ile ... küçük harflerle"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h2.case",
+   "value": "Title Case, ve/veya/ile lower-case",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.7 §2.8",
+     "quote": "kelime(ler)nin İlk Harfleri Büyük"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "headings.h3h4.case",
+   "value": null,
+   "unit": "",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.7 §2.8",
+     "quote": "only 1st/2nd level case stated"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "placeholder titles 'Üçüncü/Dördüncü Dereceden Başlık' are Title Case",
+     "quote": "placeholder text, not a rule"
+    }
+   ],
+   "notes": "left as typed"
+  },
+  {
+   "key": "headings.gap",
+   "value": "one empty 1.5 line before and after every heading",
+   "unit": "line",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.6 §2.6",
+     "quote": "başlık ile başlıktan hemen önceki metin arasında 1 satır boşluk (1,5 aralıklı)"
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.14/p.15 heading pitches",
+     "quote": "14.61 mm both sides"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.format",
+   "value": "Şekil/Çizelge/Resim <chapter>.<n>, label bold, 11 pt single, justified, hanging, after 6 pt",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.13 §3.2-3.3",
+     "quote": "1 aralık ve 11 punto ... iki yana yaslı ... asılı"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "caption paragraphs sz=22, first run bold, ind hanging, after=120",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.position",
+   "value": "Çizelge above, Şekil and Resim below",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.12 §3",
+     "quote": "Şekil ve resimlerde başlık altlarına, çizelgelerde üstüne"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.continuation",
+   "value": "Çizelge 3.1 (Devam) ...",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.12 §3.1",
+     "quote": "numarasından sonra \"(Devam)\" ibaresi"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "captions.figureGap",
+   "value": 6.86,
+   "unit": "pt",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.17 Şekil 2.1",
+     "quote": "image bottom 101.62 mm, caption glyph top 104.20 mm (2.58 mm)"
+    }
+   ],
+   "notes": "caption line-box top 2.42 mm below the image"
+  },
+  {
+   "key": "tables.borders",
+   "value": "0.5 pt top, header-bottom and last-row-bottom rules, no side rules",
+   "unit": "pt",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "tcBorders in all 4 sample tables",
+     "quote": "top/bottom single sz=4, left/right nil"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "tables.cellFont",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5 §2.2",
+     "quote": "12 punto ... geniş veya uzun çizelgelerde en küçük 8 punto"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "tables 313/387 sz=24; 411/414 no sz (=10 pt)",
+     "quote": "samples inconsistent"
+    }
+   ],
+   "notes": "see conflicts"
+  },
+  {
+   "key": "tables.note",
+   "value": "10 pt single justified, 6 pt before/after",
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.13 §3.3",
+     "quote": "10 punto büyüklüğünde ve 1 satır aralıklı"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "note paragraph without sz (=10 pt), spacing 120/120",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "equations",
+   "value": "Cambria Math 12 pt, centred, number (chapter.n) right, one empty 1.5 line before/after",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.9 §2.10",
+     "quote": "Cambria Math fontu (12 punto) ... ortalı ... 1 satır boşluk"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "document.xml m:oMath rFonts Cambria Math sz24; '(4.1)'",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "bibliography",
+   "value": "12 pt, 1.5 lines, before 6 pt after 0, justified, hanging 12.5 mm, author-year citations",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.21-22 §4.3.6",
+     "quote": "2. ve daha sonraki satırlar Asılı 1.25 cm ... 6 nk ve ... 0 nk"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "reference paragraphs spacing before=120 line=360 ind left=709 hanging=709",
+     "quote": ""
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.26",
+     "quote": "first entry 46.91 mm, hanging x 42.51 mm"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "toc.rows",
+   "value": "12 pt, 1.5 lines, 0 pt after, dotted leader to right edge, indents 0/5/10/15 mm",
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "styles toc 1-5 (tab right dot 8494, ind 0/284/567/851), direct spacing after=0 line=360",
+     "quote": ""
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.7-8 x0 30.02/35.02/40.01/45.05",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "lists.rows",
+   "value": "title bold centred, 'Sayfa' bold right below, rows 12 pt 1.5 lines 0 pt after, bold label, hanging under text",
+   "unit": "",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.19 §4.2.7-4.2.11",
+     "quote": "başlık ortalanmalı ... \"Sayfa\" yazısı başlığın hemen altında koyu ve sağa yaslı"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "Balk1 + ekillerTablosu rows (after=0, line from style 360)",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "symbols.list",
+   "value": "single spaced 0/0 pt; definitions on a common stop 40.71 mm; title centred bold",
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.10 §2.11",
+     "quote": "1 satır aralıklı ... sekme tuşu ile ... blok halinde"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "table grid 2196+6301, cell margins 108 tw",
+     "quote": ""
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.9 x 70.71 mm",
+     "quote": ""
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "front.coverLayout",
+   "value": "14 pt bold, 1.5 lines; seals 26.19 mm (x30.00,y10.02) + logo 34.08 mm (x148.59-182.67,y5.29-39.37); text frame x 30-180; first text line top 45.0 mm",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "document.xml paragraphs 1-26 anchors",
+     "quote": "wrapTopAndBottom 942975 EMU / wrapNone 1226820 EMU"
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.1",
+     "quote": "AFYON y 45.21; BİTİRME TEZİ 104.87; Ay, Yıl 255.38"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "front.onay",
+   "value": "bold caps 14 pt single header lines, 3 empty 10 pt single lines, title, 3 empty 10 pt lines, 12 pt 1.5 sentence, 2 empty lines, bold advisor line + İMZA",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "paragraphs 28-39",
+     "quote": ""
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.2",
+     "quote": "y 30.22 / 35.90 / 53.76 / 71.55 / 108.09"
+    }
+   ],
+   "notes": ""
+  },
+  {
+   "key": "front.ethics",
+   "value": "title/university bold centred, bold intro first-line 12.5 mm, six '−' items (0/7.5 mm), bold 'beyan ederim.', right date, grey İmza at 137.37 mm, bold right name",
+   "unit": "",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "paragraphs 88-103, numbering numId 26 (Symbol U+F02D)",
+     "quote": ""
+    },
+    {
+     "source": "orchestration/artifacts/aku-kimya-lisans/source/template.pdf",
+     "locator": "p.3",
+     "quote": "bullets x 30.02, text x 37.51; İmza x 167.42"
+    }
+   ],
+   "notes": "bullet items are 0.34 mm taller (Symbol line box)"
+  },
+  {
+   "key": "front.abstract.order",
+   "value": "text, bold 'yıl, ön + giriş sonrası sayfa' line, keywords (4-6)",
+   "unit": "",
+   "confidence": "TEMPLATE",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "paragraphs 117-121 / 152-156",
+     "quote": ""
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.18 §4.2.5",
+     "quote": "Anahtar Kelimeler ... Ardından ... yıl ve sayfa sayısı"
+    }
+   ],
+   "notes": "CONFLICT with guide, template implemented"
+  },
+  {
+   "key": "footnotes.font",
+   "value": "10 pt single (Word default of 'footnote text')",
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "styles DipnotMetni basedOn Normal, no properties",
+     "quote": ""
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.5 §2.2",
+     "quote": "tezin tamamında 12 punto"
+    }
+   ],
+   "notes": "guide silent about footnotes; the guide's general 12 pt sentence conflicts"
+  }
+ ],
+ "conflicts": [
+  {
+   "topic": "inner-cover top margin",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "§2.3",
+     "value": "3 cm all edges"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "sectPr 1 pgMar top=568",
+     "value": "10.02 mm"
+    }
+   ],
+   "decision": "Template wins (user decision): 10.02 mm geometry reproduced (cover section margins 5.29/27.33 mm because the wrapNone logo floats above the margin).",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "abstract tail order",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "p.18 §4.2.5",
+     "value": "text, keywords, year + pages"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "paragraphs 117-121, 152-156",
+     "value": "text, year + pages, keywords"
+    }
+   ],
+   "decision": "Template order implemented (user decision).",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "footnote font size",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "§2.2",
+     "value": "all text 12 pt (footnotes not mentioned)"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "styles DipnotMetni",
+     "value": "inherits Normal, no size = 10 pt"
+    }
+   ],
+   "decision": "Template style (10 pt single) implemented, INFERRED.",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "table cell font size",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "§2.2",
+     "value": "12 pt, 8 pt minimum for wide tables"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "sample tables",
+     "value": "12 pt in two, unsized (10 pt) in two"
+    }
+   ],
+   "decision": "Template samples disagree among themselves: guide 12 pt used.",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "symbols list term indent",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "§2.11",
+     "value": "terms at the frame edge, no space"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "symbols table",
+     "value": "terms 1.95 mm in (cell padding)"
+    }
+   ],
+   "decision": "Table cell padding is an artefact of the template's table; terms at 0 mm, definitions at 40.71 mm (template).",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "onay/etik separation",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "paragraphs 41-87",
+     "value": "47 empty 10 pt 1.5 paragraphs push the ethics page down"
+    }
+   ],
+   "decision": "Page filler, not a rule: the ethics page is a separate page.",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "heading gap (guide prose vs template Balk styles)",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "locator": "styles Balk2-Balk5",
+     "value": "no spacing; gaps are empty paragraphs"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "locator": "§2.4/2.6",
+     "value": "1 empty 1.5 line"
+    }
+   ],
+   "decision": "No conflict in outcome: both give a 14.61 mm pitch; implemented as 20.7 pt spacing.",
+   "needsConfirmation": false
+  }
+ ],
+ "unknowns": [
+  {
+   "key": "outerCover.layout",
+   "why": "guide §4.2.1 says only 'plastik spiralli ciltlenmelidir'; the template has no Dış Kapak page"
+  },
+  {
+   "key": "headings.h3h4.case",
+   "why": "guide states case for levels 1-2 only; template titles are placeholders"
+  },
+  {
+   "key": "tables.rowHeight",
+   "why": "template sample rows use exact/at-least heights of 6.2-7.0 mm, no rule in the guide"
+  },
+  {
+   "key": "cover.wrappedTitleSpacing",
+   "why": "template shows a 2-line title as a 1.5-spaced paragraph plus a single-spaced '(Devam)' paragraph; the line spacing of a wrapped long title is undefined"
+  },
+  {
+   "key": "abstract.maxLength",
+   "why": "no word/page limit in either source"
+  },
+  {
+   "key": "cv.fields",
+   "why": "template ÖZGEÇMİŞ is a field list (Adı Soyadı, Doğum Yeri ve Tarihi, ...) but the guide only asks for a short CV; left as author content"
+  },
+  {
+   "key": "internetSources.group",
+   "why": "numbered 'İnternet Kaynakları' group has no engine representation; authored by hand"
+  }
+ ],
+ "engineGaps": [
+  {
+   "requirement": "Floating (wrapNone) picture beyond the margins and above the first line (cover logo y 5.29 mm, x to 182.67 mm)",
+   "evidence": "template anchors, Word render p.1",
+   "whyEngineCannot": "specialPage blocks flow inside the margins (schema.d.ts SpecialPageBlock has no absolute position; margins nonnegative)",
+   "suggestedGenericCapability": "block-level absolute offsets or negative margins; interim: cover section margins equal the template's visible extents (top 5.29, right 27.33 + 2.67 right indent)"
+  },
+  {
+   "requirement": "Word empty header paragraph must not push the body on a section whose top margin is below the header distance",
+   "evidence": "Word render of exported DOCX: cover shifted 12.07 mm until header distance was set to 0.3 mm",
+   "whyEngineCannot": "export always writes a header part for each section",
+   "suggestedGenericCapability": "omit header/footer parts when empty (the template's section 1 has none)"
+  },
+  {
+   "requirement": "Table-based symbols list with exact row heights",
+   "evidence": "template table 232 / sample tables",
+   "whyEngineCannot": "table row heights and cell padding are author content",
+   "suggestedGenericCapability": "none needed"
+  }
+ ],
+ "measurableChecks": [
+  {
+   "id": "page.margins",
+   "expect": "30 mm all four edges (body); cover top 5.29 / right 27.33 mm (template extents)",
+   "tolerance": 0.5,
+   "unit": "mm"
+  },
+  {
+   "id": "cover.images",
+   "expect": "seal x30.00 y10.02 26.19 mm; logo x148.59-182.67 y5.29-39.37",
+   "tolerance": 0.25,
+   "unit": "mm"
+  },
+  {
+   "id": "cover.firstLine",
+   "expect": "AFYON y 45.21 mm, BİTİRME TEZİ 104.87 mm",
+   "tolerance": 0.25,
+   "unit": "mm"
+  },
+  {
+   "id": "onay.lines",
+   "expect": "y 30.22 / 35.90 / 53.76 / 71.55 / 108.09",
+   "tolerance": 0.25,
+   "unit": "mm"
+  },
+  {
+   "id": "ethics.lines",
+   "expect": "title 30.19, beyan 141.53, date 156.15, İmza x 167.42",
+   "tolerance": 0.25,
+   "unit": "mm"
+  },
+  {
+   "id": "body.font",
+   "expect": "TimesNewRomanPSMT 12.0 pt; headings TimesNewRomanPS-BoldMT 12.0 pt",
+   "tolerance": 0,
+   "unit": "pt"
+  },
+  {
+   "id": "body.pitch",
+   "expect": "7.28-7.33 mm baseline pitch; paragraph/heading gap 14.61 mm",
+   "tolerance": 0.25,
+   "unit": "mm"
+  },
+  {
+   "id": "page.number",
+   "expect": "10 pt centred at y 280.63 mm; ÖZET i, GİRİŞ 1",
+   "tolerance": 0.5,
+   "unit": "mm"
+  },
+  {
+   "id": "bibliography",
+   "expect": "first entry 46.91 mm below title 30.19; hanging x 42.51",
+   "tolerance": 0.25,
+   "unit": "mm"
+  }
+ ],
+ "reviewedAt": "2026-10-02",
+ "schemaNote": "Compact spec: confidence EXPLICIT (guide text), TEMPLATE (DOCX XML), MEASURED (Word render geometry), INFERRED, UNKNOWN."
+}
