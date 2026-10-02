@@ -554,7 +554,7 @@ function docxChildren(section, context) {
       // generatedIndex.unnumberedAfterNumberedSpaceBeforePt: extra space above an unnumbered title row that follows a numbered row.
       if (rule.unnumberedAfterNumberedSpaceBeforePt > 0 && row.unnumbered && previousRow && !previousRow.unnumbered) levelStyle.spaceBeforePt = (levelStyle.spaceBeforePt ?? rule.style?.spaceBeforePt ?? 0) + rule.unnumberedAfterNumberedSpaceBeforePt;
       previousRow = row;
-      const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : 0;
+      const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : rule.hanging > 0 ? rule.hanging : 0;
       const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
       const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
       // A number on its own line (ownLine headings) is a paragraph of its own above the title row.
@@ -563,7 +563,7 @@ function docxChildren(section, context) {
       const runs = lineLabel ? plainRuns(row.rowTitle) : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
       const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
       if (withPage) runs.push({ type: "tab" }, row.anchor ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? "") } : plainRuns(row.page)[0] || { type: "text", text: "" });
-      children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
+      children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
     }
     return children;
   }
@@ -596,7 +596,7 @@ function docxChildren(section, context) {
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(runs, withGap(block.unnumbered ? { ...style, pageBreakBefore: false } : style), context, { heading: level, anchor: block.thesisAnchor }));
+      children.push(docxParagraph(runs, withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, pageBreakBefore: false } : style), context, { heading: level, anchor: block.thesisAnchor }));
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
       const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
@@ -626,7 +626,7 @@ function docxChildren(section, context) {
         const spacing = before === null
           ? { before: caption && figures.position === "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT), after: caption && figures.position !== "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT) }
           : { before: pt(before) };
-        children.push(new Paragraph({ alignment: AlignmentType.CENTER, pageBreakBefore: context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id), keepNext: Boolean(caption && figures.position !== "above"), spacing, children: [new ImageRun({ ...image, transformation: { width, height } })] }));
+        children.push(new Paragraph({ alignment: alignDocx(figures.box?.align || "center"), pageBreakBefore: context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id), keepNext: Boolean(caption && figures.position !== "above"), spacing, children: [new ImageRun({ ...image, transformation: { width, height } })] }));
       }
       if (caption && figures.position !== "above") children.push(caption);
     } else if (block.type === "pageBreak") {

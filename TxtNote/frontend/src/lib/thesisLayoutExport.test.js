@@ -56,9 +56,9 @@ describe("positioned thesis layout export", () => {
   it("writes editable page-anchored text, image and line nodes with exact OOXML geometry and style", async () => {
     const model = compiledLayoutModel();
     const cover = model.sections.find((section) => section.id === "cover");
-    assert.equal(cover.layout.find((node) => node.type === "group").blocks[1].text, "Canonical editable text");
+    assert.equal(cover.layout.find((node) => node.type === "group").blocks.find((node) => node.id === "cover:block:0.1").text, "Canonical editable text");
     assert.deepEqual(
-      [cover.layout.find((node) => node.type === "group").blocks[1].xMm, cover.layout.find((node) => node.type === "group").blocks[1].yMm],
+      [cover.layout.find((node) => node.type === "group").blocks.find((node) => node.id === "cover:block:0.1").xMm, cover.layout.find((node) => node.type === "group").blocks.find((node) => node.id === "cover:block:0.1").yMm],
       [40.25, 42],
     );
 
@@ -105,7 +105,7 @@ describe("positioned thesis layout export", () => {
     // Generic templates embed Tinos; Times New Roman is only exported as that
     // actual face for templates that explicitly require and load the system font.
     const positioned = model.sections.find((section) => section.id === "cover").layout
-      .find((node) => node.type === "group").blocks[1];
+      .find((node) => node.type === "group").blocks.find((node) => node.id === "cover:block:0.1");
     positioned.style.fontFamily = "Tinos";
     const blob = await buildThesisPdf(model);
     const pdf = await getDocument({ data: new Uint8Array(await blob.arrayBuffer()), useSystemFonts: true }).promise;

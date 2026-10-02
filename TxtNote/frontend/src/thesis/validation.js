@@ -133,7 +133,7 @@ function validateIndex(index, body, headings, path, captionKinds = {}) {
   if (index.matchHeadingTransform !== undefined && typeof index.matchHeadingTransform !== "boolean") errors.push(`${path}.matchHeadingTransform geçersiz`);
   if (index.leaderFlow !== undefined && !["flex", "inline"].includes(index.leaderFlow)) errors.push(`${path}.leaderFlow geçersiz`);
   if (index.labelStyle !== undefined) errors.push(...(object(index.labelStyle) ? validateTextStyle({ ...body, ...index.style, ...index.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
-  if (index.hanging !== undefined && index.hanging !== "label") errors.push(`${path}.hanging geçersiz`);
+  if (index.hanging !== undefined && index.hanging !== "label" && !positive(index.hanging)) errors.push(`${path}.hanging geçersiz`);
   if (index.unnumberedAfterNumberedSpaceBeforePt !== undefined && !nonnegative(index.unnumberedAfterNumberedSpaceBeforePt)) errors.push(`${path}.unnumberedAfterNumberedSpaceBeforePt geçersiz`);
   if (index.levelStyles !== undefined) {
     if (!object(index.levelStyles)) errors.push(`${path}.levelStyles nesne olmalı`);

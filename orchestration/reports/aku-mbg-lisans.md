@@ -158,3 +158,34 @@ Independent review, 2026-09-28. I re-derived the rules from both official source
 - **ÖZGEÇMİŞ layout:** no sample in either source.
 - **Paragraph spacing:** whether spacing is additive and whether space-before applies at the top of a page.
 - **Footnotes and abstract length:** the sources are silent.
+
+## Implementation and self-check (2026-10-02)
+
+**Status: PASS (self-check, real export) with the limits below.** Source check: KAYNAK.md sha256 of guide (`b631d3c7...`) and template (`33432d85...`) match the repo files; `document.xml` of the DOCX is byte-identical to the analysed copy. Spec corrections: source paths now include the `MBG_Lisans_Bitirme_Tezi/` subfolder; ethics page `İmza` baseline 171.40 -> 172.60 mm and name 178.70 -> 179.90 mm (XML has an empty 12 pt/1.5 paragraph between date and İmza; the LibreOffice value treated it as 10 pt).
+
+- Registry id: `aku-mbg-lisans-tr-v1` (instituteId `fef-mbg`, degreeType `undergraduate`, official).
+- Files: `TxtNote/frontend/src/thesis/templates/aku-mbg.js`, `.../templates/assets/akuMbgLogos.js` (the two seals of the official DOCX), `src/lib/thesisAkuMbg.test.js` (7 tests; full suite 549 pass), registry line, `orchestration/validation/aku-mbg-lisans/self-1/` (fixture, `mbg.pdf`, `mbg.docx`, `dump.py`).
+- Engine: no changes; used existing capabilities (word line model, additive spacing, captionKinds, threeRule tables, continuation captions, equations, `titleNumbering: continueH1`, `textTransformExceptions`, derived page counts, tableNote style, image blocks in a row group).
+
+Measured on the real export (34 sheets, genuine TimesNewRomanPS-* and Cambria Math embedded; tolerance 0.25 mm):
+| Check | Source | Export | Result |
+|---|---|---|---|
+| Margins 30 mm (DOCX pgMar 1701 tw; PDF text x0/x1) | 30.00 / 180.00 | 30.00 / 179.97-180.00 | PASS |
+| Body 12 pt TNR, 1.5 pitch, no indent, one blank line between paragraphs | 7.30 mm / 14.60 mm | 7.30 / 14.60 | PASS |
+| First baseline on text pages | 33.86 | 33.95 | PASS (+0.09) |
+| Page number TNR 10 pt, centred, baseline | 283.65-283.73 | 283.52, x-centre 105.0 | PASS (-0.13..-0.21) |
+| Numbering: cover/ethics none, ÖZET = i, GİRİŞ = 1 | | none / none / i / 1 | PASS |
+| Inner cover seals (top 10.02; x 32.01-58.2, right edge 180) | 32.01 / 153.54-179.79 | 31.99 / 153.75-180.00 | PASS (right seal +0.21) |
+| Inner cover baselines AFYON/FEN/BÖLÜMÜ/BİTİRME/title | 45.00/53.51/62.03/104.63/138.70 | 45.17/53.69/62.21/104.80/138.88 | PASS (+0.18) |
+| Cover block gaps student-Danışman, advisor-date | 25.56 / 59.64 | 25.56 / 59.63 | PASS |
+| Ethics page baselines (title, intro, bullets, beyan, date) | 33.86/55.76/70.37/143.39/158.00 | 33.95/55.85/70.45/143.46/158.06 | PASS |
+| Bullet column / İmza x | 37.50 / 167.37 | 37.50 / 167.37 | PASS |
+| TOC: Sayfa line, indents 0/5/10/15, right edge | 41.16; 30/35.01/40/45.01; 179.85 | 41.25; 30/35/39.99/45; 180.00 | PASS |
+| List entries hang under caption text | ~46.3 | 46.35 | PASS |
+| Figure image bottom to caption baseline | 6.2 (guide, non-normative) | 6.21 | PASS |
+| Caption 11 pt, hanging = label width, continuation "(Devam)" | | 14.98 mm, present | PASS |
+| Bibliography hanging 12.5, 6 pt before | 12.5 | 12.49, pitch 9.42 | PASS |
+| Table rules | 3 x 0.5 pt | 3 rules, drawn 0.75 pt (Chromium border snapping; DOCX 0.5 pt) | PASS within 0.1 mm |
+| Equation Cambria Math 12 pt centred, number right (3.1) | | centre 104.97, right 179.95 | PASS |
+
+Limits and open items: (1) Dış Kapak not generated (UNKNOWN). (2) A cover title that wraps to two or more lines at 1.5 spacing pushes "Ay, Yıl" off the page (the template sample has a single-spaced "(Devam)" second line); a two-line title overflows by about 0.9 mm and a three-line one by a page: spec conflict 12, unresolved, the author has to remove empty lines. (3) Abstract title with two lines sits 2.4 mm higher than the template sample for the same reason. (4) H3/H4 case left as typed (UNKNOWN); footnotes TNR 10 pt (UNKNOWN, engine field); ÖZGEÇMİŞ and EKLER heading are minimal unnumbered H1s (layout UNKNOWN); "İnternet Kaynakları" is author-typed. (5) Heading numbers (H2-H4) start 0.23 mm left of the margin in the PDF text bbox (shared engine label placement, inside tolerance). (6) Absolute cover positions depend on the Word model for the 1.5-spaced logo line (UNKNOWN, see above); verified relative to the XML model.

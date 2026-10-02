@@ -398,7 +398,8 @@ export function thesisSectionCss(section) {
     `${scope} .thesis-fixed{white-space:pre-wrap;}`,
     `${scope} .thesis-layout-text{white-space:normal;overflow-wrap:break-word;}`,
     `${scope} .thesis-layout-spacer{display:block;max-width:100%;}`,
-    ...specialPageCss(scope, section.layout, textCss),
+    // Block rules are keyed by index per section: scoped to the section's own fragment, never the shared page paper (a later static section of the same page would inherit this section's block heights/styles).
+    ...specialPageCss(`:is(${fragmentScope})`, section.layout, textCss),
   ];
   // Continuation caption rows of split tables (tableContinuation.js): a caption cell like the table caption, then the repeated header.
   if (tables.continuation && tables.position === "above") {
@@ -453,12 +454,14 @@ export function thesisSectionCss(section) {
     const index = section.generatedIndex;
     rules.push(`${scope} .thesis-toc{${textCss(index.style)}text-indent:0;list-style:none;padding:0;}`);
     rules.push(`${scope} .thesis-toc li{display:flex;align-items:baseline;break-inside:avoid;margin:0;}`);
-    rules.push(`${scope} .thesis-index-text{min-width:0;white-space:normal}${scope} .thesis-index-leader{flex:1;min-width:4mm;overflow:hidden;white-space:nowrap}${scope} .thesis-index-page{flex:none;min-width:8mm;text-align:${index.pageNumberAlignment};}`);
+    rules.push(`${scope} .thesis-index-text{min-width:0;white-space:normal}${scope} .thesis-index-leader{flex:1;min-width:4mm;overflow:hidden;white-space:nowrap}${scope} .thesis-index-page{flex:none;min-width:${index.pageColumnWidthMm > 0 ? `${index.pageColumnWidthMm}mm;width:${index.pageColumnWidthMm}mm` : "8mm"};text-align:${index.pageNumberAlignment};}`);
     if (index.pageHeading) rules.push(`${scope} .thesis-index-page-heading{${textCss({ ...index.style, ...index.pageHeadingStyle })}text-align:right;text-indent:0;margin:0;}`);
     for (const level of Object.keys(headings)) rules.push(`${scope} [data-index-level="${level}"]{padding-left:${(Number(level) - 1) * index.indentMm}mm;}`);
     // Optional: label typography, wrapped lines hanging under the entry title, per-level row styles.
     if (index.labelStyle) rules.push(`${scope} .thesis-index-label{${labelCss(index.labelStyle)}}`);
     if (index.hanging === "label") rules.push(`${scope} .thesis-index-text{display:flex;align-items:baseline;column-gap:0.25em}${scope} .thesis-index-text>.thesis-index-label{flex:none;white-space:nowrap}${scope} .thesis-index-text>.thesis-index-title{min-width:0}`);
+    // hanging as a length: wrapped entry lines start that far right of the first line (Word "hanging"), independent of the label width.
+    if (index.hanging > 0) rules.push(`${scope} .thesis-index-text{padding-left:${index.hanging}mm;text-indent:-${index.hanging}mm}`);
     // "unnumbered" (rows of unnumbered titles) is emitted last, so it overrides the level rule of the same specificity.
     for (const [level, style] of Object.entries(index.levelStyles || {}).sort(([a], [b]) => Number(a === "unnumbered") - Number(b === "unnumbered"))) {
       rules.push(`${scope} .thesis-toc li[${level === "unnumbered" ? "data-index-unnumbered" : `data-index-level="${level}"`}]{${labelCss(style)}${style.spaceBeforePt !== undefined ? `margin-top:${style.spaceBeforePt}pt;` : ""}${style.spaceAfterPt !== undefined ? `margin-bottom:${style.spaceAfterPt}pt;` : ""}${Number.isFinite(style.leftIndentMm) ? `padding-left:${style.leftIndentMm}mm;` : ""}${style.align ? `text-align:${style.align};` : ""}${style.includePageNumber === false ? "display:block;" : ""}}`);
@@ -515,6 +518,7 @@ export function thesisSectionCss(section) {
   for (const [level, style] of Object.entries(headings)) {
     rules.push(`${scope} .thesis-body h${level}{${textCss(style)}break-before:${style.pageBreakBefore ? "page" : "auto"};break-after:${style.keepWithNext ? "avoid" : "auto"};}`);
     rules.push(`${scope} .thesis-body h${level}[data-unnumbered]{break-before:auto;}`);
+    if (style.pageBreakBefore && style.pageBreakUnlessAfterHeading) rules.push(`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6) + h${level}{break-before:auto;}`);
   }
   return rules.join("\n");
 }

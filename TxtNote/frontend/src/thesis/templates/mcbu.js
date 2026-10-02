@@ -1,12 +1,16 @@
 /**
  * Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Enstitüsü.
  *
- * Source of truth: the institute's thesis examples/rules PDF
- * (ShareFileGallery-GTSM221020251445.pdf, 12 pages, created 2024-02-22): EK 2 İç Kapak,
- * Tez Sırtı, Taahhütname, Özet, Abstract, Önsöz ve Teşekkür, Simgeler ve Kısaltmalar
- * Dizini, Şekiller/Tablolar Dizini, İçindekiler and "Tez Yazım Kuralları". Every value
- * below is taken from that PDF; where it is silent or contradicts itself the choice is
+ * Source of truth (the only one in the repository): the institute's thesis writing guide
+ * Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/
+ * MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx (uploaded 2025-10-22, sha256 e607f8f7…08238c7, see KAYNAK.md
+ * there): EK 2 İç Kapak, Tez Sırtı, Taahhütname, Özet, Abstract, Önsöz ve Teşekkür, Simgeler ve
+ * Kısaltmalar Dizini, Şekiller/Tablolar Dizini, İçindekiler and "Tez Yazım Kuralları". Values are
+ * checked against its document.xml/styles.xml (orchestration/specs/mcbu-lee.json lists evidence,
+ * conflicts C1–C7 and UNKNOWNs U1–U14); where it is silent or contradicts itself the choice is
  * noted inline ("kaynakta belirsiz"). Red instruction text of the examples is never printed.
+ * The template's first version came from an older PDF rendering of the same guide that is not in
+ * the repository (ShareFileGallery-GTSM221020251445.pdf, MANUEL_INDIRME_GEREKLI in KAYNAK.md).
  *
  * Pure template data for the generic engine. Master's and doctoral theses differ only in
  * their degree lines and the doctorate-only CV; both variants share every rule below.
@@ -18,6 +22,8 @@ import { MM_PER_PT } from "../units.js";
 import mcbuLogo from "./assets/mcbuLogo.js";
 
 const FONT = "Times New Roman";
+/** One Word twip (1/1440 in) in mm. */
+const MM_PER_TWIP = 25.4 / 1440;
 /** Word's single line of Times New Roman, in em (the PDF: 13,8 pt per line at 12 pt). */
 const SINGLE_LINE_EM = 1.15;
 /** Height (pt) of `lines` empty Word lines of 12 pt type at `spacing` ("n satır boşluk"). */
@@ -30,11 +36,14 @@ const bold = { fontWeight: 700 };
 const bold14 = { fontWeight: 700, fontSizePt: 14 };
 const upper = { textTransform: "uppercase" };
 const dots = "…………………";
+// Şekiller/Tablolar dizini: the label ("Tablo 3.") is bold; a long entry wraps with ind left=hanging=1176 tw (G[247]).
+const LIST_HANGING_MM = Math.round(1176 * MM_PER_TWIP * 100) / 100;
 // Special pages and their lines: single spaced, no paragraph indent or spacing.
 const pageLines = { firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1 };
 const roman = { format: "roman-upper" };
-// Front section titles are centered in every example page; one empty line follows them.
-const centeredTitle = (spaceAfterPt) => ({ "1": { align: "center", spaceAfterPt } });
+// Front section titles are centered and single spaced (guide style "Title": line=240, after=0) in every
+// example page; the empty line that follows them is `spaceAfterPt`.
+const centeredTitle = (spaceAfterPt) => ({ "1": { align: "center", lineHeight: 1, spaceAfterPt } });
 
 const degreeLabels = {
   master: { cover: "YÜKSEK LİSANS TEZİ", tr: "Yüksek Lisans Tezi", en: "M.Sc. Thesis" },
@@ -77,10 +86,10 @@ function sections(degree) {
         blank(1),
         { type: "text", value: "Bu tezin Manisa Celal Bayar Üniversitesi Lisansüstü Eğitim Enstitüsü {{DEPARTMENT_NAME}} Ana Bilim Dalında akademik ve etik kurallara uygun olarak yazıldığını ve kullanılan tüm literatür bilgilerinin referans gösterilerek tezde yer aldığını, tamamen kendi çalışmam olduğunu, her alıntıya kaynak gösterdiğimi, tezin yazımında akademik ve etik kurallara aykırı herhangi bir yapay zeka ve program kullanmadığımı beyan ederim.", style: { align: "justify" } },
         blank(2),
-        { type: "group", style: { align: "right" }, blocks: [
-          { type: "text", value: "İmza" },
-          { type: "metadata", field: "STUDENT_NAME", fallback: "Ad SOYAD", style: bold },
-        ] },
+        // G[50] "İmza": centered inside ind left=6372 tw (112.39 mm) firstLine=708 tw (12.49 mm), i.e. centred at x≈175 mm;
+        // G[51] "Ad SOYAD": bold, right aligned.
+        { type: "text", value: "İmza", style: { align: "center", leftIndentMm: 6372 * MM_PER_TWIP, firstLineIndentMm: 708 * MM_PER_TWIP } },
+        { type: "metadata", field: "STUDENT_NAME", fallback: "Ad SOYAD", style: { ...bold, align: "right" } },
         // "(Kullanılan herhangi bir program varsa belirtilmelidir.)": the author's own statement, printed only when given.
         { type: "group", visibleWhen: { anyFilled: ["USED_PROGRAMS"] }, blocks: [blank(3),
           { type: "metadata", field: "USED_PROGRAMS", prefix: "Kullanılan program: ", fallback: "", style: { align: "justify" } },
@@ -155,18 +164,21 @@ function sections(degree) {
         { type: "metadata", field: "STUDENT_NAME", fallback: "Ad SOYAD" },
         { type: "text", value: "{{CITY}}, {{YEAR}}" },
       ] },
-    // Written by the author (1,5 satır, 12 pt); entries start at the margin without paragraph spacing.
+    // Written by the author (1,5 satır, 12 pt); entries start at the margin. The example entries (G[147]-G[148]) carry after=120
+    // (6 pt) but use style ListeParagraf, whose definition has contextualSpacing: Word adds no space between paragraphs of
+    // the same style, so consecutive entries are 1,5 lines apart (20,70 pt) and 0 is right. The empty line under the title
+    // (G[146]) is 1,5 spaced (line=360), the title itself single (G[145]).
     { id: "symbols", type: "listOfAbbreviations", title: "SİMGELER VE KISALTMALAR DİZİNİ", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "title",
-      overrides: { page: { numbering: roman }, paragraph: { firstLineIndentMm: 0, spaceAfterPt: 0, align: "left" }, headings: centeredTitle(emptyLinesPt(1)) } },
+      overrides: { page: { numbering: roman }, paragraph: { firstLineIndentMm: 0, spaceAfterPt: 0, align: "left" }, headings: centeredTitle(emptyLinesPt(1, 1.5)) } },
     { id: "index-figures", type: "listOfFigures", title: "ŞEKİLLER DİZİNİ", status: "required", group: "front", mode: "generated", tocEntry: "title",
-      generatedIndex: { kind: "figures", leader: "none", pageHeading: "Sayfa", pageHeadingStyle: bold, style: { lineHeight: 1, spaceAfterPt: 0 } },
+      generatedIndex: { kind: "figures", leader: "none", pageHeading: "Sayfa", pageHeadingStyle: bold, labelStyle: bold, hanging: LIST_HANGING_MM, style: { lineHeight: 1, spaceAfterPt: 0 } },
       overrides: { page: { numbering: roman }, headings: centeredTitle(emptyLinesPt(1)) } },
     { id: "index-tables", type: "listOfTables", title: "TABLOLAR DİZİNİ", status: "required", group: "front", mode: "generated", tocEntry: "title",
-      generatedIndex: { kind: "tables", leader: "none", pageHeading: "Sayfa", pageHeadingStyle: bold, style: { lineHeight: 1, spaceAfterPt: 0 } },
+      generatedIndex: { kind: "tables", leader: "none", pageHeading: "Sayfa", pageHeadingStyle: bold, labelStyle: bold, hanging: LIST_HANGING_MM, style: { lineHeight: 1, spaceAfterPt: 0 } },
       overrides: { page: { numbering: roman }, headings: centeredTitle(emptyLinesPt(1)) } },
     // The example lists ÖZET … İÇİNDEKİLER in Roman and GİRİŞ as 1, all bold, without dot leaders.
     { id: "toc", type: "tableOfContents", title: "İÇİNDEKİLER", status: "required", group: "front", mode: "generated", tocEntry: "title",
-      generatedIndex: { kind: "toc", leader: "none", matchHeadingTransform: true, style: { ...bold, spaceAfterPt: 0 } },
+      generatedIndex: { kind: "toc", leader: "none", matchHeadingTransform: true, style: { ...bold, lineHeight: 1, spaceAfterPt: 0 } },
       overrides: { page: { numbering: roman }, headings: centeredTitle(emptyLinesPt(1)) } },
     // Arabic numbering starts at GİRİŞ. The chapters after it are free (the guide suggests different
     // structures for social sciences, experimental work and sport sciences), so none is imposed.
@@ -176,7 +188,7 @@ function sections(degree) {
     { id: "bibliography", type: "bibliography", title: "KAYNAKÇA", status: "required", group: "back", mode: "editable", showTitle: true, tocEntry: "title" },
     // "Ekler bölümü bir satır aralığı ile yazılır"; one empty line after the title and after every description.
     { id: "appendices", type: "appendices", title: "EKLER", status: "optional", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
-      overrides: { body: { lineHeight: 1 }, paragraph: { lineHeight: 1, spaceAfterPt: emptyLinesPt(1) }, headings: { "1": { spaceAfterPt: emptyLinesPt(1) } } } },
+      overrides: { body: { lineHeight: 1 }, paragraph: { lineHeight: 1, spaceAfterPt: emptyLinesPt(1) }, headings: { "1": { lineHeight: 1, spaceAfterPt: emptyLinesPt(1) } } } },
     // Doctoral theses only; no chapter number, not in İÇİNDEKİLER, title centered 14 pt bold.
     { id: "cv", type: "curriculumVitae", title: "ÖZGEÇMİŞ", status: "optional", group: "back", mode: "editable", showTitle: true, tocEntry: "none",
       visibleWhen: { field: "degreeType", equals: "phd" },
@@ -201,12 +213,13 @@ const base = {
   status: "official",
   source: {
     type: "official",
-    documentName: "ShareFileGallery-GTSM221020251445.pdf — MCBÜ Lisansüstü Eğitim Enstitüsü tez yazım örnekleri ve Tez Yazım Kuralları",
-    revisionDate: "2024-02-22",
-    verifiedAt: "2026-09-27",
+    documentName: "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx — MCBÜ Lisansüstü Eğitim Enstitüsü tez yazım kılavuzu",
+    url: "https://lee.mcbu.edu.tr/WebSiteContent/66/ShareFileGallery/ShareFileGallery-JUIK221020251432.docx",
+    revisionDate: "2025-10-22",
+    verifiedAt: "2026-10-02",
     // Recorded, not enforced: duplex printing is allowed with the advisor's approval. The
     // "Tez Sırtı Örneği" (spine: name, title, year) is print output, not a thesis page.
-    notes: ["Danışman onayı ile çift taraflı baskı yapılabilir.", "Tez sırtı (AD SOYAD, TEZ ADI, YIL) sayfa değildir; baskıda hazırlanır."],
+    notes: ["Depo yolu: Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx; sha256 e607f8f7405ae10eee4880e7d52f660517fb595625f065088ec5f437f08238c7 (KAYNAK.md).", "Danışman onayı ile çift taraflı baskı yapılabilir.", "Tez sırtı (AD SOYAD, TEZ ADI, YIL) sayfa değildir; baskıda hazırlanır."],
   },
   page: {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
@@ -214,7 +227,8 @@ const base = {
     // 2025 guide DOCX sectPr w:header="709" w:footer="709" twips = 12.5 mm (MEASURED).
     header: { heightMm: 0, distanceMm: 12.5, content: "", firstPage: "same" },
     footer: { heightMm: 8, distanceMm: 12.5, content: "", firstPage: "same" },
-    // Kaynakta belirsiz: position not stated; the guide's own pages number bottom center.
+    // Position: bottom centre is MEASURED (guide footer1.xml: PAGE field in a centred AltBilgi paragraph, footer distance 709 tw).
+    // Font and size are not stated by the guide (U8): Times New Roman 12 like the body.
     numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false },
   },
   typography: {
@@ -228,7 +242,7 @@ const base = {
       "4": heading("{1}.{2}.{3}.{4}."),
     },
     footnotes: { placement: "pageBottom", fontFamily: FONT, fontSizePt: 10 },
-    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM },
+    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word" },
   },
   placeholders: {
     UNIVERSITY_NAME: { label: "Üniversite", type: "text" },
@@ -258,7 +272,8 @@ const base = {
   // Table caption above, figure caption below; one line centered, longer justified. Tables are
   // single spaced with centered names/values; their type size is left to the author.
   tables: { label: "Tablo", position: "above", style: { fontFamily: FONT, fontSizePt: 12, align: "center", lineHeight: 1 }, numbering: captionNumbering.document, captionAlignment: "auto", spacingBeforePt: emptyLinesPt(1), spacingAfterPt: 6, align: "center", cellStyle: { align: "center", lineHeight: 1 } },
-  figures: { label: "Şekil", position: "below", style: { fontFamily: FONT, fontSizePt: 12, align: "center", lineHeight: 1.5 }, numbering: captionNumbering.document, captionAlignment: "auto", spacingBeforePt: 6, spacingAfterPt: emptyLinesPt(1), align: "center" },
+  // box.align "center": the image sits centred (guide DOCX figure paragraph jc=center); spaceBefore/AfterPt 15 keep the editor's default figure margin.
+  figures: { label: "Şekil", position: "below", style: { fontFamily: FONT, fontSizePt: 12, align: "center", lineHeight: 1.5 }, numbering: captionNumbering.document, captionAlignment: "auto", spacingBeforePt: 6, spacingAfterPt: emptyLinesPt(1), align: "center", box: { align: "center", spaceBeforePt: 15, spaceAfterPt: 15 } },
   // One method throughout the thesis: numbered from 1 or separately in every chapter.
   captionNumberingChoices: [
     { id: "document", label: "Tez boyunca 1'den başlayarak", numbering: captionNumbering.document },

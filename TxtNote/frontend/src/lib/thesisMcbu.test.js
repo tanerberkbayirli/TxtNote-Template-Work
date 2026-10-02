@@ -50,8 +50,10 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.equal(mcbuMaster.universityName, "Manisa Celal Bayar Üniversitesi");
     assert.equal(mcbuMaster.instituteName, "Lisansüstü Eğitim Enstitüsü");
     assert.equal(mcbuMaster.status, "official");
-    assert.match(mcbuMaster.source.documentName, /ShareFileGallery-GTSM221020251445\.pdf/);
-    const entries = THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.universityId === "mcbu");
+    assert.match(mcbuMaster.source.documentName, /MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025\.docx/);
+    assert.ok(mcbuMaster.source.notes.some((note) => note.includes("e607f8f7405ae10eee4880e7d52f660517fb595625f065088ec5f437f08238c7")), "sha256 of the repository source (KAYNAK.md)");
+    assert.equal(mcbuMaster.source.revisionDate, "2025-10-22");
+    const entries = THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.universityId === "mcbu" && entry.instituteId === "lee");
     assert.deepEqual(entries.map((entry) => [entry.id, entry.degreeType, entry.displayName]), [
       ["mcbu-lee-master-tr-v1", "master", "Manisa Celal Bayar Üniversitesi · Lisansüstü Eğitim Enstitüsü · Yüksek Lisans"],
       ["mcbu-lee-phd-tr-v1", "phd", "Manisa Celal Bayar Üniversitesi · Lisansüstü Eğitim Enstitüsü · Doktora"],
@@ -74,7 +76,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     const body = section(model, "main").rules.body;
     assert.deepEqual([body.fontFamily, body.fontSizePt, body.lineHeight, body.align, body.firstLineIndentMm, body.spaceAfterPt], ["Times New Roman", 12, 1.5, "justify", 12.5, 6]);
     const css = buildThesisCss(model);
-    assert.match(css, /data-thesis-flow-section="main"\]\) \.thesis-body p\{margin:0pt 0 6pt;text-indent:12\.5mm;\}/);
+    assert.match(css, /data-thesis-flow-section="main"\]\) \.thesis-body p\{margin:0pt 0 6pt;text-indent:12\.5mm;(?:position:relative;top:calc\([^;]*\);)?\}/);
   });
 
   it("E: inner cover is data (metadata, order, typography, spacers); no visible number", () => {

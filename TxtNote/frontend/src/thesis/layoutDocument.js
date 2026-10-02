@@ -4,6 +4,8 @@
  * This module only resolves data; renderers remain responsible for presentation.
  */
 
+import { MM_PER_PT } from "./units.js";
+
 const LAYOUT_VERSION = 1;
 const LAYOUT_MODES = new Set(["flow", "anchored", "absolute"]);
 const ELEMENT_TYPES = new Set(["text", "image", "separator"]);
@@ -110,6 +112,7 @@ function normalizeElementFields(value, { addition = false } = {}) {
   const result = {};
   for (const key of ["xMm", "yMm"]) if (finite(value[key])) result[key] = value[key];
   for (const key of ["widthMm", "heightMm"]) if (finite(value[key]) && value[key] > 0) result[key] = value[key];
+  if (finite(value.flowHeightMm) && value.flowHeightMm >= 0) result.flowHeightMm = value.flowHeightMm;
   if (LAYOUT_MODES.has(value.layoutMode)) result.layoutMode = value.layoutMode;
   const style = normalizeStyle(value.style);
   if (Object.keys(style).length) result.style = style;
@@ -303,12 +306,27 @@ function normalizeAdditionForNode(addition, baseStyle, override) {
   return node;
 }
 
+/**
+ * A template block taken out of the flow (absolute/anchored) keeps its original
+ * slot as an unselectable spacer, so the blocks after it do not slide up under it.
+ */
+function flowSlot(node, positioned, override) {
+  if (!["absolute", "anchored"].includes(positioned.layoutMode) || node.type === "group") return null;
+  const heightMm = finite(override?.flowHeightMm) ? override.flowHeightMm : override?.heightMm ?? node.heightMm;
+  if (!finite(heightMm) || heightMm <= 0) return null;
+  const style = node.type === "text" ? node.style || {} : {};
+  const marginTopMm = node.type === "text" ? (finite(style.spaceBeforePt) ? style.spaceBeforePt * MM_PER_PT : 0) : finite(node.marginTopMm) ? node.marginTopMm : 0;
+  const marginBottomMm = node.type === "text" ? (finite(style.spaceAfterPt) ? style.spaceAfterPt * MM_PER_PT : 0) : finite(node.marginBottomMm) ? node.marginBottomMm : 0;
+  return { type: "spacer", path: `${node.path ?? ""}-slot`, heightMm, marginTopMm, marginBottomMm, widthPercent: node.widthPercent ?? null, flowSlotFor: positioned.id };
+}
+
 /** Clone and annotate a resolved special-page tree; template objects stay immutable. */
 export function resolveLayoutNodes(nodes, sectionId, thesisLayout, baseStyle = {}) {
   const layout = normalizeThesisLayout(thesisLayout);
   const resolved = [];
   const visit = (list) => (list || []).flatMap((node, index) => {
     if (!isRecord(node)) return [];
+    if (node.flowSlotFor) return [{ ...node }];
     const path = typeof node.path === "string" ? node.path : String(index);
     const id = `${sectionId}:block:${path.replace(/-/g, ".")}`;
     const override = layout.elements[id];
@@ -316,7 +334,8 @@ export function resolveLayoutNodes(nodes, sectionId, thesisLayout, baseStyle = {
     if (!next) return [];
     if (node.type === "group") next.blocks = visit(node.blocks);
     else if (Array.isArray(node.blocks)) next.blocks = visit(node.blocks);
-    return [next];
+    const slot = flowSlot(node, next, override);
+    return slot ? [slot, next] : [next];
   });
   resolved.push(...visit(nodes));
   for (const addition of layout.additions) {

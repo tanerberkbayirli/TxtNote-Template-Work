@@ -7,7 +7,7 @@ import { readFile } from "node:fs/promises";
 import { strFromU8, unzipSync } from "fflate";
 import { settle } from "./task10a1-checks.mjs";
 
-// Official PDF (ShareFileGallery-GTSM221020251445.pdf): single 13.8 pt, "1,5 satır" 20.6–20.8 pt.
+// Official PDF (MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx; first export from the 2024 PDF rendering): single 13.8 pt, "1,5 satır" 20.6–20.8 pt.
 const OFFICIAL = { single: 13.8, oneAndHalf: 20.7, tolerance: 0.15 };
 const near = (a, b, label, tolerance = OFFICIAL.tolerance) => assert.ok(Math.abs(a - b) <= tolerance, `${label}: ${a} vs ${b}`);
 const editable = (page, id) => page.locator(`[data-thesis-flow-section="${id}"] .rich-text-body[contenteditable="true"]`);

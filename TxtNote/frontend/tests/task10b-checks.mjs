@@ -37,7 +37,7 @@ export async function fillMcbuThesis(page, { degree = "phd", selectTemplate = tr
   const { values, sectionContent } = doc.researchData.thesis;
   await details(page, true);
   if (selectTemplate) await page.getByLabel("Tez şablonu", { exact: true }).selectOption(`mcbu-lee-${degree}-tr-v1`);
-  await page.getByRole("complementary", { name: "Tez bilgileri" }).getByText(/^Resmî kaynak: ShareFileGallery-GTSM221020251445\.pdf/).waitFor();
+  await page.getByRole("complementary", { name: "Tez bilgileri" }).getByText(/^Resmî kaynak: MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025\.docx/).waitFor();
   await page.getByPlaceholder("Tez başlığını yazın").fill(doc.title);
   for (const [label, key] of METADATA) await page.getByLabel(label, { exact: true }).fill(values[key]);
   for (const name of degree === "phd" ? ["EKLER", "ÖZGEÇMİŞ"] : ["EKLER"]) await page.getByRole("checkbox", { name, exact: true }).check();

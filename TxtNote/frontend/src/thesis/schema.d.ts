@@ -31,6 +31,8 @@ export interface TextStyle {
    */
   textTransformExceptions?: string[];
   pageBreakBefore?: boolean;
+  /** With pageBreakBefore on a heading: no break when the heading directly follows another heading (e.g. EKLER and its first appendix share a page). */
+  pageBreakUnlessAfterHeading?: boolean;
   keepWithNext?: boolean;
 }
 export interface NumberingRule {
@@ -40,6 +42,8 @@ export interface NumberingRule {
   format: NumberFormat;
   startAt?: number;
   restart?: boolean;
+  /** A counted page whose number is not printed (enabled false) still shows its number in generated contents/lists. */
+  indexLabelWhenHidden?: boolean;
   /** Page-number typography when it differs from the body (e.g. Times New Roman 10 pt). */
   style?: { fontFamily?: string; fontSizePt?: number };
 }
@@ -169,6 +173,8 @@ export interface GeneratedIndexRule {
   /** "inline": leader dots and page number sit on the last line of a wrapped entry (default "flex": beside the whole entry, on its first line). */
   leaderFlow?: "flex" | "inline";
   pageNumberAlignment?: "left" | "center" | "right";
+  /** Width (mm) of the right-aligned page-number column; with pageNumberAlignment "center" the numbers are centred in it (e.g. under a column heading). Default: 8 mm minimum. */
+  pageColumnWidthMm?: Length;
   indentMm?: Length;
   style?: Partial<TextStyle>;
   /** Column heading above the page numbers (e.g. "Sayfa"), right aligned. */
@@ -178,8 +184,8 @@ export interface GeneratedIndexRule {
   matchHeadingTransform?: boolean;
   /** Typography of the entry label ("Şekil 2.1", "1.2"), e.g. bold. */
   labelStyle?: Partial<TextStyle>;
-  /** "label": wrapped entry lines start under the entry title, after the label. */
-  hanging?: "label";
+  /** "label": wrapped entry lines start under the entry title, after the label; a length (mm): they start that far right of the first line (Word "hanging"). */
+  hanging?: "label" | Length;
   /** Row style per level (weight, spaceBeforePt/After, leftIndentMm override, align); `includePageNumber: false` lists the level's rows without leader and page number. The key "unnumbered" styles the unnumbered title rows (section titles such as ÖZET, GİRİŞ, KAYNAKÇA; any level) and wins over the level's own style, so numbered chapter rows and title rows of level 1 can differ. */
   levelStyles?: Record<string, Partial<TextStyle> & { includePageNumber?: boolean }>;
   /** Extra space (pt) above an unnumbered title row that directly follows a numbered row, i.e. the first back-matter row after the chapters (editor, PDF and Word). */

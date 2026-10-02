@@ -56,6 +56,18 @@ export const PDF_GLYPH_ALIASES = Object.freeze({ "\u22C5": "\u2219", "\u2215": "
 const COMPAT_LETTERS = /[\u03D0-\u03F9\u{1D400}-\u{1D7FF}\u2102-\u2124]/gu;
 export const aliasGlyphs = (text) => String(text).replace(/[\u22C5\u2215\u2044\u2010\u2011\u2223\u2236\u2032\u00A0]/g, (char) => PDF_GLYPH_ALIASES[char]).replace(COMPAT_LETTERS, (char) => char.normalize("NFKD"));
 
+/**
+ * Left edge (px) of a generated label (heading number, caption label) drawn before an element's first text op.
+ * Normally the label ends one space before the text. In a justified line the browser stretches that space, so the text
+ * starts further right than label + natural space: the label then goes to the line start (content box + text-indent).
+ * A measured caption hang (`hang`, px) places the text exactly one hang after the line start.
+ */
+export function generatedLabelX({ textAlign, hang, firstTextX, labelWidth, boxLeft = 0, paddingLeft = 0, textIndent = 0 }) {
+  if (Number.isFinite(hang)) return firstTextX - hang;
+  if (textAlign === "justify") return boxLeft + (paddingLeft || 0) + (textIndent || 0);
+  return firstTextX - labelWidth;
+}
+
 const DOUBLE_STRUCK_SPECIALS = Object.freeze({ C: "ℂ", H: "ℍ", N: "ℕ", P: "ℙ", Q: "ℚ", R: "ℝ", Z: "ℤ", h: "ℎ" });
 /** KaTeX represents `\mathbb{R}` as a regular text R styled with its own font. Preserve its semantic glyph for PDF fonts. */
 export function doubleStruckMathText(text) {
@@ -165,7 +177,8 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
       flush();
       return;
     }
-    for (const match of data.matchAll(/\S+/g)) {
+    const matches = [...data.matchAll(/\S+/g)];
+    for (const [matchIndex, match] of matches.entries()) {
       const start = match.index;
       range.setStart(node, start); range.setEnd(node, start + match[0].length);
       const rects = [...range.getClientRects()].filter((rect) => rect.width > 0 || rect.height > 0);
@@ -188,7 +201,19 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
         if (visible) { range.setStart(node, start); range.setEnd(node, start + visible); pushText(word.slice(0, visible), range.getBoundingClientRect(), style, extra); }
         continue;
       }
-      if (rects.length === 1) { pushText(transformText(mathText(word), style.textTransform, style.lang), rects[0], style, extra); continue; }
+      if (rects.length === 1) {
+        // A real space glyph after a word that is followed by another word on the same line, so extracted text keeps its word gaps
+        // (every word is painted at its own position, which leaves no space character in the content stream).
+        const next = matches[matchIndex + 1];
+        let spaceAfter = false;
+        if (next && /^\s+$/.test(data.slice(start + match[0].length, next.index))) {
+          range.setStart(node, next.index); range.setEnd(node, next.index + 1);
+          const nextRect = range.getClientRects()[0];
+          spaceAfter = Boolean(nextRect) && Math.abs(nextRect.top - rects[0].top) < 1;
+        }
+        pushText(transformText(mathText(word), style.textTransform, style.lang), rects[0], style, spaceAfter ? { ...extra, spaceAfter: true } : extra);
+        continue;
+      }
       // A word broken across lines or pages: split it where its glyphs change line.
       let current = ""; let currentRect = null;
       for (let index = 0; index < match[0].length; index += 1) {
@@ -290,7 +315,8 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
       } else {
         // A caption with a measured hang draws its label in an inline box of exactly that width (engine CSS): the text starts one hang after the line start.
         const hang = parseFloat(element.getAttribute("data-thesis-caption-hang"));
-        pushLabel(label, Number.isFinite(hang) ? firstText.x - hang : firstText.x - textWidth(labelStyle, `${label} `), firstText, labelStyle, firstText);
+        const lineBox = local(element.getBoundingClientRect());
+        pushLabel(label, generatedLabelX({ textAlign: style.textAlign, hang, firstTextX: firstText.x, labelWidth: textWidth(labelStyle, `${label} `), boxLeft: lineBox.left, paddingLeft: parseFloat(style.paddingLeft), textIndent: parseFloat(style.textIndent) }), firstText, labelStyle, firstText);
       }
     }
     // Equation number (::after of a numbered display equation): flush right/left of the block, centred on the formula.
@@ -391,6 +417,7 @@ function drawOp(pdf, op, pageTop, templateId) {
   const fit = op.width > 0 && glyphs > 1 && hasSystemPdfFont(pdf, String(op.style.fontFamily).split(",")[0].replace(/["']/g, "").trim()) ? (op.width * MM - pdf.getTextWidth(text)) / glyphs : NaN;
   const charSpace = Number.isFinite(fit) && Math.abs(fit) <= size * 0.352778 * 0.1 ? fit : spacing * MM;
   pdf.text(text, op.x * MM, y, { baseline: "alphabetic", ...(charSpace ? { charSpace } : {}) });
+  if (op.spaceAfter) pdf.text(" ", (op.x + op.width) * MM, y, { baseline: "alphabetic" });
   for (const line of op.decoration || []) {
     const size = parseFloat(op.style.fontSize);
     const offset = line === "underline" ? size * 0.12 : -size * 0.28;

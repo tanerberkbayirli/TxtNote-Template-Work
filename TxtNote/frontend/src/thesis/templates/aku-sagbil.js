@@ -129,9 +129,11 @@ const FRAME_R_MM = 182.71;
 const FRAME_BORDER = { outerPt: 0.75, gapPt: 0.75, innerPt: 3, paddingMm: 0, docx: { style: "thickThinSmallGap", sizePt: 3, sides: { top: "thickThinSmallGap", left: "thickThinSmallGap", bottom: "thinThickSmallGap", right: "thinThickSmallGap" } } };
 const FRAME_BORDER_MM = (0.75 + 0.75 + 3) * MM_PER_PT;
 const IN = { leftIndentMm: 30 - FRAME_L_MM, rightIndentMm: FRAME_R_MM - 180 };
-// The example starts its title 2.13 mm below the other example pages (36.08 vs 33.96 mm); a real thesis title makes the paragraph 6 lines
-// and the page would then overflow the 30 mm frame (Enstitü Müdürü line on a second page). The chain therefore starts at the top margin.
-const APPROVAL_TOP_MM = 36.08 - asc(12);
+// Fitting: Ornek 3 (5-line paragraph) ends its box at 260.85 mm, 6.15 mm above the 267 mm text-block limit, so a 7-line paragraph (a ~190-character
+// thesis title) overflows by 8.45 mm. The three large empty gaps below the paragraph (chair->row 1, row 1->row 2, row 2->box) are each shortened by
+// SAVE_MM so that up to 7 paragraph lines fit on the page. This is NOT source geometry: the amount is an UNKNOWN implementation value (the guide only
+// says to adjust the rows to the jury size); the title and the paragraph keep Ornek 3's geometry (title baseline 36.08 mm).
+const SAVE_MM = 3.1;
 const DOCX_SOURCE_MARGINS = { topMm: 30, bottomMm: 30, leftMm: 30, rightMm: 30 };
 const jurorCell = (n, role, base) => ({ type: "group", widthPercent: 50, style: n % 2 === 0 ? { leftIndentMm: 3.2 } : {}, blocks: chain([
   line({ type: "text", value: role, style: bold }, 12, 1, base[0]),
@@ -150,15 +152,15 @@ const approval = (degree) => ({
       line({ type: "text", value: "Başkan", style: bold }, 12, 1, 91.07),
       line({ type: "metadata", field: "JURY_CHAIR", fallback: "Unvan, Ad, Soyad" }, 12, 1, 97.98),
       line({ type: "text", value: "İmza" }, 12, 1, 104.96),
-      { block: jurorRow(1, [126.00, 132.90, 139.89]), s: 12, sp: 1, first: 126.00, last: 139.89 },
-      { block: jurorRow(3, [160.93, 167.83, 174.82]), s: 12, sp: 1, first: 160.93, last: 174.82 },
-    ], APPROVAL_TOP_MM),
+      { block: jurorRow(1, [126.00, 132.90, 139.89].map((v) => v - SAVE_MM)), s: 12, sp: 1, first: 126.00 - SAVE_MM, last: 139.89 - SAVE_MM },
+      { block: jurorRow(3, [160.93, 167.83, 174.82].map((v) => v - 2 * SAVE_MM)), s: 12, sp: 1, first: 160.93 - 2 * SAVE_MM, last: 174.82 - 2 * SAVE_MM },
+    ], 30),
     // A third row (5th and 6th member) appears only when filled: the guide asks to adjust the rows to the actual jury.
     { type: "group", visibleWhen: { anyFilled: ["JURY_MEMBER_5", "JURY_MEMBER_6"] }, blocks: chain([
-      { block: jurorRow(5, [195.86, 202.76, 209.75]), s: 12, sp: 1, first: 195.86, last: 209.75 },
-    ], 174.82 - asc(12) + lineBox(12, 1)) },
+      { block: jurorRow(5, [195.86, 202.76, 209.75].map((v) => v - 2 * SAVE_MM)), s: 12, sp: 1, first: 195.86 - 2 * SAVE_MM, last: 209.75 - 2 * SAVE_MM },
+    ], 174.82 - 2 * SAVE_MM - asc(12) + lineBox(12, 1)) },
     // Institute approval box: outer top 189.85 mm, bottom 260.85 mm (with five jurors).
-    { type: "spacer", heightMm: r3(189.85 - (174.82 - asc(12) + lineBox(12, 1))) },
+    { type: "spacer", heightMm: r3(189.85 - 3 * SAVE_MM - (174.82 - 2 * SAVE_MM - asc(12) + lineBox(12, 1))) },
     { type: "group", border: FRAME_BORDER, style: { align: "center" }, blocks: [
       ...chain([
         line({ type: "text", value: "Afyon Kocatepe Üniversitesi" }, 12, 1.5, 202.55),

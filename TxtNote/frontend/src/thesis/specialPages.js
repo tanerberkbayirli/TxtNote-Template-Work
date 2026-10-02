@@ -178,7 +178,9 @@ export function specialPageBoxCss(node, parent) {
   if (node.type === "group") {
     rules.push(`display:flex;flex-direction:${node.direction};${node.direction === "row" ? "column-gap" : "row-gap"}:${node.gapMm}mm;align-items:${node.direction === "row" ? "flex-start" : "stretch"};margin:${node.marginTopMm}mm 0 ${node.marginBottomMm}mm;`);
   }
-  if (Number.isFinite(node.zIndex)) rules.push(`${node.zIndex !== 0 ? "position:relative;" : ""}z-index:${node.zIndex};`);
+  // A positioned frame (layoutMode absolute/anchored) at z 0 and 'in flow' siblings that are positioned by the Word baseline lift
+  // (position:relative, z-index 0) would tie and paint in DOM order, hiding the frame under later lines; frames at z >= 0 sit one layer higher.
+  if (Number.isFinite(node.zIndex)) rules.push(`${node.zIndex !== 0 ? "position:relative;" : ""}z-index:${(node.layoutMode === "absolute" || node.layoutMode === "anchored") && node.zIndex >= 0 ? node.zIndex + 1 : node.zIndex};`);
   if (node.layoutMode === "absolute" || node.layoutMode === "anchored") {
     rules.push(`position:absolute;left:${finite(node.xMm)}mm;top:${finite(node.yMm)}mm;margin:0;max-width:none;box-sizing:border-box;`);
   }

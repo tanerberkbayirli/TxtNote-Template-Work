@@ -21,7 +21,8 @@ describe("opt-in Word baseline placement", () => {
   it("is off unless the template opts in, and for fonts without known metrics", () => {
     assert.equal(wordBaselineProbe({ fontFamily: "Times New Roman", fontSizePt: 12 }, { mode: "word", singleLineEm: 1.15 }, 1.725), null);
     assert.equal(wordBaselineProbe({ fontFamily: "Garamond", fontSizePt: 12 }, word, 1.725), null);
-    const plain = compileThesisDocument(mcbuMaster, {}, "T", "<p>a</p>");
+    // MCBÜ opts in (Word measured model); the engine default stays off for a template without the key.
+    const plain = compileThesisDocument({ ...mcbuMaster, typography: { ...mcbuMaster.typography, lineSpacing: { mode: "word", singleLineEm: 1.15 } } }, {}, "T", "<p>a</p>");
     assert.deepEqual(thesisWordBaselineProbes(plain), []);
     assert.doesNotMatch(buildThesisCss(plain), /--thesis-wb-/);
   });

@@ -3,6 +3,7 @@ import { alignLayoutElements, distributeLayoutElements, snapLayoutRect } from ".
 import { updateLayoutElements, deleteLayoutElement, duplicateLayoutElement } from "../../thesis/layoutDocument.js";
 import { clampResizeRect, DRAG_THRESHOLD_PX, patchesForRects } from "../../thesis/layoutInteraction.js";
 import { PX_PER_MM } from "../../thesis/pageLayout.js";
+import { selectionClipPath } from "./LayoutSelectionOverlay.jsx";
 
 const editable = (node) => node?.getAttribute("data-layout-id") && node.getAttribute("data-layout-type") !== "group" && node.getAttribute("data-layout-type") !== "spacer";
 
@@ -19,6 +20,9 @@ function canonicalFor(section, id) {
   };
   return visit(section?.layout) || visit(section?.layoutBlocks) || null;
 }
+
+/** Transforms on a page element live inside the zoomed page stack, so they use unzoomed px per mm. */
+const localPxPerMm = (item) => item.scale / (item.zoom || 1);
 
 function readRect(node, root, model, zoom, sheetCache) {
   const paper = node.closest(".thesis-paper[data-thesis-section]");
@@ -121,7 +125,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       if (measured && !measured.editableLayout && Object.keys(patch).some((key) => !["id", "locked", "content", "text"].includes(key))) return [];
       if (measured && !measured.editableContent && ("content" in patch || "text" in patch)) return [];
       if (!["absolute", "anchored"].includes(patch.layoutMode) || !measured || measured.canonical?.layoutMode !== "flow") return patch;
-      return { xMm: measured.xMm, yMm: measured.yMm, widthMm: measured.widthMm, heightMm: measured.heightMm, ...patch };
+      return { xMm: measured.xMm, yMm: measured.yMm, widthMm: measured.widthMm, heightMm: measured.heightMm, flowHeightMm: measured.heightMm, ...patch };
     });
     if (!materialized.length) return;
     const next = updateLayoutElements(current, materialized);
@@ -194,6 +198,8 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     publish(null, latestRef.current.onThesisChange, history.current);
   }, []);
 
+  // Re-attach when the page root mounts or changes, not on every model change.
+  const mountedRoot = rootRef.current;
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
@@ -228,6 +234,23 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       const box = [...(overlayRef.current?.querySelectorAll("[data-layout-selection-box]") || [])].find((entry) => entry.getAttribute("data-layout-selection-box") === item.id);
       if (!box) return;
       const rect = item.element.getBoundingClientRect(); Object.assign(box.style, { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
+    };
+    // Scrolling moves the selected nodes without re-rendering React; follow them directly in the DOM.
+    let scrollFrame = 0;
+    const followScroll = () => {
+      if (scrollFrame || !overlayRef.current?.querySelector("[data-layout-selection-box]")) return;
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = 0;
+        let first = null;
+        for (const box of overlayRef.current?.querySelectorAll("[data-layout-selection-box]") || []) {
+          const element = root.querySelector(`[data-layout-id="${CSS.escape(box.getAttribute("data-layout-selection-box"))}"][data-layout-section][data-layout-type]`);
+          if (!element) continue;
+          first ||= element;
+          const rect = element.getBoundingClientRect(); Object.assign(box.style, { left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px` });
+        }
+        const clip = overlayRef.current?.querySelector("[data-layout-selection-clip]");
+        if (clip && first) clip.style.clipPath = selectionClipPath(first);
+      });
     };
     const nodeAt = (target) => target?.closest?.("[data-layout-id][data-layout-section][data-layout-type]");
     const findSheetPage = (target, clientY) => {
@@ -283,7 +306,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
         const item = gesture.item;
         item.element.style.width = `${rect.widthMm}mm`;
         item.element.style.height = `${rect.heightMm}mm`;
-        item.element.style.transform = `translate(${(rect.xMm - gesture.start.xMm) * item.scale}px, ${(rect.yMm - gesture.start.yMm) * item.scale}px)`;
+        item.element.style.transform = `translate(${(rect.xMm - gesture.start.xMm) * localPxPerMm(item)}px, ${(rect.yMm - gesture.start.yMm) * localPxPerMm(item)}px)`;
         updateSelectionBox(item);
         gesture.final = rect;
         return;
@@ -306,7 +329,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       for (const item of final) {
         const start = gesture.snapshot.find((entry) => entry.id === item.id);
         const elem = item.element;
-        elem.style.transform = `translate(${(item.xMm - start.xMm) * scale}px, ${(item.yMm - start.yMm) * scale}px)`;
+        elem.style.transform = `translate(${(item.xMm - start.xMm) * localPxPerMm(start)}px, ${(item.yMm - start.yMm) * localPxPerMm(start)}px)`;
         updateSelectionBox(item);
       }
       gesture.final = final;
@@ -429,11 +452,13 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     root.addEventListener("contextmenu", onContextMenu);
     root.addEventListener("focusin", updateGeometry);
     window.addEventListener("resize", updateGeometry);
+    document.addEventListener("scroll", followScroll, true);
     const observer = new ResizeObserver(updateGeometry); observer.observe(root);
     return () => {
       root.removeEventListener("pointerdown", pointerDown); root.removeEventListener("click", suppressObjectClick, true); window.removeEventListener("pointermove", pointerMove); window.removeEventListener("pointerup", pointerUp); window.removeEventListener("pointercancel", pointerCancel);
       root.removeEventListener("dblclick", onDoubleClick); root.removeEventListener("keydown", onKeyDown, true); root.removeEventListener("contextmenu", onContextMenu);
-      root.removeEventListener("focusin", updateGeometry); window.removeEventListener("resize", updateGeometry); observer.disconnect();
+      root.removeEventListener("focusin", updateGeometry); window.removeEventListener("resize", updateGeometry); document.removeEventListener("scroll", followScroll, true); observer.disconnect();
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
       if (geometryFrame) cancelAnimationFrame(geometryFrame); if (moveFrame) cancelAnimationFrame(moveFrame); pendingMove = null; drawMarquee(null); drawGuides([]);
       if (gestureRef.current?.kind === "resize") {
         const { item, inlineStyles } = gestureRef.current; item.element.style.transform = inlineStyles?.transform || ""; item.element.style.width = inlineStyles?.width || ""; item.element.style.height = inlineStyles?.height || "";
@@ -443,7 +468,9 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       }
       gestureRef.current = null;
     };
-  }, [rootRef, model, thesis, zoom, selectIds, patchElements, performAction, undo, redo, commitThesis]);
+  // model, thesis and zoom are read through latestRef: re-running on every model change
+  // (e.g. a page count update while an element is resized) would cancel the gesture.
+  }, [rootRef, mountedRoot, selectIds, patchElements, performAction, undo, redo, commitThesis]);
 
   const selectedElements = useMemo(() => geometry.map((item) => ({ ...item.canonical, id: item.id, locked: item.locked, editableLayout: item.editableLayout, editableContent: item.editableContent,
     measuredGeometry: item.measuredGeometry, element: item.element, pageIndex: item.pageIndex, sectionId: item.sectionId })), [geometry]);

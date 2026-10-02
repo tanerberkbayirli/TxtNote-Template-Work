@@ -1,0 +1,2230 @@
+{
+ "id": "mcbu-tip-uzmanlik",
+ "schemaVersion": 2,
+ "analyzedAt": "2026-10-02",
+ "university": "Manisa Celal Bayar Üniversitesi",
+ "unit": "Tıp Fakültesi (tıpta uzmanlık / asistan tezi)",
+ "sources": [
+  {
+   "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "role": "primary",
+   "type": "guide",
+   "version": "PDF metadata 2014-08-27; text undated; title uses the former name 'Celal Bayar Üniversitesi'",
+   "pages": 6
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KAYNAK.md",
+   "role": "supplementary",
+   "type": "provenance note",
+   "version": "checked 2026-10-01"
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/README.md",
+   "role": "supplementary",
+   "type": "archive index (currency notes only; no values)"
+  }
+ ],
+ "sourcePriority": [
+  {
+   "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "why": "only source; prose rules (pp.2-4) are the requirements, Ek-1/Ek-2 examples (pp.4-6) give the cover and contents/reference geometry, the guide's own body pages are not a rule source"
+  }
+ ],
+ "variants": [
+  {
+   "registryId": "mcbu-tip-uzmanlik-tr-v1",
+   "degreeType": "specialization",
+   "language": "tr",
+   "confirmed": true,
+   "evidence": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf#p.1 'UZMANLIK TEZİ YAZIM KILAVUZU'",
+   "differences": [
+    "single variant; no English or other degree variant in the source"
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "key": "page.size",
+   "value": "A4",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.1",
+     "quote": "Tezler DINA4 normunda (210X297 mm'lik) beyaz kağıtların sadece bir yüzüne siyah mürekkeple yazılır."
+    }
+   ]
+  },
+  {
+   "key": "page.margins.leftMm",
+   "value": 40,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "quote": "Kağıdın solunda 4 santimetre, sağında ise 2.5 santimetre boşluk bırakılır."
+    }
+   ]
+  },
+  {
+   "key": "page.margins.rightMm",
+   "value": 25,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "quote": "Kağıdın solunda 4 santimetre, sağında ise 2.5 santimetre boşluk bırakılır."
+    }
+   ]
+  },
+  {
+   "key": "page.margins.topMm",
+   "value": 30,
+   "unit": "mm",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "quote": "Üst ve alt kenarlara en fazla 3 santimetre yaklaşılabilir."
+    }
+   ],
+   "notes": "Read as: text may come at most 3 cm close to the top/bottom edge, i.e. 30 mm margins. The sentence is not phrased as a margin; the opposite reading (up to 3 cm margin, anything smaller allowed) is possible. needsConfirmation."
+  },
+  {
+   "key": "page.margins.bottomMm",
+   "value": 30,
+   "unit": "mm",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "quote": "Üst ve alt kenarlara en fazla 3 santimetre yaklaşılabilir."
+    }
+   ],
+   "notes": "Same reading as top."
+  },
+  {
+   "key": "page.header.distanceMm",
+   "value": null,
+   "unit": "mm",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2-4",
+     "quote": "no header/footer distance is stated"
+    }
+   ],
+   "notes": "Template uses 12.5 mm (Word default) only as a technical placeholder for the footer that carries the page number; not a source value."
+  },
+  {
+   "key": "page.footer.distanceMm",
+   "value": null,
+   "unit": "mm",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2-4",
+     "quote": "no header/footer distance is stated"
+    }
+   ],
+   "notes": "See page.header.distanceMm."
+  },
+  {
+   "key": "page.duplex",
+   "value": "single-sided",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.1",
+     "quote": "beyaz kağıtların sadece bir yüzüne siyah mürekkeple yazılır"
+    }
+   ],
+   "notes": "Production rule, not a document property."
+  },
+  {
+   "key": "typography.body.fontFamily",
+   "value": "Arial",
+   "unit": "string",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "Yazılar arial tiple, 12 punto büyüklüğünde, sola hizalanarak ve 1.5 satır aralığı bırakılarak yazılmalıdır."
+    }
+   ],
+   "notes": "The guide's own body pages are Arial Narrow 11.04 pt (MEASURED) and do not follow the rule; prose wins, the guide pages are not evidence for the thesis body."
+  },
+  {
+   "key": "typography.body.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "12 punto büyüklüğünde"
+    }
+   ]
+  },
+  {
+   "key": "typography.body.align",
+   "value": "left",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "sola hizalanarak"
+    }
+   ],
+   "notes": "The guide's own pages are justified (MEASURED right edge ~183.6 mm); prose wins."
+  },
+  {
+   "key": "typography.body.lineSpacing",
+   "value": "1.5",
+   "unit": "lines",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "1.5 satır aralığı bırakılarak"
+    }
+   ]
+  },
+  {
+   "key": "typography.paragraph.firstLineIndentMm",
+   "value": 5.88,
+   "unit": "mm",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "Paragrafta 5 harf boşluk bırakılarak başlanır."
+    }
+   ],
+   "notes": "'5 harf boşluk' read as five space characters of Arial 12 pt (5 x 0.2778 em x 12 pt = 16.67 pt = 5.88 mm). The unit 'harf' is undefined; five average letters would be ~10-12 mm. needsConfirmation."
+  },
+  {
+   "key": "typography.paragraph.spaceBeforePt",
+   "value": 0,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "Paragraflar normal satır aralıklarıyla ayrılırlar."
+    }
+   ],
+   "notes": "Read as no extra paragraph spacing (paragraphs are separated by the ordinary line pitch). A blank single line between paragraphs is the alternative reading."
+  },
+  {
+   "key": "typography.paragraph.spaceAfterPt",
+   "value": 0,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "Paragraflar normal satır aralıklarıyla ayrılırlar."
+    }
+   ]
+  },
+  {
+   "key": "pagination.front.format",
+   "value": "none",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "quote": "Kapaklar, önsöz ve içindekiler bolumu dışında tezin tüm sayfaları arabik rakamlar ile numaralanır."
+    }
+   ],
+   "notes": "Covers, önsöz and içindekiler carry no page number."
+  },
+  {
+   "key": "pagination.main.format",
+   "value": "arabic",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "quote": "tezin tüm sayfaları arabik rakamlar ile numaralanır"
+    }
+   ]
+  },
+  {
+   "key": "pagination.main.startsAt(section)",
+   "value": 1,
+   "unit": "page",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "quote": "Giriş bölümünün ilk sayfasına numara konmayacağı için sıralama girişin ikinci sayfasının ... 2 sayısı ile başlar."
+    }
+   ],
+   "notes": "GİRİŞ's first page counts as page 1 (number not printed)."
+  },
+  {
+   "key": "pagination.position",
+   "value": "bottom",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "quote": "Sayfa numaraları sayfanın alt orta bölümüne eklenmelidir."
+    }
+   ],
+   "notes": "CONFLICT with the same paragraph's example 'üst sağa yazılan 2 sayısı' (top right); general rule 'alt orta' implemented."
+  },
+  {
+   "key": "pagination.align",
+   "value": "center",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "quote": "alt orta bölümüne"
+    }
+   ],
+   "notes": "Implemented as centred in the text area (112.5 mm from the left edge with 40/25 mm margins); centring on the sheet (105 mm) is the other reading."
+  },
+  {
+   "key": "pagination.firstPageOfChapterVisible",
+   "value": false,
+   "unit": "bool",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "quote": "Bölümlerin ilk sayfalarına numara konmaz."
+    }
+   ],
+   "notes": "ENGINE GAP: not representable, see engineGaps."
+  },
+  {
+   "key": "pagination.font",
+   "value": null,
+   "unit": "string",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "quote": "page-number typography is not stated"
+    }
+   ],
+   "notes": "Template inherits Arial 12 pt (body rule)."
+  },
+  {
+   "key": "headings.firstPage.topMm",
+   "value": 50,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "quote": "Tüm ilk sayfalarda (önsöz, içindekiler, girişin ilk sayfası, bölümlerin ilk sayfaları gibi) başlık için sayfa üst kenarından 5 santimetre aşağıdan başlanır"
+    }
+   ],
+   "notes": "Title starts 50 mm below the page top edge (reference taken to the top of the line box)."
+  },
+  {
+   "key": "headings.firstPage.align",
+   "value": "center",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "quote": "başlık ortalanır"
+    }
+   ]
+  },
+  {
+   "key": "headings.firstPage.gapAfterMm",
+   "value": 30,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "quote": "ve başlıktan sonra 3 santimetre aralık bırakılarak metne geçilir."
+    }
+   ]
+  },
+  {
+   "key": "headings.h1.numbering",
+   "value": "I.",
+   "unit": "format",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "Giriş bolumu ile başlayan ana başlıklar romen rakamları ile. alt başlıklar ise arabik rakamlarla numaralanır."
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2",
+     "quote": "I. GİRİŞ ... X. KAYNAKLAR"
+    }
+   ],
+   "notes": "Ek-2 numbers every item from GİRİŞ to KAYNAKLAR (including ÖZET, İNGİLİZCE ÖZET, EKLER) in one Roman sequence."
+  },
+  {
+   "key": "headings.h1.caps",
+   "value": true,
+   "unit": "bool",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2-4 section titles, p.4 Ek-2",
+     "quote": "GİRİŞ, GENEL BİLGİLER, GEREÇ VE YÖNTEM ... printed in capitals"
+    }
+   ],
+   "notes": "Prose does not prescribe heading case; the guide's own section titles and the Ek-2 list are in capitals."
+  },
+  {
+   "key": "headings.h1.bold",
+   "value": true,
+   "unit": "bool",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2-4",
+     "quote": "the guide's own section headings are ArialNarrow-Bold"
+    }
+   ],
+   "notes": "Prose silent."
+  },
+  {
+   "key": "headings.h1.fontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "12 punto büyüklüğünde"
+    }
+   ],
+   "notes": "General text rule applied to headings; prose silent about heading size."
+  },
+  {
+   "key": "headings.h2.numbering",
+   "value": "1.1.",
+   "unit": "format",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.1-1.6",
+     "quote": "1. 1. Kullanılacak Kağıt ve Çoğaltma Sistemi ... 1. 6. Yazım (under 'I. GENEL YAZIM KURALLARI')"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "alt başlıklar ise arabik rakamlarla numaralanır"
+    }
+   ],
+   "notes": "The guide's own sub-headings read '1. 1.'; the typing space is not reproduced (the shared engine test requires unspaced labels). Level 3/4 continue the pattern (UNKNOWN in the guide)."
+  },
+  {
+   "key": "headings.h2.spaceBeforePt",
+   "value": 0,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2-1.6",
+     "quote": "MEASURED on the guide's own sub-headings: baseline gap before/after = body pitch 4.44 mm, no blank line"
+    }
+   ],
+   "notes": "Sub-heading spacing is not prescribed (UNKNOWN); 0 follows the guide's own pages."
+  },
+  {
+   "key": "headings.h2.spaceAfterPt",
+   "value": 0,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2-1.6",
+     "quote": "same"
+    }
+   ]
+  },
+  {
+   "key": "headings.h2.align",
+   "value": "left",
+   "unit": "enum",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2-1.6",
+     "quote": "guide's own sub-headings are left-aligned, bold"
+    }
+   ],
+   "notes": "Prose silent."
+  },
+  {
+   "key": "headings.levels",
+   "value": 4,
+   "unit": "count",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "only 'ana başlıklar' and 'alt başlıklar' are named"
+    }
+   ],
+   "notes": "Four levels offered by the engine; levels 3-4 are not described."
+  },
+  {
+   "key": "captions.table.position",
+   "value": "above",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.5",
+     "quote": "Tablolar ayrıca arabik rakamlar ile numaralandırılmalı ve tablo isimleri tabloların üstünde yer almalıdır."
+    }
+   ]
+  },
+  {
+   "key": "captions.figure.position",
+   "value": "below",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.5",
+     "quote": "Şekil, grafik ve resim numaraları birbirini takip etmeli, arabik rakamlar ile numaralandırılmalı, numara ve isimleri şekil, grafik veya resimleri altında yer almalıdır"
+    }
+   ]
+  },
+  {
+   "key": "captions.numbering",
+   "value": "document, Arabic ('Tablo 1', 'Şekil 1')",
+   "unit": "format",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.5",
+     "quote": "numaraları birbirini takip etmeli, arabik rakamlar ile numaralandırılmalı"
+    }
+   ],
+   "notes": "Consecutive numbers over the whole thesis; no chapter prefix. Separator after the number, label weight and caption size/spacing UNKNOWN (12 pt body rule used)."
+  },
+  {
+   "key": "captions.separator",
+   "value": null,
+   "unit": "string",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.5",
+     "quote": "no label/number separator or punctuation is shown"
+    }
+   ]
+  },
+  {
+   "key": "tables.fontSizePt",
+   "value": null,
+   "unit": "pt",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.5",
+     "quote": "no table typography is stated"
+    }
+   ]
+  },
+  {
+   "key": "footnotes.fontSizePt",
+   "value": null,
+   "unit": "pt",
+   "confidence": "UNKNOWN",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 §XV",
+     "quote": "references are numbered in the text; footnotes are not mentioned"
+    }
+   ],
+   "notes": "Template applies the general 12 pt rule (INFERRED)."
+  },
+  {
+   "key": "citations.style",
+   "value": "numeric, in order of first appearance, in parentheses at sentence end",
+   "unit": "string",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 §XV",
+     "quote": "kaynaklar metnin içerisinde, giriş bölümünden başlamak üzere geçiş sırasına göre sıralanmalı ve kaynak numaraları (Arap rakamlarıyla) metinde parantez içinde ve cümle sonunda verilmelidir."
+    }
+   ],
+   "notes": "Up to three authors: all names; more: first three + 'et al' / 've ark.'; Index Medicus journal abbreviations."
+  },
+  {
+   "key": "bibliography.title",
+   "value": "KAYNAKLAR",
+   "unit": "string",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 §XV",
+     "quote": "XV. KAYNAKLAR"
+    }
+   ]
+  },
+  {
+   "key": "bibliography.order",
+   "value": "citation order",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 §XV",
+     "quote": "geçiş sırasına göre sıralanmalı"
+    }
+   ]
+  },
+  {
+   "key": "bibliography.lineSpacing",
+   "value": "single",
+   "unit": "lines",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "pp.4-5 Ek-2 reference examples",
+     "quote": "line pitch 4.44 mm at 11.04 pt = single"
+    }
+   ],
+   "notes": "Prose gives no reference spacing; example is hand-formatted (the guide's body is single spaced too)."
+  },
+  {
+   "key": "bibliography.hangingIndentMm",
+   "value": 6.35,
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "pp.4-5 Ek-2 reference examples",
+     "quote": "number at x0 18.46 mm, continuation lines at 24.81 mm"
+    }
+   ]
+  },
+  {
+   "key": "bibliography.spaceAfterPt",
+   "value": 17.7,
+   "unit": "pt",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "pp.4-5 Ek-2 reference examples",
+     "quote": "entry baseline gaps 10.67-10.72 mm for 5 of 6 entries (extra over the line pitch 6.23-6.28 mm = 17.7 pt); 5.33 mm once (no extra)"
+    }
+   ],
+   "notes": "Irregular hand formatting; the modal value is used."
+  },
+  {
+   "key": "bibliography.align",
+   "value": "left",
+   "unit": "enum",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "quote": "sola hizalanarak"
+    }
+   ],
+   "notes": "Examples are justified (MEASURED) but the guide's own body is justified against its own rule; the general left rule is applied. needsConfirmation."
+  },
+  {
+   "key": "toc.title",
+   "value": "İÇİNDEKİLER",
+   "unit": "string",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "V. İÇİNDEKİLER"
+    }
+   ]
+  },
+  {
+   "key": "toc.leader",
+   "value": "none",
+   "unit": "enum",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "Sayfa numaralarının yanında parantez veya çizgi gibi işaretler kullanılmaz (Ek 2; Tez bölümlerinin sunuş sırası örneği)"
+    }
+   ],
+   "notes": "Also MEASURED: the Ek-2 example shows no dots."
+  },
+  {
+   "key": "toc.indentPerLevelMm",
+   "value": 0,
+   "unit": "mm",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "Listelemeye sol kenardan başlanır."
+    }
+   ],
+   "notes": "Sub-level indentation not shown (Ek-2 has main headings only)."
+  },
+  {
+   "key": "toc.lineSpacing",
+   "value": "main 1.5 / sub single",
+   "unit": "lines",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "Tüm bölüm başlıkları arasında 1,5 Aralık, alt bolum başlıkları arasında bir aralık bırakılır."
+    }
+   ]
+  },
+  {
+   "key": "toc.pageNumberHeading",
+   "value": "Sayfa",
+   "unit": "string",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2",
+     "quote": "bold 'Sayfa' at x 158.14-169.27 mm on the İÇİNDEKİLER line"
+    }
+   ]
+  },
+  {
+   "key": "toc.levels",
+   "value": [
+    1,
+    2
+   ],
+   "unit": "levels",
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V",
+     "quote": "Tezin içeriği bu tabloda listelenir ... ana başlıklar ... alt başlıklar"
+    }
+   ],
+   "notes": "Sub-levels beyond 2 not described; all engine levels listed."
+  },
+  {
+   "key": "abstract.maxPages",
+   "value": 1,
+   "unit": "pages",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §XII",
+     "quote": "açık ve öz olarak bir sayfayı geçmeyecek şekilde özette sunulmalıdır."
+    }
+   ],
+   "notes": "Not enforceable in the engine."
+  },
+  {
+   "key": "preface.maxPages",
+   "value": 1,
+   "unit": "pages",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §IV",
+     "quote": "İlk sayfa niteliğinde yazılır ve bir sayfayı geçmez."
+    }
+   ],
+   "notes": "Not enforceable in the engine."
+  },
+  {
+   "key": "cover.titleFontSizePt",
+   "value": 14,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §II",
+     "quote": "büyük harflerle ve 14 punto arial yazı karakterinde tezin başlığı yazılmalıdır"
+    }
+   ],
+   "notes": "CONFLICT: the Ek-1 example title is 12 pt (MEASURED)."
+  },
+  {
+   "key": "cover.universityFontSizePt",
+   "value": 12,
+   "unit": "pt",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §II",
+     "quote": "12 punto arial yazı karakterinde üniversitenin adı"
+    }
+   ]
+  },
+  {
+   "key": "cover.binding",
+   "value": "beyaz kuşe karton cover; copies 9",
+   "unit": "string",
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "*"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 §XVI",
+     "quote": "Ciltlemede beyaz kuşe karton kullanılacak, herhangi bir bez cilt kullanılmayacaktır."
+    }
+   ],
+   "notes": "Production rule."
+  }
+ ],
+ "sections": [
+  {
+   "id": "outer-cover",
+   "kind": "outerCover",
+   "title": "DIŞ KAPAK",
+   "required": "required",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": false,
+    "format": "none",
+    "startAt": null
+   },
+   "inToc": false,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §II",
+     "quote": "Tezin dış kapağı beyaz kuşe karton, iç kapağı ise beyaz kağıda basılı olmalıdır. Dış ve iç kapaklar birbirinin benzeri şekilde hazırlanır (Ek-1, Dış ve iç kapak örneği)"
+    }
+   ],
+   "layout": [
+    {
+     "kind": "metadata",
+     "text": "CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ",
+     "font": "Arial",
+     "sizePt": 12,
+     "align": "center",
+     "baselineMm": 44.07,
+     "confidence": "MEASURED",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    },
+    {
+     "kind": "metadata",
+     "text": "{{DEPARTMENT_NAME}} Anabilim Dalı (first letters capital)",
+     "font": "Arial",
+     "sizePt": 12,
+     "align": "center",
+     "baselineMm": 54.31,
+     "confidence": "MEASURED",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    },
+    {
+     "kind": "metadata",
+     "text": "{{THESIS_TITLE}} (capitals)",
+     "font": "Arial",
+     "sizePt": 14,
+     "align": "center",
+     "baselineMm": 101.56,
+     "lineGapMm": 8.63,
+     "confidence": "EXPLICIT",
+     "notes": "14 pt in prose, 12 pt in the example (CONFLICT)",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.2 §II"
+      },
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "text": "UZMANLIK TEZİ",
+     "font": "Arial",
+     "sizePt": 14,
+     "align": "center",
+     "baselineMm": 153.75,
+     "confidence": "INFERRED",
+     "notes": "'benzer yazı karakterinde' = same type as the title; example 12 pt",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.2 §II"
+      },
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    },
+    {
+     "kind": "metadata",
+     "text": "{{STUDENT_NAME}} (Araştırma Görevlisinin Adı SOYADI)",
+     "font": "Arial",
+     "sizePt": 12,
+     "align": "center",
+     "baselineMm": 159.26,
+     "confidence": "MEASURED",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "text": "Tez Danışmanı",
+     "font": "Arial",
+     "sizePt": 12,
+     "align": "center",
+     "baselineMm": 197.61,
+     "confidence": "MEASURED",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "text": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}} (Unvanı, Adı SOYADI)",
+     "font": "Arial",
+     "sizePt": 12,
+     "align": "center",
+     "baselineMm": 206.33,
+     "confidence": "MEASURED",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    },
+    {
+     "kind": "text",
+     "text": "Manisa, {{YEAR}}",
+     "font": "Arial",
+     "sizePt": 12,
+     "align": "center",
+     "baselineMm": 247.82,
+     "confidence": "MEASURED",
+     "notes": "Prose: 'Sayfanın en altına'; the example leaves 49 mm below. Example gaps kept.",
+     "evidence": [
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.2 §II"
+      },
+      {
+       "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+       "locator": "p.6 Ek-1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "kind": "innerCover",
+   "title": "İÇ KAPAK",
+   "required": "required",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": false,
+    "format": "none",
+    "startAt": null
+   },
+   "inToc": false,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §II",
+     "quote": "Dış ve iç kapaklar birbirinin benzeri şekilde hazırlanır"
+    }
+   ],
+   "layout": "same as outer-cover (INFERRED from 'birbirinin benzeri')"
+  },
+  {
+   "id": "preface",
+   "kind": "preface",
+   "title": "ÖNSÖZ",
+   "required": "conditional",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": false,
+    "format": "none",
+    "startAt": null
+   },
+   "inToc": false,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §IV"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2 (ÖNSÖZ outside the numbered list)"
+    }
+   ]
+  },
+  {
+   "id": "toc",
+   "kind": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "required": "required",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": false,
+    "format": "none",
+    "startAt": null
+   },
+   "inToc": false,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §V"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2"
+    }
+   ]
+  },
+  {
+   "id": "main",
+   "kind": "mainContent",
+   "title": "I. GİRİŞ ... VI. SONUÇ VE ÖNERİLER (Giriş, Genel Bilgiler, Gereç ve Yöntem, Bulgular, Tartışma, Sonuç ve Öneriler)",
+   "required": "required",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": true,
+    "format": "arabic",
+    "startAt": 1
+   },
+   "inToc": true,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §VI-XI"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2"
+    }
+   ],
+   "notes": "Genel Bilgiler may not exceed one third of the thesis (§VII); Ek-2 prints 'SONUÇLAR VE ÖNERİLER', §XI 'SONUÇ VE ÖNERİLER' (conflict of wording only)."
+  },
+  {
+   "id": "abstract",
+   "kind": "abstract",
+   "title": "ÖZET",
+   "required": "required",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": true,
+    "format": "arabic",
+    "startAt": null
+   },
+   "inToc": true,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §XII"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2 'VII. ÖZET'"
+    }
+   ]
+  },
+  {
+   "id": "abstract-en",
+   "kind": "englishAbstract",
+   "title": "İNGİLİZCE ÖZET",
+   "required": "required",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": true,
+    "format": "arabic",
+    "startAt": null
+   },
+   "inToc": true,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §XIII",
+     "quote": "Bu bölümde Türkçe özetin aslına uygun olarak tezin İngilizce başlığı ve İngilizce öz yazılmalıdır."
+    }
+   ]
+  },
+  {
+   "id": "appendices",
+   "kind": "appendices",
+   "title": "EKLER",
+   "required": "conditional",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": true,
+    "format": "arabic",
+    "startAt": null
+   },
+   "inToc": true,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 §XIV 'EKLER (Gerekiyorsa)'"
+    }
+   ]
+  },
+  {
+   "id": "bibliography",
+   "kind": "bibliography",
+   "title": "KAYNAKLAR",
+   "required": "required",
+   "appliesTo": [
+    "*"
+   ],
+   "pageNumbering": {
+    "counted": true,
+    "visible": true,
+    "format": "arabic",
+    "startAt": null
+   },
+   "inToc": true,
+   "startsNewPage": true,
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 §XV"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2"
+    }
+   ]
+  }
+ ],
+ "placeholders": {
+  "UNIVERSITY_FACULTY_LINE": {
+   "label": "cover top line (default = guide example, former university name)",
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "format": "CAPITALS"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim Dalı name",
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "format": "First Letters Capital + ' Anabilim Dalı'"
+  },
+  "THESIS_TITLE": {
+   "label": "thesis title",
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "format": "CAPITALS 14 pt"
+  },
+  "STUDENT_NAME": {
+   "label": "Araştırma Görevlisinin Adı SOYADI",
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "format": "Ad SOYAD"
+  },
+  "ADVISOR_TITLE": {
+   "label": "advisor title",
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "format": "Unvanı"
+  },
+  "ADVISOR_NAME": {
+   "label": "advisor name",
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "format": "Adı SOYADI"
+  },
+  "YEAR": {
+   "label": "year of the thesis",
+   "usedOn": [
+    "outer-cover",
+    "inner-cover"
+   ],
+   "format": "YYYY"
+  }
+ },
+ "sourceGeometry": [
+  {
+   "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "page": 6,
+   "what": "Ek-1 Dış ve iç Kapak Örneği (all text ArialMT 12 pt; empty spacing lines omitted)",
+   "pageSizeMm": [
+    210,
+    297
+   ],
+   "lines": [
+    {
+     "text": "Ek-1; Dış ve iç Kapak Örneği",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 18.46,
+     "x1Mm": 83.9,
+     "baselineMm": 28.41
+    },
+    {
+     "text": "CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 54.74,
+     "x1Mm": 160.86,
+     "baselineMm": 44.07
+    },
+    {
+     "text": "………………………………………..Anabilim Dalı",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 56.52,
+     "x1Mm": 159.08,
+     "baselineMm": 54.31
+    },
+    {
+     "text": "TEZİN BAŞLIĞI TEZİN BAŞLIĞI TEZİN BAŞLIĞI TEZİN BAŞLIĞI",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 45.72,
+     "x1Mm": 169.92,
+     "baselineMm": 101.56
+    },
+    {
+     "text": "TEZİN BAŞLIĞI TEZİN BAŞLIĞI TEZİN BAŞLIĞI",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 61.26,
+     "x1Mm": 154.38,
+     "baselineMm": 110.19
+    },
+    {
+     "text": "UZMANLIK TEZİ",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 91.31,
+     "x1Mm": 126.61,
+     "baselineMm": 153.75
+    },
+    {
+     "text": "Araştırma  Görevlisinin  Adı  SOYADI",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 72.31,
+     "x1Mm": 143.33,
+     "baselineMm": 159.26
+    },
+    {
+     "text": "Tez Danışmanı",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 92.88,
+     "x1Mm": 123.94,
+     "baselineMm": 197.61
+    },
+    {
+     "text": "Unvanı, Adı SOYADI",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 87.59,
+     "x1Mm": 128.05,
+     "baselineMm": 206.33
+    },
+    {
+     "text": "Manisa, Yıl",
+     "font": "ArialMT",
+     "sizePt": 12.0,
+     "x0Mm": 97.49,
+     "x1Mm": 119.63,
+     "baselineMm": 247.82
+    }
+   ],
+   "derived": {
+    "baselineGapsMm": {
+     "university->anabilim": 10.24,
+     "anabilim->title": 47.25,
+     "title line pitch": 8.63,
+     "title(last)->UZMANLIK": 43.56,
+     "UZMANLIK->researcher": 5.51,
+     "researcher->Tez Danışmanı": 38.35,
+     "Tez Danışmanı->advisor": 8.72,
+     "advisor->Manisa": 41.49
+    },
+    "centre": "all lines centred on x = 107.8 mm = centre of the guide's own text area 18.46-198.42 mm; the example lies inside the guide page, so absolute y and x are not thesis-page values"
+   }
+  },
+  {
+   "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "page": 4,
+   "what": "Ek-2 sunuş sırası / İÇİNDEKİLER örneği (ArialNarrow 11.04 pt)",
+   "pageSizeMm": [
+    210,
+    297
+   ],
+   "lines": [
+    {
+     "text": "ÖNSÖZ",
+     "font": "ArialNarrow-Bold",
+     "sizePt": 11.04,
+     "x0Mm": 20.22,
+     "x1Mm": 34.19,
+     "baselineMm": 146.81
+    },
+    {
+     "text": "İÇİNDEKİLER",
+     "font": "ArialNarrow-Bold",
+     "sizePt": 11.04,
+     "x0Mm": 18.44,
+     "x1Mm": 44.73,
+     "baselineMm": 152.15
+    },
+    {
+     "text": "Sayfa",
+     "font": "ArialNarrow-Bold",
+     "sizePt": 11.04,
+     "x0Mm": 158.14,
+     "x1Mm": 169.27,
+     "baselineMm": 152.15
+    },
+    {
+     "text": "I.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 22.12,
+     "x1Mm": 25.66,
+     "baselineMm": 157.48
+    },
+    {
+     "text": "GİRİŞ",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.93,
+     "x1Mm": 44.73,
+     "baselineMm": 157.48
+    },
+    {
+     "text": "1",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 158.15,
+     "x1Mm": 163.65,
+     "baselineMm": 157.48
+    },
+    {
+     "text": "II.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 20.9,
+     "x1Mm": 25.71,
+     "baselineMm": 162.82
+    },
+    {
+     "text": "GENEL BİLGİLER",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 62.77,
+     "baselineMm": 162.82
+    },
+    {
+     "text": "2",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 158.15,
+     "x1Mm": 163.65,
+     "baselineMm": 162.82
+    },
+    {
+     "text": "III.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 19.64,
+     "x1Mm": 25.67,
+     "baselineMm": 168.15
+    },
+    {
+     "text": "GEREÇ VE YÖNTEM",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 70.14,
+     "baselineMm": 168.15
+    },
+    {
+     "text": "3",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 158.15,
+     "x1Mm": 163.66,
+     "baselineMm": 168.15
+    },
+    {
+     "text": "IV.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 19.64,
+     "x1Mm": 25.68,
+     "baselineMm": 173.49
+    },
+    {
+     "text": "BULGULAR",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 51.81,
+     "baselineMm": 173.49
+    },
+    {
+     "text": "V.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 20.91,
+     "x1Mm": 25.72,
+     "baselineMm": 178.83
+    },
+    {
+     "text": "TARTIŞMA",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 50.75,
+     "baselineMm": 178.83
+    },
+    {
+     "text": "VI.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 19.64,
+     "x1Mm": 25.68,
+     "baselineMm": 184.16
+    },
+    {
+     "text": "SONUÇLAR VE ÖNERİLER",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 78.86,
+     "baselineMm": 184.16
+    },
+    {
+     "text": "VII.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 18.41,
+     "x1Mm": 25.68,
+     "baselineMm": 189.5
+    },
+    {
+     "text": "ÖZET",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 41.73,
+     "baselineMm": 189.5
+    },
+    {
+     "text": "VIII.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 17.18,
+     "x1Mm": 25.67,
+     "baselineMm": 194.83
+    },
+    {
+     "text": "İNGİLİZCE ÖZET",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 61.71,
+     "baselineMm": 194.83
+    },
+    {
+     "text": "IX.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 19.64,
+     "x1Mm": 25.67,
+     "baselineMm": 200.17
+    },
+    {
+     "text": "EKLER (Gerekiyorsa)",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 69.12,
+     "baselineMm": 200.17
+    },
+    {
+     "text": "X.",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 20.91,
+     "x1Mm": 25.72,
+     "baselineMm": 205.5
+    },
+    {
+     "text": "KAYNAKLAR",
+     "font": "ArialNarrow",
+     "sizePt": 11.04,
+     "x0Mm": 30.94,
+     "x1Mm": 54.1,
+     "baselineMm": 205.5
+    }
+   ],
+   "derived": {
+    "rowPitchMm": 5.33,
+    "romanNumeralsRightAlignedAtX1Mm": 25.7,
+    "titlesStartX0Mm": 30.94,
+    "pageNumberColumnX0Mm": 158.15,
+    "SayfaX1Mm": 169.27,
+    "leader": "none"
+   }
+  },
+  {
+   "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "page": "4-5",
+   "what": "Ek-2 reference examples (ArialNarrow 11.04 pt, bold numbers)",
+   "derived": {
+    "numberX0Mm": 18.46,
+    "continuationX0Mm": 24.81,
+    "hangingMm": 6.35,
+    "linePitchMm": 4.44,
+    "entryBaselineGapsMm": [
+     10.72,
+     5.33,
+     10.67,
+     10.67,
+     10.71,
+     10.67
+    ],
+    "justified": true
+   }
+  },
+  {
+   "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "page": "2-4",
+   "what": "the guide's own body pages (not a rule source)",
+   "derived": {
+    "font": "ArialNarrow 11.04 pt",
+    "linePitchMm": 4.44,
+    "left x0Mm": "20.2 (pp.2-3) / 18.4 (pp.4-5)",
+    "rightEdgeMm": "183.7 (pp.2-3) / 198.4 (pp.4-5)",
+    "align": "justified",
+    "note": "contradicts §1.2/§1.3 of the same guide (4/2.5 cm, Arial 12, left, 1.5 lines)"
+   }
+  }
+ ],
+ "conflicts": [
+  {
+   "topic": "Page-number position",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4",
+     "value": "'Sayfa numaraları sayfanın alt orta bölümüne eklenmelidir'"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.4 (same paragraph)",
+     "value": "'... girişin ikinci sayfasının üst sağa yazılan 2 sayısı ile başlar'"
+    }
+   ],
+   "decision": "General rule (bottom centre) implemented; the example sentence is the only top-right mention and reads like an older habit.",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Cover title size",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §II",
+     "value": "14 punto"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.6 Ek-1 (MEASURED)",
+     "value": "12 pt"
+    }
+   ],
+   "decision": "Explicit prose (14 pt) implemented for the title and UZMANLIK TEZİ; example geometry kept for gaps.",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Cover vertical distances in lines",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §II",
+     "value": "title ~6 lines below top, UZMANLIK 6 lines below title, advisor 4 lines below"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.6 Ek-1 (MEASURED)",
+     "value": "gaps 47.25 / 43.56 / 38.35 mm = 6.5 / 6.0 / 5.3 lines of 7.3 mm (12 pt x 1.5)"
+    }
+   ],
+   "decision": "'satır' is not a defined unit; the example's measured gaps (which agree to within one line, exactly 6.0 for title->UZMANLIK) are used.",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Cover bottom line",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §II",
+     "value": "'Sayfanın en altına Manisa ve tezin yapıldığı yıl'"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.6 Ek-1",
+     "value": "Manisa, Yıl baseline 247.82 mm = 41.49 mm below the advisor, 49 mm above the sheet bottom"
+    }
+   ],
+   "decision": "Example gap kept (cover ends ~237 mm from the top with a 30 mm top margin).",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "Guide pages vs own rules",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "pp.2-5",
+     "value": "Arial Narrow 11 pt, justified, single, margins ~18-20 mm"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2-1.3",
+     "value": "Arial 12 pt, left, 1.5 lines, 4/2.5 cm"
+    }
+   ],
+   "decision": "Prose is the requirement; the guide's body pages are not used as thesis geometry (only Ek-1/Ek-2 example structures are).",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "İÇİNDEKİLER title placement",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.2",
+     "value": "contents is a 'ilk sayfa': title centred at 5 cm"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2 (MEASURED)",
+     "value": "'İÇİNDEKİLER' left-aligned at x0 18.44 mm"
+    }
+   ],
+   "decision": "Prose (centred, 50 mm) implemented; Ek-2 is an order-of-presentation example, not a page-layout sample.",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Name of the last results chapter",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.3 §XI",
+     "value": "SONUÇ VE ÖNERİLER"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.4 Ek-2",
+     "value": "SONUÇLAR VE ÖNERİLER"
+    }
+   ],
+   "decision": "Author types the heading; no template text depends on it.",
+   "needsConfirmation": false
+  },
+  {
+   "topic": "University name on the cover",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.6 Ek-1 and title",
+     "value": "CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ (former name)"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/README.md",
+     "locator": "Tip_Fakultesi_Uzmanlik_Tezi",
+     "value": "current name Manisa Celal Bayar Üniversitesi; guide dated 2014"
+    }
+   ],
+   "decision": "Source text kept as the default of an editable cover field (UNIVERSITY_FACULTY_LINE); the current name is not in any source of this unit.",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Currency of the guide",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "PDF metadata",
+     "value": "created 2014-08-27, no date in the text"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KAYNAK.md",
+     "locator": "Güncellik kanıtı",
+     "value": "still the guide linked on the faculty page (checked 2026-10-01); no revocation"
+    }
+   ],
+   "decision": "Treated as current; relation to the LEE guide UNKNOWN.",
+   "needsConfirmation": true
+  },
+  {
+   "topic": "Meaning of '5 harf boşluk' (paragraph indent)",
+   "sources": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "locator": "p.2 §1.3",
+     "value": "'Paragrafta 5 harf boşluk bırakılarak başlanır'"
+    }
+   ],
+   "decision": "Five space characters of Arial 12 = 5.88 mm; alternative (five average letters) ~10-12 mm.",
+   "needsConfirmation": true
+  }
+ ],
+ "unknowns": [
+  {
+   "key": "page.header/footer.distanceMm",
+   "why": "guide silent"
+  },
+  {
+   "key": "pagination.font",
+   "why": "page-number typography not stated (body 12 pt inherited)"
+  },
+  {
+   "key": "headings.h2-h4 spacing, case, size, weight",
+   "why": "guide gives only its own heading samples; levels 3-4 not described"
+  },
+  {
+   "key": "captions.separator/size/weight/spacing",
+   "why": "no caption sample"
+  },
+  {
+   "key": "tables (font size, line spacing, borders, cell alignment)",
+   "why": "no table rules or samples"
+  },
+  {
+   "key": "footnotes",
+   "why": "citations are numeric in the text; footnotes not mentioned"
+  },
+  {
+   "key": "equations",
+   "why": "not mentioned"
+  },
+  {
+   "key": "abstract and English abstract layout (heading block, keywords, words)",
+   "why": "only 'bir sayfayı geçmeyecek' and the English title rule; no sample"
+  },
+  {
+   "key": "approval/jury page, declaration, acknowledgements, symbols/abbreviations, list of tables/figures",
+   "why": "not part of this guide (a thesis jury form is outside the document)"
+  },
+  {
+   "key": "absolute cover top distance",
+   "why": "the Ek-1 example sits inside the guide's page below an 'Ek-1' caption line"
+  },
+  {
+   "key": "LEE relation / newer rules",
+   "why": "no statement; PDF from 2014"
+  },
+  {
+   "key": "bibliography entry spacing",
+   "why": "example spacing irregular (5.33 mm once, 10.7 mm otherwise)"
+  }
+ ],
+ "engineGaps": [
+  {
+   "requirement": "No page number on the first page of each chapter ('Bölümlerin ilk sayfalarına numara konmaz'; GİRİŞ's first page counts as 1 but prints nothing).",
+   "evidence": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf p.2 §1.4",
+   "whyEngineCannot": "schema.d.ts NumberingRule is per page group (section): enabled/restart/startAt; header/footer.firstPage:'omit' hides only header/footer text, not the number (pageLayout.js numberThesisPages / buildThesisPageModel). All chapters are Heading 1 inside one editable 'main' section, so no section boundary exists at a chapter start.",
+   "suggestedGenericCapability": "numbering.hideOnHeadingFirstPage (or per-H1 'unnumbered first page'): the page that starts with a pageBreakBefore heading of the stated level prints no number but still counts; editor, layout PDF and DOCX (titlePg-like per section or field)."
+  },
+  {
+   "requirement": "Section length limits (Önsöz and Özet at most one page; Genel Bilgiler at most one third of the thesis).",
+   "evidence": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf p.2 §IV, p.3 §VII, §XII",
+   "whyEngineCannot": "validation covers placeholders only (ThesisTemplate.validation minItems).",
+   "suggestedGenericCapability": "advisory page-count limit per section id."
+  }
+ ],
+ "measurableChecks": [
+  {
+   "id": "page-size",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "page width x height",
+   "expected": [
+    210,
+    297
+   ],
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "page.size"
+  },
+  {
+   "id": "margin-left",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "x0 of body lines without indent",
+   "expected": 40.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "page.margins.leftMm"
+  },
+  {
+   "id": "margin-right",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "max x1 of body lines (left-aligned: <= 185)",
+   "expected": 185.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "page.margins.rightMm"
+  },
+  {
+   "id": "margin-top",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "first baseline of a continuation page = 30 mm + 0.9377 em",
+   "expected": 33.97,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "page.margins.topMm"
+  },
+  {
+   "id": "body-font",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "every body span genuine Arial 12 pt",
+   "expected": "Arial 12",
+   "unit": "pt",
+   "tolerance": 0.1,
+   "sourceRule": "typography.body.*"
+  },
+  {
+   "id": "line-pitch",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "baseline pitch of body lines (1.5 x 12 pt Arial)",
+   "expected": 7.3,
+   "unit": "mm",
+   "tolerance": 0.15,
+   "sourceRule": "typography.body.lineSpacing"
+  },
+  {
+   "id": "first-line-indent",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "x0 of paragraph first lines",
+   "expected": 45.88,
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "typography.paragraph.firstLineIndentMm"
+  },
+  {
+   "id": "h1-top",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "line top of the first heading of a chapter/preface/contents page",
+   "expected": 50.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "headings.firstPage.topMm"
+  },
+  {
+   "id": "h1-gap",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "heading line bottom to first text line top",
+   "expected": 30.0,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "headings.firstPage.gapAfterMm"
+  },
+  {
+   "id": "h1-centre",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "heading centre x (text-area centre)",
+   "expected": 112.5,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "headings.firstPage.align"
+  },
+  {
+   "id": "page-number-labels",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "covers, önsöz, içindekiler unnumbered; Arabic 1.. from GİRİŞ",
+   "expected": "see selfcheck",
+   "unit": "enum",
+   "tolerance": 0,
+   "sourceRule": "pagination.*"
+  },
+  {
+   "id": "page-number-position",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "bottom, centre of text area",
+   "expected": 112.5,
+   "unit": "mm",
+   "tolerance": 0.5,
+   "sourceRule": "pagination.position"
+  },
+  {
+   "id": "cover-gaps",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "baseline gaps 10.24/47.25/43.56/5.51/38.35/8.72/41.49 mm",
+   "expected": [
+    10.24,
+    47.25,
+    43.56,
+    5.51,
+    38.35,
+    8.72,
+    41.49
+   ],
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "Ek-1 example"
+  },
+  {
+   "id": "toc-rows",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "main rows 1.5 lines apart, sub rows single, no leader",
+   "expected": "7.30 / 4.87",
+   "unit": "mm",
+   "tolerance": 0.15,
+   "sourceRule": "toc.lineSpacing"
+  },
+  {
+   "id": "bib-hanging",
+   "appliesTo": [
+    "*"
+   ],
+   "what": "bibliography continuation x0 = 40 + 6.35",
+   "expected": 46.35,
+   "unit": "mm",
+   "tolerance": 0.25,
+   "sourceRule": "bibliography.hangingIndentMm"
+  }
+ ]
+}

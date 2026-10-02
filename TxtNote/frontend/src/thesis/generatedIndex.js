@@ -119,7 +119,7 @@ export function indexEntries(sources, rule, pages = {}, language = "tr") {
     .map((entry) => {
       // matchHeadingTransform: a row reads like its rendered heading (e.g. an uppercase H1).
       const title = rule.matchHeadingTransform && entry.textTransform ? transformThesisText(entry.title, entry, language) : entry.title;
-      return { ...entry, text: [entry.label, title].filter(Boolean).join(" "), rowTitle: title, page: pages[entry.anchor]?.label ?? "" };
+      return { ...entry, text: [entry.label, title].filter(Boolean).join(" "), rowTitle: title, page: pages[entry.anchor]?.indexLabel ?? pages[entry.anchor]?.label ?? "" };
     });
 }
 
@@ -438,7 +438,7 @@ export function renderedIndexPages(root, groups) {
       if (!rect) return;
       const index = Math.min(pageModel[i].pages.length - 1, Math.max(0, Math.floor(((rect.top - origin) / zoom + 0.5) / stride)));
       const page = pageModel[i].pages[index];
-      result[node.dataset.thesisAnchor] = { label: page.label, physicalPage: page.physicalIndex + 1 };
+      result[node.dataset.thesisAnchor] = { label: page.label, indexLabel: page.indexLabel, physicalPage: page.physicalIndex + 1 };
     });
   });
   return { pages: result, counts };

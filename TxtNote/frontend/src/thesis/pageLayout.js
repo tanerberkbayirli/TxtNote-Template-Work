@@ -67,11 +67,15 @@ export function numberThesisPages(sections, pageCounts = {}) {
     if (rule.restart) logicalPage = (rule.startAt || 1) - 1;
     if (!thesisGroupHasPageContent(section)) return { sectionId: section.id, labels: [] };
     const count = Math.max(1, Math.floor(pageCounts[section.id] || 1));
+    const indexLabels = [];
     const labels = Array.from({ length: count }, () => {
       logicalPage += 1;
-      return rule.enabled ? formatNumber(logicalPage, rule.format) : "";
+      const counted = formatNumber(logicalPage, rule.format);
+      // indexLabelWhenHidden: a counted page whose number is not printed still shows its number in contents/lists.
+      indexLabels.push(rule.enabled || rule.indexLabelWhenHidden ? counted : "");
+      return rule.enabled ? counted : "";
     });
-    return { sectionId: section.id, labels };
+    return { sectionId: section.id, labels, indexLabels };
   });
 }
 
@@ -90,6 +94,7 @@ export function buildThesisPageModel(groups, pageCounts = {}) {
       index,
       physicalIndex: physicalIndex++,
       label,
+      indexLabel: numbers[groupIndex].indexLabels[index],
       numberPosition: numbering.position === "top" ? "top" : "bottom",
       numberAlign: ["left", "center", "right"].includes(numbering.align) ? numbering.align : "center",
       showHeader: !(index === 0 && header?.firstPage === "omit"),
@@ -159,6 +164,7 @@ export function thesisPagedCss(groups) {
       for (const [level, style] of Object.entries(section.rules.headings)) {
         if (!style.pageBreakBefore) continue;
         rules.push(`${fragment} h${level}{break-before:column}`, `${fragment} h${level}[data-unnumbered]{break-before:auto}`);
+        if (style.pageBreakUnlessAfterHeading) rules.push(`${fragment} :is(h1,h2,h3,h4,h5,h6) + h${level}{break-before:auto}`);
       }
     }
   }

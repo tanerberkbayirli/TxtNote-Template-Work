@@ -104,6 +104,23 @@ test("page rules inherit deeply from template through document, section and phys
   assert.equal(template.margins.leftMm, 30);
 });
 
+test("a template block taken out of the flow leaves its slot so later blocks do not move up", () => {
+  const nodes = [
+    { path: "0", type: "text", text: "First", style: { fontSizePt: 14, spaceBeforePt: 6 } },
+    { path: "1", type: "text", text: "Second", style: { fontSizePt: 14 } },
+  ];
+  const layout = { elements: { "cover:block:0": { layoutMode: "absolute", xMm: 30, yMm: 40, widthMm: 150, heightMm: 20, flowHeightMm: 8.5 } } };
+  const resolved = resolveLayoutNodes(nodes, "cover", layout);
+  assert.deepEqual(resolved.map((node) => node.id ?? node.path), ["0-slot", "cover:block:0", "cover:block:1"]);
+  assert.equal(resolved[0].type, "spacer");
+  assert.equal(resolved[0].heightMm, 8.5);
+  assert.ok(Math.abs(resolved[0].marginTopMm - 6 * MM_PER_PT) < 1e-9);
+  assert.equal(resolved[0].marginBottomMm, 0);
+  // Re-resolving keeps the slot unselectable, and a block back in the flow has no slot.
+  assert.equal(resolveLayoutNodes(resolved.slice(0, 1), "cover", layout)[0].id, undefined);
+  assert.equal(resolveLayoutNodes(nodes, "cover", { elements: { "cover:block:0": { layoutMode: "flow" } } }).length, 2);
+});
+
 test("resolved nodes keep stable identities, preserve template data and apply text and geometry overrides", () => {
   const templateNodes = [
     { path: "0", type: "group", direction: "column", blocks: [{ path: "0-1", type: "text", field: "STUDENT_NAME", text: "Student", style: { fontSizePt: 11 } }] },

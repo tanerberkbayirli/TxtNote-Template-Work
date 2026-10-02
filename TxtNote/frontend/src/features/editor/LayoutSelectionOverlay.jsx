@@ -7,10 +7,28 @@ const HANDLE_POSITIONS = {
   sw: { left: "0%", top: "100%" }, w: { left: "0%", top: "50%" },
 };
 
+/** Nearest scrolling ancestor; selection chrome is clipped to its viewport so it never floats over toolbars. */
+function scrollViewport(element) {
+  for (let node = element?.parentElement; node && node !== document.body; node = node.parentElement) {
+    const { overflowY } = getComputedStyle(node);
+    if ((overflowY === "auto" || overflowY === "scroll") && node.scrollHeight > node.clientHeight) return node;
+  }
+  return null;
+}
+
+/** Clip in client coordinates that hides selection chrome outside the element's scroll viewport. */
+export function selectionClipPath(element) {
+  const viewport = scrollViewport(element)?.getBoundingClientRect();
+  if (!viewport) return "";
+  return `inset(${Math.max(0, viewport.top)}px ${Math.max(0, window.innerWidth - viewport.right)}px ${Math.max(0, window.innerHeight - viewport.bottom)}px ${Math.max(0, viewport.left)}px)`;
+}
+
 /** Visual-only selection chrome; fixed client coordinates keep it aligned through zoom and scroll. */
 export default function LayoutSelectionOverlay({ selectedElements = [], selectedIds = [], overlayRef, editingId, onResizeStart, onAction, onPatch, onOpenInspector, contextMenu, setContextMenu }) {
   const locked = selectedElements.length > 0 && selectedElements.every((item) => item.locked || !item.editableLayout);
+  const clipPath = selectionClipPath(selectedElements[0]?.element) || undefined;
   return <div ref={overlayRef} data-thesis-editor-only data-export-ignore="" aria-label="Layout selection" style={{ position: "fixed", inset: 0, zIndex: 10000, pointerEvents: "none" }}>
+    <div data-thesis-editor-only data-export-ignore="" data-layout-selection-clip="" style={{ position: "fixed", inset: 0, pointerEvents: "none", clipPath }}>
     {selectedElements.map((item) => {
       const rect = item.element.getBoundingClientRect();
       return <div key={item.id} data-thesis-editor-only data-export-ignore="" data-layout-selection-box={item.id} style={{ position: "fixed", left: rect.left, top: rect.top, width: rect.width, height: rect.height, boxSizing: "border-box", border: "1px solid #2563eb", boxShadow: "0 0 0 1px rgba(255,255,255,.85)", pointerEvents: "none" }}>
@@ -20,6 +38,7 @@ export default function LayoutSelectionOverlay({ selectedElements = [], selected
         </div> : null}
       </div>;
     })}
+    </div>
     <LayoutContextMenu contextMenu={contextMenu} selectedElements={selectedElements} onAction={onAction} onPatch={onPatch} onOpenInspector={onOpenInspector} onClose={() => setContextMenu?.(null)} />
   </div>;
 }
