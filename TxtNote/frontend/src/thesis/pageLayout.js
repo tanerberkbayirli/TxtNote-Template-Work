@@ -59,8 +59,32 @@ export function pageStackHeightPx(count, metrics) {
   return pages * metrics.heightPx + (pages - 1) * THESIS_PAGE_GAP_PX;
 }
 
+/**
+ * Page indexes (within a rendered paged flow) on which a chapter opens: a level-1 heading that starts its own page
+ * (computed break-before page/column) or the first content of the flow. Read from the rendered DOM, never estimated.
+ */
+export function chapterStartPageIndexes(flow, metrics) {
+  const result = new Set();
+  const box = flow.getBoundingClientRect();
+  const scale = flow.offsetWidth ? box.width / flow.offsetWidth || 1 : 1;
+  const pitch = flowPagePitchPx(metrics);
+  let first = true;
+  for (const heading of flow.querySelectorAll("h1")) {
+    const range = flow.ownerDocument.createRange();
+    range.setStart(flow, 0);
+    range.setEndBefore(heading);
+    const opensFlow = first && !range.toString().replace(/[​\s]/g, "");
+    first = false;
+    const breaks = ["column", "page"].includes(getComputedStyle(heading).breakBefore);
+    if (!opensFlow && !breaks) continue;
+    const rect = [...heading.getClientRects()].find((r) => r.width && r.height) || heading.getBoundingClientRect();
+    result.add(Math.max(0, Math.floor((((rect.top - box.top) / scale) + 0.5) / pitch)));
+  }
+  return result;
+}
+
 /** The PDF writer uses the same restart/advance rule per physical page. */
-export function numberThesisPages(sections, pageCounts = {}) {
+export function numberThesisPages(sections, pageCounts = {}, chapterStarts = {}) {
   let logicalPage = 0;
   return sections.map((section) => {
     const rule = section.rules.page.numbering;
@@ -68,11 +92,13 @@ export function numberThesisPages(sections, pageCounts = {}) {
     if (!thesisGroupHasPageContent(section)) return { sectionId: section.id, labels: [] };
     const count = Math.max(1, Math.floor(pageCounts[section.id] || 1));
     const indexLabels = [];
-    const labels = Array.from({ length: count }, () => {
+    const labels = Array.from({ length: count }, (_, pageIndex) => {
       logicalPage += 1;
       const counted = formatNumber(logicalPage, rule.format);
       // indexLabelWhenHidden: a counted page whose number is not printed still shows its number in contents/lists.
       indexLabels.push(rule.enabled || rule.indexLabelWhenHidden ? counted : "");
+      // numbering.omitOnChapterStart: the page that opens a chapter is counted (and listed in contents) but prints no number.
+      if (rule.omitOnChapterStart && chapterStarts[section.id]?.has(pageIndex)) return "";
       return rule.enabled ? counted : "";
     });
     return { sectionId: section.id, labels, indexLabels };
@@ -84,8 +110,8 @@ export function numberThesisPages(sections, pageCounts = {}) {
  * counts only. It is presentation state; nothing here is stored in the document.
  * The editor draws sheets from it; print/export can consume the same model.
  */
-export function buildThesisPageModel(groups, pageCounts = {}) {
-  const numbers = numberThesisPages(groups, pageCounts);
+export function buildThesisPageModel(groups, pageCounts = {}, chapterStarts = {}) {
+  const numbers = numberThesisPages(groups, pageCounts, chapterStarts);
   let physicalIndex = 0;
   return groups.map((group, groupIndex) => {
     const { numbering, header, footer } = group.rules.page;

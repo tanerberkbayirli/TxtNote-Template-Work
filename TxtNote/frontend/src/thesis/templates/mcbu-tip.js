@@ -161,7 +161,7 @@ const base = {
     margins: MARGINS,
     header: { heightMm: 0, distanceMm: 12.5, content: "", firstPage: "same" },
     footer: { heightMm: 8, distanceMm: 12.5, content: "", firstPage: "same" },
-    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false },
+    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, omitOnChapterStart: true },
   },
   typography: {
     body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "left", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: PARA_INDENT_MM },

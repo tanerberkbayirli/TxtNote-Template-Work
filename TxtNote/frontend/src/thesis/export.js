@@ -734,7 +734,14 @@ function docxChildren(section, context) {
         const headingStyleDefinition = { id: sourceStyleId, name: sourceStyleId, basedOn: `Heading${level}`, quickFormat: false, run: { font: style.fontFamily, size: halfPointSize(style.fontSizePt), bold: style.fontWeight >= 600, italics: Boolean(style.italic) }, paragraph: { outlineLevel: Math.max(0, level - 1) } };
         (context.thesisHeadingStyles ||= new Map()).set(sourceStyleId, headingStyleDefinition);
       }
-      const paragraph = docxParagraph(runs, chain(withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, ...indent, pageBreakBefore: false } : { ...style, ...indent })), context, { style: sourceStyleId, anchor: block.thesisAnchor });
+      const headingBreaks = !(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading));
+      let headStyle = headingBreaks ? { ...style, ...indent } : { ...style, ...indent, pageBreakBefore: false };
+      // numbering.omitOnChapterStart: a page-breaking level-1 heading opens a Word section of its own (next page, number-free first page).
+      if (Number(block.level) === 1 && page.numbering?.omitOnChapterStart) {
+        if (children.length === 0) children.startsWithChapter = true;
+        else if (headingBreaks && style.pageBreakBefore) { (children.chapterSplits ||= []).push(children.length); headStyle = { ...headStyle, pageBreakBefore: false }; }
+      }
+      const paragraph = docxParagraph(runs, chain(withGap(headStyle)), context, { style: sourceStyleId, anchor: block.thesisAnchor });
       if (indexedRow?.tocTitle) paragraph.root.push(tocSpecialField({ ...indexedRow, title: indexedRow.rowTitle || indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
       children.push(paragraph);
     } else if (block.type === "paragraph" || block.type === "quote") {
@@ -793,7 +800,7 @@ function docxChildren(section, context) {
  * edge), and `firstPage: "omit"` hiding only the text on a group's first page. Every
  * section defines its own parts, so Word never carries a number into an unnumbered page.
  */
-function chromeDocx(section, values, context, groupStart) {
+function chromeDocx(section, values, context, groupStart, omitNumberOnFirst = false) {
   const { page, body } = section.rules;
   const chromeStyle = { ...body, fontSizePt: 10, align: "left", firstLineIndentMm: 0, leftIndentMm: 0, rightIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1.1, textTransform: "none", fontWeight: 400, italic: false };
   const number = page.numbering;
@@ -816,12 +823,12 @@ function chromeDocx(section, values, context, groupStart) {
     const shiftIndent = pageShiftMm > 0 ? { right: twip(pageShiftMm) } : pageShiftMm < 0 ? { left: twip(-pageShiftMm) } : null;
     return new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, ...(shiftIndent ? { indent: shiftIndent } : {}), children: [new TextRun({ ...runProps(style, context.language), children: [PageNumber.CURRENT] })] });
   };
-  const part = (edge, text) => {
+  const part = (edge, text, withNumber = true) => {
     const children = [];
-    if (number.enabled && numberEdge === edge && edge === "top") children.push(numberParagraph());
+    if (withNumber && number.enabled && numberEdge === edge && edge === "top") children.push(numberParagraph());
     // Chrome text keeps the editor's fixed 1.1 line box in every template.
     if (text) children.push(docxParagraph(plainRuns(text), chromeStyle, { ...context, lineSpacing: null }));
-    if (number.enabled && numberEdge === edge && edge === "bottom") children.push(numberParagraph());
+    if (withNumber && number.enabled && numberEdge === edge && edge === "bottom") children.push(numberParagraph());
     return children.length ? children : [new Paragraph({ children: [] })];
   };
   const headerText = resolveChromeText(page.header?.content, values);
@@ -830,11 +837,13 @@ function chromeDocx(section, values, context, groupStart) {
   const footers = { default: new Footer({ children: part("bottom", footerText) }) };
   const omitHeader = Boolean(groupStart && page.header?.firstPage === "omit" && headerText);
   const omitFooter = Boolean(groupStart && page.footer?.firstPage === "omit" && footerText);
-  if (omitHeader || omitFooter) {
-    headers.first = new Header({ children: part("top", omitHeader ? "" : headerText) });
-    footers.first = new Footer({ children: part("bottom", omitFooter ? "" : footerText) });
+  // numbering.omitOnChapterStart: the first page of the Word section (a chapter opening) is counted but prints no number.
+  const omitNumber = Boolean(omitNumberOnFirst && number.enabled && number.omitOnChapterStart);
+  if (omitHeader || omitFooter || omitNumber) {
+    headers.first = new Header({ children: part("top", omitHeader ? "" : headerText, !omitNumber) });
+    footers.first = new Footer({ children: part("bottom", omitFooter ? "" : footerText, !omitNumber) });
   }
-  return { headers, footers, titlePage: omitHeader || omitFooter };
+  return { headers, footers, titlePage: omitHeader || omitFooter || omitNumber };
 }
 
 function headingStyle(style, language, level) {
@@ -910,28 +919,38 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
     tocParagraphStyles: new Map(),
   };
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
-  const sections = model.sections.map((section, index) => {
+  const sections = model.sections.flatMap((section, index) => {
     const page = section.rules.page;
     const wordMargins = page.docxMargins || page.margins;
     const groupStart = pageStarts.has(section.id);
-    const chrome = chromeDocx(section, model.values, context, groupStart);
     context.body = section.rules.body;
     context.lineSpacing = section.rules.lineSpacing || null;
     context.footnoteStyle = section.rules.footnotes?.style || null;
-    return {
-      children: docxChildren(section, context),
-      headers: chrome.headers, footers: chrome.footers,
-      properties: {
-        type: index === 0 ? undefined : groupStart ? SectionType.NEXT_PAGE : SectionType.CONTINUOUS,
-        titlePage: chrome.titlePage,
-        ...(section.verticalAlign === "bottom" ? { verticalAlign: VerticalAlign.BOTTOM } : {}),
-        page: {
-          size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
-          margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM), footer: twip(page.footer?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM) },
-          pageNumbers: { start: page.numbering.restart ? (page.numbering.startAt || 1) : undefined, formatType: pageFormat(page.numbering.format) },
-        },
+    const content = docxChildren(section, context);
+    const properties = (type, titlePage, continued = false) => ({
+      type,
+      titlePage,
+      ...(section.verticalAlign === "bottom" ? { verticalAlign: VerticalAlign.BOTTOM } : {}),
+      page: {
+        size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
+        margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM), footer: twip(page.footer?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM) },
+        pageNumbers: { start: continued ? undefined : page.numbering.restart ? (page.numbering.startAt || 1) : undefined, formatType: pageFormat(page.numbering.format) },
       },
-    };
+    });
+    const firstChrome = chromeDocx(section, model.values, context, groupStart, groupStart && Boolean(content.startsWithChapter));
+    // numbering.omitOnChapterStart: every later chapter opening is a Word section of its own (numbering continues, first page prints no number).
+    const splits = content.chapterSplits || [];
+    const bounds = [0, ...splits, content.length];
+    const result = [{
+      children: content.slice(0, bounds[1]),
+      headers: firstChrome.headers, footers: firstChrome.footers,
+      properties: properties(index === 0 ? undefined : groupStart ? SectionType.NEXT_PAGE : SectionType.CONTINUOUS, firstChrome.titlePage),
+    }];
+    for (let part = 1; part < bounds.length - 1; part += 1) {
+      const chrome = chromeDocx(section, model.values, context, false, true);
+      result.push({ children: content.slice(bounds[part], bounds[part + 1]), headers: chrome.headers, footers: chrome.footers, properties: properties(SectionType.NEXT_PAGE, chrome.titlePage, true) });
+    }
+    return result;
   });
   if (nativeToc) {
     const rule = nativeToc.generatedIndex;

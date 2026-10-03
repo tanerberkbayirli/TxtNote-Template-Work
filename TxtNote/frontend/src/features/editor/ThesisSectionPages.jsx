@@ -3,7 +3,7 @@ import { flushSync } from "react-dom";
 import { footnotesFromHtml } from "../../lib/academicDocument.js";
 import { focusEditableStart } from "../../lib/richText.js";
 import { resolveChromeText, resolvePageNumberStyle } from "../../thesis/engine.js";
-import { flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, thesisGroupHasPageContent } from "../../thesis/pageLayout.js";
+import { chapterStartPageIndexes, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, thesisGroupHasPageContent } from "../../thesis/pageLayout.js";
 import { pageFootnotesSupported } from "../../thesis/footnotes.js";
 import { cssLineBaselineOffset } from "../../thesis/wordBaseline.js";
 import { RichTextBody } from "./RichTextBody";
@@ -89,7 +89,7 @@ function caretPointFromClient(x, y) {
   return range ? { node: range.startContainer, offset: range.startOffset } : null;
 }
 
-export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSectionFocus, onFormatChange, onTextChange, onPageCount, footnotes }) {
+export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSectionFocus, onFormatChange, onTextChange, onPageCount, onChapterStarts, footnotes }) {
   const section = group.sections[0];
   const articleRef = useRef(null);
   const flowRef = useRef(null);
@@ -164,8 +164,17 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
     report(flow.offsetHeight, false);
     const observer = new ResizeObserver(([entry]) => report(entry.borderBoxSize?.[0]?.blockSize ?? flow.offsetHeight, true));
     observer.observe(flow);
-    return () => observer.disconnect();
-  }, [group.id, emptyFlow, metrics.contentHeightPx, metrics.rowGapPx, onPageCount]);
+    // numbering.omitOnChapterStart: which pages open a chapter is measured from the rendered flow (re-read when the content changes).
+    let frame = 0, mutations = null;
+    const omit = Boolean(group.rules.page.numbering?.omitOnChapterStart) && onChapterStarts && !emptyFlow;
+    const readStarts = () => { frame = 0; onChapterStarts(group.id, chapterStartPageIndexes(flow, metrics)); };
+    if (omit) {
+      readStarts();
+      mutations = new MutationObserver(() => { if (!frame) frame = requestAnimationFrame(readStarts); });
+      mutations.observe(flow, { childList: true, subtree: true, characterData: true });
+    } else onChapterStarts?.(group.id, null);
+    return () => { observer.disconnect(); mutations?.disconnect(); if (frame) cancelAnimationFrame(frame); };
+  }, [group.id, emptyFlow, metrics.contentHeightPx, metrics.rowGapPx, onPageCount, onChapterStarts, group.rules.page.numbering?.omitOnChapterStart]);
 
   return <div className="thesis-display-frame mx-auto shrink-0" style={{ width: `${metrics.widthPx * zoom}px`, height: `${stackHeight * zoom}px` }}>
     <div className="thesis-page-stack" style={{ width: `${page.widthMm}mm`, height: `${stackHeight}px`, transform: `scale(${zoom})`, transformOrigin: "top left" }}>

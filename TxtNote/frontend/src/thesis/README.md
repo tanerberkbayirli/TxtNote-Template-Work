@@ -121,3 +121,7 @@ Opt-in template keys, documented in `schema.d.ts` and `orchestration/reports/ENG
 - `textTransformExceptions`: lower-case words inside uppercase/capitalized headings (`transformExceptions.js`; wrapper spans are never stored).
 
 Proofs: `src/lib/thesisBatchB.test.js` (unit), `tests/batchb-measure.py` (real PDF/DOCX export per scenario), `tests/batchb-ui.mjs` (editor behaviour); fixtures in `tests/batchb-fixture.mjs` are served by `tests/thesis-batchb.html` through the editor's `templateRegistry` prop.
+
+## Page numbering: `omitOnChapterStart`
+
+`page.numbering.omitOnChapterStart` (opt-in, default off) hides the number on every page that opens a chapter while still counting it. A chapter-opening page is the page on which a level-1 heading with a forced page break starts, or the first content of a page group. The editor measures those pages from the rendered flow (`chapterStartPageIndexes`), the sheet chrome omits the label, and the layout PDF (drawn from the editor DOM) follows. In DOCX each later chapter becomes its own next-page Word section with `titlePg`, a number-free first-page header/footer and continued page numbering. Contents/list page labels keep the counted number. The legacy fallback PDF writer (`export.js` `pdfChrome`) does not implement it.

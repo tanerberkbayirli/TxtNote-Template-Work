@@ -53,6 +53,8 @@ export interface NumberingRule {
   widthMm?: Length;
   /** With align "center" and no xMm/widthMm box: centre the number on the physical page instead of the text frame (matters when left and right margins differ). Vertical placement is unchanged. Default false. */
   centerOnPage?: boolean;
+  /** Opt-in (default false): a page that opens a chapter (level-1 heading starting its own page, or the first content of a page group) is counted but prints no number. Editor and layout PDF read the rendered pages; Word gets one section per chapter (next page, titlePg, number-free first-page footer/header, numbering continued). Contents/list page labels still show the counted number. */
+  omitOnChapterStart?: boolean;
 }
 export interface PageRule {
   size: string;

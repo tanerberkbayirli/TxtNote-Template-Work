@@ -122,10 +122,19 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const model = useMemo(() => sourceModel ? resolveGeneratedIndexes(sourceModel, indexResolution.pages || {}, indexResolution.counts) : null, [sourceModel, indexResolution]);
   const generatedPageTargets = useMemo(() => sourceModel ? generatedIndexPageTargets(sourceModel) : [], [sourceModel]);
   const pageGroups = useMemo(() => model ? groupThesisSections(model.sections) : [], [model]);
-  const pageModel = useMemo(() => buildThesisPageModel(pageGroups, pageCounts), [pageGroups, pageCounts]);
+  const [chapterStarts, setChapterStarts] = useState({});
+  const pageModel = useMemo(() => buildThesisPageModel(pageGroups, pageCounts, chapterStarts), [pageGroups, pageCounts, chapterStarts]);
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
   const thesisWordCount = `${plainTitle} ${[...(papersRef.current?.querySelectorAll('[contenteditable="true"]') || [])].map((node) => node.innerText || node.textContent || "").join(" ")}`.trim().split(/\s+/u).filter(Boolean).length;
   useLayoutEffect(() => { committedPaginationStateRef.current = { indexResolution, footnoteViews }; }, [indexResolution, footnoteViews]);
+  const onChapterStarts = useCallback((groupId, starts) => setChapterStarts((current) => {
+    const before = current[groupId];
+    if (!starts && !before) return current;
+    if (starts && before && starts.size === before.size && [...starts].every((index) => before.has(index))) return current;
+    const next = { ...current };
+    if (starts) next[groupId] = starts; else delete next[groupId];
+    return next;
+  }), []);
   const onPageCount = useCallback((groupId, count) => setPageCounts((current) => current[groupId] === count ? current : { ...current, [groupId]: count }), []);
   const css = useMemo(() => model ? buildThesisCss(model) + (THESIS_PAGED_LAYOUT ? thesisPagedCss(pageGroups) : "") : "", [model, pageGroups]);
   // Opt-in Word line placement: measure this browser's baseline of every text style (paint-only offsets).
@@ -481,7 +490,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
         <div ref={papersRef} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
         {pageGroups.map((group, index) => {
-            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={(id) => { setActiveSectionId(id); setActiveFormat(bodyRefs.current[id]?.activeFormat || {}); }} onFormatChange={(id, format) => { if (activeSectionId === id) setActiveFormat(format || {}); }} onTextChange={onTextChange} onPageCount={onPageCount} footnotes={footnoteViews[group.id]} />;
+            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={(id) => { setActiveSectionId(id); setActiveFormat(bodyRefs.current[id]?.activeFormat || {}); }} onFormatChange={(id, format) => { if (activeSectionId === id) setActiveFormat(format || {}); }} onTextChange={onTextChange} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} />;
             const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);
             return rulersVisible ? <div key={`${model.templateId}:${group.id}`} className="mx-auto"><LayoutRulers page={group.rules.page} zoom={zoom} unit={rulerUnit} guides={guides} onGuidesChange={(next) => interaction.commitThesis({ ...thesis, layout: { ...layoutState, guides: [...layoutState.guides.filter((guide) => guide.sectionId && guide.sectionId !== group.id), ...next.map((guide) => ({ ...guide, sectionId: group.id }))] } }, "action")}>{sheet}</LayoutRulers></div> : sheet;
           })}

@@ -120,3 +120,6 @@ Tests changed because DOCX spacing values legitimately moved: thesisAkuCografya,
 
 | G1 | page number centred on the physical page when left ≠ right margin (opt-in) | `page.numbering.centerOnPage: true` (align "center", no xMm box) | afsu-eczacilik | editor box = full page width; DOCX footer indent = left−right margin; vertical unchanged; thesisPageNumberGeometry.test.js |
 | G2 | text after a captioned figure keeps the body space-after as a box gap (opt-in) | `typography.lineSpacing.figureExitGap: "spacing"` (with blockGap "paragraphPitch") | afsu-eczacilik | default "pitch" unchanged; thesisAfsuEczacilikProje.test.js |
+
+## page.numbering.omitOnChapterStart (opt-in)
+Page opening a chapter (H1 with forced page break / first content of a page group) is counted but prints no number. Editor (chapterStartPageIndexes -> buildThesisPageModel), layout PDF (reads editor chrome), DOCX (one next-page section per chapter, titlePg, number-free first-page footer/header, numbering continued). Tests: TxtNote/frontend/src/lib/thesisOmitOnChapterStart.test.js. First user: mcbu-tip-uzmanlik. Fallback PDF writer not covered.
