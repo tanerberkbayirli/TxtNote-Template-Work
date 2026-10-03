@@ -310,6 +310,18 @@ describe("thesis export", () => {
     assert.equal(count(/w:fldCharType="begin"/g), count(/w:fldCharType="end"/g));
     assert.equal(count(/w:fldCharType="begin"/g), count(/w:fldCharType="separate"/g));
   });
+  it("emits TC index fields only as complex-field runs inside paragraphs (no fldSimple)", async () => {
+    const { template } = await resolveThesisTemplate({ templateId: "aku-matematik-lisans-tr-v1" });
+    const model = compileThesisDocument(structuredClone(template), {}, "Tez", "<h1>Bir</h1><h2>Iki</h2><p>Metin</p>");
+    const entries = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
+    const xml = strFromU8(entries["word/document.xml"]);
+    assert.doesNotMatch(xml, /<w:fldSimple[^>]*w:instr="TC /);
+    assert.match(xml, /<w:r><w:instrText xml:space="preserve"> TC &quot;/);
+    for (const m of xml.matchAll(/<w:instrText[^>]*> TC /g)) {
+      const before = xml.slice(0, m.index);
+      assert.ok(before.lastIndexOf("<w:p>") > before.lastIndexOf("</w:p>") || before.lastIndexOf("<w:p ") > before.lastIndexOf("</w:p>"), "TC instr must sit inside a w:p");
+    }
+  });
   it("emits no <undefined> elements for any registered thesis template", async () => {
     for (const { id } of THESIS_TEMPLATE_REGISTRY) {
       const { template } = await resolveThesisTemplate({ templateId: id });

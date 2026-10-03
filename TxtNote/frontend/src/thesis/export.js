@@ -175,7 +175,7 @@ export async function buildThesisPdf(model) {
   for (const group of groupThesisSections(model.sections)) {
     const { page } = group.rules;
     const numbering = page.numbering;
-    if (numbering.restart) logicalPage = (numbering.startAt || 1) - 1;
+    if (numbering.restart) logicalPage = (numbering.startAt ?? 1) - 1;
     if (!thesisGroupHasPageContent(group)) continue;
     let sectionPage = 0;
     let y = page.margins.topMm;
@@ -400,7 +400,11 @@ function tocSpecialField(entry) {
   const title = String(entry.title || "").replace(/"/g, '\\"');
   const level = Number.isFinite(entry.wordTocLevel) ? entry.wordTocLevel : entry.level || 1;
   const noPage = entry.includePageNumber === false ? " \\n" : "";
-  return new SimpleField(`TC "${title}" \\f A \\l ${level}${noPage}`, { text: "", vanish: true });
+  // Complex field runs (begin / instrText / end). A w:fldSimple TC made Word scramble section order and drop page numbers.
+  const xml = `<w:p><w:r><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:instrText xml:space="preserve"> ${fieldXmlText(`TC "${title}" \\f A \\l ${level}${noPage}`)} </w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p>`;
+  const wrapper = ImportedXmlComponent.fromXmlString(xml);
+  const holder = wrapper.root.find((child) => child instanceof ImportedXmlComponent) || wrapper;
+  return holder.root.filter((child) => child instanceof ImportedXmlComponent);
 }
 
 /** Empty paragraph exactly `heightMm` tall (Word has no bare vertical box). */
@@ -680,7 +684,7 @@ function docxChildren(section, context) {
   const titleAnchor = titleEntry?.anchor;
   if (titleAnchor) {
     const row = context.tocRowsByAnchor?.get(titleAnchor);
-    const tc = row ? [tocSpecialField({ ...titleEntry, wordTocLevel: row.includePageNumber === false ? 9 : row.level, includePageNumber: row.includePageNumber })] : [];
+    const tc = row ? [...tocSpecialField({ ...titleEntry, wordTocLevel: row.includePageNumber === false ? 9 : row.level, includePageNumber: row.includePageNumber })] : [];
     children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] }), ...tc] }));
   }
   if (section.layout) {
@@ -744,7 +748,7 @@ function docxChildren(section, context) {
         else if (headingBreaks && style.pageBreakBefore) { (children.chapterSplits ||= []).push(children.length); headStyle = { ...headStyle, pageBreakBefore: false }; }
       }
       const paragraph = docxParagraph(runs, chain(withGap(headStyle)), context, { style: sourceStyleId, anchor: block.thesisAnchor });
-      if (indexedRow?.tocTitle) paragraph.root.push(tocSpecialField({ ...indexedRow, title: indexedRow.rowTitle || indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
+      if (indexedRow?.tocTitle) paragraph.root.push(...tocSpecialField({ ...indexedRow, title: indexedRow.rowTitle || indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
       children.push(paragraph);
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
@@ -936,7 +940,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       page: {
         size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
         margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM), footer: twip(page.footer?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM) },
-        pageNumbers: { start: continued ? undefined : page.numbering.restart ? (page.numbering.startAt || 1) : undefined, formatType: pageFormat(page.numbering.format) },
+        pageNumbers: { start: continued ? undefined : page.numbering.restart ? (page.numbering.startAt ?? 1) : undefined, formatType: pageFormat(page.numbering.format) },
       },
     });
     const firstChrome = chromeDocx(section, model.values, context, groupStart, groupStart && Boolean(content.startsWithChapter));

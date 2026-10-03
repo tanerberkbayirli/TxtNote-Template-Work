@@ -492,7 +492,10 @@ export function thesisSectionCss(section) {
   if (section.generatedIndex) {
     const index = section.generatedIndex;
     rules.push(`${scope} .thesis-toc{${textCss(index.style)}text-indent:0;list-style:none;padding:0;}`);
-    rules.push(`${scope} .thesis-toc li{display:flex;align-items:baseline;break-inside:avoid;margin:0;}`);
+    // A row style's own spacing (Word paragraph spacing) applies to every generated row, not once to the list box.
+    const rowBefore = Number(index.style?.spaceBeforePt) || 0, rowAfter = Number(index.style?.spaceAfterPt) || 0;
+    if (rowBefore || rowAfter) rules.push(`${scope} .thesis-toc{margin-top:0;margin-bottom:0;}`);
+    rules.push(`${scope} .thesis-toc li{display:flex;align-items:baseline;break-inside:avoid;margin:${rowBefore}pt 0 ${rowAfter}pt;}`);
     rules.push(`${scope} .thesis-index-text{min-width:0;white-space:normal}${scope} .thesis-index-leader{flex:1;min-width:4mm;overflow:hidden;white-space:nowrap}${scope} .thesis-index-page{flex:none;min-width:${index.pageColumnWidthMm > 0 ? `${index.pageColumnWidthMm}mm;width:${index.pageColumnWidthMm}mm` : "8mm"};text-align:${index.pageNumberAlignment};}`);
     if (index.pageHeading) rules.push(`${scope} .thesis-index-page-heading{${textCss({ ...index.style, ...index.pageHeadingStyle })}text-align:right;text-indent:0;margin:0;}`);
     for (const level of Object.keys(headings)) rules.push(`${scope} [data-index-level="${level}"]{padding-left:${(Number(level) - 1) * index.indentMm}mm;}`);

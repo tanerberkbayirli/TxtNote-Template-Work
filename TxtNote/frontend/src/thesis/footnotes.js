@@ -229,7 +229,7 @@ function cutTarget(container, index, limit, ctx) {
       if (inner) return inner;
       // A container that breaks across pages fills its column, so reaching below the
       // limit means nothing by itself; only its own loose text (legacy notes) can cross.
-      if (![...child.childNodes].some((node) => node.nodeType === 3 && node.data.trim())) return null;
+      if (![...child.childNodes].some((node) => node.nodeType === 3 && node.data.replace(/[​-‍⁠﻿]/g, "").trim())) return null;
     }
     return { element: child, kind: "reserve", amount: pageEnd - limit };
   }
