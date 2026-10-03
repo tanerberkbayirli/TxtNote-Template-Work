@@ -236,10 +236,10 @@ describe("Batch B4 ordinal chapter labels on their own line, five heading levels
     const model = compile(ordinalTemplate(), body);
     const resolved = resolveGeneratedIndexes(model, Object.fromEntries(model.indexSources.map((s) => [s.anchor, { label: "4" }])));
     const { xml, styles } = await docx(resolved);
-    const flow = [...xml.matchAll(/<w:br\/>|<w:tab\/>|<w:pStyle w:val="(Heading\d)"\/>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1] ? `[${m[1]}]` : m[2] ?? (m[0] === "<w:br/>" ? "\\n" : "\\t")).join("|");
-    assert.match(flow, /\[Heading1\]\|BİRİNCİ BÖLÜM\|\\n\|KURAM\|/);
-    assert.match(flow, /\[Heading5\]\|1\.1\.1\.1\. Beş/);
-    assert.match(styles, /w:styleId="Heading5"[\s\S]*?w:outlineLvl w:val="4"/);
+    const flow = [...xml.matchAll(/<w:br\/>|<w:tab\/>|<w:pStyle w:val="((?:Thesis)?Heading\d\w*)"\/>|<w:t[^>]*>([^<]*)<\/w:t>/g)].map((m) => m[1] ? `[${m[1]}]` : m[2] ?? (m[0] === "<w:br/>" ? "\\n" : "\\t")).join("|");
+    assert.match(flow, /\[(?:Thesis)?Heading1\w*\]\|BİRİNCİ BÖLÜM\|\\n\|KURAM\|/);
+    assert.match(flow, /\[(?:Thesis)?Heading5\w*\]\|1\.1\.1\.1\. Beş/);
+    assert.match(styles, /w:styleId="(?:Thesis)?Heading5\w*"[\s\S]*?w:outlineLvl w:val="4"/);
     // TOC: chapter row = label paragraph + title paragraph without page number; level 2 keeps its tab + page
     assert.match(flow, /BİRİNCİ BÖLÜM\|KURAM\|1\. Alt\|\\t\|4/);
     assert.doesNotMatch(flow, /KURAM\|\\t/);
