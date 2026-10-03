@@ -68,6 +68,9 @@ export function gapBetween(rules, prev, next) {
   // Opt-in `lineSpacing.figureExitGap: "spacing"`: text after a captioned figure keeps the body space-after as a plain box gap
   // (the way a template states "N pt between the figure-plus-caption block and the text") instead of the paragraph-pitch rule.
   if (prev.kind === "figure" && spacing.figureExitGap === "spacing" && (next.kind === "p" || next.kind === "h" || next.kind === "note")) return round(blank + next.entry.before);
+  // Opt-in `lineSpacing.noteExitGap: "spacing"`: text after a table note (a shorter, single-spaced line) is the note's own space-after plus the body
+  // space-after (the template's empty "bir satır boşluk" paragraph) plus the next space-before, instead of one body-paragraph pitch.
+  if (prev.kind === "note" && spacing.noteExitGap === "spacing" && (next.kind === "p" || next.kind === "h" || next.kind === "note")) return round(prev.exit.after + blank + next.entry.before);
   const pitch = lineBox(body, spacing) + blank;
   return round(pitch - prev.exit.bottomBase - next.entry.ascent + next.entry.before);
 }

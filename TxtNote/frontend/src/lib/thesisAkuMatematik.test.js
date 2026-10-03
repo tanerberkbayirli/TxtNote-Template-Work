@@ -6,6 +6,7 @@ import { buildThesisDocx } from "../thesis/export.js";
 import { numberThesisPages } from "../thesis/pageLayout.js";
 import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/registry.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
+import { blockDescriptors, gapBetween } from "../thesis/blockGap.js";
 import { akuMatematikLisans } from "../thesis/templates/aku-matematik.js";
 
 const docxXml = async (model) => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
@@ -48,7 +49,7 @@ describe("AKÜ Matematik lisans tezi template (aku-matematik-lisans-tr-v1)", () 
     assert.deepEqual([t.bibliography.style.spaceBeforePt, t.bibliography.style.spaceAfterPt, t.bibliography.style.hangingIndentMm, t.bibliography.style.lineHeight, t.bibliography.style.fontSizePt], [6, 0, 12.5, 1.5, 12]);
     assert.equal(t.tables.continuation.format, "{label} {number} (Devam) {title}", "template page: 'Çizelge 4.1 (Devam) …'");
     assert.deepEqual(t.tables.borders, { preset: "threeRule", widthPt: 0.5 });
-    assert.deepEqual(t.typography.paragraphStyles.tableNote, { fontSizePt: 10, lineHeight: 1, align: "justify", spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0 });
+    assert.deepEqual(t.typography.paragraphStyles.tableNote, { fontSizePt: 10, lineHeight: 1, align: "justify", spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 0 });
     assert.equal(t.equations.numberAlign, "right");
   });
 
@@ -122,5 +123,15 @@ describe("AKÜ Matematik lisans tezi template (aku-matematik-lisans-tr-v1)", () 
     assert.match(xml, /w:spacing w:after="414" w:before="0" w:line="360" w:lineRule="auto"/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="lowerRoman"\/>/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="decimal"\/>/);
+  });
+
+  it("table note -> heading gap is note after + empty line (official p13 14.09 mm), pitch rule stays default elsewhere", () => {
+    const rules = section(compile(), "introduction").rules;
+    const d = Object.fromEntries(blockDescriptors(rules).map((x) => [x.key, x]));
+    const gap = gapBetween(rules, d["p:tableNote"], d.h2);
+    assert.equal(gap, 6 + rules.body.spaceAfterPt + (rules.headings["2"].spaceBeforePt || 0));
+    const pitch = structuredClone(rules);
+    delete pitch.lineSpacing.noteExitGap;
+    assert.ok(gapBetween(pitch, d["p:tableNote"], d.h2) > gap, "default stays the paragraph-pitch rule");
   });
 });

@@ -210,10 +210,10 @@ const base = {
     },
     // DipnotMetni is based on Normal, which (like docDefaults) carries no size: Word default 10 pt, single line (MEASURED style chain).
     footnotes: { placement: "pageBottom", numbering: "document", fontFamily: FONT, fontSizePt: 10, lineHeight: 1 },
-    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word", paragraphSpacing: "additive", blockGap: "paragraphPitch" },
-    // Table notes: "Çizelge altındaki açıklamalar 10 punto ve 1 satır aralığıyla yazılmalıdır" (EXPLICIT); 6 pt before = the sample note's w:before=120; its 6 pt after (w:after=120)
-    // precedes the empty "(Bir boşluk)" paragraph and is carried by blockGap (Word uses the larger of after/before, not the sum), so 0 here.
-    paragraphStyles: { tableNote: { fontSizePt: 10, lineHeight: 1, align: "justify", spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0 } },
+    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word", paragraphSpacing: "additive", blockGap: "paragraphPitch", noteExitGap: "spacing" },
+    // Table notes: "Çizelge altındaki açıklamalar 10 punto ve 1 satır aralığıyla yazılmalıdır" (EXPLICIT); 6 pt before = the sample note's w:before=120, 6 pt after = w:after=120.
+    // lineSpacing.noteExitGap "spacing": note -> next block = 6 pt + the empty "(Bir boşluk)" line (official p13 note baseline 132.61 -> heading 146.70 mm = 14.09 mm).
+    paragraphStyles: { tableNote: { fontSizePt: 10, lineHeight: 1, align: "justify", spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 0 } },
   },
   placeholders: {
     THESIS_TITLE: { label: "Tez başlığı", type: "text", required: true },

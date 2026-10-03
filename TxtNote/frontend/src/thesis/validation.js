@@ -196,6 +196,7 @@ export function validateThesisTemplate(rawTemplate) {
   if (lineSpacing !== undefined && !(object(lineSpacing) && (lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
   if (lineSpacing?.blockGap !== undefined && !(lineSpacing.blockGap === "paragraphPitch" && lineSpacing.mode === "word" && lineSpacing.baseline === "word")) errors.push('typography.lineSpacing.blockGap yalnız "paragraphPitch" ve mode/baseline "word" ile geçerli');
   if (lineSpacing?.figureExitGap !== undefined && !((["pitch", "spacing"].includes(lineSpacing.figureExitGap)) && lineSpacing.blockGap === "paragraphPitch")) errors.push('typography.lineSpacing.figureExitGap yalnız "pitch"|"spacing" ve blockGap "paragraphPitch" ile geçerli');
+  if (lineSpacing?.noteExitGap !== undefined && !((["pitch", "spacing"].includes(lineSpacing.noteExitGap)) && lineSpacing.blockGap === "paragraphPitch")) errors.push('typography.lineSpacing.noteExitGap yalnız "pitch"|"spacing" ve blockGap "paragraphPitch" ile geçerli');
   if (lineSpacing?.paragraphSpacing !== undefined && !["collapse", "additive"].includes(lineSpacing.paragraphSpacing)) errors.push("typography.lineSpacing.paragraphSpacing geçersiz");
   if (lineSpacing?.baseline !== undefined && !(lineSpacing.mode === "word" && ["css", "word"].includes(lineSpacing.baseline))) errors.push("typography.lineSpacing.baseline geçersiz");
   if (template.validation !== undefined) {

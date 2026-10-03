@@ -300,6 +300,8 @@ export type LineSpacing = { mode: "multiplier" } | {
   blockGap?: "paragraphPitch";
   /** With blockGap "paragraphPitch": "spacing" makes the gap from a figure caption (below the figure) to the next paragraph/heading/note exactly the body space-after (a box gap) instead of one body paragraph pitch. Default "pitch" (unchanged). */
   figureExitGap?: "pitch" | "spacing";
+  /** With blockGap "paragraphPitch": "spacing" makes the gap from a table note to the next paragraph/heading/note = note space-after + body space-after + next space-before instead of one body paragraph pitch. Default "pitch" (unchanged). */
+  noteExitGap?: "pitch" | "spacing";
 };
 export interface ThesisTemplate {
   schemaVersion: 1;
