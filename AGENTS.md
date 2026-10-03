@@ -1441,6 +1441,17 @@ Anything before that is work in progress.
 
 
 
+### 28A. Two-tier Done (approved by the user, 2026-10-03)
+
+Validation is performed by the conformance checker (`orchestration/tools/check.mjs`) against cached, source-derived references.
+
+- **Tier 1 — release-blocking.** Every requirement in these categories that the source supports must be PASS in the checker: page size and margins, exact font face, font sizes, line spacing and paragraph spacing, heading format and position, page-number position, format and sequence, fixed-page geometry (cover, inner cover, approval, declaration/ethics blocks), and DOCX validity (opens in Word, correct page order). A FAIL or an unruled CONFLICT here blocks release.
+- **Tier 2 — documented edge cases.** Behaviour the official sources do not define (e.g. a 3-line title overflowing the cover, more jurors than the example shows) is labelled `UNKNOWN` in the spec and context pack, with the engine's deterministic default behaviour described. Tier 2 items do not block release and are never reported as PASS.
+
+A target is Done when all Tier 1 checks PASS, Tier 2 items are documented, the regression run over all checker-covered targets is clean, and the work is checkpointed. Nothing in this section relaxes tolerances, the exact-font rule, or evidence classification.
+
+
+
 \---
 
 
