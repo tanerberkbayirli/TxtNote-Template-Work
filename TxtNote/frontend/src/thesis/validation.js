@@ -52,7 +52,7 @@ function validateNumbering(rule, path) {
   if (!positions.has(rule.position)) errors.push(`${path}.position geçersiz`);
   if (!["left", "center", "right"].includes(rule.align)) errors.push(`${path}.align geçersiz`);
   if (!numberingFormats.has(rule.format)) errors.push(`${path}.format geçersiz`);
-  if (rule.startAt !== undefined && (!Number.isInteger(rule.startAt) || rule.startAt < 1)) errors.push(`${path}.startAt geçersiz`);
+  if (rule.startAt !== undefined && (!Number.isInteger(rule.startAt) || rule.startAt < 0)) errors.push(`${path}.startAt geçersiz`);
   if (rule.style !== undefined && (!object(rule.style) || (rule.style.fontSizePt !== undefined && !(positive(rule.style.fontSizePt) && rule.style.fontSizePt <= 96)) || (rule.style.fontFamily !== undefined && !text(rule.style.fontFamily)))) errors.push(`${path}.style geçersiz`);
   if (rule.omitOnChapterStart !== undefined && typeof rule.omitOnChapterStart !== "boolean") errors.push(`${path}.omitOnChapterStart geçersiz`);
   if (rule.centerOnPage !== undefined && typeof rule.centerOnPage !== "boolean") errors.push(`${path}.centerOnPage geçersiz`);

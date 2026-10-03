@@ -50,4 +50,30 @@ describe("AKÜ Felsefe templates (lisans bitirme tezi, seminer)", () => {
     const rowStart = xml.lastIndexOf("<w:p>", fourthLevelRow);
     assert.match(xml.slice(rowStart, fourthLevelRow), /<w:ind[^>]*w:left="850"/, "the fourth TOC level is emitted at its deeper indent");
   });
+
+  it("generates the source-required covers (measured rows) and numbers from the preface / first page after the cover", () => {
+    const covers = (t) => t.sections.filter((section) => section.group === "cover");
+    assert.deepEqual(covers(akuFelsefeLisans).map((section) => section.id), ["outer-cover", "inner-cover"]);
+    assert.deepEqual(covers(akuFelsefeSeminer).map((section) => section.id), ["cover"]);
+    for (const [t, purpose] of [[akuFelsefeLisans, "LİSANS BİTİRME TEZİ"], [akuFelsefeSeminer, "FELSEFE SEMİNERİ"]]) {
+      for (const section of covers(t)) {
+        assert.equal(section.overrides.page.numbering.enabled, false);
+        const texts = section.blocks.filter((block) => block.type === "text").map((block) => block.value);
+        assert.deepEqual(texts.slice(0, 5), ["T.C.", "AFYON KOCATEPE ÜNİVERSİTESİ", "FEN EDEBİYAT FAKÜLTESİ", "FELSEFE BÖLÜMÜ", purpose]);
+        assert.equal(section.blocks.find((block) => block.field === "THESIS_TITLE").style.fontSizePt, 18);
+        assert.ok(section.blocks.some((block) => block.value === "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}"));
+        assert.ok(section.blocks.some((block) => block.field === "SUBMISSION_YEAR"));
+      }
+    }
+    assert.deepEqual(akuFelsefeLisans.sections.find((section) => section.id === "preface").overrides.page.numbering, { startAt: 1, restart: true });
+    assert.deepEqual(akuFelsefeSeminer.sections[0].overrides.page.numbering, { enabled: false, startAt: 0, restart: true });
+  });
+
+  it("covers carry the placeholder values into the DOCX and the seminar cover leaves page 1 for the introduction (startAt 0)", async () => {
+    const values = { THESIS_TITLE: "Platon", STUDENT_NAME: "Beyza BURSALİOĞLU", ADVISOR_TITLE: "Prof. Dr.", ADVISOR_NAME: "Kasım TURHAN", SUBMISSION_YEAR: "2017" };
+    const model = compileThesisDocument(akuFelsefeSeminer, { values, sectionContent: {} }, "Test", "<h1>Bir</h1><p>x</p>", []);
+    const xml = strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
+    for (const text of ["FELSEFE SEMİNERİ", "Beyza BURSALİOĞLU", "Prof. Dr. Kasım TURHAN", "AFYONKARAHİSAR", "2017"]) assert.ok(xml.includes(text), text);
+    assert.match(xml, /<w:pgNumType w:start="0"/);
+  });
 });

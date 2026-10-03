@@ -88,7 +88,7 @@ export function numberThesisPages(sections, pageCounts = {}, chapterStarts = {})
   let logicalPage = 0;
   return sections.map((section) => {
     const rule = section.rules.page.numbering;
-    if (rule.restart) logicalPage = (rule.startAt || 1) - 1;
+    if (rule.restart) logicalPage = (rule.startAt ?? 1) - 1;
     if (!thesisGroupHasPageContent(section)) return { sectionId: section.id, labels: [] };
     const count = Math.max(1, Math.floor(pageCounts[section.id] || 1));
     const indexLabels = [];
