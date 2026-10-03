@@ -468,7 +468,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       pickedEquation={pickedEquation} onEquationNumber={() => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) bodyRefs.current[owner]?.setEquationNumbered(math, math.getAttribute("data-eq-numbered") !== "true"); }}
       citableItems={citableItems} onInsertCitation={insertCitation} citeText={citeText} setCiteText={setCiteText} citeOpen={citeOpen} setCiteOpen={setCiteOpen}
       onAddFrame={addFrame} rulersVisible={rulersVisible} setRulersVisible={setRulersVisible} rulerUnit={rulerUnit} setRulerUnit={setRulerUnit}
-      navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily} />
+      navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily} page={layoutSection?.rules.page} />
     <div className="flex min-h-0 flex-1">
       {navigationOpen ? <ThesisNavigation sections={model.sections.map((section) => ({ id: section.id, title: section.title }))} headings={collectThesisHeadings(papersRef.current)} onClose={() => setNavigationOpen(false)} onNavigate={(sectionId, headingId) => {
         const sectionNode = papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(sectionId)}"]`);

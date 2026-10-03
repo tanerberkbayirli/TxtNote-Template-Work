@@ -24,6 +24,39 @@ async function main() {
   assert.equal(await page.getByRole("tab").count(), 6);
   await page.getByLabel("Yakınlaştır", { exact: true }).selectOption("100");
   assert.ok((await page.locator(".thesis-paper").first().boundingBox()).width > 780, "A4 stays on canvas at 100%");
+  await mkdir(output, { recursive: true });
+  for (const width of [1024, 1380, 1920]) {
+    await page.setViewportSize({ width, height: 920 });
+    for (const name of ["Dosya", "Giriş", "Ekle", "Düzen", "Başvurular", "Görünüm"]) {
+      await tab(name).click();
+      const panel = page.getByRole("tabpanel");
+      const panelBox = await panel.boundingBox();
+      const groups = panel.locator(".thesis-ribbon-group");
+      assert.ok(await groups.count() >= 3, `${name} has balanced functional groups`);
+      const lastBox = await groups.last().boundingBox();
+      const ribbonRight = lastBox.x + lastBox.width;
+      assert.ok(ribbonRight >= panelBox.x + panelBox.width * 0.95, `${name} fills the desktop ribbon width at ${width}px`);
+      const overflow = await panel.evaluate((element) => element.scrollWidth - element.clientWidth);
+      assert.ok(overflow <= 2, `${name} has no desktop horizontal overflow at ${width}px (overflow ${overflow}px)`);
+      const clipping = await panel.locator("button,select,input").evaluateAll((elements, bounds) => elements.filter((element) => {
+        if (element.disabled || getComputedStyle(element).display === "none") return false;
+        const rect = element.getBoundingClientRect();
+        const groupRect = element.closest(".thesis-ribbon-group")?.getBoundingClientRect();
+        return rect.width > 0 && (rect.left < bounds.left - 2 || rect.right > bounds.right + 2 || (groupRect && (rect.left < groupRect.left - 2 || rect.right > groupRect.right + 2)));
+      }).map((element) => element.getAttribute("aria-label") || element.textContent?.trim()).filter(Boolean), { left: panelBox.x, right: panelBox.x + panelBox.width });
+      assert.deepEqual(clipping, [], `${name} controls fit inside the ribbon at ${width}px`);
+      if (width >= 1380) await page.screenshot({ path: path.join(output, `ribbon-${name.toLocaleLowerCase("tr-TR")}-${width}.png`), fullPage: false });
+    }
+  }
+  await page.setViewportSize({ width: 1380, height: 920 });
+  await tab("Giriş").click();
+
+  await body().click(); await page.keyboard.type("Style gallery probe"); await page.keyboard.press("Control+a");
+  await page.locator(".thesis-style-card").first().click();
+  assert.doesNotMatch(await body().evaluate((element) => element.innerHTML), /<h1\b/, "Normal gallery command keeps body text normal");
+  await page.keyboard.press("Control+a"); await page.locator(".thesis-style-card").nth(1).click();
+  assert.match(await body().evaluate((element) => element.innerHTML), /<h1\b[^>]*data-academic-heading="1"/, "Heading 1 gallery command changes the selected paragraph");
+  await page.keyboard.press("Control+a"); await page.keyboard.press("Backspace");
 
   await body().click(); await page.keyboard.type("Ribbon format selection persists"); await page.keyboard.press("Control+a");
   await page.getByLabel("Yazı boyutu", { exact: true }).selectOption("pt16");
@@ -65,7 +98,6 @@ async function main() {
 
   await page.evaluate(() => document.documentElement.classList.add("dark"));
   await page.setViewportSize({ width: 620, height: 900 });
-  await mkdir(output, { recursive: true });
   const screenshot = path.join(output, "dark-responsive.png");
   await page.screenshot({ path: screenshot, fullPage: false });
   assert.ok((await readFile(screenshot)).byteLength > 1000);
