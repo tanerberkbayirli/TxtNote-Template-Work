@@ -33,11 +33,13 @@ function textWidth(style, text) {
 }
 
 /** Plain copy of the typography a text op needs (computed style objects are live). */
-const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign });
+const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, backgroundColor: style.backgroundColor, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign });
 function pdfTextStyle(element, style, language) {
   const equation = element.closest?.(".math-formula--block");
   const equationFamily = equation && getComputedStyle(equation).getPropertyValue("--thesis-pdf-equation-font").trim();
-  return { ...textStyle(style), ...(equationFamily ? { fontFamily: equationFamily, pdfMetricsFontFamily: style.fontFamily } : {}), lang: element.closest?.("[lang]")?.getAttribute("lang") || language };
+  const highlight = element.closest?.(".fmt-highlight-yellow,.fmt-highlight-green,.fmt-highlight-cyan,.fmt-highlight-magenta");
+  const backgroundColor = highlight ? getComputedStyle(highlight).backgroundColor : style.backgroundColor;
+  return { ...textStyle(style), backgroundColor, ...(equationFamily ? { fontFamily: equationFamily, pdfMetricsFontFamily: style.fontFamily } : {}), lang: element.closest?.("[lang]")?.getAttribute("lang") || language };
 }
 
 function color(value) {
@@ -158,6 +160,16 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
 
   const words = (node, style, extra) => {
     const data = node.data;
+    const highlight = color(style.backgroundColor);
+    if (highlight) {
+      range.selectNodeContents(node);
+      for (const rect of range.getClientRects()) {
+        if (rect.width > 0 && rect.height > 0) {
+          const box = local(rect);
+          ops.push({ type: "rect", x: box.left, top: box.top, width: box.width, height: box.height, color: highlight, zIndex: extra.zIndex || 0 });
+        }
+      }
+    }
     const mathText = (text) => node.parentElement?.classList.contains("mathbb") ? doubleStruckMathText(text) : text;
     // Keep each special-page line as one text run. The browser and embedded PDF
     // font can differ slightly in glyph widths; separately painted words then
@@ -390,11 +402,24 @@ function assertPositionedFont(style, text, templateId) {
   void templateId;
 }
 
-function drawOp(pdf, op, pageTop, templateId) {
+export function clipPageRect(rect, pageTop, pageHeight) {
+  const top = Math.max(rect.top, pageTop);
+  const bottom = Math.min(rect.top + rect.height, pageTop + pageHeight);
+  return bottom > top ? { ...rect, top, height: bottom - top } : null;
+}
+
+function drawOp(pdf, op, pageTop, templateId, pageHeight) {
   if (op.type === "line") {
     const [x1, y1, x2, y2] = op.points;
     pdf.setDrawColor(...op.color); pdf.setLineWidth(op.width * MM);
     pdf.line(x1 * MM, (y1 - pageTop) * MM, x2 * MM, (y2 - pageTop) * MM);
+    return;
+  }
+  if (op.type === "rect") {
+    const clipped = clipPageRect(op, pageTop, pageHeight);
+    if (!clipped) return;
+    pdf.setFillColor(...op.color);
+    pdf.rect(clipped.x * MM, (clipped.top - pageTop) * MM, clipped.width * MM, clipped.height * MM, "F");
     return;
   }
   if (op.type === "image") {
@@ -478,7 +503,7 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
         (left.op.zIndex || 0) - (right.op.zIndex || 0)
         || Number(left.op.type === "text") - Number(right.op.type === "text")
         || left.order - right.order);
-      for (const { op } of ordered) drawOp(pdf, op, pageTop, templateId);
+      for (const { op } of ordered) drawOp(pdf, op, pageTop, templateId, metrics.heightPx);
     }
   }
   if (!pdf) throw new Error("Dışa aktarılacak sayfa yok");

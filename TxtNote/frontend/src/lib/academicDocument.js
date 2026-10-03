@@ -172,6 +172,9 @@ function runsFromNode(node) {
     italic: Boolean(node.classList?.contains("fmt-italic") || /^(I|EM)$/.test(node.tagName)),
     underline: Boolean(node.classList?.contains("fmt-underline") || node.tagName === "U"),
     strike: Boolean(node.classList?.contains("fmt-strike") || /^(S|DEL)$/.test(node.tagName)),
+    color: (node.className.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1],
+    highlight: (node.className.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1],
+    fontSizePt: Number((node.className.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
   };
   return [...node.childNodes].flatMap((child) => {
     const inner = runsFromNode(child);
@@ -183,10 +186,22 @@ function runsFromNode(node) {
         italic: run.italic || style.italic,
         underline: run.underline || style.underline,
         strike: run.strike || style.strike,
+        ...((run.color || style.color) ? { color: run.color || style.color } : {}),
+        ...((run.highlight || style.highlight) ? { highlight: run.highlight || style.highlight } : {}),
+        ...((run.fontSizePt || style.fontSizePt) ? { fontSizePt: run.fontSizePt || style.fontSizePt } : {}),
       };
     });
   });
 }
+
+const indentForNode = (node) => {
+  const level = Math.max(0, Math.min(8, Number(node?.getAttribute?.("data-txt-indent")) || 0));
+  return level ? level * 5 : 0;
+};
+const indentForRawAttributes = (attributes) => {
+  const level = Math.max(0, Math.min(8, Number(attr(attributes, "data-txt-indent")) || 0));
+  return level ? level * 5 : 0;
+};
 
 function alignOf(node) {
   if (!node?.classList) return "left";
@@ -314,6 +329,7 @@ function parseNodeList(nodes) {
         text: title,
         unnumbered,
         id: node.getAttribute("data-academic-id") || newId("h"),
+        ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}),
         keepWithNext: true,
       });
       continue;
@@ -324,7 +340,7 @@ function parseNodeList(nodes) {
         continue;
       }
       const runs = runsFromNode(node);
-      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs });
+      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs });
     }
   }
   return blocks;
@@ -378,7 +394,7 @@ function parseLineFlow(nodes, align) {
       // A trailing <br> draws no extra line; an empty <p></p> draws nothing at all.
       const drawsLine = paragraphRuns.some((run) => run.type === "break") || node.textContent.length > 0;
       while (paragraphRuns.at(-1)?.type === "break") paragraphRuns.pop();
-      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs: paragraphRuns });
+      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs: paragraphRuns });
     } else {
       blocks.push(...parseNodeList([node]));
     }
@@ -401,15 +417,36 @@ function runsFromHtmlFragment(inner) {
       if (tag === "br") { runs.push({ type: "break" }); continue; }
       if (match[0].startsWith("</")) {
         const index = stack.findLastIndex((entry) => entry.tag === tag);
-        if (index >= 0) stack.splice(index);
+        if (index >= 0) {
+          const link = tag === "a" ? stack[index] : null;
+          if (link?.link) {
+            const children = runs.splice(link.start);
+            runs.push({ type: "link", href: link.href, children });
+          }
+          stack.splice(index);
+        }
       } else if (!/^(img|hr|input)$/.test(tag) && !match[0].endsWith("/>")) {
-        stack.push({ tag, bold: /^(b|strong)$/.test(tag) || /\bfmt-bold\b/.test(attrs), italic: /^(i|em)$/.test(tag) || /\bfmt-italic\b/.test(attrs), underline: tag === "u" || /\bfmt-underline\b/.test(attrs), strike: /^(s|strike|del)$/.test(tag) || /\bfmt-strike\b/.test(attrs) });
+        stack.push({
+          tag,
+          ...(tag === "a" ? { link: true, href: attr(attrs, "href") || "", start: runs.length } : {}),
+          bold: /^(b|strong)$/.test(tag) || /\bfmt-bold\b/.test(attrs),
+          italic: /^(i|em)$/.test(tag) || /\bfmt-italic\b/.test(attrs),
+          underline: tag === "u" || /\bfmt-underline\b/.test(attrs),
+          strike: /^(s|strike|del)$/.test(tag) || /\bfmt-strike\b/.test(attrs),
+          color: (attrs.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1],
+          highlight: (attrs.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1],
+          fontSizePt: Number((attrs.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
+        });
       }
     } else {
       const value = decodeHtml(match[7] || "").replace(/\u200B/g, "");
       value.split("\n").forEach((part, index) => {
         if (index) runs.push({ type: "break" });
-        if (part) runs.push({ type: "text", text: part, ...Object.fromEntries(["bold", "italic", "underline", "strike"].map((key) => [key, stack.some((entry) => entry[key])])) });
+        if (part) runs.push({
+          type: "text", text: part,
+          ...Object.fromEntries(["bold", "italic", "underline", "strike"].map((key) => [key, stack.some((entry) => entry[key])])),
+          ...Object.fromEntries(["color", "highlight", "fontSizePt"].flatMap((key) => { const value = stack.findLast((entry) => entry[key])?.[key]; return value ? [[key, value]] : []; })),
+        });
       });
     }
   }
@@ -457,6 +494,7 @@ function parseWithRegex(html) {
         text: title,
         unnumbered,
         id: attr(rawAttr, "data-academic-id") || newId("h"),
+        ...(indentForRawAttributes(rawAttr) ? { indentMm: indentForRawAttributes(rawAttr) } : {}),
         keepWithNext: true,
       });
       continue;
@@ -513,6 +551,7 @@ function parseWithRegex(html) {
         type: tag === "blockquote" ? "quote" : "paragraph",
         align: /fmt-align-center/.test(rawAttr) ? "center" : /fmt-align-right/.test(rawAttr) ? "right" : /fmt-align-justify/.test(rawAttr) ? "justify" : /fmt-align-left/.test(rawAttr) ? "left" : undefined,
         line: false,
+        ...(indentForRawAttributes(rawAttr) ? { indentMm: indentForRawAttributes(rawAttr) } : {}),
         ...(attr(rawAttr, "data-thesis-style") ? { thesisStyle: attr(rawAttr, "data-thesis-style") } : {}),
         runs: runs.length ? runs : [{ type: "text", text: stripTags(inner) }],
       });

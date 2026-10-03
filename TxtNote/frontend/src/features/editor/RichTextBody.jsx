@@ -153,6 +153,39 @@ export const RichTextBody = forwardRef(({
 
   useImperativeHandle(ref, () => ({
     applySize: (size) => applyPatch({ size }),
+    applyTextColor: (color) => applyPatch({ color }),
+    applyHighlight: (color) => applyPatch({ highlight: color || "none" }),
+    clearFormatting: () => applyPatch({ clearFormatting: true }),
+    /** Paragraph indent level is source markup, measured in 5 mm steps by all thesis renderers. */
+    changeIndent: (direction) => {
+      const delta = direction === "increase" || direction === 1 ? 1 : direction === "decrease" || direction === -1 ? -1 : 0;
+      if (!delta) return;
+      withRange((root, range) => {
+        if (!range) return;
+        let paragraphs = [...root.querySelectorAll("p,h1,h2,h3,h4,h5,h6,blockquote")]
+          .filter((node) => {
+            try { return range.collapsed ? node.contains(range.startContainer) : range.intersectsNode(node); }
+            catch { return false; }
+          });
+        if (!paragraphs.length && !root.querySelector("table,figure,img,ul,ol,pre,.academic-figure,.academic-table-wrap,.math-formula,.academic-code,.code-block")) {
+          const inlineOnly = [...root.childNodes].every((node) => node.nodeType === Node.TEXT_NODE || (node.nodeType === Node.ELEMENT_NODE && /^(SPAN|A|B|STRONG|I|EM|U|S|DEL|BR)$/.test(node.tagName)));
+          if (inlineOnly && root.childNodes.length) {
+            const offsets = selectionTextOffsets(root, range);
+            const paragraph = root.ownerDocument.createElement("p");
+            while (root.firstChild) paragraph.appendChild(root.firstChild);
+            root.appendChild(paragraph);
+            paragraphs = [paragraph];
+            restoreSelectionTextOffsets(root, offsets);
+          }
+        }
+        for (const paragraph of paragraphs) {
+          const current = Math.max(0, Math.min(8, Number(paragraph.getAttribute("data-txt-indent")) || 0));
+          const next = Math.max(0, Math.min(8, current + delta));
+          if (next) paragraph.setAttribute("data-txt-indent", String(next));
+          else paragraph.removeAttribute("data-txt-indent");
+        }
+      });
+    },
     applyAlign,
     toggleStyle,
     clearLineDecorations,
@@ -775,4 +808,40 @@ function selectionClosest(root, selector) {
   if (!sel?.anchorNode || (root && !root.contains(sel.anchorNode))) return null;
   const el = sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement;
   return el?.closest?.(selector) ?? null;
+}
+
+function selectionTextOffsets(root, range) {
+  const offset = (container, position) => {
+    const before = root.ownerDocument.createRange();
+    before.selectNodeContents(root);
+    before.setEnd(container, position);
+    return before.toString().length;
+  };
+  try { return { start: offset(range.startContainer, range.startOffset), end: offset(range.endContainer, range.endOffset) }; }
+  catch { return null; }
+}
+
+function restoreSelectionTextOffsets(root, offsets) {
+  if (!offsets) return;
+  const doc = root.ownerDocument;
+  const nodes = [];
+  const walker = doc.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) nodes.push(node);
+  const point = (position) => {
+    let remaining = position;
+    for (const node of nodes) {
+      if (remaining <= node.data.length) return [node, remaining];
+      remaining -= node.data.length;
+    }
+    const last = nodes.at(-1);
+    return last ? [last, last.data.length] : [root, root.childNodes.length];
+  };
+  const [startNode, startOffset] = point(offsets.start);
+  const [endNode, endOffset] = point(offsets.end);
+  const range = doc.createRange();
+  range.setStart(startNode, startOffset);
+  range.setEnd(endNode, endOffset);
+  const selection = doc.getSelection();
+  selection?.removeAllRanges();
+  selection?.addRange(range);
 }

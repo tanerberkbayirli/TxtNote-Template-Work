@@ -20,6 +20,10 @@ import PageLayoutInspector from "./PageLayoutInspector.jsx";
 import LayoutRulers from "./LayoutRulers.jsx";
 import { layoutTableContinuations, tableContinuationRows } from "../../thesis/tableContinuation.js";
 import { applyTransformExceptions } from "../../thesis/transformExceptions.js";
+import ThesisRibbon from "./ThesisRibbon.jsx";
+import ThesisNavigation from "./ThesisNavigation.jsx";
+import ThesisStatusBar from "./ThesisStatusBar.jsx";
+import "./ThesisEditor.css";
 
 const hiddenFields = new Set(["THESIS_TITLE", "UNIVERSITY_NAME", "INSTITUTE_NAME", "DEGREE_TYPE"]);
 // Tailwind's reset removes list markers; the stored ul/ol structure is unchanged.
@@ -43,6 +47,15 @@ const metadataHints = {
   USED_PROGRAMS: "Örnek: MATLAB R2026a, Python 3.13, SPSS 29",
 };
 
+function collectThesisHeadings(root) {
+  if (!root) return [];
+  return [...root.querySelectorAll(".thesis-flow-section h1, .thesis-flow-section h2, .thesis-flow-section h3, .thesis-flow-section h4")].flatMap((node) => {
+    const section = node.closest("[data-thesis-flow-section]");
+    const text = node.textContent?.trim();
+    return section && text ? [{ sectionId: section.dataset.thesisFlowSection, id: node.getAttribute("data-academic-id"), text, level: Number(node.tagName.slice(1)) }] : [];
+  });
+}
+
 export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange, templateRegistry }) {
   const thesis = researchData?.thesis && typeof researchData.thesis === "object" ? researchData.thesis : {};
   const selectionKey = JSON.stringify([thesis.templateId, thesis.selection?.universityId, thesis.selection?.instituteId, thesis.selection?.degreeType, thesis.selection?.language]);
@@ -61,6 +74,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [warningsOpen, setWarningsOpen] = useState(false);
   const [rulersVisible, setRulersVisible] = useState(true);
   const [rulerUnit, setRulerUnit] = useState("mm");
+  const [navigationOpen, setNavigationOpen] = useState(false);
+  const [activeFormat, setActiveFormat] = useState({});
   // Measured physical pages per page group. Presentation only; never written to the note.
   const [pageCounts, setPageCounts] = useState({});
   const [indexResolution, setIndexResolution] = useState({});
@@ -109,6 +124,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const pageGroups = useMemo(() => model ? groupThesisSections(model.sections) : [], [model]);
   const pageModel = useMemo(() => buildThesisPageModel(pageGroups, pageCounts), [pageGroups, pageCounts]);
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
+  const thesisWordCount = `${plainTitle} ${[...(papersRef.current?.querySelectorAll('[contenteditable="true"]') || [])].map((node) => node.innerText || node.textContent || "").join(" ")}`.trim().split(/\s+/u).filter(Boolean).length;
   useLayoutEffect(() => { committedPaginationStateRef.current = { indexResolution, footnoteViews }; }, [indexResolution, footnoteViews]);
   const onPageCount = useCallback((groupId, count) => setPageCounts((current) => current[groupId] === count ? current : { ...current, [groupId]: count }), []);
   const css = useMemo(() => model ? buildThesisCss(model) + (THESIS_PAGED_LAYOUT ? thesisPagedCss(pageGroups) : "") : "", [model, pageGroups]);
@@ -337,15 +353,15 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const activeSection = model?.sections.find((section) => section.id === activeSectionId && section.editable) || null;
   const activeBody = () => (activeSection ? bodyRefs.current[activeSection.id] || null : null);
   // Take the live caret/selection first; selectionchange can still be queued behind fast typing.
-  const run = (command) => { const body = activeBody(); if (!body) return; body.rememberSelection?.(); command(body); };
-  const rememberSelection = (event) => { event.preventDefault(); activeBody()?.rememberSelection?.(); };
+  const runSaved = (command) => { const body = activeBody(); if (!body) return; command(body); };
+  const rememberSelection = () => activeBody()?.rememberSelection?.();
+  const keepSelection = (event) => { rememberSelection(); event.preventDefault(); };
   const trackSectionPointer = (event) => {
     setPickedFigure(event.target.closest?.("figure.academic-figure") || null);
     setPickedEquation(event.target.closest?.(".math-formula--block") || null);
     const flow = event.target.closest?.(".thesis-flow-section");
     if (flow && flow.getAttribute("data-thesis-section-mode") !== "editable") { setActiveSectionId(""); setCiteOpen(false); }
   };
-  const keepSelection = (event) => event.preventDefault();
   const citableItems = bibliographyItems.map((item) => item.trim()).filter(Boolean);
   const insertCitation = (text) => {
     const value = String(text || "").trim();
@@ -439,53 +455,33 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   return <div className="flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
     <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss}</style>
     <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
-    <div className="shrink-0 border-b border-neutral-200 bg-white px-3 py-2 dark:border-neutral-800 dark:bg-neutral-900">
-      <div className="flex flex-wrap items-center gap-2">
-        <button type="button" onClick={() => setDetailsOpen((open) => !open)} aria-expanded={detailsOpen} className="rounded-md border border-neutral-300 px-3 py-1.5 text-xs font-medium dark:border-neutral-700">Tez bilgileri</button>
-        <button type="button" className={toolClass} onClick={() => setPageSettingsOpen((open) => !open)} aria-expanded={pageSettingsOpen}>Sayfa düzeni</button>
-        <div className="relative">
-          <button type="button" className={toolClass} aria-expanded={addMenuOpen} onClick={() => setAddMenuOpen((open) => !open)}>Ekle</button>
-          {addMenuOpen && <div role="menu" aria-label="Ekle" className="absolute left-0 top-full z-40 mt-1 w-48 rounded-lg border border-neutral-200 bg-white p-1 text-sm text-neutral-900 shadow-xl dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100">
-            <button type="button" role="menuitem" onClick={() => { addFrame("text"); setAddMenuOpen(false); }} className="block w-full rounded px-3 py-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">Metin çerçevesi</button>
-            <button type="button" role="menuitem" onClick={() => { addFrame("separator"); setAddMenuOpen(false); }} className="block w-full rounded px-3 py-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">Çizgi</button>
-            <button type="button" role="menuitem" onClick={() => { imageKindRef.current = ""; imageInputRef.current?.click(); setAddMenuOpen(false); }} className="block w-full rounded px-3 py-2 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">Görsel</button>
-          </div>}
-        </div>
-        <button type="button" aria-label="Geri al" disabled={!interaction.canUndo} onClick={interaction.undo} className={toolClass}>Geri al</button>
-        <button type="button" aria-label="Yinele" disabled={!interaction.canRedo} onClick={interaction.redo} className={toolClass}>Yinele</button>
-        {activeSection && <span className="max-w-44 truncate text-xs text-neutral-500" aria-live="polite">{activeSection.title}</span>}
-      </div>
-      {activeSection && <div className="mt-2 flex flex-wrap items-center gap-2 border-t border-neutral-100 pt-2 dark:border-neutral-800" aria-label="Metin biçimlendirme araçları">
-        <select aria-label="Paragraf biçimi" defaultValue="" onMouseDown={() => activeBody()?.rememberSelection?.()} onChange={(event) => { const value = event.target.value; event.target.value = ""; if (value.startsWith("style:")) run((body) => body.setBlockType(0, value.slice(6))); else if (value !== "") run((body) => body.setBlockType(Number(value))); }} className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 dark:border-neutral-700">
-          <option value="" disabled>Paragraf biçimi</option><option value="0">Normal</option>{Object.keys(activeSection.rules.headings || template.typography.headings).map((level) => <option key={level} value={level}>Başlık {level}</option>)}{Object.keys(template.typography.paragraphStyles || {}).map((id) => <option key={id} value={`style:${id}`}>{id}</option>)}
-        </select>
-        <div className="flex items-center rounded-md border border-neutral-300 dark:border-neutral-700">{[["B", "bold", "Kalın"], ["I", "italic", "İtalik"], ["U", "underline", "Altı çizili"]].map(([label, style, name]) => <button key={style} type="button" title={name} aria-label={name} onMouseDown={keepSelection} onClick={() => run((body) => body.toggleStyle(style))} className={`min-w-8 px-2 py-1.5 text-xs ${style === "bold" ? "font-bold" : style === "italic" ? "italic" : "underline"}`}>{label}</button>)}</div>
-        <select aria-label="Hizalama" defaultValue="" onMouseDown={() => activeBody()?.rememberSelection?.()} onChange={(event) => { const align = event.target.value; event.target.value = ""; if (align) run((body) => body.applyAlign(align)); }} className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 dark:border-neutral-700"><option value="">Hizalama</option><option value="left">Sol</option><option value="center">Orta</option><option value="right">Sağ</option><option value="justify">İki yana</option></select>
-        <button type="button" aria-label="Madde işaretli liste" onMouseDown={keepSelection} onClick={() => run((body) => body.toggleList(false))} className={toolClass}>• Liste</button><button type="button" aria-label="Numaralı liste" onMouseDown={keepSelection} onClick={() => run((body) => body.toggleList(true))} className={toolClass}>1. Liste</button><button type="button" onMouseDown={keepSelection} onClick={() => run((body) => body.insertTable(2, 2, ""))} className={toolClass}>Tablo</button><button type="button" onMouseDown={rememberSelection} onClick={() => imageInputRef.current?.click()} className={toolClass}>Görsel</button>
-        <button type="button" onMouseDown={keepSelection} onClick={() => run((body) => body.insertTable(2, 2, ""))} className={toolClass}>Tablo</button>
-        <button type="button" onMouseDown={rememberSelection} onClick={() => { imageKindRef.current = ""; imageInputRef.current?.click(); }} className={toolClass}>Görsel</button>
-        {captionKinds.map(([id, rule]) => <button key={id} type="button" onMouseDown={rememberSelection} onClick={() => { imageKindRef.current = id; imageInputRef.current?.click(); }} className={toolClass}>{rule.label} ekle</button>)}
-        {captionKinds.length ? <select aria-label="Görsel türü" disabled={!pickedFigure?.isConnected} value={pickedFigure?.getAttribute("data-caption-kind") || ""} onChange={(event) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) { bodyRefs.current[owner]?.setFigureKind(figure, event.target.value); setPickedFigure(null); } }} title="Önce görsele tıklayın" className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 disabled:opacity-40 dark:border-neutral-700">
-          <option value="">{template.figures.label} (görsel)</option>{captionKinds.map(([id, rule]) => <option key={id} value={id}>{rule.label}</option>)}
-        </select> : null}
-        {template.equations ? <>
-          <button type="button" onMouseDown={rememberSelection} onClick={() => run((body) => body.insertFormula(true, true))} className={toolClass}>Denklem</button>
-          <label className="flex items-center gap-1 text-xs" title="Önce denkleme tıklayın"><input type="checkbox" aria-label="Denklem numarası" disabled={!pickedEquation?.isConnected} checked={pickedEquation?.getAttribute("data-eq-numbered") === "true"} onChange={(event) => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) { bodyRefs.current[owner]?.setEquationNumbered(math, event.target.checked); setPickedEquation(null); } }} />Denklem no</label>
-        </> : null}
-        <div className="relative"><button type="button" aria-expanded={citeOpen} onMouseDown={rememberSelection} onClick={() => setCiteOpen((open) => !open)} className={toolClass}>Atıf</button>{citeOpen && <div role="dialog" aria-label="Atıf ekle" className="absolute left-0 top-full z-30 mt-1 w-72 rounded-md border border-neutral-200 bg-white p-2 text-xs text-neutral-900 shadow-lg dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100"><form className="flex gap-1" onSubmit={(event) => { event.preventDefault(); insertCitation(citeText); }}><input autoFocus aria-label="Atıf / dipnot metni" placeholder="Atıf / dipnot metni" value={citeText} onChange={(event) => setCiteText(event.target.value)} onKeyDown={(event) => { if (event.key === "Escape") setCiteOpen(false); }} className="min-w-0 flex-1 rounded border border-neutral-300 bg-transparent px-2 py-1 dark:border-neutral-700" /><button type="submit" disabled={!citeText.trim()} className="rounded border px-2 disabled:opacity-40 dark:border-neutral-700">Ekle</button></form>{citableItems.length ? <><p className="mt-2 text-[11px] text-neutral-500">Kaynakçadan seç</p><ul className="mt-1 max-h-40 overflow-y-auto">{citableItems.map((item, index) => <li key={index}><button type="button" title={item} onClick={() => insertCitation(item)} className="block w-full truncate rounded px-1 py-1 text-left hover:bg-neutral-100 dark:hover:bg-neutral-800">{item}</button></li>)}</ul></> : null}</div>}</div>
-      </div>}
-      <div className="mt-2 flex flex-wrap items-center gap-2 border-t border-neutral-100 pt-2 dark:border-neutral-800">
-        <div className="flex items-center gap-1"><button type="button" aria-label="Uzaklaştır" disabled={zoom <= 0.5} onMouseDown={keepSelection} onClick={() => stepZoom(-1)} className={toolClass}>−</button><label className="text-xs text-neutral-500">Yakınlaştır <select aria-label="Yakınlaştır" value={zoomChoice} onChange={(event) => setZoomChoice(event.target.value)} className="ml-1 rounded border border-neutral-300 bg-white px-2 py-1 text-xs text-neutral-900 dark:border-neutral-700"><option value="fit">Genişliğe sığdır</option>{ZOOM_LEVELS.map((level) => <option key={level} value={level}>%{level}</option>)}</select></label><button type="button" aria-label="Yakınlaştır artır" disabled={zoom >= 1.5} onMouseDown={keepSelection} onClick={() => stepZoom(1)} className={toolClass}>+</button></div>
-        {THESIS_PAGED_LAYOUT ? <span className="text-xs text-neutral-500" data-thesis-total-pages={totalPages}>{totalPages} sayfa</span> : null}
-        {(warning || missingFields.length || indexWarning || model.validation.errors.length + model.validation.warnings.length) ? <details open={warningsOpen} onToggle={(event) => setWarningsOpen(event.currentTarget.open)} className="relative"><summary className="cursor-pointer list-none rounded-full bg-amber-50 px-2.5 py-1 text-xs text-amber-800">{validationIssues.length ? <span role="status" title={validationIssues.map((issue) => issue.message).join("\n")}>{validationIssues.length} belge uyarısı</span> : <>{missingFields.length + (warning ? 1 : 0) + (indexWarning ? 1 : 0)} uyarı</>}</summary><div className="absolute left-0 top-full z-30 grid w-80 gap-2 rounded-lg border border-amber-200 bg-white p-3 text-xs text-amber-900 shadow-lg">{warning && <p role="alert">{warning}</p>}{missingFields.length > 0 && <p>{missingFields.length} eksik tez bilgisi: {missingFields.map((key) => template.placeholders[key]?.label || key).join(", ")}</p>}{indexWarning && <p role="alert">{indexWarning}</p>}{[...model.validation.errors, ...model.validation.warnings].map((issue, index) => <p key={index}>{issue.message}</p>)}</div></details> : null}
-        {message && <span role="status" className="max-w-56 truncate text-xs text-neutral-500" title={message}>{message}</span>}
-        <div className="ml-auto flex gap-2"><button type="button" onClick={print} disabled={paginationActive && !paginationReady} className="rounded border px-2 py-1 text-xs dark:border-neutral-700 disabled:cursor-not-allowed disabled:opacity-40">Yazdır</button><button type="button" data-thesis-export-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} disabled={Boolean(exporting) || (paginationActive && !paginationReady)} onClick={() => void exportFile("pdf")} className="rounded border px-2 py-1 text-xs dark:border-neutral-700">{exporting === "pdf" ? "Hazırlanıyor…" : "PDF"}</button><button type="button" data-thesis-export-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} disabled={Boolean(exporting) || (paginationActive && !paginationReady)} onClick={() => void exportFile("docx")} className="rounded border px-2 py-1 text-xs dark:border-neutral-700">{exporting === "docx" ? "Hazırlanıyor…" : "Word"}</button></div>
-      </div>
-    </div>    <div className="flex min-h-0 flex-1">
+    <ThesisRibbon title={plainTitle} activeSection={activeSection} template={template}
+      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat }}
+      detailsOpen={detailsOpen} setDetailsOpen={setDetailsOpen} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={setPageSettingsOpen}
+      canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
+      exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
+      zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} zoom={zoom} stepZoom={stepZoom} totalPages={totalPages}
+      warningCount={(warning ? 1 : 0) + missingFields.length + (indexWarning ? 1 : 0) + validationIssues.length} warningsOpen={warningsOpen} setWarningsOpen={setWarningsOpen}
+      validationIssues={validationIssues} missingFields={missingFields.map((key) => template.placeholders[key]?.label || key)} warning={warning} indexWarning={indexWarning} message={message}
+      onImage={(kind = "") => { imageKindRef.current = kind; imageInputRef.current?.click(); }} captionKinds={captionKinds} pickedFigure={pickedFigure}
+      onFigureKind={(kind) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) bodyRefs.current[owner]?.setFigureKind(figure, kind); }}
+      pickedEquation={pickedEquation} onEquationNumber={() => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) bodyRefs.current[owner]?.setEquationNumbered(math, math.getAttribute("data-eq-numbered") !== "true"); }}
+      citableItems={citableItems} onInsertCitation={insertCitation} citeText={citeText} setCiteText={setCiteText} citeOpen={citeOpen} setCiteOpen={setCiteOpen}
+      onAddFrame={addFrame} rulersVisible={rulersVisible} setRulersVisible={setRulersVisible} rulerUnit={rulerUnit} setRulerUnit={setRulerUnit}
+      navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily} />
+    <div className="flex min-h-0 flex-1">
+      {navigationOpen ? <ThesisNavigation sections={model.sections.map((section) => ({ id: section.id, title: section.title }))} headings={collectThesisHeadings(papersRef.current)} onClose={() => setNavigationOpen(false)} onNavigate={(sectionId, headingId) => {
+        const sectionNode = papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(sectionId)}"]`);
+        const headingNode = headingId ? sectionNode?.querySelector(`[data-academic-id="${CSS.escape(headingId)}"]`) : null;
+        const target = headingNode || sectionNode;
+        target?.scrollIntoView({ block: "center", behavior: "smooth" });
+        setActiveSectionId(sectionId);
+        sectionNode?.querySelector('[contenteditable="true"]')?.focus({ preventScroll: true });
+      }} /> : null}
       <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
         <div ref={papersRef} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
-          {pageGroups.map((group, index) => {
-            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={setActiveSectionId} onTextChange={onTextChange} onPageCount={onPageCount} footnotes={footnoteViews[group.id]} />;
+        {pageGroups.map((group, index) => {
+            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={(id) => { setActiveSectionId(id); setActiveFormat(bodyRefs.current[id]?.activeFormat || {}); }} onFormatChange={(id, format) => { if (activeSectionId === id) setActiveFormat(format || {}); }} onTextChange={onTextChange} onPageCount={onPageCount} footnotes={footnoteViews[group.id]} />;
             const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);
             return rulersVisible ? <div key={`${model.templateId}:${group.id}`} className="mx-auto"><LayoutRulers page={group.rules.page} zoom={zoom} unit={rulerUnit} guides={guides} onGuidesChange={(next) => interaction.commitThesis({ ...thesis, layout: { ...layoutState, guides: [...layoutState.guides.filter((guide) => guide.sectionId && guide.sectionId !== group.id), ...next.map((guide) => ({ ...guide, sectionId: group.id }))] } }, "action")}>{sheet}</LayoutRulers></div> : sheet;
           })}
@@ -508,6 +504,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         </div>
       </aside> : null}
     </div>
+    <ThesisStatusBar wordCount={thesisWordCount} totalPages={totalPages} zoom={zoom} zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} stepZoom={stepZoom} keepSelection={keepSelection} saveSelection={rememberSelection} />
     <LayoutSelectionOverlay {...interaction.overlayProps} onPatch={interaction.patchElements} onOpenInspector={() => { setDetailsOpen(false); setPageSettingsOpen(false); }} />
   </div>;
 }

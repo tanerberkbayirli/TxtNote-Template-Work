@@ -586,7 +586,14 @@ export function thesisFootnoteCss(group) {
 }
 
 export function buildThesisCss(documentModel) {
-  return `.thesis-paper *{box-sizing:border-box}.thesis-page-stack{position:relative}.thesis-sheet{position:absolute;left:0;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.13);overflow:hidden;pointer-events:none}.thesis-footnote-layer{position:absolute;inset:0;pointer-events:none}.thesis-toc{list-style:none;padding:0}.thesis-toc li{margin-bottom:4pt}.thesis-toc-level-2{padding-left:10mm}.thesis-toc-level-3{padding-left:20mm}.thesis-paper .academic-page-gap{display:block;width:100%;margin:0;padding:0;border:0;pointer-events:none;user-select:none}.thesis-flow-section[data-thesis-fixed-content="true"] .rich-text-body[data-empty="true"]:before{content:none}.thesis-layout-strong{font-weight:700}\n${documentModel.sections.map(thesisSectionCss).join("\n")}\n${groupThesisSections(documentModel.sections).map(thesisFootnoteCss).join("\n")}`;
+  const inlineFormats = [
+    ".thesis-body .fmt-size-heading{font-size:28px;line-height:1.35}.thesis-body .fmt-size-subheading{font-size:20px;line-height:1.45}.thesis-body .fmt-size-body{font-size:15px;line-height:2}",
+    ".thesis-body .fmt-color-black{color:#171717}.thesis-body .fmt-color-red{color:#e8a0a0}.thesis-body .fmt-color-blue{color:#9bb8de}.thesis-body .fmt-color-green{color:#9cc9ae}",
+    ".thesis-body .fmt-highlight-yellow{background-color:#fff2a8}.thesis-body .fmt-highlight-green{background-color:#c9f2d0}.thesis-body .fmt-highlight-cyan{background-color:#bdefff}.thesis-body .fmt-highlight-magenta{background-color:#f5c8ee}",
+    ...[8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24].map((pt) => `.thesis-body .fmt-pt-${pt}{font-size:${pt}pt}`),
+    ...Array.from({ length: 8 }, (_, index) => `.thesis-body [data-txt-indent="${index + 1}"]{margin-left:${(index + 1) * 5}mm}`),
+  ].join("\n");
+  return `.thesis-paper *{box-sizing:border-box}.thesis-page-stack{position:relative}.thesis-sheet{position:absolute;left:0;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.13);overflow:hidden;pointer-events:none}.thesis-footnote-layer{position:absolute;inset:0;pointer-events:none}.thesis-toc{list-style:none;padding:0}.thesis-toc li{margin-bottom:4pt}.thesis-toc-level-2{padding-left:10mm}.thesis-toc-level-3{padding-left:20mm}.thesis-paper .academic-page-gap{display:block;width:100%;margin:0;padding:0;border:0;pointer-events:none;user-select:none}.thesis-flow-section[data-thesis-fixed-content="true"] .rich-text-body[data-empty="true"]:before{content:none}.thesis-layout-strong{font-weight:700}\n${inlineFormats}\n${documentModel.sections.map(thesisSectionCss).join("\n")}\n${groupThesisSections(documentModel.sections).map(thesisFootnoteCss).join("\n")}`;
 }
 
 export function buildThesisPrintHtml(documentModel, { nonce = "" } = {}) {

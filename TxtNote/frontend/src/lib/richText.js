@@ -29,7 +29,7 @@ import { markerAt, parseTextMarkup, sentenceBreakAt } from "./textMarkup.js";
 
 /** Entities count too: "a&nbsp;b" is saved editor output, not raw user text. */
 const HTML_MARKUP = /<[a-z!/][\s\S]*>|&(?:[a-z]+|#\d+);/i;
-const FORMAT_CLASS = /fmt-(size|color|pt)-|fmt-(bold|italic|strike|underline|overline)/;
+const FORMAT_CLASS = /fmt-(size|color|pt|highlight)-|fmt-(bold|italic|strike|underline|overline)/;
 
 /** True when the string already looks like HTML from the editor. */
 export function isHtmlContent(content) {
@@ -257,6 +257,7 @@ export function readFormatFromRange(range) {
   return {
     size: same("size") ? first.size : DEFAULT_FORMAT.size,
     color: same("color") ? first.color : DEFAULT_FORMAT.color,
+    highlight: same("highlight") ? first.highlight : DEFAULT_FORMAT.highlight,
     bold: formats.every((row) => row.bold),
     italic: formats.every((row) => row.italic),
     strike: formats.every((row) => row.strike),
@@ -434,7 +435,9 @@ function wrapTextSlice(textNode, range, patch) {
   const parent = textNode.parentNode;
   if (!parent) return null;
 
-  const patchedClass = formatClassName({ ...readFormatFromNode(textNode), ...patch });
+  const patchedClass = patch.clearFormatting
+    ? clearFormatClasses(textNode.parentElement?.className ?? "")
+    : formatClassName({ ...readFormatFromNode(textNode), ...patch });
 
   // Format span with only this text: split into sibling spans so turning a
   // style off (bold → not bold) does not inherit it from a wrapping parent.
@@ -539,7 +542,7 @@ export function applyFormatToRange(range, patch, preserveSelection = false) {
 export function applyFormatAtCursor(range, patch) {
   const inherited = readFormatFromNode(range.startContainer);
   const span = document.createElement("span");
-  span.className = formatClassName({ ...inherited, ...patch });
+  span.className = patch.clearFormatting ? "" : formatClassName({ ...inherited, ...patch });
 
   const anchor = document.createTextNode("\u200B");
   span.appendChild(anchor);
@@ -556,6 +559,13 @@ export function applyFormatAtCursor(range, patch) {
   }
 
   return span;
+}
+
+/** Remove only known inline formatting tokens; links and academic structure remain on their existing parents. */
+function clearFormatClasses(className) {
+  const tokens = String(className || "").split(/\s+/).filter(Boolean);
+  const isFormat = (token) => /^fmt-(?:size|color|pt|highlight)-/.test(token) || /^fmt-(?:bold|italic|strike|underline|overline)$/.test(token);
+  return tokens.filter((token) => !isFormat(token)).join(" ");
 }
 
 /** Clone the current selection when it lives inside `root`. */

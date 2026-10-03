@@ -89,7 +89,7 @@ function caretPointFromClient(x, y) {
   return range ? { node: range.startContainer, offset: range.startOffset } : null;
 }
 
-export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSectionFocus, onTextChange, onPageCount, footnotes }) {
+export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSectionFocus, onFormatChange, onTextChange, onPageCount, footnotes }) {
   const section = group.sections[0];
   const articleRef = useRef(null);
   const flowRef = useRef(null);
@@ -134,7 +134,7 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
     {item.editable ? <>
       {item.prefixHtml ? <StaticHtml html={item.prefixHtml} /> : null}
       <RichTextBody ref={(instance) => { bodyRefs.current[item.id] = instance; }} compact academic paragraphSemantics emptyHeadingOnInsert positionedFrame={!THESIS_PAGED_LAYOUT} className="thesis-content" content={item.editableHtml}
-        onContentChange={(html, reason) => onTextChange(item, html, reason)} onFocus={() => onSectionFocus(item.id)} ariaLabel={`${item.title} metni`} />
+        onContentChange={(html, reason) => onTextChange(item, html, reason)} onFocus={() => onSectionFocus(item.id)} onFormatChange={(format) => onFormatChange?.(item.id, format)} ariaLabel={`${item.title} metni`} />
       {notes.length && !pageNotes ? <ol className="academic-footnote-list" contentEditable={false}>{notes.map((note) => <li key={note.index}><sup>{note.index}</sup> {note.text}</li>)}</ol> : null}
       {item.suffixHtml ? <StaticHtml html={item.suffixHtml} /> : null}
     </> : <StaticHtml html={item.html} />}

@@ -109,6 +109,17 @@ describe("academicDocument numbering", () => {
     assert.equal(joinCaptionText("Tablo 1", "Tablo 1. Katılımcı"), "Tablo 1. Katılımcı");
   });
 
+  it("preserves paragraph indentation and inline color/highlight in exported runs", () => {
+    const [paragraph] = parseAcademicHtml(
+      '<p data-txt-indent="2"><span class="fmt-color-red fmt-highlight-yellow fmt-pt-16">Bağlantı</span></p>',
+    );
+    assert.equal(paragraph.indentMm, 10);
+    assert.deepEqual(paragraph.runs[0], {
+      type: "text", text: "Bağlantı", bold: false, italic: false, underline: false, strike: false,
+      color: "red", highlight: "yellow", fontSizePt: 16,
+    });
+  });
+
   it("builds an editable table with padded cells and a caption", () => {
     const html = tableHtml(3, 2, "Örnek");
     assert.match(html, /academic-table-wrap/);

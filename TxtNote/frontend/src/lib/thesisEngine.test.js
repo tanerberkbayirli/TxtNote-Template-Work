@@ -191,6 +191,44 @@ describe("thesis engine", () => {
 });
 
 describe("thesis export", () => {
+  it("exports paragraph indentation to thesis PDF and inline formatting to DOCX", async () => {
+    const html = '<p>Normal</p><p data-txt-indent="1"><span class="fmt-color-red fmt-highlight-yellow fmt-pt-16">Indented</span></p>';
+    const model = compileThesisDocument(generic, {}, "Tez", html);
+    const css = buildThesisCss(model);
+    assert.match(css, /\.thesis-body \[data-txt-indent="1"\]\{margin-left:5mm\}/);
+
+    const docx = new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer());
+    const xml = strFromU8(unzipSync(docx)["word/document.xml"]);
+    assert.match(xml, /<w:color w:val="E8A0A0"\s*\/>/);
+    assert.match(xml, /<w:shd[^>]*w:fill="FFF2A8"/);
+    assert.match(xml, /<w:sz w:val="32"\s*\/>/);
+    assert.match(xml, /<w:ind[^>]*w:left="283"/);
+
+    const pdf = new Uint8Array(await (await buildThesisPdf(model)).arrayBuffer());
+    const task = getDocument({ data: pdf, useSystemFonts: true, disableFontFace: true });
+    const parsed = await task.promise;
+    const items = [];
+    for (let page = 1; page <= parsed.numPages; page += 1) items.push(...(await (await parsed.getPage(page)).getTextContent()).items);
+    const normal = items.find((item) => item.str === "Normal");
+    const indented = items.find((item) => item.str === "Indented");
+    assert.ok(normal && indented);
+    assert.ok(indented.transform[4] - normal.transform[4] > 12, "5 mm paragraph indent should move PDF text right by about 14 pt");
+    await task.destroy();
+  });
+
+  it("preserves safe external links in thesis DOCX and keeps invalid destinations as text", async () => {
+    const model = compileThesisDocument(generic, {}, "Tez", '<p><a href="https://example.org/source?q=1">Kaynak bağlantısı</a> <a href="javascript:alert(1)">güvensiz bağlantı</a></p>');
+    const bytes = new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer());
+    const files = unzipSync(bytes);
+    const xml = strFromU8(files["word/document.xml"]);
+    const relationships = strFromU8(files["word/_rels/document.xml.rels"]);
+    assert.match(xml, /<w:hyperlink\b/);
+    assert.match(xml, /Kaynak bağlantısı/);
+    assert.match(xml, /güvensiz bağlantı/);
+    assert.match(relationships, /Target="https:\/\/example\.org\/source\?q=1" TargetMode="External"/);
+    assert.doesNotMatch(relationships, /javascript:/i);
+  });
+
   it("starts a new PDF page before a heading when the template requires it", async () => {
     const content = "<p>Girişten önceki metin.</p><h1>Birinci bölüm</h1><p>Bölüm metni.</p>";
     const forcedTemplate = structuredClone(generic);

@@ -1,7 +1,7 @@
 import { blockDescriptors, blockGapActive, describeBlock, gapBetween } from "./blockGap.js";
 import { jsPDF } from "jspdf";
 import {
-  AlignmentType, Bookmark, BorderStyle, Document, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
+  AlignmentType, Bookmark, BorderStyle, Document, ExternalHyperlink, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
   HeightRule, LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
   SectionType, SimpleField, Table, TableAnchorType, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
 } from "docx";
@@ -224,9 +224,11 @@ export async function buildThesisPdf(model) {
     for (const block of asBlocks(section)) {
       if (block.type === "heading") {
         const style = headings[block.level] || headings[1] || body;
-        write(`${block.thesisNumber ? `${block.thesisNumber}${block.thesisNumberLine ? "\n" : " "}` : ""}${block.text}`, block.unnumbered ? { ...style, pageBreakBefore: false } : style);
+        const headingStyle = block.indentMm ? { ...style, leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : style;
+        write(`${block.thesisNumber ? `${block.thesisNumber}${block.thesisNumberLine ? "\n" : " "}` : ""}${block.text}`, block.unnumbered ? { ...headingStyle, pageBreakBefore: false } : headingStyle);
       } else if (block.type === "paragraph" || block.type === "quote") {
-        write(blockText(block), section.type === "bibliography" ? section.rules.bibliography.style : body, block.align || body.align);
+        const style = section.type === "bibliography" ? section.rules.bibliography.style : body;
+        write(blockText(block), block.indentMm ? { ...style, leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : style, block.align || body.align);
       } else if (block.type === "list") {
         (block.items || []).forEach((item, index) => write(`${section.type === "tableOfContents" ? "" : block.ordered ? `${index + 1}. ` : "• "}${item.text || blockText(item)}`, body, "left"));
       } else if (block.type === "table") {
@@ -278,9 +280,14 @@ function runProps(style, language) {
 }
 
 function textRun(text, style, context, inline = {}) {
+  const inlineColor = { black: "171717", red: "E8A0A0", blue: "9BB8DE", green: "9CC9AE" }[inline.color];
+  const highlightFill = { yellow: "FFF2A8", green: "C9F2D0", cyan: "BDEFFF", magenta: "F5C8EE" }[inline.highlight];
   return new TextRun({
     ...runProps(style, context.language), text: transformThesisText(text, style, context.language),
+    ...(inline.fontSizePt ? { size: halfPointSize(inline.fontSizePt) } : {}),
     ...(inline.bold ? { bold: true } : {}), ...(inline.italic ? { italics: true } : {}),
+    ...(inlineColor ? { color: inlineColor } : {}),
+    ...(highlightFill ? { shading: { fill: highlightFill, type: "clear" } } : {}),
     underline: inline.underline || style.decoration === "underline" ? {} : undefined, strike: Boolean(inline.strike),
   });
 }
@@ -298,7 +305,15 @@ function docxRuns(runs, style, context) {
     }
     // TOC/list page labels are real PAGEREF fields (cached result = the editor's label): Word/LibreOffice re-read the page of the bookmark.
     else if (item.type === "pageref") out.push(new SimpleField(`PAGEREF ${item.bookmark} \\h`, item.text || ""));
-    else if (item.type === "link") out.push(...docxRuns(item.children, style, context));
+    else if (item.type === "link") {
+      const children = docxRuns(item.children, style, context);
+      let href = "";
+      try {
+        const parsed = new URL(item.href || "");
+        if (parsed.protocol === "http:" || parsed.protocol === "https:") href = parsed.href;
+      } catch { /* Invalid or relative destinations retain their text without an unsafe external relationship. */ }
+      out.push(...(href && children.length ? [new ExternalHyperlink({ link: href, children })] : children));
+    }
     else if (item.type === "footnote") {
       const id = context.nextFootnote++;
       // Word places the note on its page; typography comes from the same template rule as the editor's note area.
@@ -655,7 +670,8 @@ function docxChildren(section, context) {
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
-      children.push(docxParagraph(runs, chain(withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, pageBreakBefore: false } : style)), context, { heading: level, anchor: block.thesisAnchor }));
+      const indent = block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {};
+      children.push(docxParagraph(runs, chain(withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, ...indent, pageBreakBefore: false } : { ...style, ...indent })), context, { heading: level, anchor: block.thesisAnchor }));
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
       const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
@@ -664,7 +680,7 @@ function docxChildren(section, context) {
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
       const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
       const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), chain(withGap({ ...style, ...spacing, align: align || style.align })), context));
+      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), chain(withGap({ ...style, ...(block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {}), ...spacing, align: align || style.align })), context));
     } else if (block.type === "list") {
       children.push(...listParagraphs(block, section, context, 0, before));
     } else if (block.type === "table") {

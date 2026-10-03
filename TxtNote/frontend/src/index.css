@@ -137,6 +137,20 @@ textarea::selection,
     @apply text-emerald-400 dark:text-emerald-300;
   }
 
+  .fmt-highlight-yellow { background-color: #fff2a8; }
+  .fmt-highlight-green { background-color: #c9f2d0; }
+  .fmt-highlight-cyan { background-color: #bdefff; }
+  .fmt-highlight-magenta { background-color: #f5c8ee; }
+
+  .rich-text-body [data-txt-indent="1"] { margin-left: 5mm; }
+  .rich-text-body [data-txt-indent="2"] { margin-left: 10mm; }
+  .rich-text-body [data-txt-indent="3"] { margin-left: 15mm; }
+  .rich-text-body [data-txt-indent="4"] { margin-left: 20mm; }
+  .rich-text-body [data-txt-indent="5"] { margin-left: 25mm; }
+  .rich-text-body [data-txt-indent="6"] { margin-left: 30mm; }
+  .rich-text-body [data-txt-indent="7"] { margin-left: 35mm; }
+  .rich-text-body [data-txt-indent="8"] { margin-left: 40mm; }
+
   .fmt-bold {
     font-weight: 700;
   }

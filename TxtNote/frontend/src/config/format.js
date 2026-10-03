@@ -23,6 +23,14 @@ export const FORMAT_COLORS = [
   { id: "green", label: "Yeşil", className: "fmt-color-green", swatch: "#9cc9ae" },
 ];
 
+/** Stable highlight colors stored as span classes, so markup survives note reloads and exports. */
+export const FORMAT_HIGHLIGHTS = [
+  { id: "yellow", className: "fmt-highlight-yellow", swatch: "#fff2a8" },
+  { id: "green", className: "fmt-highlight-green", swatch: "#c9f2d0" },
+  { id: "cyan", className: "fmt-highlight-cyan", swatch: "#bdefff" },
+  { id: "magenta", className: "fmt-highlight-magenta", swatch: "#f5c8ee" },
+];
+
 /** Point sizes for academic papers (Times, A4). */
 export const FORMAT_POINT_VALUES = [8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24];
 
@@ -55,6 +63,7 @@ export const FORMAT_ALIGNS = [
 export const DEFAULT_FORMAT = /** @type {const} */ ({
   size: "body",
   color: "black",
+  highlight: "none",
   align: "left",
   bold: false,
   italic: false,
@@ -93,11 +102,12 @@ export function parseAlign(className) {
 
 const SIZE_CLASSES = [...FORMAT_SIZES.map((s) => s.className), ...FORMAT_POINTS.map((s) => s.className)];
 const COLOR_CLASSES = FORMAT_COLORS.map((c) => c.className);
+const HIGHLIGHT_CLASSES = FORMAT_HIGHLIGHTS.map((c) => c.className);
 
 /** Tokens actually present on a span — missing ones stay unset (inherit). */
 export function parsePartialFormat(className) {
   const tokens = new Set((className ?? "").split(/\s+/).filter(Boolean));
-  /** @type {{ size?: FormatSize, color?: FormatColor, bold?: boolean, italic?: boolean, strike?: boolean }} */
+  /** @type {{ size?: FormatSize, color?: FormatColor, highlight?: string, bold?: boolean, italic?: boolean, strike?: boolean }} */
   const partial = {};
 
   for (const size of FORMAT_SIZES) {
@@ -108,6 +118,9 @@ export function parsePartialFormat(className) {
   }
   for (const color of FORMAT_COLORS) {
     if (tokens.has(color.className)) partial.color = color.id;
+  }
+  for (const highlight of FORMAT_HIGHLIGHTS) {
+    if (tokens.has(highlight.className)) partial.highlight = highlight.id;
   }
   for (const style of FORMAT_STYLES) {
     if (tokens.has(style.className)) partial[style.id] = true;
@@ -128,6 +141,11 @@ export function mergeFormatClassName(className, patch) {
     next = without(COLOR_CLASSES);
     next.push(colorClass(patch.color));
   }
+  if (patch.highlight !== undefined) {
+    next = without(HIGHLIGHT_CLASSES);
+    const highlight = FORMAT_HIGHLIGHTS.find((item) => item.id === patch.highlight);
+    if (highlight) next.push(highlight.className);
+  }
   for (const style of FORMAT_STYLES) {
     if (patch[style.id] === undefined) continue;
     next = next.filter((token) => token !== style.className);
@@ -142,6 +160,7 @@ export function formatClassName(format) {
   return mergeFormatClassName("", {
     size: format.size ?? DEFAULT_FORMAT.size,
     color: format.color ?? DEFAULT_FORMAT.color,
+    highlight: format.highlight ?? DEFAULT_FORMAT.highlight,
     bold: Boolean(format.bold),
     italic: Boolean(format.italic),
     strike: Boolean(format.strike),

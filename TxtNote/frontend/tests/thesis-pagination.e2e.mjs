@@ -145,11 +145,16 @@ try {
     const rect = r.getClientRects()[0] || probe.getClientRects()[0];
     const vp = document.querySelector(".overflow-auto").getBoundingClientRect();
     const after = document.createRange(); after.setStart(r.startContainer, r.startOffset); after.setEnd(window.pg.editor(), window.pg.editor().childNodes.length);
+    // Chromium renders adjacent contenteditable paragraphs with two innerText newlines;
+    // assert the actual paragraph sequence instead of depending on that display separator.
+    const paragraphs = [...window.pg.editor().querySelectorAll("p")].map((node) => node.innerText.trim()).filter(Boolean);
+    const start = paragraphs.indexOf("Yeni paragraf A eklendi.");
+    const paragraphSequence = start < 0 ? [] : paragraphs.slice(start, start + 4).map((text, index) => index === 3 ? text.slice(0, 3) : text);
     return { same: window.pg.editor() === window.__mainEditor, active: document.activeElement === window.__mainEditor, blurs: window.__blurs, collapsed: sel.isCollapsed,
-      before: before.toString().slice(-40), next: after.toString().slice(0, 3), lines: window.pg.editor().innerText.includes("Yeni paragraf A eklendi.\nYeni paragraf B eklendi.\nYeni paragraf C eklendi.\nP4:"), visible: rect.top >= vp.top && rect.bottom <= vp.bottom, page: Math.floor((rect.top - window.pg.art().getBoundingClientRect().top) / window.pg.STRIDE) + 1 };
+      before: before.toString().slice(-40), next: after.toString().slice(0, 3), paragraphSequence, visible: rect.top >= vp.top && rect.bottom <= vp.bottom, page: Math.floor((rect.top - window.pg.art().getBoundingClientRect().top) / window.pg.STRIDE) + 1 };
   });
   assert.equal(caret.same, true, "RichTextBody was not remounted"); assert.equal(caret.active, true); assert.equal(caret.blurs, 0);
-  assert.equal(caret.collapsed, true); assert.match(caret.before, /C eklendi\.\n?$/); assert.equal(caret.lines, true, caret.snippet + " :: " + caret.html); assert.equal(caret.next, "P4:"); assert.equal(caret.visible, true); assert.equal(caret.page, 1);
+  assert.equal(caret.collapsed, true); assert.match(caret.before, /C eklendi\.\n?$/); assert.deepEqual(caret.paragraphSequence, ["Yeni paragraf A eklendi.", "Yeni paragraf B eklendi.", "Yeni paragraf C eklendi.", "P4:"]); assert.equal(caret.next, "P4:"); assert.equal(caret.visible, true); assert.equal(caret.page, 1);
   const scrollAfter = await page.locator(".overflow-auto").first().evaluate((vp) => vp.scrollTop);
   assert.ok(Math.abs(scrollAfter - scrollBefore) < 2, `scroll ${scrollBefore} → ${scrollAfter}`);
   const moved = await pg(({ lastOfPage1, firstOfPage2 }) => ({ last: window.pg.pageOfText(lastOfPage1), first: window.pg.pageOfText(firstOfPage2), topOf2: window.pg.lineOnPage("main", 2, "first"), count: window.pg.count() }), { lastOfPage1, firstOfPage2 });

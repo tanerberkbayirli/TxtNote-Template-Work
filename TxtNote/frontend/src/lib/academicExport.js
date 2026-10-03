@@ -156,8 +156,11 @@ function runStyle(el) {
       const pt = token.match(/^fmt-pt-(\d+)$/);
       if (pt) style.size = Number(pt[1]) * 2;
     }
-    for (const [name, color] of Object.entries({ black: "111111", red: "BE123C", blue: "0369A1", green: "047857" })) {
+    for (const [name, color] of Object.entries({ black: "171717", red: "E8A0A0", blue: "9BB8DE", green: "9CC9AE" })) {
       if (c.contains(`fmt-color-${name}`)) style.color = color;
+    }
+    for (const [name, fill] of Object.entries({ yellow: "FFF2A8", green: "C9F2D0", cyan: "BDEFFF", magenta: "F5C8EE" })) {
+      if (c.contains(`fmt-highlight-${name}`)) style.shadingFill = fill;
     }
   }
   const styled = el?.nodeType === 1 ? el : el?.parentElement;
@@ -517,6 +520,7 @@ function runsFromModel(runs = [], context) {
         italics: Boolean(run.italic),
         underline: run.underline ? {} : undefined,
         strike: Boolean(run.strike),
+        shading: run.shadingFill ? { fill: run.shadingFill, type: "clear" } : undefined,
         font: "Times New Roman",
         size: 24,
       }),

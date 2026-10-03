@@ -604,6 +604,10 @@ export const ACADEMIC_CSS = `
 .academic-document .fmt-color-red { color:#be123c; }
 .academic-document .fmt-color-blue { color:#0369a1; }
 .academic-document .fmt-color-green { color:#047857; }
+.academic-document .fmt-highlight-yellow { background-color:#fff2a8; }
+.academic-document .fmt-highlight-green { background-color:#c9f2d0; }
+.academic-document .fmt-highlight-cyan { background-color:#bdefff; }
+.academic-document .fmt-highlight-magenta { background-color:#f5c8ee; }
 .academic-document .fmt-align-left { text-align:left; }
 .academic-document .fmt-align-center { text-align:center; }
 .academic-document .fmt-align-right { text-align:right; }
