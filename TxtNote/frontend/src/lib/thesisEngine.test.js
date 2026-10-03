@@ -302,6 +302,23 @@ describe("thesis export", () => {
     assert.match(settingsXml, /<w:updateFields\s*\/>/);
     assert.match(stylesXml, /w:styleId="ThesisHeading1Excluded"[\s\S]*w:outlineLvl w:val="0"/);
     assert.match(stylesXml, /w:styleId="TOC1"/);
+    for (const [name, bytes] of Object.entries(entries)) {
+      if (!/\.(xml|rels)$/.test(name)) continue;
+      assert.doesNotMatch(strFromU8(bytes), /<\/?undefined/, name);
+    }
+    const count = (re) => (documentXml.match(re) || []).length;
+    assert.equal(count(/w:fldCharType="begin"/g), count(/w:fldCharType="end"/g));
+    assert.equal(count(/w:fldCharType="begin"/g), count(/w:fldCharType="separate"/g));
+  });
+  it("emits no <undefined> elements for any registered thesis template", async () => {
+    for (const { id } of THESIS_TEMPLATE_REGISTRY) {
+      const { template } = await resolveThesisTemplate({ templateId: id });
+      const model = compileThesisDocument(structuredClone(template), {}, "Tez", "<h1>Bir</h1><h2>Iki</h2><p>Metin</p>");
+      const entries = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
+      for (const [name, bytes] of Object.entries(entries)) {
+        if (/\.(xml|rels)$/.test(name)) assert.doesNotMatch(strFromU8(bytes), /<\/?undefined/, `${id}:${name}`);
+      }
+    }
   });
   it("keeps continuous sections on one PDF/Word page and paginates long main text", async () => {
     const template = structuredClone(generic);

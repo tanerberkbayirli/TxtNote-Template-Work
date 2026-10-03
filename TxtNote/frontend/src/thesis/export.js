@@ -370,7 +370,9 @@ function complexFieldMarker(instruction, edge) {
   const xml = edge === "begin"
     ? `<w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">${fieldXmlText(instruction)}</w:instrText><w:fldChar w:fldCharType="separate"/></w:r>`
     : `<w:r><w:fldChar w:fldCharType="end"/></w:r>`;
-  return ImportedXmlComponent.fromXmlString(xml);
+  // fromXmlString returns an unnamed document wrapper (serialized as <undefined>); unwrap to the real <w:r>.
+  const parsed = ImportedXmlComponent.fromXmlString(xml);
+  return parsed.root.find((child) => child instanceof ImportedXmlComponent) || parsed;
 }
 function wrapParagraphsInField(paragraphs, instruction) {
   if (!paragraphs.length) return paragraphs;
