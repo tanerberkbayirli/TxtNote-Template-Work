@@ -1,0 +1,37 @@
+# aku-sosyoloji-lisans — context pack
+## Identity
+- Registry id(s): `aku-sosyoloji-lisans-tr-v1`
+- Template module: `TxtNote/frontend/src/thesis/templates/aku-sosyoloji.js` (exports: akuSosyolojiLisans)
+- Spec: `orchestration/specs/aku-sosyoloji-lisans.json`; checks: `orchestration/specs/aku-sosyoloji-lisans.checks.json` (not yet); progress report: `orchestration/reports/aku-sosyoloji-lisans.md`
+## Sources
+- `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx`
+- Guide DOCX 2022-04-05 only (guide document itself; its XML/styles used for measurements). Locator style: word/document.xml paragraph indices.
+## Rulings
+- Template XML/example structure outranks guide prose (CLOSEOUT_2026-10-03 'User-directed source precedence'); both values stay in spec conflicts[]. Explicit prose wins over example-page geometry unless a spec decision says otherwise.
+- Dedicated official list pages use 'DIZINI' while prose/TOC say 'LISTESI'; both recorded (CONFLICT), implementation cleanup at d4a3a7e.
+- Example pages are internally inconsistent; list rows 11.5 pt vs prose 12 pt recorded, not averaged.
+## Key values (from spec; nothing invented)
+| property | value | class | locator |
+|---|---|---|---|
+| Margins top/bottom/left (mm, per spec) | 45 mm / 45 mm / 45 mm | EXPLICIT | 'Tezin genel biçimi' (word/document.xml paragraphs … |
+| Body font | Times New Roman 12 pt | EXPLICIT | 'Tezin genel biçimi' (word/document.xml paragraphs … |
+| Body line spacing | 1.5 | EXPLICIT | 'Tezin genel biçimi' (word/document.xml paragraphs … |
+| Para indent / before / after | 12.5 / 6 / 6 | EXPLICIT | 'Tezin genel biçimi' (word/document.xml paragraphs … |
+| Page number position | bottom | EXPLICIT | para 55 |
+| Front / main format | roman-lower / arabic | EXPLICIT | para 55 |
+| List rows spacing | single, 0 pt | MEASURED | style 'Stil 12 nk...' after=0 line=240; Word render… |
+| TOC title | İÇİNDEKİLER | MEASURED | Ek-3 |
+| Tables list title | TABLOLAR DİZİNİ | MEASURED | Ek-3 and para 45; Ek-4 says TABLOLAR DİZİNİ |
+## Open issues
+- No independent validation; no report. Needs source/example XML comparison for DIZINI vs LISTESI titles (progress).
+- Check spec: margins read 45 mm top/bottom/left (quote 'ust: 4.5 cm'); confirm right margin and values against the guide DOCX before use.
+- CONFLICT: 7 (12 pt vs 11.5 pt, titles, Sayfa alignment, cover font name). UNKNOWN: 12 (guide silent on footer distance, header, captions, borders, footnotes, bibliography).
+## Status
+- IN_PROGRESS; validation PENDING; commit d4a3a7e. Untouched in session 2.
+## Next step
+- Compare title/list terminology against guide XML, then checker run.
+## Commands
+- `node orchestration/tools/check.mjs --target aku-sosyoloji-lisans` ; `--only failed` after a fix.
+- Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.
+## Do NOT read
+- Guide DOCX; orchestration/artifacts/aku-sosyoloji-lisans/source/{pg*.png,v6/v7.png,g.docx,guide.pdf,text.txt,pict.txt}. Other targets' specs/validation folders.
