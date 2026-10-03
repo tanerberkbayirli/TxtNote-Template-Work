@@ -96,12 +96,12 @@ describe("Task 10A generic extensions", () => {
     const files = unzipSync(bytes), xml = strFromU8(files["word/document.xml"]), styles = strFromU8(files["word/styles.xml"]);
     assert.match(xml, /w:after="180" w:before="100"/);
     assert.match(xml, /w:firstLine="454"/);
-    assert.match(xml, /w:pStyle w:val="Heading4"/);
-    assert.match(styles, /w:styleId="Heading4"[\s\S]*?w:outlineLvl w:val="3"/);
+    assert.match(xml, /w:pStyle w:val="ThesisHeading4Index"/);
+    assert.match(styles, /w:styleId="ThesisHeading4Index"[\s\S]{0,350}w:basedOn w:val="Heading4"[\s\S]{0,350}w:outlineLvl w:val="3"/);
     assert.match(xml, /<w:br\/>/); assert.match(xml, /<w:b\/>/);
     assert.match(xml, /<w:jc w:val="left"/);
     assert.match(xml, /1\.1\.1\.1 Dört/); assert.match(xml, /Şekil 1\.1\. Mimari/); assert.match(xml, /Tablo 1\.1\. Örnek/);
-    assert.ok(xml.indexOf("Şekil 1.1. Mimari", xml.indexOf('w:val="Heading4"')) < xml.indexOf('<w:drawing>'));
+    assert.ok(xml.indexOf("Şekil 1.1. Mimari", xml.indexOf('w:val="ThesisHeading4Index"')) < xml.indexOf('<w:drawing>'));
     assert.match(xml, /<w:tab\/>/); assert.match(xml, /<w:tabs>/); assert.match(xml, />7<\/w:t>/);
     assert.match(xml, /<w:tbl>/); assert.ok(Object.keys(files).some((name) => name.startsWith("word/media/")));
     assert.match(xml, /w:w="11906" w:h="16838"/); assert.match(xml, /w:val="nextPage"/);

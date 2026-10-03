@@ -178,10 +178,12 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     const files = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
     const footers = Object.entries(files).filter(([name]) => /footer\d+\.xml$/.test(name)).map(([, data]) => strFromU8(data)).join("");
     assert.match(footers, /<w:sz w:val="24"\/>/, "page numbers are 12 pt");
-    const heading = xml.split("<w:p>").find((p) => /<w:pStyle w:val="Heading1"\/>/.test(p) && p.includes("BÖLÜM"));
-    assert.ok(heading, "Heading1 paragraph for the chapter");
+    const heading = xml.split("<w:p>").find((p) => /<w:pStyle w:val="ThesisHeading1NoPage"\/>/.test(p) && p.includes("BÖLÜM"));
+    assert.ok(heading, "the chapter keeps its no-page TOC mapping style");
     assert.match(heading, /BİRİNCİ BÖLÜM<\/w:t>[\s\S]*<w:br\/>[\s\S]*KURAM/);
     assert.match(heading, /w:spacing w:after="240" w:before="240" w:line="360" w:lineRule="auto"/);
-    assert.match(xml, /<w:pStyle w:val="Heading5"\/>/);
+    assert.match(strFromU8(files["word/styles.xml"]), /w:styleId="ThesisHeading1NoPage"[\s\S]{0,350}w:basedOn w:val="Heading1"[\s\S]{0,350}w:outlineLvl w:val="0"/, "the custom TOC mapping preserves Heading 1 outline semantics");
+    assert.match(xml, /<w:pStyle w:val="ThesisHeading5Index"\/>/);
+    assert.match(strFromU8(files["word/styles.xml"]), /w:styleId="ThesisHeading5Index"[\s\S]{0,350}w:basedOn w:val="Heading5"[\s\S]{0,350}w:outlineLvl w:val="4"/, "the mapped fifth-level heading retains its Word outline level");
   });
 });

@@ -279,6 +279,29 @@ describe("thesis export", () => {
     assert.match(pageText, /Metin/);
     await pdfTask.destroy();
   });
+  it("writes a live Word TOC field with a cached result and only selected thesis headings mapped into it", async () => {
+    const template = structuredClone(generic);
+    const hidden = { id: "hidden-outline", type: "custom", title: "Hidden outline", status: "required", group: "body", mode: "editable", tocEntry: "none", content: "<h1>Hidden section heading</h1>", order: 8 };
+    template.sections.push(hidden);
+    const model = compileThesisDocument(template, {}, "Tez", "<h1>Chapter title</h1><h2>Subchapter title</h2><h1 data-unnumbered=\"true\">Unnumbered body heading</h1>");
+    const data = new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer());
+    const entries = unzipSync(data);
+    const documentXml = strFromU8(entries["word/document.xml"]);
+    const settingsXml = strFromU8(entries["word/settings.xml"]);
+    const stylesXml = strFromU8(entries["word/styles.xml"]);
+    assert.match(documentXml, /w:fldCharType="begin"[^>]*w:dirty="true"/);
+    assert.match(documentXml, /TOC \\h \\f &quot;A&quot; \\t &quot;ThesisHeading1Index,1,ThesisHeading2Index,2,Heading 1,1,Heading 2,2/);
+    assert.match(documentXml, /Chapter title/);
+    assert.match(documentXml, /Subchapter title/);
+    assert.match(documentXml, /Unnumbered body heading/);
+    assert.match(documentXml, /Hidden section heading/);
+    assert.match(documentXml, /w:pStyle w:val="ThesisHeading1Excluded"/);
+    assert.doesNotMatch(documentXml, /ThesisHeading1Excluded,1/);
+    assert.match(documentXml, /w:bookmarkStart w:name="_ref_main_source_0"/);
+    assert.match(settingsXml, /<w:updateFields\s*\/>/);
+    assert.match(stylesXml, /w:styleId="ThesisHeading1Excluded"[\s\S]*w:outlineLvl w:val="0"/);
+    assert.match(stylesXml, /w:styleId="TOC1"/);
+  });
   it("keeps continuous sections on one PDF/Word page and paginates long main text", async () => {
     const template = structuredClone(generic);
     template.sections.splice(2, 0, { id: "front-note", type: "custom", title: "Ön not", status: "required", group: "front", pageBreakBefore: false, content: "Kısa devam", overrides: { page: { numbering: { format: "roman-lower" } } } });

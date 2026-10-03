@@ -1,9 +1,10 @@
 import { blockDescriptors, blockGapActive, describeBlock, gapBetween } from "./blockGap.js";
 import { jsPDF } from "jspdf";
 import {
-  AlignmentType, Bookmark, BorderStyle, Document, ExternalHyperlink, Footer, FootnoteReferenceRun, Header, HeadingLevel, ImageRun,
+  AlignmentType, Bookmark, BorderStyle, Document, ExternalHyperlink, Footer, FootnoteReferenceRun, Header, ImageRun,
   HeightRule, LevelFormat, LineRuleType, NumberFormat, Packer, PageBreak, PageNumber, PageOrientation, Paragraph,
   SectionType, SimpleField, Table, TableAnchorType, TableCell, TableLayoutType, TableRow, TextRun, WidthType, TabStopType, LeaderType, Tab, VerticalAlign,
+  ImportedXmlComponent,
 } from "docx";
 import { ACADEMIC_FIGURE_MARGIN_PT, ACADEMIC_TABLE_CELL_PADDING_PT, parseAcademicHtml } from "../lib/academicDocument.js";
 import { mathFromLatex } from "../lib/mathOmml.js";
@@ -363,6 +364,43 @@ function docxParagraph(runs, style, context, { anchor, ...options } = {}) {
   return new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
 }
 
+const thesisHeadingStyleId = (level, included, noPage = false) => `ThesisHeading${level}${included ? (noPage ? "NoPage" : "Index") : "Excluded"}`;
+const fieldXmlText = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function complexFieldMarker(instruction, edge) {
+  const xml = edge === "begin"
+    ? `<w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">${fieldXmlText(instruction)}</w:instrText><w:fldChar w:fldCharType="separate"/></w:r>`
+    : `<w:r><w:fldChar w:fldCharType="end"/></w:r>`;
+  return ImportedXmlComponent.fromXmlString(xml);
+}
+function wrapParagraphsInField(paragraphs, instruction) {
+  if (!paragraphs.length) return paragraphs;
+  const first = paragraphs[0];
+  // Paragraph.root starts with paragraph properties. Keeping the field begin in
+  // the first cached row avoids adding a blank line to university index pages.
+  first.root.splice(1, 0, complexFieldMarker(instruction, "begin"));
+  paragraphs[paragraphs.length - 1].root.push(complexFieldMarker(instruction, "end"));
+  return paragraphs;
+}
+function emptyComplexFieldParagraph(instruction) {
+  return new Paragraph({ spacing: { before: 0, after: 0 }, children: [complexFieldMarker(instruction, "begin"), complexFieldMarker(instruction, "end")] });
+}
+function indexFieldInstruction(rule, styleLevels, noPageLevels = []) {
+  const parts = ["TOC", "\\h", '\\f "A"'];
+  if (styleLevels.length) parts.push(`\\t "${styleLevels.map(({ id, level }) => `${id},${level}`).join(",")}"`);
+  if (noPageLevels.length) {
+    const ordered = [...new Set(noPageLevels)].sort((a, b) => a - b);
+    if (ordered.some((level, index) => index && level !== ordered[index - 1] + 1)) throw new Error("This thesis TOC needs non-contiguous Word page-number exclusions, which the field format cannot represent safely.");
+    parts.push(`\\n "${ordered[0]}-${ordered[ordered.length - 1]}"`);
+  }
+  return parts.join(" ");
+}
+function tocSpecialField(entry) {
+  const title = String(entry.title || "").replace(/"/g, '\\"');
+  const level = Number.isFinite(entry.wordTocLevel) ? entry.wordTocLevel : entry.level || 1;
+  const noPage = entry.includePageNumber === false ? " \\n" : "";
+  return new SimpleField(`TC "${title}" \\f A \\l ${level}${noPage}`, { text: "", vanish: true });
+}
+
 /** Empty paragraph exactly `heightMm` tall (Word has no bare vertical box). */
 function spacerParagraph(heightMm) {
   return new Paragraph({ spacing: { before: 0, after: 0, line: Math.max(1, twip(heightMm)), lineRule: LineRuleType.EXACT }, children: [new TextRun({ text: "", size: 2 })] });
@@ -609,6 +647,7 @@ function docxChildren(section, context) {
     const rule = section.generatedIndex;
     children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context, { anchor: section.indexSources?.find((entry) => entry.tocTitle)?.anchor }));
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
+    const indexParagraphStart = children.length;
     let previousRow = null;
     for (const row of section.indexRows) {
       const levelStyle = { ...(indexRowStyle(rule, row) || {}) };
@@ -627,11 +666,21 @@ function docxChildren(section, context) {
       if (withPage) runs.push({ type: "tab" }, row.anchor ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? "") } : plainRuns(row.page)[0] || { type: "text", text: "" });
       children.push(docxParagraph(runs, lineLabel ? { ...style, spaceBeforePt: 0 } : style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
     }
+    if (rule.kind === "toc") {
+      const rows = children.splice(indexParagraphStart);
+      if (context.nativeTocField) children.push(...(rows.length ? wrapParagraphsInField(rows, context.nativeTocField.instruction) : [emptyComplexFieldParagraph(context.nativeTocField.instruction)]));
+      else children.push(...rows);
+    }
     return children;
   }
   // A special page listed in the TOC by its title (ÖZET, ABSTRACT, …): an empty one-twip paragraph carries the bookmark its PAGEREF points to.
-  const titleAnchor = section.layout ? section.indexSources?.find((entry) => entry.tocTitle)?.anchor : null;
-  if (titleAnchor) children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] })] }));
+  const titleEntry = section.layout ? section.indexSources?.find((entry) => entry.tocTitle && entry.sectionId === section.id) : null;
+  const titleAnchor = titleEntry?.anchor;
+  if (titleAnchor) {
+    const row = context.tocRowsByAnchor?.get(titleAnchor);
+    const tc = row ? [tocSpecialField({ ...titleEntry, wordTocLevel: row.includePageNumber === false ? 9 : row.level, includePageNumber: row.includePageNumber })] : [];
+    children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] }), ...tc] }));
+  }
   if (section.layout) {
     const split = splitLayoutNodes(section.layout);
     const frame = page.docxContentFrame;
@@ -669,9 +718,25 @@ function docxChildren(section, context) {
       const style = headings[block.level] || headings[1] || body;
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
-      const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
       const indent = block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {};
-      children.push(docxParagraph(runs, chain(withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, ...indent, pageBreakBefore: false } : { ...style, ...indent })), context, { heading: level, anchor: block.thesisAnchor }));
+      const indexedRow = context.tocRowsByAnchor?.get(block.thesisAnchor);
+      const noPage = indexedRow?.includePageNumber === false;
+      const isMappedHeading = Boolean(indexedRow && !indexedRow.tocTitle);
+      const level = Number(block.level);
+      const nativeMappedLevel = context.nativeTocLevels?.has(level);
+      // Keep ordinary, non-indexed outline levels on their normal Word heading
+      // styles. A distinct style is needed only when Word's live TOC maps this
+      // source level and must exclude one particular source paragraph.
+      const sourceStyleId = isMappedHeading || nativeMappedLevel
+        ? thesisHeadingStyleId(level, isMappedHeading, noPage)
+        : `Heading${level}`;
+      if (sourceStyleId !== `Heading${level}`) {
+        const headingStyleDefinition = { id: sourceStyleId, name: sourceStyleId, basedOn: `Heading${level}`, quickFormat: false, run: { font: style.fontFamily, size: halfPointSize(style.fontSizePt), bold: style.fontWeight >= 600, italics: Boolean(style.italic) }, paragraph: { outlineLevel: Math.max(0, level - 1) } };
+        (context.thesisHeadingStyles ||= new Map()).set(sourceStyleId, headingStyleDefinition);
+      }
+      const paragraph = docxParagraph(runs, chain(withGap(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading) ? { ...style, ...indent, pageBreakBefore: false } : { ...style, ...indent })), context, { style: sourceStyleId, anchor: block.thesisAnchor });
+      if (indexedRow?.tocTitle) paragraph.root.push(tocSpecialField({ ...indexedRow, title: indexedRow.rowTitle || indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
+      children.push(paragraph);
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
       const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
@@ -793,7 +858,57 @@ function listLevels(ordered) {
 export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {}, tableContinuations = {}, blockPageBreaks = [] } = {}) {
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
-  const context = { language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1, captionAlignments, captionHangs, indexHangs, tableContinuations, blockPageBreaks: new Set(blockPageBreaks) };
+  const nativeToc = model.sections.find((section) => section.generatedIndex?.kind === "toc");
+  const tocRowsByAnchor = new Map();
+  const tocStyleLevels = [];
+  const tocNoPageLevels = new Set();
+  if (nativeToc) {
+    const rule = nativeToc.generatedIndex;
+    const sourceProfiles = (nativeToc.indexRows || []).filter((row) => row.kind === "toc" && !row.tocTitle).map((row) => ({
+      row,
+      includePageNumber: Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false,
+    }));
+    const noPageProfiles = [...new Map(sourceProfiles.filter((profile) => !profile.includePageNumber).map((profile) => [Number(profile.row.level || 1), profile])).values()];
+    if (noPageProfiles.length > 3) throw new Error("This thesis TOC has more than three distinct no-page heading levels; Word's remaining TOC levels cannot represent them faithfully.");
+    const outputLevelByProfile = new Map();
+    for (const profile of sourceProfiles.filter((profile) => profile.includePageNumber)) {
+      const sourceLevel = Number(profile.row.level || 1);
+      outputLevelByProfile.set(`${sourceLevel}:page`, sourceLevel);
+    }
+    noPageProfiles.forEach((profile, index) => outputLevelByProfile.set(`${Number(profile.row.level || 1)}:noPage`, 9 - index));
+    for (const row of nativeToc.indexRows || []) {
+      if (!row.anchor) continue;
+      const includePageNumber = Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false;
+      const wordTocLevel = row.tocTitle ? (includePageNumber ? Number(row.level || 1) : 9) : outputLevelByProfile.get(`${Number(row.level || 1)}:${includePageNumber ? "page" : "noPage"}`) || Number(row.level || 1);
+      tocRowsByAnchor.set(row.anchor, { ...row, includePageNumber, wordTocLevel });
+      if (!row.tocTitle && row.kind === "toc") {
+        const id = thesisHeadingStyleId(row.level || 1, true, !includePageNumber);
+        if (!tocStyleLevels.some((entry) => entry.id === id && entry.level === wordTocLevel)) tocStyleLevels.push({ id, level: wordTocLevel });
+      }
+      if (!includePageNumber) tocNoPageLevels.add(wordTocLevel);
+    }
+    // Word users who add a normal built-in heading after export still get a live entry,
+    // with the only page-number behavior established for that source heading level.
+    const sourceLevels = [...new Set(sourceProfiles.map(({ row }) => Number(row.level || 1)))];
+    for (const level of sourceLevels) {
+      const profiles = new Set(sourceProfiles.filter(({ row }) => Number(row.level || 1) === level).map(({ includePageNumber }) => includePageNumber));
+      if (profiles.size === 1) {
+        const includePageNumber = profiles.has(true);
+        const outputLevel = outputLevelByProfile.get(`${level}:${includePageNumber ? "page" : "noPage"}`) || level;
+        tocStyleLevels.push({ id: `Heading ${level}`, level: outputLevel });
+        if (!includePageNumber) tocNoPageLevels.add(outputLevel);
+      }
+    }
+  }
+  const context = {
+    language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1,
+    captionAlignments, captionHangs, indexHangs, tableContinuations, blockPageBreaks: new Set(blockPageBreaks),
+    tocRowsByAnchor,
+    nativeTocField: nativeToc ? { instruction: indexFieldInstruction(nativeToc.generatedIndex, tocStyleLevels, [...tocNoPageLevels]) } : null,
+    nativeTocLevels: new Set((nativeToc?.indexRows || []).filter((row) => row.kind === "toc" && !row.tocTitle).map((row) => Number(row.level || 1))),
+    thesisHeadingStyles: new Map(),
+    tocParagraphStyles: new Map(),
+  };
   const pageStarts = new Set(groupThesisSections(model.sections).filter(thesisGroupHasPageContent).map((group) => group.id));
   const sections = model.sections.map((section, index) => {
     const page = section.rules.page;
@@ -818,12 +933,29 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       },
     };
   });
+  if (nativeToc) {
+    const rule = nativeToc.generatedIndex;
+    for (const row of nativeToc.indexRows || []) {
+      const fieldRow = tocRowsByAnchor.get(row.anchor);
+      if (!fieldRow) continue;
+      const outputLevel = fieldRow.wordTocLevel;
+      const levelStyle = indexRowStyle(rule, row) || {};
+      const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm };
+      const id = `TOC${outputLevel}`;
+      if (!context.tocParagraphStyles.has(id)) {
+        const widthMm = nativeToc.rules.page.widthMm - nativeToc.rules.page.margins.leftMm - nativeToc.rules.page.margins.rightMm;
+        const tabPosition = rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm;
+        const tabStops = fieldRow.includePageNumber ? [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()] || TabStopType.RIGHT, position: twip(tabPosition), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] : [];
+        context.tocParagraphStyles.set(id, { id, name: `TOC ${outputLevel}`, basedOn: "Normal", quickFormat: false, run: runProps(style, context.language), paragraph: paragraphProps(style, { tabStops }, nativeToc.rules.lineSpacing) });
+      }
+    }
+  }
   const styles = base ? {
     default: {
       document: { run: { font: base.body.fontFamily, size: halfPointSize(base.body.fontSizePt) } },
       ...Object.fromEntries(Object.keys(base.headings).filter((level) => Number(level) <= 6).map((level) => [`heading${level}`, headingStyle(base.headings[level], context.language, level)])),
     },
-    ...(context.footnoteParagraphStyles?.size ? { paragraphStyles: [...context.footnoteParagraphStyles.values()] } : {}),
+    ...((context.footnoteParagraphStyles?.size || context.thesisHeadingStyles.size || context.tocParagraphStyles.size) ? { paragraphStyles: [...(context.footnoteParagraphStyles?.values() || []), ...context.thesisHeadingStyles.values(), ...context.tocParagraphStyles.values()] } : {}),
   } : undefined;
   return Packer.toBlob(new Document({
     title: model.title || "Tez", creator: "TxtNote", features: { updateFields: true }, styles,
