@@ -18,6 +18,20 @@ import { applyAlignToRange, readAlignFromRange } from "../../lib/richTextAlign";
 /** Academic and thesis bodies keep the selection after a format so marks can be stacked (B then I). */
 const keepsSelection = (root) => root.classList.contains("academic-body") || root.classList.contains("thesis-content");
 
+const computeSizeFromStart = (range, root) => {
+  if (!range || !root) return undefined;
+  const startNode = range.startContainer;
+  const el = startNode.nodeType === 3 ? startNode.parentElement : startNode;
+  if (!el) return undefined;
+  const style = window.getComputedStyle(el);
+  const pxStr = style.fontSize || "";
+  const px = parseFloat(pxStr);
+  if (isNaN(px)) return undefined;
+  const scale = parseFloat(window.getComputedStyle(root).transform?.match(/scale\(([\d.]+)\)/)?.[1] || "1");
+  const pt = (px / scale) / (96 / 72);
+  return Math.round(pt * 2) / 2;
+};
+
 export const useFormatMenu = (rootRef, emitChange) => {
   const savedRangeRef = useRef(null);
   const hadSelectionRef = useRef(false);
@@ -26,6 +40,20 @@ export const useFormatMenu = (rootRef, emitChange) => {
 
   const [activeFormat, setActiveFormat] = useState(DEFAULT_FORMAT);
   const [menu, setMenu] = useState({ isOpen: false, x: 0, y: 0 });
+  const rootRef2 = rootRef;
+
+  const computeBlock = useCallback((range) => {
+    if (!range) return undefined;
+    const block = range.startContainer.nodeType === 3 ? range.startContainer.parentElement : range.startContainer;
+    if (!block) return undefined;
+    const closest = block.closest("[data-thesis-style]");
+    if (closest) return `style:${closest.getAttribute("data-thesis-style")}`;
+    for (let node = block; node?.closest?.(".thesis-content"); node = node.parentElement) {
+      const match = node.tagName?.match(/^H([1-6])$/i);
+      if (match) return match[1];
+    }
+    return "0";
+  }, []);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -34,7 +62,9 @@ export const useFormatMenu = (rootRef, emitChange) => {
     const rememberSelection = () => {
       const { range, hadSelection } = captureSelection(root);
       if (!range) return;
-      setActiveFormat({ ...readFormatFromRange(range), align: readAlignFromRange(range, root) });
+      const sizeComputedPt = !readFormatFromRange(range).sizePt ? computeSizeFromStart(range, root) : undefined;
+      const block = computeBlock(range);
+      setActiveFormat({ ...readFormatFromRange(range), align: readAlignFromRange(range, root), sizeComputedPt, block });
       savedRangeRef.current = range.cloneRange();
       hadSelectionRef.current = hadSelection;
       if (hadSelection) lastNonCollapsedRangeRef.current = range;
@@ -58,8 +88,9 @@ export const useFormatMenu = (rootRef, emitChange) => {
     return {
       ...readFormatFromRange(range),
       align: readAlignFromRange(range, root),
+      block: computeBlock(range),
     };
-  }, [rootRef]);
+  }, [rootRef, computeBlock]);
 
   const closeMenu = useCallback(() => {
     setMenu((state) => (state.isOpen ? { ...state, isOpen: false } : state));
@@ -90,7 +121,8 @@ export const useFormatMenu = (rootRef, emitChange) => {
       if (sel?.rangeCount) {
         const next = sel.getRangeAt(0);
         rememberSelectionState(next, !sel.isCollapsed);
-        setActiveFormat(formatFromRange(next));
+        const sizeComputedPt = !readFormatFromRange(next).sizePt ? computeSizeFromStart(next, rootRef.current) : undefined;
+        setActiveFormat({ ...formatFromRange(next), sizeComputedPt });
       }
 
       lastNonCollapsedRangeRef.current = null;
@@ -126,7 +158,8 @@ export const useFormatMenu = (rootRef, emitChange) => {
       if (sel?.rangeCount) {
         const next = sel.getRangeAt(0);
         rememberSelectionState(next, !sel.isCollapsed);
-        setActiveFormat(formatFromRange(next));
+        const sizeComputedPt = !readFormatFromRange(next).sizePt ? computeSizeFromStart(next, rootRef.current) : undefined;
+        setActiveFormat({ ...formatFromRange(next), sizeComputedPt });
       }
 
       lastNonCollapsedRangeRef.current = null;

@@ -20,6 +20,7 @@ import {
   Table, TableRow, TableCell, WidthType, BorderStyle, LevelFormat,
   convertMillimetersToTwip,
 } from "docx";
+import { customFormatCss, validCustomFormatAttr } from "../config/format.js";
 import { ACADEMIC_CSS, fitImageSize, htmlWithoutPageGaps, tightenAcademicFlow } from "./academicLayout.js";
 import { bibliographyItemsForExport } from "./academicBibliography.js";
 import { joinCaptionText, numberAcademicBlocks, parseAcademicHtml } from "./academicDocument.js";
@@ -101,7 +102,7 @@ export function buildPrintDocument(doc) {
 <head>
   <meta charset="utf-8">
   <title>${heading}</title>
-  <style>${A4_CSS}</style>
+  <style>${A4_CSS}${customFormatCss(paper.html)}</style>
 </head>
 <body>
   <article class="paper academic-document">
@@ -132,8 +133,9 @@ export async function downloadBlob(blob, fileName) {
   window.setTimeout(() => URL.revokeObjectURL(url), 1500);
 }
 
-function runStyle(el) {
+export function runStyle(el) {
   const style = { font: "Times New Roman", size: 24 };
+  const explicit = {};
   const chain = [];
   for (let n = el; n?.nodeType === 1; n = n.parentElement) chain.unshift(n);
   for (const n of chain) {
@@ -156,7 +158,13 @@ function runStyle(el) {
       const pt = token.match(/^fmt-pt-(\d+)$/);
       if (pt) style.size = Number(pt[1]) * 2;
     }
-    for (const [name, color] of Object.entries({ black: "171717", red: "E8A0A0", blue: "9BB8DE", green: "9CC9AE" })) {
+    const customPt = validCustomFormatAttr("data-fmt-pt", n.getAttribute("data-fmt-pt"));
+    if (customPt) explicit.size = style.size = Number(customPt) * 2;
+    const customColor = validCustomFormatAttr("data-fmt-color", n.getAttribute("data-fmt-color"));
+    if (customColor) explicit.color = style.color = customColor.slice(1).toUpperCase();
+    const customBg = validCustomFormatAttr("data-fmt-bg", n.getAttribute("data-fmt-bg"));
+    if (customBg) explicit.shadingFill = style.shadingFill = customBg.slice(1).toUpperCase();
+    for (const [name, color] of Object.entries({ black: "000000", red: "BE123C", blue: "0369A1", green: "047857" })) {
       if (c.contains(`fmt-color-${name}`)) style.color = color;
     }
     for (const [name, fill] of Object.entries({ yellow: "FFF2A8", green: "C9F2D0", cyan: "BDEFFF", magenta: "F5C8EE" })) {
@@ -188,6 +196,8 @@ function runStyle(el) {
       /* keep class-based style */
     }
   }
+  // Custom attribute values are authoritative over whatever the computed style resolved to.
+  Object.assign(style, explicit);
   return style;
 }
 

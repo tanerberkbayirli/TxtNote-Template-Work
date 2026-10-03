@@ -2,7 +2,17 @@
  * Helpers for the contentEditable note body.
  */
 
-import { DEFAULT_FORMAT, formatClassName, mergeFormatClassName, parsePartialFormat } from "../config/format";
+import {
+  DEFAULT_FORMAT,
+  formatClassName,
+  hasCustomFormatAttr,
+  mergeFormatClassName,
+  parsePartialFormat,
+  registerCustomFormatRules,
+  setSpanFormatTokens,
+  spanFormatTokens,
+  validCustomFormatAttr,
+} from "../config/format";
 import { withoutInlineStyleAttributes } from "./cspStyles.js";
 import {
   beginCodeEdit,
@@ -97,6 +107,13 @@ export function sanitizeHtml(html) {
       [...child.attributes].forEach((attr) => {
         const name = attr.name.toLowerCase();
         const value = attr.value;
+        if (name.startsWith("data-fmt-")) {
+          // Custom size/colour: only on spans, only exact canonical values.
+          const ok = child.tagName === "SPAN" ? validCustomFormatAttr(name, value) : null;
+          if (ok == null) child.removeAttribute(attr.name);
+          else if (ok !== value) child.setAttribute(attr.name, ok);
+          return;
+        }
         const keepStyle =
           name === "style" &&
           (child.closest(".math-formula, .code-block") != null ||
@@ -117,7 +134,9 @@ export function sanitizeHtml(html) {
     });
   };
   walk(template.content);
-  return template.innerHTML;
+  const cleaned = template.innerHTML;
+  registerCustomFormatRules(cleaned);
+  return cleaned;
 }
 
 /** Strip tags for word counts and emptiness checks. */
@@ -221,7 +240,7 @@ export function noteBodyStats(html) {
 }
 
 function isFormatSpan(node) {
-  return node instanceof HTMLSpanElement && FORMAT_CLASS.test(node.className);
+  return node instanceof HTMLSpanElement && (FORMAT_CLASS.test(node.className) || hasCustomFormatAttr(node));
 }
 
 /** Walk from the node up, so nested size/colour/style spans combine. */
@@ -236,7 +255,7 @@ export function readFormatFromNode(node) {
 
   let format = { ...DEFAULT_FORMAT };
   for (const span of chain) {
-    format = { ...format, ...parsePartialFormat(span.className) };
+    format = { ...format, ...parsePartialFormat(spanFormatTokens(span)) };
   }
   return format;
 }
@@ -256,8 +275,12 @@ export function readFormatFromRange(range) {
 
   return {
     size: same("size") ? first.size : DEFAULT_FORMAT.size,
+    sizePt: same("size") ? first.sizePt : undefined,
+    sizeMixed: !same("size"),
     color: same("color") ? first.color : DEFAULT_FORMAT.color,
+    colorMixed: !same("color"),
     highlight: same("highlight") ? first.highlight : DEFAULT_FORMAT.highlight,
+    highlightMixed: !same("highlight"),
     bold: formats.every((row) => row.bold),
     italic: formats.every((row) => row.italic),
     strike: formats.every((row) => row.strike),
@@ -310,7 +333,7 @@ function sampleNodeForFormat(range) {
 
 function elementOwnsStyle(el, style) {
   if (!(el instanceof HTMLElement)) return false;
-  if (isFormatSpan(el) && parsePartialFormat(el.className)[style]) return true;
+  if (isFormatSpan(el) && parsePartialFormat(spanFormatTokens(el))[style]) return true;
   if (style === "strike" && /^(S|STRIKE|DEL)$/.test(el.tagName)) return true;
   if (style === "underline" && el.tagName === "U") return true;
   if (style === "overline" && /overline/i.test(el.style?.textDecorationLine || el.style?.textDecoration || "")) return true;
@@ -436,7 +459,7 @@ function wrapTextSlice(textNode, range, patch) {
   if (!parent) return null;
 
   const patchedClass = patch.clearFormatting
-    ? clearFormatClasses(textNode.parentElement?.className ?? "")
+    ? clearFormatClasses(isFormatSpan(textNode.parentElement) ? spanFormatTokens(textNode.parentElement) : textNode.parentElement?.className ?? "")
     : formatClassName({ ...readFormatFromNode(textNode), ...patch });
 
   // Format span with only this text: split into sibling spans so turning a
@@ -451,19 +474,19 @@ function wrapTextSlice(textNode, range, patch) {
           return plain;
         }
       }
-      parent.className = patchedClass;
+      setSpanFormatTokens(parent, patchedClass);
       return isolateFormatRun(parent);
     }
 
     const grand = parent.parentNode;
     const next = parent.nextSibling;
-    const keepClass = parent.className;
+    const keepClass = spanFormatTokens(parent);
     grand.removeChild(parent);
 
     const insert = (piece, className) => {
       if (!piece) return null;
       const span = document.createElement("span");
-      span.className = className;
+      setSpanFormatTokens(span, className);
       span.textContent = piece;
       grand.insertBefore(span, next);
       return span;
@@ -481,7 +504,7 @@ function wrapTextSlice(textNode, range, patch) {
   if (before) parent.insertBefore(document.createTextNode(before), anchor);
 
   const span = document.createElement("span");
-  span.className = patchedClass;
+  setSpanFormatTokens(span, patchedClass);
   span.textContent = middle;
   parent.insertBefore(span, anchor);
 
@@ -542,7 +565,7 @@ export function applyFormatToRange(range, patch, preserveSelection = false) {
 export function applyFormatAtCursor(range, patch) {
   const inherited = readFormatFromNode(range.startContainer);
   const span = document.createElement("span");
-  span.className = patch.clearFormatting ? "" : formatClassName({ ...inherited, ...patch });
+  setSpanFormatTokens(span, patch.clearFormatting ? "" : formatClassName({ ...inherited, ...patch }));
 
   const anchor = document.createTextNode("\u200B");
   span.appendChild(anchor);
@@ -564,7 +587,7 @@ export function applyFormatAtCursor(range, patch) {
 /** Remove only known inline formatting tokens; links and academic structure remain on their existing parents. */
 function clearFormatClasses(className) {
   const tokens = String(className || "").split(/\s+/).filter(Boolean);
-  const isFormat = (token) => /^fmt-(?:size|color|pt|highlight)-/.test(token) || /^fmt-(?:bold|italic|strike|underline|overline)$/.test(token);
+  const isFormat = (token) => token.startsWith("@") || /^fmt-(?:size|color|pt|highlight)-/.test(token) || /^fmt-(?:bold|italic|strike|underline|overline)$/.test(token);
   return tokens.filter((token) => !isFormat(token)).join(" ");
 }
 
@@ -841,7 +864,7 @@ export function applyMarkupAtCaret(root) {
   if (!parent) return false;
 
   const span = document.createElement("span");
-  span.className = formatClassName({ ...readFormatFromNode(caret.node), ...marker.patch });
+  setSpanFormatTokens(span, formatClassName({ ...readFormatFromNode(caret.node), ...marker.patch }));
   span.textContent = marker.inner;
 
   // A zero-width space keeps the caret outside the span, so what comes next is

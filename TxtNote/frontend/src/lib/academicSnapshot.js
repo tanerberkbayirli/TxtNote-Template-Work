@@ -3,6 +3,7 @@
  * fields, punto, images, math, code, and positions. No reconstructed stub.
  */
 
+import { customFormatCss } from "../config/format.js";
 import { ACADEMIC_CSS, PAGE_GAP_ATTR, stripAcademicPageGaps, tightenAcademicFlow } from "./academicLayout.js";
 import { flattenCodeBlocksForAcademic } from "./codeBlock.js";
 
@@ -315,6 +316,7 @@ export function buildWysiwygPrintHtml(article, extraCss = "") {
   <style>
     ${ACADEMIC_CSS}
     ${EXPORT_WIDGET_CSS}
+    ${customFormatCss(clone.outerHTML)}
     ${extraCss}
     html,body { margin:0; padding:0; background:#fff; }
     @page { size:A4; margin:0; }

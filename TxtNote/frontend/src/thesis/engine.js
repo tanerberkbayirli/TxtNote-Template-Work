@@ -1,5 +1,6 @@
 import { migrateThesisTemplate, validateThesisContent, validateThesisTemplate } from "./validation.js";
 import { isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionCountMet, thesisSectionMode } from "./document.js";
+import { customFormatCss } from "../config/format.js";
 import { styleNonceAttribute, withoutInlineStyleAttributes } from "../lib/cspStyles.js";
 import { flattenSpecialPage, isSpecialPageSection, resolveSpecialPage, specialPageCss, specialPageHtml } from "./specialPages.js";
 import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesisPresentationHtml } from "./generatedIndex.js";
@@ -596,7 +597,7 @@ export function thesisFootnoteCss(group) {
 export function buildThesisCss(documentModel) {
   const inlineFormats = [
     ".thesis-body .fmt-size-heading{font-size:28px;line-height:1.35}.thesis-body .fmt-size-subheading{font-size:20px;line-height:1.45}.thesis-body .fmt-size-body{font-size:15px;line-height:2}",
-    ".thesis-body .fmt-color-black{color:#171717}.thesis-body .fmt-color-red{color:#e8a0a0}.thesis-body .fmt-color-blue{color:#9bb8de}.thesis-body .fmt-color-green{color:#9cc9ae}",
+    ".thesis-body .fmt-color-black{color:#000000}.thesis-body .fmt-color-red{color:#be123c}.thesis-body .fmt-color-blue{color:#0369a1}.thesis-body .fmt-color-green{color:#047857}",
     ".thesis-body .fmt-highlight-yellow{background-color:#fff2a8}.thesis-body .fmt-highlight-green{background-color:#c9f2d0}.thesis-body .fmt-highlight-cyan{background-color:#bdefff}.thesis-body .fmt-highlight-magenta{background-color:#f5c8ee}",
     ...[8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24].map((pt) => `.thesis-body .fmt-pt-${pt}{font-size:${pt}pt}`),
     ...Array.from({ length: 8 }, (_, index) => `.thesis-body [data-txt-indent="${index + 1}"]{margin-left:${(index + 1) * 5}mm}`),
@@ -608,6 +609,6 @@ export function buildThesisPrintHtml(documentModel, { nonce = "" } = {}) {
   const groups = groupThesisSections(documentModel.sections).filter(thesisGroupHasPageContent);
   const pages = groups.map((group) => `<section class="thesis-paper" data-thesis-section="${escapeHtml(group.id)}">${group.sections.map((section) => `<section class="thesis-flow-section" data-thesis-flow-section="${escapeHtml(section.id)}"><div class="thesis-body">${withoutInlineStyleAttributes(thesisPresentationHtml(section, documentModel.language))}</div></section>`).join("")}</section>`).join("");
   const pageRules = groups.map((group) => `@page thesis_${group.id}{size:${group.rules.page.widthMm}mm ${group.rules.page.heightMm}mm;margin:0}.thesis-paper[data-thesis-section="${group.id}"]{page:thesis_${group.id}}`).join("");
-  const css = `${buildThesisCss(documentModel)}${pageRules}body{margin:0;background:#fff}.thesis-paper{background:#fff}@media print{.thesis-paper{break-before:page;box-shadow:none}.thesis-paper:first-child{break-before:auto}}`.replace(/<\/style/gi, "<\\/style");
+  const css = `${buildThesisCss(documentModel)}${customFormatCss(pages, ".thesis-body")}${pageRules}body{margin:0;background:#fff}.thesis-paper{background:#fff}@media print{.thesis-paper{break-before:page;box-shadow:none}.thesis-paper:first-child{break-before:auto}}`.replace(/<\/style/gi, "<\\/style");
   return `<!doctype html><html lang="${escapeHtml(documentModel.language || "tr")}"><head><meta charset="utf-8"><title>${escapeHtml(documentModel.title)}</title><style${styleNonceAttribute(nonce)}>${css}</style></head><body>${pages}</body></html>`;
 }

@@ -37,7 +37,7 @@ const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fo
 function pdfTextStyle(element, style, language) {
   const equation = element.closest?.(".math-formula--block");
   const equationFamily = equation && getComputedStyle(equation).getPropertyValue("--thesis-pdf-equation-font").trim();
-  const highlight = element.closest?.(".fmt-highlight-yellow,.fmt-highlight-green,.fmt-highlight-cyan,.fmt-highlight-magenta");
+  const highlight = element.closest?.(".fmt-highlight-yellow,.fmt-highlight-green,.fmt-highlight-cyan,.fmt-highlight-magenta,[data-fmt-bg]");
   const backgroundColor = highlight ? getComputedStyle(highlight).backgroundColor : style.backgroundColor;
   return { ...textStyle(style), backgroundColor, ...(equationFamily ? { fontFamily: equationFamily, pdfMetricsFontFamily: style.fontFamily } : {}), lang: element.closest?.("[lang]")?.getAttribute("lang") || language };
 }

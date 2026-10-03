@@ -4,6 +4,7 @@
  * PDF and Word exporters see the same structure.
  */
 
+import { validCustomFormatAttr } from "../config/format.js";
 import { htmlWithoutPageGaps } from "./academicLayout.js";
 import { latexToPlainText } from "./mathPlainText.js";
 
@@ -172,9 +173,9 @@ function runsFromNode(node) {
     italic: Boolean(node.classList?.contains("fmt-italic") || /^(I|EM)$/.test(node.tagName)),
     underline: Boolean(node.classList?.contains("fmt-underline") || node.tagName === "U"),
     strike: Boolean(node.classList?.contains("fmt-strike") || /^(S|DEL)$/.test(node.tagName)),
-    color: (node.className.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1],
-    highlight: (node.className.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1],
-    fontSizePt: Number((node.className.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
+    color: (node.className.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1] || validCustomFormatAttr("data-fmt-color", node.getAttribute("data-fmt-color")) || undefined,
+    highlight: (node.className.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1] || validCustomFormatAttr("data-fmt-bg", node.getAttribute("data-fmt-bg")) || undefined,
+    fontSizePt: Number(validCustomFormatAttr("data-fmt-pt", node.getAttribute("data-fmt-pt"))) || Number((node.className.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
   };
   return [...node.childNodes].flatMap((child) => {
     const inner = runsFromNode(child);
@@ -433,9 +434,9 @@ function runsFromHtmlFragment(inner) {
           italic: /^(i|em)$/.test(tag) || /\bfmt-italic\b/.test(attrs),
           underline: tag === "u" || /\bfmt-underline\b/.test(attrs),
           strike: /^(s|strike|del)$/.test(tag) || /\bfmt-strike\b/.test(attrs),
-          color: (attrs.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1],
-          highlight: (attrs.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1],
-          fontSizePt: Number((attrs.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
+          color: (attrs.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1] || validCustomFormatAttr("data-fmt-color", attr(attrs, "data-fmt-color")) || undefined,
+          highlight: (attrs.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1] || validCustomFormatAttr("data-fmt-bg", attr(attrs, "data-fmt-bg")) || undefined,
+          fontSizePt: Number(validCustomFormatAttr("data-fmt-pt", attr(attrs, "data-fmt-pt"))) || Number((attrs.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
         });
       }
     } else {

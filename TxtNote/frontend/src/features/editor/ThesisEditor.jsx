@@ -155,10 +155,15 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings] : [];
   const documentWidth = model ? Math.max(...model.sections.map((section) => pageMetrics(section.rules.page).widthPx)) : 794;
   const zoom = zoomChoice === "fit" ? Math.min(1.25, Math.max(0.1, (viewportWidth - 48) / documentWidth)) : Number(zoomChoice) / 100;
+  const canStepZoom = (direction) => {
+    const percentage = Math.round(zoom * 100);
+    return direction > 0 ? ZOOM_LEVELS.some((level) => level > percentage) : ZOOM_LEVELS.some((level) => level < percentage);
+  };
   const stepZoom = (direction) => {
+    if (!canStepZoom(direction)) return;
     const percentage = Math.round(zoom * 100);
     const next = direction > 0 ? ZOOM_LEVELS.find((level) => level > percentage) : ZOOM_LEVELS.findLast((level) => level < percentage);
-    setZoomChoice(String(next ?? (direction > 0 ? 150 : 50)));
+    if (next !== undefined) setZoomChoice(String(next));
   };
   const commitLayout = useCallback((next, reason = "action") => onResearchDataChange?.({ ...researchData, thesis: next }, reason), [researchData, onResearchDataChange]);
   const interaction = useLayoutInteraction({ rootRef: papersRef, model, thesis, onThesisChange: commitLayout, zoom });
@@ -469,7 +474,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       detailsOpen={detailsOpen} setDetailsOpen={setDetailsOpen} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={setPageSettingsOpen}
       canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
       exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
-      zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} zoom={zoom} stepZoom={stepZoom} totalPages={totalPages}
+      zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} zoom={zoom} stepZoom={stepZoom} canStepZoom={canStepZoom} zoomLevels={ZOOM_LEVELS} totalPages={totalPages}
       warningCount={(warning ? 1 : 0) + missingFields.length + (indexWarning ? 1 : 0) + validationIssues.length} warningsOpen={warningsOpen} setWarningsOpen={setWarningsOpen}
       validationIssues={validationIssues} missingFields={missingFields.map((key) => template.placeholders[key]?.label || key)} warning={warning} indexWarning={indexWarning} message={message}
       onImage={(kind = "") => { imageKindRef.current = kind; imageInputRef.current?.click(); }} captionKinds={captionKinds} pickedFigure={pickedFigure}

@@ -122,21 +122,22 @@ textarea::selection,
   }
 
   .fmt-color-black {
-    @apply text-neutral-800 dark:text-neutral-200;
+    @apply text-black dark:text-neutral-200;
   }
 
   .fmt-color-red {
-    @apply text-rose-400 dark:text-rose-300;
+    @apply text-rose-700 dark:text-rose-300;
   }
 
   .fmt-color-blue {
-    @apply text-sky-400 dark:text-sky-300;
+    @apply text-sky-700 dark:text-sky-300;
   }
 
   .fmt-color-green {
-    @apply text-emerald-400 dark:text-emerald-300;
+    @apply text-emerald-700 dark:text-emerald-300;
   }
 
+  .academic-page [data-fmt-pt] { line-height: 1.75; }
   .fmt-highlight-yellow { background-color: #fff2a8; }
   .fmt-highlight-green { background-color: #c9f2d0; }
   .fmt-highlight-cyan { background-color: #bdefff; }

@@ -2,9 +2,11 @@
  * Rich-text note body. contentEditable with right-click format menu.
  */
 
-import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { createTextHistory } from "../../lib/textHistory";
 import { AcademicImageControls } from "./AcademicImageControls";
 import { BODY_PLACEHOLDER } from "../../config/strings";
+import { coerceSizeId, FORMAT_COLORS, FORMAT_HIGHLIGHTS, normalizeHex } from "../../config/format";
 import { useIsomorphicLayoutEffect } from "../../hooks/useIsomorphicLayoutEffect";
 import {
   applyMarkupAtCaret,
@@ -107,6 +109,9 @@ export const RichTextBody = forwardRef(({
   const isInternalChange = useRef(false);
   const [isEmpty, setIsEmpty] = useState(() => !htmlToPlainText(content).trim());
 
+  const history = useMemo(() => createTextHistory({ limit: 100, windowMs: 500 }), []);
+  const historyRestoring = useRef(false);
+
   const fitBody = useCallback(() => {
     const body = bodyRef.current;
     if (!body) return;
@@ -125,6 +130,9 @@ export const RichTextBody = forwardRef(({
     if (academic) decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
     const raw = htmlWithoutPageGaps(body.innerHTML);
     const html = paragraphSemantics ? thesisSourceHtml(raw) : raw;
+    if (!historyRestoring.current) {
+      history.commit({ html, sel: currentOffsets(body) }, { typing: reason === "input" });
+    }
     isInternalChange.current = true;
     lastContentRef.current = html;
     setIsEmpty(!htmlToPlainText(html).trim());
@@ -151,10 +159,48 @@ export const RichTextBody = forwardRef(({
 
   useEffect(() => { onFormatChange?.(activeFormat); }, [activeFormat, onFormatChange]);
 
+  const stepHistory = useCallback((direction) => {
+    const body = bodyRef.current;
+    if (!body) return false;
+    const state = direction < 0 ? history.undo() : history.redo();
+    if (!state) return false;
+    body.innerHTML = ensureHtml(state.html, academic ? { plainCode: true } : undefined);
+    convertRawMathInRoot(body);
+    convertRawCodeInRoot(body, academic ? { plain: true } : undefined);
+    if (academic) flattenCodeBlocksForAcademic(body);
+    ensureMathCaretPads(body);
+    ensureCodeCaretPads(body);
+    body.focus({ preventScroll: true });
+    restoreSelectionTextOffsets(body, state.sel);
+    historyRestoring.current = true;
+    try { emitChange("history"); } finally { historyRestoring.current = false; }
+    const afterWidgets = academic ? renderMathInRoot(body) : Promise.all([renderMathInRoot(body), renderCodeInRoot(body)]);
+    Promise.resolve(afterWidgets).then(() => { if (bodyRef.current === body) fitBody(); });
+    return true;
+  }, [academic, emitChange, fitBody, history]);
+
+  // Selection before the next edit, so Undo puts the caret back where the user was.
+  useEffect(() => {
+    const body = bodyRef.current;
+    if (!body) return undefined;
+    const remember = () => history.setSelection(currentOffsets(body));
+    body.addEventListener("keyup", remember);
+    body.addEventListener("mouseup", remember);
+    body.addEventListener("focus", remember);
+    return () => {
+      body.removeEventListener("keyup", remember);
+      body.removeEventListener("mouseup", remember);
+      body.removeEventListener("focus", remember);
+    };
+  }, [history]);
+
   useImperativeHandle(ref, () => ({
-    applySize: (size) => applyPatch({ size }),
-    applyTextColor: (color) => applyPatch({ color }),
-    applyHighlight: (color) => applyPatch({ highlight: color || "none" }),
+    /** size: preset id ("body", "pt12"), a number (13.5) or "pt13.5" — clamped 1–400, rounded to 0.5. */
+    applySize: (size) => { const id = coerceSizeId(size); if (id) applyPatch({ size: id }); },
+    /** color: preset id ("red") or "#rrggbb". */
+    applyTextColor: (color) => { const next = FORMAT_COLORS.some((c) => c.id === color) ? color : normalizeHex(color); if (next) applyPatch({ color: next }); },
+    /** color: preset id ("yellow"), "#rrggbb", or empty/"none" to remove. */
+    applyHighlight: (color) => applyPatch({ highlight: FORMAT_HIGHLIGHTS.some((c) => c.id === color) ? color : normalizeHex(color) || "none" }),
     clearFormatting: () => applyPatch({ clearFormatting: true }),
     /** Paragraph indent level is source markup, measured in 5 mm steps by all thesis renderers. */
     changeIndent: (direction) => {
@@ -458,8 +504,12 @@ export const RichTextBody = forwardRef(({
     },
     getHtml: () => paragraphSemantics ? thesisSourceHtml(htmlWithoutPageGaps(bodyRef.current?.innerHTML ?? "")) : htmlWithoutPageGaps(bodyRef.current?.innerHTML ?? ""),
     openFormatMenu: (event) => handleContextMenu(event),
+    undo: () => stepHistory(-1),
+    redo: () => stepHistory(1),
+    canUndo: () => history.canUndo(),
+    canRedo: () => history.canRedo(),
     activeFormat,
-  }), [activeFormat, applyAlign, applyPatch, clearLineDecorations, emitChange, emptyHeadingOnInsert, paragraphSemantics, fitBody, handleContextMenu, rememberLiveSelection, toggleStyle, withRange]);
+  }), [stepHistory, history, activeFormat, applyAlign, applyPatch, clearLineDecorations, emitChange, emptyHeadingOnInsert, paragraphSemantics, fitBody, handleContextMenu, rememberLiveSelection, toggleStyle, withRange]);
 
   useIsomorphicLayoutEffect(() => {
     const body = bodyRef.current;
@@ -471,6 +521,7 @@ export const RichTextBody = forwardRef(({
     if (content !== lastContentRef.current) {
       body.innerHTML = ensureHtml(content, academic ? { plainCode: true } : undefined);
       lastContentRef.current = content;
+      history.reset({ html: content, sel: null });
       setIsEmpty(!htmlToPlainText(content).trim());
       convertRawMathInRoot(body);
       convertRawCodeInRoot(body, academic ? { plain: true } : undefined);
@@ -611,6 +662,14 @@ export const RichTextBody = forwardRef(({
     (event) => {
       const body = bodyRef.current;
       if (!body) return;
+      if ((event.ctrlKey || event.metaKey) && !event.altKey) {
+        const k = event.key.toLowerCase();
+        if (k === "z" || k === "y") {
+          event.preventDefault();
+          stepHistory(k === "y" || event.shiftKey ? 1 : -1);
+          return;
+        }
+      }
       if (event.target.closest?.(".academic-code")) {
         if (event.key === "Tab") {
           event.preventDefault();
@@ -723,7 +782,7 @@ export const RichTextBody = forwardRef(({
         onMoveToTitle?.();
       }
     },
-    [academic, paragraphSemantics, emitChange, fitBody, onMoveToTitle, rememberAll, rememberLiveSelection, toggleStyle],
+    [academic, paragraphSemantics, stepHistory, emitChange, fitBody, onMoveToTitle, rememberAll, rememberLiveSelection, toggleStyle],
   );
 
   return (
@@ -808,6 +867,12 @@ function selectionClosest(root, selector) {
   if (!sel?.anchorNode || (root && !root.contains(sel.anchorNode))) return null;
   const el = sel.anchorNode.nodeType === 1 ? sel.anchorNode : sel.anchorNode.parentElement;
   return el?.closest?.(selector) ?? null;
+}
+
+function currentOffsets(root) {
+  const sel = window.getSelection();
+  if (!sel?.rangeCount || !root.contains(sel.anchorNode)) return null;
+  return selectionTextOffsets(root, sel.getRangeAt(0));
 }
 
 function selectionTextOffsets(root, range) {
