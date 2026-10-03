@@ -1,6 +1,24 @@
 # Tez şablonu orkestrasyonu
 
-## Policy revision 2026-09-28
+## Active policy 2026-10-03
+
+This policy supersedes conflicting older rules and environment notes below. `AGENTS.md` and the user's latest source-priority decisions take precedence.
+
+1. Official university sources are authoritative. When specified for the task, a source template's XML/example structure takes priority over prose; record both sides of disagreements. Anything not established remains `UNKNOWN`; do not invent a degree/language variant or formatting value.
+2. Gate sequence: **SOURCE → SPEC → IMPLEMENTATION → REAL EXPORT → independent validation → PASS → regression check → checkpoint**. Unit tests, local self-checks, template values, or visual resemblance do not establish PASS. A self-PASS is not independent PASS.
+3. Explicit geometry is exact; tolerance is measurement noise only: ≤0.5 mm by default (prefer ≤0.25 mm when reliable). Do not broaden tolerance to make output pass.
+4. Generic engine extensions are in scope when a source proves a missing capability. Keep them backward compatible, deterministic where practical, tested, and regression checked. Do not add university-specific engine branches.
+5. Validate exported fonts, not only requested names. A substitute font cannot satisfy an exact source requirement. Record actual font and host limitations.
+6. University order is `progress.json.universityOrder`: AKÜ → AFSÜ → ADÜ → remaining universities. Do not start the next university before the current defined gate unless the orchestrator explicitly permits it.
+7. At most **2 concurrent Luna workers**. The current execution host is Windows. Microsoft Word COM is available for controlled validation; use one owned instance, record its PID, call `Quit` in `finally`, and never terminate an unknown or other-owned Word process. Linux/LibreOffice instructions below are historical.
+8. `BLOCKED` requires evidence of a real source or technical blocker. Attempts or difficulty alone do not justify it. An unresolved source identity is `UNKNOWN`, not a substitute source.
+9. Keep changes narrow. Preserve prior commits and reports, update `progress.json` at checkpoints, and do not commit generated artifacts or change `Butun-Sablonlar/`.
+
+### Inventory checkpoint 2026-10-03
+
+`manifest.json` indexes 50 targets across 18 university IDs, with 17 source-present/implementable IDs and 83 variant entries (82 confirmed, one unconfirmed). The total includes confirmed AFSÜ proposal, Tıp, and DHF registry/module variants. It records 95 verified local source documents (34 PDF, 57 DOCX, 4 DOC); ten active source records plus one historical path remain unresolved and are reported as `UNKNOWN`. `progress.json` contains 50 target records across 17 universities; it is a work ledger, not a completion claim. See [`reports/source-inventory-refresh-2026-10-03.md`](reports/source-inventory-refresh-2026-10-03.md) and [`CLOSEOUT_2026-10-03.md`](CLOSEOUT_2026-10-03.md).
+
+## Policy revision 2026-09-28 (historical; superseded where it conflicts)
 
 This section supersedes every conflicting rule further below (older rules stay for history).
 
@@ -15,11 +33,10 @@ This section supersedes every conflicting rule further below (older rules stay f
 
 Confidence levels in specs: `EXPLICIT` (stated in guide text), `TEMPLATE` (read from an official DOCX template's XML/styles), `MEASURED` (measured on an official example page / PDF geometry), `INFERRED` (reasoned, must say why), `UNKNOWN`.
 
-### Tooling (this environment)
+### Tooling (historical Linux environment; not the current Windows requirements)
 
-- `orchestration/tools/devserver.sh start` — Vite dev server of `TxtNote/frontend` on 127.0.0.1:5175.
-- `orchestration/tools/export.mjs <fixture.json> <outPrefix>` — seeds a deterministic thesis note into the real `ThesisEditor` (tests/thesis.html), waits for the editor's own pagination loop to settle, presses the editor's **PDF** and **Word** buttons and saves the downloads (+ `.layout.json`). Chromium runs with `--enable-blink-features=MulticolColumnWrapping` (paged layout) and the `local-fonts` permission (genuine system fonts embedded by the browser export path).
-- Genuine Microsoft Core Fonts (Times New Roman, Arial, …) are installed under `/usr/share/fonts/truetype/msttcorefonts/` (not committed). PyMuPDF + python-docx for measurement; LibreOffice (`soffice`) for DOCX/DOC → PDF of sources (artifacts only).
+- The shell script, `/usr/share/fonts/...`, and LibreOffice commands describe an earlier Linux run. On the current Windows host, use the repository's Windows/browser tools and available Microsoft Word COM path; do not assume those Linux paths or fonts exist.
+- `orchestration/tools/export.mjs` remains an available real-export harness when its Playwright prerequisites are configured; validate the exact generated output against source evidence.
 
 
 Bu klasör, `Butun-Sablonlar/` kaynaklarını TxtNote tez motoruna (`TxtNote/frontend/src/thesis/`) aktaran uzun süreli, kesintiye dayanıklı iş akışını yönetir.
@@ -31,8 +48,8 @@ Bu klasör, `Butun-Sablonlar/` kaynaklarını TxtNote tez motoruna (`TxtNote/fro
 
 | Yol | İçerik | Yazan |
 |---|---|---|
-| `manifest.json` | Kaynak envanteri (74 geçerli kaynak), 32 target, 71 registry varyantı, dışlanan dosya, kaynağı olmayan üniversiteler | Plan aşaması; sonradan yalnız Orchestrator, gerekçesi `reports/` altında yazılarak |
-| `progress.json` | Target başına `analysis / implementation / validation / attempts / status` | Yalnız Orchestrator |
+| `manifest.json` | Güncel yerel kaynak envanteri, target/variant kayıtları ve unresolved-source durumları; 2026-10-03 itibarıyla 50 target ve 95 verified local source documents | Orchestrator; source/path changes require evidence in `reports/` |
+| `progress.json` | Target başına `analysis / implementation / validation / attempts / status`; 2026-10-03 itibarıyla 50 target / 17 universities | Yalnız Orchestrator |
 | `specs/<id>.json` | Makine tarafından okunabilir kural spesifikasyonu | Analyzer |
 | `reports/<id>.md` | İnsan tarafından okunabilir analiz raporu, açık sorular, kaynak çelişkileri | Analyzer |
 | `validation/<id>/attempt-<n>.json` + `.md` | Bağımsız doğrulama sonucu ve ölçümler | Validator |
@@ -63,7 +80,7 @@ Kaynak: `schema.d.ts`, `engine.js`, `validation.js`, `specialPages.js`, `README.
   - `body` ve `paragraph` stilleri; `firstLineIndentMm`, spaceBefore/After (pt).
   - `lineHeight` ve `lineSpacing: { mode: "word", singleLineEm }` (Word "n satır").
   - `textTransform` ve `keepWithNext`.
-  - H1–H4 başlık kuralları ve numara formatları.
+  - H1–H5 başlık kuralları; heading sequence seçenekleri arabic/roman yanında lower/upper alphabetic ve Turkish ordinal formatlarını destekler.
 - **Section modları**: `editable`, `static` ve `generated`. Ayrıca şunlar desteklenir:
   - `status: required | optional | disabled`
   - `order`
@@ -79,7 +96,7 @@ Kaynak: `schema.d.ts`, `engine.js`, `validation.js`, `specialPages.js`, `README.
 - **Diğer**:
   - Sayfa altı dipnotlar: font, separator, `maxAreaPercent`.
   - Kaynakça: stil ve `hangingIndentMm`.
-  - Metadata doğrulaması: yalnız `minItems`.
+  - Metadata içerik doğrulaması: advisory `minItems` (validation blocks export değildir).
   - `derived: "totalPages"`
 
 ## Bilinen kısıtlar
@@ -87,21 +104,21 @@ Kaynak: `schema.d.ts`, `engine.js`, `validation.js`, `specialPages.js`, `README.
 Analyzer bu kısıtlara karşı spec yazar; Integrator bunları sessizce aşmaz.
 
 1. **Tek/çift sayfa (ayna) margin ve cilt payı ayrımı yok.** Header/footer ilk sayfa dışında tek/çift ayrımı yapmaz.
-2. **Numara formatı yalnız arabic ve roman.** Harf dizisi (EK-A, a, b) için başlık `numbering.format` string'i ve `sequence` davranışı analizde test edilmeli. Desteklenmiyorsa bu `engineGap` olarak raporlanır.
-3. **Özel sayfalarda tablo, çerçeve (border box) veya mutlak konumlandırma yok.** Düzen spacer ve group ile yapılır. Jüri/onay imza tabloları `row` group ile modellenir. Çerçeveli kapaklar desteklenmez.
-4. **PDF fontları**: Times New Roman için Tinos (metrik uyumlu) kullanılır. Arial isteyen şablonlarda Latin-1 dışı (Türkçe) kelimeler serif ile çizilir. Arial/Calibri zorunlu kılavuzlar bu nedenle `engineGap: font` alır ve bu, PDF font doğrulamasını FAIL yapmaz. DOCX'te font adı doğru yazılmak zorundadır.
+2. **Sayfa numarası biçimi arabic/roman ile sınırlı; heading sequence biçimi daha geniştir.** Heading sequence için arabic, roman, lower/upper alphabetic ve Turkish ordinal kullanılabilir. Bölüm başlıkları ve sayfa numarası formatları aynı özellik değildir.
+3. **Özel sayfalar temel block modelini kullanır;** text, metadata, image, spacer, separator ve group desteklenir. Group içinde border/frame (PDF/editor/Word) ve absolute/anchored yerleşimli leaf block'lar mevcuttur. `docxContentFrame` ayrıca tam DOCX içerik çerçevesi konumlandırır. Bu yetenekler her tür tablolu/akışlı özel sayfa davranışı bulunduğu anlamına gelmez; gereksinime göre gerçek export ile doğrulanır.
+4. **PDF fonts**: the current path can embed exact system Times New Roman, Arial, Calibri, and Cambria Math faces when available and embeddable. Tinos is bundled as a default/fallback and is not a compliant substitute for Times New Roman. Verify actual PDF font programs and glyph coverage; see `TxtNote/frontend/src/thesis/README.md`.
 5. **Layout PDF tarayıcı DOM'u gerektirir.** Editörün sayfaladığı DOM gerekir (`buildThesisLayoutPdf`). Node'daki `buildThesisPdf` yalnız fallback'tir ve index sayfa numaralarını boş bırakır. Gerçek PDF doğrulaması Playwright + Chromium ile uygulama üzerinden yapılır.
 6. **Kaynakça yalnız stil ve hanging indent'tir.** Atıf stili (APA vb.) uygulanmaz, yalnız belgelenir (`citationStyle`).
-7. **Metadata doğrulaması yalnız `minItems` ile yapılır.** Uyarı niteliğindedir; kaydetmeyi veya export'u engellemez.
-8. **Yeni şema alanı gerektiren bir kural implementasyon kapsamı değildir.** Bu tür kurallar `engineGaps` listesine yazılır. Motor genişletmesi ayrı, kullanıcı onaylı bir görevdir. Bir target yalnız engine gap yüzünden BLOCKED olmaz; gap belgelenmiş, geri kalan kurallar PASS ise target `PASS_WITH_GAPS` olur.
+7. **Metadata içerik kuralları sınırlı advisory `minItems` doğrulamasıdır.** Uyarı/error listesine yazılır, ancak kaydetmeyi veya export'u engellemez.
+8. **Engine additions**: this older no-extension rule is revoked by the active policy above. A source-proven capability gap may be implemented generically and regression-tested.
 9. **Şablonlar yalnız veridir.** Editör veya motor kodunda üniversiteye özel dal olmaz.
 
 ## Durum değerleri
 
 - `analysis`: `PENDING | IN_PROGRESS | DONE | FAILED`
 - `implementation`: `PENDING | IN_PROGRESS | DONE | FAILED`
-- `validation`: `PENDING | IN_PROGRESS | PASS | PASS_WITH_GAPS | FAIL`
-- `status` (target geneli): `PENDING | ANALYZED | IMPLEMENTED | COMPLETE | BLOCKED`
+- `validation`: `PENDING | IN_PROGRESS | PASS | FAIL`; `PASS_WITH_GAPS` is historical and is not a terminal completion gate.
+- `status` (target geneli): `PENDING | ANALYZED | IMPLEMENTED | IN_PROGRESS | COMPLETE | FAIL | BLOCKED`
 - `attempts`: implementation→validation döngüsü sayısı; `maxAttempts` = 3.
 
 ## Çalışma stratejisi
@@ -120,7 +137,7 @@ Kaynak dönüştürme örneği (yalnız artifacts'a yazılır):
 soffice --headless --convert-to pdf --outdir orchestration/artifacts/<id>/source "<Butun-Sablonlar/...docx>"
 ```
 
-### A) ANALYSIS: en fazla 5 izole subagent, paralel
+### A) ANALYSIS (historical workflow; active concurrency limit is 2 Luna workers)
 
 - **Seçim**: `progress.json` içinde `analysis != DONE` olan target'lar alınır. Sıra `priority` (1 → 3), sonra manifest sırasıdır.
 - **Verilen context**:
@@ -163,7 +180,7 @@ soffice --headless --convert-to pdf --outdir orchestration/artifacts/<id>/source
   5. Çalıştır: `node --test src/lib/*.test.js` (frontend'de) ve `npm run build`.
   6. Varyant başına örnek bir tez export et: DOCX (`buildThesisDocx`) ve layout PDF (Playwright ile uygulamadan). Çıktılar `artifacts/<id>/export/<registryId>.{pdf,docx}` altına yazılır.
   7. Tek bir commit at: `thesis(<id>): ...`. Commit hash'i progress'e yazılır, `implementation=DONE`.
-- **Engine kodu**: Değiştirilmez (bkz. kısıt 8). Gerekirse durulur ve kullanıcıya sorulur.
+- **Engine kodu**: This is a historical restriction and is superseded by the active policy: implement a source-proven generic capability gap, with tests and regression checks.
 
 ### C) VALIDATION: bağımsız Validator
 
@@ -178,26 +195,26 @@ soffice --headless --convert-to pdf --outdir orchestration/artifacts/<id>/source
 
 | Ölçü | Tolerans |
 |---|---|
-| Margin | ±1 mm |
-| Font boyutu | ±0.25 pt |
-| Satır aralığı | ±5 % |
-| Blok konumu | ±2 mm |
+| Explicit geometry | ≤0.5 mm maximum; prefer ≤0.25 mm where reliable |
+| Font face | Exact requested face; inspect exported font program and glyph coverage |
+| Font size | ±0.1 pt (measurement tolerance only) |
+| Line pitch | ±0.2 pt (measurement tolerance only) |
 
-- **Çıktı**: `validation/<id>/attempt-<n>.json` (her check: expected / actual / pass) ve `.md` özet. Sonuç PASS, `PASS_WITH_GAPS` (yalnız `engineGaps` kaynaklı sapmalar) veya FAIL olur.
+- **Çıktı**: `validation/<id>/attempt-<n>.json` (her check: expected / actual / pass) ve `.md` özet. Tam gate sonucu PASS veya FAIL olur; `PASS_WITH_GAPS` does not close a source-backed requirement.
 
 ### D) RETRY
 
 - **FAIL durumunda**: `failures/<id>/attempt-<n>.md` (başarısız check'ler ve beklenen değerler) Integrator'a döner. Döngü şöyledir: düzeltme → yeniden export → **yeni** bağımsız Validator.
-- **Deneme sayısı**: Her implementation→validation döngüsünde `attempts` 1 artar.
-- **PASS olmadan tamamlanma yok**: PASS (veya `PASS_WITH_GAPS`) olmadan target `COMPLETE` olmaz.
-- **BLOCKED**: `attempts >= maxAttempts` (3) olursa target BLOCKED olur. Başarısız check sayısı iki ardışık denemede azalmıyorsa da BLOCKED olur. Gerekçe `failures/<id>/BLOCKED.md` dosyasına yazılır, sonraki target'a geçilir. Başarısız varyantın registry girdisi eklenmiş kalmaz: BLOCKED bir target'ın değişiklikleri revert edilir.
+- **Deneme sayısı**: Her implementation→validation döngüsünde `attempts` 1 artar; limite ulaşmak tek başına BLOCKED gerekçesi değildir.
+- **PASS olmadan tamamlanma yok**: independent PASS olmadan target `COMPLETE` olmaz.
+- **BLOCKED**: Yalnız desteklenen bir kaynak veya teknik engel işi gerçekten önlüyorsa kullanılır. Eksik kanıt/teknik sınır `failures/<id>/BLOCKED.md` içinde belirtilir. Deneme sayısı, süre veya zorluk tek başına BLOCKED gerekçesi değildir; yararlı implementasyon otomatik revert edilmez.
 
 ### E) CHECKPOINT / devam etme
 
 - **Her adım sonunda** `progress.json` güncellenir (`updatedAt`, `currentTarget`) ve commit edilir. Yarım adım işaretlenmez: önce çıktı dosyası yazılır, sonra durum güncellenir.
 - **Oturum kesildiğinde veya context sıkıştırıldığında** yeniden başlama protokolü:
-  1. `progress.json`'u oku; `COMPLETE` ve `BLOCKED` target'lara dokunma.
-  2. `IN_PROGRESS` kalan adımı yeniden başlat. Çıktı dosyası varsa ve geçerliyse DONE say. Yoksa PENDING'e çek.
+  1. `progress.json`'u oku; `COMPLETE` target'ları açma. `BLOCKED` kayıtlarını yalnız engel kanıtı değiştiğinde yeniden değerlendir.
+  2. `IN_PROGRESS` kalan adımı yeniden başlat. Çıktı dosyası varsa geçerliliğini kontrol et; yoksa ilgili adımı PENDING'e çek.
   3. `analysis=DONE` durumu için `specs/<id>.json` dosyasının var ve geçerli JSON olması şarttır; aksi halde analiz yeniden yapılır.
   4. `implementation=DONE` durumu için progress'teki commit'in git geçmişinde olması şarttır.
 - **Manifest değişikliği**: Manifest yalnız kanıta dayalı olarak değişir (ör. analiz bir varyantın var olmadığını gösterirse). Değişiklik `reports/<id>.md` dosyasında gerekçelendirilir.
@@ -208,5 +225,5 @@ soffice --headless --convert-to pdf --outdir orchestration/artifacts/<id>/source
 - **Doğrulanmamış varyant**: `ieu-lee` phd-tr kaynakta doğrulanmadı (`confirmed: false`). Analiz kanıtlamazsa registry'ye girmez.
 - **Analizde teyit edilecek belgeler**: `dpu-lee` EN eki, `ieu-lee` hukuk ek açıklamaları ve `iyte-lee` makale-tez yönergesi. Bunlardan ayrı bir varyant çıkıp çıkmayacağı analizde teyit edilir. Varsayılan: hayır.
 - **Güncelliği şüpheli kaynaklar**: `outdated-source` işaretli target'lar (aku-sagbil 2015, usak-insaat-lisans 2009, iyte-lee 2019). Şablon `source.notes` içinde bu belirtilir.
-- **Kapsam dışı üniversiteler**: Aydın Adnan Menderes, İzmir Demokrasi ve İzmir Tınaztepe'de yerel kaynak yok. Bu üniversiteler implementasyon listesinde yer almaz.
+- **Source availability update (2026-10-03)**: İzmir Demokrasi Üniversitesi LEE TR/EN guide filenames were found locally and `idu-lee` is indexed as `ANALYSIS_PENDING`; no degree variants or rules are inferred yet. İzmir Tınaztepe still has no local guide file. Aydın Adnan Menderes was not re-inventoried in this refresh and is not an active target; do not use the old no-source note as current evidence.
 - **Dışlanan dosya**: `…Thesis_Template_EN_2025-09-04.docx.download` geçerli kaynak değildir. Gerçek `.docx` ile MD5'i aynıdır.

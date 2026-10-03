@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-02",
+  "updatedAt": "2026-10-03",
   "maxAttempts": 3,
-  "policy": "orchestration/README.md#policy-revision-2026-09-28 (supersedes conflicting older rules)",
+  "policy": "orchestration/README.md#active-policy-2026-10-03",
   "universityOrder": [
     "aku",
     "afsu",
@@ -18,6 +18,7 @@
     "yasar",
     "bakircay",
     "ieu",
+    "idu",
     "ikcu",
     "iyte"
   ],
@@ -105,7 +106,8 @@
     "mcbu": {
       "status": "PENDING",
       "targets": [
-        "mcbu-lee"
+        "mcbu-lee",
+        "mcbu-tip-uzmanlik"
       ],
       "gate": null,
       "commit": null
@@ -181,35 +183,43 @@
       ],
       "gate": null,
       "commit": null
+    },
+    "idu": {
+      "status": "PENDING",
+      "targets": [
+        "idu-lee"
+      ],
+      "note": "Local TR/EN guide files identified by filename inventory 2026-10-03; variants and rules extraction pending."
     }
   },
-  "currentUniversity": "afsu",
-  "currentTarget": "afsu-lee",
-  "currentPhase": "CHECKPOINT (user requested wind-down; source, implementation, fixtures and partial validation saved; outstanding Word and geometry checks recorded)",
+  "currentUniversity": "aku",
+  "currentTarget": "aku-felsefe-lisans",
+  "currentPhase": "Reconciliation checkpoint completed; next implementation queue begins with AKÜ. engine-fix-4 remains an explicit shared dependency for later AFSÜ/MCBÜ validation.",
   "lastCompletedValidation": {
     "target": "aku-fbe",
     "attempt": 5,
     "verdict": "FAIL"
   },
-  "lastCommit": "1977a1c",
+  "lastCommit": "1748936",
   "environment": {
-    "libreofficeWriter": "Not available on the current Windows host; earlier analyzer note referred to a different environment.",
-    "wordCom": "Earlier source-copy rendering succeeded with reviewed require_escalated execution; default sandbox returns 0x80070520. Current generated-DOCX Open stalled >2 minutes. Auto-review rejected force termination due to insufficient PID ownership proof and risk to unsaved user documents; no force termination or workaround is authorized. One worker holds the Word lease; safe source-copy diagnosis and other checks continue."
+    "host": "Current Windows host. Microsoft Word COM is available for controlled source-copy and generated-DOCX validation; use one owned instance, record PID, and Quit in finally. Do not force-terminate unknown or other-owned processes. Do not assume Linux/LibreOffice tooling.",
+    "workers": "GPT-6 Luna; maximum 2 concurrent workers.",
+    "validation": "SOURCE → SPEC → IMPLEMENTATION → REAL EXPORT → independent validation → PASS → regression check → checkpoint. Self-validation is not independent PASS."
   },
   "targets": {
     "aku-sbe": {
       "analysis": "DONE",
       "implementation": "DONE",
-      "validation": "PENDING (current independent recheck; prior report contains FAIL findings)",
+      "validation": "PENDING (prior independent FAIL findings exist; some changes landed; full current independent revalidation pending)",
       "attempts": 1,
       "status": "IN_PROGRESS",
       "lastError": "Independent-1 reported six FAIL findings; some were subsequently fixed, but a complete current source/output recheck is not recorded. See AKU_COMPLETION_QUEUE_2026-10-02.md.",
       "specPath": "orchestration/specs/aku-sbe.json",
       "reportPath": "orchestration/reports/aku-sbe.md",
       "commit": null,
-      "updatedAt": "2026-10-02",
+      "updatedAt": "2026-10-03",
       "specReview": "IN_PROGRESS",
-      "note": "Turkish master and PhD variants implemented and validated (attempt 1: 102/102 checks PASS per variant on the real PDF and DOCX; orchestration/validation/aku-sbe/attempt-1.md). Sanatta Yeterlik and English variants remain unregistered (missing source wording; failures/aku-sbe-variants.md at the university gate). Open human decisions: official inner-cover DOCX forms (14 pt, 25 mm) vs guide text; UNKNOWN items listed in attempt-1.md. Engine: levelStyles.unnumbered, unnumberedAfterNumberedSpaceBeforePt, footnote reserve margin fix (additive spacing).",
+      "note": "Attempt-1 records two implemented Turkish variants and its own 102/102 checks per variant; this is historical self-validation, not current independent PASS. Its claim that Sanatta Yeterlik/English variants lack source wording is superseded: the 2026 official guide confirms three unimplemented variants (aku-sbe-sanatta-yeterlik-tr-v1, aku-sbe-master-en-v1, aku-sbe-phd-en-v1), tracked as requiredVariantsPending in the manifest. Independent revalidation and the listed source/example conflicts remain pending. Engine additions include levelStyles.unnumbered, unnumberedAfterNumberedSpaceBeforePt, and the generic footnote-reserve spacing fix.",
       "validationPath": "orchestration/validation/aku-sbe/attempt-1.md",
       "templatePath": "TxtNote/frontend/src/thesis/templates/aku-sbe.js",
       "registryIds": [
@@ -220,27 +230,27 @@
     "aku-fbe": {
       "analysis": "DONE",
       "implementation": "IN_PROGRESS",
-      "validation": "FAIL",
+      "validation": "FAIL (Word source/template evidence contradicts current page flow; implementation fix and independent real-export validation pending)",
       "attempts": 5,
       "status": "IN_PROGRESS",
-      "lastError": "Word evidence checkpoint 617fe32: long89 dates remain on their cover pages; all seven jurors remain on approval page 3, director flows to page 4 alongside ethics. Current template must reproduce that flow. Source/spec geometry conflicts are recorded; production fixes, remaining measurements and independent real-export validation pending.",
+      "lastError": "Current Word evidence is available; do not retain historical BLOCKED rationale. Resolve rule precedence using official template XML/example as user-directed priority, record conflicts, then implement and validate.",
       "specPath": "orchestration/specs/aku-fbe.json",
       "reportPath": "orchestration/reports/aku-fbe.md",
       "commit": "6d73e66",
-      "updatedAt": "2026-10-02",
+      "updatedAt": "2026-10-03",
       "specReview": "DONE"
     },
     "aku-sagbil": {
       "analysis": "DONE",
       "implementation": "IN_PROGRESS",
-      "validation": "PENDING (2022 source; historical checks superseded)",
+      "validation": "PENDING (2022 source extraction/reconciliation incomplete; 6 conflicts and 1 UNKNOWN recorded; current independent geometry validation pending)",
       "attempts": 1,
       "status": "IN_PROGRESS",
       "lastError": "2022 source rule and section/placeholder disposition audits complete: 156/10/22/7 rules; sections 13 reconciled, 6 conflict, 1 unknown; placeholders 22 reconciled, 5 historical-only. Geometry, validation checks, and engine gaps remain pending the FBE-first gate.",
       "specPath": "orchestration/specs/aku-sagbil.json",
       "reportPath": "orchestration/reports/aku-sagbil.md",
       "commit": null,
-      "updatedAt": "2026-10-02",
+      "updatedAt": "2026-10-03",
       "specReview": "IN_PROGRESS"
     },
     "aku-cografya-lisans": {
@@ -286,114 +296,197 @@
     "aku-matematik-lisans": {
       "analysis": "DONE",
       "implementation": "DONE",
-      "validation": "FAIL (self; independent pending)",
+      "validation": "FAIL (measured geometry exceeds 0.5 mm tolerance; implementation fix and independent recheck pending)",
       "attempts": 1,
       "status": "FAIL",
       "lastError": "Table note to next heading: expected 14.09 mm, actual 14.60 mm, delta 0.51 mm exceeds 0.5 mm tolerance; source comparison in template report.",
       "specPath": "orchestration/specs/aku-matematik-lisans.json",
       "reportPath": "orchestration/reports/aku-matematik-lisans.md",
       "commit": "8f4ee45",
-      "updatedAt": "2026-10-02"
+      "updatedAt": "2026-10-03"
     },
     "aku-sosyoloji-lisans": {
       "analysis": "DONE",
       "implementation": "IN_PROGRESS",
-      "validation": "PENDING (independent)",
+      "validation": "PENDING (independent validation pending; title/list terminology conflict requires source/example XML comparison)",
       "attempts": 1,
       "status": "IN_PROGRESS",
       "lastError": "Source-less cleanup checkpoint d4a3a7e; dedicated official list uses DIZINI while prose/TOC says LISTESI, both recorded. Repeated real-export readiness regression passes; independent university-source validation remains pending.",
       "specPath": "orchestration/specs/aku-sosyoloji-lisans.json",
       "reportPath": "orchestration/reports/aku-sosyoloji-lisans.md",
       "commit": "d4a3a7e",
-      "updatedAt": "2026-10-02"
+      "updatedAt": "2026-10-03"
     },
     "aku-felsefe-lisans": {
       "analysis": "DONE",
       "implementation": "IN_PROGRESS",
-      "validation": "FAIL (independent interim)",
+      "validation": "FAIL (independent audit: required cover pages missing; corrected 6/6 spacing and TOC/symbols deltas await real-export validation)",
       "attempts": 1,
       "status": "FAIL",
-      "lastError": "Independent source audit: supported covers missing; additive export produces 12/6 pt instead of explicit 6/6 pt. Official cover/TOC/citation examples are being measured. See orchestration/validation/aku-felsefe-independent-2/REPORT.md.",
+      "lastError": "Independent source audit confirmed required covers missing and former additive export emitted 12/6 pt. Template/spec now use direct 6/6 collapse, TOC example depth >=4, and required symbols sequence entry; cover source text is measured but generated-page geometry remains UNKNOWN. Real exports and cover implementation pending. See orchestration/validation/aku-felsefe-independent-2/REPORT.md.",
       "specPath": "orchestration/specs/aku-felsefe-lisans.json",
       "reportPath": "orchestration/reports/aku-felsefe-lisans.md",
       "commit": "d4a3a7e",
-      "updatedAt": "2026-10-02"
+      "updatedAt": "2026-10-03"
     },
     "aku-felsefe-seminer": {
       "analysis": "DONE",
       "implementation": "IN_PROGRESS",
-      "validation": "FAIL (independent interim)",
+      "validation": "FAIL (independent audit: required cover missing; corrected 6/6 spacing awaits real-export validation)",
       "attempts": 1,
       "status": "FAIL",
-      "lastError": "Independent source audit: required cover missing; additive export produces 12/6 pt instead of explicit 6/6 pt. Official cover/citation examples are being measured. See orchestration/validation/aku-felsefe-independent-2/REPORT.md.",
+      "lastError": "Independent source audit confirmed required cover missing and former additive export emitted 12/6 pt. Template/spec now use direct 6/6 collapse; centered cover rows are measured but generated-page geometry remains UNKNOWN. Real exports and cover implementation pending. See orchestration/validation/aku-felsefe-independent-2/REPORT.md.",
       "specPath": "orchestration/specs/aku-felsefe-seminer.json",
       "reportPath": "orchestration/reports/aku-felsefe-seminer.md",
       "commit": "d4a3a7e",
-      "updatedAt": "2026-10-02"
+      "updatedAt": "2026-10-03"
     },
     "aku-isg-tezsiz-proje": {
       "analysis": "DONE",
       "implementation": "IN_PROGRESS",
-      "validation": "FAIL (independent interim; source structure and PDF pagination)",
+      "validation": "FAIL (source PAGE structure and cover wrap differ from current output; fix and real-export revalidation pending)",
       "attempts": 1,
       "status": "FAIL",
       "lastError": "Independent ISG audit: footer baseline matches but output uses 17.4 mm/one PAGE paragraph instead of source 12.5 mm/PAGE plus trailing blank paragraph; two-line inner-cover title spills city/year in editor PDF while Word fits. See orchestration/validation/aku-isg-independent-2/REPORT.md; fixes pending.",
       "specPath": "orchestration/specs/aku-isg-tezsiz-proje.json",
       "reportPath": "orchestration/reports/aku-isg-tezsiz-proje.md",
       "commit": "d4a3a7e",
-      "updatedAt": "2026-10-02"
+      "updatedAt": "2026-10-03"
     },
     "afsu-lee": {
       "analysis": "DONE (common rules and official Word structure reconciled; decisions recorded in AFSU_ADU_PLAN_2026-10-02.md)",
       "implementation": "IN_PROGRESS",
-      "validation": "IN_PROGRESS (master/phd v5 real pairs saved; master approval spot review corrected; final Word and independent geometry pending)",
+      "validation": "PENDING (master/phd real exports exist; source-filled Word comparison and independent geometry review remain open)",
       "attempts": 0,
       "status": "IN_PROGRESS",
       "lastError": "Generic PAGE geometry and framed-row fixes committed; v5 master/phd real pairs saved. Master p4 root visual review closes broken table borders and duplicated metadata suffixes for that sample. Full source-filled Word comparison, real generated-DOCX Word geometry and final independent rerun remain pending; see closing handoff and final self-check.",
       "specPath": "orchestration/specs/afsu-lee.json",
       "reportPath": "orchestration/reports/afsu-lee-source-rules.md",
-      "commit": "b2a76f5",
-      "updatedAt": "2026-10-02"
+      "commit": "8314b5a",
+      "updatedAt": "2026-10-03",
+      "note": "Latest implementation checkpoint 8314b5a; no independent final PASS recorded."
     },
     "afsu-lee-proposal": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "DONE",
+      "implementation": "DONE",
+      "validation": "PENDING (self real exports; independent validation and Word review pending)",
+      "attempts": 0,
+      "status": "IN_PROGRESS",
+      "lastError": "Template and real PDF/DOCX exports are present (commits 7f7481b/b038b86); no independent validation recorded.",
+      "specPath": "orchestration/specs/afsu-lee-proposal.json",
+      "reportPath": "orchestration/reports/afsu-lee-proposal.md",
+      "commit": "b038b86",
+      "updatedAt": "2026-10-03"
     },
     "afsu-tip": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "DONE",
+      "implementation": "DONE",
+      "validation": "FAIL (independent-1; template-level A1–A3 fixes at 4ff8e65; shared engine A4/A5 and independent recheck remain open)",
+      "attempts": 1,
+      "status": "IN_PROGRESS",
+      "lastError": "Independent report found editor-PDF footnote pitch and DOCX table/caption issues. Self-report PASS is not final.",
+      "specPath": "orchestration/specs/afsu-tip.json",
+      "reportPath": "orchestration/reports/afsu-tip.md",
+      "commit": "4ff8e65",
+      "updatedAt": "2026-10-03",
+      "templatePath": "TxtNote/frontend/src/thesis/templates/afsu-tip.js"
     },
     "afsu-dis-hekimligi": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "DONE",
+      "implementation": "DONE",
+      "validation": "FAIL (independent-1; template-level A1–A3 fixes at 4ff8e65; shared engine A4/A5 and independent recheck remain open)",
+      "attempts": 1,
+      "status": "IN_PROGRESS",
+      "lastError": "Independent report found editor-PDF footnote pitch and DOCX table/caption issues. Self-report PASS is not final.",
+      "specPath": "orchestration/specs/afsu-dis-hekimligi.json",
+      "reportPath": "orchestration/reports/afsu-tip.md",
+      "commit": "4ff8e65",
+      "updatedAt": "2026-10-03",
+      "templatePath": "TxtNote/frontend/src/thesis/templates/afsu-tip.js"
     },
     "afsu-eczacilik-proje": {
-      "analysis": "DONE", "implementation": "IN_PROGRESS", "validation": "FAIL (v5 horizontal page-number center +9.99 mm; caption gaps not measured; Word/independent QA pending)", "attempts": 0, "status": "IN_PROGRESS",
-      "lastError": "Real v5 PDF/DOCX pair: 68 pages,30 verified targets,matching maps and actual TNR fonts. Generic default closes bottom-edge placement issue. Physical page center must be105 mm; measured glyph center114.99 mm follows body frame, so horizontal centering FAIL. Required6/12 pt visual gaps not measured. Word render and independent review pending; numerical source footer distance remains UNKNOWN.", "specPath": "orchestration/specs/afsu-eczacilik-proje.json", "reportPath": "orchestration/reports/afsu-eczacilik-proje-source.md", "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "DONE",
+      "implementation": "IN_PROGRESS",
+      "validation": "PENDING (v6 self-check reports page-number center within 0.05 mm; independent v6 + Word validation pending; engine-fix-4 shared gaps open)",
+      "attempts": 1,
+      "status": "IN_PROGRESS",
+      "lastError": "v6 self-check supersedes the v5 +9.99 mm horizontal-center failure; independent validation and Word render are still required. Footer distance remains UNKNOWN.",
+      "specPath": "orchestration/specs/afsu-eczacilik-proje.json",
+      "reportPath": "orchestration/reports/afsu-eczacilik-proje-source.md",
+      "commit": "4ff8e65",
+      "updatedAt": "2026-10-03"
     },
     "adu-fbe": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": "2026-10-02"
     },
     "adu-sbe": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": "2026-10-02"
     },
     "adu-sagbil": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": "2026-10-02"
     },
     "adu-tip": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": "2026-10-02"
     },
     "adu-ziraat-lisans": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": "2026-10-02"
     },
     "adu-muhendislik-lisans": {
-      "analysis": "PENDING", "implementation": "PENDING", "validation": "PENDING", "attempts": 0, "status": "PENDING",
-      "lastError": null, "specPath": null, "reportPath": null, "commit": null, "updatedAt": "2026-10-02"
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": "2026-10-02"
     },
     "deu-fbe": {
       "analysis": "PENDING",
@@ -506,28 +599,28 @@
     "mcbu-lee": {
       "analysis": "DONE",
       "implementation": "DONE",
-      "validation": "PASS (self; independent pending)",
+      "validation": "PENDING (self report only; current guide/example/XML conflict reconciliation and independent validation pending)",
       "attempts": 1,
-      "status": "IMPLEMENTED",
+      "status": "IN_PROGRESS",
       "lastError": null,
       "specPath": "orchestration/specs/mcbu-lee.json",
       "reportPath": "orchestration/reports/mcbu-lee.md",
       "commit": "4b31444",
-      "updatedAt": "2026-10-02",
+      "updatedAt": "2026-10-03",
       "specReview": "DONE",
       "note": "audit-2 + fix-1 done; conflicts C1-C7 being resolved by template-XML rule"
     },
     "mcbu-tip-uzmanlik": {
       "analysis": "DONE",
       "implementation": "DONE",
-      "validation": "PASS (self)",
+      "validation": "FAIL (self 52/52 on tested checks, but known source-backed gap: chapter-opening page numbers are not omitted; independent validation pending)",
       "attempts": 1,
-      "status": "IMPLEMENTED",
-      "lastError": null,
+      "status": "FAIL",
+      "lastError": "Template rule requires omission on chapter first pages; current shared engine/export still prints numbering there. Do not call target complete.",
       "specPath": "orchestration/specs/mcbu-tip-uzmanlik.json",
       "reportPath": "orchestration/reports/mcbu-tip-uzmanlik.md",
       "commit": "4b31444",
-      "updatedAt": "2026-10-02",
+      "updatedAt": "2026-10-03",
       "specReview": "DONE",
       "note": "self-check 52/52 PASS; engine gap: no page number on chapter first pages"
     },
@@ -722,6 +815,19 @@
       "reportPath": null,
       "commit": null,
       "updatedAt": null
+    },
+    "idu-lee": {
+      "analysis": "PENDING",
+      "implementation": "PENDING",
+      "validation": "PENDING",
+      "attempts": 0,
+      "status": "PENDING",
+      "lastError": null,
+      "specPath": null,
+      "reportPath": null,
+      "commit": null,
+      "updatedAt": "2026-10-03",
+      "note": "Local TR/EN guides located by filename inventory; no content opened, degree variants and formatting UNKNOWN pending analysis."
     }
   },
   "engine": {

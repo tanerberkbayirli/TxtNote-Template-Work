@@ -121,7 +121,7 @@ async, all reject with `ServiceError { code, message, field? }`.
 | `background` | `sweepExpiredTrash`, `uploadAvatar` |
 
 Endpoint mapping and server-side rules: `backend/README.md`.
-Switch implementations with `VITE_SERVICE_ADAPTER=local|mock|http`.
+The shipped application currently selects the local adapter in `services/index.ts`: SQLite on the Tauri desktop and IndexedDB in the browser. The adapter environment variable is not a supported runtime switch in this entry point; `mock`/`http` implementations are not selected by setting `VITE_SERVICE_ADAPTER`.
 
 ---
 

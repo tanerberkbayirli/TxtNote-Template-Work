@@ -4,6 +4,8 @@ Türkçe arayüzlü not uygulaması. Masaüstü kabuğu **Tauri 2**, arayüz **R
 
 Notlar masaüstünde SQLite dosyasında (`txtnote.sqlite`, uygulama veri klasörü), tarayıcıda IndexedDB’de tutulur. Uzak sunucu yok; `backend/` klasörü ilerideki HTTP sözleşmesi için boş bir yer tutucudur.
 
+Tez şablonu motorunun kaynak kanıtı, gerçek PDF/DOCX dışa aktarma ve doğrulama akışı için [tez motoru belgelerine](frontend/src/thesis/README.md) bakın. Üniversite hedeflerinin güncel durumu ve sırası `../orchestration/README.md` ile `../orchestration/progress.json` içindedir; envanterde bir kaynak yolunun bulunması tek başına analiz veya PASS anlamına gelmez.
+
 ## Gereksinimler
 
 - Node.js 20+
