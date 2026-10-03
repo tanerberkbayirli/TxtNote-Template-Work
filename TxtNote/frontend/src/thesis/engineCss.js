@@ -162,7 +162,7 @@ export function thesisSectionCss(section) {
       ...(tables.labelStyle ? [`${scope} .thesis-body .thesis-cont-label{${labelCss(tables.labelStyle)}}`] : []),
       ...(tables.hangingIndent === "label" ? [`${row}[data-thesis-caption-hang]{padding-left:attr(data-thesis-caption-hang px, 0px) !important;text-indent:calc(-1 * attr(data-thesis-caption-hang px, 0px))}`]
         : tables.hangingIndent > 0 ? [`${row}{padding-left:${tables.hangingIndent}mm !important;text-indent:-${tables.hangingIndent}mm}`] : []),
-      ...(tables.borders?.preset === "threeRule" ? [`${scope} .thesis-body tr[data-thesis-cont-first]>*{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important}${scope} .thesis-body tr[data-thesis-cont-last]>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important}`] : []),
+      ...(tables.borders?.preset === "threeRule" ? [`${scope} .thesis-body tr[data-thesis-frag-first]>*{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important}${scope} .thesis-body tr[data-thesis-frag-last]>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important}`] : []),
     );
   }
   // Equations (opt-in): blocks lose the editor chrome, the formula is centered, the number sits flush right/left of the block.

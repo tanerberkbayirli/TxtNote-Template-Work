@@ -169,8 +169,16 @@ export interface CaptionRule {
    * Authored column widths: `<colgroup><col data-col-width="25.84">…</colgroup>` (percent of table width, one `col` per grid column, no rowspans)
    * are kept by the sanitizer and written to the editor, the PDF layout and DOCX (`tblGrid/gridCol`, `tcW`).
    */
+  /**
+   * Word `trHeight`: `atLeast` is a minimum content height (cell margins and the rule add on top, as in
+   * Word), `exact` fixes the row at `valueMm` from the row top (its rule and top margin included) to the
+   * text area's bottom — the bottom margin hangs below, so rows pitch `valueMm + cellPadding.bottomMm`.
+   * Exact rows taller than their text area clip at the text area's edge and overflow-aligned content
+   * falls back to top, exactly as Word renders them.
+   */
   rowHeight?: { rule: "auto" | "atLeast" | "exact"; valueMm?: Length };
   cantSplit?: boolean;
+  /** Header rows (`<thead>`) repeat at the top of every continuation fragment in editor/PDF and are `w:tblHeader` in DOCX (Word repeats them itself). `false` opts out on both sides. */
   repeatHeader?: boolean;
   verticalAlign?: "top" | "center" | "bottom";
   borders?: { preset?: "threeRule" | "headerRules" | "none"; widthPt?: number } & Partial<Record<"top" | "bottom" | "left" | "right" | "insideHorizontal" | "insideVertical", { style: "single" | "double" | "none" | "dashed" | "dotted"; widthPt?: number; color?: string }>>;

@@ -15,6 +15,11 @@
 import { pageMetrics } from "./pageLayout.js";
 
 export const CONTINUATION_ROW = "data-thesis-cont";
+/** Header-only repeat (no continuation caption): the row carrying this starts its page. */
+export const HEADER_BREAK_ROW = "data-thesis-head-break";
+/** First/last injected row of a continued table's fragment (border and break edges). */
+export const FRAG_FIRST_ROW = "data-thesis-frag-first";
+export const FRAG_LAST_ROW = "data-thesis-frag-last";
 const MAX_FRAGMENTS = 200;
 
 /** Continuation caption as styled segments: `{label}`, `{number}` and any other text are label text, `{title}` is the caption text. */
@@ -49,8 +54,11 @@ function captionRow(table, parts, columns) {
 
 /**
  * Inject the continuation rows of every table whose rule asks for them. `model` supplies the caption
- * numbers and titles (its index sources; captions carry the anchor). Returns a signature of the
- * result for the editor's stabilization loop.
+ * numbers and titles (its index sources; captions carry the anchor). Two opt-in forms, both mirroring
+ * what Word does with `w:tblHeader` rows on continued tables: `tables.continuation` puts a caption row
+ * plus the header rows in front of every page-start row, and `repeatHeader !== false` repeats just the
+ * header rows (Chrome's multicol fragmentation repeats neither). Returns a signature of the result for
+ * the editor's stabilization loop.
  */
 export function layoutTableContinuations(root, groups, model) {
   const signature = [];
@@ -66,62 +74,77 @@ export function layoutTableContinuations(root, groups, model) {
     const pageOf = (element) => Math.floor(((element.getBoundingClientRect().top - origin) / zoom + 0.5) / stride);
     for (const section of group.sections) {
       const rule = section.rules.tables;
-      if (!rule.continuation || rule.position !== "above") continue;
+      const captions = Boolean(rule.continuation && rule.position === "above");
+      const headers = rule.repeatHeader !== false;
+      if (!captions && !headers) continue;
       const host = article.querySelector(`[data-thesis-flow-section="${section.id}"] .thesis-body`);
-      for (const table of host?.querySelectorAll("table") || []) {
+      for (const [tableIndex, table] of [...(host?.querySelectorAll("table") || [])].entries()) {
         const anchor = table.querySelector(":scope > caption")?.dataset.thesisAnchor;
         const entry = anchor && model.indexSources.find((source) => source.anchor === anchor);
-        if (!entry) continue;
-        const parts = continuationParts(rule, entry);
+        const parts = captions && entry ? continuationParts(rule, entry) : [];
         const head = table.tHead ? [...table.tHead.rows] : [];
-        const body = [...table.rows].filter((row) => !head.includes(row));
-        if (body.length < 2 || !parts.length) continue;
+        const body = [...table.rows].filter((row) => !head.includes(row) && !row.hasAttribute(CONTINUATION_ROW));
+        if (body.length < 2 || (!parts.length && !(headers && head.length))) continue;
         const columns = Math.max(1, ...[...table.rows].map((row) => [...row.cells].reduce((sum, cell) => sum + (cell.colSpan || 1), 0)));
         const starts = [];
         let previous = pageOf(body[0]);
         for (let i = 1; i < body.length && starts.length < MAX_FRAGMENTS; i += 1) {
           const page = pageOf(body[i]);
           if (page > previous) {
-            const caption = captionRow(table, parts, columns);
-            caption.setAttribute("data-thesis-cont-at", String(head.length + i));
-            const rows = [caption, ...head.map((source, index) => {
+            const rows = parts.length ? [captionRow(table, parts, columns)] : [];
+            if (parts.length) rows[0].setAttribute("data-thesis-cont-at", String(head.length + i));
+            rows.push(...head.map((source, index) => {
               const copy = source.cloneNode(true);
               copy.removeAttribute("id");
               copy.querySelectorAll("[id]").forEach((node) => node.removeAttribute("id"));
               copy.setAttribute(CONTINUATION_ROW, "head");
               copy.setAttribute("contenteditable", "false");
-              if (index === 0) copy.setAttribute("data-thesis-cont-first", "");
-              if (index === head.length - 1) copy.setAttribute("data-thesis-cont-last", "");
+              if (index === 0) copy.setAttribute(FRAG_FIRST_ROW, "");
+              if (index === head.length - 1) copy.setAttribute(FRAG_LAST_ROW, "");
               return copy;
-            })];
+            }));
+            // Without a caption row the repeated header starts the page itself.
+            if (!parts.length) rows[0]?.setAttribute(HEADER_BREAK_ROW, "");
             for (const row of rows) body[i].parentNode.insertBefore(row, body[i]);
-            // A hanging indent under the label is the measured width of the (longer) continuation label.
-            if (rule.hangingIndent === "label") caption.firstElementChild.setAttribute("data-thesis-caption-hang", String(Math.round(caption.querySelector(".thesis-cont-label").offsetWidth * 1000) / 1000));
-            if (rule.captionAlignment === "auto") {
-              const range = table.ownerDocument.createRange(); range.selectNodeContents(caption.firstElementChild);
-              const tops = new Set([...range.getClientRects()].filter((r) => r.width && r.height).map((r) => Math.round(r.top)));
-              caption.firstElementChild.setAttribute("data-thesis-caption-auto", tops.size > 1 ? "justify" : "center");
+            const caption = parts.length ? rows[0] : null;
+            if (caption) {
+              // A hanging indent under the label is the measured width of the (longer) continuation label.
+              if (rule.hangingIndent === "label") caption.firstElementChild.setAttribute("data-thesis-caption-hang", String(Math.round(caption.querySelector(".thesis-cont-label").offsetWidth * 1000) / 1000));
+              if (rule.captionAlignment === "auto") {
+                const range = table.ownerDocument.createRange(); range.selectNodeContents(caption.firstElementChild);
+                const tops = new Set([...range.getClientRects()].filter((r) => r.width && r.height).map((r) => Math.round(r.top)));
+                caption.firstElementChild.setAttribute("data-thesis-caption-auto", tops.size > 1 ? "justify" : "center");
+              }
             }
             starts.push(head.length + i);
             previous = pageOf(body[i]);
           } else previous = page;
         }
-        if (starts.length) signature.push(`${anchor}:${starts.join(",")}`);
+        if (starts.length) signature.push(`${anchor || `${section.id}:${tableIndex}`}:${starts.join(",")}`);
       }
     }
   }
   return signature.join(";");
 }
 
-/** For the DOCX writer: table caption anchor → { rows: first row index of every continuation fragment, hang: label hang in CSS px }. */
+/** For the DOCX writer: table caption anchor → { rows: first row index of every continuation fragment, hang: label hang in CSS px, spansPages }. */
 export function tableContinuationRows(root) {
   const map = {};
+  const anchorOf = (row) => row.closest("table")?.querySelector(":scope > caption")?.dataset.thesisAnchor;
   root?.querySelectorAll(`tr[${CONTINUATION_ROW}="caption"]`).forEach((row) => {
-    const anchor = row.closest("table")?.querySelector(":scope > caption")?.dataset.thesisAnchor;
+    const anchor = anchorOf(row);
     if (!anchor) return;
     const entry = (map[anchor] ||= { rows: [], hang: 0 });
     entry.rows.push(Number(row.dataset.thesisContAt));
     entry.hang ||= Number(row.firstElementChild?.dataset.thesisCaptionHang || 0);
+  });
+  // Repeated-header clones are injected exactly at measured page starts, so their
+  // presence marks a table the layout paginates across pages (spansPages for the
+  // DOCX keep model: a page-fitting table is chained whole, a page-tall one is not).
+  root?.querySelectorAll(`tr[${HEADER_BREAK_ROW}]`).forEach((row) => {
+    const anchor = anchorOf(row);
+    if (!anchor) return;
+    (map[anchor] ||= { rows: [], hang: 0 }).spansPages = true;
   });
   return map;
 }

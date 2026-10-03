@@ -835,6 +835,42 @@
   "evidence": "MEASURED"
  },
  {
+  "id": "word.opens",
+  "kind": "word_opens",
+  "params": {},
+  "expected": "opens in Word",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Word COM own instance"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "docx-page-count-vs-pdf",
+  "kind": "page_count_match",
+  "params": {},
+  "expected": "equal page counts",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Word render vs editor PDF same rules/pagination"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "docx-page-labels-vs-pdf",
+  "kind": "page_labels_match",
+  "params": {},
+  "expected": "identical labels on every physical page",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Word render vs editor PDF same rules/pagination"
+  },
+  "evidence": "MEASURED"
+ },
+ {
   "id": "note-unknown",
   "kind": "note",
   "params": {
