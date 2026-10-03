@@ -12,8 +12,8 @@
  * cover/approval/ethics/abstract/acknowledgement layout below (spacings are whole Word lines of the template's empty paragraphs).
  *
  * Word line model (measured on the Word-made guide): a single Times New Roman line is 1.15 em, the first baseline of a line
- * box sits near 0.93 em below its top and the extra leading of "1,5 satır" goes below the text; paragraph spacing is
- * Word-additive (6 nk before + 6 nk after, guide §2.2 and the template's body paragraphs).
+ * box sits near 0.93 em below its top and the extra leading of "1,5 satır" goes below the text; paragraph spacing (6 nk before + 6 nk after) is Word-collapsed (max, 6 pt gap; measured on the Word render of the template);
+ * not additive.
  */
 import { MM_PER_PT } from "../units.js";
 // The AKÜ seal (word/media/image1.jpeg) and the Fen-Edebiyat Fakültesi seal (word/media/image2.png) of this template are byte-identical
@@ -35,7 +35,7 @@ const PARA_GAP_PT = 6;
  */
 const PARA_INDENT_MM = 12.5;
 /** Heading gap: one empty 1.5 line (20.7 pt) between the heading and the text next to it = this + the 6 pt paragraph spacing (additive). */
-const HEADING_GAP_PT = BLANK_PT - PARA_GAP_PT;
+const HEADING_GAP_PT = PARA_GAP_PT;
 
 const bold = { fontWeight: 700 };
 const upper = { textTransform: "uppercase" };
@@ -52,6 +52,8 @@ const roman = { numbering: { format: "roman-lower" } };
 const SEAL_MM = 26.19;
 const FEF_SEAL_MM = 26.25;
 const COVER_TEXT_WIDTH_MM = 150;
+/** Word render of the template: first text baselines 58.94/67.44/75.95/118.59 mm = our flow + 3.07 mm (MEASURED); the name/advisor/year baselines already matched, so the same amount is taken back after the title. */
+const COVER_TOP_SHIFT_MM = 3.07;
 const innerCover = {
   id: "inner-cover", type: "innerCover", title: "İÇ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none",
   overrides: { page: { numbering: { enabled: false }, trimTerminalTextLeading: true }, body: { ...page15, align: "center", fontSizePt: 14, fontWeight: 700 } },
@@ -62,6 +64,7 @@ const innerCover = {
       { type: "spacer", heightMm: 0 },
       { type: "image", source: fefSeal, widthMm: FEF_SEAL_MM, heightMm: FEF_SEAL_MM, align: "right", widthPercent: FEF_SEAL_MM / COVER_TEXT_WIDTH_MM * 100 },
     ] },
+    { type: "spacer", heightMm: COVER_TOP_SHIFT_MM },
     { type: "text", value: "AFYON KOCATEPE ÜNİVERSİTESİ" },
     { type: "text", value: "FEN EDEBİYAT FAKÜLTESİ" },
     { type: "text", value: "COĞRAFYA BÖLÜMÜ" },
@@ -69,7 +72,7 @@ const innerCover = {
     { type: "text", value: "BİTİRME TEZİ" },
     blank(3, 14),
     { type: "metadata", field: "THESIS_TITLE", fallback: "BİTİRME TEZİ BAŞLIĞI", style: upper },
-    blank(2, 14),
+    { type: "spacer", heightMm: 2 * linePt(14, 1.5) * MM_PER_PT - COVER_TOP_SHIFT_MM },
     { type: "metadata", field: "STUDENT_NAME", fallback: "Öğrencinin Adı SOYADI" },
     blank(2, 14),
     { type: "text", value: "Danışman" },
@@ -102,13 +105,15 @@ const approval = {
 
 // BİLİMSEL ETİK BİLDİRİM SAYFASI (template paragraphs 38-53): not numbered (guide §2.7). Items are "•" rows (hanging 425 twips = 7.5 mm), the intro sentence
 // is bold with a 12.5 mm first-line indent, the signature block is the template's (date right, grey İmza at 167.37 mm, name right, bold, single).
-const ethicsItem = (text) => ({ type: "group", direction: "row", blocks: [
-  { type: "text", value: "•", widthPercent: 5 },
+/** Symbol-font marker line is taller than TNR in Word: +0.32 mm per item (MEASURED, template Word render). */
+const ETHICS_MARKER_EXTRA_PT = 0.32 / MM_PER_PT;
+const ethicsItem = (text) => ({ type: "group", direction: "row", style: { spaceAfterPt: ETHICS_MARKER_EXTRA_PT }, blocks: [
+  { type: "text", value: "−", widthPercent: 5 },
   { type: "text", value: text, style: { align: "justify" } },
 ] });
 const ethics = {
   id: "ethics", type: "ethicsDeclaration", title: "BİLİMSEL ETİK BİLDİRİM SAYFASI", status: "required", group: "front", mode: "static", tocEntry: "none",
-  overrides: { page: { numbering: { enabled: false } }, body: { ...page15, align: "left" } },
+  overrides: { page: { numbering: { format: "roman-lower", startAt: 2, restart: true } }, body: { ...page15, align: "left" } },
   blocks: [
     { type: "text", value: "BİLİMSEL ETİK BİLDİRİM SAYFASI", style: { ...bold, align: "center" } },
     { type: "text", value: "Afyon Kocatepe Üniversitesi", style: { ...bold, align: "center" } },
@@ -135,7 +140,7 @@ const ethics = {
 // "yıl, ön sayfa + giriş sonrası sayfa sayısı" bold; the template has these two reversed (CONFLICT, guide followed).
 const abstractHeader = (id, title, type, lines) => ({
   id, type, title, status: "required", group: "front", mode: "static", standalone: false, tocEntry: "title",
-  overrides: { page: id === "abstract-tr" ? { numbering: { format: "roman-lower", startAt: 1, restart: true } } : roman, body: { ...page15, align: "center" } },
+  overrides: { page: roman, body: { ...page15, align: "center" } },
   blocks: lines,
 });
 const abstractTitle = (field, fallback) => ({ type: "metadata", field, fallback, style: { ...upper, ...single } });
@@ -151,13 +156,15 @@ const abstractFooter = (id, type, title, keywords, hangMm, pages) => ({
     { type: "text", value: pages, style: { ...bold, align: "justify" } },
   ],
 });
+/** Single-spaced title -> 1.5 empty line -> name: Word 14.61 mm vs 12.17 mm in the flow (MEASURED, template Word render): +2.44 mm. */
+const ABSTRACT_TITLE_GAP_MM = 2.44;
 const abstractTr = [
   abstractHeader("abstract-tr", "ÖZET", "abstract", [
-    { type: "text", value: "ÖZET", style: { ...bold, ...single } },
+    { type: "text", value: "ÖZET", style: { ...bold, ...single, fontSizePt: 11 } },
     { type: "text", value: "Bitirme Tezi" },
     blank(1),
     abstractTitle("THESIS_TITLE", "BİTİRME TEZİNİN TÜRKÇE BAŞLIĞI"),
-    blank(1),
+    { type: "spacer", heightMm: linePt(12, 1.5) * MM_PER_PT + ABSTRACT_TITLE_GAP_MM },
     { type: "metadata", field: "STUDENT_NAME", fallback: "Öğrencinin Adı SOYADI" },
     { type: "text", value: "Afyon Kocatepe Üniversitesi" },
     { type: "text", value: "Fen Edebiyat Fakültesi" },
@@ -175,7 +182,7 @@ const abstractEn = [
     { type: "text", value: "Graduation Thesis" },
     blank(1),
     abstractTitle("THESIS_TITLE_EN", "TITLE OF GRADUATION THESIS"),
-    blank(1),
+    { type: "spacer", heightMm: linePt(12, 1.5) * MM_PER_PT + ABSTRACT_TITLE_GAP_MM },
     { type: "metadata", field: "STUDENT_NAME", fallback: "Student Name SURNAME" },
     { type: "text", value: "Afyon Kocatepe University" },
     { type: "text", value: "Faculty of Science and Arts" },
@@ -230,7 +237,7 @@ const sections = () => [
   // common tab stop (guide §2.10) - 25 mm is the hanging indent of the template's own hanging entries (1416 twips = 24.98 mm); the template otherwise
   // writes "Simge:  tanım" run-in with a bold symbol (CONFLICT, recorded). Optional ("varsa").
   { id: "symbols", type: "listOfAbbreviations", title: "SİMGELER ve KISALTMALAR DİZİNİ", status: "optional", group: "front", mode: "editable", showTitle: true, tocEntry: "title",
-    overrides: { page: roman, headings: frontTitle(0), paragraph: { firstLineIndentMm: 0, align: "justify", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, tabStopMm: 24.98, hangingIndentMm: 24.98 } } },
+    overrides: { page: roman, headings: frontTitle(0), paragraph: { firstLineIndentMm: 0, align: "justify", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } } },
   generatedList("list-figures", "listOfFigures", "ŞEKİLLER DİZİNİ", "figures", "figures"),
   generatedList("list-tables", "listOfTables", "TABLOLAR DİZİNİ", "tables", "tables"),
   // 1. GİRİŞ restarts the numbering in Arabic at 1 (template section 3: pgNumType start=1); the numbered chapters follow in "Bölümler" and KAYNAKLAR
@@ -238,10 +245,9 @@ const sections = () => [
   { id: "introduction", type: "introduction", title: "GİRİŞ", status: "required", group: "body", mode: "editable", showTitle: true, titleNumbering: "continueH1",
     // The editor/PDF collapse the title's space-after with the first paragraph's space-before across the section wrapper (Word adds them): the title carries the
     // whole empty line so that the measured PDF gap is 20.7 pt (the Word file then has 6 pt more, engine gap noted in the report).
-    overrides: { page: { numbering: { format: "arabic", startAt: 1, restart: true } }, headings: { "1": { spaceAfterPt: BLANK_PT } } } },
+    overrides: { page: { numbering: { format: "arabic", startAt: 1, restart: true } } } },
   { id: "main", type: "mainContent", title: "Bölümler", status: "required", group: "body", mode: "editable" },
-  { id: "bibliography", type: "bibliography", title: "KAYNAKLAR", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1",
-    overrides: { headings: { "1": { spaceAfterPt: BLANK_PT } } } },
+  { id: "bibliography", type: "bibliography", title: "KAYNAKLAR", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1" },
   // EKLER ("varsa", guide §2.6/§4): the template has no appendix sample and no ÖZGEÇMİŞ/RESİMLER page (they occur only in its stale cached TOC), so only a
   // minimal optional appendices section is offered; its title typography is UNKNOWN (the unnumbered H1 style is used).
   { id: "appendices", type: "appendices", title: "EKLER", status: "optional", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
@@ -296,8 +302,8 @@ const base = {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
     margins: { topMm: 25, bottomMm: 25, leftMm: 30, rightMm: 30 },
     header: { heightMm: 0, distanceMm: 12.5, content: "", firstPage: "same" },
-    footer: { heightMm: 8, distanceMm: 12.5, content: "", firstPage: "same" },
-    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, style: { fontFamily: FONT, fontSizePt: 10 } },
+    footer: { heightMm: 8, distanceMm: 17.37, content: "", firstPage: "same" },
+    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, style: { fontFamily: FONT, fontSizePt: 12 } },
   },
   typography: {
     body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "justify", lineHeight: 1.5, spaceBeforePt: PARA_GAP_PT, spaceAfterPt: PARA_GAP_PT, firstLineIndentMm: PARA_INDENT_MM },
@@ -310,7 +316,7 @@ const base = {
     },
     // Footnotes are not defined by the sources; the guide's general "12 punto" rule is applied to the type (INFERRED), the rest is the engine default.
     footnotes: { placement: "pageBottom", numbering: "document", fontFamily: FONT, fontSizePt: 12 },
-    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word", paragraphSpacing: "additive" },
+    lineSpacing: { mode: "word", singleLineEm: SINGLE_LINE_EM, baseline: "word", paragraphSpacing: "collapse" },
     // Table notes: below the table, 11 pt, single spaced, block (no indent), justified (guide §3.3); 6/6 nk as the template's note paragraph.
     paragraphStyles: { tableNote: { fontSizePt: 11, lineHeight: 1, align: "justify", spaceBeforePt: PARA_GAP_PT, spaceAfterPt: PARA_GAP_PT, firstLineIndentMm: 0 } },
   },
@@ -341,7 +347,7 @@ const base = {
     continuation: { format: "{label} {number} (Devamı) {title}" },
   },
   figures: caption("Şekil", "below", { box: { align: "center", spaceBeforePt: 0, spaceAfterPt: 0 } }),
-  bibliography: { heading: "KAYNAKLAR", style: { fontFamily: FONT, fontSizePt: 12, align: "justify", lineHeight: 1, spaceBeforePt: 6, spaceAfterPt: 0, firstLineIndentMm: 0, hangingIndentMm: 12.5 }, hangingIndentMm: 0, citationStyle: "author-year" },
+  bibliography: { heading: "KAYNAKLAR", style: { fontFamily: FONT, fontSizePt: 11, align: "justify", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0, hangingIndentMm: 5.01 }, hangingIndentMm: 0, citationStyle: "author-year" },
   toc: { heading: "İÇİNDEKİLER DİZİNİ", levels: [1, 2, 3, 4], showPageNumbers: true },
 };
 

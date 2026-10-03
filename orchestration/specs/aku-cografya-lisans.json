@@ -8999,5 +8999,67 @@
  "annotatedAt": "2026-09-30",
  "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md",
  "updatedAt": "2026-10-02",
- "updateNote": "2026-10-02: the official Word template (AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx, core.xml 2024-03-31) was supplied; its sectPr/styles/paragraph XML resolves former special-page UNKNOWNs (confidence TEMPLATE). Guide-vs-template conflicts are recorded in `conflicts`. Template body paragraph indices (#n) are the n-th child of w:body in word/document.xml (artifacts/aku-cografya-lisans/source/docx/dump.txt)."
+ "updateNote": "2026-10-02: the official Word template (AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx, core.xml 2024-03-31) was supplied; its sectPr/styles/paragraph XML resolves former special-page UNKNOWNs (confidence TEMPLATE). Guide-vs-template conflicts are recorded in `conflicts`. Template body paragraph indices (#n) are the n-th child of w:body in word/document.xml (artifacts/aku-cografya-lisans/source/docx/dump.txt).",
+ "integrationResolution": {
+  "rule": "orchestration/CLOSEOUT_2026-10-03.md 'User-directed source precedence': where the official template's XML/example structure conflicts with guide prose, the TEMPLATE wins; both values stay documented in conflicts[].",
+  "updatedAt": "2026-10-03",
+  "resolutions": [
+   {
+    "topic": "Paragraph gap / heading-to-first-paragraph gap",
+    "template": "before=120 after=120 on body and H1 samples; Word render of the template: 9.40 mm baseline gap = 7.30 pitch + 6 pt (Word collapses adjacent 6/6 pt to max)",
+    "guide": "1 empty line (1.5)",
+    "resolution": "template (paragraphSpacing collapse, heading 6/6 pt, no extra gap)",
+    "measured": "9.42 mm"
+   },
+   {
+    "topic": "Page numbering",
+    "template": "section 2 (ethics..lists) pgNumType lowerRoman start=2, footer PAGE field 12 pt at baseline ~278.8 mm; cover/approval section has empty footer",
+    "guide": "ethics unnumbered, ÖZET = i, 10 pt",
+    "resolution": "template: ethics ii, ÖZET iii (continues), 12 pt, footer distance 17.37 mm (12.5 + the template footer's empty 12 pt line)",
+    "measured": "ii/iii at 278.68 mm"
+   },
+   {
+    "topic": "TABLOLAR DİZİNİ title",
+    "template": "TABLOLAR DİZİNİ page title",
+    "resolution": "template (already implemented)"
+   },
+   {
+    "topic": "Symbols list layout",
+    "template": "run-in 'Simge: tanım' single-spaced justified, bold symbol, no tab block",
+    "resolution": "template: tab stop/hanging removed"
+   },
+   {
+    "topic": "ÖZET title size",
+    "template": "sz=22 (11 pt)",
+    "guide": "12 pt",
+    "resolution": "template 11 pt for ÖZET only (ABSTRACT has no size override: 12 pt)"
+   },
+   {
+    "topic": "Bibliography entries",
+    "template": "11 pt, hanging 284 twips (5.01 mm), single, no spacing",
+    "guide": "12 pt, 12.5 mm hanging, 6 pt before",
+    "resolution": "template"
+   },
+   {
+    "topic": "Ethics list marker",
+    "template": "numbering Symbol U+F02D (minus), ind left 425 hanging 425; Word line +0.32 mm per item",
+    "resolution": "U+2212 marker in the flow with 0.32 mm extra space after each item (MEASURED); date/signature 154.98/169.58/176.87 vs Word 154.92/169.53/176.85"
+   },
+   {
+    "topic": "Cover top block",
+    "resolution": "+3.07 mm after the seals row, same amount taken back after the title (MEASURED: 58.93/67.45/75.97/118.57 vs Word 58.94/67.44/75.95/118.59)"
+   },
+   {
+    "topic": "Özet header gap",
+    "resolution": "+2.44 mm after the single-spaced title (MEASURED: gap 14.61 mm)"
+   }
+  ],
+  "unknowns": [
+   {
+    "topic": "Cover with a title of 3 or more lines",
+    "status": "UNKNOWN",
+    "note": "Neither guide nor template says how the cover paginates with a longer title; the template cover is one page with a 1-line title. Spacers are fixed whole Word lines; a 3-line title overflows the page (year alone on page 2). Not changed (no invented behaviour); 1-2 line titles fit on one page (Yıl baseline 268.85 mm vs template 269.11)."
+   }
+  ]
+ }
 }

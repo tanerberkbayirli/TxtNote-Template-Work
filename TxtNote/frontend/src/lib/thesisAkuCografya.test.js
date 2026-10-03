@@ -33,9 +33,9 @@ describe("AKÜ Coğrafya lisans bitirme tezi template (aku-cografya-lisans-tr-v1
   it("page, body and heading values of the guide and template (25/30 mm, 12 pt, 1.5 lines, 6/6 pt, 12.5 mm indent)", () => {
     const t = akuCografyaLisans;
     assert.deepEqual(t.page.margins, { topMm: 25, bottomMm: 25, leftMm: 30, rightMm: 30 });
-    assert.deepEqual([t.page.footer.distanceMm, t.page.header.distanceMm], [12.5, 12.5], "template sectPr footer/header 708-709 twips");
-    assert.deepEqual([t.page.numbering.position, t.page.numbering.align, t.page.numbering.style], ["bottom", "center", { fontFamily: "Times New Roman", fontSizePt: 10 }]);
-    assert.deepEqual(t.typography.lineSpacing, { mode: "word", singleLineEm: 1.15, baseline: "word", paragraphSpacing: "additive" });
+    assert.deepEqual([t.page.footer.distanceMm, t.page.header.distanceMm], [17.37, 12.5], "header 708 twips; footer 708 twips + the template footer's empty 12 pt paragraph below the page number (page number baseline 278.8 mm)");
+    assert.deepEqual([t.page.numbering.position, t.page.numbering.align, t.page.numbering.style], ["bottom", "center", { fontFamily: "Times New Roman", fontSizePt: 12 }]);
+    assert.deepEqual(t.typography.lineSpacing, { mode: "word", singleLineEm: 1.15, baseline: "word", paragraphSpacing: "collapse" });
     const b = t.typography.body;
     assert.deepEqual([b.fontFamily, b.fontSizePt, b.lineHeight, b.align, b.spaceBeforePt, b.spaceAfterPt, b.firstLineIndentMm], ["Times New Roman", 12, 1.5, "justify", 6, 6, 12.5]);
     const h = t.typography.headings;
@@ -44,9 +44,9 @@ describe("AKÜ Coğrafya lisans bitirme tezi template (aku-cografya-lisans-tr-v1
     assert.deepEqual([h["1"].textTransform, h["1"].pageBreakBefore, h["1"].textTransformExceptions, h["1"].spaceBeforePt], ["uppercase", true, ["ve", "veya", "ile"], 0]);
     assert.deepEqual([h["2"].textTransform, h["2"].pageBreakBefore], ["capitalize", undefined]);
     assert.deepEqual([h["3"].textTransform, h["4"].textTransform], ["capitalize", "capitalize"]);
-    for (const level of ["2", "3", "4"]) assert.ok(Math.abs(h[level].spaceBeforePt - 14.7) < 1e-9 && Math.abs(h[level].spaceAfterPt - 14.7) < 1e-9, "one empty 1.5 line = 14.7 pt + 6 pt paragraph spacing");
+    for (const level of ["2", "3", "4"]) assert.ok(h[level].spaceBeforePt === 6 && h[level].spaceAfterPt === 6, "template H1 samples: spacing before=120 after=120 (Word collapses to 6 pt between paragraphs; the guide's 'one empty line' prose is the recorded CONFLICT, template wins)");
     assert.deepEqual(["1", "2", "3", "4"].map((l) => h[l].numbering.format), ["{1}.", "{1}.{2}", "{1}.{2}.{3}", "{1}.{2}.{3}.{4}"]);
-    assert.deepEqual([t.bibliography.style.spaceBeforePt, t.bibliography.style.spaceAfterPt, t.bibliography.style.hangingIndentMm, t.bibliography.style.lineHeight, t.bibliography.style.fontSizePt, t.bibliography.style.align], [6, 0, 12.5, 1, 12, "justify"]);
+    assert.deepEqual([t.bibliography.style.spaceBeforePt, t.bibliography.style.spaceAfterPt, t.bibliography.style.hangingIndentMm, t.bibliography.style.lineHeight, t.bibliography.style.fontSizePt, t.bibliography.style.align], [0, 0, 5.01, 1, 11, "justify"]);
     assert.equal(t.bibliography.citationStyle, "author-year");
     assert.equal(t.tables.continuation.format, "{label} {number} (Devamı) {title}");
     assert.deepEqual(t.typography.paragraphStyles.tableNote, { fontSizePt: 11, lineHeight: 1, align: "justify", spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 0 });
@@ -70,7 +70,7 @@ describe("AKÜ Coğrafya lisans bitirme tezi template (aku-cografya-lisans-tr-v1
     assert.match(buildThesisCss(model), /caption\{caption-side:top;[^}]*font-size:11pt/);
   });
 
-  it("sections: no Dış Kapak, cover/approval/ethics unnumbered, ÖZET = i, GİRİŞ = 1, KAYNAKLAR numbered as the next chapter, TOC lists front titles", () => {
+  it("sections: no Dış Kapak, cover/approval unnumbered, ethics = ii, ÖZET = iii, GİRİŞ = 1, KAYNAKLAR numbered as the next chapter, TOC lists front titles", () => {
     const model = compile(main, { enabledSections: ["symbols", "appendices"] });
     const ids = model.sections.map((s) => s.id);
     assert.ok(!ids.includes("outer-cover"), "the Dış Kapak is not defined by the sources");
@@ -80,12 +80,14 @@ describe("AKÜ Coğrafya lisans bitirme tezi template (aku-cografya-lisans-tr-v1
     assert.deepEqual([...order].sort((a, b) => a - b), order, "front matter, symbols, body, KAYNAKLAR, EKLER");
     assert.ok(order.every((index) => index >= 0));
     const rule = (id) => section(model, id).rules.page.numbering;
-    assert.deepEqual([rule("inner-cover").enabled, rule("approval").enabled, rule("ethics").enabled], [false, false, false]);
-    assert.deepEqual([rule("abstract-tr").format, rule("abstract-tr").startAt, rule("abstract-tr").restart], ["roman-lower", 1, true]);
+    assert.deepEqual([rule("inner-cover").enabled, rule("approval").enabled], [false, false]);
+    assert.deepEqual([rule("ethics").format, rule("ethics").startAt, rule("ethics").restart], ["roman-lower", 2, true], "template sectPr start=2");
+    assert.deepEqual([rule("abstract-tr").format, rule("abstract-tr").startAt, rule("abstract-tr").restart], ["roman-lower", 1, false], "continues after the ethics page (iii)");
     assert.deepEqual([rule("introduction").format, rule("introduction").startAt, rule("introduction").restart], ["arabic", 1, true]);
     assert.equal(section(model, "bibliography").rules.page.numbering.format, "arabic");
     const labels = Object.fromEntries(numberThesisPages(groupThesisSections(model.sections), {}).map((n) => [n.sectionId, n.labels]));
-    assert.equal(labels["abstract-tr"][0], "i");
+    assert.equal(labels.ethics[0], "ii");
+    assert.equal(labels["abstract-tr"][0], "iii");
     assert.equal(labels.introduction[0], "1");
     const toc = section(model, "toc").html;
     for (const title of ["ÖZET", "ABSTRACT", "TEŞEKKÜR", "İÇİNDEKİLER DİZİNİ", "SİMGELER ve KISALTMALAR DİZİNİ", "EKLER"]) assert.ok(toc.includes(title), title);
@@ -124,7 +126,7 @@ describe("AKÜ Coğrafya lisans bitirme tezi template (aku-cografya-lisans-tr-v1
     assert.match(text("approval"), /Coğrafya Bölümü’nde lisans/);
     assert.match(text("approval"), /Bitirme Tezi Danışmanı: Prof\. Dr\. Ali VELİ/);
     assert.match(text("ethics"), /Coğrafya Bölümü, bitirme tezi yazım kurallarına uygun olarak/);
-    assert.equal((text("ethics").match(/"value":"•"|"text":"•"/g) || []).length, 6, "six bullet items");
+    assert.equal((text("ethics").match(/"value":"\u2212"|"value":"−"|"text":"−"/g) || []).length, 6, "six minus-marker items (template Symbol U+F02D)");
     assert.match(text("ethics"), /beyan ederim\./);
     assert.match(text("abstract-tr"), /Bitirme Tezi/);
     assert.match(text("abstract-tr"), /Coğrafya Bölümü/);
@@ -141,12 +143,11 @@ describe("AKÜ Coğrafya lisans bitirme tezi template (aku-cografya-lisans-tr-v1
 
   it("DOCX carries the Word values: 25/30 mm margins, 1.5 lines, 6/6 pt, 12.5 mm indent, heading gaps, footer 12.5 mm", async () => {
     const xml = await docxXml(compile());
-    assert.match(xml, /<w:pgMar w:top="1417" w:right="1701" w:bottom="1417" w:left="1701" w:header="709" w:footer="709"/);
-    // paragraph after a heading: Word renders max(after, before), so space-before carries the whole 14.7 pt gap (heading 14.7 pt after + 6 pt before = 20.7 pt = 414 twips), previous space-after stays
-    assert.match(xml, /w:spacing w:after="120" w:before="414" w:line="360" w:lineRule="auto"/);
+    assert.match(xml, /<w:pgMar w:top="1417" w:right="1701" w:bottom="1417" w:left="1701" w:header="709" w:footer="985"/);
+    // template body/heading paragraphs: before=120 after=120 line=360 (Word collapses adjacent 6/6 pt to a 6 pt gap)
+    assert.match(xml, /w:spacing w:after="120" w:before="120" w:line="360" w:lineRule="auto"/);
     assert.match(xml, /w:firstLine="709"/);
-    assert.match(xml, /w:spacing w:after="294" w:before="588" w:line="360" w:lineRule="auto"/); // heading after heading: 14.7 + 14.7 pt on space-before (Word max)
-    assert.match(xml, /<w:pgNumType w:start="1" w:fmt="lowerRoman"\/>/);
+    assert.match(xml, /<w:pgNumType w:start="2" w:fmt="lowerRoman"\/>/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="decimal"\/>/);
   });
 });
