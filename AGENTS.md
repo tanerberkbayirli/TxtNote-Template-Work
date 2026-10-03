@@ -1102,6 +1102,8 @@ Do not transfer enormous reasoning histories when a compact evidence-backed resu
 
 TOKEN COST: read the target's `orchestration/specs/<target>.CONTEXT.md` (see §24A) instead of AGENTS.md + briefs + full sources; open sources only for the rows being worked. Use grep / line-range reads, never whole long files.
 
+ENGINE CATALOG: before opening engine code, consult `TxtNote/frontend/src/thesis/CAPABILITIES.md` (template keys, support in editor/PDF/DOCX, tests, known gaps). A unit test keeps it in sync with `validation.js`.
+
 
 
 \---
