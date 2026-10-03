@@ -145,6 +145,7 @@ The scaling step toward ~200 universities.
 | Date | Step | Commit | Result / measured cost | Next |
 |---|---|---|---|---|
 | 2026-10-03 | Plan written; checker (1ea4734), context packs (18e1bdd), docs (bcb3af6) | — | Checker: Coğrafya 41 PASS / 4 FAIL (table pitch), Matematik 42 / 4 (symbols table regression) | Phase 0.1 |
+| 2026-10-03 | Phase 0.1–0.3, 0.5, 0.4 part 1 (`--all`, checks for felsefe-lisans/-seminer, isg, sbe) | 429a285 | 0.1 = fixture lacked symbols table (no regression); new `tables.cellPadding` + `<col data-col-width>`; Sosyoloji margins confirmed. Coğrafya 45/0 and Matematik 46/0 with --word → DONE. `--all` 6 targets 1:40 min, only FAIL isg (2 REAL: inner-cover spill, footer distance). Limitation: column-width CSS uses typed attr() (Chrome 133+) → Phase 2.5. Cost ≈ 360k subagent tokens (Haiku port 110k needed a Sonnet rewrite 133k: use Sonnet for check authoring) | 0.4 part 2 (mcbu-tip, afsu-tip, afsu-eczacilik, afsu-lee) |
 
 ---
 
