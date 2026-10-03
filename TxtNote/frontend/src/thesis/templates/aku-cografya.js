@@ -343,7 +343,7 @@ const base = {
   },
   tables: {
     ...caption("Tablo", "above", { spacingAfterPt: 0, style: { fontFamily: FONT, fontSizePt: 11, align: "justify", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } }),
-    cellStyle: { fontSizePt: 12, lineHeight: 1, align: "left" },
+    cellStyle: { fontSizePt: 11, lineHeight: 1, align: "left" },
     continuation: { format: "{label} {number} (Devamı) {title}" },
   },
   figures: caption("Şekil", "below", { box: { align: "center", spaceBeforePt: 0, spaceAfterPt: 0 } }),

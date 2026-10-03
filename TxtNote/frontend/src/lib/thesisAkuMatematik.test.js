@@ -90,7 +90,7 @@ describe("AKÜ Matematik lisans tezi template (aku-matematik-lisans-tr-v1)", () 
     assert.equal(section(compile(), "symbols"), undefined);
   });
 
-  it("lists: ŞEKİLLER, ÇİZELGELER, RESİMLER DİZİNİ with the template's instruction (left, single, 6 pt after) and centred bold titles", () => {
+  it("lists: ŞEKİLLER, ÇİZELGELER, RESİMLER DİZİNİ with the template XML rule (left, 1.5 lines, 0 pt after = 7.30 mm per line) and centred bold titles", () => {
     const model = compile();
     assert.deepEqual(model.sections.filter((s) => s.id.startsWith("list-")).map((s) => s.generatedIndex.title), ["ŞEKİLLER DİZİNİ", "ÇİZELGELER DİZİNİ", "RESİMLER DİZİNİ"]);
     for (const id of ["toc", "list-figures", "list-tables", "list-photos"]) {
@@ -101,8 +101,24 @@ describe("AKÜ Matematik lisans tezi template (aku-matematik-lisans-tr-v1)", () 
     }
     assert.deepEqual([section(model, "toc").generatedIndex.style.lineHeight, section(model, "toc").generatedIndex.style.spaceAfterPt], [1.5, 0]);
     const l = section(model, "list-figures").generatedIndex.style;
-    assert.deepEqual([l.lineHeight, l.spaceBeforePt, l.spaceAfterPt, l.align], [1, 0, 6, "left"]);
+    assert.deepEqual([l.lineHeight, l.spaceBeforePt, l.spaceAfterPt, l.align], [1.5, 0, 0, "left"]);
+    assert.ok(Math.abs(12 * 1.15 * l.lineHeight * 25.4 / 72 - 7.30) < 0.01, "line=360 of 12 pt TNR = 7.30 mm incl. wrapped lines");
     assert.equal(section(compile("<h1>Bir</h1>"), "list-figures"), undefined);
+  });
+
+  it("symbols table: template XML rules (header-only rows + last row), no top rule, cell margin 1.9 mm, no tab/hanging model", async () => {
+    const sym = compile(main, { enabledSections: ["symbols"], sectionContent: { symbols: "<table><tbody><tr><th>Simgeler</th><th></th></tr><tr><td>a</td><td>b</td></tr><tr><th>Kısaltmalar</th><th></th></tr><tr><td>c</td><td>d</td></tr></tbody></table>" } });
+    const s = section(sym, "symbols");
+    assert.deepEqual(s.rules.tables.borders, { preset: "headerRules", widthPt: 0.5 });
+    assert.equal(s.rules.body.tabStopMm, undefined);
+    assert.equal(s.rules.body.hangingIndentMm, undefined);
+    const css = buildThesisCss(sym);
+    assert.match(css, /tr:not\(:has\(>td\)\)>\*\{border-bottom:0\.5pt solid #000 !important;\}/);
+    assert.match(css, /last-child>tr:last-child>\*\{border-bottom:0\.5pt solid #000 !important;\}/);
+    const xml = await docxXml(sym);
+    const tbl = xml.slice(xml.indexOf("<w:tbl>"), xml.indexOf("</w:tbl>"));
+    assert.equal((tbl.match(/<w:tcBorders><w:bottom w:val="single" w:color="000000" w:sz="4"\/>/g) || []).length, 4, "two header rows x 2 cells carry the rule");
+    assert.match(tbl, /<w:tblBorders><w:top w:val="none"[^>]*\/><w:left w:val="none"[^>]*\/><w:bottom w:val="single" w:color="000000" w:sz="4"\/>/);
   });
 
   it("cover pages: Dış Kapak 12 pt single, İç Kapak 14 pt bold 1.5, no seals, placeholders", () => {

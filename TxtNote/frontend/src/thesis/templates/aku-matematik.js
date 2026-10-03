@@ -85,14 +85,14 @@ const innerCover = {
 /** Front-matter title (template style Balk1 "No Spacing": bold, centred, 1.5 lines, unnumbered, one empty 1.5 line below). */
 const frontTitle = (spaceAfterPt = BLANK_PT, align = "center") => ({ "1": { align, textTransform: "none", spaceAfterPt, numbering: { enabled: false } } });
 
-// Lists of figures/tables/pictures: "Sayfa" bold right under the title; the red instruction + embedded Word "Paragraf" screenshot prescribe
-// left alignment, hanging indent, 0 pt before, 6 pt after, SINGLE line spacing ("Şekiller, Çizelgeler ve Resimler Dizininde aşağıdaki ayarlar
-// uygulanmalı"); the call-out says continuation lines align under the first line's text. The sample rows (TOC-field output) are 1.5 lines /
-// 0 pt after with 907-1191 tw hangings: CONFLICT recorded, the instruction is followed (pitch differs by only 0.9 pt for one-line rows).
+// Lists of figures/tables/pictures: "Sayfa" bold right under the title, left aligned, hanging indent with continuation lines under the first line's text.
+// CONFLICT (ruled by the user's precedence XML > prose): the red instruction + embedded Word "Paragraf" screenshot say 0 pt before, 6 pt after, SINGLE
+// line spacing; the template's own sample rows (TOC-field output, style "table of figures") are line=360 (1.5 lines), after=0 with 907-1191 tw hangings.
+// The XML rule is applied: 1.5 lines, 0 pt before/after = 7.30 mm per line, wrapped lines included (spec conflicts[]).
 const listRule = (kind, title) => ({
   kind, title, leader: "dots", leaderFlow: "inline", pageHeading: "Sayfa", hanging: "label", labelStyle: bold, indentMm: 0,
   pageHeadingStyle: { ...bold, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 },
-  style: { lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 6, align: "left" },
+  style: { lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" },
 });
 const generatedList = (id, type, title, kind, count) => ({
   id, type, title, status: "required", group: "front", mode: "generated", tocEntry: "title", visibleWhen: { count, gte: 1 },
@@ -116,10 +116,13 @@ const sections = () => [
     generatedIndex: { kind: "toc", title: "İÇİNDEKİLER DİZİNİ", leader: "dots", leaderFlow: "inline", pageHeading: "Sayfa", hanging: "label", indentMm: 5, matchHeadingTransform: true,
       pageHeadingStyle: { ...bold, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 }, style: { lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" } },
     overrides: { page: roman, headings: frontTitle(0) } },
-  // SİMGELER ve KISALTMALAR DİZİNİ: title bold centred (Balk1), one empty line, then the template's two-column table (no rules) of single-spaced 12 pt rows
-  // with the definitions at 70.7 mm = 40.7 mm from the margin (the symbols start at 32.0 mm there = cell margin, not reproduced; "Simgeler"/"Kısaltmalar" sub-titles bold); call-out: the abbreviations are alphabetical (EXPLICIT, author duty).
+  // SİMGELER ve KISALTMALAR DİZİNİ: title bold centred (Balk1), one empty line, then the template's two-column table (cell widths 2196 / 6301 tw, default 108 tw
+  // cell margins -> text at 32.0 mm, no verticals): rules (w:tcBorders bottom single sz=4) under the "Simgeler" and "Kısaltmalar" header rows and under the last row
+  // (tables.borders "headerRules": header-only <th> rows + last row), single-spaced 12 pt rows; the empty paragraph above "Kısaltmalar" is author content (a blank line
+  // in that header cell). The previous omission of table rules/cell margin was a deviation and is removed. Alphabetical order is an author duty (call-out, EXPLICIT).
   { id: "symbols", type: "listOfAbbreviations", title: "SİMGELER ve KISALTMALAR DİZİNİ", status: "optional", group: "front", mode: "editable", showTitle: true, tocEntry: "title",
-    overrides: { page: roman, headings: frontTitle(), paragraph: { firstLineIndentMm: 0, align: "left", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, tabStopMm: 40.7, hangingIndentMm: 40.7 } } },
+    overrides: { page: roman, headings: frontTitle(), paragraph: { firstLineIndentMm: 0, align: "left", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 },
+      tables: { borders: { preset: "headerRules", widthPt: 0.5 }, cellStyle: { fontSizePt: 12, lineHeight: 1, align: "left" } } } },
   generatedList("list-figures", "listOfFigures", "ŞEKİLLER DİZİNİ", "figures", "figures"),
   generatedList("list-tables", "listOfTables", "ÇİZELGELER DİZİNİ", "tables", "tables"),
   generatedList("list-photos", "custom", "RESİMLER DİZİNİ", "photo", "photo"),

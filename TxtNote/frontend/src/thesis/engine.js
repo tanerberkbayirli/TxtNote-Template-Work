@@ -392,10 +392,15 @@ export function thesisSectionCss(section) {
     ...(text.firstAfterHeading ? [`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6)+p{text-indent:${indentMm({ ...text, ...text.firstAfterHeading }).first}mm}`] : []),
     `${scope} .thesis-body img{max-width:100%;max-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm;height:auto;object-fit:contain;}`,
     `${scope} .thesis-body table{width:100%;border-collapse:collapse;}`,
-    ...(tables.borders?.preset === "threeRule" || tables.borders?.preset === "none" ? [
+    ...(["threeRule", "headerRules", "none"].includes(tables.borders?.preset) ? [
       // Three-rule table: a rule above the table, below the header row and below the table; no verticals.
       // !important: the editor's own table stylesheet (index.css) sets cell borders/padding with it.
       `${scope} .thesis-body td,${scope} .thesis-body th{border:0 !important;padding:${tables.cellPadding || "0 1.9mm"} !important;}`,
+      // headerRules: no top rule; a rule below every header-only (th) row and below the last row (AKÜ Matematik symbols table: sub-title rows).
+      ...(tables.borders.preset === "headerRules" ? [
+        `${scope} .thesis-body table tr:not(:has(>td))>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
+        `${scope} .thesis-body table>:is(tbody,tfoot):last-child>tr:last-child>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
+      ] : []),
       ...(tables.borders.preset === "threeRule" ? [
         // The rules sit on the first/last row cells: a border on the table box would also enclose an above-table caption.
         `${scope} .thesis-body table>thead:first-of-type>tr:first-child>*,${scope} .thesis-body table:not(:has(>thead))>tbody:first-of-type>tr:first-child>*{border-top:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,

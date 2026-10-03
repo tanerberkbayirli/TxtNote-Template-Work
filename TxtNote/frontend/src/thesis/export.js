@@ -566,7 +566,7 @@ function tableDocx(block, section, context, before = null) {
   const { body, tables } = section.rules;
   const cellStyle = tables.cellStyle || {};
   const out = [];
-  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above", pageBreakBefore: tables.position === "above" && (context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id)) }, before) : null;
+  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above", keepLines: tables.position === "above", pageBreakBefore: tables.position === "above" && (context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id)) }, before) : null;
   if (caption && tables.position === "above") out.push(caption);
   const preset = tables.borders?.preset;
   const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
@@ -576,19 +576,22 @@ function tableDocx(block, section, context, before = null) {
   const lastHeader = sourceRows.reduce((last, row, index) => (row.every((cell) => cell.header) ? index : last), -1);
   const makeRow = (row, rowIndex, keepRow = rowIndex < sourceRows.length - 1 || captionBelow) => new TableRow({
     cantSplit: true, tableHeader: row.every((cell) => cell.header),
-    // Word otherwise uses its glyph box as the row minimum, while CSS uses the
-    // resolved line box plus both paddings and the collapsed border.
-    height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing) + (preset ? 0 : 2 * ACADEMIC_TABLE_CELL_PADDING_PT.vertical + CELL_BORDER.size / 8)), rule: HeightRule.ATLEAST },
+    // Word's row height (atLeast) is the CONTENT height only: cell top/bottom margins and the border are added on top (measured in Word: trHeight
+    // 26.55 pt + tcMar 2 x 6 pt + 0.75 pt border = 39.3 pt rows, CSS rows = line box + padding + border = 26.55 pt). Word would otherwise use its glyph
+    // box as the minimum, so the minimum is the resolved line box; margins and border then add up exactly as the editor's do.
+    height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing)), rule: HeightRule.ATLEAST },
     children: row.map((cell) => new TableCell({
       columnSpan: cell.colspan > 1 ? cell.colspan : undefined, rowSpan: cell.rowspan > 1 ? cell.rowspan : undefined,
       // Three-rule tables: the rule below the header row belongs to its cells.
       ...(preset === "threeRule" && rowIndex === lastHeader ? { borders: { bottom: rule } } : {}),
+      ...(preset === "headerRules" && row.every((c) => c.header) ? { borders: { bottom: rule } } : {}),
       margins: preset ? { top: 0, bottom: 0, left: twip(1.9), right: twip(1.9) } : { top: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), bottom: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), left: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal), right: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal) },
       children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: keepRow, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
   });
   // Three-rule table: top and bottom of the table, and below the (repeated) header row.
-  const borders = preset === "threeRule" ? { top: rule, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
+  const borders = preset === "headerRules" ? { top: NO_BORDER, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
+    : preset === "threeRule" ? { top: rule, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : preset === "none" ? { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER };
   const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders });
