@@ -262,7 +262,7 @@ const base = (f) => ({
       "3": sub("{1}.{2}.{3}.", { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }),
       "4": sub("{1}.{2}.{3}.{4}.", { textTransform: "capitalize", textTransformExceptions: ["ve", "veya", "ile"] }),
     },
-    footnotes: { placement: "pageBottom", fontFamily: FONT, fontSizePt: 12, lineHeight: 1 },
+    footnotes: { placement: "pageBottom", fontFamily: FONT, fontSizePt: 12, lineHeight: 1, lineSpacing: { rule: "auto", value: 1, singleLineEm: 1.15 } },
     lineSpacing: { mode: "word", singleLineEm: 1.15, baseline: "word", paragraphSpacing: "collapse" },
     paragraphStyles: {
       // §2.11: additional explanation under a table: 10 pt, single spacing.

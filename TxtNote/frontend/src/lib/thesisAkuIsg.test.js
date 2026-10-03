@@ -18,7 +18,9 @@ describe("AKÜ FBE İş Güvenliği tezsiz dönem projesi template", () => {
     const b = t.typography.body;
     assert.deepEqual([b.fontFamily, b.fontSizePt, b.lineHeight, b.align, b.firstLineIndentMm, b.spaceBeforePt, b.spaceAfterPt], ["Times New Roman", 12, 1.5, "justify", 0, 0, 0]);
     assert.equal(t.page.numbering.style.fontSizePt, 11);
-    assert.equal(t.page.footer.distanceMm, 17.4); // 12.5 mm (709 twips) + the template footer's trailing empty paragraph (4.87 mm)
+    assert.equal(t.page.footer.distanceMm, 12.506); // source pgMar=709 twips
+    assert.equal(t.page.footer.trailingBlankLines, 1);
+    assert.equal(t.page.numbering.baselineFromTopMm, 278.8); // cached official Word render
     const intro = t.sections.find((s) => s.id === "introduction").overrides.page.numbering;
     assert.deepEqual([intro.format, intro.startAt, intro.restart], ["arabic", 1, true]);
     assert.equal(t.sections.find((s) => s.id === "inner-cover").overrides.page.numbering.enabled, false);

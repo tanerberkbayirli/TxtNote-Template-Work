@@ -20,7 +20,7 @@
   "params": {
    "field": "margins.left"
   },
-  "expected": 40.0,
+  "expected": 40,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -34,7 +34,7 @@
   "params": {
    "field": "margins.right"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -48,7 +48,7 @@
   "params": {
    "field": "margins.top"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -62,7 +62,7 @@
   "params": {
    "field": "margins.bottom"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -79,7 +79,7 @@
    },
    "metric": "x0min"
   },
-  "expected": 40.0,
+  "expected": 40,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -96,7 +96,7 @@
    },
    "metric": "x1max"
   },
-  "expected": 185.0,
+  "expected": 185,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -154,7 +154,7 @@
     "label": "arabic"
    }
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -189,7 +189,8 @@
   "params": {
    "pages": {
     "label": "arabic"
-   }
+   },
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -230,7 +231,8 @@
    },
    "regex": "^(Önsöz|Özet|\\d+\\.\\d+) \\d\\. Çevrimiçi",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 45.88,
   "tolerance": 0.25,
@@ -249,7 +251,7 @@
    "attr": "top",
    "agg": "all"
   },
-  "expected": 50.0,
+  "expected": 50,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -264,7 +266,8 @@
    "pages": "all",
    "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 112.5,
   "tolerance": 0.5,
@@ -281,9 +284,10 @@
    "pages": "all",
    "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -316,7 +320,8 @@
     "find": "^I\\. KURAMSAL ÇERÇEVE$"
    },
    "a": "^I\\. KURAMSAL ÇERÇEVE$",
-   "b": "^1\\.0 1\\."
+   "b": "^1\\.0 1\\.",
+   "source": "layout"
   },
   "expected": 34.87,
   "tolerance": 0.5,
@@ -367,7 +372,8 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "cx"
+   "attr": "cx",
+   "source": "layout"
   },
   "expected": 112.5,
   "tolerance": 0.5,
@@ -384,9 +390,10 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "baseline"
+   "attr": "baseline",
+   "source": "layout"
   },
-  "expected": 267.0,
+  "expected": 267,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -407,12 +414,13 @@
     "Anabilim Dalı$",
     "^ÇEVRİMİÇİ"
    ],
-   "attr": "size"
+   "attr": "size",
+   "source": "layout"
   },
   "expected": [
-   12.0,
-   12.0,
-   14.0
+   12,
+   12,
+   14
   ],
   "tolerance": 0.1,
   "source": {
@@ -431,7 +439,8 @@
    },
    "regex": ".",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 112.5,
   "tolerance": 0.5,
@@ -449,7 +458,8 @@
     "page": 1
    },
    "a": "ÜNİVERSİTESİ TIP FAKÜLTESİ$",
-   "b": "Anabilim Dalı$"
+   "b": "Anabilim Dalı$",
+   "source": "layout"
   },
   "expected": 10.24,
   "tolerance": 0.25,
@@ -467,7 +477,8 @@
     "page": 1
    },
    "a": "Anabilim Dalı$",
-   "b": "^ÇEVRİMİÇİ"
+   "b": "^ÇEVRİMİÇİ",
+   "source": "layout"
   },
   "expected": 47.25,
   "tolerance": 0.25,
@@ -485,7 +496,8 @@
     "page": 1
    },
    "a": "İNCELENMESİ$",
-   "b": "^UZMANLIK TEZİ$"
+   "b": "^UZMANLIK TEZİ$",
+   "source": "layout"
   },
   "expected": 43.56,
   "tolerance": 0.25,
@@ -503,7 +515,8 @@
     "page": 1
    },
    "a": "^UZMANLIK TEZİ$",
-   "b": "^Ayşe DEMİR$"
+   "b": "^Ayşe DEMİR$",
+   "source": "layout"
   },
   "expected": 5.51,
   "tolerance": 0.25,
@@ -521,7 +534,8 @@
     "page": 1
    },
    "a": "^Ayşe DEMİR$",
-   "b": "^Tez Danışmanı$"
+   "b": "^Tez Danışmanı$",
+   "source": "layout"
   },
   "expected": 38.35,
   "tolerance": 0.25,
@@ -539,7 +553,8 @@
     "page": 1
    },
    "a": "^Tez Danışmanı$",
-   "b": "^Prof\\. Dr\\."
+   "b": "^Prof\\. Dr\\.",
+   "source": "layout"
   },
   "expected": 8.72,
   "tolerance": 0.25,
@@ -557,7 +572,8 @@
     "page": 1
    },
    "a": "^Prof\\. Dr\\.",
-   "b": "^Manisa, "
+   "b": "^Manisa, ",
+   "source": "layout"
   },
   "expected": 41.49,
   "tolerance": 0.25,
@@ -576,7 +592,8 @@
    },
    "regex": ".",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 112.5,
   "tolerance": 0.5,
@@ -594,7 +611,8 @@
     "page": 2
    },
    "a": "ÜNİVERSİTESİ TIP FAKÜLTESİ$",
-   "b": "Anabilim Dalı$"
+   "b": "Anabilim Dalı$",
+   "source": "layout"
   },
   "expected": 10.24,
   "tolerance": 0.25,
@@ -612,7 +630,8 @@
     "page": 2
    },
    "a": "Anabilim Dalı$",
-   "b": "^ÇEVRİMİÇİ"
+   "b": "^ÇEVRİMİÇİ",
+   "source": "layout"
   },
   "expected": 47.25,
   "tolerance": 0.25,
@@ -630,7 +649,8 @@
     "page": 2
    },
    "a": "İNCELENMESİ$",
-   "b": "^UZMANLIK TEZİ$"
+   "b": "^UZMANLIK TEZİ$",
+   "source": "layout"
   },
   "expected": 43.56,
   "tolerance": 0.25,
@@ -648,7 +668,8 @@
     "page": 2
    },
    "a": "^UZMANLIK TEZİ$",
-   "b": "^Ayşe DEMİR$"
+   "b": "^Ayşe DEMİR$",
+   "source": "layout"
   },
   "expected": 5.51,
   "tolerance": 0.25,
@@ -666,7 +687,8 @@
     "page": 2
    },
    "a": "^Ayşe DEMİR$",
-   "b": "^Tez Danışmanı$"
+   "b": "^Tez Danışmanı$",
+   "source": "layout"
   },
   "expected": 38.35,
   "tolerance": 0.25,
@@ -684,7 +706,8 @@
     "page": 2
    },
    "a": "^Tez Danışmanı$",
-   "b": "^Prof\\. Dr\\."
+   "b": "^Prof\\. Dr\\.",
+   "source": "layout"
   },
   "expected": 8.72,
   "tolerance": 0.25,
@@ -702,7 +725,8 @@
     "page": 2
    },
    "a": "^Prof\\. Dr\\.",
-   "b": "^Manisa, "
+   "b": "^Manisa, ",
+   "source": "layout"
   },
   "expected": 41.49,
   "tolerance": 0.25,
@@ -721,9 +745,10 @@
    },
    "regex": "^(([IVX]+\\.)|(\\d+\\.)+)[^.]* \\d+$",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 40.0,
+  "expected": 40,
   "tolerance": 0.5,
   "source": {
    "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
@@ -739,7 +764,8 @@
     "find": "^İÇİNDEKİLER$"
    },
    "a": "^1\\.1\\.1\\. Alt Başlık 1\\.1\\.1 \\d+$",
-   "b": "^1\\.1\\.1\\.1\\. Alt"
+   "b": "^1\\.1\\.1\\.1\\. Alt",
+   "source": "layout"
   },
   "expected": 4.87,
   "tolerance": 0.1,
@@ -757,7 +783,8 @@
     "find": "^İÇİNDEKİLER$"
    },
    "a": "^1\\.2\\. Alt Başlık 1\\.2 \\d+$",
-   "b": "^II\\. YÖNTEM"
+   "b": "^II\\. YÖNTEM",
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,

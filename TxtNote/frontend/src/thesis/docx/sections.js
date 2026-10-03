@@ -39,21 +39,31 @@ export function chromeDocx(section, values, context, groupStart, omitNumberOnFir
     const children = [];
     if (withNumber && number.enabled && numberEdge === edge && edge === "top") children.push(numberParagraph());
     // Chrome text keeps the editor's fixed 1.1 line box in every template.
-    if (text) children.push(docxParagraph(plainRuns(text), chromeStyle, { ...context, lineSpacing: null }));
+    if (text) children.push(docxParagraph(String(text).split(/(\{\{NUMPAGES\}\})/).flatMap((value) => value === "{{NUMPAGES}}" ? [{ type: "numpages" }] : plainRuns(value)), chromeStyle, { ...context, lineSpacing: null }));
     if (withNumber && number.enabled && numberEdge === edge && edge === "bottom") children.push(numberParagraph());
+    const chrome = edge === "top" ? page.header : page.footer;
+    for (let i = 0; i < (chrome?.trailingBlankLines || 0); i += 1) children.push(docxParagraph([], { ...body, lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 }, context));
     return children.length ? children : [new Paragraph({ children: [] })];
   };
-  const headerText = resolveChromeText(page.header?.content, values);
-  const footerText = resolveChromeText(page.footer?.content, values);
+  const resolveText = (content) => resolveChromeText(content, { ...values, NUMPAGES: "{{NUMPAGES}}" });
+  const headerText = resolveText(page.header?.content);
+  const footerText = resolveText(page.footer?.content);
   const headers = { default: new Header({ children: part("top", headerText) }) };
   const footers = { default: new Footer({ children: part("bottom", footerText) }) };
   const omitHeader = Boolean(groupStart && page.header?.firstPage === "omit" && headerText);
   const omitFooter = Boolean(groupStart && page.footer?.firstPage === "omit" && footerText);
   // numbering.omitOnChapterStart: the first page of the Word section (a chapter opening) is counted but prints no number.
   const omitNumber = Boolean(omitNumberOnFirst && number.enabled && number.omitOnChapterStart);
-  if (omitHeader || omitFooter || omitNumber) {
-    headers.first = new Header({ children: part("top", omitHeader ? "" : headerText, !omitNumber) });
-    footers.first = new Footer({ children: part("bottom", omitFooter ? "" : footerText, !omitNumber) });
+  const differentFirst = page.differentFirstPage || page.header?.firstContent !== undefined || page.footer?.firstContent !== undefined;
+  if (omitHeader || omitFooter || omitNumber || differentFirst) {
+    headers.first = new Header({ children: part("top", omitHeader ? "" : resolveText(page.header?.firstContent ?? headerText), !omitNumber) });
+    footers.first = new Footer({ children: part("bottom", omitFooter ? "" : resolveText(page.footer?.firstContent ?? footerText), !omitNumber) });
   }
-  return { headers, footers, titlePage: omitHeader || omitFooter || omitNumber };
+  // Once even/odd headers are enabled document-wide, all sections need an even
+  // part, including sections that use identical content on both page parities.
+  if (context.evenAndOddHeaders) {
+    headers.even = new Header({ children: part("top", resolveText(page.header?.evenContent ?? headerText)) });
+    footers.even = new Footer({ children: part("bottom", resolveText(page.footer?.evenContent ?? footerText)) });
+  }
+  return { headers, footers, titlePage: Boolean(omitHeader || omitFooter || omitNumber || differentFirst) };
 }

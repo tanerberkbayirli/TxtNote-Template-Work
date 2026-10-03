@@ -25,7 +25,7 @@
    "attr": "top",
    "agg": "min"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
@@ -40,7 +40,7 @@
    "sections": "all",
    "field": "margins.top"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
@@ -55,7 +55,7 @@
    "sections": "all",
    "field": "margins.left"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
@@ -72,7 +72,7 @@
    },
    "metric": "x0min"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
@@ -89,7 +89,7 @@
    },
    "metric": "x1max"
   },
-  "expected": 180.0,
+  "expected": 180,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
@@ -126,7 +126,7 @@
     "label": "arabic"
    }
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
@@ -140,7 +140,8 @@
   "params": {
    "pages": {
     "label": "arabic"
-   }
+   },
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -159,7 +160,8 @@
    },
    "regex": "^Toplumsal değişim süreçlerinin yerel",
    "attr": "x0",
-   "agg": "first"
+   "agg": "first",
+   "source": "layout"
   },
   "expected": 42.5,
   "tolerance": 0.5,
@@ -219,9 +221,10 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "cx"
+   "attr": "cx",
+   "source": "layout"
   },
-  "expected": 105.0,
+  "expected": 105,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
@@ -236,9 +239,10 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "size"
+   "attr": "size",
+   "source": "layout"
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",

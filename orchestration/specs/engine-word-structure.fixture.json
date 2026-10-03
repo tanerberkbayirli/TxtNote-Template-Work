@@ -1,0 +1,519 @@
+{
+ "title": "Word structure acceptance",
+ "__template": {
+  "schemaVersion": 1,
+  "templateVersion": "1.0.0",
+  "id": "engine-word-structure",
+  "universityId": "engine-test",
+  "universityName": "Word structure acceptance",
+  "degreeType": "master",
+  "language": "tr",
+  "status": "generic",
+  "source": {
+   "type": "manual",
+   "documentName": "Isolated structural Word semantics (no university values)"
+  },
+  "page": {
+   "size": "A4",
+   "widthMm": 210,
+   "heightMm": 297,
+   "orientation": "portrait",
+   "margins": {
+    "topMm": 25,
+    "bottomMm": 25,
+    "leftMm": 30,
+    "rightMm": 30
+   },
+   "header": {
+    "distanceMm": 10,
+    "heightMm": 0,
+    "content": ""
+   },
+   "footer": {
+    "distanceMm": 12.5,
+    "heightMm": 0,
+    "content": ""
+   },
+   "numbering": {
+    "enabled": true,
+    "position": "bottom",
+    "align": "center",
+    "format": "arabic",
+    "restart": false,
+    "baselineFromTopMm": 276,
+    "style": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 11
+    }
+   }
+  },
+  "typography": {
+   "body": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "fontWeight": 400,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1,
+     "baseline": "word"
+    }
+   },
+   "headings": {
+    "1": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}"
+     }
+    },
+    "2": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     }
+    },
+    "3": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     }
+    },
+    "4": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}"
+     }
+    }
+   },
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1,
+    "baseline": "word",
+    "paragraphSpacing": "collapse",
+    "suppressSpaceBeforeAtPageTop": true
+   },
+   "paragraphStyles": {
+    "keep": {
+     "keepLines": true,
+     "keepWithNext": true,
+     "widowControl": true
+    },
+    "widow": {
+     "keepLines": false,
+     "widowControl": true
+    },
+    "forced": {
+     "pageBreakBefore": true,
+     "spaceBeforePt": 24
+    },
+    "spaceA": {
+     "spaceBeforePt": 8,
+     "spaceAfterPt": 10,
+     "contextualSpacing": true
+    },
+    "spaceB": {
+     "spaceBeforePt": 16,
+     "spaceAfterPt": 6
+    },
+    "tabLeft": {
+     "tabStops": [
+      {
+       "positionMm": 40,
+       "align": "left",
+       "leader": "dots"
+      }
+     ]
+    },
+    "tabCenter": {
+     "tabStops": [
+      {
+       "positionMm": 80,
+       "align": "center",
+       "leader": "hyphen"
+      }
+     ]
+    },
+    "tabRight": {
+     "tabStops": [
+      {
+       "positionMm": 110,
+       "align": "right",
+       "leader": "dots"
+      }
+     ]
+    },
+    "tabDecimal": {
+     "tabStops": [
+      {
+       "positionMm": 100,
+       "align": "decimal",
+       "leader": "underscore"
+      }
+     ]
+    }
+   }
+  },
+  "placeholders": {},
+  "sections": [
+   {
+    "id": "TABLE_AUTO",
+    "type": "mainContent",
+    "title": "TABLE_AUTO",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "tables": {
+      "rowHeight": {
+       "rule": "auto"
+      },
+      "verticalAlign": "top",
+      "cantSplit": true,
+      "repeatHeader": true
+     }
+    }
+   },
+   {
+    "id": "TABLE_MIN",
+    "type": "custom",
+    "title": "TABLE_MIN",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "tables": {
+      "rowHeight": {
+       "rule": "atLeast",
+       "valueMm": 9
+      },
+      "verticalAlign": "center",
+      "cantSplit": true,
+      "repeatHeader": true
+     }
+    }
+   },
+   {
+    "id": "TABLE_EXACT",
+    "type": "custom",
+    "title": "TABLE_EXACT",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "tables": {
+      "rowHeight": {
+       "rule": "exact",
+       "valueMm": 6
+      },
+      "verticalAlign": "bottom",
+      "cantSplit": true,
+      "repeatHeader": true
+     }
+    }
+   },
+   {
+    "id": "TABLE_REPEAT",
+    "type": "custom",
+    "title": "TABLE_REPEAT",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "tables": {
+      "rowHeight": {
+       "rule": "atLeast",
+       "valueMm": 5
+      },
+      "cantSplit": false,
+      "repeatHeader": true,
+      "verticalAlign": "top",
+      "borders": {
+       "top": {
+        "style": "double",
+        "widthPt": 1,
+        "color": "123456"
+       },
+       "bottom": {
+        "style": "single",
+        "widthPt": 1.5
+       },
+       "left": {
+        "style": "dashed",
+        "widthPt": 0.5
+       },
+       "right": {
+        "style": "dotted",
+        "widthPt": 0.5
+       },
+       "insideHorizontal": {
+        "style": "single",
+        "widthPt": 0.5
+       },
+       "insideVertical": {
+        "style": "none",
+        "widthPt": 0
+       }
+      }
+     }
+    }
+   },
+   {
+    "id": "KEEP",
+    "type": "custom",
+    "title": "KEEP",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "TABS",
+    "type": "custom",
+    "title": "TABS",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "MIRROR",
+    "type": "custom",
+    "title": "MIRROR",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "indent": {
+       "leftMm": 12,
+       "rightMm": 4,
+       "firstLineMm": 0,
+       "mirror": true
+      }
+     },
+     "page": {
+      "differentFirstPage": true,
+      "header": {
+       "content": "CHROME_ODD",
+       "firstContent": "CHROME_FIRST",
+       "evenContent": "CHROME_EVEN"
+      },
+      "footer": {
+       "content": "TOTAL {{NUMPAGES}}",
+       "distanceMm": 12.5,
+       "trailingBlankLines": 1
+      }
+     }
+    }
+   },
+   {
+    "id": "SPACING",
+    "type": "custom",
+    "title": "SPACING",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "ALIGN_CENTER",
+    "type": "custom",
+    "title": "ALIGN_CENTER",
+    "status": "required",
+    "group": "body",
+    "mode": "static",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {},
+    "verticalAlign": "center",
+    "blocks": [
+     {
+      "type": "text",
+      "value": "ALIGN_CENTER marker",
+      "style": {
+       "spaceBeforePt": 0,
+       "spaceAfterPt": 0
+      }
+     }
+    ]
+   },
+   {
+    "id": "ALIGN_BOTTOM",
+    "type": "custom",
+    "title": "ALIGN_BOTTOM",
+    "status": "required",
+    "group": "body",
+    "mode": "static",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {},
+    "verticalAlign": "bottom",
+    "blocks": [
+     {
+      "type": "text",
+      "value": "ALIGN_BOTTOM marker",
+      "style": {
+       "spaceBeforePt": 0,
+       "spaceAfterPt": 0
+      }
+     }
+    ]
+   }
+  ],
+  "tables": {
+   "label": "Tablo",
+   "position": "above",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "document",
+    "format": "{n}",
+    "sequence": "arabic",
+    "liveField": true
+   },
+   "spacingBeforePt": 8,
+   "spacingAfterPt": 6,
+   "align": "center",
+   "cellPadding": {
+    "topMm": 0.5,
+    "bottomMm": 0.5,
+    "leftMm": 1,
+    "rightMm": 1
+   },
+   "cellStyle": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1,
+     "baseline": "word"
+    }
+   }
+  },
+  "figures": {
+   "label": "Şekil",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 6,
+   "spacingAfterPt": 8,
+   "align": "center"
+  },
+  "bibliography": {
+   "heading": "Kaynakça",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "lineHeight": 1.5
+   },
+   "hangingIndentMm": 10
+  },
+  "toc": {
+   "heading": "İçindekiler",
+   "levels": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "showPageNumbers": true
+  }
+ },
+ "content": "<table><caption>TABLE_AUTO live sequence caption</caption><colgroup><col data-col-width=\"25\"><col data-col-width=\"75\"></colgroup><thead><tr><th>TABLE_AUTO_HEAD left</th><th>TABLE_AUTO_HEAD right</th></tr></thead><tbody><tr><td>TABLE_AUTO_001 left</td><td>TABLE_AUTO_001 right</td></tr><tr><td>TABLE_AUTO_002 left</td><td>TABLE_AUTO_002 right</td></tr><tr><td>TABLE_AUTO_003 left</td><td>TABLE_AUTO_003 right</td></tr><tr><td>TABLE_AUTO_004 left</td><td>TABLE_AUTO_004 right</td></tr><tr><td>TABLE_AUTO_005 left</td><td>TABLE_AUTO_005 right</td></tr></tbody></table>",
+ "researchData": {
+  "thesis": {
+   "templateId": "engine-word-structure",
+   "templateVersion": "1.0.0",
+   "values": {},
+   "sectionContent": {
+    "TABLE_AUTO": "<table><caption>TABLE_AUTO live sequence caption</caption><colgroup><col data-col-width=\"25\"><col data-col-width=\"75\"></colgroup><thead><tr><th>TABLE_AUTO_HEAD left</th><th>TABLE_AUTO_HEAD right</th></tr></thead><tbody><tr><td>TABLE_AUTO_001 left</td><td>TABLE_AUTO_001 right</td></tr><tr><td>TABLE_AUTO_002 left</td><td>TABLE_AUTO_002 right</td></tr><tr><td>TABLE_AUTO_003 left</td><td>TABLE_AUTO_003 right</td></tr><tr><td>TABLE_AUTO_004 left</td><td>TABLE_AUTO_004 right</td></tr><tr><td>TABLE_AUTO_005 left</td><td>TABLE_AUTO_005 right</td></tr></tbody></table>",
+    "TABLE_MIN": "<table><caption>TABLE_MIN live sequence caption</caption><colgroup><col data-col-width=\"25\"><col data-col-width=\"75\"></colgroup><thead><tr><th>TABLE_MIN_HEAD left</th><th>TABLE_MIN_HEAD right</th></tr></thead><tbody><tr><td>TABLE_MIN_001 left</td><td>TABLE_MIN_001 right</td></tr><tr><td>TABLE_MIN_002 left</td><td>TABLE_MIN_002 right</td></tr><tr><td>TABLE_MIN_003 left</td><td>TABLE_MIN_003 right</td></tr><tr><td>TABLE_MIN_004 left</td><td>TABLE_MIN_004 right</td></tr><tr><td>TABLE_MIN_005 left</td><td>TABLE_MIN_005 right</td></tr></tbody></table>",
+    "TABLE_EXACT": "<table><caption>TABLE_EXACT live sequence caption</caption><colgroup><col data-col-width=\"25\"><col data-col-width=\"75\"></colgroup><thead><tr><th>TABLE_EXACT_HEAD left</th><th>TABLE_EXACT_HEAD right</th></tr></thead><tbody><tr><td>TABLE_EXACT_001 left</td><td>TABLE_EXACT_001 right<br>Second overflowing line<br>Third overflowing line<br>Fourth overflowing line</td></tr><tr><td>TABLE_EXACT_002 left</td><td>TABLE_EXACT_002 right<br>Second overflowing line<br>Third overflowing line<br>Fourth overflowing line</td></tr><tr><td>TABLE_EXACT_003 left</td><td>TABLE_EXACT_003 right<br>Second overflowing line<br>Third overflowing line<br>Fourth overflowing line</td></tr><tr><td>TABLE_EXACT_004 left</td><td>TABLE_EXACT_004 right<br>Second overflowing line<br>Third overflowing line<br>Fourth overflowing line</td></tr><tr><td>TABLE_EXACT_005 left</td><td>TABLE_EXACT_005 right<br>Second overflowing line<br>Third overflowing line<br>Fourth overflowing line</td></tr></tbody></table>",
+    "TABLE_REPEAT": "<table><caption>TABLE_REPEAT live sequence caption</caption><colgroup><col data-col-width=\"25\"><col data-col-width=\"75\"></colgroup><thead><tr><th>TABLE_REPEAT_HEAD left</th><th>TABLE_REPEAT_HEAD right</th></tr></thead><tbody><tr><td>TABLE_REPEAT_001 left</td><td>TABLE_REPEAT_001 right</td></tr><tr><td>TABLE_REPEAT_002 left</td><td>TABLE_REPEAT_002 right</td></tr><tr><td>TABLE_REPEAT_003 left</td><td>TABLE_REPEAT_003 right</td></tr><tr><td>TABLE_REPEAT_004 left</td><td>TABLE_REPEAT_004 right</td></tr><tr><td>TABLE_REPEAT_005 left</td><td>TABLE_REPEAT_005 right</td></tr><tr><td>TABLE_REPEAT_006 left</td><td>TABLE_REPEAT_006 right</td></tr><tr><td>TABLE_REPEAT_007 left</td><td>TABLE_REPEAT_007 right</td></tr><tr><td>TABLE_REPEAT_008 left</td><td>TABLE_REPEAT_008 right</td></tr><tr><td>TABLE_REPEAT_009 left</td><td>TABLE_REPEAT_009 right</td></tr><tr><td>TABLE_REPEAT_010 left</td><td>TABLE_REPEAT_010 right</td></tr><tr><td>TABLE_REPEAT_011 left</td><td>TABLE_REPEAT_011 right</td></tr><tr><td>TABLE_REPEAT_012 left</td><td>TABLE_REPEAT_012 right</td></tr><tr><td>TABLE_REPEAT_013 left</td><td>TABLE_REPEAT_013 right</td></tr><tr><td>TABLE_REPEAT_014 left</td><td>TABLE_REPEAT_014 right</td></tr><tr><td>TABLE_REPEAT_015 left</td><td>TABLE_REPEAT_015 right</td></tr><tr><td>TABLE_REPEAT_016 left</td><td>TABLE_REPEAT_016 right</td></tr><tr><td>TABLE_REPEAT_017 left</td><td>TABLE_REPEAT_017 right</td></tr><tr><td>TABLE_REPEAT_018 left</td><td>TABLE_REPEAT_018 right</td></tr><tr><td>TABLE_REPEAT_019 left</td><td>TABLE_REPEAT_019 right</td></tr><tr><td>TABLE_REPEAT_020 left</td><td>TABLE_REPEAT_020 right</td></tr><tr><td>TABLE_REPEAT_021 left</td><td>TABLE_REPEAT_021 right</td></tr><tr><td>TABLE_REPEAT_022 left</td><td>TABLE_REPEAT_022 right</td></tr><tr><td>TABLE_REPEAT_023 left</td><td>TABLE_REPEAT_023 right</td></tr><tr><td>TABLE_REPEAT_024 left</td><td>TABLE_REPEAT_024 right</td></tr><tr><td>TABLE_REPEAT_025 left</td><td>TABLE_REPEAT_025 right</td></tr><tr><td>TABLE_REPEAT_026 left</td><td>TABLE_REPEAT_026 right</td></tr><tr><td>TABLE_REPEAT_027 left</td><td>TABLE_REPEAT_027 right</td></tr><tr><td>TABLE_REPEAT_028 left</td><td>TABLE_REPEAT_028 right</td></tr><tr><td>TABLE_REPEAT_029 left</td><td>TABLE_REPEAT_029 right</td></tr><tr><td>TABLE_REPEAT_030 left</td><td>TABLE_REPEAT_030 right</td></tr><tr><td>TABLE_REPEAT_031 left</td><td>TABLE_REPEAT_031 right</td></tr><tr><td>TABLE_REPEAT_032 left</td><td>TABLE_REPEAT_032 right</td></tr><tr><td>TABLE_REPEAT_033 left</td><td>TABLE_REPEAT_033 right</td></tr><tr><td>TABLE_REPEAT_034 left</td><td>TABLE_REPEAT_034 right</td></tr><tr><td>TABLE_REPEAT_035 left</td><td>TABLE_REPEAT_035 right</td></tr><tr><td>TABLE_REPEAT_036 left</td><td>TABLE_REPEAT_036 right</td></tr><tr><td>TABLE_REPEAT_037 left</td><td>TABLE_REPEAT_037 right</td></tr><tr><td>TABLE_REPEAT_038 left</td><td>TABLE_REPEAT_038 right</td></tr><tr><td>TABLE_REPEAT_039 left</td><td>TABLE_REPEAT_039 right</td></tr><tr><td>TABLE_REPEAT_040 left</td><td>TABLE_REPEAT_040 right</td></tr><tr><td>TABLE_REPEAT_041 left</td><td>TABLE_REPEAT_041 right</td></tr><tr><td>TABLE_REPEAT_042 left</td><td>TABLE_REPEAT_042 right</td></tr><tr><td>TABLE_REPEAT_043 left</td><td>TABLE_REPEAT_043 right</td></tr><tr><td>TABLE_REPEAT_044 left</td><td>TABLE_REPEAT_044 right</td></tr><tr><td>TABLE_REPEAT_045 left</td><td>TABLE_REPEAT_045 right</td></tr><tr><td>TABLE_REPEAT_046 left</td><td>TABLE_REPEAT_046 right</td></tr><tr><td>TABLE_REPEAT_047 left</td><td>TABLE_REPEAT_047 right</td></tr></tbody></table>",
+    "KEEP": "<p>KEEP_FILL 001 Abcdefg gjpqy<br>KEEP_FILL 002 Abcdefg gjpqy<br>KEEP_FILL 003 Abcdefg gjpqy<br>KEEP_FILL 004 Abcdefg gjpqy<br>KEEP_FILL 005 Abcdefg gjpqy<br>KEEP_FILL 006 Abcdefg gjpqy<br>KEEP_FILL 007 Abcdefg gjpqy<br>KEEP_FILL 008 Abcdefg gjpqy<br>KEEP_FILL 009 Abcdefg gjpqy<br>KEEP_FILL 010 Abcdefg gjpqy<br>KEEP_FILL 011 Abcdefg gjpqy<br>KEEP_FILL 012 Abcdefg gjpqy<br>KEEP_FILL 013 Abcdefg gjpqy<br>KEEP_FILL 014 Abcdefg gjpqy<br>KEEP_FILL 015 Abcdefg gjpqy<br>KEEP_FILL 016 Abcdefg gjpqy<br>KEEP_FILL 017 Abcdefg gjpqy<br>KEEP_FILL 018 Abcdefg gjpqy<br>KEEP_FILL 019 Abcdefg gjpqy<br>KEEP_FILL 020 Abcdefg gjpqy<br>KEEP_FILL 021 Abcdefg gjpqy<br>KEEP_FILL 022 Abcdefg gjpqy<br>KEEP_FILL 023 Abcdefg gjpqy<br>KEEP_FILL 024 Abcdefg gjpqy<br>KEEP_FILL 025 Abcdefg gjpqy<br>KEEP_FILL 026 Abcdefg gjpqy<br>KEEP_FILL 027 Abcdefg gjpqy<br>KEEP_FILL 028 Abcdefg gjpqy<br>KEEP_FILL 029 Abcdefg gjpqy<br>KEEP_FILL 030 Abcdefg gjpqy<br>KEEP_FILL 031 Abcdefg gjpqy<br>KEEP_FILL 032 Abcdefg gjpqy<br>KEEP_FILL 033 Abcdefg gjpqy<br>KEEP_FILL 034 Abcdefg gjpqy<br>KEEP_FILL 035 Abcdefg gjpqy<br>KEEP_FILL 036 Abcdefg gjpqy<br>KEEP_FILL 037 Abcdefg gjpqy<br>KEEP_FILL 038 Abcdefg gjpqy<br>KEEP_FILL 039 Abcdefg gjpqy<br>KEEP_FILL 040 Abcdefg gjpqy<br>KEEP_FILL 041 Abcdefg gjpqy<br>KEEP_FILL 042 Abcdefg gjpqy<br>KEEP_FILL 043 Abcdefg gjpqy<br>KEEP_FILL 044 Abcdefg gjpqy<br>KEEP_FILL 045 Abcdefg gjpqy<br>KEEP_FILL 046 Abcdefg gjpqy<br>KEEP_FILL 047 Abcdefg gjpqy<br>KEEP_FILL 048 Abcdefg gjpqy</p><p data-thesis-style=\"keep\">KEEP_BLOCK_1 kept line<br>KEEP_BLOCK_2 kept line<br>KEEP_BLOCK_3 kept line<br>KEEP_BLOCK_4 kept line<br>KEEP_BLOCK_5 kept line</p><p data-thesis-style=\"widow\">WIDOW_BLOCK_1 protected line<br>WIDOW_BLOCK_2 protected line<br>WIDOW_BLOCK_3 protected line<br>WIDOW_BLOCK_4 protected line<br>WIDOW_BLOCK_5 protected line</p><p data-thesis-style=\"forced\">FORCED_PAGE_TOP</p>",
+    "TABS": "<p data-thesis-style=\"tabLeft\">TAB_LEFT\tLEFT-END</p><p data-thesis-style=\"tabCenter\">TAB_CENTER\tCENTER-END</p><p data-thesis-style=\"tabRight\">TAB_RIGHT\tRIGHT-END</p><p data-thesis-style=\"tabDecimal\">TAB_DECIMAL\t123.45</p>",
+    "MIRROR": "<p>MIRROR_LINE 001 Abcdefg gjpqy<br>MIRROR_LINE 002 Abcdefg gjpqy<br>MIRROR_LINE 003 Abcdefg gjpqy<br>MIRROR_LINE 004 Abcdefg gjpqy<br>MIRROR_LINE 005 Abcdefg gjpqy<br>MIRROR_LINE 006 Abcdefg gjpqy<br>MIRROR_LINE 007 Abcdefg gjpqy<br>MIRROR_LINE 008 Abcdefg gjpqy<br>MIRROR_LINE 009 Abcdefg gjpqy<br>MIRROR_LINE 010 Abcdefg gjpqy<br>MIRROR_LINE 011 Abcdefg gjpqy<br>MIRROR_LINE 012 Abcdefg gjpqy<br>MIRROR_LINE 013 Abcdefg gjpqy<br>MIRROR_LINE 014 Abcdefg gjpqy<br>MIRROR_LINE 015 Abcdefg gjpqy<br>MIRROR_LINE 016 Abcdefg gjpqy<br>MIRROR_LINE 017 Abcdefg gjpqy<br>MIRROR_LINE 018 Abcdefg gjpqy<br>MIRROR_LINE 019 Abcdefg gjpqy<br>MIRROR_LINE 020 Abcdefg gjpqy<br>MIRROR_LINE 021 Abcdefg gjpqy<br>MIRROR_LINE 022 Abcdefg gjpqy<br>MIRROR_LINE 023 Abcdefg gjpqy<br>MIRROR_LINE 024 Abcdefg gjpqy<br>MIRROR_LINE 025 Abcdefg gjpqy<br>MIRROR_LINE 026 Abcdefg gjpqy<br>MIRROR_LINE 027 Abcdefg gjpqy<br>MIRROR_LINE 028 Abcdefg gjpqy<br>MIRROR_LINE 029 Abcdefg gjpqy<br>MIRROR_LINE 030 Abcdefg gjpqy<br>MIRROR_LINE 031 Abcdefg gjpqy<br>MIRROR_LINE 032 Abcdefg gjpqy<br>MIRROR_LINE 033 Abcdefg gjpqy<br>MIRROR_LINE 034 Abcdefg gjpqy<br>MIRROR_LINE 035 Abcdefg gjpqy<br>MIRROR_LINE 036 Abcdefg gjpqy<br>MIRROR_LINE 037 Abcdefg gjpqy<br>MIRROR_LINE 038 Abcdefg gjpqy<br>MIRROR_LINE 039 Abcdefg gjpqy<br>MIRROR_LINE 040 Abcdefg gjpqy<br>MIRROR_LINE 041 Abcdefg gjpqy<br>MIRROR_LINE 042 Abcdefg gjpqy<br>MIRROR_LINE 043 Abcdefg gjpqy<br>MIRROR_LINE 044 Abcdefg gjpqy<br>MIRROR_LINE 045 Abcdefg gjpqy<br>MIRROR_LINE 046 Abcdefg gjpqy<br>MIRROR_LINE 047 Abcdefg gjpqy<br>MIRROR_LINE 048 Abcdefg gjpqy<br>MIRROR_LINE 049 Abcdefg gjpqy<br>MIRROR_LINE 050 Abcdefg gjpqy<br>MIRROR_LINE 051 Abcdefg gjpqy<br>MIRROR_LINE 052 Abcdefg gjpqy<br>MIRROR_LINE 053 Abcdefg gjpqy<br>MIRROR_LINE 054 Abcdefg gjpqy<br>MIRROR_LINE 055 Abcdefg gjpqy<br>MIRROR_LINE 056 Abcdefg gjpqy<br>MIRROR_LINE 057 Abcdefg gjpqy<br>MIRROR_LINE 058 Abcdefg gjpqy<br>MIRROR_LINE 059 Abcdefg gjpqy<br>MIRROR_LINE 060 Abcdefg gjpqy<br>MIRROR_LINE 061 Abcdefg gjpqy<br>MIRROR_LINE 062 Abcdefg gjpqy<br>MIRROR_LINE 063 Abcdefg gjpqy<br>MIRROR_LINE 064 Abcdefg gjpqy<br>MIRROR_LINE 065 Abcdefg gjpqy<br>MIRROR_LINE 066 Abcdefg gjpqy<br>MIRROR_LINE 067 Abcdefg gjpqy<br>MIRROR_LINE 068 Abcdefg gjpqy<br>MIRROR_LINE 069 Abcdefg gjpqy<br>MIRROR_LINE 070 Abcdefg gjpqy<br>MIRROR_LINE 071 Abcdefg gjpqy<br>MIRROR_LINE 072 Abcdefg gjpqy<br>MIRROR_LINE 073 Abcdefg gjpqy<br>MIRROR_LINE 074 Abcdefg gjpqy<br>MIRROR_LINE 075 Abcdefg gjpqy<br>MIRROR_LINE 076 Abcdefg gjpqy<br>MIRROR_LINE 077 Abcdefg gjpqy<br>MIRROR_LINE 078 Abcdefg gjpqy<br>MIRROR_LINE 079 Abcdefg gjpqy<br>MIRROR_LINE 080 Abcdefg gjpqy<br>MIRROR_LINE 081 Abcdefg gjpqy<br>MIRROR_LINE 082 Abcdefg gjpqy<br>MIRROR_LINE 083 Abcdefg gjpqy<br>MIRROR_LINE 084 Abcdefg gjpqy<br>MIRROR_LINE 085 Abcdefg gjpqy<br>MIRROR_LINE 086 Abcdefg gjpqy<br>MIRROR_LINE 087 Abcdefg gjpqy<br>MIRROR_LINE 088 Abcdefg gjpqy<br>MIRROR_LINE 089 Abcdefg gjpqy<br>MIRROR_LINE 090 Abcdefg gjpqy<br>MIRROR_LINE 091 Abcdefg gjpqy<br>MIRROR_LINE 092 Abcdefg gjpqy<br>MIRROR_LINE 093 Abcdefg gjpqy<br>MIRROR_LINE 094 Abcdefg gjpqy<br>MIRROR_LINE 095 Abcdefg gjpqy<br>MIRROR_LINE 096 Abcdefg gjpqy<br>MIRROR_LINE 097 Abcdefg gjpqy<br>MIRROR_LINE 098 Abcdefg gjpqy<br>MIRROR_LINE 099 Abcdefg gjpqy<br>MIRROR_LINE 100 Abcdefg gjpqy<br>MIRROR_LINE 101 Abcdefg gjpqy<br>MIRROR_LINE 102 Abcdefg gjpqy<br>MIRROR_LINE 103 Abcdefg gjpqy<br>MIRROR_LINE 104 Abcdefg gjpqy<br>MIRROR_LINE 105 Abcdefg gjpqy<br>MIRROR_LINE 106 Abcdefg gjpqy<br>MIRROR_LINE 107 Abcdefg gjpqy<br>MIRROR_LINE 108 Abcdefg gjpqy<br>MIRROR_LINE 109 Abcdefg gjpqy<br>MIRROR_LINE 110 Abcdefg gjpqy<br>MIRROR_LINE 111 Abcdefg gjpqy<br>MIRROR_LINE 112 Abcdefg gjpqy<br>MIRROR_LINE 113 Abcdefg gjpqy<br>MIRROR_LINE 114 Abcdefg gjpqy<br>MIRROR_LINE 115 Abcdefg gjpqy</p>",
+    "SPACING": "<p data-thesis-style=\"spaceA\">SPACE_A_FIRST</p><p data-thesis-style=\"spaceA\">SPACE_A_SECOND</p><p data-thesis-style=\"spaceB\">SPACE_B_FIRST</p><p data-thesis-style=\"spaceA\">SPACE_A_RETURN</p><p>SPACE_FILL 001 Abcdefg gjpqy<br>SPACE_FILL 002 Abcdefg gjpqy<br>SPACE_FILL 003 Abcdefg gjpqy<br>SPACE_FILL 004 Abcdefg gjpqy<br>SPACE_FILL 005 Abcdefg gjpqy<br>SPACE_FILL 006 Abcdefg gjpqy<br>SPACE_FILL 007 Abcdefg gjpqy<br>SPACE_FILL 008 Abcdefg gjpqy<br>SPACE_FILL 009 Abcdefg gjpqy<br>SPACE_FILL 010 Abcdefg gjpqy<br>SPACE_FILL 011 Abcdefg gjpqy<br>SPACE_FILL 012 Abcdefg gjpqy<br>SPACE_FILL 013 Abcdefg gjpqy<br>SPACE_FILL 014 Abcdefg gjpqy<br>SPACE_FILL 015 Abcdefg gjpqy<br>SPACE_FILL 016 Abcdefg gjpqy<br>SPACE_FILL 017 Abcdefg gjpqy<br>SPACE_FILL 018 Abcdefg gjpqy<br>SPACE_FILL 019 Abcdefg gjpqy<br>SPACE_FILL 020 Abcdefg gjpqy<br>SPACE_FILL 021 Abcdefg gjpqy<br>SPACE_FILL 022 Abcdefg gjpqy<br>SPACE_FILL 023 Abcdefg gjpqy<br>SPACE_FILL 024 Abcdefg gjpqy<br>SPACE_FILL 025 Abcdefg gjpqy<br>SPACE_FILL 026 Abcdefg gjpqy<br>SPACE_FILL 027 Abcdefg gjpqy<br>SPACE_FILL 028 Abcdefg gjpqy<br>SPACE_FILL 029 Abcdefg gjpqy<br>SPACE_FILL 030 Abcdefg gjpqy<br>SPACE_FILL 031 Abcdefg gjpqy<br>SPACE_FILL 032 Abcdefg gjpqy<br>SPACE_FILL 033 Abcdefg gjpqy<br>SPACE_FILL 034 Abcdefg gjpqy<br>SPACE_FILL 035 Abcdefg gjpqy<br>SPACE_FILL 036 Abcdefg gjpqy<br>SPACE_FILL 037 Abcdefg gjpqy<br>SPACE_FILL 038 Abcdefg gjpqy<br>SPACE_FILL 039 Abcdefg gjpqy<br>SPACE_FILL 040 Abcdefg gjpqy<br>SPACE_FILL 041 Abcdefg gjpqy<br>SPACE_FILL 042 Abcdefg gjpqy<br>SPACE_FILL 043 Abcdefg gjpqy<br>SPACE_FILL 044 Abcdefg gjpqy<br>SPACE_FILL 045 Abcdefg gjpqy</p><p data-thesis-style=\"spaceB\">SPACE_NATURAL_TOP</p><p data-thesis-style=\"forced\">SPACE_FORCED_TOP</p>",
+    "ALIGN_CENTER": "",
+    "ALIGN_BOTTOM": ""
+   }
+  }
+ }
+}

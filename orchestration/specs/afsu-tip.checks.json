@@ -20,7 +20,7 @@
   "params": {
    "field": "margins.left"
   },
-  "expected": 40.0,
+  "expected": 40,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -34,7 +34,7 @@
   "params": {
    "field": "margins.right"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -48,7 +48,7 @@
   "params": {
    "field": "margins.top"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -62,7 +62,7 @@
   "params": {
    "field": "margins.bottom"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -79,7 +79,7 @@
    },
    "metric": "x0min"
   },
-  "expected": 40.0,
+  "expected": 40,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -96,7 +96,7 @@
    },
    "metric": "x1max"
   },
-  "expected": 185.0,
+  "expected": 185,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -154,7 +154,7 @@
     "label": "arabic"
    }
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -189,7 +189,8 @@
   "params": {
    "pages": {
     "label": "arabic"
-   }
+   },
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -229,7 +230,8 @@
    },
    "regex": "^(Önsöz|Özet|\\d+\\.\\d+) \\d\\. Çevrimiçi",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 52.5,
   "tolerance": 0.25,
@@ -268,9 +270,10 @@
    },
    "regex": "^\\d+\\. [A-ZÇĞİÖŞÜ ]+$",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 14.0,
+  "expected": 14,
   "tolerance": 0.1,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -308,7 +311,7 @@
    "attr": "top",
    "agg": "all"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -325,7 +328,8 @@
    },
    "regex": "^\\d+\\. [A-ZÇĞİÖŞÜ ]+$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 112.5,
   "tolerance": 0.5,
@@ -365,7 +369,8 @@
    },
    "regex": "^\\d+\\.\\d+\\. [A-ZÇĞİÖŞÜ0-9. ]+$",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 52.5,
   "tolerance": 0.5,
@@ -404,7 +409,8 @@
    },
    "regex": "^\\d+\\.\\d+\\.\\d+\\. Alt Başlık",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 52.5,
   "tolerance": 0.5,
@@ -423,9 +429,10 @@
    },
    "regex": "^\\d+\\.\\d+\\.\\d+\\. Alt Başlık",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -453,9 +460,10 @@
   "kind": "page_number_attr",
   "params": {
    "pages": "all",
-   "attr": "cx"
+   "attr": "cx",
+   "source": "layout"
   },
-  "expected": 105.0,
+  "expected": 105,
   "tolerance": 0.5,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -482,7 +490,8 @@
     "^Danışman$",
     "^Doç\\. Dr\\.",
     "AFYONKARAHİSAR–2026"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    52.96,
@@ -515,7 +524,8 @@
     "^TIP FAKÜLTESİ$",
     "ANABİLİM DALI$",
     "^Tez Başlığı"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    73.26,
@@ -538,7 +548,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^Tez Hazırlayan",
-   "b": "^Tez Kabul"
+   "b": "^Tez Kabul",
+   "source": "layout"
   },
   "expected": 9.15,
   "tolerance": 0.25,
@@ -556,7 +567,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^Tez Kabul",
-   "b": "^Tez Danışmanı"
+   "b": "^Tez Danışmanı",
+   "source": "layout"
   },
   "expected": 9.12,
   "tolerance": 0.25,
@@ -574,7 +586,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^Tez Danışmanı",
-   "b": "^İş bu"
+   "b": "^İş bu",
+   "source": "layout"
   },
   "expected": 13.97,
   "tolerance": 0.25,
@@ -592,7 +605,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^İş bu",
-   "b": "^UZMANLIK TEZİ olarak"
+   "b": "^UZMANLIK TEZİ olarak",
+   "source": "layout"
   },
   "expected": 4.87,
   "tolerance": 0.25,
@@ -610,7 +624,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^UZMANLIK TEZİ olarak",
-   "b": "^JÜRİ:"
+   "b": "^JÜRİ:",
+   "source": "layout"
   },
   "expected": 19.47,
   "tolerance": 0.25,
@@ -628,7 +643,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^JÜRİ:",
-   "b": "^Başkan$"
+   "b": "^Başkan$",
+   "source": "layout"
   },
   "expected": 4.87,
   "tolerance": 0.25,
@@ -646,7 +662,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^Başkan$",
-   "b": "^Üye Üye$"
+   "b": "^Üye Üye$",
+   "source": "layout"
   },
   "expected": 32.49,
   "tolerance": 0.25,
@@ -664,7 +681,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^Üye Üye$",
-   "b": "^ONAY$"
+   "b": "^ONAY$",
+   "source": "layout"
   },
   "expected": 26.92,
   "tolerance": 0.25,
@@ -682,7 +700,8 @@
     "find": "^Tez Başlığı"
    },
    "a": "^ONAY$",
-   "b": "^DEKAN$"
+   "b": "^DEKAN$",
+   "source": "layout"
   },
   "expected": 8.98,
   "tolerance": 0.25,
@@ -700,7 +719,8 @@
     "find": "^İÇİNDEKİLER$"
    },
    "a": "^Sayfa$",
-   "b": "^İÇ KAPAK"
+   "b": "^İÇ KAPAK",
+   "source": "layout"
   },
   "expected": 9.41,
   "tolerance": 0.25,
@@ -718,7 +738,8 @@
     "find": "^İÇİNDEKİLER$"
    },
    "regex": "\\.{5,}",
-   "stat": "median"
+   "stat": "median",
+   "source": "layout"
   },
   "expected": 8.71,
   "tolerance": 0.25,
@@ -737,9 +758,10 @@
    },
    "regex": "^\\d+\\.\\d+\\. [A-ZÇĞİÖŞÜ0-9. ]+\\.{3,}",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 45.0,
+  "expected": 45,
   "tolerance": 0.25,
   "source": {
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
@@ -754,9 +776,10 @@
    "pages": {
     "find": "^İÇİNDEKİLER$"
    },
-   "regex": "^\\d+\\.\\d+\\.\\d+\\. [^.]+ \\d+\\.\\d+\\.\\d+\\.{3,}",
+   "regex": "^\\d+\\.\\d+\\.\\d+\\. [^.]+ \\d+\\.\\d+\\.\\d+\\s*\\.{3,}",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 52.5,
   "tolerance": 0.25,
@@ -788,7 +811,8 @@
     "find": "^Açıklama dipnotu 1:"
    },
    "a": "^Açıklama dipnotu 1:",
-   "b": "^açısından ayrıntılı biçimde incelenmiştir\\.$"
+   "b": "^açısından ayrıntılı biçimde incelenmiştir\\.$",
+   "source": "layout"
   },
   "expected": 9.74,
   "tolerance": 0.1,
@@ -796,7 +820,7 @@
    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
    "locator": "p.6 §2.7 (dipnot tek aralık). DERIVED: 2 footnote line pitches x TNR single 13.8 pt (4.87 mm); footnote size UNKNOWN (12 pt general INFERRED)"
   },
-  "evidence": "EXPLICIT"
+  "evidence": "INFERRED"
  },
  {
   "id": "docx-no-undefined",

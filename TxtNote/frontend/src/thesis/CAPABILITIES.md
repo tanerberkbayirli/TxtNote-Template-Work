@@ -108,7 +108,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | split table repeats caption "(Devam)" + header row | `tables.continuation.format` ({label} {number} {title}) | - | off | ✓✓✓ (D: split at editor-measured rows) | AkuCografya, TableLayout |
 | table cell typography | `tables.cellStyle` (partial TextStyle) | - | body | ✓✓✓ | AkuSbe, DocxSpacing |
 | table cell padding | `tables.cellPadding` `{topMm, rightMm, bottomMm, leftMm}` (missing edge = 0; `overrides.tables.cellPadding` replaces the object) | mm | 6/8 pt (borders.preset 0 / 1.9 mm) | ✓✓✓ (DOCX `w:tcMar`) | TableLayout |
-| authored column widths | content markup `<colgroup><col data-col-width="25.84">` (percent, one per grid column, no rowspans); NOT a template key | % | auto | E limit (typed `attr()`, Chrome 133+ only), P ✓, D ✓ (`tblGrid`, `tcW`) | TableLayout |
+| authored column widths | content markup `<colgroup><col data-col-width="25.84">` (percent, one per grid column, no rowspans); NOT a template key | % | auto | ✓✓✓: normalized literal CSS + DOM widths; D `tblGrid`, `tcW` | TableLayout, WordStructure |
 | three-rule / header-rule / no-border tables | `tables.borders` `{preset: threeRule/headerRules/none, widthPt}` (`borders`, not checked by `validation.js`) | - | grid | ✓✓✓ | AkuFbe |
 | figure box: alignment and outer spacing | `figures.box` `{align, spaceBeforePt, spaceAfterPt}` (`box`) | - | left, 1.25 rem | ✓✓✓ | AkuFbe, DocxSpacing |
 | numbered equations | `equations.numbering` `{scope, format "({chapter}.{n})"}`, `numberAlign` left/right, `equations.style`, `layoutAdjust` `{beforePt, afterPt}` (browser only), `equations` | - | off | ✓✓✓ | AkuFbe, AkuKimya |
@@ -132,27 +132,43 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 - Paragraph gap is written as max, not sum: whole intended gap on the next paragraph's space-before (F1). Caption below a table keeps with the last row (F2).
 - Runs name the template's exact font face; `w:ind`, `w:tcMar`, `tblGrid` are written from the same keys as the editor.
 - Continued tables: split at editor-measured rows, caption paragraph before each fragment (Word cannot vary a repeated header row).
-- Not expressed: Word style inheritance (all properties are direct), `exact`/`atLeast` line rules, tab leaders, `titlePg`, odd/even headers.
+- Named paragraph styles now have distinct Word IDs; most typography remains direct. Canonical exact/atLeast line rules, typed tab leaders, first-page and even chrome are opt-in additions (see Phase 2 notes below).
 
 ## 12. PDF and fonts
 - Layout PDF reads the editor DOM (editor = PDF by construction); text drawn with embedded genuine system fonts (`model.systemFonts`).
 - Required font missing: report the font actually used, never claim exact compliance.
 - Math glyph fallbacks (`aliasGlyphs`) cover symbols without a Times New Roman look-alike; see `ENGINE_EXTENSIONS.md` C14-C20.
 
-## 13. Known gaps (a source may require it; the engine cannot yet) and the plan that adds it
+## 13. Remaining conformance work and capability gaps
 | Gap | Evidence / effect | Phase |
 |---|---|---|
 | Footnote single-line pitch: footnotes use the `lineHeight` multiplier, not Word's pitch | afsu-tip `footnote-single-pitch` FAIL 9.74 vs 10.84 mm (engine item A4) | MOTOR 2.1 / 2.2 |
-| Line spacing rules `exact` and `atLeast` | only `auto` (n lines) and the CSS multiplier exist | MOTOR 2.1 |
-| Spacing model: `contextualSpacing`, space suppressed at page top | additive/collapse only | MOTOR 2.2 |
-| Mirror indents, one indent model | indents are separate CSS/DOCX paths | MOTOR 2.3 |
-| Tab stops with leaders / center / right / decimal | only `tabStopMm`; TOC leaders emulated | MOTOR 2.4 |
-| Table row-height rules, per-edge borders, cantSplit, vertical align | `borders.preset` only; padding via `cellPadding` | MOTOR 2.5 |
-| Authored column widths in Firefox/Safari editor | typed `attr()` needs Chrome 133+; others fall back to auto widths | MOTOR 2.5 |
-| Keep-lines / widow-orphan flags from template | only `keepWithNext`, `pageBreakBefore` | MOTOR 2.6 |
-| Different first page, odd/even headers, section vAlign, landscape pages | header `firstPage` only; no landscape | MOTOR 2.7 |
-| Footer distance as Word's `pgMar` footer | `footer.distanceMm` approximated | MOTOR 2.8 |
-| Fields: live TOC, NUMPAGES, SEQ for captions; field-balance validity test | PAGEREF + cached labels only | MOTOR 2.9 |
-| Checker `page_num` only searches the bottom 25 mm of the page | numbers placed elsewhere (top, offset boxes) are missed (tool gap, not engine) | MOTOR 3.2 |
-| Engine layout report (`.layout.json`) for self-measurement | checker reverse-engineers PDFs | MOTOR Phase 3 |
+| Canonical line-spacing conformance | auto/exact/atLeast implemented; calibrated Word font matrix remains required; oversized exact PDF clipping must be measured | MOTOR 2.1 |
+| Contextual/page-top spacing conformance | contextual named-style and suppressSpaceBeforeAtPageTop models implemented; forced/natural break fixture verifies Word behaviour | MOTOR 2.2 |
+| Mirror indent conformance | shared resolved model, DOCX mirrorIndents + per-page browser glyph shifts; static print parity not yet measured | MOTOR 2.3 |
+| Typed tab conformance | typed stops/leaders implemented; wrapped/bidirectional runs and custom decimal characters require Word comparison | MOTOR 2.4 |
+| Table geometry/pagination conformance | rowHeight, per-edge borders, cantSplit, repeatHeader and vAlign implemented; exact overflow uses clipped presentation cell wrappers; Word comparison required | MOTOR 2.5 |
+| Authored column widths across browsers | typed attr() dependency removed; normalized literal CSS and idempotent DOM widths implemented; Firefox/Safari runtime not exercised here | MOTOR 2.5 |
+| Keep/widow pagination conformance | keepLines/widowControl reach browser fragmentation and Word; protected-paragraph fixture verifies breaks | MOTOR 2.6 |
+| Section chrome/alignment conformance | first/even chrome and center/bottom alignment implemented; landscape geometry emitted but cross-render comparison required | MOTOR 2.7 |
+| Footer baseline conformance | source distance, trailing blank paragraphs and source-derived baseline represented independently; Word comparison required | MOTOR 2.8 |
+| Complex field validity/live refresh | PAGE, NUMPAGES, TOC, PAGEREF and optional SEQ are complex fields; every-template nested field balance tested; Word render verifies refresh/order | MOTOR 2.9 |
+| Page-number landmark coverage | layout landmarks replace bottom-only searches where available; source PDFs still need explicit page-number locators | MOTOR 3.2 |
+| Layout report performance/conformance | versioned editor landmarks implemented; target regression/runtime gate verifies acceptance | MOTOR Phase 3 |
 | Template generation from official DOCX (`docx2spec`, `spec2template`) | templates are hand-written | MOTOR Phase 4 |
+
+## Phase 2 opt-in additions (2026-10-03)
+
+- Canonical `lineSpacing` `rule` auto/exact/atLeast + `value`, with known font metrics or `singleLineEm`; per-style override in editor/PDF/DOCX. Legacy models unchanged. Word acceptance matrix is the compliance gate.
+- `contextualSpacing`; named styles have distinct Word IDs. `suppressSpaceBeforeAtPageTop` covers section-top CSS; continuation-column-top behaviour still needs measurement.
+- `indent` `firstLineMm`, `hangingMm`, `leftMm`, `rightMm`, `mirror`; alias `mirrorIndents`. Mirror uses measured per-page glyph spans in the editor and layout PDF; Word emits mirrorIndents. Glyph shifts preserve line width, including paragraphs spanning pages. Static print parity remains unverified.
+- `tabStops` `positionMm`, `align` left/center/right/decimal, `leader` none/dots/hyphen/underscore, `decimalCharacter`: measured browser spans, layout PDF and Word tabs. `tabStopMm` remains compatible.
+- Paragraph `keepLines`, `widowControl`: Word flags; paged CSS fragmentation policy is applied independently.
+- Tables `rowHeight` `rule` auto/atLeast/exact + `valueMm`, `cantSplit`, `repeatHeader`, `verticalAlign` top/center/bottom; `borders` `top`, `bottom`, `left`, `right`, `insideHorizontal`, `insideVertical` with `style` single/double/none/dashed/dotted, `widthPt`, `color`. Literal percentage column CSS replaces typed attr(). Exact overflowing rows remain browser-conformance-sensitive.
+- Page `differentFirstPage`; chrome `firstContent`, `evenContent`, `trailingBlankLines`, footer `docxDistanceMm`; section `verticalAlign` center. Page/NUMPAGES fields and styled PAGEREF use cached complex-field runs.
+- Caption numbering `liveField` emits SEQ with deterministic cached number.
+
+Tab/border enum values: `decimal`, `hyphen`, `underscore`, `double`, `dashed`, `dotted`.
+
+`decimalCharacter` overrides browser measurement only; Word decimal tabs use the document/environment locale. This option does not establish cross-export parity for a non-locale separator.
+`rule` values: `auto`, `exact`, `atLeast`.

@@ -229,11 +229,16 @@ describe("aku-fbe validation attempt 1 fixes", () => {
 
   it("TOC and list rows are PAGEREF fields (cached = the editor's label) whose bookmarks exist", async () => {
     const xml = await docxXml(compile());
-    const refs = [...xml.matchAll(/PAGEREF (\w+) \\h">/g)];
+    const refs = [...xml.matchAll(/<w:instrText[^>]*>PAGEREF (\w+) \\h<\/w:instrText>/g)];
     const names = new Set([...xml.matchAll(/<w:bookmarkStart[^>]*w:name="(\w+)"/g)].map((m) => m[1]));
     assert.ok(refs.length >= 8);
     for (const [, name] of refs) assert.ok(names.has(name), `${name} has a bookmark`);
-    assert.match(xml, /PAGEREF _ref_abstract_tr_source_title \\h"/, "ÖZET row points at the bookmark of its title");
+    assert.match(xml, /PAGEREF _ref_abstract_tr_source_title \\h<\/w:instrText>/, "ÖZET row points at the bookmark of its title");
+    assert.doesNotMatch(xml, /<w:fldSimple\b/);
+    for (const match of refs) {
+      const tail = xml.slice(match.index + match[0].length);
+      assert.match(tail, /^<w:fldChar w:fldCharType="separate"\/><\/w:r><w:r>[\s\S]*?<w:t[^>]*>[\s\S]*?<\/w:t>[\s\S]*?<w:fldChar w:fldCharType="end"/, "each PAGEREF carries a cached editor label before its end marker");
+    }
     assert.equal(names.size, [...xml.matchAll(/<w:bookmarkStart/g)].length, "bookmark names are unique");
   });
 

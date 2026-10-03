@@ -11,6 +11,13 @@ export interface TextStyle {
   decoration?: string;
   align?: "left" | "center" | "right" | "justify";
   lineHeight?: number;
+  lineSpacing?: CanonicalLineSpacing;
+  contextualSpacing?: boolean;
+  indent?: { firstLineMm?: Length; hangingMm?: Length; leftMm?: Length; rightMm?: Length; mirror?: boolean };
+  mirrorIndents?: boolean;
+  tabStops?: { positionMm: Length; align: "left" | "center" | "right" | "decimal"; leader?: "none" | "dots" | "hyphen" | "underscore"; decimalCharacter?: string }[];
+  keepLines?: boolean;
+  widowControl?: boolean;
   characterSpacingPt?: number;
   spaceBeforePt?: number;
   spaceAfterPt?: number;
@@ -62,8 +69,9 @@ export interface PageRule {
   heightMm: Length;
   orientation: "portrait" | "landscape";
   margins: { topMm: Length; bottomMm: Length; leftMm: Length; rightMm: Length };
-  header?: { heightMm: Length; distanceMm: Length; content?: string; firstPage?: "same" | "omit" };
-  footer?: { heightMm: Length; distanceMm: Length; content?: string; firstPage?: "same" | "omit" };
+  differentFirstPage?: boolean;
+  header?: { firstContent?: string; evenContent?: string; trailingBlankLines?: number; heightMm: Length; distanceMm: Length; content?: string; firstPage?: "same" | "omit" };
+  footer?: { firstContent?: string; evenContent?: string; trailingBlankLines?: number; docxDistanceMm?: Length; heightMm: Length; distanceMm: Length; content?: string; firstPage?: "same" | "omit" };
   numbering: NumberingRule;
 }
 export type PageOverride = Partial<Omit<PageRule, "margins" | "header" | "footer" | "numbering">> & {
@@ -132,7 +140,7 @@ export interface CaptionRule {
   label: string;
   position: "above" | "below";
   style: TextStyle;
-  numbering: { scope: "document" | "chapter"; format: string; sequence: NumberFormat };
+  numbering: { scope: "document" | "chapter"; format: string; sequence: NumberFormat; liveField?: boolean };
   spacingBeforePt?: number;
   spacingAfterPt?: number;
   align?: "left" | "center" | "right";
@@ -161,6 +169,11 @@ export interface CaptionRule {
    * Authored column widths: `<colgroup><col data-col-width="25.84">…</colgroup>` (percent of table width, one `col` per grid column, no rowspans)
    * are kept by the sanitizer and written to the editor, the PDF layout and DOCX (`tblGrid/gridCol`, `tcW`).
    */
+  rowHeight?: { rule: "auto" | "atLeast" | "exact"; valueMm?: Length };
+  cantSplit?: boolean;
+  repeatHeader?: boolean;
+  verticalAlign?: "top" | "center" | "bottom";
+  borders?: { preset?: "threeRule" | "headerRules" | "none"; widthPt?: number } & Partial<Record<"top" | "bottom" | "left" | "right" | "insideHorizontal" | "insideVertical", { style: "single" | "double" | "none" | "dashed" | "dotted"; widthPt?: number; color?: string }>>;
   cellPadding?: { topMm?: number; bottomMm?: number; leftMm?: number; rightMm?: number };
 }
 /**
@@ -168,7 +181,7 @@ export interface CaptionRule {
  * to the body font at 9 pt, line height 1.2, left aligned, a 33 % / 0.5 pt separator and
  * an area of at most 50 % of the page body. Word footnotes use the same typography.
  */
-export interface FootnoteRule extends Partial<Pick<TextStyle, "fontFamily" | "fontSizePt" | "fontWeight" | "italic" | "lineHeight" | "align" | "characterSpacingPt" | "spaceBeforePt" | "spaceAfterPt" | "firstLineIndentMm" | "leftIndentMm" | "rightIndentMm">> {
+export interface FootnoteRule extends Partial<Pick<TextStyle, "fontFamily" | "fontSizePt" | "fontWeight" | "italic" | "lineHeight" | "lineSpacing" | "align" | "characterSpacingPt" | "spaceBeforePt" | "spaceAfterPt" | "firstLineIndentMm" | "leftIndentMm" | "rightIndentMm">> {
   /** pageBottom (default): notes at the bottom of the physical page of their reference. sectionEnd: legacy list after the section. */
   placement?: "pageBottom" | "sectionEnd";
   /** "section" (default): every editable section numbers its notes from 1. "document": one running number through all sections (Word already numbers its notes that way). */
@@ -226,7 +239,7 @@ export interface ThesisSection {
   showTitle?: boolean;
   pageBreakBefore?: boolean;
   /** Blocks sections only: "bottom" anchors the page content to the bottom margin (e.g. text behind a cover window). */
-  verticalAlign?: "top" | "bottom";
+  verticalAlign?: "top" | "center" | "bottom";
   /** "continueH1": the printed title is the next numbered chapter heading (e.g. "6. KAYNAKLAR"), numbered in the TOC. */
   titleNumbering?: "none" | "continueH1";
   /**
@@ -297,8 +310,10 @@ export interface PlaceholderDefinition {
  * "word": Word's "n lines", n × the font's single line of `singleLineEm` (Times New Roman 1.15);
  * DOCX then writes Word's own line spacing (auto, 240 × n).
  */
-export type LineSpacing = { mode: "multiplier" } | {
+export interface CanonicalLineSpacing { rule: "auto" | "exact" | "atLeast"; value: number; singleLineEm?: number; baseline?: "css" | "word"; paragraphSpacing?: "collapse" | "additive"; contextualSpacing?: boolean; suppressSpaceBeforeAtPageTop?: boolean; blockGap?: "paragraphPitch"; figureExitGap?: "pitch" | "spacing"; noteExitGap?: "pitch" | "spacing"; }
+export type LineSpacing = CanonicalLineSpacing | { mode: "multiplier" } | {
   mode: "word"; singleLineEm: number;
+  contextualSpacing?: boolean; suppressSpaceBeforeAtPageTop?: boolean;
   /** "word": each line's baseline at line top + lineGap + ascent (extra leading below the text), measured per text style at runtime. Default "css" (centred leading). */
   baseline?: "css" | "word";
   /** "additive": paragraphs/headings are after(prev) + before(next) apart like Word; default "collapse" (CSS max). */

@@ -27,7 +27,7 @@ await mkdir(dirname(outPrefix), { recursive: true });
 const doc = JSON.parse(await readFile(fixturePath, "utf8"));
 const KEY = "txtnote-thesis-regression";
 // Another fixture page (e.g. /tests/thesis-batchb.html, which seeds a custom template) may be named here.
-const fixturePage = process.env.THESIS_FIXTURE_PAGE || "/tests/thesis.html";
+const fixturePage = process.env.THESIS_FIXTURE_PAGE || (doc.__template ? '/tests/thesis-batchb.html' : "/tests/thesis.html");
 
 const browser = await chromium.launch({
   ...(process.env.THESIS_BROWSER_EXECUTABLE ? { executablePath: process.env.THESIS_BROWSER_EXECUTABLE } : {}),
@@ -78,6 +78,8 @@ try {
   await page.evaluate(([key, value]) => { localStorage.clear(); localStorage.setItem(key, value); }, [KEY, JSON.stringify(doc)]);
   await page.reload();
   await page.locator(".thesis-sheet").first().waitFor({ timeout: 60000 });
+  await page.waitForFunction((id) => document.querySelector('[aria-label="Belge sayfaları"]')?.getAttribute('data-thesis-template-id') === id,
+    doc.researchData?.thesis?.templateId, { timeout: 60000 });
   const zoom = page.getByLabel("Yakınlaştır", { exact: true });
   if (await zoom.count()) await zoom.selectOption("100");
   await page.evaluate(() => document.fonts.ready);
@@ -94,6 +96,7 @@ try {
     validation: [...document.querySelectorAll("[data-thesis-validation], .thesis-validation")].map((n) => n.textContent),
   }));
   const exportSnapshots = [];
+  let engineLayout = null;
   for (const [button, extension] of [["PDF", "pdf"], ["Word", "docx"]]) {
     // Each export may invalidate the editor's final page/index measurement.
     // Re-settle immediately before every UI action and refuse the export unless
@@ -122,6 +125,10 @@ try {
     const outcome = await Promise.race([event.then((download) => ({ download })), failure.then((message) => ({ message }))]);
     if (!outcome.download) throw new Error(`${button} export failed in the editor: ${outcome.message}`);
     await outcome.download.saveAs(`${outPrefix}.${extension}`);
+    if (extension === 'pdf') {
+      engineLayout = await page.evaluate(() => document.querySelector('[aria-label="Belge sayfaları"]')?.__thesisLayoutReport || null);
+      if (!engineLayout?.pages?.length) throw new Error('PDF export did not supply its engine layout report');
+    }
   }
   // PDF can cause another pagination/index update. Verify it settled after the
   // final export too, and save this live final state in the layout evidence.
@@ -133,7 +140,7 @@ try {
     throw new Error("PDF and Word exports were preceded by different page/index mappings; refusing to report them as a matched pair");
   }
   await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, warn: state.warn,
-    pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
+    engineLayout, pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
       targets: state.targets.map((target) => ({ target, label: state.pageMap[target]?.indexLabel ?? state.pageMap[target]?.label ?? "" })) }, exportSnapshots, errors }, null, 2));
   if (state.paginationReady !== "true") throw new Error(`paged export readiness unavailable: ${state.paginationReady}`);
   if (!state.pagedLayout) throw new Error("paged layout not active: PDF would come from the fallback writer");

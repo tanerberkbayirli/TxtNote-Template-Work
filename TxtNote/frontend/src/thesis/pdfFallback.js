@@ -71,7 +71,7 @@ function positionedPdfNode(pdf, node, language, lineSpacing, baseStyle = {}, exa
   const width = Math.max(0.1, node.widthMm - indent - (Number(style.rightIndentMm) || 0));
   const align = style.align || "left";
   const text = transformThesisText(node.text, style, language);
-  const pitch = style.fontSizePt * effectiveLineHeight(style.lineHeight, lineSpacing) * mmPerPt;
+  const pitch = style.fontSizePt * effectiveLineHeight(style.lineHeight, lineSpacing, style) * mmPerPt;
   let top = yMm + (Number(style.spaceBeforePt) || 0) * mmPerPt;
   for (const paragraph of text.split("\n")) {
     const lines = pdf.splitTextToSize(paragraph || " ", width);
@@ -114,11 +114,11 @@ export async function buildThesisPdf(model) {
     const write = (value, style, align = style.align || "left") => {
       if (style.pageBreakBefore && y > page.margins.topMm + 0.5) startPage();
       const source = transformThesisText(value, style, model.language);
-      if (!source.trim()) { y += style.fontSizePt * effectiveLineHeight(style.lineHeight, group.rules.lineSpacing) * mmPerPt; return; }
+      if (!source.trim()) { y += style.fontSizePt * effectiveLineHeight(style.lineHeight, group.rules.lineSpacing, style) * mmPerPt; return; }
       pdfFont(pdf, style, exactFamilies);
       const indent = Math.max(0, style.leftIndentMm || 0);
       const available = Math.max(10, width - indent - Math.max(0, style.rightIndentMm || 0));
-      const lineHeight = style.fontSizePt * effectiveLineHeight(style.lineHeight, group.rules.lineSpacing) * mmPerPt;
+      const lineHeight = style.fontSizePt * effectiveLineHeight(style.lineHeight, group.rules.lineSpacing, style) * mmPerPt;
       y += (style.spaceBeforePt || 0) * mmPerPt;
       for (const paragraph of source.split("\n")) {
         const lines = pdf.splitTextToSize(paragraph || " ", available);

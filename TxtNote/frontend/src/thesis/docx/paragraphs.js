@@ -1,4 +1,6 @@
-import { AlignmentType, Bookmark, ExternalHyperlink, FootnoteReferenceRun, LevelFormat, LineRuleType, Paragraph, SimpleField, TextRun, TabStopType, Tab } from "docx";
+import { AlignmentType, Bookmark, ExternalHyperlink, FootnoteReferenceRun, LevelFormat, LineRuleType, Paragraph, TextRun, TabStopType, Tab, LeaderType, ImportedXmlComponent } from "docx";
+import { complexFieldRuns } from "./fields.js";
+import { resolveLineSpacing, resolveTabStops } from "../typography.js";
 import { mathFromLatex } from "../../lib/mathOmml.js";
 import { indentMm, transformThesisText } from "../engine.js";
 import { PX_PER_MM } from "../pageLayout.js";
@@ -35,7 +37,8 @@ function docxRuns(runs, style, context) {
       else out.push(textRun("[empty equation]", style, context));
     }
     // TOC/list page labels are real PAGEREF fields (cached result = the editor's label): Word/LibreOffice re-read the page of the bookmark.
-    else if (item.type === "pageref") out.push(new SimpleField(`PAGEREF ${item.bookmark} \\h`, item.text || ""));
+    else if (item.type === "pageref") out.push(...complexFieldRuns(`PAGEREF ${item.bookmark} \\h`, item.text || "", runProps(style, context.language)));
+    else if (item.type === "numpages") out.push(...complexFieldRuns("NUMPAGES", context.totalPages || "", runProps(style, context.language)));
     else if (item.type === "link") {
       const children = docxRuns(item.children, style, context);
       let href = "";
@@ -66,19 +69,22 @@ function docxRuns(runs, style, context) {
   return out;
 }
 // Word's own "n lines" (240 = single), the same pitch the editor draws for "word" line spacing.
-const lineSpacingDocx = (style, lineSpacing) => lineSpacing?.mode === "word"
-  ? { line: Math.round(240 * (style.lineHeight || 1.5)), lineRule: LineRuleType.AUTO }
-  // atLeast = the CSS line box height; Word still grows a line for taller inline content.
-  : { line: pt(style.fontSizePt * (style.lineHeight || 1.5)), lineRule: LineRuleType.AT_LEAST };
+const lineSpacingDocx = (style, spacing) => {
+  const resolved = resolveLineSpacing(style, spacing);
+  return { line: resolved.lineTwips, lineRule: { auto: LineRuleType.AUTO, exact: LineRuleType.EXACT, atLeast: LineRuleType.AT_LEAST }[resolved.rule] };
+};
 export function paragraphProps(style, options = {}, lineSpacing = null) {
   // Word expresses a negative first line as a hanging indent.
   const indent = indentMm(style);
   return {
     alignment: alignDocx(style.align),
     spacing: { before: pt(style.spaceBeforePt), after: pt(style.spaceAfterPt), ...lineSpacingDocx(style, lineSpacing) },
-    indent: { ...(indent.first < 0 ? { hanging: twip(-indent.first) } : { firstLine: twip(indent.first) }), left: twip(indent.left), right: twip(style.rightIndentMm || 0) },
-    keepNext: Boolean(style.keepWithNext), pageBreakBefore: Boolean(style.pageBreakBefore),
-    ...(style.tabStopMm > 0 ? { tabStops: [{ type: TabStopType.LEFT, position: twip(indent.left + style.tabStopMm) }] } : {}),
+    indent: { ...(indent.first < 0 ? { hanging: twip(-indent.first) } : { firstLine: twip(indent.first) }), left: twip(indent.left), right: twip(indent.right) },
+    keepNext: Boolean(style.keepWithNext),
+    ...(style.keepLines !== undefined ? { keepLines: style.keepLines } : {}),
+    ...(style.widowControl !== undefined ? { widowControl: style.widowControl } : {}),
+    ...((style.contextualSpacing ?? lineSpacing?.contextualSpacing) !== undefined ? { contextualSpacing: Boolean(style.contextualSpacing ?? lineSpacing?.contextualSpacing) } : {}), pageBreakBefore: Boolean(style.pageBreakBefore),
+    ...(resolveTabStops(style).length ? { tabStops: resolveTabStops(style).map((stop) => ({ type: TabStopType[stop.align.toUpperCase()], position: twip(stop.positionMm), ...(stop.leader && stop.leader !== "none" ? { leader: { dots: LeaderType.DOT, hyphen: LeaderType.HYPHEN, underscore: LeaderType.UNDERSCORE, none: LeaderType.NONE }[stop.leader] } : {}) })) } : {}),
     ...options,
   };
 }
@@ -87,7 +93,12 @@ export const bookmarkName = (anchor) => `_ref_${String(anchor).replace(/[^A-Za-z
 const bookmarked = (anchor, children) => anchor ? [new Bookmark({ id: `${bookmarkName(anchor)}`, children })] : children;
 export function docxParagraph(runs, style, context, { anchor, ...options } = {}) {
   const children = docxRuns(runs, style, context);
-  return new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
+  const paragraph = new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
+  if (indentMm(style).mirror) {
+    const alignment = paragraph.properties.root.findIndex((item) => item?.rootKey === "w:jc");
+    paragraph.properties.root.splice(alignment < 0 ? paragraph.properties.root.length : alignment, 0, new ImportedXmlComponent("w:mirrorIndents"));
+  }
+  return paragraph;
 }
 export const thesisHeadingStyleId = (level, included, noPage = false) => `ThesisHeading${level}${included ? (noPage ? "NoPage" : "Index") : "Excluded"}`;
 /** Empty paragraph exactly `heightMm` tall (Word has no bare vertical box). */
@@ -126,7 +137,16 @@ export function captionParagraph(rule, block, context, options = {}, before = nu
   const paragraphStyle = hangMm > 0 ? { ...style, hangingIndentMm: hangMm } : style;
   const label = block.captionLabel || `${rule.label} ${block.captionNumber}.`;
   // One run as before unless the label has its own typography (e.g. bold "Şekil 2.1").
-  const children = rule.labelStyle ? [textRun(`${label} `, { ...style, ...rule.labelStyle }, context), ...docxRuns(plainRuns(block.caption), style, context)] : docxRuns(plainRuns(`${label} ${block.caption}`), style, context);
+  let children = rule.labelStyle ? [textRun(`${label} `, { ...style, ...rule.labelStyle }, context), ...docxRuns(plainRuns(block.caption), style, context)] : docxRuns(plainRuns(`${label} ${block.caption}`), style, context);
+  if (rule.numbering.liveField && block.captionNumber && label.includes(block.captionNumber)) {
+    const labelStyle = { ...style, ...rule.labelStyle };
+    const index = label.indexOf(block.captionNumber);
+    const number = String(block.captionNumber), split = number.lastIndexOf(".");
+    const prefix = split >= 0 ? number.slice(0, split + 1) : "";
+    const cached = split >= 0 ? number.slice(split + 1) : number;
+    const sequence = String(rule.label || "Caption").replace(/[^A-Za-z0-9_]/g, "_") || "Caption";
+    children = [textRun(label.slice(0, index) + prefix, labelStyle, context), ...complexFieldRuns(`SEQ ${sequence}${rule.numbering.scope === "chapter" ? " \\s 1" : ""}${rule.numbering.sequence === "roman-upper" ? " \\* ROMAN" : rule.numbering.sequence === "roman-lower" ? " \\* roman" : ""}`, cached, runProps(labelStyle, context.language)), textRun(label.slice(index + number.length) + " ", labelStyle, context), ...docxRuns(plainRuns(block.caption), style, context)];
+  }
   return new Paragraph({ ...paragraphProps(paragraphStyle, options, context.lineSpacing), children: bookmarked(block.captionAnchor, children) });
 }
 /** Caption paragraph above a continuation fragment ("Çizelge 3.1 (Devam) Başlık"): label text in the label style. */

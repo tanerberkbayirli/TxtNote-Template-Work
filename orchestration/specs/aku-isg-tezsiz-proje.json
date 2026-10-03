@@ -107,7 +107,7 @@
      "locator": "pgMar footer=709"
     }
    ],
-   "notes": "The source sectPr value is 12.5 mm (709 twips). The current template uses 17.4 mm to reproduce the separately measured Word-render page-number baseline (278.8 mm), accounting for the trailing empty footer paragraph (~4.87 mm); this mapping is an implementation inference, not a source sectPr value. Footer height is UNKNOWN."
+   "notes": "The source sectPr value is 709 twips (12.506 mm). The engine now records that distance and the footer1/2.xml trailing empty AltBilgi paragraph separately (footer.trailingBlankLines=1). The independently measured cached Word-render page-number baseline is 278.8 mm, used as numbering.baselineFromTopMm. Footer height is UNKNOWN."
   },
   {
    "key": "page.numbering.style",
@@ -477,6 +477,10 @@
  ],
  "unknowns": [
   {
+   "key": "inner-cover title beyond the source's one line",
+   "why": "Tier 2 UNKNOWN: official page 2 has one title line at baseline 106.571 mm and no long-title overflow rule. Deterministic default: title wraps in flow; later flow paragraphs move, while city/year stays anchored at its source-derived 261.1 mm baseline. No long-title compliance PASS is claimed."
+  },
+  {
    "key": "caption position/style/numbering (tables, figures)",
    "why": "No caption paragraphs found. Çizelge/Şekil labels are INFERRED from the Çizelgeler/Şekiller index titles; caption placement, typography and numbering remain UNKNOWN."
   },
@@ -529,8 +533,8 @@
   {
    "requirement": "Footer holds a trailing empty paragraph",
    "evidence": "footer1/2.xml",
-   "whyEngineCannot": "footer has one line",
-   "suggestedGenericCapability": "modelled by footer.distanceMm 17.4"
+   "whyEngineCannot": "RESOLVED Phase 2.8: historical footer had one line",
+   "suggestedGenericCapability": "footer.trailingBlankLines=1, source distanceMm=12.506, source-derived numbering.baselineFromTopMm=278.8"
   }
  ],
  "measurableChecks": [

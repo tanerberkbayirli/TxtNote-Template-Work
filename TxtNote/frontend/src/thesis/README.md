@@ -82,7 +82,7 @@ It needed these generic, opt-in extensions (existing templates are unaffected):
 - `generatedIndex.pageHeading` / `pageHeadingStyle` (a "Sayfa" column heading) and `matchHeadingTransform` (TOC rows read like their rendered headings, e.g. uppercase chapters).
 - `tables.cellStyle`: cell typography (single spacing, centered names/values) in editor, PDF and DOCX; the type size stays inherited.
 - `tables.cellPadding: { topMm, bottomMm, leftMm, rightMm }` (opt-in, also in `overrides.tables`): cell padding in editor CSS, PDF and DOCX `w:tcMar`; absent keys of the object are 0, no key = previous defaults.
-- Authored table column widths: `<colgroup><col data-col-width="25.84">...</colgroup>` (percent; `style` attributes are stripped by the sanitizer/CSP). Kept in the editor (`attr()` width, fixed layout), PDF and DOCX (`tblGrid`, `tcW`). One `col` per grid column; tables with rowspans fall back to equal columns in DOCX.
+- Authored table column widths: `<colgroup><col data-col-width="25.84">...</colgroup>` (percent; inline source styles are stripped). Normalized literal CSS and idempotent DOM widths replace typed `attr()`, preserving editor, PDF and DOCX (`tblGrid`, `tcW`) geometry. One `col` per grid column; tables with rowspans fall back to equal columns in DOCX.
 - `captionNumberingChoices`: document-wide numbering methods the author picks in the thesis panel (`thesis.captionNumbering`); applied to figures and tables together.
 - Registry `displayName` (selection label) and official sources identified by `documentName` when there is no public URL.
 
@@ -127,3 +127,27 @@ Proofs: `src/lib/thesisBatchB.test.js` (unit), `tests/batchb-measure.py` (real P
 ## Page numbering: `omitOnChapterStart`
 
 `page.numbering.omitOnChapterStart` (opt-in, default off) hides the number on every page that opens a chapter while still counting it. A chapter-opening page is the page on which a level-1 heading with a forced page break starts, or the first content of a page group. The editor measures those pages from the rendered flow (`chapterStartPageIndexes`), the sheet chrome omits the label, and the layout PDF (drawn from the editor DOM) follows. In DOCX each later chapter becomes its own next-page Word section with `titlePg`, a number-free first-page header/footer and continued page numbering. Contents/list page labels keep the counted number. The legacy fallback PDF writer (`export.js` `pdfChrome`) does not implement it.
+
+## Phase 2 typography model
+
+New templates can use `typography.lineSpacing: { rule: "auto" | "exact" | "atLeast", value }` or per-TextStyle `lineSpacing`. Auto values are line counts; exact/atLeast values are pt. Font-program metrics are available for Times New Roman, Arial and Calibri. Supply source-measured `singleLineEm` for other fonts; an unknown auto/minimum pitch throws rather than guessing. Legacy modes retain their old pitches. Real Word/export matrix measurements remain required for conformance.
+
+`contextualSpacing` suppresses adjacent same-style paragraph gaps. Named paragraph styles get separate Word style IDs; collapse/max and additive are retained. `suppressSpaceBeforeAtPageTop` suppresses section-top paragraph spacing in CSS; physical continuation-page tops remain dependent on browser column fragmentation and require validation.
+
+`indent: { firstLineMm, hangingMm, leftMm, rightMm, mirror }` normalizes the legacy indent keys. Mirror emits Word mirrorIndents. The editor measures each text fragment's physical page and shifts glyph spans horizontally on even pages; total indent width and pagination stay unchanged, including spanning paragraphs. Layout PDF reads the same shifted text rectangles. Static print parity remains unverified.
+
+`tabStops: [{ positionMm, align: "left" | "center" | "right" | "decimal", leader: "none" | "dots" | "hyphen" | "underscore", decimalCharacter? }]` replaces the single-stop limitation. Stops are paragraph-origin positions, matching Word. Browser tabs measure real following text, render leaders, and preserve a literal tab in source. Font loading triggers remeasurement and pagination; print measures its own DOM. Wrapped/bidirectional tab runs still require Word comparison.
+
+Custom `decimalCharacter` affects browser measurement only; Word decimal tabs use its locale. Exact oversized text is CSS-clipped, but layout-PDF clipping needs an explicit conformance fixture before compliance can be claimed.
+
+## Phase 2 structural model
+
+`tables.rowHeight: { rule: "auto" | "atLeast" | "exact", valueMm? }` maps to Word row-height properties. `cantSplit` and `repeatHeader` control fragmentation/repeated headers, and `verticalAlign` selects top/center/bottom cells. Per-edge `borders` accept top/bottom/left/right/insideHorizontal/insideVertical objects with style, widthPt and color; omitted edges retain the existing preset/default behaviour. Exact-height cells use an idempotent `txt-table-cell-content` presentation wrapper so overflowing content clips instead of expanding CSS's minimum cell height. Source serialization removes the wrapper and resolved column styles.
+
+`keepLines` and `widowControl` share paragraph rules between browser fragmentation and Word. Existing `keepWithNext` and `pageBreakBefore` remain configurable. Unit tests alone do not establish identical page breaks.
+
+Page `differentFirstPage`, chrome `firstContent`/`evenContent`, and section `verticalAlign: "center" | "bottom"` map to first/even parts, the document even/odd setting, and Word page alignment. Chrome `trailingBlankLines` represents empty source paragraphs explicitly. `footer.distanceMm` is Word's distance from the paper edge; optional `docxDistanceMm` preserves an independently evidenced Word override for an older editor geometry model. A measured `numbering.baselineFromTopMm` positions the same number baseline in all outputs.
+
+Chrome `{{NUMPAGES}}` becomes a complex field with an editor page-count cache; `buildThesisDocx` accepts `totalPages`. PAGE, PAGEREF and live TOC are complex fields, and caption `numbering.liveField` opts into SEQ. Every registered template is tested for balanced nested fields and absence of `fldSimple`; actual Word opening/refresh remains the real-export gate.
+
+Regenerate the non-university acceptance document with `node orchestration/tools/word-structure-fixture.mjs`, then run `node orchestration/tools/check.mjs --target engine-word-structure --word`. It exercises overflowing rows, repeated headers, protected paragraphs, typed tabs, spanning mirror paragraphs, first/even chrome, page-top spacing and vertical page alignment through the real editor/export pipeline. Its values are engine test inputs and must never be copied into university specifications.

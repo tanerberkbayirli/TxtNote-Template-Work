@@ -52,9 +52,13 @@ const logFile = join(runDir, "check.log");
 mkdirSync(runDir, { recursive: true });
 const log = (s) => appendFileSync(logFile, s + "\n");
 const env = { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" };
+const bundledPython = process.env.USERPROFILE && join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe');
+const python = process.env.CHECK_PYTHON || (bundledPython && existsSync(bundledPython) ? bundledPython : 'python');
 
 function py(argv) {
-  return spawnSync("python", [join(here, "conformance.py"), ...argv], { encoding: "utf8", env, cwd: root });
+  const result = spawnSync(python, [join(here, "conformance.py"), ...argv], { encoding: "utf8", env, cwd: root });
+  if (result.error) throw new Error(`Conformance Python failed (${python}): ${result.error.message}`);
+  return result;
 }
 
 // ---------------------------------------------------------------- Word (own instance, PID recorded, timeout)
@@ -98,6 +102,12 @@ const checksPath = join(specs, `${id}.checks.json`);
 if (!existsSync(checksPath)) { console.error(`missing ${checksPath} (see CHECKER.md)`); process.exit(2); }
 let checks = JSON.parse(readFileSync(checksPath, "utf8"));
 if (!Array.isArray(checks)) checks = checks.checks;
+const allVariants = [...new Set(checks.filter(c => c.kind !== "note").map(c => c.params?.fixture || c.fixture || "default"))];
+for (const fixture of allVariants) {
+  checks.push({ id: `engine-layout-pdf-${fixture}`, params: { fixture } });
+  if (opt.word) for (const kind of ["page_count_match", "page_labels_match"]) checks.push({ id: `engine-${kind}-${fixture}`, params: { fixture } });
+  if (opt.word && checks.some(c => c.kind === "line_pitch" && (c.params?.fixture || "default") === fixture)) checks.push({ id: `engine-body-pitch-${fixture}`, params: { fixture } });
+}
 let only = opt.only;
 if (only === "failed") {
   const prev = existsSync(outDir) ? readdirSync(outDir).filter((f) => /^check-.*\.json$/.test(f)).sort().pop() : null;
@@ -135,9 +145,9 @@ const vmap = {};
 let base = null;
 for (const v of variants) {
   const prefix = join(runDir, v);
-  vmap[v] = { pdf: `${prefix}.pdf`, docx: `${prefix}.docx` };
+  vmap[v] = { pdf: `${prefix}.pdf`, docx: `${prefix}.docx`, layout: `${prefix}.layout.json` };
   if (opt.noExport && v === "default") {
-    vmap[v] = { pdf: resolve(root, opt.noExport[0]), docx: resolve(root, opt.noExport[1]) };
+    vmap[v] = { pdf: resolve(root, opt.noExport[0]), docx: resolve(root, opt.noExport[1]), layout: resolve(root, opt.noExport[0]).replace(/\.pdf$/, '.layout.json') };
     continue;
   }
   if (opt.noExport) { vmap[v].pdf = vmap[v].docx = null; vmap[v].note = "--no-export given only for the default variant"; continue; }
@@ -159,7 +169,7 @@ for (const v of variants) {
 
 // ---------------------------------------------------------------- evaluate
 const a = ["run", "--target", id, "--checks", checksPath, "--variants", JSON.stringify(vmap), "--reference", refDir, "--out", outDir];
-if (only) a.push("--only", selected.map((c) => c.id).join(","));
+if (only) a.push("--only", only);
 if (opt.word) a.push("--word-requested");
 const r = py(a);
 process.stdout.write(r.stdout);

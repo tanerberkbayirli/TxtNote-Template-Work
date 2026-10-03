@@ -17,6 +17,7 @@ import os
 import re
 import statistics
 import sys
+import time
 import zipfile
 from collections import Counter
 
@@ -26,6 +27,130 @@ from pdfmeasure import (MM2PT, W, _attr, drawings_mm, docx_sections, docx_xml, e
 
 EPS = 1e-6
 DEFAULT_TOL = 0.5
+
+
+def get_layout(ctx, params):
+    variant = ctx['variants'].get(params.get('fixture', 'default')) or {}
+    path = variant.get('layout') or (variant.get('pdf') or '').replace('.pdf', '.layout.json')
+    if not path or not os.path.exists(path):
+        raise Skip('engine layout report unavailable; run the real export')
+    cache = ctx.setdefault('_layouts', {})
+    if path not in cache:
+        with open(path, encoding='utf8') as stream:
+            data = json.load(stream)
+        cache[path] = data.get('engineLayout', data)
+    report = cache[path]
+    if report.get('version') != 1 or not report.get('pages'):
+        raise Skip('engine layout report has no measured pages (version 1 required)')
+    return report
+
+
+def layout_hits(ctx, params):
+    report = get_layout(ctx, params)
+    pages = params.get('pages', params.get('page', 'all'))
+    selected = set(get_doc(ctx, params).pages(pages))
+    hits = []
+    for page in report['pages']:
+        if page['page'] not in selected:
+            continue
+        for mark in page['landmarks']:
+            if params.get('id') and mark['id'] != params['id']:
+                continue
+            if params.get('kind') and mark['kind'] != params['kind']:
+                continue
+            if params.get('regex') and not re.search(params['regex'], mark['text']):
+                continue
+            hits.append((page['page'], mark))
+    return hits
+
+
+def _landmark_value(mark, attr):
+    return {'baseline': mark.get('firstBaselineMm'), 'x0': mark['xMm'],
+            'x1': mark['xMm'] + mark['widthMm'], 'cx': mark['xMm'] + mark['widthMm'] / 2,
+            'top': mark['yMm'], 'bottom': mark['yMm'] + mark['heightMm'],
+            'size': mark.get('fontSizePt'), 'pitch': mark.get('linePitchMm')}.get(attr)
+
+
+def _layout_attribute(ctx, c, attr):
+    hits = layout_hits(ctx, c['params'])
+    values = [_landmark_value(mark, c['params'].get('attr', attr)) for _, mark in hits]
+    values = [value for value in values if value is not None]
+    if not values:
+        return {'actual': None, 'note': 'no matching measured landmark'}
+    agg = c['params'].get('agg', 'first')
+    if agg == 'all' and isinstance(c['expected'], (int, float)):
+        value = max(values, key=lambda value: abs(value - c['expected']))
+    else:
+        value = {'min': min, 'max': max, 'first': lambda v: v[0], 'median': statistics.median}.get(agg, lambda v: v)(values)
+    return {'actual': value, 'note': f'{len(hits)} landmarks measured from PDF draw operations'}
+
+
+def k_landmark_x(ctx, c):
+    return _layout_attribute(ctx, c, 'x0')
+
+
+def k_landmark_y(ctx, c):
+    return _layout_attribute(ctx, c, 'baseline')
+
+
+def k_landmark_gap(ctx, c):
+    params = c['params']
+    a = layout_hits(ctx, {**params, **params.get('a', {})})
+    b = layout_hits(ctx, {**params, **params.get('b', {})})
+    if not a or not b:
+        return {'actual': None, 'note': 'gap endpoints missing'}
+    for page, second in b:
+        before = [first for p, first in a if p == page and first.get('lastBaselineMm') is not None
+                  and first['lastBaselineMm'] < second.get('firstBaselineMm', -1)]
+        if before:
+            return {'actual': second['firstBaselineMm'] - max(m['lastBaselineMm'] for m in before), 'note': f'page {page}'}
+    return {'actual': None, 'note': 'no ordered endpoints on the same page'}
+
+
+def k_page_of(ctx, c):
+    hits = layout_hits(ctx, c['params'])
+    return {'actual': hits[0][0] if hits else None}
+
+
+def k_layout_pdf_consistency(ctx, c):
+    """Independent glyph-origin check; absent/mismatched samples FAIL, never SKIP."""
+    params = c['params']
+    report = get_layout(ctx, params)
+    doc = get_doc(ctx, params)
+    failures, checked, worst = [], 0, 0.0
+    if len(report['pages']) != doc.n:
+        return {'actual': len(report['pages']), 'pass': False, 'note': f'PDF has {doc.n} pages'}
+    for page in report['pages']:
+        if not 1 <= page['page'] <= doc.n:
+            failures.append('invalid physical page')
+            continue
+        chars = []
+        for block in doc.pdf[page['page'] - 1].get_text('rawdict')['blocks']:
+            for line in block.get('lines', []):
+                line_chars = [char for span in line['spans'] for char in span['chars']]
+                chars.extend((char, ''.join(ch['c'] for ch in line_chars[i:i + 12])) for i, char in enumerate(line_chars))
+        samples, seen = [], set()
+        for op in page['textOps']:
+            key = op.get('landmarkId')
+            if not key or key in seen or not op['text'].strip() or op['fontSizePt'] < 7 or op.get('clipped'):
+                continue
+            seen.add(key)
+            samples.append(op)
+        for op in samples[:params.get('samples_per_page', 16)]:
+            text = op['text'][:12]
+            candidates = [char for char, following in chars if following.startswith(text)]
+            if not candidates:
+                failures.append(f"p{page['page']} {op['id']}: PDF text absent {text!r}")
+                continue
+            delta = min(max(abs(char['origin'][0] / MM2PT - op['xMm']),
+                            abs(char['origin'][1] / MM2PT - op['baselineMm'])) for char in candidates)
+            worst = max(worst, delta)
+            checked += 1
+            if delta > c.get('tolerance', .25) + EPS:
+                failures.append(f"p{page['page']} {op['id']}: delta {delta:.4f} mm")
+    return {'actual': round(worst, 4), 'pass': checked > 0 and not failures,
+            'expected_override': '<=0.25 mm; all sampled text present',
+            'note': f'{checked} independent PDF glyph samples; ' + '; '.join(failures[:8])}
 
 
 # ------------------------------------------------------------------ comparison
@@ -74,17 +199,28 @@ class Doc:
         if p not in self._lines:
             self._lines[p] = visual_lines(self.pdf[p - 1])
         ls = self._lines[p]
+        if getattr(self, 'trim_trailing_whitespace', False):
+            chars = [char for block in self.pdf[p - 1].get_text('rawdict')['blocks'] for line in block.get('lines', [])
+                     for span in line['spans'] for char in span['chars'] if char['c'].strip()]
+            for line in ls:
+                ends = [char['bbox'][2] / MM2PT for char in chars if abs(char['origin'][1] / MM2PT - line['baseline']) < .05]
+                if ends:
+                    line['x1'] = max(ends)
         if with_pn:
             return ls
         pn = self.page_num(p)
         return [l for l in ls if l is not pn]
 
-    def page_num(self, p):
-        key = ("pn", p)
+    def page_num(self, p, region=None):
+        region = region or getattr(self, 'page_number_region', None)
+        key = ("pn", p, json.dumps(region, sort_keys=True))
         if key not in self._labels:
             lines = self.lines(p, True)
             h = self.pdf[p - 1].rect.height * 25.4 / 72
-            cand = [l for l in lines if l["baseline"] > h - 25 and NUM_RX.match(l["text"].strip())]
+            cand = [l for l in lines if NUM_RX.match(l["text"].strip())
+                    and (region.get('yMinMm', 0) <= l['baseline'] <= region.get('yMaxMm', h)
+                         and region.get('xMinMm', 0) <= (l['x0'] + l['x1']) / 2 <= region.get('xMaxMm', 10000)
+                         if region else l['baseline'] > h - 25)]
             self._labels[key] = cand[-1] if cand else None
         return self._labels[key]
 
@@ -115,6 +251,9 @@ class Doc:
                     lab = self.label(p)
                     if (kind == "arabic" and lab.isdigit()) or (kind == "roman" and lab and not lab.isdigit()) or (kind == "none" and not lab):
                         out.append(p)
+                if "from" in spec:  # restrict to pages at/after the first page whose text matches (e.g. skip cover PAGE fields)
+                    start = self.pages({"find": spec["from"]})
+                    out = [p for p in out if start and p >= start[0]]
                 return out
             if "find" in spec:
                 rx = re.compile(spec["find"])
@@ -130,6 +269,13 @@ class Doc:
 
 def get_doc(ctx, params):
     src = params.get("source", "pdf")
+    if src == 'layout':
+        report = get_layout(ctx, params)
+        key = params.get('fixture', 'default')
+        cache = ctx.setdefault('_layout_docs', {})
+        if key not in cache:
+            cache[key] = LayoutDoc(report)
+        return cache[key]
     var = ctx["variants"].get(params.get("fixture", "default")) or {}
     path = var.get("wordPdf" if src == "word" else "pdf")
     if not path or not os.path.exists(path):
@@ -137,13 +283,70 @@ def get_doc(ctx, params):
             raise Skip(var.get("wordNote") or "Word render unavailable (run with --word)")
         raise Skip(f"no export for variant {params.get('fixture', 'default')}")
     cache = ctx.setdefault("_docs", {})
-    if path not in cache:
-        cache[path] = Doc(path)
-    return cache[path]
+    region = params.get('page_number_region')
+    if region is None and var.get('layout'):
+        # A positioned PAGE field can sit above the legacy bottom-25mm search
+        # band. Locate it in the real PDF near the exported field's geometry;
+        # geometry checks still compare its actual position against the source.
+        report = get_layout(ctx, params)
+        baselines = [mark['firstBaselineMm'] for page in report['pages'] for mark in page['landmarks']
+                     if mark.get('kind') == 'page-number' and mark.get('firstBaselineMm') is not None]
+        if baselines:
+            region = {'yMinMm': min(baselines) - 3, 'yMaxMm': max(baselines) + 3}
+    key = (path, json.dumps(region, sort_keys=True), bool(params.get('trim_trailing_whitespace')))
+    if key not in cache:
+        cache[key] = Doc(path)
+        cache[key].page_number_region = region
+        cache[key].trim_trailing_whitespace = params.get('trim_trailing_whitespace', False)
+    return cache[key]
 
 
 class Skip(Exception):
     pass
+
+
+class LayoutDoc(Doc):
+    """PDF check selectors backed by actual engine draw ops; fonts still use PDF."""
+    def __init__(self, report):
+        self.report = report
+        self.n = len(report['pages'])
+        self._lines = {}
+
+    def label(self, p):
+        return self.report['pages'][p - 1]['label']
+
+    def page_num(self, p, region=None):
+        return next((line for line in self.lines(p, True) if line.get('pageNumber')), None)
+
+    def lines(self, p, with_pn=False):
+        if p not in self._lines:
+            page = self.report['pages'][p - 1]
+            marks = {mark['id']: mark for mark in page['landmarks']}
+            groups = []
+            for op in sorted(page['textOps'], key=lambda op: (round(op['baselineMm'], 1), op['xMm'])):
+                for line in groups:
+                    if abs(line['baseline'] - op['baselineMm']) <= .35 and abs(line['size'] - op['fontSizePt']) < .6:
+                        line['ops'].append(op)
+                        break
+                else:
+                    groups.append({'baseline': op['baselineMm'], 'size': op['fontSizePt'], 'ops': [op]})
+            lines = []
+            for line in groups:
+                ops = sorted(line['ops'], key=lambda op: op['xMm'])
+                text, previous = '', None
+                for op in ops:
+                    if previous and (previous.get('spaceAfter') or re.fullmatch(r'[.…·]+', op['text']) or op['xMm'] - previous['xMm'] - previous['widthMm'] > .25 * op['fontSizePt'] / MM2PT) and not text.endswith(' '):
+                        text += ' '
+                    text += op['text']
+                    previous = op
+                lines.append({'text': re.sub(r'\s+', ' ', text).strip(),
+                              'baseline': round(statistics.mean(op['baselineMm'] for op in ops), 3),
+                              'x0': min(op['xMm'] for op in ops), 'x1': max(op['xMm'] + op['widthMm'] for op in ops),
+                              'top': min(op['yMm'] for op in ops), 'bottom': max(op['baselineMm'] for op in ops),
+                              'size': max(op['fontSizePt'] for op in ops),
+                              'pageNumber': any(marks.get(op.get('landmarkId'), {}).get('kind') == 'page-number' for op in ops)})
+            self._lines[p] = sorted(lines, key=lambda line: (line['baseline'], line['x0']))
+        return [line for line in self._lines[p] if with_pn or not line.get('pageNumber')]
 
 
 # ------------------------------------------------------------------ PDF kinds
@@ -194,7 +397,7 @@ def k_fonts(ctx, c):
     d = get_doc(ctx, P)
     allowed, fams = set(c["expected"]), P.get("families")
     seen, bad = [], []
-    used = {_clean_font(s["font"]) for p in range(1, d.n + 1) for l in d.lines(p, True) for s in l["spans"]}
+    used = {_clean_font(s["font"]) for p in d.pages(P.get('pages')) for l in d.lines(p, not P.get('exclude_page_numbers', False)) for s in l["spans"]}
     for f in embedded_fonts(d.pdf):
         name = _clean_font(f["basefont"])
         if name not in used:
@@ -208,6 +411,20 @@ def k_fonts(ctx, c):
         if fams and fam and fam not in fams:
             bad.append(f"{name} program family {fam!r} not in {fams}")
     return {"actual": sorted(seen), "pass": not bad and bool(seen), "note": "; ".join(bad)}
+
+
+def k_page_number_font(ctx, c):
+    doc = get_doc(ctx, c['params'])
+    fonts = set()
+    missing = []
+    for page in doc.pages(c['params'].get('pages')):
+        line = doc.page_num(page)
+        if not line:
+            missing.append(page)
+        else:
+            fonts.update(_clean_font(span['font']) for span in line['spans'])
+    return {'actual': sorted(fonts), 'pass': bool(fonts) and not missing and fonts <= set(c['expected']),
+            'note': f'missing page numbers: {missing}' if missing else ''}
 
 
 def k_font_size(ctx, c):
@@ -318,6 +535,55 @@ def k_page_count_match(ctx, c):
     n1 = get_doc(ctx, {**c["params"], "source": "pdf"}).n
     n2 = get_doc(ctx, {**c["params"], "source": "word"}).n
     return {"actual": f"pdf={n1} word={n2}", "pass": n1 == n2, "expected_override": "equal page counts"}
+
+
+def k_page_labels_match(ctx, c):
+    a = get_doc(ctx, {**c['params'], 'source': 'pdf'})
+    b = get_doc(ctx, {**c['params'], 'source': 'word'})
+    first = [a.label(p) for p in range(1, a.n + 1)]
+    second = [b.label(p) for p in range(1, b.n + 1)]
+    return {'actual': {'pdf': rle(first), 'word': rle(second)}, 'pass': first == second, 'expected_override': 'identical labels on every physical page'}
+
+
+def k_line_pitch_match(ctx, c):
+    params = c['params']
+    values = {}
+    for source in ('pdf', 'word'):
+        doc = get_doc(ctx, {**params, 'source': source})
+        gaps = []
+        for p in doc.pages(params.get('pages')):
+            lines = [line for line in doc.lines(p) if re.search(params['regex'], line['text'])]
+            gaps.extend(b['baseline'] - a['baseline'] for a, b in zip(lines, lines[1:]))
+        if not gaps:
+            return {'actual': None, 'note': f'no matching multiline paragraph in {source}'}
+        values[source] = statistics.median(gaps)
+    delta = abs(values['pdf'] - values['word'])
+    return {'actual': {**values, 'deltaPt': delta * MM2PT}, 'pass': delta <= c.get('tolerance', .2 / MM2PT) + EPS,
+            'expected_override': 'PDF vs Word pitch within 0.2 pt'}
+
+
+def k_body_pitch_match(ctx, c):
+    values = {source: k_line_pitch(ctx, {'params': {**c['params'], 'source': source}})['actual']
+              for source in ('pdf', 'word')}
+    if None in values.values():
+        return {'actual': values, 'pass': False, 'note': 'no usable body baselines'}
+    delta = abs(values['pdf'] - values['word'])
+    return {'actual': {**values, 'deltaPt': delta * MM2PT}, 'pass': delta <= .2 / MM2PT + EPS}
+
+
+def k_line_attr_match(ctx, c):
+    params = c['params']
+    values = {}
+    for source in ('layout', 'word'):
+        doc = get_doc(ctx, {**params, 'source': source, 'trim_trailing_whitespace': params.get('attr') == 'x1'})
+        hits = _find_lines(doc, doc.pages(params.get('pages')), params['regex'])
+        values[source] = [[page, round(ATTR[params.get('attr', 'baseline')](line), 4)] for page, line in hits]
+    if not values['layout'] or not values['word']:
+        return {'actual': values, 'pass': False, 'note': 'matching lines must exist in both outputs'}
+    equal, delta = compare(values['word'], values['layout'], c.get('tolerance', .25))
+    # Page identifiers are categorical, not a geometric tolerance.
+    equal = equal and [v[0] for v in values['word']] == [v[0] for v in values['layout']]
+    return {'actual': values, 'pass': equal, 'note': f'delta {delta}', 'expected_override': 'same physical pages and geometry within tolerance'}
 
 
 def k_line_attr(ctx, c):
@@ -545,11 +811,27 @@ def k_docx_no_undefined(ctx, c):
                 if re.search(r"<undefined|>\s*undefined\s*<|instrText[^>]*>[^<]*undefined", s):
                     hits.append(n)
                     continue
-                if n == "word/document.xml":
-                    ins = re.findall(r"<w:instrText[^>]*>([^<]*)<", s)
-                    b = len(re.findall(r'w:fldCharType="begin"', s)); e = len(re.findall(r'w:fldCharType="end"', s))
-                    if b != e:
-                        hits.append(f"{n}: fldChar begin {b} != end {e}")
+                if n.startswith('word/') and n.endswith('.xml'):
+                    root = docx_xml(path, n)
+                    stack = []
+                    for element in root.iter(W + 'fldChar'):
+                        edge = _attr(element, 'fldCharType')
+                        if edge == 'begin':
+                            stack.append(False)
+                        elif edge == 'separate':
+                            if not stack or stack[-1]:
+                                hits.append(f'{n}: orphan/duplicate field separator')
+                            else:
+                                stack[-1] = True
+                        elif edge == 'end':
+                            if not stack:
+                                hits.append(f'{n}: orphan field end')
+                            else:
+                                stack.pop()
+                    if stack:
+                        hits.append(f'{n}: {len(stack)} unclosed fields')
+                    if any(list(field.iter(W + 'p')) for field in root.iter(W + 'fldSimple')):
+                        hits.append(f'{n}: fldSimple contains a paragraph')
     return {"actual": hits or "none", "pass": not hits, "expected_override": "none"}
 
 
@@ -645,9 +927,29 @@ def write_report(target, results, out_dir, stamp, meta):
 
 
 def cmd_run(a):
+    started = time.monotonic()
     checks = json.load(open(a.checks, encoding="utf8"))
     if isinstance(checks, dict):
         checks = checks["checks"]
+    ctx = {"variants": json.loads(a.variants), "reference": a.reference}
+    automatic = []
+    for variant in ctx['variants']:
+        automatic.append({'id': f'engine-layout-pdf-{variant}', 'kind': 'layout_pdf_consistency',
+                          'params': {'fixture': variant}, 'expected': 0, 'tolerance': .25,
+                          'source': {'file': 'exported PDF', 'locator': 'independent PyMuPDF glyph origins vs engine report'},
+                          'evidence': 'MEASURED'})
+        if a.word_requested:
+            for kind in ('page_count_match', 'page_labels_match'):
+                automatic.append({'id': f'engine-{kind}-{variant}', 'kind': kind,
+                                  'params': {'fixture': variant}, 'expected': 'equal PDF and Word',
+                                  'evidence': 'MEASURED', 'source': {'file': 'real exports', 'locator': 'PDF vs Word-rendered DOCX'}})
+            pitch = next((c for c in checks if c['kind'] == 'line_pitch'
+                          and c.get('params', {}).get('fixture', 'default') == variant), None)
+            if pitch:
+                automatic.append({'id': f'engine-body-pitch-{variant}', 'kind': 'body_pitch_match',
+                                  'params': {**pitch['params'], 'fixture': variant}, 'expected': 'equal within 0.2 pt',
+                                  'evidence': 'MEASURED', 'source': pitch.get('source')})
+    checks.extend(automatic)
     if a.only:
         ids = set(a.only.split(","))
         unknown = ids - {c["id"] for c in checks}
@@ -655,15 +957,16 @@ def cmd_run(a):
             print("unknown check ids: " + ",".join(sorted(unknown)), file=sys.stderr)
             return 2
         checks = [c for c in checks if c["id"] in ids]
-    ctx = {"variants": json.loads(a.variants), "reference": a.reference}
+        # Independently verify every regenerated export, including a failed-only retry.
+        checks.extend(c for c in automatic if c['id'] not in {r['id'] for r in checks})
     results = [run_check(ctx, c) for c in checks]
     stamp = a.stamp or datetime.datetime.now().strftime("%Y%m%d-%H%M")
     os.makedirs(a.out, exist_ok=True)
-    jpath, counts, rows = write_report(a.target, results, a.out, stamp, {"variants": ctx["variants"], "wordRequested": a.word_requested})
+    jpath, counts, rows = write_report(a.target, results, a.out, stamp, {"variants": ctx["variants"], "wordRequested": a.word_requested, 'measurementSeconds': round(time.monotonic() - started, 3)})
     print(f"{a.target}: " + " ".join(f"{k}={v}" for k, v in sorted(counts.items())) + f"  -> {os.path.relpath(jpath)}")
     for r in rows:
         print(f"  {r['status']:7} {r['id']}: expected={fmt(r.get('expected'), 50)} actual={fmt(r.get('actual'), 50)} delta={fmt(r.get('delta', ''), 20)} {r.get('reason') or r.get('note') or ''}"[:260])
-    return 1 if counts.get("FAIL") else 0
+    return 1 if counts.get("FAIL") or counts.get("CONFLICT") or (a.word_requested and counts.get("SKIPPED")) else 0
 
 
 def cmd_build_reference(a):
@@ -697,9 +1000,41 @@ if __name__ == "__main__":
     r.add_argument("--target", required=True); r.add_argument("--checks", required=True); r.add_argument("--variants", required=True)
     r.add_argument("--reference", default=""); r.add_argument("--out", required=True); r.add_argument("--only", default="")
     r.add_argument("--stamp", default=""); r.add_argument("--word-requested", action="store_true")
+    inspect = sub.add_parser('inspect')
+    inspect.add_argument('--pdf', required=True)
+    inspect.add_argument('--layout')
+    inspect.add_argument('--raw', action='store_true')
+    inspect.add_argument('--page', type=int)
+    inspect.add_argument('--summary', action='store_true')
+    inspect.add_argument('--regex', default='.')
     b = sub.add_parser("build-reference")
     b.add_argument("--dir", required=True)
     a = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf8")
+    if a.cmd == 'inspect':
+        doc = LayoutDoc(json.load(open(a.layout, encoding='utf8'))['engineLayout']) if a.layout else Doc(a.pdf)
+        if a.summary:
+            for page in range(1, doc.n + 1):
+                lines = [line['text'] for line in doc.lines(page) if re.search(a.regex, line['text'])]
+                print(json.dumps({'page': page, 'label': doc.label(page), 'first': lines[:2], 'last': lines[-2:]}, ensure_ascii=False))
+            if hasattr(doc, 'pdf'):
+                doc.pdf.close()
+            sys.exit(0)
+        if not a.page:
+            ap.error('inspect requires --page or --summary')
+        if a.raw:
+            for block in doc.pdf[a.page - 1].get_text('rawdict')['blocks']:
+                for line in block.get('lines', []):
+                    text = ''.join(char['c'] for span in line['spans'] for char in span['chars'])
+                    if re.search(a.regex, text):
+                        print(json.dumps({'text': text, 'spans': [{**span, 'chars': span['chars'][-8:]} for span in line['spans']]}, ensure_ascii=False))
+            doc.pdf.close()
+            sys.exit(0)
+        for line in doc.lines(a.page, True):
+            if re.search(a.regex, line['text']):
+                print(json.dumps({key: value for key, value in line.items() if key != 'spans'}, ensure_ascii=False))
+        if hasattr(doc, 'pdf'):
+            doc.pdf.close()
+        sys.exit(0)
     sys.exit(cmd_run(a) if a.cmd == "run" else cmd_build_reference(a))

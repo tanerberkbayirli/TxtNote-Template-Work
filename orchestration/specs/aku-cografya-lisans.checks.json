@@ -23,7 +23,7 @@
    },
    "metric": "x0min"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -40,7 +40,7 @@
    },
    "metric": "x1max"
   },
-  "expected": 180.0,
+  "expected": 180,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -77,7 +77,8 @@
    },
    "lines": [
     "^1\\. GİRİŞ$"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    28.96
@@ -178,7 +179,7 @@
     "label": "arabic"
    }
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -192,7 +193,8 @@
   "params": {
    "pages": {
     "label": "arabic"
-   }
+   },
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -211,7 +213,8 @@
    },
    "regex": "^Giriş 1\\.",
    "attr": "x0",
-   "agg": "first"
+   "agg": "first",
+   "source": "layout"
   },
   "expected": 42.51,
   "tolerance": 0.5,
@@ -288,9 +291,10 @@
    },
    "regex": "^\\d\\. [A-ZÇĞİÖŞÜ ]+$",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -307,9 +311,10 @@
    },
    "regex": "^\\d\\. [A-ZÇĞİÖŞÜ ]+$",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -326,9 +331,10 @@
    },
    "regex": "^\\d\\.\\d Alt Başlık",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -349,7 +355,8 @@
     "^COĞRAFYA B",
     "^BİTİRME TEZİ$",
     "^\\d{4}$"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    58.94,
@@ -380,7 +387,8 @@
     "^Kocatepe Üniversitesi Fen",
     "^TEZİ olarak",
     "^Bitirme Tezi Danışmanı"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    29.64,
@@ -409,7 +417,8 @@
     "^\\d\\d / \\d\\d / \\d{4}",
     "^İmza$",
     "^Ayşe DEMİR$"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    154.92,
@@ -433,7 +442,8 @@
    },
    "lines": [
     "^ÖZET$"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    28.62
@@ -454,9 +464,10 @@
     "find": "^ÖZET$"
    },
    "regex": "^ÖZET$",
-   "attr": "size"
+   "attr": "size",
+   "source": "layout"
   },
-  "expected": 11.0,
+  "expected": 11,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
@@ -472,7 +483,8 @@
     "find": "^ÖZET$"
    },
    "a": "^ÖZELLİKLERİNİN İNCELENMESİ$",
-   "b": "^Ayşe DEMİR$"
+   "b": "^Ayşe DEMİR$",
+   "source": "layout"
   },
   "expected": 14.61,
   "tolerance": 0.5,
@@ -491,7 +503,8 @@
    },
    "lines": [
     "^ABSTRACT$"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    28.95
@@ -525,7 +538,8 @@
    "pages": {
     "page": 3
    },
-   "attr": "baseline"
+   "attr": "baseline",
+   "source": "layout"
   },
   "expected": 278.81,
   "tolerance": 0.5,
@@ -542,9 +556,10 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "size"
+   "attr": "size",
+   "source": "layout"
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
@@ -616,7 +631,8 @@
    },
    "regex": ".",
    "max": 6,
-   "stat": "median"
+   "stat": "median",
+   "source": "layout"
   },
   "expected": 4.87,
   "tolerance": 0.5,
@@ -636,9 +652,10 @@
    },
    "regex": "^(Tablo|Şekil) \\d+\\.\\d+ ",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 11.0,
+  "expected": 11,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -655,9 +672,10 @@
    },
    "regex": "\\(Devamı\\)",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 11.0,
+  "expected": 11,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
@@ -674,9 +692,10 @@
    },
    "regex": "^(Gilster|Karasar|Özdemir)",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 11.0,
+  "expected": 11,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
@@ -695,10 +714,11 @@
     "^Özdemir, Ş",
     "^ortamlarında öz"
    ],
-   "attr": "x0"
+   "attr": "x0",
+   "source": "layout"
   },
   "expected": [
-   30.0,
+   30,
    35.01
   ],
   "tolerance": 0.5,
@@ -740,7 +760,8 @@
     }
    },
    "regex": "^(Cinsiyet|Erkek|Sınıf|4) ",
-   "stat": "median"
+   "stat": "median",
+   "source": "layout"
   },
   "expected": 4.7,
   "tolerance": 0.5,

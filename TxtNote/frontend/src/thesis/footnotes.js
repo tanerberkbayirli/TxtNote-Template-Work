@@ -14,7 +14,7 @@
 import { flowPagePitchPx, pageCountFromFlowHeight, pageMetrics } from "./pageLayout.js";
 
 export const FOOTNOTE_REF_SELECTOR = "sup.academic-footnote, span.academic-footnote";
-export const FOOTNOTE_STYLE_KEYS = ["fontFamily", "fontSizePt", "fontWeight", "italic", "lineHeight", "align", "characterSpacingPt", "spaceBeforePt", "spaceAfterPt", "firstLineIndentMm", "leftIndentMm", "rightIndentMm"];
+export const FOOTNOTE_STYLE_KEYS = ["fontFamily", "fontSizePt", "fontWeight", "italic", "lineHeight", "lineSpacing", "align", "characterSpacingPt", "spaceBeforePt", "spaceAfterPt", "firstLineIndentMm", "leftIndentMm", "rightIndentMm"];
 const SEPARATOR_DEFAULTS = { enabled: true, widthPercent: 33, thicknessPt: 0.5, spaceBeforePt: 6, spaceAfterPt: 3 };
 
 /** Engine defaults, used only where a template is silent. */

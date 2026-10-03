@@ -135,6 +135,7 @@ function sharedPageSignature(page) {
     widthMm: page.widthMm,
     heightMm: page.heightMm,
     orientation: page.orientation,
+    differentFirstPage: page.differentFirstPage,
     margins: page.margins,
     header: page.header,
     footer: page.footer,
@@ -302,7 +303,9 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     indexSources = collectIndexSources(sections, extractThesisHeadings);
   }
   for (const section of sections) section.indexSources = indexSources.filter((entry) => entry.sectionId === section.id);
-  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, documentLayout: thesis.layout, status: template.status, language: template.language, systemFonts: template.status === "official" ? templateFontFamilies(template) : [], title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
+  // Word metrics require the actual font program even for isolated/demo templates.
+  const exactFontsRequired = template.status === "official" || sections.some(section => section.rules.lineSpacing?.rule || sectionTextStyles(section).some(style => style?.lineSpacing?.rule));
+  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, documentLayout: thesis.layout, status: template.status, language: template.language, systemFonts: exactFontsRequired ? templateFontFamilies(template) : [], title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
 }
 
 /** Probes of every text style in the document whose lines use Word baseline placement. */
@@ -311,7 +314,7 @@ export function thesisWordBaselineProbes(documentModel) {
   for (const section of documentModel.sections || []) {
     const spacing = section.rules.lineSpacing;
     for (const style of sectionTextStyles(section)) {
-      const probe = wordBaselineProbe(style, spacing, effectiveLineHeight(style?.lineHeight, spacing));
+      const probe = wordBaselineProbe(style, spacing, effectiveLineHeight(style?.lineHeight, spacing, style));
       if (probe) probes.set(probe.id, probe);
     }
   }

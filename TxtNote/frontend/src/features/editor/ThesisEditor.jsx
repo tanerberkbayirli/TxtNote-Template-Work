@@ -4,6 +4,8 @@ import { figureHtml, imageDimensions, readImageAsDataUrl } from "../../lib/acade
 import { htmlToPlainText } from "../../lib/richText.js";
 import { trustedStyleNonce } from "../../lib/cspStyles.js";
 import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../thesis/engine.js";
+import { measureMirroredIndentsCss } from "../../thesis/paragraphMirror.js";
+import { measureParagraphTabsCss } from "../../thesis/paragraphTabs.js";
 import { measureWordBaselineCss } from "../../thesis/wordBaseline.js";
 import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/pageLayout.js";
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
@@ -140,6 +142,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   // Opt-in Word line placement: measure this browser's baseline of every text style (paint-only offsets).
   const baselineProbes = useMemo(() => model ? thesisWordBaselineProbes(model) : [], [model]);
   const baselineProbeKey = baselineProbes.map((probe) => probe.id).join(",");
+  const [mirrorCss, setMirrorCss] = useState("");
+  const [tabsCss, setTabsCss] = useState("");
   const [baselineCss, setBaselineCss] = useState("");
   useLayoutEffect(() => {
     if (!baselineProbes.length) { setBaselineCss(""); return undefined; }
@@ -150,6 +154,16 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     document.fonts?.addEventListener?.("loadingdone", measure);
     return () => { alive = false; document.fonts?.removeEventListener?.("loadingdone", measure); };
   }, [baselineProbeKey]);
+  useLayoutEffect(() => {
+    const root = papersRef.current;
+    if (!root || !model) return undefined;
+    let alive = true;
+    const measure = () => { if (alive) { setTabsCss(measureParagraphTabsCss(root, model)); setMirrorCss(measureMirroredIndentsCss(root, model)); } };
+    measure();
+    document.fonts?.ready?.then(measure);
+    document.fonts?.addEventListener?.("loadingdone", measure);
+    return () => { alive = false; document.fonts?.removeEventListener?.("loadingdone", measure); };
+  }, [model]);
   const warning = resolved?.fallback ? resolved.reason : thesis.fallback ? thesis.fallbackReason : "";
   const missingFields = model ? [...new Set(model.sections.flatMap((section) => section.missingPlaceholders))] : [];
   const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings] : [];
@@ -231,6 +245,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       const continuations = layoutTableContinuations(root, groups, latestSourceModel.current);
       const { views: notes, incomplete } = THESIS_PAGE_FOOTNOTES ? layoutThesisFootnotes(root, groups, footnoteState.current, performance.now() + 24) : { views: {} };
       if (incomplete) return { incomplete: true, groups, continuations, notes };
+      setTabsCss(measureParagraphTabsCss(root, latestSourceModel.current));
+      setMirrorCss(measureMirroredIndentsCss(root, latestSourceModel.current));
       const indexes = renderedIndexPages(root, groups);
       return { incomplete: false, groups, continuations, notes, indexes,
         signature: `${JSON.stringify(indexes)}|${JSON.stringify(notes)}|${JSON.stringify(continuations)}` };
@@ -340,7 +356,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   useLayoutEffect(() => {
     if (!paginationActive) return;
     paginationRef.current?.();
-  }, [sourceModel, zoom, paginationActive]);
+  }, [sourceModel, zoom, paginationActive, tabsCss]);
 
   const saveThesis = (patch) => onResearchDataChange?.({ ...researchData, thesis: { ...thesis, ...patch } });
   const setValue = (key, value) => onResearchDataChange?.({ ...researchData, thesis: updateThesisMetadata(thesis, key, value) });
@@ -414,8 +430,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       assertPaginationReady();
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
-        ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, documentLayout: model.documentLayout, systemFonts: model.systemFonts || [] }) : await buildThesisPdf(model))
-        : await buildThesisDocx(model, { blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), tableContinuations: tableContinuationRows(papersRef.current) });
+        ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, documentLayout: model.documentLayout, systemFonts: model.systemFonts || [], onLayoutReport: (report) => { papersRef.current.__thesisLayoutReport = report; } }) : await buildThesisPdf(model))
+        : await buildThesisDocx(model, { totalPages, blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), tableContinuations: tableContinuationRows(papersRef.current) });
       assertPaginationReady();
       const path = await downloadBlob(blob, `${academicFileStem(plainTitle || "tez")}.${kind}`);
       setMessage(path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`);
@@ -431,10 +447,15 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     const frame = document.createElement("iframe");
     frame.style.cssText = "position:fixed;width:0;height:0;border:0;visibility:hidden";
     frame.srcdoc = buildThesisPrintHtml(model, { nonce: trustedStyleNonce() });
-    frame.onload = () => {
+    frame.onload = async () => {
       if (paginationActive && (generation !== paginationEpochRef.current || paginationReadyEpochRef.current !== generation)) {
         frame.remove(); setMessage("Sayfalama yazdırma sırasında değişti; sayfa eşlemesi yeniden doğrulanmalı."); return;
       }
+      await frame.contentDocument?.fonts?.ready;
+      const tabStyle = frame.contentDocument.createElement("style");
+      tabStyle.nonce = trustedStyleNonce();
+      tabStyle.textContent = measureParagraphTabsCss(frame.contentDocument.body, model);
+      frame.contentDocument.head.append(tabStyle);
       frame.contentWindow?.focus(); frame.contentWindow?.print(); setTimeout(() => frame.remove(), 30000);
     };
     document.body.appendChild(frame);
@@ -467,7 +488,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   if (!model) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
 
   return <div className="flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
-    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss}</style>
+    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss + tabsCss + mirrorCss}</style>
     <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
     <ThesisRibbon title={plainTitle} activeSection={activeSection} template={template}
       actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat }}
@@ -493,7 +514,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         sectionNode?.querySelector('[contenteditable="true"]')?.focus({ preventScroll: true });
       }} /> : null}
       <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
-        <div ref={papersRef} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
+        <div ref={papersRef} data-thesis-template-id={model.templateId} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
         {pageGroups.map((group, index) => {
             const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={(id) => { setActiveSectionId(id); setActiveFormat(bodyRefs.current[id]?.activeFormat || {}); }} onFormatChange={(id, format) => { if (activeSectionId === id) setActiveFormat(format || {}); }} onTextChange={onTextChange} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} />;
             const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);

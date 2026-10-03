@@ -328,7 +328,24 @@ describe("thesis export", () => {
       const model = compileThesisDocument(structuredClone(template), {}, "Tez", "<h1>Bir</h1><h2>Iki</h2><p>Metin</p>");
       const entries = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
       for (const [name, bytes] of Object.entries(entries)) {
-        if (/\.(xml|rels)$/.test(name)) assert.doesNotMatch(strFromU8(bytes), /<\/?undefined/, `${id}:${name}`);
+        if (/\.(xml|rels)$/.test(name)) {
+          const xml = strFromU8(bytes);
+          assert.doesNotMatch(xml, /<\/?undefined/, `${id}:${name}`);
+          assert.doesNotMatch(xml, /<w:fldSimple\b/, `${id}:${name}: fields must be complex`);
+          const fields = [];
+          for (const match of xml.matchAll(/<w:fldChar\b[^>]*w:fldCharType="(begin|separate|end)"/g)) {
+            const kind = match[1];
+            if (kind === "begin") fields.push(false);
+            else if (kind === "separate") {
+              assert.ok(fields.length && fields.at(-1) === false, `${id}:${name}: unmatched/duplicate field separator`);
+              fields[fields.length - 1] = true;
+            } else {
+              assert.ok(fields.length && fields.at(-1), `${id}:${name}: unmatched/end before separator`);
+              fields.pop();
+            }
+          }
+          assert.equal(fields.length, 0, `${id}:${name}: unclosed field`);
+        }
       }
     }
   });

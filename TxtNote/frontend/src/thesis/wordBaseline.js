@@ -24,7 +24,7 @@ const familyName = (value) => String(value || "").split(",")[0].replace(/["']/g,
 const hash = (text) => { let h = 5381; for (let i = 0; i < text.length; i += 1) h = ((h << 5) + h + text.charCodeAt(i)) >>> 0; return h.toString(36); };
 const round = (value) => Math.round(value * 10000) / 10000;
 
-export const wordBaselineEnabled = (spacing) => spacing?.mode === "word" && spacing.baseline === "word";
+export const wordBaselineEnabled = (spacing) => (spacing?.mode === "word" || spacing?.rule) && spacing.baseline === "word";
 
 /**
  * Probe of one text style: its custom property id, the Word baseline offset from the line top
@@ -32,6 +32,7 @@ export const wordBaselineEnabled = (spacing) => spacing?.mode === "word" && spac
  * `lineHeightEm` is the drawn line height (effectiveLineHeight) in em.
  */
 export function wordBaselineProbe(style, spacing, lineHeightEm) {
+  spacing = style?.lineSpacing ? { ...spacing, ...style.lineSpacing } : spacing;
   if (!wordBaselineEnabled(spacing) || !(style?.fontSizePt > 0) || !(lineHeightEm > 0)) return null;
   const fontFamily = familyName(style.fontFamily);
   const metrics = WORD_FONT_METRICS[fontFamily.toLowerCase()];

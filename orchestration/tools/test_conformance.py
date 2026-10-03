@@ -1,7 +1,8 @@
 """Minimal unit tests for the comparison / tolerance logic: python -m unittest orchestration/tools/test_conformance.py"""
-import os, sys, unittest
+import json, os, sys, tempfile, unittest, zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from conformance import compare, open_end, rle
+from conformance import compare, open_end, rle, run_check
+from pdfmeasure import open_pdf, MM2PT
 
 
 class CompareTests(unittest.TestCase):
@@ -38,6 +39,70 @@ class CompareTests(unittest.TestCase):
         self.assertEqual(open_end("none x2, ii, iii, 1, 2, 3"), "none x2, ii, iii, 1..N")
         self.assertEqual(open_end("i, 1"), "i, 1")  # a single trailing page stays exact
         self.assertEqual(open_end("1, 2, 5, 6"), "1, 2, 5..N")  # a gap breaks the run
+
+
+class LandmarkTests(unittest.TestCase):
+    def setUp(self):
+        import pymupdf
+        self.tmp = tempfile.TemporaryDirectory()
+        self.pdf = os.path.join(self.tmp.name, 'test.pdf')
+        doc = pymupdf.open()
+        page = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        page.insert_text((30 * MM2PT, 40 * MM2PT), 'Evidence heading', fontsize=12)
+        page.insert_text((30 * MM2PT, 275 * MM2PT), 'ii', fontsize=12)
+        doc.save(self.pdf)
+        doc.close()
+        self.layout = os.path.join(self.tmp.name, 'test.layout.json')
+        self.report = {'version': 1, 'pages': [{'page': 1, 'landmarks': [
+            {'id': 'body:heading:1', 'kind': 'heading', 'text': 'Evidence heading',
+             'xMm': 30, 'yMm': 36, 'widthMm': 30, 'heightMm': 4, 'firstBaselineMm': 40,
+             'lastBaselineMm': 40, 'fontSizePt': 12}], 'textOps': [
+                 {'id': 'run1', 'landmarkId': 'body:heading:1', 'text': 'Evidence heading',
+                  'xMm': 30, 'baselineMm': 40, 'fontSizePt': 12}]}]}
+        self.ctx = {'variants': {'default': {'pdf': self.pdf, 'layout': self.layout}}}
+
+    def tearDown(self):
+        for doc in self.ctx.get('_docs', {}).values():
+            doc.pdf.close()
+        self.tmp.cleanup()
+
+    def check(self, kind, params=None, expected=0):
+        with open(self.layout, 'w', encoding='utf8') as f:
+            json.dump(self.report, f)
+        self.ctx.pop('_layouts', None)
+        return run_check(self.ctx, {'id': 'test', 'kind': kind, 'params': params or {},
+                                    'expected': expected, 'tolerance': .25})
+
+    def test_actual_pdf_crosscheck_rejects_tampered_layout_and_missing_text(self):
+        self.assertEqual(self.check('layout_pdf_consistency')['status'], 'PASS')
+        self.report['pages'][0]['textOps'][0]['baselineMm'] = 40.26
+        self.assertEqual(self.check('layout_pdf_consistency')['status'], 'FAIL')
+        self.report['pages'][0]['textOps'][0]['text'] = 'Invented text'
+        self.assertEqual(self.check('layout_pdf_consistency')['status'], 'FAIL')
+
+    def test_landmark_location_and_page_use_source_expectations(self):
+        self.assertEqual(self.check('landmark_x', {'id': 'body:heading:1'}, 30)['status'], 'PASS')
+        self.assertEqual(self.check('landmark_y', {'regex': 'Evidence'}, 40)['status'], 'PASS')
+        self.assertEqual(self.check('page_of', {'kind': 'heading'}, 1)['status'], 'PASS')
+        self.assertEqual(self.check('landmark_x', {'id': 'missing'}, 30)['status'], 'FAIL')
+
+    def test_page_number_search_region_can_find_number_outside_bottom_25mm(self):
+        from conformance import Doc
+        doc = Doc(self.pdf)
+        self.assertEqual(doc.page_num(1)['text'], 'ii')
+        self.assertIsNone(doc.page_num(1, {'yMinMm': 280, 'yMaxMm': 297}))
+        doc.pdf.close()
+
+    def test_balanced_counts_do_not_allow_orphan_end_or_paragraph_in_fldsimple(self):
+        xml = '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:fldChar w:fldCharType="end"/><w:fldChar w:fldCharType="begin"/></w:r></w:p><w:fldSimple><w:p/></w:fldSimple></w:body></w:document>'
+        path = os.path.join(self.tmp.name, 'bad.docx')
+        with zipfile.ZipFile(path, 'w') as z:
+            z.writestr('word/document.xml', xml)
+        self.ctx['variants']['default']['docx'] = path
+        result = self.check('docx_no_undefined')
+        self.assertEqual(result['status'], 'FAIL')
+        self.assertTrue(any('orphan' in hit for hit in result['actual']))
+        self.assertTrue(any('fldSimple' in hit for hit in result['actual']))
 
 
 if __name__ == "__main__":

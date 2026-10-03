@@ -1,6 +1,8 @@
 import { specialPageCss } from "./specialPages.js";
 import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../lib/academicDocument.js";
 import { wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
+import { tableSemanticsCss } from "./tableSemantics.js";
+import { resolveLineSpacing, resolveIndent } from "./typography.js";
 import { exceptionSet } from "./transformExceptions.js";
 import { blockDescriptors, blockGapActive, gapBetween } from "./blockGap.js";
 
@@ -16,9 +18,13 @@ export const cssFamily = (value) => JSON.stringify(String(value || "Times New Ro
  * Roman 1.15 em = 13.8 pt at 12 pt). The stored value keeps its meaning (1.5 = one and a half
  * lines), so DOCX still writes Word's own line spacing.
  */
-export function effectiveLineHeight(lineHeight, spacing) {
-  const factor = spacing?.mode === "word" ? spacing.singleLineEm : 1;
-  return Math.round((lineHeight || 1.5) * factor * 10000) / 10000;
+export function effectiveLineHeight(lineHeight, spacing, style = {}) {
+  return resolveLineSpacing({ ...style, lineHeight }, spacing).em;
+}
+
+export function lineHeightCss(style, spacing) {
+  const resolved = resolveLineSpacing(style, spacing);
+  return (style.lineSpacing?.rule || spacing?.rule) && resolved.rule !== "auto" ? `${resolved.pitchPt}pt` : resolved.em;
 }
 
 /** CSS padding shorthand for `tables.cellPadding` ({topMm,rightMm,bottomMm,leftMm}); a missing edge is 0. A string is passed through. No value -> fallback. */
@@ -30,13 +36,11 @@ export function cellPaddingCss(cellPadding, fallback) {
 }
 
 /** First-line indent and left padding; a hanging indent (mm) moves every line but the first right. */
-export const indentMm = (style) => style.hangingIndentMm > 0
-  ? { first: -style.hangingIndentMm, left: (style.leftIndentMm || 0) + style.hangingIndentMm }
-  : { first: style.firstLineIndentMm || 0, left: style.leftIndentMm || 0 };
+export const indentMm = (style) => resolveIndent(style);
 
 function serializeStyle(style, lineSpacing) {
   const indent = indentMm(style);
-  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};line-height:${effectiveLineHeight(style.lineHeight, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${indent.first}mm;padding-left:${Math.max(0, indent.left)}mm;padding-right:${Math.max(0, style.rightIndentMm || 0)}mm;${indent.left < 0 ? `margin-left:${indent.left}mm;` : ""}${style.rightIndentMm < 0 ? `margin-right:${style.rightIndentMm}mm;` : ""}${style.color ? `color:${style.color};` : ""}${style.tabStopMm > 0 ? `tab-size:${style.tabStopMm}mm;` : ""}`;
+  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};line-height:${lineHeightCss(style, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${indent.first}mm;padding-left:${Math.max(0, indent.left)}mm;padding-right:${Math.max(0, indent.right || 0)}mm;${indent.left < 0 ? `margin-left:${indent.left}mm;` : ""}${indent.right < 0 ? `margin-right:${indent.right}mm;` : ""}${style.color ? `color:${style.color};` : ""}${style.tabStopMm > 0 ? `tab-size:${style.tabStopMm}mm;` : ""}`;
 }
 
 /** Typography of a caption label run (bold "Şekil 2.1"), when it differs from the caption text. */
@@ -57,12 +61,12 @@ export function sectionTextStyles(section) {
 
 export function thesisSectionCss(section) {
   const { page, body, headings, tables, figures, lineSpacing } = section.rules;
-  const lh = (value) => effectiveLineHeight(value, lineSpacing);
+  const lh = (value) => effectiveLineHeight(value, lineSpacing, body);
   // Opt-in Word line placement: a paint-only offset per text style (see wordBaseline.js).
-  const lift = (style) => wordBaselineCss(wordBaselineProbe(style, lineSpacing, lh(style?.lineHeight)));
+  const lift = (style) => wordBaselineCss(wordBaselineProbe(style, lineSpacing, effectiveLineHeight(style?.lineHeight, lineSpacing, style)));
   const styleCss = (style) => serializeStyle(style, lineSpacing);
   // A hanging indent belongs to the paragraphs (the `.thesis-body p` rule), never to the page/flow container around them.
-  const containerCss = (style) => styleCss({ ...style, hangingIndentMm: 0 });
+  const containerCss = (style) => styleCss(style.indent ? { ...style, indent: undefined, hangingIndentMm: 0, leftIndentMm: 0, rightIndentMm: 0 } : { ...style, hangingIndentMm: 0 });
   const textCss = (style) => serializeStyle(style, lineSpacing) + lift(style);
   const id = section.id;
   const paperScope = `.thesis-paper[data-thesis-section="${id}"]`;
@@ -77,12 +81,13 @@ export function thesisSectionCss(section) {
     `${paperScope}{${containerCss(body)}box-sizing:border-box;position:relative;z-index:1;width:${page.widthMm}mm;min-height:${page.heightMm}mm;padding:${page.margins.topMm}mm ${page.margins.rightMm}mm ${page.margins.bottomMm}mm ${page.margins.leftMm}mm;margin:0;background:transparent;color:#000;text-indent:0;}`,
     `${fragmentScope}{${containerCss(body)}display:block;margin:0;text-indent:0;}`,
     // A special page anchored to the bottom margin fills its page and puts its content at the bottom.
-    ...(section.verticalAlign === "bottom" ? [`${fragmentScope}{display:flex;flex-direction:column;justify-content:flex-end;min-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm}`] : []),
+    ...(["bottom", "center"].includes(section.verticalAlign) ? [`${fragmentScope}{display:flex;flex-direction:column;justify-content:${section.verticalAlign === "center" ? "center" : "flex-end"};min-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm}`] : []),
     // Legacy loose lines keep their geometry. New <p> blocks have real paragraph spacing.
-    `${scope} .thesis-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};margin:0;padding:0;text-indent:${text.firstLineIndentMm || 0}mm each-line;white-space:pre-wrap;overflow-wrap:break-word;}`,
+    `${scope} .thesis-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lineHeightCss(text, lineSpacing)};text-align:${text.align || "left"};margin:0;padding:0;text-indent:${text.firstLineIndentMm || 0}mm each-line;white-space:pre-wrap;overflow-wrap:break-word;}`,
+    `${scope} .thesis-body [data-thesis-tab]{display:inline-block;width:0;position:relative;overflow:hidden;vertical-align:baseline;text-indent:0;white-space:normal}${scope} .thesis-body [data-thesis-tab]>i{position:absolute;inset:0;font:inherit;white-space:nowrap;pointer-events:none}`,
     `${scope} .thesis-body :is(ul,ol,table,figure,pre,.academic-code,.academic-table-wrap,.math-formula){text-indent:0;}`,
-    `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lh(text.lineHeight)};text-align:${text.align || "left"};color:${text.color || "#000"};min-height:0;padding:0;margin:0;overflow:visible;}`,
-    `${scope} .thesis-body p{margin:${text.spaceBeforePt || 0}pt 0 ${text.spaceAfterPt || 0}pt;text-indent:${indentMm(text).first}mm;${text.hangingIndentMm > 0 ? `padding-left:${indentMm(text).left}mm;` : ""}${text.tabStopMm > 0 ? `tab-size:${text.tabStopMm}mm;` : ""}${lift(text)}}`,
+    `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lineHeightCss(text, lineSpacing)};text-align:${text.align || "left"};color:${text.color || "#000"};min-height:0;padding:0;margin:0;overflow:visible;}`,
+    `${scope} .thesis-body p{margin:${text.spaceBeforePt || 0}pt 0 ${text.spaceAfterPt || 0}pt;text-indent:${indentMm(text).first}mm;${text.indent || text.hangingIndentMm > 0 ? `padding-left:${indentMm(text).left}mm;` : ""}${text.indent ? `padding-right:${indentMm(text).right}mm;` : ""}${text.tabStopMm > 0 ? `tab-size:${text.tabStopMm}mm;` : ""}${lift(text)}}`,
     ...(lift(text) ? [`${scope} .thesis-body :is(ul,ol):not(.thesis-bibliography,.thesis-toc)>li{${lift(text)}}`, `${scope} .thesis-body :is(li,td,th,figcaption,caption) p{top:0}`] : []),
     // Named paragraph styles (typography.paragraphStyles): <p data-thesis-style="id"> is the body paragraph with the style's keys on top.
     ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => `${scope} .thesis-body p[data-thesis-style="${id}"]{${textCss({ ...text, ...style })}${style.keepWithNext ? "break-after:avoid;" : ""}}`),
@@ -107,7 +112,7 @@ export function thesisSectionCss(section) {
       ] : []),
     ] : [`${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:${cellPaddingCss(tables.cellPadding, `${ACADEMIC_TABLE_CELL_PADDING_PT.vertical}pt ${ACADEMIC_TABLE_CELL_PADDING_PT.horizontal}pt`)}${tables.cellPadding ? " !important" : ""};}`]),
     // Authored column widths (<col data-col-width="percent">); the table is table-layout:fixed.
-    `${scope} .thesis-body table>colgroup>col[data-col-width]{width:attr(data-col-width %, auto);}`,
+    ...tableSemanticsCss(scope, section),
     `${scope} .thesis-body caption{caption-side:${tables.position === "above" ? "top" : "bottom"};${textCss(tables.style)}text-align:${tables.captionAlignment === "auto" ? "center" : tables.captionAlignment || tables.style.align || "left"};margin-top:${tables.spacingBeforePt ?? tables.style.spaceBeforePt ?? 0}pt;margin-bottom:${tables.spacingAfterPt ?? tables.style.spaceAfterPt ?? 0}pt;}`,
     // Captions are document text: the academic editor's muted figcaption colour does not apply.
     `${scope} .thesis-body ${plainFigure}figcaption{${textCss(figures.style)}color:#000;text-align:${figures.captionAlignment === "auto" ? "center" : figures.captionAlignment || figures.style.align || "left"};margin-top:${figures.spacingBeforePt ?? figures.style.spaceBeforePt ?? 0}pt;margin-bottom:${figures.spacingAfterPt ?? figures.style.spaceAfterPt ?? 0}pt;}`,
@@ -188,10 +193,17 @@ export function thesisSectionCss(section) {
       ...(eq.style?.lineHeight ? [`${block}[data-thesis-eq][data-thesis-eq-base]::after{top:calc(attr(data-thesis-eq-base px, 0px) - 0.8375em);transform:none}`] : []),
     );
   }
+  // Section-end/browser fallback notes must use the resolved footnote typography too.
+  const note = section.rules.footnotes?.style;
+  if (note) rules.push(
+    `${scope} .thesis-body .academic-footnote-list{font-family:${cssFamily(note.fontFamily)};font-size:${note.fontSizePt}pt;line-height:${lineHeightCss(note, lineSpacing)};text-align:${note.align};text-indent:0}`,
+    `${scope} .thesis-body .academic-footnote-list>li{margin:${note.spaceBeforePt || 0}pt 0 ${note.spaceAfterPt || 0}pt;line-height:${lineHeightCss(note, lineSpacing)};${lift(note)}}`,
+    `${scope} .thesis-body .academic-footnote-list>li>sup{position:relative;top:-.35em;font-size:.75em;line-height:0;vertical-align:baseline}`,
+  );
   // Optional table body rule (e.g. single spacing, centered names/values); a cell's own alignment still wins.
   if (tables.cellStyle) {
     const cell = tables.cellStyle;
-    rules.push(`${scope} .thesis-body :is(td,th){${cell.align ? `text-align:${cell.align};` : ""}${cell.lineHeight ? `line-height:${lh(cell.lineHeight)};` : ""}${cell.fontSizePt ? `font-size:${cell.fontSizePt}pt;` : ""}${cell.fontFamily ? `font-family:${cssFamily(cell.fontFamily)};` : ""}text-indent:0;${lift({ ...text, ...cell })}}`);
+    rules.push(`${scope} .thesis-body :is(td,th){${cell.align ? `text-align:${cell.align};` : ""}${cell.lineHeight || cell.lineSpacing ? `line-height:${lineHeightCss({ ...text, ...cell }, lineSpacing)};` : ""}${cell.fontSizePt ? `font-size:${cell.fontSizePt}pt;` : ""}${cell.fontFamily ? `font-family:${cssFamily(cell.fontFamily)};` : ""}text-indent:0;${lift({ ...text, ...cell })}}`);
     rules.push(`${scope} .thesis-body :is(td,th) p{margin:0;text-indent:0;text-align:inherit;}`);
   }
   if (section.generatedIndex) {
@@ -247,6 +259,17 @@ export function thesisSectionCss(section) {
       }
     }
   }
+  const paragraphStyles = [["p:not([data-thesis-style])", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }])];
+  for (const [selector, style] of paragraphStyles) {
+    const canonical = style.lineSpacing || lineSpacing;
+    if (canonical?.rule === "exact") rules.push(`${scope} .thesis-body ${selector}{overflow:clip}${scope} .thesis-body ${selector} :is(span,a,b,strong,i,em,u,s){line-height:inherit}`);
+    if (canonical?.rule === "atLeast") rules.push(`${scope} .thesis-body ${selector} :is(span,a,b,strong,i,em,u,s){line-height:normal}`);
+  }
+  const contextual = [["p:not([data-thesis-style])", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }])];
+  for (const [selector, style] of contextual) {
+    if (style.contextualSpacing || lineSpacing?.contextualSpacing) rules.push(`${scope} .thesis-body ${selector}:has(+${selector}){margin-bottom:0}${scope} .thesis-body ${selector}+${selector}{margin-top:0}`);
+  }
+  if (lineSpacing?.suppressSpaceBeforeAtPageTop) rules.push(`${scope} .thesis-body>p:first-child,${scope} .thesis-body>.rich-text-body>p:first-child{margin-top:0}`);
   // lineSpacing.blockGap "paragraphPitch": the gap between ANY two block kinds comes from one table (blockGap.js), also used by the DOCX writer.
   if (blockGapActive(section.rules)) {
     const descriptors = blockDescriptors(section.rules, text, plainFigure ? plainFigure.trim() : "figure");
@@ -274,6 +297,15 @@ export function thesisSectionCss(section) {
     rules.push(`${scope} .thesis-body h${level}[data-unnumbered]{break-before:auto;}`);
     if (style.pageBreakBefore && style.pageBreakUnlessAfterHeading) rules.push(`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6) + h${level}{break-before:auto;}`);
   }
+  if (lineSpacing?.suppressSpaceBeforeAtPageTop) {
+    const first = ":is(p,h1,h2,h3,h4,h5,h6):first-child";
+    rules.push(`${scope} .thesis-body>${first},${scope} .thesis-body>.rich-text-body>${first}{margin-top:0 !important}`);
+    for (const [selector, style] of paragraphStyles) if (style.pageBreakBefore) rules.push(`${scope} .thesis-body ${selector}{margin-top:0 !important}`);
+    for (const [level, style] of Object.entries(headings)) if (style.pageBreakBefore) {
+      rules.push(`${scope} .thesis-body h${level}:not([data-unnumbered]){margin-top:0 !important}`);
+      if (style.pageBreakUnlessAfterHeading) rules.push(`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6)+h${level}{margin-top:${style.spaceBeforePt || 0}pt !important}`);
+    }
+  }
   return rules.join("\n");
 }
 
@@ -284,11 +316,11 @@ export function thesisFootnoteCss(group) {
   const { style, separator } = footnotes;
   const scope = `.thesis-footnote-area[data-thesis-footnote-group="${group.id}"]`;
   return [
-    `${scope}{position:absolute;box-sizing:border-box;left:${page.margins.leftMm}mm;width:${page.widthMm - page.margins.leftMm - page.margins.rightMm}mm;margin:0;padding:${separator.enabled ? separator.spaceBeforePt : 0}pt 0 0;color:#000;font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;line-height:${effectiveLineHeight(style.lineHeight, group.rules.lineSpacing)};text-align:${style.align};white-space:normal;overflow-wrap:break-word;pointer-events:none}`,
+    `${scope}{position:absolute;box-sizing:border-box;left:${page.margins.leftMm}mm;width:${page.widthMm - page.margins.leftMm - page.margins.rightMm}mm;margin:0;padding:${separator.enabled ? separator.spaceBeforePt : 0}pt 0 0;color:#000;font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;line-height:${lineHeightCss(style, group.rules.lineSpacing)};text-align:${style.align};white-space:normal;overflow-wrap:break-word;pointer-events:none}`,
     `${scope}[data-thesis-footnote-measure]{top:0;visibility:hidden}`,
     `${scope} .thesis-footnote-separator{display:block;width:${separator.widthPercent}%;height:0;margin:0 0 ${separator.spaceAfterPt}pt;border:0;border-top:${separator.thicknessPt}pt solid #111}`,
     `${scope} .thesis-footnote-list{list-style:none;margin:0;padding:0}`,
-    `${scope} .thesis-footnote{margin:${style.spaceBeforePt}pt 0 ${style.spaceAfterPt}pt;padding:0 ${style.rightIndentMm}mm 0 ${style.leftIndentMm}mm;text-indent:${style.firstLineIndentMm}mm;font-weight:${style.fontWeight};font-style:${style.italic ? "italic" : "normal"};letter-spacing:${style.characterSpacingPt}pt;${wordBaselineCss(wordBaselineProbe(style, group.rules.lineSpacing, effectiveLineHeight(style.lineHeight, group.rules.lineSpacing)))}}`,
+    `${scope} .thesis-footnote{margin:${style.spaceBeforePt}pt 0 ${style.spaceAfterPt}pt;padding:0 ${style.rightIndentMm}mm 0 ${style.leftIndentMm}mm;text-indent:${style.firstLineIndentMm}mm;font-weight:${style.fontWeight};font-style:${style.italic ? "italic" : "normal"};letter-spacing:${style.characterSpacingPt}pt;${wordBaselineCss(wordBaselineProbe(style, group.rules.lineSpacing, effectiveLineHeight(style.lineHeight, group.rules.lineSpacing, style)))}}`,
     `${scope} .thesis-footnote-label{position:relative;top:-.35em;font-size:.75em;line-height:0;vertical-align:baseline}`,
   ].join("\n");
 }

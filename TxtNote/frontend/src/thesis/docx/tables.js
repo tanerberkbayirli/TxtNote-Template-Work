@@ -1,4 +1,4 @@
-import { BorderStyle, HeightRule, Table, TableCell, TableRow, WidthType } from "docx";
+import { BorderStyle, HeightRule, Table, TableCell, TableRow, WidthType, VerticalAlign, TableLayoutType } from "docx";
 import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../../lib/academicDocument.js";
 import { effectiveLineHeight } from "../engine.js";
 import { CELL_BORDER, NO_BORDER, plainRuns, pt, twip } from "./xml.js";
@@ -26,12 +26,12 @@ export function tableDocx(block, section, context, before = null) {
   const useWidths = gridCols > 0 && sourceRows.every((row) => rowSpanCount(row) === gridCols && row.every((c) => !(c.rowspan > 1)));
   const textWidthTw = twip(section.rules.page.widthMm - section.rules.page.margins.leftMm - section.rules.page.margins.rightMm);
   const colTw = useWidths ? (() => { const total = block.colWidths.reduce((a, b) => a + b, 0); return block.colWidths.map((w) => Math.round(textWidthTw * w / total)); })() : null;
-  const makeRow = (row, rowIndex, keepRow = rowIndex < sourceRows.length - 1 || captionBelow) => new TableRow({
-    cantSplit: true, tableHeader: row.every((cell) => cell.header),
+  const makeRow = (row, rowIndex, keepRow = tables.cantSplit === false ? captionBelow && rowIndex === sourceRows.length - 1 : rowIndex < sourceRows.length - 1 || captionBelow) => new TableRow({
+    cantSplit: tables.cantSplit ?? true, tableHeader: tables.repeatHeader !== false && row.every((cell) => cell.header),
     // Word's row height (atLeast) is the CONTENT height only: cell top/bottom margins and the border are added on top (measured in Word: trHeight
     // 26.55 pt + tcMar 2 x 6 pt + 0.75 pt border = 39.3 pt rows, CSS rows = line box + padding + border = 26.55 pt). Word would otherwise use its glyph
     // box as the minimum, so the minimum is the resolved line box; margins and border then add up exactly as the editor's do.
-    height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing)), rule: HeightRule.ATLEAST },
+    ...(tables.rowHeight ? tables.rowHeight.rule === "auto" ? {} : { height: { value: twip(tables.rowHeight.valueMm), rule: tables.rowHeight.rule === "exact" ? HeightRule.EXACT : HeightRule.ATLEAST } } : { height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing, { ...body, ...cellStyle })), rule: HeightRule.ATLEAST } }),
     children: row.map((cell, cellIndex) => new TableCell({
       ...(colTw ? { width: { size: colTw.slice(row.slice(0, cellIndex).reduce((n, c) => n + (c.colspan > 1 ? c.colspan : 1), 0), row.slice(0, cellIndex + 1).reduce((n, c) => n + (c.colspan > 1 ? c.colspan : 1), 0)).reduce((a, b) => a + b, 0), type: WidthType.DXA } } : {}),
       columnSpan: cell.colspan > 1 ? cell.colspan : undefined, rowSpan: cell.rowspan > 1 ? cell.rowspan : undefined,
@@ -39,6 +39,7 @@ export function tableDocx(block, section, context, before = null) {
       ...(preset === "threeRule" && rowIndex === lastHeader ? { borders: { bottom: rule } } : {}),
       ...(preset === "headerRules" && row.every((c) => c.header) ? { borders: { bottom: rule } } : {}),
       margins: cellMargins,
+      ...(tables.verticalAlign ? { verticalAlign: { top: VerticalAlign.TOP, center: VerticalAlign.CENTER, bottom: VerticalAlign.BOTTOM }[tables.verticalAlign] } : {}),
       children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: keepRow, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
   });
@@ -47,7 +48,11 @@ export function tableDocx(block, section, context, before = null) {
     : preset === "threeRule" ? { top: rule, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : preset === "none" ? { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER };
-  const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders, ...(colTw ? { columnWidths: colTw } : {}) });
+  for (const edge of ["top", "bottom", "left", "right", "insideHorizontal", "insideVertical"]) {
+    const value = tables.borders?.[edge];
+    if (value) borders[edge] = { style: { single: BorderStyle.SINGLE, double: BorderStyle.DOUBLE, none: BorderStyle.NONE, dashed: BorderStyle.DASHED, dotted: BorderStyle.DOTTED }[value.style || "single"], size: Math.round((value.widthPt ?? 0.5) * 8), color: (value.color || "000000").replace(/^#/, "") };
+  }
+  const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders, ...(colTw ? { columnWidths: colTw, layout: TableLayoutType.FIXED } : {}) });
   // Continuation captions: the table is split at the rows the editor measured as page starts; each later
   // fragment gets its caption paragraph and the header row(s) again (Word cannot vary a repeated row's text).
   const headerRows = sourceRows.findIndex((row) => !row.every((cell) => cell.header));
@@ -71,7 +76,9 @@ export function tableDocx(block, section, context, before = null) {
     });
     return out;
   }
-  const rows = sourceRows.map(makeRow);
+  // Array.map passes its source array as a third argument; never let that
+  // overwrite keepRow for the new opt-in splitting model.
+  const rows = tables.cantSplit === false ? sourceRows.map((row, index) => makeRow(row, index)) : sourceRows.map(makeRow);
   if (rows.length) out.push(tableOf(rows));
   if (caption && tables.position !== "above") out.push(caption);
   return out;

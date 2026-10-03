@@ -8,6 +8,7 @@ import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 import { blockDescriptors } from "./blockGap.js";
 import { FOOTNOTE_REF_SELECTOR, renumberFootnoteRefs } from "./footnotes.js";
 import { applyTransformExceptions, exceptionSet, wrapExceptionWords } from "./transformExceptions.js";
+import { decorateTableSemantics } from "./tableSemantics.js";
 export { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 const text = plainThesisText;
 export const INDEX_ITERATION_CAP = 6;
@@ -290,6 +291,7 @@ export function decorateThesisSources(root, model) {
     }
     const host = root.querySelector(`[data-thesis-flow-section="${section.id}"] .thesis-body`);
     if (!host) continue;
+    decorateTableSemantics(host, section.rules.tables);
     // Footnote numbers are derived here, never trusted from stored markup: 1, 2, 3 in reading order of this body,
     // continuing after the sections before it in document numbering (footnoteOffset).
     host.querySelectorAll(FOOTNOTE_REF_SELECTOR).forEach((node, i) => {

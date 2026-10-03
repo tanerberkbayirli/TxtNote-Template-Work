@@ -123,7 +123,9 @@ export function docxChildren(section, context) {
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
       const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
       const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), chain(withGap({ ...style, ...(block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {}), ...spacing, align: align || style.align })), context));
+      const namedStyleId = named ? `ThesisParagraph_${section.id.replace(/[^A-Za-z0-9_]/g, "_")}_${block.thesisStyle.replace(/[^A-Za-z0-9_]/g, "_")}` : undefined;
+      if (namedStyleId) (context.namedParagraphStyles ||= new Map()).set(namedStyleId, { id: namedStyleId, name: namedStyleId, basedOn: "Normal", quickFormat: false });
+      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), chain(withGap({ ...style, ...(block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {}), ...spacing, align: align || style.align })), context, namedStyleId ? { style: namedStyleId } : {}));
     } else if (block.type === "list") {
       children.push(...listParagraphs(block, section, context, 0, before));
     } else if (block.type === "table") {

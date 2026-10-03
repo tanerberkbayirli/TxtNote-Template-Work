@@ -5,7 +5,7 @@ import { focusEditableStart } from "../../lib/richText.js";
 import { resolveChromeText, resolvePageNumberStyle } from "../../thesis/engine.js";
 import { chapterStartPageIndexes, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, thesisGroupHasPageContent } from "../../thesis/pageLayout.js";
 import { pageFootnotesSupported } from "../../thesis/footnotes.js";
-import { cssLineBaselineOffset } from "../../thesis/wordBaseline.js";
+import { cssLineBaselineOffset, wordBaselineProbe } from "../../thesis/wordBaseline.js";
 import { RichTextBody } from "./RichTextBody";
 
 /** Pages come from the browser's fragmentation engine; engines without multicol row wrapping keep the Task 6 continuous surface. */
@@ -31,16 +31,21 @@ function PageChrome({ section, values }) {
 function SheetChrome({ rules, values, page }) {
   const { page: rule, body } = rules;
   const { margins, header, footer } = rule;
-  const headerText = page.showHeader ? resolveChromeText(header?.content, values) : "";
-  const footerText = page.showFooter ? resolveChromeText(footer?.content, values) : "";
-  const box = { left: `${margins.leftMm}mm`, width: `${rule.widthMm - margins.leftMm - margins.rightMm}mm`, fontFamily: body.fontFamily, lineHeight: 1.1, color: "#000" };
+  const chromeValues = { ...values, NUMPAGES: page.totalPages };
+  const headerText = page.showHeader ? resolveChromeText(page.headerContent ?? header?.content, chromeValues) : "";
+  const footerText = page.showFooter ? resolveChromeText(page.footerContent ?? footer?.content, chromeValues) : "";
+  const box = { left: `${margins.leftMm}mm`, width: `${rule.widthMm - margins.leftMm - margins.rightMm}mm`, fontFamily: body.fontFamily, fontWeight: 400, fontStyle: "normal", lineHeight: 1.1, color: "#000" };
+  const wordChrome = Boolean(rules.lineSpacing?.rule || rule.differentFirstPage || header?.firstContent !== undefined || header?.evenContent !== undefined || footer?.firstContent !== undefined || footer?.evenContent !== undefined);
+  const chromeProbe = wordChrome ? wordBaselineProbe({ fontFamily: body.fontFamily, fontSizePt: 10, fontWeight: 400 }, { mode: "word", baseline: "word", singleLineEm: 1 }, 1.1) : null;
+  const chromeBaselinePx = chromeProbe ? cssLineBaselineOffset({ fontFamily: body.fontFamily, fontSize: "10pt", fontWeight: 400, fontStyle: "normal", lineHeight: 1.1 }) : null;
+  const chromeShiftMm = chromeProbe && Number.isFinite(chromeBaselinePx) ? chromeProbe.targetPt * 25.4 / 72 - chromeBaselinePx * 25.4 / 96 : 0;
   const topMm = (header?.distanceMm || 0) + (header?.heightMm || 0) / 2;
   const bottomMm = footer?.distanceMm || 0;
   // A number on the same edge as header/footer text stays nearest the paper edge; the text moves one line inward.
   const shift = (edge) => (page.label && page.numberPosition === edge ? 6 : 0);
   return <>
-    {headerText ? <div className="thesis-page-header absolute" style={{ ...box, fontSize: "10pt", top: `${topMm + shift("top")}mm` }}>{headerText}</div> : null}
-    {footerText ? <div className="thesis-page-footer absolute" style={{ ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom")}mm` }}>{footerText}</div> : null}
+    {headerText ? <div className="thesis-page-header absolute" style={{ ...box, fontSize: "10pt", top: `${topMm + shift("top") + chromeShiftMm}mm` }}>{headerText}</div> : null}
+    {footerText ? <div className="thesis-page-footer absolute" style={{ ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom") - chromeShiftMm}mm` }}>{footerText}</div> : null}
   {page.label ? (() => {
     const number = rule.numbering || {};
     const numberStyle = resolvePageNumberStyle(body, number);

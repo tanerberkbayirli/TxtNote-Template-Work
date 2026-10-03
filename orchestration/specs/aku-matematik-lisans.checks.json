@@ -46,7 +46,7 @@
    },
    "metric": "x0min"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
@@ -63,7 +63,7 @@
    },
    "metric": "x1max"
   },
-  "expected": 180.0,
+  "expected": 180,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
@@ -80,7 +80,8 @@
    },
    "regex": "^\\d\\. [A-ZÇĞİÖŞÜ ]+( ve [A-ZÇĞİÖŞÜ ]+)?$",
    "attr": "baseline",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 33.96,
   "tolerance": 0.5,
@@ -96,7 +97,8 @@
   "params": {
    "pages": {
     "label": "arabic"
-   }
+   },
+   "source": "layout"
   },
   "expected": 7.3025,
   "tolerance": 0.1,
@@ -141,9 +143,10 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "cx"
+   "attr": "cx",
+   "source": "layout"
   },
-  "expected": 105.0,
+  "expected": 105,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
@@ -158,9 +161,10 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "size"
+   "attr": "size",
+   "source": "layout"
   },
-  "expected": 10.0,
+  "expected": 10,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
@@ -175,7 +179,8 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "baseline"
+   "attr": "baseline",
+   "source": "layout"
   },
   "expected": 283.8,
   "tolerance": 0.5,
@@ -220,7 +225,8 @@
     "^Prof\\. Dr\\.",
     "^ANABİLİM DALI$",
     "^Haziran 2025$"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    208.39,
@@ -254,7 +260,8 @@
     "^Prof\\. Dr\\.",
     "^MATEMATİK BÖLÜMÜ$",
     "^Haziran 2025$"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    127.14,
@@ -281,7 +288,8 @@
    "lines": [
     "^TEŞEKKÜR$",
     "^Önsöz 1\\."
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    33.96,
@@ -302,7 +310,8 @@
     "find": "^TEŞEKKÜR$"
    },
    "a": "^görünmelidir\\.$",
-   "b": "^Önsöz 2\\."
+   "b": "^Önsöz 2\\.",
+   "source": "layout"
   },
   "expected": 14.6,
   "tolerance": 0.5,
@@ -320,7 +329,8 @@
     "find": "^TEŞEKKÜR$"
    },
    "a": "^görünmelidir\\.$",
-   "b": "^Ayşe DEMİR$"
+   "b": "^Ayşe DEMİR$",
+   "source": "layout"
   },
   "expected": 21.9,
   "tolerance": 0.5,
@@ -357,13 +367,14 @@
     "^2\\.1\\.1 Alt",
     "^2\\.1\\.1\\.1 Alt"
    ],
-   "attr": "x0"
+   "attr": "x0",
+   "source": "layout"
   },
   "expected": [
-   30.0,
-   35.0,
-   40.0,
-   45.0
+   30,
+   35,
+   40,
+   45
   ],
   "tolerance": 0.5,
   "source": {
@@ -381,7 +392,8 @@
    },
    "regex": "\\.{5,}",
    "max": 8,
-   "stat": "median"
+   "stat": "median",
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -399,7 +411,8 @@
     "find": "^ŞEKİLLER DİZİNİ$"
    },
    "a": "^Şekil 2\\.1 ",
-   "b": "^Şekil 3\\.1 "
+   "b": "^Şekil 3\\.1 ",
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -418,7 +431,8 @@
     "find": "^ŞEKİLLER DİZİNİ$"
    },
    "a": "^Şekil 3\\.1 ",
-   "b": "^bulguların uzman"
+   "b": "^bulguların uzman",
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -439,7 +453,8 @@
    "lines": [
     "^Simgeler$"
    ],
-   "attr": "x0"
+   "attr": "x0",
+   "source": "layout"
   },
   "expected": [
    31.97
@@ -475,7 +490,8 @@
     "find": "^SİMGELER ve KISALTMALAR DİZİNİ$"
    },
    "a": "görülebilsin$",
-   "b": "^Kısaltmalar$"
+   "b": "^Kısaltmalar$",
+   "source": "layout"
   },
   "expected": 9.9,
   "tolerance": 0.5,
@@ -531,9 +547,10 @@
    },
    "regex": "^\\d\\. [A-ZÇĞİÖŞÜ ]+( ve [A-ZÇĞİÖŞÜ ]+)?$",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
@@ -552,7 +569,8 @@
     }
    },
    "a": "^1\\. GİRİŞ$",
-   "b": "^Giriş 1\\."
+   "b": "^Giriş 1\\.",
+   "source": "layout"
   },
   "expected": 14.6,
   "tolerance": 0.5,
@@ -571,9 +589,10 @@
    },
    "regex": "^(Çizelge|Şekil|Resim) \\d+\\.\\d+ ",
    "attr": "size",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 11.0,
+  "expected": 11,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
@@ -594,7 +613,8 @@
    },
    "lines": [
     "^Çizelge 4\\.1 \\(Devam\\)"
-   ]
+   ],
+   "source": "layout"
   },
   "expected": [
    33.62
@@ -660,10 +680,11 @@
     "^Özdemir, Ş",
     "^öğrenme ortamlarında öz"
    ],
-   "attr": "x0"
+   "attr": "x0",
+   "source": "layout"
   },
   "expected": [
-   30.0,
+   30,
    42.5
   ],
   "tolerance": 0.5,

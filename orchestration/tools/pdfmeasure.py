@@ -16,10 +16,15 @@ Usage (python3):
 from __future__ import annotations
 
 import io
+import os
 import re
+import sys
 import zipfile
 from xml.etree import ElementTree as ET
 
+_local_packages = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'measurement-packages')
+if os.path.isdir(_local_packages):
+    sys.path.insert(0, _local_packages)
 import pymupdf
 
 PT2MM = 25.4 / 72

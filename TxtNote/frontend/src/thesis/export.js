@@ -17,7 +17,7 @@ export { bookmarkName } from "./docx/paragraphs.js";
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
-export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {}, tableContinuations = {}, blockPageBreaks = [] } = {}) {
+export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {}, tableContinuations = {}, blockPageBreaks = [], totalPages } = {}) {
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
   const nativeToc = model.sections.find((section) => section.generatedIndex?.kind === "toc");
@@ -64,6 +64,8 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
   }
   const context = {
     language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1,
+    evenAndOddHeaders: model.sections.some((section) => section.rules.page.header?.evenContent !== undefined || section.rules.page.footer?.evenContent !== undefined),
+    totalPages: totalPages ?? model.values?.TOTAL_PAGES,
     captionAlignments, captionHangs, indexHangs, tableContinuations, blockPageBreaks: new Set(blockPageBreaks),
     tocRowsByAnchor,
     nativeTocField: nativeToc ? { instruction: indexFieldInstruction(nativeToc.generatedIndex, tocStyleLevels, [...tocNoPageLevels]) } : null,
@@ -83,10 +85,10 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
     const properties = (type, titlePage, continued = false) => ({
       type,
       titlePage,
-      ...(section.verticalAlign === "bottom" ? { verticalAlign: VerticalAlign.BOTTOM } : {}),
+      ...(section.verticalAlign ? { verticalAlign: { top: VerticalAlign.TOP, center: VerticalAlign.CENTER, bottom: VerticalAlign.BOTTOM }[section.verticalAlign] } : {}),
       page: {
         size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
-        margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM), footer: twip(page.footer?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM) },
+        margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM), footer: twip(page.footer?.docxDistanceMm ?? page.footer?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM) },
         pageNumbers: { start: continued ? undefined : page.numbering.restart ? (page.numbering.startAt ?? 1) : undefined, formatType: pageFormat(page.numbering.format) },
       },
     });
@@ -127,10 +129,10 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       document: { run: { font: base.body.fontFamily, size: halfPointSize(base.body.fontSizePt) } },
       ...Object.fromEntries(Object.keys(base.headings).filter((level) => Number(level) <= 6).map((level) => [`heading${level}`, headingStyle(base.headings[level], context.language, level)])),
     },
-    ...((context.footnoteParagraphStyles?.size || context.thesisHeadingStyles.size || context.tocParagraphStyles.size) ? { paragraphStyles: [...(context.footnoteParagraphStyles?.values() || []), ...context.thesisHeadingStyles.values(), ...context.tocParagraphStyles.values()] } : {}),
+    ...((context.namedParagraphStyles?.size || context.footnoteParagraphStyles?.size || context.thesisHeadingStyles.size || context.tocParagraphStyles.size) ? { paragraphStyles: [...(context.namedParagraphStyles?.values() || []), ...(context.footnoteParagraphStyles?.values() || []), ...context.thesisHeadingStyles.values(), ...context.tocParagraphStyles.values()] } : {}),
   } : undefined;
   return Packer.toBlob(new Document({
-    title: model.title || "Tez", creator: "TxtNote", features: { updateFields: true }, styles,
+    title: model.title || "Tez", creator: "TxtNote", features: { updateFields: true }, evenAndOddHeaderAndFooters: context.evenAndOddHeaders, styles,
     numbering: { config: [{ reference: "thesis-ordered", levels: listLevels(true) }, { reference: "thesis-bullet", levels: listLevels(false) }] },
     footnotes: context.footnotes, sections,
   }));

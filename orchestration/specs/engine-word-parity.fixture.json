@@ -1,0 +1,1647 @@
+{
+ "title": "Word semantics matrix",
+ "__template": {
+  "schemaVersion": 1,
+  "templateVersion": "1.0.0",
+  "id": "engine-word-parity",
+  "universityId": "engine-test",
+  "universityName": "Engine acceptance test",
+  "degreeType": "master",
+  "language": "tr",
+  "status": "generic",
+  "source": {
+   "type": "manual",
+   "documentName": "Isolated Word semantics acceptance matrix (no university values)"
+  },
+  "page": {
+   "size": "A4",
+   "widthMm": 210,
+   "heightMm": 297,
+   "orientation": "portrait",
+   "margins": {
+    "topMm": 25,
+    "bottomMm": 25,
+    "leftMm": 30,
+    "rightMm": 25
+   },
+   "header": {
+    "heightMm": 8,
+    "distanceMm": 12,
+    "content": "",
+    "firstPage": "same"
+   },
+   "footer": {
+    "heightMm": 8,
+    "distanceMm": 12,
+    "content": "",
+    "firstPage": "same"
+   },
+   "numbering": {
+    "enabled": false,
+    "position": "bottom",
+    "align": "center",
+    "format": "arabic",
+    "startAt": 1,
+    "restart": false
+   }
+  },
+  "typography": {
+   "body": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 400,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 6,
+    "firstLineIndentMm": 0
+   },
+   "headings": {
+    "1": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}"
+     }
+    },
+    "2": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     }
+    },
+    "3": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     }
+    },
+    "4": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}"
+     }
+    }
+   }
+  },
+  "placeholders": {},
+  "sections": [
+   {
+    "id": "LP001",
+    "type": "mainContent",
+    "title": "LP001",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP002",
+    "type": "custom",
+    "title": "LP002",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP003",
+    "type": "custom",
+    "title": "LP003",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP004",
+    "type": "custom",
+    "title": "LP004",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP005",
+    "type": "custom",
+    "title": "LP005",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP006",
+    "type": "custom",
+    "title": "LP006",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP007",
+    "type": "custom",
+    "title": "LP007",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP008",
+    "type": "custom",
+    "title": "LP008",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP009",
+    "type": "custom",
+    "title": "LP009",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP010",
+    "type": "custom",
+    "title": "LP010",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP011",
+    "type": "custom",
+    "title": "LP011",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP012",
+    "type": "custom",
+    "title": "LP012",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP013",
+    "type": "custom",
+    "title": "LP013",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP014",
+    "type": "custom",
+    "title": "LP014",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP015",
+    "type": "custom",
+    "title": "LP015",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP016",
+    "type": "custom",
+    "title": "LP016",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP017",
+    "type": "custom",
+    "title": "LP017",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP018",
+    "type": "custom",
+    "title": "LP018",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP019",
+    "type": "custom",
+    "title": "LP019",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP020",
+    "type": "custom",
+    "title": "LP020",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP021",
+    "type": "custom",
+    "title": "LP021",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP022",
+    "type": "custom",
+    "title": "LP022",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP023",
+    "type": "custom",
+    "title": "LP023",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP024",
+    "type": "custom",
+    "title": "LP024",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP025",
+    "type": "custom",
+    "title": "LP025",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP026",
+    "type": "custom",
+    "title": "LP026",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP027",
+    "type": "custom",
+    "title": "LP027",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP028",
+    "type": "custom",
+    "title": "LP028",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP029",
+    "type": "custom",
+    "title": "LP029",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP030",
+    "type": "custom",
+    "title": "LP030",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP031",
+    "type": "custom",
+    "title": "LP031",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP032",
+    "type": "custom",
+    "title": "LP032",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP033",
+    "type": "custom",
+    "title": "LP033",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP034",
+    "type": "custom",
+    "title": "LP034",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP035",
+    "type": "custom",
+    "title": "LP035",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP036",
+    "type": "custom",
+    "title": "LP036",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP037",
+    "type": "custom",
+    "title": "LP037",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP038",
+    "type": "custom",
+    "title": "LP038",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP039",
+    "type": "custom",
+    "title": "LP039",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP040",
+    "type": "custom",
+    "title": "LP040",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP041",
+    "type": "custom",
+    "title": "LP041",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP042",
+    "type": "custom",
+    "title": "LP042",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP043",
+    "type": "custom",
+    "title": "LP043",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP044",
+    "type": "custom",
+    "title": "LP044",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP045",
+    "type": "custom",
+    "title": "LP045",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP046",
+    "type": "custom",
+    "title": "LP046",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP047",
+    "type": "custom",
+    "title": "LP047",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP048",
+    "type": "custom",
+    "title": "LP048",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 11,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP049",
+    "type": "custom",
+    "title": "LP049",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP050",
+    "type": "custom",
+    "title": "LP050",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.15,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP051",
+    "type": "custom",
+    "title": "LP051",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP052",
+    "type": "custom",
+    "title": "LP052",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 2,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP053",
+    "type": "custom",
+    "title": "LP053",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "exact",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "LP054",
+    "type": "custom",
+    "title": "LP054",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "lineSpacing": {
+       "rule": "atLeast",
+       "value": 14,
+       "baseline": "word"
+      }
+     }
+    }
+   }
+  ],
+  "tables": {
+   "label": "Tablo",
+   "position": "above",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 8,
+   "spacingAfterPt": 6,
+   "align": "center"
+  },
+  "figures": {
+   "label": "Şekil",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 6,
+   "spacingAfterPt": 8,
+   "align": "center"
+  },
+  "bibliography": {
+   "heading": "Kaynakça",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "lineHeight": 1.5
+   },
+   "hangingIndentMm": 10
+  },
+  "toc": {
+   "heading": "İçindekiler",
+   "levels": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "showPageNumbers": true
+  }
+ },
+ "content": "<p>LP001 Line 1: Abcdefg gjpqy 0123456789<br>LP001 Line 2: Abcdefg gjpqy 0123456789<br>LP001 Line 3: Abcdefg gjpqy 0123456789<br>LP001 Line 4: Abcdefg gjpqy 0123456789<br>LP001 Line 5: Abcdefg gjpqy 0123456789</p>",
+ "researchData": {
+  "thesis": {
+   "templateId": "engine-word-parity",
+   "templateVersion": "1.0.0",
+   "values": {},
+   "sectionContent": {
+    "LP001": "<p>LP001 Line 1: Abcdefg gjpqy 0123456789<br>LP001 Line 2: Abcdefg gjpqy 0123456789<br>LP001 Line 3: Abcdefg gjpqy 0123456789<br>LP001 Line 4: Abcdefg gjpqy 0123456789<br>LP001 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP002": "<p>LP002 Line 1: Abcdefg gjpqy 0123456789<br>LP002 Line 2: Abcdefg gjpqy 0123456789<br>LP002 Line 3: Abcdefg gjpqy 0123456789<br>LP002 Line 4: Abcdefg gjpqy 0123456789<br>LP002 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP003": "<p>LP003 Line 1: Abcdefg gjpqy 0123456789<br>LP003 Line 2: Abcdefg gjpqy 0123456789<br>LP003 Line 3: Abcdefg gjpqy 0123456789<br>LP003 Line 4: Abcdefg gjpqy 0123456789<br>LP003 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP004": "<p>LP004 Line 1: Abcdefg gjpqy 0123456789<br>LP004 Line 2: Abcdefg gjpqy 0123456789<br>LP004 Line 3: Abcdefg gjpqy 0123456789<br>LP004 Line 4: Abcdefg gjpqy 0123456789<br>LP004 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP005": "<p>LP005 Line 1: Abcdefg gjpqy 0123456789<br>LP005 Line 2: Abcdefg gjpqy 0123456789<br>LP005 Line 3: Abcdefg gjpqy 0123456789<br>LP005 Line 4: Abcdefg gjpqy 0123456789<br>LP005 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP006": "<p>LP006 Line 1: Abcdefg gjpqy 0123456789<br>LP006 Line 2: Abcdefg gjpqy 0123456789<br>LP006 Line 3: Abcdefg gjpqy 0123456789<br>LP006 Line 4: Abcdefg gjpqy 0123456789<br>LP006 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP007": "<p>LP007 Line 1: Abcdefg gjpqy 0123456789<br>LP007 Line 2: Abcdefg gjpqy 0123456789<br>LP007 Line 3: Abcdefg gjpqy 0123456789<br>LP007 Line 4: Abcdefg gjpqy 0123456789<br>LP007 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP008": "<p>LP008 Line 1: Abcdefg gjpqy 0123456789<br>LP008 Line 2: Abcdefg gjpqy 0123456789<br>LP008 Line 3: Abcdefg gjpqy 0123456789<br>LP008 Line 4: Abcdefg gjpqy 0123456789<br>LP008 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP009": "<p>LP009 Line 1: Abcdefg gjpqy 0123456789<br>LP009 Line 2: Abcdefg gjpqy 0123456789<br>LP009 Line 3: Abcdefg gjpqy 0123456789<br>LP009 Line 4: Abcdefg gjpqy 0123456789<br>LP009 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP010": "<p>LP010 Line 1: Abcdefg gjpqy 0123456789<br>LP010 Line 2: Abcdefg gjpqy 0123456789<br>LP010 Line 3: Abcdefg gjpqy 0123456789<br>LP010 Line 4: Abcdefg gjpqy 0123456789<br>LP010 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP011": "<p>LP011 Line 1: Abcdefg gjpqy 0123456789<br>LP011 Line 2: Abcdefg gjpqy 0123456789<br>LP011 Line 3: Abcdefg gjpqy 0123456789<br>LP011 Line 4: Abcdefg gjpqy 0123456789<br>LP011 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP012": "<p>LP012 Line 1: Abcdefg gjpqy 0123456789<br>LP012 Line 2: Abcdefg gjpqy 0123456789<br>LP012 Line 3: Abcdefg gjpqy 0123456789<br>LP012 Line 4: Abcdefg gjpqy 0123456789<br>LP012 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP013": "<p>LP013 Line 1: Abcdefg gjpqy 0123456789<br>LP013 Line 2: Abcdefg gjpqy 0123456789<br>LP013 Line 3: Abcdefg gjpqy 0123456789<br>LP013 Line 4: Abcdefg gjpqy 0123456789<br>LP013 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP014": "<p>LP014 Line 1: Abcdefg gjpqy 0123456789<br>LP014 Line 2: Abcdefg gjpqy 0123456789<br>LP014 Line 3: Abcdefg gjpqy 0123456789<br>LP014 Line 4: Abcdefg gjpqy 0123456789<br>LP014 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP015": "<p>LP015 Line 1: Abcdefg gjpqy 0123456789<br>LP015 Line 2: Abcdefg gjpqy 0123456789<br>LP015 Line 3: Abcdefg gjpqy 0123456789<br>LP015 Line 4: Abcdefg gjpqy 0123456789<br>LP015 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP016": "<p>LP016 Line 1: Abcdefg gjpqy 0123456789<br>LP016 Line 2: Abcdefg gjpqy 0123456789<br>LP016 Line 3: Abcdefg gjpqy 0123456789<br>LP016 Line 4: Abcdefg gjpqy 0123456789<br>LP016 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP017": "<p>LP017 Line 1: Abcdefg gjpqy 0123456789<br>LP017 Line 2: Abcdefg gjpqy 0123456789<br>LP017 Line 3: Abcdefg gjpqy 0123456789<br>LP017 Line 4: Abcdefg gjpqy 0123456789<br>LP017 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP018": "<p>LP018 Line 1: Abcdefg gjpqy 0123456789<br>LP018 Line 2: Abcdefg gjpqy 0123456789<br>LP018 Line 3: Abcdefg gjpqy 0123456789<br>LP018 Line 4: Abcdefg gjpqy 0123456789<br>LP018 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP019": "<p>LP019 Line 1: Abcdefg gjpqy 0123456789<br>LP019 Line 2: Abcdefg gjpqy 0123456789<br>LP019 Line 3: Abcdefg gjpqy 0123456789<br>LP019 Line 4: Abcdefg gjpqy 0123456789<br>LP019 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP020": "<p>LP020 Line 1: Abcdefg gjpqy 0123456789<br>LP020 Line 2: Abcdefg gjpqy 0123456789<br>LP020 Line 3: Abcdefg gjpqy 0123456789<br>LP020 Line 4: Abcdefg gjpqy 0123456789<br>LP020 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP021": "<p>LP021 Line 1: Abcdefg gjpqy 0123456789<br>LP021 Line 2: Abcdefg gjpqy 0123456789<br>LP021 Line 3: Abcdefg gjpqy 0123456789<br>LP021 Line 4: Abcdefg gjpqy 0123456789<br>LP021 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP022": "<p>LP022 Line 1: Abcdefg gjpqy 0123456789<br>LP022 Line 2: Abcdefg gjpqy 0123456789<br>LP022 Line 3: Abcdefg gjpqy 0123456789<br>LP022 Line 4: Abcdefg gjpqy 0123456789<br>LP022 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP023": "<p>LP023 Line 1: Abcdefg gjpqy 0123456789<br>LP023 Line 2: Abcdefg gjpqy 0123456789<br>LP023 Line 3: Abcdefg gjpqy 0123456789<br>LP023 Line 4: Abcdefg gjpqy 0123456789<br>LP023 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP024": "<p>LP024 Line 1: Abcdefg gjpqy 0123456789<br>LP024 Line 2: Abcdefg gjpqy 0123456789<br>LP024 Line 3: Abcdefg gjpqy 0123456789<br>LP024 Line 4: Abcdefg gjpqy 0123456789<br>LP024 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP025": "<p>LP025 Line 1: Abcdefg gjpqy 0123456789<br>LP025 Line 2: Abcdefg gjpqy 0123456789<br>LP025 Line 3: Abcdefg gjpqy 0123456789<br>LP025 Line 4: Abcdefg gjpqy 0123456789<br>LP025 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP026": "<p>LP026 Line 1: Abcdefg gjpqy 0123456789<br>LP026 Line 2: Abcdefg gjpqy 0123456789<br>LP026 Line 3: Abcdefg gjpqy 0123456789<br>LP026 Line 4: Abcdefg gjpqy 0123456789<br>LP026 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP027": "<p>LP027 Line 1: Abcdefg gjpqy 0123456789<br>LP027 Line 2: Abcdefg gjpqy 0123456789<br>LP027 Line 3: Abcdefg gjpqy 0123456789<br>LP027 Line 4: Abcdefg gjpqy 0123456789<br>LP027 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP028": "<p>LP028 Line 1: Abcdefg gjpqy 0123456789<br>LP028 Line 2: Abcdefg gjpqy 0123456789<br>LP028 Line 3: Abcdefg gjpqy 0123456789<br>LP028 Line 4: Abcdefg gjpqy 0123456789<br>LP028 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP029": "<p>LP029 Line 1: Abcdefg gjpqy 0123456789<br>LP029 Line 2: Abcdefg gjpqy 0123456789<br>LP029 Line 3: Abcdefg gjpqy 0123456789<br>LP029 Line 4: Abcdefg gjpqy 0123456789<br>LP029 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP030": "<p>LP030 Line 1: Abcdefg gjpqy 0123456789<br>LP030 Line 2: Abcdefg gjpqy 0123456789<br>LP030 Line 3: Abcdefg gjpqy 0123456789<br>LP030 Line 4: Abcdefg gjpqy 0123456789<br>LP030 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP031": "<p>LP031 Line 1: Abcdefg gjpqy 0123456789<br>LP031 Line 2: Abcdefg gjpqy 0123456789<br>LP031 Line 3: Abcdefg gjpqy 0123456789<br>LP031 Line 4: Abcdefg gjpqy 0123456789<br>LP031 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP032": "<p>LP032 Line 1: Abcdefg gjpqy 0123456789<br>LP032 Line 2: Abcdefg gjpqy 0123456789<br>LP032 Line 3: Abcdefg gjpqy 0123456789<br>LP032 Line 4: Abcdefg gjpqy 0123456789<br>LP032 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP033": "<p>LP033 Line 1: Abcdefg gjpqy 0123456789<br>LP033 Line 2: Abcdefg gjpqy 0123456789<br>LP033 Line 3: Abcdefg gjpqy 0123456789<br>LP033 Line 4: Abcdefg gjpqy 0123456789<br>LP033 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP034": "<p>LP034 Line 1: Abcdefg gjpqy 0123456789<br>LP034 Line 2: Abcdefg gjpqy 0123456789<br>LP034 Line 3: Abcdefg gjpqy 0123456789<br>LP034 Line 4: Abcdefg gjpqy 0123456789<br>LP034 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP035": "<p>LP035 Line 1: Abcdefg gjpqy 0123456789<br>LP035 Line 2: Abcdefg gjpqy 0123456789<br>LP035 Line 3: Abcdefg gjpqy 0123456789<br>LP035 Line 4: Abcdefg gjpqy 0123456789<br>LP035 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP036": "<p>LP036 Line 1: Abcdefg gjpqy 0123456789<br>LP036 Line 2: Abcdefg gjpqy 0123456789<br>LP036 Line 3: Abcdefg gjpqy 0123456789<br>LP036 Line 4: Abcdefg gjpqy 0123456789<br>LP036 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP037": "<p>LP037 Line 1: Abcdefg gjpqy 0123456789<br>LP037 Line 2: Abcdefg gjpqy 0123456789<br>LP037 Line 3: Abcdefg gjpqy 0123456789<br>LP037 Line 4: Abcdefg gjpqy 0123456789<br>LP037 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP038": "<p>LP038 Line 1: Abcdefg gjpqy 0123456789<br>LP038 Line 2: Abcdefg gjpqy 0123456789<br>LP038 Line 3: Abcdefg gjpqy 0123456789<br>LP038 Line 4: Abcdefg gjpqy 0123456789<br>LP038 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP039": "<p>LP039 Line 1: Abcdefg gjpqy 0123456789<br>LP039 Line 2: Abcdefg gjpqy 0123456789<br>LP039 Line 3: Abcdefg gjpqy 0123456789<br>LP039 Line 4: Abcdefg gjpqy 0123456789<br>LP039 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP040": "<p>LP040 Line 1: Abcdefg gjpqy 0123456789<br>LP040 Line 2: Abcdefg gjpqy 0123456789<br>LP040 Line 3: Abcdefg gjpqy 0123456789<br>LP040 Line 4: Abcdefg gjpqy 0123456789<br>LP040 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP041": "<p>LP041 Line 1: Abcdefg gjpqy 0123456789<br>LP041 Line 2: Abcdefg gjpqy 0123456789<br>LP041 Line 3: Abcdefg gjpqy 0123456789<br>LP041 Line 4: Abcdefg gjpqy 0123456789<br>LP041 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP042": "<p>LP042 Line 1: Abcdefg gjpqy 0123456789<br>LP042 Line 2: Abcdefg gjpqy 0123456789<br>LP042 Line 3: Abcdefg gjpqy 0123456789<br>LP042 Line 4: Abcdefg gjpqy 0123456789<br>LP042 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP043": "<p>LP043 Line 1: Abcdefg gjpqy 0123456789<br>LP043 Line 2: Abcdefg gjpqy 0123456789<br>LP043 Line 3: Abcdefg gjpqy 0123456789<br>LP043 Line 4: Abcdefg gjpqy 0123456789<br>LP043 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP044": "<p>LP044 Line 1: Abcdefg gjpqy 0123456789<br>LP044 Line 2: Abcdefg gjpqy 0123456789<br>LP044 Line 3: Abcdefg gjpqy 0123456789<br>LP044 Line 4: Abcdefg gjpqy 0123456789<br>LP044 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP045": "<p>LP045 Line 1: Abcdefg gjpqy 0123456789<br>LP045 Line 2: Abcdefg gjpqy 0123456789<br>LP045 Line 3: Abcdefg gjpqy 0123456789<br>LP045 Line 4: Abcdefg gjpqy 0123456789<br>LP045 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP046": "<p>LP046 Line 1: Abcdefg gjpqy 0123456789<br>LP046 Line 2: Abcdefg gjpqy 0123456789<br>LP046 Line 3: Abcdefg gjpqy 0123456789<br>LP046 Line 4: Abcdefg gjpqy 0123456789<br>LP046 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP047": "<p>LP047 Line 1: Abcdefg gjpqy 0123456789<br>LP047 Line 2: Abcdefg gjpqy 0123456789<br>LP047 Line 3: Abcdefg gjpqy 0123456789<br>LP047 Line 4: Abcdefg gjpqy 0123456789<br>LP047 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP048": "<p>LP048 Line 1: Abcdefg gjpqy 0123456789<br>LP048 Line 2: Abcdefg gjpqy 0123456789<br>LP048 Line 3: Abcdefg gjpqy 0123456789<br>LP048 Line 4: Abcdefg gjpqy 0123456789<br>LP048 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP049": "<p>LP049 Line 1: Abcdefg gjpqy 0123456789<br>LP049 Line 2: Abcdefg gjpqy 0123456789<br>LP049 Line 3: Abcdefg gjpqy 0123456789<br>LP049 Line 4: Abcdefg gjpqy 0123456789<br>LP049 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP050": "<p>LP050 Line 1: Abcdefg gjpqy 0123456789<br>LP050 Line 2: Abcdefg gjpqy 0123456789<br>LP050 Line 3: Abcdefg gjpqy 0123456789<br>LP050 Line 4: Abcdefg gjpqy 0123456789<br>LP050 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP051": "<p>LP051 Line 1: Abcdefg gjpqy 0123456789<br>LP051 Line 2: Abcdefg gjpqy 0123456789<br>LP051 Line 3: Abcdefg gjpqy 0123456789<br>LP051 Line 4: Abcdefg gjpqy 0123456789<br>LP051 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP052": "<p>LP052 Line 1: Abcdefg gjpqy 0123456789<br>LP052 Line 2: Abcdefg gjpqy 0123456789<br>LP052 Line 3: Abcdefg gjpqy 0123456789<br>LP052 Line 4: Abcdefg gjpqy 0123456789<br>LP052 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP053": "<p>LP053 Line 1: Abcdefg gjpqy 0123456789<br>LP053 Line 2: Abcdefg gjpqy 0123456789<br>LP053 Line 3: Abcdefg gjpqy 0123456789<br>LP053 Line 4: Abcdefg gjpqy 0123456789<br>LP053 Line 5: Abcdefg gjpqy 0123456789</p>",
+    "LP054": "<p>LP054 Line 1: Abcdefg gjpqy 0123456789<br>LP054 Line 2: Abcdefg gjpqy 0123456789<br>LP054 Line 3: Abcdefg gjpqy 0123456789<br>LP054 Line 4: Abcdefg gjpqy 0123456789<br>LP054 Line 5: Abcdefg gjpqy 0123456789</p>"
+   }
+  }
+ }
+}

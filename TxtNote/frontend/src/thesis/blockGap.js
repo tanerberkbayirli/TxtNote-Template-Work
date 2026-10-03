@@ -1,3 +1,4 @@
+import { resolveLineSpacing } from "./typography.js";
 /**
  * Vertical rhythm of a thesis body in ONE place (opt-in: `typography.lineSpacing.blockGap: "paragraphPitch"`, needs mode "word"
  * and baseline "word"). Every block kind has an entry (how a block starts) and an exit (how it ends); `gapBetween` gives the gap
@@ -18,10 +19,10 @@ export const WORD_ASCENT_EM = 0.9336;
 
 export function blockGapActive(rules) {
   const spacing = rules?.lineSpacing;
-  return spacing?.mode === "word" && spacing.baseline === "word" && spacing.blockGap === "paragraphPitch";
+  return (spacing?.mode === "word" || spacing?.rule) && spacing.baseline === "word" && spacing.blockGap === "paragraphPitch";
 }
 
-const lineBox = (style, spacing) => (style.lineHeight || 1.5) * spacing.singleLineEm * style.fontSizePt;
+const lineBox = (style, spacing) => resolveLineSpacing(style, spacing).pitchPt;
 const round = (value) => Math.round(value * 1000) / 1000;
 const textEntry = (style, before = style.spaceBeforePt || 0) => ({ mode: "text", ascent: WORD_ASCENT_EM * style.fontSizePt, before });
 const textExit = (style, spacing, after = style.spaceAfterPt || 0, cssAfter = after) => ({ bottomBase: lineBox(style, spacing) - WORD_ASCENT_EM * style.fontSizePt, after, cssAfter });

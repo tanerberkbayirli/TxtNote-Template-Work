@@ -86,9 +86,12 @@ const innerCover = {
     { b: 151.5, sp: 1.5, block: meta("STUDENT_NUMBER", "Numara"), style: bold },
     { b: 180.7, sp: 1.5, text: "Danışman:", style: bold },
     { b: 188.0, sp: 1.5, text: "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}", style: bold },
-    { b: 261.1, sp: 1.5, text: "Afyonkarahisar, {{YEAR}}" },
   ]),
 };
+// Source page 2 fixes the city/year baseline at 261.063 mm. A longer authored
+// title has no official rule (Tier 2 UNKNOWN); keep this footer block at its
+// measured location using the existing generic anchored-block capability.
+innerCover.blocks.push({ type: "text", value: "Afyonkarahisar, {{YEAR}}", layoutMode: "anchored", xMm: FRONT_MARGINS.leftMm, yMm: round(261.1 - ascentMm(12)), widthMm: 210 - FRONT_MARGINS.leftMm - FRONT_MARGINS.rightMm, heightMm: round(lineMm(12, 1.5)), style: { fontSizePt: 12, lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 } });
 
 // BİLİMSEL ETİK BİLDİRİM SAYFASI (page "ii"): bold centred title; justified 1.5-line paragraph with a 12.5 mm (709 twips) first-line indent;
 // date / name / İmza right-aligned lines.
@@ -255,10 +258,10 @@ export const akuIsgTezsizProje = {
     size: "A4", widthMm: 210, heightMm: 297, orientation: "portrait",
     margins: BODY_MARGINS,
     header: { distanceMm: 12.5 },
-    // This reproduces the measured page-number baseline including the trailing empty footer paragraph.
-    // Footer height is not a section property; omit it so the engine uses its generic default.
-    footer: { distanceMm: 17.4 },
-    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, style: { fontFamily: FONT, fontSizePt: 11 } },
+    // pgMar footer=709 twips. footer1/2.xml contains PAGE + an empty AltBilgi
+    // paragraph (Normal TNR12); the cached official Word render baseline is 278.8 mm.
+    footer: { distanceMm: 12.506, trailingBlankLines: 1 },
+    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, baselineFromTopMm: 278.8, style: { fontFamily: FONT, fontSizePt: 11 } },
   },
   typography: {
     body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "justify", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 },

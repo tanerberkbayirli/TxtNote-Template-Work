@@ -11,6 +11,7 @@ import { jsPDF } from "jspdf";
 import { academicPdfFont, academicPdfFontFace, exactAcademicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts, hasSystemPdfFont, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
 import { canvasFontAscent } from "./wordBaseline.js";
 import { PX_PER_MM, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
+import { layoutLandmarkIndex, layoutPageReport } from "./layoutReport.js";
 
 const MM = 1 / PX_PER_MM;
 // KaTeX keeps a visually hidden MathML copy next to the drawn formula; only the drawn one is exported.
@@ -131,7 +132,7 @@ function markerText(li, type) {
 }
 
 /** Draw operations of one page group, in CSS px relative to its unscaled page stack. */
-function collectGroup(stack, language, exactFamilies = new Set()) {
+function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex = null) {
   const origin = stack.getBoundingClientRect();
   // The exact display scale; offsetWidth is rounded to whole pixels (793.7 → 794 for A4),
   // which would stretch every position by ~0.04%.
@@ -154,8 +155,11 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
     const box = local(rect);
     const fill = color(style.color);
     if (!text || !fill) return;
+    const intersects = (clip) => box.top < clip.top + clip.height && box.top + box.height > clip.top && box.left < clip.left + clip.width && box.left + box.width > clip.left;
+    const clip = extra?.clipRects ? extra.clipRects.find(intersects) : extra?.clip;
+    if ((extra?.clipRects && !clip) || (clip && !intersects(clip))) return;
     const metricsStyle = style.pdfMetricsFontFamily ? { ...style, fontFamily: style.pdfMetricsFontFamily } : style;
-    ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(metricsStyle), style, color: fill, ...extra });
+    ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(metricsStyle), style, color: fill, ...extra, ...(clip ? { clip } : {}) });
   };
 
   const words = (node, style, extra) => {
@@ -222,6 +226,10 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
           range.setStart(node, next.index); range.setEnd(node, next.index + 1);
           const nextRect = range.getClientRects()[0];
           spaceAfter = Boolean(nextRect) && Math.abs(nextRect.top - rects[0].top) < 1;
+        }
+        if (!next) {
+          const sibling = node.nextSibling || node.parentElement?.nextSibling;
+          spaceAfter = /\s$/.test(data) || (sibling?.nodeType === 3 && /^\s/.test(sibling.data));
         }
         pushText(transformText(mathText(word), style.textTransform, style.lang), rects[0], style, spaceAfter ? { ...extra, spaceAfter: true } : extra);
         continue;
@@ -303,12 +311,14 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
       return;
     }
     const first = ops.length;
+    const clipElement = element.closest('txt-table-cell-content') || element.closest('p');
+    const clipRects = clipElement && ['hidden', 'clip'].includes(getComputedStyle(clipElement).overflow) ? [...clipElement.getClientRects()].map(local) : null;
     // text-transform follows the language the browser used for this element.
     const typography = pdfTextStyle(element, style, language);
     const decoration = element.firstChild ? decorations(element) : [];
     for (const child of element.childNodes) {
       if (child.nodeType === 1) visit(child);
-      else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration, positioned, exactFont: Boolean(exactFont), zIndex });
+      else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration, positioned, exactFont: Boolean(exactFont), zIndex, landmark: landmarkIndex?.forElement(element), ...(clipRects ? { clipRects } : {}) });
     }
     const firstText = ops.slice(first).find((op) => op.type === "text" && !op.label);
     // Generated content the editor shows: heading numbers (::before) and list markers (::marker).
@@ -364,7 +374,7 @@ function collectGroup(stack, language, exactFamilies = new Set()) {
   const pushLabel = (text, x, anchor, style, before = null) => {
     const fill = color(style.color);
     if (!fill) return;
-    const op = { type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [], label: true, positioned: Boolean(anchor.positioned), exactFont: Boolean(anchor.exactFont), zIndex: anchor.zIndex || 0 };
+    const op = { type: "text", text, x, top: anchor.top, width: textWidth(style, text), baseline: anchor.baseline, style, color: fill, decoration: [], label: true, spaceAfter: true, positioned: Boolean(anchor.positioned), exactFont: Boolean(anchor.exactFont), zIndex: anchor.zIndex || 0, landmark: anchor.landmark };
     const at = before ? ops.indexOf(before) : -1;
     if (at >= 0) ops.splice(at, 0, op); else ops.push(op);
   };
@@ -409,6 +419,16 @@ export function clipPageRect(rect, pageTop, pageHeight) {
 }
 
 function drawOp(pdf, op, pageTop, templateId, pageHeight) {
+  if (!op.clip) return drawUnclippedOp(pdf, op, pageTop, templateId, pageHeight);
+  pdf.saveGraphicsState();
+  try {
+    pdf.rect(op.clip.left * MM, (op.clip.top - pageTop) * MM, op.clip.width * MM, op.clip.height * MM, null);
+    pdf.clip(); pdf.discardPath();
+    return drawUnclippedOp(pdf, op, pageTop, templateId, pageHeight);
+  } finally { pdf.restoreGraphicsState(); }
+}
+
+function drawUnclippedOp(pdf, op, pageTop, templateId, pageHeight) {
   if (op.type === "line") {
     const [x1, y1, x2, y2] = op.points;
     pdf.setDrawColor(...op.color); pdf.setLineWidth(op.width * MM);
@@ -436,6 +456,8 @@ function drawOp(pdf, op, pageTop, templateId, pageHeight) {
   const y = (op.baseline - pageTop) * MM;
   const family = String(op.style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
   const text = family === "cambria math" && hasSystemPdfFont(pdf, "Cambria Math") ? op.text : aliasGlyphs(op.text);
+  op.exportText = text;
+  op.exportedFont = pdf.getFont().fontName;
   // The browser shapes a run with kerning; jsPDF advances glyph by glyph without it, so a long line would end past where the browser's
   // ended (a 151-character title: +1.6 mm over the right margin). The small difference is spread over the run's characters, so every run
   // ends exactly where the browser's ended.
@@ -473,19 +495,24 @@ export function thesisLayoutPages(root, groups) {
   return thesisPageStacks(root, groups).flatMap(({ group, pages }) => Array.from({ length: pages }, (_, index) => ({ groupId: group.id, index })));
 }
 
-export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId, documentLayout, systemFonts = [] }) {
+export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId, documentLayout, systemFonts = [], onLayoutReport }) {
   await document.fonts?.ready;
   const stacks = thesisPageStacks(root, groups);
   const sections = groups.flatMap(group => group.sections || []);
   const fontRequests = collectAcademicPdfFontRequests(documentLayout, sections);
   const exactFamilies = new Set(fontRequests.map(value => normalizeAcademicPdfFamily(value) || value));
   let pdf = null;
+  const report = { version: 1, units: { geometry: 'mm', fontSize: 'pt' }, pages: [] };
   for (const { group, stack, metrics, pages } of stacks) {
     if (!pages) continue;
     const { widthMm, heightMm } = group.rules.page;
     const orientation = widthMm > heightMm ? "l" : "p";
     const byPage = Array.from({ length: pages }, () => []);
-    for (const op of collectGroup(stack, language, exactFamilies)) {
+    const landmarkIndex = layoutLandmarkIndex(stack, group.id);
+    const origin = stack.getBoundingClientRect();
+    const zoom = new DOMMatrixReadOnly(getComputedStyle(stack).transform).a || 1;
+    const boxes = landmarkIndex.boxes((rect) => ({ left: (rect.left - origin.left) / zoom, top: (rect.top - origin.top) / zoom, width: rect.width / zoom, height: rect.height / zoom }));
+    for (const op of collectGroup(stack, language, exactFamilies, landmarkIndex)) {
       const middle = op.top + (op.height ?? (op.baseline - op.top)) / 2;
       byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / flowPagePitchPx(metrics))))].push(op);
     }
@@ -504,8 +531,13 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
         || Number(left.op.type === "text") - Number(right.op.type === "text")
         || left.order - right.order);
       for (const { op } of ordered) drawOp(pdf, op, pageTop, templateId, metrics.heightPx);
+      const pageBoxes = boxes.filter((box) => Math.floor((box.top + box.height / 2) / flowPagePitchPx(metrics)) === index);
+      const sheet = stack.querySelectorAll('.thesis-sheet')[index];
+      report.pages.push(layoutPageReport({ ops, boxes: pageBoxes, pageTop, mmPerPx: MM, page: report.pages.length + 1,
+        groupId: group.id, label: sheet?.getAttribute('data-thesis-page-label') || '', widthMm, heightMm }));
     }
   }
   if (!pdf) throw new Error("Dışa aktarılacak sayfa yok");
+  onLayoutReport?.(report);
   return pdf.output("blob");
 }

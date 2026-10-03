@@ -1,344 +1,348 @@
 [
-{
-"id": "page-size",
-"kind": "page_size",
-"params": {},
-"expected": [
-210,
-297
-],
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.1-1.2 (A4 21 x 29.7 cm)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "docx-margin-top",
-"kind": "docx_section",
-"params": {
-"field": "margins.top",
-"sections": [
--1
-]
-},
-"expected": 35.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.1-1.2 (top 3.5 cm); last (main) section"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "docx-margin-left",
-"kind": "docx_section",
-"params": {
-"field": "margins.left",
-"sections": [
--1
-]
-},
-"expected": 40.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.1-1.2 (left 4 cm)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "docx-margin-bottom",
-"kind": "docx_section",
-"params": {
-"field": "margins.bottom",
-"sections": [
--1
-]
-},
-"expected": 20.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.1-1.2 (bottom 2 cm)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "docx-margin-right",
-"kind": "docx_section",
-"params": {
-"field": "margins.right",
-"sections": [
--1
-]
-},
-"expected": 20.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.1-1.2 (right 2 cm)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "margins-left",
-"kind": "text_extent",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"metric": "x0min"
-},
-"expected": 40.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.2 (left 4 cm)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "margins-right",
-"kind": "text_extent",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"metric": "x1max"
-},
-"expected": 190.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.2 (right 2 cm: 210-20 = 190)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "margins-top",
-"kind": "line_attr",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"regex": "^1[.] GİRİŞ$",
-"attr": "top",
-"agg": "min"
-},
-"expected": 35.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.2 (top 3.5 cm); line-box top of first heading on a new page"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "body-font",
-"kind": "fonts",
-"params": {
-"families": [
-"Times New Roman"
-]
-},
-"expected": [
-"TimesNewRomanPSMT",
-"TimesNewRomanPS-BoldMT",
-"TimesNewRomanPS-ItalicMT",
-"TimesNewRomanPS-BoldItalicMT"
-],
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.3 (Times New Roman)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "body-font-size",
-"kind": "font_size",
-"params": {
-"pages": {
-"label": "arabic"
-}
-},
-"expected": 12.0,
-"tolerance": 0.1,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.3 (12 pt)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "body-line-pitch",
-"kind": "line_pitch",
-"params": {
-"pages": {
-"label": "arabic"
-}
-},
-"expected": 7.3,
-"tolerance": 0.1,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.4 EK-1 1.5 (1.5 line spacing, TNR 12 pt: 1.15 x 12 pt x 1.5 = 20.7 pt = 7.30 mm, Word line model)"
-},
-"evidence": "INFERRED"
-},
-{
-"id": "h1-size",
-"kind": "line_attr",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"regex": "^1[.] GİRİŞ$",
-"attr": "size",
-"agg": "all"
-},
-"expected": 14.0,
-"tolerance": 0.1,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.3 (main heading 14 pt)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "h1-bold",
-"kind": "line_attr",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"regex": "^1[.] GİRİŞ$",
-"attr": "bold",
-"agg": "min"
-},
-"expected": 1,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.3 EK-1 1.3 (main heading bold)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "h1-centred",
-"kind": "line_attr",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"regex": "^1[.] GİRİŞ$",
-"attr": "cx",
-"agg": "all"
-},
-"expected": 115.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.4 EK-1 1.7 (main heading centred); centre of text block (40+190)/2 = 115 mm"
-},
-"evidence": "INFERRED"
-},
-{
-"id": "first-line-indent-docx",
-"kind": "docx_attr",
-"params": {
-"tag": "ind",
-"attrs": [
-"firstLine"
-],
-"mode": "allowed"
-},
-"expected": [
-"0"
-],
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.4 EK-1 1.5 (no first-line indent)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "page-numbering-centre",
-"kind": "page_number_attr",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"attr": "cx"
-},
-"expected": 105.0,
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.4 EK-1 1.7 (bottom centre); read as centre of the page (105 mm); text-block centre (115 mm) is the alternative reading"
-},
-"evidence": "INFERRED"
-},
-{
-"id": "page-labels-main",
-"kind": "page_labels",
-"params": {
-"pages": {
-"label": "arabic"
-},
-"open_end": true
-},
-"expected": "1..N",
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.4 EK-1 1.7, p.10 2.2 (Roman before Giris, Arabic from Giris)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "page-label-giris",
-"kind": "page_labels",
-"params": {
-"pages": {
-"find": "^1[.] GİRİŞ$"
-}
-},
-"expected": "1",
-"tolerance": 0.5,
-"source": {
-"file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-"locator": "PDF p.4 EK-1 1.7, p.10 2.2 (Roman before Giris, Arabic from Giris)"
-},
-"evidence": "EXPLICIT"
-},
-{
-"id": "docx-no-undefined",
-"kind": "docx_no_undefined",
-"params": {},
-"expected": "none",
-"tolerance": 0.5,
-"source": {
-"file": "field validity",
-"locator": "DOCX XML"
-},
-"evidence": "MEASURED"
-},
-{
-"id": "note-unknowns",
-"kind": "note",
-"params": {
-"text": "UNKNOWN in source: page-number font/size and baseline/footer distance; cover page-number display; before/after split of the 12 pt paragraph gap; body alignment (left/justified); cover field font sizes other than 14 pt outer cover; signatory typesetting. Source cover coordinates are the example inside the guide PDF page, not required page-relative geometry. Roman start value on the first numbered front page (whether covers count) is UNKNOWN, so only Arabic start/sequence is checked."
-},
-"expected": null,
-"tolerance": 0.5,
-"source": {
-"file": "specs/afsu-eczacilik-proje.json",
-"locator": "conflictsAndUnknowns"
-},
-"evidence": "UNKNOWN"
-}
+ {
+  "id": "page-size",
+  "kind": "page_size",
+  "params": {},
+  "expected": [
+   210,
+   297
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.1-1.2 (A4 21 x 29.7 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-top",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.top",
+   "sections": [
+    -1
+   ]
+  },
+  "expected": 35,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.1-1.2 (top 3.5 cm); last (main) section"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-left",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.left",
+   "sections": [
+    -1
+   ]
+  },
+  "expected": 40,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.1-1.2 (left 4 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-bottom",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.bottom",
+   "sections": [
+    -1
+   ]
+  },
+  "expected": 20,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.1-1.2 (bottom 2 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-right",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.right",
+   "sections": [
+    -1
+   ]
+  },
+  "expected": 20,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.1-1.2 (right 2 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margins-left",
+  "kind": "text_extent",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "metric": "x0min"
+  },
+  "expected": 40,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.2 (left 4 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margins-right",
+  "kind": "text_extent",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "metric": "x1max"
+  },
+  "expected": 190,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.2 (right 2 cm: 210-20 = 190)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margins-top",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^1[.] GİRİŞ$",
+   "attr": "top",
+   "agg": "min"
+  },
+  "expected": 35,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.2 (top 3.5 cm); line-box top of first heading on a new page"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-font",
+  "kind": "fonts",
+  "params": {
+   "families": [
+    "Times New Roman"
+   ]
+  },
+  "expected": [
+   "TimesNewRomanPSMT",
+   "TimesNewRomanPS-BoldMT",
+   "TimesNewRomanPS-ItalicMT",
+   "TimesNewRomanPS-BoldItalicMT"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.3 (Times New Roman)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-font-size",
+  "kind": "font_size",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": 12,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.3 (12 pt)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-line-pitch",
+  "kind": "line_pitch",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "source": "layout"
+  },
+  "expected": 7.3,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.4 EK-1 1.5 (1.5 line spacing, TNR 12 pt: 1.15 x 12 pt x 1.5 = 20.7 pt = 7.30 mm, Word line model)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "h1-size",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^1[.] GİRİŞ$",
+   "attr": "size",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 14,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.3 (main heading 14 pt)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h1-bold",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^1[.] GİRİŞ$",
+   "attr": "bold",
+   "agg": "min"
+  },
+  "expected": 1,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.3 EK-1 1.3 (main heading bold)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h1-centred",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^1[.] GİRİŞ$",
+   "attr": "cx",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 115,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.4 EK-1 1.7 (main heading centred); centre of text block (40+190)/2 = 115 mm"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "first-line-indent-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "ind",
+   "attrs": [
+    "firstLine"
+   ],
+   "mode": "allowed"
+  },
+  "expected": [
+   "0"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.4 EK-1 1.5 (no first-line indent)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "page-numbering-centre",
+  "kind": "page_number_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "cx",
+   "source": "layout"
+  },
+  "expected": 105,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.4 EK-1 1.7 (bottom centre); read as centre of the page (105 mm); text-block centre (115 mm) is the alternative reading"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "page-labels-main",
+  "kind": "page_labels",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "open_end": true
+  },
+  "expected": "1..N",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.4 EK-1 1.7, p.10 2.2 (Roman before Giris, Arabic from Giris)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "page-label-giris",
+  "kind": "page_labels",
+  "params": {
+   "pages": {
+    "find": "^1[.] GİRİŞ$"
+   }
+  },
+  "expected": "1",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "PDF p.4 EK-1 1.7, p.10 2.2 (Roman before Giris, Arabic from Giris)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-no-undefined",
+  "kind": "docx_no_undefined",
+  "params": {},
+  "expected": "none",
+  "tolerance": 0.5,
+  "source": {
+   "file": "field validity",
+   "locator": "DOCX XML"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "note-unknowns",
+  "kind": "note",
+  "params": {
+   "text": "UNKNOWN in source: page-number font/size and baseline/footer distance; cover page-number display; before/after split of the 12 pt paragraph gap; body alignment (left/justified); cover field font sizes other than 14 pt outer cover; signatory typesetting. Source cover coordinates are the example inside the guide PDF page, not required page-relative geometry. Roman start value on the first numbered front page (whether covers count) is UNKNOWN, so only Arabic start/sequence is checked."
+  },
+  "expected": null,
+  "tolerance": 0.5,
+  "source": {
+   "file": "specs/afsu-eczacilik-proje.json",
+   "locator": "conflictsAndUnknowns"
+  },
+  "evidence": "UNKNOWN"
+ }
 ]

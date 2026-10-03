@@ -24,6 +24,7 @@ export function normalizeLengthMm(value, unit = "mm") {
   throw new Error(`Bilinmeyen ölçü birimi: ${unit}`);
 }
 
+function validCanonicalSpacing(value) { return object(value) && ["auto", "exact", "atLeast"].includes(value.rule) && positive(value.value) && (value.rule !== "auto" || value.value <= 5) && (value.singleLineEm === undefined || (positive(value.singleLineEm) && value.singleLineEm <= 3)); }
 export function validateTextStyle(style, path = "style") {
   const errors = [];
   if (!object(style)) return [`${path} nesne olmalı`];
@@ -31,6 +32,10 @@ export function validateTextStyle(style, path = "style") {
   if (!positive(style.fontSizePt) || style.fontSizePt > 96) errors.push(`${path}.fontSizePt geçersiz`);
   if (style.fontWeight !== undefined && (!Number.isFinite(style.fontWeight) || style.fontWeight < 100 || style.fontWeight > 900)) errors.push(`${path}.fontWeight geçersiz`);
   if (style.lineHeight !== undefined && (!positive(style.lineHeight) || style.lineHeight > 5)) errors.push(`${path}.lineHeight geçersiz`);
+  if (style.lineSpacing !== undefined && !validCanonicalSpacing(style.lineSpacing)) errors.push(`${path}.lineSpacing geçersiz`);
+  for (const key of ["contextualSpacing", "mirrorIndents", "keepLines", "widowControl"]) if (style[key] !== undefined && typeof style[key] !== "boolean") errors.push(`${path}.${key} geçersiz`);
+  if (style.indent !== undefined && (!object(style.indent) || Object.entries(style.indent).some(([key, value]) => key === "mirror" ? typeof value !== "boolean" : !["firstLineMm", "hangingMm", "leftMm", "rightMm"].includes(key) || !Number.isFinite(value) || (key === "hangingMm" && value < 0)))) errors.push(`${path}.indent geçersiz`);
+  if (style.tabStops !== undefined && (!Array.isArray(style.tabStops) || style.tabStops.some((tab) => !object(tab) || !nonnegative(tab.positionMm) || !["left", "center", "right", "decimal"].includes(tab.align) || (tab.leader !== undefined && !["none", "dots", "hyphen", "underscore"].includes(tab.leader)) || (tab.decimalCharacter !== undefined && !(typeof tab.decimalCharacter === "string" && tab.decimalCharacter.length === 1))))) errors.push(`${path}.tabStops geçersiz`);
   if (style.align !== undefined && !aligns.has(style.align)) errors.push(`${path}.align geçersiz`);
   for (const key of ["characterSpacingPt", "spaceBeforePt", "spaceAfterPt"]) {
     if (style[key] !== undefined && !nonnegative(style[key])) errors.push(`${path}.${key} geçersiz`);
@@ -88,10 +93,14 @@ function validatePage(page, path = "page") {
     if (!object(frame) || !nonnegative(frame.xMm) || !nonnegative(frame.yMm) || !positive(frame.widthMm)
       || frame.xMm + frame.widthMm > page.widthMm || frame.yMm >= page.heightMm) errors.push(`${path}.docxContentFrame geçersiz`);
   }
+  if (page.differentFirstPage !== undefined && typeof page.differentFirstPage !== "boolean") errors.push(`${path}.differentFirstPage geçersiz`);
   for (const kind of ["header", "footer"]) {
     const part = page[kind];
     if (part === undefined) continue;
     if (!object(part) || !nonnegative(part.heightMm) || !nonnegative(part.distanceMm)) errors.push(`${path}.${kind} geçersiz`);
+    for (const key of ["content", "firstContent", "evenContent"]) if (part?.[key] !== undefined && typeof part[key] !== "string") errors.push(`${path}.${kind}.${key} geçersiz`);
+    if (part?.docxDistanceMm !== undefined && !nonnegative(part.docxDistanceMm)) errors.push(`${path}.${kind}.docxDistanceMm geçersiz`);
+    if (part?.trailingBlankLines !== undefined && !(Number.isInteger(part.trailingBlankLines) && part.trailingBlankLines >= 0 && part.trailingBlankLines <= 20)) errors.push(`${path}.${kind}.trailingBlankLines geçersiz`);
     if (part?.firstPage !== undefined && !["same", "omit"].includes(part.firstPage)) errors.push(`${path}.${kind}.firstPage geçersiz`);
   }
   errors.push(...validateNumbering(page.numbering, `${path}.numbering`));
@@ -107,6 +116,15 @@ function validateCaption(caption, path) {
   if (!["above", "below"].includes(caption.position)) errors.push(`${path}.position geçersiz`);
   errors.push(...validateTextStyle(caption.style, `${path}.style`));
   if (!object(caption.numbering) || !["document", "chapter"].includes(caption.numbering.scope) || !text(caption.numbering.format) || !numberingFormats.has(caption.numbering.sequence)) errors.push(`${path}.numbering geçersiz`);
+  if (caption.numbering?.liveField !== undefined && typeof caption.numbering.liveField !== "boolean") errors.push(`${path}.numbering.liveField geçersiz`);
+  for (const key of ["cantSplit", "repeatHeader"]) if (caption[key] !== undefined && typeof caption[key] !== "boolean") errors.push(`${path}.${key} geçersiz`);
+  if (caption.verticalAlign !== undefined && !["top", "center", "bottom"].includes(caption.verticalAlign)) errors.push(`${path}.verticalAlign geçersiz`);
+  if (caption.rowHeight !== undefined && (!object(caption.rowHeight) || !["auto", "exact", "atLeast"].includes(caption.rowHeight.rule) || (caption.rowHeight.rule !== "auto" && !positive(caption.rowHeight.valueMm)))) errors.push(`${path}.rowHeight geçersiz`);
+  if (caption.borders !== undefined) {
+    const borders = caption.borders;
+    if (!object(borders) || (borders.preset !== undefined && !["threeRule", "headerRules", "none"].includes(borders.preset)) || (borders.widthPt !== undefined && !nonnegative(borders.widthPt))) errors.push(`${path}.borders geçersiz`);
+    else for (const key of ["top", "bottom", "left", "right", "insideHorizontal", "insideVertical"]) if (borders[key] !== undefined && (!object(borders[key]) || !["single", "double", "none", "dashed", "dotted"].includes(borders[key].style) || (borders[key].widthPt !== undefined && !nonnegative(borders[key].widthPt)) || (borders[key].color !== undefined && !/^#?[0-9a-f]{6}$/i.test(borders[key].color)))) errors.push(`${path}.borders.${key} geçersiz`);
+  }
   if (caption.captionAlignment !== undefined && ![...aligns, "auto"].includes(caption.captionAlignment)) errors.push(`${path}.captionAlignment geçersiz`);
   for (const key of ["spacingBeforePt", "spacingAfterPt"]) if (caption[key] !== undefined && !nonnegative(caption[key])) errors.push(`${path}.${key} geçersiz`);
   if (caption.cellStyle !== undefined) errors.push(...(object(caption.cellStyle) ? validateTextStyle({ ...caption.style, ...caption.cellStyle }, `${path}.cellStyle`) : [`${path}.cellStyle nesne olmalı`]));
@@ -197,12 +215,13 @@ export function validateThesisTemplate(rawTemplate) {
     }
   }
   const lineSpacing = template.typography?.lineSpacing;
-  if (lineSpacing !== undefined && !(object(lineSpacing) && (lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
-  if (lineSpacing?.blockGap !== undefined && !(lineSpacing.blockGap === "paragraphPitch" && lineSpacing.mode === "word" && lineSpacing.baseline === "word")) errors.push('typography.lineSpacing.blockGap yalnız "paragraphPitch" ve mode/baseline "word" ile geçerli');
+  if (lineSpacing !== undefined && !(object(lineSpacing) && (validCanonicalSpacing(lineSpacing) || lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
+  if (lineSpacing?.blockGap !== undefined && !(lineSpacing.blockGap === "paragraphPitch" && (lineSpacing.mode === "word" || validCanonicalSpacing(lineSpacing)) && lineSpacing.baseline === "word")) errors.push('typography.lineSpacing.blockGap yalnız "paragraphPitch" ve mode/baseline "word" ile geçerli');
   if (lineSpacing?.figureExitGap !== undefined && !((["pitch", "spacing"].includes(lineSpacing.figureExitGap)) && lineSpacing.blockGap === "paragraphPitch")) errors.push('typography.lineSpacing.figureExitGap yalnız "pitch"|"spacing" ve blockGap "paragraphPitch" ile geçerli');
   if (lineSpacing?.noteExitGap !== undefined && !((["pitch", "spacing"].includes(lineSpacing.noteExitGap)) && lineSpacing.blockGap === "paragraphPitch")) errors.push('typography.lineSpacing.noteExitGap yalnız "pitch"|"spacing" ve blockGap "paragraphPitch" ile geçerli');
+  for (const key of ["contextualSpacing", "suppressSpaceBeforeAtPageTop"]) if (lineSpacing?.[key] !== undefined && typeof lineSpacing[key] !== "boolean") errors.push(`typography.lineSpacing.${key} geçersiz`);
   if (lineSpacing?.paragraphSpacing !== undefined && !["collapse", "additive"].includes(lineSpacing.paragraphSpacing)) errors.push("typography.lineSpacing.paragraphSpacing geçersiz");
-  if (lineSpacing?.baseline !== undefined && !(lineSpacing.mode === "word" && ["css", "word"].includes(lineSpacing.baseline))) errors.push("typography.lineSpacing.baseline geçersiz");
+  if (lineSpacing?.baseline !== undefined && !((lineSpacing.mode === "word" || validCanonicalSpacing(lineSpacing)) && ["css", "word"].includes(lineSpacing.baseline))) errors.push("typography.lineSpacing.baseline geçersiz");
   if (template.validation !== undefined) {
     if (!object(template.validation)) errors.push("validation nesne olmalı");
     else for (const [field, rule] of Object.entries(template.validation)) {
@@ -246,7 +265,7 @@ export function validateThesisTemplate(rawTemplate) {
       if (section.pageBreakBefore !== undefined && typeof section.pageBreakBefore !== "boolean") errors.push(`section ${section.id}.pageBreakBefore geçersiz`);
       if (section.standalone !== undefined && (typeof section.standalone !== "boolean" || !Array.isArray(section.blocks))) errors.push(`section ${section.id}.standalone yalnız blocks ile ve boolean olmalı`);
       if (section.tocEntry !== undefined && !["headings", "title", "none"].includes(section.tocEntry)) errors.push(`section ${section.id}.tocEntry geçersiz`);
-      if (section.verticalAlign !== undefined && !(["top", "bottom"].includes(section.verticalAlign) && Array.isArray(section.blocks))) errors.push(`section ${section.id}.verticalAlign yalnız blocks ile top/bottom olmalı`);
+      if (section.verticalAlign !== undefined && !(["top", "center", "bottom"].includes(section.verticalAlign) && Array.isArray(section.blocks))) errors.push(`section ${section.id}.verticalAlign yalnız blocks ile top/bottom olmalı`);
       if (section.titleNumbering !== undefined && !["none", "continueH1"].includes(section.titleNumbering)) errors.push(`section ${section.id}.titleNumbering geçersiz`);
       if (section.generatedIndex !== undefined) {
         if (section.mode !== "generated") errors.push(`section ${section.id}.generatedIndex: mode generated olmalı`);

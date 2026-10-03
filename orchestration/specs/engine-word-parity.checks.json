@@ -1,0 +1,823 @@
+[
+ {
+  "id": "LP001-Times-New-Roman-10-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP001 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP001: Times New Roman 10 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP002-Times-New-Roman-10-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP002 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP002: Times New Roman 10 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP003-Times-New-Roman-10-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP003 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP003: Times New Roman 10 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP004-Times-New-Roman-10-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP004 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP004: Times New Roman 10 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP005-Times-New-Roman-10-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP005 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP005: Times New Roman 10 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP006-Times-New-Roman-10-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP006 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP006: Times New Roman 10 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP007-Times-New-Roman-11-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP007 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP007: Times New Roman 11 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP008-Times-New-Roman-11-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP008 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP008: Times New Roman 11 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP009-Times-New-Roman-11-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP009 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP009: Times New Roman 11 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP010-Times-New-Roman-11-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP010 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP010: Times New Roman 11 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP011-Times-New-Roman-11-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP011 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP011: Times New Roman 11 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP012-Times-New-Roman-11-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP012 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP012: Times New Roman 11 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP013-Times-New-Roman-12-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP013 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP013: Times New Roman 12 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP014-Times-New-Roman-12-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP014 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP014: Times New Roman 12 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP015-Times-New-Roman-12-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP015 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP015: Times New Roman 12 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP016-Times-New-Roman-12-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP016 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP016: Times New Roman 12 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP017-Times-New-Roman-12-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP017 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP017: Times New Roman 12 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP018-Times-New-Roman-12-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP018 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP018: Times New Roman 12 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP019-Arial-10-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP019 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP019: Arial 10 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP020-Arial-10-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP020 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP020: Arial 10 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP021-Arial-10-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP021 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP021: Arial 10 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP022-Arial-10-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP022 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP022: Arial 10 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP023-Arial-10-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP023 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP023: Arial 10 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP024-Arial-10-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP024 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP024: Arial 10 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP025-Arial-11-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP025 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP025: Arial 11 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP026-Arial-11-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP026 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP026: Arial 11 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP027-Arial-11-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP027 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP027: Arial 11 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP028-Arial-11-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP028 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP028: Arial 11 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP029-Arial-11-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP029 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP029: Arial 11 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP030-Arial-11-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP030 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP030: Arial 11 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP031-Arial-12-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP031 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP031: Arial 12 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP032-Arial-12-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP032 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP032: Arial 12 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP033-Arial-12-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP033 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP033: Arial 12 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP034-Arial-12-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP034 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP034: Arial 12 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP035-Arial-12-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP035 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP035: Arial 12 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP036-Arial-12-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP036 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP036: Arial 12 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP037-Calibri-10-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP037 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP037: Calibri 10 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP038-Calibri-10-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP038 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP038: Calibri 10 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP039-Calibri-10-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP039 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP039: Calibri 10 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP040-Calibri-10-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP040 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP040: Calibri 10 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP041-Calibri-10-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP041 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP041: Calibri 10 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP042-Calibri-10-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP042 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP042: Calibri 10 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP043-Calibri-11-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP043 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP043: Calibri 11 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP044-Calibri-11-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP044 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP044: Calibri 11 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP045-Calibri-11-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP045 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP045: Calibri 11 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP046-Calibri-11-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP046 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP046: Calibri 11 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP047-Calibri-11-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP047 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP047: Calibri 11 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP048-Calibri-11-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP048 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP048: Calibri 11 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP049-Calibri-12-auto-1",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP049 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP049: Calibri 12 pt auto 1"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP050-Calibri-12-auto-1.15",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP050 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP050: Calibri 12 pt auto 1.15"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP051-Calibri-12-auto-1.5",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP051 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP051: Calibri 12 pt auto 1.5"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP052-Calibri-12-auto-2",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP052 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP052: Calibri 12 pt auto 2"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP053-Calibri-12-exact-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP053 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP053: Calibri 12 pt exact 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "LP054-Calibri-12-atLeast-14",
+  "kind": "line_pitch_match",
+  "params": {
+   "regex": "^LP054 Line"
+  },
+  "expected": "Word pitch",
+  "tolerance": 0.07055555555555555,
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "LP054: Calibri 12 pt atLeast 14"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "exact-embedded-font-programs",
+  "kind": "fonts",
+  "params": {
+   "families": [
+    "Times New Roman",
+    "Arial",
+    "Calibri"
+   ]
+  },
+  "expected": [
+   "TimesNewRomanPSMT",
+   "ArialMT",
+   "Calibri"
+  ],
+  "source": {
+   "file": "word-parity-fixture.mjs",
+   "locator": "explicit canonical font families; PDF font-program family names"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "word_opens",
+  "kind": "word_opens",
+  "params": {},
+  "expected": true,
+  "source": {
+   "file": "Word engine acceptance fixture",
+   "locator": "physical page sequence and OOXML validity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "page_count_match",
+  "kind": "page_count_match",
+  "params": {},
+  "expected": true,
+  "source": {
+   "file": "Word engine acceptance fixture",
+   "locator": "physical page sequence and OOXML validity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "page_labels_match",
+  "kind": "page_labels_match",
+  "params": {},
+  "expected": true,
+  "source": {
+   "file": "Word engine acceptance fixture",
+   "locator": "physical page sequence and OOXML validity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "docx_no_undefined",
+  "kind": "docx_no_undefined",
+  "params": {},
+  "expected": true,
+  "source": {
+   "file": "Word engine acceptance fixture",
+   "locator": "physical page sequence and OOXML validity"
+  },
+  "evidence": "MEASURED"
+ }
+]

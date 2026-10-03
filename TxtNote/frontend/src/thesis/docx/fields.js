@@ -1,13 +1,21 @@
-import { Paragraph, ImportedXmlComponent } from "docx";
+import { Paragraph, ImportedXmlComponent, TextRun } from "docx";
 import { fieldXmlText } from "./xml.js";
 
-function complexFieldMarker(instruction, edge) {
+function complexFieldMarker(instruction, edge, properties = {}) {
+  // Word derives a refreshed field's typography from its BEGIN run, not merely
+  // the cached result. Styling only the cache resets NUMPAGES to Normal's font.
+  const font = typeof properties.font === "string" ? properties.font : properties.font?.ascii;
+  const rPr = font || properties.size ? `<w:rPr>${font ? `<w:rFonts w:ascii="${fieldXmlText(font)}" w:hAnsi="${fieldXmlText(font)}" w:cs="${fieldXmlText(font)}"/>` : ""}${properties.size ? `<w:sz w:val="${properties.size}"/><w:szCs w:val="${properties.size}"/>` : ""}${properties.bold ? "<w:b/>" : ""}${properties.italics ? "<w:i/>" : ""}</w:rPr>` : "";
   const xml = edge === "begin"
-    ? `<w:r><w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">${fieldXmlText(instruction)}</w:instrText><w:fldChar w:fldCharType="separate"/></w:r>`
-    : `<w:r><w:fldChar w:fldCharType="end"/></w:r>`;
+    ? `<w:r>${rPr}<w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">${fieldXmlText(instruction)}</w:instrText><w:fldChar w:fldCharType="separate"/></w:r>`
+    : `<w:r>${rPr}<w:fldChar w:fldCharType="end"/></w:r>`;
   // fromXmlString returns an unnamed document wrapper (serialized as <undefined>); unwrap to the real <w:r>.
   const parsed = ImportedXmlComponent.fromXmlString(xml);
   return parsed.root.find((child) => child instanceof ImportedXmlComponent) || parsed;
+}
+/** Complex run field with a cached display value; safe inside any paragraph. */
+export function complexFieldRuns(instruction, cached = "", properties = {}) {
+  return [complexFieldMarker(instruction, "begin", properties), new TextRun({ ...properties, text: String(cached) }), complexFieldMarker(instruction, "end", properties)];
 }
 export function wrapParagraphsInField(paragraphs, instruction) {
   if (!paragraphs.length) return paragraphs;

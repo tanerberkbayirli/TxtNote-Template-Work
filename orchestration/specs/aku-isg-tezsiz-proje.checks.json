@@ -23,7 +23,7 @@
    },
    "metric": "x0min"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -40,7 +40,7 @@
    },
    "metric": "x1max"
   },
-  "expected": 180.0,
+  "expected": 180,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -77,7 +77,7 @@
     "label": "arabic"
    }
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -91,7 +91,8 @@
   "params": {
    "pages": {
     "label": "arabic"
-   }
+   },
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -110,9 +111,10 @@
    },
    "regex": "^\\d+(\\.\\d+)* [12]\\. Çevrimiçi öğrenme",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -150,9 +152,10 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "size"
+   "attr": "size",
+   "source": "layout"
   },
-  "expected": 11.0,
+  "expected": 11,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -241,7 +244,7 @@
    ],
    "field": "margins.left"
   },
-  "expected": 40.0,
+  "expected": 40,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -258,7 +261,7 @@
    ],
    "field": "margins.right"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -275,7 +278,7 @@
    ],
    "field": "margins.top"
   },
-  "expected": 25.0,
+  "expected": 25,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -292,7 +295,7 @@
    ],
    "field": "margins.left"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
@@ -309,7 +312,7 @@
    ],
    "field": "margins.top"
   },
-  "expected": 30.0,
+  "expected": 30,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",

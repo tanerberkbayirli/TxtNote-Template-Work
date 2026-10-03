@@ -23,7 +23,7 @@
    },
    "metric": "x0min"
   },
-  "expected": 35.0,
+  "expected": 35,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
@@ -40,7 +40,7 @@
    },
    "metric": "x1max"
   },
-  "expected": 190.0,
+  "expected": 190,
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
@@ -138,7 +138,7 @@
     "label": "arabic"
    }
   },
-  "expected": 12.0,
+  "expected": 12,
   "tolerance": 0.1,
   "source": {
    "file": "AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
@@ -152,7 +152,8 @@
   "params": {
    "pages": {
     "label": "arabic"
-   }
+   },
+   "source": "layout"
   },
   "expected": 7.3,
   "tolerance": 0.1,
@@ -171,7 +172,8 @@
    },
    "regex": "^(Önsöz|Giriş|\\d+(\\.\\d+)*) [12]\\. Çevrimiçi öğrenme",
    "attr": "x0",
-   "agg": "all"
+   "agg": "all",
+   "source": "layout"
   },
   "expected": 47.5,
   "tolerance": 0.5,
@@ -231,7 +233,8 @@
    "pages": {
     "label": "arabic"
    },
-   "attr": "cx"
+   "attr": "cx",
+   "source": "layout"
   },
   "expected": 112.5,
   "tolerance": 0.5,

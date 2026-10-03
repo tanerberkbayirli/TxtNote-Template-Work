@@ -112,6 +112,7 @@ export function numberThesisPages(sections, pageCounts = {}, chapterStarts = {})
  */
 export function buildThesisPageModel(groups, pageCounts = {}, chapterStarts = {}) {
   const numbers = numberThesisPages(groups, pageCounts, chapterStarts);
+  const totalPages = numbers.reduce((sum, group) => sum + group.labels.length, 0);
   let physicalIndex = 0;
   return groups.map((group, groupIndex) => {
     const { numbering, header, footer } = group.rules.page;
@@ -119,6 +120,7 @@ export function buildThesisPageModel(groups, pageCounts = {}, chapterStarts = {}
       groupId: group.id,
       index,
       physicalIndex: physicalIndex++,
+      totalPages,
       label,
       indexLabel: numbers[groupIndex].indexLabels[index],
       numberPosition: numbering.position === "top" ? "top" : "bottom",
@@ -128,6 +130,8 @@ export function buildThesisPageModel(groups, pageCounts = {}, chapterStarts = {}
       numberWidthMm: numbering.widthMm,
       showHeader: !(index === 0 && header?.firstPage === "omit"),
       showFooter: !(index === 0 && footer?.firstPage === "omit"),
+      headerContent: index === 0 && header?.firstContent !== undefined ? header.firstContent : (physicalIndex % 2 === 0 && header?.evenContent !== undefined ? header.evenContent : header?.content),
+      footerContent: index === 0 && footer?.firstContent !== undefined ? footer.firstContent : (physicalIndex % 2 === 0 && footer?.evenContent !== undefined ? footer.evenContent : footer?.content),
     }));
     return { groupId: group.id, pages };
   });
@@ -181,6 +185,12 @@ export function thesisPagedCss(groups) {
     rules.push(`${scope}{column-height:${page.heightMm - topMm - bottomMm}mm;row-gap:calc(${bottomMm}mm + ${THESIS_PAGE_GAP_PX}px + ${topMm}mm)}`);
     for (const section of group.sections) {
       const fragment = `${FLOW} .thesis-flow-section[data-thesis-flow-section=${cssString(section.id)}] .thesis-body`;
+      const flags = (style) => `${style.keepLines === undefined ? "" : `break-inside:${style.keepLines ? "avoid" : "auto"};`}${style.widowControl === undefined ? "" : `orphans:${style.widowControl ? 2 : 1};widows:${style.widowControl ? 2 : 1};`}${style.keepWithNext === undefined ? "" : `break-after:${style.keepWithNext ? "avoid" : "auto"};`}${style.pageBreakBefore ? "break-before:column;" : ""}`;
+      rules.push(`${fragment} p{${flags(section.rules.body)}}`);
+      for (const [id, style] of Object.entries(section.rules.paragraphStyles || {})) rules.push(`${fragment} p[data-thesis-style=${cssString(id)}]{${flags({ ...section.rules.body, ...style })}}`);
+      for (const [level, style] of Object.entries(section.rules.headings)) rules.push(`${fragment} h${level}{${flags(style)}}`);
+      if (section.rules.tables.cantSplit !== undefined) rules.push(`${fragment} tr{break-inside:${section.rules.tables.cantSplit ? "avoid" : "auto"}}`);
+      if (section.rules.tables.repeatHeader === false) rules.push(`${fragment} thead{display:table-row-group}`);
       const terminalTextPath = section.specialPage && section.rules.page.trimTerminalTextLeading === true
         ? terminalTextBlockPath(section.layout)
         : null;
