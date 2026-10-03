@@ -16,6 +16,8 @@ export function tableDocx(block, section, context, before = null) {
   // A caption below the table must stay with its last row (keep-with-next on the last row too).
   const captionBelow = Boolean(caption && tables.position !== "above");
   const lastHeader = sourceRows.reduce((last, row, index) => (row.every((cell) => cell.header) ? index : last), -1);
+  const firstBodyRow = sourceRows.findIndex((row) => !row.every((cell) => cell.header));
+  const headerCount = firstBodyRow < 0 ? 0 : firstBodyRow;
   const cp = tables.cellPadding;
   const cellMargins = cp && typeof cp === "object"
     ? { top: twip(cp.topMm), bottom: twip(cp.bottomMm), left: twip(cp.leftMm), right: twip(cp.rightMm) }
@@ -26,7 +28,16 @@ export function tableDocx(block, section, context, before = null) {
   const useWidths = gridCols > 0 && sourceRows.every((row) => rowSpanCount(row) === gridCols && row.every((c) => !(c.rowspan > 1)));
   const textWidthTw = twip(section.rules.page.widthMm - section.rules.page.margins.leftMm - section.rules.page.margins.rightMm);
   const colTw = useWidths ? (() => { const total = block.colWidths.reduce((a, b) => a + b, 0); return block.colWidths.map((w) => Math.round(textWidthTw * w / total)); })() : null;
-  const makeRow = (row, rowIndex, keepRow = tables.cantSplit === false ? captionBelow && rowIndex === sourceRows.length - 1 : rowIndex < sourceRows.length - 1 || captionBelow) => new TableRow({
+  // Keep-with-next model mirroring the paged layout's `table{break-inside:avoid}`. A table the
+  // layout fits on one page chains EVERY row, so Word moves it whole like the PDF. A page-tall
+  // table (spansPages: repeated-header clones mark its measured page starts) chains only caption +
+  // header rows + first data row and the closing two rows: chaining every row is pathological there —
+  // Word cannot satisfy the chain, moves the table to the next page and strands the caption alone on
+  // the previous one (+1 physical page vs the layout PDF).
+  const spansPages = Boolean(context.tableContinuations?.[block.captionAnchor]?.spansPages);
+  const keepRowChain = (index) => index < sourceRows.length - 1
+    && (!spansPages || index <= headerCount || index === sourceRows.length - 2);
+  const makeRow = (row, rowIndex, keepRow = tables.cantSplit === false ? captionBelow && rowIndex === sourceRows.length - 1 : keepRowChain(rowIndex) || (captionBelow && rowIndex === sourceRows.length - 1)) => new TableRow({
     cantSplit: tables.cantSplit ?? true, tableHeader: tables.repeatHeader !== false && row.every((cell) => cell.header),
     // Word's row height (atLeast) is the CONTENT height only: cell top/bottom margins and the border are added on top (measured in Word: trHeight
     // 26.55 pt + tcMar 2 x 6 pt + 0.75 pt border = 39.3 pt rows, CSS rows = line box + padding + border = 26.55 pt). Word would otherwise use its glyph
@@ -55,8 +66,6 @@ export function tableDocx(block, section, context, before = null) {
   const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders, ...(colTw ? { columnWidths: colTw, layout: TableLayoutType.FIXED } : {}) });
   // Continuation captions: the table is split at the rows the editor measured as page starts; each later
   // fragment gets its caption paragraph and the header row(s) again (Word cannot vary a repeated row's text).
-  const headerRows = sourceRows.findIndex((row) => !row.every((cell) => cell.header));
-  const headerCount = headerRows < 0 ? 0 : headerRows;
   const continuation = tables.continuation && tables.position === "above" ? context.tableContinuations?.[block.captionAnchor] : null;
   const starts = (continuation?.rows || []).filter((index) => index > headerCount && index < sourceRows.length);
   if (starts.length) {
@@ -77,8 +86,8 @@ export function tableDocx(block, section, context, before = null) {
     return out;
   }
   // Array.map passes its source array as a third argument; never let that
-  // overwrite keepRow for the new opt-in splitting model.
-  const rows = tables.cantSplit === false ? sourceRows.map((row, index) => makeRow(row, index)) : sourceRows.map(makeRow);
+  // overwrite keepRow (always call with an explicit keepRow).
+  const rows = sourceRows.map((row, index) => makeRow(row, index));
   if (rows.length) out.push(tableOf(rows));
   if (caption && tables.position !== "above") out.push(caption);
   return out;
