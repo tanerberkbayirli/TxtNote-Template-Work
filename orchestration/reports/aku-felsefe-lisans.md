@@ -14,8 +14,10 @@ Source: 2019 official DOCX guide. It contains labeled VML thesis-cover examples 
 | paragraph spacing 6+6 | 6 pt before and after; collapse behavior per source/Word semantics | earlier export measured 26.7 pt paragraph pitch; independent DOCX inspection found exported before/after spacing 12/6 pt under additive compensation | FAIL (source-backed collapse semantics not yet implemented) |
 | page number | bottom centre, no sign | centre of text block, plain digits, 12 pt | PASS (size UNKNOWN) |
 
-## Pending independent source extraction
-The official guide includes cover and TOC examples (paras 130-131); detailed citation examples are also present. Their supported content/layout, TOC hierarchy, heading rules, and bibliography implications have not yet been extracted into the approved spec. Caption/footnote/page-number/reference/appendix requirements remain UNKNOWN pending source-specific review.
+## Source/spec delta from independent audit (2026-10-03)
+Official XML review is recorded in `orchestration/validation/aku-felsefe-independent-2/REPORT.md`. Body spacing remains explicit 6 pt before + 6 pt after; additive compensation was not compliant with literal DOCX properties. The template now uses the engine's `collapse` spacing model to emit 6/6 directly. The labeled TOC example (guide para 131) demonstrates at least four levels, so the spec/template use levels 1–4; maximum depth and consistent chapter numbering remain UNKNOWN/CONFLICT. The required sequence at para 40 includes “Simgeler veya Kısaltmalar” without a condition, so that section is required; empty-list placeholder behavior remains UNKNOWN.
+
+The labeled cover example (para 130) provides centered row order and measured bold Times 14 pt institution/purpose rows plus 18 pt sample work title. The author/advisor/city-year run sizes are unspecified; VML placement is character/line anchored to the guide, so output-page geometry and border requirement remain UNKNOWN. Required cover pages are not yet implemented; the overall status remains FAIL/WIP pending cover representation and real-export revalidation. Citation examples remain independently documented in the audit. Caption/footnote/page-number/reference/appendix requirements remain UNKNOWN.
 ## Conflicts
 Margins: guide text vs guide sectPr (30/30/30/25 mm); text followed.
 ## Engine gaps

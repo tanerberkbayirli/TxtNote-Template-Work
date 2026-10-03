@@ -16,7 +16,7 @@
  "sourcePriority": [
   {
    "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
-   "why": "only identified primary source; DOCX guide includes labeled VML thesis-cover and TOC examples whose geometry/hierarchy require extraction"
+   "why": "Only identified primary source; its prose plus labeled VML cover and (thesis) TOC examples are evidence, while guide-document geometry is not promoted to output requirements."
   }
  ],
  "variants": [
@@ -356,6 +356,96 @@
    ],
    "evidence": [],
    "notes": "not defined by the guide; the guide's own cover/styles describe the guide"
+  },
+  {
+   "key": "implementation.bodyParagraphSpacingMode",
+   "value": "collapse",
+   "unit": null,
+   "confidence": "INFERRED",
+   "appliesTo": [
+    "paragraph spacing model"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "paras 28-34; 6nk before and 6nk after"
+    }
+   ],
+   "notes": "Required to emit direct 6/6 pt properties without additive compensation. This is an engine representation choice, not a source-named university rule."
+  },
+  {
+   "key": "cover.exampleContent",
+   "value": {
+    "alignment": "center",
+    "rowOrder": [
+     "T.C.",
+     "AFYON KOCATEPE ÜNİVERSİTESİ",
+     "FEN EDEBİYAT FAKÜLTESİ",
+     "FELSEFE BÖLÜMÜ",
+     "LİSANS BİTİRME TEZİ",
+     "work title",
+     "author",
+     "advisor",
+     "city/year"
+    ],
+    "institutionalRowsAndPurpose": {
+     "fontFamily": "Times",
+     "bold": true,
+     "fontSizePt": 14
+    },
+    "sampleWorkTitle": {
+     "fontFamily": "Times",
+     "bold": true,
+     "fontSizePt": 18
+    }
+   },
+   "unit": null,
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "outer and inner cover example"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "word/document.xml para 130, labeled VML textbox; source-cover-details.json",
+     "quote": "DIŞ ve İÇ KAPAK ÖRNEĞİ; centered VML text rows with measured run properties"
+    }
+   ],
+   "notes": "Author/advisor/city-year run sizes are not specified. The VML drawing is anchored relative to guide character/line; page-axis geometry and whether output must carry a border are UNKNOWN. Example values are not metadata defaults."
+  },
+  {
+   "key": "structure.symbolsOrAbbreviations",
+   "value": "required",
+   "unit": null,
+   "confidence": "EXPLICIT",
+   "appliesTo": [
+    "thesis sequence"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 40 (required structure list)",
+     "quote": "Simgeler veya Kısaltmalar"
+    }
+   ],
+   "notes": "No condition is attached here; only later appendices/table/figure lists are preceded by “Gerekliyse”. This establishes a sequence entry, not whether an empty list should contain a placeholder."
+  },
+  {
+   "key": "toc.demonstratedMinimumLevels",
+   "value": 4,
+   "unit": "levels",
+   "confidence": "MEASURED",
+   "appliesTo": [
+    "contents example"
+   ],
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "locator": "para 131 contents example",
+     "quote": "chapter block, 1., 1.1, and 2.1.1 entries"
+    }
+   ],
+   "notes": "Example demonstrates at least four levels; no maximum depth. Cross-chapter numbering progression is inconsistent and remains UNKNOWN/CONFLICT."
   }
  ],
  "conflicts": [
