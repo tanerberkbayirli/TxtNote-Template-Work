@@ -67,10 +67,10 @@ await page.addInitScript(() => {
   };
 });
 
-const docBase = (templateId = "demo-university-a-master-tr-v1") => {
+const docBase = (templateId = "fixture-university-a-master-tr-v1") => {
   const entries = {
-    "demo-university-a-master-tr-v1": { universityId: "demo-university-a", instituteId: "graduate", degreeType: "master", language: "tr" },
-    "demo-university-c-phd-en-v1": { universityId: "demo-university-c", instituteId: "research", degreeType: "phd", language: "en" },
+    "fixture-university-a-master-tr-v1": { universityId: "fixture-university-a", instituteId: "graduate", degreeType: "master", language: "tr" },
+    "fixture-university-c-phd-en-v1": { universityId: "fixture-university-c", instituteId: "research", degreeType: "phd", language: "en" },
   };
   return { title: "Pagination tezi", content: "", researchData: { thesis: { templateId, templateVersion: "1.0.0", selection: entries[templateId], values: { YEAR: "2026", STUDENT_NAME: "Test Öğrenci" }, sectionContent: { abstract: "Özet metni." }, enabledSections: [] } } };
 };
@@ -274,7 +274,7 @@ try {
   await shot("image-on-later-page-selected.png"); await page.keyboard.press("Escape");
   pass(`27 oversized existing images are clamped to the content height, move whole to the next page (${img.count} pages, ${imageTime}ms), and the selection overlay stays on the image on page ${img.pages[1].first}`);
 
-  // 14-20. Sections, cover and numbering (demo A: cover none / roman front / arabic main restarting at 1).
+  // 14-20. Sections, cover and numbering (fixture A: cover none / roman front / arabic main restarting at 1).
   await load(Array.from({ length: 40 }, (_, i) => para(i + 1)).join("\n"));
   const sections = await pg(() => ({
     order: [...document.querySelectorAll(".thesis-flow-section")].map((s) => s.dataset.thesisFlowSection),
@@ -292,10 +292,10 @@ try {
   await page.locator('.thesis-paper[data-thesis-section="abstract"]').scrollIntoViewIfNeeded(); await shot("front-matter-roman.png");
   pass(`14-20 sections keep template order, cover is its own unnumbered page, front matter i/ii, main restarts at 1…${sections.mainCount}, bibliography continues at ${sections.mainCount + 1}, bottom-center numbers`);
 
-  // Demo C abstract has pageBreakBefore:false, but the declaration is a special page (Task 8), so it
+  // Fixture C abstract has pageBreakBefore:false, but the declaration is a special page (Task 8), so it
   // never shares its sheet; grouping of ordinary sections is covered by thesisEngine.test.js.
   // Roman-upper top-right; H1 page breaks.
-  await load("<h1>Introduction</h1>" + para(1) + "<h1>Method</h1>" + para(2), "demo-university-c-phd-en-v1");
+  await load("<h1>Introduction</h1>" + para(1) + "<h1>Method</h1>" + para(2), "fixture-university-c-phd-en-v1");
   const c = await pg(() => ({
     groups: [...document.querySelectorAll(".thesis-paper")].map((a) => [a.dataset.thesisSection, [...a.querySelectorAll(".thesis-flow-section")].map((s) => s.dataset.thesisFlowSection)]),
     abstractPage: window.pg.pageOfText("Özet metni", "abstract", "abstract"), declarationCount: window.pg.count("declaration"),
@@ -308,7 +308,7 @@ try {
   assert.deepEqual(c.labels, ["", "I", "II", "III", "1", "2", "3", "4"]);
   assert.deepEqual([c.intro, c.method], [1, 2], "template H1 pageBreakBefore starts a new page without an empty first page");
   assert.deepEqual(c.top, { align: "right", topHalf: true });
-  await page.locator('.thesis-paper[data-thesis-section="declaration"]').scrollIntoViewIfNeeded(); await shot("demo-c-top-right-roman.png");
+  await page.locator('.thesis-paper[data-thesis-section="declaration"]').scrollIntoViewIfNeeded(); await shot("fixture-c-top-right-roman.png");
   pass("14 special declaration page stays isolated, other sections start new pages; roman-upper top-right; template H1 page breaks");
 
   // 23-25. Persistence: switch away/back and reload keep content and recompute the same pages.

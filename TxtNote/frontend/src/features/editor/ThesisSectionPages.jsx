@@ -98,7 +98,7 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
   const metrics = pageMetrics(page);
   const emptyFlow = !thesisGroupHasPageContent(group);
   const count = Math.max(1, pages.length);
-  const stackHeight = THESIS_PAGED_LAYOUT ? (emptyFlow ? 64 : pageStackHeightPx(count, metrics)) : Math.max(metrics.heightPx, surfaceHeight);
+  const stackHeight = THESIS_PAGED_LAYOUT ? (emptyFlow ? metrics.heightPx : pageStackHeightPx(count, metrics)) : Math.max(metrics.heightPx, surfaceHeight);
   const pageNotes = THESIS_PAGE_FOOTNOTES && group.rules.footnotes?.placement === "pageBottom";
 
   // Clicks in a margin or between sheets put the caret on the nearest line of that page
@@ -170,6 +170,7 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
   return <div className="thesis-display-frame mx-auto shrink-0" style={{ width: `${metrics.widthPx * zoom}px`, height: `${stackHeight * zoom}px` }}>
     <div className="thesis-page-stack" style={{ width: `${page.widthMm}mm`, height: `${stackHeight}px`, transform: `scale(${zoom})`, transformOrigin: "top left" }}>
       {THESIS_PAGED_LAYOUT ? <div className="thesis-sheets" aria-hidden="true">
+        {emptyFlow ? <div className="thesis-sheet-placeholder" data-thesis-placeholder="" data-export-ignore="" style={{ position: "absolute", left: 0, top: 0, background: "#fff", boxShadow: "0 8px 28px rgba(0,0,0,.13)", overflow: "hidden", pointerEvents: "none", width: `${page.widthMm}mm`, height: `${page.heightMm}mm` }} /> : null}
         {pages.map((entry) => <div key={entry.index} className="thesis-sheet" data-thesis-page={entry.physicalIndex + 1} data-thesis-page-label={entry.label || undefined}
           style={{ top: `${entry.index * flowPagePitchPx(metrics)}px`, width: `${page.widthMm}mm`, height: `${page.heightMm}mm` }}>
           <SheetChrome rules={group.rules} values={values} page={entry} />

@@ -3,6 +3,7 @@ import { test } from 'node:test';
 import { trustedStyleNonce, styleNonceAttribute, withoutInlineStyleAttributes } from './cspStyles.js';
 import { buildThesisPrintHtml, compileThesisDocument, buildThesisCss } from '../thesis/engine.js';
 import { resolveThesisTemplate } from '../thesis/registry.js';
+import { FIXTURE_REGISTRY } from './thesisFixtures.js';
 import { figureHtml } from './academicMedia.js';
 test('CSP cleanup drops inline styles, retaining dimensions, quoted attribute content and widget styles',()=>{
   const html='<p style="color:red">text</p><IMG WIDTH="200" height="100" alt="style=\'keep\' >" STYLE="width: 200px; height: 100px;" src="data:image/png;base64,abc"><img width=40 style=width:40px height=20>';
@@ -26,7 +27,7 @@ test('nonce comes only from the trusted startup anchor property, with web/SSR fa
   assert.equal(styleNonceAttribute('a"&'), ' nonce="a&quot;&amp;"');
 });
 test('cover layout uses scoped stylesheet rules and print inherits the supplied nonce', async () => {
-  const {template} = await resolveThesisTemplate({templateId:'demo-university-a-master-tr-v1'});
+  const {template} = await resolveThesisTemplate({templateId:'fixture-university-a-master-tr-v1'}, FIXTURE_REGISTRY);
   const model = compileThesisDocument(template,{},'Nonce test','<img width="200" height="100" style="width:200px;height:100px" src="data:image/png;base64,abc">');
   for (const section of model.sections) assert.doesNotMatch(section.prefixHtml,/\sstyle=/);
   const css=buildThesisCss(model);

@@ -15,7 +15,6 @@ export function ThesisCreator({ onCreate }) {
   const degrees = institutes.filter((item) => item.instituteId === instituteId);
   const languages = degrees.filter((item) => item.degreeType === degreeType);
   const selection = { universityId, instituteId, degreeType, language };
-  const official = languages.find((item) => item.language === language)?.status === "official";
 
   const chooseUniversity = (id) => {
     const next = THESIS_TEMPLATE_REGISTRY.find((item) => item.universityId === id);
@@ -37,8 +36,8 @@ export function ThesisCreator({ onCreate }) {
   };
 
   return <section className="mt-7 rounded-xl border border-amber-300 bg-amber-50 p-5 dark:border-amber-800 dark:bg-amber-950/30">
-    <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-50">{official ? "Tez oluştur" : "Tez oluştur · DEMO"}</h2>
-    <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">{official ? "Bu şablon üniversitenin resmî tez yazım kılavuzuna göre hazırlanmıştır." : "Bu şablonlar test verisidir; resmî üniversite kuralları içermez."}</p>
+    <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-50">Tez oluştur</h2>
+    <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">Şablon, üniversitenin resmî tez yazım kaynaklarından hazırlanmaktadır.</p>
     <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       <label className="text-xs font-medium">Üniversite<select aria-label="Üniversite" className="mt-1 w-full rounded border p-2 text-sm text-neutral-900" value={universityId} onChange={(event) => chooseUniversity(event.target.value)}>{universities.map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>
       <label className="text-xs font-medium">Enstitü<select aria-label="Enstitü" className="mt-1 w-full rounded border p-2 text-sm text-neutral-900" value={instituteId} onChange={(event) => chooseInstitute(event.target.value)}>{[...new Map(institutes.map((item) => [item.instituteId, item.instituteName])).entries()].map(([id, name]) => <option key={id} value={id}>{name}</option>)}</select></label>

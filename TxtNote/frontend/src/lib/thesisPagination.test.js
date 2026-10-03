@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import generic from "../thesis/templates/generic.js";
-import demoB from "../thesis/templates/demo-b.js";
-import demoC from "../thesis/templates/demo-c.js";
+import { fixtureB as demoB } from "./thesisFixtures.js";
+import { fixtureC as demoC } from "./thesisFixtures.js";
 import { akuFbeMaster } from "../thesis/templates/aku-fbe.js";
 import { compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
 import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, PX_PER_MM, THESIS_MAX_PAGES, THESIS_PAGE_GAP_PX, thesisPagedCss, thesisGroupHasPageContent } from "../thesis/pageLayout.js";

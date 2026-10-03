@@ -62,14 +62,14 @@ try {
   assert.equal(master.labels.length, phd.labels.length - 1);
   pass("Yüksek Lisans variant: degree lines change, ÖZGEÇMİŞ hidden and not offered, stored CV text untouched");
 
-  // Existing templates are unchanged: back to DEMO A gives the original page model.
+  // Existing templates are unchanged: back to fixture A gives the original page model.
   await page.getByRole("button", { name: "Tez bilgileri", exact: true }).click();
-  await page.getByLabel("Tez şablonu", { exact: true }).selectOption("demo-university-a-master-tr-v1");
+  await page.getByLabel("Tez şablonu", { exact: true }).selectOption("fixture-university-a-master-tr-v1");
   await page.getByRole("button", { name: "Tez bilgilerini kapat", exact: true }).click();
   await settle(page);
   assert.equal((await sheetLabels(page))[0], demoLabels[0]);
   assert.equal(await page.locator('[data-thesis-special-page="outerCover"]').count(), 1);
-  pass("switching back to DEMO A renders its own cover and numbering (no migration of the note)");
+  pass("switching back to fixture A renders its own cover and numbering (no migration of the note)");
 
   assert.deepEqual(errors, []);
   await writeFile(new URL("browser.json", out), JSON.stringify({ status: "passed", checks, errors, phd: { labels: phd.labels, pdf: phd.pdf, docx: phd.docx }, master: { labels: master.labels, pdf: master.pdf } }, null, 2));

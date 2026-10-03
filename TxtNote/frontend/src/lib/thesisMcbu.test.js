@@ -4,7 +4,7 @@ import { strFromU8, unzipSync } from "fflate";
 import { mcbuMaster, mcbuPhd } from "../thesis/templates/mcbu.js";
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../thesis/registry.js";
 import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
-import demoUniversityA from "../thesis/templates/demo-a.js";
+import { fixtureA as demoUniversityA } from "./thesisFixtures.js";
 import { buildThesisPageModel } from "../thesis/pageLayout.js";
 import { resolveGeneratedIndexes } from "../thesis/generatedIndex.js";
 import { buildThesisDocx } from "../thesis/export.js";
@@ -64,7 +64,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
       assert.equal(resolved.fallback, false); assert.equal(resolved.template.degreeType, degreeType);
     }
     // Existing templates keep their ids and still resolve.
-    for (const id of ["demo-university-a-master-tr-v1", "demo-university-b-master-tr-v1", "demo-university-c-phd-en-v1"]) assert.equal((await resolveThesisTemplate({ templateId: id })).fallback, false);
+    for (const entry of THESIS_TEMPLATE_REGISTRY) assert.equal((await resolveThesisTemplate({ templateId: entry.id })).fallback, false, entry.id);
   });
 
   it("B/C/D: A4, 40/25/25/25 mm, TNR 12 / 1.5 / justify, 12.5 mm first line, 6 pt after", () => {

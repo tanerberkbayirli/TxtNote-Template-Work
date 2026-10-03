@@ -142,7 +142,7 @@ try {
   pass("switch away/back and reload preserve text, formatting, abstract, images, dimensions, citations, bibliography");
 
   await page.getByRole("button", { name: "Tez bilgileri", exact: true }).click();
-  await page.getByLabel("Tez şablonu").selectOption("demo-university-b-master-tr-v1");
+  await page.getByLabel("Tez şablonu").selectOption("fixture-university-b-master-tr-v1");
   await page.waitForFunction(() => {
     const root = document.querySelector('[data-thesis-flow-section="main"] [contenteditable]');
     return root && getComputedStyle(root).fontFamily.includes("Arial");
@@ -246,10 +246,10 @@ try {
     function zoomOf(node) { const stack = node.closest(".thesis-page-stack"); return new DOMMatrixReadOnly(getComputedStyle(stack).transform).a; }
     return Object.fromEntries(out);
   }, "KÖK satır\nİKİ satır<p>PAR paragraf</p><ul><li>MADDE</li></ul>");
-  // Every demo template inherits the generic 10 mm first-line indent.
+  // Every fixture template inherits the generic 10 mm first-line indent.
   assert.deepEqual([indents["KÖK"], indents["İKİ"], indents["PAR"]], [10, 10, 10]); assert.ok(indents.MADDE < 10, JSON.stringify(indents));
   const docxXml = await page.evaluate(async () => {
-    const [{ compileThesisDocument }, { buildThesisDocx }, { default: template }] = await Promise.all([import("/src/thesis/engine.js"), import("/src/thesis/export.js"), import("/src/thesis/templates/demo-a.js")]);
+    const [{ compileThesisDocument }, { buildThesisDocx }, { fixtureA: template }] = await Promise.all([import("/src/thesis/engine.js"), import("/src/thesis/export.js"), import("/src/lib/thesisFixtures.js")]);
     const content = 'Satır <span class="fmt-bold">kalın</span> ve atıf<sup class="academic-footnote" contenteditable="false" data-fn-id="fn-1" data-fn-text="Yılmaz, 2024." data-fn-index="1">1</sup> sonu.\nİkinci satır<div class="fmt-align-left">Sola hizalı</div><p></p><p>Gerçek paragraf</p>';
     const blob = await buildThesisDocx(compileThesisDocument(template, {}, "T", content));
     return [...new Uint8Array(await blob.arrayBuffer())];

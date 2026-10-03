@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import demoA from "../thesis/templates/demo-a.js";
-import demoB from "../thesis/templates/demo-b.js";
-import demoC from "../thesis/templates/demo-c.js";
+import { fixtureA as demoA } from "./thesisFixtures.js";
+import { fixtureB as demoB } from "./thesisFixtures.js";
+import { fixtureC as demoC } from "./thesisFixtures.js";
 import generic from "../thesis/templates/generic.js";
 import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
 import { buildThesisPageModel } from "../thesis/pageLayout.js";
@@ -92,7 +92,7 @@ describe("data-driven special pages", () => {
   });
 
   it("keeps row separators and fixed row shares inside the content width", () => {
-    // Demo C approval: [examiner 55%, separator] with an 8 mm gap. The separator's default
+    // Fixture C approval: [examiner 55%, separator] with an 8 mm gap. The separator's default
     // line length (100%) used to become its row share: flex 0 0 100% ran 64.7 mm off the page.
     const approval = page(demoC, "approval", {}, { enabledSections: ["approval"] });
     const row = approval.layout.find((node) => node.type === "group" && node.direction === "row");

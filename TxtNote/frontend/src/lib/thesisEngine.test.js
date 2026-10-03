@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import generic from "../thesis/templates/generic.js";
+import { FIXTURE_REGISTRY } from "./thesisFixtures.js";
 import { THESIS_TEMPLATE_REGISTRY, findThesisTemplateDescriptor, resolveThesisTemplate } from "../thesis/registry.js";
 import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, formatNumber, groupThesisSections, resolvePlaceholders, resolveSectionRules } from "../thesis/engine.js";
 import { buildThesisPdf, buildThesisDocx } from "../thesis/export.js";
@@ -11,7 +12,7 @@ import { migrateAcademicNote } from "./researchMigrate.js";
 import { strFromU8, unzipSync } from "fflate";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 
-const choose = (id) => THESIS_TEMPLATE_REGISTRY.find((entry) => entry.id === id);
+const choose = (id) => FIXTURE_REGISTRY.find((entry) => entry.id === id);
 
 describe("thesis template validation", () => {
   it("accepts the generic template and rejects invalid dimensions, sections and placeholders", () => {
@@ -27,7 +28,7 @@ describe("thesis template validation", () => {
   });
   it("checks unique registry IDs and normalizes units", () => {
     assert.deepEqual(validateThesisRegistry(THESIS_TEMPLATE_REGISTRY), []);
-    assert.match(validateThesisRegistry([choose("demo-university-a-master-tr-v1"), choose("demo-university-a-master-tr-v1")]).join(" "), /duplicate template id/);
+    assert.match(validateThesisRegistry([choose("fixture-university-a-master-tr-v1"), choose("fixture-university-a-master-tr-v1")]).join(" "), /duplicate template id/);
     assert.equal(normalizeLengthMm(2.5, "cm"), 25);
     assert.ok(Math.abs(normalizeLengthMm(72, "pt") - 25.4) < 0.0001);
   });
@@ -35,11 +36,11 @@ describe("thesis template validation", () => {
 
 describe("thesis registry and fallback", () => {
   it("resolves by university, institute, degree and language", async () => {
-    const result = await resolveThesisTemplate({ universityId: "demo-university-c", instituteId: "research", degreeType: "phd", language: "en" });
+    const result = await resolveThesisTemplate({ universityId: "fixture-university-c", instituteId: "research", degreeType: "phd", language: "en" }, FIXTURE_REGISTRY);
     assert.equal(result.fallback, false);
-    assert.equal(result.template.id, "demo-university-c-phd-en-v1");
-    const old = choose("demo-university-a-master-tr-v1");
-    const newer = { ...old, id: "demo-university-a-master-tr-v2", templateVersion: "2.0.0" };
+    assert.equal(result.template.id, "fixture-university-c-phd-en-v1");
+    const old = choose("fixture-university-a-master-tr-v1");
+    const newer = { ...old, id: "fixture-university-a-master-tr-v2", templateVersion: "2.0.0" };
     assert.equal(findThesisTemplateDescriptor({ universityId: old.universityId, instituteId: old.instituteId, degreeType: old.degreeType, language: old.language }, [old, newer]).id, newer.id);
     assert.equal(findThesisTemplateDescriptor({ templateId: old.id }, [old, newer]).id, old.id);
   });
@@ -47,7 +48,7 @@ describe("thesis registry and fallback", () => {
     const missing = await resolveThesisTemplate({ universityId: "unknown", instituteId: "none", degreeType: "master", language: "tr" });
     assert.equal(missing.fallback, true);
     assert.equal(missing.template.status, "generic");
-    const badRegistry = [{ ...choose("demo-university-a-master-tr-v1"), load: async () => ({ default: { id: "bad" } }) }];
+    const badRegistry = [{ ...choose("fixture-university-a-master-tr-v1"), load: async () => ({ default: { id: "bad" } }) }];
     const bad = await resolveThesisTemplate({ templateId: badRegistry[0].id }, badRegistry);
     assert.equal(bad.fallback, true);
   });
@@ -55,8 +56,8 @@ describe("thesis registry and fallback", () => {
 
 describe("thesis engine", () => {
   it("builds covers from template blocks and updates placeholders in the resolved page", async () => {
-    const a = (await resolveThesisTemplate({ templateId: "demo-university-a-master-tr-v1" })).template;
-    const b = (await resolveThesisTemplate({ templateId: "demo-university-b-master-tr-v1" })).template;
+    const a = (await resolveThesisTemplate({ templateId: "fixture-university-a-master-tr-v1" }, FIXTURE_REGISTRY)).template;
+    const b = (await resolveThesisTemplate({ templateId: "fixture-university-b-master-tr-v1" }, FIXTURE_REGISTRY)).template;
     const first = compileThesisDocument(a, { values: { STUDENT_NAME: "Ada", YEAR: "2026" } }, "Eski başlık", "").sections[0];
     const changed = compileThesisDocument(a, { values: { STUDENT_NAME: "Ada", YEAR: "2026" } }, "Yeni başlık", "").sections[0];
     const other = compileThesisDocument(b, { values: { STUDENT_NAME: "Ada" } }, "Yeni başlık", "").sections[0];
@@ -93,7 +94,7 @@ describe("thesis engine", () => {
     ]);
   });
   it("resolves section page and typography overrides without changing global rules", async () => {
-    const { template } = await resolveThesisTemplate({ templateId: "demo-university-b-master-tr-v1" });
+    const { template } = await resolveThesisTemplate({ templateId: "fixture-university-b-master-tr-v1" }, FIXTURE_REGISTRY);
     const cover = resolveSectionRules(template, template.sections[0]);
     const main = resolveSectionRules(template, template.sections.find((section) => section.type === "mainContent"));
     assert.equal(cover.page.numbering.enabled, false);
@@ -150,7 +151,7 @@ describe("thesis engine", () => {
     assert.match(css, /"bibliography"\]\) \.thesis-body\{font-family:"Times New Roman";font-size:12pt;line-height:1\.5;text-align:left;[^}]*text-indent:0mm each-line/);
   });
   it("gives every bundled template distinct H1/H2/H3 numbers", async () => {
-    // Demo B used "{1}.{2}" for H3 too, so H2 and H3 both read 1.1 (editor, TOC, PDF, DOCX).
+    // A fixture used "{1}.{2}" for H3 too, so H2 and H3 both read 1.1 (editor, TOC, PDF, DOCX).
     for (const entry of THESIS_TEMPLATE_REGISTRY) {
       const { template } = await resolveThesisTemplate({ templateId: entry.id });
       // Only templates that enable heading numbering (a source may define none; the engine then renders unnumbered headings).
@@ -170,10 +171,10 @@ describe("thesis engine", () => {
     assert.match(section.html, /Yazar, A\. \(2026\)\. Eser\./);
     assert.match(section.suffixHtml, /thesis-bibliography/);
   });
-  it("produces different editor and print geometry for demo templates", async () => {
-    const a = (await resolveThesisTemplate({ templateId: "demo-university-a-master-tr-v1" })).template;
-    const b = (await resolveThesisTemplate({ templateId: "demo-university-b-master-tr-v1" })).template;
-    const c = (await resolveThesisTemplate({ templateId: "demo-university-c-phd-en-v1" })).template;
+  it("produces different editor and print geometry for fixture templates", async () => {
+    const a = (await resolveThesisTemplate({ templateId: "fixture-university-a-master-tr-v1" }, FIXTURE_REGISTRY)).template;
+    const b = (await resolveThesisTemplate({ templateId: "fixture-university-b-master-tr-v1" }, FIXTURE_REGISTRY)).template;
+    const c = (await resolveThesisTemplate({ templateId: "fixture-university-c-phd-en-v1" }, FIXTURE_REGISTRY)).template;
     const docs = [a, b, c].map((template) => compileThesisDocument(template, {}, "Test", "<h1>Test</h1>"));
     const css = docs.map(buildThesisCss);
     assert.match(css[0], /Times New Roman/);
@@ -242,7 +243,7 @@ describe("thesis export", () => {
     await Promise.all([ordinaryTask.destroy(), forcedTask.destroy()]);
   });
   it("applies cover text transformation to both PDF and DOCX", async () => {
-    const { template } = await resolveThesisTemplate({ templateId: "demo-university-a-master-tr-v1" });
+    const { template } = await resolveThesisTemplate({ templateId: "fixture-university-a-master-tr-v1" }, FIXTURE_REGISTRY);
     const model = compileThesisDocument(template, { values: { STUDENT_NAME: "Ada" } }, "Yapay Zeka Sistemleri", "");
     const pdf = new Uint8Array(await (await buildThesisPdf(model)).arrayBuffer());
     const docx = new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer());
@@ -326,8 +327,8 @@ describe("thesis export", () => {
     assert.equal(separated.numPages, pdf.numPages + 1);
     await otherTask.destroy();
   });
-  it("keeps the Demo C declaration special page on its own sheet despite numbered chapter breaks", async () => {
-    const { template } = await resolveThesisTemplate({ templateId: "demo-university-c-phd-en-v1" });
+  it("keeps the fixture C declaration special page on its own sheet despite numbered chapter breaks", async () => {
+    const { template } = await resolveThesisTemplate({ templateId: "fixture-university-c-phd-en-v1" }, FIXTURE_REGISTRY);
     const model = compileThesisDocument(template, {}, "Thesis", "<p>Body content</p>");
     assert.deepEqual(groupThesisSections(model.sections).find((group) => group.id === "declaration").sections.map((section) => section.id), ["declaration"]);
     const task = getDocument({ data: new Uint8Array(await (await buildThesisPdf(model)).arrayBuffer()), useSystemFonts: true, disableFontFace: true });

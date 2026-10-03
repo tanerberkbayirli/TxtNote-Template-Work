@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import generic from "../thesis/templates/generic.js";
-import demoC from "../thesis/templates/demo-c.js";
-import demoA from "../thesis/templates/demo-a.js";
+import { fixtureC as demoC } from "./thesisFixtures.js";
+import { fixtureA as demoA } from "./thesisFixtures.js";
 import { createThesisDocument, isThesisSectionEditable, orderedThesisSections, THESIS_METADATA_FIELDS, thesisSectionMode, updateThesisMetadata, updateThesisNoteSection } from "../thesis/document.js";
-import demoB from "../thesis/templates/demo-b.js";
+import { fixtureB as demoB } from "./thesisFixtures.js";
 import { compileThesisDocument } from "../thesis/engine.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
 import { migrateAcademicNote } from "./researchMigrate.js";
@@ -23,7 +23,7 @@ function freezeDeep(value) {
 
 describe("thesis document state", () => {
   it("creates an empty document referencing a template without copying its content", () => {
-    const selection = { universityId: "demo-university-c", language: "en" };
+    const selection = { universityId: "fixture-university-c", language: "en" };
     const thesis = createThesisDocument(demoC, selection, 2026);
     selection.language = "tr";
     assert.equal(thesis.templateId, demoC.id);

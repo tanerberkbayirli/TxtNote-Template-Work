@@ -52,7 +52,7 @@ try {
     localStorage.clear();
     if (!n) return;
     const content = Array.from({ length: n }, (_, i) => `<p>Paragraf ${i + 1}: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>`).join("");
-    localStorage.setItem("txtnote-thesis-regression", JSON.stringify({ title: "Test tezi", content, researchData: { thesis: { templateId: "demo-university-a-master-tr-v1", templateVersion: "1.0.0", selection: { universityId: "demo-university-a", instituteId: "graduate", degreeType: "master", language: "tr" }, values: { YEAR: "2026" }, sectionContent: {}, enabledSections: [] } } }));
+    localStorage.setItem("txtnote-thesis-regression", JSON.stringify({ title: "Test tezi", content, researchData: { thesis: { templateId: "fixture-university-a-master-tr-v1", templateVersion: "1.0.0", selection: { universityId: "fixture-university-a", instituteId: "graduate", degreeType: "master", language: "tr" }, values: { YEAR: "2026" }, sectionContent: {}, enabledSections: [] } } }));
   }, paragraphs);
   await page.reload();
   await page.waitForSelector(".thesis-flow-section", { timeout: 20000 });

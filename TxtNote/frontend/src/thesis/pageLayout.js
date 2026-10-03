@@ -129,8 +129,7 @@ export function thesisPagedCss(groups) {
     `.thesis-paper[data-thesis-layout="paged"]{background:transparent !important;box-shadow:none !important}`,
     // balance would relayout the whole document on every keystroke; auto fills pages in order.
     `${FLOW}{display:block;column-count:1;column-gap:0;column-fill:auto;column-wrap:wrap;orphans:2;widows:2}`,
-    // Keep a small, usable editing slot without reserving an A4 sheet.
-    `.thesis-paper[data-thesis-empty-flow="true"]{min-height:0 !important;padding-top:8px !important;padding-bottom:8px !important}`,
+    // An empty section keeps the normal paper box (margins as padding) so its writing area sits on the editor-only placeholder sheet.
     `${FLOW}[data-thesis-empty-flow="true"]{column-height:auto !important}`,
     `${FLOW} :is(h1,h2,h3,h4,h5,h6){break-inside:avoid}`,
     `${FLOW} :is(figure,.academic-figure,tr,caption){break-inside:avoid}`,
