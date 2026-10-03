@@ -1100,6 +1100,8 @@ A useful worker result should contain:
 
 Do not transfer enormous reasoning histories when a compact evidence-backed result is sufficient.
 
+TOKEN COST: read the target's `orchestration/specs/<target>.CONTEXT.md` (see §24A) instead of AGENTS.md + briefs + full sources; open sources only for the rows being worked. Use grep / line-range reads, never whole long files.
+
 
 
 \---
@@ -1152,6 +1154,8 @@ Workers should escalate:
 
 to the main orchestrator/reasoning agent.
 
+Worker task granularity: batch related small fixes into ONE worker (several UI bugs, several template value tweaks) instead of one worker per bug. Worker output contract: at most 15 lines (finding / value / unit / evidence / status), no narrative, never paste large file contents. A cold-start worker costs 55-85k tokens even for a one-line fix, so the orchestrator makes trivial one-line fixes itself.
+
 
 
 \---
@@ -1201,6 +1205,8 @@ MAXIMUM CONCURRENT SUBAGENTS = 2
 
 
 This is a hard cost-control constraint.
+
+Do not spawn a fresh LLM agent to redo measurement that a script can do (see §24A).
 
 
 
@@ -1262,11 +1268,28 @@ Do not sacrifice correctness merely to save tokens.
 
 Instead, reduce unnecessary context and duplicated work.
 
+Model choice: Haiku for mechanical edits and running the conformance checker; Sonnet for engine work, conflict reasoning and reading failing rows; the strongest model only for architecture and unresolved source conflicts.
+
 
 
 \---
 
 
+
+## 24A. Token-efficient workflow (binding; does not relax any correctness rule)
+
+Measured cost of the old method: independent LLM validation 160-260k tokens and 7-27 min per run; integrator fixes 80-165k; targets need about 3 rounds. All evidence classes, source precedence, tolerances, exact-font rule, PASS/FAIL/BLOCKED, real export, independence, regression and checkpoints stay unchanged; only HOW they are checked changes.
+
+1. Deterministic conformance checker first. Measurement and comparison are done by a script in `orchestration/tools/` (one command): real export via `export.mjs` -> optional Word render -> PyMuPDF / DOCX-XML landmark measurement of BOTH our output and the cached official reference -> expected/actual/delta JSON plus a short table. Agents interpret only the failing rows. Agents must NOT write new ad-hoc measurement scripts; they extend the shared tool. Until the checker exists, building it is the top-priority task; validators meanwhile reuse the existing scripts in `orchestration/tools/` and prior `validation/<target>/` attempt folders.
+2. Independence comes from comparing against source-derived references (official render / XML values / spec), not from spawning a fresh LLM that redoes everything. An independent LLM reviewer reads only: the checker output, the spec, and the source locators of failing or conflicting rows.
+3. Official reference renders (Word render of the official DOCX/DOC, extracted XML values) are produced ONCE per source and cached under `orchestration/artifacts/<target>/source/`; never re-rendered per attempt.
+4. After the first full validation, re-validate only the failed checks plus the checker's automated regression run. Do not re-measure untouched PASS items manually and do not loop.
+5. Context pack: each target keeps a <=1-page `orchestration/specs/<target>.CONTEXT.md` (source files + locators, key values, open conflicts/rulings, current status, commands). Briefs must list which files NOT to read.
+6. Word COM only for criteria that depend on Word pagination/glyph metrics. Own instance, record PID, timeout (e.g. 120 s), Quit in `finally`. On timeout fall back to DOCX XML + editor PDF and record the limitation (never claim a Word measurement that was not made).
+7. Orchestrator hygiene: one university (or one engine theme) per session; checkpoint with a short RESUME note and start a fresh session instead of growing one conversation; do not poll or narrate between notifications.
+8. Code reading: grep and line-range reads. Very long single-line JSX files are expensive; prefer splitting them when touched (recommended refactor, not mandatory now).
+
+\---
 
 \## 25. Scope Discipline
 

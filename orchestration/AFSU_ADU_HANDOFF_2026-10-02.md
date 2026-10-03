@@ -1,5 +1,7 @@
 # AFSÜ / ADÜ kayıtlı kapanış ve devam noktası
 
+> **TOKEN-EFFICIENT METHOD (2026-10-03, binding for future work):** Validation of AFSU/ADU targets = conformance checker + failing rows only; official Word renders cached once; context packs per target. Follow `AGENTS.md` section 24A and `orchestration/README.md` ("Why" + "Scaling plan"). Historical text below is kept as record; where it prescribes a fresh LLM validator re-exporting/re-measuring everything, reading full guides/briefs, or one worker per small bug, it is superseded.
+
 Kullanıcı mevcut işleri toparlayıp commit etmemizi ve tüm yapılanları saymamızı istedi. Ana ajan üretim kodu yazmadı; uygulama ve araç değişikliklerini GPT-6 Luna çalışanları yaptı. Aynı anda iki çalışan sınırı korundu. Bu checkpoint iki üniversitenin tamamlandığı anlamına gelmez.
 
 ## Kaydedilen işler

@@ -10,15 +10,37 @@ This policy supersedes conflicting older rules and environment notes below. `AGE
 4. Generic engine extensions are in scope when a source proves a missing capability. Keep them backward compatible, deterministic where practical, tested, and regression checked. Do not add university-specific engine branches.
 5. Validate exported fonts, not only requested names. A substitute font cannot satisfy an exact source requirement. Record actual font and host limitations.
 6. University order is `progress.json.universityOrder`: AKÜ → AFSÜ → ADÜ → remaining universities. Do not start the next university before the current defined gate unless the orchestrator explicitly permits it.
-7. At most **2 concurrent Luna workers**. The current execution host is Windows. Microsoft Word COM is available for controlled validation; use one owned instance, record its PID, call `Quit` in `finally`, and never terminate an unknown or other-owned Word process. Linux/LibreOffice instructions below are historical.
+7. At most **2 concurrent Luna workers**. Host is Windows. Microsoft Word COM only for Word-pagination/glyph-metric criteria: one owned instance, record its PID, 120 s timeout, call `Quit` in `finally`, never terminate an unknown or other-owned Word process; on timeout fall back to DOCX XML + editor PDF and record the limitation.
 8. `BLOCKED` requires evidence of a real source or technical blocker. Attempts or difficulty alone do not justify it. An unresolved source identity is `UNKNOWN`, not a substitute source.
 9. Keep changes narrow. Preserve prior commits and reports, update `progress.json` at checkpoints, and do not commit generated artifacts or change `Butun-Sablonlar/`.
+10. Token-efficient workflow (AGENTS.md section 24A) governs sections A-E below: checker script instead of a fresh LLM validator; cached official renders; re-validate failed rows only; `specs/<target>.CONTEXT.md` context packs; batched small fixes; <=15-line worker reports.
+
+## Why the token-efficient method exists (measured, session of 2026-10-03)
+
+One multi-agent session burned about 2.7M tokens for few results. Causes:
+- Independent validation by an LLM agent: 160-260k tokens and 7-27 min each (cold start re-reading AGENTS/briefs/spec/sources, Playwright export, Word COM PDF render that once hung 17 min, ad-hoc PyMuPDF scripts rewritten every time).
+- Integrator fixes: 80-165k each. Even a one-line UI fix by a Haiku cost 55-85k because of cold-start reading.
+- Targets need about 3 validate/fix rounds.
+- Very long single-line JSX files are expensive to read.
+- The orchestrator's own long conversation grows every turn.
+
+Method (binding, see `AGENTS.md` section 24A): deterministic conformance checker first; independence via source-derived references, not a fresh LLM redoing everything; official reference renders cached once under `artifacts/<target>/source/`; after the first full validation re-check only failed rows + automated regression; per-target `specs/<target>.CONTEXT.md` (<=1 page) instead of re-reading AGENTS/briefs/sources; batch small fixes into one worker (Haiku mechanical, Sonnet engine/conflicts, orchestrator does one-line fixes); worker output <=15 lines; Word COM only where Word pagination/glyph metrics matter (own PID, 120 s timeout, Quit in `finally`, fall back to DOCX XML + editor PDF and record the limitation); one university or engine theme per session with a short RESUME note then a fresh session; grep / line-range reads.
+
+### Next step (top priority)
+Build the conformance checker in `orchestration/tools/` (one command: export.mjs -> optional Word render -> PyMuPDF/DOCX-XML landmark measurement of our output AND the cached official reference -> expected/actual/delta JSON + short table). Until it exists validators reuse the existing scripts in `orchestration/tools/` and earlier `validation/<target>/` attempt folders; no new ad-hoc measurement scripts.
+
+### Scaling plan
+a. Conformance checker (above).
+b. DOCX->spec analyzer: auto-extract styles / sectPr / margins / fonts / spacing / numbering / header-footer from official templates as MEASURED values.
+c. Harden the engine on the 3 current universities (AKU, AFSU, MCBU) as a regression corpus before adding new ones.
+d. Two-tier Done: high-rejection-risk rules (margins, font face/size, line spacing, page numbering, fixed-page geometry) must be PASS by the checker; source-silent edge cases are labelled UNKNOWN and do not block. REQUIRES USER APPROVAL (product decision not yet confirmed); until approved the full Definition of Done in AGENTS.md section 28 applies.
+e. Prioritise universities by user demand and template families.
 
 ### Inventory checkpoint 2026-10-03
 
 `manifest.json` indexes 50 targets across 18 university IDs, with 17 source-present/implementable IDs and 83 variant entries (82 confirmed, one unconfirmed). The total includes confirmed AFSÜ proposal, Tıp, and DHF registry/module variants. It records 95 verified local source documents (34 PDF, 57 DOCX, 4 DOC); ten active source records plus one historical path remain unresolved and are reported as `UNKNOWN`. `progress.json` contains 50 target records across 17 universities; it is a work ledger, not a completion claim. See [`reports/source-inventory-refresh-2026-10-03.md`](reports/source-inventory-refresh-2026-10-03.md) and [`CLOSEOUT_2026-10-03.md`](CLOSEOUT_2026-10-03.md).
 
-## Policy revision 2026-09-28 (historical; superseded where it conflicts)
+## Policy revision 2026-09-28
 
 This section supersedes every conflicting rule further below (older rules stay for history).
 
@@ -29,20 +51,13 @@ This section supersedes every conflicting rule further below (older rules stay f
 5. **Fonts are real requirements.** Tinos/Liberation/Helvetica substitution is not PASS for a Times New Roman / Arial requirement. The export must embed the genuine font (verified from the PDF font program), otherwise the check FAILs or the target is BLOCKED with evidence. `PASS_WITH_GAPS` is not a terminal success state for a requirement the engine can be extended to meet.
 6. **Universities strictly one at a time** in `progress.json.universityOrder`; a university is complete only after its FINAL GATE (all targets PASS or evidenced BLOCKED).
 7. **Attempts**: `maxAttempts` is a checkpoint for re-evaluation, not an automatic BLOCKED. BLOCKED only for genuinely impossible requirements, documented in `failures/<target-id>.md`.
-8. **Independent validation** by a validator context without the integrator's conversation; it tries to disprove correctness using the official source, the spec and the real exported PDF/DOCX.
+8. **Independent validation**: kaynak-türevli referansa karşı conformance checker; LLM yalnız başarısız/çelişkili satırları yorumlar (bölüm C).
 
 Confidence levels in specs: `EXPLICIT` (stated in guide text), `TEMPLATE` (read from an official DOCX template's XML/styles), `MEASURED` (measured on an official example page / PDF geometry), `INFERRED` (reasoned, must say why), `UNKNOWN`.
 
-### Tooling (historical Linux environment; not the current Windows requirements)
+### Tooling
 
-- The shell script, `/usr/share/fonts/...`, and LibreOffice commands describe an earlier Linux run. On the current Windows host, use the repository's Windows/browser tools and available Microsoft Word COM path; do not assume those Linux paths or fonts exist.
-- `orchestration/tools/export.mjs` remains an available real-export harness when its Playwright prerequisites are configured; validate the exact generated output against source evidence.
-
-
-Bu klasör, `Butun-Sablonlar/` kaynaklarını TxtNote tez motoruna (`TxtNote/frontend/src/thesis/`) aktaran uzun süreli, kesintiye dayanıklı iş akışını yönetir.
-
-- `Butun-Sablonlar/` **salt okunurdur (source of truth)**. Hiçbir ajan oradaki bir dosyayı değiştirmez, taşımaz veya dönüştürülmüş kopyasını yanına yazmaz. Dönüştürmeler (docx→pdf, metin çıkarımı, sayfa görüntüleri) yalnız `orchestration/artifacts/<id>/` altına yazılır.
-- Tek doğru durum kaynakları `manifest.json` (ne yapılacak) ve `progress.json` (ne yapıldı) dosyalarıdır.
+- `orchestration/tools/export.mjs` gerçek export koşumudur (Playwright + Chrome); çıktı kaynak kanıtına karşı ölçülür. Word COM yalnız Word-bağımlı kriterlerde (kural: bölüm C).
 
 ## Dosyalar
 
@@ -110,7 +125,6 @@ Analyzer bu kısıtlara karşı spec yazar; Integrator bunları sessizce aşmaz.
 5. **Layout PDF tarayıcı DOM'u gerektirir.** Editörün sayfaladığı DOM gerekir (`buildThesisLayoutPdf`). Node'daki `buildThesisPdf` yalnız fallback'tir ve index sayfa numaralarını boş bırakır. Gerçek PDF doğrulaması Playwright + Chromium ile uygulama üzerinden yapılır.
 6. **Kaynakça yalnız stil ve hanging indent'tir.** Atıf stili (APA vb.) uygulanmaz, yalnız belgelenir (`citationStyle`).
 7. **Metadata içerik kuralları sınırlı advisory `minItems` doğrulamasıdır.** Uyarı/error listesine yazılır, ancak kaydetmeyi veya export'u engellemez.
-8. **Engine additions**: this older no-extension rule is revoked by the active policy above. A source-proven capability gap may be implemented generically and regression-tested.
 9. **Şablonlar yalnız veridir.** Editör veya motor kodunda üniversiteye özel dal olmaz.
 
 ## Durum değerleri
@@ -123,50 +137,16 @@ Analyzer bu kısıtlara karşı spec yazar; Integrator bunları sessizce aşmaz.
 
 ## Çalışma stratejisi
 
-### 0) Ortam hazırlığı (bir kez)
+### 0) Ortam
+Windows host; kurulu araçlar: PyMuPDF, python-docx, Playwright (`orchestration/tools/node_modules`), Chrome, LibreOffice, Word COM. Dönüştürmeler yalnız `orchestration/artifacts/<id>/source/` altına yazılır. Dev server ve export komutları `orchestration/tools/devserver.sh`, `make-fixture.mjs`, `export.mjs` (bkz. `AKU_DEPT_WORKER_BRIEF.md`).
 
-```bash
-cd TxtNote/frontend && npm ci          # node_modules şu an yok
-pip install pymupdf python-docx        # PDF/DOCX ölçümü için; şu an kurulu değil
-# LibreOffice (soffice) ve Chromium (/opt/pw-browsers) mevcut
-```
+### A) ANALYSIS
+- **Seçim**: `progress.json` içinde `analysis != DONE` target'lar; sıra `priority`, sonra manifest sırası. Bir oturumda tek üniversite.
+- **Context**: target'ın `manifest.json` kaydı (`sourceFiles` + `supplementarySources`), `schema.d.ts`, `thesis/README.md`, referans şablon desen. Atanan kaynak bir kez okunur (DOCX için önce DOCX->spec analyzer / XML çıkarımı); başka target'ların kaynakları açılmaz; `TxtNote/` ve `Butun-Sablonlar/` değiştirilmez.
+- **Çıktı**: `specs/<id>.json` (şema `ANALYZER_BRIEF.md`'de), `reports/<id>.md` ve <=1 sayfalık `specs/<id>.CONTEXT.md` (kaynak dosya+konum, anahtar değerler, açık çelişki/kararlar, durum, komutlar). Sonraki işçiler AGENTS.md/brief/kaynakların tamamı yerine CONTEXT.md'yi okur.
+- **Kanıt kuralı**: Her kural en az bir `evidence` (dosya + sayfa/paragraf/XML konumu + kısa alıntı) taşır; kanıtsız kural spec'e girmez; sessiz kaynak `conflicts` / `openQuestions` altında UNKNOWN. DOCX sayısal değerleri öncelikle XML'den (`w:pgMar`, `w:spacing`, `w:ind`, `w:rFonts`, `w:sz`).
+- **Orchestrator** her analyzer sonrası `analysis=DONE` (veya `FAILED` + `lastError`), `specPath`, `reportPath` yazar.
 
-Kaynak dönüştürme örneği (yalnız artifacts'a yazılır):
-
-```bash
-soffice --headless --convert-to pdf --outdir orchestration/artifacts/<id>/source "<Butun-Sablonlar/...docx>"
-```
-
-### A) ANALYSIS (historical workflow; active concurrency limit is 2 Luna workers)
-
-- **Seçim**: `progress.json` içinde `analysis != DONE` olan target'lar alınır. Sıra `priority` (1 → 3), sonra manifest sırasıdır.
-- **Verilen context**:
-  - target'ın `manifest.json` kaydı: `sourceFiles` + `supplementarySources`;
-  - `schema.d.ts`, `thesis/README.md`, `templates/mcbu.js` (referans desen), `templates/generic.js`.
-- **Yasaklar**: Başka target'ların kaynaklarını açmak yasaktır. Production code (`TxtNote/`) ve `Butun-Sablonlar/` değiştirilemez.
-- **Çıktı `specs/<id>.json`**:
-
-```jsonc
-{
-  "id": "deu-fbe", "schemaVersion": 1, "analyzedAt": "YYYY-MM-DD",
-  "sourcePriority": ["<path> (neden)", "..."],          // çelişkide hangisi kazanır
-  "variants": [{ "registryId": "...", "degreeType": "...", "language": "...", "confirmed": true, "evidence": "<path>#p12" }],
-  "rules": [
-    { "key": "page.margins.leftMm", "value": 40, "unit": "mm",
-      "evidence": [{ "source": "<path>", "locator": "s. 7 §2.1 | docx sectPr w:pgMar", "quote": "Sol kenar 4 cm" }],
-      "confidence": "explicit | measured | inferred", "appliesTo": ["*"] }
-  ],
-  "sections": [ /* sıra, tür, zorunluluk, numaralandırma, blok düzeni ölçüleri, kanıtlı */ ],
-  "placeholders": { },
-  "conflicts": [ { "topic": "...", "sources": [...], "decision": "...", "needsConfirmation": true } ],
-  "engineGaps": [ { "rule": "...", "reason": "...", "workaround": "..." } ],
-  "measurableChecks": [ { "id": "margin-left", "what": "body metni x0", "expected": 113.39, "unit": "pt", "tolerance": 1 } ]
-}
-```
-
-- **Kanıt kuralı**: Her kural en az bir `evidence` (dosya + sayfa/paragraf/XML konumu + kısa alıntı) taşır. Kanıtı olmayan kural spec'e girmez. Kaynak sessizse bu `conflicts` / `openQuestions` içinde belirtilir. DOCX şablonlarında sayısal değerler öncelikle XML'den okunur (`w:pgMar`, `w:spacing`, `w:ind`, `w:rFonts`, `w:sz`).
-- **`reports/<id>.md`**: özet, varyant kararı, kaynak önceliği, çelişkiler, engine gap'ler, açık sorular.
-- **Orchestrator** her analyzer bittiğinde `analysis=DONE` (veya `FAILED` + `lastError`), `specPath` ve `reportPath` değerlerini yazar.
 
 ### B) IMPLEMENTATION: tek Integrator, sırayla
 
@@ -180,17 +160,15 @@ soffice --headless --convert-to pdf --outdir orchestration/artifacts/<id>/source
   5. Çalıştır: `node --test src/lib/*.test.js` (frontend'de) ve `npm run build`.
   6. Varyant başına örnek bir tez export et: DOCX (`buildThesisDocx`) ve layout PDF (Playwright ile uygulamadan). Çıktılar `artifacts/<id>/export/<registryId>.{pdf,docx}` altına yazılır.
   7. Tek bir commit at: `thesis(<id>): ...`. Commit hash'i progress'e yazılır, `implementation=DONE`.
-- **Engine kodu**: This is a historical restriction and is superseded by the active policy: implement a source-proven generic capability gap, with tests and regression checks.
+- **Engine kodu**: kaynakla kanıtlanmış generic bir yetenek eksikliği generic, opt-in, testli ve regresyon kontrollü olarak implement edilir.
 
-### C) VALIDATION: bağımsız Validator
-
-- **Bağımsızlık**: Implementasyonu yapan ajan kendi işine PASS veremez. Validator, Integrator'un konuşma geçmişi olmadan başlatılır.
-- **Validator'ın girdisi**: yalnız SOURCE + `specs/<id>.json` + gerçek export çıktıları. Integrator'un açıklamalarına güvenmez.
-- **Programatik ölçümler**:
-  - **PDF (PyMuPDF)**: sayfa boyutu; ilk/son metin satırının x/y'si (margin); font adı ve boyutu; satır aralığı (ardışık baseline farkı); sayfa numarası konumu ve formatı (roman/arabic geçişi); başlık hizası; özel sayfa blok y-konumları.
-  - **DOCX (python-docx / XML)**: `w:pgMar`, `w:rFonts`, `w:sz`, `w:spacing`, `w:ind`, bölüm numaralandırması (`w:pgNumType`), section kırılımları.
-  - **Kaynak ile yan yana karşılaştırma**: Kaynak DOCX `soffice` ile PDF'e çevrilir ve aynı ölçümler iki tarafa uygulanır.
-- **Görsel kontrol**: Sayfa görüntüsü karşılaştırması yalnız destekleyicidir; tek başına PASS gerekçesi olamaz.
+### C) VALIDATION: checker + independent interpretation
+- **Bağımsızlık**: Implementasyonu yapan ajan kendi işine PASS veremez. Bağımsızlık, çıktının kaynak-türevli referansla (resmi DOCX/DOC render'ı, çıkarılmış XML değerleri, spec) bir script tarafından karşılaştırılmasıyla sağlanır; implementasyon ajanının açıklamalarına güvenilmez.
+- **Conformance checker** (`orchestration/tools/`, tek komut): gerçek export (`export.mjs`) -> gerekirse Word render -> PyMuPDF / DOCX-XML ölçümü, hem bizim çıktıda hem önbellekteki resmi referansta -> expected/actual/delta JSON + kısa tablo. Ölçülenler: PDF sayfa boyutu, margin, font adı/boyutu, satır aralığı, sayfa numarası konum/format, başlık hizası, özel sayfa blok konumları; DOCX `w:pgMar`, `w:rFonts`, `w:sz`, `w:spacing`, `w:ind`, `w:pgNumType`, section kırılımları. Checker yoksa mevcut `orchestration/tools/` script'leri ve önceki `validation/<id>/` denemeleri kullanılır; yeni ad-hoc ölçüm script'i yazılmaz, paylaşılan araç genişletilir.
+- **LLM yorumlayıcı** yalnız checker çıktısını, spec'i ve başarısız/çelişkili satırların kaynak konumlarını okur; çıktısı <=15 satır.
+- **Resmi referans render'ları** kaynak başına bir kez üretilip `artifacts/<id>/source/` altında önbelleğe alınır; deneme başına yeniden render edilmez.
+- **Word COM** yalnız Word sayfalaması/glif metriğine bağlı kriterlerde; kendi instance'ı, PID kaydı, 120 sn timeout, `finally` içinde `Quit`. Timeout'ta DOCX XML + editör PDF'ine dönülür ve sınırlama kaydedilir.
+- **Görsel kontrol** yalnız destekleyicidir; tek başına PASS gerekçesi olamaz.
 - **Toleranslar** (spec aksini söylemedikçe):
 
 | Ölçü | Tolerans |
@@ -200,14 +178,13 @@ soffice --headless --convert-to pdf --outdir orchestration/artifacts/<id>/source
 | Font size | ±0.1 pt (measurement tolerance only) |
 | Line pitch | ±0.2 pt (measurement tolerance only) |
 
-- **Çıktı**: `validation/<id>/attempt-<n>.json` (her check: expected / actual / pass) ve `.md` özet. Tam gate sonucu PASS veya FAIL olur; `PASS_WITH_GAPS` does not close a source-backed requirement.
+- **Çıktı**: `validation/<id>/attempt-<n>.json` (her check: expected / actual / pass) ve kısa `.md`. Gate sonucu PASS veya FAIL; `PASS_WITH_GAPS` kaynak-destekli bir gereksinimi kapatmaz.
 
 ### D) RETRY
-
-- **FAIL durumunda**: `failures/<id>/attempt-<n>.md` (başarısız check'ler ve beklenen değerler) Integrator'a döner. Döngü şöyledir: düzeltme → yeniden export → **yeni** bağımsız Validator.
-- **Deneme sayısı**: Her implementation→validation döngüsünde `attempts` 1 artar; limite ulaşmak tek başına BLOCKED gerekçesi değildir.
+- **FAIL**: `failures/<id>/attempt-<n>.md` (başarısız check'ler, beklenen değerler) Integrator'a döner. Düzeltme -> yeniden export -> checker yalnız başarısız check'ler + otomatik regresyon koşusu için yeniden çalışır. Dokunulmayan PASS maddeleri elle yeniden ölçülmez.
+- **Deneme sayısı** her implementation->validation döngüsünde 1 artar; limite ulaşmak tek başına BLOCKED gerekçesi değildir.
 - **PASS olmadan tamamlanma yok**: independent PASS olmadan target `COMPLETE` olmaz.
-- **BLOCKED**: Yalnız desteklenen bir kaynak veya teknik engel işi gerçekten önlüyorsa kullanılır. Eksik kanıt/teknik sınır `failures/<id>/BLOCKED.md` içinde belirtilir. Deneme sayısı, süre veya zorluk tek başına BLOCKED gerekçesi değildir; yararlı implementasyon otomatik revert edilmez.
+- **BLOCKED**: Yalnız desteklenen bir kaynak veya teknik engel işi gerçekten önlüyorsa; eksik kanıt/teknik sınır `failures/<id>/BLOCKED.md` içinde belirtilir. Yararlı implementasyon otomatik revert edilmez.
 
 ### E) CHECKPOINT / devam etme
 

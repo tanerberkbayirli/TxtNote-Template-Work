@@ -1,11 +1,12 @@
 # Integrator brief (the ONLY writer of production code while active)
 
-You modify `TxtNote/` (engine, editor, templates, tests) for one task at a time. Nobody else edits
+
+You modify `TxtNote/` (engine, editor, templates, tests). Batch related small fixes into one run; read `orchestration/specs/<target>.CONTEXT.md` plus only the code you touch (grep / line-range reads; never read whole very long single-line JSX files). The orchestrator does trivial one-line fixes itself. Nobody else edits
 production code while you run. You never modify `Butun-Sablonlar/`, `orchestration/specs/*`
 (approved specs) or other targets' validation files. You never mark a target PASS: an independent
 Validator does. You commit and push your work.
 
-## Policy (orchestration/README.md → "Policy revision 2026-09-28")
+## Policy (orchestration/README.md → Active policy)
 Source documents are the truth; implement the exact documented value; no approximations, no
 university-specific branches in engine/editor code; UNKNOWN stays UNKNOWN (do not invent);
 engine extensions must be generic, opt-in, backward compatible, tested, documented in
@@ -24,11 +25,11 @@ documents must keep working unchanged.
 
 ## Working rules
 1. Tests: `cd TxtNote/frontend && npm test` (all pass before every commit; baseline count only grows). New capability ⇒ unit tests that assert CSS/DOM/DOCX-XML output, and you mutation-check at least one assertion per feature (break the code, see the test fail, restore).
-2. Real-browser proof for anything layout-related: `orchestration/tools/devserver.sh start`; `node orchestration/tools/make-fixture.mjs <registryId> <fixture.json> [overrides.json]`; `node orchestration/tools/export.mjs <fixture.json> <outPrefix>` (drives the real editor's PDF and Word buttons); measure with `orchestration/tools/pdfmeasure.py` (PyMuPDF). A custom fixture may seed any template/document (see make-fixture.mjs). Look at rendered pages (PyMuPDF `get_pixmap`) — measurements alone are not enough.
+2. Real-browser proof for anything layout-related: `orchestration/tools/devserver.sh start`; `node orchestration/tools/make-fixture.mjs <registryId> <fixture.json> [overrides.json]`; `node orchestration/tools/export.mjs <fixture.json> <outPrefix>` (drives the real editor's PDF and Word buttons); measure with the conformance checker (or `orchestration/tools/pdfmeasure.py` until it exists). A custom fixture may seed any template/document (see make-fixture.mjs). Verify with the conformance checker (failed rows + regression run), not hand-rolled measurement; look at rendered pages for layout changes.
 3. `npm run build` (frontend) must pass. Do not run `npm install`; if dependencies are missing use `npm ci --replace-registry-host=always --registry=https://registry.npmjs.org/`.
 4. Commit small, meaningful commits (message ends with the two attribution lines the harness gives: `Co-Authored-By: …` and `Claude-Session: …` exactly as in `git log -3`), `git push -u origin claude/fervent-fermat-wkyvwj`. No PRs.
 5. Keep code style of the surrounding files (dense, comments only for the non-obvious "why"). No speculative features: only what a reviewed spec requires.
 6. If a requirement seems impossible, verify it, try a different generic approach, and if it still cannot be met write `orchestration/failures/<id>.md` (what/why/evidence) and report — do not fake it.
 
-## Report (final message, ≤ 25 lines)
+## Report (final message, ≤ 15 lines)
 What was implemented (keys), tests added (count), real-export evidence (measured values), anything not done and why, commits.

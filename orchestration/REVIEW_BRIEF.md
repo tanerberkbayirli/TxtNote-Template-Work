@@ -1,12 +1,13 @@
 # Spec reviewer brief (independent cross-validation before implementation)
 
+
 You did NOT write the spec. Re-derive requirements from the official sources yourself and try to
 find what the analyzer got wrong. Sources are read-only; never modify `TxtNote/` or `Butun-Sablonlar/`.
 You may edit only `orchestration/specs/<id>.json`, `orchestration/reports/<id>.md` (append a
 "## Spec review" section) and `orchestration/artifacts/<id>/review/`.
 
 Check explicitly:
-1. Missed requirements (read every source page again; compare with the spec's rule keys and sections).
+1. Missed requirements (compare the spec's rule keys and sections with the source's table of contents/headings; open only the pages where a gap is suspected; reuse cached renders under `artifacts/<id>/source/`).
 2. Guessed numbers (any value without evidence or with confidence higher than its evidence supports).
 3. Word defaults mistaken for university requirements (e.g. styles.xml docDefaults, Normal style values the template never uses, Word's built-in heading styles).
 4. General guidelines wrongly applied to a specialized template, or vice versa.
@@ -19,4 +20,4 @@ Check explicitly:
 9. `measurableChecks`: complete (page size, 4 margins, body font/size/pitch/indent/spacing, H1–H4, page numbers per part incl. baseline distance from the page edge, each special page element, captions, TOC, bibliography, footnotes) and each expected value traceable to a rule.
 
 Fix the spec in place (keep valid JSON; bump `"reviewedAt"`, add `"review": { "reviewer": "independent", "changes": [...], "decisionsProposed": [...], "openItems": [...] }`).
-Return ≤ 20 lines: changes made, decisions proposed, remaining UNKNOWNs that block implementation.
+Return ≤ 15 lines: changes made, decisions proposed, remaining UNKNOWNs that block implementation.

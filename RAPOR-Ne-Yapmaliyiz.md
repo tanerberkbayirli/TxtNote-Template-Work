@@ -77,7 +77,7 @@ Her target için elle analiz + bespoke modül + 3-5 denemeli bağımsız doğrul
 ### Faz 1 — Ürünleştirme (3-4 hafta)
 
 7. **DOCX→spec otomatik analyzer:** resmi DOCX şablonlarından `styles.xml`/section XML ile kural değerlerini otomatik çıkar (MEASURED). Kılavuz PDF'inden yalnız delta elle.
-8. **Conformance checker:** çıktıyı ölçer, high-risk ihlalleri madde madde raporlar. Üç amaçla kullanılır: red güvencesi, otomatik doğrulama, regression.
+8. **Conformance checker:** çıktıyı ölçer, high-risk ihlalleri madde madde raporlar. Üç amaçla kullanılır: red güvencesi, otomatik doğrulama, regression. **[2026-10-03: ÖNCELİĞİ EN YÜKSEK; Faz 0/1 sırasından bağımsız ilk iş. Bağımsız LLM doğrulayıcının yerini alır, bkz. bölüm 9.]**
 9. **Motor determinizmi:** DOM sayfalama tek ölçüm geçişine bağlanır (blok-boşluk tablosu), equation sweep regresyon testi eklenir — ya da D3 seçilirse DOM sayfalama doğrulama referansı olmaktan çıkar.
 10. **Taban+delta yapısının motora bağlanması:** yeni üniversite = delta dosyası + analyzer çıktısı.
 
@@ -125,5 +125,17 @@ Her target için elle analiz + bespoke modül + 3-5 denemeli bağımsız doğrul
 5. Gün: LibreOffice kurulumu + DOCX→PDF doğrulama zinciri testi; AKÜ-FBE Tier-4 kararıyla kapanış yazımı.
 
 ---
+
+---
+
+## 9. Ölçek planı ve token-verimli çalışma yöntemi (2026-10-03 revizyonu)
+
+Ölçülen maliyet: bağımsız LLM doğrulayıcı 160-260k token ve 7-27 dk/koşu; entegratör düzeltmesi 80-165k; hedef başına ~3 tur; bir oturum ~2.7M token. Yöntem `AGENTS.md` 24A ve `orchestration/README.md` "Why" bölümündedir. Doğruluk kuralları (kanıt sınıfları, tolerans, font, gerçek export, bağımsızlık, regresyon, checkpoint) değişmez.
+
+1. (a) Conformance checker (tek komut: export -> opsiyonel Word render -> PyMuPDF/DOCX-XML ölçümü, hem bizim çıktı hem önbellekteki resmi referans -> expected/actual/delta). En yüksek öncelik; ajanlar yalnız başarısız satırları yorumlar.
+2. (b) DOCX->spec analyzer: styles/sectPr/marj/font/aralık/numaralandırma/üst-alt bilgi MEASURED olarak otomatik çıkarılır.
+3. (c) Motoru mevcut 3 üniversitede (AKÜ, AFSÜ, MCBÜ) regresyon külliyatı olarak sağlamlaştır; sonra yenisini ekle.
+4. (d) İki kademeli Done: yüksek red riskli kurallar (marj, font yüzü/punto, satır aralığı, sayfa numarası, sabit sayfa geometrisi) checker ile PASS olmalı; kaynağın sustuğu uç durumlar UNKNOWN etiketlenir ve bloke etmez. **KULLANICI ONAYI GEREKİR** (ürün kararı henüz onaylanmadı; onaya kadar AGENTS.md 28 tam Done geçerli).
+5. (e) Üniversiteleri kullanıcı talebine ve şablon ailesine göre önceliklendir.
 
 *Bu rapor `orchestration/` politikasıyla (2026-09-28 revizyonu) uyumludur; tek fark, Tier-4 "belgelenmiş varsayılan davranış" kavramının resmileştirilmesidir — mevcut `PASS_WITH_GAPS` durumunun yerine geçer.*

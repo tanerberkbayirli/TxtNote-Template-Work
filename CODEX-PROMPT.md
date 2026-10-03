@@ -1,7 +1,8 @@
 # GÖREV PAKETİ — TxtNote tez şablonları: MCBÜ + AKÜ pilot teslimi
-# (Orchestrator + 6 luna alt ajan)
 
-Sen bu depo için **orchestrator**'sun. Aşağıdaki görevi **6 luna alt ajan** çalıştırarak yürüteceksin. Alt ajanlara rol ve dosya sahipliği bu prompt'ta verilmiştir; her ajana kendi bağlamını eksiksiz aktar (alt ajanlar bu konuşmayı görmez).
+# (Orchestrator + en fazla 2 eşzamanlı alt ajan)
+
+Sen bu depo için **orchestrator**'sun. Aşağıdaki görevi, aynı anda **en fazla 2** alt ajan çalıştırarak yürüteceksin (AGENTS.md §23, §24A). Küçük işleri tek ajanda grupla; tek satırlık düzeltmeleri kendin yap. Her ajana yalnız kendi hedefinin `specs/<id>.CONTEXT.md` dosyasını ve ilgili satırların kaynak konumlarını ver (alt ajanlar bu konuşmayı görmez).
 
 ---
 
@@ -9,12 +10,7 @@ Sen bu depo için **orchestrator**'sun. Aşağıdaki görevi **6 luna alt ajan**
 
 Çalışma dizini: `C:\Users\CASPER\Desktop\TxtNote-Template-Work`
 
-Başlamadan ŞUNLARI SIRA İLE OKU ve alt ajan brief'lerine özünü taşı:
-1. `AGENTS.md` — depo kuralları (kanıt, tolerans, üniversite izolasyonu, gerçek export zorunlu).
-2. `RAPOR-Ne-Yapmaliyiz.md` — teşhis, D1–D6 kararları, yol haritası (onaylandı).
-3. `orchestration/manifest.json` — target sözleşmeleri (registry id'leri, modül adları, kaynak dosyalar).
-4. `orchestration/progress.json` — güncel durum.
-5. `orchestration/specs/rule-taxonomy.json` — kural sözlüğü.
+Başlamadan: `AGENTS.md` (özellikle §24A), `orchestration/progress.json` ve hedefin `specs/<id>.CONTEXT.md` dosyası. `manifest.json`, `RAPOR-Ne-Yapmaliyiz.md` ve `rule-taxonomy.json` yalnız gereken satırlar için grep ile açılır; hepsi baştan sona okunmaz.
 
 ---
 
@@ -49,13 +45,12 @@ Diğer 30 target'a (deu, ege, msku, pau, ...) **DOKUNMA**. Dosyalarını açma, 
 ## 3. ORTAM GERÇEKLERİ (bu host'ta ölçülmüştür, yeniden keşfetme)
 
 - Windows 11, shell = git-bash (MSYS). Native araçlara `C:/...` biçiminde forward-slash yol ver.
-- **LibreOffice kurulu:** `C:\Program Files\LibreOffice\program\soffice.exe`.
-  - İlk `--convert-to pdf` denemesi ASILDI (timeout) ve `Could not find platform independent libraries <prefix>` uyarısı verdi. Çözüm denenecek: `PYTHONHOME`/`PYTHONPATH` unset et ve `-env:UserInstallation=file:///C:/.../lo-profile` ile ayrı profil ver. Bu zinciri çalışır hale getirmek L1'in işi.
-- **Playwright kurulu değil.** `orchestration/tools/export.mjs` `require(process.env.PLAYWRIGHT_MODULE || "/opt/node22/lib/node_modules/playwright")` diyor — bu Linux yoludur, bu host'ta geçersiz. Çözüm: `orchestration/tools` altında `npm install playwright` + `npx playwright install chromium`, sonra `PLAYWRIGHT_MODULE` ortam değişkeniyle çalıştır. `export.mjs`'in iç mantığına dokunma; gerekiyorsa yalnız yol/varsayılan düzeltmesi yap.
+- **LibreOffice kurulu:** `C:\Program Files\LibreOffice\program\soffice.exe`; ayrı profil için `-env:UserInstallation=file:///C:/.../lo-profile`, `PYTHONHOME`/`PYTHONPATH` unset.
+- **Playwright:** `orchestration/tools/node_modules` altında kurulu; `PLAYWRIGHT_MODULE` ve `THESIS_BROWSER_EXECUTABLE` ortam değişkenleri `orchestration/AKU_DEPT_WORKER_BRIEF.md` içinde verilmiştir.
 - Export zinciri: vite dev server `TxtNote/frontend` (varsayılan `http://127.0.0.1:5175`) + `export.mjs <fixture.json> <outPrefix>` → `<outPrefix>.pdf`, `.docx`, `.layout.json`. Bu, GERÇEK uygulama export'udur; alternatif test renderer kullanma.
-- Ölçüm araçları hazır: `orchestration/tools/pdfmeasure.py`, `spec_annotate_v3.py`, `eq-sweep*.mjs`, `make-fixture.mjs`, `export.mjs`.
+- Ölçüm: `orchestration/tools/` altındaki conformance checker (yoksa mevcut `pdfmeasure.py`, `spec_annotate_v3.py`, `eq-sweep*.mjs`, `make-fixture.mjs`, `export.mjs`); yeni ad-hoc ölçüm script'i yazılmaz.
 - Testler: `cd TxtNote/frontend && node --test src/lib/*.test.js src/features/workarea/*.test.js src/features/sync/*.test.js` + motor testleri `src/thesis/` altında. `progress.json` "466 passing" diyor, gerçek sayıyı koşturup doğrula.
-- Word COM yeniden sayfalandırma bu host'ta ÇALIŞMIYOR (0x80070520). Tek render zinciri LibreOffice'tir; DOCX doğrulamasını XML ölçümüyle yap (styles.xml, sectPr, numPr).
+- Word COM yalnız Word sayfalamasına/glif metriğine bağlı kriterlerde: kendi instance'ı, PID kaydı, 120 sn timeout, `finally` içinde `Quit`; timeout'ta DOCX XML + editör PDF'ine dön ve sınırlamayı kaydet. DOCX doğrulamasının ana kanıtı XML ölçümüdür (styles.xml, sectPr, numPr).
 - Git deposu kök dizinde; son commit `495b6ec`; izlenmeyen tek şey `orchestration/validation/aku-fbe/attempt-5-equation-repro/` (incele, uygun yere taşı ya da açıkça belgeleyerek karar ver).
 
 ---
@@ -76,9 +71,9 @@ Diğer 30 target'a (deu, ege, msku, pau, ...) **DOKUNMA**. Dosyalarını açma, 
 
 ## 5. ALTI LUNA ALT AJANI — roller, dosya sahipliği, sıra
 
-Genel kural: **iki ajan aynı dosyayı asla düzenlemesin.** `progress.json`'u YALNIZ L6 yazar; commit'leri YALNIZ L6 atar. Her ajan kendi brief'inde bu prompt'un §2 (kararlar), §3 (ortam) ve kendi hedefinin kaynak yollarını almalı.
+Genel kural: **iki ajan aynı dosyayı asla düzenlemesin;** aşağıdaki L1-L6 roller mantıksal sahiplik grubudur, aynı anda en fazla 2 ajan çalışır ve birden çok rol tek ajanda birleştirilebilir. `progress.json`'u YALNIZ L6 yazar; commit'leri YALNIZ L6 atar. Brief'ler kısa tutulur: bu prompt'un §2/§3 özeti + hedefin CONTEXT.md'si; hangi dosyaların OKUNMAYACAĞI brief'te yazılır.
 
-**Faz sırası:** L1 tek başına önce → L2 + L3 + L5 paralel → L4 (L3'e bağımlı) → L6 en sonda.
+**Faz sırası:** L1 önce → L2/L3/L5 (aynı anda en fazla 2 ajan) → L4 (L3'e bağımlı) → L6 en sonda.
 
 ### L1 — Ortam & Export Zinciri
 - LibreOffice headless DOCX→PDF zincirini çalıştır (§3'teki quirk'i çöz), smoke test: MCBÜ kılavuz DOCX'ini PDF'e çevir ve `pdfmeasure.py` ile ölç.
@@ -103,7 +98,7 @@ Genel kural: **iki ajan aynı dosyayı asla düzenlemesin.** `progress.json`'u Y
 - Çıktı: uygulama + kural → kanıt eşlemesi.
 
 ### L4 — aku-sagbil Doğrulama (L3 bittikten sonra)
-- Gerçek export (L1'in zinciri), DOCX XML + LibreOffice PDF ölçümü.
+- Gerçek export (L1'in zinciri); ölçüm conformance checker ile (DOCX XML + PDF, resmi referansa karşı). LLM yalnız başarısız satırları yorumlar.
 - High-risk kuralların tamamı PASS olacak; kalanlar açıkça `UNKNOWN` envanteri + varsayılan davranış etiketi.
 - **Sahibi:** `validation/aku-sagbil/*`, `reports/aku-sagbil.md`.
 
@@ -126,7 +121,7 @@ Genel kural: **iki ajan aynı dosyayı asla düzenlemesin.** `progress.json`'u Y
 
 1. **Kanıt ya da yok.** Hiçbir üniversiteye özel değer uydurulmaz. Kaynak sustuysa `UNKNOWN` + Tier-4 varsayılanı + uyarı; asla sessiz dolgu.
 2. **Gerçek export zorunlu.** Testlerin geçmesi yetmez; çıktı gerçek pipeline'dan (export.mjs) üretilip ölçülecek.
-3. **Ölçüm, göz değil.** PDF: `pdfmeasure.py` ile bbox/font/sayfa; DOCX: XML (sectPr marj, rPr font/punto, pPr spacing/indent, numPr başlık numaralandırma, header/footer sayfa numarası alanı). Tolerans ≤ 0.5 mm (explicit geometri).
+3. **Ölçüm, göz değil.** PDF: checker / `pdfmeasure.py` ile bbox/font/sayfa; DOCX: XML (sectPr marj, rPr font/punto, pPr spacing/indent, numPr başlık numaralandırma, header/footer sayfa numarası alanı). Tolerans ≤ 0.5 mm (explicit geometri).
 4. **Üniversite izolasyonu.** AKÜ'den MCBÜ'ye (veya tersine) değer kopyalanmaz; motor YETENEKLERİ ortak olabilir.
 5. **Çelişkiler sessizce çözülmez:** kaydet (`CONFLICT`), güncellik/özgüllük kuralıyla çöz ya da açıkta bırak.
 6. **PASS/FAIL/BLOCKED** tanımı AGENTS.md §16. Hedef kapanışı `PASS` veya `PASS_WITH_DOCUMENTED_DEFAULT`; `UNKNOWN` envanteri her zaman ekli.
@@ -149,4 +144,4 @@ KAYNAK → SPEC → UYGULAMA → GERÇEK EXPORT → BAĞIMSIZ ÖLÇÜM → PASS 
 4. Kullanıcı akışı doğrulaması: uygulamada şablon seçilebiliyor mu, DOCX/PDF iniyor mu?
 5. Açık riskler + sonraki işler (kalan 30 target için hazır reçete: analyzer → delta → checker).
 
-Kısıtlar: AGENTS.md'deki scope discipline — bu üç hedef dışına çıkma, ilgisiz refactor yapma, kural uydurma. Maliyet bilinci: küçük worker'lar, tekrar tekrar büyük kaynak okuma.
+Kısıtlar: AGENTS.md'deki scope discipline — bu üç hedef dışına çıkma, ilgisiz refactor yapma, kural uydurma. Maliyet: AGENTS.md §24A (checker önce, başarısız satırları yeniden doğrula, CONTEXT.md, işçi raporu <=15 satır, bir oturumda bir üniversite).

@@ -1,5 +1,6 @@
 # Analyzer brief (source forensics → normalized spec)
 
+
 You analyze the official thesis-format sources of **one target** and write a normalized,
 evidence-backed spec. You never modify production code (`TxtNote/`) or sources
 (`Butun-Sablonlar/`, read-only). You never open sources of other targets/universities.
@@ -9,7 +10,7 @@ evidence-backed spec. You never modify production code (`TxtNote/`) or sources
 - Engine context (read-only, to know what can be expressed and to name gaps):
   `TxtNote/frontend/src/thesis/schema.d.ts`, `TxtNote/frontend/src/thesis/README.md`,
   `TxtNote/frontend/src/thesis/templates/mcbu.js` (reference data module), `templates/generic.js`.
-- Policy: `orchestration/README.md` → "Policy revision 2026-09-28".
+- Policy: `orchestration/README.md` (Active policy). Prefer the DOCX->spec analyzer / XML extraction for MEASURED values; produce official reference renders once and cache them under `artifacts/<id>/source/`.
 
 ## Outputs (only these paths)
 - `orchestration/specs/<target-id>.json` — the normalized spec (schema below). Valid JSON.

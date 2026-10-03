@@ -1,5 +1,7 @@
 # AKÜ completion queue — 2026-10-02
 
+> **TOKEN-EFFICIENT METHOD (2026-10-03, binding for future work):** Queue items 'independent source/spec/output checks' (item 8) and 'independent validation by a different worker' (item 3) are executed by the conformance checker with an LLM reading only failing rows; do not spawn a cold-start validator per target; batch small fixes into one worker. Follow `AGENTS.md` section 24A and `orchestration/README.md` ("Why" + "Scaling plan"). Historical text below is kept as record; where it prescribes a fresh LLM validator re-exporting/re-measuring everything, reading full guides/briefs, or one worker per small bug, it is superseded.
+
 Authorization: finish all AKÜ tasks. Root orchestrates and reviews; production code is written by GPT-6 Luna workers. At most two workers run concurrently. Consult the relevant AKÜ official sources under `Butun-Sablonlar/Ege` before escalating ambiguity. Source files remain read-only. Never import another university/unit's formatting values.
 
 Starting checkpoint: `a80e81c` on `integrate/aku-mcbu`; engine fix `8e9bb83`. Existing untracked source conversions and exports are preserved. Baseline frontend tests: 610 passed, 0 failed. Progress correction checkpoint: `91f1292` (all eleven AKÜ targets listed, stale PENDING implementation records repaired, Matematik FAIL retained, Sağlık historical validation superseded).
