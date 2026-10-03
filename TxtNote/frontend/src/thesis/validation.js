@@ -110,6 +110,10 @@ function validateCaption(caption, path) {
   if (caption.captionAlignment !== undefined && ![...aligns, "auto"].includes(caption.captionAlignment)) errors.push(`${path}.captionAlignment geçersiz`);
   for (const key of ["spacingBeforePt", "spacingAfterPt"]) if (caption[key] !== undefined && !nonnegative(caption[key])) errors.push(`${path}.${key} geçersiz`);
   if (caption.cellStyle !== undefined) errors.push(...(object(caption.cellStyle) ? validateTextStyle({ ...caption.style, ...caption.cellStyle }, `${path}.cellStyle`) : [`${path}.cellStyle nesne olmalı`]));
+  if (caption.cellPadding !== undefined) {
+    const pad = caption.cellPadding;
+    if (!/(^|\.)tables$/.test(path) || !object(pad) || !["topMm", "bottomMm", "leftMm", "rightMm"].some((key) => pad[key] !== undefined) || Object.keys(pad).some((key) => !["topMm", "bottomMm", "leftMm", "rightMm"].includes(key) || !nonnegative(pad[key]))) errors.push(`${path}.cellPadding yalnız tables için ve {topMm,bottomMm,leftMm,rightMm} >= 0 olmalı`);
+  }
   if (caption.labelFormat !== undefined && !(text(caption.labelFormat) && caption.labelFormat.includes("{number}"))) errors.push(`${path}.labelFormat {number} içermeli`);
   if (caption.labelStyle !== undefined) errors.push(...(object(caption.labelStyle) ? validateTextStyle({ ...caption.style, ...caption.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
   if (caption.hangingIndent !== undefined && caption.hangingIndent !== "label" && !positive(caption.hangingIndent)) errors.push(`${path}.hangingIndent geçersiz`);

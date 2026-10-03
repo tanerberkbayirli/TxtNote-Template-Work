@@ -27,9 +27,9 @@
 - INFO: 3-line-title cover year spills to p.2; table cell 12 pt vs template 11 pt (fixed in 7981c44).
 - CONFLICT: 26 in spec (decisions recorded). UNKNOWN: 19 (outer cover, footer distance, TOC leader/indent, footnotes).
 ## Status
-- IMPLEMENTED; self PASS, independent-2 FAIL (1); commits 4b31444, 7981c44. Needs orchestrator decision on template-level cell padding.
+- DONE (Tier 1, AGENTS §28A) 2026-10-03: checker --word check-20261003-1618 PASS 45 / FAIL 0. Fix: tables.cellPadding {0,1.905,0,1.905} mm from official styles.xml default table style NormalTablo (MEASURED); fixture multi-page table lengthened (continued caption exercised); label checks open-ended (1..N).
 ## Next step
-- Orchestrator decides cell-padding option (official pitch ~4.65 mm), then independent-3 via checker.
+- Done. Reopen only if `check.mjs --all` regresses.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-cografya-lisans` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

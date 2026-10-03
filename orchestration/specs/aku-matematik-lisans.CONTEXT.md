@@ -28,9 +28,9 @@
 - Progress lastError (older): table note->next heading exp 14.09 act 14.60 (+0.51 mm).
 - CONFLICT: 5 (all ruled). UNKNOWN: 8 (h2-h4 caps, row height, footnotes, appendices, CV, multi-line title).
 ## Status
-- FAIL in progress.json; commits 7981c44 (fixes), 8f4ee45. selfcheck-fix-3.md 2026-10-03.
+- DONE (Tier 1, AGENTS §28A) 2026-10-03: checker --word check-20261003-1617 PASS 46 / FAIL 0. 0.1 cause: checker fixture lacked the symbols table (no engine regression); fixture now a table with authored widths <col data-col-width> (new engine capability).
 ## Next step
-- independent-3 via checker on lists.entry.spacing and symbols.table.
+- Done. Reopen only if `check.mjs --all` regresses.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-matematik-lisans` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

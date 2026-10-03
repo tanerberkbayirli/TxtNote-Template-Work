@@ -380,9 +380,21 @@ def k_rules_count(ctx, c):
     return {"actual": len(ys), "note": f"page {pg[0]}, rule y mm {sorted(ys)[:6]}"}
 
 
+def open_end(seq):
+    """'..., 1, 2, 3' -> '..., 1..N': the trailing run of consecutive Arabic labels, whose length depends on the
+    fixture's content length (not on a source rule), is reduced to its start."""
+    toks = seq.split(", ")
+    j = len(toks)
+    while j > 0 and toks[j - 1].isdigit() and (j == len(toks) or int(toks[j - 1]) + 1 == int(toks[j])):
+        j -= 1
+    return ", ".join(toks[:j] + [f"{toks[j]}..N"]) if len(toks) - j >= 2 else seq
+
+
 def k_page_labels(ctx, c):
+    """params.open_end: compare the trailing Arabic run by its start only (expected written as '..., 1..N')."""
     d = get_doc(ctx, c["params"])
-    return {"actual": rle([d.label(p) for p in d.pages(c["params"].get("pages"))])}
+    seq = rle([d.label(p) for p in d.pages(c["params"].get("pages"))])
+    return {"actual": open_end(seq) if c["params"].get("open_end") else seq}
 
 
 def k_page_number_attr(ctx, c):

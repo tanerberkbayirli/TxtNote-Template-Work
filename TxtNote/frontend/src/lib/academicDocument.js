@@ -241,11 +241,14 @@ function tableBlock(node) {
       runs: runsFromNode(cell),
     })),
   );
+  // Optional authored column widths: <colgroup><col data-col-width="25.84">…</colgroup> (percent of the table width; inline styles are stripped by the sanitizer/CSP).
+  const colWidths = [...(node.children || [])].filter((child) => child.tagName === "COLGROUP").flatMap((group) => [...group.children].filter((col) => col.tagName === "COL")).map((col) => Number(col.getAttribute("data-col-width")));
   return {
     type: "table",
     id: node.getAttribute("data-academic-id") || newId("tbl"),
     caption: stripCaptionNumber(stripTags(captionEl?.textContent)),
     rows,
+    ...(colWidths.length && colWidths.every((w) => Number.isFinite(w) && w > 0) ? { colWidths } : {}),
   };
 }
 
@@ -538,11 +541,13 @@ function parseWithRegex(html) {
           rowspan: 1,
         })),
       );
+      const colWidths = [...inner.matchAll(/<col\s([^>]*)>/gi)].map((col) => Number(attr(col[1], "data-col-width")));
       blocks.push({
         type: "table",
         id: attr(rawAttr, "data-academic-id") || newId("tbl"),
         caption: stripCaptionNumber(stripTags(inner.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i)?.[1] || "")),
         rows,
+        ...(colWidths.length && colWidths.every((w) => Number.isFinite(w) && w > 0) ? { colWidths } : {}),
       });
       continue;
     }

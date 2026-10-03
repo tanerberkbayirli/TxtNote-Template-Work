@@ -574,18 +574,29 @@ function tableDocx(block, section, context, before = null) {
   // A caption below the table must stay with its last row (keep-with-next on the last row too).
   const captionBelow = Boolean(caption && tables.position !== "above");
   const lastHeader = sourceRows.reduce((last, row, index) => (row.every((cell) => cell.header) ? index : last), -1);
+  const cp = tables.cellPadding;
+  const cellMargins = cp && typeof cp === "object"
+    ? { top: twip(cp.topMm), bottom: twip(cp.bottomMm), left: twip(cp.leftMm), right: twip(cp.rightMm) }
+    : preset ? { top: 0, bottom: 0, left: twip(1.9), right: twip(1.9) } : { top: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), bottom: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), left: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal), right: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal) };
+  // Authored column widths (percent) -> tblGrid + tcW in twips of the text width; only when every row spans exactly the grid (no rowspans).
+  const gridCols = block.colWidths?.length || 0;
+  const rowSpanCount = (row) => row.reduce((n, c) => n + (c.colspan > 1 ? c.colspan : 1), 0);
+  const useWidths = gridCols > 0 && sourceRows.every((row) => rowSpanCount(row) === gridCols && row.every((c) => !(c.rowspan > 1)));
+  const textWidthTw = twip(section.rules.page.widthMm - section.rules.page.margins.leftMm - section.rules.page.margins.rightMm);
+  const colTw = useWidths ? (() => { const total = block.colWidths.reduce((a, b) => a + b, 0); return block.colWidths.map((w) => Math.round(textWidthTw * w / total)); })() : null;
   const makeRow = (row, rowIndex, keepRow = rowIndex < sourceRows.length - 1 || captionBelow) => new TableRow({
     cantSplit: true, tableHeader: row.every((cell) => cell.header),
     // Word's row height (atLeast) is the CONTENT height only: cell top/bottom margins and the border are added on top (measured in Word: trHeight
     // 26.55 pt + tcMar 2 x 6 pt + 0.75 pt border = 39.3 pt rows, CSS rows = line box + padding + border = 26.55 pt). Word would otherwise use its glyph
     // box as the minimum, so the minimum is the resolved line box; margins and border then add up exactly as the editor's do.
     height: { value: pt((cellStyle.fontSizePt || body.fontSizePt) * effectiveLineHeight(cellStyle.lineHeight || body.lineHeight, context.lineSpacing)), rule: HeightRule.ATLEAST },
-    children: row.map((cell) => new TableCell({
+    children: row.map((cell, cellIndex) => new TableCell({
+      ...(colTw ? { width: { size: colTw.slice(row.slice(0, cellIndex).reduce((n, c) => n + (c.colspan > 1 ? c.colspan : 1), 0), row.slice(0, cellIndex + 1).reduce((n, c) => n + (c.colspan > 1 ? c.colspan : 1), 0)).reduce((a, b) => a + b, 0), type: WidthType.DXA } } : {}),
       columnSpan: cell.colspan > 1 ? cell.colspan : undefined, rowSpan: cell.rowspan > 1 ? cell.rowspan : undefined,
       // Three-rule tables: the rule below the header row belongs to its cells.
       ...(preset === "threeRule" && rowIndex === lastHeader ? { borders: { bottom: rule } } : {}),
       ...(preset === "headerRules" && row.every((c) => c.header) ? { borders: { bottom: rule } } : {}),
-      margins: preset ? { top: 0, bottom: 0, left: twip(1.9), right: twip(1.9) } : { top: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), bottom: pt(ACADEMIC_TABLE_CELL_PADDING_PT.vertical), left: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal), right: pt(ACADEMIC_TABLE_CELL_PADDING_PT.horizontal) },
+      margins: cellMargins,
       children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: keepRow, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
   });
@@ -594,7 +605,7 @@ function tableDocx(block, section, context, before = null) {
     : preset === "threeRule" ? { top: rule, bottom: rule, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : preset === "none" ? { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }
     : { top: CELL_BORDER, bottom: CELL_BORDER, left: CELL_BORDER, right: CELL_BORDER, insideHorizontal: CELL_BORDER, insideVertical: CELL_BORDER };
-  const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders });
+  const tableOf = (rows) => new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE }, borders, ...(colTw ? { columnWidths: colTw } : {}) });
   // Continuation captions: the table is split at the rows the editor measured as page starts; each later
   // fragment gets its caption paragraph and the header row(s) again (Word cannot vary a repeated row's text).
   const headerRows = sourceRows.findIndex((row) => !row.every((cell) => cell.header));

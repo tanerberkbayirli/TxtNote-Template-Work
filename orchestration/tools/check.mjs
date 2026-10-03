@@ -12,6 +12,23 @@ import { fileURLToPath } from "node:url";
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
 const args = process.argv.slice(2);
+
+// --all: run every target that has specs/<id>.checks.json (sequentially, other flags passed through),
+// print one summary line per target, exit 1 if any target has a FAIL (or errors).
+if (args.includes("--all")) {
+  const rest = args.filter((a) => a !== "--all");
+  const ids = readdirSync(join(root, "orchestration/specs")).filter((f) => f.endsWith(".checks.json")).map((f) => f.replace(/\.checks\.json$/, "")).sort();
+  let bad = 0;
+  for (const t of ids) {
+    const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), "--target", t, ...rest], { encoding: "utf8", cwd: root });
+    const line = (r.stdout || "").split(/\r?\n/).find((l) => l.startsWith(`${t}:`)) || `${t}: ERROR exit ${r.status} ${(r.stderr || r.stdout || "").trim().split(/\r?\n/).pop() || ""}`;
+    console.log(line);
+    if (r.status !== 0) bad++;
+  }
+  console.log(`--all: ${ids.length} targets, ${bad} with FAIL/error`);
+  process.exit(bad ? 1 : 0);
+}
+
 const opt = { word: false, buildReference: false };
 for (let i = 0; i < args.length; i++) {
   const a = args[i];

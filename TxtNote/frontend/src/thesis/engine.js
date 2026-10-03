@@ -217,6 +217,14 @@ export function numberThesisHtml(html, rules) {
 }
 
 /** Covers and the main body carry their own headings; templates may override with showTitle. */
+/** CSS padding shorthand for `tables.cellPadding` ({topMm,rightMm,bottomMm,leftMm}); a missing edge is 0. A string is passed through. No value -> fallback. */
+export function cellPaddingCss(cellPadding, fallback) {
+  if (typeof cellPadding === "string") return cellPadding;
+  if (!cellPadding || typeof cellPadding !== "object") return fallback;
+  const mm = (v) => `${Number(v) || 0}mm`;
+  return `${mm(cellPadding.topMm)} ${mm(cellPadding.rightMm)} ${mm(cellPadding.bottomMm)} ${mm(cellPadding.leftMm)}`;
+}
+
 const UNTITLED_SECTION_TYPES = new Set(["outerCover", "innerCover", "tableOfContents", "mainContent"]);
 const showsSectionTitle = (section) => typeof section.showTitle === "boolean" ? section.showTitle : !UNTITLED_SECTION_TYPES.has(section.type);
 /** Does a block tree read any of `keys` (a metadata field or a `{{KEY}}` in text)? */
@@ -396,7 +404,7 @@ export function thesisSectionCss(section) {
     ...(["threeRule", "headerRules", "none"].includes(tables.borders?.preset) ? [
       // Three-rule table: a rule above the table, below the header row and below the table; no verticals.
       // !important: the editor's own table stylesheet (index.css) sets cell borders/padding with it.
-      `${scope} .thesis-body td,${scope} .thesis-body th{border:0 !important;padding:${tables.cellPadding || "0 1.9mm"} !important;}`,
+      `${scope} .thesis-body td,${scope} .thesis-body th{border:0 !important;padding:${cellPaddingCss(tables.cellPadding, "0 1.9mm")} !important;}`,
       // headerRules: no top rule; a rule below every header-only (th) row and below the last row (AKÜ Matematik symbols table: sub-title rows).
       ...(tables.borders.preset === "headerRules" ? [
         `${scope} .thesis-body table tr:not(:has(>td))>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
@@ -408,7 +416,9 @@ export function thesisSectionCss(section) {
         `${scope} .thesis-body table>:is(tbody,tfoot):last-child>tr:last-child>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
         `${scope} .thesis-body thead tr:last-child>*{border-bottom:${tables.borders.widthPt || 0.5}pt solid #000 !important;}`,
       ] : []),
-    ] : [`${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:${ACADEMIC_TABLE_CELL_PADDING_PT.vertical}pt ${ACADEMIC_TABLE_CELL_PADDING_PT.horizontal}pt;}`]),
+    ] : [`${scope} .thesis-body td,${scope} .thesis-body th{border:1px solid #888;padding:${cellPaddingCss(tables.cellPadding, `${ACADEMIC_TABLE_CELL_PADDING_PT.vertical}pt ${ACADEMIC_TABLE_CELL_PADDING_PT.horizontal}pt`)}${tables.cellPadding ? " !important" : ""};}`]),
+    // Authored column widths (<col data-col-width="percent">); the table is table-layout:fixed.
+    `${scope} .thesis-body table>colgroup>col[data-col-width]{width:attr(data-col-width %, auto);}`,
     `${scope} .thesis-body caption{caption-side:${tables.position === "above" ? "top" : "bottom"};${textCss(tables.style)}text-align:${tables.captionAlignment === "auto" ? "center" : tables.captionAlignment || tables.style.align || "left"};margin-top:${tables.spacingBeforePt ?? tables.style.spaceBeforePt ?? 0}pt;margin-bottom:${tables.spacingAfterPt ?? tables.style.spaceAfterPt ?? 0}pt;}`,
     // Captions are document text: the academic editor's muted figcaption colour does not apply.
     `${scope} .thesis-body ${plainFigure}figcaption{${textCss(figures.style)}color:#000;text-align:${figures.captionAlignment === "auto" ? "center" : figures.captionAlignment || figures.style.align || "left"};margin-top:${figures.spacingBeforePt ?? figures.style.spaceBeforePt ?? 0}pt;margin-bottom:${figures.spacingAfterPt ?? figures.style.spaceAfterPt ?? 0}pt;}`,

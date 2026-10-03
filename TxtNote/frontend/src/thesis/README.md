@@ -81,6 +81,8 @@ It needed these generic, opt-in extensions (existing templates are unaffected):
 - `section.tocEntry`: `"title"` lists the section title as an unnumbered level-1 TOC row with its real page label (front matter in Roman numerals, generated and special sections included); `"none"` keeps the section and its headings out of the TOC. The anchor of a generated/special section is its flow section element.
 - `generatedIndex.pageHeading` / `pageHeadingStyle` (a "Sayfa" column heading) and `matchHeadingTransform` (TOC rows read like their rendered headings, e.g. uppercase chapters).
 - `tables.cellStyle`: cell typography (single spacing, centered names/values) in editor, PDF and DOCX; the type size stays inherited.
+- `tables.cellPadding: { topMm, bottomMm, leftMm, rightMm }` (opt-in, also in `overrides.tables`): cell padding in editor CSS, PDF and DOCX `w:tcMar`; absent keys of the object are 0, no key = previous defaults.
+- Authored table column widths: `<colgroup><col data-col-width="25.84">...</colgroup>` (percent; `style` attributes are stripped by the sanitizer/CSP). Kept in the editor (`attr()` width, fixed layout), PDF and DOCX (`tblGrid`, `tcW`). One `col` per grid column; tables with rowspans fall back to equal columns in DOCX.
 - `captionNumberingChoices`: document-wide numbering methods the author picks in the thesis panel (`thesis.captionNumbering`); applied to figures and tables together.
 - Registry `displayName` (selection label) and official sources identified by `documentName` when there is no public URL.
 

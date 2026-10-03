@@ -344,6 +344,8 @@ const base = {
   tables: {
     ...caption("Tablo", "above", { spacingAfterPt: 0, style: { fontFamily: FONT, fontSizePt: 11, align: "justify", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 } }),
     cellStyle: { fontSizePt: 11, lineHeight: 1, align: "left" },
+    // MEASURED: official DOCX word/document.xml has no tblCellMar/tcMar; default table style NormalTablo (styles.xml) = top/bottom 0, left/right 108 tw (1.905 mm).
+    cellPadding: { topMm: 0, bottomMm: 0, leftMm: 1.905, rightMm: 1.905 },
     continuation: { format: "{label} {number} (Devamı) {title}" },
   },
   figures: caption("Şekil", "below", { box: { align: "center", spaceBeforePt: 0, spaceAfterPt: 0 } }),

@@ -24,7 +24,7 @@
 | Tables list title | TABLOLAR DİZİNİ | MEASURED | Ek-3 and para 45; Ek-4 says TABLOLAR DİZİNİ |
 ## Open issues
 - No independent validation; no report. Needs source/example XML comparison for DIZINI vs LISTESI titles (progress).
-- Check spec: margins read 45 mm top/bottom/left (quote 'ust: 4.5 cm'); confirm right margin and values against the guide DOCX before use.
+- Margins VERIFIED 2026-10-03 (MOTOR 0.3): guide prose 'Sayfa kenar boşluğu: üst: 4.5 cm, alt: 4.5 cm, sol: 4.5 cm, sağ: 3 cm' (EXPLICIT) = spec = template (45/45/45/30). Guide DOCX sectPr pgMar 1417 tw (25 mm) all sides is the guide document's own layout, not a thesis rule (no thesis template DOCX exists). No change.
 - CONFLICT: 7 (12 pt vs 11.5 pt, titles, Sayfa alignment, cover font name). UNKNOWN: 12 (guide silent on footer distance, header, captions, borders, footnotes, bibliography).
 ## Status
 - IN_PROGRESS; validation PENDING; commit d4a3a7e. Untouched in session 2.

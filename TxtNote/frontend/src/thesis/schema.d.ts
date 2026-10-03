@@ -155,6 +155,13 @@ export interface CaptionRule {
   box?: { align?: "left" | "center" | "right"; spaceBeforePt?: number; spaceAfterPt?: number };
   /** Tables only: typography of the cells (e.g. single spacing, centered values). A cell's own alignment wins; omitted keys inherit the body. */
   cellStyle?: Partial<TextStyle>;
+  /**
+   * Tables only, opt-in: cell padding in mm (missing edge = 0), editor/PDF (CSS padding) and DOCX (w:tcMar on every cell). Without it the
+   * defaults stay (6 pt top/bottom, 8 pt left/right; `borders.preset` tables 0 / 1.9 mm). An `overrides.tables.cellPadding` replaces the whole object.
+   * Authored column widths: `<colgroup><col data-col-width="25.84">…</colgroup>` (percent of table width, one `col` per grid column, no rowspans)
+   * are kept by the sanitizer and written to the editor, the PDF layout and DOCX (`tblGrid/gridCol`, `tcW`).
+   */
+  cellPadding?: { topMm?: number; bottomMm?: number; leftMm?: number; rightMm?: number };
 }
 /**
  * Footnote typography and page-bottom area. Every key is optional; the engine falls back

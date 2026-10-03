@@ -51,6 +51,35 @@
  "variantNotes": "Single variant. The template's English abstract is the only English page (Graduation Thesis).",
  "rules": [
   {
+   "key": "tables.cellPadding",
+   "canonicalKey": "tables.cellPadding",
+   "category": "table",
+   "appliesTo": [
+    "*"
+   ],
+   "value": {
+    "topMm": 0,
+    "bottomMm": 0,
+    "leftMm": 1.905,
+    "rightMm": 1.905
+   },
+   "unit": "mm",
+   "confidence": "MEASURED",
+   "check": "measure",
+   "tolerance": {
+    "value": 0.5,
+    "unit": "mm",
+    "targetValue": 0.25
+   },
+   "evidence": [
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
+     "locator": "word/document.xml: 2 w:tbl, no w:tblCellMar / w:tcMar / w:tblStyle in any tblPr -> default table style NormalTablo (word/styles.xml w:styleId=\"NormalTablo\" w:default=\"1\"): tblCellMar top 0, left 108 tw, bottom 0, right 108 tw",
+     "quote": "w:top w:w=0, w:left w:w=108, w:bottom w:w=0, w:right w:w=108 (MEASURED from the default table style; 108 tw = 1.905 mm)"
+    }
+   ]
+  },
+  {
    "key": "page.size",
    "value": "A4",
    "confidence": "EXPLICIT",
