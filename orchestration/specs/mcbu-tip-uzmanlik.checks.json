@@ -1,0 +1,796 @@
+[
+ {
+  "id": "page-size",
+  "kind": "page_size",
+  "params": {},
+  "expected": [
+   210,
+   297
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.1 (DINA4 210x297 mm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-left",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.left"
+  },
+  "expected": 40.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (solda 4 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-right",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.right"
+  },
+  "expected": 25.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (sağda 2.5 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-top",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.top"
+  },
+  "expected": 30.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (üst/alt en fazla 3 cm yaklaşılabilir; spec topMm 30 INFERRED)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "docx-margin-bottom",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.bottom"
+  },
+  "expected": 30.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (spec bottomMm 30 INFERRED)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "margin-left-pdf",
+  "kind": "text_extent",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "metric": "x0min"
+  },
+  "expected": 40.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (4 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margin-right-pdf",
+  "kind": "text_extent",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "metric": "x1max"
+  },
+  "expected": 185.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (210-25 mm; text left-aligned so x1 is bounded, not equal)"
+  },
+  "evidence": "EXPLICIT",
+  "cmp": "le"
+ },
+ {
+  "id": "body-font",
+  "kind": "fonts",
+  "params": {
+   "families": [
+    "Arial"
+   ]
+  },
+  "expected": [
+   "ArialMT",
+   "Arial-BoldMT",
+   "Arial-ItalicMT",
+   "Arial-BoldItalicMT"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.3 (Arial)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-font-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "rFonts",
+   "attrs": [
+    "ascii",
+    "hAnsi"
+   ]
+  },
+  "expected": [
+   "Arial"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.3 (Arial)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-font-size",
+  "kind": "font_size",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": 12.0,
+  "tolerance": 0.1,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.3 (12 punto)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-line-spacing-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "spacing",
+   "attrs": [
+    "line"
+   ],
+   "mode": "has",
+   "numeric_tol": 1
+  },
+  "expected": [
+   "360"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.3 (1.5 satır aralığı; 360 twips auto = 1.5 lines)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-line-pitch",
+  "kind": "line_pitch",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": 7.3,
+  "tolerance": 0.1,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.3 1.5 lines. DERIVED: 1.5 x Arial single line (1.149 em x 12 pt = 13.8 pt) = 20.7 pt = 7.30 mm"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "first-line-indent-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "ind",
+   "attrs": [
+    "firstLine"
+   ],
+   "mode": "has",
+   "numeric_tol": 3
+  },
+  "expected": [
+   "333"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.3 '5 harf boşluk' = 5 Arial 12 spaces = 5.88 mm = 333 tw (DERIVED; CONFLICT alternative ~10-12 mm, spec conflicts[])"
+  },
+  "evidence": "INFERRED",
+  "ruling": "spec decision: 5 space glyphs"
+ },
+ {
+  "id": "first-line-indent-pdf",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^(Önsöz|Özet|\\d+\\.\\d+) \\d\\. Çevrimiçi",
+   "attr": "x0",
+   "agg": "all"
+  },
+  "expected": 45.88,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.3: 40 mm + 5.88 mm (INFERRED, see first-line-indent-docx)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "h1-first-page-top",
+  "kind": "line_attr",
+  "params": {
+   "pages": "all",
+   "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
+   "attr": "top",
+   "agg": "all"
+  },
+  "expected": 50.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (başlık sayfa üstünden 5 cm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h1-centre",
+  "kind": "line_attr",
+  "params": {
+   "pages": "all",
+   "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
+   "attr": "cx",
+   "agg": "all"
+  },
+  "expected": 112.5,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (başlık ortalanır); centre of text area 40..185 INFERRED"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "h1-size",
+  "kind": "line_attr",
+  "params": {
+   "pages": "all",
+   "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
+   "attr": "size",
+   "agg": "all"
+  },
+  "expected": 12.0,
+  "tolerance": 0.1,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "spec headings.h1.fontSizePt 12 (p.2 §1.3 general rule applied)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "h1-bold",
+  "kind": "line_attr",
+  "params": {
+   "pages": "all",
+   "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
+   "attr": "bold",
+   "agg": "all"
+  },
+  "expected": 1,
+  "tolerance": 0,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "spec headings.h1.bold INFERRED (prose silent)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "h1-to-text-gap",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "find": "^I\\. KURAMSAL ÇERÇEVE$"
+   },
+   "a": "^I\\. KURAMSAL ÇERÇEVE$",
+   "b": "^1\\.0 1\\."
+  },
+  "expected": 34.87,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.2 (başlıktan metne 3 cm). DERIVED baseline delta = 30 mm + one Arial single line 13.8 pt (4.87 mm)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "page-labels-front-and-first-chapter",
+  "kind": "page_labels",
+  "params": {
+   "pages": [
+    1,
+    12
+   ]
+  },
+  "expected": "none x5, 2, 3, 4, none, 6, 7, 8",
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.4: kapaklar/önsöz/içindekiler numarasız; giriş 1 sayılır; bölüm ilk sayfası numarasız (sayılır)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "page-labels-back-matter",
+  "kind": "page_labels",
+  "params": {
+   "pages": [
+    25,
+    30
+   ]
+  },
+  "expected": "21, none x3, 25, none",
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.4: continued count; ÖZET/İNGİLİZCE ÖZET/EKLER/KAYNAKLAR (chapter openers, Ek-2 one Roman sequence) unnumbered"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "page-number-centre",
+  "kind": "page_number_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "cx"
+  },
+  "expected": 112.5,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.4 alt orta; centre of text area 40..185 INFERRED (sheet centre 105 is the other reading, spec pagination.align)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "page-number-bottom",
+  "kind": "page_number_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "baseline"
+  },
+  "expected": 267.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §1.4 'alt orta': below the text area (297-30 mm bottom margin INFERRED); bound only, exact distance UNKNOWN"
+  },
+  "evidence": "INFERRED",
+  "cmp": "ge"
+ },
+ {
+  "id": "cover-size-univ-anabilim-title",
+  "kind": "line_baselines",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "lines": [
+    "ÜNİVERSİTESİ TIP FAKÜLTESİ$",
+    "Anabilim Dalı$",
+    "^ÇEVRİMİÇİ"
+   ],
+   "attr": "size"
+  },
+  "expected": [
+   12.0,
+   12.0,
+   14.0
+  ],
+  "tolerance": 0.1,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §II (üniversite 12, başlık 14 punto)"
+  },
+  "evidence": "EXPLICIT",
+  "ruling": "CONFLICT: Ek-1 example title 12 pt (MEASURED); prose 14 pt applied per spec decision"
+ },
+ {
+  "id": "cover1-centred",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "page": 1
+   },
+   "regex": ".",
+   "attr": "cx",
+   "agg": "all"
+  },
+  "expected": 112.5,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §II (sayfanın üst ortasında); example centred on its text area; text-area centre 112.5 INFERRED"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "cover1-gap-univ->anabilim",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "a": "ÜNİVERSİTESİ TIP FAKÜLTESİ$",
+   "b": "Anabilim Dalı$"
+  },
+  "expected": 10.24,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover1-gap-anabilim->title1",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "a": "Anabilim Dalı$",
+   "b": "^ÇEVRİMİÇİ"
+  },
+  "expected": 47.25,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover1-gap-title-last->UZMANLIK",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "a": "İNCELENMESİ$",
+   "b": "^UZMANLIK TEZİ$"
+  },
+  "expected": 43.56,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover1-gap-UZMANLIK->researcher",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "a": "^UZMANLIK TEZİ$",
+   "b": "^Ayşe DEMİR$"
+  },
+  "expected": 5.51,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover1-gap-researcher->Tez Danışmanı",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "a": "^Ayşe DEMİR$",
+   "b": "^Tez Danışmanı$"
+  },
+  "expected": 38.35,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover1-gap-Tez Danışmanı->advisor",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "a": "^Tez Danışmanı$",
+   "b": "^Prof\\. Dr\\."
+  },
+  "expected": 8.72,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover1-gap-advisor->Manisa",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 1
+   },
+   "a": "^Prof\\. Dr\\.",
+   "b": "^Manisa, "
+  },
+  "expected": 41.49,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover2-centred",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "page": 2
+   },
+   "regex": ".",
+   "attr": "cx",
+   "agg": "all"
+  },
+  "expected": 112.5,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.2 §II (sayfanın üst ortasında); example centred on its text area; text-area centre 112.5 INFERRED"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "cover2-gap-univ->anabilim",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 2
+   },
+   "a": "ÜNİVERSİTESİ TIP FAKÜLTESİ$",
+   "b": "Anabilim Dalı$"
+  },
+  "expected": 10.24,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover2-gap-anabilim->title1",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 2
+   },
+   "a": "Anabilim Dalı$",
+   "b": "^ÇEVRİMİÇİ"
+  },
+  "expected": 47.25,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover2-gap-title-last->UZMANLIK",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 2
+   },
+   "a": "İNCELENMESİ$",
+   "b": "^UZMANLIK TEZİ$"
+  },
+  "expected": 43.56,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover2-gap-UZMANLIK->researcher",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 2
+   },
+   "a": "^UZMANLIK TEZİ$",
+   "b": "^Ayşe DEMİR$"
+  },
+  "expected": 5.51,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover2-gap-researcher->Tez Danışmanı",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 2
+   },
+   "a": "^Ayşe DEMİR$",
+   "b": "^Tez Danışmanı$"
+  },
+  "expected": 38.35,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover2-gap-Tez Danışmanı->advisor",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 2
+   },
+   "a": "^Tez Danışmanı$",
+   "b": "^Prof\\. Dr\\."
+  },
+  "expected": 8.72,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "cover2-gap-advisor->Manisa",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "page": 2
+   },
+   "a": "^Prof\\. Dr\\.",
+   "b": "^Manisa, "
+  },
+  "expected": 41.49,
+  "tolerance": 0.25,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "toc-rows-left-edge",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "find": "^İÇİNDEKİLER$"
+   },
+   "regex": "^(([IVX]+\\.)|(\\d+\\.)+)[^.]* \\d+$",
+   "attr": "x0",
+   "agg": "all"
+  },
+  "expected": 40.0,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.3 §V (soldan kenardan; indentPerLevel 0 EXPLICIT)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "toc-sub-rows-single",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "find": "^İÇİNDEKİLER$"
+   },
+   "a": "^1\\.1\\.1\\. Alt Başlık 1\\.1\\.1 \\d+$",
+   "b": "^1\\.1\\.1\\.1\\. Alt"
+  },
+  "expected": 4.87,
+  "tolerance": 0.1,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.3 §V (alt başlıklar tek aralık). DERIVED: Arial single 13.8 pt = 4.87 mm"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "toc-main-rows-1.5",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "find": "^İÇİNDEKİLER$"
+   },
+   "a": "^1\\.2\\. Alt Başlık 1\\.2 \\d+$",
+   "b": "^II\\. YÖNTEM"
+  },
+  "expected": 7.3,
+  "tolerance": 0.1,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "p.3 §V (ana başlıklar 1.5 aralık). DERIVED: 20.7 pt = 7.30 mm"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-no-undefined",
+  "kind": "docx_no_undefined",
+  "params": {},
+  "expected": "none",
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "DOCX validity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "note-unknown",
+  "kind": "note",
+  "params": {
+   "text": "UNKNOWN (spec unknowns/UNKNOWN rules, no check): page-number font/size and footer/header distance (p.2-4 silent); paragraph before/after spacing (INFERRED 0, not testable independently); H2-H4 format, captions size/separator, tables, footnote size, equations, abstract/approval layouts; cover title 3-line overflow. CONFLICT recorded in spec: page-number top-right example sentence vs bottom centre; Ek-2 İÇİNDEKİLER left-aligned example vs centred prose."
+  },
+  "expected": null,
+  "tolerance": 0.5,
+  "source": {
+   "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "locator": "spec rules/conflicts/unknowns"
+  },
+  "evidence": "UNKNOWN"
+ }
+]
