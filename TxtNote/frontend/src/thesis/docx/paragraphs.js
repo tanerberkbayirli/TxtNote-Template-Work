@@ -90,8 +90,62 @@ export function paragraphProps(style, options = {}, lineSpacing = null) {
 }
 /** Word bookmark name of an index anchor ("main-source-3" -> "_ref_main_source_3"). */
 export const bookmarkName = (anchor) => `_ref_${String(anchor).replace(/[^A-Za-z0-9]/g, "_")}`.slice(0, 40);
+/**
+ * The editor's `.academic-table-wrap` margins (index.css) are the only outer spacing of a table when the
+ * template has no block-gap table; Word tables carry no margins, so tables.js hands the wrap's far margin
+ * to the block after the table. CSS collapses the wrap margin with the block's own spacing to max(), and
+ * Word renders adjacent paragraph spacing as max(space-after, space-before) too, so max() is exact here.
+ */
+function consumeTableWrapGap(style, context) {
+  const gap = context.pendingTableWrapMargin || 0;
+  context.pendingTableWrapMargin = 0;
+  return gap && (style.spaceBeforePt || 0) < gap ? { ...style, spaceBeforePt: gap } : style;
+}
+const hasFootnoteRun = (runs) => (runs || []).some((item) => item.type === "footnote" || hasFootnoteRun(item.children));
+// Line-budget estimate from the section's own text box (context.bodyBox, set per section in export.js): average glyph width 0.58 em.
+const estimateLines = (runs, style, context) => (runs || []).reduce((sum, item) => sum + (item.text || item.latex || "").length, 0) / Math.max(24, (context.bodyBox?.widthPt || 453) / (0.58 * (style.fontSizePt || 12)));
+const notePitchPt = (context) => {
+  const noteStyle = context.footnoteStyle || { ...context.body, fontSizePt: FOOTNOTE_PT };
+  return resolveLineSpacing(noteStyle, context.lineSpacing)?.pitchPt || (noteStyle.fontSizePt || FOOTNOTE_PT) * 1.15;
+};
+/**
+ * Page-bottom notes (footnotes.js) shorten EVERY fragment of the block that crosses the note page's
+ * reduced body limit (the reserve stamp clones its padding per fragment and cancels it only after the
+ * last one). Word reserves note space on the reference's page alone, so the block would otherwise gain
+ * the whole note area on each extra fragment. The shortfall is restored here once, as trailing space on
+ * that block: the first block after the reference's block that reaches past the note page's limit and
+ * continues past the page (a one-fragment block is cancelled by the editor's negative margin and must
+ * gain nothing). The reserve is one note area: its measured height is two note lines plus the separator
+ * and gaps (footnotes.js measures the hidden twin), estimated from the note style. Blocks are tracked by
+ * estimated line budget from the reference to know when its page is used up; a block is stamped but loses
+ * nothing unless it reaches a third fragment (its note-page fragment is already limited by the notes and
+ * the negative margin cancels the padding after the last one), so only those blocks are charged here.
+ * Why not fixed in the editor: the reserve is CSS padding with box-decoration-break:clone; CSS columns offer no way
+ * to pad only the FIRST fragment (slice pads only the last, clone pads all), so a first-fragment-only reserve would
+ * need a layout-engine change. Geometry here comes from the section (context.bodyBox), not a fixed page size.
+ */
+function consumeFnReserve(style, runs, context) {
+  const lines = estimateLines(runs, style, context);
+  const bodyPitch = resolveLineSpacing(context.body || {}, context.lineSpacing)?.pitchPt || 20.7;
+  const pageLines = Math.floor((context.bodyBox?.heightPt || 695) / bodyPitch);
+  let out = style;
+  const pending = context.pendingFnReserve;
+  if (pending) {
+    if (pending.lines + lines > 2 * pageLines) {
+      out = { ...style, spaceAfterPt: (style.spaceAfterPt || 0) + Math.round(notePitchPt(context) * 4.5 * 1000) / 1000 };
+      context.pendingFnReserve = null;
+    } else {
+      const used = pending.lines + lines;
+      context.pendingFnReserve = used >= pageLines ? null : { lines: used };
+    }
+  }
+  if (hasFootnoteRun(runs)) context.pendingFnReserve = { lines: Math.max(context.pendingFnReserve?.lines || 0, lines) };
+  return out;
+}
 const bookmarked = (anchor, children) => anchor ? [new Bookmark({ id: `${bookmarkName(anchor)}`, children })] : children;
 export function docxParagraph(runs, style, context, { anchor, ...options } = {}) {
+  style = consumeTableWrapGap(style, context);
+  style = consumeFnReserve(style, runs, context);
   const children = docxRuns(runs, style, context);
   const paragraph = new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
   if (indentMm(style).mirror) {
@@ -132,7 +186,7 @@ export function listParagraphs(block, section, context, level = 0, before = null
 }
 /** Caption paragraph: label run in the label style, then the caption text; optional hanging indent. */
 export function captionParagraph(rule, block, context, options = {}, before = null) {
-  const style = { ...captionStyle(rule, block, context), ...(before === null ? {} : { spaceBeforePt: before }) };
+  const style = consumeTableWrapGap({ ...captionStyle(rule, block, context), ...(before === null ? {} : { spaceBeforePt: before }) }, context);
   const hangMm = rule.hangingIndent === "label" ? (context.captionHangs?.[block.captionAnchor] || 0) / PX_PER_MM : rule.hangingIndent > 0 ? rule.hangingIndent : 0;
   const paragraphStyle = hangMm > 0 ? { ...style, hangingIndentMm: hangMm } : style;
   const label = block.captionLabel || `${rule.label} ${block.captionNumber}.`;

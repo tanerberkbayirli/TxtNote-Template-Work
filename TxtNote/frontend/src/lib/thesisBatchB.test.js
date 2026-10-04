@@ -263,8 +263,10 @@ describe("Batch B5 continuous footnote numbering", () => {
     const model = compile(setup("document"), main, state);
     assert.deepEqual(model.sections.filter((s) => s.mode === "editable" && s.id !== "abstract").map((s) => [s.id, s.footnoteOffset]), [["main", 0], ["annex", 2], ["bibliography", 4]]);
     assert.equal(model.sections.find((s) => s.id === "main").rules.footnotes.numbering, "document");
-    for (const numbering of [undefined, "section"]) assert.ok(compile(setup(numbering), main, state).sections.every((s) => s.footnoteOffset === undefined), `numbering ${numbering}: per body as before`);
-    assert.equal(compile(setup(undefined), main, state).sections[0].rules.footnotes.numbering, "section");
+    assert.ok(compile(setup("section"), main, state).sections.every((s) => s.footnoteOffset === undefined), "numbering section: per body");
+    assert.equal(compile(setup("section"), main, state).sections[0].rules.footnotes.numbering, "section");
+    assert.equal(compile(setup(undefined), main, state).sections[0].rules.footnotes.numbering, "document");
+    assert.deepEqual(compile(setup(undefined), main, state).sections.filter((s) => s.mode === "editable" && s.id !== "abstract").map((s) => s.footnoteOffset), [0, 2, 4]);
   });
   it("counts and renumbers references in source/print HTML", () => {
     assert.equal(countFootnoteRefs(`<p>${ref("a")}x${ref("b", 2)}<span class="academic-footnote">3</span></p>`), 3);
@@ -272,7 +274,7 @@ describe("Batch B5 continuous footnote numbering", () => {
     assert.equal(renumberFootnoteRefs('<sup class="academic-footnote">1</sup>', 2), '<sup class="academic-footnote" data-fn-index="3">3</sup>');
     const html = buildThesisPrintHtml(compile(setup("document"), main, state));
     assert.deepEqual([...html.matchAll(/data-fn-index="(\d+)">(\d+)<\/sup>/g)].map((m) => `${m[1]}:${m[2]}`), ["1:1", "2:2", "3:3", "4:4"]);
-    assert.doesNotMatch(buildThesisPrintHtml(compile(setup(undefined), main, state)), /data-fn-index="3"/);
+    assert.doesNotMatch(buildThesisPrintHtml(compile(setup("section"), main, state)), /data-fn-index="3"/);
   });
   it("validates the numbering key; stored HTML keeps its per-body numbers", () => {
     assert.deepEqual(validateThesisTemplate(setup("document")), []);

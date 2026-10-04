@@ -4,11 +4,30 @@ import { effectiveLineHeight } from "../engine.js";
 import { CELL_BORDER, NO_BORDER, plainRuns, pt, twip } from "./xml.js";
 import { captionParagraph, continuationParagraph, docxParagraph } from "./paragraphs.js";
 
-export function tableDocx(block, section, context, before = null) {
+// The editor stylesheet wraps every table in `.academic-table-wrap` (index.css) whose 12 pt outer
+// margins are the table's only outer spacing unless the template opts into the block-gap table
+// (blockGap.js zeroes the wrap margin there and computes pair gaps instead). Word tables carry no
+// margins, so the wrap margins ride on the adjacent paragraphs: the caption takes the wrap's near
+// margin, and the far margin is handed to the next block (paragraphs.js) as space-before. Both
+// sides collapse exactly like CSS (a paragraph gap is max(wrap, own spacing)), so the rendered gap
+// is identical to the editor's.
+const TABLE_WRAP_MARGIN_PT = 12;
+
+export function tableDocx(block, section, context, before = null, { atPageTop = false } = {}) {
   const { body, tables } = section.rules;
   const cellStyle = tables.cellStyle || {};
   const out = [];
-  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above", keepLines: tables.position === "above", pageBreakBefore: tables.position === "above" && (context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id)) }, before) : null;
+  // before !== null means the block-gap table computed this pair's gap already (the wrap margin is not part of it).
+  const wrapMargin = before === null ? TABLE_WRAP_MARGIN_PT : 0;
+  // A previous table's far wrap margin must land on this block's first paragraph (its caption), never on a cell.
+  const pendingIn = context.pendingTableWrapMargin || 0;
+  context.pendingTableWrapMargin = 0;
+  // The browser truncates a wrap margin at a page start, so a caption that begins a page (pageBreakBefore) carries none.
+  const startsPage = tables.position === "above" && (context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id));
+  // Likewise for a table that opens a section Word starts on a new page (the section break, not pageBreakBefore, moves it).
+  const atTop = startsPage || atPageTop;
+  const wrapNear = atTop ? 0 : wrapMargin;
+  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above", keepLines: tables.position === "above", pageBreakBefore: startsPage }, before === null ? Math.max(wrapNear + (tables.spacingBeforePt ?? tables.style?.spaceBeforePt ?? 0), atTop ? 0 : pendingIn) : before) : null;
   if (caption && tables.position === "above") out.push(caption);
   const preset = tables.borders?.preset;
   const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
@@ -83,6 +102,7 @@ export function tableDocx(block, section, context, before = null) {
       }
       out.push(tableOf(rows));
     });
+    if (wrapMargin) context.pendingTableWrapMargin = wrapMargin;
     return out;
   }
   // Array.map passes its source array as a third argument; never let that
@@ -90,5 +110,7 @@ export function tableDocx(block, section, context, before = null) {
   const rows = sourceRows.map((row, index) => makeRow(row, index));
   if (rows.length) out.push(tableOf(rows));
   if (caption && tables.position !== "above") out.push(caption);
+  // The wrap's far margin becomes the next block's space-before (a caption below the table already carries it).
+  else if (wrapMargin) context.pendingTableWrapMargin = wrapMargin;
   return out;
 }

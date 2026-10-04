@@ -33,3 +33,11 @@ it("writes a Word page break on the table caption only when the live editor move
   assert.doesNotMatch(caption(await xml({})), /<w:pageBreakBefore\s*\/>/);
   assert.match(await xml({}), /<w:trHeight[^>]*w:hRule="atLeast"/, "table rows retain the CSS line-box and padding minimum without clipping taller cells");
 });
+
+it("drops the editor's table wrap margin from the caption space-before when the table starts a page", async () => {
+  const model = compileThesisDocument(generic, {}, "Test", '<p>Before table</p><table data-academic-id="target"><caption>Measured boundary</caption><tr><td>Editable cell</td></tr></table>');
+  const xml = async options => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model, options)).arrayBuffer()))["word/document.xml"]);
+  const before = value => Number(value.match(/<w:p>[^]*?Measured boundary[^]*?<\/w:p>/)[0].split("<w:p>").at(-1).match(/<w:spacing[^>]*w:before="(\d+)"/)?.[1] ?? 0);
+  const mid = before(await xml({})), top = before(await xml({ blockPageBreaks: ["target"] }));
+  assert.ok(mid - top >= 12 * 20 - 1, `mid-page keeps the 12 pt wrap margin (${mid} vs ${top})`);
+});

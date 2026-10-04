@@ -118,7 +118,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 |---|---|---|---|---|---|
 | footnote typography, separator | `typography.footnotes` (TextStyle keys) + `separator` `{enabled, widthPercent, thicknessPt, spaceBeforePt, spaceAfterPt}` (`footnotes`, `separator`) | - | body font 9 pt, lh 1.2, 33 %/0.5 pt | ✓✓✓ | AkuFbe, AfsuTip |
 | notes at page bottom or after section | `footnotes.placement` pageBottom/sectionEnd | - | pageBottom | ✓✓✓ | AkuFbe |
-| numbering per section or running | `footnotes.numbering` section/document | - | section | ✓✓✓ | AkuSbe, BatchB |
+| numbering per section or running | `footnotes.numbering` section/document | - | document (one running stream as in Word; "section" restarts per editable body in editor/PDF only) | ✓✓✓ | AkuSbe, BatchB |
 | max note area | `footnotes.maxAreaPercent` 10-90 | % | 50 | E P ✓, D x | - |
 
 ## 10. Bibliography
@@ -149,6 +149,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | Typed tab conformance | typed stops/leaders implemented; wrapped/bidirectional runs and custom decimal characters require Word comparison | MOTOR 2.4 |
 | Table geometry/pagination conformance | rowHeight, per-edge borders, cantSplit, repeatHeader and vAlign implemented; row pitches follow Word's trHeight model (exact = row top to text area bottom), double rules paint 3× width, repeated headers are injected at measured page starts; Word comparison required | MOTOR 2.5 |
 | Authored column widths across browsers | typed attr() dependency removed; normalized literal CSS and idempotent DOM widths implemented; Firefox/Safari runtime not exercised here | MOTOR 2.5 |
+| Footnote reserve on multi-fragment blocks | editor/PDF reserve (CSS padding, `box-decoration-break: clone`) shortens every fragment of a block crossing the note page; Word reserves only on the reference's page. DOCX mirrors the editor via `consumeFnReserve` (docx/paragraphs.js: line-budget estimate from section `bodyBox`, one note area ≈ 4.5 note pitches) — parity, not Word-native; fix needs a first-fragment-only reserve in footnotes.js/pageLayout.js | MOTOR 2.2 follow-up |
 | Keep/widow pagination conformance | keepLines/widowControl reach browser fragmentation and Word; protected-paragraph fixture verifies breaks | MOTOR 2.6 |
 | Section chrome/alignment conformance | first/even chrome and center/bottom alignment implemented; landscape geometry emitted but cross-render comparison required | MOTOR 2.7 |
 | Footer baseline conformance | source distance, trailing blank paragraphs and source-derived baseline represented independently; Word comparison required | MOTOR 2.8 |

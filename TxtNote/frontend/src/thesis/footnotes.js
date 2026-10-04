@@ -24,7 +24,8 @@ export function resolveFootnoteRule(base = {}, override = {}, body = {}) {
   for (const key of FOOTNOTE_STYLE_KEYS) if (rule[key] !== undefined) style[key] = rule[key];
   return {
     placement: rule.placement === "sectionEnd" ? "sectionEnd" : "pageBottom",
-    numbering: rule.numbering === "document" ? "document" : "section",
+    // Default: one running sequence (what Word numbers from its single footnote stream); "section" restarts each editable body (editor/PDF only).
+    numbering: rule.numbering === "section" ? "section" : "document",
     maxAreaPercent: Number.isFinite(rule.maxAreaPercent) ? Math.min(90, Math.max(10, rule.maxAreaPercent)) : 50,
     separator: { ...SEPARATOR_DEFAULTS, ...base.separator, ...override.separator },
     style,

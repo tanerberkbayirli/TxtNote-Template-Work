@@ -129,7 +129,7 @@ export function docxChildren(section, context) {
     } else if (block.type === "list") {
       children.push(...listParagraphs(block, section, context, 0, before));
     } else if (block.type === "table") {
-      children.push(...tableDocx(block, section, context, before));
+      children.push(...tableDocx(block, section, context, before, { atPageTop: children.length === 0 && Boolean(context.sectionStartsPage) }));
     } else if (block.type === "figure") {
       // A figure of a template caption kind ("Resim") uses that kind's rule.
       const figures = block.captionKind && section.rules.captionKinds?.[block.captionKind] || section.rules.figures;

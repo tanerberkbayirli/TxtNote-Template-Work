@@ -282,7 +282,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${bibliographyHtml}`;
     sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, ...(section.verticalAlign ? { verticalAlign: section.verticalAlign } : {}), status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || (additions.length ? additions : null), layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language, sectionId: section.id, documentLayout: thesis.layout } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
   }
-  // footnotes.numbering "document": references count on through the sections (default: each body restarts at 1).
+  // footnotes.numbering "document": references count on through the sections (default; "section" restarts each body at 1).
   let footnoteCount = 0;
   for (const section of sections) {
     if (section.rules.footnotes.numbering !== "document") continue;

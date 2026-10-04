@@ -78,9 +78,12 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
     const page = section.rules.page;
     const wordMargins = page.docxMargins || page.margins;
     const groupStart = pageStarts.has(section.id);
+    // Word starts this section on a new page (first section or a page group start): its first block sits at a page top.
+    context.sectionStartsPage = index === 0 || groupStart;
     context.body = section.rules.body;
     context.lineSpacing = section.rules.lineSpacing || null;
     context.footnoteStyle = section.rules.footnotes?.style || null;
+    context.bodyBox = { widthPt: (page.widthMm - wordMargins.leftMm - wordMargins.rightMm) / 25.4 * 72, heightPt: (page.heightMm - wordMargins.topMm - wordMargins.bottomMm) / 25.4 * 72 };
     const content = docxChildren(section, context);
     const properties = (type, titlePage, continued = false) => ({
       type,
