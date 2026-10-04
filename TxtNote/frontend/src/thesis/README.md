@@ -41,6 +41,8 @@ Most universities publish a Word template; the measured pipeline turns it into a
 
 Open the result in the browser fixture with `tests/thesis-editable.html?template=<id>`.
 
+**Guide text (Task 14).** `python3 scripts/extract-guide-rules.py <kılavuz.pdf|docx> [--summary]` reads the official guide sentence by sentence and records every measurable statement as an EXPLICIT rule with its sentence and page/paragraph — margins per side, font, point sizes, line spacing, paragraph indent/spacing, caption position and labels, page-number position, heading case/weight, footnotes, bibliography indent — scoped by the clause it appears in (body, caption, heading, footnote, abstract, cover, …); a rule the guide states twice with different values is a CONFLICT and is never applied. `python3 scripts/merge-guide-rules.py <draft> <rules>` fills a draft's UNKNOWN fields from EXPLICIT rules (a measured DOCX value is kept; a differing guide value is recorded in `conflicts`, not averaged), and can build the `tables`/`figures` rules that bare templates lack (position from the guide, size from the guide or body — the latter flagged INFERRED). `scripts/batch-template-drafts.py` then `scripts/batch-guide-merge.py` run both passes over `Butun-Sablonlar` and write `output/template-drafts/batch-report.md`. Extraction is pattern-based and reviewed by a person before a template is installed; the sentences are there to be checked.
+
 The three `demo-*` entries are invented test fixtures. No university policy is implied.
 
 ### Export (Task 9)
