@@ -30,6 +30,16 @@ PDF_SUBSTITUTES = {"Times New Roman": {"Tinos", "TimesNewRoman", "Times New Roma
 ROMAN_RE = re.compile(r"^(?=[ivxlc]+$)m*(c[md]|d?c{0,3})(x[cl]|l?x{0,3})(i[xv]|v?i{0,3})$", re.I)
 
 
+def roman_to_int(text: str) -> int:
+    values = {"i": 1, "v": 5, "x": 10, "l": 50, "c": 100, "d": 500, "m": 1000}
+    total, previous = 0, 0
+    for char in reversed(text.lower()):
+        value = values.get(char, 0)
+        total += -value if value < previous else value
+        previous = max(previous, value)
+    return total
+
+
 class Gate:
     def __init__(self):
         self.checks: list[dict] = []
@@ -134,7 +144,10 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
                 gate.compare("PDF sayfa numarası sağ kenarı (mm)", round(page_w - margins["rightMm"], 2), "metin bloğu sağ kenarı", round(statistics.median(n["x1"] for n in numbers), 2), 0.5, unit="mm")
             romans = [n["text"] for n in numbers if ROMAN_RE.match(n["text"]) and not n["text"].isdigit()]
             arabics = [n["text"] for n in numbers if n["text"].isdigit()]
-            gate.add("PDF ön sayfalar Romen / gövde Arap rakamı", "Romen → Arap", "şablon bölüm numaralandırması", f"{len(romans)} Romen, {len(arabics)} Arap ({', '.join(romans[:4])}… → {', '.join(arabics[:3])}…)", "PASS" if romans and arabics and arabics[0] == "1" else "FAIL")
+            roman_values = [roman_to_int(r) for r in romans]
+            arabic_values = [int(a) for a in arabics]
+            sequential = all(b == a + 1 for a, b in zip(roman_values, roman_values[1:])) and all(b == a + 1 for a, b in zip(arabic_values, arabic_values[1:]))
+            gate.add("PDF ön sayfalar Romen / gövde Arap rakamı, artan dizi", "i, ii, iii… → 1, 2, 3…", "şablon bölüm numaralandırması", f"{', '.join(romans[:6])} → {', '.join(arabics[:4])}", "PASS" if romans and arabics and arabic_values[0] == 1 and roman_values[0] == 1 and sequential else "FAIL", note="" if sequential else "numaralar her bölümde yeniden başlıyor ya da atlıyor")
     return {"left": left, "right": right, "top": min(tops), "bottomGap": bottom_gap, "pitch": statistics.mode(pitches) if pitches else None, "font": font, "duplicates": duplicates, "numbers": len(numbers)}
 
 

@@ -25,8 +25,10 @@ export default {
    "Şablon yönergesi (İç Kapak): Yukarıdaki destek yazısı hariç sadece bu sayfada 14 punto kullanılmalıdır.",
    "Şablon yönergesi (İç Kapak): Varsa, yazılacak",
    "Şablon yönergesi (İç Kapak): Savunmanın yapıldığı tarih dikkate alınmalı",
-   "Şablon yönergesi (Onay Sayfası): Bu sayfadaki tüm düzenlemeler bilgisayar ortamında hazırlanmalı."
-  ]
+   "Şablon yönergesi (Onay Sayfası): Bu sayfadaki tüm düzenlemeler bilgisayar ortamında hazırlanmalı.",
+   "Kılavuz kuralları birleştirildi: AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf (1 alan, 0 çelişki)"
+  ],
+  "guideDocumentName": "AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf"
  },
  "page": {
   "size": "A4",
@@ -57,7 +59,7 @@ export default {
    "align": "center",
    "format": "arabic",
    "startAt": 1,
-   "restart": true
+   "restart": false
   }
  },
  "typography": {
@@ -79,7 +81,8 @@ export default {
      "format": "{1}",
      "suffix": "."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",

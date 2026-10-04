@@ -161,7 +161,8 @@ class Draft:
             align = field["align"] if field["align"] in ("left", "center", "right") else "center"
             if field["align"] not in ("left", "center", "right"):
                 self.inf("page.numbering.align", align, f"Sayfa numarası paragrafı '{field['align']}' hizalı; tek alan için merkez varsayıldı")
-            page["numbering"] = {"enabled": True, "position": "bottom" if kind == "footer" else "top", "align": align, "format": NUMBER_FORMATS.get(s["numbering"]["format"], "arabic"), "startAt": s["numbering"]["start"] or 1, "restart": bool(s["numbering"]["start"])}
+            # Document-level rule never restarts: the restart belongs to the section that owns it (main content), else every front section would read "i".
+            page["numbering"] = {"enabled": True, "position": "bottom" if kind == "footer" else "top", "align": align, "format": NUMBER_FORMATS.get(s["numbering"]["format"], "arabic"), "startAt": 1, "restart": False}
             self.ev("page.numbering", page["numbering"], f"{where} › {kind} PAGE alanı, w:pgNumType")
             distance = m["footer"] if kind == "footer" else m["header"]
             size = field.get("sizePt")
