@@ -31,6 +31,16 @@ Section titles come from the template (`title`, `toc.heading`); `showTitle` over
 3. Add one metadata descriptor and dynamic `load` import in `registry.js`. Selection and the editor read that descriptor; no editor branch is needed.
 4. Run `node --test src/lib/thesisEngine.test.js` from `frontend/` and `npm run build` from the repository root. Add a test fixture for any newly encountered rule.
 
+### Generated from an official DOCX (Task 13)
+
+Most universities publish a Word template; the measured pipeline turns it into a draft template without hand-writing values (repository root):
+
+1. `python3 scripts/extract-docx-spec.py <official.docx>` → `output/docx-spec/<name>.spec.json`: sections, margins, numbering, resolved styles, real paragraph usage, and `frontPages` — the opening pages (up to the first front-matter title) paragraph by paragraph with alignment, size, weight, spacing, embedded images (PNG/JPEG as data URLs with mm sizes), tables, and the template's own instruction text boxes (kept as notes, never as layout).
+2. `python3 scripts/docx-spec-to-template.py <spec> --university-id … --university-name … [--institute-id … --degree …]` → `output/template-drafts/<id>.draft.json` = `{ template, unknown[], inferred[], evidence{}, valid }`. Front pages become `layoutMode: "editable"` sections (outer/inner cover by position; approval, declaration, dedication by their titles): blank Word lines become spacers of the measured line height, text keeps its own alignment/size/weight/line spacing, tables become row groups, and lines that stand for a value (“TEZ BAŞLIĞI”, “Öğrencinin Adı SOYADI”, a name line under “Danışman”, “ANABİLİM DALI”, “Ay Yıl”, “Şehir, Yıl”, project-support lines) become metadata blocks with the original text as fallback — each such guess is listed in `inferred`. Everything the DOCX does not establish is listed in `unknown`; nothing is invented.
+3. `node scripts/validate-template-draft.mjs <draft>` runs the engine validator; `node scripts/install-template-draft.mjs <draft> [--status generic|official]` writes `templates/generated/<id>.js` and rebuilds `templates/generated/index.js`, which `registry.js` appends to the registry. Drafts install as `generic` ("(taslak)" in the selector); `official` is reserved for templates whose real export has been measured against the source (AGENTS.md completion gate).
+
+Open the result in the browser fixture with `tests/thesis-editable.html?template=<id>`.
+
 The three `demo-*` entries are invented test fixtures. No university policy is implied.
 
 ### Export (Task 9)

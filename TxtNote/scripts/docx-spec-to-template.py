@@ -46,6 +46,28 @@ KIND_PATTERNS = [
     ("appendices", r"^(EKLER|EK[ -]?\d|APPENDI)"),
     ("curriculumVitae", r"^(ÖZGEÇMİŞ|OZGECMIS|CURRICULUM VITAE|CV)$"),
 ]
+# Lines of official cover pages that stand for a metadata value (INFERRED; the original text stays as fallback).
+FIELD_PATTERNS = [
+    ("THESIS_TITLE", r"^(TEZ(İN)? (BAŞLIĞI|ADI)|THESIS TITLE|TITLE OF THE THESIS)$"),
+    ("STUDENT_NAME", r"^(ÖĞRENCİNİN )?(ADI? SOYADI?|AD SOYAD|NAME SURNAME|STUDENT NAME)$"),
+    ("DEPARTMENT_NAME", r"ANABİLİM DALI$|ANA BİLİM DALI$|DEPARTMENT$"),
+    ("PROGRAM_NAME", r"PROGRAMI$|PROGRAM$"),
+    ("YEAR", r"^((AY|MONTH) )?(YIL|YEAR|\d{4})$"),
+]
+CITY_YEAR_RE = re.compile(r"^(?P<city>[A-ZÇĞİÖŞÜ][A-ZÇĞİÖŞÜa-zçğıöşü .]{1,30}?)\s*[,–-]\s*(?P<year>YIL|Yıl|\d{4})$")
+ADVISOR_LABEL_RE = re.compile(r"^(TEZ )?DANIŞMANI?$|^(THESIS )?(SUPERVISOR|ADVISOR)$")
+CO_ADVISOR_LABEL_RE = re.compile(r"^(İKİNCİ|EŞ|2\.) (TEZ )?DANIŞMANI?$|^CO-?(SUPERVISOR|ADVISOR)$")
+INLINE_ADVISOR_RE = re.compile(r"^(?P<label>(TEZ )?DANIŞMANI?|(THESIS )?(SUPERVISOR|ADVISOR))\s*:\s*(?P<rest>.+)$")
+INLINE_CO_ADVISOR_RE = re.compile(r"^(?P<label>(İKİNCİ|EŞ|2\.) (TEZ )?DANIŞMANI?|CO-?(SUPERVISOR|ADVISOR))\s*:\s*(?P<rest>.+)$")
+NAME_LINE_RE = re.compile(r"^(ÜNVANI? )?(ADI? SOYADI?|AD SOYAD|TITLE NAME SURNAME|NAME SURNAME)$")
+PROJECT_SUPPORT_RE = re.compile(r"NUMARALI PROJE|PROJE İLE .* DESTEKLEN|SUPPORTED BY")
+PAGE_KINDS = [
+    ("approval", r"ONAY|KABUL|JÜRİ|JURI|APPROVAL"),
+    ("declaration", r"ETİK|BEYAN|TAAHHÜT|TAAHHUT|DECLARATION|BİLDİRİM"),
+    ("dedication", r"İTHAF|DEDICATION"),
+]
+PT_PER_MM = 72 / 25.4
+
 STANDARD_PLACEHOLDERS = {
     "UNIVERSITY_NAME": {"label": "Üniversite", "type": "text", "required": True},
     "INSTITUTE_NAME": {"label": "Enstitü", "type": "text"},
@@ -64,6 +86,7 @@ STANDARD_PLACEHOLDERS = {
     "YEAR": {"label": "Yıl", "type": "number"},
     "DATE": {"label": "Tarih", "type": "date"},
     "TOTAL_PAGES": {"label": "Sayfa sayısı", "type": "number", "derived": "totalPages"},
+    "PROJECT_SUPPORT": {"label": "Proje desteği (varsa)", "type": "text"},
 }
 
 
@@ -378,13 +401,15 @@ class Draft:
         h1 = headings.get("1", {})
 
         titles = {f["kind"]: f["title"] for f in found}
-        sections = [{"id": "cover", "type": "outerCover", "title": "Kapak", "status": "required", "group": "cover", "mode": "editable", "overrides": {"page": {"numbering": {"enabled": False}}, "body": {"align": "center", "firstLineIndentMm": 0}}}]
-        self.unk("sections.cover.blocks", "Kapak/iç kapak düzeni belgeden otomatik çıkarılmadı (2. adım: resmî DOCX kapak sayfasının içe aktarımı)")
+        sections = self.front_sections(self._body_for_sections) or [{"id": "cover", "type": "outerCover", "title": "Kapak", "status": "required", "group": "cover", "mode": "editable", "overrides": {"page": {"numbering": {"enabled": False}}, "body": {"align": "center", "firstLineIndentMm": 0}}}]
+        layout_ids = {s["id"] for s in sections}
         generated = {"tableOfContents": "toc", "listOfFigures": "figures", "listOfTables": "tables"}
         groups = {"abstract": "front", "englishAbstract": "front", "acknowledgements": "front", "preface": "front", "dedication": "front", "declaration": "front", "approval": "front", "tableOfContents": "front", "listOfFigures": "front", "listOfTables": "front", "listOfAbbreviations": "front", "mainContent": "body", "bibliography": "back", "appendices": "back", "curriculumVitae": "back"}
         for f in found:
             kind = f["kind"]
             section = {"id": re.sub(r"(?<!^)(?=[A-Z])", "-", kind).lower(), "type": kind, "title": f["title"], "status": "required", "group": groups.get(kind, "front")}
+            if section["id"] in layout_ids:
+                continue  # already represented by the seeded page of the same kind
             if kind in generated:
                 section["mode"] = "generated"
                 section["generatedIndex"] = {"kind": generated[kind], "title": f["title"], "includePageNumbers": True, "leader": "dots"}
@@ -417,11 +442,169 @@ class Draft:
         self.ev("sections", [s["type"] for s in sections], f"{len(found)} birinci düzey başlık, {len(spec_sections)} fiziksel bölüm")
         return sections, titles
 
+    # --- front pages → editable layout sections -----------------------------------------------------
+    def line_pt(self, record: dict, body_pt: float) -> float:
+        """Height of one empty Word line of this paragraph, in pt (Word 'n lines' of the type size)."""
+        size = record.get("sizePt") or body_pt or 12
+        spacing = record.get("lineSpacing") or {}
+        em = SINGLE_LINE_EM.get(record.get("font") or "", 1.15)
+        if "pt" in spacing:
+            line = spacing["pt"] if spacing.get("rule") == "exact" else max(spacing["pt"], size * em)
+        else:
+            line = (spacing.get("lines") or 1) * size * em
+        return line + (record.get("spaceBeforePt") or 0) + (record.get("spaceAfterPt") or 0)
+
+    def text_block(self, record: dict, body_pt: float, page_id: str) -> dict | None:
+        text = record["text"]
+        upper = tr_upper(text)
+        style = {"align": record.get("align", "left")}
+        if record.get("sizePt") and record["sizePt"] != body_pt:
+            style["fontSizePt"] = record["sizePt"]
+        if record.get("bold"):
+            style["fontWeight"] = 700
+        if record.get("italic"):
+            style["italic"] = True
+        if record.get("spaceBeforePt"):
+            style["spaceBeforePt"] = record["spaceBeforePt"]
+        if record.get("spaceAfterPt"):
+            style["spaceAfterPt"] = record["spaceAfterPt"]
+        spacing = record.get("lineSpacing") or {}
+        if spacing.get("lines") and spacing["lines"] != 1:
+            style["lineHeight"] = spacing["lines"]
+        base = {"style": style} if style else {}
+        where = f"{page_id} › “{text[:40]}”"
+        if re.search(r"\(DEVAM\)|\(CONT", upper):
+            self.inf(f"sections.{page_id}", "atlandı", f"Devam satırı ({text[:30]}) tek alanla temsil edilir")
+            return None
+        match = INLINE_CO_ADVISOR_RE.match(text) or INLINE_ADVISOR_RE.match(text)
+        if match:
+            field = "CO_ADVISOR_NAME" if INLINE_CO_ADVISOR_RE.match(text) else "ADVISOR_NAME"
+            self.inf(f"sections.{page_id}.{field}", match.group("rest"), f"Satır içi etiket: {where}")
+            block = {"type": "metadata", "field": field, "prefix": text[: match.start("rest")], "fallback": text, **base}
+            return {"type": "group", "visibleWhen": {"anyFilled": [field]}, "blocks": [block]} if field == "CO_ADVISOR_NAME" else block
+        city = CITY_YEAR_RE.match(text)
+        if city and not re.search(r"ÜNİVERSİTE|ENSTİTÜ|FAKÜLTE", upper):
+            self.inf(f"sections.{page_id}.CITY_YEAR", text, f"Şehir–yıl satırı: {where}")
+            return {"type": "text", "value": "{{CITY}}" + text[city.end("city"):city.start("year")] + "{{YEAR}}", **base}
+        if PROJECT_SUPPORT_RE.search(upper):
+            self.inf(f"sections.{page_id}.PROJECT_SUPPORT", text, f"Proje desteği satırı, yalnız dolunca basılır: {where}")
+            return {"type": "group", "visibleWhen": {"anyFilled": ["PROJECT_SUPPORT"]}, "blocks": [{"type": "metadata", "field": "PROJECT_SUPPORT", "fallback": text, **base}]}
+        for field, pattern in FIELD_PATTERNS:
+            if re.search(pattern, upper):
+                self.inf(f"sections.{page_id}.{field}", text, f"Yer tutucu satır: {where}")
+                block = {"type": "metadata", "field": field, "fallback": text, **base}
+                if field == "DEPARTMENT_NAME" and upper.endswith("ANABİLİM DALI"):
+                    block["suffix"] = text[-len(" ANABİLİM DALI"):] if upper.endswith(" ANABİLİM DALI") else ""
+                if field == "PROGRAM_NAME" and upper.endswith(" PROGRAMI"):
+                    block["suffix"] = text[-len(" PROGRAMI"):]
+                if text == upper and re.search(r"[A-ZÇĞİÖŞÜ]", text):
+                    block.setdefault("style", {})["textTransform"] = "uppercase"
+                return block
+        return {"type": "text", "value": text, **base}
+
+    def page_blocks(self, page: dict, body_pt: float, page_id: str) -> list[dict]:
+        blocks: list[dict] = []
+        pending_pt = 0.0
+        label_for_next: str | None = None
+
+        def flush():
+            nonlocal pending_pt
+            if pending_pt > 0:
+                blocks.append({"type": "spacer", "heightMm": round(pending_pt / PT_PER_MM, 2)})
+            pending_pt = 0.0
+
+        records = page["records"]
+        index = 0
+        while index < len(records):
+            record = records[index]
+            index += 1
+            if record.get("kind") == "table":
+                flush()
+                rows = record["rows"]
+                for row in rows:
+                    total = sum((cell.get("widthMm") or 0) for cell in row) or None
+                    cells = []
+                    for cell in row:
+                        lines = [self.text_block({**line, "kind": "paragraph"}, body_pt, page_id) for line in cell["lines"]]
+                        lines = [line for line in lines if line] or [{"type": "text", "value": ""}]
+                        group = {"type": "group", "blocks": lines}
+                        if total and cell.get("widthMm"):
+                            group["widthPercent"] = round(cell["widthMm"] / total * 100, 1)
+                        cells.append(group)
+                    blocks.append({"type": "group", "direction": "row", "blocks": cells} if len(cells) > 1 else cells[0])
+                continue
+            if record.get("empty"):
+                pending_pt += self.line_pt(record, body_pt)
+                continue
+            flush()
+            for image in record.get("images") or []:
+                if image.get("source"):
+                    blocks.append({"type": "image", "source": image["source"], "widthMm": image["widthMm"], "heightMm": image["heightMm"], "align": record.get("align") if record.get("align") in ("left", "center", "right") else "center"})
+                else:
+                    self.unk(f"sections.{page_id}.image", f"Gömülü görsel aktarılamadı ({image.get('unsupported') or image.get('part')}); yalnız PNG/JPEG ≤ 2 MB desteklenir")
+            if not record["text"]:
+                continue
+            upper = tr_upper(record["text"])
+            # "Danışman" label line followed by a name placeholder line → metadata on the next line.
+            if ADVISOR_LABEL_RE.match(upper) or CO_ADVISOR_LABEL_RE.match(upper):
+                field = "CO_ADVISOR_NAME" if CO_ADVISOR_LABEL_RE.match(upper) else "ADVISOR_NAME"
+                nxt = records[index] if index < len(records) else None
+                if nxt and nxt.get("kind") == "paragraph" and nxt.get("text") and NAME_LINE_RE.match(tr_upper(nxt["text"])):
+                    label_block = self.text_block(record, body_pt, page_id)
+                    name_block = {"type": "metadata", "field": field, "fallback": nxt["text"], **({"style": self.text_block(nxt, body_pt, page_id).get("style", {})} if self.text_block(nxt, body_pt, page_id).get("style") else {})}
+                    self.inf(f"sections.{page_id}.{field}", nxt["text"], f"“{record['text']}” etiketinin altındaki ad satırı")
+                    index += 1
+                    if field == "CO_ADVISOR_NAME":
+                        blocks.append({"type": "group", "visibleWhen": {"anyFilled": [field]}, "blocks": [label_block, name_block]})
+                    else:
+                        blocks.extend([label_block, name_block])
+                    continue
+            block = self.text_block(record, body_pt, page_id)
+            if block:
+                blocks.append(block)
+        # Trailing empty lines of a page are not layout; leading ones are (they position the first line).
+        return blocks
+
+    def front_sections(self, body: dict) -> list[dict]:
+        pages = [page for page in self.spec.get("frontPages", []) if page.get("records")]
+        if not pages:
+            self.unk("sections.cover.blocks", "Belgede kapak sayfası bulunamadı (ön bölüm başlığından önce sayfa yok)")
+            return []
+        body_pt = body.get("fontSizePt") or 12
+        sections = []
+        seen = collections.Counter()
+        for position, page in enumerate(pages):
+            texts = " ".join(r.get("text", "") for r in page["records"] if r.get("kind") == "paragraph")
+            texts += " " + " ".join(line["text"] for r in page["records"] if r.get("kind") == "table" for row in r["rows"] for cell in row for line in cell["lines"])
+            upper = tr_upper(texts)
+            kind = next((k for k, pattern in PAGE_KINDS if re.search(pattern, upper[:400])), None)
+            if kind is None:
+                kind = "outerCover" if position == 0 else ("innerCover" if position == 1 and not any(s["type"] == "innerCover" for s in sections) else "custom")
+            seen[kind] += 1
+            section_id = {"outerCover": "cover", "innerCover": "inner-cover", "approval": "approval", "declaration": "declaration", "dedication": "dedication"}.get(kind, f"front-page-{position}")
+            if seen[kind] > 1:
+                section_id = f"{section_id}-{seen[kind]}"
+            title = {"outerCover": "Dış Kapak", "innerCover": "İç Kapak", "approval": "Onay Sayfası", "declaration": "Etik Beyan", "dedication": "İthaf"}.get(kind, f"Ön sayfa {position + 1}")
+            blocks = self.page_blocks(page, body_pt, section_id)
+            section = {
+                "id": section_id, "type": kind, "title": title, "status": "required", "group": "cover" if kind in ("outerCover", "innerCover") else "front",
+                "mode": "editable", "layoutMode": "editable", "tocEntry": "none",
+                "overrides": {"page": {"numbering": {"enabled": False}}, "body": {"firstLineIndentMm": 0, "spaceBeforePt": 0, "spaceAfterPt": 0, "lineHeight": 1}},
+                "blocks": blocks,
+            }
+            self.ev(f"sections.{section_id}", f"{len(blocks)} blok, {kind}", f"ön sayfa #{page['index']}: {' / '.join(page.get('firstTexts', []))[:80]}")
+            for note in page.get("notes", []):
+                self.template_notes.append(f"Şablon yönergesi ({title}): {note[:200]}")
+            sections.append(section)
+        return sections
+
     # --- assemble --------------------------------------------------------------------------------
     def build(self) -> dict:
         a = self.args
         page = self.page()
         body, paragraph = self.body()
+        self._body_for_sections = body
+        self.template_notes: list[str] = []
         headings = self.headings(body)
         tables = self.captions(body, "tables")
         figures = self.captions(body, "figures")
@@ -445,7 +628,7 @@ class Draft:
             "degreeType": a.degree,
             "language": a.language,
             "status": "official",
-            "source": {"type": "official", "documentName": self.file, "url": a.source_url, "verifiedAt": date.today().isoformat(), "notes": [f"Taslak docx-spec-to-template.py ile üretildi; SHA-256 {self.spec['file']['sha256']}", "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"]},
+            "source": {"type": "official", "documentName": self.file, "url": a.source_url, "verifiedAt": date.today().isoformat(), "notes": [f"Taslak docx-spec-to-template.py ile üretildi; SHA-256 {self.spec['file']['sha256']}", "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz", *self.template_notes]},
             "page": page,
             "typography": {"body": body, **({"paragraph": paragraph} if paragraph else {}), "headings": headings, **({"footnotes": footnotes} if footnotes else {})},
             "placeholders": STANDARD_PLACEHOLDERS,

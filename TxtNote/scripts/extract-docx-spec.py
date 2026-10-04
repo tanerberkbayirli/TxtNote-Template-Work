@@ -20,6 +20,7 @@ lines (value/240), "exact"/"atLeast" -> pt (value/20).
 from __future__ import annotations
 
 import argparse
+import base64
 import collections
 import hashlib
 import json
@@ -31,12 +32,18 @@ from pathlib import Path
 from lxml import etree
 
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+WP = "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+PIC = "http://schemas.openxmlformats.org/drawingml/2006/picture"
+EMU_PER_MM = 36000
 A = "http://schemas.openxmlformats.org/drawingml/2006/main"
 R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 CP = "http://schemas.openxmlformats.org/package/2006/metadata/core-properties"
 DC = "http://purl.org/dc/elements/1.1/"
 DCTERMS = "http://purl.org/dc/terms/"
-NS = {"w": W, "a": A, "r": R, "cp": CP, "dc": DC, "dcterms": DCTERMS}
+NS = {"w": W, "a": A, "r": R, "cp": CP, "dc": DC, "dcterms": DCTERMS, "wp": WP, "pic": PIC}
+FRONT_TITLE_RE = re.compile(r"^(İÇİNDEKİLER|ICINDEKILER|CONTENTS|TABLE OF CONTENTS|ÖZET|OZET|ABSTRACT|SUMMARY|TEŞEKKÜR|TESEKKUR|ACKNOWLEDG|ÖN ?SÖZ|ON ?SOZ|PREFACE|ŞEKİLLER|SEKILLER|ÇİZELGELER|CIZELGELER|TABLOLAR|SİMGELER|SIMGELER|KISALTMALAR|GİRİŞ|GIRIS|INTRODUCTION|LIST OF)", re.I)
+MAX_FRONT_PAGES = 8
+MAX_IMAGE_BYTES = 2 * 1024 * 1024
 MM_PER_TWIP = 25.4 / 1440
 CAPTION_RE = re.compile(r"^\s*(Şekil|Sekil|Tablo|Çizelge|Cizelge|Resim|Grafik|Harita|Fotoğraf|Figure|Table|Chart|Picture)\s+(Ek\s*)?[A-Z]?\d+(\.\d+)*\s*[:.\-–]?\s", re.I)
 HEADING_NAME_RE = re.compile(r"^heading (\d)$", re.I)
@@ -497,6 +504,124 @@ def read_core(pkg: Package) -> dict:
     return out
 
 
+# --- front pages (cover, inner cover, approval ...) ----------------------------------------------
+
+def paragraph_images(pkg: Package, para, rels: dict) -> list[dict]:
+    """Embedded pictures of a paragraph with their drawn size (mm) and bytes (PNG/JPEG only)."""
+    out = []
+    for drawing in para.iter(w("drawing")):
+        extent = drawing.find(".//wp:extent", NS)
+        blip = drawing.find(".//a:blip", NS)
+        if extent is None or blip is None:
+            continue
+        target = rels.get(blip.get(f"{{{R}}}embed"))
+        width_mm = round(to_int(extent.get("cx"), 0) / EMU_PER_MM, 2)
+        height_mm = round(to_int(extent.get("cy"), 0) / EMU_PER_MM, 2)
+        record = {"part": target, "widthMm": width_mm, "heightMm": height_mm}
+        if target and target in pkg.names:
+            data = pkg.zip.read(target)
+            kind = "png" if data[:8] == b"\x89PNG\r\n\x1a\n" else ("jpeg" if data[:3] == b"\xff\xd8\xff" else None)
+            if kind and len(data) <= MAX_IMAGE_BYTES:
+                record["source"] = f"data:image/{kind};base64," + base64.b64encode(data).decode("ascii")
+            else:
+                record["unsupported"] = f"{Path(target).suffix or 'bilinmeyen'} / {len(data)} bayt"
+        out.append(record)
+    return out
+
+
+def paragraph_has_page_break(para) -> tuple[bool, bool]:
+    """(break before this paragraph, break after it) from explicit breaks and Word's last rendered breaks."""
+    before = para.find("w:pPr/w:pageBreakBefore", NS) is not None and on_off(para.find("w:pPr/w:pageBreakBefore", NS))
+    after = False
+    runs = para.findall("w:r", NS)
+    for index, run in enumerate(runs):
+        if run.find("w:lastRenderedPageBreak", NS) is not None and index == 0 and not text_of(para).strip():
+            before = True
+        elif run.find("w:lastRenderedPageBreak", NS) is not None and index == 0:
+            before = True
+        for br in run.findall("w:br", NS):
+            if br.get(w("type")) == "page":
+                # text after the break belongs to the next page; a break at the end means "after".
+                after = True
+    return before, after
+
+
+def read_front_pages(pkg: Package, body, styles: dict, defaults: dict, rels: dict) -> list[dict]:
+    """Paragraph-level record of the opening pages, split at page breaks, up to the first front-matter title."""
+    default_style = default_paragraph_style(styles)
+    pages: list[list[dict]] = [[]]
+    section_index = 0
+    for node in body:
+        if node.tag == w("sectPr"):
+            break
+        if node.tag == w("tbl"):
+            rows = []
+            for tr in node.findall("w:tr", NS):
+                cells = []
+                for tc in tr.findall("w:tc", NS):
+                    lines = []
+                    for cp in tc.findall("w:p", NS):
+                        text = re.sub(r"\s+", " ", text_of(cp)).strip()
+                        if not text:
+                            continue
+                        para_props, run_props, _, _ = effective_paragraph(cp, styles, defaults, default_style)
+                        lines.append({"text": text, "align": para_props.get("align", "left"), "sizePt": run_props.get("sizePt"), "bold": bool(run_props.get("bold")), "italic": bool(run_props.get("italic")), "spaceBeforePt": para_props.get("spaceBeforePt"), "spaceAfterPt": para_props.get("spaceAfterPt")})
+                    width = twips_mm(attr(tc.find("w:tcPr/w:tcW", NS), "w"))
+                    cells.append({"lines": lines, "widthMm": width})
+                rows.append(cells)
+            pages[-1].append({"kind": "table", "rows": rows})
+            continue
+        if node.tag != w("p"):
+            continue
+        para = node
+        inner_sect = para.find("w:pPr/w:sectPr", NS)
+        break_before, break_after = paragraph_has_page_break(para)
+        if break_before and pages[-1]:
+            pages.append([])
+        text = re.sub(r"\s+", " ", text_of(para)).strip()
+        para_props, run_props, style_id, direct = effective_paragraph(para, styles, defaults, default_style)
+        images = paragraph_images(pkg, para, rels)
+        # Text boxes anchored to this paragraph: in official templates these are instructions to the
+        # author, not page content; they are kept as notes (evidence), never as layout.
+        notes = [re.sub(r"\s+", " ", " ".join(text_of(p) for p in box.findall(".//w:p", NS))).strip() for box in para.iter(f"{{{W}}}txbxContent")]
+        # mc:AlternateContent repeats each box in Choice and Fallback; keep one copy.
+        notes = list(dict.fromkeys(n for n in notes if n))
+        record = {
+            "kind": "paragraph", "text": text, "empty": not text and not images,
+            "align": para_props.get("align", "left"), "sizePt": run_props.get("sizePt"), "bold": bool(run_props.get("bold")), "italic": bool(run_props.get("italic")), "caps": bool(run_props.get("caps")),
+            "font": summarize_font(run_props), "lineSpacing": para_props.get("lineSpacing"), "spaceBeforePt": para_props.get("spaceBeforePt"), "spaceAfterPt": para_props.get("spaceAfterPt"),
+            "indent": para_props.get("indent"), "style": styles.get(style_id, {}).get("name", style_id), "images": images, "outlineLevel": para_props.get("outlineLevel"),
+            **({"notes": notes} if notes else {}),
+        }
+        if text and FRONT_TITLE_RE.match(re.sub(r"^[\d.\s]+", "", text)) and len(text) <= 60 and text == tr_upper_text(text):
+            record["frontTitle"] = True
+        pages[-1].append(record)
+        if break_after or inner_sect is not None:
+            pages.append([])
+            if inner_sect is not None:
+                section_index += 1
+        # Stop once the first front-matter title (ÖZET, İÇİNDEKİLER, ÖN SÖZ ...) has been reached.
+        if record.get("frontTitle"):
+            break
+        if len(pages) > MAX_FRONT_PAGES:
+            break
+    pages = [page for page in pages if any(not (r.get("kind") == "paragraph" and r.get("empty")) for r in page)]
+    out = []
+    for index, page in enumerate(pages):
+        if any(r.get("frontTitle") for r in page):
+            # The page that starts the front matter is not a layout page; keep only its title for context.
+            out.append({"index": index, "frontMatterStart": next(r["text"] for r in page if r.get("frontTitle")), "records": []})
+            break
+        texts = [r["text"] for r in page if r.get("kind") == "paragraph" and r["text"]]
+        notes = [n for r in page if r.get("kind") == "paragraph" for n in r.get("notes", [])]
+        out.append({"index": index, "firstTexts": texts[:4], "notes": notes, "records": page, "evidence": {"part": "word/document.xml", "path": f"page#{index} (page breaks / lastRenderedPageBreak)"}})
+    return out
+
+
+def tr_upper_text(value: str) -> str:
+    return value.replace("i", "İ").replace("ı", "I").upper()
+
+
 # --- main -------------------------------------------------------------------------------------
 
 KEY_STYLE_NAMES = ("Normal", "Title", "heading 1", "heading 2", "heading 3", "heading 4", "caption", "toc 1", "toc 2", "toc 3", "table of figures", "footnote text", "footnote reference", "List Paragraph", "Body Text", "Body Text Indent", "Bibliography", "Quote", "header", "footer")
@@ -531,6 +656,7 @@ def extract(path: Path) -> dict:
         "numbering": numbering,
         "footnotes": footnote_text,
         "profile": profile,
+        "frontPages": read_front_pages(pkg, body, styles, defaults, rels),
     }
 
 
@@ -561,6 +687,21 @@ def summary(spec: dict) -> str:
     bp = spec["profile"]["bodyProfile"]
     lines += ["", "## Gövde metni profili (gerçek kullanım)", ""]
     lines.append(f"- {json.dumps(bp, ensure_ascii=False)}" if bp else "- 200 karakterden uzun paragraf yok (belge örnek metin içermiyor olabilir).")
+    if spec.get("frontPages"):
+        lines += ["", "## Ön sayfalar (kapak vb.)", ""]
+        for page in spec["frontPages"]:
+            if page.get("frontMatterStart"):
+                lines.append(f"- Sayfa {page['index']}: ön bölüm başlıyor → “{page['frontMatterStart']}”")
+                continue
+            lines.append(f"- Sayfa {page['index']}: {len(page['records'])} kayıt · ilk metinler: {' / '.join(page['firstTexts'])[:120]}")
+            for r in page["records"][:40]:
+                if r.get("kind") == "table":
+                    lines.append(f"    - [tablo {len(r['rows'])}×{max((len(row) for row in r['rows']), default=0)}] " + " | ".join("; ".join(l["text"] for l in c["lines"])[:30] for c in (r["rows"][0] if r["rows"] else [])))
+                elif r["empty"]:
+                    lines.append(f"    - (boş satır {r['sizePt']} pt {line_key({'lineSpacing': r['lineSpacing']})} önce={r['spaceBeforePt']} sonra={r['spaceAfterPt']})")
+                else:
+                    img = f" [görsel {r['images'][0]['widthMm']}×{r['images'][0]['heightMm']} mm]" if r["images"] else ""
+                    lines.append(f"    - {r['align']} {r['sizePt']} pt{' kalın' if r['bold'] else ''}{' caps' if r['caps'] else ''} önce={r['spaceBeforePt']} sonra={r['spaceAfterPt']}{img}: “{r['text'][:60]}”")
     if spec["profile"]["headings"]:
         lines += ["", "## Başlıklar (ilk 12)", ""]
         for h in spec["profile"]["headings"][:12]:

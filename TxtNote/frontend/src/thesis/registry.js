@@ -1,4 +1,5 @@
 import generic from "./templates/generic.js";
+import { GENERATED_THESIS_TEMPLATES } from "./templates/generated/index.js";
 import { validateThesisRegistry, validateThesisTemplate } from "./validation.js";
 
 /** Selection reads only these small descriptors. The template module loads on demand. */
@@ -10,6 +11,8 @@ export const THESIS_TEMPLATE_REGISTRY = Object.freeze([
   // One data module, two degree variants (degree lines and the doctorate-only CV differ).
   { id: "mcbu-lee-master-tr-v1", templateVersion: "1.0.0", universityId: "mcbu", universityName: "Manisa Celal Bayar Üniversitesi", instituteId: "lee", instituteName: "Lisansüstü Eğitim Enstitüsü", degreeType: "master", language: "tr", status: "official", displayName: "Manisa Celal Bayar Üniversitesi · Lisansüstü Eğitim Enstitüsü · Yüksek Lisans", selectors: {}, load: () => import("./templates/mcbu.js").then((module) => ({ default: module.mcbuMaster })) },
   { id: "mcbu-lee-phd-tr-v1", templateVersion: "1.0.0", universityId: "mcbu", universityName: "Manisa Celal Bayar Üniversitesi", instituteId: "lee", instituteName: "Lisansüstü Eğitim Enstitüsü", degreeType: "phd", language: "tr", status: "official", displayName: "Manisa Celal Bayar Üniversitesi · Lisansüstü Eğitim Enstitüsü · Doktora", selectors: {}, load: () => import("./templates/mcbu.js").then((module) => ({ default: module.mcbuPhd })) },
+  // Templates generated from measured official DOCX files (scripts/install-template-draft.mjs).
+  ...GENERATED_THESIS_TEMPLATES,
 ]);
 
 const cache = new Map();
