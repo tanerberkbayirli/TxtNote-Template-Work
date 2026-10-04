@@ -17,6 +17,17 @@ import json
 from pathlib import Path
 
 CAPTION_DEFAULT_LABELS = {"figures": "Şekil", "tables": "Tablo"}
+# Measurement noise, not a design difference (AGENTS.md: ≤ 0.5 mm; twips → mm gives 25.01 for 2.5 cm).
+TOLERANCE = {"Mm": 0.5, "Pt": 0.5}
+
+
+def same_value(measured, guide, path: str) -> bool:
+    if isinstance(measured, (int, float)) and isinstance(guide, (int, float)) and not isinstance(measured, bool):
+        for suffix, tolerance in TOLERANCE.items():
+            if path.endswith(suffix):
+                return abs(measured - guide) <= tolerance
+        return abs(measured - guide) <= 0.011  # line heights etc.
+    return measured == guide
 
 
 def main() -> int:
@@ -58,7 +69,7 @@ def main() -> int:
             applied.append({"field": path, "value": value, "source": evidence_of(rule)})
             draft.setdefault("evidence", {})[path] = {"value": value, "source": evidence_of(rule), "status": "EXPLICIT"}
             draft["unknown"] = [u for u in draft.get("unknown", []) if u["field"] != path]
-        elif current != value:
+        elif not same_value(current, value, path):
             conflicts.append({"field": path, "measured": current, "measuredSource": draft.get("evidence", {}).get(path, {}).get("source", "DOCX"), "guide": value, "guideSource": evidence_of(rule)})
 
     page = template.setdefault("page", {})
