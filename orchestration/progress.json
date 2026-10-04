@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03",
+  "updatedAt": "2026-10-04",
   "maxAttempts": 3,
   "policy": "orchestration/README.md#active-policy-2026-10-03",
   "universityOrder": [
@@ -194,13 +194,27 @@
   },
   "currentUniversity": "aku",
   "currentTarget": "aku-felsefe-lisans",
-  "currentPhase": "Reconciliation checkpoint completed; next implementation queue begins with AKÜ. engine-fix-4 remains an explicit shared dependency for later AFSÜ/MCBÜ validation.",
+  "currentPhase": "MOTOR mandatory Phase 0–2 gates complete at 8176503; two full real-export/Word regressions pass the mandatory matrix. Next motor phase is Phase 3. Explicit Arial/B3.6 deferrals and documented residuals remain; university variant/source-completion queue is separate.",
+  "enginePlan": {
+    "phase0": "DONE (historical source/checker checkpoints re-audited)",
+    "phase1": "DONE (catalog/split checkpoints; current unit/build regression clean)",
+    "phase2": "MANDATORY_GATE_PASS_WITH_DOCUMENTED_DEFERRALS",
+    "codeCheckpoint": "8176503",
+    "reportPath": "orchestration/reports/MOTOR_PHASE2_CLOSE_2026-10-04.md",
+    "regressionManifests": ["orchestration/validation/phase2-close/final-run-1.json", "orchestration/validation/phase2-close/final-run-2.json"],
+    "perRun": { "targets": 14, "PASS": 897, "FAIL": 3, "INFO": 17, "SKIPPED": 0, "CONFLICT": 0 },
+    "exportAttempts": 42,
+    "exportErrors": 0,
+    "exportRetries": 0,
+    "deferred": ["B3.6 editor last-line preview and custom justification breaker; engine-word-justify remains 17 PASS / 3 Arial FAIL"],
+    "limitations": ["bidi/non-locale decimal and unnamed-block terminal allowance UNKNOWN", "Firefox/Safari not exercised", "note horizontal indentation differs in measured synthetic probe", "historical Word-render variation cause UNKNOWN; two current passes do not prove universal determinism"]
+  },
   "lastCompletedValidation": {
     "target": "aku-fbe",
     "attempt": 5,
     "verdict": "FAIL"
   },
-  "lastCommit": "1748936",
+  "lastCommit": "8176503",
   "environment": {
     "host": "Current Windows host. Microsoft Word COM is available for controlled source-copy and generated-DOCX validation; use one owned instance, record PID, and Quit in finally. Do not force-terminate unknown or other-owned processes. Do not assume Linux/LibreOffice tooling.",
     "workers": "GPT-6 Luna; maximum 2 concurrent workers.",

@@ -110,7 +110,7 @@ Order: 2.1 → 2.2 → 2.5 → 2.6 → 2.7/2.8 → 2.3/2.4 → 2.9. Each row is 
 
 Fonts stay strict (AGENTS.md §10): embed the exact face; report substitutes as limitations, never PASS.
 
-**Phase 2 exit:** on all checker-covered targets, PDF vs Word page count, page labels and line pitch agree within tolerance. (Met 2026-10-04, commit 12a6a74.)
+**Phase 2 exit:** B3.1–B3.5 closed on 2026-10-04, code checkpoint `8176503`: two complete `--all --word` runs, each 14 targets / 897 PASS / 3 explicitly deferred Arial FAIL / 17 INFO / no SKIPPED or CONFLICT. All 10 real targets and the 205 pagefit, 146 parity and 130 structure checks PASS; 42 export attempts across the two runs had no errors or retries. This is the defined mandatory motor gate, not universal Word equivalence; B3.6 and documented residuals remain open. Evidence: `orchestration/reports/MOTOR_PHASE2_CLOSE_2026-10-04.md`.
 
 ### 2.10 Follow-ups (do before Phase 3; one engine session, Sonnet)
 
@@ -123,7 +123,7 @@ None of these fails a real target today; they surface on new universities (Phase
 | 2.10c | Footnote reserve: editor pads every fragment of a block crossing the note page (`box-decoration-break: clone`, `thesis/pageLayout.js` ~176, `thesis/footnotes.js` reserve stamp); Word reserves only on the reference's page. DOCX currently mirrors the editor via `consumeFnReserve` (`docx/paragraphs.js`, estimate-based). | First-fragment-only reserve in the editor layout (e.g. split the block at the note-page boundary or reserve via a page-level spacer), then delete `consumeFnReserve`/`estimateLines`/`notePitchPt`. | afsu-tip, aku-sbe, felsefe ×2 stay 0 FAIL with `--word`; `consumeFnReserve` removed; CAPABILITIES.md known-gap row removed |
 
 
-### 2.11 Phase 2 close — remaining batch B3 (RESUME here; one Sonnet worker, then Haiku `--all --word`)
+### 2.11 Phase 2 close — batch B3 CLOSED (2026-10-04)
 
 Done so far: 2.10a (b639d53), 2.10b evidence (bd2a759, Arial approximate accepted by user), 2.10c + `page.lastLineFit` (4d8fd8c), B1 line spacing (21f3676), B2 tabs/mirror/landscape/footer/fields (a5258ed). Baseline `--all --word`: 10 real targets 0 FAIL, parity 146/0, structure 126/0, justify 17/3 (known Arial).
 
@@ -136,7 +136,7 @@ Done so far: 2.10a (b639d53), 2.10b evidence (bd2a759, Arial approximate accepte
 | B3.5 | Flake: export settle timeout 120 s (`export.mjs:44`) seen on aku-sbe during `--all`, not reproducible alone | Find oscillation or make retry cover this error + diagnostics | `--all --word` twice without export errors |
 | B3.6 | (optional, user decision) Editor preview of justified last line still compressed (2.10a is PDF-only); Arial custom line breaker (2.10b) | Deferred engine theme | — |
 
-Verify with `--word`: engine-word-structure, engine-word-parity, aku-sbe, afsu-tip, aku-felsefe-lisans, afsu-eczacilik-proje, mcbu-tip-uzmanlik; then `--all --word`. Phase 2 is closed when B3.1–B3.5 pass and §13 of CAPABILITIES.md has no MOTOR 2.x row left except documented UNKNOWNs (2.4 bidi / non-locale decimal).
+Acceptance verified with two serialized `--all --word` runs on unchanged `8176503`. B3.1–B3.3: 205-check pagefit matrix includes 23 formerly omitted table-tail checks, three combined style/footnote cases, and two split-note-area rows. B3.4: structure 130 PASS, including positive first-line mirror wrapping. B3.5: no export errors or retries in either run. The table above records the original risks; the current result is closed for B3.1–B3.5. B3.6 remains explicitly deferred, with `engine-word-justify` 17 PASS / 3 FAIL, not PASS. Other residuals (unnamed blocks, bidi/non-locale decimal, unexercised browser support, measured note horizontal indentation and historical Word-render variability) remain documented in the catalog/context/report. Next planned motor work: Phase 3; do not redo completed Phase 0–2 checks without a regression or relevant new change.
 
 ---
 
@@ -187,6 +187,7 @@ The scaling step toward ~200 universities.
 | 2026-10-04 | Phase 2 close B1 (line spacing): Word first-baseline model per rule (`wordBaselineTargetPt()`: exact = 0.8×value, atLeast shortfall above text; probe key collision fixed), `overflow:clip` removed for exact (Word has no per-line clip); new checker kinds `first_baseline_match`, `first_ink_top_match`; 9 oversized-exact parity cases; §13 rows 2.1 footnote pitch + line-spacing conformance closed | (this commit) | npm test 706/706, build OK. `--all --word`: 10 real targets 0 FAIL, parity 146/0, structure 60/0, justify 17/3. Residual MEASURED: Calibri 11/12 first baseline +0.1 mm (in tolerance). Sonnet ≈113k, Haiku ≈56k | B2 indents/tabs/sections/footer/fields |
 | 2026-10-04 | Phase 2 close B2 (2.3/2.4/2.7/2.8/2.9 measured): fixes — landscape DOCX orientation (docx lib swap), tab leaders on Word 1/600-in grid + same line box, mirror even-page shift = right−left (hanging was 8 mm off), `footer.trailingBlankLines` now lifts editor/PDF footer too; checker kinds `line_words_match`, `page_size_match`, `page_number_attr_match`, `fields_refresh_match`, `fields_cached_match`, `until` page selector, word2pdf `-Refreshed/-FieldDump`; new structure variants footer + fields | (this commit) | npm test 708/708, build OK, test_conformance 14/14. structure 126/0, parity 146/0; `--all --word` 9/10 real clean + aku-sbe export settle timeout (transient: reran 22/0 ×2 and 19/0 ×2). §13: 2.7/2.8/2.9 rows deleted; 2.3 residual MEASURED (positive first-line mirror: Word narrows even-page lines); 2.4 bidi/non-locale decimal UNKNOWN. Sonnet ≈294k, Haiku ≈60k | B3 pagination/fit + mirror first-line + settle flake |
 | 2026-10-04 | Session stopped (weekly limit 92%). Phase 0/1 closed; Phase 2 remaining = §2.11 batch B3 | (this commit) | — | §2.11 B3 (one Sonnet worker), then Phase 3 |
+| 2026-10-04 | Resumed stopped B3; mandatory Phase 0–2 motor gates CLOSED. Generic per-style leading, native-table exit gap, first-note-fragment handling, kept-reference note-area splitting, mirror first-line wrapping, bounded pagination/diagnostics and owned Word runtime provenance | 8176503 | 711 main + 6 extra frontend tests, 14 checker tests, 3 diagnostic tests PASS; build PASS. Two full real-export/Word runs: each 14 targets, 897 PASS / 3 deferred Arial FAIL / 17 INFO; pagefit 205/0, parity 146/0, structure 130/0, all 10 real targets clean; 42 exports no errors/retries. Independent audit complete; no tolerance/source-value changes. | Phase 3. B3.6/Arial and documented residuals remain; university variant completion is a separate queue. See MOTOR_PHASE2_CLOSE_2026-10-04 report and RESUME_2026-10-04_PHASE2. |
 
 ---
 

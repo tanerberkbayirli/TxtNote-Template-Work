@@ -1,0 +1,763 @@
+{
+  "run": "final-run-1",
+  "codeRevision": "8176503db8688ec019a3304da7437ac135f72cbd",
+  "command": "node orchestration/tools/check.mjs --all --word",
+  "targetCount": 14,
+  "counts": {
+    "PASS": 897,
+    "FAIL": 3,
+    "INFO": 17,
+    "SKIPPED": 0,
+    "CONFLICT": 0
+  },
+  "mandatoryGate": "PASS",
+  "overallCheckerExit": 1,
+  "deferredFailureTarget": "engine-word-justify",
+  "reports": [
+    {
+      "target": "afsu-eczacilik-proje",
+      "report": "orchestration\\validation\\afsu-eczacilik-proje\\check-20261004-1614.json",
+      "reportSha256": "2611a517322b4ed7f9aaa046616010046bc929979dfa2f4ed6919fcff142bd0c",
+      "counts": {
+        "PASS": 26,
+        "INFO": 1
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:13:24.98Z"
+      },
+      "checksSha256": "d5ac09b108093bd3e33b2ac0e12104294561e5e645985e332ec4a47273374c7d",
+      "artifactSha256": {
+        "default": {
+          "fixture": "acdc7f9c765e5f128fc05980a1381b3fe069d77956dbd47414a3eaf7d555243e",
+          "pdf": "5821747a2daa06b68f7348d47cd695627389ac7ef6e84f1657d03755a4f5b692",
+          "docx": "1c8acdd056c31933af7ca6340e0cf5115cbccb7edc3df7621afc3d2e9aa80d9f",
+          "layout": "e3edb29960b70d632907b74abd9e008a2e284b4f8463eaf8d6a3592cfc2e4abe",
+          "wordPdf": "46cd856fddd4e8c7060505a3620f65af1256747d24c1a52b220811108f7cba86",
+          "wordRenderInfoPath": "396076003c8ca0a0c147da681f2cb16628683a0a0ca006ad91c9958e8dfd4fd3"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 29464,
+          "renderedAt": "2026-10-04T13:13:58.3701852Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "afsu-lee",
+      "report": "orchestration\\validation\\afsu-lee\\check-20261004-1615.json",
+      "reportSha256": "c164a3450920e1ce4c826faeab0517cbfe42bd5c98afe20e55feccf391673ef7",
+      "counts": {
+        "PASS": 90,
+        "INFO": 1
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:14:08.935Z"
+      },
+      "checksSha256": "a6ad1f8c9415903138af95ac0fb8774150b53207bdb094ae4fe15e4014e8b484",
+      "artifactSha256": {
+        "default": {
+          "fixture": "382a6a77e94ad42a5c02135365974264793280c0ecbafc10f53251f79bb419b6",
+          "pdf": "41b190fe56c7bfae0d0f52ee231acebf014b26247e1b003cd31e384761f52229",
+          "docx": "b2a8148d95cb2314b4357b955fb4d7a82c57892626858068664873e2b2c5d8f1",
+          "layout": "69926a5ecaa2ded0be8f66ff6bcf931fb0fc13232875ddc2307d881267aa4be3",
+          "wordPdf": "824defd9003306f307d2dba2d3bb569922d7f1fa5c55091a393ea6a3e71cd435",
+          "wordRenderInfoPath": "720976681feded637db14eb803e19e2a5d3e9b824106ab7d09b0d1e0d38f56ef"
+        },
+        "phd": {
+          "fixture": "6447fedc085f2c42f10a200e86aa7345535795a23837d25ba1b30318383258f7",
+          "pdf": "124434ab341183b27b57524563871e01b579c6066236f06182dd307cd18586a9",
+          "docx": "1004fd70e4d9b7d43519012529bce48215a6da118d84afd0bfeccf9ed963ead5",
+          "layout": "6f7d2e4945870b103e9bf2dd90ab74497393ee88dd202ee8cb37ab33512c9114",
+          "wordPdf": "26daca1234094cf7bff1ee7c2edbbe67f8c3f5e48c4cce4a9d81389f0753218f",
+          "wordRenderInfoPath": "e469bd67de20702c743ffaca107e78a4c51070a79781b5e82985799e49ece181"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 15136,
+          "renderedAt": "2026-10-04T13:14:59.5866336Z",
+          "compatibilityMode": 15
+        },
+        "phd": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 9584,
+          "renderedAt": "2026-10-04T13:15:12.0182169Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "afsu-tip",
+      "report": "orchestration\\validation\\afsu-tip\\check-20261004-1615.json",
+      "reportSha256": "04b8332e70c9979ac64e682624e19acde4b78b1b47781ff6c8b2caf798cdad12",
+      "counts": {
+        "PASS": 50,
+        "INFO": 2
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:15:24.442Z"
+      },
+      "checksSha256": "418cf0ccadc12deed553e8b07ef2801d6823d9f59d9e9433f5c797109ee565be",
+      "artifactSha256": {
+        "default": {
+          "fixture": "81404850d7ea37f89b883871b7290f3b95357c71f8557a4c6b610d6f24e36b33",
+          "pdf": "15813c5031deb243d51c07169b725ed043775c201d967de130ce9c9919c5243e",
+          "docx": "75df60bc63b2910f4d6010309f2481c6161eb353bac0c20422e33f4f2d2ce8d8",
+          "layout": "befb25ab9f9a6391554c5cd65f48f330a6bb40e0fdc5b22d232a11e818271d07",
+          "wordPdf": "5618eb3cadf0ef7d96e560969fed25adfd74ae4849b486b531f39678cd51ca89",
+          "wordRenderInfoPath": "1fdfcecc7ccff2a4646488531369b54877d7f8b822043d378d82c5ddeed550da"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 7760,
+          "renderedAt": "2026-10-04T13:15:47.3242225Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "report": "orchestration\\validation\\aku-cografya-lisans\\check-20261004-1616.json",
+      "reportSha256": "e714a25cf1a3602e21a6ca0209b1c1b2d2344da40259beda6ee6e64d0013faa2",
+      "counts": {
+        "PASS": 49,
+        "INFO": 3
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:15:55.197Z"
+      },
+      "checksSha256": "323e74f66300786667da9f6ef69c343b29c36f4e0704b565ff969282cb7eeaa8",
+      "artifactSha256": {
+        "default": {
+          "fixture": "639f204df817ab7c6de57670b13cf03d843d0afa653703bd2dc06fc561323caa",
+          "pdf": "57874f7c27564d3f9d5a86d743eb52cbac72e26be1145e441038c0d8568f5c26",
+          "docx": "b04194084f57c303f491253d7b0a44e76dfa32fe3630de2d2455235f391559d4",
+          "layout": "b221cbcd4730e83626cf2777e1f5aaffd50b73adfe251f8ca91e8408f6d7c5cd",
+          "wordPdf": "af1aa57c1fcffbd979920ffb6965b4c42d7cd83b31f74b20876b0a6a403efce9",
+          "wordRenderInfoPath": "ef9ee0b49d26610266adb3b263507393ca6616b58191f1bf1a5cd9cdae834df3"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 30048,
+          "renderedAt": "2026-10-04T13:16:17.2498341Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "report": "orchestration\\validation\\aku-felsefe-lisans\\check-20261004-1616.json",
+      "reportSha256": "37fb492f8503b537d22ce74c20aa09df206b3cec8e70062acdc4dd4ee93951d6",
+      "counts": {
+        "PASS": 19,
+        "INFO": 2
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:16:27.505Z"
+      },
+      "checksSha256": "c5dcd70f6312d732d11da31b0ce4ab2b9b09e0b62df8a32cf61e43d2fe57d094",
+      "artifactSha256": {
+        "default": {
+          "fixture": "7eb8f3420d869f1243f6a41eff55da8d85a8eab3619c96f32540f0b5145ae15b",
+          "pdf": "e7af1a34fde68e97b703528490b2e7e25457e644d7e815bbdcabaa842bb9c834",
+          "docx": "b809aa343208cf05e06a5d9e46b1bb15ffa7f55149a169b4a82d34b7f1e721cd",
+          "layout": "f27e75a4a897515704e5f917d51ae19d7bd824670597f9353b5d85620a968440",
+          "wordPdf": "c4f48ae7f079c9431731b04175bf656b7a0714ae6f3f07fee1bda625e2f631c8",
+          "wordRenderInfoPath": "07571462aaa9dbbbd4f66dec65ba85fd04ac8763ea18345fdbc371c9c826fe77"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 3656,
+          "renderedAt": "2026-10-04T13:16:48.6272861Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "report": "orchestration\\validation\\aku-felsefe-seminer\\check-20261004-1617.json",
+      "reportSha256": "1db3e9d01e0e6d97d3b2d201679a9a0c04cc39a8f912d0db718b463084612647",
+      "counts": {
+        "PASS": 19,
+        "INFO": 2
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:16:55.962Z"
+      },
+      "checksSha256": "39667aeaf008e62e5f3976ced21d1ed6a32766497d99a12de2747541f7be7627",
+      "artifactSha256": {
+        "default": {
+          "fixture": "90587e67fd6fa6069630aa39c0deabf481656277dbe5124874db61267a51505e",
+          "pdf": "7282d83e07c6e0fbcf889d86a3b73b1d77797d85dc09ca3914d1366c9a01eacd",
+          "docx": "c30f04ed32d0706bb19026fef6458dd745376f8f472557becd9263d7b4eba7a9",
+          "layout": "cb6eee03eac0d26578b14deb10c541d4b60ae56bd9aaba2d6c62e11ac389d8f5",
+          "wordPdf": "b2209db75176b301a5d29c0bccd22edf485f99b3c0f459fa9e817f787009107c",
+          "wordRenderInfoPath": "629129856b2a87e78b5fbca6d7af79c0a4afb0931435c92ecfddebdd02a1efc8"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 8852,
+          "renderedAt": "2026-10-04T13:17:16.6934907Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "report": "orchestration\\validation\\aku-isg-tezsiz-proje\\check-20261004-1617.json",
+      "reportSha256": "d9459a5e641b66011c703c5ae1eb6027482056b221b5501ca7452c8680afa8eb",
+      "counts": {
+        "PASS": 23,
+        "INFO": 1
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:17:24.077Z"
+      },
+      "checksSha256": "5238bb49e5142d6dd3ab49b87637ba983c429f6684dc9f2345465d58ea8f2c4b",
+      "artifactSha256": {
+        "default": {
+          "fixture": "50be8d108eb41c4dee60d7aa5689a0ad812ac7e08dbec17f37ac88cd0512a44f",
+          "pdf": "243028fed70641c199648d2e5415c4d8bcf0e6d42e4a573d314e3054dbc611dc",
+          "docx": "d99ee659810860c6da685c90899bdad05635d46d5e49c69fccc69576bcb7af49",
+          "layout": "9ed9ce9bf83e2c20d2fbdc619651fa534a8feebf66c07f3ea6c0873f1085e5df",
+          "wordPdf": "0c66903412a2830c3e8a1537e0b187ee62df6c42e7cd98b2cec95817fc520717",
+          "wordRenderInfoPath": "10cf3b962f212b2957c8e2ed2e6fcbe96367cda36da9db8a5bd63a53852091fb"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 21948,
+          "renderedAt": "2026-10-04T13:17:46.8591451Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "report": "orchestration\\validation\\aku-matematik-lisans\\check-20261004-1619.json",
+      "reportSha256": "ebe9ad9cc810c616e257c7fa45f31bc65668d4d148c0346310ff588a7c20240c",
+      "counts": {
+        "PASS": 53,
+        "INFO": 2
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:17:54.862Z"
+      },
+      "checksSha256": "db51ab0abc5def4d11c8aaa1c69e187f3d868e0e4b0699bf27ccc02b052363ef",
+      "artifactSha256": {
+        "default": {
+          "fixture": "dd2fcf7851415fbb76935edc0cbb45bc1c0a01789dac1466f9847353e28812b0",
+          "pdf": "0e2c18639673342cf426fdcc34353192168580debfa59230ec07682cf675404b",
+          "docx": "9051cc7017d5ee2ff8914f8a6eb80daf75999766512f17385be63530c7f067d2",
+          "layout": "360c848adac73e7b4839c2e3bd6c943ab61d570c3898daef9582868d326d3a71",
+          "wordPdf": "cdd5934119982cd61619487f13483ff41fb4f66aae0154491980d5cd972ed7df",
+          "wordRenderInfoPath": "efef1d549710e890afe2cfd6bad7b6af96ac0affa9434b63fc09693a6c2b2697"
+        },
+        "tables": {
+          "fixture": "a16349732e293a7dd7902238b8b5d2fbbf1e56df91b493920236a3229ab08850",
+          "pdf": "45a559869fd549bb749516bc3c63350870c446388a71cc978ffe8424764feeed",
+          "docx": "26b6bd083d7c33618e0d5dcaaef3b6091a5e5d5f00b4dc4c0ddaca8d9a6a2739",
+          "layout": "ff1f5c7ef08dccd9c098098b651bf2b5361e8a09a329a85d34377a7b1f8a83a9",
+          "wordPdf": "e6ff7d5605bb28bb7494e7b05570272d814d8269a94c46c8cc8fb98c591dddce",
+          "wordRenderInfoPath": "d2ce2a3dcd711aeaa472c46d7ba45f545cdea625ce80491992b173b5e6f9592e"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 22764,
+          "renderedAt": "2026-10-04T13:18:35.3988014Z",
+          "compatibilityMode": 15
+        },
+        "tables": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 10296,
+          "renderedAt": "2026-10-04T13:18:54.6189076Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "aku-sbe",
+      "report": "orchestration\\validation\\aku-sbe\\check-20261004-1619.json",
+      "reportSha256": "952c8575622a032f29bf51effb1d65226d0fae8e5cc55da083a659b4e45611df",
+      "counts": {
+        "PASS": 22,
+        "INFO": 2
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:19:03.148Z"
+      },
+      "checksSha256": "288eecc06db53f653b7cea86799828cbfb4cfaa93375eef6c47ea4f97b55c516",
+      "artifactSha256": {
+        "default": {
+          "fixture": "5fe33c644d305f85617b536bfcfdb7a7a9ecdebf0486a69e2eef57a624105f14",
+          "pdf": "8e053c370a493fcd4a1ba8e574098d28fea1a8ca37f22be83d7a4959a5760ffe",
+          "docx": "9bf5b6c181a648a112803f733f4908d800677888ef9dcaf159d64d7558b59ad9",
+          "layout": "ae9c46300553df8526ac1aa483f22f289e490eb3c66b4c4aa07a5a236c061c3b",
+          "wordPdf": "f056da892446c88b561d64eb60bfccd8c129c929bf2562bc77f078220f67cbbf",
+          "wordRenderInfoPath": "df1c05d2f21fd5c20205b33e507f0c208079ad4e397f54be47c9887b202f3610"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 21228,
+          "renderedAt": "2026-10-04T13:19:30.3296523Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "engine-word-justify",
+      "report": "orchestration\\validation\\engine-word-justify\\check-20261004-1620.json",
+      "reportSha256": "48e926f84bd885b9dbc608869fc77aa6868278130881df90311690fe8299a298",
+      "counts": {
+        "PASS": 17,
+        "FAIL": 3
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:19:41.197Z"
+      },
+      "checksSha256": "ecd39592aea8492445f138e22e331b7204f50bcd6ba591ecd833a73ac2fa3e4c",
+      "artifactSha256": {
+        "default": {
+          "fixture": "d85ebbe33b3650519398fcecd6df6630b76cfa7a26f95e7bc49dd22908ea632c",
+          "pdf": "c5a355ffde96cf18707cc22c93b1fe5e0f451c07606c0e66c81ad3197fc8d422",
+          "docx": "740e5a910ba734c3200456052d85b3dc37e00a1e5476d5539bb6e7433a64ed89",
+          "layout": "d43aa84568fcca2233e608bc699b3466e4b7ca1dced35821521fab617e221748",
+          "wordPdf": "4e761a77488c9929663f16e6582d0140dcf3391f478827c92ddb9719784c5e92",
+          "wordRenderInfoPath": "fbce196925bd0d6013dd33cab701622c870150947f1c04811e386f02a020b72e"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 30456,
+          "renderedAt": "2026-10-04T13:19:59.6675387Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": [
+        {
+          "id": "J03-Arial-10-justify-line-breaks",
+          "kind": "line_breaks_match",
+          "expected": "identical line texts in PDF and Word",
+          "tolerance": 0.5,
+          "source": {
+            "file": "real Word render of exported fixture DOCX",
+            "locator": "J03: Arial 10 pt justify"
+          },
+          "evidence": "MEASURED",
+          "ruling": null,
+          "actual": {
+            "lines": {
+              "pdf": 33,
+              "word": 33
+            },
+            "firstDiff": [
+              [
+                0,
+                "J03-1 KABUL öğrencileri olup and doktora ve önemli of bulgular elde üniversite anabilim doktora over",
+                "J03-1 KABUL öğrencileri olup and doktora ve önemli of bulgular elde üniversite anabilim doktora"
+              ],
+              [
+                1,
+                "jumps lazy sağlamaktadır öğrencileri the and araştırmacılar over istatistiksel lazy chapter dissertation",
+                "over jumps lazy sağlamaktadır öğrencileri the and araştırmacılar over istatistiksel lazy chapter"
+              ]
+            ]
+          },
+          "status": "FAIL"
+        },
+        {
+          "id": "J03-Arial-10-justify-last-line-words",
+          "kind": "last_line_words_match",
+          "expected": "last-line word x within 0.25 mm of Word",
+          "tolerance": 0.25,
+          "source": {
+            "file": "real Word render of exported fixture DOCX",
+            "locator": "J03: last line of each paragraph, Arial 10 pt"
+          },
+          "evidence": "MEASURED",
+          "ruling": null,
+          "actual": {
+            "paragraphs": {
+              "pdf": 4,
+              "word": 4
+            },
+            "maxDeltaMm": 0.112,
+            "bad": [
+              [
+                2,
+                "istatistiksel sırasında ",
+                "sırasında bulgular sonuç",
+                "word count"
+              ]
+            ]
+          },
+          "status": "FAIL"
+        },
+        {
+          "id": "J04-Arial-12-justify-line-breaks",
+          "kind": "line_breaks_match",
+          "expected": "identical line texts in PDF and Word",
+          "tolerance": 0.5,
+          "source": {
+            "file": "real Word render of exported fixture DOCX",
+            "locator": "J04: Arial 12 pt justify"
+          },
+          "evidence": "MEASURED",
+          "ruling": null,
+          "actual": {
+            "lines": {
+              "pdf": 30,
+              "word": 30
+            },
+            "firstDiff": [
+              [
+                3,
+                "çalışmada veriler doktora tezin dalı of chapter öğrencileri üniversite anabilim",
+                "çalışmada veriler doktora tezin dalı of chapter öğrencileri üniversite anabilim doktora"
+              ],
+              [
+                4,
+                "doktora ÖZDOĞAN istatistiksel ONAY a while the members brown each yöntemler",
+                "ÖZDOĞAN istatistiksel ONAY a while the members brown each yöntemler bu"
+              ]
+            ]
+          },
+          "status": "FAIL"
+        }
+      ]
+    },
+    {
+      "target": "engine-word-pagefit",
+      "report": "orchestration\\validation\\engine-word-pagefit\\check-20261004-1622.json",
+      "reportSha256": "3dbdecd0c4baff61e46d0fea19f53ee87de89db768987523367094d9a971b313",
+      "counts": {
+        "PASS": 205
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:20:05.431Z"
+      },
+      "checksSha256": "38c849c00a472e6f63d4cfa2494633f781e1d9450d2a57866728867874aad762",
+      "artifactSha256": {
+        "styles": {
+          "fixture": "0bd5863fb6403b67773186a689baf49ceabf2fc6923f5233c664a6e9bf98bbc2",
+          "pdf": "8471034f62b69295ef547fc82272527af210b962409326cc692f2a087dba221a",
+          "docx": "c15645bb192664693930c88cb6d21500f7f25ff3241e91e36be73ac49365e3ca",
+          "layout": "0628f0bf13ae2c4e3876809ea7ede09cd18b0e4095ce29eced93ac94112ede50",
+          "wordPdf": "d455ba7e3e99f430fcb53211d3e0c02c2215e0226bda3b36586a30034fa83dd2",
+          "wordRenderInfoPath": "33bbf62343f5ae63c7e3d83762c6982b11da7cf6e5ae0f2ad6774b917c0ec189"
+        },
+        "default": {
+          "fixture": "0a345900666fb56777bd2b9d60f19bca4b3561aca78164b5ec6266325a1fbcd3",
+          "pdf": "d7fdaadc380fc5d7eb3977d74b069737cd6f3a589fb6380db0273d0ab0614a32",
+          "docx": "651ed1cf0dbc668c2b12f242d629a9764bdacc2b76e999eaf3255167bd2822a7",
+          "layout": "3bfb8d301d698fa754a95ed8d0a49d63ec9c8237f042ec9e73c32ac9250ec598",
+          "wordPdf": "5d149928ce57222eff3b94b7a6708f1e27e0155eafcf9bf443d35fd24093034a",
+          "wordRenderInfoPath": "f01c02204f6fed0ec7e483402f01620368b4eef93e6ae0177e9070228b479d70"
+        },
+        "tab": {
+          "fixture": "620a232b0cfb4bc9e2d16701952779638900c9a6a78f0b7dbe49b2b2ed798822",
+          "pdf": "38851070078bdca9014a1b9212b855174e52b329e1ee4f7882c36b9385acdd02",
+          "docx": "e05f71640e0e9a49c04e38daabaf12e2f6532d487e806b9829825cf3b090bb32",
+          "layout": "5bf3ae367412804452a2a899a190d7dcc00cbf95a38a5cba49975d97eaeeda3d",
+          "wordPdf": "2485d9ab0a07bf8cb57282dc0baa9ccd3d19183678d3444ace4a6aded4d28604",
+          "wordRenderInfoPath": "4d600c26abf63b04f2ee8ed336c0edc6c5a06c5f3c6af1f58c38ac7f0fdfd6fc"
+        },
+        "notes": {
+          "fixture": "5fb18faab2c1cbb2a444cf5f87e4ce17343074d594b94c25057d291e6022bb34",
+          "pdf": "619bc0d83a5d08fcc6913c662cd2268a7b428615fa596f68638777d5fdfa3d75",
+          "docx": "c90c843bd46d456fe26a35fdf53a7669898ea2f9805b8182c9fe39a7f9c3fd2b",
+          "layout": "53de924e0375da90cfcb8fd89114642962627f3f45e4e77752bb6503cff764b5",
+          "wordPdf": "2037ab6f29a99fb285fe6cc7544789ffa2318107912e12f662dc20a0d5d60ae5",
+          "wordRenderInfoPath": "13a1fbb6b7d7e4c32595ebd4b03cecd890af7d93b99725e6aa4c5670b7412761"
+        }
+      },
+      "wordEnvironment": {
+        "styles": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 9628,
+          "renderedAt": "2026-10-04T13:21:51.5680314Z",
+          "compatibilityMode": 15
+        },
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 31712,
+          "renderedAt": "2026-10-04T13:22:03.3185766Z",
+          "compatibilityMode": 15
+        },
+        "tab": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 2004,
+          "renderedAt": "2026-10-04T13:22:13.2760285Z",
+          "compatibilityMode": 15
+        },
+        "notes": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 12468,
+          "renderedAt": "2026-10-04T13:22:23.0041423Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "engine-word-parity",
+      "report": "orchestration\\validation\\engine-word-parity\\check-20261004-1622.json",
+      "reportSha256": "879182f96310968475ee7bf3ad4d220396e92fa62a9477964261d99271cf999c",
+      "counts": {
+        "PASS": 146
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:22:32.623Z"
+      },
+      "checksSha256": "960f20753fe2df378d9cac86c75b5252ae34f95a91c032626f7284a2355ad380",
+      "artifactSha256": {
+        "default": {
+          "fixture": "15a55edadf37fe898b4a89fda5f4e1696042ee0f382c97a8b3dea6a1ef4913b1",
+          "pdf": "ad2d1e31719f9e1f252b638f893269de34237614e3998c9b6bdcb747e446b253",
+          "docx": "f392b0d63f6f5fa3575012f633f8b34748da5b0721f260970c587fb826047723",
+          "layout": "3cdf87a677327efead1469be48e73ee3ee8e50f163017d558240c77c8a1a9fc0",
+          "wordPdf": "a0969807046553df8fcd59b653c45aebf112323c3230c1b5f5761f7e5ec7e9b2",
+          "wordRenderInfoPath": "98a544011b2b317c647d464fb6ea5aa0d71899b2daf0084e79d949e369642f91"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 964,
+          "renderedAt": "2026-10-04T13:22:52.7497656Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "engine-word-structure",
+      "report": "orchestration\\validation\\engine-word-structure\\check-20261004-1624.json",
+      "reportSha256": "dde45b3268854d8f656399f3b8a16567cda2750a34cd030e1ab1bb08a503d222",
+      "counts": {
+        "PASS": 130
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:22:58.677Z"
+      },
+      "checksSha256": "ee0d4851b555bd24efa8becb211af91799804d10d3f8b85aad72cbec40a68159",
+      "artifactSha256": {
+        "default": {
+          "fixture": "bdb0de4f378b434fa429fbe1f26f52cb4f14d4e94abd43f347871c28c7b9575f",
+          "pdf": "966d58889bd818e300dc28d6c586378024489e004afc4b76997d82d0d5f31b41",
+          "docx": "4f48c4ebe52598b549dbfff053a27d9175ae0efc93ae85fa40b59869a3b30932",
+          "layout": "9b3c10eaf3ef25a9759c36c34777c875ec724068f1bd39adf00809d49dcc9174",
+          "wordPdf": "fe8b00fec66b3935ceb64841d9551cf3fd3596d9420d64b1a1dba37d3b1f8f56",
+          "wordRefreshedPdf": "9e2855cc608a1e6e6a344202a7befcf133de709a55cde3a6b36e74e65ff3d839",
+          "wordFieldDump": "3e2f5621a9f5799127603afc095ea3dee0b0ba995214aa97a8318dead99906a7",
+          "wordRenderInfoPath": "263f453ce2db6c264994b592dfb1db81f4358d95a7842f1bbcc8e7be8ca833f3"
+        },
+        "footer": {
+          "fixture": "f1830e14ef26488887a2b95b015f90b57e209a20fe24962dfc7397035ec760b9",
+          "pdf": "467494a75251d28de2e3b690b3fdafa12387d7b5417bb89c5bafe2f44fd009d0",
+          "docx": "0005e6c6a0e9702fa748352ddcfe31c9c7f62434e2e0bb41f96b10d7e9233d82",
+          "layout": "1a38f5dad2e544b2b395dcd12c29aa4f4c663dc2d65bc49c1cbb3e2e8bfe8661",
+          "wordPdf": "dd9c78b0f8c98665721735b74f2c9cec0ac44067afa9892b72332c9d7fa33a76",
+          "wordRefreshedPdf": "8a541cc2a2f68491f2dace4325a4b1e0ce630f27590a0061b42f735543348851",
+          "wordFieldDump": "fb2c0010b668fe1bf99d7ed5753cc74248bcf250543bcbe8c935355495186a8d",
+          "wordRenderInfoPath": "2ed1493232365cf4709ad3b77d35412e1bc16b212429b522195e00186d50c98c"
+        },
+        "fields": {
+          "fixture": "989630c5acdf4ff28241f94942eb7a6d1bcf6086818cd1c69dcd03a7f93e3d5e",
+          "pdf": "b69ea19628cfe93b482dc582fcf216ba8e8a47ab932ac9dfa5f5e472ba6a23ab",
+          "docx": "2e92e3e3435d1652dfbf7437e72908d3af6b33c6624279a7d143a682af89f851",
+          "layout": "b095219a781a31c76e3d2acb239581c53b56a6b3c1165c266c4cec3689375800",
+          "wordPdf": "4a8258875e261727e944498660f94e0b59a2efe13b9cb74ba72d4eb5027e993b",
+          "wordRefreshedPdf": "b9fd67f28e10d5182899c629176f914ec9d0523cfe18fa718a46e0ca3a4e0dc1",
+          "wordFieldDump": "4575dbd39f2a3cca482059915ffb7f3f90c816abee4d68c00a19033d1d945e98",
+          "wordRenderInfoPath": "8ff69bfcf5abdf796a418f5d23962553724c5b96eae37e01d3ca90714f7d49f2"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 28848,
+          "renderedAt": "2026-10-04T13:23:30.4735865Z",
+          "compatibilityMode": 15
+        },
+        "footer": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 29624,
+          "renderedAt": "2026-10-04T13:23:51.989194Z",
+          "compatibilityMode": 15
+        },
+        "fields": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 26552,
+          "renderedAt": "2026-10-04T13:24:02.424115Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "report": "orchestration\\validation\\mcbu-tip-uzmanlik\\check-20261004-1625.json",
+      "reportSha256": "1bfbb3e6198cdd739116f727202a594be23c5cfb04b796640d3706305d0f3f97",
+      "counts": {
+        "PASS": 48,
+        "INFO": 1
+      },
+      "sourceProvenance": {
+        "revision": "8176503db8688ec019a3304da7437ac135f72cbd",
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+        "startedAt": "2026-10-04T13:24:26.703Z"
+      },
+      "checksSha256": "7f28d810f1de9c64d6f72c83dc250c9dfb333c4953def3e429cb8614d8571394",
+      "artifactSha256": {
+        "default": {
+          "fixture": "afb8a725b51c55647cfc76890539d5bb8dc66af87e7d794017f2fa1705984c42",
+          "pdf": "19d1313f044f99808e93280a263e619701536899c0cb9274de8874f05884c2e7",
+          "docx": "95af2690e2fa6556e880315c800ece0a86c733ae5a4786830daaae918c731746",
+          "layout": "d1e2dbf94cdbd8946b24257e3e8c73a3d34ce4109108cf920c2df2a1b72d3bf6",
+          "wordPdf": "50b2f62e15b66d325b2703a95107c18d0bc10c5e55c36c4e82e2393b850ce1ef",
+          "wordRenderInfoPath": "5450a675f793f58407eded818a47737423fb9a88297733b7eaeeeae1c2c13bb3"
+        }
+      },
+      "wordEnvironment": {
+        "default": {
+          "build": "16.0.20430",
+          "version": "16.0",
+          "printBackground": true,
+          "activePrinter": "Microsoft Print to PDF",
+          "pid": 18860,
+          "renderedAt": "2026-10-04T13:24:44.7766752Z",
+          "compatibilityMode": 15
+        }
+      },
+      "failures": []
+    }
+  ]
+}
