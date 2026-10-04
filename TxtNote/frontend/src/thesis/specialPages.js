@@ -17,7 +17,8 @@
  * Typography inherits template body → section `overrides.body` → group `style` → block `style`.
  * Page geometry and numbering stay in the section's existing `overrides.page`.
  */
-import { resolvePlaceholders } from "./engine.js";
+import { resolvePlaceholders, transformThesisText } from "./engine.js";
+import { FORMAT_POINT_VALUES } from "../config/format.js";
 
 export const SPECIAL_PAGE_BLOCK_TYPES = Object.freeze(["text", "metadata", "image", "spacer", "separator", "group"]);
 export const SPECIAL_PAGE_MAX_DEPTH = 4;
@@ -64,14 +65,16 @@ function textStyle(inherited, block) {
  * node carries its final style and text, so the editor, print HTML and later
  * exporters read the same model. Nothing here is written to the document.
  */
-export function resolveSpecialPage(blocks, { definitions = {}, values = {}, baseStyle = {}, language = "tr" } = {}) {
+export function resolveSpecialPage(blocks, { definitions = {}, values = {}, baseStyle = {}, language = "tr", keepOptional = false } = {}) {
   const missing = new Set();
   // `widthPercent` is a node's share of a row; a separator's line length is `lengthPercent`
   // of its own box (in a row the line fills the box, which has the share).
   const resolveList = (list, inherited, prefix, inRow = false) => (list || []).map((block, index) => {
-    if (!specialPageBlockVisible(block, values)) return null;
+    const visible = specialPageBlockVisible(block, values);
+    // keepOptional (editable seeds): a hidden optional block stays in the tree, flagged, so it can reappear later.
+    if (!visible && !keepOptional) return null;
     const path = prefix ? `${prefix}-${index}` : String(index);
-    const box = { path, marginTopMm: finite(block.marginTopMm), marginBottomMm: finite(block.marginBottomMm), widthPercent: Number.isFinite(block.widthPercent) ? block.widthPercent : null };
+    const box = { path, marginTopMm: finite(block.marginTopMm), marginBottomMm: finite(block.marginBottomMm), widthPercent: Number.isFinite(block.widthPercent) ? block.widthPercent : null, ...(block.visibleWhen?.anyFilled ? { optionalFields: [...block.visibleWhen.anyFilled], hidden: !visible } : {}) };
     if (block.type === "image") return { ...box, type: "image", source: block.source, widthMm: block.widthMm, heightMm: block.heightMm, align: block.align || "center" };
     if (block.type === "spacer") return { ...box, type: "spacer", heightMm: finite(block.heightMm) };
     if (block.type === "separator") {
@@ -90,7 +93,7 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
       if (definition?.required && !String(raw).trim()) missing.add(block.field);
       const value = formatMetadataValue(raw, definition, language);
       const text = String(value).trim() ? `${block.prefix || ""}${value}${block.suffix || ""}` : block.fallback ?? `${block.prefix || ""}${block.suffix || ""}`;
-      return { ...box, type: "text", field: block.field, text, style };
+      return { ...box, type: "text", field: block.field, text, style, value: String(value), prefix: block.prefix || "", suffix: block.suffix || "", fallback: block.fallback ?? "" };
     }
     const value = resolvePlaceholders(block.value, definitions, values);
     value.missing.forEach((key) => missing.add(key));
@@ -117,6 +120,118 @@ export function specialPageHtml(nodes) {
     if (node.type === "group") return `<div class="thesis-layout-group" data-thesis-layout-direction="${node.direction}" ${attrs}>${specialPageHtml(node.blocks)}</div>`;
     return `<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${escapeHtml(node.text).replace(/\n/g, "<br>") || "&nbsp;"}</div>`;
   }).join("");
+}
+
+/* ---------------------------------------------------------------------------------------------
+ * Editable layouts (`layoutMode: "editable"`): the resolved tree is written once as ordinary
+ * editor HTML, after which the user owns the text. Formatting travels in the editor's own
+ * vocabulary (fmt-align-*, fmt-pt-N, <strong>/<em>) plus a few numeric data attributes drawn
+ * with unit-form attr() (data-gap in mm, data-space-before/after and data-pt/data-thickness in
+ * pt, data-length/data-width in %), all CSP-safe; the DOCX writer reads the same marks. Metadata values are "fields": inline chips
+ * that keep following thesis.values until the user deletes them.
+ * ------------------------------------------------------------------------------------------- */
+
+const PT_SIZES = new Set(FORMAT_POINT_VALUES);
+const alignToken = (align) => ({ center: "fmt-align-center", right: "fmt-align-right", justify: "fmt-align-justify" }[align] || "fmt-align-left");
+const fixed = (value, digits = 2) => String(Math.round(finite(value) * 10 ** digits) / 10 ** digits);
+
+/**
+ * One field chip: shown value (or the fallback), never typed over; deleted as a unit.
+ * prefix/suffix and the text transform stay on the chip so a refreshed value reads the same.
+ */
+export function thesisFieldChipHtml(field, value, { fallback = "", prefix = "", suffix = "", transform = "" } = {}) {
+  const shown = String(value ?? "").trim() ? value : fallback;
+  const attrs = [`data-field="${escapeHtml(field)}"`];
+  if (fallback) attrs.push(`data-fallback="${escapeHtml(fallback)}"`);
+  if (prefix) attrs.push(`data-prefix="${escapeHtml(prefix)}"`);
+  if (suffix) attrs.push(`data-suffix="${escapeHtml(suffix)}"`);
+  if (transform && transform !== "none") attrs.push(`data-transform="${escapeHtml(transform)}"`);
+  return `<span class="thesis-field" ${attrs.join(" ")} contenteditable="false">${escapeHtml(shown)}</span>`;
+}
+
+function seedInline(node, language) {
+  const style = node.style || {};
+  const transformed = (text) => transformThesisText(text, style, language);
+  let inner;
+  if (node.field) {
+    const fallback = transformed(node.fallback || "") || transformed(`${node.prefix}${node.suffix}`).trim();
+    const value = String(node.value ?? "").trim() ? transformed(`${node.prefix}${node.value}${node.suffix}`) : "";
+    // Prefix/suffix are part of the chip so an empty value falls back to the template text as one unit.
+    inner = thesisFieldChipHtml(node.field, value, { fallback, prefix: node.prefix, suffix: node.suffix, transform: style.textTransform });
+  } else {
+    inner = escapeHtml(transformed(node.text)).replace(/\n/g, "<br>");
+  }
+  if ((style.fontWeight || 400) >= 600) inner = `<strong>${inner}</strong>`;
+  if (style.italic) inner = `<em>${inner}</em>`;
+  if (style.decoration === "underline") inner = `<u>${inner}</u>`;
+  if (Number.isFinite(style.fontSizePt) && PT_SIZES.has(style.fontSizePt)) inner = `<span class="fmt-pt-${style.fontSizePt}">${inner}</span>`;
+  return inner || "<br>";
+}
+
+function seedParagraphAttrs(node) {
+  const attrs = [];
+  if (node.optionalFields?.length) attrs.push(`data-thesis-optional="${escapeHtml(node.optionalFields.join(","))}"`);
+  const style = node.style || {};
+  if (finite(style.spaceBeforePt) > 0) attrs.push(`data-space-before="${fixed(style.spaceBeforePt)}"`);
+  if (finite(style.spaceAfterPt) > 0) attrs.push(`data-space-after="${fixed(style.spaceAfterPt)}"`);
+  if (Number.isFinite(style.fontSizePt) && !PT_SIZES.has(style.fontSizePt)) attrs.push(`data-pt="${fixed(style.fontSizePt)}"`);
+  return attrs.length ? " " + attrs.join(" ") : "";
+}
+
+/**
+ * Editor HTML for a resolved tree (resolveSpecialPage with keepOptional). Text → <p> with the
+ * editor's alignment/size/emphasis marks; metadata → field chips; spacer → fixed-height gap
+ * paragraph; separator → <hr>; image → figure without caption; row group → borderless table.
+ */
+export function specialPageSeedHtml(nodes, { language = "tr" } = {}) {
+  const optional = (node) => (node.optionalFields?.length ? ` data-thesis-optional="${escapeHtml(node.optionalFields.join(","))}"` : "");
+  const gap = (heightMm) => (heightMm > 0 ? `<p class="thesis-gap" data-gap="${fixed(heightMm)}" contenteditable="false"></p>` : "");
+  return (nodes || []).map((node) => {
+    if (node.type === "image") {
+      const px = (mm) => Math.max(1, Math.round(mm * 96 / 25.4));
+      return `${gap(node.marginTopMm)}<figure class="academic-figure ${alignToken(node.align)}" data-kind="image"${optional(node)} contenteditable="false"><img src="${escapeHtml(node.source)}" width="${px(node.widthMm)}" height="${px(node.heightMm)}" alt=""></figure>${gap(node.marginBottomMm)}`;
+    }
+    if (node.type === "spacer") return gap(node.marginTopMm + node.heightMm + node.marginBottomMm);
+    if (node.type === "separator") return `${gap(node.marginTopMm)}<hr class="thesis-rule ${alignToken(node.align)}" data-length="${fixed(node.lengthPercent)}" data-thickness="${fixed(node.thicknessPt)}"${optional(node)}>${gap(node.marginBottomMm)}`;
+    if (node.type === "group") {
+      if (node.direction === "row") {
+        // Every cell after the first carries the column gap as its own left padding (CSS reads it per cell).
+        const cells = node.blocks.map((child, index) => `<td${child.widthPercent !== null ? ` data-width="${fixed(child.widthPercent)}"` : ""}${index && node.gapMm > 0 ? ` data-gap="${fixed(node.gapMm)}"` : ""}>${specialPageSeedHtml([{ ...child, marginTopMm: 0, marginBottomMm: 0, widthPercent: null }], { language }) || "<p><br></p>"}</td>`).join("");
+        return `${gap(node.marginTopMm)}<table class="thesis-layout-row" data-gap="${fixed(node.gapMm)}"${optional(node)}><tbody><tr>${cells}</tr></tbody></table>${gap(node.marginBottomMm)}`;
+      }
+      const children = node.blocks.map((child, index) => (index ? gap(node.gapMm) : "") + specialPageSeedHtml([child], { language })).join("");
+      return node.optionalFields?.length ? `${gap(node.marginTopMm)}<div class="thesis-optional"${optional(node)}>${children}</div>${gap(node.marginBottomMm)}` : `${gap(node.marginTopMm)}${children}${gap(node.marginBottomMm)}`;
+    }
+    return `<p class="${alignToken(node.style?.align)}"${seedParagraphAttrs(node)}>${seedInline(node, language)}</p>`;
+  }).join("");
+}
+
+/**
+ * Keep an editable layout in step with the metadata: field chips show the current value (or
+ * their fallback) and optional blocks hide while none of their fields is filled. String-based,
+ * idempotent, no DOM; `data-thesis-hidden` is presentation and is stripped before storage.
+ */
+export function refreshThesisFieldHtml(html, { definitions = {}, values = {}, language = "tr" } = {}) {
+  const value = (field) => {
+    const definition = definitions[field];
+    const raw = values[field] ?? definition?.defaultValue ?? "";
+    return formatMetadataValue(raw, definition, language);
+  };
+  return String(html || "")
+    .replace(/<span\b([^>]*\bclass=["'][^"']*\bthesis-field\b[^"']*["'][^>]*)>([\s\S]*?)<\/span>/gi, (full, attrs) => {
+      const field = attrs.match(/data-field=["']([A-Z][A-Z0-9_]*)["']/)?.[1];
+      if (!field) return full;
+      const read = (name) => attrs.match(new RegExp(`${name}=["']([^"']*)["']`))?.[1] ?? "";
+      const fallback = read("data-fallback");
+      const current = value(field);
+      const shown = String(current).trim() ? escapeHtml(transformThesisText(`${read("data-prefix")}${current}${read("data-suffix")}`, { textTransform: read("data-transform") || "none" }, language)) : fallback;
+      return `<span${attrs}>${shown}</span>`;
+    })
+    .replace(/<(p|div|table|figure|hr)\b([^>]*\bdata-thesis-optional=["']([^"']+)["'][^>]*)(\/?)>/gi, (full, tag, attrs, fields, close) => {
+      const shown = fields.split(",").some((field) => String(value(field.trim())).trim());
+      const cleaned = attrs.replace(/\sdata-thesis-hidden=["'][^"']*["']/gi, "");
+      return `<${tag}${cleaned}${shown ? "" : ' data-thesis-hidden="true"'}${close}>`;
+    });
 }
 
 /**

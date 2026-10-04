@@ -167,6 +167,7 @@ function runProps(style, language) {
 function textRun(text, style, context, inline = {}) {
   return new TextRun({
     ...runProps(style, context.language), text: transformThesisText(text, style, context.language),
+    ...(inline.sizePt ? { size: Math.round(inline.sizePt * 2) } : {}),
     ...(inline.bold ? { bold: true } : {}), ...(inline.italic ? { italics: true } : {}),
     underline: inline.underline || style.decoration === "underline" ? {} : undefined, strike: Boolean(inline.strike),
   });
@@ -221,6 +222,17 @@ function spacerParagraph(heightMm) {
   return new Paragraph({ spacing: { before: 0, after: 0, line: Math.max(1, twip(heightMm)), lineRule: LineRuleType.EXACT }, children: [new TextRun({ text: "", size: 2 })] });
 }
 
+/** Horizontal rule: a bottom-bordered empty paragraph, indented to `lengthPercent` of the text width. */
+function ruleParagraph({ lengthPercent = 100, thicknessPt = 0.75, align = "center", marginTopMm = 0, marginBottomMm = 0 }, widthMm) {
+  const free = Math.max(0, widthMm - widthMm * Math.min(100, lengthPercent) / 100);
+  const indent = align === "left" ? { left: 0, right: twip(free) } : align === "right" ? { left: twip(free), right: 0 } : { left: twip(free / 2), right: twip(free / 2) };
+  return new Paragraph({
+    spacing: { before: twip(marginTopMm), after: twip(marginBottomMm), line: 20, lineRule: LineRuleType.EXACT }, indent,
+    border: { bottom: { style: BorderStyle.SINGLE, size: Math.max(2, Math.round(thicknessPt * 8)), color: "000000", space: 0 } },
+    children: [new TextRun({ text: "", size: 2 })],
+  });
+}
+
 function imageBytes(src) {
   const match = String(src || "").match(/^data:image\/(png|jpe?g);base64,(.+)$/i);
   if (!match) return null;
@@ -247,13 +259,7 @@ function specialPageDocx(nodes, context, widthMm) {
     } else if (node.type === "spacer") {
       gap(node.marginTopMm); gap(node.heightMm); gap(node.marginBottomMm);
     } else if (node.type === "separator") {
-      const free = Math.max(0, widthMm - widthMm * Math.min(100, node.lengthPercent) / 100);
-      const indent = node.align === "left" ? { left: 0, right: twip(free) } : node.align === "right" ? { left: twip(free), right: 0 } : { left: twip(free / 2), right: twip(free / 2) };
-      out.push(new Paragraph({
-        spacing: { before: twip(node.marginTopMm), after: twip(node.marginBottomMm), line: 20, lineRule: LineRuleType.EXACT }, indent,
-        border: { bottom: { style: BorderStyle.SINGLE, size: Math.max(2, Math.round(node.thicknessPt * 8)), color: "000000", space: 0 } },
-        children: [new TextRun({ text: "", size: 2 })],
-      }));
+      out.push(ruleParagraph(node, widthMm));
     } else if (node.direction === "row") {
       gap(node.marginTopMm);
       // Same widths as the editor's flex row; each gap is the right margin of the cell before it.
@@ -311,6 +317,28 @@ function listParagraphs(block, section, context, level = 0) {
   return out;
 }
 
+/** Borderless row of a seeded layout (`table.thesis-layout-row`): fixed columns, cell content as paragraphs. */
+function layoutRowDocx(block, section, context, widthMm) {
+  const row = (block.rows || [])[0] || [];
+  if (!row.length) return [];
+  // Same geometry as the editor: the group's gap sits between columns, shares split what is left.
+  const gapMm = Math.max(0, block.gapMm || 0);
+  const inner = Math.max(0, widthMm - gapMm * (row.length - 1));
+  const declared = row.map((cell) => (cell.widthPercent > 0 ? inner * cell.widthPercent / 100 : null));
+  const fixedTotal = declared.reduce((sum, value) => sum + (value || 0), 0);
+  const flexible = declared.filter((value) => value === null).length;
+  const share = flexible ? Math.max(0, inner - fixedTotal) / flexible : 0;
+  const contentWidths = declared.map((value) => (value === null ? share : value));
+  const widths = contentWidths.map((value, index) => value + (index < row.length - 1 ? gapMm : 0));
+  const { body } = section.rules;
+  const cells = row.map((cell, index) => new TableCell({
+    width: { size: twip(widths[index]), type: WidthType.DXA }, margins: { top: 0, bottom: 0, left: 0, right: index < row.length - 1 ? twip(gapMm) : 0 },
+    borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER },
+    children: cell.blocks?.length ? blocksDocx(cell.blocks, section, context, contentWidths[index]) : [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, align: cell.align || body.align, firstLineIndentMm: 0 }, context)],
+  }));
+  return [new Table({ width: { size: twip(widthMm), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: widths.map((value) => twip(value)), borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER }, rows: [new TableRow({ cantSplit: true, children: cells })] })];
+}
+
 function tableDocx(block, section, context) {
   const { body, tables } = section.rules;
   const cellStyle = tables.cellStyle || {};
@@ -352,8 +380,20 @@ function docxChildren(section, context) {
     return children;
   }
   if (section.layout) children.push(...specialPageDocx(section.layout, context, widthMm));
-  for (const block of asBlocks(section)) {
-    if (block.type === "heading") {
+  children.push(...blocksDocx(asBlocks(section), section, context, widthMm));
+  return children.length ? children : [docxParagraph([], body, context)];
+}
+
+/** Parsed editor blocks → Word paragraphs/tables; reused for the cells of seeded layout rows. */
+function blocksDocx(blocks, section, context, widthMm) {
+  const { body, headings, figures } = section.rules;
+  const children = [];
+  for (const block of blocks) {
+    if (block.type === "gap") {
+      if (block.heightMm > 0) children.push(spacerParagraph(block.heightMm));
+    } else if (block.type === "rule") {
+      children.push(ruleParagraph(block, widthMm));
+    } else if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
       const text = `${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`;
       const level = HeadingLevel[`HEADING_${block.level}`] || HeadingLevel.HEADING_1;
@@ -364,12 +404,13 @@ function docxChildren(section, context) {
       // ended by Enter have no paragraph spacing in the editor; <p> paragraphs do.
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
       const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
-      const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), { ...style, ...spacing, align: align || style.align }, context));
+      // Seeded layouts may carry their own paragraph spacing/size (data-space-*, data-pt).
+      const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : { ...(block.spaceBeforePt !== undefined ? { spaceBeforePt: block.spaceBeforePt } : {}), ...(block.spaceAfterPt !== undefined ? { spaceAfterPt: block.spaceAfterPt } : {}) };
+      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), { ...style, ...spacing, ...(block.sizePt ? { fontSizePt: block.sizePt } : {}), align: align || style.align }, context));
     } else if (block.type === "list") {
       children.push(...listParagraphs(block, section, context));
     } else if (block.type === "table") {
-      children.push(...tableDocx(block, section, context));
+      children.push(...(/\bthesis-layout-row\b/.test(block.className || "") ? layoutRowDocx(block, section, context, widthMm) : tableDocx(block, section, context)));
     } else if (block.type === "figure") {
       const caption = block.caption ? docxParagraph(plainRuns(captionText(figures.label, block)), { ...captionStyle(figures, block, context), keepWithNext: figures.position === "above" }, context) : null;
       if (caption && figures.position === "above") children.push(caption);
@@ -386,7 +427,7 @@ function docxChildren(section, context) {
       children.push(docxParagraph(plainRuns(block.text || ""), { ...body, firstLineIndentMm: 0 }, context));
     }
   }
-  return children.length ? children : [docxParagraph([], body, context)];
+  return children;
 }
 
 /**

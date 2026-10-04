@@ -269,6 +269,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           </div> : null}
         </div>
         <button type="button" onClick={() => setDetailsOpen(true)} className={toolClass}>Kaynakça</button>
+        {activeSection?.editableLayout && !activeSection.seeded ? <button type="button" title="Bu sayfayı şablonun özgün düzenine geri döndürür; yazdıklarınız silinir." onClick={() => { if (window.confirm(`"${activeSection.title}" sayfası şablonun özgün düzenine dönecek. Yazdıklarınız silinsin mi?`)) onTextChange(activeSection, "", "reset"); }} className={toolClass}>Şablona sıfırla</button> : null}
         <span className="max-w-48 truncate text-xs text-neutral-500" aria-live="polite">{activeSection ? `Düzenlenen: ${activeSection.title}` : "Biçim için düzenlenebilir bir bölüme tıklayın"}</span>
         <span className="ml-auto text-xs text-neutral-500">{template.status === "demo" ? "DEMO · resmî şablon değildir" : template.status === "generic" ? "Genel taslak" : template.universityName}</span>
       </div>

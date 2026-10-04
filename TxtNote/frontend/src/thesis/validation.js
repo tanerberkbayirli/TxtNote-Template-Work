@@ -174,6 +174,7 @@ export function validateThesisTemplate(template) {
       if (section.type === "mainContent" && section.mode !== undefined && section.mode !== "editable") errors.push(`section ${section.id}: mainContent düzenlenebilir olmalı`);
       if (section.pageBreakBefore !== undefined && typeof section.pageBreakBefore !== "boolean") errors.push(`section ${section.id}.pageBreakBefore geçersiz`);
       if (section.standalone !== undefined && (typeof section.standalone !== "boolean" || !Array.isArray(section.blocks))) errors.push(`section ${section.id}.standalone yalnız blocks ile ve boolean olmalı`);
+      if (section.standalone === false && section.layoutMode === "editable") errors.push(`section ${section.id}: düzenlenebilir düzen kendi sayfasında olmalı (standalone false desteklenmez)`);
       if (section.tocEntry !== undefined && !["headings", "title", "none"].includes(section.tocEntry)) errors.push(`section ${section.id}.tocEntry geçersiz`);
       if (section.generatedIndex !== undefined) {
         if (section.mode !== "generated") errors.push(`section ${section.id}.generatedIndex: mode generated olmalı`);
@@ -183,8 +184,11 @@ export function validateThesisTemplate(template) {
         const condition = section.visibleWhen;
         if (!object(condition) || !text(condition.field) || Object.keys(condition).some((key) => !["field", "equals", "notEquals", "in"].includes(key)) || ["equals", "notEquals", "in"].filter((key) => Object.hasOwn(condition, key)).length !== 1 || (condition.in !== undefined && !Array.isArray(condition.in)) || [condition.equals, condition.notEquals, ...(condition.in || [])].some((v) => v !== undefined && !["string", "number", "boolean"].includes(typeof v))) errors.push(`section ${section.id}.visibleWhen geçersiz`);
       }
+      if (section.layoutMode !== undefined && !["static", "editable"].includes(section.layoutMode)) errors.push(`section ${section.id}.layoutMode geçersiz`);
+      if (section.layoutMode === "editable" && !Array.isArray(section.blocks)) errors.push(`section ${section.id}.layoutMode editable yalnız blocks ile`);
       if (section.blocks !== undefined) {
-        if ((section.mode !== undefined && section.mode !== "static") || section.editable === true) errors.push(`section ${section.id}: özel sayfa blocks düzenlenemez; mode static olmalı`);
+        const editableLayout = section.layoutMode === "editable";
+        if (editableLayout ? (section.mode !== undefined && section.mode !== "editable") || section.editable === false : (section.mode !== undefined && section.mode !== "static") || section.editable === true) errors.push(editableLayout ? `section ${section.id}: layoutMode editable ile mode editable olmalı` : `section ${section.id}: özel sayfa blocks düzenlenemez; mode static olmalı`);
         const baseStyle = { ...template.typography?.body, ...section.overrides?.body };
         errors.push(...validateSpecialPageBlocks(section.blocks, { path: `section ${section.id}.blocks`, placeholders: template.placeholders || {}, baseStyle, validateStyle: validateTextStyle }));
       }

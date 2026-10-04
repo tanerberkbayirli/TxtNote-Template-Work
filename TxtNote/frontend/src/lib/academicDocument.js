@@ -128,6 +128,28 @@ function headingLevelFromNode(node) {
   return 0;
 }
 
+/** Point size an element asks for: fmt-pt-N (format menu) or data-pt="Npt" (seeded layouts). */
+function pointSizeOf(node) {
+  const token = [...(node.classList || [])].find((name) => /^fmt-pt-\d+$/.test(name));
+  const value = token ? Number(token.slice(7)) : parseFloat(node.getAttribute?.("data-pt") || "");
+  return Number.isFinite(value) && value > 0 ? value : undefined;
+}
+
+/** Per-paragraph spacing written by seeded layouts (`data-space-before="6pt"`). */
+function paragraphSpacingOf(node) {
+  const read = (name) => { const value = parseFloat(node.getAttribute?.(name) || ""); return Number.isFinite(value) && value >= 0 ? value : undefined; };
+  const before = read("data-space-before"), after = read("data-space-after"), sizePt = pointSizeOf(node);
+  return { ...(before !== undefined ? { spaceBeforePt: before } : {}), ...(after !== undefined ? { spaceAfterPt: after } : {}), ...(sizePt ? { sizePt } : {}) };
+}
+
+/** Fixed-height gap and horizontal rule paragraphs of seeded layouts; null for anything else. */
+function layoutBlockOf(node) {
+  if (node.getAttribute?.("data-thesis-hidden") === "true") return { type: "hidden" };
+  if (node.tagName === "P" && node.classList?.contains("thesis-gap")) return { type: "gap", heightMm: Math.max(0, parseFloat(node.getAttribute("data-gap") || "") || 0) };
+  if (node.tagName === "HR") return node.classList?.contains("thesis-rule") ? { type: "rule", lengthPercent: Math.min(100, parseFloat(node.getAttribute("data-length") || "") || 100), thicknessPt: parseFloat(node.getAttribute("data-thickness") || "") || 0.75, align: alignOf(node) } : { type: "hidden" };
+  return null;
+}
+
 function runsFromNode(node) {
   if (!node) return [];
   if (node.nodeType === 3) {
@@ -172,6 +194,7 @@ function runsFromNode(node) {
     italic: Boolean(node.classList?.contains("fmt-italic") || /^(I|EM)$/.test(node.tagName)),
     underline: Boolean(node.classList?.contains("fmt-underline") || node.tagName === "U"),
     strike: Boolean(node.classList?.contains("fmt-strike") || /^(S|DEL)$/.test(node.tagName)),
+    sizePt: pointSizeOf(node),
   };
   return [...node.childNodes].flatMap((child) => {
     const inner = runsFromNode(child);
@@ -179,6 +202,7 @@ function runsFromNode(node) {
       if (run.type !== "text") return run;
       return {
         ...run,
+        ...(run.sizePt || style.sizePt ? { sizePt: run.sizePt || style.sizePt } : {}),
         bold: run.bold || style.bold,
         italic: run.italic || style.italic,
         underline: run.underline || style.underline,
@@ -222,11 +246,15 @@ function tableBlock(node) {
       rowspan: cell.rowSpan || 1,
       align: alignOf(cell),
       runs: runsFromNode(cell),
+      ...(parseFloat(cell.getAttribute("data-width") || "") > 0 ? { widthPercent: parseFloat(cell.getAttribute("data-width")) } : {}),
+      blocks: cell.querySelector("p, div, figure, table, hr") ? parseNodeList(cell.childNodes) : null,
     })),
   );
   return {
     type: "table",
     id: node.getAttribute("data-academic-id") || newId("tbl"),
+    className: node.getAttribute("class") || "",
+    ...(parseFloat(node.getAttribute("data-gap") || "") > 0 ? { gapMm: parseFloat(node.getAttribute("data-gap")) } : {}),
     caption: stripCaptionNumber(stripTags(captionEl?.textContent)),
     rows,
   };
@@ -259,6 +287,8 @@ function parseNodeList(nodes) {
     }
     if (node.nodeType !== 1) continue;
     const tag = node.tagName;
+    const layoutBlock = layoutBlockOf(node);
+    if (layoutBlock) { if (layoutBlock.type !== "hidden") blocks.push(layoutBlock); continue; }
     if (node.classList.contains("academic-page-break") || hasFlag(node.outerHTML, "data-academic-page-break")) {
       blocks.push({ type: "pageBreak" });
       continue;
@@ -323,7 +353,7 @@ function parseNodeList(nodes) {
         continue;
       }
       const runs = runsFromNode(node);
-      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), runs });
+      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), runs, ...paragraphSpacingOf(node) });
     }
   }
   return blocks;
@@ -364,6 +394,8 @@ function parseLineFlow(nodes, align) {
   for (const node of nodes) {
     if (node.nodeType === 3) { add(runsFromNode(node)); continue; }
     if (node.nodeType !== 1) continue;
+    const layoutBlock = layoutBlockOf(node);
+    if (layoutBlock) { flush(false); if (layoutBlock.type !== "hidden") blocks.push(layoutBlock); continue; }
     if (!isFlowBlock(node) && !node.querySelector("h1,h2,h3,h4,h5,h6,p,div,ul,ol,table,figure,pre")) { add(runsFromNode(node)); continue; }
     flush(false);
     const plainContainer = /^(DIV|SECTION|SPAN)$/.test(node.tagName) && !node.matches(FLOW_BLOCK_CLASSES.join(","));
@@ -377,7 +409,7 @@ function parseLineFlow(nodes, align) {
       // A trailing <br> draws no extra line; an empty <p></p> draws nothing at all.
       const drawsLine = paragraphRuns.some((run) => run.type === "break") || node.textContent.length > 0;
       while (paragraphRuns.at(-1)?.type === "break") paragraphRuns.pop();
-      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, runs: paragraphRuns });
+      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, runs: paragraphRuns, ...paragraphSpacingOf(node) });
     } else {
       blocks.push(...parseNodeList([node]));
     }
@@ -402,13 +434,14 @@ function runsFromHtmlFragment(inner) {
         const index = stack.findLastIndex((entry) => entry.tag === tag);
         if (index >= 0) stack.splice(index);
       } else if (!/^(img|hr|input)$/.test(tag) && !match[0].endsWith("/>")) {
-        stack.push({ tag, bold: /^(b|strong)$/.test(tag) || /\bfmt-bold\b/.test(attrs), italic: /^(i|em)$/.test(tag) || /\bfmt-italic\b/.test(attrs), underline: tag === "u" || /\bfmt-underline\b/.test(attrs), strike: /^(s|strike|del)$/.test(tag) || /\bfmt-strike\b/.test(attrs) });
+        const sizeToken = attrs.match(/\bfmt-pt-(\d+)\b/)?.[1] || attrs.match(/data-pt=["']([\d.]+)/)?.[1];
+        stack.push({ tag, bold: /^(b|strong)$/.test(tag) || /\bfmt-bold\b/.test(attrs), italic: /^(i|em)$/.test(tag) || /\bfmt-italic\b/.test(attrs), underline: tag === "u" || /\bfmt-underline\b/.test(attrs), strike: /^(s|strike|del)$/.test(tag) || /\bfmt-strike\b/.test(attrs), sizePt: sizeToken ? Number(sizeToken) : undefined });
       }
     } else {
       const value = decodeHtml(match[7] || "").replace(/\u200B/g, "");
       value.split("\n").forEach((part, index) => {
         if (index) runs.push({ type: "break" });
-        if (part) runs.push({ type: "text", text: part, ...Object.fromEntries(["bold", "italic", "underline", "strike"].map((key) => [key, stack.some((entry) => entry[key])])) });
+        if (part) runs.push({ type: "text", text: part, ...Object.fromEntries(["bold", "italic", "underline", "strike"].map((key) => [key, stack.some((entry) => entry[key])])), ...(stack.findLast((entry) => entry.sizePt)?.sizePt ? { sizePt: stack.findLast((entry) => entry.sizePt).sizePt } : {}) });
       });
     }
   }
@@ -419,12 +452,20 @@ function parseWithRegex(html) {
   const blocks = [];
   const source = String(html ?? "");
   const re =
-    /<(h[1-6]|pre|figure|table|nav|blockquote|div|span|ul|ol|p)([^>]*)>([\s\S]*?)<\/\1>/gi;
+    /<(h[1-6]|pre|figure|table|nav|blockquote|div|span|ul|ol|p)([^>]*)>([\s\S]*?)<\/\1>|<hr\b([^>]*)\/?>/gi;
   let match;
   while ((match = re.exec(source))) {
+    if (match[4] !== undefined) {
+      const hrAttr = match[4];
+      if (/data-thesis-hidden="true"/.test(hrAttr) || !/\bthesis-rule\b/.test(hrAttr)) continue;
+      blocks.push({ type: "rule", lengthPercent: Math.min(100, parseFloat(attr(hrAttr, "data-length")) || 100), thicknessPt: parseFloat(attr(hrAttr, "data-thickness")) || 0.75, align: /fmt-align-left/.test(hrAttr) ? "left" : /fmt-align-right/.test(hrAttr) ? "right" : "center" });
+      continue;
+    }
     const tag = match[1].toLowerCase();
     const rawAttr = match[2] || "";
     const inner = match[3] || "";
+    if (/data-thesis-hidden="true"/.test(rawAttr)) continue;
+    if (tag === "p" && /\bthesis-gap\b/.test(rawAttr)) { blocks.push({ type: "gap", heightMm: Math.max(0, parseFloat(attr(rawAttr, "data-gap")) || 0) }); continue; }
     if (tag === "div" && /<(?:h[1-6]|p|table|figure|ul|ol)\b/i.test(inner)) { blocks.push(...parseWithRegex(inner)); continue; }
     if (/data-academic-page-break/i.test(rawAttr) || /academic-page-break/.test(rawAttr)) {
       blocks.push({ type: "pageBreak" });
@@ -490,16 +531,21 @@ function parseWithRegex(html) {
     }
     if (tag === "table") {
       const rows = [...inner.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)].map((row) =>
-        [...row[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((cell) => ({
-          text: stripTags(cell[1]),
+        [...row[1].matchAll(/<t[dh]([^>]*)>([\s\S]*?)<\/t[dh]>/gi)].map((cell) => ({
+          text: stripTags(cell[2]),
           header: /<th/i.test(cell[0]),
           colspan: 1,
           rowspan: 1,
+          runs: runsFromHtmlFragment(cell[2]),
+          ...(parseFloat(attr(cell[1], "data-width")) > 0 ? { widthPercent: parseFloat(attr(cell[1], "data-width")) } : {}),
+          blocks: /<(p|div|figure|table|hr)\b/i.test(cell[2]) ? parseWithRegex(cell[2]) : null,
         })),
       );
       blocks.push({
         type: "table",
         id: attr(rawAttr, "data-academic-id") || newId("tbl"),
+        className: attr(rawAttr, "class") || "",
+        ...(parseFloat(attr(rawAttr, "data-gap")) > 0 ? { gapMm: parseFloat(attr(rawAttr, "data-gap")) } : {}),
         caption: stripCaptionNumber(stripTags(inner.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i)?.[1] || "")),
         rows,
       });
@@ -507,11 +553,16 @@ function parseWithRegex(html) {
     }
     if (tag === "p" || tag === "blockquote") {
       const runs = runsFromHtmlFragment(inner);
+      const spacingOf = (name) => { const value = parseFloat(attr(rawAttr, name)); return Number.isFinite(value) && value >= 0 ? value : undefined; };
+      const sizePt = parseFloat(attr(rawAttr, "data-pt"));
       blocks.push({
         type: tag === "blockquote" ? "quote" : "paragraph",
         align: /fmt-align-center/.test(rawAttr) ? "center" : /fmt-align-right/.test(rawAttr) ? "right" : /fmt-align-justify/.test(rawAttr) ? "justify" : /fmt-align-left/.test(rawAttr) ? "left" : undefined,
         line: false,
         runs: runs.length ? runs : [{ type: "text", text: stripTags(inner) }],
+        ...(spacingOf("data-space-before") !== undefined ? { spaceBeforePt: spacingOf("data-space-before") } : {}),
+        ...(spacingOf("data-space-after") !== undefined ? { spaceAfterPt: spacingOf("data-space-after") } : {}),
+        ...(sizePt > 0 ? { sizePt } : {}),
       });
     }
   }

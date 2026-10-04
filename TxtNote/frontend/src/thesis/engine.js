@@ -1,7 +1,8 @@
 import { migrateThesisTemplate, validateThesisContent, validateThesisTemplate } from "./validation.js";
-import { isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionMode } from "./document.js";
+import { isEditableLayoutSection, isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionMode } from "./document.js";
+import { FORMAT_POINT_VALUES } from "../config/format.js";
 import { styleNonceAttribute, withoutInlineStyleAttributes } from "../lib/cspStyles.js";
-import { flattenSpecialPage, isSpecialPageSection, resolveSpecialPage, specialPageCss, specialPageHtml } from "./specialPages.js";
+import { flattenSpecialPage, isSpecialPageSection, refreshThesisFieldHtml, resolveSpecialPage, specialPageCss, specialPageHtml, specialPageSeedHtml } from "./specialPages.js";
 import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesisPresentationHtml } from "./generatedIndex.js";
 
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
@@ -111,7 +112,7 @@ function sharedPageSignature(page) {
  * Covers and block-layout special pages never share a page flow, unless a block
  * layout declares `standalone: false` (lines above/below an editable section).
  */
-const standalonePage = (section) => section.group === "cover" || (Boolean(section.specialPage) && section.standalone !== false);
+const standalonePage = (section) => section.group === "cover" || (Boolean(section.specialPage) && section.standalone !== false) || Boolean(section.editableLayout);
 
 export function groupThesisSections(sections) {
   const groups = [];
@@ -194,16 +195,22 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const source = thesisSourceHtml(thesisSectionContent(section, thesis, mainContent));
     const fixed = resolvePlaceholders(section.content || "", template.placeholders, values);
     const fixedHtml = fixed.text ? fixed.text.split("\n").map((line) => `<p class="thesis-fixed">${escapeHtml(line) || "&nbsp;"}</p>`).join("") : "";
-    const specialPage = isSpecialPageSection(section);
-    const layout = specialPage ? resolveSpecialPage(section.blocks, { definitions: template.placeholders, values, baseStyle: rules.body, language: template.language }) : null;
+    // An editable layout keeps its blocks as the seed: written as editor HTML the first time
+    // (no stored text yet), owned by the user afterwards; field chips still follow the metadata.
+    const editableLayout = isEditableLayoutSection(section);
+    const specialPage = isSpecialPageSection(section) && !editableLayout;
+    const layout = isSpecialPageSection(section) ? resolveSpecialPage(section.blocks, { definitions: template.placeholders, values, baseStyle: rules.body, language: template.language, keepOptional: editableLayout }) : null;
+    const seeded = editableLayout && !source.trim();
+    const editableHtml = editableLayout ? refreshThesisFieldHtml(seeded ? specialPageSeedHtml(layout.blocks, { language: template.language }) : source, { definitions: template.placeholders, values, language: template.language }) : source;
     // tocEntry: "headings" (default) lists the section's headings, "title" also its title, "none" nothing.
     const tocEntry = ["title", "none"].includes(section.tocEntry) ? section.tocEntry : "headings";
-    const sectionHeading = showsSectionTitle(section) ? `<h1 data-unnumbered="true"${tocEntry === "title" ? ' data-thesis-toc="title"' : ""}>${escapeHtml(section.title)}</h1>` : "";
+    // A seeded layout carries its own title line; the section title is printed only when asked for.
+    const sectionHeading = (editableLayout ? section.showTitle === true : showsSectionTitle(section)) ? `<h1 data-unnumbered="true"${tocEntry === "title" ? ' data-thesis-toc="title"' : ""}>${escapeHtml(section.title)}</h1>` : "";
     const bibliographyHtml = section.type === "bibliography" && bibliographyItems.some((item) => String(item).trim())
       ? `<ul class="thesis-bibliography">${bibliographyItems.filter((item) => String(item).trim()).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "";
-    const prefixHtml = layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}`;
-    const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${bibliographyHtml}`;
-    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || null, layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
+    const prefixHtml = specialPage ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}`;
+    const html = mode === "generated" ? "" : `${prefixHtml}${editableHtml || ""}${bibliographyHtml}`;
+    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, editableLayout, seeded, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || (section.blocks?.length && !editableLayout)), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml, layout: specialPage ? layout.blocks : null, layoutBlocks: specialPage ? flattenSpecialPage(layout.blocks) : null, derivedLayout: specialPage && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
   }
   for (const section of sections) {
     const definition = template.sections.find((item) => item.id === section.id);
@@ -249,6 +256,19 @@ export function thesisSectionCss(section) {
     `${scope} .thesis-bibliography{${styleCss(section.rules.bibliography.style)}padding-left:${section.rules.bibliography.hangingIndentMm || 0}mm;}`,
     `${scope} .thesis-body [data-thesis-number]::before{content:attr(data-thesis-number) " ";}`,
     `${scope} .thesis-fixed{white-space:pre-wrap;}`,
+    // Editor formatting marks inside thesis bodies (right-click menu and editable layouts); the DOCX writer reads the same marks.
+    `${scope} .thesis-body .fmt-align-justify{text-align:justify;}`,
+    ...FORMAT_POINT_VALUES.map((value) => `${scope} .thesis-body .fmt-pt-${value}{font-size:${value}pt;}`),
+    `${scope} .thesis-body [data-pt]{font-size:attr(data-pt pt);}`,
+    `${scope} .thesis-body p[data-space-before]{margin-top:attr(data-space-before pt);}${scope} .thesis-body p[data-space-after]{margin-bottom:attr(data-space-after pt);}`,
+    `${scope} .thesis-body p.thesis-gap{height:attr(data-gap mm);margin:0;padding:0;line-height:0;font-size:0;min-height:0;text-indent:0;}`,
+    `${scope} .thesis-body hr.thesis-rule{height:0;border:0;border-top:attr(data-thickness pt) solid currentColor;width:attr(data-length %);margin:0 auto;}${scope} .thesis-body hr.thesis-rule.fmt-align-left{margin-left:0;}${scope} .thesis-body hr.thesis-rule.fmt-align-right{margin-right:0;}`,
+    // Row group: fixed columns separated by the group's gap (border-spacing), outer edges flush with the text block.
+    `${scope} .thesis-body table.thesis-layout-row{border-collapse:collapse;table-layout:fixed;width:100%;margin:0;}${scope} .thesis-body table.thesis-layout-row td{border:0;padding:0;vertical-align:top;width:attr(data-width %);}`,
+    // Seeded images sit in a caption-less figure aligned by its fmt-align class.
+    `${scope} .thesis-body figure.academic-figure{margin:0;text-indent:0;}${scope} .thesis-body figure.academic-figure.fmt-align-center{text-align:center;}${scope} .thesis-body figure.academic-figure.fmt-align-right{text-align:right;}${scope} .thesis-body figure.academic-figure.fmt-align-left{text-align:left;}${scope} .thesis-body figure.academic-figure > img{display:inline-block;vertical-align:top;}`,
+    `${scope} .thesis-body [data-thesis-hidden="true"]{display:none;}`,
+    `${scope} .thesis-body .thesis-field{white-space:pre-wrap;}${paperScope}.thesis-editor-surface .thesis-field:hover{outline:1px dashed #8a8a8a;outline-offset:1px;}`,
     `${scope} .thesis-layout-text{white-space:normal;overflow-wrap:break-word;}`,
     `${scope} .thesis-layout-spacer{display:block;max-width:100%;}`,
     ...specialPageCss(scope, section.layout, styleCss),

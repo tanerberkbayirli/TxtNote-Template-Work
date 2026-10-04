@@ -171,9 +171,14 @@ textarea::selection,
 
   .fmt-align-left,
   .fmt-align-center,
-  .fmt-align-right {
+  .fmt-align-right,
+  .fmt-align-justify {
     display: block;
     width: 100%;
+  }
+
+  .fmt-align-justify {
+    text-align: justify;
   }
 
   .fmt-align-left {
@@ -1427,6 +1432,19 @@ html.theme-black .code-block .hljs-symbol {
   color: #111;
   background: #fff;
   min-width: 1.6em;
+}
+
+/* Seeded layout rows (thesis cover/jury pages): borderless columns, no cell padding. */
+.rich-text-body table.thesis-layout-row,
+.rich-text-body table.thesis-layout-row td {
+  border: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  min-width: 0;
+}
+
+.rich-text-body table.thesis-layout-row td[data-gap] {
+  padding-left: attr(data-gap mm) !important;
 }
 
 .academic-document .document-title,

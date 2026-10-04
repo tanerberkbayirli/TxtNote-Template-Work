@@ -58,7 +58,13 @@ export const THESIS_SECTION_MODES = Object.freeze(["editable", "static", "genera
 /** Only used for templates that predate `mode`; explicit `mode` always wins. */
 const LEGACY_GENERATED_TYPES = new Set(["tableOfContents", "listOfTables", "listOfFigures"]);
 
+/** A block layout the user may edit after it is seeded (see specialPageSeedHtml). */
+export function isEditableLayoutSection(section) {
+  return Array.isArray(section?.blocks) && section?.layoutMode === "editable";
+}
+
 export function thesisSectionMode(section) {
+  if (isEditableLayoutSection(section)) return "editable";
   if (THESIS_SECTION_MODES.includes(section?.mode)) return section.mode;
   if (section?.editable === true) return "editable";
   if (LEGACY_GENERATED_TYPES.has(section?.type)) return "generated";
