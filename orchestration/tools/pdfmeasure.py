@@ -48,16 +48,21 @@ def page_size_mm(page):
 
 
 def spans(page):
-    """Every non-blank span with its geometry (mm) and font facts."""
+    """Non-blank spans; geometry covers visible characters, not trailing PDF spaces."""
     out = []
-    for block in page.get_text("dict")["blocks"]:
+    for block in page.get_text("rawdict")["blocks"]:
         for line in block.get("lines", []):
             for s in line["spans"]:
-                if not s["text"].strip():
+                text = ''.join(char['c'] for char in s['chars'])
+                visible = [char for char in s['chars'] if char['c'].strip()]
+                if not visible:
                     continue
-                x0, y0, x1, y1 = s["bbox"]
+                x0 = min(char['bbox'][0] for char in visible)
+                y0 = min(char['bbox'][1] for char in visible)
+                x1 = max(char['bbox'][2] for char in visible)
+                y1 = max(char['bbox'][3] for char in visible)
                 out.append({
-                    "text": s["text"], "font": s["font"], "size": round(s["size"], 3),
+                    "text": text, "font": s["font"], "size": round(s["size"], 3),
                     "bold": bool(s["flags"] & 16) or "Bold" in s["font"],
                     "italic": bool(s["flags"] & 2) or "Italic" in s["font"] or "Oblique" in s["font"],
                     "x0": x0 * PT2MM, "x1": x1 * PT2MM, "top": y0 * PT2MM, "bottom": y1 * PT2MM,

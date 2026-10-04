@@ -1,11 +1,36 @@
 """Minimal unit tests for the comparison / tolerance logic: python -m unittest orchestration/tools/test_conformance.py"""
 import json, os, sys, tempfile, unittest, zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from conformance import compare, open_end, rle, run_check
-from pdfmeasure import open_pdf, MM2PT
+from conformance import compare, drawn_font_names, open_end, rle, run_check
+from pdfmeasure import open_pdf, MM2PT, spans
 
 
 class CompareTests(unittest.TestCase):
+    def test_visible_geometry_ignores_outer_spaces_but_preserves_internal_spacing(self):
+        import pymupdf
+        doc = pymupdf.open()
+        page = doc.new_page()
+        page.insert_text((100, 100), '  visible text   ', fontsize=12)
+        row = spans(page)[0]
+        leading = pymupdf.get_text_length('  ', fontsize=12)
+        width = pymupdf.get_text_length('visible text', fontsize=12)
+        self.assertAlmostEqual(row['x0'] * MM2PT, 100 + leading, places=3)
+        self.assertAlmostEqual((row['x1'] - row['x0']) * MM2PT, width, places=3)
+        self.assertEqual(row['text'], '  visible text   ')
+        doc.close()
+
+    def test_font_text_scope_retains_wrong_fonts_in_selected_prose(self):
+        class Fixture:
+            def pages(self, selector):
+                return [1]
+            def lines(self, page, with_page_numbers):
+                return [{'text': 'Prose evidence', 'spans': [{'font': 'ABCDEF+WrongFont'}]},
+                        {'text': '𝐸=𝑚𝑐', 'spans': [{'font': 'CambriaMath'}]}]
+        self.assertEqual(drawn_font_names(Fixture(), {}), {'WrongFont', 'CambriaMath'})
+        self.assertEqual(drawn_font_names(Fixture(), {'regex': '[A-Za-z]{2,}'}), {'WrongFont'})
+        self.assertEqual(drawn_font_names(Fixture(), {'ignore': '^Prose'}), {'CambriaMath'})
+        self.assertEqual(drawn_font_names(Fixture(), {'regex': '^Absent$'}), set())
+
     def test_within_tolerance(self):
         self.assertEqual(compare(35.0, 35.4, 0.5), (True, 0.4))
 

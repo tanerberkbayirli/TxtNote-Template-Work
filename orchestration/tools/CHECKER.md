@@ -25,6 +25,17 @@ prints one summary line per target and exits 1 if any target has a FAIL or error
 Regexes are case-sensitive; page selectors: `"all"`, `[a,b]`, `{"page":n}` (negative = from end), `{"label":"arabic|roman|none"}`,
 `{"find":"<regex>","nth":0,"within":<selector>}` (first page with a matching line).
 
+Text extents use the bounds of non-whitespace characters. Word PDF exports can carry a trailing blank beyond a justified line or a centred label; that blank is not visible text geometry. Internal spaces and all visible characters retain their measured positions; tolerances are unchanged.
+`fonts` accepts `params.regex` and `params.ignore` to scope **text lines**, retaining every font identity drawn in selected lines. For example, prose and mathematical glyphs can be checked separately when their source requirements differ. No selected font means FAIL, and font scopes must be documented in the target evidence; this does not authorize substituting a required face.
+
+Read-only inspection reuses the same measurement implementation:
+```
+python orchestration/tools/conformance.py inspect --pdf output.pdf --extrema x1
+python orchestration/tools/conformance.py inspect-docx --docx source.docx --regex "cover|approval"
+python orchestration/tools/conformance.py inspect-docx --docx source.docx --styles
+```
+`inspect --extrema` reports the minimum/maximum matching visible line geometry over all pages (or `--page`). DOCX inspection reports one-based paragraph locators, text and direct XML properties; inherited style properties are available separately with `--styles`.
+
 ## Check kinds
 PDF: `page_size`, `page_count`, `text_extent` (x0min|x1max|firstBaseline|lastBaseline, agg, min_size, ignore),
 `fonts` (embedded names exact + font-program family; only fonts actually drawn), `font_size` (dominant),

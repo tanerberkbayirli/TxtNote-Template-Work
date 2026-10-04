@@ -23,7 +23,7 @@ import zipfile
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pdfmeasure import (MM2PT, W, _attr, drawings_mm, docx_sections, docx_xml, embedded_fonts, open_pdf,  # noqa: E402
+from pdfmeasure import (MM2PT, W, _attr, drawings_mm, docx_paragraphs, docx_sections, docx_styles, docx_xml, embedded_fonts, open_pdf,  # noqa: E402
                         page_number, page_size_mm, visual_lines)
 
 EPS = 1e-6
@@ -398,12 +398,21 @@ def _clean_font(n):
     return re.sub(r"^[A-Z]{6}\+", "", n or "")
 
 
+def drawn_font_names(doc, params):
+    """Scope drawn fonts to selected text lines without filtering font identities."""
+    return {_clean_font(span['font']) for page in doc.pages(params.get('pages'))
+            for line in doc.lines(page, not params.get('exclude_page_numbers', False))
+            if (not params.get('regex') or re.search(params['regex'], line['text']))
+            and (not params.get('ignore') or not re.search(params['ignore'], line['text']))
+            for span in line['spans']}
+
+
 def k_fonts(ctx, c):
     P = c["params"]
     d = get_doc(ctx, P)
     allowed, fams = set(c["expected"]), P.get("families")
     seen, bad = [], []
-    used = {_clean_font(s["font"]) for p in d.pages(P.get('pages')) for l in d.lines(p, not P.get('exclude_page_numbers', False)) for s in l["spans"]}
+    used = drawn_font_names(d, P)
     for f in embedded_fonts(d.pdf):
         name = _clean_font(f["basefont"])
         if name not in used:
@@ -1263,13 +1272,38 @@ if __name__ == "__main__":
     inspect.add_argument('--page', type=int)
     inspect.add_argument('--summary', action='store_true')
     inspect.add_argument('--regex', default='.')
+    inspect.add_argument('--extrema', choices=['x0', 'x1', 'baseline', 'size'])
+    inspect_docx = sub.add_parser('inspect-docx')
+    inspect_docx.add_argument('--docx', required=True)
+    inspect_docx.add_argument('--part', default='word/document.xml')
+    inspect_docx.add_argument('--regex', default='.')
+    inspect_docx.add_argument('--styles', action='store_true')
     b = sub.add_parser("build-reference")
     b.add_argument("--dir", required=True)
     a = ap.parse_args()
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf8")
+    if a.cmd == 'inspect-docx':
+        if a.styles:
+            print(json.dumps(docx_styles(a.docx), ensure_ascii=False))
+        else:
+            for index, paragraph in enumerate(docx_paragraphs(a.docx, a.part), 1):
+                if re.search(a.regex, paragraph['text']):
+                    print(json.dumps({'paragraph': index, **paragraph}, ensure_ascii=False))
+        sys.exit(0)
     if a.cmd == 'inspect':
         doc = LayoutDoc(json.load(open(a.layout, encoding='utf8'))['engineLayout']) if a.layout else Doc(a.pdf)
+        if a.extrema:
+            hits = [(page, line) for page in ([a.page] if a.page else range(1, doc.n + 1))
+                    for line in doc.lines(page, True) if re.search(a.regex, line['text'])]
+            if hits:
+                for name, pick in [('min', min), ('max', max)]:
+                    page, line = pick(hits, key=lambda hit: hit[1][a.extrema])
+                    print(json.dumps({'extreme': name, 'page': page,
+                                      **{key: value for key, value in line.items() if key != 'spans'}}, ensure_ascii=False))
+            if hasattr(doc, 'pdf'):
+                doc.pdf.close()
+            sys.exit(0)
         if a.summary:
             for page in range(1, doc.n + 1):
                 lines = [line['text'] for line in doc.lines(page) if re.search(a.regex, line['text'])]
