@@ -165,7 +165,8 @@ def extract(units: list[dict]) -> Rules:
                             mm = to_float(m.group(1)) * (10 if m.group(2) == "cm" else 1)
                             rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
                             # "üst ve alt ile sağ kenar boşlukları için 2,5 cm": every side chained before the number shares it.
-                            chained = low[m.start():m.start(1)] + " " + re.sub(r"^.*?((?:(?:üst|alt|sol|sağ|top|bottom|left|right)\w*\s*(?:ve|ile|,|and)\s*)+)$", r"\1", low[max(0, m.start() - 60):m.start()])
+                            chain = re.search(r"((?:(?:üst|alt|sol|sağ|top|bottom|left|right)\w*\s*(?:ve|ile|,|and)\s*)+)$", low[max(0, m.start() - 60):m.start()])
+                            chained = low[m.start():m.start(1)] + " " + (chain.group(1) if chain else "")
                             for other, other_words in SIDE_WORDS.items():
                                 if other != side and re.search(rf"\b(?:{other_words})\b", chained):
                                     rules.add(f"page.margins.{other}", mm, "mm", sentence, loc, "page")
