@@ -41,7 +41,11 @@ SCANNER = load_scanner()
 
 
 def still_relevant(item: dict) -> bool:
-    """Re-apply the scanner's current exclusions to a report made by an older run."""
+    """Re-apply the scanner's current exclusions to a report made by an older run.
+
+    Hand-found items were already judged by a person, so they are kept as is."""
+    if item.get("manual"):
+        return True
     context = " ".join((item.get("link_text") or "", urllib.parse.unquote(item["document_url"])))
     return not SCANNER.is_match(context, SCANNER.EXCLUDED_TERMS)
 

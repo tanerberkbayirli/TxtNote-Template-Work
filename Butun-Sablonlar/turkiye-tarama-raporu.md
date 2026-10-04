@@ -4,7 +4,7 @@ Tarama: 2026-10-04 · 202 üniversite (YÖK listesi, devlet + vakıf) · 307 aç
 
 Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen sayfalar ve sayfa sınırı dosyaları gizleyebilir. Kaynağı bulunmayan üniversiteler elle aranmalıdır.
 
-## Marmara (52/72 üniversitede kaynak bulundu)
+## Marmara (55/72 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
@@ -23,7 +23,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Sakarya Üniversitesi](./Marmara/Sakarya%20Üniversitesi/) | 12 | 0 | 6 | 18 | kısmi; elle derlenmiş 9 dosya |
 | [Tekirdağ Namık Kemal Üniversitesi](./Marmara/Tekirdağ%20Namık%20Kemal%20Üniversitesi/) | 2 | 0 | 1 | 0 | kısmi |
 | [Yalova Üniversitesi](./Marmara/Yalova%20Üniversitesi/) | 3 | 0 | 1 | 8 | kısmi; elle derlenmiş 4 dosya |
-| [Çanakkale Onsekiz Mart Üniversitesi](./Marmara/Çanakkale%20Onsekiz%20Mart%20Üniversitesi/) | 0 | 0 | 2 | 4 | tarandı; elle derlenmiş 2 dosya |
+| [Çanakkale Onsekiz Mart Üniversitesi](./Marmara/Çanakkale%20Onsekiz%20Mart%20Üniversitesi/) | 0 | 0 | 4 | 8 | tarandı; elle derlenmiş 4 dosya |
 | [Acıbadem Mehmet Ali Aydınlar Üniversitesi](./Marmara/Acıbadem%20Mehmet%20Ali%20Aydınlar%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
 | [Altınbaş Üniversitesi](./Marmara/Altınbaş%20Üniversitesi/) | 2 | 0 | 5 | 14 | kısmi; elle derlenmiş 7 dosya |
 | Bahçeşehir Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
@@ -38,14 +38,14 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Galatasaray Üniversitesi](./Marmara/Galatasaray%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
 | [Haliç Üniversitesi](./Marmara/Haliç%20Üniversitesi/) | 0 | 0 | 1 | 2 | tarandı; elle derlenmiş 1 dosya |
 | [Işık Üniversitesi](./Marmara/Işık%20Üniversitesi/) | 4 | 4 | 5 | 12 | kısmi; elle derlenmiş 6 dosya |
-| Kadir Has Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Kadir Has Üniversitesi](./Marmara/Kadir%20Has%20Üniversitesi/) | 1 | 0 | 0 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [Koç Üniversitesi](./Marmara/Koç%20Üniversitesi/) | 0 | 0 | 1 | 0 | erişilemedi |
 | MEF Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
 | [Maltepe Üniversitesi](./Marmara/Maltepe%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
 | [Marmara Üniversitesi](./Marmara/Marmara%20Üniversitesi/) | 2 | 0 | 10 | 24 | kısmi; elle derlenmiş 12 dosya |
 | Mimar Sinan Güzel Sanatlar Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | [Piri Reis Üniversitesi](./Marmara/Piri%20Reis%20Üniversitesi/) | 0 | 0 | 4 | 8 | kısmi; elle derlenmiş 4 dosya |
-| Sabancı Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Sabancı Üniversitesi](./Marmara/Sabancı%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [Sağlık Bilimleri Üniversitesi](./Marmara/Sağlık%20Bilimleri%20Üniversitesi/) | 3 | 0 | 7 | 20 | kısmi; elle derlenmiş 10 dosya |
 | [Türk-Alman Üniversitesi](./Marmara/Türk-Alman%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | Türkiye Uluslararası İslam, Bilim ve Teknoloji Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
@@ -75,7 +75,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [İstanbul Sağlık ve Teknoloji Üniversitesi](./Marmara/İstanbul%20Sağlık%20ve%20Teknoloji%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [İstanbul Teknik Üniversitesi](./Marmara/İstanbul%20Teknik%20Üniversitesi/) | 3 | 0 | 3 | 12 | kısmi; elle derlenmiş 6 dosya |
 | [İstanbul Ticaret Üniversitesi](./Marmara/İstanbul%20Ticaret%20Üniversitesi/) | 3 | 0 | 6 | 18 | kısmi; elle derlenmiş 9 dosya |
-| İstanbul Topkapı Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [İstanbul Topkapı Üniversitesi](./Marmara/İstanbul%20Topkapı%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [İstanbul Yeni Yüzyıl Üniversitesi](./Marmara/İstanbul%20Yeni%20Yüzyıl%20Üniversitesi/) | 3 | 0 | 5 | 16 | kısmi; elle derlenmiş 8 dosya |
 | İstanbul Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | İstanbul Üniversitesi-Cerrahpaşa | 0 | 0 | 0 | 0 | tarandı |
@@ -165,7 +165,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | Konya Gıda ve Tarım Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | [Konya Teknik Üniversitesi](./İç%20Anadolu/Konya%20Teknik%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | Kto Karatay Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Necmettin Erbakan Üniversitesi](./İç%20Anadolu/Necmettin%20Erbakan%20Üniversitesi/) | 3 | 0 | 1 | 6 | kısmi; elle derlenmiş 3 dosya |
+| [Necmettin Erbakan Üniversitesi](./İç%20Anadolu/Necmettin%20Erbakan%20Üniversitesi/) | 3 | 0 | 3 | 6 | kısmi; elle derlenmiş 3 dosya |
 | [Selçuk Üniversitesi](./İç%20Anadolu/Selçuk%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
 | [Kırıkkale Üniversitesi](./İç%20Anadolu/Kırıkkale%20Üniversitesi/) | 1 | 0 | 9 | 14 | kısmi; elle derlenmiş 7 dosya |
 | [Kırşehir Ahi Evran Üniversitesi](./İç%20Anadolu/Kırşehir%20Ahi%20Evran%20Üniversitesi/) | 0 | 0 | 3 | 4 | erişilemedi; elle derlenmiş 2 dosya |
@@ -241,7 +241,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Harran Üniversitesi](./Güneydoğu%20Anadolu/Harran%20Üniversitesi/) | 0 | 0 | 2 | 0 | kısmi |
 | [Şırnak Üniversitesi](./Güneydoğu%20Anadolu/Şırnak%20Üniversitesi/) | 1 | 0 | 2 | 0 | kısmi |
 
-## Elle aranması gerekenler (53)
+## Elle aranması gerekenler (50)
 
 - Bandırma Onyedi Eylül Üniversitesi
 - Bilecik Şeyh Edebali Üniversitesi
@@ -252,15 +252,12 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 - Bahçeşehir Üniversitesi
 - Demiroğlu Bilim Üniversitesi
 - Doğuş Üniversitesi
-- Kadir Has Üniversitesi
 - MEF Üniversitesi
 - Mimar Sinan Güzel Sanatlar Üniversitesi
-- Sabancı Üniversitesi
 - Türkiye Uluslararası İslam, Bilim ve Teknoloji Üniversitesi
 - Yıldız Teknik Üniversitesi
 - Üsküdar Üniversitesi
 - İstanbul Rumeli Üniversitesi
-- İstanbul Topkapı Üniversitesi
 - İstanbul Üniversitesi
 - İstanbul Üniversitesi-Cerrahpaşa
 - İzmir Demokrasi Üniversitesi
