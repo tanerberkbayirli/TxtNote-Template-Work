@@ -122,6 +122,22 @@ None of these fails a real target today; they surface on new universities (Phase
 | 2.10b | Arial justification approximate: `engine-word-justify` Arial 10/12 pt each one line off (Word kept ≤0.226 at 12 pt, wrapped from 0.208 at 10 pt — sizes disagree). | Measure Word's Arial layout widths (per size; possibly integer device-unit advances) with extra fixture cases; model them instead of one fraction. | `engine-word-justify` 14/0; mcbu-tip stays 48/0 |
 | 2.10c | Footnote reserve: editor pads every fragment of a block crossing the note page (`box-decoration-break: clone`, `thesis/pageLayout.js` ~176, `thesis/footnotes.js` reserve stamp); Word reserves only on the reference's page. DOCX currently mirrors the editor via `consumeFnReserve` (`docx/paragraphs.js`, estimate-based). | First-fragment-only reserve in the editor layout (e.g. split the block at the note-page boundary or reserve via a page-level spacer), then delete `consumeFnReserve`/`estimateLines`/`notePitchPt`. | afsu-tip, aku-sbe, felsefe ×2 stay 0 FAIL with `--word`; `consumeFnReserve` removed; CAPABILITIES.md known-gap row removed |
 
+
+### 2.11 Phase 2 close — remaining batch B3 (RESUME here; one Sonnet worker, then Haiku `--all --word`)
+
+Done so far: 2.10a (b639d53), 2.10b evidence (bd2a759, Arial approximate accepted by user), 2.10c + `page.lastLineFit` (4d8fd8c), B1 line spacing (21f3676), B2 tabs/mirror/landscape/footer/fields (a5258ed). Baseline `--all --word`: 10 real targets 0 FAIL, parity 146/0, structure 126/0, justify 17/3 (known Arial).
+
+| # | Risk | Work | Acceptance |
+|---|---|---|---|
+| B3.1 | `lastLineFit` guard: single-spaced paragraphs (captions, quotes) inside a 1.5 body are unguarded | Measure Word (fixture: single-spaced para as page's last line in 1.5 body, mixed sizes); model it (guard or per-line own trailing leading) | structure fixture rows PASS vs Word |
+| B3.2 | Guard CSS (heading/figure/table cell/keepNext at column bottom) has no dedicated fixture | Multi-page fixture cases with/without allowance | page_count + landmark rows = Word |
+| B3.3 | 2.10c footnote spacer (3+ fragment block crossing note page) has no fixture | Fixture case | page breaks = Word |
+| B3.4 | 2.3 residual: mirror + positive first-line indent — Word narrows even-page lines | Model in editor/PDF | `line_words_match` odd/even PASS |
+| B3.5 | Flake: export settle timeout 120 s (`export.mjs:44`) seen on aku-sbe during `--all`, not reproducible alone | Find oscillation or make retry cover this error + diagnostics | `--all --word` twice without export errors |
+| B3.6 | (optional, user decision) Editor preview of justified last line still compressed (2.10a is PDF-only); Arial custom line breaker (2.10b) | Deferred engine theme | — |
+
+Verify with `--word`: engine-word-structure, engine-word-parity, aku-sbe, afsu-tip, aku-felsefe-lisans, afsu-eczacilik-proje, mcbu-tip-uzmanlik; then `--all --word`. Phase 2 is closed when B3.1–B3.5 pass and §13 of CAPABILITIES.md has no MOTOR 2.x row left except documented UNKNOWNs (2.4 bidi / non-locale decimal).
+
 ---
 
 ## 5. Phase 3 — engine layout report (self-measurement)
@@ -170,6 +186,7 @@ The scaling step toward ~200 universities.
 | 2026-10-04 | Phase 2.10c CLOSED + new Word last-line fit: footnote reserve first-fragment-only (3+ fragment blocks get a transient float spacer at the note-page exit, stripped on save; `consumeFnReserve`/`estimateLines`/`notePitchPt` removed, DOCX uses Word-native notes); `page.lastLineFit:"word"` default under Word line spacing (column +terminal leading, guards for headings/figures/tables, not on special pages or note pages; "off" opt-out); aku-sbe page-labels-main 24→23 (fixture-derived value, Word agrees) | (this commit) | npm test 703/703, build OK. `--all --word`: all 10 real targets 0 FAIL, parity 62/0, structure 60/0, justify 17/3 (2.10b Arial, accepted as approximate by user). Risks: single-spaced paras inside 1.5 body unguarded (UNKNOWN vs Word); guard CSS lacks dedicated multi-page fixture. Worker Sonnet ≈236k | Phase 3 (2.10b line breaker deferred to its own engine theme) |
 | 2026-10-04 | Phase 2 close B1 (line spacing): Word first-baseline model per rule (`wordBaselineTargetPt()`: exact = 0.8×value, atLeast shortfall above text; probe key collision fixed), `overflow:clip` removed for exact (Word has no per-line clip); new checker kinds `first_baseline_match`, `first_ink_top_match`; 9 oversized-exact parity cases; §13 rows 2.1 footnote pitch + line-spacing conformance closed | (this commit) | npm test 706/706, build OK. `--all --word`: 10 real targets 0 FAIL, parity 146/0, structure 60/0, justify 17/3. Residual MEASURED: Calibri 11/12 first baseline +0.1 mm (in tolerance). Sonnet ≈113k, Haiku ≈56k | B2 indents/tabs/sections/footer/fields |
 | 2026-10-04 | Phase 2 close B2 (2.3/2.4/2.7/2.8/2.9 measured): fixes — landscape DOCX orientation (docx lib swap), tab leaders on Word 1/600-in grid + same line box, mirror even-page shift = right−left (hanging was 8 mm off), `footer.trailingBlankLines` now lifts editor/PDF footer too; checker kinds `line_words_match`, `page_size_match`, `page_number_attr_match`, `fields_refresh_match`, `fields_cached_match`, `until` page selector, word2pdf `-Refreshed/-FieldDump`; new structure variants footer + fields | (this commit) | npm test 708/708, build OK, test_conformance 14/14. structure 126/0, parity 146/0; `--all --word` 9/10 real clean + aku-sbe export settle timeout (transient: reran 22/0 ×2 and 19/0 ×2). §13: 2.7/2.8/2.9 rows deleted; 2.3 residual MEASURED (positive first-line mirror: Word narrows even-page lines); 2.4 bidi/non-locale decimal UNKNOWN. Sonnet ≈294k, Haiku ≈60k | B3 pagination/fit + mirror first-line + settle flake |
+| 2026-10-04 | Session stopped (weekly limit 92%). Phase 0/1 closed; Phase 2 remaining = §2.11 batch B3 | (this commit) | — | §2.11 B3 (one Sonnet worker), then Phase 3 |
 
 ---
 
