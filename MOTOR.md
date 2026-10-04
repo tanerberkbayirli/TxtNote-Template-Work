@@ -110,7 +110,17 @@ Order: 2.1 → 2.2 → 2.5 → 2.6 → 2.7/2.8 → 2.3/2.4 → 2.9. Each row is 
 
 Fonts stay strict (AGENTS.md §10): embed the exact face; report substitutes as limitations, never PASS.
 
-**Phase 2 exit:** on all checker-covered targets, PDF vs Word page count, page labels and line pitch agree within tolerance.
+**Phase 2 exit:** on all checker-covered targets, PDF vs Word page count, page labels and line pitch agree within tolerance. (Met 2026-10-04, commit 12a6a74.)
+
+### 2.10 Follow-ups (do before Phase 3; one engine session, Sonnet)
+
+None of these fails a real target today; they surface on new universities (Phase 4). Order: 2.10a → 2.10b → 2.10c. After each: `npm test`, `npm run build`, `check.mjs --all --word` (baseline: all real targets 0 FAIL, engine-word-justify 12/2).
+
+| # | Gap (evidence) | Engine work | Acceptance |
+|---|---|---|---|
+| 2.10a | Last line of a justified paragraph is drawn with the compressed word-spacing of `typography.justify:"word"` (Word draws it with natural spaces). Files: `thesis/engineCss.js` `justifyWordSpacing()`, `thesis/wordBaseline.js`. | Restore natural spacing on the last line only (e.g. wrap/mark the last line after layout, or `text-align-last` + a DOM pass), without changing line breaks. | New `engine-word-justify` rows: last-line word x positions = Word ±0.25 mm; existing rows unchanged |
+| 2.10b | Arial justification approximate: `engine-word-justify` Arial 10/12 pt each one line off (Word kept ≤0.226 at 12 pt, wrapped from 0.208 at 10 pt — sizes disagree). | Measure Word's Arial layout widths (per size; possibly integer device-unit advances) with extra fixture cases; model them instead of one fraction. | `engine-word-justify` 14/0; mcbu-tip stays 48/0 |
+| 2.10c | Footnote reserve: editor pads every fragment of a block crossing the note page (`box-decoration-break: clone`, `thesis/pageLayout.js` ~176, `thesis/footnotes.js` reserve stamp); Word reserves only on the reference's page. DOCX currently mirrors the editor via `consumeFnReserve` (`docx/paragraphs.js`, estimate-based). | First-fragment-only reserve in the editor layout (e.g. split the block at the note-page boundary or reserve via a page-level spacer), then delete `consumeFnReserve`/`estimateLines`/`notePitchPt`. | afsu-tip, aku-sbe, felsefe ×2 stay 0 FAIL with `--word`; `consumeFnReserve` removed; CAPABILITIES.md known-gap row removed |
 
 ---
 
@@ -154,7 +164,7 @@ The scaling step toward ~200 universities.
 
 | 2026-10-04 | Phase 2 regressions closed: afsu-tip/sbe pagination (table wrap gap carried to DOCX; footnote-reserve parity now from section bodyBox, not A4 constant), table wrap gap dropped at page/section top, footnote numbering default "document" (PDF marks 1..6 = Word), checker retry/devserver fix (a1ae4ef) | (this commit) | `--all --word` 12 targets: 11 clean (structure 60/0, parity 62/0, afsu-tip 50, sbe 22, felsefe 19/19, isg 23, mcbu 48, cografya 49, matematik 53, eczacilik 26). afsu-lee export error = infra flake (cold Vite/concurrent runs), not reproduced after retry fix. REMAINING: afsu-lee PhD 4 FAIL pdf 38/word 37 — Word shrinks justified spaces, Chromium does not (KABUL page, measured) → needs justification model. Known gap: consumeFnReserve mirrors editor reserve (not Word-native). Behaviour change: 5 templates w/o footnotes.numbering now number document-wide (afsu-eczacilik, afsu-lee, afsu-lee-proposal, afsu-tip, mcbu) — confirm with sources. Cost ≈ 420k subagent tokens (3 Sonnet, 1 Haiku) | Decide justification approach (2.2 follow-up) then Phase 3 |
 
-| 2026-10-04 | Phase 2 CLOSED: Word justification model (`typography.justify:"word"` default; kerning off + negative word-spacing = Word max space compression TNR 0.25 / Calibri 0.25 / Arial 0.22 of space advance, measured by new fixture engine-word-justify + checker kind `line_breaks_match`); footnote numbering evidence recorded (afsu-lee/mcbu-lee official DOCX: no numRestart → continuous; others UNKNOWN) | (this commit) | npm test 697/697, build OK, conformance unit tests OK. `--all --word`: all 10 real targets FAIL=0 (afsu-lee 90), engine-word-parity 62/0, structure 60/0; engine-word-justify 12/2 (Arial 10/12 one line off — Word Arial layout widths not modelled; mcbu-tip (Arial) still 48/0). Exit criterion met for all real targets. Known gaps: justified last line drawn with compressed spaces; Arial approximate; consumeFnReserve mirrors editor reserve. Cost ≈ 160k (1 Sonnet) | Phase 3 (layout report); optional engine follow-ups above |
+| 2026-10-04 | Phase 2 CLOSED: Word justification model (`typography.justify:"word"` default; kerning off + negative word-spacing = Word max space compression TNR 0.25 / Calibri 0.25 / Arial 0.22 of space advance, measured by new fixture engine-word-justify + checker kind `line_breaks_match`); footnote numbering evidence recorded (afsu-lee/mcbu-lee official DOCX: no numRestart → continuous; others UNKNOWN) | (this commit) | npm test 697/697, build OK, conformance unit tests OK. `--all --word`: all 10 real targets FAIL=0 (afsu-lee 90), engine-word-parity 62/0, structure 60/0; engine-word-justify 12/2 (Arial 10/12 one line off — Word Arial layout widths not modelled; mcbu-tip (Arial) still 48/0). Exit criterion met for all real targets. Known gaps: justified last line drawn with compressed spaces; Arial approximate; consumeFnReserve mirrors editor reserve. Cost ≈ 160k (1 Sonnet) | Phase 2.10 follow-ups (a→b→c), then Phase 3 |
 
 ---
 
