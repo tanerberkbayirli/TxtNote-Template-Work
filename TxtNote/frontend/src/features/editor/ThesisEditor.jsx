@@ -7,6 +7,7 @@ import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesi
 import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/pageLayout.js";
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
 import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, thesisMetadataValue, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
+import { checkThesisCompliance } from "../../thesis/compliance.js";
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
 import { decorateThesisSources, INDEX_ITERATION_CAP, renderedIndexPages, resolveGeneratedIndexes } from "../../thesis/generatedIndex.js";
 import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
@@ -41,6 +42,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [exporting, setExporting] = useState("");
   const [message, setMessage] = useState("");
   const [detailsOpen, setDetailsOpen] = useState(false);
+  const [auditOpen, setAuditOpen] = useState(false);
   const [zoomChoice, setZoomChoice] = useState("fit");
   const [viewportWidth, setViewportWidth] = useState(900);
   const [activeSectionId, setActiveSectionId] = useState("");
@@ -83,6 +85,13 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const pageGroups = useMemo(() => model ? groupThesisSections(model.sections) : [], [model]);
   const pageModel = useMemo(() => buildThesisPageModel(pageGroups, pageCounts), [pageGroups, pageCounts]);
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
+  // Template compliance: recomputed from the model and the measured page counts; never stored.
+  const audit = useMemo(() => model ? checkThesisCompliance(model, { groups: pageGroups, pageCounts }) : null, [model, pageGroups, pageCounts]);
+  const jumpToSection = (id) => {
+    if (!id) { setDetailsOpen(true); return; }
+    setActiveSectionId(id);
+    papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(id)}"]`)?.scrollIntoView({ block: "start", behavior: "smooth" });
+  };
   const onPageCount = useCallback((groupId, count) => setPageCounts((current) => current[groupId] === count ? current : { ...current, [groupId]: count }), []);
   const css = useMemo(() => model ? buildThesisCss(model) + (THESIS_PAGED_LAYOUT ? thesisPagedCss(pageGroups) : "") : "", [model, pageGroups]);
   const warning = resolved?.fallback ? resolved.reason : thesis.fallback ? thesis.fallbackReason : "";
@@ -244,6 +253,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     <div className="shrink-0 border-b border-neutral-200 bg-white px-4 py-2 dark:border-neutral-800 dark:bg-neutral-900">
       <div className="flex flex-wrap items-center gap-2">
         <button type="button" onClick={() => setDetailsOpen((open) => !open)} aria-expanded={detailsOpen} className="rounded-md border border-neutral-300 px-3 py-1.5 text-xs font-medium dark:border-neutral-700">Tez bilgileri</button>
+        <button type="button" onClick={() => setAuditOpen((open) => !open)} aria-expanded={auditOpen} aria-label={`Denetim: ${audit.errors} hata, ${audit.warnings} uyarı`} className={`rounded-md border px-3 py-1.5 text-xs font-medium ${audit.errors ? "border-red-300 text-red-700 dark:border-red-800 dark:text-red-300" : audit.warnings ? "border-amber-300 text-amber-800 dark:border-amber-800 dark:text-amber-300" : "border-neutral-300 dark:border-neutral-700"}`}>Denetim{audit.errors || audit.warnings ? ` ${audit.errors ? `${audit.errors} hata` : ""}${audit.errors && audit.warnings ? ", " : ""}${audit.warnings ? `${audit.warnings} uyarı` : ""}` : " ✓"}</button>
         <select aria-label="Paragraf biçimi" disabled={!activeSection} defaultValue="" onMouseDown={() => activeBody()?.rememberSelection?.()} onChange={(event) => { const value = event.target.value; event.target.value = ""; if (value !== "") run((body) => body.setBlockType(Number(value))); }} className="rounded-md border border-neutral-300 bg-white px-2 py-1.5 text-xs text-neutral-900 disabled:opacity-40 dark:border-neutral-700">
           <option value="" disabled>Paragraf biçimi</option><option value="0">Normal</option>{Object.keys(model.sections.find((section) => section.id === activeSectionId)?.rules.headings || template.typography.headings).map((level) => <option key={level} value={level}>Başlık {level}</option>)}
         </select>
@@ -295,6 +305,18 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           {pageGroups.map((group, index) => <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={setActiveSectionId} onTextChange={onTextChange} onPageCount={onPageCount} footnotes={footnoteViews[group.id]} />)}
         </div>
       </div>
+      {auditOpen ? <aside className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Şablon denetimi">
+        <div className="mb-3 flex items-center justify-between"><h3 className="text-sm font-semibold">Şablon denetimi</h3><button type="button" onClick={() => setAuditOpen(false)} aria-label="Denetimi kapat" className="rounded px-2 py-1 text-lg">×</button></div>
+        <p className="mb-3 text-[11px] leading-snug text-neutral-500">Belge, şablonun kurallarıyla karşılaştırılır: {audit.errors} hata, {audit.warnings} uyarı, {audit.infos} not. Bir bulguya tıklayınca ilgili bölüme gidilir.</p>
+        {audit.findings.length ? <ol className="space-y-2" data-thesis-audit-list>{audit.findings.map((finding, index) => <li key={index} data-thesis-audit-code={finding.code} data-thesis-audit-severity={finding.severity}>
+          <button type="button" onClick={() => jumpToSection(finding.sectionId)} className={`block w-full rounded-md border px-2.5 py-2 text-left text-xs ${finding.severity === "error" ? "border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950/40" : finding.severity === "warning" ? "border-amber-200 bg-amber-50 dark:border-amber-900 dark:bg-amber-950/40" : "border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-800/40"}`}>
+            <span className="block text-[10px] font-semibold uppercase tracking-wide text-neutral-500">{finding.severity === "error" ? "Hata" : finding.severity === "warning" ? "Uyarı" : "Not"} · {finding.sectionTitle}</span>
+            <span className="mt-0.5 block">{finding.message}</span>
+            {finding.expected || finding.actual ? <span className="mt-1 block text-[11px] text-neutral-600 dark:text-neutral-300">Beklenen: {finding.expected || "—"} · Mevcut: {finding.actual || "—"}</span> : null}
+            <span className="mt-0.5 block text-[10px] text-neutral-400">Kaynak: {finding.source}</span>
+          </button>
+        </li>)}</ol> : <p className="text-xs text-neutral-600 dark:text-neutral-300">Belge şablon kurallarına uyuyor. Ölçülebilen her kural (hiza, punto, başlık düzeni, şekil/tablo yazıları, özel sayfa düzeni, zorunlu bilgiler) denetlendi.</p>}
+      </aside> : null}
       {detailsOpen ? <aside className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
         <div className="mb-4 flex items-center justify-between"><h3 className="text-sm font-semibold">Tez bilgileri</h3><button type="button" onClick={() => setDetailsOpen(false)} aria-label="Tez bilgilerini kapat" className="rounded px-2 py-1 text-lg">×</button></div>
         <div className="space-y-5">

@@ -63,7 +63,7 @@ try {
 
   // 3. Editing: type after the title, the stored HTML keeps chips, marks and the user's text; no hidden stamps are stored.
   await cover().locator('.thesis-field[data-field="THESIS_TITLE"]').click();
-  await page.keyboard.press("End");
+  await page.keyboard.press(process.platform === "darwin" ? "Meta+ArrowRight" : "End");
   await page.keyboard.press("Enter");
   await page.keyboard.type("Alt başlık satırı");
   await page.waitForFunction(() => /Alt başlık satırı/.test(window.thesisTest.getDoc()?.researchData?.thesis?.sectionContent?.cover || ""));

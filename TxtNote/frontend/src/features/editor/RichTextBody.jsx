@@ -414,8 +414,12 @@ export const RichTextBody = forwardRef(({
   useIsomorphicLayoutEffect(() => {
     const body = bodyRef.current;
     if (!body) return;
-    if (content === lastContentRef.current && isInternalChange.current) {
+    // The compiled thesis model hands back the editor's own change with presentation stamps
+    // (e.g. data-thesis-hidden) re-applied; that is still the internal change, not new content.
+    const echoOfOwnChange = isInternalChange.current && (content === lastContentRef.current || (paragraphSemantics && thesisSourceHtml(content) === lastContentRef.current));
+    if (echoOfOwnChange) {
       isInternalChange.current = false;
+      lastContentRef.current = content;
       return;
     }
     if (content !== lastContentRef.current) {

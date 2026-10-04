@@ -201,7 +201,9 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const specialPage = isSpecialPageSection(section) && !editableLayout;
     const layout = isSpecialPageSection(section) ? resolveSpecialPage(section.blocks, { definitions: template.placeholders, values, baseStyle: rules.body, language: template.language, keepOptional: editableLayout }) : null;
     const seeded = editableLayout && !source.trim();
-    const editableHtml = editableLayout ? refreshThesisFieldHtml(seeded ? specialPageSeedHtml(layout.blocks, { language: template.language }) : source, { definitions: template.placeholders, values, language: template.language }) : source;
+    // The fresh seed is kept beside the stored text so the compliance audit can compare them.
+    const seedHtml = editableLayout ? specialPageSeedHtml(layout.blocks, { language: template.language }) : "";
+    const editableHtml = editableLayout ? refreshThesisFieldHtml(seeded ? seedHtml : source, { definitions: template.placeholders, values, language: template.language }) : source;
     // tocEntry: "headings" (default) lists the section's headings, "title" also its title, "none" nothing.
     const tocEntry = ["title", "none"].includes(section.tocEntry) ? section.tocEntry : "headings";
     // A seeded layout carries its own title line; the section title is printed only when asked for.
@@ -210,7 +212,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
       ? `<ul class="thesis-bibliography">${bibliographyItems.filter((item) => String(item).trim()).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "";
     const prefixHtml = specialPage ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}`;
     const html = mode === "generated" ? "" : `${prefixHtml}${editableHtml || ""}${bibliographyHtml}`;
-    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, editableLayout, seeded, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || (section.blocks?.length && !editableLayout)), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml, layout: specialPage ? layout.blocks : null, layoutBlocks: specialPage ? flattenSpecialPage(layout.blocks) : null, derivedLayout: specialPage && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
+    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, editableLayout, seeded, seedHtml, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || (section.blocks?.length && !editableLayout)), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml, layout: specialPage ? layout.blocks : null, layoutBlocks: specialPage ? flattenSpecialPage(layout.blocks) : null, derivedLayout: specialPage && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
   }
   for (const section of sections) {
     const definition = template.sections.find((item) => item.id === section.id);
@@ -219,7 +221,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
   }
   const indexSources = collectIndexSources(sections, extractThesisHeadings);
   for (const section of sections) section.indexSources = indexSources.filter((entry) => entry.sectionId === section.id);
-  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, status: template.status, language: template.language, title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
+  return resolveGeneratedIndexes({ templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, status: template.status, language: template.language, title, values, derivedFields, placeholders: template.placeholders, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values) });
 }
 
 function serializeStyle(style, lineSpacing) {
