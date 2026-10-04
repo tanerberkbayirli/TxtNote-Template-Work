@@ -127,7 +127,7 @@ async function ensureBase() {
   if (process.env.THESIS_BASE_URL) return process.env.THESIS_BASE_URL;
   for (const u of ["http://localhost:5173", "http://127.0.0.1:5175"]) if (await up(u)) return u;
   log("no dev server; starting via devserver.sh (port 5175)");
-  spawnSync("bash", [join(here, "devserver.sh"), "start"], { encoding: "utf8", cwd: root });
+  spawnSync("bash", [join(here, "devserver.sh"), "start"], { stdio: "ignore", cwd: root, timeout: 60000 });
   if (await up("http://127.0.0.1:5175")) return "http://127.0.0.1:5175";
   console.error("TxtNote frontend dev server not reachable (tried :5173 and :5175). Start it: bash orchestration/tools/devserver.sh start");
   process.exit(3);
@@ -141,6 +141,7 @@ function fixtureFor(variant) {
 const chrome = process.env.THESIS_BROWSER_EXECUTABLE || ["C:/Program Files/Google/Chrome/Application/chrome.exe", "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"].find(existsSync);
 const exportEnv = { ...env, PLAYWRIGHT_MODULE: process.env.PLAYWRIGHT_MODULE || join(here, "node_modules/playwright"), ...(chrome ? { THESIS_BROWSER_EXECUTABLE: chrome } : {}) };
 
+const TRANSIENT_EXPORT = /Failed to fetch dynamically imported module|EBUSY|Target page, context or browser has been closed/;
 const vmap = {};
 let base = null;
 for (const v of variants) {
@@ -152,8 +153,15 @@ for (const v of variants) {
   }
   if (opt.noExport) { vmap[v].pdf = vmap[v].docx = null; vmap[v].note = "--no-export given only for the default variant"; continue; }
   base ??= await ensureBase();
-  const r = spawnSync("node", [join(here, "export.mjs"), fixtureFor(v), prefix, base], { encoding: "utf8", env: exportEnv, cwd: root, timeout: 900000 });
+  const runExport = () => spawnSync("node", [join(here, "export.mjs"), fixtureFor(v), prefix, base], { encoding: "utf8", env: exportEnv, cwd: root, timeout: 900000 });
+  let r = runExport();
   log(`export ${v}: status ${r.status}\n${(r.stdout || "").slice(-600)}\n${(r.stderr || "").slice(-1500)}`);
+  // One retry only for infrastructure noise (cold Vite module graph, locked download file, crashed browser), never for editor/engine refusals.
+  if (r.status !== 0 && TRANSIENT_EXPORT.test(r.stderr || "")) {
+    log(`export ${v}: transient failure, retrying once`);
+    r = runExport();
+    log(`export ${v} (retry): status ${r.status}\n${(r.stdout || "").slice(-600)}\n${(r.stderr || "").slice(-1500)}`);
+  }
   if (r.status !== 0) { console.error(`export of variant '${v}' failed (see ${logFile}):\n${(r.stderr || r.stdout || "").trim().slice(-400)}`); process.exit(3); }
 }
 
