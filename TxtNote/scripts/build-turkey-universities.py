@@ -65,6 +65,10 @@ def tr_title(value: str) -> str:
 PROVINCE_BY_UPPER = {tr_upper(province): (province, region) for region, provinces in REGIONS.items() for province in provinces}
 
 
+def name_key(value: str) -> str:
+    return tr_lower(value).translate(str.maketrans("âîû", "aiu"))
+
+
 def fetch(url: str) -> str:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request, timeout=60) as response:
@@ -86,7 +90,10 @@ def main() -> int:
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     args = parser.parse_args()
 
-    ege = {u["domain"]: u for u in json.loads(EGE_CONFIG.read_text(encoding="utf-8"))["universities"]}
+    ege_list = json.loads(EGE_CONFIG.read_text(encoding="utf-8"))["universities"]
+    ege = {u["domain"]: u for u in ege_list}
+    # Same university under another official domain (Ege list: mcbu.edu.tr, YÖK: cbu.edu.tr).
+    ege_by_name = {name_key(u["name"]): u for u in ege_list}
     universities, problems = [], []
     for list_type, kind in LIST_TYPES.items():
         for card in parse_cards(fetch(YOK_LIST_URL.format(type=list_type))):
@@ -97,16 +104,17 @@ def main() -> int:
                 problems.append(card)
                 continue
             known = ege.get(domain, {})
+            same_name = {} if known else ege_by_name.get(name_key(tr_title(card["name"])), {})
             universities.append({
                 "id": known.get("id") or domain.removesuffix(".edu.tr").replace(".", "-"),
-                "name": known.get("name") or tr_title(card["name"]),
+                "name": known.get("name") or same_name.get("name") or tr_title(card["name"]),
                 "yokName": card["name"],
                 "type": kind,
                 "province": province,
                 "region": region,
                 "domain": domain,
                 "start_url": known.get("start_url") or f"https://{host}/",
-                "seed_urls": known.get("seed_urls", []),
+                "seed_urls": known.get("seed_urls") or same_name.get("seed_urls", []),
             })
     ids = [u["id"] for u in universities]
     duplicates = sorted({i for i in ids if ids.count(i) > 1})

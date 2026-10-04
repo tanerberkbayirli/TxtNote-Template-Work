@@ -486,7 +486,11 @@ def download_templates(report: dict, config: dict, output_base: Path, delay: flo
         file_name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "_", parsed_name).strip(" .")
         if not file_name:
             file_name = f"template-{digest[:12]}.{item['file_type']}"
-        file_name = file_name[:160]
+        if len(file_name) > 160:  # shorten the stem, never the extension
+            suffix = Path(file_name).suffix if len(Path(file_name).suffix) <= 8 else ""
+            file_name = file_name[: 160 - len(suffix)].rstrip(" .") + suffix
+        if not Path(file_name).suffix:
+            file_name = f"{file_name}.{item['file_type']}"
         safe_id = re.sub(r"[^a-zA-Z0-9_-]", "_", university_id)
         target = download_root / safe_id / file_name
         target.parent.mkdir(parents=True, exist_ok=True)

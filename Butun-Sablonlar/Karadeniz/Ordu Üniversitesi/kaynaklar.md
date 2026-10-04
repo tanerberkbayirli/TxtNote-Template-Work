@@ -1,0 +1,19 @@
+<!-- organize-scan-sources -->
+# Ordu Üniversitesi — tez kaynakları (otomatik tarama)
+
+Alan adı: `odu.edu.tr` · Ordu · devlet · tarama durumu: kısmi (50/55 sayfa) · 2026-10-04
+
+Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
+
+## Şablonlar
+
+- **Tez Yazım Şablonu (Doktora)** — DOCX. Kaynak sayfa: [T.C. Ordu Üniversitesi SAĞLIK BİLİMLERİ ENSTİTÜSÜ](https://sabe.odu.edu.tr/Page/109/tez_ve_seminer_yazim_kilavuzu) · [dosya](https://sabe.odu.edu.tr/files/other/Ogrenci/Klavuzlar/DR_Tez_Yazm_ablonu.docx). Yerel: [DR_Tez_Yazm_ablonu.docx](./DR_Tez_Yazm_ablonu.docx) (SHA-256 `eb0377c5c4b36e4e1a004b35c35252ad37f42743c424d26e3116b00f99559291`).
+- **Tez Yazım Şablonu (Yüksek Lisans)** — DOCX. Kaynak sayfa: [T.C. Ordu Üniversitesi SAĞLIK BİLİMLERİ ENSTİTÜSÜ](https://sabe.odu.edu.tr/Page/109/tez_ve_seminer_yazim_kilavuzu) · [dosya](https://sabe.odu.edu.tr/files/other/Ogrenci/Klavuzlar/YL_Tez_Yazm_ablonu.docx). Yerel: [YL_Tez_Yazm_ablonu.docx](./YL_Tez_Yazm_ablonu.docx) (SHA-256 `2009b3cf96a88f9a2d053235e7264bbbc2c6ba74b432fdf9246d910c5c9415d8`).
+- **Tez Yazım Şablonu** — DOCX. Kaynak sayfa: [T.C. Ordu Üniversitesi SOSYAL BİLİMLER ENSTİTÜSÜ](https://sbe.odu.edu.tr/Page/281/tez-yazimi-kilavuzu) · [dosya](https://sbe.odu.edu.tr/files/other/Mevzuat/Tez_Yazim/2-SBE_Tez_Yazim_Sablonu.docx). Yerel: [2-SBE_Tez_Yazim_Sablonu.docx](./2-SBE_Tez_Yazim_Sablonu.docx) (SHA-256 `4ab5503c87602fb284158e78a54d44015b9f34c933e00ca230d9c923de95af97`).
+
+## Yazım kılavuzları
+
+- **1-Yeni Tez Yazım Kılavuzu (Word Belgesi)** — DOCX. Kaynak sayfa: [T.C. Ordu Üniversitesi FEN BİLİMLERİ ENSTİTÜSÜ](https://fbe.odu.edu.tr/Page/81/tez-yazim-kilavuzu-ve-sablonu) · [dosya](https://fbe.odu.edu.tr/files/other/ogrenci/Mezuniyet/Tez_Yazim_Yonergesi_07.01.2021.docx). Yerel: [Tez_Yazim_Yonergesi_07.01.2021.docx](./Tez_Yazim_Yonergesi_07.01.2021.docx) (SHA-256 `93d694ae57e9399880b9bf36cb82e71d7a90259ed92356abb48b02027c501753`).
+- **2-Yeni Tez Yazım Kılavuzu (PDF Belgesi)** — PDF. Kaynak sayfa: [T.C. Ordu Üniversitesi FEN BİLİMLERİ ENSTİTÜSÜ](https://fbe.odu.edu.tr/Page/81/tez-yazim-kilavuzu-ve-sablonu) · [dosya](https://fbe.odu.edu.tr/files/other/ogrenci/Mezuniyet/Tez_Yazim_Yonergesi_07.01.2021.pdf). Yerel: [Tez_Yazim_Yonergesi_07.01.2021.pdf](./Tez_Yazim_Yonergesi_07.01.2021.pdf) (SHA-256 `eccded622948518bb6dd37ad3bf797367a6cfffa0050ff58cd658be4b1715739`).
+- **Lisansüstü Eğitim Tez Yazım Kılavuzu için tıklayınız** — PDF. Kaynak sayfa: [T.C. Ordu Üniversitesi SAĞLIK BİLİMLERİ ENSTİTÜSÜ](https://sabe.odu.edu.tr/Page/109/tez_ve_seminer_yazim_kilavuzu) · [dosya](https://sabe.odu.edu.tr/files/other/Ogrenci/Klavuzlar/05-Tez_Yazim_kilavuzu_Sabe_21.05.2024.pdf). Yerel: [05-Tez_Yazim_kilavuzu_Sabe_21.05.2024.pdf](./05-Tez_Yazim_kilavuzu_Sabe_21.05.2024.pdf) (SHA-256 `f1da1cf9a6da0c3b8cf155bd79b9e808fd354bdf38484352f79168e7be6e61ab`).
+- **Tez Yazım Kılavuzu** — PDF. Kaynak sayfa: [T.C. Ordu Üniversitesi SOSYAL BİLİMLER ENSTİTÜSÜ](https://sbe.odu.edu.tr/Page/281/tez-yazimi-kilavuzu) · [dosya](https://sbe.odu.edu.tr/files/other/Mevzuat/Tez_Yazim/1-SBE-Tez_Yazim_Kilavuzu.pdf). Yerel: [1-SBE-Tez_Yazim_Kilavuzu.pdf](./1-SBE-Tez_Yazim_Kilavuzu.pdf) (SHA-256 `bf71a53573b2e114b551bd3ced7b5311ff5d7ae7f15145bc075226580e98549d`).
