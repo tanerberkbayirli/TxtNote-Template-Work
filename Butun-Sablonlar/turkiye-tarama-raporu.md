@@ -1,261 +1,258 @@
 # Türkiye üniversiteleri — tez kaynakları tarama özeti
 
-Tarama: 2026-10-04 · 202 üniversite (YÖK listesi, devlet + vakıf) · 295 açık şablon, 44 şablon adayı, 517 kılavuz bağlantısı.
+Tarama: 2026-10-04 · 202 üniversite (YÖK listesi, devlet + vakıf) · 307 açık şablon, 44 şablon adayı, 541 kılavuz bağlantısı.
 
 Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen sayfalar ve sayfa sınırı dosyaları gizleyebilir. Kaynağı bulunmayan üniversiteler elle aranmalıdır.
 
-## Marmara (40/72 üniversitede kaynak bulundu)
+## Marmara (47/72 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
-| [Balıkesir Üniversitesi](./Marmara/Balıkesir%20Üniversitesi/) | 0 | 0 | 23 | 22 | kısmi |
+| [Balıkesir Üniversitesi](./Marmara/Balıkesir%20Üniversitesi/) | 0 | 0 | 23 | 44 | kısmi; elle derlenmiş 22 dosya |
 | Bandırma Onyedi Eylül Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Bilecik Şeyh Edebali Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [Bursa Teknik Üniversitesi](./Marmara/Bursa%20Teknik%20Üniversitesi/) | 5 | 1 | 25 | 29 | kısmi |
-| Bursa Uludağ Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| Bilecik Şeyh Edebali Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Bursa Teknik Üniversitesi](./Marmara/Bursa%20Teknik%20Üniversitesi/) | 5 | 1 | 25 | 58 | kısmi; elle derlenmiş 29 dosya |
+| [Bursa Uludağ Üniversitesi](./Marmara/Bursa%20Uludağ%20Üniversitesi/) | 4 | 0 | 13 | 30 | kısmi; elle derlenmiş 15 dosya |
 | Mudanya Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Trakya Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Gebze Teknik Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Kocaeli Sağlık ve Teknoloji Üniversitesi](./Marmara/Kocaeli%20Sağlık%20ve%20Teknoloji%20Üniversitesi/) | 0 | 0 | 16 | 16 | kısmi |
+| [Kocaeli Sağlık ve Teknoloji Üniversitesi](./Marmara/Kocaeli%20Sağlık%20ve%20Teknoloji%20Üniversitesi/) | 0 | 0 | 16 | 32 | kısmi; elle derlenmiş 16 dosya |
 | Kocaeli Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Kırklareli Üniversitesi](./Marmara/Kırklareli%20Üniversitesi/) | 3 | 0 | 3 | 5 | kısmi |
-| Sakarya Uygulamalı Bilimler Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Sakarya Üniversitesi](./Marmara/Sakarya%20Üniversitesi/) | 12 | 0 | 6 | 9 | kısmi |
+| [Kırklareli Üniversitesi](./Marmara/Kırklareli%20Üniversitesi/) | 3 | 0 | 3 | 10 | kısmi; elle derlenmiş 5 dosya |
+| Sakarya Uygulamalı Bilimler Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Sakarya Üniversitesi](./Marmara/Sakarya%20Üniversitesi/) | 12 | 0 | 6 | 18 | kısmi; elle derlenmiş 9 dosya |
 | [Tekirdağ Namık Kemal Üniversitesi](./Marmara/Tekirdağ%20Namık%20Kemal%20Üniversitesi/) | 2 | 0 | 1 | 0 | kısmi |
-| [Yalova Üniversitesi](./Marmara/Yalova%20Üniversitesi/) | 3 | 0 | 1 | 4 | kısmi |
+| [Yalova Üniversitesi](./Marmara/Yalova%20Üniversitesi/) | 3 | 0 | 1 | 8 | kısmi; elle derlenmiş 4 dosya |
 | Çanakkale Onsekiz Mart Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| Acıbadem Mehmet Ali Aydınlar Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Altınbaş Üniversitesi](./Marmara/Altınbaş%20Üniversitesi/) | 2 | 0 | 5 | 7 | kısmi |
-| Bahçeşehir Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [Beykoz Üniversitesi](./Marmara/Beykoz%20Üniversitesi/) | 0 | 0 | 4 | 2 | kısmi |
-| Bezm-i Âlem Vakıf Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| Biruni Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Boğaziçi Üniversitesi](./Marmara/Boğaziçi%20Üniversitesi/) | 5 | 0 | 0 | 4 | kısmi |
+| [Acıbadem Mehmet Ali Aydınlar Üniversitesi](./Marmara/Acıbadem%20Mehmet%20Ali%20Aydınlar%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
+| [Altınbaş Üniversitesi](./Marmara/Altınbaş%20Üniversitesi/) | 2 | 0 | 5 | 14 | kısmi; elle derlenmiş 7 dosya |
+| Bahçeşehir Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Beykoz Üniversitesi](./Marmara/Beykoz%20Üniversitesi/) | 0 | 0 | 4 | 4 | kısmi; elle derlenmiş 2 dosya |
+| Bezm-i Âlem Vakıf Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Biruni Üniversitesi](./Marmara/Biruni%20Üniversitesi/) | 3 | 0 | 1 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Boğaziçi Üniversitesi](./Marmara/Boğaziçi%20Üniversitesi/) | 5 | 0 | 0 | 8 | kısmi; elle derlenmiş 4 dosya |
 | Demiroğlu Bilim Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
 | Doğuş Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Fatih Sultan Mehmet Vakıf Üniversitesi](./Marmara/Fatih%20Sultan%20Mehmet%20Vakıf%20Üniversitesi/) | 3 | 0 | 1 | 4 | kısmi |
-| [Fenerbahçe Üniversitesi](./Marmara/Fenerbahçe%20Üniversitesi/) | 0 | 0 | 1 | 1 | tarandı |
-| [Galatasaray Üniversitesi](./Marmara/Galatasaray%20Üniversitesi/) | 1 | 0 | 3 | 4 | kısmi |
+| [Fatih Sultan Mehmet Vakıf Üniversitesi](./Marmara/Fatih%20Sultan%20Mehmet%20Vakıf%20Üniversitesi/) | 3 | 0 | 1 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Fenerbahçe Üniversitesi](./Marmara/Fenerbahçe%20Üniversitesi/) | 0 | 0 | 1 | 2 | tarandı; elle derlenmiş 1 dosya |
+| [Galatasaray Üniversitesi](./Marmara/Galatasaray%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
 | Haliç Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [Işık Üniversitesi](./Marmara/Işık%20Üniversitesi/) | 4 | 4 | 5 | 6 | kısmi |
+| [Işık Üniversitesi](./Marmara/Işık%20Üniversitesi/) | 4 | 4 | 5 | 12 | kısmi; elle derlenmiş 6 dosya |
 | Kadir Has Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Koç Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
 | MEF Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [Maltepe Üniversitesi](./Marmara/Maltepe%20Üniversitesi/) | 1 | 0 | 3 | 4 | kısmi |
-| [Marmara Üniversitesi](./Marmara/Marmara%20Üniversitesi/) | 2 | 0 | 10 | 12 | kısmi |
+| [Maltepe Üniversitesi](./Marmara/Maltepe%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Marmara Üniversitesi](./Marmara/Marmara%20Üniversitesi/) | 2 | 0 | 10 | 24 | kısmi; elle derlenmiş 12 dosya |
 | Mimar Sinan Güzel Sanatlar Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [Piri Reis Üniversitesi](./Marmara/Piri%20Reis%20Üniversitesi/) | 0 | 0 | 4 | 4 | kısmi |
-| Sabancı Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [Sağlık Bilimleri Üniversitesi](./Marmara/Sağlık%20Bilimleri%20Üniversitesi/) | 3 | 0 | 7 | 10 | kısmi |
-| [Türk-Alman Üniversitesi](./Marmara/Türk-Alman%20Üniversitesi/) | 0 | 0 | 1 | 1 | kısmi |
+| [Piri Reis Üniversitesi](./Marmara/Piri%20Reis%20Üniversitesi/) | 0 | 0 | 4 | 8 | kısmi; elle derlenmiş 4 dosya |
+| Sabancı Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Sağlık Bilimleri Üniversitesi](./Marmara/Sağlık%20Bilimleri%20Üniversitesi/) | 3 | 0 | 7 | 20 | kısmi; elle derlenmiş 10 dosya |
+| [Türk-Alman Üniversitesi](./Marmara/Türk-Alman%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | Türkiye Uluslararası İslam, Bilim ve Teknoloji Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Yeditepe Üniversitesi](./Marmara/Yeditepe%20Üniversitesi/) | 0 | 0 | 8 | 4 | kısmi |
+| [Yeditepe Üniversitesi](./Marmara/Yeditepe%20Üniversitesi/) | 0 | 0 | 8 | 8 | kısmi; elle derlenmiş 4 dosya |
 | Yıldız Teknik Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Özyeğin Üniversitesi](./Marmara/Özyeğin%20Üniversitesi/) | 22 | 0 | 2 | 13 | kısmi |
+| [Özyeğin Üniversitesi](./Marmara/Özyeğin%20Üniversitesi/) | 22 | 0 | 2 | 26 | kısmi; elle derlenmiş 13 dosya |
 | Üsküdar Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [İbn Haldun Üniversitesi](./Marmara/İbn%20Haldun%20Üniversitesi/) | 3 | 0 | 7 | 9 | kısmi |
-| [İstanbul 29 Mayıs Üniversitesi](./Marmara/İstanbul%2029%20Mayıs%20Üniversitesi/) | 3 | 0 | 2 | 5 | kısmi |
-| İstanbul Arel Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [İstanbul Atlas Üniversitesi](./Marmara/İstanbul%20Atlas%20Üniversitesi/) | 1 | 0 | 1 | 2 | kısmi |
-| İstanbul Aydın Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [İstanbul Beykent Üniversitesi](./Marmara/İstanbul%20Beykent%20Üniversitesi/) | 2 | 0 | 2 | 3 | kısmi |
-| [İstanbul Bilgi Üniversitesi](./Marmara/İstanbul%20Bilgi%20Üniversitesi/) | 3 | 0 | 2 | 5 | kısmi |
-| [İstanbul Esenyurt Üniversitesi](./Marmara/İstanbul%20Esenyurt%20Üniversitesi/) | 4 | 0 | 2 | 6 | kısmi |
-| [İstanbul Galata Üniversitesi](./Marmara/İstanbul%20Galata%20Üniversitesi/) | 1 | 0 | 1 | 2 | kısmi |
+| [İbn Haldun Üniversitesi](./Marmara/İbn%20Haldun%20Üniversitesi/) | 3 | 0 | 7 | 18 | kısmi; elle derlenmiş 9 dosya |
+| [İstanbul 29 Mayıs Üniversitesi](./Marmara/İstanbul%2029%20Mayıs%20Üniversitesi/) | 3 | 0 | 2 | 10 | kısmi; elle derlenmiş 5 dosya |
+| [İstanbul Arel Üniversitesi](./Marmara/İstanbul%20Arel%20Üniversitesi/) | 0 | 0 | 3 | 0 | kısmi |
+| [İstanbul Atlas Üniversitesi](./Marmara/İstanbul%20Atlas%20Üniversitesi/) | 1 | 0 | 1 | 4 | kısmi; elle derlenmiş 2 dosya |
+| [İstanbul Aydın Üniversitesi](./Marmara/İstanbul%20Aydın%20Üniversitesi/) | 0 | 0 | 1 | 2 | erişilemedi; elle derlenmiş 1 dosya |
+| [İstanbul Beykent Üniversitesi](./Marmara/İstanbul%20Beykent%20Üniversitesi/) | 2 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
+| [İstanbul Bilgi Üniversitesi](./Marmara/İstanbul%20Bilgi%20Üniversitesi/) | 3 | 0 | 2 | 10 | kısmi; elle derlenmiş 5 dosya |
+| [İstanbul Esenyurt Üniversitesi](./Marmara/İstanbul%20Esenyurt%20Üniversitesi/) | 4 | 0 | 2 | 12 | kısmi; elle derlenmiş 6 dosya |
+| [İstanbul Galata Üniversitesi](./Marmara/İstanbul%20Galata%20Üniversitesi/) | 1 | 0 | 1 | 4 | kısmi; elle derlenmiş 2 dosya |
 | [İstanbul Gedik Üniversitesi](./Marmara/İstanbul%20Gedik%20Üniversitesi/) | 1 | 0 | 0 | 0 | kısmi |
 | [İstanbul Gelişim Üniversitesi](./Marmara/İstanbul%20Gelişim%20Üniversitesi/) | 4 | 0 | 10 | 0 | kısmi |
-| İstanbul Kent Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [İstanbul Kültür Üniversitesi](./Marmara/İstanbul%20Kültür%20Üniversitesi/) | 1 | 0 | 0 | 1 | kısmi |
-| [İstanbul Medeniyet Üniversitesi](./Marmara/İstanbul%20Medeniyet%20Üniversitesi/) | 4 | 0 | 7 | 11 | kısmi |
-| [İstanbul Medipol Üniversitesi](./Marmara/İstanbul%20Medipol%20Üniversitesi/) | 0 | 0 | 1 | 1 | kısmi |
-| İstanbul Nişantaşı Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [İstanbul Okan Üniversitesi](./Marmara/İstanbul%20Okan%20Üniversitesi/) | 4 | 0 | 9 | 13 | kısmi |
+| [İstanbul Kent Üniversitesi](./Marmara/İstanbul%20Kent%20Üniversitesi/) | 0 | 0 | 2 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [İstanbul Kültür Üniversitesi](./Marmara/İstanbul%20Kültür%20Üniversitesi/) | 1 | 0 | 0 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [İstanbul Medeniyet Üniversitesi](./Marmara/İstanbul%20Medeniyet%20Üniversitesi/) | 4 | 0 | 7 | 22 | kısmi; elle derlenmiş 11 dosya |
+| [İstanbul Medipol Üniversitesi](./Marmara/İstanbul%20Medipol%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [İstanbul Nişantaşı Üniversitesi](./Marmara/İstanbul%20Nişantaşı%20Üniversitesi/) | 2 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
+| [İstanbul Okan Üniversitesi](./Marmara/İstanbul%20Okan%20Üniversitesi/) | 4 | 0 | 9 | 26 | kısmi; elle derlenmiş 13 dosya |
 | İstanbul Rumeli Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [İstanbul Sabahattin Zaim Üniversitesi](./Marmara/İstanbul%20Sabahattin%20Zaim%20Üniversitesi/) | 5 | 0 | 2 | 7 | kısmi |
-| [İstanbul Sağlık ve Teknoloji Üniversitesi](./Marmara/İstanbul%20Sağlık%20ve%20Teknoloji%20Üniversitesi/) | 0 | 0 | 1 | 1 | kısmi |
-| [İstanbul Teknik Üniversitesi](./Marmara/İstanbul%20Teknik%20Üniversitesi/) | 3 | 0 | 3 | 6 | kısmi |
-| [İstanbul Ticaret Üniversitesi](./Marmara/İstanbul%20Ticaret%20Üniversitesi/) | 3 | 0 | 6 | 9 | kısmi |
+| [İstanbul Sabahattin Zaim Üniversitesi](./Marmara/İstanbul%20Sabahattin%20Zaim%20Üniversitesi/) | 5 | 0 | 2 | 14 | kısmi; elle derlenmiş 7 dosya |
+| [İstanbul Sağlık ve Teknoloji Üniversitesi](./Marmara/İstanbul%20Sağlık%20ve%20Teknoloji%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [İstanbul Teknik Üniversitesi](./Marmara/İstanbul%20Teknik%20Üniversitesi/) | 3 | 0 | 3 | 12 | kısmi; elle derlenmiş 6 dosya |
+| [İstanbul Ticaret Üniversitesi](./Marmara/İstanbul%20Ticaret%20Üniversitesi/) | 3 | 0 | 6 | 18 | kısmi; elle derlenmiş 9 dosya |
 | İstanbul Topkapı Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [İstanbul Yeni Yüzyıl Üniversitesi](./Marmara/İstanbul%20Yeni%20Yüzyıl%20Üniversitesi/) | 3 | 0 | 5 | 8 | kısmi |
+| [İstanbul Yeni Yüzyıl Üniversitesi](./Marmara/İstanbul%20Yeni%20Yüzyıl%20Üniversitesi/) | 3 | 0 | 5 | 16 | kısmi; elle derlenmiş 8 dosya |
 | İstanbul Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | İstanbul Üniversitesi-Cerrahpaşa | 0 | 0 | 0 | 0 | tarandı |
-| [İstinye Üniversitesi](./Marmara/İstinye%20Üniversitesi/) | 2 | 0 | 2 | 4 | kısmi |
+| [İstinye Üniversitesi](./Marmara/İstinye%20Üniversitesi/) | 2 | 0 | 2 | 8 | kısmi; elle derlenmiş 4 dosya |
 
-## Ege (11/18 üniversitede kaynak bulundu)
+## Ege (17/18 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
-| [Afyon Kocatepe Üniversitesi](./Ege/Afyon%20Kocatepe%20Üniversitesi/) | 1 | 0 | 8 | 9 | kısmi |
-| [Afyonkarahisar Sağlık Bilimleri Üniversitesi](./Ege/Afyonkarahisar%20Sağlık%20Bilimleri%20Üniversitesi/) | 2 | 0 | 2 | 3 | tarandı |
-| Aydın Adnan Menderes Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Pamukkale Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Kütahya Dumlupınar Üniversitesi](./Ege/Kütahya%20Dumlupınar%20Üniversitesi/) | 1 | 0 | 5 | 6 | tarandı |
-| [Kütahya Sağlık Bilimleri Üniversitesi](./Ege/Kütahya%20Sağlık%20Bilimleri%20Üniversitesi/) | 0 | 0 | 1 | 1 | kısmi |
-| [Manisa Celal Bayar Üniversitesi](./Ege/Manisa%20Celal%20Bayar%20Üniversitesi/) | 7 | 0 | 4 | 0 | tarandı |
-| [Muğla Sıtkı Koçman Üniversitesi](./Ege/Muğla%20Sıtkı%20Koçman%20Üniversitesi/) | 10 | 10 | 16 | 35 | tarandı |
-| Uşak Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Dokuz Eylül Üniversitesi](./Ege/Dokuz%20Eylül%20Üniversitesi/) | 8 | 0 | 8 | 11 | kısmi |
-| [Ege Üniversitesi](./Ege/Ege%20Üniversitesi/) | 4 | 0 | 6 | 8 | kısmi |
-| Yaşar Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| İzmir Bakırçay Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Afyon Kocatepe Üniversitesi](./Ege/Afyon%20Kocatepe%20Üniversitesi/) | 1 | 0 | 8 | 23 | kısmi; elle derlenmiş 14 dosya |
+| [Afyonkarahisar Sağlık Bilimleri Üniversitesi](./Ege/Afyonkarahisar%20Sağlık%20Bilimleri%20Üniversitesi/) | 2 | 0 | 2 | 6 | tarandı; elle derlenmiş 3 dosya |
+| [Aydın Adnan Menderes Üniversitesi](./Ege/Aydın%20Adnan%20Menderes%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [Pamukkale Üniversitesi](./Ege/Pamukkale%20Üniversitesi/) | 0 | 0 | 0 | 5 | kısmi; elle derlenmiş 5 dosya |
+| [Kütahya Dumlupınar Üniversitesi](./Ege/Kütahya%20Dumlupınar%20Üniversitesi/) | 1 | 0 | 5 | 13 | tarandı; elle derlenmiş 7 dosya |
+| [Kütahya Sağlık Bilimleri Üniversitesi](./Ege/Kütahya%20Sağlık%20Bilimleri%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [Manisa Celal Bayar Üniversitesi](./Ege/Manisa%20Celal%20Bayar%20Üniversitesi/) | 7 | 0 | 4 | 1 | tarandı; elle derlenmiş 1 dosya |
+| [Muğla Sıtkı Koçman Üniversitesi](./Ege/Muğla%20Sıtkı%20Koçman%20Üniversitesi/) | 10 | 10 | 16 | 70 | tarandı; elle derlenmiş 35 dosya |
+| [Uşak Üniversitesi](./Ege/Uşak%20Üniversitesi/) | 0 | 0 | 0 | 2 | kısmi; elle derlenmiş 2 dosya |
+| [Dokuz Eylül Üniversitesi](./Ege/Dokuz%20Eylül%20Üniversitesi/) | 8 | 0 | 8 | 30 | kısmi; elle derlenmiş 19 dosya |
+| [Ege Üniversitesi](./Ege/Ege%20Üniversitesi/) | 4 | 0 | 6 | 16 | kısmi; elle derlenmiş 8 dosya |
+| [Yaşar Üniversitesi](./Ege/Yaşar%20Üniversitesi/) | 0 | 0 | 0 | 5 | erişilemedi; elle derlenmiş 5 dosya |
+| [İzmir Bakırçay Üniversitesi](./Ege/İzmir%20Bakırçay%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | İzmir Demokrasi Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [İzmir Ekonomi Üniversitesi](./Ege/İzmir%20Ekonomi%20Üniversitesi/) | 0 | 0 | 2 | 2 | kısmi |
-| İzmir Kâtip Çelebi Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [İzmir Ekonomi Üniversitesi](./Ege/İzmir%20Ekonomi%20Üniversitesi/) | 0 | 0 | 2 | 11 | kısmi; elle derlenmiş 9 dosya |
+| [İzmir Kâtip Çelebi Üniversitesi](./Ege/İzmir%20Kâtip%20Çelebi%20Üniversitesi/) | 0 | 0 | 0 | 7 | tarandı; elle derlenmiş 7 dosya |
 | [İzmir Tınaztepe Üniversitesi](./Ege/İzmir%20Tınaztepe%20Üniversitesi/) | 0 | 0 | 2 | 0 | kısmi |
-| [İzmir Yüksek Teknoloji Enstitüsü](./Ege/İzmir%20Yüksek%20Teknoloji%20Enstitüsü/) | 0 | 0 | 3 | 3 | kısmi |
+| [İzmir Yüksek Teknoloji Enstitüsü](./Ege/İzmir%20Yüksek%20Teknoloji%20Enstitüsü/) | 0 | 0 | 3 | 7 | kısmi; elle derlenmiş 4 dosya |
 
-## Akdeniz (13/19 üniversitede kaynak bulundu)
+## Akdeniz (14/19 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
 | Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Çukurova Üniversitesi](./Akdeniz/Çukurova%20Üniversitesi/) | 4 | 1 | 9 | 14 | kısmi |
-| [Akdeniz Üniversitesi](./Akdeniz/Akdeniz%20Üniversitesi/) | 0 | 0 | 21 | 21 | kısmi |
-| [Alanya Alaaddin Keykubat Üniversitesi](./Akdeniz/Alanya%20Alaaddin%20Keykubat%20Üniversitesi/) | 0 | 0 | 2 | 1 | kısmi |
-| [Alanya Üniversitesi](./Akdeniz/Alanya%20Üniversitesi/) | 0 | 0 | 5 | 2 | tarandı |
+| [Çukurova Üniversitesi](./Akdeniz/Çukurova%20Üniversitesi/) | 4 | 1 | 9 | 28 | kısmi; elle derlenmiş 14 dosya |
+| [Akdeniz Üniversitesi](./Akdeniz/Akdeniz%20Üniversitesi/) | 0 | 0 | 21 | 42 | kısmi; elle derlenmiş 21 dosya |
+| [Alanya Alaaddin Keykubat Üniversitesi](./Akdeniz/Alanya%20Alaaddin%20Keykubat%20Üniversitesi/) | 0 | 0 | 2 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [Alanya Üniversitesi](./Akdeniz/Alanya%20Üniversitesi/) | 0 | 0 | 5 | 4 | tarandı; elle derlenmiş 2 dosya |
 | Antalya Belek Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Antalya Bilim Üniversitesi](./Akdeniz/Antalya%20Bilim%20Üniversitesi/) | 2 | 0 | 3 | 5 | kısmi |
-| [Burdur Mehmet Akif Ersoy Üniversitesi](./Akdeniz/Burdur%20Mehmet%20Akif%20Ersoy%20Üniversitesi/) | 6 | 0 | 9 | 11 | kısmi |
+| [Antalya Bilim Üniversitesi](./Akdeniz/Antalya%20Bilim%20Üniversitesi/) | 2 | 0 | 3 | 10 | kısmi; elle derlenmiş 5 dosya |
+| [Burdur Mehmet Akif Ersoy Üniversitesi](./Akdeniz/Burdur%20Mehmet%20Akif%20Ersoy%20Üniversitesi/) | 6 | 0 | 9 | 22 | kısmi; elle derlenmiş 11 dosya |
 | Hatay Mustafa Kemal Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [İskenderun Teknik Üniversitesi](./Akdeniz/İskenderun%20Teknik%20Üniversitesi/) | 1 | 0 | 1 | 2 | tarandı |
-| [Isparta Uygulamalı Bilimler Üniversitesi](./Akdeniz/Isparta%20Uygulamalı%20Bilimler%20Üniversitesi/) | 0 | 1 | 1 | 1 | kısmi |
-| [Süleyman Demirel Üniversitesi](./Akdeniz/Süleyman%20Demirel%20Üniversitesi/) | 0 | 0 | 2 | 2 | kısmi |
+| [İskenderun Teknik Üniversitesi](./Akdeniz/İskenderun%20Teknik%20Üniversitesi/) | 1 | 0 | 1 | 4 | tarandı; elle derlenmiş 2 dosya |
+| [Isparta Uygulamalı Bilimler Üniversitesi](./Akdeniz/Isparta%20Uygulamalı%20Bilimler%20Üniversitesi/) | 0 | 1 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [Süleyman Demirel Üniversitesi](./Akdeniz/Süleyman%20Demirel%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
 | Kahramanmaraş Sütçü İmam Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Kahramanmaraş İstiklal Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | [Mersin Üniversitesi](./Akdeniz/Mersin%20Üniversitesi/) | 4 | 0 | 0 | 0 | kısmi |
-| [Tarsus Üniversitesi](./Akdeniz/Tarsus%20Üniversitesi/) | 2 | 4 | 0 | 5 | kısmi |
-| [Toros Üniversitesi](./Akdeniz/Toros%20Üniversitesi/) | 0 | 0 | 4 | 4 | kısmi |
-| Çağ Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [Osmaniye Korkut Ata Üniversitesi](./Akdeniz/Osmaniye%20Korkut%20Ata%20Üniversitesi/) | 1 | 0 | 9 | 10 | kısmi |
+| [Tarsus Üniversitesi](./Akdeniz/Tarsus%20Üniversitesi/) | 2 | 4 | 0 | 10 | kısmi; elle derlenmiş 5 dosya |
+| [Toros Üniversitesi](./Akdeniz/Toros%20Üniversitesi/) | 0 | 0 | 4 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Çağ Üniversitesi](./Akdeniz/Çağ%20Üniversitesi/) | 0 | 0 | 1 | 0 | erişilemedi |
+| [Osmaniye Korkut Ata Üniversitesi](./Akdeniz/Osmaniye%20Korkut%20Ata%20Üniversitesi/) | 1 | 0 | 9 | 20 | kısmi; elle derlenmiş 10 dosya |
 
-## İç Anadolu (23/44 üniversitede kaynak bulundu)
+## İç Anadolu (29/44 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
-| [Aksaray Üniversitesi](./İç%20Anadolu/Aksaray%20Üniversitesi/) | 3 | 2 | 2 | 6 | kısmi |
-| [Ankara Bilim Üniversitesi](./İç%20Anadolu/Ankara%20Bilim%20Üniversitesi/) | 1 | 0 | 2 | 3 | kısmi |
+| [Aksaray Üniversitesi](./İç%20Anadolu/Aksaray%20Üniversitesi/) | 3 | 2 | 2 | 12 | kısmi; elle derlenmiş 6 dosya |
+| [Ankara Bilim Üniversitesi](./İç%20Anadolu/Ankara%20Bilim%20Üniversitesi/) | 1 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
 | Ankara Hacı Bayram Veli Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | Ankara Medipol Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Ankara Müzik ve Güzel Sanatlar Üniversitesi](./İç%20Anadolu/Ankara%20Müzik%20ve%20Güzel%20Sanatlar%20Üniversitesi/) | 2 | 0 | 2 | 2 | kısmi |
-| [Ankara Sosyal Bilimler Üniversitesi](./İç%20Anadolu/Ankara%20Sosyal%20Bilimler%20Üniversitesi/) | 4 | 0 | 5 | 9 | kısmi |
+| [Ankara Müzik ve Güzel Sanatlar Üniversitesi](./İç%20Anadolu/Ankara%20Müzik%20ve%20Güzel%20Sanatlar%20Üniversitesi/) | 2 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
+| [Ankara Sosyal Bilimler Üniversitesi](./İç%20Anadolu/Ankara%20Sosyal%20Bilimler%20Üniversitesi/) | 4 | 0 | 5 | 18 | kısmi; elle derlenmiş 9 dosya |
 | Ankara Yıldırım Beyazıt Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Ankara Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Atılım Üniversitesi](./İç%20Anadolu/Atılım%20Üniversitesi/) | 3 | 1 | 12 | 14 | kısmi |
+| [Ankara Üniversitesi](./İç%20Anadolu/Ankara%20Üniversitesi/) | 1 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
+| [Atılım Üniversitesi](./İç%20Anadolu/Atılım%20Üniversitesi/) | 3 | 1 | 12 | 28 | kısmi; elle derlenmiş 14 dosya |
 | Başkent Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [Gazi Üniversitesi](./İç%20Anadolu/Gazi%20Üniversitesi/) | 0 | 0 | 2 | 2 | kısmi |
+| [Gazi Üniversitesi](./İç%20Anadolu/Gazi%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
 | [Hacettepe Üniversitesi](./İç%20Anadolu/Hacettepe%20Üniversitesi/) | 14 | 0 | 3 | 0 | kısmi |
-| [Lokman Hekim Üniversitesi](./İç%20Anadolu/Lokman%20Hekim%20Üniversitesi/) | 0 | 2 | 0 | 2 | kısmi |
+| [Lokman Hekim Üniversitesi](./İç%20Anadolu/Lokman%20Hekim%20Üniversitesi/) | 0 | 2 | 0 | 4 | kısmi; elle derlenmiş 2 dosya |
 | OSTİM Teknik Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Orta Doğu Teknik Üniversitesi](./İç%20Anadolu/Orta%20Doğu%20Teknik%20Üniversitesi/) | 10 | 3 | 2 | 6 | kısmi |
-| TED Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
+| [Orta Doğu Teknik Üniversitesi](./İç%20Anadolu/Orta%20Doğu%20Teknik%20Üniversitesi/) | 10 | 3 | 2 | 12 | kısmi; elle derlenmiş 6 dosya |
+| [TED Üniversitesi](./İç%20Anadolu/TED%20Üniversitesi/) | 2 | 0 | 2 | 8 | kısmi; elle derlenmiş 4 dosya |
 | TOBB Ekonomi ve Teknoloji Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Türk Hava Kurumu Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Ufuk Üniversitesi](./İç%20Anadolu/Ufuk%20Üniversitesi/) | 0 | 0 | 5 | 4 | kısmi |
-| [Yüksek İhtisas Üniversitesi](./İç%20Anadolu/Yüksek%20İhtisas%20Üniversitesi/) | 0 | 0 | 1 | 1 | tarandı |
-| [Çankaya Üniversitesi](./İç%20Anadolu/Çankaya%20Üniversitesi/) | 6 | 2 | 4 | 8 | kısmi |
-| İhsan Doğramacı Bilkent Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Ufuk Üniversitesi](./İç%20Anadolu/Ufuk%20Üniversitesi/) | 0 | 0 | 5 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Yüksek İhtisas Üniversitesi](./İç%20Anadolu/Yüksek%20İhtisas%20Üniversitesi/) | 0 | 0 | 1 | 2 | tarandı; elle derlenmiş 1 dosya |
+| [Çankaya Üniversitesi](./İç%20Anadolu/Çankaya%20Üniversitesi/) | 6 | 2 | 4 | 16 | kısmi; elle derlenmiş 8 dosya |
+| [İhsan Doğramacı Bilkent Üniversitesi](./İç%20Anadolu/İhsan%20Doğramacı%20Bilkent%20Üniversitesi/) | 1 | 0 | 1 | 4 | kısmi; elle derlenmiş 2 dosya |
 | Anadolu Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [Eskişehir Osmangazi Üniversitesi](./İç%20Anadolu/Eskişehir%20Osmangazi%20Üniversitesi/) | 4 | 1 | 9 | 14 | kısmi |
-| [Eskişehir Teknik Üniversitesi](./İç%20Anadolu/Eskişehir%20Teknik%20Üniversitesi/) | 1 | 2 | 9 | 10 | kısmi |
-| [Karamanoğlu Mehmetbey Üniversitesi](./İç%20Anadolu/Karamanoğlu%20Mehmetbey%20Üniversitesi/) | 4 | 0 | 3 | 5 | kısmi |
+| [Eskişehir Osmangazi Üniversitesi](./İç%20Anadolu/Eskişehir%20Osmangazi%20Üniversitesi/) | 4 | 1 | 9 | 28 | kısmi; elle derlenmiş 14 dosya |
+| [Eskişehir Teknik Üniversitesi](./İç%20Anadolu/Eskişehir%20Teknik%20Üniversitesi/) | 1 | 2 | 9 | 20 | kısmi; elle derlenmiş 10 dosya |
+| [Karamanoğlu Mehmetbey Üniversitesi](./İç%20Anadolu/Karamanoğlu%20Mehmetbey%20Üniversitesi/) | 4 | 0 | 3 | 10 | kısmi; elle derlenmiş 5 dosya |
 | Abdullah Gül Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Erciyes Üniversitesi](./İç%20Anadolu/Erciyes%20Üniversitesi/) | 3 | 2 | 3 | 8 | kısmi |
-| [Kayseri Üniversitesi](./İç%20Anadolu/Kayseri%20Üniversitesi/) | 1 | 0 | 3 | 4 | kısmi |
+| [Erciyes Üniversitesi](./İç%20Anadolu/Erciyes%20Üniversitesi/) | 3 | 2 | 3 | 16 | kısmi; elle derlenmiş 8 dosya |
+| [Kayseri Üniversitesi](./İç%20Anadolu/Kayseri%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
 | Nuh Naci Yazgan Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Konya Gıda ve Tarım Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| Konya Teknik Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Konya Teknik Üniversitesi](./İç%20Anadolu/Konya%20Teknik%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | Kto Karatay Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Necmettin Erbakan Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Selçuk Üniversitesi](./İç%20Anadolu/Selçuk%20Üniversitesi/) | 0 | 0 | 2 | 2 | kısmi |
-| [Kırıkkale Üniversitesi](./İç%20Anadolu/Kırıkkale%20Üniversitesi/) | 1 | 0 | 9 | 7 | kısmi |
-| Kırşehir Ahi Evran Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
+| [Necmettin Erbakan Üniversitesi](./İç%20Anadolu/Necmettin%20Erbakan%20Üniversitesi/) | 3 | 0 | 1 | 6 | kısmi; elle derlenmiş 3 dosya |
+| [Selçuk Üniversitesi](./İç%20Anadolu/Selçuk%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
+| [Kırıkkale Üniversitesi](./İç%20Anadolu/Kırıkkale%20Üniversitesi/) | 1 | 0 | 9 | 14 | kısmi; elle derlenmiş 7 dosya |
+| [Kırşehir Ahi Evran Üniversitesi](./İç%20Anadolu/Kırşehir%20Ahi%20Evran%20Üniversitesi/) | 0 | 0 | 3 | 4 | erişilemedi; elle derlenmiş 2 dosya |
 | Kapadokya Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Nevşehir Hacı Bektaş Veli Üniversitesi](./İç%20Anadolu/Nevşehir%20Hacı%20Bektaş%20Veli%20Üniversitesi/) | 4 | 0 | 1 | 5 | kısmi |
-| [Niğde Ömer Halisdemir Üniversitesi](./İç%20Anadolu/Niğde%20Ömer%20Halisdemir%20Üniversitesi/) | 0 | 0 | 8 | 8 | kısmi |
-| [Sivas Bilim ve Teknoloji Üniversitesi](./İç%20Anadolu/Sivas%20Bilim%20ve%20Teknoloji%20Üniversitesi/) | 1 | 0 | 3 | 4 | kısmi |
-| [Sivas Cumhuriyet Üniversitesi](./İç%20Anadolu/Sivas%20Cumhuriyet%20Üniversitesi/) | 0 | 0 | 6 | 5 | kısmi |
+| [Nevşehir Hacı Bektaş Veli Üniversitesi](./İç%20Anadolu/Nevşehir%20Hacı%20Bektaş%20Veli%20Üniversitesi/) | 4 | 0 | 1 | 10 | kısmi; elle derlenmiş 5 dosya |
+| [Niğde Ömer Halisdemir Üniversitesi](./İç%20Anadolu/Niğde%20Ömer%20Halisdemir%20Üniversitesi/) | 0 | 0 | 8 | 17 | kısmi; elle derlenmiş 9 dosya |
+| [Sivas Bilim ve Teknoloji Üniversitesi](./İç%20Anadolu/Sivas%20Bilim%20ve%20Teknoloji%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Sivas Cumhuriyet Üniversitesi](./İç%20Anadolu/Sivas%20Cumhuriyet%20Üniversitesi/) | 0 | 0 | 6 | 10 | kısmi; elle derlenmiş 5 dosya |
 | Yozgat Bozok Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Çankırı Karatekin Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 
-## Karadeniz (12/21 üniversitede kaynak bulundu)
+## Karadeniz (16/21 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
 | Amasya Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Artvin Çoruh Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Bartın Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Bayburt Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [Bolu Abant İzzet Baysal Üniversitesi](./Karadeniz/Bolu%20Abant%20İzzet%20Baysal%20Üniversitesi/) | 4 | 0 | 0 | 2 | kısmi |
+| [Artvin Çoruh Üniversitesi](./Karadeniz/Artvin%20Çoruh%20Üniversitesi/) | 1 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
+| [Bartın Üniversitesi](./Karadeniz/Bartın%20Üniversitesi/) | 0 | 0 | 1 | 0 | kısmi |
+| [Bayburt Üniversitesi](./Karadeniz/Bayburt%20Üniversitesi/) | 0 | 0 | 2 | 0 | tarandı |
+| [Bolu Abant İzzet Baysal Üniversitesi](./Karadeniz/Bolu%20Abant%20İzzet%20Baysal%20Üniversitesi/) | 4 | 0 | 0 | 4 | kısmi; elle derlenmiş 2 dosya |
 | Düzce Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Giresun Üniversitesi](./Karadeniz/Giresun%20Üniversitesi/) | 4 | 0 | 4 | 7 | kısmi |
-| [Gümüşhane Üniversitesi](./Karadeniz/Gümüşhane%20Üniversitesi/) | 0 | 0 | 1 | 1 | kısmi |
+| [Giresun Üniversitesi](./Karadeniz/Giresun%20Üniversitesi/) | 4 | 0 | 4 | 14 | kısmi; elle derlenmiş 7 dosya |
+| [Gümüşhane Üniversitesi](./Karadeniz/Gümüşhane%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | Karabük Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [Kastamonu Üniversitesi](./Karadeniz/Kastamonu%20Üniversitesi/) | 4 | 0 | 1 | 5 | kısmi |
-| [Ordu Üniversitesi](./Karadeniz/Ordu%20Üniversitesi/) | 3 | 0 | 4 | 7 | kısmi |
-| [Recep Tayyip Erdoğan Üniversitesi](./Karadeniz/Recep%20Tayyip%20Erdoğan%20Üniversitesi/) | 2 | 0 | 3 | 4 | kısmi |
-| [Ondokuz Mayıs Üniversitesi](./Karadeniz/Ondokuz%20Mayıs%20Üniversitesi/) | 5 | 1 | 3 | 6 | kısmi |
-| [Samsun Üniversitesi](./Karadeniz/Samsun%20Üniversitesi/) | 1 | 0 | 1 | 2 | kısmi |
-| [Sinop Üniversitesi](./Karadeniz/Sinop%20Üniversitesi/) | 1 | 0 | 1 | 2 | kısmi |
+| [Kastamonu Üniversitesi](./Karadeniz/Kastamonu%20Üniversitesi/) | 4 | 0 | 1 | 10 | kısmi; elle derlenmiş 5 dosya |
+| [Ordu Üniversitesi](./Karadeniz/Ordu%20Üniversitesi/) | 3 | 0 | 4 | 14 | kısmi; elle derlenmiş 7 dosya |
+| [Recep Tayyip Erdoğan Üniversitesi](./Karadeniz/Recep%20Tayyip%20Erdoğan%20Üniversitesi/) | 2 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Ondokuz Mayıs Üniversitesi](./Karadeniz/Ondokuz%20Mayıs%20Üniversitesi/) | 5 | 1 | 3 | 12 | kısmi; elle derlenmiş 6 dosya |
+| [Samsun Üniversitesi](./Karadeniz/Samsun%20Üniversitesi/) | 1 | 0 | 1 | 4 | kısmi; elle derlenmiş 2 dosya |
+| [Sinop Üniversitesi](./Karadeniz/Sinop%20Üniversitesi/) | 1 | 0 | 1 | 4 | kısmi; elle derlenmiş 2 dosya |
 | Tokat Gaziosmanpaşa Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Avrasya Üniversitesi](./Karadeniz/Avrasya%20Üniversitesi/) | 1 | 0 | 2 | 3 | kısmi |
-| [Karadeniz Teknik Üniversitesi](./Karadeniz/Karadeniz%20Teknik%20Üniversitesi/) | 0 | 0 | 8 | 4 | kısmi |
-| Trabzon Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Avrasya Üniversitesi](./Karadeniz/Avrasya%20Üniversitesi/) | 1 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
+| [Karadeniz Teknik Üniversitesi](./Karadeniz/Karadeniz%20Teknik%20Üniversitesi/) | 0 | 0 | 8 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Trabzon Üniversitesi](./Karadeniz/Trabzon%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [Zonguldak Bülent Ecevit Üniversitesi](./Karadeniz/Zonguldak%20Bülent%20Ecevit%20Üniversitesi/) | 3 | 1 | 3 | 0 | kısmi |
 | Hitit Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 
-## Doğu Anadolu (7/16 üniversitede kaynak bulundu)
+## Doğu Anadolu (9/16 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
-| Ardahan Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Ağrı İbrahim Çeçen Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Ardahan Üniversitesi](./Doğu%20Anadolu/Ardahan%20Üniversitesi/) | 1 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
+| Ağrı İbrahim Çeçen Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | Bingöl Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Bitlis Eren Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
-| [Fırat Üniversitesi](./Doğu%20Anadolu/Fırat%20Üniversitesi/) | 7 | 5 | 7 | 5 | kısmi |
+| [Fırat Üniversitesi](./Doğu%20Anadolu/Fırat%20Üniversitesi/) | 7 | 5 | 7 | 10 | kısmi; elle derlenmiş 5 dosya |
 | [Erzincan Binali Yıldırım Üniversitesi](./Doğu%20Anadolu/Erzincan%20Binali%20Yıldırım%20Üniversitesi/) | 2 | 1 | 9 | 0 | kısmi |
-| [Atatürk Üniversitesi](./Doğu%20Anadolu/Atatürk%20Üniversitesi/) | 3 | 0 | 2 | 5 | kısmi |
-| [Erzurum Teknik Üniversitesi](./Doğu%20Anadolu/Erzurum%20Teknik%20Üniversitesi/) | 5 | 0 | 3 | 8 | kısmi |
-| Hakkari Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
+| [Atatürk Üniversitesi](./Doğu%20Anadolu/Atatürk%20Üniversitesi/) | 3 | 0 | 2 | 11 | kısmi; elle derlenmiş 6 dosya |
+| [Erzurum Teknik Üniversitesi](./Doğu%20Anadolu/Erzurum%20Teknik%20Üniversitesi/) | 5 | 0 | 3 | 16 | kısmi; elle derlenmiş 8 dosya |
+| Hakkari Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Iğdır Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Kafkas Üniversitesi](./Doğu%20Anadolu/Kafkas%20Üniversitesi/) | 1 | 0 | 3 | 4 | kısmi |
-| [Malatya Turgut Özal Üniversitesi](./Doğu%20Anadolu/Malatya%20Turgut%20Özal%20Üniversitesi/) | 0 | 0 | 1 | 1 | kısmi |
-| İnönü Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Kafkas Üniversitesi](./Doğu%20Anadolu/Kafkas%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
+| [Malatya Turgut Özal Üniversitesi](./Doğu%20Anadolu/Malatya%20Turgut%20Özal%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
+| [İnönü Üniversitesi](./Doğu%20Anadolu/İnönü%20Üniversitesi/) | 0 | 0 | 2 | 2 | tarandı; elle derlenmiş 1 dosya |
 | Muş Alparslan Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Munzur Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Van Yüzüncü Yıl Üniversitesi](./Doğu%20Anadolu/Van%20Yüzüncü%20Yıl%20Üniversitesi/) | 0 | 0 | 4 | 3 | kısmi |
+| [Van Yüzüncü Yıl Üniversitesi](./Doğu%20Anadolu/Van%20Yüzüncü%20Yıl%20Üniversitesi/) | 0 | 0 | 4 | 6 | kısmi; elle derlenmiş 3 dosya |
 
 ## Güneydoğu Anadolu (9/12 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
-| [Adıyaman Üniversitesi](./Güneydoğu%20Anadolu/Adıyaman%20Üniversitesi/) | 12 | 0 | 3 | 15 | kısmi |
+| [Adıyaman Üniversitesi](./Güneydoğu%20Anadolu/Adıyaman%20Üniversitesi/) | 12 | 0 | 3 | 30 | kısmi; elle derlenmiş 15 dosya |
 | Batman Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
-| [Dicle Üniversitesi](./Güneydoğu%20Anadolu/Dicle%20Üniversitesi/) | 4 | 0 | 8 | 10 | kısmi |
+| [Dicle Üniversitesi](./Güneydoğu%20Anadolu/Dicle%20Üniversitesi/) | 4 | 0 | 8 | 20 | kısmi; elle derlenmiş 10 dosya |
 | Gaziantep Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Gaziantep İslam Bilim ve Teknoloji Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| [Hasan Kalyoncu Üniversitesi](./Güneydoğu%20Anadolu/Hasan%20Kalyoncu%20Üniversitesi/) | 1 | 0 | 6 | 7 | kısmi |
-| [Sanko Üniversitesi](./Güneydoğu%20Anadolu/Sanko%20Üniversitesi/) | 0 | 0 | 13 | 7 | kısmi |
-| [Kilis 7 Aralık Üniversitesi](./Güneydoğu%20Anadolu/Kilis%207%20Aralık%20Üniversitesi/) | 0 | 0 | 9 | 2 | kısmi |
-| [Mardin Artuklu Üniversitesi](./Güneydoğu%20Anadolu/Mardin%20Artuklu%20Üniversitesi/) | 1 | 0 | 2 | 3 | kısmi |
-| [Siirt Üniversitesi](./Güneydoğu%20Anadolu/Siirt%20Üniversitesi/) | 0 | 0 | 1 | 1 | kısmi |
+| [Hasan Kalyoncu Üniversitesi](./Güneydoğu%20Anadolu/Hasan%20Kalyoncu%20Üniversitesi/) | 1 | 0 | 6 | 14 | kısmi; elle derlenmiş 7 dosya |
+| [Sanko Üniversitesi](./Güneydoğu%20Anadolu/Sanko%20Üniversitesi/) | 0 | 0 | 13 | 14 | kısmi; elle derlenmiş 7 dosya |
+| [Kilis 7 Aralık Üniversitesi](./Güneydoğu%20Anadolu/Kilis%207%20Aralık%20Üniversitesi/) | 0 | 0 | 9 | 4 | kısmi; elle derlenmiş 2 dosya |
+| [Mardin Artuklu Üniversitesi](./Güneydoğu%20Anadolu/Mardin%20Artuklu%20Üniversitesi/) | 1 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
+| [Siirt Üniversitesi](./Güneydoğu%20Anadolu/Siirt%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [Harran Üniversitesi](./Güneydoğu%20Anadolu/Harran%20Üniversitesi/) | 0 | 0 | 2 | 0 | kısmi |
 | [Şırnak Üniversitesi](./Güneydoğu%20Anadolu/Şırnak%20Üniversitesi/) | 1 | 0 | 2 | 0 | kısmi |
 
-## Elle aranması gerekenler (87)
+## Elle aranması gerekenler (61)
 
 - Bandırma Onyedi Eylül Üniversitesi
 - Bilecik Şeyh Edebali Üniversitesi
-- Bursa Uludağ Üniversitesi
 - Mudanya Üniversitesi
 - Trakya Üniversitesi
 - Gebze Teknik Üniversitesi
 - Kocaeli Üniversitesi
 - Sakarya Uygulamalı Bilimler Üniversitesi
 - Çanakkale Onsekiz Mart Üniversitesi
-- Acıbadem Mehmet Ali Aydınlar Üniversitesi
 - Bahçeşehir Üniversitesi
 - Bezm-i Âlem Vakıf Üniversitesi
-- Biruni Üniversitesi
 - Demiroğlu Bilim Üniversitesi
 - Doğuş Üniversitesi
 - Haliç Üniversitesi
@@ -267,64 +264,41 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 - Türkiye Uluslararası İslam, Bilim ve Teknoloji Üniversitesi
 - Yıldız Teknik Üniversitesi
 - Üsküdar Üniversitesi
-- İstanbul Arel Üniversitesi
-- İstanbul Aydın Üniversitesi
-- İstanbul Kent Üniversitesi
-- İstanbul Nişantaşı Üniversitesi
 - İstanbul Rumeli Üniversitesi
 - İstanbul Topkapı Üniversitesi
 - İstanbul Üniversitesi
 - İstanbul Üniversitesi-Cerrahpaşa
-- Aydın Adnan Menderes Üniversitesi
-- Pamukkale Üniversitesi
-- Uşak Üniversitesi
-- Yaşar Üniversitesi
-- İzmir Bakırçay Üniversitesi
 - İzmir Demokrasi Üniversitesi
-- İzmir Kâtip Çelebi Üniversitesi
 - Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi
 - Antalya Belek Üniversitesi
 - Hatay Mustafa Kemal Üniversitesi
 - Kahramanmaraş Sütçü İmam Üniversitesi
 - Kahramanmaraş İstiklal Üniversitesi
-- Çağ Üniversitesi
 - Ankara Hacı Bayram Veli Üniversitesi
 - Ankara Medipol Üniversitesi
 - Ankara Yıldırım Beyazıt Üniversitesi
-- Ankara Üniversitesi
 - Başkent Üniversitesi
 - OSTİM Teknik Üniversitesi
-- TED Üniversitesi
 - TOBB Ekonomi ve Teknoloji Üniversitesi
 - Türk Hava Kurumu Üniversitesi
-- İhsan Doğramacı Bilkent Üniversitesi
 - Anadolu Üniversitesi
 - Abdullah Gül Üniversitesi
 - Nuh Naci Yazgan Üniversitesi
 - Konya Gıda ve Tarım Üniversitesi
-- Konya Teknik Üniversitesi
 - Kto Karatay Üniversitesi
-- Necmettin Erbakan Üniversitesi
-- Kırşehir Ahi Evran Üniversitesi
 - Kapadokya Üniversitesi
 - Yozgat Bozok Üniversitesi
 - Çankırı Karatekin Üniversitesi
 - Amasya Üniversitesi
-- Artvin Çoruh Üniversitesi
-- Bartın Üniversitesi
-- Bayburt Üniversitesi
 - Düzce Üniversitesi
 - Karabük Üniversitesi
 - Tokat Gaziosmanpaşa Üniversitesi
-- Trabzon Üniversitesi
 - Hitit Üniversitesi
-- Ardahan Üniversitesi
 - Ağrı İbrahim Çeçen Üniversitesi
 - Bingöl Üniversitesi
 - Bitlis Eren Üniversitesi
 - Hakkari Üniversitesi
 - Iğdır Üniversitesi
-- İnönü Üniversitesi
 - Muş Alparslan Üniversitesi
 - Munzur Üniversitesi
 - Batman Üniversitesi

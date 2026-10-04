@@ -1,7 +1,7 @@
 <!-- organize-scan-sources -->
 # Mersin Üniversitesi — tez kaynakları (otomatik tarama)
 
-Alan adı: `mersin.edu.tr` · Mersin · devlet · tarama durumu: kısmi (38/39 sayfa) · 2026-10-04
+Alan adı: `mersin.edu.tr` · Mersin · devlet · tarama durumu: kısmi (40/41 sayfa) · 2026-10-04
 
 Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
 

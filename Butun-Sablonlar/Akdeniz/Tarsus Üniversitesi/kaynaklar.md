@@ -1,7 +1,7 @@
 <!-- organize-scan-sources -->
 # Tarsus Üniversitesi — tez kaynakları (otomatik tarama)
 
-Alan adı: `tarsus.edu.tr` · Mersin · devlet · tarama durumu: kısmi (50/65 sayfa) · 2026-10-04
+Alan adı: `tarsus.edu.tr` · Mersin · devlet · tarama durumu: kısmi (53/69 sayfa) · 2026-10-04
 
 Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
 

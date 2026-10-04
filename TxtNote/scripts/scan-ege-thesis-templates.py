@@ -17,6 +17,7 @@ import html
 import json
 import re
 import socket
+import ssl
 import sys
 import threading
 import time
@@ -38,7 +39,7 @@ USER_AGENT = "TxtEngineThesisTemplateInventory/1.0 (public institutional templat
 MAX_HTML_BYTES = 3 * 1024 * 1024
 MAX_SITEMAP_BYTES = 8 * 1024 * 1024
 MAX_TEMPLATE_BYTES = 25 * 1024 * 1024
-REQUEST_TIMEOUT = 6
+REQUEST_TIMEOUT = 15
 FILE_EXTENSIONS = {".doc", ".docx", ".dot", ".dotx", ".odt", ".tex", ".pdf", ".zip"}
 TEMPLATE_MARKERS = ("şablon", "sablon", "template", "taslak")
 POSSIBLE_TEMPLATE_TERMS = (
@@ -68,10 +69,33 @@ LAYOUT_TERMS = ("yazım", "yazim", "kapak", "cover", "format", "biçim", "bicim"
 # Graduate institutes usually sit on one of these subdomains; many university
 # home pages build their menus with JavaScript, so the crawler would not reach them.
 INSTITUTE_SUBDOMAINS = (
-    "lee", "lisansustu", "lisansustuegitim", "enstitu", "fbe", "sbe", "sabe", "saglikbe",
-    "fenbilimleri", "sosyalbilimler", "saglikbilimleri", "egitimbilimleri", "ebe",
-    "fen", "sosyal", "saglik", "fenbil", "sosbil", "graduate", "gradschool", "grad",
+    "lee", "lisansustu", "lisansustuegitim", "lisansustuegitimenstitusu", "enstitu", "enstituler",
+    "fbe", "sbe", "sabe", "saglikbe", "sagbe", "ebe", "gse", "sosbe", "fenbe",
+    "fenbilimleri", "sosyalbilimler", "saglikbilimleri", "egitimbilimleri",
+    "fen", "sosyal", "saglik", "fenbil", "sosbil", "graduate", "gradschool", "grad", "gradschool",
+    "lisansustuegitim-enstitusu", "lisansustu-egitim-enstitusu", "lee-enstitu",
 )
+
+
+def build_ssl_contexts() -> tuple[ssl.SSLContext, ssl.SSLContext]:
+    """Verified context (certifi when installed), plus an unverified fallback.
+
+    Several university sites send incomplete certificate chains. Public thesis
+    guides are not secrets, so after a verification failure the request is
+    retried unverified and the item records that it was."""
+    verified = ssl.create_default_context()
+    try:
+        import certifi  # noqa: WPS433 — optional
+        verified.load_verify_locations(certifi.where())
+    except Exception:
+        pass
+    unverified = ssl.create_default_context()
+    unverified.check_hostname = False
+    unverified.verify_mode = ssl.CERT_NONE
+    return verified, unverified
+
+
+SSL_VERIFIED, SSL_UNVERIFIED = build_ssl_contexts()
 PAGE_TERMS = (
     "tez", "thesis", "lisansüstü", "lisansustu", "graduate", "enstitü",
     "enstitu", "kilavuz", "kılavuz", "sablon", "şablon", "tez-yazim",
@@ -182,7 +206,7 @@ class PageParser(HTMLParser):
 class SiteCrawler:
     def __init__(self, university: dict, max_pages: int, delay: float, max_seconds: float = 0):
         self.university = university
-        self.domain = university["domain"].lower()
+        self.domain = university["domain"].strip().lower()
         self.max_pages = max_pages
         self.delay = delay
         self.deadline = time.monotonic() + max_seconds if max_seconds > 0 else None
@@ -199,6 +223,7 @@ class SiteCrawler:
         # Crawl order: best URL/link-text relevance first, so the page budget is
         # not spent on news and menus before the thesis pages are reached.
         self.priority: dict[str, int] = {}
+        self.unverified_hosts: set[str] = set()
 
     def fetch_raw(self, url: str, limit: int) -> tuple[bytes | None, str, str]:
         url = canonical_url(url)
@@ -209,15 +234,24 @@ class SiteCrawler:
             time.sleep(self.delay - elapsed)
         request = urllib.request.Request(request_url(url), headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xml,text/xml,*/*;q=0.5"})
         self.last_request = time.monotonic()
-        try:
-            with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
-                final_url = canonical_url(response.geturl())
-                data = response.read(limit + 1)
-                if len(data) > limit:
-                    return data[:limit], final_url, "boyut sınırı nedeniyle kısaltıldı"
-                return data, final_url, ""
-        except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
-            return None, url, str(error)[:240]
+        contexts = [SSL_VERIFIED, SSL_UNVERIFIED]
+        while contexts:
+            context = contexts.pop(0)
+            try:
+                with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT, context=context) as response:
+                    final_url = canonical_url(response.geturl())
+                    data = response.read(limit + 1)
+                    if context is SSL_UNVERIFIED:
+                        self.unverified_hosts.add(hostname(url))
+                    if len(data) > limit:
+                        return data[:limit], final_url, "boyut sınırı nedeniyle kısaltıldı"
+                    return data, final_url, ""
+            except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
+                text = str(error)
+                if contexts and ("CERTIFICATE_VERIFY_FAILED" in text or "SSL" in text or "ssl" in text):
+                    continue
+                return None, url, text[:240]
+        return None, url, "SSL bağlantısı kurulamadı"
 
     def load_robots(self, page_url: str) -> list[str]:
         parsed = urllib.parse.urlsplit(page_url)
@@ -425,6 +459,7 @@ class SiteCrawler:
             "homepage_reachable": homepage_reachable,
             "page_limit_reached": page_limit_reached,
             "deadline_reached": self.deadline_reached,
+            "ssl_unverified_hosts": sorted(self.unverified_hosts),
             "scan_status": scan_status,
             "template_candidates": sorted(self.candidates.values(), key=lambda item: item["document_url"]),
             "guides": sorted(self.guides.values(), key=lambda item: item["document_url"]),
@@ -457,9 +492,27 @@ def download_templates(report: dict, config: dict, output_base: Path, delay: flo
     crawlers: dict[str, SiteCrawler] = {}
     hashes_by_university: dict[str, dict[str, str]] = {}
 
+    # Files downloaded by an earlier run of the same output are reused when still on disk.
+    previous: dict[str, dict] = {}
+    previous_path = output_base.with_suffix(".json")
+    if previous_path.exists():
+        try:
+            earlier = json.loads(previous_path.read_text(encoding="utf-8"))
+            for item in earlier.get("template_candidates", []) + earlier.get("guides", []):
+                if item.get("download_status") == "indirildi" and item.get("local_path") and Path(item["local_path"]).is_file():
+                    previous[item["document_url"]] = item
+        except (OSError, json.JSONDecodeError):
+            previous = {}
+
     items = report["template_candidates"] + (report["guides"] if include_guides else [])
     for item in items:
         university_id = item["university_id"]
+        earlier_item = previous.get(item["document_url"])
+        if earlier_item:
+            for key in ("download_status", "local_path", "sha256", "file_size_bytes", "final_url"):
+                item[key] = earlier_item.get(key)
+            hashes_by_university.setdefault(university_id, {})[item["sha256"]] = item["local_path"]
+            continue
         university = universities[university_id]
         crawler = crawlers.setdefault(university_id, SiteCrawler(university, max_pages=1, delay=max(delay, 0.5)))
         data, final_url, error = crawler.fetch(item["document_url"], MAX_TEMPLATE_BYTES)

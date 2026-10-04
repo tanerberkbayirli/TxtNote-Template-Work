@@ -59,9 +59,17 @@ def main() -> int:
     parser.add_argument("--report", type=Path, default=DEFAULT_REPORT)
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     parser.add_argument("--target", type=Path, default=DEFAULT_TARGET)
+    parser.add_argument("--extra", type=Path, action="append", default=[], help="Birleştirilecek ek rapor (fetch-manual-sources.py çıktısı); birden çok verilebilir.")
     args = parser.parse_args()
 
     report = json.loads(args.report.read_text(encoding="utf-8"))
+    notes: dict[str, list[str]] = defaultdict(list)
+    for extra_path in args.extra:
+        extra = json.loads(extra_path.read_text(encoding="utf-8"))
+        report["template_candidates"] += extra.get("template_candidates", [])
+        report["guides"] += extra.get("guides", [])
+        for university_id, text in extra.get("notes", {}).items():
+            notes[university_id].append(text)
     universities = {u["id"]: u for u in json.loads(args.config.read_text(encoding="utf-8"))["universities"]}
     items_by_university: dict[str, list[dict]] = defaultdict(list)
     excluded = 0
@@ -77,7 +85,7 @@ def main() -> int:
         folder = args.target / university["region"] / university["name"]
         items = items_by_university.get(university["id"], [])
         copied = 0
-        if items:
+        if items or notes.get(university["id"]):
             folder.mkdir(parents=True, exist_ok=True)
             existing = {sha256(path): path.name for path in folder.iterdir() if path.is_file() and not path.name.endswith(".md")}
             for item in items:
@@ -98,7 +106,7 @@ def main() -> int:
             for item in items:
                 if item.get("download_status") == "yinelenen dosya" and item.get("sha256") in existing:
                     item["archive_name"] = existing[item["sha256"]]
-            write_inventory(folder, university, result, items)
+            write_inventory(folder, university, result, items, notes.get(university["id"], []))
         summary.append((university, result, items, copied))
 
     write_summary(args.target, report, summary)
@@ -109,7 +117,7 @@ def main() -> int:
     return 0
 
 
-def write_inventory(folder: Path, university: dict, result: dict, items: list[dict]) -> None:
+def write_inventory(folder: Path, university: dict, result: dict, items: list[dict], notes: list[str] = ()) -> None:
     hand_written = folder / "kaynaklar.md"
     target = hand_written if not hand_written.exists() or SCAN_MARKER in hand_written.read_text(encoding="utf-8") else folder / "kaynaklar-tarama.md"
     lines = [
@@ -121,15 +129,19 @@ def write_inventory(folder: Path, university: dict, result: dict, items: list[di
         "Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.",
         "",
     ]
-    for title, classes in (("Şablonlar", {"şablon"}), ("Şablon adayları", {"şablon adayı"}), ("Yazım kılavuzları", {"kılavuz"})):
-        group = [item for item in items if item["classification"] in classes]
+    if notes:
+        lines += ["## Notlar", "", *[f"- {note}" for note in notes], ""]
+    for title, classes in (("Şablonlar", {"şablon"}), ("Şablon adayları", {"şablon adayı"}), ("Yazım kılavuzları", {"kılavuz"}), ("Elle bulunan şablonlar", {"şablon", "şablon adayı"}), ("Elle bulunan kılavuzlar", {"kılavuz"})):
+        manual = title.startswith("Elle")
+        group = [item for item in items if item["classification"] in classes and bool(item.get("manual")) == manual]
         if not group:
             continue
         lines += [f"## {title}", ""]
         for item in sorted(group, key=lambda entry: entry["document_url"]):
             local = f"Yerel: {md_link(item['archive_name'], './' + item['archive_name'])} (SHA-256 `{item['sha256']}`)" if item.get("archive_name") else f"İndirilemedi: {item.get('download_error') or item.get('download_status') or 'indirilmedi'}"
             label = item["link_text"] or Path(item["document_url"]).name
-            lines.append(f"- **{label}** — {item['file_type'].upper()}. Kaynak sayfa: {md_link(item['source_page_title'] or item['source_page'], item['source_page'])} · {md_link('dosya', item['document_url'])}. {local}.")
+            found = f" Bulunma: {item['found']} (web araması)." if item.get("manual") and item.get("found") else ""
+            lines.append(f"- **{label}** — {item['file_type'].upper()}. Kaynak sayfa: {md_link(item['source_page_title'] or item['source_page'], item['source_page'])} · {md_link('dosya', item['document_url'])}. {local}.{found}")
         lines.append("")
     target.write_text("\n".join(lines), encoding="utf-8")
 
@@ -156,6 +168,13 @@ def write_manifest(target_root: Path, report: dict, summary: list) -> None:
     (target_root / "turkiye-kaynak-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
+def hand_written_files(folder: Path) -> int:
+    """Source files placed by hand (e.g. the Ege inventory), outside the scan manifest."""
+    if not folder.is_dir():
+        return 0
+    return sum(1 for path in folder.iterdir() if path.is_file() and path.suffix.lower() not in {".md", ".json"})
+
+
 def write_summary(target_root: Path, report: dict, summary: list) -> None:
     lines = [
         "# Türkiye üniversiteleri — tez kaynakları tarama özeti",
@@ -170,15 +189,17 @@ def write_summary(target_root: Path, report: dict, summary: list) -> None:
     for entry in summary:
         regions[entry[0]["region"]].append(entry)
     for region, entries in regions.items():
-        found = sum(1 for _, _, items, _ in entries if items)
+        found = sum(1 for university, _, items, _ in entries if items or hand_written_files(target_root / region / university["name"]))
         lines += [f"## {region} ({found}/{len(entries)} üniversitede kaynak bulundu)", "", "| Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |", "|---|---:|---:|---:|---:|---|"]
         for university, result, items, _ in entries:
             count = lambda kind: sum(item["classification"] == kind for item in items)
             local = len({item["archive_name"] for item in items if item.get("archive_name")})
-            name = md_link(university["name"], f"./{region}/{university['name']}/") if items else university["name"]
-            lines.append(f"| {name} | {count('şablon')} | {count('şablon adayı')} | {count('kılavuz')} | {local} | {result['scan_status']} |")
+            hand = hand_written_files(target_root / region / university["name"])
+            name = md_link(university["name"], f"./{region}/{university['name']}/") if items or hand else university["name"]
+            status = result["scan_status"] + (f"; elle derlenmiş {hand} dosya" if hand else "")
+            lines.append(f"| {name} | {count('şablon')} | {count('şablon adayı')} | {count('kılavuz')} | {local + hand} | {status} |")
         lines.append("")
-    missing = [university["name"] for university, _, items, _ in summary if not items]
+    missing = [university["name"] for university, _, items, _ in summary if not items and not hand_written_files(target_root / university["region"] / university["name"])]
     lines += [f"## Elle aranması gerekenler ({len(missing)})", "", *[f"- {name}" for name in missing], ""]
     (target_root / "turkiye-tarama-raporu.md").write_text("\n".join(lines), encoding="utf-8")
 

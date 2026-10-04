@@ -98,7 +98,7 @@ def main() -> int:
     for list_type, kind in LIST_TYPES.items():
         for card in parse_cards(fetch(YOK_LIST_URL.format(type=list_type))):
             province, region = PROVINCE_BY_UPPER.get(card["city"], (None, None))
-            host = (urllib.parse.urlsplit(card["web"]).hostname or "").lower()
+            host = (urllib.parse.urlsplit(card["web"].strip()).hostname or "").strip().lower()
             domain = host[4:] if host.startswith("www.") else host
             if not province or not domain:
                 problems.append(card)

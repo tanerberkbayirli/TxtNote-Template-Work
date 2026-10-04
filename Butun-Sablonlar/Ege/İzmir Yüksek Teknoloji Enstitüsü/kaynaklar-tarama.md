@@ -1,7 +1,7 @@
 <!-- organize-scan-sources -->
 # İzmir Yüksek Teknoloji Enstitüsü — tez kaynakları (otomatik tarama)
 
-Alan adı: `iyte.edu.tr` · İzmir · devlet · tarama durumu: kısmi (47/53 sayfa) · 2026-10-04
+Alan adı: `iyte.edu.tr` · İzmir · devlet · tarama durumu: kısmi (46/53 sayfa) · 2026-10-04
 
 Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
 
