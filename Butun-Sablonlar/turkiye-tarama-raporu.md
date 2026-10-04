@@ -4,7 +4,7 @@ Tarama: 2026-10-04 · 202 üniversite (YÖK listesi, devlet + vakıf) · 307 aç
 
 Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen sayfalar ve sayfa sınırı dosyaları gizleyebilir. Kaynağı bulunmayan üniversiteler elle aranmalıdır.
 
-## Marmara (47/72 üniversitede kaynak bulundu)
+## Marmara (51/72 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
@@ -15,7 +15,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Bursa Uludağ Üniversitesi](./Marmara/Bursa%20Uludağ%20Üniversitesi/) | 4 | 0 | 13 | 30 | kısmi; elle derlenmiş 15 dosya |
 | Mudanya Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | Trakya Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Gebze Teknik Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Gebze Teknik Üniversitesi](./Marmara/Gebze%20Teknik%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [Kocaeli Sağlık ve Teknoloji Üniversitesi](./Marmara/Kocaeli%20Sağlık%20ve%20Teknoloji%20Üniversitesi/) | 0 | 0 | 16 | 32 | kısmi; elle derlenmiş 16 dosya |
 | Kocaeli Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | [Kırklareli Üniversitesi](./Marmara/Kırklareli%20Üniversitesi/) | 3 | 0 | 3 | 10 | kısmi; elle derlenmiş 5 dosya |
@@ -23,7 +23,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Sakarya Üniversitesi](./Marmara/Sakarya%20Üniversitesi/) | 12 | 0 | 6 | 18 | kısmi; elle derlenmiş 9 dosya |
 | [Tekirdağ Namık Kemal Üniversitesi](./Marmara/Tekirdağ%20Namık%20Kemal%20Üniversitesi/) | 2 | 0 | 1 | 0 | kısmi |
 | [Yalova Üniversitesi](./Marmara/Yalova%20Üniversitesi/) | 3 | 0 | 1 | 8 | kısmi; elle derlenmiş 4 dosya |
-| Çanakkale Onsekiz Mart Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Çanakkale Onsekiz Mart Üniversitesi](./Marmara/Çanakkale%20Onsekiz%20Mart%20Üniversitesi/) | 0 | 0 | 2 | 4 | tarandı; elle derlenmiş 2 dosya |
 | [Acıbadem Mehmet Ali Aydınlar Üniversitesi](./Marmara/Acıbadem%20Mehmet%20Ali%20Aydınlar%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
 | [Altınbaş Üniversitesi](./Marmara/Altınbaş%20Üniversitesi/) | 2 | 0 | 5 | 14 | kısmi; elle derlenmiş 7 dosya |
 | Bahçeşehir Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
@@ -36,10 +36,10 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Fatih Sultan Mehmet Vakıf Üniversitesi](./Marmara/Fatih%20Sultan%20Mehmet%20Vakıf%20Üniversitesi/) | 3 | 0 | 1 | 8 | kısmi; elle derlenmiş 4 dosya |
 | [Fenerbahçe Üniversitesi](./Marmara/Fenerbahçe%20Üniversitesi/) | 0 | 0 | 1 | 2 | tarandı; elle derlenmiş 1 dosya |
 | [Galatasaray Üniversitesi](./Marmara/Galatasaray%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
-| Haliç Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Haliç Üniversitesi](./Marmara/Haliç%20Üniversitesi/) | 0 | 0 | 1 | 2 | tarandı; elle derlenmiş 1 dosya |
 | [Işık Üniversitesi](./Marmara/Işık%20Üniversitesi/) | 4 | 4 | 5 | 12 | kısmi; elle derlenmiş 6 dosya |
 | Kadir Has Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
-| Koç Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
+| [Koç Üniversitesi](./Marmara/Koç%20Üniversitesi/) | 0 | 0 | 1 | 0 | erişilemedi |
 | MEF Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
 | [Maltepe Üniversitesi](./Marmara/Maltepe%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
 | [Marmara Üniversitesi](./Marmara/Marmara%20Üniversitesi/) | 2 | 0 | 10 | 24 | kısmi; elle derlenmiş 12 dosya |
@@ -104,7 +104,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [İzmir Tınaztepe Üniversitesi](./Ege/İzmir%20Tınaztepe%20Üniversitesi/) | 0 | 0 | 2 | 0 | kısmi |
 | [İzmir Yüksek Teknoloji Enstitüsü](./Ege/İzmir%20Yüksek%20Teknoloji%20Enstitüsü/) | 0 | 0 | 3 | 7 | kısmi; elle derlenmiş 4 dosya |
 
-## Akdeniz (14/19 üniversitede kaynak bulundu)
+## Akdeniz (15/19 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
@@ -120,7 +120,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [İskenderun Teknik Üniversitesi](./Akdeniz/İskenderun%20Teknik%20Üniversitesi/) | 1 | 0 | 1 | 4 | tarandı; elle derlenmiş 2 dosya |
 | [Isparta Uygulamalı Bilimler Üniversitesi](./Akdeniz/Isparta%20Uygulamalı%20Bilimler%20Üniversitesi/) | 0 | 1 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
 | [Süleyman Demirel Üniversitesi](./Akdeniz/Süleyman%20Demirel%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
-| Kahramanmaraş Sütçü İmam Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Kahramanmaraş Sütçü İmam Üniversitesi](./Akdeniz/Kahramanmaraş%20Sütçü%20İmam%20Üniversitesi/) | 1 | 0 | 0 | 2 | kısmi; elle derlenmiş 1 dosya |
 | Kahramanmaraş İstiklal Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | [Mersin Üniversitesi](./Akdeniz/Mersin%20Üniversitesi/) | 4 | 0 | 0 | 0 | kısmi |
 | [Tarsus Üniversitesi](./Akdeniz/Tarsus%20Üniversitesi/) | 2 | 4 | 0 | 10 | kısmi; elle derlenmiş 5 dosya |
@@ -203,7 +203,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Zonguldak Bülent Ecevit Üniversitesi](./Karadeniz/Zonguldak%20Bülent%20Ecevit%20Üniversitesi/) | 3 | 1 | 3 | 0 | kısmi |
 | Hitit Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 
-## Doğu Anadolu (9/16 üniversitede kaynak bulundu)
+## Doğu Anadolu (10/16 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
@@ -215,7 +215,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Erzincan Binali Yıldırım Üniversitesi](./Doğu%20Anadolu/Erzincan%20Binali%20Yıldırım%20Üniversitesi/) | 2 | 1 | 9 | 0 | kısmi |
 | [Atatürk Üniversitesi](./Doğu%20Anadolu/Atatürk%20Üniversitesi/) | 3 | 0 | 2 | 11 | kısmi; elle derlenmiş 6 dosya |
 | [Erzurum Teknik Üniversitesi](./Doğu%20Anadolu/Erzurum%20Teknik%20Üniversitesi/) | 5 | 0 | 3 | 16 | kısmi; elle derlenmiş 8 dosya |
-| Hakkari Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
+| [Hakkari Üniversitesi](./Doğu%20Anadolu/Hakkari%20Üniversitesi/) | 0 | 0 | 2 | 0 | kısmi |
 | Iğdır Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | [Kafkas Üniversitesi](./Doğu%20Anadolu/Kafkas%20Üniversitesi/) | 1 | 0 | 3 | 8 | kısmi; elle derlenmiş 4 dosya |
 | [Malatya Turgut Özal Üniversitesi](./Doğu%20Anadolu/Malatya%20Turgut%20Özal%20Üniversitesi/) | 0 | 0 | 1 | 2 | kısmi; elle derlenmiş 1 dosya |
@@ -241,23 +241,19 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Harran Üniversitesi](./Güneydoğu%20Anadolu/Harran%20Üniversitesi/) | 0 | 0 | 2 | 0 | kısmi |
 | [Şırnak Üniversitesi](./Güneydoğu%20Anadolu/Şırnak%20Üniversitesi/) | 1 | 0 | 2 | 0 | kısmi |
 
-## Elle aranması gerekenler (61)
+## Elle aranması gerekenler (55)
 
 - Bandırma Onyedi Eylül Üniversitesi
 - Bilecik Şeyh Edebali Üniversitesi
 - Mudanya Üniversitesi
 - Trakya Üniversitesi
-- Gebze Teknik Üniversitesi
 - Kocaeli Üniversitesi
 - Sakarya Uygulamalı Bilimler Üniversitesi
-- Çanakkale Onsekiz Mart Üniversitesi
 - Bahçeşehir Üniversitesi
 - Bezm-i Âlem Vakıf Üniversitesi
 - Demiroğlu Bilim Üniversitesi
 - Doğuş Üniversitesi
-- Haliç Üniversitesi
 - Kadir Has Üniversitesi
-- Koç Üniversitesi
 - MEF Üniversitesi
 - Mimar Sinan Güzel Sanatlar Üniversitesi
 - Sabancı Üniversitesi
@@ -272,7 +268,6 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 - Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi
 - Antalya Belek Üniversitesi
 - Hatay Mustafa Kemal Üniversitesi
-- Kahramanmaraş Sütçü İmam Üniversitesi
 - Kahramanmaraş İstiklal Üniversitesi
 - Ankara Hacı Bayram Veli Üniversitesi
 - Ankara Medipol Üniversitesi
@@ -297,7 +292,6 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 - Ağrı İbrahim Çeçen Üniversitesi
 - Bingöl Üniversitesi
 - Bitlis Eren Üniversitesi
-- Hakkari Üniversitesi
 - Iğdır Üniversitesi
 - Muş Alparslan Üniversitesi
 - Munzur Üniversitesi
