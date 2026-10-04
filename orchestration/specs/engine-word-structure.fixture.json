@@ -177,6 +177,35 @@
       }
      ]
     },
+    "noWidow": {
+     "widowControl": false
+    },
+    "alignRight": {
+     "align": "right",
+     "widowControl": false
+    },
+    "tocRow": {
+     "indent": {
+      "leftMm": 10,
+      "hangingMm": 10
+     },
+     "tabStops": [
+      {
+       "positionMm": 148,
+       "align": "right",
+       "leader": "dots"
+      }
+     ]
+    },
+    "tabDecimalLeader": {
+     "tabStops": [
+      {
+       "positionMm": 100,
+       "align": "decimal",
+       "leader": "dots"
+      }
+     ]
+    },
     "tabDecimal": {
      "tabStops": [
       {
@@ -329,6 +358,18 @@
     "overrides": {}
    },
    {
+    "id": "TOCROWS",
+    "type": "custom",
+    "title": "TOCROWS",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
     "id": "MIRROR",
     "type": "custom",
     "title": "MIRROR",
@@ -419,6 +460,87 @@
       }
      }
     ]
+   },
+   {
+    "id": "MIR_HANG",
+    "type": "custom",
+    "title": "MIR_HANG",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "indent": {
+       "hangingMm": 8,
+       "leftMm": 14,
+       "rightMm": 2,
+       "mirror": true
+      }
+     }
+    }
+   },
+   {
+    "id": "MIR_RIGHT",
+    "type": "custom",
+    "title": "MIR_RIGHT",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "indent": {
+       "hangingMm": 8,
+       "leftMm": 14,
+       "rightMm": 2,
+       "mirror": true
+      }
+     }
+    }
+   },
+   {
+    "id": "LANDSCAPE",
+    "type": "custom",
+    "title": "LANDSCAPE",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "page": {
+      "orientation": "landscape",
+      "widthMm": 297,
+      "heightMm": 210,
+      "margins": {
+       "topMm": 20,
+       "bottomMm": 22,
+       "leftMm": 25,
+       "rightMm": 35
+      },
+      "numbering": {
+       "baselineFromTopMm": 195
+      }
+     }
+    }
+   },
+   {
+    "id": "PORTRAIT_RETURN",
+    "type": "custom",
+    "title": "PORTRAIT_RETURN",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
    }
   ],
   "tables": {
@@ -509,10 +631,15 @@
     "TABLE_REPEAT": "<table><caption>TABLE_REPEAT live sequence caption</caption><colgroup><col data-col-width=\"25\"><col data-col-width=\"75\"></colgroup><thead><tr><th>TABLE_REPEAT_HEAD left</th><th>TABLE_REPEAT_HEAD right</th></tr></thead><tbody><tr><td>TABLE_REPEAT_001 left</td><td>TABLE_REPEAT_001 right</td></tr><tr><td>TABLE_REPEAT_002 left</td><td>TABLE_REPEAT_002 right</td></tr><tr><td>TABLE_REPEAT_003 left</td><td>TABLE_REPEAT_003 right</td></tr><tr><td>TABLE_REPEAT_004 left</td><td>TABLE_REPEAT_004 right</td></tr><tr><td>TABLE_REPEAT_005 left</td><td>TABLE_REPEAT_005 right</td></tr><tr><td>TABLE_REPEAT_006 left</td><td>TABLE_REPEAT_006 right</td></tr><tr><td>TABLE_REPEAT_007 left</td><td>TABLE_REPEAT_007 right</td></tr><tr><td>TABLE_REPEAT_008 left</td><td>TABLE_REPEAT_008 right</td></tr><tr><td>TABLE_REPEAT_009 left</td><td>TABLE_REPEAT_009 right</td></tr><tr><td>TABLE_REPEAT_010 left</td><td>TABLE_REPEAT_010 right</td></tr><tr><td>TABLE_REPEAT_011 left</td><td>TABLE_REPEAT_011 right</td></tr><tr><td>TABLE_REPEAT_012 left</td><td>TABLE_REPEAT_012 right</td></tr><tr><td>TABLE_REPEAT_013 left</td><td>TABLE_REPEAT_013 right</td></tr><tr><td>TABLE_REPEAT_014 left</td><td>TABLE_REPEAT_014 right</td></tr><tr><td>TABLE_REPEAT_015 left</td><td>TABLE_REPEAT_015 right</td></tr><tr><td>TABLE_REPEAT_016 left</td><td>TABLE_REPEAT_016 right</td></tr><tr><td>TABLE_REPEAT_017 left</td><td>TABLE_REPEAT_017 right</td></tr><tr><td>TABLE_REPEAT_018 left</td><td>TABLE_REPEAT_018 right</td></tr><tr><td>TABLE_REPEAT_019 left</td><td>TABLE_REPEAT_019 right</td></tr><tr><td>TABLE_REPEAT_020 left</td><td>TABLE_REPEAT_020 right</td></tr><tr><td>TABLE_REPEAT_021 left</td><td>TABLE_REPEAT_021 right</td></tr><tr><td>TABLE_REPEAT_022 left</td><td>TABLE_REPEAT_022 right</td></tr><tr><td>TABLE_REPEAT_023 left</td><td>TABLE_REPEAT_023 right</td></tr><tr><td>TABLE_REPEAT_024 left</td><td>TABLE_REPEAT_024 right</td></tr><tr><td>TABLE_REPEAT_025 left</td><td>TABLE_REPEAT_025 right</td></tr><tr><td>TABLE_REPEAT_026 left</td><td>TABLE_REPEAT_026 right</td></tr><tr><td>TABLE_REPEAT_027 left</td><td>TABLE_REPEAT_027 right</td></tr><tr><td>TABLE_REPEAT_028 left</td><td>TABLE_REPEAT_028 right</td></tr><tr><td>TABLE_REPEAT_029 left</td><td>TABLE_REPEAT_029 right</td></tr><tr><td>TABLE_REPEAT_030 left</td><td>TABLE_REPEAT_030 right</td></tr><tr><td>TABLE_REPEAT_031 left</td><td>TABLE_REPEAT_031 right</td></tr><tr><td>TABLE_REPEAT_032 left</td><td>TABLE_REPEAT_032 right</td></tr><tr><td>TABLE_REPEAT_033 left</td><td>TABLE_REPEAT_033 right</td></tr><tr><td>TABLE_REPEAT_034 left</td><td>TABLE_REPEAT_034 right</td></tr><tr><td>TABLE_REPEAT_035 left</td><td>TABLE_REPEAT_035 right</td></tr><tr><td>TABLE_REPEAT_036 left</td><td>TABLE_REPEAT_036 right</td></tr><tr><td>TABLE_REPEAT_037 left</td><td>TABLE_REPEAT_037 right</td></tr><tr><td>TABLE_REPEAT_038 left</td><td>TABLE_REPEAT_038 right</td></tr><tr><td>TABLE_REPEAT_039 left</td><td>TABLE_REPEAT_039 right</td></tr><tr><td>TABLE_REPEAT_040 left</td><td>TABLE_REPEAT_040 right</td></tr><tr><td>TABLE_REPEAT_041 left</td><td>TABLE_REPEAT_041 right</td></tr><tr><td>TABLE_REPEAT_042 left</td><td>TABLE_REPEAT_042 right</td></tr><tr><td>TABLE_REPEAT_043 left</td><td>TABLE_REPEAT_043 right</td></tr><tr><td>TABLE_REPEAT_044 left</td><td>TABLE_REPEAT_044 right</td></tr><tr><td>TABLE_REPEAT_045 left</td><td>TABLE_REPEAT_045 right</td></tr><tr><td>TABLE_REPEAT_046 left</td><td>TABLE_REPEAT_046 right</td></tr><tr><td>TABLE_REPEAT_047 left</td><td>TABLE_REPEAT_047 right</td></tr></tbody></table>",
     "KEEP": "<p>KEEP_FILL 001 Abcdefg gjpqy<br>KEEP_FILL 002 Abcdefg gjpqy<br>KEEP_FILL 003 Abcdefg gjpqy<br>KEEP_FILL 004 Abcdefg gjpqy<br>KEEP_FILL 005 Abcdefg gjpqy<br>KEEP_FILL 006 Abcdefg gjpqy<br>KEEP_FILL 007 Abcdefg gjpqy<br>KEEP_FILL 008 Abcdefg gjpqy<br>KEEP_FILL 009 Abcdefg gjpqy<br>KEEP_FILL 010 Abcdefg gjpqy<br>KEEP_FILL 011 Abcdefg gjpqy<br>KEEP_FILL 012 Abcdefg gjpqy<br>KEEP_FILL 013 Abcdefg gjpqy<br>KEEP_FILL 014 Abcdefg gjpqy<br>KEEP_FILL 015 Abcdefg gjpqy<br>KEEP_FILL 016 Abcdefg gjpqy<br>KEEP_FILL 017 Abcdefg gjpqy<br>KEEP_FILL 018 Abcdefg gjpqy<br>KEEP_FILL 019 Abcdefg gjpqy<br>KEEP_FILL 020 Abcdefg gjpqy<br>KEEP_FILL 021 Abcdefg gjpqy<br>KEEP_FILL 022 Abcdefg gjpqy<br>KEEP_FILL 023 Abcdefg gjpqy<br>KEEP_FILL 024 Abcdefg gjpqy<br>KEEP_FILL 025 Abcdefg gjpqy<br>KEEP_FILL 026 Abcdefg gjpqy<br>KEEP_FILL 027 Abcdefg gjpqy<br>KEEP_FILL 028 Abcdefg gjpqy<br>KEEP_FILL 029 Abcdefg gjpqy<br>KEEP_FILL 030 Abcdefg gjpqy<br>KEEP_FILL 031 Abcdefg gjpqy<br>KEEP_FILL 032 Abcdefg gjpqy<br>KEEP_FILL 033 Abcdefg gjpqy<br>KEEP_FILL 034 Abcdefg gjpqy<br>KEEP_FILL 035 Abcdefg gjpqy<br>KEEP_FILL 036 Abcdefg gjpqy<br>KEEP_FILL 037 Abcdefg gjpqy<br>KEEP_FILL 038 Abcdefg gjpqy<br>KEEP_FILL 039 Abcdefg gjpqy<br>KEEP_FILL 040 Abcdefg gjpqy<br>KEEP_FILL 041 Abcdefg gjpqy<br>KEEP_FILL 042 Abcdefg gjpqy<br>KEEP_FILL 043 Abcdefg gjpqy<br>KEEP_FILL 044 Abcdefg gjpqy<br>KEEP_FILL 045 Abcdefg gjpqy<br>KEEP_FILL 046 Abcdefg gjpqy<br>KEEP_FILL 047 Abcdefg gjpqy<br>KEEP_FILL 048 Abcdefg gjpqy</p><p data-thesis-style=\"keep\">KEEP_BLOCK_1 kept line<br>KEEP_BLOCK_2 kept line<br>KEEP_BLOCK_3 kept line<br>KEEP_BLOCK_4 kept line<br>KEEP_BLOCK_5 kept line</p><p data-thesis-style=\"widow\">WIDOW_BLOCK_1 protected line<br>WIDOW_BLOCK_2 protected line<br>WIDOW_BLOCK_3 protected line<br>WIDOW_BLOCK_4 protected line<br>WIDOW_BLOCK_5 protected line</p><p data-thesis-style=\"forced\">FORCED_PAGE_TOP</p>",
     "TABS": "<p data-thesis-style=\"tabLeft\">TAB_LEFT\tLEFT-END</p><p data-thesis-style=\"tabCenter\">TAB_CENTER\tCENTER-END</p><p data-thesis-style=\"tabRight\">TAB_RIGHT\tRIGHT-END</p><p data-thesis-style=\"tabDecimal\">TAB_DECIMAL\t123.45</p>",
+    "TOCROWS": "<p data-thesis-style=\"tocRow\">TOC_A short title\t5</p><p data-thesis-style=\"tocRow\">TOC_B wrapped title words keep going and going across the measure wrapped title words keep going and going across the measure wrapped title words keep going and going across the measure endB\t12</p><p data-thesis-style=\"tocRow\">TOC_C medium title that fits on one line only\t123</p><p data-thesis-style=\"tocRow\">TOC_D another long entry that wraps another long entry that wraps another long entry that wraps another long entry that wraps another long entry that wraps endD\t7</p><p data-thesis-style=\"tabDecimalLeader\">DEC_A\t1234.5</p><p data-thesis-style=\"tabDecimalLeader\">DEC_B\t7.25</p><p data-thesis-style=\"tabDecimalLeader\">DEC_C\t99.125</p><p data-thesis-style=\"tabDecimalLeader\">DEC_D\t8</p>",
     "MIRROR": "<p>MIRROR_LINE 001 Abcdefg gjpqy<br>MIRROR_LINE 002 Abcdefg gjpqy<br>MIRROR_LINE 003 Abcdefg gjpqy<br>MIRROR_LINE 004 Abcdefg gjpqy<br>MIRROR_LINE 005 Abcdefg gjpqy<br>MIRROR_LINE 006 Abcdefg gjpqy<br>MIRROR_LINE 007 Abcdefg gjpqy<br>MIRROR_LINE 008 Abcdefg gjpqy<br>MIRROR_LINE 009 Abcdefg gjpqy<br>MIRROR_LINE 010 Abcdefg gjpqy<br>MIRROR_LINE 011 Abcdefg gjpqy<br>MIRROR_LINE 012 Abcdefg gjpqy<br>MIRROR_LINE 013 Abcdefg gjpqy<br>MIRROR_LINE 014 Abcdefg gjpqy<br>MIRROR_LINE 015 Abcdefg gjpqy<br>MIRROR_LINE 016 Abcdefg gjpqy<br>MIRROR_LINE 017 Abcdefg gjpqy<br>MIRROR_LINE 018 Abcdefg gjpqy<br>MIRROR_LINE 019 Abcdefg gjpqy<br>MIRROR_LINE 020 Abcdefg gjpqy<br>MIRROR_LINE 021 Abcdefg gjpqy<br>MIRROR_LINE 022 Abcdefg gjpqy<br>MIRROR_LINE 023 Abcdefg gjpqy<br>MIRROR_LINE 024 Abcdefg gjpqy<br>MIRROR_LINE 025 Abcdefg gjpqy<br>MIRROR_LINE 026 Abcdefg gjpqy<br>MIRROR_LINE 027 Abcdefg gjpqy<br>MIRROR_LINE 028 Abcdefg gjpqy<br>MIRROR_LINE 029 Abcdefg gjpqy<br>MIRROR_LINE 030 Abcdefg gjpqy<br>MIRROR_LINE 031 Abcdefg gjpqy<br>MIRROR_LINE 032 Abcdefg gjpqy<br>MIRROR_LINE 033 Abcdefg gjpqy<br>MIRROR_LINE 034 Abcdefg gjpqy<br>MIRROR_LINE 035 Abcdefg gjpqy<br>MIRROR_LINE 036 Abcdefg gjpqy<br>MIRROR_LINE 037 Abcdefg gjpqy<br>MIRROR_LINE 038 Abcdefg gjpqy<br>MIRROR_LINE 039 Abcdefg gjpqy<br>MIRROR_LINE 040 Abcdefg gjpqy<br>MIRROR_LINE 041 Abcdefg gjpqy<br>MIRROR_LINE 042 Abcdefg gjpqy<br>MIRROR_LINE 043 Abcdefg gjpqy<br>MIRROR_LINE 044 Abcdefg gjpqy<br>MIRROR_LINE 045 Abcdefg gjpqy<br>MIRROR_LINE 046 Abcdefg gjpqy<br>MIRROR_LINE 047 Abcdefg gjpqy<br>MIRROR_LINE 048 Abcdefg gjpqy<br>MIRROR_LINE 049 Abcdefg gjpqy<br>MIRROR_LINE 050 Abcdefg gjpqy<br>MIRROR_LINE 051 Abcdefg gjpqy<br>MIRROR_LINE 052 Abcdefg gjpqy<br>MIRROR_LINE 053 Abcdefg gjpqy<br>MIRROR_LINE 054 Abcdefg gjpqy<br>MIRROR_LINE 055 Abcdefg gjpqy<br>MIRROR_LINE 056 Abcdefg gjpqy<br>MIRROR_LINE 057 Abcdefg gjpqy<br>MIRROR_LINE 058 Abcdefg gjpqy<br>MIRROR_LINE 059 Abcdefg gjpqy<br>MIRROR_LINE 060 Abcdefg gjpqy<br>MIRROR_LINE 061 Abcdefg gjpqy<br>MIRROR_LINE 062 Abcdefg gjpqy<br>MIRROR_LINE 063 Abcdefg gjpqy<br>MIRROR_LINE 064 Abcdefg gjpqy<br>MIRROR_LINE 065 Abcdefg gjpqy<br>MIRROR_LINE 066 Abcdefg gjpqy<br>MIRROR_LINE 067 Abcdefg gjpqy<br>MIRROR_LINE 068 Abcdefg gjpqy<br>MIRROR_LINE 069 Abcdefg gjpqy<br>MIRROR_LINE 070 Abcdefg gjpqy<br>MIRROR_LINE 071 Abcdefg gjpqy<br>MIRROR_LINE 072 Abcdefg gjpqy<br>MIRROR_LINE 073 Abcdefg gjpqy<br>MIRROR_LINE 074 Abcdefg gjpqy<br>MIRROR_LINE 075 Abcdefg gjpqy<br>MIRROR_LINE 076 Abcdefg gjpqy<br>MIRROR_LINE 077 Abcdefg gjpqy<br>MIRROR_LINE 078 Abcdefg gjpqy<br>MIRROR_LINE 079 Abcdefg gjpqy<br>MIRROR_LINE 080 Abcdefg gjpqy<br>MIRROR_LINE 081 Abcdefg gjpqy<br>MIRROR_LINE 082 Abcdefg gjpqy<br>MIRROR_LINE 083 Abcdefg gjpqy<br>MIRROR_LINE 084 Abcdefg gjpqy<br>MIRROR_LINE 085 Abcdefg gjpqy<br>MIRROR_LINE 086 Abcdefg gjpqy<br>MIRROR_LINE 087 Abcdefg gjpqy<br>MIRROR_LINE 088 Abcdefg gjpqy<br>MIRROR_LINE 089 Abcdefg gjpqy<br>MIRROR_LINE 090 Abcdefg gjpqy<br>MIRROR_LINE 091 Abcdefg gjpqy<br>MIRROR_LINE 092 Abcdefg gjpqy<br>MIRROR_LINE 093 Abcdefg gjpqy<br>MIRROR_LINE 094 Abcdefg gjpqy<br>MIRROR_LINE 095 Abcdefg gjpqy<br>MIRROR_LINE 096 Abcdefg gjpqy<br>MIRROR_LINE 097 Abcdefg gjpqy<br>MIRROR_LINE 098 Abcdefg gjpqy<br>MIRROR_LINE 099 Abcdefg gjpqy<br>MIRROR_LINE 100 Abcdefg gjpqy<br>MIRROR_LINE 101 Abcdefg gjpqy<br>MIRROR_LINE 102 Abcdefg gjpqy<br>MIRROR_LINE 103 Abcdefg gjpqy<br>MIRROR_LINE 104 Abcdefg gjpqy<br>MIRROR_LINE 105 Abcdefg gjpqy<br>MIRROR_LINE 106 Abcdefg gjpqy<br>MIRROR_LINE 107 Abcdefg gjpqy<br>MIRROR_LINE 108 Abcdefg gjpqy<br>MIRROR_LINE 109 Abcdefg gjpqy<br>MIRROR_LINE 110 Abcdefg gjpqy<br>MIRROR_LINE 111 Abcdefg gjpqy<br>MIRROR_LINE 112 Abcdefg gjpqy<br>MIRROR_LINE 113 Abcdefg gjpqy<br>MIRROR_LINE 114 Abcdefg gjpqy<br>MIRROR_LINE 115 Abcdefg gjpqy</p>",
     "SPACING": "<p data-thesis-style=\"spaceA\">SPACE_A_FIRST</p><p data-thesis-style=\"spaceA\">SPACE_A_SECOND</p><p data-thesis-style=\"spaceB\">SPACE_B_FIRST</p><p data-thesis-style=\"spaceA\">SPACE_A_RETURN</p><p>SPACE_FILL 001 Abcdefg gjpqy<br>SPACE_FILL 002 Abcdefg gjpqy<br>SPACE_FILL 003 Abcdefg gjpqy<br>SPACE_FILL 004 Abcdefg gjpqy<br>SPACE_FILL 005 Abcdefg gjpqy<br>SPACE_FILL 006 Abcdefg gjpqy<br>SPACE_FILL 007 Abcdefg gjpqy<br>SPACE_FILL 008 Abcdefg gjpqy<br>SPACE_FILL 009 Abcdefg gjpqy<br>SPACE_FILL 010 Abcdefg gjpqy<br>SPACE_FILL 011 Abcdefg gjpqy<br>SPACE_FILL 012 Abcdefg gjpqy<br>SPACE_FILL 013 Abcdefg gjpqy<br>SPACE_FILL 014 Abcdefg gjpqy<br>SPACE_FILL 015 Abcdefg gjpqy<br>SPACE_FILL 016 Abcdefg gjpqy<br>SPACE_FILL 017 Abcdefg gjpqy<br>SPACE_FILL 018 Abcdefg gjpqy<br>SPACE_FILL 019 Abcdefg gjpqy<br>SPACE_FILL 020 Abcdefg gjpqy<br>SPACE_FILL 021 Abcdefg gjpqy<br>SPACE_FILL 022 Abcdefg gjpqy<br>SPACE_FILL 023 Abcdefg gjpqy<br>SPACE_FILL 024 Abcdefg gjpqy<br>SPACE_FILL 025 Abcdefg gjpqy<br>SPACE_FILL 026 Abcdefg gjpqy<br>SPACE_FILL 027 Abcdefg gjpqy<br>SPACE_FILL 028 Abcdefg gjpqy<br>SPACE_FILL 029 Abcdefg gjpqy<br>SPACE_FILL 030 Abcdefg gjpqy<br>SPACE_FILL 031 Abcdefg gjpqy<br>SPACE_FILL 032 Abcdefg gjpqy<br>SPACE_FILL 033 Abcdefg gjpqy<br>SPACE_FILL 034 Abcdefg gjpqy<br>SPACE_FILL 035 Abcdefg gjpqy<br>SPACE_FILL 036 Abcdefg gjpqy<br>SPACE_FILL 037 Abcdefg gjpqy<br>SPACE_FILL 038 Abcdefg gjpqy<br>SPACE_FILL 039 Abcdefg gjpqy<br>SPACE_FILL 040 Abcdefg gjpqy<br>SPACE_FILL 041 Abcdefg gjpqy<br>SPACE_FILL 042 Abcdefg gjpqy<br>SPACE_FILL 043 Abcdefg gjpqy<br>SPACE_FILL 044 Abcdefg gjpqy<br>SPACE_FILL 045 Abcdefg gjpqy</p><p data-thesis-style=\"spaceB\">SPACE_NATURAL_TOP</p><p data-thesis-style=\"forced\">SPACE_FORCED_TOP</p>",
     "ALIGN_CENTER": "",
-    "ALIGN_BOTTOM": ""
+    "ALIGN_BOTTOM": "",
+    "MIR_HANG": "<p data-thesis-style=\"noWidow\">MIR_HANG_01_0 line text<br>MIR_HANG_01_1 line text<br>MIR_HANG_01_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_02_0 line text<br>MIR_HANG_02_1 line text<br>MIR_HANG_02_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_03_0 line text<br>MIR_HANG_03_1 line text<br>MIR_HANG_03_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_04_0 line text<br>MIR_HANG_04_1 line text<br>MIR_HANG_04_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_05_0 line text<br>MIR_HANG_05_1 line text<br>MIR_HANG_05_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_06_0 line text<br>MIR_HANG_06_1 line text<br>MIR_HANG_06_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_07_0 line text<br>MIR_HANG_07_1 line text<br>MIR_HANG_07_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_08_0 line text<br>MIR_HANG_08_1 line text<br>MIR_HANG_08_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_09_0 line text<br>MIR_HANG_09_1 line text<br>MIR_HANG_09_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_10_0 line text<br>MIR_HANG_10_1 line text<br>MIR_HANG_10_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_11_0 line text<br>MIR_HANG_11_1 line text<br>MIR_HANG_11_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_12_0 line text<br>MIR_HANG_12_1 line text<br>MIR_HANG_12_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_13_0 line text<br>MIR_HANG_13_1 line text<br>MIR_HANG_13_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_14_0 line text<br>MIR_HANG_14_1 line text<br>MIR_HANG_14_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_15_0 line text<br>MIR_HANG_15_1 line text<br>MIR_HANG_15_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_16_0 line text<br>MIR_HANG_16_1 line text<br>MIR_HANG_16_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_17_0 line text<br>MIR_HANG_17_1 line text<br>MIR_HANG_17_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_18_0 line text<br>MIR_HANG_18_1 line text<br>MIR_HANG_18_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_19_0 line text<br>MIR_HANG_19_1 line text<br>MIR_HANG_19_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_20_0 line text<br>MIR_HANG_20_1 line text<br>MIR_HANG_20_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_21_0 line text<br>MIR_HANG_21_1 line text<br>MIR_HANG_21_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_22_0 line text<br>MIR_HANG_22_1 line text<br>MIR_HANG_22_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_23_0 line text<br>MIR_HANG_23_1 line text<br>MIR_HANG_23_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_24_0 line text<br>MIR_HANG_24_1 line text<br>MIR_HANG_24_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_25_0 line text<br>MIR_HANG_25_1 line text<br>MIR_HANG_25_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_26_0 line text<br>MIR_HANG_26_1 line text<br>MIR_HANG_26_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_27_0 line text<br>MIR_HANG_27_1 line text<br>MIR_HANG_27_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_28_0 line text<br>MIR_HANG_28_1 line text<br>MIR_HANG_28_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_29_0 line text<br>MIR_HANG_29_1 line text<br>MIR_HANG_29_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_30_0 line text<br>MIR_HANG_30_1 line text<br>MIR_HANG_30_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_31_0 line text<br>MIR_HANG_31_1 line text<br>MIR_HANG_31_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_32_0 line text<br>MIR_HANG_32_1 line text<br>MIR_HANG_32_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_33_0 line text<br>MIR_HANG_33_1 line text<br>MIR_HANG_33_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_34_0 line text<br>MIR_HANG_34_1 line text<br>MIR_HANG_34_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_35_0 line text<br>MIR_HANG_35_1 line text<br>MIR_HANG_35_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_36_0 line text<br>MIR_HANG_36_1 line text<br>MIR_HANG_36_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_37_0 line text<br>MIR_HANG_37_1 line text<br>MIR_HANG_37_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_38_0 line text<br>MIR_HANG_38_1 line text<br>MIR_HANG_38_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_39_0 line text<br>MIR_HANG_39_1 line text<br>MIR_HANG_39_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_40_0 line text<br>MIR_HANG_40_1 line text<br>MIR_HANG_40_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_41_0 line text<br>MIR_HANG_41_1 line text<br>MIR_HANG_41_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_42_0 line text<br>MIR_HANG_42_1 line text<br>MIR_HANG_42_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_43_0 line text<br>MIR_HANG_43_1 line text<br>MIR_HANG_43_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_44_0 line text<br>MIR_HANG_44_1 line text<br>MIR_HANG_44_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_45_0 line text<br>MIR_HANG_45_1 line text<br>MIR_HANG_45_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_46_0 line text<br>MIR_HANG_46_1 line text<br>MIR_HANG_46_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_47_0 line text<br>MIR_HANG_47_1 line text<br>MIR_HANG_47_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_48_0 line text<br>MIR_HANG_48_1 line text<br>MIR_HANG_48_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_49_0 line text<br>MIR_HANG_49_1 line text<br>MIR_HANG_49_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_50_0 line text<br>MIR_HANG_50_1 line text<br>MIR_HANG_50_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_51_0 line text<br>MIR_HANG_51_1 line text<br>MIR_HANG_51_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_52_0 line text<br>MIR_HANG_52_1 line text<br>MIR_HANG_52_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_53_0 line text<br>MIR_HANG_53_1 line text<br>MIR_HANG_53_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_54_0 line text<br>MIR_HANG_54_1 line text<br>MIR_HANG_54_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_55_0 line text<br>MIR_HANG_55_1 line text<br>MIR_HANG_55_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_56_0 line text<br>MIR_HANG_56_1 line text<br>MIR_HANG_56_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_57_0 line text<br>MIR_HANG_57_1 line text<br>MIR_HANG_57_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_58_0 line text<br>MIR_HANG_58_1 line text<br>MIR_HANG_58_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_59_0 line text<br>MIR_HANG_59_1 line text<br>MIR_HANG_59_2 line text</p><p data-thesis-style=\"noWidow\">MIR_HANG_60_0 line text<br>MIR_HANG_60_1 line text<br>MIR_HANG_60_2 line text</p>",
+    "MIR_RIGHT": "<p data-thesis-style=\"alignRight\">MIR_RIGHT_01_0 line text<br>MIR_RIGHT_01_1 line text<br>MIR_RIGHT_01_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_02_0 line text<br>MIR_RIGHT_02_1 line text<br>MIR_RIGHT_02_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_03_0 line text<br>MIR_RIGHT_03_1 line text<br>MIR_RIGHT_03_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_04_0 line text<br>MIR_RIGHT_04_1 line text<br>MIR_RIGHT_04_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_05_0 line text<br>MIR_RIGHT_05_1 line text<br>MIR_RIGHT_05_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_06_0 line text<br>MIR_RIGHT_06_1 line text<br>MIR_RIGHT_06_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_07_0 line text<br>MIR_RIGHT_07_1 line text<br>MIR_RIGHT_07_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_08_0 line text<br>MIR_RIGHT_08_1 line text<br>MIR_RIGHT_08_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_09_0 line text<br>MIR_RIGHT_09_1 line text<br>MIR_RIGHT_09_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_10_0 line text<br>MIR_RIGHT_10_1 line text<br>MIR_RIGHT_10_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_11_0 line text<br>MIR_RIGHT_11_1 line text<br>MIR_RIGHT_11_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_12_0 line text<br>MIR_RIGHT_12_1 line text<br>MIR_RIGHT_12_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_13_0 line text<br>MIR_RIGHT_13_1 line text<br>MIR_RIGHT_13_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_14_0 line text<br>MIR_RIGHT_14_1 line text<br>MIR_RIGHT_14_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_15_0 line text<br>MIR_RIGHT_15_1 line text<br>MIR_RIGHT_15_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_16_0 line text<br>MIR_RIGHT_16_1 line text<br>MIR_RIGHT_16_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_17_0 line text<br>MIR_RIGHT_17_1 line text<br>MIR_RIGHT_17_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_18_0 line text<br>MIR_RIGHT_18_1 line text<br>MIR_RIGHT_18_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_19_0 line text<br>MIR_RIGHT_19_1 line text<br>MIR_RIGHT_19_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_20_0 line text<br>MIR_RIGHT_20_1 line text<br>MIR_RIGHT_20_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_21_0 line text<br>MIR_RIGHT_21_1 line text<br>MIR_RIGHT_21_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_22_0 line text<br>MIR_RIGHT_22_1 line text<br>MIR_RIGHT_22_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_23_0 line text<br>MIR_RIGHT_23_1 line text<br>MIR_RIGHT_23_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_24_0 line text<br>MIR_RIGHT_24_1 line text<br>MIR_RIGHT_24_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_25_0 line text<br>MIR_RIGHT_25_1 line text<br>MIR_RIGHT_25_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_26_0 line text<br>MIR_RIGHT_26_1 line text<br>MIR_RIGHT_26_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_27_0 line text<br>MIR_RIGHT_27_1 line text<br>MIR_RIGHT_27_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_28_0 line text<br>MIR_RIGHT_28_1 line text<br>MIR_RIGHT_28_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_29_0 line text<br>MIR_RIGHT_29_1 line text<br>MIR_RIGHT_29_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_30_0 line text<br>MIR_RIGHT_30_1 line text<br>MIR_RIGHT_30_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_31_0 line text<br>MIR_RIGHT_31_1 line text<br>MIR_RIGHT_31_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_32_0 line text<br>MIR_RIGHT_32_1 line text<br>MIR_RIGHT_32_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_33_0 line text<br>MIR_RIGHT_33_1 line text<br>MIR_RIGHT_33_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_34_0 line text<br>MIR_RIGHT_34_1 line text<br>MIR_RIGHT_34_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_35_0 line text<br>MIR_RIGHT_35_1 line text<br>MIR_RIGHT_35_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_36_0 line text<br>MIR_RIGHT_36_1 line text<br>MIR_RIGHT_36_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_37_0 line text<br>MIR_RIGHT_37_1 line text<br>MIR_RIGHT_37_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_38_0 line text<br>MIR_RIGHT_38_1 line text<br>MIR_RIGHT_38_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_39_0 line text<br>MIR_RIGHT_39_1 line text<br>MIR_RIGHT_39_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_40_0 line text<br>MIR_RIGHT_40_1 line text<br>MIR_RIGHT_40_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_41_0 line text<br>MIR_RIGHT_41_1 line text<br>MIR_RIGHT_41_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_42_0 line text<br>MIR_RIGHT_42_1 line text<br>MIR_RIGHT_42_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_43_0 line text<br>MIR_RIGHT_43_1 line text<br>MIR_RIGHT_43_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_44_0 line text<br>MIR_RIGHT_44_1 line text<br>MIR_RIGHT_44_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_45_0 line text<br>MIR_RIGHT_45_1 line text<br>MIR_RIGHT_45_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_46_0 line text<br>MIR_RIGHT_46_1 line text<br>MIR_RIGHT_46_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_47_0 line text<br>MIR_RIGHT_47_1 line text<br>MIR_RIGHT_47_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_48_0 line text<br>MIR_RIGHT_48_1 line text<br>MIR_RIGHT_48_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_49_0 line text<br>MIR_RIGHT_49_1 line text<br>MIR_RIGHT_49_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_50_0 line text<br>MIR_RIGHT_50_1 line text<br>MIR_RIGHT_50_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_51_0 line text<br>MIR_RIGHT_51_1 line text<br>MIR_RIGHT_51_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_52_0 line text<br>MIR_RIGHT_52_1 line text<br>MIR_RIGHT_52_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_53_0 line text<br>MIR_RIGHT_53_1 line text<br>MIR_RIGHT_53_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_54_0 line text<br>MIR_RIGHT_54_1 line text<br>MIR_RIGHT_54_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_55_0 line text<br>MIR_RIGHT_55_1 line text<br>MIR_RIGHT_55_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_56_0 line text<br>MIR_RIGHT_56_1 line text<br>MIR_RIGHT_56_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_57_0 line text<br>MIR_RIGHT_57_1 line text<br>MIR_RIGHT_57_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_58_0 line text<br>MIR_RIGHT_58_1 line text<br>MIR_RIGHT_58_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_59_0 line text<br>MIR_RIGHT_59_1 line text<br>MIR_RIGHT_59_2 line text</p><p data-thesis-style=\"alignRight\">MIR_RIGHT_60_0 line text<br>MIR_RIGHT_60_1 line text<br>MIR_RIGHT_60_2 line text</p>",
+    "LANDSCAPE": "<p>LAND_LINE 001 Abcdefg gjpqy<br>LAND_LINE 002 Abcdefg gjpqy<br>LAND_LINE 003 Abcdefg gjpqy<br>LAND_LINE 004 Abcdefg gjpqy<br>LAND_LINE 005 Abcdefg gjpqy<br>LAND_LINE 006 Abcdefg gjpqy<br>LAND_LINE 007 Abcdefg gjpqy<br>LAND_LINE 008 Abcdefg gjpqy<br>LAND_LINE 009 Abcdefg gjpqy<br>LAND_LINE 010 Abcdefg gjpqy<br>LAND_LINE 011 Abcdefg gjpqy<br>LAND_LINE 012 Abcdefg gjpqy<br>LAND_LINE 013 Abcdefg gjpqy<br>LAND_LINE 014 Abcdefg gjpqy<br>LAND_LINE 015 Abcdefg gjpqy<br>LAND_LINE 016 Abcdefg gjpqy<br>LAND_LINE 017 Abcdefg gjpqy<br>LAND_LINE 018 Abcdefg gjpqy<br>LAND_LINE 019 Abcdefg gjpqy<br>LAND_LINE 020 Abcdefg gjpqy<br>LAND_LINE 021 Abcdefg gjpqy<br>LAND_LINE 022 Abcdefg gjpqy<br>LAND_LINE 023 Abcdefg gjpqy<br>LAND_LINE 024 Abcdefg gjpqy<br>LAND_LINE 025 Abcdefg gjpqy<br>LAND_LINE 026 Abcdefg gjpqy<br>LAND_LINE 027 Abcdefg gjpqy<br>LAND_LINE 028 Abcdefg gjpqy<br>LAND_LINE 029 Abcdefg gjpqy<br>LAND_LINE 030 Abcdefg gjpqy<br>LAND_LINE 031 Abcdefg gjpqy<br>LAND_LINE 032 Abcdefg gjpqy<br>LAND_LINE 033 Abcdefg gjpqy<br>LAND_LINE 034 Abcdefg gjpqy<br>LAND_LINE 035 Abcdefg gjpqy<br>LAND_LINE 036 Abcdefg gjpqy<br>LAND_LINE 037 Abcdefg gjpqy<br>LAND_LINE 038 Abcdefg gjpqy<br>LAND_LINE 039 Abcdefg gjpqy<br>LAND_LINE 040 Abcdefg gjpqy<br>LAND_LINE 041 Abcdefg gjpqy<br>LAND_LINE 042 Abcdefg gjpqy<br>LAND_LINE 043 Abcdefg gjpqy<br>LAND_LINE 044 Abcdefg gjpqy<br>LAND_LINE 045 Abcdefg gjpqy<br>LAND_LINE 046 Abcdefg gjpqy<br>LAND_LINE 047 Abcdefg gjpqy<br>LAND_LINE 048 Abcdefg gjpqy<br>LAND_LINE 049 Abcdefg gjpqy<br>LAND_LINE 050 Abcdefg gjpqy<br>LAND_LINE 051 Abcdefg gjpqy<br>LAND_LINE 052 Abcdefg gjpqy<br>LAND_LINE 053 Abcdefg gjpqy<br>LAND_LINE 054 Abcdefg gjpqy<br>LAND_LINE 055 Abcdefg gjpqy<br>LAND_LINE 056 Abcdefg gjpqy<br>LAND_LINE 057 Abcdefg gjpqy<br>LAND_LINE 058 Abcdefg gjpqy<br>LAND_LINE 059 Abcdefg gjpqy<br>LAND_LINE 060 Abcdefg gjpqy<br>LAND_LINE 061 Abcdefg gjpqy<br>LAND_LINE 062 Abcdefg gjpqy<br>LAND_LINE 063 Abcdefg gjpqy<br>LAND_LINE 064 Abcdefg gjpqy<br>LAND_LINE 065 Abcdefg gjpqy<br>LAND_LINE 066 Abcdefg gjpqy<br>LAND_LINE 067 Abcdefg gjpqy<br>LAND_LINE 068 Abcdefg gjpqy<br>LAND_LINE 069 Abcdefg gjpqy<br>LAND_LINE 070 Abcdefg gjpqy<br>LAND_LINE 071 Abcdefg gjpqy<br>LAND_LINE 072 Abcdefg gjpqy<br>LAND_LINE 073 Abcdefg gjpqy<br>LAND_LINE 074 Abcdefg gjpqy<br>LAND_LINE 075 Abcdefg gjpqy</p>",
+    "PORTRAIT_RETURN": "<p>PORT_RET 001 Abcdefg gjpqy<br>PORT_RET 002 Abcdefg gjpqy<br>PORT_RET 003 Abcdefg gjpqy</p>"
    }
   }
  }

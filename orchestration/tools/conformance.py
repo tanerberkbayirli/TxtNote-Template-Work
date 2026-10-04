@@ -255,6 +255,9 @@ class Doc:
                     start = self.pages({"find": spec["from"]})
                     out = [p for p in out if start and p >= start[0]]
                 return out
+            if "until" in spec:  # every page before the first page whose text matches
+                stop = self.pages({"find": spec["until"]})
+                return list(range(1, stop[0])) if stop else []
             if "find" in spec:
                 rx = re.compile(spec["find"])
                 within = self.pages(spec["within"]) if "within" in spec else range(1, self.n + 1)
@@ -277,8 +280,10 @@ def get_doc(ctx, params):
             cache[key] = LayoutDoc(report)
         return cache[key]
     var = ctx["variants"].get(params.get("fixture", "default")) or {}
-    path = var.get("wordPdf" if src == "word" else "pdf")
+    path = var.get({"word": "wordPdf", "word-refreshed": "wordRefreshedPdf"}.get(src, "pdf"))
     if not path or not os.path.exists(path):
+        if src == "word-refreshed":
+            raise Skip(var.get("wordRefreshNote") or var.get("wordNote") or "Word field-refresh render unavailable (run with --word)")
         if src == "word":
             raise Skip(var.get("wordNote") or "Word render unavailable (run with --word)")
         raise Skip(f"no export for variant {params.get('fixture', 'default')}")
@@ -670,6 +675,133 @@ def k_last_line_words_match(ctx, c):
             bad.append((i, a[i][0], round(d, 3)))
     return {'actual': {'paragraphs': {'pdf': len(a), 'word': len(b)}, 'maxDeltaMm': round(worst, 3), 'bad': bad[:2]},
             'pass': bool(a) and not bad, 'expected_override': f'last-line word x within {tol} mm of Word'}
+
+
+def _line_words(doc, page, line):
+    """(non-leader glyph [x0, x1] list, leader run [x0, x1] or None) of one visual line; a leader is a run of >= 4 identical . - _ glyphs."""
+    chars = [ch for block in doc.pdf[page - 1].get_text('rawdict')['blocks'] for ln in block.get('lines', []) for sp in ln['spans'] for ch in sp['chars']
+             if ch['c'].strip() and line['top'] - .5 <= (ch['bbox'][1] + ch['bbox'][3]) / 2 / MM2PT <= line['bottom'] + .5]
+    chars.sort(key=lambda ch: ch['bbox'][0])
+    leader, rest, i = [], [], 0
+    while i < len(chars):
+        j = i
+        while j + 1 < len(chars) and chars[j + 1]['c'] == chars[i]['c']:
+            j += 1
+        if chars[i]['c'] in '.-_' and j - i + 1 >= 4:
+            leader.extend(chars[i:j + 1])
+        else:
+            rest.extend(chars[i:j + 1])
+        i = j + 1
+    return ([[round(ch['bbox'][0] / MM2PT, 3), round(ch['bbox'][2] / MM2PT, 3)] for ch in rest],
+            [round(min(ch['bbox'][0] for ch in leader) / MM2PT, 3), round(max(ch['bbox'][2] for ch in leader) / MM2PT, 3), len(leader)] if leader else None)
+
+
+def k_line_words_match(ctx, c):
+    """Every matched line: non-leader word extents and the leader run (first/last leader glyph) agree between the PDF and the Word render."""
+    P, tol = c['params'], c.get('tolerance', .5)
+    res = {}
+    for source in ('pdf', 'word'):
+        doc = get_doc(ctx, {**P, 'source': source})
+        res[source] = [(p, l['text'][:20], *_line_words(doc, p, l)) for p, l in _find_lines(doc, doc.pages(P.get('pages')), P['regex'])]
+    a, b = res['pdf'], res['word']
+    if not a or not b:
+        return {'actual': {k: len(v) for k, v in res.items()}, 'pass': False, 'note': 'matching lines must exist in both outputs'}
+    worst, bad = 0.0, []
+    if len(a) != len(b):
+        bad.append(('line count', len(a), len(b)))
+    for x, y in zip(a, b):
+        if x[0] != y[0] or len(x[2]) != len(y[2]) or (x[3] is None) != (y[3] is None):
+            bad.append((x[1], 'structure', x[2:], y[2:]))
+            continue
+        ds = [abs(m - n) for u, v in zip(x[2], y[2]) for m, n in zip(u, v)]
+        if P.get('leader', True) and x[3] and y[3]:
+            ds += [abs(m - n) for m, n in zip(x[3][:2], y[3][:2])]
+            if x[3][2] != y[3][2]:
+                bad.append((x[1], 'leader glyph count', x[3][2], y[3][2]))
+        d = max(ds, default=0.0)
+        worst = max(worst, d)
+        if d > tol + EPS:
+            bad.append((x[1], round(d, 3), x[2:], y[2:]))
+    return {'actual': {'lines': len(a), 'maxDeltaMm': round(worst, 3), 'bad': bad[:2]}, 'pass': not bad,
+            'expected_override': f'word and leader extents within {tol} mm of Word'}
+
+
+def k_page_size_match(ctx, c):
+    a = get_doc(ctx, {**c['params'], 'source': 'pdf'})
+    b = get_doc(ctx, {**c['params'], 'source': 'word'})
+    sa = [page_size_mm(a.pdf[p]) for p in range(a.n)]
+    sb = [page_size_mm(b.pdf[p]) for p in range(b.n)]
+    tol = c.get('tolerance', .25)
+    ok = len(sa) == len(sb) and all(abs(x[0] - y[0]) <= tol and abs(x[1] - y[1]) <= tol for x, y in zip(sa, sb))
+    rle_ = lambda v: rle([f'{x[0]:.1f}x{x[1]:.1f}' for x in v])
+    return {'actual': {'pdf': rle_(sa), 'word': rle_(sb)}, 'pass': ok, 'expected_override': f'identical page size on every page within {tol} mm'}
+
+
+def k_page_number_attr_match(ctx, c):
+    P = c['params']
+    vals = {}
+    for source in ('layout', 'word'):
+        d = get_doc(ctx, {**P, 'source': source})
+        vals[source] = [[p, round(ATTR[P.get('attr', 'baseline')](pn), 4)] for p in d.pages(P.get('pages')) for pn in [d.page_num(p)] if pn]
+    if not vals['layout'] or not vals['word']:
+        return {'actual': {k: len(v) for k, v in vals.items()}, 'pass': False, 'note': 'page numbers must exist in both outputs'}
+    equal, delta = compare(vals['word'], vals['layout'], c.get('tolerance', .25))
+    equal = equal and [v[0] for v in vals['word']] == [v[0] for v in vals['layout']]
+    return {'actual': {k: v[:6] for k, v in vals.items()}, 'pass': equal, 'note': f'delta {delta}', 'expected_override': 'same pages and page-number geometry within tolerance'}
+
+
+def k_fields_refresh_match(ctx, c):
+    """Word's render of the DOCX with cached field results equals Word's render after updating every field (TOC/PAGEREF/NUMPAGES/SEQ/PAGE)."""
+    a = get_doc(ctx, {**c['params'], 'source': 'word'})
+    b = get_doc(ctx, {**c['params'], 'source': 'word-refreshed'})
+    norm = lambda doc, p: [re.sub(r'\s+', ' ', l['text']).strip() for l in sorted(doc.lines(p, True), key=lambda l: (round(l['baseline'], 1), l['x0']))]
+    diffs = []
+    for p in range(1, max(a.n, b.n) + 1):
+        la = norm(a, p) if p <= a.n else None
+        lb = norm(b, p) if p <= b.n else None
+        if la != lb:
+            diffs.append((p, [x for x in (la or []) if x not in (lb or [])][:3], [x for x in (lb or []) if x not in (la or [])][:3]))
+    return {'actual': {'pages': {'cached': a.n, 'refreshed': b.n}, 'diffs': diffs[:3]}, 'pass': not diffs and a.n == b.n,
+            'expected_override': 'cached field results identical to Word-refreshed results on every page'}
+
+
+def k_fields_cached_match(ctx, c):
+    """Cached field results as Word loaded the DOCX equal Word's results after updating every field. Compared per kind: TOC results,
+    SEQ / PAGE / NUMPAGES results in order per part, PAGEREF results per bookmark (Word rebuilds a TOC field's inner PAGEREFs with new bookmarks; they
+    are covered by the TOC result text)."""
+    var = ctx["variants"].get(c["params"].get("fixture", "default")) or {}
+    path = var.get("wordFieldDump")
+    if not path or not os.path.exists(path):
+        raise Skip(var.get("wordRefreshNote") or var.get("wordNote") or "Word field dump unavailable (run with --word)")
+    data = json.load(open(path, encoding="utf-8-sig"))
+    rows = lambda key: [data.get(key)] if isinstance(data.get(key), dict) else (data.get(key) or [])
+    before, after = rows("before"), rows("after")
+    kind = lambda r: (r["code"].split() or [""])[0].upper()
+    norm = lambda t: re.sub(r"\s+", " ", t).strip()
+    diffs, seen = [], {}
+    # NUMPAGES: Word has not paginated yet when it loads the file (COM reports a provisional count), so the cached value is read from the DOCX XML.
+    cached_np = []
+    with zipfile.ZipFile(get_docx(ctx, c["params"])) as z:
+        for name in z.namelist():
+            if name.startswith("word/") and name.endswith(".xml"):
+                cached_np += re.findall(r"NUMPAGES</w:instrText>.*?w:fldCharType=\"separate\"/>.*?<w:t[^>]*>([^<]*)</w:t>", z.read(name).decode("utf8", "replace"), re.S)
+    updated_np = sorted({norm(r["result"]) for r in after if kind(r) == "NUMPAGES"})
+    seen["NUMPAGES(cached xml)"] = len(cached_np)
+    if set(cached_np) - set(updated_np) or (cached_np and not updated_np):
+        diffs.append(("NUMPAGES", sorted(set(cached_np)), updated_np))
+    for k in ("TOC", "SEQ", "PAGE"):
+        x = [(r["part"], norm(r["result"])) for r in before if kind(r) == k]
+        y = [(r["part"], norm(r["result"])) for r in after if kind(r) == k]
+        seen[k] = len(x)
+        if x != y:
+            diffs.append((k, x[:3], y[:3]))
+    pb = {r["code"]: norm(r["result"]) for r in before if kind(r) == "PAGEREF"}
+    pa = {r["code"]: norm(r["result"]) for r in after if kind(r) == "PAGEREF"}
+    common = [code for code in pb if code in pa]
+    seen["PAGEREF(common)"] = len(common)
+    diffs += [("PAGEREF", code, pb[code], pa[code]) for code in common if pb[code] != pa[code]]
+    return {"actual": {"fields": len(before), "kinds": seen, "diffs": diffs[:4]}, "pass": bool(before) and not diffs,
+            "expected_override": "cached results identical to Word-updated results"}
 
 
 def k_body_pitch_match(ctx, c):

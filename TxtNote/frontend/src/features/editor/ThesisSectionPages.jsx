@@ -5,7 +5,7 @@ import { focusEditableStart } from "../../lib/richText.js";
 import { resolveChromeText, resolvePageNumberStyle } from "../../thesis/engine.js";
 import { chapterStartPageIndexes, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, thesisGroupHasPageContent } from "../../thesis/pageLayout.js";
 import { pageFootnotesSupported } from "../../thesis/footnotes.js";
-import { cssLineBaselineOffset, wordBaselineProbe } from "../../thesis/wordBaseline.js";
+import { cssLineBaselineOffset, emptyParagraphPitchMm, wordBaselineProbe } from "../../thesis/wordBaseline.js";
 import { RichTextBody } from "./RichTextBody";
 
 /** Pages come from the browser's fragmentation engine; engines without multicol row wrapping keep the Task 6 continuous surface. */
@@ -40,7 +40,9 @@ function SheetChrome({ rules, values, page }) {
   const chromeBaselinePx = chromeProbe ? cssLineBaselineOffset({ fontFamily: body.fontFamily, fontSize: "10pt", fontWeight: 400, fontStyle: "normal", lineHeight: 1.1 }) : null;
   const chromeShiftMm = chromeProbe && Number.isFinite(chromeBaselinePx) ? chromeProbe.targetPt * 25.4 / 72 - chromeBaselinePx * 25.4 / 96 : 0;
   const topMm = (header?.distanceMm || 0) + (header?.heightMm || 0) / 2;
-  const bottomMm = footer?.distanceMm || 0;
+  // Trailing blank footer paragraphs (Word keeps them below the text): each is one body-font single line (measured: the number moves up one line pitch per blank paragraph).
+  const blankMm = (footer?.trailingBlankLines || 0) * emptyParagraphPitchMm(body, rules.lineSpacing);
+  const bottomMm = (footer?.distanceMm || 0) + blankMm;
   // A number on the same edge as header/footer text stays nearest the paper edge; the text moves one line inward.
   const shift = (edge) => (page.label && page.numberPosition === edge ? 6 : 0);
   return <>

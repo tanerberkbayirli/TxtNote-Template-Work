@@ -34,6 +34,13 @@ const familyName = (value) => String(value || "").split(",")[0].replace(/["']/g,
 const hash = (text) => { let h = 5381; for (let i = 0; i < text.length; i += 1) h = ((h << 5) + h + text.charCodeAt(i)) >>> 0; return h.toString(36); };
 const round = (value) => Math.round(value * 10000) / 10000;
 
+/** Single-line pitch (mm) of one empty body-style paragraph (trailing footer blank lines), from the font program metrics or source-measured singleLineEm; 0 when unknown. */
+export function emptyParagraphPitchMm(body = {}, lineSpacing) {
+  const metrics = WORD_FONT_METRICS[familyName(body.fontFamily).toLowerCase()];
+  const singleEm = lineSpacing?.singleLineEm ?? (metrics ? metrics.ascent + metrics.descent + metrics.lineGap : 0);
+  return singleEm * (body.fontSizePt || 0) * 25.4 / 72;
+}
+
 export const wordBaselineEnabled = (spacing) => (spacing?.mode === "word" || spacing?.rule) && spacing.baseline === "word";
 
 /**

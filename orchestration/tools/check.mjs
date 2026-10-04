@@ -62,9 +62,9 @@ function py(argv) {
 }
 
 // ---------------------------------------------------------------- Word (own instance, PID recorded, timeout)
-async function wordToPdf(docx, pdf, timeoutMs = Number(process.env.CHECK_WORD_TIMEOUT_MS) || 120000) {
+async function wordToPdf(docx, pdf, refreshed, fieldDump, timeoutMs = Number(process.env.CHECK_WORD_TIMEOUT_MS) || 120000) {
   return new Promise((res) => {
-    const ps = spawn("powershell", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", join(here, "word2pdf.ps1"), "-In", docx, "-Out", pdf], { cwd: root });
+    const ps = spawn("powershell", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", join(here, "word2pdf.ps1"), "-In", docx, "-Out", pdf, ...(refreshed ? ["-Refreshed", refreshed] : []), ...(fieldDump ? ["-FieldDump", fieldDump] : [])], { cwd: root });
     let out = "", pid = null, done = false;
     const finish = (r) => { if (!done) { done = true; clearTimeout(timer); res(r); } };
     ps.stdout.on("data", (d) => { out += d; const m = out.match(/WORDPID:(\d+)/); if (m) pid = m[1]; });
@@ -89,7 +89,7 @@ if (opt.buildReference) {
   } else {
     const docx = opt.officialDocx ? resolve(root, opt.officialDocx) : join(refDir, "official.docx");
     if (!existsSync(docx)) { console.error(`no official-word.pdf and no official DOCX (${docx}); pass --official-docx`); process.exit(2); }
-    const r = await wordToPdf(docx, wp);
+    const r = await wordToPdf(docx, wp, null, null);
     if (!r.ok) { console.error(r.reason); process.exit(1); }
   }
   const r = py(["build-reference", "--dir", refDir]);
@@ -166,13 +166,17 @@ for (const v of variants) {
 }
 
 // ---------------------------------------------------------------- Word render
+// The field-refresh render (second Word export after updating all fields) is made only for targets whose checks use it.
+const wantsRefresh = /fields_refresh_match|fields_cached_match|word-refreshed/.test(readFileSync(checksPath, "utf8"));
 for (const v of variants) {
   if (!opt.word) { vmap[v].wordNote = "Word render not requested (run with --word)"; continue; }
   if (!vmap[v].docx || !existsSync(vmap[v].docx)) { vmap[v].wordNote = "no DOCX to render"; continue; }
   const wp = vmap[v].docx.replace(/\.docx$/, ".word.pdf");
-  const r = await wordToPdf(vmap[v].docx, wp);
+  const rp = wantsRefresh ? wp.replace(/\.word\.pdf$/, ".word-refreshed.pdf") : null;
+  const fd = rp ? wp.replace(/\.word\.pdf$/, ".word-fields.json") : null;
+  const r = await wordToPdf(vmap[v].docx, wp, rp, fd);
   log(`word ${v}: ${JSON.stringify(r)}`);
-  if (r.ok) vmap[v].wordPdf = wp; else vmap[v].wordNote = r.reason;
+  if (r.ok) { vmap[v].wordPdf = wp; if (rp && existsSync(rp)) { vmap[v].wordRefreshedPdf = rp; if (fd && existsSync(fd)) vmap[v].wordFieldDump = fd; } else if (rp) vmap[v].wordRefreshNote = "Word field-refresh export missing"; } else vmap[v].wordNote = r.reason;
 }
 
 // ---------------------------------------------------------------- evaluate

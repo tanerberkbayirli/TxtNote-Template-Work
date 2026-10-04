@@ -3,6 +3,19 @@ import { resolveIndent, resolveTabStops } from "./typography.js";
 const PX_PER_MM = 96 / 25.4;
 const quote = (s) => String(s).replace(/["\\]/g, "\\$&");
 
+/** Word advances leader glyphs in whole 1/600-inch device units (hyphen 12 pt TNR: 3.996 pt -> 33 units = 3.96 pt in Word's PDF). CSS px in, CSS px out. */
+export const wordLeaderAdvancePx = (nominalPx) => nominalPx > 0 ? Math.max(1, Math.round(nominalPx * 0.75 * 600 / 72)) * 72 / 600 / 0.75 : 0;
+
+/**
+ * Word draws leader glyphs on a grid of whole advances anchored at the page's left edge (measured: glyph origins are multiples of the advance and
+ * identical on every row): the first grid point at/after the tab start, keeping only glyphs that end inside the tab. startPx is the tab start from the page edge.
+ */
+export function leaderGrid(startPx, widthPx, advancePx) {
+  if (!(advancePx > 0)) return { offset: 0, count: 0 };
+  const offset = Math.max(0, Math.ceil(startPx / advancePx - 1e-4) * advancePx - startPx);
+  return { offset, count: Math.max(0, Math.floor((widthPx - offset) / advancePx + 1e-4)) };
+}
+
 /** Source text always retains a tab. Leader glyphs and widths are presentation only. */
 export function measureParagraphTabsCss(root, model) {
   if (!root || !model) return "";
@@ -62,10 +75,14 @@ export function measureParagraphTabsCss(root, model) {
         const glyph = { dots: ".", hyphen: "-", underscore: "_" }[stop.leader];
         const leaderCanvas = doc.createElement("canvas"), leaderContext = leaderCanvas.getContext("2d");
         leaderContext.font = `${css.fontStyle} ${css.fontWeight} ${css.fontSize} ${css.fontFamily}`;
-        const glyphWidth = glyph ? leaderContext.measureText(glyph).width : 0;
-        const leaderText = glyphWidth > 0 ? glyph.repeat(Math.max(0, Math.floor(width / glyphWidth))) : "";
+        // Word advances leader glyphs in whole 1/600-inch device units (hyphen 12 pt: 3.996 pt -> 33 units = 3.96 pt in Word's PDF).
+        const glyphWidth = wordLeaderAdvancePx(glyph ? leaderContext.measureText(glyph).width : 0);
+        const { offset, count } = leaderGrid((section.rules.page?.margins?.leftMm || 0) * PX_PER_MM + current, width, glyphWidth);
+        const leaderText = glyph ? glyph.repeat(count) : "";
         if (leader.textContent !== leaderText) leader.textContent = leaderText;
-        rules.push(`[data-thesis-tab="${id}"]{display:inline-block;width:${Math.round(width * 10000) / 10000}px;text-indent:0;white-space:normal;vertical-align:baseline;position:relative;overflow:hidden}[data-thesis-tab="${id}"]>i{position:absolute;inset:0;font:inherit;white-space:nowrap;pointer-events:none}`);
+        const leaderLeft = `${Math.round(offset * 10000) / 10000}px`;
+        if (leader.style.left !== leaderLeft) leader.style.left = leaderLeft;
+        rules.push(`[data-thesis-tab="${id}"]{display:inline-block;width:${Math.round(width * 10000) / 10000}px;text-indent:0;white-space:pre;vertical-align:baseline;position:relative}[data-thesis-tab="${id}"]>i{position:absolute;inset:0;font:inherit;white-space:nowrap;pointer-events:none}`);
       }
     }
   }

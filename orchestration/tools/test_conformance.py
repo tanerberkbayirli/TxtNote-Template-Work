@@ -105,5 +105,32 @@ class LandmarkTests(unittest.TestCase):
         self.assertTrue(any('fldSimple' in hit for hit in result['actual']))
 
 
+class FieldDumpTests(unittest.TestCase):
+    """fields_cached_match compares per kind: TOC text, SEQ/PAGE in order, PAGEREF per bookmark; TOC-internal PAGEREF rebuilds are ignored."""
+    def run_dump(self, before, after, np_cached='7', np_after='7'):
+        import conformance
+        with tempfile.TemporaryDirectory() as tmp:
+            dump, docx = os.path.join(tmp, 'f.json'), os.path.join(tmp, 'a.docx')
+            json.dump({'before': before, 'after': after}, open(dump, 'w'))
+            footer = ('<w:p><w:r><w:instrText> NUMPAGES</w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r>'
+                      '<w:r><w:t>%s</w:t></w:r></w:p>') % np_cached
+            with zipfile.ZipFile(docx, 'w') as z:
+                z.writestr('word/footer1.xml', footer)
+            ctx = {'variants': {'default': {'wordFieldDump': dump, 'docx': docx}}}
+            return conformance.k_fields_cached_match(ctx, {'params': {}})
+
+    def row(self, code, result, part='body'):
+        return {'part': part, 'type': 0, 'code': code, 'result': result}
+
+    def test_equal_and_toc_rebuild_ignored(self):
+        before = [self.row('TOC \h', 'A	1'), self.row('PAGEREF _ref_a \h', '1'), self.row('SEQ Tablo', '1')]
+        after = [self.row('TOC \h', 'A	1'), self.row('PAGEREF _Toc1 \h', '1'), self.row('SEQ Tablo', '1'), self.row('NUMPAGES', '7', 'footer1.1')]
+        self.assertTrue(self.run_dump(before, after)['pass'])
+
+    def test_changed_seq_or_numpages_fail(self):
+        self.assertFalse(self.run_dump([self.row('SEQ Tablo', '1')], [self.row('SEQ Tablo', '2')])['pass'])
+        self.assertFalse(self.run_dump([self.row('PAGE', '1', 'footer1.1')], [self.row('PAGE', '1', 'footer1.1'), self.row('NUMPAGES', '9', 'footer1.1')], np_cached='7')['pass'])
+
+
 if __name__ == "__main__":
     unittest.main()

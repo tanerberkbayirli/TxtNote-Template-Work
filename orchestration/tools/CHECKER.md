@@ -34,7 +34,7 @@ PDF: `page_size`, `page_count`, `text_extent` (x0min|x1max|firstBaseline|lastBas
 `toc_labels` (every TOC/list entry label = real page label), `rules_count` (table rules).
 DOCX XML: `docx_section` (pgSz/pgMar mm, pgNumType), `docx_attr` (any `w:<tag>` attrs; mode allowed|has, numeric_tol in
 twips), `docx_no_undefined` (`<undefined`, unbalanced fldChar). Word (only `--word`): `word_opens`, `page_count_match`,
-and any PDF kind with `params.source:"word"`. `note` records INFO/UNKNOWN items.
+and any PDF kind with `params.source:"word"`. Word-comparison kinds (layout/PDF vs Word): `line_attr_match`, `line_words_match` (glyph extents of matched lines; tab leader run = >=4 identical . - _ glyphs, compared by extent and glyph count), `page_size_match` (per-page size), `page_number_attr_match` (baseline|cx|x0|x1|size per page, pages selector). Field kinds (`--word` renders a second, field-refreshed PDF and a JSON field dump when a target's checks use them): `fields_refresh_match` (Word render of the cached DOCX = render after updating all fields), `fields_cached_match` (per-kind cached results = Word-updated results; NUMPAGES cached value read from DOCX XML). Page selector `{"until":"<regex>"}` = every page before the first match. `params.source:"word-refreshed"` measures the refreshed render. `note` records INFO/UNKNOWN items.
 
 ## Reference caching rule
 Official Word render + official DOCX live in `artifacts/<id>/source/reference/` (`official-word.pdf`, `official.docx`,

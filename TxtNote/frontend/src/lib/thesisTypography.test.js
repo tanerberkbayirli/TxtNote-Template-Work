@@ -7,6 +7,8 @@ import { buildThesisDocx } from "../thesis/export.js";
 import { resolveIndent, resolveLineSpacing, paragraphGap } from "../thesis/typography.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
 import { thesisSourceHtml } from "../thesis/sourceHtml.js";
+import { leaderGrid, wordLeaderAdvancePx } from "../thesis/paragraphTabs.js";
+import { emptyParagraphPitchMm } from "../thesis/wordBaseline.js";
 
 const template = (style, spacing) => {
   const t = structuredClone(generic);
@@ -46,7 +48,13 @@ describe("canonical typography and Word properties", () => {
   it("normalizes hanging and mirror indents and emits tabs/leaders and keep flags", async () => {
     const indent = { leftMm: 6, rightMm: 3, firstLineMm: 2, hangingMm: 4, mirror: true };
     assert.deepEqual(resolveIndent({ indent }), { first: -4, left: 10, right: 3, mirror: true });
-    assert.deepEqual(resolveIndent({ indent }, true), { first: -4, left: 3, right: 10, mirror: true });
+    // Word (measured, MOTOR 2.3): even pages keep the hanging offset on the new left edge; the right limit is the odd page's first-line start.
+    assert.deepEqual(resolveIndent({ indent }, true), { first: -4, left: 7, right: 6, mirror: true });
+    assert.deepEqual(resolveIndent({ indent: { leftMm: 6, rightMm: 3, firstLineMm: 8, mirror: true } }, true), { first: 8, left: 3, right: 14, mirror: true });
+    // The glyph shift between pages is always right - left of the authored values.
+    for (const input of [indent, { leftMm: 6, rightMm: 3, firstLineMm: 8, mirror: true }, { leftMm: 14, rightMm: 2, hangingMm: 8, mirror: true }]) {
+      assert.equal(resolveIndent({ indent: input }, true).left - resolveIndent({ indent: input }).left, input.rightMm - input.leftMm);
+    }
     const t = template({ indent, keepLines: true, widowControl: false, tabStops: [{ positionMm: 100, align: "right", leader: "dots" }] }, { rule: "exact", value: 14 });
     const xml = strFromU8((await xmlParts(t, "<p>AAA\t7</p>"))["word/document.xml"]);
     assert.match(xml, /<w:mirrorIndents\/>/);
@@ -79,6 +87,34 @@ describe("canonical typography and Word properties", () => {
     assert.equal(paragraphGap({ spaceAfterPt: 8 }, { spaceBeforePt: 6 }, { paragraphSpacing: "additive" }), 14);
   });
 
+  it("writes landscape pages with the physical width and height Word needs (w > h)", async () => {
+    const t = template({}, undefined);
+    t.page.orientation = "landscape";
+    t.page.widthMm = 297;
+    t.page.heightMm = 210;
+    t.page.numbering = { ...t.page.numbering, baselineFromTopMm: undefined };
+    const xml = strFromU8((await xmlParts(t))["word/document.xml"]);
+    const size = /<w:pgSz[^>]*>/.exec(xml)[0];
+    assert.match(size, /w:w="16838"/);
+    assert.match(size, /w:h="11906"/);
+    assert.match(size, /w:orient="landscape"/);
+  });
+  it("models Word's leader glyph grid and trailing blank footer line pitch (measured)", () => {
+    const px = (mm) => mm * 96 / 25.4;
+    // 12 pt TNR: hyphen advances 33/600 in (3.96 pt), dot 25/600 in (3 pt) in Word's PDF.
+    assert.ok(Math.abs(wordLeaderAdvancePx(4 * 96 / 72) * 72 / 96 - 3.96) < 1e-6);
+    assert.ok(Math.abs(wordLeaderAdvancePx(3 * 96 / 72) * 72 / 96 - 3) < 1e-6);
+    // Dots start at the first page-grid point after the text and end before the following text (measured: 44.451 mm first dot, 73 dots).
+    const advance = wordLeaderAdvancePx(3 * 96 / 72);
+    const grid = leaderGrid(px(43.426), px(122.622 - 43.426), advance);
+    assert.ok(Math.abs((px(43.426) + grid.offset) / px(1) - 44.45) < 0.01);
+    assert.equal(grid.count, 73);
+    assert.deepEqual(leaderGrid(10, 5, 0), { offset: 0, count: 0 });
+    // One empty 12 pt Times New Roman paragraph is 13.8 pt (1.15 em) high; unknown fonts without singleLineEm are UNKNOWN (0).
+    assert.ok(Math.abs(emptyParagraphPitchMm({ fontFamily: "Times New Roman", fontSizePt: 12 }) - 13.8 * 25.4 / 72) < 1e-3);
+    assert.equal(emptyParagraphPitchMm({ fontFamily: "Unknown", fontSizePt: 12 }), 0);
+    assert.ok(Math.abs(emptyParagraphPitchMm({ fontFamily: "Unknown", fontSizePt: 10 }, { singleLineEm: 1.2 }) - 12 * 25.4 / 72) < 1e-6);
+  });
   it("strips measured tab leaders from source without losing typed tabs", () => {
     assert.equal(thesisSourceHtml('<p>A<span data-thesis-tab="tab-0"><i data-thesis-tab-leader="">......</i>\t</span>B</p>'), "<p>A\tB</p>");
   });

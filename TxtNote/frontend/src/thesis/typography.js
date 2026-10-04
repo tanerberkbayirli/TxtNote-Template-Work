@@ -28,7 +28,10 @@ export function resolveIndent(style = {}, evenPage = false) {
   const left = input.leftMm ?? style.leftIndentMm ?? 0;
   const right = input.rightMm ?? style.rightIndentMm ?? 0;
   const first = hanging > 0 ? -hanging : input.firstLineMm ?? style.firstLineIndentMm ?? 0;
-  return { first, left: (input.mirror ?? style.mirrorIndents) && evenPage ? right : left + hanging, right: (input.mirror ?? style.mirrorIndents) && evenPage ? left + hanging : right, mirror: Boolean(input.mirror ?? style.mirrorIndents) };
+  const mirror = Boolean(input.mirror ?? style.mirrorIndents);
+  // Word (measured, MOTOR 2.3): on even pages the outer margin value becomes the first-line/continuation edge keeping the hanging offset,
+  // so the glyph shift of a mirrored paragraph is always right - left of the authored values.
+  return { first, left: mirror && evenPage ? right + hanging : left + hanging, right: mirror && evenPage ? left + Math.max(first, 0) : right, mirror };
 }
 
 export function paragraphGap(previous, next, spacing = {}, sameStyle = false) {

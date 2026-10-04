@@ -1,0 +1,432 @@
+{
+ "title": "Word structure acceptance (footer)",
+ "__template": {
+  "schemaVersion": 1,
+  "templateVersion": "1.0.0",
+  "id": "engine-word-structure-footer",
+  "universityId": "engine-test",
+  "universityName": "Word structure acceptance",
+  "degreeType": "master",
+  "language": "tr",
+  "status": "generic",
+  "source": {
+   "type": "manual",
+   "documentName": "Isolated structural Word semantics (no university values)"
+  },
+  "page": {
+   "size": "A4",
+   "widthMm": 210,
+   "heightMm": 297,
+   "orientation": "portrait",
+   "margins": {
+    "topMm": 25,
+    "bottomMm": 25,
+    "leftMm": 30,
+    "rightMm": 30
+   },
+   "header": {
+    "distanceMm": 10,
+    "heightMm": 0,
+    "content": ""
+   },
+   "footer": {
+    "distanceMm": 12.5,
+    "heightMm": 0,
+    "content": ""
+   },
+   "numbering": {
+    "enabled": true,
+    "position": "bottom",
+    "align": "center",
+    "format": "arabic",
+    "restart": false,
+    "style": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 11
+    }
+   }
+  },
+  "typography": {
+   "body": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "fontWeight": 400,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1,
+     "baseline": "word"
+    }
+   },
+   "headings": {
+    "1": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}"
+     }
+    },
+    "2": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     }
+    },
+    "3": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     }
+    },
+    "4": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}"
+     }
+    }
+   },
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1,
+    "baseline": "word",
+    "paragraphSpacing": "collapse",
+    "suppressSpaceBeforeAtPageTop": true
+   },
+   "paragraphStyles": {
+    "keep": {
+     "keepLines": true,
+     "keepWithNext": true,
+     "widowControl": true
+    },
+    "widow": {
+     "keepLines": false,
+     "widowControl": true
+    },
+    "forced": {
+     "pageBreakBefore": true,
+     "spaceBeforePt": 24
+    },
+    "spaceA": {
+     "spaceBeforePt": 8,
+     "spaceAfterPt": 10,
+     "contextualSpacing": true
+    },
+    "spaceB": {
+     "spaceBeforePt": 16,
+     "spaceAfterPt": 6
+    },
+    "tabLeft": {
+     "tabStops": [
+      {
+       "positionMm": 40,
+       "align": "left",
+       "leader": "dots"
+      }
+     ]
+    },
+    "tabCenter": {
+     "tabStops": [
+      {
+       "positionMm": 80,
+       "align": "center",
+       "leader": "hyphen"
+      }
+     ]
+    },
+    "tabRight": {
+     "tabStops": [
+      {
+       "positionMm": 110,
+       "align": "right",
+       "leader": "dots"
+      }
+     ]
+    },
+    "noWidow": {
+     "widowControl": false
+    },
+    "alignRight": {
+     "align": "right",
+     "widowControl": false
+    },
+    "tocRow": {
+     "indent": {
+      "leftMm": 10,
+      "hangingMm": 10
+     },
+     "tabStops": [
+      {
+       "positionMm": 148,
+       "align": "right",
+       "leader": "dots"
+      }
+     ]
+    },
+    "tabDecimalLeader": {
+     "tabStops": [
+      {
+       "positionMm": 100,
+       "align": "decimal",
+       "leader": "dots"
+      }
+     ]
+    },
+    "tabDecimal": {
+     "tabStops": [
+      {
+       "positionMm": 100,
+       "align": "decimal",
+       "leader": "underscore"
+      }
+     ]
+    }
+   }
+  },
+  "placeholders": {},
+  "sections": [
+   {
+    "id": "FOOT_A",
+    "type": "mainContent",
+    "title": "FOOT_A",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "page": {
+      "footer": {
+       "distanceMm": 12.5,
+       "heightMm": 0,
+       "content": "",
+       "trailingBlankLines": 0
+      },
+      "numbering": {
+       "align": "center"
+      }
+     }
+    }
+   },
+   {
+    "id": "FOOT_B",
+    "type": "custom",
+    "title": "FOOT_B",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "page": {
+      "footer": {
+       "distanceMm": 8,
+       "heightMm": 0,
+       "content": "",
+       "trailingBlankLines": 0
+      },
+      "numbering": {
+       "align": "center"
+      }
+     }
+    }
+   },
+   {
+    "id": "FOOT_C",
+    "type": "custom",
+    "title": "FOOT_C",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "page": {
+      "footer": {
+       "distanceMm": 15,
+       "heightMm": 0,
+       "content": "",
+       "trailingBlankLines": 1
+      },
+      "numbering": {
+       "align": "center"
+      }
+     }
+    }
+   },
+   {
+    "id": "FOOT_D",
+    "type": "custom",
+    "title": "FOOT_D",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "page": {
+      "footer": {
+       "distanceMm": 10,
+       "heightMm": 0,
+       "content": "",
+       "trailingBlankLines": 2
+      },
+      "numbering": {
+       "align": "right"
+      }
+     }
+    }
+   },
+   {
+    "id": "FOOT_E",
+    "type": "custom",
+    "title": "FOOT_E",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "page": {
+      "footer": {
+       "distanceMm": 17.5,
+       "heightMm": 0,
+       "content": "",
+       "trailingBlankLines": 3
+      },
+      "numbering": {
+       "align": "left"
+      }
+     }
+    }
+   }
+  ],
+  "tables": {
+   "label": "Tablo",
+   "position": "above",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "document",
+    "format": "{n}",
+    "sequence": "arabic",
+    "liveField": true
+   },
+   "spacingBeforePt": 8,
+   "spacingAfterPt": 6,
+   "align": "center",
+   "cellPadding": {
+    "topMm": 0.5,
+    "bottomMm": 0.5,
+    "leftMm": 1,
+    "rightMm": 1
+   },
+   "cellStyle": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1,
+     "baseline": "word"
+    }
+   }
+  },
+  "figures": {
+   "label": "Şekil",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 6,
+   "spacingAfterPt": 8,
+   "align": "center"
+  },
+  "bibliography": {
+   "heading": "Kaynakça",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "lineHeight": 1.5
+   },
+   "hangingIndentMm": 10
+  },
+  "toc": {
+   "heading": "İçindekiler",
+   "levels": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "showPageNumbers": true
+  }
+ },
+ "content": "<p>FOOT_A body</p>",
+ "researchData": {
+  "thesis": {
+   "templateId": "engine-word-structure-footer",
+   "templateVersion": "1.0.0",
+   "values": {},
+   "sectionContent": {
+    "FOOT_A": "<p>FOOT_A body</p>",
+    "FOOT_B": "<p>FOOT_B body</p>",
+    "FOOT_C": "<p>FOOT_C body</p>",
+    "FOOT_D": "<p>FOOT_D body</p>",
+    "FOOT_E": "<p>FOOT_E body</p>"
+   }
+  }
+ }
+}

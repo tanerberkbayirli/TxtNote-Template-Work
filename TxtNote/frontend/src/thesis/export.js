@@ -90,7 +90,10 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       titlePage,
       ...(section.verticalAlign ? { verticalAlign: { top: VerticalAlign.TOP, center: VerticalAlign.CENTER, bottom: VerticalAlign.BOTTOM }[section.verticalAlign] } : {}),
       page: {
-        size: { width: twip(page.widthMm), height: twip(page.heightMm), orientation: page.orientation === "landscape" ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT },
+        // docx swaps width/height itself for LANDSCAPE: pass them swapped so w:pgSz carries the physical width/height the editor and PDF use.
+        size: page.orientation === "landscape"
+          ? { width: twip(page.heightMm), height: twip(page.widthMm), orientation: PageOrientation.LANDSCAPE }
+          : { width: twip(page.widthMm), height: twip(page.heightMm), orientation: PageOrientation.PORTRAIT },
         margin: { top: twip(wordMargins.topMm), bottom: twip(wordMargins.bottomMm), left: twip(wordMargins.leftMm), right: twip(wordMargins.rightMm), header: twip(page.header?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM), footer: twip(page.footer?.docxDistanceMm ?? page.footer?.distanceMm ?? ENGINE_DEFAULT_HEADER_DISTANCE_MM) },
         pageNumbers: { start: continued ? undefined : page.numbering.restart ? (page.numbering.startAt ?? 1) : undefined, formatType: pageFormat(page.numbering.format) },
       },
