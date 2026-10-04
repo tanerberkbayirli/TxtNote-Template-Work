@@ -25,7 +25,8 @@ export const WORD_SPACE_EM = Object.freeze({ "times new roman": 512 / 2048, aria
 /**
  * Measured (engine-word-justify, real Word render vs exported PDF): Word keeps a justified line whose natural width exceeds the measure by shrinking
  * its inter-word spaces, up to this fraction of the space width. Per font program; fonts not listed are UNKNOWN (no compression).
- * Arial's window is narrower and noisier (Word kept 0.226, rejected 0.208 of a space), 0.22 is the best fit of the matrix.
+ * Word's real budget is min(0.25 x gaps x space, ~0.36 x (last word + space)) per line (CAPABILITIES.md, measured); a uniform fraction is an approximation,
+ * Arial 0.22 is the best uniform fit of the matrix (UNKNOWN exactness).
  */
 export const WORD_JUSTIFY_COMPRESSION = Object.freeze({ "times new roman": 0.25, calibri: 0.25, arial: 0.22 });
 
