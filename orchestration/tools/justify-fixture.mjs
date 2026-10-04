@@ -24,6 +24,8 @@ cases.forEach((c, i) => {
   sectionContent[code] = paras.join('');
   checks.push({ id: `${code}-${c.fontFamily.replaceAll(' ', '-')}-${c.fontSizePt}-${c.align}-line-breaks`, kind: 'line_breaks_match', params: { tag: code }, expected: 'Word line texts',
     source: { file: 'real Word render of exported fixture DOCX', locator: `${code}: ${c.fontFamily} ${c.fontSizePt} pt ${c.align}` }, evidence: 'MEASURED' });
+  if (c.align === 'justify') checks.push({ id: `${code}-${c.fontFamily.replaceAll(' ', '-')}-${c.fontSizePt}-${c.align}-last-line-words`, kind: 'last_line_words_match', params: { tag: code }, tolerance: 0.25, expected: 'Word last-line word x positions (natural spaces)',
+    source: { file: 'real Word render of exported fixture DOCX', locator: `${code}: last line of each paragraph, ${c.fontFamily} ${c.fontSizePt} pt` }, evidence: 'MEASURED' });
 });
 const template = { ...generic, id, universityId: 'engine-test', universityName: 'Engine acceptance test', placeholders: {},
   source: { type: 'manual', documentName: 'Isolated justified line-breaking acceptance matrix (no university values)' },

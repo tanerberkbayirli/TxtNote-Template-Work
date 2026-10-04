@@ -586,6 +586,46 @@ def k_line_breaks_match(ctx, c):
             'pass': bool(a) and not diff, 'expected_override': 'identical line texts in PDF and Word'}
 
 
+def _case_last_lines(doc, tag):
+    """Word x positions (mm) of the last line of every paragraph of the tagged case: [(first words, [x0 ...])]."""
+    items, started = [], False
+    for p in range(1, doc.n + 1):
+        ls = sorted(doc.lines(p), key=lambda l: (l['baseline'], l['x0']))
+        if not started and any(re.match(re.escape(tag) + r'-1', l['text']) for l in ls):
+            started = True
+        elif started and any(re.match(r'J\d+-1', l['text']) for l in ls):
+            break
+        if started:
+            items.extend((p, l) for l in ls)
+    out = []
+    for i, (p, line) in enumerate(items):
+        nxt = items[i + 1][1]['text'] if i + 1 < len(items) else ''
+        if i + 1 < len(items) and not re.match(re.escape(tag) + r'-\d+( |$)', nxt):
+            continue
+        words = [w for w in doc.pdf[p - 1].get_text('words') if line['top'] - .5 <= (w[1] + w[3]) / 2 / MM2PT <= line['bottom'] + .5]
+        words.sort(key=lambda w: w[0])
+        out.append((line['text'][:24], [round(w[0] / MM2PT, 3) for w in words]))
+    return out
+
+
+def k_last_line_words_match(ctx, c):
+    """Word x positions of every paragraph's last line (natural word spacing in Word) agree between the PDF and the Word render."""
+    tag, tol = c['params']['tag'], c.get('tolerance', .25)
+    a = _case_last_lines(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag)
+    b = _case_last_lines(get_doc(ctx, {**c['params'], 'source': 'word'}), tag)
+    worst, bad = 0.0, []
+    for i in range(max(len(a), len(b))):
+        if i >= len(a) or i >= len(b) or len(a[i][1]) != len(b[i][1]):
+            bad.append((i, a[i][0] if i < len(a) else None, b[i][0] if i < len(b) else None, 'word count'))
+            continue
+        d = max((abs(x - y) for x, y in zip(a[i][1], b[i][1])), default=0.0)
+        worst = max(worst, d)
+        if d > tol + EPS:
+            bad.append((i, a[i][0], round(d, 3)))
+    return {'actual': {'paragraphs': {'pdf': len(a), 'word': len(b)}, 'maxDeltaMm': round(worst, 3), 'bad': bad[:2]},
+            'pass': bool(a) and not bad, 'expected_override': f'last-line word x within {tol} mm of Word'}
+
+
 def k_body_pitch_match(ctx, c):
     values = {source: k_line_pitch(ctx, {'params': {**c['params'], 'source': source}})['actual']
               for source in ('pdf', 'word')}

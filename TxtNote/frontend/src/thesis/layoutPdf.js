@@ -10,6 +10,7 @@
 import { jsPDF } from "jspdf";
 import { academicPdfFont, academicPdfFontFace, exactAcademicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts, hasSystemPdfFont, normalizeAcademicPdfFamily, pdfFontStyle } from "../lib/academicFonts.js";
 import { canvasFontAscent } from "./wordBaseline.js";
+import { lastLineShifts } from "./justifyLastLine.js";
 import { PX_PER_MM, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 import { layoutLandmarkIndex, layoutPageReport } from "./layoutReport.js";
 
@@ -34,7 +35,7 @@ function textWidth(style, text) {
 }
 
 /** Plain copy of the typography a text op needs (computed style objects are live). */
-const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, backgroundColor: style.backgroundColor, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign });
+const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, backgroundColor: style.backgroundColor, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign, wordSpacing: style.wordSpacing });
 function pdfTextStyle(element, style, language) {
   const equation = element.closest?.(".math-formula--block");
   const equationFamily = equation && getComputedStyle(equation).getPropertyValue("--thesis-pdf-equation-font").trim();
@@ -153,6 +154,8 @@ function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex 
 
   const pushText = (text, rect, style, extra) => {
     const box = local(rect);
+    // Last line of a Word-justified paragraph: natural word gaps (see justifyLastLine.js).
+    if (extra?.dx) { box.left += extra.dx; const { dx, ...rest } = extra; extra = rest; }
     const fill = color(style.color);
     if (!text || !fill) return;
     const intersects = (clip) => box.top < clip.top + clip.height && box.top + box.height > clip.top && box.left < clip.left + clip.width && box.left + box.width > clip.left;
@@ -160,6 +163,48 @@ function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex 
     if ((extra?.clipRects && !clip) || (clip && !intersects(clip))) return;
     const metricsStyle = style.pdfMetricsFontFamily ? { ...style, fontFamily: style.pdfMetricsFontFamily } : style;
     ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(metricsStyle), style, color: fill, ...extra, ...(clip ? { clip } : {}) });
+  };
+
+  // Per block: x shift of every word on the last line of a justified paragraph drawn with Word's negative word-spacing.
+  const blockCache = new WeakMap();
+  const blockOf = (node) => { let el = node.parentElement; while (el && el !== stack && /^inline/.test(getComputedStyle(el).display)) el = el.parentElement; return el; };
+  const lastLineShiftFor = (node, style, offset) => {
+    const delta = -Number.parseFloat(style.wordSpacing);
+    if (style.textAlign !== "justify" || !(delta > 0)) return 0;
+    const block = blockOf(node);
+    if (!block) return 0;
+    let info = blockCache.get(block);
+    if (!info) {
+      const nodes = []; let text = "";
+      const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        if (blockOf(n) !== block || n.parentElement.closest(SKIP)) continue;
+        nodes.push({ node: n, base: text.length }); text += n.data;
+      }
+      const locate = (index) => { for (let i = nodes.length - 1; i >= 0; i -= 1) if (index >= nodes[i].base) return [nodes[i].node, index - nodes[i].base]; return null; };
+      const topOf = (index) => { const at = locate(index); if (!at) return NaN; range.setStart(at[0], at[1]); range.setEnd(at[0], at[1] + 1); const rect = range.getClientRects()[0]; return rect ? rect.top : NaN; };
+      const matches = [...text.matchAll(/\S+/g)];
+      // Only the tail of the paragraph can be the last line: measure backwards until the line changes.
+      const words = []; let lastTop = null;
+      for (let i = matches.length - 1; i >= 0; i -= 1) {
+        const start = matches[i].index, end = start + matches[i][0].length;
+        const top = topOf(start), endTop = topOf(end - 1);
+        if (Number.isNaN(top) || Number.isNaN(endTop)) continue;
+        if (lastTop === null) lastTop = endTop;
+        if (Math.abs(endTop - lastTop) >= 1) break;
+        words.unshift({ start, end, top, lastTop: endTop });
+        if (Math.abs(top - lastTop) >= 1) break;
+      }
+      const shifts = lastLineShifts(words, delta);
+      info = { nodes, words, shifts };
+      blockCache.set(block, info);
+    }
+    if (!info.shifts.size) return 0;
+    const entry = info.nodes.find((item) => item.node === node);
+    if (!entry) return 0;
+    const index = entry.base + offset;
+    const wi = info.words.findIndex((word) => index >= word.start && index < word.end);
+    return wi < 0 ? 0 : (info.shifts.get(wi) || 0);
   };
 
   const words = (node, style, extra) => {
@@ -231,7 +276,8 @@ function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex 
           const sibling = node.nextSibling || node.parentElement?.nextSibling;
           spaceAfter = /\s$/.test(data) || (sibling?.nodeType === 3 && /^\s/.test(sibling.data));
         }
-        pushText(transformText(mathText(word), style.textTransform, style.lang), rects[0], style, spaceAfter ? { ...extra, spaceAfter: true } : extra);
+        const dx = lastLineShiftFor(node, style, start);
+        pushText(transformText(mathText(word), style.textTransform, style.lang), rects[0], style, { ...extra, ...(spaceAfter ? { spaceAfter: true } : {}), ...(dx ? { dx } : {}) });
         continue;
       }
       // A word broken across lines or pages: split it where its glyphs change line.
