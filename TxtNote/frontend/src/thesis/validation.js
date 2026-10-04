@@ -73,6 +73,7 @@ function validatePage(page, path = "page") {
   if (!object(page)) return [`${path} gerekli`];
   if (!positive(page.widthMm) || !positive(page.heightMm)) errors.push(`${path} boyutları geçersiz`);
   if (!["portrait", "landscape"].includes(page.orientation)) errors.push(`${path}.orientation geçersiz`);
+  if (page.lastLineFit !== undefined && page.lastLineFit !== "word" && page.lastLineFit !== "off") errors.push(`${path}.lastLineFit "word" | "off" olmalı`);
   if (page.trimTerminalTextLeading !== undefined && typeof page.trimTerminalTextLeading !== "boolean") errors.push(`${path}.trimTerminalTextLeading boolean olmalı`);
   const margins = page.margins;
   if (!object(margins)) errors.push(`${path}.margins gerekli`);

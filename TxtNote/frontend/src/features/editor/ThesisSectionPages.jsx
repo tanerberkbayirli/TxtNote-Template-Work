@@ -194,7 +194,7 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
         <div className="thesis-footnote-area" data-thesis-footnote-group={group.id} data-thesis-footnote-measure="" data-export-ignore="" aria-hidden="true" />
         <div className="thesis-footnote-layer" aria-label="Dipnotlar">
           {pages.map((entry) => footnotes?.pages?.[entry.index] ? <FootnoteArea key={entry.index} groupId={group.id} rule={group.rules.footnotes} items={footnotes.pages[entry.index].items}
-            top={entry.index * flowPagePitchPx(metrics) + metrics.topMarginPx + Math.floor(metrics.contentHeightPx * 64) / 64 - footnotes.pages[entry.index].height} /> : null)}
+            top={entry.index * flowPagePitchPx(metrics) + metrics.topMarginPx + Math.floor((metrics.contentHeightPx - metrics.trailingLeadingPx) * 64) / 64 - footnotes.pages[entry.index].height} /> : null)}
         </div>
       </> : null}
       <article ref={articleRef} className="thesis-paper thesis-editor-surface" data-thesis-section={section.id} data-thesis-empty-flow={emptyFlow ? "true" : undefined} data-thesis-layout={THESIS_PAGED_LAYOUT ? "paged" : "continuous"} data-thesis-page-count={THESIS_PAGED_LAYOUT ? (emptyFlow ? 0 : count) : undefined} aria-label={`${section.title}, A4 belge alanı`} onClick={focusBodyFromPaper}>

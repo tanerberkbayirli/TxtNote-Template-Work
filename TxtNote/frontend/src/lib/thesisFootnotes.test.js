@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
 import generic from "../thesis/templates/generic.js";
-import { buildThesisCss, compileThesisDocument, groupThesisSections, thesisFootnoteCss } from "../thesis/engine.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections, thesisFootnoteCss, wordLastLineLeadingMm } from "../thesis/engine.js";
 import { buildThesisDocx } from "../thesis/export.js";
 import { resolveFootnoteRule } from "../thesis/footnotes.js";
 import { flowPagePitchPx, pageMetrics, thesisPagedCss } from "../thesis/pageLayout.js";
@@ -61,9 +61,47 @@ describe("Task 10A.1 page-bottom footnotes (generic)", () => {
     assert.doesNotMatch(JSON.stringify(model), /data-thesis-fn-/);
   });
 
+  it("strips the transient first-fragment spacer from saved section HTML", () => {
+    const html = `<p data-thesis-fn-stamp="reserve" data-thesis-fn-reserve="0" data-thesis-fn-margin="0">Bir <span data-thesis-fn-spacer="69.67" contenteditable="false"></span>iki</p>`;
+    assert.equal(thesisSourceHtml(html), "<p>Bir iki</p>");
+  });
+
+  it("page.lastLineFit word: terminal leading enlarges the column, keeps the page pitch and guards non-text blocks", () => {
+    const body = { fontFamily: "Times New Roman", fontSizePt: 12, lineHeight: 1.5 };
+    const spacing = { mode: "word", singleLineEm: 1.1499, baseline: "word" };
+    // 1.5 x 13.799 pt pitch - 13.799 pt single line = 6.8995 pt
+    assert.ok(Math.abs(wordLastLineLeadingMm(body, spacing) - 6.8995 * 25.4 / 72) < 0.01);
+    assert.equal(wordLastLineLeadingMm({ ...body, lineHeight: 1 }, spacing), 0);
+    assert.equal(wordLastLineLeadingMm({ ...body, fontFamily: "Unknown Font" }, null), 0);
+    const t = template();
+    t.page.lastLineFit = "word";
+    t.typography.lineSpacing = spacing;
+    t.typography.body = { ...t.typography.body, ...body };
+    assert.deepEqual(validateThesisTemplate(t).errors || [], []);
+    const model = compileThesisDocument(t, {}, "Tez", "");
+    const page = mainOf(model).rules.page;
+    assert.ok(page.lastLineLeadingMm > 2);
+    const plain = pageMetrics({ ...page, lastLineLeadingMm: 0 }), fit = pageMetrics(page);
+    assert.ok(Math.abs(fit.contentHeightPx - plain.contentHeightPx - fit.trailingLeadingPx) < 1e-6);
+    assert.ok(Math.abs(fit.contentHeightPx + fit.rowGapPx - plain.contentHeightPx - plain.rowGapPx) < 1e-6);
+    assert.equal(fit.stridePx, plain.stridePx);
+    const css = thesisPagedCss(groupThesisSections(model.sections));
+    assert.match(css, /column-height:calc\(/);
+    assert.match(css, /:is\(td,th\)::after\{content:"";display:block;height:[\d.]+mm;margin:0 0 -[\d.]+mm;break-before:avoid/);
+    const implicit = structuredClone(t); delete implicit.page.lastLineFit;
+    assert.ok(mainOf(compileThesisDocument(implicit, {}, "Tez", "")).rules.page.lastLineLeadingMm > 2, "default under the Word spacing model");
+    implicit.page.lastLineFit = "off";
+    assert.equal(mainOf(compileThesisDocument(implicit, {}, "Tez", "")).rules.page.lastLineLeadingMm, undefined);
+    t.page.lastLineFit = "x";
+    assert.match(JSON.stringify(validateThesisTemplate(t)), /lastLineFit/);
+    const off = thesisPagedCss(groupThesisSections(compileThesisDocument(template(), {}, "Tez", "").sections));
+    assert.doesNotMatch(off, /::after\{content:""/);
+  });
+
   it("stamp rules live in the paged CSS and the flow pitch follows browser layout units", () => {
     const css = thesisPagedCss(groupThesisSections(compileThesisDocument(template(), {}, "Tez", "").sections));
     assert.match(css, /\[data-thesis-fn-stamp="reserve"\]\{box-decoration-break:clone;padding-bottom:attr\(data-thesis-fn-reserve px\) !important;margin-bottom:attr\(data-thesis-fn-margin px\) !important\}/);
+    assert.match(css, /\[data-thesis-fn-spacer\]\{display:block;float:left !important;clear:none;width:100% !important;height:attr\(data-thesis-fn-spacer px\) !important/);
     assert.match(css, /\[data-thesis-fn-stamp="break"\]\{break-before:column !important\}/);
     const metrics = pageMetrics(generic.page);
     assert.equal(flowPagePitchPx(metrics), Math.floor(metrics.contentHeightPx * 64) / 64 + Math.floor(metrics.rowGapPx * 64) / 64);

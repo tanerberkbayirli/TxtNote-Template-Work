@@ -288,11 +288,11 @@
     "label": "arabic"
    }
   },
-  "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24",
+  "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23",
   "tolerance": 0.5,
   "source": {
    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3: GİRİŞ = 1, main/back arabic continuing (fixture: 24 arabic pages)"
+   "locator": "p.11 (printed 10) §5.3: GİRİŞ = 1, main/back arabic continuing (fixture: 23 arabic pages; was 24 before the Word last-line fit rule)"
   },
   "evidence": "EXPLICIT"
  },

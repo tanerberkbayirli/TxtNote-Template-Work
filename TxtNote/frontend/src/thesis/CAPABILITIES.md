@@ -27,6 +27,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | header/footer height and distance, none on first page | `page.header`, `page.footer` `{heightMm, distanceMm, content, firstPage: "same"/"omit"}` (`header`, `footer`, `firstPage`) | mm | none | ✓✓✓ | Engine, EngineDefaults |
 | Word margins differing from the editor frame | `page.docxMargins`, `page.docxContentFrame` | mm box | none | D only | - |
 | drop trailing leading on last line of a page | `page.trimTerminalTextLeading` | boolean | false | ✓✓✓ | Pagination |
+| Word last-line fit (terminal leading) | `page.lastLineFit` (derived `page.lastLineLeadingMm`) | "word" / "off" | "word" under the Word line-spacing model, else off | ✓✓✓ | Pagination |
 | section kind, required/optional/disabled | `sections[]` `type`, `title`, `status`, `group` (cover/front/body/back), `mode` (editable/static/generated), `editable` | see schema | array order | ✓✓✓ | AfsuLeeProposal |
 | start section on a new page | `sections[].pageBreakBefore` | boolean | false | ✓✓✓ | AkuCografya |
 | show the title as heading, TOC entry of the section | `showTitle`, `tocEntry` headings/title/none, `titleNumbering: "continueH1"` (bibliography as "6. KAYNAKLAR") | - | false/headings | ✓✓✓ | BatchB, EngineExtensions |
@@ -150,7 +151,6 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | Typed tab conformance | typed stops/leaders implemented; wrapped/bidirectional runs and custom decimal characters require Word comparison | MOTOR 2.4 |
 | Table geometry/pagination conformance | rowHeight, per-edge borders, cantSplit, repeatHeader and vAlign implemented; row pitches follow Word's trHeight model (exact = row top to text area bottom), double rules paint 3× width, repeated headers are injected at measured page starts; Word comparison required | MOTOR 2.5 |
 | Authored column widths across browsers | typed attr() dependency removed; normalized literal CSS and idempotent DOM widths implemented; Firefox/Safari runtime not exercised here | MOTOR 2.5 |
-| Footnote reserve on multi-fragment blocks | editor/PDF reserve (CSS padding, `box-decoration-break: clone`) shortens every fragment of a block crossing the note page; Word reserves only on the reference's page. DOCX mirrors the editor via `consumeFnReserve` (docx/paragraphs.js: line-budget estimate from section `bodyBox`, one note area ≈ 4.5 note pitches) — parity, not Word-native; fix needs a first-fragment-only reserve in footnotes.js/pageLayout.js | MOTOR 2.2 follow-up |
 | Keep/widow pagination conformance | keepLines/widowControl reach browser fragmentation and Word; protected-paragraph fixture verifies breaks | MOTOR 2.6 |
 | Section chrome/alignment conformance | first/even chrome and center/bottom alignment implemented; landscape geometry emitted but cross-render comparison required | MOTOR 2.7 |
 | Footer baseline conformance | source distance, trailing blank paragraphs and source-derived baseline represented independently; Word comparison required | MOTOR 2.8 |

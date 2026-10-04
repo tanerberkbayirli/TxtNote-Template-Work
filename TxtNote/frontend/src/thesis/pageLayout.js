@@ -23,12 +23,16 @@ export function pageMetrics(page) {
   const heightPx = page.heightMm * PX_PER_MM;
   const topMarginPx = margins.topMm * PX_PER_MM;
   const bottomMarginPx = margins.bottomMm * PX_PER_MM;
+  // page.lastLineFit "word": the flow column is taller than the margin box by the terminal leading (resolved into
+  // page.lastLineLeadingMm by the engine), so a page accepts a last line that fits without its extra leading, as Word does.
+  // The row gap shrinks by the same amount: the page pitch (stridePx) never changes.
+  const trailingLeadingPx = Math.max(0, Number(page.lastLineLeadingMm) || 0) * PX_PER_MM;
   return {
-    widthPx, heightPx, topMarginPx, bottomMarginPx,
+    widthPx, heightPx, topMarginPx, bottomMarginPx, trailingLeadingPx,
     contentWidthPx: (page.widthMm - margins.leftMm - margins.rightMm) * PX_PER_MM,
-    contentHeightPx: heightPx - topMarginPx - bottomMarginPx,
+    contentHeightPx: heightPx - topMarginPx - bottomMarginPx + trailingLeadingPx,
     // Distance from one page's content box to the next: bottom margin, desk gap, top margin.
-    rowGapPx: bottomMarginPx + THESIS_PAGE_GAP_PX + topMarginPx,
+    rowGapPx: bottomMarginPx + THESIS_PAGE_GAP_PX + topMarginPx - trailingLeadingPx,
     stridePx: heightPx + THESIS_PAGE_GAP_PX,
   };
 }
@@ -174,6 +178,9 @@ export function thesisPagedCss(groups) {
     // fragment, so its first fragment stops above the notes; the negative margin
     // cancels the padding after its last fragment. A monolithic block moves instead.
     `${FLOW} [data-thesis-fn-stamp="reserve"]{box-decoration-break:clone;padding-bottom:attr(data-thesis-fn-reserve px) !important;margin-bottom:attr(data-thesis-fn-margin px) !important}`,
+    // A block that continues past a further page instead gets a transient float spacer at the first line leaving the note page
+    // (footnotes.js placeSpacer), so only its first fragment is shortened.
+    `${FLOW} [data-thesis-fn-spacer]{display:block;float:left !important;clear:none;width:100% !important;height:attr(data-thesis-fn-spacer px) !important;margin:0 !important;padding:0 !important;border:0 !important;pointer-events:none}`,
     `${FLOW} [data-thesis-fn-stamp="break"]{break-before:column !important}`,
     // Continuation-only pages after the body (a note longer than the rest of the document).
     `${FLOW} .thesis-footnote-tail{display:block;height:1px;margin:0;break-before:column}`,
@@ -182,7 +189,17 @@ export function thesisPagedCss(groups) {
     const { page } = group.rules;
     const { topMm, bottomMm } = page.margins;
     const scope = `.thesis-paper[data-thesis-layout="paged"][data-thesis-section=${cssString(group.id)}] > .thesis-page-flow`;
-    rules.push(`${scope}{column-height:${page.heightMm - topMm - bottomMm}mm;row-gap:calc(${bottomMm}mm + ${THESIS_PAGE_GAP_PX}px + ${topMm}mm)}`);
+    const lead = Math.max(0, Number(page.lastLineLeadingMm) || 0);
+    rules.push(lead > 0
+      ? `${scope}{column-height:calc(${page.heightMm - topMm - bottomMm}mm + ${lead}mm);row-gap:calc(${bottomMm}mm + ${THESIS_PAGE_GAP_PX}px + ${topMm}mm - ${lead}mm)}`
+      : `${scope}{column-height:${page.heightMm - topMm - bottomMm}mm;row-gap:calc(${bottomMm}mm + ${THESIS_PAGE_GAP_PX}px + ${topMm}mm)}`);
+    // Guard: only running text may use the terminal leading. Headings, figures, table wrappers and table cells get a trailing
+    // L-high block cancelled by a negative margin: it takes part in the fit test (the block needs L more room) but not in the height.
+    if (lead > 0) {
+      const guarded = (suffix) => [":is(h1,h2,h3,h4,h5,h6,figure,.academic-table-wrap)", ":is(td,th)"].map((part) => `${FLOW} ${part}${suffix}`);
+      rules.push(`${FLOW} :is(h1,h2,h3,h4,h5,h6,figure,.academic-table-wrap){display:flow-root}`,
+        `${guarded("::after").join(",")}{content:"";display:block;height:${lead}mm;margin:0 0 -${lead}mm;break-before:avoid;break-inside:avoid}`);
+    }
     for (const section of group.sections) {
       const fragment = `${FLOW} .thesis-flow-section[data-thesis-flow-section=${cssString(section.id)}] .thesis-body`;
       const flags = (style) => `${style.keepLines === undefined ? "" : `break-inside:${style.keepLines ? "avoid" : "auto"};`}${style.widowControl === undefined ? "" : `orphans:${style.widowControl ? 2 : 1};widows:${style.widowControl ? 2 : 1};`}${style.keepWithNext === undefined ? "" : `break-after:${style.keepWithNext ? "avoid" : "auto"};`}${style.pageBreakBefore ? "break-before:column;" : ""}`;

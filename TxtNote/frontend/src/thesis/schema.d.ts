@@ -67,6 +67,8 @@ export interface PageRule {
   size: string;
   widthMm: Length;
   heightMm: Length;
+  /** Default "word" under the Word line-spacing model ("off" opts out): lets a body page accept its last line when it fits without its extra leading (Word); the engine derives `lastLineLeadingMm` from the body style. Headings, figures and tables are guarded; special pages ignore it. */
+  lastLineFit?: "word" | "off";
   orientation: "portrait" | "landscape";
   margins: { topMm: Length; bottomMm: Length; leftMm: Length; rightMm: Length };
   differentFirstPage?: boolean;

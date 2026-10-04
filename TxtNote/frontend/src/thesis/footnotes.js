@@ -105,22 +105,101 @@ export function footnoteAreaNodes(doc, items, rule) {
 const STAMP = "data-thesis-fn-stamp";
 const RESERVE = "data-thesis-fn-reserve";
 const MARGIN = "data-thesis-fn-margin";
+const SPACER = "data-thesis-fn-spacer";
 const reserves = new WeakMap();
 const round = (value) => Math.round(value * 100) / 100;
 
+function removeSpacer(node) {
+  const parent = node.parentNode;
+  node.remove();
+  parent?.normalize?.();
+}
+
 function clearStamp(element) {
   element.removeAttribute(STAMP); element.removeAttribute(RESERVE); element.removeAttribute(MARGIN);
+  for (const node of reserves.get(element)?.spacers.values() || []) removeSpacer(node);
   reserves.delete(element);
 }
 
 function writeReserve(element, entry) {
-  const amount = Math.max(0, ...entry.owners.values());
+  // An owner whose page was cut by a spacer needs no padding: the padding would shorten every later fragment as well.
+  const amount = Math.max(0, ...[...entry.owners].filter(([owner]) => !entry.spacers.has(owner)).map(([, value]) => value));
   element.setAttribute(STAMP, "reserve");
   element.setAttribute(RESERVE, String(round(entry.padding + amount)));
   element.setAttribute(MARGIN, String(round(entry.margin - amount)));
 }
 
-function applyStamp(cut, owner) {
+/**
+ * First-fragment-only reserve for a block that continues past a page after the note page (3+ fragments with the padding stamp).
+ * CSS pads every fragment (clone) or only the last (slice), so a transient full-width float spacer is inserted at the start of the
+ * first line that leaves the note page: it fills the page down to its end, the line below it moves to the next page, and the
+ * later fragments keep their full height (Word reserves note space on the reference's page alone). Returns false (state
+ * restored) when it cannot be placed, in which case the padding stamp stays.
+ */
+const UNSAFE_INSIDE = `${FOOTNOTE_REF_SELECTOR},.katex,[data-thesis-tab],[contenteditable="false"]`;
+function placeSpacer(cut, owner, entry, ctx) {
+  const { element } = cut;
+  if (!(cut.pageEnd > cut.limit) || fragments(element, ctx).length < 3) return false;
+  const walker = element.ownerDocument.createTreeWalker(element, 4);
+  const nodes = [];
+  let total = 0;
+  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+    if (node.parentElement?.closest(NO_CUT) || !node.data.length) continue;
+    nodes.push({ node, start: total }); total += node.data.length;
+  }
+  if (!total) return false;
+  const range = element.ownerDocument.createRange();
+  const locate = (index) => {
+    let low = 0, high = nodes.length - 1;
+    while (low < high) { const mid = (low + high + 1) >> 1; if (nodes[mid].start <= index) low = mid; else high = mid - 1; }
+    return { node: nodes[low].node, offset: index - nodes[low].start };
+  };
+  // Top of the glyph at `index` (flow px); zero-size characters (collapsed spaces) look ahead to the next measurable one.
+  const topAt = (index) => {
+    for (let i = index; i < Math.min(total, index + 64); i += 1) {
+      const { node, offset } = locate(i);
+      range.setStart(node, offset); range.setEnd(node, offset + 1);
+      const rect = [...range.getClientRects()].find((item) => item.width > 0 || item.height > 0);
+      if (rect) return (rect.top - ctx.top) / ctx.scale;
+    }
+    return Infinity;
+  };
+  // Padded layout: the characters of the first fragment sit above `limit`, those of the next fragment on a later page.
+  let low = 0, high = total;
+  while (low < high) { const mid = (low + high) >> 1; if (topAt(mid) > cut.limit) high = mid; else low = mid + 1; }
+  if (low <= 0 || low >= total) return false;
+  const at = locate(low);
+  // Before the spaces that end the previous line: a space between that line and the float would count into the line's width.
+  while (at.offset > 0 && /\s/.test(at.node.data[at.offset - 1])) at.offset -= 1;
+  range.setStart(at.node, at.offset); range.collapse(true);
+  let outer = null;
+  for (let node = at.node.parentElement; node && node !== element; node = node.parentElement) if (node.matches(UNSAFE_INSIDE)) outer = node;
+  if (outer) { range.setStartBefore(outer); range.collapse(true); }
+  const spacer = element.ownerDocument.createElement("span");
+  spacer.setAttribute(SPACER, "0"); spacer.setAttribute("contenteditable", "false");
+  range.insertNode(spacer);
+  entry.spacers.set(owner, spacer);
+  writeReserve(element, entry);
+  // A zero-height float sits at the top of the line it opens; its top is that line's top.
+  const top = (spacer.getBoundingClientRect().top - ctx.top) / ctx.scale;
+  let height = cut.pageEnd - top - 0.5;
+  // The float must fit in the page it fills: a part that spills into the next page would push that page's first line down.
+  for (let attempt = 0; attempt < 4 && height > 0; attempt += 1) {
+    spacer.setAttribute(SPACER, String(round(height)));
+    const spill = spacer.getClientRects().length > 1 ? spacer.getClientRects()[1].height / ctx.scale : 0;
+    if (spill <= 0.01) break;
+    height -= spill + 0.25;
+  }
+  if (height > 0 && spacer.getClientRects().length === 1) {
+    if (fragments(element, ctx).some((fragment) => pageIndexOf(fragment.top, ctx) > pageIndexOf(cut.limit, ctx))) return true;
+  }
+  entry.spacers.delete(owner);
+  removeSpacer(spacer);
+  writeReserve(element, entry);
+  return false;
+}
+
+function applyStamp(cut, owner, ctx) {
   if (cut.kind === "break") { clearStamp(cut.element); cut.element.setAttribute(STAMP, "break"); return { element: cut.element, kind: "break" }; }
   let entry = reserves.get(cut.element);
   if (!entry || cut.element.getAttribute(STAMP) !== "reserve") {
@@ -130,11 +209,12 @@ function applyStamp(cut, owner) {
     const next = cut.element.nextElementSibling;
     const nextTop = next ? Math.max(0, parseFloat(getComputedStyle(next).marginTop) || 0) : 0;
     const bottom = parseFloat(style.marginBottom) || 0;
-    entry = { padding: parseFloat(style.paddingBottom) || 0, margin: bottom > 0 ? Math.max(bottom - nextTop, 0) : bottom, owners: new Map() };
+    entry = { padding: parseFloat(style.paddingBottom) || 0, margin: bottom > 0 ? Math.max(bottom - nextTop, 0) : bottom, owners: new Map(), spacers: new Map() };
     reserves.set(cut.element, entry);
   }
   entry.owners.set(owner, cut.amount);
   writeReserve(cut.element, entry);
+  if (ctx) placeSpacer(cut, owner, entry, ctx);
   return { element: cut.element, kind: "reserve" };
 }
 
@@ -145,6 +225,8 @@ function releaseStamp(stamp, owner) {
   const entry = reserves.get(element);
   if (!entry) { clearStamp(element); return; }
   entry.owners.delete(owner);
+  const spacer = entry.spacers.get(owner);
+  if (spacer) { entry.spacers.delete(owner); removeSpacer(spacer); }
   if (entry.owners.size) writeReserve(element, entry);
   else clearStamp(element);
 }
@@ -232,7 +314,7 @@ function cutTarget(container, index, limit, ctx) {
       // limit means nothing by itself; only its own loose text (legacy notes) can cross.
       if (![...child.childNodes].some((node) => node.nodeType === 3 && node.data.replace(/[​-‍⁠﻿]/g, "").trim())) return null;
     }
-    return { element: child, kind: "reserve", amount: pageEnd - limit };
+    return { element: child, kind: "reserve", amount: pageEnd - limit, limit, pageEnd };
   }
   return null;
 }
@@ -336,6 +418,7 @@ function recordState(record, index, refs, carry, ctx) {
     const anchor = pushAnchor(record.stamp, ctx);
     if (anchor === null || record.pushed.anchor === null || Math.abs(anchor - record.pushed.anchor) > 1) return false;
   }
+  if (record.stamp?.kind === "reserve" && [...(reserves.get(record.stamp.element)?.spacers.values() || [])].some((node) => !node.isConnected)) return false;
   if (record.stamp && (!record.stamp.element.isConnected || record.stamp.element.getAttribute(STAMP) !== record.stamp.kind || !ctx.flow.contains(record.stamp.element))) return false;
   if (record.limit >= ctx.contentHeight - 0.5) return "valid";
   const cut = cutTarget(ctx.flow, index, index * ctx.stride + record.limit, ctx);
@@ -351,7 +434,7 @@ function retargetPage(ctx, index, record) {
   const owner = `${ctx.groupId}:${index}`;
   releaseStamp(record.stamp, owner);
   const cut = cutTarget(ctx.flow, index, index * ctx.stride + record.limit, ctx);
-  const next = { ...record, stamp: cut ? applyStamp(cut, owner) : null };
+  const next = { ...record, stamp: cut ? applyStamp(cut, owner, ctx) : null };
   if (next.ownSig === refSig(readRefs(ctx).filter((ref) => ref.page === index))) return next;
   releaseStamp(next.stamp, owner);
   return null;
@@ -362,12 +445,13 @@ function layoutPage(ctx, index, carry, previous) {
   releaseStamp(previous?.stamp, owner);
   const natural = readRefs(ctx);
   const onPage = natural.filter((ref) => ref.page === index);
-  const cap = ctx.contentHeight * ctx.rule.maxAreaPercent / 100;
+  const cap = ctx.noteHeight * ctx.rule.maxAreaPercent / 100;
   let count = onPage.length;
   for (let guard = 0; guard <= onPage.length + 1; guard += 1) {
     const allocation = allocate(ctx, onPage.slice(0, count).map(noteOf), carry, cap);
     const pushedRef = allocation.placed < onPage.length ? onPage[allocation.placed] : null;
-    let limit = allocation.items.length ? ctx.contentHeight - allocation.height : ctx.contentHeight;
+    // Notes sit at the physical bottom and Word keeps full line boxes above them: the terminal-leading allowance of page.lastLineFit does not apply on a page with notes.
+    let limit = allocation.items.length ? ctx.noteHeight - allocation.height : ctx.contentHeight;
     // Push the first reference without a note start to the next page, unless it is on the
     // page's first line (pushing it would empty the page and repeat there).
     if (pushedRef && pushedRef.offset > pushedRef.lineHeight) limit = Math.min(limit, pushedRef.offset);
@@ -377,7 +461,7 @@ function layoutPage(ctx, index, carry, previous) {
     };
     if (limit < ctx.contentHeight - 0.5) {
       const cut = cutTarget(ctx.flow, index, index * ctx.stride + limit, ctx);
-      if (cut) record.stamp = applyStamp(cut, owner);
+      if (cut) record.stamp = applyStamp(cut, owner, ctx);
     }
     const after = readRefs(ctx);
     const stayed = onPage.slice(0, allocation.placed).filter((ref) => after.find((item) => item.node === ref.node)?.page === index).length;
@@ -407,7 +491,7 @@ export function layoutGroupFootnotes({ article, group, rule, state, deadline = I
   const view = { pages: {}, tail: 0, incomplete: false };
   if (!flow || !measure) return view;
   const scale = new DOMMatrixReadOnly(getComputedStyle(stack).transform).a || 1;
-  const ctx = { groupId: group.id, flow, measure, rule, scale, heights: state.heights ||= new Map(), top: flow.getBoundingClientRect().top, stride: flowPagePitchPx(metrics), rowGap: metrics.rowGapPx, contentHeight: Math.floor(metrics.contentHeightPx * 64) / 64 };
+  const ctx = { groupId: group.id, flow, measure, rule, scale, heights: state.heights ||= new Map(), top: flow.getBoundingClientRect().top, stride: flowPagePitchPx(metrics), rowGap: metrics.rowGapPx, contentHeight: Math.floor(metrics.contentHeightPx * 64) / 64, noteHeight: Math.floor((metrics.contentHeightPx - metrics.trailingLeadingPx) * 64) / 64 };
   const ruleSig = JSON.stringify([rule, metrics.contentHeightPx, metrics.contentWidthPx]);
   if (state.ruleSig !== ruleSig) {
     for (const record of state.pages || []) releaseStamp(record?.stamp, `${group.id}:${state.pages.indexOf(record)}`);
@@ -416,6 +500,8 @@ export function layoutGroupFootnotes({ article, group, rule, state, deadline = I
   // Stamps copied by the browser (Enter clones the split paragraph's attributes) or left by removed pages.
   const owned = new Set(state.pages.map((record) => record?.stamp?.element).filter(Boolean));
   for (const element of flow.querySelectorAll(`[${STAMP}]`)) if (!owned.has(element)) clearStamp(element);
+  const spacers = new Set([...owned].flatMap((element) => [...(reserves.get(element)?.spacers.values() || [])]));
+  for (const node of flow.querySelectorAll(`[${SPACER}]`)) if (!spacers.has(node)) removeSpacer(node);
 
   const tailCount = flow.querySelectorAll(".thesis-footnote-tail").length;
   const bodyPages = () => Math.max(1, pageCountFromFlowHeight(flow.offsetHeight, metrics) - tailCount);
@@ -455,7 +541,7 @@ export function layoutGroupFootnotes({ article, group, rule, state, deadline = I
   for (let index = pages.length; index < state.pages.length; index += 1) releaseStamp(state.pages[index]?.stamp, `${group.id}:${index}`);
   state.pages = pages;
   // A note longer than the rest of the document continues on continuation-only pages after the body.
-  const cap = ctx.contentHeight * rule.maxAreaPercent / 100;
+  const cap = ctx.noteHeight * rule.maxAreaPercent / 100;
   for (let index = pages.length; carry.length && view.tail < 50; index += 1) {
     const allocation = allocate(ctx, [], carry, cap);
     if (!allocation.items.length) {

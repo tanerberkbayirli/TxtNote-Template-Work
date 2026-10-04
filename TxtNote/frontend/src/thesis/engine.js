@@ -9,7 +9,8 @@ import { countFootnoteRefs, resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { resolveLayoutNodes, resolveLayoutPage } from "./layoutDocument.js";
 import { resolveLayoutTypography } from "./layoutProperties.js";
-import { wordBaselineProbe } from "./wordBaseline.js";
+import { wordBaselineProbe, WORD_FONT_METRICS } from "./wordBaseline.js";
+import { resolveLineSpacing } from "./typography.js";
 import { exceptionSet, isExceptionToken } from "./transformExceptions.js";
 import { ENGINE_DEFAULT_HEADER_DISTANCE_MM } from "./engineDefaults.js";
 import { escapeHtml, effectiveLineHeight, thesisSectionCss, thesisFootnoteCss, sectionTextStyles } from "./engineCss.js";
@@ -97,6 +98,21 @@ export function applyThesisDocumentChoices(template, thesis = {}) {
   return { ...template, tables: withChoice(template.tables), figures: withChoice(template.figures), ...(template.captionKinds ? { captionKinds: Object.fromEntries(Object.entries(template.captionKinds).map(([id, rule]) => [id, withChoice(rule)])) } : {}) };
 }
 
+/**
+ * Terminal leading (mm) of the body style for `page.lastLineFit: "word"`: Word accepts the last line of a page when the line fits
+ * without its extra leading, i.e. line pitch minus the single-line height. 0 (feature off) when the font's single-line metrics are
+ * UNKNOWN (never guessed) or the style has no extra leading.
+ */
+export function wordLastLineLeadingMm(body, spacing) {
+  const fontPt = body?.fontSizePt || 12;
+  const family = String(body?.fontFamily || "").split(",")[0].replace(/["']/g, "").trim().toLowerCase();
+  const metrics = WORD_FONT_METRICS[family];
+  const single = spacing?.singleLineEm ?? (metrics ? metrics.ascent + metrics.descent + metrics.lineGap : null);
+  if (!(single > 0)) return 0;
+  const pitchPt = resolveLineSpacing(body, spacing)?.pitchPt || 0;
+  return Math.max(0, Math.round((pitchPt - single * fontPt) * 25.4 / 72 * 1000) / 1000);
+}
+
 export function resolveSectionRules(template, section) {
   const override = section.overrides || {};
   const chromePart = (kind) => {
@@ -106,10 +122,15 @@ export function resolveSectionRules(template, section) {
       ? { heightMm: 0, distanceMm: ENGINE_DEFAULT_HEADER_DISTANCE_MM }
       : { heightMm: 0, distanceMm: ENGINE_DEFAULT_HEADER_DISTANCE_MM, ...base, ...local };
   };
+  const body = { ...template.typography.body, ...template.typography.paragraph, ...override.body, ...override.paragraph };
+  const spacingModel = template.typography.lineSpacing;
+  // Default: on under the Word line-spacing model (Word applies the rule to every document); "off" opts out.
+  const lastLineFit = override.page?.lastLineFit ?? template.page.lastLineFit ?? (spacingModel?.mode === "word" || spacingModel?.rule ? "word" : "off");
   return {
     page: {
       ...template.page,
       ...override.page,
+      ...(lastLineFit === "word" && !isSpecialPageSection(section) && section.group !== "cover" ? { lastLineLeadingMm: wordLastLineLeadingMm(body, template.typography.lineSpacing) } : {}),
       margins: { ...template.page.margins, ...override.page?.margins },
       numbering: { ...template.page.numbering, ...override.page?.numbering },
       header: chromePart("header"),
@@ -168,6 +189,9 @@ export function groupThesisSections(sections) {
     const sameKind = previous && !standalonePage(previous.sections[0]) && !standalonePage(section);
     if (sameKind && section.pageBreakBefore === false && !section.rules.page.numbering.restart && sharedPageSignature(previous.rules.page) === sharedPageSignature(section.rules.page)) {
       previous.sections.push(section);
+      // A shared page takes the terminal leading of whichever section has one (special pages never do).
+      const lead = Math.max(previous.rules.page.lastLineLeadingMm || 0, section.rules.page.lastLineLeadingMm || 0);
+      if (lead && lead !== previous.rules.page.lastLineLeadingMm) previous.rules = { ...previous.rules, page: { ...previous.rules.page, lastLineLeadingMm: lead } };
     } else {
       groups.push({ id: section.id, title: section.title, rules: section.rules, sections: [section] });
     }
