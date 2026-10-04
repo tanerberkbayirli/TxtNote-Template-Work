@@ -364,6 +364,12 @@ def read_sections(pkg: Package, body, rels: dict, styles: dict, defaults: dict) 
             entry["headers"][ref.get(w("type"))] = read_header_footer(pkg, rels.get(ref.get(f"{{{R}}}id"), ""), styles, defaults)
         for ref in sect.findall("w:footerReference", NS):
             entry["footers"][ref.get(w("type"))] = read_header_footer(pkg, rels.get(ref.get(f"{{{R}}}id"), ""), styles, defaults)
+        # Word: a section without its own reference of a type continues the previous section's.
+        if sections:
+            for kind in ("headers", "footers"):
+                for which, hf in sections[-1][kind].items():
+                    if which not in entry[kind]:
+                        entry[kind][which] = {**hf, "inherited": True}
         sections.append(entry)
         paragraphs_since = 0
         first_texts = []
@@ -409,7 +415,8 @@ def line_key(para: dict) -> str:
 def profile_body(pkg: Package, body, styles: dict, defaults: dict, numbering: dict) -> dict:
     default_style = default_paragraph_style(styles)
     per_style: dict[str, dict] = {}
-    headings, captions, long_paragraphs = [], [], []
+    headings, captions, long_paragraphs, title_candidates = [], [], [], []
+    TITLE_RE = re.compile(r"^(İÇİNDEKİLER|ICINDEKILER|CONTENTS|ŞEKİLLER|SEKILLER|ÇİZELGELER|CIZELGELER|TABLOLAR|SİMGELER|SIMGELER|KISALTMALAR|SEMBOLLER|ÖZET|OZET|ABSTRACT|SUMMARY|TEŞEKKÜR|TESEKKUR|ACKNOWLEDG|ÖN ?SÖZ|ON ?SOZ|PREFACE|İTHAF|ITHAF|BİLİMSEL ETİK|ETİK|BEYAN|TAAHHÜT|TAAHHUT|DECLARATION|TEZ ONAY|ONAY|KABUL VE ONAY|JÜRİ|JURI|APPROVAL|KAYNAKLAR|KAYNAKÇA|KAYNAKCA|REFERENCES|BIBLIOGRAPHY|EKLER|APPENDI|ÖZGEÇMİŞ|OZGECMIS|CURRICULUM VITAE|GİRİŞ|GIRIS|INTRODUCTION|LIST OF)", re.I)
     paragraphs = body.findall(".//w:p", NS)
     for index, para in enumerate(paragraphs):
         text = re.sub(r"\s+", " ", text_of(para)).strip()
@@ -435,6 +442,8 @@ def profile_body(pkg: Package, body, styles: dict, defaults: dict, numbering: di
             record["level"] = level + 1
             record["numberingFormat"] = numbering.get("numId", {}).get(str(number["numId"]), {}).get(number["level"], {}).get("text") if number else None
             headings.append(record)
+        elif len(text) <= 60 and TITLE_RE.match(re.sub(r"^[\d.\s]+", "", text)) and not re.match(r"^(toc \d|table of figures)$", style_name or "", re.I) and text == text.replace("i", "İ").replace("ı", "I").upper():
+            title_candidates.append(record)
         elif CAPTION_RE.match(text) and not re.match(r"^(toc \d|table of figures)$", style_name or "", re.I):
             prev_node, next_node = para.getprevious(), para.getnext()
             record["afterTable"] = prev_node is not None and prev_node.tag == w("tbl")
@@ -453,7 +462,7 @@ def profile_body(pkg: Package, body, styles: dict, defaults: dict, numbering: di
         keys = collections.Counter((p["font"], p["sizePt"], line_key({"lineSpacing": p["lineSpacing"]}), p["align"], json.dumps(p["indent"], sort_keys=True), p["spaceBeforePt"], p["spaceAfterPt"]) for p in long_paragraphs)
         (font, size, line, align, indent, before, after), count = keys.most_common(1)[0]
         body_profile = {"basis": f"{count}/{len(long_paragraphs)} paragraf (≥200 karakter)", "font": font, "sizePt": size, "lineSpacing": line, "align": align, "indent": json.loads(indent), "spaceBeforePt": before, "spaceAfterPt": after, "variants": len(keys)}
-    return {"paragraphs": len(paragraphs), "stylesUsed": styles_used, "bodyProfile": body_profile, "headings": headings[:60], "captions": captions[:40], "tables": len(body.findall(".//w:tbl", NS)), "drawings": len(body.findall(".//w:drawing", NS))}
+    return {"paragraphs": len(paragraphs), "stylesUsed": styles_used, "bodyProfile": body_profile, "headings": headings[:60], "titleCandidates": title_candidates[:40], "captions": captions[:40], "tables": len(body.findall(".//w:tbl", NS)), "drawings": len(body.findall(".//w:drawing", NS))}
 
 
 # --- settings, footnotes, core -----------------------------------------------------------------
