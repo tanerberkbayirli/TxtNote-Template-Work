@@ -1,0 +1,428 @@
+{
+ "title": "Word page-fit acceptance (notes)",
+ "__template": {
+  "schemaVersion": 1,
+  "templateVersion": "1.0.0",
+  "id": "engine-word-pagefit-notes",
+  "universityId": "engine-test",
+  "universityName": "Word page-fit acceptance",
+  "degreeType": "master",
+  "language": "tr",
+  "status": "generic",
+  "source": {
+   "type": "manual",
+   "documentName": "Isolated Word last-line fit (no university values)"
+  },
+  "page": {
+   "size": "A4",
+   "widthMm": 210,
+   "heightMm": 297,
+   "orientation": "portrait",
+   "margins": {
+    "topMm": 25,
+    "bottomMm": 25,
+    "leftMm": 30,
+    "rightMm": 30
+   },
+   "header": {
+    "distanceMm": 10,
+    "heightMm": 0,
+    "content": ""
+   },
+   "footer": {
+    "distanceMm": 12.5,
+    "heightMm": 0,
+    "content": ""
+   },
+   "numbering": {
+    "enabled": true,
+    "position": "bottom",
+    "align": "center",
+    "format": "arabic",
+    "restart": false,
+    "baselineFromTopMm": 276,
+    "style": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 11
+    }
+   }
+  },
+  "typography": {
+   "body": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "fontWeight": 400,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1.5,
+     "baseline": "word"
+    }
+   },
+   "headings": {
+    "1": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": false,
+      "format": "{1}"
+     },
+     "lineSpacing": {
+      "rule": "auto",
+      "value": 1.5,
+      "baseline": "word"
+     }
+    },
+    "2": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     }
+    },
+    "3": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     }
+    },
+    "4": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}"
+     }
+    }
+   },
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1.5,
+    "baseline": "word",
+    "paragraphSpacing": "collapse",
+    "suppressSpaceBeforeAtPageTop": true
+   },
+   "paragraphStyles": {
+    "fill": {
+     "widowControl": false
+    },
+    "keepNext": {
+     "keepWithNext": true,
+     "keepLines": true
+    },
+    "single": {
+     "widowControl": false,
+     "lineSpacing": {
+      "rule": "auto",
+      "value": 1,
+      "baseline": "word"
+     }
+    },
+    "singleKeep": {
+     "widowControl": false,
+     "keepLines": true,
+     "lineSpacing": {
+      "rule": "auto",
+      "value": 1,
+      "baseline": "word"
+     }
+    },
+    "shift0": {
+     "widowControl": false,
+     "spaceAfterPt": 0
+    },
+    "shift3": {
+     "widowControl": false,
+     "spaceAfterPt": 3
+    },
+    "shift6": {
+     "widowControl": false,
+     "spaceAfterPt": 6
+    },
+    "shift9": {
+     "widowControl": false,
+     "spaceAfterPt": 9
+    },
+    "shift12": {
+     "widowControl": false,
+     "spaceAfterPt": 12
+    },
+    "shift15": {
+     "widowControl": false,
+     "spaceAfterPt": 15
+    },
+    "shift18": {
+     "widowControl": false,
+     "spaceAfterPt": 18
+    },
+    "shift21": {
+     "widowControl": false,
+     "spaceAfterPt": 21
+    },
+    "shift24": {
+     "widowControl": false,
+     "spaceAfterPt": 24
+    },
+    "shift27": {
+     "widowControl": false,
+     "spaceAfterPt": 27
+    }
+   },
+   "footnotes": {
+    "placement": "pageBottom",
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "lineHeight": 1,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1,
+     "singleLineEm": 1.15
+    },
+    "separator": {
+     "widthPercent": 33.87,
+     "thicknessPt": 0.5,
+     "spaceBeforePt": 7.5,
+     "spaceAfterPt": 5.8
+    }
+   }
+  },
+  "placeholders": {},
+  "sections": [
+   {
+    "id": "NOTE10R3W6",
+    "type": "mainContent",
+    "title": "NOTE10R3W6",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTE20R2W40",
+    "type": "custom",
+    "title": "NOTE20R2W40",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTE28R3W6",
+    "type": "custom",
+    "title": "NOTE28R3W6",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTE5R40W20",
+    "type": "custom",
+    "title": "NOTE5R40W20",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTE14R36W60",
+    "type": "custom",
+    "title": "NOTE14R36W60",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTE30R2W120",
+    "type": "custom",
+    "title": "NOTE30R2W120",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTESGL10R3W20",
+    "type": "custom",
+    "title": "NOTESGL10R3W20",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTESGL5R60W60",
+    "type": "custom",
+    "title": "NOTESGL5R60W60",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   },
+   {
+    "id": "NOTEKEEP20R1W120",
+    "type": "custom",
+    "title": "NOTEKEEP20R1W120",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {}
+   }
+  ],
+  "tables": {
+   "label": "Tablo",
+   "position": "above",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "center",
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1,
+     "baseline": "word"
+    },
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0
+   },
+   "numbering": {
+    "scope": "document",
+    "format": "{n}",
+    "sequence": "arabic",
+    "liveField": true
+   },
+   "spacingBeforePt": 0,
+   "spacingAfterPt": 0,
+   "align": "center",
+   "cellPadding": {
+    "topMm": 0.5,
+    "bottomMm": 0.5,
+    "leftMm": 1,
+    "rightMm": 1
+   },
+   "cellStyle": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1,
+     "baseline": "word"
+    }
+   }
+  },
+  "figures": {
+   "label": "Şekil",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 6,
+   "spacingAfterPt": 8,
+   "align": "center"
+  },
+  "bibliography": {
+   "heading": "Kaynakça",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "lineHeight": 1.5
+   },
+   "hangingIndentMm": 10
+  },
+  "toc": {
+   "heading": "İçindekiler",
+   "levels": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "showPageNumbers": true
+  }
+ },
+ "content": "<p data-thesis-style=\"fill\">NOTE10R3W6_F01 Abcdefg gjpqy<br>NOTE10R3W6_F02 Abcdefg gjpqy<br>NOTE10R3W6_F03 Abcdefg gjpqy<br>NOTE10R3W6_F04 Abcdefg gjpqy<br>NOTE10R3W6_F05 Abcdefg gjpqy<br>NOTE10R3W6_F06 Abcdefg gjpqy<br>NOTE10R3W6_F07 Abcdefg gjpqy<br>NOTE10R3W6_F08 Abcdefg gjpqy<br>NOTE10R3W6_F09 Abcdefg gjpqy<br>NOTE10R3W6_F10 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE10R3W6_P001 Abcdefg gjpqy<br>NOTE10R3W6_P002 Abcdefg gjpqy<br>NOTE10R3W6_P003 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTE10R3W6\" data-fn-text=\"note1 note2 note3 note4 note5 note6\">1</sup><br>NOTE10R3W6_P004 Abcdefg gjpqy<br>NOTE10R3W6_P005 Abcdefg gjpqy<br>NOTE10R3W6_P006 Abcdefg gjpqy<br>NOTE10R3W6_P007 Abcdefg gjpqy<br>NOTE10R3W6_P008 Abcdefg gjpqy<br>NOTE10R3W6_P009 Abcdefg gjpqy<br>NOTE10R3W6_P010 Abcdefg gjpqy<br>NOTE10R3W6_P011 Abcdefg gjpqy<br>NOTE10R3W6_P012 Abcdefg gjpqy<br>NOTE10R3W6_P013 Abcdefg gjpqy<br>NOTE10R3W6_P014 Abcdefg gjpqy<br>NOTE10R3W6_P015 Abcdefg gjpqy<br>NOTE10R3W6_P016 Abcdefg gjpqy<br>NOTE10R3W6_P017 Abcdefg gjpqy<br>NOTE10R3W6_P018 Abcdefg gjpqy<br>NOTE10R3W6_P019 Abcdefg gjpqy<br>NOTE10R3W6_P020 Abcdefg gjpqy<br>NOTE10R3W6_P021 Abcdefg gjpqy<br>NOTE10R3W6_P022 Abcdefg gjpqy<br>NOTE10R3W6_P023 Abcdefg gjpqy<br>NOTE10R3W6_P024 Abcdefg gjpqy<br>NOTE10R3W6_P025 Abcdefg gjpqy<br>NOTE10R3W6_P026 Abcdefg gjpqy<br>NOTE10R3W6_P027 Abcdefg gjpqy<br>NOTE10R3W6_P028 Abcdefg gjpqy<br>NOTE10R3W6_P029 Abcdefg gjpqy<br>NOTE10R3W6_P030 Abcdefg gjpqy<br>NOTE10R3W6_P031 Abcdefg gjpqy<br>NOTE10R3W6_P032 Abcdefg gjpqy<br>NOTE10R3W6_P033 Abcdefg gjpqy<br>NOTE10R3W6_P034 Abcdefg gjpqy<br>NOTE10R3W6_P035 Abcdefg gjpqy<br>NOTE10R3W6_P036 Abcdefg gjpqy<br>NOTE10R3W6_P037 Abcdefg gjpqy<br>NOTE10R3W6_P038 Abcdefg gjpqy<br>NOTE10R3W6_P039 Abcdefg gjpqy<br>NOTE10R3W6_P040 Abcdefg gjpqy<br>NOTE10R3W6_P041 Abcdefg gjpqy<br>NOTE10R3W6_P042 Abcdefg gjpqy<br>NOTE10R3W6_P043 Abcdefg gjpqy<br>NOTE10R3W6_P044 Abcdefg gjpqy<br>NOTE10R3W6_P045 Abcdefg gjpqy<br>NOTE10R3W6_P046 Abcdefg gjpqy<br>NOTE10R3W6_P047 Abcdefg gjpqy<br>NOTE10R3W6_P048 Abcdefg gjpqy<br>NOTE10R3W6_P049 Abcdefg gjpqy<br>NOTE10R3W6_P050 Abcdefg gjpqy<br>NOTE10R3W6_P051 Abcdefg gjpqy<br>NOTE10R3W6_P052 Abcdefg gjpqy<br>NOTE10R3W6_P053 Abcdefg gjpqy<br>NOTE10R3W6_P054 Abcdefg gjpqy<br>NOTE10R3W6_P055 Abcdefg gjpqy<br>NOTE10R3W6_P056 Abcdefg gjpqy<br>NOTE10R3W6_P057 Abcdefg gjpqy<br>NOTE10R3W6_P058 Abcdefg gjpqy<br>NOTE10R3W6_P059 Abcdefg gjpqy<br>NOTE10R3W6_P060 Abcdefg gjpqy<br>NOTE10R3W6_P061 Abcdefg gjpqy<br>NOTE10R3W6_P062 Abcdefg gjpqy<br>NOTE10R3W6_P063 Abcdefg gjpqy<br>NOTE10R3W6_P064 Abcdefg gjpqy<br>NOTE10R3W6_P065 Abcdefg gjpqy<br>NOTE10R3W6_P066 Abcdefg gjpqy<br>NOTE10R3W6_P067 Abcdefg gjpqy<br>NOTE10R3W6_P068 Abcdefg gjpqy<br>NOTE10R3W6_P069 Abcdefg gjpqy<br>NOTE10R3W6_P070 Abcdefg gjpqy<br>NOTE10R3W6_P071 Abcdefg gjpqy<br>NOTE10R3W6_P072 Abcdefg gjpqy<br>NOTE10R3W6_P073 Abcdefg gjpqy<br>NOTE10R3W6_P074 Abcdefg gjpqy<br>NOTE10R3W6_P075 Abcdefg gjpqy<br>NOTE10R3W6_P076 Abcdefg gjpqy<br>NOTE10R3W6_P077 Abcdefg gjpqy<br>NOTE10R3W6_P078 Abcdefg gjpqy<br>NOTE10R3W6_P079 Abcdefg gjpqy<br>NOTE10R3W6_P080 Abcdefg gjpqy<br>NOTE10R3W6_P081 Abcdefg gjpqy<br>NOTE10R3W6_P082 Abcdefg gjpqy<br>NOTE10R3W6_P083 Abcdefg gjpqy<br>NOTE10R3W6_P084 Abcdefg gjpqy<br>NOTE10R3W6_P085 Abcdefg gjpqy<br>NOTE10R3W6_P086 Abcdefg gjpqy<br>NOTE10R3W6_P087 Abcdefg gjpqy<br>NOTE10R3W6_P088 Abcdefg gjpqy<br>NOTE10R3W6_P089 Abcdefg gjpqy<br>NOTE10R3W6_P090 Abcdefg gjpqy<br>NOTE10R3W6_P091 Abcdefg gjpqy<br>NOTE10R3W6_P092 Abcdefg gjpqy<br>NOTE10R3W6_P093 Abcdefg gjpqy<br>NOTE10R3W6_P094 Abcdefg gjpqy<br>NOTE10R3W6_P095 Abcdefg gjpqy<br>NOTE10R3W6_P096 Abcdefg gjpqy<br>NOTE10R3W6_P097 Abcdefg gjpqy<br>NOTE10R3W6_P098 Abcdefg gjpqy<br>NOTE10R3W6_P099 Abcdefg gjpqy<br>NOTE10R3W6_P100 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE10R3W6_U01 Abcdefg gjpqy<br>NOTE10R3W6_U02 Abcdefg gjpqy<br>NOTE10R3W6_U03 Abcdefg gjpqy</p>",
+ "researchData": {
+  "thesis": {
+   "templateId": "engine-word-pagefit-notes",
+   "templateVersion": "1.0.0",
+   "values": {},
+   "sectionContent": {
+    "NOTE10R3W6": "<p data-thesis-style=\"fill\">NOTE10R3W6_F01 Abcdefg gjpqy<br>NOTE10R3W6_F02 Abcdefg gjpqy<br>NOTE10R3W6_F03 Abcdefg gjpqy<br>NOTE10R3W6_F04 Abcdefg gjpqy<br>NOTE10R3W6_F05 Abcdefg gjpqy<br>NOTE10R3W6_F06 Abcdefg gjpqy<br>NOTE10R3W6_F07 Abcdefg gjpqy<br>NOTE10R3W6_F08 Abcdefg gjpqy<br>NOTE10R3W6_F09 Abcdefg gjpqy<br>NOTE10R3W6_F10 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE10R3W6_P001 Abcdefg gjpqy<br>NOTE10R3W6_P002 Abcdefg gjpqy<br>NOTE10R3W6_P003 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTE10R3W6\" data-fn-text=\"note1 note2 note3 note4 note5 note6\">1</sup><br>NOTE10R3W6_P004 Abcdefg gjpqy<br>NOTE10R3W6_P005 Abcdefg gjpqy<br>NOTE10R3W6_P006 Abcdefg gjpqy<br>NOTE10R3W6_P007 Abcdefg gjpqy<br>NOTE10R3W6_P008 Abcdefg gjpqy<br>NOTE10R3W6_P009 Abcdefg gjpqy<br>NOTE10R3W6_P010 Abcdefg gjpqy<br>NOTE10R3W6_P011 Abcdefg gjpqy<br>NOTE10R3W6_P012 Abcdefg gjpqy<br>NOTE10R3W6_P013 Abcdefg gjpqy<br>NOTE10R3W6_P014 Abcdefg gjpqy<br>NOTE10R3W6_P015 Abcdefg gjpqy<br>NOTE10R3W6_P016 Abcdefg gjpqy<br>NOTE10R3W6_P017 Abcdefg gjpqy<br>NOTE10R3W6_P018 Abcdefg gjpqy<br>NOTE10R3W6_P019 Abcdefg gjpqy<br>NOTE10R3W6_P020 Abcdefg gjpqy<br>NOTE10R3W6_P021 Abcdefg gjpqy<br>NOTE10R3W6_P022 Abcdefg gjpqy<br>NOTE10R3W6_P023 Abcdefg gjpqy<br>NOTE10R3W6_P024 Abcdefg gjpqy<br>NOTE10R3W6_P025 Abcdefg gjpqy<br>NOTE10R3W6_P026 Abcdefg gjpqy<br>NOTE10R3W6_P027 Abcdefg gjpqy<br>NOTE10R3W6_P028 Abcdefg gjpqy<br>NOTE10R3W6_P029 Abcdefg gjpqy<br>NOTE10R3W6_P030 Abcdefg gjpqy<br>NOTE10R3W6_P031 Abcdefg gjpqy<br>NOTE10R3W6_P032 Abcdefg gjpqy<br>NOTE10R3W6_P033 Abcdefg gjpqy<br>NOTE10R3W6_P034 Abcdefg gjpqy<br>NOTE10R3W6_P035 Abcdefg gjpqy<br>NOTE10R3W6_P036 Abcdefg gjpqy<br>NOTE10R3W6_P037 Abcdefg gjpqy<br>NOTE10R3W6_P038 Abcdefg gjpqy<br>NOTE10R3W6_P039 Abcdefg gjpqy<br>NOTE10R3W6_P040 Abcdefg gjpqy<br>NOTE10R3W6_P041 Abcdefg gjpqy<br>NOTE10R3W6_P042 Abcdefg gjpqy<br>NOTE10R3W6_P043 Abcdefg gjpqy<br>NOTE10R3W6_P044 Abcdefg gjpqy<br>NOTE10R3W6_P045 Abcdefg gjpqy<br>NOTE10R3W6_P046 Abcdefg gjpqy<br>NOTE10R3W6_P047 Abcdefg gjpqy<br>NOTE10R3W6_P048 Abcdefg gjpqy<br>NOTE10R3W6_P049 Abcdefg gjpqy<br>NOTE10R3W6_P050 Abcdefg gjpqy<br>NOTE10R3W6_P051 Abcdefg gjpqy<br>NOTE10R3W6_P052 Abcdefg gjpqy<br>NOTE10R3W6_P053 Abcdefg gjpqy<br>NOTE10R3W6_P054 Abcdefg gjpqy<br>NOTE10R3W6_P055 Abcdefg gjpqy<br>NOTE10R3W6_P056 Abcdefg gjpqy<br>NOTE10R3W6_P057 Abcdefg gjpqy<br>NOTE10R3W6_P058 Abcdefg gjpqy<br>NOTE10R3W6_P059 Abcdefg gjpqy<br>NOTE10R3W6_P060 Abcdefg gjpqy<br>NOTE10R3W6_P061 Abcdefg gjpqy<br>NOTE10R3W6_P062 Abcdefg gjpqy<br>NOTE10R3W6_P063 Abcdefg gjpqy<br>NOTE10R3W6_P064 Abcdefg gjpqy<br>NOTE10R3W6_P065 Abcdefg gjpqy<br>NOTE10R3W6_P066 Abcdefg gjpqy<br>NOTE10R3W6_P067 Abcdefg gjpqy<br>NOTE10R3W6_P068 Abcdefg gjpqy<br>NOTE10R3W6_P069 Abcdefg gjpqy<br>NOTE10R3W6_P070 Abcdefg gjpqy<br>NOTE10R3W6_P071 Abcdefg gjpqy<br>NOTE10R3W6_P072 Abcdefg gjpqy<br>NOTE10R3W6_P073 Abcdefg gjpqy<br>NOTE10R3W6_P074 Abcdefg gjpqy<br>NOTE10R3W6_P075 Abcdefg gjpqy<br>NOTE10R3W6_P076 Abcdefg gjpqy<br>NOTE10R3W6_P077 Abcdefg gjpqy<br>NOTE10R3W6_P078 Abcdefg gjpqy<br>NOTE10R3W6_P079 Abcdefg gjpqy<br>NOTE10R3W6_P080 Abcdefg gjpqy<br>NOTE10R3W6_P081 Abcdefg gjpqy<br>NOTE10R3W6_P082 Abcdefg gjpqy<br>NOTE10R3W6_P083 Abcdefg gjpqy<br>NOTE10R3W6_P084 Abcdefg gjpqy<br>NOTE10R3W6_P085 Abcdefg gjpqy<br>NOTE10R3W6_P086 Abcdefg gjpqy<br>NOTE10R3W6_P087 Abcdefg gjpqy<br>NOTE10R3W6_P088 Abcdefg gjpqy<br>NOTE10R3W6_P089 Abcdefg gjpqy<br>NOTE10R3W6_P090 Abcdefg gjpqy<br>NOTE10R3W6_P091 Abcdefg gjpqy<br>NOTE10R3W6_P092 Abcdefg gjpqy<br>NOTE10R3W6_P093 Abcdefg gjpqy<br>NOTE10R3W6_P094 Abcdefg gjpqy<br>NOTE10R3W6_P095 Abcdefg gjpqy<br>NOTE10R3W6_P096 Abcdefg gjpqy<br>NOTE10R3W6_P097 Abcdefg gjpqy<br>NOTE10R3W6_P098 Abcdefg gjpqy<br>NOTE10R3W6_P099 Abcdefg gjpqy<br>NOTE10R3W6_P100 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE10R3W6_U01 Abcdefg gjpqy<br>NOTE10R3W6_U02 Abcdefg gjpqy<br>NOTE10R3W6_U03 Abcdefg gjpqy</p>",
+    "NOTE20R2W40": "<p data-thesis-style=\"fill\">NOTE20R2W40_F01 Abcdefg gjpqy<br>NOTE20R2W40_F02 Abcdefg gjpqy<br>NOTE20R2W40_F03 Abcdefg gjpqy<br>NOTE20R2W40_F04 Abcdefg gjpqy<br>NOTE20R2W40_F05 Abcdefg gjpqy<br>NOTE20R2W40_F06 Abcdefg gjpqy<br>NOTE20R2W40_F07 Abcdefg gjpqy<br>NOTE20R2W40_F08 Abcdefg gjpqy<br>NOTE20R2W40_F09 Abcdefg gjpqy<br>NOTE20R2W40_F10 Abcdefg gjpqy<br>NOTE20R2W40_F11 Abcdefg gjpqy<br>NOTE20R2W40_F12 Abcdefg gjpqy<br>NOTE20R2W40_F13 Abcdefg gjpqy<br>NOTE20R2W40_F14 Abcdefg gjpqy<br>NOTE20R2W40_F15 Abcdefg gjpqy<br>NOTE20R2W40_F16 Abcdefg gjpqy<br>NOTE20R2W40_F17 Abcdefg gjpqy<br>NOTE20R2W40_F18 Abcdefg gjpqy<br>NOTE20R2W40_F19 Abcdefg gjpqy<br>NOTE20R2W40_F20 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE20R2W40_P001 Abcdefg gjpqy<br>NOTE20R2W40_P002 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTE20R2W40\" data-fn-text=\"note1 note2 note3 note4 note5 note6 note7 note8 note9 note10 note11 note12 note13 note14 note15 note16 note17 note18 note19 note20 note21 note22 note23 note24 note25 note26 note27 note28 note29 note30 note31 note32 note33 note34 note35 note36 note37 note38 note39 note40\">1</sup><br>NOTE20R2W40_P003 Abcdefg gjpqy<br>NOTE20R2W40_P004 Abcdefg gjpqy<br>NOTE20R2W40_P005 Abcdefg gjpqy<br>NOTE20R2W40_P006 Abcdefg gjpqy<br>NOTE20R2W40_P007 Abcdefg gjpqy<br>NOTE20R2W40_P008 Abcdefg gjpqy<br>NOTE20R2W40_P009 Abcdefg gjpqy<br>NOTE20R2W40_P010 Abcdefg gjpqy<br>NOTE20R2W40_P011 Abcdefg gjpqy<br>NOTE20R2W40_P012 Abcdefg gjpqy<br>NOTE20R2W40_P013 Abcdefg gjpqy<br>NOTE20R2W40_P014 Abcdefg gjpqy<br>NOTE20R2W40_P015 Abcdefg gjpqy<br>NOTE20R2W40_P016 Abcdefg gjpqy<br>NOTE20R2W40_P017 Abcdefg gjpqy<br>NOTE20R2W40_P018 Abcdefg gjpqy<br>NOTE20R2W40_P019 Abcdefg gjpqy<br>NOTE20R2W40_P020 Abcdefg gjpqy<br>NOTE20R2W40_P021 Abcdefg gjpqy<br>NOTE20R2W40_P022 Abcdefg gjpqy<br>NOTE20R2W40_P023 Abcdefg gjpqy<br>NOTE20R2W40_P024 Abcdefg gjpqy<br>NOTE20R2W40_P025 Abcdefg gjpqy<br>NOTE20R2W40_P026 Abcdefg gjpqy<br>NOTE20R2W40_P027 Abcdefg gjpqy<br>NOTE20R2W40_P028 Abcdefg gjpqy<br>NOTE20R2W40_P029 Abcdefg gjpqy<br>NOTE20R2W40_P030 Abcdefg gjpqy<br>NOTE20R2W40_P031 Abcdefg gjpqy<br>NOTE20R2W40_P032 Abcdefg gjpqy<br>NOTE20R2W40_P033 Abcdefg gjpqy<br>NOTE20R2W40_P034 Abcdefg gjpqy<br>NOTE20R2W40_P035 Abcdefg gjpqy<br>NOTE20R2W40_P036 Abcdefg gjpqy<br>NOTE20R2W40_P037 Abcdefg gjpqy<br>NOTE20R2W40_P038 Abcdefg gjpqy<br>NOTE20R2W40_P039 Abcdefg gjpqy<br>NOTE20R2W40_P040 Abcdefg gjpqy<br>NOTE20R2W40_P041 Abcdefg gjpqy<br>NOTE20R2W40_P042 Abcdefg gjpqy<br>NOTE20R2W40_P043 Abcdefg gjpqy<br>NOTE20R2W40_P044 Abcdefg gjpqy<br>NOTE20R2W40_P045 Abcdefg gjpqy<br>NOTE20R2W40_P046 Abcdefg gjpqy<br>NOTE20R2W40_P047 Abcdefg gjpqy<br>NOTE20R2W40_P048 Abcdefg gjpqy<br>NOTE20R2W40_P049 Abcdefg gjpqy<br>NOTE20R2W40_P050 Abcdefg gjpqy<br>NOTE20R2W40_P051 Abcdefg gjpqy<br>NOTE20R2W40_P052 Abcdefg gjpqy<br>NOTE20R2W40_P053 Abcdefg gjpqy<br>NOTE20R2W40_P054 Abcdefg gjpqy<br>NOTE20R2W40_P055 Abcdefg gjpqy<br>NOTE20R2W40_P056 Abcdefg gjpqy<br>NOTE20R2W40_P057 Abcdefg gjpqy<br>NOTE20R2W40_P058 Abcdefg gjpqy<br>NOTE20R2W40_P059 Abcdefg gjpqy<br>NOTE20R2W40_P060 Abcdefg gjpqy<br>NOTE20R2W40_P061 Abcdefg gjpqy<br>NOTE20R2W40_P062 Abcdefg gjpqy<br>NOTE20R2W40_P063 Abcdefg gjpqy<br>NOTE20R2W40_P064 Abcdefg gjpqy<br>NOTE20R2W40_P065 Abcdefg gjpqy<br>NOTE20R2W40_P066 Abcdefg gjpqy<br>NOTE20R2W40_P067 Abcdefg gjpqy<br>NOTE20R2W40_P068 Abcdefg gjpqy<br>NOTE20R2W40_P069 Abcdefg gjpqy<br>NOTE20R2W40_P070 Abcdefg gjpqy<br>NOTE20R2W40_P071 Abcdefg gjpqy<br>NOTE20R2W40_P072 Abcdefg gjpqy<br>NOTE20R2W40_P073 Abcdefg gjpqy<br>NOTE20R2W40_P074 Abcdefg gjpqy<br>NOTE20R2W40_P075 Abcdefg gjpqy<br>NOTE20R2W40_P076 Abcdefg gjpqy<br>NOTE20R2W40_P077 Abcdefg gjpqy<br>NOTE20R2W40_P078 Abcdefg gjpqy<br>NOTE20R2W40_P079 Abcdefg gjpqy<br>NOTE20R2W40_P080 Abcdefg gjpqy<br>NOTE20R2W40_P081 Abcdefg gjpqy<br>NOTE20R2W40_P082 Abcdefg gjpqy<br>NOTE20R2W40_P083 Abcdefg gjpqy<br>NOTE20R2W40_P084 Abcdefg gjpqy<br>NOTE20R2W40_P085 Abcdefg gjpqy<br>NOTE20R2W40_P086 Abcdefg gjpqy<br>NOTE20R2W40_P087 Abcdefg gjpqy<br>NOTE20R2W40_P088 Abcdefg gjpqy<br>NOTE20R2W40_P089 Abcdefg gjpqy<br>NOTE20R2W40_P090 Abcdefg gjpqy<br>NOTE20R2W40_P091 Abcdefg gjpqy<br>NOTE20R2W40_P092 Abcdefg gjpqy<br>NOTE20R2W40_P093 Abcdefg gjpqy<br>NOTE20R2W40_P094 Abcdefg gjpqy<br>NOTE20R2W40_P095 Abcdefg gjpqy<br>NOTE20R2W40_P096 Abcdefg gjpqy<br>NOTE20R2W40_P097 Abcdefg gjpqy<br>NOTE20R2W40_P098 Abcdefg gjpqy<br>NOTE20R2W40_P099 Abcdefg gjpqy<br>NOTE20R2W40_P100 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE20R2W40_U01 Abcdefg gjpqy<br>NOTE20R2W40_U02 Abcdefg gjpqy<br>NOTE20R2W40_U03 Abcdefg gjpqy</p>",
+    "NOTE28R3W6": "<p data-thesis-style=\"fill\">NOTE28R3W6_F01 Abcdefg gjpqy<br>NOTE28R3W6_F02 Abcdefg gjpqy<br>NOTE28R3W6_F03 Abcdefg gjpqy<br>NOTE28R3W6_F04 Abcdefg gjpqy<br>NOTE28R3W6_F05 Abcdefg gjpqy<br>NOTE28R3W6_F06 Abcdefg gjpqy<br>NOTE28R3W6_F07 Abcdefg gjpqy<br>NOTE28R3W6_F08 Abcdefg gjpqy<br>NOTE28R3W6_F09 Abcdefg gjpqy<br>NOTE28R3W6_F10 Abcdefg gjpqy<br>NOTE28R3W6_F11 Abcdefg gjpqy<br>NOTE28R3W6_F12 Abcdefg gjpqy<br>NOTE28R3W6_F13 Abcdefg gjpqy<br>NOTE28R3W6_F14 Abcdefg gjpqy<br>NOTE28R3W6_F15 Abcdefg gjpqy<br>NOTE28R3W6_F16 Abcdefg gjpqy<br>NOTE28R3W6_F17 Abcdefg gjpqy<br>NOTE28R3W6_F18 Abcdefg gjpqy<br>NOTE28R3W6_F19 Abcdefg gjpqy<br>NOTE28R3W6_F20 Abcdefg gjpqy<br>NOTE28R3W6_F21 Abcdefg gjpqy<br>NOTE28R3W6_F22 Abcdefg gjpqy<br>NOTE28R3W6_F23 Abcdefg gjpqy<br>NOTE28R3W6_F24 Abcdefg gjpqy<br>NOTE28R3W6_F25 Abcdefg gjpqy<br>NOTE28R3W6_F26 Abcdefg gjpqy<br>NOTE28R3W6_F27 Abcdefg gjpqy<br>NOTE28R3W6_F28 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE28R3W6_P001 Abcdefg gjpqy<br>NOTE28R3W6_P002 Abcdefg gjpqy<br>NOTE28R3W6_P003 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTE28R3W6\" data-fn-text=\"note1 note2 note3 note4 note5 note6\">1</sup><br>NOTE28R3W6_P004 Abcdefg gjpqy<br>NOTE28R3W6_P005 Abcdefg gjpqy<br>NOTE28R3W6_P006 Abcdefg gjpqy<br>NOTE28R3W6_P007 Abcdefg gjpqy<br>NOTE28R3W6_P008 Abcdefg gjpqy<br>NOTE28R3W6_P009 Abcdefg gjpqy<br>NOTE28R3W6_P010 Abcdefg gjpqy<br>NOTE28R3W6_P011 Abcdefg gjpqy<br>NOTE28R3W6_P012 Abcdefg gjpqy<br>NOTE28R3W6_P013 Abcdefg gjpqy<br>NOTE28R3W6_P014 Abcdefg gjpqy<br>NOTE28R3W6_P015 Abcdefg gjpqy<br>NOTE28R3W6_P016 Abcdefg gjpqy<br>NOTE28R3W6_P017 Abcdefg gjpqy<br>NOTE28R3W6_P018 Abcdefg gjpqy<br>NOTE28R3W6_P019 Abcdefg gjpqy<br>NOTE28R3W6_P020 Abcdefg gjpqy<br>NOTE28R3W6_P021 Abcdefg gjpqy<br>NOTE28R3W6_P022 Abcdefg gjpqy<br>NOTE28R3W6_P023 Abcdefg gjpqy<br>NOTE28R3W6_P024 Abcdefg gjpqy<br>NOTE28R3W6_P025 Abcdefg gjpqy<br>NOTE28R3W6_P026 Abcdefg gjpqy<br>NOTE28R3W6_P027 Abcdefg gjpqy<br>NOTE28R3W6_P028 Abcdefg gjpqy<br>NOTE28R3W6_P029 Abcdefg gjpqy<br>NOTE28R3W6_P030 Abcdefg gjpqy<br>NOTE28R3W6_P031 Abcdefg gjpqy<br>NOTE28R3W6_P032 Abcdefg gjpqy<br>NOTE28R3W6_P033 Abcdefg gjpqy<br>NOTE28R3W6_P034 Abcdefg gjpqy<br>NOTE28R3W6_P035 Abcdefg gjpqy<br>NOTE28R3W6_P036 Abcdefg gjpqy<br>NOTE28R3W6_P037 Abcdefg gjpqy<br>NOTE28R3W6_P038 Abcdefg gjpqy<br>NOTE28R3W6_P039 Abcdefg gjpqy<br>NOTE28R3W6_P040 Abcdefg gjpqy<br>NOTE28R3W6_P041 Abcdefg gjpqy<br>NOTE28R3W6_P042 Abcdefg gjpqy<br>NOTE28R3W6_P043 Abcdefg gjpqy<br>NOTE28R3W6_P044 Abcdefg gjpqy<br>NOTE28R3W6_P045 Abcdefg gjpqy<br>NOTE28R3W6_P046 Abcdefg gjpqy<br>NOTE28R3W6_P047 Abcdefg gjpqy<br>NOTE28R3W6_P048 Abcdefg gjpqy<br>NOTE28R3W6_P049 Abcdefg gjpqy<br>NOTE28R3W6_P050 Abcdefg gjpqy<br>NOTE28R3W6_P051 Abcdefg gjpqy<br>NOTE28R3W6_P052 Abcdefg gjpqy<br>NOTE28R3W6_P053 Abcdefg gjpqy<br>NOTE28R3W6_P054 Abcdefg gjpqy<br>NOTE28R3W6_P055 Abcdefg gjpqy<br>NOTE28R3W6_P056 Abcdefg gjpqy<br>NOTE28R3W6_P057 Abcdefg gjpqy<br>NOTE28R3W6_P058 Abcdefg gjpqy<br>NOTE28R3W6_P059 Abcdefg gjpqy<br>NOTE28R3W6_P060 Abcdefg gjpqy<br>NOTE28R3W6_P061 Abcdefg gjpqy<br>NOTE28R3W6_P062 Abcdefg gjpqy<br>NOTE28R3W6_P063 Abcdefg gjpqy<br>NOTE28R3W6_P064 Abcdefg gjpqy<br>NOTE28R3W6_P065 Abcdefg gjpqy<br>NOTE28R3W6_P066 Abcdefg gjpqy<br>NOTE28R3W6_P067 Abcdefg gjpqy<br>NOTE28R3W6_P068 Abcdefg gjpqy<br>NOTE28R3W6_P069 Abcdefg gjpqy<br>NOTE28R3W6_P070 Abcdefg gjpqy<br>NOTE28R3W6_P071 Abcdefg gjpqy<br>NOTE28R3W6_P072 Abcdefg gjpqy<br>NOTE28R3W6_P073 Abcdefg gjpqy<br>NOTE28R3W6_P074 Abcdefg gjpqy<br>NOTE28R3W6_P075 Abcdefg gjpqy<br>NOTE28R3W6_P076 Abcdefg gjpqy<br>NOTE28R3W6_P077 Abcdefg gjpqy<br>NOTE28R3W6_P078 Abcdefg gjpqy<br>NOTE28R3W6_P079 Abcdefg gjpqy<br>NOTE28R3W6_P080 Abcdefg gjpqy<br>NOTE28R3W6_P081 Abcdefg gjpqy<br>NOTE28R3W6_P082 Abcdefg gjpqy<br>NOTE28R3W6_P083 Abcdefg gjpqy<br>NOTE28R3W6_P084 Abcdefg gjpqy<br>NOTE28R3W6_P085 Abcdefg gjpqy<br>NOTE28R3W6_P086 Abcdefg gjpqy<br>NOTE28R3W6_P087 Abcdefg gjpqy<br>NOTE28R3W6_P088 Abcdefg gjpqy<br>NOTE28R3W6_P089 Abcdefg gjpqy<br>NOTE28R3W6_P090 Abcdefg gjpqy<br>NOTE28R3W6_P091 Abcdefg gjpqy<br>NOTE28R3W6_P092 Abcdefg gjpqy<br>NOTE28R3W6_P093 Abcdefg gjpqy<br>NOTE28R3W6_P094 Abcdefg gjpqy<br>NOTE28R3W6_P095 Abcdefg gjpqy<br>NOTE28R3W6_P096 Abcdefg gjpqy<br>NOTE28R3W6_P097 Abcdefg gjpqy<br>NOTE28R3W6_P098 Abcdefg gjpqy<br>NOTE28R3W6_P099 Abcdefg gjpqy<br>NOTE28R3W6_P100 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE28R3W6_U01 Abcdefg gjpqy<br>NOTE28R3W6_U02 Abcdefg gjpqy<br>NOTE28R3W6_U03 Abcdefg gjpqy</p>",
+    "NOTE5R40W20": "<p data-thesis-style=\"fill\">NOTE5R40W20_F01 Abcdefg gjpqy<br>NOTE5R40W20_F02 Abcdefg gjpqy<br>NOTE5R40W20_F03 Abcdefg gjpqy<br>NOTE5R40W20_F04 Abcdefg gjpqy<br>NOTE5R40W20_F05 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE5R40W20_P001 Abcdefg gjpqy<br>NOTE5R40W20_P002 Abcdefg gjpqy<br>NOTE5R40W20_P003 Abcdefg gjpqy<br>NOTE5R40W20_P004 Abcdefg gjpqy<br>NOTE5R40W20_P005 Abcdefg gjpqy<br>NOTE5R40W20_P006 Abcdefg gjpqy<br>NOTE5R40W20_P007 Abcdefg gjpqy<br>NOTE5R40W20_P008 Abcdefg gjpqy<br>NOTE5R40W20_P009 Abcdefg gjpqy<br>NOTE5R40W20_P010 Abcdefg gjpqy<br>NOTE5R40W20_P011 Abcdefg gjpqy<br>NOTE5R40W20_P012 Abcdefg gjpqy<br>NOTE5R40W20_P013 Abcdefg gjpqy<br>NOTE5R40W20_P014 Abcdefg gjpqy<br>NOTE5R40W20_P015 Abcdefg gjpqy<br>NOTE5R40W20_P016 Abcdefg gjpqy<br>NOTE5R40W20_P017 Abcdefg gjpqy<br>NOTE5R40W20_P018 Abcdefg gjpqy<br>NOTE5R40W20_P019 Abcdefg gjpqy<br>NOTE5R40W20_P020 Abcdefg gjpqy<br>NOTE5R40W20_P021 Abcdefg gjpqy<br>NOTE5R40W20_P022 Abcdefg gjpqy<br>NOTE5R40W20_P023 Abcdefg gjpqy<br>NOTE5R40W20_P024 Abcdefg gjpqy<br>NOTE5R40W20_P025 Abcdefg gjpqy<br>NOTE5R40W20_P026 Abcdefg gjpqy<br>NOTE5R40W20_P027 Abcdefg gjpqy<br>NOTE5R40W20_P028 Abcdefg gjpqy<br>NOTE5R40W20_P029 Abcdefg gjpqy<br>NOTE5R40W20_P030 Abcdefg gjpqy<br>NOTE5R40W20_P031 Abcdefg gjpqy<br>NOTE5R40W20_P032 Abcdefg gjpqy<br>NOTE5R40W20_P033 Abcdefg gjpqy<br>NOTE5R40W20_P034 Abcdefg gjpqy<br>NOTE5R40W20_P035 Abcdefg gjpqy<br>NOTE5R40W20_P036 Abcdefg gjpqy<br>NOTE5R40W20_P037 Abcdefg gjpqy<br>NOTE5R40W20_P038 Abcdefg gjpqy<br>NOTE5R40W20_P039 Abcdefg gjpqy<br>NOTE5R40W20_P040 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTE5R40W20\" data-fn-text=\"note1 note2 note3 note4 note5 note6 note7 note8 note9 note10 note11 note12 note13 note14 note15 note16 note17 note18 note19 note20\">1</sup><br>NOTE5R40W20_P041 Abcdefg gjpqy<br>NOTE5R40W20_P042 Abcdefg gjpqy<br>NOTE5R40W20_P043 Abcdefg gjpqy<br>NOTE5R40W20_P044 Abcdefg gjpqy<br>NOTE5R40W20_P045 Abcdefg gjpqy<br>NOTE5R40W20_P046 Abcdefg gjpqy<br>NOTE5R40W20_P047 Abcdefg gjpqy<br>NOTE5R40W20_P048 Abcdefg gjpqy<br>NOTE5R40W20_P049 Abcdefg gjpqy<br>NOTE5R40W20_P050 Abcdefg gjpqy<br>NOTE5R40W20_P051 Abcdefg gjpqy<br>NOTE5R40W20_P052 Abcdefg gjpqy<br>NOTE5R40W20_P053 Abcdefg gjpqy<br>NOTE5R40W20_P054 Abcdefg gjpqy<br>NOTE5R40W20_P055 Abcdefg gjpqy<br>NOTE5R40W20_P056 Abcdefg gjpqy<br>NOTE5R40W20_P057 Abcdefg gjpqy<br>NOTE5R40W20_P058 Abcdefg gjpqy<br>NOTE5R40W20_P059 Abcdefg gjpqy<br>NOTE5R40W20_P060 Abcdefg gjpqy<br>NOTE5R40W20_P061 Abcdefg gjpqy<br>NOTE5R40W20_P062 Abcdefg gjpqy<br>NOTE5R40W20_P063 Abcdefg gjpqy<br>NOTE5R40W20_P064 Abcdefg gjpqy<br>NOTE5R40W20_P065 Abcdefg gjpqy<br>NOTE5R40W20_P066 Abcdefg gjpqy<br>NOTE5R40W20_P067 Abcdefg gjpqy<br>NOTE5R40W20_P068 Abcdefg gjpqy<br>NOTE5R40W20_P069 Abcdefg gjpqy<br>NOTE5R40W20_P070 Abcdefg gjpqy<br>NOTE5R40W20_P071 Abcdefg gjpqy<br>NOTE5R40W20_P072 Abcdefg gjpqy<br>NOTE5R40W20_P073 Abcdefg gjpqy<br>NOTE5R40W20_P074 Abcdefg gjpqy<br>NOTE5R40W20_P075 Abcdefg gjpqy<br>NOTE5R40W20_P076 Abcdefg gjpqy<br>NOTE5R40W20_P077 Abcdefg gjpqy<br>NOTE5R40W20_P078 Abcdefg gjpqy<br>NOTE5R40W20_P079 Abcdefg gjpqy<br>NOTE5R40W20_P080 Abcdefg gjpqy<br>NOTE5R40W20_P081 Abcdefg gjpqy<br>NOTE5R40W20_P082 Abcdefg gjpqy<br>NOTE5R40W20_P083 Abcdefg gjpqy<br>NOTE5R40W20_P084 Abcdefg gjpqy<br>NOTE5R40W20_P085 Abcdefg gjpqy<br>NOTE5R40W20_P086 Abcdefg gjpqy<br>NOTE5R40W20_P087 Abcdefg gjpqy<br>NOTE5R40W20_P088 Abcdefg gjpqy<br>NOTE5R40W20_P089 Abcdefg gjpqy<br>NOTE5R40W20_P090 Abcdefg gjpqy<br>NOTE5R40W20_P091 Abcdefg gjpqy<br>NOTE5R40W20_P092 Abcdefg gjpqy<br>NOTE5R40W20_P093 Abcdefg gjpqy<br>NOTE5R40W20_P094 Abcdefg gjpqy<br>NOTE5R40W20_P095 Abcdefg gjpqy<br>NOTE5R40W20_P096 Abcdefg gjpqy<br>NOTE5R40W20_P097 Abcdefg gjpqy<br>NOTE5R40W20_P098 Abcdefg gjpqy<br>NOTE5R40W20_P099 Abcdefg gjpqy<br>NOTE5R40W20_P100 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE5R40W20_U01 Abcdefg gjpqy<br>NOTE5R40W20_U02 Abcdefg gjpqy<br>NOTE5R40W20_U03 Abcdefg gjpqy</p>",
+    "NOTE14R36W60": "<p data-thesis-style=\"fill\">NOTE14R36W60_F01 Abcdefg gjpqy<br>NOTE14R36W60_F02 Abcdefg gjpqy<br>NOTE14R36W60_F03 Abcdefg gjpqy<br>NOTE14R36W60_F04 Abcdefg gjpqy<br>NOTE14R36W60_F05 Abcdefg gjpqy<br>NOTE14R36W60_F06 Abcdefg gjpqy<br>NOTE14R36W60_F07 Abcdefg gjpqy<br>NOTE14R36W60_F08 Abcdefg gjpqy<br>NOTE14R36W60_F09 Abcdefg gjpqy<br>NOTE14R36W60_F10 Abcdefg gjpqy<br>NOTE14R36W60_F11 Abcdefg gjpqy<br>NOTE14R36W60_F12 Abcdefg gjpqy<br>NOTE14R36W60_F13 Abcdefg gjpqy<br>NOTE14R36W60_F14 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE14R36W60_P001 Abcdefg gjpqy<br>NOTE14R36W60_P002 Abcdefg gjpqy<br>NOTE14R36W60_P003 Abcdefg gjpqy<br>NOTE14R36W60_P004 Abcdefg gjpqy<br>NOTE14R36W60_P005 Abcdefg gjpqy<br>NOTE14R36W60_P006 Abcdefg gjpqy<br>NOTE14R36W60_P007 Abcdefg gjpqy<br>NOTE14R36W60_P008 Abcdefg gjpqy<br>NOTE14R36W60_P009 Abcdefg gjpqy<br>NOTE14R36W60_P010 Abcdefg gjpqy<br>NOTE14R36W60_P011 Abcdefg gjpqy<br>NOTE14R36W60_P012 Abcdefg gjpqy<br>NOTE14R36W60_P013 Abcdefg gjpqy<br>NOTE14R36W60_P014 Abcdefg gjpqy<br>NOTE14R36W60_P015 Abcdefg gjpqy<br>NOTE14R36W60_P016 Abcdefg gjpqy<br>NOTE14R36W60_P017 Abcdefg gjpqy<br>NOTE14R36W60_P018 Abcdefg gjpqy<br>NOTE14R36W60_P019 Abcdefg gjpqy<br>NOTE14R36W60_P020 Abcdefg gjpqy<br>NOTE14R36W60_P021 Abcdefg gjpqy<br>NOTE14R36W60_P022 Abcdefg gjpqy<br>NOTE14R36W60_P023 Abcdefg gjpqy<br>NOTE14R36W60_P024 Abcdefg gjpqy<br>NOTE14R36W60_P025 Abcdefg gjpqy<br>NOTE14R36W60_P026 Abcdefg gjpqy<br>NOTE14R36W60_P027 Abcdefg gjpqy<br>NOTE14R36W60_P028 Abcdefg gjpqy<br>NOTE14R36W60_P029 Abcdefg gjpqy<br>NOTE14R36W60_P030 Abcdefg gjpqy<br>NOTE14R36W60_P031 Abcdefg gjpqy<br>NOTE14R36W60_P032 Abcdefg gjpqy<br>NOTE14R36W60_P033 Abcdefg gjpqy<br>NOTE14R36W60_P034 Abcdefg gjpqy<br>NOTE14R36W60_P035 Abcdefg gjpqy<br>NOTE14R36W60_P036 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTE14R36W60\" data-fn-text=\"note1 note2 note3 note4 note5 note6 note7 note8 note9 note10 note11 note12 note13 note14 note15 note16 note17 note18 note19 note20 note21 note22 note23 note24 note25 note26 note27 note28 note29 note30 note31 note32 note33 note34 note35 note36 note37 note38 note39 note40 note41 note42 note43 note44 note45 note46 note47 note48 note49 note50 note51 note52 note53 note54 note55 note56 note57 note58 note59 note60\">1</sup><br>NOTE14R36W60_P037 Abcdefg gjpqy<br>NOTE14R36W60_P038 Abcdefg gjpqy<br>NOTE14R36W60_P039 Abcdefg gjpqy<br>NOTE14R36W60_P040 Abcdefg gjpqy<br>NOTE14R36W60_P041 Abcdefg gjpqy<br>NOTE14R36W60_P042 Abcdefg gjpqy<br>NOTE14R36W60_P043 Abcdefg gjpqy<br>NOTE14R36W60_P044 Abcdefg gjpqy<br>NOTE14R36W60_P045 Abcdefg gjpqy<br>NOTE14R36W60_P046 Abcdefg gjpqy<br>NOTE14R36W60_P047 Abcdefg gjpqy<br>NOTE14R36W60_P048 Abcdefg gjpqy<br>NOTE14R36W60_P049 Abcdefg gjpqy<br>NOTE14R36W60_P050 Abcdefg gjpqy<br>NOTE14R36W60_P051 Abcdefg gjpqy<br>NOTE14R36W60_P052 Abcdefg gjpqy<br>NOTE14R36W60_P053 Abcdefg gjpqy<br>NOTE14R36W60_P054 Abcdefg gjpqy<br>NOTE14R36W60_P055 Abcdefg gjpqy<br>NOTE14R36W60_P056 Abcdefg gjpqy<br>NOTE14R36W60_P057 Abcdefg gjpqy<br>NOTE14R36W60_P058 Abcdefg gjpqy<br>NOTE14R36W60_P059 Abcdefg gjpqy<br>NOTE14R36W60_P060 Abcdefg gjpqy<br>NOTE14R36W60_P061 Abcdefg gjpqy<br>NOTE14R36W60_P062 Abcdefg gjpqy<br>NOTE14R36W60_P063 Abcdefg gjpqy<br>NOTE14R36W60_P064 Abcdefg gjpqy<br>NOTE14R36W60_P065 Abcdefg gjpqy<br>NOTE14R36W60_P066 Abcdefg gjpqy<br>NOTE14R36W60_P067 Abcdefg gjpqy<br>NOTE14R36W60_P068 Abcdefg gjpqy<br>NOTE14R36W60_P069 Abcdefg gjpqy<br>NOTE14R36W60_P070 Abcdefg gjpqy<br>NOTE14R36W60_P071 Abcdefg gjpqy<br>NOTE14R36W60_P072 Abcdefg gjpqy<br>NOTE14R36W60_P073 Abcdefg gjpqy<br>NOTE14R36W60_P074 Abcdefg gjpqy<br>NOTE14R36W60_P075 Abcdefg gjpqy<br>NOTE14R36W60_P076 Abcdefg gjpqy<br>NOTE14R36W60_P077 Abcdefg gjpqy<br>NOTE14R36W60_P078 Abcdefg gjpqy<br>NOTE14R36W60_P079 Abcdefg gjpqy<br>NOTE14R36W60_P080 Abcdefg gjpqy<br>NOTE14R36W60_P081 Abcdefg gjpqy<br>NOTE14R36W60_P082 Abcdefg gjpqy<br>NOTE14R36W60_P083 Abcdefg gjpqy<br>NOTE14R36W60_P084 Abcdefg gjpqy<br>NOTE14R36W60_P085 Abcdefg gjpqy<br>NOTE14R36W60_P086 Abcdefg gjpqy<br>NOTE14R36W60_P087 Abcdefg gjpqy<br>NOTE14R36W60_P088 Abcdefg gjpqy<br>NOTE14R36W60_P089 Abcdefg gjpqy<br>NOTE14R36W60_P090 Abcdefg gjpqy<br>NOTE14R36W60_P091 Abcdefg gjpqy<br>NOTE14R36W60_P092 Abcdefg gjpqy<br>NOTE14R36W60_P093 Abcdefg gjpqy<br>NOTE14R36W60_P094 Abcdefg gjpqy<br>NOTE14R36W60_P095 Abcdefg gjpqy<br>NOTE14R36W60_P096 Abcdefg gjpqy<br>NOTE14R36W60_P097 Abcdefg gjpqy<br>NOTE14R36W60_P098 Abcdefg gjpqy<br>NOTE14R36W60_P099 Abcdefg gjpqy<br>NOTE14R36W60_P100 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE14R36W60_U01 Abcdefg gjpqy<br>NOTE14R36W60_U02 Abcdefg gjpqy<br>NOTE14R36W60_U03 Abcdefg gjpqy</p>",
+    "NOTE30R2W120": "<p data-thesis-style=\"fill\">NOTE30R2W120_F01 Abcdefg gjpqy<br>NOTE30R2W120_F02 Abcdefg gjpqy<br>NOTE30R2W120_F03 Abcdefg gjpqy<br>NOTE30R2W120_F04 Abcdefg gjpqy<br>NOTE30R2W120_F05 Abcdefg gjpqy<br>NOTE30R2W120_F06 Abcdefg gjpqy<br>NOTE30R2W120_F07 Abcdefg gjpqy<br>NOTE30R2W120_F08 Abcdefg gjpqy<br>NOTE30R2W120_F09 Abcdefg gjpqy<br>NOTE30R2W120_F10 Abcdefg gjpqy<br>NOTE30R2W120_F11 Abcdefg gjpqy<br>NOTE30R2W120_F12 Abcdefg gjpqy<br>NOTE30R2W120_F13 Abcdefg gjpqy<br>NOTE30R2W120_F14 Abcdefg gjpqy<br>NOTE30R2W120_F15 Abcdefg gjpqy<br>NOTE30R2W120_F16 Abcdefg gjpqy<br>NOTE30R2W120_F17 Abcdefg gjpqy<br>NOTE30R2W120_F18 Abcdefg gjpqy<br>NOTE30R2W120_F19 Abcdefg gjpqy<br>NOTE30R2W120_F20 Abcdefg gjpqy<br>NOTE30R2W120_F21 Abcdefg gjpqy<br>NOTE30R2W120_F22 Abcdefg gjpqy<br>NOTE30R2W120_F23 Abcdefg gjpqy<br>NOTE30R2W120_F24 Abcdefg gjpqy<br>NOTE30R2W120_F25 Abcdefg gjpqy<br>NOTE30R2W120_F26 Abcdefg gjpqy<br>NOTE30R2W120_F27 Abcdefg gjpqy<br>NOTE30R2W120_F28 Abcdefg gjpqy<br>NOTE30R2W120_F29 Abcdefg gjpqy<br>NOTE30R2W120_F30 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE30R2W120_P001 Abcdefg gjpqy<br>NOTE30R2W120_P002 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTE30R2W120\" data-fn-text=\"note1 note2 note3 note4 note5 note6 note7 note8 note9 note10 note11 note12 note13 note14 note15 note16 note17 note18 note19 note20 note21 note22 note23 note24 note25 note26 note27 note28 note29 note30 note31 note32 note33 note34 note35 note36 note37 note38 note39 note40 note41 note42 note43 note44 note45 note46 note47 note48 note49 note50 note51 note52 note53 note54 note55 note56 note57 note58 note59 note60 note61 note62 note63 note64 note65 note66 note67 note68 note69 note70 note71 note72 note73 note74 note75 note76 note77 note78 note79 note80 note81 note82 note83 note84 note85 note86 note87 note88 note89 note90 note91 note92 note93 note94 note95 note96 note97 note98 note99 note100 note101 note102 note103 note104 note105 note106 note107 note108 note109 note110 note111 note112 note113 note114 note115 note116 note117 note118 note119 note120\">1</sup><br>NOTE30R2W120_P003 Abcdefg gjpqy<br>NOTE30R2W120_P004 Abcdefg gjpqy<br>NOTE30R2W120_P005 Abcdefg gjpqy<br>NOTE30R2W120_P006 Abcdefg gjpqy<br>NOTE30R2W120_P007 Abcdefg gjpqy<br>NOTE30R2W120_P008 Abcdefg gjpqy<br>NOTE30R2W120_P009 Abcdefg gjpqy<br>NOTE30R2W120_P010 Abcdefg gjpqy<br>NOTE30R2W120_P011 Abcdefg gjpqy<br>NOTE30R2W120_P012 Abcdefg gjpqy<br>NOTE30R2W120_P013 Abcdefg gjpqy<br>NOTE30R2W120_P014 Abcdefg gjpqy<br>NOTE30R2W120_P015 Abcdefg gjpqy<br>NOTE30R2W120_P016 Abcdefg gjpqy<br>NOTE30R2W120_P017 Abcdefg gjpqy<br>NOTE30R2W120_P018 Abcdefg gjpqy<br>NOTE30R2W120_P019 Abcdefg gjpqy<br>NOTE30R2W120_P020 Abcdefg gjpqy<br>NOTE30R2W120_P021 Abcdefg gjpqy<br>NOTE30R2W120_P022 Abcdefg gjpqy<br>NOTE30R2W120_P023 Abcdefg gjpqy<br>NOTE30R2W120_P024 Abcdefg gjpqy<br>NOTE30R2W120_P025 Abcdefg gjpqy<br>NOTE30R2W120_P026 Abcdefg gjpqy<br>NOTE30R2W120_P027 Abcdefg gjpqy<br>NOTE30R2W120_P028 Abcdefg gjpqy<br>NOTE30R2W120_P029 Abcdefg gjpqy<br>NOTE30R2W120_P030 Abcdefg gjpqy<br>NOTE30R2W120_P031 Abcdefg gjpqy<br>NOTE30R2W120_P032 Abcdefg gjpqy<br>NOTE30R2W120_P033 Abcdefg gjpqy<br>NOTE30R2W120_P034 Abcdefg gjpqy<br>NOTE30R2W120_P035 Abcdefg gjpqy<br>NOTE30R2W120_P036 Abcdefg gjpqy<br>NOTE30R2W120_P037 Abcdefg gjpqy<br>NOTE30R2W120_P038 Abcdefg gjpqy<br>NOTE30R2W120_P039 Abcdefg gjpqy<br>NOTE30R2W120_P040 Abcdefg gjpqy<br>NOTE30R2W120_P041 Abcdefg gjpqy<br>NOTE30R2W120_P042 Abcdefg gjpqy<br>NOTE30R2W120_P043 Abcdefg gjpqy<br>NOTE30R2W120_P044 Abcdefg gjpqy<br>NOTE30R2W120_P045 Abcdefg gjpqy<br>NOTE30R2W120_P046 Abcdefg gjpqy<br>NOTE30R2W120_P047 Abcdefg gjpqy<br>NOTE30R2W120_P048 Abcdefg gjpqy<br>NOTE30R2W120_P049 Abcdefg gjpqy<br>NOTE30R2W120_P050 Abcdefg gjpqy<br>NOTE30R2W120_P051 Abcdefg gjpqy<br>NOTE30R2W120_P052 Abcdefg gjpqy<br>NOTE30R2W120_P053 Abcdefg gjpqy<br>NOTE30R2W120_P054 Abcdefg gjpqy<br>NOTE30R2W120_P055 Abcdefg gjpqy<br>NOTE30R2W120_P056 Abcdefg gjpqy<br>NOTE30R2W120_P057 Abcdefg gjpqy<br>NOTE30R2W120_P058 Abcdefg gjpqy<br>NOTE30R2W120_P059 Abcdefg gjpqy<br>NOTE30R2W120_P060 Abcdefg gjpqy<br>NOTE30R2W120_P061 Abcdefg gjpqy<br>NOTE30R2W120_P062 Abcdefg gjpqy<br>NOTE30R2W120_P063 Abcdefg gjpqy<br>NOTE30R2W120_P064 Abcdefg gjpqy<br>NOTE30R2W120_P065 Abcdefg gjpqy<br>NOTE30R2W120_P066 Abcdefg gjpqy<br>NOTE30R2W120_P067 Abcdefg gjpqy<br>NOTE30R2W120_P068 Abcdefg gjpqy<br>NOTE30R2W120_P069 Abcdefg gjpqy<br>NOTE30R2W120_P070 Abcdefg gjpqy<br>NOTE30R2W120_P071 Abcdefg gjpqy<br>NOTE30R2W120_P072 Abcdefg gjpqy<br>NOTE30R2W120_P073 Abcdefg gjpqy<br>NOTE30R2W120_P074 Abcdefg gjpqy<br>NOTE30R2W120_P075 Abcdefg gjpqy<br>NOTE30R2W120_P076 Abcdefg gjpqy<br>NOTE30R2W120_P077 Abcdefg gjpqy<br>NOTE30R2W120_P078 Abcdefg gjpqy<br>NOTE30R2W120_P079 Abcdefg gjpqy<br>NOTE30R2W120_P080 Abcdefg gjpqy<br>NOTE30R2W120_P081 Abcdefg gjpqy<br>NOTE30R2W120_P082 Abcdefg gjpqy<br>NOTE30R2W120_P083 Abcdefg gjpqy<br>NOTE30R2W120_P084 Abcdefg gjpqy<br>NOTE30R2W120_P085 Abcdefg gjpqy<br>NOTE30R2W120_P086 Abcdefg gjpqy<br>NOTE30R2W120_P087 Abcdefg gjpqy<br>NOTE30R2W120_P088 Abcdefg gjpqy<br>NOTE30R2W120_P089 Abcdefg gjpqy<br>NOTE30R2W120_P090 Abcdefg gjpqy<br>NOTE30R2W120_P091 Abcdefg gjpqy<br>NOTE30R2W120_P092 Abcdefg gjpqy<br>NOTE30R2W120_P093 Abcdefg gjpqy<br>NOTE30R2W120_P094 Abcdefg gjpqy<br>NOTE30R2W120_P095 Abcdefg gjpqy<br>NOTE30R2W120_P096 Abcdefg gjpqy<br>NOTE30R2W120_P097 Abcdefg gjpqy<br>NOTE30R2W120_P098 Abcdefg gjpqy<br>NOTE30R2W120_P099 Abcdefg gjpqy<br>NOTE30R2W120_P100 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTE30R2W120_U01 Abcdefg gjpqy<br>NOTE30R2W120_U02 Abcdefg gjpqy<br>NOTE30R2W120_U03 Abcdefg gjpqy</p>",
+    "NOTESGL10R3W20": "<p data-thesis-style=\"fill\">NOTESGL10R3W20_F01 Abcdefg gjpqy<br>NOTESGL10R3W20_F02 Abcdefg gjpqy<br>NOTESGL10R3W20_F03 Abcdefg gjpqy<br>NOTESGL10R3W20_F04 Abcdefg gjpqy<br>NOTESGL10R3W20_F05 Abcdefg gjpqy<br>NOTESGL10R3W20_F06 Abcdefg gjpqy<br>NOTESGL10R3W20_F07 Abcdefg gjpqy<br>NOTESGL10R3W20_F08 Abcdefg gjpqy<br>NOTESGL10R3W20_F09 Abcdefg gjpqy<br>NOTESGL10R3W20_F10 Abcdefg gjpqy</p><p data-thesis-style=\"single\">NOTESGL10R3W20_P001 Abcdefg gjpqy<br>NOTESGL10R3W20_P002 Abcdefg gjpqy<br>NOTESGL10R3W20_P003 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTESGL10R3W20\" data-fn-text=\"note1 note2 note3 note4 note5 note6 note7 note8 note9 note10 note11 note12 note13 note14 note15 note16 note17 note18 note19 note20\">1</sup><br>NOTESGL10R3W20_P004 Abcdefg gjpqy<br>NOTESGL10R3W20_P005 Abcdefg gjpqy<br>NOTESGL10R3W20_P006 Abcdefg gjpqy<br>NOTESGL10R3W20_P007 Abcdefg gjpqy<br>NOTESGL10R3W20_P008 Abcdefg gjpqy<br>NOTESGL10R3W20_P009 Abcdefg gjpqy<br>NOTESGL10R3W20_P010 Abcdefg gjpqy<br>NOTESGL10R3W20_P011 Abcdefg gjpqy<br>NOTESGL10R3W20_P012 Abcdefg gjpqy<br>NOTESGL10R3W20_P013 Abcdefg gjpqy<br>NOTESGL10R3W20_P014 Abcdefg gjpqy<br>NOTESGL10R3W20_P015 Abcdefg gjpqy<br>NOTESGL10R3W20_P016 Abcdefg gjpqy<br>NOTESGL10R3W20_P017 Abcdefg gjpqy<br>NOTESGL10R3W20_P018 Abcdefg gjpqy<br>NOTESGL10R3W20_P019 Abcdefg gjpqy<br>NOTESGL10R3W20_P020 Abcdefg gjpqy<br>NOTESGL10R3W20_P021 Abcdefg gjpqy<br>NOTESGL10R3W20_P022 Abcdefg gjpqy<br>NOTESGL10R3W20_P023 Abcdefg gjpqy<br>NOTESGL10R3W20_P024 Abcdefg gjpqy<br>NOTESGL10R3W20_P025 Abcdefg gjpqy<br>NOTESGL10R3W20_P026 Abcdefg gjpqy<br>NOTESGL10R3W20_P027 Abcdefg gjpqy<br>NOTESGL10R3W20_P028 Abcdefg gjpqy<br>NOTESGL10R3W20_P029 Abcdefg gjpqy<br>NOTESGL10R3W20_P030 Abcdefg gjpqy<br>NOTESGL10R3W20_P031 Abcdefg gjpqy<br>NOTESGL10R3W20_P032 Abcdefg gjpqy<br>NOTESGL10R3W20_P033 Abcdefg gjpqy<br>NOTESGL10R3W20_P034 Abcdefg gjpqy<br>NOTESGL10R3W20_P035 Abcdefg gjpqy<br>NOTESGL10R3W20_P036 Abcdefg gjpqy<br>NOTESGL10R3W20_P037 Abcdefg gjpqy<br>NOTESGL10R3W20_P038 Abcdefg gjpqy<br>NOTESGL10R3W20_P039 Abcdefg gjpqy<br>NOTESGL10R3W20_P040 Abcdefg gjpqy<br>NOTESGL10R3W20_P041 Abcdefg gjpqy<br>NOTESGL10R3W20_P042 Abcdefg gjpqy<br>NOTESGL10R3W20_P043 Abcdefg gjpqy<br>NOTESGL10R3W20_P044 Abcdefg gjpqy<br>NOTESGL10R3W20_P045 Abcdefg gjpqy<br>NOTESGL10R3W20_P046 Abcdefg gjpqy<br>NOTESGL10R3W20_P047 Abcdefg gjpqy<br>NOTESGL10R3W20_P048 Abcdefg gjpqy<br>NOTESGL10R3W20_P049 Abcdefg gjpqy<br>NOTESGL10R3W20_P050 Abcdefg gjpqy<br>NOTESGL10R3W20_P051 Abcdefg gjpqy<br>NOTESGL10R3W20_P052 Abcdefg gjpqy<br>NOTESGL10R3W20_P053 Abcdefg gjpqy<br>NOTESGL10R3W20_P054 Abcdefg gjpqy<br>NOTESGL10R3W20_P055 Abcdefg gjpqy<br>NOTESGL10R3W20_P056 Abcdefg gjpqy<br>NOTESGL10R3W20_P057 Abcdefg gjpqy<br>NOTESGL10R3W20_P058 Abcdefg gjpqy<br>NOTESGL10R3W20_P059 Abcdefg gjpqy<br>NOTESGL10R3W20_P060 Abcdefg gjpqy<br>NOTESGL10R3W20_P061 Abcdefg gjpqy<br>NOTESGL10R3W20_P062 Abcdefg gjpqy<br>NOTESGL10R3W20_P063 Abcdefg gjpqy<br>NOTESGL10R3W20_P064 Abcdefg gjpqy<br>NOTESGL10R3W20_P065 Abcdefg gjpqy<br>NOTESGL10R3W20_P066 Abcdefg gjpqy<br>NOTESGL10R3W20_P067 Abcdefg gjpqy<br>NOTESGL10R3W20_P068 Abcdefg gjpqy<br>NOTESGL10R3W20_P069 Abcdefg gjpqy<br>NOTESGL10R3W20_P070 Abcdefg gjpqy<br>NOTESGL10R3W20_P071 Abcdefg gjpqy<br>NOTESGL10R3W20_P072 Abcdefg gjpqy<br>NOTESGL10R3W20_P073 Abcdefg gjpqy<br>NOTESGL10R3W20_P074 Abcdefg gjpqy<br>NOTESGL10R3W20_P075 Abcdefg gjpqy<br>NOTESGL10R3W20_P076 Abcdefg gjpqy<br>NOTESGL10R3W20_P077 Abcdefg gjpqy<br>NOTESGL10R3W20_P078 Abcdefg gjpqy<br>NOTESGL10R3W20_P079 Abcdefg gjpqy<br>NOTESGL10R3W20_P080 Abcdefg gjpqy<br>NOTESGL10R3W20_P081 Abcdefg gjpqy<br>NOTESGL10R3W20_P082 Abcdefg gjpqy<br>NOTESGL10R3W20_P083 Abcdefg gjpqy<br>NOTESGL10R3W20_P084 Abcdefg gjpqy<br>NOTESGL10R3W20_P085 Abcdefg gjpqy<br>NOTESGL10R3W20_P086 Abcdefg gjpqy<br>NOTESGL10R3W20_P087 Abcdefg gjpqy<br>NOTESGL10R3W20_P088 Abcdefg gjpqy<br>NOTESGL10R3W20_P089 Abcdefg gjpqy<br>NOTESGL10R3W20_P090 Abcdefg gjpqy<br>NOTESGL10R3W20_P091 Abcdefg gjpqy<br>NOTESGL10R3W20_P092 Abcdefg gjpqy<br>NOTESGL10R3W20_P093 Abcdefg gjpqy<br>NOTESGL10R3W20_P094 Abcdefg gjpqy<br>NOTESGL10R3W20_P095 Abcdefg gjpqy<br>NOTESGL10R3W20_P096 Abcdefg gjpqy<br>NOTESGL10R3W20_P097 Abcdefg gjpqy<br>NOTESGL10R3W20_P098 Abcdefg gjpqy<br>NOTESGL10R3W20_P099 Abcdefg gjpqy<br>NOTESGL10R3W20_P100 Abcdefg gjpqy<br>NOTESGL10R3W20_P101 Abcdefg gjpqy<br>NOTESGL10R3W20_P102 Abcdefg gjpqy<br>NOTESGL10R3W20_P103 Abcdefg gjpqy<br>NOTESGL10R3W20_P104 Abcdefg gjpqy<br>NOTESGL10R3W20_P105 Abcdefg gjpqy<br>NOTESGL10R3W20_P106 Abcdefg gjpqy<br>NOTESGL10R3W20_P107 Abcdefg gjpqy<br>NOTESGL10R3W20_P108 Abcdefg gjpqy<br>NOTESGL10R3W20_P109 Abcdefg gjpqy<br>NOTESGL10R3W20_P110 Abcdefg gjpqy<br>NOTESGL10R3W20_P111 Abcdefg gjpqy<br>NOTESGL10R3W20_P112 Abcdefg gjpqy<br>NOTESGL10R3W20_P113 Abcdefg gjpqy<br>NOTESGL10R3W20_P114 Abcdefg gjpqy<br>NOTESGL10R3W20_P115 Abcdefg gjpqy<br>NOTESGL10R3W20_P116 Abcdefg gjpqy<br>NOTESGL10R3W20_P117 Abcdefg gjpqy<br>NOTESGL10R3W20_P118 Abcdefg gjpqy<br>NOTESGL10R3W20_P119 Abcdefg gjpqy<br>NOTESGL10R3W20_P120 Abcdefg gjpqy<br>NOTESGL10R3W20_P121 Abcdefg gjpqy<br>NOTESGL10R3W20_P122 Abcdefg gjpqy<br>NOTESGL10R3W20_P123 Abcdefg gjpqy<br>NOTESGL10R3W20_P124 Abcdefg gjpqy<br>NOTESGL10R3W20_P125 Abcdefg gjpqy<br>NOTESGL10R3W20_P126 Abcdefg gjpqy<br>NOTESGL10R3W20_P127 Abcdefg gjpqy<br>NOTESGL10R3W20_P128 Abcdefg gjpqy<br>NOTESGL10R3W20_P129 Abcdefg gjpqy<br>NOTESGL10R3W20_P130 Abcdefg gjpqy<br>NOTESGL10R3W20_P131 Abcdefg gjpqy<br>NOTESGL10R3W20_P132 Abcdefg gjpqy<br>NOTESGL10R3W20_P133 Abcdefg gjpqy<br>NOTESGL10R3W20_P134 Abcdefg gjpqy<br>NOTESGL10R3W20_P135 Abcdefg gjpqy<br>NOTESGL10R3W20_P136 Abcdefg gjpqy<br>NOTESGL10R3W20_P137 Abcdefg gjpqy<br>NOTESGL10R3W20_P138 Abcdefg gjpqy<br>NOTESGL10R3W20_P139 Abcdefg gjpqy<br>NOTESGL10R3W20_P140 Abcdefg gjpqy<br>NOTESGL10R3W20_P141 Abcdefg gjpqy<br>NOTESGL10R3W20_P142 Abcdefg gjpqy<br>NOTESGL10R3W20_P143 Abcdefg gjpqy<br>NOTESGL10R3W20_P144 Abcdefg gjpqy<br>NOTESGL10R3W20_P145 Abcdefg gjpqy<br>NOTESGL10R3W20_P146 Abcdefg gjpqy<br>NOTESGL10R3W20_P147 Abcdefg gjpqy<br>NOTESGL10R3W20_P148 Abcdefg gjpqy<br>NOTESGL10R3W20_P149 Abcdefg gjpqy<br>NOTESGL10R3W20_P150 Abcdefg gjpqy<br>NOTESGL10R3W20_P151 Abcdefg gjpqy<br>NOTESGL10R3W20_P152 Abcdefg gjpqy<br>NOTESGL10R3W20_P153 Abcdefg gjpqy<br>NOTESGL10R3W20_P154 Abcdefg gjpqy<br>NOTESGL10R3W20_P155 Abcdefg gjpqy<br>NOTESGL10R3W20_P156 Abcdefg gjpqy<br>NOTESGL10R3W20_P157 Abcdefg gjpqy<br>NOTESGL10R3W20_P158 Abcdefg gjpqy<br>NOTESGL10R3W20_P159 Abcdefg gjpqy<br>NOTESGL10R3W20_P160 Abcdefg gjpqy<br>NOTESGL10R3W20_P161 Abcdefg gjpqy<br>NOTESGL10R3W20_P162 Abcdefg gjpqy<br>NOTESGL10R3W20_P163 Abcdefg gjpqy<br>NOTESGL10R3W20_P164 Abcdefg gjpqy<br>NOTESGL10R3W20_P165 Abcdefg gjpqy<br>NOTESGL10R3W20_P166 Abcdefg gjpqy<br>NOTESGL10R3W20_P167 Abcdefg gjpqy<br>NOTESGL10R3W20_P168 Abcdefg gjpqy<br>NOTESGL10R3W20_P169 Abcdefg gjpqy<br>NOTESGL10R3W20_P170 Abcdefg gjpqy<br>NOTESGL10R3W20_P171 Abcdefg gjpqy<br>NOTESGL10R3W20_P172 Abcdefg gjpqy<br>NOTESGL10R3W20_P173 Abcdefg gjpqy<br>NOTESGL10R3W20_P174 Abcdefg gjpqy<br>NOTESGL10R3W20_P175 Abcdefg gjpqy<br>NOTESGL10R3W20_P176 Abcdefg gjpqy<br>NOTESGL10R3W20_P177 Abcdefg gjpqy<br>NOTESGL10R3W20_P178 Abcdefg gjpqy<br>NOTESGL10R3W20_P179 Abcdefg gjpqy<br>NOTESGL10R3W20_P180 Abcdefg gjpqy<br>NOTESGL10R3W20_P181 Abcdefg gjpqy<br>NOTESGL10R3W20_P182 Abcdefg gjpqy<br>NOTESGL10R3W20_P183 Abcdefg gjpqy<br>NOTESGL10R3W20_P184 Abcdefg gjpqy<br>NOTESGL10R3W20_P185 Abcdefg gjpqy<br>NOTESGL10R3W20_P186 Abcdefg gjpqy<br>NOTESGL10R3W20_P187 Abcdefg gjpqy<br>NOTESGL10R3W20_P188 Abcdefg gjpqy<br>NOTESGL10R3W20_P189 Abcdefg gjpqy<br>NOTESGL10R3W20_P190 Abcdefg gjpqy<br>NOTESGL10R3W20_P191 Abcdefg gjpqy<br>NOTESGL10R3W20_P192 Abcdefg gjpqy<br>NOTESGL10R3W20_P193 Abcdefg gjpqy<br>NOTESGL10R3W20_P194 Abcdefg gjpqy<br>NOTESGL10R3W20_P195 Abcdefg gjpqy<br>NOTESGL10R3W20_P196 Abcdefg gjpqy<br>NOTESGL10R3W20_P197 Abcdefg gjpqy<br>NOTESGL10R3W20_P198 Abcdefg gjpqy<br>NOTESGL10R3W20_P199 Abcdefg gjpqy<br>NOTESGL10R3W20_P200 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTESGL10R3W20_U01 Abcdefg gjpqy<br>NOTESGL10R3W20_U02 Abcdefg gjpqy<br>NOTESGL10R3W20_U03 Abcdefg gjpqy</p>",
+    "NOTESGL5R60W60": "<p data-thesis-style=\"fill\">NOTESGL5R60W60_F01 Abcdefg gjpqy<br>NOTESGL5R60W60_F02 Abcdefg gjpqy<br>NOTESGL5R60W60_F03 Abcdefg gjpqy<br>NOTESGL5R60W60_F04 Abcdefg gjpqy<br>NOTESGL5R60W60_F05 Abcdefg gjpqy</p><p data-thesis-style=\"single\">NOTESGL5R60W60_P001 Abcdefg gjpqy<br>NOTESGL5R60W60_P002 Abcdefg gjpqy<br>NOTESGL5R60W60_P003 Abcdefg gjpqy<br>NOTESGL5R60W60_P004 Abcdefg gjpqy<br>NOTESGL5R60W60_P005 Abcdefg gjpqy<br>NOTESGL5R60W60_P006 Abcdefg gjpqy<br>NOTESGL5R60W60_P007 Abcdefg gjpqy<br>NOTESGL5R60W60_P008 Abcdefg gjpqy<br>NOTESGL5R60W60_P009 Abcdefg gjpqy<br>NOTESGL5R60W60_P010 Abcdefg gjpqy<br>NOTESGL5R60W60_P011 Abcdefg gjpqy<br>NOTESGL5R60W60_P012 Abcdefg gjpqy<br>NOTESGL5R60W60_P013 Abcdefg gjpqy<br>NOTESGL5R60W60_P014 Abcdefg gjpqy<br>NOTESGL5R60W60_P015 Abcdefg gjpqy<br>NOTESGL5R60W60_P016 Abcdefg gjpqy<br>NOTESGL5R60W60_P017 Abcdefg gjpqy<br>NOTESGL5R60W60_P018 Abcdefg gjpqy<br>NOTESGL5R60W60_P019 Abcdefg gjpqy<br>NOTESGL5R60W60_P020 Abcdefg gjpqy<br>NOTESGL5R60W60_P021 Abcdefg gjpqy<br>NOTESGL5R60W60_P022 Abcdefg gjpqy<br>NOTESGL5R60W60_P023 Abcdefg gjpqy<br>NOTESGL5R60W60_P024 Abcdefg gjpqy<br>NOTESGL5R60W60_P025 Abcdefg gjpqy<br>NOTESGL5R60W60_P026 Abcdefg gjpqy<br>NOTESGL5R60W60_P027 Abcdefg gjpqy<br>NOTESGL5R60W60_P028 Abcdefg gjpqy<br>NOTESGL5R60W60_P029 Abcdefg gjpqy<br>NOTESGL5R60W60_P030 Abcdefg gjpqy<br>NOTESGL5R60W60_P031 Abcdefg gjpqy<br>NOTESGL5R60W60_P032 Abcdefg gjpqy<br>NOTESGL5R60W60_P033 Abcdefg gjpqy<br>NOTESGL5R60W60_P034 Abcdefg gjpqy<br>NOTESGL5R60W60_P035 Abcdefg gjpqy<br>NOTESGL5R60W60_P036 Abcdefg gjpqy<br>NOTESGL5R60W60_P037 Abcdefg gjpqy<br>NOTESGL5R60W60_P038 Abcdefg gjpqy<br>NOTESGL5R60W60_P039 Abcdefg gjpqy<br>NOTESGL5R60W60_P040 Abcdefg gjpqy<br>NOTESGL5R60W60_P041 Abcdefg gjpqy<br>NOTESGL5R60W60_P042 Abcdefg gjpqy<br>NOTESGL5R60W60_P043 Abcdefg gjpqy<br>NOTESGL5R60W60_P044 Abcdefg gjpqy<br>NOTESGL5R60W60_P045 Abcdefg gjpqy<br>NOTESGL5R60W60_P046 Abcdefg gjpqy<br>NOTESGL5R60W60_P047 Abcdefg gjpqy<br>NOTESGL5R60W60_P048 Abcdefg gjpqy<br>NOTESGL5R60W60_P049 Abcdefg gjpqy<br>NOTESGL5R60W60_P050 Abcdefg gjpqy<br>NOTESGL5R60W60_P051 Abcdefg gjpqy<br>NOTESGL5R60W60_P052 Abcdefg gjpqy<br>NOTESGL5R60W60_P053 Abcdefg gjpqy<br>NOTESGL5R60W60_P054 Abcdefg gjpqy<br>NOTESGL5R60W60_P055 Abcdefg gjpqy<br>NOTESGL5R60W60_P056 Abcdefg gjpqy<br>NOTESGL5R60W60_P057 Abcdefg gjpqy<br>NOTESGL5R60W60_P058 Abcdefg gjpqy<br>NOTESGL5R60W60_P059 Abcdefg gjpqy<br>NOTESGL5R60W60_P060 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTESGL5R60W60\" data-fn-text=\"note1 note2 note3 note4 note5 note6 note7 note8 note9 note10 note11 note12 note13 note14 note15 note16 note17 note18 note19 note20 note21 note22 note23 note24 note25 note26 note27 note28 note29 note30 note31 note32 note33 note34 note35 note36 note37 note38 note39 note40 note41 note42 note43 note44 note45 note46 note47 note48 note49 note50 note51 note52 note53 note54 note55 note56 note57 note58 note59 note60\">1</sup><br>NOTESGL5R60W60_P061 Abcdefg gjpqy<br>NOTESGL5R60W60_P062 Abcdefg gjpqy<br>NOTESGL5R60W60_P063 Abcdefg gjpqy<br>NOTESGL5R60W60_P064 Abcdefg gjpqy<br>NOTESGL5R60W60_P065 Abcdefg gjpqy<br>NOTESGL5R60W60_P066 Abcdefg gjpqy<br>NOTESGL5R60W60_P067 Abcdefg gjpqy<br>NOTESGL5R60W60_P068 Abcdefg gjpqy<br>NOTESGL5R60W60_P069 Abcdefg gjpqy<br>NOTESGL5R60W60_P070 Abcdefg gjpqy<br>NOTESGL5R60W60_P071 Abcdefg gjpqy<br>NOTESGL5R60W60_P072 Abcdefg gjpqy<br>NOTESGL5R60W60_P073 Abcdefg gjpqy<br>NOTESGL5R60W60_P074 Abcdefg gjpqy<br>NOTESGL5R60W60_P075 Abcdefg gjpqy<br>NOTESGL5R60W60_P076 Abcdefg gjpqy<br>NOTESGL5R60W60_P077 Abcdefg gjpqy<br>NOTESGL5R60W60_P078 Abcdefg gjpqy<br>NOTESGL5R60W60_P079 Abcdefg gjpqy<br>NOTESGL5R60W60_P080 Abcdefg gjpqy<br>NOTESGL5R60W60_P081 Abcdefg gjpqy<br>NOTESGL5R60W60_P082 Abcdefg gjpqy<br>NOTESGL5R60W60_P083 Abcdefg gjpqy<br>NOTESGL5R60W60_P084 Abcdefg gjpqy<br>NOTESGL5R60W60_P085 Abcdefg gjpqy<br>NOTESGL5R60W60_P086 Abcdefg gjpqy<br>NOTESGL5R60W60_P087 Abcdefg gjpqy<br>NOTESGL5R60W60_P088 Abcdefg gjpqy<br>NOTESGL5R60W60_P089 Abcdefg gjpqy<br>NOTESGL5R60W60_P090 Abcdefg gjpqy<br>NOTESGL5R60W60_P091 Abcdefg gjpqy<br>NOTESGL5R60W60_P092 Abcdefg gjpqy<br>NOTESGL5R60W60_P093 Abcdefg gjpqy<br>NOTESGL5R60W60_P094 Abcdefg gjpqy<br>NOTESGL5R60W60_P095 Abcdefg gjpqy<br>NOTESGL5R60W60_P096 Abcdefg gjpqy<br>NOTESGL5R60W60_P097 Abcdefg gjpqy<br>NOTESGL5R60W60_P098 Abcdefg gjpqy<br>NOTESGL5R60W60_P099 Abcdefg gjpqy<br>NOTESGL5R60W60_P100 Abcdefg gjpqy<br>NOTESGL5R60W60_P101 Abcdefg gjpqy<br>NOTESGL5R60W60_P102 Abcdefg gjpqy<br>NOTESGL5R60W60_P103 Abcdefg gjpqy<br>NOTESGL5R60W60_P104 Abcdefg gjpqy<br>NOTESGL5R60W60_P105 Abcdefg gjpqy<br>NOTESGL5R60W60_P106 Abcdefg gjpqy<br>NOTESGL5R60W60_P107 Abcdefg gjpqy<br>NOTESGL5R60W60_P108 Abcdefg gjpqy<br>NOTESGL5R60W60_P109 Abcdefg gjpqy<br>NOTESGL5R60W60_P110 Abcdefg gjpqy<br>NOTESGL5R60W60_P111 Abcdefg gjpqy<br>NOTESGL5R60W60_P112 Abcdefg gjpqy<br>NOTESGL5R60W60_P113 Abcdefg gjpqy<br>NOTESGL5R60W60_P114 Abcdefg gjpqy<br>NOTESGL5R60W60_P115 Abcdefg gjpqy<br>NOTESGL5R60W60_P116 Abcdefg gjpqy<br>NOTESGL5R60W60_P117 Abcdefg gjpqy<br>NOTESGL5R60W60_P118 Abcdefg gjpqy<br>NOTESGL5R60W60_P119 Abcdefg gjpqy<br>NOTESGL5R60W60_P120 Abcdefg gjpqy<br>NOTESGL5R60W60_P121 Abcdefg gjpqy<br>NOTESGL5R60W60_P122 Abcdefg gjpqy<br>NOTESGL5R60W60_P123 Abcdefg gjpqy<br>NOTESGL5R60W60_P124 Abcdefg gjpqy<br>NOTESGL5R60W60_P125 Abcdefg gjpqy<br>NOTESGL5R60W60_P126 Abcdefg gjpqy<br>NOTESGL5R60W60_P127 Abcdefg gjpqy<br>NOTESGL5R60W60_P128 Abcdefg gjpqy<br>NOTESGL5R60W60_P129 Abcdefg gjpqy<br>NOTESGL5R60W60_P130 Abcdefg gjpqy<br>NOTESGL5R60W60_P131 Abcdefg gjpqy<br>NOTESGL5R60W60_P132 Abcdefg gjpqy<br>NOTESGL5R60W60_P133 Abcdefg gjpqy<br>NOTESGL5R60W60_P134 Abcdefg gjpqy<br>NOTESGL5R60W60_P135 Abcdefg gjpqy<br>NOTESGL5R60W60_P136 Abcdefg gjpqy<br>NOTESGL5R60W60_P137 Abcdefg gjpqy<br>NOTESGL5R60W60_P138 Abcdefg gjpqy<br>NOTESGL5R60W60_P139 Abcdefg gjpqy<br>NOTESGL5R60W60_P140 Abcdefg gjpqy<br>NOTESGL5R60W60_P141 Abcdefg gjpqy<br>NOTESGL5R60W60_P142 Abcdefg gjpqy<br>NOTESGL5R60W60_P143 Abcdefg gjpqy<br>NOTESGL5R60W60_P144 Abcdefg gjpqy<br>NOTESGL5R60W60_P145 Abcdefg gjpqy<br>NOTESGL5R60W60_P146 Abcdefg gjpqy<br>NOTESGL5R60W60_P147 Abcdefg gjpqy<br>NOTESGL5R60W60_P148 Abcdefg gjpqy<br>NOTESGL5R60W60_P149 Abcdefg gjpqy<br>NOTESGL5R60W60_P150 Abcdefg gjpqy<br>NOTESGL5R60W60_P151 Abcdefg gjpqy<br>NOTESGL5R60W60_P152 Abcdefg gjpqy<br>NOTESGL5R60W60_P153 Abcdefg gjpqy<br>NOTESGL5R60W60_P154 Abcdefg gjpqy<br>NOTESGL5R60W60_P155 Abcdefg gjpqy<br>NOTESGL5R60W60_P156 Abcdefg gjpqy<br>NOTESGL5R60W60_P157 Abcdefg gjpqy<br>NOTESGL5R60W60_P158 Abcdefg gjpqy<br>NOTESGL5R60W60_P159 Abcdefg gjpqy<br>NOTESGL5R60W60_P160 Abcdefg gjpqy<br>NOTESGL5R60W60_P161 Abcdefg gjpqy<br>NOTESGL5R60W60_P162 Abcdefg gjpqy<br>NOTESGL5R60W60_P163 Abcdefg gjpqy<br>NOTESGL5R60W60_P164 Abcdefg gjpqy<br>NOTESGL5R60W60_P165 Abcdefg gjpqy<br>NOTESGL5R60W60_P166 Abcdefg gjpqy<br>NOTESGL5R60W60_P167 Abcdefg gjpqy<br>NOTESGL5R60W60_P168 Abcdefg gjpqy<br>NOTESGL5R60W60_P169 Abcdefg gjpqy<br>NOTESGL5R60W60_P170 Abcdefg gjpqy<br>NOTESGL5R60W60_P171 Abcdefg gjpqy<br>NOTESGL5R60W60_P172 Abcdefg gjpqy<br>NOTESGL5R60W60_P173 Abcdefg gjpqy<br>NOTESGL5R60W60_P174 Abcdefg gjpqy<br>NOTESGL5R60W60_P175 Abcdefg gjpqy<br>NOTESGL5R60W60_P176 Abcdefg gjpqy<br>NOTESGL5R60W60_P177 Abcdefg gjpqy<br>NOTESGL5R60W60_P178 Abcdefg gjpqy<br>NOTESGL5R60W60_P179 Abcdefg gjpqy<br>NOTESGL5R60W60_P180 Abcdefg gjpqy<br>NOTESGL5R60W60_P181 Abcdefg gjpqy<br>NOTESGL5R60W60_P182 Abcdefg gjpqy<br>NOTESGL5R60W60_P183 Abcdefg gjpqy<br>NOTESGL5R60W60_P184 Abcdefg gjpqy<br>NOTESGL5R60W60_P185 Abcdefg gjpqy<br>NOTESGL5R60W60_P186 Abcdefg gjpqy<br>NOTESGL5R60W60_P187 Abcdefg gjpqy<br>NOTESGL5R60W60_P188 Abcdefg gjpqy<br>NOTESGL5R60W60_P189 Abcdefg gjpqy<br>NOTESGL5R60W60_P190 Abcdefg gjpqy<br>NOTESGL5R60W60_P191 Abcdefg gjpqy<br>NOTESGL5R60W60_P192 Abcdefg gjpqy<br>NOTESGL5R60W60_P193 Abcdefg gjpqy<br>NOTESGL5R60W60_P194 Abcdefg gjpqy<br>NOTESGL5R60W60_P195 Abcdefg gjpqy<br>NOTESGL5R60W60_P196 Abcdefg gjpqy<br>NOTESGL5R60W60_P197 Abcdefg gjpqy<br>NOTESGL5R60W60_P198 Abcdefg gjpqy<br>NOTESGL5R60W60_P199 Abcdefg gjpqy<br>NOTESGL5R60W60_P200 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTESGL5R60W60_U01 Abcdefg gjpqy<br>NOTESGL5R60W60_U02 Abcdefg gjpqy<br>NOTESGL5R60W60_U03 Abcdefg gjpqy</p>",
+    "NOTEKEEP20R1W120": "<p data-thesis-style=\"fill\">NOTEKEEP20R1W120_F01 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F02 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F03 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F04 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F05 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F06 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F07 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F08 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F09 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F10 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F11 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F12 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F13 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F14 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F15 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F16 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F17 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F18 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F19 Abcdefg gjpqy<br>NOTEKEEP20R1W120_F20 Abcdefg gjpqy</p><p data-thesis-style=\"singleKeep\">NOTEKEEP20R1W120_P001 Abcdefg gjpqy<sup class=\"academic-footnote\" contenteditable=\"false\" data-fn-id=\"NOTEKEEP20R1W120\" data-fn-text=\"note1 note2 note3 note4 note5 note6 note7 note8 note9 note10 note11 note12 note13 note14 note15 note16 note17 note18 note19 note20 note21 note22 note23 note24 note25 note26 note27 note28 note29 note30 note31 note32 note33 note34 note35 note36 note37 note38 note39 note40 note41 note42 note43 note44 note45 note46 note47 note48 note49 note50 note51 note52 note53 note54 note55 note56 note57 note58 note59 note60 note61 note62 note63 note64 note65 note66 note67 note68 note69 note70 note71 note72 note73 note74 note75 note76 note77 note78 note79 note80 note81 note82 note83 note84 note85 note86 note87 note88 note89 note90 note91 note92 note93 note94 note95 note96 note97 note98 note99 note100 note101 note102 note103 note104 note105 note106 note107 note108 note109 note110 note111 note112 note113 note114 note115 note116 note117 note118 note119 note120\">1</sup><br>NOTEKEEP20R1W120_P002 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P003 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P004 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P005 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P006 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P007 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P008 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P009 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P010 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P011 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P012 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P013 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P014 Abcdefg gjpqy<br>NOTEKEEP20R1W120_P015 Abcdefg gjpqy</p><p data-thesis-style=\"fill\">NOTEKEEP20R1W120_U01 Abcdefg gjpqy<br>NOTEKEEP20R1W120_U02 Abcdefg gjpqy<br>NOTEKEEP20R1W120_U03 Abcdefg gjpqy</p>"
+   }
+  }
+ }
+}

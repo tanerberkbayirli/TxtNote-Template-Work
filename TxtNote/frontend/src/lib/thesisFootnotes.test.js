@@ -2,9 +2,9 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
 import generic from "../thesis/templates/generic.js";
-import { buildThesisCss, compileThesisDocument, groupThesisSections, thesisFootnoteCss, wordLastLineLeadingMm } from "../thesis/engine.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections, thesisFootnoteCss, wordLastLineLeadingMm, wordLastLineLeadings } from "../thesis/engine.js";
 import { buildThesisDocx } from "../thesis/export.js";
-import { resolveFootnoteRule } from "../thesis/footnotes.js";
+import { footnoteAreaCap, resolveFootnoteRule } from "../thesis/footnotes.js";
 import { flowPagePitchPx, pageMetrics, thesisPagedCss } from "../thesis/pageLayout.js";
 import { thesisSourceHtml } from "../thesis/sourceHtml.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
@@ -14,6 +14,12 @@ const template = () => structuredClone(generic);
 const mainOf = (model) => model.sections.find((section) => section.id === "main");
 
 describe("Task 10A.1 page-bottom footnotes (generic)", () => {
+  it("splits notes into the space after a kept reference paragraph before moving that paragraph", () => {
+    assert.equal(footnoteAreaCap(247, 50, [219]), 28, "kept block leaves less room than the configured maximum");
+    assert.equal(footnoteAreaCap(247, 50, [219, 225]), 22, "all kept references on the page must fit");
+    assert.equal(footnoteAreaCap(247, 50, [null, 0, 247, 300]), 123.5, "missing and oversized/fragmented block constraints do not change the default cap");
+    assert.equal(footnoteAreaCap(247, 50, [100]), 123.5, "the template maximum still limits notes");
+  });
   it("resolves engine defaults from the body font when a template is silent", () => {
     const rule = mainOf(compileThesisDocument(template(), {}, "Tez", "")).rules.footnotes;
     assert.equal(rule.placement, "pageBottom");
@@ -96,6 +102,53 @@ describe("Task 10A.1 page-bottom footnotes (generic)", () => {
     assert.match(JSON.stringify(validateThesisTemplate(t)), /lastLineFit/);
     const off = thesisPagedCss(groupThesisSections(compileThesisDocument(template(), {}, "Tez", "").sections));
     assert.doesNotMatch(off, /::after\{content:""/);
+  });
+
+  it("gives each paragraph style its own terminal leading (Word: auto multiples only) and guards the smaller ones", () => {
+    const body = { fontFamily: "Times New Roman", fontSizePt: 12, lineSpacing: { rule: "auto", value: 1.5 } };
+    const spacing = { rule: "auto", value: 1.5, baseline: "word" };
+    const styles = {
+      single: { lineSpacing: { rule: "auto", value: 1 } },
+      double: { lineSpacing: { rule: "auto", value: 2 } },
+      exact: { lineSpacing: { rule: "exact", value: 20 } },
+      atLeast: { lineSpacing: { rule: "atLeast", value: 20 } },
+    };
+    const leadings = wordLastLineLeadings(body, styles, spacing);
+    const single = 13.799 * 25.4 / 72 / 1; // TNR single line (mm); auto leading = (n - 1) x single
+    assert.ok(Math.abs(leadings.body - 0.5 * single) < 0.01);
+    assert.equal(leadings.styles.single, 0);
+    assert.ok(Math.abs(leadings.styles.double - single) < 0.01);
+    assert.equal(leadings.styles.exact, 0, "exact: no overhang in Word");
+    assert.equal(leadings.styles.atLeast, 0, "at least: no overhang in Word");
+    assert.equal(leadings.max, leadings.styles.double);
+
+    // Template-measured single-line metrics must use the same precedence as resolveLineSpacing.
+    const measured = wordLastLineLeadings(body, {
+      measuredSingle: { lineSpacing: { rule: "auto", value: 1, singleLineEm: 1.3 } },
+      measuredDouble: { lineSpacing: { rule: "auto", value: 2, singleLineEm: 1.3 } },
+    }, { ...spacing, singleLineEm: 1.15 });
+    assert.equal(measured.styles.measuredSingle, 0);
+    assert.ok(Math.abs(measured.styles.measuredDouble - 1.3 * 12 * 25.4 / 72) < 0.001);
+
+    const t = template();
+    t.page.lastLineFit = "word";
+    t.typography.lineSpacing = spacing;
+    t.typography.body = { ...t.typography.body, ...body };
+    t.typography.paragraphStyles = { single: styles.single };
+    const css = thesisPagedCss(groupThesisSections(compileThesisDocument(t, {}, "Tez", "").sections));
+    // Body body lead = column lead: only the single-spaced style is guarded, by the full allowance, on every fragment (clone).
+    assert.match(css, /p\[data-thesis-style="single"\][^{]*:not\(\[data-thesis-fn-stamp="reserve"\]\)\{box-decoration-break:clone;padding-bottom:[\d.]+mm\}/, "only reserve stamps replace native padding; break stamps retain their guard");
+    assert.doesNotMatch(css, /p\[data-thesis-style="single"\][^{]*:not\(\[data-thesis-fn-stamp\]\)/, "a break stamp must not leave the cancelling margin unbalanced");
+    assert.match(css, /p\[data-thesis-style="single"\][^{]*::after\{content:"";display:block;height:0;margin:0 0 -[\d.]+mm\}/);
+    assert.doesNotMatch(css, /p:not\(\[data-thesis-style\]\)[^{]*::after\{content:"";display:block;height:0/);
+    t.typography.paragraphStyles = { single: styles.single, double: styles.double };
+    const withDouble = thesisPagedCss(groupThesisSections(compileThesisDocument(t, {}, "Tez", "").sections));
+    assert.match(withDouble, /p:not\(\[data-thesis-style\]\)[^{]*::after\{content:"";display:block;height:0;margin:0 0 -[\d.]+mm\}/, "the body is guarded once a style has a larger lead");
+    assert.doesNotMatch(withDouble, /p\[data-thesis-style="double"\][^{]*::after\{content:"";display:block;height:0/);
+  });
+
+  it("strips the transient mirror-narrowing float from saved source", () => {
+    assert.equal(thesisSourceHtml('<p>a<span data-thesis-mirror-narrow="10" contenteditable="false" style="float:right"></span>b</p>'), "<p>ab</p>");
   });
 
   it("stamp rules live in the paged CSS and the flow pitch follows browser layout units", () => {

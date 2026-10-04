@@ -16,6 +16,7 @@
 import { createRequire } from "node:module";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import { paginationDiagnostics, blockGapDiagnostics } from "./export-diagnostics.mjs";
 
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "/opt/node22/lib/node_modules/playwright");
@@ -46,7 +47,11 @@ async function settle() {
     return ["true", "fallback"].includes(root?.getAttribute("data-thesis-pagination-ready"))
       || document.body.innerText.includes("Dizin sayfa eşlemesi tamamlanmadı")
       || document.body.innerText.includes("sayfalaması kararlı hale gelmedi");
-  }, undefined, { timeout: 120000 });
+  }, undefined, { timeout: 120000 }).catch(async (error) => {
+    // Diagnose the stall: is the frame loop alive, is the page visible, what do the pagination attributes say?
+    const info = await paginationDiagnostics(page);
+    throw new Error(`settle timeout (120 s): ${JSON.stringify(info)}; ${String(error.message).split(/\r?\n/)[0]}`);
+  });
   return page.evaluate(() => {
     const root = document.querySelector('[aria-label="Belge sayfaları"]');
     const pageMap = JSON.parse(root?.getAttribute("data-thesis-pagination-map") || "{}");
@@ -139,7 +144,8 @@ try {
   if (exportFingerprint(exportSnapshots[0]) !== exportFingerprint(exportSnapshots[1])) {
     throw new Error("PDF and Word exports were preceded by different page/index mappings; refusing to report them as a matched pair");
   }
-  await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, warn: state.warn,
+  const blockGaps = process.env.EXPORT_DEBUG_BLOCK_GAPS ? await blockGapDiagnostics(page, process.env.EXPORT_DEBUG_BLOCK_GAPS) : undefined;
+  await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, warn: state.warn, ...(blockGaps ? { blockGaps } : {}),
     engineLayout, pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
       targets: state.targets.map((target) => ({ target, label: state.pageMap[target]?.indexLabel ?? state.pageMap[target]?.label ?? "" })) }, exportSnapshots, errors }, null, 2));
   if (state.paginationReady !== "true") throw new Error(`paged export readiness unavailable: ${state.paginationReady}`);

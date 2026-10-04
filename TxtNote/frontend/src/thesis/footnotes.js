@@ -140,15 +140,24 @@ const UNSAFE_INSIDE = `${FOOTNOTE_REF_SELECTOR},.katex,[data-thesis-tab],[conten
 function placeSpacer(cut, owner, entry, ctx) {
   const { element } = cut;
   if (!(cut.pageEnd > cut.limit) || fragments(element, ctx).length < 3) return false;
-  const walker = element.ownerDocument.createTreeWalker(element, 4);
-  const nodes = [];
-  let total = 0;
-  for (let node = walker.nextNode(); node; node = walker.nextNode()) {
-    if (node.parentElement?.closest(NO_CUT) || !node.data.length) continue;
-    nodes.push({ node, start: total }); total += node.data.length;
-  }
-  if (!total) return false;
+  // Measure in the natural layout of this note page: this owner's padding (which would also shorten every earlier fragment of the block,
+  // so the line that leaves the note page would be found too early) is taken off while the cut is located, then restored on failure.
+  const ownAmount = entry.owners.get(owner);
+  entry.owners.delete(owner);
+  writeReserve(element, entry);
+  const restore = () => { if (ownAmount !== undefined) entry.owners.set(owner, ownAmount); writeReserve(element, entry); return false; };
   const range = element.ownerDocument.createRange();
+  let nodes = [], total = 0;
+  const collect = () => {
+    nodes = []; total = 0;
+    const walker = element.ownerDocument.createTreeWalker(element, 4);
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+      if (node.parentElement?.closest(NO_CUT) || !node.data.length) continue;
+      nodes.push({ node, start: total }); total += node.data.length;
+    }
+  };
+  collect();
+  if (!total) return restore();
   const locate = (index) => {
     let low = 0, high = nodes.length - 1;
     while (low < high) { const mid = (low + high + 1) >> 1; if (nodes[mid].start <= index) low = mid; else high = mid - 1; }
@@ -164,21 +173,48 @@ function placeSpacer(cut, owner, entry, ctx) {
     }
     return Infinity;
   };
-  // Padded layout: the characters of the first fragment sit above `limit`, those of the next fragment on a later page.
+  const insertSpacerAt = (index) => {
+    const at = locate(index);
+    // Before the spaces that end the previous line: a space between that line and the float would count into the line's width.
+    while (at.offset > 0 && /\s/.test(at.node.data[at.offset - 1])) at.offset -= 1;
+    range.setStart(at.node, at.offset); range.collapse(true);
+    let outer = null;
+    for (let node = at.node.parentElement; node && node !== element; node = node.parentElement) if (node.matches(UNSAFE_INSIDE)) outer = node;
+    if (outer) { range.setStartBefore(outer); range.collapse(true); }
+    const node = element.ownerDocument.createElement("span");
+    node.setAttribute(SPACER, "0"); node.setAttribute("contenteditable", "false");
+    range.insertNode(node);
+    return node;
+  };
+  // First character whose line starts below `limit` in the natural layout (first guess), then the exact line by line boxes.
+  const nextLineStart = (index) => {
+    const base = topAt(index);
+    let low = index + 1, high = total;
+    while (low < high) { const mid = (low + high) >> 1; if (topAt(mid) > base + 1) high = mid; else low = mid + 1; }
+    return low < total ? low : -1;
+  };
+  const pitch = parseFloat(getComputedStyle(element).lineHeight) || 0;
   let low = 0, high = total;
-  while (low < high) { const mid = (low + high) >> 1; if (topAt(mid) > cut.limit) high = mid; else low = mid + 1; }
-  if (low <= 0 || low >= total) return false;
-  const at = locate(low);
-  // Before the spaces that end the previous line: a space between that line and the float would count into the line's width.
-  while (at.offset > 0 && /\s/.test(at.node.data[at.offset - 1])) at.offset -= 1;
-  range.setStart(at.node, at.offset); range.collapse(true);
-  let outer = null;
-  for (let node = at.node.parentElement; node && node !== element; node = node.parentElement) if (node.matches(UNSAFE_INSIDE)) outer = node;
-  if (outer) { range.setStartBefore(outer); range.collapse(true); }
-  const spacer = element.ownerDocument.createElement("span");
-  spacer.setAttribute(SPACER, "0"); spacer.setAttribute("contenteditable", "false");
-  range.insertNode(spacer);
+  while (low < high) { const mid = (low + high) >> 1; if (topAt(mid) > cut.limit - 3 * pitch) high = mid; else low = mid + 1; }
+  if (low >= total) return restore();
+  // Line starts from the guess on: their glyph tops, the layout offset of the line box (a zero-height float sits at the top of the line
+  // it opens) and Word's rule that a line stays when its whole box (down to the next line's top) is above the limit.
+  const starts = [];
+  for (let index = low, count = 0; index >= 0 && count < 8; index = nextLineStart(index), count += 1) starts.push({ index, top: topAt(index) });
+  if (starts.length < 3) return restore();
+  // Line box top minus glyph top: constant for a uniform paragraph, read from the block's own first line (no DOM change).
+  const firstBox = fragments(element, ctx)[0];
+  const firstGlyph = topAt(0);
+  if (!firstBox || !Number.isFinite(firstGlyph)) return restore();
+  const offset = firstBox.top - firstGlyph;
+  let pick = starts.findIndex((line, i) => i + 1 < starts.length && starts[i + 1].top + offset > cut.limit + 0.5);
+  if (pick < 0) return restore();
+  // The block's own first line leaves the page (nothing of it stays: a break moves the whole block), or the guess is already past the cut.
+  if (pick === 0 && (starts[0].index === 0 || starts[0].top + offset > cut.limit + 0.5)) return restore();
+  low = starts[pick].index;
+  const spacer = insertSpacerAt(low);
   entry.spacers.set(owner, spacer);
+  if (ownAmount !== undefined) entry.owners.set(owner, ownAmount);
   writeReserve(element, entry);
   // A zero-height float sits at the top of the line it opens; its top is that line's top.
   const top = (spacer.getBoundingClientRect().top - ctx.top) / ctx.scale;
@@ -252,7 +288,17 @@ function readRefs(ctx) {
     const y = (rect.top - ctx.top) / ctx.scale;
     const page = pageIndexOf(y, ctx);
     const lineHeight = parseFloat(getComputedStyle(node.parentElement).lineHeight) || 24;
-    refs.push({ node, key: serialOf(node), page, lineHeight, offset: y - page * ctx.stride, label: node.getAttribute("data-fn-index") || node.textContent.trim(), text: node.getAttribute("data-fn-text") || "" });
+    let keepBottom = null;
+    const block = node.closest("p,h1,h2,h3,h4,h5,h6");
+    if (block && !block.closest("td,th,.academic-footnote-list")) {
+      const style = getComputedStyle(block), boxes = fragments(block, ctx);
+      if (/^avoid/.test(style.breakInside) && boxes.length === 1 && onPage(boxes[0], page, ctx)) {
+        // The Word baseline lift is paint-only. Native guard padding and its negative child margin cancel in the block height.
+        const paintShift = style.position === "relative" ? parseFloat(style.top) || 0 : 0;
+        keepBottom = boxes[0].bottom - paintShift - page * ctx.stride;
+      }
+    }
+    refs.push({ node, key: serialOf(node), page, lineHeight, keepBottom, offset: y - page * ctx.stride, mid: y + rect.height / 2 - page * ctx.stride, label: node.getAttribute("data-fn-index") || node.textContent.trim(), text: node.getAttribute("data-fn-text") || "" });
   }
   return refs;
 }
@@ -261,7 +307,8 @@ function readRefs(ctx) {
 const pageIndexOf = (y, ctx) => Math.max(0, Math.floor((y + ctx.rowGap / 2) / ctx.stride));
 const onPage = (fragment, index, ctx) => pageIndexOf(fragment.top, ctx) === index;
 
-const NO_CUT = "style,script,template,.thesis-footnote-tail,.academic-footnote-list,[data-export-ignore]";
+// br: a hard line break box is not a block to cut before (its rect reports the next line's start); the transient spacer is part of its block.
+const NO_CUT = "style,script,template,br,[data-thesis-fn-spacer],.thesis-footnote-tail,.academic-footnote-list,[data-export-ignore]";
 const REPLACED = /^(IMG|SVG|CANVAS|VIDEO|IFRAME|OBJECT)$/i;
 const blockDisplay = (display) => !/^(inline|contents|none)/.test(display) && display !== "ruby";
 
@@ -389,6 +436,15 @@ const noteSig = (notes) => JSON.stringify(notes.map((note) => [note.key, note.la
 const refSig = (refs) => JSON.stringify(refs.map((ref) => [ref.key, ref.label, ref.text]));
 const noteOf = (ref) => ({ key: ref.key, label: ref.label, text: ref.text });
 
+/** Word splits a note before moving a kept reference paragraph that otherwise fits on its page (engine-word-pagefit NOTEKEEP). */
+export function footnoteAreaCap(noteHeight, maxAreaPercent, keepBottoms = []) {
+  const available = keepBottoms.filter((bottom) => Number.isFinite(bottom) && bottom > 0 && bottom < noteHeight)
+    .map((bottom) => noteHeight - bottom);
+  return Math.min(noteHeight * maxAreaPercent / 100, ...available);
+}
+const referenceAreaCap = (ctx, index, refs) => footnoteAreaCap(ctx.noteHeight, ctx.rule.maxAreaPercent,
+  refs.filter((ref) => ref.page === index).map((ref) => ref.keepBottom));
+
 /**
  * Where the body before a pushed reference ends: the top of a reserved block, or the
  * bottom of the content before a forced break. If text above is added or deleted it
@@ -412,6 +468,7 @@ function pushAnchor(stamp, ctx) {
 function recordState(record, index, refs, carry, ctx) {
   if (!record || record.carrySig !== noteSig(carry)) return false;
   if (record.ownSig !== refSig(refs.filter((ref) => ref.page === index))) return false;
+  if (!Number.isFinite(record.cap) || Math.abs(record.cap - referenceAreaCap(ctx, index, refs)) > 0.5) return false;
   if (record.pushed) {
     const next = refs.find((ref) => ref.page > index);
     if (!next || next.key !== record.pushed.key || next.page !== index + 1 || Math.abs(next.offset - record.pushed.offset) > 1) return false;
@@ -445,7 +502,7 @@ function layoutPage(ctx, index, carry, previous) {
   releaseStamp(previous?.stamp, owner);
   const natural = readRefs(ctx);
   const onPage = natural.filter((ref) => ref.page === index);
-  const cap = ctx.noteHeight * ctx.rule.maxAreaPercent / 100;
+  const cap = referenceAreaCap(ctx, index, natural);
   let count = onPage.length;
   for (let guard = 0; guard <= onPage.length + 1; guard += 1) {
     const allocation = allocate(ctx, onPage.slice(0, count).map(noteOf), carry, cap);
@@ -454,9 +511,10 @@ function layoutPage(ctx, index, carry, previous) {
     let limit = allocation.items.length ? ctx.noteHeight - allocation.height : ctx.contentHeight;
     // Push the first reference without a note start to the next page, unless it is on the
     // page's first line (pushing it would empty the page and repeat there).
-    if (pushedRef && pushedRef.offset > pushedRef.lineHeight) limit = Math.min(limit, pushedRef.offset);
+    // The limit is the middle of the reference glyph, which lies inside its own line: the raised glyph's top can sit above the line box and would push the line above it too.
+    if (pushedRef && pushedRef.offset > pushedRef.lineHeight) limit = Math.min(limit, pushedRef.mid);
     const record = {
-      limit, ownSig: refSig(onPage), carrySig: noteSig(carry), items: allocation.items, pending: allocation.pending, height: allocation.height,
+      limit, cap, ownSig: refSig(onPage), carrySig: noteSig(carry), items: allocation.items, pending: allocation.pending, height: allocation.height,
       pushed: pushedRef ? { key: pushedRef.key, offset: 0 } : null, stamp: null,
     };
     if (limit < ctx.contentHeight - 0.5) {

@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import glob
+import hashlib
 import json
 import os
 import re
@@ -1204,7 +1205,20 @@ def cmd_run(a):
     results = [run_check(ctx, c) for c in checks]
     stamp = a.stamp or datetime.datetime.now().strftime("%Y%m%d-%H%M")
     os.makedirs(a.out, exist_ok=True)
-    jpath, counts, rows = write_report(a.target, results, a.out, stamp, {"variants": ctx["variants"], "wordRequested": a.word_requested, 'measurementSeconds': round(time.monotonic() - started, 3)})
+    fingerprints = {}
+    for variant, paths in ctx["variants"].items():
+        fingerprints[variant] = {}
+        for key in ('fixture', 'pdf', 'docx', 'layout', 'wordPdf', 'wordRefreshedPdf', 'wordFieldDump', 'wordRenderInfoPath'):
+            path = paths.get(key)
+            if path and os.path.isfile(path):
+                with open(path, 'rb') as artifact:
+                    fingerprints[variant][key] = hashlib.file_digest(artifact, 'sha256').hexdigest()
+    with open(a.checks, 'rb') as specification:
+        checks_hash = hashlib.file_digest(specification, 'sha256').hexdigest()
+    provenance = json.loads(os.environ.get('CHECK_SOURCE_PROVENANCE', '{}'))
+    jpath, counts, rows = write_report(a.target, results, a.out, stamp, {"variants": ctx["variants"], "wordRequested": a.word_requested,
+        'measurementSeconds': round(time.monotonic() - started, 3), 'sourceProvenance': provenance,
+        'checksSha256': checks_hash, 'artifactSha256': fingerprints})
     print(f"{a.target}: " + " ".join(f"{k}={v}" for k, v in sorted(counts.items())) + f"  -> {os.path.relpath(jpath)}")
     for r in rows:
         print(f"  {r['status']:7} {r['id']}: expected={fmt(r.get('expected'), 50)} actual={fmt(r.get('actual'), 50)} delta={fmt(r.get('delta', ''), 20)} {r.get('reason') or r.get('note') or ''}"[:260])

@@ -292,18 +292,22 @@ export function thesisSectionCss(section) {
   if (blockGapActive(section.rules)) {
     const descriptors = blockDescriptors(section.rules, text, plainFigure ? plainFigure.trim() : "figure");
     const eqKind = descriptors.find((d) => d.kind === "eq");
+    // Native tables from imported/source HTML share the wrapper's gap; nested tables must not get an additional inner margin.
+    const selectors = (descriptor) => descriptor.kind === "table" ? [descriptor.selector, "table:not(.academic-table-wrap table,table table)"] : [descriptor.selector];
     // Blocks own no editor margins of their own here: the table decides.
-    rules.push(`${scope} .thesis-body .academic-table-wrap{margin:0}${scope} .thesis-body .academic-table-wrap table{margin-bottom:0}${scope} .thesis-body :is(ul,ol):not(.thesis-bibliography,.thesis-toc){margin-top:0;margin-bottom:0}`);
+    rules.push(`${scope} .thesis-body .academic-table-wrap{margin:0}${scope} .thesis-body table{margin-bottom:0}${scope} .thesis-body :is(ul,ol):not(.thesis-bibliography,.thesis-toc){margin-top:0;margin-bottom:0}`);
     for (const prev of descriptors) {
       for (const next of descriptors) {
         const gap = gapBetween(section.rules, prev, next);
         if (gap === null) continue;
-        const pair = `${scope} .thesis-body ${prev.selector}+${next.selector}`;
-        if (next.kind !== "eq") { rules.push(`${pair}{margin-top:${gap}pt}`); continue; }
-        // Before an equation the caret pad (a line box between the two blocks) sits between the margins: subtract the previous
-        // block's own space-after and the pad; after an equation the equation's own negative margin already cancels the pad.
-        rules.push(`${pair}{margin-top:${gap}pt}`, `${pair}[data-thesis-eq-pad-before]{margin-top:calc(${round3(gap - prev.exit.cssAfter)}pt - attr(data-thesis-eq-pad-before px, 0px))}`);
-        if (prev.kind === "eq") rules.push(`${pair}[data-thesis-eq-pad-before]{margin-top:${gap}pt}`);
+        for (const previousSelector of selectors(prev)) for (const nextSelector of selectors(next)) {
+          const pair = `${scope} .thesis-body ${previousSelector}+${nextSelector}`;
+          if (next.kind !== "eq") { rules.push(`${pair}{margin-top:${gap}pt}`); continue; }
+          // Before an equation the caret pad (a line box between the two blocks) sits between the margins: subtract the previous
+          // block's own space-after and the pad; after an equation the equation's own negative margin already cancels the pad.
+          rules.push(`${pair}{margin-top:${gap}pt}`, `${pair}[data-thesis-eq-pad-before]{margin-top:calc(${round3(gap - prev.exit.cssAfter)}pt - attr(data-thesis-eq-pad-before px, 0px))}`);
+          if (prev.kind === "eq") rules.push(`${pair}[data-thesis-eq-pad-before]{margin-top:${gap}pt}`);
+        }
       }
     }
     void eqKind;

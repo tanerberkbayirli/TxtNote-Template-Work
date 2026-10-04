@@ -2,18 +2,46 @@
 # usage: powershell -File word2pdf.ps1 -In <docx> -Out <pdf> [-Refreshed <pdf>] [-FieldDump <json>]
 # -FieldDump: JSON {before, after} of every field (code, result) in body, headers and footers as Word loaded them and after the update.
 # -Refreshed: after the plain export, update every field (body, TOC, headers/footers) twice with repagination and export that to a second PDF.
-param([Parameter(Mandatory=$true)][string]$In, [Parameter(Mandatory=$true)][string]$Out, [string]$Refreshed = "", [string]$FieldDump = "")
+param([Parameter(Mandatory=$true)][string]$In, [Parameter(Mandatory=$true)][string]$Out, [string]$Refreshed = "", [string]$FieldDump = "", [string]$RenderInfo = "")
 $ErrorActionPreference = "Stop"
+Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public static class TxtEngineWordProcess {
+    [DllImport("user32.dll")]
+    public static extern uint GetWindowThreadProcessId(IntPtr handle, out uint processId);
+}
+'@
 $before = @(Get-Process WINWORD -ErrorAction SilentlyContinue | ForEach-Object { $_.Id })
 $w = $null
+$d = $null
+$probeDocument = $null
+$ownsWord = $false
 try {
   $w = New-Object -ComObject Word.Application
+  # Word exposes Hwnd on Window, not Application. Require a newly started process before
+  # adding the unsaved probe; its window exists inside the hidden automation application.
+  $newProcesses = @(Get-Process WINWORD -ErrorAction SilentlyContinue | Where-Object { $before -notcontains $_.Id })
+  if ($newProcesses.Count -ne 1) { throw "Cannot establish one newly started Word process." }
+  $probeDocument = $w.Documents.Add([Type]::Missing, $false, 0, $true)
+  [uint32]$wordProcessId = 0
+  [void][TxtEngineWordProcess]::GetWindowThreadProcessId([IntPtr]$probeDocument.Windows.Item(1).Hwnd, [ref]$wordProcessId)
+  if (!$wordProcessId -or $before -contains $wordProcessId) { throw "Cannot establish a new owned Word process; refusing to render in an existing instance." }
+  $ownsWord = $true
   $w.Visible = $false; $w.DisplayAlerts = 0
-  $after = @(Get-Process WINWORD -ErrorAction SilentlyContinue | ForEach-Object { $_.Id })
-  $own = @($after | Where-Object { $before -notcontains $_ })
-  Write-Output ("WORDPID:" + ($own -join ","))
+  Write-Output ("WORDPID:" + $wordProcessId)
   [Console]::Out.Flush()
+  $probeDocument.Close([ref]$false)
+  [void][System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($probeDocument)
+  $probeDocument = $null
   $d = $w.Documents.Open((Resolve-Path $In).Path, [ref]$false, [ref]$true)
+  # Complete pagination synchronously before exporting, including the plain cached-field render.
+  $d.Repaginate()
+  if ($RenderInfo) {
+    @{ pid = $wordProcessId; version = $w.Version; build = $w.Build; activePrinter = $w.ActivePrinter;
+       compatibilityMode = $d.CompatibilityMode; printBackground = $w.Options.PrintBackground;
+       renderedAt = [DateTime]::UtcNow.ToString("o") } | ConvertTo-Json | Set-Content -LiteralPath ([System.IO.Path]::GetFullPath($RenderInfo)) -Encoding UTF8
+  }
   $d.ExportAsFixedFormat([System.IO.Path]::GetFullPath($Out), 17)
   function Get-FieldRows($doc) {
     $rows = @()
@@ -45,8 +73,12 @@ try {
     if ($FieldDump) { @{ before = $before; after = (Get-FieldRows $d) } | ConvertTo-Json -Depth 5 | Set-Content -Path ([System.IO.Path]::GetFullPath($FieldDump)) -Encoding UTF8 }
     Write-Output "REFRESHED"
   }
-  $d.Close([ref]$false)
   Write-Output "OK"
 } finally {
-  if ($w) { try { $w.Quit() } catch {} }
+  if ($probeDocument) { try { $probeDocument.Close([ref]$false) } catch {} }
+  if ($d) { try { $d.Close([ref]$false) } catch {} }
+  if ($w -and $ownsWord) { try { $w.Quit() } catch {} }
+  if ($d) { [void][System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($d) }
+  if ($w) { [void][System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($w) }
+  if ($probeDocument) { [void][System.Runtime.InteropServices.Marshal]::FinalReleaseComObject($probeDocument) }
 }

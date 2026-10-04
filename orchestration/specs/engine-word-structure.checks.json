@@ -1063,20 +1063,6 @@
   "evidence": "MEASURED"
  },
  {
-  "id": "mirror-positive-first-line-even-width",
-  "kind": "note",
-  "params": {
-   "text": "MEASURED residual: mirror + positive first-line indent narrows Word even-page lines by the first-line indent (right limit = left + firstLine); engine keeps odd-page widths. Plain and hanging mirror indents match."
-  },
-  "expected": null,
-  "tolerance": 0.25,
-  "source": {
-   "file": "real Word render of engine-word-structure DOCX",
-   "locator": "probe: python-docx mirrorIndents left=6 right=3 first=8 (Word even-page max right 160.1 vs 172.9 plain)"
-  },
-  "evidence": "MEASURED"
- },
- {
   "id": "MIR_HANG-all-lines-left",
   "kind": "line_attr_match",
   "params": {
@@ -1167,16 +1153,61 @@
   "evidence": "MEASURED"
  },
  {
-  "id": "mirror-positive-first-line-even-width",
-  "kind": "note",
+  "id": "MIRF-all-lines-words",
+  "kind": "line_words_match",
   "params": {
-   "text": "MEASURED residual: mirror + positive first-line indent narrows Word even-page lines by the first-line indent (right limit = left + firstLine); engine keeps odd-page widths. Plain and hanging mirror indents match. Probe: python-docx mirrorIndents left=6 right=3 first=8, Word even-page max right 160.1 vs 172.9 plain."
+   "regex": "^MIRF_"
   },
-  "expected": null,
+  "expected": "equal word and leader extents in Word and PDF",
   "tolerance": 0.25,
   "source": {
    "file": "real Word render of engine-word-structure DOCX",
-   "locator": "probe: mirrorIndents left=6 right=3 first=8"
+   "locator": "MIRF-all-lines-words"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "MIRF-all-lines-baseline",
+  "kind": "line_attr_match",
+  "params": {
+   "regex": "^MIRF_",
+   "attr": "baseline"
+  },
+  "expected": "equal measured editor and Word geometry",
+  "tolerance": 0.25,
+  "source": {
+   "file": "real Word render of engine-word-structure DOCX",
+   "locator": "MIRF-all-lines-baseline"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "MIRF-all-lines-left",
+  "kind": "line_attr_match",
+  "params": {
+   "regex": "^MIRF_",
+   "attr": "x0"
+  },
+  "expected": "equal measured editor and Word geometry",
+  "tolerance": 0.25,
+  "source": {
+   "file": "real Word render of engine-word-structure DOCX",
+   "locator": "MIRF-all-lines-left"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "MIRF-all-lines-right",
+  "kind": "line_attr_match",
+  "params": {
+   "regex": "^MIRF_",
+   "attr": "x1"
+  },
+  "expected": "equal measured editor and Word geometry",
+  "tolerance": 0.25,
+  "source": {
+   "file": "real Word render of engine-word-structure DOCX",
+   "locator": "MIRF-all-lines-right"
   },
   "evidence": "MEASURED"
  },

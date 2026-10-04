@@ -204,6 +204,21 @@ export function thesisPagedCss(groups) {
       const fragment = `${FLOW} .thesis-flow-section[data-thesis-flow-section=${cssString(section.id)}] .thesis-body`;
       const flags = (style) => `${style.keepLines === undefined ? "" : `break-inside:${style.keepLines ? "avoid" : "auto"};`}${style.widowControl === undefined ? "" : `orphans:${style.widowControl ? 2 : 1};widows:${style.widowControl ? 2 : 1};`}${style.keepWithNext === undefined ? "" : `break-after:${style.keepWithNext ? "avoid" : "auto"};`}${style.pageBreakBefore ? "break-before:column;" : ""}`;
       rules.push(`${fragment} p{${flags(section.rules.body)}}`);
+      // Per-style terminal leading (engine.js wordLastLineLeadings, MEASURED vs Word): the column carries the largest allowance; a paragraph
+      // style whose own extra leading is smaller pads EVERY fragment's bottom (clone) by the difference, so each of its lines (not only the
+      // last) stops that much earlier. A cancelling negative-margin ::after keeps the paragraph's total height unchanged. Not applied to
+      // blocks with a reserve stamp: the note allocator captures and reapplies this padding itself. Break stamps only move the block and
+      // must retain its native guard padding as well as the cancelling margin.
+      const leadings = section.rules.lastLineLeadings;
+      if (lead > 0 && leadings) {
+        const nested = ":not(:is(td,th,figure,li,.academic-footnote-list) p)";
+        const guard = (selector, own) => {
+          const gap = Math.round((lead - own) * 1000) / 1000;
+          if (gap > 0) rules.push(`${fragment} ${selector}${nested}:not([data-thesis-fn-stamp="reserve"]){box-decoration-break:clone;padding-bottom:${gap}mm}`, `${fragment} ${selector}${nested}::after{content:"";display:block;height:0;margin:0 0 -${gap}mm}`);
+        };
+        guard("p:not([data-thesis-style])", leadings.body);
+        for (const [id, own] of Object.entries(leadings.styles || {})) guard(`p[data-thesis-style=${cssString(id)}]`, own);
+      }
       for (const [id, style] of Object.entries(section.rules.paragraphStyles || {})) rules.push(`${fragment} p[data-thesis-style=${cssString(id)}]{${flags({ ...section.rules.body, ...style })}}`);
       for (const [level, style] of Object.entries(section.rules.headings)) rules.push(`${fragment} h${level}{${flags(style)}}`);
       if (section.rules.tables.cantSplit !== undefined) rules.push(`${fragment} tr{break-inside:${section.rules.tables.cantSplit ? "avoid" : "auto"}}`);

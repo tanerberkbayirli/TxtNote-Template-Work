@@ -237,7 +237,9 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   useLayoutEffect(() => {
     const root = papersRef.current;
     if (!paginationActive || !root) return undefined;
-    let frame = 0, iterations = 0, previous = "", disposed = false, settled = false, failed = false, confirming = false;
+    let frame = 0, iterations = 0, previous = "", disposed = false, settled = false, failed = false, confirming = false, confirmFailures = 0;
+    // Consecutive rejected confirmations (the committed state or a fresh measurement differs from the settled one) without any change of the settled signature: bounded, so a measurement that never repeats ends with the visible warning instead of an endless frame loop.
+    const CONFIRM_FAILURE_CAP = 300;
     // Last serialized values applied to state; avoids re-stringifying the current state each pass.
     let appliedPages = null, appliedNotes = null;
     const measure = () => {
@@ -302,8 +304,16 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           if (disposed || generation !== paginationEpochRef.current) return;
           if (ready) {
             settled = true;
+            confirmFailures = 0;
             paginationReadyEpochRef.current = generation;
             setPaginationReady(true);
+            return;
+          }
+          if (++confirmFailures > CONFIRM_FAILURE_CAP) {
+            failed = true;
+            paginationReadyEpochRef.current = -1;
+            setPaginationReady(false);
+            setIndexWarning("Dizin/dipnot sayfalaması kararlı hale gelmedi (ölçüm doğrulanamadı); dışa aktarma engellendi. İçeriği gözden geçirip yeniden deneyin.");
             return;
           }
           frame = requestAnimationFrame(probe);
@@ -318,6 +328,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         return;
       }
       previous = signature;
+      confirmFailures = 0;
       if (pagesText !== appliedPages) { appliedPages = pagesText; setIndexResolution(next); }
       applyNotes();
       frame = requestAnimationFrame(probe);
@@ -330,7 +341,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         setPaginationReady(false);
       }
       if (settled || failed || resetBudget) {
-        iterations = 0; previous = ""; settled = false; failed = false; confirming = false;
+        iterations = 0; previous = ""; settled = false; failed = false; confirming = false; confirmFailures = 0;
         appliedPages = null; appliedNotes = null;
       } else if (invalidate) confirming = false;
       setIndexWarning("");

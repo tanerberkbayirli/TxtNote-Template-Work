@@ -217,6 +217,8 @@ describe("aku-fbe validation attempt 1 fixes", () => {
     const css = buildThesisCss(compile());
     assert.match(css, /\.thesis-body p\[data-thesis-style="tableNote"\]\+h2\{margin-top:28\.0\d+pt\}/);
     assert.match(css, /\.academic-table-wrap\+p\[data-thesis-style="tableNote"\]\{margin-top:6pt\}/);
+    assert.match(css, /table:not\(\.academic-table-wrap table,table table\)\+p\[data-thesis-style="tableNote"\]\{margin-top:6pt\}/, "native source tables receive the same evidenced note gap as wrapped tables without an inner-table gap");
+    assert.match(css, /\.thesis-body table\{margin-bottom:0\}/, "the editor's default table margin must not override the shared block gap");
     assert.doesNotMatch(css, /tableNote"\]\+h1\{/);
     const model = compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1>${table3}${note}<h2>Sonra</h2><p>x</p>`);
     const xml = await docxXml(model);

@@ -8,6 +8,7 @@ import { spawnSync, spawn } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync, appendFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
@@ -52,6 +53,13 @@ const logFile = join(runDir, "check.log");
 mkdirSync(runDir, { recursive: true });
 const log = (s) => appendFileSync(logFile, s + "\n");
 const env = { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" };
+const revision = spawnSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" });
+const codeDiff = spawnSync("git", ["diff", "HEAD", "--", "TxtNote/frontend/src", "orchestration/tools", "orchestration/specs"], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+if (revision.status !== 0 || codeDiff.status !== 0) throw new Error("Cannot record validation source revision");
+env.CHECK_SOURCE_PROVENANCE = JSON.stringify({ revision: revision.stdout.trim(),
+  trackedDiffSha256: createHash("sha256").update(codeDiff.stdout).digest("hex"),
+  diagnosticsSha256: createHash("sha256").update(readFileSync(join(here, "export-diagnostics.mjs"))).digest("hex"),
+  startedAt: new Date().toISOString() });
 const bundledPython = process.env.USERPROFILE && join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe');
 const python = process.env.CHECK_PYTHON || (bundledPython && existsSync(bundledPython) ? bundledPython : 'python');
 
@@ -64,7 +72,7 @@ function py(argv) {
 // ---------------------------------------------------------------- Word (own instance, PID recorded, timeout)
 async function wordToPdf(docx, pdf, refreshed, fieldDump, timeoutMs = Number(process.env.CHECK_WORD_TIMEOUT_MS) || 120000) {
   return new Promise((res) => {
-    const ps = spawn("powershell", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", join(here, "word2pdf.ps1"), "-In", docx, "-Out", pdf, ...(refreshed ? ["-Refreshed", refreshed] : []), ...(fieldDump ? ["-FieldDump", fieldDump] : [])], { cwd: root });
+    const ps = spawn("powershell", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", join(here, "word2pdf.ps1"), "-In", docx, "-Out", pdf, "-RenderInfo", pdf.replace(/\.pdf$/, ".render.json"), ...(refreshed ? ["-Refreshed", refreshed] : []), ...(fieldDump ? ["-FieldDump", fieldDump] : [])], { cwd: root });
     let out = "", pid = null, done = false;
     const finish = (r) => { if (!done) { done = true; clearTimeout(timer); res(r); } };
     ps.stdout.on("data", (d) => { out += d; const m = out.match(/WORDPID:(\d+)/); if (m) pid = m[1]; });
@@ -141,12 +149,13 @@ function fixtureFor(variant) {
 const chrome = process.env.THESIS_BROWSER_EXECUTABLE || ["C:/Program Files/Google/Chrome/Application/chrome.exe", "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"].find(existsSync);
 const exportEnv = { ...env, PLAYWRIGHT_MODULE: process.env.PLAYWRIGHT_MODULE || join(here, "node_modules/playwright"), ...(chrome ? { THESIS_BROWSER_EXECUTABLE: chrome } : {}) };
 
-const TRANSIENT_EXPORT = /Failed to fetch dynamically imported module|EBUSY|Target page, context or browser has been closed/;
+// settle timeout / unstable pagination: seen once in a while under load (aku-sbe during --all), never reproducible alone; one retry is logged, a deterministic failure fails twice.
+const TRANSIENT_EXPORT = /Failed to fetch dynamically imported module|EBUSY|Target page, context or browser has been closed|settle timeout|sayfalaması kararlı hale gelmedi|editor pagination is not exportable/;
 const vmap = {};
 let base = null;
 for (const v of variants) {
   const prefix = join(runDir, v);
-  vmap[v] = { pdf: `${prefix}.pdf`, docx: `${prefix}.docx`, layout: `${prefix}.layout.json` };
+  vmap[v] = { pdf: `${prefix}.pdf`, docx: `${prefix}.docx`, layout: `${prefix}.layout.json`, fixture: fixtureFor(v) };
   if (opt.noExport && v === "default") {
     vmap[v] = { pdf: resolve(root, opt.noExport[0]), docx: resolve(root, opt.noExport[1]), layout: resolve(root, opt.noExport[0]).replace(/\.pdf$/, '.layout.json') };
     continue;
@@ -156,7 +165,8 @@ for (const v of variants) {
   const runExport = () => spawnSync("node", [join(here, "export.mjs"), fixtureFor(v), prefix, base], { encoding: "utf8", env: exportEnv, cwd: root, timeout: 900000 });
   let r = runExport();
   log(`export ${v}: status ${r.status}\n${(r.stdout || "").slice(-600)}\n${(r.stderr || "").slice(-1500)}`);
-  // One retry only for infrastructure noise (cold Vite module graph, locked download file, crashed browser), never for editor/engine refusals.
+  // One retry for transient infrastructure or settling failures. A repeated editor refusal
+  // remains an export error; checker FAIL rows are never retried or suppressed.
   if (r.status !== 0 && TRANSIENT_EXPORT.test(r.stderr || "")) {
     log(`export ${v}: transient failure, retrying once`);
     r = runExport();
@@ -176,7 +186,16 @@ for (const v of variants) {
   const fd = rp ? wp.replace(/\.word\.pdf$/, ".word-fields.json") : null;
   const r = await wordToPdf(vmap[v].docx, wp, rp, fd);
   log(`word ${v}: ${JSON.stringify(r)}`);
-  if (r.ok) { vmap[v].wordPdf = wp; if (rp && existsSync(rp)) { vmap[v].wordRefreshedPdf = rp; if (fd && existsSync(fd)) vmap[v].wordFieldDump = fd; } else if (rp) vmap[v].wordRefreshNote = "Word field-refresh export missing"; } else vmap[v].wordNote = r.reason;
+  if (r.ok) {
+    vmap[v].wordPdf = wp;
+    const renderInfo = wp.replace(/\.pdf$/, ".render.json");
+    if (existsSync(renderInfo)) {
+      vmap[v].wordRenderInfoPath = renderInfo;
+      vmap[v].wordRenderInfo = JSON.parse(readFileSync(renderInfo, "utf8").replace(/^\uFEFF/, ""));
+    }
+    if (rp && existsSync(rp)) { vmap[v].wordRefreshedPdf = rp; if (fd && existsSync(fd)) vmap[v].wordFieldDump = fd; }
+    else if (rp) vmap[v].wordRefreshNote = "Word field-refresh export missing";
+  } else vmap[v].wordNote = r.reason;
 }
 
 // ---------------------------------------------------------------- evaluate

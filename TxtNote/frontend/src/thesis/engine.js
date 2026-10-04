@@ -107,10 +107,26 @@ export function wordLastLineLeadingMm(body, spacing) {
   const fontPt = body?.fontSizePt || 12;
   const family = String(body?.fontFamily || "").split(",")[0].replace(/["']/g, "").trim().toLowerCase();
   const metrics = WORD_FONT_METRICS[family];
-  const single = spacing?.singleLineEm ?? (metrics ? metrics.ascent + metrics.descent + metrics.lineGap : null);
+  const single = body?.lineSpacing?.singleLineEm ?? spacing?.singleLineEm ?? (metrics ? metrics.ascent + metrics.descent + metrics.lineGap : null);
   if (!(single > 0)) return 0;
-  const pitchPt = resolveLineSpacing(body, spacing)?.pitchPt || 0;
+  const resolved = resolveLineSpacing(body, spacing);
+  // Exact and at-least line heights: Word accepts no overhang at all (MEASURED, engine-word-pagefit EXC/EXB/ALM rows); only the extra
+  // leading of auto multiples (n lines) is terminal leading.
+  if (resolved?.rule === "exact" || resolved?.rule === "atLeast") return 0;
+  const pitchPt = resolved?.pitchPt || 0;
   return Math.max(0, Math.round((pitchPt - single * fontPt) * 25.4 / 72 * 1000) / 1000);
+}
+
+/**
+ * Own terminal leading of every paragraph style (MEASURED vs Word, engine-word-pagefit): Word grants a line only its own extra leading
+ * (single-spaced = 0, double = one single line, exact and atLeast = 0), so the flow column gets the largest allowance and each
+ * style with a smaller one is guarded in `thesisPagedCss`. `max` is the column allowance.
+ */
+export function wordLastLineLeadings(body, paragraphStyles, spacing) {
+  const own = wordLastLineLeadingMm(body, spacing);
+  const styles = {};
+  for (const [id, style] of Object.entries(paragraphStyles || {})) styles[id] = wordLastLineLeadingMm({ ...body, ...style }, spacing);
+  return { body: own, styles, max: Math.max(own, ...Object.values(styles)) };
 }
 
 export function resolveSectionRules(template, section) {
@@ -126,11 +142,14 @@ export function resolveSectionRules(template, section) {
   const spacingModel = template.typography.lineSpacing;
   // Default: on under the Word line-spacing model (Word applies the rule to every document); "off" opts out.
   const lastLineFit = override.page?.lastLineFit ?? template.page.lastLineFit ?? (spacingModel?.mode === "word" || spacingModel?.rule ? "word" : "off");
+  const lastLineLeadings = lastLineFit === "word" && !isSpecialPageSection(section) && section.group !== "cover"
+    ? wordLastLineLeadings(body, template.typography.paragraphStyles, template.typography.lineSpacing) : null;
   return {
+    ...(lastLineLeadings ? { lastLineLeadings } : {}),
     page: {
       ...template.page,
       ...override.page,
-      ...(lastLineFit === "word" && !isSpecialPageSection(section) && section.group !== "cover" ? { lastLineLeadingMm: wordLastLineLeadingMm(body, template.typography.lineSpacing) } : {}),
+      ...(lastLineLeadings ? { lastLineLeadingMm: lastLineLeadings.max } : {}),
       margins: { ...template.page.margins, ...override.page?.margins },
       numbering: { ...template.page.numbering, ...override.page?.numbering },
       header: chromePart("header"),

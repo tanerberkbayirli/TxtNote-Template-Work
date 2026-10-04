@@ -11,6 +11,7 @@ export function thesisSourceHtml(html) {
     .replace(/<span\b[^>]*\sdata-thesis-lower=["'][^"']*["'][^>]*>([^<]*)<\/span>/gi, "$1")
     .replace(/<tr\b[^>]*\sdata-thesis-cont=["'][^"']*["'][^>]*>[\s\S]*?<\/tr>/gi, "")
     .replace(/<span\b[^>]*\sdata-thesis-fn-spacer(?:=["'][^"']*["'])?[^>]*><\/span>/gi, "")
+    .replace(/<span\b[^>]*\sdata-thesis-mirror-narrow(?:=["'][^"']*["'])?[^>]*><\/span>/gi, "")
     .replace(/<span\b[^>]*\sdata-thesis-eq-probe(?:=["'][^"']*["'])?[^>]*><\/span>/gi, "")
     .replace(/\sdata-thesis-(?:number|anchor|caption|caption-auto|caption-hang|eq|eq-side|eq-pad-before|eq-pad-after|eq-lift|eq-drop|eq-base|eq-fit|fn-stamp|fn-reserve|fn-margin|mirror-object|mirror-heading)=["'][^"']*["']/gi, "");
 }

@@ -100,8 +100,7 @@ for (const verticalAlign of ['center', 'bottom']) {
 // Mirror indents with a hanging indent over several paragraphs: every line's left and right edge, odd and even pages.
 // Word quirk (MEASURED, probe docs: ind left/right + mirrorIndents, TNR 12): with a POSITIVE first-line indent F the even-page right limit shrinks
 // to left+F (first-line start of the odd page), so Word re-wraps even pages narrower by F; the engine only shifts glyph spans (width preserving).
-// Positive first-line + mirror is therefore not covered by an all-lines check; hanging and plain mirror indents are.
-checks.push({ id: 'mirror-positive-first-line-even-width', kind: 'note', params: { text: 'MEASURED residual: mirror + positive first-line indent narrows Word even-page lines by the first-line indent (right limit = left + firstLine); engine keeps odd-page widths. Plain and hanging mirror indents match.' }, expected: null, tolerance: .25, source: source('probe: python-docx mirrorIndents left=6 right=3 first=8 (Word even-page max right 160.1 vs 172.9 plain)'), evidence: 'MEASURED' });
+// The engine models this with a transient right float of width F on every even-page fragment (paragraphMirror.js narrowEvenPages); MIRF rows below compare every wrapped line.
 // Explicit line breaks keep every line well inside the measure (no wrap-boundary dependence): x0 shows first/continuation edges, right-aligned copies show the right limit.
 const mirrorParagraphs = (code, count, align = '') => Array.from({ length: count }, (_, i) => `<p${align}>${[0, 1, 2].map((k) => `${code}_${String(i + 1).padStart(2, '0')}_${k} line text`).join('<br>')}</p>`).join('');
 add('MIR_HANG', mirrorParagraphs('MIR_HANG', 60, ' data-thesis-style="noWidow"'), { body: { indent: { hangingMm: 8, leftMm: 14, rightMm: 2, mirror: true } } });
@@ -112,7 +111,17 @@ for (const code of ['MIR_HANG', 'MIR_RIGHT']) {
   match(`${code}-all-lines-right`, rx, 'x1');
   match(`${code}-all-lines-baseline`, rx);
 }
-checks.push({ id: 'mirror-positive-first-line-even-width', kind: 'note', params: { text: 'MEASURED residual: mirror + positive first-line indent narrows Word even-page lines by the first-line indent (right limit = left + firstLine); engine keeps odd-page widths. Plain and hanging mirror indents match. Probe: python-docx mirrorIndents left=6 right=3 first=8, Word even-page max right 160.1 vs 172.9 plain.' }, expected: null, tolerance: .25, source: source('probe: mirrorIndents left=6 right=3 first=8'), evidence: 'MEASURED' });
+
+
+// (Token digits avoid the TNR '11' kerning pair, which Chrome applies and Word does not: unrelated to mirror indents.)
+// Positive first-line indent with mirror indents: wrapped paragraphs (no hard breaks) over odd and even pages; every line's word extents must equal Word's,
+// so the even-page wraps (narrowed by the first-line indent) are compared, not only the edges.
+const mirfText = (code, tokens) => `<p>${Array.from({ length: tokens }, (_, i) => `MIRF_${code}${(i + 1).toString(8).padStart(3, '0').replace(/[01]/g, (d) => (d === '0' ? '8' : '9'))}`).join(' ')}</p>`;
+add('MIRF', mirfText('A', 260) + mirfText('B', 120), { body: { indent: { leftMm: 12, rightMm: 4, firstLineMm: 10, mirror: true } } });
+words('MIRF-all-lines-words', '^MIRF_', .25);
+match('MIRF-all-lines-baseline', '^MIRF_');
+match('MIRF-all-lines-left', '^MIRF_', 'x0');
+match('MIRF-all-lines-right', '^MIRF_', 'x1');
 
 // Landscape section followed by a portrait return: page size, margins and the text box are compared PDF vs Word.
 add('LANDSCAPE', paragraphLines('LAND_LINE', 75), { page: { orientation: 'landscape', widthMm: 297, heightMm: 210, margins: { topMm: 20, bottomMm: 22, leftMm: 25, rightMm: 35 }, numbering: { baselineFromTopMm: 195 } } });

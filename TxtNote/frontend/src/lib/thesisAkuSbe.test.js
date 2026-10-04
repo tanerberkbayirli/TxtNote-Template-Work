@@ -31,7 +31,7 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     }
     assert.equal(THESIS_TEMPLATE_REGISTRY.find((entry) => entry.id === "aku-sbe-phd-tr-v1").displayName, "Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · Doktora");
     assert.equal(akuSbeMaster.displayName, "Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · Yüksek Lisans");
-    assert.deepEqual(THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.id.startsWith("aku-sbe")).map((entry) => entry.id), ["aku-sbe-master-tr-v1", "aku-sbe-phd-tr-v1"], "Sanatta Yeterlik and English variants stay unregistered (missing wording)");
+    assert.deepEqual(THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.id.startsWith("aku-sbe")).map((entry) => entry.id), ["aku-sbe-master-tr-v1", "aku-sbe-phd-tr-v1"], "Sanatta Yeterlik and English variants remain pending implementation (required variants tracked in the manifest)");
     const normalise = (template, [cover, tanitim, ethics]) => JSON.stringify({ ...template, id: "x", degreeType: "x", displayName: "x" }).replaceAll(cover, "C").replaceAll(tanitim, "T").replaceAll(ethics, "E");
     assert.equal(normalise(akuSbeMaster, ["YÜKSEK LİSANS TEZİ", "Yüksek Lisans Tezi", "Yüksek Lisans tezi"]), normalise(akuSbePhd, ["DOKTORA TEZİ", "Doktora Tezi", "Doktora tezi"]));
     assert.deepEqual(templateFontFamilies(akuSbeMaster), ["Times New Roman"]);
