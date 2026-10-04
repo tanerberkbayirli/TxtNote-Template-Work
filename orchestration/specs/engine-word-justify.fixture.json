@@ -1,0 +1,405 @@
+{
+ "title": "Justify line breaking matrix",
+ "__template": {
+  "schemaVersion": 1,
+  "templateVersion": "1.0.0",
+  "id": "engine-word-justify",
+  "universityId": "engine-test",
+  "universityName": "Engine acceptance test",
+  "degreeType": "master",
+  "language": "tr",
+  "status": "generic",
+  "source": {
+   "type": "manual",
+   "documentName": "Isolated justified line-breaking acceptance matrix (no university values)"
+  },
+  "page": {
+   "size": "A4",
+   "widthMm": 210,
+   "heightMm": 297,
+   "orientation": "portrait",
+   "margins": {
+    "topMm": 25,
+    "bottomMm": 25,
+    "leftMm": 30,
+    "rightMm": 25
+   },
+   "header": {
+    "heightMm": 8,
+    "distanceMm": 12,
+    "content": "",
+    "firstPage": "same"
+   },
+   "footer": {
+    "heightMm": 8,
+    "distanceMm": 12,
+    "content": "",
+    "firstPage": "same"
+   },
+   "numbering": {
+    "enabled": false,
+    "position": "bottom",
+    "align": "center",
+    "format": "arabic",
+    "startAt": 1,
+    "restart": false
+   }
+  },
+  "typography": {
+   "body": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 400,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 6,
+    "firstLineIndentMm": 0
+   },
+   "headings": {
+    "1": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}"
+     }
+    },
+    "2": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     }
+    },
+    "3": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     }
+    },
+    "4": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}"
+     }
+    }
+   }
+  },
+  "placeholders": {},
+  "sections": [
+   {
+    "id": "J01",
+    "type": "mainContent",
+    "title": "J01",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "align": "justify",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "J02",
+    "type": "custom",
+    "title": "J02",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "justify",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "J03",
+    "type": "custom",
+    "title": "J03",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "justify",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "J04",
+    "type": "custom",
+    "title": "J04",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 12,
+      "align": "justify",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "J05",
+    "type": "custom",
+    "title": "J05",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 10,
+      "align": "justify",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "J06",
+    "type": "custom",
+    "title": "J06",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Calibri",
+      "fontSizePt": 12,
+      "align": "justify",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "J07",
+    "type": "custom",
+    "title": "J07",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   },
+   {
+    "id": "J08",
+    "type": "custom",
+    "title": "J08",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "pageBreakBefore": true,
+    "showTitle": false,
+    "tocEntry": "none",
+    "overrides": {
+     "body": {
+      "fontFamily": "Arial",
+      "fontSizePt": 10,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1,
+       "baseline": "word"
+      }
+     }
+    }
+   }
+  ],
+  "tables": {
+   "label": "Tablo",
+   "position": "above",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 8,
+   "spacingAfterPt": 6,
+   "align": "center"
+  },
+  "figures": {
+   "label": "Şekil",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 6,
+   "spacingAfterPt": 8,
+   "align": "center"
+  },
+  "bibliography": {
+   "heading": "Kaynakça",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "lineHeight": 1.5
+   },
+   "hangingIndentMm": 10
+  },
+  "toc": {
+   "heading": "İçindekiler",
+   "levels": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "showPageNumbers": true
+  }
+ },
+ "content": "<p>J01-1 fox doktora each thoroughly ONAY sağlamaktadır lisans yüksek için committee each istatistiksel değerlendirilmiş bulgular dissertation yüksek and doktora each yöntemler edilmiş chapter while çalışmada members brown each thoroughly bu bulgular elde üniversite için carefully over yöntemler bu analiz dissertation yüksek kullanılan araştırmacılar tezin jumps lazy sağlamaktadır lisans çalışmada için carefully over jumps değerlendirilmiş hazırlanması öğrencileri the members brown katkılar jumps of hazırlanması while the anabilim brown olarak thoroughly lazy KABUL öğrencileri dog için carefully olarak thoroughly of KABUL elde yüksek veriler edilen katkılar istatistiksel lazy sağlamaktadır elde dog anabilim edilen olarak önemli edilmiş hazırlanması elde dog and brown over thoroughly</p><p>J01-2 a lisans üniversite and brown olarak önemli bu KABUL lisans olup fox araştırmacılar ve thoroughly lazy sağlamaktadır dissertation olup anabilim carefully each thoroughly edilmiş hazırlanması sonuçlar üniversite fox doktora ve istatistiksel sırasında sağlamaktadır dissertation dog and committee katkılar jumps bu analiz öğrencileri dog için carefully ve jumps lazy a elde the kullanılan committee over jumps of bulgular öğrencileri the için tarafından katkılar review lazy a öğrencileri üniversite members araştırmacılar olarak jumps edilmiş bulgular lisans the members doktora over istatistiksel sırasında KABUL öğrencileri dog kullanılan edilen tezin jumps ONAY KABUL öğrencileri üniversite fox araştırmacılar ve thoroughly edilmiş bulgular lisans yüksek için araştırmacılar ve review ONAY sağlamaktadır while the</p><p>J01-3 araştırmacılar ÖZDOĞAN jumps bu chapter lisans dog kullanılan carefully olarak istatistiksel edilmiş a sonuçlar üniversite members doktora katkılar dalı ONAY a elde yüksek için edilen katkılar thoroughly ONAY sağlamaktadır quick the için edilen katkılar istatistiksel lazy analiz elde dog için doktora katkılar istatistiksel sırasında KABUL dissertation olup members edilen katkılar yöntemler değerlendirilmiş bulgular dissertation yüksek anabilim brown ve istatistiksel lazy KABUL elde the kullanılan araştırmacılar katkılar istatistiksel of hazırlanması lisans the anabilim edilen tezin istatistiksel of sağlamaktadır öğrencileri the kullanılan carefully katkılar önemli sırasında analiz lisans olup and committee olarak dalı</p><p>J01-4 chapter dissertation dog fox carefully tezin önemli sırasında sağlamaktadır dissertation yüksek and tarafından ÖZDOĞAN dalı ONAY sağlamaktadır lisans the veriler tarafından over istatistiksel sırasında chapter quick olup veriler araştırmacılar olarak istatistiksel of analiz dissertation üniversite members tarafından katkılar thoroughly edilmiş sağlamaktadır sonuçlar çalışmada anabilim committee katkılar dalı değerlendirilmiş hazırlanması lisans üniversite anabilim carefully olarak thoroughly ONAY hazırlanması dissertation the kullanılan araştırmacılar katkılar review ONAY bulgular öğrencileri dog kullanılan edilen ÖZDOĞAN thoroughly bu analiz öğrencileri the için brown ve thoroughly bu sağlamaktadır while the veriler tarafından ve dalı değerlendirilmiş sağlamaktadır while dog and araştırmacılar katkılar jumps değerlendirilmiş a lisans yüksek members brown olarak dalı</p>",
+ "researchData": {
+  "thesis": {
+   "templateId": "engine-word-justify",
+   "templateVersion": "1.0.0",
+   "values": {},
+   "sectionContent": {
+    "J01": "<p>J01-1 fox doktora each thoroughly ONAY sağlamaktadır lisans yüksek için committee each istatistiksel değerlendirilmiş bulgular dissertation yüksek and doktora each yöntemler edilmiş chapter while çalışmada members brown each thoroughly bu bulgular elde üniversite için carefully over yöntemler bu analiz dissertation yüksek kullanılan araştırmacılar tezin jumps lazy sağlamaktadır lisans çalışmada için carefully over jumps değerlendirilmiş hazırlanması öğrencileri the members brown katkılar jumps of hazırlanması while the anabilim brown olarak thoroughly lazy KABUL öğrencileri dog için carefully olarak thoroughly of KABUL elde yüksek veriler edilen katkılar istatistiksel lazy sağlamaktadır elde dog anabilim edilen olarak önemli edilmiş hazırlanması elde dog and brown over thoroughly</p><p>J01-2 a lisans üniversite and brown olarak önemli bu KABUL lisans olup fox araştırmacılar ve thoroughly lazy sağlamaktadır dissertation olup anabilim carefully each thoroughly edilmiş hazırlanması sonuçlar üniversite fox doktora ve istatistiksel sırasında sağlamaktadır dissertation dog and committee katkılar jumps bu analiz öğrencileri dog için carefully ve jumps lazy a elde the kullanılan committee over jumps of bulgular öğrencileri the için tarafından katkılar review lazy a öğrencileri üniversite members araştırmacılar olarak jumps edilmiş bulgular lisans the members doktora over istatistiksel sırasında KABUL öğrencileri dog kullanılan edilen tezin jumps ONAY KABUL öğrencileri üniversite fox araştırmacılar ve thoroughly edilmiş bulgular lisans yüksek için araştırmacılar ve review ONAY sağlamaktadır while the</p><p>J01-3 araştırmacılar ÖZDOĞAN jumps bu chapter lisans dog kullanılan carefully olarak istatistiksel edilmiş a sonuçlar üniversite members doktora katkılar dalı ONAY a elde yüksek için edilen katkılar thoroughly ONAY sağlamaktadır quick the için edilen katkılar istatistiksel lazy analiz elde dog için doktora katkılar istatistiksel sırasında KABUL dissertation olup members edilen katkılar yöntemler değerlendirilmiş bulgular dissertation yüksek anabilim brown ve istatistiksel lazy KABUL elde the kullanılan araştırmacılar katkılar istatistiksel of hazırlanması lisans the anabilim edilen tezin istatistiksel of sağlamaktadır öğrencileri the kullanılan carefully katkılar önemli sırasında analiz lisans olup and committee olarak dalı</p><p>J01-4 chapter dissertation dog fox carefully tezin önemli sırasında sağlamaktadır dissertation yüksek and tarafından ÖZDOĞAN dalı ONAY sağlamaktadır lisans the veriler tarafından over istatistiksel sırasında chapter quick olup veriler araştırmacılar olarak istatistiksel of analiz dissertation üniversite members tarafından katkılar thoroughly edilmiş sağlamaktadır sonuçlar çalışmada anabilim committee katkılar dalı değerlendirilmiş hazırlanması lisans üniversite anabilim carefully olarak thoroughly ONAY hazırlanması dissertation the kullanılan araştırmacılar katkılar review ONAY bulgular öğrencileri dog kullanılan edilen ÖZDOĞAN thoroughly bu analiz öğrencileri the için brown ve thoroughly bu sağlamaktadır while the veriler tarafından ve dalı değerlendirilmiş sağlamaktadır while dog and araştırmacılar katkılar jumps değerlendirilmiş a lisans yüksek members brown olarak dalı</p>",
+    "J02": "<p>J02-1 bulgular lisans çalışmada and brown ve thoroughly değerlendirilmiş analiz dissertation üniversite fox carefully katkılar dalı of hazırlanması sonuçlar the için doktora over dalı bu analiz dissertation dog anabilim brown ve thoroughly ONAY analiz while üniversite için committee ve önemli değerlendirilmiş sağlamaktadır dissertation the and edilen each yöntemler değerlendirilmiş hazırlanması quick dog anabilim edilen katkılar dalı edilmiş KABUL while the anabilim brown katkılar istatistiksel değerlendirilmiş chapter while üniversite fox carefully ÖZDOĞAN önemli</p><p>J02-2 hazırlanması lisans dog veriler edilen olarak yöntemler sırasında analiz elde yüksek members edilen tezin istatistiksel edilmiş hazırlanması öğrencileri the members araştırmacılar ÖZDOĞAN istatistiksel edilmiş analiz quick olup fox committee over yöntemler bu bulgular dissertation çalışmada fox doktora ve dalı edilmiş bulgular quick üniversite için carefully ÖZDOĞAN önemli değerlendirilmiş bulgular sonuçlar çalışmada fox committee ve jumps edilmiş chapter dissertation olup kullanılan araştırmacılar olarak önemli ONAY sağlamaktadır quick üniversite members brown olarak thoroughly</p><p>J02-3 bulgular quick the members committee tezin review ONAY analiz lisans dog members araştırmacılar ve istatistiksel of analiz sonuçlar yüksek fox brown ve thoroughly ONAY hazırlanması dissertation çalışmada veriler brown olarak yöntemler edilmiş hazırlanması sonuçlar olup için tarafından katkılar yöntemler sırasında bulgular while çalışmada veriler committee tezin review lazy bulgular while the and doktora olarak önemli bu analiz lisans olup kullanılan tarafından ve önemli bu bulgular lisans olup kullanılan brown olarak review lazy analiz dissertation olup için araştırmacılar ve thoroughly</p><p>J02-4 chapter while dog kullanılan committee ÖZDOĞAN yöntemler değerlendirilmiş bulgular lisans the kullanılan edilen ve önemli lazy bulgular sonuçlar olup fox committee ÖZDOĞAN jumps sırasında a quick the veriler edilen each dalı ONAY analiz quick olup veriler carefully over jumps değerlendirilmiş sağlamaktadır sonuçlar çalışmada kullanılan carefully olarak thoroughly ONAY hazırlanması while yüksek anabilim carefully over önemli ONAY sağlamaktadır quick çalışmada kullanılan committee ve önemli ONAY hazırlanması quick yüksek fox edilen each yöntemler</p>",
+    "J03": "<p>J03-1 KABUL öğrencileri olup and doktora ve önemli of bulgular elde üniversite anabilim doktora over jumps lazy sağlamaktadır öğrencileri the and araştırmacılar over istatistiksel lazy chapter dissertation olup veriler carefully katkılar thoroughly bu bulgular öğrencileri olup members carefully tezin thoroughly of chapter while üniversite and brown ve review edilmiş analiz while the and doktora each dalı bu analiz elde üniversite fox carefully ÖZDOĞAN review ONAY chapter öğrencileri the and araştırmacılar ve önemli sırasında chapter quick olup veriler doktora ÖZDOĞAN review edilmiş analiz sonuçlar yüksek için araştırmacılar each istatistiksel değerlendirilmiş KABUL quick üniversite için brown olarak yöntemler edilmiş bulgular while çalışmada fox tarafından olarak dalı</p><p>J03-2 sağlamaktadır dissertation dog veriler edilen over dalı bu hazırlanması lisans üniversite members carefully ÖZDOĞAN önemli ONAY analiz lisans yüksek anabilim brown over istatistiksel bu bulgular while dog kullanılan doktora katkılar önemli edilmiş KABUL sonuçlar çalışmada veriler edilen over thoroughly bu hazırlanması lisans üniversite members araştırmacılar each istatistiksel değerlendirilmiş chapter öğrencileri olup members committee each istatistiksel edilmiş analiz elde dog and doktora tezin istatistiksel değerlendirilmiş a elde yüksek anabilim brown each jumps lazy bulgular quick olup members doktora ÖZDOĞAN yöntemler edilmiş sağlamaktadır dissertation yüksek and carefully katkılar thoroughly değerlendirilmiş a lisans olup and edilen over jumps lazy KABUL öğrencileri dog kullanılan brown olarak thoroughly edilmiş sağlamaktadır sonuçlar the</p><p>J03-3 doktora olarak önemli edilmiş KABUL lisans olup kullanılan tarafından katkılar istatistiksel ONAY sağlamaktadır dissertation the fox committee ve istatistiksel ONAY a dissertation the kullanılan carefully ÖZDOĞAN thoroughly ONAY chapter lisans the için carefully tezin yöntemler lazy sağlamaktadır quick olup için tarafından over önemli değerlendirilmiş chapter dissertation the fox doktora each dalı değerlendirilmiş a lisans üniversite and doktora ÖZDOĞAN review lazy chapter lisans yüksek veriler edilen over thoroughly of KABUL elde olup and carefully tezin istatistiksel edilmiş a quick the members carefully tezin dalı sırasında a while üniversite veriler edilen ve istatistiksel sırasında bulgular sonuçlar yüksek</p><p>J03-4 doktora each jumps ONAY hazırlanması lisans the anabilim doktora over istatistiksel ONAY a öğrencileri dog members committee each yöntemler ONAY hazırlanması sonuçlar dog anabilim brown tezin yöntemler of sağlamaktadır elde the anabilim brown olarak önemli edilmiş hazırlanması while the anabilim carefully olarak thoroughly edilmiş analiz dissertation the and doktora ve yöntemler bu sağlamaktadır dissertation çalışmada anabilim araştırmacılar over jumps sırasında analiz öğrencileri çalışmada and edilen each review değerlendirilmiş sağlamaktadır sonuçlar dog and doktora tezin dalı ONAY sağlamaktadır quick çalışmada members carefully tezin yöntemler of chapter elde yüksek anabilim tarafından tezin önemli</p>",
+    "J04": "<p>J04-1 a lisans üniversite için araştırmacılar ÖZDOĞAN yöntemler bu chapter dissertation the için edilen over önemli bu analiz öğrencileri the and edilen olarak jumps edilmiş bulgular lisans the and committee over jumps edilmiş analiz while çalışmada veriler doktora tezin dalı of chapter öğrencileri üniversite anabilim doktora ÖZDOĞAN istatistiksel ONAY a while the members brown each yöntemler bu bulgular öğrencileri olup members edilen katkılar review değerlendirilmiş KABUL lisans yüksek kullanılan araştırmacılar olarak önemli edilmiş hazırlanması sonuçlar olup anabilim edilen ve önemli edilmiş analiz elde olup</p><p>J04-2 edilen katkılar yöntemler of sağlamaktadır quick üniversite için brown each thoroughly edilmiş sağlamaktadır öğrencileri the members tarafından over yöntemler of chapter quick üniversite and carefully ve dalı bu sağlamaktadır lisans üniversite için edilen tezin jumps of sağlamaktadır while yüksek için edilen ve önemli edilmiş a lisans olup için doktora each istatistiksel of a sonuçlar çalışmada fox carefully over önemli değerlendirilmiş KABUL sonuçlar çalışmada anabilim doktora katkılar önemli değerlendirilmiş KABUL dissertation the fox edilen olarak dalı</p><p>J04-3 a sonuçlar çalışmada kullanılan araştırmacılar ÖZDOĞAN thoroughly bu a lisans dog and tarafından over yöntemler sırasında KABUL sonuçlar the and edilen ÖZDOĞAN dalı bu a quick üniversite kullanılan tarafından each review sırasında chapter elde olup için tarafından ve istatistiksel lazy bulgular öğrencileri the fox tarafından katkılar yöntemler of bulgular quick the için committee over dalı sırasında bulgular dissertation the için carefully olarak önemli değerlendirilmiş sağlamaktadır dissertation üniversite members tarafından olarak thoroughly değerlendirilmiş bulgular quick the</p><p>J04-4 doktora ÖZDOĞAN önemli of analiz while the and tarafından ve dalı sırasında chapter öğrencileri the için araştırmacılar ve önemli değerlendirilmiş KABUL sonuçlar üniversite için araştırmacılar olarak yöntemler değerlendirilmiş a sonuçlar the kullanılan committee olarak dalı edilmiş hazırlanması quick the members edilen olarak dalı bu a quick üniversite and brown katkılar dalı edilmiş chapter while üniversite için edilen olarak önemli of KABUL elde the members committee tezin dalı lazy chapter lisans yüksek and doktora over önemli</p>",
+    "J05": "<p>J05-1 sağlamaktadır while olup veriler committee ÖZDOĞAN thoroughly bu sağlamaktadır öğrencileri çalışmada veriler araştırmacılar ve yöntemler değerlendirilmiş analiz sonuçlar the members araştırmacılar ve thoroughly sırasında sağlamaktadır elde çalışmada members edilen ÖZDOĞAN review lazy chapter elde olup kullanılan brown each jumps bu a while the and brown katkılar jumps sırasında KABUL quick the kullanılan tarafından olarak yöntemler edilmiş a dissertation the fox edilen ÖZDOĞAN önemli sırasında analiz elde yüksek and araştırmacılar each dalı ONAY analiz while çalışmada kullanılan tarafından tezin dalı bu analiz dissertation üniversite kullanılan carefully ÖZDOĞAN review sırasında analiz öğrencileri üniversite için committee katkılar istatistiksel</p><p>J05-2 sağlamaktadır elde yüksek veriler committee katkılar yöntemler değerlendirilmiş KABUL lisans olup members doktora tezin jumps of sağlamaktadır lisans yüksek veriler carefully ÖZDOĞAN dalı ONAY hazırlanması elde yüksek and carefully katkılar dalı ONAY sağlamaktadır dissertation çalışmada anabilim tarafından katkılar önemli lazy chapter elde the and carefully each jumps of sağlamaktadır sonuçlar the fox brown tezin thoroughly bu sağlamaktadır quick the anabilim carefully over thoroughly sırasında hazırlanması elde the için tarafından over istatistiksel ONAY a quick olup anabilim doktora tezin yöntemler lazy hazırlanması while the veriler brown over jumps edilmiş a öğrencileri dog fox doktora tezin jumps</p><p>J05-3 KABUL dissertation üniversite and doktora ÖZDOĞAN jumps değerlendirilmiş KABUL öğrencileri çalışmada için araştırmacılar each önemli ONAY KABUL elde the fox doktora ve thoroughly değerlendirilmiş chapter quick üniversite members tarafından ÖZDOĞAN jumps sırasında KABUL öğrencileri the kullanılan committee olarak yöntemler değerlendirilmiş a elde the için committee over yöntemler sırasında analiz öğrencileri the kullanılan edilen over dalı ONAY a while the veriler committee tezin önemli ONAY hazırlanması while yüksek fox doktora ve review sırasında a öğrencileri the fox brown tezin yöntemler lazy chapter elde çalışmada anabilim committee ve dalı bu analiz while olup için carefully ve istatistiksel</p><p>J05-4 KABUL öğrencileri çalışmada and araştırmacılar over thoroughly sırasında hazırlanması sonuçlar yüksek fox brown over önemli sırasında chapter lisans dog members doktora each dalı edilmiş chapter lisans çalışmada fox carefully over istatistiksel bu analiz quick the and araştırmacılar over yöntemler lazy sağlamaktadır lisans olup fox araştırmacılar each thoroughly lazy hazırlanması lisans the and doktora each istatistiksel of KABUL quick çalışmada members brown olarak thoroughly sırasında chapter lisans çalışmada members committee katkılar yöntemler edilmiş analiz dissertation olup anabilim tarafından tezin yöntemler bu a sonuçlar the and committee katkılar istatistiksel of bulgular elde the and brown over jumps bu KABUL lisans dog için committee katkılar yöntemler lazy analiz öğrencileri the</p>",
+    "J06": "<p>J06-1 edilen ve jumps edilmiş analiz elde olup kullanılan doktora ÖZDOĞAN review ONAY hazırlanması elde çalışmada kullanılan edilen tezin istatistiksel lazy sağlamaktadır dissertation the members araştırmacılar ÖZDOĞAN review bu KABUL while çalışmada veriler doktora katkılar önemli lazy sağlamaktadır sonuçlar the anabilim committee over önemli bu KABUL öğrencileri çalışmada members edilen tezin önemli ONAY bulgular elde olup and tarafından tezin istatistiksel of chapter quick olup anabilim araştırmacılar each thoroughly değerlendirilmiş a öğrencileri yüksek fox edilen each önemli</p><p>J06-2 a öğrencileri çalışmada and doktora over istatistiksel of analiz quick üniversite and tarafından ÖZDOĞAN thoroughly of hazırlanması while the members edilen katkılar dalı bu KABUL quick çalışmada fox araştırmacılar olarak yöntemler ONAY a sonuçlar yüksek members committee olarak istatistiksel lazy sağlamaktadır lisans dog fox carefully olarak istatistiksel edilmiş KABUL dissertation dog members tarafından ÖZDOĞAN yöntemler sırasında chapter öğrencileri üniversite veriler committee tezin thoroughly ONAY sağlamaktadır sonuçlar yüksek için araştırmacılar over dalı değerlendirilmiş chapter while çalışmada fox araştırmacılar ÖZDOĞAN dalı</p><p>J06-3 chapter while çalışmada veriler carefully katkılar istatistiksel edilmiş KABUL öğrencileri the members edilen olarak önemli bu chapter while dog fox edilen each önemli lazy KABUL quick çalışmada veriler committee over jumps değerlendirilmiş chapter while üniversite and doktora katkılar yöntemler bu chapter while the members committee tezin önemli edilmiş bulgular elde üniversite veriler committee ve review sırasında sağlamaktadır sonuçlar the anabilim brown each önemli sırasında analiz dissertation dog için committee katkılar önemli of hazırlanması elde the için brown katkılar jumps lazy chapter dissertation dog</p><p>J06-4 brown over thoroughly değerlendirilmiş chapter lisans yüksek kullanılan carefully over jumps lazy KABUL quick the anabilim carefully katkılar yöntemler edilmiş sağlamaktadır quick yüksek anabilim brown katkılar dalı lazy chapter elde the and carefully ÖZDOĞAN yöntemler ONAY a quick the için committee each istatistiksel değerlendirilmiş bulgular while the anabilim committee katkılar dalı ONAY bulgular lisans dog anabilim doktora each dalı ONAY bulgular sonuçlar dog için carefully over thoroughly ONAY bulgular sonuçlar çalışmada veriler edilen tezin review sırasında KABUL dissertation yüksek kullanılan edilen katkılar jumps</p>",
+    "J07": "<p>J07-1 chapter sonuçlar olup and doktora olarak istatistiksel of hazırlanması quick yüksek veriler brown over thoroughly sırasında KABUL dissertation üniversite için edilen ÖZDOĞAN önemli ONAY bulgular quick çalışmada fox tarafından over dalı of chapter sonuçlar the anabilim araştırmacılar over yöntemler bu sağlamaktadır while üniversite members brown katkılar dalı lazy bulgular öğrencileri üniversite için araştırmacılar each önemli of hazırlanması while dog anabilim brown ve istatistiksel sırasında bulgular sonuçlar yüksek members carefully ve thoroughly edilmiş hazırlanması elde yüksek</p><p>J07-2 tarafından ve önemli değerlendirilmiş sağlamaktadır quick yüksek anabilim brown ÖZDOĞAN review ONAY chapter elde üniversite fox araştırmacılar olarak thoroughly edilmiş sağlamaktadır elde the and doktora over önemli of hazırlanması elde çalışmada fox brown over jumps lazy sağlamaktadır sonuçlar çalışmada kullanılan araştırmacılar each dalı bu chapter dissertation dog fox araştırmacılar each thoroughly edilmiş chapter sonuçlar the anabilim brown katkılar jumps bu analiz while yüksek kullanılan doktora each thoroughly sırasında a dissertation üniversite anabilim committee tezin thoroughly edilmiş sağlamaktadır sonuçlar çalışmada kullanılan araştırmacılar katkılar önemli lazy bulgular öğrencileri yüksek</p><p>J07-3 tarafından each önemli of chapter elde dog members doktora ve review of analiz while the için brown tezin önemli bu analiz öğrencileri çalışmada için brown ve yöntemler ONAY bulgular öğrencileri üniversite için araştırmacılar katkılar dalı değerlendirilmiş analiz lisans olup and carefully olarak yöntemler sırasında KABUL lisans yüksek anabilim edilen tezin istatistiksel sırasında analiz dissertation olup anabilim tarafından ÖZDOĞAN review sırasında a elde üniversite için carefully ÖZDOĞAN yöntemler bu a sonuçlar olup anabilim edilen over dalı ONAY KABUL dissertation yüksek için araştırmacılar katkılar jumps</p><p>J07-4 KABUL lisans çalışmada members tarafından katkılar review edilmiş analiz sonuçlar olup kullanılan committee katkılar yöntemler edilmiş chapter dissertation üniversite fox carefully ve önemli sırasında sağlamaktadır while the veriler doktora tezin önemli of KABUL dissertation çalışmada members araştırmacılar each dalı sırasında hazırlanması lisans yüksek members edilen olarak istatistiksel of sağlamaktadır while yüksek kullanılan araştırmacılar tezin review lazy a elde üniversite için araştırmacılar ÖZDOĞAN review sırasında chapter öğrencileri olup kullanılan carefully katkılar yöntemler bu hazırlanması while olup anabilim tarafından tezin review değerlendirilmiş hazırlanması while yüksek</p>",
+    "J08": "<p>J08-1 edilen each yöntemler ONAY chapter quick yüksek kullanılan araştırmacılar over önemli of analiz sonuçlar the members doktora each thoroughly değerlendirilmiş a dissertation üniversite members araştırmacılar olarak thoroughly ONAY chapter quick the için carefully over review sırasında bulgular öğrencileri dog kullanılan doktora katkılar yöntemler lazy KABUL sonuçlar the veriler committee katkılar jumps bu hazırlanması while olup and tarafından ÖZDOĞAN dalı edilmiş bulgular while the veriler brown each jumps sırasında hazırlanması quick yüksek and araştırmacılar tezin yöntemler ONAY a öğrencileri the members araştırmacılar olarak istatistiksel değerlendirilmiş hazırlanması elde the kullanılan edilen tezin thoroughly of KABUL while çalışmada için araştırmacılar katkılar istatistiksel</p><p>J08-2 hazırlanması lisans üniversite members edilen tezin yöntemler edilmiş sağlamaktadır while yüksek anabilim committee olarak önemli edilmiş chapter lisans üniversite fox committee ve dalı değerlendirilmiş sağlamaktadır öğrencileri yüksek için araştırmacılar katkılar önemli değerlendirilmiş sağlamaktadır lisans dog members brown each istatistiksel lazy sağlamaktadır öğrencileri yüksek fox carefully ÖZDOĞAN jumps of a dissertation yüksek and doktora tezin istatistiksel ONAY chapter while the fox tarafından tezin jumps lazy sağlamaktadır lisans üniversite fox araştırmacılar each istatistiksel bu chapter elde dog fox brown katkılar yöntemler of bulgular quick olup fox tarafından ve yöntemler of bulgular dissertation üniversite and edilen katkılar thoroughly sırasında a while the</p><p>J08-3 doktora ve jumps edilmiş KABUL lisans olup fox doktora ve önemli of sağlamaktadır dissertation yüksek için araştırmacılar katkılar yöntemler edilmiş bulgular elde yüksek members carefully ÖZDOĞAN istatistiksel değerlendirilmiş bulgular sonuçlar yüksek için edilen ÖZDOĞAN thoroughly lazy KABUL quick dog için brown each önemli sırasında chapter lisans dog anabilim committee tezin review değerlendirilmiş KABUL elde olup kullanılan araştırmacılar ve yöntemler ONAY hazırlanması öğrencileri dog and carefully ÖZDOĞAN jumps değerlendirilmiş hazırlanması while yüksek veriler doktora katkılar review of chapter sonuçlar yüksek fox araştırmacılar olarak review edilmiş KABUL lisans the veriler araştırmacılar each önemli</p><p>J08-4 a quick yüksek members araştırmacılar each istatistiksel bu a dissertation olup anabilim araştırmacılar olarak review sırasında a dissertation the için carefully ve istatistiksel lazy KABUL elde çalışmada anabilim edilen ÖZDOĞAN yöntemler bu a dissertation dog members tarafından katkılar thoroughly sırasında sağlamaktadır sonuçlar the members carefully over istatistiksel edilmiş a while dog anabilim carefully over jumps bu hazırlanması lisans üniversite fox edilen katkılar önemli ONAY analiz dissertation dog members carefully tezin thoroughly lazy analiz öğrencileri olup için committee each thoroughly of hazırlanması quick olup kullanılan carefully ÖZDOĞAN önemli ONAY sağlamaktadır öğrencileri the members carefully each önemli</p>"
+   }
+  }
+ }
+}

@@ -216,6 +216,7 @@ export function validateThesisTemplate(rawTemplate) {
   }
   const lineSpacing = template.typography?.lineSpacing;
   if (lineSpacing !== undefined && !(object(lineSpacing) && (validCanonicalSpacing(lineSpacing) || lineSpacing.mode === "multiplier" || (lineSpacing.mode === "word" && positive(lineSpacing.singleLineEm) && lineSpacing.singleLineEm <= 3)))) errors.push("typography.lineSpacing geçersiz");
+  if (template.typography?.justify !== undefined && !["word", "browser"].includes(template.typography.justify)) errors.push('typography.justify geçersiz ("word" | "browser")');
   if (lineSpacing?.blockGap !== undefined && !(lineSpacing.blockGap === "paragraphPitch" && (lineSpacing.mode === "word" || validCanonicalSpacing(lineSpacing)) && lineSpacing.baseline === "word")) errors.push('typography.lineSpacing.blockGap yalnız "paragraphPitch" ve mode/baseline "word" ile geçerli');
   if (lineSpacing?.figureExitGap !== undefined && !((["pitch", "spacing"].includes(lineSpacing.figureExitGap)) && lineSpacing.blockGap === "paragraphPitch")) errors.push('typography.lineSpacing.figureExitGap yalnız "pitch"|"spacing" ve blockGap "paragraphPitch" ile geçerli');
   if (lineSpacing?.noteExitGap !== undefined && !((["pitch", "spacing"].includes(lineSpacing.noteExitGap)) && lineSpacing.blockGap === "paragraphPitch")) errors.push('typography.lineSpacing.noteExitGap yalnız "pitch"|"spacing" ve blockGap "paragraphPitch" ile geçerli');

@@ -34,7 +34,7 @@
 - Historical FAIL (independent-master-1, 2026-10-02; current checker revalidation supersedes this attempt): heading case in export; approval/jury table broken cell widths/borders (p4); YL outer-cover T.C. baseline 177.675 vs 176.1 pt (+0.556 mm); footer Roman 'i' x 521.344 vs 524.74 pt (-1.198 mm) and baseline 804.094 vs 797.04 pt. Report: orchestration/validation/afsu-lee/independent-master-1.md (later self-4/5/6 and v5 pairs saved, not independently rechecked).
 - UNKNOWN: 9 (page-number font size, TOC leaders/indents, footnote spacing, ethics bullet glyph, approval row heights). CONFLICT: 2 (both ruled).
 ## Status
-- IN_PROGRESS (2026-10-04, `--all --word` check-20261004-1025): default variant clean; PhD variant 4 FAIL = page_count/labels parity pdf 38 vs word 37. Cause MEASURED: KABUL VE ONAY title paragraph (jc=both, TNR 12, identical width 425.15 pt) — Word compresses inter-word spaces (~0.6 pt) to fit "…tarafından hazırlanan" (natural 430.2 pt) on line 1, Chromium never shrinks justified spaces → our block 6 lines vs 5, last line spills. Engine limitation (justification model), not a template value; open Tier 1 parity item. Open: CONFLICT phd-body-font, approval margins ruling.
+- 2026-10-04: `--word` INFO=1 PASS=90 (default + PhD). PhD page parity fixed by engine `typography.justify: "word"` (Word compresses justified spaces; measured in engine-word-justify). Phase 2 engine parity complete for this target. Still open (not engine): CONFLICT phd-body-font, approval margins ruling.
 ## Next step
 - Run current checker against master + PhD exports; review only remaining FAIL rows and retain recorded UNKNOWN/source conflicts.
 ## Commands
@@ -42,3 +42,5 @@
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.
 ## Do NOT read
 - orchestration/validation/afsu-lee/* (docx/pdf/png dumps, layout.json, source/, source-filled/, self-N/); guide + template DOCX full text; orchestration/artifacts/afsu-lee/. Other targets' specs/validation folders.
+
+- Footnote numbering (2026-10-04): engine default `footnotes.numbering: "document"` (one running sequence, = Word). MEASURED: official DOCX settings `w:footnotePr` has no `w:numRestart` → Word default continuous numbering.

@@ -1,0 +1,139 @@
+[
+ {
+  "id": "J01-Times-New-Roman-10-justify-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J01"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J01: Times New Roman 10 pt justify"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "J02-Times-New-Roman-12-justify-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J02"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J02: Times New Roman 12 pt justify"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "J03-Arial-10-justify-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J03"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J03: Arial 10 pt justify"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "J04-Arial-12-justify-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J04"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J04: Arial 12 pt justify"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "J05-Calibri-10-justify-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J05"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J05: Calibri 10 pt justify"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "J06-Calibri-12-justify-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J06"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J06: Calibri 12 pt justify"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "J07-Times-New-Roman-12-left-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J07"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J07: Times New Roman 12 pt left"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "J08-Arial-10-left-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J08"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of exported fixture DOCX",
+   "locator": "J08: Arial 10 pt left"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "word_opens",
+  "kind": "word_opens",
+  "params": {},
+  "expected": true,
+  "source": {
+   "file": "Word engine acceptance fixture",
+   "locator": "physical page sequence and OOXML validity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "page_count_match",
+  "kind": "page_count_match",
+  "params": {},
+  "expected": true,
+  "source": {
+   "file": "Word engine acceptance fixture",
+   "locator": "physical page sequence and OOXML validity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "docx_no_undefined",
+  "kind": "docx_no_undefined",
+  "params": {},
+  "expected": true,
+  "source": {
+   "file": "Word engine acceptance fixture",
+   "locator": "physical page sequence and OOXML validity"
+  },
+  "evidence": "MEASURED"
+ }
+]

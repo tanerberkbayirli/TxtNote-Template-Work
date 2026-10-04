@@ -351,6 +351,8 @@ export interface ThesisTemplate {
   /** paragraph.firstAfterHeading: overrides for the first paragraph after any heading (e.g. no indent). */
   typography: {
     body: TextStyle; paragraph?: Partial<TextStyle> & { firstAfterHeading?: Partial<TextStyle> }; headings: Record<string, HeadingRule>; footnotes?: FootnoteRule; lineSpacing?: LineSpacing;
+    /** Justified-text line breaking: "word" (default) fits lines like Word (spaces shrink up to a measured fraction), "browser" keeps Chromium's expand-only breaking. */
+    justify?: "word" | "browser";
     /**
      * Named paragraph styles (any id, e.g. tableNote, blockQuote): the body paragraph with these keys on top, applied to
      * `<p data-thesis-style="id">` in the editor, print and PDF (CSS) and as paragraph properties in Word. The attribute is

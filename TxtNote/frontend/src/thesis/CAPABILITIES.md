@@ -59,6 +59,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | gap after figure / table / note equals one paragraph pitch | `lineSpacing.blockGap: "paragraphPitch"` + `figureExitGap`, `noteExitGap` ("pitch"/"spacing") | - | off | ✓✓✓ | AfsuEczacilikProje, AkuMatematik |
 | first-line / left / right / hanging indent | `firstLineIndentMm`, `leftIndentMm`, `rightIndentMm`, `hangingIndentMm` | mm | 0 | ✓✓✓ | AkuCografya, AkuFelsefe |
 | paragraph alignment | `align` left/center/right/justify | - | left | ✓✓✓ | AfsuTip |
+| Word-style justified line fitting | `typography.justify: "word"` (default) \| `"browser"` (old breaking). Justified styles of TNR/Arial/Calibri get `word-spacing:-(space em x fraction)` + `font-kerning:none`; other styles get `word-spacing:0` (`justify`) | - | "word" | PDF/editor ✓, DOCX unchanged (Word does it natively) | EngineWordJustify |
 | letter spacing | `characterSpacingPt` | pt | 0 | ✓✓✓ | LayoutProperties |
 | typed tab stop (symbols list) | `tabStopMm` (single stop, no leader) | mm | - | ✓✓✓ | AkuMatematik, EngineExtensions |
 | first paragraph after heading differs (no indent) | `typography.paragraph.firstAfterHeading` | partial TextStyle | - | ✓✓✓ | AkuSagbil |
@@ -173,3 +174,6 @@ Tab/border enum values: `decimal`, `hyphen`, `underscore`, `double`, `dashed`, `
 
 `decimalCharacter` overrides browser measurement only; Word decimal tabs use the document/environment locale. This option does not establish cross-export parity for a non-locale separator.
 `rule` values: `auto`, `exact`, `atLeast`.
+
+## Word justified-line fitting (measured, engine-word-justify)
+Real Word render of the exported DOCX vs the exported PDF (`orchestration/specs/engine-word-justify.*`, `node orchestration/tools/justify-fixture.mjs`). Word fits a justified line whose natural width exceeds the measure by shrinking the inter-word spaces; it does NOT do this for left-aligned text (J07/J08 left cases break identically without any rule) and its natural glyph advances equal the font program (no kerning; Chromium kerns, so justified styles get `font-kerning:none`). Measured max compression per font (fraction of the U+0020 advance): Times New Roman 0.24-0.29 window -> 0.25, Calibri 0.22-0.27 -> 0.25, Arial 0.226 accepted / 0.208 rejected (size dependent, UNKNOWN exactness) -> 0.22. About 1.3-2.2 % of the line width, up to 8-10 pt per line at 10-12 pt. Chromium has no per-line compression, so a negative `word-spacing` moves the break point and `text-align: justify` widens the spaces back. Known gaps: the last (unjustified) line of a justified paragraph is drawn with the compressed spaces; Arial 10 pt still breaks differently from Word on ~1 line in 20; fonts other than TNR/Arial/Calibri are not compressed (UNKNOWN).

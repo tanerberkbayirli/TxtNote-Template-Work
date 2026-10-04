@@ -562,6 +562,30 @@ def k_line_pitch_match(ctx, c):
             'expected_override': 'PDF vs Word pitch within 0.2 pt'}
 
 
+def _case_lines(doc, tag):
+    """Texts of all lines on the page (and following pages until another tag) where the case tag first appears."""
+    out, started = [], False
+    for p in range(1, doc.n + 1):
+        ls = [re.sub(r'\s+', ' ', l['text']).strip() for l in doc.lines(p)]
+        if not started and any(re.match(re.escape(tag) + r'-1', t) for t in ls):
+            started = True
+        elif started and any(re.match(r'J\d+-1', t) for t in ls):
+            break
+        if started:
+            out.extend(ls)
+    return out
+
+
+def k_line_breaks_match(ctx, c):
+    """Every line of a tagged section has identical text (hence identical line breaks) in the PDF and the Word render."""
+    tag = c['params']['tag']
+    a = _case_lines(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag)
+    b = _case_lines(get_doc(ctx, {**c['params'], 'source': 'word'}), tag)
+    diff = [i for i in range(max(len(a), len(b))) if (a[i] if i < len(a) else None) != (b[i] if i < len(b) else None)]
+    return {'actual': {'lines': {'pdf': len(a), 'word': len(b)}, 'firstDiff': diff[:3] and [(i, a[i] if i < len(a) else None, b[i] if i < len(b) else None) for i in diff[:2]]},
+            'pass': bool(a) and not diff, 'expected_override': 'identical line texts in PDF and Word'}
+
+
 def k_body_pitch_match(ctx, c):
     values = {source: k_line_pitch(ctx, {'params': {**c['params'], 'source': source}})['actual']
               for source in ('pdf', 'word')}

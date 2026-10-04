@@ -37,3 +37,5 @@
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.
 ## Do NOT read
 - Guide DOCX full text; orchestration/validation/mcbu-lee/{fix-1,fix-2,audit-2} dumps (lines-*.txt, docx, layout.json); orchestration/MCBU_LEE_AUDIT_TASK.md. Other targets' specs/validation folders.
+
+- Footnote numbering (2026-10-04): engine default `footnotes.numbering: "document"` (one running sequence, = Word). MEASURED: official DOCX settings `w:footnotePr` has no `w:numRestart` → Word default continuous numbering.

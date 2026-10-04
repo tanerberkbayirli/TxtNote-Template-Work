@@ -33,3 +33,5 @@
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.
 ## Do NOT read
 - Yonerge PDF; orchestration/validation/afsu-eczacilik-proje/{self-2,fix-1,fixture.json,independent-1 renders}; orchestration/artifacts/afsu-eczacilik-proje/ source-page PNGs. Other targets' specs/validation folders.
+
+- Footnote numbering (2026-10-04): engine default `footnotes.numbering: "document"` (one running sequence, = Word). UNKNOWN: sources do not state a footnote numbering/restart rule.

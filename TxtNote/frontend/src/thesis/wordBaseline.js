@@ -20,6 +20,15 @@ export const WORD_FONT_METRICS = Object.freeze({
   calibri: { ascent: 1536 / 2048, descent: 512 / 2048, lineGap: 452 / 2048 },
 });
 
+/** Advance width of U+0020 (em) in the same font programs. */
+export const WORD_SPACE_EM = Object.freeze({ "times new roman": 512 / 2048, arial: 569 / 2048, calibri: 463 / 2048 });
+/**
+ * Measured (engine-word-justify, real Word render vs exported PDF): Word keeps a justified line whose natural width exceeds the measure by shrinking
+ * its inter-word spaces, up to this fraction of the space width. Per font program; fonts not listed are UNKNOWN (no compression).
+ * Arial's window is narrower and noisier (Word kept 0.226, rejected 0.208 of a space), 0.22 is the best fit of the matrix.
+ */
+export const WORD_JUSTIFY_COMPRESSION = Object.freeze({ "times new roman": 0.25, calibri: 0.25, arial: 0.22 });
+
 const familyName = (value) => String(value || "").split(",")[0].replace(/["']/g, "").trim();
 const hash = (text) => { let h = 5381; for (let i = 0; i < text.length; i += 1) h = ((h << 5) + h + text.charCodeAt(i)) >>> 0; return h.toString(36); };
 const round = (value) => Math.round(value * 10000) / 10000;

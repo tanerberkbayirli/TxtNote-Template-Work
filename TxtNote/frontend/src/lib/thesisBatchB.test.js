@@ -358,7 +358,7 @@ describe("Batch B7 named paragraph styles", () => {
   });
   it("emits one CSS rule per style, on top of the body paragraph, only for templates that define them", () => {
     const css = buildThesisCss(compile(styled(), html));
-    assert.match(css, /\.thesis-body p\[data-thesis-style="tableNote"\]\{font-family:"Times New Roman";font-size:10pt;[^}]*text-align:justify;line-height:1;[^}]*margin-top:6pt;margin-bottom:6pt;text-indent:0mm;/);
+    assert.match(css, /\.thesis-body p\[data-thesis-style="tableNote"\]\{font-family:"Times New Roman";font-size:10pt;[^}]*text-align:justify;(?:font-kerning:none;word-spacing:[^;]+;)?line-height:1;[^}]*margin-top:6pt;margin-bottom:6pt;text-indent:0mm;/);
     assert.match(css, /p\[data-thesis-style="blockQuote"\]\{[^}]*font-style:italic;[^}]*padding-left:12\.5mm;padding-right:12\.5mm;[^}]*break-after:avoid;\}/);
     assert.doesNotMatch(buildThesisCss(compile(template(), html)), /data-thesis-style/);
     assert.ok(!compile(template(), html).sections[0].rules.paragraphStyles);

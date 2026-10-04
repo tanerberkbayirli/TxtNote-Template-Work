@@ -126,6 +126,7 @@ export function resolveSectionRules(template, section) {
     bibliography: template.bibliography,
     toc: template.toc,
     ...(template.typography.lineSpacing ? { lineSpacing: template.typography.lineSpacing } : {}),
+    ...(template.typography.justify ? { justify: template.typography.justify } : {}),
   };
 }
 

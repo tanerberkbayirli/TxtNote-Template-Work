@@ -1,6 +1,7 @@
 import { specialPageCss } from "./specialPages.js";
 import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../lib/academicDocument.js";
-import { wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
+
+import { WORD_JUSTIFY_COMPRESSION, WORD_SPACE_EM, wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
 import { tableSemanticsCss } from "./tableSemantics.js";
 import { resolveLineSpacing, resolveIndent } from "./typography.js";
 import { exceptionSet } from "./transformExceptions.js";
@@ -38,9 +39,23 @@ export function cellPaddingCss(cellPadding, fallback) {
 /** First-line indent and left padding; a hanging indent (mm) moves every line but the first right. */
 export const indentMm = (style) => resolveIndent(style);
 
-function serializeStyle(style, lineSpacing) {
+/**
+ * Word fits a justified line whose natural width exceeds the measure by shrinking its spaces (up to WORD_JUSTIFY_COMPRESSION of the space width),
+ * Chromium only widens them. A negative word-spacing makes the browser break where Word does; justification then widens the spaces back.
+ * Known Word fonts only (unknown fonts stay UNKNOWN); `typography.justify: "browser"` keeps the old breaking.
+ */
+export function justifyWordSpacing(style, justify = "word", resetOthers = false) {
+  if (justify === "browser") return "";
+  if (style.align !== "justify") return resetOthers ? "word-spacing:0;" : "";
+  const family = String(style.fontFamily || "").split(",")[0].replace(/["']/g, "").trim().toLowerCase();
+  const compression = WORD_JUSTIFY_COMPRESSION[family], spaceEm = WORD_SPACE_EM[family];
+  // Word does not kern by default; Chromium does, which changes the natural line width the fit depends on.
+  return compression && spaceEm ? `font-kerning:none;word-spacing:${(-spaceEm * compression).toFixed(5)}em;` : "";
+}
+
+function serializeStyle(style, lineSpacing, justify = "word", resetOthers = false) {
   const indent = indentMm(style);
-  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};line-height:${lineHeightCss(style, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${indent.first}mm;padding-left:${Math.max(0, indent.left)}mm;padding-right:${Math.max(0, indent.right || 0)}mm;${indent.left < 0 ? `margin-left:${indent.left}mm;` : ""}${indent.right < 0 ? `margin-right:${indent.right}mm;` : ""}${style.color ? `color:${style.color};` : ""}${style.tabStopMm > 0 ? `tab-size:${style.tabStopMm}mm;` : ""}`;
+  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};${justifyWordSpacing(style, justify, resetOthers)}line-height:${lineHeightCss(style, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${indent.first}mm;padding-left:${Math.max(0, indent.left)}mm;padding-right:${Math.max(0, indent.right || 0)}mm;${indent.left < 0 ? `margin-left:${indent.left}mm;` : ""}${indent.right < 0 ? `margin-right:${indent.right}mm;` : ""}${style.color ? `color:${style.color};` : ""}${style.tabStopMm > 0 ? `tab-size:${style.tabStopMm}mm;` : ""}`;
 }
 
 /** Typography of a caption label run (bold "Şekil 2.1"), when it differs from the caption text. */
@@ -64,10 +79,13 @@ export function thesisSectionCss(section) {
   const lh = (value) => effectiveLineHeight(value, lineSpacing, body);
   // Opt-in Word line placement: a paint-only offset per text style (see wordBaseline.js).
   const lift = (style) => wordBaselineCss(wordBaselineProbe(style, lineSpacing, effectiveLineHeight(style?.lineHeight, lineSpacing, style)));
-  const styleCss = (style) => serializeStyle(style, lineSpacing);
+  const justify = section.rules.justify || "word";
+  // Styles that are not justified must not inherit the negative word-spacing of a justified body.
+  const resetOthers = body.align === "justify";
+  const styleCss = (style) => serializeStyle(style, lineSpacing, justify, resetOthers);
   // A hanging indent belongs to the paragraphs (the `.thesis-body p` rule), never to the page/flow container around them.
   const containerCss = (style) => styleCss(style.indent ? { ...style, indent: undefined, hangingIndentMm: 0, leftIndentMm: 0, rightIndentMm: 0 } : { ...style, hangingIndentMm: 0 });
-  const textCss = (style) => serializeStyle(style, lineSpacing) + lift(style);
+  const textCss = (style) => serializeStyle(style, lineSpacing, justify, resetOthers) + lift(style);
   const id = section.id;
   const paperScope = `.thesis-paper[data-thesis-section="${id}"]`;
   const fragmentScope = `.thesis-flow-section[data-thesis-flow-section="${id}"]`;
