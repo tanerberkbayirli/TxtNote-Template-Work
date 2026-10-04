@@ -531,6 +531,8 @@ class Draft:
                         if total and cell.get("widthMm"):
                             group["widthPercent"] = round(cell["widthMm"] / total * 100, 1)
                         cells.append(group)
+                    if not cells:
+                        continue
                     blocks.append({"type": "group", "direction": "row", "blocks": cells} if len(cells) > 1 else cells[0])
                 continue
             if record.get("empty"):
