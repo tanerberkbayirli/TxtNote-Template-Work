@@ -4,7 +4,7 @@ Tarama: 2026-10-04 · 202 üniversite (YÖK listesi, devlet + vakıf) · 307 aç
 
 Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen sayfalar ve sayfa sınırı dosyaları gizleyebilir. Kaynağı bulunmayan üniversiteler elle aranmalıdır.
 
-## Marmara (51/72 üniversitede kaynak bulundu)
+## Marmara (52/72 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
@@ -28,7 +28,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Altınbaş Üniversitesi](./Marmara/Altınbaş%20Üniversitesi/) | 2 | 0 | 5 | 14 | kısmi; elle derlenmiş 7 dosya |
 | Bahçeşehir Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
 | [Beykoz Üniversitesi](./Marmara/Beykoz%20Üniversitesi/) | 0 | 0 | 4 | 4 | kısmi; elle derlenmiş 2 dosya |
-| Bezm-i Âlem Vakıf Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Bezm-i Âlem Vakıf Üniversitesi](./Marmara/Bezm-i%20Âlem%20Vakıf%20Üniversitesi/) | 0 | 0 | 1 | 2 | tarandı; elle derlenmiş 1 dosya |
 | [Biruni Üniversitesi](./Marmara/Biruni%20Üniversitesi/) | 3 | 0 | 1 | 8 | kısmi; elle derlenmiş 4 dosya |
 | [Boğaziçi Üniversitesi](./Marmara/Boğaziçi%20Üniversitesi/) | 5 | 0 | 0 | 8 | kısmi; elle derlenmiş 4 dosya |
 | Demiroğlu Bilim Üniversitesi | 0 | 0 | 0 | 0 | erişilemedi |
@@ -128,7 +128,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Çağ Üniversitesi](./Akdeniz/Çağ%20Üniversitesi/) | 0 | 0 | 1 | 0 | erişilemedi |
 | [Osmaniye Korkut Ata Üniversitesi](./Akdeniz/Osmaniye%20Korkut%20Ata%20Üniversitesi/) | 1 | 0 | 9 | 20 | kısmi; elle derlenmiş 10 dosya |
 
-## İç Anadolu (29/44 üniversitede kaynak bulundu)
+## İç Anadolu (30/44 üniversitede kaynak bulundu)
 
 | Üniversite | Şablon | Aday | Kılavuz | Yerel dosya | Tarama |
 |---|---:|---:|---:|---:|---|
@@ -141,7 +141,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | Ankara Yıldırım Beyazıt Üniversitesi | 0 | 0 | 0 | 0 | kısmi |
 | [Ankara Üniversitesi](./İç%20Anadolu/Ankara%20Üniversitesi/) | 1 | 0 | 2 | 6 | kısmi; elle derlenmiş 3 dosya |
 | [Atılım Üniversitesi](./İç%20Anadolu/Atılım%20Üniversitesi/) | 3 | 1 | 12 | 28 | kısmi; elle derlenmiş 14 dosya |
-| Başkent Üniversitesi | 0 | 0 | 0 | 0 | tarandı |
+| [Başkent Üniversitesi](./İç%20Anadolu/Başkent%20Üniversitesi/) | 0 | 0 | 1 | 2 | tarandı; elle derlenmiş 1 dosya |
 | [Gazi Üniversitesi](./İç%20Anadolu/Gazi%20Üniversitesi/) | 0 | 0 | 2 | 4 | kısmi; elle derlenmiş 2 dosya |
 | [Hacettepe Üniversitesi](./İç%20Anadolu/Hacettepe%20Üniversitesi/) | 14 | 0 | 3 | 0 | kısmi |
 | [Lokman Hekim Üniversitesi](./İç%20Anadolu/Lokman%20Hekim%20Üniversitesi/) | 0 | 2 | 0 | 4 | kısmi; elle derlenmiş 2 dosya |
@@ -241,7 +241,7 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 | [Harran Üniversitesi](./Güneydoğu%20Anadolu/Harran%20Üniversitesi/) | 0 | 0 | 2 | 0 | kısmi |
 | [Şırnak Üniversitesi](./Güneydoğu%20Anadolu/Şırnak%20Üniversitesi/) | 1 | 0 | 2 | 0 | kısmi |
 
-## Elle aranması gerekenler (55)
+## Elle aranması gerekenler (53)
 
 - Bandırma Onyedi Eylül Üniversitesi
 - Bilecik Şeyh Edebali Üniversitesi
@@ -250,7 +250,6 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 - Kocaeli Üniversitesi
 - Sakarya Uygulamalı Bilimler Üniversitesi
 - Bahçeşehir Üniversitesi
-- Bezm-i Âlem Vakıf Üniversitesi
 - Demiroğlu Bilim Üniversitesi
 - Doğuş Üniversitesi
 - Kadir Has Üniversitesi
@@ -272,7 +271,6 @@ Otomatik tarama tamlık garantisi vermez: JavaScript menüleri, giriş isteyen s
 - Ankara Hacı Bayram Veli Üniversitesi
 - Ankara Medipol Üniversitesi
 - Ankara Yıldırım Beyazıt Üniversitesi
-- Başkent Üniversitesi
 - OSTİM Teknik Üniversitesi
 - TOBB Ekonomi ve Teknoloji Üniversitesi
 - Türk Hava Kurumu Üniversitesi
