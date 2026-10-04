@@ -144,8 +144,6 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 ## 13. Remaining conformance work and capability gaps
 | Gap | Evidence / effect | Phase |
 |---|---|---|
-| Footnote single-line pitch: footnotes use the `lineHeight` multiplier, not Word's pitch | afsu-tip `footnote-single-pitch` FAIL 9.74 vs 10.84 mm (engine item A4) | MOTOR 2.1 / 2.2 |
-| Canonical line-spacing conformance | auto/exact/atLeast implemented; calibrated Word font matrix remains required; oversized exact PDF clipping must be measured | MOTOR 2.1 |
 | Contextual/page-top spacing conformance | contextual named-style and suppressSpaceBeforeAtPageTop models implemented; forced/natural break fixture verifies Word behaviour | MOTOR 2.2 |
 | Mirror indent conformance | shared resolved model, DOCX mirrorIndents + per-page browser glyph shifts; static print parity not yet measured | MOTOR 2.3 |
 | Typed tab conformance | typed stops/leaders implemented; wrapped/bidirectional runs and custom decimal characters require Word comparison | MOTOR 2.4 |
@@ -161,7 +159,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 
 ## Phase 2 opt-in additions (2026-10-03)
 
-- Canonical `lineSpacing` `rule` auto/exact/atLeast + `value`, with known font metrics or `singleLineEm`; per-style override in editor/PDF/DOCX. Legacy models unchanged. Word acceptance matrix is the compliance gate.
+- Canonical `lineSpacing` `rule` auto/exact/atLeast + `value`, with known font metrics or `singleLineEm`; per-style override in editor/PDF/DOCX. Legacy models unchanged. Word acceptance matrix (`engine-word-parity`: TNR/Arial/Calibri x 10/11/12 pt x auto single/1.15/1.5/2, exact, atLeast + oversized exact 24/14, 12/8, 18/10; pitch and first baseline vs Word PASS, 146/0) is the compliance gate. MEASURED Word model: `exact` baseline at 0.8 x value, `atLeast` shortfall above the text, `exact` glyphs are not clipped in Word's PDF export (engine no longer emits `overflow:clip`). Residual: Calibri 11/12 pt first baseline +0.3 pt vs Word (within 0.25 mm).
 - `contextualSpacing`; named styles have distinct Word IDs. `suppressSpaceBeforeAtPageTop` covers section-top CSS; continuation-column-top behaviour still needs measurement.
 - `indent` `firstLineMm`, `hangingMm`, `leftMm`, `rightMm`, `mirror`; alias `mirrorIndents`. Mirror uses measured per-page glyph spans in the editor and layout PDF; Word emits mirrorIndents. Glyph shifts preserve line width, including paragraphs spanning pages. Static print parity remains unverified.
 - `tabStops` `positionMm`, `align` left/center/right/decimal, `leader` none/dots/hyphen/underscore, `decimalCharacter`: measured browser spans, layout PDF and Word tabs. `tabStopMm` remains compatible.
@@ -170,7 +168,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 - Page `differentFirstPage`; chrome `firstContent`, `evenContent`, `trailingBlankLines`, footer `docxDistanceMm`; section `verticalAlign` center. Page/NUMPAGES fields and styled PAGEREF use cached complex-field runs.
 - Caption numbering `liveField` emits SEQ with deterministic cached number.
 
-Tab/border enum values: `decimal`, `hyphen`, `underscore`, `double`, `dashed`, `dotted`.
+Tab/border enum values: `single`, `decimal`, `hyphen`, `underscore`, `double`, `dashed`, `dotted`.
 
 `decimalCharacter` overrides browser measurement only; Word decimal tabs use the document/environment locale. This option does not establish cross-export parity for a non-locale separator.
 `rule` values: `auto`, `exact`, `atLeast`.

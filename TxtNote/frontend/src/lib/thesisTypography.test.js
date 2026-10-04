@@ -62,7 +62,7 @@ describe("canonical typography and Word properties", () => {
     assert.ok(model.systemFonts.includes("Times New Roman"));
     const css = buildThesisCss(model);
     assert.match(css, /line-height:17pt/);
-    assert.match(css, /p:not\(\[data-thesis-style\]\)\{overflow:clip\}/);
+    assert.doesNotMatch(css, /overflow:clip/); // Word draws oversized exact lines unclipped (measured in the exported PDF)
     assert.match(css, /:is\(span,a,b,strong,i,em,u,s\)\{line-height:inherit\}/);
     const legacy = compileThesisDocument(template({}, { mode: "multiplier" }), {}, "T", "<p>gjpqy</p>");
     assert.deepEqual(legacy.systemFonts, []);

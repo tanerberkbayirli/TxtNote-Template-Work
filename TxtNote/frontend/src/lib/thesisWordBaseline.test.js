@@ -50,3 +50,21 @@ describe("opt-in Word baseline placement", () => {
     assert.doesNotMatch(buildThesisCss(compileThesisDocument(withBaseline, {}, "T", "<p>a</p>")), /p\+p\{margin-top/);
   });
 });
+
+describe("Word baseline target by line-spacing rule (measured in engine-word-parity)", () => {
+  const style = { fontFamily: "Times New Roman", fontSizePt: 10 };
+  const probe = (spacing) => wordBaselineProbe(style, { ...spacing, baseline: "word" }, spacing.value / 10);
+  it("exact puts the baseline at 0.8 x value whatever the glyph size", () => {
+    assert.equal(probe({ rule: "exact", value: 14 }).targetPt, 11.2);
+    assert.equal(wordBaselineProbe({ ...style, fontSizePt: 24 }, { rule: "exact", value: 14, baseline: "word" }, 14 / 24).targetPt, 11.2);
+  });
+  it("atLeast adds the shortfall above the text and equals auto when the text is taller", () => {
+    const m = WORD_FONT_METRICS["times new roman"];
+    const natural = (m.lineGap + m.ascent) * 10;
+    assert.ok(Math.abs(probe({ rule: "atLeast", value: 14 }).targetPt - (natural + 14 - (m.lineGap + m.ascent + m.descent) * 10)) < 1e-3);
+    assert.ok(Math.abs(probe({ rule: "atLeast", value: 5 }).targetPt - natural) < 1e-3);
+  });
+  it("exact and atLeast of the same pitch never share a custom property", () => {
+    assert.notEqual(probe({ rule: "exact", value: 14 }).id, probe({ rule: "atLeast", value: 14 }).id);
+  });
+});

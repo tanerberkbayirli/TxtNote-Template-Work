@@ -562,6 +562,52 @@ def k_line_pitch_match(ctx, c):
             'expected_override': 'PDF vs Word pitch within 0.2 pt'}
 
 
+def _first_line(doc, regex, pages=None):
+    for p in doc.pages(pages):
+        for line in sorted(doc.lines(p), key=lambda l: l['baseline']):
+            if re.search(regex, line['text']):
+                return p, line
+    return None, None
+
+
+def k_first_baseline_match(ctx, c):
+    """Baseline (mm below the page top) of the first line matching a regex: PDF vs Word (line placement inside the line box)."""
+    params = c['params']
+    values = {}
+    for source in ('pdf', 'word'):
+        _, line = _first_line(get_doc(ctx, {**params, 'source': source}), params['regex'], params.get('pages'))
+        if line is None:
+            return {'actual': None, 'note': f'no matching line in {source}'}
+        values[source] = line['baseline']
+    delta = abs(values['pdf'] - values['word'])
+    return {'actual': {**values, 'deltaMm': delta}, 'pass': delta <= c.get('tolerance', .5) + EPS,
+            'expected_override': 'PDF vs Word first baseline within tolerance'}
+
+
+def k_first_ink_top_match(ctx, c):
+    """Height (mm) of the glyph ink above the baseline of the first matching line (a first line has nothing above it):
+    exposes glyph clipping of oversized exact line spacing. PDF vs Word."""
+    import numpy as np
+    params = c['params']
+    values = {}
+    for source in ('pdf', 'word'):
+        doc = get_doc(ctx, {**params, 'source': source})
+        p, line = _first_line(doc, params['regex'], params.get('pages'))
+        if line is None:
+            return {'actual': None, 'note': f'no matching line in {source}'}
+        page = doc.pdf[p - 1]
+        base_pt = line['baseline'] * MM2PT
+        pix = page.get_pixmap(dpi=288, clip=__import__("pymupdf").Rect(0, 0, page.rect.width, base_pt))
+        a = np.frombuffer(pix.samples, dtype=np.uint8).reshape(pix.height, pix.width, pix.n)[:, :, 0]
+        rows = np.where(a.min(axis=1) < 128)[0]
+        if not len(rows):
+            return {'actual': None, 'note': f'no ink above baseline in {source}'}
+        values[source] = (pix.height - rows[0]) / 4 / MM2PT
+    delta = abs(values['pdf'] - values['word'])
+    return {'actual': {**values, 'deltaMm': delta}, 'pass': delta <= c.get('tolerance', .5) + EPS,
+            'expected_override': 'PDF vs Word glyph ink above baseline within tolerance'}
+
+
 def _case_lines(doc, tag):
     """Texts of all lines on the page (and following pages until another tag) where the case tag first appears."""
     out, started = [], False

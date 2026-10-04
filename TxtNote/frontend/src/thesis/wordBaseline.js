@@ -37,6 +37,18 @@ const round = (value) => Math.round(value * 10000) / 10000;
 export const wordBaselineEnabled = (spacing) => (spacing?.mode === "word" || spacing?.rule) && spacing.baseline === "word";
 
 /**
+ * Word's baseline offset from the line top (pt). Measured (engine-word-parity, real Word render, TNR/Arial/Calibri 10-24 pt):
+ * auto lines sit at lineGap + ascent (extra space goes below); `exact` puts the baseline at 0.8 x the exact value whatever the
+ * glyph size; `atLeast` adds the shortfall (value - single line height) above the text, else behaves as auto.
+ */
+export function wordBaselineTargetPt(metrics, sizePt, spacing) {
+  const natural = (metrics.lineGap + metrics.ascent) * sizePt;
+  if (spacing?.rule === "exact" && spacing.value > 0) return 0.8 * spacing.value;
+  if (spacing?.rule === "atLeast" && spacing.value > 0) return natural + Math.max(0, spacing.value - (metrics.lineGap + metrics.ascent + metrics.descent) * sizePt);
+  return natural;
+}
+
+/**
  * Probe of one text style: its custom property id, the Word baseline offset from the line top
  * (targetPt) and the theoretical CSS-minus-Word offset (fallbackPt). Null when not applicable.
  * `lineHeightEm` is the drawn line height (effectiveLineHeight) in em.
@@ -49,11 +61,12 @@ export function wordBaselineProbe(style, spacing, lineHeightEm) {
   if (!metrics) return null;
   const fontWeight = (style.fontWeight || 400) >= 600 ? 700 : 400;
   const italic = Boolean(style.italic);
-  const key = `${fontFamily}|${style.fontSizePt}|${fontWeight}|${italic ? 1 : 0}|${round(lineHeightEm)}`;
+  const target = wordBaselineTargetPt(metrics, style.fontSizePt, spacing);
+  const key = `${fontFamily}|${style.fontSizePt}|${fontWeight}|${italic ? 1 : 0}|${round(lineHeightEm)}|${round(target)}`;
   return {
     id: hash(key), key, fontFamily, fontSizePt: style.fontSizePt, fontWeight, italic, lineHeightEm: round(lineHeightEm),
-    targetPt: round((metrics.lineGap + metrics.ascent) * style.fontSizePt),
-    fallbackPt: round(((lineHeightEm - metrics.ascent - metrics.descent) / 2 - metrics.lineGap) * style.fontSizePt),
+    targetPt: round(target),
+    fallbackPt: round(((lineHeightEm - metrics.ascent - metrics.descent) / 2 + metrics.ascent) * style.fontSizePt - target),
   };
 }
 

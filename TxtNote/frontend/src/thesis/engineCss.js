@@ -280,7 +280,7 @@ export function thesisSectionCss(section) {
   const paragraphStyles = [["p:not([data-thesis-style])", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }])];
   for (const [selector, style] of paragraphStyles) {
     const canonical = style.lineSpacing || lineSpacing;
-    if (canonical?.rule === "exact") rules.push(`${scope} .thesis-body ${selector}{overflow:clip}${scope} .thesis-body ${selector} :is(span,a,b,strong,i,em,u,s){line-height:inherit}`);
+    if (canonical?.rule === "exact") rules.push(`${scope} .thesis-body ${selector} :is(span,a,b,strong,i,em,u,s){line-height:inherit}`);
     if (canonical?.rule === "atLeast") rules.push(`${scope} .thesis-body ${selector} :is(span,a,b,strong,i,em,u,s){line-height:normal}`);
   }
   const contextual = [["p:not([data-thesis-style])", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }])];
