@@ -65,7 +65,7 @@ export async function buildThesisPdf(model) {
   const first = model.sections[0]?.rules.page;
   const pdf = new jsPDF({ unit: "mm", format: [first?.widthMm || 210, first?.heightMm || 297], compress: true });
   pdf.setProperties({ title: model.title || "Tez", creator: "TxtNote" });
-  await embedAcademicPdfFonts(pdf, { templateId: model.templateId });
+  await embedAcademicPdfFonts(pdf, { templateId: model.templateId, families: model.sections.map((section) => section.rules.body?.fontFamily).filter(Boolean) });
   let started = false;
   let logicalPage = 0;
   for (const group of groupThesisSections(model.sections)) {

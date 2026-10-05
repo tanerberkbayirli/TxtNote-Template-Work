@@ -8,7 +8,7 @@
  * it and the output is identical at every zoom level.
  */
 import { jsPDF } from "jspdf";
-import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle } from "../lib/academicFonts.js";
+import { academicPdfFont, embedAcademicPdfFonts, pdfFontStyle, primaryFontFamily } from "../lib/academicFonts.js";
 import { PX_PER_MM, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const MM = 1 / PX_PER_MM;
@@ -52,13 +52,15 @@ function color(value) {
 }
 
 function pdfFace(pdf, style, text) {
-  const family = String(style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
+  const family = primaryFontFamily(style.fontFamily).toLowerCase();
   const bold = Number(style.fontWeight) >= 600;
   const italic = style.fontStyle === "italic" || style.fontStyle.startsWith("oblique");
-  const builtin = /^(arial|helvetica|sans-serif|liberation sans|arimo)$/.test(family) ? "helvetica" : /^(courier|courier new|monospace|consolas)$/.test(family) ? "courier" : "";
+  // Monospace keeps jsPDF's Courier for Latin-1 runs; serif and sans text use the faces embedded for the document
+  // (system font or its bundled metric twin), so one line never mixes a built-in face with an embedded one.
+  const builtin = /^(courier|courier new|monospace|consolas)$/.test(family) ? "courier" : "";
   if (builtin && LATIN1.test(text)) return { name: builtin, style: `${bold ? "bold" : ""}${italic ? "italic" : ""}` || "normal" };
   const faceStyle = pdfFontStyle({ bold, italic });
-  return { name: academicPdfFont(pdf, faceStyle), style: faceStyle };
+  return { name: academicPdfFont(pdf, faceStyle, style.fontFamily), style: faceStyle };
 }
 
 function transformText(text, transform, language) {
@@ -305,14 +307,16 @@ export function thesisLayoutPages(root, groups) {
 
 export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId }) {
   await document.fonts?.ready;
-  const stacks = thesisPageStacks(root, groups);
+  const stacks = thesisPageStacks(root, groups).filter(({ pages }) => pages > 0).map((stack) => ({ ...stack, ops: collectGroup(stack.stack, language) }));
+  // Faces are embedded once, before drawing: the body family first (the document's default), then every other
+  // family the laid-out text uses, so a sans heading in a serif thesis gets its own embedded face.
+  const families = [...new Set([...groups.map((group) => group.rules.body?.fontFamily), ...stacks.flatMap(({ ops }) => ops.filter((op) => op.type === "text").map((op) => op.style.fontFamily))].map(primaryFontFamily).filter(Boolean))];
   let pdf = null;
-  for (const { group, stack, metrics, pages } of stacks) {
-    if (!pages) continue;
+  for (const { group, metrics, pages, ops: groupOps } of stacks) {
     const { widthMm, heightMm } = group.rules.page;
     const orientation = widthMm > heightMm ? "l" : "p";
     const byPage = Array.from({ length: pages }, () => []);
-    for (const op of collectGroup(stack, language)) {
+    for (const op of groupOps) {
       const middle = op.top + (op.height ?? (op.baseline - op.top)) / 2;
       byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / metrics.stridePx)))].push(op);
     }
@@ -320,7 +324,7 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
       if (!pdf) {
         pdf = new jsPDF({ unit: "mm", format: [widthMm, heightMm], orientation, compress: true });
         pdf.setProperties({ title: title || "Tez", creator: "TxtNote" });
-        await embedAcademicPdfFonts(pdf, { templateId });
+        await embedAcademicPdfFonts(pdf, { templateId, families });
       } else pdf.addPage([widthMm, heightMm], orientation);
       const pageTop = index * metrics.stridePx;
       // Lines and images under text, as in the editor.

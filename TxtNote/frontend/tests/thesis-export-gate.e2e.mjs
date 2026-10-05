@@ -12,7 +12,9 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
 const [templateId, outDir, base = "http://localhost:5173"] = process.argv.slice(2);
 if (!templateId || !outDir) { console.error("kullanım: thesis-export-gate.e2e.mjs <templateId> <outDir> [baseUrl]"); process.exit(2); }
 const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
-const page = await browser.newPage({ viewport: { width: 1400, height: 1000 }, acceptDownloads: true });
+// local-fonts lets the PDF writer read the machine's Times New Roman / Arial like the desktop app does; without it the gate records the bundled face as LIMIT.
+const context = await browser.newContext({ viewport: { width: 1400, height: 1000 }, acceptDownloads: true, permissions: ["local-fonts"] });
+const page = await context.newPage();
 const errors = [];
 page.on("pageerror", (error) => errors.push(error.message));
 const PNG = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
@@ -51,12 +53,16 @@ try {
   });
   await writeFile(path.join(outDir, "editor-measurements.json"), JSON.stringify(measured, null, 1));
   const audit = await page.getByRole("button", { name: /^Denetim/ }).getAttribute("aria-label");
+  // The finding codes behind the counts, for the gate report (panel opened and closed again).
+  await page.getByRole("button", { name: /^Denetim:/ }).click();
+  const auditCodes = await page.evaluate(() => [...document.querySelectorAll("[data-thesis-audit-code]")].map((li) => `${li.getAttribute("data-thesis-audit-severity")}:${li.getAttribute("data-thesis-audit-code")}:${li.textContent.trim().slice(0, 120)}`));
+  await page.getByRole("button", { name: "Denetimi kapat" }).click();
   for (const kind of ["docx", "pdf"]) {
     const [download] = await Promise.all([page.waitForEvent("download", { timeout: 120000 }), page.getByRole("button", { name: kind === "docx" ? "Word" : "PDF" }).click()]);
     await download.saveAs(path.join(outDir, `export.${kind}`));
     await page.waitForTimeout(500);
   }
-  await writeFile(path.join(outDir, "export-meta.json"), JSON.stringify({ templateId, audit, pageErrors: errors, generatedAt: new Date().toISOString() }, null, 1));
+  await writeFile(path.join(outDir, "export-meta.json"), JSON.stringify({ templateId, audit, auditCodes, pageErrors: errors, generatedAt: new Date().toISOString() }, null, 1));
   assert.deepEqual(errors, [], "no page errors");
   console.log(`exports → ${outDir} (${measured.totalPages} sayfa; ${audit})`);
 } catch (error) {

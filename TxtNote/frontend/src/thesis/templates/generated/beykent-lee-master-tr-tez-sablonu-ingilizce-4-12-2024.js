@@ -85,10 +85,9 @@ export default {
    ],
    "guide": "tez-yazim-kilavuzu-tr.pdf",
    "gate": {
-    "overall": "LIMIT",
+    "overall": "CONFLICT",
     "results": {
-     "PASS": 31,
-     "LIMIT": 1,
+     "PASS": 32,
      "CONFLICT": 1
     },
     "checkedAt": null

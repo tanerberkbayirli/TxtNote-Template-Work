@@ -20,7 +20,7 @@ ARCHIVE = ROOT.parent / "Butun-Sablonlar"
 CONFIG = json.loads((ROOT / "scripts" / "turkey-universities.json").read_text(encoding="utf-8"))["universities"]
 BY_NAME = {u["name"]: u for u in CONFIG}
 TEMPLATE_RE = re.compile(r"(şablon|sablon|template|taslak)", re.I)
-GUIDE_RE = re.compile(r"(kılavuz|kilavuz|klavuz|yönerge|yonerge|guide|kurallar|öneri|oneri|proposal|onay|approval|signature|imza|dış.?kapak|dis.?kapak|kapak.?sablon|cover.?template|form)", re.I)  # guides and single-page forms are not thesis templates
+GUIDE_RE = re.compile(r"(kılavuz|kilavuz|klavuz|yönerge|yonerge|guide|kurallar|öneri|oneri|proposal|onay|approval|signature|imza|dış.?kapak|dis.?kapak|kapak.?sablon|cover.?template|form|sayfas[ıi].?(şablon|sablon)|dizini.?(şablon|sablon)|özgeçmiş|ozgecmis|simgeler|kısaltma|kisaltma)", re.I)  # guides, single-page forms and one-page examples (iç kapak sayfası şablonu, şekiller dizini şablonu) are not thesis templates
 INSTITUTE_HINTS = [("fbe", r"fen.?bil|fbe|science"), ("sbe", r"sosyal|sbe|social"), ("sagbe", r"sağlık|saglik|health"), ("ebe", r"eğitim|egitim|education"), ("lee", r"lisansüstü|lisansustu|enstit|graduate|lee")]
 DEGREE_HINTS = [("phd", r"doktora|phd|doctor"), ("master", r"yüksek.?lisans|yuksek.?lisans|master|yl\b")]
 
@@ -37,6 +37,7 @@ def main() -> int:
     out_dir = ROOT / "output" / "template-drafts"
     out_dir.mkdir(parents=True, exist_ok=True)
     rows = []
+    used_ids: set[str] = set()
     for folder in sorted(p for p in ARCHIVE.glob("*/*") if p.is_dir()):
         university = BY_NAME.get(folder.name)
         if not university:
@@ -48,6 +49,12 @@ def main() -> int:
             degree = guess(docx.name, DEGREE_HINTS, "master")
             slug = re.sub(r"[^a-z0-9]+", "-", docx.stem.lower().translate(str.maketrans("çğıöşü", "cgiosu"))).strip("-")[:40]
             template_id = f"{university['id']}-{institute}-{degree}-tr-{slug}"
+            # Two files whose names only differ after the slug limit must not share one id.
+            suffix = 2
+            while template_id in used_ids:
+                template_id = f"{university['id']}-{institute}-{degree}-tr-{slug}-{suffix}"
+                suffix += 1
+            used_ids.add(template_id)
             row = {"university": university["name"], "id": university["id"], "file": docx.name, "templateId": template_id}
             try:
                 spec_path = ROOT / "output" / "docx-spec" / f"{docx.stem}.spec.json"

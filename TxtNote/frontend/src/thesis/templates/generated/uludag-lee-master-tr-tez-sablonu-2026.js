@@ -111,10 +111,9 @@ export default {
    ],
    "guide": "DIS- KAPAK-yazi kurallari-24072026.docx",
    "gate": {
-    "overall": "LIMIT",
+    "overall": "CONFLICT",
     "results": {
-     "PASS": 25,
-     "LIMIT": 1,
+     "PASS": 26,
      "CONFLICT": 1
     },
     "checkedAt": null

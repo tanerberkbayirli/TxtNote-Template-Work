@@ -35,17 +35,17 @@ SCOPE_PATTERNS = [
     ("footnote", r"dipnot|footnote"),
     ("abbreviations", r"simgeler|kısaltmalar|dizin"),
     ("acknowledgements", r"teşekkür|tesekkur|ön ?söz|on ?soz|preface"),
-    ("caption", r"(şekil|sekil|çizelge|cizelge|tablo|resim|grafik|figure|table)(?!d[ei]\b|iyle\b|inde\b)\w*\s+(başlı|basli|yazı|yazi|açıklama|aciklama|caption|altyaz)|caption|altyazı|(şekil|çizelge|tablo|resim)\s+(ve|,)\s*(çizelge|tablo|resim|şekil)"),
+    ("caption", r"(şekil|sekil|çizelge|cizelge|tablo|resim|grafik|figure|table)(?!d[ei]\b|iyle\b|inde\b)\w*\s+(başlı|basli|yazı|yazi|açıklama|aciklama|caption|altyaz)|caption|altyazı|görsel künye|künyesi|(şekil|çizelge|tablo|resim)\s+(ve|,)\s*(çizelge|tablo|resim|şekil)"),
     ("heading", r"başlı[kğ]|baslik|heading|bölüm adı"),
     ("pageNumber", r"sayfa\s+numara|page\s+number|numaraland"),
     ("bibliography", r"kaynak(ça|lar)|references|bibliograph"),
     ("abstract", r"özet|abstract|summary"),
-    ("cover", r"kapak|cover"),
+    ("cover", r"kapak|cover|tezin adı|tez başlığı|thesis title|tezi hazırlayan|sunulan yıl|sunulduğu yıl|enstitü(sü)? adı|üniversite(si|nin)? adı|logo|amblem"),
     ("toc", r"içindekiler|contents"),
     ("quote", r"alıntı|quotation"),
     ("table", r"\b(tablo|çizelge|cizelge|table)\w*"),
 ]
-LINE_SPACING_WORDS = [(r"tek\s+satır|single\s+(line\s+)?spac|1[.,]0\s*satır|\b1\s*satır\s*aralı", 1.0), (r"1[.,]5\s*(satır|line)|bir\s+buçuk\s+satır|one\s+and\s+a\s+half", 1.5), (r"\b2\s*satır|çift\s+satır|double\s+(line\s+)?spac|2[.,]0\s*satır", 2.0), (r"1[.,]15\s*(satır|line)", 1.15), (r"1[.,]25\s*(satır|line)", 1.25)]
+LINE_SPACING_WORDS = [(r"tek\s+satır|single\s+(line\s+)?spac|1[.,]0\s*satır|\b1\s*satır\s*aralı", 1.0), (r"1[.,]5\s*(tam\s+)?(satır|line)|bir\s+buçuk\s+satır|one\s+and\s+a\s+half", 1.5), (r"\b2\s*satır|çift\s+satır|double\s+(line\s+)?spac|2[.,]0\s*satır", 2.0), (r"1[.,]15\s*(satır|line)", 1.15), (r"1[.,]25\s*(satır|line)", 1.25)]
 
 
 def to_float(value: str) -> float:
@@ -59,7 +59,14 @@ def sentences_from_text(text: str) -> list[str]:
     # PDF lines are not sentences: join a line to the next unless it ends a sentence or the next starts a list item/heading number.
     text = re.sub(r"(?<![.;:!?])\n(?!\s*(?:[•\-–]|\d+[.)]\s|\d+(?:\.\d+)+\s|[A-ZÇĞİÖŞÜ]{3,}\b))", " ", text)
     parts = re.split(r"(?<=[.;!?])\s+(?=[A-ZÇĞİÖŞÜ0-9“\"(])|\n", text)
-    return [re.sub(r"\s+", " ", p).strip() for p in parts if len(p.strip()) > 8]
+    merged: list[str] = []
+    for part in parts:
+        # "Sayfa numaraları; 10 punto ile …": a short label before ";" is the subject of what follows, not a sentence.
+        if merged and merged[-1].endswith(";") and len(merged[-1].split()) <= 5:
+            merged[-1] = merged[-1] + " " + part
+        else:
+            merged.append(part)
+    return [re.sub(r"\s+", " ", p).strip() for p in merged if len(p.strip()) > 8]
 
 
 def read_document(path: Path) -> list[dict]:
@@ -149,12 +156,15 @@ class Rules:
         # Tie-break: a sentence that speaks for the whole thesis ("tüm metinde", "tezin tamamında") outranks a local one.
         if len(ranked) > 1 and ranked[0][1] == ranked[1][1]:
             global_values = {e["value"] for e in rule["evidence"] if re.search(r"tüm|bütün|genel|tezin tamam|tez metni|ana metin|throughout|entire|all text", e["sentence"].lower())}
-            if len(global_values) == 1:
-                winner = next(iter(global_values))
+            # Second tie-break: a sentence that states a rule ("olmalıdır", "yazılmalıdır", "must") outranks an example's label.
+            rule_values = {e["value"] for e in rule["evidence"] if re.search(r"malı|meli|must|should|shall|olacak|gerek", e["sentence"].lower()) and "/" not in e["sentence"]}
+            for winner, how in ((next(iter(global_values)), "genel ifade") if len(global_values) == 1 else (None, None), (next(iter(rule_values)), "kural cümlesi") if len(rule_values) == 1 else (None, None)):
+                if winner is None:
+                    continue
                 ranked.sort(key=lambda item: (item[0] != winner, -item[1]))
                 rule["value"] = winner
                 rule["status"] = "EXPLICIT"
-                rule["majority"] = {"value": winner, "count": counts[winner], "minority": {str(v): c for v, c in ranked[1:]}, "tieBreak": "genel ifade"}
+                rule["majority"] = {"value": winner, "count": counts[winner], "minority": {str(v): c for v, c in ranked[1:]}, "tieBreak": how}
                 return
         if len(ranked) > 1 and ranked[0][1] >= 2 and ranked[0][1] > ranked[1][1]:
             rule["value"] = ranked[0][0]
@@ -176,7 +186,7 @@ def extract(units: list[dict]) -> Rules:
             # --- margins ---------------------------------------------------------------------------
             # Margins: only portrait body pages; landscape and single-page remarks are other scopes.
             # Page margins: a margin sentence, not an indent/quotation/reference/cover/binding-gutter one.
-            margin_sentence = re.search(r"kenar\s*boşlu|kenar\s*bosluk|margin|sayfa\s+(düzeni|yapısı|kullanım)|kenar\w*\s*[-:–]?\s*[^.]{0,40}?(boşluk|cm|mm)", low) and not re.search(r"alıntı|kaynakça|kaynağın|kaynak listesi|dipnot|cilt payı|quot|karşı sayfa|arka yüz|çift yönlü|çift taraflı|double-sided|logo", low)
+            margin_sentence = re.search(r"kenar\s*boşlu|kenar\s*bosluk|margin|sayfa\s+(düzeni|yapısı|kullanım)|kenar\w*\s*[-:–]?\s*(?:[^.]|\.(?=\d)){0,40}?(boşluk|cm|mm)", low) and not re.search(r"alıntı|kaynakça|kaynağın|kaynak listesi|dipnot|cilt payı|quot|karşı sayfa|arka yüz|çift yönlü|çift taraflı|double-sided|logo", low)
             # Clause-level exclusions: a number that belongs to a heading offset, indent or tab is not a page margin.
             not_margin_clause = lambda position: re.search(r"girinti|içeriden|içerden|indent|tab\b|paragraf|satır|aşağı", clause_around(low, position)) or re.search(r"başlı\w*[^.,;]{0,30}$", low[max(0, position - 40):position])
             # "Diğer üç kenarda 2,5 cm" alone: the sides the previous margin sentence did not name.
@@ -186,7 +196,7 @@ def extract(units: list[dict]) -> Rules:
                 for side in {"top", "bottom", "left", "right"} - last_margin_sides:
                     rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
                 last_margin_sides = set()
-            elif margin_sentence and re.search(NUMBER + UNIT_LEN, low) and scope_at(low, re.search(NUMBER + UNIT_LEN, low).start()) not in ("landscape", "pageSpecific", "note", "table", "caption", "footnote", "cover", "bibliography", "quote", "heading"):
+            elif margin_sentence and re.search(NUMBER + UNIT_LEN, low) and scope_at(low, re.search(NUMBER + UNIT_LEN, low).start()) not in ("landscape", "pageSpecific", "note", "table", "caption", "footnote", "cover", "bibliography", "quote", "heading", "equation"):
                 named = {side for side, words in SIDE_WORDS.items() if re.search(rf"\b(?:{words})\b", low)}
                 if re.search(ALL_SIDES, low) and not named and not not_margin_clause(re.search(NUMBER + UNIT_LEN, low).start()):
                     m = re.search(NUMBER + UNIT_LEN, low)
@@ -226,21 +236,27 @@ def extract(units: list[dict]) -> Rules:
                             assigned.add(side)
                     last_margin_sides = set(assigned)
             # --- font family -----------------------------------------------------------------------
+            if re.fullmatch(r"\(.*\)", sentence.strip()):
+                continue  # "(20 punto/ regular/ garamond)": an example's label, not a rule sentence
             for font in FONT_NAMES:
                 at = low.find(font.lower())
-                if at >= 0 and re.search(r"yazı|font|karakter|punto|tip|type", low):
+                if at >= 0 and re.search(r"yazı|font|karakter|punto|tip|type", low) and not re.search(r"punto\s*/", clause_around(low, at)):
                     rules.add(f"{scope_at(low, at)}.fontFamily", font, "", sentence, loc, scope_at(low, at))
             # --- point sizes -----------------------------------------------------------------------
             for m in re.finditer(r"(\d{1,2}(?:[.,]5)?)\s*(?:punto|pt\b|point)", low):
                 size = to_float(m.group(1))
                 clause = clause_around(low, m.start())
-                if 6 <= size <= 30 and not re.search(LIMIT_WORDS, clause):
+                # "TEZ KONU BAŞLIĞI (14 Punto)": a size alone in parentheses annotates an example line, it states no rule.
+                annotation = re.match(r"\s*\)", low[m.end():]) and re.search(r"\(\s*$", low[:m.start()])
+                if 6 <= size <= 30 and not re.search(LIMIT_WORDS, clause) and not re.search(r"punto\s*/", clause) and not annotation:
                     s_scope = scope_at(low, m.start())
                     rules.add(f"{s_scope}.fontSizePt", size, "pt", sentence, loc, s_scope)
             # --- line spacing ----------------------------------------------------------------------
             if re.search(r"satır\s+aralı|line\s+spac|aralık", low):
+                found_spacing = False
                 for pattern, value in LINE_SPACING_WORDS:
                     for m in re.finditer(pattern, low):
+                        found_spacing = True
                         clause = clause_around(low, m.start())
                         # "1 satır boşluk (1,5 aralıklı)" is a blank line, not the line spacing.
                         # "1 satır aralığı (1,5 aralıklı) bırakılarak": a blank line, not the line spacing.
@@ -248,6 +264,11 @@ def extract(units: list[dict]) -> Rules:
                             continue
                         s_scope = scope_at(low, m.start())
                         rules.add(f"{s_scope}.lineHeight", value, "lines", sentence, loc, s_scope)
+                # "Ana metinde satır aralıkları 1,5 olmalıdır": the bare number after the words, not a length or a blank line.
+                bare = None if found_spacing else re.search(r"satır\s+aralı\w*\s+(?:[^\d\n]{0,20}?)(1[.,]5|1[.,]15|1[.,]25|2[.,]0|1[.,]0|2|1)\b(?!\s*(?:cm|mm|punto|pt|nk|satır))", low)
+                if bare and not re.search(r"boşluk|blank|bırak", clause_around(low, bare.start(1))):
+                    s_scope = scope_at(low, bare.start())
+                    rules.add(f"{s_scope}.lineHeight", to_float(bare.group(1)), "lines", sentence, loc, s_scope)
             # --- paragraph indent / spacing --------------------------------------------------------
             if re.search(r"paragraf|paragraph", low):
                 m = re.search(rf"(girinti|içeriden|içerden|indent|paragraf başı|ilk satır)[^\d\n]{{0,40}}?{NUMBER}{UNIT_LEN}", low) or re.search(rf"{NUMBER}{UNIT_LEN}[^\d\n]{{0,30}}?(girinti|içeriden|içerden|indent)", low)

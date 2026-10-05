@@ -26,7 +26,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PT2MM = 25.4 / 72
 SINGLE_LINE_EM = {"Times New Roman": 1.15, "Arial": 1.15, "Cambria": 1.17, "Calibri": 1.22}
-PDF_SUBSTITUTES = {"Times New Roman": {"Tinos", "TimesNewRoman", "Times New Roman"}, "Arial": {"Helvetica", "Arimo", "Arial"}, "Courier New": {"Courier", "Cousine"}}
+PDF_SUBSTITUTES = {"Times New Roman": {"Tinos"}, "Arial": {"Helvetica", "Arimo", "LiberationSans", "Liberation Sans"}, "Courier New": {"Courier", "Cousine", "LiberationMono"}}
+# PDF base-font names of the real families (system fonts embedded by the writer).
+PDF_FAMILY_NAMES = {"TimesNewRomanPSMT": "Times New Roman", "TimesNewRomanPS-BoldMT": "Times New Roman", "TimesNewRomanPS-ItalicMT": "Times New Roman", "TimesNewRomanPS-BoldItalicMT": "Times New Roman", "TimesNewRoman": "Times New Roman",
+                    "ArialMT": "Arial", "Arial-BoldMT": "Arial", "Arial-ItalicMT": "Arial", "Arial-BoldItalicMT": "Arial"}
+
+
+def pdf_font_family(name: str) -> str:
+    """'ABCDEF+TimesNewRomanPSMT' → 'Times New Roman'; 'Tinos' stays 'Tinos'."""
+    base = name.split("+", 1)[-1]
+    return PDF_FAMILY_NAMES.get(base, base.split(",")[0].split("-")[0] if base.startswith(("Tinos", "LiberationSans", "Arimo", "Helvetica", "Courier")) else base)
 ROMAN_RE = re.compile(r"^(?=[ivxlc]+$)m*(c[md]|d?c{0,3})(x[cl]|l?x{0,3})(i[xv]|v?i{0,3})$", re.I)
 
 
@@ -74,18 +83,30 @@ class Gate:
 
 
 def pdf_lines(page):
-    out = []
+    """Text lines as drawn: fragments on one baseline are one line even when MuPDF split them (a face
+    change, a wide justified gap), so a line's extent is its real extent."""
+    raw = []
     for block in page.get_text("dict")["blocks"]:
         for line in block.get("lines", []):
             spans = [s for s in line["spans"] if s["text"].strip()]
             if not spans:
                 continue
-            out.append({
+            raw.append({
                 "x0": min(s["bbox"][0] for s in spans) * PT2MM, "x1": max(s["bbox"][2] for s in spans) * PT2MM,
                 "y0": min(s["bbox"][1] for s in spans) * PT2MM, "y1": max(s["bbox"][3] for s in spans) * PT2MM,
-                "font": spans[0]["font"], "size": round(spans[0]["size"], 2), "text": "".join(s["text"] for s in spans).strip(),
-                "fonts": collections.Counter((s["font"], round(s["size"], 1)) for s in spans),
+                "baseline": spans[0]["origin"][1] * PT2MM,
+                "font": pdf_font_family(spans[0]["font"]), "size": round(spans[0]["size"], 2), "text": "".join(s["text"] for s in spans).strip(),
+                "fonts": collections.Counter((pdf_font_family(s["font"]), round(s["size"], 1)) for s in spans),
             })
+    raw.sort(key=lambda l: (round(l["baseline"], 1), l["x0"]))
+    out = []
+    for line in raw:
+        last = out[-1] if out else None
+        if last and abs(last["baseline"] - line["baseline"]) < 0.3 and line["x0"] >= last["x1"] - 0.5 and line["x0"] - last["x1"] < line["size"] * PT2MM * 3:
+            last.update({"x1": max(last["x1"], line["x1"]), "y0": min(last["y0"], line["y0"]), "y1": max(last["y1"], line["y1"]), "text": f"{last['text']} {line['text']}"})
+            last["fonts"].update(line["fonts"])
+        else:
+            out.append(line)
     return out
 
 
@@ -102,7 +123,7 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
     em = spacing.get("singleLineEm", 1.0) if spacing.get("mode") == "word" else 1.0
     pitch_expected = round(size * body["lineHeight"] * em, 2) if size and body.get("lineHeight") else None
     numbering = expected["page"]["numbering"]
-    body_lines, numbers, fonts, duplicates, pitches, tops, bottoms = [], [], collections.Counter(), 0, [], [], []
+    body_lines, numbers, fonts, duplicates, pitches, tops, bottoms, page_edges = [], [], collections.Counter(), 0, [], [], [], []
     for pno, page in enumerate(doc):
         lines = pdf_lines(page)
         seen = collections.Counter((round(l["x0"], 1), round(l["y0"], 1), l["text"]) for l in lines)
@@ -121,6 +142,7 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
         full = [l for l in content if abs(l["size"] - size) < 0.6 and (l["x1"] - l["x0"]) > (page_w - margins["leftMm"] - margins["rightMm"]) * 0.9]
         if len(full) >= 6:  # a body page with real paragraphs
             body_lines.extend(full)
+            page_edges.append((pno + 1, min(l["x0"] for l in full), max(l["x1"] for l in full)))
             ys = sorted({round(l["y0"], 2) for l in full})
             pitches.extend(round((b - a) / PT2MM, 2) for a, b in zip(ys, ys[1:]) if 5 < (b - a) / PT2MM < 60)
             tops.append(min(l["y0"] for l in content))
@@ -128,15 +150,18 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
     if not body_lines:
         gate.add("PDF gövde satırları", "≥ 6 tam satırlı sayfa", "ölçüm ön koşulu", 0, "FAIL", note="Gövde sayfası bulunamadı")
         return
-    # Left: the smallest line start (indented first lines never pull it right); right: only justified text reaches the edge.
-    left = min(l["x0"] for l in body_lines)
-    gate.compare("PDF sol kenar boşluğu (mm)", margins["leftMm"], "şablon page.margins.leftMm", round(left, 2), 0.5, unit="mm", note="tam satırların en küçük x0'ı")
+    # Left: the smallest line start per page (indented first lines never pull it right); right: only justified text reaches
+    # the edge. The median over body pages is the template's column; a seeded front page whose official table runs past
+    # the margin (the DOCX's own geometry) is listed in the note instead of failing the body margin.
+    left = statistics.median(e[1] for e in page_edges)
+    right = page_w - statistics.median(e[2] for e in page_edges)
+    overflow = [f"s.{e[0]} +{round(e[2] - (page_w - margins['rightMm']), 2)} mm" for e in page_edges if e[2] - (page_w - margins["rightMm"]) > 0.5]
+    overflow_note = ("; sağ kenarı aşan sayfalar: " + ", ".join(overflow)) if overflow else ""
+    gate.compare("PDF sol kenar boşluğu (mm)", margins["leftMm"], "şablon page.margins.leftMm", round(left, 2), 0.5, unit="mm", note="sayfa başına tam satırların en küçük x0'ı, sayfaların ortancası")
     if body.get("align") == "justify":
-        right = page_w - max(l["x1"] for l in body_lines)
-        gate.compare("PDF sağ kenar boşluğu (mm)", margins["rightMm"], "şablon page.margins.rightMm", round(right, 2), 0.5, unit="mm", note="iki yana yaslı tam satırların en büyük x1'i")
+        gate.compare("PDF sağ kenar boşluğu (mm)", margins["rightMm"], "şablon page.margins.rightMm", round(right, 2), 0.5, unit="mm", note="iki yana yaslı tam satırların sayfa başına en büyük x1'i, sayfaların ortancası" + overflow_note)
     else:
-        right = page_w - max(l["x1"] for l in body_lines)
-        gate.add("PDF sağ kenar boşluğu (mm)", margins["rightMm"], "şablon page.margins.rightMm", round(right, 2), "PASS" if right >= margins["rightMm"] - 0.5 else "FAIL", tolerance="≥ kenar", note="metin iki yana yaslı değil; satır sonu kenara ulaşmaz, yalnız taşma denetlenir")
+        gate.add("PDF sağ kenar boşluğu (mm)", margins["rightMm"], "şablon page.margins.rightMm", round(right, 2), "PASS" if right >= margins["rightMm"] - 0.5 else "FAIL", tolerance="≥ kenar", note="metin iki yana yaslı değil; satır sonu kenara ulaşmaz, yalnız taşma denetlenir" + overflow_note)
     # Top: glyph box starts below the line box by the half-leading plus the font's internal lead; allow 2 mm.
     gate.compare("PDF üst kenar boşluğu (mm, ilk satır üstü)", margins["topMm"], "şablon page.margins.topMm", round(min(tops), 2), 2.0, unit="mm", note="glif kutusu satır kutusundan yarım boşluk + iç lead kadar aşağıdadır; 2 mm tolerans")
     bottom_gap = page_h - max(bottoms)
@@ -150,8 +175,14 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
     (font, size_seen), _ = fonts.most_common(1)[0]
     gate.compare("PDF gövde puntosu (baskın span)", size, "şablon body.fontSizePt", size_seen, 0.1, unit="pt")
     expected_font = body.get("fontFamily")
+    body_fonts = collections.Counter()
+    for l in body_lines:
+        body_fonts.update({f: c for (f, _s), c in l["fonts"].items()})
+    mixed = [f for f, c in body_fonts.items() if c >= 0.05 * sum(body_fonts.values()) and f != body_fonts.most_common(1)[0][0]]
+    if mixed:
+        gate.add("PDF gövde satırlarında tek yazı tipi", body_fonts.most_common(1)[0][0], "şablon body.fontFamily", dict(body_fonts.most_common(3)), "FAIL", note="gövde satırları birden çok yazı tipiyle çizilmiş (parçalar farklı yüzlerde)")
     if font == expected_font:
-        gate.add("PDF yazı tipi", expected_font, "şablon body.fontFamily", font, "PASS")
+        gate.add("PDF yazı tipi", expected_font, "şablon body.fontFamily", font, "PASS", note="sistem fontu gömülü")
     elif font in PDF_SUBSTITUTES.get(expected_font, set()):
         gate.add("PDF yazı tipi", expected_font, "şablon body.fontFamily", font, "LIMIT", note=f"PDF yazıcısı {expected_font} yerine metrik eşdeğeri {font} gömüyor (lisans). Geometri aynı; yazı tipi uyumu sağlanmış sayılmaz.")
     else:
@@ -176,9 +207,20 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
             arabics = [n["text"] for n in numbers if n["text"].isdigit()]
             roman_values = [roman_to_int(r) for r in romans]
             arabic_values = [int(a) for a in arabics]
-            sequential = all(b == a + 1 for a, b in zip(roman_values, roman_values[1:])) and all(b == a + 1 for a, b in zip(arabic_values, arabic_values[1:]))
-            # Expectations come from the template: Roman front matter only if a section asks for it; "1" only if the main body restarts.
             sections = expected.get("sections", [])
+            # A Roman restart the template itself defines (an upper-Roman approval page "I", then the abstracts from "i")
+            # is a case change back to 1, allowed once per restarting Roman section after the first.
+            roman_restarts = sum(1 for sec in sections if "roman" in str((sec.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", "")) and (sec.get("overrides") or {}).get("page", {}).get("numbering", {}).get("restart")) - 1
+            roman_ok = True
+            for (a, b), (ra, rb) in zip(zip(roman_values, roman_values[1:]), zip(romans, romans[1:])):
+                if b == a + 1:
+                    continue
+                if b == 1 and ra.isupper() != rb.isupper() and roman_restarts > 0:
+                    roman_restarts -= 1
+                    continue
+                roman_ok = False
+            sequential = roman_ok and all(b == a + 1 for a, b in zip(arabic_values, arabic_values[1:]))
+            # Expectations come from the template: Roman front matter only if a section asks for it; "1" only if the main body restarts.
             expects_roman = any("roman" in str((s.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", "")) for s in sections)
             main_numbering = next(((s.get("overrides") or {}).get("page", {}).get("numbering", {}) for s in sections if s.get("type") == "mainContent"), {})
             expects_restart = bool(main_numbering.get("restart"))
@@ -211,7 +253,10 @@ def measure_docx(path: Path, expected: dict, gate: Gate):
         pt_match = re.match(r"([\d.]+) pt", spacing_text)
         same = spacing_text == f"{body['lineHeight']} satır" or (pt_match and body.get("fontSizePt") and abs(float(pt_match.group(1)) - body["lineHeight"] * body["fontSizePt"]) <= 0.3)
         gate.add("DOCX gövde satır aralığı", f"{body['lineHeight']} satır (= {round(body['lineHeight'] * (body.get('fontSizePt') or 0), 1)} pt)", "şablon body.lineHeight", spacing_text, "PASS" if same else "FAIL")
-    gate.add("DOCX gövde hizası", body.get("align"), "şablon body.align", profile.get("align"), "PASS" if profile.get("align") == body.get("align") else "FAIL")
+    if body.get("align") is None:
+        gate.add("DOCX gövde hizası", None, "şablon body.align", profile.get("align"), "UNKNOWN", note="şablon/kılavuz hizayı belirlemiyor")
+    else:
+        gate.add("DOCX gövde hizası", body.get("align"), "şablon body.align", profile.get("align"), "PASS" if profile.get("align") == body.get("align") else "FAIL")
     formats = [s["numbering"]["format"] for s in spec["sections"]]
     expects_roman = any("roman" in str((s.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", "")) for s in expected.get("sections", []))
     gate.add("DOCX bölüm numara biçimleri", ("Romen ön sayfalar + " if expects_roman else "") + "decimal gövde", "şablon bölümleri", ", ".join(str(f) for f in formats), "PASS" if "decimal" in formats and (any(f and "Roman" in f for f in formats) if expects_roman else True) else "FAIL")

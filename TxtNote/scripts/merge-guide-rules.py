@@ -148,6 +148,24 @@ def main() -> int:
     apply("bibliography.hangingIndentMm", "bibliography.hangingIndentMm", bibliography, "hangingIndentMm")
     apply("bibliography.lineHeight", "bibliography.lineHeight", bibliography.setdefault("style", {}), "lineHeight")
 
+    # Fields the schema needs but guides rarely state. With --defaults-when-silent the plainest reading of silence
+    # is written (no indent, no hanging indent, number at the bottom centre), marked INFERRED and kept in the
+    # unknown list so the review panel shows it; an explicit rule above always wins.
+    if args.defaults_when_silent:
+        for path, container, field, value, reading in (
+            ("typography.paragraph.firstLineIndentMm", paragraph, "firstLineIndentMm", 0, "Kılavuz paragraf girintisi belirtmiyor; girinti yok (0 mm) kabul edildi"),
+            ("bibliography.hangingIndentMm", bibliography, "hangingIndentMm", 0, "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"),
+            ("page.numbering.position", numbering, "position", "bottom", "Kılavuz sayfa numarasının yerini belirtmiyor; alt kenar kabul edildi"),
+            ("page.numbering.align", numbering, "align", "center", "Kılavuz sayfa numarasının hizasını belirtmiyor; ortalı kabul edildi"),
+        ):
+            if container.get(field) is None:
+                container[field] = value
+                draft.setdefault("inferred", []).append({"field": path, "value": value, "reasoning": reading + " — kılavuzdan teyit edilmeli"})
+                for u in draft.get("unknown", []):
+                    if u["field"] == path:
+                        u["reason"] = reading
+                template.setdefault("source", {}).setdefault("notes", []).append(reading)
+
     # Rules the schema cannot hold yet are kept as evidence next to the unknown they answer.
     for key, field in (("pageNumber.fontSizePt", "page.footer.font"), ("pageNumber.fontFamily", "page.footer.font")):
         rule = rules.get(key)

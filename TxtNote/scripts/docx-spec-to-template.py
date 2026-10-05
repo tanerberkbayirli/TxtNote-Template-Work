@@ -392,6 +392,20 @@ class Draft:
             bounds.append((total, s))
 
         restarted: set[int] = set()
+        # A run of consecutive physical sections with the same format and start=1 (Word keeps pgNumType when a
+        # section is copied) restarts once, at its first section; the guide's "i, ii, iii…" reading of the front
+        # matter is kept and the copies are recorded as an inference.
+        # The same holds for hand-set starts inside the run (start=2, 3, 8, 9: the author's own page count in Word);
+        # the run numbers on from its first section.
+        artifact_sections: set[int] = set()
+        previous = None
+        for s in spec_sections:
+            n = s["numbering"]
+            if previous and n["start"] and n["format"] == previous["numbering"]["format"]:
+                artifact_sections.add(s["index"])
+            previous = s
+        if artifact_sections:
+            self.inferred.append({"field": "page.numbering.restart", "value": sorted(artifact_sections), "reasoning": f"DOCX bölümleri {sorted(artifact_sections)} önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"})
 
         def numbering_for(paragraph_index: int) -> dict | None:
             for end, s in bounds:
@@ -401,7 +415,7 @@ class Draft:
                         return None
                     rule = {"format": fmt}
                     # The restart belongs to the first thesis section inside that physical section only.
-                    if s["numbering"]["start"] and s["index"] not in restarted:
+                    if s["numbering"]["start"] and s["index"] not in restarted and s["index"] not in artifact_sections:
                         restarted.add(s["index"])
                         rule.update({"startAt": s["numbering"]["start"], "restart": True})
                     return rule
@@ -448,6 +462,14 @@ class Draft:
         if "mainContent" not in seen_kinds:
             sections.append({"id": "main-content", "type": "mainContent", "title": "Ana metin", "status": "required", "group": "body", "mode": "editable", "showTitle": False})
             self.unk("sections.mainContent", "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi")
+        # A body that would carry Roman numerals (the DOCX never switches format, or the body section inherits the
+        # front matter's sectPr) is numbered 1, 2, 3… from its first page; recorded as an inference.
+        main = next((sec for sec in sections if sec["type"] == "mainContent"), None)
+        if main:
+            current = (main.get("overrides") or {}).get("page", {}).get("numbering") or self._page_for_sections["numbering"]
+            if "roman" in str(current.get("format", "")):
+                main.setdefault("overrides", {})["page"] = {"numbering": {"format": "arabic", "startAt": 1, "restart": True}}
+                self.inferred.append({"field": "sections.main-content.page.numbering", "value": main["overrides"]["page"]["numbering"], "reasoning": "DOCX gövde bölümü Romen rakamı biçimi taşıyor (ön sayfa bölümünün kopyası); gövde 1'den Arap rakamıyla numaralandı — kılavuzdan teyit edilmeli"})
         self.ev("sections", [s["type"] for s in sections], f"{len(found)} birinci düzey başlık, {len(spec_sections)} fiziksel bölüm")
         return sections, titles
 
@@ -613,6 +635,7 @@ class Draft:
     def build(self) -> dict:
         a = self.args
         page = self.page()
+        self._page_for_sections = page
         body, paragraph = self.body()
         self._body_for_sections = body
         self.template_notes: list[str] = []

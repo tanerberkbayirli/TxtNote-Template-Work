@@ -103,10 +103,9 @@ export default {
    ],
    "guide": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
    "gate": {
-    "overall": "LIMIT",
+    "overall": "CONFLICT",
     "results": {
-     "PASS": 29,
-     "LIMIT": 1,
+     "PASS": 30,
      "CONFLICT": 6
     },
     "checkedAt": null

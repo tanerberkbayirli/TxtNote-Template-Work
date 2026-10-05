@@ -77,10 +77,9 @@ export default {
    "conflicts": [],
    "guide": null,
    "gate": {
-    "overall": "LIMIT",
+    "overall": "PASS",
     "results": {
-     "PASS": 24,
-     "LIMIT": 1
+     "PASS": 25
     },
     "checkedAt": null
    }

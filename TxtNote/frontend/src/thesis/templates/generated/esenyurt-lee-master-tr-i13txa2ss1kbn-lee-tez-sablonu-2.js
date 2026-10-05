@@ -20,7 +20,7 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
-   "Kılavuz kuralları birleştirildi: kp3x2lqxba5yi-tez-yazim-kilavuzu.docx (3 alan, 1 çelişki)"
+   "Kılavuz kuralları birleştirildi: kp3x2lqxba5yi-tez-yazim-kilavuzu.docx (3 alan, 2 çelişki)"
   ],
   "guideDocumentName": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx",
   "review": {
@@ -94,6 +94,12 @@ export default {
    ],
    "conflicts": [
     {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx › paragraf 32: “Tezin tamamında aksi belirtilmedikçe satır aralığı 1,5 cm olmalıdır.”"
+    },
+    {
      "field": "typography.paragraph.spaceBeforePt",
      "measured": "10",
      "guide": "5",
@@ -102,10 +108,10 @@ export default {
    ],
    "guide": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx",
    "gate": {
-    "overall": "LIMIT",
+    "overall": "CONFLICT",
     "results": {
-     "PASS": 31,
-     "LIMIT": 1
+     "PASS": 32,
+     "CONFLICT": 1
     },
     "checkedAt": null
    }

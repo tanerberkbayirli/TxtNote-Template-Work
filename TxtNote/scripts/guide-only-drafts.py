@@ -118,7 +118,10 @@ def main() -> int:
     parser.add_argument("--only")
     parser.add_argument("--include-installed", action="store_true")
     args = parser.parse_args()
-    installed = {re.match(r"^([a-z0-9]+)-", f.stem).group(1) for f in GENERATED.glob("*.js") if f.name != "index.js" and re.match(r"^([a-z0-9]+)-", f.stem)}
+    # Universities with a valid measured DOCX draft (batch-report.json) keep that; the guide alone is for the rest.
+    report = ROOT / "output" / "template-drafts" / "batch-report.json"
+    installed = {r["id"] for r in json.loads(report.read_text(encoding="utf-8")) if r.get("statusAfterGuide") == "ok"} if report.exists() else set()
+    installed |= {re.match(r"^([a-z0-9]+)-", f.stem).group(1) for f in GENERATED.glob("*.js") if f.name != "index.js" and not f.stem.endswith("-kilavuz") and re.match(r"^([a-z0-9]+)-", f.stem)}
     wanted = set(args.only.split(",")) if args.only else None
     rows = []
     for university in CONFIG:
