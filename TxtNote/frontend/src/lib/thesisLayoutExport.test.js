@@ -31,7 +31,7 @@ function compiledLayoutModel() {
         content: "Canonical editable text",
         style: {
           fontFamily: "Times New Roman", fontSizePt: 12, fontWeight: 700, italic: true,
-          decoration: "underline", color: "#123456", lineHeight: 1.5, spaceAfterPt: 6,
+          decoration: "underline", color: "#123456", highlight: "#fedcba", lineHeight: 1.5, spaceAfterPt: 6,
           firstLineIndentMm: 3, leftIndentMm: 2, rightIndentMm: 1, align: "left",
         },
       },
@@ -74,6 +74,7 @@ describe("positioned thesis layout export", () => {
     assert.match(documentXml, /<w:i\s*\/>/);
     assert.match(documentXml, /<w:u w:val="single"\s*\/>/);
     assert.match(documentXml, /<w:color w:val="123456"\s*\/>/);
+    assert.match(documentXml, /<w:shd\b[^>]*w:fill="FEDCBA"/, "positioned text keeps its custom highlight");
     assert.match(documentXml, /<w:spacing[^>]*w:after="120"[^>]*w:line="360"[^>]*w:lineRule="auto"/);
     assert.match(documentXml, new RegExp(`w:firstLine="${mmToTwip(3)}"`));
     assert.match(documentXml, new RegExp(`w:left="${mmToTwip(2)}"`));
@@ -98,6 +99,13 @@ describe("positioned thesis layout export", () => {
     assert.ok(sectionProps, "A4 page size, margins and chrome distances are present");
     assert.deepEqual(sectionProps.slice(1).map(Number), [mmToTwip(210), mmToTwip(297), mmToTwip(25), mmToTwip(30), mmToTwip(13), mmToTwip(17)]);
     assert.equal(ptToTwip(6), 120);
+  });
+
+  it("keeps preset highlights on positioned DOCX text", async () => {
+    const model = compiledLayoutModel();
+    model.sections[0].layout.find((node) => node.type === "group").blocks.find((node) => node.id === "cover:block:0.1").style.highlight = "yellow";
+    const documentXml = xmlEntry(await unzippedDocx(model), "word/document.xml");
+    assert.match(documentXml, /<w:shd\b[^>]*w:fill="FFF2A8"/);
   });
 
   it("keeps positioned text searchable at its page coordinates in the fallback PDF", async () => {

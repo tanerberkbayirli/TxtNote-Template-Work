@@ -1,6 +1,35 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { clampResizeRect, DRAG_THRESHOLD_PX, pageLocalRect, patchesForRects } from '../thesis/layoutInteraction.js';
+import { clampResizeRect, DRAG_THRESHOLD_PX, pageLocalRect, patchesForRects, textAlignmentPatch, toggleLayoutDecoration } from '../thesis/layoutInteraction.js';
+import { normalizeLayoutTextStyle } from '../thesis/layoutDocument.js';
+
+test('text alignment uses the selected page writing area and preserves box mode', () => {
+  const item = { id: 'cover:text', type: 'text', editableLayout: true, editableContent: true, xMm: 70, yMm: 82, widthMm: 60,
+    page: { widthMm: 210, margins: { leftMm: 35, rightMm: 25 } } };
+  for (const align of ['left', 'center', 'right', 'justify']) {
+    const patch = textAlignmentPatch(item, align);
+    assert.equal(patch.xMm, 35);
+    assert.equal(patch.widthMm, 150);
+    assert.equal(patch.yMm, 82);
+    assert.equal(patch.style.align, align);
+    assert.deepEqual(textAlignmentPatch(item, align, 'box'), { id: item.id, style: { align } });
+  }
+  assert.equal(textAlignmentPatch({ ...item, locked: true }, 'right'), null);
+  assert.equal(textAlignmentPatch({ ...item, editableLayout: false }, 'right'), null);
+  assert.equal(textAlignmentPatch({ ...item, editableContent: false }, 'right'), null);
+  assert.equal(textAlignmentPatch({ ...item, page: {} }, 'right'), null);
+  assert.equal(textAlignmentPatch(item, 'invalid'), null);
+  assert.equal(textAlignmentPatch({ ...item, yMm: undefined, measuredGeometry: { yMm: 95 } }, 'left').yMm, 95);
+});
+
+test('decoration commands preserve other lines and normalize either toggle order', () => {
+  assert.equal(toggleLayoutDecoration('line-through', 'underline'), 'underline line-through');
+  assert.equal(toggleLayoutDecoration('underline line-through', 'underline'), 'line-through');
+  assert.equal(toggleLayoutDecoration('line-through', 'underline', false), 'line-through');
+  assert.equal(toggleLayoutDecoration('underline', 'line-through'), 'underline line-through');
+  assert.equal(normalizeLayoutTextStyle({ decoration: 'line-through underline' }).decoration, 'underline line-through');
+  assert.equal(normalizeLayoutTextStyle({ decoration: 'line-through bad-token' }).decoration, undefined);
+});
 
 test('thesis layout interaction lifecycle helpers', async (t) => {
   await t.test('keeps the dragged corner fixed and preserves aspect ratio when requested', () => {

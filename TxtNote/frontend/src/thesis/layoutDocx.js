@@ -5,6 +5,7 @@ import {
 } from "docx";
 import { convertLength, mmToTwip, ptToTwip } from "./units.js";
 import { transformThesisText } from "./engine.js";
+import { FORMAT_HIGHLIGHTS } from "../config/format.js";
 
 const aligned = (value) => ({ center: AlignmentType.CENTER, right: AlignmentType.RIGHT, justify: AlignmentType.JUSTIFIED }[value] || AlignmentType.LEFT);
 const validGeometry = (node) => Number.isFinite(node.xMm) && Number.isFinite(node.yMm) && Number.isFinite(node.widthMm) && node.widthMm > 0;
@@ -43,6 +44,7 @@ export function splitLayoutNodes(nodes) {
 
 function textRuns(text, style = {}, language = "tr") {
   const fontSizePt = Number(style.fontSizePt) || 12;
+  const highlight = FORMAT_HIGHLIGHTS.find((entry) => entry.id === style.highlight)?.swatch || style.highlight;
   if (!Number.isInteger(fontSizePt * 2)) throw new Error(`Word metin boyutu ${fontSizePt} pt yarım punto biriminde saklanamıyor`);
   const common = {
     font: style.fontFamily,
@@ -50,6 +52,7 @@ function textRuns(text, style = {}, language = "tr") {
     bold: Number(style.fontWeight) >= 600,
     italics: Boolean(style.italic),
     ...(style.color && /^#[0-9a-f]{6}$/i.test(style.color) ? { color: style.color.slice(1).toUpperCase() } : {}),
+    ...(typeof highlight === "string" && /^#[0-9a-f]{6}$/i.test(highlight) ? { shading: { fill: highlight.slice(1).toUpperCase(), type: "clear" } } : {}),
     ...(Number.isFinite(style.characterSpacingPt) && style.characterSpacingPt ? { characterSpacing: ptToTwip(style.characterSpacingPt) } : {}),
     underline: /\bunderline\b/.test(style.decoration || "") ? {} : undefined,
     strike: /\bline-through\b/.test(style.decoration || ""),

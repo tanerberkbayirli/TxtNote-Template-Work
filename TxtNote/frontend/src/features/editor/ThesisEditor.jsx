@@ -22,6 +22,7 @@ import LayoutInspector from "./LayoutInspector.jsx";
 import PageLayoutInspector from "./PageLayoutInspector.jsx";
 import LayoutRulers from "./LayoutRulers.jsx";
 import { layoutTableContinuations, tableContinuationRows } from "../../thesis/tableContinuation.js";
+import { textAlignmentPatch, toggleLayoutDecoration } from "../../thesis/layoutInteraction.js";
 import { applyTransformExceptions } from "../../thesis/transformExceptions.js";
 import ThesisRibbon from "./ThesisRibbon.jsx";
 import ThesisNavigation from "./ThesisNavigation.jsx";
@@ -395,7 +396,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   // The one toolbar drives the editable section that last had focus (the first one before any focus).
   // Static and generated sections have no editor instance; clicking one keeps the previous target.
   const bodySection = model?.sections.find((section) => section.id === activeSectionId && section.editable) || model?.sections.find((section) => section.editable) || null;
-  const activeLayoutText = interaction.selectedElements.length === 1 && interaction.selectedElements[0]?.type === "text" && interaction.selectedElements[0]?.editableContent
+  const activeLayoutText = interaction.selectedElements.length === 1 && interaction.selectedElements[0]?.type === "text"
     ? interaction.selectedElements[0] : null;
   const layoutTextSection = activeLayoutText && model?.sections.find((section) => section.id === activeLayoutText.sectionId);
   const activeSection = (activeLayoutText && layoutTextSection) || (activeStatic && model?.sections.find((section) => section.id === activeStatic.sectionId)) || bodySection;
@@ -479,10 +480,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         if (key === "bold") return { ...style, fontWeight: layoutTextFormat?.bold ? 400 : 700 };
         if (key === "italic") return { ...style, italic: !layoutTextFormat?.italic };
         if (key === "underline" || key === "strike") {
-          const lines = new Set(String(layoutTextFormat?.decoration || "none").split(/\s+/).filter((line) => line !== "none"));
           const line = key === "underline" ? "underline" : "line-through";
-          if (lines.has(line)) lines.delete(line); else lines.add(line);
-          return { ...style, decoration: lines.size ? [...lines].join(" ") : "none" };
+          return { ...style, decoration: toggleLayoutDecoration(layoutTextFormat?.decoration, line) };
         }
         return null;
       }),
@@ -493,7 +492,10 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         patchStyle((style) => ({ ...style, highlight }));
       },
       applySize: (value) => { const pt = Number(String(value).replace(/^pt/i, "")); if (Number.isFinite(pt) && pt >= 1 && pt <= 400) patchStyle((style) => ({ ...style, fontSizePt: Math.round(pt * 2) / 2 })); },
-      applyAlign: (align) => { if (["left", "center", "right", "justify"].includes(align)) patchStyle((style) => ({ ...style, align })); },
+      applyAlign: (align, scope = "page") => {
+        const patch = textAlignmentPatch(target, align, scope);
+        if (patch) interaction.patchElements([patch]);
+      },
       undo: () => interaction.undo(),
       redo: () => interaction.redo(),
       clearFormatting: () => {
@@ -654,7 +656,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss + tabsCss + mirrorCss}</style>
     <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
     <ThesisRibbon title={plainTitle} activeSection={activeSection} template={template}
-      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: Boolean(activeSection && !activeStatic && !activeLayoutText) }}
+      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, canFormatText: !interaction.selectedElements.length || Boolean(activeLayoutText?.editableContent && activeLayoutText?.editableLayout && !activeLayoutText?.locked), isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: Boolean(activeSection && !activeStatic && !interaction.selectedElements.length) }}
       detailsOpen={detailsOpen} setDetailsOpen={setDetailsOpen} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={setPageSettingsOpen}
       canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
       exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}

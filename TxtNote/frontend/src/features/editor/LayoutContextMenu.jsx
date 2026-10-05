@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
+import { toggleLayoutDecoration } from "../../thesis/layoutInteraction.js";
 
 const menuStyle = { width: 258, maxHeight: "min(76vh, 620px)", overflow: "auto", padding: 7, border: "1px solid #d4d4d8", borderRadius: 9, background: "#fff", color: "#18181b", boxShadow: "0 14px 42px rgba(24,24,27,.22)", pointerEvents: "auto", font: "13px/1.35 system-ui,sans-serif" };
 const fieldStyle = { display: "grid", gap: 3, fontSize: 11, color: "#52525b" };
@@ -48,7 +49,9 @@ export default function LayoutContextMenu({ contextMenu, selectedElements = [], 
     }));
   };
   const checked = (key) => key === "bold" ? Number(one?.style?.fontWeight || 400) >= 600 : key === "underline" ? String(one?.style?.decoration || "").includes("underline") : Boolean(one?.style?.[key]);
-  const toggle = (key) => key === "bold" ? patchStyle("fontWeight", checked(key) ? 400 : 700) : key === "underline" ? patchStyle("decoration", checked(key) ? "none" : "underline") : patchStyle(key, !checked(key));
+  const toggle = (key) => key === "bold" ? patchStyle("fontWeight", checked(key) ? 400 : 700) : key === "underline"
+    ? onPatch(selected.map((item) => ({ id: item.id, style: { decoration: toggleLayoutDecoration(item.style?.decoration, "underline", !checked(key)) } })))
+    : patchStyle(key, !checked(key));
   const action = (name, title, extra = {}) => <button key={name} type="button" role="menuitem" disabled={Boolean(extra.disabled)} onClick={() => invoke(name)} onPointerOver={(event) => { event.currentTarget.style.background = "#f4f4f5"; }} onPointerOut={(event) => { event.currentTarget.style.background = "transparent"; }} style={{ ...buttonStyle, opacity: extra.disabled ? 0.45 : 1, cursor: extra.disabled ? "not-allowed" : "pointer" }}>{title}</button>;
   const rule = <hr style={{ border: 0, borderTop: "1px solid #e4e4e7", margin: "5px 2px" }} />;
   const boolean = (name, key) => <button key={key} type="button" aria-label={name} aria-pressed={checked(key)} disabled={disabled} onClick={() => toggle(key)} style={{ ...buttonStyle, width: "auto", padding: "5px 8px", fontWeight: key === "bold" ? 700 : undefined, fontStyle: key === "italic" ? "italic" : undefined, textDecoration: key === "underline" ? "underline" : undefined, background: checked(key) ? "#e4e4e7" : "transparent" }}>{name}</button>;
@@ -58,12 +61,12 @@ export default function LayoutContextMenu({ contextMenu, selectedElements = [], 
       <label style={fieldStyle}><span>Yazı tipi</span><input aria-label="Yazı tipi" value={one.style?.fontFamily || ""} disabled={disabled} onChange={(event) => patchStyle("fontFamily", event.target.value)} style={inputStyle} /></label>
       <NumberField name="Punto (pt)" value={one.style?.fontSizePt ?? one.fontSizePt} disabled={disabled} onChange={(value) => patchStyle("fontSizePt", value)} />
       <div style={{ display: "flex", gap: 3 }}>{boolean("Kalın", "bold")}{boolean("İtalik", "italic")}{boolean("Altı çizili", "underline")}</div>
-      <label style={fieldStyle}><span>Hizalama</span><select aria-label="Hizalama" value={one.style?.align || ""} disabled={disabled} onChange={(event) => patchStyle("align", event.target.value)} style={inputStyle}><option value="">—</option><option value="left">Sola</option><option value="center">Ortala</option><option value="right">Sağa</option><option value="justify">İki yana</option></select></label>
+      <label style={fieldStyle}><span>Kutu içi hizalama</span><select aria-label="Kutu içi hizalama" value={one.style?.align || ""} disabled={disabled} onChange={(event) => patchStyle("align", event.target.value)} style={inputStyle}><option value="">—</option><option value="left">Sola</option><option value="center">Ortala</option><option value="right">Sağa</option><option value="justify">İki yana</option></select></label>
     </section>}
     {imageOnly && <section aria-label="Görsel boyutu" style={{ display: "grid", gap: 6, padding: 5 }}><strong style={{ fontSize: 12 }}>Görsel boyutu</strong><div style={grid}><NumberField name="Genişlik (mm)" value={one?.widthMm} disabled={disabled} onChange={(value) => patchBounds("widthMm", value)} /><NumberField name="Yükseklik (mm)" value={one?.heightMm} disabled={disabled} onChange={(value) => patchBounds("heightMm", value)} /></div><label style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12 }}><input type="checkbox" aria-label="En-boy oranını kilitle" checked={selected.every((item) => item.lockAspectRatio)} disabled={disabled} onChange={(event) => onPatch(selected.map((item) => ({ id: item.id, lockAspectRatio: event.target.checked })))} />En-boy oranını koru</label></section>}
     {(textOnly || imageOnly) && rule}
     <div style={{ padding: "0 3px" }}>{action("inspect", "Ayrıntıları aç", { disabled: false })}</div>
-    {selected.length > 1 && <>{rule}<strong style={{ display: "block", padding: "4px 8px", fontSize: 11, color: "#71717a" }}>Hizala ve dağıt</strong>{[["alignLeft", "Sola hizala"], ["alignCenter", "Ortala"], ["alignRight", "Sağa hizala"], ["alignTop", "Üste hizala"], ["alignMiddle", "Dikey ortala"], ["alignBottom", "Alta hizala"], ["distributeHorizontal", "Yatay dağıt"], ["distributeVertical", "Dikey dağıt"]].map(([name, title]) => action(name, title, { disabled }))}</>}
+    {selected.length > 0 && <>{rule}<strong style={{ display: "block", padding: "4px 8px", fontSize: 11, color: "#71717a" }}>{selected.length === 1 ? "Öğeyi sayfaya hizala" : "Hizala ve dağıt"}</strong>{[["alignLeft", "Sola hizala"], ["alignCenter", "Ortala"], ["alignRight", "Sağa hizala"], ["alignTop", "Üste hizala"], ["alignMiddle", "Dikey ortala"], ["alignBottom", "Alta hizala"]].map(([name, title]) => action(name, title, { disabled }))}{selected.length > 1 && [["distributeHorizontal", "Yatay dağıt"], ["distributeVertical", "Dikey dağıt"]].map(([name, title]) => action(name, title, { disabled: disabled || selected.length < 3 }))}</>}
     {rule}
     {action("duplicate", "Çoğalt", { disabled })}
     {action("copy", "Kopyala", { disabled })}

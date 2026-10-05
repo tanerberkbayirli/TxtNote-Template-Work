@@ -42,8 +42,10 @@ export default function HomeTab({
   invoke,
   headingOptions,
   paragraphOptions,
+  alignmentScope,
+  setAlignmentScope,
 }) {
-  const off = !activeSection;
+  const off = !activeSection || actions.canFormatText === false;
   const blockOff = off || (actions.isStaticTarget && !actions.isLayoutTextTarget);
   const format = actions.activeFormat;
   const currentSize = format?.sizePt ?? format?.sizeComputedPt;
@@ -121,12 +123,16 @@ export default function HomeTab({
           </div>
           <div className="thesis-home-row">
             {aligns.map(([value, label, Icon]) => (
-              <Tool key={value} label={label} disabled={blockOff} pressed={format?.align === value} onMouseDown={keep} onClick={() => invoke("applyAlign", value)}>
+              <Tool key={value} label={label} title={actions.isLayoutTextTarget ? `${label} · ${alignmentScope === "page" ? "sayfanın yazı alanı" : "metin kutusu"}` : label} disabled={blockOff} pressed={format?.align === value} onMouseDown={keep} onClick={() => invoke("applyAlign", value, alignmentScope)}>
                 <Icon size={16} aria-hidden="true" />
               </Tool>
             ))}
             <span className="thesis-home-sep" aria-hidden="true" />
-            <select
+            {actions.isLayoutTextTarget ? <select className={`${control} thesis-block-select`} aria-label="Hizalama alanı"
+              disabled={off} value={alignmentScope} onMouseDown={remember} onChange={(event) => setAlignmentScope(event.target.value)}>
+              <option value="page">Sayfa yazı alanı</option>
+              <option value="box">Metin kutusu</option>
+            </select> : <select
               className={`${control} thesis-block-select`}
               aria-label="Paragraf biçimi"
               disabled={blockOff || actions.isLayoutTextTarget}
@@ -150,7 +156,7 @@ export default function HomeTab({
                   {id}
                 </option>
               ))}
-            </select>
+            </select>}
           </div>
         </div>
       </Group>
@@ -164,9 +170,9 @@ export default function HomeTab({
                 type="button"
                 role="option"
                 aria-selected={isActive}
-                title={`${style.label} stilini uygula`}
+                title={actions.isLayoutTextTarget ? "Paragraf stilleri gövde metninde kullanılabilir" : `${style.label} stilini uygula`}
                 className={`thesis-style-card ${style.level ? `is-heading-${style.level}` : ""} ${isActive ? "is-active" : ""}`}
-                disabled={blockOff}
+                disabled={blockOff || actions.isLayoutTextTarget}
                 onMouseDown={keep}
                 onClick={() => setStyle(style)}
               >

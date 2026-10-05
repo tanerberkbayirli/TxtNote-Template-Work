@@ -170,7 +170,8 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       patches = selected.filter((item) => item.editableLayout && !item.locked).map((item, index) => ({ id: item.id, layoutMode: "absolute", zIndex: action === "bringToFront" ? max + index + 1 : action === "sendToBack" ? -max - index - 1 : (Number(item.canonical?.zIndex) || 0) + (action === "bringForward" ? 1 : -1) }));
     } else if (action.startsWith("align")) {
       const alignMap = { alignLeft: "left", alignCenter: "centerX", alignRight: "right", alignTop: "top", alignMiddle: "centerY", alignBottom: "bottom" };
-      const aligned = alignLayoutElements(selected, alignMap[action], page);
+      const pageAlignMap = { alignLeft: "pageLeft", alignCenter: "pageCenterX", alignRight: "pageRight", alignTop: "pageTop", alignMiddle: "pageCenterY", alignBottom: "pageBottom" };
+      const aligned = alignLayoutElements(selected, movable.length === 1 ? pageAlignMap[action] : alignMap[action], page);
       patches = patchesForRects(selected, aligned);
     } else if (action === "distributeHorizontal" || action === "distributeVertical") {
       const distributed = distributeLayoutElements(selected, action === "distributeHorizontal" ? "x" : "y");
@@ -473,7 +474,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
   }, [rootRef, mountedRoot, selectIds, patchElements, performAction, undo, redo, commitThesis]);
 
   const selectedElements = useMemo(() => geometry.map((item) => ({ ...item.canonical, id: item.id, locked: item.locked, editableLayout: item.editableLayout, editableContent: item.editableContent,
-    measuredGeometry: item.measuredGeometry, element: item.element, pageIndex: item.pageIndex, sectionId: item.sectionId })), [geometry]);
+    measuredGeometry: item.measuredGeometry, canonical: item.canonical, page: item.page, element: item.element, pageIndex: item.pageIndex, sectionId: item.sectionId })), [geometry]);
   const overlayProps = { selectedElements, selectedIds, overlayRef, editingId, onResizeStart: (id, handle, event) => {
     const item = geometry.find((entry) => entry.id === id);
     if (!item?.editableLayout || item.locked) return;

@@ -26,3 +26,11 @@ node tests/ribbon-cover-format.e2e.mjs http://127.0.0.1:5182
 Panel testi, üst bilgi çubuğunun kaldırıldığını ve Tez bilgileri/Ayarlar düğmelerinin altı sekmeden erişilebilir olduğunu doğrular. Başlık kaydı, sözcük sayımının yazma ve geri al/yinele sonrası güncellenmesi, geçersiz kenar boşluklarının engellenmesi, sayfa ayarı uygulama ve geçmişi, cetvel birimi/görünürlüğü, zoom eşlemesi ve klavye ile sekme geçişi kontrol edilir. Giriş ve Dosya sekmelerinde gerçek yazdırma belgesi hazırlanır; sistem yazdırma penceresi testte yakalanır, fiziksel yazıcı kullanılmaz. 360, 620, 1024 ve 1380 px genişliklerde panel düğmelerinin görünür alan içinde kaldığı doğrulanır.
 
 Sözcük sayımı, editör render işleminden ayrılmıştır: metin değişimleri 200 ms boyunca birleştirilir ve yalnızca sayaç bileşeni güncellenir. Test, 12 panel açma/kapatma işleminde belge metninin yeniden okunmadığını kontrol eder. Ölçüm ve ekran görüntüleri yerel `TxtNote/output/ribbon-panels/` klasörüne yazılır.
+
+## Hizalama ölçüm regresyonu
+
+```powershell
+node tests/ribbon-alignment.e2e.mjs http://127.0.0.1:5183
+```
+
+Hizalama düğmeleri, seçili kapak yazısı veya çerçeve için varsayılan olarak sayfanın yazı alanını kullanır. `Hizalama alanı` seçeneğiyle yalnızca kutu içindeki metin hizalanabilir. Test; dar kapak blokları, normal akıştaki başlık, iç içe bloklar ve kullanıcı çerçevesinde gerçek metin/çerçeve konumlarını milimetre cinsinden ölçer. Sağ tık menüsünün tek öğede yatay/dikey yerleşimi, başka metinlere komut sızmaması, kilitli öğeler, geri al/yinele, birleşik altı/üstü çizili biçimleri ve yeniden yükleme sonrası kalıcılık kontrol edilir. Gerçek PDF'deki metin kenarı ve DOCX'teki çerçeve konumu/genişliği de doğrulanır. Kullanılan ölçüler yalnızca test verisidir; üniversite biçim kuralları değildir. Sonuçlar yerel `TxtNote/output/ribbon-alignment/` klasöründedir.

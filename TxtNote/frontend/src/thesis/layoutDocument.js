@@ -14,6 +14,7 @@ const SAFE_ALIGNMENTS = new Set(["left", "center", "right"]);
 const SAFE_TEXT_DECORATIONS = new Set([
   "none", "underline", "overline", "line-through",
   "underline line-through", "underline overline", "overline line-through",
+  "underline overline line-through",
 ]);
 const FORBIDDEN_KEYS = new Set(["__proto__", "prototype", "constructor"]);
 
@@ -44,7 +45,11 @@ export function normalizeLayoutTextStyle(style) {
     if (STYLE_NUMBER_KEYS.has(key) && finite(value) && (!(key === "fontSizePt" || key === "lineHeight") || value > 0)) result[key] = value;
     else if (STYLE_BOOLEAN_KEYS.has(key) && typeof value === "boolean") result[key] = value;
     else if (key === "fontFamily" && typeof value === "string" && value.trim()) result.fontFamily = value.trim().slice(0, 256);
-    else if (key === "decoration" && SAFE_TEXT_DECORATIONS.has(value)) result.decoration = value;
+    else if (key === "decoration" && typeof value === "string") {
+      const tokens = value.trim().split(/\s+/);
+      const normalized = ["underline", "overline", "line-through"].filter((part) => tokens.includes(part)).join(" ") || "none";
+      if (tokens.every((part) => ["none", "underline", "overline", "line-through"].includes(part)) && SAFE_TEXT_DECORATIONS.has(normalized)) result.decoration = normalized;
+    }
     else if (key === "align" && new Set(["left", "center", "right", "justify"]).has(value)) result.align = value;
     else if (key === "textTransform" && TEXT_TRANSFORMS.has(value)) result.textTransform = value;
     else if (key === "color" && typeof value === "string" && /^#[0-9a-f]{6}$/iu.test(value)) result.color = value.toLowerCase();

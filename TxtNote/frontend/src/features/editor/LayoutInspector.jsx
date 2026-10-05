@@ -1,4 +1,5 @@
 import React from "react";
+import { toggleLayoutDecoration } from "../../thesis/layoutInteraction.js";
 
 const input = { boxSizing: "border-box", width: "100%", minWidth: 0, padding: "6px 8px", border: "1px solid #d4d4d8", borderRadius: 6, background: "white", color: "#18181b", font: "inherit" };
 const label = { display: "grid", gap: 4, fontSize: 12, color: "#52525b" };
@@ -45,7 +46,7 @@ export default function LayoutInspector({ elements = [], onPatch = () => {}, onA
   const toggle = (key) => {
     const value = boolValue(key) !== true;
     if (key === "bold") patchStyle("fontWeight", value ? 700 : 400);
-    else if (key === "underline") patchStyle("decoration", value ? "underline" : "none");
+    else if (key === "underline") patchEach((item) => ({ style: { decoration: toggleLayoutDecoration(item.style?.decoration, "underline", value) } }));
     else patchStyle("italic", value);
   };
   const checked = (key) => boolValue(key) === true;
@@ -55,7 +56,7 @@ export default function LayoutInspector({ elements = [], onPatch = () => {}, onA
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8 }}><strong>{selected.length > 1 ? `${selected.length} öğe seçili` : textOnly ? "Metin" : imageOnly ? "Görsel" : "Öğe"}</strong><button type="button" onClick={onOpenInspector} style={{ ...buttonStyle, fontSize: 12 }}>Ayrıntıları aç</button></div>
     {textOnly && <section style={{ display: "grid", gap: 8 }}>
       <Field title="Yazı tipi" value={styleValue("fontFamily")} disabled={disabled} onChange={(value) => patchStyle("fontFamily", value)} placeholder="Şablondan" />
-      <div style={grid}><Field title="Punto" type="number" step="0.5" value={styleValue("fontSizePt")} disabled={disabled} onChange={(value) => patchStyle("fontSizePt", value)} /><Select title="Hizalama" value={styleValue("align")} disabled={disabled} values={[["left", "Sola"], ["center", "Ortala"], ["right", "Sağa"], ["justify", "İki yana"]]} onChange={(value) => patchStyle("align", value)} /></div>
+      <div style={grid}><Field title="Punto" type="number" step="0.5" value={styleValue("fontSizePt")} disabled={disabled} onChange={(value) => patchStyle("fontSizePt", value)} /><Select title="Kutu içi hizalama" value={styleValue("align")} disabled={disabled} values={[["left", "Sola"], ["center", "Ortala"], ["right", "Sağa"], ["justify", "İki yana"]]} onChange={(value) => patchStyle("align", value)} /></div>
       <div style={toolbar}>{check("Kalın", "bold")}{check("İtalik", "italic")}{check("Altı çizili", "underline")}</div>
     </section>}
     {imageOnly && <label style={{ display: "flex", alignItems: "center", gap: 7 }}><input type="checkbox" aria-label="En-boy oranını kilitle" checked={selected.every((item) => item.lockAspectRatio)} disabled={disabled} onChange={(event) => onPatch(selected.map((item) => ({ id: item.id, lockAspectRatio: event.target.checked })))} />En-boy oranını koru</label>}

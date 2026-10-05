@@ -65,6 +65,7 @@ export default function ThesisRibbon({
   page,
 }) {
   const [tab, setTab] = useState("Giriş");
+  const [alignmentScope, setAlignmentScope] = useState("page");
   const [tableRows, setTableRows] = useState("3");
   const [tableCols, setTableCols] = useState("3");
   const clampInt = (str, min, max, fallback) => {
@@ -179,6 +180,8 @@ export default function ThesisRibbon({
             invoke={invoke}
             headingOptions={headingOptions}
             paragraphOptions={paragraphOptions}
+            alignmentScope={alignmentScope}
+            setAlignmentScope={setAlignmentScope}
           />
         )}
         {tab === "Dosya" && (
