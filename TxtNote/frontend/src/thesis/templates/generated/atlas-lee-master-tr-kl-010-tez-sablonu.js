@@ -32,7 +32,81 @@ export default {
    "Şablon yönergesi (İç Kapak): İSTANBUL, 2022",
    "Kılavuz kuralları birleştirildi: KL-002_Tez_Yazım_Kılavuzu.docx (3 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "KL-002_Tez_Yazım_Kılavuzu.docx"
+  "guideDocumentName": "KL-002_Tez_Yazım_Kılavuzu.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 4, 'Tablo': 4}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (6/8 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "6 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "30",
+     "guide": "10",
+     "guideSource": "KL-002_Tez_Yazım_Kılavuzu.docx › paragraf 137: “Denklemler yazı alanının sol kenarının 1 cm içinden başlanarak yazılır.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "KL-002_Tez_Yazım_Kılavuzu.docx › paragraf 111: “Kaynak listesinin yazımında her bir kaynak tek satır aralığı ile yazılmalı, her kaynak arasında bir buçuk (1.5) satır aralığı ve 0 nk olmalıdır.”"
+    },
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "14",
+     "guide": "12",
+     "guideSource": "KL-002_Tez_Yazım_Kılavuzu.docx › paragraf 116: “Tezin ön ve ana bölüm başlıkları 14, diğer bütün başlıklar 12 punto ile; ve tüm başlıklar koyu (bold) olarak yazılmalıdır.”"
+    }
+   ],
+   "guide": "KL-002_Tez_Yazım_Kılavuzu.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 31,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

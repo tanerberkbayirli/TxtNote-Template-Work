@@ -21,7 +21,70 @@ export default {
    "Şablon yönergesi (Dış Kapak): TEZ KONUSU",
    "Kılavuz kuralları birleştirildi: DIS- KAPAK-yazi kurallari-24072026.docx (0 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "DIS- KAPAK-yazi kurallari-24072026.docx"
+  "guideDocumentName": "DIS- KAPAK-yazi kurallari-24072026.docx",
+  "review": {
+   "unknown": [],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (3/9 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "18 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1.1. Üçüncü düzey ”)"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1.1.1. Dördüncü dü”)"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "BURSA - 2026",
+     "reasoning": "Şehir–yıl satırı: cover › “BURSA - 2026”"
+    },
+    {
+     "field": "sections.front-page-4.THESIS_TITLE",
+     "value": "TEZİN BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: front-page-4 › “TEZİN BAŞLIĞI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "14",
+     "guideSource": "DIS- KAPAK-yazi kurallari-24072026.docx › paragraf 11: “Times New Roman Koyu siyah ( bold ) - 14 punto Satır Aralığı -1.15 Metin ortaya hizalı”"
+    }
+   ],
+   "guide": "DIS- KAPAK-yazi kurallari-24072026.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 25,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

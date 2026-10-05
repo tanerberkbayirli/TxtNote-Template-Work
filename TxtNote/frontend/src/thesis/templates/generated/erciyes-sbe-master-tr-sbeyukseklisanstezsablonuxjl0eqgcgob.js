@@ -24,7 +24,103 @@ export default {
    "Şablon yönergesi (Dış Kapak): ANABİLİM DALI",
    "Kılavuz kuralları birleştirildi: tezyazmakilavuzu.pdf (0 alan, 6 çelişki)"
   ],
-  "guideDocumentName": "tezyazmakilavuzu.pdf"
+  "guideDocumentName": "tezyazmakilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 5, 'Şekil': 6}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (39/44 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "3 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "XXXXX ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “XXXXX ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.front-page-3.STUDENT_NAME",
+     "value": "Ad SOYAD",
+     "reasoning": "Yer tutucu satır: front-page-3 › “Ad SOYAD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "30",
+     "guide": "35",
+     "guideSource": "tezyazmakilavuzu.pdf › sayfa 7: “Sayfa Düzeni Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarından 2 cm boşluk bulunmalıdır.”"
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "30",
+     "guide": "20",
+     "guideSource": "tezyazmakilavuzu.pdf › sayfa 7: “Sayfa Düzeni Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarından 2 cm boşluk bulunmalıdır.”"
+    },
+    {
+     "field": "page.margins.leftMm",
+     "measured": "30",
+     "guide": "40",
+     "guideSource": "tezyazmakilavuzu.pdf › sayfa 7: “Sayfa Düzeni Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarından 2 cm boşluk bulunmalıdır.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "30",
+     "guide": "20",
+     "guideSource": "tezyazmakilavuzu.pdf › sayfa 7: “Sayfa Düzeni Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarından 2 cm boşluk bulunmalıdır.”"
+    },
+    {
+     "field": "page.numbering.position",
+     "measured": "bottom",
+     "guide": "top",
+     "guideSource": "tezyazmakilavuzu.pdf › sayfa 7: “Sayfaların Numaralandırılması Sayfa numarası, sayfanın sağ üst kısmına konulur.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "tezyazmakilavuzu.pdf › sayfa 7: “Sayfaların Numaralandırılması Sayfa numarası, sayfanın sağ üst kısmına konulur.”"
+    }
+   ],
+   "guide": "tezyazmakilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 24,
+     "LIMIT": 1,
+     "CONFLICT": 6
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

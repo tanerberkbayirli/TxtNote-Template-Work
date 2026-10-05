@@ -20,7 +20,80 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf"
+  "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (125/186 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "18 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TITLE OF THE THESIS",
+     "reasoning": "Yer tutucu satır: cover › “TITLE OF THE THESIS”"
+    },
+    {
+     "field": "sections.cover.ADVISOR_NAME",
+     "value": "AssISt./ASSOC./PROF.(PHD) XXX YYY",
+     "reasoning": "Satır içi etiket: cover › “THESIS ADVISOR: AssISt./ASSOC./PROF.(PHD”"
+    },
+    {
+     "field": "sections.cover.CO_ADVISOR_NAME",
+     "value": "AssISt./ASSOC./PROF.(PHD) XXX YYY (IF EXISTS)",
+     "reasoning": "Satır içi etiket: cover › “CO-ADVISOR: AssISt./ASSOC./PROF.(PHD) XX”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf › sayfa 34: “Sayfa altlığı (Bornova/ İzmir AY 20XX): Times New Roman, 11 punto, Normal kalınlık, ortalanmış, tek satır aralığı”"
+    }
+   ],
+   "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

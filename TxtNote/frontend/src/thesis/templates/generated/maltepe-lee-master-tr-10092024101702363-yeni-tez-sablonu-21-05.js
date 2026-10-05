@@ -20,7 +20,60 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: 12112024051925406-30.11.2022_FİLM TASARIMI VE SİNEMA SANATTA YETERLİK LİSANSÜSTÜ PROGRAMLARINDA ESER ODAKLI TEZ YAZIM KILAVUZU (1).docx (0 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "12112024051925406-30.11.2022_FİLM TASARIMI VE SİNEMA SANATTA YETERLİK LİSANSÜSTÜ PROGRAMLARINDA ESER ODAKLI TEZ YAZIM KILAVUZU (1).docx"
+  "guideDocumentName": "12112024051925406-30.11.2022_FİLM TASARIMI VE SİNEMA SANATTA YETERLİK LİSANSÜSTÜ PROGRAMLARINDA ESER ODAKLI TEZ YAZIM KILAVUZU (1).docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (26/28 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZİN ADI",
+     "reasoning": "Yer tutucu satır: cover › “TEZİN ADI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZİN ADI",
+     "reasoning": "Yer tutucu satır: cover › “TEZİN ADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1.15",
+     "guideSource": "12112024051925406-30.11.2022_FİLM TASARIMI VE SİNEMA SANATTA YETERLİK LİSANSÜSTÜ PROGRAMLARINDA ESER ODAKLI TEZ YAZIM KILAVUZU (1).docx › paragraf 55: “Senaryo metninin tümü 1,15 satır aralığında, Times New Roman fontu kullanılarak yazılır.”"
+    }
+   ],
+   "guide": "12112024051925406-30.11.2022_FİLM TASARIMI VE SİNEMA SANATTA YETERLİK LİSANSÜSTÜ PROGRAMLARINDA ESER ODAKLI TEZ YAZIM KILAVUZU (1).docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 27,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

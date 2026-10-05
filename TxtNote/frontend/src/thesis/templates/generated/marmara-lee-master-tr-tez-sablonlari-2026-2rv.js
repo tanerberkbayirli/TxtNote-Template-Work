@@ -20,7 +20,108 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: SBE-yeni_tez_yazım_kılavuzu.2023.pdf (1 alan, 9 çelişki)"
   ],
-  "guideDocumentName": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf"
+  "guideDocumentName": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (9/10 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "HİSTOLOJİ VE EMBRİYOLOJİ ANABİLİM DALI DOKTORA PROGRAMI /TEZLİ YÜKSEK LİSANS PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “HİSTOLOJİ VE EMBRİYOLOJİ ANABİLİM DALI D”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "İSTANBUL- 2025",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “İSTANBUL- 2025”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "20",
+     "guide": "25",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Sayfa Yapısı Üst 2,5 cm Alt 2,5 cm Sol 2,5 cm Sağ 2,5 cm Üstbilgi 1,5 cm Altbilgi 1,5 cm 8.3.”"
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "20",
+     "guide": "25",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Sayfa Yapısı Üst 2,5 cm Alt 2,5 cm Sol 2,5 cm Sağ 2,5 cm Üstbilgi 1,5 cm Altbilgi 1,5 cm 8.3.”"
+    },
+    {
+     "field": "page.margins.leftMm",
+     "measured": "30",
+     "guide": "25",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Sayfa Yapısı Üst 2,5 cm Alt 2,5 cm Sol 2,5 cm Sağ 2,5 cm Üstbilgi 1,5 cm Altbilgi 1,5 cm 8.3.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "20",
+     "guide": "25",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Sayfa Yapısı Üst 2,5 cm Alt 2,5 cm Sol 2,5 cm Sağ 2,5 cm Üstbilgi 1,5 cm Altbilgi 1,5 cm 8.3.”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "10",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Numaralar Times New Roman, 10 punto olarak yazılmalıdır.”"
+    },
+    {
+     "field": "typography.paragraph.spaceBeforePt",
+     "measured": "0",
+     "guide": "6",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Metin: 11 p., satır aralığı 1,6 nk, iki yana yaslanmış, paragraf öncesi 6 nk, sonrası 6 nk boşluk.”"
+    },
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "16",
+     "guide": "12",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Bölüm başlığı tümü büyük harf, 12 punto, koyu, ortalı, üsten 30, alttan 30 nk boşluk.”"
+    },
+    {
+     "field": "typography.headings.2.fontSizePt",
+     "measured": "13",
+     "guide": "12",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 12: “Ek 1, Ek 2 gibi alt başlıklar ayrı ayrı sayfalarda 12 punto, koyu ve her bir kelimenin sadece ilk harfi büyük ve paragraf başı ile aynı hizada yazılır).”"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "measured": "10",
+     "guide": "9",
+     "guideSource": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf › sayfa 18: “Dipnot: 9 punto, iki yana yaslanmış, satır aralığı 12 nk.”"
+    }
+   ],
+   "guide": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 27,
+     "LIMIT": 1,
+     "CONFLICT": 5
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -22,7 +22,90 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: kp3x2lqxba5yi-tez-yazim-kilavuzu.docx (3 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx"
+  "guideDocumentName": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Şekil', 'Resim']; motor tek etiket tutuyor"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (4/7 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "12 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.paragraph.spaceBeforePt",
+     "measured": "10",
+     "guide": "5",
+     "guideSource": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx › paragraf 69: “Paragraf yapısı önce ve sonra 5 nk, iki yana yaslı, girinti sol 1,25 ve sağ 0, 1,25 cm asılı, satır ve paragraf aralığı 1,15 cm olacak şekilde ayarlanmalıdır.”"
+    }
+   ],
+   "guide": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 31,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

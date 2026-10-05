@@ -21,7 +21,103 @@ export default {
    "Şablon yönergesi (Dış Kapak): T.C.AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ Buraya tıklayınız Anabilim Dalı TEZİN BAŞLIĞI Adı SOYADI YÜKSEK LİSANS TEZİ Danışman Ünvanı Adı SOYADI Yılı-AFYONKARAHİSAR",
    "Kılavuz kuralları birleştirildi: AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx (3 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx"
+  "guideDocumentName": "AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 2, 'Şekil': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "sections.cover.image",
+     "reason": "Gömülü görsel aktarılamadı (.wmf / 31736 bayt); yalnız PNG/JPEG ≤ 2 MB desteklenir"
+    },
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (18/42 paragraf (≥200 karakter)); diğer 10 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. Üçüncü derece”)"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "Buraya tıklayınız Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: inner-cover › “Buraya tıklayınız Anabilim Dalı”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "Buraya tıklayınız Programı",
+     "reasoning": "Yer tutucu satır: inner-cover › “Buraya tıklayınız Programı”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZİN BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZİN BAŞLIĞI”"
+    },
+    {
+     "field": "sections.inner-cover.ADVISOR_NAME",
+     "value": "Ünvanı Adı SOYADI",
+     "reasoning": "“DANIŞMAN” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "12",
+     "guide": "14",
+     "guideSource": "AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx › paragraf 221: “Birinci derece bölüm başlıkları büyük harf, kalın (bold), 14 punto ve sayfa ortasında; ikinci derece bölüm başlıkları her kelimenin ilk harfi büyük ve diğerleri”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "left",
+     "guide": "right",
+     "guideSource": "AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx › paragraf 202: “Sayfa numaraları sağ alt köşede olmalıdır.”"
+    }
+   ],
+   "guide": "AFSÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

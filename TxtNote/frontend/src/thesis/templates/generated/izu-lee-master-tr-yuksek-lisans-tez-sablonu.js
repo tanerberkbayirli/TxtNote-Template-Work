@@ -18,7 +18,71 @@ export default {
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 157b3a7cbcf2cfa59176d9bd5eddf073984f809dc25a162eee7f9204d3b9ff46",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 8, 'Şekil': 6}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (24/32 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "…………………………… ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “…………………………… ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "Ekim-2017",
+     "reasoning": "Şehir–yıl satırı: cover › “Ekim-2017”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "…………………………… ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “…………………………… ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "İstanbulEkim-2017",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “İstanbulEkim-2017”"
+    },
+    {
+     "field": "sections.front-page-2.CITY_YEAR",
+     "value": "Ekim-2017",
+     "reasoning": "Şehir–yıl satırı: front-page-2 › “Ekim-2017”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": null,
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 24,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

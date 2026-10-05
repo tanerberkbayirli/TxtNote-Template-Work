@@ -32,7 +32,98 @@ export default {
    "Şablon yönergesi (Ön sayfa 7): Dördüncü derece alt bölüm başlıklarını stiller galerisinden “AltBaşlık-4” olarak seçip oluşturabilirsiniz.",
    "Kılavuz kuralları birleştirildi: 166926925728.yazım kuralları.pdf (3 alan, 5 çelişki)"
   ],
-  "guideDocumentName": "166926925728.yazım kuralları.pdf"
+  "guideDocumentName": "166926925728.yazım kuralları.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.06",
+     "reasoning": "Sayfa numarası yazısı 10.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":11,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (8/28 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "11",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "11",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "11",
+     "guide": "10",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 9: “BOŞLK : 10 punto büyüklük ve tek satır aralığı ile bırakılan bir boş satırı ifade eder”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "2",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 16: “Öncesinde boşluk bulunmaz sonrasında 10 punto tek aralık ayarlı 2 satır (toplamda 24 nk) boşluk bulunur.”"
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "0",
+     "guide": "6",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 26: “Her iki sistemde de her bir kaynak arasında 6 nk boşluk (Paragraf→Aralık: sonra = 6 nk) bırakılır.”"
+    },
+    {
+     "field": "typography.headings.4.fontSizePt",
+     "measured": "10",
+     "guide": "11",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 51: “Dördüncü Derece Alt Başlık (11 punto, kalın, ilk harfler büyük, Numaralama yapılmaz) Başlıktan önce bir satır boşluk (12 nk) bulunur.”"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "measured": "11",
+     "guide": "9",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 23: “Dipnotlar Times New Roman, 9 punto, tek aralık ve İtalik stil ile yazılmalıdır.”"
+    }
+   ],
+   "guide": "166926925728.yazım kuralları.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

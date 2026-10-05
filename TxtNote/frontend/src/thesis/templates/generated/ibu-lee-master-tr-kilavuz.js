@@ -21,7 +21,88 @@ export default {
    "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
    "Kılavuz kuralları birleştirildi: tr-baibu-lee-tez-yazim-kilavuzu-ve-sablonu-versiyon-7.docx (19 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "tr-baibu-lee-tez-yazim-kilavuzu-ve-sablonu-versiyon-7.docx"
+  "guideDocumentName": "tr-baibu-lee-tez-yazim-kilavuzu-ve-sablonu-versiyon-7.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.2",
+     "reason": "Kılavuzdan okunmalı (DOCX şablonu yok)"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Kılavuzdan okunmalı (DOCX şablonu yok)"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kılavuzdan okunmalı (DOCX şablonu yok)"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Şekil', 'Resim']; motor tek etiket tutuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4 210×297",
+     "reasoning": "Kılavuz A4 demiyorsa bile Türkiye'de lisansüstü tezlerde standart; teyit gerekli"
+    },
+    {
+     "field": "sections.cover.blocks",
+     "value": "genel kapak",
+     "reasoning": "Resmî kapak düzeni yok; genel düzenlenebilir kapak kullanıldı"
+    },
+    {
+     "field": "page.header/footer.distanceMm",
+     "value": "12.5",
+     "reasoning": "Word varsayılanı (1,25 cm); kılavuz belirtmiyor"
+    },
+    {
+     "field": "sections",
+     "value": "standart ön/arka bölümler",
+     "reasoning": "Bölüm listesi kılavuzdan değil, yaygın düzenden; Romen ön sayfalar, 1'den başlayan gövde"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [],
+   "guide": "tr-baibu-lee-tez-yazim-kilavuzu-ve-sablonu-versiyon-7.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 35,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

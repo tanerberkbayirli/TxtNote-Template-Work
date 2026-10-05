@@ -20,7 +20,111 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: MSKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf (3 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "MSKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf"
+  "guideDocumentName": "MSKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Şekil', 'Resim']; motor tek etiket tutuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (4/9 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "20 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "................................ ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “................................ ANA BİL”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "......................................... TEZLİ YÜKSEK LİSANS / DOKTORA PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “........................................”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "................................ ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “................................ ANA BİL”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "......................................... TEZLİ YÜKSEK LİSANS / DOKTORA PROGRAMI",
+     "reasoning": "Yer tutucu satır: inner-cover › “........................................”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.PROJECT_SUPPORT",
+     "value": "........... kod numaralı proje ile desteklenmiştir.",
+     "reasoning": "Proje desteği satırı, yalnız dolunca basılır: inner-cover › “........... kod numaralı proje ile deste”"
+    },
+    {
+     "field": "sections.approval-2.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: approval-2 › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.declaration-2.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration-2 › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [],
+   "guide": "MSKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 34,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

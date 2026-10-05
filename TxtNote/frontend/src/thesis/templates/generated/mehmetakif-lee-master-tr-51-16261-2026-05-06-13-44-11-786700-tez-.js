@@ -21,7 +21,125 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: 83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf (2 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf"
+  "guideDocumentName": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (4/9 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "3 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "…………ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “…………ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "BURDUR – 2024",
+     "reasoning": "Şehir–yıl satırı: cover › “BURDUR – 2024”"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "………… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “………… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "BURDUR – 2024",
+     "reasoning": "Şehir–yıl satırı: cover › “BURDUR – 2024”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: declaration › “Adı Soyadı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "30",
+     "guide": "25",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 8: “Sayfa Düzeni Kenar Boşlukları Her sayfanın sol kenarından 4 cm, üst kenarından 3.0 cm, alt ve sağ kenarlarından ise 2.5 cm boşluk olacak şekilde ayarlanmalıdır.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "20",
+     "guide": "25",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 8: “Sayfa Düzeni Kenar Boşlukları Her sayfanın sol kenarından 4 cm, üst kenarından 3.0 cm, alt ve sağ kenarlarından ise 2.5 cm boşluk olacak şekilde ayarlanmalıdır.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 9: “Paragraf, Satır Aralıkları ve Hizalama Tez metni 1,5 satır aralıklı yazılmalı, paragraf öncesi ve sonrası 6nk seçilmelidir.”"
+    }
+   ],
+   "guide": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 3
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

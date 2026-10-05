@@ -22,7 +22,130 @@ export default {
    "Şablon yönergesi (Etik Beyan): Tezin teslim edildiği tarih dikkate alınmalı",
    "Kılavuz kuralları birleştirildi: AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf (3 alan, 5 çelişki)"
   ],
-  "guideDocumentName": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf"
+  "guideDocumentName": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.footer.font",
+     "reason": "Sayfa numarası yazı tipi/boyutu belgede açıkça ayarlanmamış (stil/varsayılan miras); kılavuzdan alınmalı — kılavuz: 12.0 pt (AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf › sayfa 11: “Sayfa numaraları, bütün bölümlerde sayfaların alt); motor sayfa numarası yazısını ayrıca tutmuyor — kılavuz: Times New Roman  (AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf › sayfa 11: “Sayfa numaraları, bütün bölümlerde sayfaların alt); motor sayfa numarası yazısını ayrıca tutmuyor"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 2, 'Resim': 4}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Dipnot yazı boyutu stilde belirtilmemiş"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (16/27 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1 İkinci Dereceden”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.2.1 Üçüncü Dereced”)"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.3.1 Üçüncü Dereced”)"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.declaration",
+     "value": "atlandı",
+     "reasoning": "Devam satırı (BİTİRME TEZİ BAŞLIĞI (Devam)) tek alanla temsil edilir"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.declaration.ADVISOR_NAME",
+     "value": "Ünvanı Adı SOYADI",
+     "reasoning": "“Danışman” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "sections.declaration.CITY_YEAR",
+     "value": "Ay, Yıl",
+     "reasoning": "Şehir–yıl satırı: declaration › “Ay, Yıl”"
+    },
+    {
+     "field": "sections.declaration-2.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration-2 › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf › sayfa 4: “T.C., Üniversite, Enstitü, Anabilim/Anasanat Dalı, Program Adı ve tezin yazıldığı lisansüstü eğitim düzeyi/türü (Yüksek Lisans Tezi, Doktora Tezi ve Sanatta Yet”"
+    },
+    {
+     "field": "figures.position",
+     "measured": "below",
+     "guide": "above",
+     "guideSource": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf › sayfa 30: “Sıralamaya göre şekillerin üstünde şekil numaralarına (Şekil 1, Şekil 2 vb.) yer verilmelidir.”"
+    },
+    {
+     "field": "tables.position",
+     "measured": "above",
+     "guide": "below",
+     "guideSource": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf › sayfa 31: “Turizm Tesislerinde Genel Giderler (11 punto-ortalı) Giderler 5 Yıldız (%) Yıldız (%) Tatil Köyü (%) Personel 46,66 47,90 52,06 Yiyecek 21,00 21,67 17,71 İçecek”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf › sayfa 7: “Sayfa numaraları, yazı alanı sağ kenar çizgisinde bitecek şekilde, ön bölüm küçük Romen rakamları (i, ii, iii, gibi), ana bölüm ve arka bölüm Arap rakamları (1,”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf › sayfa 11: “(Sadece içindekiler, tablo ve şekil listeleri, simge ve kısalmalar dizini, özet, abstract ve kaynakça bölümleri tek satır aralıklı) Paragraf Aralıkları : Paragr”"
+    }
+   ],
+   "guide": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 4
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

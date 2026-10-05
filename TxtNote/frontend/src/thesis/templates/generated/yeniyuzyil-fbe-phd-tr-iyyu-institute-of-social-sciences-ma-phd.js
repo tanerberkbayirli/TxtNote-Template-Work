@@ -20,7 +20,95 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: SAgLIK-BiLiMLERi-ENSTiTuSu-TEZ-YAZIM-KILAVUZU17-09-2024.docx (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "SAgLIK-BiLiMLERi-ENSTiTuSu-TEZ-YAZIM-KILAVUZU17-09-2024.docx"
+  "guideDocumentName": "SAgLIK-BiLiMLERi-ENSTiTuSu-TEZ-YAZIM-KILAVUZU17-09-2024.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.numbering.align",
+     "value": "center",
+     "reasoning": "Sayfa numarası paragrafı 'justify' hizalı; tek alan için merkez varsayıldı"
+    },
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (11/14 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "3 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "………………………………………. DEPARTMENT",
+     "reasoning": "Yer tutucu satır: cover › “………………………………………. DEPARTMENT”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "NAME SURNAME",
+     "reasoning": "Yer tutucu satır: cover › “NAME SURNAME”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "……………………………………… DEPARTMENT",
+     "reasoning": "Yer tutucu satır: inner-cover › “……………………………………… DEPARTMENT”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "NAME SURNAME",
+     "reasoning": "Yer tutucu satır: inner-cover › “NAME SURNAME”"
+    },
+    {
+     "field": "sections.front-page-3.STUDENT_NAME",
+     "value": "NAME SURNAME",
+     "reasoning": "Yer tutucu satır: front-page-3 › “NAME SURNAME”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "30",
+     "guide": "25",
+     "guideSource": "SAgLIK-BiLiMLERi-ENSTiTuSu-TEZ-YAZIM-KILAVUZU17-09-2024.docx › paragraf 160: “Dış kapak hariç tezin tüm bölümlerinin kenar boşlukları, sol kenarlarda 4 cm, üst kenarlarda 3 cm, sağ kenarda 2,5 cm ve alt kenarda 2,5 cm olarak belirlenmelid”"
+    }
+   ],
+   "guide": "SAgLIK-BiLiMLERi-ENSTiTuSu-TEZ-YAZIM-KILAVUZU17-09-2024.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 34,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

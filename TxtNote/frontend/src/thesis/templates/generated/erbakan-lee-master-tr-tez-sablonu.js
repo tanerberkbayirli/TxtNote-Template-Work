@@ -19,7 +19,72 @@ export default {
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f80323f7264a8db7f17290d228ec5e4c017cfc9e679d8c99a9a7a095510bbb3f",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Dış Kapak): Dikkat! Tezi yazmaya başlamadan önce Hazırlama Kılavuzu ve Şablon Kullanım Kılavuzu mutlaka okunmalıdır. Bu bilgi notunu çıktı almadan önce siliniz."
-  ]
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":9,\"align\":\"center\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (10/14 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "15 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1. Problem Durumu”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. İkinci bölüm ”)"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: cover › “Anabilim Dalı”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.PROJECT_SUPPORT",
+     "value": "Bu tez çalışması Tez Çalışmasını Destekleyen Kurum Adı tarafından Proje Numarası numaralı proje ile desteklenmiştir.",
+     "reasoning": "Proje desteği satırı, yalnız dolunca basılır: cover › “Bu tez çalışması Tez Çalışmasını Destekl”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": null,
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 24,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

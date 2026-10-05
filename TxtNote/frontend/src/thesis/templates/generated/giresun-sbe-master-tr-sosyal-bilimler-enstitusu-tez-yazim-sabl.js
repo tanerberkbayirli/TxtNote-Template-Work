@@ -22,7 +22,98 @@ export default {
    "Şablon yönergesi (Onay Sayfası): ONAY …./…./ Yıl Seçiniz Prof. Dr. Oğuz Serdar KESİCİOĞLU Enstitü Müdürü",
    "Kılavuz kuralları birleştirildi: SBE_TEZ Yazım Kılavuzu.pdf (0 alan, 6 çelişki)"
   ],
-  "guideDocumentName": "SBE_TEZ Yazım Kılavuzu.pdf"
+  "guideDocumentName": "SBE_TEZ Yazım Kılavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.cover.image",
+     "reason": "Gömülü görsel aktarılamadı (.emf / 360248 bayt); yalnız PNG/JPEG ≤ 2 MB desteklenir"
+    },
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (12/35 paragraf (≥200 karakter)); diğer 9 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "13 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Ad SOYAD",
+     "reasoning": "Yer tutucu satır: cover › “Ad SOYAD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "30",
+     "guide": "25",
+     "guideSource": "SBE_TEZ Yazım Kılavuzu.pdf › sayfa 8: “Kenar Boşlukları ve Hizalama Her sayfanın sol kenarında 3,5 cm, üst kenarlarında 3 cm, alt ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır.”"
+    },
+    {
+     "field": "page.margins.leftMm",
+     "measured": "40",
+     "guide": "35",
+     "guideSource": "SBE_TEZ Yazım Kılavuzu.pdf › sayfa 8: “Kenar Boşlukları ve Hizalama Her sayfanın sol kenarında 3,5 cm, üst kenarlarında 3 cm, alt ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır.”"
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "measured": "12.51",
+     "guide": "10",
+     "guideSource": "SBE_TEZ Yazım Kılavuzu.pdf › sayfa 9: “Paragraflar Paragraf sol kenardan 7 karakter ya da (1cm) içerden başlamalıdır.”"
+    },
+    {
+     "field": "page.numbering.position",
+     "measured": "top",
+     "guide": "bottom",
+     "guideSource": "SBE_TEZ Yazım Kılavuzu.pdf › sayfa 10: “Sayfa numaraları sayfanın alt sağ kısmına konulmalıdır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "SBE_TEZ Yazım Kılavuzu.pdf › sayfa 10: “Sayfa numaraları sayfanın alt sağ kısmına konulmalıdır.”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "SBE_TEZ Yazım Kılavuzu.pdf › sayfa 8: “Kaynaklar tez metni yazım karakterine uygun 1 satır aralıklı yazılmalıdır.”"
+    }
+   ],
+   "guide": "SBE_TEZ Yazım Kılavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1,
+     "CONFLICT": 4
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

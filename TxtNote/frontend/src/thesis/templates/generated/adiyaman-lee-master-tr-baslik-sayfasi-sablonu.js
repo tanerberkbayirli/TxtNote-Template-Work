@@ -21,7 +21,94 @@ export default {
    "Şablon yönergesi (Onay Sayfası): TEZ/DÖNEM PROJESİ ADI BURAYA YAZILACAKTIR",
    "Kılavuz kuralları birleştirildi: tez yazım kılavuzu 18.07.2022 (1).docx (6 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "tez yazım kılavuzu 18.07.2022 (1).docx"
+  "guideDocumentName": "tez yazım kılavuzu 18.07.2022 (1).docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "typography.headings.2",
+     "reason": "Belgede 2. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    },
+    {
+     "field": "tables.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Tablo', 'Çizelge']; motor tek etiket tutuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "………….. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: approval › “………….. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.approval.STUDENT_NAME",
+     "value": "ÖĞRENCİNİN ADI SOYADI",
+     "reasoning": "Yer tutucu satır: approval › “ÖĞRENCİNİN ADI SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.079",
+     "guide": "1.5",
+     "guideSource": "tez yazım kılavuzu 18.07.2022 (1).docx › paragraf 267: “Tez metni 1,5 satır aralığında ve iki yana yaslanmış biçimde (blok) yazılır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "tez yazım kılavuzu 18.07.2022 (1).docx › paragraf 273: “Sayfa numaraları, sayfanın alt ve sağ alanında yer alır.”"
+    }
+   ],
+   "guide": "tez yazım kılavuzu 18.07.2022 (1).docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

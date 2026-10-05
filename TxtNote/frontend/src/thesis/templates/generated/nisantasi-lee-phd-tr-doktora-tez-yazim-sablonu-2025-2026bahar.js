@@ -49,7 +49,107 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx (4 alan, 4 çelişki)"
   ],
-  "guideDocumentName": "YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx"
+  "guideDocumentName": "YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"right\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (12/40 paragraf (≥200 karakter)); diğer 6 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.approval-2.THESIS_TITLE",
+     "value": "Tez Başlığı",
+     "reasoning": "Yer tutucu satır: approval-2 › “Tez Başlığı”"
+    },
+    {
+     "field": "sections.approval-2.PROGRAM_NAME",
+     "value": "Taranan Program",
+     "reasoning": "Yer tutucu satır: approval-2 › “Taranan Program”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "30",
+     "guide": "15",
+     "guideSource": "YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx › paragraf 159: “Sayfa numaraları sayfanın alt kenarından 1,5 cm yukarıya, sağa hizalanmış olarak 12 punto Times New Roman yazı tipi ile yazılmalıdır.Kabul ve onaydan girişe kad”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx › paragraf 13: “Tüm yazılar sayfaya ortalanmalı, 12 punto ve 1 satır aralığı ile yazılmalıdır.”"
+    },
+    {
+     "field": "typography.body.align",
+     "measured": "right",
+     "guide": "justify",
+     "guideSource": "YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx › paragraf 340: “Tezin tüm metinleri iki yana yaslanmış olarak 1,5 satır aralıklı yazılmalıdır.”"
+    },
+    {
+     "field": "typography.paragraph.spaceBeforePt",
+     "measured": "0",
+     "guide": "6",
+     "guideSource": "YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx › paragraf 156: “Bu bölümlerin metinleri 12 punto Times New Roman yazı tipi ile, 1 satır aralıklı, önce ve sonra 6 punto paragraf aralıklı yazılmalıdır.”"
+    }
+   ],
+   "guide": "YL-Tez-Yazim-Kilavuzu-2025-26Bahar.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1,
+     "CONFLICT": 3
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

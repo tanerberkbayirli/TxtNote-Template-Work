@@ -20,7 +20,93 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf (4 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf"
+  "guideDocumentName": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 5, 'Tablo': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (51/52 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{2}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{3}.' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "ÖZEL HUKUK ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “ÖZEL HUKUK ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "ÖZEL HUKUK YÜKSEK LİSANS PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “ÖZEL HUKUK YÜKSEK LİSANS PROGRAMI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "2024",
+     "reasoning": "Yer tutucu satır: cover › “2024”"
+    },
+    {
+     "field": "sections.approval.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: approval › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf › sayfa 11: “Satır aralığı 1,5 satır, paragraf aralığı ise her paragraftan önce 6 nk ve sonra 6 nk olacak şekilde ayarlanmalıdır.”"
+    }
+   ],
+   "guide": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

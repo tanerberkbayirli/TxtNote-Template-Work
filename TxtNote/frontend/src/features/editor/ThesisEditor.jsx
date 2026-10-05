@@ -34,6 +34,26 @@ const metadataHints = {
   USED_PROGRAMS: "Örnek: MATLAB R2026a, Python 3.13, SPSS 29",
 };
 
+const FIELD_LABELS = { "page.margins": "kenar boşluğu", "typography.body": "gövde metni", "typography.headings": "başlıklar", "typography.paragraph": "paragraf", "typography.footnotes": "dipnot", "page.numbering": "sayfa numarası", "page.footer": "altbilgi", "tables": "tablo yazısı", "figures": "şekil yazısı", "bibliography": "kaynakça", "sections": "bölümler", "page.size": "sayfa boyutu", "headings": "başlıklar" };
+const fieldLabel = (field) => { const key = Object.keys(FIELD_LABELS).find((prefix) => String(field).startsWith(prefix)); return key ? `${FIELD_LABELS[key]} (${field})` : field; };
+
+/** Open points of a generated template: unknown fields, inferred values, source conflicts and the gate result. Read-only. */
+function TemplateReview({ review, open, onToggle }) {
+  const counts = [review.unknown?.length ? `${review.unknown.length} bilinmeyen` : "", review.inferred?.length ? `${review.inferred.length} çıkarım` : "", review.conflicts?.length ? `${review.conflicts.length} çelişki` : ""].filter(Boolean).join(" · ") || "açık nokta yok";
+  const gate = review.gate;
+  return <div className="mt-2 rounded border border-amber-200 bg-amber-50/60 p-2 text-[11px] leading-snug dark:border-amber-900 dark:bg-amber-950/30" data-thesis-template-review>
+    <button type="button" onClick={onToggle} aria-expanded={open} className="flex w-full items-center justify-between text-left font-medium">
+      <span>Şablonun açık noktaları: {counts}</span><span aria-hidden="true">{open ? "▾" : "▸"}</span>
+    </button>
+    {gate ? <p className="mt-1 text-neutral-600 dark:text-neutral-300">Gerçek Word/PDF çıktısı ölçüldü: <strong>{gate.overall}</strong>{gate.results ? ` (${Object.entries(gate.results).map(([k, v]) => `${v} ${k}`).join(", ")})` : ""}. LIMIT = PDF'te Times New Roman yerine metrik eşdeğeri Tinos; CONFLICT = resmî şablon ile kılavuz farklı.</p> : null}
+    {open ? <div className="mt-2 space-y-2">
+      {review.conflicts?.length ? <div><p className="font-semibold">Şablon ile kılavuz çelişiyor — kurumunuza sorun:</p><ul className="mt-1 list-disc space-y-1 pl-4">{review.conflicts.map((c, i) => <li key={i}><span className="font-medium">{fieldLabel(c.field)}</span>: şablonda {c.measured}, kılavuzda {c.guide}. <span className="text-neutral-500">{c.guideSource}</span></li>)}</ul></div> : null}
+      {review.unknown?.length ? <div><p className="font-semibold">Kaynakların belirlemediği alanlar:</p><ul className="mt-1 list-disc space-y-1 pl-4">{review.unknown.map((u, i) => <li key={i}><span className="font-medium">{fieldLabel(u.field)}</span>: {u.reason}</li>)}</ul></div> : null}
+      {review.inferred?.length ? <div><p className="font-semibold">Belgeden çıkarımla alınan değerler:</p><ul className="mt-1 list-disc space-y-1 pl-4">{review.inferred.map((item, i) => <li key={i}><span className="font-medium">{fieldLabel(item.field)}</span> = {item.value}: {item.reasoning}</li>)}</ul></div> : null}
+    </div> : null}
+  </div>;
+}
+
 export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange }) {
   const thesis = researchData?.thesis && typeof researchData.thesis === "object" ? researchData.thesis : {};
   const selectionKey = JSON.stringify([thesis.templateId, thesis.selection?.universityId, thesis.selection?.instituteId, thesis.selection?.degreeType, thesis.selection?.language]);
@@ -43,6 +63,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [message, setMessage] = useState("");
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [auditOpen, setAuditOpen] = useState(false);
+  const [reviewOpen, setReviewOpen] = useState(false);
   const [zoomChoice, setZoomChoice] = useState("fit");
   const [viewportWidth, setViewportWidth] = useState(900);
   const [activeSectionId, setActiveSectionId] = useState("");
@@ -320,7 +341,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       {detailsOpen ? <aside className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
         <div className="mb-4 flex items-center justify-between"><h3 className="text-sm font-semibold">Tez bilgileri</h3><button type="button" onClick={() => setDetailsOpen(false)} aria-label="Tez bilgilerini kapat" className="rounded px-2 py-1 text-lg">×</button></div>
         <div className="space-y-5">
-          <section><label className="block text-xs font-medium">Şablon<select aria-label="Tez şablonu" value={template.id} onChange={(event) => changeTemplate(event.target.value)} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900">{THESIS_TEMPLATE_REGISTRY.map((entry) => <option key={entry.id} value={entry.id}>{entry.displayName || `${entry.universityName} · ${entry.language.toUpperCase()}`}</option>)}</select></label>{template.status === "official" ? <p className="mt-2 text-[11px] leading-snug text-neutral-500">Resmî kaynak: {template.source?.documentName || template.source?.url}</p> : <p className="mt-2 text-[11px] text-amber-700">Demo şablonlar test verisidir; resmî üniversite kuralı değildir.</p>}</section>
+          <section><label className="block text-xs font-medium">Şablon<select aria-label="Tez şablonu" value={template.id} onChange={(event) => changeTemplate(event.target.value)} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900">{THESIS_TEMPLATE_REGISTRY.map((entry) => <option key={entry.id} value={entry.id}>{entry.displayName || `${entry.universityName} · ${entry.language.toUpperCase()}`}</option>)}</select></label>{template.status === "official" ? <p className="mt-2 text-[11px] leading-snug text-neutral-500">Resmî kaynak: {template.source?.documentName || template.source?.url}</p> : template.source?.review ? <p className="mt-2 text-[11px] leading-snug text-amber-700">Resmî belgeden ölçülerek üretilmiş taslak: {template.source.documentName}{template.source.review.guide ? ` · kılavuz: ${template.source.review.guide}` : ""}. Gerçek çıktı ölçümü: {template.source.review.gate?.overall || "yapılmadı"}.</p> : <p className="mt-2 text-[11px] text-amber-700">Demo şablonlar test verisidir; resmî üniversite kuralı değildir.</p>}
+            {template.source?.review ? <TemplateReview review={template.source.review} open={reviewOpen} onToggle={() => setReviewOpen((open) => !open)} /> : null}</section>
           <section className="border-t border-neutral-200 pt-4 dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">TEZ BİLGİLERİ</h4><div className="grid gap-3"><label className="block text-xs font-medium">Tez başlığı *<input aria-label="Tez başlığı" className="mt-1 block w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" value={plainTitle} onChange={(event) => onTitleChange(event.target.value)} placeholder="Tez başlığını yazın" /></label>{metadataInput("THESIS_TITLE_EN")}</div></section>
           {metadataGroups.slice(1, -1).map(([heading, keys]) => metadataSection(heading, keys))}
           <section className="border-t border-neutral-200 pt-4 dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">BELGE AYARLARI</h4>{numberingChoices.length ? <label className="block text-xs font-medium">Şekil/tablo numaralandırma<select aria-label="Şekil ve tablo numaralandırma" value={thesis.captionNumbering || numberingChoices[0].id} onChange={(event) => saveThesis({ captionNumbering: event.target.value })} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900">{numberingChoices.map((choice) => <option key={choice.id} value={choice.id}>{choice.label}</option>)}</select></label> : null}</section>

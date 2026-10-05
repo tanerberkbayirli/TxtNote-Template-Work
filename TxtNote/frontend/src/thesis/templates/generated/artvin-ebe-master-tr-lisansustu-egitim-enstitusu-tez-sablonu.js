@@ -20,7 +20,97 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: tez yazım kılavuzu-yayınlanacak-v2.docx (0 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "tez yazım kılavuzu-yayınlanacak-v2.docx"
+  "guideDocumentName": "tez yazım kılavuzu-yayınlanacak-v2.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (33/37 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}.{4}' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}.{4}.{5}' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "…………………………………. ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “…………………………………. ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "…………………. PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “…………………. PROGRAMI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.declaration.DEPARTMENT_NAME",
+     "value": "…………………………………. ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: declaration › “…………………………………. ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.declaration.PROGRAM_NAME",
+     "value": "…………………. PROGRAMI",
+     "reasoning": "Yer tutucu satır: declaration › “…………………. PROGRAMI”"
+    },
+    {
+     "field": "sections.declaration.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: declaration › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: declaration › “Adı Soyadı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": "tez yazım kılavuzu-yayınlanacak-v2.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

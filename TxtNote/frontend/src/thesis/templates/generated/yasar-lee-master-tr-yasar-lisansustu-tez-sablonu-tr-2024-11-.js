@@ -20,7 +20,80 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf (1 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf"
+  "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (128/243 paragraf (≥200 karakter)); diğer 14 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "16 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "ÖĞRENCİNİN ADI SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “ÖĞRENCİNİN ADI SOYADI”"
+    },
+    {
+     "field": "sections.cover.ADVISOR_NAME",
+     "value": "DR. ÖĞR. ÜYESİ/DOÇ. DR./prof. DR. XXX YYY",
+     "reasoning": "Satır içi etiket: cover › “TEZ DANIŞMANI: DR. ÖĞR. ÜYESİ/DOÇ. DR./p”"
+    },
+    {
+     "field": "sections.cover.CO_ADVISOR_NAME",
+     "value": "DR. ÖĞR. ÜYESİ/DOÇ. DR./prof. DR. XXX YYY (VARSA)",
+     "reasoning": "Satır içi etiket: cover › “EŞ DANIŞMANI: DR. ÖĞR. ÜYESİ/DOÇ. DR./pr”"
+    },
+    {
+     "field": "sections.front-page-2.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: front-page-2 › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf › sayfa 34: “Sayfa altlığı (Bornova/ İzmir AY 20XX): Times New Roman, 11 punto, Normal kalınlık, ortalanmış, tek satır aralığı”"
+    }
+   ],
+   "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

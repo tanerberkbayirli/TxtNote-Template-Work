@@ -20,7 +20,84 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: 1-eng-ihu-tez-proje-yazim-kilavuzu-pdf.pdf (1 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "1-eng-ihu-tez-proje-yazim-kilavuzu-pdf.pdf"
+  "guideDocumentName": "1-eng-ihu-tez-proje-yazim-kilavuzu-pdf.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Figure': 1, 'Table': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (20/34 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "7 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1. Line Spacing”)"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.textTransform",
+     "value": "uppercase",
+     "reasoning": "6 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "ISTANBUL, 2026",
+     "reasoning": "Şehir–yıl satırı: cover › “ISTANBUL, 2026”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "ISTANBUL, 2026",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “ISTANBUL, 2026”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "40",
+     "guide": "25",
+     "guideSource": "1-eng-ihu-tez-proje-yazim-kilavuzu-pdf.pdf › sayfa 12: “Margins The margins on the page should be 4 cm on the left (binding side) and 2,5 cm on the other three sides.”"
+    }
+   ],
+   "guide": "1-eng-ihu-tez-proje-yazim-kilavuzu-pdf.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 30,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

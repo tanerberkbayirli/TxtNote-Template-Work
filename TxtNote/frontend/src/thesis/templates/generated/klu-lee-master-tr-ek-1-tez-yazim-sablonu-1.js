@@ -20,7 +20,112 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: klu_lisansustu_tez_ve_donem_projesi_yazim_kilavuzu_03.07.2026.docx (5 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "klu_lisansustu_tez_ve_donem_projesi_yazim_kilavuzu_03.07.2026.docx"
+  "guideDocumentName": "klu_lisansustu_tez_ve_donem_projesi_yazim_kilavuzu_03.07.2026.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 1, 'Şekil': 3}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.numbering.align",
+     "value": "center",
+     "reasoning": "Sayfa numarası paragrafı 'justify' hizalı; tek alan için merkez varsayıldı"
+    },
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (21/26 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "14 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1. Şablon Kılavuzu”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “3.1.1. Otomatik tabl”)"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "……………… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “……………… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "Ay, Yıl",
+     "reasoning": "Şehir–yıl satırı: cover › “Ay, Yıl”"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "……………… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “……………… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "Ay, Yıl",
+     "reasoning": "Şehir–yıl satırı: cover › “Ay, Yıl”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.declaration-2.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration-2 › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "30",
+     "guide": "25",
+     "guideSource": "klu_lisansustu_tez_ve_donem_projesi_yazim_kilavuzu_03.07.2026.docx › paragraf 87: “Her sayfanın sol kenarında 4 cm, sağ ve üst kenarında 3 cm, alt kenarında 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "25.01",
+     "guide": "30",
+     "guideSource": "klu_lisansustu_tez_ve_donem_projesi_yazim_kilavuzu_03.07.2026.docx › paragraf 87: “Her sayfanın sol kenarında 4 cm, sağ ve üst kenarında 3 cm, alt kenarında 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "9",
+     "guideSource": "klu_lisansustu_tez_ve_donem_projesi_yazim_kilavuzu_03.07.2026.docx › paragraf 193: “Tezin adı, üst kenardan 10-12 cm arasına, en fazla üç satıra sığacak şekilde yazılmalı, harf büyüklüğü 14 punto olmalıdır.”"
+    }
+   ],
+   "guide": "klu_lisansustu_tez_ve_donem_projesi_yazim_kilavuzu_03.07.2026.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1,
+     "CONFLICT": 3
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

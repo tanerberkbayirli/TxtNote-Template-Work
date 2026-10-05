@@ -28,7 +28,75 @@ export default {
    "Şablon yönergesi (Etik Beyan): Buraya tez savunma tarihini yazınız. Daha sonra bu şekli siliniz.",
    "Kılavuz kuralları birleştirildi: TARSUS ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ YÜKSEK LİSANS ve DOKTORA TEZ YAZIM ESASLAR1 (2).pdf (3 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "TARSUS ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ YÜKSEK LİSANS ve DOKTORA TEZ YAZIM ESASLAR1 (2).pdf"
+  "guideDocumentName": "TARSUS ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ YÜKSEK LİSANS ve DOKTORA TEZ YAZIM ESASLAR1 (2).pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.06",
+     "reasoning": "Sayfa numarası yazısı 10.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (6/14 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "Ad SOYAD",
+     "reasoning": "Yer tutucu satır: inner-cover › “Ad SOYAD”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: declaration › “Adı Soyadı”"
+    },
+    {
+     "field": "sections.front-page-4.DEPARTMENT_NAME",
+     "value": "… Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: front-page-4 › “… Ana Bilim Dalı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "12",
+     "guide": "10",
+     "guideSource": "TARSUS ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ YÜKSEK LİSANS ve DOKTORA TEZ YAZIM ESASLAR1 (2).pdf › sayfa 5: “Ana Metin Paragraf Ayarları Açıklamalar, dipnotlar, tablo ve şekil içerikleri 10 punto olacak şekilde yazılmalıdır.”"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "measured": "12",
+     "guide": "10",
+     "guideSource": "TARSUS ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ YÜKSEK LİSANS ve DOKTORA TEZ YAZIM ESASLAR1 (2).pdf › sayfa 5: “Ana Metin Paragraf Ayarları Açıklamalar, dipnotlar, tablo ve şekil içerikleri 10 punto olacak şekilde yazılmalıdır.”"
+    }
+   ],
+   "guide": "TARSUS ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ YÜKSEK LİSANS ve DOKTORA TEZ YAZIM ESASLAR1 (2).pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 34,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

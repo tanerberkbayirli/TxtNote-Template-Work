@@ -20,7 +20,116 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Tez Yazım Kılavuzu.docx (0 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "Tez Yazım Kılavuzu.docx"
+  "guideDocumentName": "Tez Yazım Kılavuzu.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 11, 'Tablo': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (42/64 paragraf (≥200 karakter)); diğer 8 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "17 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1.2. Kağıt Yapısı ”)"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1.1. Sayfa Yapısı ”)"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "BİLGİSAYAR VE ÖĞRETİM TEKNOLOJİLERİ EĞİTİMİ ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “BİLGİSAYAR VE ÖĞRETİM TEKNOLOJİLERİ EĞİT”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "2026",
+     "reasoning": "Yer tutucu satır: cover › “2026”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "BİLGİSAYAR VE ÖĞRETİM TEKNOLOJİLERİ EĞİTİMİ ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “BİLGİSAYAR VE ÖĞRETİM TEKNOLOJİLERİ EĞİT”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "ÖĞRETİM TEKNOLOJİLERİ DOKTORA PROGRAMI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ÖĞRETİM TEKNOLOJİLERİ DOKTORA PROGRAMI”"
+    },
+    {
+     "field": "sections.inner-cover.YEAR",
+     "value": "2026",
+     "reasoning": "Yer tutucu satır: inner-cover › “2026”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "9",
+     "guideSource": "Tez Yazım Kılavuzu.docx › paragraf 256: “Fakat gerektiğinde yazı büyüklüğü, şekil içine sığdırılması için 9 puntoya kadar düşürülebilir.”"
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "measured": "12.51",
+     "guide": "10",
+     "guideSource": "Tez Yazım Kılavuzu.docx › paragraf 330: “Paragraf soldan 1,25 ve sağdan 1 cm girinti verilerek iki yana yaslanır.”"
+    },
+    {
+     "field": "typography.paragraph.spaceBeforePt",
+     "measured": "0",
+     "guide": "2",
+     "guideSource": "Tez Yazım Kılavuzu.docx › paragraf 148: “Paragraf aralığında “önce” seçeneği ise “2 nk” olmalıdır.”"
+    }
+   ],
+   "guide": "Tez Yazım Kılavuzu.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

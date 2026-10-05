@@ -20,7 +20,99 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx (0 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx"
+  "guideDocumentName": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "tables.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 1, 'Çizelge': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.numbering.align",
+     "value": "center",
+     "reasoning": "Sayfa numarası paragrafı 'justify' hizalı; tek alan için merkez varsayıldı"
+    },
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (10/26 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "10 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "………………… Ana Bilim Dalı / Program",
+     "reasoning": "Yer tutucu satır: cover › “………………… Ana Bilim Dalı / Program”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.ADVISOR_NAME",
+     "value": "Ünvanı Adı SOYADI",
+     "reasoning": "“Danışman” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "İstanbul, YIL",
+     "reasoning": "Şehir–yıl satırı: cover › “İstanbul, YIL”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1",
+     "guide": "1.5",
+     "guideSource": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx › paragraf 29: “Birbirini izleyen iki satırın alt satır çizgileri arasındaki mesafe satır aralığı olarak tanımlanır ve ana metnin 1.5 satır aralığı olacak şekilde ayarlanır.”"
+    },
+    {
+     "field": "figures.position",
+     "measured": "below",
+     "guide": "above",
+     "guideSource": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx › paragraf 47: “Şekil birden fazla 7 panelden oluşuyorsa, her panel, panelin sol üst köşesinde “a” harfinden başlayarak küçük harfle belirtilir ve şekil numarası ve kolondan so”"
+    }
+   ],
+   "guide": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 26,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

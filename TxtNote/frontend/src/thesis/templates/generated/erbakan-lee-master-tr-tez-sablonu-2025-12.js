@@ -26,7 +26,86 @@ export default {
    "Şablon yönergesi (Onay Sayfası): Dikkat! Tezin ilk tesliminde jüri üyeleri yazılmamalıdır. Jüri üyesi Yüksek Lisans için 3 doktora için ise 5 kişidir. Uygun şekilde düzenleyiniz Bu bilgi notunu çıktı almadan önce siliniz.",
    "Şablon yönergesi (Etik Beyan): Dikkat! Başlık sayfa başında olmalıdır. Bu bilgi notunu çıktı almadan önce siliniz.",
    "Şablon yönergesi (Etik Beyan): Dikkat! Öğrenci tarafından imzalanmalıdır. Çıktı almadan önce “İmza” yazısını siliniz. Bu bilgi notunu çıktı almadan önce siliniz."
-  ]
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.body.lineHeight",
+     "reason": "Satır aralığı ne paragraf ne stil düzeyinde belirtilmiş (Word tek aralık varsayar; kılavuz teyidi gerekli)"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 7, 'Çizelge': 6}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\"}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (13/39 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "13 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1. İkinci Bölüm İk”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. İkinci bölüm ”)"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “4.1.1.1. Denklem yaz”)"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "………………… Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: cover › “………………… Anabilim Dalı”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "Ay-Yıl",
+     "reasoning": "Şehir–yıl satırı: cover › “Ay-Yıl”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    }
+   ],
+   "conflicts": [],
+   "guide": null,
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 21,
+     "UNKNOWN": 2,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -20,7 +20,63 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf"
+  "guideDocumentName": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "tables.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Table': 9, 'Figure': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (81/161 paragraf (≥200 karakter)); diğer 10 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.front-page-2.STUDENT_NAME",
+     "value": "Name Surname",
+     "reasoning": "Yer tutucu satır: front-page-2 › “Name Surname”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "12",
+     "guide": "14",
+     "guideSource": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf › sayfa 4: “Bölüm başlıklarının tamamı büyük harflerle, 14 punto, koyu ve sola dayalı olarak yazılmalıdır.”"
+    }
+   ],
+   "guide": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 27,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

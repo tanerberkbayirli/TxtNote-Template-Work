@@ -20,7 +20,72 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf (2 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf"
+  "guideDocumentName": "EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (14/25 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "Xxxxx Eğitimi Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: cover › “Xxxxx Eğitimi Ana Bilim Dalı”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "2025",
+     "reasoning": "Yer tutucu satır: cover › “2025”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "XXXXX XXXXXXX XXXXXX EĞİTİMİ ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “XXXXX XXXXXXX XXXXXX EĞİTİMİ ANA BİLİM D”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "Ocak, 2025",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “Ocak, 2025”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": "EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

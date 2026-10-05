@@ -20,7 +20,61 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Güncel Tez Yazım Kılavuzu Güncel.docx (0 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "Güncel Tez Yazım Kılavuzu Güncel.docx"
+  "guideDocumentName": "Güncel Tez Yazım Kılavuzu Güncel.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Resim': 2, 'Şekil': 3}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (10/29 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "22 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "30",
+     "guide": "20",
+     "guideSource": "Güncel Tez Yazım Kılavuzu Güncel.docx › paragraf 198: “Sayfaların sol kenarından 4 cm, üst ve alt kenarlarından 3 cm, sağ kenarından ise 2 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "30",
+     "guide": "20",
+     "guideSource": "Güncel Tez Yazım Kılavuzu Güncel.docx › paragraf 198: “Sayfaların sol kenarından 4 cm, üst ve alt kenarlarından 3 cm, sağ kenarından ise 2 cm boşluk bırakılmalıdır.”"
+    }
+   ],
+   "guide": "Güncel Tez Yazım Kılavuzu Güncel.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

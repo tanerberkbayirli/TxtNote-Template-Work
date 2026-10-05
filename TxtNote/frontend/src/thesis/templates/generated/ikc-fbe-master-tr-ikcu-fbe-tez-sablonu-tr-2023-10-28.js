@@ -20,7 +20,59 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf (4 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf"
+  "guideDocumentName": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "tables.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 1, 'Şekil': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (49/63 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "Mmmmm Mühendisliği Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: cover › “Mmmmm Mühendisliği Ana Bilim Dalı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 34,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -28,7 +28,153 @@ export default {
    "Şablon yönergesi (Onay Sayfası): Bu sayfadaki tüm düzenlemeler bilgisayar ortamında hazırlanmalı.",
    "Kılavuz kuralları birleştirildi: AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf (1 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf"
+  "guideDocumentName": "AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.footer.font",
+     "reason": "Sayfa numarası yazı tipi/boyutu belgede açıkça ayarlanmamış (stil/varsayılan miras); kılavuzdan alınmalı — kılavuz: 10.0 pt (AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf › sayfa 7: “Giriş bölümüyle başlayan tez metni sayfaları ise “1, 2, 3, ...); motor sayfa numarası yazısını ayrıca tutmuyor — kılavuz: Times New Roman  (AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf › sayfa 7: “Giriş bölümüyle başlayan tez metni sayfaları ise “1, 2, 3, ...); motor sayfa numarası yazısını ayrıca tutmuyor"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 2, 'Resim': 4}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Dipnot yazı boyutu stilde belirtilmemiş"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (17/28 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "headings.chapterLevel",
+     "value": "2",
+     "reasoning": "Numaralı bölüm başlıkları Word'ün 2. anahat düzeyinde; üst düzey ön sayfa başlıkları için kullanılmış"
+    },
+    {
+     "field": "typography.headings.1.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1. GİRİŞ”)"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1 İkinci Dereceden”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.3.1 Üçüncü Dereced”)"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover",
+     "value": "atlandı",
+     "reasoning": "Devam satırı (TEZ BAŞLIĞI (Devam)) tek alanla temsil edilir"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.ADVISOR_NAME",
+     "value": "Ünvanı Adı SOYADI",
+     "reasoning": "“Danışman” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "sections.cover.CO_ADVISOR_NAME",
+     "value": "Ünvanı Adı SOYADI",
+     "reasoning": "“İkinci Danışman” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "Ay Yıl",
+     "reasoning": "Yer tutucu satır: cover › “Ay Yıl”"
+    },
+    {
+     "field": "sections.inner-cover.PROJECT_SUPPORT",
+     "value": "Bu tez çalışması …….. numaralı proje ile ……… tarafından desteklenmiştir.",
+     "reasoning": "Proje desteği satırı, yalnız dolunca basılır: inner-cover › “Bu tez çalışması …….. numaralı proje ile”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.inner-cover",
+     "value": "atlandı",
+     "reasoning": "Devam satırı (TEZ BAŞLIĞI (Devam)) tek alanla temsil edilir"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.ADVISOR_NAME",
+     "value": "Ünvanı Adı SOYADI",
+     "reasoning": "“Danışman” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "sections.inner-cover.CO_ADVISOR_NAME",
+     "value": "Ünvanı Adı SOYADI",
+     "reasoning": "“İkinci Danışman” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.YEAR",
+     "value": "Ay Yıl",
+     "reasoning": "Yer tutucu satır: inner-cover › “Ay Yıl”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": "AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 36,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

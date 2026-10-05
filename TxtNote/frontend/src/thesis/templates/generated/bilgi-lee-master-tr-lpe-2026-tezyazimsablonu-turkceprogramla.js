@@ -26,7 +26,54 @@ export default {
    "Şablon yönergesi (Onay Sayfası): İsim Soyisim: Öğrenci İsmi Soyismi İmza:",
    "Kılavuz kuralları birleştirildi: lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf (3 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf"
+  "guideDocumentName": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (20/54 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "13 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "0",
+     "guide": "6",
+     "guideSource": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf › sayfa 11: “Satır aralığı 1,5 satır, paragraf aralığı ise her paragraftan önce 6 nk ve sonra 6 nk olacak şekilde ayarlanmalıdır.”"
+    }
+   ],
+   "guide": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

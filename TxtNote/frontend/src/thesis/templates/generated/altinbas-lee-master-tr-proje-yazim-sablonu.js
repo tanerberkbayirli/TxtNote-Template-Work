@@ -20,7 +20,77 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx (1 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx"
+  "guideDocumentName": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "tables.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 1, 'Çizelge': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Çizelge': 1, 'Şekil': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.numbering.align",
+     "value": "center",
+     "reasoning": "Sayfa numarası paragrafı 'justify' hizalı; tek alan için merkez varsayıldı"
+    },
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (12/44 paragraf (≥200 karakter)); diğer 18 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "…………….Anabilim Dalı / Program",
+     "reasoning": "Yer tutucu satır: cover › “…………….Anabilim Dalı / Program”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "İstanbul, YIL",
+     "reasoning": "Şehir–yıl satırı: cover › “İstanbul, YIL”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "figures.position",
+     "measured": "below",
+     "guide": "above",
+     "guideSource": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx › paragraf 47: “Şekil birden fazla 7 panelden oluşuyorsa, her panel, panelin sol üst köşesinde “a” harfinden başlayarak küçük harfle belirtilir ve şekil numarası ve kolondan so”"
+    }
+   ],
+   "guide": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 27,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "custom",

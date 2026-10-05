@@ -28,7 +28,76 @@ export default {
    "Şablon yönergesi (Etik Beyan): iii",
    "Kılavuz kuralları birleştirildi: MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf (3 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf"
+  "guideDocumentName": "MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (5/15 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "……………………… ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “……………………… ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "AD SOYAD",
+     "reasoning": "Yer tutucu satır: cover › “AD SOYAD”"
+    },
+    {
+     "field": "sections.declaration-2.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYAD",
+     "reasoning": "Yer tutucu satır: declaration-2 › “Öğrencinin Adı SOYAD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "40",
+     "guide": "25",
+     "guideSource": "MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf › sayfa 14: “Kenar Boşlukları Ciltlemenin yapılacağı sol kenar hariç, tüm kenar boşlukları 2.5 cm genişliğinde olmalıdır.”"
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "10",
+     "guide": "6",
+     "guideSource": "MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf › sayfa 16: “Her paragraf sonrasında 6 nk boşluk bırakılmalıdır.”"
+    }
+   ],
+   "guide": "MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 30,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

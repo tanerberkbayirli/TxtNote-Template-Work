@@ -46,7 +46,113 @@ export default {
    "Şablon yönergesi (Etik Beyan): 12 punto, 5 satır boşluk",
    "Kılavuz kuralları birleştirildi: 83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf (2 alan, 6 çelişki)"
   ],
-  "guideDocumentName": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf"
+  "guideDocumentName": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 19, 'Çizelge': 2}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (21/62 paragraf (≥200 karakter)); diğer 14 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "8 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "……. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “……. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "BURDUR, YIL",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “BURDUR, YIL”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "25.01",
+     "guide": "30",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 8: “Sayfa Düzeni Kenar Boşlukları Her sayfanın sol kenarından 4 cm, üst kenarından 3.0 cm, alt ve sağ kenarlarından ise 2.5 cm boşluk olacak şekilde ayarlanmalıdır.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "20",
+     "guide": "25",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 8: “Sayfa Düzeni Kenar Boşlukları Her sayfanın sol kenarından 4 cm, üst kenarından 3.0 cm, alt ve sağ kenarlarından ise 2.5 cm boşluk olacak şekilde ayarlanmalıdır.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 9: “Paragraf, Satır Aralıkları ve Hizalama Tez metni 1,5 satır aralıklı yazılmalı, paragraf öncesi ve sonrası 6nk seçilmelidir.”"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "12",
+     "guide": "8",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 19: “• Tablonun yazım alanına sığmadığı durumlarda yazı puntosu 8 puntoya kadar düşürülebilir.”"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "measured": "12",
+     "guide": "8",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 19: “• Tablonun yazım alanına sığmadığı durumlarda yazı puntosu 8 puntoya kadar düşürülebilir.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf › sayfa 8: “Sayfa Sırası ve Numaraları Sayfa numaraları, sayfanın sağ üst köşesine konulmalıdır.”"
+    }
+   ],
+   "guide": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 31,
+     "LIMIT": 1,
+     "CONFLICT": 4
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

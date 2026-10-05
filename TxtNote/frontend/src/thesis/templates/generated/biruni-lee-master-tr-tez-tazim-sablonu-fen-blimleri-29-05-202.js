@@ -22,7 +22,113 @@ export default {
    "Şablon yönergesi (Onay Sayfası): TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI TEZ BAŞLIĞI",
    "Kılavuz kuralları birleştirildi: SON-Lisansustu-Egitim-Enstitusu-Tez-Yazim-Kilavuzu.pdf (3 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "SON-Lisansustu-Egitim-Enstitusu-Tez-Yazim-Kilavuzu.pdf"
+  "guideDocumentName": "SON-Lisansustu-Egitim-Enstitusu-Tez-Yazim-Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 5, 'Şekil': 2}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (3/7 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "…………………………… ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “…………………………… ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "……………………… YÜKSEK LİSANS/DOKTORA PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “……………………… YÜKSEK LİSANS/DOKTORA PROGRAMI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "Ay, Yıl",
+     "reasoning": "Şehir–yıl satırı: cover › “Ay, Yıl”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………………………… ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: approval › “…………………………… ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.approval.PROGRAM_NAME",
+     "value": "……………………… YÜKSEK LİSANS/DOKTORA PROGRAMI",
+     "reasoning": "Yer tutucu satır: approval › “……………………… YÜKSEK LİSANS/DOKTORA PROGRAMI”"
+    },
+    {
+     "field": "sections.approval.CITY_YEAR",
+     "value": "Ay, Yıl",
+     "reasoning": "Şehir–yıl satırı: approval › “Ay, Yıl”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Ad Soyad",
+     "reasoning": "Yer tutucu satır: declaration › “Ad Soyad”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "14",
+     "guide": "12",
+     "guideSource": "SON-Lisansustu-Egitim-Enstitusu-Tez-Yazim-Kilavuzu.pdf › sayfa 5: “Tezin ön ve ana bölüm başlıkları 14, diğer bütün başlıklar 12 punto ile yazılmalıdır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "left",
+     "guide": "right",
+     "guideSource": "SON-Lisansustu-Egitim-Enstitusu-Tez-Yazim-Kilavuzu.pdf › sayfa 7: “Sayfa numarası, ön bölümlerde (Beyan, Önsöz/Teşekkür, İçindekiler, Tablolar vb.) sağ üst köşeye yazılmalıdır.”"
+    }
+   ],
+   "guide": "SON-Lisansustu-Egitim-Enstitusu-Tez-Yazim-Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

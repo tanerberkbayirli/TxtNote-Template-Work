@@ -33,7 +33,73 @@ export default {
    "Şablon yönergesi (İç Kapak): YÜKSEK LİSANS/ DOKTORA/ SANATTA YETERLİK TEZİ",
    "Kılavuz kuralları birleştirildi: LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf"
+  "guideDocumentName": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Çizelge', 'Tablo']; motor tek etiket tutuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (3/7 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "16 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.textTransform",
+     "value": "uppercase",
+     "reasoning": "3 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "14",
+     "guide": "18",
+     "guideSource": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf › sayfa 20: “Özetlerin başında, birinci dereceden başlık formatında tezin adı (önce 72, sonra 18 punto aralık bırakılarak ve 1 satır aralıklı olarak) yazılacaktır.”"
+    }
+   ],
+   "guide": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 34,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

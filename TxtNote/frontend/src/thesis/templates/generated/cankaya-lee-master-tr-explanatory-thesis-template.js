@@ -29,7 +29,79 @@ export default {
    "Şablon yönergesi (Ön sayfa 4): The date on which print approval was obtained must be entered in the date section of this declaration page. This section must be filled in by hand using a blue pen.",
    "Kılavuz kuralları birleştirildi: TEZ-YAZIM-KILAVUZU.docx (0 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "TEZ-YAZIM-KILAVUZU.docx"
+  "guideDocumentName": "TEZ-YAZIM-KILAVUZU.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (8/19 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.textTransform",
+     "value": "uppercase",
+     "reasoning": "10 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "CHOOSE DEPARTMENT",
+     "reasoning": "Yer tutucu satır: inner-cover › “CHOOSE DEPARTMENT”"
+    },
+    {
+     "field": "sections.approval.PROGRAM_NAME",
+     "value": "I certify that this thesis satisfies all the requirements as thesis for the Select Program Type degree in SELECT PROGRAM",
+     "reasoning": "Yer tutucu satır: approval › “I certify that this thesis satisfies all”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "Head of Department",
+     "reasoning": "Yer tutucu satır: approval › “Head of Department”"
+    },
+    {
+     "field": "sections.approval.PROGRAM_NAME",
+     "value": "This is to certify that I have read this thesis and that in my opinion it is fully adequate in scope and quality, as thesis for the Select Program Type degree in SELECT PROGRAM",
+     "reasoning": "Yer tutucu satır: approval › “This is to certify that I have read this”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "11",
+     "guideSource": "TEZ-YAZIM-KILAVUZU.docx › paragraf 234: “Yazım için metnin genelinde kullanılacak karakter Times New Roman (12 punto), Arial (11 punto) ya da el yazısı türü olmayan veya süslü olmayan herhangi bir stan”"
+    }
+   ],
+   "guide": "TEZ-YAZIM-KILAVUZU.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

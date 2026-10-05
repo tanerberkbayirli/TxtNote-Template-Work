@@ -20,7 +20,49 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: 1-SBE-Tez_Yazim_Kilavuzu.pdf (1 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "1-SBE-Tez_Yazim_Kilavuzu.pdf"
+  "guideDocumentName": "1-SBE-Tez_Yazim_Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (8/18 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "6",
+     "guide": "12",
+     "guideSource": "1-SBE-Tez_Yazim_Kilavuzu.pdf › sayfa 29: “Paragraf aralığı öncesi için 6 nk sonrası için 12 nk seçilmelidir.”"
+    }
+   ],
+   "guide": "1-SBE-Tez_Yazim_Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 34,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

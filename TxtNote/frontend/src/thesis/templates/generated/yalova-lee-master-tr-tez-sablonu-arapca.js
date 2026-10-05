@@ -21,7 +21,112 @@ export default {
    "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
    "Kılavuz kuralları birleştirildi: Tez-Yazim-Kilavuzu.pdf (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "Tez-Yazim-Kilavuzu.pdf"
+  "guideDocumentName": "Tez-Yazim-Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (86/96 paragraf (≥200 karakter)); diğer 9 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "12 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.textTransform",
+     "value": "uppercase",
+     "reasoning": "6 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.3.textTransform",
+     "value": "uppercase",
+     "reasoning": "14 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.4.textTransform",
+     "value": "uppercase",
+     "reasoning": "28 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.front-page-3.STUDENT_NAME",
+     "value": "Ad SOYAD",
+     "reasoning": "Yer tutucu satır: front-page-3 › “Ad SOYAD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "measured": "12.51",
+     "guide": "10",
+     "guideSource": "Tez-Yazim-Kilavuzu.pdf › sayfa 32: “Bu düzenlemeyi yapabilmek için solda gösterilen “Paragraf” menüsündeki “Girinti” sekmesinde bulunan “Sağ” kısmına “1 cm” yazılmalıdır.”"
+    }
+   ],
+   "guide": "Tez-Yazim-Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

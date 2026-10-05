@@ -25,7 +25,61 @@ export default {
    "Şablon yönergesi (Dış Kapak): İzmir [Ay, Yıl]",
    "Kılavuz kuralları birleştirildi: Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf (1 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf"
+  "guideDocumentName": "Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+  "review": {
+   "unknown": [],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (29/30 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{1}.' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "24.89",
+     "guide": "40",
+     "guideSource": "Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf › sayfa 4: “Kağıdın sol kenarından 4 cm, diğer kenarlarından 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "16",
+     "guideSource": "Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf › sayfa 4: “Times New Roman kullanılmalı ve 12 punto ile yazılmalıdır.”"
+    }
+   ],
+   "guide": "Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -22,7 +22,90 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf (18 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf"
+  "guideDocumentName": "IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.body.lineHeight",
+     "reason": "Kılavuzdan okunmalı (DOCX şablonu yok)"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kılavuzdan okunmalı (DOCX şablonu yok)"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4 210×297",
+     "reasoning": "Kılavuz A4 demiyorsa bile Türkiye'de lisansüstü tezlerde standart; teyit gerekli"
+    },
+    {
+     "field": "sections.cover.blocks",
+     "value": "genel kapak",
+     "reasoning": "Resmî kapak düzeni yok; genel düzenlenebilir kapak kullanıldı"
+    },
+    {
+     "field": "page.header/footer.distanceMm",
+     "value": "12.5",
+     "reasoning": "Word varsayılanı (1,25 cm); kılavuz belirtmiyor"
+    },
+    {
+     "field": "sections",
+     "value": "standart ön/arka bölümler",
+     "reasoning": "Bölüm listesi kılavuzdan değil, yaygın düzenden; Romen ön sayfalar, 1'den başlayan gövde"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "16",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "16",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [],
+   "guide": "IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 31,
+     "UNKNOWN": 2,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

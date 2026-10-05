@@ -21,7 +21,124 @@ export default {
    "Kılavuz kuralları birleştirildi: lisansustu-tez-yazim-kilavuzurev05.docx (4 alan, 3 çelişki)",
    "Kılavuz kuralları birleştirildi: lisansustu-tez-yazim-kilavuzurev05.docx (0 alan, 6 çelişki)"
   ],
-  "guideDocumentName": "lisansustu-tez-yazim-kilavuzurev05.docx"
+  "guideDocumentName": "lisansustu-tez-yazim-kilavuzurev05.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 4, 'Şekil': 4}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (18/26 paragraf (≥200 karakter)); diğer 6 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "YIL",
+     "reasoning": "Yer tutucu satır: cover › “YIL”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "YIL",
+     "reasoning": "Yer tutucu satır: cover › “YIL”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "YIL",
+     "reasoning": "Yer tutucu satır: cover › “YIL”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Ad Soyad",
+     "reasoning": "Yer tutucu satır: declaration › “Ad Soyad”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "35",
+     "guide": "210",
+     "guideSource": "lisansustu-tez-yazim-kilavuzurev05.docx › paragraf 127: “Tezin tamamında sayfa kenar boşlukları; sol kenarda 3,5 cm (ciltlemeye izin vermek için sol kenar boşluğu sağ kenar boşluğundan daha fazladır), sağ kenarda 2,5 ”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "lisansustu-tez-yazim-kilavuzurev05.docx › paragraf 171: “Çift aralık; tek satır ise ortalanmış, iki satır ise iki yana yaslı.”"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "11",
+     "guide": "12",
+     "guideSource": "lisansustu-tez-yazim-kilavuzurev05.docx › paragraf 262: “Tablo ve şekil başlıkları 12 punto, italik, iki yana yaslı, her bir kelimenin ilk harfi büyük diğerleri küçük olarak ve sonunda nokta kullanılmadan yazılmalıdır”"
+    },
+    {
+     "field": "page.margins.topMm",
+     "measured": "35",
+     "guide": "210",
+     "guideSource": "lisansustu-tez-yazim-kilavuzurev05.docx › paragraf 127: “Tezin tamamında sayfa kenar boşlukları; sol kenarda 3,5 cm (ciltlemeye izin vermek için sol kenar boşluğu sağ kenar boşluğundan daha fazladır), sağ kenarda 2,5 ”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "lisansustu-tez-yazim-kilavuzurev05.docx › paragraf 171: “Çift aralık; tek satır ise ortalanmış, iki satır ise iki yana yaslı.”"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "11",
+     "guide": "12",
+     "guideSource": "lisansustu-tez-yazim-kilavuzurev05.docx › paragraf 262: “Tablo ve şekil başlıkları 12 punto, italik, iki yana yaslı, her bir kelimenin ilk harfi büyük diğerleri küçük olarak ve sonunda nokta kullanılmadan yazılmalıdır”"
+    }
+   ],
+   "guide": "lisansustu-tez-yazim-kilavuzurev05.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "custom",

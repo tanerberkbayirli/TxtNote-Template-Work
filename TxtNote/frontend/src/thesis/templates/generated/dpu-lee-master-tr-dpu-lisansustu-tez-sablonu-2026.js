@@ -37,7 +37,91 @@ export default {
    "Şablon yönergesi (Ön sayfa 5): ÖZ GEÇMİŞ KISMINDA ve Tez içerisinde herhangi bir yerde doğum yeri ve tarihi e mail, elektronik imza, iletişim adresi ve numarası gibi kişisel veriler yer almamalıdır. Bu durum YÖK’ün kişisel verileri",
    "Kılavuz kuralları birleştirildi: DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx (2 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx"
+  "guideDocumentName": "DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 2, 'Şekil': 3}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"center\",\"lineHeight\":1.158}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (14/46 paragraf (≥200 karakter)); diğer 9 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1.1. Bölüm Başlığı”)"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "AD SOYAD",
+     "reasoning": "Yer tutucu satır: cover › “AD SOYAD”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "XXXXXXXXXXXXXXX Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “XXXXXXXXXXXXXXX Anabilim Dalı”"
+    },
+    {
+     "field": "sections.approval.STUDENT_NAME",
+     "value": "Ad Soyad",
+     "reasoning": "Yer tutucu satır: approval › “Ad Soyad”"
+    },
+    {
+     "field": "sections.approval-2.STUDENT_NAME",
+     "value": "Ad Soyad",
+     "reasoning": "Yer tutucu satır: approval-2 › “Ad Soyad”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.align",
+     "measured": "center",
+     "guide": "justify",
+     "guideSource": "DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx › paragraf 79: “Paragraflar: Tez metninde satırlar ‘iki yana yasla’ biçiminde yazılmalıdır.”"
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "8",
+     "guide": "6",
+     "guideSource": "DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx › paragraf 71: “Satır Araları: Tüm tez metni boyunca paragraflar arasında yukarıdan 6 nk, aşağıdan da 6 nk olacak şekilde boşluk bırakılır.”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.158",
+     "guide": "1.5",
+     "guideSource": "DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx › paragraf 473: “-Kaynakça oluştururken iki kaynak arasında 1.5 satır aralığı boşluk bırakılır.”"
+    }
+   ],
+   "guide": "DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -20,7 +20,70 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf (5 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf"
+  "guideDocumentName": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 4, 'Tablo': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (4/6 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "OCAK - 2021",
+     "reasoning": "Şehir–yıl satırı: cover › “OCAK - 2021”"
+    },
+    {
+     "field": "sections.approval-2.STUDENT_NAME",
+     "value": "AD SOYAD",
+     "reasoning": "Yer tutucu satır: approval-2 › “AD SOYAD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [],
+   "guide": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 27,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

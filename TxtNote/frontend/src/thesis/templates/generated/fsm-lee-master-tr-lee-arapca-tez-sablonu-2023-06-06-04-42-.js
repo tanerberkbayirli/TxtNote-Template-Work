@@ -32,7 +32,120 @@ export default {
    "Şablon yönergesi (İç Kapak): إستانبول- 2023",
    "Kılavuz kuralları birleştirildi: LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf (2 alan, 5 çelişki)"
   ],
-  "guideDocumentName": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf"
+  "guideDocumentName": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Şekil', 'Resim']; motor tek etiket tutuyor"
+    },
+    {
+     "field": "tables.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Çizelge', 'Tablo']; motor tek etiket tutuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Traditional Arabic\",\"fontSizePt\":16,\"align\":\"justify\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (3/6 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "17 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.textTransform",
+     "value": "uppercase",
+     "reasoning": "3 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.3.textTransform",
+     "value": "uppercase",
+     "reasoning": "6 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "16",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "16",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "25.01",
+     "guide": "40",
+     "guideSource": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf › sayfa 13: “Tezin ciltlenmesinde kolaylık sağlamak amacıyla tezin iç kısmında, her sayfanın sol kenarıyla üst kenarında 4 cm, sağ kenarıyla alt kenarında ise 2,5 cm boşluk ”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "40",
+     "guide": "25",
+     "guideSource": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf › sayfa 13: “Tezin ciltlenmesinde kolaylık sağlamak amacıyla tezin iç kısmında, her sayfanın sol kenarıyla üst kenarında 4 cm, sağ kenarıyla alt kenarında ise 2,5 cm boşluk ”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "16",
+     "guide": "12",
+     "guideSource": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf › sayfa 22: “Şekilden önce gelen metin bölümündeki son paragraf üstten 6, alttan 12 punto aralık bırakılarak yazılmalıdır.”"
+    },
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "20",
+     "guide": "18",
+     "guideSource": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf › sayfa 20: “Özetlerin başında, birinci dereceden başlık formatında tezin adı (önce 72, sonra 18 punto aralık bırakılarak ve 1 satır aralıklı olarak) yazılacaktır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "left",
+     "guide": "right",
+     "guideSource": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf › sayfa 14: “Sayfa numaraları, birbirini izleyecek biçimde, sayfaların sağ alt kenarına konulmalıdır.”"
+    }
+   ],
+   "guide": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1,
+     "CONFLICT": 4
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

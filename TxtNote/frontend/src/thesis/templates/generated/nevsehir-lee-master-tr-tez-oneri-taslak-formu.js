@@ -22,7 +22,131 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: tez-yazim-klavuzusablonu-2-1.docx (3 alan, 4 çelişki)"
   ],
-  "guideDocumentName": "tez-yazim-klavuzusablonu-2-1.docx"
+  "guideDocumentName": "tez-yazim-klavuzusablonu-2-1.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "7 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.1.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1. ARAŞTIRMA PROBLEM”)"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “5.1. Varsa Düzey Baş”)"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "……………. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “……………. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "Tez Başlığı",
+     "reasoning": "Yer tutucu satır: cover › “Tez Başlığı”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "Ay Yıl",
+     "reasoning": "Yer tutucu satır: cover › “Ay Yıl”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "24.99",
+     "guide": "35",
+     "guideSource": "tez-yazim-klavuzusablonu-2-1.docx › paragraf 88: “Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarında ise 2 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "24.99",
+     "guide": "15",
+     "guideSource": "tez-yazim-klavuzusablonu-2-1.docx › paragraf 88: “Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarında ise 2 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.leftMm",
+     "measured": "24.99",
+     "guide": "40",
+     "guideSource": "tez-yazim-klavuzusablonu-2-1.docx › paragraf 88: “Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarında ise 2 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "24.99",
+     "guide": "20",
+     "guideSource": "tez-yazim-klavuzusablonu-2-1.docx › paragraf 88: “Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarında ise 2 cm boşluk bırakılmalıdır.”"
+    }
+   ],
+   "guide": "tez-yazim-klavuzusablonu-2-1.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 4
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

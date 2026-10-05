@@ -27,7 +27,66 @@ export default {
    "Şablon yönergesi (Etik Beyan): Tez Savunma Tarihi (Bu şekli siliniz.)",
    "Kılavuz kuralları birleştirildi: kmu-sbe-tez-yazim-klavuzu.pdf (2 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "kmu-sbe-tez-yazim-klavuzu.pdf"
+  "guideDocumentName": "kmu-sbe-tez-yazim-klavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 11, 'Şekil': 13}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (60/94 paragraf (≥200 karakter)); diğer 14 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "8 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………….……… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: approval › “…………….……… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: declaration › “Adı Soyadı”"
+    },
+    {
+     "field": "sections.declaration-2.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: declaration-2 › “Adı Soyadı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": "kmu-sbe-tez-yazim-klavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -26,7 +26,63 @@ export default {
    "Şablon yönergesi (Dış Kapak): MONTH YEAR OF DEFENSE",
    "Kılavuz kuralları birleştirildi: ıtu_lısansustu_tez_yazım_kılavuzu37f0c24aceeb6433bf21ff0000f8c30df81fdd4b2ea84744bda8ab79887e00d4.docx (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "ıtu_lısansustu_tez_yazım_kılavuzu37f0c24aceeb6433bf21ff0000f8c30df81fdd4b2ea84744bda8ab79887e00d4.docx"
+  "guideDocumentName": "ıtu_lısansustu_tez_yazım_kılavuzu37f0c24aceeb6433bf21ff0000f8c30df81fdd4b2ea84744bda8ab79887e00d4.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (59/133 paragraf (≥200 karakter)); diğer 9 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.headings.4.fontSizePt",
+     "measured": "14",
+     "guide": "12",
+     "guideSource": "ıtu_lısansustu_tez_yazım_kılavuzu37f0c24aceeb6433bf21ff0000f8c30df81fdd4b2ea84744bda8ab79887e00d4.docx › paragraf 146: “Üçüncü ve dördüncü derece başlıklardan önce ise 12 punto, sonra 6 punto aralık bırakılır.”"
+    }
+   ],
+   "guide": "ıtu_lısansustu_tez_yazım_kılavuzu37f0c24aceeb6433bf21ff0000f8c30df81fdd4b2ea84744bda8ab79887e00d4.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -31,7 +31,123 @@ export default {
    "Şablon yönergesi (Onay Sayfası): Not: 1. Yüksek lisans tezleri için Yüksek Lisans Onay formunu kullanılmalıdır. 2. Bu form bilgisayarda doldurulduktan sonra bu notu siliniz!",
    "Kılavuz kuralları birleştirildi: Thesis-Writing-Guidelines-2.pdf (1 alan, 4 çelişki)"
   ],
-  "guideDocumentName": "Thesis-Writing-Guidelines-2.pdf"
+  "guideDocumentName": "Thesis-Writing-Guidelines-2.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (13/24 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "15 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "………….. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “………….. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "…………………YÜKSEK LİSANS/DOKTORA PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “…………………YÜKSEK LİSANS/DOKTORA PROGRAMI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "………….. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “………….. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "…………………YÜKSEK LİSANS/DOKTORA PROGRAMI",
+     "reasoning": "Yer tutucu satır: inner-cover › “…………………YÜKSEK LİSANS/DOKTORA PROGRAMI”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.approval.STUDENT_NAME",
+     "value": "Name Surname",
+     "reasoning": "Yer tutucu satır: approval › “Name Surname”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "Department",
+     "reasoning": "Yer tutucu satır: approval › “Department”"
+    },
+    {
+     "field": "sections.approval.PROGRAM_NAME",
+     "value": "Program",
+     "reasoning": "Yer tutucu satır: approval › “Program”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "Thesis-Writing-Guidelines-2.pdf › sayfa 16: “Line Spacing and Paragraph Format Throughout the thesis, paragraph spacing must be set to 6 pt before and 6 pt after each paragraph.”"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "Thesis-Writing-Guidelines-2.pdf › sayfa 17: “A spacing of 6 pt must be left above the caption and 0 pt below it.”"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "Thesis-Writing-Guidelines-2.pdf › sayfa 17: “A spacing of 6 pt must be left above the caption and 0 pt below it.”"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "measured": "10",
+     "guide": "6",
+     "guideSource": "Thesis-Writing-Guidelines-2.pdf › sayfa 17: “Line Spacing in Footnotes and the Reference List In footnotes, a spacing of 6 pt must be left before and after each footnote.”"
+    }
+   ],
+   "guide": "Thesis-Writing-Guidelines-2.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

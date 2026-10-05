@@ -21,7 +21,117 @@ export default {
    "Şablon yönergesi (Dış Kapak): Dikkat! Bu alanları kendi çalışmalarınıza uygun olarak doldurunuz. Sonra bu şekil üzerine tıklayarak açıklamayı silebilirsiniz",
    "Kılavuz kuralları birleştirildi: 166926925728.yazım kuralları.pdf (1 alan, 8 çelişki)"
   ],
-  "guideDocumentName": "166926925728.yazım kuralları.pdf"
+  "guideDocumentName": "166926925728.yazım kuralları.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":11,\"align\":\"justify\",\"lineHeight\":1.25}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (30/46 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "20 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "COĞRAFYA ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “COĞRAFYA ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "Fiziki Coğrafya Programı",
+     "reasoning": "Yer tutucu satır: cover › “Fiziki Coğrafya Programı”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "COĞRAFYA ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “COĞRAFYA ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "COĞRAFYA ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: approval › “COĞRAFYA ANA BİLİM DALI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "25.01",
+     "guide": "30",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 15: “Sayfa Yapısı Kâğıdın üst kenarından 3 cm ve sol kenarından 3,25 cm, diğer kenarlarından 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.leftMm",
+     "measured": "30",
+     "guide": "32.5",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 15: “Sayfa Yapısı Kâğıdın üst kenarından 3 cm ve sol kenarından 3,25 cm, diğer kenarlarından 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "11",
+     "guide": "10",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 9: “BOŞLK : 10 punto büyüklük ve tek satır aralığı ile bırakılan bir boş satırı ifade eder”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.25",
+     "guide": "2",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 16: “Öncesinde boşluk bulunmaz sonrasında 10 punto tek aralık ayarlı 2 satır (toplamda 24 nk) boşluk bulunur.”"
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "0",
+     "guide": "6",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 26: “Her iki sistemde de her bir kaynak arasında 6 nk boşluk (Paragraf→Aralık: sonra = 6 nk) bırakılır.”"
+    },
+    {
+     "field": "typography.headings.3.fontSizePt",
+     "measured": "12",
+     "guide": "11",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 16: “Üçüncü derece alt bölüm başlıklarında yazı büyüklüğü 11 punto, diğer özellikler ikinci derece alt başlıklar ile aynıdır.”"
+    },
+    {
+     "field": "typography.headings.4.fontSizePt",
+     "measured": "12",
+     "guide": "11",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 51: “Dördüncü Derece Alt Başlık (11 punto, kalın, ilk harfler büyük, Numaralama yapılmaz) Başlıktan önce bir satır boşluk (12 nk) bulunur.”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.25",
+     "guide": "1.5",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 17: “Giriş ile Kaynaklar Bölümleri arasında kalan tüm metinlerde 11 punto büyüklük ve 1,5 satır aralığı kullanılır.  Pencere Altı Kapak, İç Kapak, Onay Sayfası ve B”"
+    }
+   ],
+   "guide": "166926925728.yazım kuralları.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 31,
+     "LIMIT": 1,
+     "CONFLICT": 4
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

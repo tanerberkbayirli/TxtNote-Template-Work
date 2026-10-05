@@ -20,7 +20,86 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: sagbeTez_yazim_kilavuzu.docx (2 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "sagbeTez_yazim_kilavuzu.docx"
+  "guideDocumentName": "sagbeTez_yazim_kilavuzu.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (18/36 paragraf (≥200 karakter)); diğer 10 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "17 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.front-page-2.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: front-page-2 › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.front-page-3-2.ADVISOR_NAME",
+     "value": "unvan ad soyad giriniz",
+     "reasoning": "Satır içi etiket: front-page-3-2 › “DANIŞMAN: unvan ad soyad giriniz”"
+    },
+    {
+     "field": "sections.front-page-4-3.DEPARTMENT_NAME",
+     "value": "CHOOSE YOUR DEPARTMENT",
+     "reasoning": "Yer tutucu satır: front-page-4-3 › “CHOOSE YOUR DEPARTMENT”"
+    },
+    {
+     "field": "sections.front-page-4-3.ADVISOR_NAME",
+     "value": "tItle, name and surname",
+     "reasoning": "Satır içi etiket: front-page-4-3 › “SUPERVISOR: tItle, name and surname”"
+    },
+    {
+     "field": "sections.front-page-5-4.CITY_YEAR",
+     "value": "Kastamonu, 2024",
+     "reasoning": "Şehir–yıl satırı: front-page-5-4 › “Kastamonu, 2024”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.position",
+     "measured": "bottom",
+     "guide": "top",
+     "guideSource": "sagbeTez_yazim_kilavuzu.docx › paragraf 157: “Yalnızca sayfa numaraları bu alanın dışında olup, sayfanın sağ üst kenarında olmalıdır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "sagbeTez_yazim_kilavuzu.docx › paragraf 157: “Yalnızca sayfa numaraları bu alanın dışında olup, sayfanın sağ üst kenarında olmalıdır.”"
+    }
+   ],
+   "guide": "sagbeTez_yazim_kilavuzu.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -20,7 +20,80 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: tez-yazim-kilavuzu-tr.pdf (6 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "tez-yazim-kilavuzu-tr.pdf"
+  "guideDocumentName": "tez-yazim-kilavuzu-tr.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (10/18 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "headings.chapterLevel",
+     "value": "2",
+     "reasoning": "Numaralı bölüm başlıkları Word'ün 2. anahat düzeyinde; üst düzey ön sayfa başlıkları için kullanılmış"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "2 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “3.1. Relationship Be”)"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "İstanbul, 2024",
+     "reasoning": "Şehir–yıl satırı: cover › “İstanbul, 2024”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "İstanbul, 2024",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “İstanbul, 2024”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "tez-yazim-kilavuzu-tr.pdf › sayfa 21: “İÇİNDEKİLER sayfasından itibaren sayfa numaralama küçük Roma rakamı “i” ile sayfa ortasında gösterilmeye başlanır;”"
+    }
+   ],
+   "guide": "tez-yazim-kilavuzu-tr.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 31,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

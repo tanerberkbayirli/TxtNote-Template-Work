@@ -21,7 +21,132 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: IKCU_SBE_Tez_Yazim_Kilavuzu.pdf (3 alan, 5 çelişki)"
   ],
-  "guideDocumentName": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf"
+  "guideDocumentName": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 6, 'Şekil': 6}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (78/82 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "………… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “………… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "İZMİR-2026",
+     "reasoning": "Şehir–yıl satırı: cover › “İZMİR-2026”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "………… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: approval › “………… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.approval.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: approval › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.approval.CITY_YEAR",
+     "value": "İZMİR-2026",
+     "reasoning": "Şehir–yıl satırı: approval › “İZMİR-2026”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 13: “Eğer kullanılan metnin yazarının kendi özgün cümleleri alınarak yapılan aynen aktarma dört satırı aşıyorsa sağdan ve soldan 1 cm girinti yapılarak, yine tırnak ”"
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "measured": "10",
+     "guide": "5",
+     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Karakter : Times New Roman Punto : 10 punto Satır Aralıkları : 1 Paragraf Aralıkları : önce 2nk, sonra 2nk Paragraf Girintisi : Asılı Değer: 0,5 cm Hizalama : İ”"
+    },
+    {
+     "field": "typography.paragraph.spaceBeforePt",
+     "measured": "3",
+     "guide": "2",
+     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Karakter : Times New Roman Punto : 10 punto Satır Aralıkları : 1 Paragraf Aralıkları : önce 2nk, sonra 2nk Paragraf Girintisi : Asılı Değer: 0,5 cm Hizalama : İ”"
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "3",
+     "guide": "2",
+     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Karakter : Times New Roman Punto : 10 punto Satır Aralıkları : 1 Paragraf Aralıkları : önce 2nk, sonra 2nk Paragraf Girintisi : Asılı Değer: 0,5 cm Hizalama : İ”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "left",
+     "guide": "right",
+     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Cilt Payı : 0 cm Karakter : Times New Roman Yazı Re”"
+    }
+   ],
+   "guide": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 26,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

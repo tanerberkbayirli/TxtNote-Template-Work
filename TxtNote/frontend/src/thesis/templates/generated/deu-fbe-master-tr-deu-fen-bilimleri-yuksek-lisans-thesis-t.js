@@ -20,7 +20,80 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf (3 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf"
+  "guideDocumentName": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (6/15 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{1}.{2}' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “3.2.1 Topography”)"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "Department of Select Department., Enter the program information. Program",
+     "reasoning": "Yer tutucu satır: inner-cover › “Department of Select Department., Enter ”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "tables.position",
+     "measured": "above",
+     "guide": "below",
+     "guideSource": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf › sayfa 15: “• Tablo başlıklarının bir satıra sığmadığı durumlarda başlık alt satırda satır başından değil, tablo başlık yazısının başlama hizasından itibaren yazılmaya deva”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf › sayfa 14: “• Sayfa numaraları sağa dayalı yazılmalıdır.”"
+    }
+   ],
+   "guide": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

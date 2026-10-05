@@ -22,7 +22,107 @@ export default {
    "Şablon yönergesi (Etik Beyan): “Tez Kabul Onayı” ve “Beyan” sayfaları tezin basılı halinde mevcut olmalarına rağmen ulusal tez merkezine yüklenecek dijital hallerinden çıkartılması gerekmektedir. Bu kutucuğu silmeyi unutmayın!",
    "Kılavuz kuralları birleştirildi: 2026hsssbetezyazmklavuzu.pdf (1 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "2026hsssbetezyazmklavuzu.pdf"
+  "guideDocumentName": "2026hsssbetezyazmklavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (16/31 paragraf (≥200 karakter)); diğer 6 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "16 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.textTransform",
+     "value": "uppercase",
+     "reasoning": "9 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1. İKİNCİ DERECE B”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.2.1. Üçüncü Derece”)"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ADI SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ADI SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ADI SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.ADVISOR_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "“TEZ DANIŞMANI” etiketinin altındaki ad satırı"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ANA BİLİM DALI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "2026hsssbetezyazmklavuzu.pdf › sayfa 7: “Şekil ve şekil alt yazısı ile tablo ve tablo üst yazısı arasında da 6 punto’luk bir boşluk olmalıdır.”"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "2026hsssbetezyazmklavuzu.pdf › sayfa 7: “Şekil ve şekil alt yazısı ile tablo ve tablo üst yazısı arasında da 6 punto’luk bir boşluk olmalıdır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "2026hsssbetezyazmklavuzu.pdf › sayfa 7: “c) Sayfa numaraları hariç diğer tüm kısımlar, kâğıdın sol kenarından 3,5 cm, üst kenarından 3 cm, sağ ve alt kenarlarından 2,5 cm boşluk kalacak şekilde belirle”"
+    }
+   ],
+   "guide": "2026hsssbetezyazmklavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

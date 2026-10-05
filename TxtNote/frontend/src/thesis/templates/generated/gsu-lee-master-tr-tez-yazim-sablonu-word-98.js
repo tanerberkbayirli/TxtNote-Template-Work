@@ -25,7 +25,75 @@ export default {
    "Şablon yönergesi (İç Kapak): • Savunma tarihi kısmı elle doldurulucaktır. Bu Notu Silmeyi Unutmayınız!!!",
    "Kılavuz kuralları birleştirildi: gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf (7 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf"
+  "guideDocumentName": "gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 1, 'Table': 1, 'Figure': 2}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":10,\"align\":\"justify\",\"lineHeight\":1.15}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (16/31 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "10",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "25.01",
+     "guide": "30",
+     "guideSource": "gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf › sayfa 9: ““YÜKSEK LİSANS TEZİ” veya “DOKTORA TEZİ” ibaresi ve bundan sonra gelmek üzere aşağıya doğru 3’er cm ara ile, öğrencinin Adı SOYADI, “Tez Danışmanı:”nın Unvanı, ”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "10",
+     "guide": "12",
+     "guideSource": "gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf › sayfa 6: “Yazım Şekli Ana metin, kâğıdın bir yüzüne 12 punto boyutunda Times New Roman yazı karakteri kullanılarak, dik ve normal harflerle yazılır.”"
+    },
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "14",
+     "guide": "12",
+     "guideSource": "gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf › sayfa 7: “Birinci derece başlıklar sayfa üst kenarından 5 cm aşağıdan (1,5 satır aralığı, Times New Roman 12 punto ile aşağıya doğru 6 boşluk bıraktıktan sonra) başlar, t”"
+    }
+   ],
+   "guide": "gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 22,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -32,7 +32,88 @@ export default {
    "Şablon yönergesi (Ön sayfa 6): The title should be written in Times New Roman, 14-point font, bold, and left-aligned. The text should be written in Times New Roman, 12-point font, justified, with 1.5 line spacing.",
    "Kılavuz kuralları birleştirildi: ASBÜ Lisansüstü Tez Yazım Kılavuzu-Yüklenecek.pdf (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "ASBÜ Lisansüstü Tez Yazım Kılavuzu-Yüklenecek.pdf"
+  "guideDocumentName": "ASBÜ Lisansüstü Tez Yazım Kılavuzu-Yüklenecek.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Figure': 1, 'Table': 5}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":9,\"align\":\"justify\",\"lineHeight\":1.079}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (10/28 paragraf (≥200 karakter)); diğer 8 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "headings.chapterLevel",
+     "value": "2",
+     "reasoning": "Numaralı bölüm başlıkları Word'ün 2. anahat düzeyinde; üst düzey ön sayfa başlıkları için kullanılmış"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "1 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}{2}.{3}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{1}{2}.{3}.{4}' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "NAME SURNAME",
+     "reasoning": "Yer tutucu satır: inner-cover › “NAME SURNAME”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "9",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.footnotes.lineHeight",
+     "measured": "1",
+     "guide": "1.5",
+     "guideSource": "ASBÜ Lisansüstü Tez Yazım Kılavuzu-Yüklenecek.pdf › sayfa 2: “Yazı Tipi, Başlıklar ve Dipnotlar  Yazı Tipi (Font): Times New Roman yazı tipi kullanılmalıdır.  Metin: 12 punto, dik, iki yana yaslı ve 1.5 satır aralığında ”"
+    }
+   ],
+   "guide": "ASBÜ Lisansüstü Tez Yazım Kılavuzu-Yüklenecek.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

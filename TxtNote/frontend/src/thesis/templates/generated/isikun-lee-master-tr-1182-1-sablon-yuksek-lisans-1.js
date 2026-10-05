@@ -21,7 +21,139 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: 1182_1_doctoral_thesis_guideline-1.docx (4 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "1182_1_doctoral_thesis_guideline-1.docx"
+  "guideDocumentName": "1182_1_doctoral_thesis_guideline-1.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 5, 'Tablo': 5}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":14,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (1/3 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "…… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “…… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "……..PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “……..PROGRAMI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ ADI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ ADI”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "……….ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “……….ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "…………………….. PROGRAMI",
+     "reasoning": "Yer tutucu satır: inner-cover › “…………………….. PROGRAMI”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZ ADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZ ADI”"
+    },
+    {
+     "field": "sections.approval-2.DEPARTMENT_NAME",
+     "value": "…… ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: approval-2 › “…… ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.approval-2.PROGRAM_NAME",
+     "value": "……..PROGRAMI",
+     "reasoning": "Yer tutucu satır: approval-2 › “……..PROGRAMI”"
+    },
+    {
+     "field": "sections.approval-2.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: approval-2 › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.approval-2.THESIS_TITLE",
+     "value": "TEZ ADI",
+     "reasoning": "Yer tutucu satır: approval-2 › “TEZ ADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "40",
+     "guide": "35",
+     "guideSource": "1182_1_doctoral_thesis_guideline-1.docx › paragraf 17: “In the thesis, a margin of 4 cm from the left edge of each page, 3.5 cm from the right edge, and 3.5 cm from the top and bottom edges must be reserved.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "1182_1_doctoral_thesis_guideline-1.docx › paragraf 118: “From the confirmation page to Section 1, editing is done with single line spacing, 6 pt before and after.”"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "12",
+     "guide": "18",
+     "guideSource": "1182_1_doctoral_thesis_guideline-1.docx › paragraf 162: “The space between the main text and the table or figure caption must be 18 points (1.5 line spacing, single spaced).”"
+    }
+   ],
+   "guide": "1182_1_doctoral_thesis_guideline-1.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 25,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

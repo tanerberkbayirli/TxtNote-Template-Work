@@ -22,7 +22,102 @@ export default {
    "Şablon yönergesi (Etik Beyan): Beyan Talimatları: (BU BÖLÜMÜ TAMAMLADIKTAN SONRA BU METİN KUTUSUNU VE İÇERİĞİNİ SİLİNİZ) Tezinizde yapay zekâ araçları kullanıldıysa, lütfen kullanım şekline bağlı olarak aşağıdaki ilk üç paragraftan",
    "Kılavuz kuralları birleştirildi: 1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx (1 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx"
+  "guideDocumentName": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 3, 'Şekil': 4}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":11,\"align\":\"justify\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (2/7 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "1 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “ADI SOYADI”"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "MİMARLIK ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “MİMARLIK ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ADI SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "MİMARLIK ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “MİMARLIK ANA BİLİM DALI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "40",
+     "guide": "25",
+     "guideSource": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx › paragraf 243: “Tezin ciltleneceği taraf (sol kenar boşluğu) tam olarak 4 cm, diğer kenar boşlukları tam olarak 2.5 cm genişliğinde olmalıdır.”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "11",
+     "guide": "12",
+     "guideSource": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx › paragraf 249: “Yazı boyutu 12 punto olmalıdır.”"
+    }
+   ],
+   "guide": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 27,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

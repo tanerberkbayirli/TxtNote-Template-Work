@@ -21,7 +21,71 @@ export default {
    "Şablon yönergesi (Etik Beyan): ÜYZ kullanılmadığını belirten veya kullanıldığında ise rehbere uygun hareket edildiğiniz gösteren maddelerden biri seçilmeli diğer silinmelidir.",
    "Kılavuz kuralları birleştirildi: OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx (0 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx"
+  "guideDocumentName": "OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (18/24 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "16 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1. Kullanılacak Kâ”)"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "…………………………………….. ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “…………………………………….. ANA BİLİM DALI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "6",
+     "guide": "24",
+     "guideSource": "OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx › paragraf 451: “Paragraflar arasına 6nk aralık bırakılır ve paragraflar arasında boşluk/boş satır bırakılmamalıdır.”"
+    },
+    {
+     "field": "figures.position",
+     "measured": "below",
+     "guide": "above",
+     "guideSource": "OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx › paragraf 466: “Çizelge üst yazısından önce ve şekil açıklamasından sonra 12nk aralık bırakılmalıdır.”"
+    }
+   ],
+   "guide": "OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 33,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

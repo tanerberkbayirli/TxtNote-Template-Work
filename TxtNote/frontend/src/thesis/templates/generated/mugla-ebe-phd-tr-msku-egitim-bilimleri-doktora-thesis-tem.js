@@ -23,7 +23,109 @@ export default {
    "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
    "Kılavuz kuralları birleştirildi: MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf (1 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf"
+  "guideDocumentName": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (39/60 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. Theoretical F”)"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "…………… PROGRAM",
+     "reasoning": "Yer tutucu satır: cover › “…………… PROGRAM”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TITLE OF THE THESIS",
+     "reasoning": "Yer tutucu satır: cover › “TITLE OF THE THESIS”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "JANUARY, 2021",
+     "reasoning": "Şehir–yıl satırı: cover › “JANUARY, 2021”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "…………… PROGRAM",
+     "reasoning": "Yer tutucu satır: inner-cover › “…………… PROGRAM”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TITLE OF THE THESIS",
+     "reasoning": "Yer tutucu satır: inner-cover › “TITLE OF THE THESIS”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "JANUARY, 2021",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “JANUARY, 2021”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf › sayfa 15: “On the starting pages up to the introduction section, the numbers should be placed centered at the bottom of the page, and the page numbers from the introductio”"
+    }
+   ],
+   "guide": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

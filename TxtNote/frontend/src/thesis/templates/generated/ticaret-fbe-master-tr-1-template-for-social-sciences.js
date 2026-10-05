@@ -33,7 +33,124 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: Thesis-Writing-Guidelines-2.pdf (3 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "Thesis-Writing-Guidelines-2.pdf"
+  "guideDocumentName": "Thesis-Writing-Guidelines-2.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (21/27 paragraf (≥200 karakter)); diğer 3 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "18 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1.1. Second Level ”)"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1.1. Third Level”)"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "THESIS TITLE",
+     "reasoning": "Yer tutucu satır: cover › “THESIS TITLE”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "THESIS TITLE",
+     "reasoning": "Yer tutucu satır: inner-cover › “THESIS TITLE”"
+    },
+    {
+     "field": "sections.approval.STUDENT_NAME",
+     "value": "Name Surname",
+     "reasoning": "Yer tutucu satır: approval › “Name Surname”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "Department",
+     "reasoning": "Yer tutucu satır: approval › “Department”"
+    },
+    {
+     "field": "sections.approval.PROGRAM_NAME",
+     "value": "Program",
+     "reasoning": "Yer tutucu satır: approval › “Program”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "6",
+     "guideSource": "Thesis-Writing-Guidelines-2.pdf › sayfa 16: “Line Spacing and Paragraph Format Throughout the thesis, paragraph spacing must be set to 6 pt before and 6 pt after each paragraph.”"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "measured": "10",
+     "guide": "6",
+     "guideSource": "Thesis-Writing-Guidelines-2.pdf › sayfa 17: “Line Spacing in Footnotes and the Reference List In footnotes, a spacing of 6 pt must be left before and after each footnote.”"
+    }
+   ],
+   "guide": "Thesis-Writing-Guidelines-2.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

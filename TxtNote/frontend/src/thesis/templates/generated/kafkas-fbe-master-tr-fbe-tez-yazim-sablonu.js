@@ -22,7 +22,119 @@ export default {
    "Şablon yönergesi (Onay Sayfası): Toplam jüri üyesi sayısı yüksek Lisans için 3 (isteğe bağlı olarak 5) asıl (biri üniversitemiz dışından) 2 yedekten (biri üniversitemiz dışından) oluşur, Doktora için ise 5 (isteğe bağlı olarak 7) ası",
    "Kılavuz kuralları birleştirildi: Tez Yazım Kılavuzu 2025.docx (0 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "Tez Yazım Kılavuzu 2025.docx"
+  "guideDocumentName": "Tez Yazım Kılavuzu 2025.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (30/32 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "1 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1 İkinci Dereceden”)"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{1}.{2}' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.3.1 Üçüncü dereced”)"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "…………… ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “…………… ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ ADI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ ADI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.PROJECT_SUPPORT",
+     "value": "Bu tez çalışması ……….. nolu proje ile …………………… tarafından desteklenmiştir",
+     "reasoning": "Proje desteği satırı, yalnız dolunca basılır: cover › “Bu tez çalışması ……….. nolu proje ile ……”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "AY-YIL",
+     "reasoning": "Şehir–yıl satırı: cover › “AY-YIL”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.rightMm",
+     "measured": "25.01",
+     "guide": "20",
+     "guideSource": "Tez Yazım Kılavuzu 2025.docx › paragraf 283: “Her sayfanın sol kenarından 4 cm, alt ve üst kenarlarından 3 cm ve sağ kenarından 2 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "Tez Yazım Kılavuzu 2025.docx › paragraf 464: “İkinci ve daha sonraki satırlar, tek satır aralıkları ile 1 cm içeriden başlar.”"
+    }
+   ],
+   "guide": "Tez Yazım Kılavuzu 2025.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 32,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

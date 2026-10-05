@@ -22,7 +22,140 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: Tez yazım kılavuzu.pdf (2 alan, 4 çelişki)"
   ],
-  "guideDocumentName": "Tez yazım kılavuzu.pdf"
+  "guideDocumentName": "Tez yazım kılavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "13 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "Tez Başlığı",
+     "reasoning": "Yer tutucu satır: cover › “Tez Başlığı”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "……………. Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: cover › “……………. Anabilim Dalı”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "Ocak, 2022",
+     "reasoning": "Şehir–yıl satırı: cover › “Ocak, 2022”"
+    },
+    {
+     "field": "sections.approval.THESIS_TITLE",
+     "value": "Tez Başlığı",
+     "reasoning": "Yer tutucu satır: approval › “Tez Başlığı”"
+    },
+    {
+     "field": "sections.approval.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: approval › “Adı SOYADI”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………… Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “…………… Anabilim Dalı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "11",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "11",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "25.01",
+     "guide": "15",
+     "guideSource": "Tez yazım kılavuzu.pdf › sayfa 3: “2.7 Sayfalara Numara Verilmesi Sayfa numaraları, sayfa altında orta kısma, sayfanın alt kenarından 1,5 cm yukarıda yazılmalıdır.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "20",
+     "guide": "25",
+     "guideSource": "Tez yazım kılavuzu.pdf › sayfa 2: “2.4 Kenar Boşlukları ve Sayfa Düzeni Her sayfanın sol kenarında 3,5 cm, alt ve üst kenarlarında 3`er cm ve sağ kenarında ise 2,5 cm boşluk bırakılmalıdır (Şekil”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "11",
+     "guide": "12",
+     "guideSource": "Tez yazım kılavuzu.pdf › sayfa 1: “Metin yazısı kolay okunacak büyüklükte (12 punto) olmalıdır (Şekil 2).”"
+    },
+    {
+     "field": "page.numbering.position",
+     "measured": "bottom",
+     "guide": "top",
+     "guideSource": "Tez yazım kılavuzu.pdf › sayfa 3: “2.7 Sayfalara Numara Verilmesi Sayfa numaraları, sayfa altında orta kısma, sayfanın alt kenarından 1,5 cm yukarıda yazılmalıdır.”"
+    }
+   ],
+   "guide": "Tez yazım kılavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 25,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

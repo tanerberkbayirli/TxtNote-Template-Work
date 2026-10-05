@@ -37,7 +37,84 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: AVU-LEE-Tez-Yazim-Kilavuzu-2026.pdf (4 alan, 2 çelişki)"
   ],
-  "guideDocumentName": "AVU-LEE-Tez-Yazim-Kilavuzu-2026.pdf"
+  "guideDocumentName": "AVU-LEE-Tez-Yazim-Kilavuzu-2026.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (9/16 paragraf (≥200 karakter)); diğer 6 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "Bir öğe seçin. ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “Bir öğe seçin. ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "Bir öğe seçin. ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Bir öğe seçin. ANA BİLİM DALI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "14",
+     "guide": "11",
+     "guideSource": "AVU-LEE-Tez-Yazim-Kilavuzu-2026.pdf › sayfa 9: “İçindekiler sayfasındaki tüm başlıklar 11 punto tek satır aralığı ile yazılmalı, sadece Başlık 1’ler (ana bölüm başlıkları) bold (koyu) ve büyük olmalıdır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "AVU-LEE-Tez-Yazim-Kilavuzu-2026.pdf › sayfa 9: “Listenin maddeleri sol kenara, sayfa numaraları ise sağ kenara hizalanmalıdır.”"
+    }
+   ],
+   "guide": "AVU-LEE-Tez-Yazim-Kilavuzu-2026.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 26,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

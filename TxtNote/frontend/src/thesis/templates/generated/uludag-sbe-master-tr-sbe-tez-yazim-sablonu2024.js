@@ -21,7 +21,103 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: DIS- KAPAK-yazi kurallari-24072026.docx (2 alan, 1 çelişki)"
   ],
-  "guideDocumentName": "DIS- KAPAK-yazi kurallari-24072026.docx"
+  "guideDocumentName": "DIS- KAPAK-yazi kurallari-24072026.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 1, 'Tablo': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (7/22 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.textTransform",
+     "value": "uppercase",
+     "reasoning": "3 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "AAAAAAAAA ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “AAAAAAAAA ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "BURSA-2024",
+     "reasoning": "Şehir–yıl satırı: cover › “BURSA-2024”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "AAAAAAAAAAA ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “AAAAAAAAAAA ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "BURSA-2024",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “BURSA-2024”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: declaration › “Adı Soyadı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "12",
+     "guide": "14",
+     "guideSource": "DIS- KAPAK-yazi kurallari-24072026.docx › paragraf 11: “Times New Roman Koyu siyah ( bold ) - 14 punto Satır Aralığı -1.15 Metin ortaya hizalı”"
+    }
+   ],
+   "guide": "DIS- KAPAK-yazi kurallari-24072026.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 25,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -20,7 +20,102 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: Tez-Yazim-Kilavuzu.pdf (2 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "Tez-Yazim-Kilavuzu.pdf"
+  "guideDocumentName": "Tez-Yazim-Kilavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (27/37 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.1. İçindekiler Say”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. Üçüncü derece”)"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “ADI SOYADI”"
+    },
+    {
+     "field": "sections.cover.ADVISOR_NAME",
+     "value": "UNVANI ADI SOYADI",
+     "reasoning": "Satır içi etiket: cover › “DANIŞMAN: UNVANI ADI SOYADI”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "AY YIL",
+     "reasoning": "Yer tutucu satır: cover › “AY YIL”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.inner-cover.STUDENT_NAME",
+     "value": "ADI SOYADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “ADI SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.ADVISOR_NAME",
+     "value": "UNVANI ADI SOYADI",
+     "reasoning": "Satır içi etiket: inner-cover › “DANIŞMAN: UNVANI ADI SOYADI”"
+    },
+    {
+     "field": "sections.inner-cover.YEAR",
+     "value": "AY YIL",
+     "reasoning": "Yer tutucu satır: inner-cover › “AY YIL”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Ad SOYAD",
+     "reasoning": "Yer tutucu satır: declaration › “Ad SOYAD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": "Tez-Yazim-Kilavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 28,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

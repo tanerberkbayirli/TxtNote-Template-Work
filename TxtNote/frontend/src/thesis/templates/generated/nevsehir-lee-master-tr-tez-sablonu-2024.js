@@ -20,7 +20,117 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: tez-yazim-klavuzusablonu-2-1.docx (0 alan, 3 çelişki)"
   ],
-  "guideDocumentName": "tez-yazim-klavuzusablonu-2-1.docx"
+  "guideDocumentName": "tez-yazim-klavuzusablonu-2-1.docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (12/22 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "19 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}.' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "… ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “… ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZİN ADI",
+     "reasoning": "Yer tutucu satır: cover › “TEZİN ADI”"
+    },
+    {
+     "field": "sections.cover.YEAR",
+     "value": "Yıl",
+     "reasoning": "Yer tutucu satır: cover › “Yıl”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "………….. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “………….. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZİN ADI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZİN ADI”"
+    },
+    {
+     "field": "sections.inner-cover.YEAR",
+     "value": "2024",
+     "reasoning": "Yer tutucu satır: inner-cover › “2024”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Adı SOYADI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "30",
+     "guide": "35",
+     "guideSource": "tez-yazim-klavuzusablonu-2-1.docx › paragraf 88: “Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarında ise 2 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "measured": "20",
+     "guide": "15",
+     "guideSource": "tez-yazim-klavuzusablonu-2-1.docx › paragraf 88: “Sayfanın üst kenarında 3,5 cm, sol kenarından 4 cm, alt ve sağ kenarlarında ise 2 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "14",
+     "guide": "12",
+     "guideSource": "tez-yazim-klavuzusablonu-2-1.docx › paragraf 97: “Birinci derecede bölüm başlıkları (12 punto) büyük harflerle satır ortalanarak; ikinci derecede bölüm başlıklarında her sözcüğün ilk harfi büyük, diğerleri küçü”"
+    }
+   ],
+   "guide": "tez-yazim-klavuzusablonu-2-1.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 30,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

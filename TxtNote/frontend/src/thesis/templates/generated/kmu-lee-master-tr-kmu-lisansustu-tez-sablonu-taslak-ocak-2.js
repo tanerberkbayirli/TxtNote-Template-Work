@@ -22,7 +22,106 @@ export default {
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kuralları birleştirildi: kmu-sbe-tez-yazim-klavuzu.pdf (5 alan, 4 çelişki)"
   ],
-  "guideDocumentName": "kmu-sbe-tez-yazim-klavuzu.pdf"
+  "guideDocumentName": "kmu-sbe-tez-yazim-klavuzu.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    },
+    {
+     "field": "tables.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (51/76 paragraf (≥200 karakter)); diğer 10 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.position",
+     "value": "above",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "40",
+     "guide": "30",
+     "guideSource": "kmu-sbe-tez-yazim-klavuzu.pdf › sayfa 6: “Sayfanın cilde girecek tüm sayfalarında sol kenarından 3 cm, diğer üç kenardan 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "kmu-sbe-tez-yazim-klavuzu.pdf › sayfa 23: “Her kaynak Times New Roman yazı tipiyle 11 punto boyutuyla, asılı 1 cm girintili olarak 1 satır aralığında (önce 0 nk sonra 6 nk) yazılmalıdır.”"
+    },
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "16",
+     "guide": "14",
+     "guideSource": "kmu-sbe-tez-yazim-klavuzu.pdf › sayfa 8: “Bölüm başlıklarının tamamı büyük harflerle, 14 punto, koyu ve ortalanmış olarak yazılmalıdır.”"
+    },
+    {
+     "field": "typography.headings.2.fontSizePt",
+     "measured": "14",
+     "guide": "12",
+     "guideSource": "kmu-sbe-tez-yazim-klavuzu.pdf › sayfa 9: “8 Alt başlıklar koyu, sola dayalı, 12 punto olmalı ve her kelimesinin ilk harfi büyük olacak şekilde yazılmalıdır.”"
+    }
+   ],
+   "guide": "kmu-sbe-tez-yazim-klavuzu.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 30,
+     "LIMIT": 1,
+     "CONFLICT": 2
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

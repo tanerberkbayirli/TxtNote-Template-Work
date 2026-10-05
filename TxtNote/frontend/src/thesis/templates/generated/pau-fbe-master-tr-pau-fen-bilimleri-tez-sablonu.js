@@ -20,7 +20,98 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx (1 alan, 9 çelişki)"
   ],
-  "guideDocumentName": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx"
+  "guideDocumentName": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+  "review": {
+   "unknown": [],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (49/80 paragraf (≥200 karakter)); diğer 12 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "18 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.leftMm",
+     "measured": "40",
+     "guide": "35",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 64: “Sayfanın sol kenar boşluğu 3.5 cm, sağ kenar boşluğu 2 cm, üst ve alt kenar boşlukları ise 2.5 cm olmalıdır.”"
+    },
+    {
+     "field": "page.margins.rightMm",
+     "measured": "25.01",
+     "guide": "20",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 64: “Sayfanın sol kenar boşluğu 3.5 cm, sağ kenar boşluğu 2 cm, üst ve alt kenar boşlukları ise 2.5 cm olmalıdır.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 71: “Metin içinde 1.5 satır aralığı kullanılmalıdır.”"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "measured": "10",
+     "guide": "12",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 100: “Tüm tablo ve şekil başlıkları Times New Roman, 12 punto, 1.5 satır aralıklı, sola yaslı olarak yazılır.”"
+    },
+    {
+     "field": "tables.position",
+     "measured": "above",
+     "guide": "below",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 100: “Tablo numarasını yazdıktan sonra başlık eklemek için alt satıra shift+enter ile geçilmelidir.”"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "measured": "10",
+     "guide": "12",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 100: “Tüm tablo ve şekil başlıkları Times New Roman, 12 punto, 1.5 satır aralıklı, sola yaslı olarak yazılır.”"
+    },
+    {
+     "field": "page.numbering.position",
+     "measured": "bottom",
+     "guide": "top",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 66: “Tezlerde/projelerde sayfa numaraları sayfanın sağ üst köşesine yazılmalıdır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 66: “Tezlerde/projelerde sayfa numaraları sayfanın sağ üst köşesine yazılmalıdır.”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 71: “Tablo, şekil, ekler ve kaynakçada ise tek satır aralığı kullanılmalıdır.”"
+    }
+   ],
+   "guide": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1,
+     "CONFLICT": 6
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -20,7 +20,67 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: tez-yazim-kilavuzu-tr.pdf (21 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "tez-yazim-kilavuzu-tr.pdf"
+  "guideDocumentName": "tez-yazim-kilavuzu-tr.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Kılavuzdan okunmalı (DOCX şablonu yok)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4 210×297",
+     "reasoning": "Kılavuz A4 demiyorsa bile Türkiye'de lisansüstü tezlerde standart; teyit gerekli"
+    },
+    {
+     "field": "sections.cover.blocks",
+     "value": "genel kapak",
+     "reasoning": "Resmî kapak düzeni yok; genel düzenlenebilir kapak kullanıldı"
+    },
+    {
+     "field": "page.header/footer.distanceMm",
+     "value": "12.5",
+     "reasoning": "Word varsayılanı (1,25 cm); kılavuz belirtmiyor"
+    },
+    {
+     "field": "sections",
+     "value": "standart ön/arka bölümler",
+     "reasoning": "Bölüm listesi kılavuzdan değil, yaygın düzenden; Romen ön sayfalar, 1'den başlayan gövde"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [],
+   "guide": "tez-yazim-kilavuzu-tr.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 36,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

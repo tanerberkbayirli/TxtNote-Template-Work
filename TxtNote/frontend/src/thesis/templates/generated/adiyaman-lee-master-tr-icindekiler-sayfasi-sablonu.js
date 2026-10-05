@@ -20,7 +20,92 @@ export default {
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Kılavuz kuralları birleştirildi: tez yazım kılavuzu 18.07.2022 (1).docx (6 alan, 4 çelişki)"
   ],
-  "guideDocumentName": "tez yazım kılavuzu 18.07.2022 (1).docx"
+  "guideDocumentName": "tez yazım kılavuzu 18.07.2022 (1).docx",
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "typography.headings.2",
+     "reason": "Belgede 2. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "sections.cover.blocks",
+     "reason": "Belgede kapak sayfası bulunamadı (ön bölüm başlığından önce sayfa yok)"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "tables.extraLabels",
+     "reason": "Kılavuz birden çok etiket kullanıyor: ['Tablo', 'Çizelge']; motor tek etiket tutuyor"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.22}",
+     "reasoning": "Word 'n satır' aralığı; Calibri tek satırı 1.22 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "11",
+     "guide": "12",
+     "guideSource": "tez yazım kılavuzu 18.07.2022 (1).docx › paragraf 339: “İçindekiler listesi 12 punto ve 1,5 satır aralığıyla kalın olarak yazılır.”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.079",
+     "guide": "1.5",
+     "guideSource": "tez yazım kılavuzu 18.07.2022 (1).docx › paragraf 267: “Tez metni 1,5 satır aralığında ve iki yana yaslanmış biçimde (blok) yazılır.”"
+    },
+    {
+     "field": "typography.body.align",
+     "measured": "left",
+     "guide": "justify",
+     "guideSource": "tez yazım kılavuzu 18.07.2022 (1).docx › paragraf 267: “Tez metni 1,5 satır aralığında ve iki yana yaslanmış biçimde (blok) yazılır.”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "tez yazım kılavuzu 18.07.2022 (1).docx › paragraf 273: “Sayfa numaraları, sayfanın alt ve sağ alanında yer alır.”"
+    }
+   ],
+   "guide": "tez yazım kılavuzu 18.07.2022 (1).docx",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 27,
+     "LIMIT": 1,
+     "CONFLICT": 4
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

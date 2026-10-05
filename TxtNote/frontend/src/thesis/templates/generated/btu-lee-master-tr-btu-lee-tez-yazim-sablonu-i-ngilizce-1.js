@@ -34,7 +34,61 @@ export default {
    "Şablon yönergesi (İç Kapak): Thesis Advisor: Prof. Dr. Name SURNAME ORCID: (If Any)Thesis Co-Advisor: Assoc. Prof. Dr Name SURNAME ORCID:",
    "Kılavuz kuralları birleştirildi: BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf (1 alan, 0 çelişki)"
   ],
-  "guideDocumentName": "BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf"
+  "guideDocumentName": "BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (37/81 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "6 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.front-page-2.PROJECT_SUPPORT",
+     "value": "This thesis was supported by the project numbered ........ of Bursa Technical University Scientific Research Projects Executive Secretariat.",
+     "reasoning": "Proje desteği satırı, yalnız dolunca basılır: front-page-2 › “This thesis was supported by the project”"
+    },
+    {
+     "field": "sections.front-page-2.PROJECT_SUPPORT",
+     "value": "This thesis was supported by ....... numbered ..................... project.",
+     "reasoning": "Proje desteği satırı, yalnız dolunca basılır: front-page-2 › “This thesis was supported by ....... num”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    }
+   ],
+   "conflicts": [],
+   "guide": "BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 29,
+     "LIMIT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",

@@ -40,7 +40,108 @@ export default {
    "Şablon yönergesi (Ön sayfa 4): Oranlar yazılmalıdır. (Bu baloncuğu siliniz)",
    "Kılavuz kuralları birleştirildi: 2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf (4 alan, 4 çelişki)"
   ],
-  "guideDocumentName": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf"
+  "guideDocumentName": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (10/24 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "3 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "……………… Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “……………… Ana Bilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………….. Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “…………….. Ana Bilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "……………… Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “……………… Ana Bilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "……………….. Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “……………….. Ana Bilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "………………. Ana Bilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “………………. Ana Bilim Dalı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.headings.1.fontSizePt",
+     "measured": "14",
+     "guide": "11",
+     "guideSource": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf › sayfa 13: “İçindekiler kısmında tüm başlıklar 11 punto tek satır aralığı ile yazılmalı, sadece Başlık 1’ler (ana bölüm başlıkları) bold (koyu) ve büyük olmalıdır.”"
+    },
+    {
+     "field": "typography.headings.2.fontSizePt",
+     "measured": "12",
+     "guide": "10",
+     "guideSource": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf › sayfa 17: “Alıntı, APA sistemine göre gösterilecekse alıntılanan ifadeden sonra ilgili kaynak/kaynaklar tez metninde parantez içinde belirtilir. b) Dört satırdan uzun alın”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf › sayfa 13: “Listenin maddeleri sol kenara, sayfa numaraları ise sağ kenara hizalanmalıdır.”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.5",
+     "guide": "1",
+     "guideSource": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf › sayfa 7: “Özet, Abstract, İçindekiler, Simgeler ve Kısaltmalar Dizini, Şekiller Dizini, Tablolar Dizini, Kaynaklar ve Öz Geçmiş bölümleri de tek satır aralığı ile yazılma”"
+    }
+   ],
+   "guide": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf",
+   "gate": {
+    "overall": "LIMIT",
+    "results": {
+     "PASS": 34,
+     "LIMIT": 1,
+     "CONFLICT": 1
+    },
+    "checkedAt": null
+   }
+  }
  },
  "page": {
   "size": "A4",
