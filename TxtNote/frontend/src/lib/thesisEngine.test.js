@@ -305,7 +305,7 @@ describe("thesis export", () => {
     const documentXml = strFromU8(entries["word/document.xml"]);
     const settingsXml = strFromU8(entries["word/settings.xml"]);
     const stylesXml = strFromU8(entries["word/styles.xml"]);
-    assert.match(documentXml, /w:fldCharType="begin"[^>]*w:dirty="true"/);
+    assert.doesNotMatch(documentXml, /w:dirty="true"/);
     assert.match(documentXml, /TOC \\h \\f &quot;A&quot; \\t &quot;ThesisHeading1Index,1,ThesisHeading2Index,2,Heading 1,1,Heading 2,2/);
     assert.match(documentXml, /Chapter title/);
     assert.match(documentXml, /Subchapter title/);
@@ -314,7 +314,7 @@ describe("thesis export", () => {
     assert.match(documentXml, /w:pStyle w:val="ThesisHeading1Excluded"/);
     assert.doesNotMatch(documentXml, /ThesisHeading1Excluded,1/);
     assert.match(documentXml, /w:bookmarkStart w:name="_ref_main_source_0"/);
-    assert.match(settingsXml, /<w:updateFields\s*\/>/);
+    assert.match(settingsXml, /<w:updateFields w:val="false"\s*\/>/);
     assert.match(stylesXml, /w:styleId="ThesisHeading1Excluded"[\s\S]*w:outlineLvl w:val="0"/);
     assert.match(stylesXml, /w:styleId="TOC1"/);
     for (const [name, bytes] of Object.entries(entries)) {

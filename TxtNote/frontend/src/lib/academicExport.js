@@ -772,7 +772,7 @@ export async function buildAcademicDocx(doc) {
     title: paper.title,
     creator: "TxtNote",
     footnotes: context.footnotes,
-    features: { updateFields: true },
+    features: { updateFields: false },
     numbering:{config:[
       {reference:"academic-numbering",levels:Array.from({length:9},(_,level)=>({level,format:LevelFormat.DECIMAL,text:`%${level+1}.`,alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:480*(level+1),hanging:240}}}}))},
       {reference:"academic-bibliography",levels:[{level:0,format:LevelFormat.BULLET,text:"●",alignment:AlignmentType.LEFT,style:{paragraph:{indent:{left:360,hanging:280}}}}]},

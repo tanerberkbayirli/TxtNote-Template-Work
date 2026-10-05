@@ -84,6 +84,7 @@ describe("buildAcademicDocx", () => {
     const styles = zipText(bytes, "word/styles.xml");
     const documentXml = zipText(bytes, "word/document.xml");
     const footnotes = zipText(bytes, "word/footnotes.xml");
+    assert.match(zipText(bytes, "word/settings.xml"), /<w:updateFields w:val="false"\s*\/>/);
     assert.match(styles, /Heading1|heading1/i);
     assert.match(documentXml, /Heading1|heading1/i);
     assert.match(documentXml, /TOC \\o|w:instrText|fldChar/i);

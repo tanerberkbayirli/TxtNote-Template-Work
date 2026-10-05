@@ -7,7 +7,7 @@ function complexFieldMarker(instruction, edge, properties = {}) {
   const font = typeof properties.font === "string" ? properties.font : properties.font?.ascii;
   const rPr = font || properties.size ? `<w:rPr>${font ? `<w:rFonts w:ascii="${fieldXmlText(font)}" w:hAnsi="${fieldXmlText(font)}" w:cs="${fieldXmlText(font)}"/>` : ""}${properties.size ? `<w:sz w:val="${properties.size}"/><w:szCs w:val="${properties.size}"/>` : ""}${properties.bold ? "<w:b/>" : ""}${properties.italics ? "<w:i/>" : ""}</w:rPr>` : "";
   const xml = edge === "begin"
-    ? `<w:r>${rPr}<w:fldChar w:fldCharType="begin" w:dirty="true"/><w:instrText xml:space="preserve">${fieldXmlText(instruction)}</w:instrText><w:fldChar w:fldCharType="separate"/></w:r>`
+    ? `<w:r>${rPr}<w:fldChar w:fldCharType="begin"/><w:instrText xml:space="preserve">${fieldXmlText(instruction)}</w:instrText><w:fldChar w:fldCharType="separate"/></w:r>`
     : `<w:r>${rPr}<w:fldChar w:fldCharType="end"/></w:r>`;
   // fromXmlString returns an unnamed document wrapper (serialized as <undefined>); unwrap to the real <w:r>.
   const parsed = ImportedXmlComponent.fromXmlString(xml);
