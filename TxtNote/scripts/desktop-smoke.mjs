@@ -359,8 +359,68 @@ async function specialPageChecks() {
   assert.deepEqual((await paging(page,'state')).labels,state.labels);
   pass('reload preserves body, section content and metadata; pages recompute correctly');
 }
+async function currentReleaseChecks() {
+  report.scope='current-release';
+  await launchDesktop();
+  const title=`Installer release ${identity.buildId}-${Date.now()}`;
+  await createThesis(page,title,{university:'mcbu',degree:'master'});
+  assert.equal(await page.locator('.thesis-titlebar').count(),0);
+  for(const name of ['Dosya','Giriş','Ekle','Düzen','Başvurular','Görünüm']) {
+    await page.getByRole('tab',{name,exact:true}).click();
+    const shortcuts=page.getByRole('group',{name:'Belge panelleri',exact:true});
+    assert.equal(await shortcuts.getByRole('button',{name:'Tez bilgileri',exact:true}).isEnabled(),true);
+    assert.equal(await shortcuts.getByRole('button',{name:'Sayfa düzeni',exact:true}).isEnabled(),true);
+  }
+  pass('current official template, six ribbon tabs and persistent panel shortcuts; removed title bar');
+  await page.getByRole('tab',{name:'Giriş',exact:true}).click();
+  const text='Installer kayıt ve export doğrulaması';
+  await main(page).fill(text);await main(page).press('End');await main(page).press('Shift+Home');
+  await page.getByRole('button',{name:'Kalın',exact:true}).click();
+  assert.ok(await main(page).evaluate(node=>[...node.querySelectorAll('span,strong,b')].some(el=>Number(getComputedStyle(el).fontWeight)>=700)));
+  await page.getByRole('button',{name:'Sola hizala',exact:true}).click();
+  for(const level of ['75','100','125']) await page.getByLabel('Yakınlaştır',{exact:true}).selectOption(level);
+  await page.getByLabel('Yakınlaştır',{exact:true}).selectOption('100');
+  await frames(page);
+  near((await metrics(page)).width,210*96/25.4,'packaged A4 width');
+  pass('packaged editing, bold, paragraph alignment, zoom and A4 canvas');
+  await page.getByRole('tab',{name:'Dosya',exact:true}).click();
+  const saved={};
+  for(const [button,extension] of [['PDF','.pdf'],['Word','.docx']]) {
+    await page.getByRole('button',{name:button,exact:true}).click();
+    const result=await page.waitForFunction(ext=>[...document.querySelectorAll('[role="status"]')].map(e=>e.textContent||'').find(t=>t.startsWith('Kaydedildi: ')&&t.endsWith(ext)),extension,{timeout:60000});
+    saved[extension]=(await result.jsonValue()).slice('Kaydedildi: '.length);
+  }
+  const frontend=path.join(root,'frontend/node_modules');
+  const {unzipSync,strFromU8}=require(path.join(frontend,'fflate'));
+  const files=unzipSync(new Uint8Array(fs.readFileSync(saved['.docx'])));
+  const xml=strFromU8(files['word/document.xml']);
+  assert.match(xml,/Installer kayıt ve export doğrulaması/);
+  assert.match(strFromU8(files['word/settings.xml']),/<w:updateFields w:val="false"\s*\/>/);
+  assert.doesNotMatch(xml,/w:dirty="true"/);
+  assert.match(xml,/TOC \\h/);
+  const {getDocument}=await import(new URL(`file:///${path.join(frontend,'pdfjs-dist/legacy/build/pdf.mjs').replaceAll('\\','/')}`).href);
+  const task=getDocument({data:new Uint8Array(fs.readFileSync(saved['.pdf'])),disableFontFace:true});
+  const pdf=await task.promise;let found=false;
+  for(let i=1;i<=pdf.numPages;i++) {
+    const sheet=await pdf.getPage(i);near(sheet.view[2],595.28,'PDF A4 width');near(sheet.view[3],841.89,'PDF A4 height');
+    found ||= (await sheet.getTextContent()).items.some(item=>item.str.includes('Installer kayıt'));
+  }
+  assert.ok(found,'real packaged PDF preserves entered text');
+  report.export={pages:pdf.numPages,fieldsUpdateOnOpen:false};await task.destroy();
+  pass('real packaged PDF and DOCX exports retain text, A4 and live TOC without automatic opening updates');
+  await page.waitForTimeout(2000);await page.reload();await unlock(page);await openTitle(page,title);
+  assert.match(await main(page).innerText(),/Installer kayıt ve export doğrulaması/);
+  await page.waitForTimeout(2000);await closeDesktop();await launchDesktop();await openTitle(page,title);
+  assert.match(await main(page).innerText(),/Installer kayıt ve export doğrulaması/);
+  assert.ok(await main(page).evaluate(node=>[...node.querySelectorAll('span,strong,b')].some(el=>Number(getComputedStyle(el).fontWeight)>=700)));
+  pass('SQLite autosave, reload and full application restart preserve text and formatting');
+  await page.screenshot({path:path.join(output,'installer-current-release.png')});
+  for(const file of Object.values(saved)) fs.rmSync(file,{force:true});
+}
 try {
-  if(process.env.TXTNOTE_SMOKE_SCOPE==='special-pages') {
+  if(!process.env.TXTNOTE_SMOKE_SCOPE||process.env.TXTNOTE_SMOKE_SCOPE==='current-release') {
+    await currentReleaseChecks();
+  } else if(process.env.TXTNOTE_SMOKE_SCOPE==='special-pages') {
     await specialPageChecks();
   } else {
   // Production web preview serves the exact frontend dist which Tauri embeds.

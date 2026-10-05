@@ -83,12 +83,14 @@ Playwright (`PLAYWRIGHT_MODULE` ile yolu seçilebilir), Rust/MSVC ve mevcut upda
 signing key. Smoke testi production CSP'yi kullanır, yalnızca kendi test WebView
 profilini ve kendi başlattığı executable PID'sini yönetir. Cihaz cüzdanıyla oturum
 varsa devam eder; kullanıcı belgelerini düzenlemek yerine yeni bir test tezi açar.
-Production `frontend/dist` ile web/desktop A4 ve kapak stillerini karşılaştırır;
-boş kâğıttan odak, araçlar, file chooser, görsel seçimi/resize/zoom, gerçek A4
-pagination (3+ sayfa, sayfa ortasına ekleme/silme reflow'u, zoom, bölüm sayfa sonları,
-Roman/Arabic numaralandırma, restart sonrası aynı sayfalar), autosave, print iframe ve
-tam uygulama restart'ını test eder. CSP olayları ve WebView Log
-security kayıtları hata sayılır. Test için CSP gevşetilmez.
+Varsayılan `current-release` kontrolü güncel resmî MCBÜ yüksek lisans şablonunu
+paketlenmiş uygulamada oluşturur; altı ribbon sekmesini, kalıcı panel kısayollarını,
+metin düzenleme/kalın/hizalama/zoom işlemlerini, A4 tuvalini, gerçek PDF/DOCX
+export'unu, DOCX açılış alan ayarını ve kayıt/reload/tam uygulama restart'ını test
+eder. Bu kontrol üniversite şablonu uygunluk raporu yerine geçmez. Eski demo
+üniversitelere bağlı kapsam `TXTNOTE_SMOKE_SCOPE=legacy` ile korunmuştur;
+demolar üretim listesinden kaldırıldığı için o kapsam güncel release kapısı değildir.
+CSP olayları ve WebView Log security kayıtları hata sayılır; test için CSP gevşetilmez.
 
 `npm run desktop:smoke -- <installer-payload/txtnote.exe>` aynı smoke'u bağımsız
 çalıştırır. `npm run test:release` eski/değiştirilmiş updater artifact'larını
