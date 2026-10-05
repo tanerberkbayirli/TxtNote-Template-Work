@@ -2,7 +2,7 @@
 ## Identity
 - Registry id(s): `aku-kimya-lisans-tr-v1`
 - Template module: `TxtNote/frontend/src/thesis/templates/aku-kimya.js` (exports: akuKimyaLisans)
-- Spec: `orchestration/specs/aku-kimya-lisans.json`; checks: `orchestration/specs/aku-kimya-lisans.checks.json` (not yet); progress report: `orchestration/reports/aku-kimya-lisans.md`
+- Spec: `orchestration/specs/aku-kimya-lisans.json`; checker files now present: `orchestration/specs/aku-kimya-lisans.checks.json` and `.fixture.json`; progress report: `orchestration/reports/aku-kimya-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf`
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx`
@@ -30,8 +30,10 @@
 - CONFLICT: 7 (inner-cover top margin, footnote/table-cell font size, symbols indent, onay/etik separation). UNKNOWN: 7 (outer cover, table row height 6.2-7.0 mm, cv fields).
 ## Status
 - IMPLEMENTED; validation PENDING (self reports deviations); commit dd2d49a. Untouched in session 2.
-## Next step
-- Engine review of cover positioning/blank header, then checker run.
+## Checker handoff (2026-10-04)
+- Added source-backed coverage for A4/30 mm geometry, exact body font and size, line pitch, measured cover baselines, H1-H4 sizing/case, front/main numbering, and DOCX/Word validity. Fixture contains front matter, appendices, and H2-H4 sample headings.
+- `source/template.pdf` is an existing official Word-rendered source reference, but the standard `source/reference/` bundle (`official-word.pdf`, `official.docx`, `reference.json`) is absent. Reuse the cached render when building reference data; do not re-render the official template.
+- Root should run `node orchestration/tools/check.mjs --target aku-kimya-lisans --word` after ensuring the existing source render is cached once.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-kimya-lisans` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

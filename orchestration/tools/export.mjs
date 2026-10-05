@@ -46,6 +46,7 @@ async function settle() {
     const root = document.querySelector('[aria-label="Belge sayfaları"]');
     return ["true", "fallback"].includes(root?.getAttribute("data-thesis-pagination-ready"))
       || document.body.innerText.includes("Dizin sayfa eşlemesi tamamlanmadı")
+      || document.body.innerText.includes("sayfa numarası hesaplanamadı")
       || document.body.innerText.includes("sayfalaması kararlı hale gelmedi");
   }, undefined, { timeout: 120000 }).catch(async (error) => {
     // Diagnose the stall: is the frame loop alive, is the page visible, what do the pagination attributes say?
@@ -73,7 +74,7 @@ async function settle() {
       missingTargets,
       mismatchedLabels,
       sheets: [...document.querySelectorAll(".thesis-sheet")].map((s) => ({ label: s.dataset.thesisPageLabel || "", group: s.dataset.thesisPageGroup || s.dataset.thesisGroup || "" })),
-      warn: document.body.innerText.includes("sayfalaması kararlı hale gelmedi") || document.body.innerText.includes("Dizin sayfa eşlemesi tamamlanmadı"),
+      warn: document.body.innerText.includes("sayfalaması kararlı hale gelmedi") || document.body.innerText.includes("Dizin sayfa eşlemesi tamamlanmadı") || document.body.innerText.includes("sayfa numarası hesaplanamadı"),
     };
   });
 }
@@ -128,7 +129,10 @@ try {
       return !busy && document.body.innerText !== before && !/indirildi|Kaydedildi/.test(document.body.innerText) ? document.body.innerText.split("\n").find((line) => !before.includes(line)) || "export failed" : false;
     }, bodyBefore, { timeout: 240000, polling: 500 }).then((handle) => handle.jsonValue());
     const outcome = await Promise.race([event.then((download) => ({ download })), failure.then((message) => ({ message }))]);
-    if (!outcome.download) throw new Error(`${button} export failed in the editor: ${outcome.message}`);
+    if (!outcome.download) {
+      const diagnostics = await paginationDiagnostics(page);
+      throw new Error(`${button} export failed in the editor: ${outcome.message}; ${JSON.stringify(diagnostics)}`);
+    }
     await outcome.download.saveAs(`${outPrefix}.${extension}`);
     if (extension === 'pdf') {
       engineLayout = await page.evaluate(() => document.querySelector('[aria-label="Belge sayfaları"]')?.__thesisLayoutReport || null);
@@ -145,8 +149,9 @@ try {
     throw new Error("PDF and Word exports were preceded by different page/index mappings; refusing to report them as a matched pair");
   }
   const blockGaps = process.env.EXPORT_DEBUG_BLOCK_GAPS ? await blockGapDiagnostics(page, process.env.EXPORT_DEBUG_BLOCK_GAPS) : undefined;
+  const paginationDebug = process.env.EXPORT_DEBUG_PAGINATION ? await paginationDiagnostics(page) : undefined;
   await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, warn: state.warn, ...(blockGaps ? { blockGaps } : {}),
-    engineLayout, pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
+    ...(paginationDebug ? { paginationDebug } : {}), engineLayout, pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
       targets: state.targets.map((target) => ({ target, label: state.pageMap[target]?.indexLabel ?? state.pageMap[target]?.label ?? "" })) }, exportSnapshots, errors }, null, 2));
   if (state.paginationReady !== "true") throw new Error(`paged export readiness unavailable: ${state.paginationReady}`);
   if (!state.pagedLayout) throw new Error("paged layout not active: PDF would come from the fallback writer");

@@ -2,7 +2,7 @@
 ## Identity
 - Registry id(s): `aku-sagbil-master-tr-v1`, `aku-sagbil-phd-tr-v1`
 - Template module: `TxtNote/frontend/src/thesis/templates/aku-sagbil.js` (exports: akuSagbilMaster, akuSagbilPhd)
-- Spec: `orchestration/specs/aku-sagbil.json`; checks: `orchestration/specs/aku-sagbil.checks.json` (not yet); progress report: `orchestration/reports/aku-sagbil.md`
+- Spec: `orchestration/specs/aku-sagbil.json`; checks: `orchestration/specs/aku-sagbil.checks.json`; progress report: `orchestration/reports/aku-sagbil.md`
 ## Sources
 - `orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf`
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Saglik_Bilimleri_Enstitusu_Tez_Kilavuzu_2015.pdf`
@@ -26,12 +26,18 @@
 | Figure caption position | below | EXPLICIT | PDF p.11 (printed p.9), §2.14 |
 | Table/figure min font | minimum 8 pt for tables/figures/formulas | EXPLICIT | PDF p.4 (printed p.2), §2.2 |
 ## Open issues
-- FAIL (independent-1, 2026-10-01; 8 FAIL/7 CONFLICT): R10 4th-level heading not bold; R14 190-char title -> approval spills to stray page 4; R15 approval title baseline 36.08 vs 33.95 (-2.13 mm); R23 TOC page numbers right-aligned (centre 177.9 vs ~172.7); R24 TOC missing Onay/Etik rows; R33 equation label 'Denklem 2.1:' absent; R35 footnote 7.5 pt PDF vs 10 pt; R37 EKLER heading/first Ek not on same page. Report: orchestration/validation/aku-sagbil/independent-1/independent-1.md
-- CONFLICT: 21 in spec (Onsoz/Icindekiler order, keyword label, bibliography size/spacing, 'aralik' meaning). UNKNOWN: 25 (page-number distance/font, heading sizes, footnote size).
+- Prior independent-1 FAILs: H4 bold (fixed locally); TOC missing approval/ethics rows (fixed via `tocEntry:title` + counted hidden Roman labels); first appendix not sharing EKLER page (fixed via conditional H2 page break).
+- Fresh 1754 run's approval spill was fixture-driven: the fixture's actual document title remained long because the top-level `title` did not match its short THESIS_TITLE value. Normal master/PhD fixtures now use the short title in both places; each retains five example jurors. Re-export needed before interpreting page parity.
+- Equation caption remains an engine gap: the model/editor stores only math and a numbered flag; it has no description text or mixed-style label/description block. Keep the existing numberAlign path unchanged unless an optional source-configured caption is present.
+- Caption 12 pt follows explicit §2.14 body-size prose; example 11 pt remains recorded as a conflict in `conflicts[]`.
+- Front-matter number chronology remains CONFLICT; no exact Roman start is asserted.
+- Other retained conflicts/unknowns: 21 conflicts and 25 UNKNOWN entries in the source audit.
 ## Status
-- IN_PROGRESS; validation PENDING; commit null. Resume note: untouched in session 2.
+- Template edits and source-backed checks/fixtures are prepared locally; this worker did not run real exports or Word output validation.
+- Normal master/PhD fixtures use a short title in the actual document title and THESIS_TITLE value, no co-advisor, and five jurors; stress `t80` remains unchanged. PDF checks cover both editor and Word-rendered output.
+- Checker rows now target the fixture's actual H4 text (no synthetic number prefix); centered no-leader TOC parsing is opt-in. The source-approved Example 8 labels for hidden approval/ethics pages (ii/iii) are checked only as contents labels while the pages remain physically unprinted; §2.6's preliminary-numbering conflict is retained. `t80` page-count/label parity remains checked, not waived.
 ## Next step
-- Fix R14/R15 approval overflow and R35 footnote size, then rerun failed rows.
+- Root serializes real exports/Word. Resolve supported Tier 1 failures from fresh output; title overflow remains Tier 2 UNKNOWN.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-sagbil` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

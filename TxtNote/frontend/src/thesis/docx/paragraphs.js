@@ -13,9 +13,14 @@ const LIST_INDENT_PT = 24;
 export function runProps(style, language) {
   return { font: style.fontFamily, size: halfPointSize(style.fontSizePt), bold: style.fontWeight >= 600, italics: Boolean(style.italic), ...(style.characterSpacingPt ? { characterSpacing: pt(style.characterSpacingPt) } : {}), ...(style.color ? { color: style.color.slice(1).toUpperCase() } : {}), language: { value: language } };
 }
+// Same values as the editor CSS (.fmt-color-* / .fmt-highlight-* in engine.js), so Word shows exactly what the editor shows.
+const PRESET_TEXT_COLORS = { black: "000000", red: "BE123C", blue: "0369A1", green: "047857" };
+const PRESET_HIGHLIGHTS = { yellow: "FFF2A8", green: "C9F2D0", cyan: "BDEFFF", magenta: "F5C8EE" };
+/** Preset id or custom "#rrggbb" (data-fmt-color / data-fmt-bg) -> upper-case RRGGBB, else undefined. */
+const inlineHex = (value, presets) => presets[value] || (/^#[0-9a-f]{6}$/i.test(value || "") ? value.slice(1).toUpperCase() : undefined);
 function textRun(text, style, context, inline = {}) {
-  const inlineColor = { black: "171717", red: "E8A0A0", blue: "9BB8DE", green: "9CC9AE" }[inline.color];
-  const highlightFill = { yellow: "FFF2A8", green: "C9F2D0", cyan: "BDEFFF", magenta: "F5C8EE" }[inline.highlight];
+  const inlineColor = inlineHex(inline.color, PRESET_TEXT_COLORS);
+  const highlightFill = inlineHex(inline.highlight, PRESET_HIGHLIGHTS);
   return new TextRun({
     ...runProps(style, context.language), text: transformThesisText(text, style, context.language),
     ...(inline.fontSizePt ? { size: halfPointSize(inline.fontSizePt) } : {}),

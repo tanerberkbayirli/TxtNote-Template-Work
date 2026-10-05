@@ -1,5 +1,6 @@
-import { memo, useLayoutEffect, useRef, useState } from "react";
+import { memo, useCallback, useLayoutEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
+import { registerCustomFormatRules } from "../../config/format.js";
 import { footnotesFromHtml } from "../../lib/academicDocument.js";
 import { focusEditableStart } from "../../lib/richText.js";
 import { resolveChromeText, resolvePageNumberStyle } from "../../thesis/engine.js";
@@ -85,8 +86,60 @@ function FootnoteArea({ groupId, rule, items, top }) {
  * innerHTML for every new prop object, which would drop the anchors that
  * decorateThesisSources adds to it; identical HTML therefore keeps its DOM.
  */
-const StaticHtml = memo(function StaticHtml({ html }) {
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+const TEXT_NODES = "h1, p.thesis-fixed";
+const nodeText = (node) => node.innerText.replace(/[\u00a0]/g, " ").replace(/\r\n?/g, "\n").replace(/\n$/, "");
+const fixedLines = (root) => [...root.querySelectorAll('p.thesis-fixed[data-thesis-text="fixed"]')].map((node) => nodeText(node).replace(/^ $/, ""));
+
+/**
+ * Template-owned text the writer may replace in this document: the section title heading and its fixed paragraphs.
+ * Text edits are plain text, committed on blur as a document-local override (never written to the template).
+ */
+function EditableStaticHtml({ html, sectionId, onTextOverride, onStaticFocus }) {
+  const rootRef = useRef(null);
+  const editRef = useRef(null);
+  useLayoutEffect(() => {
+    registerCustomFormatRules(html);
+    for (const node of rootRef.current.querySelectorAll(TEXT_NODES)) {
+      if (node.closest("[data-layout-id],[data-thesis-block]")) continue;
+      node.setAttribute("contenteditable", "plaintext-only");
+      node.setAttribute("data-thesis-text", node.tagName === "H1" ? "title" : "fixed");
+      node.setAttribute("spellcheck", "false");
+    }
+  }, [html]);
+  const host = (event) => event.target.closest?.("[data-thesis-text]");
+  const snapshot = (node) => node.getAttribute("data-thesis-text") === "title" ? nodeText(node).replace(/\s+/g, " ").trim() : fixedLines(rootRef.current).join("\n");
+  // Text typed since focus, or null. Taking it ends the edit, so the caller commits it together with a format change.
+  const takePending = (node) => {
+    const edit = editRef.current;
+    editRef.current = null;
+    if (!edit) return null;
+    const kind = node.getAttribute("data-thesis-text");
+    const text = snapshot(node);
+    return text === edit.original ? null : { kind, text: kind === "title" && !text ? undefined : text };
+  };
+  const finish = (node) => {
+    const pending = takePending(node);
+    if (pending) onTextOverride?.(sectionId, pending.kind, pending.text);
+  };
+  return <div ref={rootRef} data-thesis-static-root=""
+    onFocus={(event) => {
+      const node = host(event);
+      if (!node) return;
+      editRef.current = { original: snapshot(node), nodeText: nodeText(node) };
+      onStaticFocus?.(sectionId, node.getAttribute("data-thesis-text"), () => takePending(node));
+    }}
+    onBlur={(event) => { const node = host(event); if (node) finish(node); }}
+    onKeyDown={(event) => {
+      const node = host(event);
+      if (!node) return;
+      if (event.key === "Escape") { event.preventDefault(); node.innerText = editRef.current?.nodeText ?? node.innerText; editRef.current = null; node.blur(); }
+      else if (event.key === "Enter" && node.getAttribute("data-thesis-text") === "title") { event.preventDefault(); node.blur(); }
+    }}
+    dangerouslySetInnerHTML={{ __html: html }} />;
+}
+
+const StaticHtml = memo(function StaticHtml({ html, sectionId, onTextOverride, onStaticFocus }) {
+  return onTextOverride ? <EditableStaticHtml html={html} sectionId={sectionId} onTextOverride={onTextOverride} onStaticFocus={onStaticFocus} /> : <div dangerouslySetInnerHTML={{ __html: html }} />;
 });
 
 function caretPointFromClient(x, y) {
@@ -96,7 +149,7 @@ function caretPointFromClient(x, y) {
   return range ? { node: range.startContainer, offset: range.startOffset } : null;
 }
 
-export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSectionFocus, onFormatChange, onTextChange, onPageCount, onChapterStarts, footnotes }) {
+function ThesisSectionPagesView({ group, pages, values, zoom, bodyRefs, onSectionFocus, onFormatChange, onTextChange, onTextOverride, onStaticFocus, onPageCount, onChapterStarts, footnotes }) {
   const section = group.sections[0];
   const articleRef = useRef(null);
   const flowRef = useRef(null);
@@ -137,14 +190,23 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
     else editor.focus({ preventScroll: true });
   };
 
+  // Special pages keep their own block editing; generated indexes have no template text to replace.
+  // The callback stays identical across renders: a new prop would make React re-inject the static HTML and drop the edit hooks.
+  const overrideRef = useRef(onTextOverride);
+  overrideRef.current = onTextOverride;
+  const staticFocusRef = useRef(onStaticFocus);
+  staticFocusRef.current = onStaticFocus;
+  const focusStatic = useCallback((...args) => staticFocusRef.current?.(...args), []);
+  const commitOverride = useCallback((sectionId, kind, text) => overrideRef.current?.(sectionId, kind, text), []);
+  const overrideText = (item) => !item.specialPage && item.mode !== "generated" && onTextOverride ? commitOverride : undefined;
   const renderBody = (item, notes = item.editable ? footnotesFromHtml(item.editableHtml) : []) => <div className="thesis-body">
     {item.editable ? <>
-      {item.prefixHtml ? <StaticHtml html={item.prefixHtml} /> : null}
+      {item.prefixHtml ? <StaticHtml html={item.prefixHtml} sectionId={item.id} onTextOverride={overrideText(item)} onStaticFocus={focusStatic} /> : null}
       <RichTextBody ref={(instance) => { bodyRefs.current[item.id] = instance; }} compact academic paragraphSemantics emptyHeadingOnInsert positionedFrame={!THESIS_PAGED_LAYOUT} className="thesis-content" content={item.editableHtml}
         onContentChange={(html, reason) => onTextChange(item, html, reason)} onFocus={() => onSectionFocus(item.id)} onFormatChange={(format) => onFormatChange?.(item.id, format)} ariaLabel={`${item.title} metni`} />
       {notes.length && !pageNotes ? <ol className="academic-footnote-list" contentEditable={false}>{notes.map((note) => <li key={note.index}><sup>{note.index}</sup> {note.text}</li>)}</ol> : null}
       {item.suffixHtml ? <StaticHtml html={item.suffixHtml} /> : null}
-    </> : <StaticHtml html={item.html} />}
+    </> : <StaticHtml html={item.html} sectionId={item.id} onTextOverride={overrideText(item)} onStaticFocus={focusStatic} />}
   </div>;
 
   useLayoutEffect(() => {
@@ -199,9 +261,10 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
             top={entry.index * flowPagePitchPx(metrics) + metrics.topMarginPx + Math.floor((metrics.contentHeightPx - metrics.trailingLeadingPx) * 64) / 64 - footnotes.pages[entry.index].height} /> : null)}
         </div>
       </> : null}
-      <article ref={articleRef} className="thesis-paper thesis-editor-surface" data-thesis-section={section.id} data-thesis-empty-flow={emptyFlow ? "true" : undefined} data-thesis-layout={THESIS_PAGED_LAYOUT ? "paged" : "continuous"} data-thesis-page-count={THESIS_PAGED_LAYOUT ? (emptyFlow ? 0 : count) : undefined} aria-label={`${section.title}, A4 belge alanı`} onClick={focusBodyFromPaper}>
+      <article ref={articleRef} className="thesis-paper thesis-editor-surface" data-thesis-section={section.id} data-thesis-empty-flow={emptyFlow ? "true" : undefined} data-thesis-odd-page-pad={pages.some((entry) => entry.blank) ? "true" : undefined} data-thesis-layout={THESIS_PAGED_LAYOUT ? "paged" : "continuous"} data-thesis-page-count={THESIS_PAGED_LAYOUT ? (emptyFlow ? 0 : count) : undefined} aria-label={`${section.title}, A4 belge alanı`} onClick={focusBodyFromPaper}>
         {THESIS_PAGED_LAYOUT ? null : <PageChrome section={section} values={values} />}
         <div ref={flowRef} className="thesis-page-flow" data-thesis-empty-flow={emptyFlow ? "true" : undefined}>
+          {THESIS_PAGED_LAYOUT && !emptyFlow && pages.some((entry) => entry.blank) ? <div aria-hidden="true" data-thesis-odd-page-spacer="" data-export-ignore="" /> : null}
           {group.sections.map((item) => <section key={item.id} className="thesis-flow-section" data-thesis-flow-section={item.id} data-thesis-section-mode={item.mode} data-thesis-fixed-content={item.fixedContent ? "true" : undefined} data-thesis-special-page={item.specialPage ? item.type : undefined}>{renderBody(item)}</section>)}
           {pageNotes ? Array.from({ length: footnotes?.tail || 0 }, (_, index) => <div key={`tail-${index}`} className="thesis-footnote-tail" aria-hidden="true" />) : null}
         </div>
@@ -209,3 +272,16 @@ export function ThesisSectionPages({ group, pages, values, zoom, bodyRefs, onSec
     </div>
   </div>;
 }
+
+// Content signature of a render input, cached per object: the engine rebuilds every group on each keystroke, but only the edited one changes.
+const signatures = new WeakMap();
+const signature = (value) => {
+  if (!value || typeof value !== "object") return value;
+  let known = signatures.get(value);
+  if (known === undefined) { known = JSON.stringify(value); signatures.set(value, known); }
+  return known;
+};
+const STABLE_PROPS = ["zoom", "bodyRefs", "onSectionFocus", "onFormatChange", "onTextChange", "onTextOverride", "onStaticFocus", "onPageCount", "onChapterStarts"];
+const SIGNED_PROPS = ["group", "pages", "values", "footnotes"];
+export const ThesisSectionPages = memo(ThesisSectionPagesView, (previous, next) =>
+  STABLE_PROPS.every((key) => previous[key] === next[key]) && SIGNED_PROPS.every((key) => signature(previous[key]) === signature(next[key])));

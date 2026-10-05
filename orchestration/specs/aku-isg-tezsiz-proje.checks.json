@@ -1,341 +1,665 @@
 [
- {
-  "id": "page-size",
-  "kind": "page_size",
-  "params": {},
-  "expected": [
-   210,
-   297
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "standard A4"
+  {
+    "id": "page-size",
+    "kind": "page_size",
+    "params": {},
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "standard A4"
+    },
+    "evidence": "INFERRED"
   },
-  "evidence": "INFERRED"
- },
- {
-  "id": "margins-body-left",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x0min"
+  {
+    "id": "margins-body-left",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#3 pgMar 1701"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#3 pgMar 1701"
+  {
+    "id": "margins-body-right",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#3 pgMar 1701"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "margins-body-right",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x1max"
+  {
+    "id": "body-font",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ]
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "styles.xml Normal"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 180,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#3 pgMar 1701"
+  {
+    "id": "body-font-size",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "styles.xml Normal sz24"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "body-font",
-  "kind": "fonts",
-  "params": {
-   "families": [
-    "Times New Roman"
-   ]
+  {
+    "id": "body-line-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "layout"
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "document.xml body paragraph 1.5 line spacing"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": [
-   "TimesNewRomanPSMT",
-   "TimesNewRomanPS-BoldMT",
-   "TimesNewRomanPS-ItalicMT",
-   "TimesNewRomanPS-BoldItalicMT"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "styles.xml Normal"
+  {
+    "id": "body-first-line-indent",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^\\d+(\\.\\d+)* [12]\\. Çevrimiçi öğrenme",
+      "attr": "x0",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "document.xml paragraph 'Baykal vd. (2015)...' firstLine none (spec body.paragraph firstLineIndent 0; conflict 'First-line indent' ruled 0); expected = left margin 30"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "body-font-size",
-  "kind": "font_size",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   }
+  {
+    "id": "page-numbering-style-docx",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "rFonts",
+      "attrs": [
+        "ascii"
+      ],
+      "parts": [
+        "word/footer*"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "Times New Roman"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "footer1/2.xml PAGE field"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "styles.xml Normal sz24"
+  {
+    "id": "page-numbering-size",
+    "kind": "page_number_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "size",
+      "source": "layout"
+    },
+    "expected": 11,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "footer1/2.xml sz=22 (11 pt)"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "body-line-pitch",
-  "kind": "line_pitch",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "source": "layout"
+  {
+    "id": "front-numbering-roman",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1
+      ],
+      "field": "pgNumType.fmt"
+    },
+    "expected": "lowerRoman",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#2 pgNumType lowerRoman"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 7.3,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "document.xml body paragraph 1.5 line spacing"
+  {
+    "id": "body-numbering-decimal",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        -1
+      ],
+      "field": "pgNumType.fmt"
+    },
+    "expected": "decimal",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#3 pgNumType decimal"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "body-first-line-indent",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^\\d+(\\.\\d+)* [12]\\. Çevrimiçi öğrenme",
-   "attr": "x0",
-   "agg": "all",
-   "source": "layout"
+  {
+    "id": "page-labels",
+    "kind": "page_labels",
+    "params": {},
+    "expected": "none x2, ii, iii, iv, v, vi, vii, viii, ix, x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg: cover not counted, inner cover = i not printed, so first printed front page = ii; sectPr#3 decimal start=1 at GİRİŞ. Applied to this fixture's 34 pages (front: Etik..Simgeler = 9 pages)"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "document.xml paragraph 'Baykal vd. (2015)...' firstLine none (spec body.paragraph firstLineIndent 0; conflict 'First-line indent' ruled 0); expected = left margin 30"
+  {
+    "id": "docx-no-undefined",
+    "kind": "docx_no_undefined",
+    "params": {},
+    "expected": "none",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "field validity"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "page-numbering-style-docx",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "rFonts",
-   "attrs": [
-    "ascii"
-   ],
-   "parts": [
-    "word/footer*"
-   ],
-   "mode": "has"
+  {
+    "id": "note-footer-distance",
+    "kind": "note",
+    "params": {
+      "text": "Footer distance source 12.5 mm; output 17.4 mm modelled with trailing empty paragraph (MEASURED/INFERRED)"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "footer geometry UNKNOWN"
+    },
+    "evidence": "INFERRED"
   },
-  "expected": [
-   "Times New Roman"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "footer1/2.xml PAGE field"
+  {
+    "id": "docx-margins-cover-left",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        0
+      ],
+      "field": "margins.left"
+    },
+    "expected": 40,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#1 pgMar 1701/1418/1701/2268 (spec page.margins.cover left 40 mm = 2268 tw)"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "page-numbering-size",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "size",
-   "source": "layout"
+  {
+    "id": "docx-margins-cover-right",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        0
+      ],
+      "field": "margins.right"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#1 pgMar (spec page.margins.cover right 25)"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 11,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "footer1/2.xml sz=22 (11 pt)"
+  {
+    "id": "docx-margins-front-top",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1
+      ],
+      "field": "margins.top"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#2 pgMar top 1418 (spec page.margins.front)"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "front-numbering-roman",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    1
-   ],
-   "field": "pgNumType.fmt"
+  {
+    "id": "docx-margins-front-left",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1
+      ],
+      "field": "margins.left"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#2 pgMar (spec page.margins.front)"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": "lowerRoman",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#2 pgNumType lowerRoman"
+  {
+    "id": "docx-margins-body-top",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        -1
+      ],
+      "field": "margins.top"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#3 pgMar 1701 (spec page.margins.body)"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "body-numbering-decimal",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    -1
-   ],
-   "field": "pgNumType.fmt"
+  {
+    "id": "docx-footer-distance",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1,
+        -1
+      ],
+      "field": "margins.footer"
+    },
+    "expected": 12.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "pgMar footer=709 (spec page.footer.distanceMm 12.5)"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": "decimal",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#3 pgNumType decimal"
+  {
+    "id": "footer-distance-source-twips",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "pgMar",
+      "attrs": [
+        "footer"
+      ],
+      "parts": [
+        "word/document.xml"
+      ],
+      "mode": "has",
+      "numeric_tol": 0
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "source sectPr #1-3 pgMar footer=709 tw (12.506 mm)"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "page-labels",
-  "kind": "page_labels",
-  "params": {},
-  "expected": "none x2, ii, iii, iv, v, vi, vii, viii, ix, x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg: cover not counted, inner cover = i not printed, so first printed front page = ii; sectPr#3 decimal start=1 at GİRİŞ. Applied to this fixture's 34 pages (front: Etik..Simgeler = 9 pages)"
+  {
+    "id": "footer-page-and-terminal-blank-sequence",
+    "kind": "docx_paragraph_sequence",
+    "params": {
+      "part_regex": "^word/footer[0-9]+\\.xml$",
+      "require_field": "\\bPAGE\\b"
+    },
+    "expected": [
+      {
+        "field_regex": "\\bPAGE\\b",
+        "empty": false
+      },
+      {
+        "empty": true
+      }
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "source footer1/2.xml: PAGE paragraph followed by one empty paragraph; style IDs are implementation identifiers"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "docx-no-undefined",
-  "kind": "docx_no_undefined",
-  "params": {},
-  "expected": "none",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "field validity"
+  {
+    "id": "two-line-inner-cover-title-first-line",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Çevrimiçi Öğrenme",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 16,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "validation/aku-isg-independent-2/REPORT.md: source/Word inner-cover title wraps to two lines; source title run is 16 pt"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "note-footer-distance",
-  "kind": "note",
-  "params": {
-   "text": "Footer distance source 12.5 mm; output 17.4 mm modelled with trailing empty paragraph (MEASURED/INFERRED)"
+  {
+    "id": "two-line-inner-cover-title-second-line",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Düzeyi$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 16,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "validation/aku-isg-independent-2/REPORT.md: fixture title Çevrimiçi Öğrenme Ortamlarında Dijital Okuryazarlık Düzeyi wraps to two lines in official source/Word"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": null,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "footer geometry UNKNOWN"
+  {
+    "id": "page-size-word",
+    "kind": "page_size",
+    "params": {
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "standard A4"
+    },
+    "evidence": "INFERRED"
   },
-  "evidence": "INFERRED"
- },
- {
-  "id": "docx-margins-cover-left",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    0
-   ],
-   "field": "margins.left"
+  {
+    "id": "margins-body-left-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#3 pgMar 1701"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 40,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#1 pgMar 1701/1418/1701/2268 (spec page.margins.cover left 40 mm = 2268 tw)"
+  {
+    "id": "margins-body-right-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#3 pgMar 1701"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "docx-margins-cover-right",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    0
-   ],
-   "field": "margins.right"
+  {
+    "id": "body-font-word",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "styles.xml Normal"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#1 pgMar (spec page.margins.cover right 25)"
+  {
+    "id": "body-font-size-word",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "styles.xml Normal sz24"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "docx-margins-front-top",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    1
-   ],
-   "field": "margins.top"
+  {
+    "id": "body-line-pitch-word",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "document.xml body paragraph 1.5 line spacing"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#2 pgMar top 1418 (spec page.margins.front)"
+  {
+    "id": "body-first-line-indent-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^\\d+(\\.\\d+)* [12]\\. Çevrimiçi öğrenme",
+      "attr": "x0",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "document.xml paragraph 'Baykal vd. (2015)...' firstLine none (spec body.paragraph firstLineIndent 0; conflict 'First-line indent' ruled 0); expected = left margin 30"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "docx-margins-front-left",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    1
-   ],
-   "field": "margins.left"
+  {
+    "id": "page-numbering-size-word",
+    "kind": "page_number_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "size",
+      "source": "word"
+    },
+    "expected": 11,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "footer1/2.xml sz=22 (11 pt)"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#2 pgMar (spec page.margins.front)"
+  {
+    "id": "page-labels-word",
+    "kind": "page_labels",
+    "params": {
+      "source": "word"
+    },
+    "expected": "none x2, ii, iii, iv, v, vi, vii, viii, ix, x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg: cover not counted, inner cover = i not printed, so first printed front page = ii; sectPr#3 decimal start=1 at GİRİŞ. Applied to this fixture's 34 pages (front: Etik..Simgeler = 9 pages)"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "docx-margins-body-top",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    -1
-   ],
-   "field": "margins.top"
+  {
+    "id": "two-line-inner-cover-title-first-line-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Çevrimiçi Öğrenme",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 16,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "validation/aku-isg-independent-2/REPORT.md: source/Word inner-cover title wraps to two lines; source title run is 16 pt"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "sectPr#3 pgMar 1701 (spec page.margins.body)"
+  {
+    "id": "two-line-inner-cover-title-second-line-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Düzeyi$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 16,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "validation/aku-isg-independent-2/REPORT.md: fixture title Çevrimiçi Öğrenme Ortamlarında Dijital Okuryazarlık Düzeyi wraps to two lines in official source/Word"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "docx-footer-distance",
-  "kind": "docx_section",
-  "params": {
-   "sections": [
-    1,
-    -1
-   ],
-   "field": "margins.footer"
+  {
+    "id": "footer-measured-baseline-layout",
+    "kind": "page_number_attr",
+    "params": {
+      "source": "layout",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 278.799,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "cached official Word render p.5; PAGE baseline 278.799 mm; footer1.xml 11 pt PAGE followed by empty Normal 12 pt paragraph"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 12.5,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-   "locator": "pgMar footer=709 (spec page.footer.distanceMm 12.5)"
-  },
-  "evidence": "MEASURED"
- }
+  {
+    "id": "footer-measured-baseline-word",
+    "kind": "page_number_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 278.799,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+      "locator": "cached official Word render p.5; PAGE baseline 278.799 mm; footer1.xml 11 pt PAGE followed by empty Normal 12 pt paragraph"
+    },
+    "evidence": "MEASURED"
+  }
 ]

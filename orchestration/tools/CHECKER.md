@@ -35,6 +35,10 @@ python orchestration/tools/conformance.py inspect-docx --docx source.docx --rege
 python orchestration/tools/conformance.py inspect-docx --docx source.docx --styles
 ```
 `inspect --extrema` reports the minimum/maximum matching visible line geometry over all pages (or `--page`). DOCX inspection reports one-based paragraph locators, text and direct XML properties; inherited style properties are available separately with `--styles`.
+`inspect --images --page N` reports drawn image bounds using the shared PDF measurement code.
+`page_labels` with `params.each:true` requires each selected page to have the expected label; an empty selection fails.
+`docx_paragraph_sequence` checks the exact ordered paragraphs in XML parts selected by `params.part_regex`. `params.require_field` selects parts containing the required live field. Expected rows may constrain `field_regex`, `text_regex`, `style`, and `empty`; zero selected parts fails. This can verify a live PAGE paragraph followed by one terminal empty paragraph without requiring source-specific style IDs.
+`toc_labels` accepts `params.leader:"none"` for source-required rows without dotted leaders; the default remains dotted rows.
 
 ## Check kinds
 PDF: `page_size`, `page_count`, `text_extent` (x0min|x1max|firstBaseline|lastBaseline, agg, min_size, ignore),

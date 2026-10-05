@@ -1,0 +1,765 @@
+[
+  {
+    "id": "page-size-master",
+    "kind": "page_size",
+    "params": {
+      "fixture": "master",
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.1; corroborated by official template sectPr#1-#4"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-size-phd",
+    "kind": "page_size",
+    "params": {
+      "fixture": "phd",
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.1; corroborated by official template sectPr#1-#4"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-top-master",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "sections": "all",
+      "field": "margins.top"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar top=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-bottom-master",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "sections": "all",
+      "field": "margins.bottom"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar bottom=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-left-master",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "sections": "all",
+      "field": "margins.left"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar left=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-right-master",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "sections": "all",
+      "field": "margins.right"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar right=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-top-phd",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "sections": "all",
+      "field": "margins.top"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar top=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-bottom-phd",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "sections": "all",
+      "field": "margins.bottom"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar bottom=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-left-phd",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "sections": "all",
+      "field": "margins.left"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar left=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-right-phd",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "sections": "all",
+      "field": "margins.right"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+      "locator": "word/document.xml sectPr#1-#4 w:pgMar right=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-master",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.3 (3 cm left margin)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-master",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.3 (3 cm right margin)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-phd",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.3 (3 cm left margin)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-phd",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.3 (3 cm right margin)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-master",
+    "kind": "fonts",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{3,}",
+      "families": [
+        "Times New Roman"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.2: Times New Roman is the prose font; equation/math font is not source-specified and is excluded by the prose-line filter"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-phd",
+    "kind": "fonts",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{3,}",
+      "families": [
+        "Times New Roman"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.2: Times New Roman is the prose font; equation/math font is not source-specified and is excluded by the prose-line filter"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-size-master",
+    "kind": "font_size",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-size-phd",
+    "kind": "font_size",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5 §2.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-pitch-master",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "lo": 4,
+      "hi": 12,
+      "source": "word"
+    },
+    "expected": 7.302,
+    "tolerance": 0.071,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5-6 §2.4, 1.5 line spacing; 20.7 pt = 7.302 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-pitch-phd",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "label": "arabic"
+      },
+      "lo": 4,
+      "hi": 12,
+      "source": "word"
+    },
+    "expected": 7.302,
+    "tolerance": 0.071,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.5-6 §2.4, 1.5 line spacing; 20.7 pt = 7.302 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-x-left-master",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "page": 1
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 55,
+    "cmp": "ge",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-x-right-master",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "page": 1
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 155,
+    "cmp": "le",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-top-master",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "page": 1
+      },
+      "regex": ".",
+      "attr": "top",
+      "agg": "min",
+      "source": "word"
+    },
+    "expected": 210,
+    "cmp": "ge",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-bottom-master",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "page": 1
+      },
+      "regex": ".",
+      "attr": "bottom",
+      "agg": "max",
+      "source": "word"
+    },
+    "expected": 275,
+    "cmp": "le",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-center-master",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "page": 1
+      },
+      "regex": ".",
+      "attr": "cx",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, lines centred on x=105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-first-baseline-master",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "page": 1
+      },
+      "metric": "firstBaseline",
+      "source": "word"
+    },
+    "expected": 215.53,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 diagram/model; inference from 210 mm top of print box plus 12 pt TNR ascent (spec outer-cover-box)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "cover-x-left-phd",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "page": 1
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 55,
+    "cmp": "ge",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-x-right-phd",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "page": 1
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 155,
+    "cmp": "le",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-top-phd",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "page": 1
+      },
+      "regex": ".",
+      "attr": "top",
+      "agg": "min",
+      "source": "word"
+    },
+    "expected": 210,
+    "cmp": "ge",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-bottom-phd",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "page": 1
+      },
+      "regex": ".",
+      "attr": "bottom",
+      "agg": "max",
+      "source": "word"
+    },
+    "expected": 275,
+    "cmp": "le",
+    "tolerance": 0.25,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-center-phd",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "page": 1
+      },
+      "regex": ".",
+      "attr": "cx",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 outer-cover dimension diagram, lines centred on x=105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-first-baseline-phd",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "pages": {
+        "page": 1
+      },
+      "metric": "firstBaseline",
+      "source": "word"
+    },
+    "expected": 215.53,
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.32 diagram/model; inference from 210 mm top of print box plus 12 pt TNR ascent (spec outer-cover-box)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "approval-baselines-master",
+    "kind": "line_baselines",
+    "params": {
+      "fixture": "master",
+      "page": {
+        "find": "^TEZ ONAY SAYFASI$"
+      },
+      "lines": [
+        "^TEZ ONAY SAYFASI$",
+        "^Çağrı Şükrü ÖZDOĞAN tarafından hazırlanan",
+        "^Danışman\\s*:",
+        "^Başkan\\s*:"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      33.96,
+      48.48,
+      92.3,
+      114.19
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.34 approval example + spec sections.approval.layout; template render comparison retained in validation/aku-fbe/word-evidence-2/report.md"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "approval-baselines-phd",
+    "kind": "line_baselines",
+    "params": {
+      "fixture": "phd",
+      "page": {
+        "find": "^TEZ ONAY SAYFASI$"
+      },
+      "lines": [
+        "^TEZ ONAY SAYFASI$",
+        "^Çağrı Şükrü ÖZDOĞAN tarafından hazırlanan",
+        "^Danışman\\s*:",
+        "^Başkan\\s*:"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      33.96,
+      48.48,
+      92.3,
+      114.19
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+      "locator": "p.34 approval example + spec sections.approval.layout; template render comparison retained in validation/aku-fbe/word-evidence-2/report.md"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "approval-seven-juror-flow-phd",
+    "kind": "line_baselines",
+    "params": {
+      "fixture": "phd",
+      "page": { "find": "^TEZ ONAY SAYFASI$" },
+      "lines": [ "^Başkan\\s*:", "^Üye\\s*:", "^Üye\\s*:", "^Üye\\s*:", "^Üye\\s*:", "^Üye\\s*:", "^Üye\\s*:" ],
+      "source": "word"
+    },
+    "expected": [ 114.19, 128.48, 142.77, 157.06, 171.35, 185.64, 199.93 ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "validation/aku-fbe/word-evidence-2/report.md",
+      "locator": "Seven-juror approval flow; all seven remain on p.3; juror pitch averages 14.29 mm; seven members required with a second advisor per guide p.34 callout"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "docx-validity-master",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "master"
+    },
+    "expected": "none",
+    "tolerance": 0,
+    "source": {
+      "file": "TxtEngine export",
+      "locator": "DOCX package XML must have defined, balanced fields and no undefined tokens"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "docx-validity-phd",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "phd"
+    },
+    "expected": "none",
+    "tolerance": 0,
+    "source": {
+      "file": "TxtEngine export",
+      "locator": "DOCX package XML must have defined, balanced fields and no undefined tokens"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "note-outer-cover-source-conflict",
+    "kind": "note",
+    "params": {
+      "text": "Official Word source cover title baseline is 208.39 mm (glyph top 204.62), outside the guide's explicit y=210..275 mm print box; retain both source measurements. The box is the governing explicit requirement; 215.53 mm is an inferred target, not a separate explicit rule."
+    },
+    "expected": null,
+    "tolerance": 0,
+    "source": {
+      "file": "validation/aku-fbe/word-evidence-2/report.md",
+      "locator": "Results: Outer-cover title"
+    },
+    "evidence": "CONFLICT"
+  },
+  {
+    "id": "note-approval-baseline-source-conflict",
+    "kind": "note",
+    "params": {
+      "text": "Official Word source baselines 34.55/49.16/92.98/114.87 mm differ from guide-derived spec 33.96/48.48/92.30/114.19 mm by +0.59/+0.68/+0.68/+0.68 mm. Preserve both; real output must be checked against the approved guide-derived spec."
+    },
+    "expected": null,
+    "tolerance": 0,
+    "source": {
+      "file": "validation/aku-fbe/word-evidence-2/report.md",
+      "locator": "Results: Approval geometry"
+    },
+    "evidence": "CONFLICT"
+  },
+  {
+    "id": "note-approval-jury-size",
+    "kind": "note",
+    "params": {
+      "text": "Master's jury size is UNKNOWN. Doctoral seven-member panel applies when a second advisor exists; use the PhD fixture to exercise rows 1–7. More than seven members is UNKNOWN."
+    },
+    "expected": null,
+    "tolerance": 0,
+    "source": {
+      "file": "aku-fbe.json",
+      "locator": "variants and unknowns; guide p.34 callout; see two-tier policy"
+    },
+    "evidence": "UNKNOWN"
+  }
+]

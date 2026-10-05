@@ -1,303 +1,1153 @@
 [
- {
-  "id": "page-size",
-  "kind": "page_size",
-  "params": {},
-  "expected": [
-   210,
-   297
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "para 38-39"
+  {
+    "id": "page-size",
+    "kind": "page_size",
+    "params": {},
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 38-39"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-left",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x0min"
+  {
+    "id": "margins-left",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 38-39 (3.0 cm)"
+    },
+    "evidence": "EXPLICIT"
   },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "para 38-39 (3.0 cm)"
+  {
+    "id": "margins-right",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 190,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 38-39 (sağ: 2 cm => 210-20 = 190 mm)"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-right",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x1max"
+  {
+    "id": "margins-docx-tb",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "pgMar",
+      "attrs": [
+        "top",
+        "bottom"
+      ]
+    },
+    "expected": [
+      "1701"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "pgMar 1701 tw = 30 mm"
+    },
+    "evidence": "EXPLICIT"
   },
-  "expected": 190,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "para 38-39 (sağ: 2 cm => 210-20 = 190 mm)"
+  {
+    "id": "margins-docx-lr",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "pgMar",
+      "attrs": [
+        "left",
+        "right"
+      ]
+    },
+    "expected": [
+      "1701",
+      "1134"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "pgMar left 1701 (30 mm), right 1134 (20 mm)"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-docx-tb",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "pgMar",
-   "attrs": [
-    "top",
-    "bottom"
-   ]
+  {
+    "id": "body-font",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ]
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37"
+    },
+    "evidence": "EXPLICIT"
   },
-  "expected": [
-   "1701"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "pgMar 1701 tw = 30 mm"
+  {
+    "id": "body-font-docx",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "rFonts",
+      "attrs": [
+        "ascii",
+        "hAnsi"
+      ]
+    },
+    "expected": [
+      "Times New Roman"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-docx-lr",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "pgMar",
-   "attrs": [
-    "left",
-    "right"
-   ]
+  {
+    "id": "body-font-size",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (12 pt)"
+    },
+    "evidence": "EXPLICIT"
   },
-  "expected": [
-   "1701",
-   "1134"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "pgMar left 1701 (30 mm), right 1134 (20 mm)"
+  {
+    "id": "body-line-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "layout"
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (1.5 satır aralığında)"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font",
-  "kind": "fonts",
-  "params": {
-   "families": [
-    "Times New Roman"
-   ]
+  {
+    "id": "first-line-indent",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^(Önsöz|Giriş|\\d+(\\.\\d+)*) [12]\\. Çevrimiçi öğrenme",
+      "attr": "x0",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 42.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (first line indent 12.5 mm = margin 30 + 12.5); body paragraph first lines located by regex"
+    },
+    "evidence": "EXPLICIT"
   },
-  "expected": [
-   "TimesNewRomanPSMT",
-   "TimesNewRomanPS-BoldMT",
-   "TimesNewRomanPS-ItalicMT",
-   "TimesNewRomanPS-BoldItalicMT"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "paras 31-37"
+  {
+    "id": "first-line-indent-docx",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 2
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (12.5 mm = 709 twips)"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-docx",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "rFonts",
-   "attrs": [
-    "ascii",
-    "hAnsi"
-   ]
+  {
+    "id": "para-spacing-docx",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "spacing",
+      "attrs": [
+        "before",
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 2
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (6 pt before/after)"
+    },
+    "evidence": "EXPLICIT"
   },
-  "expected": [
-   "Times New Roman"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "paras 31-37"
+  {
+    "id": "page-numbering-centre",
+    "kind": "page_number_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "cx",
+      "source": "layout"
+    },
+    "expected": 110,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 52 (position bottom, align center); centre of text area (30+190)/2 = 110 mm"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-size",
-  "kind": "font_size",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   }
+  {
+    "id": "note-pagenum-baseline-unknown",
+    "kind": "note",
+    "params": {
+      "text": "Page-number baseline / footer distance / font size and cover numbering are UNKNOWN in the source"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "spec unknowns"
+    },
+    "evidence": "UNKNOWN"
   },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "paras 31-37 (12 pt)"
+  {
+    "id": "page-labels",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 52 (arabic, startAt 1): printed numbers run 1..N without gaps for this 27-page fixture (26 numbered pages); cover numbering UNKNOWN"
+    },
+    "evidence": "EXPLICIT"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-line-pitch",
-  "kind": "line_pitch",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "source": "layout"
+  {
+    "id": "docx-no-undefined",
+    "kind": "docx_no_undefined",
+    "params": {},
+    "expected": "none",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "field validity"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 7.3,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "paras 31-37 (1.5 satır aralığında)"
+  {
+    "id": "note-heading-unknown",
+    "kind": "note",
+    "params": {
+      "text": "Heading typography and numbering are UNKNOWN in the source"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "spec"
+    },
+    "evidence": "UNKNOWN"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^(Önsöz|Giriş|\\d+(\\.\\d+)*) [12]\\. Çevrimiçi öğrenme",
-   "attr": "x0",
-   "agg": "all",
-   "source": "layout"
+  {
+    "id": "cover-top-institutional-and-purpose-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(T\\.C\\.|AFYON KOCATEPE ÜNİVERSİTESİ|FEN EDEBİYAT FAKÜLTESİ|FELSEFE BÖLÜMÜ|FELSEFE SEMİNERİ)$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 14,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML cover example; official cover render / selfcheck-fix.md reports these rows 14 pt"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": 42.5,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "paras 31-37 (first line indent 12.5 mm = margin 30 + 12.5); body paragraph first lines located by regex"
+  {
+    "id": "cover-top-institutional-and-purpose-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(T\\.C\\.|AFYON KOCATEPE ÜNİVERSİTESİ|FEN EDEBİYAT FAKÜLTESİ|FELSEFE BÖLÜMÜ|FELSEFE SEMİNERİ)$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; all institutional/purpose rows bold"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-docx",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "ind",
-   "attrs": [
-    "firstLine"
-   ],
-   "mode": "has",
-   "numeric_tol": 2
+  {
+    "id": "cover-work-title-size-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^PLATON VE ARİSTOTELES'TE İNSAN$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; sample work title run sz=36 half-points (18 pt)"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": [
-   "709"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "paras 31-37 (12.5 mm = 709 twips)"
+  {
+    "id": "cover-work-title-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^PLATON VE ARİSTOTELES'TE İNSAN$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; sample work title is bold"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "para-spacing-docx",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "spacing",
-   "attrs": [
-    "before",
-    "after"
-   ],
-   "mode": "has",
-   "numeric_tol": 2
+  {
+    "id": "cover-author-advisor-city-year-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(Hazırlayan|Beyza BURSALİOĞLU|Danışman|Prof\\. Dr\\. Kasım TURHAN|AFYONKARAHİSAR|2017)$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 source cover render; 12 pt measured (direct rPr size is absent for these rows)"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": [
-   "120"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "paras 31-37 (6 pt before/after)"
+  {
+    "id": "cover-author-advisor-city-year-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(Hazırlayan|Beyza BURSALİOĞLU|Danışman|Prof\\. Dr\\. Kasım TURHAN|AFYONKARAHİSAR|2017)$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; author/advisor/city/year rows bold"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-centre",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "cx",
-   "source": "layout"
+  {
+    "id": "cover-row-order-and-geometry-limits",
+    "kind": "note",
+    "params": {
+      "text": "Source row order is T.C. → university → faculty → department → purpose → work title → author label/name → advisor label/name → city/year. Numeric relative baseline gaps were measured on cached official Word-rendered guide p.7 and are checked pairwise. The VML frame is anchored to guide-page coordinates; horizontal centring basis and absolute cover geometry remain UNKNOWN and are not scored."
+    },
+    "expected": "documented source order and UNKNOWN geometry",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML cover example; source-cover-details.json and selfcheck-fix.md"
+    },
+    "evidence": "UNKNOWN"
   },
-  "expected": 110,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "para 52 (position bottom, align center); centre of text area (30+190)/2 = 110 mm"
+  {
+    "id": "cover-font-family-conflict",
+    "kind": "note",
+    "params": {
+      "text": "The VML example directly specifies font family Times for the 14/18 pt rows while the general text rule specifies Times New Roman. The current output uses Times New Roman; exact cover-font equivalence is unresolved and must not be claimed PASS without source-render font identity evidence."
+    },
+    "expected": "documented conflict",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML rFonts ascii/hAnsi=Times vs paras 31-37 Times New Roman"
+    },
+    "evidence": "UNKNOWN"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "note-pagenum-baseline-unknown",
-  "kind": "note",
-  "params": {
-   "text": "Page-number baseline / footer distance / font size and cover numbering are UNKNOWN in the source"
+  {
+    "id": "cover-gap-thesis-01",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^T\\.C\\.$",
+      "b": "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+      "source": "pdf"
+    },
+    "expected": 8.636,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 55.633 mm → 64.269 mm"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": null,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "spec unknowns"
+  {
+    "id": "cover-gap-thesis-02",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+      "b": "^FEN EDEBİYAT FAKÜLTESİ$",
+      "source": "pdf"
+    },
+    "expected": 8.636,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 64.269 mm → 72.905 mm"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "UNKNOWN"
- },
- {
-  "id": "page-labels",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   }
+  {
+    "id": "cover-gap-thesis-03",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^FEN EDEBİYAT FAKÜLTESİ$",
+      "b": "^FELSEFE BÖLÜMÜ$",
+      "source": "pdf"
+    },
+    "expected": 8.636,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 72.905 mm → 81.541 mm"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "para 52 (arabic, startAt 1): printed numbers run 1..N without gaps for this 27-page fixture (26 numbered pages); cover numbering UNKNOWN"
+  {
+    "id": "cover-gap-thesis-04",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^FELSEFE BÖLÜMÜ$",
+      "b": "^FELSEFE SEMİNERİ$",
+      "source": "pdf"
+    },
+    "expected": 8.678,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 81.541 mm → 90.219 mm"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-no-undefined",
-  "kind": "docx_no_undefined",
-  "params": {},
-  "expected": "none",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "field validity"
+  {
+    "id": "cover-gap-thesis-05",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^FELSEFE SEMİNERİ$",
+      "b": "^PLATON VE ARİSTOTELES.TE İNSAN$",
+      "source": "pdf"
+    },
+    "expected": 42.048,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 90.219 mm → 132.267 mm"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "MEASURED"
- },
- {
-  "id": "note-heading-unknown",
-  "kind": "note",
-  "params": {
-   "text": "Heading typography and numbering are UNKNOWN in the source"
+  {
+    "id": "cover-gap-thesis-06",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^PLATON VE ARİSTOTELES.TE İNSAN$",
+      "b": "^Hazırlayan$",
+      "source": "pdf"
+    },
+    "expected": 34.466,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 132.267 mm → 166.733 mm"
+    },
+    "evidence": "MEASURED"
   },
-  "expected": null,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
-   "locator": "spec"
+  {
+    "id": "cover-gap-thesis-07",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Hazırlayan$",
+      "b": "^Beyza BURSALİOĞLU$",
+      "source": "pdf"
+    },
+    "expected": 7.705,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 166.733 mm → 174.438 mm"
+    },
+    "evidence": "MEASURED"
   },
-  "evidence": "UNKNOWN"
- }
+  {
+    "id": "cover-gap-thesis-08",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Beyza BURSALİOĞLU$",
+      "b": "^Danışman$",
+      "source": "pdf"
+    },
+    "expected": 24.553,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 174.438 mm → 198.991 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-09",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Danışman$",
+      "b": "^Prof\\. Dr\\. Kasım TURHAN$",
+      "source": "pdf"
+    },
+    "expected": 7.705,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 198.991 mm → 206.696 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-10",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Prof\\. Dr\\. Kasım TURHAN$",
+      "b": "^AFYONKARAHİSAR$",
+      "source": "pdf"
+    },
+    "expected": 26.003,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 206.696 mm → 232.699 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-11",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^AFYONKARAHİSAR$",
+      "b": "^2017$",
+      "source": "pdf"
+    },
+    "expected": 9.102,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 232.699 mm → 241.801 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "page-size-word",
+    "kind": "page_size",
+    "params": {
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 38-39"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-left-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 38-39 (3.0 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-right-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 190,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 38-39 (sağ: 2 cm => 210-20 = 190 mm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-word",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-word",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (12 pt)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-word",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (1.5 satır aralığında)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^(Önsöz|Giriş|\\d+(\\.\\d+)*) [12]\\. Çevrimiçi öğrenme",
+      "attr": "x0",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 42.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "paras 31-37 (first line indent 12.5 mm = margin 30 + 12.5); body paragraph first lines located by regex"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-centre-word",
+    "kind": "page_number_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "cx",
+      "source": "word"
+    },
+    "expected": 110,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 52 (position bottom, align center); centre of text area (30+190)/2 = 110 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "para 52 (arabic, startAt 1): printed numbers run 1..N without gaps for this 27-page fixture (26 numbered pages); cover numbering UNKNOWN"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-top-institutional-and-purpose-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(T\\.C\\.|AFYON KOCATEPE ÜNİVERSİTESİ|FEN EDEBİYAT FAKÜLTESİ|FELSEFE BÖLÜMÜ|FELSEFE SEMİNERİ)$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 14,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML cover example; official cover render / selfcheck-fix.md reports these rows 14 pt"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-top-institutional-and-purpose-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(T\\.C\\.|AFYON KOCATEPE ÜNİVERSİTESİ|FEN EDEBİYAT FAKÜLTESİ|FELSEFE BÖLÜMÜ|FELSEFE SEMİNERİ)$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; all institutional/purpose rows bold"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-work-title-size-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^PLATON VE ARİSTOTELES'TE İNSAN$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; sample work title run sz=36 half-points (18 pt)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-work-title-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^PLATON VE ARİSTOTELES'TE İNSAN$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; sample work title is bold"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-author-advisor-city-year-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(Hazırlayan|Beyza BURSALİOĞLU|Danışman|Prof\\. Dr\\. Kasım TURHAN|AFYONKARAHİSAR|2017)$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 source cover render; 12 pt measured (direct rPr size is absent for these rows)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-author-advisor-city-year-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "page": 1
+      },
+      "regex": "^(Hazırlayan|Beyza BURSALİOĞLU|Danışman|Prof\\. Dr\\. Kasım TURHAN|AFYONKARAHİSAR|2017)$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+      "locator": "p124 VML textBoxParagraphs; author/advisor/city/year rows bold"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-01-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^T\\.C\\.$",
+      "b": "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+      "source": "word"
+    },
+    "expected": 8.636,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 55.633 mm → 64.269 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-02-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+      "b": "^FEN EDEBİYAT FAKÜLTESİ$",
+      "source": "word"
+    },
+    "expected": 8.636,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 64.269 mm → 72.905 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-03-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^FEN EDEBİYAT FAKÜLTESİ$",
+      "b": "^FELSEFE BÖLÜMÜ$",
+      "source": "word"
+    },
+    "expected": 8.636,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 72.905 mm → 81.541 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-04-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^FELSEFE BÖLÜMÜ$",
+      "b": "^FELSEFE SEMİNERİ$",
+      "source": "word"
+    },
+    "expected": 8.678,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 81.541 mm → 90.219 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-05-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^FELSEFE SEMİNERİ$",
+      "b": "^PLATON VE ARİSTOTELES.TE İNSAN$",
+      "source": "word"
+    },
+    "expected": 42.048,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 90.219 mm → 132.267 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-06-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^PLATON VE ARİSTOTELES.TE İNSAN$",
+      "b": "^Hazırlayan$",
+      "source": "word"
+    },
+    "expected": 34.466,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 132.267 mm → 166.733 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-07-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Hazırlayan$",
+      "b": "^Beyza BURSALİOĞLU$",
+      "source": "word"
+    },
+    "expected": 7.705,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 166.733 mm → 174.438 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-08-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Beyza BURSALİOĞLU$",
+      "b": "^Danışman$",
+      "source": "word"
+    },
+    "expected": 24.553,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 174.438 mm → 198.991 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-09-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Danışman$",
+      "b": "^Prof\\. Dr\\. Kasım TURHAN$",
+      "source": "word"
+    },
+    "expected": 7.705,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 198.991 mm → 206.696 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-10-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^Prof\\. Dr\\. Kasım TURHAN$",
+      "b": "^AFYONKARAHİSAR$",
+      "source": "word"
+    },
+    "expected": 26.003,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 206.696 mm → 232.699 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-gap-thesis-11-word",
+    "kind": "line_gap",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "a": "^AFYONKARAHİSAR$",
+      "b": "^2017$",
+      "source": "word"
+    },
+    "expected": 9.102,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx.pdf",
+      "locator": "cached official Word-rendered guide p.7; adjacent cover row baselines 232.699 mm → 241.801 mm"
+    },
+    "evidence": "MEASURED"
+  }
 ]

@@ -1,0 +1,867 @@
+[
+  {
+    "id": "page-size",
+    "kind": "page_size",
+    "params": {},
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.1 (A4 21 × 29.7 cm); template document.xml sectPr pgSz 11904 × 16838 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-margin",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.3 (3 cm); template sectPr #2-4 pgMar left=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-margin",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.3 (3 cm); template sectPr #2-4 pgMar right=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-top-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1,
+        2,
+        3
+      ],
+      "field": "margins.top"
+    },
+    "expected": 30,
+    "tolerance": 0.05,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+      "locator": "sectPr #2-4 w:pgMar top=1701 tw (30.004 mm)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "body-bottom-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1,
+        2,
+        3
+      ],
+      "field": "margins.bottom"
+    },
+    "expected": 30,
+    "tolerance": 0.05,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+      "locator": "sectPr #2-4 w:pgMar bottom=1701 tw (30.004 mm)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "inner-cover-top-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        0
+      ],
+      "field": "margins.top"
+    },
+    "expected": 10.02,
+    "tolerance": 0.05,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+      "locator": "sectPr #1 w:pgMar top=568 tw (10.02 mm)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "body-font",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{2,}",
+      "ignore": "^[𝐸E]\\s*="
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.2 (Times New Roman); exact embedded font names must be checked in output"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.2 (12 pt; documented table/footnote exceptions remain in spec)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+      "locator": "Word-rendered body, 1.5-line spacing; report comparison measured 7.28–7.33 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "inner-cover-fixed-baselines",
+    "kind": "line_baselines",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "lines": [
+        "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+        "^BİTİRME TEZİ$"
+      ],
+      "source": "layout",
+      "attr": "top"
+    },
+    "expected": [
+      45.21,
+      104.87
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+      "locator": "official Word-rendered template p.1; report source positions for AFYON and BİTİRME TEZİ"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "h1-case-and-new-page",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (H1 uppercase and starts new page)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.2 and p.7 §2.8 (12 pt)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-left-edge",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8, headings align to left text boundary"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (12 pt; Title Case)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-left-edge",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8, headings align to left text boundary"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8; template sample is not normative for H3 case"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8; template sample is not normative for H4 case"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-approval-ethics-unnumbered",
+    "kind": "page_labels",
+    "params": {
+      "pages": [
+        1,
+        3
+      ]
+    },
+    "expected": "none x3",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.6-7 §2.7; cover/onay/etik pages are unnumbered"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "abstract-page-label",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": "i",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.6-7 §2.7; ÖZET begins lower-Roman numbering with i"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "introduction-page-label",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^1\\. GİRİŞ$"
+      }
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.6-7 §2.7; GİRİŞ begins Arabic numbering with 1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-valid",
+    "kind": "docx_no_undefined",
+    "params": {},
+    "expected": "none",
+    "tolerance": 0,
+    "source": {
+      "file": "generated DOCX",
+      "locator": "must contain no undefined values or unbalanced field markers"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "word-opens",
+    "kind": "word_opens",
+    "params": {},
+    "expected": "opens in Word",
+    "tolerance": 0,
+    "source": {
+      "file": "generated DOCX",
+      "locator": "openability and page-order check through Word COM"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "known-unknowns-and-conflicts",
+    "kind": "note",
+    "params": {
+      "text": "UNKNOWN: outer cover, title wrapping, table row heights, CV fields. CONFLICTS remain documented in the spec: inner-cover top margin, footnote/table-cell size, symbols indent, and onay/etik separation. UNKNOWN: mathematical glyph font is not established by the guide and is not included in the prose-font claim."
+    },
+    "expected": "documented",
+    "tolerance": 0,
+    "source": {
+      "file": "aku-kimya-lisans.json",
+      "locator": "unknowns[] and conflicts[]"
+    },
+    "evidence": "UNKNOWN"
+  },
+  {
+    "id": "page-size-word",
+    "kind": "page_size",
+    "params": {
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.1 (A4 21 × 29.7 cm); template document.xml sectPr pgSz 11904 × 16838 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-margin-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.3 (3 cm); template sectPr #2-4 pgMar left=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-margin-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.3 (3 cm); template sectPr #2-4 pgMar right=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-word",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{2,}",
+      "source": "word",
+      "ignore": "^[𝐸E]\\s*="
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.2 (Times New Roman); exact embedded font names must be checked in output"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-word",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.2 (12 pt; documented table/footnote exceptions remain in spec)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-word",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+      "locator": "Word-rendered body, 1.5-line spacing; report comparison measured 7.28–7.33 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "inner-cover-fixed-baselines-word",
+    "kind": "line_baselines",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "lines": [
+        "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+        "^BİTİRME TEZİ$"
+      ],
+      "source": "word",
+      "attr": "top"
+    },
+    "expected": [
+      45.21,
+      104.87
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+      "locator": "official Word-rendered template p.1; report source positions for AFYON and BİTİRME TEZİ"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "h1-case-and-new-page-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (H1 uppercase and starts new page)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.5 §2.2 and p.7 §2.8 (12 pt)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-left-edge-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8, headings align to left text boundary"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (12 pt; Title Case)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-left-edge-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8, headings align to left text boundary"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8; template sample is not normative for H3 case"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8; template sample is not normative for H4 case"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.7 §2.8 (section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-approval-ethics-unnumbered-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": [
+        1,
+        3
+      ],
+      "source": "word"
+    },
+    "expected": "none x3",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.6-7 §2.7; cover/onay/etik pages are unnumbered"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "abstract-page-label-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "source": "word"
+    },
+    "expected": "i",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.6-7 §2.7; ÖZET begins lower-Roman numbering with i"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "introduction-page-label-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^1\\. GİRİŞ$"
+      },
+      "source": "word"
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+      "locator": "p.6-7 §2.7; GİRİŞ begins Arabic numbering with 1"
+    },
+    "evidence": "EXPLICIT"
+  }
+]

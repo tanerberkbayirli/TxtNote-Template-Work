@@ -26,16 +26,18 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | different margins on one section (cover, approval...) | `sections[].overrides.page` (`margins`, `numbering`, size) | partial PageRule | inherits | ✓✓✓ | AkuFbe |
 | header/footer height and distance, none on first page | `page.header`, `page.footer` `{heightMm, distanceMm, content, firstPage: "same"/"omit"}` (`header`, `footer`, `firstPage`) | mm | none | ✓✓✓ | Engine, EngineDefaults |
 | Word margins differing from the editor frame | `page.docxMargins`, `page.docxContentFrame` | mm box | none | D only | - |
+| Fixed-height Word flow text box, page-anchored independently of section margins | `page.docxContentFrame.heightMm` (plus `xMm`, `yMm`, `widthMm`) | mm box; height opts in | floating-table frame | D only | AkuFbe |
 | drop trailing leading on last line of a page | `page.trimTerminalTextLeading` | boolean | false | ✓✓✓ | Pagination |
 | Word last-line fit (terminal leading) | `page.lastLineFit` (derived `page.lastLineLeadingMm`) | "word" / "off" | "word" under the Word line-spacing model, else off | ✓✓✓ | Pagination |
 | section kind, required/optional/disabled | `sections[]` `type`, `title`, `status`, `group` (cover/front/body/back), `mode` (editable/static/generated), `editable` | see schema | array order | ✓✓✓ | AfsuLeeProposal |
-| start section on a new page | `sections[].pageBreakBefore` | boolean | false | ✓✓✓ | AkuCografya |
+| start section on a new page or the next odd-numbered (right-hand) page | `sections[].pageBreakBefore` | boolean (new page) / `"oddPage"` (next odd physical page; blank parity page is unlabelled and counted before a numbering restart) | false | ✓✓✓ | AkuCografya, ThesisPagination |
 | show the title as heading, TOC entry of the section | `showTitle`, `tocEntry` headings/title/none, `titleNumbering: "continueH1"` (bibliography as "6. KAYNAKLAR") | - | false/headings | ✓✓✓ | BatchB, EngineExtensions |
 | show a section only if... | `visibleWhen` `{field, equals/notEquals/in}` or `{count: tables/figures/equations/<kind>, gte}` | - | always | ✓✓✓ | BatchB |
 | page content anchored to bottom (text behind cover window) | `sections[].verticalAlign` top/bottom | - | top | ✓✓✓ | SpecialPages |
 | block page flowing with neighbours | `sections[].standalone: false` | - | true | ✓✓✓ | afsu-lee |
 | per-section style override | `sections[].overrides` `body`, `paragraph`, `headings`, `tables`, `figures`, `captionKinds`, `footnotes` | partials | inherits | ✓✓✓ | AkuFelsefe |
 | per-document user layout (text boxes, guides, frames) | `ThesisLayout` (`layout.elements/additions/guides/page/sections/pages`), `layoutMode` flow/absolute/anchored | - | - | ✓✓✓ | LayoutDocument |
+| per-document special-page text highlight | `layout.elements[id].style.highlight` (preset id or `#rrggbb`; rendered as a live inline run for metadata blocks) | - | none | ✓✓✓ | LayoutDocument, SpecialPages |
 
 ## 3. Page numbering
 | Need | Key | Values | Default | E P D | Test |
@@ -83,7 +85,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 |---|---|---|---|---|---|
 | cover, approval, declaration pages as fixed geometry | `sections[].blocks` (static, standalone physical page) | block tree, depth <= 4 | - | ✓✓✓ | SpecialPages, AkuFbe |
 | block kinds | `type` image / text / metadata / spacer / separator / group; `value`, `source`, `field`, `prefix`, `suffix`, `fallback`, `markup: "inline"` (`**bold**`) | - | - | ✓✓✓ | SpecialPages |
-| positioned blocks | `layoutMode`, `xMm`, `yMm`, `widthMm`, `heightMm`, `zIndex`, `marginTopMm`, `marginBottomMm`, `widthPercent` | mm | flow | ✓✓✓ | LayoutDocument |
+| positioned blocks | `layoutMode`, `xMm`, `yMm`, `widthMm`, `heightMm`, `zIndex`, `flowHeightMm` (0 = no flow slot), `marginTopMm`, `marginBottomMm`, `widthPercent` | mm | flow | ✓✓✓ | LayoutDocument |
 | rows / columns, gaps | `group` `direction`, `gapMm`, `minHeightMm`, `verticalAlign` top/center/bottom | - | column | ✓✓✓ | AkuFbe |
 | framed cell (double / thick-thin rule) | `group.border` `{outerPt, gapPt, innerPt, paddingMm, color, docx {style, sizePt, sides}}` | - | none | ✓✓✓ (CSS frame symmetric; per-side only D) | AkuFbe |
 | block shown only when fields empty / filled | `visibleWhen` `{anyFilled}` / `{noneFilled}` | field names | always | ✓✓✓ | AkuFbe |
@@ -133,6 +135,7 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 - Index page numbers are `PAGEREF` fields with the editor's label cached (snapshot of editor pagination; Word repaginates itself).
 - Paragraph gap is written as max, not sum: whole intended gap on the next paragraph's space-before (F1). Caption below a table keeps with the last row (F2).
 - Runs name the template's exact font face; `w:ind`, `w:tcMar`, `tblGrid` are written from the same keys as the editor.
+- When no section uses header text, first/even header content, or a top page number, Word header parts/references are omitted document-wide; when any section needs a header, blank parts remain available to prevent cross-section inheritance.
 - Continued tables: split at editor-measured rows, caption paragraph before each fragment (Word cannot vary a repeated header row).
 - Named paragraph styles now have distinct Word IDs; most typography remains direct. Canonical exact/atLeast line rules, typed tab leaders, first-page and even chrome are opt-in additions (see Phase 2 notes below).
 
@@ -152,6 +155,11 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | Page-number landmark coverage | layout landmarks replace bottom-only searches where available; source PDFs still need explicit page-number locators | MOTOR 3.2 |
 | Layout report performance/conformance | versioned editor landmarks implemented; target regression/runtime gate verifies acceptance | MOTOR Phase 3 |
 | Template generation from official DOCX (`docx2spec`, `spec2template`) | templates are hand-written | MOTOR Phase 4 |
+
+Template validation also accepts generated-index kind `appendices` and section-level
+`minWords` / `minWordsByHeading` rules. These are source-driven requirements: the
+appendix index reuses the generic index collector and page anchors, while minimum
+word counts are advisory checks for authored sections and heading groups.
 
 ## Phase 2 opt-in additions (2026-10-03)
 

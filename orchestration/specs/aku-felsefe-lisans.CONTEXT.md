@@ -27,6 +27,9 @@
 - FAIL; commits 8b78209, 51e8a33 (covers). Resume: needs independent-1.
 ## Next step
 - independent-1 via checker after Word rerender of corrected fixture.
+## Checker handoff (2026-10-04)
+- Added source-backed cover row content, 14/18/12 pt size and bold checks, plus each adjacent baseline gap measured by shared conformance from cached official Word-rendered guide p.7; matching editor-PDF and Word-PDF checks are present.
+- VML frame absolute position and horizontal centering remain UNKNOWN/unscored; the cover `Times` vs prose `Times New Roman` face conflict remains explicit.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-felsefe-lisans` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

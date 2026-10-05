@@ -247,7 +247,7 @@ export const akuIsgTezsizProje = {
     verifiedAt: "2026-10-02",
     notes: [
       "Tek kaynak bir Word şablonudur (.doc; Word ile .docx/.pdf'e çevrildi). Biçim kanıtı: üç bölümün sectPr'ı, stiller, paragraf/çalışma özellikleri, boş paragraf yapısı, altbilgi alanı ve Word PDF taban çizgileri. Şablonun yönerge metinleri açık kuraldır. AKÜ FBE tez şablonu (aku-fbe.js) değer kaynağı DEĞİLDİR.",
-      "Kenar boşlukları (TEMPLATE): dış kapak üst/alt 30, sol 40, sağ 25 mm; iç kapak ile giriş öncesi sayfalar (etik, onay, özet, abstract, içindekiler, dizinler) üst/alt 25, sol/sağ 30 mm; giriş ve sonrası 30/30/30/30 mm. Header/footer sectPr distance is 709 twips (12.5 mm). Footer height is UNKNOWN; the 17.4 mm configured distance reproduces the measured page-number baseline with the footer's trailing empty paragraph.",
+      "Kenar boşlukları (TEMPLATE): dış kapak üst/alt 30, sol 40, sağ 25 mm; iç kapak ile giriş öncesi sayfalar (etik, onay, özet, abstract, içindekiler, dizinler) üst/alt 25, sol/sağ 30 mm; giriş ve sonrası 30/30/30/30 mm. Header/footer sectPr distance is 709 twips (12.506 mm). Source footer has a centered 11 pt PAGE field followed by one empty paragraph inheriting Normal Times New Roman 12 pt; the ordinary live footer reproduces its measured 278.799 mm baseline.",
       "Sayfa numarası (TEMPLATE): altta ortada, 11 punto Times New Roman, PAGE alanı. Dış kapak sayılmaz; iç kapak 'i' sayılır ama numarası basılmaz (titlePg, ilk sayfa altbilgisi yok); etik 'ii'dir; ön kısım küçük Romen rakamı; GİRİŞ Arapça 1'den başlar.",
       "Gövde (MEASURED, tek gerçek örnek paragraf): Times New Roman 12, iki yana yaslı, 1,5 satır, önce/sonra 0, ilk satır girintisi yok. Özet örnek satırlarında 12,5 mm girinti vardır (özet/abstract paragraflarında uygulandı); GİRİŞ örnek satırlarında da 12,5 mm girinti vardır ama gerçek metin paragrafında yoktur (ÇELİŞKİ, bkz. rapor).",
       "Başlıklar (gerçek gövde sayfaları): H1 kalın, büyük harf, tek satır, 6/6 nk ('toc 1' biçimi; yalnız GİRİŞ 'heading 1' biçimindedir: 1,5 satır, önce 12 nk: ÇELİŞKİ); H2 kalın 1,5 satır önce 12; H3 kalın 1,5 satır 6/6; H4 gövdede yok, yönerge planında normal ağırlık. Numaralandırma 1. / 2.1. / 2.1.1. (bölüm numarası dahil, yazılı). Şablonun 'ÖRNEK (GEÇİCİ TASLAK) PLAN' metni 'BİRİNCİ BÖLÜM' ortalı başlıkları ve bölüm başına yeniden başlayan numaralar gösterir; gerçek sayfalarla çeliştiği için uygulanmadı (ÇELİŞKİ).",
@@ -261,7 +261,7 @@ export const akuIsgTezsizProje = {
     // pgMar footer=709 twips. footer1/2.xml contains PAGE + an empty AltBilgi
     // paragraph (Normal TNR12); the cached official Word render baseline is 278.8 mm.
     footer: { distanceMm: 12.506, trailingBlankLines: 1 },
-    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, baselineFromTopMm: 278.8, style: { fontFamily: FONT, fontSizePt: 11 } },
+    numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, style: { fontFamily: FONT, fontSizePt: 11 } },
   },
   typography: {
     body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "justify", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 },

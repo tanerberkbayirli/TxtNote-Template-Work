@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { bibliographyItemsFromResearch, normalizeBibliographyItems } from "../../lib/academicBibliography.js";
 import { figureHtml, imageDimensions, readImageAsDataUrl } from "../../lib/academicMedia.js";
 import { htmlToPlainText } from "../../lib/richText.js";
+import { FORMAT_COLORS, FORMAT_HIGHLIGHTS } from "../../config/format.js";
 import { trustedStyleNonce } from "../../lib/cspStyles.js";
 import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../thesis/engine.js";
 import { measureMirroredIndentsCss } from "../../thesis/paragraphMirror.js";
@@ -9,7 +10,7 @@ import { measureParagraphTabsCss } from "../../thesis/paragraphTabs.js";
 import { measureWordBaselineCss } from "../../thesis/wordBaseline.js";
 import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/pageLayout.js";
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
-import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, thesisMetadataValue, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
+import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, setThesisTextFormat, setThesisTextOverride, thesisMetadataValue, thesisTextFormat, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
 import { confirmCommittedPagination, decorateThesisSources, generatedIndexPageTargets, INDEX_ITERATION_CAP, missingGeneratedIndexPages, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../thesis/generatedIndex.js";
 import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
@@ -78,6 +79,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [rulerUnit, setRulerUnit] = useState("mm");
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [activeFormat, setActiveFormat] = useState({});
+  // Template-owned text (section title / fixed paragraph) the toolbar currently targets instead of a body: { sectionId, kind, take }.
+  const [activeStatic, setActiveStatic] = useState(null);
   // Measured physical pages per page group. Presentation only; never written to the note.
   const [pageCounts, setPageCounts] = useState({});
   const [indexResolution, setIndexResolution] = useState({});
@@ -182,7 +185,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const commitLayout = useCallback((next, reason = "action") => onResearchDataChange?.({ ...researchData, thesis: next }, reason), [researchData, onResearchDataChange]);
   const interaction = useLayoutInteraction({ rootRef: papersRef, model, thesis, onThesisChange: commitLayout, zoom });
   const layoutState = normalizeThesisLayout(thesis.layout);
-  const layoutSectionId = interaction.selectedElements[0]?.sectionId || activeSectionId || model?.sections[0]?.id;
+  const layoutSectionId = interaction.selectedElements[0]?.sectionId || activeStatic?.sectionId || activeSectionId || model?.sections[0]?.id;
   const layoutSection = model?.sections.find((entry) => entry.id === layoutSectionId);
   const pageTypography = useMemo(() => layoutSection ? resolveLayoutTypography(layoutSection.rules.body, layoutSectionId, thesis.layout) : {}, [layoutSection?.rules.body, layoutSectionId, thesis.layout]);
   const addFrame = (type) => {
@@ -382,6 +385,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     if (!entry) return;
     saveThesis({ templateId: entry.id, templateVersion: entry.templateVersion, selection: { universityId: entry.universityId, instituteId: entry.instituteId, degreeType: entry.degreeType, language: entry.language } });
   };
+  const onTextOverride = (sectionId, kind, text) => onResearchDataChange?.({ ...researchData, thesis: setThesisTextOverride(thesis, sectionId, kind, text) });
   const onTextChange = (section, html, reason) => {
     const current = { content, researchData };
     const next = updateThesisNoteSection(current, section, html);
@@ -389,19 +393,152 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     if (next.content !== content) onContentChange(next.content, reason);
     else onResearchDataChange?.(next.researchData, reason);
   };
-  // The one toolbar drives only the editable section that last had focus. Static and
-  // generated sections have no editor instance, and clicking one clears the target.
-  const activeSection = model?.sections.find((section) => section.id === activeSectionId && section.editable) || null;
-  const activeBody = () => (activeSection ? bodyRefs.current[activeSection.id] || null : null);
+  // The one toolbar drives the editable section that last had focus (the first one before any focus).
+  // Static and generated sections have no editor instance; clicking one keeps the previous target.
+  const bodySection = model?.sections.find((section) => section.id === activeSectionId && section.editable) || model?.sections.find((section) => section.editable) || null;
+  const activeLayoutText = interaction.selectedElements.length === 1 && interaction.selectedElements[0]?.type === "text" && interaction.selectedElements[0]?.editableContent
+    ? interaction.selectedElements[0] : null;
+  const layoutTextSection = activeLayoutText && model?.sections.find((section) => section.id === activeLayoutText.sectionId);
+  const activeSection = (activeLayoutText && layoutTextSection) || (activeStatic && model?.sections.find((section) => section.id === activeStatic.sectionId)) || bodySection;
+  const activeBody = () => (activeStatic || !activeSection ? null : bodyRefs.current[activeSection.id] || null);
+  // Formatting of template-owned text applies to the whole title / paragraph block and is stored per document (staticFormat.js).
+  const staticFormat = activeStatic ? thesisTextFormat(thesis, activeStatic.sectionId, activeStatic.kind) || {} : null;
+  const applyStaticFormat = (change) => {
+    const target = activeStatic;
+    if (!target) return;
+    let next = thesis;
+    const pending = target.take?.();
+    if (pending) next = setThesisTextOverride(next, target.sectionId, pending.kind, pending.text);
+    next = setThesisTextFormat(next, target.sectionId, target.kind, change(thesisTextFormat(next, target.sectionId, target.kind) || {}));
+    if (next !== thesis) onResearchDataChange?.({ ...researchData, thesis: next });
+  };
+  const staticTarget = () => ({
+    toggleStyle: (key) => applyStaticFormat((format) => ({ ...format, [key]: !format[key] })),
+    applyTextColor: (color) => applyStaticFormat(({ color: _old, ...rest }) => color === "black" ? rest : { ...rest, color }),
+    applyHighlight: (color) => applyStaticFormat(({ highlight: _old, ...rest }) => !color || color === "none" ? rest : { ...rest, highlight: color }),
+    applySize: (size) => { const pt = Number(String(size).replace(/^pt/, "")); if (Number.isFinite(pt)) applyStaticFormat((format) => ({ ...format, sizePt: pt })); },
+    clearFormatting: () => applyStaticFormat(() => ({})),
+  });
+  const layoutTextFormat = activeLayoutText ? (() => {
+    const computed = getComputedStyle(activeLayoutText.element);
+    const storedStyle = thesis.layout?.elements?.[activeLayoutText.id]?.style
+      || thesis.layout?.additions?.find((item) => item.id === activeLayoutText.id)?.style
+      || {};
+    const effective = { ...(activeLayoutText.canonical?.style || activeLayoutText.style || {}), ...storedStyle };
+    const px = Number.parseFloat(computed.fontSize);
+    const rgb = computed.color.match(/\d+/g)?.slice(0, 3).map(Number);
+    const color = effective.color || (rgb?.length === 3 ? `#${rgb.map((part) => part.toString(16).padStart(2, "0")).join("")}` : "#000000");
+    const decoration = effective.decoration || computed.textDecorationLine || computed.textDecoration || "";
+    return {
+      bold: Number.parseInt(effective.fontWeight ?? computed.fontWeight, 10) >= 600,
+      italic: effective.italic ?? computed.fontStyle === "italic",
+      underline: decoration.includes("underline"),
+      strike: decoration.includes("line-through"),
+      decoration,
+      color,
+      highlight: effective.highlight || "",
+      align: effective.align || computed.textAlign,
+      sizePt: effective.fontSizePt ?? (Number.isFinite(px) ? Math.round(px * 0.75 * 2) / 2 : undefined),
+      block: "",
+    };
+  })() : null;
+  const layoutTextTarget = () => {
+    const target = activeLayoutText;
+    if (!target) return {};
+    const base = target.canonical?.style || target.style || {};
+    const storedStyle = thesis.layout?.elements?.[target.id]?.style
+      || thesis.layout?.additions?.find((item) => item.id === target.id)?.style
+      || {};
+    const patchStyle = (change) => {
+      const current = { ...base, ...(target.style || {}), ...storedStyle };
+      const next = change(current);
+      if (next) interaction.patchElements([{ id: target.id, style: next }]);
+    };
+    const presetColor = (value) => FORMAT_COLORS.find((item) => item.id === value)?.swatch || value;
+    const removeStyleOverride = (key) => {
+      const normalized = normalizeThesisLayout(thesis.layout);
+      const hasOverride = Boolean(normalized.elements[target.id]?.style && key in normalized.elements[target.id].style)
+        || Boolean(normalized.additions.find((item) => item.id === target.id)?.style && key in normalized.additions.find((item) => item.id === target.id).style);
+      if (!hasOverride) return;
+      const elements = { ...normalized.elements };
+      const strip = (entry) => {
+        if (!entry?.style || !(key in entry.style)) return entry;
+        const style = { ...entry.style }; delete style[key];
+        if (Object.keys(style).length) return { ...entry, style };
+        const { style: _style, ...rest } = entry;
+        return Object.keys(rest).length ? rest : null;
+      };
+      if (elements[target.id]) {
+        const clean = strip(elements[target.id]);
+        if (clean) elements[target.id] = clean; else delete elements[target.id];
+      }
+      const additions = normalized.additions.map((item) => strip(item)).filter(Boolean);
+      interaction.commitThesis({ ...thesis, layout: { ...normalized, elements, additions } }, "action");
+    };
+    return {
+      toggleStyle: (key) => patchStyle((style) => {
+        if (key === "bold") return { ...style, fontWeight: layoutTextFormat?.bold ? 400 : 700 };
+        if (key === "italic") return { ...style, italic: !layoutTextFormat?.italic };
+        if (key === "underline" || key === "strike") {
+          const lines = new Set(String(layoutTextFormat?.decoration || "none").split(/\s+/).filter((line) => line !== "none"));
+          const line = key === "underline" ? "underline" : "line-through";
+          if (lines.has(line)) lines.delete(line); else lines.add(line);
+          return { ...style, decoration: lines.size ? [...lines].join(" ") : "none" };
+        }
+        return null;
+      }),
+      applyTextColor: (value) => patchStyle((style) => ({ ...style, color: value === "black" ? "#000000" : presetColor(value) })),
+      applyHighlight: (value) => {
+        if (!value || value === "none") { removeStyleOverride("highlight"); return; }
+        const highlight = FORMAT_HIGHLIGHTS.find((item) => item.id === value)?.id || value;
+        patchStyle((style) => ({ ...style, highlight }));
+      },
+      applySize: (value) => { const pt = Number(String(value).replace(/^pt/i, "")); if (Number.isFinite(pt) && pt >= 1 && pt <= 400) patchStyle((style) => ({ ...style, fontSizePt: Math.round(pt * 2) / 2 })); },
+      applyAlign: (align) => { if (["left", "center", "right", "justify"].includes(align)) patchStyle((style) => ({ ...style, align })); },
+      undo: () => interaction.undo(),
+      redo: () => interaction.redo(),
+      clearFormatting: () => {
+        const normalized = normalizeThesisLayout(thesis.layout);
+        const formatKeys = ["fontWeight", "italic", "decoration", "color", "fontSizePt", "align", "highlight"];
+        const hasOverride = formatKeys.some((key) => key in (normalized.elements[target.id]?.style || {}) || key in (normalized.additions.find((item) => item.id === target.id)?.style || {}));
+        if (!hasOverride) return;
+        const elements = { ...normalized.elements };
+        const prior = elements[target.id];
+        const resetStyle = (style) => {
+          const next = { ...(style || {}) };
+          for (const key of formatKeys) delete next[key];
+          return next;
+        };
+        if (prior?.style) {
+          const style = resetStyle(prior.style);
+          if (Object.keys(style).length) elements[target.id] = { ...prior, style };
+          else { const { style: _style, ...rest } = prior; if (Object.keys(rest).length) elements[target.id] = rest; else delete elements[target.id]; }
+        }
+        const additions = normalized.additions.map((item) => item.id === target.id && item.style ? { ...item, style: resetStyle(item.style) } : item);
+        interaction.commitThesis({ ...thesis, layout: { ...normalized, elements, additions } }, "action");
+      },
+    };
+  };
+  const ribbonFormat = layoutTextFormat || (staticFormat ? {
+    ...staticFormat,
+    sizePt: staticFormat.sizePt ?? (activeStatic.kind === "title" ? activeSection?.rules.headings?.[1]?.fontSizePt : activeSection?.rules.body?.fontSizePt),
+    block: "",
+  } : activeFormat);
   // Take the live caret/selection first; selectionchange can still be queued behind fast typing.
-  const runSaved = (command) => { const body = activeBody(); if (!body) return; command(body); };
+  const runSaved = (command) => {
+    if (activeLayoutText) { command(layoutTextTarget()); return; }
+    if (activeStatic) { command(staticTarget()); return; }
+    const body = activeBody();
+    if (!body) return;
+    command(body);
+  };
   const rememberSelection = () => activeBody()?.rememberSelection?.();
   const keepSelection = (event) => { rememberSelection(); event.preventDefault(); };
   const trackSectionPointer = (event) => {
     setPickedFigure(event.target.closest?.("figure.academic-figure") || null);
     setPickedEquation(event.target.closest?.(".math-formula--block") || null);
     const flow = event.target.closest?.(".thesis-flow-section");
-    if (flow && flow.getAttribute("data-thesis-section-mode") !== "editable") { setActiveSectionId(""); setCiteOpen(false); }
+    if (flow && flow.getAttribute("data-thesis-section-mode") !== "editable") setCiteOpen(false);
   };
   const citableItems = bibliographyItems.map((item) => item.trim()).filter(Boolean);
   const insertCitation = (text) => {
@@ -496,13 +633,29 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     } catch (error) { setMessage(error?.message || "Görsel eklenemedi."); }
   };
 
+  // Stable handlers for the memoized page components: they always call the latest closures, so unchanged pages skip re-rendering on every keystroke.
+  const live = useRef(null);
+  live.current = {
+    onSectionFocus: (id) => { interaction.selectIds([]); setActiveStatic(null); setActiveSectionId(id); setActiveFormat(bodyRefs.current[id]?.activeFormat || {}); },
+    onFormatChange: (id, format) => { if (activeSectionId === id) setActiveFormat(format || {}); },
+    onTextChange,
+    onTextOverride,
+    onStaticFocus: (sectionId, kind, take) => { interaction.selectIds([]); setActiveStatic({ sectionId, kind, take }); },
+  };
+  const pageHandlers = useMemo(() => ({
+    onSectionFocus: (...args) => live.current.onSectionFocus(...args),
+    onFormatChange: (...args) => live.current.onFormatChange(...args),
+    onTextChange: (...args) => live.current.onTextChange(...args),
+    onTextOverride: (...args) => live.current.onTextOverride(...args),
+    onStaticFocus: (...args) => live.current.onStaticFocus(...args),
+  }), []);
   if (!model) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
 
   return <div className="flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
     <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss + tabsCss + mirrorCss}</style>
     <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
     <ThesisRibbon title={plainTitle} activeSection={activeSection} template={template}
-      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat }}
+      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: Boolean(activeSection && !activeStatic && !activeLayoutText) }}
       detailsOpen={detailsOpen} setDetailsOpen={setDetailsOpen} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={setPageSettingsOpen}
       canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
       exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
@@ -514,7 +667,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       pickedEquation={pickedEquation} onEquationNumber={() => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) bodyRefs.current[owner]?.setEquationNumbered(math, math.getAttribute("data-eq-numbered") !== "true"); }}
       citableItems={citableItems} onInsertCitation={insertCitation} citeText={citeText} setCiteText={setCiteText} citeOpen={citeOpen} setCiteOpen={setCiteOpen}
       onAddFrame={addFrame} rulersVisible={rulersVisible} setRulersVisible={setRulersVisible} rulerUnit={rulerUnit} setRulerUnit={setRulerUnit}
-      navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily} page={layoutSection?.rules.page} />
+      navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeLayoutText ? (activeLayoutText.style?.fontFamily || getComputedStyle(activeLayoutText.element).fontFamily) : (activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily)} page={layoutSection?.rules.page} />
     <div className="flex min-h-0 flex-1">
       {navigationOpen ? <ThesisNavigation sections={model.sections.map((section) => ({ id: section.id, title: section.title }))} headings={collectThesisHeadings(papersRef.current)} onClose={() => setNavigationOpen(false)} onNavigate={(sectionId, headingId) => {
         const sectionNode = papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(sectionId)}"]`);
@@ -527,14 +680,14 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
         <div ref={papersRef} data-thesis-template-id={model.templateId} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
         {pageGroups.map((group, index) => {
-            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={(id) => { setActiveSectionId(id); setActiveFormat(bodyRefs.current[id]?.activeFormat || {}); }} onFormatChange={(id, format) => { if (activeSectionId === id) setActiveFormat(format || {}); }} onTextChange={onTextChange} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} />;
+            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={pageHandlers.onSectionFocus} onFormatChange={pageHandlers.onFormatChange} onTextChange={pageHandlers.onTextChange} onTextOverride={pageHandlers.onTextOverride} onStaticFocus={pageHandlers.onStaticFocus} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} />;
             const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);
             return rulersVisible ? <div key={`${model.templateId}:${group.id}`} className="mx-auto"><LayoutRulers page={group.rules.page} zoom={zoom} unit={rulerUnit} guides={guides} onGuidesChange={(next) => interaction.commitThesis({ ...thesis, layout: { ...layoutState, guides: [...layoutState.guides.filter((guide) => guide.sectionId && guide.sectionId !== group.id), ...next.map((guide) => ({ ...guide, sectionId: group.id }))] } }, "action")}>{sheet}</LayoutRulers></div> : sheet;
           })}
         </div>
       </div>
       {!detailsOpen && (pageSettingsOpen || interaction.selectedElements.length > 0) ? <div className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white" data-thesis-editor-only="true">
-        {pageSettingsOpen && layoutSection ? <><div className="flex items-center gap-2 border-b border-neutral-100 px-3 py-2"><button type="button" onClick={() => setRulersVisible((visible) => !visible)} aria-pressed={rulersVisible} className={toolClass}>Cetveller {rulersVisible ? "açık" : "kapalı"}</button><label className="ml-auto text-xs text-neutral-500">Birim <select aria-label="Cetvel birimi" value={rulerUnit} onChange={(event) => setRulerUnit(event.target.value)} className="ml-1 rounded border border-neutral-300 bg-white px-2 py-1 text-xs text-neutral-900"><option value="mm">mm</option><option value="cm">cm</option><option value="pt">pt</option></select></label></div><PageLayoutInspector page={layoutSection.rules.page} sectionId={layoutSectionId} typography={pageTypography} pageScopeSupported={pageGroups.find((g) => g.sections.some((s) => s.id === layoutSectionId))?.sections.length === 1 && (pageCounts[layoutSectionId] || 1) <= 1} onApply={(patch, scope) => { try { interaction.commitThesis(applyLayoutPage(thesis, patch, { scope, sectionId: layoutSectionId, pageIndex: 0 }), "action"); setMessage("Sayfa düzeni uygulandı."); } catch (error) { setMessage(error.message); } }} onApplyTypography={(patch, scope) => { try { interaction.commitThesis(applyLayoutTypography(thesis, patch, { scope, sectionId: layoutSectionId }), "action"); setMessage("Metin biçimi uygulandı."); } catch (error) { setMessage(error.message); } }} /></> : <LayoutInspector elements={interaction.selectedElements} geometry={Array.isArray(interaction.geometry) ? Object.fromEntries(interaction.geometry.map((item) => [item.id, item])) : interaction.geometry} onPatch={interaction.patchElements} onAction={interaction.performAction} />}
+        {pageSettingsOpen && layoutSection ? <><div className="flex items-center gap-2 border-b border-neutral-100 px-3 py-2"><button type="button" onClick={() => setRulersVisible((visible) => !visible)} aria-pressed={rulersVisible} className={toolClass}>Cetveller {rulersVisible ? "açık" : "kapalı"}</button><label className="ml-auto text-xs text-neutral-500">Birim <select aria-label="Cetvel birimi" value={rulerUnit} onChange={(event) => setRulerUnit(event.target.value)} className="ml-1 rounded border border-neutral-300 bg-white px-2 py-1 text-xs text-neutral-900"><option value="mm">mm</option><option value="cm">cm</option><option value="pt">pt</option></select></label></div><PageLayoutInspector page={layoutSection.rules.page} sectionId={layoutSectionId} sectionTitle={layoutSection.title} typography={pageTypography} pageScopeSupported={pageGroups.find((g) => g.sections.some((s) => s.id === layoutSectionId))?.sections.length === 1 && (pageCounts[layoutSectionId] || 1) <= 1} onApply={(patch, scope) => { try { interaction.commitThesis(applyLayoutPage(thesis, patch, { scope, sectionId: layoutSectionId, pageIndex: 0 }), "action"); setMessage("Sayfa düzeni uygulandı."); } catch (error) { setMessage(error.message); } }} onApplyTypography={(patch, scope) => { try { interaction.commitThesis(applyLayoutTypography(thesis, patch, { scope, sectionId: layoutSectionId }), "action"); setMessage("Metin biçimi uygulandı."); } catch (error) { setMessage(error.message); } }} /></> : <LayoutInspector elements={interaction.selectedElements} geometry={Array.isArray(interaction.geometry) ? Object.fromEntries(interaction.geometry.map((item) => [item.id, item])) : interaction.geometry} onPatch={interaction.patchElements} onAction={interaction.performAction} />}
       </div> : null}
       {detailsOpen ? <aside className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
         <div className="mb-4 flex items-center justify-between"><h3 className="text-sm font-semibold">Tez bilgileri</h3><button type="button" onClick={() => setDetailsOpen(false)} aria-label="Tez bilgilerini kapat" className="rounded px-2 py-1 text-lg">×</button></div>

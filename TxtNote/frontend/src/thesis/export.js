@@ -1,5 +1,5 @@
 import { Document, Packer, PageOrientation, SectionType, TabStopType, LeaderType, VerticalAlign } from "docx";
-import { groupThesisSections } from "./engine.js";
+import { groupThesisSections, resolveChromeText } from "./engine.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { indexRowStyle } from "./generatedIndex.js";
 import { ENGINE_DEFAULT_HEADER_DISTANCE_MM } from "./engineDefaults.js";
@@ -13,7 +13,7 @@ export { bookmarkName } from "./docx/paragraphs.js";
 
 /**
  * Word document from the compiled model. One Word section per thesis section: a
- * new page group starts with a next-page section break, sections sharing a page
+ * new page group starts with a next-page or odd-page section break, sections sharing a page
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
@@ -62,9 +62,18 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       }
     }
   }
+  const hasWordHeaders = model.sections.some((section) => {
+    const { page } = section.rules;
+    const header = page.header || {};
+    const hasText = [header.content, header.firstContent, header.evenContent]
+      .some((content) => typeof content === "string" && resolveChromeText(content, model.values || {}).trim());
+    const topNumber = page.numbering.enabled && page.numbering.position === "top";
+    return hasText || Number(header.trailingBlankLines) > 0 || topNumber;
+  });
   const context = {
     language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, nextList: 1,
     evenAndOddHeaders: model.sections.some((section) => section.rules.page.header?.evenContent !== undefined || section.rules.page.footer?.evenContent !== undefined),
+    omitEmptyHeaderParts: !hasWordHeaders,
     totalPages: totalPages ?? model.values?.TOTAL_PAGES,
     captionAlignments, captionHangs, indexHangs, tableContinuations, blockPageBreaks: new Set(blockPageBreaks),
     tocRowsByAnchor,
@@ -104,12 +113,12 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
     const bounds = [0, ...splits, content.length];
     const result = [{
       children: content.slice(0, bounds[1]),
-      headers: firstChrome.headers, footers: firstChrome.footers,
-      properties: properties(index === 0 ? undefined : groupStart ? SectionType.NEXT_PAGE : SectionType.CONTINUOUS, firstChrome.titlePage),
+      ...(firstChrome.headers ? { headers: firstChrome.headers } : {}), footers: firstChrome.footers,
+      properties: properties(index === 0 ? undefined : groupStart ? section.pageBreakBefore === "oddPage" ? SectionType.ODD_PAGE : SectionType.NEXT_PAGE : SectionType.CONTINUOUS, firstChrome.titlePage),
     }];
     for (let part = 1; part < bounds.length - 1; part += 1) {
       const chrome = chromeDocx(section, model.values, context, false, true);
-      result.push({ children: content.slice(bounds[part], bounds[part + 1]), headers: chrome.headers, footers: chrome.footers, properties: properties(SectionType.NEXT_PAGE, chrome.titlePage, true) });
+      result.push({ children: content.slice(bounds[part], bounds[part + 1]), ...(chrome.headers ? { headers: chrome.headers } : {}), footers: chrome.footers, properties: properties(SectionType.NEXT_PAGE, chrome.titlePage, true) });
     }
     return result;
   });

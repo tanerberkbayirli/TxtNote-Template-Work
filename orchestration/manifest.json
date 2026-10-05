@@ -2,7 +2,12 @@
   "schemaVersion": 1,
   "generatedAt": "2026-10-03",
   "lastSourceRefreshAt": "2026-10-03",
-  "lastSourceRefreshUniversities": ["local-inventory", "aku", "mcbu", "idu"],
+  "lastSourceRefreshUniversities": [
+    "local-inventory",
+    "aku",
+    "mcbu",
+    "idu"
+  ],
   "sourceRoot": "Butun-Sablonlar/",
   "sourceRootReadOnly": true,
   "counts": {
@@ -50,33 +55,55 @@
           "registryId": "aku-sbe-master-tr-v1",
           "degreeType": "master",
           "language": "tr",
-          "evidence": "guide",
+          "evidence": "guide + official inner-cover/ethics/approval forms + example PDF",
           "confirmed": true
         },
         {
           "registryId": "aku-sbe-phd-tr-v1",
           "degreeType": "phd",
           "language": "tr",
-          "evidence": "guide",
+          "evidence": "guide + official inner-cover/ethics/approval forms + example PDF",
+          "confirmed": true
+        },
+        {
+          "registryId": "aku-sbe-sanatta-yeterlik-tr-v1",
+          "degreeType": "sanatta-yeterlik",
+          "language": "tr",
+          "evidence": "guide p.2/p.4/EK4 p.40 + official approval form 2024 paragraph 21; ethics exact wording/copies UNKNOWN",
+          "confirmed": true
+        },
+        {
+          "registryId": "aku-sbe-master-en-v1",
+          "degreeType": "master",
+          "language": "en",
+          "evidence": "guide p.2/p.5/p.10/p.11/EK12 p.52; English page titles UNKNOWN",
+          "confirmed": true
+        },
+        {
+          "registryId": "aku-sbe-phd-en-v1",
+          "degreeType": "phd",
+          "language": "en",
+          "evidence": "guide p.2/p.5/p.10/p.11/EK12 p.52; English page titles UNKNOWN",
           "confirmed": true
         }
       ],
-      "requiredVariantsPending": [
-        "aku-sbe-sanatta-yeterlik-tr-v1",
-        "aku-sbe-master-en-v1",
-        "aku-sbe-phd-en-v1"
-      ],
+      "requiredVariantsPending": [],
       "templateModule": "TxtNote/frontend/src/thesis/templates/aku-sbe.js",
       "sourceFiles": [
         "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf"
       ],
-      "supplementarySources": [],
+      "supplementarySources": [
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_100_2000_2026.docx",
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Etik_Beyan_Formu_2022.docx",
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitu_Onayi_Formu_2024.docx",
+        "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ornek_Tez_Kapagi_ve_Icindekiler_2026.pdf"
+      ],
       "status": "IMPLEMENTABLE",
       "priority": 2,
       "relatedTargets": [],
       "dependencies": [],
-      "flags": ["additional-degree-type-engine-gap", "english-variants-not-registered"],
-      "notes": "2026 guide also explicitly covers Turkish sanatta yeterlik and English-programme master's/doctoral theses. Three source-confirmed registry variants remain pending; arbitrary other-language labels are UNKNOWN."
+      "flags": [],
+      "notes": "All five guide-supported variants are registered. Sanatta ethics exact wording/copies and English front-page labels remain UNKNOWN as documented in the SBE spec; no additional variants inferred."
     },
     {
       "id": "aku-fbe",
@@ -267,8 +294,20 @@
         }
       ],
       "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-lee.js",
-      "sourceFiles": ["Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx"],
-      "supplementarySources": ["Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Kapak_Formatlari_2024.doc", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Kabul_Onay_Sayfasi_2026.docx", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Kabul_Onay_Sayfasi_2026.docx", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx", "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx"],
+      "sourceFiles": [
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx"
+      ],
+      "supplementarySources": [
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Kapak_Formatlari_2024.doc",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Kabul_Onay_Sayfasi_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Kabul_Onay_Sayfasi_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
+        "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx"
+      ],
       "status": "IMPLEMENTABLE",
       "priority": 1,
       "relatedTargets": [],
@@ -276,276 +315,306 @@
       "flags": [],
       "notes": ""
     },
-{
-    "id": "afsu-lee-proposal",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "instituteId": "lee-proposal",
-    "institute": "Lisansüstü Eğitim Enstitüsü",
-    "degrees": [
+    {
+      "id": "afsu-lee-proposal",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "instituteId": "lee-proposal",
+      "institute": "Lisansüstü Eğitim Enstitüsü",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [
-        { "registryId": "afsu-lee-proposal-master-tr-v1", "degreeType": "master", "language": "tr", "evidence": "registry.js entry + templates/afsu-lee-proposal.js export", "confirmed": true },
-        { "registryId": "afsu-lee-proposal-phd-tr-v1", "degreeType": "phd", "language": "tr", "evidence": "registry.js entry + templates/afsu-lee-proposal.js export", "confirmed": true }
-    ],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-lee-proposal.js",
-    "sourceFiles": [
+      ],
+      "variants": [
+        {
+          "registryId": "afsu-lee-proposal-master-tr-v1",
+          "degreeType": "master",
+          "language": "tr",
+          "evidence": "registry.js entry + templates/afsu-lee-proposal.js export",
+          "confirmed": true
+        },
+        {
+          "registryId": "afsu-lee-proposal-phd-tr-v1",
+          "degreeType": "phd",
+          "language": "tr",
+          "evidence": "registry.js entry + templates/afsu-lee-proposal.js export",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-lee-proposal.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Separate proposal-guide target; master and PhD registry/module variants are confirmed. Source-specific implementation and validation status are tracked in progress metadata."
-},
-{
-    "id": "afsu-tip",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "instituteId": "tip",
-    "institute": "Tıp Fakültesi",
-    "degrees": [
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Separate proposal-guide target; master and PhD registry/module variants are confirmed. Source-specific implementation and validation status are tracked in progress metadata."
+    },
+    {
+      "id": "afsu-tip",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "instituteId": "tip",
+      "institute": "Tıp Fakültesi",
+      "degrees": [
         "specialization"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [
-        { "registryId": "afsu-tip-uzmanlik-tr-v1", "degreeType": "specialization", "language": "tr", "evidence": "registry.js entry + templates/afsu-tip.js variant metadata", "confirmed": true }
-    ],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-tip.js",
-    "sourceFiles": [
+      ],
+      "variants": [
+        {
+          "registryId": "afsu-tip-uzmanlik-tr-v1",
+          "degreeType": "specialization",
+          "language": "tr",
+          "evidence": "registry.js entry + templates/afsu-tip.js variant metadata",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-tip.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Medical-specialization thesis guide; Turkish specialization registry/module variant confirmed. Implementation and validation status are tracked in progress metadata."
-},
-{
-    "id": "afsu-dis-hekimligi",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "instituteId": "dis-hekimligi",
-    "institute": "Diş Hekimliği Fakültesi",
-    "degrees": [
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Medical-specialization thesis guide; Turkish specialization registry/module variant confirmed. Implementation and validation status are tracked in progress metadata."
+    },
+    {
+      "id": "afsu-dis-hekimligi",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "instituteId": "dis-hekimligi",
+      "institute": "Diş Hekimliği Fakültesi",
+      "degrees": [
         "specialization"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [
-        { "registryId": "afsu-dis-hekimligi-uzmanlik-tr-v1", "degreeType": "specialization", "language": "tr", "evidence": "registry.js entry + templates/afsu-tip.js DHF variant metadata", "confirmed": true }
-    ],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-dis-hekimligi.js",
-    "sourceFiles": [
+      ],
+      "variants": [
+        {
+          "registryId": "afsu-dis-hekimligi-uzmanlik-tr-v1",
+          "degreeType": "specialization",
+          "language": "tr",
+          "evidence": "registry.js entry + templates/afsu-tip.js DHF variant metadata",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-dis-hekimligi.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Dental-specialization thesis guide; Turkish specialization registry/module variant confirmed. Implementation and validation status are tracked in progress metadata."
-},
-{
-    "id": "afsu-eczacilik-proje",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "instituteId": "eczacilik",
-    "institute": "Eczacılık Fakültesi",
-    "degrees": [
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Dental-specialization thesis guide; Turkish specialization registry/module variant confirmed. Implementation and validation status are tracked in progress metadata."
+    },
+    {
+      "id": "afsu-eczacilik-proje",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "instituteId": "eczacilik",
+      "institute": "Eczacılık Fakültesi",
+      "degrees": [
         "undergraduate"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [
-        { "registryId": "afsu-eczacilik-proje-lisans-tr-v1", "degreeType": "undergraduate", "language": "tr", "evidence": "official 2024 course-project directive", "confirmed": true }
-    ],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-eczacilik-proje.js",
-    "sourceFiles": [
+      ],
+      "variants": [
+        {
+          "registryId": "afsu-eczacilik-proje-lisans-tr-v1",
+          "degreeType": "undergraduate",
+          "language": "tr",
+          "evidence": "official 2024 course-project directive",
+          "confirmed": true
+        }
+      ],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/afsu-eczacilik-proje.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Eczacilik_Arastirma_Projesi/AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Undergraduate Turkish course-project report with a required English abstract; no full-English variant established. Registry entry added; real exports and final Word/independent validation remain in progress."
-},
-{
-    "id": "adu-fbe",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "instituteId": "fbe",
-    "institute": "Fen Bilimleri Enstitüsü",
-    "degrees": [
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Undergraduate Turkish course-project report with a required English abstract; no full-English variant established. Registry entry added; real exports and final Word/independent validation remain in progress."
+    },
+    {
+      "id": "adu-fbe",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "instituteId": "fbe",
+      "institute": "Fen Bilimleri Enstitüsü",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr",
         "en"
-    ],
-    "variants": [],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/adu-fbe.js",
-    "sourceFiles": [
+      ],
+      "variants": [],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/adu-fbe.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf",
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_EN_2023.pdf"
-    ],
-    "supplementarySources": [
+      ],
+      "supplementarySources": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Kontrol_Beyan_Listesi_2021.pdf"
-    ],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Exact variant registrations pending source-specific extraction; no registry IDs assigned."
-},
-{
-    "id": "adu-sbe",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "instituteId": "sbe",
-    "institute": "Sosyal Bilimler Enstitüsü",
-    "degrees": [
+      ],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Exact variant registrations pending source-specific extraction; no registry IDs assigned."
+    },
+    {
+      "id": "adu-sbe",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "instituteId": "sbe",
+      "institute": "Sosyal Bilimler Enstitüsü",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/adu-sbe.js",
-    "sourceFiles": [
+      ],
+      "variants": [],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/adu-sbe.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx"
-    ],
-    "supplementarySources": [
+      ],
+      "supplementarySources": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Onay_Sayfasi_Formu_2024.docx"
-    ],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Exact variant registrations pending source-specific extraction; no registry IDs assigned."
-},
-{
-    "id": "adu-sagbil",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "instituteId": "sagbil",
-    "institute": "Sağlık Bilimleri Enstitüsü",
-    "degrees": [
+      ],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Exact variant registrations pending source-specific extraction; no registry IDs assigned."
+    },
+    {
+      "id": "adu-sagbil",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "instituteId": "sagbil",
+      "institute": "Sağlık Bilimleri Enstitüsü",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/adu-sagbil.js",
-    "sourceFiles": [
+      ],
+      "variants": [],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/adu-sagbil.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Seminer_Tez_Donem_Projesi_Yazim_Kilavuzu_2025.doc",
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Guide/template consistency unverified. Exact variant registrations pending source-specific extraction; no registry IDs assigned."
-},
-{
-    "id": "adu-tip",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "instituteId": "tip",
-    "institute": "Tıp Fakültesi",
-    "degrees": [
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Guide/template consistency unverified. Exact variant registrations pending source-specific extraction; no registry IDs assigned."
+    },
+    {
+      "id": "adu-tip",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "instituteId": "tip",
+      "institute": "Tıp Fakültesi",
+      "degrees": [
         "specialization"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/adu-tip.js",
-    "sourceFiles": [
+      ],
+      "variants": [],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/adu-tip.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/ADU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2023.pdf"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Current May-2023 guide; March upload superseded. Exact variant registrations pending source-specific extraction; no registry IDs assigned."
-},
-{
-    "id": "adu-ziraat-lisans",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "instituteId": "ziraat",
-    "institute": "Ziraat Fakültesi",
-    "degrees": [
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Current May-2023 guide; March upload superseded. Exact variant registrations pending source-specific extraction; no registry IDs assigned."
+    },
+    {
+      "id": "adu-ziraat-lisans",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "instituteId": "ziraat",
+      "institute": "Ziraat Fakültesi",
+      "degrees": [
         "undergraduate"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "tr"
-    ],
-    "variants": [],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/adu-ziraat-lisans.js",
-    "sourceFiles": [
+      ],
+      "variants": [],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/adu-ziraat-lisans.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "Exact variant registrations pending source-specific extraction; no registry IDs assigned."
-},
-{
-    "id": "adu-muhendislik-lisans",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "instituteId": "muhendislik",
-    "institute": "Mühendislik Fakültesi",
-    "degrees": [
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "Exact variant registrations pending source-specific extraction; no registry IDs assigned."
+    },
+    {
+      "id": "adu-muhendislik-lisans",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "instituteId": "muhendislik",
+      "institute": "Mühendislik Fakültesi",
+      "degrees": [
         "undergraduate"
-    ],
-    "languages": [
+      ],
+      "languages": [
         "en"
-    ],
-    "variants": [],
-    "templateModule": "TxtNote/frontend/src/thesis/templates/adu-muhendislik-lisans.js",
-    "sourceFiles": [
+      ],
+      "variants": [],
+      "templateModule": "TxtNote/frontend/src/thesis/templates/adu-muhendislik-lisans.js",
+      "sourceFiles": [
         "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Muhendislik_Fakultesi_Lisans_Bitirme_Tezi/ADU_Muhendislik_Lisans_Bitirme_Tezi_Sablonu_2018.docx"
-    ],
-    "supplementarySources": [],
-    "status": "IMPLEMENTABLE",
-    "priority": 1,
-    "relatedTargets": [],
-    "dependencies": [],
-    "flags": [],
-    "notes": "English template includes Turkish abstract. Exact variant registrations pending source-specific extraction; no registry IDs assigned."
-},
+      ],
+      "supplementarySources": [],
+      "status": "IMPLEMENTABLE",
+      "priority": 1,
+      "relatedTargets": [],
+      "dependencies": [],
+      "flags": [],
+      "notes": "English template includes Turkish abstract. Exact variant registrations pending source-specific extraction; no registry IDs assigned."
+    },
     {
       "id": "deu-fbe",
       "university": "Dokuz Eylül Üniversitesi",
@@ -2074,7 +2143,10 @@
       "unit": "Fen Bilimleri Enstitüsü",
       "documentType": "template",
       "language": "tr",
-      "degrees": ["master", "phd"],
+      "degrees": [
+        "master",
+        "phd"
+      ],
       "version": "Official online file created/modified 2023-12-20",
       "path": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
       "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2023/12/tez-word-sablon-2020_WEB_icin-2-1.docx",
@@ -2089,7 +2161,10 @@
       "unit": "Fen Bilimleri Enstitüsü",
       "documentType": "template",
       "language": "tr",
-      "degrees": ["master", "phd"],
+      "degrees": [
+        "master",
+        "phd"
+      ],
       "version": "Official 2020/01 LaTeX archive",
       "path": "orchestration/official-sources/aku-fbe/Fen_Bil_Ens_Tez_LaTeX_Sablon_2020.rar",
       "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/01/Fen-Bil-Ens-Tez-LaTeX-%C5%9Eablon.rar",
@@ -3295,351 +3370,351 @@
       "role": "primary",
       "notes": "Official institute-hosted PDF, 39 pages; downloaded 2026-09-30, SHA256 B9CE1B784277B50B81C9DA027BFE40D06948B78868D8D49145A2ECB730FFD581. Formal effective date not confirmed."
     },
-{
-    "id": "afsu-lee-cover-formats",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "form",
-    "language": "tr",
-    "degrees": [
+    {
+      "id": "afsu-lee-cover-formats",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "form",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "upload 2024-07 (HTTP Last-Modified 23 Jul 2024); OLE metadata created 2020-04-30, last saved 2024-07-23 (MEASURED)",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Kapak_Formatlari_2024.doc",
-    "target": "afsu-lee",
-    "role": "supplementary",
-    "notes": "Official 2024 cover-format document; internal date unknown."
-},
-{
-    "id": "afsu-lee-approval-master",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "form",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "upload 2024-07 (HTTP Last-Modified 23 Jul 2024); OLE metadata created 2020-04-30, last saved 2024-07-23 (MEASURED)",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Kapak_Formatlari_2024.doc",
+      "target": "afsu-lee",
+      "role": "supplementary",
+      "notes": "Official 2024 cover-format document; internal date unknown."
+    },
+    {
+      "id": "afsu-lee-approval-master",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "form",
+      "language": "tr",
+      "degrees": [
         "master"
-    ],
-    "version": "HTTP Last-Modified 09 Jul 2026; core.xml 2026-04-07",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Kabul_Onay_Sayfasi_2026.docx",
-    "target": "afsu-lee",
-    "role": "supplementary",
-    "notes": "Separate 2026 master's approval form."
-},
-{
-    "id": "afsu-lee-approval-phd",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "form",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "HTTP Last-Modified 09 Jul 2026; core.xml 2026-04-07",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Kabul_Onay_Sayfasi_2026.docx",
+      "target": "afsu-lee",
+      "role": "supplementary",
+      "notes": "Separate 2026 master's approval form."
+    },
+    {
+      "id": "afsu-lee-approval-phd",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "form",
+      "language": "tr",
+      "degrees": [
         "phd"
-    ],
-    "version": "HTTP Last-Modified 22 Jul 2026; core.xml 2026-04-07",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Kabul_Onay_Sayfasi_2026.docx",
-    "target": "afsu-lee",
-    "role": "supplementary",
-    "notes": "Separate 2026 doctoral approval form."
-},
-{
-    "id": "afsu-lee-check-master-pre",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "checklist",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "HTTP Last-Modified 22 Jul 2026; core.xml 2026-04-07",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Kabul_Onay_Sayfasi_2026.docx",
+      "target": "afsu-lee",
+      "role": "supplementary",
+      "notes": "Separate 2026 doctoral approval form."
+    },
+    {
+      "id": "afsu-lee-check-master-pre",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "checklist",
+      "language": "tr",
+      "degrees": [
         "master"
-    ],
-    "version": "HTTP Last-Modified 09 Jul 2026",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
-    "target": "afsu-lee",
-    "role": "supplementary",
-    "notes": "2026 pre-defense checklist."
-},
-{
-    "id": "afsu-lee-check-master-post",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "checklist",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "HTTP Last-Modified 09 Jul 2026",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
+      "target": "afsu-lee",
+      "role": "supplementary",
+      "notes": "2026 pre-defense checklist."
+    },
+    {
+      "id": "afsu-lee-check-master-post",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "checklist",
+      "language": "tr",
+      "degrees": [
         "master"
-    ],
-    "version": "HTTP Last-Modified 09 Jul 2026",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
-    "target": "afsu-lee",
-    "role": "supplementary",
-    "notes": "2026 post-defense checklist."
-},
-{
-    "id": "afsu-lee-check-phd-pre",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "checklist",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "HTTP Last-Modified 09 Jul 2026",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_YL_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
+      "target": "afsu-lee",
+      "role": "supplementary",
+      "notes": "2026 post-defense checklist."
+    },
+    {
+      "id": "afsu-lee-check-phd-pre",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "checklist",
+      "language": "tr",
+      "degrees": [
         "phd"
-    ],
-    "version": "HTTP Last-Modified 22 Jul 2026",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
-    "target": "afsu-lee",
-    "role": "supplementary",
-    "notes": "2026 pre-defense checklist."
-},
-{
-    "id": "afsu-lee-check-phd-post",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "checklist",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "HTTP Last-Modified 22 Jul 2026",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Oncesi_2026.docx",
+      "target": "afsu-lee",
+      "role": "supplementary",
+      "notes": "2026 pre-defense checklist."
+    },
+    {
+      "id": "afsu-lee-check-phd-post",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "checklist",
+      "language": "tr",
+      "degrees": [
         "phd"
-    ],
-    "version": "HTTP Last-Modified 22 Jul 2026",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
-    "target": "afsu-lee",
-    "role": "supplementary",
-    "notes": "2026 post-defense checklist."
-},
-{
-    "id": "afsu-lee-proposal-guide",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Lisansüstü Eğitim Enstitüsü",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "HTTP Last-Modified 22 Jul 2026",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Yazim_Kontrol_Listesi_Savunma_Sonrasi_2026.docx",
+      "target": "afsu-lee",
+      "role": "supplementary",
+      "notes": "2026 post-defense checklist."
+    },
+    {
+      "id": "afsu-lee-proposal-guide",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Lisansüstü Eğitim Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "Kapak: Aralık 2025; PDF created 2026-02-23 (10 s.)",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
-    "target": "afsu-lee-proposal",
-    "role": "primary",
-    "notes": "Proposal guide; separate from thesis-writing target."
-},
-{
-    "id": "afsu-tip-guide",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Tıp Fakültesi",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "Kapak: Aralık 2025; PDF created 2026-02-23 (10 s.)",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+      "target": "afsu-lee-proposal",
+      "role": "primary",
+      "notes": "Proposal guide; separate from thesis-writing target."
+    },
+    {
+      "id": "afsu-tip-guide",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Tıp Fakültesi",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "specialization"
-    ],
-    "version": "Kapak: TEMMUZ 2021; PDF created 2021-08-26 (33 s.)",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
-    "target": "afsu-tip",
-    "role": "primary",
-    "notes": "Medical-specialization guide; metadata records separate dental copy."
-},
-{
-    "id": "afsu-dis-hekimligi-guide",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Diş Hekimliği Fakültesi",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "Kapak: TEMMUZ 2021; PDF created 2021-08-26 (33 s.)",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+      "target": "afsu-tip",
+      "role": "primary",
+      "notes": "Medical-specialization guide; metadata records separate dental copy."
+    },
+    {
+      "id": "afsu-dis-hekimligi-guide",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Diş Hekimliği Fakültesi",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "specialization"
-    ],
-    "version": "Kapak: TEMMUZ 2021; PDF created 2021-09-21 (32 s.)",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
-    "target": "afsu-dis-hekimligi",
-    "role": "primary",
-    "notes": "Dental-specialization guide; metadata notes copy differences."
-},
-{
-    "id": "afsu-eczacilik-proje-directive",
-    "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-    "universityId": "afsu",
-    "unit": "Eczacılık Fakültesi",
-    "documentType": "directive",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "Kapak: TEMMUZ 2021; PDF created 2021-09-21 (32 s.)",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+      "target": "afsu-dis-hekimligi",
+      "role": "primary",
+      "notes": "Dental-specialization guide; metadata notes copy differences."
+    },
+    {
+      "id": "afsu-eczacilik-proje-directive",
+      "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+      "universityId": "afsu",
+      "unit": "Eczacılık Fakültesi",
+      "documentType": "directive",
+      "language": "tr",
+      "degrees": [
         "undergraduate"
-    ],
-    "version": "Yönerge 16.01.2024; PDF created 2024-01-19 (13 s.)",
-    "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Eczacilik_Arastirma_Projesi/AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
-    "target": "afsu-eczacilik-proje",
-    "role": "primary",
-    "notes": "Course project report directive; not a thesis template."
-},
-{
-    "id": "adu-fbe-guide-tr",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Fen Bilimleri Enstitüsü",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "Yönerge 16.01.2024; PDF created 2024-01-19 (13 s.)",
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Eczacilik_Arastirma_Projesi/AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+      "target": "afsu-eczacilik-proje",
+      "role": "primary",
+      "notes": "Course project report directive; not a thesis template."
+    },
+    {
+      "id": "adu-fbe-guide-tr",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "2023-12-22",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf",
-    "target": "adu-fbe",
-    "role": "primary",
-    "notes": ""
-},
-{
-    "id": "adu-fbe-guide-en",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Fen Bilimleri Enstitüsü",
-    "documentType": "guide",
-    "language": "en",
-    "degrees": [
+      ],
+      "version": "2023-12-22",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf",
+      "target": "adu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "adu-fbe-guide-en",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "en",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "2023-12 (Last-Modified 2023-12-28)",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_EN_2023.pdf",
-    "target": "adu-fbe",
-    "role": "primary",
-    "notes": ""
-},
-{
-    "id": "adu-fbe-checklist",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Fen Bilimleri Enstitüsü",
-    "documentType": "checklist",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "2023-12 (Last-Modified 2023-12-28)",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_EN_2023.pdf",
+      "target": "adu-fbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "adu-fbe-checklist",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Fen Bilimleri Enstitüsü",
+      "documentType": "checklist",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "2021-04-15",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Kontrol_Beyan_Listesi_2021.pdf",
-    "target": "adu-fbe",
-    "role": "supplementary",
-    "notes": "Checklist relation to Dec-2023 guide not verified."
-},
-{
-    "id": "adu-sbe-guide",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Sosyal Bilimler Enstitüsü",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "2021-04-15",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Kontrol_Beyan_Listesi_2021.pdf",
+      "target": "adu-fbe",
+      "role": "supplementary",
+      "notes": "Checklist relation to Dec-2023 guide not verified."
+    },
+    {
+      "id": "adu-sbe-guide",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "2025-09-03",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
-    "target": "adu-sbe",
-    "role": "primary",
-    "notes": ""
-},
-{
-    "id": "adu-sbe-form16",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Sosyal Bilimler Enstitüsü",
-    "documentType": "form",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "2025-09-03",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+      "target": "adu-sbe",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "adu-sbe-form16",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Sosyal Bilimler Enstitüsü",
+      "documentType": "form",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "2024-02-27",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Onay_Sayfasi_Formu_2024.docx",
-    "target": "adu-sbe",
-    "role": "supplementary",
-    "notes": "Official Form 16 approval page."
-},
-{
-    "id": "adu-sagbil-guide",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Sağlık Bilimleri Enstitüsü",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "2024-02-27",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Onay_Sayfasi_Formu_2024.docx",
+      "target": "adu-sbe",
+      "role": "supplementary",
+      "notes": "Official Form 16 approval page."
+    },
+    {
+      "id": "adu-sagbil-guide",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "2025-10-22 (upload)",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Seminer_Tez_Donem_Projesi_Yazim_Kilavuzu_2025.doc",
-    "target": "adu-sagbil",
-    "role": "primary",
-    "notes": ""
-},
-{
-    "id": "adu-sagbil-template",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Sağlık Bilimleri Enstitüsü",
-    "documentType": "template",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "2025-10-22 (upload)",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Seminer_Tez_Donem_Projesi_Yazim_Kilavuzu_2025.doc",
+      "target": "adu-sagbil",
+      "role": "primary",
+      "notes": ""
+    },
+    {
+      "id": "adu-sagbil-template",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Sağlık Bilimleri Enstitüsü",
+      "documentType": "template",
+      "language": "tr",
+      "degrees": [
         "master",
         "phd"
-    ],
-    "version": "2026-08-05",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
-    "target": "adu-sagbil",
-    "role": "primary",
-    "notes": "Guide/template consistency unverified per metadata."
-},
-{
-    "id": "adu-tip-guide",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Tıp Fakültesi",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "2026-08-05",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+      "target": "adu-sagbil",
+      "role": "primary",
+      "notes": "Guide/template consistency unverified per metadata."
+    },
+    {
+      "id": "adu-tip-guide",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Tıp Fakültesi",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "specialization"
-    ],
-    "version": "Faculty Board 2023-01-23 (2023/01 no 1); Senate 2023-02-08; file uploaded 2023-05-24; PDF modDate 2023-05-24",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/ADU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2023.pdf",
-    "target": "adu-tip",
-    "role": "primary",
-    "notes": "Current May-2023 guide; March upload superseded/not archived."
-},
-{
-    "id": "adu-ziraat-guide",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Ziraat Fakültesi",
-    "documentType": "guide",
-    "language": "tr",
-    "degrees": [
+      ],
+      "version": "Faculty Board 2023-01-23 (2023/01 no 1); Senate 2023-02-08; file uploaded 2023-05-24; PDF modDate 2023-05-24",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/ADU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2023.pdf",
+      "target": "adu-tip",
+      "role": "primary",
+      "notes": "Current May-2023 guide; March upload superseded/not archived."
+    },
+    {
+      "id": "adu-ziraat-guide",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Ziraat Fakültesi",
+      "documentType": "guide",
+      "language": "tr",
+      "degrees": [
         "undergraduate"
-    ],
-    "version": "upload 2025-05-29; core.xml 2025-05-22; rules per Faculty Board 2017-01-31 (2017/1)",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
-    "target": "adu-ziraat-lisans",
-    "role": "primary",
-    "notes": "2025 is upload/file metadata; no explicit document date."
-},
-{
-    "id": "adu-muhendislik-template",
-    "university": "Aydın Adnan Menderes Üniversitesi",
-    "universityId": "adu",
-    "unit": "Mühendislik Fakültesi",
-    "documentType": "template",
-    "language": "en",
-    "degrees": [
+      ],
+      "version": "upload 2025-05-29; core.xml 2025-05-22; rules per Faculty Board 2017-01-31 (2017/1)",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+      "target": "adu-ziraat-lisans",
+      "role": "primary",
+      "notes": "2025 is upload/file metadata; no explicit document date."
+    },
+    {
+      "id": "adu-muhendislik-template",
+      "university": "Aydın Adnan Menderes Üniversitesi",
+      "universityId": "adu",
+      "unit": "Mühendislik Fakültesi",
+      "documentType": "template",
+      "language": "en",
+      "degrees": [
         "undergraduate"
-    ],
-    "version": "2018-07-19 (core.xml modified)",
-    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Muhendislik_Fakultesi_Lisans_Bitirme_Tezi/ADU_Muhendislik_Lisans_Bitirme_Tezi_Sablonu_2018.docx",
-    "target": "adu-muhendislik-lisans",
-    "role": "primary",
-    "notes": "English template with Turkish abstract; linked by official faculty page."
-},
+      ],
+      "version": "2018-07-19 (core.xml modified)",
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Muhendislik_Fakultesi_Lisans_Bitirme_Tezi/ADU_Muhendislik_Lisans_Bitirme_Tezi_Sablonu_2018.docx",
+      "target": "adu-muhendislik-lisans",
+      "role": "primary",
+      "notes": "English template with Turkish abstract; linked by official faculty page."
+    },
     {
       "id": "aku-kimya-lisans-aku-kimya-bitirme-tezi-yazim-kilavuzu-2023-pdf",
       "university": "Afyon Kocatepe Üniversitesi",
@@ -3803,7 +3878,8 @@
       "reason": "Yarım/indirme artığı uzantı; MD5 deu-fbe-template-master-en ile aynı (59756f47452801f708208608aa362b88). Geçerli kaynak sayılmaz."
     }
   ],
-  "nonImplementableUniversities": [{
+  "nonImplementableUniversities": [
+    {
       "universityId": "tinaztepe",
       "university": "İzmir Tınaztepe Üniversitesi",
       "reason": "kaynaklar.md çevrimiçi LEE kılavuzunu listeliyor; yerel belge yok",

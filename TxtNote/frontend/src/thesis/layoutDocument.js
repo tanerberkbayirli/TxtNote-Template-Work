@@ -5,6 +5,7 @@
  */
 
 import { MM_PER_PT } from "./units.js";
+import { FORMAT_HIGHLIGHTS, normalizeHex } from "../config/format.js";
 
 const LAYOUT_VERSION = 1;
 const LAYOUT_MODES = new Set(["flow", "anchored", "absolute"]);
@@ -22,7 +23,7 @@ const STYLE_NUMBER_KEYS = new Set([
 ]);
 const STYLE_BOOLEAN_KEYS = new Set(["italic", "pageBreakBefore", "keepWithNext"]);
 const STYLE_KEYS = new Set([
-  ...STYLE_NUMBER_KEYS, ...STYLE_BOOLEAN_KEYS, "fontFamily", "decoration", "align", "textTransform", "color",
+  ...STYLE_NUMBER_KEYS, ...STYLE_BOOLEAN_KEYS, "fontFamily", "decoration", "align", "textTransform", "color", "highlight",
 ]);
 const TEXT_TRANSFORMS = new Set(["none", "uppercase", "lowercase", "capitalize"]);
 const PAGE_KEYS = new Set(["size", "widthMm", "heightMm", "orientation", "margins", "header", "footer", "numbering"]);
@@ -47,6 +48,7 @@ export function normalizeLayoutTextStyle(style) {
     else if (key === "align" && new Set(["left", "center", "right", "justify"]).has(value)) result.align = value;
     else if (key === "textTransform" && TEXT_TRANSFORMS.has(value)) result.textTransform = value;
     else if (key === "color" && typeof value === "string" && /^#[0-9a-f]{6}$/iu.test(value)) result.color = value.toLowerCase();
+    else if (key === "highlight" && (FORMAT_HIGHLIGHTS.some((item) => item.id === value) || normalizeHex(value))) result.highlight = FORMAT_HIGHLIGHTS.some((item) => item.id === value) ? value : normalizeHex(value);
   }
   return result;
 }
@@ -312,7 +314,8 @@ function normalizeAdditionForNode(addition, baseStyle, override) {
  */
 function flowSlot(node, positioned, override) {
   if (!["absolute", "anchored"].includes(positioned.layoutMode) || node.type === "group") return null;
-  const heightMm = finite(override?.flowHeightMm) ? override.flowHeightMm : override?.heightMm ?? node.heightMm;
+  // A template may declare the flow height a positioned block keeps (0: it never had a flow slot).
+  const heightMm = finite(override?.flowHeightMm) ? override.flowHeightMm : finite(node.flowHeightMm) ? node.flowHeightMm : override?.heightMm ?? node.heightMm;
   if (!finite(heightMm) || heightMm <= 0) return null;
   const style = node.type === "text" ? node.style || {} : {};
   const marginTopMm = node.type === "text" ? (finite(style.spaceBeforePt) ? style.spaceBeforePt * MM_PER_PT : 0) : finite(node.marginTopMm) ? node.marginTopMm : 0;

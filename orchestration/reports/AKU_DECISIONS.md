@@ -23,7 +23,7 @@ the template uses them because the engine needs a value, the validator reports t
 ## Per target
 ### aku-sbe
 - Programme line on the inner cover: printed only when `PROGRAM_NAME` is filled, exactly as the author enters it (wording unknown → no invented "… PROGRAMI" suffix).
-- Sanatta Yeterlik and foreign-language (EN) variants: source-supported in wording only; the ethics wording (Sanatta) and the English page titles (EN) are absent → **not registered**; documented in `orchestration/failures/aku-sbe-variants.md` at the university gate (variant BLOCKED by missing source; TR master/PhD unaffected).
+- Sanatta Yeterlik and foreign-language (EN) variants are registered from the 2026 guide evidence. Sanatta ethics wording/copy count and English front-page labels remain UNKNOWN Tier 2; the Sanatta template uses an editable grammar-preserving INFERRED default and does not claim official form wording. English variants order the instruction-language abstract before Turkish ÖZET and require the extended Turkish summary after appendices.
 - Tanıtım (window) page: first sheet, uncounted/unnumbered, 12 pt, first baseline 228.34 mm (only EK 1 evidence); window size UNKNOWN → soft width limit 80 mm from the example, NOT_SPECIFIED.
 - TOC "Sayfa": one empty line under the title (explicit text; example shows none).
 - Enstitü Onayı: counted placeholder page (iii) — official e-signed web form is not reproduced.

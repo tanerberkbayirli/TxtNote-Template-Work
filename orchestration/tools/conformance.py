@@ -23,7 +23,7 @@ import zipfile
 from collections import Counter
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from pdfmeasure import (MM2PT, W, _attr, drawings_mm, docx_paragraphs, docx_sections, docx_styles, docx_xml, embedded_fonts, open_pdf,  # noqa: E402
+from pdfmeasure import (MM2PT, W, _attr, drawings_mm, docx_paragraphs, docx_sections, docx_styles, docx_xml, embedded_fonts, images_mm, open_pdf,  # noqa: E402
                         page_number, page_size_mm, visual_lines)
 
 EPS = 1e-6
@@ -911,7 +911,10 @@ def open_end(seq):
 def k_page_labels(ctx, c):
     """params.open_end: compare the trailing Arabic run by its start only (expected written as '..., 1..N')."""
     d = get_doc(ctx, c["params"])
-    seq = rle([d.label(p) for p in d.pages(c["params"].get("pages"))])
+    labels = [d.label(p) for p in d.pages(c["params"].get("pages"))]
+    if c['params'].get('each'):
+        return {'actual': labels, 'pass': bool(labels) and all(label == c['expected'] for label in labels)}
+    seq = rle(labels)
     return {"actual": open_end(seq) if c["params"].get("open_end") else seq}
 
 
@@ -929,7 +932,7 @@ def k_page_number_attr(ctx, c):
 
 
 def k_toc_labels(ctx, c):
-    """Every TOC / list entry's trailing page label equals the label of the page where its title appears."""
+    """Every TOC entry equals its printed page label or an explicitly source-backed hidden index label."""
     P = c["params"]
     d = get_doc(ctx, P)
     start = d.pages({"find": P.get("toc_title", "^(İÇİNDEKİLER|ICINDEKILER)")})
@@ -944,20 +947,19 @@ def k_toc_labels(ctx, c):
         buf = ""
         for l in d.lines(p):
             t = l["text"]
-            if l["bold"]:
-                buf = ""
-                continue
             m = entry_rx.match(t) if re.search(r"[.…·]{3,}|\s{2}", t) or True else None
             leader = re.search(r"[.…·]{3,}", t)
-            if m and leader:
+            if m and (leader or P.get("leader") == "none"):
                 title = (buf + " " + m.group(1)).strip() if buf else m.group(1).strip()
                 entries.append((title, m.group(2), p))
                 buf = ""
                 entry_ids.add(id(l))
+            elif l["bold"]:
+                buf = ""
             else:
                 buf = (buf + " " + t).strip() if buf else t
     # buf accumulates headings that are not entries: reset on every page start is handled by the leader rule above
-    ok, bad = 0, []
+    ok, bad, hidden_checked = 0, [], []
     heads = []
     for p in range(1, d.n + 1):
         for l in d.lines(p):
@@ -975,13 +977,27 @@ def k_toc_labels(ctx, c):
             if pages_hit:
                 break
         labs = {d.label(pp) for pp in pages_hit}
+        hidden = [item for item in P.get("hidden_index_labels", [])
+                  if re.search(item.get("title_regex", r"$^"), title, re.I)]
+        if labs == {""} and len(hidden) == 1:
+            # Counted-but-unprinted front matter has no physical page numeral to extract.
+            # Its contents label must be declared from source evidence; never infer one from position.
+            labs = {str(hidden[0]["label"])}
+            hidden_checked.append(f"{title[:32]}={hidden[0]['label']} (unprinted)")
+        elif len(hidden) > 1:
+            bad.append(f"{title[:40]!r}: multiple hidden-label rules match")
+            continue
+        elif len(hidden) == 1:
+            bad.append(f"{title[:40]!r}: expected an unprinted counted page, found {sorted(labs) or 'not found'}")
+            continue
         if lab.lower() in {x.lower() for x in labs}:
             ok += 1
         else:
             bad.append(f"{title[:40]!r}->{lab} vs {sorted(labs) or 'not found'}")
     n = len(entries)
     return {"actual": f"{ok}/{n}", "pass": n >= P.get("min_entries", 1) and ok == n,
-            "note": "; ".join(bad[:5]), "expected_override": "all entries match"}
+            "note": "; ".join((bad + (["source-backed hidden index labels: " + ", ".join(hidden_checked)] if hidden_checked else []))[:5]),
+            "expected_override": "all entries match printed labels or declared hidden index labels"}
 
 
 # ------------------------------------------------------------------ DOCX kinds
@@ -1051,6 +1067,39 @@ def k_docx_attr(ctx, c):
     else:
         miss = [e for e in exp if e not in got]
     return {"actual": got, "pass": not miss, "note": f"{len(vals)} occurrences" + (f"; missing {miss}" if miss else "")}
+
+
+def k_docx_paragraph_sequence(ctx, c):
+    """Validate ordered paragraph/field signatures in selected XML parts."""
+    params = c['params']
+    path = get_docx(ctx, params)
+    with zipfile.ZipFile(path) as archive:
+        parts = [name for name in archive.namelist()
+                 if re.search(params.get('part_regex', '^word/document.xml$'), name)]
+    actual, bad = {}, []
+    for part in parts:
+        root = docx_xml(path, part)
+        rows = []
+        for paragraph in root.iter(W + 'p'):
+            text = ''.join(node.text or '' for node in paragraph.iter(W + 't'))
+            instruction = ' '.join([node.text or '' for node in paragraph.iter(W + 'instrText')]
+                                   + [_attr(node, 'instr') or '' for node in paragraph.iter(W + 'fldSimple')])
+            rows.append({'text': text, 'instruction': instruction,
+                         'style': _attr(paragraph.find(f'{W}pPr/{W}pStyle'), 'val'),
+                         'empty': not text.strip() and not instruction.strip()})
+        if params.get('require_field') and not any(re.search(params['require_field'], row['instruction']) for row in rows):
+            continue
+        actual[part] = rows
+        if len(rows) != len(c['expected']):
+            bad.append(f'{part}: {len(rows)} paragraphs, expected {len(c["expected"])}')
+            continue
+        for index, (row, pattern) in enumerate(zip(rows, c['expected']), 1):
+            for key, value in pattern.items():
+                matches = re.search(value, row['instruction'] if key == 'field_regex' else row['text']) if key in ('field_regex', 'text_regex') else row.get(key) == value
+                if not matches:
+                    bad.append(f'{part} paragraph {index}: {key} mismatch')
+    return {'actual': actual, 'pass': bool(actual) and not bad,
+            'note': '; '.join(bad) if actual else 'no matching XML parts with required field'}
 
 
 def k_docx_no_undefined(ctx, c):
@@ -1269,6 +1318,7 @@ if __name__ == "__main__":
     inspect.add_argument('--pdf', required=True)
     inspect.add_argument('--layout')
     inspect.add_argument('--raw', action='store_true')
+    inspect.add_argument('--images', action='store_true')
     inspect.add_argument('--page', type=int)
     inspect.add_argument('--summary', action='store_true')
     inspect.add_argument('--regex', default='.')
@@ -1293,6 +1343,12 @@ if __name__ == "__main__":
         sys.exit(0)
     if a.cmd == 'inspect':
         doc = LayoutDoc(json.load(open(a.layout, encoding='utf8'))['engineLayout']) if a.layout else Doc(a.pdf)
+        if a.images:
+            for page in ([a.page] if a.page else range(1, doc.n + 1)):
+                for item in images_mm(doc.pdf[page - 1]):
+                    print(json.dumps({'page': page, **item}, ensure_ascii=False))
+            doc.pdf.close()
+            sys.exit(0)
         if a.extrema:
             hits = [(page, line) for page in ([a.page] if a.page else range(1, doc.n + 1))
                     for line in doc.lines(page, True) if re.search(a.regex, line['text'])]

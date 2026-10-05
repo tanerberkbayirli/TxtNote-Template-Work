@@ -37,10 +37,11 @@ test("normalizeThesisLayout retains valid fields and drops unsafe imported value
         xMm: 3.5,
         yMm: Number.POSITIVE_INFINITY,
         widthMm: -4,
-        style: { fontSizePt: 12, lineHeight: 0, color: "#12aBcD", background: "url(javascript:alert(1))", align: "center" },
+        style: { fontSizePt: 12, lineHeight: 0, color: "#12aBcD", highlight: "yellow", background: "url(javascript:alert(1))", align: "center" },
         content: "Thesis title",
         arbitraryCss: "position:fixed",
       },
+      "cover:block:1": { style: { highlight: "url(javascript:alert(1))" } },
     },
     additions: [
       { id: "txt-1", sectionId: "cover", type: "text", text: "Safe", style: { color: "#123456" } },
@@ -51,9 +52,10 @@ test("normalizeThesisLayout retains valid fields and drops unsafe imported value
   assert.equal(normalized.version, 1);
   assert.deepEqual(normalized.elements["cover:block:0"], {
     xMm: 3.5,
-    style: { fontSizePt: 12, color: "#12abcd", align: "center" },
+    style: { fontSizePt: 12, color: "#12abcd", highlight: "yellow", align: "center" },
     content: "Thesis title",
   });
+  assert.equal(normalized.elements["cover:block:1"], undefined);
   assert.equal(normalized.additions.length, 1);
   assert.equal(normalized.additions[0].text, "Safe");
   assert.equal(normalized.additions[0].layoutMode, "absolute");
@@ -160,4 +162,16 @@ test("template positioned-node lock flags survive unless the document explicitly
   const overridden = resolveLayoutNodes(nodes, "cover", { elements: { "cover:block:0": { locked: false, lockAspectRatio: false } } }).find((node) => node.type === "image");
   assert.equal(overridden.locked, false);
   assert.equal(overridden.lockAspectRatio, false);
+});
+
+test("a template-positioned block may declare flowHeightMm 0 so it keeps no flow slot", () => {
+  const nodes = [
+    { path: "0", type: "image", widthMm: 20, heightMm: 20, layoutMode: "absolute", xMm: 0, yMm: 0, flowHeightMm: 0 },
+    { path: "1", type: "image", widthMm: 20, heightMm: 20, layoutMode: "absolute", xMm: 30, yMm: 0 },
+    { path: "2", type: "text", text: "After", style: { fontSizePt: 12 } },
+  ];
+  const resolved = resolveLayoutNodes(nodes, "cover", {});
+  // Without the declaration the slot keeps the block's height (unchanged default).
+  assert.deepEqual(resolved.map((node) => node.id ?? node.path), ["cover:block:0", "1-slot", "cover:block:1", "cover:block:2"]);
+  assert.equal(resolved[1].heightMm, 20);
 });

@@ -13,6 +13,15 @@ import { splitLayoutNodes } from "../thesis/layoutDocx.js";
 const page = (template, id, values = {}, extra = {}) => compileThesisDocument(template, { values, ...extra }, "Tez Başlığı", "").sections.find((section) => section.id === id);
 
 describe("data-driven special pages", () => {
+  it("renders document-local highlight on live special-page text as an inline run", () => {
+    const html = specialPageHtml([{
+      path: "0", id: "cover:block:1", sectionId: "cover", type: "text", field: "UNIVERSITY_NAME",
+      text: "Changed University Name", style: { fontSizePt: 12, highlight: "#abc" },
+    }]);
+    assert.match(html, /<span data-fmt-bg="#aabbcc">Changed University Name<\/span>/);
+    assert.match(html, /data-thesis-field="UNIVERSITY_NAME"/);
+  });
+
   it("validates embedded image sources/dimensions and emits scoped CSP-safe geometry", () => {
     const template = structuredClone(generic);
     template.sections[0].blocks = [{ type: "image", source: "data:image/png;base64,aGVsbG8=", widthMm: 30, heightMm: 35, align: "center" }];

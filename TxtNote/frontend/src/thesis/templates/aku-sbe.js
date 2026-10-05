@@ -1,5 +1,5 @@
 /**
- * Afyon Kocatepe Üniversitesi, Sosyal Bilimler Enstitüsü (yüksek lisans ve doktora, Türkçe).
+ * Afyon Kocatepe Üniversitesi, Sosyal Bilimler Enstitüsü (master, doctoral, Sanatta Yeterlik; Turkish and English programmes).
  *
  * Source (Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/): "Lisansüstü Tez Hazırlama
  * Yazım ve Basım Kılavuzu" (AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf, 53 pages; guide text pp.2-35,
@@ -12,9 +12,8 @@
  * line box sits 0.9336 em below its top and the leading of "1,5 satır" goes below the text; paragraph spacing is
  * Word-additive (after(previous) + before(next)). Special pages use spacers of whole Word lines ("n satır boşluk").
  *
- * One shared base; the master's and doctoral variants differ only in their degree strings. Sanatta Yeterlik and the
- * foreign-language (English) variants are NOT registered: the wording of the former's ethics declaration and the
- * English page titles are missing from the sources (orchestration/failures/aku-sbe-variants.md).
+ * One shared base; degree and language variants reuse the same evidenced rules. Sanatta ethics wording/copies and
+ * English front-page titles remain UNKNOWN and are called out as editable defaults in each variant's source notes.
  */
 import { MM_PER_PT } from "../units.js";
 
@@ -30,7 +29,6 @@ const ascentMm = (sizePt) => 0.9336 * sizePt * MM_PER_PT;
 
 const bold = { fontWeight: 700 };
 const upper = { textTransform: "uppercase" };
-const grey = { color: "#bfbfbf" };
 /** A special-page line: no indent, no paragraph spacing, 1.5 lines (§2.1 i: 12 pt, bold, 1.5 lines, centred). */
 const page15 = { firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1.5 };
 const page1 = { firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1 };
@@ -39,6 +37,8 @@ const roman = { numbering: { format: "roman-lower" } };
 const degreeLabels = {
   master: { cover: "YÜKSEK LİSANS TEZİ", tanitim: "Yüksek Lisans Tezi", ethics: "Yüksek Lisans tezi" },
   phd: { cover: "DOKTORA TEZİ", tanitim: "Doktora Tezi", ethics: "Doktora tezi" },
+  // Degree name is explicit; this ethics wording is a grammar-preserving substitution, not a source form.
+  sanattaYeterlik: { cover: "SANATTA YETERLİK TEZİ", tanitim: "Sanatta Yeterlik Tezi", ethics: "Sanatta Yeterlik tezi" },
 };
 
 // ---- special pages -------------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ const approval = {
   overrides: { page: { numbering: { enabled: true, format: "roman-lower" } }, body: { ...page15, align: "center" } },
   blocks: [
     { type: "text", value: "ENSTİTÜ ONAYI", style: bold },
-    { type: "text", value: "Bu sayfa web sayfamızdan indirilebilir. Süreçleri tamamlanan tezin, bu kılavuzda belirtilen yerine bu sayfa eklenecektir.", style: { ...grey, align: "justify", lineHeight: 1, spaceBeforePt: 6 } },
+    { type: "text", value: "Bu sayfa web sayfamızdan indirilebilir. Süreçleri tamamlanan tezin, bu kılavuzda belirtilen yerine bu sayfa eklenecektir.", style: { align: "justify", lineHeight: 1, spaceBeforePt: 6 } },
   ],
 };
 
@@ -205,14 +205,19 @@ const generatedList = (id, type, title, kind, count) => ({
   overrides: { page: roman, headings: frontTitle(6) },
 });
 
-function sections(degree) {
+const extendedTurkishSummary = {
+  id: "extended-turkish-summary", type: "custom", title: "GENİŞLETİLMİŞ TÜRKÇE ÖZET", status: "required", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
+  overrides: { headings: mainTitle, paragraph: { lineHeight: 1, firstLineIndentMm: 12.5, align: "justify" } },
+};
+
+function sections(degree, language = "tr") {
+  const abstracts = language === "en" ? [...abstractEn, ...abstractTr] : [...abstractTr, ...abstractEn];
   return [
     outerCover(degree),
     innerCover(degree),
     ethics(degree),
     approval,
-    ...abstractTr,
-    ...abstractEn,
+    ...abstracts,
     // ÖN SÖZ: single spaced text (§2.5), signature one line below, ending at the right edge.
     { id: "preface", type: "preface", title: "ÖN SÖZ", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "title",
       overrides: { page: roman, headings: frontTitle(6), paragraph: { lineHeight: 1, firstLineIndentMm: 12.5 } } },
@@ -249,11 +254,15 @@ function sections(degree) {
     // KAYNAKÇA: no chapter number (§4.1), entries start one line below the title.
     { id: "bibliography", type: "bibliography", title: "KAYNAKÇA", status: "required", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
       overrides: { headings: mainTitle } },
-    // EKLER DİZİNİ (three or more appendices, §4.2) is typed by the author (the engine has no appendix list); formatted like the lists.
-    { id: "appendix-index", type: "custom", title: "EKLER DİZİNİ", status: "optional", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
-      overrides: { headings: mainTitle, paragraph: { lineHeight: 1, firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" } } },
+    // EKLER DİZİNİ (§4.2): source-marked appendix title paragraphs become linked page-number rows.
+    { id: "appendix-index", type: "custom", title: "EKLER DİZİNİ", status: "required", group: "back", mode: "generated", tocEntry: "title", visibleWhen: { count: "appendices", gte: 3 },
+      generatedIndex: { kind: "appendices", title: "EKLER DİZİNİ", leader: "dots", leaderFlow: "inline", pageHeading: "Sayfa", hanging: "label", indentMm: 0,
+        pageHeadingStyle: { ...bold, decoration: "underline", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0 },
+        style: { lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, align: "left" } },
+      overrides: { headings: mainTitle } },
     { id: "appendices", type: "appendices", title: "EKLER", status: "optional", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
       overrides: { headings: mainTitle, paragraph: { align: "center", firstLineIndentMm: 0 } } },
+    ...(language === "en" ? [extendedTurkishSummary] : []),
   ];
 }
 
@@ -267,7 +276,7 @@ const chapterHeading = {
 };
 // Sub-headings (§2.6 iv, §5.5.2): left, no indent, single spaced, 6/6 pt (level 5 INFERRED); numbers restart per chapter and omit the chapter.
 const subHeading = (format, extra) => ({
-  fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "left", lineHeight: 1, spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 0, keepWithNext: true,
+  fontFamily: FONT, fontSizePt: 12, fontWeight: 700, align: "left", lineHeight: 1, spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 0, hangingIndentMm: 7.5, keepWithNext: true,
   numbering: { enabled: true, format, sequence: "arabic" }, ...extra,
 });
 // Captions (§6.5.3): above table, figure and picture, 11 pt, centred, single, 0/0 pt; bold "Tablo 1." and regular title; numbered through the whole thesis.
@@ -314,7 +323,7 @@ const base = {
     numbering: { enabled: true, position: "bottom", align: "center", format: "arabic", startAt: 1, restart: false, style: { fontFamily: FONT, fontSizePt: 12 } },
   },
   typography: {
-    body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 12.5 },
+    body: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, color: "#000000", align: "justify", lineHeight: 1.5, spaceBeforePt: 6, spaceAfterPt: 6, firstLineIndentMm: 12.5 },
     paragraph: { firstLineIndentMm: 12.5, spaceBeforePt: 6, spaceAfterPt: 6, lineHeight: 1.5, align: "justify" },
     headings: {
       "1": chapterHeading,
@@ -366,8 +375,26 @@ const base = {
   toc: { heading: "İÇİNDEKİLER", levels: [1, 2, 3, 4, 5], showPageNumbers: true },
 };
 
-const variant = (degreeType, suffix) => ({ ...base, id: `aku-sbe-${degreeType}-tr-v1`, degreeType, sections: sections(degreeLabels[degreeType]), displayName: `Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · ${suffix}` });
+const variant = (degreeType, suffix, language = "tr") => ({
+  ...base,
+  id: `aku-sbe-${degreeType === "sanattaYeterlik" ? "sanatta-yeterlik" : degreeType}-${language}-v1`,
+  degreeType: degreeType === "sanattaYeterlik" ? "sanatta-yeterlik" : degreeType,
+  language,
+  sections: sections(degreeLabels[degreeType], language),
+  displayName: `Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · ${suffix}`,
+  source: {
+    ...base.source,
+    notes: [
+      ...base.source.notes,
+      ...(degreeType === "sanattaYeterlik" ? ["Sanatta Yeterlik degree line and approval checkbox are explicit (guide §2.1 i/EK 4; 2024 approval form). The ethics form covers Yüksek Lisans/Doktora only; 'Sanatta Yeterlik tezi' is an editable grammatical substitution inferred from the official degree name, not official form wording. Copies remain UNKNOWN."] : []),
+      ...(language === "en" ? ["Foreign-language programmes use the thesis-language abstract first, then Turkish ÖZET, and require GENİŞLETİLMİŞ TÜRKÇE ÖZET after appendices. English front-page titles are UNKNOWN; existing Turkish labels are user-editable defaults and are not source-compliance claims."] : []),
+    ],
+  },
+});
 
 export const akuSbeMaster = variant("master", "Yüksek Lisans");
 export const akuSbePhd = variant("phd", "Doktora");
+export const akuSbeSanattaYeterlik = variant("sanattaYeterlik", "Sanatta Yeterlik");
+export const akuSbeMasterEn = variant("master", "Master · English programme", "en");
+export const akuSbePhdEn = variant("phd", "Doctorate · English programme", "en");
 export default akuSbeMaster;

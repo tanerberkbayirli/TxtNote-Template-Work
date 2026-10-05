@@ -58,6 +58,26 @@ export const captionKindOf = (attrs, rules) => knownCaptionKind(String(attrs || 
 /** Caption rule of a `figure`/`table` element, or of a template caption kind. */
 export const captionRuleOf = (rules, tag, kind = "") => kind ? rules.captionKinds[kind] : rules[tag === "figure" ? "figures" : "tables"];
 
+// Appendix index items are semantic title paragraphs: a bold leading "EK n." label, or a level-1–3
+// heading with the same label. Ordinary prose mentioning an appendix is deliberately not indexed.
+function appendixItems(html) {
+  const items = [];
+  for (const match of html.matchAll(/<(p|h[1-3])\b[^>]*>([\s\S]*?)<\/\1>/gi)) {
+    const [, tag, inner] = match;
+    const leadingMarkup = inner.trim();
+    const value = text(inner).replace(/\s+/g, " ").trim();
+    if (!/^(?:EK|APPENDIX)\s+[^\s.:)]+[.):]?\s+\S/iu.test(value)) continue;
+    if (!/^h[1-3]$/i.test(tag) && !/^<(?:b|strong)\b/i.test(leadingMarkup)) continue;
+    items.push({ text: value, offset: match.index });
+  }
+  return items;
+}
+function isAppendixItemNode(node) {
+  const value = text(node.innerHTML).replace(/\s+/g, " ").trim();
+  return /^(?:EK|APPENDIX)\s+[^\s.:)]+[.):]?\s+\S/iu.test(value)
+    && (/^H[1-3]$/.test(node.tagName) || /^<(?:b|strong)\b/i.test(node.innerHTML.trim()));
+}
+
 /** One ordered semantic source stream for headings and both caption kinds. */
 export function collectIndexSources(sections, extractHeadings) {
   const sources = [];
@@ -75,6 +95,11 @@ export function collectIndexSources(sections, extractHeadings) {
     }
     const html = thesisSourceHtml(section.html);
     const outline = extractHeadings(html, section.rules, headingCounters);
+    if (section.type === "appendices") {
+      for (const [ordinal, item] of appendixItems(html).entries()) {
+        sources.push({ kind: "appendices", sectionId: section.id, title: item.text, label: "", anchor: `${section.id}-appendix-${ordinal + 1}`, chapterKey });
+      }
+    }
     let headingIndex = 0;
     let ordinal = 0;
     for (const match of html.matchAll(/<h([1-6])\b([^>]*)>([\s\S]*?)<\/h\1>|<(figure|table)\b([^>]*)>([\s\S]*?)<\/\4>|<span\b([^>]*\bdata-eq-numbered=["']true["'][^>]*)>/gi)) {
@@ -299,7 +324,7 @@ export function decorateThesisSources(root, model) {
       if (node.getAttribute("data-fn-index") !== number) node.setAttribute("data-fn-index", number);
       if (node.textContent !== number) node.textContent = number;
     });
-    const entries = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind !== "equations");
+    const entries = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind !== "equations" && entry.kind !== "appendices");
     const equations = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind === "equations");
     host.querySelectorAll("[data-thesis-eq]").forEach((node) => { node.removeAttribute("data-thesis-eq"); node.removeAttribute("data-thesis-eq-side"); });
     host.querySelectorAll('.math-formula--block[data-eq-numbered="true"], .math-formula[data-display="block"][data-eq-numbered="true"]').forEach((node, i) => {
@@ -371,6 +396,11 @@ export function decorateThesisSources(root, model) {
     }
     let index = 0;
     host.querySelectorAll("[data-thesis-anchor]").forEach((node) => { node.removeAttribute("data-thesis-anchor"); node.removeAttribute("data-thesis-number"); });
+    // Appendix title paragraphs carry their own attribute: an appendix heading (h1–h3) also keeps its TOC anchor.
+    host.querySelectorAll("[data-thesis-appendix-anchor]").forEach((node) => node.removeAttribute("data-thesis-appendix-anchor"));
+    const appendixEntries = model.indexSources.filter((entry) => entry.sectionId === section.id && entry.kind === "appendices");
+    const appendixNodes = [...host.querySelectorAll("p,h1,h2,h3")].filter(isAppendixItemNode);
+    appendixEntries.forEach((entry, i) => appendixNodes[i]?.setAttribute("data-thesis-appendix-anchor", entry.anchor));
     host.querySelectorAll("h1,h2,h3,h4,h5,h6,figcaption,caption").forEach((node) => {
       if (/caption$/i.test(node.tagName)) {
         node.removeAttribute("data-thesis-caption"); node.removeAttribute("data-thesis-caption-auto"); node.removeAttribute("data-thesis-caption-hang");
@@ -451,13 +481,14 @@ export function renderedIndexPages(root, groups) {
     const zoom = new DOMMatrixReadOnly(getComputedStyle(stack).transform).a || 1;
     const origin = stack.getBoundingClientRect().top;
     const stride = pageMetrics(group.rules.page).stridePx;
-    article.querySelectorAll("[data-thesis-anchor]").forEach((node) => {
+    article.querySelectorAll("[data-thesis-anchor],[data-thesis-appendix-anchor]").forEach((node) => {
       const range = node.ownerDocument.createRange(); range.selectNodeContents(node);
       const rect = [...range.getClientRects()].find((r) => r.width && r.height) || node.getClientRects()[0];
       if (!rect) return;
       const index = Math.min(pageModel[i].pages.length - 1, Math.max(0, Math.floor(((rect.top - origin) / zoom + 0.5) / stride)));
       const page = pageModel[i].pages[index];
-      result[node.dataset.thesisAnchor] = { label: page.label, indexLabel: page.indexLabel, physicalPage: page.physicalIndex + 1 };
+      const value = { label: page.label, indexLabel: page.indexLabel, physicalPage: page.physicalIndex + 1 };
+      for (const anchor of [node.dataset.thesisAnchor, node.dataset.thesisAppendixAnchor]) if (anchor) result[anchor] = value;
     });
   });
   return { pages: result, counts };

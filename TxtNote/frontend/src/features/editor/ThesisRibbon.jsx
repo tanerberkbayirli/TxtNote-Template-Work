@@ -7,6 +7,7 @@ import InsertTab from "./ribbon/InsertTab.jsx";
 import LayoutTab from "./ribbon/LayoutTab.jsx";
 import ReferencesTab from "./ribbon/ReferencesTab.jsx";
 import ViewTab from "./ribbon/ViewTab.jsx";
+import "./ribbon/home.css";
 export default function ThesisRibbon({
   title,
   activeSection,
@@ -192,6 +193,8 @@ export default function ThesisRibbon({
             title={title}
             activeSection={activeSection}
             actions={actions}
+            exporting={exporting}
+            paginationReady={paginationReady}
             onPrint={onPrint}
             navigationOpen={navigationOpen}
             setNavigationOpen={setNavigationOpen}
@@ -220,6 +223,7 @@ export default function ThesisRibbon({
         {tab === "Ekle" && (
           <InsertTab
             activeSection={activeSection}
+            canInsertInline={actions.canInsertInline}
             template={template}
             onImage={onImage}
             captionKinds={captionKinds}
@@ -258,6 +262,8 @@ export default function ThesisRibbon({
             canRedo={canRedo}
             onUndo={onUndo}
             onRedo={onRedo}
+            remember={remember}
+            keep={keep}
             totalPages={totalPages}
             rulersVisible={rulersVisible}
             setRulersVisible={setRulersVisible}
@@ -269,6 +275,7 @@ export default function ThesisRibbon({
         {tab === "Başvurular" && (
           <ReferencesTab
             activeSection={activeSection}
+            canInsertInline={actions.canInsertInline}
             detailsOpen={detailsOpen}
             setDetailsOpen={setDetailsOpen}
             citableItems={citableItems}
@@ -303,6 +310,7 @@ export default function ThesisRibbon({
             navigationOpen={navigationOpen}
             setNavigationOpen={setNavigationOpen}
             canNavigate={canNavigate}
+            remember={remember}
             keep={keep}
           />
         )}

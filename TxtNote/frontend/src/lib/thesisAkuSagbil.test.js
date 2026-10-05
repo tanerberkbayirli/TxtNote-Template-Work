@@ -23,7 +23,7 @@ describe("AKÜ Sağlık Bilimleri template (2022 guide)", () => {
     assert.equal(t.typography.body.fontSizePt, 12);
     assert.equal(t.typography.body.lineHeight, 1.5);
     assert.equal(t.typography.body.firstLineIndentMm, 0);
-    assert.deepEqual(Object.keys(t.typography.headings), ["1", "2", "3"]);
+    assert.deepEqual(Object.keys(t.typography.headings), ["1", "2", "3", "4"]);
     assert.deepEqual(t.typography.headings["1"].numbering.format, "{1}.");
     assert.equal(t.typography.headings["3"].numbering.format, "{1}.{2}.{3}.");
     assert.equal(t.bibliography.style.fontSizePt, 11);
@@ -34,6 +34,15 @@ describe("AKÜ Sağlık Bilimleri template (2022 guide)", () => {
     assert.equal(t.tables.label, "Çizelge");
     assert.equal(t.typography.paragraphStyles.tableNote.fontSizePt, 8);
     assert.equal(t.typography.footnotes.separator.widthPercent, 50);
+    assert.equal(t.typography.headings["4"].fontWeight, 700);
+    assert.equal(t.typography.headings["4"].fontSizePt, 12);
+    assert.equal(t.typography.headings["4"].numbering, undefined);
+    for (const rule of [t.tables, t.figures, t.captionKinds.photo]) {
+      assert.equal(rule.style.fontSizePt, 12);
+      assert.equal(rule.labelStyle.fontWeight, 700);
+      assert.equal(rule.style.fontWeight, 400);
+    }
+    assert.equal(t.sections.find((section) => section.id === "appendices").overrides.headings["2"].pageBreakUnlessAfterHeading, true);
   });
   it("counts the hidden front pages so ÖZET is iv and GİRİŞ restarts at 1", () => {
     const m = compileThesisDocument(akuSagbilMaster, { values: { STUDENT_NAME: "A" }, sectionContent: {}, enabledSections: [] }, "T", "<h1>Bulgular</h1><p>x</p>", []);
@@ -41,8 +50,13 @@ describe("AKÜ Sağlık Bilimleri template (2022 guide)", () => {
     assert.equal(num("inner-cover").enabled, false);
     assert.equal(num("inner-cover").restart, true);
     assert.equal(num("approval").enabled, false);
+    assert.equal(num("approval").indexLabelWhenHidden, true);
+    assert.equal(num("ethics").indexLabelWhenHidden, true);
     assert.equal(num("abstract-tr").enabled, true);
     assert.equal(num("abstract-tr").format, "roman-lower");
     assert.equal(num("introduction").startAt, 1);
+    const tocTitles = m.indexSources.filter((entry) => entry.kind === "toc" && entry.tocTitle).map((entry) => entry.title);
+    assert.ok(tocTitles.includes("TEZ KABUL VE ONAY SAYFASI"));
+    assert.ok(tocTitles.includes("BİLİMSEL ETİK BİLDİRİMİ"));
   });
 });

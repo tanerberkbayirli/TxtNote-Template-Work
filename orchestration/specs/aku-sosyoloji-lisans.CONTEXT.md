@@ -2,7 +2,7 @@
 ## Identity
 - Registry id(s): `aku-sosyoloji-lisans-tr-v1`
 - Template module: `TxtNote/frontend/src/thesis/templates/aku-sosyoloji.js` (exports: akuSosyolojiLisans)
-- Spec: `orchestration/specs/aku-sosyoloji-lisans.json`; checks: `orchestration/specs/aku-sosyoloji-lisans.checks.json` (not yet); progress report: `orchestration/reports/aku-sosyoloji-lisans.md`
+- Spec: `orchestration/specs/aku-sosyoloji-lisans.json`; checker files now present: `orchestration/specs/aku-sosyoloji-lisans.checks.json` and `.fixture.json`; progress report: `orchestration/reports/aku-sosyoloji-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx`
 - Guide DOCX 2022-04-05 only (guide document itself; its XML/styles used for measurements). Locator style: word/document.xml paragraph indices.
@@ -28,8 +28,10 @@
 - CONFLICT: 7 (12 pt vs 11.5 pt, titles, Sayfa alignment, cover font name). UNKNOWN: 12 (guide silent on footer distance, header, captions, borders, footnotes, bibliography).
 ## Status
 - IN_PROGRESS; validation PENDING; commit d4a3a7e. Untouched in session 2.
-## Next step
-- Compare title/list terminology against guide XML, then checker run.
+## Checker handoff (2026-10-04)
+- Added coverage for source-defined margins, exact TNR font, body size/spacing, example heading hierarchy, front/main page labels, and DOCX/Word validity. Page size and several layout details remain explicit UNKNOWNs and are recorded as notes. Fixture contains example heading levels.
+- There is no official thesis DOCX/PDF reference; `source/g.docx` and `source/guide.pdf` are the guide itself with cover examples embedded as Word canvases. The checker cannot independently compare full thesis page geometry to a standalone official thesis document.
+- Root should run `node orchestration/tools/check.mjs --target aku-sosyoloji-lisans --word`; use the cached guide and compare only the source-backed example canvases for fixed-page geometry.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-sosyoloji-lisans` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

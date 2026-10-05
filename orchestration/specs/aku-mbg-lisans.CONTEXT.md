@@ -2,7 +2,7 @@
 ## Identity
 - Registry id(s): `aku-mbg-lisans-tr-v1`
 - Template module: `TxtNote/frontend/src/thesis/templates/aku-mbg.js` (exports: akuMbgLisans)
-- Spec: `orchestration/specs/aku-mbg-lisans.json`; checks: `orchestration/specs/aku-mbg-lisans.checks.json` (not yet); progress report: `orchestration/reports/aku-mbg-lisans.md`
+- Spec: `orchestration/specs/aku-mbg-lisans.json`; checker files now present: `orchestration/specs/aku-mbg-lisans.checks.json` and `.fixture.json`; progress report: `orchestration/reports/aku-mbg-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf`
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx`
@@ -25,12 +25,17 @@
 | Figure caption | Şekil / below / scope chapter/format {chapter}.{n}/example Şekil 2.1 | EXPLICIT | PDF p.11 §3.2 |
 | Table caption | Çizelge / above | EXPLICIT | PDF p.11 §3.2 |
 ## Open issues
-- No independent validation exists; no FAIL recorded. Only self-1.
+- Cached official Word reference is now present at `orchestration/artifacts/aku-mbg-lisans/source/reference/official-word.pdf` (27 pages). On physical page 1, logo row begins at y=10.0189 mm; first four baselines are 43.949, 52.458, 60.967, 103.565 mm. The report's old values were glyph bottoms; root owns correcting the checker rows to these baselines.
+- The previous real Word export put the logo at 17.3919 mm because empty header parts were emitted. The exporter now omits header parts document-wide only when no section uses header content, first/even header content, or a top page number. Root must verify the fresh Word output.
+- The cached source first baseline (43.949 mm) is 1.216 mm above the prior editor output (45.165 mm); the logo-row gap was reduced from 4.29 to 3.074 mm based on that measured source discrepancy. Fresh export validation is pending.
+- No independent validation exists; prior attempt was self-1.
 - CONFLICT: 15 in spec (cover top margin, bibliography hanging, abstract order, ethics name size, CV presence). UNKNOWN: 10 (outer-cover layout, footnotes, abstract limits, appendix heading style).
 ## Status
-- IMPLEMENTED; self PASS (attempt-1), independent pending; commit 4b31444. Untouched in session 2.
-## Next step
-- Run checker for independent validation (no report yet).
+- Implementation remains candidate; source evidence now cached and generic header-part omission/logo-gap correction need root's new editor/Word verification. Do not carry prior self-1 PASS as an independent result.
+## Checker handoff (2026-10-04)
+- Added source-backed coverage for A4/30 mm geometry, exact body font and size, line pitch, fixed inner-cover baselines, H1-H4 sizing, page-number starts/formats, cover/page labels, and DOCX/Word validity. Fixture contains all target front-matter fields and H2-H4 sample headings.
+- Official source render/reference exists and was cached once; no source artifact was changed.
+- Root should run `node orchestration/tools/check.mjs --target aku-mbg-lisans --word`; cover baseline checks must use the measured baselines listed above, not line glyph bottoms.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-mbg-lisans` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

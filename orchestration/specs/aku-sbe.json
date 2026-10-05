@@ -11,16 +11,44 @@
    "type": "guide",
    "version": "cover year 2023; file name 2026; PDF CreationDate 2026-02-06 (Microsoft Word LTSC, author 'YuSuF')",
    "pages": 53
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitu_Onayi_Formu_2024.docx",
+   "role": "supplementary",
+   "type": "approval-form",
+   "version": "2024",
+   "pages": 1
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Etik_Beyan_Formu_2022.docx",
+   "role": "supplementary",
+   "type": "ethics-form",
+   "version": "2022",
+   "pages": 1
+  },
+  {
+   "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf",
+   "role": "supplementary",
+   "type": "example-thesis",
+   "version": "2026"
   }
  ],
  "sourcePriority": [
   {
    "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf#guide text (§1–§6)",
-   "why": "Only source. Explicit guide text is primary for every value it states."
+   "why": "Official guide text is primary for explicitly stated rules; supplied official Word forms provide template-only structural evidence and are retained separately where they do not override guide prose."
   },
   {
    "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf#EK 1–EK 12 (PDF p.36–53)",
    "why": "Example pages: authoritative for element order, wording, alignment, bold/caps and blank-line structure where the text is silent; NOT for absolute sizes/positions (set in 11 pt ~1.08-line style inside the guide's own non-conforming page frame)."
+  },
+  {
+   "path": "AKU_Sosyal_Bilimler_Enstitu_Onayi_Formu_2024.docx; AKU_Sosyal_Bilimler_Etik_Beyan_Formu_2022.docx",
+   "why": "Official forms establish their own degree checkboxes/text. Ethics form applies only to the two stated degrees; it does not establish Sanatta Yeterlik wording."
+  },
+  {
+   "path": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf",
+   "why": "Official example supplies structural/alignment examples where guide is silent; explicit guide text controls."
   }
  ],
  "variants": [
@@ -51,35 +79,48 @@
     "Submission: 9 copies (2 signed), Doktora Tez Jüri Öneri Formu",
     "Jury size not stated for PhD (no PhD inner-cover example); all layout/typography rules identical to master; no CV page for either degree"
    ]
+  },
+  {
+   "registryId": "aku-sbe-sanatta-yeterlik-tr-v1",
+   "degreeType": "sanatta-yeterlik",
+   "language": "tr",
+   "confirmed": true,
+   "evidence": "2026 guide PDF p.2, p.4 §2.1 i, p.40 EK 4; official approval form 2024, word/document.xml paragraph 21.",
+   "differences": [
+    "Degree line SANATTA YETERLİK TEZİ and checkbox ☐Sanatta Yeterlik are explicit.",
+    "Ethics wording and copy count UNKNOWN: 2022 form contains only Yüksek Lisans/Doktora; editable template phrase is INFERRED and not official wording."
+   ]
+  },
+  {
+   "registryId": "aku-sbe-master-en-v1",
+   "degreeType": "master",
+   "language": "en",
+   "confirmed": true,
+   "evidence": "2026 guide PDF p.2 Sunuş, p.5 §2.4 note, p.10 §4.3, p.11 §5.4 and p.52 EK 12.",
+   "differences": [
+    "English/programme-language abstract precedes Turkish ÖZET.",
+    "Extended Turkish summary follows appendices, minimum 2000 words with EK 12 minima.",
+    "English front-page titles beyond source labels remain UNKNOWN/editable."
+   ]
+  },
+  {
+   "registryId": "aku-sbe-phd-en-v1",
+   "degreeType": "phd",
+   "language": "en",
+   "confirmed": true,
+   "evidence": "2026 guide PDF p.2 Sunuş, p.5 §2.4 note, p.10 §4.3, p.11 §5.4 and p.52 EK 12.",
+   "differences": [
+    "English/programme-language abstract precedes Turkish ÖZET.",
+    "Extended Turkish summary follows appendices, minimum 2000 words with EK 12 minima.",
+    "English front-page titles beyond source labels remain UNKNOWN/editable."
+   ]
   }
  ],
  "variantNotes": [
-  "'Sanatta Yeterlik Tezi' is an EXPLICIT third degree type covered by the guide (PDF pp.2, 4 and EK 4 p.40), but the registry degreeType enum does not yet support it. A distinct Turkish registry variant is required.",
-  "English-language master and doctoral theses are EXPLICIT scope: the instruction-language abstract precedes the Turkish abstract, and a ≥2000-word Genişletilmiş Türkçe Özet is required after appendices (PDF pp.2, 5, 10 and EK 12 p.52). These require distinct English registry variants or an equivalent explicit selector; the two Turkish variants must not carry this section. Other languages and English sanatta yeterlik details remain UNKNOWN."
+  "Sanatta Yeterlik is an explicit third degree type covered by the 2026 guide (PDF pp.2, 4; EK 4 p.40) and its degree checkbox is present in the official 2024 approval form (paragraph 21). The form exact ethics sentence and copy count cover Yüksek Lisans/Doktora only; those Sanatta details remain UNKNOWN. The template default “Sanatta Yeterlik tezi” is an INFERRED, grammar-preserving substitution from the source degree name, not official ethics wording.",
+  "English-language master and doctoral theses are explicit scope. The thesis-language abstract precedes Turkish ÖZET; Genişletilmiş Türkçe Özet is required after appendices and is at least 2000 words with EK 12 sections/minima. English front-page titles/labels remain UNKNOWN and are user-editable defaults, not source-compliance claims. These three variants are now registered; English Sanatta Yeterlik and other languages remain UNKNOWN."
  ],
- "requiredVariantsPending": [
-  {
-   "proposedRegistryId": "aku-sbe-sanatta-yeterlik-tr-v1",
-   "degreeType": "sanatta-yeterlik",
-   "language": "tr",
-   "status": "SOURCE_CONFIRMED_ENGINE_GAP",
-   "evidence": "2026 guide PDF p.2 Sunuş; p.4 §2.1; p.40 EK 4"
-  },
-  {
-   "proposedRegistryId": "aku-sbe-master-en-v1",
-   "degreeType": "master",
-   "language": "en",
-   "status": "SOURCE_CONFIRMED_NOT_REGISTERED",
-   "evidence": "2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"
-  },
-  {
-   "proposedRegistryId": "aku-sbe-phd-en-v1",
-   "degreeType": "phd",
-   "language": "en",
-   "status": "SOURCE_CONFIRMED_NOT_REGISTERED",
-   "evidence": "2026 guide PDF p.2 Sunuş; p.5 §2.4; p.10 §4.3; p.52 EK 12"
-  }
- ],
+ "requiredVariantsPending": [],
  "rules": [
   {
    "key": "page.size",
@@ -5227,7 +5268,8 @@
    "unit": "",
    "confidence": "EXPLICIT",
    "appliesTo": [
-    "*"
+    "aku-sbe-master-en-v1",
+    "aku-sbe-phd-en-v1"
    ],
    "evidence": [
     {
@@ -5255,7 +5297,8 @@
     "unit": "exact",
     "targetValue": null
    },
-   "annotatedBy": "spec_annotate_v3"
+   "annotatedBy": "spec_annotate_v3",
+   "notes": "Applies only to the two registered English-programme variants. The six EK 12 section minima sum to 2000 words; Turkish-programme master/PhD and Sanatta variants do not include this section."
   },
   {
    "key": "cover.innerCover.headerBlock",
@@ -5718,13 +5761,13 @@
     "tanitim": "Sanatta Yeterlik Tezi",
     "approvalCheckbox": "☐Sanatta Yeterlik",
     "departmentLine": "<X> ANASANAT DALI (usual for art programmes)",
-    "ethicsWording": "UNKNOWN (EK 3 shows only 'Yüksek Lisans tezi / Doktora tezi')",
-    "copies": "UNKNOWN (§5.6 lists only YL and Doktora)"
+    "ethicsWording": "UNKNOWN (official EK 3/form wording is only Yüksek Lisans/Doktora); template default “Sanatta Yeterlik tezi” is an editable grammar-preserving INFERRED substitution, not an official source phrase.",
+    "copies": "UNKNOWN (§5.6 gives only YL and Doktora)"
    },
    "unit": "",
    "confidence": "EXPLICIT",
    "appliesTo": [
-    "unregistered: aku-sbe Sanatta Yeterlik"
+    "aku-sbe-sanatta-yeterlik-tr-v1"
    ],
    "evidence": [
     {
@@ -5741,9 +5784,14 @@
      "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
      "locator": "PDF p.40 EK 4",
      "quote": "☐Sanatta Yeterlik"
+    },
+    {
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitu_Onayi_Formu_2024.docx",
+     "locator": "word/document.xml paragraph 21",
+     "quote": "☐Yüksek Lisans       ☐Doktora      ☐Sanatta Yeterlik"
     }
    ],
-   "notes": "Source-supported third degree type. Layout identical to master/PhD; only wording differs. Not in the manifest → orchestrator decision (registry degreeType enum has no value for it).",
+   "notes": "Source-supported third degree type. Official guide supplies degree wording and approval form checkbox; 2022 ethics form exact phrase/copies remain UNKNOWN for Sanatta. The template default phrase is explicitly INFERRED from the official degree name and official form grammar, and remains user-editable.",
    "canonicalKey": "degrees.sanattaYeterlik",
    "category": "structure",
    "check": "lint",
@@ -5766,7 +5814,8 @@
    "unit": "",
    "confidence": "EXPLICIT",
    "appliesTo": [
-    "unregistered: aku-sbe EN (master/phd)"
+    "aku-sbe-master-en-v1",
+    "aku-sbe-phd-en-v1"
    ],
    "evidence": [
     {
@@ -5774,7 +5823,7 @@
      "locator": "PDF p.2 Sunuş; p.5 §2.4 Not; p.10 §4.3; p.11 §5.4; p.52 EK 12 (bilingual note: 'required for master's theses and doctoral dissertations written in English')"
     }
    ],
-   "notes": "A thesis written in Turkish never takes the Genişletilmiş Türkçe Özet, so this belongs to separate EN variants (master + phd), which are source-supported but under-specified (English titles/labels, inner-cover language, declaration wording unknown).",
+   "notes": "The instruction-language abstract is first, then Turkish ÖZET; the Turkish extended summary follows appendices. Page-title labels beyond ABSTRACT/Keywords are UNKNOWN; use editable/source-supplied labels and do not score invented English translations.",
    "canonicalKey": "language.foreignLanguageProgrammes",
    "category": "content",
    "check": "lint",
@@ -6591,7 +6640,7 @@
      "kind": "metadata",
      "text": "{{STUDENT_NAME}} — ends at the right edge, one line below the text",
      "align": "right",
-     "exampleBaselineMm": 134.0,
+     "exampleBaselineMm": 134,
      "confidence": "EXPLICIT"
     },
     {
@@ -7215,7 +7264,7 @@
      "sizePt": 11.04,
      "x0Mm": 24.99,
      "x1Mm": 184.81,
-     "baselineMm": 50.0
+     "baselineMm": 50
     },
     {
      "text": "raporları, proje ve seminer çalışmalarının yazımında da standartlaşmayı sağlayacak ilke ve kuralları",
@@ -7513,7 +7562,7 @@
     {
      "text": "2.6. İçindekiler",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 52.65,
      "baselineMm": 45.13
@@ -7553,7 +7602,7 @@
     {
      "text": "i.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 37.68,
      "x1Mm": 39.93,
      "baselineMm": 74.85
@@ -7577,7 +7626,7 @@
     {
      "text": "ii.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.02,
      "x1Mm": 41.45,
      "baselineMm": 88.4
@@ -7625,7 +7674,7 @@
     {
      "text": "iii.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.02,
      "x1Mm": 42.64,
      "baselineMm": 114.53
@@ -7649,7 +7698,7 @@
     {
      "text": "iv.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.02,
      "x1Mm": 42.37,
      "baselineMm": 128.03
@@ -7769,7 +7818,7 @@
     {
      "text": "1. BÖLÜM ANA BAŞLIĞI (TÜM HARFLER BÜYÜK VE KOYU-BOLD)",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 151.47,
      "baselineMm": 208.09
@@ -7777,7 +7826,7 @@
     {
      "text": "1.1. BÖLÜM ALT BAŞLIĞI (TÜM HARFLER BÜYÜK VE KOYU-BOLD- DEĞİL)",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 162.41,
      "baselineMm": 215.04
@@ -7785,7 +7834,7 @@
     {
      "text": "1.1.1. Bölüm Alt Başlığının Alt Başlığı Tüm (Sadece İlk Harfler Büyük ve Koyu-Bold)",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 169.31,
      "baselineMm": 221.95
@@ -7793,7 +7842,7 @@
     {
      "text": "1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı (Sadece İlk Harfler Büyük ve Koyu- Bold-",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 185.02,
      "baselineMm": 228.89
@@ -7818,7 +7867,7 @@
      "text": "Genellikle başlıklarda yukarıdaki örnekte olduğu gibi 4 alt başlıktan fazla başlık",
      "font": "TimesNewRomanPSMT",
      "sizePt": 11.04,
-     "x0Mm": 50.0,
+     "x0Mm": 50,
      "x1Mm": 184.94,
      "baselineMm": 240.28
     },
@@ -7857,7 +7906,7 @@
     {
      "text": "v.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.02,
      "x1Mm": 41.2,
      "baselineMm": 268.17
@@ -7934,7 +7983,7 @@
     {
      "text": "1. BÖLÜM ANA BAŞLIĞI",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 72.42,
      "baselineMm": 61.86
@@ -7942,7 +7991,7 @@
     {
      "text": "1.1. BÖLÜM ALT BAŞLIĞI",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 72.8,
      "baselineMm": 68.76
@@ -7950,7 +7999,7 @@
     {
      "text": "1.1.1. Bölüm Alt Başlığının Alt Başlığı",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 90.6,
      "baselineMm": 75.66
@@ -7958,7 +8007,7 @@
     {
      "text": "1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 114.51,
      "baselineMm": 82.56
@@ -7990,7 +8039,7 @@
     {
      "text": "1. BÖLÜM ANA BAŞLIĞI",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 72.42,
      "baselineMm": 109.24
@@ -7998,7 +8047,7 @@
     {
      "text": "1.1. BÖLÜM ALT BAŞLIĞI",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 72.8,
      "baselineMm": 116.14
@@ -8006,7 +8055,7 @@
     {
      "text": "1.1.1. Bölüm Alt Başlığının Alt Başlığı",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 90.6,
      "baselineMm": 123.04
@@ -8014,7 +8063,7 @@
     {
      "text": "1.1.1.1. Bölüm Alt Başlığının Alt Başlığının Alt Başlığı",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 114.52,
      "baselineMm": 129.94
@@ -8031,7 +8080,7 @@
      "text": "Genellikle başlıklarda yukarıdaki örnekte olduğu gibi 4 alt başlıktan daha fazlasının",
      "font": "TimesNewRomanPSMT",
      "sizePt": 11.04,
-     "x0Mm": 50.0,
+     "x0Mm": 50,
      "x1Mm": 184.94,
      "baselineMm": 136.54
     },
@@ -8062,7 +8111,7 @@
     {
      "text": "5.6. Kopya Sayısı ve Dağıtımı",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 75.68,
      "baselineMm": 157.89
@@ -8078,7 +8127,7 @@
     {
      "text": "i.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.4,
      "x1Mm": 40.65,
      "baselineMm": 171.39
@@ -8094,7 +8143,7 @@
     {
      "text": "ii.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.4,
      "x1Mm": 41.83,
      "baselineMm": 178.29
@@ -8110,7 +8159,7 @@
     {
      "text": "iii.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.4,
      "x1Mm": 43.02,
      "baselineMm": 185.19
@@ -8126,7 +8175,7 @@
     {
      "text": "vi. Tez veri formu doldurularak YÖK tarafından belirlenen koşullara göre referans numarası",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.4,
      "x1Mm": 184.87,
      "baselineMm": 192.13
@@ -8182,7 +8231,7 @@
     {
      "text": "v.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 37.47,
      "x1Mm": 40.65,
      "baselineMm": 227.96
@@ -8206,7 +8255,7 @@
     {
      "text": "vi.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 37.47,
      "x1Mm": 41.82,
      "baselineMm": 239.64
@@ -8230,7 +8279,7 @@
     {
      "text": "i. 9 adet tez (tezlerin 2 adedinin imzalı olarak) Enstitüye teslim edilmesi gerekmektedir.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.4,
      "x1Mm": 177.08,
      "baselineMm": 253.15
@@ -8238,7 +8287,7 @@
     {
      "text": "ii. Doktora Tez Jüri Öneri Formu (Enstitü web sayfasında mevcuttur).",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.4,
      "x1Mm": 148.77,
      "baselineMm": 260.05
@@ -8246,7 +8295,7 @@
     {
      "text": "iii. 2 adet CD (Tezin tamamı PDF ve Word formatında olmalıdır).",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.4,
      "x1Mm": 143.03,
      "baselineMm": 266.95
@@ -8275,7 +8324,7 @@
     {
      "text": "• http://www.epnet.com/ehost, (Erişim Tarihi: 30.03.2000).",
      "font": "TimesNewRomanPS-ItalicMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 32.52,
      "x1Mm": 127.24,
      "baselineMm": 28.91
@@ -8283,7 +8332,7 @@
     {
      "text": "• Türk Kadınlar Derneği; “Kadınlar Yeni Kanun Tasarısı İçin Ayakta” Ankara 2004.",
      "font": "TimesNewRomanPS-ItalicMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 32.52,
      "x1Mm": 184.82,
      "baselineMm": 35.91
@@ -8307,7 +8356,7 @@
     {
      "text": "1. Başbakanlık Osmanlı Arşivi (BOA şeklinde kısaltılabilir), Mühimme Defteri (MD şeklinde",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 32.52,
      "x1Mm": 184.86,
      "baselineMm": 54.19
@@ -8323,7 +8372,7 @@
     {
      "text": "2. BOA, Hatt-ı Hûmayûn Tasnifi, nr. 13123.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 32.52,
      "x1Mm": 102.69,
      "baselineMm": 65.88
@@ -8331,7 +8380,7 @@
     {
      "text": "3. BOA, Cevdet Tasnifi, Askeri, nr. 9506.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 32.52,
      "x1Mm": 98.7,
      "baselineMm": 72.78
@@ -8339,7 +8388,7 @@
     {
      "text": "4. Cumhurbaşkanlığı Cumhuriyet Arşivi, (CCA şeklinde kısaltılabilir), Bakanlar Kurulu Kararları,",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 32.52,
      "x1Mm": 184.85,
      "baselineMm": 79.72
@@ -8379,7 +8428,7 @@
     {
      "text": "xxiii.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 32.52,
      "x1Mm": 41.36,
      "baselineMm": 107.63
@@ -8388,7 +8437,7 @@
      "text": "İçtihatlar",
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 11.04,
-     "x0Mm": 50.0,
+     "x0Mm": 50,
      "x1Mm": 65.78,
      "baselineMm": 107.63
     },
@@ -8435,7 +8484,7 @@
     {
      "text": "6.4. Dipnotlar",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 50.2,
      "baselineMm": 145.69
@@ -8502,7 +8551,7 @@
      "sizePt": 11.04,
      "x0Mm": 24.99,
      "x1Mm": 84.69,
-     "baselineMm": 186.0
+     "baselineMm": 186
     },
     {
      "text": "Dipnot örneği, örnek metinde verilmiştir. Dipnotlar çalışmanın başından sonuna kadar birbirini",
@@ -8665,7 +8714,7 @@
      "text": "Giderler",
      "font": "TimesNewRomanPSMT",
      "sizePt": 11.04,
-     "x0Mm": 50.0,
+     "x0Mm": 50,
      "x1Mm": 62.94,
      "baselineMm": 45.01
     },
@@ -8936,7 +8985,7 @@
     {
      "text": "• Her tablo mümkünse tek bir sayfaya sığdırılır. Çok zorunlu olmadıkça bir tablonun ayrı ayrı",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 38.74,
      "x1Mm": 184.92,
      "baselineMm": 98.7
@@ -9365,7 +9414,7 @@
     {
      "text": "6.5.4. Kaynakça",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 24.99,
      "x1Mm": 54.48,
      "baselineMm": 240.57
@@ -9610,7 +9659,7 @@
      "sizePt": 11.04,
      "x0Mm": 29.94,
      "x1Mm": 184.95,
-     "baselineMm": 134.0
+     "baselineMm": 134
     },
     {
      "text": "11.12.2015)",
@@ -9705,7 +9754,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 11.04,
      "x0Mm": 24.99,
-     "x1Mm": 54.0,
+     "x1Mm": 54,
      "baselineMm": 193.91
     },
     {
@@ -9810,7 +9859,7 @@
      "sizePt": 11.04,
      "x0Mm": 30.28,
      "x1Mm": 55.84,
-     "baselineMm": 265.0
+     "baselineMm": 265
     },
     {
      "text": "32",
@@ -9855,7 +9904,7 @@
      "sizePt": 11.04,
      "x0Mm": 104.21,
      "x1Mm": 105.18,
-     "baselineMm": 55.0
+     "baselineMm": 55
     },
     {
      "text": "",
@@ -10155,8 +10204,8 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 14.04,
      "x0Mm": 62.21,
-     "x1Mm": 143.0,
-     "baselineMm": 31.0
+     "x1Mm": 143,
+     "baselineMm": 31
     },
     {
      "text": "T.C.",
@@ -10267,7 +10316,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 15.96,
      "x0Mm": 102.59,
-     "x1Mm": 104.0,
+     "x1Mm": 104,
      "baselineMm": 124.01
     },
     {
@@ -10275,7 +10324,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 15.96,
      "x0Mm": 102.59,
-     "x1Mm": 104.0,
+     "x1Mm": 104,
      "baselineMm": 132.61
     },
     {
@@ -10283,7 +10332,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 15.96,
      "x0Mm": 102.59,
-     "x1Mm": 104.0,
+     "x1Mm": 104,
      "baselineMm": 141.24
     },
     {
@@ -10600,7 +10649,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 15.96,
      "x0Mm": 102.59,
-     "x1Mm": 104.0,
+     "x1Mm": 104,
      "baselineMm": 121.9
     },
     {
@@ -10608,7 +10657,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 15.96,
      "x0Mm": 102.59,
-     "x1Mm": 104.0,
+     "x1Mm": 104,
      "baselineMm": 130.49
     },
     {
@@ -10616,7 +10665,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 15.96,
      "x0Mm": 102.59,
-     "x1Mm": 104.0,
+     "x1Mm": 104,
      "baselineMm": 139.12
     },
     {
@@ -10641,7 +10690,7 @@
      "sizePt": 11.04,
      "x0Mm": 102.59,
      "x1Mm": 103.56,
-     "baselineMm": 160.0
+     "baselineMm": 160
     },
     {
      "text": "",
@@ -10728,7 +10777,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 11.04,
      "x0Mm": 101.7,
-     "x1Mm": 161.0,
+     "x1Mm": 161,
      "baselineMm": 207.54
     },
     {
@@ -11000,7 +11049,7 @@
     {
      "text": "ENSTİTÜ ONAYI",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 85.7,
      "x1Mm": 119.47,
      "baselineMm": 64.18
@@ -11067,7 +11116,7 @@
      "sizePt": 11.04,
      "x0Mm": 41.87,
      "x1Mm": 57.85,
-     "baselineMm": 110.0
+     "baselineMm": 110
     },
     {
      "text": "Turizm İşletmeciliği",
@@ -11075,7 +11124,7 @@
      "sizePt": 11.04,
      "x0Mm": 83.46,
      "x1Mm": 115.25,
-     "baselineMm": 110.0
+     "baselineMm": 110
     },
     {
      "text": "Program Düzeyi",
@@ -11138,7 +11187,7 @@
      "font": "TimesNewRomanPSMT",
      "sizePt": 11.04,
      "x0Mm": 142.86,
-     "x1Mm": 153.0,
+     "x1Mm": 153,
      "baselineMm": 140.14
     },
     {
@@ -11280,7 +11329,7 @@
     {
      "text": "39",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 103.78,
      "x1Mm": 108.02,
      "baselineMm": 284.14
@@ -11529,7 +11578,7 @@
      "sizePt": 11.04,
      "x0Mm": 29.68,
      "x1Mm": 183.2,
-     "baselineMm": 181.0
+     "baselineMm": 181
     },
     {
      "text": "ayrılma niyetine etkisinin olduğu sonucuna ulaşılmıştır.",
@@ -11830,7 +11879,7 @@
      "sizePt": 11.04,
      "x0Mm": 29.68,
      "x1Mm": 183.17,
-     "baselineMm": 181.0
+     "baselineMm": 181
     },
     {
      "text": "to leave job.",
@@ -12067,7 +12116,7 @@
      "sizePt": 11.04,
      "x0Mm": 142.94,
      "x1Mm": 166.77,
-     "baselineMm": 134.0
+     "baselineMm": 134
     },
     {
      "text": "2016, Afyonkarahisar",
@@ -12253,7 +12302,7 @@
     {
      "text": "1. YÖNETİCİYE DUYULAN GÜVEN  .............................................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 133.92
@@ -12261,7 +12310,7 @@
     {
      "text": "1.1. GÜVEN KAVRAMININ TANIMI, ÖNEMİ VE KAPSAMI  ........................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 139.08
@@ -12269,7 +12318,7 @@
     {
      "text": "1.2. GÜVEN TÜRLERİ  ....................................................................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 144.2
@@ -12277,7 +12326,7 @@
     {
      "text": "1.3. GÜVEN KAVRAMININ İŞLETMELER, İŞGÖRENLER VE YÖNETİCİLER",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.73,
      "x1Mm": 160.97,
      "baselineMm": 149.37
@@ -12293,7 +12342,7 @@
     {
      "text": "1.4. YÖNETİCİYE DUYULAN GÜVEN KAVRAMININ TANIMI VE KAPSAMI .",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 164.84,
      "baselineMm": 159.33
@@ -12301,7 +12350,7 @@
     {
      "text": "1.5. YÖNETİCİYE DUYULAN GÜVENİN SONUÇLARI  .................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 164.57
@@ -12309,7 +12358,7 @@
     {
      "text": "2. ÇALIŞMA YAŞAM KALİTESİ  ....................................................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 169.7
@@ -12317,7 +12366,7 @@
     {
      "text": "2.1. ÇALIŞMA YAŞAM KALİTESİ KAVRAMININ TANIMI VE KAPSAMI  ................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 174.86
@@ -12325,7 +12374,7 @@
     {
      "text": "2.2. ÇALIŞMA YAŞAM KALİTESİ KAVRAMININ İŞLETMELER, İŞGÖRENLER",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 167.12,
      "baselineMm": 180.03
@@ -12341,7 +12390,7 @@
     {
      "text": "2.3. ÇALIŞMA YAŞAM KALİTESİNİN SONUÇLARI  .....................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 189.97
@@ -12349,7 +12398,7 @@
     {
      "text": "3. İŞTEN AYRILMA NİYETİ  ...........................................................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 195.1
@@ -12357,7 +12406,7 @@
     {
      "text": "3.1. İŞTEN AYRILMA NİYETİ KAVRAMININ TANIMI VE KAPSAMI  ........................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 200.26
@@ -12365,7 +12414,7 @@
     {
      "text": "3.2. İŞTEN AYRILMA NİYETİNİN NEDENLERİ  .............................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.34,
      "baselineMm": 205.38
@@ -12373,7 +12422,7 @@
     {
      "text": "3.3. İŞTEN AYRILMA NİYETİ KAVRAMININ İŞLETMELER, İŞGÖRENLER VE",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 164.69,
      "baselineMm": 210.55
@@ -12389,7 +12438,7 @@
     {
      "text": "3.4. İŞTEN AYRILMA NİYETİNİN SONUÇLARI  ............................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 220.51
@@ -12459,7 +12508,7 @@
     {
      "text": "1. YÖNETİCİYE",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 60.98,
      "baselineMm": 66.22
@@ -12523,7 +12572,7 @@
     {
      "text": "2. YÖNETİCİYE",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 61.14,
      "baselineMm": 76.16
@@ -12587,7 +12636,7 @@
     {
      "text": "2.1. YÖNETİCİYE DUYULAN GÜVEN İLE İLGİLİ ÇALIŞMALAR ...............................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.34,
      "baselineMm": 86.16
@@ -12595,7 +12644,7 @@
     {
      "text": "2.1.1. Örgütsel Güven ve Yöneticiye Duyulan Güven İle İlgili Tez Çalışmaları .............",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 91.28
@@ -12603,7 +12652,7 @@
     {
      "text": "2.1.2. Örgütsel Güven ve Yöneticiye Duyulan Güven İle İlgili Makale Çalışmaları",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 166.94,
      "baselineMm": 96.45
@@ -12611,7 +12660,7 @@
     {
      "text": "2.1.2.1. Örgütsel Güven ve Yöneticiye Duyulan Güven İle İlgili Uluslararası Düzeyde Yapılan",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 179.15,
      "baselineMm": 101.58
@@ -12627,7 +12676,7 @@
     {
      "text": "2.1.2.2. Örgütsel Güven ve Yöneticiye Duyulan Güven İle İlgili Ulusal Düzeyde Yapılan",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 170.55,
      "baselineMm": 111.52
@@ -12643,7 +12692,7 @@
     {
      "text": "2.2. ÇALIŞMA YAŞAM KALİTESİ KONUSUYLA İLGİLİ ÇALIŞMALAR  ...................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 121.51
@@ -12651,7 +12700,7 @@
     {
      "text": "2.2.1. Çalışma Yaşam Kalitesi İle İlgili Tez Çalışmaları  ..................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 126.64
@@ -12659,7 +12708,7 @@
     {
      "text": "2.2.2. Çalışma Yaşam Kalitesi İle İlgili Makale Çalışmaları  ...........................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 131.8
@@ -12667,7 +12716,7 @@
     {
      "text": "2.3. İŞTEN AYRILMA NİYETİ KONUSUYLA İLGİLİ ÇALIŞMALAR  ..........................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 136.92
@@ -12675,7 +12724,7 @@
     {
      "text": "2.3.1. İşten Ayrılma Niyeti İle İlgili Tez Çalışmaları .........................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 142.09
@@ -12683,7 +12732,7 @@
     {
      "text": "2.3.2. İşten Ayrılma Niyeti İle İlgili Makale Çalışmaları  .................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 147.21
@@ -12691,7 +12740,7 @@
     {
      "text": "3. YÖNETİCİYE DUYULAN GÜVEN, ÇALIŞMA YAŞAM KALİTESİ VE İŞTEN",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 170.92,
      "baselineMm": 152.38
@@ -12747,7 +12796,7 @@
     {
      "text": "1. ARAŞTIRMANIN AMACI, ÖNEMİ  .............................................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 199.71
@@ -12755,7 +12804,7 @@
     {
      "text": "2. ARAŞTIRMANIN HİPOTEZLERİ  ...............................................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 204.83
@@ -12763,15 +12812,15 @@
     {
      "text": "3. ARAŞTIRMANIN KAPSAM VE SINIRLILIKLARI ..................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
-     "baselineMm": 210.0
+     "baselineMm": 210
     },
     {
      "text": "4. ARAŞTIRMANIN YÖNTEMİ  .......................................................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 215.12
@@ -12779,7 +12828,7 @@
     {
      "text": "4.1. VERİ TOPLAMA YÖNTEMİ  .......................................................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 220.3
@@ -12787,7 +12836,7 @@
     {
      "text": "4.2. ARAŞTIRMANIN EVRENİ VE ÖRNEKLEMİ  ...........................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 225.42
@@ -12795,7 +12844,7 @@
     {
      "text": "4.3. VERİ ANALİZ YÖNTEMİ  ............................................................................................",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 230.58
@@ -12803,7 +12852,7 @@
     {
      "text": "5. ARAŞTIRMANIN BULGULARI  ..................................................................................",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 235.7
@@ -12811,7 +12860,7 @@
     {
      "text": "5.1. KATILIMCILARIN BİREYSEL ÖZELLİKLERİNE İLİŞKİN BULGULAR  .............",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 173.35,
      "baselineMm": 240.87
@@ -12819,7 +12868,7 @@
     {
      "text": "5.2. ÖLÇEK VE ALT ÖLÇEKLERE İLİŞKİN GEÇERLİLİK VE GÜVENİRLİK ANALİZİ",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 174.08,
      "baselineMm": 246.03
@@ -12835,7 +12884,7 @@
     {
      "text": "5.3. YÖNETİCİYE DUYULAN GÜVEN ÖLÇEĞİNE İLİŞKİN BETİMSEL İSTATİSTİKLER",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 179.04,
      "baselineMm": 255.98
@@ -12864,7 +12913,7 @@
     {
      "text": "5.4. ÇALIŞMA YAŞAM KALİTESİ ÖLÇEĞİNE İLİŞKİN BETİMSEL İSTATİSTİKLER",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 172.8,
      "baselineMm": 33.66
@@ -12872,7 +12921,7 @@
     {
      "text": "5.5. İŞTEN AYRILMA NİYETİ ÖLÇEĞİNE İLİŞKİN BETİMSEL İSTATİSTİKLER",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 167.5,
      "baselineMm": 38.83
@@ -12880,7 +12929,7 @@
     {
      "text": "5.6. İŞGÖRENLERİN YÖNETİCİYE DUYULAN GÜVEN, ÇALIŞMA YAŞAM KALİTESİ",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 177.66,
      "baselineMm": 43.95
@@ -12904,7 +12953,7 @@
     {
      "text": "5.7. İŞGÖRENLERİN YÖNETİCİLERİNE DUYDUKLARI GÜVEN İLE ÇALIŞMA YAŞAM",
      "font": "TimesNewRomanPSMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 180.53,
      "baselineMm": 58.72
@@ -13039,7 +13088,7 @@
      "font": "TimesNewRomanPS-BoldMT",
      "sizePt": 11.04,
      "x0Mm": 29.68,
-     "x1Mm": 156.0,
+     "x1Mm": 156,
      "baselineMm": 79.97
     },
     {
@@ -13363,7 +13412,7 @@
     {
      "text": "n: Örneklem büyüklüğü",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 42.38,
      "x1Mm": 82.29,
      "baselineMm": 108.9
@@ -13371,7 +13420,7 @@
     {
      "text": "p: Anlamlılık (önemlilik) testine ilişkin olasılık değeri",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 42.38,
      "x1Mm": 129.28,
      "baselineMm": 114.02
@@ -13379,7 +13428,7 @@
     {
      "text": "r: Korelasyon katsayısı.",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 42.38,
      "x1Mm": 82.07,
      "baselineMm": 119.19
@@ -13673,7 +13722,7 @@
     {
      "text": "(YABANCI DİLDE EĞİTİM VERİLEN PROGRAMLARDA YAZILAN TEZLER",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 29.68,
      "x1Mm": 180.26,
      "baselineMm": 46.91
@@ -13681,7 +13730,7 @@
     {
      "text": "İÇİN)",
      "font": "TimesNewRomanPS-BoldMT",
-     "sizePt": 12.0,
+     "sizePt": 12,
      "x0Mm": 99.59,
      "x1Mm": 110.4,
      "baselineMm": 52.16
@@ -13828,7 +13877,7 @@
      "sizePt": 11.04,
      "x0Mm": 29.47,
      "x1Mm": 180.52,
-     "baselineMm": 176.0
+     "baselineMm": 176
     },
     {
      "text": "Kılavuzu”na uygun olarak yazılmalıdır. Bu kısım, tezin ilgili bölümleriyle aynı olacağından metin",
@@ -14354,8 +14403,8 @@
    ],
    "what": "PDF page size",
    "expected": [
-    210.0,
-    297.0
+    210,
+    297
    ],
    "unit": "mm",
    "tolerance": 0.5,
@@ -14367,7 +14416,7 @@
     "*"
    ],
    "what": "x0 of non-indented body lines (justified/left) on body pages",
-   "expected": 30.0,
+   "expected": 30,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "page.margins.leftMm"
@@ -14378,7 +14427,7 @@
     "*"
    ],
    "what": "x1 of full justified body lines",
-   "expected": 180.0,
+   "expected": 180,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "page.margins.rightMm"
@@ -14400,7 +14449,7 @@
     "*"
    ],
    "what": "bottom of the text area: lowest possible line box bottom ≤ 272 mm",
-   "expected": 272.0,
+   "expected": 272,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "page.margins.bottomMm"
@@ -14422,7 +14471,7 @@
     "*"
    ],
    "what": "font size of body spans",
-   "expected": 12.0,
+   "expected": 12,
    "unit": "pt",
    "tolerance": 0.1,
    "sourceRule": "typography.body.fontSizePt"
@@ -14455,7 +14504,7 @@
     "*"
    ],
    "what": "extra space between two body paragraphs (baseline gap − 20.7 pt), Word-additive",
-   "expected": 12.0,
+   "expected": 12,
    "unit": "pt",
    "tolerance": 0.2,
    "sourceRule": "typography.paragraph.spaceAfterPt",
@@ -14500,7 +14549,7 @@
     "*"
    ],
    "what": "page number centred: (x0+x1)/2 of the number",
-   "expected": 105.0,
+   "expected": 105,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "pagination.align"
@@ -14577,7 +14626,7 @@
     "*"
    ],
    "what": "chapter heading lines centred on 105.0 mm",
-   "expected": 105.0,
+   "expected": 105,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "headings.h1.align"
@@ -14588,7 +14637,7 @@
     "*"
    ],
    "what": "chapter heading size",
-   "expected": 12.0,
+   "expected": 12,
    "unit": "pt",
    "tolerance": 0.1,
    "sourceRule": "headings.h1.fontSizePt"
@@ -14727,7 +14776,7 @@
    ],
    "what": "table cell text size / pitch",
    "expected": [
-    11.0,
+    11,
     12.65
    ],
    "unit": "pt",
@@ -14741,7 +14790,7 @@
    ],
    "what": "footnote text size and pitch",
    "expected": [
-    9.0,
+    9,
     10.35
    ],
    "unit": "pt",
@@ -14754,7 +14803,7 @@
     "*"
    ],
    "what": "footnote lines start at x0 = 30.0 mm (no indent)",
-   "expected": 30.0,
+   "expected": 30,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "footnotes.firstLineIndentMm"
@@ -14765,9 +14814,9 @@
     "*"
    ],
    "what": "separator from x = 30.0 mm, length ≈ 40 mm",
-   "expected": 40.0,
+   "expected": 40,
    "unit": "mm",
-   "tolerance": 2.0,
+   "tolerance": 2,
    "sourceRule": "footnotes.separator",
    "notes": "Tolerance 2 mm because the text says 'yaklaşık olarak 4 santimetre' (approximate); start x = 30.0 mm is exact (±0.5)."
   },
@@ -14788,7 +14837,7 @@
     "*"
    ],
    "what": "bibliography continuation line x0 − first line x0",
-   "expected": 5.0,
+   "expected": 5,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "bibliography.hangingIndentMm"
@@ -14799,7 +14848,7 @@
     "*"
    ],
    "what": "bibliography first line x0",
-   "expected": 30.0,
+   "expected": 30,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "bibliography.firstLineIndentMm"
@@ -14821,7 +14870,7 @@
     "*"
    ],
    "what": "KAYNAKÇA bold uppercase centred on 105.0 mm, no number",
-   "expected": 105.0,
+   "expected": 105,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "bibliography.titleStyle"
@@ -14843,7 +14892,7 @@
     "*"
    ],
    "what": "TOC page numbers and 'Sayfa' end at x1 = 180.0 mm",
-   "expected": 180.0,
+   "expected": 180,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "toc.pageNumberAlign"
@@ -14865,7 +14914,7 @@
     "*"
    ],
    "what": "TOC rows (all numbered levels) start at 30.0 mm (no per-level indent)",
-   "expected": 30.0,
+   "expected": 30,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "toc.indentPerLevelMm"
@@ -14947,7 +14996,7 @@
     "*"
    ],
    "what": "student name right-aligned: x1 = 180.0 mm",
-   "expected": 180.0,
+   "expected": 180,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "preface.signature"
@@ -14960,8 +15009,8 @@
    ],
    "what": "T.C. … YÜKSEK LİSANS TEZİ/DOKTORA TEZİ: 12 pt bold caps, centred on 105.0 mm, pitch 20.7 pt",
    "expected": [
-    12.0,
-    105.0,
+    12,
+    105,
     20.7
    ],
    "unit": "pt/mm",
@@ -14975,7 +15024,7 @@
    ],
    "what": "title 16 pt bold caps centred, wrapped pitch 1.5 × 16 × 1.15 = 27.6 pt",
    "expected": [
-    16.0,
+    16,
     27.6
    ],
    "unit": "pt",
@@ -14988,7 +15037,7 @@
     "*"
    ],
    "what": "student/advisor 12 pt bold centred; city+year 12 pt bold caps",
-   "expected": 12.0,
+   "expected": 12,
    "unit": "pt",
    "tolerance": 0.1,
    "sourceRule": "cover.innerCover.student"
@@ -15069,7 +15118,7 @@
     "*"
    ],
    "what": "GİRİŞ / TARTIŞMA, SONUÇ VE ÖNERİLER / KAYNAKÇA / EKLER (DİZİNİ): bold caps 12 pt centred on 105.0 mm, no number, single spacing, new page",
-   "expected": 105.0,
+   "expected": 105,
    "unit": "mm",
    "tolerance": 0.5,
    "sourceRule": "headings.unnumberedMainParts"
@@ -15091,7 +15140,7 @@
     "*"
    ],
    "what": "extra space between a sub-heading and the following body paragraph (6 after + 6 before)",
-   "expected": 12.0,
+   "expected": 12,
    "unit": "pt",
    "tolerance": 0.2,
    "sourceRule": "headings.h2.spaceAfterPt"
@@ -15125,9 +15174,9 @@
    ],
    "what": "block quotation (bağlaç system): 10 pt, single, left x0 = 50.0 mm, right x1 = 160.0 mm",
    "expected": [
-    10.0,
-    50.0,
-    160.0
+    10,
+    50,
+    160
    ],
    "unit": "pt/mm",
    "tolerance": 0.5,
@@ -15140,7 +15189,7 @@
    ],
    "what": "SİMGELER VE KISALTMALAR DİZİNİ entries: single, 6/6 pt (12 pt extra between entries), first-line x0 = 42.5 mm, abbreviation bold",
    "expected": [
-    12.0,
+    12,
     42.5
    ],
    "unit": "pt/mm",
@@ -15154,7 +15203,7 @@
    ],
    "what": "'Sayfa' ends at 180.0 mm; its baseline 2 × 13.8 pt below the İÇİNDEKİLER title baseline",
    "expected": [
-    180.0,
+    180,
     27.6
    ],
    "unit": "mm/pt",

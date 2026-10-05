@@ -6,6 +6,7 @@ import { buildThesisCss, compileThesisDocument, templateFontFamilies, thesisSect
 import { buildThesisDocx } from "../thesis/export.js";
 import { derivedThesisValues, equationPadAfter, generatedIndexHtml } from "../thesis/generatedIndex.js";
 import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/registry.js";
+import { positionedFlowTextBoxDocx } from "../thesis/layoutDocx.js";
 import { resolveSpecialPage, specialPageBlockVisible, validateSpecialPageBlocks } from "../thesis/specialPages.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
 import { akuFbeMaster, akuFbePhd } from "../thesis/templates/aku-fbe.js";
@@ -96,11 +97,12 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     const spacer = section(without, "inner-cover").layout.find((node) => node.type === "spacer");
     assert.ok(Math.abs(spacer.heightMm - 24.15 * 25.4 / 72) < 1e-6);
     assert.equal(section(without, "inner-cover").rules.body.fontSizePt, 14);
-    // outer cover: text area x 55-155, first baseline 215.53 mm = top margin + 0.9336 em
+    // outer cover: existing first-baseline placement is preserved; the Word flow frame ends at source y=275 mm.
     const cover = section(without, "outer-cover").rules.page;
     assert.deepEqual([cover.margins.leftMm, cover.margins.rightMm], [55, 55]);
     assert.ok(Math.abs(cover.margins.topMm + 0.9336 * 12 * 25.4 / 72 - 215.53) < 1e-6);
     assert.equal(cover.margins.bottomMm, 22, "the guide's printed cover box ends at y=275 mm on A4");
+    assert.deepEqual(cover.docxContentFrame, { xMm: 55, yMm: cover.margins.topMm, widthMm: 100, heightMm: 275 - cover.margins.topMm });
     for (const id of ["inner-cover", "approval", "ethics"]) {
       assert.equal(section(without, id).rules.page.margins.bottomMm, 30, `${id} follows the official 30 mm page margin`);
     }
@@ -146,7 +148,15 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
   it("DOCX carries the Word values: margins, footer distance, 1.5 lines, 20.7 pt spacing, cover margins", async () => {
     const xml = await docxXml(compile());
     assert.match(xml, /<w:pgMar w:top="1701" w:right="1701" w:bottom="1701" w:left="1701" w:header="709" w:footer="709"/);
-    assert.match(xml, /<w:tblpPr[^>]*w:tblpX="3118" w:tblpY="11995" w:horzAnchor="page" w:vertAnchor="page"/);
+    const coverFrame = section(compile(), "outer-cover").rules.page.docxContentFrame;
+    assert.match(xml, new RegExp(`<wp:posOffset>${Math.round(coverFrame.xMm * 36000)}</wp:posOffset>`));
+    assert.match(xml, new RegExp(`<wp:posOffset>${Math.round(coverFrame.yMm * 36000)}</wp:posOffset>`));
+    assert.match(xml, /<wp:extent cx="3600000" cy="\d+"/);
+    const bodyProperties = xml.match(/<wps:bodyPr[^>]*>/)?.[0] || "";
+    for (const inset of ["lIns", "tIns", "rIns", "bIns"]) assert.match(bodyProperties, new RegExp(`${inset}="0"`), `${inset} is zero`);
+    assert.match(xml, /txbxContent/);
+    assert.match(xml, /<w:t[^>]*>YÜKSEK LİSANS TEZİ<\/w:t>/);
+    assert.match(xml, /<w:t[^>]*>Danışman<\/w:t>/);
     assert.match(xml, /<w:tblpPr[^>]*w:tblpX="1549" w:tblpY="1701" w:horzAnchor="page" w:vertAnchor="page"/);
     const sectionMargins = [...xml.matchAll(/<w:pgMar\b[^>]*>/g)].map((match) =>
       ["top", "right", "bottom", "left"].map((side) => Number(match[0].match(new RegExp(`w:${side}="(\\d+)"`))?.[1])));
@@ -159,6 +169,10 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
 });
 
 describe("generic special-page condition noneFilled", () => {
+  it("fixed-height flow text boxes reject non-paragraph content instead of dropping it", () => {
+    assert.throws(() => positionedFlowTextBoxDocx([{ type: "image" }], { xMm: 0, yMm: 0, widthMm: 10, heightMm: 10 }), /yalnızca paragraf akışı/);
+  });
+
   it("shows a block only while all of its fields are empty", () => {
     const block = { type: "spacer", heightMm: 1, visibleWhen: { noneFilled: ["A", "B"] } };
     assert.equal(specialPageBlockVisible(block, {}), true);

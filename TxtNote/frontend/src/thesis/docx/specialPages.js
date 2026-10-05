@@ -3,6 +3,7 @@ import { PX_PER_MM } from "../pageLayout.js";
 import { specialPageRowWidths } from "../specialPages.js";
 import { NO_BORDER, alignDocx, imageBytes, plainRuns, twip } from "./xml.js";
 import { docxParagraph, spacerParagraph } from "./paragraphs.js";
+import { positionedFlowTextBoxDocx } from "../layoutDocx.js";
 
 /**
  * Special page render tree (specialPages.js) → closest Word structures: text →
@@ -14,12 +15,18 @@ export function specialPageDocx(nodes, context, widthMm) {
   const gap = (heightMm) => { if (heightMm > 0) out.push(spacerParagraph(heightMm)); };
   for (const node of nodes || []) {
     if (node.type === "image") {
+      if (["absolute", "anchored"].includes(node.layoutMode)) {
+        out.push(...positionedLayoutDocx([node], { pageMargins: context.pageMargins }));
+        continue;
+      }
       gap(node.marginTopMm);
       const image = imageBytes(node.source);
       out.push(new Paragraph({ alignment: alignDocx(node.align), ...(node.leftIndentMm || node.rightIndentMm ? { indent: { left: twip(node.leftIndentMm || 0), right: twip(node.rightIndentMm || 0) } } : {}), spacing: { before: 0, after: 0, line: twip(node.heightMm), lineRule: LineRuleType.AT_LEAST }, children: [new ImageRun({ ...image, transformation: { width: node.widthMm * PX_PER_MM, height: node.heightMm * PX_PER_MM } })] }));
       gap(node.marginBottomMm);
     } else if (node.type === "text") {
-      out.push(docxParagraph(node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold })) : plainRuns(node.text), node.style, context));
+      const runs = node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold })) : plainRuns(node.text);
+      if (node.style?.highlight) for (const run of runs) if (run.type === "text") run.highlight = node.style.highlight;
+      out.push(docxParagraph(runs, node.style, context));
     } else if (node.type === "spacer") {
       gap(node.marginTopMm); gap(node.heightMm); gap(node.marginBottomMm);
     } else if (node.type === "separator") {
@@ -102,6 +109,7 @@ export function specialPageDocx(nodes, context, widthMm) {
 export function positionedSpecialPageDocx(nodes, context, frame) {
   const width = twip(frame.widthMm);
   const content = specialPageDocx(nodes, context, frame.widthMm);
+  if (frame.heightMm !== undefined) return positionedFlowTextBoxDocx(content, frame);
   return new Table({
     width: { size: width, type: WidthType.DXA },
     columnWidths: [width], layout: TableLayoutType.FIXED,

@@ -114,10 +114,7 @@ export default function LayoutRulers({ page, zoom = 1, guides = [], onGuidesChan
     <div className="thesis-ruler thesis-ruler-horizontal" data-ruler-axis="x" data-thesis-editor-only=""
       style={{ gridColumn: 2, gridRow: 1, width: widthPx, height: 24, touchAction: 'none', position: 'relative', userSelect: 'none', background: rulerSurface, borderBottom: '1px solid currentColor', boxSizing: 'border-box' }}
       aria-label={`Horizontal ruler, ${formatPosition(page.widthMm, unit)} wide`} onPointerDown={(event) => startNewGuide(event, 'x')}>
-      {horizontalTicks.map((tick) => <span key={tick.index} className={`thesis-ruler-tick${tick.major ? ' is-major' : ''}`}
-        style={{ position: 'absolute', left: cssPx(tick.mm, zoom), bottom: 0, height: tick.major ? 14 : 6, borderLeft: '1px solid currentColor', boxSizing: 'border-box', pointerEvents: 'none' }}>
-        {tick.major && <span style={{ position: 'absolute', top: 2, left: 3, whiteSpace: 'nowrap', pointerEvents: 'none' }}>{Number(convertLength(tick.mm, 'mm', unit).toFixed(unit === 'mm' ? 0 : 2))}</span>}
-      </span>)}
+      <RulerTicks ticks={horizontalTicks} zoom={zoom} unit={unit} vertical={false} />
       {horizontalRulerGuides.map((guide) => <GuideHandle key={guide.id} guide={guide} offset={cssPx(guide.positionMm, zoom)}
         vertical={true} active={draggingId === guide.id} onPointerDown={(event) => startMoveGuide(event, guide)}
         onDoubleClick={(event) => deleteGuide(event, guide)} onContextMenu={(event) => toggleLock(event, guide)} />)}
@@ -125,10 +122,7 @@ export default function LayoutRulers({ page, zoom = 1, guides = [], onGuidesChan
     <div className="thesis-ruler thesis-ruler-vertical" data-ruler-axis="y" data-thesis-editor-only=""
       style={{ gridColumn: 1, gridRow: 2, width: 24, height: heightPx, touchAction: 'none', position: 'relative', userSelect: 'none', background: rulerSurface, borderRight: '1px solid currentColor', boxSizing: 'border-box' }}
       aria-label={`Vertical ruler, ${formatPosition(page.heightMm, unit)} tall`} onPointerDown={(event) => startNewGuide(event, 'y')}>
-        {verticalTicks.map((tick) => <span key={tick.index} className={`thesis-ruler-tick${tick.major ? ' is-major' : ''}`}
-        style={{ position: 'absolute', top: cssPx(tick.mm, zoom), right: 0, width: tick.major ? 14 : 6, borderTop: '1px solid currentColor', boxSizing: 'border-box', pointerEvents: 'none' }}>
-        {tick.major && <span style={{ position: 'absolute', top: 2, right: 3, whiteSpace: 'nowrap', writingMode: 'vertical-rl', pointerEvents: 'none' }}>{Number(convertLength(tick.mm, 'mm', unit).toFixed(unit === 'mm' ? 0 : 2))}</span>}
-      </span>)}
+      <RulerTicks ticks={verticalTicks} zoom={zoom} unit={unit} vertical={true} />
       {verticalRulerGuides.map((guide) => <GuideHandle key={guide.id} guide={guide} offset={cssPx(guide.positionMm, zoom)}
         vertical={false} active={draggingId === guide.id} onPointerDown={(event) => startMoveGuide(event, guide)}
         onDoubleClick={(event) => deleteGuide(event, guide)} onContextMenu={(event) => toggleLock(event, guide)} />)}
@@ -143,6 +137,20 @@ export default function LayoutRulers({ page, zoom = 1, guides = [], onGuidesChan
     </div>
   </div>;
 }
+
+/** Hundreds of tick elements per ruler: memoized so a keystroke in the page text does not re-render them. */
+const RulerTicks = React.memo(function RulerTicks({ ticks, zoom, unit, vertical }) {
+  const label = (tick) => Number(convertLength(tick.mm, 'mm', unit).toFixed(unit === 'mm' ? 0 : 2));
+  return <>{ticks.map((tick) => vertical
+    ? <span key={tick.index} className={`thesis-ruler-tick${tick.major ? ' is-major' : ''}`}
+      style={{ position: 'absolute', top: cssPx(tick.mm, zoom), right: 0, width: tick.major ? 14 : 6, borderTop: '1px solid currentColor', boxSizing: 'border-box', pointerEvents: 'none' }}>
+      {tick.major && <span style={{ position: 'absolute', top: 2, right: 3, whiteSpace: 'nowrap', writingMode: 'vertical-rl', pointerEvents: 'none' }}>{label(tick)}</span>}
+    </span>
+    : <span key={tick.index} className={`thesis-ruler-tick${tick.major ? ' is-major' : ''}`}
+      style={{ position: 'absolute', left: cssPx(tick.mm, zoom), bottom: 0, height: tick.major ? 14 : 6, borderLeft: '1px solid currentColor', boxSizing: 'border-box', pointerEvents: 'none' }}>
+      {tick.major && <span style={{ position: 'absolute', top: 2, left: 3, whiteSpace: 'nowrap', pointerEvents: 'none' }}>{label(tick)}</span>}
+    </span>)}</>;
+});
 
 function makeTicks(extentMm, minorMm, majorEvery) {
   const total = Math.floor(extentMm / minorMm + 1e-7);

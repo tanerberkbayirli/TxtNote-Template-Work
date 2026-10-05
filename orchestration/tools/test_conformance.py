@@ -118,6 +118,65 @@ class LandmarkTests(unittest.TestCase):
         self.assertIsNone(doc.page_num(1, {'yMinMm': 280, 'yMaxMm': 297}))
         doc.pdf.close()
 
+    def test_page_label_each_checks_labels_without_inventing_page_count(self):
+        self.assertEqual(self.check('page_labels', {'each': True}, 'ii')['status'], 'PASS')
+        self.assertEqual(self.check('page_labels', {'each': True}, '')['status'], 'FAIL')
+        self.assertEqual(self.check('page_labels', {'each': True, 'pages': {'find': '^Absent$'}}, '')['status'], 'FAIL')
+
+    def test_toc_labels_accept_centered_rows_without_leaders_only_when_declared(self):
+        import pymupdf
+        doc = pymupdf.open()
+        first = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        first.insert_text((30 * MM2PT, 40 * MM2PT), 'ICINDEKILER', fontname='hebo')
+        first.insert_text((30 * MM2PT, 60 * MM2PT), 'GIRIS', fontname='hebo')
+        first.insert_text((177 * MM2PT, 60 * MM2PT), '1', fontname='hebo')
+        first.insert_text((100 * MM2PT, 285 * MM2PT), 'iv')
+        second = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        second.insert_text((30 * MM2PT, 40 * MM2PT), 'GIRIS')
+        second.insert_text((100 * MM2PT, 285 * MM2PT), '1')
+        doc.save(self.pdf)
+        doc.close()
+        params = {'toc_title': '^ICINDEKILER$'}
+        self.assertEqual(self.check('toc_labels', params)['status'], 'FAIL')
+        result = self.check('toc_labels', {**params, 'leader': 'none'})
+        self.assertEqual(result['status'], 'PASS', result)
+        self.assertEqual(result['actual'], '1/1')
+
+    def test_toc_labels_use_only_declared_source_index_for_unprinted_counted_pages(self):
+        import pymupdf
+        doc = pymupdf.open()
+        toc = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        toc.insert_text((30 * MM2PT, 40 * MM2PT), 'ICINDEKILER', fontname='hebo')
+        toc.insert_text((30 * MM2PT, 60 * MM2PT), 'TEZ KABUL VE ONAY SAYFASI')
+        toc.insert_text((177 * MM2PT, 60 * MM2PT), 'ii')
+        approval = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        approval.insert_text((30 * MM2PT, 40 * MM2PT), 'TEZ KABUL VE ONAY SAYFASI')
+        ethics = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        ethics.insert_text((30 * MM2PT, 40 * MM2PT), 'BILIMSEL ETIK BILDIRIMI')
+        arabic = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        arabic.insert_text((30 * MM2PT, 40 * MM2PT), 'GIRIS')
+        arabic.insert_text((100 * MM2PT, 285 * MM2PT), '1')
+        doc.save(self.pdf)
+        doc.close()
+        params = {
+            'toc_title': '^ICINDEKILER$', 'leader': 'none',
+            'hidden_index_labels': [{'title_regex': '^TEZ KABUL VE ONAY SAYFASI$', 'label': 'ii'}],
+        }
+        result = self.check('toc_labels', params)
+        self.assertEqual(result['status'], 'PASS', result)
+        self.assertIn('ii (unprinted)', result['note'])
+
+        # A declared source label never masks a wrong contents number or a newly printed page numeral.
+        wrong = pymupdf.open(self.pdf)
+        wrong_page = wrong[0]
+        wrong_page.draw_rect(pymupdf.Rect(176 * MM2PT, 56 * MM2PT, 184 * MM2PT, 63 * MM2PT), color=(1, 1, 1), fill=(1, 1, 1))
+        wrong_page.insert_text((177 * MM2PT, 60 * MM2PT), 'iv')
+        wrong.save(self.pdf + '.bad')
+        wrong.close()
+        self.ctx['variants']['default']['pdf'] = self.pdf + '.bad'
+        result = self.check('toc_labels', params)
+        self.assertEqual(result['status'], 'FAIL', result)
+
     def test_balanced_counts_do_not_allow_orphan_end_or_paragraph_in_fldsimple(self):
         xml = '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body><w:p><w:r><w:fldChar w:fldCharType="end"/><w:fldChar w:fldCharType="begin"/></w:r></w:p><w:fldSimple><w:p/></w:fldSimple></w:body></w:document>'
         path = os.path.join(self.tmp.name, 'bad.docx')
@@ -128,6 +187,20 @@ class LandmarkTests(unittest.TestCase):
         self.assertEqual(result['status'], 'FAIL')
         self.assertTrue(any('orphan' in hit for hit in result['actual']))
         self.assertTrue(any('fldSimple' in hit for hit in result['actual']))
+
+    def test_footer_paragraph_sequence_rejects_missing_extra_or_reordered_blank(self):
+        path = os.path.join(self.tmp.name, 'footer.docx')
+        self.ctx['variants']['default']['docx'] = path
+        field = '<w:p><w:r><w:instrText> PAGE </w:instrText></w:r></w:p>'
+        blank = '<w:p><w:r><w:t> </w:t></w:r></w:p>'
+        for rows, status in [(field + blank, 'PASS'), (field, 'FAIL'),
+                             (blank + field, 'FAIL'), (field + blank + blank, 'FAIL'), (blank, 'FAIL')]:
+            with zipfile.ZipFile(path, 'w') as archive:
+                archive.writestr('word/footer1.xml', f'<w:ftr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">{rows}</w:ftr>')
+            result = self.check('docx_paragraph_sequence',
+                                {'part_regex': '^word/footer', 'require_field': 'PAGE'},
+                                [{'field_regex': 'PAGE', 'empty': False}, {'empty': True}])
+            self.assertEqual(result['status'], status)
 
 
 class FieldDumpTests(unittest.TestCase):

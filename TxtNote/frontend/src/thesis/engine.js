@@ -1,6 +1,7 @@
 import { migrateThesisTemplate, validateThesisContent, validateThesisTemplate } from "./validation.js";
-import { isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionCountMet, thesisSectionMode } from "./document.js";
+import { isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionCountMet, thesisSectionMode, thesisTextFormat, thesisTextOverride } from "./document.js";
 import { customFormatCss } from "../config/format.js";
+import { wrapStaticFormat } from "./staticFormat.js";
 import { styleNonceAttribute, withoutInlineStyleAttributes } from "../lib/cspStyles.js";
 import { flattenSpecialPage, isSpecialPageSection, resolveSpecialPage, specialPageHtml } from "./specialPages.js";
 import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesisPresentationHtml } from "./generatedIndex.js";
@@ -212,7 +213,7 @@ export function groupThesisSections(sections) {
       const lead = Math.max(previous.rules.page.lastLineLeadingMm || 0, section.rules.page.lastLineLeadingMm || 0);
       if (lead && lead !== previous.rules.page.lastLineLeadingMm) previous.rules = { ...previous.rules, page: { ...previous.rules.page, lastLineLeadingMm: lead } };
     } else {
-      groups.push({ id: section.id, title: section.title, rules: section.rules, sections: [section] });
+      groups.push({ id: section.id, title: section.title, rules: section.rules, pageBreakBefore: section.pageBreakBefore, sections: [section] });
     }
   }
   return groups;
@@ -311,20 +312,26 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const editable = mode === "editable";
     const source = thesisSourceHtml(thesisSectionContent(section, thesis, mainContent));
     const fixed = resolvePlaceholders(section.content || "", template.placeholders, values);
-    const fixedHtml = fixed.text ? fixed.text.split("\n").map((line) => `<p class="thesis-fixed">${escapeHtml(line) || "&nbsp;"}</p>`).join("") : "";
+    const fixedOverride = thesisTextOverride(thesis, section.id, "fixed");
+    if (fixedOverride !== undefined && !isSpecialPageSection(section)) fixed.text = fixedOverride;
+    const titleOverride = thesisTextOverride(thesis, section.id, "title")?.trim();
+    const headingText = titleOverride || section.title;
+    const titleFormat = thesisTextFormat(thesis, section.id, "title");
+    const fixedFormat = isSpecialPageSection(section) ? undefined : thesisTextFormat(thesis, section.id, "fixed");
+    const fixedHtml = fixed.text ? fixed.text.split("\n").map((line) => `<p class="thesis-fixed">${wrapStaticFormat(escapeHtml(line) || "&nbsp;", fixedFormat)}</p>`).join("") : "";
     const specialPage = isSpecialPageSection(section);
     const layout = specialPage ? resolveSpecialPage(section.blocks, { definitions: template.placeholders, values, baseStyle: rules.body, language: template.language }) : null;
     if (layout) layout.blocks = resolveLayoutNodes(layout.blocks, section.id, thesis.layout, rules.body);
     // tocEntry: "headings" (default) lists the section's headings, "title" also its title, "none" nothing.
     const tocEntry = ["title", "none"].includes(section.tocEntry) ? section.tocEntry : "headings";
     // titleNumbering "continueH1": the title is the next numbered chapter ("6. KAYNAKLAR") in the text and the TOC.
-    const sectionHeading = !showsSectionTitle(section) ? "" : section.titleNumbering === "continueH1" ? `<h1>${escapeHtml(section.title)}</h1>` : `<h1 data-unnumbered="true"${tocEntry === "title" ? ' data-thesis-toc="title"' : ""}>${escapeHtml(section.title)}</h1>`;
+    const sectionHeading = !showsSectionTitle(section) ? "" : section.titleNumbering === "continueH1" ? `<h1>${wrapStaticFormat(escapeHtml(headingText), titleFormat)}</h1>` : `<h1 data-unnumbered="true"${tocEntry === "title" ? ' data-thesis-toc="title"' : ""}>${wrapStaticFormat(escapeHtml(headingText), titleFormat)}</h1>`;
     const bibliographyHtml = section.type === "bibliography" && bibliographyItems.some((item) => String(item).trim())
       ? `<ul class="thesis-bibliography">${bibliographyItems.filter((item) => String(item).trim()).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : "";
     const additions = !layout ? resolveLayoutNodes([], section.id, thesis.layout, rules.body) : [];
     const prefixHtml = layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}${specialPageHtml(additions)}`;
     const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${bibliographyHtml}`;
-    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, ...(section.verticalAlign ? { verticalAlign: section.verticalAlign } : {}), status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || (additions.length ? additions : null), layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language, sectionId: section.id, documentLayout: thesis.layout } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
+    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, ...(section.verticalAlign ? { verticalAlign: section.verticalAlign } : {}), status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: section.pageBreakBefore === "oddPage" ? "oddPage" : section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || (additions.length ? additions : null), layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language, sectionId: section.id, documentLayout: thesis.layout } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
   }
   // footnotes.numbering "document": references count on through the sections (default; "section" restarts each body at 1).
   let footnoteCount = 0;
@@ -378,8 +385,8 @@ export function buildThesisCss(documentModel) {
 
 export function buildThesisPrintHtml(documentModel, { nonce = "" } = {}) {
   const groups = groupThesisSections(documentModel.sections).filter(thesisGroupHasPageContent);
-  const pages = groups.map((group) => `<section class="thesis-paper" data-thesis-section="${escapeHtml(group.id)}">${group.sections.map((section) => `<section class="thesis-flow-section" data-thesis-flow-section="${escapeHtml(section.id)}"><div class="thesis-body">${withoutInlineStyleAttributes(thesisPresentationHtml(section, documentModel.language))}</div></section>`).join("")}</section>`).join("");
+  const pages = groups.map((group) => `<section class="thesis-paper" data-thesis-section="${escapeHtml(group.id)}"${group.pageBreakBefore === "oddPage" ? ' data-thesis-start-odd="true"' : ""}>${group.sections.map((section) => `<section class="thesis-flow-section" data-thesis-flow-section="${escapeHtml(section.id)}"><div class="thesis-body">${withoutInlineStyleAttributes(thesisPresentationHtml(section, documentModel.language))}</div></section>`).join("")}</section>`).join("");
   const pageRules = groups.map((group) => `@page thesis_${group.id}{size:${group.rules.page.widthMm}mm ${group.rules.page.heightMm}mm;margin:0}.thesis-paper[data-thesis-section="${group.id}"]{page:thesis_${group.id}}`).join("");
-  const css = `${buildThesisCss(documentModel)}${customFormatCss(pages, ".thesis-body")}${pageRules}body{margin:0;background:#fff}.thesis-paper{background:#fff}@media print{.thesis-paper{break-before:page;box-shadow:none}.thesis-paper:first-child{break-before:auto}}`.replace(/<\/style/gi, "<\\/style");
+  const css = `${buildThesisCss(documentModel)}${customFormatCss(pages, ".thesis-body")}${pageRules}body{margin:0;background:#fff}.thesis-paper{background:#fff}@media print{.thesis-paper{break-before:page;box-shadow:none}.thesis-paper:first-child{break-before:auto}.thesis-paper[data-thesis-start-odd="true"]{break-before:right}.thesis-paper:first-child[data-thesis-start-odd="true"]{break-before:auto}}`.replace(/<\/style/gi, "<\\/style");
   return `<!doctype html><html lang="${escapeHtml(documentModel.language || "tr")}"><head><meta charset="utf-8"><title>${escapeHtml(documentModel.title)}</title><style${styleNonceAttribute(nonce)}>${css}</style></head><body>${pages}</body></html>`;
 }

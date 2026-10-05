@@ -20,7 +20,7 @@ describe("AKÜ FBE İş Güvenliği tezsiz dönem projesi template", () => {
     assert.equal(t.page.numbering.style.fontSizePt, 11);
     assert.equal(t.page.footer.distanceMm, 12.506); // source pgMar=709 twips
     assert.equal(t.page.footer.trailingBlankLines, 1);
-    assert.equal(t.page.numbering.baselineFromTopMm, 278.8); // cached official Word render
+    assert.equal(t.page.numbering.baselineFromTopMm, undefined); // source ordinary PAGE paragraph + trailing blank, not an anchored textbox
     const intro = t.sections.find((s) => s.id === "introduction").overrides.page.numbering;
     assert.deepEqual([intro.format, intro.startAt, intro.restart], ["arabic", 1, true]);
     assert.equal(t.sections.find((s) => s.id === "inner-cover").overrides.page.numbering.enabled, false);

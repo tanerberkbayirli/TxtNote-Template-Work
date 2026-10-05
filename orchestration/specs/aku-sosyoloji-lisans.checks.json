@@ -1,0 +1,473 @@
+[
+  {
+    "id": "page-size-unknown",
+    "kind": "note",
+    "params": {
+      "text": "UNKNOWN: the sole guide does not specify thesis page size; its own sectPr is guide-page geometry and is not normative for a thesis."
+    },
+    "expected": "documented UNKNOWN",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "spec rule page.size; guide sectPr is not thesis evidence"
+    },
+    "evidence": "UNKNOWN"
+  },
+  {
+    "id": "body-left-margin",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 45,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37, 'Tezin genel biçimi': left 4.5 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-top-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.top"
+    },
+    "expected": 45,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37, 'Tezin genel biçimi': top margin 4.5 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-bottom-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.bottom"
+    },
+    "expected": 45,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37, 'Tezin genel biçimi': bottom margin 4.5 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.left"
+    },
+    "expected": 45,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37, 'Tezin genel biçimi': left margin 4.5 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-margin",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.right"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37, 'Tezin genel biçimi': right margin 3 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{2,}",
+      "ignore": "^[𝐸E]\\s*="
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37: Times New Roman; validate exact embedded font names"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37: 12 pt prose rule; example lists have separate 11.5 pt conflict"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37: 1.5 line spacing; expected 7.30 mm pitch is derived from 12 pt × 1.15 × 1.5"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "h1-example",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^BİRİNCİ BÖLÜM$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "Ek-3 (pict 3): 'BİRİNCİ BÖLÜM / KENTLEŞME', centered bold; hierarchy/typography INFERRED"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "h2-h3-format-unknown",
+    "kind": "note",
+    "params": {
+      "text": "UNKNOWN: exact H2/H3 typography, spacing, and page-break behavior are not stated; do not assert a numeric size or placement. The fixture includes the Ek-3 example hierarchy for later comparison against the cached source-page example."
+    },
+    "expected": "documented UNKNOWN",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "Ek-3 gives hierarchy text; no measurable typography requirement"
+    },
+    "evidence": "UNKNOWN"
+  },
+  {
+    "id": "h4-example",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^\\d+\\.\\d+\\.\\d+\\. Alt Başlık 1$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "Ek-3 example shows H4 Title Case bold; hierarchy is INFERRED, typography value is source-measured"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-page-label",
+    "kind": "page_labels",
+    "params": {
+      "pages": [
+        1,
+        2
+      ]
+    },
+    "expected": "none x2",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "numbering.xml numId 4 vs 6 separates Dış/İç Kapak from Ön Bölüm; cover label is inferred"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "front-page-label",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^ÖNSÖZ$"
+      }
+    },
+    "expected": "i",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraph 55: front matter uses lowercase Roman numerals; front-page start value follows numbering.xml"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "main-page-label",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^GİRİŞ$"
+      }
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraph 55: main/back matter uses Arabic numbering from 1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-inner-source-geometry",
+    "kind": "note",
+    "params": {
+      "text": "Source contains outer and inner cover examples (Ek-1 and Ek-2); these are example canvases inside the guide, not an independent thesis DOCX/PDF reference. Geometry must be compared to those cached source-page examples before claiming PASS."
+    },
+    "expected": "documented reference limitation",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "Ek-1/Ek-2 Word canvas examples"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "docx-valid",
+    "kind": "docx_no_undefined",
+    "params": {},
+    "expected": "none",
+    "tolerance": 0,
+    "source": {
+      "file": "generated DOCX",
+      "locator": "must contain no undefined values or unbalanced field markers"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "word-opens",
+    "kind": "word_opens",
+    "params": {},
+    "expected": "opens in Word",
+    "tolerance": 0,
+    "source": {
+      "file": "generated DOCX",
+      "locator": "openability and page-order check through Word COM"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "open-source-unknowns-conflicts",
+    "kind": "note",
+    "params": {
+      "text": "UNKNOWN: page size, abstract/approval/declaration pages, page-number font/distance, heading spacing/page breaks, caption layout, bibliography indent, footer/header details. Retain conflicts including 12 pt prose vs 11.5 pt example lists and page-specific list-title wording."
+    },
+    "expected": "documented",
+    "tolerance": 0,
+    "source": {
+      "file": "aku-sosyoloji-lisans.json",
+      "locator": "unknowns[] and conflicts[]"
+    },
+    "evidence": "UNKNOWN"
+  },
+  {
+    "id": "body-left-margin-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 45,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37, 'Tezin genel biçimi': left 4.5 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-word",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word",
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{2,}",
+      "ignore": "^[𝐸E]\\s*="
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37: Times New Roman; validate exact embedded font names"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-word",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37: 12 pt prose rule; example lists have separate 11.5 pt conflict"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-word",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraphs 28-37: 1.5 line spacing; expected 7.30 mm pitch is derived from 12 pt × 1.15 × 1.5"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "h1-example-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^BİRİNCİ BÖLÜM$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "Ek-3 (pict 3): 'BİRİNCİ BÖLÜM / KENTLEŞME', centered bold; hierarchy/typography INFERRED"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "h4-example-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^\\d+\\.\\d+\\.\\d+\\. Alt Başlık 1$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "Ek-3 example shows H4 Title Case bold; hierarchy is INFERRED, typography value is source-measured"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "cover-page-label-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": [
+        1,
+        2
+      ],
+      "source": "word"
+    },
+    "expected": "none x2",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "numbering.xml numId 4 vs 6 separates Dış/İç Kapak from Ön Bölüm; cover label is inferred"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "front-page-label-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^ÖNSÖZ$"
+      },
+      "source": "word"
+    },
+    "expected": "i",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraph 55: front matter uses lowercase Roman numerals; front-page start value follows numbering.xml"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "main-page-label-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^GİRİŞ$"
+      },
+      "source": "word"
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+      "locator": "paragraph 55: main/back matter uses Arabic numbering from 1"
+    },
+    "evidence": "EXPLICIT"
+  }
+]

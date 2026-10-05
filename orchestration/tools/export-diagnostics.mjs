@@ -39,6 +39,12 @@ export async function paginationDiagnostics(page, { sampleMs = 500, timeoutMs = 
             ready: root?.getAttribute("data-thesis-pagination-ready") ?? "missing",
             sheets: document.querySelectorAll(".thesis-sheet").length,
             stamps: document.querySelectorAll("[data-thesis-fn-stamp]").length,
+            stampDetails: [...document.querySelectorAll("[data-thesis-fn-stamp]")].map((node) => ({
+              kind: node.getAttribute("data-thesis-fn-stamp"), tag: node.tagName,
+              text: node.textContent.trim().slice(0, 90),
+              marginTop: getComputedStyle(node).marginTop,
+              breakBefore: getComputedStyle(node).breakBefore,
+            })),
             spacers: document.querySelectorAll("[data-thesis-fn-spacer],[data-thesis-mirror-narrow]").length });
         }, duration);
       }), sampleMs),

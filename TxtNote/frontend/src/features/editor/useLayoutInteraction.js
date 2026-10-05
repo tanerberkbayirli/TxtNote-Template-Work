@@ -416,7 +416,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
         return;
       }
       const focused = root.contains(document.activeElement) || root === document.activeElement;
-      if (!focused || event.target.closest("input,textarea,select,[contenteditable='true']")) return;
+      if (!focused || event.target.closest("input,textarea,select,[contenteditable='true'],[contenteditable='plaintext-only']")) return;
       const mod = event.ctrlKey || event.metaKey;
       if (mod && event.key.toLowerCase() === "z") { event.preventDefault(); event.stopPropagation(); event.shiftKey ? redo() : undo(); }
       else if (mod && event.key.toLowerCase() === "y") { event.preventDefault(); event.stopPropagation(); redo(); }

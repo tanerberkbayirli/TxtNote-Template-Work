@@ -37,29 +37,27 @@ const roman = { numbering: { format: "roman-lower" } };
 
 // İç Kapak (template section 1): 14 pt bold, 1.5 lines everywhere ("Sadece bu sayfada 14 punto", guide §4.2.2). Measured in the Word render of the template:
 // AKÜ seal 26.19 mm at x 30.00 / y 10.02 (top-and-bottom wrapped: the next text line starts below it, 45.0 mm), Kimya Bölümü logo 34.08 mm at
-// x 148.59..182.67 / y 5.29..39.37 (wrapNone: floats over the margins). The engine has no floating images, so the cover section uses the template's
-// own extents as its margins: top 5.29 (logo top), right 27.33 (logo right edge 182.67) with a 2.67 mm right indent on the cover text so that the text frame
-// stays x 30..180; the seal is lowered by 4.73 mm to its measured y 10.02. Text starts 5.63 mm below the logo bottom (45.0 mm). The cover's header distance is 0.3 mm
-// so that Word's (empty) header paragraph does not push the body below the 5.29 mm top margin (the template's section 1 has no header part).
+// x 148.59..182.67 / y 5.29..39.37 (wrapNone: floats over the margins). The
+// generic page-relative positioned-image path keeps the official section margins
+// and places these two images over the content frame. The text starts at the
+// measured 45.0 mm baseline after a source-derived spacer.
 const SEAL_MM = 26.19;
 const LOGO_MM = 34.08;
 const COVER_RIGHT_OVERHANG_MM = 2.67;
 const COVER_FRAME_MM = 150 + COVER_RIGHT_OVERHANG_MM;
+const COVER_TOP_MM = 10.02;
+// Spacer below the 10.02 mm top margin so the first cover line's glyph top lands on the official Word render's
+// measured 45.21 mm (AFYON line, Word-rendered template p.1); the positioned seal/logo keep no flow slot.
+const COVER_TEXT_SPACER_MM = 35.09;
 const innerCover = {
   id: "inner-cover", type: "innerCover", title: "İÇ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none",
-  overrides: { page: { margins: { topMm: 5.29, bottomMm: 30, rightMm: 30 - COVER_RIGHT_OVERHANG_MM }, header: { distanceMm: 0.3 }, numbering: { enabled: false }, trimTerminalTextLeading: true },
+  overrides: { page: { margins: { topMm: COVER_TOP_MM, bottomMm: 30, rightMm: 30 }, header: { distanceMm: 12.506 }, numbering: { enabled: false }, trimTerminalTextLeading: true },
     body: { ...page15, align: "center", fontSizePt: 14, fontWeight: 700 } },
   blocks: [
-    { type: "group", direction: "row", marginBottomMm: 5.63, blocks: [
-      { type: "group", direction: "column", widthPercent: SEAL_MM / COVER_FRAME_MM * 100, blocks: [
-        { type: "spacer", heightMm: 4.73 },
-        { type: "image", source: akuSeal, widthMm: SEAL_MM, heightMm: SEAL_MM, align: "left" },
-      ] },
-      { type: "spacer", heightMm: 0 },
-      { type: "image", source: kimyaLogo, widthMm: LOGO_MM, heightMm: LOGO_MM, align: "right", widthPercent: LOGO_MM / COVER_FRAME_MM * 100 },
-    ] },
-    // The text frame stays x 30..180 (the 2.67 mm right indent is not inherited by the images above).
-    { type: "group", direction: "column", style: { rightIndentMm: COVER_RIGHT_OVERHANG_MM }, blocks: [
+    { type: "image", source: akuSeal, widthMm: SEAL_MM, heightMm: SEAL_MM, layoutMode: "absolute", positionOrigin: "content", xMm: 0, yMm: 0, zIndex: 2, flowHeightMm: 0 },
+    { type: "image", source: kimyaLogo, widthMm: LOGO_MM, heightMm: LOGO_MM, layoutMode: "absolute", positionOrigin: "content", xMm: 118.59, yMm: -4.73, zIndex: 2, flowHeightMm: 0 },
+    { type: "spacer", heightMm: COVER_TEXT_SPACER_MM },
+    { type: "group", direction: "column", blocks: [
       { type: "text", value: "AFYON KOCATEPE ÜNİVERSİTESİ" },
       { type: "text", value: "FEN EDEBİYAT FAKÜLTESİ" },
       { type: "text", value: "KİMYA BÖLÜMÜ" },
@@ -283,7 +281,7 @@ const base = {
     notes: [
       "Öncelik (kullanıcı kararı, bağlayıcı): resmî DOCX şablonunun XML'i (sectPr, stiller, paragraf/çalıştırma özellikleri, boş paragraf yapısı, tablolar) ve onun Word çıktısı > kılavuzun DOCX'in tanımlamadığı açık metni > UNKNOWN (uydurma değer yok). Kılavuz ile DOCX çelişirse DOCX değeri uygulanır, iki değer de kayda geçer (orchestration/specs/aku-kimya-lisans.json 'conflicts'). Şablon (2026-02) kılavuzdan (2023-12) yenidir; eşleştirmeleri kaynaklarda belirtilmemiştir. Kırmızı açıklama kutuları ve '(Bir boşluk)'/'(*)' notları basılmaz. Tek tür (Türkçe lisans bitirme tezi).",
       "Sayfa: A4 dikey (11904 x 16838 tw), dört kenar 30 mm (1701 tw; kılavuz §2.3 'sayfa kenarlarından 3 cm' aynı). Üst/alt bilgi uzaklığı 12,51 mm (709 tw; son bölümde 708 tw), kılavuz sessiz. Sayfa numarası altta ortada, süssüz, Times New Roman 10 pt (altbilgi paragrafında boyut yok = Word varsayılanı 10 pt; kılavuz §2.7 de 10 punto der: uyumlu). Numaralama: kapak, onay ve etik numarasız (şablon bölüm 1-2 altbilgisi boş; kılavuz §2.7), ÖZET i, ABSTRACT ii ... (bölüm 3 lowerRoman start=1), 1. GİRİŞ Arapça 1 (bölüm 4 start=1), KAYNAKLAR/ÖZGEÇMİŞ/EKLER devam eder.",
-      "İç Kapak (şablon bölüm 1): 14 pt koyu, 1,5 satır. Üst kenar boşluğu 10,02 mm (568 tw) şablondan, kılavuzun genel 3 cm kuralı ile ÇELİŞKİ (DOCX uygulanır). AKÜ mührü 26,19 mm (x 30,00, y 10,02, üst-alt sarmalı) ve Kimya Bölümü logosu 34,08 mm (x 148,59-182,67, y 5,29-39,37; wrapNone, kenar boşluklarının üstüne taşar): motorda kayan resim yok; kapak bölümü şablonun ölçülen uçlarını kenar boşluğu yapar (üst 5,29, sağ 27,33 mm + metne 2,67 mm sağ girinti, mühür 4,73 mm aşağıda). Şablondaki '(Devam)' başlık satırı ayrı tek aralıklı bir örnek paragraftır (ikinci başlık satırı örneği), kural olarak alınmadı (sonraki satırlar 5,68 mm yukarıda başlar). Dış Kapak: kılavuzda yalnız 'plastik spiralli ciltlenmelidir' (§4.2.1); ne kılavuzda ne şablonda sayfası vardır: düzeni UNKNOWN, üretilmez.",
+      "İç Kapak (şablon bölüm 1): 14 pt koyu, 1,5 satır. Üst kenar boşluğu 10,02 mm (568 tw) ve sağ kenar boşluğu 30 mm şablondan, kılavuzun genel 3 cm kuralı ile uyumludur. AKÜ mührü 26,19 mm (x 30,00, y 10,02, üst-alt sarmalı) ve Kimya Bölümü logosu 34,08 mm (x 148,59-182,67, y 5,29-39,37; wrapNone, kenar boşluğunun üstüne taşar): generic page-relative positioned images preserve both the source section geometry and the measured overhang. Metin başlangıcı 45,0 mm ölçümüne göre kaynak türevi boşlukla korunur. Şablondaki '(Devam)' başlık satırı ayrı tek aralıklı bir örnek paragraftır (ikinci başlık satırı örneği), kural olarak alınmadı. Dış Kapak: kılavuzda yalnız 'plastik spiralli ciltlenmelidir' (§4.2.1); ne kılavuzda ne şablonda sayfası vardır: düzeni UNKNOWN, üretilmez.",
       "Onay sayfası (şablon bölüm 2, §4.2.3): 14 pt koyu büyük harf tek aralıklı iki üst satır, 10 pt tek aralıklı üç boş satır (satır boyutu yok = 10 pt), başlık, üç boş, 12 pt 1,5 aralıklı kabul cümlesi, iki boş satır, koyu danışman satırı ve sağda İMZA. Bölüm 2'nin onay ile etik sayfasını ayıran boş paragraflar (47 adet, 10 pt) sayfa dolgusudur: motorda ayrı sayfa olarak uygulanır. Etik sayfası: madde işareti Symbol yazı tipinde U+F02D (eksi '−'), sol 0 / metin 7,5 mm (numbering.xml numId 26 + paragraf ind 425/425 tw); ad satırı koyu, 1,5 aralıklı, sağa yaslı.",
       "Gövde: Times New Roman 12 pt, iki yana yaslı, 1,5 satır (Word 20,7 pt), girintisiz; paragraflar arası ve başlık öncesi/sonrası bir BOŞ 1,5 satır (şablonun boş paragrafları, ölçülen kaynak/paragraf perdesi 14,61 mm = 2 satır; kılavuz §2.4/§2.6 'önce ve sonra 1 satır boşluk (1,5 aralıklı)' aynı): motorda paragraf sonrası 20,7 pt, başlık öncesi 0 (Word toplamlı aralık). Başlıklar: şablon stilleri Balk2-Balk5, 4 düzey, hepsi TNR 12 koyu, sola yaslı; sayılar elle yazılır (1. / 2.1 / 2.2.1 / 2.3.1.1); 1. düzey büyük harf ('ve/veya/ile' küçük) ve yeni sayfa, 2. düzey Baş Harfleri Büyük (kılavuz §2.8); 3./4. düzey büyük/küçük harf kılavuzda ve şablon stillerinde belirtilmemiştir (şablonun örnek başlıkları Baş Harfleri Büyük, ama yer tutucu metindir): uygulanmadı, UNKNOWN. Widow/orphan denetimi kılavuzda zorunlu (§2.4), şablon Normal stilinde kapalıdır: kılavuz uygulanır.",
       "Şekil/Çizelge/Resim: bölüm numaralı ('Şekil 2.1', yalnız boşluk), etiket koyu, 11 pt, tek satır, iki yana yaslı, devam satırları etiket genişliğinde asılı, sonra 6 nk (şablon örnekleri ve kılavuz §3.3 aynı; şablon örneklerinin sonundaki nokta yazar içeriğidir). Çizelge başlığı üstte, Şekil ve Resim başlığı altta; görsel ile başlık arası 6,86 pt (Word çıktısında ölçüldü). Bölünen çizelge: 'Çizelge 3.1 (Devam) …' (kılavuz §3.1 ve şablonun 'EK 2. (Devam)' örneği). Çizelge: üst, başlık altı ve son satır altı 0,5 pt çizgi, yan çizgi yok (şablon tcBorders sz=4, dört örnek de aynı); hücre yazısı 12 pt (şablonun iki örneği 12 pt, ikisi boyutsuz = 10 pt: tutarsız; kılavuz §2.2 12 pt der, en küçük 8 pt). Çizelge altı açıklama 10 pt tek satır iki yana yaslı, 6 nk önce/sonra (şablon açıklama paragrafı boyutsuz = 10 pt, kılavuz §3.3 10 punto: uyumlu). Denklem: Cambria Math 12 pt, ortalı, numara (bölüm.sıra) sağda, öncesi ve sonrası boş 1,5 satır (şablon ve kılavuz §2.10).",

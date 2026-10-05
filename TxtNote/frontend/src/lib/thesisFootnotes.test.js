@@ -155,7 +155,7 @@ describe("Task 10A.1 page-bottom footnotes (generic)", () => {
     const css = thesisPagedCss(groupThesisSections(compileThesisDocument(template(), {}, "Tez", "").sections));
     assert.match(css, /\[data-thesis-fn-stamp="reserve"\]\{box-decoration-break:clone;padding-bottom:attr\(data-thesis-fn-reserve px\) !important;margin-bottom:attr\(data-thesis-fn-margin px\) !important\}/);
     assert.match(css, /\[data-thesis-fn-spacer\]\{display:block;float:left !important;clear:none;width:100% !important;height:attr\(data-thesis-fn-spacer px\) !important/);
-    assert.match(css, /\[data-thesis-fn-stamp="break"\]\{break-before:column !important\}/);
+    assert.match(css, /\[data-thesis-fn-stamp="break"\]\{break-before:column !important;margin-top:0 !important\}/);
     const metrics = pageMetrics(generic.page);
     assert.equal(flowPagePitchPx(metrics), Math.floor(metrics.contentHeightPx * 64) / 64 + Math.floor(metrics.rowGapPx * 64) / 64);
     assert.ok(Math.abs(flowPagePitchPx(metrics) - metrics.stridePx) < 0.05);

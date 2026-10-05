@@ -20,6 +20,7 @@
  */
 import { resolvePlaceholders } from "./engine.js";
 import { convertLength } from "./units.js";
+import { staticFormatOpenTag } from "./staticFormat.js";
 
 export const SPECIAL_PAGE_BLOCK_TYPES = Object.freeze(["text", "metadata", "image", "spacer", "separator", "group"]);
 export const SPECIAL_PAGE_MAX_DEPTH = 4;
@@ -83,7 +84,8 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
       marginBottomMm: finite(block.marginBottomMm),
       widthPercent: Number.isFinite(block.widthPercent) ? block.widthPercent : null,
       ...(typeof block.layoutMode === "string" ? { layoutMode: block.layoutMode } : {}),
-      ...["xMm", "yMm", "widthMm", "heightMm", "zIndex"].filter((key) => Number.isFinite(block[key])).reduce((out, key) => ({ ...out, [key]: block[key] }), {}),
+      ...(block.positionOrigin === "content" ? { positionOrigin: "content" } : {}),
+      ...["xMm", "yMm", "widthMm", "heightMm", "flowHeightMm", "zIndex"].filter((key) => Number.isFinite(block[key])).reduce((out, key) => ({ ...out, [key]: block[key] }), {}),
       ...(typeof block.id === "string" ? { id: block.id } : {}),
       ...(typeof block.locked === "boolean" ? { locked: block.locked } : {}),
       ...(typeof block.lockAspectRatio === "boolean" ? { lockAspectRatio: block.lockAspectRatio } : {}),
@@ -154,7 +156,9 @@ export function specialPageHtml(nodes) {
       return node.border ? `<div class="thesis-layout-frame" data-thesis-frame="${node.path}"${node.border.collapse ? ` data-thesis-rule-pt="${node.border.outerPt}"` : ""}>${node.border.innerPt > 0 ? `<div class="thesis-layout-frame-inner" data-thesis-frame-inner="${node.path}">${group}</div>` : group}</div>` : group;
     }
     const content = node.runs ? node.runs.map((run) => (run.bold ? `<b class="thesis-layout-strong">${escapeHtml(run.text)}</b>` : escapeHtml(run.text))).join("").replace(/\n/g, "<br>") : escapeHtml(node.text).replace(/\n/g, "<br>");
-    return `<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${content || "&nbsp;"}</div>`;
+    const formatOpen = node.style?.highlight ? staticFormatOpenTag({ highlight: node.style.highlight }) : "";
+    const formatted = formatOpen ? `${formatOpen}${content || "&nbsp;"}</span>` : (content || "&nbsp;");
+    return `<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${formatted}</div>`;
   }).join("");
 }
 
@@ -266,6 +270,7 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
         for (const key of ["xMm", "yMm", "widthMm"]) if (!Number.isFinite(block[key]) || (key === "widthMm" && block[key] <= 0)) errors.push(`${at}.${key} geçersiz`);
         if (block.type === "image" && !(Number.isFinite(block.heightMm) && block.heightMm > 0)) errors.push(`${at}.heightMm geçersiz`);
         if (block.zIndex !== undefined && !Number.isFinite(block.zIndex)) errors.push(`${at}.zIndex geçersiz`);
+        if (block.flowHeightMm !== undefined && !nonnegative(block.flowHeightMm)) errors.push(`${at}.flowHeightMm geçersiz`);
       }
     }
     for (const key of ["marginTopMm", "marginBottomMm"]) if (block[key] !== undefined && !nonnegative(block[key])) errors.push(`${at}.${key} geçersiz`);

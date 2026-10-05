@@ -53,7 +53,7 @@ const DOCX_SOURCE_MARGINS = { topMm: 30, bottomMm: 30, leftMm: 30, rightMm: 30 }
 const outerCover = (degree) => ({
   id: "outer-cover", type: "outerCover", title: "DIŞ KAPAK", status: "required", group: "cover", mode: "static",
   // The guide's printed cover box ends at y=275 mm on an A4 page (297 - 22 mm).
-  overrides: { page: { margins: { topMm: OUTER_TOP_MM, bottomMm: 22, leftMm: 55, rightMm: 55 }, docxMargins: DOCX_SOURCE_MARGINS, docxContentFrame: { xMm: 55, yMm: OUTER_TOP_MM, widthMm: 100 }, numbering: { enabled: false } }, body: { ...page15, lineHeight: 1, align: "center" } },
+  overrides: { page: { margins: { topMm: OUTER_TOP_MM, bottomMm: 22, leftMm: 55, rightMm: 55 }, docxMargins: DOCX_SOURCE_MARGINS, docxContentFrame: { xMm: 55, yMm: OUTER_TOP_MM, widthMm: 100, heightMm: 275 - OUTER_TOP_MM }, numbering: { enabled: false } }, body: { ...page15, lineHeight: 1, align: "center" } },
   blocks: [
     { type: "metadata", field: "THESIS_TITLE", fallback: "TEZ BAŞLIĞI", style: { ...bold, ...upper } },
     { type: "text", value: degree.cover, style: { spaceBeforePt: 6 } },

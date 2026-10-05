@@ -90,22 +90,36 @@ export function chapterStartPageIndexes(flow, metrics) {
 /** The PDF writer uses the same restart/advance rule per physical page. */
 export function numberThesisPages(sections, pageCounts = {}, chapterStarts = {}) {
   let logicalPage = 0;
+  let physicalPages = 0;
   return sections.map((section) => {
     const rule = section.rules.page.numbering;
+    const hasContent = thesisGroupHasPageContent(section);
+    if (!hasContent) {
+      if (rule.restart) logicalPage = (rule.startAt ?? 1) - 1;
+      return { sectionId: section.id, labels: [], indexLabels: [], blankPageIndexes: [] };
+    }
+    const blankBefore = section.pageBreakBefore === "oddPage" && physicalPages % 2 === 1;
+    // The parity sheet belongs to the preceding numbering sequence. A restart on
+    // this section is applied afterwards, to its first printed/content page.
+    if (blankBefore) logicalPage += 1;
     if (rule.restart) logicalPage = (rule.startAt ?? 1) - 1;
-    if (!thesisGroupHasPageContent(section)) return { sectionId: section.id, labels: [] };
-    const count = Math.max(1, Math.floor(pageCounts[section.id] || 1));
-    const indexLabels = [];
-    const labels = Array.from({ length: count }, (_, pageIndex) => {
+    // Measured counts include the CSS-generated parity column. Before the first
+    // measurement a missing/default count is one content page, so reserve both
+    // the blank column and that page from the first render.
+    const count = Math.max(blankBefore ? 2 : 1, Math.floor(pageCounts[section.id] || 1));
+    const indexLabels = blankBefore ? [""] : [];
+    const labels = blankBefore ? [""] : [];
+    const blankPageIndexes = blankBefore ? [0] : [];
+    for (let pageIndex = blankBefore ? 1 : 0; pageIndex < count; pageIndex += 1) {
       logicalPage += 1;
       const counted = formatNumber(logicalPage, rule.format);
       // indexLabelWhenHidden: a counted page whose number is not printed still shows its number in contents/lists.
       indexLabels.push(rule.enabled || rule.indexLabelWhenHidden ? counted : "");
       // numbering.omitOnChapterStart: the page that opens a chapter is counted (and listed in contents) but prints no number.
-      if (rule.omitOnChapterStart && chapterStarts[section.id]?.has(pageIndex)) return "";
-      return rule.enabled ? counted : "";
-    });
-    return { sectionId: section.id, labels, indexLabels };
+      labels.push(rule.omitOnChapterStart && chapterStarts[section.id]?.has(pageIndex) ? "" : rule.enabled ? counted : "");
+    }
+    physicalPages += count;
+    return { sectionId: section.id, labels, indexLabels, blankPageIndexes };
   });
 }
 
@@ -120,11 +134,14 @@ export function buildThesisPageModel(groups, pageCounts = {}, chapterStarts = {}
   let physicalIndex = 0;
   return groups.map((group, groupIndex) => {
     const { numbering, header, footer } = group.rules.page;
+    const blankIndexes = new Set(numbers[groupIndex].blankPageIndexes || []);
+    const firstContentIndex = blankIndexes.has(0) ? 1 : 0;
     const pages = numbers[groupIndex].labels.map((label, index) => ({
       groupId: group.id,
       index,
       physicalIndex: physicalIndex++,
       totalPages,
+      blank: blankIndexes.has(index),
       label,
       indexLabel: numbers[groupIndex].indexLabels[index],
       numberPosition: numbering.position === "top" ? "top" : "bottom",
@@ -132,10 +149,10 @@ export function buildThesisPageModel(groups, pageCounts = {}, chapterStarts = {}
       numberBaselineFromTopMm: numbering.baselineFromTopMm,
       numberXmm: numbering.xMm,
       numberWidthMm: numbering.widthMm,
-      showHeader: !(index === 0 && header?.firstPage === "omit"),
-      showFooter: !(index === 0 && footer?.firstPage === "omit"),
-      headerContent: index === 0 && header?.firstContent !== undefined ? header.firstContent : (physicalIndex % 2 === 0 && header?.evenContent !== undefined ? header.evenContent : header?.content),
-      footerContent: index === 0 && footer?.firstContent !== undefined ? footer.firstContent : (physicalIndex % 2 === 0 && footer?.evenContent !== undefined ? footer.evenContent : footer?.content),
+      showHeader: !blankIndexes.has(index) && !(index === firstContentIndex && header?.firstPage === "omit"),
+      showFooter: !blankIndexes.has(index) && !(index === firstContentIndex && footer?.firstPage === "omit"),
+      headerContent: blankIndexes.has(index) ? undefined : index === firstContentIndex && header?.firstContent !== undefined ? header.firstContent : (physicalIndex % 2 === 0 && header?.evenContent !== undefined ? header.evenContent : header?.content),
+      footerContent: blankIndexes.has(index) ? undefined : index === firstContentIndex && footer?.firstContent !== undefined ? footer.firstContent : (physicalIndex % 2 === 0 && footer?.evenContent !== undefined ? footer.evenContent : footer?.content),
     }));
     return { groupId: group.id, pages };
   });
@@ -181,7 +198,9 @@ export function thesisPagedCss(groups) {
     // A block that continues past a further page instead gets a transient float spacer at the first line leaving the note page
     // (footnotes.js placeSpacer), so only its first fragment is shortened.
     `${FLOW} [data-thesis-fn-spacer]{display:block;float:left !important;clear:none;width:100% !important;height:attr(data-thesis-fn-spacer px) !important;margin:0 !important;padding:0 !important;border:0 !important;pointer-events:none}`,
-    `${FLOW} [data-thesis-fn-stamp="break"]{break-before:column !important}`,
+    // A note-capacity cut is a natural Word page break: discard the incoming
+    // paragraph gap even though the allocator represents it as a forced column cut.
+    `${FLOW} [data-thesis-fn-stamp="break"]{break-before:column !important;margin-top:0 !important}`,
     // Continuation-only pages after the body (a note longer than the rest of the document).
     `${FLOW} .thesis-footnote-tail{display:block;height:1px;margin:0;break-before:column}`,
   ];
@@ -193,6 +212,7 @@ export function thesisPagedCss(groups) {
     rules.push(lead > 0
       ? `${scope}{column-height:calc(${page.heightMm - topMm - bottomMm}mm + ${lead}mm);row-gap:calc(${bottomMm}mm + ${THESIS_PAGE_GAP_PX}px + ${topMm}mm - ${lead}mm)}`
       : `${scope}{column-height:${page.heightMm - topMm - bottomMm}mm;row-gap:calc(${bottomMm}mm + ${THESIS_PAGE_GAP_PX}px + ${topMm}mm)}`);
+    if (group.pageBreakBefore === "oddPage") rules.push(`${scope} > [data-thesis-odd-page-spacer]{display:block;width:0;height:calc(${page.heightMm - topMm - bottomMm}mm + ${lead}mm);margin:0;padding:0;break-after:column;break-inside:avoid;pointer-events:none}`);
     // Guard: only running text may use the terminal leading. Headings, figures, table wrappers and table cells get a trailing
     // L-high block cancelled by a negative margin: it takes part in the fit test (the block needs L more room) but not in the height.
     if (lead > 0) {

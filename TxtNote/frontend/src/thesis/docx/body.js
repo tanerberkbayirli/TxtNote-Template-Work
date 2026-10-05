@@ -28,14 +28,15 @@ export function docxChildren(section, context) {
       const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : rule.hanging > 0 ? rule.hanging : 0;
       const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
       const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
-      // A number on its own line (ownLine headings) is a label paragraph + a title paragraph
-      // with no space between them (the PDF/editor show them as one block); keepNext holds them together.
+      // A numbered chapter TOC row is one Word paragraph with an explicit line break, matching the
+      // editor/PDF row block so before/after spacing surrounds the block instead of its two lines.
       const lineLabel = row.labelLine && row.label && row.rowTitle !== undefined;
-      if (lineLabel) children.push(docxParagraph([{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }], { ...style, hangingIndentMm: undefined, spaceAfterPt: 0 }, context, { keepNext: true }));
-      const runs = lineLabel ? plainRuns(row.rowTitle) : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
+      const runs = lineLabel
+        ? [{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }, { type: "break" }, ...plainRuns(row.rowTitle)]
+        : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
       const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
       if (withPage) runs.push({ type: "tab" }, row.anchor ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? "") } : plainRuns(row.page)[0] || { type: "text", text: "" });
-      children.push(docxParagraph(runs, lineLabel ? { ...style, spaceBeforePt: 0 } : style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
+      children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
     }
     if (rule.kind === "toc") {
       const rows = children.splice(indexParagraphStart);
@@ -55,9 +56,9 @@ export function docxChildren(section, context) {
   if (section.layout) {
     const split = splitLayoutNodes(section.layout);
     const frame = page.docxContentFrame;
-    if (frame) children.push(positionedSpecialPageDocx(split.flow, context, frame));
+    if (frame) children.push(positionedSpecialPageDocx(split.flow, { ...context, pageMargins: page.margins }, frame));
     else children.push(...specialPageDocx(split.flow, context, widthMm));
-    children.push(...positionedLayoutDocx(split.positioned, { language: context.language, lineSpacing: context.lineSpacing }));
+    children.push(...positionedLayoutDocx(split.positioned, { language: context.language, lineSpacing: context.lineSpacing, pageMargins: page.margins }));
   }
   let afterHeading = false;
   // lineSpacing.blockGap: the gap between two blocks comes from the block-gap table (blockGap.js), the same one the editor CSS uses;
@@ -88,7 +89,12 @@ export function docxChildren(section, context) {
     if (block.type === "heading") {
       const style = headings[block.level] || headings[1] || body;
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
-      const runs = block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
+      // Inline character formatting (e.g. a coloured section title) travels as runs when they spell exactly the heading text; plain headings keep the single-run path.
+      const inlineFormatted = block.runs?.length && block.runs.every((run) => run.type === "text") && block.runs.map((run) => run.text).join("") === block.text
+        && block.runs.some((run) => run.bold || run.italic || run.underline || run.strike || run.color || run.highlight || run.fontSizePt);
+      const runs = inlineFormatted
+        ? (block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...block.runs] : [...(block.thesisNumber ? plainRuns(`${block.thesisNumber} `) : []), ...block.runs])
+        : block.thesisNumber && block.thesisNumberLine ? [...plainRuns(block.thesisNumber), { type: "break" }, ...plainRuns(block.text)] : plainRuns(`${block.thesisNumber ? `${block.thesisNumber} ` : ""}${block.text}`);
       const indent = block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {};
       const indexedRow = context.tocRowsByAnchor?.get(block.thesisAnchor);
       const noPage = indexedRow?.includePageNumber === false;

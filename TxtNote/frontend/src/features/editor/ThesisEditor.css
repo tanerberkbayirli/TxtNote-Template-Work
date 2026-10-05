@@ -14,27 +14,6 @@
 .thesis-ribbon-group>span{bottom:1px;color:#63738a;font-size:10px;font-weight:600;letter-spacing:.01em}
 .dark .thesis-ribbon-group>span{color:#a6b2c4}
 .thesis-ribbon-group .thesis-ribbon-control,.thesis-ribbon-group .thesis-ribbon-field input,.thesis-ribbon-group .thesis-ribbon-field select{max-width:100%;min-width:0}
-.thesis-ribbon-panel--0>.thesis-ribbon-group{grid-column:span 4}
-.thesis-ribbon-panel--1{grid-template-columns:auto repeat(12,minmax(0,1fr))}
-.thesis-ribbon-panel--1>.thesis-ribbon-history-group{grid-column:span 1;padding-inline:6px}
-.thesis-ribbon-panel--1>.thesis-ribbon-font-group{grid-column:span 3}
-.thesis-ribbon-panel--1>.thesis-ribbon-paragraph-group{grid-column:span 3}
-.thesis-ribbon-panel--1>.thesis-ribbon-style-group{grid-column:span 4}
-.thesis-ribbon-panel--1>.thesis-ribbon-edit-group{grid-column:span 2;border-right:0}
-.thesis-ribbon-panel--2>.thesis-ribbon-group{grid-column:span 2}
-.thesis-ribbon-panel--2>.thesis-ribbon-group:last-child:nth-child(5){grid-column:span 4;border-right:0}
-.thesis-ribbon-panel--2>.thesis-ribbon-group:last-child{border-right:0}
-.thesis-ribbon-panel--3>.thesis-ribbon-group,.thesis-ribbon-panel--4>.thesis-ribbon-group,.thesis-ribbon-panel--5>.thesis-ribbon-group{grid-column:span 4}
-.thesis-ribbon-panel--3>.thesis-ribbon-group:last-child,.thesis-ribbon-panel--4>.thesis-ribbon-group:last-child,.thesis-ribbon-panel--5>.thesis-ribbon-group:last-child{border-right:0}
-.thesis-ribbon-panel--1 .thesis-ribbon-font-group .thesis-ribbon-group-content{display:grid;grid-template-columns:1fr auto;gap:3px;align-items:center}
-.thesis-ribbon-panel--1 .thesis-ribbon-font-group .thesis-ribbon-button-row{grid-column:1/-1}
-.thesis-ribbon-panel--1 .thesis-ribbon-font-group .thesis-ribbon-field{grid-column:1/-1}
-.thesis-ribbon-panel--1 .thesis-ribbon-font-name{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#526176;font-size:11px}
-.thesis-ribbon-panel--1 .thesis-ribbon-paragraph-group .thesis-ribbon-group-content{display:grid;grid-template-columns:1fr 1fr;gap:3px}
-.thesis-ribbon-panel--1 .thesis-ribbon-paragraph-group .thesis-ribbon-control{grid-column:span 1}
-.thesis-ribbon-panel--1 .thesis-ribbon-paragraph-group .thesis-ribbon-button-row{grid-column:1/-1;gap:2px}
-.thesis-ribbon-panel--1 .thesis-ribbon-button-row{flex-wrap:wrap}
-.thesis-ribbon-panel--1 .thesis-ribbon-field{flex-wrap:wrap}
 .thesis-style-gallery{display:grid;grid-template-columns:repeat(3,96px);gap:6px;width:100%;height:100%;align-content:center;overflow-x:auto;overflow-y:hidden;grid-auto-flow:dense}
 .thesis-style-card{display:flex;min-width:0;min-height:32px;flex-direction:column;justify-content:center;gap:2px;padding:3px 7px;border:1px solid #d8e1ed;border-radius:5px;background:#fff;text-align:left;color:#20334d;box-shadow:0 1px 1px #13274308}
 .dark .thesis-style-card{border-color:#3b4a60;background:#182232;color:#e5e7eb}
@@ -91,18 +70,15 @@
 .thesis-ribbon-view-info>.thesis-ribbon-group-content>.thesis-ribbon-tool{grid-column:1/-1;justify-self:start}
 .thesis-ribbon-group-content{align-items:flex-start}
 .thesis-file-context,.thesis-ribbon-feature-tile,.thesis-page-measure,.thesis-zoom-feature,.thesis-reference-summary{width:100%}
-.thesis-ribbon-panel--1 .thesis-style-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
-.thesis-ribbon-panel--2 .thesis-ribbon-group-content>button{align-self:flex-start}
-.thesis-ribbon-panel--2 .thesis-ribbon-field,.thesis-ribbon-panel--2 .thesis-ribbon-control{width:100%}
-.thesis-ribbon-panel--2 .thesis-ribbon-field input{width:53px}
 .thesis-layout-actions,.thesis-view-action-row{display:flex;flex-wrap:wrap;gap:7px}
 .thesis-layout-margins{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;width:100%;padding:5px 0;border-block:1px solid #e4eaf2}
 .dark .thesis-layout-margins{border-color:#344256}
 .thesis-layout-margins span{display:grid;gap:2px;color:#7a879a;font-size:9px;text-transform:uppercase}
 .thesis-layout-margins strong{color:#40536c;font-size:11px;font-weight:650;text-transform:none;white-space:nowrap}
 .dark .thesis-layout-margins strong{color:#d0dbea}
-.thesis-ribbon-panel--3 .thesis-ribbon-group-content>.thesis-ribbon-tool,.thesis-ribbon-panel--5 .thesis-ribbon-group-content>.thesis-ribbon-tool{align-self:flex-start}
-.thesis-ribbon-panel--3 .thesis-ribbon-group-content>.thesis-ribbon-hint,.thesis-ribbon-panel--5 .thesis-ribbon-group-content>.thesis-ribbon-hint{max-width:100%;white-space:normal}
-.thesis-ribbon-panel--4 .thesis-ribbon-group-content>.thesis-ribbon-tool,.thesis-ribbon-panel--4 .thesis-ribbon-group-content>.thesis-ribbon-control{align-self:flex-start;max-width:100%}
 @media(max-width:1100px) and (min-width:761px){.thesis-ribbon-panel{padding-inline:7px}.thesis-ribbon-group{padding-inline:6px}.thesis-ribbon-tool{padding-inline:5px}.thesis-ribbon-panel--1>.thesis-ribbon-font-group{grid-column:span 4}.thesis-ribbon-panel--1>.thesis-ribbon-paragraph-group{grid-column:span 3}.thesis-ribbon-panel--1>.thesis-ribbon-style-group{grid-column:span 3}.thesis-ribbon-panel--1>.thesis-ribbon-edit-group{grid-column:span 2}}
 @media(max-width:760px){.thesis-ribbon-panel{display:flex;min-height:90px;gap:0;overflow-x:auto;overflow-y:hidden;padding:8px 6px 6px}.thesis-ribbon-group{width:auto;flex:none;min-width:max-content;max-width:90vw;padding-inline:8px}.thesis-ribbon-group-content{width:auto;min-width:0}.thesis-ribbon-panel--1 .thesis-ribbon-style-group{min-width:330px}.thesis-ribbon-panel--1 .thesis-ribbon-edit-group{min-width:140px}.thesis-ribbon-panel--0 .thesis-ribbon-export-group{min-width:340px}.thesis-export-tiles{min-width:310px}.thesis-ribbon-panel--0 .thesis-ribbon-file-context{min-width:270px}.thesis-style-gallery{min-width:300px}.thesis-ribbon-control{max-width:170px}.thesis-ribbon-panel--2>.thesis-ribbon-group:last-child:nth-child(5){grid-column:auto}}
+/* Template text the writer may replace (section title, fixed paragraphs): visible only while hovering or editing. */
+.thesis-paper [data-thesis-text]{cursor:text}
+.thesis-paper [data-thesis-text]:hover{outline:1px dashed #7aa7d8;outline-offset:2px}
+.thesis-paper [data-thesis-text]:focus{outline:2px solid #2677c9;outline-offset:2px}

@@ -1,0 +1,916 @@
+[
+  {
+    "id": "page-size",
+    "kind": "page_size",
+    "params": {},
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.1 (A4 21 × 29.7 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-margin",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.3 (3 cm); template sectPr #2-4 pgMar left=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-margin",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.3 (3 cm); template sectPr #2-4 pgMar right=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-top-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1,
+        2,
+        3
+      ],
+      "field": "margins.top"
+    },
+    "expected": 30,
+    "tolerance": 0.05,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "locator": "sectPr #2-4 w:pgMar top=1701 tw (30.004 mm)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "body-bottom-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        1,
+        2,
+        3
+      ],
+      "field": "margins.bottom"
+    },
+    "expected": 30,
+    "tolerance": 0.05,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "locator": "sectPr #2-4 w:pgMar bottom=1701 tw (30.004 mm)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "inner-cover-top-margin-docx",
+    "kind": "docx_section",
+    "params": {
+      "sections": [
+        0
+      ],
+      "field": "margins.top"
+    },
+    "expected": 10.02,
+    "tolerance": 0.05,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "locator": "sectPr #1 w:pgMar top=568 tw (10.02 mm)"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "body-font",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{2,}",
+      "ignore": "^[𝐸E]\\s*="
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.2 (Times New Roman); exact embedded font names must be checked in output"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.2 (12 pt; permitted smaller table/formula exceptions documented in spec)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.4; measured body pitch 7.29–7.32 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "inner-cover-fixed-baselines",
+    "kind": "line_baselines",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "lines": [
+        "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+        "^FEN EDEBİYAT FAKÜLTESİ$",
+        "^MOLEKÜLER BİYOLOJİ ve GENETİK BÖLÜMÜ$",
+        "^BİTİRME TEZİ$"
+      ],
+      "source": "layout"
+    },
+    "expected": [
+      43.949,
+      52.458,
+      60.967,
+      103.565
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "locator": "cached official Word render source/reference/official-word.pdf p.1; visible fixed-line baselines (glyph bottoms are not baselines)"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Fresh owned Word render resolves the old XML model uncertainty; exact measured baselines replace the previously mislabelled glyph-bottom coordinates."
+  },
+  {
+    "id": "h1-format",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5-6 §2.7 (12 pt bold uppercase H1; ve/veya/ile remain lower case)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (12 pt)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-left-edge",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.4 / p.6 §2.7, headings start at left text boundary with no indent"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (12 pt, bold; H2 Title Case)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-left-edge",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.4 / p.6 §2.7, no indent from left text boundary"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings 12 pt); template document.xml sample H3"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-size",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "layout"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings 12 pt); template document.xml sample H4"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-bold",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "pdf"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-approval-ethics-unnumbered",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "until": "^ÖZET$"
+      },
+      "each": true
+    },
+    "expected": "",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.6; inner cover, approval, and ethics pages are unnumbered; checks visible numbering, not an unsupported separate physical page per section; checks visible numbering, not an unsupported separate physical page per section"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "abstract-page-label",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": "i",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.6; Roman sequence starts at abstract with i"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "introduction-page-label",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^1\\. GİRİŞ$"
+      }
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.6; Arabic sequence starts at GİRİŞ with 1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-number-formats",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "pgNumType",
+      "attrs": [
+        "fmt"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "lowerRoman",
+      "decimal"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "locator": "word/document.xml sectPr #3 lowerRoman; sectPr #4 decimal"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "page-number-starts",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "pgNumType",
+      "attrs": [
+        "start"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "1"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "locator": "word/document.xml sectPr #3/#4 start=1"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "docx-valid",
+    "kind": "docx_no_undefined",
+    "params": {},
+    "expected": "none",
+    "tolerance": 0,
+    "source": {
+      "file": "generated DOCX",
+      "locator": "must contain no undefined values or unbalanced field markers"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "word-opens",
+    "kind": "word_opens",
+    "params": {},
+    "expected": "opens in Word",
+    "tolerance": 0,
+    "source": {
+      "file": "generated DOCX",
+      "locator": "openability and page-order check through Word COM"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "known-unknowns",
+    "kind": "note",
+    "params": {
+      "text": "UNKNOWN: outer-cover design, footnote typography, abstract limits, appendix heading style. Cover title wrapping remains source-undefined; absolute cover geometry depends on a real Word reference render. UNKNOWN: mathematical glyph font is not established by the guide and is not included in the prose-font claim."
+    },
+    "expected": "documented",
+    "tolerance": 0,
+    "source": {
+      "file": "aku-mbg-lisans.json",
+      "locator": "unknowns[] and conflicts[]"
+    },
+    "evidence": "UNKNOWN"
+  },
+  {
+    "id": "page-size-word",
+    "kind": "page_size",
+    "params": {
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.1 (A4 21 × 29.7 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-margin-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.3 (3 cm); template sectPr #2-4 pgMar left=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-margin-word",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.3 (3 cm); template sectPr #2-4 pgMar right=1701 tw"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-word",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "[A-Za-zÇĞİÖŞÜçğıöşü]{2,}",
+      "source": "word",
+      "ignore": "^[𝐸E]\\s*="
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.2 (Times New Roman); exact embedded font names must be checked in output"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-word",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.2 (12 pt; permitted smaller table/formula exceptions documented in spec)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-word",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.4; measured body pitch 7.29–7.32 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "inner-cover-fixed-baselines-word",
+    "kind": "line_baselines",
+    "params": {
+      "page": {
+        "page": 1
+      },
+      "lines": [
+        "^AFYON KOCATEPE ÜNİVERSİTESİ$",
+        "^FEN EDEBİYAT FAKÜLTESİ$",
+        "^MOLEKÜLER BİYOLOJİ ve GENETİK BÖLÜMÜ$",
+        "^BİTİRME TEZİ$"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      43.949,
+      52.458,
+      60.967,
+      103.565
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+      "locator": "cached official Word render source/reference/official-word.pdf p.1; visible fixed-line baselines (glyph bottoms are not baselines)"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Fresh owned Word render resolves the old XML model uncertainty; exact measured baselines replace the previously mislabelled glyph-bottom coordinates."
+  },
+  {
+    "id": "h1-format-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5-6 §2.7 (12 pt bold uppercase H1; ve/veya/ile remain lower case)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (12 pt)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h1-left-edge-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\. GİRİŞ$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.4 / p.6 §2.7, headings start at left text boundary with no indent"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (12 pt, bold; H2 Title Case)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h2-left-edge-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1 Alt Başlık$",
+      "attr": "x0",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.4 §2.4 / p.6 §2.7, no indent from left text boundary"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings 12 pt); template document.xml sample H3"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h3-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1 Üçüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-size-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "size",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings 12 pt); template document.xml sample H4"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^1\\.1\\.1\\.1 Dördüncü Dereceden Başlık$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.7 (all section headings bold)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-approval-ethics-unnumbered-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "until": "^ÖZET$"
+      },
+      "source": "word",
+      "each": true
+    },
+    "expected": "",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.6; inner cover, approval, and ethics pages are unnumbered; checks visible numbering, not an unsupported separate physical page per section; checks visible numbering, not an unsupported separate physical page per section"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "abstract-page-label-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "source": "word"
+    },
+    "expected": "i",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.6; Roman sequence starts at abstract with i"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "introduction-page-label-word",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "find": "^1\\. GİRİŞ$"
+      },
+      "source": "word"
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+      "locator": "PDF p.5 §2.6; Arabic sequence starts at GİRİŞ with 1"
+    },
+    "evidence": "EXPLICIT"
+  }
+]

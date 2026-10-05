@@ -48,21 +48,21 @@ export function chromeDocx(section, values, context, groupStart, omitNumberOnFir
   const resolveText = (content) => resolveChromeText(content, { ...values, NUMPAGES: "{{NUMPAGES}}" });
   const headerText = resolveText(page.header?.content);
   const footerText = resolveText(page.footer?.content);
-  const headers = { default: new Header({ children: part("top", headerText) }) };
+  const headers = context.omitEmptyHeaderParts ? undefined : { default: new Header({ children: part("top", headerText) }) };
   const footers = { default: new Footer({ children: part("bottom", footerText) }) };
   const omitHeader = Boolean(groupStart && page.header?.firstPage === "omit" && headerText);
   const omitFooter = Boolean(groupStart && page.footer?.firstPage === "omit" && footerText);
   // numbering.omitOnChapterStart: the first page of the Word section (a chapter opening) is counted but prints no number.
   const omitNumber = Boolean(omitNumberOnFirst && number.enabled && number.omitOnChapterStart);
-  const differentFirst = page.differentFirstPage || page.header?.firstContent !== undefined || page.footer?.firstContent !== undefined;
+  const differentFirst = page.differentFirstPage || (!context.omitEmptyHeaderParts && page.header?.firstContent !== undefined) || page.footer?.firstContent !== undefined;
   if (omitHeader || omitFooter || omitNumber || differentFirst) {
-    headers.first = new Header({ children: part("top", omitHeader ? "" : resolveText(page.header?.firstContent ?? headerText), !omitNumber) });
+    if (headers) headers.first = new Header({ children: part("top", omitHeader ? "" : resolveText(page.header?.firstContent ?? headerText), !omitNumber) });
     footers.first = new Footer({ children: part("bottom", omitFooter ? "" : resolveText(page.footer?.firstContent ?? footerText), !omitNumber) });
   }
   // Once even/odd headers are enabled document-wide, all sections need an even
   // part, including sections that use identical content on both page parities.
   if (context.evenAndOddHeaders) {
-    headers.even = new Header({ children: part("top", resolveText(page.header?.evenContent ?? headerText)) });
+    if (headers) headers.even = new Header({ children: part("top", resolveText(page.header?.evenContent ?? headerText)) });
     footers.even = new Footer({ children: part("bottom", resolveText(page.footer?.evenContent ?? footerText)) });
   }
   return { headers, footers, titlePage: Boolean(omitHeader || omitFooter || omitNumber || differentFirst) };

@@ -3,7 +3,7 @@ import { describe, it } from "node:test";
 import generic from "../thesis/templates/generic.js";
 import { fixtureC as demoC } from "./thesisFixtures.js";
 import { fixtureA as demoA } from "./thesisFixtures.js";
-import { createThesisDocument, isThesisSectionEditable, orderedThesisSections, THESIS_METADATA_FIELDS, thesisSectionMode, updateThesisMetadata, updateThesisNoteSection } from "../thesis/document.js";
+import { createThesisDocument, isThesisSectionEditable, orderedThesisSections, THESIS_METADATA_FIELDS, setThesisTextOverride, thesisSectionMode, thesisTextOverride, updateThesisMetadata, updateThesisNoteSection } from "../thesis/document.js";
 import { fixtureB as demoB } from "./thesisFixtures.js";
 import { compileThesisDocument } from "../thesis/engine.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
@@ -48,6 +48,20 @@ describe("thesis document state", () => {
     const compiled = compileThesisDocument(template, withMain.researchData.thesis, "Tez", withMain.content);
     assert.match(compiled.sections.find((item) => item.id === "abstract").html, /ABC123/);
     assert.match(compiled.sections.find((item) => item.id === "main").html, /XYZ789/);
+  });
+
+  it("replaces a section title and fixed text per document without touching the template", () => {
+    const base = createThesisDocument(demoC, {});
+    const abstract = compileThesisDocument(demoC, base, "Tez", "").sections.find((item) => item.id === "abstract");
+    const edited = setThesisTextOverride(setThesisTextOverride(base, "abstract", "title", "ÖZ"), "abstract", "fixed", "Not satırı");
+    const after = compileThesisDocument(demoC, edited, "Tez", "").sections.find((item) => item.id === "abstract");
+    assert.match(after.prefixHtml, /<h1[^>]*>ÖZ<\/h1>/);
+    assert.match(after.prefixHtml, /<p class="thesis-fixed">Not satırı<\/p>/);
+    assert.notEqual(after.prefixHtml, abstract.prefixHtml);
+    assert.equal(thesisTextOverride(base, "abstract", "title"), undefined);
+    const reset = setThesisTextOverride(setThesisTextOverride(edited, "abstract", "title", undefined), "abstract", "fixed", undefined);
+    assert.equal(compileThesisDocument(demoC, reset, "Tez", "").sections.find((item) => item.id === "abstract").prefixHtml, abstract.prefixHtml);
+    assert.deepEqual(reset.textOverrides, {});
   });
 
   it("keeps static template text read-only even if an old note contains user HTML for it", () => {

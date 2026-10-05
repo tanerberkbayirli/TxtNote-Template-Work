@@ -1,4 +1,4 @@
-import { ScanEye, Search, ZoomIn, ZoomOut } from "lucide-react";
+import { ListTree, ZoomIn, ZoomOut } from "lucide-react";
 import Tool from "./Tool.jsx";
 import Group from "./Group.jsx";
 import { control } from "./shared.js";
@@ -19,49 +19,28 @@ export default function ViewTab({
   navigationOpen,
   setNavigationOpen,
   canNavigate,
+  remember,
   keep,
 }) {
   return (
     <>
-      <Group label="Gezinti">
-        <div className="thesis-view-action-row">
-          <Tool
-            label="Gezinti bölmesini aç veya kapat"
-            pressed={navigationOpen}
-            disabled={!canNavigate}
-            onClick={() => setNavigationOpen(!navigationOpen)}
-          >
-            <Search size={15} /> Gezinti
+      <Group label="Göster" className="thesis-home-group">
+        <div className="thesis-home-rows">
+          <Tool label="Gezinti bölmesini aç veya kapat" pressed={navigationOpen} disabled={!canNavigate} onMouseDown={keep} onClick={() => setNavigationOpen(!navigationOpen)}>
+            <ListTree size={15} aria-hidden="true" /> Gezinti
           </Tool>
-          <Tool
-            label="Cetvelleri göster veya gizle"
-            pressed={rulersVisible}
-            onClick={() => setRulersVisible(!rulersVisible)}
-          >
+          <Tool label="Cetvelleri göster veya gizle" pressed={rulersVisible} onMouseDown={keep} onClick={() => setRulersVisible(!rulersVisible)}>
             Cetveller
           </Tool>
         </div>
-        <span className="thesis-ribbon-hint">
-          {activeSection?.title || "Belge genel görünümü"} · cetvel {rulersVisible ? "açık" : "kapalı"}
-        </span>
       </Group>
-      <Group label="Yakınlaştır" className="thesis-ribbon-zoom-group">
-        <div className="thesis-zoom-feature">
-          <ScanEye size={22} />
-          <div>
-            <strong>Sayfa görünümü</strong>
-            <small>{totalPages} sayfalı belge</small>
-          </div>
-          <div className="thesis-ribbon-button-row">
+      <Group label="Yakınlaştır" className="thesis-home-group">
+        <div className="thesis-home-rows">
+          <div className="thesis-home-row is-boxed">
             <Tool label="Uzaklaştır" disabled={!canStepZoom(-1)} onMouseDown={keep} onClick={() => stepZoom(-1)}>
-              <ZoomOut size={16} />
+              <ZoomOut size={16} aria-hidden="true" />
             </Tool>
-            <select
-              aria-label="Yakınlaştırma düzeyi"
-              className={control}
-              value={zoomChoice}
-              onChange={(event) => setZoomChoice(event.target.value)}
-            >
+            <select aria-label="Yakınlaştırma düzeyi" className={`${control} thesis-zoom-select`} value={zoomChoice} onMouseDown={remember} onChange={(event) => setZoomChoice(event.target.value)}>
               <option value="fit">Genişliğe sığdır ({Math.round(zoom * 100)}%)</option>
               {zoomLevels?.map((level) => (
                 <option key={level} value={String(level)}>
@@ -70,23 +49,22 @@ export default function ViewTab({
               ))}
             </select>
             <Tool label="Yakınlaştır" disabled={!canStepZoom(1)} onMouseDown={keep} onClick={() => stepZoom(1)}>
-              <ZoomIn size={16} />
+              <ZoomIn size={16} aria-hidden="true" />
             </Tool>
           </div>
+          <span className="thesis-ribbon-hint">{totalPages} sayfalık belge</span>
         </div>
       </Group>
-      <Group label="Belge durumu" className="thesis-ribbon-view-info">
-        <div className="thesis-view-stat">
-          <strong>{activeSection?.title || "Belge"}</strong>
-          <span>Etkin metin bölümü</span>
+      <Group label="Belge durumu" className="thesis-home-group">
+        <div className="thesis-home-rows">
+          <div className="thesis-view-stat">
+            <strong>{activeSection?.title || "Belge"}</strong>
+            <span>Etkin bölüm · {totalPages} sayfa</span>
+          </div>
+          <Tool label="Sayfa düzeni denetçisini aç" pressed={pageSettingsOpen} onMouseDown={keep} onClick={() => setPageSettingsOpen(!pageSettingsOpen)}>
+            Sayfa ayarları
+          </Tool>
         </div>
-        <div className="thesis-view-stat">
-          <strong>{totalPages}</strong>
-          <span>Sayfa</span>
-        </div>
-        <Tool label="Sayfa düzeni denetçisini aç" onClick={() => setPageSettingsOpen(!pageSettingsOpen)}>
-          Sayfa ayarları
-        </Tool>
       </Group>
     </>
   );

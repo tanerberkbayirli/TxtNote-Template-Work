@@ -28,7 +28,10 @@
 ## Status
 - FAIL; commit d4a3a7e. Untouched in session 2.
 ## Next step
-- Fix footer to 12.5 mm + trailing blank paragraph and inner-cover wrap, then checker run.
+- Existing fix work remains open: footer 12.5 mm + trailing blank paragraph and inner-cover wrap.
+## Checker handoff (2026-10-04)
+- Added editor-PDF and Word-PDF checks for both lines of the source-backed two-line 16 pt cover title; DOCX checks assert source footer=709 twips and active `Alt Bilgi` footer styles.
+- Source trailing empty footer paragraph order/count is documented but remains unverified because the current generic DOCX checker cannot assert paragraph structure.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-isg-tezsiz-proje` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

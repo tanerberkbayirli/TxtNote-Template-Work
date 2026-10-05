@@ -37,14 +37,16 @@ const roman = { numbering: { format: "roman-lower" } };
 // İç Kapak (template section 1): 14 pt bold, 1.5 lines everywhere ("Sadece bu sayfada 14 punto"), top margin 10.02 mm so the
 // two seals sit at the top edge (TEMPLATE; the guide's generic 3 cm would push "Ay, Yıl" off the page: conflict recorded).
 // Seals: AKÜ x0 32.01 mm (6.7 twips right-aligned run of spaces), Fen-Edebiyat Fakültesi right edge at the text edge, both 26.2 mm.
-// The logo row's line box ends 4.29 mm below the images (Word picture line: 0.239 em + the 1.5 spacing extra of 14 pt type).
+// Cached official Word page 1: first cover baseline = 43.949 mm. The prior 4.29 mm row gap placed the editor line at 45.165 mm;
+// source-matched gap reduces that measured offset by 1.216 mm. (The logo row itself begins at y=10.0189 mm in official Word.)
 const SEAL_MM = 26.19;
 const COVER_TEXT_WIDTH_MM = 150;
+const COVER_LOGO_ROW_GAP_MM = 3.074;
 const innerCover = {
   id: "inner-cover", type: "innerCover", title: "İÇ KAPAK", status: "required", group: "cover", mode: "static", tocEntry: "none",
   overrides: { page: { margins: { topMm: 10.02, bottomMm: 30 }, numbering: { enabled: false }, trimTerminalTextLeading: true }, body: { ...page15, align: "center", fontSizePt: 14, fontWeight: 700 } },
   blocks: [
-    { type: "group", direction: "row", marginBottomMm: 4.29, blocks: [
+    { type: "group", direction: "row", marginBottomMm: COVER_LOGO_ROW_GAP_MM, blocks: [
       { type: "spacer", heightMm: 0, widthPercent: 2.0 / COVER_TEXT_WIDTH_MM * 100 },
       { type: "image", source: akuSeal, widthMm: SEAL_MM, heightMm: SEAL_MM, align: "left", widthPercent: SEAL_MM / COVER_TEXT_WIDTH_MM * 100 },
       { type: "spacer", heightMm: 0 },

@@ -2,6 +2,7 @@ import { validateSpecialPageBlocks } from "./specialPages.js";
 import { MM_PER_PT } from "./units.js";
 import { validateFootnoteRule } from "./footnotes.js";
 import { withEngineDefaults } from "./engineDefaults.js";
+import { plainThesisText } from "./sourceHtml.js";
 
 export const THESIS_SCHEMA_VERSION = 1;
 /** Values a placeholder may take from the laid-out document instead of user input (never stored). */
@@ -92,7 +93,10 @@ function validatePage(page, path = "page") {
   if (page.docxContentFrame !== undefined) {
     const frame = page.docxContentFrame;
     if (!object(frame) || !nonnegative(frame.xMm) || !nonnegative(frame.yMm) || !positive(frame.widthMm)
-      || frame.xMm + frame.widthMm > page.widthMm || frame.yMm >= page.heightMm) errors.push(`${path}.docxContentFrame geçersiz`);
+      || frame.xMm + frame.widthMm > page.widthMm || frame.yMm >= page.heightMm
+      || (frame.heightMm !== undefined && (!positive(frame.heightMm) || frame.yMm + frame.heightMm > page.heightMm))
+      || (frame.zIndex !== undefined && !Number.isFinite(frame.zIndex))
+      || (frame.id !== undefined && typeof frame.id !== "string")) errors.push(`${path}.docxContentFrame geçersiz`);
   }
   if (page.differentFirstPage !== undefined && typeof page.differentFirstPage !== "boolean") errors.push(`${path}.differentFirstPage geçersiz`);
   for (const kind of ["header", "footer"]) {
@@ -151,7 +155,7 @@ function validateCaption(caption, path) {
 function validateIndex(index, body, headings, path, captionKinds = {}) {
   if (!object(index)) return [`${path} nesne olmalı`];
   const errors = [];
-  if (!["toc", "figures", "tables"].includes(index.kind) && !Object.hasOwn(captionKinds || {}, index.kind)) errors.push(`${path}.kind geçersiz`);
+  if (!["toc", "figures", "tables", "appendices"].includes(index.kind) && !Object.hasOwn(captionKinds || {}, index.kind)) errors.push(`${path}.kind geçersiz`);
   if (index.maxDepth !== undefined && (!Number.isInteger(index.maxDepth) || index.maxDepth < 1 || index.maxDepth > 6)) errors.push(`${path}.maxDepth geçersiz`);
   if (index.levels !== undefined && (!Array.isArray(index.levels) || index.levels.some((n) => !headings?.[n]))) errors.push(`${path}.levels geçersiz`);
   if (index.title !== undefined && !text(index.title)) errors.push(`${path}.title geçersiz`);
@@ -262,9 +266,11 @@ export function validateThesisTemplate(rawTemplate) {
       if (section.mode !== undefined && !sectionModes.has(section.mode)) errors.push(`section ${section.id}.mode geçersiz`);
       if (sectionModes.has(section.mode) && typeof section.editable === "boolean" && section.editable !== (section.mode === "editable")) errors.push(`section ${section.id}.mode ile editable çelişiyor`);
       if (section.order !== undefined && !Number.isFinite(section.order)) errors.push(`section ${section.id}.order geçersiz`);
+      if (section.minWords !== undefined && (!Number.isInteger(section.minWords) || section.minWords < 1)) errors.push(`section ${section.id}.minWords pozitif tam sayı olmalı`);
+      if (section.minWordsByHeading !== undefined && (!Array.isArray(section.minWordsByHeading) || section.minWordsByHeading.some((rule) => !object(rule) || !text(rule.heading) || !Number.isInteger(rule.minWords) || rule.minWords < 1))) errors.push(`section ${section.id}.minWordsByHeading geçersiz`);
       if (section.showTitle !== undefined && typeof section.showTitle !== "boolean") errors.push(`section ${section.id}.showTitle geçersiz`);
       if (section.type === "mainContent" && section.mode !== undefined && section.mode !== "editable") errors.push(`section ${section.id}: mainContent düzenlenebilir olmalı`);
-      if (section.pageBreakBefore !== undefined && typeof section.pageBreakBefore !== "boolean") errors.push(`section ${section.id}.pageBreakBefore geçersiz`);
+      if (section.pageBreakBefore !== undefined && typeof section.pageBreakBefore !== "boolean" && section.pageBreakBefore !== "oddPage") errors.push(`section ${section.id}.pageBreakBefore geçersiz`);
       if (section.standalone !== undefined && (typeof section.standalone !== "boolean" || !Array.isArray(section.blocks))) errors.push(`section ${section.id}.standalone yalnız blocks ile ve boolean olmalı`);
       if (section.tocEntry !== undefined && !["headings", "title", "none"].includes(section.tocEntry)) errors.push(`section ${section.id}.tocEntry geçersiz`);
       if (section.verticalAlign !== undefined && !(["top", "center", "bottom"].includes(section.verticalAlign) && Array.isArray(section.blocks))) errors.push(`section ${section.id}.verticalAlign yalnız blocks ile top/bottom olmalı`);
@@ -276,7 +282,7 @@ export function validateThesisTemplate(rawTemplate) {
       if (section.visibleWhen !== undefined) {
         const condition = section.visibleWhen;
         if (object(condition) && condition.count !== undefined) {
-          const counted = ["tables", "figures", "equations", ...Object.keys(object(template.captionKinds) ? template.captionKinds : {})];
+          const counted = ["tables", "figures", "equations", "appendices", ...Object.keys(object(template.captionKinds) ? template.captionKinds : {})];
           if (Object.keys(condition).some((key) => !["count", "gte"].includes(key)) || !counted.includes(condition.count) || !Number.isInteger(condition.gte) || condition.gte < 0) errors.push(`section ${section.id}.visibleWhen { count, gte } geçersiz`);
           if (section.mode !== "generated") errors.push(`section ${section.id}.visibleWhen count yalnız üretilmiş (generated) bölümlerde kullanılabilir`);
         } else if (!object(condition) || !text(condition.field) || Object.keys(condition).some((key) => !["field", "equals", "notEquals", "in"].includes(key)) || ["equals", "notEquals", "in"].filter((key) => Object.hasOwn(condition, key)).length !== 1 || (condition.in !== undefined && !Array.isArray(condition.in)) || [condition.equals, condition.notEquals, ...(condition.in || [])].some((v) => v !== undefined && !["string", "number", "boolean"].includes(typeof v))) errors.push(`section ${section.id}.visibleWhen geçersiz`);

@@ -241,7 +241,7 @@ describe("Batch B4 ordinal chapter labels on their own line, five heading levels
     assert.match(flow, /\[(?:Thesis)?Heading5\w*\]\|1\.1\.1\.1\. Beş/);
     assert.match(styles, /w:styleId="(?:Thesis)?Heading5\w*"[\s\S]*?w:outlineLvl w:val="4"/);
     // TOC: chapter row = label paragraph + title paragraph without page number; level 2 keeps its tab + page
-    assert.match(flow, /BİRİNCİ BÖLÜM\|KURAM\|1\. Alt\|\\t\|4/);
+    assert.match(flow, /BİRİNCİ BÖLÜM\|(?:\\n\|)?KURAM\|1\. Alt\|\\t\|4/);
     assert.doesNotMatch(flow, /KURAM\|\\t/);
   });
 });

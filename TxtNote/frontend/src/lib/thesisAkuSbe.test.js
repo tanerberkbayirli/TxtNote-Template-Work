@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
 import { buildThesisCss, compileThesisDocument, templateFontFamilies } from "../thesis/engine.js";
@@ -8,7 +9,7 @@ import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/regis
 import { numberThesisPages } from "../thesis/pageLayout.js";
 import { groupThesisSections } from "../thesis/engine.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
-import { akuSbeMaster, akuSbePhd } from "../thesis/templates/aku-sbe.js";
+import { akuSbeMaster, akuSbePhd, akuSbeSanattaYeterlik, akuSbeMasterEn, akuSbePhdEn } from "../thesis/templates/aku-sbe.js";
 
 const docxXml = async (model) => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
 const figure = (caption, kind = "") => `<figure class="academic-figure" data-kind="figure"${kind ? ` data-caption-kind="${kind}"` : ""}><img src="data:image/png;base64,iVBORw0KGgo=" width="10" height="10"><figcaption>${caption}</figcaption></figure>`;
@@ -31,11 +32,51 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     }
     assert.equal(THESIS_TEMPLATE_REGISTRY.find((entry) => entry.id === "aku-sbe-phd-tr-v1").displayName, "Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · Doktora");
     assert.equal(akuSbeMaster.displayName, "Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · Yüksek Lisans");
-    assert.deepEqual(THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.id.startsWith("aku-sbe")).map((entry) => entry.id), ["aku-sbe-master-tr-v1", "aku-sbe-phd-tr-v1"], "Sanatta Yeterlik and English variants remain pending implementation (required variants tracked in the manifest)");
+    assert.deepEqual(THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.id.startsWith("aku-sbe")).map((entry) => entry.id), [
+      "aku-sbe-master-tr-v1", "aku-sbe-phd-tr-v1", "aku-sbe-sanatta-yeterlik-tr-v1", "aku-sbe-master-en-v1", "aku-sbe-phd-en-v1",
+    ]);
     const normalise = (template, [cover, tanitim, ethics]) => JSON.stringify({ ...template, id: "x", degreeType: "x", displayName: "x" }).replaceAll(cover, "C").replaceAll(tanitim, "T").replaceAll(ethics, "E");
     assert.equal(normalise(akuSbeMaster, ["YÜKSEK LİSANS TEZİ", "Yüksek Lisans Tezi", "Yüksek Lisans tezi"]), normalise(akuSbePhd, ["DOKTORA TEZİ", "Doktora Tezi", "Doktora tezi"]));
     assert.deepEqual(templateFontFamilies(akuSbeMaster), ["Times New Roman"]);
     assert.deepEqual(compile().systemFonts, ["Times New Roman"], "the genuine installed Times New Roman is embedded by the export");
+  });
+
+  it("registers the source-supported Sanatta Yeterlik and English programme variants", async () => {
+    for (const template of [akuSbeSanattaYeterlik, akuSbeMasterEn, akuSbePhdEn]) {
+      assert.deepEqual(validateThesisTemplate(template), []);
+      const { fallback, template: resolved } = await resolveThesisTemplate({ templateId: template.id });
+      assert.equal(fallback, false, template.id);
+      assert.equal(resolved.status, "official");
+    }
+    assert.equal(akuSbeSanattaYeterlik.degreeType, "sanatta-yeterlik");
+    assert.equal(section(akuSbeSanattaYeterlik, "outer-cover").blocks.find((block) => block.type === "text" && block.value === "Sanatta Yeterlik Tezi")?.value, "Sanatta Yeterlik Tezi");
+    assert.match(section(akuSbeSanattaYeterlik, "ethics").blocks[1].value, /^Sanatta Yeterlik tezi olarak/);
+    assert.match(akuSbeSanattaYeterlik.source.notes.join(" "), /editable grammatical substitution.*not official form wording/i);
+    for (const template of [akuSbeMasterEn, akuSbePhdEn]) {
+      const ids = template.sections.map(({ id }) => id);
+      assert.ok(ids.indexOf("abstract-en-header") < ids.indexOf("abstract-tr"));
+      assert.ok(ids.indexOf("extended-turkish-summary") > ids.indexOf("appendices"));
+      assert.equal(template.sections.find(({ id }) => id === "extended-turkish-summary").status, "required");
+      assert.match(template.source.notes.join(" "), /English front-page titles are UNKNOWN/);
+    }
+    for (const template of [akuSbeMaster, akuSbePhd, akuSbeSanattaYeterlik]) {
+      assert.equal(template.sections.some(({ id }) => id === "extended-turkish-summary"), false);
+    }
+  });
+
+  it("keeps the English-programme fixture's extended Turkish summary at all EK 12 minima", () => {
+    const minima = [200, 300, 200, 300, 500, 500];
+    for (const fixtureName of ["master-en", "phd-en"]) {
+      const fixture = JSON.parse(readFileSync(new URL(`../../../../orchestration/specs/aku-sbe.fixture.${fixtureName}.json`, import.meta.url), "utf8"));
+      const html = fixture.researchData.thesis.sectionContent["extended-turkish-summary"];
+      const parts = [...html.matchAll(/<h2>(.*?)<\/h2>(.*?)(?=<h2>|$)/gs)];
+      assert.equal(parts.length, 6, fixtureName);
+      assert.ok(html.includes("5. TARTIŞMA, SONUÇ VE ÖNERİLER"), fixtureName);
+      const counts = parts.map(([, , body]) => body.replace(/<[^>]*>/g, " ").trim().split(/\s+/u).filter(Boolean).length);
+      assert.deepEqual(counts, minima, fixtureName);
+      assert.equal(counts.reduce((sum, value) => sum + value, 0), 2000, fixtureName);
+      assert.ok(fixture.researchData.thesis.enabledSections.includes("extended-turkish-summary"), fixtureName);
+    }
   });
 
   it("page, body and heading values of the guide (25/25/30/30 mm, 12 pt, 1.5 lines, 6/6 pt additive, 12.5 mm indent)", () => {
@@ -51,6 +92,7 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     assert.deepEqual([h["1"].align, h["1"].fontWeight, h["1"].textTransform, h["1"].spaceBeforePt, h["1"].spaceAfterPt, h["1"].lineHeight, h["1"].pageBreakBefore], ["center", 700, "uppercase", 12, 12, 1.5, true]);
     assert.deepEqual(h["1"].numbering, { enabled: true, format: "{1} BÖLÜM", sequence: "ordinal-tr-upper", placement: "ownLine" });
     for (const level of ["2", "3", "4", "5"]) assert.deepEqual([h[level].lineHeight, h[level].spaceBeforePt, h[level].spaceAfterPt, h[level].align, h[level].keepWithNext], [1, 6, 6, "left", true], level);
+    assert.deepEqual(["2", "3", "4", "5"].map((level) => h[level].hangingIndentMm), [7.5, 7.5, 7.5, 7.5], "wrapped numbered headings continue after the number per the official checklist/example");
     assert.deepEqual(["2", "3", "4", "5"].map((l) => h[l].fontWeight), [700, 400, 700, 400]);
     assert.deepEqual(["2", "3", "4", "5"].map((l) => h[l].textTransform ?? "none"), ["uppercase", "uppercase", "none", "none"]);
     assert.deepEqual(t.typography.footnotes, { placement: "pageBottom", numbering: "document", fontFamily: "Times New Roman", fontSizePt: 9, lineHeight: 1, firstLineIndentMm: 0, align: "left", separator: { widthPercent: 26.67 } });
@@ -101,12 +143,16 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     assert.ok(css.indexOf('li[data-index-unnumbered]') > css.indexOf('li[data-index-level="5"]'), "the unnumbered rule comes last and wins");
     const toc = section(model, "toc");
     assert.match(toc.html, /<li data-index-level="1" data-index-target="[^"]+" data-index-unnumbered="true"><span class="thesis-index-text"><span class="thesis-index-title">ÖZET<span class="thesis-index-leader">/);
-    const chapterRow = toc.indexRows.find((row) => row.labelLine);
-    assert.equal(indexRowStyle(toc.generatedIndex, chapterRow).includePageNumber, false);
+    const chapterIndexRow = toc.indexRows.find((row) => row.labelLine);
+    assert.equal(indexRowStyle(toc.generatedIndex, chapterIndexRow).includePageNumber, false);
     assert.equal(indexRowStyle(toc.generatedIndex, toc.indexRows.find((row) => row.unnumbered)).includePageNumber, true);
     assert.match(css, /\.thesis-toc li:not\(\[data-index-unnumbered\]\) \+ li\[data-index-unnumbered\]\{margin-top:13\.8pt;\}/, "one empty single line before the back-matter rows (§2.6 vii)");
     const xml = await docxXml(model);
     assert.match(xml, /BİRİNCİ BÖLÜM<\/w:t>[\s\S]{0,400}KURAM/);
+    const chapterRow = xml.split("<w:p>").find((paragraph) => paragraph.includes("BİRİNCİ BÖLÜM") && paragraph.includes("KURAM"));
+    assert.ok(chapterRow, "the chapter label and title occupy the same Word paragraph");
+    assert.match(chapterRow, /BİRİNCİ BÖLÜM<\/w:t>[\s\S]*<w:br\/>[\s\S]*KURAM/);
+    assert.match(chapterRow, /w:spacing w:after="240" w:before="240" w:line="240"/, "the source 12 pt before/after surrounds the combined chapter block");
     const tailRow = xml.split("<w:p>").find((p) => p.includes("TARTIŞMA, SONUÇ VE ÖNERİLER") && p.includes("PAGEREF"));
     assert.match(tailRow, /w:spacing w:after="0" w:before="276" w:line="240"/, "Word: 13.8 pt before the first back-matter row");
     const keywordRow = xml.split("<w:p>").find((p) => p.includes(">GİRİŞ<") && p.includes("PAGEREF"));
@@ -149,6 +195,8 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     assert.match(text(phd, "ethics"), /Doktora tezi olarak sunduğum/);
     assert.equal(section(master, "ethics").rules.body.lineHeight, 1.5);
     assert.match(text(master, "approval"), /ENSTİTÜ ONAYI/);
+    assert.equal(akuSbeMaster.typography.body.color, "#000000", "the guide checklist requires black text");
+    assert.doesNotMatch(JSON.stringify(akuSbeMaster.sections.find(({ id }) => id === "approval")), /#bfbfbf/i, "the placeholder notice must not be grey");
     const abstract = section(master, "abstract");
     assert.equal(abstract.rules.body.firstLineIndentMm, 0, "no first-line indent in the abstract (EK 5)");
     assert.equal(abstract.rules.body.lineHeight, 1);

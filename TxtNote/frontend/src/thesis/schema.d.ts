@@ -30,6 +30,8 @@ export interface TextStyle {
   tabStopMm?: Length;
   /** Text colour, #rrggbb (e.g. a grey signature placeholder). */
   color?: string;
+  /** Optional inline highlight for document-local special-page text overrides; preset id or #rrggbb. */
+  highlight?: string;
   textTransform?: "none" | "uppercase" | "lowercase" | "capitalize";
   /**
    * Words that stay lower-case inside an uppercase/capitalize transform (locale of the template), e.g. ["ve", "veya", "ile"]
@@ -71,13 +73,18 @@ export interface PageRule {
   lastLineFit?: "word" | "off";
   orientation: "portrait" | "landscape";
   margins: { topMm: Length; bottomMm: Length; leftMm: Length; rightMm: Length };
+  /** Word-only page-anchored content frame, independent of section text margins. Height opts into fixed-frame flow text. */
+  docxMargins?: Partial<PageRule["margins"]>;
+  docxContentFrame?: { xMm: Length; yMm: Length; widthMm: Length; heightMm?: Length; zIndex?: number; id?: string };
   differentFirstPage?: boolean;
   header?: { firstContent?: string; evenContent?: string; trailingBlankLines?: number; heightMm: Length; distanceMm: Length; content?: string; firstPage?: "same" | "omit" };
   footer?: { firstContent?: string; evenContent?: string; trailingBlankLines?: number; docxDistanceMm?: Length; heightMm: Length; distanceMm: Length; content?: string; firstPage?: "same" | "omit" };
   numbering: NumberingRule;
 }
-export type PageOverride = Partial<Omit<PageRule, "margins" | "header" | "footer" | "numbering">> & {
+export type PageOverride = Partial<Omit<PageRule, "margins" | "header" | "footer" | "numbering" | "docxMargins" | "docxContentFrame">> & {
   margins?: Partial<PageRule["margins"]>;
+  docxMargins?: Partial<NonNullable<PageRule["docxMargins"]>>;
+  docxContentFrame?: PageRule["docxContentFrame"];
   header?: Partial<NonNullable<PageRule["header"]>>;
   footer?: Partial<NonNullable<PageRule["footer"]>>;
   numbering?: Partial<PageRule["numbering"]>;
@@ -203,7 +210,7 @@ export interface FootnoteRule extends Partial<Pick<TextStyle, "fontFamily" | "fo
 }
 export interface GeneratedIndexRule {
   /** toc, figures, tables, or the id of a template caption kind (`captionKinds`, e.g. "photo"). */
-  kind: "toc" | "figures" | "tables" | (string & {});
+  kind: "toc" | "figures" | "tables" | "appendices" | (string & {});
   title?: string;
   levels?: number[];
   maxDepth?: number;
@@ -247,7 +254,8 @@ export interface ThesisSection {
   order?: number;
   /** Render `title` as the section heading. Default: false for covers, TOC and main content. */
   showTitle?: boolean;
-  pageBreakBefore?: boolean;
+  /** Starts a section on a new page; "oddPage" pads with an unlabelled sheet when needed, then starts on odd physical page 1, 3, 5… */
+  pageBreakBefore?: boolean | "oddPage";
   /** Blocks sections only: "bottom" anchors the page content to the bottom margin (e.g. text behind a cover window). */
   verticalAlign?: "top" | "center" | "bottom";
   /** "continueH1": the printed title is the next numbered chapter heading (e.g. "6. KAYNAKLAR"), numbered in the TOC. */
@@ -264,6 +272,8 @@ export interface ThesisSection {
   visibleWhen?: { field: string; equals?: string | number | boolean; notEquals?: string | number | boolean; in?: Array<string | number | boolean> }
     /** Generated sections only: shown when the document has at least `gte` items of that caption kind ("tables", "figures", "equations" or a `captionKinds` id) — e.g. a list only from three tables on. Evaluated from the collected sources; a hidden list is also left out of the TOC. */
     | { count: "tables" | "figures" | "equations" | (string & {}); gte: number };
+  /** Advisory minimum of visible words for an editable section. */
+  minWords?: number;
   content?: string;
   /**
    * Special page layout (cover, approval, declaration, ...). A section with `blocks`
@@ -288,6 +298,8 @@ interface LayoutBox {
   /** Positioned leaf blocks use page-origin coordinates in millimetres, shared by HTML and DOCX. */
   id?: string; layoutMode?: "flow" | "absolute" | "anchored"; xMm?: Length; yMm?: Length; widthMm?: Length; heightMm?: Length;
   zIndex?: number; locked?: boolean; lockAspectRatio?: boolean;
+  /** Flow height a positioned template block keeps in the flow (default: its own height; 0 = no flow slot). */
+  flowHeightMm?: Length;
   /** Declarative: the block (and its children) is left out when none of these metadata fields is filled. */
   visibleWhen?: { anyFilled: string[] } | { noneFilled: string[] };
 }

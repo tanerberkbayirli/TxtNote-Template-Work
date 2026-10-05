@@ -117,6 +117,7 @@ describe("AKÜ MBG lisans bitirme tezi template (aku-mbg-lisans-tr-v1)", () => {
     const text = (id) => JSON.stringify(section(model, id).layout);
     const cover = section(model, "inner-cover");
     assert.equal(cover.rules.page.margins.topMm, 10.02);
+    assert.equal(cover.layout.find((node) => node.type === "group" && node.direction === "row")?.marginBottomMm, 3.074, "logo row gap is calibrated to official Word first baseline 43.949 mm");
     assert.deepEqual([cover.rules.body.fontSizePt, cover.rules.body.fontWeight, cover.rules.body.lineHeight, cover.rules.body.align], [14, 700, 1.5, "center"]);
     assert.match(text("inner-cover"), /AFYON KOCATEPE ÜNİVERSİTESİ[\s\S]*FEN EDEBİYAT FAKÜLTESİ[\s\S]*MOLEKÜLER BİYOLOJİ ve GENETİK BÖLÜMÜ[\s\S]*BİTİRME TEZİ/);
     assert.equal((text("inner-cover").match(/data:image\/(jpeg|png);base64/g) || []).length, 2, "AKÜ and Fen-Edebiyat Fakültesi seals");
@@ -142,5 +143,20 @@ describe("AKÜ MBG lisans bitirme tezi template (aku-mbg-lisans-tr-v1)", () => {
     assert.match(xml, /w:spacing w:after="414" w:before="0" w:line="360" w:lineRule="auto"/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="lowerRoman"\/>/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="decimal"\/>/);
+  });
+
+  it("omits empty document-wide Word header parts, but keeps them when a section uses a header", async () => {
+    const noHeader = await docxXml(compile());
+    assert.doesNotMatch(noHeader, /<w:headerReference\b/);
+
+    const withHeader = compile();
+    section(withHeader, "introduction").rules.page.header.content = "Header evidence";
+    const headerXml = await docxXml(withHeader);
+    assert.match(headerXml, /<w:headerReference\b/);
+
+    const topNumber = compile();
+    section(topNumber, "introduction").rules.page.numbering.position = "top";
+    const topNumberXml = await docxXml(topNumber);
+    assert.match(topNumberXml, /<w:headerReference\b/, "a top page number needs a Word header part");
   });
 });

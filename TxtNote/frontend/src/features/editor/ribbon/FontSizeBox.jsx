@@ -1,156 +1,117 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
+import FloatingMenu from "./FloatingMenu.jsx";
 import { control, fontSizePresets } from "./shared.js";
 
+const clampSize = (num) => Math.max(1, Math.min(400, Math.round(num * 2) / 2));
+const parseSize = (str) => {
+  const value = String(str).trim().replace(/^pt\s*/i, "").replace(",", ".");
+  if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)) return null;
+  const num = Number(value);
+  return Number.isFinite(num) ? clampSize(num) : null;
+};
+
 export default function FontSizeBox({ activeFormat, remember, keep, invoke, disabled = false }) {
-  const [draft, setDraft] = useState("");
-  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState(null);
   const [invalid, setInvalid] = useState(false);
-  const inputRef = useRef(null);
+  const cancelBlurCommit = useRef(false);
   const currentSizePt = activeFormat?.sizePt ?? activeFormat?.sizeComputedPt;
-  const displaySize = editing ? draft : currentSizePt ? String(currentSizePt) : activeFormat?.sizeMixed ? "" : "";
+  const shown = draft ?? (currentSizePt ? String(currentSizePt) : "");
 
-  const parseSize = (str) => {
-    const normalized = str.replace(",", ".");
-    const num = parseFloat(normalized);
-    return isNaN(num) ? null : Math.max(1, Math.min(400, Math.round(num * 2) / 2));
-  };
-
-  const applySize = (size) => {
+  const apply = (size) => {
     if (size !== currentSizePt) invoke("applySize", size);
-    setEditing(false);
+    setDraft(null);
     setInvalid(false);
   };
-
-  const handleChange = (e) => setDraft(e.target.value);
-
-  const handleBlur = () => {
+  const commit = () => {
+    if (draft === null) return;
     const size = parseSize(draft);
-    if (size !== null) {
-      applySize(size);
-    } else {
+    if (size === null) {
       setInvalid(true);
-      setDraft("");
-      setEditing(false);
+      setDraft(null);
       setTimeout(() => setInvalid(false), 1500);
-    }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const size = parseSize(draft);
-      if (size !== null) {
-        applySize(size);
-      } else {
-        setInvalid(true);
-        setTimeout(() => setInvalid(false), 1500);
-      }
-    } else if (e.key === "Escape") {
-      setDraft("");
-      setEditing(false);
-      setInvalid(false);
-    }
+    } else apply(size);
   };
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
-      <input
-        ref={inputRef}
-        type="text"
-        className={control}
-        aria-label="Yazı boyutu"
-        aria-invalid={invalid}
-        placeholder="Boyut"
-        value={displaySize}
-        disabled={disabled}
-        onMouseDown={(e) => {
-          remember(e);
-          setEditing(true);
-          setDraft(displaySize);
-        }}
-        onFocus={() => {
-          setEditing(true);
-          setDraft(displaySize);
-        }}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-        style={{ width: "64px", paddingRight: "22px" }}
-      />
-      <button
-        type="button"
-        aria-label="Boyut önayarları"
-        disabled={disabled}
-        onMouseDown={(e) => {
-          e.preventDefault();
-          keep(e);
-        }}
-        onClick={(e) => {
-          e.preventDefault();
-          const menu = e.currentTarget.nextElementSibling;
-          menu.style.display = menu.style.display === "block" ? "none" : "block";
-        }}
-        style={{
-          position: "absolute",
-          right: "2px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: "4px",
-          fontSize: "12px",
-        }}
-      >
-        ▼
-      </button>
-      <div
-        style={{
-          display: "none",
-          position: "absolute",
-          top: "100%",
-          left: 0,
-          background: "white",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-          maxHeight: "200px",
-          overflowY: "auto",
-          zIndex: 1000,
-          minWidth: "60px",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-        }}
-      >
-        {fontSizePresets.map((size) => (
+    <FloatingMenu
+      className="thesis-size-box"
+      trigger={({ toggle }) => (
+        <>
+          <input
+            type="text"
+            inputMode="decimal"
+            className={`${control} thesis-size-input`}
+            aria-label="Yazı boyutu (pt)"
+            title="Yazı boyutu (pt)"
+            aria-invalid={invalid}
+            placeholder="pt"
+            value={shown}
+            disabled={disabled}
+            onMouseDown={remember}
+            onFocus={(event) => {
+              cancelBlurCommit.current = false;
+              setDraft(shown);
+              event.target.select();
+            }}
+            onChange={(event) => setDraft(event.target.value)}
+            onBlur={() => {
+              if (cancelBlurCommit.current) cancelBlurCommit.current = false;
+              else commit();
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                event.currentTarget.blur();
+              } else if (event.key === "Escape") {
+                cancelBlurCommit.current = true;
+                setDraft(null);
+                event.currentTarget.blur();
+              }
+            }}
+          />
+          <button
+            type="button"
+            className="thesis-size-caret"
+            aria-label="Boyut önayarları"
+            title="Boyut önayarları"
+            disabled={disabled}
+            onMouseDown={(event) => {
+              event.preventDefault();
+              keep(event);
+            }}
+            onClick={toggle}
+          >
+            <ChevronDown size={13} aria-hidden="true" />
+          </button>
+        </>
+      )}
+    >
+      {(close) =>
+        fontSizePresets.map((size) => (
           <button
             key={size}
             type="button"
-            onMouseDown={(e) => {
-              e.preventDefault();
-              keep(e);
+            role="menuitemradio"
+            aria-checked={size === currentSizePt}
+            className={`thesis-menu-item ${size === currentSizePt ? "is-active" : ""}`}
+            onMouseDown={keep}
+            onClick={() => {
+              apply(size);
+              close();
             }}
-            onClick={(e) => {
-              e.preventDefault();
-              applySize(size);
-              e.currentTarget.parentElement.style.display = "none";
-              inputRef.current?.focus();
-            }}
-            style={{
-              display: "block",
-              width: "100%",
-              padding: "6px 8px",
-              border: "none",
-              background: "none",
-              cursor: "pointer",
-              textAlign: "left",
-              fontSize: "13px",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#f0f0f0")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "none")}
           >
-            {size} pt
+            {size}
           </button>
-        ))}
-      </div>
-    </div>
+        ))
+      }
+    </FloatingMenu>
   );
 }
+
+/** Next preset above/below the current size, like Word's grow/shrink buttons. */
+export const stepFontSize = (current, direction) => {
+  const size = Number(current) || 12;
+  if (direction > 0) return fontSizePresets.find((preset) => preset > size) ?? clampSize(size + 2);
+  return [...fontSizePresets].reverse().find((preset) => preset < size) ?? clampSize(size - 1);
+};

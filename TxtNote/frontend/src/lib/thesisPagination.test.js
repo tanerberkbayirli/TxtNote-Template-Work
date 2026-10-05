@@ -93,6 +93,45 @@ describe("thesis pagination page model", () => {
     assert.deepEqual(c.map((group) => group.sections.map((section) => section.id)), [["cover"], ["declaration"], ["abstract"], ["toc"], ["main"], ["appendices"], ["bibliography"]]);
   });
 
+  it("starts oddPage sections on the next odd physical sheet and counts the blank before a restart", () => {
+    const group = (id, pageBreakBefore) => ({ id, pageBreakBefore, rules: { page: { numbering: { enabled: true, format: "arabic", position: "bottom", align: "center", restart: false }, header: { content: "H", firstContent: "FIRST HEADER" }, footer: { content: "F", firstContent: "FIRST FOOTER" } } }, sections: [{ specialPage: true }] });
+    const prior = group("prior", false);
+    const odd = group("odd", "oddPage");
+    assert.deepEqual(buildThesisPageModel([odd], { odd: 1 })[0].pages.map((page) => page.label), ["1"], "the first physical page is already odd, so it needs no padding");
+    let numbers = buildThesisPageModel([prior, odd], { prior: 1, odd: 1 });
+    assert.deepEqual(numbers.map((entry) => entry.pages.map((page) => page.label)), [["1"], ["", "3"]]);
+    assert.deepEqual(numbers.flatMap((entry) => entry.pages.map((page) => page.physicalIndex)), [0, 1, 2]);
+    assert.deepEqual(numbers[1].pages.map((page) => page.blank), [true, false]);
+    assert.equal(numbers[1].pages[0].showHeader, false);
+    assert.equal(numbers[1].pages[0].showFooter, false);
+    assert.equal(numbers[1].pages[1].index, 1, "an unmeasured one-page default still reserves the content page after the blank");
+    assert.equal(numbers[1].pages[0].headerContent, undefined);
+    assert.equal(numbers[1].pages[1].headerContent, "FIRST HEADER");
+    assert.equal(numbers[1].pages[1].footerContent, "FIRST FOOTER");
+    const omitFirstContent = { ...odd, rules: { page: { ...odd.rules.page, header: { ...odd.rules.page.header, firstPage: "omit" } } } };
+    numbers = buildThesisPageModel([prior, omitFirstContent], { prior: 1, odd: 1 });
+    assert.equal(numbers[1].pages[0].showHeader, false, "the parity sheet never receives chrome");
+    assert.equal(numbers[1].pages[1].showHeader, false, "first-page omission applies to the first content page after padding");
+
+    numbers = buildThesisPageModel([prior, odd], { prior: 2, odd: 1 });
+    assert.deepEqual(numbers.map((entry) => entry.pages.map((page) => page.label)), [["1", "2"], ["3"]], "an even number of preceding sheets needs no padding");
+
+    numbers = buildThesisPageModel([prior, odd], { prior: 3, odd: 2 });
+    assert.deepEqual(numbers[1].pages.map((page) => page.label), ["", "5"], "a multi-page predecessor gets one blank after its final odd sheet");
+
+    const restarted = { ...odd, rules: { page: { numbering: { ...odd.rules.page.numbering, restart: true, startAt: 1 }, header: {}, footer: {} } } };
+    numbers = buildThesisPageModel([prior, restarted], { prior: 1, [restarted.id]: 2 });
+    assert.deepEqual(numbers[1].pages.map((page) => page.label), ["", "1"], "the parity sheet is counted before, not under, the new numbering sequence");
+  });
+
+  it("adds odd-page start to the first flow column without changing legacy breaks", () => {
+    const template = structuredClone(generic);
+    template.sections.find((section) => section.id === "main").pageBreakBefore = "oddPage";
+    const groups = groupsOf(template);
+    assert.equal(groups.find((group) => group.id === "main").pageBreakBefore, "oddPage");
+    assert.match(thesisPagedCss(groups), /\.thesis-page-flow > \[data-thesis-odd-page-spacer\]\{display:block;width:0;height:calc\(247mm \+ 0mm\);margin:0;padding:0;break-after:column/);
+  });
+
   it("never lets another section share the cover's page flow", () => {
     const template = structuredClone(generic);
     template.sections[0].overrides = { body: { align: "center" } };

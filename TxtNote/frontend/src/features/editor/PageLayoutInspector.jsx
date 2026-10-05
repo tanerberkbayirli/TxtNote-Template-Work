@@ -29,7 +29,7 @@ function SelectInput({ label, value, onChange }) {
 }
 
 /** Draft-based page setup. Nothing is persisted until the user presses Apply. */
-export default function PageLayoutInspector({ page, sectionId, pageIndex = 0, onApply = () => {}, typography = {}, onApplyTypography = () => {}, scope: initialScope = "document", pageScopeSupported = true }) {
+export default function PageLayoutInspector({ page, sectionId, sectionTitle, pageIndex = 0, onApply = () => {}, typography = {}, onApplyTypography = () => {}, scope: initialScope = "document", pageScopeSupported = true }) {
   const [scope, setScope] = useState(initialScope);
   const [draft, setDraft] = useState(() => fromPage(page));
   const [base, setBase] = useState(() => fromPage(page));
@@ -66,7 +66,7 @@ export default function PageLayoutInspector({ page, sectionId, pageIndex = 0, on
   const width = draft.widthMm === "" ? Number(base.widthMm) : Number(draft.widthMm);
   const height = draft.heightMm === "" ? Number(base.heightMm) : Number(draft.heightMm);
   const invalid = entries.some((value) => value !== "" && (!Number.isFinite(Number(value)) || Number(value) < 0)) || (Number.isFinite(width) && width <= margin("leftMm") + margin("rightMm")) || (Number.isFinite(height) && height <= margin("topMm") + margin("bottomMm"));
-  const sectionLabel = sectionId || "seçili bölüm";
+  const sectionLabel = sectionTitle || sectionId || "seçili bölüm";
   return <aside aria-label="Sayfa düzeni denetçisi" data-thesis-editor-only="true" style={{ display: "grid", gap: 14, padding: 12, color: "#172033", font: "13px/1.4 system-ui,sans-serif", overflowY: "auto" }}>
     <strong>Sayfa düzeni</strong>
     <label style={fieldStyle}><span>Uygulama kapsamı</span><select aria-label="Uygulama kapsamı" value={scope} onChange={(event) => setScope(event.target.value)} style={inputStyle}><option value="document">Tüm belge</option><option value="section">Bölüm: {sectionLabel}</option><option value="page" disabled={!pageScopeSupported}>Sayfa {pageIndex + 1}</option></select></label>

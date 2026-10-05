@@ -51,7 +51,7 @@ const bold = { fontWeight: 700 };
 const upper = { textTransform: "uppercase" };
 const page15 = { firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1.5 };
 const roman = { numbering: { format: "roman-lower" } };
-const hidden = { numbering: { enabled: false, format: "roman-lower" } };
+const hiddenRoman = { numbering: { enabled: false, format: "roman-lower", indexLabelWhenHidden: true } };
 const dots = "……………………";
 
 const degreeLabels = {
@@ -142,8 +142,8 @@ const jurorCell = (n, role, base) => ({ type: "group", widthPercent: 50, style: 
 ], base[0] - asc(12)) });
 const jurorRow = (a, base, visibleWhen) => ({ type: "group", direction: "row", ...(visibleWhen ? { visibleWhen } : {}), blocks: [jurorCell(a, "Üye", base), jurorCell(a + 1, "Üye", base)] });
 const approval = (degree) => ({
-  id: "approval", type: "approval", title: "TEZ KABUL VE ONAY SAYFASI", status: "required", group: "front", mode: "static", tocEntry: "none",
-  overrides: { page: { margins: { leftMm: FRAME_L_MM, rightMm: 210 - FRAME_R_MM }, docxMargins: DOCX_SOURCE_MARGINS, docxContentFrame: { xMm: FRAME_L_MM, yMm: 30, widthMm: FRAME_R_MM - FRAME_L_MM }, numbering: { enabled: false, format: "roman-lower" } }, body: { ...page15, lineHeight: 1, align: "center" } },
+  id: "approval", type: "approval", title: "TEZ KABUL VE ONAY SAYFASI", status: "required", group: "front", mode: "static", tocEntry: "title",
+  overrides: { page: { margins: { leftMm: FRAME_L_MM, rightMm: 210 - FRAME_R_MM }, docxMargins: DOCX_SOURCE_MARGINS, docxContentFrame: { xMm: FRAME_L_MM, yMm: 30, widthMm: FRAME_R_MM - FRAME_L_MM }, numbering: { ...hiddenRoman.numbering } }, body: { ...page15, lineHeight: 1, align: "center" } },
   blocks: [
     ...chain([
       line({ type: "text", value: "TEZ KABUL VE ONAY SAYFASI", style: { ...bold, ...IN } }, 12, 1, 36.08),
@@ -178,8 +178,8 @@ const approval = (degree) => ({
 // Örnek 4 (PDF p.29, printed p.27): bilimsel etik bildirimi. 12 pt, 1.5 lines, the list items as "- ..." lines.
 const ethicsItem = (text, first, last) => ({ ...line({ type: "text", value: text, style: { align: "justify" } }, 12, 1.5, first, last) });
 const ethics = {
-  id: "ethics", type: "ethicsDeclaration", title: "BİLİMSEL ETİK BİLDİRİMİ", status: "required", group: "front", mode: "static", tocEntry: "none",
-  overrides: { page: { numbering: { enabled: false, format: "roman-lower" }, trimTerminalTextLeading: true }, body: { ...page15, align: "left" } },
+  id: "ethics", type: "ethicsDeclaration", title: "BİLİMSEL ETİK BİLDİRİMİ", status: "required", group: "front", mode: "static", tocEntry: "title",
+  overrides: { page: { numbering: { ...hiddenRoman.numbering }, trimTerminalTextLeading: true }, body: { ...page15, align: "left" } },
   blocks: chain([
     line({ type: "text", value: "BİLİMSEL ETİK BİLDİRİMİ", style: { ...bold, align: "center" } }, 12, 1.5, 33.96),
     line({ type: "text", value: "Sağlık Bilimleri Enstitüsü, Bilimsel Yayın Etiği İlkeleri ve Tez Yazım Kurallarına uygun olarak hazırladığım bu tez çalışmasında;", style: { ...bold, align: "justify" } }, 12, 1.5, 48.56, 55.84),
@@ -272,7 +272,7 @@ function sections(degree) {
     // EKLER (§3.3.7): every appendix starts on its own page; numbered on after KAYNAKLAR. The guide is internally inconsistent about the number
     // ("7. EKLER" in §3 vs "8. EKLER" in Örnek 13) and the sub-label ("EK 1." vs "8.1."): CONFLICT, the continuing chapter number is used.
     { id: "appendices", type: "appendices", title: "EKLER", status: "optional", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1",
-      overrides: { headings: { "2": { pageBreakBefore: true } } } },
+      overrides: { headings: { "2": { pageBreakBefore: true, pageBreakUnlessAfterHeading: true } } } },
     // ÖZGEÇMİŞ (§3.3.8, Örnek 14): the last page of the thesis; bold centred title, the text starts on the next 1.5 line.
     { id: "cv", type: "curriculumVitae", title: "ÖZGEÇMİŞ", status: "required", group: "back", mode: "editable", showTitle: true, tocEntry: "title",
       overrides: { headings: frontTitle(0), paragraph: { firstLineIndentMm: 0, align: "justify" } } },
@@ -286,7 +286,7 @@ const heading = (format, extra = {}) => ({ fontFamily: FONT, fontSizePt: 12, fon
 const captionNumbering = { scope: "chapter", format: "{chapter}.{n}", sequence: "arabic" };
 const caption = (label, position, extra = {}) => ({
   label, position, numbering: captionNumbering, labelFormat: "{label} {number}:", labelStyle: bold, captionAlignment: "justify", align: "center",
-  style: { fontFamily: FONT, fontSizePt: 11, fontWeight: 400, align: "justify", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 },
+  style: { fontFamily: FONT, fontSizePt: 12, fontWeight: 400, align: "justify", lineHeight: 1.5, spaceBeforePt: 0, spaceAfterPt: 0 },
   spacingBeforePt: 0, spacingAfterPt: 0, ...extra,
 });
 
@@ -334,6 +334,9 @@ const base = {
       "1": heading("{1}.", { textTransform: "uppercase", pageBreakBefore: true }),
       "2": heading("{1}.{2}."),
       "3": heading("{1}.{2}.{3}."),
+      // The guide explicitly requires every heading degree bold. H4 has no distinct size or numbering rule;
+      // TNR 12 pt follows the general text rule without assigning a new hierarchy format.
+      "4": { fontFamily: FONT, fontSizePt: 12, fontWeight: 700 },
     },
     // Word numbers footnotes continuously; the guide is silent. Separator: from the text-block edge to the page centre (50 % of the text width).
     footnotes: { placement: "pageBottom", numbering: "document", fontFamily: FONT, fontSizePt: 10, lineHeight: 1, separator: { enabled: true, widthPercent: 50, thicknessPt: 0.5, spaceBeforePt: 24 } },

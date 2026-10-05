@@ -62,6 +62,15 @@ function serializeStyle(style, lineSpacing, justify = "word", resetOthers = fals
 const labelCss = (style = {}) => [style.fontWeight ? `font-weight:${style.fontWeight}` : "", style.italic !== undefined ? `font-style:${style.italic ? "italic" : "normal"}` : "", style.fontSizePt ? `font-size:${style.fontSizePt}pt` : "", style.fontFamily ? `font-family:${cssFamily(style.fontFamily)}` : "", style.decoration ? `text-decoration:${style.decoration}` : ""].filter(Boolean).map((rule) => `${rule};`).join("");
 
 /** Text styles of a section that draw lines (for the opt-in Word baseline placement). */
+// Positioned special-page blocks use page-origin mm coordinates; only a block that opts into
+// positionOrigin "content" needs the fragment (the content box) as its containing block.
+function hasContentOriginBlock(value) {
+  if (!value || typeof value !== "object") return false;
+  if (Array.isArray(value)) return value.some(hasContentOriginBlock);
+  if (value.positionOrigin === "content" && ["absolute", "anchored"].includes(value.layoutMode)) return true;
+  return Object.values(value).some((child) => child && typeof child === "object" && hasContentOriginBlock(child));
+}
+
 export function sectionTextStyles(section) {
   const { body, headings, tables, figures, bibliography, footnotes, captionKinds, paragraphStyles } = section.rules;
   const text = section.type === "bibliography" ? bibliography.style : body;
@@ -97,7 +106,7 @@ export function thesisSectionCss(section) {
   const plainFigure = kindIds.length ? `figure:not(:is(${kindIds.map((kind) => `[data-caption-kind="${kind}"]`).join(",")})) ` : "";
   const rules = [
     `${paperScope}{${containerCss(body)}box-sizing:border-box;position:relative;z-index:1;width:${page.widthMm}mm;min-height:${page.heightMm}mm;padding:${page.margins.topMm}mm ${page.margins.rightMm}mm ${page.margins.bottomMm}mm ${page.margins.leftMm}mm;margin:0;background:transparent;color:#000;text-indent:0;}`,
-    `${fragmentScope}{${containerCss(body)}display:block;margin:0;text-indent:0;}`,
+    `${fragmentScope}{${containerCss(body)}display:block;margin:0;text-indent:0;${hasContentOriginBlock(section.layout) ? "position:relative;" : ""}}`,
     // A special page anchored to the bottom margin fills its page and puts its content at the bottom.
     ...(["bottom", "center"].includes(section.verticalAlign) ? [`${fragmentScope}{display:flex;flex-direction:column;justify-content:${section.verticalAlign === "center" ? "center" : "flex-end"};min-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm}`] : []),
     // Legacy loose lines keep their geometry. New <p> blocks have real paragraph spacing.

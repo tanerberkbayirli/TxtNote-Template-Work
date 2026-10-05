@@ -95,15 +95,18 @@ function textFrame(node, { language = "tr", lineSpacing = null } = {}) {
   });
 }
 
-function imageFrame(node) {
+function imageFrame(node, options = {}) {
   if (!validImageBox(node) || node.type !== "image") throw new Error(`Pozisyonlu görsel ${node.id || "?"} için geometri gerekli`);
   const image = imageBytes(node.source);
   if (!image) throw new Error(`Pozisyonlu görsel ${node.id || "?"} için gömülü PNG/JPEG kaynak gerekli`);
   const widthPx = convertLength(node.widthMm, "mm", "px");
   const heightPx = convertLength(node.heightMm, "mm", "px");
+  const pageMargins = node.positionOrigin === "content" ? (options.pageMargins || {}) : {};
+  const xMm = node.xMm + (Number(pageMargins.leftMm) || 0);
+  const yMm = node.yMm + (Number(pageMargins.topMm) || 0);
   const floating = {
-    horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(node.xMm, "mm", "emu")) },
-    verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(node.yMm, "mm", "emu")) },
+    horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(xMm, "mm", "emu")) },
+    verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(yMm, "mm", "emu")) },
     allowOverlap: true, lockAnchor: false, layoutInCell: false,
     wrap: { type: TextWrappingType.NONE },
     zIndex: relativeHeight(node.zIndex),
@@ -136,10 +139,38 @@ export function positionedLayoutDocx(nodes, options = {}) {
       spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT },
       children: [textFrame(node, options)],
     }));
-    else if (node.type === "image") { const frame = imageFrame(node); if (frame) out.push(frame); }
+    else if (node.type === "image") { const frame = imageFrame(node, options); if (frame) out.push(frame); }
     else if (node.type === "separator") { const frame = lineFrame(node); if (frame) out.push(frame); }
   }
   return out;
+}
+
+/** Page-anchored flow text box. Unlike a positioned leaf, all paragraphs retain Word's natural wrapping. */
+export function positionedFlowTextBoxDocx(paragraphs, frame) {
+  if (!Array.isArray(paragraphs) || !paragraphs.length || paragraphs.some((paragraph) => !(paragraph instanceof Paragraph))) {
+    throw new Error("Sabit yükseklikli Word metin kutusu yalnızca paragraf akışı kabul eder");
+  }
+  if (![frame?.xMm, frame?.yMm, frame?.widthMm, frame?.heightMm].every(Number.isFinite)
+    || frame.xMm < 0 || frame.yMm < 0 || frame.widthMm <= 0 || frame.heightMm <= 0) {
+    throw new Error("Sabit yükseklikli Word metin kutusu için geçerli geometri gerekli");
+  }
+  return new Paragraph({
+    spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT },
+    children: [new WpsShapeRun({
+      type: "wps",
+      transformation: { width: convertLength(frame.widthMm, "mm", "px"), height: convertLength(frame.heightMm, "mm", "px") },
+      floating: {
+        horizontalPosition: { relative: HorizontalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(frame.xMm, "mm", "emu")) },
+        verticalPosition: { relative: VerticalPositionRelativeFrom.PAGE, offset: Math.round(convertLength(frame.yMm, "mm", "emu")) },
+        allowOverlap: true, lockAnchor: false, layoutInCell: false,
+        wrap: { type: TextWrappingType.NONE }, zIndex: relativeHeight(frame.zIndex),
+      },
+      nonVisualProperties: { txBox: "1" },
+      altText: { name: frame.id || "TxtNote flow text frame", title: frame.id || "TxtNote flow text frame" },
+      bodyProperties: { margins: { top: 0, bottom: 0, left: 0, right: 0 }, noAutoFit: true },
+      children: paragraphs,
+    })],
+  });
 }
 
 /** A real PAGE field inside a page-anchored editable text box. */

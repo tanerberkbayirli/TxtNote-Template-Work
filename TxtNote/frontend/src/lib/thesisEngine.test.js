@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
+import { createThesisDocument, setThesisTextFormat } from "../thesis/document.js";
 import generic from "../thesis/templates/generic.js";
 import { FIXTURE_REGISTRY } from "./thesisFixtures.js";
 import { THESIS_TEMPLATE_REGISTRY, findThesisTemplateDescriptor, resolveThesisTemplate } from "../thesis/registry.js";
@@ -17,6 +18,11 @@ const choose = (id) => FIXTURE_REGISTRY.find((entry) => entry.id === id);
 describe("thesis template validation", () => {
   it("accepts the generic template and rejects invalid dimensions, sections and placeholders", () => {
     assert.deepEqual(validateThesisTemplate(generic), []);
+    const oddPage = structuredClone(generic);
+    oddPage.sections.find((section) => section.id === "main").pageBreakBefore = "oddPage";
+    assert.deepEqual(validateThesisTemplate(oddPage), [], "oddPage is an allowed section start value");
+    oddPage.sections.find((section) => section.id === "main").pageBreakBefore = "evenPage";
+    assert.ok(validateThesisTemplate(oddPage).some((error) => error.includes("pageBreakBefore geçersiz")));
     const bad = structuredClone(generic);
     bad.page.margins.leftMm = 200;
     bad.sections.push({ ...bad.sections[0] });
@@ -200,10 +206,19 @@ describe("thesis export", () => {
 
     const docx = new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer());
     const xml = strFromU8(unzipSync(docx)["word/document.xml"]);
-    assert.match(xml, /<w:color w:val="E8A0A0"\s*\/>/);
+    assert.match(xml, /<w:color w:val="BE123C"\s*\/>/);
     assert.match(xml, /<w:shd[^>]*w:fill="FFF2A8"/);
     assert.match(xml, /<w:sz w:val="32"\s*\/>/);
     assert.match(xml, /<w:ind[^>]*w:left="283"/);
+    const titled = compileThesisDocument(generic, setThesisTextFormat(createThesisDocument(generic, {}), "abstract", "title", { bold: true, color: "#0070c0", sizePt: 20 }), "Tez", "<p>Metin</p>");
+    const titledHtml = titled.sections.find((item) => item.id === "abstract").prefixHtml;
+    assert.match(titledHtml, /<h1[^>]*><span class="fmt-bold" data-fmt-color="#0070c0" data-fmt-pt="20">/);
+    const titledXml = strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(titled)).arrayBuffer()))["word/document.xml"]);
+    assert.match(titledXml, /<w:color w:val="0070C0"\s*\/>/);
+    const custom = compileThesisDocument(generic, {}, "Tez", '<p><span data-fmt-color="#12ab34" data-fmt-bg="#ffcc00">Özel</span></p>');
+    const customXml = strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(custom)).arrayBuffer()))["word/document.xml"]);
+    assert.match(customXml, /<w:color w:val="12AB34"\s*\/>/);
+    assert.match(customXml, /<w:shd[^>]*w:fill="FFCC00"/);
 
     const pdf = new Uint8Array(await (await buildThesisPdf(model)).arrayBuffer());
     const task = getDocument({ data: pdf, useSystemFonts: true, disableFontFace: true });
@@ -372,6 +387,17 @@ describe("thesis export", () => {
     const separated = await otherTask.promise;
     assert.equal(separated.numPages, pdf.numPages + 1);
     await otherTask.destroy();
+  });
+  it("writes oddPage section starts to DOCX and print markup", async () => {
+    const template = structuredClone(generic);
+    template.sections.find((section) => section.id === "main").pageBreakBefore = "oddPage";
+    const model = compileThesisDocument(template, {}, "Tez", "<p>Metin</p>");
+    const docx = new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer());
+    const xml = strFromU8(unzipSync(docx)["word/document.xml"]);
+    assert.match(xml, /<w:type w:val="oddPage"\s*\/>/);
+    const print = buildThesisPrintHtml(model);
+    assert.match(print, /data-thesis-start-odd="true"/);
+    assert.match(print, /break-before:right/);
   });
   it("keeps the fixture C declaration special page on its own sheet despite numbered chapter breaks", async () => {
     const { template } = await resolveThesisTemplate({ templateId: "fixture-university-c-phd-en-v1" }, FIXTURE_REGISTRY);

@@ -106,7 +106,7 @@ describe("AKÜ Kimya lisans bitirme tezi template (aku-kimya-lisans-tr-v1)", () 
     const model = compile();
     const text = (id) => JSON.stringify(section(model, id).layout);
     const cover = section(model, "inner-cover");
-    assert.deepEqual([cover.rules.page.margins.topMm, cover.rules.page.margins.rightMm], [5.29, 27.33], "template extents: logo top 5.29 mm, logo right edge 182.67 mm");
+    assert.deepEqual([cover.rules.page.margins.topMm, cover.rules.page.margins.rightMm], [10.02, 30], "source section margins remain intact while logos are page-positioned");
     assert.deepEqual([cover.rules.body.fontSizePt, cover.rules.body.fontWeight, cover.rules.body.lineHeight, cover.rules.body.align], [14, 700, 1.5, "center"]);
     assert.match(text("inner-cover"), /AFYON KOCATEPE ÜNİVERSİTESİ[\s\S]*FEN EDEBİYAT FAKÜLTESİ[\s\S]*KİMYA BÖLÜMÜ[\s\S]*BİTİRME TEZİ/);
     assert.equal((text("inner-cover").match(/data:image\/jpeg;base64/g) || []).length, 2, "AKÜ seal and Kimya Bölümü logo");
@@ -126,9 +126,15 @@ describe("AKÜ Kimya lisans bitirme tezi template (aku-kimya-lisans-tr-v1)", () 
   it("DOCX carries the Word values: 30 mm margins, 1.5 lines, 20.7 pt after, numbering, footer 12.51 mm", async () => {
     const xml = await docxXml(compile());
     assert.match(xml, /<w:pgMar w:top="1701" w:right="1701" w:bottom="1701" w:left="1701" w:header="709" w:footer="709"/);
-    assert.match(xml, /<w:pgMar w:top="300" w:right="1549"/, "cover: template extents (5.29 mm / 27.33 mm)");
+    assert.match(xml, /<w:pgMar w:top="568" w:right="1701"/, "cover: source section margins (10.02 mm / 30 mm)");
     assert.match(xml, /w:spacing w:after="414" w:before="0" w:line="360" w:lineRule="auto"/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="lowerRoman"\/>/);
     assert.match(xml, /<w:pgNumType w:start="1" w:fmt="decimal"\/>/);
+  });
+  it("positions the cover seal/logo from the content box without flow slots", () => {
+    const css = buildThesisCss(compile());
+    assert.match(css, /\.thesis-flow-section\[data-thesis-flow-section="inner-cover"\]\{[^}]*position:relative;\}/);
+    // Only sections with a content-origin positioned block become the containing block.
+    assert.doesNotMatch(css, /\.thesis-flow-section\[data-thesis-flow-section="approval"\]\{[^}]*position:relative;\}/);
   });
 });

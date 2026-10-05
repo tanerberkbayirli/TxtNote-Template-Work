@@ -4,6 +4,7 @@
  * section bodies live in note.researchData.thesis. The template is only read.
  */
 import { thesisSourceHtml } from "./sourceHtml.js";
+import { normalizeStaticFormat } from "./staticFormat.js";
 
 export function createThesisDocument(template, selection, year = new Date().getFullYear()) {
   return {
@@ -122,6 +123,43 @@ export function thesisSectionContentKey(section) {
 export function thesisSectionContent(section, thesis, mainContent = "") {
   if (!isThesisSectionEditable(section)) return "";
   return section.type === "mainContent" ? mainContent : thesis?.sectionContent?.[thesisSectionContentKey(section)] ?? "";
+}
+
+/**
+ * Document-local replacement for template-owned text (a section's title heading, its fixed paragraphs).
+ * Stored in thesis.textOverrides[sectionId][kind]; the template is never written and no override means template text.
+ */
+export function thesisTextOverride(thesis, sectionId, kind) {
+  const value = thesis?.textOverrides?.[sectionId]?.[kind];
+  return typeof value === "string" ? value : undefined;
+}
+
+/** New thesis state with one override set; `text === undefined` restores the template text. */
+export function setThesisTextOverride(thesis, sectionId, kind, text) {
+  if (thesisTextOverride(thesis, sectionId, kind) === text) return thesis;
+  const { [sectionId]: current = {}, ...others } = thesis?.textOverrides || {};
+  const { [kind]: _removed, ...rest } = current;
+  const entry = text === undefined ? rest : { ...rest, [kind]: String(text) };
+  const textOverrides = Object.keys(entry).length ? { ...others, [sectionId]: entry } : others;
+  return { ...thesis, textOverrides };
+}
+
+/** Character format (see staticFormat.js) of the template-owned text `kind` ("title" | "fixed"). */
+export function thesisTextFormat(thesis, sectionId, kind) {
+  const value = thesis?.textOverrides?.[sectionId]?.[`${kind}Format`];
+  return value && typeof value === "object" ? value : undefined;
+}
+
+/** New thesis state with the format of `kind` replaced; an empty format restores the template formatting. */
+export function setThesisTextFormat(thesis, sectionId, kind, format) {
+  const clean = normalizeStaticFormat(format);
+  const key = `${kind}Format`;
+  const current = thesisTextFormat(thesis, sectionId, kind);
+  if (!Object.keys(clean).length ? current === undefined : JSON.stringify(current) === JSON.stringify(clean)) return thesis;
+  const { [sectionId]: entry = {}, ...others } = thesis?.textOverrides || {};
+  const { [key]: _removed, ...rest } = entry;
+  const next = Object.keys(clean).length ? { ...rest, [key]: clean } : rest;
+  return { ...thesis, textOverrides: Object.keys(next).length ? { ...others, [sectionId]: next } : others };
 }
 
 /** Return a new note only for editable sections; never write into a template. */
