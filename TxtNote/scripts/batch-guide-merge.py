@@ -46,7 +46,7 @@ def main() -> int:
         guides = pick_guides(folder, institute)
         row["guides"] = [g.name for g in guides]
         applied_total, conflicts_total = 0, 0
-        for guide in guides[:2]:
+        for guide in guides[:1]:  # the best-matching guide only; a second one may belong to another institute
             if guide not in extracted:
                 out = rules_dir / f"{guide.stem}.rules.json"
                 result = subprocess.run([sys.executable, str(ROOT / "scripts" / "extract-guide-rules.py"), str(guide), "--out", str(out)], capture_output=True, text=True, timeout=300)

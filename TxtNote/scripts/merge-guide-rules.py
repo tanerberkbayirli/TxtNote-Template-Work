@@ -43,6 +43,7 @@ def main() -> int:
     guide_name = rules_file["file"]["name"]
     applied, conflicts, skipped = [], draft.setdefault("conflicts", []), []
     unknown_fields = {u["field"] for u in draft.get("unknown", [])}
+    inferred_fields = {i["field"] for i in draft.get("inferred", [])}
 
     def explicit(key):
         rule = rules.get(key)
@@ -64,6 +65,12 @@ def main() -> int:
             return
         value = transform(rule["value"])
         current = container.get(field)
+        # A value the draft only inferred (e.g. a footer alignment read as "justify") yields to the guide's explicit rule.
+        if current is not None and path in inferred_fields and current != value:
+            container[field] = value
+            applied.append({"field": path, "value": value, "source": evidence_of(rule) + f" (taslaktaki çıkarım {current} yerine)"})
+            draft.setdefault("evidence", {})[path] = {"value": value, "source": evidence_of(rule), "status": "EXPLICIT"}
+            return
         if current is None:
             container[field] = value
             applied.append({"field": path, "value": value, "source": evidence_of(rule)})

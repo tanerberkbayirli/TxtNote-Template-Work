@@ -34,6 +34,7 @@ def main() -> int:
     parser.add_argument("--only")
     parser.add_argument("--skip-regenerate", action="store_true")
     parser.add_argument("--base", default="http://localhost:5173")
+    parser.add_argument("--reuse-exports", action="store_true", help="Var olan export.docx/pdf dosyalarını yeniden üretmeden kullan")
     args = parser.parse_args()
     if not args.skip_regenerate:
         print("taslaklar yeniden üretiliyor…", flush=True)
@@ -54,7 +55,8 @@ def main() -> int:
         template_id = row["templateId"]
         out_dir = ROOT / "output" / "pass-gate" / template_id
         started = time.time()
-        export = subprocess.run(["node", str(ROOT / "frontend" / "tests" / "thesis-export-gate.e2e.mjs"), template_id, str(out_dir), args.base], cwd=ROOT / "frontend", capture_output=True, text=True, timeout=600, env=env)
+        reuse = args.reuse_exports and (out_dir / "export.pdf").exists() and (out_dir / "export.docx").exists()
+        export = subprocess.CompletedProcess([], 0, "", "") if reuse else subprocess.run(["node", str(ROOT / "frontend" / "tests" / "thesis-export-gate.e2e.mjs"), template_id, str(out_dir), args.base], cwd=ROOT / "frontend", capture_output=True, text=True, timeout=600, env=env)
         record = {"templateId": template_id, "university": row["university"], "file": row["file"], "seconds": round(time.time() - started)}
         if export.returncode:
             record.update({"overall": "EXPORT-FAIL", "error": (export.stderr or export.stdout).strip().splitlines()[-1][:200] if (export.stderr or export.stdout).strip() else "dışa aktarım başarısız"})

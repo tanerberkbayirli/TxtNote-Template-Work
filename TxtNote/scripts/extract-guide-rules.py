@@ -29,6 +29,8 @@ LIMIT_WORDS = r"en\s+(küçük|az|fazla|büyük)|minimum|maksimum|en\s+çok|aşm
 CLAUSE_SPLIT = r"[;:]|,\s|\sise\s|\(|\)"
 SCOPE_PATTERNS = [
     ("pageSpecific", r"sadece bu sayfa|yalnız(ca)? bu sayfa|bu sayfada"),
+    ("landscape", r"\byatay\b|landscape|enine"),
+    ("note", r"\bnot(lar|u|ları)?\b|açıklama|kaynak gösterimi"),
     ("equation", r"denklem|formül|equation"),
     ("footnote", r"dipnot|footnote"),
     ("abbreviations", r"simgeler|kısaltmalar|dizin"),
@@ -152,27 +154,39 @@ def extract(units: list[dict]) -> Rules:
             scope = scope_of(sentence)
             loc = unit["location"]
             # --- margins ---------------------------------------------------------------------------
-            if re.search(r"kenar|boşluk|margin|cilt payı|bosluk", low) and re.search(NUMBER + UNIT_LEN, low):
-                if re.search(ALL_SIDES, low):
+            # Margins: only portrait body pages; landscape and single-page remarks are other scopes.
+            if re.search(r"kenar|boşluk|margin|cilt payı|bosluk", low) and re.search(NUMBER + UNIT_LEN, low) and scope not in ("landscape", "pageSpecific", "note", "table", "caption", "footnote"):
+                named = {side for side, words in SIDE_WORDS.items() if re.search(rf"\b(?:{words})\b", low)}
+                if re.search(ALL_SIDES, low) and not named:
                     m = re.search(NUMBER + UNIT_LEN, low)
                     mm = to_float(m.group(1)) * (10 if m.group(2) == "cm" else 1)
                     for side in ("top", "bottom", "left", "right"):
                         rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
                 else:
+                    assigned = set()
+                    # "sol kenardan 4 cm, diğer kenarlardan 2,5 cm": the rest share the second value.
+                    other = re.search(rf"(diğer|öteki|geri kalan|other|remaining)\s+(kenar|yan|taraf|side|margin)\w*[^\d\n]{{0,25}}?{NUMBER}{UNIT_LEN}", low)
                     for side, words in SIDE_WORDS.items():
                         # "sol kenardan 3,5 cm", "soldan 3.5 cm", "sol: 3,5 cm", "üst ve alt kenarlardan 2,5 cm", "left margin 3.5 cm"
                         for m in re.finditer(rf"(?:{words})\b[^\d\n]{{0,45}}?{NUMBER}{UNIT_LEN}", low):
                             mm = to_float(m.group(1)) * (10 if m.group(2) == "cm" else 1)
                             rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
+                            assigned.add(side)
                             # "üst ve alt ile sağ kenar boşlukları için 2,5 cm": every side chained before the number shares it.
                             chain = re.search(r"((?:(?:üst|alt|sol|sağ|top|bottom|left|right)\w*\s*(?:ve|ile|,|and)\s*)+)$", low[max(0, m.start() - 60):m.start()])
                             chained = low[m.start():m.start(1)] + " " + (chain.group(1) if chain else "")
                             for other, other_words in SIDE_WORDS.items():
                                 if other != side and re.search(rf"\b(?:{other_words})\b", chained):
                                     rules.add(f"page.margins.{other}", mm, "mm", sentence, loc, "page")
+                                    assigned.add(other)
                         # "3,5 cm sol kenar" / "3 cm'lik sol boşluk" (number right before the side, nothing else between)
                         for m in re.finditer(rf"{NUMBER}{UNIT_LEN}\s*(?:'?l[ıi]k\s+)?(?:{words})\b", low):
                             mm = to_float(m.group(1)) * (10 if m.group(2) == "cm" else 1)
+                            rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
+                            assigned.add(side)
+                    if other and assigned:
+                        mm = to_float(other.group(3)) * (10 if other.group(4) == "cm" else 1)
+                        for side in {"top", "bottom", "left", "right"} - assigned:
                             rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
             # --- font family -----------------------------------------------------------------------
             for font in FONT_NAMES:

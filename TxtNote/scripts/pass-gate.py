@@ -139,7 +139,9 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
             gate.add("PDF sayfa numarası konumu", numbering["position"], "şablon page.numbering.position", position, "PASS" if position == numbering["position"] else "FAIL", note=f"{len(numbers)} numara bulundu")
             centers = [(n["x0"] + n["x1"]) / 2 for n in numbers]
             if numbering.get("align") == "center":
-                gate.compare("PDF sayfa numarası yatay konumu (mm, orta)", round(page_w / 2, 2), "sayfa ortası", round(statistics.median(centers), 2), 0.5, unit="mm")
+                # Like Word's footer, the number is centred in the text column, not on the sheet.
+                column_center = margins["leftMm"] + (page_w - margins["leftMm"] - margins["rightMm"]) / 2
+                gate.compare("PDF sayfa numarası yatay konumu (mm, metin bloğu ortası)", round(column_center, 2), "metin bloğu ortası (sol + genişlik/2)", round(statistics.median(centers), 2), 0.5, unit="mm")
             elif numbering.get("align") == "right":
                 gate.compare("PDF sayfa numarası sağ kenarı (mm)", round(page_w - margins["rightMm"], 2), "metin bloğu sağ kenarı", round(statistics.median(n["x1"] for n in numbers), 2), 0.5, unit="mm")
             romans = [n["text"] for n in numbers if ROMAN_RE.match(n["text"]) and not n["text"].isdigit()]
@@ -147,7 +149,13 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
             roman_values = [roman_to_int(r) for r in romans]
             arabic_values = [int(a) for a in arabics]
             sequential = all(b == a + 1 for a, b in zip(roman_values, roman_values[1:])) and all(b == a + 1 for a, b in zip(arabic_values, arabic_values[1:]))
-            gate.add("PDF ön sayfalar Romen / gövde Arap rakamı, artan dizi", "i, ii, iii… → 1, 2, 3…", "şablon bölüm numaralandırması", f"{', '.join(romans[:6])} → {', '.join(arabics[:4])}", "PASS" if romans and arabics and arabic_values[0] == 1 and roman_values[0] == 1 and sequential else "FAIL", note="" if sequential else "numaralar her bölümde yeniden başlıyor ya da atlıyor")
+            # Expectations come from the template: Roman front matter only if a section asks for it; "1" only if the main body restarts.
+            sections = expected.get("sections", [])
+            expects_roman = any("roman" in str((s.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", "")) for s in sections)
+            main_numbering = next(((s.get("overrides") or {}).get("page", {}).get("numbering", {}) for s in sections if s.get("type") == "mainContent"), {})
+            expects_restart = bool(main_numbering.get("restart"))
+            ok = bool(arabics) and sequential and (bool(romans) if expects_roman else True) and (arabic_values[0] == 1 if expects_restart else True)
+            gate.add("PDF sayfa numaraları: biçim ve artan dizi", ("Romen ön sayfalar, " if expects_roman else "") + ("gövde 1'den" if expects_restart else "gövde devam eder") + "; ardışık", "şablon bölüm numaralandırması (kapak sayfaları sayılır, basılmaz)", f"{', '.join(romans[:6])} → {', '.join(arabics[:4])}", "PASS" if ok else "FAIL", note="" if sequential else "numaralar yeniden başlıyor ya da atlıyor")
     return {"left": left, "right": right, "top": min(tops), "bottomGap": bottom_gap, "pitch": statistics.mode(pitches) if pitches else None, "font": font, "duplicates": duplicates, "numbers": len(numbers)}
 
 
@@ -169,7 +177,8 @@ def measure_docx(path: Path, expected: dict, gate: Gate):
     gate.add("DOCX gövde satır aralığı", f"{body.get('lineHeight')} satır", "şablon body.lineHeight (Word 'n satır')", profile.get("lineSpacing"), "PASS" if profile.get("lineSpacing") == f"{body.get('lineHeight')} satır" else "FAIL")
     gate.add("DOCX gövde hizası", body.get("align"), "şablon body.align", profile.get("align"), "PASS" if profile.get("align") == body.get("align") else "FAIL")
     formats = [s["numbering"]["format"] for s in spec["sections"]]
-    gate.add("DOCX bölüm numara biçimleri", "Romen ön sayfalar, decimal gövde", "şablon bölümleri", ", ".join(str(f) for f in formats), "PASS" if "decimal" in formats and any(f and "Roman" in f for f in formats) else "FAIL")
+    expects_roman = any("roman" in str((s.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", "")) for s in expected.get("sections", []))
+    gate.add("DOCX bölüm numara biçimleri", ("Romen ön sayfalar + " if expects_roman else "") + "decimal gövde", "şablon bölümleri", ", ".join(str(f) for f in formats), "PASS" if "decimal" in formats and (any(f and "Roman" in f for f in formats) if expects_roman else True) else "FAIL")
     numbering = expected["page"]["numbering"]
     fields = [hf for s in spec["sections"] for hf in list(s["footers"].values()) + list(s["headers"].values()) if hf.get("hasPageField")]
     if numbering.get("enabled"):
