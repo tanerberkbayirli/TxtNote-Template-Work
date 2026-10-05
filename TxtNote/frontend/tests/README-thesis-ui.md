@@ -14,3 +14,15 @@ Invalid or dangerous link schemes and malformed addresses must remain disabled; 
 The editor keeps its existing continuous-layout fallback in browsers that do not support the paged CSS fragmentation features; this smoke runs in Edge, where the A4 page stack is available.
 
 For a targeted rerun after the ribbon reachability sweep has passed, set `RIBBON_SKIP_REACHABILITY=1`; the default run always checks both representative widths.
+
+## Panel erişimi ve performans regresyonu
+
+```powershell
+node tests/ribbon-panels.e2e.mjs http://127.0.0.1:5182
+node tests/ribbon-colors.e2e.mjs http://127.0.0.1:5182
+node tests/ribbon-cover-format.e2e.mjs http://127.0.0.1:5182
+```
+
+Panel testi, üst bilgi çubuğunun kaldırıldığını ve Tez bilgileri/Ayarlar düğmelerinin altı sekmeden erişilebilir olduğunu doğrular. Başlık kaydı, sözcük sayımının yazma ve geri al/yinele sonrası güncellenmesi, geçersiz kenar boşluklarının engellenmesi, sayfa ayarı uygulama ve geçmişi, cetvel birimi/görünürlüğü, zoom eşlemesi ve klavye ile sekme geçişi kontrol edilir. Giriş ve Dosya sekmelerinde gerçek yazdırma belgesi hazırlanır; sistem yazdırma penceresi testte yakalanır, fiziksel yazıcı kullanılmaz. 360, 620, 1024 ve 1380 px genişliklerde panel düğmelerinin görünür alan içinde kaldığı doğrulanır.
+
+Sözcük sayımı, editör render işleminden ayrılmıştır: metin değişimleri 200 ms boyunca birleştirilir ve yalnızca sayaç bileşeni güncellenir. Test, 12 panel açma/kapatma işleminde belge metninin yeniden okunmadığını kontrol eder. Ölçüm ve ekran görüntüleri yerel `TxtNote/output/ribbon-panels/` klasörüne yazılır.

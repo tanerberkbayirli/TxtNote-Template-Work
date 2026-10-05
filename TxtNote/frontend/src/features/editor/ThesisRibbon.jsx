@@ -1,4 +1,5 @@
 import { useId, useState } from "react";
+import { Settings, NotebookPen } from "lucide-react";
 import { tabs } from "./ribbon/shared.js";
 import Tool from "./ribbon/Tool.jsx";
 import HomeTab from "./ribbon/HomeTab.jsx";
@@ -102,45 +103,7 @@ export default function ThesisRibbon({
 
   return (
     <header className="thesis-ribbon" aria-label="Tez belge araçları">
-      <div className="thesis-titlebar">
-        <div className="thesis-brand">
-          <span className="thesis-brand-mark" aria-hidden="true">
-            T
-          </span>
-          <div>
-            <strong>TxtNote</strong>
-            <span>Tez düzenleyicisi</span>
-          </div>
-        </div>
-        <div className="thesis-titlebar-actions">
-          <span className="thesis-save-indicator">
-            <i /> Otomatik kayıt
-          </span>
-        </div>
-        <div className="thesis-document-name" title={title || "Adsız tez"}>
-          {title || "Adsız tez"}
-          <span> · {template.displayName || template.universityName}</span>
-        </div>
-        <div className="thesis-titlebar-actions thesis-titlebar-right">
-          <button
-            type="button"
-            className="thesis-detail-button"
-            onMouseDown={keep}
-            onClick={() => setDetailsOpen(!detailsOpen)}
-            aria-expanded={detailsOpen}
-          >
-            Tez bilgileri
-          </button>
-          <Tool
-            label="Sayfa düzeni"
-            pressed={pageSettingsOpen}
-            onMouseDown={keep}
-            onClick={() => setPageSettingsOpen(!pageSettingsOpen)}
-          >
-            ⚙
-          </Tool>
-        </div>
-      </div>
+      <div className="thesis-ribbon-toprow">
       <div role="tablist" aria-label="Şerit sekmeleri" className="thesis-tabs">
         {tabs.map((item) => (
           <button
@@ -180,6 +143,18 @@ export default function ThesisRibbon({
         ) : (
           <span className="thesis-active-section is-muted">Düzenlemek için bir metin bölümüne tıklayın</span>
         )}
+      </div>
+      <div className="thesis-ribbon-shortcuts" role="group" aria-label="Belge panelleri">
+        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep}
+          onClick={() => setDetailsOpen((open) => !open)} aria-expanded={detailsOpen}>
+          <NotebookPen size={15} aria-hidden="true" /> Tez bilgileri
+        </button>
+        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep}
+          onClick={() => setPageSettingsOpen((open) => !open)} aria-expanded={pageSettingsOpen}
+          aria-label="Sayfa düzeni" title="Sayfa düzeni ayarları">
+          <Settings size={15} aria-hidden="true" /> Ayarlar
+        </button>
+      </div>
       </div>
       <div
         id={`${ids}-thesis-ribbon-panel`}

@@ -121,16 +121,15 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   }, [resolved]);
 
   const template = resolved?.template;
-  const plainTitle = htmlToPlainText(title);
-  const bibliographyItems = normalizeBibliographyItems(bibliographyItemsFromResearch(researchData));
-  const sourceModel = useMemo(() => template ? compileThesisDocument(template, thesis, plainTitle, content, bibliographyItems) : null, [template, thesis, plainTitle, content, researchData]);
+  const plainTitle = useMemo(() => htmlToPlainText(title), [title]);
+  const bibliographyItems = useMemo(() => normalizeBibliographyItems(bibliographyItemsFromResearch(researchData)), [researchData?.docBibliographyItems, researchData?.docBibliography]);
+  const sourceModel = useMemo(() => template ? compileThesisDocument(template, thesis, plainTitle, content, bibliographyItems) : null, [template, thesis, plainTitle, content, bibliographyItems]);
   const model = useMemo(() => sourceModel ? resolveGeneratedIndexes(sourceModel, indexResolution.pages || {}, indexResolution.counts) : null, [sourceModel, indexResolution]);
   const generatedPageTargets = useMemo(() => sourceModel ? generatedIndexPageTargets(sourceModel) : [], [sourceModel]);
   const pageGroups = useMemo(() => model ? groupThesisSections(model.sections) : [], [model]);
   const [chapterStarts, setChapterStarts] = useState({});
   const pageModel = useMemo(() => buildThesisPageModel(pageGroups, pageCounts, chapterStarts), [pageGroups, pageCounts, chapterStarts]);
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
-  const thesisWordCount = `${plainTitle} ${[...(papersRef.current?.querySelectorAll('[contenteditable="true"]') || [])].map((node) => node.innerText || node.textContent || "").join(" ")}`.trim().split(/\s+/u).filter(Boolean).length;
   useLayoutEffect(() => { committedPaginationStateRef.current = { indexResolution, footnoteViews }; }, [indexResolution, footnoteViews]);
   const onChapterStarts = useCallback((groupId, starts) => setChapterStarts((current) => {
     const before = current[groupId];
@@ -703,7 +702,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         </div>
       </aside> : null}
     </div>
-    <ThesisStatusBar wordCount={thesisWordCount} totalPages={totalPages} zoom={zoom} zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} stepZoom={stepZoom} keepSelection={keepSelection} saveSelection={rememberSelection} />
+    <ThesisStatusBar papersRef={papersRef} title={plainTitle} totalPages={totalPages} zoom={zoom} zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} stepZoom={stepZoom} keepSelection={keepSelection} saveSelection={rememberSelection} />
     <LayoutSelectionOverlay {...interaction.overlayProps} onPatch={interaction.patchElements} onOpenInspector={() => { setDetailsOpen(false); setPageSettingsOpen(false); }} />
   </div>;
 }
