@@ -56,7 +56,7 @@ def main() -> int:
             rules = extracted[guide]
             if not rules:
                 continue
-            merge = subprocess.run([sys.executable, str(ROOT / "scripts" / "merge-guide-rules.py"), str(draft_path), str(rules)], capture_output=True, text=True, timeout=120)
+            merge = subprocess.run([sys.executable, str(ROOT / "scripts" / "merge-guide-rules.py"), str(draft_path), str(rules), "--defaults-when-silent"], capture_output=True, text=True, timeout=120)
             if merge.returncode:
                 row.setdefault("guideErrors", []).append(f"{guide.name}: birleştirme hatası {(merge.stderr or '').strip().splitlines()[-1][:120] if merge.stderr else ''}")
                 continue

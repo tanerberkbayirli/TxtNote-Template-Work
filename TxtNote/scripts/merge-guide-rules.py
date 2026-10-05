@@ -35,6 +35,7 @@ def main() -> int:
     parser.add_argument("draft", type=Path)
     parser.add_argument("rules", type=Path)
     parser.add_argument("--out", type=Path)
+    parser.add_argument("--defaults-when-silent", action="store_true", help="Kılavuz şekil/tablo yazısı konumunu söylemiyorsa motor varsayılanını (şekil altı, tablo üstü) kullan ve bunu taslakta açıkça işaretle")
     args = parser.parse_args()
     draft = json.loads(args.draft.read_text(encoding="utf-8"))
     rules_file = json.loads(args.rules.read_text(encoding="utf-8"))
@@ -108,10 +109,16 @@ def main() -> int:
             apply(f"typography.headings.{level}.textTransform", f"headings.{level}.textTransform", headings[level], "textTransform")
             apply(f"typography.headings.{level}.fontSizePt", f"headings.{level}.fontSizePt", headings[level], "fontSizePt")
     # Captions: the whole rule may be missing (templates without example figures).
+    ENGINE_DEFAULT_POSITION = {"figures": "below", "tables": "above"}
     for kind in ("figures", "tables"):
         position = explicit(f"{kind}.position")
         if template.get(kind) is None:
             size = explicit("caption.fontSizePt")
+            if position is None and args.defaults_when_silent and body.get("fontFamily") and body.get("fontSizePt"):
+                position = {"value": ENGINE_DEFAULT_POSITION[kind], "evidence": [{"location": "motor varsayılanı", "sentence": f"Kılavuz {kind} yazısının konumunu belirtmiyor; motor varsayılanı {ENGINE_DEFAULT_POSITION[kind]}"}]}
+                draft.setdefault("inferred", []).append({"field": f"{kind}.position", "value": ENGINE_DEFAULT_POSITION[kind], "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"})
+                draft.setdefault("unknown", []).append({"field": f"{kind}.position", "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"})
+                template.setdefault("source", {}).setdefault("notes", []).append(f"{kind}: yazı konumu kılavuzda yok, motor varsayılanı ({ENGINE_DEFAULT_POSITION[kind]})")
             if position and body.get("fontFamily") and (size or body.get("fontSizePt")):
                 labels = rules.get(f"{kind}.labels", {}).get("value") or [CAPTION_DEFAULT_LABELS[kind]]
                 style = {"fontFamily": body["fontFamily"], "fontSizePt": size["value"] if size else body["fontSizePt"], "align": "center"}
@@ -152,7 +159,7 @@ def main() -> int:
     if "guideDocumentName" not in template["source"]:
         template["source"]["guideDocumentName"] = guide_name
     draft["guideMerge"] = {"guide": guide_name, "applied": applied, "skipped": skipped}
-    required_missing = [u["field"] for u in draft.get("unknown", []) if u["field"] in ("page", "typography.body.fontFamily", "typography.body.fontSizePt", "page.numbering", "tables", "figures") or u["field"].startswith("typography.headings.1")]
+    required_missing = [u["field"] for u in draft.get("unknown", []) if u["field"] in ("page", "typography.body.fontFamily", "typography.body.fontSizePt", "page.numbering", "tables", "figures") or u["field"].startswith("typography.headings.1") or (u["field"].startswith("page.margins.") and template.get("page", {}).get("margins", {}).get(u["field"].split(".")[-1]) is None)]
     draft["valid"] = not required_missing
     draft["requiredMissing"] = required_missing
     out = args.out or args.draft

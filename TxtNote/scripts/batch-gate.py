@@ -41,6 +41,10 @@ def main() -> int:
         run([sys.executable, str(ROOT / "scripts" / "batch-template-drafts.py")], timeout=1800)
         run([sys.executable, str(ROOT / "scripts" / "batch-guide-merge.py")], timeout=1800)
     rows = json.loads((ROOT / "output" / "template-drafts" / "batch-report.json").read_text(encoding="utf-8"))
+    guide_only = ROOT / "output" / "template-drafts" / "guide-only-report.json"
+    if guide_only.exists():
+        # Drafts built from a guide alone (no DOCX template) join the gate with the same rules.
+        rows += [{**r, "statusAfterGuide": "ok" if r.get("status") == "ok" else "incomplete", "file": r.get("guide", "")} for r in json.loads(guide_only.read_text(encoding="utf-8"))]
     wanted = set(args.only.split(",")) if args.only else None
     candidates = [r for r in rows if r.get("statusAfterGuide") == "ok" and (not wanted or r["templateId"] in wanted)]
     drafts = [str(ROOT / "output" / "template-drafts" / f"{r['templateId']}.draft.json") for r in candidates]

@@ -23,7 +23,7 @@ from pathlib import Path
 NUMBER = r"(\d+(?:[.,]\d+)?)"
 UNIT_LEN = r"\s*(cm|mm)\b"
 FONT_NAMES = ["Times New Roman", "Arial", "Calibri", "Cambria", "Garamond", "Verdana", "Tahoma", "Helvetica", "Georgia", "Book Antiqua", "Palatino", "Courier New"]
-SIDE_WORDS = {"top": r"üst(?:ten|te)?|top", "bottom": r"alt(?:tan|ta)?|bottom", "left": r"sol(?:dan|da)?|left|cilt(?:leme)?\s*(?:payı|tarafı)", "right": r"sağ(?:dan|da)?|right"}
+SIDE_WORDS = {"top": r"üst(?:ten|te|en)?|top", "bottom": r"alt(?:tan|ta)?|bottom", "left": r"sol(?:dan|da)?|left|cilt(?:leme)?\s*(?:payı|tarafı)|inner|inside|binding\s+side|iç\s+kenar", "right": r"sağ(?:dan|da)?|right|outside|outer|dış\s+kenar"}
 ALL_SIDES = r"(her|tüm|bütün|dört)\s+(kenar|yan|taraf)|all\s+(four\s+)?(sides|margins)|sayfa(nın)?\s+(her|tüm|dört)?\s*kenar(lar)?[ıi]?n?dan|kenarlar(ın)?dan"
 LIMIT_WORDS = r"en\s+(küçük|az|fazla|büyük)|minimum|maksimum|en\s+çok|aşmamalı|kadar\s+küçül"
 CLAUSE_SPLIT = r"[;:]|,\s|\sise\s|\(|\)"
@@ -75,19 +75,12 @@ def read_document(path: Path) -> list[dict]:
         import docx  # python-docx
         document = docx.Document(str(path))
         body = document.element.body
-        index = 0
-        for child in body.iterchildren():
-            tag = child.tag.rsplit("}", 1)[-1]
-            if tag == "p":
-                index += 1
-                text = "".join(t.text or "" for t in child.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t"))
-                if text.strip():
-                    units.append({"location": f"paragraf {index}", "text": text})
-            elif tag == "tbl":
-                index += 1
-                text = "\n".join("".join(t.text or "" for t in p.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t")) for p in child.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}p"))
-                if text.strip():
-                    units.append({"location": f"tablo @paragraf {index}", "text": text})
+        W = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+        # Every paragraph in document order, including those inside tables and content controls (w:sdt).
+        for index, para in enumerate(body.iter(f"{W}p"), 1):
+            text = "".join(t.text or "" for t in para.iter(f"{W}t"))
+            if text.strip():
+                units.append({"location": f"paragraf {index}", "text": text})
         return units
     raise SystemExit(f"Desteklenmeyen dosya türü: {path.suffix}")
 
@@ -140,14 +133,41 @@ class Rules:
         if not any(e["sentence"] == sentence[:300] and e["value"] == value for e in rule["evidence"]):
             rule["evidence"].append({"value": value, "location": location, "sentence": sentence[:300]})
         if rule["value"] != value:
-            rule["status"] = "CONFLICT"
             rule.setdefault("values", [rule["value"]])
             if value not in rule["values"]:
                 rule["values"].append(value)
+            self.resolve(rule)
+
+    @staticmethod
+    def resolve(rule: dict):
+        """Several sentences, several values: the value stated at least twice and more often than any
+        other wins as EXPLICIT (majority); the minority evidence stays listed. Otherwise CONFLICT."""
+        counts = {}
+        for e in rule["evidence"]:
+            counts[e["value"]] = counts.get(e["value"], 0) + 1
+        ranked = sorted(counts.items(), key=lambda item: -item[1])
+        # Tie-break: a sentence that speaks for the whole thesis ("tüm metinde", "tezin tamamında") outranks a local one.
+        if len(ranked) > 1 and ranked[0][1] == ranked[1][1]:
+            global_values = {e["value"] for e in rule["evidence"] if re.search(r"tüm|bütün|genel|tezin tamam|tez metni|ana metin|throughout|entire|all text", e["sentence"].lower())}
+            if len(global_values) == 1:
+                winner = next(iter(global_values))
+                ranked.sort(key=lambda item: (item[0] != winner, -item[1]))
+                rule["value"] = winner
+                rule["status"] = "EXPLICIT"
+                rule["majority"] = {"value": winner, "count": counts[winner], "minority": {str(v): c for v, c in ranked[1:]}, "tieBreak": "genel ifade"}
+                return
+        if len(ranked) > 1 and ranked[0][1] >= 2 and ranked[0][1] > ranked[1][1]:
+            rule["value"] = ranked[0][0]
+            rule["status"] = "EXPLICIT"
+            rule["majority"] = {"value": ranked[0][0], "count": ranked[0][1], "minority": {str(v): c for v, c in ranked[1:]}}
+        else:
+            rule["status"] = "CONFLICT"
+            rule.pop("majority", None)
 
 
 def extract(units: list[dict]) -> Rules:
     rules = Rules()
+    last_margin_sides: set[str] = set()
     for unit in units:
         for sentence in sentences_from_text(unit["text"]):
             low = sentence.lower()
@@ -155,9 +175,20 @@ def extract(units: list[dict]) -> Rules:
             loc = unit["location"]
             # --- margins ---------------------------------------------------------------------------
             # Margins: only portrait body pages; landscape and single-page remarks are other scopes.
-            if re.search(r"kenar|boşluk|margin|cilt payı|bosluk", low) and re.search(NUMBER + UNIT_LEN, low) and scope not in ("landscape", "pageSpecific", "note", "table", "caption", "footnote"):
+            # Page margins: a margin sentence, not an indent/quotation/reference/cover/binding-gutter one.
+            margin_sentence = re.search(r"kenar\s*boşlu|kenar\s*bosluk|margin|sayfa\s+(düzeni|yapısı|kullanım)|kenar\w*\s*[-:–]?\s*[^.]{0,40}?(boşluk|cm|mm)", low) and not re.search(r"alıntı|kaynakça|kaynağın|kaynak listesi|dipnot|cilt payı|quot|karşı sayfa|arka yüz|çift yönlü|çift taraflı|double-sided|logo", low)
+            # Clause-level exclusions: a number that belongs to a heading offset, indent or tab is not a page margin.
+            not_margin_clause = lambda position: re.search(r"girinti|içeriden|içerden|indent|tab\b|paragraf|satır|aşağı", clause_around(low, position)) or re.search(r"başlı\w*[^.,;]{0,30}$", low[max(0, position - 40):position])
+            # "Diğer üç kenarda 2,5 cm" alone: the sides the previous margin sentence did not name.
+            other_only = re.search(rf"^(diğer|öteki|geri kalan|other|remaining)\s+(üç|three|3)?\s*(kenar|yan|taraf|side|margin)\w*[^\d\n]{{0,25}}?{NUMBER}{UNIT_LEN}", low)
+            if other_only and last_margin_sides and scope not in ("landscape", "cover"):
+                mm = to_float(other_only.group(4)) * (10 if other_only.group(5) == "cm" else 1)
+                for side in {"top", "bottom", "left", "right"} - last_margin_sides:
+                    rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
+                last_margin_sides = set()
+            elif margin_sentence and re.search(NUMBER + UNIT_LEN, low) and scope_at(low, re.search(NUMBER + UNIT_LEN, low).start()) not in ("landscape", "pageSpecific", "note", "table", "caption", "footnote", "cover", "bibliography", "quote", "heading"):
                 named = {side for side, words in SIDE_WORDS.items() if re.search(rf"\b(?:{words})\b", low)}
-                if re.search(ALL_SIDES, low) and not named:
+                if re.search(ALL_SIDES, low) and not named and not not_margin_clause(re.search(NUMBER + UNIT_LEN, low).start()):
                     m = re.search(NUMBER + UNIT_LEN, low)
                     mm = to_float(m.group(1)) * (10 if m.group(2) == "cm" else 1)
                     for side in ("top", "bottom", "left", "right"):
@@ -165,29 +196,35 @@ def extract(units: list[dict]) -> Rules:
                 else:
                     assigned = set()
                     # "sol kenardan 4 cm, diğer kenarlardan 2,5 cm": the rest share the second value.
-                    other = re.search(rf"(diğer|öteki|geri kalan|other|remaining)\s+(kenar|yan|taraf|side|margin)\w*[^\d\n]{{0,25}}?{NUMBER}{UNIT_LEN}", low)
+                    other = re.search(rf"(diğer|öteki|geri kalan|other|remaining)\s+(üç|three|3)?\s*(kenar|yan|taraf|side|margin)\w*[^\d\n]{{0,25}}?{NUMBER}{UNIT_LEN}", low)
                     for side, words in SIDE_WORDS.items():
                         # "sol kenardan 3,5 cm", "soldan 3.5 cm", "sol: 3,5 cm", "üst ve alt kenarlardan 2,5 cm", "left margin 3.5 cm"
                         for m in re.finditer(rf"(?:{words})\b[^\d\n]{{0,45}}?{NUMBER}{UNIT_LEN}", low):
+                            if not_margin_clause(m.start()):
+                                continue
                             mm = to_float(m.group(1)) * (10 if m.group(2) == "cm" else 1)
                             rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
                             assigned.add(side)
                             # "üst ve alt ile sağ kenar boşlukları için 2,5 cm": every side chained before the number shares it.
                             chain = re.search(r"((?:(?:üst|alt|sol|sağ|top|bottom|left|right)\w*\s*(?:ve|ile|,|and)\s*)+)$", low[max(0, m.start() - 60):m.start()])
                             chained = low[m.start():m.start(1)] + " " + (chain.group(1) if chain else "")
-                            for other, other_words in SIDE_WORDS.items():
-                                if other != side and re.search(rf"\b(?:{other_words})\b", chained):
-                                    rules.add(f"page.margins.{other}", mm, "mm", sentence, loc, "page")
-                                    assigned.add(other)
-                        # "3,5 cm sol kenar" / "3 cm'lik sol boşluk" (number right before the side, nothing else between)
-                        for m in re.finditer(rf"{NUMBER}{UNIT_LEN}\s*(?:'?l[ıi]k\s+)?(?:{words})\b", low):
+                            for other_side, other_words in SIDE_WORDS.items():
+                                if other_side != side and re.search(rf"\b(?:{other_words})\b", chained):
+                                    rules.add(f"page.margins.{other_side}", mm, "mm", sentence, loc, "page")
+                                    assigned.add(other_side)
+                        # "3 cm'lik sol boşluk": only the explicit adjectival form; "3.5 cm Sağ kenar" in a list is the next item, not this side.
+                        for m in re.finditer(rf"{NUMBER}{UNIT_LEN}\s*'?l[ıi]k\s+(?:{words})\b", low):
+                            if not_margin_clause(m.start()):
+                                continue
                             mm = to_float(m.group(1)) * (10 if m.group(2) == "cm" else 1)
                             rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
                             assigned.add(side)
                     if other and assigned:
-                        mm = to_float(other.group(3)) * (10 if other.group(4) == "cm" else 1)
+                        mm = to_float(other.group(4)) * (10 if other.group(5) == "cm" else 1)
                         for side in {"top", "bottom", "left", "right"} - assigned:
                             rules.add(f"page.margins.{side}", mm, "mm", sentence, loc, "page")
+                            assigned.add(side)
+                    last_margin_sides = set(assigned)
             # --- font family -----------------------------------------------------------------------
             for font in FONT_NAMES:
                 at = low.find(font.lower())
@@ -232,10 +269,12 @@ def extract(units: list[dict]) -> Rules:
                 rules.add(f"{scope}.align", "justify", "", sentence, loc, scope)
             # --- captions: position and labels ----------------------------------------------------
             for kind, words in (("figures", r"şekil|sekil|resim|grafik|figure"), ("tables", r"çizelge|cizelge|tablo|table")):
-                for m in re.finditer(rf"\b({words})(?!d[ei]\b|iyle\b|inde\b)\w*\s+(ve\s+\w+\s+)?(başlı|basli|yazı|yazi|caption|adı|altına|altında|altlarına|üstüne|üstünde|üstlerine|üzerine|üzerinde|above|below)", low):
+                for m in re.finditer(rf"\b({words})(?!d[ei]\b|iyle\b|inde\b)\w*\s+(ve\s+\w+\s+)?(başlı|basli|yazı|yazi|caption|adı|numara|açıklama|altına|altında|altlarına|üstüne|üstünde|üstlerine|üzerine|üzerinde|above|below)", low):
                     clause = clause_around(low, m.start())
-                    # Position needs the caption itself in the clause; "çizelgelerin altında açıklama" is a note, not the caption.
+                    # Position needs the caption itself in the clause: a title/number line, not a note under the table.
                     if not re.search(r"başlı|basli|yazı|yazi|caption|adı|numara", clause):
+                        continue
+                    if re.search(r"ile ilgili açıklama|açıklama yapılması|bilgi not|dipnot", clause):
                         continue
                     if re.search(r"\balt(ın|ında|ına|ta|tan|larına|larında)?\b|below|beneath|under", clause) and not re.search(r"üst(ün|ünde|üne|lerine)?\b|üzer(ine|inde)\b|above", clause):
                         rules.add(f"{kind}.position", "below", "", sentence, loc, "caption")
