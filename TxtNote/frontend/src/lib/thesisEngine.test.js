@@ -153,11 +153,14 @@ describe("thesis engine", () => {
     // Demo B used "{1}.{2}" for H3 too, so H2 and H3 both read 1.1 (editor, TOC, PDF, DOCX).
     for (const entry of THESIS_TEMPLATE_REGISTRY) {
       const { template } = await resolveThesisTemplate({ templateId: entry.id });
-      const model = compileThesisDocument(template, {}, "T", "<h1>Bir</h1><h2>İki</h2><h3>Üç</h3><h3>Dört</h3>");
+      // Generated templates define only the levels their source document established; the editor offers only those.
+      const levels = Object.keys(template.typography.headings).map(Number).filter((level) => level <= 3).sort();
+      const html = levels.map((level) => `<h${level}>Düzey ${level}</h${level}>`).join("") + (levels.includes(3) ? "<h3>Dört</h3>" : levels.includes(2) ? "<h2>Dört</h2>" : "<h1>Dört</h1>");
+      const model = compileThesisDocument(template, {}, "T", html);
       const labels = model.headings.map((heading) => heading.label);
       assert.equal(new Set(labels).size, labels.length, `${entry.id}: ${labels}`);
       // A template may end its labels with a period (MCBÜ: "1.1.1.").
-      assert.match(labels[2], /^1\.1\.1\.?$/, entry.id);
+      if (levels.includes(3) && levels.includes(2) && levels.includes(1)) assert.match(labels[2], /^1\.1\.1\.?$/, entry.id);
     }
     const early = compileThesisDocument(generic, {}, "T", "<h2>Önce</h2><h1>Bir</h1>");
     assert.deepEqual(early.headings.map((heading) => heading.label), ["0.1", "1"]);

@@ -274,7 +274,7 @@ class Draft:
                     self.inf(f"typography.headings.{level}.textTransform", "uppercase", f"{len(texts)} başlığın tamamı büyük harf")
                 fmt = next((r.get("numberingFormat") for r in records if r.get("numberingFormat")), None)
                 if fmt:
-                    rule["numbering"] = {"enabled": True, "format": re.sub(r"%(\d)", r"{\1}", fmt)}
+                    rule["numbering"] = {"enabled": True, "format": re.sub(r"%(\d)", r"{\1}", fmt).strip()}
                     self.ev(f"typography.headings.{level}.numbering", rule["numbering"], "numbering.xml lvlText")
                 elif all(re.match(r"^\d+(\.\d+)*\.?\s", t) for t in texts):
                     manual = re.match(r"^(\d+(?:\.\d+)*)(\.?)\s", texts[0])
@@ -298,6 +298,14 @@ class Draft:
                 self.unk(f"typography.headings.{level}", f"Belgede {level}. düzey başlık stili veya örneği yok")
                 continue
             rule["keepWithNext"] = True
+            # A level-N label must carry N counters ({1}.{2}…{N}); a shorter inferred format would repeat labels.
+            numbering = rule.get("numbering")
+            if numbering and numbering.get("enabled", True):
+                placeholders = re.findall(r"\{(\d+)\}", numbering.get("format", ""))
+                if len(placeholders) != level or [int(p) for p in placeholders] != list(range(1, level + 1)):
+                    fixed_format = ".".join("{%d}" % (i + 1) for i in range(level))
+                    self.inf(f"typography.headings.{level}.numbering.format", fixed_format, f"Ölçülen biçim '{numbering.get('format')}' {level}. düzey için sayaç sayısı tutmuyor; düzeltildi")
+                    numbering["format"] = fixed_format
             if para_keep := (style or {}).get("effective", {}).get("paragraph", {}).get("keepNext"):
                 rule["keepWithNext"] = bool(para_keep)
             if not rule.get("fontFamily") or not rule.get("fontSizePt"):

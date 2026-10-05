@@ -140,7 +140,9 @@ export function extractThesisHeadings(html, rules, counters = []) {
     for (let i = level; i < counters.length; i += 1) counters[i] = 0;
     const rule = rules.headings[level]?.numbering;
     // A level with no heading yet (H2 before any H1) reads 0, as in Word ("0.1", not ".1").
-    const label = rule?.enabled === false ? "" : String(rule?.format || `{${level}}`).replace(/\{(\d+)\}/g, (_, n) => formatNumber(counters[Number(n) - 1] || 0, rule?.sequence || "arabic") || "0");
+    // A level without its own rule reads hierarchically ("1.2.1"), never just its own counter, so levels stay distinct.
+    const defaultFormat = Array.from({ length: level }, (_, i) => `{${i + 1}}`).join(".");
+    const label = rule?.enabled === false ? "" : String(rule?.format || defaultFormat).replace(/\{(\d+)\}/g, (_, n) => formatNumber(counters[Number(n) - 1] || 0, rule?.sequence || "arabic") || "0");
     headings.push({ level, title: plainText(match[3]), label, id: `heading-${headings.length + 1}`, counters: [...counters] });
   }
   return headings;

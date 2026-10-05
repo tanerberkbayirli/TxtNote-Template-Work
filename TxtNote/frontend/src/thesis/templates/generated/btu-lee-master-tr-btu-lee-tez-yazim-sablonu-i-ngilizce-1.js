@@ -89,7 +89,7 @@ export default {
     "textTransform": "uppercase",
     "numbering": {
      "enabled": true,
-     "format": "{1}. "
+     "format": "{1}."
     },
     "keepWithNext": true
    },
@@ -117,7 +117,7 @@ export default {
     "spaceAfterPt": 6,
     "numbering": {
      "enabled": true,
-     "format": "{1}.{2}.{3} "
+     "format": "{1}.{2}.{3}"
     },
     "keepWithNext": true
    },
