@@ -1,6 +1,0 @@
-figure_lower_edge->caption_top (Word line box), expected 6pt: 5.99 pt = 2.11 mm
-figure caption bottom->next body line top, expected 12pt: 11.99 pt = 4.23 mm
-table caption bottom->table top edge, expected 6pt: 6.74 pt = 2.38 mm
-table bottom edge->next text line top, expected 12pt: 12.75 pt = 4.50 mm
-DOCX table caption ['<w:spacing w:after="120" w:before="240" w:line="240" w:lineRule="auto"/>']
-DOCX figure para before ['<w:spacing w:before="240"/>'] caption ['<w:spacing w:after="0" w:before="120" w:line="240" w:lineRule="auto"/>'] next ['<w:spacing w:after="240" w:before="240" w:line="360" w:lineRule="auto"/>']

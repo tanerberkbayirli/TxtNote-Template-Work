@@ -20,3 +20,23 @@ __pycache__/
 
 # Word/Office lock files
 ~$*
+
+# Local workflow notes and reproducible export outputs
+/orchestration/WORKFLOW_LOCAL.md
+/orchestration/*RESUME*.md
+/orchestration/*BRIEF*.md
+/orchestration/*HANDOFF*.md
+/orchestration/*AUDIT_TASK*.md
+/orchestration/reports/*RESUME*.md
+/orchestration/artifacts/*/export/
+/orchestration/artifacts/*/exports/
+/orchestration/validation/**/*.pdf
+/orchestration/validation/**/*.docx
+/orchestration/validation/**/*.png
+/orchestration/validation/**/*.jpg
+/orchestration/validation/**/*.rels
+/orchestration/validation/**/*.xml
+/orchestration/validation/**/*.patch
+/orchestration/validation/**/*.txt
+/orchestration/validation/**/*.tsv
+/orchestration/validation/*/run/
