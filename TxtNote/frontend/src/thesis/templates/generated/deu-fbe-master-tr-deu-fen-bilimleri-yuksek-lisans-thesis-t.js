@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f702932ff14bc464bb0500e4158a25c0a0abc37b4a0a42d20cf777bb37e16226",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf (3 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf"
  },
  "page": {
   "size": "A4",
@@ -73,7 +75,8 @@ export default {
     "lineHeight": 1.5,
     "spaceBeforePt": 0,
     "spaceAfterPt": 0,
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",
@@ -118,6 +121,10 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10,
+   "lineHeight": 1
   }
  },
  "placeholders": {

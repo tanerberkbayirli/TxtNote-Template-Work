@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 72d4d794306105e1fd8afcce5b9db0cf96009d7d8dcacbc65f80433b5ed829c9",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: tez-yazim-klavuzusablonu-2-1.docx (0 alan, 3 çelişki)"
+  ],
+  "guideDocumentName": "tez-yazim-klavuzusablonu-2-1.docx"
  },
  "page": {
   "size": "A4",

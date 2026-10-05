@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 4ab5503c87602fb284158e78a54d44015b9f34c933e00ca230d9c923de95af97",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: 1-SBE-Tez_Yazim_Kilavuzu.pdf (1 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "1-SBE-Tez_Yazim_Kilavuzu.pdf"
  },
  "page": {
   "size": "A4",
@@ -75,7 +77,8 @@ export default {
      "enabled": true,
      "format": "{1}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",

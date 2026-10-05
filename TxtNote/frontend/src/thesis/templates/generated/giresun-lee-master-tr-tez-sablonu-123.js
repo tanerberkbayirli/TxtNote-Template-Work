@@ -22,8 +22,10 @@ export default {
    "Şablon yönergesi (Dış Kapak): Ortak danışman varsa;Tez danışmanının altına Ortak Danışman: ifadesi de eklenecektir. Ortak danışman varsa;Tez danışmanının altına Ortak Danışman: ifadesiyle eklenecektir.Burayı çıktı almadan önce sil",
    "Şablon yönergesi (Onay Sayfası): Doktora tezi için iç kapak sayfası örneği",
    "Şablon yönergesi (Onay Sayfası): Tezin ortak danışmanı varsa;7 jüri üyesi tez savunma sınavına katılacağından 4 jüri üyesi yukarı 3 jüri üyesi ie aşağı gelecek şekilde yazılmalıdır.",
-   "Şablon yönergesi (Onay Sayfası): İsim ve soyisim kısmı: Times New Roman ve 10 Puntodur. İki satır alt altadır. En sağa dayalıdır. Beyanda sayfa numarası konmaz."
-  ]
+   "Şablon yönergesi (Onay Sayfası): İsim ve soyisim kısmı: Times New Roman ve 10 Puntodur. İki satır alt altadır. En sağa dayalıdır. Beyanda sayfa numarası konmaz.",
+   "Kılavuz kuralları birleştirildi: Tez yazım kılavuzu2.pdf (3 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "Tez yazım kılavuzu2.pdf"
  },
  "page": {
   "size": "A4",
@@ -65,7 +67,8 @@ export default {
    "lineHeight": 1.5
   },
   "paragraph": {
-   "spaceAfterPt": 0
+   "spaceAfterPt": 0,
+   "firstLineIndentMm": 12.5
   },
   "headings": {
    "1": {
@@ -75,7 +78,8 @@ export default {
     "align": "justify",
     "lineHeight": 1.5,
     "spaceAfterPt": 0,
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",
@@ -112,6 +116,9 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "lineHeight": 1.5
   }
  },
  "placeholders": {

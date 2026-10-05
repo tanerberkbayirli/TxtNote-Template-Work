@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 74a0b434263a0528acdf86b6c84cbfc119603f6baba2f0f507b6164e5ccb305c",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: tez_yazim_kilavuzu-turkce-sbe-revize_2026.docx (0 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "tez_yazim_kilavuzu-turkce-sbe-revize_2026.docx"
  },
  "page": {
   "size": "A4",

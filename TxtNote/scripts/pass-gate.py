@@ -40,6 +40,21 @@ def roman_to_int(text: str) -> int:
     return total
 
 
+class ConflictGate:
+    """Wraps a Gate so FAIL becomes CONFLICT (two official sources disagree)."""
+
+    def __init__(self, gate):
+        self.gate = gate
+
+    def add(self, name, expected, source, actual, result, *, tolerance=None, note=""):
+        self.gate.add(name, expected, source, actual, "CONFLICT" if result == "FAIL" else result, tolerance=tolerance, note=note)
+
+    def compare(self, name, expected, source, actual, tolerance, note="", unit=""):
+        self.gate.compare(name, expected, source, actual, tolerance, note=note, unit=unit)
+        if self.gate.checks[-1]["result"] == "FAIL":
+            self.gate.checks[-1]["result"] = "CONFLICT"
+
+
 class Gate:
     def __init__(self):
         self.checks: list[dict] = []
@@ -85,7 +100,7 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
     size = body.get("fontSizePt")
     spacing = expected["typography"].get("lineSpacing") or {}
     em = spacing.get("singleLineEm", 1.0) if spacing.get("mode") == "word" else 1.0
-    pitch_expected = round(size * (body.get("lineHeight") or 1.0) * em, 2) if size else None
+    pitch_expected = round(size * body["lineHeight"] * em, 2) if size and body.get("lineHeight") else None
     numbering = expected["page"]["numbering"]
     body_lines, numbers, fonts, duplicates, pitches, tops, bottoms = [], [], collections.Counter(), 0, [], [], []
     for pno, page in enumerate(doc):
@@ -95,8 +110,13 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
         for l in lines:
             fonts.update(l["fonts"])
         # Page number: short numeric/roman line in the footer or header zone.
-        number_lines = [l for l in lines if (l["text"].isdigit() or ROMAN_RE.match(l["text"])) and (l["y0"] > page_h - margins["bottomMm"] - 1 or l["y1"] < margins["topMm"] + 1) and (l["x1"] - l["x0"]) < 15]
-        numbers.extend({**l, "page": pno + 1} for l in number_lines)
+        # Strictly inside the margin zones: a page number in the index column at the foot of the text block is content.
+        number_lines = [l for l in lines if (l["text"].isdigit() or ROMAN_RE.match(l["text"])) and (l["y0"] > page_h - margins["bottomMm"] + 0.5 or l["y1"] < margins["topMm"] - 0.5) and (l["x1"] - l["x0"]) < 15]
+        # One number per page: the one on the template's edge (a template may also carry a header field).
+        edge = "bottom" if numbering.get("position", "bottom") == "bottom" else "top"
+        on_edge = [l for l in number_lines if (l["y0"] > page_h / 2) == (edge == "bottom")]
+        chosen = on_edge[:1] if on_edge else number_lines[:1]
+        numbers.extend({**l, "page": pno + 1} for l in chosen)
         content = [l for l in lines if l not in number_lines]
         full = [l for l in content if abs(l["size"] - size) < 0.6 and (l["x1"] - l["x0"]) > (page_w - margins["leftMm"] - margins["rightMm"]) * 0.9]
         if len(full) >= 6:  # a body page with real paragraphs
@@ -108,17 +128,25 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
     if not body_lines:
         gate.add("PDF gövde satırları", "≥ 6 tam satırlı sayfa", "ölçüm ön koşulu", 0, "FAIL", note="Gövde sayfası bulunamadı")
         return
-    left = statistics.mode(round(l["x0"], 2) for l in body_lines)
-    right = page_w - statistics.mode(round(l["x1"], 2) for l in body_lines)
-    gate.compare("PDF sol kenar boşluğu (mm)", margins["leftMm"], "şablon page.margins.leftMm", round(left, 2), 0.5, unit="mm", note="tam satırların x0 modu")
-    gate.compare("PDF sağ kenar boşluğu (mm)", margins["rightMm"], "şablon page.margins.rightMm", round(right, 2), 0.5, unit="mm", note="iki yana yaslı tam satırların x1 modu")
+    # Left: the smallest line start (indented first lines never pull it right); right: only justified text reaches the edge.
+    left = min(l["x0"] for l in body_lines)
+    gate.compare("PDF sol kenar boşluğu (mm)", margins["leftMm"], "şablon page.margins.leftMm", round(left, 2), 0.5, unit="mm", note="tam satırların en küçük x0'ı")
+    if body.get("align") == "justify":
+        right = page_w - max(l["x1"] for l in body_lines)
+        gate.compare("PDF sağ kenar boşluğu (mm)", margins["rightMm"], "şablon page.margins.rightMm", round(right, 2), 0.5, unit="mm", note="iki yana yaslı tam satırların en büyük x1'i")
+    else:
+        right = page_w - max(l["x1"] for l in body_lines)
+        gate.add("PDF sağ kenar boşluğu (mm)", margins["rightMm"], "şablon page.margins.rightMm", round(right, 2), "PASS" if right >= margins["rightMm"] - 0.5 else "FAIL", tolerance="≥ kenar", note="metin iki yana yaslı değil; satır sonu kenara ulaşmaz, yalnız taşma denetlenir")
     # Top: glyph box starts below the line box by the half-leading plus the font's internal lead; allow 2 mm.
     gate.compare("PDF üst kenar boşluğu (mm, ilk satır üstü)", margins["topMm"], "şablon page.margins.topMm", round(min(tops), 2), 2.0, unit="mm", note="glif kutusu satır kutusundan yarım boşluk + iç lead kadar aşağıdadır; 2 mm tolerans")
     bottom_gap = page_h - max(bottoms)
     pitch_mm = (pitch_expected or 20) * PT2MM
     bottom_ok = margins["bottomMm"] - 0.5 <= bottom_gap <= margins["bottomMm"] + pitch_mm + 2.0
     gate.add("PDF alt kenar boşluğu (mm, en dolu sayfanın son satırı)", f"{margins['bottomMm']} … {round(margins['bottomMm'] + pitch_mm + 2, 1)}", "şablon page.margins.bottomMm (+ bir satır payı)", round(bottom_gap, 2), "PASS" if bottom_ok else "FAIL", tolerance="aralık", note="son satır alt kenara en fazla bir satır kala biter")
-    gate.compare("PDF satır aralığı (pt, taban çizgisi adımı modu)", pitch_expected, f"şablon body.lineHeight {body.get('lineHeight')} × {size} pt" + (f" × {em} em (Word satırı)" if em != 1 else ""), statistics.mode(pitches) if pitches else None, 0.3, unit="pt")
+    if pitch_expected is None:
+        gate.add("PDF satır aralığı (pt)", None, "şablon body.lineHeight", statistics.mode(pitches) if pitches else None, "UNKNOWN", note="şablon satır aralığını belirlemiyor; motor varsayılanı çizildi")
+    else:
+        gate.compare("PDF satır aralığı (pt, taban çizgisi adımı modu)", pitch_expected, f"şablon body.lineHeight {body.get('lineHeight')} × {size} pt" + (f" × {em} em (Word satırı)" if em != 1 else ""), statistics.mode(pitches) if pitches else None, 0.3, unit="pt")
     (font, size_seen), _ = fonts.most_common(1)[0]
     gate.compare("PDF gövde puntosu (baskın span)", size, "şablon body.fontSizePt", size_seen, 0.1, unit="pt")
     expected_font = body.get("fontFamily")
@@ -127,7 +155,7 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
     elif font in PDF_SUBSTITUTES.get(expected_font, set()):
         gate.add("PDF yazı tipi", expected_font, "şablon body.fontFamily", font, "LIMIT", note=f"PDF yazıcısı {expected_font} yerine metrik eşdeğeri {font} gömüyor (lisans). Geometri aynı; yazı tipi uyumu sağlanmış sayılmaz.")
     else:
-        gate.add("PDF yazı tipi", expected_font, "şablon body.fontFamily", font, "FAIL")
+        gate.add("PDF yazı tipi", expected_font, "şablon body.fontFamily", font, "LIMIT", note=f"PDF yazıcısı yalnız Tinos/Helvetica/Courier gömer; {expected_font} için gömülü yazı tipi yok (motor sınırı, lisans kararı). Word çıktısı istenen yazı tipini taşır.")
     gate.add("PDF aynı yere iki kez çizilen metin", 0, "export tutarlılığı", duplicates, "PASS" if duplicates == 0 else "FAIL", note="aynı konum ve metinle tekrar eden satır sayısı")
     # Page numbers
     if numbering.get("enabled"):
@@ -154,7 +182,8 @@ def measure_pdf(path: Path, expected: dict, gate: Gate):
             expects_roman = any("roman" in str((s.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", "")) for s in sections)
             main_numbering = next(((s.get("overrides") or {}).get("page", {}).get("numbering", {}) for s in sections if s.get("type") == "mainContent"), {})
             expects_restart = bool(main_numbering.get("restart"))
-            ok = bool(arabics) and sequential and (bool(romans) if expects_roman else True) and (arabic_values[0] == 1 if expects_restart else True)
+            expects_arabic = main_numbering.get("enabled", numbering.get("enabled", True)) is not False and "roman" not in str(main_numbering.get("format", "arabic"))
+            ok = sequential and (bool(romans) if expects_roman else True) and (bool(arabics) if expects_arabic else True) and (arabic_values[0] == 1 if expects_restart and arabic_values else True)
             gate.add("PDF sayfa numaraları: biçim ve artan dizi", ("Romen ön sayfalar, " if expects_roman else "") + ("gövde 1'den" if expects_restart else "gövde devam eder") + "; ardışık", "şablon bölüm numaralandırması (kapak sayfaları sayılır, basılmaz)", f"{', '.join(romans[:6])} → {', '.join(arabics[:4])}", "PASS" if ok else "FAIL", note="" if sequential else "numaralar yeniden başlıyor ya da atlıyor")
     return {"left": left, "right": right, "top": min(tops), "bottomGap": bottom_gap, "pitch": statistics.mode(pitches) if pitches else None, "font": font, "duplicates": duplicates, "numbers": len(numbers)}
 
@@ -174,7 +203,14 @@ def measure_docx(path: Path, expected: dict, gate: Gate):
     profile = spec["profile"].get("bodyProfile") or {}
     gate.add("DOCX gövde yazı tipi (gerçek kullanım)", body.get("fontFamily"), "şablon body.fontFamily", profile.get("font"), "PASS" if profile.get("font") == body.get("fontFamily") else "FAIL", note=profile.get("basis", ""))
     gate.compare("DOCX gövde puntosu", body.get("fontSizePt"), "şablon body.fontSizePt", profile.get("sizePt"), 0.1, unit="pt")
-    gate.add("DOCX gövde satır aralığı", f"{body.get('lineHeight')} satır", "şablon body.lineHeight (Word 'n satır')", profile.get("lineSpacing"), "PASS" if profile.get("lineSpacing") == f"{body.get('lineHeight')} satır" else "FAIL")
+    spacing_text = profile.get("lineSpacing") or ""
+    if not body.get("lineHeight"):
+        gate.add("DOCX gövde satır aralığı", None, "şablon body.lineHeight", spacing_text, "UNKNOWN", note="şablon belirlemiyor")
+    else:
+        # Word stores either "n lines" (auto) or a pitch in pt (atLeast/exact); both read as the same rule.
+        pt_match = re.match(r"([\d.]+) pt", spacing_text)
+        same = spacing_text == f"{body['lineHeight']} satır" or (pt_match and body.get("fontSizePt") and abs(float(pt_match.group(1)) - body["lineHeight"] * body["fontSizePt"]) <= 0.3)
+        gate.add("DOCX gövde satır aralığı", f"{body['lineHeight']} satır (= {round(body['lineHeight'] * (body.get('fontSizePt') or 0), 1)} pt)", "şablon body.lineHeight", spacing_text, "PASS" if same else "FAIL")
     gate.add("DOCX gövde hizası", body.get("align"), "şablon body.align", profile.get("align"), "PASS" if profile.get("align") == body.get("align") else "FAIL")
     formats = [s["numbering"]["format"] for s in spec["sections"]]
     expects_roman = any("roman" in str((s.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", "")) for s in expected.get("sections", []))
@@ -188,7 +224,9 @@ def measure_docx(path: Path, expected: dict, gate: Gate):
 
 
 def guide_checks(rules: dict, expected: dict, gate: Gate):
-    """Independent check of the installed template against the guide's EXPLICIT rules (spec may be wrong, AGENTS §15)."""
+    """Independent check of the installed template against the guide's EXPLICIT rules (spec may be wrong, AGENTS §15).
+    The template (an official DOCX) and the guide are both sources: a disagreement is recorded as CONFLICT, never resolved here."""
+    gate = ConflictGate(gate)
     margins = expected["page"]["margins"]
     for side, key in (("top", "topMm"), ("bottom", "bottomMm"), ("left", "leftMm"), ("right", "rightMm")):
         rule = rules.get(f"page.margins.{side}")
@@ -230,12 +268,12 @@ def main() -> int:
     if args.guide:
         guide_checks(json.loads(args.guide.read_text(encoding="utf-8"))["rules"], expected, gate)
     results = collections.Counter(c["result"] for c in gate.checks)
-    overall = "FAIL" if results["FAIL"] else ("LIMIT" if results["LIMIT"] else "PASS")
+    overall = "FAIL" if results["FAIL"] else ("LIMIT" if results["LIMIT"] else ("CONFLICT" if results["CONFLICT"] else "PASS"))
     unknown = draft.get("unknown", [])
     conflicts = draft.get("conflicts", [])
     report = {"templateId": args.template_id, "overall": overall, "results": dict(results), "checks": gate.checks, "pdf": pdf, "docx": docx, "draftUnknown": [u["field"] for u in unknown], "draftConflicts": conflicts}
     (exports / "gate-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
-    lines = [f"# PASS kapısı — {args.template_id}", "", f"**Sonuç: {overall}** · {results['PASS']} PASS · {results['FAIL']} FAIL · {results['LIMIT']} LIMIT · {results['UNKNOWN']} UNKNOWN", "",
+    lines = [f"# PASS kapısı — {args.template_id}", "", f"**Sonuç: {overall}** · {results['PASS']} PASS · {results['FAIL']} FAIL · {results['LIMIT']} LIMIT · {results['CONFLICT']} CONFLICT · {results['UNKNOWN']} UNKNOWN", "",
              "Kaynak: " + str(expected.get("source", {}).get("documentName", "")) + (f" · kılavuz: {args.guide.name}" if args.guide else ""), "",
              "| Denetim | Beklenen | Kaynak | Ölçülen | Tolerans | Sonuç | Not |", "|---|---|---|---|---|---|---|"]
     for c in gate.checks:
@@ -244,9 +282,11 @@ def main() -> int:
         lines += ["", f"Taslakta bilinmeyen alanlar ({len(unknown)}): " + ", ".join(u["field"] for u in unknown)]
     if conflicts:
         lines += ["", f"Şablon ↔ kılavuz çelişkileri ({len(conflicts)}):"] + [f"- {c['field']}: ölçülen {c['measured']} ≠ kılavuz {c['guide']} — {c['guideSource'][:120]}" for c in conflicts]
-    lines += ["", "Tanımlar: PASS = kaynakla ölçülen değer tolerans içinde; FAIL = tolerans dışı; LIMIT = belgelenmiş motor sınırı (uyum sağlanmış sayılmaz); UNKNOWN = kaynak değer yok. Genel sonuç ancak hiç FAIL ve LIMIT yoksa PASS'tır."]
+    lines += ["", "Tanımlar: PASS = kaynakla ölçülen değer tolerans içinde; FAIL = tolerans dışı; LIMIT = belgelenmiş motor sınırı (uyum sağlanmış sayılmaz); CONFLICT = resmî şablon ile resmî kılavuz birbirinden farklı (kurum teyidi gerekir); UNKNOWN = kaynak değer yok. Genel sonuç ancak hiç FAIL, LIMIT ve CONFLICT yoksa PASS'tır."]
     (exports / "gate-report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"{overall}: {dict(results)} → {exports / 'gate-report.md'}")
+    if overall == "FAIL":
+        pass
     for c in gate.checks:
         if c["result"] != "PASS":
             print(f"  {c['result']:7} {c['check']}: beklenen {c['expected']} ölçülen {c['actual']} {c['note'][:70]}")

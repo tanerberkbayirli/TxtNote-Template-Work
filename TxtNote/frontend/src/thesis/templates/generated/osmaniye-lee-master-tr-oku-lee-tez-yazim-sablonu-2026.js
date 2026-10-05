@@ -18,8 +18,10 @@ export default {
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 62ccdd8ca7a08deb3e26aef7efb58418ce59157e35f4c1af6323795438171b46",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Şablon yönergesi (Etik Beyan): ÜYZ kullanılmadığını belirten veya kullanıldığında ise rehbere uygun hareket edildiğiniz gösteren maddelerden biri seçilmeli diğer silinmelidir."
-  ]
+   "Şablon yönergesi (Etik Beyan): ÜYZ kullanılmadığını belirten veya kullanıldığında ise rehbere uygun hareket edildiğiniz gösteren maddelerden biri seçilmeli diğer silinmelidir.",
+   "Kılavuz kuralları birleştirildi: OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx (0 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx"
  },
  "page": {
   "size": "A4",

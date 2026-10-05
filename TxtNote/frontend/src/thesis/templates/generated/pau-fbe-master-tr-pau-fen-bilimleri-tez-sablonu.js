@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a882327535da896c93d97bc0936e866443fd2bec589af22cdac7d9be8e668b94",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx (1 alan, 9 çelişki)"
+  ],
+  "guideDocumentName": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx"
  },
  "page": {
   "size": "A4",
@@ -114,6 +116,9 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10
   }
  },
  "placeholders": {

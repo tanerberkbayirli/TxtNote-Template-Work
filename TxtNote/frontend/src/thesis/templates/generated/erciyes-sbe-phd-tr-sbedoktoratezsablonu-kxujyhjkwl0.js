@@ -21,8 +21,10 @@ export default {
    "Şablon yönergesi (Dış Kapak): Hazırlayan",
    "Şablon yönergesi (Dış Kapak): Doktora Tezi 2025",
    "Şablon yönergesi (Dış Kapak): ANABİLİM DALI",
-   "Şablon yönergesi (Dış Kapak): T.C. ERCİYES ÜNİVERSİTESİ SOSYAL BİLİMLER ENSTİTÜSÜ XXXXX ANABİLİM DALI TEZ ADI TEZ ADI TEZ ADI TEZ ADI TEZ TEZ ADI TEZ ADI TEZ ADI TEZ ADI TEZ ADI TEZ Hazırlayan Adı SOYADI Danışman Unvanı Adı ve SOY"
-  ]
+   "Şablon yönergesi (Dış Kapak): T.C. ERCİYES ÜNİVERSİTESİ SOSYAL BİLİMLER ENSTİTÜSÜ XXXXX ANABİLİM DALI TEZ ADI TEZ ADI TEZ ADI TEZ ADI TEZ TEZ ADI TEZ ADI TEZ ADI TEZ ADI TEZ ADI TEZ Hazırlayan Adı SOYADI Danışman Unvanı Adı ve SOY",
+   "Kılavuz kuralları birleştirildi: tezyazmakilavuzu.pdf (0 alan, 6 çelişki)"
+  ],
+  "guideDocumentName": "tezyazmakilavuzu.pdf"
  },
  "page": {
   "size": "A4",

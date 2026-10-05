@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 dfba284823a6900aeaa8a927037d2329e62f88f70c8985b44ac5e8d880fc57e3",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: sagbeTez_yazim_kilavuzu.docx (2 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "sagbeTez_yazim_kilavuzu.docx"
  },
  "page": {
   "size": "A4",
@@ -113,6 +115,10 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10,
+   "lineHeight": 1
   }
  },
  "placeholders": {

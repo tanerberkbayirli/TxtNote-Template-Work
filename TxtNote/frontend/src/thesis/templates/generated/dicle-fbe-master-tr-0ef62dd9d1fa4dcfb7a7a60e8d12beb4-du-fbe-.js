@@ -24,8 +24,10 @@ export default {
    "Şablon yönergesi (Onay Sayfası): Sınav Jürisi kısmının birinci satırına Jüri Başkanının bilgilerini yazınız ve bu satırın sonundaki (*) ifadesini silmeyiniz. Bu bir nottur, çıktı almadan önce siliniz.",
    "Şablon yönergesi (Onay Sayfası): Sınav Jürisi kısmının ikinci satırına Tez Danışmanının bilgilerini yazınız ve bu satırın sonundaki (**) ifadesini silmeyiniz. Bu bir nottur, çıktı almadan önce siliniz.",
    "Şablon yönergesi (Onay Sayfası): Tez danışmanınız tez savunma sınavında jüri başkanlığı yaptı ise ilk satıra tez danışmanınızı yazıp ismin sonuna (*,**) ifadesini getiriniz. Bu bir nottur, çıktı almadan önce siliniz.",
-   "Şablon yönergesi (Onay Sayfası): ONAY"
-  ]
+   "Şablon yönergesi (Onay Sayfası): ONAY",
+   "Kılavuz kuralları birleştirildi: 365cadf5a5fc45fd9414610a01cc2c25_DÜ FBE Tez Yazım Kılavuzu.pdf (0 alan, 0 çelişki)"
+  ],
+  "guideDocumentName": "365cadf5a5fc45fd9414610a01cc2c25_DÜ FBE Tez Yazım Kılavuzu.pdf"
  },
  "page": {
   "size": "A4",

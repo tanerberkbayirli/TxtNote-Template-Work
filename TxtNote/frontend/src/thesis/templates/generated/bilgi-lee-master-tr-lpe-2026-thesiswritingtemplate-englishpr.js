@@ -23,8 +23,10 @@ export default {
    "Şablon yönergesi (Dış Kapak): STUDENT NAME SURNAME STUDENT NUMBER",
    "Şablon yönergesi (Dış Kapak): MASTER'S THESIS",
    "Şablon yönergesi (Dış Kapak): 2025",
-   "Şablon yönergesi (İç Kapak): Date of Approval: Choose your defense date."
-  ]
+   "Şablon yönergesi (İç Kapak): Date of Approval: Choose your defense date.",
+   "Kılavuz kuralları birleştirildi: lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf (3 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf"
  },
  "page": {
   "size": "A4",
@@ -66,7 +68,8 @@ export default {
    "lineHeight": 1.5
   },
   "paragraph": {
-   "spaceAfterPt": 0
+   "spaceAfterPt": 0,
+   "spaceBeforePt": 6
   },
   "headings": {
    "1": {
@@ -96,7 +99,8 @@ export default {
      "enabled": true,
      "format": "{1}.{2}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "3": {
     "fontFamily": "Times New Roman",
@@ -130,6 +134,9 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10
   }
  },
  "placeholders": {

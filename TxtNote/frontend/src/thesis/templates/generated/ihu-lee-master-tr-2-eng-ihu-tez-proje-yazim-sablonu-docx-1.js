@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 fdd4a20040018a338e86cde8940de27d04a6b4656606f7b621f2c2efcc43e42e",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: 1-eng-ihu-tez-proje-yazim-kilavuzu-pdf.pdf (1 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "1-eng-ihu-tez-proje-yazim-kilavuzu-pdf.pdf"
  },
  "page": {
   "size": "A4",
@@ -85,7 +87,8 @@ export default {
      "format": "{1}.{2}",
      "suffix": "."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "3": {
     "fontFamily": "Times New Roman",

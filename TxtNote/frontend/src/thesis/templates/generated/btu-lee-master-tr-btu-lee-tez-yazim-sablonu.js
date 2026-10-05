@@ -23,8 +23,10 @@ export default {
    "Şablon yönergesi (Dış Kapak): Eğer bu şablon üzerinden tez yazılacak ise açıklamaların çıktılarda görünmemesi için çıktı almadan önce Gözden Geçir > İzleme > Özgün (Review > Tracking > Orijinal) seçilmeli daha sonra çıktı alınmalı",
    "Şablon yönergesi (Dış Kapak): TEZ BAŞLIĞI BURAYA GELİR GEREKLİ İSE İKİNCİ SATIR GEREKLİ İSE ÜÇÜNCÜ SATIR, ÜÇ SATIRA SIĞDIRINIZ",
    "Şablon yönergesi (Dış Kapak): YÜKSEK LİSANS TEZİ Öğrenci Adı SOYADI",
-   "Şablon yönergesi (Dış Kapak): ………………………………. Anabilim Dalı …….………………………………. Programı TEZİN SAVUNULDUĞU AY YIL"
-  ]
+   "Şablon yönergesi (Dış Kapak): ………………………………. Anabilim Dalı …….………………………………. Programı TEZİN SAVUNULDUĞU AY YIL",
+   "Kılavuz kuralları birleştirildi: BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf (1 alan, 0 çelişki)"
+  ],
+  "guideDocumentName": "BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf"
  },
  "page": {
   "size": "A4",
@@ -131,7 +133,8 @@ export default {
   "footnotes": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 10,
-   "placement": "pageBottom"
+   "placement": "pageBottom",
+   "lineHeight": 1
   },
   "lineSpacing": {
    "mode": "word",

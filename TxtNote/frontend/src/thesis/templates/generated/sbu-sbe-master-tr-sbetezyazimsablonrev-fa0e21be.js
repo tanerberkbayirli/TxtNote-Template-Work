@@ -19,8 +19,10 @@ export default {
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 ad41878c97ded0042ebb47b55a11302a3f181ee175920e9c89be1753d75a8cf8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (İç Kapak): SAĞLIK BİLİMLERİ ENSTİTÜSÜ ÖRNEK TEZ BAŞLIĞI",
-   "Şablon yönergesi (Etik Beyan): “Tez Kabul Onayı” ve “Beyan” sayfaları tezin basılı halinde mevcut olmalarına rağmen ulusal tez merkezine yüklenecek dijital hallerinden çıkartılması gerekmektedir. Bu kutucuğu silmeyi unutmayın!"
-  ]
+   "Şablon yönergesi (Etik Beyan): “Tez Kabul Onayı” ve “Beyan” sayfaları tezin basılı halinde mevcut olmalarına rağmen ulusal tez merkezine yüklenecek dijital hallerinden çıkartılması gerekmektedir. Bu kutucuğu silmeyi unutmayın!",
+   "Kılavuz kuralları birleştirildi: 2026hsssbetezyazmklavuzu.pdf (1 alan, 3 çelişki)"
+  ],
+  "guideDocumentName": "2026hsssbetezyazmklavuzu.pdf"
  },
  "page": {
   "size": "A4",
@@ -122,7 +124,8 @@ export default {
   "footnotes": {
    "fontFamily": "Cambria",
    "fontSizePt": 10,
-   "placement": "pageBottom"
+   "placement": "pageBottom",
+   "lineHeight": 1
   },
   "lineSpacing": {
    "mode": "word",

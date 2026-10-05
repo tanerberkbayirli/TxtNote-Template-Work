@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a81a492c97dcce4ef08f23efb49fc44062304d8763e14874fdc18a749d4f42ec",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: Tez Yazım Kılavuzu.docx (0 alan, 3 çelişki)"
+  ],
+  "guideDocumentName": "Tez Yazım Kılavuzu.docx"
  },
  "page": {
   "size": "A4",

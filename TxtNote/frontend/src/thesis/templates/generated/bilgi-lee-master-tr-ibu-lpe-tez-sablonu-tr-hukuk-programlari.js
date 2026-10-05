@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 6951b10028af7bed384fed3010d51b7a86a41649b5e2eeb8ccd116d84ad5d90d",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf (4 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf"
  },
  "page": {
   "size": "A4",
@@ -60,7 +62,8 @@ export default {
    "lineHeight": 1.5
   },
   "paragraph": {
-   "spaceAfterPt": 12
+   "spaceAfterPt": 12,
+   "spaceBeforePt": 6
   },
   "headings": {
    "1": {
@@ -75,7 +78,8 @@ export default {
      "enabled": true,
      "format": "{1}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",
@@ -88,7 +92,8 @@ export default {
      "enabled": true,
      "format": "{1}.{2}"
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "3": {
     "fontFamily": "Times New Roman",
@@ -121,6 +126,9 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10
   }
  },
  "placeholders": {

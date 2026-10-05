@@ -43,8 +43,10 @@ export default {
    "Şablon yönergesi (Etik Beyan): Tez adı 12 punto, koyu, kelimelerin ilk harfi büyük",
    "Şablon yönergesi (Etik Beyan): EK 4. Etik Kurallara Uygunluk Beyanı",
    "Şablon yönergesi (Etik Beyan): 12 punto, 3 satır boşluk",
-   "Şablon yönergesi (Etik Beyan): 12 punto, 5 satır boşluk"
-  ]
+   "Şablon yönergesi (Etik Beyan): 12 punto, 5 satır boşluk",
+   "Kılavuz kuralları birleştirildi: 83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf (2 alan, 6 çelişki)"
+  ],
+  "guideDocumentName": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf"
  },
  "page": {
   "size": "A4",
@@ -87,7 +89,8 @@ export default {
   },
   "paragraph": {
    "firstLineIndentMm": 10,
-   "spaceAfterPt": 0
+   "spaceAfterPt": 0,
+   "spaceBeforePt": 6
   },
   "headings": {
    "1": {
@@ -137,6 +140,9 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10
   }
  },
  "placeholders": {

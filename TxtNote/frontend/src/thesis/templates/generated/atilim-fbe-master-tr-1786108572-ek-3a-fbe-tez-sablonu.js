@@ -19,8 +19,10 @@ export default {
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 c5b48ec0cbd5bf928c5fd8fce1aecfc1a4730b5a23edcbec5874d5f592d7f853",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Dış Kapak): A. SOYAD ATILIM ÜNİVERSİTESİ YIL",
-   "Şablon yönergesi (Etik Beyan): Beyan Talimatları: (BU BÖLÜMÜ TAMAMLADIKTAN SONRA BU METİN KUTUSUNU VE İÇERİĞİNİ SİLİNİZ) Tezinizde yapay zekâ araçları kullanıldıysa, lütfen kullanım şekline bağlı olarak aşağıdaki ilk üç paragraftan"
-  ]
+   "Şablon yönergesi (Etik Beyan): Beyan Talimatları: (BU BÖLÜMÜ TAMAMLADIKTAN SONRA BU METİN KUTUSUNU VE İÇERİĞİNİ SİLİNİZ) Tezinizde yapay zekâ araçları kullanıldıysa, lütfen kullanım şekline bağlı olarak aşağıdaki ilk üç paragraftan",
+   "Kılavuz kuralları birleştirildi: 1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx (1 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx"
  },
  "page": {
   "size": "A4",
@@ -85,7 +87,8 @@ export default {
      "enabled": true,
      "format": "{1}.{2}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    }
   },
   "lineSpacing": {

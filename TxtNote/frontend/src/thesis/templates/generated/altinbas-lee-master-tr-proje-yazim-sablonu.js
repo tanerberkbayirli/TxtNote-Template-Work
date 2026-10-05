@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a3e0ab70ca5ddc53d569e18739ec4641cc6367be54d015640a46566663692a0d",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx (1 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "Tez-Yazim-Kilavuzu-Kaynakca-APA-ekleme-guncellemesi_14.03.2025.docx"
  },
  "page": {
   "size": "custom",
@@ -74,7 +76,8 @@ export default {
      "enabled": true,
      "format": "{1}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",

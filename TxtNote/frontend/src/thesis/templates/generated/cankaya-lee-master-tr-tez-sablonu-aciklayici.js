@@ -27,8 +27,10 @@ export default {
    "Şablon yönergesi (Onay Sayfası): Bilgiler arası 1 satır boşluk olmalıdır",
    "Şablon yönergesi (Onay Sayfası): Tez Savunma Tarihi GG.AA.YYYY. formatında yazılmalıdır. Juri uyeleri bölümü doldurulmalıdır. Üniversite adından sonraki kısım imza alanıdır. Bu alan kaldırılmamalıdır",
    "Şablon yönergesi (Onay Sayfası): Ortak danışman yok ise bu tablo kaldırılmalıdır",
-   "Şablon yönergesi (Etik Beyan): Bu beyan sayfasında yer alan tarih bölümüne basım onayı alındığındaki tarih yazılacaktır. İlgili bölüm elle mavi renkte kalem ile doldurulması zorunludur."
-  ]
+   "Şablon yönergesi (Etik Beyan): Bu beyan sayfasında yer alan tarih bölümüne basım onayı alındığındaki tarih yazılacaktır. İlgili bölüm elle mavi renkte kalem ile doldurulması zorunludur.",
+   "Kılavuz kuralları birleştirildi: TEZ-YAZIM-KILAVUZU.docx (0 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "TEZ-YAZIM-KILAVUZU.docx"
  },
  "page": {
   "size": "A4",

@@ -19,8 +19,10 @@ export default {
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 d68d3f1431e1d3f36bc40c236a89f6d358cb9b5aa13d294921a8fad17a56935c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Dış Kapak): Giresun-Yıl Seçiniz",
-   "Şablon yönergesi (Onay Sayfası): ONAY …./…./ Yıl Seçiniz Prof. Dr. Oğuz Serdar KESİCİOĞLU Enstitü Müdürü"
-  ]
+   "Şablon yönergesi (Onay Sayfası): ONAY …./…./ Yıl Seçiniz Prof. Dr. Oğuz Serdar KESİCİOĞLU Enstitü Müdürü",
+   "Kılavuz kuralları birleştirildi: SBE_TEZ Yazım Kılavuzu.pdf (0 alan, 6 çelişki)"
+  ],
+  "guideDocumentName": "SBE_TEZ Yazım Kılavuzu.pdf"
  },
  "page": {
   "size": "A4",

@@ -19,8 +19,10 @@ export default {
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 3ab935fbb2b99095ec5d0ba5d82e065feb0a1cb481af20df06d80c0e9caf30ab",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Dış Kapak): Bu sayfadaki tüm düzenlemeler bilgisayar ortamında hazırlanmalı.",
-   "Şablon yönergesi (Onay Sayfası): Toplam jüri üyesi sayısı yüksek Lisans için 3 (isteğe bağlı olarak 5) asıl (biri üniversitemiz dışından) 2 yedekten (biri üniversitemiz dışından) oluşur, Doktora için ise 5 (isteğe bağlı olarak 7) ası"
-  ]
+   "Şablon yönergesi (Onay Sayfası): Toplam jüri üyesi sayısı yüksek Lisans için 3 (isteğe bağlı olarak 5) asıl (biri üniversitemiz dışından) 2 yedekten (biri üniversitemiz dışından) oluşur, Doktora için ise 5 (isteğe bağlı olarak 7) ası",
+   "Kılavuz kuralları birleştirildi: Tez Yazım Kılavuzu 2025.docx (0 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "Tez Yazım Kılavuzu 2025.docx"
  },
  "page": {
   "size": "A4",

@@ -26,8 +26,10 @@ export default {
    "Şablon yönergesi (İç Kapak): A 5-line space should be left.",
    "Şablon yönergesi (Onay Sayfası): A one-line space should be left between the pieces of information",
    "Şablon yönergesi (Onay Sayfası): If there is no co-supervisor, this table should be removed.",
-   "Şablon yönergesi (Ön sayfa 4): The date on which print approval was obtained must be entered in the date section of this declaration page. This section must be filled in by hand using a blue pen."
-  ]
+   "Şablon yönergesi (Ön sayfa 4): The date on which print approval was obtained must be entered in the date section of this declaration page. This section must be filled in by hand using a blue pen.",
+   "Kılavuz kuralları birleştirildi: TEZ-YAZIM-KILAVUZU.docx (0 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "TEZ-YAZIM-KILAVUZU.docx"
  },
  "page": {
   "size": "A4",

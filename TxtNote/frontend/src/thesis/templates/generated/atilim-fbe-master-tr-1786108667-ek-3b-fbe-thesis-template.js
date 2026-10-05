@@ -19,8 +19,10 @@ export default {
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 d9ef13720e9fce0afde1874675f7d5fa4535d7cea4363b408922334c90b8584a",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Dış Kapak): N. SURNAME ATILIM UNIVERSITY YEAR",
-   "Şablon yönergesi (Ön sayfa 4): Instructions for the Declaration: (DELETE THIS TEXT BOX AND ITS CONTENTS AFTER COMPLETING THIS SECTION) If AI tools were utilized in your document, please include one, two, or all three of the first t"
-  ]
+   "Şablon yönergesi (Ön sayfa 4): Instructions for the Declaration: (DELETE THIS TEXT BOX AND ITS CONTENTS AFTER COMPLETING THIS SECTION) If AI tools were utilized in your document, please include one, two, or all three of the first t",
+   "Kılavuz kuralları birleştirildi: 1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx (2 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx"
  },
  "page": {
   "size": "A4",
@@ -70,7 +72,8 @@ export default {
     "align": "center",
     "lineHeight": 1.5,
     "spaceAfterPt": 8,
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",
@@ -84,7 +87,8 @@ export default {
      "enabled": true,
      "format": "{1}.{2}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    }
   },
   "lineSpacing": {

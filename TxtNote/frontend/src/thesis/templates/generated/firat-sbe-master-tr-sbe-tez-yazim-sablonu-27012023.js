@@ -18,8 +18,10 @@ export default {
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f0ccd31316997796e323c5aaf9960e108247d6b5bfc8a11b2d6b85f10324fcc6",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Şablon yönergesi (Dış Kapak): Dikkat! Bu alanları kendi çalışmalarınıza uygun olarak doldurunuz. Sonra bu şekil üzerine tıklayarak açıklamayı silebilirsiniz"
-  ]
+   "Şablon yönergesi (Dış Kapak): Dikkat! Bu alanları kendi çalışmalarınıza uygun olarak doldurunuz. Sonra bu şekil üzerine tıklayarak açıklamayı silebilirsiniz",
+   "Kılavuz kuralları birleştirildi: 166926925728.yazım kuralları.pdf (1 alan, 8 çelişki)"
+  ],
+  "guideDocumentName": "166926925728.yazım kuralları.pdf"
  },
  "page": {
   "size": "A4",
@@ -125,6 +127,9 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 9
   }
  },
  "placeholders": {

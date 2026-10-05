@@ -28,8 +28,10 @@ export default {
    "Şablon yönergesi (İç Kapak): 12 Pt 1,5 Satır Aralığı",
    "Şablon yönergesi (İç Kapak): Varsa Eş Danışman buraya yazılacaktır. Yoksa metin silinecektir.",
    "Şablon yönergesi (Onay Sayfası): Not: Dönem Projelerinde bu sayfa bulunmamalıdır.",
-   "Şablon yönergesi (Onay Sayfası): Not: 1. Yüksek lisans tezleri için Yüksek Lisans Onay formunu kullanılmalıdır. 2. Bu form bilgisayarda doldurulduktan sonra bu notu siliniz!"
-  ]
+   "Şablon yönergesi (Onay Sayfası): Not: 1. Yüksek lisans tezleri için Yüksek Lisans Onay formunu kullanılmalıdır. 2. Bu form bilgisayarda doldurulduktan sonra bu notu siliniz!",
+   "Kılavuz kuralları birleştirildi: Thesis-Writing-Guidelines-2.pdf (1 alan, 4 çelişki)"
+  ],
+  "guideDocumentName": "Thesis-Writing-Guidelines-2.pdf"
  },
  "page": {
   "size": "A4",
@@ -98,7 +100,8 @@ export default {
      "enabled": true,
      "format": "{1}.{2}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "3": {
     "fontFamily": "Times New Roman",

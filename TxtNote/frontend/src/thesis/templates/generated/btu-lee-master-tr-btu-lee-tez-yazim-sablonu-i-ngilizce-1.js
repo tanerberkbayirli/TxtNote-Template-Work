@@ -31,8 +31,10 @@ export default {
    "Şablon yönergesi (İç Kapak): THESIS TITLE HERE SECOND LINE IF NECESSARY THIRD LINE IF NECESSARY, FIT TITLE IN THREE LINES",
    "Şablon yönergesi (İç Kapak): MONTH YEAR OF DEFENSE",
    "Şablon yönergesi (İç Kapak): Department of ……………………… ……………………............ Programme",
-   "Şablon yönergesi (İç Kapak): Thesis Advisor: Prof. Dr. Name SURNAME ORCID: (If Any)Thesis Co-Advisor: Assoc. Prof. Dr Name SURNAME ORCID:"
-  ]
+   "Şablon yönergesi (İç Kapak): Thesis Advisor: Prof. Dr. Name SURNAME ORCID: (If Any)Thesis Co-Advisor: Assoc. Prof. Dr Name SURNAME ORCID:",
+   "Kılavuz kuralları birleştirildi: BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf (1 alan, 0 çelişki)"
+  ],
+  "guideDocumentName": "BTÜ LEE Tez Yazım Kılavuzu_Son_v2.pdf"
  },
  "page": {
   "size": "A4",
@@ -139,7 +141,8 @@ export default {
   "footnotes": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 10,
-   "placement": "pageBottom"
+   "placement": "pageBottom",
+   "lineHeight": 1
   },
   "lineSpacing": {
    "mode": "word",

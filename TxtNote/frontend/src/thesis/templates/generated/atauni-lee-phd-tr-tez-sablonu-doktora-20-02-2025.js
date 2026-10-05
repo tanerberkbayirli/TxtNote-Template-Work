@@ -17,8 +17,10 @@ export default {
   "verifiedAt": "2026-10-05",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 02fd51d5bc64fc864f52a9412e6d9ffa5b227240ee40fd360f00e1c7115629f2",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
-  ]
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kuralları birleştirildi: EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf (2 alan, 0 çelişki)"
+  ],
+  "guideDocumentName": "EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf"
  },
  "page": {
   "size": "A4",
@@ -61,7 +63,8 @@ export default {
   },
   "paragraph": {
    "firstLineIndentMm": 12.51,
-   "spaceAfterPt": 6
+   "spaceAfterPt": 6,
+   "spaceBeforePt": 0
   },
   "headings": {
    "1": {
@@ -72,7 +75,8 @@ export default {
     "lineHeight": 1,
     "spaceBeforePt": 48,
     "spaceAfterPt": 24,
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "2": {
     "fontFamily": "Times New Roman",

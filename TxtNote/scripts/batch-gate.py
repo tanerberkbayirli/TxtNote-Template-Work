@@ -82,11 +82,12 @@ def main() -> int:
         print(f"[{index}/{len(candidates)}] {record['overall']:12} {row['university'][:28]:28} {row['file'][:40]:40} {record.get('fails') or record.get('error', '')}"[:160], flush=True)
         (ROOT / "output" / "pass-gate" / "batch-gate-report.json").write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
     # Keep only the modules that passed this run (PASS/LIMIT); everything else in generated/ goes, then rebuild the index.
-    keep = {r["templateId"] for r in results if r["overall"] in ("PASS", "LIMIT")}
+    keep = {r["templateId"] for r in results if r["overall"] in ("PASS", "LIMIT", "CONFLICT")}
     for module in GENERATED.glob("*.js"):
         if module.name != "index.js" and module.stem not in keep:
             module.unlink()
     kept_drafts = [d for d, r in zip(drafts, results) if r["templateId"] in keep]
+    # Gate results are recorded in the installed module's header through the draft (status stays generic).
     if kept_drafts:
         run(["node", str(ROOT / "scripts" / "install-template-draft.mjs"), kept_drafts[0], "--status", "generic"], timeout=600)  # rebuilds index.js from the remaining modules
     else:
@@ -94,15 +95,16 @@ def main() -> int:
     counts = {}
     for r in results:
         counts[r["overall"]] = counts.get(r["overall"], 0) + 1
-    universities = {r["university"] for r in results if r["overall"] in ("PASS", "LIMIT")}
+    universities = {r["university"] for r in results if r["overall"] in ("PASS", "LIMIT", "CONFLICT")}
     lines = ["# Toplu PASS kapısı raporu", "", f"{len(results)} şablon · " + " · ".join(f"{k}: {v}" for k, v in sorted(counts.items())) + f" · kurulu kalan üniversite: {len(universities)}", "",
-             "LIMIT = yalnız belgelenmiş motor sınırı (PDF yazı tipi Tinos) kaldı; FAIL = ölçülen değer kaynakla uyuşmuyor; EXPORT-FAIL = editör dışa aktaramadı.", "",
+             "LIMIT = yalnız belgelenmiş motor sınırı (PDF yazı tipi Tinos) kaldı; CONFLICT = resmî şablon ile kılavuz farklı (kurulu, kurum teyidi gerekir); FAIL = ölçülen değer kaynakla uyuşmuyor; EXPORT-FAIL = editör dışa aktaramadı.", "",
              "| Üniversite | Dosya | Sonuç | PASS/FAIL/LIMIT | Başarısız denetimler | Bilinmeyen | Çelişki | Süre |", "|---|---|---|---|---|---:|---:|---:|"]
     for r in results:
         res = r.get("results", {})
         lines.append(f"| {r['university']} | {r['file'][:40]} | **{r['overall']}** | {res.get('PASS', '—')}/{res.get('FAIL', '—')}/{res.get('LIMIT', '—')} | {'; '.join(r.get('fails', []))[:120]}{r.get('error', '')[:120]} | {r.get('unknown', '—')} | {r.get('conflicts', '—')} | {r['seconds']} s |")
     (ROOT / "output" / "pass-gate" / "batch-gate-report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"\n{counts} → {ROOT / 'output' / 'pass-gate' / 'batch-gate-report.md'}; kurulu üniversite: {len(universities)}")
+    print("kalan FAIL nedenleri: " + "; ".join(f"{n}× {f}" for f, n in sorted(((f, sum(1 for r in results if f in r.get("fails", []))) for f in {f for r in results for f in r.get("fails", [])}), key=lambda x: -x[1])[:8]))
     return 0
 
 

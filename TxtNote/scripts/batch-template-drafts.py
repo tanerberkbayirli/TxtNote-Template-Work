@@ -20,7 +20,7 @@ ARCHIVE = ROOT.parent / "Butun-Sablonlar"
 CONFIG = json.loads((ROOT / "scripts" / "turkey-universities.json").read_text(encoding="utf-8"))["universities"]
 BY_NAME = {u["name"]: u for u in CONFIG}
 TEMPLATE_RE = re.compile(r"(şablon|sablon|template|taslak)", re.I)
-GUIDE_RE = re.compile(r"(kılavuz|kilavuz|klavuz|yönerge|yonerge|guide|kurallar)", re.I)
+GUIDE_RE = re.compile(r"(kılavuz|kilavuz|klavuz|yönerge|yonerge|guide|kurallar|öneri|oneri|proposal|onay|approval|signature|imza|dış.?kapak|dis.?kapak|kapak.?sablon|cover.?template|form)", re.I)  # guides and single-page forms are not thesis templates
 INSTITUTE_HINTS = [("fbe", r"fen.?bil|fbe|science"), ("sbe", r"sosyal|sbe|social"), ("sagbe", r"sağlık|saglik|health"), ("ebe", r"eğitim|egitim|education"), ("lee", r"lisansüstü|lisansustu|enstit|graduate|lee")]
 DEGREE_HINTS = [("phd", r"doktora|phd|doctor"), ("master", r"yüksek.?lisans|yuksek.?lisans|master|yl\b")]
 

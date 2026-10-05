@@ -23,8 +23,10 @@ export default {
    "Şablon yönergesi (Dış Kapak): ÖĞRENCİ İSMİ SOYİSMİ öĞRENCİ NUMARASI",
    "Şablon yönergesi (Dış Kapak): 2025",
    "Şablon yönergesi (Onay Sayfası): Bu belgedeki tüm bilgilerin akademik kurallara ve etik davranışa uygun olarak elde edildiğini ve sunulduğunu beyan ederim. Ayrıca, bu kural ve davranışın gerektirdiği şekilde, bu çalışmanın orijinal b",
-   "Şablon yönergesi (Onay Sayfası): İsim Soyisim: Öğrenci İsmi Soyismi İmza:"
-  ]
+   "Şablon yönergesi (Onay Sayfası): İsim Soyisim: Öğrenci İsmi Soyismi İmza:",
+   "Kılavuz kuralları birleştirildi: lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf (3 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf"
  },
  "page": {
   "size": "A4",
@@ -66,7 +68,8 @@ export default {
    "lineHeight": 1.5
   },
   "paragraph": {
-   "spaceAfterPt": 0
+   "spaceAfterPt": 0,
+   "spaceBeforePt": 6
   },
   "headings": {
    "1": {
@@ -96,7 +99,8 @@ export default {
      "enabled": true,
      "format": "{1}.{2}."
     },
-    "keepWithNext": true
+    "keepWithNext": true,
+    "textTransform": "uppercase"
    },
    "3": {
     "fontFamily": "Times New Roman",
@@ -126,6 +130,9 @@ export default {
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10
   }
  },
  "placeholders": {
