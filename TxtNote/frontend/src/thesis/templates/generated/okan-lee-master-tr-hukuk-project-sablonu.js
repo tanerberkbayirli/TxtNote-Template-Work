@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "hukuk-project-sablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 9ad580b30575a26f7fef40b40d6145fb3a55b325d967873996a7c3f47fa46e3c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

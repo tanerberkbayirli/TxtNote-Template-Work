@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 779245da7f25a8dc662a051cfd9897d318b41733e5b616b63e74553610821599",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

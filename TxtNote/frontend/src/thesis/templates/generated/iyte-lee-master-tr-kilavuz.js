@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Doktora-Tez-Sablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 2bdb10f53d7bd7c5b7dd12b76eccea59f7cef7ca7816cd3e2348f26c25244ff3",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

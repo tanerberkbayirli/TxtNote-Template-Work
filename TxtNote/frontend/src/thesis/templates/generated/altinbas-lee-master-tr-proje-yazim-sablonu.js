@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Proje-Yazim-Sablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a3e0ab70ca5ddc53d569e18739ec4641cc6367be54d015640a46566663692a0d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

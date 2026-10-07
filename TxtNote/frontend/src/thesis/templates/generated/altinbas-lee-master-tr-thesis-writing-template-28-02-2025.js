@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Thesis-Writing-Template_28.02.2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 eb935bca6818a31722bb7ee219aa90715eefc1823eca5dfd9d9905df260cbbd9",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

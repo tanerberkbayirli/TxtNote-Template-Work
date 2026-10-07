@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -112,10 +112,9 @@ export default {
    ],
    "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
    "gate": {
-    "overall": "FAIL",
+    "overall": "CONFLICT",
     "results": {
-     "PASS": 32,
-     "FAIL": 2,
+     "PASS": 34,
      "CONFLICT": 1
     },
     "checkedAt": null

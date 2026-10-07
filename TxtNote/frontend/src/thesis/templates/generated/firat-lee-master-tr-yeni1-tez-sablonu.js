@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "yeni1- TEZ ŞABLONU.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 01111b564a6a605bb01d91076f8cd8e3c3b5c7055d5ea5193a18c8c20060b4e3",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

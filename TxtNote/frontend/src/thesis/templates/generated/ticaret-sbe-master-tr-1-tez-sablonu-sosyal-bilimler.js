@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "1.-Tez-Sablonu-Sosyal-Bilimler.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 47e2f2bc3b6a456074f8e985bdff91e424cc8875e00f6b357fb8009c8c7941a3",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

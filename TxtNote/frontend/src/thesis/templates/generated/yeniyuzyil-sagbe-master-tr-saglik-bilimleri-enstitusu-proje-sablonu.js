@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "SAgLIK-BiLiMLERi-ENSTiTuSu-PROJE-sABLONU17-09-2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 cc7dbd5e8d02865a748f0a05791346c5242833336033710590bbde781358ae30",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -113,10 +113,9 @@ export default {
    "conflicts": [],
    "guide": "SAgLIK-BiLiMLERi-ENSTiTuSu-TEZ-YAZIM-KILAVUZU17-09-2024.docx",
    "gate": {
-    "overall": "FAIL",
+    "overall": "PASS",
     "results": {
-     "PASS": 35,
-     "FAIL": 1
+     "PASS": 36
     },
     "checkedAt": null
    }

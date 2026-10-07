@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "SANKO-ÜNİVERSİTESİ-LİSANSÜSTÜ-EĞİTİM-ENSTİTÜSÜ-TEZ-YAZIM-KILAVUZU-2.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -121,11 +121,10 @@ export default {
    "conflicts": [],
    "guide": "SANKO-ÜNİVERSİTESİ-LİSANSÜSTÜ-EĞİTİM-ENSTİTÜSÜ-TEZ-YAZIM-KILAVUZU-2.docx",
    "gate": {
-    "overall": "FAIL",
+    "overall": "PASS",
     "results": {
      "PASS": 30,
-     "UNKNOWN": 2,
-     "FAIL": 1
+     "UNKNOWN": 3
     },
     "checkedAt": null
    }

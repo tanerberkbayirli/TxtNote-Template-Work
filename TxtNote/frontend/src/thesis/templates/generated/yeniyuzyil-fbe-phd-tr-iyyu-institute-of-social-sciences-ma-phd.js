@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "iYYu-INSTITUTE-OF-SOCIAL-SCIENCES-MA-PHD-THESIS-GRADUATION-DISSERATION-TEMPLATE-4.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 20e54478b3887844545b8ca7a70ab3d0441919c038515b267d3a78030363721d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

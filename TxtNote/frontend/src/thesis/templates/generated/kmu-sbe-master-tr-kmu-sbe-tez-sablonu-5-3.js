@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "kmu-sbe-tez-sablonu (5) (3).docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 692a717360281541b23122b601f3c66a32fcb7ca2dc1c7917d73f4d362e00a37",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

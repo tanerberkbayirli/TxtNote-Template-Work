@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "lpe_2026_tezyazimsablonu_turkceprogramlar.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f67bedc3b10266f7119aff1fa7f25ad6c7814511a8e3fead7773ea2cbb173fb6",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

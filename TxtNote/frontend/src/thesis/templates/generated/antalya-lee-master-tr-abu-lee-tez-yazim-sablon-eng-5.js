@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "ABU_LEE_Tez_Yazim_SABLON__ENG___5_.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 e30af079a6168d44c6e34d31ac72a095719d343c5db5902d525f66ff758a2f75",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

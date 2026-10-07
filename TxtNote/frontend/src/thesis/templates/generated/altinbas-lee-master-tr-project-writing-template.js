@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Project-Writing-Template.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a5e2b59da4ce471ea6a960a0bb470a2b0bbf21ca3cd8cab33b88e01179df6982",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

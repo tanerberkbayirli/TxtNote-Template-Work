@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "lpe_2026_thesiswritingtemplate-englishprograms.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 aa0c5c568c2926d9ff3b299e0ba4a440e8f5157f4bcf5f889a8cfa089c00b382",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

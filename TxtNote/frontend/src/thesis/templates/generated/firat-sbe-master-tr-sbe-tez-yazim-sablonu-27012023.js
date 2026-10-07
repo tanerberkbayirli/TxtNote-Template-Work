@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "SBE_Tez_Yazım_ŞABLONU_27012023.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f0ccd31316997796e323c5aaf9960e108247d6b5bfc8a11b2d6b85f10324fcc6",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

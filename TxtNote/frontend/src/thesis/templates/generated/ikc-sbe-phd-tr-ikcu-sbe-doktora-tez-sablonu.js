@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "IKCU_SBE_Doktora_Tez_Sablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 404e5eb0a86a7d7d8a32b1aacd7935c9db3e4d1ffbdccb738e4557a18d842c18",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

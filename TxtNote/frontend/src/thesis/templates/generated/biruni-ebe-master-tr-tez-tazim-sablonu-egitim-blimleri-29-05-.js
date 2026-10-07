@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Tez-tazim-sablonu-EGITIM-BLIMLERI-29-05-2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 b53b611eb1daa72872ed0efd46dd2f040fbbe5d902e3089986c59a386cd1ccea",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

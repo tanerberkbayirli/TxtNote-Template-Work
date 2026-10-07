@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a6f8bcc57d515d100930dadca2c8cad9510e7212eaec57fa5c0c4a96f3d0b20e",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

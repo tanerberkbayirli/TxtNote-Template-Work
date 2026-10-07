@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "51_16261_2026-05-06-13-44-11-786700_tez-hazir-sablon.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 90eb58d33eccc1f88ab36d63ffe4917a72b553f3d2d89f3159d82ebd8de4fafa",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

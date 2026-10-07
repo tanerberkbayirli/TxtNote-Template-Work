@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "THESIS TEMPLATE-06.07.2023.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a1cccfbef3afee0adc8c4e961cc31efe2b3e3cdc4219bdeda06a28be47db4906",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -193,10 +193,9 @@ export default {
    ],
    "guide": "SBE-yeni_tez_yazım_kılavuzu.2023.pdf",
    "gate": {
-    "overall": "FAIL",
+    "overall": "CONFLICT",
     "results": {
-     "PASS": 23,
-     "FAIL": 1,
+     "PASS": 24,
      "CONFLICT": 6
     },
     "checkedAt": null

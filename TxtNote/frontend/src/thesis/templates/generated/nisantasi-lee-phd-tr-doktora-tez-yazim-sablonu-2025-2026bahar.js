@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Doktora-Tez-Yazim-Sablonu-2025-2026Bahar.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 d67d4a79c1f15278eb47fe2f61c59a7c0377cab4f4b58bf22f61ece4f9a51687",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

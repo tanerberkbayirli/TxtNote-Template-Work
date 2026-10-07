@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "3.-Template-for-the-Faculty-of-Law.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 3b4476ee2ed6b54186381efdb6c4bc67fabba264d0703225ddb3a720d27fff50",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

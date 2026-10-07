@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "FBE_Thesis_Template_MSc _V1.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a60945dfab1e897da576fb0cd548cb48b5ef743ca866b78b9ec66ca2cda92194",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

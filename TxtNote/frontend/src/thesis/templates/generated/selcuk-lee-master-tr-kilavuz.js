@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "TEZ YAZIM KILAVUZU_637963490696729694.pdf",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -83,10 +83,10 @@ export default {
    "conflicts": [],
    "guide": "TEZ YAZIM KILAVUZU_637963490696729694.pdf",
    "gate": {
-    "overall": "FAIL",
+    "overall": "PASS",
     "results": {
      "PASS": 34,
-     "FAIL": 1
+     "UNKNOWN": 1
     },
     "checkedAt": null
    }

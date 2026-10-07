@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 7dd2ac57e508c986cca832a30f0bdcc97f0853fc941ee90f9d1f5ffc04fa27b9",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

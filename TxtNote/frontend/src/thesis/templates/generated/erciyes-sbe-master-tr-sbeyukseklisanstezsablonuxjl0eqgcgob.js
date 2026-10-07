@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "sbeyukseklisanstezsablonuxjl0eqgcgob.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 612e9abd60749a647ec4917cfb61d89eaf68b00f3d9a8c3e4e509004c261f0b4",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

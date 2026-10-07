@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "ek-1_tez_yazim_sablonu__1_.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 cf3c1ff93e5faeb5beb7b5430a2e715cef16589e31e4289aaad29ad4a8cc5d67",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

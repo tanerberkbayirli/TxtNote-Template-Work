@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "OMU-TEZ-YAZIM-SABLONU-15.01.2026.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 03c3b7a99ff3b59bc86e0075a4a1026fb589c39773675e7b4e77dbd53d54a170",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

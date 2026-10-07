@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 07d2a2e6f3153f7ab2bcc00ec818c95bb867015f5cfb8db65e4f0c3f85f4b0b8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

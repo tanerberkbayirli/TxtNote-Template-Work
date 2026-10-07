@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "sosyal-bilimler-ve-diger-bilim-alanlari-tez-sablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 6005decaca12c849a9ed871d18fb184145f9c5c81e02a8abf7973d073d85b345",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

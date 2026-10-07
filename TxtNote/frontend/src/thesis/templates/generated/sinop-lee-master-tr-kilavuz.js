@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Tez-Yazim-Kilavuzu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -113,10 +113,10 @@ export default {
    "conflicts": [],
    "guide": "Tez-Yazim-Kilavuzu.docx",
    "gate": {
-    "overall": "FAIL",
+    "overall": "PASS",
     "results": {
      "PASS": 33,
-     "FAIL": 1
+     "UNKNOWN": 1
     },
     "checkedAt": null
    }

@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "KUFBE_TEZ_YAZIM_SABLONU_2025 mart_4 1.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 dfba284823a6900aeaa8a927037d2329e62f88f70c8985b44ac5e8d880fc57e3",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

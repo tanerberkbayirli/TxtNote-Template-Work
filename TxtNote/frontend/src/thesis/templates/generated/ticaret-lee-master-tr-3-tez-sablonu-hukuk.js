@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "3.-Tez-Sablonu-Hukuk.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 d4c1eaf83b37e93cfb88db4da364acd51c3e14602bd16c0b50e3a0e282de7053",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

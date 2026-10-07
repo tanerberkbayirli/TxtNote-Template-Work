@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "OMU-ENGLISH-TEMPLATE-15.01.2026.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 73f2ccef5112306b2069ce6acf53c3dcfccb626d639120d5af69ca95bbf31d5d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -127,10 +127,9 @@ export default {
    ],
    "guide": "2- LÜEE Tez Yazım Kılavuzu 01.10.2022.pdf",
    "gate": {
-    "overall": "FAIL",
+    "overall": "CONFLICT",
     "results": {
-     "PASS": 33,
-     "FAIL": 1,
+     "PASS": 34,
      "CONFLICT": 2
     },
     "checkedAt": null

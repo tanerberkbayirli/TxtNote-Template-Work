@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "1- İNGİLİZCE TEZ ŞABLONU.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 1fc53d38d719448b7e43abf9aa4778b5f651997125a71ed52b753046406f058f",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

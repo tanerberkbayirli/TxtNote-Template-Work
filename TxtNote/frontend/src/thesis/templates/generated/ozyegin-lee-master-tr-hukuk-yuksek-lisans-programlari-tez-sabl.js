@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "hukuk_yuksek_lisans_programlari_tez_sablonu_4.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 b13e8fbd2871e129963b780a6444ffd4c114b52e05f87c2947733c20a61bd151",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

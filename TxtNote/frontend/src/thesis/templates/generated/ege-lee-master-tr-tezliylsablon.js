@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "TezliYLSablon.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 9d63104584bb2f61458ad6d1a0d61e7b19df7fc07dc131e37b7ad64e40b4a200",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

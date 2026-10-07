@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "MSKU_Fen_Bilimleri_Thesis_Template_EN.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 0199633f52af893c803b7ee5428a03c5192ab2478670178709d3c8b47625117d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

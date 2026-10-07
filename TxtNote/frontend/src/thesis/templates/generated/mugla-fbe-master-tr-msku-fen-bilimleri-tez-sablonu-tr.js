@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "MSKU_Fen_Bilimleri_Tez_Sablonu_TR.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 058a05561086f1da9aaab3ee1565b60efb97bcdea92250adc661416bc3adce2d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

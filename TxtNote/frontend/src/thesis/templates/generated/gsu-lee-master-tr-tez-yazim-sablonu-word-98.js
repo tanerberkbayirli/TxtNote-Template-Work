@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "tez-yazim-sablonu-word-98.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 6150ca15a34539b0df159a9755b8db74820f51b0eac6ac0ca67cb9b94aef241e",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

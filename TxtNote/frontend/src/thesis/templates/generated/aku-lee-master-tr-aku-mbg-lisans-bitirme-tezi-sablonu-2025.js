@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 33432d858c5601679297e1935cb2f60f3bb3d6b72e39397e22a62775d351dd76",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

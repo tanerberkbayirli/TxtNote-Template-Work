@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 0a1ce00b6a409c66597c63a424a5672766cdeb86aec3ee751f62328b42766c39",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

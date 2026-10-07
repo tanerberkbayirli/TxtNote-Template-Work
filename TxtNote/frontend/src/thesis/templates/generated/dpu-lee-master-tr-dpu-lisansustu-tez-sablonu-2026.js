@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "DPÜ_Lisansustu_Tez_Sablonu_2026.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 2d472d76ddd53d98174ccea475086db7d6dca092854ecf154a8296bb2963ed2d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

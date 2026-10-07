@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "bnffrvse6xf1m-tez-yazim-kilavuzu-1-1-1.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "2-eng-ihu-tez-proje-yazim-sablonu-docx-1-1-1-docx.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 fdd4a20040018a338e86cde8940de27d04a6b4656606f7b621f2c2efcc43e42e",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

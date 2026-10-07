@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "ibu_lpe_tez_sablonu_tr_hukuk_programlari_2026.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 6951b10028af7bed384fed3010d51b7a86a41649b5e2eeb8ccd116d84ad5d90d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "MSKU_Saglik_Bilimleri_Tez_Yazim_Sablonu_2025-11-20.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 2cfede016691c13e4b7c017b531cfa6f9e9df10985e1ce225abec49d28291db8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

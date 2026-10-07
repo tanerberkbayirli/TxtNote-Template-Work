@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "social-sciences-and-other-diciplines-thesis-template.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 c2395c2babfd470bc04e5e9f7420d873fb0a5c43e6888207a773aed94d26df63",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "2.-Tez-Sablonu-Fen-Bilimleri.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 e84b68f74c005612cd349447ccb0e4560bb8990aaa19f8af32466239f8bca039",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

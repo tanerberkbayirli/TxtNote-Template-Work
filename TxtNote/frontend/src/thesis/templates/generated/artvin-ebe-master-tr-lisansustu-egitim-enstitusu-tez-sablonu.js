@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Lisansüstü Eğitim Enstitüsü Tez Şablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 021b6066c2ee3bc2f6e4a0205eb354a58f0f4e5b86c3c07484ef4ef358a519b8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

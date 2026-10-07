@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "sbedoktoratezsablonu_kxUjYHJkWl0.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f78514a434f2e676a9f2c7120d8b4c3296df8837346f803a70e61ab5552eda57",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

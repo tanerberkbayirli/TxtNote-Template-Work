@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "FBE_Tez_Şablon_Dr.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 12f029616eb28f3f174cec03b825f226ff676a6a15961fe43a0ebb32bdea07d8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

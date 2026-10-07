@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "FBE TEZ YAZIM ŞABLONU.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 3ab935fbb2b99095ec5d0ba5d82e065feb0a1cb481af20df06d80c0e9caf30ab",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

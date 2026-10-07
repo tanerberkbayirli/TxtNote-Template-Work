@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "wfolismenia9b-thesis-template-2-4-7.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 7bdde874dd74b9eeb0782fbac985ffc35f361a1d0416bbb43bc52ec2376e2bc7",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

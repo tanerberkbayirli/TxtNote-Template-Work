@@ -191,6 +191,11 @@ class Draft:
         body, paragraph = {}, {}
         if profile:
             body = {"fontFamily": profile["font"], "fontSizePt": profile["sizePt"], "align": profile["align"]}
+            # One long paragraph among several variants (a centred example text) does not establish the body alignment.
+            basis = re.match(r"(\d+)/(\d+)", profile.get("basis", ""))
+            if basis and int(basis.group(1)) < 2 and profile.get("variants", 1) > 1:
+                body.pop("align")
+                self.unk("typography.body.align", f"Gövde profili zayıf ({profile['basis']}, {profile['variants']} varyant): hiza '{profile['align']}' tek paragrafa dayanıyor; kılavuzdan okunmalı")
             spacing = next((p["lineSpacing"] for p in self.spec["profile"].get("headings", []) if False), None)
             # Line spacing from the profile key ("1.5 satır" / "18.0 pt (exact)").
             match = re.match(r"([\d.]+) satır", profile["lineSpacing"])
@@ -462,6 +467,53 @@ class Draft:
         if "mainContent" not in seen_kinds:
             sections.append({"id": "main-content", "type": "mainContent", "title": "Ana metin", "status": "required", "group": "body", "mode": "editable", "showTitle": False})
             self.unk("sections.mainContent", "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi")
+        # Document order: a front-matter kind found after the body (its title matched inside the table of contents or an
+        # example) belongs before the body; a back section numbered in Roman (the DOCX never switched) numbers on in Arabic.
+        main_index = next((i for i, sec in enumerate(sections) if sec["type"] == "mainContent"), None)
+        if main_index is not None:
+            strays = [sec for sec in sections[main_index + 1:] if sec.get("group") == "front"]
+            if strays:
+                sections = [sec for sec in sections if sec not in strays]
+                main_index = next(i for i, sec in enumerate(sections) if sec["type"] == "mainContent")
+                roman = next(((sec.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format") for sec in reversed(sections[:main_index]) if "roman" in str((sec.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", ""))), None)
+                for sec in strays:  # a moved front section numbers on in the front matter's format
+                    if roman and (sec.get("overrides") or {}).get("page", {}).get("numbering") is None:
+                        sec.setdefault("overrides", {}).setdefault("page", {})["numbering"] = {"format": roman}
+                sections[main_index:main_index] = strays
+                main_index += len(strays)
+                self.inferred.append({"field": "sections.order", "value": [sec["id"] for sec in strays], "reasoning": "Ön sayfa başlıkları belgede gövdeden sonra bulundu (içindekiler satırı ya da örnek); ön sayfalar gövdeden önceye alındı"})
+            # Pages before the Roman run (approval, declaration) that would inherit the document's Arabic numbers are
+            # unnumbered: no template prints "5" on an approval page ahead of "i".
+            first_roman = next((i for i, sec in enumerate(sections[:main_index]) if "roman" in str((sec.get("overrides") or {}).get("page", {}).get("numbering", {}).get("format", ""))), None)
+            # Front sections inside the Roman run that would print Arabic numbers (their heading sits in a later physical
+            # section of the DOCX) number on in the run's format.
+            if first_roman is not None:
+                roman_fmt = sections[first_roman]["overrides"]["page"]["numbering"]["format"]
+                renumbered = []
+                for sec in sections[first_roman + 1:main_index]:
+                    n = (sec.get("overrides") or {}).get("page", {}).get("numbering")
+                    if n is None or (n.get("enabled", True) and "roman" not in str(n.get("format", ""))):
+                        sec.setdefault("overrides", {}).setdefault("page", {})["numbering"] = {"format": roman_fmt}
+                        renumbered.append(sec["id"])
+                if renumbered:
+                    self.inferred.append({"field": "sections.front.page.numbering.format", "value": renumbered, "reasoning": f"Romen dizi içindeki ön sayfalar DOCX'te Arap rakamı bölümüne düşüyordu; {roman_fmt} ile sürdürüldü"})
+            unnumbered = []
+            for sec in sections[:first_roman or 0]:
+                if (sec.get("overrides") or {}).get("page", {}).get("numbering") is None:
+                    sec.setdefault("overrides", {}).setdefault("page", {})["numbering"] = {"enabled": False}
+                    unnumbered.append(sec["id"])
+            if unnumbered:
+                self.inferred.append({"field": "sections.front.page.numbering", "value": unnumbered, "reasoning": "Romen diziden önceki sayfalar DOCX'te belge düzeyi (Arap rakamı) numarayı devralıyordu; numarasız kabul edildi"})
+            fixed = []
+            for sec in sections[main_index + 1:]:
+                n = (sec.get("overrides") or {}).get("page", {}).get("numbering") or {}
+                if "roman" in str(n.get("format", "")):
+                    del sec["overrides"]["page"]
+                    if not sec["overrides"]:
+                        del sec["overrides"]
+                    fixed.append(sec["id"])
+            if fixed:
+                self.inferred.append({"field": "sections.back.page.numbering", "value": fixed, "reasoning": "Gövdeden sonraki bölümler DOCX'te Romen biçimi taşıyor (ön sayfa bölümünün devamı sayılmış); numara gövdeden Arap rakamıyla sürüyor"})
         # A body that would carry Roman numerals (the DOCX never switches format, or the body section inherits the
         # front matter's sectPr) is numbered 1, 2, 3… from its first page; recorded as an inference.
         main = next((sec for sec in sections if sec["type"] == "mainContent"), None)

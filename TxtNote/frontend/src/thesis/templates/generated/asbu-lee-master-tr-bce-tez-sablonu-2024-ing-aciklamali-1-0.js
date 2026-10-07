@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "BCE TEZ Şablonu (2024) (ING-AÇIKLAMALI)_1_0.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 1158c9f9ce8810ce2fb24ef51fae5941c6aa3f9ea748373425dc9f9cbce48d23",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

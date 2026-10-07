@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "MSKU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-10-06.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 5afb598c78e6f9d573ab6af6bcaee0a1ea631b1b10c5bede9eaf4071810e20a0",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

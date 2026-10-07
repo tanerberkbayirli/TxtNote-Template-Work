@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "2.-Template-for-Natural-Sciences.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 de0af7abe432adac458b1ab40fd2935727a8de4bdd796326033279ce7096bdd6",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

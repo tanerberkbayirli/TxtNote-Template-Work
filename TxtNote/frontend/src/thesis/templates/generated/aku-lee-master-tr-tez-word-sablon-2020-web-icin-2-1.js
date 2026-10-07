@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "tez-word-sablon-2020_WEB_icin-2-1.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 e067eb268e9e9696158f8aa9bd7c061c65cc998d3c0e7ef83a18eee05b6d7adc",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

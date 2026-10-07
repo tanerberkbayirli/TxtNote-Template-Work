@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Explanatory-Thesis-Template.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 62a9d3feac02f3cc0ac8b015a939011558942db3b1de5b139786e76a37cdf449",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

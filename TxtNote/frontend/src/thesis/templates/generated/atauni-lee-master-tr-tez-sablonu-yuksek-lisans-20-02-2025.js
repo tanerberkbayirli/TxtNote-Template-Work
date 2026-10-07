@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "Tez-Sablonu-Yuksek-Lisans_20.02.2025.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 006fc9bbf956ac0b966a7656ceaa314a207b2ae644fd23d30ef7acc9418bb61a",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

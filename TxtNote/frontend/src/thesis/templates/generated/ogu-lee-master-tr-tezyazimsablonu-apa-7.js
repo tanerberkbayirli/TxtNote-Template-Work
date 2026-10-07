@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "TezYazımSablonu_(APA-7).docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f5dc2f05d5c38f7f025f2a2ddc4a76586366b45bb2e2fce964c7727b68a2c5e0",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

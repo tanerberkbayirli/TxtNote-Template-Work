@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "nyf61srmruobz-thesis-template-1_outer-cover-inner-cover.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 90fb6ee42a5742a98e7d304e8c9f4cb10bcf81a10d73f5539044c2aed5f53a47",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

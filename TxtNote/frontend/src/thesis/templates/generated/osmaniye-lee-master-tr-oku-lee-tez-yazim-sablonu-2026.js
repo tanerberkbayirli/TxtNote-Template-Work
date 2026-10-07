@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "OKÜ_LEE_Tez_yazım_şablonu_2026.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 62ccdd8ca7a08deb3e26aef7efb58418ce59157e35f4c1af6323795438171b46",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

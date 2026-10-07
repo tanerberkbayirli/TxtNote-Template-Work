@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "PAU_Fen_Bilimleri_Tez_Sablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a882327535da896c93d97bc0936e866443fd2bec589af22cdac7d9be8e668b94",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

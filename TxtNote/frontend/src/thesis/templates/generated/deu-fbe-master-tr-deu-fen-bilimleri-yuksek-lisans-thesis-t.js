@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "DEU_Fen_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-09-04.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f702932ff14bc464bb0500e4158a25c0a0abc37b4a0a42d20cf777bb37e16226",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

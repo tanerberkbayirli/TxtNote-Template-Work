@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "MSKU_Egitim_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-10-06.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 3ab752c1e1e8cc2d147307a28ca7aaaf9ddb4167bcdd74418aa5c015d038eff6",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

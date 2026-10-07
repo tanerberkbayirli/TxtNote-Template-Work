@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f08f908ce05137c4f917fee11fc02f839ccd582b5d7b9169c96725906d9b7a4c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

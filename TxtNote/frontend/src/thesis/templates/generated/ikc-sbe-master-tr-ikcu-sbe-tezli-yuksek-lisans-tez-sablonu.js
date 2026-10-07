@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "IKCU_SBE_Tezli_Yuksek_Lisans_Tez_Sablonu.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a7ec6d1058bcf0a7a120f43cf894f568ffae77695a65c53ad2cf7584f6fd3f22",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

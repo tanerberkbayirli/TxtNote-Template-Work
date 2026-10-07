@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "LEE_Arapca_Tez_Sablonu_2023-06-06-04-42-15pm.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 032a7538a13cdaa3876901792314cb13c7d644af64cd44bbeb408715aaf13f58",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

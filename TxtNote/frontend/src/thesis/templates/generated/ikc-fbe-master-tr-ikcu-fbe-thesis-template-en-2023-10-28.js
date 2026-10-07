@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 4e4e5ee4d9bcf93f3c93d3dc595dd18b1d8e2ac1a672ac317508f8d7be45a60b",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

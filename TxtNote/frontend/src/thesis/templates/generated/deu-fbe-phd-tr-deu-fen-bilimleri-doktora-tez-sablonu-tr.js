@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "DEU_Fen_Bilimleri_Doktora_Tez_Sablonu_TR_2025-09-04.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 fc5946250d2f0b5a1a925fd6ab184e52c0a85acd1340b15fbc44f4cfc1f4a970",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

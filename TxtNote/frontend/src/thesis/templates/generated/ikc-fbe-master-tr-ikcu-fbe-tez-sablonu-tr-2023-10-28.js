@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 bed453dd2a4d7420bc2d636818a4490ba1604acb16b9cf0103b7c9716a8ec008",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

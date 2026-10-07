@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "hukuk_doktora_programlari_tez_sablonu_4.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 536446a8da3c20ad17a4c909d37e3058ea30c749219ffcbd124df1d5c5a04a09",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

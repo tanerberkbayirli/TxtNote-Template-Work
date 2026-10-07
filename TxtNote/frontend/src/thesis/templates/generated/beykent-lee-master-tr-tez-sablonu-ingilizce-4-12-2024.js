@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "tez-şablonu-ingilizce-4-12-2024.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 75196bec84c0da5e3eb119f23c1d7f9f4f04687c51819e2692469cab78467181",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

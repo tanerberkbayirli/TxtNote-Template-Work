@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "sbetezyazimsablonrev-fa0e21be.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 ad41878c97ded0042ebb47b55a11302a3f181ee175920e9c89be1753d75a8cf8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

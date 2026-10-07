@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "1.-Template-for-Social-Sciences.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 b14ba67ae3c25fab2a5715aac176f08e24175d75614e22b082287f942679f163",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",

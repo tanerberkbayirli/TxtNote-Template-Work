@@ -14,7 +14,7 @@ export default {
  "source": {
   "type": "official",
   "documentName": "law-thesis-template.docx",
-  "verifiedAt": "2026-10-05",
+  "verifiedAt": "2026-10-06",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f45a3e0ec5b910036b9bba118aa36b56471c53c474e76eac4c8beb042e6127e4",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
