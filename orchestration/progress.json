@@ -194,7 +194,7 @@
   },
   "currentUniversity": "adu",
   "currentTarget": "adu-sagbil",
-  "currentPhase": "MOTOR Phase 4 CLOSED: official-source generation and ADU Sagbil master/TR Tier 1 pilot PASS; separate university/variant/Tier 2 queue remains open.",
+  "currentPhase": "MOTOR Phase 5 Word compatibility program PLANNED (5.1-5.5); audit/roadmap recorded; implementation not started. Phase 4 remains CLOSED.",
   "enginePlan": {
     "phase0": "DONE (historical source/checker checkpoints re-audited)",
     "phase1": "DONE (catalog/split checkpoints; current unit/build regression clean)",
@@ -230,7 +230,10 @@
       "note horizontal indentation differs in measured synthetic probe",
       "historical Word-render variation cause UNKNOWN; two current passes do not prove universal determinism"
     ],
-    "phase4AcceptancePath": "orchestration/validation/phase4-close/acceptance.json"
+    "phase4AcceptancePath": "orchestration/validation/phase4-close/acceptance.json",
+    "phase5": "PLANNED (five stages: reliable checks, typography, pagination/fields, complex editable content, release certification)",
+    "phase5PlanPath": "orchestration/reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md",
+    "phase5AuditPath": "orchestration/specs/word-compatibility-plan.audit.json"
   },
   "lastCompletedValidation": {
     "target": "adu-sagbil",
@@ -878,5 +881,62 @@
   "engine": {
     "testsPassing": 626,
     "extensions": "orchestration/reports/ENGINE_EXTENSIONS.md"
+  },
+  "wordCompatibilityProgram": {
+    "status": "PLANNED",
+    "currentStage": "5.1",
+    "phases": [
+      {
+        "id": "5.1",
+        "title": "Ölçüm güvenilirliği ve küçük kaynak temelli düzeltmeler",
+        "status": "PLANNED",
+        "dependsOn": [],
+        "relativeEffort": "LOW_MEDIUM"
+      },
+      {
+        "id": "5.2",
+        "title": "Yazı, satır kırılımı ve paragraf eşliği",
+        "status": "PLANNED",
+        "dependsOn": [
+          "5.1"
+        ],
+        "relativeEffort": "HIGH"
+      },
+      {
+        "id": "5.3",
+        "title": "Sayfalama, bölüm sınırları ve dinamik alanlar",
+        "status": "PLANNED",
+        "dependsOn": [
+          "5.2"
+        ],
+        "relativeEffort": "HIGH"
+      },
+      {
+        "id": "5.4",
+        "title": "Karmaşık içerik ve düzenlenebilirlik",
+        "status": "PLANNED",
+        "dependsOn": [
+          "5.2",
+          "5.3"
+        ],
+        "relativeEffort": "MEDIUM_HIGH"
+      },
+      {
+        "id": "5.5",
+        "title": "Ortam matrisi, tam regresyon ve sürüm kapısı",
+        "status": "PLANNED",
+        "dependsOn": [
+          "5.1",
+          "5.2",
+          "5.3",
+          "5.4"
+        ],
+        "relativeEffort": "MEDIUM; other environments require actual access"
+      }
+    ],
+    "baselineFailures": 39,
+    "failureFamilies": 8,
+    "releaseGate": "Zero required FAIL/SKIPPED/UNKNOWN in declared scope; two consecutive full acceptance runs",
+    "nextAction": "5.1.1-5.1.2: source-bound failure classification, H4 anchor and English table fixture coverage before engine changes"
   }
 }

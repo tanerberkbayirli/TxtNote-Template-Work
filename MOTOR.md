@@ -225,3 +225,19 @@ See `orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md` and its acceptance 
 - Definition of Done: `AGENTS.md` §28 and §28A (two-tier)
 
 | 2026-10-07 | Phase 4 CLOSED: official-source pipeline + ADU Sagbil Tier 1 pilot | (this commit) | 303/303 actual PDF/DOCX/Word; 732 frontend + 40 Python + 3 generator tests/build PASS; three universities/two families; wall 2884.583 s; tokens unavailable. Full regression 1658 PASS / 39 unchanged FAIL / 32 INFO. | Remaining university/variant/Tier 2 and deferred queue |
+| 2026-10-07 | Phase 5 Word compatibility program PLANNED: 5.1–5.5 | (this commit) | Reviewed final 21-target/35-variant baseline, 39 FAIL in 8 families, selected real H4 lines and English fixture coverage; Microsoft/W3C research recorded. No engine fixes or new PASS claimed. | 5.1 measurement/fixture triage, then source-backed cover/table fixes |
+
+## 8. Phase 5 — Word compatibility in five stages
+
+Detailed implementation and acceptance plan: `orchestration/reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md`.
+Machine-readable baseline/audit: `orchestration/specs/word-compatibility-plan.audit.json`.
+Status: **PLANNED**; previous Phase 4 remains CLOSED. Do not interpret this plan as implementation completion.
+
+- **5.1 Reliable checks and narrow fixes:** classify the 39 FAIL rows; correct H4 matching, English table fixture coverage and physical-page anchors; verify ADU cover/SBE table fixes; record reference environment and DOCX validation.
+- **5.2 Typography:** measured Word line-breaking model, editor last-line spacing, effective styles and mixed-run/font regression; resolve the three Arial checks before final pagination work.
+- **5.3 Pagination and fields:** first divergent anchor, keep/widow/terminal leading, section flow and hidden labels, TOC/PAGE/NUMPAGES update convergence; resolve Health/Sociology/SBE front-flow differences.
+- **5.4 Complex editable content:** table splitting, horizontal footnote parity, dynamic source-backed cover metadata, existing math/image/tab features, source-property review and Word edit/save/reopen.
+- **5.5 Release certification:** full target/variant regression, explicit environment matrix, two consecutive full acceptance runs, performance and repeatable release gates.
+
+Order follows dependencies: validate measurement → stabilize lines → stabilize pages → stress content → certify.
+Complete compatibility requires 0 required FAIL/SKIPPED/UNKNOWN in the declared feature/font/environment scope; no tolerance relaxation or fixture omissions to obtain PASS. Unstarted universities and unavailable environments remain explicit separate queues. Start with 5.1.1–5.1.2 in the detailed plan.
