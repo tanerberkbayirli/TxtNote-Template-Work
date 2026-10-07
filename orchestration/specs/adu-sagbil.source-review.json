@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "target": "adu-sagbil",
+  "reviewedAt": "2026-10-07",
+  "scope": "Only format prose relevant to mapped pilot roles/source conflicts; not a full guide or Tier 2 audit",
+  "conversion": {
+    "source": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\Butun-Sablonlar\\Ege\\Aydın Adnan Menderes Üniversitesi\\Saglik_Bilimleri_Enstitusu_Tez\\ADU_Saglik_Bilimleri_Seminer_Tez_Donem_Projesi_Yazim_Kilavuzu_2025.doc",
+    "sourceSha256": "21499f9a8ece208814a7db6c06a49b703226691e14177f0df04815f91a8f8160",
+    "converted": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\adu-sagbil\\source\\guide.converted.docx",
+    "convertedSha256": "8f45ae7a4c1f5fb0ed5d40383550f7c92f97cceb54633e406f806d8c8279c2d7",
+    "method": "Owned Microsoft Word SaveAs2 format 16; LibreOffice unavailable on this host",
+    "wordPid": 33916,
+    "startedAt": "2026-10-07T14:22:26.027Z",
+    "completedAt": "2026-10-07T14:22:46.612Z",
+    "wallSeconds": 20.586,
+    "status": "PASS"
+  },
+  "sourceTemplateSha256": "82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7",
+  "guideEvidence": [
+    {
+      "index": 170,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[92]",
+      "text": "Tezin metin bölümde yer alan yazılar, Times New Roman karakteri ve 12 punto ile yazılmalıdır."
+    },
+    {
+      "index": 171,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[93]",
+      "text": "Dipnot, tablo ve şekillerde geçen yazıların sayfaya sığdırılabilmesi amacıyla, aynı yazı karakterinde 10 veya daha küçük puntolar kullanılabilir. "
+    },
+    {
+      "index": 180,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[102]",
+      "text": "Aralık: Önce (0 nk) ve Sonra (6 nk), Satır aralığı (1,5 satır) şeklinde yapılmalıdır."
+    },
+    {
+      "index": 181,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[103]",
+      "text": "Birinci dereceden bölüm başlıkları (Kabul ve Onay, Teşekkür, İçindekiler, Simgeler ve Kısaltmalar Dizini, Şekiller Dizini, Resimler Dizini, Tablolar Dizini, Özet, Abstract, Giriş, Genel Bilgiler, Gereç ve Yöntem, Bulgular, Tartışma, Sonuç ve Öneriler, Kaynaklar, Ekler, Bilimsel Etik Beyanı, Öz Geçmiş) sayfa başından başlamalı, bunlara ait başlıklardan sonra 2 satır aralık bırakılmalıdır."
+    },
+    {
+      "index": 182,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[104]",
+      "text": "İkinci ve üçüncü dereceden bölüm başlıklarından önce ve sonra 1 satır aralık bırakılmalıdır."
+    },
+    {
+      "index": 184,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[106]",
+      "text": "Alıntılar, dipnotlar ve kaynaklarda satırlar arasında 1 satır aralık bulunmalıdır."
+    },
+    {
+      "index": 186,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[108]",
+      "text": "Her sayfanın sol kenarından 3 cm, alt ve üst kenarlardan 2,5 cm, sağ kenarından 2 cm boşluk bırakılmalıdır. Yazılar, şekil, resim ve tablolar belirtilen sınırların dışına taşmamalıdır. Dipnotlar da bu sınırlar içerisinde kullanılmalıdır. Satır sonlarında kelimeler bölünmemeli,  sayfanın sonunda veya sayfa başlarında paragrafın en az iki satır yazısı bulunmalıdır. Sayfa sonuna gelen başlık veya alt başlıklardan sonra da en az iki satır yazı bulunmalıdır. Metin iki yana yaslanmış olmalıdır."
+    },
+    {
+      "index": 188,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[110]",
+      "text": "Ana bölüm başlıkları yeni bir sayfanın en üstüne ve metin bloğunun ortasına yazılmalıdır. Alt bölüm başlıkları metin bloğunun soluna yaslanmalı, başlıklardan sonra gelen tüm paragraf başları metin bloğu sol kenarından 1 cm (10 karakter) içerisinden başlamalıdır."
+    },
+    {
+      "index": 195,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]",
+      "text": "Sayfa numaraları sayfa altında sağ kenar hizasına yazılmalıdır. Kabul ve Onay, Teşekkür, İçindekiler, Simgeler ve Kısaltmalar Dizini, Şekiller/Resimler/Tablolar Dizini, Özet ve Abstract küçük harf Romen rakamları (i, ii, iii, iv, v, ...) ile, giriş bölümü ile başlayan ana metin ise “1, 2, 3, 4, 5, ...” şeklinde numaralandırılmalıdır. Dış kapak ve iç kapağa sayfa numarası verilmez."
+    },
+    {
+      "index": 197,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[119]",
+      "text": "Tezlerde ana bölüm başlıkları (Giriş, Genel Bilgiler, Gereç ve Yöntem, Bulgular, Tartışma, Sonuç ve Öneriler) “1., 2., 3., …” şeklinde numaralandırılmalıdır. Alt bölüm başlıkları ise “1.1., 1.1.1., 1.2., 1.2.1., …” şeklinde verilmelidir ve son noktadan sonra bir harf boşluk bırakılmalıdır."
+    },
+    {
+      "index": 198,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[120]",
+      "text": "Birinci dereceden bölüm başlıkları (Kabul ve Onay, Teşekkür, İçindekiler, Simgeler ve Kısaltmalar Dizini, Şekiller Dizini, Resimler Dizini, Tablolar Dizini, Özet, Abstract, Giriş, Genel Bilgiler, Gereç ve Yöntem, Bulgular, Tartışma, Sonuç ve Öneriler, Kaynaklar, Ekler, Bilimsel Etik Beyanı, Öz Geçmiş) büyük harf, 14 punto ve koyu (kalın) ile yazılmalıdır. İkinci, üçüncü ve dördüncü dereceden başlıklar ise 12 punto, koyu (kalın) ve her sözcüğün ilk harfi büyük diğer harfleri küçük olmalıdır."
+    },
+    {
+      "index": 200,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[122]",
+      "text": "Ana bölüm başlıkları hariç diğer tüm bölüm başlıkları sol sayfa boşluğuna dayalı olarak yazılmalı ve numaralandırılmalıdır. Başlıklar sayfanın son satırı olarak yazılmamalı, sayfa sonuna gelen başlık veya alt başlıklardan sonra da en az iki satır yazı bulunmalıdır. Birinci derece ana bölüm başlıkları daima yeni bir sayfada başlamalıdır. "
+    },
+    {
+      "index": 206,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[128]",
+      "text": "Dipnotlar 10 punto ile yazılmalıdır. Gerektiğinde daha küçük karakter kullanılabilir. Birden fazla dipnot varsa metinde geçiş sırasına göre numaralandırılmalıdır."
+    },
+    {
+      "index": 577,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[336]",
+      "text": "Özet metni tez ana metni ile aynı yazı karakteri ve punto kullanılarak yazılmalıdır. Özet içinde, tez çalışmasının amacı, kapsamı, kullanılan yöntem(ler) ve varılan sonuç(lar), açık ve öz olarak belirtilmelidir. Özet içinde “amaç”, “gereç ve yöntem”, “bulgular” ve “sonuç” alt başlıkları kullanılmalıdır. Özet ve abstract mümkünse 250 kelimeyi geçmeyecek şekilde hazırlanmalıdır."
+    },
+    {
+      "index": 579,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[338]",
+      "text": "ÖZET başlığı, baş harfleri büyük harf, koyu ve 14 punto ile, metin bloğu üst sınırından ortalanarak yazılmalıdır. Başlıktan sonra 2 satır boşluk bırakılmalıdır. Özet/Abstract sayfasında önce tez başlığı yazılmalı (tüm harfler büyük, 12 punto ve sayfada ortalanarak) ve bir satır aralık bırakıldıktan sonra, aralarına virgül koyarak, sırasıyla tez sahibinin soyadı (sadece ilk harfi büyük) ve büyük harfle adının ilk harfi, üniversite adı, enstitü adı, programın adı, yüksek lisans/doktora tezi, şehir ve yıl koyu (kalın) harflerle yazılmalı ve bu bilgi sayfada iki yana yaslı olacak şekilde belirtilmeli, özet/abstract metni paragraf başı yapılmaksızın bir satır aralık bırakılarak yazılmalıdır."
+    },
+    {
+      "index": 638,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[371]",
+      "text": "Kaynaklar dizini, büyük harflerle ve ortalı olarak “KAYNAKLAR” başlığı ile başlamalı, başlıktan sonra 2 satır aralık bırakılarak dizine geçilmelidir. Kaynaklar dizini tez ana metniyle aynı yazı karakteri ve punto kullanılarak yazılmalıdır. Microsoft Office Word programına göre kaynaklarda paragraf ayarı;"
+    },
+    {
+      "index": 641,
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[374]",
+      "text": "Aralık: Önce (0 nk) ve Sonra (6 nk), Satır aralığı (1,5 satır) şeklinde yapılmalıdır."
+    }
+  ],
+  "agreements": [
+    {
+      "guideParagraphs": [
+        170,
+        180,
+        186,
+        188
+      ],
+      "templateFactKeys": [
+        "typography.body.fontFamily",
+        "typography.body.fontSizePt",
+        "typography.body.lineHeight",
+        "typography.body.spaceAfterPt",
+        "typography.body.firstLineIndentMm"
+      ],
+      "ruling": "Use measured official XML (TNR 12 pt, 1.5 lines, after 6 pt, first indent 10 mm, 30/20/25/25 mm margins)."
+    },
+    {
+      "guideParagraphs": [
+        195,
+        197,
+        198
+      ],
+      "ruling": "Arabic main / lower Roman front matter, right footer, H1 14 pt and H2-H4 12 pt agree with reviewed source roles. Complex-script szCs is not Latin text size."
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "subheading-alignment",
+      "guideParagraphs": [
+        188,
+        200
+      ],
+      "guide": "Subheadings flush left",
+      "templateFacts": [
+        {
+          "key": "typography.headings.2.align",
+          "value": "justify",
+          "source": {
+            "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+            "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+          },
+          "evidence": "MEASURED"
+        },
+        {
+          "key": "typography.headings.3.align",
+          "value": "justify",
+          "source": {
+            "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+            "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+          },
+          "evidence": "MEASURED"
+        }
+      ],
+      "ruling": "Official 2026 template XML has w:jc=both; keep source justify. Short single-line headings still paint at the left."
+    },
+    {
+      "id": "bibliography-line-spacing",
+      "guideParagraphs": [
+        184,
+        638,
+        641
+      ],
+      "guide": "General paragraph says single spacing; bibliography-specific paragraph says 1.5 with after 6 pt",
+      "templateFacts": [
+        {
+          "key": "bibliography.style.lineSpacing",
+          "value": {
+            "rule": "auto",
+            "value": 1.5
+          },
+          "source": {
+            "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+            "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:spacing[1]"
+          },
+          "evidence": "MEASURED"
+        },
+        {
+          "key": "bibliography.style.spaceAfterPt",
+          "value": 6,
+          "source": {
+            "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+            "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:spacing[1]"
+          },
+          "evidence": "MEASURED"
+        }
+      ],
+      "ruling": "Official template XML and specific bibliography prose agree on 1.5/6 pt; do not apply the general single-spacing sentence."
+    },
+    {
+      "id": "separate-inner-cover",
+      "guideParagraphs": [
+        195
+      ],
+      "guide": "Mentions unnumbered outer and inner covers",
+      "template": "Reviewed 2026 example page 1 is cover; page 2 is approval. No distinct inner cover in this example.",
+      "ruling": "Pilot follows official example section sequence. Do not invent an extra page; alternate cover variant remains UNKNOWN."
+    }
+  ],
+  "tier2Unknown": [
+    "Long replacement title/jury text on individually positioned fixed-page words",
+    "PhD / English thesis / second-advisor / alternate inner-cover variants",
+    "Footnotes, multi-page tables and other content not exercised by this pilot",
+    "Theme fonts and conditional/unused styles: 109 source property groups retained in mapping inventory"
+  ],
+  "engineGapPolicy": "Unmapped groups retain their source XML locators; they are not silently treated as satisfied requirements. Pilot PASS is scoped to its explicit 298 Tier 1 assertions."
+}

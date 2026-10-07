@@ -1,0 +1,31 @@
+{
+  "target": "adu-sagbil",
+  "reviewedAt": "2026-10-07",
+  "identity": { "id": "adu-sagbil-master-tr-v1", "universityId": "adu", "universityName": "Aydın Adnan Menderes Üniversitesi", "instituteId": "saglik-bilimleri-enstitusu", "instituteName": "Sağlık Bilimleri Enstitüsü", "degreeType": "master", "language": "tr" },
+  "bodyStyle": "Normal", "bodyParagraph": 339, "bodySection": 3, "bodySourcePage": 12,
+  "headingParagraphs": [336, 352, 356, 366],
+  "chapterParagraphs": [336, 349, 410, 450, 531, 537],
+  "tableCaption": 381, "figureCaption": 365, "bibliographyParagraph": 554,
+  "tableProbe": { "table": 7, "firstCellParagraph": 382 },
+  "fixedPages": [
+    { "id": "cover", "type": "outerCover", "title": "KAPAK", "group": "cover", "sourcePage": 1 },
+    { "id": "approval", "type": "approval", "title": "KABUL VE ONAY", "group": "front", "sourcePage": 2 },
+    { "id": "ethics", "type": "ethicsDeclaration", "title": "BİLİMSEL ETİK BEYANI", "group": "back", "sourcePage": 27 }
+  ],
+  "sections": [
+    { "id": "cover" }, { "id": "approval" },
+    { "id": "thanks", "type": "acknowledgements", "title": "TEŞEKKÜR", "titleParagraph": 59, "paragraphs": [62, 63] },
+    { "id": "toc", "type": "tableOfContents", "title": "İÇİNDEKİLER", "indexKind": "toc", "styleId": "T1", "titleParagraph": 64 },
+    { "id": "symbols", "type": "listOfAbbreviations", "title": "SİMGELER VE KISALTMALAR DİZİNİ", "titleParagraph": 163, "paragraphs": [166, 167, 168, 169] },
+    { "id": "figures", "type": "listOfFigures", "title": "ŞEKİLLER DİZİNİ", "indexKind": "figures" },
+    { "id": "photos", "type": "custom", "title": "RESİMLER DİZİNİ", "indexKind": "photo" },
+    { "id": "tables", "type": "listOfTables", "title": "TABLOLAR DİZİNİ", "indexKind": "tables" },
+    { "id": "abstract", "type": "abstract", "title": "ÖZET", "titleParagraph": 308, "paragraphs": [314, 315, 316, 317, 318] },
+    { "id": "english-abstract", "type": "englishAbstract", "title": "ABSTRACT", "titleParagraph": 320, "paragraphs": [326, 327, 328, 329, 330] },
+    { "id": "main", "title": "ANA METİN" },
+    { "id": "bibliography", "type": "bibliography", "title": "KAYNAKLAR", "group": "back", "titleParagraph": 551, "paragraphs": [554, 555, 556] },
+    { "id": "appendices", "type": "appendices", "title": "EKLER", "group": "back", "titleParagraph": 591, "paragraphs": [594] },
+    { "id": "ethics" },
+    { "id": "cv", "type": "curriculumVitae", "title": "ÖZ GEÇMİŞ", "group": "back", "paragraphs": [641, 642, 643, 644, 645, 646] }
+  ]
+}

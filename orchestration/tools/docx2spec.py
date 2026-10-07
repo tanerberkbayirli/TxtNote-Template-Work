@@ -179,6 +179,13 @@ def extract(path, target):
         document = Part(package, "word/document.xml")
         result["sections"] = sections(document)
         result["tables"] = tables(document)
+        result["paragraphs"] = []
+        for index, node in enumerate(document.root.iter(W + "p"), 1):
+            result["paragraphs"].append({"index": index, "locator": document.locator(node),
+                                         "text": "".join(t.text or "" for t in node.iter(W + "t")),
+                                         "properties": properties(document, node, ("pPr",)),
+                                         "runProperties": [document.tree(r.find(W + "rPr")) for r in node.findall(W + "r")
+                                                           if r.find(W + "rPr") is not None]})
         for name in sorted(names):
             if name in ("word/document.xml", "word/styles.xml", "word/numbering.xml", "word/settings.xml") or re.fullmatch(r"word/(?:header|footer)\d+\.xml", name):
                 result["parts"][name] = {"sha256": hashlib.sha256(package.read(name)).hexdigest()}
@@ -217,15 +224,64 @@ def extract(path, target):
     return result
 
 
+def attach_render(result, manifest_path):
+    """Only attach geometry when the renderer's cached bytes match this source."""
+    manifest = json.loads(Path(manifest_path).read_text(encoding="utf-8-sig"))
+    if manifest.get("status") != "PASS" or manifest.get("sourceSha256") != result["source"]["sha256"]:
+        raise ValueError("Word render provenance does not match the official DOCX")
+    for key in ("docx", "pdf"):
+        actual = hashlib.sha256(Path(manifest[key]).read_bytes()).hexdigest()
+        if actual != manifest.get(key + "Sha256"):
+            raise ValueError(f"Cached Word {key} hash mismatch")
+    if manifest["docxSha256"] != result["source"]["sha256"]:
+        raise ValueError("Cached Word DOCX differs from official source")
+    from pdfmeasure import open_pdf, page_size_mm, visual_lines, PT2MM
+    result["wordRender"] = {"manifest": Path(manifest_path).as_posix(), "provenance": manifest,
+                            "origin": "top-left", "lengthUnit": "mm", "fontUnit": "pt", "pages": []}
+    with open_pdf(manifest["pdf"]) as pdf:
+        for index, page in enumerate(pdf, 1):
+            words = []
+            for block in page.get_text("rawdict")["blocks"]:
+                for line in block.get("lines", []):
+                    for span in line["spans"]:
+                        group = []
+                        def flush():
+                            if group:
+                                words.append({"text": "".join(c["c"] for c in group), "x0": group[0]["origin"][0] * PT2MM,
+                                              "x1": group[-1]["bbox"][2] * PT2MM, "baseline": group[0]["origin"][1] * PT2MM,
+                                              "font": span["font"], "size": span["size"], "bold": bool(span["flags"] & 16),
+                                              "italic": bool(span["flags"] & 2)})
+                                group.clear()
+                        for char in span["chars"]:
+                            if char["c"].isspace():
+                                flush()
+                            else:
+                                group.append(char)
+                        flush()
+            lines = []
+            for n, line in enumerate(visual_lines(page), 1):
+                lines.append({**line, "locator": f"{manifest['pdf']}#page={index};line={n}",
+                              "words": [word for word in words if abs(word["baseline"] - line["baseline"]) < .35
+                                        and abs(word["size"] - line["size"]) < .6]})
+            result["wordRender"]["pages"].append({"physicalPage": index, "sizeMm": page_size_mm(page),
+                                                   "lines": lines})
+    result["status"] = "EXTRACTED_XML_AND_WORD_GEOMETRY"
+    result["pending"].remove("Word-render fixed-page text geometry and source-to-render provenance")
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--docx", required=True)
     parser.add_argument("--target", required=True)
     parser.add_argument("--out", required=True)
+    parser.add_argument("--word-manifest", help="verified cache-official-source render manifest")
     args = parser.parse_args()
     started = time.perf_counter()
     try:
         result = extract(args.docx, args.target)
+        if args.word_manifest:
+            attach_render(result, args.word_manifest)
     except (ValueError, OSError, zipfile.BadZipFile, KeyError, ET.ParseError) as error:
         parser.exit(2, f"docx2spec: {error}\n")
     result["extractionSeconds"] = round(time.perf_counter() - started, 6)

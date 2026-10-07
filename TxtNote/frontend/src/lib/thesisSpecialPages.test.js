@@ -13,6 +13,19 @@ import { splitLayoutNodes } from "../thesis/layoutDocx.js";
 const page = (template, id, values = {}, extra = {}) => compileThesisDocument(template, { values, ...extra }, "Tez Başlığı", "").sections.find((section) => section.id === id);
 
 describe("data-driven special pages", () => {
+  it("keeps page anchors while applying Word baseline paint correction to positioned text", () => {
+    const nodes = [{ path: "0", type: "text", layoutMode: "absolute", wordBaseline: true, xMm: 30, yMm: 40, widthMm: 50, style: {} },
+      { path: "1", type: "text", layoutMode: "flow", style: {} }];
+    const css = specialPageCss(".test", nodes, () => "position:relative;top:calc(-1 * var(--thesis-wb-probe, 3pt));").join("\n");
+    assert.match(css, /transform:translateY\(calc\(-1 \* var\(--thesis-wb-probe, 3pt\)\)\)/);
+    assert.match(css, /position:absolute;left:30mm;top:40mm/);
+    assert.match(css, /data-thesis-block="1"[^}]*top:calc\(-1 \* var/);
+    const legacy = specialPageCss(".test", [nodes[0]], () => "font-size:12pt;").join("");
+    assert.doesNotMatch(legacy, /transform/);
+    const unflagged = specialPageCss(".test", [{ ...nodes[0], wordBaseline: undefined }], () => "position:relative;top:calc(-1 * var(--thesis-wb-probe, 3pt));").join("");
+    assert.doesNotMatch(unflagged, /transform/);
+    assert.equal(resolveSpecialPage([{ type: "text", value: "Probe", layoutMode: "absolute", wordBaseline: true, xMm: 30, yMm: 40, widthMm: 50 }]).blocks[0].wordBaseline, true);
+  });
   it("renders document-local highlight on live special-page text as an inline run", () => {
     const html = specialPageHtml([{
       path: "0", id: "cover:block:1", sectionId: "cover", type: "text", field: "UNIVERSITY_NAME",

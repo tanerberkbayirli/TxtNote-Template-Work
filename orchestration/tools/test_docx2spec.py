@@ -5,12 +5,43 @@ import tempfile
 import unittest
 import zipfile
 
-from docx2spec import extract
+from docx2spec import extract, attach_render
 
 NS = 'xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'
 
 
 class ExtractionTests(unittest.TestCase):
+    def test_render_geometry_hash_binding_and_tamper_rejection(self):
+        import hashlib
+        from pdfmeasure import open_pdf
+        import pymupdf
+        path = self.package('<w:sectPr/>')
+        pdf_path = path.with_suffix('.pdf')
+        with pymupdf.open() as pdf:
+            page = pdf.new_page()
+            page.insert_text((50, 60), 'Hello source', fontsize=12)
+            pdf.save(pdf_path)
+        sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+        manifest = {'status': 'PASS', 'sourceSha256': sha(path), 'docx': str(path), 'docxSha256': sha(path),
+                    'pdf': str(pdf_path), 'pdfSha256': sha(pdf_path)}
+        manifest_path = path.with_suffix('.manifest.json')
+        manifest_path.write_text(json.dumps(manifest), encoding='utf-8')
+        result = attach_render(extract(path, 'test'), manifest_path)
+        self.assertEqual(result['status'], 'EXTRACTED_XML_AND_WORD_GEOMETRY')
+        first = result['wordRender']['pages'][0]['lines'][0]
+        self.assertEqual(first['text'], 'Hello source')
+        self.assertEqual([w['text'] for w in first['words']], ['Hello', 'source'])
+        self.assertTrue(first['locator'].endswith('#page=1;line=1'))
+        pdf_path.write_bytes(pdf_path.read_bytes() + b'tampered')
+        with self.assertRaisesRegex(ValueError, 'pdf hash mismatch'):
+            attach_render(extract(path, 'test'), manifest_path)
+
+    def test_render_rejects_different_official_source(self):
+        path = self.package('<w:sectPr/>')
+        manifest_path = path.with_suffix('.json')
+        manifest_path.write_text(json.dumps({'status': 'PASS', 'sourceSha256': 'different'}), encoding='utf-8')
+        with self.assertRaisesRegex(ValueError, 'does not match'):
+            attach_render(extract(path, 'test'), manifest_path)
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

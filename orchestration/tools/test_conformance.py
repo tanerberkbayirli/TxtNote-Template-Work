@@ -6,6 +6,33 @@ from pdfmeasure import open_pdf, MM2PT, spans
 
 
 class CompareTests(unittest.TestCase):
+    def test_font_size_scopes_text_and_missing_scope_fails(self):
+        from unittest.mock import patch
+        from conformance import k_font_size
+        class Fixture:
+            def pages(self, selector): return [1]
+            def lines(self, page):
+                return [{'text': 'body ' * 100, 'spans': [{'text': 'body ' * 100, 'size': 12}]},
+                        {'text': 'Heading', 'spans': [{'text': 'Heading', 'size': 14}]}]
+        with patch('conformance.get_doc', return_value=Fixture()):
+            self.assertEqual(k_font_size({}, {'params': {'regex': '^Heading$'}})['actual'], 14)
+            self.assertIsNone(k_font_size({}, {'params': {'regex': '^missing$'}})['actual'])
+            self.assertEqual(k_font_size({}, {'params': {'ignore': '^body'}})['actual'], 14)
+
+    def test_repeated_line_attribute_uses_explicit_occurrence(self):
+        from unittest.mock import patch
+        from conformance import k_line_attr
+        class Fixture:
+            def pages(self, selector): return [1]
+            def lines(self, page):
+                return [{'text': 'Signature', 'baseline': y} for y in [100, 120]]
+        with patch('conformance.get_doc', return_value=Fixture()):
+            c = {'params': {'regex': '^Signature$', 'attr': 'baseline', 'nth': 1, 'agg': 'first'}, 'expected': 120}
+            self.assertEqual(k_line_attr({}, c)['actual'], 120)
+            c['params']['nth'] = 2
+            self.assertIsNone(k_line_attr({}, c)['actual'])
+            c['params']['nth'] = -1
+            with self.assertRaises(ValueError): k_line_attr({}, c)
     def test_visible_geometry_ignores_outer_spaces_but_preserves_internal_spacing(self):
         import pymupdf
         doc = pymupdf.open()

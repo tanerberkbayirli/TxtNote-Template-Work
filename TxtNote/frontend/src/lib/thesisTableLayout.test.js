@@ -2,7 +2,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { strFromU8, unzipSync } from "fflate";
 import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument, cellPaddingCss } from "../thesis/engine.js";
+import { compileThesisDocument, cellPaddingCss, buildThesisCss } from "../thesis/engine.js";
 import { buildThesisDocx } from "../thesis/export.js";
 import { validateThesisTemplate } from "../thesis/validation.js";
 
@@ -13,6 +13,17 @@ const docXml = async (template, html) => {
 const table = '<table><colgroup><col data-col-width="25"><col data-col-width="75"></colgroup><tbody><tr><td>a1</td><td>a2</td></tr></tbody></table>';
 
 describe("tables.cellPadding and authored column widths", () => {
+  it("honors opt-in cell first-line indentation in both CSS and Word while retaining the zero default", async () => {
+    const t = structuredClone(generic);
+    t.tables.cellStyle = { firstLineIndentMm: 10 };
+    const xml = await docXml(t, table);
+    const cells = [...xml.matchAll(/<w:tc>[\s\S]*?<\/w:tc>/g)].map(m => m[0]);
+    assert.equal(cells.length, 2);
+    assert.ok(cells.every(cell => /<w:ind[^>]*w:firstLine="567"/.test(cell)));
+    assert.match(buildThesisCss(compileThesisDocument(t, {}, "T", table)), /:is\(td,th\) p\{margin:0;text-indent:10mm/);
+    const plain = await docXml(generic, table);
+    assert.ok([...plain.matchAll(/<w:tc>[\s\S]*?<\/w:tc>/g)].every(m => /<w:ind[^>]*w:firstLine="0"/.test(m[0])));
+  });
   it("cellPaddingCss: object in mm, missing edges 0, string passthrough, absent -> fallback", () => {
     assert.equal(cellPaddingCss({ topMm: 1, bottomMm: 2, leftMm: 3 }, "x"), "1mm 0mm 2mm 3mm");
     assert.equal(cellPaddingCss("0 1mm", "x"), "0 1mm");

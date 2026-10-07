@@ -194,7 +194,7 @@
   },
   "currentUniversity": "adu",
   "currentTarget": "adu-sagbil",
-  "currentPhase": "MOTOR Phase 4 OPEN: 4.1 official-DOCX XML extraction checkpoint on ADU Sagbil; Word-render geometry and draft generation pending. Phase 3 closed at 9aee357; university/deferred failures remain separate.",
+  "currentPhase": "MOTOR Phase 4 CLOSED: official-source generation and ADU Sagbil master/TR Tier 1 pilot PASS; separate university/variant/Tier 2 queue remains open.",
   "enginePlan": {
     "phase0": "DONE (historical source/checker checkpoints re-audited)",
     "phase1": "DONE (catalog/split checkpoints; current unit/build regression clean)",
@@ -202,22 +202,40 @@
     "phase3": "CLOSED (16 university targets <=30 s; report/PDF gates PASS; separate university/deferred FAIL rows retained)",
     "phase3Checkpoint": "9aee357",
     "phase3ReportPath": "orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md",
-    "phase4": "IN_PROGRESS (4.1 XML extraction only; render geometry and 4.2-4.5 pending)",
-    "phase4ReportPath": "orchestration/reports/MOTOR_PHASE4_START_2026-10-07.md",
+    "phase4": "CLOSED (4.1-4.5 source pipeline, reviewed conflicts, Tier 1 pilot and three-university family inventory; wall cost measured, token telemetry unavailable)",
+    "phase4ReportPath": "orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md",
     "codeCheckpoint": "8176503",
     "reportPath": "orchestration/reports/MOTOR_PHASE2_CLOSE_2026-10-04.md",
-    "regressionManifests": ["orchestration/validation/phase2-close/final-run-1.json", "orchestration/validation/phase2-close/final-run-2.json"],
-    "perRun": { "targets": 14, "PASS": 897, "FAIL": 3, "INFO": 17, "SKIPPED": 0, "CONFLICT": 0 },
+    "regressionManifests": [
+      "orchestration/validation/phase2-close/final-run-1.json",
+      "orchestration/validation/phase2-close/final-run-2.json"
+    ],
+    "perRun": {
+      "targets": 14,
+      "PASS": 897,
+      "FAIL": 3,
+      "INFO": 17,
+      "SKIPPED": 0,
+      "CONFLICT": 0
+    },
     "exportAttempts": 42,
     "exportErrors": 0,
     "exportRetries": 0,
-    "deferred": ["B3.6 editor last-line preview and custom justification breaker; engine-word-justify remains 17 PASS / 3 Arial FAIL"],
-    "limitations": ["bidi/non-locale decimal and unnamed-block terminal allowance UNKNOWN", "Firefox/Safari not exercised", "note horizontal indentation differs in measured synthetic probe", "historical Word-render variation cause UNKNOWN; two current passes do not prove universal determinism"]
+    "deferred": [
+      "B3.6 editor last-line preview and custom justification breaker; engine-word-justify remains 17 PASS / 3 Arial FAIL"
+    ],
+    "limitations": [
+      "bidi/non-locale decimal and unnamed-block terminal allowance UNKNOWN",
+      "Firefox/Safari not exercised",
+      "note horizontal indentation differs in measured synthetic probe",
+      "historical Word-render variation cause UNKNOWN; two current passes do not prove universal determinism"
+    ],
+    "phase4AcceptancePath": "orchestration/validation/phase4-close/acceptance.json"
   },
   "lastCompletedValidation": {
-    "target": "aku-fbe",
-    "attempt": 5,
-    "verdict": "FAIL"
+    "target": "adu-sagbil",
+    "attempt": 1,
+    "verdict": "TIER1_PASS"
   },
   "lastCommit": "9aee357",
   "environment": {
@@ -461,17 +479,23 @@
       "updatedAt": "2026-10-02"
     },
     "adu-sagbil": {
-      "analysis": "IN_PROGRESS",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
+      "analysis": "DONE",
+      "implementation": "DONE",
+      "validation": "TIER1_PASS (303 actual PDF/DOCX/Word checks; Tier 2 variants and independent university-wide completion remain open)",
+      "attempts": 1,
       "status": "IN_PROGRESS",
       "lastError": null,
-      "specPath": null,
-      "reportPath": "orchestration/reports/MOTOR_PHASE4_START_2026-10-07.md",
+      "specPath": "orchestration/specs/adu-sagbil.json",
+      "reportPath": "orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md",
       "commit": null,
       "updatedAt": "2026-10-07",
-      "extractionPath": "orchestration/specs/adu-sagbil.extracted.json"
+      "extractionPath": "orchestration/specs/adu-sagbil.extracted.json",
+      "templatePath": "TxtNote/frontend/src/thesis/templates/adu-sagbil.js",
+      "registryIds": [
+        "adu-sagbil-master-tr-v1"
+      ],
+      "note": "Phase 4 pilot complete. Five exploratory checker iterations and a final fresh run are recorded locally; this is one source-template pilot, not approval of all ADU variants. Tier 2 UNKNOWN and 109 source-property review groups remain explicit.",
+      "validationPath": "orchestration\\validation\\phase4-close\\final\\adu-sagbil\\check-20261007-1723.json"
     },
     "adu-tip": {
       "analysis": "PENDING",

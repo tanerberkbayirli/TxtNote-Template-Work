@@ -1,0 +1,1448 @@
+{
+  "id": "adu-sagbil",
+  "schemaVersion": 1,
+  "analyzedAt": "2026-10-07",
+  "scope": "Official 2026 master/TR example; Tier 1 source-derived pilot only",
+  "sourceSha256": "82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7",
+  "sourceReviewPath": "orchestration/specs/adu-sagbil.source-review.json",
+  "extractionPath": "orchestration/specs/adu-sagbil.extracted.json",
+  "generationProfilePath": "orchestration/specs/adu-sagbil.generation.json",
+  "mappingPath": "orchestration/specs/adu-sagbil.mapping.json",
+  "measuredRules": [
+    {
+      "key": "typography.body.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[154]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.align",
+      "value": "justify",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[154]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[154]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[154]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.firstLineIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.fontSizePt",
+      "value": 14,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:r[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.spaceAfterPt",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.spaceAfterPtIncludingBlankParagraphs",
+      "value": 41.396484375,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]; following empty paragraphs"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[167]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.align",
+      "value": "justify",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[167]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[167]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[167]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[167]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.spaceAfterPtIncludingBlankParagraphs",
+      "value": 26.6982421875,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[167]; following empty paragraphs"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[171]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.align",
+      "value": "justify",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[171]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[171]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[171]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[171]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.spaceAfterPtIncludingBlankParagraphs",
+      "value": 26.6982421875,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[171]; following empty paragraphs"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[181]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.align",
+      "value": "justify",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[181]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[181]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[181]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[181]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.4.spaceAfterPtIncludingBlankParagraphs",
+      "value": 26.6982421875,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[181]; following empty paragraphs"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.topMm",
+      "value": 25.011944,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:top"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.bottomMm",
+      "value": 25.011944,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:bottom"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.leftMm",
+      "value": 30.00375,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:left"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.rightMm",
+      "value": 20.0025,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:right"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.widthMm",
+      "value": 210.008611,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgSz[1]/@w:w"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.heightMm",
+      "value": 297.003611,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgSz[1]/@w:h"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.numbering.baselineFromTopMm",
+      "value": 278.714,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\adu-sagbil\\source\\reference\\official-word.pdf#page=12;line=22"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[47]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[47]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[47]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[47]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[47]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[47]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.fontSizePt",
+      "value": 14,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[52]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[52]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[52]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.firstLineIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.keepLines",
+      "value": true,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[21]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.fontSizePt",
+      "value": 11,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[21]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[21]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.align",
+      "value": "left",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[21]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.spaceAfterPt",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[21]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.fontSizePt",
+      "value": 14,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:r[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.symbols.title.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[59]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[123]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.fontSizePt",
+      "value": 14,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[123]/w:r[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[123]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[123]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[123]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[123]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[123]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.firstLineIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.fontSizePt",
+      "value": 14,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[135]/w:r[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[135]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[135]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[135]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[135]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[135]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.firstLineIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[300]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.fontSizePt",
+      "value": 14,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[300]/w:r[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[300]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.color",
+      "value": "#000000",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[300]/w:r[1]/w:rPr[1]/w:color[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[300]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.spaceAfterPt",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[300]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.fontSizePt",
+      "value": 14,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[340]/w:r[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[340]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[340]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[340]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[340]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[340]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.appendices.title.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[340]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[196]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.align",
+      "value": "justify",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[196]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[196]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[196]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[196]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[180]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[180]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.align",
+      "value": "center",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[180]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[180]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[180]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[180]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.firstLineIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.topMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[12]/w:tblPr[1]/w:tblCellMar[1]/w:top[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.bottomMm",
+      "value": 0,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[12]/w:tblPr[1]/w:tblCellMar[1]/w:bottom[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.leftMm",
+      "value": 1.9049999999999998,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[12]/w:tblPr[1]/w:tblCellMar[1]/w:left[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.rightMm",
+      "value": 1.9049999999999998,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[12]/w:tblPr[1]/w:tblCellMar[1]/w:right[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.align",
+      "value": "justify",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[7]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[7]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[7]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.firstLineIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.align",
+      "value": "justify",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.spaceAfterPt",
+      "value": 6,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.firstLineIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.leftIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.hangingIndentMm",
+      "value": 10.001249999999999,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.widowControl",
+      "value": false,
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[303]/w:pPr[1]/w:widowControl[1]"
+      },
+      "evidence": "MEASURED"
+    }
+  ],
+  "unmappedPropertyGroups": 109,
+  "tier2Unknown": [
+    "Long replacement title/jury text on individually positioned fixed-page words",
+    "PhD / English thesis / second-advisor / alternate inner-cover variants",
+    "Footnotes, multi-page tables and other content not exercised by this pilot",
+    "Theme fonts and conditional/unused styles: 109 source property groups retained in mapping inventory"
+  ]
+}

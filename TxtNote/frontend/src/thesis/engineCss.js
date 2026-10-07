@@ -231,7 +231,9 @@ export function thesisSectionCss(section) {
   if (tables.cellStyle) {
     const cell = tables.cellStyle;
     rules.push(`${scope} .thesis-body :is(td,th){${cell.align ? `text-align:${cell.align};` : ""}${cell.lineHeight || cell.lineSpacing ? `line-height:${lineHeightCss({ ...text, ...cell }, lineSpacing)};` : ""}${cell.fontSizePt ? `font-size:${cell.fontSizePt}pt;` : ""}${cell.fontFamily ? `font-family:${cssFamily(cell.fontFamily)};` : ""}text-indent:0;${lift({ ...text, ...cell })}}`);
-    rules.push(`${scope} .thesis-body :is(td,th) p{margin:0;text-indent:0;text-align:inherit;}`);
+    const firstIndentMm = Number(cell.firstLineIndentMm) || 0;
+    rules.push(`${scope} .thesis-body :is(td,th){text-indent:${firstIndentMm}mm;}`);
+    rules.push(`${scope} .thesis-body :is(td,th) p{margin:0;text-indent:${firstIndentMm}mm;text-align:inherit;}`);
   }
   if (section.generatedIndex) {
     const index = section.generatedIndex;

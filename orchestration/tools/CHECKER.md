@@ -101,3 +101,5 @@ instead of re-rendering) and then (re)writes `reference.json`. Never re-render w
 ## Word COM
 Own instance via `word2pdf.ps1`; the new WINWORD PID is recorded, 120 s timeout (`CHECK_WORD_TIMEOUT_MS`), `Quit` in
 `finally`, only that PID is killed on timeout. On failure the Word checks are SKIPPED with the reason.
+
+`font_size` accepts optional `params.regex`/`ignore` to scope dominant size to selected lines; missing matches fail. `line_attr` accepts explicit zero-based nonnegative integer `params.nth` to select repeated matching lines in document order; out-of-range occurrences fail. Omitting it retains existing aggregation.

@@ -176,11 +176,13 @@ The scaling step toward ~200 universities.
 
 **Phase 4 exit:** pilot university reaches Tier 1 PASS with measured cost recorded.
 
-2026-10-07 start: **Phase 4 OPEN**. Phase 4.1 XML extractor implemented and tested on
-ADU Sagbil official 2026 DOCX: 3 sections, 96 styles, 12 tables, 1 PAGE field; 0.087606 s
-XML extraction. Source hashes/locators and unknowns retained. Word-render geometry,
-source conflicts, generation and Tier 1 pilot remain pending; no Phase 4 exit claim.
-See `orchestration/reports/MOTOR_PHASE4_START_2026-10-07.md`.
+2026-10-07 closure: **Phase 4 CLOSED**. ADU Sagbil master/TR official-source
+pilot 303/303 actual PDF/DOCX/Word checks PASS; source cache/geometry, reviewed
+guide conflicts, generator and three-university/two-family inventory complete.
+Instrumented wall cost 2884.583 s; final pilot Word 26.431 s.
+Token telemetry unavailable; <=100k is unverified. University-wide variants,
+109 source-property review groups and Tier 2 UNKNOWN remain explicit.
+See `orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md` and its acceptance JSON.
 
 ---
 
@@ -221,3 +223,5 @@ See `orchestration/reports/MOTOR_PHASE4_START_2026-10-07.md`.
 - Engine docs: `TxtNote/frontend/src/thesis/README.md`, `schema.d.ts`, `orchestration/reports/ENGINE_EXTENSIONS.md`
 - Source precedence ruling: `orchestration/CLOSEOUT_2026-10-03.md` ("User-directed source precedence": official template XML/example structure outranks guide prose; record both values)
 - Definition of Done: `AGENTS.md` §28 and §28A (two-tier)
+
+| 2026-10-07 | Phase 4 CLOSED: official-source pipeline + ADU Sagbil Tier 1 pilot | (this commit) | 303/303 actual PDF/DOCX/Word; 732 frontend + 40 Python + 3 generator tests/build PASS; three universities/two families; wall 2884.583 s; tokens unavailable. Full regression 1658 PASS / 39 unchanged FAIL / 32 INFO. | Remaining university/variant/Tier 2 and deferred queue |

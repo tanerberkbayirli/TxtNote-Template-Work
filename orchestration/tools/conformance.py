@@ -509,6 +509,10 @@ def k_font_size(ctx, c):
     cnt = Counter()
     for p in d.pages(P.get("pages")):
         for l in d.lines(p):
+            if P.get('regex') and not re.search(P['regex'], l['text']):
+                continue
+            if P.get('ignore') and re.search(P['ignore'], l['text']):
+                continue
             for s in l["spans"]:
                 cnt[round(s["size"], 1)] += len(s["text"])
     if not cnt:
@@ -903,6 +907,11 @@ def k_line_attr(ctx, c):
     P = c["params"]
     d = get_doc(ctx, P)
     hits = _find_lines(d, d.pages(P.get("pages")), P["regex"])
+    if 'nth' in P:
+        nth = P['nth']
+        if not isinstance(nth, int) or isinstance(nth, bool) or nth < 0:
+            raise ValueError('line_attr nth must be a nonnegative integer')
+        hits = hits[nth:nth + 1]
     if not hits:
         return {"actual": None, "note": "no line matched"}
     vals = [round(ATTR[P["attr"]](l), 3) for _, l in hits]
