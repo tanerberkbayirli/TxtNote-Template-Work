@@ -1,5 +1,9 @@
 # TxtEngine capability catalog
 
+Authored table-cell alignment uses existing `fmt-align-*` classes, overriding
+`tables.cellStyle.align` in editor/PDF/DOCX without replacing table-cell display.
+Inline alignment styles do not survive sanitization. Test: `thesisCellAlignment.test.js`.
+
 What a thesis template can express, so you need not read engine code. Paths are relative to the template object
 (`schema.d.ts` has the types; `orchestration/reports/ENGINE_EXTENSIONS.md` the history and design notes).
 Lengths are mm, type sizes and spacing pt. Everything here is opt-in unless a Default says otherwise.

@@ -1,0 +1,260 @@
+{
+  "startedAt": "2026-10-07T15:37:29.028Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "adu-sagbil",
+      "exitCode": 0,
+      "commandSeconds": 28.535,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\adu-sagbil\\check-20261007-1837.json",
+      "counts": {
+        "PASS": 304
+      },
+      "measurementSeconds": 0.75,
+      "error": null
+    },
+    {
+      "target": "adu-ziraat-lisans",
+      "exitCode": 1,
+      "commandSeconds": 34.313,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\adu-ziraat-lisans\\check-20261007-1838.json",
+      "counts": {
+        "PASS": 15,
+        "FAIL": 1,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.828,
+      "error": null
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "exitCode": 0,
+      "commandSeconds": 31.463,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\afsu-eczacilik-proje\\check-20261007-1839.json",
+      "counts": {
+        "PASS": 28,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.157,
+      "error": null
+    },
+    {
+      "target": "afsu-lee",
+      "exitCode": 0,
+      "commandSeconds": 55.946,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\afsu-lee\\check-20261007-1839.json",
+      "counts": {
+        "PASS": 94,
+        "INFO": 1
+      },
+      "measurementSeconds": 4.828,
+      "error": null
+    },
+    {
+      "target": "afsu-tip",
+      "exitCode": 0,
+      "commandSeconds": 30.886,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\afsu-tip\\check-20261007-1840.json",
+      "counts": {
+        "PASS": 52,
+        "INFO": 2
+      },
+      "measurementSeconds": 0.906,
+      "error": null
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "exitCode": 0,
+      "commandSeconds": 30.115,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-cografya-lisans\\check-20261007-1841.json",
+      "counts": {
+        "PASS": 51,
+        "INFO": 3
+      },
+      "measurementSeconds": 1.719,
+      "error": null
+    },
+    {
+      "target": "aku-fbe",
+      "exitCode": 0,
+      "commandSeconds": 49.065,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-fbe\\check-20261007-1841.json",
+      "counts": {
+        "PASS": 51,
+        "INFO": 3
+      },
+      "measurementSeconds": 1.938,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "exitCode": 0,
+      "commandSeconds": 23.85,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-felsefe-lisans\\check-20261007-1842.json",
+      "counts": {
+        "PASS": 86,
+        "INFO": 4
+      },
+      "measurementSeconds": 0.875,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "exitCode": 0,
+      "commandSeconds": 24.87,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-felsefe-seminer\\check-20261007-1842.json",
+      "counts": {
+        "PASS": 64,
+        "INFO": 4
+      },
+      "measurementSeconds": 0.829,
+      "error": null
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "exitCode": 0,
+      "commandSeconds": 23.809,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-isg-tezsiz-proje\\check-20261007-1843.json",
+      "counts": {
+        "PASS": 42,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.11,
+      "error": null
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "exitCode": 0,
+      "commandSeconds": 28.871,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-kimya-lisans\\check-20261007-1843.json",
+      "counts": {
+        "PASS": 51,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.75,
+      "error": null
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "exitCode": 0,
+      "commandSeconds": 53.431,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-matematik-lisans\\check-20261007-1844.json",
+      "counts": {
+        "PASS": 60,
+        "INFO": 2
+      },
+      "measurementSeconds": 1.656,
+      "error": null
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "exitCode": 0,
+      "commandSeconds": 26.138,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-mbg-lisans\\check-20261007-1844.json",
+      "counts": {
+        "PASS": 53,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.906,
+      "error": null
+    },
+    {
+      "target": "aku-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 65.662,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-sagbil\\check-20261007-1845.json",
+      "counts": {
+        "PASS": 36,
+        "FAIL": 8,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.203,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 1,
+      "commandSeconds": 104.638,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-sbe\\check-20261007-1847.json",
+      "counts": {
+        "PASS": 132,
+        "INFO": 2,
+        "FAIL": 4
+      },
+      "measurementSeconds": 4.312,
+      "error": null
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "exitCode": 1,
+      "commandSeconds": 25.356,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-sosyoloji-lisans\\check-20261007-1848.json",
+      "counts": {
+        "INFO": 4,
+        "PASS": 29,
+        "FAIL": 2
+      },
+      "measurementSeconds": 1.016,
+      "error": null
+    },
+    {
+      "target": "engine-word-justify",
+      "exitCode": 1,
+      "commandSeconds": 25.19,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\engine-word-justify\\check-20261007-1848.json",
+      "counts": {
+        "PASS": 19,
+        "FAIL": 3
+      },
+      "measurementSeconds": 0.578,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 0,
+      "commandSeconds": 107.33,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\engine-word-pagefit\\check-20261007-1850.json",
+      "counts": {
+        "PASS": 213
+      },
+      "measurementSeconds": 5.375,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 0,
+      "commandSeconds": 37.536,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\engine-word-parity\\check-20261007-1850.json",
+      "counts": {
+        "PASS": 148
+      },
+      "measurementSeconds": 0.985,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 0,
+      "commandSeconds": 101.474,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\engine-word-structure\\check-20261007-1852.json",
+      "counts": {
+        "PASS": 136
+      },
+      "measurementSeconds": 6.937,
+      "error": null
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "exitCode": 0,
+      "commandSeconds": 26.362,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\regression\\mcbu-tip-uzmanlik\\check-20261007-1853.json",
+      "counts": {
+        "PASS": 50,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.828,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-07T15:53:03.873Z",
+  "commandSeconds": 934.845
+}

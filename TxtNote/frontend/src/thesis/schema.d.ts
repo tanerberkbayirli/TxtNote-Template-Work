@@ -9,6 +9,7 @@ export interface TextStyle {
   fontWeight?: number;
   italic?: boolean;
   decoration?: string;
+  /** Authored table-cell fmt-align-* classes override cellStyle.align in editor/PDF/DOCX and retain table-cell display. */
   align?: "left" | "center" | "right" | "justify";
   lineHeight?: number;
   lineSpacing?: CanonicalLineSpacing;

@@ -21,3 +21,7 @@
 Publication-derived ethics declaration wording is a source-supported conditional alternative; the fixture uses the official non-publication sample text ¶501-509. Do not claim that variant or source-defined image/table overflow behavior is independently validated unless checks cover it. Sample cover contains an exact three-line title. No implementation/export/Word PASS is claimed by this context pack; see checker output.
 
 - Phase 3 (2026-10-07): source-derived body-margin landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
+
+## Phase 5.1 checkpoint — 2026-10-07
+
+Cover baseline FAIL unchanged; measured source/PDF/Word pitch evidence in phase51 triage. No spacer compensation; typography investigation belongs to 5.2. See `orchestration/validation/word-compat/phase-5.1/acceptance.json`.

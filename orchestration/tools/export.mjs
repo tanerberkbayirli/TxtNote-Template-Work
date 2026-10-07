@@ -114,6 +114,36 @@ try {
   }));
   const exportSnapshots = [];
   let engineLayout = null;
+  let interactionBaseline;
+  if (process.env.EXPORT_EDIT_LATENCY === '1') {
+    await settle();
+    const editor = page.locator('.rich-text-body[contenteditable="true"]').first();
+    const before = await editor.innerHTML();
+    await editor.click();
+    await page.keyboard.press('Control+End');
+    const samples = [];
+    for (let sample = 0; sample < 10; sample++) {
+      for (const insert of [true, false]) {
+        await editor.evaluate(element => {
+          window.__txtnoteInputPaint = new Promise(resolve => element.addEventListener('input', () => {
+            const started = performance.now();
+            requestAnimationFrame(() => requestAnimationFrame(() => resolve(performance.now() - started)));
+          }, { once: true }));
+        });
+        if (insert) await page.keyboard.insertText('x');
+        else await page.keyboard.press('Backspace');
+        samples.push(await page.evaluate(() => window.__txtnoteInputPaint));
+      }
+    }
+    if (await editor.innerHTML() !== before) throw new Error('Interaction probe changed editor content/formatting');
+    await settle();
+    const ordered = [...samples].sort((a, b) => a - b);
+    interactionBaseline = { metric: 'input event to second animation frame (ms)', samples,
+      count: samples.length, medianMs: ordered[Math.floor(ordered.length / 2)],
+      p95Ms: ordered[Math.ceil(ordered.length * .95) - 1], contentPreserved: true,
+      limitations: 'One editable field; does not measure full pagination convergence or IME/caret correctness.' };
+    recordStage('interaction-probe');
+  }
   for (const [button, extension] of [["PDF", "pdf"], ["Word", "docx"]]) {
     await page.getByRole("tab", { name: "Dosya", exact: true }).click();
     // Each export may invalidate the editor's final page/index measurement.
@@ -165,7 +195,7 @@ try {
   const paginationDebug = process.env.EXPORT_DEBUG_PAGINATION ? await paginationDiagnostics(page) : undefined;
   recordStage('final-settle');
   timings.totalSeconds = +((performance.now() - exportStarted) / 1000).toFixed(3);
-  await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, warn: state.warn, ...(blockGaps ? { blockGaps } : {}),
+  await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), interactionBaseline, ...layout, warn: state.warn, ...(blockGaps ? { blockGaps } : {}),
     ...(paginationDebug ? { paginationDebug } : {}), engineLayout, timings, pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
       targets: state.targets.map((target) => ({ target, label: state.pageMap[target]?.indexLabel ?? state.pageMap[target]?.label ?? "" })) }, exportSnapshots, errors }, null, 2));
   if (state.paginationReady !== "true") throw new Error(`paged export readiness unavailable: ${state.paginationReady}`);

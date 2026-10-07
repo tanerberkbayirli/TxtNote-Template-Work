@@ -45,3 +45,7 @@
 - Guide PDFs (2022, 2015); orchestration/artifacts/aku-sagbil/{render,source/pages,export}; orchestration/validation/aku-sagbil/recheck/*. Other targets' specs/validation folders.
 
 - Phase 3 (2026-10-07): source-derived body-margin landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
+
+## Phase 5.1 checkpoint — 2026-10-07
+
+H4 bold editor/Word PASS using semantic anchor; H4 numbering source UNKNOWN. TOC2/pagination6 remain 5.3. See `orchestration/validation/word-compat/phase-5.1/acceptance.json`.

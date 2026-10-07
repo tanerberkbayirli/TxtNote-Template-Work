@@ -1,0 +1,701 @@
+﻿{
+    "sdkVersion":  "2.9.1.0",
+    "results":  [
+                    {
+                        "baselineErrorCount":  336,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-sagbil.default.json",
+                        "errorCount":  336,
+                        "inputSha256":  "02048d0bf7db166449a297322e80f8f4c250bb73c843fbd95de120e4f18d8f33",
+                        "target":  "adu-sagbil",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-sagbil.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  147,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-ziraat-lisans.default.json",
+                        "errorCount":  147,
+                        "inputSha256":  "bf16b9d40b1ada495f10fbda146e51dd1515d572c8d78e0191d84cae885e2488",
+                        "target":  "adu-ziraat-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-ziraat-lisans.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  79,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-eczacilik-proje.default.json",
+                        "errorCount":  79,
+                        "inputSha256":  "10fb02f45ff33413d34f914fb5683540bea41d24003705b92c958f83f32403e8",
+                        "target":  "afsu-eczacilik-proje",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-eczacilik-proje.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  166,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.default.json",
+                        "errorCount":  166,
+                        "inputSha256":  "ba42d01ed043edc971d4b83ade8c82b4c75feacb6d04f8c6347019311dbca1a8",
+                        "target":  "afsu-lee",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  166,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "phd",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.phd.json",
+                        "errorCount":  166,
+                        "inputSha256":  "cfdcba5cafdbebe8536a8ff1a9f44788b5210b5672176d722424205c677912b2",
+                        "target":  "afsu-lee",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.phd.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  160,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-tip.default.json",
+                        "errorCount":  160,
+                        "inputSha256":  "66a3aa502f3208d93d2bf08f5d5d7b7829fa06a2fb6ce3936aa0282d66cad556",
+                        "target":  "afsu-tip",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-tip.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  194,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-cografya-lisans.default.json",
+                        "errorCount":  194,
+                        "inputSha256":  "0127f420d2b681a60513dcd8842adc3bf71544ed34014df963f362ba1b0b6e66",
+                        "target":  "aku-cografya-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-cografya-lisans.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  147,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "master",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.master.json",
+                        "errorCount":  147,
+                        "inputSha256":  "a71c7f0c2b0e443aaa088f882da7b7055ebbdc58f6532eb05cde0f029c8f259a",
+                        "target":  "aku-fbe",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.master.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  147,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "phd",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.phd.json",
+                        "errorCount":  147,
+                        "inputSha256":  "f4edc8e26275bf42673b266b2d1228c8c208111b2194277efb2602dd04c88eeb",
+                        "target":  "aku-fbe",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.phd.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  136,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-lisans.default.json",
+                        "errorCount":  136,
+                        "inputSha256":  "b4d47196ac52b1c70dc1ed87bcfe66a4615f61a55457e4038f570517b9a226ff",
+                        "target":  "aku-felsefe-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-lisans.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  130,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-seminer.default.json",
+                        "errorCount":  130,
+                        "inputSha256":  "977864045693e683a244db080d8c598ba1527f634e64b3f99e97a24021afa669",
+                        "target":  "aku-felsefe-seminer",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-seminer.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  215,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-isg-tezsiz-proje.default.json",
+                        "errorCount":  215,
+                        "inputSha256":  "b94d37c9225d83c06d23e3556be8d1e6d335ba9202b939477ee3400534299958",
+                        "target":  "aku-isg-tezsiz-proje",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-isg-tezsiz-proje.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  154,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-kimya-lisans.default.json",
+                        "errorCount":  154,
+                        "inputSha256":  "c6a054ca80643a553b6b329cd42317df8bfa9f941d9bab614b98f00fd9f3bdb4",
+                        "target":  "aku-kimya-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-kimya-lisans.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  148,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.default.json",
+                        "errorCount":  148,
+                        "inputSha256":  "36f8b89acf76253f05ea39e0f26e91fe86b444ffb922ccfcee2af9ba7d0a5d14",
+                        "target":  "aku-matematik-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  187,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "tables",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.tables.json",
+                        "errorCount":  187,
+                        "inputSha256":  "16811933726ced0a491bc7c4a04fb4475564641cfe4dd0bc322761b409b9f714",
+                        "target":  "aku-matematik-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.tables.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  150,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-mbg-lisans.default.json",
+                        "errorCount":  150,
+                        "inputSha256":  "fb58a0432aa5660dcbfd77a4b8f725821d3366ac884a7cfd586e073e49111861",
+                        "target":  "aku-mbg-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-mbg-lisans.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  187,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "master",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.master.json",
+                        "errorCount":  187,
+                        "inputSha256":  "80dbaf6632263b7d3cb40562b3e8eff8d21f96b55e50bca415369e6c90961491",
+                        "target":  "aku-sagbil",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.master.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  187,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "phd",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.phd.json",
+                        "errorCount":  187,
+                        "inputSha256":  "9e6c07497948a8803c88fcddc311d54d8bf5e5e461764ddf45152a241681793c",
+                        "target":  "aku-sagbil",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.phd.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  188,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "t80",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.t80.json",
+                        "errorCount":  188,
+                        "inputSha256":  "1d67bcbb15c792f13c4cbc6e2878b6bf2af11c804b019c5151b0af12f2d56e6f",
+                        "target":  "aku-sagbil",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.t80.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  257,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.default.json",
+                        "errorCount":  257,
+                        "inputSha256":  "473a90d29514c81011c68936af1934ebd04843b78549731888857cf22a2de2cd",
+                        "target":  "aku-sbe",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  104,
+                        "newErrorDescriptions":  [
+                                                     "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value."
+                                                 ],
+                        "variant":  "master-en",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.master-en.json",
+                        "errorCount":  108,
+                        "inputSha256":  "80df154529b55cc9d700ef0492864d495378dd971899d94f453dde01f7887577",
+                        "target":  "aku-sbe",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.master-en.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  104,
+                        "newErrorDescriptions":  [
+                                                     "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value."
+                                                 ],
+                        "variant":  "phd-en",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-en.json",
+                        "errorCount":  108,
+                        "inputSha256":  "4f45ad5a47eaab8b6189bb04115f4f9e4105321a94f104e970677d89511a3df3",
+                        "target":  "aku-sbe",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-en.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  257,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "phd-tr",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-tr.json",
+                        "errorCount":  257,
+                        "inputSha256":  "81b7f291f6fb70c6a878338700ada98aa5be2a390478adabed99e95f1de9af3a",
+                        "target":  "aku-sbe",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-tr.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  257,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "sanatta-yeterlik-tr",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.sanatta-yeterlik-tr.json",
+                        "errorCount":  257,
+                        "inputSha256":  "ef7133c27cca3e2dc7981d5f27c7909387cac89ffb10f0ed7819b21a6d0921d2",
+                        "target":  "aku-sbe",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.sanatta-yeterlik-tr.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  183,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sosyoloji-lisans.default.json",
+                        "errorCount":  183,
+                        "inputSha256":  "a7b9bfa8c092f33778657bac4b9f629639e05be5dcc95dd62cf3ebb525bbd4ec",
+                        "target":  "aku-sosyoloji-lisans",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sosyoloji-lisans.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:b\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  0,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-justify.default.json",
+                        "errorCount":  0,
+                        "inputSha256":  "d191e354446fbf8159eb6fde5d97a585214e925a27e17584ede36312cd0986e3",
+                        "target":  "engine-word-justify",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-justify.default.baseline.json",
+                        "baselineStatus":  "PASS",
+                        "status":  "PASS",
+                        "errorFamilies":  [
+
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  167,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.default.json",
+                        "errorCount":  167,
+                        "inputSha256":  "9f965c151becd1c929e4e3f95e0218b97728831222b7871a5f14d8a7ecd03d3a",
+                        "target":  "engine-word-pagefit",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  13,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "notes",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.notes.json",
+                        "errorCount":  13,
+                        "inputSha256":  "41ca374edfc1a25a1d33b6788f9527816045dac28c5b84e009fd07f8565cfdde",
+                        "target":  "engine-word-pagefit",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.notes.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  240,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "styles",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.styles.json",
+                        "errorCount":  240,
+                        "inputSha256":  "8ace6c43e38015f1eb26ceedd0c078ebd43591ba6332e542517aca6c53a5cfd5",
+                        "target":  "engine-word-pagefit",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.styles.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  417,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "tab",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.tab.json",
+                        "errorCount":  417,
+                        "inputSha256":  "d7668a09be195928e617f7938db1b21d70a706128355bf3c782acd945d04e799",
+                        "target":  "engine-word-pagefit",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.tab.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  0,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-parity.default.json",
+                        "errorCount":  0,
+                        "inputSha256":  "4f9aa8ddadea4b198c279116a7b6eb775be5ca9dc9d95a70fc88c085a36bda5a",
+                        "target":  "engine-word-parity",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-parity.default.baseline.json",
+                        "baselineStatus":  "PASS",
+                        "status":  "PASS",
+                        "errorFamilies":  [
+
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  142,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.default.json",
+                        "errorCount":  142,
+                        "inputSha256":  "1084e55ae689df990d8142cc6c7de1d59ff0730acd5d74ffe27aa0ca94ebc251",
+                        "target":  "engine-word-structure",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:i\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  34,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "fields",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.fields.json",
+                        "errorCount":  34,
+                        "inputSha256":  "420bdd36cc9b87e472c6421e1dbdbed7991a8821b8f8df2ce27728e4aab0e00a",
+                        "target":  "engine-word-structure",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.fields.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sch_UnexpectedElementContentExpectingComplex: The element has unexpected child element \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:i\u0027.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  0,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "footer",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.footer.json",
+                        "errorCount":  0,
+                        "inputSha256":  "be97d4649b1ed472189ff8335ba9b46d4a3e4c0f9ce27f5840d1403232e8f545",
+                        "target":  "engine-word-structure",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.footer.baseline.json",
+                        "baselineStatus":  "PASS",
+                        "status":  "PASS",
+                        "errorFamilies":  [
+
+                                          ]
+                    },
+                    {
+                        "baselineErrorCount":  128,
+                        "newErrorDescriptions":  [
+
+                                                 ],
+                        "variant":  "default",
+                        "report":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\mcbu-tip-uzmanlik.default.json",
+                        "errorCount":  128,
+                        "inputSha256":  "6a693b3d36dda2dc49bb8221ef172b23e2a9e7261ae392ec006e6075644343e6",
+                        "target":  "mcbu-tip-uzmanlik",
+                        "baselineReport":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\mcbu-tip-uzmanlik.default.baseline.json",
+                        "baselineStatus":  "FAIL",
+                        "status":  "FAIL",
+                        "errorFamilies":  [
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                                              "Sch_AttributeValueDataTypeDetailed: The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                                              "Sem_UniqueAttributeValue: Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others."
+                                          ]
+                    }
+                ],
+    "note":  "Independent SDK schema acceptance; Word open/layout PASS does not override these errors. Baseline comparison distinguishes pre-existing findings.",
+    "variants":  35,
+    "status":  "FAIL",
+    "schemaProfile":  "Office2016"
+}

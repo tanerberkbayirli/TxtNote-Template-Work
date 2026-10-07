@@ -235,6 +235,11 @@ export function thesisSectionCss(section) {
     rules.push(`${scope} .thesis-body :is(td,th){text-indent:${firstIndentMm}mm;}`);
     rules.push(`${scope} .thesis-body :is(td,th) p{margin:0;text-indent:${firstIndentMm}mm;text-align:inherit;}`);
   }
+  // Canonical editor alignment classes survive sanitization. Global formatting
+  // classes use display:block/width:100%; cells must retain their table geometry.
+  for (const align of ["left", "center", "right", "justify"]) {
+    rules.push(`${scope} .thesis-body :is(td,th).fmt-align-${align}{display:table-cell;width:auto;text-align:${align};}`);
+  }
   if (section.generatedIndex) {
     const index = section.generatedIndex;
     rules.push(`${scope} .thesis-toc{${textCss(index.style)}text-indent:0;list-style:none;padding:0;}`);

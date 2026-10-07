@@ -1,7 +1,34 @@
 {
   "schemaVersion": 1,
   "date": "2026-10-07",
-  "status": "PLANNED",
+  "status": "IN_PROGRESS",
+  "planRevision": 2,
+  "planRevisionDate": "2026-10-07",
+  "planRevisionNote": "Revision 2 defined the plan before implementation; 5.1 is now closed with documented deferrals; other stages remain PLANNED.",
+  "executionContract": {
+    "scope": "Freeze required targets/variants/features/fonts/environment before experiments; log scope changes; original 39 failures remain traceable and cannot be closed by exclusion",
+    "earlyGates": "Establish in 5.1: checker negative cases, fresh affected exports, shared-engine full Word regression, provenance and performance baseline",
+    "typographyResearch": {
+      "initialMaxApproaches": 2,
+      "initialMaxRefinementRoundsPerApproach": 2,
+      "decisions": [
+        "CONTINUE",
+        "NEW_EXPERIMENT",
+        "DEFER_OR_EXPLICIT_SCOPE_DECISION"
+      ],
+      "conditions": "Independent fixed validation corpus; record time/run budget before each round; continuation requires validation PASS; extra cycle requires new hypothesis and budget; deferral leaves required acceptance open"
+    },
+    "dependencies": "5.3 independent diagnosis and 5.4 fixture/scope preparation may start after 5.1; final line/page/content acceptance retains dependencies",
+    "contentPackages": [
+      "5.4.1",
+      "5.4.2",
+      "5.4.3",
+      "5.4.4",
+      "5.4.5",
+      "5.4.6"
+    ],
+    "reopenOnChange": "Invalidate affected acceptance on source/font/renderer/line/page-model/fixture changes; certify only a consistent revision"
+  },
   "baselineRevision": "6deaf6d",
   "planPath": "orchestration/reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md",
   "inspectionMethod": "Read saved final acceptance/reports, selected source code and official Microsoft/W3C documentation. Read selected actual PDF/Word H4 lines with existing pdfmeasure.visual_lines and inspect English fixture main content. No new full export or fix acceptance in this planning turn.",
@@ -339,10 +366,10 @@
   "phases": [
     {
       "id": "5.1",
-      "title": "Ölçüm güvenilirliği ve küçük kaynak temelli düzeltmeler",
-      "status": "PLANNED",
+      "title": "Kapsam, güvenilir ölçüm ve sınırlı kaynak temelli düzeltmeler",
+      "status": "CLOSED_WITH_DOCUMENTED_DEFERRALS",
       "dependsOn": [],
-      "relativeEffort": "LOW_MEDIUM"
+      "relativeEffort": "MEDIUM; cache/validator integration depends on environment"
     },
     {
       "id": "5.2",
@@ -351,7 +378,7 @@
       "dependsOn": [
         "5.1"
       ],
-      "relativeEffort": "HIGH"
+      "relativeEffort": "HIGH; bounded initial research cycle with explicit decision gate"
     },
     {
       "id": "5.3",
@@ -360,6 +387,10 @@
       "dependsOn": [
         "5.2"
       ],
+      "preparationDependsOn": [
+        "5.1"
+      ],
+      "dependencyNote": "Independent diagnosis/section/field work may start after 5.1; final page-flow acceptance requires validated 5.2 typography.",
       "relativeEffort": "HIGH"
     },
     {
@@ -370,7 +401,18 @@
         "5.2",
         "5.3"
       ],
-      "relativeEffort": "MEDIUM_HIGH"
+      "preparationDependsOn": [
+        "5.1"
+      ],
+      "packageIds": [
+        "5.4.1",
+        "5.4.2",
+        "5.4.3",
+        "5.4.4",
+        "5.4.5",
+        "5.4.6"
+      ],
+      "relativeEffort": "HIGH in total; estimate and accept each package separately"
     },
     {
       "id": "5.5",
@@ -449,5 +491,13 @@
     "requiredUnknownOrSkipped": 0,
     "consecutiveFullAcceptanceRuns": 2,
     "scope": "Declared supported features, variants, fonts and measured environment profiles; untested environments cannot be certified"
+  },
+  "phase51AcceptancePath": "orchestration/validation/word-compat/phase-5.1/acceptance.json",
+  "phase51Summary": {
+    "resolvedBaselineFailures": 21,
+    "remainingBaselineFailures": 18,
+    "newLayoutRegressions": 0,
+    "schemaPassVariants": 3,
+    "schemaFailVariants": 32
   }
 }

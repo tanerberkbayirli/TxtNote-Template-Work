@@ -227,17 +227,19 @@ See `orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md` and its acceptance 
 | 2026-10-07 | Phase 4 CLOSED: official-source pipeline + ADU Sagbil Tier 1 pilot | (this commit) | 303/303 actual PDF/DOCX/Word; 732 frontend + 40 Python + 3 generator tests/build PASS; three universities/two families; wall 2884.583 s; tokens unavailable. Full regression 1658 PASS / 39 unchanged FAIL / 32 INFO. | Remaining university/variant/Tier 2 and deferred queue |
 | 2026-10-07 | Phase 5 Word compatibility program PLANNED: 5.1–5.5 | (this commit) | Reviewed final 21-target/35-variant baseline, 39 FAIL in 8 families, selected real H4 lines and English fixture coverage; Microsoft/W3C research recorded. No engine fixes or new PASS claimed. | 5.1 measurement/fixture triage, then source-backed cover/table fixes |
 
+| 2026-10-07 | Phase 5.1 CLOSED_WITH_DOCUMENTED_DEFERRALS | (this commit) | 1714 PASS / 18 unchanged FAIL / 32 INFO; 21 baseline FAIL resolved, zero new layout regressions; SDK 3 PASS/32 FAIL tracked; frontend 733, conformance 37, provenance 2, recorder 1, build PASS. | Await user instruction for 5.2; schema findings to 5.3/5.4 |
+
 ## 8. Phase 5 — Word compatibility in five stages
 
 Detailed implementation and acceptance plan: `orchestration/reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md`.
 Machine-readable baseline/audit: `orchestration/specs/word-compatibility-plan.audit.json`.
-Status: **PLANNED**; previous Phase 4 remains CLOSED. Do not interpret this plan as implementation completion.
+Status: **IN_PROGRESS**; 5.1 CLOSED_WITH_DOCUMENTED_DEFERRALS, 5.2–5.5 PLANNED. Previous Phase 4 remains CLOSED; full Word compatibility is not certified.
 
-- **5.1 Reliable checks and narrow fixes:** classify the 39 FAIL rows; correct H4 matching, English table fixture coverage and physical-page anchors; verify ADU cover/SBE table fixes; record reference environment and DOCX validation.
-- **5.2 Typography:** measured Word line-breaking model, editor last-line spacing, effective styles and mixed-run/font regression; resolve the three Arial checks before final pagination work.
-- **5.3 Pagination and fields:** first divergent anchor, keep/widow/terminal leading, section flow and hidden labels, TOC/PAGE/NUMPAGES update convergence; resolve Health/Sociology/SBE front-flow differences.
-- **5.4 Complex editable content:** table splitting, horizontal footnote parity, dynamic source-backed cover metadata, existing math/image/tab features, source-property review and Word edit/save/reopen.
-- **5.5 Release certification:** full target/variant regression, explicit environment matrix, two consecutive full acceptance runs, performance and repeatable release gates.
+- **5.1 Scope, reliable checks and bounded fixes:** freeze required target/variant/feature/environment scope; classify the 39 FAIL rows; correct H4/English table/paragraph coverage; verify source-backed ADU cover/SBE table fixes; establish environment/cache provenance, validator availability, performance baseline and early regression gates.
+- **5.2 Typography with a research decision gate:** at most two approaches with two refinement rounds each in the initial cycle, fixed independent validation corpus, then CONTINUE / NEW EXPERIMENT / DEFER decision with evidence and budget. Resolve Arial and style/indent checks; integrate and regress before closing. Deferral keeps required FAILs and dependent acceptance open.
+- **5.3 Pagination and fields:** independent diagnosis, section/label and field-lifecycle work may begin after 5.1; final page-flow acceptance requires the validated 5.2 line model. Track first divergent anchors and update convergence; revalidate after typography changes.
+- **5.4 Six separately accepted content packages:** tables, footnotes, dynamic covers, existing other elements, language/source-property classification, and Word edit/save/reopen. Prepare minimal fixtures and scope classification in 5.1; final integration requires accepted line/page models. Each required package must PASS.
+- **5.5 Release certification:** verify the gates established in 5.1, required scope/environment matrix, full target/variant regression, performance and two consecutive full acceptance runs. Additional environments/features use an explicit scope-change record.
 
-Order follows dependencies: validate measurement → stabilize lines → stabilize pages → stress content → certify.
-Complete compatibility requires 0 required FAIL/SKIPPED/UNKNOWN in the declared feature/font/environment scope; no tolerance relaxation or fixture omissions to obtain PASS. Unstarted universities and unavailable environments remain explicit separate queues. Start with 5.1.1–5.1.2 in the detailed plan.
+Acceptance order: reliable measurement → validated lines → validated pages → integrated content → certification. Independent diagnosis/fixture preparation can start earlier; Word runs remain serial. Any line/page/environment change reopens affected acceptance records.
+Complete compatibility requires 0 required FAIL/SKIPPED/UNKNOWN in the declared feature/font/environment scope; no tolerance relaxation, fixture omissions or removal of the original 39 failures to obtain PASS. Unstarted universities and unavailable environments remain explicit separate queues. Plan revision 2 preceded implementation. Phase 5.1 now has scoped checks, provenance, early gates and measured performance. See `orchestration/reports/MOTOR_PHASE51_CLOSE_2026-10-07.md`; await user instruction for 5.2.

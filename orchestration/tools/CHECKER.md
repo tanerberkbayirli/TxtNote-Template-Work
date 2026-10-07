@@ -95,8 +95,43 @@ proof that every landmark or text run matches.
 
 ## Reference caching rule
 Official Word render + official DOCX live in `artifacts/<id>/source/reference/` (`official-word.pdf`, `official.docx`,
-`reference.json`). `--build-reference` renders only if `official-word.pdf` is missing (copy an existing render in
-instead of re-rendering) and then (re)writes `reference.json`. Never re-render when present.
+`reference.json`). `--build-reference` preserves existing renders. Reference-derived expected values require
+artifact hashes and matching font/locale environment provenance. Missing/stale provenance is SKIPPED and
+blocks required acceptance; rebuilding metadata never assigns today's environment to an old render.
+Retain stale evidence and make a new cache directory/render when the source or renderer environment changes.
+
+Each fresh run stores `run/environment.json` (installed font file SHA256, OS, culture, decimal separator),
+the Chromium version, Word build/mode/printer/print options, source hashes, and a per-variant acceptance
+fingerprint binding source + current code + checks + fixture + renderer + font/locale environment.
+PID and render timestamp are excluded from the identity. This does not enable export-cache reuse;
+acceptance still uses fresh exports. Missing font environment aborts certification.
+
+`line_attr`, `line_pitch`, and `line_text` accept `params.anchor` with layout landmark `id`, `kind`,
+`sectionId` and/or `regex`. Exactly one identity must match. PDF/Word locate the full anchored text in
+their own page flow; they never borrow physical page numbers from layout. For repeated prose,
+`anchor.afterHeading` + explicit zero-based `headingOccurrence` selects the first paragraph following
+that semantic heading. Missing/ambiguous/incomplete content fails. Pitch uses only adjacent lines of
+the chosen paragraph on the same page, excluding bibliography/table/paragraph boundary gaps.
+
+Automatic `engine-docx-package-<variant>` verifies XML parsing, relationship IDs and internal targets.
+It is separate from Word opening and from Open XML SDK schema validation. `validate-openxml.ps1`
+uses Office's existing Open XML SDK 2.9.1 assembly (Office2016 schema profile) read-only;
+the absence of a standalone `dotnet` command does not imply the SDK is unavailable.
+Schema FAIL/UNAVAILABLE is reported independently, with input SHA256, version and XPath errors.
+Compare against preserved baseline DOCX using the same profile; Word opening never overrides schema FAIL.
+
+Phase 5.1 local regression sequence (Word runs must be serial):
+`node orchestration/tools/check.mjs --all --word --out orchestration/validation/word-compat/phase-5.1/regression --manifest orchestration/validation/word-compat/phase-5.1/regression-manifest.json`,
+then `powershell -NoProfile -ExecutionPolicy Bypass -File orchestration/tools/validate-schema-regression.ps1`,
+then `python orchestration/tools/phase51_record.py --manifest orchestration/validation/word-compat/phase-5.1/regression-manifest.json`.
+The recorder rejects missing checks, lost PASS and changed retained FAIL measurements. Its regression gate
+does not override separate schema FAIL or source UNKNOWN, and rerunning it replaces the diagnostic acceptance
+record; phase closure requires reviewing the resulting evidence and updating the status ledger.
+`required:true` UNKNOWN notes stay UNKNOWN and required SKIPPED/UNKNOWN checks return nonzero.
+
+Set `EXPORT_EDIT_LATENCY=1` for a dedicated baseline export: 20 real insert/delete input events with
+input-to-second-frame timings and exact HTML preservation. This samples one editable field, not full
+pagination convergence or IME correctness. Probe time is separately labelled in export timings.
 
 ## Word COM
 Own instance via `word2pdf.ps1`; the new WINWORD PID is recorded, 120 s timeout (`CHECK_WORD_TIMEOUT_MS`), `Quit` in

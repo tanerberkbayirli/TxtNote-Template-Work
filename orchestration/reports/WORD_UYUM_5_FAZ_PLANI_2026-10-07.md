@@ -1,8 +1,13 @@
 # Word uyumu — beş fazlık uygulama planı
 
-Tarih: 2026-10-07. Durum: PLANLANDI; bu belge motor düzeltmelerinin tamamlandığı anlamına gelmez.
+Tarih: 2026-10-07. Durum: UYGULANIYOR; 5.1 teşhis/düzeltme kapanışı tamamlandı, 5.2–5.5 PLANLANDI; bu belge motor düzeltmelerinin tamamlandığı anlamına gelmez.
 Başlangıç kodu: `6deaf6d`. Önceki MOTOR Faz 0–4 kayıtları korunur. Yeni çalışma,
 MOTOR Faz 5 programının **5.1–5.5** alt fazlarıdır; eski fazlar yeniden numaralandırılmaz.
+
+Plan revizyonu: 2 (2026-10-07). Bu revizyon kapsam, bağımlılık, araştırma sınırı ve
+kapanış koşullarını netleştiren plan revizyonudur. Revizyon yazıldığında uygulama
+başlatılmamıştı; güncel 5.1 kapanışı aşağıda ayrıca kayıtlıdır. Aşağıdaki süreler ölçülmüş tahmin değildir; iş paketleri ilk pilot sonrasında
+ölçülen eforla tahminlenecektir.
 
 ## Hedef ve kabul sözleşmesi
 
@@ -31,6 +36,60 @@ Mevcut kaynak beklentileri ve toleransları korunur. Güvenilir konum karşıla�
 korunur. Satır içeriği, sayfa sayısı ve etiket sırası birebir karşılaştırılır.
 Font boyutu için kontrolün mevcut pt toleransı geçerlidir; tek genel mm eşiği kullanılmaz.
 Antialiasing farkı ile gerçek geometri/içerik farkı ayrı raporlanır.
+
+## Kapsamı sabitleme ve değişiklik yönetimi
+
+5.1'in ilk çıktısı sürümlü bir **kapsam kaydı** olmalıdır. Başlangıç envanteri mevcut
+21 hedef / 35 varyanttır; uygulama başlangıcında gerçek checks/fixture envanteriyle
+karşılaştırılır. Her hedef/varyant için zorunlu özellikler, font ve boyutlar, dil/bölge,
+referans ortamı, kaynak locator'ı, kontrol kimlikleri ve kanıt yolu kaydedilir.
+
+- **Zorunlu çekirdek:** mevcut kaynak temelli kontroller ve ürünün hâlihazırda sunduğu
+  özellikler. Mevcut 39 FAIL'in hiçbiri kapsam daraltılarak kapanmış sayılamaz.
+- **Araştırma korpusu:** sınır durumları ve ikili etkileşim örnekleri. TNR/Arial/Calibri,
+  10/11/12/14 pt ve TR/EN aday kapsamdır; her kombinasyonun destek sözü değildir.
+  Zorunlu doğrulama kümesi deney başlamadan seçilir ve sabitlenir.
+- **Genişletme kuyruğu:** yeni üniversiteler, yeni Word özellikleri ve erişilemeyen
+  ortamlar. Firefox/Safari/macOS Word/Word web, ikinci Word build'i ve bidi/RTL için
+  mevcut ürün vaadi kontrol edilir; kanıt yoksa durum doğrulanmamış olarak görünür.
+  Mevcut bir ürün gereksinimi, sırf test erişimi yok diye isteğe bağlıya çevrilemez.
+
+Her kapsam değişikliği gerekçe, eski/yeni kapsam, etkilenen kabul paydası ve yeniden
+çalıştırılacak kontrollerle kaydedilir. Başarısız zorunlu özelliği erteleme kararı,
+programın o kapsamda tamamlandığı anlamına gelmez. Yeni özelliklerin çekirdeğe alınması
+ayrı bir plan kararıdır; iş listesi uygulama sırasında sessizce büyütülmez.
+
+## İş paketi sözleşmesi ve erken regresyon kapıları
+
+Her iş paketi tek bir neden/özellik etrafında tutulur. Başlamadan giriş kanıtı,
+hipotez, ilgili kaynak/dosyalar, minimal fixture, kabul kontrol kimlikleri, zaman/deney
+bütçesi ve geri alma yöntemi yazılır. Çıkışta karar, kod/spec/fixture kimliği, gerçek
+ölçümler, test komutları, açık kalan nedenler ve sonraki adım kaydedilir.
+
+Durumlar ayrı tutulur: PLANLANDI, ARAŞTIRILIYOR, UYGULANIYOR, DOĞRULANDI veya
+ENGELLİ. Deney başarısı, kapsam kararı ve faz kabulü aynı durum değildir. Eksik ortam
+kanıtı ENGELLİ/UNKNOWN olarak görünür; PASS üretilmez.
+
+Regresyon altyapısı 5.1'de kurulur ve bütün fazlarda kullanılır:
+
+1. Ölçüm/fixture değişikliği: eşleşme yokluğu, yanlış bölüm ve eksik öğe vakalarını
+   sınayan checker testleri + etkilenen hedefin taze export'u. Eski çıktı teşhis içindir.
+2. Şablon değişikliği: kaynak kanıtı + etkilenen hedefin gerekli varyantlarında kontrol;
+   ortak kod etkileniyorsa üçüncü kapı da uygulanır.
+3. Paylaşılan motor değişikliği: ilgili anlamlı birim testleri, frontend test/build ve
+   checks.json olan bütün hedeflerde gerçek Word dahil regresyon. Önce dar kontrollerle
+   hata ayıklanır; kabul koşusu tutarlı kod/spec/fixture sürümünden alınır.
+4. Mevcut FAIL'ler kimlik/varyant ve ilk ayrışma bilgisiyle izlenir. Yeni FAIL, yeni
+   zorunlu UNKNOWN/SKIPPED veya eski PASS'in bozulması paketin kabulünü engeller.
+   Aynı FAIL kimliğinin altında yeni bir neden oluşması da regresyon sayılır.
+5. PR/yerel doğrulama komutu ve makinece okunabilir sonuç 5.1'de hazırlanır. Word
+   runner yoksa non-Word sonucu ayrı raporlanır; tam motor kabulünün yerine geçmez.
+
+5.1'de aynı referans makinede export süresi ve editör etkileşim gecikmesi baz ölçümü
+alınır; fixture, belge boyutu ve örnek sayısı kaydedilir. Performans eşiği uygulamadan
+önce sabitlenir. Mevcut yerel non-Word <=30 saniye kapısı korunur; yeni etkileşim eşiği
+ölçüm yapılmadan uydurulmaz. Her pakette tahmin/gerçek süre ve yeniden iş nedeni
+kaydedilerek kalan iş tahmini güncellenir.
 
 ## Mevcut durum ve doğrulanan açıklar
 
@@ -95,13 +154,17 @@ Makinece okunabilir ayrıntı: `orchestration/specs/word-compatibility-plan.audi
   otomatik düzeltir varsayımı yapılmayacak. Tab davranışı ayrı fixture ile ölçülmeli.
   [DecimalSymbol](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.decimalsymbol?view=openxml-3.0.1)
 
-## Faz 5.1 — güvenilir ölçüm ve küçük, kaynak temelli düzeltmeler
+## Faz 5.1 — kapsam, güvenilir ölçüm ve sınırlı düzeltmeler
 
 Amaç: gerçek uyumsuzlukları kapsam/ölçüm hatalarından ayırmak; sonraki fazların yanlış
-bir referansa göre motoru değiştirmesini önlemek. Göreli efor: düşük–orta.
+bir referansa göre motoru değiştirmesini önlemek. Göreli efor: orta; ölçüm düzeltmeleri
+daha öngörülebilir, cache ve doğrulayıcı entegrasyonu ortam bağımlıdır.
+Giriş: kayıtlı başlangıç kabulü ve mevcut kaynak/check/fixture envanteri erişilebilir.
 
 - **5.1.1 Kabul envanteri.** 39 FAIL kimliğini koru; sekiz aileye kaynak locator'ı,
-  fixture/varyant, ilk farklı satır/sayfa, hipotez ve doğrulanmış tanı ekle. 32 INFO'yu
+  fixture/varyant, ilk farklı satır/sayfa, hipotez ve kanıtın izin verdiği tanıyı ekle.
+  Doğrulanamayan neden açık araştırma olarak, sahibi ve sonraki deneyiyle devredilir.
+  Yukarıdaki kapsam kaydını sabitle. 32 INFO'yu
   gerekli özellik/izleme bilgisi olarak ayır; gerekli UNKNOWN kabulü engellesin.
 - **5.1.2 Ölçüm kapsamı.** H4 kontrolünde numaralı başlığı semantik kimlikle bul;
   bold ve numaralandırmayı ayrı doğrula. SBE İngilizce tablo fixture'larına kaynakla
@@ -110,13 +173,19 @@ bir referansa göre motoru değiştirmesini önlemek. Göreli efor: düşük–o
 - **5.1.3 Küçük düzeltmeler.** ADÜ kapak son satırının 2,003 mm farkını kaynak
   geometriyle çöz. SBE tablo hücresinin kendi hizası, hücre paragrafı stili ve layout
   glyph merkezini birlikte incele; yalnız doğrulanan yerde genel hizalama aktarımını
-  veya o üniversitenin kaynak temelli verisini düzelt. Küçük işleri aynı pakette topla.
+  veya o üniversitenin kaynak temelli verisini düzelt. İki hedefi ayrı kabul edilebilir
+  paketlerde tut. Bir sorun ortak satır/sayfa modeli gerektiriyorsa 5.2/5.3'e kanıtıyla
+  devret; 5.1'i kapsamı belirsiz bir motor yeniden yazımına dönüştürme.
 - **5.1.4 Referans ortamı.** Word build/mode/printer bilgisine font hash'leri,
   tarayıcı sürümü, locale ve ilgili compatibility seçeneklerini ekle. Cache anahtarını
   kaynak + code/spec/fixture + renderer/font ortamı ile ilişkilendir. Eksik cache PASS olmaz.
 - **5.1.5 DOCX geçerliliği.** Open XML SDK doğrulayıcısı için mevcut çalışma ortamını
   kontrol et; şema/relationship hatalarını gerçek Word açılışından ayrı raporla.
   Kullanılamayan doğrulayıcıyı açık ortam bağımlılığı olarak kaydet; PASS üretme.
+- **5.1.6 Erken kapılar ve baz ölçümü.** Ortak regresyon sözleşmesini çalıştırılabilir
+  komut/manifest ile kur; eksik fixture/anchor/cache durumlarının yanlış PASS üretmediğini
+  test et. Performans bazını al. 5.4'teki tablo/dipnot/kapak sınır örneklerinden satır ve
+  sayfa modelini etkileyen minimal örnekleri şimdiden korpusa ekle.
 
 Ana dosyalar: `orchestration/tools/conformance.py`, `check.mjs`, `word2pdf.ps1`,
 `specs/aku-sagbil.*`, `specs/aku-sbe.*`, `templates/adu-ziraat-lisans.js`,
@@ -124,18 +193,35 @@ Ana dosyalar: `orchestration/tools/conformance.py`, `check.mjs`, `word2pdf.ps1`,
 
 Çıkış: 39 eski satırın tamamı sınıflandırılmış; gerekli fixture öğesi yokken ölçüm
 başarısı yok; her etkilenen kontrol source-backed ve gerçek öğeye bağlı; küçük
-düzeltmelerin kontrolleri PASS; sıfır yeni regresyon. Kalan gerçek FAIL'ler sonraki
-fazlara açık kimliklerle devredilir. Sayısal FAIL azalması tek başına çıkış ölçütü değildir.
+düzeltme olarak kabul edilen paketlerin kontrolleri PASS; sıfır yeni regresyon;
+kapsam/ortam kaydı ve erken regresyon kapıları hazır. Kalan FAIL'ler sonraki fazlara
+açık kimlik, kanıt ve sorumlu paketle devredilir. Eksik doğrulayıcı gibi ortam bağımlılığı
+bu fazın teşhis kapanışında açık kaydedilebilir; gerekli olduğu son kabulü engeller.
+Sayısal FAIL azalması tek başına çıkış ölçütü değildir.
 
 ## Faz 5.2 — yazı, satır kırılımı ve paragraf eşliği
 
-Bağımlılık: 5.1. Amaç: sayfalamanın temel girdisi olan satır akışını düzeltmek.
+Bağımlılık: 5.1'in kapsam, anchor, ortam ve regresyon kapıları. Amaç: sayfalamanın
+temel girdisi olan satır akışını düzeltmek. Bağımsız stil/girinti paketi, line breaker
+araştırmasının sonucunu beklemeden ilerleyebilir.
 Göreli efor: yüksek; özel line breaker bu programın en belirsiz teknik parçası.
 
 - **5.2.1 Dar deney.** Mevcut Word justify probe'larını ve J03/J04'ü yeniden kullan.
   Son kelime bütçesini Word kuralı diye genellemeden; kısa son kelime, az/çok boşluk,
   noktalama, kalın/italik run ve farklı font boyutlarında ölç. Öğrenme ve doğrulama
   metinlerini ayır; yalnız üç başarısız cümleye uygun sabit üretme.
+  İlk deney çevrimi en fazla **iki yaklaşım × iki iyileştirme turu** ile sınırlıdır.
+  Bu sınır süre tahmini değildir; her turun çalışma süresi ve Word koşusu sayısı
+  başlamadan kaydedilir. Tur sonunda aynı sabit doğrulama kümesi kullanılır.
+- **5.2.K Araştırma karar kapısı.** İlk çevrim sonunda aşağıdaki kararlardan biri,
+  doğrulama sonuçları ve kalan farklarla yazılır:
+  - DEVAM: üç Arial kontrolü ve önceden sabitlenmiş doğrulama kümesi kaynak toleransları
+    içinde geçer; içerik/etkileşim kaybı ve yeni regresyon yoktur. Model entegrasyona alınır.
+  - YENİ DENEY: sonuç geçmiyorsa ayırt edici yeni hipotez, önceki yaklaşımın neden
+    yetmediği ve tek bir ek çevrimin bütçesi yazılır. Aynı ayarla sınırsız tur yapılmaz.
+  - ERTELE/KAPSAM KARARI: uygulanabilir model bulunmadıysa açık FAIL'ler korunur;
+    bağımsız paketler ilerler, tam tipografi ve ona bağlı sayfalama kabulü açık kalır.
+    Daha dar bir sürüm kapsamı ayrı ve görünür bir ürün kararıdır; eski 39 satır kapanmaz.
 - **5.2.2 Ortak satır modeli.** Font advance/shaping, break fırsatları ve satır başına
   genişleme/sıkıştırmayı tek modelde değerlendir. Önce bu modele dayalı opt-in çözümü
   prototiple; editör ve PDF aynı sonucu kullansın, DOCX semantik metni Word'e bıraksın.
@@ -157,12 +243,17 @@ ve typography/justify testleri.
 
 Çıkış: üç Arial kontrolü PASS; doğrulama korpusunda aynı satır metni ve son satır glyph
 konumları; style/font/pitch/girinti kapıları PASS; editör etkileşiminde içerik kaybı yok;
-birim/build ve tüm mevcut hedeflerde yeni regresyon yok. Sonraki faz bu modeli kullanır.
+birim/build ve tüm mevcut hedeflerde yeni regresyon yok. Başarılı araştırma kararı tek
+başına bu çıkışı sağlamaz; entegrasyon ve taze tam regresyon gerekir. Satır akışını
+etkileyen sonraki değişiklik bu kabulü ve bağımlı sayfalama sonuçlarını yeniden açar.
 
 ## Faz 5.3 — sayfalama, bölüm sınırları ve dinamik alanlar
 
-Bağımlılık: 5.2. Amaç: doğru satırların aynı fiziksel sayfalara yerleşmesi.
-Göreli efor: yüksek; typography tamamlanmadan bu fazı kapatmak yeniden iş üretir.
+Bağımlılık: teşhis için 5.1; nihai akış kabulü için 5.2. Amaç: doğru satırların aynı
+fiziksel sayfalara yerleşmesi. Göreli efor: yüksek. İlk ayrışma analizi, bölüm/etiket
+kuralları ve alan yaşam döngüsü 5.1 sonrasında ayrı paketler olarak araştırılabilir.
+5.2 açıkken alınan sayfa sayısı/etiket sonuçları geçicidir; satır modeli sabitlenince
+taze export ile yeniden doğrulanır. Word işlemleri her zaman tek sıra çalışır.
 
 - **5.3.1 İlk ayrışma.** AKÜ Sağlık master/PhD/t80 ve Sosyoloji için ilk farklı
   sayfa/paragraph/table/footnote anchor'ını raporla; toplam sayfayı elle telafi etme.
@@ -190,11 +281,16 @@ Ana dosyalar: `pageLayout.js`, `exportPagination.js`, `generatedIndex.js`,
 Çıkış: Sağlık altı + TOC iki ve Sosyoloji iki kontrolü, SBE ön akış alt kümesi PASS;
 seçili bütün varyantlarda sayfa/etiket sırası birebir; alan güncellemeleri yakınsar;
 tekrar dışa aktarımda landmark kimlikleri kararlı; beklenmeyen boş sayfa yok.
+Kapanış kaydı kullanılan 5.2 model sürümünü içerir; yalnız toplam sayfa eşitliği,
+ilk farklı paragraf veya alan sonucundaki hatayı kapatmaz.
 
 ## Faz 5.4 — karmaşık içerik, dinamik kapak ve düzenlenebilirlik
 
-Bağımlılık: 5.2–5.3. Amaç: basit fixture dışındaki gerçek tez kullanımını güvenceye almak.
-Göreli efor: orta–yüksek; kapsamdaki özellikler 5.1 sözleşmesine göre seçilir.
+Bağımlılık: envanter/minimal fixture hazırlığı için 5.1; satır/sayfa akışının nihai
+kabulü için 5.2–5.3. Amaç: gerçek tez kullanımını ayrı kapanabilen paketlerle doğrulamak.
+Göreli efor: toplamda yüksek, paket bazında yeniden tahminlenecek. Aşağıdaki altı paket
+ayrı değişiklik ve kabul kaydı taşır; tek büyük değişiklikte birleştirilmez. 5.4.5'in
+kapsamı belirleyen envanter ayrımı 5.1'de başlar; son doğrulaması burada tamamlanır.
 
 - **5.4.1 Tablolar.** Çok satırlı/birleşik hücreler, atLeast/exact row height,
   padding/border, repeatHeader, cantSplit, caption/continuation ve hücre içi paragraf
@@ -219,21 +315,45 @@ Göreli efor: orta–yüksek; kapsamdaki özellikler 5.1 sözleşmesine göre se
   alanları güncelle, kaydet ve yeniden aç; içerik/stil/alan ilişkileri korunmalı.
   Word'ün ZIP/XML'i yeniden yazması nedeniyle byte eşliği zorunlu tutulmaz.
 
+Paket kapanışları:
+
+- **5.4.1:** kayıtlı tablo örneklerinde hücre içeriği/geometri ve sayfa bölünmesi
+  doğru; repeatHeader/cantSplit ve taşma tanısı doğrulanmış.
+- **5.4.2:** dipnot işareti/gövdesi, yatay girinti ve devam akışı doğru; Word'de
+  gerçek dipnot ve referans ilişkisi korunmuş.
+- **5.4.3:** kaynakta desteklenen metadata alanları kısa/uzun/boş sınırlarında
+  düzenlenebilir; taşma görünür; sabit örnek metne bağlı yerleşim kalmamış.
+- **5.4.4:** kapsam kaydındaki her mevcut öğe için içerik/geometri/düzenlenebilirlik
+  kanıtı var. Yeni özellik talepleri genişletme kuyruğuna ayrılmış.
+- **5.4.5:** 109 grubun her biri gerekçeli sınıfta; gerekli özellik açıkları kontrol
+  kimliğine bağlı. Zorunlu dil/bölge senaryoları geçmiş; erişilemeyen ortamlar görünür.
+- **5.4.6:** ilgili paketlerden seçilen sabit Word düzenleme senaryolarında
+  başlık/paragraf/tablo değişimi, alan güncelleme ve kaydet/aç sonrası kayıp yok.
+
+Bir pakette yeni satır veya sayfa davranışı gerekiyorsa ilgili 5.2/5.3 kabulü yeniden
+açılır. Paket tamamlanması bağımsız kaydedilebilir; faz kapanışı bütün zorunlu paketlerin
+birlikte geçtiği entegrasyon koşusunu gerektirir.
+
 Ana dosyalar: `docx/tables.js`, `docx/specialPages.js`, `specialPages.js`,
 `layoutDocument.js`, `layoutDocx.js`, `paragraphTabs.js`, `footnotes.js`, `export.js`,
 `spec2template.mjs`, `schema.d.ts` ve ilgili tablo/kapak/dipnot testleri.
 
-Çıkış: gerekli Tier 2 senaryoları PASS veya kapsam dışı olarak gerekçeli ve görünür;
-kapsam içi UNKNOWN yok. Desteklenen öğeler düzenlenebilir; 109 grubun her biri
+Çıkış: kapsam kaydındaki bütün zorunlu Tier 2 senaryoları PASS; başlangıçta kapsam dışı
+belirlenenler gerekçeli ve görünür; kapsam içi UNKNOWN yok. Başarısız zorunlu senaryoyu
+sonradan kapsam dışı saymak kapanış değildir. Desteklenen öğeler düzenlenebilir; 109 grubun her biri
 gerekçeli bir duruma sahip; içeriği kırparak/rasterleştirerek sağlanan PASS yok.
 
 ## Faz 5.5 — tüm hedefler, ortam matrisi ve kalıcı sürüm kapısı
 
-Bağımlılık: 5.1–5.4. Amaç: tek makinede birkaç örneğin geçmesini ürün güvencesine çevirmek.
-Göreli efor: orta; başka ortamların erişilebilirliği ayrıca kaydedilecek.
+Bağımlılık: çekirdek kapsam için 5.1–5.4'ün gerekli kabul kayıtları. Amaç: önceden
+kurulmuş kapıları tam sürüm kabulünde birleştirmek. Göreli efor: referans ortamında
+orta; ek ortamların erişim ve hata giderme eforu ayrı tahminlenir. Ortam hazırlığı
+5.1'de başlar; bu fazda ilk kez bağımlılık keşfedilmesi beklenmez.
 
 - **5.5.1 Tam regresyon.** O an checks.json olan bütün hedef ve kayıtlı gerekli
-  varyantlar; mevcut 21 hedef, sonradan eklenenler ve karmaşık içerik korpusu.
+  varyantlar; sabit kapsam kaydı, mevcut 21 hedef ve karmaşık içerik korpusu. Sonradan
+  eklenen hedefler regresyon kapısına katılır; sertifika kapsamına alınmaları değişiklik
+  kaydı gerektirir. Başlangıçtaki 35 varyantın kapsam ve payda farkları açıklanır.
   39 eski FAIL için çözüm/source-backed yeniden ölçüm kaydı bulunmalı; başarısız
   kontrolü silmek veya required kontrolü SKIPPED yapmak kapanış değildir.
 - **5.5.2 Ortam kapsamı.** Önce referans Windows Word + sabit Chromium; sonra
@@ -247,8 +367,10 @@ Göreli efor: orta; başka ortamların erişilebilirliği ayrıca kaydedilecek.
   <=30 saniye kapısını koru; büyük belgeler ayrı performans sınıfında raporlansın.
   Editör etkileşim gecikmesini 5.1 baz ölçümüne karşı izle; tekrar export/wait yakınsaması,
   hata mesajı ve eksik font akışlarını dene. Mutlak süreyi bütün bilgisayarlara garanti etme.
-- **5.5.5 Otomatik kapı.** PR'da birim/build/şema ve etkilenen fixture'lar;
-  paylaşılan motor değişikliğinde tüm hedef regresyonu; sürüm öncesi tam Word matrisi.
+- **5.5.5 Otomatik kapının sürüm kabulü.** 5.1'de kurulan PR/yerel kapının birim/build,
+  mevcutsa şema ve etkilenen fixture sonuçlarını gerçekten engelleyici olarak kullandığını
+  doğrula; gerekli şema doğrulayıcısının yokluğu açık ortam engelidir. Paylaşılan motor
+  değişikliğinde tüm hedef regresyonu; sürüm öncesi zorunlu Word ortam matrisi.
   Word kurulu yerel/Windows runner ayrı gereksinimdir. Plan kullanıcıdan zamanlanmış
   automation istemediği için bu adım bir scheduler kurulumu değildir.
 - **5.5.6 Kapanış.** Özellik × ortam × varyant sertifika kaydı, gerekli kontrollerin
@@ -263,7 +385,10 @@ kapsamını ifade eder. Yeni 30 bekleyen üniversitenin tamamlanması ayrı öl�
 ## En verimli yürütme yöntemi
 
 1. Önce 5.1 ile yanlış tanı maliyetini azalt; küçük kapak/tablo düzeltmelerini paketle.
-2. 5.2'de satır kırılımını çöz; değişen satırlarla 5.3 sayfalamasını ikinci kez yapma.
+2. 5.2 dar deneyini bütçesi ve karar kapısıyla yürüt. Bu sırada 5.3'ün bağımsız
+   teşhis/alan/bölüm paketlerini ve 5.4'ün minimal sınır fixture'larını hazırlayabilirsin;
+   nihai sayfalama kabulünü satır modeli sabitlenmeden verme. Bu bağımsızlık sıralama
+   esnekliğidir; alt ajan veya eşzamanlı Word işlemi başlatma talimatı değildir.
 3. Bir aile için minimal fixture → `--only <id1,id2>` → etkilenen hedef tam koşusu.
    Mevcut çıktıyla yalnız ölçüm deneyi yapılabilir; kod düzeltmesinin kabulü taze export ister.
 4. Ortak motor paketi tamamlanınca npm test/build birer kez ve bütün hedeflerde gerçek
@@ -272,6 +397,24 @@ kapsamını ifade eder. Yeni 30 bekleyen üniversitenin tamamlanması ayrı öl�
    Word işlemlerini paralelleştirme; tarayıcı export havuzunu mevcut sınırlı boyutta tut.
 6. Her fazı ayrı commit + <=15 satır kapanış + acceptance JSON ile kapat.
    Duvar süresini ölç; token telemetrisi yoksa tahmini token sayısını gerçekmiş gibi yazma.
+7. Tek seferde bir kabul edilebilir uygulama paketi üzerinde çalış. Her paket sonunda
+   tahmin/gerçek süre, yeni bağımlılık ve kalan riskleri güncelle. Takvim tahmini için
+   5.1 pilotu ile 5.2 ilk deney çevrimi kanıtını kullan; araştırma süresini garanti etme.
+
+## Fazlar arası teslim ve yeniden açma kuralları
+
+- **5.1 → 5.2:** kapsam, düzeltilmiş ölçüm/fixture'lar, ortam parmak izi, baz performans,
+  eski FAIL eşleme kaydı ve çalışan regresyon komutu teslim edilir.
+- **5.2 → 5.3:** doğrulanan satır modeli/sürümü, sabit korpus sonuçları ve editör
+  etkileşim kanıtı teslim edilir. Açık tipografi FAIL'i varsa nihai akış kabulü bekler.
+- **5.3 → 5.4 entegrasyonu:** ilk ayrışma kapanışları, bölüm/etiket ve alan yaşam
+  döngüsü sonuçları teslim edilir; önceden hazırlanmış karmaşık örnekler birlikte koşulur.
+- **5.4 → 5.5:** her zorunlu paketin kabulü, Word düzenleme turu ve özellik kapsamı
+  teslim edilir. Eksik zorunlu paket varsa sürüm sertifikası verilmez.
+- **Her aşamada:** kaynak, font, renderer, satır/sayfa modeli veya fixture değişirse
+  etkilenen kabul kayıtları geçersiz işaretlenir. Kullanılabilir eski kanıt korunur;
+  yeni sürümün PASS sonucu gibi sunulmaz. Sürüm kapsamını daraltma kararı varsa tam
+  programın açık işleri ve önceki 39 FAIL ayrıca görünür kalır.
 
 Başlangıç komutları (preview açıkken, depo kökünde):
 
@@ -279,11 +422,22 @@ Başlangıç komutları (preview açıkken, depo kökünde):
 node orchestration/tools/check.mjs --target aku-sagbil --word --only h4-bold-editor,h4-bold-word --out orchestration/validation/word-compat/phase-1/aku-sagbil
 node orchestration/tools/check.mjs --target adu-ziraat-lisans --word --only cover-inner-baselines --out orchestration/validation/word-compat/phase-1/adu-ziraat-lisans
 node orchestration/tools/check.mjs --target aku-sbe --word --only table-header-f-centered,table-number-centered,table-percent-centered --out orchestration/validation/word-compat/phase-1/aku-sbe
+node orchestration/tools/check.mjs --target aku-sbe --word --only table-header-f-centered-master-en,table-number-centered-master-en,table-percent-centered-master-en,table-header-f-centered-phd-en,table-number-centered-phd-en,table-percent-centered-phd-en --out orchestration/validation/word-compat/phase-1/aku-sbe-en-tables
+node orchestration/tools/check.mjs --target aku-sbe --word --only body-line-pitch-master-en,first-line-indent-master-en,body-line-pitch-phd-en,first-line-indent-phd-en --out orchestration/validation/word-compat/phase-1/aku-sbe-en-body
 node orchestration/tools/check.mjs --target engine-word-justify --word --out orchestration/validation/word-compat/phase-2/justify
 node orchestration/tools/check.mjs --all --word --out orchestration/validation/word-compat/regression --manifest orchestration/validation/word-compat/regression-manifest.json
 ```
 
 5.1'den sonraki komutlar şimdiden PASS sayılmaz; uygulama sırasında çalıştırılacak
-doğrulama tarifleridir. İlk iş: H4 ve İngilizce tablo kapsamını düzeltmek, ardından
-ADÜ kapak ve doğrulanan SBE tablo hizası. Her fazda açık kök nedenler çözülmeden
-sonrakinin ölçümleri nihai kabul yerine geçmez.
+doğrulama tarifleridir. İlk iş: kapsam ve başlangıç envanteri, ardından H4/İngilizce
+tablo/gövde ölçümü ve erken kapılar. ADÜ kapak ile doğrulanan SBE tablo hizası ayrı
+paketlerde ele alınır. Dar komutlar teşhis içindir; ilgili hedefin bütün gerekli
+varyantlarında ve ortak motor için bütün hedeflerde kabul koşusunun yerine geçmez.
+Açık kök nedenler, kendilerine bağlı sonraki ölçümlerin nihai kabulünü engeller;
+bağımsız teşhis ve hazırlık işleri ilerleyebilir.
+
+## 5.1 uygulama kapanışı — 2026-10-07
+
+Durum: CLOSED_WITH_DOCUMENTED_DEFERRALS. 21 hedef/35 varyant taze Word koşusu: 1714 PASS / 18 FAIL / 32 INFO; başlangıçtaki 39 FAIL’in 21’i kapandı, yeni yerleşim regresyonu yok. Beklentiler ve toleranslar korunmuştur. SDK şema kontrolü ayrı: 3 varyant PASS, 32 FAIL; hatalar 5.3/5.4 paketlerine kayıtlıdır. ADÜ kapak tipografisi 5.2’ye devredildi; kaynak H4 numaralandırması UNKNOWN kalır. Tam uyum/sürüm kabulü verilmedi.
+
+Kapanış: `orchestration/reports/MOTOR_PHASE51_CLOSE_2026-10-07.md`; kabul: `orchestration/validation/word-compat/phase-5.1/acceptance.json`. 5.2 kullanıcı talimatı bekliyor.

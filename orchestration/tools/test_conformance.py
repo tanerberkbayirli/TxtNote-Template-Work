@@ -140,6 +140,47 @@ class LandmarkTests(unittest.TestCase):
         self.assertEqual(self.check('page_of', {'kind': 'heading'}, 1)['status'], 'PASS')
         self.assertEqual(self.check('landmark_x', {'id': 'missing'}, 30)['status'], 'FAIL')
 
+    def test_semantic_anchor_rejects_missing_ambiguous_or_wrong_section(self):
+        params = {'anchor': {'kind': 'heading', 'sectionId': 'body', 'regex': 'Evidence'}}
+        self.assertEqual(self.check('line_text', params, 'Evidence heading')['status'], 'PASS')
+        params['anchor']['sectionId'] = 'bibliography'
+        self.assertEqual(self.check('line_text', params, 'Evidence heading')['status'], 'FAIL')
+        params['anchor']['sectionId'] = 'body'
+        self.report['pages'][0]['landmarks'].append({**self.report['pages'][0]['landmarks'][0], 'id': 'other'})
+        self.assertEqual(self.check('line_text', params, 'Evidence heading')['status'], 'FAIL')
+
+    def test_anchor_measures_word_on_its_own_page_and_rejects_incomplete_text(self):
+        from unittest.mock import patch
+        from conformance import Doc, anchored_lines
+        with open(self.layout, 'w', encoding='utf8') as stream: json.dump(self.report, stream)
+        word = os.path.join(self.tmp.name, 'word.pdf')
+        import pymupdf
+        doc = pymupdf.open()
+        doc.new_page()
+        doc.new_page().insert_text((100, 100), 'Evidence heading', fontsize=12)
+        doc.save(word); doc.close()
+        self.ctx['variants']['default']['wordPdf'] = word
+        params = {'source': 'word', 'anchor': {'id': 'body:heading:1'}}
+        self.assertEqual(anchored_lines(self.ctx, params)[0][0], 2)
+        self.report['pages'][0]['textOps'][0]['text'] = 'Evidence heading plus missing text'
+        with open(self.layout, 'w', encoding='utf8') as stream: json.dump(self.report, stream)
+        self.ctx.pop('_layouts', None)
+        self.assertEqual(anchored_lines(self.ctx, params), [])
+
+    def test_pitch_uses_only_the_anchored_paragraph_not_nearby_single_spacing(self):
+        page = self.report['pages'][0]
+        page['label'] = '1'
+        page['landmarks'][0].update(kind='paragraph')
+        op = page['textOps'][0]
+        page['textOps'] = [{**op, 'text': 'body', 'baselineMm': y, 'yMm': y - 4} for y in (40, 47.3, 54.6)]
+        page['landmarks'].append({**page['landmarks'][0], 'id': 'bibliography:1', 'sectionId': 'bibliography'})
+        page['textOps'] += [{**op, 'landmarkId': 'bibliography:1', 'text': 'citation', 'baselineMm': y, 'yMm': y - 4}
+                            for y in (100, 104.866, 109.732, 114.598, 119.464)]
+        params = {'source': 'layout', 'anchor': {'id': 'body:heading:1', 'kind': 'paragraph'}}
+        self.assertEqual(self.check('line_pitch', params, 7.3)['status'], 'PASS')
+        params['anchor']['id'] = 'missing'
+        self.assertEqual(self.check('line_pitch', params, 7.3)['status'], 'FAIL')
+
     def test_missing_layout_is_a_failed_independence_gate(self):
         from conformance import k_layout_pdf_consistency
         result = k_layout_pdf_consistency(self.ctx, {'params': {}})
@@ -355,6 +396,30 @@ class FieldDumpTests(unittest.TestCase):
     def test_changed_seq_or_numpages_fail(self):
         self.assertFalse(self.run_dump([self.row('SEQ Tablo', '1')], [self.row('SEQ Tablo', '2')])['pass'])
         self.assertFalse(self.run_dump([self.row('PAGE', '1', 'footer1.1')], [self.row('PAGE', '1', 'footer1.1'), self.row('NUMPAGES', '9', 'footer1.1')], np_cached='7')['pass'])
+
+
+class PackageTests(unittest.TestCase):
+    def test_relationship_integrity_is_separate_from_word_open_and_rejects_missing_targets(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = os.path.join(directory, 'package.docx')
+            ctx = {'variants': {'default': {'docx': path}}}
+            c = {'id': 'package', 'kind': 'docx_package_relationships', 'params': {}, 'expected': 'none'}
+            rels = '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="r1" Target="document.xml" Type="doc"/></Relationships>'
+            for document, expected in [('<document/>', 'PASS'), ('<broken>', 'FAIL')]:
+                with zipfile.ZipFile(path, 'w') as archive:
+                    archive.writestr('word/_rels/test.xml.rels', rels)
+                    archive.writestr('word/document.xml', document)
+                self.assertEqual(run_check(ctx, c)['status'], expected)
+            with zipfile.ZipFile(path, 'w') as archive:
+                archive.writestr('word/_rels/test.xml.rels', rels)
+            self.assertEqual(run_check(ctx, c)['status'], 'FAIL')
+
+    def test_required_unknown_cannot_be_info_or_pass(self):
+        c = {'id': 'unknown', 'kind': 'note', 'params': {'text': 'required source gap'},
+             'evidence': 'UNKNOWN', 'required': True}
+        self.assertEqual(run_check({}, c)['status'], 'UNKNOWN')
+        c['required'] = False
+        self.assertEqual(run_check({}, c)['status'], 'INFO')
 
 
 if __name__ == "__main__":

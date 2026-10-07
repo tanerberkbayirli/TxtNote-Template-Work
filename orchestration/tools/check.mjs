@@ -10,6 +10,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
 import { availableParallelism } from 'node:os';
+import { fileHash, acceptanceFingerprint, stableWordEnvironment, sourceFingerprint } from './validationProvenance.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
@@ -94,6 +95,14 @@ env.CHECK_SOURCE_PROVENANCE = JSON.stringify({ revision: revision.stdout.trim(),
   startedAt: new Date().toISOString() });
 const bundledPython = process.env.USERPROFILE && join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe');
 const python = process.env.CHECK_PYTHON || (bundledPython && existsSync(bundledPython) ? bundledPython : 'python');
+const environmentProbe = spawnSync('powershell', ['-NoProfile', '-File', join(here, 'validation-environment.ps1')],
+  { encoding: 'utf8', timeout: 30000, windowsHide: true });
+const environmentPath = join(runDir, 'environment.json');
+if (environmentProbe.status !== 0) throw new Error(`Cannot record font/locale environment: ${environmentProbe.stderr}`);
+const rendererEnvironment = JSON.parse(environmentProbe.stdout.replace(/^\uFEFF/, ''));
+if (!rendererEnvironment.fonts?.length) throw new Error('Font provenance unavailable; acceptance cannot be certified');
+writeFileSync(environmentPath, JSON.stringify(rendererEnvironment, null, 2));
+env.CHECK_RENDERER_ENVIRONMENT = JSON.stringify({ path: environmentPath, sha256: fileHash(environmentPath) });
 
 function py(argv) {
   const result = spawnSync(python, [join(here, "conformance.py"), ...argv], { encoding: "utf8", env, cwd: root });
@@ -131,6 +140,7 @@ if (opt.buildReference) {
     if (!existsSync(docx)) { console.error(`no official-word.pdf and no official DOCX (${docx}); pass --official-docx`); process.exit(2); }
     const r = await wordToPdf(docx, wp, null, null);
     if (!r.ok) { console.error(r.reason); process.exit(1); }
+    env.CHECK_REFERENCE_RENDER_FRESH = '1';
   }
   const r = py(["build-reference", "--dir", refDir]);
   process.stdout.write(r.stdout); process.stderr.write(r.stderr);
@@ -144,6 +154,7 @@ let checks = JSON.parse(readFileSync(checksPath, "utf8"));
 if (!Array.isArray(checks)) checks = checks.checks;
 const allVariants = [...new Set(checks.filter(c => c.kind !== "note").map(c => c.params?.fixture || c.fixture || "default"))];
 for (const fixture of allVariants) {
+  checks.push({ id: `engine-docx-package-${fixture}`, params: { fixture } });
   checks.push({ id: `engine-layout-pdf-${fixture}`, params: { fixture } });
   checks.push({ id: `engine-layout-report-${fixture}`, params: { fixture } });
   if (opt.verifyLayoutIds) checks.push({ id: `engine-layout-ids-${fixture}`, params: { fixture } });
@@ -268,6 +279,28 @@ for (const v of variants) {
 }
 
 // ---------------------------------------------------------------- evaluate
+const sourceProvenance = JSON.parse(env.CHECK_SOURCE_PROVENANCE);
+const officialSourceFingerprint = sourceFingerprint(root, id);
+const sourceFiles = spawnSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '--', 'TxtNote/frontend/src', 'orchestration/tools'],
+  { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+if (sourceFiles.status !== 0) throw new Error('Cannot fingerprint current code files');
+const codeHash = createHash('sha256');
+for (const file of [...new Set(sourceFiles.stdout.trim().split(/\r?\n/))].sort()) {
+  if (!/\.(m?js|jsx|ts|py|ps1)$/.test(file) || !existsSync(join(root, file))) continue;
+  codeHash.update(file).update(fileHash(join(root, file)));
+}
+const codeFingerprint = codeHash.digest('hex');
+env.CHECK_SOURCE_PROVENANCE = JSON.stringify({ ...sourceProvenance, codeFingerprint, officialSourceFingerprint });
+for (const [variant, paths] of Object.entries(vmap)) {
+  if (!paths.layout || !existsSync(paths.layout) || !paths.fixture) continue;
+  const snapshot = JSON.parse(readFileSync(paths.layout, 'utf8'));
+  paths.acceptanceFingerprint = acceptanceFingerprint({
+    source: officialSourceFingerprint, checks: fileHash(checksPath), fixture: fileHash(paths.fixture),
+    code: codeFingerprint,
+    renderer: JSON.stringify({ chromium: snapshot.chromium, word: stableWordEnvironment(paths.wordRenderInfo) }),
+    environment: fileHash(environmentPath),
+  });
+}
 const a = ["run", "--target", id, "--checks", checksPath, "--variants", JSON.stringify(vmap), "--reference", refDir, "--out", outDir];
 env.CHECK_DRIVER_ELAPSED_SECONDS = String((performance.now() - driverStarted) / 1000);
 env.CHECK_EXPORT_MODE = opt.noExport ? 'existing-artifacts' : 'fresh';

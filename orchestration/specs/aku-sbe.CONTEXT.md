@@ -20,3 +20,7 @@
 - Full guide PDF, bulk render/dump folders or unrelated target specs. Read only cached source locators needed for failing rows.
 
 - Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
+
+## Phase 5.1 checkpoint — 2026-10-07
+
+15 cell-alignment checks and 4 English paragraph checks resolved; canonical cell classes and real English tables retain source expectations. Four English front-flow checks remain open; schema table-width defects tracked for 5.4.1. See `orchestration/validation/word-compat/phase-5.1/acceptance.json`.

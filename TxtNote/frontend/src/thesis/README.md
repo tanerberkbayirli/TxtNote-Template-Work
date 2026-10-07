@@ -1,5 +1,11 @@
 # Thesis template engine
 
+Authored table cells use the existing `fmt-align-left/center/right/justify` classes.
+They survive HTML sanitization, override `tables.cellStyle.align`, and retain table-cell
+display/column geometry in editor/PDF; the parser transfers the choice to DOCX.
+Inline `style="text-align:..."` is stripped during sanitization and is not a persistent
+fixture format. No new template key is required. Verified by `thesisCellAlignment.test.js`.
+
 `schema.d.ts` is schema v1. All lengths are millimetres, all font sizes and paragraph spacing are points, and line height is a multiplier. `validation.js` checks bundled definitions at load time. `engine.js` resolves global rules plus section overrides into one document model. The thesis editor, print HTML, searchable PDF and DOCX consume that model. The old AcademicEditor and its exporters remain separate.
 
 ### Measured layout report (Phase 3)
