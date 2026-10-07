@@ -14,6 +14,7 @@ import datetime
 import glob
 import hashlib
 import json
+import math
 import os
 import re
 import statistics
@@ -49,7 +50,7 @@ def get_layout(ctx, params):
 def layout_hits(ctx, params):
     report = get_layout(ctx, params)
     pages = params.get('pages', params.get('page', 'all'))
-    selected = set(get_doc(ctx, params).pages(pages))
+    selected = set(get_doc(ctx, {**params, 'source': 'layout'}).pages(pages))
     hits = []
     for page in report['pages']:
         if page['page'] not in selected:
@@ -58,6 +59,8 @@ def layout_hits(ctx, params):
             if params.get('id') and mark['id'] != params['id']:
                 continue
             if params.get('kind') and mark['kind'] != params['kind']:
+                continue
+            if params.get('sectionId') and mark.get('sectionId') != params['sectionId']:
                 continue
             if params.get('regex') and not re.search(params['regex'], mark['text']):
                 continue
@@ -75,9 +78,8 @@ def _landmark_value(mark, attr):
 def _layout_attribute(ctx, c, attr):
     hits = layout_hits(ctx, c['params'])
     values = [_landmark_value(mark, c['params'].get('attr', attr)) for _, mark in hits]
-    values = [value for value in values if value is not None]
-    if not values:
-        return {'actual': None, 'note': 'no matching measured landmark'}
+    if not values or any(value is None for value in values):
+        return {'actual': None, 'note': 'no matching landmark or a matched landmark lacks the requested measurement'}
     agg = c['params'].get('agg', 'first')
     if agg == 'all' and isinstance(c['expected'], (int, float)):
         value = max(values, key=lambda value: abs(value - c['expected']))
@@ -101,6 +103,8 @@ def k_landmark_gap(ctx, c):
     if not a or not b:
         return {'actual': None, 'note': 'gap endpoints missing'}
     for page, second in b:
+        if second.get('firstBaselineMm') is None:
+            continue
         before = [first for p, first in a if p == page and first.get('lastBaselineMm') is not None
                   and first['lastBaselineMm'] < second.get('firstBaselineMm', -1)]
         if before:
@@ -113,14 +117,65 @@ def k_page_of(ctx, c):
     return {'actual': hits[0][0] if hits else None}
 
 
+def k_layout_ids_match(ctx, c):
+    """Compare independent real exports, never geometry-derived or text-hash identities."""
+    first = get_layout(ctx, c['params'])
+    variant = ctx['variants'][c['params'].get('fixture', 'default')]
+    path = variant.get('repeatLayout')
+    if not path or not os.path.exists(path):
+        return {'actual': None, 'pass': False, 'note': 'second real layout export missing'}
+    with open(path, encoding='utf8') as stream:
+        raw = json.load(stream)
+    second = raw.get('engineLayout', raw)
+    def identity(report):
+        return [(page['page'], page['label'], page['sectionIds'],
+                 [(mark['id'], mark['kind'], mark['sectionId']) for mark in page['landmarks']])
+                for page in report['pages']]
+    return {'actual': identity(first) == identity(second),
+            'note': f"{len(first['pages'])} pages: ordered landmark IDs/kinds/sections and labels"}
+
+
+def k_layout_report_valid(ctx, c):
+    """Validate the measured report contract; box-only landmarks have explicit null text metrics."""
+    report = get_layout(ctx, c['params'])
+    errors = []
+    number = lambda value: type(value) in (int, float) and math.isfinite(value)
+    if report.get('origin') != 'top-left' or report.get('units') != {'geometry': 'mm', 'fontSize': 'pt'}:
+        errors.append('expected top-left origin and mm/pt units')
+    for page in report['pages']:
+        ids = [mark['id'] for mark in page['landmarks']]
+        if len(ids) != len(set(ids)):
+            errors.append(f"p{page['page']}: duplicate landmark IDs")
+        for mark in page['landmarks']:
+            if not all(isinstance(mark.get(key), str) for key in ('id', 'kind', 'sectionId', 'text')):
+                errors.append(f"p{page['page']}: missing landmark identity/text")
+            if not all(number(mark.get(key)) for key in ('xMm', 'yMm', 'widthMm', 'heightMm')):
+                errors.append(f"{mark['id']}: non-finite geometry")
+            if not isinstance(mark.get('lineCount'), int) or not isinstance(mark.get('exportedFonts'), list):
+                errors.append(f"{mark['id']}: missing line/font metadata")
+            for key in ('firstBaselineMm', 'lastBaselineMm', 'linePitchMm', 'fontSizePt', 'fontFamily'):
+                if key not in mark:
+                    errors.append(f"{mark['id']}: missing {key}")
+        for op in page['textOps']:
+            if op.get('landmarkId') not in ids or any(key not in ids for key in op.get('ancestorIds', [])):
+                errors.append(f"p{page['page']}: text references an absent landmark")
+    return {'actual': not errors, 'note': '; '.join(errors[:8]) or 'version-1 layout contract valid'}
+
+
 def k_layout_pdf_consistency(ctx, c):
     """Independent glyph-origin check; absent/mismatched samples FAIL, never SKIP."""
     params = c['params']
-    report = get_layout(ctx, params)
+    try:
+        report = get_layout(ctx, params)
+    except Skip as error:
+        return {'actual': None, 'pass': False, 'note': str(error)}
     doc = get_doc(ctx, params)
     failures, checked, worst = [], 0, 0.0
     if len(report['pages']) != doc.n:
         return {'actual': len(report['pages']), 'pass': False, 'note': f'PDF has {doc.n} pages'}
+    if [page.get('page') for page in report['pages']] != list(range(1, doc.n + 1)):
+        return {'actual': None, 'pass': False,
+                'note': 'layout physical pages must occur exactly once in PDF order (1..N)'}
     for page in report['pages']:
         if not 1 <= page['page'] <= doc.n:
             failures.append('invalid physical page')
@@ -137,6 +192,8 @@ def k_layout_pdf_consistency(ctx, c):
                 continue
             seen.add(key)
             samples.append(op)
+        if not samples and any(char['c'].strip() for char, _ in chars):
+            failures.append(f"p{page['page']}: PDF has visible text but no eligible layout samples")
         for op in samples[:params.get('samples_per_page', 16)]:
             text = op['text'][:12]
             candidates = [char for char, following in chars if following.startswith(text)]
@@ -236,10 +293,14 @@ class Doc:
         """Resolve a page selector to a list of 1-based page numbers."""
         if spec in (None, "all"):
             return list(range(1, self.n + 1))
+        if type(spec) is int:
+            return self.pages({'page': spec})
         if isinstance(spec, list) and len(spec) == 2 and all(isinstance(x, int) for x in spec):
             a, b = spec
             b = self.n if b < 0 else b
             return [p for p in range(a, b + 1) if 1 <= p <= self.n]
+        if isinstance(spec, list) and all(type(p) is int for p in spec):
+            return list(dict.fromkeys(q for p in spec for q in self.pages({'page': p})))
         if isinstance(spec, dict):
             if "page" in spec:
                 p = spec["page"]
@@ -1239,6 +1300,14 @@ def cmd_run(a):
                           'params': {'fixture': variant}, 'expected': 0, 'tolerance': .25,
                           'source': {'file': 'exported PDF', 'locator': 'independent PyMuPDF glyph origins vs engine report'},
                           'evidence': 'MEASURED'})
+        automatic.append({'id': f'engine-layout-report-{variant}', 'kind': 'layout_report_valid',
+                          'params': {'fixture': variant}, 'expected': True, 'tolerance': 0,
+                          'source': {'file': 'schema.d.ts', 'locator': 'ThesisLayoutReport version 1'}, 'evidence': 'EXPLICIT'})
+        if ctx['variants'][variant].get('repeatLayout'):
+            automatic.append({'id': f'engine-layout-ids-{variant}', 'kind': 'layout_ids_match',
+                              'params': {'fixture': variant}, 'expected': True, 'tolerance': 0,
+                              'source': {'file': 'two real exports', 'locator': 'same fixture; deterministic landmark identity'},
+                              'evidence': 'MEASURED'})
         if a.word_requested:
             for kind in ('page_count_match', 'page_labels_match'):
                 automatic.append({'id': f'engine-{kind}-{variant}', 'kind': kind,
@@ -1266,7 +1335,7 @@ def cmd_run(a):
     fingerprints = {}
     for variant, paths in ctx["variants"].items():
         fingerprints[variant] = {}
-        for key in ('fixture', 'pdf', 'docx', 'layout', 'wordPdf', 'wordRefreshedPdf', 'wordFieldDump', 'wordRenderInfoPath'):
+        for key in ('fixture', 'pdf', 'docx', 'layout', 'repeatLayout', 'wordPdf', 'wordRefreshedPdf', 'wordFieldDump', 'wordRenderInfoPath'):
             path = paths.get(key)
             if path and os.path.isfile(path):
                 with open(path, 'rb') as artifact:
@@ -1275,7 +1344,9 @@ def cmd_run(a):
         checks_hash = hashlib.file_digest(specification, 'sha256').hexdigest()
     provenance = json.loads(os.environ.get('CHECK_SOURCE_PROVENANCE', '{}'))
     jpath, counts, rows = write_report(a.target, results, a.out, stamp, {"variants": ctx["variants"], "wordRequested": a.word_requested,
-        'measurementSeconds': round(time.monotonic() - started, 3), 'sourceProvenance': provenance,
+        'measurementSeconds': round(time.monotonic() - started, 3),
+        'commandSeconds': round(float(os.environ.get('CHECK_DRIVER_ELAPSED_SECONDS', '0')) + time.monotonic() - started, 3),
+        'exportMode': os.environ.get('CHECK_EXPORT_MODE', 'existing-artifacts'), 'sourceProvenance': provenance,
         'checksSha256': checks_hash, 'artifactSha256': fingerprints})
     print(f"{a.target}: " + " ".join(f"{k}={v}" for k, v in sorted(counts.items())) + f"  -> {os.path.relpath(jpath)}")
     for r in rows:

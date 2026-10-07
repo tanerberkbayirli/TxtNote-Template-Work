@@ -24,6 +24,14 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "/opt/node22/lib/n
 const [fixturePath, outPrefixArg, baseUrl = "http://127.0.0.1:5175"] = process.argv.slice(2);
 if (!fixturePath || !outPrefixArg) { console.error("usage: export.mjs <fixture.json> <outPrefix> [baseUrl]"); process.exit(2); }
 const outPrefix = resolve(outPrefixArg);
+const exportStarted = performance.now();
+let stageStarted = exportStarted;
+const timings = {};
+const recordStage = name => {
+  const now = performance.now();
+  timings[name] = +((now - stageStarted) / 1000).toFixed(3);
+  stageStarted = now;
+};
 await mkdir(dirname(outPrefix), { recursive: true });
 const doc = JSON.parse(await readFile(fixturePath, "utf8"));
 const KEY = "txtnote-thesis-regression";
@@ -37,6 +45,7 @@ const browser = await chromium.launch({
 const context = await browser.newContext({ viewport: { width: 1400, height: 1000 }, deviceScaleFactor: 1, acceptDownloads: true });
 await context.grantPermissions(["local-fonts"], { origin: new URL(baseUrl).origin });
 const page = await context.newPage();
+recordStage('browser');
 const errors = [];
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
 page.on("console", (e) => { if (e.type() === "error" || /content security policy|refused to|uncaught/i.test(e.text())) errors.push(`console: ${e.text()}`); });
@@ -80,15 +89,17 @@ async function settle() {
 }
 
 try {
+  // Seed before the first render; loading an unseeded editor and reloading it doubles
+  // pagination/font work and can momentarily render the wrong template.
+  await context.addInitScript(([key, value]) => { localStorage.clear(); localStorage.setItem(key, value); }, [KEY, JSON.stringify(doc)]);
   await page.goto(`${baseUrl}${fixturePage}`);
-  await page.evaluate(([key, value]) => { localStorage.clear(); localStorage.setItem(key, value); }, [KEY, JSON.stringify(doc)]);
-  await page.reload();
   await page.locator(".thesis-sheet").first().waitFor({ timeout: 60000 });
   await page.waitForFunction((id) => document.querySelector('[aria-label="Belge sayfaları"]')?.getAttribute('data-thesis-template-id') === id,
     doc.researchData?.thesis?.templateId, { timeout: 60000 });
   const zoom = page.getByLabel("Yakınlaştır", { exact: true });
   if (await zoom.count()) await zoom.selectOption("100");
   await page.evaluate(() => document.fonts.ready);
+  recordStage('editor');
   let state;
   const assertExportable = (phase) => {
     if (state.warn || state.paginationReady !== "true" || state.missingTargets.length || state.mismatchedLabels.length) {
@@ -104,6 +115,7 @@ try {
   const exportSnapshots = [];
   let engineLayout = null;
   for (const [button, extension] of [["PDF", "pdf"], ["Word", "docx"]]) {
+    await page.getByRole("tab", { name: "Dosya", exact: true }).click();
     // Each export may invalidate the editor's final page/index measurement.
     // Re-settle immediately before every UI action and refuse the export unless
     // the live editor still confirms the complete target map.
@@ -119,8 +131,8 @@ try {
       mismatchedLabels: state.mismatchedLabels,
       targets: state.targets.map((target) => ({ target, label: state.pageMap[target]?.indexLabel ?? state.pageMap[target]?.label ?? "" })),
     } });
+    recordStage(`${extension}.settle`);
     const event = page.waitForEvent("download", { timeout: 240000 });
-    await page.getByRole("tab", { name: "Dosya", exact: true }).click();
     const bodyBefore = await page.evaluate(() => document.body.innerText);
     await page.getByRole("button", { name: button, exact: true }).click();
     // The editor reports a failed export as a message instead of a download.
@@ -138,6 +150,7 @@ try {
       engineLayout = await page.evaluate(() => document.querySelector('[aria-label="Belge sayfaları"]')?.__thesisLayoutReport || null);
       if (!engineLayout?.pages?.length) throw new Error('PDF export did not supply its engine layout report');
     }
+    recordStage(extension);
   }
   // PDF can cause another pagination/index update. Verify it settled after the
   // final export too, and save this live final state in the layout evidence.
@@ -150,8 +163,10 @@ try {
   }
   const blockGaps = process.env.EXPORT_DEBUG_BLOCK_GAPS ? await blockGapDiagnostics(page, process.env.EXPORT_DEBUG_BLOCK_GAPS) : undefined;
   const paginationDebug = process.env.EXPORT_DEBUG_PAGINATION ? await paginationDiagnostics(page) : undefined;
+  recordStage('final-settle');
+  timings.totalSeconds = +((performance.now() - exportStarted) / 1000).toFixed(3);
   await writeFile(`${outPrefix}.layout.json`, JSON.stringify({ fixture: fixturePath, exportedAt: new Date().toISOString(), chromium: browser.version(), ...layout, warn: state.warn, ...(blockGaps ? { blockGaps } : {}),
-    ...(paginationDebug ? { paginationDebug } : {}), engineLayout, pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
+    ...(paginationDebug ? { paginationDebug } : {}), engineLayout, timings, pagination: { ready: state.paginationReady, targetCount: state.targets.length, missingTargets: state.missingTargets, mismatchedLabels: state.mismatchedLabels,
       targets: state.targets.map((target) => ({ target, label: state.pageMap[target]?.indexLabel ?? state.pageMap[target]?.label ?? "" })) }, exportSnapshots, errors }, null, 2));
   if (state.paginationReady !== "true") throw new Error(`paged export readiness unavailable: ${state.paginationReady}`);
   if (!state.pagedLayout) throw new Error("paged layout not active: PDF would come from the fallback writer");
@@ -162,6 +177,7 @@ try {
 } catch (error) {
   await page.screenshot({ path: `${outPrefix}.failure.png`, fullPage: false }).catch(() => {});
   console.error(error?.stack || error);
+  if (errors.length) console.error(errors.join('\n'));
   process.exitCode = 1;
 } finally {
   await browser.close();

@@ -79,11 +79,12 @@ class LandmarkTests(unittest.TestCase):
         doc.close()
         self.layout = os.path.join(self.tmp.name, 'test.layout.json')
         self.report = {'version': 1, 'pages': [{'page': 1, 'landmarks': [
-            {'id': 'body:heading:1', 'kind': 'heading', 'text': 'Evidence heading',
+            {'id': 'body:heading:1', 'kind': 'heading', 'sectionId': 'body', 'text': 'Evidence heading',
              'xMm': 30, 'yMm': 36, 'widthMm': 30, 'heightMm': 4, 'firstBaselineMm': 40,
              'lastBaselineMm': 40, 'fontSizePt': 12}], 'textOps': [
                  {'id': 'run1', 'landmarkId': 'body:heading:1', 'text': 'Evidence heading',
-                  'xMm': 30, 'baselineMm': 40, 'fontSizePt': 12}]}]}
+                  'xMm': 30, 'yMm': 36, 'widthMm': 30, 'heightMm': 4,
+                  'baselineMm': 40, 'fontSizePt': 12}]}]}
         self.ctx = {'variants': {'default': {'pdf': self.pdf, 'layout': self.layout}}}
 
     def tearDown(self):
@@ -95,6 +96,7 @@ class LandmarkTests(unittest.TestCase):
         with open(self.layout, 'w', encoding='utf8') as f:
             json.dump(self.report, f)
         self.ctx.pop('_layouts', None)
+        self.ctx.pop('_layout_docs', None)
         return run_check(self.ctx, {'id': 'test', 'kind': kind, 'params': params or {},
                                     'expected': expected, 'tolerance': .25})
 
@@ -110,6 +112,104 @@ class LandmarkTests(unittest.TestCase):
         self.assertEqual(self.check('landmark_y', {'regex': 'Evidence'}, 40)['status'], 'PASS')
         self.assertEqual(self.check('page_of', {'kind': 'heading'}, 1)['status'], 'PASS')
         self.assertEqual(self.check('landmark_x', {'id': 'missing'}, 30)['status'], 'FAIL')
+
+    def test_missing_layout_is_a_failed_independence_gate(self):
+        from conformance import k_layout_pdf_consistency
+        result = k_layout_pdf_consistency(self.ctx, {'params': {}})
+        self.assertFalse(result['pass'])
+        self.assertIn('unavailable', result['note'])
+
+    def test_layout_contract_rejects_duplicate_ids_and_non_finite_geometry(self):
+        self.report.update(origin='top-left', units={'geometry': 'mm', 'fontSize': 'pt'})
+        mark = self.report['pages'][0]['landmarks'][0]
+        mark.update(sectionId='body', lineCount=1, exportedFonts=[], linePitchMm=None, fontFamily='Times New Roman')
+        self.assertEqual(self.check('layout_report_valid', expected=True)['status'], 'PASS')
+        mark['xMm'] = float('nan')
+        self.assertEqual(self.check('layout_report_valid', expected=True)['status'], 'FAIL')
+        mark['xMm'] = 30
+        self.report['pages'][0]['landmarks'].append(dict(mark))
+        self.assertEqual(self.check('layout_report_valid', expected=True)['status'], 'FAIL')
+
+    def test_real_export_identity_check_rejects_a_changed_landmark_id(self):
+        second = os.path.join(self.tmp.name, 'repeat.layout.json')
+        self.ctx['variants']['default']['repeatLayout'] = second
+        with open(second, 'w', encoding='utf8') as stream:
+            json.dump(self.report, stream)
+        # Identity fields, unlike source expectations, come from the repeated export.
+        self.report['pages'][0].update(label='1', sectionIds=['body'])
+        with open(second, 'w', encoding='utf8') as stream:
+            json.dump(self.report, stream)
+        self.assertEqual(self.check('layout_ids_match', expected=True)['status'], 'PASS')
+        self.report['pages'][0]['landmarks'][0]['id'] = 'changed'
+        self.assertEqual(self.check('layout_ids_match', expected=True)['status'], 'FAIL')
+
+    def test_page_selectors_support_single_numbers_and_lists_without_changing_ranges(self):
+        from conformance import Doc
+        self.add_second_page(text='')
+        doc = Doc(self.pdf)
+        try:
+            for selector, expected in [(2, [2]), ([2], [2]), ([-1], [2]),
+                                       ([1, 2], [1, 2]), ([2, 1, 2], [2, 1]), ([], [])]:
+                with self.subTest(selector=selector):
+                    self.assertEqual(doc.pages(selector), expected)
+        finally:
+            doc.pdf.close()
+
+    def add_second_page(self, text='Second page evidence'):
+        import pymupdf
+        doc = pymupdf.open(self.pdf)
+        page = doc.new_page(width=210 * MM2PT, height=297 * MM2PT)
+        if text:
+            page.insert_text((30 * MM2PT, 40 * MM2PT), text, fontsize=12)
+        doc.save(self.pdf + '.next')
+        doc.close()
+        os.replace(self.pdf + '.next', self.pdf)
+        self.report['pages'].append({'page': 2, 'landmarks': [], 'textOps': []})
+
+    def test_landmark_selectors_work_without_a_pdf_and_respect_report_labels(self):
+        self.ctx['variants']['default'].pop('pdf')
+        self.report['pages'][0]['label'] = 'i'
+        self.assertEqual(self.check('landmark_y', {'pages': {'label': 'roman'}, 'kind': 'heading'}, 40)['status'], 'PASS')
+        self.assertEqual(self.check('page_of', {'pages': {'find': '^Evidence heading$'}}, 1)['status'], 'PASS')
+        self.assertEqual(self.check('landmark_y', {'pages': {'label': 'arabic'}}, 40)['status'], 'FAIL')
+
+    def test_all_landmarks_cannot_pass_by_dropping_missing_metrics(self):
+        self.report['pages'][0]['landmarks'].append({**self.report['pages'][0]['landmarks'][0],
+                                                   'id': 'body:heading:2', 'firstBaselineMm': None})
+        self.assertEqual(self.check('landmark_y', {'kind': 'heading', 'agg': 'all'}, 40)['status'], 'FAIL')
+
+    def test_gap_uses_last_to_first_baseline_on_the_same_page_and_handles_box_only_marks(self):
+        mark = self.report['pages'][0]['landmarks'][0]
+        self.report['pages'][0]['landmarks'] += [
+            {**mark, 'id': 'empty', 'firstBaselineMm': None, 'lastBaselineMm': None},
+            {**mark, 'id': 'next', 'firstBaselineMm': 54.6, 'lastBaselineMm': 70}]
+        params = {'a': {'id': mark['id']}, 'b': {'id': 'next'}}
+        self.assertEqual(self.check('landmark_gap', params, 14.6)['status'], 'PASS')
+        self.assertEqual(self.check('landmark_gap', {**params, 'b': {'id': 'empty'}}, 14.6)['status'], 'FAIL')
+        self.add_second_page(text='')
+        self.report['pages'][1]['landmarks'] = [self.report['pages'][0]['landmarks'].pop()]
+        self.assertEqual(self.check('landmark_gap', params, 14.6)['status'], 'FAIL')
+
+    def test_pdf_crosscheck_rejects_unsampled_text_page_after_valid_page(self):
+        self.add_second_page()
+        result = self.check('layout_pdf_consistency')
+        self.assertEqual(result['status'], 'FAIL', result)
+        self.assertIn('p2: PDF has visible text but no eligible layout samples', result['note'])
+
+    def test_pdf_crosscheck_allows_genuinely_blank_page(self):
+        self.add_second_page(text='')
+        result = self.check('layout_pdf_consistency')
+        self.assertEqual(result['status'], 'PASS', result)
+
+    def test_pdf_crosscheck_requires_unique_ordered_physical_pages(self):
+        self.add_second_page(text='')
+        for numbers in ([1, 1], [2, 1], [1, 3]):
+            with self.subTest(numbers=numbers):
+                for page, number in zip(self.report['pages'], numbers):
+                    page['page'] = number
+                result = self.check('layout_pdf_consistency')
+                self.assertEqual(result['status'], 'FAIL', result)
+                self.assertIn('exactly once in PDF order', result['note'])
 
     def test_page_number_search_region_can_find_number_outside_bottom_25mm(self):
         from conformance import Doc

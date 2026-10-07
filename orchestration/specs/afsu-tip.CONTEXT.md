@@ -28,6 +28,7 @@
 - CONFLICT: 10 (ethics page not generated, EKLER row has no page number in example, DHF English wording). UNKNOWN: 6 (page-number font, footer distance, ethics content, table borders, footnote size).
 ## Status
 - IN_PROGRESS; validation FAIL; commit 4ff8e65; engine-fix-4 remaining items open.
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - Engine-fix-4 (footnote pitch, DOCX table row/TOC spacing), then checker --only failed.
 ## Commands

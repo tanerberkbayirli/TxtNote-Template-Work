@@ -2,7 +2,8 @@
 
 ```
 node orchestration/tools/check.mjs --target <id> [--fixture <path>] [--word] [--only <id,id>|failed]
-     [--out <dir>] [--no-export <pdf> <docx>] [--build-reference [--official-docx <path>]]
+     [--out <dir>] [--verify-layout-ids] [--no-export <pdf> <docx>] [--build-reference [--official-docx <path>]]
+node orchestration/tools/check.mjs --all [--targets <id,id>] [--word] [--out <parent-dir>] [--manifest <file>]
 ```
 Flow: `specs/<id>.checks.json` -> real export (`export.mjs`, one export per fixture variant) -> optional Word
 render (`--word`) -> `conformance.py` (PyMuPDF + DOCX XML) -> `validation/<id>/check-<YYYYMMDD-HHMM>.json` + `.md`.
@@ -13,6 +14,17 @@ env `THESIS_BASE_URL`, `THESIS_BROWSER_EXECUTABLE` (default: local Chrome), `PLA
 Unit tests: `python -m unittest orchestration/tools/test_conformance.py`.
 Regression gate: `node orchestration/tools/check.mjs --all [--word]` runs every target with a `specs/<id>.checks.json`,
 prints one summary line per target and exits 1 if any target has a FAIL or errors (MOTOR.md 0.4).
+With `--all`, `--out` creates a separate child directory per target; `--manifest`
+records exact child-command wall times, report paths, counts and export errors.
+`--targets` selects a subset for fresh targeted reruns. Layout-report export timings
+separate browser/editor preparation, PDF and DOCX settle/export stages.
+This is the Phase 3 runtime evidence, including fresh exports and checker overhead.
+Report `measurementSeconds` measures conformance alone; it cannot establish the
+30-second whole-target gate. `--no-export` is explicitly labelled existing-artifacts.
+Non-Word runs use up to five independent browser profiles for fixture variants,
+bounded by available CPU threads minus one (`CHECK_EXPORT_JOBS=1..5` overrides this).
+Word-mode exports and all Word COM renders are serialized
+by default. No outputs, browser storage or output prefixes are shared across variants.
 
 ## Adding a target
 1. `specs/<id>.fixture.json` (default fixture; extra variants `specs/<id>.fixture.<variant>.json`, selected per
@@ -50,6 +62,36 @@ PDF: `page_size`, `page_count`, `text_extent` (x0min|x1max|firstBaseline|lastBas
 DOCX XML: `docx_section` (pgSz/pgMar mm, pgNumType), `docx_attr` (any `w:<tag>` attrs; mode allowed|has, numeric_tol in
 twips), `docx_no_undefined` (`<undefined`, unbalanced fldChar). Word (only `--word`): `word_opens`, `page_count_match`,
 and any PDF kind with `params.source:"word"`. Word-comparison kinds (layout/PDF vs Word): `line_attr_match`, `line_words_match` (glyph extents of matched lines; tab leader run = >=4 identical . - _ glyphs, compared by extent and glyph count), `page_size_match` (per-page size), `page_number_attr_match` (baseline|cx|x0|x1|size per page, pages selector). Field kinds (`--word` renders a second, field-refreshed PDF and a JSON field dump when a target's checks use them): `fields_refresh_match` (Word render of the cached DOCX = render after updating all fields), `fields_cached_match` (per-kind cached results = Word-updated results; NUMPAGES cached value read from DOCX XML). Page selector `{"until":"<regex>"}` = every page before the first match. `params.source:"word-refreshed"` measures the refreshed render. `note` records INFO/UNKNOWN items.
+
+## Engine layout checks (Phase 3)
+
+`landmark_x`, `landmark_y`, `landmark_gap`, and `page_of` read the exported version-1
+`.layout.json` report (also supported under `engineLayout`). Select landmarks with
+`params.id`, `kind`, `sectionId`, or `regex`, and restrict physical pages with `params.pages`.
+Page selectors for these kinds read the report itself, with no PDF text dependency.
+Attributes include `baseline`, `top`, `bottom`, `x0`, `x1`, `cx`, `size`, and `pitch`.
+`agg:all` checks the worst deviation and fails if any selected landmark lacks that
+measurement. `landmark_gap` uses the nearest preceding last baseline and the next
+first baseline on the same page; box-only endpoints cannot yield an invented gap.
+Expected values must still come from the official source, independently of our report.
+
+`layout_report_valid` is an automatic version-1 contract gate (origin/units, identity,
+finite bounds, explicit nullable text metrics, and valid text-to-container references).
+`--verify-layout-ids` performs a second real export of each selected fixture and adds
+`layout_ids_match`: ordered page labels/section IDs/landmark IDs and kinds must match.
+Repeated exports are diagnostic work, timed separately from ordinary runtime gating.
+IDs are stable for identical input; arbitrary edits can renumber unanchored paragraphs.
+
+`layout_pdf_consistency` cross-checks reported text origins against actual PDF glyph
+origins, with a default tolerance of 0.25 mm. Every physical page must occur exactly
+once in PDF order (1..N). Each page containing visible PDF text must provide an
+eligible sample; another page's successful measurements cannot cover missing data.
+Blank PDF pages may have no samples, but a wholly unsampled document cannot pass.
+Eligible samples are nonblank, unclipped text runs of at least 7 pt with a landmark
+ID, taking one run per landmark and up to `params.samples_per_page` (default 16).
+A text page with only smaller or clipped runs fails this gate and needs an explicit
+sampling extension; it must not silently pass. This is a sample cross-check, not
+proof that every landmark or text run matches.
 
 ## Reference caching rule
 Official Word render + official DOCX live in `artifacts/<id>/source/reference/` (`official-word.pdf`, `official.docx`,

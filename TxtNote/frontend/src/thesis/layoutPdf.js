@@ -12,7 +12,7 @@ import { academicPdfFont, academicPdfFontFace, exactAcademicPdfFont, collectAcad
 import { canvasFontAscent } from "./wordBaseline.js";
 import { lastLineShifts } from "./justifyLastLine.js";
 import { PX_PER_MM, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
-import { layoutLandmarkIndex, layoutPageReport } from "./layoutReport.js";
+import { layoutLandmarkIndex, layoutPageBoxes, layoutPageReport } from "./layoutReport.js";
 
 const MM = 1 / PX_PER_MM;
 // KaTeX keeps a visually hidden MathML copy next to the drawn formula; only the drawn one is exported.
@@ -548,7 +548,7 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
   const fontRequests = collectAcademicPdfFontRequests(documentLayout, sections);
   const exactFamilies = new Set(fontRequests.map(value => normalizeAcademicPdfFamily(value) || value));
   let pdf = null;
-  const report = { version: 1, units: { geometry: 'mm', fontSize: 'pt' }, pages: [] };
+  const report = { version: 1, origin: 'top-left', units: { geometry: 'mm', fontSize: 'pt' }, pages: [] };
   for (const { group, stack, metrics, pages } of stacks) {
     if (!pages) continue;
     const { widthMm, heightMm } = group.rules.page;
@@ -577,7 +577,7 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
         || Number(left.op.type === "text") - Number(right.op.type === "text")
         || left.order - right.order);
       for (const { op } of ordered) drawOp(pdf, op, pageTop, templateId, metrics.heightPx);
-      const pageBoxes = boxes.filter((box) => Math.floor((box.top + box.height / 2) / flowPagePitchPx(metrics)) === index);
+      const pageBoxes = layoutPageBoxes(boxes, pageTop, metrics.heightPx);
       const sheet = stack.querySelectorAll('.thesis-sheet')[index];
       report.pages.push(layoutPageReport({ ops, boxes: pageBoxes, pageTop, mmPerPx: MM, page: report.pages.length + 1,
         groupId: group.id, label: sheet?.getAttribute('data-thesis-page-label') || '', widthMm, heightMm }));

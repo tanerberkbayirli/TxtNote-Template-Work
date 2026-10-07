@@ -355,8 +355,8 @@
 },
 {
 "id": "h1-size",
-"kind": "line_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "heading",
 "pages": {
 "label": "arabic"
 },
@@ -532,8 +532,8 @@
 },
 {
 "id": "caption-size",
-"kind": "line_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "caption",
 "pages": {
 "label": "arabic"
 },
@@ -657,8 +657,8 @@
 },
 {
 "id": "pagenum-roman-x0",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_x",
+"params": {"kind": "page-number",
 "pages": {
 "find": "^ÖZET$"
 },
@@ -675,8 +675,8 @@
 },
 {
 "id": "pagenum-roman-baseline",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "page-number",
 "pages": {
 "find": "^ÖZET$"
 },
@@ -693,8 +693,8 @@
 },
 {
 "id": "pagenum-arabic-x0",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_x",
+"params": {"kind": "page-number",
 "pages": {
 "find": "^1[.] GİRİŞ$"
 },
@@ -711,8 +711,8 @@
 },
 {
 "id": "pagenum-arabic-baseline",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "page-number",
 "pages": {
 "find": "^1[.] GİRİŞ$"
 },
@@ -729,8 +729,8 @@
 },
 {
 "id": "pagenum-size",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "page-number",
 "pages": {
 "find": "^1[.] GİRİŞ$"
 },
@@ -1206,8 +1206,8 @@
 },
 {
 "id": "phd-h1-size",
-"kind": "line_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "heading",
 "fixture": "phd",
 "pages": {
 "label": "arabic",
@@ -1401,8 +1401,8 @@
 },
 {
 "id": "phd-caption-size",
-"kind": "line_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "caption",
 "fixture": "phd",
 "pages": {
 "label": "arabic",
@@ -1520,8 +1520,8 @@
 },
 {
 "id": "phd-pagenum-roman-x0",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_x",
+"params": {"kind": "page-number",
 "fixture": "phd",
 "pages": {
 "find": "^ÖZET$"
@@ -1544,8 +1544,8 @@
 },
 {
 "id": "phd-pagenum-roman-baseline",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "page-number",
 "fixture": "phd",
 "pages": {
 "find": "^ÖZET$"
@@ -1568,8 +1568,8 @@
 },
 {
 "id": "phd-pagenum-arabic-x0",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_x",
+"params": {"kind": "page-number",
 "fixture": "phd",
 "pages": {
 "find": "^1[.] GİRİŞ$"
@@ -1587,8 +1587,8 @@
 },
 {
 "id": "phd-pagenum-arabic-baseline",
-"kind": "page_number_attr",
-"params": {
+"kind": "landmark_y",
+"params": {"kind": "page-number",
 "fixture": "phd",
 "pages": {
 "find": "^1[.] GİRİŞ$"

@@ -147,13 +147,14 @@
   },
   {
     "id": "page-numbering-size",
-    "kind": "page_number_attr",
+    "kind": "landmark_y",
     "params": {
       "pages": {
         "label": "arabic"
       },
       "attr": "size",
-      "source": "layout"
+      "source": "layout",
+      "kind": "page-number"
     },
     "expected": 11,
     "tolerance": 0.1,
@@ -628,13 +629,14 @@
   },
   {
     "id": "footer-measured-baseline-layout",
-    "kind": "page_number_attr",
+    "kind": "landmark_y",
     "params": {
       "source": "layout",
       "pages": {
         "label": "roman"
       },
-      "attr": "baseline"
+      "attr": "baseline",
+      "kind": "page-number"
     },
     "expected": 278.799,
     "tolerance": 0.25,

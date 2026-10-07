@@ -19,3 +19,5 @@
 | Abstract/thanks | abstract ≥250 words and ≤2 pages; single-spaced, no first indent; thanks ≤1 page | EXPLICIT ¶351, ¶366, ¶371-372 |
 
 Publication-derived ethics declaration wording is a source-supported conditional alternative; the fixture uses the official non-publication sample text ¶501-509. Do not claim that variant or source-defined image/table overflow behavior is independently validated unless checks cover it. Sample cover contains an exact three-line title. No implementation/export/Word PASS is claimed by this context pack; see checker output.
+
+- Phase 3 (2026-10-07): source-derived body-margin landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.

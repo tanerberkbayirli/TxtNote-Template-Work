@@ -8,6 +8,14 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 `src/lib/` named `thesis<Name>.test.js` (e.g. `AkuFbe`), `afsu-lee` = `thesis/templates/afsu-lee.test.js`, `-` = no test names the key.
 `npm test` runs `src/lib/*.test.js`. The unit test `thesisCapabilities` fails when `validation.js` accepts a key missing from this file.
 
+Layout evidence: `layoutPdf.js` emits a version-1 `ThesisLayoutReport` (schema.d.ts):
+top-left mm geometry, pt sizes, page labels/sections, anchored landmark IDs,
+special blocks/headings/captions/index rows/table rows and cells/footnotes/page numbers,
+exported fonts and per-page body baselines. Structural boxes inherit text metrics and
+are fragmented by physical page. `thesisLayoutReport.test.js` covers the pure model;
+checker gates validate the contract and independent PDF glyph samples. See README.md
+"Measured layout report" and `orchestration/tools/CHECKER.md` for selectors and limitations.
+
 ## 1. Template metadata and common keys
 | Need | Key | Values | Default | E P D | Test |
 |---|---|---|---|---|---|
@@ -152,8 +160,8 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | Unnamed-block terminal allowance | UNKNOWN: captions, quotes and list items outside named paragraphStyles use the column allowance; the accepted named-style fixture does not establish their own terminal leading | Documented residual |
 | Split-note horizontal placement | MEASURED residual: note text-box widths/indentation differ between editor and Word. The new split-note checks cover line counts, pages and baselines (four reference-page lines, maximum 0.016 mm); horizontal placement is outside that acceptance scope | Documented residual |
 | Justification follow-ups | Deferred B3.6: editor last-line preview remains compressed; custom Word line breaker is unimplemented. engine-word-justify remains 17 PASS / 3 FAIL (Arial 10/12 pt) in both final runs | Explicitly deferred |
-| Page-number landmark coverage | layout landmarks replace bottom-only searches where available; source PDFs still need explicit page-number locators | MOTOR 3.2 |
-| Layout report performance/conformance | versioned editor landmarks implemented; target regression/runtime gate verifies acceptance | MOTOR Phase 3 |
+| Official-source PDF locators | Engine page-number landmarks are covered; independent official-source PDFs still require explicit locators when authoring source expectations | Source authoring |
+
 | Template generation from official DOCX (`docx2spec`, `spec2template`) | templates are hand-written | MOTOR Phase 4 |
 
 Template validation also accepts generated-index kind `appendices` and section-level

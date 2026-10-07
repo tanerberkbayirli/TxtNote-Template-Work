@@ -150,6 +150,18 @@ Make the checker read positions from the engine instead of reverse-engineering P
 
 **Phase 3 exit:** checks for covered targets use landmarks; runtime per target ≤ 30 s without Word.
 
+2026-10-07 closure: **Phase 3 CLOSED**. All 16 university targets now use source-derived
+landmarks (73 checks; 60 migrated, 8 additive; existing expectations/tolerances preserved).
+Fresh non-Word whole-target wall time: 12.350–29.144 s, including export and checker overhead;
+large-target optimization reruns replace the exploratory over-budget results. Engine stress
+fixtures are regression gates, outside the university runtime scope. Stable IDs verified by
+second fresh exports; every variant receives report-schema and independent PDF glyph gates.
+Validation: frontend 730/730, checker 30/30, build PASS. Full 20-target / 34-variant Word run:
+68 report/PDF gates PASS; overall 1350 PASS / 39 FAIL / 32 INFO. The 39 source/variant/Arial
+failures remain visible in the separate university/deferred queue; global checker is not green.
+Evidence and exact timing scope: `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md`.
+Next: Phase 4.1 official-DOCX extraction; this closure does not mark university variants DONE.
+
 ---
 
 ## 6. Phase 4 — template generation from official DOCX
@@ -188,6 +200,8 @@ The scaling step toward ~200 universities.
 | 2026-10-04 | Phase 2 close B2 (2.3/2.4/2.7/2.8/2.9 measured): fixes — landscape DOCX orientation (docx lib swap), tab leaders on Word 1/600-in grid + same line box, mirror even-page shift = right−left (hanging was 8 mm off), `footer.trailingBlankLines` now lifts editor/PDF footer too; checker kinds `line_words_match`, `page_size_match`, `page_number_attr_match`, `fields_refresh_match`, `fields_cached_match`, `until` page selector, word2pdf `-Refreshed/-FieldDump`; new structure variants footer + fields | (this commit) | npm test 708/708, build OK, test_conformance 14/14. structure 126/0, parity 146/0; `--all --word` 9/10 real clean + aku-sbe export settle timeout (transient: reran 22/0 ×2 and 19/0 ×2). §13: 2.7/2.8/2.9 rows deleted; 2.3 residual MEASURED (positive first-line mirror: Word narrows even-page lines); 2.4 bidi/non-locale decimal UNKNOWN. Sonnet ≈294k, Haiku ≈60k | B3 pagination/fit + mirror first-line + settle flake |
 | 2026-10-04 | Session stopped (weekly limit 92%). Phase 0/1 closed; Phase 2 remaining = §2.11 batch B3 | (this commit) | — | §2.11 B3 (one Sonnet worker), then Phase 3 |
 | 2026-10-04 | Resumed stopped B3; mandatory Phase 0–2 motor gates CLOSED. Generic per-style leading, native-table exit gap, first-note-fragment handling, kept-reference note-area splitting, mirror first-line wrapping, bounded pagination/diagnostics and owned Word runtime provenance | 8176503 | 711 main + 6 extra frontend tests, 14 checker tests, 3 diagnostic tests PASS; build PASS. Two full real-export/Word runs: each 14 targets, 897 PASS / 3 deferred Arial FAIL / 17 INFO; pagefit 205/0, parity 146/0, structure 130/0, all 10 real targets clean; 42 exports no errors/retries. Independent audit complete; no tolerance/source-value changes. | Phase 3. B3.6/Arial and documented residuals remain; university variant completion is a separate queue. See MOTOR_PHASE2_CLOSE_2026-10-04 report and RESUME_2026-10-04_PHASE2. |
+
+| 2026-10-07 | Phase 3 CLOSED: layout landmarks, independent PDF gates, stable IDs, runtime | (this commit) | 16 universities 12.350–29.144 s; 73 landmark checks; 730 frontend + 30 checker tests/build PASS; full Word 1350 PASS / 39 separately open FAIL / 32 INFO, all 68 report/PDF gates PASS. See MOTOR_PHASE3_CLOSE_2026-10-07. | Phase 4.1; university variants/Arial remain separate |
 
 ---
 

@@ -401,3 +401,26 @@ export interface ThesisTemplate {
    */
   captionNumberingChoices?: Array<{ id: string; label: string; numbering: Partial<CaptionRule["numbering"]> }>;
 }
+
+/** Measured PDF draw operations, independent of source-derived expected values. */
+export interface ThesisLayoutRect {
+  xMm: number; yMm: number; widthMm: number; heightMm: number;
+}
+export interface ThesisLayoutTextOp extends ThesisLayoutRect {
+  id: string; landmarkId: string; ancestorIds: string[]; text: string; spaceAfter: boolean;
+  baselineMm: number; fontFamily: string; exportedFont: string | null; fontSizePt: number; clipped: boolean;
+}
+export interface ThesisLayoutLandmark extends ThesisLayoutRect {
+  /** Stable for the same template/content; duplicate anchors have deterministic instance suffixes. */
+  id: string; kind: string; sectionId: string; text: string; fragments: ThesisLayoutRect[];
+  firstBaselineMm: number | null; lastBaselineMm: number | null; linePitchMm: number | null;
+  fontFamily: string | null; exportedFonts: string[]; fontSizePt: number | null; lineCount: number;
+}
+export interface ThesisLayoutReport {
+  version: 1; origin: 'top-left'; units: { geometry: 'mm'; fontSize: 'pt' };
+  pages: Array<{
+    page: number; groupId: string; sectionIds: string[]; label: string; widthMm: number; heightMm: number;
+    landmarks: ThesisLayoutLandmark[]; textOps: ThesisLayoutTextOp[];
+    firstBodyBaselineMm: number | null; lastBodyBaselineMm: number | null;
+  }>;
+}

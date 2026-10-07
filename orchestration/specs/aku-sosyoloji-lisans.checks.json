@@ -469,5 +469,25 @@
       "locator": "paragraph 55: main/back matter uses Arabic numbering from 1"
     },
     "evidence": "EXPLICIT"
-  }
+  },
+{
+  "id": "layout.body-left-margin",
+  "kind": "landmark_x",
+  "params": {
+    "source": "layout",
+    "kind": "paragraph",
+    "pages": {
+      "label": "arabic"
+    },
+    "attr": "x0",
+    "agg": "min"
+  },
+  "expected": 45,
+  "tolerance": 0.5,
+  "source": {
+    "file": "AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+    "locator": "paragraphs 28-37, 'Tezin genel biçimi': left 4.5 cm"
+  },
+  "evidence": "EXPLICIT"
+}
 ]

@@ -25,6 +25,7 @@
 - CONFLICT: 1 (margins, ruled). UNKNOWN: heading typography/numbering, captions, bibliography typography, header/footer geometry.
 ## Status
 - FAIL; commits 8b78209, 51e8a33 (covers). Resume: needs independent-1.
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - independent-1 via checker after Word rerender of corrected fixture.
 ## Checker handoff (2026-10-04)

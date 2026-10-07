@@ -1,5 +1,69 @@
 [
  {
+  "id": "layout.headings.h1-baseline",
+  "kind": "landmark_y",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "kind": "heading",
+   "regex": "^\\d\\. [A-ZÇĞİÖŞÜ ]+( ve [A-ZÇĞİÖŞÜ ]+)?$",
+   "agg": "all"
+  },
+  "expected": 33.96,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+   "locator": "Word render of template: first body baseline 33.96 (30 mm top margin); same evidence as pdf.margins.first-baseline"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "layout.headings.h1-size",
+  "kind": "landmark_y",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "kind": "heading",
+   "regex": "^\\d\\. [A-ZÇĞİÖŞÜ ]+( ve [A-ZÇĞİÖŞÜ ]+)?$",
+   "attr": "size",
+   "agg": "all"
+  },
+  "expected": 12,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+   "locator": "H1 12 pt; same evidence as headings.h1-size"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "layout.headings.h1-spacing-after",
+  "kind": "landmark_gap",
+  "params": {
+   "pages": {
+    "find": "^1\\. GİRİŞ$",
+    "within": {
+     "label": "arabic"
+    }
+   },
+   "a": {
+    "id": "introduction:heading:introduction-source-0"
+   },
+   "b": {
+    "id": "introduction:paragraph:1"
+   }
+  },
+  "expected": 14.6,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+   "locator": "H1 14.6 mm before/after; same evidence as headings.h1-spacing-after"
+  },
+  "evidence": "MEASURED"
+ },
+ {
   "id": "pdf.pagesize",
   "kind": "page_size",
   "params": {},
@@ -138,13 +202,14 @@
  },
  {
   "id": "pdf.pagenum.centre-x",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "cx",
-   "source": "layout"
+   "source": "layout",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -156,13 +221,14 @@
  },
  {
   "id": "pdf.pagenum.size",
-  "kind": "page_number_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "size",
-   "source": "layout"
+   "source": "layout",
+   "kind": "page-number"
   },
   "expected": 10,
   "tolerance": 0.1,
@@ -174,13 +240,14 @@
  },
  {
   "id": "pdf.pagenum.baseline",
-  "kind": "page_number_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "baseline",
-   "source": "layout"
+   "source": "layout",
+   "kind": "page-number"
   },
   "expected": 283.8,
   "tolerance": 0.5,
@@ -540,7 +607,7 @@
  },
  {
   "id": "headings.h1-size",
-  "kind": "line_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
@@ -548,7 +615,8 @@
    "regex": "^\\d\\. [A-ZÇĞİÖŞÜ ]+( ve [A-ZÇĞİÖŞÜ ]+)?$",
    "attr": "size",
    "agg": "all",
-   "source": "layout"
+   "source": "layout",
+   "kind": "heading"
   },
   "expected": 12,
   "tolerance": 0.1,
@@ -582,7 +650,7 @@
  },
  {
   "id": "caption.size",
-  "kind": "line_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
@@ -590,7 +658,8 @@
    "regex": "^(Çizelge|Şekil|Resim) \\d+\\.\\d+ ",
    "attr": "size",
    "agg": "all",
-   "source": "layout"
+   "source": "layout",
+   "kind": "caption"
   },
   "expected": 11,
   "tolerance": 0.1,

@@ -26,6 +26,7 @@
 - self-2 (v6, 2026-10-02): page-number centre 104.993-105.038 vs 105.00 mm on 66 pages - supersedes v5 +9.99 mm fail. UNKNOWN: footer distance, cover font sizes, signatory typesetting.
 ## Status
 - IN_PROGRESS; validation PENDING (independent-1 FAIL B1-B5; v6 self fixes some); commit 4ff8e65; engine-fix-4 shared gaps open.
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - Fix B1/B2 template items; engine-fix-4 for B3-B5; then checker run.
 ## Commands

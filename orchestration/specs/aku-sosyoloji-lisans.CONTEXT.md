@@ -37,3 +37,5 @@
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.
 ## Do NOT read
 - Guide DOCX; orchestration/artifacts/aku-sosyoloji-lisans/source/{pg*.png,v6/v7.png,g.docx,guide.pdf,text.txt,pict.txt}. Other targets' specs/validation folders.
+
+- Phase 3 (2026-10-07): source-derived body-margin landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.

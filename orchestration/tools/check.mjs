@@ -9,24 +9,51 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync, append
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { availableParallelism } from 'node:os';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, "../..");
 const args = process.argv.slice(2);
+const driverStarted = performance.now();
 
 // --all: run every target that has specs/<id>.checks.json (sequentially, other flags passed through),
 // print one summary line per target, exit 1 if any target has a FAIL (or errors).
 if (args.includes("--all")) {
   const rest = args.filter((a) => a !== "--all");
-  const ids = readdirSync(join(root, "orchestration/specs")).filter((f) => f.endsWith(".checks.json")).map((f) => f.replace(/\.checks\.json$/, "")).sort();
+  const outIndex = rest.indexOf('--out');
+  const allOut = outIndex < 0 ? null : rest.splice(outIndex, 2)[1];
+  const manifestIndex = rest.indexOf('--manifest');
+  const manifestPath = manifestIndex < 0 ? null : resolve(root, rest.splice(manifestIndex, 2)[1]);
+  const manifest = { startedAt: new Date().toISOString(), wordRequested: rest.includes('--word'), targets: [] };
+  let ids = readdirSync(join(root, "orchestration/specs")).filter((f) => f.endsWith(".checks.json")).map((f) => f.replace(/\.checks\.json$/, "")).sort();
+  const targetIndex = rest.indexOf('--targets');
+  if (targetIndex >= 0) {
+    const requested = rest.splice(targetIndex, 2)[1]?.split(',') || [];
+    if (!requested.length || requested.some(id => !ids.includes(id))) {
+      console.error('--targets requires comma-separated registered target IDs'); process.exit(2);
+    }
+    ids = ids.filter(id => requested.includes(id));
+  }
   let bad = 0;
   for (const t of ids) {
-    const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), "--target", t, ...rest], { encoding: "utf8", cwd: root });
+    const started = performance.now();
+    const r = spawnSync(process.execPath, [fileURLToPath(import.meta.url), "--target", t, ...rest,
+      ...(allOut ? ['--out', join(allOut, t)] : [])], { encoding: "utf8", cwd: root });
     const line = (r.stdout || "").split(/\r?\n/).find((l) => l.startsWith(`${t}:`)) || `${t}: ERROR exit ${r.status} ${(r.stderr || r.stdout || "").trim().split(/\r?\n/).pop() || ""}`;
     console.log(line);
+    const reportPath = line.match(/ -> (.+)$/)?.[1];
+    const report = reportPath && existsSync(resolve(root, reportPath)) ? JSON.parse(readFileSync(resolve(root, reportPath), 'utf8')) : null;
+    manifest.targets.push({ target: t, exitCode: r.status, commandSeconds: +( (performance.now() - started) / 1000).toFixed(3),
+      report: reportPath || null, counts: report?.counts || {}, measurementSeconds: report?.measurementSeconds ?? null,
+      error: report ? null : (r.stderr || r.stdout || '').trim().slice(-1000) });
     if (r.status !== 0) bad++;
   }
   console.log(`--all: ${ids.length} targets, ${bad} with FAIL/error`);
+  if (manifestPath) {
+    mkdirSync(dirname(manifestPath), { recursive: true });
+    writeFileSync(manifestPath, JSON.stringify({ ...manifest, finishedAt: new Date().toISOString(),
+      commandSeconds: +((performance.now() - driverStarted) / 1000).toFixed(3) }, null, 2));
+  }
   process.exit(bad ? 1 : 0);
 }
 
@@ -36,6 +63,7 @@ for (let i = 0; i < args.length; i++) {
   if (a === "--target") opt.target = args[++i];
   else if (a === "--fixture") opt.fixture = args[++i];
   else if (a === "--word") opt.word = true;
+  else if (a === "--verify-layout-ids") opt.verifyLayoutIds = true;
   else if (a === "--only") opt.only = args[++i];
   else if (a === "--out") opt.out = args[++i];
   else if (a === "--build-reference") opt.buildReference = true;
@@ -44,6 +72,10 @@ for (let i = 0; i < args.length; i++) {
   else { console.error(`unknown argument ${a}`); process.exit(2); }
 }
 if (!opt.target) { console.error("usage: check.mjs --target <id> [--fixture f] [--word] [--only ids|failed] [--out dir] [--no-export pdf docx] [--build-reference]"); process.exit(2); }
+if (opt.verifyLayoutIds && opt.noExport) {
+  console.error('--verify-layout-ids requires two fresh exports; cannot combine with --no-export');
+  process.exit(2);
+}
 const id = opt.target;
 const specs = join(root, "orchestration/specs");
 const outDir = resolve(root, opt.out || `orchestration/validation/${id}`);
@@ -113,6 +145,8 @@ if (!Array.isArray(checks)) checks = checks.checks;
 const allVariants = [...new Set(checks.filter(c => c.kind !== "note").map(c => c.params?.fixture || c.fixture || "default"))];
 for (const fixture of allVariants) {
   checks.push({ id: `engine-layout-pdf-${fixture}`, params: { fixture } });
+  checks.push({ id: `engine-layout-report-${fixture}`, params: { fixture } });
+  if (opt.verifyLayoutIds) checks.push({ id: `engine-layout-ids-${fixture}`, params: { fixture } });
   if (opt.word) for (const kind of ["page_count_match", "page_labels_match"]) checks.push({ id: `engine-${kind}-${fixture}`, params: { fixture } });
   if (opt.word && checks.some(c => c.kind === "line_pitch" && (c.params?.fixture || "default") === fixture)) checks.push({ id: `engine-body-pitch-${fixture}`, params: { fixture } });
 }
@@ -153,6 +187,7 @@ const exportEnv = { ...env, PLAYWRIGHT_MODULE: process.env.PLAYWRIGHT_MODULE || 
 const TRANSIENT_EXPORT = /Failed to fetch dynamically imported module|EBUSY|Target page, context or browser has been closed|settle timeout|sayfalaması kararlı hale gelmedi|editor pagination is not exportable/;
 const vmap = {};
 let base = null;
+const exportJobs = [];
 for (const v of variants) {
   const prefix = join(runDir, v);
   vmap[v] = { pdf: `${prefix}.pdf`, docx: `${prefix}.docx`, layout: `${prefix}.layout.json`, fixture: fixtureFor(v) };
@@ -162,18 +197,52 @@ for (const v of variants) {
   }
   if (opt.noExport) { vmap[v].pdf = vmap[v].docx = null; vmap[v].note = "--no-export given only for the default variant"; continue; }
   base ??= await ensureBase();
-  const runExport = () => spawnSync("node", [join(here, "export.mjs"), fixtureFor(v), prefix, base], { encoding: "utf8", env: exportEnv, cwd: root, timeout: 900000 });
-  let r = runExport();
+  exportJobs.push({ v, prefix });
+  if (opt.verifyLayoutIds) {
+    vmap[v].repeatLayout = `${prefix}.repeat.layout.json`;
+    exportJobs.push({ v, prefix: `${prefix}.repeat` });
+  }
+}
+async function runExportJob({ v, prefix }) {
+  const runExport = () => new Promise((resolveResult) => {
+    const child = spawn(process.execPath, [join(here, 'export.mjs'), fixtureFor(v), prefix, base], { env: exportEnv, cwd: root });
+    let stdout = '', stderr = '', done = false;
+    const finish = result => { if (!done) { done = true; clearTimeout(timer); resolveResult(result); } };
+    const timer = setTimeout(() => {
+      if (process.platform === 'win32') spawnSync('taskkill', ['/PID', String(child.pid), '/T', '/F']);
+      else child.kill('SIGTERM');
+      finish({ status: 3, stdout, stderr: stderr + '\nExport exceeded 900 s' });
+    }, 900000);
+    child.stdout.on('data', data => { stdout += data; });
+    child.stderr.on('data', data => { stderr += data; });
+    child.on('error', error => finish({ status: 3, stdout, stderr: stderr + error.message }));
+    child.on('close', status => finish({ status, stdout, stderr }));
+  });
+  let r = await runExport();
   log(`export ${v}: status ${r.status}\n${(r.stdout || "").slice(-600)}\n${(r.stderr || "").slice(-1500)}`);
   // One retry for transient infrastructure or settling failures. A repeated editor refusal
   // remains an export error; checker FAIL rows are never retried or suppressed.
   if (r.status !== 0 && TRANSIENT_EXPORT.test(r.stderr || "")) {
     log(`export ${v}: transient failure, retrying once`);
-    r = runExport();
+    r = await runExport();
     log(`export ${v} (retry): status ${r.status}\n${(r.stdout || "").slice(-600)}\n${(r.stderr || "").slice(-1500)}`);
   }
-  if (r.status !== 0) { console.error(`export of variant '${v}' failed (see ${logFile}):\n${(r.stderr || r.stdout || "").trim().slice(-400)}`); process.exit(3); }
+  if (r.status !== 0) return `export of variant '${v}' failed (see ${logFile}):\n${(r.stderr || r.stdout || '').trim().slice(-400)}`;
+  return null;
 }
+// Independent browser profiles and output prefixes; Word rendering below stays serialized.
+const defaultJobs = opt.word ? 1 : Math.max(1, Math.min(5, availableParallelism() - 1));
+const requestedJobs = Number(process.env.CHECK_EXPORT_JOBS || defaultJobs);
+const jobCount = Number.isInteger(requestedJobs) ? Math.max(1, Math.min(5, requestedJobs)) : 1;
+let nextJob = 0;
+const exportErrors = [];
+await Promise.all(Array.from({ length: Math.min(jobCount, exportJobs.length) }, async () => {
+  while (nextJob < exportJobs.length) {
+    const error = await runExportJob(exportJobs[nextJob++]);
+    if (error) exportErrors.push(error);
+  }
+}));
+if (exportErrors.length) { console.error(exportErrors.join('\n')); process.exit(3); }
 
 // ---------------------------------------------------------------- Word render
 // The field-refresh render (second Word export after updating all fields) is made only for targets whose checks use it.
@@ -200,6 +269,8 @@ for (const v of variants) {
 
 // ---------------------------------------------------------------- evaluate
 const a = ["run", "--target", id, "--checks", checksPath, "--variants", JSON.stringify(vmap), "--reference", refDir, "--out", outDir];
+env.CHECK_DRIVER_ELAPSED_SECONDS = String((performance.now() - driverStarted) / 1000);
+env.CHECK_EXPORT_MODE = opt.noExport ? 'existing-artifacts' : 'fresh';
 if (only) a.push("--only", only);
 if (opt.word) a.push("--word-requested");
 const r = py(a);

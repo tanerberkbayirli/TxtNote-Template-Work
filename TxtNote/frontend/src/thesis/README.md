@@ -2,6 +2,30 @@
 
 `schema.d.ts` is schema v1. All lengths are millimetres, all font sizes and paragraph spacing are points, and line height is a multiplier. `validation.js` checks bundled definitions at load time. `engine.js` resolves global rules plus section overrides into one document model. The thesis editor, print HTML, searchable PDF and DOCX consume that model. The old AcademicEditor and its exporters remain separate.
 
+### Measured layout report (Phase 3)
+
+The layout PDF writer emits `ThesisLayoutReport` (types in `schema.d.ts`) through
+`onLayoutReport`; the real export harness saves it under `engineLayout` in
+`<export>.layout.json`. Version 1 uses a top-left page origin, mm geometry and pt
+font sizes. Physical page numbers are one-based, with printed labels kept separately.
+Each page records section IDs, landmark bounds, text excerpts, actual exported font
+identities, first/last baselines, line count and median baseline pitch. Single-line or
+box-only landmarks have an explicit null pitch; no font is inferred for an empty box.
+
+Landmarks include special blocks, headings, captions, index rows, table rows/cells,
+footnotes/areas and page numbers. Structural containers inherit their descendants'
+text metrics without duplicating PDF text operations. Spanning boxes are clipped
+into each physical sheet, excluding page gaps. Body baseline extrema exclude text
+inside table cells, special blocks and footnotes. IDs use section/kind/source anchor
+or a deterministic ordinal; repeated anchors receive an instance suffix. They are
+stable across exports of identical input, not guaranteed across arbitrary content edits.
+
+The checker uses these measured landmarks with source-derived expected values.
+Every run validates the report contract and independently samples actual PDF glyph
+origins at 0.25 mm; font embedding and Word checks continue to inspect actual files.
+Use `check.mjs --verify-layout-ids` for an independent repeat export/ID comparison.
+This diagnostic does not alter editor pagination or PDF/DOCX drawing semantics.
+
 ### Special pages (Task 8)
 
 Cover, approval, declaration/ethics and similar pages are ordinary template sections with a `blocks` layout; there is no second page list and no per-university component. `specialPages.js` is the only interpreter: `resolveSpecialPage` turns blocks + `thesis.values` metadata into a render tree (final text and style per node), `specialPageHtml`/`specialPageCss` render it (no style attributes, CSP-safe) and `flattenSpecialPage` feeds the current PDF/DOCX writers. Block types: `text` (static, `{{KEY}}` still accepted), `metadata` (`field`, `prefix`, `suffix`, `fallback`; date fields are localized), `spacer` (`heightMm`), `separator` (`widthPercent` = line length in a column, `thicknessPt`, `align`) and `group` (`direction: column|row`, `gapMm`, inherited `style`, children may set `widthPercent` = their share of the row). In a row a separator fills its own box. Row shares may shrink but never grow past the content box (`specialPageRowWidths` gives the same widths to DOCX), so a row never crosses the page margin. Any block may set `marginTopMm/marginBottomMm`. Typography inherits template body → section `overrides.body` → group `style` → block `style`. Margins and numbering use the section's existing `overrides.page`; order uses `order`/array position and optional pages use `status: "optional"`. A section with `blocks` is always its own physical page group, so it takes part in the page model and roman/arabic restarts like any other group, while its content never enters an editable body. Metadata edits recompile the model, so the page updates live; the layout is never copied into the note. Covers use metadata blocks; the test-only fixtures in `src/lib/thesisFixtures.js` exercise cover → approval (counted, unnumbered, wider top margin) → ethics and cover → declaration → optional approval.

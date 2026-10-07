@@ -2,7 +2,7 @@
 ## Identity
 - Registry id(s): `aku-matematik-lisans-tr-v1`
 - Template module: `TxtNote/frontend/src/thesis/templates/aku-matematik.js` (exports: akuMatematikLisans)
-- Spec: `orchestration/specs/aku-matematik-lisans.json`; checks: `orchestration/specs/aku-matematik-lisans.checks.json` (not yet); progress report: `orchestration/reports/aku-matematik-lisans.md`
+- Spec: `orchestration/specs/aku-matematik-lisans.json`; checks: `orchestration/specs/aku-matematik-lisans.checks.json`; progress report: `orchestration/reports/aku-matematik-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx`
 - Template DOCX only (2025-10-21; XML = primary). No guide PDF; approval/ethics/abstract pages are absent from the template (not generated).
@@ -29,8 +29,10 @@
 - CONFLICT: 5 (all ruled). UNKNOWN: 8 (h2-h4 caps, row height, footnotes, appendices, CV, multi-line title).
 ## Status
 - DONE (Tier 1, AGENTS §28A) 2026-10-03: checker --word check-20261003-1617 PASS 46 / FAIL 0. 0.1 cause: checker fixture lacked the symbols table (no engine regression); fixture now a table with authored widths <col data-col-width> (new engine capability).
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - Done. Reopen only if `check.mjs --all` regresses.
+- Phase 3 pilot (2026-10-07): three additive landmark checks (H1 baseline/size, introduction heading-to-body gap) reuse existing source expectations/tolerances. Fresh default export: 7/7 selected checks PASS, including three existing PDF checks and independent glyph consistency. Evidence: `orchestration/reports/MOTOR_PHASE3_PILOT_2026-10-07.md`. Full target/Word regression and whole-target runtime gate were not rerun or claimed; historical next step superseded by the Phase 3 closure above.
 ## Commands
 - `node orchestration/tools/check.mjs --target aku-matematik-lisans` ; `--only failed` after a fix.
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.

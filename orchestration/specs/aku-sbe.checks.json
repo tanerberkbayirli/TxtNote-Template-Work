@@ -216,13 +216,14 @@
  },
  {
   "id": "page-numbering-centre",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "cx",
-   "source": "layout"
+   "source": "layout",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -234,13 +235,14 @@
  },
  {
   "id": "page-numbering-size",
-  "kind": "page_number_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "size",
-   "source": "layout"
+   "source": "layout",
+   "kind": "page-number"
   },
   "expected": 12,
   "tolerance": 0.1,
@@ -568,14 +570,15 @@
  },
  {
   "id": "page-numbering-centre-sanatta-yeterlik-tr",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "cx",
    "source": "layout",
-   "fixture": "sanatta-yeterlik-tr"
+   "fixture": "sanatta-yeterlik-tr",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -587,14 +590,15 @@
  },
  {
   "id": "page-numbering-size-sanatta-yeterlik-tr",
-  "kind": "page_number_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "size",
    "source": "layout",
-   "fixture": "sanatta-yeterlik-tr"
+   "fixture": "sanatta-yeterlik-tr",
+   "kind": "page-number"
   },
   "expected": 12,
   "tolerance": 0.1,
@@ -882,14 +886,15 @@
  },
  {
   "id": "page-numbering-centre-master-en",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "cx",
    "source": "layout",
-   "fixture": "master-en"
+   "fixture": "master-en",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -901,14 +906,15 @@
  },
  {
   "id": "page-numbering-size-master-en",
-  "kind": "page_number_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "size",
    "source": "layout",
-   "fixture": "master-en"
+   "fixture": "master-en",
+   "kind": "page-number"
   },
   "expected": 12,
   "tolerance": 0.1,
@@ -1196,14 +1202,15 @@
  },
  {
   "id": "page-numbering-centre-phd-en",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "cx",
    "source": "layout",
-   "fixture": "phd-en"
+   "fixture": "phd-en",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1215,14 +1222,15 @@
  },
  {
   "id": "page-numbering-size-phd-en",
-  "kind": "page_number_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "size",
    "source": "layout",
-   "fixture": "phd-en"
+   "fixture": "phd-en",
+   "kind": "page-number"
   },
   "expected": 12,
   "tolerance": 0.1,
@@ -1510,14 +1518,15 @@
  },
  {
   "id": "page-numbering-centre-phd-tr",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "cx",
    "source": "layout",
-   "fixture": "phd-tr"
+   "fixture": "phd-tr",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1529,14 +1538,15 @@
  },
  {
   "id": "page-numbering-size-phd-tr",
-  "kind": "page_number_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "size",
    "source": "layout",
-   "fixture": "phd-tr"
+   "fixture": "phd-tr",
+   "kind": "page-number"
   },
   "expected": 12,
   "tolerance": 0.1,
@@ -1695,14 +1705,16 @@
  },
  {
   "id": "table-header-f-centered",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "regex": "^f$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1714,14 +1726,16 @@
  },
  {
   "id": "table-number-centered",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "regex": "^40$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1733,14 +1747,16 @@
  },
  {
   "id": "table-percent-centered",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "regex": "^13,3$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 155,
   "tolerance": 0.5,
@@ -1752,7 +1768,7 @@
  },
  {
   "id": "table-header-f-centered-sanatta-yeterlik-tr",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "sanatta-yeterlik-tr",
    "pages": {
@@ -1760,7 +1776,9 @@
    },
    "regex": "^f$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1772,7 +1790,7 @@
  },
  {
   "id": "table-number-centered-sanatta-yeterlik-tr",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "sanatta-yeterlik-tr",
    "pages": {
@@ -1780,7 +1798,9 @@
    },
    "regex": "^40$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1792,7 +1812,7 @@
  },
  {
   "id": "table-percent-centered-sanatta-yeterlik-tr",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "sanatta-yeterlik-tr",
    "pages": {
@@ -1800,7 +1820,9 @@
    },
    "regex": "^13,3$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 155,
   "tolerance": 0.5,
@@ -1812,7 +1834,7 @@
  },
  {
   "id": "table-header-f-centered-master-en",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "master-en",
    "pages": {
@@ -1820,7 +1842,9 @@
    },
    "regex": "^f$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1832,7 +1856,7 @@
  },
  {
   "id": "table-number-centered-master-en",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "master-en",
    "pages": {
@@ -1840,7 +1864,9 @@
    },
    "regex": "^40$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1852,7 +1878,7 @@
  },
  {
   "id": "table-percent-centered-master-en",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "master-en",
    "pages": {
@@ -1860,7 +1886,9 @@
    },
    "regex": "^13,3$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 155,
   "tolerance": 0.5,
@@ -1872,7 +1900,7 @@
  },
  {
   "id": "table-header-f-centered-phd-en",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "phd-en",
    "pages": {
@@ -1880,7 +1908,9 @@
    },
    "regex": "^f$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1892,7 +1922,7 @@
  },
  {
   "id": "table-number-centered-phd-en",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "phd-en",
    "pages": {
@@ -1900,7 +1930,9 @@
    },
    "regex": "^40$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1912,7 +1944,7 @@
  },
  {
   "id": "table-percent-centered-phd-en",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "phd-en",
    "pages": {
@@ -1920,7 +1952,9 @@
    },
    "regex": "^13,3$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 155,
   "tolerance": 0.5,
@@ -1932,7 +1966,7 @@
  },
  {
   "id": "table-header-f-centered-phd-tr",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "phd-tr",
    "pages": {
@@ -1940,7 +1974,9 @@
    },
    "regex": "^f$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1952,7 +1988,7 @@
  },
  {
   "id": "table-number-centered-phd-tr",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "phd-tr",
    "pages": {
@@ -1960,7 +1996,9 @@
    },
    "regex": "^40$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 105,
   "tolerance": 0.5,
@@ -1972,7 +2010,7 @@
  },
  {
   "id": "table-percent-centered-phd-tr",
-  "kind": "line_attr",
+  "kind": "landmark_x",
   "params": {
    "fixture": "phd-tr",
    "pages": {
@@ -1980,7 +2018,9 @@
    },
    "regex": "^13,3$",
    "attr": "cx",
-   "agg": "all"
+   "agg": "all",
+   "kind": "table-cell",
+   "source": "layout"
   },
   "expected": 155,
   "tolerance": 0.5,
