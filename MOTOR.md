@@ -176,6 +176,12 @@ The scaling step toward ~200 universities.
 
 **Phase 4 exit:** pilot university reaches Tier 1 PASS with measured cost recorded.
 
+2026-10-07 start: **Phase 4 OPEN**. Phase 4.1 XML extractor implemented and tested on
+ADU Sagbil official 2026 DOCX: 3 sections, 96 styles, 12 tables, 1 PAGE field; 0.087606 s
+XML extraction. Source hashes/locators and unknowns retained. Word-render geometry,
+source conflicts, generation and Tier 1 pilot remain pending; no Phase 4 exit claim.
+See `orchestration/reports/MOTOR_PHASE4_START_2026-10-07.md`.
+
 ---
 
 ## 7. Progress log (append one line per checkpoint)
@@ -202,6 +208,8 @@ The scaling step toward ~200 universities.
 | 2026-10-04 | Resumed stopped B3; mandatory Phase 0–2 motor gates CLOSED. Generic per-style leading, native-table exit gap, first-note-fragment handling, kept-reference note-area splitting, mirror first-line wrapping, bounded pagination/diagnostics and owned Word runtime provenance | 8176503 | 711 main + 6 extra frontend tests, 14 checker tests, 3 diagnostic tests PASS; build PASS. Two full real-export/Word runs: each 14 targets, 897 PASS / 3 deferred Arial FAIL / 17 INFO; pagefit 205/0, parity 146/0, structure 130/0, all 10 real targets clean; 42 exports no errors/retries. Independent audit complete; no tolerance/source-value changes. | Phase 3. B3.6/Arial and documented residuals remain; university variant completion is a separate queue. See MOTOR_PHASE2_CLOSE_2026-10-04 report and RESUME_2026-10-04_PHASE2. |
 
 | 2026-10-07 | Phase 3 CLOSED: layout landmarks, independent PDF gates, stable IDs, runtime | (this commit) | 16 universities 12.350–29.144 s; 73 landmark checks; 730 frontend + 30 checker tests/build PASS; full Word 1350 PASS / 39 separately open FAIL / 32 INFO, all 68 report/PDF gates PASS. See MOTOR_PHASE3_CLOSE_2026-10-07. | Phase 4.1; university variants/Arial remain separate |
+
+| 2026-10-07 | Phase 4 started: 4.1 official-DOCX XML extraction | (this commit) | ADU Sagbil official source: 3 sections/96 styles/12 tables/1 PAGE; extraction 0.087606 s; 6 extraction + 30 checker tests PASS. Full-pilot token telemetry unavailable; no budget acceptance claimed. | Word-render geometry/provenance, then 4.2 mapper + checker pilot; Phase 4 OPEN |
 
 ---
 

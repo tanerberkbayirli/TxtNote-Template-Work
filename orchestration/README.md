@@ -39,3 +39,7 @@ Kaynak kuralları, kontrol araçları, test tanımları ve teknik sonuç raporla
 ## Active policy 2026-10-03
 
 Doğrulama politikası: resmi kaynaklara dayanmak, eksik kanıtı `UNKNOWN` olarak kaydetmek, gerçek export üzerinden ölçmek, açık ölçüler için en fazla 0,5 mm (güvenilir ölçümlerde tercihen 0,25 mm) tolerans uygulamak ve kullanılan fontu doğrulamak. Kaynak çatışmaları belgelenir; font ikamesi tam uygunluk sayılmaz. Paylaşılan motor değişikliklerinde regresyon kontrolü yapılır. Üretilen belgeler geçici çıktı, kaynak temelli kurallar ve sonuç kayıtları ise teknik kanıt olarak ele alınır.
+
+## Resmî DOCX kaynak çıkarımı (Faz 4)
+
+`docx2spec.py`, resmî DOCX XML özelliklerini kaynak konumları ve SHA256 ile çıkarır. Kullanım ve kalan adımlar: [DOCX çıkarım belgesi](tools/DOCX_EXTRACTION.md). İlk ADÜ Sağlık Bilimleri çıkarımı tamamlandı; Word konum ölçümleri, şablon üretimi ve pilot uygunluk kontrolü henüz tamamlanmadı.

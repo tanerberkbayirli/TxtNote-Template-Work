@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-04",
+  "updatedAt": "2026-10-07",
   "maxAttempts": 3,
   "policy": "orchestration/README.md#active-policy-2026-10-03",
   "universityOrder": [
@@ -54,7 +54,7 @@
       "commit": null
     },
     "adu": {
-      "status": "PENDING",
+      "status": "IN_PROGRESS",
       "targets": [
         "adu-fbe",
         "adu-sbe",
@@ -193,12 +193,17 @@
     }
   },
   "currentUniversity": "adu",
-  "currentTarget": "adu-ziraat-lisans",
-  "currentPhase": "ADU Ziraat undergraduate source extraction and implementation; user authorized generic odd-page section-start capability on 2026-10-04. MOTOR Phase 0–2 mandatory gate remains closed; Phase 3 and documented deferrals are separate.",
+  "currentTarget": "adu-sagbil",
+  "currentPhase": "MOTOR Phase 4 OPEN: 4.1 official-DOCX XML extraction checkpoint on ADU Sagbil; Word-render geometry and draft generation pending. Phase 3 closed at 9aee357; university/deferred failures remain separate.",
   "enginePlan": {
     "phase0": "DONE (historical source/checker checkpoints re-audited)",
     "phase1": "DONE (catalog/split checkpoints; current unit/build regression clean)",
     "phase2": "MANDATORY_GATE_PASS_WITH_DOCUMENTED_DEFERRALS",
+    "phase3": "CLOSED (16 university targets <=30 s; report/PDF gates PASS; separate university/deferred FAIL rows retained)",
+    "phase3Checkpoint": "9aee357",
+    "phase3ReportPath": "orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md",
+    "phase4": "IN_PROGRESS (4.1 XML extraction only; render geometry and 4.2-4.5 pending)",
+    "phase4ReportPath": "orchestration/reports/MOTOR_PHASE4_START_2026-10-07.md",
     "codeCheckpoint": "8176503",
     "reportPath": "orchestration/reports/MOTOR_PHASE2_CLOSE_2026-10-04.md",
     "regressionManifests": ["orchestration/validation/phase2-close/final-run-1.json", "orchestration/validation/phase2-close/final-run-2.json"],
@@ -214,7 +219,7 @@
     "attempt": 5,
     "verdict": "FAIL"
   },
-  "lastCommit": "8176503",
+  "lastCommit": "9aee357",
   "environment": {
     "host": "Current Windows host. Microsoft Word COM is available for controlled source-copy and generated-DOCX validation; use one owned instance, record PID, and Quit in finally. Do not force-terminate unknown or other-owned processes. Do not assume Linux/LibreOffice tooling.",
     "workers": "GPT-6 Luna; maximum 2 concurrent workers.",
@@ -456,16 +461,17 @@
       "updatedAt": "2026-10-02"
     },
     "adu-sagbil": {
-      "analysis": "PENDING",
+      "analysis": "IN_PROGRESS",
       "implementation": "PENDING",
       "validation": "PENDING",
       "attempts": 0,
-      "status": "PENDING",
+      "status": "IN_PROGRESS",
       "lastError": null,
       "specPath": null,
-      "reportPath": null,
+      "reportPath": "orchestration/reports/MOTOR_PHASE4_START_2026-10-07.md",
       "commit": null,
-      "updatedAt": "2026-10-02"
+      "updatedAt": "2026-10-07",
+      "extractionPath": "orchestration/specs/adu-sagbil.extracted.json"
     },
     "adu-tip": {
       "analysis": "PENDING",
