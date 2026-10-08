@@ -10,6 +10,7 @@ dist-installer/
 *.log
 .DS_Store
 Thumbs.db
+.test-tmp/
 
 __pycache__/
 *.pyc
@@ -40,3 +41,5 @@ __pycache__/
 /orchestration/validation/**/*.txt
 /orchestration/validation/**/*.tsv
 /orchestration/validation/*/run/
+/orchestration/validation/**/run/
+/orchestration/validation/**/*.layout.json

@@ -36,6 +36,8 @@ Word kontrolleri Microsoft Word ve uygun yerel ortam gerektirir. Araçların ba�
 
 Kaynak kuralları, kontrol araçları, test tanımları ve teknik sonuç raporları sürümlenir. İç çalışma talimatları, devam notları, bağımlılık klasörleri ve yeniden üretilebilir geçici çıktılar GitHub sunumuna dahil edilmez.
 
+İç içe doğrulama klasörlerindeki `run/` dizinleri ve ham `*.layout.json` çıktıları da geçicidir. Bunlar kontrol aracıyla yeniden üretilir; kaynak `specs/` girdileri, resmî referanslar ve sonuç raporları depoda korunur. Örneğin bir hedefin güncel çıktıları `node orchestration/tools/check.mjs --target <hedef-kimliği>` komutuyla oluşturulur. Yerel tarayıcı test profilleri ve önbellekleri `.test-tmp/` altında tutulur ve sürümlenmez.
+
 ## Active policy 2026-10-03
 
 Doğrulama politikası: resmi kaynaklara dayanmak, eksik kanıtı `UNKNOWN` olarak kaydetmek, gerçek export üzerinden ölçmek, açık ölçüler için en fazla 0,5 mm (güvenilir ölçümlerde tercihen 0,25 mm) tolerans uygulamak ve kullanılan fontu doğrulamak. Kaynak çatışmaları belgelenir; font ikamesi tam uygunluk sayılmaz. Paylaşılan motor değişikliklerinde regresyon kontrolü yapılır. Üretilen belgeler geçici çıktı, kaynak temelli kurallar ve sonuç kayıtları ise teknik kanıt olarak ele alınır.
