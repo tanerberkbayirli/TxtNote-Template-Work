@@ -1,0 +1,422 @@
+[
+ {
+  "id": "T01-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J01",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T01: Arial 10 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "T01-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J01",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T01: Arial 10 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "T02-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J02",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T02: Times New Roman 12 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "T02-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J02",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T02: Times New Roman 12 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "T03-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J03",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T03: Calibri 11 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "T03-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J03",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T03: Calibri 11 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "T04-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J04",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T04: Arial 14 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "T04-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J04",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "T04: Arial 14 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V01-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J01",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V01: Times New Roman 10 pt, tr-TR, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V01-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J01",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V01: Times New Roman 10 pt, tr-TR, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V02-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J02",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V02: Calibri 12 pt, en-US, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V02-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J02",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V02: Calibri 12 pt, en-US, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V03-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J03",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V03: Arial 11 pt, tr-TR, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V03-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J03",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V03: Arial 11 pt, tr-TR, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V04-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J04",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V04: Times New Roman 14 pt, en-US, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V04-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J04",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V04: Times New Roman 14 pt, en-US, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V05-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J05",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V05: Calibri 10 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V05-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J05",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V05: Calibri 10 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V06-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J06",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V06: Arial 12 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V06-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J06",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V06: Arial 12 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V07-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J07",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V07: Times New Roman 11 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V07-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J07",
+   "fixture": "default",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V07: Times New Roman 11 pt, tr-TR, 240 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V08-line-breaks",
+  "kind": "line_breaks_match",
+  "params": {
+   "tag": "J08",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "expected": "Word line texts",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V08: Calibri 14 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "V08-last-line-words",
+  "kind": "last_line_words_match",
+  "params": {
+   "tag": "J08",
+   "fixture": "wide",
+   "includeMeasurements": true,
+   "caseScope": "tagged",
+   "caseFooterRegex": "^\\d{1,3}$"
+  },
+  "tolerance": 0.25,
+  "expected": "Word last-line glyph word x positions",
+  "source": {
+   "file": "real Word render of phase 5.2 frozen corpus fixture",
+   "locator": "V08: Calibri 14 pt, en-US, 360 pt measure"
+  },
+  "evidence": "MEASURED"
+ }
+]

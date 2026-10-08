@@ -3,15 +3,18 @@ import assert from 'node:assert/strict';
 import { clampResizeRect, DRAG_THRESHOLD_PX, pageLocalRect, patchesForRects, textAlignmentPatch, toggleLayoutDecoration } from '../thesis/layoutInteraction.js';
 import { normalizeLayoutTextStyle } from '../thesis/layoutDocument.js';
 
-test('text alignment uses the selected page writing area and preserves box mode', () => {
+test('text alignment reaches page edges and preserves writing-area and box modes', () => {
   const item = { id: 'cover:text', type: 'text', editableLayout: true, editableContent: true, xMm: 70, yMm: 82, widthMm: 60,
     page: { widthMm: 210, margins: { leftMm: 35, rightMm: 25 } } };
   for (const align of ['left', 'center', 'right', 'justify']) {
     const patch = textAlignmentPatch(item, align);
-    assert.equal(patch.xMm, 35);
-    assert.equal(patch.widthMm, 150);
+    assert.equal(patch.xMm, 0);
+    assert.equal(patch.widthMm, 210);
     assert.equal(patch.yMm, 82);
     assert.equal(patch.style.align, align);
+    const content = textAlignmentPatch(item, align, 'content');
+    assert.equal(content.xMm, 35);
+    assert.equal(content.widthMm, 150);
     assert.deepEqual(textAlignmentPatch(item, align, 'box'), { id: item.id, style: { align } });
   }
   assert.equal(textAlignmentPatch({ ...item, locked: true }, 'right'), null);
@@ -20,6 +23,18 @@ test('text alignment uses the selected page writing area and preserves box mode'
   assert.equal(textAlignmentPatch({ ...item, page: {} }, 'right'), null);
   assert.equal(textAlignmentPatch(item, 'invalid'), null);
   assert.equal(textAlignmentPatch({ ...item, yMm: undefined, measuredGeometry: { yMm: 95 } }, 'left').yMm, 95);
+});
+
+test('alignment never accumulates a positioned block baseline paint offset', () => {
+  let item = { id: 'cover:text', type: 'text', editableLayout: true, editableContent: true,
+    layoutMode: 'absolute', xMm: 40, yMm: 30, widthMm: 145, wordBaseline: true,
+    page: { widthMm: 210, margins: { leftMm: 40, rightMm: 25 } } };
+  for (const align of ['right', 'center', 'left', 'center', 'right', 'center']) {
+    const patch = textAlignmentPatch({ ...item, canonical: item, measuredGeometry: { yMm: item.yMm - 1.075 } }, align);
+    assert.equal(patch.yMm, 30);
+    assert.equal(patch.xMm + patch.widthMm / 2, 105);
+    item = { ...item, ...patch };
+  }
 });
 
 test('decoration commands preserve other lines and normalize either toggle order', () => {

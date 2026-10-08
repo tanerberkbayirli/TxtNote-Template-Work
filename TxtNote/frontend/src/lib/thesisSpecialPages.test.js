@@ -33,6 +33,8 @@ describe("data-driven special pages", () => {
     }]);
     assert.match(html, /<span data-fmt-bg="#aabbcc">Changed University Name<\/span>/);
     assert.match(html, /data-thesis-field="UNIVERSITY_NAME"/);
+    const css = specialPageCss(".cover", [{ path: "0", type: "text", style: { highlight: "#abc" } }], () => "").join("\n");
+    assert.match(css, /\[data-thesis-block="0"\]>\[data-fmt-bg="#aabbcc"\]\{background-color:#aabbcc;/);
   });
 
   it("validates embedded image sources/dimensions and emits scoped CSP-safe geometry", () => {

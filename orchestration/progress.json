@@ -1,26 +1,13 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07",
+  "updatedAt": "2026-10-08",
   "maxAttempts": 3,
   "policy": "orchestration/README.md#active-policy-2026-10-03",
   "universityOrder": [
     "aku",
     "afsu",
     "adu",
-    "deu",
-    "ege",
-    "dpu",
-    "ksbu",
-    "mcbu",
-    "msku",
-    "pau",
-    "usak",
-    "yasar",
-    "bakircay",
-    "ieu",
-    "idu",
-    "ikcu",
-    "iyte"
+    "mcbu"
   ],
   "universities": {
     "aku": {
@@ -56,49 +43,8 @@
     "adu": {
       "status": "IN_PROGRESS",
       "targets": [
-        "adu-fbe",
-        "adu-sbe",
         "adu-sagbil",
-        "adu-tip",
-        "adu-ziraat-lisans",
-        "adu-muhendislik-lisans"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "deu": {
-      "status": "PENDING",
-      "targets": [
-        "deu-fbe",
-        "deu-ebe",
-        "deu-sagbil",
-        "deu-ataturk",
-        "deu-tip"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "ege": {
-      "status": "PENDING",
-      "targets": [
-        "ege-fbe",
-        "ege-sagbil"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "dpu": {
-      "status": "PENDING",
-      "targets": [
-        "dpu-lee"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "ksbu": {
-      "status": "PENDING",
-      "targets": [
-        "ksbu-lee"
+        "adu-ziraat-lisans"
       ],
       "gate": null,
       "commit": null
@@ -111,90 +57,11 @@
       ],
       "gate": null,
       "commit": null
-    },
-    "msku": {
-      "status": "PENDING",
-      "targets": [
-        "msku-ebe",
-        "msku-fbe",
-        "msku-sagbil",
-        "msku-sbe"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "pau": {
-      "status": "PENDING",
-      "targets": [
-        "pau-fbe",
-        "pau-ebe",
-        "pau-tip"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "usak": {
-      "status": "PENDING",
-      "targets": [
-        "usak-lee-sosyal",
-        "usak-insaat-lisans"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "yasar": {
-      "status": "PENDING",
-      "targets": [
-        "yasar-lee",
-        "yasar-lee-hukuk"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "bakircay": {
-      "status": "PENDING",
-      "targets": [
-        "bakircay-lee"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "ieu": {
-      "status": "PENDING",
-      "targets": [
-        "ieu-lee"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "ikcu": {
-      "status": "PENDING",
-      "targets": [
-        "ikcu-fbe",
-        "ikcu-sbe"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "iyte": {
-      "status": "PENDING",
-      "targets": [
-        "iyte-lee"
-      ],
-      "gate": null,
-      "commit": null
-    },
-    "idu": {
-      "status": "PENDING",
-      "targets": [
-        "idu-lee"
-      ],
-      "note": "Local TR/EN guide files identified by filename inventory 2026-10-03; variants and rules extraction pending."
     }
   },
   "currentUniversity": "adu",
   "currentTarget": "adu-sagbil",
-  "currentPhase": "MOTOR Phase 5.1 CLOSED_WITH_DOCUMENTED_DEFERRALS: 21 baseline failures resolved, 18 deferred, SDK findings open; awaiting user instruction for 5.2.",
+  "currentPhase": "MOTOR Phase 5.2 PARTIAL_RESEARCH_DEFERRED: independent 12-case Word corpus recorded in Word 16.0.20430; editor/PDF line renderer not implemented; typography acceptance OPEN. Next: separately budgeted 5.2 shared line-renderer implementation and acceptance; no automatic 5.3 pivot.",
   "enginePlan": {
     "phase0": "DONE (historical source/checker checkpoints re-audited)",
     "phase1": "DONE (catalog/split checkpoints; current unit/build regression clean)",
@@ -231,7 +98,7 @@
       "historical Word-render variation cause UNKNOWN; two current passes do not prove universal determinism"
     ],
     "phase4AcceptancePath": "orchestration/validation/phase4-close/acceptance.json",
-    "phase5": "IN_PROGRESS (5.1 diagnosis/fixes closed with documented deferrals; 5.2–5.5 PLANNED)",
+    "phase5": "IN_PROGRESS (5.1 closed with documented deferrals; 5.2 PARTIAL_RESEARCH_DEFERRED; unstarted phases removed on 2026-10-08)",
     "phase5PlanPath": "orchestration/reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md",
     "phase5AuditPath": "orchestration/specs/word-compatibility-plan.audit.json",
     "phase51ReportPath": "orchestration/reports/MOTOR_PHASE51_CLOSE_2026-10-07.md"
@@ -458,30 +325,6 @@
       "commit": "4ff8e65",
       "updatedAt": "2026-10-03"
     },
-    "adu-fbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": "2026-10-02"
-    },
-    "adu-sbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": "2026-10-02"
-    },
     "adu-sagbil": {
       "analysis": "DONE",
       "implementation": "DONE",
@@ -492,7 +335,7 @@
       "specPath": "orchestration/specs/adu-sagbil.json",
       "reportPath": "orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md",
       "commit": null,
-      "updatedAt": "2026-10-07",
+      "updatedAt": "2026-10-08",
       "extractionPath": "orchestration/specs/adu-sagbil.extracted.json",
       "templatePath": "TxtNote/frontend/src/thesis/templates/adu-sagbil.js",
       "registryIds": [
@@ -500,18 +343,6 @@
       ],
       "note": "Phase 4 pilot complete. Five exploratory checker iterations and a final fresh run are recorded locally; this is one source-template pilot, not approval of all ADU variants. Tier 2 UNKNOWN and 109 source-property review groups remain explicit.",
       "validationPath": "orchestration\\validation\\phase4-close\\final\\adu-sagbil\\check-20261007-1723.json"
-    },
-    "adu-tip": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": "2026-10-02"
     },
     "adu-ziraat-lisans": {
       "analysis": "IN_PROGRESS",
@@ -524,126 +355,6 @@
       "reportPath": null,
       "commit": null,
       "updatedAt": "2026-10-04"
-    },
-    "adu-muhendislik-lisans": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": "2026-10-02"
-    },
-    "deu-fbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "deu-ebe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "deu-sagbil": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "deu-ataturk": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "deu-tip": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "ege-fbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "ege-sagbil": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "dpu-lee": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "ksbu-lee": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
     },
     "mcbu-lee": {
       "analysis": "DONE",
@@ -672,211 +383,6 @@
       "updatedAt": "2026-10-03",
       "specReview": "DONE",
       "note": "self-check 52/52 PASS; engine gap: no page number on chapter first pages"
-    },
-    "msku-ebe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "msku-fbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "msku-sagbil": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "msku-sbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "pau-fbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "pau-ebe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "pau-tip": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "usak-lee-sosyal": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "usak-insaat-lisans": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "yasar-lee": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "yasar-lee-hukuk": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "bakircay-lee": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "ieu-lee": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "ikcu-fbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "ikcu-sbe": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "iyte-lee": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": null
-    },
-    "idu-lee": {
-      "analysis": "PENDING",
-      "implementation": "PENDING",
-      "validation": "PENDING",
-      "attempts": 0,
-      "status": "PENDING",
-      "lastError": null,
-      "specPath": null,
-      "reportPath": null,
-      "commit": null,
-      "updatedAt": "2026-10-03",
-      "note": "Local TR/EN guides located by filename inventory; no content opened, degree variants and formatting UNKNOWN pending analysis."
     }
   },
   "engine": {
@@ -887,7 +393,7 @@
     "status": "IN_PROGRESS",
     "planRevision": 2,
     "planRevisionDate": "2026-10-07",
-    "planRevisionNote": "Revision 2 defined the plan before implementation; 5.1 is now closed with documented deferrals; other stages remain PLANNED.",
+    "planRevisionNote": "5.1 closed with documented deferrals; 5.2 partial research deferred with acceptance open. Unstarted phases removed at user request on 2026-10-08.",
     "currentStage": "5.2",
     "phases": [
       {
@@ -900,63 +406,22 @@
       {
         "id": "5.2",
         "title": "Yazı, satır kırılımı ve paragraf eşliği",
-        "status": "PLANNED",
+        "status": "PARTIAL_RESEARCH_DEFERRED",
+        "decision": "DEFER renderer integration; measured corpus recorded, shared editor/PDF renderer not implemented or accepted",
+        "acceptanceStatus": "OPEN",
+        "reportPath": "orchestration/reports/MOTOR_PHASE52_PROGRESS_2026-10-08.md",
+        "acceptancePath": "orchestration/validation/word-compat/phase-5.2/acceptance.json",
+        "referenceCorpusPath": "orchestration/validation/word-compat/phase-5.2/reference-measurements.json",
         "dependsOn": [
           "5.1"
         ],
         "relativeEffort": "HIGH; bounded initial research cycle with explicit decision gate"
-      },
-      {
-        "id": "5.3",
-        "title": "Sayfalama, bölüm sınırları ve dinamik alanlar",
-        "status": "PLANNED",
-        "dependsOn": [
-          "5.2"
-        ],
-        "preparationDependsOn": [
-          "5.1"
-        ],
-        "dependencyNote": "Independent diagnosis/section/field work may start after 5.1; final page-flow acceptance requires validated 5.2 typography.",
-        "relativeEffort": "HIGH"
-      },
-      {
-        "id": "5.4",
-        "title": "Karmaşık içerik ve düzenlenebilirlik",
-        "status": "PLANNED",
-        "dependsOn": [
-          "5.2",
-          "5.3"
-        ],
-        "preparationDependsOn": [
-          "5.1"
-        ],
-        "packageIds": [
-          "5.4.1",
-          "5.4.2",
-          "5.4.3",
-          "5.4.4",
-          "5.4.5",
-          "5.4.6"
-        ],
-        "relativeEffort": "HIGH in total; estimate and accept each package separately"
-      },
-      {
-        "id": "5.5",
-        "title": "Ortam matrisi, tam regresyon ve sürüm kapısı",
-        "status": "PLANNED",
-        "dependsOn": [
-          "5.1",
-          "5.2",
-          "5.3",
-          "5.4"
-        ],
-        "relativeEffort": "MEDIUM; other environments require actual access"
       }
     ],
     "baselineFailures": 39,
     "failureFamilies": 8,
     "releaseGate": "Zero required FAIL/SKIPPED/UNKNOWN in declared scope; two consecutive full acceptance runs",
-    "nextAction": "Await user instruction for 5.2; 5.2–5.5 remain PLANNED.",
+    "nextAction": "Continue Phase 5.2 only in a separately budgeted implementation cycle: integrate one line-placement model in editor and PDF, preserve semantic DOCX and source/selection/undo/save invariance, then validate held-out Word cases and unchanged J03/J04 plus PASS controls. Phase 5.2 acceptance remains OPEN; no automatic 5.3 pivot.",
     "phase51AcceptancePath": "orchestration/validation/word-compat/phase-5.1/acceptance.json",
     "phase51Summary": {
       "resolvedBaselineFailures": 21,
@@ -965,5 +430,12 @@
       "schemaPassVariants": 3,
       "schemaFailVariants": 32
     }
+  },
+  "taskCleanup": {
+    "date": "2026-10-08",
+    "reason": "User requested deletion of all unstarted tasks",
+    "removedUnstartedTargets": 30,
+    "removedUnstartedWordPhases": 3,
+    "note": "Started work, source inventory, validation evidence and unresolved failures are preserved."
   }
 }

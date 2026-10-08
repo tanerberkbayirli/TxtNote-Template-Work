@@ -1,0 +1,1374 @@
+{
+ "target": "afsu-lee",
+ "stamp": "20261003-1628",
+ "counts": {
+  "PASS": 73,
+  "CONFLICT": 1,
+  "INFO": 1
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-lee\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-lee\\run\\default.docx",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "phd": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-lee\\run\\phd.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-lee\\run\\phd.docx",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "checks": [
+  {
+   "id": "page-size",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Table 1 row 2 (A4); template pgSz 11906x16838"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "37 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-top",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('Ustten 2,5 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "17 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-left",
+   "kind": "docx_section",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('sol 4 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 40.005,
+   "delta": 0.005,
+   "note": "17 sections, range 40.005..40.005",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-right",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('sag 2,5 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "17 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-bottom",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('alt 2,5 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "17 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-cover",
+   "kind": "docx_section",
+   "expected": 12.7,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json master_geometry.cover_section_margins_twips 720 (12.7 mm), cover section"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 12.7,
+   "delta": 0.0,
+   "note": "1 sections, range 12.7..12.7",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-left",
+   "kind": "text_extent",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni sol 4 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.729,
+   "delta": -0.271,
+   "note": "min over 25 pages [39.73..40.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-right",
+   "kind": "text_extent",
+   "expected": 185.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni sag 2,5 cm (210-25 = 185 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 184.998,
+   "delta": -0.002,
+   "note": "max over 25 pages [152.40..185.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-top",
+   "kind": "line_attr",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni ust 2,5 cm; line-box top of first heading on a new page"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.212,
+   "delta": 0.212,
+   "note": "1 lines, pages [13]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri: Times New Roman (guide: tum bolumlerinde; PhD template measured cover page number in Calibri 11 pt = template artifact per spec conflicts[])"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldItalicMT[Times New Roman]",
+    "TimesNewRomanPS-BoldMT[Times New Roman]",
+    "TimesNewRomanPS-ItalicMT[Times New Roman]",
+    "TimesNewRomanPSMT[Times New Roman]"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-size",
+   "kind": "font_size",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri 12 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 27667, 10.0: 2248, 14.0: 293, 9.0: 5}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-pitch",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri 1,5 satir (TNR 12 pt: 1.15 x 12 pt x 1.5 = 20.7 pt = 7.30 mm Word line model; template line=360 auto)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "mode bucket 7.3 (282/396 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "para-spacing-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "120"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri paragraf oncesi/sonrasi 6 nk (120 twips); template w:spacing before=120 after=120"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "100",
+    "120",
+    "180",
+    "19",
+    "200",
+    "284",
+    "300",
+    "370",
+    "415",
+    "420",
+    "518",
+    "522"
+   ],
+   "note": "1028 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "line-spacing-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "360"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri 1,5 satir (line=360 auto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "1",
+    "1030",
+    "240",
+    "2420",
+    "258",
+    "276",
+    "320",
+    "336",
+    "360",
+    "392",
+    "400",
+    "413",
+    "414",
+    "432",
+    "478",
+    "480",
+    "552",
+    "628",
+    "631",
+    "747",
+    "900",
+    "9480"
+   ],
+   "note": "509 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "body-align-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "both"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni: iki yana yasli"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "both",
+    "center",
+    "left",
+    "right"
+   ],
+   "note": "445 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent",
+   "kind": "line_attr",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli: paragraf girintisi yapilmamalidir (first body line x0 = left margin 40 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.998,
+   "delta": -0.002,
+   "note": "1 lines, pages [13]",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-size",
+   "kind": "line_attr",
+   "expected": 14.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: birinci derece 14 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 14.0,
+   "delta": 0.0,
+   "note": "7 lines, pages [13, 14, 18, 22, 28, 31]",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: birinci derece kalin"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "7 lines, pages [13, 14, 18, 22, 28, 31]",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-centred",
+   "kind": "line_attr",
+   "expected": 112.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: sayfa ortasinda; read as centre of the text block (40+185)/2 = 112.5 mm (page centre 105 mm is the alternative reading)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": 112.394,
+   "delta": -0.106,
+   "note": "7 lines, pages [13, 14, 18, 22, 28, 31]",
+   "status": "PASS"
+  },
+  {
+   "id": "h2-size",
+   "kind": "line_attr",
+   "expected": 14.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ikinci derece 14 punto kalin sola dayali"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 14.0,
+   "delta": 0.0,
+   "note": "10 lines, pages [14, 16, 18, 20, 22, 26]",
+   "status": "PASS"
+  },
+  {
+   "id": "h2-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ikinci derece kalin"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "10 lines, pages [14, 16, 18, 20, 22, 26]",
+   "status": "PASS"
+  },
+  {
+   "id": "h2-left",
+   "kind": "line_attr",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ikinci derece sola dayali (x0 = left margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.729,
+   "delta": -0.271,
+   "note": "10 lines, pages [14, 16, 18, 20, 22, 26]",
+   "status": "PASS"
+  },
+  {
+   "id": "h3-size",
+   "kind": "line_attr",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ucuncu derece 12 punto kalin sola dayali"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "5 lines, pages [15, 19, 23, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "h3-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ucuncu derece kalin"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "5 lines, pages [15, 19, 23, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "h3-left",
+   "kind": "line_attr",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ucuncu derece sola dayali"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.766,
+   "delta": -0.234,
+   "note": "5 lines, pages [15, 19, 23, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "caption-size",
+   "kind": "line_attr",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Tablo ve Sekiller: baslik 12 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "4 lines, pages [15, 16, 20, 25]",
+   "status": "PASS"
+  },
+  {
+   "id": "references-size",
+   "kind": "line_attr",
+   "expected": 10.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli: KAYNAKLAR 10 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 10.0,
+   "delta": 0.0,
+   "note": "1 lines, pages [34]",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-main",
+   "kind": "page_labels",
+   "expected": "1..N",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfalarin Numaralandirilmasi: Giris'ten itibaren 1, 2, 3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "1..N",
+   "status": "PASS"
+  },
+  {
+   "id": "page-label-giris",
+   "kind": "page_labels",
+   "expected": "1",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfalarin Numaralandirilmasi: numbering 1 at GIRIS"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "1",
+   "status": "PASS"
+  },
+  {
+   "id": "page-label-abstract",
+   "kind": "page_labels",
+   "expected": "i",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfalarin Numaralandirilmasi: kucuk Roma rakami, numbering begins at OZET"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "i",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-numfmt",
+   "kind": "docx_attr",
+   "expected": [
+    "lowerRoman",
+    "decimal"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfalarin Numaralandirilmasi: lowercase Roman front matter, Arabic main (sectPr pgNumType)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "decimal",
+    "lowerRoman"
+   ],
+   "note": "19 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-no-undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "field validity",
+    "locator": "DOCX XML"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "pagenum-roman-x0",
+   "kind": "page_number_attr",
+   "expected": 185.117,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.YL_master.roman_front_matter x 524.74 pt = 185.12 mm (Word render)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 185.068,
+   "delta": -0.049,
+   "note": "median of 1 [185.07..185.07]",
+   "status": "PASS"
+  },
+  {
+   "id": "pagenum-roman-baseline",
+   "kind": "page_number_attr",
+   "expected": 281.178,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.YL_master.roman_front_matter baseline 797.04 pt = 281.18 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 281.178,
+   "delta": 0.0,
+   "note": "median of 1 [281.18..281.18]",
+   "status": "PASS"
+  },
+  {
+   "id": "pagenum-arabic-x0",
+   "kind": "page_number_attr",
+   "expected": 184.651,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.YL_master.arabic_body x 523.42 pt = 184.65 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 184.638,
+   "delta": -0.013,
+   "note": "median of 1 [184.64..184.64]",
+   "status": "PASS"
+  },
+  {
+   "id": "pagenum-arabic-baseline",
+   "kind": "page_number_attr",
+   "expected": 281.178,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.YL_master.arabic_body baseline 797.04 pt = 281.18 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 281.178,
+   "delta": 0.0,
+   "note": "median of 1 [281.18..281.18]",
+   "status": "PASS"
+  },
+  {
+   "id": "pagenum-size",
+   "kind": "page_number_attr",
+   "expected": 11.04,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.YL_master font_pt 11.04 (AltBilgiChar sz 22 half-points = 11 pt)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 11.0,
+   "delta": -0.04,
+   "note": "median of 1 [11.00..11.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "cover-outer-baselines",
+   "kind": "line_baselines",
+   "expected": [
+    62.124,
+    67.769,
+    73.448,
+    85.654
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json cover_word_pdf_blocks.YL_outer_cover_pdf_page_1 baseline_top T.C. 176.1, university 192.1, institute 208.2, department 242.8 pt (Word render), converted to mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    62.053,
+    67.729,
+    73.401,
+    85.593
+   ],
+   "delta": [
+    -0.071,
+    -0.04,
+    -0.047,
+    -0.061
+   ],
+   "note": "page 1",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-page-size",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Table 1 row 2 (A4); template pgSz 11906x16838"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "38 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx-margin-top",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('Ustten 2,5 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "17 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx-margin-left",
+   "kind": "docx_section",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('sol 4 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 40.005,
+   "delta": 0.005,
+   "note": "17 sections, range 40.005..40.005",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx-margin-right",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('sag 2,5 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "17 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx-margin-bottom",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "w:tbl[2]/w:tr[2]/w:tc[1]/w:p[1] Sayfa Duzeni ('alt 2,5 cm'); template body pgMar twips top/right/bottom 1418, left 2268; export sections 1,2,4-18 (0 = cover, 3 = approval page, see note)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "17 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx-margin-cover",
+   "kind": "docx_section",
+   "expected": 12.7,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json master_geometry.cover_section_margins_twips 720 (12.7 mm), cover section"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 12.7,
+   "delta": 0.0,
+   "note": "1 sections, range 12.7..12.7",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-margins-left",
+   "kind": "text_extent",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni sol 4 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.729,
+   "delta": -0.271,
+   "note": "min over 25 pages [39.73..40.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-margins-right",
+   "kind": "text_extent",
+   "expected": 185.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni sag 2,5 cm (210-25 = 185 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 184.998,
+   "delta": -0.002,
+   "note": "max over 25 pages [152.40..185.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-margins-top",
+   "kind": "line_attr",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni ust 2,5 cm; line-box top of first heading on a new page"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.212,
+   "delta": 0.212,
+   "note": "1 lines, pages [14]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-body-font",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri: Times New Roman (guide: tum bolumlerinde; PhD template measured cover page number in Calibri 11 pt = template artifact per spec conflicts[])"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": "guide says Times New Roman in all sections; official doctorate template cover renders its PAGE number in Calibri (template-structure-evidence.json); spec rules cover numbers to be template artifacts but self-6 reproduces it",
+   "actual": [
+    "Calibri[Calibri]",
+    "TimesNewRomanPS-BoldItalicMT[Times New Roman]",
+    "TimesNewRomanPS-BoldMT[Times New Roman]",
+    "TimesNewRomanPS-ItalicMT[Times New Roman]",
+    "TimesNewRomanPSMT[Times New Roman]"
+   ],
+   "note": "Calibri not allowed; Calibri program family 'Calibri' not in ['Times New Roman']",
+   "status": "CONFLICT"
+  },
+  {
+   "id": "phd-body-font-size",
+   "kind": "font_size",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri 12 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 27667, 10.0: 2248, 14.0: 293, 9.0: 5}",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-body-line-pitch",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri 1,5 satir (TNR 12 pt: 1.15 x 12 pt x 1.5 = 20.7 pt = 7.30 mm Word line model; template line=360 auto)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "mode bucket 7.3 (282/396 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-para-spacing-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "120"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri paragraf oncesi/sonrasi 6 nk (120 twips); template w:spacing before=120 after=120"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "100",
+    "120",
+    "180",
+    "19",
+    "200",
+    "248",
+    "284",
+    "300",
+    "370",
+    "415",
+    "518",
+    "522"
+   ],
+   "note": "1042 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-line-spacing-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "360"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli ve Karakteri 1,5 satir (line=360 auto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "1",
+    "1030",
+    "240",
+    "2440",
+    "258",
+    "276",
+    "278",
+    "320",
+    "336",
+    "360",
+    "392",
+    "400",
+    "413",
+    "414",
+    "432",
+    "478",
+    "480",
+    "574",
+    "631",
+    "747",
+    "900",
+    "9480"
+   ],
+   "note": "516 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-body-align-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "both"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfa Duzeni: iki yana yasli"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "both",
+    "center",
+    "left",
+    "right"
+   ],
+   "note": "453 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-first-line-indent",
+   "kind": "line_attr",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli: paragraf girintisi yapilmamalidir (first body line x0 = left margin 40 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.998,
+   "delta": -0.002,
+   "note": "1 lines, pages [14]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h1-size",
+   "kind": "line_attr",
+   "expected": 14.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: birinci derece 14 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 14.0,
+   "delta": 0.0,
+   "note": "7 lines, pages [14, 15, 19, 23, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h1-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: birinci derece kalin"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "7 lines, pages [14, 15, 19, 23, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h1-centred",
+   "kind": "line_attr",
+   "expected": 112.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: sayfa ortasinda; read as centre of the text block (40+185)/2 = 112.5 mm (page centre 105 mm is the alternative reading)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": 112.394,
+   "delta": -0.106,
+   "note": "7 lines, pages [14, 15, 19, 23, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h2-size",
+   "kind": "line_attr",
+   "expected": 14.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ikinci derece 14 punto kalin sola dayali"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 14.0,
+   "delta": 0.0,
+   "note": "10 lines, pages [15, 17, 19, 21, 23, 27]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h2-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ikinci derece kalin"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "10 lines, pages [15, 17, 19, 21, 23, 27]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h2-left",
+   "kind": "line_attr",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ikinci derece sola dayali (x0 = left margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.729,
+   "delta": -0.271,
+   "note": "10 lines, pages [15, 17, 19, 21, 23, 27]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h3-size",
+   "kind": "line_attr",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ucuncu derece 12 punto kalin sola dayali"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "5 lines, pages [16, 20, 24, 30, 33]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h3-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ucuncu derece kalin"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "5 lines, pages [16, 20, 24, 30, 33]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-h3-left",
+   "kind": "line_attr",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Bolum Basliklari: ucuncu derece sola dayali"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.766,
+   "delta": -0.234,
+   "note": "5 lines, pages [16, 20, 24, 30, 33]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-caption-size",
+   "kind": "line_attr",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Tablo ve Sekiller: baslik 12 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "4 lines, pages [16, 17, 21, 26]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-references-size",
+   "kind": "line_attr",
+   "expected": 10.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Yazi Sekli: KAYNAKLAR 10 punto"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 10.0,
+   "delta": 0.0,
+   "note": "1 lines, pages [35]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-page-labels-main",
+   "kind": "page_labels",
+   "expected": "1..N",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfalarin Numaralandirilmasi: Giris'ten itibaren 1, 2, 3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "1..N",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-page-label-giris",
+   "kind": "page_labels",
+   "expected": "1",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfalarin Numaralandirilmasi: numbering 1 at GIRIS"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "1",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx-numfmt",
+   "kind": "docx_attr",
+   "expected": [
+    "lowerRoman",
+    "decimal"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+    "locator": "Sayfalarin Numaralandirilmasi: lowercase Roman front matter, Arabic main (sectPr pgNumType)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "decimal",
+    "lowerRoman"
+   ],
+   "note": "19 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx-no-undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "field validity",
+    "locator": "DOCX XML"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-pagenum-roman-x0",
+   "kind": "line_attr",
+   "expected": 183.974,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.doctorate_master.roman_front_matter x 521.5 pt = 183.97 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 183.918,
+   "delta": -0.056,
+   "note": "1 lines, pages [7]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-pagenum-roman-baseline",
+   "kind": "line_attr",
+   "expected": 270.545,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.doctorate_master.roman_front_matter baseline 766.9 pt = 270.55 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 270.545,
+   "delta": 0.0,
+   "note": "1 lines, pages [7]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-pagenum-arabic-x0",
+   "kind": "page_number_attr",
+   "expected": 179.656,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.doctorate_master.arabic_body x 509.26 pt = 179.66 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 179.611,
+   "delta": -0.045,
+   "note": "median of 1 [179.61..179.61]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-pagenum-arabic-baseline",
+   "kind": "page_number_attr",
+   "expected": 282.575,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json footer_fields_and_rendered_positions.doctorate_master.arabic_body baseline 801.0 pt = 282.57 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 282.575,
+   "delta": 0.0,
+   "note": "median of 1 [282.57..282.57]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-cover-outer-baselines",
+   "kind": "line_baselines",
+   "expected": [
+    61.912,
+    67.557,
+    73.237,
+    87.559
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+    "locator": "template-structure-evidence.json cover_word_pdf_blocks.doctorate_outer_cover_pdf_page_1 baseline_top T.C. 175.5, university 191.5, institute 207.6, department 248.2 pt, converted to mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    61.842,
+    67.514,
+    73.19,
+    87.499
+   ],
+   "delta": [
+    -0.07,
+    -0.043,
+    -0.047,
+    -0.06
+   ],
+   "note": "page 1",
+   "status": "PASS"
+  },
+  {
+   "id": "note-unknown",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0.5,
+   "source": {
+    "file": "specs/afsu-lee.json",
+    "locator": "unknowns[], conflicts[]"
+   },
+   "evidence": "UNKNOWN",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "UNKNOWN in source: page-number size in guide prose (only the template measured 11.04 pt), footer distance in guide, TOC leaders/indent depth per level, footnote spacing/separator/numbering, ethics bullet glyph, approval-page row heights, jury table geometry beyond measured x extents, approval page (export section 3) margins, table continuation behaviour. Cover/approval page numbers are template artifacts (CONFLICT ruled: numbering starts at OZET)."
+  }
+ ]
+}

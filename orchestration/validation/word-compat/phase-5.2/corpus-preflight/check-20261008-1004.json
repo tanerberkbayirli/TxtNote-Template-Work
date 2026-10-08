@@ -1,0 +1,113 @@
+{
+ "target": "phase52-justify",
+ "stamp": "20261008-1004",
+ "counts": {
+  "SKIPPED": 1,
+  "PASS": 3
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-preflight\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-preflight\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-preflight\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\phase52-justify.fixture.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "3093c7f5d492ec359edf3769cb74f8f4904df1db02ca65f0371c37be5c9484e2"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.141,
+ "commandSeconds": 11.64,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "d2a7a315e44f0ee1b2be6c43bb6bb98e15b95942",
+  "trackedDiffSha256": "17fb32bbc289d0a69d97fd46a70b7c0b3c572e6b837bd57c767dc62b2a70fde4",
+  "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+  "startedAt": "2026-10-08T07:04:24.246Z",
+  "codeFingerprint": "2acc452fcb7f803540f738d18c00367b74e774adc2de051e843973c853a072e8",
+  "officialSourceFingerprint": "f192ffb48599b895bcb52d016917a27e8944f2eb013ed3694907584df6e16411"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-preflight\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "default": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"false\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "bf9339c345cc5ba219959da21a5a501c4dae7a03fcc721bbf56d1ed566b03ce9",
+ "artifactSha256": {
+  "default": {
+   "fixture": "83021cd9036a65576a71cad693d85dc369a449cfd811a7d363f5f754c9300f59",
+   "pdf": "58cfffdd6aa09957f704b294493e62cb829816498a0a589297093cfbf4af449e",
+   "docx": "b034849c61ab450fae9b27d2635af8de5ee77dfbd57b8b303859d4ebfda61194",
+   "layout": "644cb7027ffbf2cdc425130f9a5a177d9012f17ed9de4424fac0379089032a2f"
+  }
+ },
+ "checks": [
+  {
+   "id": "T01-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T01: Arial 10 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "engine-docx-package-default",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "7 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-default",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

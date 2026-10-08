@@ -163,13 +163,14 @@ try {
     } });
     recordStage(`${extension}.settle`);
     const event = page.waitForEvent("download", { timeout: 240000 });
-    const bodyBefore = await page.evaluate(() => document.body.innerText);
+    const messageBefore = await page.evaluate(() => document.querySelector('.thesis-ribbon-message[role="status"]')?.textContent?.trim() || '');
     await page.getByRole("button", { name: button, exact: true }).click();
     // The editor reports a failed export as a message instead of a download.
     const failure = page.waitForFunction((before) => {
-      const busy = document.body.innerText.includes("Hazırlanıyor…") || [...document.querySelectorAll("button")].some((b) => b.textContent.trim() === "Hazırlanıyor…");
-      return !busy && document.body.innerText !== before && !/indirildi|Kaydedildi/.test(document.body.innerText) ? document.body.innerText.split("\n").find((line) => !before.includes(line)) || "export failed" : false;
-    }, bodyBefore, { timeout: 240000, polling: 500 }).then((handle) => handle.jsonValue());
+      const busy = [...document.querySelectorAll("button")].some((b) => b.textContent.trim() === "Hazırlanıyor…");
+      const message = document.querySelector('.thesis-ribbon-message[role="status"]')?.textContent?.trim();
+      return !busy && message && message !== before && !/indirildi|Kaydedildi/.test(message) ? message : false;
+    }, messageBefore, { timeout: 240000, polling: 500 }).then((handle) => handle.jsonValue());
     const outcome = await Promise.race([event.then((download) => ({ download })), failure.then((message) => ({ message }))]);
     if (!outcome.download) {
       const diagnostics = await paginationDiagnostics(page);

@@ -110,14 +110,19 @@ export function positionedSpecialPageDocx(nodes, context, frame) {
   const width = twip(frame.widthMm);
   const content = specialPageDocx(nodes, context, frame.widthMm);
   if (frame.heightMm !== undefined) return positionedFlowTextBoxDocx(content, frame);
+  // A page-top frame already belongs to normal flow. Floating a page-tall table
+  // makes Word move its anchor to a blank page before splitting the content.
+  // A signed table indent preserves the page-origin x coordinate and natural
+  // splitting while keeping the source section margins intact.
+  const inFlow = Math.abs(frame.yMm - (context.pageMargins?.topMm || 0)) < 0.01;
   return new Table({
     width: { size: width, type: WidthType.DXA },
     columnWidths: [width], layout: TableLayoutType.FIXED,
-    float: {
+    ...(inFlow ? { indent: { size: twip(frame.xMm - (context.pageMargins?.leftMm || 0)), type: WidthType.DXA } } : { float: {
       horizontalAnchor: TableAnchorType.PAGE, verticalAnchor: TableAnchorType.PAGE,
       absoluteHorizontalPosition: twip(frame.xMm), absoluteVerticalPosition: twip(frame.yMm),
       topFromText: 0, bottomFromText: 0, leftFromText: 0, rightFromText: 0,
-    },
+    } }),
     borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
     rows: [new TableRow({ children: [new TableCell({
       width: { size: width, type: WidthType.DXA },

@@ -26,7 +26,7 @@ export const ContentTab = ({
         isDragging && "opacity-50",
         isActive
           ? "bg-white dark:bg-neutral-950"
-          : "hover:bg-neutral-200/60 dark:hover:bg-neutral-800",
+          : "hover:bg-white dark:hover:bg-neutral-800",
       )}
     >
       {dropPlace === "before" && (
@@ -64,8 +64,8 @@ export const ContentTab = ({
           "flex h-9 min-w-0 flex-1 cursor-grab items-center gap-2 overflow-hidden rounded-t-md pl-2.5 pr-1 text-[13px]",
           "transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-500",
           isActive
-            ? "font-medium text-neutral-900 dark:text-neutral-50"
-            : "text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100",
+            ? "font-semibold text-neutral-900 dark:text-neutral-50"
+            : "text-neutral-700 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-neutral-100",
         )}
       >
         <FileTypeIcon item={tab} className="h-4 w-4 opacity-80" />

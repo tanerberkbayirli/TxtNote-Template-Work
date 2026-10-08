@@ -33,6 +33,105 @@ class CompareTests(unittest.TestCase):
             self.assertIsNone(k_line_attr({}, c)['actual'])
             c['params']['nth'] = -1
             with self.assertRaises(ValueError): k_line_attr({}, c)
+
+    def test_word_line_measurements_are_opt_in_and_preserve_default_result_shape(self):
+        from unittest.mock import patch
+        from conformance import k_line_breaks_match
+        class Fixture:
+            n = 1
+            def lines(self, page): return [{'text': 'J01-1 Sample line', 'baseline': 10, 'x0': 0}]
+        pdf, word = Fixture(), Fixture()
+        with patch('conformance.get_doc', side_effect=[pdf, word]):
+            default = k_line_breaks_match({}, {'params': {'tag': 'J01'}})
+        self.assertEqual(default['actual'], {'lines': {'pdf': 1, 'word': 1}, 'firstDiff': []})
+        with patch('conformance.get_doc', side_effect=[pdf, word]):
+            measured = k_line_breaks_match({}, {'params': {'tag': 'J01', 'includeMeasurements': True}})
+        self.assertEqual(measured['actual']['measuredLines'], {
+            'pdf': ['J01-1 Sample line'], 'word': ['J01-1 Sample line']})
+        self.assertTrue(measured['pass'])
+
+    def test_opt_in_line_break_measurements_scope_cases_sharing_a_page(self):
+        from unittest.mock import patch
+        from conformance import k_line_breaks_match
+        class Fixture:
+            n = 1
+            def lines(self, page):
+                return [{'text': text, 'baseline': i * 10, 'x0': 0} for i, text in enumerate([
+                    'J03-1 prior case', 'prior continuation', 'J06-1 selected case',
+                    'selected continuation', 'J08-1 next case'])]
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            result = k_line_breaks_match({}, {'params': {'tag': 'J06', 'includeMeasurements': True, 'caseScope': 'tagged'}})
+        self.assertEqual(result['actual']['measuredLines']['pdf'], ['J06-1 selected case', 'selected continuation'])
+        self.assertEqual(result['actual']['measuredLines']['word'], ['J06-1 selected case', 'selected continuation'])
+        self.assertTrue(result['pass'])
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            no_details = k_line_breaks_match({}, {'params': {'tag': 'J06', 'caseScope': 'tagged'}})
+        self.assertEqual({k: v for k, v in result['actual'].items() if k != 'measuredLines'}, no_details['actual'])
+        self.assertEqual(result['pass'], no_details['pass'])
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            legacy = k_line_breaks_match({}, {'params': {'tag': 'J06'}})
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            detail_only = k_line_breaks_match({}, {'params': {'tag': 'J06', 'includeMeasurements': True}})
+        self.assertEqual(detail_only['pass'], legacy['pass'])
+        self.assertEqual(detail_only['actual']['lines'], legacy['actual']['lines'])
+        self.assertEqual(detail_only['actual']['firstDiff'], legacy['actual']['firstDiff'])
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            missing = k_line_breaks_match({}, {'params': {'tag': 'J09', 'includeMeasurements': True, 'caseScope': 'tagged'}})
+        self.assertFalse(missing['pass'])
+        self.assertEqual(missing['actual']['lines'], {'pdf': 0, 'word': 0})
+
+    def test_opt_in_tagged_lines_cross_pages_skip_only_declared_footer_and_stop_at_next_case(self):
+        from unittest.mock import patch
+        from conformance import k_line_breaks_match
+        from pdfmeasure import MM2PT
+        class Page:
+            rect = type('Rect', (), {'height': 297 * MM2PT})()
+        class Fixture:
+            n = 2
+            pdf = [Page(), Page()]
+            def lines(self, page):
+                rows = [['J06-1 first page', '1'], ['continuation on next page', 'J08-1 following case']][page - 1]
+                return [{'text': text, 'baseline': i * 10, 'x0': 0} for i, text in enumerate(rows)]
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            result = k_line_breaks_match({}, {'params': {
+                'tag': 'J06', 'caseScope': 'tagged', 'caseFooterRegex': r'\d{1,3}', 'includeMeasurements': True,
+            }})
+        self.assertEqual(result['actual']['measuredLines']['pdf'], ['J06-1 first page', 'continuation on next page'])
+        self.assertEqual(result['actual']['measuredLines']['word'], ['J06-1 first page', 'continuation on next page'])
+        self.assertTrue(result['pass'])
+
+    def test_opt_in_last_line_measurements_scope_cases_sharing_a_page(self):
+        from unittest.mock import patch
+        from conformance import k_last_line_words_match
+        from pdfmeasure import MM2PT
+        class Page:
+            rect = type('Rect', (), {'height': 297 * MM2PT})()
+            def get_text(self, kind):
+                return [(30 * MM2PT, y * MM2PT, 35 * MM2PT, (y + 1) * MM2PT, word, 0, 0, 0)
+                        for y, word in [(9, 'prior'), (19, 'first'), (23, 'publication.'), (285, '1')]]
+        class Fixture:
+            n = 1
+            pdf = [Page()]
+            def lines(self, page):
+                return [
+                    {'text': 'J03-1 prior', 'baseline': 10, 'x0': 30, 'top': 8, 'bottom': 12},
+                    {'text': 'J06-1 first', 'baseline': 20, 'x0': 30, 'top': 18, 'bottom': 22},
+                    {'text': 'publication.', 'baseline': 24, 'x0': 30, 'top': 22, 'bottom': 26},
+                    {'text': '1', 'baseline': 286, 'x0': 30, 'top': 284, 'bottom': 288},
+                ]
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            result = k_last_line_words_match({}, {'params': {'tag': 'J06', 'includeMeasurements': True, 'caseScope': 'tagged', 'caseFooterRegex': r'\d{1,3}'}})
+        self.assertEqual(result['actual']['measuredLastLines']['pdf'][0][0], 'publication.')
+        self.assertEqual(result['actual']['measuredLastLines']['word'][0][0], 'publication.')
+        self.assertTrue(result['pass'])
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            no_details = k_last_line_words_match({}, {'params': {'tag': 'J06', 'caseScope': 'tagged', 'caseFooterRegex': r'\d{1,3}'}})
+        self.assertEqual({k: v for k, v in result['actual'].items() if k != 'measuredLastLines'}, no_details['actual'])
+        self.assertEqual(result['pass'], no_details['pass'])
+        with patch('conformance.get_doc', side_effect=[Fixture(), Fixture()]):
+            missing = k_last_line_words_match({}, {'params': {'tag': 'J09', 'includeMeasurements': True, 'caseScope': 'tagged'}})
+        self.assertFalse(missing['pass'])
+
     def test_visible_geometry_ignores_outer_spaces_but_preserves_internal_spacing(self):
         import pymupdf
         doc = pymupdf.open()
@@ -377,7 +476,8 @@ class FieldDumpTests(unittest.TestCase):
         import conformance
         with tempfile.TemporaryDirectory() as tmp:
             dump, docx = os.path.join(tmp, 'f.json'), os.path.join(tmp, 'a.docx')
-            json.dump({'before': before, 'after': after}, open(dump, 'w'))
+            with open(dump, 'w', encoding='utf-8') as field_dump:
+                json.dump({'before': before, 'after': after}, field_dump)
             footer = ('<w:p><w:r><w:instrText> NUMPAGES</w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r>'
                       '<w:r><w:t>%s</w:t></w:r></w:p>') % np_cached
             with zipfile.ZipFile(docx, 'w') as z:

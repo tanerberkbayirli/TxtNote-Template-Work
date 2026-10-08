@@ -1,0 +1,792 @@
+[
+  {
+    "test": "standard-reload",
+    "title": "Kalıcı standart",
+    "body": "Birinci paragraf deneme\nİkinci satır Türkçe ıİğĞşŞ"
+  },
+  {
+    "panel": "Ayarlar",
+    "text": "H\nHata tarama\n\nİÇERİKLER\n\nKalıcı standart\nEkle\nYükle\nAyarlar\nProfil\nGörünüm\nPremium'a geç\nYardım ve destek\nÇöp kutusu\nKalıcı standart\nYükleniyor…",
+    "fields": [
+      {
+        "aria": "Başlıklarda ara",
+        "type": "text",
+        "ph": "Başlık ara",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      }
+    ],
+    "buttons": [
+      {
+        "text": "H\nHata tarama",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kenar çubuğunu daralt"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart işlemleri"
+      },
+      {
+        "text": "Ekle",
+        "aria": "Yeni İçerik Ekle"
+      },
+      {
+        "text": "Yükle",
+        "aria": "Dosya veya klasör yükle"
+      },
+      {
+        "text": "",
+        "aria": "Ayarlar"
+      },
+      {
+        "text": "",
+        "aria": "Profil"
+      },
+      {
+        "text": "",
+        "aria": "Görünüm"
+      },
+      {
+        "text": "",
+        "aria": "Premium'a geç"
+      },
+      {
+        "text": "",
+        "aria": "Yardım ve destek"
+      },
+      {
+        "text": "",
+        "aria": "Çöp kutusu"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart sekmesini kapat"
+      },
+      {
+        "text": "Açık",
+        "aria": "Güncelleme bildirimleri"
+      },
+      {
+        "text": "Güncellemeleri denetle",
+        "aria": null
+      },
+      {
+        "text": "1s · Premium",
+        "aria": null
+      },
+      {
+        "text": "3s · Premium",
+        "aria": null
+      },
+      {
+        "text": "5s",
+        "aria": null
+      },
+      {
+        "text": "10s",
+        "aria": null
+      },
+      {
+        "text": "1 dk",
+        "aria": null
+      },
+      {
+        "text": "5 dk · Premium",
+        "aria": null
+      },
+      {
+        "text": "10 dk",
+        "aria": null
+      },
+      {
+        "text": "30 dk",
+        "aria": null
+      },
+      {
+        "text": "1 sa",
+        "aria": null
+      },
+      {
+        "text": "1 gün",
+        "aria": null
+      },
+      {
+        "text": "Dışa aktar\nNotlarını ve içeriklerini bir dosyaya aktar.",
+        "aria": null
+      },
+      {
+        "text": "İçe aktar\nDaha önce dışa aktardığın yedeği geri yükle.",
+        "aria": null
+      },
+      {
+        "text": "Tam yedek indir\nHesabın tam bir kopyasını dosya olarak al — yakında.",
+        "aria": null
+      }
+    ]
+  },
+  {
+    "panel": "Profil",
+    "text": "H\nHata tarama\n\nİÇERİKLER\n\nKalıcı standart\nEkle\nYükle\nAyarlar\nProfil\nGörünüm\nPremium'a geç\nYardım ve destek\nÇöp kutusu\nKalıcı standart\nProfil\n\nHesabın hakkında önemli bilgiler ve bağlı cihazların.\n\nHESABIN GÖRÜNEN İSMİ\nBU İSİM SİZ BİR İÇERİĞİ PAYLAŞTIĞINIZDA HANGİ HESAPTAN PAYLAŞILDIĞINI GÖSTEREN KISIMDA YAZACAKTIR.\n\nHESAP BİLGİLERİ\n\nKayıt yöntemi\nHenüz belirlenmedi\nCüzdan\n0x76366e6d55258FBA38AE4bD8d4b8437359fD3afB\nHesap türü\nFreemium\nÜcretsiz plan. Yükseltme seçenekleri buradan sunulacak.\nKayıt tarihi\nHenüz belirlenmedi\nSon giriş\nHenüz belirlenmedi\n\nGEÇİCİ UÇTAN UCA TEST\n\nCihaz A verisini private key ile AES-256 kilitler, not verileri temizlenir, sonra yalnızca .json + private key ile veri geri gelir. Sunucu ve ikinci cihaz yokken aynı yolculuk burada yapılır.\n\nADIM 1 · NOTLAR HAZIR\n\nÇalışma alanında zaten notların var; bu adım için bir şey yapmana gerek yok. Emin olmak için en az bir notun içine tanıyacağın bir cümle yaz.\n\nADIM 2 · CİHAZ A ŞİFRELE\n\nSQLite verisini private key ile AES-256 kilitle. Masaüstüne iki dosya düşer.\nŞifrele ve masaüstüne yaz\n\nADIM 3 · DOSYA HAZIR\n\nHenüz dosya yok. 2. adımı çalıştır.\n\nADIM 4 · ARTIK TEMİZ\n\nBu cihazdaki not verilerini siler: SQLite tabloları, medya ve tarayıcı yedekleri. Mevcut private key güvenli kasada korunur; public key değişmez. Notları geri getirmek için 3. adımdaki dosyaları kullan.\nNot verilerini temizle\n\nADIM 5 · TEKRAR HOŞ GELDİNİZ\n\n.txt içindeki private key'i yapıştır, .json dosyasını seç. Veri çözülür, bu cihazın cüzdanı o anahtara döner ve notlar SQLite'a geri yazılır.\nŞifreli .json seç\nPrivate key ile çöz ve geri yükle\n\n.json kabuğu: kind, headers (walletAddress, publicKey, alg), iv, ciphertext. İçerik AES-256-GCM ile kilitlidir; private key yalnızca .txt dosyasındadır. Test bitince .txt dosyasını sil.\n\nKULLANIM\n\nDepolama\n\n0 MB kullandın (toplam alanın %0'i). Kalan depolama hakkın 1 GB.\n\nNot tutma bu kotaya dahil değildir; yalnızca yüklenen dosyalar ve medya sayılır.\n\nBağlı cihazlar\n\n0 / 5 cihaz bağlı. Kalan cihaz hakkın 5.\n\nBAĞLI CİHAZLAR (0)\n\nHenüz bağlı cihaz yok.\n\nOTURUM\n\nBu cihazdaki oturumdan çıkarsın. Notların cihazda kalır; aynı yöntemle tekrar giriş yapabilirsin.\n\nÇıkış yap",
+    "fields": [
+      {
+        "aria": "Başlıklarda ara",
+        "type": "text",
+        "ph": "Başlık ara",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "text",
+        "ph": "Görünen isim",
+        "value": "Bug Hunt"
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      }
+    ],
+    "buttons": [
+      {
+        "text": "H\nHata tarama",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kenar çubuğunu daralt"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart işlemleri"
+      },
+      {
+        "text": "Ekle",
+        "aria": "Yeni İçerik Ekle"
+      },
+      {
+        "text": "Yükle",
+        "aria": "Dosya veya klasör yükle"
+      },
+      {
+        "text": "",
+        "aria": "Ayarlar"
+      },
+      {
+        "text": "",
+        "aria": "Profil"
+      },
+      {
+        "text": "",
+        "aria": "Görünüm"
+      },
+      {
+        "text": "",
+        "aria": "Premium'a geç"
+      },
+      {
+        "text": "",
+        "aria": "Yardım ve destek"
+      },
+      {
+        "text": "",
+        "aria": "Çöp kutusu"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart sekmesini kapat"
+      },
+      {
+        "text": "",
+        "aria": "Bilgi"
+      },
+      {
+        "text": "Şifrele ve masaüstüne yaz",
+        "aria": null
+      },
+      {
+        "text": "Not verilerini temizle",
+        "aria": null
+      },
+      {
+        "text": "Private key ile çöz ve geri yükle",
+        "aria": null
+      },
+      {
+        "text": "Çıkış yap",
+        "aria": null
+      }
+    ]
+  },
+  {
+    "panel": "Görünüm",
+    "text": "H\nHata tarama\n\nİÇERİKLER\n\nKalıcı standart\nEkle\nYükle\nAyarlar\nProfil\nGörünüm\nPremium'a geç\nYardım ve destek\nÇöp kutusu\nKalıcı standart\nGörünüm\n\nTemanı seç ya da saate bağla — gün içinde kendiliğinden değişsin.\n\nTEMA\n\nBeyaz tema\nAydınlık zeminler, koyu yazı. Gündüz kullanımı için.\nSiyah tema\nSaf siyah zemin. OLED ekranlarda en az ışık.\nKaranlık tema\nYumuşak koyu griler. Gece için göz yormayan seçenek.\n\nSAATE BAĞLI TEMA\n\nTemayı saate göre değiştir\n\nKuralın saati geldiğinde tema kendiliğinden değişir. Aradaki elle seçimin, sıradaki kurala kadar korunur.\n\nKapalı\nSaat\n→\nGeçilecek tema\nBeyaz tema\nSiyah tema\nKaranlık tema\ntemasına geç\nSaat\n→\nGeçilecek tema\nBeyaz tema\nSiyah tema\nKaranlık tema\ntemasına geç",
+    "fields": [
+      {
+        "aria": "Başlıklarda ara",
+        "type": "text",
+        "ph": "Başlık ara",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "time",
+        "ph": "",
+        "value": "18:00"
+      },
+      {
+        "aria": null,
+        "type": "select-one",
+        "value": "dark"
+      },
+      {
+        "aria": null,
+        "type": "time",
+        "ph": "",
+        "value": "05:00"
+      },
+      {
+        "aria": null,
+        "type": "select-one",
+        "value": "light"
+      }
+    ],
+    "buttons": [
+      {
+        "text": "H\nHata tarama",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kenar çubuğunu daralt"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart işlemleri"
+      },
+      {
+        "text": "Ekle",
+        "aria": "Yeni İçerik Ekle"
+      },
+      {
+        "text": "Yükle",
+        "aria": "Dosya veya klasör yükle"
+      },
+      {
+        "text": "",
+        "aria": "Ayarlar"
+      },
+      {
+        "text": "",
+        "aria": "Profil"
+      },
+      {
+        "text": "",
+        "aria": "Görünüm"
+      },
+      {
+        "text": "",
+        "aria": "Premium'a geç"
+      },
+      {
+        "text": "",
+        "aria": "Yardım ve destek"
+      },
+      {
+        "text": "",
+        "aria": "Çöp kutusu"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart sekmesini kapat"
+      },
+      {
+        "text": "Beyaz tema\nAydınlık zeminler, koyu yazı. Gündüz kullanımı için.",
+        "aria": null
+      },
+      {
+        "text": "Siyah tema\nSaf siyah zemin. OLED ekranlarda en az ışık.",
+        "aria": null
+      },
+      {
+        "text": "Karanlık tema\nYumuşak koyu griler. Gece için göz yormayan seçenek.",
+        "aria": null
+      },
+      {
+        "text": "Kapalı",
+        "aria": "Temayı saate göre değiştir"
+      }
+    ]
+  },
+  {
+    "panel": "Premium'a geç",
+    "text": "H\nHata tarama\n\nİÇERİKLER\n\nKalıcı standart\nEkle\nYükle\nAyarlar\nProfil\nGörünüm\nPremium'a geç\nYardım ve destek\nÇöp kutusu\nKalıcı standart\nPremium'a geç\n\nİhtiyacına göre planını seç. Hangi pakette olursan ol, tüm planlarda aynı güvenlik ve yerel deneyim garantileri geçerlidir.\n\nMevcut plan\nFreemium\n\nSınırsız ve ücretsiz kullanım\n\nÜcretsiz\n\nSınırsız not tutma\nSınırsız cihazlar arası senkronizasyon (en fazla 5 cihaz)\nNot tutma hariç 1 GB'a kadar depolama\nAktif plan\nLite Premium\n\nDaha fazla alan, daha çok cihaz\n\n$4.99\n/ yıllık\n\nSınırsız not tutma\nSınırsız senkronizasyon (10 cihaza kadar)\n50 GB'a kadar depolama\nYükselt\nEN POPÜLER\nPremium\n\nTam kapasite ve öncelik\n\nAylık\n$2.99\n6 Aylık\n$14.99\nYıllık\n$23.99\nSınırsız not tutma\nSınırsız senkronizasyon (sınırsız cihaz)\nSenkronizasyonda diğer kişilere göre öncelik hakkı\nDepolamada öncelik hakkı\n250 GB'a kadar depolama\nYükselt\n\nTÜM PLANLARDA DAHİL\n\nE2EE Şifreleme\n\nTxtNote her kullanıcı için uçtan uca şifreleme sunar. Buradaki hiçbir veriyi siz ve izin verdiğiniz kişiler haricinde kimse okuyamaz.\n\nMerkeziyetsiz depolama\n\nTxtNote, Irys depolama yöntemini kullanır. Hesabınız merkeziyetsiz ortamlarda saklanır; verilerinizi kendi isteğimiz doğrultusunda silemeyiz.\n\nÖnce yerel deneyim\n\nTxtNote bulutta çalışan bir uygulama değildir. Önce cihazınızda çalışır, ardından bize iletilir. Uygulamayı silmediğiniz sürece TxtNote'u yerel olarak sonsuza dek kullanabilirsiniz.",
+    "fields": [
+      {
+        "aria": "Başlıklarda ara",
+        "type": "text",
+        "ph": "Başlık ara",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      }
+    ],
+    "buttons": [
+      {
+        "text": "H\nHata tarama",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kenar çubuğunu daralt"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart işlemleri"
+      },
+      {
+        "text": "Ekle",
+        "aria": "Yeni İçerik Ekle"
+      },
+      {
+        "text": "Yükle",
+        "aria": "Dosya veya klasör yükle"
+      },
+      {
+        "text": "",
+        "aria": "Ayarlar"
+      },
+      {
+        "text": "",
+        "aria": "Profil"
+      },
+      {
+        "text": "",
+        "aria": "Görünüm"
+      },
+      {
+        "text": "",
+        "aria": "Premium'a geç"
+      },
+      {
+        "text": "",
+        "aria": "Yardım ve destek"
+      },
+      {
+        "text": "",
+        "aria": "Çöp kutusu"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart sekmesini kapat"
+      },
+      {
+        "text": "Aktif plan",
+        "aria": null
+      },
+      {
+        "text": "Yükselt",
+        "aria": null
+      },
+      {
+        "text": "Aylık\n$2.99",
+        "aria": null
+      },
+      {
+        "text": "6 Aylık\n$14.99",
+        "aria": null
+      },
+      {
+        "text": "Yıllık\n$23.99",
+        "aria": null
+      },
+      {
+        "text": "Yükselt",
+        "aria": null
+      }
+    ]
+  },
+  {
+    "panel": "Yardım ve destek",
+    "text": "H\nHata tarama\n\nİÇERİKLER\n\nKalıcı standart\nEkle\nYükle\nAyarlar\nProfil\nGörünüm\nPremium'a geç\nYardım ve destek\nÇöp kutusu\nKalıcı standart\nYardım ve destek\n\nTxtNote'u baştan sona, kısa adımlarla. Soldan konuyu seç; her bölümün altında küçük bir görsel var.\n\nİÇİNDEKİLER\n\nBAŞLANGIÇ\n\nTxtNote nedir\nBaşlarken\nNot türleri\n\nYAZMAK\n\nKenar çubuğu\nSekmeler ve bölme\nYazı, formül, kod\nKısayollar\nHaritalandırmalı not\n\nVERİ VE HESAP\n\nGörünüm ve ayarlar\nVerilerin güvende\nAğ nedir\nSenkronizasyon\nAğ bağlantısı\nGeçmiş ve çöp\nÜyelik paketleri\n\nDESTEK\n\nSık sorulan sorular\nBize ulaşın\nTxtNote nedir\n\nDüşünceler, görevler, günlükler ve fikir haritaları tek yerde.\n\nYazdığın her şey önce senin cihazında saklanır; ardından arka planda diğer cihazlarına ve ağa gider. Kaydet düğmesi yoktur — yazmayı bıraktığın anda kayıt başlamış demektir.\n\nKaydet\nKayıtlı\nÖnce cihazın\nSonra diğer cihazlar\nUçtan uca şifreli\nKaydet düğmesi yok. Yazmayı bıraktığın anda kayıt cihazında başlamış demektir.\nBaşlarken\n\nÜç adım: ortam, not, yazı.\n\n1\n\nOrtam seç\n\nSol üstteki çalışma ortamı adına tıkla. İş, okul veya kişisel gibi ayrı dünyalar açabilirsin. Ortama sağ tıklayınca adını, resmini değiştirir veya sabitleyebilirsin.\n\n2\n\nNot ekle\n\nKenar çubuğundaki «Ekle» ile türü seç. Yeni not üstte bir sekme olarak açılır.\n\n3\n\nAç ve yaz\n\nSoldaki listeden bir nota tıklayınca o not açılır. Kenar çubuğunu gizleyebilir veya sağ kenarından sürükleyerek genişliğini ayarlayabilirsin.\n\nİ\nToplantı\nAlışveriş\nAğustos günlüğü\n+ Ekle\nToplantı\nAlışveriş\nSol kenar çubuğu, üstte sekmeler, ortada açık not.\nNot türleri\n\nHer tür farklı bir işe yarar. Hangisini seçeceğini «Ekle» menüsü söyler.\n\nStandart\nTo-Do\nGünlük\nHarita\nAkademik\nDosya\nEkle menüsündeki not türleri.\n\nStandart Not\n\nBaşlık ve serbest yazı. Toplantı, taslak, uzun metin.\n\nTo-Do\n\nHer satır bir görev. Görevde daireye tıkla. Süreçte günlük hedef yaz; sayı yetince halka dolar. Günlük To-Do’da tarih çubuğuyla gün değiştir; sağdaki işaret görevleri bütün günlere taşır.\n\nGünlük\n\nHer güne ayrı sayfa. Alttaki tarih çubuğuyla gez; sağdaki takvimden herhangi bir günü aç. Yazı olan günlerde küçük bir nokta görünür.\n\nHaritalandırmalı Not\n\n2D tuval. Kartları sürükle, oklarla bağla. Ayrıntı tuvaldeki yardım düğmesinde.\n\nAkademik Yazı\n\nMakale ve tez, A4 belge. Sağ çubuktan «Kaynakça olsun» ile alanı aç; kaynakları sayfanın altına yaz. PDF / Word içe-dışa aktarma.\n\nDosya\n\nNot tutmaz, notları gruplar. Listeden bir notu sürükleyip klasörün üzerine bırak.\n\nKenar çubuğu\n\nNotlarını burada arar, sabitler, klasörlersin. Yüklediğin dosyalar da aynı listede durur.\n\nBaşlık ara\nSabitle\nDosyaya bırak\nYükle\nProje\nTaslak\nToplantı notu\nAra, sabitle, klasöre bırak veya dosya / klasör yükle.\n\nBaşlık ara\n\nListenin üstündeki arama, not ve klasör adlarını süzgeçler.\n\nSağ tık\n\nSabitle, yeniden adlandır, not geçmişi, sil. Klasörün içindeyse «Çıkart».\n\nYükle\n\nDosya veya klasör yükle. ZIP açılır, klasör ağacı korunur. Kod dosyaları sözdizimi renkli açılır; büyük ikili dosyalar yalnızca bilgisiyle saklanır.\n\nSekmeler ve bölünmüş görünüm\n\nAçtığın her not üstte bir sekmedir. Sekmeyi kapatmak notu silmez.\n\nİki notu yan yana görmek için soldaki bir öğeye sağ tıkla ve «Yanında aç» de; ya da öğeyi yazma alanına sürükle. Sekmeleri üst çubukta sürükleyerek sırasını değiştirebilirsin. Ortadaki çizgiyi sürükleyerek boyutu değiştir. En fazla dokuz panel açılır.\n\nToplantı\nTo-Do\nBir sekmeyi kenara sürükle: çalışma alanı ikiye bölünür. En fazla 9 panel.\nYazı, formül ve kod\n\nStandart not ve günlükte yazıyı seçip sağ tıkla. Matematik ve kod ayrı kutularda çizilir.\n\nBoyutu (başlık, alt başlık, normal), hizayı (sola, ortaya, sağa), rengi ve stili (kalın, italik, üstü çizili) tek tek uygularsın.\n\nToplantı özeti: bütçe onayı bekleniyor.\n\nBOYUT\n\nBaşlık\nAlt başlık\nNormal\nYazıyı seç, sağ tıkla: boyut, hizalama, renk, kalın / italik / üstü çizili.\nAkademik yazı\n\nEkle menüsünden «Akademik Yazı» seç. Sayfa A4 makaledir: başlık, yazarlar, kurum, anahtar kelimeler, özet ve metin. Uygulama bu alanları tanır. Sağ «Şablonlar» makale, tez, rapor veya tarama iskeletini gerçek başlıklarla (Başlık 1–3) yazar. Araçlar biçim, görsel ve PDF / Word içe-dışa aktarmayı da içerir. Var olan bir PDF veya Word dosyasını içe aktarıp düzeltebilir, sonra yeniden dışa aktarabilirsin.\n\nMatematik (LaTeX)\n\nFormülü yazınca gri kutuda çizilir. Kutuya tıklayınca LaTeX’i düzenlersin; dışarı çıkınca yine çizilir. Sol üstteki «Formül ara» alanından hazır formül seçersin. ##math## yazıp Enter’a basınca boş kutu açılır.\n\nKuvvet \n⧉\nE = mc²\n ve\n\nFormül ara\nKopyala\n\nx = (−b ± √(b² − 4ac)) / 2a\n\n$$E=mc^2$$\n$x^2$\n\\begin{align}\n\\ce{H2O}\n$$…$$, $…$, \\\\[…\\\\] veya \\\\begin{align} yazınca gri kutuda çizilir. Kutuya tıklayınca LaTeX’i düzenlersin.\nKod\n\n##code## yazıp Enter’a bas veya kod yapıştır. Dil seçilmezse «seçilmedi» kalır; bulunursa «oto-Js» gibi görünür. Bloğa tıklayınca düzenlersin.\n\noto-Js\nKopyala\nconst x = 1;\nconsole.log(x);\n##code## Enter\n##code## yazıp Enter’a bas veya kod yapıştır. Dil «seçilmedi» kalır; bulunursa oto-Js gibi görünür.\nNotta ara\n\nNotun sağ üstündeki «Notta ara» alanına bir sözcük yaz; listeden seçince metinde yanıp söner. Sayfanın altında kelime, paragraf ve harf sayısı durur.\n\nNotta ara\nNotun sağ üstünde «Notta ara». Kısayol: Ctrl + F (Mac: ⌘F).\n\nCtrl+Z bir önceki eylemi geri alır — kalınlaştırmayı, bir paragrafı veya sildiğin dosyayı. Mac'te ⌘Z.\n\nKısayollar\n\nMac’te Ctrl yerine ⌘ kullan. Yazarken işaretlerin kapanışını yazdığın anda biçim uygulanır.\n\nCtrl\n+\nB\nCtrl\n+\nI\nCtrl\n+\nZ\nCtrl\n+\nF\n**kalın**\n*italik*\n~~çizili~~\n$$ formül $$\nMac’te Ctrl yerine ⌘. Yazarken ** * ~~ kapanınca biçim uygulanır.\nYAZARKEN İŞARETLE\n**metin**\nKalın\n*metin* veya _metin_\nİtalik\n~~metin~~\nÜstü çizili\n[TAB]\nGirinti (sekme)\n$$formül$$\nEkran formülü (LaTeX)\n$formül$\nSatır içi formül\n\\[formül\\]\nEkran formülü\n\\(formül\\)\nSatır içi formül\n\\begin{align}…\\end{align}\nHizalı denklem ortamı\n\\ce{H2O}\nKimyasal formül\n##math## Enter\nBoş matematik kutusu aç\n##code## Enter\nKod bloğu aç\niki boşluk\nCümle sonu: nokta ve bir boşluk\nYAZARKEN TUŞLAR\nCtrl\n+\nB\nKalın\nCtrl\n+\nI\nİtalik\nCtrl\n+\nShift\n+\nX\nÜstü çizili\nEnter\nYeni paragraf\nShift\n+\nEnter\nAynı paragrafta yeni satır\nCtrl\n+\nA\nTümünü seç (sağ tık biçimi için)\nCtrl\n+\nZ\nGeri al: yazı, kalın/italik, silinen dosya, taşıma\nCtrl\n+\nY\nYinele (Ctrl+Shift+Z de olur)\nCtrl\n+\nF\nNotta ara\nEnter\n/\nTab\n/\n↓\nBaşlıkta: yazı alanına geç\n↑ veya Backspace\nYazının en başında: başlığa dön\nLİSTE VE SEKMELER\nF2\nSeçili öğeyi yeniden adlandır\nDelete\nSeçili öğeyi sil\nSürükle\nKlasöre koy, klasörden çıkar veya yeni panel aç\nHaritalandırmalı not\n\nFikirleri kart, görsel, dosya ve oklarla bir tuvale yerleştirirsin.\n\nSol paletten tıkla veya sürükle; öğeyi tuvale bırak. Ok aracıyla iki öğeyi bağla. İğne oku yazının etrafından dolandırır.\n\nHassas görseller buğulu gelir; tıklayınca onay istenir. İşaret yazının rengi içeriğini anlatır: nötr not, mavi dış bağlantı, kırmızı hassas içerik.\n\nSol paletten bırak, okla bağla. Ayrıntılı adımlar tuvaldeki yardım düğmesinde.\n\nAdım adım rehber, tuvalin sol üstündeki yardım düğmesindedir. Burada tekrarlanmaz.\n\nGörünüm ve ayarlar\n\nBeyaz, siyah veya karanlık. İstersen tema saate göre değişir.\n\nBeyaz\nSiyah\nKaranlık\n18:00 karanlık · 05:00 beyaz\nBeyaz, siyah ve karanlık. İstersen saate bağla; tema kendiliğinden değişir.\n\nAyarlar'da güncelleme bildirimlerini, hareketsizlikte otomatik kilidi ve senkron hızını değiştirirsin. Dil şimdilik yalnızca Türkçe.\n\nVerilerin güvende\n\nHer kelime, yazmayı bırakmadan cihazına yazılır.\n\nAnında yerel kayıt\n\nElektrik kesilse veya sekme kapansa bile son hali durur. Bu kayıt tüm kullanıcılarda açıktır; ayar istemez.\n\nUçtan uca şifre\n\nTxtNote önce senin cihazında çalışır, sonra ağa gider — uygulamayı silmediğin sürece notların yerelde kalır.\n\nCihazda kilitli\n\nE2EE · AES-256 · şifre sende\n\nOkuyan yalnız sen\nYerelde durur\nİçerik uçtan uca şifrelenir. TxtNote önce senin cihazında çalışır, sonra ağa gider.\nAğ nedir\n\nKullanım olarak bildiğin buluttan farksızdır. Tek fark, TxtNote’un bu kadar ucuz ve güvenilir olabilmesidir.\n\nArka planda Irys adlı bir kripto blokzinciri çalışır. Verilerin AES-256 ile şifrelenerek orada saklanır. Şifre sende olduğu sürece bize bile bağımlı kalmadan verilerini blokzincirden teslim alabilirsin.\n\nIrys ağı\n\nAES-256 · şifre sende · blokzincirden teslim\n\nKullanım bulut gibi. Arka planda Irys blokzinciri; veri AES-256 ile şifreli.\nCihazlar arası senkronizasyon\n\nTelefonda başladığın not, kısa süre sonra bilgisayarında durur.\n\nDeğişmeyen notlar tekrar gönderilmez. Ağ yedeğinin sıklığı not geçmişini de besler.\n\nTelefon\n↔\nBilgisayar\n→\nAğ\nÖnce cihazına yazılır. Kısa süre sonra diğer cihazların ve ağ yedeğin güncellenir.\n\nHızı Ayarlar'dan seç. Bağlı cihazlar ve son senkron zamanı Profil'de görünür.\n\nAğ bağlantısı\n\nSağ altta küçük bir uyarı belirebilir: son güncelleme sunucuya ulaşamamış demektir.\n\nÇoğu zaman kopuk Wi-Fi veya geçici bir aksaklıktır. Yazdıkların cihazında durur. Bağlantı gelince TxtNote kalanı kendiliğinden gönderir. Sürmeye devam ederse bu sayfanın altındaki teknik destekten yaz.\n\nAğ ulaşılmadı\n\nNot cihazında duruyor. Bağlantı gelince gönderilir.\n\nSağ alttaki uyarı: son güncelleme ağa ulaşamamış. Yazdıkların cihazında durur; bağlantı gelince gider.\nNot geçmişi ve çöp kutusu\n\nYanlışlıkla sildiğin bir paragrafı Ctrl+Z ile geri al.\n\nDaha eski bir sürüme dönmek için kenar çubuğunda nota sağ tıkla ve «Not Geçmişi»ni aç. Bir sürüme tıklaman yeter. Geçmiş, ağ yedeklemeleriyle oluşur; çok yeni bir notta henüz görünmeyebilir.\n\nSabitle\nNot Geçmişi ›\nSil\nKenar çubuğunda nota sağ tıkla → Not Geçmişi. Bir sürüme tıklayınca not o haline döner.\n\nÇöp kutusu\n\n30 gün · geri yükle veya kalıcı sil\n\nCtrl+Z ile hemen geri al\nSildiğin notlar çöpte otuz gün kalır. Çöpü kapatırsan içindeki her şey anında silinir.\nÜyelik paketleri\n\nFreemium ücretsizdir. Ayrıntı «Premium’a geç» ekranında.\n\nFreemium\n\n5 cihaz · 1 GB\n\nLite\n\n10 cihaz · 50 GB\n\nPremium\n\nSınırsız · 250 GB\n\nFreemium ücretsizdir. Lite ve Premium daha çok cihaz, alan ve daha sık yedek sunar.\n\nFreemium\n\nÜcretsiz\n\nSınırsız not\n5 cihaza kadar senkron\n1 GB depolama\n\nLite Premium\n\nDaha fazla alan\n\nSınırsız not\n10 cihaz\n50 GB alan\n\nPremium\n\nTam kapasite\n\nSınırsız cihaz\n250 GB\nDaha hızlı eşleşme ve daha sık yedek\nSık sorulan sorular\n\nKısa cevaplar. Soruya tıklayınca açılır.\n\nİnternet olmadan çalışabilir miyim?\n\nEvet. Tüm not türlerini çevrimdışı yazarsın; yazdıkların anında cihazına kaydolur. Bağlantı gelince senkron ve ağ yedeği kaldığı yerden devam eder.\n\nBulutta mı saklanıyor?\nNotun içinde nasıl ararım?\nİki notu aynı anda nasıl görürüm?\nSildiğim bir notu geri alabilir miyim?\nÇözüm bulamadınız mı? Bize ulaşın\n\nGeri bildirim veya teknik yardım için doğru kanalı seçin.\n\nÖneri ve şikayet\n\nFikirlerini, beğendiğin veya gelmesini istediğin özellikleri bizimle paylaş.\n\nYakında\nTeknik destek\n\nSenkronizasyon, giriş veya uygulama hataları için teknik ekibimize yaz.\n\nYakında",
+    "fields": [
+      {
+        "aria": "Başlıklarda ara",
+        "type": "text",
+        "ph": "Başlık ara",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      }
+    ],
+    "buttons": [
+      {
+        "text": "H\nHata tarama",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kenar çubuğunu daralt"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart işlemleri"
+      },
+      {
+        "text": "Ekle",
+        "aria": "Yeni İçerik Ekle"
+      },
+      {
+        "text": "Yükle",
+        "aria": "Dosya veya klasör yükle"
+      },
+      {
+        "text": "",
+        "aria": "Ayarlar"
+      },
+      {
+        "text": "",
+        "aria": "Profil"
+      },
+      {
+        "text": "",
+        "aria": "Görünüm"
+      },
+      {
+        "text": "",
+        "aria": "Premium'a geç"
+      },
+      {
+        "text": "",
+        "aria": "Yardım ve destek"
+      },
+      {
+        "text": "",
+        "aria": "Çöp kutusu"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart sekmesini kapat"
+      },
+      {
+        "text": "TxtNote nedir",
+        "aria": null
+      },
+      {
+        "text": "Başlarken",
+        "aria": null
+      },
+      {
+        "text": "Not türleri",
+        "aria": null
+      },
+      {
+        "text": "Kenar çubuğu",
+        "aria": null
+      },
+      {
+        "text": "Sekmeler ve bölme",
+        "aria": null
+      },
+      {
+        "text": "Yazı, formül, kod",
+        "aria": null
+      },
+      {
+        "text": "Kısayollar",
+        "aria": null
+      },
+      {
+        "text": "Haritalandırmalı not",
+        "aria": null
+      },
+      {
+        "text": "Görünüm ve ayarlar",
+        "aria": null
+      },
+      {
+        "text": "Verilerin güvende",
+        "aria": null
+      },
+      {
+        "text": "Ağ nedir",
+        "aria": null
+      },
+      {
+        "text": "Senkronizasyon",
+        "aria": null
+      },
+      {
+        "text": "Ağ bağlantısı",
+        "aria": null
+      },
+      {
+        "text": "Geçmiş ve çöp",
+        "aria": null
+      },
+      {
+        "text": "Üyelik paketleri",
+        "aria": null
+      },
+      {
+        "text": "Sık sorulan sorular",
+        "aria": null
+      },
+      {
+        "text": "Bize ulaşın",
+        "aria": null
+      },
+      {
+        "text": "İnternet olmadan çalışabilir miyim?",
+        "aria": null
+      },
+      {
+        "text": "Bulutta mı saklanıyor?",
+        "aria": null
+      },
+      {
+        "text": "Notun içinde nasıl ararım?",
+        "aria": null
+      },
+      {
+        "text": "İki notu aynı anda nasıl görürüm?",
+        "aria": null
+      },
+      {
+        "text": "Sildiğim bir notu geri alabilir miyim?",
+        "aria": null
+      },
+      {
+        "text": "Yakında",
+        "aria": null
+      },
+      {
+        "text": "Yakında",
+        "aria": null
+      }
+    ]
+  },
+  {
+    "panel": "Çöp kutusu",
+    "text": "H\nHata tarama\n\nİÇERİKLER\n\nKalıcı standart\nEkle\nYükle\nAyarlar\nProfil\nGörünüm\nPremium'a geç\nYardım ve destek\nÇöp kutusu\nKalıcı standart\nÇöp kutusu\n\nSildiğin içerikler önce buraya düşer ve 30 gün bekler.\n\nÇöp kutusu boş\n\nBir içeriği sildiğinde burada listelenir; 30 gün boyunca geri alabilirsin.\n\nÇÖP KUTUSUNU KULLAN\n\nAçık\n\nSilinen içerikler 30 gün burada bekler, sonra kendiliğinden gider.\n\nTüm çöp kutusunu boşalt",
+    "fields": [
+      {
+        "aria": "Başlıklarda ara",
+        "type": "text",
+        "ph": "Başlık ara",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      },
+      {
+        "aria": null,
+        "type": "file",
+        "ph": "",
+        "value": ""
+      }
+    ],
+    "buttons": [
+      {
+        "text": "H\nHata tarama",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kenar çubuğunu daralt"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart işlemleri"
+      },
+      {
+        "text": "Ekle",
+        "aria": "Yeni İçerik Ekle"
+      },
+      {
+        "text": "Yükle",
+        "aria": "Dosya veya klasör yükle"
+      },
+      {
+        "text": "",
+        "aria": "Ayarlar"
+      },
+      {
+        "text": "",
+        "aria": "Profil"
+      },
+      {
+        "text": "",
+        "aria": "Görünüm"
+      },
+      {
+        "text": "",
+        "aria": "Premium'a geç"
+      },
+      {
+        "text": "",
+        "aria": "Yardım ve destek"
+      },
+      {
+        "text": "",
+        "aria": "Çöp kutusu"
+      },
+      {
+        "text": "Kalıcı standart",
+        "aria": null
+      },
+      {
+        "text": "",
+        "aria": "Kalıcı standart sekmesini kapat"
+      },
+      {
+        "text": "Açık",
+        "aria": "Çöp kutusu"
+      },
+      {
+        "text": "Tüm çöp kutusunu boşalt",
+        "aria": null
+      }
+    ]
+  },
+  {
+    "panel": "todo",
+    "text": "H\nHata tarama\n\nİÇERİKLER\n\nKalıcı standart\nBaşlıksız not\nEkle\nYükle\nAyarlar\nProfil\nGörünüm\nPremium'a geç\nYardım ve destek\nÇöp kutusu\nKalıcı standart\nBaşlıksız not\n\nAşağıya ilk görevini yaz.\n\nDaireye bas: bekliyor → başarılı → başarısız · Sayı hedefi verirsen görev, o sayıya ulaşınca kendi işaretlenir",
+    "fields": [
+      {
+        "aria": "Başlıklarda ara",
+        "ph": "Başlık ara",
+        "tag": "INPUT"
+      },
+      {
+        "aria": null,
+        "ph": "",
+        "tag": "INPUT"
+      },
+      {
+        "aria": null,
+        "ph": "",
+        "tag": "INPUT"
+      },
+      {
+        "aria": "Not başlığı",
+        "tag": "DIV"
+      },
+      {
+        "aria": "Yeni görev",
+        "ph": "Yeni görev…",
+        "tag": "TEXTAREA"
+      },
+      {
+        "aria": "Günlük hedef",
+        "ph": "günlük hedef",
+        "tag": "INPUT"
+      }
+    ]
+  }
+]

@@ -59,7 +59,7 @@ describe("canonical typography and Word properties", () => {
     const xml = strFromU8((await xmlParts(t, "<p>AAA\t7</p>"))["word/document.xml"]);
     assert.match(xml, /<w:mirrorIndents\/>/);
     assert.match(xml, /<w:keepLines\/>/);
-    assert.match(xml, /<w:widowControl w:val="false"\/>/);
+    assert.match(xml, /<w:widowControl w:val="0"\/>/);
     assert.match(xml, /<w:tab w:val="right" w:pos="5669" w:leader="dot"\/>/);
     assert.match(xml, /<w:tab\/>/);
   });

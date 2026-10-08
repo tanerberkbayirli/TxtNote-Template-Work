@@ -67,7 +67,8 @@ try {
     await choose(id);
     const before = await measure(id);
     const peer = await measure(id === "alignment-frame" ? "cover:block:1" : "alignment-frame");
-    assert.equal(await page.getByLabel("Hizalama alanı").inputValue(), "page");
+    if (id === "cover:block:1") assert.equal(await page.getByLabel("Hizalama alanı").inputValue(), "page");
+    await page.getByLabel("Hizalama alanı").selectOption("content");
     assert.equal(await page.getByRole("listbox", { name: "Stil galerisi" }).getByRole("option").first().isDisabled(), true, "paragraph-only styles cannot silently act on a text box");
     for (const [label, key, expected] of [["Sola hizala", "textLeft", bounds.left], ["Sağa hizala", "textRight", bounds.right], ["Ortala", "textCenter", bounds.center]]) {
       await page.getByRole("button", { name: label, exact: true }).click();
@@ -154,7 +155,7 @@ try {
   }
   assert.match(await page.evaluate(() => window.thesisTest.getDoc().content), /Gövde metni seçim kontrolü/);
   await inspector.getByLabel("Öğeyi kilitle", { exact: true }).uncheck();
-  await page.getByLabel("Hizalama alanı").selectOption("page");
+  await page.getByLabel("Hizalama alanı").selectOption("content");
   await page.getByRole("button", { name: "Sağa hizala", exact: true }).click();
   await page.reload();
   near((await measure("alignment-frame")).textRight, bounds.right, "page alignment persists after reload");

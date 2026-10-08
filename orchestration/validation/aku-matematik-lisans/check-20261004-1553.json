@@ -1,0 +1,1042 @@
+{
+ "target": "aku-matematik-lisans",
+ "stamp": "20261004-1553",
+ "counts": {
+  "PASS": 53,
+  "INFO": 2
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-matematik-lisans.fixture.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\default.word.pdf"
+  },
+  "tables": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\tables.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\tables.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\tables.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-matematik-lisans.fixture.tables.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\tables.word.pdf"
+  }
+ },
+ "wordRequested": true,
+ "measurementSeconds": 1.454,
+ "sourceProvenance": {
+  "revision": "f8df108789650c522daab861d8c840de7bc551f0",
+  "trackedDiffSha256": "21250bbc6118477b6cce9bc783c20d0de3b39c39b62ab68af64560b03d1a67bc",
+  "diagnosticsSha256": "efd3ce3cd4b3fcd63dcb9c5765adb87be8607833109b4cfb65ec1256306be7d1",
+  "startedAt": "2026-10-04T12:52:57.378Z"
+ },
+ "checksSha256": "db51ab0abc5def4d11c8aaa1c69e187f3d868e0e4b0699bf27ccc02b052363ef",
+ "artifactSha256": {
+  "default": {
+   "fixture": "dd2fcf7851415fbb76935edc0cbb45bc1c0a01789dac1466f9847353e28812b0",
+   "pdf": "cb2a8bcb7dd21dd566fb2a3ba0794eb3ecf3f4e183fc3f31a25afa0fe355a1ce",
+   "docx": "c476214c15aa319cf5a37987706dccbc3bb68aa20f3108ae79fcc4e6a5202e79",
+   "layout": "cdb444a0444e48f9e733a5564b47411a371e4d7bc844e52a3ca46bf24c1e34ee",
+   "wordPdf": "0870632e4419147c6fb626430f4939f104befa7195e842d854acf5af1b3572df"
+  },
+  "tables": {
+   "fixture": "a16349732e293a7dd7902238b8b5d2fbbf1e56df91b493920236a3229ab08850",
+   "pdf": "53e09ad87e2f2bb1cc37f40dfcf2c66a9e98319179fc59a06b5114cc9496309a",
+   "docx": "3ade18ac74c02878afa32c75d3479cc51ff7d896098ca90224356d0ea3e94637",
+   "layout": "48c079ca2f7557f8f593c45166628e86b743659335f2a7e4f5bb13b18cbf64b6",
+   "wordPdf": "8bc2edb7b8f9617053549057ddcbd80e672dd7f7d6d3e9680000b9fd7c2e5730"
+  }
+ },
+ "checks": [
+  {
+   "id": "pdf.pagesize",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr/pgSz (A4)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "34 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.fonts",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT",
+    "CambriaMath"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "styles.xml rFonts Times New Roman (+ Cambria Math equations); exact embedded font programs"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    "CambriaMath",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.margins.left",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr/pgMar left 30.004 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 29.996,
+   "delta": -0.004,
+   "note": "min over 25 pages [30.00..30.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.margins.right",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr/pgMar right 30.004 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 179.999,
+   "delta": -0.001,
+   "note": "max over 25 pages [142.17..180.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.margins.first-baseline",
+   "kind": "line_attr",
+   "expected": 33.96,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render of template: first body baseline 33.96 (30 mm top margin)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 33.949,
+   "delta": -0.011,
+   "note": "7 lines, pages [10, 11, 15, 19, 24, 28]",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.body.pitch",
+   "kind": "line_pitch",
+   "expected": 7.3025,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "style line=360 (1.5 lines): 7.30 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": -0.0015,
+   "note": "mode bucket 7.3 (311/375 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.body.para-gap",
+   "kind": "delta_present",
+   "expected": 14.6,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "template paragraph spacing: 14.6 mm paragraph gap"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 14.601,
+   "note": "82 gaps within tolerance",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.pagenum.labels",
+   "kind": "page_labels",
+   "expected": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr pgNumType: none,none,i-vii,1-25"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.pagenum.centre-x",
+   "kind": "page_number_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "footer centred on 210 mm page"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 104.994,
+   "delta": -0.006,
+   "note": "median of 25 [104.99..105.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.pagenum.size",
+   "kind": "page_number_attr",
+   "expected": 10,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "footer page number 10 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 10,
+   "delta": 0,
+   "note": "median of 25 [10.00..10.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.pagenum.baseline",
+   "kind": "page_number_attr",
+   "expected": 283.8,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render footer baseline ~283.8"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 283.534,
+   "delta": -0.266,
+   "note": "median of 25 [283.53..283.53]",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.pagination.capacity",
+   "kind": "text_extent",
+   "expected": 260.3,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "full page fills 32 slots to 260.3"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 260.276,
+   "delta": -0.024,
+   "note": "max over 25 pages [63.15..260.28]",
+   "status": "PASS"
+  },
+  {
+   "id": "cover.outer",
+   "kind": "line_baselines",
+   "expected": [
+    208.39,
+    213.26,
+    220.25,
+    227.24,
+    234.22,
+    239.09,
+    250.94,
+    257.93
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render p1 baselines 208.39..257.93 (2-line title)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    208.392,
+    213.258,
+    220.241,
+    227.223,
+    234.206,
+    239.072,
+    250.92,
+    257.903
+   ],
+   "delta": [
+    0.002,
+    -0.002,
+    -0.009,
+    -0.017,
+    -0.014,
+    -0.018,
+    -0.02,
+    -0.027
+   ],
+   "note": "page 1",
+   "status": "PASS"
+  },
+  {
+   "id": "cover.inner",
+   "kind": "line_baselines",
+   "expected": [
+    127.14,
+    158.35,
+    192.43,
+    200.98,
+    235.07,
+    252.09
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render p2 baselines (multi-line title rule UNKNOWN: wrapped pitch 5.68 vs official separate paragraphs 8.51)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    127.103,
+    158.341,
+    192.418,
+    200.939,
+    235.016,
+    252.053
+   ],
+   "delta": [
+    -0.037,
+    -0.009,
+    -0.012,
+    -0.041,
+    -0.054,
+    -0.037
+   ],
+   "note": "page 2",
+   "status": "PASS"
+  },
+  {
+   "id": "ack.first-lines",
+   "kind": "line_baselines",
+   "expected": [
+    33.96,
+    48.56
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render TEŞEKKÜR page"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    33.949,
+    48.551
+   ],
+   "delta": [
+    -0.011,
+    -0.009
+   ],
+   "note": "page 3",
+   "status": "PASS"
+  },
+  {
+   "id": "ack.para-gap",
+   "kind": "line_gap",
+   "expected": 14.6,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render TEŞEKKÜR page: paragraph gap 14.6"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 14.601,
+   "delta": 0.001,
+   "note": "page 3",
+   "status": "PASS"
+  },
+  {
+   "id": "ack.name-gap",
+   "kind": "line_gap",
+   "expected": 21.9,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render TEŞEKKÜR page: name gap 21.9"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 21.902,
+   "delta": 0.002,
+   "note": "page 3",
+   "status": "PASS"
+  },
+  {
+   "id": "toc.labels",
+   "kind": "toc_labels",
+   "expected": "all entries match",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "TOC entry page labels equal real page labels (35 entries)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "40/40",
+   "status": "PASS"
+  },
+  {
+   "id": "toc.indents",
+   "kind": "line_baselines",
+   "expected": [
+    30,
+    35,
+    40,
+    45
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "TOC styles: indents 0/5/10/15 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    29.997,
+    34.995,
+    39.993,
+    44.996
+   ],
+   "delta": [
+    -0.003,
+    -0.005,
+    -0.007,
+    -0.004
+   ],
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "toc.pitch",
+   "kind": "pitch_series",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "TOC pitch 7.30 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "median of 29 gaps [7.30..7.30]",
+   "status": "PASS"
+  },
+  {
+   "id": "lists.entry.gap",
+   "kind": "line_gap",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "template XML P136-138 (style table of figures): line=360 after=0 => 7.30 mm per line; Word render of official p7-9: 7.28-7.33"
+   },
+   "evidence": "MEASURED",
+   "ruling": "user precedence XML>prose: 7.30 mm per line incl. wrapped lines",
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "page 7",
+   "status": "PASS"
+  },
+  {
+   "id": "lists.entry.wrapped-pitch",
+   "kind": "line_gap",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "template XML P136-138 line=360 after=0 => 7.30 mm incl. wrapped lines"
+   },
+   "evidence": "MEASURED",
+   "ruling": "user precedence XML>prose: 7.30 mm per line incl. wrapped lines",
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "page 7",
+   "status": "PASS"
+  },
+  {
+   "id": "symbols.table.x0",
+   "kind": "line_baselines",
+   "expected": [
+    31.97
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "document.xml ~119595: centered table + cell margin; official Word render p6 text x0 31.97"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    31.895
+   ],
+   "delta": [
+    -0.075
+   ],
+   "note": "page 6",
+   "status": "PASS"
+  },
+  {
+   "id": "symbols.table.rules",
+   "kind": "rules_count",
+   "expected": 3,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "document.xml ~119595: tcBorders bottom single sz4 under Simgeler/Kisaltmalar header cells and last row"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 3,
+   "delta": 0,
+   "note": "page 6, rule y mm [49.7, 79.2, 89.2]",
+   "status": "PASS"
+  },
+  {
+   "id": "symbols.table.group-gap",
+   "kind": "line_gap",
+   "expected": 9.9,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render p6: blank row between groups (9.89)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.732,
+   "delta": -0.168,
+   "note": "page 6",
+   "status": "PASS"
+  },
+  {
+   "id": "symbols.def",
+   "kind": "span_attr",
+   "expected": 70.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "definition column 70.7 (hanging)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 70.652,
+   "delta": -0.048,
+   "note": "page 6, span 'Frekans'",
+   "status": "PASS"
+  },
+  {
+   "id": "headings.h1-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "H1 bold"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "7 lines, pages [10, 11, 15, 19, 24, 28]",
+   "status": "PASS"
+  },
+  {
+   "id": "headings.h1-size",
+   "kind": "line_attr",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "H1 12 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "7 lines, pages [10, 11, 15, 19, 24, 28]",
+   "status": "PASS"
+  },
+  {
+   "id": "headings.h1-spacing-after",
+   "kind": "line_gap",
+   "expected": 14.6,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "H1 14.6 mm before/after"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 14.602,
+   "delta": 0.002,
+   "note": "page 10",
+   "status": "PASS"
+  },
+  {
+   "id": "caption.size",
+   "kind": "line_attr",
+   "expected": 11,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "captions 11 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 11,
+   "delta": 0,
+   "note": "5 lines, pages [13, 17, 22, 26]",
+   "status": "PASS"
+  },
+  {
+   "id": "table.continued-caption",
+   "kind": "line_baselines",
+   "expected": [
+    33.62
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render: (Devam) caption baseline 33.62"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    33.619
+   ],
+   "delta": [
+    -0.001
+   ],
+   "note": "page 23",
+   "status": "PASS"
+  },
+  {
+   "id": "table.continued-header-repeat",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "table header row repeated on continuation page"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "1 lines, pages [23]",
+   "status": "PASS"
+  },
+  {
+   "id": "table.rules-continued",
+   "kind": "rules_count",
+   "expected": 3,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "table: 3 horizontal rules"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 3,
+   "delta": 0,
+   "note": "page 23, rule y mm [37.1, 42.0, 251.5]",
+   "status": "PASS"
+  },
+  {
+   "id": "bibliography.hanging",
+   "kind": "line_baselines",
+   "expected": [
+    30,
+    42.5
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "hanging indent 42.5 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    29.997,
+    42.495
+   ],
+   "delta": [
+    -0.003,
+    -0.005
+   ],
+   "note": "page 31",
+   "status": "PASS"
+  },
+  {
+   "id": "docx.margin-left",
+   "kind": "docx_section",
+   "expected": 30.004,
+   "tolerance": 0.01,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr/pgMar left (14 sections)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.0,
+   "note": "14 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx.header-distance",
+   "kind": "docx_section",
+   "expected": 12.506,
+   "tolerance": 0.01,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr/pgMar header (14 sections)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 12.506,
+   "delta": 0.0,
+   "note": "14 sections, range 12.506..12.506",
+   "status": "PASS"
+  },
+  {
+   "id": "docx.pgnum-fmt",
+   "kind": "docx_attr",
+   "expected": [
+    "lowerRoman",
+    "decimal"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr/pgNumType fmt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    "decimal",
+    "lowerRoman"
+   ],
+   "note": "14 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "docx.pgnum-start",
+   "kind": "docx_attr",
+   "expected": [
+    "1"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "sectPr/pgNumType start=1"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    "1"
+   ],
+   "note": "2 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "docx.fonts",
+   "kind": "docx_attr",
+   "expected": [
+    "Times New Roman",
+    "Cambria Math"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "rFonts: TNR + Cambria Math only"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    "Cambria Math",
+    "Times New Roman"
+   ],
+   "note": "2224 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "docx.no-undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "no <undefined; field validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "word.opens",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word COM own instance"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "opened and exported",
+   "status": "PASS"
+  },
+  {
+   "id": "word.page-count",
+   "kind": "page_count",
+   "expected": 34,
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render of our DOCX: 34 pages"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 34,
+   "delta": 0,
+   "status": "PASS"
+  },
+  {
+   "id": "word.labels",
+   "kind": "page_labels",
+   "expected": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render: none,none,i-vii,1-25"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "viaWord": true,
+   "actual": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25",
+   "status": "PASS"
+  },
+  {
+   "id": "word.pagenum-baseline",
+   "kind": "page_number_attr",
+   "expected": 283.76,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render page-number baseline 283.76"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 283.76,
+   "delta": 0.0,
+   "note": "median of 25 [283.76..283.76]",
+   "status": "PASS"
+  },
+  {
+   "id": "word.first-baseline",
+   "kind": "line_attr",
+   "expected": 33.96,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render first baseline 33.96"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 33.958,
+   "delta": -0.002,
+   "note": "7 lines, pages [10, 11, 15, 19, 24, 28]",
+   "status": "PASS"
+  },
+  {
+   "id": "word.left",
+   "kind": "text_extent",
+   "expected": 30.02,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render left edge 30.02"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 30.023,
+   "delta": 0.003,
+   "note": "min over 25 pages [30.02..30.02]",
+   "status": "PASS"
+  },
+  {
+   "id": "note.word-pdf-pagination",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "independent-2 word.pdf.pagination"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "Word flow vs editor flow differ per page but rules are identical (INFO)"
+  },
+  {
+   "id": "note.footnote-size",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "independent-2 footnote.size"
+   },
+   "evidence": "UNKNOWN",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "NOT_SPECIFIED by source; 10 pt via style chain (INFO)"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "237 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-default",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "pdf=34 word=34",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-default",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25",
+    "word": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25"
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "engine-body-pitch-default",
+   "kind": "body_pitch_match",
+   "expected": "equal within 0.2 pt",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "style line=360 (1.5 lines): 7.30 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": 7.301,
+    "word": 7.292,
+    "deltaPt": 0.025511811023623016
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-tables",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "253 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-tables",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "pdf=35 word=35",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-tables",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26",
+    "word": "none x2, i, ii, iii, iv, v, vi, vii, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26"
+   },
+   "status": "PASS"
+  }
+ ]
+}

@@ -34,9 +34,9 @@ describe("Natural spacing on the last line of a justified paragraph", () => {
     assert.equal(lastLineShifts([w(0, 10), w(4, 10)], 0).size, 0);
     assert.equal(lastLineShifts([], 0.8).size, 0);
   });
-  it("a word wrapped inside itself ends the last-line run", () => {
+  it("restores the gap after the last-line suffix of a wrapped word", () => {
     const shifts = lastLineShifts([w(0, 10), { start: 4, end: 9, top: 10, lastTop: 30 }, w(10, 30)], 1);
-    assert.equal(shifts.size, 0);
+    assert.deepEqual([...shifts.entries()], [[1, 0], [2, 1]]);
   });
   it("a one-line paragraph is shifted (Word draws a single-line paragraph with natural spaces)", () => {
     assert.deepEqual([...lastLineShifts([w(0, 10), w(4, 10), w(8, 10)], 1).values()], [0, 1, 2]);

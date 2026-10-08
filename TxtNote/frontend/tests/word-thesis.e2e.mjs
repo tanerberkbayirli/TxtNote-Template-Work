@@ -228,7 +228,7 @@ async function main() {
       const { unzipSync, strFromU8 } = await import("fflate");
       const files = unzipSync(bytes);
       const xml = strFromU8(files["word/document.xml"]);
-      assert.match(strFromU8(files["word/settings.xml"]), /<w:updateFields w:val="false"\s*\/>/, "DOCX does not request field updates on opening");
+      assert.match(strFromU8(files["word/settings.xml"]), /<w:updateFields w:val="(?:false|0)"\s*\/>/, "DOCX does not request field updates on opening");
       assert.doesNotMatch(xml, /w:dirty="true"/, "cached fields are not marked for automatic recalculation");
       assert.match(xml, /TOC \\h/, "the table of contents remains a live Word field");
       assert.match(xml, /<w:tbl(?:\s|>)/, "downloaded DOCX contains the inserted table");

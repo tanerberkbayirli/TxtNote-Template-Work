@@ -107,6 +107,16 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
   const commitThesis = useCallback((next, reason = "action") => {
     const current = latestRef.current.thesis || {};
     if (next === current) return;
+    // Ribbon buttons preserve focus, so blur may never flush the edited frame.
+    // Publish its visible text in the same transaction as the layout/format pick.
+    const edit = editRef.current;
+    if (edit) {
+      const content = edit.node.innerText.replace(/\r\n?/g, "\n");
+      if (content !== edit.original) {
+        next = updateLayoutElements(next, [{ id: edit.id, text: content, content }]);
+        edit.original = content;
+      }
+    }
     historyRef.current.past.push(current.layout);
     if (historyRef.current.past.length > 100) historyRef.current.past.shift();
     historyRef.current.future = [];

@@ -186,7 +186,8 @@ textarea::selection,
 
   .fmt-align-left,
   .fmt-align-center,
-  .fmt-align-right {
+  .fmt-align-right,
+  .fmt-align-justify {
     display: block;
     width: 100%;
   }
@@ -201,6 +202,20 @@ textarea::selection,
 
   .fmt-align-right {
     text-align: right;
+  }
+
+  .fmt-align-justify {
+    text-align: justify;
+  }
+
+  :is(td, th)[class*="fmt-align-"] {
+    display: table-cell;
+    width: auto;
+  }
+
+  li[class*="fmt-align-"] {
+    display: list-item;
+    width: auto;
   }
 
   .fmt-align-center .math-formula--block,

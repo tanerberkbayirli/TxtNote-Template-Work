@@ -344,6 +344,12 @@ export function thesisSectionCss(section) {
       if (style.pageBreakUnlessAfterHeading) rules.push(`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6)+h${level}{margin-top:${style.spaceBeforePt || 0}pt !important}`);
     }
   }
+  // A document-local alignment command outranks the template's paragraph/heading
+  // style. Also honor wrappers saved before headings became alignment hosts.
+  for (const align of ["left", "center", "right", "justify"]) {
+    const blocks = ":is(p,h1,h2,h3,h4,h5,h6,div,li)";
+    rules.push(`${scope} .thesis-body ${blocks}.fmt-align-${align},${scope} .thesis-body div.fmt-align-${align}>:is(p,h1,h2,h3,h4,h5,h6):not([class*="fmt-align-"]){text-align:${align};${["center", "right"].includes(align) ? "text-indent:0;" : ""}}`);
+  }
   return rules.join("\n");
 }
 

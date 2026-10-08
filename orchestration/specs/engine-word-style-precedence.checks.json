@@ -1,0 +1,749 @@
+[
+  {
+    "id": "base-pdf-font",
+    "kind": "fonts",
+    "params": {
+      "fixture": "base",
+      "regex": "^BASE_ROW_",
+      "families": [
+        "Times New Roman"
+      ]
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "one isolated section; body TNR remains the font fallback while paragraph properties conflict"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "base-pdf-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "base",
+      "regex": "^BASE_ROW_"
+    },
+    "expected": 10,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "paragraph fontSizePt 10 overrides body 12"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "base-pdf-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "base",
+      "regex": "^BASE_ROW_"
+    },
+    "expected": 4.057,
+    "tolerance": 0.15,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "base-pdf-indent",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "base",
+      "regex": "^BASE_ROW_",
+      "attr": "x0",
+      "agg": "first"
+    },
+    "expected": 34,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "30 mm left margin + paragraph firstLineIndent 4 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "base-docx-font",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "base",
+      "tag": "rFonts",
+      "attrs": [
+        "ascii"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "Times New Roman"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json DOCX",
+      "locator": "only fixture text paragraphs use body font fallback"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "base-docx-size",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "base",
+      "tag": "sz",
+      "attrs": [
+        "val"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "20"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json DOCX",
+      "locator": "paragraph 10 pt = 20 half-points"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "base-docx-pitch",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "base",
+      "tag": "spacing",
+      "attrs": [
+        "line"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "240"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json DOCX",
+      "locator": "paragraph lineHeight 1 = 240 auto twips"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "base-docx-indent",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "base",
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "227"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json DOCX",
+      "locator": "paragraph indent 4 mm = 227 twips"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-pdf-font",
+    "kind": "fonts",
+    "params": {
+      "fixture": "section",
+      "regex": "^SECTION_ROW_",
+      "families": [
+        "Arial"
+      ]
+    },
+    "expected": [
+      "ArialMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "section paragraph override Arial wins over body and global paragraph"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-pdf-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "section",
+      "regex": "^SECTION_ROW_"
+    },
+    "expected": 11,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "section paragraph fontSizePt 11 wins over global paragraph 10"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-pdf-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "section",
+      "regex": "^SECTION_ROW_"
+    },
+    "expected": 5.578,
+    "tolerance": 0.15,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-pdf-indent",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "section",
+      "regex": "^SECTION_ROW_",
+      "attr": "x0",
+      "agg": "first"
+    },
+    "expected": 36,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "30 mm left margin + section firstLineIndent 6 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-docx-font",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "section",
+      "tag": "rFonts",
+      "attrs": [
+        "ascii"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "Arial"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json DOCX",
+      "locator": "section override Arial run font"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-docx-size",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "section",
+      "tag": "sz",
+      "attrs": [
+        "val"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "22"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json DOCX",
+      "locator": "section 11 pt = 22 half-points"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-docx-pitch",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "section",
+      "tag": "spacing",
+      "attrs": [
+        "line"
+      ],
+      "mode": "has"
+    },
+    "expected": 300,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json DOCX",
+      "locator": "canonical lineSpacing auto value 1.25 = 300 twips (section) / 2 = 480 twips (named)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "section-docx-indent",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "section",
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "340"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json DOCX",
+      "locator": "section indent 6 mm = 340 twips"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-pdf-font",
+    "kind": "fonts",
+    "params": {
+      "fixture": "named",
+      "regex": "^NAMED_ROW_",
+      "families": [
+        "Calibri"
+      ]
+    },
+    "expected": [
+      "Calibri"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "named paragraph style Calibri wins over section Arial"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-pdf-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "named",
+      "regex": "^NAMED_ROW_"
+    },
+    "expected": 14,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "named paragraph style 14 pt wins over section 11 pt"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-pdf-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "named",
+      "regex": "^NAMED_ROW_",
+      "hi": 15
+    },
+    "expected": 12.058,
+    "tolerance": 0.2,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-pdf-indent",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "named",
+      "regex": "^NAMED_ROW_",
+      "attr": "x0",
+      "agg": "first"
+    },
+    "expected": 38,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "30 mm left margin + named style firstLineIndent 8 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-docx-font",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "named",
+      "tag": "rFonts",
+      "attrs": [
+        "ascii"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "Calibri"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json DOCX",
+      "locator": "named style Calibri run font"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-docx-size",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "named",
+      "tag": "sz",
+      "attrs": [
+        "val"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "28"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json DOCX",
+      "locator": "named 14 pt = 28 half-points"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-docx-pitch",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "named",
+      "tag": "spacing",
+      "attrs": [
+        "line"
+      ],
+      "mode": "has"
+    },
+    "expected": 480,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json DOCX",
+      "locator": "canonical lineSpacing auto value 1.25 = 300 twips (section) / 2 = 480 twips (named)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "named-docx-indent",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "named",
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "454"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json DOCX",
+      "locator": "named indent 8 mm = 454 twips"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "direct-pdf-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "direct",
+      "regex": "^DIRECT_SIZE_TOKEN$"
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.direct.json",
+      "locator": "inline direct format size 18 pt overrides named style size 14 pt"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "direct-docx-size",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "direct",
+      "tag": "sz",
+      "attrs": [
+        "val"
+      ],
+      "mode": "has"
+    },
+    "expected": [
+      "36"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.direct.json DOCX",
+      "locator": "direct 18 pt run size = 36 half-points"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-font-base",
+    "kind": "fonts",
+    "params": {
+      "fixture": "base",
+      "source": "word",
+      "regex": "^BASE_ROW_",
+      "families": [
+        "Times New Roman"
+      ]
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-size-base",
+    "kind": "font_size",
+    "params": {
+      "fixture": "base",
+      "source": "word",
+      "regex": "^BASE_ROW_"
+    },
+    "expected": 10,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "text-anchored Word run font size for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-indent-base",
+    "kind": "line_attr_match",
+    "params": {
+      "fixture": "base",
+      "regex": "^BASE_ROW_",
+      "attr": "x0"
+    },
+    "expected": "same first-line x position in PDF and Word",
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "left margin plus resolved first-line indent (34 mm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-pitch-base",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "base",
+      "source": "word",
+      "regex": "^BASE_ROW_"
+    },
+    "expected": 4.057,
+    "tolerance": 0.2,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.base.json",
+      "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-font-section",
+    "kind": "fonts",
+    "params": {
+      "fixture": "section",
+      "source": "word",
+      "regex": "^SECTION_ROW_",
+      "families": [
+        "Arial"
+      ]
+    },
+    "expected": [
+      "ArialMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-size-section",
+    "kind": "font_size",
+    "params": {
+      "fixture": "section",
+      "source": "word",
+      "regex": "^SECTION_ROW_"
+    },
+    "expected": 11,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "text-anchored Word run font size for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-indent-section",
+    "kind": "line_attr_match",
+    "params": {
+      "fixture": "section",
+      "regex": "^SECTION_ROW_",
+      "attr": "x0"
+    },
+    "expected": "same first-line x position in PDF and Word",
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "left margin plus resolved first-line indent (36 mm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-pitch-section",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "section",
+      "source": "word",
+      "regex": "^SECTION_ROW_"
+    },
+    "expected": 5.578,
+    "tolerance": 0.2,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.section.json",
+      "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-font-named",
+    "kind": "fonts",
+    "params": {
+      "fixture": "named",
+      "source": "word",
+      "regex": "^NAMED_ROW_",
+      "families": [
+        "Calibri"
+      ]
+    },
+    "expected": [
+      "Calibri"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-size-named",
+    "kind": "font_size",
+    "params": {
+      "fixture": "named",
+      "source": "word",
+      "regex": "^NAMED_ROW_"
+    },
+    "expected": 14,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "text-anchored Word run font size for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-indent-named",
+    "kind": "line_attr_match",
+    "params": {
+      "fixture": "named",
+      "regex": "^NAMED_ROW_",
+      "attr": "x0"
+    },
+    "expected": "same first-line x position in PDF and Word",
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "left margin plus resolved first-line indent (38 mm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-pitch-named",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "named",
+      "source": "word",
+      "regex": "^NAMED_ROW_",
+      "hi": 15
+    },
+    "expected": 12.058,
+    "tolerance": 0.2,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.named.json",
+      "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-font-direct",
+    "kind": "fonts",
+    "params": {
+      "fixture": "direct",
+      "source": "word",
+      "regex": "^DIRECT_SIZE_TOKEN$",
+      "families": [
+        "Calibri"
+      ]
+    },
+    "expected": [
+      "Calibri"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.direct.json",
+      "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-size-direct",
+    "kind": "font_size",
+    "params": {
+      "fixture": "direct",
+      "source": "word",
+      "regex": "^DIRECT_SIZE_TOKEN$"
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.direct.json",
+      "locator": "text-anchored Word run font size for this isolated precedence layer"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "word-indent-direct",
+    "kind": "line_attr_match",
+    "params": {
+      "fixture": "direct",
+      "regex": "^DIRECT_SIZE_TOKEN$",
+      "attr": "x0"
+    },
+    "expected": "same first-line x position in PDF and Word",
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine-word-style-precedence.fixture.direct.json",
+      "locator": "left margin plus resolved first-line indent (38 mm)"
+    },
+    "evidence": "EXPLICIT"
+  }
+]

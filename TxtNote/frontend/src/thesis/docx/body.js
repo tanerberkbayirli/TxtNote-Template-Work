@@ -56,7 +56,7 @@ export function docxChildren(section, context) {
   if (section.layout) {
     const split = splitLayoutNodes(section.layout);
     const frame = page.docxContentFrame;
-    if (frame) children.push(positionedSpecialPageDocx(split.flow, { ...context, pageMargins: page.margins }, frame));
+    if (frame) children.push(positionedSpecialPageDocx(split.flow, { ...context, pageMargins: page.docxMargins || page.margins }, frame));
     else children.push(...specialPageDocx(split.flow, context, widthMm));
     children.push(...positionedLayoutDocx(split.positioned, { language: context.language, lineSpacing: context.lineSpacing, pageMargins: page.margins }));
   }
@@ -113,10 +113,11 @@ export function docxChildren(section, context) {
       }
       const headingBreaks = !(block.unnumbered || (previousHeading && style.pageBreakUnlessAfterHeading));
       let headStyle = headingBreaks ? { ...style, ...indent } : { ...style, ...indent, pageBreakBefore: false };
+      if (context.blockPageBreaks.has(block.thesisAnchor)) headStyle = { ...headStyle, pageBreakBefore: true };
       // numbering.omitOnChapterStart: a page-breaking level-1 heading opens a Word section of its own (next page, number-free first page).
       if (Number(block.level) === 1 && page.numbering?.omitOnChapterStart) {
         if (children.length === 0) children.startsWithChapter = true;
-        else if (headingBreaks && style.pageBreakBefore) { (children.chapterSplits ||= []).push(children.length); headStyle = { ...headStyle, pageBreakBefore: false }; }
+        else if (headStyle.pageBreakBefore) { (children.chapterSplits ||= []).push(children.length); headStyle = { ...headStyle, pageBreakBefore: false }; }
       }
       const paragraph = docxParagraph(runs, chain(withGap(headStyle)), context, { style: sourceStyleId, anchor: block.thesisAnchor });
       if (indexedRow?.tocTitle) paragraph.root.push(...tocSpecialField({ ...indexedRow, title: indexedRow.rowTitle || indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));

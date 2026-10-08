@@ -44,6 +44,6 @@ Doğrulama politikası: resmi kaynaklara dayanmak, eksik kanıtı `UNKNOWN` olar
 
 `docx2spec.py`, resmî DOCX XML özelliklerini kaynak konumları ve SHA256 ile çıkarır. Kullanım: [DOCX çıkarım belgesi](tools/DOCX_EXTRACTION.md). Faz 4, ADÜ Sağlık Bilimleri master/TR pilotunda kaynak Word geometrisi, şablon üretimi ve 303/303 gerçek PDF/DOCX/Word kontrolüyle kapandı; üniversitenin diğer varyantları ayrı kuyruğa dahildir. [Kapanış raporu](reports/MOTOR_PHASE4_CLOSE_2026-10-07.md).
 
-## Word uyumu — Faz 5.1–5.5
+## Word uyumu — başlanmış fazlar
 
-[Beş fazlık ayrıntılı plan](reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md), mevcut 39 FAIL'i sekiz aileye ayırır ve ölçüm güvenilirliği → tipografi → sayfalama/alanlar → karmaşık içerik → sürüm kabulü sırasını tanımlar. [Başlangıç denetimi](specs/word-compatibility-plan.audit.json) hata kimliklerini, doğrulanan test kapsamı açıklarını ve birincil araştırma kaynaklarını içerir. Durum PLANLANDI; plan kaydı motor düzeltmesi veya yeni PASS iddiası değildir.
+[Çalışma planı](reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md) ve [başlangıç denetimi](specs/word-compatibility-plan.audit.json) mevcut bulguları içerir. 5.1 kapandı; 5.2 kısmi araştırma durumunda ve kabulü açık. Başlanmamış görevler 2026-10-08 tarihinde kullanıcı isteğiyle kaldırıldı. Kaynak envanteri ve doğrulama bulguları korunur.

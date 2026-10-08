@@ -114,11 +114,15 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) return undefined;
+    let frame;
     const measure = () => setViewportWidth(viewport.clientWidth);
     measure();
-    const observer = new ResizeObserver(measure);
+    const observer = new ResizeObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    });
     observer.observe(viewport);
-    return () => observer.disconnect();
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); };
   }, [resolved]);
 
   const template = resolved?.template;
@@ -240,7 +244,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   useLayoutEffect(() => {
     const root = papersRef.current;
     if (!paginationActive || !root) return undefined;
-    let frame = 0, iterations = 0, previous = "", disposed = false, settled = false, failed = false, confirming = false, confirmFailures = 0;
+    let frame = 0, resizeFrame = 0, iterations = 0, previous = "", disposed = false, settled = false, failed = false, confirming = false, confirmFailures = 0;
     // Consecutive rejected confirmations (the committed state or a fresh measurement differs from the settled one) without any change of the settled signature: bounded, so a measurement that never repeats ends with the visible warning instead of an endless frame loop.
     const CONFIRM_FAILURE_CAP = 300;
     // Last serialized values applied to state; avoids re-stringifying the current state each pass.
@@ -350,11 +354,26 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       setIndexWarning("");
       frame = requestAnimationFrame(probe);
     };
-    const observer = new ResizeObserver(() => {
-      if (settled) { restart(true, true); return; }
-      if (failed) return;
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(probe);
+    const observedSizes = new WeakMap();
+    const observer = new ResizeObserver((entries) => {
+      let changed = false;
+      for (const entry of entries) {
+        const size = `${entry.contentRect.width}:${entry.contentRect.height}`;
+        const previousSize = observedSizes.get(entry.target);
+        observedSizes.set(entry.target, size);
+        if (previousSize !== undefined && previousSize !== size) changed = true;
+      }
+      if (!changed) return;
+      // ResizeObserver runs before paint. React/layout writes here can resize an
+      // observed flow in the same delivery cycle, producing observer-loop errors.
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        if (disposed) return;
+        if (settled) { restart(true, true); return; }
+        if (failed) return;
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(probe);
+      });
     });
     const observeFlows = () => { observer.disconnect(); root.querySelectorAll(".thesis-page-flow").forEach((flow) => observer.observe(flow)); };
     // Content/zoom change: start a fresh fixed point (even mid-run) and pick up added/removed flows.
@@ -365,7 +384,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     root.addEventListener("load", onLoad, true);
     document.fonts.ready.then(() => { if (!disposed) restart(true, true); });
     document.fonts.addEventListener?.("loadingdone", onLoad);
-    return () => { disposed = true; paginationRef.current = null; cancelAnimationFrame(frame); observer.disconnect(); root.removeEventListener("load", onLoad, true); document.fonts.removeEventListener?.("loadingdone", onLoad); };
+    return () => { disposed = true; paginationRef.current = null; cancelAnimationFrame(frame); cancelAnimationFrame(resizeFrame); observer.disconnect(); root.removeEventListener("load", onLoad, true); document.fonts.removeEventListener?.("loadingdone", onLoad); };
   }, [paginationActive]);
   useLayoutEffect(() => {
     if (!paginationActive) return;

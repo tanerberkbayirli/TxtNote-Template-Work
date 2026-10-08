@@ -4,7 +4,7 @@
   "status": "IN_PROGRESS",
   "planRevision": 2,
   "planRevisionDate": "2026-10-07",
-  "planRevisionNote": "Revision 2 defined the plan before implementation; 5.1 is now closed with documented deferrals; other stages remain PLANNED.",
+  "planRevisionNote": "5.1 closed with documented deferrals; 5.2 partial research deferred with acceptance open. Unstarted phases removed at user request on 2026-10-08.",
   "executionContract": {
     "scope": "Freeze required targets/variants/features/fonts/environment before experiments; log scope changes; original 39 failures remain traceable and cannot be closed by exclusion",
     "earlyGates": "Establish in 5.1: checker negative cases, fresh affected exports, shared-engine full Word regression, provenance and performance baseline",
@@ -18,15 +18,6 @@
       ],
       "conditions": "Independent fixed validation corpus; record time/run budget before each round; continuation requires validation PASS; extra cycle requires new hypothesis and budget; deferral leaves required acceptance open"
     },
-    "dependencies": "5.3 independent diagnosis and 5.4 fixture/scope preparation may start after 5.1; final line/page/content acceptance retains dependencies",
-    "contentPackages": [
-      "5.4.1",
-      "5.4.2",
-      "5.4.3",
-      "5.4.4",
-      "5.4.5",
-      "5.4.6"
-    ],
     "reopenOnChange": "Invalidate affected acceptance on source/font/renderer/line/page-model/fixture changes; certify only a consistent revision"
   },
   "baselineRevision": "6deaf6d",
@@ -374,57 +365,11 @@
     {
       "id": "5.2",
       "title": "Yazı, satır kırılımı ve paragraf eşliği",
-      "status": "PLANNED",
+      "status": "PARTIAL_RESEARCH_DEFERRED",
       "dependsOn": [
         "5.1"
       ],
       "relativeEffort": "HIGH; bounded initial research cycle with explicit decision gate"
-    },
-    {
-      "id": "5.3",
-      "title": "Sayfalama, bölüm sınırları ve dinamik alanlar",
-      "status": "PLANNED",
-      "dependsOn": [
-        "5.2"
-      ],
-      "preparationDependsOn": [
-        "5.1"
-      ],
-      "dependencyNote": "Independent diagnosis/section/field work may start after 5.1; final page-flow acceptance requires validated 5.2 typography.",
-      "relativeEffort": "HIGH"
-    },
-    {
-      "id": "5.4",
-      "title": "Karmaşık içerik ve düzenlenebilirlik",
-      "status": "PLANNED",
-      "dependsOn": [
-        "5.2",
-        "5.3"
-      ],
-      "preparationDependsOn": [
-        "5.1"
-      ],
-      "packageIds": [
-        "5.4.1",
-        "5.4.2",
-        "5.4.3",
-        "5.4.4",
-        "5.4.5",
-        "5.4.6"
-      ],
-      "relativeEffort": "HIGH in total; estimate and accept each package separately"
-    },
-    {
-      "id": "5.5",
-      "title": "Ortam matrisi, tam regresyon ve sürüm kapısı",
-      "status": "PLANNED",
-      "dependsOn": [
-        "5.1",
-        "5.2",
-        "5.3",
-        "5.4"
-      ],
-      "relativeEffort": "MEDIUM; other environments require actual access"
     }
   ],
   "additionalUnknowns": [

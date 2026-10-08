@@ -1,0 +1,235 @@
+{
+  "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-style-precedence.fixture.named.json",
+  "exportedAt": "2026-10-08T08:03:57.214Z",
+  "chromium": "154.0.8037.98",
+  "pagedLayout": true,
+  "sheets": [
+    {
+      "label": "",
+      "group": ""
+    }
+  ],
+  "templateNotice": "",
+  "validation": [],
+  "warn": false,
+  "engineLayout": {
+    "version": 1,
+    "origin": "top-left",
+    "units": {
+      "geometry": "mm",
+      "fontSize": "pt"
+    },
+    "pages": [
+      {
+        "page": 1,
+        "groupId": "CHECK",
+        "sectionIds": [
+          "CHECK"
+        ],
+        "label": "",
+        "widthMm": 210,
+        "heightMm": 297,
+        "landmarks": [
+          {
+            "id": "CHECK:paragraph:1",
+            "kind": "paragraph",
+            "sectionId": "CHECK",
+            "text": "NAMED_ROW_1 anchored paragraph",
+            "fragments": [],
+            "xMm": 37.9966,
+            "yMm": 25.0321,
+            "widthMm": 75.0011,
+            "heightMm": 4.7625,
+            "firstBaselineMm": 29.79,
+            "lastBaselineMm": 29.79,
+            "linePitchMm": null,
+            "fontFamily": "Calibri",
+            "exportedFonts": [
+              "Calibri"
+            ],
+            "fontSizePt": 14,
+            "lineCount": 1
+          },
+          {
+            "id": "CHECK:paragraph:2",
+            "kind": "paragraph",
+            "sectionId": "CHECK",
+            "text": "NAMED_ROW_2 anchored paragraph",
+            "fragments": [],
+            "xMm": 37.9966,
+            "yMm": 37.0913,
+            "widthMm": 75.0011,
+            "heightMm": 4.7625,
+            "firstBaselineMm": 41.85,
+            "lastBaselineMm": 41.85,
+            "linePitchMm": null,
+            "fontFamily": "Calibri",
+            "exportedFonts": [
+              "Calibri"
+            ],
+            "fontSizePt": 14,
+            "lineCount": 1
+          }
+        ],
+        "textOps": [
+          {
+            "id": "CHECK:paragraph:1:page:1:run:1",
+            "landmarkId": "CHECK:paragraph:1",
+            "text": "NAMED_ROW_1",
+            "spaceAfter": true,
+            "xMm": 37.9966,
+            "yMm": 25.0321,
+            "widthMm": 33.3747,
+            "heightMm": 4.7625,
+            "baselineMm": 29.7946,
+            "fontFamily": "Calibri",
+            "exportedFont": "Calibri",
+            "fontSizePt": 14,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:1:page:1:run:2",
+            "landmarkId": "CHECK:paragraph:1",
+            "text": "anchored",
+            "spaceAfter": true,
+            "xMm": 72.4834,
+            "yMm": 25.0321,
+            "widthMm": 18.9549,
+            "heightMm": 4.7625,
+            "baselineMm": 29.7946,
+            "fontFamily": "Calibri",
+            "exportedFont": "Calibri",
+            "fontSizePt": 14,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:1:page:1:run:3",
+            "landmarkId": "CHECK:paragraph:1",
+            "text": "paragraph",
+            "spaceAfter": false,
+            "xMm": 92.5504,
+            "yMm": 25.0321,
+            "widthMm": 20.4473,
+            "heightMm": 4.7625,
+            "baselineMm": 29.7946,
+            "fontFamily": "Calibri",
+            "exportedFont": "Calibri",
+            "fontSizePt": 14,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:2:page:1:run:1",
+            "landmarkId": "CHECK:paragraph:2",
+            "text": "NAMED_ROW_2",
+            "spaceAfter": true,
+            "xMm": 37.9966,
+            "yMm": 37.0913,
+            "widthMm": 33.3747,
+            "heightMm": 4.7625,
+            "baselineMm": 41.8538,
+            "fontFamily": "Calibri",
+            "exportedFont": "Calibri",
+            "fontSizePt": 14,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:2:page:1:run:2",
+            "landmarkId": "CHECK:paragraph:2",
+            "text": "anchored",
+            "spaceAfter": true,
+            "xMm": 72.4834,
+            "yMm": 37.0913,
+            "widthMm": 18.9549,
+            "heightMm": 4.7625,
+            "baselineMm": 41.8538,
+            "fontFamily": "Calibri",
+            "exportedFont": "Calibri",
+            "fontSizePt": 14,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:2:page:1:run:3",
+            "landmarkId": "CHECK:paragraph:2",
+            "text": "paragraph",
+            "spaceAfter": false,
+            "xMm": 92.5504,
+            "yMm": 37.0913,
+            "widthMm": 20.4473,
+            "heightMm": 4.7625,
+            "baselineMm": 41.8538,
+            "fontFamily": "Calibri",
+            "exportedFont": "Calibri",
+            "fontSizePt": 14,
+            "clipped": false,
+            "ancestorIds": []
+          }
+        ],
+        "firstBodyBaselineMm": 29.7946,
+        "lastBodyBaselineMm": 41.8538
+      }
+    ]
+  },
+  "timings": {
+    "browser": 0.737,
+    "editor": 2.251,
+    "pdf.settle": 0.113,
+    "pdf": 6.167,
+    "docx.settle": 0.044,
+    "docx": 0.368,
+    "final-settle": 0.012,
+    "totalSeconds": 9.693
+  },
+  "pagination": {
+    "ready": "true",
+    "targetCount": 0,
+    "missingTargets": [],
+    "mismatchedLabels": [],
+    "targets": []
+  },
+  "exportSnapshots": [
+    {
+      "button": "PDF",
+      "pagedLayout": true,
+      "sheets": [
+        {
+          "label": "",
+          "group": ""
+        }
+      ],
+      "templateNotice": "",
+      "validation": [],
+      "pagination": {
+        "ready": "true",
+        "targetCount": 0,
+        "missingTargets": [],
+        "mismatchedLabels": [],
+        "targets": []
+      }
+    },
+    {
+      "button": "Word",
+      "pagedLayout": true,
+      "sheets": [
+        {
+          "label": "",
+          "group": ""
+        }
+      ],
+      "templateNotice": "",
+      "validation": [],
+      "pagination": {
+        "ready": "true",
+        "targetCount": 0,
+        "missingTargets": [],
+        "mismatchedLabels": [],
+        "targets": []
+      }
+    }
+  ],
+  "errors": []
+}

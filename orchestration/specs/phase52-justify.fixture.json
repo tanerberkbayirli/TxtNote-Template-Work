@@ -1,0 +1,347 @@
+{
+ "title": "Phase 5.2 frozen typography corpus",
+ "content": "<p lang=\"tr-TR\" data-thesis-style=\"s01\">J01-1 Bu çalışma, yöntem ve sonuçların dikkatli biçimde incelenmesini sağlar; veri ve bulgular araştırmacılar için önemlidir.</p><p lang=\"tr-TR\" data-thesis-style=\"s03\">J03-1 Bu çalışmada elde edilen veriler değerlendirilmiş ve sonuçlar ayrıntılı biçimde raporlanmıştır.</p><p lang=\"en-US\" data-thesis-style=\"s02\">J02-1 The results of the analysis are useful for the next stage of the research.</p><p lang=\"en-US\" data-thesis-style=\"s04\">J04-1 A reproducible characterization of extraordinarily long institutional terminology matters.</p><p lang=\"tr-TR\" data-thesis-style=\"s05\">J05-1 Birinci bölümde sonuçlar açıklanır.<br>İkinci bölümde sınırlılıklar belirtilir.</p><p lang=\"tr-TR\" data-thesis-style=\"s07\">J07-1 Araştırma sonuçları; yöntem, örneklem ve bulgularla birlikte sunulmalıdır.</p>",
+ "__template": {
+  "schemaVersion": 1,
+  "templateVersion": "1.0.0",
+  "id": "phase52-justify-v1",
+  "universityId": "generic",
+  "universityName": "Genel tez taslağı",
+  "degreeType": "master",
+  "language": "tr",
+  "status": "demo",
+  "source": {
+   "type": "manual",
+   "documentName": "Phase 5.2 frozen typography corpus"
+  },
+  "page": {
+   "size": "A4",
+   "widthMm": 210,
+   "heightMm": 297,
+   "orientation": "portrait",
+   "margins": {
+    "topMm": 25,
+    "bottomMm": 25,
+    "leftMm": 62.666666666666664,
+    "rightMm": 62.666666666666664
+   },
+   "header": {
+    "heightMm": 8,
+    "distanceMm": 12,
+    "content": "",
+    "firstPage": "same"
+   },
+   "footer": {
+    "heightMm": 8,
+    "distanceMm": 12,
+    "content": "",
+    "firstPage": "same"
+   },
+   "numbering": {
+    "enabled": true,
+    "position": "bottom",
+    "align": "center",
+    "format": "arabic",
+    "startAt": 1,
+    "restart": false
+   }
+  },
+  "typography": {
+   "body": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 400,
+    "align": "justify",
+    "lineHeight": 1,
+    "spaceAfterPt": 0,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0
+   },
+   "headings": {
+    "1": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}"
+     }
+    },
+    "2": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     }
+    },
+    "3": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     }
+    },
+    "4": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.3,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 6,
+     "keepWithNext": true,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}"
+     }
+    }
+   },
+   "paragraphStyles": {
+    "s01": {
+     "fontFamily": "Arial",
+     "fontSizePt": 10,
+     "fontWeight": 400,
+     "align": "justify",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 3
+    },
+    "s03": {
+     "fontFamily": "Calibri",
+     "fontSizePt": 11,
+     "fontWeight": 400,
+     "align": "justify",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 3
+    },
+    "s02": {
+     "fontFamily": "Calibri",
+     "fontSizePt": 12,
+     "fontWeight": 400,
+     "align": "justify",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 3
+    },
+    "s04": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 400,
+     "align": "justify",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 3
+    },
+    "s05": {
+     "fontFamily": "Calibri",
+     "fontSizePt": 10,
+     "fontWeight": 400,
+     "align": "justify",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 3
+    },
+    "s07": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 11,
+     "fontWeight": 400,
+     "align": "justify",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 3
+    }
+   }
+  },
+  "placeholders": {
+   "UNIVERSITY_NAME": {
+    "label": "Üniversite",
+    "type": "text",
+    "required": true
+   },
+   "INSTITUTE_NAME": {
+    "label": "Enstitü",
+    "type": "text"
+   },
+   "DEPARTMENT_NAME": {
+    "label": "Bölüm",
+    "type": "text"
+   },
+   "DEPARTMENT": {
+    "label": "Bölüm",
+    "type": "text"
+   },
+   "THESIS_TITLE": {
+    "label": "Tez başlığı",
+    "type": "text",
+    "required": true
+   },
+   "THESIS_TITLE_EN": {
+    "label": "İngilizce başlık",
+    "type": "text"
+   },
+   "STUDENT_NAME": {
+    "label": "Öğrenci",
+    "type": "text",
+    "required": true
+   },
+   "STUDENT_NUMBER": {
+    "label": "Öğrenci numarası",
+    "type": "text"
+   },
+   "ADVISOR_NAME": {
+    "label": "Danışman",
+    "type": "text"
+   },
+   "CO_ADVISOR_NAME": {
+    "label": "İkinci danışman",
+    "type": "text"
+   },
+   "SECOND_ADVISOR_NAME": {
+    "label": "İkinci danışman",
+    "type": "text"
+   },
+   "DEGREE_TYPE": {
+    "label": "Tez türü",
+    "type": "text"
+   },
+   "CITY": {
+    "label": "Şehir",
+    "type": "text"
+   },
+   "YEAR": {
+    "label": "Yıl",
+    "type": "number"
+   },
+   "DATE": {
+    "label": "Tarih",
+    "type": "date"
+   }
+  },
+  "sections": [
+   {
+    "id": "main",
+    "type": "mainContent",
+    "title": "Ana metin",
+    "status": "required",
+    "group": "body",
+    "mode": "editable",
+    "overrides": {
+     "page": {
+      "numbering": {
+       "format": "arabic",
+       "startAt": 1,
+       "restart": true
+      },
+      "margins": {
+       "topMm": 25,
+       "bottomMm": 25,
+       "leftMm": 62.666666666666664,
+       "rightMm": 62.666666666666664
+      }
+     }
+    },
+    "pageBreakBefore": false
+   }
+  ],
+  "tables": {
+   "label": "Tablo",
+   "position": "above",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 8,
+   "spacingAfterPt": 6,
+   "align": "center"
+  },
+  "figures": {
+   "label": "Şekil",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "italic": true,
+    "align": "center",
+    "lineHeight": 1.25
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   },
+   "spacingBeforePt": 6,
+   "spacingAfterPt": 8,
+   "align": "center"
+  },
+  "bibliography": {
+   "heading": "Kaynakça",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "left",
+    "lineHeight": 1.5
+   },
+   "hangingIndentMm": 10
+  },
+  "toc": {
+   "heading": "İçindekiler",
+   "levels": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "showPageNumbers": true
+  }
+ },
+ "researchData": {
+  "thesis": {
+   "templateId": "phase52-justify-v1",
+   "templateVersion": "1.0.0",
+   "selection": {
+    "universityId": "generic",
+    "degreeType": "master",
+    "language": "tr"
+   },
+   "values": {
+    "YEAR": "2026"
+   },
+   "sectionContent": {},
+   "enabledSections": []
+  }
+ }
+}

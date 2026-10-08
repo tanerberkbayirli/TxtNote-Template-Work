@@ -1,0 +1,42 @@
+{
+ "target": "afsu-tip",
+ "stamp": "20261003-1623",
+ "counts": {
+  "PASS": 1
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-tip\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-tip\\run\\default.docx",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "checks": [
+  {
+   "id": "page-size",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "x",
+    "locator": "x"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "34 pages",
+   "status": "PASS"
+  }
+ ]
+}

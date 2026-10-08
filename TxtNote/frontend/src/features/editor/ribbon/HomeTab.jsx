@@ -123,14 +123,15 @@ export default function HomeTab({
           </div>
           <div className="thesis-home-row">
             {aligns.map(([value, label, Icon]) => (
-              <Tool key={value} label={label} title={actions.isLayoutTextTarget ? `${label} · ${alignmentScope === "page" ? "sayfanın yazı alanı" : "metin kutusu"}` : label} disabled={blockOff} pressed={format?.align === value} onMouseDown={keep} onClick={() => invoke("applyAlign", value, alignmentScope)}>
+              <Tool key={value} label={label} title={actions.isLayoutTextTarget ? `${label} · ${{ page: "sayfa kenarları", content: "sayfanın yazı alanı", box: "metin kutusu" }[alignmentScope]}` : label} disabled={blockOff} pressed={format?.align === value} onMouseDown={keep} onClick={() => invoke("applyAlign", value, alignmentScope)}>
                 <Icon size={16} aria-hidden="true" />
               </Tool>
             ))}
             <span className="thesis-home-sep" aria-hidden="true" />
             {actions.isLayoutTextTarget ? <select className={`${control} thesis-block-select`} aria-label="Hizalama alanı"
               disabled={off} value={alignmentScope} onMouseDown={remember} onChange={(event) => setAlignmentScope(event.target.value)}>
-              <option value="page">Sayfa yazı alanı</option>
+              <option value="page">Sayfa kenarları</option>
+              <option value="content">Sayfa yazı alanı</option>
               <option value="box">Metin kutusu</option>
             </select> : <select
               className={`${control} thesis-block-select`}

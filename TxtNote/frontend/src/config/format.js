@@ -6,7 +6,7 @@
 
 /** @typedef {"heading" | "subheading" | "body"} FormatSize */
 /** @typedef {"black" | "red" | "blue" | "green"} FormatColor */
-/** @typedef {"left" | "center" | "right"} FormatAlign */
+/** @typedef {"left" | "center" | "right" | "justify"} FormatAlign */
 
 /** @type {{ id: FormatSize, label: string, className: string }[]} */
 export const FORMAT_SIZES = [
@@ -57,6 +57,7 @@ export const FORMAT_ALIGNS = [
   { id: "left", label: "Sola hizala", className: "fmt-align-left" },
   { id: "center", label: "Ortaya hizala", className: "fmt-align-center" },
   { id: "right", label: "Sağa hizala", className: "fmt-align-right" },
+  { id: "justify", label: "İki yana yasla", className: "fmt-align-justify" },
 ];
 
 /** Untouched text is always Normal + black, left aligned, with no emphasis. */

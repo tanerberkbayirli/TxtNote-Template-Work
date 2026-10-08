@@ -1,0 +1,1518 @@
+{
+ "target": "engine-word-structure",
+ "stamp": "20261003-2107",
+ "counts": {
+  "PASS": 60
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\engine-word-structure\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\engine-word-structure\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\engine-word-structure\\run\\default.layout.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\engine-word-structure\\run\\default.word.pdf"
+  }
+ },
+ "wordRequested": true,
+ "measurementSeconds": 0.922,
+ "checks": [
+  {
+   "id": "TABLE_AUTO-first-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-first-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      1,
+      49.684
+     ]
+    ],
+    "word": [
+     [
+      1,
+      49.664
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.02]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_AUTO-last-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-last-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      1,
+      93.638
+     ]
+    ],
+    "word": [
+     [
+      1,
+      93.659
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.021]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_AUTO-header-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-header-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      1,
+      38.695
+     ]
+    ],
+    "word": [
+     [
+      1,
+      38.7
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.005]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_AUTO-caption-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-caption-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      1,
+      31.109
+     ]
+    ],
+    "word": [
+     [
+      1,
+      31.122
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.013]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_AUTO-row-pitch",
+   "kind": "line_pitch_match",
+   "expected": "PDF vs Word pitch within 0.2 pt",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-row-pitch"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": 10.988500000000002,
+    "word": 11.006500000000003,
+    "deltaPt": 0.05102362204724603
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_MIN-first-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-first-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      2,
+      49.684
+     ],
+     [
+      2,
+      52.115
+     ]
+    ],
+    "word": [
+     [
+      2,
+      49.664
+     ],
+     [
+      2,
+      52.119
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.02], [0, -0.004]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_MIN-last-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-last-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      2,
+      93.638
+     ],
+     [
+      2,
+      96.069
+     ]
+    ],
+    "word": [
+     [
+      2,
+      93.659
+     ],
+     [
+      2,
+      96.072
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.021], [0, -0.003]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_MIN-header-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-header-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      2,
+      41.126
+     ]
+    ],
+    "word": [
+     [
+      2,
+      41.113
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.013]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_MIN-caption-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-caption-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      2,
+      31.109
+     ]
+    ],
+    "word": [
+     [
+      2,
+      31.122
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.013]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_MIN-row-pitch",
+   "kind": "line_pitch_match",
+   "expected": "PDF vs Word pitch within 0.2 pt",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-row-pitch"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": 10.988499999999998,
+    "word": 10.990500000000004,
+    "deltaPt": 0.005669291338599677
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_EXACT-first-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-first-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      3,
+      45.186
+     ]
+    ],
+    "word": [
+     [
+      3,
+      45.177
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.009]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_EXACT-last-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-last-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      3,
+      71.148
+     ]
+    ],
+    "word": [
+     [
+      3,
+      71.127
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.021]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_EXACT-header-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-header-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      3,
+      39.063
+     ]
+    ],
+    "word": [
+     [
+      3,
+      39.081
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.018]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_EXACT-caption-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-caption-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      3,
+      31.109
+     ]
+    ],
+    "word": [
+     [
+      3,
+      31.122
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.013]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TABLE_EXACT-row-pitch",
+   "kind": "line_pitch_match",
+   "expected": "PDF vs Word pitch within 0.2 pt",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-row-pitch"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": 6.490500000000001,
+    "word": 6.477000000000004,
+    "deltaPt": 0.038267716535424455
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "repeated-header-baselines",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "repeated-header-baselines"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      4,
+      39.402
+     ],
+     [
+      5,
+      30.634
+     ],
+     [
+      6,
+      30.634
+     ]
+    ],
+    "word": [
+     [
+      4,
+      39.504
+     ],
+     [
+      5,
+      30.487
+     ],
+     [
+      6,
+      30.487
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.102], [0, 0.147], [0, 0.147]]",
+   "status": "PASS"
+  },
+  {
+   "id": "table-break-last-row",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "table-break-last-row"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      6,
+      96.044
+     ]
+    ],
+    "word": [
+     [
+      6,
+      95.903
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.141]]",
+   "status": "PASS"
+  },
+  {
+   "id": "KEEP_BLOCK_1-position",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "KEEP_BLOCK_1-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      8,
+      28.947
+     ]
+    ],
+    "word": [
+     [
+      8,
+      28.914
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.033]]",
+   "status": "PASS"
+  },
+  {
+   "id": "KEEP_BLOCK_5-position",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "KEEP_BLOCK_5-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      8,
+      48.41
+     ]
+    ],
+    "word": [
+     [
+      8,
+      48.394
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.016]]",
+   "status": "PASS"
+  },
+  {
+   "id": "WIDOW_BLOCK_1-position",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "WIDOW_BLOCK_1-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      8,
+      53.276
+     ]
+    ],
+    "word": [
+     [
+      8,
+      53.262
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.014]]",
+   "status": "PASS"
+  },
+  {
+   "id": "WIDOW_BLOCK_5-position",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "WIDOW_BLOCK_5-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      8,
+      72.74
+     ]
+    ],
+    "word": [
+     [
+      8,
+      72.736
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.004]]",
+   "status": "PASS"
+  },
+  {
+   "id": "FORCED_PAGE_TOP-position",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FORCED_PAGE_TOP-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      9,
+      28.947
+     ]
+    ],
+    "word": [
+     [
+      9,
+      28.914
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.033]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TAB_LEFT-end",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_LEFT-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      10,
+      89.8302
+     ]
+    ],
+    "word": [
+     [
+      10,
+      90.2427
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.4125]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TAB_CENTER-end",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_CENTER-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      10,
+      123.2793
+     ]
+    ],
+    "word": [
+     [
+      10,
+      123.3078
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.0285]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TAB_RIGHT-end",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_RIGHT-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      10,
+      139.9893
+     ]
+    ],
+    "word": [
+     [
+      10,
+      139.9872
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.0021]]",
+   "status": "PASS"
+  },
+  {
+   "id": "TAB_DECIMAL-end",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_DECIMAL-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      10,
+      129.9931
+     ]
+    ],
+    "word": [
+     [
+      10,
+      130.0304
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.0373]]",
+   "status": "PASS"
+  },
+  {
+   "id": "right-tab-end-layout",
+   "kind": "line_attr",
+   "expected": 140,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "right-tab-end: explicit engine input x1=140"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 139.989,
+   "delta": -0.011,
+   "note": "1 lines, pages [10]",
+   "status": "PASS"
+  },
+  {
+   "id": "right-tab-end-word",
+   "kind": "line_attr",
+   "expected": 140,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "right-tab-end: explicit engine input x1=140"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 139.987,
+   "delta": -0.013,
+   "note": "1 lines, pages [10]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-001-left",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-001-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      11,
+      41.9943
+     ]
+    ],
+    "word": [
+     [
+      11,
+      42.002
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.0077]]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-001-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-001-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      11,
+      28.947
+     ]
+    ],
+    "word": [
+     [
+      11,
+      28.914
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.033]]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-055-left",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-055-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      12,
+      33.9948
+     ]
+    ],
+    "word": [
+     [
+      12,
+      34.044
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.0492]]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-055-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-055-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      12,
+      48.41
+     ]
+    ],
+    "word": [
+     [
+      12,
+      48.394
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.016]]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-110-left",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-110-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      13,
+      41.9943
+     ]
+    ],
+    "word": [
+     [
+      13,
+      42.002
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.0077]]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-110-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-110-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      13,
+      72.74
+     ]
+    ],
+    "word": [
+     [
+      13,
+      72.736
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.004]]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-115-left",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-115-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      13,
+      41.9943
+     ]
+    ],
+    "word": [
+     [
+      13,
+      42.002
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.0077]]",
+   "status": "PASS"
+  },
+  {
+   "id": "mirror-115-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-115-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      13,
+      97.069
+     ]
+    ],
+    "word": [
+     [
+      13,
+      97.088
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.019]]",
+   "status": "PASS"
+  },
+  {
+   "id": "number-baseline-layout",
+   "kind": "page_number_attr",
+   "expected": 276,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "page.numbering.baselineFromTopMm=276"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 275.998,
+   "delta": -0.002,
+   "note": "median of 18 [276.00..276.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "number-baseline-word",
+   "kind": "page_number_attr",
+   "expected": 276,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "page.numbering.baselineFromTopMm=276"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 276.047,
+   "delta": 0.047,
+   "note": "median of 18 [276.05..276.05]",
+   "status": "PASS"
+  },
+  {
+   "id": "CHROME_FIRST-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "CHROME_FIRST-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      11,
+      13.291
+     ]
+    ],
+    "word": [
+     [
+      11,
+      13.293
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.002]]",
+   "status": "PASS"
+  },
+  {
+   "id": "CHROME_EVEN-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "CHROME_EVEN-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      12,
+      13.291
+     ]
+    ],
+    "word": [
+     [
+      12,
+      13.293
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.002]]",
+   "status": "PASS"
+  },
+  {
+   "id": "CHROME_ODD-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "CHROME_ODD-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      13,
+      13.291
+     ]
+    ],
+    "word": [
+     [
+      13,
+      13.293
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.002]]",
+   "status": "PASS"
+  },
+  {
+   "id": "SPACE_A_FIRST-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_A_FIRST-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      14,
+      31.767
+     ]
+    ],
+    "word": [
+     [
+      14,
+      31.757
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.01]]",
+   "status": "PASS"
+  },
+  {
+   "id": "SPACE_A_SECOND-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_A_SECOND-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      14,
+      36.632
+     ]
+    ],
+    "word": [
+     [
+      14,
+      36.625
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.007]]",
+   "status": "PASS"
+  },
+  {
+   "id": "SPACE_B_FIRST-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_B_FIRST-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      14,
+      47.141
+     ]
+    ],
+    "word": [
+     [
+      14,
+      47.124
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.017]]",
+   "status": "PASS"
+  },
+  {
+   "id": "SPACE_A_RETURN-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_A_RETURN-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      14,
+      54.827
+     ]
+    ],
+    "word": [
+     [
+      14,
+      54.829
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.002]]",
+   "status": "PASS"
+  },
+  {
+   "id": "SPACE_NATURAL_TOP-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_NATURAL_TOP-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      15,
+      44.322
+     ]
+    ],
+    "word": [
+     [
+      15,
+      44.288
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.034]]",
+   "status": "PASS"
+  },
+  {
+   "id": "SPACE_FORCED_TOP-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_FORCED_TOP-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      16,
+      28.947
+     ]
+    ],
+    "word": [
+     [
+      16,
+      28.914
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.033]]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-left-layout",
+   "kind": "line_attr",
+   "expected": 30,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-left: explicit engine input x0=30"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "1 lines, pages [14]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-left-word",
+   "kind": "line_attr",
+   "expected": 30,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-left: explicit engine input x0=30"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 30.023,
+   "delta": 0.023,
+   "note": "1 lines, pages [14]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-size-layout",
+   "kind": "line_attr",
+   "expected": 12,
+   "tolerance": 0.05,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-size: explicit engine input size=12"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "1 lines, pages [14]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-size-word",
+   "kind": "line_attr",
+   "expected": 12,
+   "tolerance": 0.05,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-size: explicit engine input size=12"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "1 lines, pages [14]",
+   "status": "PASS"
+  },
+  {
+   "id": "ALIGN_CENTER-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "ALIGN_CENTER-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      17,
+      150.011
+     ]
+    ],
+    "word": [
+     [
+      17,
+      150.005
+     ]
+    ]
+   },
+   "note": "delta [[0, 0.006]]",
+   "status": "PASS"
+  },
+  {
+   "id": "ALIGN_BOTTOM-baseline",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and geometry within tolerance",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "ALIGN_BOTTOM-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "layout": [
+     [
+      18,
+      271.078
+     ]
+    ],
+    "word": [
+     [
+      18,
+      271.094
+     ]
+    ]
+   },
+   "note": "delta [[0, -0.016]]",
+   "status": "PASS"
+  },
+  {
+   "id": "word_opens",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "word_opens"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "opened and exported",
+   "status": "PASS"
+  },
+  {
+   "id": "page_count_match",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "page_count_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "pdf=18 word=18",
+   "status": "PASS"
+  },
+  {
+   "id": "page_labels_match",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "page_labels_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18",
+    "word": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18"
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "docx_no_undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "docx_no_undefined"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0001,
+   "note": "100 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-default",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "pdf=18 word=18",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-default",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": {
+    "pdf": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18",
+    "word": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18"
+   },
+   "status": "PASS"
+  }
+ ]
+}

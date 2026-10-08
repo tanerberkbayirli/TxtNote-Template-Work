@@ -766,13 +766,45 @@ def _case_lines(doc, tag):
     return out
 
 
+def _case_lines_scoped(doc, tag, footer_regex=None):
+    """Normalized line texts for one tagged case, including when several cases share a page."""
+    out, started = [], False
+    footer = re.compile(footer_regex) if footer_regex else None
+    for page_number in range(1, doc.n + 1):
+        lines = sorted(doc.lines(page_number), key=lambda line: (line['baseline'], line['x0']))
+        for line in lines:
+            text = re.sub(r'\s+', ' ', line['text']).strip()
+            marker = re.match(r'(J\d+)-1(?: |$)', text)
+            if footer and footer.fullmatch(text):
+                continue
+            if not started:
+                if marker and marker.group(1) == tag:
+                    started = True
+                    out.append(text)
+                continue
+            if marker:
+                if marker.group(1) != tag:
+                    return out
+                out.append(text)
+                continue
+            out.append(text)
+    return out
+
+
 def k_line_breaks_match(ctx, c):
     """Every line of a tagged section has identical text (hence identical line breaks) in the PDF and the Word render."""
     tag = c['params']['tag']
-    a = _case_lines(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag)
-    b = _case_lines(get_doc(ctx, {**c['params'], 'source': 'word'}), tag)
+    if c['params'].get('caseScope') == 'tagged':
+        a = _case_lines_scoped(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag, c['params'].get('caseFooterRegex'))
+        b = _case_lines_scoped(get_doc(ctx, {**c['params'], 'source': 'word'}), tag, c['params'].get('caseFooterRegex'))
+    else:
+        a = _case_lines(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag)
+        b = _case_lines(get_doc(ctx, {**c['params'], 'source': 'word'}), tag)
     diff = [i for i in range(max(len(a), len(b))) if (a[i] if i < len(a) else None) != (b[i] if i < len(b) else None)]
-    return {'actual': {'lines': {'pdf': len(a), 'word': len(b)}, 'firstDiff': diff[:3] and [(i, a[i] if i < len(a) else None, b[i] if i < len(b) else None) for i in diff[:2]]},
+    actual = {'lines': {'pdf': len(a), 'word': len(b)}, 'firstDiff': diff[:3] and [(i, a[i] if i < len(a) else None, b[i] if i < len(b) else None) for i in diff[:2]]}
+    if c['params'].get('includeMeasurements'):
+        actual['measuredLines'] = {'pdf': a, 'word': b}
+    return {'actual': actual,
             'pass': bool(a) and not diff, 'expected_override': 'identical line texts in PDF and Word'}
 
 
@@ -798,11 +830,55 @@ def _case_last_lines(doc, tag):
     return out
 
 
+def _case_last_lines_scoped(doc, tag, footer_regex=None):
+    """Last-line word x positions, scoped to the tagged case even when cases share a page."""
+    out, started, paragraph, last = [], False, None, None
+    footer = re.compile(footer_regex) if footer_regex else None
+
+    def append_last():
+        if last is None:
+            return
+        page_number, line = last
+        words = [w for w in doc.pdf[page_number - 1].get_text('words')
+                 if line['top'] - .5 <= (w[1] + w[3]) / 2 / MM2PT <= line['bottom'] + .5]
+        words.sort(key=lambda w: w[0])
+        out.append((line['text'][:24], [round(w[0] / MM2PT, 3) for w in words]))
+
+    for page_number in range(1, doc.n + 1):
+        lines = sorted(doc.lines(page_number), key=lambda line: (line['baseline'], line['x0']))
+        for line in lines:
+            text = line['text']
+            marker = re.match(r'(J\d+)-(\d+)( |$)', text)
+            if footer and footer.fullmatch(text.strip()):
+                continue
+            if not started:
+                if not marker or marker.group(1) != tag:
+                    continue
+                started = True
+                paragraph = marker.group(2)
+                last = (page_number, line)
+                continue
+            if marker:
+                if marker.group(1) != tag:
+                    append_last()
+                    return out
+                if marker.group(2) != paragraph:
+                    append_last()
+                    paragraph = marker.group(2)
+            last = (page_number, line)
+    append_last()
+    return out
+
+
 def k_last_line_words_match(ctx, c):
     """Word x positions of every paragraph's last line (natural word spacing in Word) agree between the PDF and the Word render."""
     tag, tol = c['params']['tag'], c.get('tolerance', .25)
-    a = _case_last_lines(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag)
-    b = _case_last_lines(get_doc(ctx, {**c['params'], 'source': 'word'}), tag)
+    if c['params'].get('caseScope') == 'tagged':
+        a = _case_last_lines_scoped(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag, c['params'].get('caseFooterRegex'))
+        b = _case_last_lines_scoped(get_doc(ctx, {**c['params'], 'source': 'word'}), tag, c['params'].get('caseFooterRegex'))
+    else:
+        a = _case_last_lines(get_doc(ctx, {**c['params'], 'source': 'pdf'}), tag)
+        b = _case_last_lines(get_doc(ctx, {**c['params'], 'source': 'word'}), tag)
     worst, bad = 0.0, []
     for i in range(max(len(a), len(b))):
         if i >= len(a) or i >= len(b) or len(a[i][1]) != len(b[i][1]):
@@ -812,7 +888,10 @@ def k_last_line_words_match(ctx, c):
         worst = max(worst, d)
         if d > tol + EPS:
             bad.append((i, a[i][0], round(d, 3)))
-    return {'actual': {'paragraphs': {'pdf': len(a), 'word': len(b)}, 'maxDeltaMm': round(worst, 3), 'bad': bad[:2]},
+    actual = {'paragraphs': {'pdf': len(a), 'word': len(b)}, 'maxDeltaMm': round(worst, 3), 'bad': bad[:2]}
+    if c['params'].get('includeMeasurements'):
+        actual['measuredLastLines'] = {'pdf': a, 'word': b}
+    return {'actual': actual,
             'pass': bool(a) and not bad, 'expected_override': f'last-line word x within {tol} mm of Word'}
 
 
@@ -912,7 +991,8 @@ def k_fields_cached_match(ctx, c):
     path = var.get("wordFieldDump")
     if not path or not os.path.exists(path):
         raise Skip(var.get("wordRefreshNote") or var.get("wordNote") or "Word field dump unavailable (run with --word)")
-    data = json.load(open(path, encoding="utf-8-sig"))
+    with open(path, encoding="utf-8-sig") as field_dump:
+        data = json.load(field_dump)
     rows = lambda key: [data.get(key)] if isinstance(data.get(key), dict) else (data.get(key) or [])
     before, after = rows("before"), rows("after")
     kind = lambda r: (r["code"].split() or [""])[0].upper()

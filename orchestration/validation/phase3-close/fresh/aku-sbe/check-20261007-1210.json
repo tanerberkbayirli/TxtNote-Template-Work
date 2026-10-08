@@ -1,0 +1,1986 @@
+{
+ "target": "aku-sbe",
+ "stamp": "20261007-1210",
+ "counts": {
+  "PASS": 88,
+  "INFO": 2,
+  "FAIL": 23
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sbe.fixture.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "sanatta-yeterlik-tr": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\sanatta-yeterlik-tr.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\sanatta-yeterlik-tr.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\sanatta-yeterlik-tr.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sbe.fixture.sanatta-yeterlik-tr.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "master-en": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\master-en.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\master-en.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\master-en.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sbe.fixture.master-en.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "phd-en": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\phd-en.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\phd-en.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\phd-en.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sbe.fixture.phd-en.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "phd-tr": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\phd-tr.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\phd-tr.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\run\\phd-tr.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sbe.fixture.phd-tr.json",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 3.813,
+ "commandSeconds": 24.636,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+  "trackedDiffSha256": "7d957030ca42434b0abb82fa91891422e64dc96b6e58e22e226bcaef632a0f02",
+  "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+  "startedAt": "2026-10-07T09:10:26.032Z"
+ },
+ "checksSha256": "fabfbdf78e0dde4e19125fbf929285c94a414f8bebc6802f9e9488030db0adcd",
+ "artifactSha256": {
+  "default": {
+   "fixture": "0a935beb778c99ccb8d68d077bdf7bd710eac04b546389e98161e7edc2461bd4",
+   "pdf": "e5fb94b31bf8ba4bb6be44dc8cf5da1acd76f03ddae35adced433480274b3045",
+   "docx": "e970317f31a0a950e5492f6ddc4b934eea9acb4f5dcbb241a22278e05cbbc114",
+   "layout": "2cfbaec09db4d5595c841272a529049a688646ce09ee7de04a0e309cfeaeb140"
+  },
+  "sanatta-yeterlik-tr": {
+   "fixture": "7ab429230c003a0eccfdfc6c034985c8498480fb74eaa2c956514c26d0fbd612",
+   "pdf": "07ded7274982fb98abd1794c0baa0fef58036d6654a3f575f434073cae84ff5d",
+   "docx": "07c77f56190af662046e27f4530b0f7f48e8925698133bd0e5a8a725a20c8901",
+   "layout": "176b8230e6aa010ab33a30eedb5543e661746c2ebc93123d5b64f34e4f6d1fa4"
+  },
+  "master-en": {
+   "fixture": "8fc67719cae67666a8a281468b7e366523b800a20d57f457c1fbcb8997e5d7ec",
+   "pdf": "fe298f4a44927aba767abfbbdf831fc615514df1c1b24d2b20b4049965c01224",
+   "docx": "d873f5ad8cd75d6d17099547beebe5fa26a5e4b9ff71ad7af2c3abbe6dff3ced",
+   "layout": "52d684e77e8e168a5421db49e35bcc7cd8134c34b425e86957a28fdd65d6e691"
+  },
+  "phd-en": {
+   "fixture": "aa9b4525b05349000295b02725d87b57d9977b7d5975d0a19f3c82a64c601591",
+   "pdf": "6e68a5ebb34359f4021e871a9f20ebfe9b88fce1cded477a06bbd82951d4a4e0",
+   "docx": "de247a579c0687c7f4dc2d9b690a0e8eaf35a56e10ad5898bc9d05f136cfcded",
+   "layout": "79b8d4109e84d12ab0d69a6eda529da67e0728d56fd0b1dd761e473c4e252a6b"
+  },
+  "phd-tr": {
+   "fixture": "690415f1f30a62b06cb35c2b38532bb55409fd18e1bf0c67636ce0d12bf74793",
+   "pdf": "14e8f3ebb56cf5adc68c95b194a9496063edd55920ec2c85475c26d935a4ea23",
+   "docx": "8a8243cef13ab2262429320de711fd56d0457e46cde426182479b4fa300ee7bb",
+   "layout": "abf9a417b4051e79e04d241edb7a9fd07ba7848061a042584929f92526f728fa"
+  }
+ },
+ "checks": [
+  {
+   "id": "page-size",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "37 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-top",
+   "kind": "line_attr",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.163,
+   "delta": 0.163,
+   "note": "539 lines, pages [15, 16, 17, 18, 19, 20]",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-top",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "23 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-left",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "23 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-left",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "min over 23 pages [30.00..33.08]",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-right",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 179.999,
+   "delta": -0.001,
+   "note": "max over 23 pages [146.31..180.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-size",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 28012, 11.0: 1589, 9.0: 1272, 10.0: 602}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-pitch",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "mode bucket 7.3 (276/465 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent",
+   "kind": "line_attr",
+   "expected": 42.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 42.495,
+   "delta": -0.005,
+   "note": "1 lines, pages [15]",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "709"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "709"
+   ],
+   "note": "366 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "para-spacing-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "120"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "120",
+    "240",
+    "276",
+    "300",
+    "360",
+    "396"
+   ],
+   "note": "940 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-centre",
+   "kind": "landmark_x",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 104.99415,
+   "delta": -0.0058,
+   "note": "23 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-size",
+   "kind": "landmark_y",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "23 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "note-pagenum-distance-unknown",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "spec unknowns"
+   },
+   "evidence": "UNKNOWN",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "Page-number baseline / distance from page edge and footer distance are UNKNOWN (spec pagination.distanceFromEdgeMm, page.footer.distanceMm)"
+  },
+  {
+   "id": "page-labels-front",
+   "kind": "page_labels",
+   "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-main",
+   "kind": "page_labels",
+   "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3: GİRİŞ = 1, main/back arabic continuing (fixture: 23 arabic pages; was 24 before the Word last-line fit rule)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-unnumbered",
+   "kind": "page_labels",
+   "expected": "none x3",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": "none x3",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-no-undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "field validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "note-heading-size",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "spec"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "Heading sizes H1/H2/H3 all 12 pt (INFERRED from §5.2 general body text); explicit heading typography varies by element (UNKNOWN)"
+  },
+  {
+   "id": "page-size-sanatta-yeterlik-tr",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "37 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-top-sanatta-yeterlik-tr",
+   "kind": "line_attr",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.163,
+   "delta": 0.163,
+   "note": "539 lines, pages [15, 16, 17, 18, 19, 20]",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-top-sanatta-yeterlik-tr",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "23 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-left-sanatta-yeterlik-tr",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "23 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-left-sanatta-yeterlik-tr",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "min over 23 pages [30.00..33.08]",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-right-sanatta-yeterlik-tr",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 179.999,
+   "delta": -0.001,
+   "note": "max over 23 pages [146.31..180.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-sanatta-yeterlik-tr",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-size-sanatta-yeterlik-tr",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 28012, 11.0: 1589, 9.0: 1272, 10.0: 602}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-pitch-sanatta-yeterlik-tr",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "mode bucket 7.3 (276/465 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent-sanatta-yeterlik-tr",
+   "kind": "line_attr",
+   "expected": 42.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 42.495,
+   "delta": -0.005,
+   "note": "1 lines, pages [15]",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent-docx-sanatta-yeterlik-tr",
+   "kind": "docx_attr",
+   "expected": [
+    "709"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "709"
+   ],
+   "note": "366 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "para-spacing-docx-sanatta-yeterlik-tr",
+   "kind": "docx_attr",
+   "expected": [
+    "120"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "120",
+    "240",
+    "276",
+    "300",
+    "360",
+    "396"
+   ],
+   "note": "940 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-centre-sanatta-yeterlik-tr",
+   "kind": "landmark_x",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 104.99415,
+   "delta": -0.0058,
+   "note": "23 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-size-sanatta-yeterlik-tr",
+   "kind": "landmark_y",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "23 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-front-sanatta-yeterlik-tr",
+   "kind": "page_labels",
+   "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-unnumbered-sanatta-yeterlik-tr",
+   "kind": "page_labels",
+   "expected": "none x3",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": "none x3",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-no-undefined-sanatta-yeterlik-tr",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "field validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "page-size-master-en",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "24 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-top-master-en",
+   "kind": "line_attr",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.175,
+   "delta": 0.175,
+   "note": "477 lines, pages [10, 11, 12, 13, 14, 15]",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-top-master-en",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "21 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-left-master-en",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "21 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-left-master-en",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "min over 15 pages [30.00..30.38]",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-right-master-en",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 179.999,
+   "delta": -0.001,
+   "note": "max over 15 pages [177.74..180.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-master-en",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-size-master-en",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 34348}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-pitch-master-en",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 4.866,
+   "delta": -2.434,
+   "note": "mode bucket 4.9 (394/461 gaps)",
+   "status": "FAIL"
+  },
+  {
+   "id": "first-line-indent-master-en",
+   "kind": "line_attr",
+   "expected": 42.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.378,
+   "delta": -12.122,
+   "note": "3 lines, pages [15]",
+   "status": "FAIL"
+  },
+  {
+   "id": "first-line-indent-docx-master-en",
+   "kind": "docx_attr",
+   "expected": [
+    "709"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "709"
+   ],
+   "note": "117 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "para-spacing-docx-master-en",
+   "kind": "docx_attr",
+   "expected": [
+    "120"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "120",
+    "240",
+    "276",
+    "360",
+    "396"
+   ],
+   "note": "340 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-centre-master-en",
+   "kind": "landmark_x",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 104.99415,
+   "delta": -0.0058,
+   "note": "15 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-size-master-en",
+   "kind": "landmark_y",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "15 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-front-master-en",
+   "kind": "page_labels",
+   "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "ii, iii, iv, v, vi, vii, viii",
+   "status": "FAIL"
+  },
+  {
+   "id": "page-labels-unnumbered-master-en",
+   "kind": "page_labels",
+   "expected": "none x3",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": "none x2",
+   "status": "FAIL"
+  },
+  {
+   "id": "docx-no-undefined-master-en",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "field validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "page-size-phd-en",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "24 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-top-phd-en",
+   "kind": "line_attr",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.175,
+   "delta": 0.175,
+   "note": "477 lines, pages [10, 11, 12, 13, 14, 15]",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-top-phd-en",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "21 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-left-phd-en",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "21 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-left-phd-en",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "min over 15 pages [30.00..30.38]",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-right-phd-en",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 179.999,
+   "delta": -0.001,
+   "note": "max over 15 pages [177.74..180.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-phd-en",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-size-phd-en",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 34348}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-pitch-phd-en",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 4.866,
+   "delta": -2.434,
+   "note": "mode bucket 4.9 (394/461 gaps)",
+   "status": "FAIL"
+  },
+  {
+   "id": "first-line-indent-phd-en",
+   "kind": "line_attr",
+   "expected": 42.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.378,
+   "delta": -12.122,
+   "note": "3 lines, pages [15]",
+   "status": "FAIL"
+  },
+  {
+   "id": "first-line-indent-docx-phd-en",
+   "kind": "docx_attr",
+   "expected": [
+    "709"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "709"
+   ],
+   "note": "117 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "para-spacing-docx-phd-en",
+   "kind": "docx_attr",
+   "expected": [
+    "120"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "120",
+    "240",
+    "276",
+    "360",
+    "396"
+   ],
+   "note": "340 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-centre-phd-en",
+   "kind": "landmark_x",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 104.99415,
+   "delta": -0.0058,
+   "note": "15 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-size-phd-en",
+   "kind": "landmark_y",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "15 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-front-phd-en",
+   "kind": "page_labels",
+   "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "ii, iii, iv, v, vi, vii, viii",
+   "status": "FAIL"
+  },
+  {
+   "id": "page-labels-unnumbered-phd-en",
+   "kind": "page_labels",
+   "expected": "none x3",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": "none x2",
+   "status": "FAIL"
+  },
+  {
+   "id": "docx-no-undefined-phd-en",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "field validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "page-size-phd-tr",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "37 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-top-phd-tr",
+   "kind": "line_attr",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.163,
+   "delta": 0.163,
+   "note": "539 lines, pages [15, 16, 17, 18, 19, 20]",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-top-phd-tr",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "23 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margins-left-phd-tr",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "23 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-left-phd-tr",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "min over 23 pages [30.00..33.08]",
+   "status": "PASS"
+  },
+  {
+   "id": "margins-right-phd-tr",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 179.999,
+   "delta": -0.001,
+   "note": "max over 23 pages [146.31..180.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-phd-tr",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-size-phd-tr",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 28012, 11.0: 1589, 9.0: 1272, 10.0: 602}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-pitch-phd-tr",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "mode bucket 7.3 (276/465 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent-phd-tr",
+   "kind": "line_attr",
+   "expected": 42.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 42.495,
+   "delta": -0.005,
+   "note": "1 lines, pages [15]",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent-docx-phd-tr",
+   "kind": "docx_attr",
+   "expected": [
+    "709"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "709"
+   ],
+   "note": "366 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "para-spacing-docx-phd-tr",
+   "kind": "docx_attr",
+   "expected": [
+    "120"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "120",
+    "240",
+    "276",
+    "300",
+    "360",
+    "396"
+   ],
+   "note": "940 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-centre-phd-tr",
+   "kind": "landmark_x",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 104.99415,
+   "delta": -0.0058,
+   "note": "23 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-numbering-size-phd-tr",
+   "kind": "landmark_y",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "23 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-front-phd-tr",
+   "kind": "page_labels",
+   "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels-unnumbered-phd-tr",
+   "kind": "page_labels",
+   "expected": "none x3",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": "none x3",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-no-undefined-phd-tr",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "field validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "bibliography-title-entry-gap",
+   "kind": "landmark_gap",
+   "expected": 9.74,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+    "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.729999999999997,
+   "delta": -0.01,
+   "note": "page 35",
+   "status": "PASS"
+  },
+  {
+   "id": "bibliography-title-entry-gap-sanatta-yeterlik-tr",
+   "kind": "landmark_gap",
+   "expected": 9.74,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+    "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.729999999999997,
+   "delta": -0.01,
+   "note": "page 35",
+   "status": "PASS"
+  },
+  {
+   "id": "bibliography-title-entry-gap-master-en",
+   "kind": "landmark_gap",
+   "expected": 9.74,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+    "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.729999999999997,
+   "delta": -0.01,
+   "note": "page 13",
+   "status": "PASS"
+  },
+  {
+   "id": "bibliography-title-entry-gap-phd-en",
+   "kind": "landmark_gap",
+   "expected": 9.74,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+    "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.729999999999997,
+   "delta": -0.01,
+   "note": "page 13",
+   "status": "PASS"
+  },
+  {
+   "id": "bibliography-title-entry-gap-phd-tr",
+   "kind": "landmark_gap",
+   "expected": 9.74,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+    "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.729999999999997,
+   "delta": -0.01,
+   "note": "page 35",
+   "status": "PASS"
+  },
+  {
+   "id": "table-header-f-centered",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-number-centered",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-percent-centered",
+   "kind": "line_attr",
+   "expected": 155,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-header-f-centered-sanatta-yeterlik-tr",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-number-centered-sanatta-yeterlik-tr",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-percent-centered-sanatta-yeterlik-tr",
+   "kind": "line_attr",
+   "expected": 155,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-header-f-centered-master-en",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-number-centered-master-en",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-percent-centered-master-en",
+   "kind": "line_attr",
+   "expected": 155,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-header-f-centered-phd-en",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-number-centered-phd-en",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-percent-centered-phd-en",
+   "kind": "line_attr",
+   "expected": 155,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-header-f-centered-phd-tr",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-number-centered-phd-tr",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "table-percent-centered-phd-tr",
+   "kind": "line_attr",
+   "expected": 155,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "322 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-sanatta-yeterlik-tr",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "322 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-master-en",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "161 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-phd-en",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "161 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-phd-tr",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "322 independent PDF glyph samples; ",
+   "status": "PASS"
+  }
+ ]
+}

@@ -19,8 +19,12 @@ export function lastLineShifts(words, deltaPx, tolPx = 1) {
   if (!words.length || !(deltaPx > 0)) return shifts;
   const last = words[words.length - 1];
   let first = words.length - 1;
-  // The run of words whose glyphs all sit on the last line; a word that starts on an earlier line (wrapped inside the word) is not part of it.
-  while (first > 0 && Math.abs(words[first - 1].top - last.lastTop) < tolPx && Math.abs(words[first - 1].lastTop - last.lastTop) < tolPx) first -= 1;
+  // A long word may start on the preceding line and end on the last one. Its
+  // suffix still precedes a real space: count that gap when shifting later words.
+  while (first > 0 && Math.abs(words[first - 1].lastTop - last.lastTop) < tolPx) {
+    first -= 1;
+    if (Math.abs(words[first].top - last.lastTop) >= tolPx) break;
+  }
   // A single-word last line has no gaps.
   if (first === words.length - 1) return shifts;
   for (let i = first; i < words.length; i += 1) shifts.set(i, (i - first) * deltaPx);

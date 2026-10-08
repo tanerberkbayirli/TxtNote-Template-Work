@@ -27,7 +27,7 @@ describe("Word structural semantics", () => {
     const xml = (await parts(model))["word/document.xml"];
     assert.match(xml, /<w:trHeight w:val="454" w:hRule="exact"/);
     assert.match(xml, /<w:tblLayout w:type="fixed"/);
-    assert.match(xml, /<w:cantSplit w:val="false"/);
+    assert.doesNotMatch(xml, /<w:cantSplit\b/);
     const cells = [...xml.matchAll(/<w:tc>[\s\S]*?<\/w:tc>/g)];
     assert.ok(cells.length >= 4);
     for (const [cell] of cells) assert.doesNotMatch(cell, /<w:keepNext\/>/, "splittable tables must not acquire an array-valued keep-next chain");
@@ -74,6 +74,6 @@ describe("Word structural semantics", () => {
     assert.match(css, /p\{break-inside:avoid;orphans:1;widows:1;break-after:avoid;/);
     const xml = (await parts(model))["word/document.xml"];
     assert.match(xml, /<w:keepLines/);
-    assert.match(xml, /<w:widowControl w:val="false"/);
+    assert.match(xml, /<w:widowControl w:val="0"/);
   });
 });

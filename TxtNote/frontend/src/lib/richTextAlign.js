@@ -2,7 +2,7 @@
  * Paragraph alignment for the standard note body.
  *
  * Size/colour/style live on inline spans. Alignment is a block: a wrapping
- * div with fmt-align-left|center|right, so text-align can actually take effect.
+ * div with fmt-align-left|center|right|justify, so text-align can take effect.
  */
 
 import { FORMAT_ALIGNS, alignClass, parseAlign } from "../config/format.js";
@@ -18,12 +18,13 @@ function isAtomicBlock(node) {
   return Boolean(isMathFormulaEl(node) && node.getAttribute("data-display") !== "inline");
 }
 
-/** Direct child of the editor that can carry text-align. */
+/** Paragraphs, individual cells and list items can carry text-align. */
 export function isAlignHost(node, root) {
   return (
     node instanceof HTMLElement &&
-    node.parentNode === root &&
-    (node.tagName === "DIV" || node.tagName === "P") &&
+    root.contains(node) && node !== root &&
+    (node.parentNode === root || node.closest("td,th,li")) &&
+    /^(DIV|P|H[1-6]|TD|TH|LI)$/.test(node.tagName) &&
     !node.classList.contains("math-formula") &&
     !node.classList.contains("code-block") &&
     !node.classList.contains("academic-table-wrap") &&
@@ -94,6 +95,13 @@ function splitParagraphBoundaries(textNode, offset) {
 function collectWrapNodes(root, range) {
   const startBlock = nearestAlignBlock(range.startContainer, root);
   const endBlock = nearestAlignBlock(range.endContainer, root);
+  if (startBlock && startBlock === endBlock) return [startBlock];
+  // Walk document order rather than siblings: a selection can cross table rows
+  // or list items whose paragraphs have different parents.
+  const intersected = [...root.querySelectorAll("div,p,h1,h2,h3,h4,h5,h6,td,th,li")]
+    .filter((node) => isAlignHost(node, root) && range.intersectsNode(node));
+  const paragraphs = intersected.filter((node) => !intersected.some((other) => other !== node && node.contains(other)));
+  if (paragraphs.length && (startBlock?.closest("td,th,li") || endBlock?.closest("td,th,li") || paragraphs.some((node) => node.closest("td,th,li")))) return paragraphs;
   if (startBlock || endBlock) {
     const first = startBlock ?? topLevelOf(range.startContainer, root);
     const last = endBlock ?? topLevelOf(range.endContainer, root) ?? first;
@@ -211,7 +219,7 @@ function placeCaretIn(node, atStart = true) {
   sel.addRange(range);
 }
 
-/** Apply left / center / right to the paragraph(s) that intersect `range`. */
+/** Apply alignment to the paragraph(s) that intersect `range`. */
 export function applyAlignToRange(root, range, align) {
   if (!root || !ALIGN_IDS.has(align)) return null;
 
@@ -253,6 +261,9 @@ export function isCaretAtAlignBlockStart(root) {
   const range = sel.getRangeAt(0);
   const block = nearestAlignBlock(range.startContainer, root);
   if (!block) return false;
+
+  // Structural cells/items keep their native boundary behavior.
+  if (/^(TD|TH|LI)$/.test(block.tagName)) return false;
   const probe = document.createRange();
   probe.selectNodeContents(block);
   probe.setEnd(range.startContainer, range.startOffset);
@@ -268,6 +279,7 @@ export function splitAlignBlockAtCaret(root) {
 
   const block = nearestAlignBlock(range.startContainer, root);
   if (!block) return false;
+  if (/^(TD|TH|LI)$/.test(block.tagName)) return false;
 
   const after = document.createRange();
   after.setStart(range.startContainer, range.startOffset);
@@ -315,6 +327,7 @@ export function mergeAlignBlockWithPrevious(root) {
   const range = sel.getRangeAt(0);
   const block = nearestAlignBlock(range.startContainer, root);
   if (!block) return false;
+  if (/^(TD|TH|LI)$/.test(block.tagName)) return false;
 
   const prev = previousAlignHost(block, root);
   if (!prev) return false;

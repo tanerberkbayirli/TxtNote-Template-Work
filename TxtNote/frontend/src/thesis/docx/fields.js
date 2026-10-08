@@ -5,7 +5,7 @@ function complexFieldMarker(instruction, edge, properties = {}) {
   // Word derives a refreshed field's typography from its BEGIN run, not merely
   // the cached result. Styling only the cache resets NUMPAGES to Normal's font.
   const font = typeof properties.font === "string" ? properties.font : properties.font?.ascii;
-  const rPr = font || properties.size ? `<w:rPr>${font ? `<w:rFonts w:ascii="${fieldXmlText(font)}" w:hAnsi="${fieldXmlText(font)}" w:cs="${fieldXmlText(font)}"/>` : ""}${properties.size ? `<w:sz w:val="${properties.size}"/><w:szCs w:val="${properties.size}"/>` : ""}${properties.bold ? "<w:b/>" : ""}${properties.italics ? "<w:i/>" : ""}</w:rPr>` : "";
+  const rPr = font || properties.size || properties.bold || properties.italics ? `<w:rPr>${font ? `<w:rFonts w:ascii="${fieldXmlText(font)}" w:hAnsi="${fieldXmlText(font)}" w:cs="${fieldXmlText(font)}"/>` : ""}${properties.bold ? "<w:b/>" : ""}${properties.italics ? "<w:i/>" : ""}${properties.size ? `<w:sz w:val="${properties.size}"/><w:szCs w:val="${properties.size}"/>` : ""}</w:rPr>` : "";
   const xml = edge === "begin"
     ? `<w:r>${rPr}<w:fldChar w:fldCharType="begin"/><w:instrText xml:space="preserve">${fieldXmlText(instruction)}</w:instrText><w:fldChar w:fldCharType="separate"/></w:r>`
     : `<w:r>${rPr}<w:fldChar w:fldCharType="end"/></w:r>`;

@@ -1,0 +1,522 @@
+[
+  {
+    "id": "page-size-master-editor",
+    "kind": "page_size",
+    "params": {
+      "fixture": "master"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-size-master-word",
+    "kind": "page_size",
+    "params": {
+      "fixture": "master",
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-size-phd-editor",
+    "kind": "page_size",
+    "params": {
+      "fixture": "phd"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-size-phd-word",
+    "kind": "page_size",
+    "params": {
+      "fixture": "phd",
+      "source": "word"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-all-section-margins",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.left"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-all-section-margins-right",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.right"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-all-section-margins-top",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.top"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-all-section-margins-bottom",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.bottom"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-edge-editor",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-left-edge-word",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "source": "word"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-edge-editor",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-right-edge-word",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "source": "word"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-editor",
+    "kind": "fonts",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "families": [
+        "Times New Roman"
+      ]
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.2: body font Times New Roman; clean ÖZET page isolates ordinary text from mathematical glyphs"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-word",
+    "kind": "fonts",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "families": [
+        "Times New Roman"
+      ],
+      "source": "word"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.2: body font Times New Roman; clean ÖZET page isolates ordinary text from mathematical glyphs"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-size-editor",
+    "kind": "font_size",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 12,
+    "tolerance": 0.2,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.2: main text is 12 pt; min 8 pt applies to table/figure/formula content"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-size-word",
+    "kind": "font_size",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 12,
+    "tolerance": 0.2,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.2: main text is 12 pt; min 8 pt applies to table/figure/formula content"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-spacing-editor",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.2,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.4: 1.5 line spacing"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-spacing-word",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "word"
+    },
+    "expected": 7.3,
+    "tolerance": 0.2,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.4: 1.5 line spacing"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-bold-editor",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Alt Başlık 1\\.1\\.1\\.1$",
+      "attr": "bold",
+      "agg": "all"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.7: all heading degrees bold"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "h4-bold-word",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Alt Başlık 1\\.1\\.1\\.1$",
+      "attr": "bold",
+      "agg": "all",
+      "source": "word"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.7: all heading degrees bold"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-pages-unlabelled-editor",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "pages": [
+        1,
+        2
+      ]
+    },
+    "expected": "none x2",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.6: cover and inner cover are excluded from visible page numbering"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "cover-pages-unlabelled-word",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "pages": [
+        1,
+        2
+      ],
+      "source": "word"
+    },
+    "expected": "none x2",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.6: cover and inner cover are excluded from visible page numbering"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "chapter-starts-arabic-1-editor",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "find": "^1\\. GİRİŞ$"
+      }
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.6: Arabic sequence starts at chapter 1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "chapter-starts-arabic-1-word",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "pages": {
+        "find": "^1\\. GİRİŞ$"
+      },
+      "source": "word"
+    },
+    "expected": "1",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.6: Arabic sequence starts at chapter 1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "toc-page-labels-editor",
+    "kind": "toc_labels",
+    "params": {
+      "fixture": "master",
+      "leader": "none",
+      "hidden_index_labels": [
+        {
+          "title_regex": "^TEZ KABUL VE ONAY SAYFASI$",
+          "label": "ii"
+        },
+        {
+          "title_regex": "^BİLİMSEL ETİK BİLDİRİMİ$",
+          "label": "iii"
+        }
+      ]
+    },
+    "expected": "all entries match printed or declared hidden index labels",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.6; p.33 (printed p.31), Example 8"
+    },
+    "evidence": "EXPLICIT",
+    "note": "The contents example assigns hidden counted labels approval=ii and ethics=iii. Verify those ToC labels while confirming the physical pages remain unprinted; §2.6's exclusion creates a documented numbering conflict."
+  },
+  {
+    "id": "toc-page-labels-word",
+    "kind": "toc_labels",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "leader": "none",
+      "hidden_index_labels": [
+        {
+          "title_regex": "^TEZ KABUL VE ONAY SAYFASI$",
+          "label": "ii"
+        },
+        {
+          "title_regex": "^BİLİMSEL ETİK BİLDİRİMİ$",
+          "label": "iii"
+        }
+      ]
+    },
+    "expected": "all entries match printed or declared hidden index labels",
+    "tolerance": 0,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.5 (printed p.3), §2.6; p.33 (printed p.31), Example 8"
+    },
+    "evidence": "EXPLICIT",
+    "note": "The contents example assigns hidden counted labels approval=ii and ethics=iii. Verify those ToC labels while confirming the physical pages remain unprinted; §2.6's exclusion creates a documented numbering conflict."
+  },
+  {
+    "id": "t80-docx-valid",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "t80"
+    },
+    "expected": "none",
+    "tolerance": 0,
+    "source": {
+      "file": "generated DOCX",
+      "locator": "DOCX structural validity for the retained long-title Tier 2 fixture"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "tier2-title-overflow-unknown",
+    "kind": "note",
+    "params": {
+      "fixture": "t80",
+      "text": "UNKNOWN Tier 2: guide gives no title-length or cover-overflow behavior; the deterministic t80 fixture is retained for repeatability and is not a Tier 1 fit criterion."
+    },
+    "expected": "documented",
+    "tolerance": 0,
+    "source": {
+      "file": "aku-sagbil.json",
+      "locator": "unknowns[]; source leaves title-overflow capacity undefined"
+    },
+    "evidence": "UNKNOWN"
+  }
+]

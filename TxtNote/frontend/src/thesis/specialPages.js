@@ -21,6 +21,7 @@
 import { resolvePlaceholders } from "./engine.js";
 import { convertLength } from "./units.js";
 import { staticFormatOpenTag } from "./staticFormat.js";
+import { normalizeHex } from "../config/format.js";
 
 export const SPECIAL_PAGE_BLOCK_TYPES = Object.freeze(["text", "metadata", "image", "spacer", "separator", "group"]);
 export const SPECIAL_PAGE_MAX_DEPTH = 4;
@@ -232,6 +233,10 @@ export function specialPageCss(scope, nodes, styleCss) {
         textRules = textRules.replace(/top:(calc\(-1 \* var\(--thesis-wb-[^;]+);/g, "transform:translateY($1);");
       }
       rules.push(`${scope} [data-thesis-block="${node.path}"]{${textRules}${specialPageBoxCss(node, parent)}${node.border ? "margin:0;" : ""}}`);
+      // Special pages have no rich-text editor to register custom inline colors.
+      // Emit the highlight with the block stylesheet, including in print/export.
+      const highlight = normalizeHex(node.style?.highlight);
+      if (node.type === "text" && highlight) rules.push(`${scope} [data-thesis-block="${node.path}"]>[data-fmt-bg="${highlight}"]{background-color:${highlight};}`);
       if (node.type === "group") visit(node.blocks, node);
     }
   };

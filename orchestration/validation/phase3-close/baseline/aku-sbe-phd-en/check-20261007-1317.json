@@ -1,0 +1,120 @@
+{
+ "target": "aku-sbe",
+ "stamp": "20261007-1317",
+ "counts": {
+  "FAIL": 4,
+  "PASS": 2
+ },
+ "variants": {
+  "phd-en": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\baseline\\sbe-phd-en.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\baseline\\sbe-phd-en.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\baseline\\sbe-phd-en.layout.json"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.516,
+ "commandSeconds": 0.516,
+ "exportMode": "existing-artifacts",
+ "sourceProvenance": {},
+ "checksSha256": "f84a5c86ef280b33a9c8caf42745438c1b0238ea4c9b9ec9720276c3a23be50a",
+ "artifactSha256": {
+  "phd-en": {
+   "pdf": "88f594cda080ca2a17e0a148b912f6c46468f3cfa9779e4f947193c459f3b58e",
+   "docx": "5b6dc3f4f82d383bfed5af416cc37615a9df6a1ab0508404135a83e5ded39b86",
+   "layout": "9885543d7d6a4162198cb47ee29be479fbf5b58fe565f1a5fff3850a9282d52e"
+  }
+ },
+ "checks": [
+  {
+   "id": "body-line-pitch-phd-en",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 4.866,
+   "delta": -2.434,
+   "note": "mode bucket 4.9 (394/461 gaps)",
+   "status": "FAIL"
+  },
+  {
+   "id": "first-line-indent-phd-en",
+   "kind": "line_attr",
+   "expected": 42.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.378,
+   "delta": -12.122,
+   "note": "3 lines, pages [15]",
+   "status": "FAIL"
+  },
+  {
+   "id": "page-labels-front-phd-en",
+   "kind": "page_labels",
+   "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "ii, iii, iv, v, vi, vii, viii",
+   "status": "FAIL"
+  },
+  {
+   "id": "page-labels-unnumbered-phd-en",
+   "kind": "page_labels",
+   "expected": "none x3",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": "none x2",
+   "status": "FAIL"
+  },
+  {
+   "id": "engine-layout-pdf-phd-en",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "161 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-phd-en",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}
