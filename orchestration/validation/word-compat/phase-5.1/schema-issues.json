@@ -1,0 +1,860 @@
+{
+  "issues": [
+    {
+      "id": "Sem_UniqueAttributeValue",
+      "status": "OPEN_SCHEMA_FAIL",
+      "ownerPhase": "5.3.4",
+      "examples": [
+        {
+          "target": "adu-sagbil",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-sagbil.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[2]/w:r[1]/w:drawing[1]/wp:anchor[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "adu-ziraat-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-ziraat-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[53]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "afsu-eczacilik-proje",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-eczacilik-proje.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[3]/w:p[1]/w:r[1]/w:drawing[1]/wp:inline[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "afsu-lee",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[14]/w:r[1]/w:drawing[1]/wp:anchor[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "afsu-lee",
+          "variant": "phd",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.phd.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[14]/w:r[1]/w:drawing[1]/wp:anchor[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "afsu-tip",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-tip.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[11]/w:r[1]/w:drawing[1]/wp:anchor[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "aku-cografya-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-cografya-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[4]/w:p[1]/w:r[1]/w:drawing[1]/wp:inline[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "aku-fbe",
+          "variant": "master",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.master.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[57]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-fbe",
+          "variant": "phd",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.phd.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[57]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-felsefe-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[41]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-felsefe-seminer",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-seminer.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[46]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-isg-tezsiz-proje",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-isg-tezsiz-proje.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[50]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-kimya-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-kimya-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[17]/w:r[1]/w:drawing[1]/wp:anchor[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "aku-matematik-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[36]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-matematik-lisans",
+          "variant": "tables",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.tables.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[36]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-mbg-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-mbg-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[4]/w:p[1]/w:r[1]/w:drawing[1]/wp:inline[1]/wp:docPr[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "master",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.master.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[33]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "phd",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.phd.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[33]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "t80",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.t80.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[36]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[25]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "master-en",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.master-en.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[25]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "phd-en",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-en.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[25]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "phd-tr",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-tr.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[25]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "sanatta-yeterlik-tr",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.sanatta-yeterlik-tr.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[25]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "aku-sosyoloji-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sosyoloji-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[40]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "engine-word-pagefit",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[8]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "engine-word-pagefit",
+          "variant": "tab",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.tab.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[8]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "engine-word-structure",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[3]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "engine-word-structure",
+          "variant": "fields",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.fields.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[12]/w:bookmarkStart[1]"
+          }
+        },
+        {
+          "target": "mcbu-tip-uzmanlik",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\mcbu-tip-uzmanlik.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "Attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:id' should have unique value. Its current value '1' duplicates with others.",
+            "id": "Sem_UniqueAttributeValue",
+            "xpath": "/w:document[1]/w:body[1]/w:p[69]/w:bookmarkStart[1]"
+          }
+        }
+      ],
+      "diagnosis": "Validator finding, not a completed root-cause fix. Three SDK categories are not three proven independent motor defects."
+    },
+    {
+      "id": "Sch_UnexpectedElementContentExpectingComplex",
+      "status": "OPEN_SCHEMA_FAIL",
+      "ownerPhase": "5.4.4",
+      "examples": [
+        {
+          "target": "adu-sagbil",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-sagbil.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[189]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-isg-tezsiz-proje",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-isg-tezsiz-proje.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[90]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "master",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.master.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[81]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "phd",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.phd.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[81]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "t80",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.t80.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[82]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[68]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "master-en",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.master-en.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[68]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "phd-en",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-en.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[68]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "phd-tr",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-tr.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[68]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "sanatta-yeterlik-tr",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.sanatta-yeterlik-tr.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[68]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "aku-sosyoloji-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sosyoloji-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:b'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[41]/w:r[4]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "engine-word-structure",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:i'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[1]/w:r[2]/w:rPr[1]"
+          }
+        },
+        {
+          "target": "engine-word-structure",
+          "variant": "fields",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.fields.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The element has unexpected child element 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:i'.",
+            "id": "Sch_UnexpectedElementContentExpectingComplex",
+            "xpath": "/w:document[1]/w:body[1]/w:p[12]/w:r[2]/w:rPr[1]"
+          }
+        }
+      ],
+      "diagnosis": "Validator finding, not a completed root-cause fix. Three SDK categories are not three proven independent motor defects."
+    },
+    {
+      "id": "Sch_AttributeValueDataTypeDetailed",
+      "status": "OPEN_SCHEMA_FAIL",
+      "ownerPhase": "5.4.1/5.4.4",
+      "examples": [
+        {
+          "target": "adu-sagbil",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-sagbil.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "adu-ziraat-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\adu-ziraat-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "afsu-eczacilik-proje",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-eczacilik-proje.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[3]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "afsu-lee",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[5]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "afsu-lee",
+          "variant": "phd",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-lee.phd.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[7]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "afsu-tip",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\afsu-tip.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[2]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-cografya-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-cografya-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[9]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-fbe",
+          "variant": "master",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.master.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[8]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-fbe",
+          "variant": "phd",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-fbe.phd.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[8]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-felsefe-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-felsefe-seminer",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-felsefe-seminer.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-isg-tezsiz-proje",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-isg-tezsiz-proje.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[3]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-kimya-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-kimya-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[8]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-matematik-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-matematik-lisans",
+          "variant": "tables",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-matematik-lisans.tables.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-mbg-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-mbg-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[8]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "master",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.master.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[2]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "phd",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.phd.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[2]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sagbil",
+          "variant": "t80",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sagbil.t80.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[2]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[7]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "master-en",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.master-en.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[7]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "phd-en",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-en.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[7]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "phd-tr",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.phd-tr.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[7]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sbe",
+          "variant": "sanatta-yeterlik-tr",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sbe.sanatta-yeterlik-tr.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[7]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "aku-sosyoloji-lisans",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\aku-sosyoloji-lisans.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "engine-word-pagefit",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.default.json",
+          "error": {
+            "part": "/word/styles.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:val' has invalid value 'false'. The Enumeration constraint failed.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:styles[1]/w:style[17]/w:qFormat[1]"
+          }
+        },
+        {
+          "target": "engine-word-pagefit",
+          "variant": "notes",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.notes.json",
+          "error": {
+            "part": "/word/styles.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:val' has invalid value 'false'. The Enumeration constraint failed.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:styles[1]/w:style[17]/w:qFormat[1]"
+          }
+        },
+        {
+          "target": "engine-word-pagefit",
+          "variant": "styles",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.styles.json",
+          "error": {
+            "part": "/word/styles.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:val' has invalid value 'false'. The Enumeration constraint failed.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:styles[1]/w:style[17]/w:qFormat[1]"
+          }
+        },
+        {
+          "target": "engine-word-pagefit",
+          "variant": "tab",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-pagefit.tab.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "engine-word-structure",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "engine-word-structure",
+          "variant": "fields",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\engine-word-structure.fields.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        },
+        {
+          "target": "mcbu-tip-uzmanlik",
+          "variant": "default",
+          "report": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\schema\\mcbu-tip-uzmanlik.default.json",
+          "error": {
+            "part": "/word/document.xml",
+            "description": "The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+            "id": "Sch_AttributeValueDataTypeDetailed",
+            "xpath": "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+          }
+        }
+      ],
+      "diagnosis": "Validator finding, not a completed root-cause fix. Three SDK categories are not three proven independent motor defects."
+    }
+  ],
+  "newEnglishTableCoverage": {
+    "status": "NEWLY_EXERCISED_PREEXISTING_EXPORT_DEFECT",
+    "description": "Sch_AttributeValueDataTypeDetailed: The attribute 'http://schemas.openxmlformats.org/wordprocessingml/2006/main:w' has invalid value '100%'. The string '100%' is not a valid 'Int32' value.",
+    "baselineEvidence": "aku-sbe.default.baseline.json already contains the same width finding; English old fixtures had no table.",
+    "ownerPhase": "5.4.1"
+  },
+  "limits": "SDK2.9.1 Office2016 schema profile; Word opening and layout checks do not override schema FAIL."
+}

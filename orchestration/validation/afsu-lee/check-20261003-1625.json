@@ -1,0 +1,31 @@
+{
+ "target": "afsu-lee",
+ "stamp": "20261003-1625",
+ "counts": {
+  "PASS": 1
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-lee\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-lee\\run\\default.docx",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "checks": [
+  {
+   "id": "docx-no-undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "field validity",
+    "locator": "DOCX XML"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  }
+ ]
+}

@@ -1,0 +1,1469 @@
+{
+  "phase": 3,
+  "status": "CLOSED",
+  "date": "2026-10-07",
+  "scope": "16 university targets; engine stress targets are regression gates, not university runtime targets",
+  "timingMethod": "Exact parent command wall time; fresh exports without Word. Runtime run with optimized/coverage targeted reruns after improvements. Machine: 12 logical CPU threads; browser export pool up to 5. Local results, not a universal timing guarantee.",
+  "minSeconds": 12.35,
+  "maxSeconds": 29.144,
+  "landmarkChecks": 73,
+  "migratedChecks": 60,
+  "addedLandmarkChecks": 8,
+  "sourceValuesAndTolerancesPreserved": true,
+  "universities": [
+    {
+      "target": "adu-ziraat-lisans",
+      "wallSeconds": 13.372,
+      "report": "orchestration\\validation\\phase3-close\\coverage\\adu-ziraat-lisans\\check-20261007-1344.json",
+      "reportSha256": "dc06cde09dd7182e283a8bd627eba02f3334a780b1f0ce461ddc0961052d9f1d",
+      "counts": {
+        "PASS": 12,
+        "FAIL": 1,
+        "INFO": 1
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "02770319123e5177a4d983115ad7d497824c2a39e5b7056e2d110589bd808e56",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:43:49.752Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "123f26e5a74f1e34d5181430bb4fbb5495f2be3417adea6ff201bbb71a964d86",
+          "pdf": "12ba76548e4e0f1ec35573fdb4a8689f569ea4e5e69174359f038e72d397d963",
+          "docx": "52ba40ae660ed64adcf9c2747f24289320099c5159b8880aeef4c6006f0def28",
+          "layout": "09092e6e98e67e15bed145fb96950987f6449ebfeaeb82d4ff7e003ed2a66808"
+        }
+      }
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "wallSeconds": 24.422,
+      "report": "orchestration\\validation\\phase3-close\\optimized\\afsu-eczacilik-proje\\check-20261007-1339.json",
+      "reportSha256": "99b91e110336d5956abcde1534aa33dde94ea224806cbc5e7b7aed9effa10150",
+      "counts": {
+        "PASS": 21,
+        "SKIPPED": 3,
+        "INFO": 1
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "bb2e3d4d4d681e0f27b42c44ccaab1e10f65bc19751c3b83da002839b5106509",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:39:04.436Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "acdc7f9c765e5f128fc05980a1381b3fe069d77956dbd47414a3eaf7d555243e",
+          "pdf": "21754592f5c92c0e163227ccd7387822e9a47be8c1d101a08788a6d5724f9ba3",
+          "docx": "a29e334bb84665d9ba11889cbf119fa0202010c7526e69765313feb2177d7543",
+          "layout": "ea535a8fcfe9c8aaa443fedc325bb5b3758030a99182e908f43c719ff843986b"
+        }
+      }
+    },
+    {
+      "target": "afsu-lee",
+      "wallSeconds": 29.144,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\afsu-lee\\check-20261007-1332.json",
+      "reportSha256": "476c2ca8a12709572aaa799d50f86adfeb106b079a867ef4143333fe34b355ac",
+      "counts": {
+        "PASS": 80,
+        "SKIPPED": 6,
+        "INFO": 1
+      },
+      "phase3Gates": 4,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:31:39.540Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "382a6a77e94ad42a5c02135365974264793280c0ecbafc10f53251f79bb419b6",
+          "pdf": "6d90dd4a27cfb744c077f2cf853e138442e6e60d081837b52015d604fb0c892f",
+          "docx": "2193a483d6ae43c40ac0a985bdb9b9a510e371531672c358261b76fdd03f7060",
+          "layout": "dea0a98b9965061e67c729cbec4aaedbe648a123ec41bcabb57d10d0959145f5"
+        },
+        "phd": {
+          "fixture": "6447fedc085f2c42f10a200e86aa7345535795a23837d25ba1b30318383258f7",
+          "pdf": "08e2c259d448812209ac40e655e6fa2043dd3108943defc68c8582e99f61a151",
+          "docx": "0dc3d50bab563ce8ac0e3d59185a1c5e74bf7385cdcd15111e22f31e90860cab",
+          "layout": "61231dc31c6bd43e4550315b98a265e611c2fc8519ebce062ddb8f851084af9f"
+        }
+      }
+    },
+    {
+      "target": "afsu-tip",
+      "wallSeconds": 22.291,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\afsu-tip\\check-20261007-1332.json",
+      "reportSha256": "8bf8149d7b43ae2d67b945d8708279d8e60d07dc798ac0706a6fa03bc67d0ba5",
+      "counts": {
+        "PASS": 45,
+        "INFO": 2,
+        "SKIPPED": 3
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:32:08.530Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "81404850d7ea37f89b883871b7290f3b95357c71f8557a4c6b610d6f24e36b33",
+          "pdf": "8305aa1f7f8f4fdc4d4ee15f3c4856f51b9e587621732fe04adffadc69a34a5c",
+          "docx": "6f6b7396a07eddbc82a47ed4cd0f2115bbc5954fd6170109c04ab12459461b10",
+          "layout": "88bff24fa9c456f3af3274ecd0d3369ae3dd44c02d878ce41a14f45d13a18030"
+        }
+      }
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "wallSeconds": 19.856,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\aku-cografya-lisans\\check-20261007-1332.json",
+      "reportSha256": "9d418933b58144d6824d7a01f7f3bd0b0619e1f43dca3398cf6f6f5459b4cd60",
+      "counts": {
+        "PASS": 41,
+        "SKIPPED": 6,
+        "INFO": 3
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:32:30.597Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "639f204df817ab7c6de57670b13cf03d843d0afa653703bd2dc06fc561323caa",
+          "pdf": "71984a0cde0e5f1e9959b23e4c53a056f032d3e54d7d82a21e67342fd0817fe7",
+          "docx": "6da3ba9e88dbe58e4d9cdd3921cb586831d96effe1d4b90499a0c51b9cf8b9f2",
+          "layout": "849b09c5355bc3529e91eb1aa84adf7d97279db2effdf9f5fa69fdea40a0571f"
+        }
+      }
+    },
+    {
+      "target": "aku-fbe",
+      "wallSeconds": 17.971,
+      "report": "orchestration\\validation\\phase3-close\\coverage\\aku-fbe\\check-20261007-1344.json",
+      "reportSha256": "5597d98896d0d66663134a2c12c86f9ea11b18916bfe9349b61f4b14ab13c44b",
+      "counts": {
+        "SKIPPED": 27,
+        "PASS": 16,
+        "INFO": 3
+      },
+      "phase3Gates": 4,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "02770319123e5177a4d983115ad7d497824c2a39e5b7056e2d110589bd808e56",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:44:03.077Z"
+      },
+      "artifactSha256": {
+        "master": {
+          "fixture": "6c5370997167f4fbc84d9620bf04d677380ff66d41fa591271f54adce8babca2",
+          "pdf": "10c46c97164df82de055cca486845fc0e0ae4cd692cfa81379d8a30e3d7fd0f6",
+          "docx": "03a32ff30c4ca16ea019d7040b7e361a7efe959a2b25d4a79a1279de1e4ce16a",
+          "layout": "11b12603a4301250e02de4efe39998efb7f19786dc8ffaae93a1bf9e396ed906"
+        },
+        "phd": {
+          "fixture": "a3730f72dd208e42ff2d7c5811b7051300628533b7f855c452774871aa2a38f0",
+          "pdf": "1733e3d31099dc9728f02c31cb1e86f25e938affd2659ba935266e551678a059",
+          "docx": "40e63360e2f1b53062173b71edb934a9fc03d9bd518ac80c08597dfaab7a2eeb",
+          "layout": "a7a60ded7861f9e93e335aaa0cb7c603c909f7aca40b0dad6cbc49bffb61bc8a"
+        }
+      }
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "wallSeconds": 18.067,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\aku-felsefe-lisans\\check-20261007-1333.json",
+      "reportSha256": "f3a12a56b290dbefb967a85c06cbc05236862f95a7ebc2402e242647c2ab10ea",
+      "counts": {
+        "PASS": 45,
+        "INFO": 4,
+        "SKIPPED": 37
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:33:12.897Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "eff0795ee9a1c787aaac84292e39830d5c50a455d5f7cfe384dedef56e0f6100",
+          "pdf": "c8f190cffd44a5120f3bcb565a34d802113e811c96ea3bf309275dc948fa9725",
+          "docx": "51bcfd8b4060aef567c977f5c790d36f06620c38ba26ff1e85a126d3085d5614",
+          "layout": "29e4f5138a0ff0df13e342ede9c8e17bbe2bf272bfaabde5ca38df9d2c863b71"
+        }
+      }
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "wallSeconds": 17.068,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\aku-felsefe-seminer\\check-20261007-1333.json",
+      "reportSha256": "0ae569fb7d4ca1ba267eb65816a679473a239b5aa22061407be382df67bc99ce",
+      "counts": {
+        "PASS": 34,
+        "INFO": 4,
+        "SKIPPED": 26
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:33:31.031Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "9b1ffe0afd5ab2a9c659da2005c0581c9f5985250a77cee6280838acf476bdd8",
+          "pdf": "acf8661d3ff327350ed806a30d6064ef44e1c905773b23295b852653fc117715",
+          "docx": "5b0fa048f4592e54e5aaf38f55af729017504f689235b1280da39546ed1e1bcc",
+          "layout": "ace6734ab1e8953b39ac30214318a5e8ad73e7589c5f616fcf851d509cfa2c03"
+        }
+      }
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "wallSeconds": 19.088,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\aku-isg-tezsiz-proje\\check-20261007-1334.json",
+      "reportSha256": "e97580d3b21740368a77383f01924337a382060c4d7a806fdf7f7a348f35cc1c",
+      "counts": {
+        "PASS": 26,
+        "INFO": 1,
+        "SKIPPED": 12
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:33:48.075Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "50be8d108eb41c4dee60d7aa5689a0ad812ac7e08dbec17f37ac88cd0512a44f",
+          "pdf": "cba0300151723ea42ad14a705df4ca0b62a7d60bc5eac331db6485246b1d0cf4",
+          "docx": "e04700dff807161f31b83806585910ceab8489781fb6101b57f0fc5a1d03c490",
+          "layout": "7255661f8f42ee5099167d0b2ffe5543972b9f6710cb08cc77af34ef02a5b16f"
+        }
+      }
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "wallSeconds": 19.358,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\aku-kimya-lisans\\check-20261007-1334.json",
+      "reportSha256": "d761ab9ba20a2fdb41254b231e22a52cd2030d30dafa0976c86f511edb48c057",
+      "counts": {
+        "PASS": 26,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:34:07.144Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "e5c3195ec9afb462307ffbff13c1e1522b385e9f5d5f40b1d369a84623026a0f",
+          "pdf": "2e3834109454c32b5efd5f00ac54ed1da4d3230c1360d7b1fe751364cb5c9074",
+          "docx": "7edf8989ed6ef4093d6dcf6294964918efb00fbdf4f5954ce145ebfc335e18de",
+          "layout": "90019d7dda8b9c20cf6060ac8ce458636c45a08dc0104e06478a37dc3bf27022"
+        }
+      }
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "wallSeconds": 21.099,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\aku-matematik-lisans\\check-20261007-1334.json",
+      "reportSha256": "f0ee42024aebf205ecfc85e37b85b5ebcf4e50c2408e25f3aa7fff7ae0557701",
+      "counts": {
+        "PASS": 47,
+        "SKIPPED": 6,
+        "INFO": 2
+      },
+      "phase3Gates": 4,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:34:26.449Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "dd2fcf7851415fbb76935edc0cbb45bc1c0a01789dac1466f9847353e28812b0",
+          "pdf": "072b1f9d5e982e181d338335beeb7766dc0b00f3212144e5cf0d45d1efeee6d4",
+          "docx": "b3e8759a3b0447a0c8425aad8780e1e9a564a91d173bf63cf2d018cc477d5c58",
+          "layout": "88516aeef781e92dbcad61a38561f28f631ab7811c31256ded239e0ca4d6e869"
+        },
+        "tables": {
+          "fixture": "a16349732e293a7dd7902238b8b5d2fbbf1e56df91b493920236a3229ab08850",
+          "pdf": "3f4828f569aef730763ad24366d8144e76943faf66c4454d42e90fe64a4101d5",
+          "docx": "a5ed5466f6f55529ddfdcc5338ead23b1092e6d9b4461a10a04397d9627f0562",
+          "layout": "427be61db7cc44768806d2bcc82693bd7af17485c173da02d74bd50616c46f9c"
+        }
+      }
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "wallSeconds": 18.869,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\aku-mbg-lisans\\check-20261007-1335.json",
+      "reportSha256": "632ce81c70db784902e23b625f83eb7580350ccf76b582f36153a0ca3f3fc683",
+      "counts": {
+        "PASS": 28,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:34:47.660Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "188203328a4e48c51374b996861bb26939566a0aca7caac6ea4fdae5b1624296",
+          "pdf": "3f4e0f496178675bb92ee8c4a7c1c0c1864ba8e071b00fdafd56c8e8ff26ce60",
+          "docx": "313ab898a7170d10331ccd783af309662607026a6623b1f1bded21ada3cc15e9",
+          "layout": "4eb5f9c2947107e8c89f4e5d9dca75f67a903931970ad3483a7d7a12b997a039"
+        }
+      }
+    },
+    {
+      "target": "aku-sagbil",
+      "wallSeconds": 18.774,
+      "report": "orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\check-20261007-1344.json",
+      "reportSha256": "9491b800240c3f4a84cf804821daea411799ec2a2da4c2218d5890471bcefd6b",
+      "counts": {
+        "PASS": 21,
+        "SKIPPED": 11,
+        "FAIL": 2,
+        "INFO": 1
+      },
+      "phase3Gates": 6,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "02770319123e5177a4d983115ad7d497824c2a39e5b7056e2d110589bd808e56",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:44:21.056Z"
+      },
+      "artifactSha256": {
+        "master": {
+          "fixture": "39b48a7ff20f8653a48fea0f20e04d5d63ed52b030cdf9bd9b8a4316cc10123a",
+          "pdf": "d9c1eddaf6739654815a1a23df4a743deacb85c1ee11beb4f7d581c314d52235",
+          "docx": "230f415fed8930b2e2e6fb6a7828a051d88ed6c24705d96c0fc0c2d2427c055c",
+          "layout": "57de44eb7313356e5d67ffb7d085772c74b109d94bdeaaec75dc64d2e3e5fa2f"
+        },
+        "phd": {
+          "fixture": "8b7b84cf5833721d706fd616b6892e31733cee415b36d4129b2a0b3ad8e15eb1",
+          "pdf": "3682543e8bb466beb97238e1495e5101645559dadef713a4396e06b0482f2ab0",
+          "docx": "458bc6cccfac471047a67daac1cdc6e8447241e39313ec9ae17ff2c26e688994",
+          "layout": "14b026e5cf00c69aa4a7d4b88f52306abbfcd4569626dd6a86cf68a0f9173cd0"
+        },
+        "t80": {
+          "fixture": "81b684c30cf74a91f4accb1c923c72b6e8e43a20fbcadb3915b85f03a9fefdcd",
+          "pdf": "1d83fbcccb64e3bc979c46d8b3506f1f31223427cdde063dc527b9d843c65e87",
+          "docx": "7286aa2881419470296f8f73ce179b9bf52da82d7f5e53e9d723a8850a48eac8",
+          "layout": "709d85156cb6689b6435e903a2f339a9b8485510e158af4b99f8b6275da8cc7c"
+        }
+      }
+    },
+    {
+      "target": "aku-sbe",
+      "wallSeconds": 28.026,
+      "report": "orchestration\\validation\\phase3-close\\optimized\\aku-sbe\\check-20261007-1339.json",
+      "reportSha256": "1c536836c7e3c6cb03ae8de14eeeef1a5cf2654ca69e84ccf09dae56102c2cc1",
+      "counts": {
+        "PASS": 93,
+        "INFO": 2,
+        "FAIL": 23
+      },
+      "phase3Gates": 10,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "bb2e3d4d4d681e0f27b42c44ccaab1e10f65bc19751c3b83da002839b5106509",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:39:28.858Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "0a935beb778c99ccb8d68d077bdf7bd710eac04b546389e98161e7edc2461bd4",
+          "pdf": "f313c6c95184e7142642cb7a2bd80116f5dbae562002bb1ca0f310d880c3135b",
+          "docx": "1f6b9d5bda8d2e25c1a748fecd3aca63be8f3fa71ed90631317a58fd0f4a6307",
+          "layout": "678aeca2ebe83e08a024c18492c810928a2a205f9d5f0cc81466035606d1934a"
+        },
+        "sanatta-yeterlik-tr": {
+          "fixture": "7ab429230c003a0eccfdfc6c034985c8498480fb74eaa2c956514c26d0fbd612",
+          "pdf": "ced0e659ac2a9e59ed638769984af6a3eb3bc08f354452f2b2df2d2313d53f3b",
+          "docx": "41733b82ebe61ecfdb91fc6d7f8f8fcb0cdead8e84e69d55ec5eb8cdae268b36",
+          "layout": "dc806d467dae7e7fd5a740c482e16f1d17cd207e98c580fb9b1f913e0ee8db23"
+        },
+        "master-en": {
+          "fixture": "8fc67719cae67666a8a281468b7e366523b800a20d57f457c1fbcb8997e5d7ec",
+          "pdf": "f384da22e46357c5c5d08e272e0e4cada0890ef9cb5f7d1493e7fce1bf6e183e",
+          "docx": "c89718a809d75cedf5c5024f7c6fb8eeb14766dd1446a1f2be3781e84a184bfc",
+          "layout": "6645296ed21c50dae103f9115468446e2caef95aead047121fe870d7c873a2bc"
+        },
+        "phd-en": {
+          "fixture": "aa9b4525b05349000295b02725d87b57d9977b7d5975d0a19f3c82a64c601591",
+          "pdf": "befb36bea3a67b07dcc9120eb1b18cd80e32dd78f635dea03fd1ae4dfb6cf288",
+          "docx": "2a4bf4c77e3e66b515e67f356d27b8948b8a2e7239778bb95bba49cf48b67be5",
+          "layout": "161663f1e30ad6d381d0324d90dbf9d47da01b90c6805c5e1bdbd6916c8d0272"
+        },
+        "phd-tr": {
+          "fixture": "690415f1f30a62b06cb35c2b38532bb55409fd18e1bf0c67636ce0d12bf74793",
+          "pdf": "cb19da48ad4048252e6ea73083813374ba8013832e6e52714d2ecff58759a2b4",
+          "docx": "16d2898f11cf49b377202a63b582a24dace838fa9b623d5b23b14ae7634ee0f6",
+          "layout": "b990f86f2e42c4c657a103b2d53db7961643a61acd38728124046109a1033443"
+        }
+      }
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "wallSeconds": 12.35,
+      "report": "orchestration\\validation\\phase3-close\\coverage\\aku-sosyoloji-lisans\\check-20261007-1344.json",
+      "reportSha256": "3829650ac44afa997922da84551ae503e8514b3ca71b06be5fda1b19fc3dfc7a",
+      "counts": {
+        "INFO": 4,
+        "PASS": 17,
+        "SKIPPED": 10
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "02770319123e5177a4d983115ad7d497824c2a39e5b7056e2d110589bd808e56",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:44:39.867Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "2b820463e2b9a66a69deb1a23298fdcee6aa5f026aaefb55d804fa04d79ac7cc",
+          "pdf": "87265603118604766d3b581b3c9f98392bc2bafcd522f4a60265d20cba51abd0",
+          "docx": "025dcf7c423ffeb7989585b8be525827834d89937641f61c22e3d8e160161924",
+          "layout": "9c78e2dc6473791307b1abca4044b2e6fb645855796bdfaa29fc2535f137ef25"
+        }
+      }
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "wallSeconds": 15.102,
+      "report": "orchestration\\validation\\phase3-close\\runtime\\mcbu-tip-uzmanlik\\check-20261007-1338.json",
+      "reportSha256": "41bd19b145e10b5cf5d6644b4957fd0e50eba718a7824f3101ad803b8f4e53f8",
+      "counts": {
+        "PASS": 46,
+        "INFO": 1
+      },
+      "phase3Gates": 2,
+      "sourceProvenance": {
+        "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+        "trackedDiffSha256": "ae32a9302d18029c7a3d04e8d7a4aca0e88bca9584811bc04308d62677b3c62c",
+        "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+        "startedAt": "2026-10-07T10:38:02.708Z"
+      },
+      "artifactSha256": {
+        "default": {
+          "fixture": "afb8a725b51c55647cfc76890539d5bb8dc66af87e7d794017f2fa1705984c42",
+          "pdf": "dca122a0b7e533fd4628f381c02a1b2273edb3d146ec11597b23cf71e6ab6302",
+          "docx": "ddf6b4514a8dde976741976edd2816548e6ca0b0c14e9fdf1a0d7f07c1f524b9",
+          "layout": "64771237d31374e93239fd094bee8c86839c2d27ced891b21f1e769ccfee0907"
+        }
+      }
+    }
+  ],
+  "wordRegression": {
+    "counts": {
+      "PASS": 1350,
+      "FAIL": 39,
+      "INFO": 32
+    },
+    "phase3Gates": 68,
+    "targets": [
+      {
+        "target": "adu-ziraat-lisans",
+        "wallSeconds": 38.39,
+        "report": "orchestration\\validation\\phase3-close\\word\\adu-ziraat-lisans\\check-20261007-1305.json",
+        "reportSha256": "a36c2a46cab94e1cf6d004d18d4994c28c854271db4e518c13bcc8ef0354e862",
+        "counts": {
+          "PASS": 13,
+          "FAIL": 1,
+          "INFO": 1
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "e4010a9bed7ff8aed359576b7b23a9089b53c22bb875f7c94b512db7f40636c8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:04:59.301Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "123f26e5a74f1e34d5181430bb4fbb5495f2be3417adea6ff201bbb71a964d86",
+            "pdf": "5ca084b105697d0c0de1b45037a0636797160eea22462f3d27cd557afa98f749",
+            "docx": "ebba3963fb5adf6c4366a06df2b4ce87af4f5abd0d1eb55943732012e68aab54",
+            "layout": "bbb6264d1d4971bafe4837982cf778bb637339c4c50491a552e2963f0c3c2992",
+            "wordPdf": "58e00095c5133ca9303953e0c965c673578f16d56b1fe3900c3e39c4ccf67801",
+            "wordRenderInfoPath": "e7fd47c11146e559ef54abc805ccbb959e6b53f036117dab76609f4589514c47"
+          }
+        }
+      },
+      {
+        "target": "afsu-eczacilik-proje",
+        "wallSeconds": 27.554,
+        "report": "orchestration\\validation\\phase3-close\\word\\afsu-eczacilik-proje\\check-20261007-1306.json",
+        "reportSha256": "789ed62481b4d1b83a8144b4d8f24a5e843d0e85ca79ec69dfca808b6a97ca04",
+        "counts": {
+          "PASS": 27,
+          "INFO": 1
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "e4010a9bed7ff8aed359576b7b23a9089b53c22bb875f7c94b512db7f40636c8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:05:37.665Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "acdc7f9c765e5f128fc05980a1381b3fe069d77956dbd47414a3eaf7d555243e",
+            "pdf": "6b9a9391be001994d7fa8f2292e706739aca2002c438a3f6ea0c0b6b66047772",
+            "docx": "0961743143be9050fa46fdbeb980ff9335abbc24114228b1c11ed6835b5f6a1e",
+            "layout": "c757ee4729dbc50e17edc7530ce0e78d0cad401c865439da8cdc046f51641e92",
+            "wordPdf": "888ed2d353f64ea77561002facda55c3b891729e1f11977c7de5fb5b2410b9da",
+            "wordRenderInfoPath": "9044288b12a99813b6087101a32f5e992f3925bbd243345b4e023088a9c00ebe"
+          }
+        }
+      },
+      {
+        "target": "afsu-lee",
+        "wallSeconds": 48.977,
+        "report": "orchestration\\validation\\phase3-close\\word\\afsu-lee\\check-20261007-1306.json",
+        "reportSha256": "a3561de63c6166014640f75f308544968679b838065369f5ccc31797e7170e90",
+        "counts": {
+          "PASS": 92,
+          "INFO": 1
+        },
+        "phase3Gates": 4,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "4701a66cf2a23de3f2d81dde7ad67e87e075db9299b6e31111874e88acf095b3",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:06:05.250Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "382a6a77e94ad42a5c02135365974264793280c0ecbafc10f53251f79bb419b6",
+            "pdf": "22286d4afae4aa9cb41695753bc8329813e003f45ccb59f350559863aa5e966b",
+            "docx": "caae848e71e058833f55e433fb10ae72006b8f9871df5b8a8f7110c9833db1b0",
+            "layout": "580f28a545fea5eb4fc7f236419094182293ac29f3773e7970ca2a5fcc4cc102",
+            "wordPdf": "bd8371ed429a1c97b4000e609b6c0f573073e761355cdb91b58a17fc24437d45",
+            "wordRenderInfoPath": "89ea21b45d428196cd47cde8530ee46130a7275c58b8380ad8791227fde5bfba"
+          },
+          "phd": {
+            "fixture": "6447fedc085f2c42f10a200e86aa7345535795a23837d25ba1b30318383258f7",
+            "pdf": "5e737c0f3261b1f19d2f57ab4ac83f2b4331899000b9e0be10ad2384956d7b95",
+            "docx": "7d3649b525685522e4336f46ed1b31a72afbba2cd8b4d8e7a977258edb9f89a5",
+            "layout": "021de5c64b8714e71ccd44adab3e86892710abb351e0593e5548454883c4ccb4",
+            "wordPdf": "f25fcc7b8a5e98a8545e512be9328b4f55a412ea3b0409e0eab15274a0afd24b",
+            "wordRenderInfoPath": "3b0e33961a2d1e2aaf5cdc49d21e0201d680523e93cc55ee238282ce2daa0b23"
+          }
+        }
+      },
+      {
+        "target": "afsu-tip",
+        "wallSeconds": 21.468,
+        "report": "orchestration\\validation\\phase3-close\\word\\afsu-tip\\check-20261007-1307.json",
+        "reportSha256": "a7efb6234a4599996a62e6ef2cbb415874e0cec6bb9b71251b50b435d1aae3ee",
+        "counts": {
+          "PASS": 51,
+          "INFO": 2
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "4701a66cf2a23de3f2d81dde7ad67e87e075db9299b6e31111874e88acf095b3",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:06:54.236Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "81404850d7ea37f89b883871b7290f3b95357c71f8557a4c6b610d6f24e36b33",
+            "pdf": "44f0838373062023c795e54c78b82a6e1d6c0f3b2d0f5243f07dd35697fe011c",
+            "docx": "e5526b2d1e5200b6359793153162512b9a7317443549fc1ee072cb44992e8063",
+            "layout": "8eecbbd7912a9b35adefc248e9ffbd04c1a6816587757eaad2e18c604a378396",
+            "wordPdf": "aeff9010a7fef236bf7008005b250430dd678967aa779deba31697784efbc65f",
+            "wordRenderInfoPath": "2f1b8df4e063e06bc74897d09dfe27a32bc041d4012123f9c713c2fde732076e"
+          }
+        }
+      },
+      {
+        "target": "aku-cografya-lisans",
+        "wallSeconds": 25.461,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-cografya-lisans\\check-20261007-1307.json",
+        "reportSha256": "b62be6059fc51199453cc4cc9af1b02de06cb73a3425629ee95501ff8aaa809a",
+        "counts": {
+          "PASS": 50,
+          "INFO": 3
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "4701a66cf2a23de3f2d81dde7ad67e87e075db9299b6e31111874e88acf095b3",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:07:15.721Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "639f204df817ab7c6de57670b13cf03d843d0afa653703bd2dc06fc561323caa",
+            "pdf": "eb2986b1adf23d5dd2aa0f26784690c3074379eb7d92a56b61af3cb3ace1d0c9",
+            "docx": "0661dd7cb895601405ff03b29967c069c806ac0b5249913d5ba870c4a7ff4a81",
+            "layout": "b1bb773650e950dcf71811722eaebea8ed637b4a0ab69eb9c2f522e1c6de7d2a",
+            "wordPdf": "4c8adbf24cd120f69147aee970cec421191d23d3a394d2eb14d10cd6233a3002",
+            "wordRenderInfoPath": "0a8c81f4300b76495ab2a88efd68561b94cc41a45825111afbc8325f535e7239"
+          }
+        }
+      },
+      {
+        "target": "aku-fbe",
+        "wallSeconds": 44.979,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-fbe\\check-20261007-1308.json",
+        "reportSha256": "330ff83f7e02cac88efbf230782f488bd62574411ea8a46d13c277971d676af8",
+        "counts": {
+          "PASS": 47,
+          "INFO": 3
+        },
+        "phase3Gates": 4,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "4701a66cf2a23de3f2d81dde7ad67e87e075db9299b6e31111874e88acf095b3",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:07:41.166Z"
+        },
+        "artifactSha256": {
+          "master": {
+            "fixture": "6c5370997167f4fbc84d9620bf04d677380ff66d41fa591271f54adce8babca2",
+            "pdf": "0d92e9562f797fac50fd5ac6421283b93f5f87655215069e17df3d7799f58e16",
+            "docx": "181bb88658688be50f119b0edd868cadc9940628a89c2deccdde93d407b58bf4",
+            "layout": "de7a44c0c2333f83657c9399eeedfca212334a59e7a4d9021815733708c01e1c",
+            "wordPdf": "323140a3267d2b7a9bced4608c5daef0954b66a533287fd628a41a57a5dff584",
+            "wordRenderInfoPath": "80b7be9a5ce477cd35d68571ec71f841c59837af2a7a6b2398cc29be470ad2ef"
+          },
+          "phd": {
+            "fixture": "a3730f72dd208e42ff2d7c5811b7051300628533b7f855c452774871aa2a38f0",
+            "pdf": "e1d92a26a3f8d3129961d8de47753cda190a34dcd418cb55cdeee0ed44c75990",
+            "docx": "cdf1b3c30f3ed9e6492785b8ca2cc5cafbb8880ce8dec94f190e552407bc11e1",
+            "layout": "e0476f8a6b8a47bcc7aa92fbafdde4238654614d7d50f50fc82269e15b0ef057",
+            "wordPdf": "b485bc350f0478239602b5560b2d2aaaa62536caf410c983b6f4a81135ee9602",
+            "wordRenderInfoPath": "c64d64d9a200192159790aba5723f3dd6f21e133bc217fc368828b3c97abfa68"
+          }
+        }
+      },
+      {
+        "target": "aku-felsefe-lisans",
+        "wallSeconds": 20.959,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-felsefe-lisans\\check-20261007-1308.json",
+        "reportSha256": "311ef6210ea6bab7d609a06f5c0dda0c252ea2d7f3ae26be2d19abd460b142f0",
+        "counts": {
+          "PASS": 85,
+          "INFO": 4
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "4701a66cf2a23de3f2d81dde7ad67e87e075db9299b6e31111874e88acf095b3",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:08:26.099Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "eff0795ee9a1c787aaac84292e39830d5c50a455d5f7cfe384dedef56e0f6100",
+            "pdf": "948218da4df6ff995186e68774d13f7a180184035fe13febef9e10c81b731822",
+            "docx": "d0e448d3f6b5bd518581693c587bd09d2bd4301aa8de8f29c563e6a4b4819b4f",
+            "layout": "9e852c69c3e00d85cb4292f636bdfc4888a71cfaa155c15e150df31f52fae03a",
+            "wordPdf": "5279306231f2f86f0c65f0601a52db2a1ed4f82b6d31422330c3821e55a9bd11",
+            "wordRenderInfoPath": "41f3cb156e46c8485914f841f094d7e07086ecd0b9fecef78c6f7d6ad1567572"
+          }
+        }
+      },
+      {
+        "target": "aku-felsefe-seminer",
+        "wallSeconds": 21.113,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-felsefe-seminer\\check-20261007-1309.json",
+        "reportSha256": "c92b8824500dbcdfc0ba9cbfdd09dd04e4ba6662121a2b35812f9086ce6aed41",
+        "counts": {
+          "PASS": 63,
+          "INFO": 4
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "4701a66cf2a23de3f2d81dde7ad67e87e075db9299b6e31111874e88acf095b3",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:08:47.052Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "9b1ffe0afd5ab2a9c659da2005c0581c9f5985250a77cee6280838acf476bdd8",
+            "pdf": "b4a6ac3711c12ae2462391e8fd895cef6854a6950e49ded10d0d733ca866acc0",
+            "docx": "08c03fde41fbd2913225db809f66f7b383459dd4885e77f0b0f84a6a19968afe",
+            "layout": "8bca9a772ca359d54afd22dfa5c5d863286e269585439fada545e0d9575c35b9",
+            "wordPdf": "09ec4df3f1f4ba4bc446bcc38bf9b25e9dbb4f430da4bee29c3f13932a330783",
+            "wordRenderInfoPath": "ef9a5ada570444dfda16ac5a1db4bc96e1eeb8c33d411872593f3f52bc957e28"
+          }
+        }
+      },
+      {
+        "target": "aku-isg-tezsiz-proje",
+        "wallSeconds": 21.465,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-isg-tezsiz-proje\\check-20261007-1309.json",
+        "reportSha256": "5db1d6764ec91ae90b2a23387b5760cd9455fc9da21b8b6522bbcea820ef577a",
+        "counts": {
+          "PASS": 41,
+          "INFO": 1
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "4701a66cf2a23de3f2d81dde7ad67e87e075db9299b6e31111874e88acf095b3",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:09:08.166Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "50be8d108eb41c4dee60d7aa5689a0ad812ac7e08dbec17f37ac88cd0512a44f",
+            "pdf": "68121a846c424f7566743659ef872b3f9c595928f665f10f1586c5335c124f8d",
+            "docx": "9728b4abe731772c7b8107f5ec84dd4a593b335309adbd2f97e8c283e8abd1c1",
+            "layout": "31d77ec8fee5fc31a0a2c037168ef8dcdeab88de7c69c10697db313a16128b19",
+            "wordPdf": "34405f8e5e3ed7178e7daba5a84f5f8ddf170217d72a245e930b7bb33daffae5",
+            "wordRenderInfoPath": "30e0fc26899933ef3e3d09c78c2b50ed2750cc9bd098514b49cc287bf7fe739e"
+          }
+        }
+      },
+      {
+        "target": "aku-kimya-lisans",
+        "wallSeconds": 24.338,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-kimya-lisans\\check-20261007-1309.json",
+        "reportSha256": "c038dba887ef742b3987fa934d3641f6a49d76f498ed9cf89a9917eaf1a0e8c2",
+        "counts": {
+          "PASS": 50,
+          "INFO": 1
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "a3b87b6a88183588968da703376ccb249a34473ac228117298a218e3ebe0b853",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:09:29.638Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "e5c3195ec9afb462307ffbff13c1e1522b385e9f5d5f40b1d369a84623026a0f",
+            "pdf": "a596bdf50b027d39247a2c50ec43557613933c0caa8708f184d2885642689799",
+            "docx": "2af4e15c9b8c260d43998d3187fc9785b62c7a99d4eafc2fd317bf1ba11a302d",
+            "layout": "6d8aba42a964b858d76f7257d5cc60f749ca10b0809e8930390ab75c42f6f2fc",
+            "wordPdf": "985ebe4bc1ac001a0ae2007a5227b2954ec344a7a0cae4beaf427242c2fa8883",
+            "wordRenderInfoPath": "bf827dc9cce674886653af54bddb540c97d15db1398027ff1b696f8eee0847da"
+          }
+        }
+      },
+      {
+        "target": "aku-matematik-lisans",
+        "wallSeconds": 42.787,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-matematik-lisans\\check-20261007-1310.json",
+        "reportSha256": "36619bf35b4ac54d76c5f4ae059e6cb35b8b2d41c1b2bed796377ecefe6d0450",
+        "counts": {
+          "PASS": 58,
+          "INFO": 2
+        },
+        "phase3Gates": 4,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "a3b87b6a88183588968da703376ccb249a34473ac228117298a218e3ebe0b853",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:09:54.142Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "dd2fcf7851415fbb76935edc0cbb45bc1c0a01789dac1466f9847353e28812b0",
+            "pdf": "c96a3164d6a90a27e4ad0eb60bc72fb5b678ba5ce60ca4926f7c16e2660a63de",
+            "docx": "011799579470d7fc48ddd584c474095a8e892824bf051880a195f5e6935b1eba",
+            "layout": "d425dade589b4fb6f1851f8bd06e64e69b93abe1f856d25ac0eea06594285733",
+            "wordPdf": "d9510746d25ae1c85896e092da87232759ca2256370177d3439e72fb088b10a9",
+            "wordRenderInfoPath": "55f6d80817e7c7ff67b2b3b211f8ad82c2b9a089b5843eb7203d7e7612ce1e3e"
+          },
+          "tables": {
+            "fixture": "a16349732e293a7dd7902238b8b5d2fbbf1e56df91b493920236a3229ab08850",
+            "pdf": "3215a8b9f3850ea8d14f6a04faa07b7d5e562aeadd43499bc860d4568e57d4b7",
+            "docx": "630c93be1e0c2168ae50e6a0afb05730ff7b5f468cbbf4d25d8ec377b8ca8c41",
+            "layout": "e4ef1d22d00dbf33974d123786d322c2d5bac58dc5fd9574fd48d8d5f05094ac",
+            "wordPdf": "d3855bfcc8aa22166cad707dbdfae685ae125ecbca3f42874d1ca7920c599532",
+            "wordRenderInfoPath": "b3fdc90a081ee03ac0419a422aea6e4a8c5179e5008a3a69f2f3ff71aaa63aed"
+          }
+        }
+      },
+      {
+        "target": "aku-mbg-lisans",
+        "wallSeconds": 51.392,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-mbg-lisans\\check-20261007-1311.json",
+        "reportSha256": "b7c6bf9957a13a8d4aa51596b8edbd5117b11259867e4c940b8a7e8bcd64eb72",
+        "counts": {
+          "PASS": 52,
+          "INFO": 1
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "7d89376267aa7b1720687e13e7af116d64b5d79fc49d687be67e7290dabcc070",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:10:36.756Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "188203328a4e48c51374b996861bb26939566a0aca7caac6ea4fdae5b1624296",
+            "pdf": "1248f63222ff8bbe96a90b6ba366a274a51b3a1014eb2cc0b2fc6bee2ba90bc8",
+            "docx": "15e0e6ebb5eca830927e66f5f84968d71ffa079159f49c5b490e82450954a9af",
+            "layout": "677bf0812273ff43c4e481834ee6b1733d21cbb2e70ddeb84769f03eaf3e58c0",
+            "wordPdf": "02447078faad897cc4a1c8d0012ec1b988b52abad4094f80d75b2bc755441a9b",
+            "wordRenderInfoPath": "97a1a0c798d525a5e6d6c94afdc1b89354d1f2bb7f329acfeb0a47d6bde29777"
+          }
+        }
+      },
+      {
+        "target": "aku-sagbil",
+        "wallSeconds": 97.518,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-sagbil\\check-20261007-1313.json",
+        "reportSha256": "36256ae2e746d10e04412afbba2ee4ccb647509ec335a807d5c8a58664b32c2e",
+        "counts": {
+          "PASS": 30,
+          "FAIL": 10,
+          "INFO": 1
+        },
+        "phase3Gates": 6,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "7d89376267aa7b1720687e13e7af116d64b5d79fc49d687be67e7290dabcc070",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:11:28.159Z"
+        },
+        "artifactSha256": {
+          "master": {
+            "fixture": "39b48a7ff20f8653a48fea0f20e04d5d63ed52b030cdf9bd9b8a4316cc10123a",
+            "pdf": "507cf367cab869cd3c48064d2ed8267084568399d6885831c722eeff22888643",
+            "docx": "0c074f49416657d972a53a6ecbdcd21f427e10c66b1a6b834271c2ecd47315fc",
+            "layout": "0d4bea46067bc3390e831b6a657320abe9cac721eeb0a5ec0ae239d538e10a19",
+            "wordPdf": "f83e633564156483a92fd5aeb5fff6607ec00c0ea58d0727b017bb13517fbd6a",
+            "wordRenderInfoPath": "26ec08621471cee25acd03142fb88229fc97f38429bc91f439b61ec033424f7e"
+          },
+          "phd": {
+            "fixture": "8b7b84cf5833721d706fd616b6892e31733cee415b36d4129b2a0b3ad8e15eb1",
+            "pdf": "8d112a86ea3e0958510ea5bec6a045662b9054f3be2959cf3dd88683fdf4ceba",
+            "docx": "c0f6d579d2f720e9725de7e7e8e8bc9f2b7dec7251d5624aa0825070025550e8",
+            "layout": "ee02d2f4dbb0c8a776111a64d7fa79e9a25c1d922b1ce81970d5c412e174652d",
+            "wordPdf": "f3e55c288791cba2695f0c2181e056e81197cd5fd2e18a01db6869b079081a16",
+            "wordRenderInfoPath": "13327edf11c3d3ceb132dacb6e8f5e2e2f8cf6e7b1201f774c4277398610ef1b"
+          },
+          "t80": {
+            "fixture": "81b684c30cf74a91f4accb1c923c72b6e8e43a20fbcadb3915b85f03a9fefdcd",
+            "pdf": "bfbe97b1719de9ffa29894a34f1a8bf0063c18c8b8114f3ac698ced15faff027",
+            "docx": "6a5c805fc2da12675f0e9b44af999303e8dda602fcdb9736e0f01bf70c2904bf",
+            "layout": "0f9936dae2f3226fb798b8bee456de78287e10c9cf8e862f50d8421761440c69",
+            "wordPdf": "7a3d4e8e2ff538022542997e8c6ddd55fa7133ec17594243c695b73bd89acb8b",
+            "wordRenderInfoPath": "4a062614fbfc73bec1428fc2070d621b2cdfdee698080d843f404277a64756f3"
+          }
+        }
+      },
+      {
+        "target": "aku-sbe",
+        "wallSeconds": 148.488,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-sbe\\check-20261007-1315.json",
+        "reportSha256": "9ac1f88eb50a4a7a352ece8195bf14b6d375ac056002ebf4c27b18139d432123",
+        "counts": {
+          "PASS": 108,
+          "INFO": 2,
+          "FAIL": 23
+        },
+        "phase3Gates": 10,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "7d89376267aa7b1720687e13e7af116d64b5d79fc49d687be67e7290dabcc070",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:13:05.854Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "0a935beb778c99ccb8d68d077bdf7bd710eac04b546389e98161e7edc2461bd4",
+            "pdf": "19426e7ed967edba2b764b48d2b8f13d2a0ac7a7184cccd531afa5f92792aa49",
+            "docx": "253dae26432a2392652a4914815315942221742b770bc62619e9b8c541e32026",
+            "layout": "b075208216d6f8185fb8b8825cd2fa611216273f18336e9590f7186fef69eefd",
+            "wordPdf": "84d617b99921775b71fd6b654824b2742179e364dee1e9afd318a951815bcb15",
+            "wordRenderInfoPath": "a53964a5b7282bd6c420497ebf7fbc5ee902eb8b04352e723113faaa6eb0c0af"
+          },
+          "sanatta-yeterlik-tr": {
+            "fixture": "7ab429230c003a0eccfdfc6c034985c8498480fb74eaa2c956514c26d0fbd612",
+            "pdf": "7ba2420201c5ba5c068405f07b3149071cac7717dd0dffbd856aef4881f08c90",
+            "docx": "bb53334929b22baf15980e1e62ee9a906a79226c206d8ac8cfc2877fcd649ed7",
+            "layout": "084bf9dca6afe11bc152d79e2ac98bc9b36810d5a3962f7e2539971fe091ffa2",
+            "wordPdf": "5a0d8beb99486877c2887f5d9a1afe5c0d5c1db43100320527b7410493e4dd05",
+            "wordRenderInfoPath": "beeab54c212df3100c2cf8ee792b65bdb992c2bbf0f067ab20b0c4b7707ba4a4"
+          },
+          "master-en": {
+            "fixture": "8fc67719cae67666a8a281468b7e366523b800a20d57f457c1fbcb8997e5d7ec",
+            "pdf": "22cafd933e8838bc09815f9d39077d6b47d9abab7f0d32c8644cca1d325251c9",
+            "docx": "c4eadbff6b4b62ef392368df9aa2e6be23a9aadfe5f354a5d6a128384453a896",
+            "layout": "040589e00d95aa333b6af1f2a2d48c05111668e12216503daa671cee77f6512d",
+            "wordPdf": "8897309dafbd23dcd86e98bf07bf14a11f700dc6afb4debcd0a5e5b76fc86fac",
+            "wordRenderInfoPath": "b45f61e19cfbbc95dd8a4b720ba89eade96f14ddec43e0f1707d7e6205f63f03"
+          },
+          "phd-en": {
+            "fixture": "aa9b4525b05349000295b02725d87b57d9977b7d5975d0a19f3c82a64c601591",
+            "pdf": "624a9820727cb463decd24ae775c8aa0d1cc4e4c81fe1612939b23018a5226c9",
+            "docx": "1da347f8d9942c6f34f2a543f51eeb2f14ea715e3b7d005653ba81a7e5a72034",
+            "layout": "38f281f4fe2236b5c4424b295a5b619ab18243711e3c4873b5482e0889b7eb15",
+            "wordPdf": "8993b1d3f3246dfd9230712c6c93b8d49a9342d8d0fcba48bfbc45ca8b1ff128",
+            "wordRenderInfoPath": "decdef5843d86ae9a580f901458f4abd5fd596a6a65bbfd454bfe162a4aefc4f"
+          },
+          "phd-tr": {
+            "fixture": "690415f1f30a62b06cb35c2b38532bb55409fd18e1bf0c67636ce0d12bf74793",
+            "pdf": "7e497309147b541e435b4e3f72e61add8c2dfbcd43b3b4f8bb87949a7d16da4b",
+            "docx": "5b754a16b18a3ac77f0e6e241b4f5c80ffffcec8c44fe5df249ffa3efc3338b3",
+            "layout": "7718a3e872133830a7c82c04e7ea19b765d235d3b0ec53d9a99f2b75b2bf92fb",
+            "wordPdf": "3efcec3723f764f3462ee1724d4b84a96dea7d68b5f1298561d5b8d4793cdf23",
+            "wordRenderInfoPath": "3bcb24b6446ab36645bdbfceb95f430c7d1e878b3480ba57f1e5893deb1ad189"
+          }
+        }
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "wallSeconds": 37.229,
+        "report": "orchestration\\validation\\phase3-close\\word\\aku-sosyoloji-lisans\\check-20261007-1316.json",
+        "reportSha256": "7fdfe40431cbb25a4c631b07b0db1cc02499a70197a3ed787e3ea5f53c960913",
+        "counts": {
+          "INFO": 4,
+          "PASS": 27,
+          "FAIL": 2
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "9923b8dcda575dbd234ced9b93c0fc984cdc1dcc8ddc9890dce4d7d9b2f6f903",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:15:34.386Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "2b820463e2b9a66a69deb1a23298fdcee6aa5f026aaefb55d804fa04d79ac7cc",
+            "pdf": "613d7cc6fa63c081e7f4ea0dac59a65ce8a85252acb7c5710084118a03774fce",
+            "docx": "945d3dfd6a29a07abcd4398d57af64942ea2d144cff707fd19069a20d820be37",
+            "layout": "6fc398908c654ff0fc4dc664f39f56bac5240233a2dabc045ad9dd240a4251d5",
+            "wordPdf": "68814f20b44a8d502880fb479543d8e1f247c6c92aab0f7b6188b87adac3641f",
+            "wordRenderInfoPath": "597c6f30b3e17d68ce29e66f9c93461c560395c116fb9bd832e4b0653a720a84"
+          }
+        }
+      },
+      {
+        "target": "engine-word-justify",
+        "wallSeconds": 34.097,
+        "report": "orchestration\\validation\\phase3-close\\word\\engine-word-justify\\check-20261007-1316.json",
+        "reportSha256": "a6af1c1423adb1969f9b97bbfceea2dbd1b0e16afa8e7a04705fe23f3876ebf1",
+        "counts": {
+          "PASS": 18,
+          "FAIL": 3
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "9923b8dcda575dbd234ced9b93c0fc984cdc1dcc8ddc9890dce4d7d9b2f6f903",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:16:11.559Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "d85ebbe33b3650519398fcecd6df6630b76cfa7a26f95e7bc49dd22908ea632c",
+            "pdf": "957bfcf3973d6aaaf1203fa14f48ee85507f2d33ea9ce303fb10f84af9678c36",
+            "docx": "1fc3cf993cc31835a2c2248baf3c70e6a4dc6254d041806cf83540cdb0d27551",
+            "layout": "c5e84ced38cf9decf098240bd1e85783782c8317854cda8de6791ea0bc3c61f9",
+            "wordPdf": "9d2e33a8eef6d10ddd5aa40e92afa0b3cd8aea7bb726dcf0582274f11e1f52b9",
+            "wordRenderInfoPath": "b4ba6785765ce32e5c075c349b0eff669ea898e4a621509d6a0807926ad7f047"
+          }
+        }
+      },
+      {
+        "target": "engine-word-pagefit",
+        "wallSeconds": 111.505,
+        "report": "orchestration\\validation\\phase3-close\\word\\engine-word-pagefit\\check-20261007-1318.json",
+        "reportSha256": "56b82d549a096c9416d8cbe467f10f1e6ec353276c8f52c5253fae012662d71b",
+        "counts": {
+          "PASS": 209
+        },
+        "phase3Gates": 8,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:16:45.465Z"
+        },
+        "artifactSha256": {
+          "styles": {
+            "fixture": "0bd5863fb6403b67773186a689baf49ceabf2fc6923f5233c664a6e9bf98bbc2",
+            "pdf": "fb606b4c9bf0df95d385a2cb91e84c65aa7b91d9e2859efa9fb1fabfa6706eaa",
+            "docx": "6eb5a7919e6ec83d0bc0454b49c9ac65ce6da299cbc90e8808e3f575afeac9c4",
+            "layout": "446a66c26162677525e43e972dcff7ed9d87ec4bf4558b900d44e04660b920cc",
+            "wordPdf": "458e4da9153e56d111537aa959f76ba6979a27322476c0edcfc22ab1723ae793",
+            "wordRenderInfoPath": "ba59dfe011db7ee341c2403a8a9146d6711b5fc8477610311bbb656f282dec48"
+          },
+          "default": {
+            "fixture": "0a345900666fb56777bd2b9d60f19bca4b3561aca78164b5ec6266325a1fbcd3",
+            "pdf": "82b5b4845a65b6ba2b73faa7a2abe4482dfb7de5513ffc578de5437f5ef409c0",
+            "docx": "93554c4eea72691a66ed76ef220fdc73b3307d34350243ac55b6b12e3a060c7d",
+            "layout": "f9aade4674d627f5fcc9cca1cb3a75575682b810c29c76339b8a2c3dfb862e2c",
+            "wordPdf": "0354755188e3da16a89a2cae62c5b840bbf0fb62c3ebb05fc3e6e5072130585a",
+            "wordRenderInfoPath": "4197df2e23b044a38b91183d24b895340855644c84efa9b2300cc30a3c313ae8"
+          },
+          "tab": {
+            "fixture": "620a232b0cfb4bc9e2d16701952779638900c9a6a78f0b7dbe49b2b2ed798822",
+            "pdf": "0d138acefd165a8e7cca6197697ea3aa24c3448a3a8bfc29f19304e512650d3b",
+            "docx": "1e71467d62ba2a2a4bfbfb2047b2052ee1ca7603ff2690cdc18e93f1807772f2",
+            "layout": "11bfe33dea3f95b51f592ca61fc6bb630a08e9ab918eff8b68028829e608eef8",
+            "wordPdf": "e8eede6c820525162a3c167527ea3a4572bb6571731df3a15f1f4b4d112daf3b",
+            "wordRenderInfoPath": "cd24751836f66905b31790e3cc99c1a6f2cc22b6cf4d31363702c5bb122a3dec"
+          },
+          "notes": {
+            "fixture": "5fb18faab2c1cbb2a444cf5f87e4ce17343074d594b94c25057d291e6022bb34",
+            "pdf": "b6dbe5b94d3a402d50b1d73c24a4fb73b08ff4972f385b754cee46433ff93fcd",
+            "docx": "d0484cdf38c9a725393f436bbf94f090f7fa8d904f32e2ee37583f1407d6ebd3",
+            "layout": "8e75c04d364b89daa86fcddfe52ad24cea4e564e12fe812701a49c9a11bed508",
+            "wordPdf": "1cecc2f47e99354d9d04eb61419f8027e5044958b35b11ad7d2890062a422ac6",
+            "wordRenderInfoPath": "f18e947a4f2389e08372c0dd76d22f133ce59883247c6052c6928147bda6aea1"
+          }
+        }
+      },
+      {
+        "target": "engine-word-parity",
+        "wallSeconds": 46.577,
+        "report": "orchestration\\validation\\phase3-close\\word\\engine-word-parity\\check-20261007-1319.json",
+        "reportSha256": "bb3babf338f2bc121a3b9f70af9cdee6704d704a35d347c56a11c5731a54623f",
+        "counts": {
+          "PASS": 147
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:18:37.066Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "15a55edadf37fe898b4a89fda5f4e1696042ee0f382c97a8b3dea6a1ef4913b1",
+            "pdf": "ba8d326c3dbc8e56ee607bd84b818dc2308c98a36f46ba657df06e2cb9d3aa5a",
+            "docx": "c8149bcf531103079ac1d80de77719144888d86d6bbc20ea7486926cc17c2d4e",
+            "layout": "5dd9b5029230e9c0667d70fe17e2b94c382a79ad328dad374c0fa0a04f098304",
+            "wordPdf": "c07f2f0f0b00a6ab115a531ba0e8ab193151b8bf404cf2f70fb01146038d50f7",
+            "wordRenderInfoPath": "e92f5f5111c8043be12a191709e6f79942c9127c4ad8aa742828b02eb6c8cde0"
+          }
+        }
+      },
+      {
+        "target": "engine-word-structure",
+        "wallSeconds": 101.226,
+        "report": "orchestration\\validation\\phase3-close\\word\\engine-word-structure\\check-20261007-1321.json",
+        "reportSha256": "347f8d28ed29bd1efa96dcdb11851e2e0e0b4efc96daec047321706688ff3795",
+        "counts": {
+          "PASS": 133
+        },
+        "phase3Gates": 6,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:19:23.652Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "bdb0de4f378b434fa429fbe1f26f52cb4f14d4e94abd43f347871c28c7b9575f",
+            "pdf": "cbf7db81167991695fcdde3993c46bb84c64d03955850f10016318c9583febe8",
+            "docx": "e575db5c9fe0e1bbad8812b1421d7533bee4b316afdcd76c2587a3081f439315",
+            "layout": "d574e3e007a86c9dc8762250f571042eb4ad8cc23d4d4923b4402436070f7ce7",
+            "wordPdf": "fe294aad3691f64130b359acea839ec9416d44bfe180352d52747f97cabc0240",
+            "wordRefreshedPdf": "f3593ee2ad016d4137039d43868a5dbd8c0ca99baa27cee6cb26767eff544ea5",
+            "wordFieldDump": "3e2f5621a9f5799127603afc095ea3dee0b0ba995214aa97a8318dead99906a7",
+            "wordRenderInfoPath": "a44c701e7d4874ac6c330fdf88fdf58365cd40914627e0ab17701b53b15172a7"
+          },
+          "footer": {
+            "fixture": "f1830e14ef26488887a2b95b015f90b57e209a20fe24962dfc7397035ec760b9",
+            "pdf": "904af586921409bc6dc4bb99e34b563305659cd06863502d0560b2f34fc0d335",
+            "docx": "8fac6510357dd5f94df5f0d6a1eb4f308baddf347db01d90c92362de6063d582",
+            "layout": "9e85baabd89fefedb92f55b062c1f63c6d4db21f1f1d20ba7c80a27358dd7948",
+            "wordPdf": "03c85bb872f480504be92fb21e3b431b461d081e070de74c74a1db733e295c2c",
+            "wordRefreshedPdf": "b5d69c3ed8e72f2e6d53ec4c978337adda0a120878c9d8b573c2eb47babd7b06",
+            "wordFieldDump": "fb2c0010b668fe1bf99d7ed5753cc74248bcf250543bcbe8c935355495186a8d",
+            "wordRenderInfoPath": "ca87f5f9fdbe12c1de511df62990564cd5663423963380e82e6d90896d173d11"
+          },
+          "fields": {
+            "fixture": "989630c5acdf4ff28241f94942eb7a6d1bcf6086818cd1c69dcd03a7f93e3d5e",
+            "pdf": "c0df818716a666fa88df67b71c414f8a46781a94dec1f7c4a3a31efd80464ea1",
+            "docx": "01a50826b3927edc590395824992147e1aef284f9c783c461860de32324a6254",
+            "layout": "e9671abfd2d81ffe9570c2b2fa1ba560f688f6a8181893bd9089a9a968893c94",
+            "wordPdf": "73b33b6d6506f06e0af209552fe2760da31e9de345521c1a0d86b0edab41c20c",
+            "wordRefreshedPdf": "e1c1cc51a6c66414b4e00b75f2a6e996ff0b81206b4418964400ede3166ea39b",
+            "wordFieldDump": "1c68bee31d600879dce58e7573d8c9f2f676726fd1e5c1cf846d268c92c628e3",
+            "wordRenderInfoPath": "24b1eb7bece8b43662a5892e657294dde58d9af43558c675a22b94e6f23e5ef2"
+          }
+        }
+      },
+      {
+        "target": "mcbu-tip-uzmanlik",
+        "wallSeconds": 29.514,
+        "report": "orchestration\\validation\\phase3-close\\word\\mcbu-tip-uzmanlik\\check-20261007-1321.json",
+        "reportSha256": "952766d0f4eb59be88ee1098effb276555a6f7d916d0bce058b49a22e74ee865",
+        "counts": {
+          "PASS": 49,
+          "INFO": 1
+        },
+        "phase3Gates": 2,
+        "sourceProvenance": {
+          "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+          "trackedDiffSha256": "cd10f9d4db2b51d8f12171394596e4a49681a79359318479a743758735a0daa8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T10:21:04.814Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "afb8a725b51c55647cfc76890539d5bb8dc66af87e7d794017f2fa1705984c42",
+            "pdf": "45fa9ca56aa6234abbd7f5d40810df337bd59f64d5569c4fed74f9e844b15b62",
+            "docx": "603fae5ba74c55216eea752bc1eaa27dc1a926de06430067244f14604a26bb2a",
+            "layout": "c01e68205a0cf53e408092493f242d85de8d24259df8b15f95aa2483920314ce",
+            "wordPdf": "8bf72f04b1c1b3eb82a86aad7a3739da9446c63bd2154439a7ae8ad833aa32a9",
+            "wordRenderInfoPath": "125a7f81e3be727bf55160d8f182c5d3bbf93924e88ae51cfa6ae7dfc90e70d9"
+          }
+        }
+      }
+    ],
+    "failures": [
+      {
+        "target": "adu-ziraat-lisans",
+        "id": "cover-inner-baselines",
+        "kind": "line_baselines",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "h4-bold-editor",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "h4-bold-word",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "toc-page-labels-editor",
+        "kind": "toc_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "toc-page-labels-word",
+        "kind": "toc_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_count_match-master",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_labels_match-master",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_count_match-phd",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_labels_match-phd",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_count_match-t80",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_labels_match-t80",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "body-line-pitch-master-en",
+        "kind": "line_pitch",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "first-line-indent-master-en",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-front-master-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-unnumbered-master-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "body-line-pitch-phd-en",
+        "kind": "line_pitch",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "first-line-indent-phd-en",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-front-phd-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-unnumbered-phd-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-sanatta-yeterlik-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-sanatta-yeterlik-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-sanatta-yeterlik-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-master-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-master-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-master-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-phd-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-phd-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-phd-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-phd-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-phd-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-phd-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "id": "engine-page_count_match-default",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "id": "engine-page_labels_match-default",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "J03-Arial-10-justify-line-breaks",
+        "kind": "line_breaks_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "J03-Arial-10-justify-last-line-words",
+        "kind": "last_line_words_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "J04-Arial-12-justify-line-breaks",
+        "kind": "line_breaks_match",
+        "status": "FAIL"
+      }
+    ]
+  },
+  "stableIds": {
+    "report": "orchestration\\validation\\phase3-close\\identity\\check-20261007-1215.json",
+    "sha256": "0f4577564a18146e59b74f1294c26e65998440d457726b55221b0a38fc69c1fa",
+    "checks": [
+      {
+        "id": "engine-layout-ids-default",
+        "kind": "layout_ids_match",
+        "expected": true,
+        "tolerance": 0,
+        "source": {
+          "file": "two real exports",
+          "locator": "same fixture; deterministic landmark identity"
+        },
+        "evidence": "MEASURED",
+        "ruling": null,
+        "actual": true,
+        "note": "34 pages: ordered landmark IDs/kinds/sections and labels",
+        "status": "PASS"
+      },
+      {
+        "id": "engine-layout-ids-tables",
+        "kind": "layout_ids_match",
+        "expected": true,
+        "tolerance": 0,
+        "source": {
+          "file": "two real exports",
+          "locator": "same fixture; deterministic landmark identity"
+        },
+        "evidence": "MEASURED",
+        "ruling": null,
+        "actual": true,
+        "note": "35 pages: ordered landmark IDs/kinds/sections and labels",
+        "status": "PASS"
+      }
+    ]
+  },
+  "baselineDocxComparison": [
+    {
+      "target": "aku-sbe",
+      "variant": "master-en",
+      "comparedParts": 29,
+      "differentParts": []
+    },
+    {
+      "target": "aku-sbe",
+      "variant": "phd-en",
+      "comparedParts": 29,
+      "differentParts": []
+    },
+    {
+      "target": "aku-sbe",
+      "variant": "default",
+      "comparedParts": 31,
+      "differentParts": []
+    },
+    {
+      "target": "aku-sagbil",
+      "variant": "master",
+      "comparedParts": 30,
+      "differentParts": []
+    },
+    {
+      "target": "adu-ziraat-lisans",
+      "variant": "default",
+      "comparedParts": 25,
+      "differentParts": []
+    }
+  ],
+  "validation": {
+    "frontendTests": 730,
+    "checkerTests": 30,
+    "build": "PASS"
+  },
+  "exploratoryTimingFailures": {
+    "eczacilikSeconds": 34.741,
+    "sbeSeconds": 42.836,
+    "finalEczacilikSeconds": 24.422,
+    "finalSbeSeconds": 28.026
+  }
+}

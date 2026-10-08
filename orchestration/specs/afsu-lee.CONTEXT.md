@@ -35,6 +35,7 @@
 - UNKNOWN: 9 (page-number font size, TOC leaders/indents, footnote spacing, ethics bullet glyph, approval row heights). CONFLICT: 2 (both ruled).
 ## Status
 - 2026-10-04: `--word` INFO=1 PASS=90 (default + PhD). PhD page parity fixed by engine `typography.justify: "word"` (Word compresses justified spaces; measured in engine-word-justify). Phase 2 engine parity complete for this target. Still open (not engine): CONFLICT phd-body-font, approval margins ruling.
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - Run current checker against master + PhD exports; review only remaining FAIL rows and retain recorded UNKNOWN/source conflicts.
 ## Commands

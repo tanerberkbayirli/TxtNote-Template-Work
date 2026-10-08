@@ -150,6 +150,18 @@ Make the checker read positions from the engine instead of reverse-engineering P
 
 **Phase 3 exit:** checks for covered targets use landmarks; runtime per target ≤ 30 s without Word.
 
+2026-10-07 closure: **Phase 3 CLOSED**. All 16 university targets now use source-derived
+landmarks (73 checks; 60 migrated, 8 additive; existing expectations/tolerances preserved).
+Fresh non-Word whole-target wall time: 12.350–29.144 s, including export and checker overhead;
+large-target optimization reruns replace the exploratory over-budget results. Engine stress
+fixtures are regression gates, outside the university runtime scope. Stable IDs verified by
+second fresh exports; every variant receives report-schema and independent PDF glyph gates.
+Validation: frontend 730/730, checker 30/30, build PASS. Full 20-target / 34-variant Word run:
+68 report/PDF gates PASS; overall 1350 PASS / 39 FAIL / 32 INFO. The 39 source/variant/Arial
+failures remain visible in the separate university/deferred queue; global checker is not green.
+Evidence and exact timing scope: `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md`.
+Next: Phase 4.1 official-DOCX extraction; this closure does not mark university variants DONE.
+
 ---
 
 ## 6. Phase 4 — template generation from official DOCX
@@ -163,6 +175,14 @@ The scaling step toward ~200 universities.
 - 4.5 Template families: after 3–5 universities, group by structural similarity (same style set / YÖK-like layout) and record shared engine presets (not shared values — AGENTS.md §6) in `CAPABILITIES.md`.
 
 **Phase 4 exit:** pilot university reaches Tier 1 PASS with measured cost recorded.
+
+2026-10-07 closure: **Phase 4 CLOSED**. ADU Sagbil master/TR official-source
+pilot 303/303 actual PDF/DOCX/Word checks PASS; source cache/geometry, reviewed
+guide conflicts, generator and three-university/two-family inventory complete.
+Instrumented wall cost 2884.583 s; final pilot Word 26.431 s.
+Token telemetry unavailable; <=100k is unverified. University-wide variants,
+109 source-property review groups and Tier 2 UNKNOWN remain explicit.
+See `orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md` and its acceptance JSON.
 
 ---
 
@@ -189,6 +209,10 @@ The scaling step toward ~200 universities.
 | 2026-10-04 | Session stopped (weekly limit 92%). Phase 0/1 closed; Phase 2 remaining = §2.11 batch B3 | (this commit) | — | §2.11 B3 (one Sonnet worker), then Phase 3 |
 | 2026-10-04 | Resumed stopped B3; mandatory Phase 0–2 motor gates CLOSED. Generic per-style leading, native-table exit gap, first-note-fragment handling, kept-reference note-area splitting, mirror first-line wrapping, bounded pagination/diagnostics and owned Word runtime provenance | 8176503 | 711 main + 6 extra frontend tests, 14 checker tests, 3 diagnostic tests PASS; build PASS. Two full real-export/Word runs: each 14 targets, 897 PASS / 3 deferred Arial FAIL / 17 INFO; pagefit 205/0, parity 146/0, structure 130/0, all 10 real targets clean; 42 exports no errors/retries. Independent audit complete; no tolerance/source-value changes. | Phase 3. B3.6/Arial and documented residuals remain; university variant completion is a separate queue. See MOTOR_PHASE2_CLOSE_2026-10-04 report and RESUME_2026-10-04_PHASE2. |
 
+| 2026-10-07 | Phase 3 CLOSED: layout landmarks, independent PDF gates, stable IDs, runtime | (this commit) | 16 universities 12.350–29.144 s; 73 landmark checks; 730 frontend + 30 checker tests/build PASS; full Word 1350 PASS / 39 separately open FAIL / 32 INFO, all 68 report/PDF gates PASS. See MOTOR_PHASE3_CLOSE_2026-10-07. | Phase 4.1; university variants/Arial remain separate |
+
+| 2026-10-07 | Phase 4 started: 4.1 official-DOCX XML extraction | (this commit) | ADU Sagbil official source: 3 sections/96 styles/12 tables/1 PAGE; extraction 0.087606 s; 6 extraction + 30 checker tests PASS. Full-pilot token telemetry unavailable; no budget acceptance claimed. | Word-render geometry/provenance, then 4.2 mapper + checker pilot; Phase 4 OPEN |
+
 ---
 
 ## 8. Pointers
@@ -199,3 +223,26 @@ The scaling step toward ~200 universities.
 - Engine docs: `TxtNote/frontend/src/thesis/README.md`, `schema.d.ts`, `orchestration/reports/ENGINE_EXTENSIONS.md`
 - Source precedence ruling: `orchestration/CLOSEOUT_2026-10-03.md` ("User-directed source precedence": official template XML/example structure outranks guide prose; record both values)
 - Definition of Done: `AGENTS.md` §28 and §28A (two-tier)
+
+| 2026-10-07 | Phase 4 CLOSED: official-source pipeline + ADU Sagbil Tier 1 pilot | (this commit) | 303/303 actual PDF/DOCX/Word; 732 frontend + 40 Python + 3 generator tests/build PASS; three universities/two families; wall 2884.583 s; tokens unavailable. Full regression 1658 PASS / 39 unchanged FAIL / 32 INFO. | Remaining university/variant/Tier 2 and deferred queue |
+| 2026-10-07 | Phase 5 Word compatibility program PLANNED: 5.1–5.5 | (this commit) | Reviewed final 21-target/35-variant baseline, 39 FAIL in 8 families, selected real H4 lines and English fixture coverage; Microsoft/W3C research recorded. No engine fixes or new PASS claimed. | 5.1 measurement/fixture triage, then source-backed cover/table fixes |
+
+| 2026-10-07 | Phase 5.1 CLOSED_WITH_DOCUMENTED_DEFERRALS | (this commit) | 1714 PASS / 18 unchanged FAIL / 32 INFO; 21 baseline FAIL resolved, zero new layout regressions; SDK 3 PASS/32 FAIL tracked; frontend 733, conformance 37, provenance 2, recorder 1, build PASS. | Await user instruction for 5.2; schema findings to 5.3/5.4 |
+
+| 2026-10-08 | Phase 5.2 PARTIAL_RESEARCH_DEFERRED; acceptance OPEN | (working tree) | Frozen 12-case train/held-out corpus has independent Word 16.0.20430 line and last-line word-position references (2 canonical Word COM runs; 3 actual runs including 1 duplicate diagnostic, exceeding the 2-run ceiling by 1). Existing PDF line texts match in all 12; last-line word positions pass 11/12, with V03 URL case at 0.325 mm vs 0.25 mm. Style fixture 64 PASS. No shared renderer integrated; original 18 Phase 5.1 FAILs and the three J03/J04 typography FAILs remain unchanged. | Next: separately budgeted 5.2 shared line-renderer implementation and acceptance; no automatic 5.3 pivot |
+
+## 8. Phase 5 — Word compatibility
+
+Detailed implementation and acceptance plan: `orchestration/reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md`.
+Machine-readable baseline/audit: `orchestration/specs/word-compatibility-plan.audit.json`.
+Status: **IN_PROGRESS**; 5.1 CLOSED_WITH_DOCUMENTED_DEFERRALS, 5.2 PARTIAL_RESEARCH_DEFERRED (acceptance OPEN), Unstarted phases removed at user request on 2026-10-08. Previous Phase 4 remains CLOSED; full Word compatibility is not certified.
+
+- **5.1 Scope, reliable checks and bounded fixes:** freeze required target/variant/feature/environment scope; classify the 39 FAIL rows; correct H4/English table/paragraph coverage; verify source-backed ADU cover/SBE table fixes; establish environment/cache provenance, validator availability, performance baseline and early regression gates.
+- **5.2 Typography with a research decision gate:** at most two approaches with two refinement rounds each in the initial cycle, fixed independent validation corpus, then CONTINUE / NEW EXPERIMENT / DEFER decision with evidence and budget. Current decision: **DEFER renderer integration**. The independent corpus and 64 style checks are recorded; no shared editor/PDF line renderer was integrated or accepted. Original required failures and tolerances remain unchanged; Phase 5.2 and dependent acceptance remain open. See `orchestration/validation/word-compat/phase-5.2/acceptance.json` and `orchestration/reports/MOTOR_PHASE52_PROGRESS_2026-10-08.md`.
+
+Retained work: reliable measurement and the started typography research. Word runs remain serial. Any line/page/environment change reopens affected acceptance records.
+Complete compatibility requires 0 required FAIL/SKIPPED/UNKNOWN in the declared feature/font/environment scope; no tolerance relaxation, fixture omissions or removal of the original 39 failures to obtain PASS. Unstarted university tasks were removed on 2026-10-08; source inventory and unavailable-environment evidence are retained. Plan revision 2 preceded implementation. Phase 5.1 now has scoped checks, provenance, early gates and measured performance. See `orchestration/reports/MOTOR_PHASE51_CLOSE_2026-10-07.md`.
+
+Task cleanup 2026-10-08: removed 30 unstarted university targets and unstarted Word phases from active tracking and plans at user request. Started work and historical validation findings remain.
+
+Bug-fix checkpoint 2026-10-08: DOCX integrity/schema, page-top frame flow, ResizeObserver and wrapped-token spacing fixes; 739 unit tests, 41 validator tests, build and browser stress checks passed. Remaining Word acceptance stays open; see `orchestration/reports/MOTOR_BUG_TEST_2026-10-08.md`.

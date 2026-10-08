@@ -1,0 +1,634 @@
+{
+ "target": "aku-sagbil",
+ "stamp": "20261007-1344",
+ "counts": {
+  "PASS": 21,
+  "SKIPPED": 11,
+  "FAIL": 2,
+  "INFO": 1
+ },
+ "variants": {
+  "master": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\master.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\master.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\master.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sagbil.fixture.master.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "phd": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\phd.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\phd.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\phd.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sagbil.fixture.phd.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "t80": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\t80.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\t80.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\coverage\\aku-sagbil\\run\\t80.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-sagbil.fixture.t80.json",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 1.375,
+ "commandSeconds": 18.201,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+  "trackedDiffSha256": "02770319123e5177a4d983115ad7d497824c2a39e5b7056e2d110589bd808e56",
+  "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+  "startedAt": "2026-10-07T10:44:21.056Z"
+ },
+ "checksSha256": "d64ee112c50551f24dd6843b196261f84d7b82b8af5c43563e8cc030f5c8c2ad",
+ "artifactSha256": {
+  "master": {
+   "fixture": "39b48a7ff20f8653a48fea0f20e04d5d63ed52b030cdf9bd9b8a4316cc10123a",
+   "pdf": "d9c1eddaf6739654815a1a23df4a743deacb85c1ee11beb4f7d581c314d52235",
+   "docx": "230f415fed8930b2e2e6fb6a7828a051d88ed6c24705d96c0fc0c2d2427c055c",
+   "layout": "57de44eb7313356e5d67ffb7d085772c74b109d94bdeaaec75dc64d2e3e5fa2f"
+  },
+  "phd": {
+   "fixture": "8b7b84cf5833721d706fd616b6892e31733cee415b36d4129b2a0b3ad8e15eb1",
+   "pdf": "3682543e8bb466beb97238e1495e5101645559dadef713a4396e06b0482f2ab0",
+   "docx": "458bc6cccfac471047a67daac1cdc6e8447241e39313ec9ae17ff2c26e688994",
+   "layout": "14b026e5cf00c69aa4a7d4b88f52306abbfcd4569626dd6a86cf68a0f9173cd0"
+  },
+  "t80": {
+   "fixture": "81b684c30cf74a91f4accb1c923c72b6e8e43a20fbcadb3915b85f03a9fefdcd",
+   "pdf": "1d83fbcccb64e3bc979c46d8b3506f1f31223427cdde063dc527b9d843c65e87",
+   "docx": "7286aa2881419470296f8f73ce179b9bf52da82d7f5e53e9d723a8850a48eac8",
+   "layout": "709d85156cb6689b6435e903a2f339a9b8485510e158af4b99f8b6275da8cc7c"
+  }
+ },
+ "checks": [
+  {
+   "id": "page-size-master-editor",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "40 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "page-size-master-word",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "page-size-phd-editor",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "40 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "page-size-phd-word",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.1: A4 21 × 29.7 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "docx-all-section-margins",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-all-section-margins-right",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-all-section-margins-top",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-all-section-margins-bottom",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm on each page edge"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "body-left-edge-editor",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "min over 26 pages [30.00..30.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-left-edge-word",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-right-edge-editor",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 179.999,
+   "delta": -0.001,
+   "note": "max over 26 pages [142.17..180.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-right-edge-word",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-font-editor",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.2: body font Times New Roman; clean ÖZET page isolates ordinary text from mathematical glyphs"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-word",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.2: body font Times New Roman; clean ÖZET page isolates ordinary text from mathematical glyphs"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-size-editor",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.2,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.2: main text is 12 pt; min 8 pt applies to table/figure/formula content"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 30493, 10.0: 1054, 11.0: 455, 8.0: 50}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-size-word",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.2,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.2: main text is 12 pt; min 8 pt applies to table/figure/formula content"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-line-spacing-editor",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.2,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.4: 1.5 line spacing"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "mode bucket 7.3 (357/379 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-spacing-word",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.2,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.4: 1.5 line spacing"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "h4-bold-editor",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.7: all heading degrees bold"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": null,
+   "note": "no line matched",
+   "status": "FAIL"
+  },
+  {
+   "id": "h4-bold-word",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.7: all heading degrees bold"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-pages-unlabelled-editor",
+   "kind": "page_labels",
+   "expected": "none x2",
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.6: cover and inner cover are excluded from visible page numbering"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "none x2",
+   "status": "PASS"
+  },
+  {
+   "id": "cover-pages-unlabelled-word",
+   "kind": "page_labels",
+   "expected": "none x2",
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.6: cover and inner cover are excluded from visible page numbering"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "chapter-starts-arabic-1-editor",
+   "kind": "page_labels",
+   "expected": "1",
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.6: Arabic sequence starts at chapter 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "1",
+   "status": "PASS"
+  },
+  {
+   "id": "chapter-starts-arabic-1-word",
+   "kind": "page_labels",
+   "expected": "1",
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.6: Arabic sequence starts at chapter 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "toc-page-labels-editor",
+   "kind": "toc_labels",
+   "expected": "all entries match printed labels or declared hidden index labels",
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.6; p.33 (printed p.31), Example 8"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "38/39",
+   "note": "'BİLİMSEL ETİK BİLDİRİMİ'->iv vs ['iii']; source-backed hidden index labels: TEZ KABUL VE ONAY SAYFASI=ii (unprinted), BİLİMSEL ETİK BİLDİRİMİ=iii (unprinted)",
+   "status": "FAIL"
+  },
+  {
+   "id": "toc-page-labels-word",
+   "kind": "toc_labels",
+   "expected": "all entries match printed or declared hidden index labels",
+   "tolerance": 0,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.5 (printed p.3), §2.6; p.33 (printed p.31), Example 8"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "t80-docx-valid",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0,
+   "source": {
+    "file": "generated DOCX",
+    "locator": "DOCX structural validity for the retained long-title Tier 2 fixture"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "tier2-title-overflow-unknown",
+   "kind": "note",
+   "expected": "documented",
+   "tolerance": 0,
+   "source": {
+    "file": "aku-sagbil.json",
+    "locator": "unknowns[]; source leaves title-overflow capacity undefined"
+   },
+   "evidence": "UNKNOWN",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "UNKNOWN Tier 2: guide gives no title-length or cover-overflow behavior; the deterministic t80 fixture is retained for repeatability and is not a Tier 1 fit criterion."
+  },
+  {
+   "id": "layout.body-left-edge-editor",
+   "kind": "landmark_x",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+    "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.9971,
+   "delta": -0.0029,
+   "note": "89 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-master",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "304 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-master",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-phd",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "304 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-phd",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-t80",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "260 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-t80",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

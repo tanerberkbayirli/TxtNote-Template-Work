@@ -1,0 +1,22 @@
+import { createRequire } from "node:module";
+import { readFile } from "node:fs/promises";
+const require = createRequire(import.meta.url);
+const { chromium } = require((process.env.PLAYWRIGHT_MODULE||"C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/node_modules/playwright"));
+const [fx] = process.argv.slice(2);
+const doc = JSON.parse(await readFile(fx, "utf8"));
+const browser = await chromium.launch({ executablePath: (process.env.THESIS_BROWSER_EXECUTABLE||"C:/Program Files/Google/Chrome/Application/chrome.exe"), args: ["--enable-blink-features=MulticolColumnWrapping", "--font-render-hinting=none"] });
+const context = await browser.newContext({ viewport: { width: 1400, height: 1000 } });
+await context.grantPermissions(["local-fonts"], { origin: "http://127.0.0.1:5175" });
+const page = await context.newPage();
+await page.goto("http://127.0.0.1:5175/tests/thesis.html");
+await page.evaluate(([k, v]) => { localStorage.clear(); localStorage.setItem(k, v); }, ["txtnote-thesis-regression", JSON.stringify(doc)]);
+await page.reload();
+await page.locator(".thesis-sheet").first().waitFor({ timeout: 60000 });
+await page.waitForFunction(() => document.querySelector('[aria-label="Belge sayfaları"]')?.getAttribute("data-thesis-pagination-ready") === "true", undefined, { timeout: 120000 });
+const out = await page.evaluate(() => [...document.querySelectorAll(".thesis-footnote-area:not([data-thesis-footnote-measure]) .thesis-footnote")].slice(0, 3).map((li) => {
+  const cs = getComputedStyle(li); const sup = li.querySelector("sup"); const sc = sup && getComputedStyle(sup);
+  const r = document.createRange(); r.selectNodeContents(li);
+  return { h: li.getBoundingClientRect().height, lh: cs.lineHeight, fs: cs.fontSize, fam: cs.fontFamily, rects: [...r.getClientRects()].map((x) => [Math.round(x.top * 100) / 100, Math.round(x.height * 100) / 100, Math.round(x.width)]), sup: sc && { lh: sc.lineHeight, fs: sc.fontSize, va: sc.verticalAlign, pos: sc.position, top: sc.top, disp: sc.display }, html: li.innerHTML.slice(0, 200) };
+}));
+console.log(JSON.stringify(out, null, 1));
+await browser.close();

@@ -21,6 +21,7 @@
 import { resolvePlaceholders } from "./engine.js";
 import { convertLength } from "./units.js";
 import { staticFormatOpenTag } from "./staticFormat.js";
+import { normalizeHex } from "../config/format.js";
 
 export const SPECIAL_PAGE_BLOCK_TYPES = Object.freeze(["text", "metadata", "image", "spacer", "separator", "group"]);
 export const SPECIAL_PAGE_MAX_DEPTH = 4;
@@ -86,6 +87,7 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
       ...(typeof block.layoutMode === "string" ? { layoutMode: block.layoutMode } : {}),
       ...(block.positionOrigin === "content" ? { positionOrigin: "content" } : {}),
       ...["xMm", "yMm", "widthMm", "heightMm", "flowHeightMm", "zIndex"].filter((key) => Number.isFinite(block[key])).reduce((out, key) => ({ ...out, [key]: block[key] }), {}),
+      ...(block.wordBaseline === true ? { wordBaseline: true } : {}),
       ...(typeof block.id === "string" ? { id: block.id } : {}),
       ...(typeof block.locked === "boolean" ? { locked: block.locked } : {}),
       ...(typeof block.lockAspectRatio === "boolean" ? { lockAspectRatio: block.lockAspectRatio } : {}),
@@ -224,7 +226,17 @@ export function specialPageCss(scope, nodes, styleCss) {
         if (node.verticalAlign) rules.push(`${scope} [data-thesis-frame="${node.path}"]>[data-thesis-block]{width:100%;}`);
         if (innerPt > 0) rules.push(`${scope} [data-thesis-frame-inner="${node.path}"]{border:${innerPt}pt solid ${color};padding:${paddingMm}mm;}`);
       }
-      rules.push(`${scope} [data-thesis-block="${node.path}"]{${node.type === "text" ? styleCss(node.style) : ""}${specialPageBoxCss(node, parent)}${node.border ? "margin:0;" : ""}}`);
+      let textRules = node.type === "text" ? styleCss(node.style) : "";
+      // Absolute page coordinates must not overwrite the Word paint-only baseline
+      // correction. Translate the glyphs while leaving the authored page anchor intact.
+      if (node.wordBaseline === true && ["absolute", "anchored"].includes(node.layoutMode)) {
+        textRules = textRules.replace(/top:(calc\(-1 \* var\(--thesis-wb-[^;]+);/g, "transform:translateY($1);");
+      }
+      rules.push(`${scope} [data-thesis-block="${node.path}"]{${textRules}${specialPageBoxCss(node, parent)}${node.border ? "margin:0;" : ""}}`);
+      // Special pages have no rich-text editor to register custom inline colors.
+      // Emit the highlight with the block stylesheet, including in print/export.
+      const highlight = normalizeHex(node.style?.highlight);
+      if (node.type === "text" && highlight) rules.push(`${scope} [data-thesis-block="${node.path}"]>[data-fmt-bg="${highlight}"]{background-color:${highlight};}`);
       if (node.type === "group") visit(node.blocks, node);
     }
   };
@@ -262,6 +274,7 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
   for (const [index, block] of blocks.entries()) {
     const at = `${path}.${index}`;
     if (!SPECIAL_PAGE_BLOCK_TYPES.includes(block?.type)) { errors.push(`${at}.type geçersiz`); continue; }
+    if (block.wordBaseline !== undefined && typeof block.wordBaseline !== "boolean") errors.push(`${at}.wordBaseline boolean olmalı`);
     if (block.layoutMode !== undefined) {
       if (!["flow", "absolute", "anchored"].includes(block.layoutMode)) errors.push(`${at}.layoutMode geçersiz`);
       else if (block.layoutMode !== "flow") {

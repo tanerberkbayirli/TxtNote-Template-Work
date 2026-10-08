@@ -131,8 +131,9 @@ try {
     const pdf = await task.promise;
     const pages = [];
     for (let number = 1; number <= pdf.numPages; number += 1) {
-      const text = (await (await pdf.getPage(number)).getTextContent()).items.map((item) => item.str).join(" ");
-      if (text.includes("BİLİMSEL ETİK BEYANI")) pages.push(number);
+      const text = (await (await pdf.getPage(number)).getTextContent()).items.map((item) => item.str).join(" ").replace(/\s+/g, " ");
+      // The title also occurs in the generated TOC. Identify the actual body.
+      if (text.includes("BİLİMSEL ETİK BEYANI") && text.includes("başlıklı Lisans")) pages.push(number);
     }
     assert.equal(pages.length, 1, `${path.basename(result.pdf)}: declaration appears exactly once`);
     assert.equal(pages[0] % 2, 1, `${path.basename(result.pdf)}: declaration starts on an odd physical page`);

@@ -208,7 +208,7 @@
   },
   {
     "id": "h1-size",
-    "kind": "line_attr",
+    "kind": "landmark_y",
     "params": {
       "pages": {
         "label": "arabic"
@@ -216,7 +216,8 @@
       "regex": "^1\\. GİRİŞ$",
       "attr": "size",
       "agg": "all",
-      "source": "layout"
+      "source": "layout",
+      "kind": "heading"
     },
     "expected": 12,
     "tolerance": 0.1,

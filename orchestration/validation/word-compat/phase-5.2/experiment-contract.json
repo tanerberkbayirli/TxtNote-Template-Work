@@ -1,0 +1,87 @@
+{
+  "phase": "5.2",
+  "round": "B2",
+  "objective": "Prototype an opt-in line-local justified-fit model from the already measured Word budget, preserving semantic source text and the existing J03/J04 checks.",
+  "frozenBeforeFitting": true,
+  "sourceEvidence": {
+    "file": "TxtNote/frontend/src/thesis/CAPABILITIES.md",
+    "section": "Word justified-line fitting",
+    "finding": "A line fits when compression is bounded by both 0.25 × inter-word gaps × U+0020 advance and approximately 0.36 × (last-word advance + one space); a uniform CSS word-spacing cannot express the second, line-local cap."
+  },
+  "approaches": [
+    {
+      "id": "A-uniform-css",
+      "status": "skipped-cached-evidence",
+      "reason": "Existing Word evidence already shows a single fraction cannot represent the last-word-dependent cap; another fitted fraction would repeat a falsified hypothesis."
+    },
+    {
+      "id": "B-line-local-fit",
+      "status": "MECHANISM_ONLY; renderer integration deferred; Word parity not established",
+      "model": "Greedy candidate-line fit using font advances and Word's measured two-term compression budget; opt-in only."
+    }
+  ],
+  "budget": {
+    "maxWallMinutes": 12,
+    "maxSerializedWordBatches": 1,
+    "stopGate": "Stop if the model cannot share line placement between editor and PDF while retaining editable semantic text without persisted measurement markup or forced line breaks.",
+    "b1": {
+      "maxWallMinutes": 12,
+      "maxSerializedWordBatches": 1,
+      "startedUtc": "2026-10-08T06:37:28.6524202Z",
+      "stopGate": "Stop if the model cannot share line placement between editor and PDF while retaining editable semantic text without persisted measurement markup or forced line breaks.",
+      "endedUtc": "2026-10-08T06:38:39Z",
+      "actualWallSeconds": 70,
+      "actualSerializedWordBatches": 0
+    },
+    "b2": {
+      "maxWallMinutes": 5,
+      "startedUtc": "2026-10-08T06:48:07Z",
+      "endedUtc": "2026-10-08T06:50:49Z",
+      "actualWallSeconds": 162,
+      "maxSerializedWordBatches": 0,
+      "actualSerializedWordBatches": 0,
+      "browser": "Chrome 154.0.8037.98",
+      "result": "MODEL_LINE_WRAPPER_PROTOTYPE_PASSED_INTERACTION_MECHANISM_GATE",
+      "limits": [
+        "no Word comparison",
+        "synthetic paste only",
+        "IME not simulated"
+      ]
+    }
+  },
+  "acceptance": {
+    "retainChecks": [
+      "J03-Arial-10-justify-line-breaks",
+      "J03-Arial-10-justify-last-line-words",
+      "J04-Arial-12-justify-line-breaks"
+    ],
+    "retainPassControls": [
+      "J01",
+      "J02",
+      "J05",
+      "J06",
+      "J07",
+      "J08"
+    ],
+    "noToleranceChanges": true,
+    "noManualLineBreaks": true,
+    "noRasterization": true,
+    "sharedEditorAndPdfModelRequiredForPromotion": true,
+    "docxRemainsSemanticText": true
+  },
+  "roundResult": "DEFERRED; no editor/PDF shared renderer or Word parity acceptance; research references only.",
+  "finalDecision": "DEFER shared editor/PDF renderer integration; Phase 5.2 acceptance remains OPEN.",
+  "wordReferenceBudget": {
+    "authorizedRuns": 2,
+    "actualRuns": 3,
+    "exceededBy": 1,
+    "canonicalPids": [
+      13536,
+      6640
+    ],
+    "duplicateDiagnosticPid": 6632,
+    "duplicateIncludedInReferenceCorpus": false,
+    "cause": "The first combined checker call returned incomplete output/logs; a retry was made before checking all expected artifact paths and render.json. Later audit found the first wide render. No further Word runs.",
+    "resumeRule": "Before retrying an incomplete Word/checker call, inspect expected artifacts, render.json, process PID, and PDF hash."
+  }
+}

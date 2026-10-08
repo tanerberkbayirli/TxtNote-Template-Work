@@ -1,0 +1,146 @@
+{
+ "target": "aku-matematik-lisans",
+ "stamp": "20261007-1159",
+ "counts": {
+  "PASS": 7
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-pilot\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-pilot\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-pilot\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-matematik-lisans.fixture.json",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.563,
+ "sourceProvenance": {
+  "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+  "trackedDiffSha256": "44b81d57a938fd0574972134982f08da655a07ddfb522287d7eecd1572f5f518",
+  "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+  "startedAt": "2026-10-07T08:59:29.768Z"
+ },
+ "checksSha256": "754f2a732afefda05a053889ddadc94321d8733e95105e9adbd6377557c9e3a3",
+ "artifactSha256": {
+  "default": {
+   "fixture": "dd2fcf7851415fbb76935edc0cbb45bc1c0a01789dac1466f9847353e28812b0",
+   "pdf": "e04dea4c347a00704a5d4b031ecc8c5dc59a0389feb717b6dfb42efbc6acc125",
+   "docx": "93220e717d3a6e87071ae31748685805ac100468fc1b91a21c0776aefee48d8a",
+   "layout": "420c263fad8386f75ac08c6046df8ac1be395845486a54c94f1c82bb0b4211e9"
+  }
+ },
+ "checks": [
+  {
+   "id": "layout.headings.h1-baseline",
+   "kind": "landmark_y",
+   "expected": 33.96,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render of template: first body baseline 33.96 (30 mm top margin); same evidence as pdf.margins.first-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 33.95,
+   "delta": -0.01,
+   "note": "7 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "layout.headings.h1-size",
+   "kind": "landmark_y",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "H1 12 pt; same evidence as headings.h1-size"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "7 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "layout.headings.h1-spacing-after",
+   "kind": "landmark_gap",
+   "expected": 14.6,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "H1 14.6 mm before/after; same evidence as headings.h1-spacing-after"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 14.599999999999994,
+   "delta": -0.0,
+   "note": "page 10",
+   "status": "PASS"
+  },
+  {
+   "id": "pdf.margins.first-baseline",
+   "kind": "line_attr",
+   "expected": 33.96,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "Word render of template: first body baseline 33.96 (30 mm top margin)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 33.949,
+   "delta": -0.011,
+   "note": "7 lines, pages [10, 11, 15, 19, 24, 28]",
+   "status": "PASS"
+  },
+  {
+   "id": "headings.h1-size",
+   "kind": "line_attr",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "H1 12 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "7 lines, pages [10, 11, 15, 19, 24, 28]",
+   "status": "PASS"
+  },
+  {
+   "id": "headings.h1-spacing-after",
+   "kind": "line_gap",
+   "expected": 14.6,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "H1 14.6 mm before/after"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 14.602,
+   "delta": 0.002,
+   "note": "page 10",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "237 independent PDF glyph samples; ",
+   "status": "PASS"
+  }
+ ]
+}

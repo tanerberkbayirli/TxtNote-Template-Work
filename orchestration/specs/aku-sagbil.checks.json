@@ -332,9 +332,14 @@
       "pages": {
         "label": "arabic"
       },
-      "regex": "^Alt Başlık 1\\.1\\.1\\.1$",
+      "regex": "Alt Başlık 1\\.1\\.1\\.1$",
       "attr": "bold",
-      "agg": "all"
+      "agg": "all",
+      "anchor": {
+        "kind": "heading",
+        "regex": "Alt Başlık 1\\.1\\.1\\.1$",
+        "sectionId": "main"
+      }
     },
     "expected": 1,
     "tolerance": 0,
@@ -352,10 +357,15 @@
       "pages": {
         "label": "arabic"
       },
-      "regex": "^Alt Başlık 1\\.1\\.1\\.1$",
+      "regex": "Alt Başlık 1\\.1\\.1\\.1$",
       "attr": "bold",
       "agg": "all",
-      "source": "word"
+      "source": "word",
+      "anchor": {
+        "kind": "heading",
+        "regex": "Alt Başlık 1\\.1\\.1\\.1$",
+        "sectionId": "main"
+      }
     },
     "expected": 1,
     "tolerance": 0,
@@ -518,5 +528,26 @@
       "locator": "unknowns[]; source leaves title-overflow capacity undefined"
     },
     "evidence": "UNKNOWN"
+  },
+  {
+    "id": "layout.body-left-edge-editor",
+    "kind": "landmark_x",
+    "params": {
+      "source": "layout",
+      "kind": "paragraph",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "x0",
+      "agg": "min",
+      "fixture": "master"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
+      "locator": "PDF p.4 (printed p.2), §2.3: 3 cm margins"
+    },
+    "evidence": "EXPLICIT"
   }
 ]

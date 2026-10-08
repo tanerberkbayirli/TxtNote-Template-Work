@@ -39,3 +39,5 @@
 - Export fallback (if checker lacks coverage): `node orchestration/tools/export.mjs` (real editor PDF/DOCX path), then measure with PyMuPDF.
 ## Do NOT read
 - Guide PDF + template DOCX; orchestration/validation/aku-kimya-lisans/self-1; orchestration/artifacts/aku-kimya-lisans/*. Other targets' specs/validation folders.
+
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.

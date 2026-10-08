@@ -1,5 +1,9 @@
 # TxtEngine capability catalog
 
+Authored table-cell alignment uses existing `fmt-align-*` classes, overriding
+`tables.cellStyle.align` in editor/PDF/DOCX without replacing table-cell display.
+Inline alignment styles do not survive sanitization. Test: `thesisCellAlignment.test.js`.
+
 What a thesis template can express, so you need not read engine code. Paths are relative to the template object
 (`schema.d.ts` has the types; `orchestration/reports/ENGINE_EXTENSIONS.md` the history and design notes).
 Lengths are mm, type sizes and spacing pt. Everything here is opt-in unless a Default says otherwise.
@@ -7,6 +11,14 @@ Lengths are mm, type sizes and spacing pt. Everything here is opt-in unless a De
 Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "limit" = see Need/Notes). Tests: file in
 `src/lib/` named `thesis<Name>.test.js` (e.g. `AkuFbe`), `afsu-lee` = `thesis/templates/afsu-lee.test.js`, `-` = no test names the key.
 `npm test` runs `src/lib/*.test.js`. The unit test `thesisCapabilities` fails when `validation.js` accepts a key missing from this file.
+
+Layout evidence: `layoutPdf.js` emits a version-1 `ThesisLayoutReport` (schema.d.ts):
+top-left mm geometry, pt sizes, page labels/sections, anchored landmark IDs,
+special blocks/headings/captions/index rows/table rows and cells/footnotes/page numbers,
+exported fonts and per-page body baselines. Structural boxes inherit text metrics and
+are fragmented by physical page. `thesisLayoutReport.test.js` covers the pure model;
+checker gates validate the contract and independent PDF glyph samples. See README.md
+"Measured layout report" and `orchestration/tools/CHECKER.md` for selectors and limitations.
 
 ## 1. Template metadata and common keys
 | Need | Key | Values | Default | E P D | Test |
@@ -152,9 +164,9 @@ Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "lim
 | Unnamed-block terminal allowance | UNKNOWN: captions, quotes and list items outside named paragraphStyles use the column allowance; the accepted named-style fixture does not establish their own terminal leading | Documented residual |
 | Split-note horizontal placement | MEASURED residual: note text-box widths/indentation differ between editor and Word. The new split-note checks cover line counts, pages and baselines (four reference-page lines, maximum 0.016 mm); horizontal placement is outside that acceptance scope | Documented residual |
 | Justification follow-ups | Deferred B3.6: editor last-line preview remains compressed; custom Word line breaker is unimplemented. engine-word-justify remains 17 PASS / 3 FAIL (Arial 10/12 pt) in both final runs | Explicitly deferred |
-| Page-number landmark coverage | layout landmarks replace bottom-only searches where available; source PDFs still need explicit page-number locators | MOTOR 3.2 |
-| Layout report performance/conformance | versioned editor landmarks implemented; target regression/runtime gate verifies acceptance | MOTOR Phase 3 |
-| Template generation from official DOCX (`docx2spec`, `spec2template`) | templates are hand-written | MOTOR Phase 4 |
+| Official-source PDF locators | Engine page-number landmarks are covered; independent official-source PDFs still require explicit locators when authoring source expectations | Source authoring |
+
+| Additional source structures/variants beyond the ADU Sagbil Tier 1 pilot | source profile and preserved gaps require review before registration | University queue after MOTOR Phase 4 |
 
 Template validation also accepts generated-index kind `appendices` and section-level
 `minWords` / `minWordsByHeading` rules. These are source-driven requirements: the
@@ -187,3 +199,18 @@ Per-style terminal allowance is auto pitch minus the measured single line (singl
 
 ## Word justified-line fitting (measured, engine-word-justify)
 Real Word render of the exported DOCX vs the exported PDF (`orchestration/specs/engine-word-justify.*`, `node orchestration/tools/justify-fixture.mjs`). Word fits a justified line whose natural width exceeds the measure by shrinking the inter-word spaces; it does NOT do this for left-aligned text (J07/J08 left cases break identically without any rule) and its natural glyph advances equal the font program (no kerning; Chromium kerns, so justified styles get `font-kerning:none`). Measured max compression per font (fraction of the U+0020 advance): Times New Roman 0.24-0.29 window -> 0.25, Calibri 0.22-0.27 -> 0.25, Arial 0.22 (best uniform fit, see the last-word budget below). About 1.3-2.2 % of the line width, up to 8-10 pt per line at 10-12 pt. Chromium has no per-line compression, so a negative `word-spacing` moves the break point and `text-align: justify` widens the spaces back. The last (unjustified) line of a justified paragraph is drawn with natural spaces like Word: the PDF writer (`justifyLastLine.js`, used by `layoutPdf.js`) measures the line breaks first and moves only the paint x of the last line's words by k gaps of the compression (editor preview keeps the compressed spaces: the contentEditable DOM is not rewritten); checker kind `last_line_words_match` (max measured delta 0.19 mm). Word's real fitting budget (MEASURED with `orchestration/tools/word-justify-probe.ps1`: Word COM binary search of the narrowest width at which a justified line still fits, 0.05 pt resolution; natural widths = font advances exactly, +0.00-0.05 pt): a line fits iff natural - width <= min(0.25 x gaps x space, ~0.36 x (last word + one space)) (+ a small decay of ~0.04 pt per extra gap, UNKNOWN cause). The second term is independent of the text after the line and of the font size in em, same for Arial/TNR/Calibri (intercept = 0.36 space +-0.02); it makes lines ending in short words ("a", "of", "ve", "bu") accept much less compression (e.g. Arial 10: last word "I" 2.0 pt, "a" 3.0 pt, "fox" 5.6 pt; uniform cap 0.25 x gaps would be 5.6 pt). This rule alone explains every accepted/rejected line of the J01-J06 fixture (0 violations at 0.05 pt) and is why Arial looked "size dependent" (a single fraction cannot represent it). A uniform CSS `word-spacing` cannot represent a last-word-dependent budget; an exact model needs a custom line breaker (not implemented, UNKNOWN effort). Known gaps: Arial 10/12 pt break differently from Word on ~1 line in 20 (J03, J04; the same last-word effect exists for TNR/Calibri but their fixture lines happen not to hit it); fonts other than TNR/Arial/Calibri are not compressed (UNKNOWN).
+
+### Phase 4 official-source pilot and reusable presets
+
+`docx2spec.py` + `spec2template.mjs` generate reviewed source-derived drafts,
+checks/fixtures/context and an explicit unmapped-property inventory. ADU Sagbil
+master/TR is the measured Tier 1 pilot; other variants and arbitrary replacement
+text on positioned pages require review.
+`orchestration/specs/template-families.json` inventories official ADU Sagbil,
+AKU FBE and AFSU LEE structures: two candidate families (Heading/TOC 1–9 vs 1–3).
+The reviewed `wordFlowPreset` shares Word flow/additive spacing semantics and
+font-program metrics already in the engine. Every university supplies its own
+margins, sizes, spacing and page requirements. Theme/conditional table styles and
+109 preserved ADU property groups remain explicit review inventory.
+Positioned text can opt into `wordBaseline`; table cells can opt into
+`cellStyle.firstLineIndentMm`. Both preserve existing template defaults.

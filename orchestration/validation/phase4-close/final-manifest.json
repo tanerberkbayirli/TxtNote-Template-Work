@@ -1,0 +1,44 @@
+{
+  "startedAt": "2026-10-07T14:23:11.680Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "adu-sagbil",
+      "exitCode": 0,
+      "commandSeconds": 26.431,
+      "report": "orchestration\\validation\\phase4-close\\final\\adu-sagbil\\check-20261007-1723.json",
+      "counts": {
+        "PASS": 303
+      },
+      "measurementSeconds": 0.547,
+      "error": null
+    },
+    {
+      "target": "afsu-tip",
+      "exitCode": 0,
+      "commandSeconds": 29.42,
+      "report": "orchestration\\validation\\phase4-close\\final\\afsu-tip\\check-20261007-1724.json",
+      "counts": {
+        "PASS": 51,
+        "INFO": 2
+      },
+      "measurementSeconds": 0.782,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 1,
+      "commandSeconds": 142.274,
+      "report": "orchestration\\validation\\phase4-close\\final\\aku-sbe\\check-20261007-1726.json",
+      "counts": {
+        "PASS": 108,
+        "INFO": 2,
+        "FAIL": 23
+      },
+      "measurementSeconds": 4.062,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-07T14:26:29.809Z",
+  "commandSeconds": 198.128
+}

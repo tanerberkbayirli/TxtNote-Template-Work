@@ -1,1993 +1,2103 @@
 [
- {
-  "id": "page-size",
-  "kind": "page_size",
-  "params": {},
-  "expected": [
-   210,
-   297
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-top",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": ".",
-   "attr": "top",
-   "agg": "min"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-top",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.top"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-left",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.left"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-left",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x0min"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-right",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x1max"
-  },
-  "expected": 180,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm right)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font",
-  "kind": "fonts",
-  "params": {
-   "families": [
-    "Times New Roman"
-   ]
-  },
-  "expected": [
-   "TimesNewRomanPSMT",
-   "TimesNewRomanPS-BoldMT",
-   "TimesNewRomanPS-ItalicMT",
-   "TimesNewRomanPS-BoldItalicMT"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-size",
-  "kind": "font_size",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   }
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-line-pitch",
-  "kind": "line_pitch",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "source": "layout"
-  },
-  "expected": 7.3,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "page": 15
-   },
-   "regex": "^Toplumsal değişim süreçlerinin yerel",
-   "attr": "x0",
-   "agg": "first",
-   "source": "layout"
-  },
-  "expected": 42.5,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-docx",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "ind",
-   "attrs": [
-    "firstLine"
-   ],
-   "mode": "has",
-   "numeric_tol": 2
-  },
-  "expected": [
-   "709"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "para-spacing-docx",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "spacing",
-   "attrs": [
-    "before",
-    "after"
-   ],
-   "mode": "has",
-   "numeric_tol": 2
-  },
-  "expected": [
-   "120"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-centre",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "cx",
-   "source": "layout"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-size",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "size",
-   "source": "layout"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "note-pagenum-distance-unknown",
-  "kind": "note",
-  "params": {
-   "text": "Page-number baseline / distance from page edge and footer distance are UNKNOWN (spec pagination.distanceFromEdgeMm, page.footer.distanceMm)"
-  },
-  "expected": null,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "spec unknowns"
-  },
-  "evidence": "UNKNOWN"
- },
- {
-  "id": "page-labels-front",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "roman"
-   }
-  },
-  "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-main",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   }
-  },
-  "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3: GİRİŞ = 1, main/back arabic continuing (fixture: 23 arabic pages; was 24 before the Word last-line fit rule)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-unnumbered",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "none"
-   }
-  },
-  "expected": "none x3",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
-  },
-  "evidence": "INFERRED"
- },
- {
-  "id": "docx-no-undefined",
-  "kind": "docx_no_undefined",
-  "params": {},
-  "expected": "none",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "field validity"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "note-heading-size",
-  "kind": "note",
-  "params": {
-   "text": "Heading sizes H1/H2/H3 all 12 pt (INFERRED from §5.2 general body text); explicit heading typography varies by element (UNKNOWN)"
-  },
-  "expected": null,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "spec"
-  },
-  "evidence": "INFERRED"
- },
- {
-  "id": "page-size-sanatta-yeterlik-tr",
-  "kind": "page_size",
-  "params": {
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": [
-   210,
-   297
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-top-sanatta-yeterlik-tr",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": ".",
-   "attr": "top",
-   "agg": "min",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-top-sanatta-yeterlik-tr",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.top",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-left-sanatta-yeterlik-tr",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.left",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-left-sanatta-yeterlik-tr",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x0min",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-right-sanatta-yeterlik-tr",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x1max",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 180,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm right)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-sanatta-yeterlik-tr",
-  "kind": "fonts",
-  "params": {
-   "families": [
-    "Times New Roman"
-   ],
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": [
-   "TimesNewRomanPSMT",
-   "TimesNewRomanPS-BoldMT",
-   "TimesNewRomanPS-ItalicMT",
-   "TimesNewRomanPS-BoldItalicMT"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-size-sanatta-yeterlik-tr",
-  "kind": "font_size",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-line-pitch-sanatta-yeterlik-tr",
-  "kind": "line_pitch",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "source": "layout",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 7.3,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-sanatta-yeterlik-tr",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "page": 15
-   },
-   "regex": "^Toplumsal değişim süreçlerinin yerel",
-   "attr": "x0",
-   "agg": "first",
-   "source": "layout",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 42.5,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-docx-sanatta-yeterlik-tr",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "ind",
-   "attrs": [
-    "firstLine"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": [
-   "709"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "para-spacing-docx-sanatta-yeterlik-tr",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "spacing",
-   "attrs": [
-    "before",
-    "after"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": [
-   "120"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-centre-sanatta-yeterlik-tr",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "cx",
-   "source": "layout",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-size-sanatta-yeterlik-tr",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "size",
-   "source": "layout",
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-front-sanatta-yeterlik-tr",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "roman"
-   },
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-unnumbered-sanatta-yeterlik-tr",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "none"
-   },
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": "none x3",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
-  },
-  "evidence": "INFERRED"
- },
- {
-  "id": "docx-no-undefined-sanatta-yeterlik-tr",
-  "kind": "docx_no_undefined",
-  "params": {
-   "fixture": "sanatta-yeterlik-tr"
-  },
-  "expected": "none",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "field validity"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "page-size-master-en",
-  "kind": "page_size",
-  "params": {
-   "fixture": "master-en"
-  },
-  "expected": [
-   210,
-   297
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-top-master-en",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": ".",
-   "attr": "top",
-   "agg": "min",
-   "fixture": "master-en"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-top-master-en",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.top",
-   "fixture": "master-en"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-left-master-en",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.left",
-   "fixture": "master-en"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-left-master-en",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x0min",
-   "fixture": "master-en"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-right-master-en",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x1max",
-   "fixture": "master-en"
-  },
-  "expected": 180,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm right)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-master-en",
-  "kind": "fonts",
-  "params": {
-   "families": [
-    "Times New Roman"
-   ],
-   "fixture": "master-en"
-  },
-  "expected": [
-   "TimesNewRomanPSMT",
-   "TimesNewRomanPS-BoldMT",
-   "TimesNewRomanPS-ItalicMT",
-   "TimesNewRomanPS-BoldItalicMT"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-size-master-en",
-  "kind": "font_size",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "fixture": "master-en"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-line-pitch-master-en",
-  "kind": "line_pitch",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "source": "layout",
-   "fixture": "master-en"
-  },
-  "expected": 7.3,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-master-en",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "page": 15
-   },
-   "regex": "^Toplumsal değişim süreçlerinin yerel",
-   "attr": "x0",
-   "agg": "first",
-   "source": "layout",
-   "fixture": "master-en"
-  },
-  "expected": 42.5,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-docx-master-en",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "ind",
-   "attrs": [
-    "firstLine"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "master-en"
-  },
-  "expected": [
-   "709"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "para-spacing-docx-master-en",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "spacing",
-   "attrs": [
-    "before",
-    "after"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "master-en"
-  },
-  "expected": [
-   "120"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-centre-master-en",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "cx",
-   "source": "layout",
-   "fixture": "master-en"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-size-master-en",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "size",
-   "source": "layout",
-   "fixture": "master-en"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-front-master-en",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "roman"
-   },
-   "fixture": "master-en"
-  },
-  "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-unnumbered-master-en",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "none"
-   },
-   "fixture": "master-en"
-  },
-  "expected": "none x3",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
-  },
-  "evidence": "INFERRED"
- },
- {
-  "id": "docx-no-undefined-master-en",
-  "kind": "docx_no_undefined",
-  "params": {
-   "fixture": "master-en"
-  },
-  "expected": "none",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "field validity"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "page-size-phd-en",
-  "kind": "page_size",
-  "params": {
-   "fixture": "phd-en"
-  },
-  "expected": [
-   210,
-   297
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-top-phd-en",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": ".",
-   "attr": "top",
-   "agg": "min",
-   "fixture": "phd-en"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-top-phd-en",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.top",
-   "fixture": "phd-en"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-left-phd-en",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.left",
-   "fixture": "phd-en"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-left-phd-en",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x0min",
-   "fixture": "phd-en"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-right-phd-en",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x1max",
-   "fixture": "phd-en"
-  },
-  "expected": 180,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm right)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-phd-en",
-  "kind": "fonts",
-  "params": {
-   "families": [
-    "Times New Roman"
-   ],
-   "fixture": "phd-en"
-  },
-  "expected": [
-   "TimesNewRomanPSMT",
-   "TimesNewRomanPS-BoldMT",
-   "TimesNewRomanPS-ItalicMT",
-   "TimesNewRomanPS-BoldItalicMT"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-size-phd-en",
-  "kind": "font_size",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "fixture": "phd-en"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-line-pitch-phd-en",
-  "kind": "line_pitch",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "source": "layout",
-   "fixture": "phd-en"
-  },
-  "expected": 7.3,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-phd-en",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "page": 15
-   },
-   "regex": "^Toplumsal değişim süreçlerinin yerel",
-   "attr": "x0",
-   "agg": "first",
-   "source": "layout",
-   "fixture": "phd-en"
-  },
-  "expected": 42.5,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-docx-phd-en",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "ind",
-   "attrs": [
-    "firstLine"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "phd-en"
-  },
-  "expected": [
-   "709"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "para-spacing-docx-phd-en",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "spacing",
-   "attrs": [
-    "before",
-    "after"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "phd-en"
-  },
-  "expected": [
-   "120"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-centre-phd-en",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "cx",
-   "source": "layout",
-   "fixture": "phd-en"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-size-phd-en",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "size",
-   "source": "layout",
-   "fixture": "phd-en"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-front-phd-en",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "roman"
-   },
-   "fixture": "phd-en"
-  },
-  "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-unnumbered-phd-en",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "none"
-   },
-   "fixture": "phd-en"
-  },
-  "expected": "none x3",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
-  },
-  "evidence": "INFERRED"
- },
- {
-  "id": "docx-no-undefined-phd-en",
-  "kind": "docx_no_undefined",
-  "params": {
-   "fixture": "phd-en"
-  },
-  "expected": "none",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "field validity"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "page-size-phd-tr",
-  "kind": "page_size",
-  "params": {
-   "fixture": "phd-tr"
-  },
-  "expected": [
-   210,
-   297
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-top-phd-tr",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": ".",
-   "attr": "top",
-   "agg": "min",
-   "fixture": "phd-tr"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-top-phd-tr",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.top",
-   "fixture": "phd-tr"
-  },
-  "expected": 25,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "docx-margins-left-phd-tr",
-  "kind": "docx_section",
-  "params": {
-   "sections": "all",
-   "field": "margins.left",
-   "fixture": "phd-tr"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-left-phd-tr",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x0min",
-   "fixture": "phd-tr"
-  },
-  "expected": 30,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "margins-right-phd-tr",
-  "kind": "text_extent",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "metric": "x1max",
-   "fixture": "phd-tr"
-  },
-  "expected": 180,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.10 (printed 9) §5.1 (3 cm right)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-phd-tr",
-  "kind": "fonts",
-  "params": {
-   "families": [
-    "Times New Roman"
-   ],
-   "fixture": "phd-tr"
-  },
-  "expected": [
-   "TimesNewRomanPSMT",
-   "TimesNewRomanPS-BoldMT",
-   "TimesNewRomanPS-ItalicMT",
-   "TimesNewRomanPS-BoldItalicMT"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-font-size-phd-tr",
-  "kind": "font_size",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "fixture": "phd-tr"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "body-line-pitch-phd-tr",
-  "kind": "line_pitch",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "source": "layout",
-   "fixture": "phd-tr"
-  },
-  "expected": 7.3,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-phd-tr",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "page": 15
-   },
-   "regex": "^Toplumsal değişim süreçlerinin yerel",
-   "attr": "x0",
-   "agg": "first",
-   "source": "layout",
-   "fixture": "phd-tr"
-  },
-  "expected": 42.5,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first body paragraph line on fixture page 15 (GİRİŞ)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "first-line-indent-docx-phd-tr",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "ind",
-   "attrs": [
-    "firstLine"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "phd-tr"
-  },
-  "expected": [
-   "709"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "para-spacing-docx-phd-tr",
-  "kind": "docx_attr",
-  "params": {
-   "tag": "spacing",
-   "attrs": [
-    "before",
-    "after"
-   ],
-   "mode": "has",
-   "numeric_tol": 2,
-   "fixture": "phd-tr"
-  },
-  "expected": [
-   "120"
-  ],
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-centre-phd-tr",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "cx",
-   "source": "layout",
-   "fixture": "phd-tr"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-numbering-size-phd-tr",
-  "kind": "page_number_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "attr": "size",
-   "source": "layout",
-   "fixture": "phd-tr"
-  },
-  "expected": 12,
-  "tolerance": 0.1,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-front-phd-tr",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "roman"
-   },
-   "fixture": "phd-tr"
-  },
-  "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "page-labels-unnumbered-phd-tr",
-  "kind": "page_labels",
-  "params": {
-   "pages": {
-    "label": "none"
-   },
-   "fixture": "phd-tr"
-  },
-  "expected": "none x3",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
-  },
-  "evidence": "INFERRED"
- },
- {
-  "id": "docx-no-undefined-phd-tr",
-  "kind": "docx_no_undefined",
-  "params": {
-   "fixture": "phd-tr"
-  },
-  "expected": "none",
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "field validity"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "bibliography-title-entry-gap",
-  "kind": "landmark_gap",
-  "params": {
-   "a": {
-    "regex": "^KAYNAKÇA$"
-   },
-   "b": {
-    "regex": "^Çelik, A\\. \\(1990\\)"
-   }
-  },
-  "expected": 9.74,
-  "tolerance": 0.25,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
-   "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "bibliography-title-entry-gap-sanatta-yeterlik-tr",
-  "kind": "landmark_gap",
-  "params": {
-   "fixture": "sanatta-yeterlik-tr",
-   "a": {
-    "regex": "^KAYNAKÇA$"
-   },
-   "b": {
-    "regex": "^Çelik, A\\. \\(1990\\)"
-   }
-  },
-  "expected": 9.74,
-  "tolerance": 0.25,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
-   "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "bibliography-title-entry-gap-master-en",
-  "kind": "landmark_gap",
-  "params": {
-   "fixture": "master-en",
-   "a": {
-    "regex": "^KAYNAKÇA$"
-   },
-   "b": {
-    "regex": "^Çelik, A\\. \\(1990\\)"
-   }
-  },
-  "expected": 9.74,
-  "tolerance": 0.25,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
-   "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "bibliography-title-entry-gap-phd-en",
-  "kind": "landmark_gap",
-  "params": {
-   "fixture": "phd-en",
-   "a": {
-    "regex": "^KAYNAKÇA$"
-   },
-   "b": {
-    "regex": "^Çelik, A\\. \\(1990\\)"
-   }
-  },
-  "expected": 9.74,
-  "tolerance": 0.25,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
-   "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "bibliography-title-entry-gap-phd-tr",
-  "kind": "landmark_gap",
-  "params": {
-   "fixture": "phd-tr",
-   "a": {
-    "regex": "^KAYNAKÇA$"
-   },
-   "b": {
-    "regex": "^Çelik, A\\. \\(1990\\)"
-   }
-  },
-  "expected": 9.74,
-  "tolerance": 0.25,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
-   "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
-  },
-  "evidence": "MEASURED"
- },
- {
-  "id": "table-header-f-centered",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^f$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-number-centered",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^40$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-percent-centered",
-  "kind": "line_attr",
-  "params": {
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^13,3$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 155,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-header-f-centered-sanatta-yeterlik-tr",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "sanatta-yeterlik-tr",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^f$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-number-centered-sanatta-yeterlik-tr",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "sanatta-yeterlik-tr",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^40$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-percent-centered-sanatta-yeterlik-tr",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "sanatta-yeterlik-tr",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^13,3$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 155,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-header-f-centered-master-en",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "master-en",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^f$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-number-centered-master-en",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "master-en",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^40$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-percent-centered-master-en",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "master-en",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^13,3$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 155,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-header-f-centered-phd-en",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "phd-en",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^f$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-number-centered-phd-en",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "phd-en",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^40$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-percent-centered-phd-en",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "phd-en",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^13,3$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 155,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-header-f-centered-phd-tr",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "phd-tr",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^f$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-number-centered-phd-tr",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "phd-tr",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^40$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 105,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
-  },
-  "evidence": "EXPLICIT"
- },
- {
-  "id": "table-percent-centered-phd-tr",
-  "kind": "line_attr",
-  "params": {
-   "fixture": "phd-tr",
-   "pages": {
-    "label": "arabic"
-   },
-   "regex": "^13,3$",
-   "attr": "cx",
-   "agg": "all"
-  },
-  "expected": 155,
-  "tolerance": 0.5,
-  "source": {
-   "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
-  },
-  "evidence": "EXPLICIT"
- }
+  {
+    "id": "page-size",
+    "kind": "page_size",
+    "params": {},
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-top",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": ".",
+      "attr": "top",
+      "agg": "min"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-top",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.top"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-left",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.left"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-left",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-right",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ]
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "layout",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Toplumsal değişim süreçlerinin yerel",
+      "attr": "x0",
+      "agg": "first",
+      "source": "layout",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 42.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first line of semantic introduction paragraph introduction:paragraph:1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-docx",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 2
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "para-spacing-docx",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "spacing",
+      "attrs": [
+        "before",
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 2
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-centre",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "cx",
+      "source": "layout",
+      "kind": "page-number"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-size",
+    "kind": "landmark_y",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "size",
+      "source": "layout",
+      "kind": "page-number"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "note-pagenum-distance-unknown",
+    "kind": "note",
+    "params": {
+      "text": "Page-number baseline / distance from page edge and footer distance are UNKNOWN (spec pagination.distanceFromEdgeMm, page.footer.distanceMm)"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "spec unknowns"
+    },
+    "evidence": "UNKNOWN"
+  },
+  {
+    "id": "page-labels-front",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-main",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3: GİRİŞ = 1, main/back arabic continuing (fixture: 23 arabic pages; was 24 before the Word last-line fit rule)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-unnumbered",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "none"
+      }
+    },
+    "expected": "none x3",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "docx-no-undefined",
+    "kind": "docx_no_undefined",
+    "params": {},
+    "expected": "none",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "field validity"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "note-heading-size",
+    "kind": "note",
+    "params": {
+      "text": "Heading sizes H1/H2/H3 all 12 pt (INFERRED from §5.2 general body text); explicit heading typography varies by element (UNKNOWN)"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "spec"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "page-size-sanatta-yeterlik-tr",
+    "kind": "page_size",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-top-sanatta-yeterlik-tr",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": ".",
+      "attr": "top",
+      "agg": "min",
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-top-sanatta-yeterlik-tr",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.top",
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-left-sanatta-yeterlik-tr",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.left",
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-left-sanatta-yeterlik-tr",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-right-sanatta-yeterlik-tr",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-sanatta-yeterlik-tr",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-sanatta-yeterlik-tr",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-sanatta-yeterlik-tr",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "layout",
+      "fixture": "sanatta-yeterlik-tr",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-sanatta-yeterlik-tr",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Toplumsal değişim süreçlerinin yerel",
+      "attr": "x0",
+      "agg": "first",
+      "source": "layout",
+      "fixture": "sanatta-yeterlik-tr",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 42.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first line of semantic introduction paragraph introduction:paragraph:1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-docx-sanatta-yeterlik-tr",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "para-spacing-docx-sanatta-yeterlik-tr",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "spacing",
+      "attrs": [
+        "before",
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-centre-sanatta-yeterlik-tr",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "cx",
+      "source": "layout",
+      "fixture": "sanatta-yeterlik-tr",
+      "kind": "page-number"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-size-sanatta-yeterlik-tr",
+    "kind": "landmark_y",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "size",
+      "source": "layout",
+      "fixture": "sanatta-yeterlik-tr",
+      "kind": "page-number"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-front-sanatta-yeterlik-tr",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "roman"
+      },
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-unnumbered-sanatta-yeterlik-tr",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "none"
+      },
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": "none x3",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "docx-no-undefined-sanatta-yeterlik-tr",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr"
+    },
+    "expected": "none",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "field validity"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "page-size-master-en",
+    "kind": "page_size",
+    "params": {
+      "fixture": "master-en"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-top-master-en",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": ".",
+      "attr": "top",
+      "agg": "min",
+      "fixture": "master-en"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-top-master-en",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.top",
+      "fixture": "master-en"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-left-master-en",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.left",
+      "fixture": "master-en"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-left-master-en",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "fixture": "master-en"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-right-master-en",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "fixture": "master-en"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-master-en",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "fixture": "master-en"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-master-en",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "fixture": "master-en"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-master-en",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "layout",
+      "fixture": "master-en",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-master-en",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Toplumsal değişim süreçlerinin yerel",
+      "attr": "x0",
+      "agg": "first",
+      "source": "layout",
+      "fixture": "master-en",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 42.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first line of semantic introduction paragraph introduction:paragraph:1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-docx-master-en",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "master-en"
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "para-spacing-docx-master-en",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "spacing",
+      "attrs": [
+        "before",
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "master-en"
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-centre-master-en",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "cx",
+      "source": "layout",
+      "fixture": "master-en",
+      "kind": "page-number"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-size-master-en",
+    "kind": "landmark_y",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "size",
+      "source": "layout",
+      "fixture": "master-en",
+      "kind": "page-number"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-front-master-en",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "roman"
+      },
+      "fixture": "master-en"
+    },
+    "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-unnumbered-master-en",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "none"
+      },
+      "fixture": "master-en"
+    },
+    "expected": "none x3",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "docx-no-undefined-master-en",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "master-en"
+    },
+    "expected": "none",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "field validity"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "page-size-phd-en",
+    "kind": "page_size",
+    "params": {
+      "fixture": "phd-en"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-top-phd-en",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": ".",
+      "attr": "top",
+      "agg": "min",
+      "fixture": "phd-en"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-top-phd-en",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.top",
+      "fixture": "phd-en"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-left-phd-en",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.left",
+      "fixture": "phd-en"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-left-phd-en",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "fixture": "phd-en"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-right-phd-en",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "fixture": "phd-en"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-phd-en",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "fixture": "phd-en"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-phd-en",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "fixture": "phd-en"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-phd-en",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "layout",
+      "fixture": "phd-en",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-phd-en",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Toplumsal değişim süreçlerinin yerel",
+      "attr": "x0",
+      "agg": "first",
+      "source": "layout",
+      "fixture": "phd-en",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 42.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first line of semantic introduction paragraph introduction:paragraph:1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-docx-phd-en",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "phd-en"
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "para-spacing-docx-phd-en",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "spacing",
+      "attrs": [
+        "before",
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "phd-en"
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-centre-phd-en",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "cx",
+      "source": "layout",
+      "fixture": "phd-en",
+      "kind": "page-number"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-size-phd-en",
+    "kind": "landmark_y",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "size",
+      "source": "layout",
+      "fixture": "phd-en",
+      "kind": "page-number"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-front-phd-en",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "roman"
+      },
+      "fixture": "phd-en"
+    },
+    "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-unnumbered-phd-en",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "none"
+      },
+      "fixture": "phd-en"
+    },
+    "expected": "none x3",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "docx-no-undefined-phd-en",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "phd-en"
+    },
+    "expected": "none",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "field validity"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "page-size-phd-tr",
+    "kind": "page_size",
+    "params": {
+      "fixture": "phd-tr"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-top-phd-tr",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": ".",
+      "attr": "top",
+      "agg": "min",
+      "fixture": "phd-tr"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm); topmost text line box (top edge) on arabic pages; first-baseline would add ~3.8 mm ascent"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-top-phd-tr",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.top",
+      "fixture": "phd-tr"
+    },
+    "expected": 25,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (2.5 cm) DOCX pgMar top"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "docx-margins-left-phd-tr",
+    "kind": "docx_section",
+    "params": {
+      "sections": "all",
+      "field": "margins.left",
+      "fixture": "phd-tr"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm) DOCX pgMar left"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-left-phd-tr",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min",
+      "fixture": "phd-tr"
+    },
+    "expected": 30,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "margins-right-phd-tr",
+    "kind": "text_extent",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max",
+      "fixture": "phd-tr"
+    },
+    "expected": 180,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.10 (printed 9) §5.1 (3 cm right)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-phd-tr",
+    "kind": "fonts",
+    "params": {
+      "families": [
+        "Times New Roman"
+      ],
+      "fixture": "phd-tr"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-font-size-phd-tr",
+    "kind": "font_size",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "fixture": "phd-tr"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "body-line-pitch-phd-tr",
+    "kind": "line_pitch",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "source": "layout",
+      "fixture": "phd-tr",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 7.3,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (1.5 line spacing)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-phd-tr",
+    "kind": "line_attr",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Toplumsal değişim süreçlerinin yerel",
+      "attr": "x0",
+      "agg": "first",
+      "source": "layout",
+      "fixture": "phd-tr",
+      "anchor": {
+        "kind": "paragraph",
+        "sectionId": "introduction",
+        "id": "introduction:paragraph:1",
+        "afterHeading": "^GİRİŞ$",
+        "headingOccurrence": 0
+      }
+    },
+    "expected": 42.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm); expected = left margin 30 + 12.5; first line of semantic introduction paragraph introduction:paragraph:1"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "first-line-indent-docx-phd-tr",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "phd-tr"
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (12.5 mm = 709 twips)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "para-spacing-docx-phd-tr",
+    "kind": "docx_attr",
+    "params": {
+      "tag": "spacing",
+      "attrs": [
+        "before",
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 2,
+      "fixture": "phd-tr"
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.2 (6 pt before/after)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-centre-phd-tr",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "cx",
+      "source": "layout",
+      "fixture": "phd-tr",
+      "kind": "page-number"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (alt orta); centre of text area (30+180)/2 = 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-numbering-size-phd-tr",
+    "kind": "landmark_y",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "size",
+      "source": "layout",
+      "fixture": "phd-tr",
+      "kind": "page-number"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3 (Times New Roman 12 punto)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-front-phd-tr",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "roman"
+      },
+      "fixture": "phd-tr"
+    },
+    "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "page-labels-unnumbered-phd-tr",
+    "kind": "page_labels",
+    "params": {
+      "pages": {
+        "label": "none"
+      },
+      "fixture": "phd-tr"
+    },
+    "expected": "none x3",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "docx-no-undefined-phd-tr",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "phd-tr"
+    },
+    "expected": "none",
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "field validity"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "bibliography-title-entry-gap",
+    "kind": "landmark_gap",
+    "params": {
+      "a": {
+        "regex": "^KAYNAKÇA$"
+      },
+      "b": {
+        "regex": "^Çelik, A\\. \\(1990\\)"
+      }
+    },
+    "expected": 9.74,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+      "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "bibliography-title-entry-gap-sanatta-yeterlik-tr",
+    "kind": "landmark_gap",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "a": {
+        "regex": "^KAYNAKÇA$"
+      },
+      "b": {
+        "regex": "^Çelik, A\\. \\(1990\\)"
+      }
+    },
+    "expected": 9.74,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+      "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "bibliography-title-entry-gap-master-en",
+    "kind": "landmark_gap",
+    "params": {
+      "fixture": "master-en",
+      "a": {
+        "regex": "^KAYNAKÇA$"
+      },
+      "b": {
+        "regex": "^Çelik, A\\. \\(1990\\)"
+      }
+    },
+    "expected": 9.74,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+      "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "bibliography-title-entry-gap-phd-en",
+    "kind": "landmark_gap",
+    "params": {
+      "fixture": "phd-en",
+      "a": {
+        "regex": "^KAYNAKÇA$"
+      },
+      "b": {
+        "regex": "^Çelik, A\\. \\(1990\\)"
+      }
+    },
+    "expected": 9.74,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+      "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "bibliography-title-entry-gap-phd-tr",
+    "kind": "landmark_gap",
+    "params": {
+      "fixture": "phd-tr",
+      "a": {
+        "regex": "^KAYNAKÇA$"
+      },
+      "b": {
+        "regex": "^Çelik, A\\. \\(1990\\)"
+      }
+    },
+    "expected": 9.74,
+    "tolerance": 0.25,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf; guide §4.1",
+      "locator": "official Word sample bibliography page: title first baseline 28.96 mm, first entry 38.70 mm"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "table-header-f-centered",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^f$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-number-centered",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^40$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-percent-centered",
+    "kind": "landmark_x",
+    "params": {
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^13,3$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 155,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-header-f-centered-sanatta-yeterlik-tr",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^f$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-number-centered-sanatta-yeterlik-tr",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^40$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-percent-centered-sanatta-yeterlik-tr",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^13,3$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 155,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-header-f-centered-master-en",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "master-en",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^f$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-number-centered-master-en",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "master-en",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^40$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-percent-centered-master-en",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "master-en",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^13,3$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 155,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-header-f-centered-phd-en",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "phd-en",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^f$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-number-centered-phd-en",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "phd-en",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^40$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-percent-centered-phd-en",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "phd-en",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^13,3$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 155,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-header-f-centered-phd-tr",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "phd-tr",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^f$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-number-centered-phd-tr",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "phd-tr",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^40$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 105,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture second-column center is 105 mm"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "table-percent-centered-phd-tr",
+    "kind": "landmark_x",
+    "params": {
+      "fixture": "phd-tr",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^13,3$",
+      "attr": "cx",
+      "agg": "all",
+      "kind": "table-cell",
+      "source": "layout"
+    },
+    "expected": 155,
+    "tolerance": 0.5,
+    "source": {
+      "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+      "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
+    },
+    "evidence": "EXPLICIT"
+  }
 ]

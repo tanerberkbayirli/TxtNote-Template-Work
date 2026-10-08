@@ -1,0 +1,151 @@
+{
+ "target": "adu-ziraat-lisans",
+ "stamp": "20261007-1831",
+ "counts": {
+  "FAIL": 1,
+  "PASS": 3
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\performance-baseline\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\performance-baseline\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\performance-baseline\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\adu-ziraat-lisans.fixture.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "04680de117534b2717a9e78adb838cf9c948356bd383f42f97360706ac877499"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.328,
+ "commandSeconds": 15.983,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "53268af3b581ba96d6e9135ef57530beb628239f",
+  "trackedDiffSha256": "dd1eea4ed2cf6d937f4b9d7abe33d220daebd90b20b8a755d24cfdf582d2f4c0",
+  "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+  "startedAt": "2026-10-07T15:31:30.182Z",
+  "codeFingerprint": "64bdb43d01bfa562edfa3ffd14c2b151556017370009ac0588f721c2e8c1e981",
+  "officialSourceFingerprint": "90104e87001c519c62d25b7f9bf123cb70fd7c76dd59c0ab75fc1772046913a6"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\performance-baseline\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "default": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"false\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "c7561323fabe099044ba696be3292b00f527d0f9ec314b303aebf9569ea29f15",
+ "artifactSha256": {
+  "default": {
+   "fixture": "123f26e5a74f1e34d5181430bb4fbb5495f2be3417adea6ff201bbb71a964d86",
+   "pdf": "5d17ba076becca907eac7f25466681762d7b5e3da90e75463fa10cf44eaf8ba5",
+   "docx": "042a63797fdc60c27665e97a8fe838c6b410e32c61f50f85ff4fe2f45b06322a",
+   "layout": "1dd979af4973da379ff576bdff64bcb6900d068be56134d0687265832ac4ce66"
+  }
+ },
+ "checks": [
+  {
+   "id": "cover-inner-baselines",
+   "kind": "line_baselines",
+   "expected": [
+    33.577,
+    40.605,
+    47.547,
+    54.575,
+    61.602,
+    98.231,
+    140.014,
+    149.461,
+    177.867,
+    187.265,
+    251.199
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/artifacts/adu-ziraat-lisans/source/official.pdf",
+    "locator": "physical p.30; ¶463-466, ¶472, ¶476-483, ¶493; measured visible text baselines from page top"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    33.437,
+    40.465,
+    47.406,
+    54.434,
+    61.458,
+    98.222,
+    140.01,
+    149.457,
+    177.862,
+    187.259,
+    249.196
+   ],
+   "delta": [
+    -0.14,
+    -0.14,
+    -0.141,
+    -0.141,
+    -0.144,
+    -0.009,
+    -0.004,
+    -0.004,
+    -0.005,
+    -0.006,
+    -2.003
+   ],
+   "note": "page 2",
+   "status": "FAIL"
+  },
+  {
+   "id": "engine-docx-package-default",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "284 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-default",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

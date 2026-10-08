@@ -70,7 +70,7 @@ export function tableDocx(block, section, context, before = null, { atPageTop = 
       ...(preset === "headerRules" && row.every((c) => c.header) ? { borders: { bottom: rule } } : {}),
       margins: cellMargins,
       ...(tables.verticalAlign ? { verticalAlign: { top: VerticalAlign.TOP, center: VerticalAlign.CENTER, bottom: VerticalAlign.BOTTOM }[tables.verticalAlign] } : {}),
-      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: keepRow, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
+      children: [docxParagraph(cell.runs?.length ? cell.runs : plainRuns(cell.text), { ...body, ...cellStyle, align: cell.align || cellStyle.align || "left", firstLineIndentMm: cellStyle.firstLineIndentMm ?? 0, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: keepRow, fontWeight: cell.header ? 700 : cellStyle.fontWeight ?? body.fontWeight }, context)],
     })),
   });
   // Three-rule table: top and bottom of the table, and below the (repeated) header row.

@@ -27,6 +27,7 @@
 - CONFLICT: 10 (page-number position, cover title size, cover distances, 5-letter indent, guide currency vs LEE guide). UNKNOWN: 12 (footer distance, h2-h4, captions, tables, footnotes, equations, abstract/approval layouts).
 ## Status
 - FAIL in progress.json (self 52/52 on tested checks); commits 4b31444, 9c605e3; independent validation pending.
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - Independent validation via checker incl. Word render of titlePg sections.
 ## Commands

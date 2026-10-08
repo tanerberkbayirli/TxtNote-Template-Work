@@ -228,13 +228,14 @@
   },
   {
     "id": "page-numbering-centre",
-    "kind": "page_number_attr",
+    "kind": "landmark_x",
     "params": {
       "pages": {
         "label": "arabic"
       },
       "attr": "cx",
-      "source": "layout"
+      "source": "layout",
+      "kind": "page-number"
     },
     "expected": 110,
     "tolerance": 0.5,

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "phase": "5.2",
+  "status": "PARTIAL_RESEARCH_DEFERRED",
+  "acceptanceStatus": "OPEN",
+  "decision": "DEFER renderer integration at the bounded research gate; retain failures and tolerances.",
+  "budget": {
+    "authorizedWordComRuns": 2,
+    "actualWordComRuns": 3,
+    "wordRunScope": "Phase 5.2 typography corpus only: 3 actual renders (2 canonical references, 1 duplicate diagnostic); authorized ceiling 2 exceeded by 1 after incomplete first checker output. Separate style-precedence worker four fixtures are outside this corpus budget.",
+    "authorizedActiveMinutesMaximum": 45,
+    "activeMinutesEstimate": 34,
+    "productionRendererIntegrationAttempted": false,
+    "activeMinutesTelemetry": "Approximate active-time estimate; token telemetry unavailable."
+  },
+  "independentCorpus": {
+    "path": "orchestration/validation/word-compat/phase-5.2/reference-measurements.json",
+    "corpusPath": "orchestration/validation/word-compat/phase-5.2/corpus.json",
+    "corpusSha256": "5bee7867a493102b99f7c06a40e0cff719137985a9291c56a6280564492479f9",
+    "trainingCases": 4,
+    "heldOutCases": 8,
+    "wordBuild": "16.0.20430",
+    "lineBreaks": "12/12 PDF line-text checks match Word; this is baseline measurement, not model acceptance.",
+    "lastLineWordPositions": "11/12 match at existing 0.25 mm tolerance; held-out V03 URL case is 0.325 mm and fails.",
+    "fitModelTrainedOrValidated": false,
+    "wordRunArtifacts": [
+      "orchestration/validation/word-compat/phase-5.2/corpus-reference/run/default.word.pdf",
+      "orchestration/validation/word-compat/phase-5.2/corpus-reference/run/wide.word.pdf"
+    ],
+    "wordRunProvenance": [
+      {
+        "role": "canonical-narrow",
+        "pid": 13536,
+        "artifact": "corpus-reference/run/default.word.pdf"
+      },
+      {
+        "role": "canonical-wide",
+        "pid": 6640,
+        "artifact": "corpus-reference/run/wide.word.pdf",
+        "sha256": "20A425A34E182623A3E29159B9938C002B926677923A6C27F493F7762705149A"
+      },
+      {
+        "role": "duplicate-wide-diagnostic-excluded",
+        "pid": 6632,
+        "artifact": "corpus-wide-reference/run/wide.word.pdf",
+        "sha256": "72CD78B1E5EAC44332EC3DA18306EE686A91C006DCBD097AA485311C767B46ED"
+      }
+    ],
+    "resumeRule": "Before retrying an incomplete Word/checker call, inspect expected output artifacts, render.json, process PID, and PDF hash; do not rerun if a valid artifact already exists."
+  },
+  "stylePrecedence": {
+    "status": "PASS",
+    "checks": 64,
+    "report": "orchestration/validation/word-compat/phase-5.2/style-precedence/check-20261008-0951.json"
+  },
+  "conformanceToolTests": {
+    "status": "PASS",
+    "passed": 40,
+    "failed": 0,
+    "seconds": 3.473,
+    "report": "orchestration/validation/word-compat/phase-5.2/python-test-conformance-20261008-revision2.log"
+  },
+  "nonWordRegression": {
+    "targets": 22,
+    "PASS": 875,
+    "FAIL": 6,
+    "INFO": 32,
+    "SKIPPED": 812,
+    "exportErrors": 0,
+    "newFailures": 0,
+    "retainedFailureIdsAndMeasurementsIdenticalToPhase51": true,
+    "allSkipsReason": "Word render not requested",
+    "manifest": "orchestration/validation/word-compat/phase-5.2/regression-nonword-manifest.json"
+  },
+  "frontendValidation": {
+    "postRestoreNpmTest": "733/733 PASS",
+    "log": "orchestration/validation/word-compat/phase-5.2/frontend-npm-test-final-20261008.log",
+    "build": "PASS while proposed serializer patch/test was present; no post-restore build was rerun"
+  },
+  "preservedFailures": {
+    "phase51BaselineFailureCount": 18,
+    "changed": false,
+    "typographyChecks": [
+      {
+        "id": "J03-Arial-10-justify-line-breaks",
+        "status": "FAIL",
+        "changed": false
+      },
+      {
+        "id": "J03-Arial-10-justify-last-line-words",
+        "status": "FAIL",
+        "changed": false
+      },
+      {
+        "id": "J04-Arial-12-justify-line-breaks",
+        "status": "FAIL",
+        "changed": false
+      }
+    ],
+    "tolerancesChanged": false,
+    "checksRemoved": false
+  },
+  "editorMechanismProof": {
+    "status": "MECHANISM_ONLY",
+    "path": "orchestration/validation/word-compat/phase-5.2/prototype/model-line-editor-proof.json",
+    "productionSerializerPatch": "PROPOSED_NOT_SHIPPED",
+    "wordAcceptance": false,
+    "osClipboardTested": false,
+    "imeTested": false
+  },
+  "sharedRenderer": {
+    "status": "NOT_IMPLEMENTED",
+    "editor": false,
+    "pdf": false,
+    "semanticDocxAcceptance": "OPEN"
+  },
+  "fullPhase52Acceptance": "OPEN",
+  "nextPermittedWork": "A separately budgeted Phase 5.2 implementation cycle should integrate candidate line placement in both editor and PDF; map caret/selection through rich-run DOM; reflow only the edited paragraph; defer during IME composition; prove real serializer/source, copy/paste, undo/redo and save/reopen invariance; then run fresh Word line/glyph acceptance on held-out cases and unchanged J03/J04 failures plus J01/J02/J05–J08 controls. No such renderer is implemented or accepted here.",
+  "runtimeObservation": "During the non-Word regression, the root-owned Vite runtime logged several existing ResizeObserver “loop completed with undelivered notifications” console diagnostics (10:08, 10:15, 10:16). Untriaged; manifest still records zero export errors. No console-clean or full renderer acceptance is claimed."
+}

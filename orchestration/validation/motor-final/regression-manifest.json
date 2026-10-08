@@ -1,0 +1,276 @@
+{
+  "startedAt": "2026-10-08T07:45:37.167Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "adu-sagbil",
+      "exitCode": 0,
+      "commandSeconds": 30.935,
+      "report": "orchestration\\validation\\motor-final\\regression\\adu-sagbil\\check-20261008-1046.json",
+      "counts": {
+        "PASS": 304
+      },
+      "measurementSeconds": 0.953,
+      "error": null
+    },
+    {
+      "target": "adu-ziraat-lisans",
+      "exitCode": 1,
+      "commandSeconds": 23.824,
+      "report": "orchestration\\validation\\motor-final\\regression\\adu-ziraat-lisans\\check-20261008-1046.json",
+      "counts": {
+        "PASS": 15,
+        "FAIL": 1,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.954,
+      "error": null
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "exitCode": 0,
+      "commandSeconds": 40.197,
+      "report": "orchestration\\validation\\motor-final\\regression\\afsu-eczacilik-proje\\check-20261008-1047.json",
+      "counts": {
+        "PASS": 28,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.594,
+      "error": null
+    },
+    {
+      "target": "afsu-lee",
+      "exitCode": 0,
+      "commandSeconds": 59.675,
+      "report": "orchestration\\validation\\motor-final\\regression\\afsu-lee\\check-20261008-1048.json",
+      "counts": {
+        "PASS": 94,
+        "INFO": 1
+      },
+      "measurementSeconds": 5.031,
+      "error": null
+    },
+    {
+      "target": "afsu-tip",
+      "exitCode": 3,
+      "commandSeconds": 22.483,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "note: no cached reference at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\afsu-tip\\source\\reference (create with --build-reference)\nexport of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\motor-final\\regression\\afsu-tip\\run\\check.log):\nmiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri;\",\"marginTop\":\"0px\",\"breakBefore\":\"auto\"},{\"kind\":\"reserve\",\"tag\":\"P\",\"text\":\"5.1 2. Çevrimiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri;\",\"marginTop\":\"0px\",\"breakBefore\":\"auto\"}],\"spacers\":0}\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:176:13"
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "exitCode": 0,
+      "commandSeconds": 42.882,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-cografya-lisans\\check-20261008-1049.json",
+      "counts": {
+        "PASS": 51,
+        "INFO": 3
+      },
+      "measurementSeconds": 4.734,
+      "error": null
+    },
+    {
+      "target": "aku-fbe",
+      "exitCode": 0,
+      "commandSeconds": 51.204,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-fbe\\check-20261008-1050.json",
+      "counts": {
+        "PASS": 51,
+        "INFO": 3
+      },
+      "measurementSeconds": 2.094,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "exitCode": 0,
+      "commandSeconds": 25.369,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-felsefe-lisans\\check-20261008-1050.json",
+      "counts": {
+        "PASS": 86,
+        "INFO": 4
+      },
+      "measurementSeconds": 0.937,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "exitCode": 0,
+      "commandSeconds": 20.703,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-felsefe-seminer\\check-20261008-1050.json",
+      "counts": {
+        "PASS": 64,
+        "INFO": 4
+      },
+      "measurementSeconds": 0.89,
+      "error": null
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "exitCode": 3,
+      "commandSeconds": 12.563,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "export of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\motor-final\\regression\\aku-isg-tezsiz-proje\\run\\check.log):\nmiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri;\",\"marginTop\":\"0px\",\"breakBefore\":\"auto\"},{\"kind\":\"reserve\",\"tag\":\"P\",\"text\":\"Çevrimiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri; öz yet\",\"marginTop\":\"0px\",\"breakBefore\":\"auto\"}],\"spacers\":0}\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:176:13"
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "exitCode": 0,
+      "commandSeconds": 38.222,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-kimya-lisans\\check-20261008-1051.json",
+      "counts": {
+        "PASS": 51,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.14,
+      "error": null
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "exitCode": 0,
+      "commandSeconds": 53.95,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-matematik-lisans\\check-20261008-1052.json",
+      "counts": {
+        "PASS": 60,
+        "INFO": 2
+      },
+      "measurementSeconds": 1.484,
+      "error": null
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "exitCode": 0,
+      "commandSeconds": 26.769,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-mbg-lisans\\check-20261008-1053.json",
+      "counts": {
+        "PASS": 53,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.672,
+      "error": null
+    },
+    {
+      "target": "aku-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 77.389,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-sagbil\\check-20261008-1054.json",
+      "counts": {
+        "PASS": 40,
+        "FAIL": 4,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.313,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 1,
+      "commandSeconds": 118.651,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-sbe\\check-20261008-1056.json",
+      "counts": {
+        "PASS": 132,
+        "INFO": 2,
+        "FAIL": 4
+      },
+      "measurementSeconds": 5.188,
+      "error": null
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "exitCode": 1,
+      "commandSeconds": 35.305,
+      "report": "orchestration\\validation\\motor-final\\regression\\aku-sosyoloji-lisans\\check-20261008-1056.json",
+      "counts": {
+        "INFO": 4,
+        "PASS": 29,
+        "FAIL": 2
+      },
+      "measurementSeconds": 1.375,
+      "error": null
+    },
+    {
+      "target": "engine-word-justify",
+      "exitCode": 1,
+      "commandSeconds": 97.361,
+      "report": "orchestration\\validation\\motor-final\\regression\\engine-word-justify\\check-20261008-1058.json",
+      "counts": {
+        "PASS": 19,
+        "FAIL": 3
+      },
+      "measurementSeconds": 1.063,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 0,
+      "commandSeconds": 169.767,
+      "report": "orchestration\\validation\\motor-final\\regression\\engine-word-pagefit\\check-20261008-1101.json",
+      "counts": {
+        "PASS": 213
+      },
+      "measurementSeconds": 11.235,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 0,
+      "commandSeconds": 29.323,
+      "report": "orchestration\\validation\\motor-final\\regression\\engine-word-parity\\check-20261008-1101.json",
+      "counts": {
+        "PASS": 148
+      },
+      "measurementSeconds": 1.016,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 0,
+      "commandSeconds": 95.734,
+      "report": "orchestration\\validation\\motor-final\\regression\\engine-word-structure\\check-20261008-1103.json",
+      "counts": {
+        "PASS": 136
+      },
+      "measurementSeconds": 5.797,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 0,
+      "commandSeconds": 71.168,
+      "report": "orchestration\\validation\\motor-final\\regression\\engine-word-style-precedence\\check-20261008-1104.json",
+      "counts": {
+        "PASS": 64
+      },
+      "measurementSeconds": 0.516,
+      "error": null
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "exitCode": 0,
+      "commandSeconds": 25.727,
+      "report": "orchestration\\validation\\motor-final\\regression\\mcbu-tip-uzmanlik\\check-20261008-1105.json",
+      "counts": {
+        "PASS": 50,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.985,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 0,
+      "commandSeconds": 55.593,
+      "report": "orchestration\\validation\\motor-final\\regression\\phase52-justify\\check-20261008-1106.json",
+      "counts": {
+        "PASS": 34
+      },
+      "measurementSeconds": 0.296,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-08T08:06:01.965Z",
+  "commandSeconds": 1224.798
+}

@@ -27,6 +27,7 @@
 - CONFLICT: 4. UNKNOWN: 9 (captions, footnotes, block quote, equations, appendix, CV, list-entry formats, table borders).
 ## Status
 - FAIL; commit d4a3a7e. Untouched in session 2.
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - Existing fix work remains open: footer 12.5 mm + trailing blank paragraph and inner-cover wrap.
 ## Checker handoff (2026-10-04)

@@ -1,0 +1,72 @@
+{
+ "target": "aku-cografya-lisans",
+ "stamp": "20261003-1546",
+ "counts": {
+  "PASS": 1,
+  "SKIPPED": 2
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-cografya-lisans\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-cografya-lisans\\run\\default.docx",
+   "wordNote": "Word timeout after 2.5s (killed own PID 16056)"
+  }
+ },
+ "wordRequested": true,
+ "checks": [
+  {
+   "id": "page-size",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "locator": "2.1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "33 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-opens-word",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
+    "locator": "Word COM own instance"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word timeout after 2.5s (killed own PID 16056)"
+  },
+  {
+   "id": "docx-body-pitch-word",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
+    "locator": "Word render pitch 7.30-7.32"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word timeout after 2.5s (killed own PID 16056)"
+  }
+ ]
+}

@@ -1,0 +1,637 @@
+{
+ "target": "phase52-justify",
+ "stamp": "20261008-1007",
+ "counts": {
+  "PASS": 12,
+  "FAIL": 1
+ },
+ "variants": {
+  "wide": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-wide-reference\\run\\wide.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-wide-reference\\run\\wide.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-wide-reference\\run\\wide.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\phase52-justify.fixture.wide.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-wide-reference\\run\\wide.word.pdf",
+   "wordRenderInfoPath": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-wide-reference\\run\\wide.word.render.json",
+   "wordRenderInfo": {
+    "pid": 6632,
+    "printFieldCodes": false,
+    "uiCulture": "tr-TR",
+    "printBackground": true,
+    "compatibilityMode": 15,
+    "updateFieldsAtPrint": false,
+    "activePrinter": "Microsoft Print to PDF",
+    "culture": "tr-TR",
+    "build": "16.0.20430",
+    "version": "16.0",
+    "printHiddenText": false,
+    "renderedAt": "2026-10-08T07:06:54.9465717Z",
+    "updateLinksAtPrint": false
+   },
+   "acceptanceFingerprint": "277a81585acc81b122e39a32b828497cf88c941062b5dd758a398e2a6ae3b046"
+  }
+ },
+ "wordRequested": true,
+ "measurementSeconds": 0.14,
+ "commandSeconds": 20.829,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "d2a7a315e44f0ee1b2be6c43bb6bb98e15b95942",
+  "trackedDiffSha256": "17fb32bbc289d0a69d97fd46a70b7c0b3c572e6b837bd57c767dc62b2a70fde4",
+  "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+  "startedAt": "2026-10-08T07:06:39.164Z",
+  "codeFingerprint": "2acc452fcb7f803540f738d18c00367b74e774adc2de051e843973c853a072e8",
+  "officialSourceFingerprint": "f192ffb48599b895bcb52d016917a27e8944f2eb013ed3694907584df6e16411"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.2\\corpus-wide-reference\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "wide": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"false\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "bf9339c345cc5ba219959da21a5a501c4dae7a03fcc721bbf56d1ed566b03ce9",
+ "artifactSha256": {
+  "wide": {
+   "fixture": "1a51c6e630da340a14ed51fee5ef7bffd61f2a6bd45bc68bd11b0fe53fe7c531",
+   "pdf": "5a325beaaef2895af907b97cc21fa9b964e9d33f1217e07e94d65d13fea674aa",
+   "docx": "d6fbaf9c397e9b86c10bdb88e2ebd2875ff24b798d4a8a874a1307316147941c",
+   "layout": "d4cf17529165e19b1c7604fe8fdd09991cce92cd7c53d11c470402d06ad19d54",
+   "wordPdf": "72cd78b1e5eac44332ec3da18306ee686a91c006dcbd097aa485311c767b46ed",
+   "wordRenderInfoPath": "4c166284244915904f5eb957955ec740dae389213c24f5c13afd5a56ba6f7d7c"
+  }
+ },
+ "checks": [
+  {
+   "id": "V01-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "identical line texts in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V01: Times New Roman 10 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "lines": {
+     "pdf": 12,
+     "word": 12
+    },
+    "firstDiff": [],
+    "measuredLines": {
+     "pdf": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ],
+     "word": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ]
+    }
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "V01-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "last-line word x within 0.25 mm of Word",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V01: Times New Roman 10 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "paragraphs": {
+     "pdf": 2,
+     "word": 2
+    },
+    "maxDeltaMm": 0.039,
+    "bad": [],
+    "measuredLastLines": {
+     "pdf": [
+      [
+       "required; for a clear, c",
+       [
+        41.498,
+        62.355,
+        69.486,
+        73.604,
+        87.048,
+        103.237
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.498,
+        45.399,
+        49.581,
+        65.975,
+        73.794,
+        87.662,
+        102.225,
+        109.875
+       ]
+      ]
+     ],
+     "word": [
+      [
+       "required; for a clear, c",
+       [
+        41.494,
+        62.361,
+        69.503,
+        73.609,
+        87.061,
+        103.258
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.494,
+        45.387,
+        49.582,
+        65.991,
+        73.817,
+        87.656,
+        102.242,
+        109.914
+       ]
+      ]
+     ]
+    }
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "V03-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "identical line texts in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V03: Arial 11 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "lines": {
+     "pdf": 12,
+     "word": 12
+    },
+    "firstDiff": [],
+    "measuredLines": {
+     "pdf": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ],
+     "word": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ]
+    }
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "V03-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "last-line word x within 0.25 mm of Word",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V03: Arial 11 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "paragraphs": {
+     "pdf": 2,
+     "word": 2
+    },
+    "maxDeltaMm": 0.039,
+    "bad": [],
+    "measuredLastLines": {
+     "pdf": [
+      [
+       "değerlendirildi.",
+       [
+        41.498
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.498,
+        45.399,
+        49.581,
+        65.975,
+        73.794,
+        87.662,
+        102.225,
+        109.875
+       ]
+      ]
+     ],
+     "word": [
+      [
+       "değerlendirildi.",
+       [
+        41.494
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.494,
+        45.387,
+        49.582,
+        65.991,
+        73.817,
+        87.656,
+        102.242,
+        109.914
+       ]
+      ]
+     ]
+    }
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "V06-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "identical line texts in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V06: Arial 12 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "lines": {
+     "pdf": 12,
+     "word": 12
+    },
+    "firstDiff": [],
+    "measuredLines": {
+     "pdf": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ],
+     "word": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ]
+    }
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "V06-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "last-line word x within 0.25 mm of Word",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V06: Arial 12 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "paragraphs": {
+     "pdf": 2,
+     "word": 2
+    },
+    "maxDeltaMm": 0.325,
+    "bad": [
+     [
+      0,
+      "documentation/typography",
+      0.325
+     ]
+    ],
+    "measuredLastLines": {
+     "pdf": [
+      [
+       "documentation/typography",
+       [
+        41.498,
+        105.73,
+        120.391
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.498,
+        45.399,
+        49.581,
+        65.975,
+        73.794,
+        87.662,
+        102.225,
+        109.875
+       ]
+      ]
+     ],
+     "word": [
+      [
+       "documentation/typography",
+       [
+        41.494,
+        106.055,
+        120.695
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.494,
+        45.387,
+        49.582,
+        65.991,
+        73.817,
+        87.656,
+        102.242,
+        109.914
+       ]
+      ]
+     ]
+    }
+   },
+   "status": "FAIL"
+  },
+  {
+   "id": "V08-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "identical line texts in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V08: Calibri 14 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "lines": {
+     "pdf": 12,
+     "word": 12
+    },
+    "firstDiff": [],
+    "measuredLines": {
+     "pdf": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ],
+     "word": [
+      "J02-1 The committee reviewed the evidence and carefully recorded its",
+      "conclusion for the dissertation.",
+      "J04-1 A study, of the results—and of each method: is",
+      "required; for a clear, careful review.",
+      "J01-1 Öğrenciler tarafından kullanılan yöntemler karşılaştırıldı ve sonuçlar yeniden",
+      "değerlendirildi.",
+      "J03-1 Ayrıntılar için https://example.org/research/long-",
+      "documentation/typography/line-fitting adresini inceleyin.",
+      "J06-1 Review the final paragraph with particular care before",
+      "publication.",
+      "J08-1 When the evidence is clear, the conclusion follows; when",
+      "it is limited, the report should say so."
+     ]
+    }
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "V08-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "last-line word x within 0.25 mm of Word",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V08: Calibri 14 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "paragraphs": {
+     "pdf": 2,
+     "word": 2
+    },
+    "maxDeltaMm": 0.039,
+    "bad": [],
+    "measuredLastLines": {
+     "pdf": [
+      [
+       "publication.",
+       [
+        41.498
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.498,
+        45.399,
+        49.581,
+        65.975,
+        73.794,
+        87.662,
+        102.225,
+        109.875
+       ]
+      ]
+     ],
+     "word": [
+      [
+       "publication.",
+       [
+        41.494
+       ]
+      ],
+      [
+       "it is limited, the repor",
+       [
+        41.494,
+        45.387,
+        49.582,
+        65.991,
+        73.817,
+        87.656,
+        102.242,
+        109.914
+       ]
+      ]
+     ]
+    }
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-wide",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-wide",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "7 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-wide",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-wide",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "pdf=1 word=1",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-wide",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "pdf": "1",
+    "word": "1"
+   },
+   "status": "PASS"
+  }
+ ]
+}

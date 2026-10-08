@@ -36,6 +36,16 @@ Word kontrolleri Microsoft Word ve uygun yerel ortam gerektirir. Araçların ba�
 
 Kaynak kuralları, kontrol araçları, test tanımları ve teknik sonuç raporları sürümlenir. İç çalışma talimatları, devam notları, bağımlılık klasörleri ve yeniden üretilebilir geçici çıktılar GitHub sunumuna dahil edilmez.
 
+İç içe doğrulama klasörlerindeki `run/` dizinleri ve ham `*.layout.json` çıktıları da geçicidir. Bunlar kontrol aracıyla yeniden üretilir; kaynak `specs/` girdileri, resmî referanslar ve sonuç raporları depoda korunur. Örneğin bir hedefin güncel çıktıları `node orchestration/tools/check.mjs --target <hedef-kimliği>` komutuyla oluşturulur. Yerel tarayıcı test profilleri ve önbellekleri `.test-tmp/` altında tutulur ve sürümlenmez.
+
 ## Active policy 2026-10-03
 
 Doğrulama politikası: resmi kaynaklara dayanmak, eksik kanıtı `UNKNOWN` olarak kaydetmek, gerçek export üzerinden ölçmek, açık ölçüler için en fazla 0,5 mm (güvenilir ölçümlerde tercihen 0,25 mm) tolerans uygulamak ve kullanılan fontu doğrulamak. Kaynak çatışmaları belgelenir; font ikamesi tam uygunluk sayılmaz. Paylaşılan motor değişikliklerinde regresyon kontrolü yapılır. Üretilen belgeler geçici çıktı, kaynak temelli kurallar ve sonuç kayıtları ise teknik kanıt olarak ele alınır.
+
+## Resmî DOCX kaynak çıkarımı (Faz 4)
+
+`docx2spec.py`, resmî DOCX XML özelliklerini kaynak konumları ve SHA256 ile çıkarır. Kullanım: [DOCX çıkarım belgesi](tools/DOCX_EXTRACTION.md). Faz 4, ADÜ Sağlık Bilimleri master/TR pilotunda kaynak Word geometrisi, şablon üretimi ve 303/303 gerçek PDF/DOCX/Word kontrolüyle kapandı; üniversitenin diğer varyantları ayrı kuyruğa dahildir. [Kapanış raporu](reports/MOTOR_PHASE4_CLOSE_2026-10-07.md).
+
+## Word uyumu — başlanmış fazlar
+
+[Çalışma planı](reports/WORD_UYUM_5_FAZ_PLANI_2026-10-07.md) ve [başlangıç denetimi](specs/word-compatibility-plan.audit.json) mevcut bulguları içerir. 5.1 kapandı; 5.2 kısmi araştırma durumunda ve kabulü açık. Başlanmamış görevler 2026-10-08 tarihinde kullanıcı isteğiyle kaldırıldı. Kaynak envanteri ve doğrulama bulguları korunur.

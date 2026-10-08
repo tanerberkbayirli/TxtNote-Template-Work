@@ -161,7 +161,7 @@ export const TabBar = ({
       onClick={closeOnBlankClick}
       title={activeTabId ? "Boş alana tıklayınca açık içerik kapanır" : undefined}
       className={cn(
-        "flex shrink-0 items-end gap-1 overflow-x-auto border-b border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900",
+        "flex shrink-0 items-end gap-1 overflow-x-auto border-b border-neutral-300 bg-neutral-200 dark:border-neutral-800 dark:bg-neutral-900",
         TOP_STRIP_HEIGHT,
         sidebarCollapsed ? "pl-10" : "px-2",
       )}

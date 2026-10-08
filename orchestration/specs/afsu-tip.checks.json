@@ -263,7 +263,7 @@
  },
  {
   "id": "h1-size",
-  "kind": "line_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
@@ -271,7 +271,8 @@
    "regex": "^\\d+\\. [A-ZÇĞİÖŞÜ ]+$",
    "attr": "size",
    "agg": "all",
-   "source": "layout"
+   "source": "layout",
+   "kind": "heading"
   },
   "expected": 14,
   "tolerance": 0.1,
@@ -457,11 +458,12 @@
  },
  {
   "id": "page-number-centre-sheet",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": "all",
    "attr": "cx",
-   "source": "layout"
+   "source": "layout",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,

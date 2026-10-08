@@ -1,0 +1,87 @@
+{
+ "target": "aku-matematik-lisans",
+ "stamp": "20261003-1545",
+ "counts": {
+  "FAIL": 4
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\aku-matematik-lisans\\run\\default.docx",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "checks": [
+  {
+   "id": "symbols.table.x0",
+   "kind": "line_baselines",
+   "expected": [
+    31.97
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "document.xml ~119595: centered table + cell margin; official Word render p6 text x0 31.97"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    29.997
+   ],
+   "delta": [
+    -1.973
+   ],
+   "note": "page 6",
+   "status": "FAIL"
+  },
+  {
+   "id": "symbols.table.rules",
+   "kind": "rules_count",
+   "expected": 3,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "document.xml ~119595: tcBorders bottom single sz4 under Simgeler/Kisaltmalar header cells and last row"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0,
+   "delta": -3,
+   "note": "page 6, rule y mm []",
+   "status": "FAIL"
+  },
+  {
+   "id": "symbols.table.group-gap",
+   "kind": "line_gap",
+   "expected": 9.9,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "official Word render p6: blank row between groups (9.89)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": null,
+   "note": "a='^tutulmuştur ki' not found before b on p6",
+   "status": "FAIL"
+  },
+  {
+   "id": "symbols.def",
+   "kind": "line_baselines",
+   "expected": [
+    70.7
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AKU_Matematik_Lisans_Tez_Sablonu_2025.docx",
+    "locator": "definition column 70.7 (hanging)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": null,
+   "note": "p6: lines not found: ['^tutulmuştur ki']",
+   "status": "FAIL"
+  }
+ ]
+}

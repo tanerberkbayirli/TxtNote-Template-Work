@@ -1,0 +1,1815 @@
+{
+ "target": "engine-word-structure",
+ "stamp": "20261007-1211",
+ "counts": {
+  "SKIPPED": 115,
+  "PASS": 9
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-structure.fixture.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "footer": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\footer.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\footer.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\footer.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-structure.fixture.footer.json",
+   "wordNote": "Word render not requested (run with --word)"
+  },
+  "fields": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\fields.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\fields.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\run\\fields.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-structure.fixture.fields.json",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 1.016,
+ "commandSeconds": 10.798,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "322754e331b60be31c5a128e6c321a7b11a64b9d",
+  "trackedDiffSha256": "b59c901777e2d0264f46b23a2928f0d22871df990cc362fb3cd965502064df9c",
+  "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+  "startedAt": "2026-10-07T09:11:45.296Z"
+ },
+ "checksSha256": "ee0d4851b555bd24efa8becb211af91799804d10d3f8b85aad72cbec40a68159",
+ "artifactSha256": {
+  "default": {
+   "fixture": "bdb0de4f378b434fa429fbe1f26f52cb4f14d4e94abd43f347871c28c7b9575f",
+   "pdf": "1451155e69e3ff5fd8efb38280bff3bd4a9e568ceebd78c04c1b86a1c0edacab",
+   "docx": "b4f8a562660c9eab8da7d695e0946bf92cebe2f8f3313ded38c6b82ca37f5e8c",
+   "layout": "3d68022e3de0094e66aa53a6b0a6ca4fed184dec2f01ad46587ad72da9638a29"
+  },
+  "footer": {
+   "fixture": "f1830e14ef26488887a2b95b015f90b57e209a20fe24962dfc7397035ec760b9",
+   "pdf": "2774e1c955b55949f375e31ab76f0754bf5a4a72bdfd09a4ab70a9609f200028",
+   "docx": "460db5e1b965eeb48b87736477472e087087a7594937e7122a5ff8b7fdbdec97",
+   "layout": "506259fee679d8cbb77b4b0f09357bf1895a2712d13cde84ea8fcf9910daeb74"
+  },
+  "fields": {
+   "fixture": "989630c5acdf4ff28241f94942eb7a6d1bcf6086818cd1c69dcd03a7f93e3d5e",
+   "pdf": "3b90bc4bf350b39027b104af26727c475fef778f383432927a096fad2252c616",
+   "docx": "010c106e62606a5ada37b4a1255af330c6b67f8d943410b4a3eeb2f9cd2d1174",
+   "layout": "93f612e05e54747eede35ee307aab7d5969c4bb2262f5f7b6b42a786350bd23e"
+  }
+ },
+ "checks": [
+  {
+   "id": "TABLE_AUTO-first-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-first-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_AUTO-last-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-last-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_AUTO-header-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-header-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_AUTO-caption-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-caption-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_AUTO-row-pitch",
+   "kind": "line_pitch_match",
+   "expected": "Word row pitch",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_AUTO-row-pitch"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_MIN-first-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-first-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_MIN-last-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-last-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_MIN-header-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-header-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_MIN-caption-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-caption-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_MIN-row-pitch",
+   "kind": "line_pitch_match",
+   "expected": "Word row pitch",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_MIN-row-pitch"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_EXACT-first-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-first-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_EXACT-last-row-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-last-row-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_EXACT-header-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-header-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_EXACT-caption-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-caption-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TABLE_EXACT-row-pitch",
+   "kind": "line_pitch_match",
+   "expected": "Word row pitch",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TABLE_EXACT-row-pitch"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "repeated-header-baselines",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "repeated-header-baselines"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "table-break-last-row",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "table-break-last-row"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "KEEP_BLOCK_1-position",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "KEEP_BLOCK_1-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "KEEP_BLOCK_5-position",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "KEEP_BLOCK_5-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "WIDOW_BLOCK_1-position",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "WIDOW_BLOCK_1-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "WIDOW_BLOCK_5-position",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "WIDOW_BLOCK_5-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FORCED_PAGE_TOP-position",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FORCED_PAGE_TOP-position"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_LEFT-end",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_LEFT-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_CENTER-end",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_CENTER-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_RIGHT-end",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_RIGHT-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_DECIMAL-end",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_DECIMAL-end"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "right-tab-end-layout",
+   "kind": "line_attr",
+   "expected": 140,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "right-tab-end: explicit engine input x1=140"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 139.989,
+   "delta": -0.011,
+   "note": "1 lines, pages [10]",
+   "status": "PASS"
+  },
+  {
+   "id": "right-tab-end-word",
+   "kind": "line_attr",
+   "expected": 140,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "right-tab-end: explicit engine input x1=140"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_LEFT-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_LEFT-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_CENTER-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_CENTER-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_RIGHT-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_RIGHT-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TAB_DECIMAL-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TAB_DECIMAL-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TOC_A-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TOC_A-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TOC_C-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TOC_C-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "endB-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "endB-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "endD-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "endD-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "DEC_A-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "DEC_A-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "DEC_B-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "DEC_B-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "DEC_C-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "DEC_C-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "DEC_D-row-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "DEC_D-row-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TOC_B-first-line-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TOC_B-first-line-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TOC_D-first-line-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TOC_D-first-line-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "endB-row-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "endB-row-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "endD-row-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "endD-row-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TOC_A-row-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TOC_A-row-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "TOC_C-row-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "TOC_C-row-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-001-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-001-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-001-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-001-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-055-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-055-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-055-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-055-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-110-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-110-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-110-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-110-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-115-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-115-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "mirror-115-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "mirror-115-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "number-baseline-layout",
+   "kind": "page_number_attr",
+   "expected": 276,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "page.numbering.baselineFromTopMm=276"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 275.998,
+   "delta": -0.002,
+   "note": "median of 29 [276.00..276.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "number-baseline-word",
+   "kind": "page_number_attr",
+   "expected": 276,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "page.numbering.baselineFromTopMm=276"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "CHROME_FIRST-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "CHROME_FIRST-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "CHROME_EVEN-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "CHROME_EVEN-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "CHROME_ODD-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "CHROME_ODD-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "SPACE_A_FIRST-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_A_FIRST-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "SPACE_A_SECOND-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_A_SECOND-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "SPACE_B_FIRST-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_B_FIRST-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "SPACE_A_RETURN-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_A_RETURN-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "SPACE_NATURAL_TOP-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_NATURAL_TOP-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "SPACE_FORCED_TOP-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "SPACE_FORCED_TOP-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-left-layout",
+   "kind": "line_attr",
+   "expected": 30,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-left: explicit engine input x0=30"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 29.997,
+   "delta": -0.003,
+   "note": "1 lines, pages [15]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-left-word",
+   "kind": "line_attr",
+   "expected": 30,
+   "tolerance": 0.25,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-left: explicit engine input x0=30"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-size-layout",
+   "kind": "line_attr",
+   "expected": 12,
+   "tolerance": 0.05,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-size: explicit engine input size=12"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12,
+   "delta": 0,
+   "note": "1 lines, pages [15]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-size-word",
+   "kind": "line_attr",
+   "expected": 12,
+   "tolerance": 0.05,
+   "source": {
+    "file": "orchestration/tools/word-structure-fixture.mjs",
+    "locator": "body-size: explicit engine input size=12"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "ALIGN_CENTER-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "ALIGN_CENTER-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "ALIGN_BOTTOM-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "ALIGN_BOTTOM-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIR_HANG-all-lines-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIR_HANG-all-lines-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIR_HANG-all-lines-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIR_HANG-all-lines-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIR_HANG-all-lines-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIR_HANG-all-lines-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIR_RIGHT-all-lines-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIR_RIGHT-all-lines-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIR_RIGHT-all-lines-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIR_RIGHT-all-lines-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIR_RIGHT-all-lines-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIR_RIGHT-all-lines-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIRF-all-lines-words",
+   "kind": "line_words_match",
+   "expected": "equal word and leader extents in Word and PDF",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIRF-all-lines-words"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIRF-all-lines-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIRF-all-lines-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIRF-all-lines-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIRF-all-lines-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "MIRF-all-lines-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "MIRF-all-lines-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-001-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-001-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-001-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-001-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-036-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-036-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-036-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-036-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-037-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-037-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-037-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-037-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-075-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-075-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-075-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-075-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-number-baseline",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-number-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "landscape-first-right",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "landscape-first-right"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "portrait-return-left",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "portrait-return-left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "portrait-return-baseline",
+   "kind": "line_attr_match",
+   "expected": "equal measured editor and Word geometry",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "portrait-return-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "page-size-match",
+   "kind": "page_size_match",
+   "expected": "identical page sizes",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "page-size-match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_A-number-baseline",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_A-number-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_A-number-x",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_A-number-x"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_A-number-size",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.05,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_A-number-size"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_B-number-baseline",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_B-number-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_B-number-x",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_B-number-x"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_B-number-size",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.05,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_B-number-size"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_C-number-baseline",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_C-number-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_C-number-x",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_C-number-x"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_C-number-size",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.05,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_C-number-size"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_D-number-baseline",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_D-number-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_D-number-x",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_D-number-x"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_D-number-size",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.05,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_D-number-size"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_E-number-baseline",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_E-number-baseline"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_E-number-x",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_E-number-x"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "FOOT_E-number-size",
+   "kind": "page_number_attr_match",
+   "expected": "equal",
+   "tolerance": 0.05,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "FOOT_E-number-size"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "footer-page_count_match",
+   "kind": "page_count_match",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "footer-page_count_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "footer-page_labels_match",
+   "kind": "page_labels_match",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "footer-page_labels_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "fields-refresh-match",
+   "kind": "fields_refresh_match",
+   "expected": "cached field results equal Word-refreshed results",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "fields-refresh-match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "fields-cached-match",
+   "kind": "fields_cached_match",
+   "expected": "cached field results equal Word-updated results",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "fields-cached-match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "fields-page_count_match",
+   "kind": "page_count_match",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "fields-page_count_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "fields-page_labels_match",
+   "kind": "page_labels_match",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "fields-page_labels_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "fields-word_opens",
+   "kind": "word_opens",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "fields-word_opens"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "fields-docx-balance",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "fields-docx-balance"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "word_opens",
+   "kind": "word_opens",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "word_opens"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "page_count_match",
+   "kind": "page_count_match",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "page_count_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "page_labels_match",
+   "kind": "page_labels_match",
+   "expected": true,
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "page_labels_match"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "docx_no_undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-structure DOCX",
+    "locator": "docx_no_undefined"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0001,
+   "note": "240 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-footer",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "10 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-fields",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "51 independent PDF glyph samples; ",
+   "status": "PASS"
+  }
+ ]
+}

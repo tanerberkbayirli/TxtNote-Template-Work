@@ -1,0 +1,30 @@
+{
+  "startedAt": "2026-10-07T15:20:04.604Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "aku-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 114.047,
+      "report": "orchestration\\validation\\word-compat\\phase-5.1\\targeted\\aku-sagbil\\check-20261007-1821.json",
+      "counts": {
+        "PASS": 33,
+        "FAIL": 8,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.094,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 1,
+      "commandSeconds": 1.296,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "ment: ForEach-Object : The term 'Get-FileHash' is not recognized as the name of a cmdlet, function, script file, or operable \r\r\nprogram. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.\r\r\nAt C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\validation-environment.ps1:6 char:28\r\r\n+     Sort-Object FullName | ForEach-Object {\r\r\n+                            ~~~~~~~~~~~~~~~~\r\r\n    + CategoryInfo          : ObjectNotFound: (Get-FileHash:String) [ForEach-Object], CommandNotFoundException\r\r\n    + FullyQualifiedErrorId : CommandNotFoundException,Microsoft.PowerShell.Commands.ForEachObjectCommand\r\r\n \r\r\n\r\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/check.mjs:101:42\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\r\n    at async node:internal/modules/esm/loader:647:26\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\n\r\nNode.js v24.20.0"
+    }
+  ],
+  "finishedAt": "2026-10-07T15:21:59.950Z",
+  "commandSeconds": 115.345
+}

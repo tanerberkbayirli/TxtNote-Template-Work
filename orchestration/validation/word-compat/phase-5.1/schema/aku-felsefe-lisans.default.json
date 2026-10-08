@@ -1,0 +1,827 @@
+﻿{
+    "input":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\word-compat\\phase-5.1\\regression\\aku-felsefe-lisans\\run\\default.docx",
+    "errorCount":  136,
+    "sdkPath":  "C:/Program Files/Microsoft Office/root/Office16/ADDINS/Microsoft Power Query for Excel Integrated/bin/DocumentFormat.OpenXml.dll",
+    "sdkVersion":  "2.9.1.0",
+    "errors":  [
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tr[2]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tr[3]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tr[4]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tr[5]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:w\u0027 has invalid value \u0027100%\u0027. The string \u0027100%\u0027 is not a valid \u0027Int32\u0027 value.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tblPr[1]/w:tblW[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[2]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[3]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[4]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[5]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[6]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[7]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[8]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[9]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[10]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[11]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[12]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[13]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[14]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[15]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[16]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[17]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[18]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[19]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[20]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[21]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[22]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[23]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[24]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[25]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[26]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[27]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[28]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[29]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[30]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[31]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[32]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[33]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[34]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[35]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[36]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[37]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[38]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[39]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[40]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[41]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[42]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[43]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[44]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[45]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[2]/w:tr[46]/w:trPr[1]/w:tblHeader[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[41]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[41]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[75]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[75]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[84]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[84]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[90]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[90]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[94]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[94]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[97]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[97]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[99]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[99]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[108]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[108]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[110]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[110]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[111]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[111]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[115]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[115]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[119]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[119]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[122]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[122]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[124]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[124]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[129]/w:r[1]/w:drawing[1]/wp:inline[1]/wp:docPr[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[130]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[130]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[131]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[131]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[135]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[135]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[139]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[139]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[142]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[142]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[144]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[144]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[147]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[147]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[148]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[148]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[152]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[152]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[156]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[156]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[159]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[159]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[161]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[161]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[163]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[163]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[167]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[167]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[171]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[171]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[174]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[174]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[176]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[176]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[178]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[178]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[183]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[183]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[187]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[187]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[193]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[193]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[200]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[200]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[204]/w:bookmarkStart[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "Attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:id\u0027 should have unique value. Its current value \u00271\u0027 duplicates with others.",
+                       "id":  "Sem_UniqueAttributeValue",
+                       "xpath":  "/w:document[1]/w:body[1]/w:p[204]/w:bookmarkEnd[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[17]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[18]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[19]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[20]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[21]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[22]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[23]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[24]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[25]/w:qFormat[1]"
+                   },
+                   {
+                       "part":  "/word/styles.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:val\u0027 has invalid value \u0027false\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:styles[1]/w:style[26]/w:qFormat[1]"
+                   }
+               ],
+    "inputSha256":  "b4d47196ac52b1c70dc1ed87bcfe66a4615f61a55457e4038f570517b9a226ff",
+    "schema":  "Office2016",
+    "status":  "FAIL"
+}

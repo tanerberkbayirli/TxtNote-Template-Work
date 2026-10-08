@@ -8,6 +8,7 @@ import { headingStyle, listLevels, paragraphProps, runProps, thesisHeadingStyleI
 import { indexFieldInstruction } from "./docx/fields.js";
 import { chromeDocx, pageFormat } from "./docx/sections.js";
 import { docxChildren } from "./docx/body.js";
+import { finalizeThesisDocx } from "./docx/package.js";
 export { buildThesisPdf } from "./pdfFallback.js";
 export { bookmarkName } from "./docx/paragraphs.js";
 
@@ -146,10 +147,10 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
     },
     ...((context.namedParagraphStyles?.size || context.footnoteParagraphStyles?.size || context.thesisHeadingStyles.size || context.tocParagraphStyles.size) ? { paragraphStyles: [...(context.namedParagraphStyles?.values() || []), ...(context.footnoteParagraphStyles?.values() || []), ...context.thesisHeadingStyles.values(), ...context.tocParagraphStyles.values()] } : {}),
   } : undefined;
-  return Packer.toBlob(new Document({
+  return finalizeThesisDocx(await Packer.toBlob(new Document({
     // Preserve cached results on opening; explicit Word field updates remain available.
     title: model.title || "Tez", creator: "TxtNote", features: { updateFields: false }, evenAndOddHeaderAndFooters: context.evenAndOddHeaders, styles,
     numbering: { config: [{ reference: "thesis-ordered", levels: listLevels(true) }, { reference: "thesis-bullet", levels: listLevels(false) }] },
     footnotes: context.footnotes, sections,
-  }));
+  })));
 }

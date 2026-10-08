@@ -1,6 +1,5 @@
 /**
  * Workspace switcher, content list and nav rail.
- * NOTE: still the largest module in the tree — see REFACTORING.md, Phase 2.
  */
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -1080,7 +1079,7 @@ export const Sidebar = ({
           title="Kenar çubuğunu genişlet"
           aria-label="Kenar çubuğunu genişlet"
           aria-expanded={false}
-          className="absolute left-0 top-0 z-30 flex h-11 w-10 items-center justify-center border-r border-b border-neutral-200 bg-neutral-50 text-neutral-500 transition-colors hover:bg-neutral-200/60 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
+          className="absolute left-0 top-0 z-30 flex h-11 w-10 items-center justify-center border-r border-b border-neutral-300 bg-neutral-200 text-neutral-500 transition-colors hover:bg-neutral-300 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-400 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
         >
           <PanelLeft className="h-[18px] w-[18px]" strokeWidth={1.75} />
         </button>
@@ -1089,14 +1088,14 @@ export const Sidebar = ({
         data-sidebar=""
         aria-label="Çalışma alanı kenar çubuğu"
         className={cn(
-          "relative flex h-screen shrink-0 flex-col border-r border-neutral-200 bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-900",
+          "relative flex h-screen shrink-0 flex-col border-r border-neutral-300 bg-neutral-300 dark:border-neutral-800 dark:bg-neutral-900",
           className,
         )}
         style={{ width: sidebarWidth }}
       >
         <div
           className={cn(
-            "flex shrink-0 items-end gap-1 border-b border-neutral-200 px-3 dark:border-neutral-800",
+            "flex shrink-0 items-end gap-1 border-b border-neutral-300 bg-neutral-300 px-3 dark:border-neutral-800 dark:bg-neutral-900",
             TOP_STRIP_HEIGHT,
           )}
         >
@@ -1221,7 +1220,7 @@ export const Sidebar = ({
         </div>
 
             {/* middle: content list */}
-            <nav className="flex min-h-0 flex-1 flex-col overflow-y-auto px-3 pb-3">
+            <nav className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-neutral-200 bg-white px-3 pb-3 dark:border-neutral-800 dark:bg-neutral-900">
               <div className="flex items-center gap-2 px-2.5 pb-1.5 pt-3">
                 <p className="shrink-0 text-[12px] font-semibold uppercase tracking-wide text-neutral-400 dark:text-neutral-500">
                   İçerikler
@@ -1314,7 +1313,7 @@ export const Sidebar = ({
             </nav>
 
             {/* actions — one compact pill row, above the canvas tools */}
-            <div className="border-t border-neutral-200 px-3 py-3 dark:border-neutral-800">
+            <div className="border-t border-neutral-300 bg-neutral-200 px-3 py-3 dark:border-neutral-800 dark:bg-neutral-900">
               <input
                 ref={fileInputRef}
                 type="file"
@@ -1544,7 +1543,7 @@ export const Sidebar = ({
             </div>
 
             {/* bottom: system nav — single row of icon-only circular buttons */}
-            <div className="border-t border-neutral-200 p-3 dark:border-neutral-800">
+            <div className="border-t border-neutral-300 bg-neutral-200 p-3 dark:border-neutral-800 dark:bg-neutral-900">
               <div className="flex items-center justify-between px-1">
                 {NAV_LINKS.map(({ id, label, icon: Icon, highlight }) => (
                   <Tooltip key={id} label={label} placement="top">

@@ -1,0 +1,1326 @@
+{
+  "phase": 4,
+  "status": "CLOSED",
+  "date": "2026-10-07",
+  "scope": "Official-source generation pipeline and first ADU Sagbil master/TR Tier 1 pilot; university-wide independent completion and Tier 2 remain separate",
+  "pilot": {
+    "target": "adu-sagbil",
+    "sourceBackedTier1Checks": 298,
+    "automaticGates": 5,
+    "counts": {
+      "PASS": 303
+    },
+    "report": "orchestration\\validation\\phase4-close\\final\\adu-sagbil\\check-20261007-1723.json",
+    "sha256": "f1392d144a9ae270d7d03b3fc95a6f8b38a54b9abdf6851cbaa822172986e43d"
+  },
+  "source": {
+    "schemaVersion": 1,
+    "source": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\Butun-Sablonlar\\Ege\\Aydın Adnan Menderes Üniversitesi\\Saglik_Bilimleri_Enstitusu_Tez\\ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+    "sourceSha256": "82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7",
+    "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\adu-sagbil\\source\\reference\\official.docx",
+    "docxSha256": "82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7",
+    "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\adu-sagbil\\source\\reference\\official-word.pdf",
+    "pdfSha256": "5ed9f9bb81c22cb50c3fb3b9ac7cac1df95bf402adb482fb0379508320b6e5c0",
+    "renderInfo": {
+      "build": "16.0.20430",
+      "version": "16.0",
+      "printBackground": true,
+      "activePrinter": "Microsoft Print to PDF",
+      "pid": 29748,
+      "renderedAt": "2026-10-07T13:41:07.1964877Z",
+      "compatibilityMode": 15
+    },
+    "startedAt": "2026-10-07T13:40:58.152Z",
+    "completedAt": "2026-10-07T13:41:14.792Z",
+    "wallSeconds": 16.624,
+    "wordPid": 29748,
+    "status": "PASS"
+  },
+  "sourceReview": {
+    "path": "orchestration/specs/adu-sagbil.source-review.json",
+    "sha256": "51602218ff991721bc946322378df36aada2c149907f487904947192a16f7da8",
+    "selectedGuideParagraphs": 17,
+    "conflictRulings": 3
+  },
+  "mapping": {
+    "facts": 153,
+    "preservedUnmappedPropertyGroups": 109,
+    "path": "orchestration/specs/adu-sagbil.mapping.json",
+    "sha256": "b419a574a8bfe77e58baab568897ef59209920823b0f2ae13d7b2bbbf0d60f9a"
+  },
+  "families": {
+    "officialUniversities": 3,
+    "structuralCandidates": 2,
+    "path": "orchestration/specs/template-families.json",
+    "numericUniversityValuesShared": false
+  },
+  "cost": {
+    "startedAt": "2026-10-07T13:40:58.152Z",
+    "completedAt": "2026-10-07T14:29:02.735236+00:00",
+    "instrumentedWorkflowWallSeconds": 2884.583,
+    "scope": "Official source render start through generation, measured fixes, guide conversion/review, unit/build and actual Word regression; earlier XML-only checkpoint excluded",
+    "officialRenderSeconds": 16.624,
+    "sourceExtractionSeconds": 0.574387,
+    "guideConversionSeconds": 20.586,
+    "finalPilotWordCommandSeconds": 26.431,
+    "freshNonWordCommandSeconds": 12.478,
+    "tokenUsage": null,
+    "tokenTelemetry": "Unavailable; <=100k target is not verified"
+  },
+  "validation": {
+    "frontendTests": 732,
+    "pythonCheckerAndExtractorTests": 40,
+    "generatorTests": 3,
+    "productionBuild": "PASS",
+    "visualQA": "Official cover and rendered cover/approval/ethics at page scale; editor/Word contact sheets for TOC, abstracts, headings, body, bibliography, table, appendices and CV; no clipping/overlap seen. Word/body line wraps are not claimed identical."
+  },
+  "wordRegression": {
+    "targets": 21,
+    "counts": {
+      "PASS": 1658,
+      "FAIL": 39,
+      "INFO": 32
+    },
+    "baselineFailureIdsUnchanged": true,
+    "failures": [
+      {
+        "target": "adu-ziraat-lisans",
+        "id": "cover-inner-baselines",
+        "kind": "line_baselines",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "h4-bold-editor",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "h4-bold-word",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "toc-page-labels-editor",
+        "kind": "toc_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "toc-page-labels-word",
+        "kind": "toc_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_count_match-master",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_labels_match-master",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_count_match-phd",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_labels_match-phd",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_count_match-t80",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-page_labels_match-t80",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "body-line-pitch-master-en",
+        "kind": "line_pitch",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "first-line-indent-master-en",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-front-master-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-unnumbered-master-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "body-line-pitch-phd-en",
+        "kind": "line_pitch",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "first-line-indent-phd-en",
+        "kind": "line_attr",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-front-phd-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "page-labels-unnumbered-phd-en",
+        "kind": "page_labels",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-sanatta-yeterlik-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-sanatta-yeterlik-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-sanatta-yeterlik-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-master-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-master-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-master-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-phd-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-phd-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-phd-en",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-header-f-centered-phd-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-number-centered-phd-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "table-percent-centered-phd-tr",
+        "kind": "landmark_x",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "id": "engine-page_count_match-default",
+        "kind": "page_count_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "id": "engine-page_labels_match-default",
+        "kind": "page_labels_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "J03-Arial-10-justify-line-breaks",
+        "kind": "line_breaks_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "J03-Arial-10-justify-last-line-words",
+        "kind": "last_line_words_match",
+        "status": "FAIL"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "J04-Arial-12-justify-line-breaks",
+        "kind": "line_breaks_match",
+        "status": "FAIL"
+      }
+    ],
+    "gates": [
+      {
+        "target": "adu-sagbil",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "adu-sagbil",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "adu-ziraat-lisans",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "adu-ziraat-lisans",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-eczacilik-proje",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-eczacilik-proje",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-lee",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-lee",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-lee",
+        "id": "engine-layout-pdf-phd",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-lee",
+        "id": "engine-layout-report-phd",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-tip",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "afsu-tip",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-cografya-lisans",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-cografya-lisans",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-fbe",
+        "id": "engine-layout-pdf-master",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-fbe",
+        "id": "engine-layout-report-master",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-fbe",
+        "id": "engine-layout-pdf-phd",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-fbe",
+        "id": "engine-layout-report-phd",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-felsefe-lisans",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-felsefe-lisans",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-felsefe-seminer",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-felsefe-seminer",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-isg-tezsiz-proje",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-isg-tezsiz-proje",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-kimya-lisans",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-kimya-lisans",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-matematik-lisans",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-matematik-lisans",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-matematik-lisans",
+        "id": "engine-layout-pdf-tables",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-matematik-lisans",
+        "id": "engine-layout-report-tables",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-mbg-lisans",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-mbg-lisans",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-layout-pdf-master",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-layout-report-master",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-layout-pdf-phd",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-layout-report-phd",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-layout-pdf-t80",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sagbil",
+        "id": "engine-layout-report-t80",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-pdf-sanatta-yeterlik-tr",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-report-sanatta-yeterlik-tr",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-pdf-master-en",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-report-master-en",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-pdf-phd-en",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-report-phd-en",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-pdf-phd-tr",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sbe",
+        "id": "engine-layout-report-phd-tr",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-justify",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-pdf-styles",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-report-styles",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-pdf-tab",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-report-tab",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-pdf-notes",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-pagefit",
+        "id": "engine-layout-report-notes",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-parity",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-parity",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-structure",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-structure",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-structure",
+        "id": "engine-layout-pdf-footer",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-structure",
+        "id": "engine-layout-report-footer",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-structure",
+        "id": "engine-layout-pdf-fields",
+        "status": "PASS"
+      },
+      {
+        "target": "engine-word-structure",
+        "id": "engine-layout-report-fields",
+        "status": "PASS"
+      },
+      {
+        "target": "mcbu-tip-uzmanlik",
+        "id": "engine-layout-pdf-default",
+        "status": "PASS"
+      },
+      {
+        "target": "mcbu-tip-uzmanlik",
+        "id": "engine-layout-report-default",
+        "status": "PASS"
+      }
+    ],
+    "reports": [
+      {
+        "target": "adu-sagbil",
+        "report": "orchestration\\validation\\phase4-close\\final\\adu-sagbil\\check-20261007-1723.json",
+        "sha256": "f1392d144a9ae270d7d03b3fc95a6f8b38a54b9abdf6851cbaa822172986e43d",
+        "counts": {
+          "PASS": 303
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "12dc8027ebcfcb3c20da8eb9c290eec3f93c62b6ee357f6db5e92a5748a0a171",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:23:12.154Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "b62b23cb63e22b28cb138f3f66e4b13d4ca8cbca5913fc6a65d0bacb2f95cc56",
+            "pdf": "9f1340e970cd9e13cec32674b8e801c7ad3ed4fa511cf7055daa49bfc4d8c07f",
+            "docx": "818c76bbb3fe9a42ef8e4984d68d92bb941bd00fdbaf2daddccd96ca174db25c",
+            "layout": "253f68da9cd53f01a0a65f422e7761b3fa5ceaef196c1e63c422298f73f0106f",
+            "wordPdf": "b6f02fce96978b913e2df88b08220f382d303a5cc63c2ab3d86e903239e7a3a4",
+            "wordRenderInfoPath": "90d236771456d8c253b6363c494364183996276735370d4361988a11fd68d7a2"
+          }
+        }
+      },
+      {
+        "target": "adu-ziraat-lisans",
+        "report": "orchestration\\validation\\phase4-close\\regression\\adu-ziraat-lisans\\check-20261007-1706.json",
+        "sha256": "c9a56a6a75d327e9d97ef97aacb5ee741e6824d144d81a36473f227c4ec37709",
+        "counts": {
+          "PASS": 14,
+          "FAIL": 1,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "f549aad019e385059215283257df29c8b09f9b34e59be52b9a20697c060f12ab",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:05:59.788Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "123f26e5a74f1e34d5181430bb4fbb5495f2be3417adea6ff201bbb71a964d86",
+            "pdf": "a876ea58ec7e98c7bb527811d1794d6fed257f20496ea5c5ba46d0a7505c4c85",
+            "docx": "87f04b5fa094fa8baccdad9f2ffbb832846367d103d3cbd8b2a97b5fb1640b00",
+            "layout": "24f64481d2c42119eed8b32549596cc037e3aab1b875f268e7f398abc4b20074",
+            "wordPdf": "f662d36f7d72dcd45567232a7b118dce4454622ca786c080721779fa82e317a5",
+            "wordRenderInfoPath": "b18c60787aa1ebdcd561f34414c2dfdb91c77d6675dfb8d9db5169a008dec1a3"
+          }
+        }
+      },
+      {
+        "target": "afsu-eczacilik-proje",
+        "report": "orchestration\\validation\\phase4-close\\regression\\afsu-eczacilik-proje\\check-20261007-1707.json",
+        "sha256": "2a76878313d17169d87f6c1da58f80b763ff518631a31415acf4a911ef5fd205",
+        "counts": {
+          "PASS": 27,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "f549aad019e385059215283257df29c8b09f9b34e59be52b9a20697c060f12ab",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:06:31.247Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "acdc7f9c765e5f128fc05980a1381b3fe069d77956dbd47414a3eaf7d555243e",
+            "pdf": "2cdc900a778ca0c1a78858380dee9fe0983c849b466b838b1e6287bf20bfef89",
+            "docx": "b8a74f9050938ac01fa261d196ba464f06840601b48944513a91f59493d1b3ef",
+            "layout": "68a7e236739b542ebba61bf13b4d569b4740bddd36cceed1f0af44fdf07b00a4",
+            "wordPdf": "e4d9bd60d52cfb68dbcc857ace2d3e250bea3dd2ac21ac2146c7b2b9b0ac5bc8",
+            "wordRenderInfoPath": "464e867179d59b5a1bf25f13be31c3203e2cfca89c78836b70eadc4dc2ab8c28"
+          }
+        }
+      },
+      {
+        "target": "afsu-lee",
+        "report": "orchestration\\validation\\phase4-close\\regression\\afsu-lee\\check-20261007-1707.json",
+        "sha256": "0f15c4773b110f1fafaeeca1a9881eadbc273192f1ce9730b756972a2ad03f6c",
+        "counts": {
+          "PASS": 92,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "f549aad019e385059215283257df29c8b09f9b34e59be52b9a20697c060f12ab",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:07:04.233Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "382a6a77e94ad42a5c02135365974264793280c0ecbafc10f53251f79bb419b6",
+            "pdf": "6a8a64b75ed5cf2fbe7f4d7f83e625b4a3914d572fb34e197efd2216d853b3d8",
+            "docx": "3ba46992f19baed8c0ebc960ceb427700e0d6a1b7fdc88ec80245ce62700377f",
+            "layout": "fae377cf1cb8a75a45b0e7b9c247ec8381db89b40ed31fe5a05519c618568647",
+            "wordPdf": "0c44f0ee32359aeebbd961d29983378bc33d879203d1dc5353907b51db7b254d",
+            "wordRenderInfoPath": "4a759147964de5ce907b4fb8587516ad7fc874f5233ba7f41ec2267ebc19e29c"
+          },
+          "phd": {
+            "fixture": "6447fedc085f2c42f10a200e86aa7345535795a23837d25ba1b30318383258f7",
+            "pdf": "5d424d0842f0f6b4eca1cb552507b5ccddc2470165b010515136db648b15f365",
+            "docx": "6629436a6cc012fe4bdc8b6bb99eda9d11cdb2983eef2dce84df2737bf347eca",
+            "layout": "55e65030473cb85160386e27ea70ca190a1ad88587a8d4d63ebecfe85ab5d14e",
+            "wordPdf": "b7cfbf01f6b3829d84d3d17060fb6b6a867c8b0509c2d98426084efb4da3ed1f",
+            "wordRenderInfoPath": "d9550da532b09344dd82887c5bba97504e4693f4b2fdb805683a14b57451e843"
+          }
+        }
+      },
+      {
+        "target": "afsu-tip",
+        "report": "orchestration\\validation\\phase4-close\\final\\afsu-tip\\check-20261007-1724.json",
+        "sha256": "ae46eadabeafa7dc4e8cde6d7d4abb70a2d2426802784e412e56d0c18a3f0c2f",
+        "counts": {
+          "PASS": 51,
+          "INFO": 2
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "12dc8027ebcfcb3c20da8eb9c290eec3f93c62b6ee357f6db5e92a5748a0a171",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:23:38.544Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "81404850d7ea37f89b883871b7290f3b95357c71f8557a4c6b610d6f24e36b33",
+            "pdf": "611a75d3537126b420e989208d96b99cef49c0acd05f9ee64141f35265ad739f",
+            "docx": "79cfa800b300f254f466bea46b8d97abc6a10989129ce5a31ea6a33712447262",
+            "layout": "991f060f07b9483a1037dde404c4ff68a83af809f6c0c009ec87ffadcd90d224",
+            "wordPdf": "d755cb14324b3ce5a902d7c5c83f46da38a6caf1bbfa452d74536f821749ea0d",
+            "wordRenderInfoPath": "c2c60399eae734f5f9d61529017a5bc0350e0c108fa825b915e0faf31b0341f9"
+          }
+        }
+      },
+      {
+        "target": "aku-cografya-lisans",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-cografya-lisans\\check-20261007-1708.json",
+        "sha256": "2d53fdd793304474aa458c1a235e16cc27d9e84749e57de6f7951442ee32c91a",
+        "counts": {
+          "PASS": 50,
+          "INFO": 3
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "204f5cc7e54b0edfe21b17a88c8bbabddacc4bccacffd375c426b519105045e2",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:08:21.371Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "639f204df817ab7c6de57670b13cf03d843d0afa653703bd2dc06fc561323caa",
+            "pdf": "4d745a3c940430a748dd54e0ffa775b4247a1ee46b4c0afbe80428ae6717d8eb",
+            "docx": "f6276aebf2227615516dd31e36ae65923ca0bbd7e48147e1e1e1ce209260f6ca",
+            "layout": "3b1b1ebc9ac9e5b64ff3442a9bf7e0324b9c35c4017d27126bd15a1be1fb0706",
+            "wordPdf": "d6d074783d75773214e598fb53b9620e16538aeb79f6b54710c9bcf0f964415f",
+            "wordRenderInfoPath": "73b974a1e9812b35cb75917daa1a9dcbe82ca1f9a58110c05144d02e864c185a"
+          }
+        }
+      },
+      {
+        "target": "aku-fbe",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-fbe\\check-20261007-1709.json",
+        "sha256": "2706c41fb8879172e04998628c78f9bbda54002d05b3a7dc88eb87476f1fa1fa",
+        "counts": {
+          "PASS": 49,
+          "INFO": 3
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "204f5cc7e54b0edfe21b17a88c8bbabddacc4bccacffd375c426b519105045e2",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:08:47.606Z"
+        },
+        "artifactSha256": {
+          "master": {
+            "fixture": "6c5370997167f4fbc84d9620bf04d677380ff66d41fa591271f54adce8babca2",
+            "pdf": "de6ea12b476a23472ba7de2b3a56f0e76d86d5a6f5c9bd2def2f3ed3a031d8f7",
+            "docx": "ec3da43915cb1e3b7cd56e108b7ef311967db623f6c7b462b858e6c74ff3ffdb",
+            "layout": "14fa69a4e454da9b1b7eb767f447a557b25a4f7680b145b6d52ab0b88402ae7a",
+            "wordPdf": "f19322e032d70bb1f62c93cb8323acbc3f015cb7a78f7cedcd2a44cbbd924d6f",
+            "wordRenderInfoPath": "545fcfc963dbbf61b08a0d435fb3c0315b39aa34f5638a4da388e75083151da5"
+          },
+          "phd": {
+            "fixture": "a3730f72dd208e42ff2d7c5811b7051300628533b7f855c452774871aa2a38f0",
+            "pdf": "b920c065f45e3555c4afabcf64a8183d04202b2aa4e18b4bf940879d47570816",
+            "docx": "73342f3b426a16b82936490ea547e94631f4d8a1f5f1aa9b31b2f55c54308370",
+            "layout": "87696e503f07db80a46b541b312d36d995808013796a3830eb4be346e676dd0a",
+            "wordPdf": "aad5d1df273d367d78feaa39406e200ffa6d729e2e00329a6b9b0010d11eb258",
+            "wordRenderInfoPath": "b91a49fd88a65d6fe4c2f65ea245a04855c53f0e2e344e2d9ace3761c6aa3088"
+          }
+        }
+      },
+      {
+        "target": "aku-felsefe-lisans",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-felsefe-lisans\\check-20261007-1709.json",
+        "sha256": "54860add0cd3d59ba2b33710e5c4b9ce1c524f4cc8a7e6adc0253039819d1776",
+        "counts": {
+          "PASS": 85,
+          "INFO": 4
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "23077e0679ad6d98ccc95afb15f3b7b9644cbac1e3f1c8ded26b64bfc0612ef9",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:09:35.463Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "eff0795ee9a1c787aaac84292e39830d5c50a455d5f7cfe384dedef56e0f6100",
+            "pdf": "7cde091bfa0e77add9b47c64f37f063f98eaaf54b05b47a21127b30165eb2f31",
+            "docx": "9af800f87369db2b15001ebad80f70f9ff8bdc38272c6d7f0d74fa0a0a526ea1",
+            "layout": "c1a447a980c86f91ab5bb684774d19dd13772763f1a9ee572982d331a5632db7",
+            "wordPdf": "5bdc01afc7aeaee6833364f14daef1dbedc19cba495bf9d0aca0ab142a4d9788",
+            "wordRenderInfoPath": "1c153961f3f533ae431d96fc76ca9abbec3f7075e00f325860d3920a6df1c90b"
+          }
+        }
+      },
+      {
+        "target": "aku-felsefe-seminer",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-felsefe-seminer\\check-20261007-1710.json",
+        "sha256": "ff996b286c115945a8000d9281c756659b67d72638db6238f4f7ec35215945eb",
+        "counts": {
+          "PASS": 63,
+          "INFO": 4
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "23077e0679ad6d98ccc95afb15f3b7b9644cbac1e3f1c8ded26b64bfc0612ef9",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:09:58.019Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "9b1ffe0afd5ab2a9c659da2005c0581c9f5985250a77cee6280838acf476bdd8",
+            "pdf": "53301a0a24a19130545b207680f9ba29274af17d651dde5f64ff70e2565631cb",
+            "docx": "a3282a01e0cffcfb6a270eaf0732d7155c26713584ca732ca6339b4fbb869652",
+            "layout": "b8a1e793743f2a3bae75ddd57f1de6bfd0f6e8a515bb69ad2eb9f9bbd9c386b6",
+            "wordPdf": "2e8aea1770da8ad65fab1d588d7a0962c9ca0456a47cf9d0ec6f74be603376d3",
+            "wordRenderInfoPath": "b65f59db5fb0e25c27116caaccf8b25aceb7fb4ef1060025eebb2c51a933f97b"
+          }
+        }
+      },
+      {
+        "target": "aku-isg-tezsiz-proje",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-isg-tezsiz-proje\\check-20261007-1710.json",
+        "sha256": "0e5ea0e8c8a03d85413bc95e119000fa836f7439965f004f9a11ee4787b5c339",
+        "counts": {
+          "PASS": 41,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "23077e0679ad6d98ccc95afb15f3b7b9644cbac1e3f1c8ded26b64bfc0612ef9",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:10:30.737Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "50be8d108eb41c4dee60d7aa5689a0ad812ac7e08dbec17f37ac88cd0512a44f",
+            "pdf": "eb2f596b8f0631a4a4613aa751dd79508d278fb56b25022363cf663732abbb87",
+            "docx": "72eb3d9c249b12fafeacda530dcc278ee8f5cceade1642fee9bf29b65ad470e1",
+            "layout": "21d93f65227b5269f088ecf83c203af1646941dff26515358f218e2b3c77a29d",
+            "wordPdf": "828ea21494f0bfb40926dfddfdd96f5ec5a5079fdddfa7e4a5f5fe698d913f25",
+            "wordRenderInfoPath": "a4ab468ed05f25dd2eb674d0ed26b2d028b24a270a7d918d26a4097cd88234ad"
+          }
+        }
+      },
+      {
+        "target": "aku-kimya-lisans",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-kimya-lisans\\check-20261007-1711.json",
+        "sha256": "d78a382349c3afd83952d6f9c34e603f7ff9325a318d55e2a490790fbedaaf5f",
+        "counts": {
+          "PASS": 50,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "23077e0679ad6d98ccc95afb15f3b7b9644cbac1e3f1c8ded26b64bfc0612ef9",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:10:58.009Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "e5c3195ec9afb462307ffbff13c1e1522b385e9f5d5f40b1d369a84623026a0f",
+            "pdf": "2bad164a1788e1b7e34f8cc315ef5827f694f0881a234b698ea31311d9c18d10",
+            "docx": "88205a8ebfa24c75b7955b86791d12a0a4c2971408e0c08a42a011feeff55b96",
+            "layout": "de15f55ac90a053aa6938fce99eac424e0dd5b8c8389699a0aba7d1b295f2521",
+            "wordPdf": "17b248434c4011f0f07f4158afc95633d85351161fb5c0fa01de591ce8505785",
+            "wordRenderInfoPath": "5b5648ed50b49d8224e4448acd4d08ae05b87878fc20fe45a50a94d3975dde8c"
+          }
+        }
+      },
+      {
+        "target": "aku-matematik-lisans",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-matematik-lisans\\check-20261007-1713.json",
+        "sha256": "c30132a8e6da8b620a83d472e6c11f81173390be148e6bc7920cb37e4ab5d0b1",
+        "counts": {
+          "PASS": 58,
+          "INFO": 2
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "23077e0679ad6d98ccc95afb15f3b7b9644cbac1e3f1c8ded26b64bfc0612ef9",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:11:26.960Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "dd2fcf7851415fbb76935edc0cbb45bc1c0a01789dac1466f9847353e28812b0",
+            "pdf": "5a56b48c42f03d2fb31bce27feb3913f75bd3c1f99cdc81d3aef24d4d95004c1",
+            "docx": "5d120612fe45077bbee5e8f9f7edf48e7d9783f38bf22371979ef5c7cf4f7268",
+            "layout": "b08972de1b75045d4b5a99f5a39380cd9d2a20cad5834284106a8f0cd5e89556",
+            "wordPdf": "7e3d94e84ac91e978eff8a4b69129a00affbf10cb1b5fc97e8ba426b8d492e5b",
+            "wordRenderInfoPath": "4cf1cf9005b2bc8a539ac31c73a1c024b461ce1fcf081eb405d0aa1f397845ff"
+          },
+          "tables": {
+            "fixture": "a16349732e293a7dd7902238b8b5d2fbbf1e56df91b493920236a3229ab08850",
+            "pdf": "e0b1b28b861166ebeeeb6029dfa46e201d03f317c1845a9d6ca6602c341b404a",
+            "docx": "f1a4143ee6458982738c8eab0da170bcf6e623e877969a571fb18e448e64bfc0",
+            "layout": "c7c951187c6ed2d17c2218cd3d019ffaf92b44892e81c0fefdf9a3387ea18e32",
+            "wordPdf": "ed0070632b9a52df1cdcc6699fbfa5a3491677999549416d178fba279a8a607c",
+            "wordRenderInfoPath": "63939bd26446c11a1d358a3a154334f842d18edc39894e03da52cfa9fc0bd00d"
+          }
+        }
+      },
+      {
+        "target": "aku-mbg-lisans",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-mbg-lisans\\check-20261007-1713.json",
+        "sha256": "e528a37229b4a47a3400777927f4652e949e84ab229e6d4547f345c6e329e901",
+        "counts": {
+          "PASS": 52,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "8b3928be1507db1f2e333d117c793a8b7fa21344a79667e679423b9cc78d7672",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:13:19.425Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "188203328a4e48c51374b996861bb26939566a0aca7caac6ea4fdae5b1624296",
+            "pdf": "185eb7701d70a26c6a2015e9c36a4fc61c0c7243e25c02cd0d44ae23d82f2a51",
+            "docx": "29a23df4fd2e2bc01d936407c2dfda24281ede319f62f17eb173947634d74c14",
+            "layout": "4a6b16b1fa841c218f1436e9c1d8b76b3af4f9985b65f09d8cb30b918e17320b",
+            "wordPdf": "4206037a0b6bbfdbd8d0c0d853b11b02911816da8bb2d643c7c5087b059e70ea",
+            "wordRenderInfoPath": "ddadacf0fb8ef205404a1a2e77743d72d7af9d67a928fe6dea1af77e2b19a676"
+          }
+        }
+      },
+      {
+        "target": "aku-sagbil",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-sagbil\\check-20261007-1715.json",
+        "sha256": "b62a69b6816cfe3ff4c7c67037766f9b02398999a12b40b2f15948520c3c8eff",
+        "counts": {
+          "PASS": 31,
+          "FAIL": 10,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "8b3928be1507db1f2e333d117c793a8b7fa21344a79667e679423b9cc78d7672",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:13:47.910Z"
+        },
+        "artifactSha256": {
+          "master": {
+            "fixture": "39b48a7ff20f8653a48fea0f20e04d5d63ed52b030cdf9bd9b8a4316cc10123a",
+            "pdf": "6b37f42e5529bc300240aa60384d76d369cb3804b939bf46f02c8afa36d565ad",
+            "docx": "da9a4ba761f466373f7f453cd4ce6edd03766a439a3be2ee092a98a04196e3c2",
+            "layout": "02ff11614bedcd624f0b974b95f856a95cf47e658cf67f7e8a4f6204096144c4",
+            "wordPdf": "c648d69015ec42cab6983a871689d1c53596fb407ad33823f6dd9d7733b3a8ec",
+            "wordRenderInfoPath": "0418e1f1da1c100f10722d438c72f2be35c7c967f1e0e05f5fa3279dbcdb4bfa"
+          },
+          "phd": {
+            "fixture": "8b7b84cf5833721d706fd616b6892e31733cee415b36d4129b2a0b3ad8e15eb1",
+            "pdf": "fb8538ae202cf20714287725e833555bf222c56728484acf20fac08e90f8cdb9",
+            "docx": "9f88b98ce9a9cf7b5c1359c6e9ee9bcf9358e4280c482f257481532f8d917bc8",
+            "layout": "511415b6d921460dd41f6f1e89ca0d06624fc6e42dc0d566383a66f7a00a3460",
+            "wordPdf": "4391446afe61b03851d7ddeebd2eff9795bd8ab67d2aa0272043cd0676103998",
+            "wordRenderInfoPath": "ce01c8763e157056e06f3e844f8f815bece7cc57186bf58ed70fab422082ad7b"
+          },
+          "t80": {
+            "fixture": "81b684c30cf74a91f4accb1c923c72b6e8e43a20fbcadb3915b85f03a9fefdcd",
+            "pdf": "03058e8325aa69c4090b03d3f2c3c6454954227dd10a7bd644933869437d26ab",
+            "docx": "b1b35b2fae34db0e7470fa737c26e586bf7d2ac3ee5956e4842b3456a29f93f9",
+            "layout": "fadb86d29f8877da50b2f0301a3fdb8a4e4d5ac28b82d855220fc87cd8953b9f",
+            "wordPdf": "b57d3908082cadb0463cf1b70831d95e42b10b8c548037e15be94f5771eb5a82",
+            "wordRenderInfoPath": "f0cd4623d609c993725dfd67292b8cb4903b87cd16a6890c60a7f6da39268bcb"
+          }
+        }
+      },
+      {
+        "target": "aku-sbe",
+        "report": "orchestration\\validation\\phase4-close\\final\\aku-sbe\\check-20261007-1726.json",
+        "sha256": "aad5c3bfd0f5d442780fe2ebe44e7136391d2412fe8f33bc59598557743430b8",
+        "counts": {
+          "PASS": 108,
+          "INFO": 2,
+          "FAIL": 23
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "12dc8027ebcfcb3c20da8eb9c290eec3f93c62b6ee357f6db5e92a5748a0a171",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:24:07.965Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "0a935beb778c99ccb8d68d077bdf7bd710eac04b546389e98161e7edc2461bd4",
+            "pdf": "5080a6901464798188a311ff7345cdf538455f87125c7dc93cbf9e8d03badb71",
+            "docx": "d475310da72728fa84ed5ee1a5b80556ae757ff50f1a69a86813f5034746b91a",
+            "layout": "1dbf8412162c4c2326d26bd603c293d1beb07da1c32d41f2b3559588d2c4d2a2",
+            "wordPdf": "459e246647079c2e807fb65277f0e725e5b6f23ebea5635366743491af399045",
+            "wordRenderInfoPath": "4f8a4001d022f87a5dd4be708e9fe83038ea4c965dc42b375b178d50717819d0"
+          },
+          "sanatta-yeterlik-tr": {
+            "fixture": "7ab429230c003a0eccfdfc6c034985c8498480fb74eaa2c956514c26d0fbd612",
+            "pdf": "8d5a1e3da790a7ead782341ab33f28e5f37bd7b75937fc488e2e90af60be44f2",
+            "docx": "79ae0b7e3f430e4cb6fe4b0c8ab4e745f86a87e32b004144d71624463f2b7068",
+            "layout": "d2941b3c5ae1881a44bf00d4670f7243ff9e5a280fc6884eace9858fc898968b",
+            "wordPdf": "22aab4022c330af48b4b416a0bab71cf1c6c9bd7622f3444a61f6aef15d9cc7d",
+            "wordRenderInfoPath": "fcf76c7b70a2abe9452bde9a53a5cd99bb507dae2937740ed3db868a6994b71f"
+          },
+          "master-en": {
+            "fixture": "8fc67719cae67666a8a281468b7e366523b800a20d57f457c1fbcb8997e5d7ec",
+            "pdf": "dabccfa1c9e87e9273e79bfdba23302cbf101b0e49a0d8c2deda7e913955bc3a",
+            "docx": "76aa721f16317eb8995770371aaecc8fe5d8c714b07295e3f25044270ef793dd",
+            "layout": "f59ba9caf9095b5064d622376ecf3a6359af65b0c5b2ab2e22ae5653a70da389",
+            "wordPdf": "112673da34381de97e410abfbdc1d4a83dbc0131cc21b2e04cef1542a5197c18",
+            "wordRenderInfoPath": "a3a895c93eabda6444b768aa20f8c7325bf0364d5a0a1bed6581a73465d1d3d2"
+          },
+          "phd-en": {
+            "fixture": "aa9b4525b05349000295b02725d87b57d9977b7d5975d0a19f3c82a64c601591",
+            "pdf": "a26da433a75049d8ebbad1437c79a88528fa007a1c8a896f2b90ec93c1c099f1",
+            "docx": "18222b4a601fca45828475c55b33bf277749e83f45714fa91b0ed2375c7ba537",
+            "layout": "8e7c2526d4b314512d82b7652ecd30e56c6b3da23cd6d1c2d851268a79991c9b",
+            "wordPdf": "b2164e302b3645df2c206e8c6fec851405ebc7dcf9b61d51c6c8221ffc9f3c40",
+            "wordRenderInfoPath": "0f9c52439c3e2080fd078d42c9e0e02c0854a2493b4f73f91f04a045751fbd1d"
+          },
+          "phd-tr": {
+            "fixture": "690415f1f30a62b06cb35c2b38532bb55409fd18e1bf0c67636ce0d12bf74793",
+            "pdf": "7eb8c568b4cf2ef765ae33aeb77324fb393ec11035d2da1bdd00f4360e8c1a80",
+            "docx": "bbf75a21c47614d7d70a9d376b94e9baaab338a00729721268d011688b1e4e6d",
+            "layout": "16bfb1b83c1e3bbdd2b30ffefdd1025eb4fda7e0b8f98d1d2657a10626aaf50d",
+            "wordPdf": "cbfa50ee629f46ee40a69ebbbc378296158d7bf262dfcd02bd16d72eb98baabc",
+            "wordRenderInfoPath": "5efbf028a5875e4f33d5e91cf77fd640c877b62ff43cde05baf0ee34ec25d36a"
+          }
+        }
+      },
+      {
+        "target": "aku-sosyoloji-lisans",
+        "report": "orchestration\\validation\\phase4-close\\regression\\aku-sosyoloji-lisans\\check-20261007-1717.json",
+        "sha256": "f9bcd3296a79e8541a1f1f550c23c5ad2a5e45e7e0365bac054046085c728c3b",
+        "counts": {
+          "INFO": 4,
+          "PASS": 28,
+          "FAIL": 2
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "9aae49d1e3d11073d8efc613fa622c9745131d7665bbb7834c3d78dfdde8f9b8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:16:33.783Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "2b820463e2b9a66a69deb1a23298fdcee6aa5f026aaefb55d804fa04d79ac7cc",
+            "pdf": "e8369f0b3402df0ca512289f3c98f91bcfa72b696d0f23b36765ea509a4059f6",
+            "docx": "16b9b1536078430669e13fe517f0da71c8fc5013ae2ff59911db279bcd424636",
+            "layout": "15aacd0c7ce2d45326c76d894067d0c33574bc155743f7626fe1be5fa6a54b49",
+            "wordPdf": "3faaba1c9bb28ad805faa8fa505ca6b8908d0ddde1eb9652d025908d7795c7b5",
+            "wordRenderInfoPath": "653cb1b5895f6796473d361aae9ff1e8c5e4b59336e6bf31a670c0004d9e8f76"
+          }
+        }
+      },
+      {
+        "target": "engine-word-justify",
+        "report": "orchestration\\validation\\phase4-close\\regression\\engine-word-justify\\check-20261007-1717.json",
+        "sha256": "6605d32d6a3988ada904a2feac094a9560a667feb7a6c77185a8e8e916c27382",
+        "counts": {
+          "PASS": 18,
+          "FAIL": 3
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "9aae49d1e3d11073d8efc613fa622c9745131d7665bbb7834c3d78dfdde8f9b8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:17:23.547Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "d85ebbe33b3650519398fcecd6df6630b76cfa7a26f95e7bc49dd22908ea632c",
+            "pdf": "3aa786c554eb6c2228893260e5937c55f5ca5358fb3b02a27a1270ca2221fd6d",
+            "docx": "3958e68269619d42501b43da3ee679a614c40541ae7eac06286afe371ac85177",
+            "layout": "2894e200486a868a75bd0738a415d51f8d4cf10577cf7c017cedc893f8680d90",
+            "wordPdf": "291f97cd50bd103162e1d079f4771b1d37e27583dfaf459ec4f0e52646cabd3f",
+            "wordRenderInfoPath": "6531ac9daf7803de46c414855c442813ad188b288e24a0b1b91e91d39afa672a"
+          }
+        }
+      },
+      {
+        "target": "engine-word-pagefit",
+        "report": "orchestration\\validation\\phase4-close\\regression\\engine-word-pagefit\\check-20261007-1719.json",
+        "sha256": "267269437825c918a2e2e53bba6c9d28185426cf03b8acf03cc13cd8a955af43",
+        "counts": {
+          "PASS": 209
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "9aae49d1e3d11073d8efc613fa622c9745131d7665bbb7834c3d78dfdde8f9b8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:17:41.970Z"
+        },
+        "artifactSha256": {
+          "styles": {
+            "fixture": "0bd5863fb6403b67773186a689baf49ceabf2fc6923f5233c664a6e9bf98bbc2",
+            "pdf": "8ab7a7eeef138aba626195baf7bc2e883fc476a3bd89617abdcc5dafe8700c29",
+            "docx": "2c83d49c71a0e8d0dae3a98d185378df9a553eaa750b599fd3c73f1c619df0ed",
+            "layout": "411accd18b08b68576499ca10e92deea7c503363460d52b040dd093617cabf5d",
+            "wordPdf": "6e729df919c4e9b2ada343269eb46b3588838979dbcbdbfabb16439121c0da6d",
+            "wordRenderInfoPath": "7c7d8ae5d525c201c8cee1a8743fd939520ea194fb30f75028306b587c68fba3"
+          },
+          "default": {
+            "fixture": "0a345900666fb56777bd2b9d60f19bca4b3561aca78164b5ec6266325a1fbcd3",
+            "pdf": "c525d9bfaab7018d3bf47ab0fc90be60e6f2639eaa1bd62c50328b9b1adf1c9b",
+            "docx": "13ae3db7b16ba52badca8788e70905b573da14730484d466dc154e7cdff5c3ff",
+            "layout": "af14d1454ff370cc6ed56bcb7e505ca36ee4de48badcba67ce576dc914890dac",
+            "wordPdf": "d252c2d3eb136175328f11b7bcd6b3b419842c03d5c79d0e95090364b5710d3e",
+            "wordRenderInfoPath": "bb4a3390194aa2c1a895bba01b7e4132fba6e145aafec74df295711112ea405f"
+          },
+          "tab": {
+            "fixture": "620a232b0cfb4bc9e2d16701952779638900c9a6a78f0b7dbe49b2b2ed798822",
+            "pdf": "5d52f07bf1ea54040ab15ef55c37140200d4fd1d8ea42421b15b497609b81cda",
+            "docx": "3d528a416b04248fec074d099624c60d7f82afab3b9c8e16f68136e5fe23cec7",
+            "layout": "04a2f63396cf2213589f530e1ffb3b468e7e794940eaad6d6651769715236dec",
+            "wordPdf": "0c01c29d145d6dbe8e7179b4ce59815953891eb564176a45d43fd5417d967047",
+            "wordRenderInfoPath": "6d07578450bff92af47db530a0e39cbf4de8fb211d78d03e52775b97bf82950d"
+          },
+          "notes": {
+            "fixture": "5fb18faab2c1cbb2a444cf5f87e4ce17343074d594b94c25057d291e6022bb34",
+            "pdf": "1e49a0314dc3661711aca7deb9809a1422e141767dd55d38f21c4b07b07aa850",
+            "docx": "d51f86bc7ed26593cd7d7ca53fa890b3159a5d4ebb21057481bebfc6fd75cc63",
+            "layout": "ac65448e25db78721d92d4c007199ec80308766aacbaaad0e93f51e89a4ed99c",
+            "wordPdf": "a1164758cdf019fc0add2490925b59e821c69c5139e04ab1d1c39a6eacbd80f6",
+            "wordRenderInfoPath": "85a835903efc706e381124249f93d52c6ff45cf80d24e55a712ef2e76c8b7060"
+          }
+        }
+      },
+      {
+        "target": "engine-word-parity",
+        "report": "orchestration\\validation\\phase4-close\\regression\\engine-word-parity\\check-20261007-1720.json",
+        "sha256": "c007d41ed0d474b84b659dd507625951f039f209b74d11055ecb45a344800774",
+        "counts": {
+          "PASS": 147
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "9aae49d1e3d11073d8efc613fa622c9745131d7665bbb7834c3d78dfdde8f9b8",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:19:31.872Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "15a55edadf37fe898b4a89fda5f4e1696042ee0f382c97a8b3dea6a1ef4913b1",
+            "pdf": "2c0e59851d5caab49b7409faa3d0b7da403244ebd11c820a15973c859dbb0e03",
+            "docx": "565469d50de99a8822ab505f2f99c8e603da456ab4d4ec1b27bafe9781bb3a22",
+            "layout": "12f4d61ef57e6e41db09c2b5ac05413d8087198b1ac92af3e818e85c94a23978",
+            "wordPdf": "3a1c7bf3b3e6fad1cca52a9f58f69f1995b32f4b60e071698c8d621dd1cc27c3",
+            "wordRenderInfoPath": "731e2ceecad8f0feeb3febdda0d040d0118754f210377e911cb7c1f7f4760fbe"
+          }
+        }
+      },
+      {
+        "target": "engine-word-structure",
+        "report": "orchestration\\validation\\phase4-close\\regression\\engine-word-structure\\check-20261007-1721.json",
+        "sha256": "795be82d827211374f2df6e078252ef8bd88c3a8563a7293f9f22d624b9a385c",
+        "counts": {
+          "PASS": 133
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "1764c922112cc62bd01733deed5a3dc65b6960bd1e519ff226f25f8767b6ba6a",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:20:05.167Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "bdb0de4f378b434fa429fbe1f26f52cb4f14d4e94abd43f347871c28c7b9575f",
+            "pdf": "3898958edd3a228865dd9406022b39a23db652ba3feae8a4108ae0621e0996ac",
+            "docx": "f1140a626d7b237cb98f558a45ea620c98ac3b92f69ec1f4ad9bcb168374f59d",
+            "layout": "7a74f64fc16411efdcde11588d79b6702976fa439d34ec60b57813b78f02909c",
+            "wordPdf": "f784ea1eee35732ae6d2c912ca2cf6f47916cff7bddad8e97a9708b912ecc644",
+            "wordRefreshedPdf": "b593a760c36ba4c10ee71649147290a03ecbcef9575ee494fb00b2a63769a18b",
+            "wordFieldDump": "3e2f5621a9f5799127603afc095ea3dee0b0ba995214aa97a8318dead99906a7",
+            "wordRenderInfoPath": "f0482d7b5d81671637fdfb4bb5102825858c7fcfca0747ba1a3ec6b6140d56bd"
+          },
+          "footer": {
+            "fixture": "f1830e14ef26488887a2b95b015f90b57e209a20fe24962dfc7397035ec760b9",
+            "pdf": "6b5fcb7d4b9d032c3c95c3420b966f011ef80db7dc6989e5198acadcc28085a7",
+            "docx": "f72c15461556a261e7fde1f0a95e4a96618603529c31071f0b3dbae443eace16",
+            "layout": "03cd557a51ebe9dfaa57b9df9784e8bc42714ddba88d035090f6c7e19ecc1426",
+            "wordPdf": "6361ce834c3bb53fd767bee7e50fa366b84f754952c698fb4077c17f4b889494",
+            "wordRefreshedPdf": "f02c40bb3e1bdf8ace5be6dd793e8fada1816c12e1e51d207e0f569e7995c167",
+            "wordFieldDump": "fb2c0010b668fe1bf99d7ed5753cc74248bcf250543bcbe8c935355495186a8d",
+            "wordRenderInfoPath": "8636477eedea0d253fe81d91935720ab2b18a600def57cca761933ef6bb14042"
+          },
+          "fields": {
+            "fixture": "989630c5acdf4ff28241f94942eb7a6d1bcf6086818cd1c69dcd03a7f93e3d5e",
+            "pdf": "2b7d34c6070a865a96eaaee5ff44377ed1639303f9c041cba6f8a1024b9cb3a5",
+            "docx": "a81c986773f67bfd7c482cb74b6461de786e8efd4338065e6fe48ed6f2c2fed4",
+            "layout": "43e6048d8ce2928479ec00cabea2d850e9cbc1bd69a331bd7bb5440463badfda",
+            "wordPdf": "b628e8640a38ea2f6e4eca8c8ab342b7fffe5fe58c7f39feb7e8b75f382628cc",
+            "wordRefreshedPdf": "4e37516043f479d960bd76e521d5bcab06172b6188b44bfea1a4bef42df713e4",
+            "wordFieldDump": "9fa09f40113d1800381ab64f984f2f31ff99400c547f722780be186bf7bc0ec7",
+            "wordRenderInfoPath": "8e1cdfd6ace389cf94c18318262dd9cc6a1adaaf0ce0c05a9ee6bbd9ac8bedde"
+          }
+        }
+      },
+      {
+        "target": "mcbu-tip-uzmanlik",
+        "report": "orchestration\\validation\\phase4-close\\regression\\mcbu-tip-uzmanlik\\check-20261007-1722.json",
+        "sha256": "950a949ed8446af6a64b98fd493d69606930d2f36ae08fff4a26564b4ae416e7",
+        "counts": {
+          "PASS": 49,
+          "INFO": 1
+        },
+        "sourceProvenance": {
+          "revision": "df5e94d53d1f6f18bbd7e63dcdc4bea4ad88e721",
+          "trackedDiffSha256": "12dc8027ebcfcb3c20da8eb9c290eec3f93c62b6ee357f6db5e92a5748a0a171",
+          "diagnosticsSha256": "b56b50e9f881cb75c308d30c7488a0df124194751e15322112d6ff9e255193c0",
+          "startedAt": "2026-10-07T14:21:40.150Z"
+        },
+        "artifactSha256": {
+          "default": {
+            "fixture": "afb8a725b51c55647cfc76890539d5bb8dc66af87e7d794017f2fa1705984c42",
+            "pdf": "06c3e13993986f946c95f577b1a0de335ff8157a35b01864df32f865b1126bc4",
+            "docx": "25642868a4fc2af1e928b91042c0b27510640e02b3efdd216faa70ae4a3a9ada",
+            "layout": "ec39007600bebcbc3c915ff2f9f7744acfae1ee72b6bd1f669c7c795a00fa726",
+            "wordPdf": "f4f4e51c47c58975b035f87173b98e58cc4ab2086e71ffe2db2807774154a703",
+            "wordRenderInfoPath": "aca842be017267a6fdf0b02fdf490d411881d8aac2c0d5caa6a76c8d58649f26"
+          }
+        }
+      }
+    ],
+    "selectionMethod": "Full 21-target actual Word run plus fresh ADU/AFSU Tip/SBE final reruns. Initial AFSU positioning regression fixed by opt-in baseline flag; initial SBE export error during live source updates superseded by clean fresh export. No source expected value/tolerance relaxed."
+  },
+  "limitations": [
+    "Long replacement title/jury text on individually positioned fixed-page words",
+    "PhD / English thesis / second-advisor / alternate inner-cover variants",
+    "Footnotes, multi-page tables and other content not exercised by this pilot",
+    "Theme fonts and conditional/unused styles: 109 source property groups retained in mapping inventory"
+  ]
+}

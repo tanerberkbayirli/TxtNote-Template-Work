@@ -11,19 +11,22 @@ export function toggleLayoutDecoration(value, line, enabled) {
   return ["underline", "overline", "line-through"].filter((part) => lines.has(part)).join(" ") || "none";
 }
 
-/** A user's text alignment can target the page writing area or the existing box.
+/** A user's text alignment can target the page, its writing area or the existing box.
  * Template geometry is untouched until the user issues the command.
  */
 export function textAlignmentPatch(item, align, scope = "page") {
-  if (!["left", "center", "right", "justify"].includes(align) || !["page", "box"].includes(scope)
+  if (!["left", "center", "right", "justify"].includes(align) || !["page", "content", "box"].includes(scope)
     || !item || item.type !== "text" || item.locked || !item.editableLayout || !item.editableContent) return null;
   const patch = { id: item.id, style: { align } };
   if (scope === "box") return patch;
   const page = item.page;
-  const left = page?.margins?.leftMm;
-  const right = page?.margins?.rightMm;
+  const left = scope === "page" ? 0 : page?.margins?.leftMm;
+  const right = scope === "page" ? 0 : page?.margins?.rightMm;
   const width = page?.widthMm - left - right;
-  const yMm = item.measuredGeometry?.yMm ?? item.yMm;
+  // Measurements include Word's paint-only baseline transform. Feeding that
+  // transformed Y back into the anchor applies the transform again on each click.
+  const positioned = ["absolute", "anchored"].includes(item.canonical?.layoutMode ?? item.layoutMode);
+  const yMm = positioned ? (item.canonical?.yMm ?? item.yMm) : (item.measuredGeometry?.yMm ?? item.yMm);
   if (![left, right, width, yMm].every(Number.isFinite) || width <= 0) return null;
   // Keep the vertical position/flow slot while making the text a page-wide paragraph.
   // Remove box-local indents so they cannot defeat the requested page alignment.

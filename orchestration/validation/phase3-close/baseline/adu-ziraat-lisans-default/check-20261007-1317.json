@@ -1,0 +1,112 @@
+{
+ "target": "adu-ziraat-lisans",
+ "stamp": "20261007-1317",
+ "counts": {
+  "FAIL": 1,
+  "PASS": 2
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\baseline\\adu-default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\baseline\\adu-default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\phase3-close\\baseline\\adu-default.layout.json"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.406,
+ "commandSeconds": 0.406,
+ "exportMode": "existing-artifacts",
+ "sourceProvenance": {},
+ "checksSha256": "4db4aef0be05ff2ce0aaae7012185288e92eb0d12453cd764b522f7d58bf41db",
+ "artifactSha256": {
+  "default": {
+   "pdf": "1c80e985713a91fec6d4ce197fe244e93c81cd62c6a40e28480c04e09f537fbd",
+   "docx": "42d336c36acb1e6ea579233dcf3f2aa6354bed755b23da27c3e303b7070108e0",
+   "layout": "7f12db6d504e4a8326162ab9b0fd04397ef023a1d8a94968494f39db168ef795"
+  }
+ },
+ "checks": [
+  {
+   "id": "cover-inner-baselines",
+   "kind": "line_baselines",
+   "expected": [
+    33.577,
+    40.605,
+    47.547,
+    54.575,
+    61.602,
+    98.231,
+    140.014,
+    149.461,
+    177.867,
+    187.265,
+    251.199
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/artifacts/adu-ziraat-lisans/source/official.pdf",
+    "locator": "physical p.30; ¶463-466, ¶472, ¶476-483, ¶493; measured visible text baselines from page top"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    33.437,
+    40.465,
+    47.406,
+    54.434,
+    61.458,
+    98.222,
+    140.01,
+    149.457,
+    177.862,
+    187.259,
+    249.196
+   ],
+   "delta": [
+    -0.14,
+    -0.14,
+    -0.141,
+    -0.141,
+    -0.144,
+    -0.009,
+    -0.004,
+    -0.004,
+    -0.005,
+    -0.006,
+    -2.003
+   ],
+   "note": "page 2",
+   "status": "FAIL"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "284 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-default",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

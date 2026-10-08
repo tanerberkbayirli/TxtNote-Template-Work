@@ -761,5 +761,47 @@
       "locator": "variants and unknowns; guide p.34 callout; see two-tier policy"
     },
     "evidence": "UNKNOWN"
-  }
+  },
+{
+  "id": "layout.body-left-master",
+  "kind": "landmark_x",
+  "params": {
+    "source": "layout",
+    "kind": "paragraph",
+    "pages": {
+      "label": "arabic"
+    },
+    "attr": "x0",
+    "agg": "min",
+    "fixture": "master"
+  },
+  "expected": 30,
+  "tolerance": 0.5,
+  "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm left margin)"
+  },
+  "evidence": "EXPLICIT"
+},
+{
+  "id": "layout.body-left-phd",
+  "kind": "landmark_x",
+  "params": {
+    "source": "layout",
+    "kind": "paragraph",
+    "pages": {
+      "label": "arabic"
+    },
+    "attr": "x0",
+    "agg": "min",
+    "fixture": "phd"
+  },
+  "expected": 30,
+  "tolerance": 0.5,
+  "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm left margin)"
+  },
+  "evidence": "EXPLICIT"
+}
 ]

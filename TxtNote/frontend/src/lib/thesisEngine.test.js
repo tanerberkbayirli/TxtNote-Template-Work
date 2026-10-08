@@ -314,7 +314,7 @@ describe("thesis export", () => {
     assert.match(documentXml, /w:pStyle w:val="ThesisHeading1Excluded"/);
     assert.doesNotMatch(documentXml, /ThesisHeading1Excluded,1/);
     assert.match(documentXml, /w:bookmarkStart w:name="_ref_main_source_0"/);
-    assert.match(settingsXml, /<w:updateFields w:val="false"\s*\/>/);
+    assert.match(settingsXml, /<w:updateFields w:val="0"\s*\/>/);
     assert.match(stylesXml, /w:styleId="ThesisHeading1Excluded"[\s\S]*w:outlineLvl w:val="0"/);
     assert.match(stylesXml, /w:styleId="TOC1"/);
     for (const [name, bytes] of Object.entries(entries)) {

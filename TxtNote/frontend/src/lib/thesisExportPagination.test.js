@@ -6,6 +6,7 @@ import { pageMetrics } from "../thesis/pageLayout.js";
 import { buildThesisDocx } from "../thesis/export.js";
 import { compileThesisDocument } from "../thesis/engine.js";
 import generic from "../thesis/templates/generic.js";
+import { asBlocks } from "../thesis/docx/xml.js";
 
 it("preserves measured whole-block page transitions independently of editor zoom", () => {
   const group = { id: "main", rules: { page: generic.page } };
@@ -32,6 +33,18 @@ it("writes a Word page break on the table caption only when the live editor move
   assert.match(caption(await xml({ blockPageBreaks: ["target"] })), /<w:pageBreakBefore\s*\/>/);
   assert.doesNotMatch(caption(await xml({})), /<w:pageBreakBefore\s*\/>/);
   assert.match(await xml({}), /<w:trHeight[^>]*w:hRule="atLeast"/, "table rows retain the CSS line-box and padding minimum without clipping taller cells");
+});
+
+it("preserves a measured heading transition without changing authored heading rules", async () => {
+  const model = compileThesisDocument(generic, {}, "Test", '<p>Before</p><h2>Moved heading</h2><p>After</p>');
+  const section = model.sections.find((entry) => entry.type === "mainContent");
+  const heading = asBlocks(section).find((block) => block.type === "heading" && block.level === 2);
+  assert.ok(heading.thesisAnchor);
+  const bytes = new Uint8Array(await (await buildThesisDocx(model, { blockPageBreaks: [heading.thesisAnchor] })).arrayBuffer());
+  const xml = strFromU8(unzipSync(bytes)["word/document.xml"]);
+  const paragraph = [...xml.matchAll(/<w:p>[^]*?<\/w:p>/g)].map(([value]) => value).filter((value) => value.includes("Moved heading")).at(-1);
+  assert.match(paragraph, /<w:pageBreakBefore\s*\/>/);
+  assert.equal(Boolean(section.rules.headings[2].pageBreakBefore), false);
 });
 
 it("drops the editor's table wrap margin from the caption space-before when the table starts a page", async () => {

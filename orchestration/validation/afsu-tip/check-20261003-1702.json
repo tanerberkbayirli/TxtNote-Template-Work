@@ -1,0 +1,842 @@
+{
+ "target": "afsu-tip",
+ "stamp": "20261003-1702",
+ "counts": {
+  "PASS": 42,
+  "INFO": 2,
+  "FAIL": 1
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-tip\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\afsu-tip\\run\\default.docx",
+   "wordNote": "Word render not requested (run with --word)"
+  }
+ },
+ "wordRequested": false,
+ "checks": [
+  {
+   "id": "page-size",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 / EK 1 (A4)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "34 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-left",
+   "kind": "docx_section",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 + EK 1 (p.16) callouts"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 40.005,
+   "delta": 0.005,
+   "note": "18 sections, range 40.005..40.005",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-right",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 + EK 1 (p.16)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-top",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 + EK 1 (p.16)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-margin-bottom",
+   "kind": "docx_section",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 + EK 1 (p.16)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "margin-left-pdf",
+   "kind": "text_extent",
+   "expected": 40.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 39.998,
+   "delta": -0.002,
+   "note": "min over 22 pages [40.00..40.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "margin-right-pdf",
+   "kind": "text_extent",
+   "expected": 185.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 (210-25 mm; justified text, bound)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 184.997,
+   "delta": -0.003,
+   "note": "max over 22 pages [166.34..185.00]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.5 §2.5 (Times New Roman 12)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "TimesNewRomanPS-BoldMT[Times New Roman]",
+    "TimesNewRomanPS-ItalicMT[Times New Roman]",
+    "TimesNewRomanPSMT[Times New Roman]"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "Times New Roman"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.5 §2.5"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "Times New Roman"
+   ],
+   "note": "922 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "body-font-size",
+   "kind": "font_size",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.5 §2.5 (12 punto)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 29629, 14.0: 87, 10.0: 50, 9.0: 10}",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-spacing-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "360"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2, p.6 §2.7 (1.5 satır)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "1",
+    "1037",
+    "1079",
+    "1104",
+    "1250",
+    "1288",
+    "240",
+    "2513",
+    "336",
+    "340",
+    "360",
+    "430",
+    "464",
+    "57"
+   ],
+   "note": "468 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "body-line-pitch",
+   "kind": "line_pitch",
+   "expected": 7.3,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 1.5 lines. DERIVED: 1.5 x Times New Roman single line (1.149 em x 12 pt = 13.8 pt) = 20.7 pt = 7.30 mm"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": 7.301,
+   "delta": 0.001,
+   "note": "mode bucket 7.3 (310/418 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "709"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 / p.6 §2.7: 12.5 mm = 709 tw (DERIVED mm->twips)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "709"
+   ],
+   "note": "419 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "first-line-indent-pdf",
+   "kind": "line_attr",
+   "expected": 52.5,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2: 40 + 12.5 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 52.495,
+   "delta": -0.005,
+   "note": "35 lines, pages [13, 15, 17, 19, 20, 24]",
+   "status": "PASS"
+  },
+  {
+   "id": "body-align-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "both"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.2 (iki yana yaslı)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "both",
+    "center",
+    "left",
+    "right"
+   ],
+   "note": "421 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-size",
+   "kind": "line_attr",
+   "expected": 14.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "pp.5-6 §2.5-2.7; EK 1 '1. GİRİŞ (14 punto)'"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 14.0,
+   "delta": 0.0,
+   "note": "6 lines, pages [13, 17, 20, 26, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "pp.5-6 §2.5-2.7 (kalın)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "6 lines, pages [13, 17, 20, 26, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-top-margin",
+   "kind": "line_attr",
+   "expected": 25.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "new page at top margin 25 mm (p.4 §2.2; EK 1)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 25.208,
+   "delta": 0.208,
+   "note": "6 lines, pages [13, 17, 20, 26, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-centre",
+   "kind": "line_attr",
+   "expected": 112.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "pp.5-6 (ortalı); centre of text area 40..185 INFERRED"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": 112.394,
+   "delta": -0.106,
+   "note": "6 lines, pages [13, 17, 20, 26, 29, 32]",
+   "status": "PASS"
+  },
+  {
+   "id": "h1-space-after-docx",
+   "kind": "docx_attr",
+   "expected": [
+    "240"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.6 §2.7 (12 nk); 240 tw = 12 pt. Weak: present anywhere in document/styles"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": [
+    "0",
+    "120",
+    "1272",
+    "1566",
+    "158",
+    "232",
+    "240",
+    "242",
+    "300",
+    "336",
+    "376",
+    "378",
+    "414",
+    "516",
+    "552",
+    "828"
+   ],
+   "note": "474 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "h2-indent-upper",
+   "kind": "line_attr",
+   "expected": 52.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "§2.7 'alt başlıklar gövde metni ile aynı hizadan' (40+12.5); H2 uppercase per EK 1/EK 13 (CONFLICT with §2.6 prose, example applied per user rule)"
+   },
+   "evidence": "MEASURED",
+   "ruling": "CONFLICT H2 case: example applied",
+   "actual": 52.263,
+   "delta": -0.237,
+   "note": "10 lines, pages [13, 15, 17, 19, 20, 24]",
+   "status": "PASS"
+  },
+  {
+   "id": "h2-bold",
+   "kind": "line_attr",
+   "expected": 1,
+   "tolerance": 0,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 1 p.16 (12 pt bold)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 1,
+   "delta": 0,
+   "note": "10 lines, pages [13, 15, 17, 19, 20, 24]",
+   "status": "PASS"
+  },
+  {
+   "id": "h3-indent",
+   "kind": "line_attr",
+   "expected": 52.5,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 1 p.16 H3 x aligned with text (64.3 measured on example page = 51.8+12.5)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 52.263,
+   "delta": -0.237,
+   "note": "5 lines, pages [14, 18, 21, 27, 30]",
+   "status": "PASS"
+  },
+  {
+   "id": "h3-size",
+   "kind": "line_attr",
+   "expected": 12.0,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 1 p.16 / §2.7"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "5 lines, pages [14, 18, 21, 27, 30]",
+   "status": "PASS"
+  },
+  {
+   "id": "page-labels",
+   "kind": "page_labels",
+   "expected": "none x2, i, ii, iii, iv, v, vi, vii, viii, ix, x, 1..N",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.3, p.8 §3.1.2-3.1.3: dış kapak + boş sayfa numarasız; Roman i from iç kapak; Arabic 1 from giriş"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": "none x2, i, ii, iii, iv, v, vi, vii, viii, ix, x, 1..N",
+   "status": "PASS"
+  },
+  {
+   "id": "page-number-centre-sheet",
+   "kind": "page_number_attr",
+   "expected": 105.0,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.4 §2.3 alt orta; centre of the sheet 105 mm INFERRED (spec page.numbering)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "actual": 104.999,
+   "delta": -0.001,
+   "note": "median of 32 [104.99..105.04]",
+   "status": "PASS"
+  },
+  {
+   "id": "inner-cover-baselines",
+   "kind": "line_baselines",
+   "expected": [
+    52.96,
+    57.83,
+    62.7,
+    72.43,
+    113.81,
+    169.78,
+    179.51,
+    206.29,
+    211.16,
+    259.84
+   ],
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 7 (Tıp guide p.23, real-size baselines; src extraction orchestration/validation/afsu-tip/independent-1/src-tip-geom.txt). DHF copy differs (CONFLICT, spec conflicts[]); Tıp copy used for the Tıp registry id"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    52.95,
+    57.816,
+    62.686,
+    72.421,
+    113.804,
+    169.788,
+    179.524,
+    206.301,
+    211.171,
+    259.854
+   ],
+   "delta": [
+    -0.01,
+    -0.014,
+    -0.014,
+    -0.009,
+    -0.006,
+    0.008,
+    0.014,
+    0.011,
+    0.011,
+    0.014
+   ],
+   "note": "page 3",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-baselines-head",
+   "kind": "line_baselines",
+   "expected": [
+    73.26,
+    82.38,
+    91.5,
+    118.83
+   ],
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25 baselines, src-tip-geom.txt)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": [
+    73.265,
+    82.364,
+    91.463,
+    118.765
+   ],
+   "delta": [
+    0.005,
+    -0.016,
+    -0.037,
+    -0.065
+   ],
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-Hazirlayan->Kabul",
+   "kind": "line_gap",
+   "expected": 9.15,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.132,
+   "delta": -0.018,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-Kabul->Danisman",
+   "kind": "line_gap",
+   "expected": 9.12,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.132,
+   "delta": 0.012,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-Danisman->Isbu",
+   "kind": "line_gap",
+   "expected": 13.97,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 13.966,
+   "delta": -0.004,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-Isbu->UZMANLIK",
+   "kind": "line_gap",
+   "expected": 4.87,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 4.865,
+   "delta": -0.005,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-UZMANLIK->JURI",
+   "kind": "line_gap",
+   "expected": 19.47,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 19.468,
+   "delta": -0.002,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-JURI->Baskan",
+   "kind": "line_gap",
+   "expected": 4.87,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 4.866,
+   "delta": -0.004,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-Baskan->Uye",
+   "kind": "line_gap",
+   "expected": 32.49,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 32.486,
+   "delta": -0.004,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-Uye->ONAY",
+   "kind": "line_gap",
+   "expected": 26.92,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 26.913,
+   "delta": -0.007,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "approval-gap-ONAY->DEKAN",
+   "kind": "line_gap",
+   "expected": 8.98,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 9 (Tıp guide p.25) baseline gap, derived from src-tip-geom.txt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 8.954,
+   "delta": -0.026,
+   "note": "page 4",
+   "status": "PASS"
+  },
+  {
+   "id": "toc-sayfa-to-first-row",
+   "kind": "line_gap",
+   "expected": 9.41,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 13 (p.29): 64.11-54.70"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 9.41,
+   "delta": 0.0,
+   "note": "page 8",
+   "status": "PASS"
+  },
+  {
+   "id": "toc-row-pitch",
+   "kind": "pitch_series",
+   "expected": 8.71,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 13 (p.29) 24.7 pt row pitch = 8.71 mm (measured ~8.72)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 8.711,
+   "delta": 0.001,
+   "note": "median of 25 gaps [8.71..8.71]",
+   "status": "PASS"
+  },
+  {
+   "id": "toc-h2-indent",
+   "kind": "line_attr",
+   "expected": 45.0,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 13 (p.29): H2 indent 5.0 mm from text-area left (30.01-25.00)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 44.996,
+   "delta": -0.004,
+   "note": "7 lines, pages [8]",
+   "status": "PASS"
+  },
+  {
+   "id": "toc-h3-indent",
+   "kind": "line_attr",
+   "expected": 52.5,
+   "tolerance": 0.25,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 13 (p.29): H3 indent 12.5 mm (37.51-25.00)"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 52.495,
+   "delta": -0.005,
+   "note": "3 lines, pages [8]",
+   "status": "PASS"
+  },
+  {
+   "id": "note-toc-labels",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "EK 13"
+   },
+   "evidence": "UNKNOWN",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "toc_labels kind cannot resolve the İÇ KAPAK and KABUL VE ONAY SAYFASI rows (those pages print no title line); the other 38 TOC rows match their real page labels (checker run 1: 38/40)."
+  },
+  {
+   "id": "footnote-single-pitch",
+   "kind": "line_gap",
+   "expected": 9.74,
+   "tolerance": 0.1,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "p.6 §2.7 (dipnot tek aralık). DERIVED: 2 footnote line pitches x TNR single 13.8 pt (4.87 mm); footnote size UNKNOWN (12 pt general INFERRED)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "actual": 10.84,
+   "delta": 1.1,
+   "note": "page 13",
+   "status": "FAIL"
+  },
+  {
+   "id": "docx-no-undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "DOCX validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "note-unknown",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0.5,
+   "source": {
+    "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "locator": "spec unknowns"
+   },
+   "evidence": "UNKNOWN",
+   "ruling": null,
+   "status": "INFO",
+   "actual": "UNKNOWN (spec unknowns, no check): page-number font/size and baseline/footer distance; header distance; footnote size; table borders/cell padding; ethics page content; outer cover (EK 6 schematic) vertical positions; DHF English wording. NOT CHECKED here though spec EXPLICIT: caption spacing 6/12 pt, table note 10 pt, bibliography 6 nk, TOC H4 indent, abstract/teşekkür header geometry (EK 10-12)."
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 # REFACTORING.md
 
-What was done, what is left, and the rules that keep it from re-collapsing.
+Completed and started work, and the rules that keep it from re-collapsing. Unstarted Sidebar and shell-hook extraction tasks were removed at user request on 2026-10-08.
 
 ---
 
@@ -41,38 +41,6 @@ open tabs, and restoring from the bin — those three touch the most state.
 
 ---
 
-## Phase 2 — Break up `Sidebar.jsx` (909 lines)
-
-The one file still over budget. It holds 14 pieces of state and 27 handlers
-across two unrelated concerns. Extract in this order, running the app between
-each step:
-
-**2a. `features/sidebar/hooks/useWorkspaceCollection.js`** (~420 lines out)
-
-Everything workspace-shaped: the `workspaces` / `currentWorkspaceId` /
-`workspaceMenu` / `renameTarget` / `avatarTarget` / `deleteTarget` state and
-the `create` / `rename` / `avatar` / `delete` / `pin` handlers. Returns
-`{ workspaces, current, ordered, menu, dialogs, actions }`. Take the whole
-group in one move — the handlers close over each other's state.
-
-**2b. `features/sidebar/hooks/useContentList.js`** (~90 lines out)
-
-`visibleItems`, `pinnedCount`, `contextMenu`, `selectItem`, `togglePin`,
-`deleteItem`, `handleCreateContent`, `handleUploadContent`.
-
-**2c. Split the JSX** (~314 lines out) into `SidebarHeader.jsx`,
-`WorkspaceSwitcherMenu.jsx`, `ContentList.jsx`, `NavRail.jsx`.
-
-**2d. Drop the controlled/uncontrolled fallback.** `Sidebar` currently supports
-both, which is why it carries `internalItems`, `internalTrash`,
-`internalActiveItemId`, `internalActiveNavId` and four `controlled*` ternaries.
-`App` always passes the controlled props, so the internal branch is dead weight.
-Delete it and the component loses another ~40 lines and its trickiest reads.
-
-Target: `Sidebar.jsx` under 120 lines, composition only.
-
----
-
 ## Phase 3 — Move the app onto the service layer
 
 Right now `App.jsx` and `Sidebar.jsx` still `import { DEFAULT_ITEMS } from
@@ -97,19 +65,6 @@ backend lands. Leave `LATENCY_MS` alone in development; set it to `0` in tests.
 
 Nothing under `frontend/` may import `services/mock` or `services/http` after
 this phase. Only `@shared/services`.
-
----
-
-## Phase 4 — Extract the shell's state into hooks
-
-`App.jsx` (323 lines) holds three independent state machines. Once Phase 3 puts
-async calls in them they will grow. Split into `app/hooks/useTabs.js`,
-`app/hooks/useNotes.js`, `app/hooks/useTrash.js`, leaving `App.jsx` as
-composition only.
-
-`useTabs` is the awkward one: `dropTab` reads `tabs`, `tabHistory`,
-`activeTabId` and `currentWorkspaceId` together to pick the next active tab.
-Keep that logic intact and move it whole — do not split it across two hooks.
 
 ---
 

@@ -9,6 +9,7 @@ export interface TextStyle {
   fontWeight?: number;
   italic?: boolean;
   decoration?: string;
+  /** Authored table-cell fmt-align-* classes override cellStyle.align in editor/PDF/DOCX and retain table-cell display. */
   align?: "left" | "center" | "right" | "justify";
   lineHeight?: number;
   lineSpacing?: CanonicalLineSpacing;
@@ -171,6 +172,7 @@ export interface CaptionRule {
   /** Figures and caption kinds: image alignment and the figure block's outer spacing (pt); without it the editor's default figure margin applies. */
   box?: { align?: "left" | "center" | "right"; spaceBeforePt?: number; spaceAfterPt?: number };
   /** Tables only: typography of the cells (e.g. single spacing, centered values). A cell's own alignment wins; omitted keys inherit the body. */
+  /** Cell paragraphs default to zero first-line indent; an explicit firstLineIndentMm applies in editor/PDF and Word. */
   cellStyle?: Partial<TextStyle>;
   /**
    * Tables only, opt-in: cell padding in mm (missing edge = 0), editor/PDF (CSS padding) and DOCX (w:tcMar on every cell). Without it the
@@ -297,6 +299,8 @@ interface LayoutBox {
   marginTopMm?: Length; marginBottomMm?: Length; /** Width inside a row group. */ widthPercent?: number;
   /** Positioned leaf blocks use page-origin coordinates in millimetres, shared by HTML and DOCX. */
   id?: string; layoutMode?: "flow" | "absolute" | "anchored"; xMm?: Length; yMm?: Length; widthMm?: Length; heightMm?: Length;
+  /** Opt-in: retain Word baseline paint correction for positioned text; legacy positioned geometry is unchanged when absent. Requires typography.lineSpacing.baseline="word". */
+  wordBaseline?: boolean;
   zIndex?: number; locked?: boolean; lockAspectRatio?: boolean;
   /** Flow height a positioned template block keeps in the flow (default: its own height; 0 = no flow slot). */
   flowHeightMm?: Length;
@@ -400,4 +404,27 @@ export interface ThesisTemplate {
    * thesis.captionNumbering = id). The first entry should equal the template's default numbering.
    */
   captionNumberingChoices?: Array<{ id: string; label: string; numbering: Partial<CaptionRule["numbering"]> }>;
+}
+
+/** Measured PDF draw operations, independent of source-derived expected values. */
+export interface ThesisLayoutRect {
+  xMm: number; yMm: number; widthMm: number; heightMm: number;
+}
+export interface ThesisLayoutTextOp extends ThesisLayoutRect {
+  id: string; landmarkId: string; ancestorIds: string[]; text: string; spaceAfter: boolean;
+  baselineMm: number; fontFamily: string; exportedFont: string | null; fontSizePt: number; clipped: boolean;
+}
+export interface ThesisLayoutLandmark extends ThesisLayoutRect {
+  /** Stable for the same template/content; duplicate anchors have deterministic instance suffixes. */
+  id: string; kind: string; sectionId: string; text: string; fragments: ThesisLayoutRect[];
+  firstBaselineMm: number | null; lastBaselineMm: number | null; linePitchMm: number | null;
+  fontFamily: string | null; exportedFonts: string[]; fontSizePt: number | null; lineCount: number;
+}
+export interface ThesisLayoutReport {
+  version: 1; origin: 'top-left'; units: { geometry: 'mm'; fontSize: 'pt' };
+  pages: Array<{
+    page: number; groupId: string; sectionIds: string[]; label: string; widthMm: number; heightMm: number;
+    landmarks: ThesisLayoutLandmark[]; textOps: ThesisLayoutTextOp[];
+    firstBodyBaselineMm: number | null; lastBodyBaselineMm: number | null;
+  }>;
 }

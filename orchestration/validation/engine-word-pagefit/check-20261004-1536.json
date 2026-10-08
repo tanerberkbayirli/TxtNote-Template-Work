@@ -1,0 +1,91 @@
+{
+ "target": "engine-word-pagefit",
+ "stamp": "20261004-1536",
+ "counts": {
+  "SKIPPED": 4,
+  "PASS": 1
+ },
+ "variants": {
+  "tab": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\engine-word-pagefit\\run\\tab.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\engine-word-pagefit\\run\\tab.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\engine-word-pagefit\\run\\tab.layout.json",
+   "wordNote": "Word render failed: C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\word2pdf.ps1 : Cannot convert null to type \"System.In\r\ntPtr\".\r\n    + CategoryInfo          : InvalidArgument: (:) [word2pdf.ps1], RuntimeException\r\n    + FullyQualifiedErrorId : nullToObjectInvalidCast,word2pdf.ps1"
+  }
+ },
+ "wordRequested": true,
+ "measurementSeconds": 0.187,
+ "checks": [
+  {
+   "id": "TABN5S0-tail-lines",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and baselines as Word",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-pagefit DOCX",
+    "locator": "TABN5S0 paragraph after table"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render failed: C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\word2pdf.ps1 : Cannot convert null to type \"System.In\r\ntPtr\".\r\n    + CategoryInfo          : InvalidArgument: (:) [word2pdf.ps1], RuntimeException\r\n    + FullyQualifiedErrorId : nullToObjectInvalidCast,word2pdf.ps1"
+  },
+  {
+   "id": "TABN10S0-tail-lines",
+   "kind": "line_attr_match",
+   "expected": "same physical pages and baselines as Word",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of engine-word-pagefit DOCX",
+    "locator": "TABN10S0 paragraph after table"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render failed: C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\word2pdf.ps1 : Cannot convert null to type \"System.In\r\ntPtr\".\r\n    + CategoryInfo          : InvalidArgument: (:) [word2pdf.ps1], RuntimeException\r\n    + FullyQualifiedErrorId : nullToObjectInvalidCast,word2pdf.ps1"
+  },
+  {
+   "id": "engine-layout-pdf-tab",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "actual": 0.0,
+   "note": "421 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-tab",
+   "kind": "page_count_match",
+   "expected": "equal PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render failed: C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\word2pdf.ps1 : Cannot convert null to type \"System.In\r\ntPtr\".\r\n    + CategoryInfo          : InvalidArgument: (:) [word2pdf.ps1], RuntimeException\r\n    + FullyQualifiedErrorId : nullToObjectInvalidCast,word2pdf.ps1"
+  },
+  {
+   "id": "engine-page_labels_match-tab",
+   "kind": "page_labels_match",
+   "expected": "equal PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "status": "SKIPPED",
+   "reason": "Word render failed: C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\word2pdf.ps1 : Cannot convert null to type \"System.In\r\ntPtr\".\r\n    + CategoryInfo          : InvalidArgument: (:) [word2pdf.ps1], RuntimeException\r\n    + FullyQualifiedErrorId : nullToObjectInvalidCast,word2pdf.ps1"
+  }
+ ]
+}

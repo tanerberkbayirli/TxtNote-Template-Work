@@ -1,0 +1,422 @@
+{
+ "target": "aku-sbe",
+ "variants": [
+  "aku-sbe-master-tr-v1",
+  "aku-sbe-phd-tr-v1"
+ ],
+ "verdict": "FAIL",
+ "counts": {
+  "PASS": 22,
+  "FAIL": 6,
+  "CONFLICT": 6,
+  "UNKNOWN": 6
+ },
+ "items": [
+  {
+   "id": "P01",
+   "requirement": "Paper A4 210x297 mm",
+   "status": "PASS",
+   "expected": "210x297 mm",
+   "actual": "PDF every page 210.00x297.00 mm; DOCX pgSz 11906x16838 twips",
+   "evidence": "Guide s.5.1 p.10; PyMuPDF page.rect; document.xml sectPr",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P02",
+   "requirement": "Margins top/bottom 25, left/right 30 mm",
+   "status": "PASS",
+   "expected": "25/25/30/30 mm",
+   "actual": "PDF body text extents x 30.00..180.12, y 25.16..271.99 (all body pages, both variants); DOCX pgMar 1417/1701 twips = 24.99/30.00 mm",
+   "evidence": "Guide s.5.1 p.10",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P03",
+   "requirement": "Font Times New Roman, genuine (also page numbers)",
+   "status": "PASS",
+   "expected": "TNR",
+   "actual": "All text spans TimesNewRomanPSMT/-BoldMT/-ItalicMT/-BoldItalicMT; embedded font programs read with fontTools: name ID1/4 'Times New Roman', v7.12 Monotype (not Tinos/Liberation). DOCX: all rFonts Times New Roman. (Helvetica/Courier/Symbol are jsPDF resources declared but used by no text span.)",
+   "evidence": "Guide s.5.2 p.11, checklist item 3; page.get_fonts + extract_font",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P04",
+   "requirement": "Body 12 pt, line spacing 1.5",
+   "status": "PASS",
+   "expected": "12 pt; 1.5 lines (Word TNR: 12*1.15*1.5 = 20.70 pt)",
+   "actual": "12.0 pt; pitch 7.30 mm = 20.69 pt (196 samples); DOCX line=360 auto",
+   "evidence": "Guide s.5.2; master.dump.txt p15-18",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P05",
+   "requirement": "Paragraph first-line indent 1.25 cm, justified",
+   "status": "PASS",
+   "expected": "12.5 mm, justify",
+   "actual": "x0=42.49 vs 30.00 = 12.49 mm; right edge 179.98-180.00; DOCX firstLine=709 twips (12.51 mm), jc=both",
+   "evidence": "Guide s.5.2",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P06",
+   "requirement": "Heading levels H2..H5 form (ondalik sistem)",
+   "status": "PASS",
+   "expected": "1. BOLD CAPS; 1.1. CAPS regular; 1.1.1. Title Case bold; 1.1.1.1. Title Case regular; left; single; numbers restart per chapter",
+   "actual": "Bold/regular per level verified in body and TOC; 'N. ' with space after dot; left aligned; DOCX Heading2..5 bold/regular as required; spacing 120/120 twips, line 240",
+   "evidence": "Guide s.2.6 iv, s.5.5.2; dump p16,19",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P07",
+   "requirement": "Heading text spacing 6/6 pt (heading -> text)",
+   "status": "PASS",
+   "expected": "Word additive 2.6+6+6+11.2 pt = 25.8 pt",
+   "actual": "H2->text baseline 9.10 mm = 25.8 pt (official Word sample 9.40 mm: 0.3 mm, within 0.5)",
+   "evidence": "Guide s.5.5.2 i-iii; dump p16,19",
+   "likely_component": "",
+   "source_class": "EXPLICIT/MEASURED"
+  },
+  {
+   "id": "P08",
+   "requirement": "Chapter heading 'BIRINCI BOLUM' own line + title, bold caps centred, ordinal words, new page",
+   "status": "PASS",
+   "expected": "centred bold caps, title on next line, each chapter on a new page",
+   "actual": "Centred (x-centre 105.0), bold, new page for all 4 chapters (y=33.18); DOCX Heading1 pageBreakBefore, spacing 240/240",
+   "evidence": "Guide s.2.6 iii/iv, s.5.5.1; dump p16",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P09",
+   "requirement": "GIRIS / TARTISMA, SONUC VE ONERILER / KAYNAKCA / EKLER titles bold caps centred",
+   "status": "PASS",
+   "expected": "bold, caps, centred",
+   "actual": "all centred bold caps (GIRIS x 99.00-110.99)",
+   "evidence": "Guide s.3.1 Not, s.3.3 Not, s.4.1 Not, EK 5-7",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P10",
+   "requirement": "Page numbering",
+   "status": "PASS",
+   "expected": "Front matter lower-roman, ic kapak = i unprinted, etik beyan = ii, GIRIS restarts 1 arabic; bottom centre TNR 12, no dot/dash",
+   "actual": "Labels measured: ii,iii,iv..xii then 1..24; footer baseline 283.55 mm centred, TNR 12; no punctuation; DOCX sections: pgNumType lowerRoman start=1 at inner cover, decimal start=1 at GIRIS, PAGE fields in footers, outer/inner cover footers empty",
+   "evidence": "Guide s.5.3 p.11; sectPr",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P11",
+   "requirement": "Front matter order",
+   "status": "PASS",
+   "expected": "Baslik, Etik, Enstitu Onayi, Ozet, Abstract, On Soz, Icindekiler, Tablolar, Sekiller, Resimler, Simgeler, GIRIS",
+   "actual": "Same order in both variants (p3..p14)",
+   "evidence": "Guide s.2 p.3/4",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P12",
+   "requirement": "Captions: above, 11 pt, centred, only 'Tablo N.' bold, single 0/0; '(Devam)' continuation with repeated header row",
+   "status": "PASS",
+   "expected": "as listed",
+   "actual": "Captions above, 11 pt, centred (x centre 105.02), label bold + title regular; continuation 'Tablo 1. (Devam) ...' + header row repeated; DOCX caption spacing 0/0 line 240",
+   "evidence": "Guide s.6.5.3 pp.29-31; dump p21,22,26,30",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P13",
+   "requirement": "Source line under table/figure/picture: centred, 10/11 pt, 'Kaynak:' bold only",
+   "status": "PASS",
+   "expected": "centred, 11 pt (10 or 11 allowed)",
+   "actual": "centred 85.92..124.07, 11 pt, bold label + regular text",
+   "evidence": "Guide s.6.5.3",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P14",
+   "requirement": "Tables: single spacing 0/0, cell text 11 pt (>=9), rules <= 1 pt, inside text area",
+   "status": "PASS",
+   "expected": "",
+   "actual": "cell text 11 pt; rule width 0.75 pt; table x 29.91..179.87; DOCX cell paragraphs spacing 0/0 line 240, border sz=6 (0.75 pt)",
+   "evidence": "Guide s.6.5.3 + checklist 19/20",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P15",
+   "requirement": "Bibliography: single, 0/0, no numbers, 2nd+ lines 0.5 cm in",
+   "status": "PASS",
+   "expected": "5.0 mm hang",
+   "actual": "hang 35.00-30.00 = 5.00 mm (DOCX hanging=283 twips), pitch 4.87 mm (13.8 pt), no gaps",
+   "evidence": "Guide s.4.1 p.8",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P16",
+   "requirement": "Table of contents form",
+   "status": "PASS",
+   "expected": "ICINDEKILER bold; 'Sayfa' right, underlined, below; rows single 0/0; dot leaders; numbers flush right; chapter rows centred no number; roman/arabic",
+   "actual": "TOC p9-10 as required; row pitch 4.86 mm; leaders end x=180.00; every TOC page number equals the measured page label of the heading (ii..xii, 1..24); wrapped rows hang under the title like EK 8",
+   "evidence": "Guide s.2.6 + EK 8",
+   "likely_component": "",
+   "source_class": "EXPLICIT/MEASURED"
+  },
+  {
+   "id": "P17",
+   "requirement": "Lists (Tablolar/Sekiller/Resimler) generated only if >=3 entries, TOC form, 'Sayfa'",
+   "status": "PASS",
+   "expected": "",
+   "actual": "3 entries -> 3 lists; second export with 2 tables/2 figures/2 pictures -> 0 lists (aku-sbe-master-lt3.pdf)",
+   "evidence": "Guide s.2.7-2.9, EK 9",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P18",
+   "requirement": "Ozet / Abstract / On Soz",
+   "status": "PASS",
+   "expected": "single spaced, no indent, header block bold centred, 'Anahtar Kelimeler:' bold label, signature at right edge",
+   "actual": "as required (one page each; keyword continuation hangs under label; on soz name ends x=180.02)",
+   "evidence": "Guide s.2.4/2.5, EK 5-7, checklist 10",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P19",
+   "requirement": "Block quotation (>10 lines): 10 pt, single, 2 cm in both sides, quoted",
+   "status": "PASS",
+   "expected": "10 pt; 50.0..160.0 mm",
+   "actual": "x 49.99..159.99, 10 pt, pitch 4.05 mm",
+   "evidence": "Guide s.6.3.1 xiv",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P20",
+   "requirement": "Footnote separator ~4 cm from left edge of text area",
+   "status": "PASS",
+   "expected": "~40 mm",
+   "actual": "line 30.0..70.0 mm (0.75 pt)",
+   "evidence": "Guide s.6.3.2",
+   "likely_component": "",
+   "source_class": "EXPLICIT (approx.)"
+  },
+  {
+   "id": "P21",
+   "requirement": "PhD variant strings",
+   "status": "PASS",
+   "expected": "DOKTORA TEZI / Doktora Tezi / 'Doktora tezi olarak' + second advisor",
+   "actual": "diff master vs phd shows only these (plus jury rows)",
+   "evidence": "phd.dump.txt diff",
+   "likely_component": "",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "P22",
+   "requirement": "Etik beyan: 12 pt, bold quoted title, date/Imza/name block at right",
+   "status": "PASS",
+   "expected": "EK 3 layout",
+   "actual": "bold quoted title, date-Imza-name stacked right (x 147.9..174.5); one page 'ii'",
+   "evidence": "Guide EK 3 p.39",
+   "likely_component": "",
+   "source_class": "EXPLICIT/MEASURED"
+  },
+  {
+   "id": "F01",
+   "requirement": "All text black (incl. page numbers)",
+   "status": "FAIL",
+   "expected": "RGB 0,0,0 (checklist item 2: no text colour other than black)",
+   "actual": "PDF: 3129 text spans colour #111111; plus 11 spans #BFBFBF grey on the Enstitu Onayi placeholder page (p5). DOCX runs have no colour (auto) except one BFBFBF run.",
+   "evidence": "Tez_Kontrol_Listesi_2023.docx item 2; span colour 1118481 / 12566463",
+   "likely_component": "PDF export text colour token / approval placeholder style",
+   "source_class": "EXPLICIT (official checklist)"
+  },
+  {
+   "id": "F02",
+   "requirement": "KAYNAKCA title to first entry = one blank single line",
+   "status": "FAIL",
+   "expected": "27.6 pt = 9.74 mm baseline-to-baseline (official Word sample KAYNAKCA page: 28.96 -> 38.70 = 9.74 mm)",
+   "actual": "9.10 mm (25.8 pt); same 12 pt gap for GIRIS/TARTISMA/EKLER DIZINI titles",
+   "evidence": "Guide s.4.1 p.8; master p36 base 33.18 -> 42.28; sample ornek_metin p.25",
+   "likely_component": "template mainTitle spacing 12/12 (INFERRED); should be one blank 13.8 pt line",
+   "source_class": "EXPLICIT + MEASURED (diff 0.64 mm > 0.5)"
+  },
+  {
+   "id": "F03",
+   "requirement": "Second and later lines of body headings (H2-H5) start at the number's dot (hanging)",
+   "status": "FAIL",
+   "expected": "hanging continuation (checklist items 18, 22; EK 8 continuation ~37.5 mm for '1.3.')",
+   "actual": "Continuation lines flush left: x0=30.00 mm (master p19 'ORNEGI COK UZUN BIR BASLIK METNI'); DOCX ind left=0 hanging=0. TOC rows do hang. Official sample itself is inconsistent (one heading hangs at 37.56, others flush).",
+   "evidence": "Tez_Kontrol_Listesi_2023 items 18/22; master.dump.txt p19",
+   "likely_component": "engine heading paragraph style (no hanging option for headings)",
+   "source_class": "EXPLICIT (official checklist)"
+  },
+  {
+   "id": "F04",
+   "requirement": "Table cell alignment: numbers centred, header centred, text left",
+   "status": "FAIL",
+   "expected": "guide table example p.31: 'rakamsa ortali, yazi ise sola dayali'; header cells '(ortali)'",
+   "actual": "all cells (headers and numbers) left aligned: header 'f' x0=82.99 in column 80.04..129.95 (centre 105.0); numbers 82.99/132.90",
+   "evidence": "Guide p.31 sample table; master p21 dump",
+   "likely_component": "engine table cell alignment (cellStyle align left only)",
+   "source_class": "EXPLICIT (guide example annotations)"
+  },
+  {
+   "id": "F05",
+   "requirement": "Ekler Dizini: appendices listed with page numbers in Tablolar Listesi format",
+   "status": "FAIL",
+   "expected": "page with 'Sayfa', dot leaders, start page numbers (Guide s.4.2, EK 11)",
+   "actual": "plain typed list 'Ek 1: Anket Formu' without leaders / page numbers / 'Sayfa' (master p37); engine has no appendix-list generator (template notes admit the limitation)",
+   "evidence": "Guide s.4.2 p.8; master p37",
+   "likely_component": "engine capability gap (policy: gap is not a terminal PASS)",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "F06",
+   "requirement": "DOCX TOC chapter row consistent with PDF / EK 8",
+   "status": "FAIL",
+   "expected": "one block, 12 pt before and after, single (as the PDF export)",
+   "actual": "DOCX: 'BIRINCI BOLUM' and chapter title are two paragraphs each 12/12 = 24 pt between them in Word; PDF has 0 pt between them (4.86 mm apart)",
+   "evidence": "Guide EK 8 p.44; document.xml paragraphs 94/95; master p9",
+   "likely_component": "DOCX exporter TOC chapter-row builder",
+   "source_class": "EXPLICIT"
+  },
+  {
+   "id": "C01",
+   "requirement": "Paragraph spacing 'once 6nk sonra 6nk'",
+   "status": "CONFLICT",
+   "expected": "Guide s.5.2: before 6 / after 6 (Word additive = 12 pt between paragraphs) vs official Word-made sample Ornek_Tez_Metni_2026.pdf: 47 of 50 paragraph starts 9.4 mm apart = 20.7 + 6.0 pt",
+   "actual": "Implementation additive 12 pt (11.5 mm gap)",
+   "evidence": "template notes already record the conflict; human decision needed",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "C02",
+   "requirement": "Inner cover sizes/margins",
+   "status": "CONFLICT",
+   "expected": "Guide text: 12 pt blocks, 16 pt title, margins 25/25/30/30; official Ic_Kapak_*.docx forms: 14 pt everywhere, margins 25 mm all sides; official Ornek_Tez_Kapagi PDF: 12/16/12 pt but jury block 14 pt",
+   "actual": "Implementation 12/16/12 pt, jury 12 pt, 30 mm sides",
+   "evidence": "decide jury block 12 vs 14 pt and side margin 30 vs 25 mm",
+   "likely_component": "docx pgMar 1417 all sides, sz=28; kapak sample p2 jury sz=14.0",
+   "source_class": ""
+  },
+  {
+   "id": "C03",
+   "requirement": "Right margin of official sample text",
+   "status": "CONFLICT",
+   "expected": "Guide: 3 cm. Official Ornek_Tez_Metni_2026.pdf body text ends at x=181.0-181.1 mm (right margin ~29 mm)",
+   "actual": "Implementation 30 mm (explicit text wins)",
+   "evidence": "note only",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "C04",
+   "requirement": "Chapter heading block spacing / line spacing / top-of-page offset",
+   "status": "CONFLICT",
+   "expected": "Guide: 12 pt before/after; EK 8 says 'tek satir'; official sample: title lines 1.5 apart (7.32 mm), 'BIRINCI BOLUM'->title 11.52 mm (separate paragraphs), first baseline at 28.96 (no 12 pt before at page top)",
+   "actual": "Implementation: one paragraph 'BIRINCI BOLUM' + line break + title, 1.5 lines (7.31 mm), 12/12, first baseline 33.18 (12 pt applied at page top)",
+   "evidence": "exact values",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "C05",
+   "requirement": "Heading alignment",
+   "status": "CONFLICT",
+   "expected": "Guide s.2.6 Not / s.5.5.2: 'iki yana yasli' and 'sola dayali, girintisiz' in the same sentence",
+   "actual": "Implementation ragged right; official sample also ragged right",
+   "evidence": "clarify",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "C06",
+   "requirement": "Position of 'Sayfa' under TOC heading",
+   "status": "CONFLICT",
+   "expected": "Guide text 'iki satir araligi asagiya'; official Kapak sample 14.66 mm (3 pitches); official Metin sample 9.40 mm; guide EK 8 ~7 mm at 11 pt",
+   "actual": "Implementation 9.74 mm",
+   "evidence": "low impact",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "U01",
+   "requirement": "Footnote font size / spacing / numbering",
+   "status": "UNKNOWN",
+   "expected": "Guide gives no size (only separator ~4 cm); official samples contain no footnotes",
+   "actual": "Implementation 9 pt single (template comment cites a non-existent guide '6.4'); DOCX FootnoteText style 10 pt but runs 9 pt",
+   "evidence": "source silent",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "U02",
+   "requirement": "Equation size/numbering/spacing",
+   "status": "UNKNOWN",
+   "expected": "source silent",
+   "actual": "italic ~14.5 pt, centred, number '(1)' not rendered although data-eq-numbered=true",
+   "evidence": "master p23",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "U03",
+   "requirement": "Page-number distance from bottom edge",
+   "status": "UNKNOWN",
+   "expected": "source says only 'alt orta'",
+   "actual": "baseline 283.55 mm (13.4 mm), DOCX footer 12.5 mm",
+   "evidence": "",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "U04",
+   "requirement": "Outer cover (Tez tanitim) window geometry/size",
+   "status": "UNKNOWN",
+   "expected": "EK 1 is 11 pt on a guide page; window not specified",
+   "actual": "12 pt, top-anchored at 228.34 mm; with a 190-char/9-line title it overflows to a 2nd physical page (date + city spill, p2); with a guide-length 125-char title it fits one page (lt3 export)",
+   "evidence": "master p1-2; lt3 p1",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "U05",
+   "requirement": "H5 spacing, GIRIS/KAYNAKCA title spacing, Kaynak/blockquote paragraph spacing",
+   "status": "UNKNOWN",
+   "expected": "source silent (implementer marked INFERRED)",
+   "actual": "6/6 or 12/12",
+   "evidence": "",
+   "likely_component": "",
+   "source_class": ""
+  },
+  {
+   "id": "U06",
+   "requirement": "Wrapped caption lines",
+   "status": "UNKNOWN",
+   "expected": "checklist item 18 wants wrapped caption lines to start at the number's dot, guide says centred",
+   "actual": "not exercised (captions short); no hanging option exists",
+   "evidence": "",
+   "likely_component": "",
+   "source_class": ""
+  }
+ ],
+ "observations": [
+  "Source line ('Kaynak: ...') of Table 2 is orphaned at the top of the next page (p25/26 both variants; p22 lt3): not source-defined.",
+  "Table 1 caption carries pageBreakBefore in the DOCX and starts a new page in the PDF, leaving page 20 with 2 text lines.",
+  "Implementer fixtures (orchestration/artifacts/aku-sbe/export/*.fixture.json) have values.THESIS_TITLE = 'Prof. Dr.'; my fixtures use a real long title.",
+  "Guide cover reads 2023; file/page label says 2026."
+ ]
+}

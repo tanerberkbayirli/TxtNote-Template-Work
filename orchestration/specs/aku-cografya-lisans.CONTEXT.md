@@ -28,6 +28,7 @@
 - CONFLICT: 26 in spec (decisions recorded). UNKNOWN: 19 (outer cover, footer distance, TOC leader/indent, footnotes).
 ## Status
 - DONE (Tier 1, AGENTS §28A) 2026-10-03: checker --word check-20261003-1618 PASS 45 / FAIL 0. Fix: tables.cellPadding {0,1.905,0,1.905} mm from official styles.xml default table style NormalTablo (MEASURED); fixture multi-page table lengthened (continued caption exercised); label checks open-ended (1..N).
+- Phase 3 (2026-10-07): source-derived landmark checks enabled; report schema/PDF cross-check gates apply to every export. See `orchestration/reports/MOTOR_PHASE3_CLOSE_2026-10-07.md` for runtime, regression evidence and separately open university variants. This checkpoint does not change the university completion status.
 ## Next step
 - Done. Reopen only if `check.mjs --all` regresses.
 ## Commands

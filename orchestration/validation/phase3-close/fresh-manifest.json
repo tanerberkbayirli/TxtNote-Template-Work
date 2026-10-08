@@ -1,0 +1,264 @@
+{
+  "startedAt": "2026-10-07T09:07:30.828Z",
+  "wordRequested": false,
+  "targets": [
+    {
+      "target": "adu-ziraat-lisans",
+      "exitCode": 1,
+      "commandSeconds": 16.051,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\adu-ziraat-lisans\\check-20261007-1207.json",
+      "counts": {
+        "PASS": 9,
+        "FAIL": 2,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.61,
+      "error": null
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "exitCode": 0,
+      "commandSeconds": 13.724,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\afsu-eczacilik-proje\\check-20261007-1208.json",
+      "counts": {
+        "PASS": 20,
+        "SKIPPED": 3,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.032,
+      "error": null
+    },
+    {
+      "target": "afsu-lee",
+      "exitCode": 0,
+      "commandSeconds": 22.502,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\afsu-lee\\check-20261007-1208.json",
+      "counts": {
+        "PASS": 78,
+        "SKIPPED": 6,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.359,
+      "error": null
+    },
+    {
+      "target": "afsu-tip",
+      "exitCode": 0,
+      "commandSeconds": 11.35,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\afsu-tip\\check-20261007-1208.json",
+      "counts": {
+        "PASS": 44,
+        "INFO": 2,
+        "SKIPPED": 3
+      },
+      "measurementSeconds": 0.844,
+      "error": null
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "exitCode": 0,
+      "commandSeconds": 10.427,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-cografya-lisans\\check-20261007-1208.json",
+      "counts": {
+        "PASS": 40,
+        "SKIPPED": 6,
+        "INFO": 3
+      },
+      "measurementSeconds": 0.937,
+      "error": null
+    },
+    {
+      "target": "aku-fbe",
+      "exitCode": 0,
+      "commandSeconds": 21.904,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-fbe\\check-20261007-1209.json",
+      "counts": {
+        "SKIPPED": 27,
+        "PASS": 12,
+        "INFO": 3
+      },
+      "measurementSeconds": 1.016,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "exitCode": 0,
+      "commandSeconds": 10.308,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-felsefe-lisans\\check-20261007-1209.json",
+      "counts": {
+        "PASS": 44,
+        "INFO": 4,
+        "SKIPPED": 37
+      },
+      "measurementSeconds": 0.688,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "exitCode": 0,
+      "commandSeconds": 9.075,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-felsefe-seminer\\check-20261007-1209.json",
+      "counts": {
+        "PASS": 33,
+        "INFO": 4,
+        "SKIPPED": 26
+      },
+      "measurementSeconds": 0.657,
+      "error": null
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "exitCode": 0,
+      "commandSeconds": 10.997,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-isg-tezsiz-proje\\check-20261007-1209.json",
+      "counts": {
+        "PASS": 25,
+        "INFO": 1,
+        "SKIPPED": 12
+      },
+      "measurementSeconds": 0.812,
+      "error": null
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "exitCode": 0,
+      "commandSeconds": 10.319,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-kimya-lisans\\check-20261007-1209.json",
+      "counts": {
+        "PASS": 25,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.735,
+      "error": null
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "exitCode": 0,
+      "commandSeconds": 11.669,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-matematik-lisans\\check-20261007-1209.json",
+      "counts": {
+        "PASS": 45,
+        "SKIPPED": 6,
+        "INFO": 2
+      },
+      "measurementSeconds": 1.203,
+      "error": null
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "exitCode": 0,
+      "commandSeconds": 11.798,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-mbg-lisans\\check-20261007-1210.json",
+      "counts": {
+        "PASS": 27,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.766,
+      "error": null
+    },
+    {
+      "target": "aku-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 14.796,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-sagbil\\check-20261007-1210.json",
+      "counts": {
+        "PASS": 17,
+        "SKIPPED": 11,
+        "FAIL": 2,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.672,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 1,
+      "commandSeconds": 25.233,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-sbe\\check-20261007-1210.json",
+      "counts": {
+        "PASS": 88,
+        "INFO": 2,
+        "FAIL": 23
+      },
+      "measurementSeconds": 3.813,
+      "error": null
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "exitCode": 0,
+      "commandSeconds": 10.503,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\aku-sosyoloji-lisans\\check-20261007-1211.json",
+      "counts": {
+        "INFO": 4,
+        "PASS": 15,
+        "SKIPPED": 10
+      },
+      "measurementSeconds": 0.625,
+      "error": null
+    },
+    {
+      "target": "engine-word-justify",
+      "exitCode": 0,
+      "commandSeconds": 8.837,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\engine-word-justify\\check-20261007-1211.json",
+      "counts": {
+        "SKIPPED": 16,
+        "PASS": 2
+      },
+      "measurementSeconds": 0.359,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 0,
+      "commandSeconds": 22.641,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\engine-word-pagefit\\check-20261007-1211.json",
+      "counts": {
+        "SKIPPED": 189,
+        "PASS": 8
+      },
+      "measurementSeconds": 2.766,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 0,
+      "commandSeconds": 12.043,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\engine-word-parity\\check-20261007-1211.json",
+      "counts": {
+        "SKIPPED": 141,
+        "PASS": 3
+      },
+      "measurementSeconds": 0.844,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 0,
+      "commandSeconds": 11.296,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\engine-word-structure\\check-20261007-1211.json",
+      "counts": {
+        "SKIPPED": 115,
+        "PASS": 9
+      },
+      "measurementSeconds": 1.016,
+      "error": null
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "exitCode": 0,
+      "commandSeconds": 8.794,
+      "report": "orchestration\\validation\\phase3-close\\fresh\\mcbu-tip-uzmanlik\\check-20261007-1212.json",
+      "counts": {
+        "PASS": 45,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.625,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-07T09:12:05.098Z",
+  "commandSeconds": 274.271
+}

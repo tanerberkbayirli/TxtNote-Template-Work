@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "scope": "First three universities; structural candidates, not a universal rule family",
+  "sources": [
+    {
+      "target": "adu-sagbil",
+      "source": {
+        "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+        "sha256": "82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7"
+      },
+      "sectionCount": 3,
+      "styleCount": 96,
+      "tableCount": 12,
+      "structure": {
+        "headingLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "tocLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "hasStyleInheritance": true,
+        "hasPageFields": true,
+        "hasMultipleSections": true,
+        "hasTables": true
+      },
+      "structuralFingerprint": "a5cbd6be56d8"
+    },
+    {
+      "target": "aku-fbe",
+      "source": {
+        "file": "orchestration/artifacts/aku-fbe/source/reference/official.docx",
+        "sha256": "779245da7f25a8dc662a051cfd9897d318b41733e5b616b63e74553610821599"
+      },
+      "sectionCount": 4,
+      "styleCount": 165,
+      "tableCount": 6,
+      "structure": {
+        "headingLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "tocLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "hasStyleInheritance": true,
+        "hasPageFields": true,
+        "hasMultipleSections": true,
+        "hasTables": true
+      },
+      "structuralFingerprint": "a5cbd6be56d8"
+    },
+    {
+      "target": "afsu-lee",
+      "source": {
+        "file": "orchestration/artifacts/afsu-lee/source/originals/AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+        "sha256": "3a891f9fe8da0a9c4ad0d1f0b6b41c048d03e27d75dcfe1ba0b8c00e4c4520cd"
+      },
+      "sectionCount": 5,
+      "styleCount": 36,
+      "tableCount": 3,
+      "structure": {
+        "headingLevels": [
+          1,
+          2,
+          3
+        ],
+        "tocLevels": [
+          1,
+          2,
+          3
+        ],
+        "hasStyleInheritance": true,
+        "hasPageFields": true,
+        "hasMultipleSections": true,
+        "hasTables": true
+      },
+      "structuralFingerprint": "d7079bbf90c1"
+    }
+  ],
+  "families": [
+    {
+      "id": "a5cbd6be56d8",
+      "targets": [
+        "adu-sagbil",
+        "aku-fbe"
+      ],
+      "structure": {
+        "headingLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "tocLevels": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "hasStyleInheritance": true,
+        "hasPageFields": true,
+        "hasMultipleSections": true,
+        "hasTables": true
+      },
+      "reusableEnginePreset": "wordFlowPreset",
+      "numericUniversityValuesShared": false
+    },
+    {
+      "id": "d7079bbf90c1",
+      "targets": [
+        "afsu-lee"
+      ],
+      "structure": {
+        "headingLevels": [
+          1,
+          2,
+          3
+        ],
+        "tocLevels": [
+          1,
+          2,
+          3
+        ],
+        "hasStyleInheritance": true,
+        "hasPageFields": true,
+        "hasMultipleSections": true,
+        "hasTables": true
+      },
+      "reusableEnginePreset": "wordFlowPreset",
+      "numericUniversityValuesShared": false
+    }
+  ],
+  "reviewedPreset": {
+    "module": "orchestration/tools/source-template-presets.mjs",
+    "keys": [
+      "mode:word",
+      "font-program singleLineEm",
+      "baseline:word",
+      "paragraphSpacing:additive"
+    ],
+    "policy": "Dimensions, type sizes, spacing values and section/front-page requirements always come from each official source."
+  }
+}

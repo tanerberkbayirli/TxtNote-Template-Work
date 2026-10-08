@@ -157,7 +157,9 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     assert.match(xml, /txbxContent/);
     assert.match(xml, /<w:t[^>]*>YÜKSEK LİSANS TEZİ<\/w:t>/);
     assert.match(xml, /<w:t[^>]*>Danışman<\/w:t>/);
-    assert.match(xml, /<w:tblpPr[^>]*w:tblpX="1549" w:tblpY="1701" w:horzAnchor="page" w:vertAnchor="page"/);
+    const approvalPage = section(compile(), "approval").rules.page;
+    const approvalIndent = Math.round((approvalPage.docxContentFrame.xMm - approvalPage.docxMargins.leftMm) * 1440 / 25.4);
+    assert.match(xml, new RegExp(`<w:tblInd w:type="dxa" w:w="${approvalIndent}"/>`), "page-top approval content keeps its page-origin position in normal flow");
     const sectionMargins = [...xml.matchAll(/<w:pgMar\b[^>]*>/g)].map((match) =>
       ["top", "right", "bottom", "left"].map((side) => Number(match[0].match(new RegExp(`w:${side}="(\\d+)"`))?.[1])));
     assert.ok(sectionMargins.length >= 4);

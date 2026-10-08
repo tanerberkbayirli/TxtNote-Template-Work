@@ -40,6 +40,9 @@ try {
   if ($RenderInfo) {
     @{ pid = $wordProcessId; version = $w.Version; build = $w.Build; activePrinter = $w.ActivePrinter;
        compatibilityMode = $d.CompatibilityMode; printBackground = $w.Options.PrintBackground;
+       printHiddenText = $w.Options.PrintHiddenText; printFieldCodes = $w.Options.PrintFieldCodes;
+       updateFieldsAtPrint = $w.Options.UpdateFieldsAtPrint; updateLinksAtPrint = $w.Options.UpdateLinksAtPrint;
+       culture = (Get-Culture).Name; uiCulture = (Get-UICulture).Name;
        renderedAt = [DateTime]::UtcNow.ToString("o") } | ConvertTo-Json | Set-Content -LiteralPath ([System.IO.Path]::GetFullPath($RenderInfo)) -Encoding UTF8
   }
   $d.ExportAsFixedFormat([System.IO.Path]::GetFullPath($Out), 17)

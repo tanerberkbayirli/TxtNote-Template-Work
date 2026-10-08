@@ -191,7 +191,7 @@
  },
  {
   "id": "h1-size",
-  "kind": "line_attr",
+  "kind": "landmark_y",
   "params": {
    "pages": {
     "label": "arabic"
@@ -199,7 +199,8 @@
    "regex": "^1[.] GİRİŞ$",
    "attr": "size",
    "agg": "all",
-   "source": "layout"
+   "source": "layout",
+   "kind": "heading"
   },
   "expected": 14,
   "tolerance": 0.1,
@@ -270,13 +271,14 @@
  },
  {
   "id": "page-numbering-centre",
-  "kind": "page_number_attr",
+  "kind": "landmark_x",
   "params": {
    "pages": {
     "label": "arabic"
    },
    "attr": "cx",
-   "source": "layout"
+   "source": "layout",
+   "kind": "page-number"
   },
   "expected": 105,
   "tolerance": 0.5,

@@ -1,0 +1,243 @@
+{
+  "title": "Engine paragraph style precedence",
+  "__template": {
+    "schemaVersion": 1,
+    "templateVersion": "1.0.0",
+    "id": "engine-word-style-precedence",
+    "universityId": "engine-test",
+    "universityName": "Style precedence acceptance",
+    "degreeType": "master",
+    "language": "tr",
+    "status": "generic",
+    "source": {
+      "type": "manual",
+      "documentName": "Conflicting style precedence fixture"
+    },
+    "page": {
+      "size": "A4",
+      "widthMm": 210,
+      "heightMm": 297,
+      "orientation": "portrait",
+      "margins": {
+        "topMm": 25,
+        "bottomMm": 25,
+        "leftMm": 30,
+        "rightMm": 25
+      },
+      "header": {
+        "heightMm": 8,
+        "distanceMm": 12,
+        "content": "",
+        "firstPage": "same"
+      },
+      "footer": {
+        "heightMm": 8,
+        "distanceMm": 12,
+        "content": "",
+        "firstPage": "same"
+      },
+      "numbering": {
+        "enabled": false,
+        "position": "bottom",
+        "align": "center",
+        "format": "arabic",
+        "startAt": 1,
+        "restart": false
+      }
+    },
+    "typography": {
+      "body": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "align": "left",
+        "lineHeight": 1.5,
+        "firstLineIndentMm": 2,
+        "spaceBeforePt": 0,
+        "spaceAfterPt": 0,
+        "lineSpacing": {
+          "rule": "auto",
+          "value": 1.5,
+          "baseline": "word"
+        }
+      },
+      "headings": {
+        "1": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 14,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 18,
+          "spaceAfterPt": 12,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}"
+          }
+        },
+        "2": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 12,
+          "spaceAfterPt": 8,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}.{2}"
+          }
+        },
+        "3": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 10,
+          "spaceAfterPt": 6,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}.{2}.{3}"
+          }
+        },
+        "4": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 10,
+          "spaceAfterPt": 6,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}.{2}.{3}.{4}"
+          }
+        }
+      },
+      "paragraph": {
+        "fontSizePt": 10,
+        "lineHeight": 1,
+        "firstLineIndentMm": 4,
+        "lineSpacing": {
+          "rule": "auto",
+          "value": 1,
+          "baseline": "word"
+        }
+      },
+      "paragraphStyles": {
+        "named": {
+          "fontFamily": "Calibri",
+          "fontSizePt": 14,
+          "lineHeight": 2,
+          "firstLineIndentMm": 8,
+          "lineSpacing": {
+            "rule": "auto",
+            "value": 2,
+            "baseline": "word"
+          }
+        }
+      }
+    },
+    "placeholders": {},
+    "sections": [
+      {
+        "id": "CHECK",
+        "type": "mainContent",
+        "title": "CHECK",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "paragraph": {
+            "fontFamily": "Arial",
+            "fontSizePt": 11,
+            "lineHeight": 1.25,
+            "firstLineIndentMm": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1.25,
+              "baseline": "word"
+            }
+          }
+        }
+      }
+    ],
+    "tables": {
+      "label": "Tablo",
+      "position": "above",
+      "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 10,
+        "italic": true,
+        "align": "center",
+        "lineHeight": 1.25
+      },
+      "numbering": {
+        "scope": "chapter",
+        "format": "{chapter}.{n}",
+        "sequence": "arabic"
+      },
+      "spacingBeforePt": 8,
+      "spacingAfterPt": 6,
+      "align": "center"
+    },
+    "figures": {
+      "label": "Şekil",
+      "position": "below",
+      "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 10,
+        "italic": true,
+        "align": "center",
+        "lineHeight": 1.25
+      },
+      "numbering": {
+        "scope": "chapter",
+        "format": "{chapter}.{n}",
+        "sequence": "arabic"
+      },
+      "spacingBeforePt": 6,
+      "spacingAfterPt": 8,
+      "align": "center"
+    },
+    "bibliography": {
+      "heading": "Kaynakça",
+      "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "align": "left",
+        "lineHeight": 1.5
+      },
+      "hangingIndentMm": 10
+    },
+    "toc": {
+      "heading": "İçindekiler",
+      "levels": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "showPageNumbers": true
+    }
+  },
+  "content": "<p>SECTION_ROW_1 anchored paragraph</p><p>SECTION_ROW_2 anchored paragraph</p>",
+  "researchData": {
+    "thesis": {
+      "templateId": "engine-word-style-precedence",
+      "templateVersion": "1.0.0",
+      "values": {},
+      "sectionContent": {
+        "CHECK": "<p>SECTION_ROW_1 anchored paragraph</p><p>SECTION_ROW_2 anchored paragraph</p>"
+      }
+    }
+  }
+}

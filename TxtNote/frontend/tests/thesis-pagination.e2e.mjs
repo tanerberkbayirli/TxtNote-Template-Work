@@ -239,8 +239,11 @@ try {
   assert.ok(small.before === 1 && small.first === 2 && small.last === 2 && small.fragments === 1, JSON.stringify(small));
   pass("13 a small table that does not fit the remaining space moves to the next page as a whole");
   let hugeTime = await timed(async () => { await load(`Önce.<div class="academic-table-wrap" data-academic-table="true"><table class="academic-table"><thead><tr><th>A</th><th>B</th></tr></thead><tbody>${rows(400, "Büyük")}</tbody></table></div>Sonra.`); });
-  const huge = await pg(() => { const t = window.pg.editor().querySelector("table"); const trs = [...t.querySelectorAll("tbody tr")]; return { ...window.pg.pageOfEl(t), rows: trs.length, splitRows: trs.filter((tr) => { const p = window.pg.pageOfEl(tr); return p.first !== p.last; }).length, lastRow: window.pg.pageOfEl(trs.at(-1)).first, after: window.pg.pageOfText("Sonra."), count: window.pg.count() }; });
+  const huge = await pg(() => { const t = window.pg.editor().querySelector("table"); const trs = [...t.querySelectorAll("tbody tr:not([data-thesis-cont])")]; return { ...window.pg.pageOfEl(t), rows: trs.length, splitRows: trs.filter((tr) => { const p = window.pg.pageOfEl(tr); return p.first !== p.last; }).length, lastRow: window.pg.pageOfEl(trs.at(-1)).first, after: window.pg.pageOfText("Sonra."), count: window.pg.count() }; });
   assert.equal(huge.rows, 400); assert.equal(huge.splitRows, 0); assert.ok(huge.count >= 8 && huge.last === huge.count && huge.after === huge.count, JSON.stringify(huge));
+  const savedHuge = (await doc()).content;
+  assert.equal((savedHuge.match(/Büyük \d+/g) || []).length, 400, "saving preserves exactly the authored rows");
+  assert.doesNotMatch(savedHuge, /data-thesis-cont/, "repeated presentation headers never enter saved content");
   assert.ok(hugeTime < 15000, `huge table load ${hugeTime}ms`);
   await page.locator('[data-thesis-flow-section="main"] tbody tr').nth(60).scrollIntoViewIfNeeded(); await shot("long-table.png");
   pass(`13/28 a 400-row table spans ${huge.count} pages split by whole rows, all rows kept, no loop (${hugeTime}ms load)`);

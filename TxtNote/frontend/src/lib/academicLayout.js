@@ -612,7 +612,7 @@ export const ACADEMIC_CSS = `
 .academic-document .fmt-align-center { text-align:center; }
 .academic-document .fmt-align-right { text-align:right; }
 .academic-document .fmt-align-justify { text-align:justify; }
-.academic-document [class*="fmt-align-"]:not(table):not(thead):not(tbody):not(tr):not(th):not(td) { display:block; width:100%; }
+.academic-document [class*="fmt-align-"]:not(table):not(thead):not(tbody):not(tr):not(th):not(td):not(li) { display:block; width:100%; }
 .academic-document .academic-cite { font:inherit; color:inherit; background:none; padding:0; white-space:normal; }
 .academic-document .academic-link { color:#123; text-decoration:underline; }
 .academic-document .academic-figure { position:relative; display:block; margin:14pt 0; max-width:100%; text-align:center; white-space:normal; break-inside:avoid; }
