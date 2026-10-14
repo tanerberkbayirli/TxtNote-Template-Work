@@ -1,0 +1,38 @@
+{
+  "id": "SRC09",
+  "origin": "http://127.0.0.1:5193",
+  "measuredAt": "2026-10-11T16:28:57.956Z",
+  "samples": [],
+  "errors": [],
+  "status": "ERROR",
+  "timingAcceptance": "NO_PREDECLARED_NUMERIC_LIMIT",
+  "scope": "20 alternating real keyboard inserts/deletes. Input-to-next-frame is a paint opportunity proxy, not compositor presentation timing. Save measures persistent payload serialization; production file export uses actual editor buttons.",
+  "openMs": 17347,
+  "browser": "154.0.8037.98",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "initialPages": 174,
+  "localFontsPermission": "granted",
+  "twentySamplesRestoreAuthorContent": true,
+  "save": {
+    "serializeMs": 4287.600000023842,
+    "reopenPayloadMs": 2234.6999999284744,
+    "bytes": 47533298,
+    "documentEqual": false
+  },
+  "docxExportMs": 9332,
+  "error": "Error: PDF export: PDF yazı tipi Wingdings izin verilen font ailelerinden biri değil.\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/engine/final-closure/performance/benchmark.mjs:36:139",
+  "diagnostics": {
+    "message": "PDF yazı tipi Wingdings izin verilen font ailelerinden biri değil.",
+    "ready": "true",
+    "fonts": "loaded",
+    "pendingMath": 0,
+    "mathErrors": 0
+  },
+  "settle": {
+    "count": 0
+  },
+  "inputToFrame": {
+    "count": 0
+  },
+  "completedAt": "2026-10-11T16:29:37.429Z"
+}

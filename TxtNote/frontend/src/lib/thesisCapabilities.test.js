@@ -3,7 +3,8 @@ import fs from "node:fs";
 import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 
-const thesisDir = fileURLToPath(new URL("../thesis/", import.meta.url));
+const thesisDir = fileURLToPath(new URL("../../../../engine/src/", import.meta.url));
+const catalogPath = new URL("../../../../orchestration/docs/engine/CAPABILITIES.md", import.meta.url);
 
 /** Enum values, JS members and internals that appear in validation.js but are not template keys. */
 const NOT_KEYS = new Set((
@@ -34,7 +35,7 @@ describe("CAPABILITIES.md", () => {
   it("mentions every template key validation.js accepts", () => {
     const keys = acceptedTemplateKeys(fs.readFileSync(`${thesisDir}validation.js`, "utf8"));
     assert.ok(keys.length > 100, `extractor found only ${keys.length} keys`);
-    const names = catalogedNames(fs.readFileSync(`${thesisDir}CAPABILITIES.md`, "utf8"));
+    const names = catalogedNames(fs.readFileSync(catalogPath, "utf8"));
     const missing = keys.filter((key) => !names.has(key));
     assert.deepEqual(missing, [], `Add these validation.js keys to thesis/CAPABILITIES.md: ${missing.join(", ")}`);
   });

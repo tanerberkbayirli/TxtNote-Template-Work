@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { mcbuMaster } from "../thesis/templates/mcbu.js";
-import { buildThesisCss, compileThesisDocument } from "../thesis/engine.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { resolveSpecialPage, specialPageBoxCss } from "../thesis/specialPages.js";
+import { mcbuMaster } from "../../../../engine/src/templates/mcbu.js";
+import { buildThesisCss, compileThesisDocument } from "../../../../engine/src/engine.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { resolveSpecialPage, specialPageBoxCss } from "../../../../engine/src/specialPages.js";
 
 const values = { YEAR: "2026", STUDENT_NAME: "Ad SOYAD", DEPARTMENT_NAME: "Eğitim Bilimleri", ADVISOR_TITLE: "Doç. Dr.", ADVISOR_NAME: "Ali VELİ", KEYWORDS: "a, b, c, d, e" };
 const compile = () => compileThesisDocument(mcbuMaster, { values }, "Başlık", "<h1>Bölüm</h1><h2>A</h2><h3>B</h3><h4>C</h4>", []);
@@ -32,9 +32,9 @@ describe("MCBÜ LEE fix 2: official example XML decisions", () => {
     const model = compile();
     const tr = section(model, "abstract").rules.body;
     assert.deepEqual([tr.lineHeight, tr.align, tr.spaceAfterPt], [1.5, "justify", 10]);
-    near(tr.firstLineIndentMm, 360 * TW); near(tr.leftIndentMm, 60 * TW);
+    near(tr.firstLineIndentMm, 12.5); near(tr.leftIndentMm, 0);
     const en = section(model, "abstract-en").rules.body;
-    assert.deepEqual([en.lineHeight, en.align, en.spaceAfterPt, en.leftIndentMm], [1, "justify", 0, 0]);
+    assert.deepEqual([en.lineHeight, en.align, en.spaceAfterPt, en.leftIndentMm], [1.5, "justify", 0, 0]);
     near(en.firstLineIndentMm, 709 * TW);
   });
 

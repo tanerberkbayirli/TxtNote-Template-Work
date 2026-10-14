@@ -1,0 +1,12 @@
+import {createRequire} from 'node:module';
+const {chromium}=createRequire(import.meta.url)('../../../../tools/node_modules/playwright');
+const id=process.argv[2]||'SRC09_EK2', port=process.argv[3]||'9341';
+const browser=await chromium.launchPersistentContext(process.env.TEMP+'/ek2-chrome-'+port,{executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',viewport:{width:1400,height:1000},args:['--enable-blink-features=MulticolColumnWrapping','--remote-debugging-port='+port]});
+const base='http://127.0.0.1:5221';
+await browser.grantPermissions(['local-fonts'],{origin:base});
+const page=browser.pages()[0]||await browser.newPage();
+await page.goto(`${base}/tests/thesis-long.html?id=${id}`);
+await page.locator('.thesis-sheet').first().waitFor({timeout:300000});
+await page.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true',null,{timeout:900000});
+console.log('READY');
+await new Promise(()=>{});

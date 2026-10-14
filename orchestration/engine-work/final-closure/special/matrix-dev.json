@@ -1,0 +1,66 @@
+[
+ {
+  "target": "adu-sagbil-master-tr-v1",
+  "variant": "base",
+  "status": "ok",
+  "per": {
+   "cover": 1,
+   "approval": 1,
+   "ethics": 1
+  },
+  "n": 3,
+  "overlaps": [],
+  "n_ov": 0,
+  "oom": [],
+  "n_oom": 0,
+  "clipped": 0,
+  "total": 21
+ },
+ {
+  "target": "adu-ziraat-lisans-tr-v1",
+  "variant": "base",
+  "status": "ok",
+  "per": {
+   "outer-cover": 1,
+   "inner-cover": 1,
+   "ethics": 1
+  },
+  "n": 3,
+  "overlaps": [],
+  "n_ov": 0,
+  "oom": [],
+  "n_oom": 0,
+  "clipped": 0,
+  "total": 37
+ },
+ {
+  "target": "afsu-eczacilik-proje-lisans-tr-v1",
+  "variant": "base",
+  "status": "export-fail",
+  "note": "locator.waitFor: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.thesis-sheet').first() to be visible\u001b[22m\n\n    at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\export.mjs:106:47\npageerror: Cannot read properties of undefined (reading 'lineHeight')\n"
+ },
+ {
+  "target": "afsu-lee-master-tr-v1",
+  "variant": "base",
+  "status": "export-fail",
+  "note": " at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:216:28\nconsole: You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it.\n"
+ },
+ {
+  "target": "afsu-lee-phd-tr-v1",
+  "variant": "base",
+  "status": "ok",
+  "per": {
+   "outer-cover": 1,
+   "inner-cover": 1,
+   "ethics": 1,
+   "approval": 1
+  },
+  "n": 4,
+  "overlaps": [],
+  "n_ov": 0,
+  "oom": [],
+  "n_oom": 0,
+  "clipped": 0,
+  "total": 36
+ }
+]

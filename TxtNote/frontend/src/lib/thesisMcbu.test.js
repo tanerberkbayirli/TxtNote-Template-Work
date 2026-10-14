@@ -1,15 +1,15 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { mcbuMaster, mcbuPhd } from "../thesis/templates/mcbu.js";
-import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../thesis/registry.js";
-import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
+import { mcbuMaster, mcbuPhd } from "../../../../engine/src/templates/mcbu.js";
+import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../../../engine/src/registry.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../../../../engine/src/engine.js";
 import { fixtureA as demoUniversityA } from "./thesisFixtures.js";
-import { buildThesisPageModel } from "../thesis/pageLayout.js";
-import { resolveGeneratedIndexes } from "../thesis/generatedIndex.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { mmToTwip } from "../thesis/units.js";
+import { buildThesisPageModel } from "../../../../engine/src/pageLayout.js";
+import { resolveGeneratedIndexes } from "../../../../engine/src/generatedIndex.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { mmToTwip } from "../../../../engine/src/units.js";
 
 const image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aMr8AAAAASUVORK5CYII=";
 const main = `<h1>Kuramsal Çerçeve</h1><p>Metin<sup class="academic-footnote" data-fn-id="a" data-fn-text="Dipnot metni.">1</sup></p><h2>Alt</h2><h3>Alt alt</h3><h4>Dört</h4><figure><img src="${image}" width="120" height="60"><figcaption>Bir şekil</figcaption></figure><table><caption>Bir tablo</caption><tr><th>A</th></tr><tr><td>1</td></tr></table><h1>Yöntem</h1><figure><img src="${image}" width="120" height="60"><figcaption>İkinci şekil</figcaption></figure>`;

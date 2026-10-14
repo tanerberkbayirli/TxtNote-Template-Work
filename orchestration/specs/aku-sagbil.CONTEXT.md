@@ -1,7 +1,7 @@
 # aku-sagbil — context pack
 ## Identity
 - Registry id(s): `aku-sagbil-master-tr-v1`, `aku-sagbil-phd-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-sagbil.js` (exports: akuSagbilMaster, akuSagbilPhd)
+- Template module: `engine/src/templates/aku-sagbil.js` (exports: akuSagbilMaster, akuSagbilPhd)
 - Spec: `orchestration/specs/aku-sagbil.json`; checks: `orchestration/specs/aku-sagbil.checks.json`; progress report: `orchestration/reports/aku-sagbil.md`
 ## Sources
 - `orchestration/official-sources/aku-sagbil/AKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2022.pdf`

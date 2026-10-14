@@ -1,0 +1,126 @@
+{
+  "id": "SRC09",
+  "origin": "http://127.0.0.1:5193",
+  "measuredAt": "2026-10-11T16:09:59.058Z",
+  "samples": [
+    {
+      "operation": "insert",
+      "settleMs": 8524,
+      "inputToFrameMs": 83.40000009536743
+    },
+    {
+      "operation": "delete",
+      "settleMs": 8796,
+      "inputToFrameMs": 88.39999997615814
+    },
+    {
+      "operation": "insert",
+      "settleMs": 7688,
+      "inputToFrameMs": 110.19999992847443
+    },
+    {
+      "operation": "delete",
+      "settleMs": 5971,
+      "inputToFrameMs": 72.29999995231628
+    },
+    {
+      "operation": "insert",
+      "settleMs": 5584,
+      "inputToFrameMs": 126
+    },
+    {
+      "operation": "delete",
+      "settleMs": 5854,
+      "inputToFrameMs": 94.60000002384186
+    },
+    {
+      "operation": "insert",
+      "settleMs": 6375,
+      "inputToFrameMs": 78.80000007152557
+    },
+    {
+      "operation": "delete",
+      "settleMs": 5685,
+      "inputToFrameMs": 75.60000002384186
+    },
+    {
+      "operation": "insert",
+      "settleMs": 5640,
+      "inputToFrameMs": 88.5
+    },
+    {
+      "operation": "delete",
+      "settleMs": 6236,
+      "inputToFrameMs": 105.5
+    },
+    {
+      "operation": "insert",
+      "settleMs": 10361,
+      "inputToFrameMs": 73.79999995231628
+    },
+    {
+      "operation": "delete",
+      "settleMs": 10482,
+      "inputToFrameMs": 188.5
+    },
+    {
+      "operation": "insert",
+      "settleMs": 13604,
+      "inputToFrameMs": 185.20000004768372
+    },
+    {
+      "operation": "delete",
+      "settleMs": 13425,
+      "inputToFrameMs": 282.10000002384186
+    },
+    {
+      "operation": "insert",
+      "settleMs": 11742,
+      "inputToFrameMs": 106.20000004768372
+    },
+    {
+      "operation": "delete",
+      "settleMs": 7894,
+      "inputToFrameMs": 184.09999990463257
+    },
+    {
+      "operation": "insert",
+      "settleMs": 7172,
+      "inputToFrameMs": 73.80000007152557
+    },
+    {
+      "operation": "delete",
+      "settleMs": 11748,
+      "inputToFrameMs": 98.5
+    },
+    {
+      "operation": "insert",
+      "settleMs": 11508,
+      "inputToFrameMs": 198.80000007152557
+    },
+    {
+      "operation": "delete",
+      "settleMs": 9895,
+      "inputToFrameMs": 192.30000007152557
+    }
+  ],
+  "errors": [
+    "Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node."
+  ],
+  "status": "ERROR",
+  "timingAcceptance": "NO_PREDECLARED_NUMERIC_LIMIT",
+  "scope": "20 alternating real keyboard inserts/deletes. Input-to-next-frame is a paint opportunity proxy, not compositor presentation timing. Save measures persistent payload serialization; production file export uses actual editor buttons.",
+  "openMs": 17670,
+  "browser": "154.0.8037.98",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "initialPages": 187,
+  "localFontsPermission": "granted",
+  "save": {
+    "serializeMs": 3034.5,
+    "reopenPayloadMs": 2236.399999976158,
+    "bytes": 47533518,
+    "documentEqual": false
+  },
+  "docxExportMs": 9387,
+  "error": "page.waitForEvent: Timeout 300000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n    at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\final-closure\\performance\\benchmark.mjs:31:57"
+}

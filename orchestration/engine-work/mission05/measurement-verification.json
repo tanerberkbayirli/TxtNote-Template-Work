@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "wordPdf": "engine/mission05/source-matrix-5/run/default.word.pdf",
+  "sha256": "077291c1a795297392bfa3c9740592004302302b3f75f54d69f363e0ebf2aff0",
+  "font": "Calibri-Italic",
+  "fontSizePt": 9.96,
+  "embeddedSpaceAdvancePt": 2.2516992187500002,
+  "actualRunGapPt": 2.3599548339843643,
+  "oldThresholdPt": 2.49,
+  "encodedSpaceAbsent": true,
+  "styleBoundaryPreserved": true,
+  "baselineJ03J04StillFail": true,
+  "reason": "The real Word PDF positions the italic run by a narrow Calibri space without encoding that space. The previous fixed .25 em reader threshold concatenated two words."
+}

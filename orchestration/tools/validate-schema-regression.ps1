@@ -35,8 +35,11 @@ foreach ($target in Get-ChildItem -LiteralPath (Join-Path $phaseDir 'regression'
       baselineErrorCount = $old.errorCount; newErrorDescriptions = $newFamilies; errorFamilies = $currentFamilies }
   }
 }
-@{ status = $(if (@($rows | Where-Object { $_.status -ne 'PASS' }).Count) { 'FAIL' } else { 'PASS' });
+$failed = $rows.Count -eq 0 -or @($rows | Where-Object { $_.status -ne 'PASS' }).Count -gt 0
+@{ status = $(if ($failed) { 'FAIL' } else { 'PASS' });
    sdkVersion = '2.9.1.0'; schemaProfile = 'Office2016'; variants = $rows.Count; results = $rows;
    note = 'Independent SDK schema acceptance; Word open/layout PASS does not override these errors. Baseline comparison distinguishes pre-existing findings.'
 } | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $phaseDir 'schema-manifest.json') -Encoding UTF8
 Write-Output ("Schema variants: " + $rows.Count)
+if ($rows.Count -eq 0) { Write-Error 'No DOCX variants found; schema acceptance cannot pass without inputs.' }
+if ($failed) { exit 1 }

@@ -1,0 +1,63 @@
+{
+ "id": "SRC10",
+ "origin": "http://127.0.0.1:5191",
+ "long": true,
+ "steps": {
+  "typing": "PASS",
+  "selection": "PASS",
+  "selection_info": "\"imple\"",
+  "real-copy-clipboard": "PASS",
+  "real-copy-clipboard_info": "\"imple\"",
+  "real-paste": "PASS",
+  "real-paste_info": "\"antic depth.\"",
+  "paste-external-text": "PASS",
+  "cut": "PASS",
+  "cut_info": {
+   "len0": 457,
+   "len1": 454,
+   "cutSel": "imp"
+  },
+  "cut-paste-restore": "PASS",
+  "ime-composing-flag": "PASS",
+  "ime_composing_text_autosaved_info": true,
+  "ime-commit": "PASS",
+  "no-temp-markup-in-save": "PASS",
+  "ime-cancel-clean": "PASS",
+  "undo-removes-edits": "PASS",
+  "undo-removes-edits_info": [],
+  "redo-restores-edits": "PASS",
+  "redo-restores-edits_info": [],
+  "save-reopen-keeps-edits": "PASS",
+  "save-reopen-keeps-edits_info": {
+   "savedLen": 17530608,
+   "reopenedLen": 17530608
+  },
+  "reopen-render-has-edits": "PASS",
+  "enter-splits-paragraph": "PASS",
+  "enter-splits-paragraph_info": {
+   "count": 1837,
+   "idx": 440,
+   "pos": 254,
+   "prevEmptyOrHead": "al forecast."
+  },
+  "enter-caret-moves-to-new-paragraph": "FAIL",
+  "enter-caret-moves-to-new-paragraph_info": {
+   "count": 1837,
+   "idx": 440,
+   "pos": 254,
+   "prevEmptyOrHead": "al forecast."
+  },
+  "no-page-errors": "PASS",
+  "no-page-errors_info": []
+ },
+ "timings": {
+  "openMs": 5398,
+  "typeToSaveMs": 19364,
+  "reopenMs": 7846
+ },
+ "notes": [],
+ "paragraphCount": 188,
+ "status": "FAIL",
+ "pageErrors": [],
+ "browser": "154.0.8037.98"
+}

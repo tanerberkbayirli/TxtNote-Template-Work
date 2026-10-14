@@ -1,0 +1,15 @@
+# 11.10.2026 — 09/10 devam kanıtı (kısmi, son kabul değil)
+- İlk mevcut hedefli tur: tablo round-trip + görsel + şekil 10/10 PASS; kayıtlı grid hatası tekrarlanmadı.
+- `academicDocument.js`, `docx/tables.js`: iç içe tablolar ve çok paragraflı hücreler DOCX'te gerçek blok olarak korunur; imported rowMeta varsa gereksiz keepNext zinciri kurulmaz.
+- Yeni nested fixture: 2 gerçek w:tbl, dört metin tam bir kez ve doğru sırada; gridSpan/vMerge/tblHeader/cantSplit testleri korunur.
+- `equations.js`, `equationPreview.js`, `importDocx.js`, `mathFormula.js`: OMML HTML uyumluluk yolundan editable m:oMath olarak döner; kesir/matris/integral/vektör MathML önizlemesi ve matematik fontları korunur.
+- `nativeDrawings.js`: özgün şekil/SmartArt/grafik XML'i w:r>w:drawing; yalnız başvurulan parça/ilişki closure'u izole yol altında kopyalanır, ID/target/contentType ve SmartArt cache relId yeniden eşlenir.
+- `drawingPreview.js`: cache'li SmartArt/grup SVG alt şekilleri, metin/bağlayıcı/tema renkleri; cache'li bar/line/scatter veri önizlemesi. Desteklenmeyen tür/metin cache'i görünür notice ile gösterilir.
+- Kaynak chart şeması: showDLblsOverMax doğru sıraya alınır; bir ext içindeki çoklu payload ayrı ext slotlarına bölünür; bütün URI/attributes/payload'ların korunduğu test PASS, Ignorable ile hata gizlenmez.
+- Dış chart workbook bağlantısı etkin kopyadan ayrılır; cache serileri editable kalır, özgün bağlantı kaynak paketinde ve import notice'da saklanır. Diğer çözülemeyen external ilişkiler açık dışa aktarım hatasıdır.
+- `drawingAnchors.js` + ThesisEditor: page/margin/edge/inside/outside out-of-flow anchor runtime koordinatları; fiziksel sheet parity, CSS.escape; kayda ölçülen stil yazılmaz.
+- Hedefli tur 67/67 PASS; son ek tur 34/34 PASS. Gerçek nested listParagraphs section imzası hatası bağımsız hücre-listesi testiyle düzeltildi. Ext testi 3 payload/3 URI sayısını/sırasını doğrular.
+- Gerçek SRC09 excerpt: diagram + wordprocessingShape + chart + chartex + native OMML; `native-drawings-proof.mjs` üretir, `resume-native-drawings.schema.json`: Office2016 SDK 0 hata PASS (ilk üretim 6 hataydı).
+- Açık: gerçek Word görsel/düzenleme kabulü ve SRC09/SRC10 uzun sayfa ölçümleri yapılmadı; root sessiz son tura ait. Çok satırlı tekrar başlık/dikey birleşme/hücre içi tarayıcı bölünmesi ayrıca doğrulanmadı.
+- Açık: topAndBottom page-relative anchor; tam grafik/SmartArt stil/eksen/rotasyon/custom geometry eşliği; cache'siz SmartArt metin özeti; MathML tam OMML özellik eşliği ve native denklemi uygulama içinde düzenleme UI'si doğrulanmadı. 09/10 tamamlandı denmiyor.
+- Son global birim FAIL'i yalnız 200 karakter regex sınırıydı (persistent bookmark nedeniyle 204): `resume-final/equation-actual.xml` gerçek after414/before414/line360, Cambria Math/24 içerir. Karakter sınırı artırılmadı; test aynı OMML paragrafında/run'larında kesin namespace-DOM değer kontrolüne dönüştürüldü.

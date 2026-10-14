@@ -1,0 +1,11 @@
+{
+  "timing": "Before implementation optimization, capture open/save/PDF/DOCX export times and 20 insert/delete input samples on SRC09; record p50/p95, memory and page-settle time.",
+  "environment": "Record installed font files, Word build, OS, browser build and renderer settings. Establish numeric acceptance limits from measured baseline before optimization; do not invent measurements.",
+  "interaction": "At Mission 13 exercise real OS clipboard, TR/EN IME composition, selections, undo/redo and save/reopen on long and held-out inputs.",
+  "laterWorkNotMission01Acceptance": [
+    "Implement OCR",
+    "Fix engine FAIL rows",
+    "Meet long-document latency limits",
+    "Certify Word parity on all targets"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "authoring": "Independent Python DOCX and native OOXML; no TxtEngine output is a source.",
+  "sources": [
+    {
+      "id": "EDGE01",
+      "path": "engine/mission01/inputs/edge-native-structure.docx",
+      "sha256": "ed4cea7b9952eef04179000429d2cbfb815ef2e692af643f2a67b28ededd8aa5",
+      "role": "synthetic-boundary",
+      "partition": "development"
+    },
+    {
+      "id": "EDGE02",
+      "path": "engine/mission01/inputs/edge-long-notes.docx",
+      "sha256": "d8534156a32ab32e478fe58b855e12ee570739f33ed6f7bed6f9bbf279a8fcb2",
+      "role": "synthetic-boundary",
+      "partition": "development"
+    }
+  ]
+}

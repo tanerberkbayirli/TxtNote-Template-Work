@@ -1,7 +1,7 @@
 # aku-matematik-lisans — context pack
 ## Identity
 - Registry id(s): `aku-matematik-lisans-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-matematik.js` (exports: akuMatematikLisans)
+- Template module: `engine/src/templates/aku-matematik.js` (exports: akuMatematikLisans)
 - Spec: `orchestration/specs/aku-matematik-lisans.json`; checks: `orchestration/specs/aku-matematik-lisans.checks.json`; progress report: `orchestration/reports/aku-matematik-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Matematik_Bolumu_Bitirme_Tezi/AKU_Matematik_Lisans_Tez_Sablonu_2025.docx`

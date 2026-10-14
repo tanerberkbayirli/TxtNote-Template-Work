@@ -13,7 +13,7 @@ Stdout shows only counts and FAIL/SKIPPED/CONFLICT rows. Exit 0 only if there is
 env `THESIS_BASE_URL`, `THESIS_BROWSER_EXECUTABLE` (default: local Chrome), `PLAYWRIGHT_MODULE` override defaults.
 Unit tests: `python -m unittest orchestration/tools/test_conformance.py`.
 Regression gate: `node orchestration/tools/check.mjs --all [--word]` runs every target with a `specs/<id>.checks.json`,
-prints one summary line per target and exits 1 if any target has a FAIL or errors (MOTOR.md 0.4).
+prints one summary line per target and exits 1 if any target has a FAIL or errors (orchestration/plans/MOTOR.md 0.4).
 With `--all`, `--out` creates a separate child directory per target; `--manifest`
 records exact child-command wall times, report paths, counts and export errors.
 `--targets` selects a subset for fresh targeted reruns. Layout-report export timings

@@ -1,0 +1,161 @@
+{
+  "id": "SRC09",
+  "origin": "http://127.0.0.1:5210",
+  "measuredAt": "2026-10-12T13:35:25.242Z",
+  "samples": [
+    {
+      "operation": "insert",
+      "settleMs": 19438,
+      "inputToFrameMs": 226.29999995231628
+    },
+    {
+      "operation": "delete",
+      "settleMs": 18691,
+      "inputToFrameMs": 454.40000009536743
+    },
+    {
+      "operation": "insert",
+      "settleMs": 19623,
+      "inputToFrameMs": 387.7000000476837
+    },
+    {
+      "operation": "delete",
+      "settleMs": 15842,
+      "inputToFrameMs": 279.5
+    },
+    {
+      "operation": "insert",
+      "settleMs": 15082,
+      "inputToFrameMs": 271.59999990463257
+    },
+    {
+      "operation": "delete",
+      "settleMs": 14366,
+      "inputToFrameMs": 212
+    },
+    {
+      "operation": "insert",
+      "settleMs": 14587,
+      "inputToFrameMs": 239.60000014305115
+    },
+    {
+      "operation": "delete",
+      "settleMs": 14169,
+      "inputToFrameMs": 213
+    },
+    {
+      "operation": "insert",
+      "settleMs": 15531,
+      "inputToFrameMs": 224.70000004768372
+    },
+    {
+      "operation": "delete",
+      "settleMs": 14955,
+      "inputToFrameMs": 270
+    },
+    {
+      "operation": "insert",
+      "settleMs": 14415,
+      "inputToFrameMs": 269.10000014305115
+    },
+    {
+      "operation": "delete",
+      "settleMs": 14749,
+      "inputToFrameMs": 255.40000009536743
+    },
+    {
+      "operation": "insert",
+      "settleMs": 16106,
+      "inputToFrameMs": 267.5
+    },
+    {
+      "operation": "delete",
+      "settleMs": 14689,
+      "inputToFrameMs": 291.2999999523163
+    },
+    {
+      "operation": "insert",
+      "settleMs": 14480,
+      "inputToFrameMs": 229
+    },
+    {
+      "operation": "delete",
+      "settleMs": 13780,
+      "inputToFrameMs": 215.90000009536743
+    },
+    {
+      "operation": "insert",
+      "settleMs": 15355,
+      "inputToFrameMs": 239.40000009536743
+    },
+    {
+      "operation": "delete",
+      "settleMs": 15339,
+      "inputToFrameMs": 225.5
+    },
+    {
+      "operation": "insert",
+      "settleMs": 14587,
+      "inputToFrameMs": 211.29999995231628
+    },
+    {
+      "operation": "delete",
+      "settleMs": 14829,
+      "inputToFrameMs": 270.60000014305115
+    }
+  ],
+  "errors": [],
+  "status": "FAIL",
+  "timingAcceptance": "NO_PREDECLARED_NUMERIC_LIMIT",
+  "scope": "20 alternating real keyboard inserts/deletes. Input-to-next-frame is a paint opportunity proxy, not compositor presentation timing. Save measures persistent payload serialization; production file export uses actual editor buttons.",
+  "openMs": 38374,
+  "browser": "154.0.8037.98",
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "initialPages": 178,
+  "localFontsPermission": "granted",
+  "twentySamplesRestoreAuthorContent": false,
+  "save": {
+    "serializeMs": 1806.7999999523163,
+    "reopenPayloadMs": 1236.1000001430511,
+    "bytes": 52698124,
+    "documentEqual": false
+  },
+  "docxExportMs": 8690,
+  "pdfExportMs": 15775,
+  "finalPages": 178,
+  "metrics": [
+    {
+      "name": "LayoutCount",
+      "value": 1087
+    },
+    {
+      "name": "RecalcStyleCount",
+      "value": 1133
+    },
+    {
+      "name": "TaskDuration",
+      "value": 436.209244
+    },
+    {
+      "name": "JSHeapUsedSize",
+      "value": 2508850768
+    },
+    {
+      "name": "JSHeapTotalSize",
+      "value": 2663948288
+    }
+  ],
+  "settle": {
+    "count": 20,
+    "p50": 14829,
+    "p95": 19438,
+    "max": 19623
+  },
+  "inputToFrame": {
+    "count": 20,
+    "p50": 239.60000014305115,
+    "p95": 387.7000000476837,
+    "max": 454.40000009536743
+  },
+  "completedAt": "2026-10-12T13:43:17.867Z"
+}

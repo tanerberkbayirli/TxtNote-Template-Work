@@ -6,9 +6,9 @@ import { getDocument } from '../frontend/node_modules/pdfjs-dist/legacy/build/pd
 import { embedAcademicPdfFonts, academicPdfFont } from '../frontend/src/lib/academicFonts.js';
 import { loadSystemTimesNewRoman } from '../frontend/src/lib/systemPdfFonts.js';
 import { embeddedPdfFonts, assertTimesNewRomanEmbedded } from '../frontend/tests/pdf-font-compliance.mjs';
-import { compileThesisDocument } from '../frontend/src/thesis/engine.js';
-import { mcbuPhd } from '../frontend/src/thesis/templates/mcbu.js';
-import { buildThesisDocx } from '../frontend/src/thesis/export.js';
+import { compileThesisDocument } from '../../engine/src/engine.js';
+import { mcbuPhd } from '../../engine/src/templates/mcbu.js';
+import { buildThesisDocx } from '../../engine/src/export.js';
 import { mcbuThesis } from '../frontend/tests/task10b-document.mjs';
 
 const out = new URL('../output/font-compliance/', import.meta.url);

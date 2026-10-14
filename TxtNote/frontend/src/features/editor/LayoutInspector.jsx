@@ -1,5 +1,5 @@
 import React from "react";
-import { toggleLayoutDecoration } from "../../thesis/layoutInteraction.js";
+import { toggleLayoutDecoration } from "../../../../../engine/src/layoutInteraction.js";
 
 const input = { boxSizing: "border-box", width: "100%", minWidth: 0, padding: "6px 8px", border: "1px solid #d4d4d8", borderRadius: 6, background: "white", color: "#18181b", font: "inherit" };
 const label = { display: "grid", gap: 4, fontSize: 12, color: "#52525b" };

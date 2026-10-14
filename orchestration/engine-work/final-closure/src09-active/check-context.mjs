@@ -1,0 +1,43 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+import assert from 'node:assert/strict';
+import {importThesisDocx} from '../../../../engine/src/importDocx.js';
+import {installContentDocument,contentNodesToHtml} from '../../../../engine/src/contentModel.js';
+import {compileThesisDocument} from '../../../../engine/src/engine.js';
+import {buildThesisDocx} from '../../../../engine/src/export.js';
+import generic from '../../../../engine/src/templates/generic.js';
+const require=createRequire(new URL('../../../../TxtNote/frontend/package.json',import.meta.url));
+const {unzipSync,strFromU8}=require('fflate'),{DOMParser}=require('@xmldom/xmldom');
+const {chromium}=createRequire(import.meta.url)('../../../tools/node_modules/playwright');
+const out='orchestration/engine-work/final-closure/src09-active',bytes=readFileSync(`${out}/nary.docx`);
+const doc=await importThesisDocx(bytes);
+const note=installContentDocument({title:'NARY_CONTEXT_ACTIVE',content:'',researchData:{thesis:{templateId:generic.id}}},doc);
+writeFileSync('TxtNote/frontend/tests/generated/NARY_CONTEXT_ACTIVE.fixture.json',JSON.stringify({...note,__template:generic}));
+const html=contentNodesToHtml(doc.sections.flatMap(s=>s.nodes),{stampIds:false});
+const exported=new Uint8Array(await(await buildThesisDocx(compileThesisDocument(generic,{},'T',html),{})).arrayBuffer());
+writeFileSync(`${out}/nary-roundtrip.docx`,exported);
+const signature=n=>[n.localName,Array.from(n.attributes||[]).filter(a=>!a.name.startsWith('xmlns')).map(a=>[a.namespaceURI,a.localName,a.value]).sort(),Array.from(n.childNodes||[]).filter(c=>c.nodeType===1||c.nodeType===3&&c.data.trim()).map(c=>c.nodeType===1?signature(c):c.data)];
+const equations=b=>Array.from(new DOMParser().parseFromString(strFromU8(unzipSync(b)['word/document.xml']),'application/xml').getElementsByTagNameNS('http://schemas.openxmlformats.org/officeDocument/2006/math','oMath')).map(signature);
+assert.deepEqual(equations(exported),equations(bytes));
+const reopened=await importThesisDocx(exported);
+const rehtml=contentNodesToHtml(reopened.sections.flatMap(s=>s.nodes),{stampIds:false});
+assert.equal((rehtml.match(/<munderover[ >]/g)||[]).length,1);
+assert.equal((rehtml.match(/<msubsup[ >]/g)||[]).length,5);
+const browser=await chromium.launch({channel:'chrome',args:['--enable-blink-features=MulticolColumnWrapping']});
+try{
+ const page=await browser.newPage({viewport:{width:1400,height:1000}});
+ await page.goto('http://127.0.0.1:5193/tests/thesis-long.html?id=NARY_CONTEXT_ACTIVE');
+ await page.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true',null,{timeout:300000});
+ const rows=await page.evaluate(()=>[...document.querySelectorAll('.thesis-page-flow math')].map(m=>{
+  const op=m.querySelector('mo'),l=[...m.querySelectorAll('mi,mtext')].find(n=>n.textContent==='L'),u=[...m.querySelectorAll('mi,mtext')].find(n=>n.textContent==='U');
+  const rect=n=>{const r=n.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height}};
+  return {displayStyle:m.getAttribute('displaystyle'),tag:m.querySelector('munderover,msubsup')?.tagName,op:rect(op),lower:rect(l),upper:rect(u)};
+ }));
+ assert.equal(rows.length,6);
+ rows.forEach((r,i)=>{assert.equal(r.tag,i===0?'munderover':'msubsup');assert.equal(r.displayStyle,[0,3].includes(i)?'true':'false');if(i!==0)assert.ok(r.lower.x>=r.op.x+r.op.width-1);});
+ assert.ok(rows[0].op.height>rows[1].op.height*1.2);
+ assert.ok(rows[3].op.height>rows[4].op.height*1.2);
+ await page.screenshot({path:`${out}/nary.chrome.png`,fullPage:true});
+ writeFileSync(`${out}/context-check.json`,JSON.stringify({status:'PASS',cases:6,sourceOmmlUnchanged:true,reimportPreview:true,rows},null,2));
+ console.log('Context: Chrome 6/6; editable OMML export/reimport unchanged.');
+}finally{await browser.close();}

@@ -1,0 +1,31 @@
+{
+  "startedAt": "2026-10-11T15:31:45.475Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "aku-sosyoloji-lisans",
+      "exitCode": 0,
+      "commandSeconds": 23.675,
+      "report": "engine\\mission08\\continue-recheck\\aku-sosyoloji-lisans\\check-20261011-1832.json",
+      "counts": {
+        "INFO": 4,
+        "PASS": 31
+      },
+      "measurementSeconds": 1.108,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 0,
+      "commandSeconds": 93.915,
+      "report": "engine\\mission08\\continue-recheck\\engine-word-pagefit\\check-20261011-1833.json",
+      "counts": {
+        "PASS": 213
+      },
+      "measurementSeconds": 5.917,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-11T15:33:43.069Z",
+  "commandSeconds": 117.591
+}

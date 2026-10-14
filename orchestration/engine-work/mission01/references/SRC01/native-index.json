@@ -1,0 +1,2131 @@
+{
+  "counts": {
+    "paragraph": 949,
+    "table": 6,
+    "horizontalMerge": 1,
+    "verticalMerge": 14,
+    "repeatedTableHeader": 0,
+    "equation": 1,
+    "matrix": 0,
+    "integralOrNary": 0,
+    "vectorAccent": 0,
+    "inlineImage": 5,
+    "anchoredImage": 35,
+    "croppedImage": 4,
+    "footnoteReference": 0,
+    "endnoteReference": 0,
+    "field": 47,
+    "bookmark": 157,
+    "section": 4,
+    "textBox": 68,
+    "numberedParagraph": 8
+  },
+  "features": [
+    {
+      "kind": "table",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:tbl[1]"
+    },
+    {
+      "kind": "table",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:tbl[2]"
+    },
+    {
+      "kind": "table",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:tbl[3]"
+    },
+    {
+      "kind": "table",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:tbl[4]"
+    },
+    {
+      "kind": "table",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:tbl[5]"
+    },
+    {
+      "kind": "table",
+      "part": "word/document.xml",
+      "ordinal": 6,
+      "xpath": "/w:document/w:body/w:tbl[6]"
+    },
+    {
+      "kind": "horizontalMerge",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[9]/w:tc[1]/w:tcPr/w:gridSpan"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[1]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[1]/w:tc[2]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[1]/w:tc[3]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[1]/w:tc[4]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[2]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 6,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[2]/w:tc[2]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 7,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[2]/w:tc[3]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 8,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[2]/w:tc[4]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 9,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[3]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 10,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[4]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 11,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[5]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 12,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[6]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 13,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[7]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "verticalMerge",
+      "part": "word/document.xml",
+      "ordinal": 14,
+      "xpath": "/w:document/w:body/w:tbl[5]/w:tr[8]/w:tc[1]/w:tcPr/w:vMerge"
+    },
+    {
+      "kind": "equation",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[386]/m:oMath"
+    },
+    {
+      "kind": "inlineImage",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[236]/w:r[1]/w:drawing/wp:inline"
+    },
+    {
+      "kind": "inlineImage",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[4]/w:drawing/wp:inline"
+    },
+    {
+      "kind": "inlineImage",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[316]/w:r[2]/w:drawing/wp:inline"
+    },
+    {
+      "kind": "inlineImage",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:p[403]/w:r[2]/w:drawing/wp:inline"
+    },
+    {
+      "kind": "inlineImage",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:p[411]/w:r[2]/w:drawing/wp:inline"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[7]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[45]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[46]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:p[48]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:p[58]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 6,
+      "xpath": "/w:document/w:body/w:p[69]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 7,
+      "xpath": "/w:document/w:body/w:p[74]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 8,
+      "xpath": "/w:document/w:body/w:p[76]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 9,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[3]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 10,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[7]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 11,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[17]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 12,
+      "xpath": "/w:document/w:body/w:p[102]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 13,
+      "xpath": "/w:document/w:body/w:p[103]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 14,
+      "xpath": "/w:document/w:body/w:p[111]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 15,
+      "xpath": "/w:document/w:body/w:p[112]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 16,
+      "xpath": "/w:document/w:body/w:p[119]/w:r/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 17,
+      "xpath": "/w:document/w:body/w:p[129]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 18,
+      "xpath": "/w:document/w:body/w:p[143]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 19,
+      "xpath": "/w:document/w:body/w:p[163]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 20,
+      "xpath": "/w:document/w:body/w:p[218]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 21,
+      "xpath": "/w:document/w:body/w:p[223]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 22,
+      "xpath": "/w:document/w:body/w:p[230]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 23,
+      "xpath": "/w:document/w:body/w:p[300]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 24,
+      "xpath": "/w:document/w:body/w:tbl[3]/w:tr[4]/w:tc[2]/w:p/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 25,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 26,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[2]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 27,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[3]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 28,
+      "xpath": "/w:document/w:body/w:p[316]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 29,
+      "xpath": "/w:document/w:body/w:p[381]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 30,
+      "xpath": "/w:document/w:body/w:p[396]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 31,
+      "xpath": "/w:document/w:body/w:p[403]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 32,
+      "xpath": "/w:document/w:body/w:p[411]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 33,
+      "xpath": "/w:document/w:body/w:p[468]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 34,
+      "xpath": "/w:document/w:body/w:p[474]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "anchoredImage",
+      "part": "word/document.xml",
+      "ordinal": 35,
+      "xpath": "/w:document/w:body/w:p[563]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor"
+    },
+    {
+      "kind": "croppedImage",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[4]/w:drawing/wp:inline/a:graphic/a:graphicData/pic:pic/pic:blipFill/a:srcRect"
+    },
+    {
+      "kind": "croppedImage",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[316]/w:r[2]/w:drawing/wp:inline/a:graphic/a:graphicData/pic:pic/pic:blipFill/a:srcRect"
+    },
+    {
+      "kind": "croppedImage",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[403]/w:r[2]/w:drawing/wp:inline/a:graphic/a:graphicData/pic:pic/pic:blipFill/a:srcRect"
+    },
+    {
+      "kind": "croppedImage",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:p[411]/w:r[2]/w:drawing/wp:inline/a:graphic/a:graphicData/pic:pic/pic:blipFill/a:srcRect"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[175]/w:r[2]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[175]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[176]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:p[177]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:p[178]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 6,
+      "xpath": "/w:document/w:body/w:p[179]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 7,
+      "xpath": "/w:document/w:body/w:p[180]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 8,
+      "xpath": "/w:document/w:body/w:p[181]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 9,
+      "xpath": "/w:document/w:body/w:p[182]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 10,
+      "xpath": "/w:document/w:body/w:p[183]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 11,
+      "xpath": "/w:document/w:body/w:p[184]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 12,
+      "xpath": "/w:document/w:body/w:p[185]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 13,
+      "xpath": "/w:document/w:body/w:p[186]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 14,
+      "xpath": "/w:document/w:body/w:p[187]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 15,
+      "xpath": "/w:document/w:body/w:p[188]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 16,
+      "xpath": "/w:document/w:body/w:p[189]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 17,
+      "xpath": "/w:document/w:body/w:p[190]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 18,
+      "xpath": "/w:document/w:body/w:p[191]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 19,
+      "xpath": "/w:document/w:body/w:p[192]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 20,
+      "xpath": "/w:document/w:body/w:p[193]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 21,
+      "xpath": "/w:document/w:body/w:p[194]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 22,
+      "xpath": "/w:document/w:body/w:p[195]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 23,
+      "xpath": "/w:document/w:body/w:p[196]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 24,
+      "xpath": "/w:document/w:body/w:p[197]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 25,
+      "xpath": "/w:document/w:body/w:p[198]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 26,
+      "xpath": "/w:document/w:body/w:p[199]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 27,
+      "xpath": "/w:document/w:body/w:p[200]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 28,
+      "xpath": "/w:document/w:body/w:p[201]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 29,
+      "xpath": "/w:document/w:body/w:p[202]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 30,
+      "xpath": "/w:document/w:body/w:p[203]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 31,
+      "xpath": "/w:document/w:body/w:p[204]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 32,
+      "xpath": "/w:document/w:body/w:p[205]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 33,
+      "xpath": "/w:document/w:body/w:p[206]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 34,
+      "xpath": "/w:document/w:body/w:p[207]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 35,
+      "xpath": "/w:document/w:body/w:p[208]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 36,
+      "xpath": "/w:document/w:body/w:p[209]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 37,
+      "xpath": "/w:document/w:body/w:p[210]/w:hyperlink/w:r[5]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 38,
+      "xpath": "/w:document/w:body/w:p[211]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 39,
+      "xpath": "/w:document/w:body/w:p[212]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 40,
+      "xpath": "/w:document/w:body/w:p[213]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 41,
+      "xpath": "/w:document/w:body/w:p[214]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 42,
+      "xpath": "/w:document/w:body/w:p[215]/w:hyperlink/w:r[4]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 43,
+      "xpath": "/w:document/w:body/w:p[226]/w:r[2]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/document.xml",
+      "ordinal": 44,
+      "xpath": "/w:document/w:body/w:p[239]/w:r[2]/w:instrText"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[1]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[94]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[131]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:p[152]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:p[173]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 6,
+      "xpath": "/w:document/w:body/w:p[173]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 7,
+      "xpath": "/w:document/w:body/w:p[219]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 8,
+      "xpath": "/w:document/w:body/w:p[224]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 9,
+      "xpath": "/w:document/w:body/w:p[237]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 10,
+      "xpath": "/w:document/w:body/w:p[243]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 11,
+      "xpath": "/w:document/w:body/w:p[243]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 12,
+      "xpath": "/w:document/w:body/w:p[268]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 13,
+      "xpath": "/w:document/w:body/w:p[275]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 14,
+      "xpath": "/w:document/w:body/w:p[275]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 15,
+      "xpath": "/w:document/w:body/w:p[280]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 16,
+      "xpath": "/w:document/w:body/w:p[280]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 17,
+      "xpath": "/w:document/w:body/w:p[280]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 18,
+      "xpath": "/w:document/w:body/w:p[281]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 19,
+      "xpath": "/w:document/w:body/w:p[281]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 20,
+      "xpath": "/w:document/w:body/w:p[281]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 21,
+      "xpath": "/w:document/w:body/w:p[287]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 22,
+      "xpath": "/w:document/w:body/w:p[287]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 23,
+      "xpath": "/w:document/w:body/w:p[287]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 24,
+      "xpath": "/w:document/w:body/w:p[292]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 25,
+      "xpath": "/w:document/w:body/w:p[292]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 26,
+      "xpath": "/w:document/w:body/w:p[292]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 27,
+      "xpath": "/w:document/w:body/w:p[296]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 28,
+      "xpath": "/w:document/w:body/w:p[299]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 29,
+      "xpath": "/w:document/w:body/w:p[299]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 30,
+      "xpath": "/w:document/w:body/w:p[303]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 31,
+      "xpath": "/w:document/w:body/w:p[303]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 32,
+      "xpath": "/w:document/w:body/w:p[303]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 33,
+      "xpath": "/w:document/w:body/w:p[308]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 34,
+      "xpath": "/w:document/w:body/w:p[310]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 35,
+      "xpath": "/w:document/w:body/w:p[310]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 36,
+      "xpath": "/w:document/w:body/w:p[310]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 37,
+      "xpath": "/w:document/w:body/w:p[317]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 38,
+      "xpath": "/w:document/w:body/w:p[317]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 39,
+      "xpath": "/w:document/w:body/w:p[319]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 40,
+      "xpath": "/w:document/w:body/w:p[319]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 41,
+      "xpath": "/w:document/w:body/w:p[319]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 42,
+      "xpath": "/w:document/w:body/w:p[323]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 43,
+      "xpath": "/w:document/w:body/w:p[323]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 44,
+      "xpath": "/w:document/w:body/w:p[323]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 45,
+      "xpath": "/w:document/w:body/w:p[326]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 46,
+      "xpath": "/w:document/w:body/w:p[326]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 47,
+      "xpath": "/w:document/w:body/w:p[326]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 48,
+      "xpath": "/w:document/w:body/w:p[327]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 49,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 50,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 51,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 52,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 53,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[5]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 54,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[6]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 55,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[7]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 56,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[8]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 57,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[9]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 58,
+      "xpath": "/w:document/w:body/w:p[329]/w:bookmarkStart[10]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 59,
+      "xpath": "/w:document/w:body/w:p[333]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 60,
+      "xpath": "/w:document/w:body/w:p[333]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 61,
+      "xpath": "/w:document/w:body/w:p[333]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 62,
+      "xpath": "/w:document/w:body/w:p[333]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 63,
+      "xpath": "/w:document/w:body/w:p[335]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 64,
+      "xpath": "/w:document/w:body/w:p[335]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 65,
+      "xpath": "/w:document/w:body/w:p[336]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 66,
+      "xpath": "/w:document/w:body/w:p[336]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 67,
+      "xpath": "/w:document/w:body/w:p[337]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 68,
+      "xpath": "/w:document/w:body/w:p[337]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 69,
+      "xpath": "/w:document/w:body/w:p[339]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 70,
+      "xpath": "/w:document/w:body/w:p[340]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 71,
+      "xpath": "/w:document/w:body/w:p[341]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 72,
+      "xpath": "/w:document/w:body/w:p[341]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 73,
+      "xpath": "/w:document/w:body/w:p[344]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 74,
+      "xpath": "/w:document/w:body/w:p[344]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 75,
+      "xpath": "/w:document/w:body/w:p[345]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 76,
+      "xpath": "/w:document/w:body/w:p[345]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 77,
+      "xpath": "/w:document/w:body/w:p[350]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 78,
+      "xpath": "/w:document/w:body/w:p[350]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 79,
+      "xpath": "/w:document/w:body/w:p[352]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 80,
+      "xpath": "/w:document/w:body/w:p[352]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 81,
+      "xpath": "/w:document/w:body/w:p[352]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 82,
+      "xpath": "/w:document/w:body/w:p[356]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 83,
+      "xpath": "/w:document/w:body/w:p[356]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 84,
+      "xpath": "/w:document/w:body/w:p[358]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 85,
+      "xpath": "/w:document/w:body/w:p[360]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 86,
+      "xpath": "/w:document/w:body/w:p[360]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 87,
+      "xpath": "/w:document/w:body/w:p[364]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 88,
+      "xpath": "/w:document/w:body/w:p[364]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 89,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 90,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 91,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 92,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 93,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[5]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 94,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[6]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 95,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[7]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 96,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[8]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 97,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[9]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 98,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[10]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 99,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[11]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 100,
+      "xpath": "/w:document/w:body/w:p[366]/w:bookmarkStart[12]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 101,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 102,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 103,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 104,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 105,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[5]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 106,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[6]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 107,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[7]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 108,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[8]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 109,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[9]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 110,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[10]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 111,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[11]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 112,
+      "xpath": "/w:document/w:body/w:p[369]/w:bookmarkStart[12]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 113,
+      "xpath": "/w:document/w:body/w:p[373]/w:bookmarkStart"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 114,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 115,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 116,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 117,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 118,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[5]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 119,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[6]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 120,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[7]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 121,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[8]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 122,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[9]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 123,
+      "xpath": "/w:document/w:body/w:p[376]/w:bookmarkStart[10]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 124,
+      "xpath": "/w:document/w:body/w:p[380]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 125,
+      "xpath": "/w:document/w:body/w:p[380]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 126,
+      "xpath": "/w:document/w:body/w:p[380]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 127,
+      "xpath": "/w:document/w:body/w:p[380]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 128,
+      "xpath": "/w:document/w:body/w:p[380]/w:bookmarkStart[5]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 129,
+      "xpath": "/w:document/w:body/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 130,
+      "xpath": "/w:document/w:body/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 131,
+      "xpath": "/w:document/w:body/w:p[382]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 132,
+      "xpath": "/w:document/w:body/w:p[382]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 133,
+      "xpath": "/w:document/w:body/w:p[382]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 134,
+      "xpath": "/w:document/w:body/w:p[390]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 135,
+      "xpath": "/w:document/w:body/w:p[390]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 136,
+      "xpath": "/w:document/w:body/w:p[390]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 137,
+      "xpath": "/w:document/w:body/w:p[390]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 138,
+      "xpath": "/w:document/w:body/w:p[394]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 139,
+      "xpath": "/w:document/w:body/w:p[394]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 140,
+      "xpath": "/w:document/w:body/w:p[399]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 141,
+      "xpath": "/w:document/w:body/w:p[399]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 142,
+      "xpath": "/w:document/w:body/w:p[399]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 143,
+      "xpath": "/w:document/w:body/w:p[399]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 144,
+      "xpath": "/w:document/w:body/w:p[404]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 145,
+      "xpath": "/w:document/w:body/w:p[404]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 146,
+      "xpath": "/w:document/w:body/w:p[406]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 147,
+      "xpath": "/w:document/w:body/w:p[406]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 148,
+      "xpath": "/w:document/w:body/w:p[406]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 149,
+      "xpath": "/w:document/w:body/w:p[406]/w:bookmarkStart[4]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 150,
+      "xpath": "/w:document/w:body/w:p[408]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 151,
+      "xpath": "/w:document/w:body/w:p[408]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 152,
+      "xpath": "/w:document/w:body/w:p[408]/w:bookmarkStart[3]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 153,
+      "xpath": "/w:document/w:body/w:p[413]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 154,
+      "xpath": "/w:document/w:body/w:p[413]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 155,
+      "xpath": "/w:document/w:body/w:p[416]/w:bookmarkStart[1]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 156,
+      "xpath": "/w:document/w:body/w:p[416]/w:bookmarkStart[2]"
+    },
+    {
+      "kind": "bookmark",
+      "part": "word/document.xml",
+      "ordinal": 157,
+      "xpath": "/w:document/w:body/w:p[436]/w:bookmarkStart"
+    },
+    {
+      "kind": "section",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[75]/w:pPr/w:sectPr"
+    },
+    {
+      "kind": "section",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[93]/w:pPr/w:sectPr"
+    },
+    {
+      "kind": "section",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[274]/w:pPr/w:sectPr"
+    },
+    {
+      "kind": "section",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:sectPr"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[7]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[7]/w:r/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[45]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:p[45]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:p[46]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 6,
+      "xpath": "/w:document/w:body/w:p[46]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 7,
+      "xpath": "/w:document/w:body/w:p[48]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 8,
+      "xpath": "/w:document/w:body/w:p[48]/w:r/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 9,
+      "xpath": "/w:document/w:body/w:p[58]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 10,
+      "xpath": "/w:document/w:body/w:p[58]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 11,
+      "xpath": "/w:document/w:body/w:p[69]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 12,
+      "xpath": "/w:document/w:body/w:p[69]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 13,
+      "xpath": "/w:document/w:body/w:p[74]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 14,
+      "xpath": "/w:document/w:body/w:p[74]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 15,
+      "xpath": "/w:document/w:body/w:p[76]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 16,
+      "xpath": "/w:document/w:body/w:p[76]/w:r/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 17,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[3]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 18,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[3]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 19,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[7]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 20,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[7]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 21,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[17]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 22,
+      "xpath": "/w:document/w:body/w:tbl[1]/w:tr[1]/w:tc/w:p[17]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 23,
+      "xpath": "/w:document/w:body/w:p[102]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 24,
+      "xpath": "/w:document/w:body/w:p[102]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 25,
+      "xpath": "/w:document/w:body/w:p[103]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 26,
+      "xpath": "/w:document/w:body/w:p[103]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 27,
+      "xpath": "/w:document/w:body/w:p[111]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 28,
+      "xpath": "/w:document/w:body/w:p[111]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 29,
+      "xpath": "/w:document/w:body/w:p[112]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 30,
+      "xpath": "/w:document/w:body/w:p[112]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 31,
+      "xpath": "/w:document/w:body/w:p[129]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 32,
+      "xpath": "/w:document/w:body/w:p[129]/w:r/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 33,
+      "xpath": "/w:document/w:body/w:p[143]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 34,
+      "xpath": "/w:document/w:body/w:p[143]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 35,
+      "xpath": "/w:document/w:body/w:p[163]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 36,
+      "xpath": "/w:document/w:body/w:p[163]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 37,
+      "xpath": "/w:document/w:body/w:p[218]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 38,
+      "xpath": "/w:document/w:body/w:p[218]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 39,
+      "xpath": "/w:document/w:body/w:p[223]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 40,
+      "xpath": "/w:document/w:body/w:p[223]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 41,
+      "xpath": "/w:document/w:body/w:p[230]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 42,
+      "xpath": "/w:document/w:body/w:p[230]/w:r/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 43,
+      "xpath": "/w:document/w:body/w:p[300]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 44,
+      "xpath": "/w:document/w:body/w:p[300]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 45,
+      "xpath": "/w:document/w:body/w:tbl[3]/w:tr[4]/w:tc[2]/w:p/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 46,
+      "xpath": "/w:document/w:body/w:tbl[3]/w:tr[4]/w:tc[2]/w:p/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 47,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 48,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 49,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[2]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 50,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[2]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 51,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[3]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 52,
+      "xpath": "/w:document/w:body/w:p[307]/w:r[3]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 53,
+      "xpath": "/w:document/w:body/w:p[316]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 54,
+      "xpath": "/w:document/w:body/w:p[316]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 55,
+      "xpath": "/w:document/w:body/w:p[381]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 56,
+      "xpath": "/w:document/w:body/w:p[381]/w:r/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 57,
+      "xpath": "/w:document/w:body/w:p[396]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 58,
+      "xpath": "/w:document/w:body/w:p[396]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 59,
+      "xpath": "/w:document/w:body/w:p[403]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 60,
+      "xpath": "/w:document/w:body/w:p[403]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 61,
+      "xpath": "/w:document/w:body/w:p[411]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 62,
+      "xpath": "/w:document/w:body/w:p[411]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 63,
+      "xpath": "/w:document/w:body/w:p[468]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 64,
+      "xpath": "/w:document/w:body/w:p[468]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 65,
+      "xpath": "/w:document/w:body/w:p[474]/w:r[1]/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 66,
+      "xpath": "/w:document/w:body/w:p[474]/w:r[1]/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 67,
+      "xpath": "/w:document/w:body/w:p[563]/w:r/mc:AlternateContent/mc:Choice/w:drawing/wp:anchor/a:graphic/a:graphicData/wps:wsp/wps:txbx/w:txbxContent"
+    },
+    {
+      "kind": "textBox",
+      "part": "word/document.xml",
+      "ordinal": 68,
+      "xpath": "/w:document/w:body/w:p[563]/w:r/mc:AlternateContent/mc:Fallback/w:pict/v:shape/v:textbox/w:txbxContent"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[82]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 2,
+      "xpath": "/w:document/w:body/w:p[83]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 3,
+      "xpath": "/w:document/w:body/w:p[84]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 4,
+      "xpath": "/w:document/w:body/w:p[85]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 5,
+      "xpath": "/w:document/w:body/w:p[86]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 6,
+      "xpath": "/w:document/w:body/w:p[87]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 7,
+      "xpath": "/w:document/w:body/w:p[456]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "numberedParagraph",
+      "part": "word/document.xml",
+      "ordinal": 8,
+      "xpath": "/w:document/w:body/w:p[457]/w:pPr/w:numPr"
+    },
+    {
+      "kind": "field",
+      "part": "word/footer4.xml",
+      "ordinal": 1,
+      "xpath": "/w:ftr/w:p/w:r[2]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/footer3.xml",
+      "ordinal": 1,
+      "xpath": "/w:ftr/w:p/w:r[2]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/footer5.xml",
+      "ordinal": 1,
+      "xpath": "/w:ftr/w:p[1]/w:r[2]/w:instrText"
+    }
+  ],
+  "noteParagraphs": {
+    "word/endnotes.xml": 2,
+    "word/footnotes.xml": 2
+  },
+  "mainTextSha256": "a2607a9f99a6b619a24dfe571f58fba98e1f1d94ce84b4e8c9a6e78a1172e3e9",
+  "nestedTableCount": 0
+}

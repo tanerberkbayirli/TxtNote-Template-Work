@@ -13,7 +13,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { deflateSync } from "node:zlib";
 
 const root = fileURLToPath(new URL("../..", import.meta.url));
-const { THESIS_TEMPLATE_REGISTRY } = await import(pathToFileURL(`${root}/TxtNote/frontend/src/thesis/registry.js`).href);
+const { THESIS_TEMPLATE_REGISTRY } = await import(pathToFileURL(`${root}/engine/src/registry.js`).href);
 
 const [registryId, out, overridesPath] = process.argv.slice(2);
 if (!registryId || !out) { console.error("usage: make-fixture.mjs <registryId> <out.json> [overrides.json]"); process.exit(2); }

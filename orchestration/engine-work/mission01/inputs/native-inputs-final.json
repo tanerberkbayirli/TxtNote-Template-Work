@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "authoring": "Independent Python DOCX and native OOXML; no TxtEngine output is a source.",
+  "sources": [
+    {
+      "id": "EDGE_STRUCTURE",
+      "path": "engine/mission01/inputs/edge-native-structure-final.docx",
+      "sha256": "9f0ec3fc18909d52738ed82cbfc43bcd68790dde921a7e3bbda0e1503fdaf8f8",
+      "role": "synthetic-boundary",
+      "partition": "development"
+    },
+    {
+      "id": "EDGE_NOTES",
+      "path": "engine/mission01/inputs/edge-long-notes-final.docx",
+      "sha256": "9ca7f552847d766db9e3a4d8d9aed888282bef81c003aa323ab089a20826ec86",
+      "role": "synthetic-boundary",
+      "partition": "development"
+    }
+  ],
+  "revisionReason": "Final input selection; remove inherited decorative title borders. Earlier diagnostic versions preserved."
+}

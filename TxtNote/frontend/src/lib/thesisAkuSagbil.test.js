@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { compileThesisDocument, templateFontFamilies } from "../thesis/engine.js";
-import { resolveThesisTemplate } from "../thesis/registry.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { akuSagbilMaster, akuSagbilPhd } from "../thesis/templates/aku-sagbil.js";
+import { compileThesisDocument, templateFontFamilies } from "../../../../engine/src/engine.js";
+import { resolveThesisTemplate } from "../../../../engine/src/registry.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { akuSagbilMaster, akuSagbilPhd } from "../../../../engine/src/templates/aku-sagbil.js";
 
 describe("AKÜ Sağlık Bilimleri template (2022 guide)", () => {
   it("is valid, registered and differs between degrees only in degree strings", async () => {

@@ -1,0 +1,1041 @@
+{
+ "target": "engine-word-style-precedence",
+ "stamp": "20261009-0926",
+ "counts": {
+  "PASS": 38,
+  "SKIPPED": 15
+ },
+ "variants": {
+  "base": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\base.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\base.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\base.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-style-precedence.fixture.base.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "fd66fabcb98dc0369138c665bfc0d53ef5d695c61c66bb5ce1773eee39ac42ca"
+  },
+  "section": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\section.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\section.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\section.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-style-precedence.fixture.section.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "7d6d069cc2daacd56d8b4a91dd0313405e360236d8803b931344a5963ca9a963"
+  },
+  "named": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\named.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\named.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\named.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-style-precedence.fixture.named.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "13b6fdeb7f746a50347bf11bd2a51f4513fdf901f7a57b4a676e65ea77089f77"
+  },
+  "direct": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\direct.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\direct.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\direct.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-style-precedence.fixture.direct.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "9fcf725ed14f9cecf2dcd0606e65ba37674fcae52c901152baa1011048470361"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.359,
+ "commandSeconds": 15.21,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "9bf8d9eaac44db23b6f0affd8e047d1535860522",
+  "trackedDiffSha256": "774dd3ad2282899973189266f73a955791667a4ccfa918bc341573fb6df52093",
+  "diagnosticsSha256": "9d28054675c03fee9a65e2f2a73c545f973ee3123c6cdcf670a95e09b12c8242",
+  "startedAt": "2026-10-09T06:26:15.103Z",
+  "codeFingerprint": "835f2a72f390c4a6db6445078ac93c6ebe2c9795c4174cef3443eee3fe76ed3b",
+  "officialSourceFingerprint": "d78136218ebf809697b5d24d73829ef1f2c8c2adef9307bd3bafae954ebb1092"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission02\\final-regression\\engine-word-style-precedence\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "base": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "section": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "named": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "direct": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "c92d07be55af3e9d62e390bfcd8bc797868b1a35f4646c43256172b84da5d02c",
+ "artifactSha256": {
+  "base": {
+   "fixture": "3d844c278470aebccaa8643950f09c3f7dd340bf741141bad5c7c129640adb9b",
+   "pdf": "41c5b1a51fd42da76e1c66ac2815b8e46b2a0580b46b530d8c9b1dc969cf177d",
+   "docx": "08db9a3fa564b849a100f28130a2e8e75e04c5fd2c962a9bc26afd24dfc8f07c",
+   "layout": "e63fc4de9b35341fa82f4defb313fe418922e75c21061a67ee05057b9894df4b"
+  },
+  "section": {
+   "fixture": "a6d282de95fec46df4581bf87c45c342c74fb6160e71f529ee9dbcd2e0128729",
+   "pdf": "5f2d198dc3ba1b09b42ac000bad9845941ada12dbd7b23ebf78131192d5f128f",
+   "docx": "cdf0ded485314734012cf7a1b327aeb049cc914d5f014816ee39ed8e5afb32e8",
+   "layout": "9a38b7c303fe08cdb8371dd9cfcd1d6b429f9159687d1d5dfafabce1ca045611"
+  },
+  "named": {
+   "fixture": "e347331270a8c60456b61fde72f0270759c4d1d9ea6e2a9dbb74251679d42ca0",
+   "pdf": "b681e200c19dd6791f024c07e537b6351803f0aaf886e1f5dd1041ba24029dcd",
+   "docx": "4c7a0a7f27266193a660ee44a1da1e01965334f6be4977616fee2909ad2dbcbd",
+   "layout": "6ad4b6ff5606df086852c1053e404aa1358f4dcf222671fa9e6626587f8bb52e"
+  },
+  "direct": {
+   "fixture": "22186fce2c6b006fc2483d5cc02d0afbd8771afe4886f80ca7d4327c5f59aac0",
+   "pdf": "98675f9e98bc882e2c37bdafd43bf4e2a50742544ff2f20afe45a9223df2ec06",
+   "docx": "e845f68e364eb32a9ee012ec08e715b63d579c1b5d42da585fc8f00ba5ebc31a",
+   "layout": "ec7449d60c5c5932a80bcac9267258c3f0c45a8ceba2b72503b1673547a2e2bc"
+  }
+ },
+ "checks": [
+  {
+   "id": "base-pdf-font",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "one isolated section; body TNR remains the font fallback while paragraph properties conflict"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "base-pdf-size",
+   "kind": "font_size",
+   "expected": 10,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "paragraph fontSizePt 10 overrides body 12"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 10.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {10.0: 58}",
+   "status": "PASS"
+  },
+  {
+   "id": "base-pdf-pitch",
+   "kind": "line_pitch",
+   "expected": 4.057,
+   "tolerance": 0.15,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 4.051,
+   "delta": -0.006,
+   "note": "mode bucket 4.1 (1/1 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "base-pdf-indent",
+   "kind": "line_attr",
+   "expected": 34,
+   "tolerance": 0.5,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "30 mm left margin + paragraph firstLineIndent 4 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 33.995,
+   "delta": -0.005,
+   "note": "2 lines, pages [1]",
+   "status": "PASS"
+  },
+  {
+   "id": "base-docx-font",
+   "kind": "docx_attr",
+   "expected": [
+    "Times New Roman"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json DOCX",
+    "locator": "only fixture text paragraphs use body font fallback"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "Times New Roman"
+   ],
+   "note": "7 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "base-docx-size",
+   "kind": "docx_attr",
+   "expected": [
+    "20"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json DOCX",
+    "locator": "paragraph 10 pt = 20 half-points"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "20",
+    "24",
+    "28",
+    "56"
+   ],
+   "note": "12 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "base-docx-pitch",
+   "kind": "docx_attr",
+   "expected": [
+    "240"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json DOCX",
+    "locator": "paragraph lineHeight 1 = 240 auto twips"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "240"
+   ],
+   "note": "4 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "base-docx-indent",
+   "kind": "docx_attr",
+   "expected": [
+    "227"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json DOCX",
+    "locator": "paragraph indent 4 mm = 227 twips"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "227"
+   ],
+   "note": "2 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "section-pdf-font",
+   "kind": "fonts",
+   "expected": [
+    "ArialMT"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "section paragraph override Arial wins over body and global paragraph"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "ArialMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "section-pdf-size",
+   "kind": "font_size",
+   "expected": 11,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "section paragraph fontSizePt 11 wins over global paragraph 10"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 11.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {11.0: 64}",
+   "status": "PASS"
+  },
+  {
+   "id": "section-pdf-pitch",
+   "kind": "line_pitch",
+   "expected": 5.578,
+   "tolerance": 0.15,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 5.577,
+   "delta": -0.001,
+   "note": "mode bucket 5.6 (1/1 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "section-pdf-indent",
+   "kind": "line_attr",
+   "expected": 36,
+   "tolerance": 0.5,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "30 mm left margin + section firstLineIndent 6 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 35.996,
+   "delta": -0.004,
+   "note": "2 lines, pages [1]",
+   "status": "PASS"
+  },
+  {
+   "id": "section-docx-font",
+   "kind": "docx_attr",
+   "expected": [
+    "Arial"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json DOCX",
+    "locator": "section override Arial run font"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "Arial",
+    "Times New Roman"
+   ],
+   "note": "7 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "section-docx-size",
+   "kind": "docx_attr",
+   "expected": [
+    "22"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json DOCX",
+    "locator": "section 11 pt = 22 half-points"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "20",
+    "22",
+    "24",
+    "28",
+    "56"
+   ],
+   "note": "12 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "section-docx-pitch",
+   "kind": "docx_attr",
+   "expected": 300,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json DOCX",
+    "locator": "canonical lineSpacing auto value 1.25 = 300 twips (section) / 2 = 480 twips (named)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "240",
+    "300"
+   ],
+   "note": "4 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "section-docx-indent",
+   "kind": "docx_attr",
+   "expected": [
+    "340"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json DOCX",
+    "locator": "section indent 6 mm = 340 twips"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "340"
+   ],
+   "note": "2 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "named-pdf-font",
+   "kind": "fonts",
+   "expected": [
+    "Calibri"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "named paragraph style Calibri wins over section Arial"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "Calibri"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "named-pdf-size",
+   "kind": "font_size",
+   "expected": 14,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "named paragraph style 14 pt wins over section 11 pt"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 14.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {14.0: 60}",
+   "status": "PASS"
+  },
+  {
+   "id": "named-pdf-pitch",
+   "kind": "line_pitch",
+   "expected": 12.058,
+   "tolerance": 0.2,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 12.059,
+   "delta": 0.001,
+   "note": "mode bucket 12.1 (1/1 gaps)",
+   "status": "PASS"
+  },
+  {
+   "id": "named-pdf-indent",
+   "kind": "line_attr",
+   "expected": 38,
+   "tolerance": 0.5,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "30 mm left margin + named style firstLineIndent 8 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 37.997,
+   "delta": -0.003,
+   "note": "2 lines, pages [1]",
+   "status": "PASS"
+  },
+  {
+   "id": "named-docx-font",
+   "kind": "docx_attr",
+   "expected": [
+    "Calibri"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json DOCX",
+    "locator": "named style Calibri run font"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "Arial",
+    "Calibri",
+    "Times New Roman"
+   ],
+   "note": "7 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "named-docx-size",
+   "kind": "docx_attr",
+   "expected": [
+    "28"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json DOCX",
+    "locator": "named 14 pt = 28 half-points"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "20",
+    "22",
+    "24",
+    "28",
+    "56"
+   ],
+   "note": "12 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "named-docx-pitch",
+   "kind": "docx_attr",
+   "expected": 480,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json DOCX",
+    "locator": "canonical lineSpacing auto value 1.25 = 300 twips (section) / 2 = 480 twips (named)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "240",
+    "480"
+   ],
+   "note": "4 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "named-docx-indent",
+   "kind": "docx_attr",
+   "expected": [
+    "454"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json DOCX",
+    "locator": "named indent 8 mm = 454 twips"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "454"
+   ],
+   "note": "2 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "direct-pdf-size",
+   "kind": "font_size",
+   "expected": 18,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.direct.json",
+    "locator": "inline direct format size 18 pt overrides named style size 14 pt"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 18.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {18.0: 17}",
+   "status": "PASS"
+  },
+  {
+   "id": "direct-docx-size",
+   "kind": "docx_attr",
+   "expected": [
+    "36"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.direct.json DOCX",
+    "locator": "direct 18 pt run size = 36 half-points"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "20",
+    "22",
+    "24",
+    "28",
+    "36",
+    "56"
+   ],
+   "note": "11 occurrences",
+   "status": "PASS"
+  },
+  {
+   "id": "word-font-base",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-size-base",
+   "kind": "font_size",
+   "expected": 10,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "text-anchored Word run font size for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-indent-base",
+   "kind": "line_attr_match",
+   "expected": "same first-line x position in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "left margin plus resolved first-line indent (34 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-pitch-base",
+   "kind": "line_pitch",
+   "expected": 4.057,
+   "tolerance": 0.2,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.base.json",
+    "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-font-section",
+   "kind": "fonts",
+   "expected": [
+    "ArialMT"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-size-section",
+   "kind": "font_size",
+   "expected": 11,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "text-anchored Word run font size for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-indent-section",
+   "kind": "line_attr_match",
+   "expected": "same first-line x position in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "left margin plus resolved first-line indent (36 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-pitch-section",
+   "kind": "line_pitch",
+   "expected": 5.578,
+   "tolerance": 0.2,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.section.json",
+    "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-font-named",
+   "kind": "fonts",
+   "expected": [
+    "Calibri"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-size-named",
+   "kind": "font_size",
+   "expected": 14,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "text-anchored Word run font size for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-indent-named",
+   "kind": "line_attr_match",
+   "expected": "same first-line x position in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "left margin plus resolved first-line indent (38 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-pitch-named",
+   "kind": "line_pitch",
+   "expected": 12.058,
+   "tolerance": 0.2,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.named.json",
+    "locator": "expected line pitch uses explicit canonical auto lineSpacing, WORD_FONT_METRICS singleLineEm × size × value × 25.4/72 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-font-direct",
+   "kind": "fonts",
+   "expected": [
+    "Calibri"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.direct.json",
+    "locator": "text-anchored Word-rendered run font for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-size-direct",
+   "kind": "font_size",
+   "expected": 18,
+   "tolerance": 0.1,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.direct.json",
+    "locator": "text-anchored Word run font size for this isolated precedence layer"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word-indent-direct",
+   "kind": "line_attr_match",
+   "expected": "same first-line x position in PDF and Word",
+   "tolerance": 0.5,
+   "source": {
+    "file": "engine-word-style-precedence.fixture.direct.json",
+    "locator": "left margin plus resolved first-line indent (38 mm)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "engine-docx-package-base",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-base",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "2 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-base",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-section",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-section",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "2 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-section",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-named",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-named",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "2 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-named",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-direct",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-direct",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "1 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-direct",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

@@ -125,8 +125,9 @@ export const DocumentPane = ({
           onTitleChange={(value, reason) => onTitleChange(tab.id, value, reason)}
           onEntriesChange={(entries, reason) => onNoteChange(tab.id, { entries }, reason)}
         />
-      ) : tab.noteType === "thesis" ? (
+      ) : tab.noteType === "thesis" || (tab.noteType === "academic" && note?.researchData?.thesis?.document?.source?.format === "pdf") ? (
         <ThesisEditor key={tab.id} title={note?.title ?? ""} content={note?.content ?? ""}
+          onDocumentChange={(value) => onNoteChange(tab.id, value, "action")}
           researchData={note?.researchData}
           onTitleChange={(value, reason) => onTitleChange(tab.id, value, reason)}
           onContentChange={(value, reason) => onContentChange(tab.id, value, reason)}
@@ -141,6 +142,7 @@ export const DocumentPane = ({
           onContentChange={(value, reason) => onContentChange(tab.id, value, reason)}
           onResearchDataChange={(researchData) => onNoteChange(tab.id, { researchData })}
           onCreateFromTemplate={(seed) => onCreateAcademicFromTemplate?.(tab.id, seed)}
+          onDocumentChange={(value)=>onNoteChange(tab.id,value,'action')}
         />
       ) : tab.noteType === "flashcards" ? (
         <FlashcardEditor

@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import generic from "../thesis/templates/generic.js";
-import { buildThesisCss, compileThesisDocument, groupThesisSections, thesisFootnoteCss, wordLastLineLeadingMm, wordLastLineLeadings } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { footnoteAreaCap, resolveFootnoteRule } from "../thesis/footnotes.js";
-import { flowPagePitchPx, pageMetrics, thesisPagedCss } from "../thesis/pageLayout.js";
-import { thesisSourceHtml } from "../thesis/sourceHtml.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections, thesisFootnoteCss, wordLastLineLeadingMm, wordLastLineLeadings } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { footnoteAreaCap, resolveFootnoteRule } from "../../../../engine/src/footnotes.js";
+import { flowPagePitchPx, pageMetrics, thesisPagedCss } from "../../../../engine/src/pageLayout.js";
+import { thesisSourceHtml } from "../../../../engine/src/sourceHtml.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 
 const note = (id, text) => `<sup class="academic-footnote" contenteditable="false" data-fn-id="${id}" data-fn-text="${text}" data-fn-index="1">1</sup>`;
 const template = () => structuredClone(generic);

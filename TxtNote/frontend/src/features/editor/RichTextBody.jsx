@@ -61,6 +61,7 @@ import { htmlWithoutPageGaps, moveCaretAcrossPageGap, snapSelectionOutOfLockedNo
 import {
   decorateAcademicDom,
   ensureTableCaretPads,
+  endnoteHtml,
   footnoteHtml,
   headingHtml,
   pageBreakHtml,
@@ -74,7 +75,7 @@ import {
   mergeAlignBlockWithPrevious,
   splitAlignBlockAtCaret,
 } from "../../lib/richTextAlign";
-import { thesisSourceHtml } from "../../thesis/sourceHtml.js";
+import { sameThesisEditorProjection, thesisSourceHtml } from "../../../../../engine/src/sourceHtml.js";
 
 /**
  * @param {{
@@ -127,7 +128,7 @@ export const RichTextBody = forwardRef(({
     const body = bodyRef.current;
     if (!body) return;
     unwrapNoteSearchFlashes(body);
-    if (academic) decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+    if (academic) decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
     const raw = htmlWithoutPageGaps(body.innerHTML);
     const html = paragraphSemantics ? thesisSourceHtml(raw) : raw;
     if (!historyRestoring.current) {
@@ -240,7 +241,7 @@ export const RichTextBody = forwardRef(({
       withRange((root) => insertHtmlAtSelection(html, root));
       const body = bodyRef.current;
       if (body) {
-        if (academic) decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+        if (academic) decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
         fitBody();
       }
       emitChange("insert");
@@ -249,7 +250,7 @@ export const RichTextBody = forwardRef(({
       withRange((root) => {
         const selected = window.getSelection()?.toString().trim();
         insertHtmlAtSelection(headingHtml(level, selected || (emptyHeadingOnInsert ? "" : "Yeni başlık")), root);
-        decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+        decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
       });
       emitChange("insert");
     },
@@ -284,7 +285,7 @@ export const RichTextBody = forwardRef(({
           place.collapse(caret ? true : false);
           selection?.removeAllRanges();
           selection?.addRange(place);
-          decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+          decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
           return;
         }
         if (!target) return;
@@ -309,7 +310,7 @@ export const RichTextBody = forwardRef(({
           doc.getSelection()?.removeAllRanges();
           doc.getSelection()?.addRange(caret);
         }
-        decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+        decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
       });
     },
     /** Bullet / numbered list as real ul/ol + li markup (browser list command, toggles off too). */
@@ -387,6 +388,10 @@ export const RichTextBody = forwardRef(({
       withRange((root) => insertHtmlAtSelection(footnoteHtml(text), root));
       emitChange("insert");
     },
+    insertEndnote: (text) => {
+      withRange((root) => insertHtmlAtSelection(endnoteHtml(text), root));
+      emitChange("insert");
+    },
     insertToc: () => {
       withRange((root) => insertHtmlAtSelection(tocHtml(), root));
       emitChange("insert");
@@ -403,7 +408,7 @@ export const RichTextBody = forwardRef(({
     insertTable: (rows, cols, caption) => {
       withRange((root) => {
         const inserted = insertBlockHtmlAtSelection(tableHtml(rows, cols, caption), root);
-        decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+        decorateAcademicDom(root, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
         ensureTableCaretPads(root);
         placeCaretAfterTable(inserted, root);
       });
@@ -433,13 +438,13 @@ export const RichTextBody = forwardRef(({
       const on = math.getAttribute("data-eq-numbered") === "true";
       if (on) math.removeAttribute("data-eq-numbered");
       else math.setAttribute("data-eq-numbered", "true");
-      decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+      decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
       emitChange("format");
     },
     xrefTargets: () => {
       const body = bodyRef.current;
       if (!body) return [];
-      decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics });
+      decorateAcademicDom(body, { captions: !paragraphSemantics, explicitHeadings: paragraphSemantics, headingNumbers: !paragraphSemantics, preserveImportedTables: paragraphSemantics });
       const items = [];
       body.querySelectorAll("h1.academic-h, h2.academic-h, h3.academic-h").forEach((node) => {
         if (node.hasAttribute("data-unnumbered") || node.closest(".academic-toc")) return;
@@ -514,7 +519,8 @@ export const RichTextBody = forwardRef(({
   useIsomorphicLayoutEffect(() => {
     const body = bodyRef.current;
     if (!body) return;
-    if (content === lastContentRef.current && isInternalChange.current) {
+    if (isInternalChange.current && (content === lastContentRef.current || (paragraphSemantics && sameThesisEditorProjection(content, lastContentRef.current)))) {
+      lastContentRef.current = content;
       isInternalChange.current = false;
       return;
     }
@@ -910,3 +916,4 @@ function restoreSelectionTextOffsets(root, offsets) {
   selection?.removeAllRanges();
   selection?.addRange(range);
 }
+

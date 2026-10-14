@@ -1,7 +1,7 @@
 # aku-felsefe-seminer — context pack
 ## Identity
 - Registry id(s): `aku-felsefe-seminer-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-felsefe.js` (exports: akuFelsefeSeminer). Shares module aku-felsefe.js with aku-felsefe-lisans.
+- Template module: `engine/src/templates/aku-felsefe.js` (exports: akuFelsefeSeminer). Shares module aku-felsefe.js with aku-felsefe-lisans.
 - Spec: `orchestration/specs/aku-felsefe-seminer.json`; checks: `orchestration/specs/aku-felsefe-seminer.checks.json` (not yet); progress report: `orchestration/reports/aku-felsefe-seminer.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx`

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { confirmCommittedPagination, equationLayoutSignature, generatedIndexPageTargets, missingGeneratedIndexPages, waitForStableEquationLayout } from "../thesis/generatedIndex.js";
+import { confirmCommittedPagination, decorateThesisSources, equationLayoutSignature, generatedIndexPageTargets, missingGeneratedIndexPages, waitForStableEquationLayout } from "../../../../engine/src/generatedIndex.js";
 
 function equationRoot(fonts = undefined) {
   const document = { fonts, defaultView: { getComputedStyle: (node) => node.computedStyle } };
@@ -30,6 +30,13 @@ function equationRoot(fonts = undefined) {
 }
 
 describe("generic thesis equation export readiness", () => {
+  it("accepts an equation numbering rule without a typography override in an empty body", () => {
+    const host = { querySelectorAll: () => [] };
+    const root = { querySelector: () => host, querySelectorAll: () => [] };
+    assert.doesNotThrow(() => decorateThesisSources(root, {
+      language: "tr", indexSources: [], sections: [{ id: "body", rules: { body: {}, tables: {}, headings: {}, equations: { numbering: { enabled: false } } } }],
+    }));
+  });
   it("waits for delayed generated-index state to commit and match a later measurement", async () => {
     const expectedState = { pages: { "toc-source-one": { label: "3", indexLabel: "iii", physicalPage: 3 } }, renderedPages: { "toc-source-one": "iii" } };
     const expectedMeasurement = { pages: expectedState.pages, counts: { toc: 4 } };

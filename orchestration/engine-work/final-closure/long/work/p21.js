@@ -1,0 +1,1 @@
+(()=>{const hits=[...document.querySelectorAll('.thesis-body *')].filter(e=>e.children.length===0&&/Tipik/.test(e.textContent)).map(e=>{let p=e;while(p&&p.tagName!=='P')p=p.parentElement;const r=(p||e).getBoundingClientRect();return [e.tagName,e.textContent.slice(0,40),Math.round(r.top+scrollY),Math.round(r.height)]});return hits})()

@@ -3,10 +3,11 @@ import { flushSync } from "react-dom";
 import { registerCustomFormatRules } from "../../config/format.js";
 import { footnotesFromHtml } from "../../lib/academicDocument.js";
 import { focusEditableStart } from "../../lib/richText.js";
-import { resolveChromeText, resolvePageNumberStyle } from "../../thesis/engine.js";
-import { chapterStartPageIndexes, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, thesisGroupHasPageContent } from "../../thesis/pageLayout.js";
-import { pageFootnotesSupported } from "../../thesis/footnotes.js";
-import { cssLineBaselineOffset, emptyParagraphPitchMm, wordBaselineProbe } from "../../thesis/wordBaseline.js";
+import { resolveChromeText, resolvePageNumberStyle } from "../../../../../engine/src/engine.js";
+import { chapterStartPageIndexes, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, thesisGroupHasPageContent } from "../../../../../engine/src/pageLayout.js";
+import { pageFootnotesSupported } from "../../../../../engine/src/footnotes.js";
+import { cssLineBaselineOffset, emptyParagraphPitchMm, wordBaselineProbe } from "../../../../../engine/src/wordBaseline.js";
+import { resolveLineSpacing } from "../../../../../engine/src/typography.js";
 import { RichTextBody } from "./RichTextBody";
 
 /** Pages come from the browser's fragmentation engine; engines without multicol row wrapping keep the Task 6 continuous surface. */
@@ -28,11 +29,26 @@ function PageChrome({ section, values }) {
   </>;
 }
 
-/** Header, footer and page number of one physical sheet. Never part of the editable document. */
+/** Source paragraphs retain native spacing, including blank footer lines. */
+function SourceChromeParagraphs({ paragraphs, values }) {
+  return paragraphs.map(({ text, style }, i) => {
+    const spacing = { mode: "word", baseline: "word", ...style.lineSpacing };
+    let pitch;
+    try { pitch = resolveLineSpacing(style, spacing); }
+    catch { pitch = { pitchPt: style.fontSizePt * 1.2, em: 1.2 }; }
+    const css = { fontFamily: style.fontFamily, fontSize: style.fontSizePt+"pt", fontWeight: style.fontWeight, fontStyle: style.italic ? "italic" : "normal", lineHeight: pitch.pitchPt+"pt" };
+    const probe = wordBaselineProbe(style, spacing, pitch.em);
+    const baseline = cssLineBaselineOffset(css);
+    const offsetPt = probe && Number.isFinite(baseline) ? probe.targetPt - baseline * .75 : 0;
+    return <p key={i} style={{ ...css, position: "relative", top: offsetPt+"pt", margin: 0, marginTop: (style.spaceBeforePt || 0)+"pt", marginBottom: (style.spaceAfterPt || 0)+"pt", textAlign: style.align || "left", whiteSpace: "pre-wrap", minHeight: pitch.pitchPt+"pt" }}>{resolveChromeText(text, values) || "\u00a0"}</p>;
+  });
+}
+
+/** Header, footer and page number of one physical sheet; never editable body content. */
 function SheetChrome({ rules, values, page }) {
   const { page: rule, body } = rules;
   const { margins, header, footer } = rule;
-  const chromeValues = { ...values, NUMPAGES: page.totalPages };
+  const chromeValues = { ...values, PAGE: page.countedLabel, NUMPAGES: page.totalPages };
   const headerText = page.showHeader ? resolveChromeText(page.headerContent ?? header?.content, chromeValues) : "";
   const footerText = page.showFooter ? resolveChromeText(page.footerContent ?? footer?.content, chromeValues) : "";
   const box = { left: `${margins.leftMm}mm`, width: `${rule.widthMm - margins.leftMm - margins.rightMm}mm`, fontFamily: body.fontFamily, fontWeight: 400, fontStyle: "normal", lineHeight: 1.1, color: "#000" };
@@ -40,6 +56,8 @@ function SheetChrome({ rules, values, page }) {
   const chromeProbe = wordChrome ? wordBaselineProbe({ fontFamily: body.fontFamily, fontSizePt: 10, fontWeight: 400 }, { mode: "word", baseline: "word", singleLineEm: 1 }, 1.1) : null;
   const chromeBaselinePx = chromeProbe ? cssLineBaselineOffset({ fontFamily: body.fontFamily, fontSize: "10pt", fontWeight: 400, fontStyle: "normal", lineHeight: 1.1 }) : null;
   const chromeShiftMm = chromeProbe && Number.isFinite(chromeBaselinePx) ? chromeProbe.targetPt * 25.4 / 72 - chromeBaselinePx * 25.4 / 96 : 0;
+  const chromeCss = style => ({ whiteSpace: "pre-wrap", textAlign: style?.align || "left", ...(style?.fontFamily ? { fontFamily: style.fontFamily } : {}), ...(style?.fontSizePt ? { fontSize: style.fontSizePt+"pt" } : {}), fontWeight: style?.fontWeight || 400, fontStyle: style?.italic ? "italic" : "normal" });
+  const positionedCss = p => p ? { left: p.xMm+"mm", top: p.yMm+"mm", bottom: "auto", width: p.widthMm+"mm", height: p.heightMm+"mm", lineHeight: 1 } : {};
   const topMm = (header?.distanceMm || 0) + (header?.heightMm || 0) / 2;
   // Trailing blank footer paragraphs (Word keeps them below the text): each is one body-font single line (measured: the number moves up one line pitch per blank paragraph).
   const blankMm = (footer?.trailingBlankLines || 0) * emptyParagraphPitchMm(body, rules.lineSpacing);
@@ -47,8 +65,8 @@ function SheetChrome({ rules, values, page }) {
   // A number on the same edge as header/footer text stays nearest the paper edge; the text moves one line inward.
   const shift = (edge) => (page.label && page.numberPosition === edge ? 6 : 0);
   return <>
-    {headerText ? <div className="thesis-page-header absolute" style={{ ...box, fontSize: "10pt", top: `${topMm + shift("top") + chromeShiftMm}mm` }}>{headerText}</div> : null}
-    {footerText ? <div className="thesis-page-footer absolute" style={{ ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom") - chromeShiftMm}mm` }}>{footerText}</div> : null}
+    {headerText ? <div className="thesis-page-header absolute" style={{ ...box, fontSize: "10pt", top: `${topMm + shift("top") + (page.headerParagraphs ? 0 : chromeShiftMm)}mm`, ...chromeCss(page.headerStyle), ...positionedCss(page.headerPosition), ...(page.headerParagraphs ? { display: "flex", flexDirection: "column" } : {}) }}>{page.headerParagraphs ? <SourceChromeParagraphs paragraphs={page.headerParagraphs} values={chromeValues} /> : headerText}</div> : null}
+    {footerText ? <div className="thesis-page-footer absolute" style={{ ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom") - (page.footerParagraphs ? 0 : chromeShiftMm)}mm`, ...chromeCss(page.footerStyle), ...positionedCss(page.footerPosition), ...(page.footerParagraphs ? { display: "flex", flexDirection: "column" } : {}) }}>{page.footerParagraphs ? <SourceChromeParagraphs paragraphs={page.footerParagraphs} values={chromeValues} /> : footerText}</div> : null}
   {page.label ? (() => {
     const number = rule.numbering || {};
     const numberStyle = resolvePageNumberStyle(body, number);
@@ -71,12 +89,21 @@ function SheetChrome({ rules, values, page }) {
   </>;
 }
 
+/** Same DOM as footnoteAreaNodes: a multi-paragraph note (newline-joined by the importer) draws one block per paragraph. */
+function FootnoteBody({ item }) {
+  const label = item.continued ? null : <><sup className="thesis-footnote-label">{item.label}</sup>{" "}</>;
+  const paragraphs = String(item.text).split("\n");
+  while (paragraphs.length > 1 && paragraphs[paragraphs.length - 1] === "") paragraphs.pop();
+  if (paragraphs.length < 2) return <>{label}{item.text}</>;
+  return <>{paragraphs.map((text, i) => <span key={i} className="thesis-footnote-para">{i === 0 ? label : null}{text}</span>)}</>;
+}
+
 /** Page-bottom notes of one sheet. Same DOM as footnoteAreaNodes (the measuring twin); never editable. */
 function FootnoteArea({ groupId, rule, items, top }) {
   return <div className="thesis-footnote-area" data-thesis-footnote-group={groupId} style={{ top: `${top}px` }}>
     {rule.separator.enabled ? <div className="thesis-footnote-separator" /> : null}
     <ol className="thesis-footnote-list">{items.map((item, index) => <li key={index} className={item.continued ? "thesis-footnote thesis-footnote-continued" : "thesis-footnote"}>
-      {item.continued ? null : <><sup className="thesis-footnote-label">{item.label}</sup>{" "}</>}{item.text}
+      <FootnoteBody item={item} />
     </li>)}</ol>
   </div>;
 }
@@ -149,7 +176,7 @@ function caretPointFromClient(x, y) {
   return range ? { node: range.startContainer, offset: range.startOffset } : null;
 }
 
-function ThesisSectionPagesView({ group, pages, values, zoom, bodyRefs, onSectionFocus, onFormatChange, onTextChange, onTextOverride, onStaticFocus, onPageCount, onChapterStarts, footnotes }) {
+function ThesisSectionPagesView({ group, pages, values, zoom, bodyRefs, onSectionFocus, onFormatChange, onTextChange, onTextOverride, onStaticFocus, onPageCount, onChapterStarts, footnotes, endnotes }) {
   const section = group.sections[0];
   const articleRef = useRef(null);
   const flowRef = useRef(null);
@@ -202,10 +229,11 @@ function ThesisSectionPagesView({ group, pages, values, zoom, bodyRefs, onSectio
   const renderBody = (item, notes = item.editable ? footnotesFromHtml(item.editableHtml) : []) => <div className="thesis-body">
     {item.editable ? <>
       {item.prefixHtml ? <StaticHtml html={item.prefixHtml} sectionId={item.id} onTextOverride={overrideText(item)} onStaticFocus={focusStatic} /> : null}
-      <RichTextBody ref={(instance) => { bodyRefs.current[item.id] = instance; }} compact academic paragraphSemantics emptyHeadingOnInsert positionedFrame={!THESIS_PAGED_LAYOUT} className="thesis-content" content={item.editableHtml}
+      <RichTextBody ref={(instance) => { bodyRefs.current[item.id] = instance; }} compact academic paragraphSemantics emptyHeadingOnInsert positionedFrame={!THESIS_PAGED_LAYOUT} className="thesis-content" content={item.editorHtml ?? item.editableHtml}
         onContentChange={(html, reason) => onTextChange(item, html, reason)} onFocus={() => onSectionFocus(item.id)} onFormatChange={(format) => onFormatChange?.(item.id, format)} ariaLabel={`${item.title} metni`} />
       {notes.length && !pageNotes ? <ol className="academic-footnote-list" contentEditable={false}>{notes.map((note) => <li key={note.index}><sup>{note.index}</sup> {note.text}</li>)}</ol> : null}
       {item.suffixHtml ? <StaticHtml html={item.suffixHtml} /> : null}
+      {endnotes?.[item.id]?.length ? <ol className="academic-footnote-list academic-endnote-list" contentEditable={false} data-thesis-endnotes="true">{endnotes[item.id].map((note) => <li key={note.key} data-thesis-note-source-section={note.sourceSectionId}><sup>{note.index}</sup> {note.text}</li>)}</ol> : null}
     </> : <StaticHtml html={item.html} sectionId={item.id} onTextOverride={overrideText(item)} onStaticFocus={focusStatic} />}
   </div>;
 
@@ -282,6 +310,6 @@ const signature = (value) => {
   return known;
 };
 const STABLE_PROPS = ["zoom", "bodyRefs", "onSectionFocus", "onFormatChange", "onTextChange", "onTextOverride", "onStaticFocus", "onPageCount", "onChapterStarts"];
-const SIGNED_PROPS = ["group", "pages", "values", "footnotes"];
+const SIGNED_PROPS = ["group", "pages", "values", "footnotes", "endnotes"];
 export const ThesisSectionPages = memo(ThesisSectionPagesView, (previous, next) =>
   STABLE_PROPS.every((key) => previous[key] === next[key]) && SIGNED_PROPS.every((key) => signature(previous[key]) === signature(next[key])));

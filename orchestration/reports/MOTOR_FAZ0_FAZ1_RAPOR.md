@@ -1,4 +1,4 @@
-# MOTOR.md — Faz 0 ve Faz 1 raporu (2026-10-03)
+# orchestration/plans/MOTOR.md — Faz 0 ve Faz 1 raporu (2026-10-03)
 
 Dal: `integrate/aku-mcbu`. Commit'ler: `429a285`, `6174bbc`, `88f7827` (Faz 0) · `954f7a1`, `6f919a6`, `c705c7f` (Faz 1).
 
@@ -38,7 +38,7 @@ Dal: `integrate/aku-mcbu`. Commit'ler: `429a285`, `6174bbc`, `88f7827` (Faz 0) �
 
 | Adım | Yapılan | Doğrulama |
 |---|---|---|
-| 1.1 Katalog | `TxtNote/frontend/src/thesis/CAPABILITIES.md`: alan başına tablo (ihtiyaç → şablon anahtarı → değer → varsayılan → editör/PDF/DOCX desteği → test), 14 maddelik "Bilinen eksikler" (MOTOR fazlarına bağlı). `thesisCapabilities.test.js`: `validation.js`'in kabul ettiği her anahtar katalogda yoksa test düşer (mutasyon testi ile doğrulandı). AGENTS.md §21'e "önce kataloğa bak" kuralı eklendi. | npm test 678/678 |
+| 1.1 Katalog | `orchestration/docs/engine/CAPABILITIES.md`: alan başına tablo (ihtiyaç → şablon anahtarı → değer → varsayılan → editör/PDF/DOCX desteği → test), 14 maddelik "Bilinen eksikler" (MOTOR fazlarına bağlı). `thesisCapabilities.test.js`: `validation.js`'in kabul ettiği her anahtar katalogda yoksa test düşer (mutasyon testi ile doğrulandı). AGENTS.md §21'e "önce kataloğa bak" kuralı eklendi. | npm test 678/678 |
 | 1.2 Bölme | `ThesisRibbon.jsx` → `ribbon/` altında 11 dosya (334 satır kaldı); `engine.js` 624 → 338 satır + `engineCss.js`; `export.js` 1004 → 138 satır + `docx/` altında 7 modül + `pdfFallback.js`. Saf taşıma, döngüsel import yok. | Her bölmeden önce/sonra `--all` birebir aynı; DOCX parçaları bayt düzeyinde aynı (yalnız zaman damgası farklı); ribbon'un 6 sekmesi tarayıcıda açıldı, konsol hatası yok; build OK |
 
 ## Açık konular (sizin kararınız veya sonraki fazlar)

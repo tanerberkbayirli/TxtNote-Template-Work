@@ -85,8 +85,9 @@ import {
   templateById,
 } from "../lib/templates";
 import { pickTodoDailyFields } from "../lib/todoDaily";
-import { resolveThesisTemplate } from "../thesis/registry.js";
-import { createThesisDocument } from "../thesis/document.js";
+import { resolveThesisTemplate } from "../../../../engine/src/registry.js";
+import { createThesisDocument } from "../../../../engine/src/document.js";
+import { prepareThesisNote } from "../../../../engine/src/contentModel.js";
 
 const Canvas = lazy(() =>
   import("../features/canvas/Canvas").then((mod) => ({ default: mod.Canvas })),
@@ -94,7 +95,7 @@ const Canvas = lazy(() =>
 
 const asNote = (note) => {
   const now = Date.now();
-  const migrated = migrateAcademicNote(note);
+  const migrated = prepareThesisNote(migrateAcademicNote(note));
   const flashcards = sanitizeDeck(migrated?.flashcards);
   return {
     title: migrated?.title ?? "",
@@ -1214,7 +1215,7 @@ export default function App() {
     commitNoteShell(delay, () => {
       setNotes((current) => ({
       ...current,
-      [noteId]: { ...current[noteId], content, updatedAt: Date.now() },
+      [noteId]: prepareThesisNote({ ...current[noteId], content, updatedAt: Date.now() }),
     }));
     });
   }, [commitNoteShell, undoHistory.begin, undoHistory.isApplying]);
@@ -1261,7 +1262,7 @@ export default function App() {
     undoHistory.begin(noteHistoryKey(noteId, field, burst), delayForReason(burst));
     setNotes((current) => ({
       ...current,
-      [noteId]: { ...current[noteId], ...patch, updatedAt: Date.now() },
+      [noteId]: prepareThesisNote({ ...current[noteId], ...patch, updatedAt: Date.now() }),
     }));
   }, [undoHistory.begin, undoHistory.isApplying]);
 

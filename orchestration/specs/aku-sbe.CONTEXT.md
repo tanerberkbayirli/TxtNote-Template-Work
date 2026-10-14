@@ -2,7 +2,7 @@
 
 ## Identity and status
 - Registry variants: `aku-sbe-master-tr-v1`, `aku-sbe-phd-tr-v1`, `aku-sbe-sanatta-yeterlik-tr-v1`, `aku-sbe-master-en-v1`, `aku-sbe-phd-en-v1`.
-- Template: `TxtNote/frontend/src/thesis/templates/aku-sbe.js`; source spec `orchestration/specs/aku-sbe.json`; conformance rows `orchestration/specs/aku-sbe.checks.json`.
+- Template: `engine/src/templates/aku-sbe.js`; source spec `orchestration/specs/aku-sbe.json`; conformance rows `orchestration/specs/aku-sbe.checks.json`.
 - Variants now share one rule set. English programmes order thesis-language abstract before Turkish ÖZET and require the 2,000-word Turkish extended summary after appendices (EK 12; six minima 200/300/200/300/500/500). Sanatta Yeterlik checkbox/title are explicit; ethics exact wording and copy count are UNKNOWN; editable grammar-preserving template phrase is INFERRED. English cover/front-title translations remain UNKNOWN/editable.
 
 ## Sources and rulings

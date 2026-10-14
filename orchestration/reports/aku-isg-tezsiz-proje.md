@@ -1,7 +1,7 @@
 # aku-isg-tezsiz-proje (AKÜ FBE İş Güvenliği İÖ tezsiz yüksek lisans dönem projesi)
 
 Registry id: `aku-isg-tezsiz-proje-tr-v1` (instituteId `fbe-isg-proje`, degreeType `master`, tr). Status: PASS (self-check).
-Files: `TxtNote/frontend/src/thesis/templates/aku-isg.js`, `src/lib/thesisAkuIsg.test.js`, `orchestration/specs/aku-isg-tezsiz-proje.json`, this report, `orchestration/validation/aku-isg-tezsiz-proje/self-1/` (isg.pdf/docx/isg_word.pdf, fixture, overrides).
+Files: `engine/src/templates/aku-isg.js`, `src/lib/thesisAkuIsg.test.js`, `orchestration/specs/aku-isg-tezsiz-proje.json`, this report, `orchestration/validation/aku-isg-tezsiz-proje/self-1/` (isg.pdf/docx/isg_word.pdf, fixture, overrides).
 Source: one .doc template (2022-08-02) -> Word -> isg.docx/isg.pdf. AKÜ FBE thesis template NOT used as value source. Evidence: TEMPLATE (XML) / MEASURED (Word PDF baselines) / INFERRED / UNKNOWN. Rules in spec: 15 (TEMPLATE 11, MEASURED 2, INFERRED 1, plus mixed notes).
 
 ## Measured export vs source (real export, Chrome PDF; DOCX re-rendered by Word)

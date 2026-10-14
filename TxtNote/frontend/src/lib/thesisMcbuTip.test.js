@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { buildThesisCss, compileThesisDocument, groupThesisSections, templateFontFamilies } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { numberThesisPages } from "../thesis/pageLayout.js";
-import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/registry.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { mcbuTipUzmanlik } from "../thesis/templates/mcbu-tip.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections, templateFontFamilies } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { numberThesisPages } from "../../../../engine/src/pageLayout.js";
+import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../../../../engine/src/registry.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { mcbuTipUzmanlik } from "../../../../engine/src/templates/mcbu-tip.js";
 
 const docxXml = async (model) => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
 const figure = (caption) => `<figure class="academic-figure" data-kind="figure"><img src="data:image/png;base64,iVBORw0KGgo=" width="10" height="10"><figcaption>${caption}</figcaption></figure>`;

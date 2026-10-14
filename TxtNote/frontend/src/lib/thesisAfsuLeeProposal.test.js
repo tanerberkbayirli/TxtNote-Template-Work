@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { resolveThesisTemplate } from "../thesis/registry.js";
-import { walkSpecialPage } from "../thesis/specialPages.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { afsuLeeProposalMaster, afsuLeeProposalPhd } from "../thesis/templates/afsu-lee-proposal.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { resolveThesisTemplate } from "../../../../engine/src/registry.js";
+import { walkSpecialPage } from "../../../../engine/src/specialPages.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { afsuLeeProposalMaster, afsuLeeProposalPhd } from "../../../../engine/src/templates/afsu-lee-proposal.js";
 
 describe("AFSÜ LEE tez önerisi (afsu-lee-proposal-{master,phd}-tr-v1)", () => {
   it("is valid and registered for both degrees", async () => {

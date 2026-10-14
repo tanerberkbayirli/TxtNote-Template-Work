@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { alignLayoutElements, distributeLayoutElements, snapLayoutRect } from "../../thesis/layoutGeometry.js";
-import { updateLayoutElements, deleteLayoutElement, duplicateLayoutElement } from "../../thesis/layoutDocument.js";
-import { clampResizeRect, DRAG_THRESHOLD_PX, patchesForRects } from "../../thesis/layoutInteraction.js";
-import { PX_PER_MM } from "../../thesis/pageLayout.js";
+import { alignLayoutElements, distributeLayoutElements, snapLayoutRect } from "../../../../../engine/src/layoutGeometry.js";
+import { updateLayoutElements, deleteLayoutElement, duplicateLayoutElement } from "../../../../../engine/src/layoutDocument.js";
+import { clampResizeRect, DRAG_THRESHOLD_PX, patchesForRects } from "../../../../../engine/src/layoutInteraction.js";
+import { PX_PER_MM } from "../../../../../engine/src/pageLayout.js";
 import { selectionClipPath } from "./LayoutSelectionOverlay.jsx";
 
 const editable = (node) => node?.getAttribute("data-layout-id") && node.getAttribute("data-layout-type") !== "group" && node.getAttribute("data-layout-type") !== "spacer";

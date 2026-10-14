@@ -1,0 +1,111 @@
+{
+  "startedAt": "2026-10-11T15:21:59.174Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "aku-sagbil",
+      "exitCode": 0,
+      "commandSeconds": 74.212,
+      "report": "engine\\mission08\\continue-acceptance\\aku-sagbil\\check-20261011-1823.json",
+      "counts": {
+        "PASS": 44,
+        "INFO": 1
+      },
+      "measurementSeconds": 3.573,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 0,
+      "commandSeconds": 123.988,
+      "report": "engine\\mission08\\continue-acceptance\\aku-sbe\\check-20261011-1825.json",
+      "counts": {
+        "PASS": 136,
+        "INFO": 2
+      },
+      "measurementSeconds": 10.465,
+      "error": null
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "exitCode": 0,
+      "commandSeconds": 23.995,
+      "report": "engine\\mission08\\continue-acceptance\\aku-sosyoloji-lisans\\check-20261011-1825.json",
+      "counts": {
+        "INFO": 4,
+        "PASS": 31
+      },
+      "measurementSeconds": 1.393,
+      "error": null
+    },
+    {
+      "target": "engine-word-justify",
+      "exitCode": 0,
+      "commandSeconds": 18.443,
+      "report": "engine\\mission08\\continue-acceptance\\engine-word-justify\\check-20261011-1825.json",
+      "counts": {
+        "PASS": 22
+      },
+      "measurementSeconds": 0.586,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 1,
+      "commandSeconds": 100.664,
+      "report": "engine\\mission08\\continue-acceptance\\engine-word-pagefit\\check-20261011-1827.json",
+      "counts": {
+        "SKIPPED": 85,
+        "PASS": 128
+      },
+      "measurementSeconds": 5.551,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 0,
+      "commandSeconds": 27.416,
+      "report": "engine\\mission08\\continue-acceptance\\engine-word-parity\\check-20261011-1828.json",
+      "counts": {
+        "PASS": 148
+      },
+      "measurementSeconds": 3.99,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 0,
+      "commandSeconds": 82.999,
+      "report": "engine\\mission08\\continue-acceptance\\engine-word-structure\\check-20261011-1829.json",
+      "counts": {
+        "PASS": 136
+      },
+      "measurementSeconds": 4.423,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 0,
+      "commandSeconds": 56.591,
+      "report": "engine\\mission08\\continue-acceptance\\engine-word-style-precedence\\check-20261011-1830.json",
+      "counts": {
+        "PASS": 64
+      },
+      "measurementSeconds": 0.653,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 0,
+      "commandSeconds": 33.214,
+      "report": "engine\\mission08\\continue-acceptance\\phase52-justify\\check-20261011-1831.json",
+      "counts": {
+        "PASS": 34
+      },
+      "measurementSeconds": 0.3,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-11T15:31:00.699Z",
+  "commandSeconds": 541.525
+}

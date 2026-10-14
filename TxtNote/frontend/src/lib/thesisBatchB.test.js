@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import generic from "../thesis/templates/generic.js";
-import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument } from "../thesis/engine.js";
-import { resolveGeneratedIndexes, thesisSourceHtml } from "../thesis/generatedIndex.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument } from "../../../../engine/src/engine.js";
+import { resolveGeneratedIndexes, thesisSourceHtml } from "../../../../engine/src/generatedIndex.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 import { parseAcademicHtml } from "./academicDocument.js";
 
 const image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aMr8AAAAASUVORK5CYII=";
@@ -72,7 +72,7 @@ describe("Batch B1 caption kinds", () => {
   });
 });
 
-import { clearTableContinuations, continuationParts, continuationText } from "../thesis/tableContinuation.js";
+import { clearTableContinuations, continuationParts, continuationText } from "../../../../engine/src/tableContinuation.js";
 
 describe("Batch B2 continuation captions", () => {
   const tableRule = (format) => ({ label: "Çizelge", continuation: { format } });
@@ -163,7 +163,9 @@ describe("Batch B3 equation numbering", () => {
     const print = buildThesisPrintHtml(model);
     assert.deepEqual([...print.matchAll(/data-thesis-eq="([^"]+)"/g)].map((m) => m[1]), ["(1.1)", "(1.2)", "(2.1)"]);
     const stamped = html.replace('data-eq-numbered="true"', 'data-eq-numbered="true" data-thesis-eq="(9)" data-thesis-eq-side="right"');
-    assert.equal(thesisSourceHtml(stamped), html);
+    assert.equal(thesisSourceHtml(stamped), thesisSourceHtml(html));
+    assert.doesNotMatch(thesisSourceHtml(stamped), /data-thesis-eq=|math-formula__render|class="katex"/);
+    assert.equal([...thesisSourceHtml(stamped).matchAll(/data-latex=/g)].length, 4);
   });
   it("DOCX: centered formula, number at the right tab stop; left variant puts the number first", async () => {
     const model = resolveGeneratedIndexes(compile(withEq(template()), html), {});
@@ -180,7 +182,7 @@ describe("Batch B3 equation numbering", () => {
   });
 });
 
-import { extractThesisHeadings, formatNumber } from "../thesis/engine.js";
+import { extractThesisHeadings, formatNumber } from "../../../../engine/src/engine.js";
 
 describe("Batch B4 ordinal chapter labels on their own line, five heading levels", () => {
   const ordinalTemplate = () => {
@@ -246,7 +248,7 @@ describe("Batch B4 ordinal chapter labels on their own line, five heading levels
   });
 });
 
-import { countFootnoteRefs, renumberFootnoteRefs } from "../thesis/footnotes.js";
+import { countFootnoteRefs, renumberFootnoteRefs } from "../../../../engine/src/footnotes.js";
 
 describe("Batch B5 continuous footnote numbering", () => {
   const ref = (id, n = 1) => `<sup class="academic-footnote" contenteditable="false" data-fn-id="${id}" data-fn-text="Not ${id}" data-fn-index="${n}">${n}</sup>`;
@@ -394,8 +396,8 @@ describe("Batch B7 named paragraph styles", () => {
   });
 });
 
-import { transformThesisText } from "../thesis/engine.js";
-import { exceptionSet, wrapExceptionWords } from "../thesis/transformExceptions.js";
+import { transformThesisText } from "../../../../engine/src/engine.js";
+import { exceptionSet, wrapExceptionWords } from "../../../../engine/src/transformExceptions.js";
 
 describe("textTransformExceptions", () => {
   const words = ["ve", "veya", "ile"];

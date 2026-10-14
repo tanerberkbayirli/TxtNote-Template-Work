@@ -4,9 +4,11 @@
  * PDF and Word exporters see the same structure.
  */
 
+import { balancedListEnd, regexListItems } from "./regexLists.js";
 import { validCustomFormatAttr } from "../config/format.js";
 import { htmlWithoutPageGaps } from "./academicLayout.js";
 import { latexToPlainText } from "./mathPlainText.js";
+import { contentNodesFromHtml, contentNodesToHtml } from "../../../../engine/src/contentModel.js";
 
 export const PAGE_NUMBER_POSITIONS = [
   { id: "bottom-center", label: "Alt orta" },
@@ -63,6 +65,17 @@ function stripTags(value) {
 function attr(raw, name) {
   const match = String(raw ?? "").match(new RegExp(`\\b${name}="([^"]*)"`, "i"));
   return match ? match[1] : "";
+}
+
+/** Picture fields of an `<img>` (size, alt/title, crop, wrap and anchor) from an attribute getter; shared by figures and inline pictures. */
+function pictureFields(get) {
+  const fields = {};
+  const number = (name) => { const value = Number(get(name)); return value > 0 ? value : undefined; };
+  for (const [key, source] of [["crop", "data-img-crop"], ["wrap", "data-img-wrap"], ["h", "data-img-h"], ["v", "data-img-v"], ["distT", "data-img-distT"], ["distB", "data-img-distB"], ["distL", "data-img-distL"], ["distR", "data-img-distR"], ["title", "title"]]) {
+    const value = get(source);
+    if (value) fields[key] = value;
+  }
+  return { src: get("src") || "", width: number("width") || 0, height: number("height") || 0, alt: get("alt") || "", ...fields };
 }
 
 function hasFlag(raw, name) {
@@ -130,6 +143,7 @@ function headingLevelFromNode(node) {
 }
 
 function runsFromNode(node) {
+  if (node.getAttribute?.("data-docx-drawing")) return [{ type: "drawing", xml: node.getAttribute("data-docx-drawing"), part: node.getAttribute("data-docx-part") || "" }];
   if (!node) return [];
   if (node.nodeType === 3) {
     const text = (node.textContent || "").replace(/\u200B/g, "");
@@ -137,10 +151,10 @@ function runsFromNode(node) {
     return [{ type: "text", text, bold: false, italic: false, underline: false, strike: false }];
   }
   if (node.nodeType !== 1) return [];
-  if (node.classList?.contains("academic-footnote")) {
+  if (node.classList?.contains("academic-footnote") || node.classList?.contains("academic-endnote")) {
     return [
       {
-        type: "footnote",
+        type: node.classList.contains("academic-endnote") ? "endnote" : "footnote",
         id: node.getAttribute("data-fn-id") || newId("fn"),
         text: node.getAttribute("data-fn-text") || "",
         index: Number(node.getAttribute("data-fn-index") || 0),
@@ -162,9 +176,10 @@ function runsFromNode(node) {
   }
   if (node.classList?.contains("math-formula")) {
     const latex = node.getAttribute("data-latex") || "";
-    return [{ type: "math", latex, text: latexToPlainText(latex) || stripTags(node.textContent), display: false }];
+    return [{ type: "math", latex, ...(node.getAttribute("data-docx-omml") ? { omml: node.getAttribute("data-docx-omml") } : {}), text: latexToPlainText(latex) || stripTags(node.textContent), display: false }];
   }
   if (node.tagName === "BR") return [{ type: "break" }];
+  if (node.tagName === "IMG") return node.getAttribute("src") && !node.hasAttribute("data-docx-native-fallback") ? [{ type: "image", ...pictureFields((name) => node.getAttribute(name) || "") }] : [];
   if (node.tagName === "A") {
     return [{ type: "link", href: node.getAttribute("href") || "", children: [...node.childNodes].flatMap(runsFromNode) }];
   }
@@ -173,9 +188,10 @@ function runsFromNode(node) {
     italic: Boolean(node.classList?.contains("fmt-italic") || /^(I|EM)$/.test(node.tagName)),
     underline: Boolean(node.classList?.contains("fmt-underline") || node.tagName === "U"),
     strike: Boolean(node.classList?.contains("fmt-strike") || /^(S|DEL)$/.test(node.tagName)),
-    color: (node.className.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1] || validCustomFormatAttr("data-fmt-color", node.getAttribute("data-fmt-color")) || undefined,
-    highlight: (node.className.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1] || validCustomFormatAttr("data-fmt-bg", node.getAttribute("data-fmt-bg")) || undefined,
-    fontSizePt: Number(validCustomFormatAttr("data-fmt-pt", node.getAttribute("data-fmt-pt"))) || Number((node.className.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
+    color: ((node.getAttribute("class") || "").match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1] || validCustomFormatAttr("data-fmt-color", node.getAttribute("data-fmt-color")) || undefined,
+    highlight: ((node.getAttribute("class") || "").match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1] || validCustomFormatAttr("data-fmt-bg", node.getAttribute("data-fmt-bg")) || undefined,
+    valign: ({ super: "superscript", sub: "subscript" })[node.getAttribute("data-fmt-valign")],
+    fontSizePt: Number(validCustomFormatAttr("data-fmt-pt", node.getAttribute("data-fmt-pt"))) || Number(((node.getAttribute("class") || "").match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
   };
   return [...node.childNodes].flatMap((child) => {
     const inner = runsFromNode(child);
@@ -190,6 +206,7 @@ function runsFromNode(node) {
         ...((run.color || style.color) ? { color: run.color || style.color } : {}),
         ...((run.highlight || style.highlight) ? { highlight: run.highlight || style.highlight } : {}),
         ...((run.fontSizePt || style.fontSizePt) ? { fontSizePt: run.fontSizePt || style.fontSizePt } : {}),
+        ...((run.valign || style.valign) ? { valign: run.valign || style.valign } : {}),
       };
     });
   });
@@ -219,9 +236,7 @@ function figureBlock(node) {
   return {
     type: "figure",
     id: node.getAttribute("data-academic-id") || img?.getAttribute("data-academic-id") || newId("fig"),
-    src: img?.getAttribute("src") || "",
-    width: Number(img?.getAttribute("width") || 0),
-    height: Number(img?.getAttribute("height") || 0),
+    ...pictureFields((name) => img?.getAttribute?.(name) || ""),
     align: alignOf(node) === "left" ? "center" : alignOf(node),
     ...(node.getAttribute("data-caption-kind") ? { captionKind: node.getAttribute("data-caption-kind") } : {}),
     caption: captionText.replace(/^(Şekil|Figure)\s+\d+\.\s*/i, "").trim(),
@@ -229,25 +244,42 @@ function figureBlock(node) {
   };
 }
 
+// A Word vertical-merge continuation cell (data-docx-vmerge=continue) is only the editor's placeholder for the cell the origin's rowspan
+// already covers; the DOCX writer emits the covered cell itself, so the placeholder must not become a second real cell.
+const isVMergeContinue = (cell) => cell.getAttribute?.("data-docx-vmerge") === "continue";
+// Word row properties the importer stamps on <tr> (w:tblHeader / w:cantSplit); absent on authored tables.
+function rowFlags(row) {
+  return row.hasAttribute?.("data-docx-row") ? { tblHeader: row.getAttribute("data-docx-header") === "1", cantSplit: row.getAttribute("data-docx-cantsplit") === "1" } : null;
+}
+function gridWidths(node) {
+  const widths = (node.getAttribute?.("data-docx-grid") || "").split(",").map(Number);
+  return widths.length && widths.every((w) => Number.isFinite(w) && w > 0) ? widths : [];
+}
+
 function tableBlock(node) {
   const captionEl = node.querySelector?.("caption");
-  const rows = [...(node.rows || [])].map((row) =>
-    [...row.cells].map((cell) => ({
+  const trs = [...(node.rows || [])];
+  const rows = trs.map((row) =>
+    [...row.cells].filter((cell) => !isVMergeContinue(cell)).map((cell) => ({
       text: stripTags(cell.textContent),
       header: cell.tagName === "TH" || row.parentElement?.tagName === "THEAD",
       colspan: cell.colSpan || 1,
       rowspan: cell.rowSpan || 1,
       align: alignOf(cell),
       runs: runsFromNode(cell),
+      ...(cell.querySelector?.("table") || cell.querySelectorAll?.("p").length > 1 ? { blocks: parseLineFlow(cell.childNodes) } : {}),
     })),
   );
+  const rowMeta = trs.map(rowFlags);
   // Optional authored column widths: <colgroup><col data-col-width="25.84">…</colgroup> (percent of the table width; inline styles are stripped by the sanitizer/CSP).
-  const colWidths = [...(node.children || [])].filter((child) => child.tagName === "COLGROUP").flatMap((group) => [...group.children].filter((col) => col.tagName === "COL")).map((col) => Number(col.getAttribute("data-col-width")));
+  const authored = [...(node.children || [])].filter((child) => child.tagName === "COLGROUP").flatMap((group) => [...group.children].filter((col) => col.tagName === "COL")).map((col) => Number(col.getAttribute("data-col-width")));
+  const colWidths = authored.length ? authored : gridWidths(node);
   return {
     type: "table",
     id: node.getAttribute("data-academic-id") || newId("tbl"),
     caption: stripCaptionNumber(stripTags(captionEl?.textContent)),
     rows,
+    ...(rowMeta.some(Boolean) ? { rowMeta } : {}),
     ...(colWidths.length && colWidths.every((w) => Number.isFinite(w) && w > 0) ? { colWidths } : {}),
   };
 }
@@ -297,6 +329,7 @@ function parseNodeList(nodes) {
         type: "math",
         id: node.getAttribute("data-academic-id") || newId("eq"),
         latex,
+        ...(node.getAttribute("data-docx-omml") ? { omml: node.getAttribute("data-docx-omml") } : {}),
         text: latexToPlainText(latex) || stripTags(node.textContent),
         numbered: node.getAttribute("data-eq-numbered") === "true",
       });
@@ -316,7 +349,7 @@ function parseNodeList(nodes) {
       continue;
     }
     if (tag === "IMG") {
-      blocks.push(figureBlock(node));
+      if (!node.hasAttribute("data-docx-native-fallback")) blocks.push(figureBlock(node));
       continue;
     }
     const headingLevel = headingLevelFromNode(node);
@@ -411,15 +444,16 @@ function parseLineFlow(nodes, align) {
 function runsFromHtmlFragment(inner) {
   const runs = [], stack = [];
   const source = String(inner ?? "");
-  const re = /<sup\b([^>]*academic-footnote[^>]*)>([\s\S]*?)<\/sup>|<span\b([^>]*academic-xref[^>]*)>([\s\S]*?)<\/span>|<\/?([a-z][\w-]*)\b([^>]*)>|([^<]+)/gi;
+  const re = /<sup\b([^>]*academic-(?:foot|end)note[^>]*)>([\s\S]*?)<\/sup>|<span\b([^>]*academic-xref[^>]*)>([\s\S]*?)<\/span>|<\/?([a-z][\w-]*)\b([^>]*)>|([^<]+)/gi;
   for (const match of source.matchAll(re)) {
     if (match[1] !== undefined) {
-      runs.push({ type: "footnote", id: attr(match[1], "data-fn-id") || newId("fn"), text: attr(match[1], "data-fn-text") || stripTags(match[2]), index: Number(attr(match[1], "data-fn-index") || 0) });
+      runs.push({ type: /academic-endnote/.test(match[1]) ? "endnote" : "footnote", id: attr(match[1], "data-fn-id") || newId("fn"), text: attr(match[1], "data-fn-text") || stripTags(match[2]), index: Number(attr(match[1], "data-fn-index") || 0) });
     } else if (match[3] !== undefined) {
       runs.push({ type: "xref", refId: attr(match[3], "data-ref-id"), kind: attr(match[3], "data-ref-kind") || "figure", text: stripTags(match[4]) });
     } else if (match[5]) {
       const tag = match[5].toLowerCase(), attrs = match[6] || "";
       if (tag === "br") { runs.push({ type: "break" }); continue; }
+      if (tag === "img") { if (attr(attrs, "src") && !hasFlag(attrs, "data-docx-native-fallback")) runs.push({ type: "image", ...pictureFields((name) => decodeHtml(attr(attrs, name))) }); continue; }
       if (match[0].startsWith("</")) {
         const index = stack.findLastIndex((entry) => entry.tag === tag);
         if (index >= 0) {
@@ -431,8 +465,15 @@ function runsFromHtmlFragment(inner) {
           stack.splice(index);
         }
       } else if (!/^(img|hr|input)$/.test(tag) && !match[0].endsWith("/>")) {
+        const math = /\bmath-formula\b/.test(attr(attrs, "class")), drawing = attr(attrs, "data-docx-drawing");
+        if (drawing && !stack.some((entry) => entry.math)) runs.push({ type: "drawing", xml: decodeHtml(drawing), part: decodeHtml(attr(attrs, "data-docx-part")) });
+        if (math && !stack.some((entry) => entry.math)) {
+          const latex = decodeHtml(attr(attrs, "data-latex")), omml = decodeHtml(attr(attrs, "data-docx-omml"));
+          runs.push({ type: "math", latex, ...(omml ? { omml } : {}), text: latexToPlainText(latex), display: false });
+        }
         stack.push({
           tag,
+          ...(math || drawing ? { math: true } : {}),
           ...(tag === "a" ? { link: true, href: attr(attrs, "href") || "", start: runs.length } : {}),
           bold: /^(b|strong)$/.test(tag) || /\bfmt-bold\b/.test(attrs),
           italic: /^(i|em)$/.test(tag) || /\bfmt-italic\b/.test(attrs),
@@ -440,17 +481,19 @@ function runsFromHtmlFragment(inner) {
           strike: /^(s|strike|del)$/.test(tag) || /\bfmt-strike\b/.test(attrs),
           color: (attrs.match(/\bfmt-color-(black|red|blue|green)\b/) || [])[1] || validCustomFormatAttr("data-fmt-color", attr(attrs, "data-fmt-color")) || undefined,
           highlight: (attrs.match(/\bfmt-highlight-(yellow|green|cyan|magenta)\b/) || [])[1] || validCustomFormatAttr("data-fmt-bg", attr(attrs, "data-fmt-bg")) || undefined,
+          valign: ({ super: "superscript", sub: "subscript" })[attr(attrs, "data-fmt-valign")],
           fontSizePt: Number(validCustomFormatAttr("data-fmt-pt", attr(attrs, "data-fmt-pt"))) || Number((attrs.match(/\bfmt-pt-(\d+)\b/) || [])[1]) || undefined,
         });
       }
     } else {
+      if (stack.some((entry) => entry.math)) continue;
       const value = decodeHtml(match[7] || "").replace(/\u200B/g, "");
       value.split("\n").forEach((part, index) => {
         if (index) runs.push({ type: "break" });
         if (part) runs.push({
           type: "text", text: part,
           ...Object.fromEntries(["bold", "italic", "underline", "strike"].map((key) => [key, stack.some((entry) => entry[key])])),
-          ...Object.fromEntries(["color", "highlight", "fontSizePt"].flatMap((key) => { const value = stack.findLast((entry) => entry[key])?.[key]; return value ? [[key, value]] : []; })),
+          ...Object.fromEntries(["color", "highlight", "fontSizePt", "valign"].flatMap((key) => { const value = stack.findLast((entry) => entry[key])?.[key]; return value ? [[key, value]] : []; })),
         });
       });
     }
@@ -467,7 +510,22 @@ function parseWithRegex(html) {
   while ((match = re.exec(source))) {
     const tag = match[1].toLowerCase();
     const rawAttr = match[2] || "";
-    const inner = match[3] || "";
+    let inner = match[3] || "";
+    // A non-DOM runtime still needs balanced table boundaries: nested </table>
+    // closes the inner table, never the outer block or the following paragraph.
+    if (tag === "table") {
+      const edges = /<\/?table\b[^>]*>/gi;
+      edges.lastIndex = match.index;
+      let depth = 0, edge;
+      while ((edge = edges.exec(source))) {
+        depth += /^<\//.test(edge[0]) ? -1 : 1;
+        if (!depth) { inner = source.slice(match.index + match[0].indexOf(">") + 1, edge.index); re.lastIndex = edges.lastIndex; break; }
+      }
+    }
+    if (tag === "ul" || tag === "ol") {
+      const span = balancedListEnd(source, match.index);
+      if (span) { inner = source.slice(match.index + match[0].indexOf(">") + 1, span.innerEnd); re.lastIndex = span.end; }
+    }
     if (tag === "div" && /<(?:h[1-6]|p|table|figure|ul|ol)\b/i.test(inner)) { blocks.push(...parseWithRegex(inner)); continue; }
     if (/data-academic-page-break/i.test(rawAttr) || /academic-page-break/.test(rawAttr)) {
       blocks.push({ type: "pageBreak" });
@@ -478,12 +536,14 @@ function parseWithRegex(html) {
       continue;
     }
     if (tag === "span") {
+      if (attr(rawAttr, "data-docx-drawing")) { blocks.push({ type: "paragraph", runs: [{ type: "drawing", xml: decodeHtml(attr(rawAttr, "data-docx-drawing")), part: decodeHtml(attr(rawAttr, "data-docx-part")) }] }); continue; }
       if (!/math-formula--block|data-display="block"/i.test(rawAttr)) continue;
       const latex = attr(rawAttr, "data-latex");
       blocks.push({
         type: "math",
         id: attr(rawAttr, "data-academic-id") || newId("eq"),
         latex,
+        ...(attr(rawAttr, "data-docx-omml") ? { omml: decodeHtml(attr(rawAttr, "data-docx-omml")) } : {}),
         text: latexToPlainText(latex) || stripTags(inner),
         numbered: /data-eq-numbered="true"/i.test(rawAttr),
       });
@@ -527,28 +587,29 @@ function parseWithRegex(html) {
       continue;
     }
     if (tag === "ul" || tag === "ol") {
-      const items = [...inner.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)].map((item) => ({
-        text: stripTags(item[1]),
-        runs: runsFromHtmlFragment(item[1]),
-      }));
+      const items = regexListItems(inner, { runsOf: runsFromHtmlFragment, textOf: stripTags });
       blocks.push({ type: "list", ordered: tag === "ol", className: attr(rawAttr, "class"), items });
       continue;
     }
     if (tag === "table") {
-      const rows = [...inner.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)].map((row) =>
-        [...row[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((cell) => ({
-          text: stripTags(cell[1]),
-          header: /<th/i.test(cell[0]),
-          colspan: 1,
-          rowspan: 1,
-        })),
-      );
-      const colWidths = [...inner.matchAll(/<col\s([^>]*)>/gi)].map((col) => Number(attr(col[1], "data-col-width")));
+      const tableNode = contentNodesFromHtml(`<table>${inner}</table>`)[0];
+      const own = (node, wanted) => (node.children || []).flatMap((child) => child.tag === wanted ? [child] : ["table", "td", "th"].includes(child.tag) ? [] : own(child, wanted));
+      const trNodes = own(tableNode, "tr");
+      const rows = trNodes.map((row) => (row.children || []).filter((cell) => ["td", "th"].includes(cell.tag) && cell.attributes["data-docx-vmerge"] !== "continue").map((cell) => {
+        const cellHtml = contentNodesToHtml(cell.children, { stampIds: false });
+        return { text: stripTags(cellHtml), header: cell.tag === "th", colspan: Math.max(1, Number(cell.attributes.colspan) || 1), rowspan: Math.max(1, Number(cell.attributes.rowspan) || 1), runs: runsFromHtmlFragment(cellHtml),
+          ...(/<table\b/i.test(cellHtml) || (cellHtml.match(/<p\b/gi) || []).length > 1 ? { blocks: parseWithRegex(cellHtml) } : {}) };
+      }));
+      const rowMeta = trNodes.map((row) => Object.hasOwn(row.attributes, "data-docx-row") ? { tblHeader: row.attributes["data-docx-header"] === "1", cantSplit: row.attributes["data-docx-cantsplit"] === "1" } : null);
+      const gridAttr = (attr(rawAttr, "data-docx-grid") || "").split(",").map(Number);
+      const authoredWidths = [...inner.matchAll(/<col\s([^>]*)>/gi)].map((col) => Number(attr(col[1], "data-col-width")));
+      const colWidths = authoredWidths.length ? authoredWidths : gridAttr.length && gridAttr.every((w) => Number.isFinite(w) && w > 0) ? gridAttr : [];
       blocks.push({
         type: "table",
         id: attr(rawAttr, "data-academic-id") || newId("tbl"),
         caption: stripCaptionNumber(stripTags(inner.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i)?.[1] || "")),
         rows,
+        ...(rowMeta.some(Boolean) ? { rowMeta } : {}),
         ...(colWidths.length && colWidths.every((w) => Number.isFinite(w) && w > 0) ? { colWidths } : {}),
       });
       continue;
@@ -619,12 +680,16 @@ export function numberAcademicBlocks(blocks) {
   for (const item of tables) targets.set(item.id, { kind: "table", number: item.number, text: item.caption });
   for (const item of equations) targets.set(item.id, { kind: "equation", number: item.number, text: item.text });
 
-  let footnoteIndex = 0;
+  let footnoteIndex = 0, endnoteIndex = 0;
   const walkRuns = (runs = []) =>
     runs.map((run) => {
       if (run.type === "footnote") {
         footnoteIndex += 1;
         return { ...run, index: footnoteIndex };
+      }
+      if (run.type === "endnote") {
+        endnoteIndex += 1;
+        return { ...run, index: endnoteIndex };
       }
       if (run.type === "xref") {
         const target = targets.get(run.refId);
@@ -657,7 +722,7 @@ export function tocEntries(blocks) {
     }));
 }
 
-export function decorateAcademicDom(root, { captions = true, explicitHeadings = false } = {}) {
+export function decorateAcademicDom(root, { captions = true, explicitHeadings = false, headingNumbers = true, preserveImportedTables = false } = {}) {
   if (!root?.querySelectorAll) return false;
   const headingNodes = [...root.querySelectorAll("h1,h2,h3,h4,h5,h6,.academic-h")].filter((node) => {
     if (node.closest?.(".academic-toc")) return false;
@@ -669,8 +734,12 @@ export function decorateAcademicDom(root, { captions = true, explicitHeadings = 
       node.hasAttribute("data-unnumbered") ||
       node.getAttribute("data-numbered") === "false" ||
       (!explicitHeadings && isUnnumberedHeadingTitle(title));
-    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", newId("h"));
     const level = headingLevelFromNode(node) || 1;
+    // Thesis headings are numbered by the template/source model. Decorating the
+    // editable compatibility HTML here would persist a second, section-local
+    // numbering system on the next save, even after a write/delete round trip.
+    if (!headingNumbers) return { node, level, unnumbered, id: node.getAttribute("data-academic-id") || node.getAttribute("data-txt-node-id") || "", text: title, number: node.getAttribute("data-number") || "" };
+    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", node.getAttribute("data-txt-node-id") || newId("h"));
     node.classList.add("academic-h", `academic-h${level}`);
     node.setAttribute("data-academic-heading", String(level));
     if (unnumbered) node.setAttribute("data-unnumbered", "true");
@@ -679,6 +748,7 @@ export function decorateAcademicDom(root, { captions = true, explicitHeadings = 
   });
   const numbers = headingNumberSequence(headingMeta);
   headingMeta.forEach((item, index) => {
+    if (!headingNumbers) return;
     if (numbers[index]) item.node.setAttribute("data-number", numbers[index]);
     else item.node.removeAttribute("data-number");
     item.number = numbers[index];
@@ -686,7 +756,7 @@ export function decorateAcademicDom(root, { captions = true, explicitHeadings = 
 
   const figures = [...root.querySelectorAll("figure.academic-figure, .academic-figure")];
   figures.forEach((node, index) => {
-    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", newId("fig"));
+    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", node.getAttribute("data-txt-node-id") || newId("fig"));
     node.setAttribute("data-kind", "figure");
     node.setAttribute("data-number", String(index + 1));
     const caption = captions ? node.querySelector("figcaption") : null;
@@ -703,7 +773,11 @@ export function decorateAcademicDom(root, { captions = true, explicitHeadings = 
 
   const tables = [...root.querySelectorAll("table")];
   tables.forEach((node, index) => {
-    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", newId("tbl"));
+    // Native Word cells already own their paragraphs and caret positions.
+    // Academic wrappers/captions and pads outside those paragraphs would add
+    // authored nodes and anonymous line boxes on the first edit/undo.
+    if (preserveImportedTables && node.hasAttribute("data-txt-node-id") && node.querySelector("tr[data-docx-row]")) return;
+    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", node.getAttribute("data-txt-node-id") || newId("tbl"));
     node.setAttribute("data-kind", "table");
     node.setAttribute("data-number", String(index + 1));
     node.classList.add("academic-table");
@@ -733,7 +807,7 @@ export function decorateAcademicDom(root, { captions = true, explicitHeadings = 
       return;
     }
     eq += 1;
-    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", newId("eq"));
+    if (!node.getAttribute("data-academic-id")) node.setAttribute("data-academic-id", node.getAttribute("data-txt-node-id") || newId("eq"));
     node.setAttribute("data-kind", "equation");
     node.setAttribute("data-number", String(eq));
   });
@@ -772,10 +846,16 @@ export function decorateAcademicDom(root, { captions = true, explicitHeadings = 
 
   const footnotes = [...root.querySelectorAll("sup.academic-footnote, .academic-footnote")];
   footnotes.forEach((node, index) => {
-    if (!node.getAttribute("data-fn-id")) node.setAttribute("data-fn-id", newId("fn"));
+    if (!node.getAttribute("data-fn-id")) node.setAttribute("data-fn-id", node.getAttribute("data-txt-node-id") || newId("fn"));
     node.setAttribute("data-fn-index", String(index + 1));
     if (!node.textContent.trim()) node.textContent = String(index + 1);
     else node.textContent = String(index + 1);
+  });
+
+  root.querySelectorAll("sup.academic-endnote, .academic-endnote").forEach((node, index) => {
+    if (!node.getAttribute("data-fn-id")) node.setAttribute("data-fn-id", node.getAttribute("data-txt-node-id") || newId("en"));
+    node.setAttribute("data-fn-index", String(index + 1));
+    node.textContent = String(index + 1);
   });
 
   root.querySelectorAll(".academic-toc, [data-academic-toc]").forEach((node) => {
@@ -811,7 +891,7 @@ export function collectFootnotes(blocks) {
   const notes = [];
   const walk = (runs = []) => {
     for (const run of runs) {
-      if (run.type === "footnote") notes.push(run);
+      if (run.type === "footnote" || run.type === "endnote") notes.push(run);
     }
   };
   for (const block of blocks) {
@@ -843,6 +923,21 @@ export function tocHtml() {
 export function footnoteHtml(text, id = newId("fn")) {
   return `<sup class="academic-footnote" contenteditable="false" data-fn-id="${escapeHtml(id)}" data-fn-text="${escapeHtml(text)}">1</sup>`;
 }
+
+export function endnoteHtml(text, id = newId("en")) {
+  return `<sup class="academic-endnote" contenteditable="false" data-fn-id="${escapeHtml(id)}" data-fn-text="${escapeHtml(text)}">1</sup>`;
+}
+
+/** Endnote numbers and texts as stored in editor HTML (same attributes as footnotes). */
+export function endnotesFromHtml(html) {
+  const items = [];
+  for (const match of String(html ?? "").matchAll(/<(?:sup|span)\b[^>]*academic-endnote[^>]*>/gi)) {
+    const index = attr(match[0], "data-fn-index");
+    if (index) items.push({ index, text: decodeHtml(attr(match[0], "data-fn-text")) });
+  }
+  return items;
+}
+
 
 /** Footnote numbers and texts as stored in editor HTML (data-fn-index / data-fn-text). */
 export function footnotesFromHtml(html) {

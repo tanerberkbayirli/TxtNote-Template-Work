@@ -3,8 +3,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
-import { WORD_FONT_METRICS } from '../../TxtNote/frontend/src/thesis/wordBaseline.js';
-import { validateThesisTemplate } from '../../TxtNote/frontend/src/thesis/validation.js';
+import { WORD_FONT_METRICS } from '../../engine/src/wordBaseline.js';
+import { validateThesisTemplate } from '../../engine/src/validation.js';
 import { wordFlowPreset } from './source-template-presets.mjs';
 
 const mm = twips => Number(twips) * 25.4 / 1440;

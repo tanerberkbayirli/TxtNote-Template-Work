@@ -1,0 +1,63 @@
+{
+ "id": "s1",
+ "origin": "http://127.0.0.1:5191",
+ "long": false,
+ "steps": {
+  "typing": "PASS",
+  "selection": "PASS",
+  "selection_info": "\"örnek\"",
+  "real-copy-clipboard": "PASS",
+  "real-copy-clipboard_info": "\"örnek\"",
+  "real-paste": "PASS",
+  "real-paste_info": "\" veri örnek.\"",
+  "paste-external-text": "PASS",
+  "cut": "PASS",
+  "cut_info": {
+   "len0": 326,
+   "len1": 323,
+   "cutSel": "örn"
+  },
+  "cut-paste-restore": "PASS",
+  "ime-composing-flag": "PASS",
+  "ime_composing_text_autosaved_info": true,
+  "ime-commit": "PASS",
+  "no-temp-markup-in-save": "PASS",
+  "ime-cancel-clean": "PASS",
+  "undo-removes-edits": "PASS",
+  "undo-removes-edits_info": [],
+  "redo-restores-edits": "PASS",
+  "redo-restores-edits_info": [],
+  "save-reopen-keeps-edits": "PASS",
+  "save-reopen-keeps-edits_info": {
+   "savedLen": 1965516,
+   "reopenedLen": 1965516
+  },
+  "reopen-render-has-edits": "PASS",
+  "enter-splits-paragraph": "PASS",
+  "enter-splits-paragraph_info": {
+   "count": 119,
+   "idx": 83,
+   "pos": 357,
+   "prevEmptyOrHead": " veri örnek."
+  },
+  "enter-caret-moves-to-new-paragraph": "FAIL",
+  "enter-caret-moves-to-new-paragraph_info": {
+   "count": 119,
+   "idx": 83,
+   "pos": 357,
+   "prevEmptyOrHead": " veri örnek."
+  },
+  "no-page-errors": "PASS",
+  "no-page-errors_info": []
+ },
+ "timings": {
+  "openMs": 1179,
+  "typeToSaveMs": 1415,
+  "reopenMs": 306
+ },
+ "notes": [],
+ "paragraphCount": 46,
+ "status": "FAIL",
+ "pageErrors": [],
+ "browser": "154.0.8037.98"
+}

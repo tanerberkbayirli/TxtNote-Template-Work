@@ -1,5 +1,5 @@
 # afsu-tip fix-1 (template level; real exports tip/dhf/bap .pdf/.docx + Word renders *.word.pdf, tolerance 0.25 mm)
-Changed: TxtNote/frontend/src/thesis/templates/afsu-tip.js (GEO per guide copy, SHEET centring), src/lib/thesisAfsuTip.test.js, orchestration/specs/afsu-tip.json. Shared engine untouched.
+Changed: engine/src/templates/afsu-tip.js (GEO per guide copy, SHEET centring), src/lib/thesisAfsuTip.test.js, orchestration/specs/afsu-tip.json. Shared engine untouched.
 | Item | Expected | Measured editor PDF | Word | Result |
 | A1 Üye->ONAY Tıp (EK 9) | 26.92 | 26.91 | 26.93 | PASS |
 | A1 Üye->ONAY DHF (EK 9, own copy) | 63.30 | 63.30 (rel. to wrapped title: all EK 9 steps within 0.06) | 63.34 | PASS |

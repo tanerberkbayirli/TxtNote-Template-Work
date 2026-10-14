@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { buildThesisCss, compileThesisDocument } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { derivedThesisValues, formatCaptionLabel, generatedIndexHtml, indexEntries } from "../thesis/generatedIndex.js";
-import { specialPageHtml, resolveSpecialPage } from "../thesis/specialPages.js";
-import { thesisSourceHtml } from "../thesis/sourceHtml.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { mcbuMaster } from "../thesis/templates/mcbu.js";
+import { buildThesisCss, compileThesisDocument } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { derivedThesisValues, formatCaptionLabel, generatedIndexHtml, indexEntries } from "../../../../engine/src/generatedIndex.js";
+import { specialPageHtml, resolveSpecialPage } from "../../../../engine/src/specialPages.js";
+import { thesisSourceHtml } from "../../../../engine/src/sourceHtml.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { mcbuMaster } from "../../../../engine/src/templates/mcbu.js";
 
 const docxXml = async (model, options) => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model, options)).arrayBuffer()))["word/document.xml"]);
 const footerXml = async (model) => { const files = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer())); return Object.entries(files).filter(([name]) => /footer\d*\.xml$/.test(name)).map(([, data]) => strFromU8(data)).join("\n"); };

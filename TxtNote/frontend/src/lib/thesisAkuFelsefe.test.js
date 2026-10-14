@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { resolveThesisTemplate } from "../thesis/registry.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { akuFelsefeLisans, akuFelsefeSeminer } from "../thesis/templates/aku-felsefe.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { resolveThesisTemplate } from "../../../../engine/src/registry.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { akuFelsefeLisans, akuFelsefeSeminer } from "../../../../engine/src/templates/aku-felsefe.js";
 
 describe("AKÜ Felsefe templates (lisans bitirme tezi, seminer)", () => {
   for (const [t, left, inst] of [[akuFelsefeLisans, 35, "fef-felsefe"], [akuFelsefeSeminer, 30, "fef-felsefe-seminer"]]) {

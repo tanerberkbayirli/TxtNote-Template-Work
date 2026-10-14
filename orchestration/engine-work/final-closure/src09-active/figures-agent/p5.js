@@ -1,0 +1,2 @@
+()=>{const out=[];for(const s of document.querySelectorAll('style')){const t=s.textContent;let i=-1;while((i=t.indexOf('p.txn-docx-15505.txn-docx-15505{',i+1))>=0&&out.length<8)out.push(t.slice(Math.max(0,i-30),i+200));}
+const e=document.querySelector('.txn-docx-15505');const cs=getComputedStyle(e);return {out,h:e.getBoundingClientRect().height,pb:cs.paddingBottom,mt:cs.marginTop,cls:e.className}}

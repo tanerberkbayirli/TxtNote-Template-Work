@@ -510,6 +510,9 @@ export function firstMeaningfulChild(root) {
 
 export async function renderMathElement(el) {
   if (!(el instanceof HTMLElement)) return;
+  // Native equations already carry a MathML view and an authoritative OMML payload.
+  // Mounting an empty LaTeX widget would erase that view and offer a destructive edit.
+  if (el.hasAttribute("data-docx-omml")) return;
   if (el.dataset.editing === "true") return;
   const latex = el.getAttribute("data-latex") ?? "";
   const display = el.getAttribute("data-display") !== "inline";
@@ -524,8 +527,12 @@ export async function renderMathElement(el) {
       displayMode: display,
     });
     render.classList.remove("math-formula__render--pending");
+    render.classList.remove("math-formula__render--error");
   } catch {
     render.textContent = latex;
+    render.classList.remove("math-formula__render--pending");
+    render.classList.add("math-formula__render--error");
+    render.title = "Denklem görünümü yüklenemedi. Belgeyi yeniden açıp tekrar deneyin.";
   }
 }
 

@@ -45,6 +45,14 @@ const browser = await chromium.launch({
 const context = await browser.newContext({ viewport: { width: 1400, height: 1000 }, deviceScaleFactor: 1, acceptDownloads: true });
 await context.grantPermissions(["local-fonts"], { origin: new URL(baseUrl).origin });
 const page = await context.newPage();
+// Optional acceptance stress condition; production editor behavior is unchanged.
+if (process.env.EXPORT_CPU_THROTTLE) {
+  const rate = Number(process.env.EXPORT_CPU_THROTTLE);
+  if (!Number.isFinite(rate) || rate < 1) throw new Error('EXPORT_CPU_THROTTLE must be a finite number >= 1');
+  const session = await context.newCDPSession(page);
+  await session.send('Emulation.setCPUThrottlingRate', { rate });
+  console.log(`CPU throttling: ${rate}x`);
+}
 recordStage('browser');
 const errors = [];
 page.on("pageerror", (e) => errors.push(`pageerror: ${e.message}`));
@@ -91,7 +99,9 @@ async function settle() {
 try {
   // Seed before the first render; loading an unseeded editor and reloading it doubles
   // pagination/font work and can momentarily render the wrong template.
-  await context.addInitScript(([key, value]) => { localStorage.clear(); localStorage.setItem(key, value); }, [KEY, JSON.stringify(doc)]);
+  // Init scripts also run in opaque-origin subframes (e.g. a PDF/blank preview),
+  // where touching localStorage throws. Seed only the actual fixture origin.
+  await context.addInitScript(([key, value, origin]) => { if (location.origin !== origin) return; localStorage.clear(); localStorage.setItem(key, value); }, [KEY, JSON.stringify(doc), new URL(baseUrl).origin]);
   await page.goto(`${baseUrl}${fixturePage}`);
   await page.locator(".thesis-sheet").first().waitFor({ timeout: 60000 });
   await page.waitForFunction((id) => document.querySelector('[aria-label="Belge sayfaları"]')?.getAttribute('data-thesis-template-id') === id,

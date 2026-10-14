@@ -1,0 +1,123 @@
+{
+ "target": "iyte",
+ "stamp": "20261010-2216",
+ "counts": {
+  "PASS": 4
+ },
+ "variants": {
+  "master": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\iyte\\out\\new.base\\run\\master.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\iyte\\out\\new.base\\run\\master.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\iyte\\out\\new.base\\run\\master.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\iyte.fixture.master.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "41fa513ab9539b56e0cb76ee9782835a4e36f42cbb31d4ed3907d7f0f3e79a1e"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.265,
+ "commandSeconds": 14.233,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "9bf8d9eaac44db23b6f0affd8e047d1535860522",
+  "trackedDiffSha256": "037b91234a25a8faa032b3a744be808aab76d25cfdd0ad1f0bf613c630c419a6",
+  "diagnosticsSha256": "9d28054675c03fee9a65e2f2a73c545f973ee3123c6cdcf670a95e09b12c8242",
+  "startedAt": "2026-10-10T19:16:39.187Z",
+  "codeFingerprint": "92fbf2f5e37abff050e12f71113e521c432e26e1a1a7ba6b45675eb093d34b6b",
+  "officialSourceFingerprint": "4ab010922384b288801149a945dd9072c75485b5c5d8dde2fe299f459b815819"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\iyte\\out\\new.base\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "master": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "a6a579a92043e97ebd859b388068d601cbba19ce2f04537fa2d19d58815b0255",
+ "artifactSha256": {
+  "master": {
+   "fixture": "743620ce2a004d3e5cd6a29d93b4a54967e263aa82a340a39a572e00e94edfaf",
+   "pdf": "0bc2b2c9a7bc98a00d54dbc9edeae4c6764d189fad07ecceeed576e5fbb5be88",
+   "docx": "bed5bfb85b09c91f64c5eec5a462d351f2d8bb3bdff66abc1929f7a78ac61994",
+   "layout": "586db52c023d86373d02565b622d2602a6be81a1333822938ba7ca42b2e0d852"
+  }
+ },
+ "checks": [
+  {
+   "id": "master-page_size-0",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "13 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-master",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-master",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "73 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-master",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

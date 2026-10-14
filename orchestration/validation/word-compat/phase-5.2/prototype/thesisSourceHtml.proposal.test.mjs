@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { plainThesisText, thesisSourceHtml } from "../../../../../TxtNote/frontend/src/thesis/sourceHtml.js";
+import { plainThesisText, thesisSourceHtml } from "../../../../../engine/src/sourceHtml.js";
 
 // Unit-test the exact proposed patch while production remains unchanged.
 const proposedSourceHtml = (html) => thesisSourceHtml(String(html || "").replace(/<\/?thesis-line\b[^>]*>/gi, ""));

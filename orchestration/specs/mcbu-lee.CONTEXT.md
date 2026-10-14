@@ -1,7 +1,7 @@
 # mcbu-lee — context pack
 ## Identity
 - Registry id(s): `mcbu-lee-master-tr-v1`, `mcbu-lee-phd-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/mcbu.js` (exports: mcbuMaster, mcbuPhd)
+- Template module: `engine/src/templates/mcbu.js` (exports: mcbuMaster, mcbuPhd)
 - Spec: `orchestration/specs/mcbu-lee.json`; checks: `orchestration/specs/mcbu-lee.checks.json` (not yet); progress report: `orchestration/reports/mcbu-lee.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/MCBU_Lisansustu_Tez_Yazim_Kilavuzu.docx`

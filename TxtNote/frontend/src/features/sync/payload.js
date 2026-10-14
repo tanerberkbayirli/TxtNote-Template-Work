@@ -8,6 +8,7 @@
 
 import { sanitizeDeck } from "../../lib/flashcards.js";
 import { pickTodoDailyFields } from "../../lib/todoDaily.js";
+import { prepareThesisNote } from "../../../../../engine/src/contentModel.js";
 
 const DEVICE_KEY = "txtnote.deviceId";
 
@@ -48,19 +49,20 @@ export const getDeviceId = () => {
 
 export const noteFromPayload = (payload) => {
   const flashcards = sanitizeDeck(payload.extras?.flashcards);
-  return {
+  return prepareThesisNote({
     title: payload.title ?? "",
-    content: payload.content ?? "",
+    content: payload.content ?? (payload.extras?.researchData?.thesis?.document ? undefined : ""),
     todos: payload.extras?.todos ?? [],
     entries: payload.extras?.entries ?? {},
     mindmap: payload.extras?.mindmap ?? { nodes: [], edges: [] },
     ...(payload.extras?.researchData != null ? { researchData: payload.extras.researchData } : {}),
     ...(flashcards ? { flashcards } : {}),
     ...pickTodoDailyFields(payload.extras ?? {}),
-  };
+  });
 };
 
 export const buildNotePayload = ({ noteId, workspaceId, note, deviceId, updatedAt = Date.now() }) => {
+  note = prepareThesisNote(note);
   const flashcards = sanitizeDeck(note?.flashcards);
   const extras = {
     todos: note?.todos ?? [],

@@ -1,10 +1,11 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { strFromU8, unzipSync } from "fflate";
-import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument, cellPaddingCss, buildThesisCss } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument, cellPaddingCss, buildThesisCss } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { tableContinuationRows } from "../../../../engine/src/tableContinuation.js";
 
 const docXml = async (template, html) => {
   const blob = await buildThesisDocx(compileThesisDocument(template, {}, "T", html), {});
@@ -13,6 +14,21 @@ const docXml = async (template, html) => {
 const table = '<table><colgroup><col data-col-width="25"><col data-col-width="75"></colgroup><tbody><tr><td>a1</td><td>a2</td></tr></tbody></table>';
 
 describe("tables.cellPadding and authored column widths", () => {
+  it("exports page-spanning tables without chaining every row when headers and captions do not repeat", async () => {
+    const template = structuredClone(generic);
+    template.tables.repeatHeader = false;
+    delete template.tables.continuation;
+    const html = '<table><caption>Long table</caption>' + Array.from({ length: 8 }, (_, i) => `<tr><td>Row ${i}</td></tr>`).join("") + '</table>';
+    const model = compileThesisDocument(template, {}, "T", html);
+    const anchor = model.indexSources.find((source) => source.kind === "tables").anchor;
+    // The browser measured a tall table but injected no continuation/header rows.
+    const measured = tableContinuationRows({ querySelectorAll: (selector) => selector === "table[data-thesis-tall]"
+      ? [{ querySelector: () => ({ dataset: { thesisAnchor: anchor } }) }] : [] });
+    const xmlOf = async (options) => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model, options)).arrayBuffer()))["word/document.xml"]);
+    const rowKeeps = (xml) => [...xml.matchAll(/<w:tr>[\s\S]*?<\/w:tr>/g)].map(([row]) => /<w:keepNext\/>/.test(row));
+    assert.deepEqual(rowKeeps(await xmlOf({ tableContinuations: measured })), [true, false, false, false, false, false, true, false]);
+    assert.deepEqual(rowKeeps(await xmlOf({})), [true, true, true, true, true, true, true, false]);
+  });
   it("honors opt-in cell first-line indentation in both CSS and Word while retaining the zero default", async () => {
     const t = structuredClone(generic);
     t.tables.cellStyle = { firstLineIndentMm: 10 };

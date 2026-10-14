@@ -1,0 +1,176 @@
+{
+  "id": "SRC10",
+  "status": "MEASURED",
+  "pageErrors": [],
+  "loadMs": 6965,
+  "pages": 91,
+  "probe": {
+    "width": "500px",
+    "indent": "-10.5335px",
+    "words": [
+      {
+        "start": 0,
+        "end": 5,
+        "width": 35.546875,
+        "space": 0,
+        "text": "False"
+      },
+      {
+        "start": 6,
+        "end": 15,
+        "width": 64.859375,
+        "space": 4,
+        "text": "Negative:"
+      },
+      {
+        "start": 16,
+        "end": 20,
+        "width": 28.4453125,
+        "space": 4,
+        "text": "This"
+      },
+      {
+        "start": 21,
+        "end": 26,
+        "width": 34.6484375,
+        "space": 4,
+        "text": "value"
+      },
+      {
+        "start": 27,
+        "end": 29,
+        "width": 10.671875,
+        "space": 4,
+        "text": "is"
+      },
+      {
+        "start": 30,
+        "end": 40,
+        "width": 64.84375,
+        "space": 4,
+        "text": "calculated"
+      },
+      {
+        "start": 41,
+        "end": 43,
+        "width": 16,
+        "space": 4,
+        "text": "by"
+      },
+      {
+        "start": 44,
+        "end": 51,
+        "width": 46.21875,
+        "space": 4,
+        "text": "finding"
+      },
+      {
+        "start": 52,
+        "end": 55,
+        "width": 19.546875,
+        "space": 4,
+        "text": "the"
+      },
+      {
+        "start": 56,
+        "end": 63,
+        "width": 50.6640625,
+        "space": 4,
+        "text": "model’s"
+      },
+      {
+        "start": 64,
+        "end": 70,
+        "width": 40.875,
+        "space": 4,
+        "text": "“False"
+      },
+      {
+        "start": 71,
+        "end": 80,
+        "width": 64.8515625,
+        "space": 4,
+        "text": "Negative”"
+      },
+      {
+        "start": 81,
+        "end": 92,
+        "width": 71.09375,
+        "space": 4,
+        "text": "predictions"
+      },
+      {
+        "start": 93,
+        "end": 98,
+        "width": 35.546875,
+        "space": 4,
+        "text": "while"
+      },
+      {
+        "start": 99,
+        "end": 108,
+        "width": 68.421875,
+        "space": 4,
+        "text": "comparing"
+      },
+      {
+        "start": 109,
+        "end": 112,
+        "width": 19.546875,
+        "space": 4,
+        "text": "the"
+      }
+    ],
+    "lines": [
+      {
+        "start": 0,
+        "end": 12,
+        "natural": 521.171875,
+        "measure": 510.5335,
+        "compression": 1.0125795454545452,
+        "text": "False Negative: This value is calculated by finding the model’s “False Negative”"
+      },
+      {
+        "start": 12,
+        "end": 22,
+        "natural": 476.734375,
+        "measure": 500,
+        "compression": 0,
+        "text": "predictions while comparing the real occurred observations and it contains"
+      },
+      {
+        "start": 22,
+        "end": 33,
+        "natural": 482.4296875,
+        "measure": 500,
+        "compression": 0,
+        "text": "examples that have been incorrectly classified as negative and are therefore"
+      },
+      {
+        "start": 33,
+        "end": 46,
+        "natural": 499.3984375,
+        "measure": 500,
+        "compression": 0,
+        "text": "actually positive. In this study, if a real occurred Damaged = YES observation"
+      },
+      {
+        "start": 46,
+        "end": 58,
+        "natural": 505.765625,
+        "measure": 500,
+        "compression": 0.5696022727272727,
+        "text": "was predicted by the ML Classification algorithm correctly as Damaged = NO,"
+      },
+      {
+        "start": 58,
+        "end": 68,
+        "natural": 449.0234375,
+        "measure": 500,
+        "compression": 0,
+        "text": "then this performance observation can be counted as “True Negative”."
+      }
+    ]
+  },
+  "editMeasurement": "Read-only layout control"
+}

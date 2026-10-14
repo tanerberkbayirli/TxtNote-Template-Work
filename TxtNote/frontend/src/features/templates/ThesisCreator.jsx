@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { THESIS_TEMPLATE_REGISTRY } from "../../thesis/registry.js";
+import { THESIS_TEMPLATE_REGISTRY } from "../../../../../engine/src/registry.js";
 
 const labelForDegree = { undergraduate: "Lisans", master: "Yüksek lisans", phd: "Doktora", specialization: "Uzmanlık" };
 

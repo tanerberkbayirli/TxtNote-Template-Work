@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { normalizeThesisLayout } from "../thesis/layoutDocument.js";
-import { applyLayoutPage, applyLayoutTypography, resolveLayoutTypography } from "../thesis/layoutProperties.js";
+import { normalizeThesisLayout } from "../../../../engine/src/layoutDocument.js";
+import { applyLayoutPage, applyLayoutTypography, resolveLayoutTypography } from "../../../../engine/src/layoutProperties.js";
 
 test("page rules preserve nested siblings and apply document, section, and page scope immutably", () => {
   const thesis = { layout: { page: { margins: { leftMm: 35, rightMm: 20 }, numbering: { enabled: true } }, sections: { body: { margins: { topMm: 28 } } }, pages: {} } };

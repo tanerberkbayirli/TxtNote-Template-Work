@@ -83,9 +83,9 @@ function flattenRuns(runs = []) {
       bits.push({ text: "\n", bold: false, italic: false, underline: false });
       continue;
     }
-    if (run.type === "footnote") {
+    if (run.type === "footnote" || run.type === "endnote") {
       bits.push({ text: String(run.index || ""), bold: false, italic: false, superscript: true });
-      footnotes.push({ index: run.index, text: run.text || "" });
+      if (run.type === "footnote") footnotes.push({ index: run.index, text: run.text || "" });
       continue;
     }
     if (run.type === "xref") {
@@ -276,6 +276,26 @@ export function boxesFromBlocks(blocks, measure, options = {}) {
         frontMatter,
       }),
     );
+  }
+  // Endnotes use the normal document flow at its end, so long notes can fragment
+  // across pages instead of stealing space from the reference's page.
+  const endnotes = [];
+  const visit = (value) => {
+    if (!value || typeof value !== "object") return;
+    if (value.type === "endnote") { endnotes.push(value); return; }
+    for (const key of ["runs", "children", "items", "rows", "cells"]) {
+      for (const child of value[key] || []) {
+        if (Array.isArray(child)) child.forEach(visit);
+        else visit(child);
+      }
+    }
+  };
+  blocks.forEach(visit);
+  for (const note of endnotes) {
+    const lines = wrapText(`${note.index || ""} ${note.text || ""}`, width, PDF_TYPE.footnote, measure, {});
+    boxes.push(boxFromLines(lines, lineHeight(PDF_TYPE.footnote, 1.35), {
+      type: "endnote", size: PDF_TYPE.footnote, frontMatter: false, after: 3 * PT_MM,
+    }));
   }
   return boxes;
 }

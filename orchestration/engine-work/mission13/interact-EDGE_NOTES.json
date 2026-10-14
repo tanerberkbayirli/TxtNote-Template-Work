@@ -1,0 +1,63 @@
+{
+ "id": "EDGE_NOTES",
+ "origin": "http://127.0.0.1:5191",
+ "long": false,
+ "steps": {
+  "typing": "PASS",
+  "selection": "PASS",
+  "selection_info": "\"çğıöş\"",
+  "real-copy-clipboard": "PASS",
+  "real-copy-clipboard_info": "\"çğıöş\"",
+  "real-paste": "PASS",
+  "real-paste_info": "\"çğıöşçğıöşü.\"",
+  "paste-external-text": "PASS",
+  "cut": "PASS",
+  "cut_info": {
+   "len0": 119,
+   "len1": 116,
+   "cutSel": "çğı"
+  },
+  "cut-paste-restore": "PASS",
+  "ime-composing-flag": "PASS",
+  "ime_composing_text_autosaved_info": true,
+  "ime-commit": "PASS",
+  "no-temp-markup-in-save": "PASS",
+  "ime-cancel-clean": "PASS",
+  "undo-removes-edits": "PASS",
+  "undo-removes-edits_info": [],
+  "redo-restores-edits": "PASS",
+  "redo-restores-edits_info": [],
+  "save-reopen-keeps-edits": "PASS",
+  "save-reopen-keeps-edits_info": {
+   "savedLen": 1816655,
+   "reopenedLen": 1816655
+  },
+  "reopen-render-has-edits": "PASS",
+  "enter-splits-paragraph": "PASS",
+  "enter-splits-paragraph_info": {
+   "count": 12,
+   "idx": 9,
+   "pos": 0,
+   "prevEmptyOrHead": "arakterler: "
+  },
+  "enter-caret-moves-to-new-paragraph": "PASS",
+  "enter-caret-moves-to-new-paragraph_info": {
+   "count": 12,
+   "idx": 9,
+   "pos": 0,
+   "prevEmptyOrHead": "arakterler: "
+  },
+  "no-page-errors": "PASS",
+  "no-page-errors_info": []
+ },
+ "timings": {
+  "openMs": 550,
+  "typeToSaveMs": 809,
+  "reopenMs": 234
+ },
+ "notes": [],
+ "paragraphCount": 8,
+ "status": "PASS",
+ "pageErrors": [],
+ "browser": "154.0.8037.98"
+}

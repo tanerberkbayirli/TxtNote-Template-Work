@@ -1,0 +1,60 @@
+{
+  "counts": {
+    "paragraph": 61,
+    "table": 0,
+    "horizontalMerge": 0,
+    "verticalMerge": 0,
+    "repeatedTableHeader": 0,
+    "equation": 0,
+    "matrix": 0,
+    "integralOrNary": 0,
+    "vectorAccent": 0,
+    "inlineImage": 0,
+    "anchoredImage": 0,
+    "croppedImage": 0,
+    "footnoteReference": 1,
+    "endnoteReference": 0,
+    "field": 3,
+    "bookmark": 0,
+    "section": 1,
+    "textBox": 0,
+    "numberedParagraph": 0
+  },
+  "features": [
+    {
+      "kind": "footnoteReference",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:p[3]/w:r[2]/w:footnoteReference"
+    },
+    {
+      "kind": "section",
+      "part": "word/document.xml",
+      "ordinal": 1,
+      "xpath": "/w:document/w:body/w:sectPr"
+    },
+    {
+      "kind": "field",
+      "part": "word/footer1.xml",
+      "ordinal": 1,
+      "xpath": "/w:ftr/w:p/w:r[2]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/footer2.xml",
+      "ordinal": 1,
+      "xpath": "/w:ftr/w:p/w:r[2]/w:instrText"
+    },
+    {
+      "kind": "field",
+      "part": "word/footer3.xml",
+      "ordinal": 1,
+      "xpath": "/w:ftr/w:p/w:r[2]/w:instrText"
+    }
+  ],
+  "noteParagraphs": {
+    "word/footnotes.xml": 42
+  },
+  "mainTextSha256": "906ecedc590b784b5e60fbc1ee49beee3da711c32c8dd9ccd3ced87820d65127",
+  "nestedTableCount": 0
+}

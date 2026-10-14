@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument, groupThesisSections, resolvePageNumberStyle } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { buildThesisPageModel } from "../thesis/pageLayout.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument, groupThesisSections, resolvePageNumberStyle } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { buildThesisPageModel } from "../../../../engine/src/pageLayout.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 
 describe("page-number baseline and text-box geometry", () => {
   it("keeps absent header/footer rules optional when section page overrides are validated", () => {

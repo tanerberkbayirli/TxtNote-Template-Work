@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { trustedStyleNonce, styleNonceAttribute, withoutInlineStyleAttributes } from './cspStyles.js';
-import { buildThesisPrintHtml, compileThesisDocument, buildThesisCss } from '../thesis/engine.js';
-import { resolveThesisTemplate } from '../thesis/registry.js';
+import { buildThesisPrintHtml, compileThesisDocument, buildThesisCss } from '../../../../engine/src/engine.js';
+import { resolveThesisTemplate } from '../../../../engine/src/registry.js';
 import { FIXTURE_REGISTRY } from './thesisFixtures.js';
 import { figureHtml } from './academicMedia.js';
 test('CSP cleanup drops inline styles, retaining dimensions, quoted attribute content and widget styles',()=>{

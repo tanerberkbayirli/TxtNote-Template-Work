@@ -1,38 +1,51 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { bibliographyItemsFromResearch, normalizeBibliographyItems } from "../../lib/academicBibliography.js";
+import { endnotesFromHtml } from "../../lib/academicDocument.js";
 import { figureHtml, imageDimensions, readImageAsDataUrl } from "../../lib/academicMedia.js";
 import { htmlToPlainText } from "../../lib/richText.js";
 import { FORMAT_COLORS, FORMAT_HIGHLIGHTS } from "../../config/format.js";
 import { trustedStyleNonce } from "../../lib/cspStyles.js";
-import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../thesis/engine.js";
-import { measureMirroredIndentsCss } from "../../thesis/paragraphMirror.js";
-import { measureParagraphTabsCss } from "../../thesis/paragraphTabs.js";
-import { measureWordBaselineCss } from "../../thesis/wordBaseline.js";
-import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../thesis/pageLayout.js";
-import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../thesis/registry.js";
-import { THESIS_METADATA_ALIASES, THESIS_METADATA_FIELDS, orderedThesisSections, thesisEnabledSections, setThesisTextFormat, setThesisTextOverride, thesisMetadataValue, thesisTextFormat, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../thesis/document.js";
+import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../../../../engine/src/engine.js";
+import { measureMirroredIndentsCss } from "../../../../../engine/src/paragraphMirror.js";
+import { measureParagraphTabsCss } from "../../../../../engine/src/paragraphTabs.js";
+import { layoutWordJustification } from "../../../../../engine/src/wordLineLayout.js";
+import { layoutShortParagraphKeeps } from "../../../../../engine/src/shortParagraphs.js";
+import { missingRenderedFonts } from "../../../../../engine/src/renderedFonts.js";
+import { measureWordBaselineCss } from "../../../../../engine/src/wordBaseline.js";
+import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../../../../engine/src/pageLayout.js";
+import { measureElasticSpecialPages, measurePositionedSpecialPages, measureSpecialPageFit } from "../../../../../engine/src/specialPageFit.js";
+import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../../../../engine/src/registry.js";
+import { thesisMetadataPanel } from "../../../../../engine/src/metadataPanel.js";
+import { orderedThesisSections, thesisEnabledSections, setThesisTextFormat, setThesisTextOverride, thesisMetadataValue, thesisTextFormat, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../../../../engine/src/document.js";
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
-import { confirmCommittedPagination, decorateThesisSources, generatedIndexPageTargets, INDEX_ITERATION_CAP, missingGeneratedIndexPages, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../thesis/generatedIndex.js";
-import { layoutThesisFootnotes } from "../../thesis/footnotes.js";
-import { addLayoutElement, normalizeThesisLayout } from "../../thesis/layoutDocument.js";
-import { applyLayoutPage, applyLayoutTypography, resolveLayoutTypography } from "../../thesis/layoutProperties.js";
+import { confirmCommittedPagination, decorateThesisSources, generatedIndexPageTargets, INDEX_ITERATION_CAP, missingGeneratedIndexPages, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../../../../engine/src/generatedIndex.js";
+import { layoutFirstPageReserves, layoutThesisFootnotes, sectionEndnoteViews } from "../../../../../engine/src/footnotes.js";
+import { addLayoutElement, normalizeThesisLayout } from "../../../../../engine/src/layoutDocument.js";
+import { setDocumentFormatMode } from "../../../../../engine/src/contentModel.js";
+import { importThesisWordFile } from "../../../../../engine/src/importDocx.js";
+import { WordImportReport, WordImportReview } from "./WordImportReview.jsx";
+import { applyLayoutPage, applyLayoutTypography, resolveLayoutTypography } from "../../../../../engine/src/layoutProperties.js";
 import { useLayoutInteraction } from "./useLayoutInteraction.js";
 import LayoutSelectionOverlay from "./LayoutSelectionOverlay.jsx";
 import LayoutInspector from "./LayoutInspector.jsx";
 import PageLayoutInspector from "./PageLayoutInspector.jsx";
 import LayoutRulers from "./LayoutRulers.jsx";
-import { layoutTableContinuations, tableContinuationRows } from "../../thesis/tableContinuation.js";
-import { textAlignmentPatch, toggleLayoutDecoration } from "../../thesis/layoutInteraction.js";
-import { applyTransformExceptions } from "../../thesis/transformExceptions.js";
+import { layoutTableContinuations, tableContinuationRows } from "../../../../../engine/src/tableContinuation.js";
+import { layoutImportedShapeLines } from "../../../../../engine/src/docx/drawingWrap.js";
+import { layoutImportedDrawingAnchors } from "../../../../../engine/src/docx/drawingAnchors.js";
+import { layoutImportedFloatingTables } from "../../../../../engine/src/docx/floatingTables.js";
+import { textAlignmentPatch, toggleLayoutDecoration } from "../../../../../engine/src/layoutInteraction.js";
+import { applyTransformExceptions } from "../../../../../engine/src/transformExceptions.js";
 import ThesisRibbon from "./ThesisRibbon.jsx";
 import ThesisNavigation from "./ThesisNavigation.jsx";
 import ThesisStatusBar from "./ThesisStatusBar.jsx";
 import "./ThesisEditor.css";
+import {PdfImportSetup, PdfImportReview, PdfImportReport} from './PdfImportReview.jsx';
 
-const hiddenFields = new Set(["THESIS_TITLE", "UNIVERSITY_NAME", "INSTITUTE_NAME", "DEGREE_TYPE"]);
 // Tailwind's reset removes list markers; the stored ul/ol structure is unchanged.
 const EDITOR_CSS = ".thesis-paper.thesis-editor-surface{background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.13);overflow:visible}.thesis-editor-surface .rich-text-body{caret-color:#111}.thesis-body .rich-text-body ul{list-style:disc;padding-left:24pt;margin:0 0 6pt}.thesis-body .rich-text-body ol{list-style:decimal;padding-left:24pt;margin:0 0 6pt}.thesis-body .rich-text-body li{white-space:pre-wrap}";
 const ZOOM_LEVELS = [50, 75, 100, 125, 150];
+const EMPTY_THESIS = Object.freeze({});
 const THESIS_IMAGE_MAX_EDGE = 1200;
 const toolClass = "rounded-md border px-2 py-1.5 text-xs dark:border-neutral-700 disabled:cursor-not-allowed disabled:opacity-40";
 const metadataGroups = [
@@ -60,8 +73,8 @@ function collectThesisHeadings(root) {
   });
 }
 
-export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange, templateRegistry }) {
-  const thesis = researchData?.thesis && typeof researchData.thesis === "object" ? researchData.thesis : {};
+export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange, onDocumentChange, templateRegistry }) {
+  const thesis = researchData?.thesis && typeof researchData.thesis === "object" ? researchData.thesis : EMPTY_THESIS;
   const selectionKey = JSON.stringify([thesis.templateId, thesis.selection?.universityId, thesis.selection?.instituteId, thesis.selection?.degreeType, thesis.selection?.language]);
   const [resolution, setResolution] = useState(null);
   const resolved = resolution?.key === selectionKey ? resolution.result : null;
@@ -97,6 +110,37 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const papersRef = useRef(null);
   const viewportRef = useRef(null);
   const imageInputRef = useRef(null);
+  const wordInputRef = useRef(null);
+  const pdfInputRef = useRef(null);
+  const [pdfFile,setPdfFile] = useState(null);
+  const importAbortRef = useRef(null);
+  const [pendingImport, setPendingImport] = useState(null);
+  useEffect(() => () => importAbortRef.current?.abort(), []);
+  const importWord = async (file) => {
+    if (!file) return;
+    importAbortRef.current?.abort();
+    const controller = new AbortController(); importAbortRef.current = controller;
+    setExporting("import"); setMessage("Word belgesi okunuyor…");
+    try {
+      const next = await importThesisWordFile(file, { title, content, researchData }, { useWorker: true, signal: controller.signal });
+      if (controller.signal.aborted) return;
+      setPendingImport(next); setMessage("");
+    } catch (error) { if (error.name !== "AbortError") setMessage(error.message || "Word belgesi içe aktarılamadı"); }
+    finally { if (!controller.signal.aborted) setExporting(""); }
+  };
+  const importPdf = async (options) => {
+    const file=pdfFile;setPdfFile(null);if(!file)return;
+    importAbortRef.current?.abort();
+    const controller=new AbortController();importAbortRef.current=controller;
+    setExporting('import');setMessage('PDF belgesi okunuyor…');
+    try {
+      const {importThesisPdfFile}=await import('../../../../../engine/src/importPdf.js');
+      const next=await importThesisPdfFile(file,{title,content,researchData},{...options,signal:controller.signal,
+        onProgress:p=>{if(!controller.signal.aborted)setMessage(`${p.stage} · ${p.page}/${p.total}`);}});
+      if(!controller.signal.aborted){setPendingImport(next);setMessage('');}
+    }catch(error){if(error.name!=='AbortError')setMessage(error.message||'PDF içe aktarılamadı');}
+    finally{if(!controller.signal.aborted)setExporting('');}
+  };
   // Caption kind (template captionKinds) the next inserted image gets; "" = plain figure.
   const imageKindRef = useRef("");
   // The figure last clicked in the pages: its caption kind can be changed while the template has kinds.
@@ -128,10 +172,31 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const template = resolved?.template;
   const plainTitle = useMemo(() => htmlToPlainText(title), [title]);
   const bibliographyItems = useMemo(() => normalizeBibliographyItems(bibliographyItemsFromResearch(researchData)), [researchData?.docBibliographyItems, researchData?.docBibliography]);
-  const sourceModel = useMemo(() => template ? compileThesisDocument(template, thesis, plainTitle, content, bibliographyItems) : null, [template, thesis, plainTitle, content, bibliographyItems]);
-  const model = useMemo(() => sourceModel ? resolveGeneratedIndexes(sourceModel, indexResolution.pages || {}, indexResolution.counts) : null, [sourceModel, indexResolution]);
+  const compilationInput = useMemo(() => ({template,thesis,plainTitle,content,bibliographyItems}),[template,thesis,plainTitle,content,bibliographyItems]);
+  const [renderInput,setRenderInput] = useState(compilationInput);
+  const typingChangeRef = useRef(false);
+  const compilePendingRef = useRef(false);
+  compilePendingRef.current = renderInput !== compilationInput;
+  useLayoutEffect(() => {
+    if (renderInput === compilationInput) return;
+    paginationEpochRef.current += 1;
+    paginationReadyEpochRef.current = -1;
+    setPaginationReady(false);
+    // The contentEditable already contains the authored keystroke and saving is
+    // immediate. Reconcile/recompile after a short typing pause, so each key does
+    // not synchronously parse the entire thesis before its first paint.
+    const typing = typingChangeRef.current;
+    typingChangeRef.current = false;
+    if (!typing || renderInput.template !== compilationInput.template) { setRenderInput(compilationInput); return; }
+    const timer = setTimeout(() => setRenderInput(compilationInput),200);
+    return () => clearTimeout(timer);
+  },[compilationInput,renderInput]);
+  const sourceModel = useMemo(() => renderInput.template ? compileThesisDocument(renderInput.template, renderInput.thesis, renderInput.plainTitle, renderInput.content, renderInput.bibliographyItems) : null, [renderInput]);
+  // No model while the template of a switch is still resolving (the stale model would be read against an undefined template).
+  const model = useMemo(() => sourceModel && template ? resolveGeneratedIndexes(sourceModel, indexResolution.pages || {}, indexResolution.counts) : null, [sourceModel, indexResolution, template]);
   const generatedPageTargets = useMemo(() => sourceModel ? generatedIndexPageTargets(sourceModel) : [], [sourceModel]);
   const pageGroups = useMemo(() => model ? groupThesisSections(model.sections) : [], [model]);
+  const endnoteViews = useMemo(() => model ? sectionEndnoteViews(model.sections, endnotesFromHtml) : {}, [model]);
   const [chapterStarts, setChapterStarts] = useState({});
   const pageModel = useMemo(() => buildThesisPageModel(pageGroups, pageCounts, chapterStarts), [pageGroups, pageCounts, chapterStarts]);
   const totalPages = pageModel.reduce((sum, entry) => sum + entry.pages.length, 0);
@@ -152,6 +217,41 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [mirrorCss, setMirrorCss] = useState("");
   const [tabsCss, setTabsCss] = useState("");
   const [baselineCss, setBaselineCss] = useState("");
+  const [specialPositionsCss, setSpecialPositionsCss] = useState("");
+  useLayoutEffect(() => {
+    let alive = true;
+    const measure = () => {
+      if (alive && papersRef.current && model) setSpecialPositionsCss(measurePositionedSpecialPages(papersRef.current, model).css);
+    };
+    measure();
+    document.fonts?.ready?.then(measure);
+    document.fonts?.addEventListener?.("loadingdone", measure);
+    return () => { alive = false; document.fonts?.removeEventListener?.("loadingdone", measure); };
+  }, [model, zoomChoice]);
+  const [fontWarnings,setFontWarnings]=useState([]);
+  useEffect(()=>{
+    let alive=true,timer=0;
+    const run=()=>{timer=0;if(alive&&papersRef.current){const next=missingRenderedFonts(papersRef.current).map(name=>({code:'missing-font',message:`${name} yazı tipi bu cihazda bulunamadı; satır kırılımları doğrulanamaz. Fontu kurup belgeyi yeniden açın.`}));setFontWarnings(previous=>JSON.stringify(previous)===JSON.stringify(next)?previous:next);}};
+    // Advisory walk over the whole document: coalesced so typing does not pay for it on every keystroke.
+    const inspect=()=>{clearTimeout(timer);timer=setTimeout(run,250);};
+    document.fonts?.ready?.then(inspect);document.fonts?.addEventListener?.('loadingdone',inspect);
+    return ()=>{alive=false;clearTimeout(timer);document.fonts?.removeEventListener?.('loadingdone',inspect);};
+  },[model]);
+  // Advisory only: special pages that outgrow their page are reported, never clipped or blocked.
+  const [fitWarnings, setFitWarnings] = useState([]);
+  useEffect(() => {
+    let alive = true, frame = 0;
+    const inspect = () => {
+      if (!alive || !papersRef.current) return;
+      const messages = measureSpecialPageFit(papersRef.current, pageGroups, pageMetrics).flatMap((item) => item.messages.map((message) => ({ code: "special-page-fit", message })));
+      setFitWarnings((previous) => (JSON.stringify(previous) === JSON.stringify(messages) ? previous : messages));
+    };
+    const schedule = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(inspect); };
+    schedule();
+    document.fonts?.ready?.then(schedule);
+    document.fonts?.addEventListener?.("loadingdone", schedule);
+    return () => { alive = false; cancelAnimationFrame(frame); document.fonts?.removeEventListener?.("loadingdone", schedule); };
+  }, [model, pageGroups, specialPositionsCss]);
   useLayoutEffect(() => {
     if (!baselineProbes.length) { setBaselineCss(""); return undefined; }
     let alive = true;
@@ -165,7 +265,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     const root = papersRef.current;
     if (!root || !model) return undefined;
     let alive = true;
-    const measure = () => { if (alive) { setTabsCss(measureParagraphTabsCss(root, model)); setMirrorCss(measureMirroredIndentsCss(root, model)); } };
+    const measure = () => { if (alive) { setTabsCss(measureParagraphTabsCss(root, model)); layoutWordJustification(root,model); setMirrorCss(measureMirroredIndentsCss(root, model)); } };
     measure();
     document.fonts?.ready?.then(measure);
     document.fonts?.addEventListener?.("loadingdone", measure);
@@ -173,7 +273,6 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   }, [model]);
   const warning = resolved?.fallback ? resolved.reason : thesis.fallback ? thesis.fallbackReason : "";
   const missingFields = model ? [...new Set(model.sections.flatMap((section) => section.missingPlaceholders))] : [];
-  const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings] : [];
   const documentWidth = model ? Math.max(...model.sections.map((section) => pageMetrics(section.rules.page).widthPx)) : 794;
   const zoom = zoomChoice === "fit" ? Math.min(1.25, Math.max(0.1, (viewportWidth - 48) / documentWidth)) : Number(zoomChoice) / 100;
   const canStepZoom = (direction) => {
@@ -205,10 +304,9 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const optionalSections = template ? orderedThesisSections(template).filter((section) => section.status === "optional" && thesisSectionConditionMet(section, conditionState)) : [];
   const numberingChoices = template?.captionNumberingChoices || [];
   const captionKinds = Object.entries(template?.captionKinds || {});
-  // Standard metadata fields plus any extra placeholders the template declares; one input per alias pair.
-  // Derived values (e.g. the total page count) come from the layout and are never typed in.
-  const metadataFields = template ? Object.entries({ ...THESIS_METADATA_FIELDS, ...template.placeholders }).filter(([key, definition], index, all) => !hiddenFields.has(key) && !definition.derived
-    && !all.slice(0, index).some(([previous]) => THESIS_METADATA_ALIASES[previous] === key)) : [];
+  const metadataPanel = template ? thesisMetadataPanel(template, model?.sections || []) : { fields: [], hasPrimaryTitle: false };
+  const metadataFields = metadataPanel.fields;
+  const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings, ...fontWarnings, ...fitWarnings].filter(issue => !template.placeholders?.[issue.field] || metadataFields.some(([key]) => key === issue.field) || (issue.field === "THESIS_TITLE" && metadataPanel.hasPrimaryTitle)) : [];
   const metadataByKey = new Map(metadataFields);
   const groupedKeys = new Set(metadataGroups.flatMap(([, keys]) => keys));
   const extraMetadataFields = metadataFields.filter(([key]) => !groupedKeys.has(key));
@@ -216,9 +314,9 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     const definition = metadataByKey.get(key);
     if (!definition) return null;
     const label = key === "CO_ADVISOR_NAME" || key === "CO_ADVISOR_TITLE" ? `${definition.label} (isteğe bağlı)` : key === "USED_PROGRAMS" ? "Kullanılan program (varsa)" : definition.label;
-    return <label key={key} className="block text-xs font-medium">{label}{definition.required ? " *" : ""}<input aria-label={`${definition.label}${definition.required ? " *" : ""}`} type={definition.type === "number" ? "number" : definition.type === "date" ? "date" : "text"} className="mt-1 block w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" value={thesisMetadataValue(thesis, key) ?? definition.defaultValue ?? ""} onChange={(event) => setValue(key, event.target.value)} />{metadataHints[key] ? <span aria-hidden="true" className="mt-1 block text-[11px] font-normal leading-snug text-neutral-500">{metadataHints[key]}</span> : null}</label>;
+    return <label key={key} className="block text-xs font-medium">{label}{definition.required ? " *" : ""}<input data-thesis-metadata-field={key} aria-label={`${definition.label}${definition.required ? " *" : ""}`} type={definition.type === "number" ? "number" : definition.type === "date" ? "date" : "text"} className="mt-1 block w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" value={thesisMetadataValue(thesis, key) ?? definition.defaultValue ?? ""} onChange={(event) => setValue(key, event.target.value)} />{metadataHints[key] ? <span aria-hidden="true" className="mt-1 block text-[11px] font-normal leading-snug text-neutral-500">{metadataHints[key]}</span> : null}</label>;
   };
-  const metadataSection = (heading, keys, extraClass = "") => <section key={heading} className={`border-t border-neutral-200 pt-4 dark:border-neutral-800 ${extraClass}`}><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">{heading}</h4><div className="grid gap-3">{keys.map(metadataInput)}</div></section>;
+  const metadataSection = (heading, keys, extraClass = "") => keys.some(key => metadataByKey.has(key)) ? <section key={heading} className={`border-t border-neutral-200 pt-4 dark:border-neutral-800 ${extraClass}`}><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">{heading}</h4><div className="grid gap-3">{keys.map(metadataInput)}</div></section> : null;
 
   useLayoutEffect(() => { if (model && papersRef.current) decorateThesisSources(papersRef.current, model); }, [model, zoom]);
   // No heading markup is rewritten while an IME composition is running (transformExceptions.js); it catches up afterwards.
@@ -226,7 +324,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     const root = papersRef.current;
     if (!root) return undefined;
     const start = () => { root.__thesisComposing = true; };
-    const end = () => { root.__thesisComposing = false; if (model) applyTransformExceptions(root, model); };
+    const end = () => { root.__thesisComposing = false; if (model) { applyTransformExceptions(root, model); layoutWordJustification(root,model); } };
     root.addEventListener("compositionstart", start, true);
     root.addEventListener("compositionend", end, true);
     return () => { root.removeEventListener("compositionstart", start, true); root.removeEventListener("compositionend", end, true); };
@@ -247,21 +345,34 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     let frame = 0, resizeFrame = 0, iterations = 0, previous = "", disposed = false, settled = false, failed = false, confirming = false, confirmFailures = 0;
     // Consecutive rejected confirmations (the committed state or a fresh measurement differs from the settled one) without any change of the settled signature: bounded, so a measurement that never repeats ends with the visible warning instead of an endless frame loop.
     const CONFIRM_FAILURE_CAP = 300;
+    const MATH_WAIT_MS = 30000;
+    let mathWaitSince = null;
     // Last serialized values applied to state; avoids re-stringifying the current state each pass.
     let appliedPages = null, appliedNotes = null;
     const measure = () => {
       const groups = groupThesisSections(latestSourceModel.current.sections);
+      layoutWordJustification(root,latestSourceModel.current);
+      const floatingTables = layoutImportedFloatingTables(root, groups, latestSourceModel.current.nativeDocument);
+      const shapeLines = layoutImportedShapeLines(root, groups, latestSourceModel.current.nativeDocument);
+      const keepLines = layoutShortParagraphKeeps(root);
       const continuations = layoutTableContinuations(root, groups, latestSourceModel.current);
+      const firstReserves = layoutFirstPageReserves(root, groups, footnoteState.current);
+      layoutImportedDrawingAnchors(root, groups, latestSourceModel.current.nativeDocument);
       const { views: notes, incomplete } = THESIS_PAGE_FOOTNOTES ? layoutThesisFootnotes(root, groups, footnoteState.current, performance.now() + 24) : { views: {} };
       if (incomplete) return { incomplete: true, groups, continuations, notes };
       setTabsCss(measureParagraphTabsCss(root, latestSourceModel.current));
       setMirrorCss(measureMirroredIndentsCss(root, latestSourceModel.current));
       const indexes = renderedIndexPages(root, groups);
       return { incomplete: false, groups, continuations, notes, indexes,
-        signature: `${JSON.stringify(indexes)}|${JSON.stringify(notes)}|${JSON.stringify(continuations)}` };
+        signature: `${JSON.stringify(indexes)}|${JSON.stringify(notes)}|${JSON.stringify(continuations)}|${keepLines}|${firstReserves}|${shapeLines}|${floatingTables}` };
     };
     const probe = () => {
       if (disposed) return;
+      if (compilePendingRef.current) { frame = requestAnimationFrame(probe); return; }
+      // Font loading can begin again after fonts.ready resolved (a newly inserted
+      // run introduces another face). Do not spend the fixed-point budget on
+      // provisional glyph metrics or confirm an earlier ready generation.
+      if (document.fonts?.status === "loading") { frame = requestAnimationFrame(probe); return; }
       // A frame budget keeps typing responsive in long, note-heavy groups: an incomplete
       // pass (later pages still to re-lay) continues next frame and is not an iteration.
       // Continuation caption rows of split tables change the flow, so they are settled before notes and indexes.
@@ -290,6 +401,25 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           frame = requestAnimationFrame(probe);
           return;
         }
+        // Fonts still loading will fire loadingdone and restart the pagination (their metrics change the layout): confirming now would publish a "ready" epoch that is invalidated moments later, mid-export. Wait for them first.
+        if (document.fonts?.status === "loading") { frame = requestAnimationFrame(probe); return; }
+        if (root.querySelector(".math-formula__render--error")) {
+          failed = true;
+          paginationReadyEpochRef.current = -1;
+          setPaginationReady(false);
+          setIndexWarning("Denklem görünümü yüklenemedi; sayfalama doğrulanamadı. Belgeyi yeniden açıp tekrar deneyin.");
+          return;
+        }
+        // Formulas whose KaTeX module/stylesheet/fonts are still being fetched (slow or CPU-limited machines) change their size and load their fonts only once rendered; publishing "ready" before that is invalidated moments later. Bounded, so a formula that never renders cannot hold pagination back.
+        if (root.querySelector(".math-formula__render--pending")) {
+          mathWaitSince ??= performance.now();
+          if (performance.now() - mathWaitSince < MATH_WAIT_MS) { frame = requestAnimationFrame(probe); return; }
+          failed = true;
+          paginationReadyEpochRef.current = -1;
+          setPaginationReady(false);
+          setIndexWarning("Denklem görünümü yüklenemedi; sayfalama doğrulanamadı. Bağlantıyı kontrol edip belgeyi yeniden açın.");
+          return;
+        } else mathWaitSince = null;
         confirming = true;
         const generation = paginationEpochRef.current;
         const targets = generatedIndexPageTargets(latestSourceModel.current);
@@ -304,7 +434,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           expectedMeasurement: signature,
           readCommittedState: () => ({ ...committedPaginationStateRef.current, renderedPages: readRenderedPages() }),
           readMeasurement: () => measure().signature ?? null,
-          isCurrent: (candidate) => !disposed && paginationEpochRef.current === candidate,
+          isCurrent: (candidate) => !disposed && !compilePendingRef.current && paginationEpochRef.current === candidate && document.fonts?.status !== "loading" && !root.querySelector(".math-formula__render--pending,.math-formula__render--error"),
           generation,
         }).then((ready) => {
           confirming = false;
@@ -384,12 +514,13 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     root.addEventListener("load", onLoad, true);
     document.fonts.ready.then(() => { if (!disposed) restart(true, true); });
     document.fonts.addEventListener?.("loadingdone", onLoad);
-    return () => { disposed = true; paginationRef.current = null; cancelAnimationFrame(frame); cancelAnimationFrame(resizeFrame); observer.disconnect(); root.removeEventListener("load", onLoad, true); document.fonts.removeEventListener?.("loadingdone", onLoad); };
+    document.fonts.addEventListener?.("loading", onLoad);
+    return () => { disposed = true; paginationRef.current = null; cancelAnimationFrame(frame); cancelAnimationFrame(resizeFrame); observer.disconnect(); root.removeEventListener("load", onLoad, true); document.fonts.removeEventListener?.("loadingdone", onLoad); document.fonts.removeEventListener?.("loading", onLoad); };
   }, [paginationActive]);
   useLayoutEffect(() => {
     if (!paginationActive) return;
     paginationRef.current?.();
-  }, [sourceModel, zoom, paginationActive, tabsCss]);
+  }, [sourceModel, zoom, paginationActive, tabsCss, specialPositionsCss]);
 
   const saveThesis = (patch) => onResearchDataChange?.({ ...researchData, thesis: { ...thesis, ...patch } });
   const setValue = (key, value) => onResearchDataChange?.({ ...researchData, thesis: updateThesisMetadata(thesis, key, value) });
@@ -404,11 +535,15 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     if (!entry) return;
     saveThesis({ templateId: entry.id, templateVersion: entry.templateVersion, selection: { universityId: entry.universityId, instituteId: entry.instituteId, degreeType: entry.degreeType, language: entry.language } });
   };
+  const changeFormatMode = (mode) => onResearchDataChange?.({ ...researchData, thesis: setDocumentFormatMode(thesis, mode) }, "action");
   const onTextOverride = (sectionId, kind, text) => onResearchDataChange?.({ ...researchData, thesis: setThesisTextOverride(thesis, sectionId, kind, text) });
   const onTextChange = (section, html, reason) => {
     const current = { content, researchData };
     const next = updateThesisNoteSection(current, section, html);
     if (next === current) return;
+    typingChangeRef.current = reason === "input";
+    paginationReadyEpochRef.current = -1;
+    setPaginationReady(false);
     if (next.content !== content) onContentChange(next.content, reason);
     else onResearchDataChange?.(next.researchData, reason);
   };
@@ -587,8 +722,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     setExporting(kind); setMessage("");
     try {
       const [{ buildThesisDocx, buildThesisPdf }, { buildThesisLayoutPdf }, { academicFileStem, downloadBlob }, { collectThesisBlockPageBreaks }] = await Promise.all([
-        import("../../thesis/export.js"), import("../../thesis/layoutPdf.js"), import("../../lib/academicExport.js"),
-        import("../../thesis/exportPagination.js"),
+        import("../../../../../engine/src/export.js"), import("../../../../../engine/src/layoutPdf.js"), import("../../lib/academicExport.js"),
+        import("../../../../../engine/src/exportPagination.js"),
       ]);
       assertPaginationReady();
       const equationRoot = papersRef.current;
@@ -599,10 +734,12 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
         ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, documentLayout: model.documentLayout, systemFonts: model.systemFonts || [], onLayoutReport: (report) => { papersRef.current.__thesisLayoutReport = report; } }) : await buildThesisPdf(model))
-        : await buildThesisDocx(model, { totalPages, blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), tableContinuations: tableContinuationRows(papersRef.current) });
+        : await buildThesisDocx(model, { totalPages, specialPagePositions: measurePositionedSpecialPages(papersRef.current, model).positions, blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), ...(() => { const elastic = measureElasticSpecialPages(papersRef.current); return { elasticSpacers: elastic.spacers, elasticContentMm: elastic.contentMm }; })(), tableContinuations: tableContinuationRows(papersRef.current) });
       assertPaginationReady();
       const path = await downloadBlob(blob, `${academicFileStem(plainTitle || "tez")}.${kind}`);
-      setMessage(path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`);
+      // Fields that could not be kept live (missing cross-reference targets, broken Word fields) are named, never silent.
+      const fieldNotes = blob.exportIssues ? [...new Set([...blob.exportIssues.fieldIssues.filter((record) => record.code !== "field-unknown-preserved").map((record) => record.message), ...blob.exportIssues.fieldAudit.dangling.map((entry) => `Kırık alan hedefi: ${entry.target}`)])] : [];
+      setMessage((path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`) + (fieldNotes.length ? ` Uyarı: ${fieldNotes.slice(0, 3).join("; ")}${fieldNotes.length > 3 ? ` (+${fieldNotes.length - 3})` : ""}` : ""));
     } catch (error) { setMessage(error?.message || "Dışa aktarma başarısız."); }
     finally { setExporting(""); }
   };
@@ -669,16 +806,25 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     onTextOverride: (...args) => live.current.onTextOverride(...args),
     onStaticFocus: (...args) => live.current.onStaticFocus(...args),
   }), []);
-  if (!model) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
+  // After a template switch the previous model lingers for a render while the new template resolves asynchronously: wait for both.
+  if (!model || !template) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
 
   return <div className="flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
-    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS + baselineCss + tabsCss + mirrorCss}</style>
+    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS}</style>
+    <style nonce={trustedStyleNonce()} data-thesis-measured-styles>{baselineCss + tabsCss + mirrorCss + specialPositionsCss}</style>
     <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
+    <input ref={wordInputRef} type="file" accept=".docx,.doc" aria-label="Word dosyası" className="hidden" onChange={(event) => { void importWord(event.target.files?.[0]); event.target.value = ""; }} />
+    <input ref={pdfInputRef} type="file" accept=".pdf,application/pdf" aria-label="PDF dosyası" className="hidden" onChange={e=>{setPdfFile(e.target.files?.[0]||null);e.target.value='';}} />
+    {pdfFile?<PdfImportSetup file={pdfFile} onCancel={()=>setPdfFile(null)} onStart={options=>void importPdf(options)}/>:null}
+    {exporting === "import" ? <button type="button" className="border p-2 text-xs" onClick={() => { importAbortRef.current?.abort(); setExporting(""); setMessage("İçe aktarma iptal edildi."); }}>İçe aktarmayı iptal et</button> : null}
+    {pendingImport?.researchData.thesis.document.source.format==='pdf'?<PdfImportReview note={pendingImport} onChange={setPendingImport} onCancel={()=>setPendingImport(null)} onApply={next=>{onDocumentChange(next);setPendingImport(null);setMessage('PDF içeriği aktarıldı. Kalan bildirimler aktarım raporunda.');}}/>:pendingImport ? <WordImportReview note={pendingImport} onChange={setPendingImport} onCancel={() => setPendingImport(null)} onApply={() => { onDocumentChange(pendingImport); setPendingImport(null); setMessage("Word belgesi içe aktarıldı. Aktarım raporunu inceleyebilirsiniz."); }} /> : null}
+    <WordImportReport document={thesis.document} />
+    <PdfImportReport document={thesis.document}/>
     <ThesisRibbon title={plainTitle} activeSection={activeSection} template={template}
       actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, canFormatText: !interaction.selectedElements.length || Boolean(activeLayoutText?.editableContent && activeLayoutText?.editableLayout && !activeLayoutText?.locked), isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: Boolean(activeSection && !activeStatic && !interaction.selectedElements.length) }}
       detailsOpen={detailsOpen} setDetailsOpen={setDetailsOpen} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={setPageSettingsOpen}
       canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
-      exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
+      onImport={onDocumentChange ? () => wordInputRef.current?.click() : undefined} onImportPdf={onDocumentChange?()=>pdfInputRef.current?.click():undefined} exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
       zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} zoom={zoom} stepZoom={stepZoom} canStepZoom={canStepZoom} zoomLevels={ZOOM_LEVELS} totalPages={totalPages}
       warningCount={(warning ? 1 : 0) + missingFields.length + (indexWarning ? 1 : 0) + validationIssues.length} warningsOpen={warningsOpen} setWarningsOpen={setWarningsOpen}
       validationIssues={validationIssues} missingFields={missingFields.map((key) => template.placeholders[key]?.label || key)} warning={warning} indexWarning={indexWarning} message={message}
@@ -700,7 +846,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
         <div ref={papersRef} data-thesis-template-id={model.templateId} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
         {pageGroups.map((group, index) => {
-            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={pageHandlers.onSectionFocus} onFormatChange={pageHandlers.onFormatChange} onTextChange={pageHandlers.onTextChange} onTextOverride={pageHandlers.onTextOverride} onStaticFocus={pageHandlers.onStaticFocus} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} />;
+            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={pageHandlers.onSectionFocus} onFormatChange={pageHandlers.onFormatChange} onTextChange={pageHandlers.onTextChange} onTextOverride={pageHandlers.onTextOverride} onStaticFocus={pageHandlers.onStaticFocus} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} endnotes={Object.fromEntries(group.sections.map((section) => [section.id, endnoteViews[section.id] || []]))} />;
             const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);
             return rulersVisible ? <div key={`${model.templateId}:${group.id}`} className="mx-auto"><LayoutRulers page={group.rules.page} zoom={zoom} unit={rulerUnit} guides={guides} onGuidesChange={(next) => interaction.commitThesis({ ...thesis, layout: { ...layoutState, guides: [...layoutState.guides.filter((guide) => guide.sectionId && guide.sectionId !== group.id), ...next.map((guide) => ({ ...guide, sectionId: group.id }))] } }, "action")}>{sheet}</LayoutRulers></div> : sheet;
           })}
@@ -712,18 +858,20 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       {detailsOpen ? <aside className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
         <div className="mb-4 flex items-center justify-between"><h3 className="text-sm font-semibold">Tez bilgileri</h3><button type="button" onClick={() => setDetailsOpen(false)} aria-label="Tez bilgilerini kapat" className="rounded px-2 py-1 text-lg">×</button></div>
         <div className="space-y-5">
+          <section><label className="block text-xs font-medium">Belge biçimi<select aria-label="Belge biçimi" value={thesis.document?.formatMode || "template"} onChange={(event) => changeFormatMode(event.target.value)} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900"><option value="template">Üniversite şablonuna uyarla</option><option value="source">Kaynak biçimini koru</option></select></label><p className="mt-2 text-[11px] leading-snug text-neutral-500">Kaynak biçimi, belgedeki kayıtlı biçim ve bölüm ayarlarını kullanır. Seçiminiz kaynak verisini silmez.</p></section>
           <section><label className="block text-xs font-medium">Şablon<select aria-label="Tez şablonu" value={template.id} onChange={(event) => changeTemplate(event.target.value)} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900">{(templateRegistry || THESIS_TEMPLATE_REGISTRY).map((entry) => <option key={entry.id} value={entry.id}>{entry.displayName || `${entry.universityName} · ${entry.language.toUpperCase()}`}</option>)}</select></label>{template.status === "official" ? <p className="mt-2 text-[11px] leading-snug text-neutral-500">Resmî kaynak: {template.source?.documentName || template.source?.url}</p> : <p className="mt-2 text-[11px] text-amber-700">Genel taslak: resmî üniversite kuralı içermez.</p>}</section>
-          <section className="border-t border-neutral-200 pt-4 dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">TEZ BİLGİLERİ</h4><div className="grid gap-3"><label className="block text-xs font-medium">Tez başlığı *<input aria-label="Tez başlığı" className="mt-1 block w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" value={plainTitle} onChange={(event) => onTitleChange(event.target.value)} placeholder="Tez başlığını yazın" /></label>{metadataInput("THESIS_TITLE_EN")}</div></section>
+          {template.source?.usage?.length ? <details className="text-xs leading-relaxed" data-thesis-source-usage><summary className="cursor-pointer font-medium">Şablon kullanım notları</summary><ul className="mt-2 list-disc space-y-2 pl-4">{template.source.usage.map((note, index) => <li key={index}>{note}</li>)}</ul></details> : null}
+          {metadataPanel.hasPrimaryTitle || metadataByKey.has("THESIS_TITLE_EN") ? <section className="border-t border-neutral-200 pt-4 dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">TEZ BİLGİLERİ</h4><div className="grid gap-3">{metadataPanel.hasPrimaryTitle ? <label className="block text-xs font-medium">Tez başlığı *<input data-thesis-metadata-field="THESIS_TITLE" aria-label="Tez başlığı" className="mt-1 block w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" value={plainTitle || (template.language === "en" ? thesisMetadataValue(thesis, "THESIS_TITLE_EN") || "" : "")} onChange={(event) => onTitleChange(event.target.value)} placeholder="Tez başlığını yazın" /></label> : null}{metadataInput("THESIS_TITLE_EN")}</div></section> : null}
           {metadataGroups.slice(1, -1).map(([heading, keys]) => metadataSection(heading, keys))}
-          <section className="border-t border-neutral-200 pt-4 dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">BELGE AYARLARI</h4>{numberingChoices.length ? <label className="block text-xs font-medium">Şekil/tablo numaralandırma<select aria-label="Şekil ve tablo numaralandırma" value={thesis.captionNumbering || numberingChoices[0].id} onChange={(event) => saveThesis({ captionNumbering: event.target.value })} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900">{numberingChoices.map((choice) => <option key={choice.id} value={choice.id}>{choice.label}</option>)}</select></label> : null}</section>
+          {numberingChoices.length ? <section className="border-t border-neutral-200 pt-4 dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">BELGE AYARLARI</h4>{numberingChoices.length ? <label className="block text-xs font-medium">Şekil/tablo numaralandırma<select aria-label="Şekil ve tablo numaralandırma" value={thesis.captionNumbering || numberingChoices[0].id} onChange={(event) => saveThesis({ captionNumbering: event.target.value })} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900">{numberingChoices.map((choice) => <option key={choice.id} value={choice.id}>{choice.label}</option>)}</select></label> : null}</section> : null}
           {metadataSection("TAAHHÜTNAME", ["USED_PROGRAMS"])}
           {extraMetadataFields.length ? metadataSection("DİĞER BİLGİLER", extraMetadataFields.map(([key]) => key)) : null}
-          <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">İSTEĞE BAĞLI BÖLÜMLER</h4>{optionalSections.map((section) => <label key={section.id} className="block py-1"><input type="checkbox" checked={thesisEnabledSections(thesis).includes(section.id)} onChange={() => toggleOptional(section.id)} /> {section.title}</label>)}</section>
-          <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">KAYNAKÇA</h4><p className="mb-2 font-medium">Kaynakça maddeleri</p><div className="grid gap-2">{bibliographyItems.map((item, index) => <input key={index} className="w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" aria-label={`Kaynakça maddesi ${index + 1}`} value={item} onChange={(event) => setBibliography(bibliographyItems.map((entry, i) => i === index ? event.target.value : entry))} />)}<button type="button" className="w-fit rounded border px-2 py-1" onClick={() => setBibliography([...bibliographyItems, ""])}>+ Kaynak ekle</button></div></section>
+          {optionalSections.length ? <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">İSTEĞE BAĞLI BÖLÜMLER</h4>{optionalSections.map((section) => <label key={section.id} className="block py-1"><input type="checkbox" checked={thesisEnabledSections(thesis).includes(section.id)} onChange={() => toggleOptional(section.id)} /> {section.title}</label>)}</section> : null}
+          {model?.sections.some(section => section.type === "bibliography") ? <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">KAYNAKÇA</h4><p className="mb-2 font-medium">Kaynakça maddeleri</p><div className="grid gap-2">{bibliographyItems.map((item, index) => <input key={index} className="w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" aria-label={`Kaynakça maddesi ${index + 1}`} value={item} onChange={(event) => setBibliography(bibliographyItems.map((entry, i) => i === index ? event.target.value : entry))} />)}<button type="button" className="w-fit rounded border px-2 py-1" onClick={() => setBibliography([...bibliographyItems, ""])}>+ Kaynak ekle</button></div></section> : null}
         </div>
       </aside> : null}
     </div>
-    <ThesisStatusBar papersRef={papersRef} title={plainTitle} totalPages={totalPages} zoom={zoom} zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} stepZoom={stepZoom} keepSelection={keepSelection} saveSelection={rememberSelection} />
+    <ThesisStatusBar pageSize={template.page.size || ""} papersRef={papersRef} title={plainTitle} totalPages={totalPages} zoom={zoom} zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} stepZoom={stepZoom} keepSelection={keepSelection} saveSelection={rememberSelection} />
     <LayoutSelectionOverlay {...interaction.overlayProps} onPatch={interaction.patchElements} onOpenInspector={() => { setDetailsOpen(false); setPageSettingsOpen(false); }} />
   </div>;
 }

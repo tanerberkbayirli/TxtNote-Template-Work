@@ -11,6 +11,8 @@ export default function FileTab({
   exporting,
   onExport,
   onPrint,
+  onImport,
+  onImportPdf,
   paginationReady,
   keep,
 }) {
@@ -33,6 +35,7 @@ export default function FileTab({
           </Tool>
         </div>
       </Group>
+      {onImport ? <Group label="İçe aktar" className="thesis-home-group"><Tool label="Word içe aktar" onClick={onImport} disabled={Boolean(exporting)}>Word içe aktar</Tool>{onImportPdf?<Tool label="PDF içe aktar" onClick={onImportPdf} disabled={Boolean(exporting)}>PDF içe aktar</Tool>:null}<small className="thesis-ribbon-hint">Word · PDF · Taranmış sayfalar</small></Group> : null}
       <Group label="Dışa aktar" className="thesis-home-group">
         <div className="thesis-export-tiles">
           <button type="button" className="thesis-export-tile" aria-label="PDF" disabled={Boolean(exporting) || !paginationReady} onMouseDown={keep} onClick={() => onExport("pdf")}>

@@ -1,14 +1,14 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { createThesisDocument, setThesisTextFormat } from "../thesis/document.js";
-import generic from "../thesis/templates/generic.js";
+import { createThesisDocument, setThesisTextFormat } from "../../../../engine/src/document.js";
+import generic from "../../../../engine/src/templates/generic.js";
 import { FIXTURE_REGISTRY } from "./thesisFixtures.js";
-import { THESIS_TEMPLATE_REGISTRY, findThesisTemplateDescriptor, resolveThesisTemplate } from "../thesis/registry.js";
-import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, formatNumber, groupThesisSections, resolvePlaceholders, resolveSectionRules } from "../thesis/engine.js";
-import { buildThesisPdf, buildThesisDocx } from "../thesis/export.js";
-import { numberThesisPages, pageMetrics, PX_PER_MM } from "../thesis/pageLayout.js";
+import { THESIS_TEMPLATE_REGISTRY, findThesisTemplateDescriptor, resolveThesisTemplate } from "../../../../engine/src/registry.js";
+import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, formatNumber, groupThesisSections, resolvePlaceholders, resolveSectionRules } from "../../../../engine/src/engine.js";
+import { buildThesisPdf, buildThesisDocx } from "../../../../engine/src/export.js";
+import { numberThesisPages, pageMetrics, PX_PER_MM } from "../../../../engine/src/pageLayout.js";
 import { pageSlices } from "./academicLayout.js";
-import { normalizeLengthMm, validateThesisRegistry, validateThesisTemplate } from "../thesis/validation.js";
+import { normalizeLengthMm, validateThesisRegistry, validateThesisTemplate } from "../../../../engine/src/validation.js";
 import { migrateAcademicNote } from "./researchMigrate.js";
 import { strFromU8, unzipSync } from "fflate";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
@@ -21,7 +21,7 @@ describe("thesis template validation", () => {
     const oddPage = structuredClone(generic);
     oddPage.sections.find((section) => section.id === "main").pageBreakBefore = "oddPage";
     assert.deepEqual(validateThesisTemplate(oddPage), [], "oddPage is an allowed section start value");
-    oddPage.sections.find((section) => section.id === "main").pageBreakBefore = "evenPage";
+    oddPage.sections.find((section) => section.id === "main").pageBreakBefore = "invalidPage";
     assert.ok(validateThesisTemplate(oddPage).some((error) => error.includes("pageBreakBefore geçersiz")));
     const bad = structuredClone(generic);
     bad.page.margins.leftMm = 200;
@@ -165,8 +165,11 @@ describe("thesis engine", () => {
       const model = compileThesisDocument(template, {}, "T", "<h1>Bir</h1><h2>İki</h2><h3>Üç</h3><h3>Dört</h3>");
       const labels = model.headings.map((heading) => heading.label);
       assert.equal(new Set(labels).size, labels.length, `${entry.id}: ${labels}`);
-      // A template may end its labels with a period (MCBÜ: "1.1.1."), number an introduction section first (AKÜ: "1. GİRİŞ", so this H1 is chapter 2) or restart the sub-headings in every chapter without the chapter number (AKÜ SBE: "1.1." for H3).
-      assert.match(model.headings.find((heading) => heading.level === 3).label, /^(?:[12]\.)?1\.1\.?$/, entry.id);
+      // Preliminary numbered sections can precede the editable body (e.g. IYTE article theses).
+      // Derive the chapter from the actual heading counter; still require both subordinate counters.
+      const h3 = model.headings.find((heading) => heading.level === 3);
+      const chapter = h3.counters[0];
+      assert.match(h3.label, new RegExp(`^(?:${chapter}\\.)?1\\.1\\.?$`), entry.id);
     }
     const early = compileThesisDocument(generic, {}, "T", "<h2>Önce</h2><h1>Bir</h1>");
     assert.deepEqual(early.headings.map((heading) => heading.label), ["0.1", "1"]);
@@ -306,14 +309,18 @@ describe("thesis export", () => {
     const settingsXml = strFromU8(entries["word/settings.xml"]);
     const stylesXml = strFromU8(entries["word/styles.xml"]);
     assert.doesNotMatch(documentXml, /w:dirty="true"/);
-    assert.match(documentXml, /TOC \\h \\f &quot;A&quot; \\t &quot;ThesisHeading1Index,1,ThesisHeading2Index,2,Heading 1,1,Heading 2,2/);
+    assert.match(documentXml, /TOC \\h \\f &quot;A&quot; \\t &quot;ThesisHeading1Index;1;ThesisHeading2Index;2;Heading 1;1;Heading 2;2/);
     assert.match(documentXml, /Chapter title/);
     assert.match(documentXml, /Subchapter title/);
     assert.match(documentXml, /Unnumbered body heading/);
     assert.match(documentXml, /Hidden section heading/);
     assert.match(documentXml, /w:pStyle w:val="ThesisHeading1Excluded"/);
     assert.doesNotMatch(documentXml, /ThesisHeading1Excluded,1/);
-    assert.match(documentXml, /w:bookmarkStart w:name="_ref_main_source_0"/);
+    // Plain HTML now receives durable content-node identities; a positional
+    // source-0 name would make references switch targets after a preceding edit.
+    const chapterTarget = model.indexSources.find((entry) => entry.title === "Chapter title");
+    assert.equal(chapterTarget.anchor, "tgt-tn-1");
+    assert.match(documentXml, /w:bookmarkStart w:name="_ref_tgt_tn_1"/);
     assert.match(settingsXml, /<w:updateFields w:val="0"\s*\/>/);
     assert.match(stylesXml, /w:styleId="ThesisHeading1Excluded"[\s\S]*w:outlineLvl w:val="0"/);
     assert.match(stylesXml, /w:styleId="TOC1"/);

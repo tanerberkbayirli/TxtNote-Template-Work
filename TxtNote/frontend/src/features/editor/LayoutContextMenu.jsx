@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from "react";
-import { toggleLayoutDecoration } from "../../thesis/layoutInteraction.js";
+import { toggleLayoutDecoration } from "../../../../../engine/src/layoutInteraction.js";
 
 const menuStyle = { width: 258, maxHeight: "min(76vh, 620px)", overflow: "auto", padding: 7, border: "1px solid #d4d4d8", borderRadius: 9, background: "#fff", color: "#18181b", boxShadow: "0 14px 42px rgba(24,24,27,.22)", pointerEvents: "auto", font: "13px/1.35 system-ui,sans-serif" };
 const fieldStyle = { display: "grid", gap: 3, fontSize: 11, color: "#52525b" };

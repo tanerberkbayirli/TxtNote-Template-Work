@@ -1,8 +1,8 @@
 // Real editor -> DOCX -> Word acceptance. These are ENGINE test values,
 // not university requirements. Regenerate from the repository root.
 import { writeFile } from 'node:fs/promises';
-import generic from '../../TxtNote/frontend/src/thesis/templates/generic.js';
-import { validateThesisTemplate } from '../../TxtNote/frontend/src/thesis/validation.js';
+import generic from '../../engine/src/templates/generic.js';
+import { validateThesisTemplate } from '../../engine/src/validation.js';
 
 const id = 'engine-word-structure';
 const sections = [], sectionContent = {}, checks = [];

@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { it } from "node:test";
 import { unzipSync, strFromU8 } from "fflate";
-import { collectThesisBlockPageBreaks } from "../thesis/exportPagination.js";
-import { pageMetrics } from "../thesis/pageLayout.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { compileThesisDocument } from "../thesis/engine.js";
-import generic from "../thesis/templates/generic.js";
-import { asBlocks } from "../thesis/docx/xml.js";
+import { collectThesisBlockPageBreaks } from "../../../../engine/src/exportPagination.js";
+import { pageMetrics } from "../../../../engine/src/pageLayout.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { asBlocks } from "../../../../engine/src/docx/xml.js";
 
 it("preserves measured whole-block page transitions independently of editor zoom", () => {
   const group = { id: "main", rules: { page: generic.page } };

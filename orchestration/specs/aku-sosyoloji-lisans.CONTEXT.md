@@ -1,7 +1,7 @@
 # aku-sosyoloji-lisans — context pack
 ## Identity
 - Registry id(s): `aku-sosyoloji-lisans-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-sosyoloji.js` (exports: akuSosyolojiLisans)
+- Template module: `engine/src/templates/aku-sosyoloji.js` (exports: akuSosyolojiLisans)
 - Spec: `orchestration/specs/aku-sosyoloji-lisans.json`; checker files now present: `orchestration/specs/aku-sosyoloji-lisans.checks.json` and `.fixture.json`; progress report: `orchestration/reports/aku-sosyoloji-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx`

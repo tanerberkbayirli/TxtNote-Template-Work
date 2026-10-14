@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "browser": "154.0.8037.98",
+  "nativeCases": [
+    {
+      "id": "EDGE_STRUCTURE",
+      "sections": 2,
+      "activeObjects": 994,
+      "status": "PASS"
+    },
+    {
+      "id": "EDGE_NOTES",
+      "sections": 1,
+      "activeObjects": 43,
+      "status": "PASS"
+    }
+  ],
+  "checks": [
+    "actual file input and Web Worker",
+    "preview cancellation leaves original intact",
+    "legacy DOC actionable conversion; original intact",
+    "atomic apply",
+    "all source sections visible",
+    "source font and alignment applied",
+    "actual contentEditable edit",
+    "JSON save/reload retains IDs and native styles",
+    "persistent located import report",
+    "independent native Word boundaries imported and reopened in actual editor"
+  ],
+  "pageErrors": []
+}

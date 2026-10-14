@@ -1,0 +1,533 @@
+{
+  "status": "PASS",
+  "pageDimensionTolerancePt": 0.1,
+  "textOriginTolerancePt": 0.5,
+  "references": "Independent source excerpt Word render and actual exported DOCX Word render",
+  "results": [
+    {
+      "id": "SRC01",
+      "status": "PASS",
+      "pages": [
+        {
+          "page": 1,
+          "text": "SRC01_SECTION_1",
+          "geometryDeltaPt": [
+            {
+              "text": "SRC01_SECTION_1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            },
+            {
+              "text": "SRC01_SECTION_1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "text": "SRC01_SECTION_2",
+          "geometryDeltaPt": [
+            {
+              "text": "SRC01_SECTION_2",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            },
+            {
+              "text": "SRC01_SECTION_2",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            }
+          ]
+        },
+        {
+          "page": 3,
+          "text": "i SRC01_SECTION_3",
+          "geometryDeltaPt": [
+            {
+              "text": "i",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.092,
+                -0.079
+              ]
+            },
+            {
+              "text": "i",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.092,
+                -0.079
+              ]
+            },
+            {
+              "text": "SRC01_SECTION_3",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            },
+            {
+              "text": "SRC01_SECTION_3",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            }
+          ]
+        },
+        {
+          "page": 4,
+          "text": "1 SRC01_SECTION_4",
+          "geometryDeltaPt": [
+            {
+              "text": "1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.04,
+                -0.14
+              ]
+            },
+            {
+              "text": "1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.04,
+                -0.14
+              ]
+            },
+            {
+              "text": "SRC01_SECTION_4",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            },
+            {
+              "text": "SRC01_SECTION_4",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.061,
+                -0.089
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SRC04",
+      "status": "PASS",
+      "pages": [
+        {
+          "page": 1,
+          "text": "SRC04_SECTION_1",
+          "geometryDeltaPt": [
+            {
+              "text": "SRC04_SECTION_1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                0.0,
+                0.24
+              ]
+            },
+            {
+              "text": "SRC04_SECTION_1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                0.0,
+                0.24
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "text": "SRC04_SECTION_2",
+          "geometryDeltaPt": [
+            {
+              "text": "SRC04_SECTION_2",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC04_SECTION_2",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        },
+        {
+          "page": 3,
+          "text": "SRC04_SECTION_3",
+          "geometryDeltaPt": [
+            {
+              "text": "SRC04_SECTION_3",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC04_SECTION_3",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        },
+        {
+          "page": 4,
+          "text": "i SRC04_SECTION_4",
+          "geometryDeltaPt": [
+            {
+              "text": "i",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.15,
+                -0.177
+              ]
+            },
+            {
+              "text": "i",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.15,
+                -0.177
+              ]
+            },
+            {
+              "text": "SRC04_SECTION_4",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC04_SECTION_4",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        },
+        {
+          "page": 5,
+          "text": "1 SRC04_SECTION_5",
+          "geometryDeltaPt": [
+            {
+              "text": "1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.061,
+                -0.177
+              ]
+            },
+            {
+              "text": "1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.061,
+                -0.177
+              ]
+            },
+            {
+              "text": "SRC04_SECTION_5",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC04_SECTION_5",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SRC05",
+      "status": "PASS",
+      "pages": [
+        {
+          "page": 1,
+          "text": "1 SRC05_SECTION_1",
+          "geometryDeltaPt": [
+            {
+              "text": "1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.189,
+                0.137
+              ]
+            },
+            {
+              "text": "1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.189,
+                0.137
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                0.0,
+                0.24
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                0.0,
+                0.24
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "text": "SRC05_SECTION_2",
+          "geometryDeltaPt": [
+            {
+              "text": "SRC05_SECTION_2",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_2",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        },
+        {
+          "page": 3,
+          "text": "SRC05_SECTION_3",
+          "geometryDeltaPt": [
+            {
+              "text": "SRC05_SECTION_3",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_3",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        },
+        {
+          "page": 4,
+          "text": "i SRC05_SECTION_4",
+          "geometryDeltaPt": [
+            {
+              "text": "i",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.168,
+                -0.15
+              ]
+            },
+            {
+              "text": "i",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.168,
+                -0.15
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_4",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_4",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        },
+        {
+          "page": 5,
+          "text": "1 SRC05_SECTION_5",
+          "geometryDeltaPt": [
+            {
+              "text": "1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.162,
+                -0.152
+              ]
+            },
+            {
+              "text": "1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.162,
+                -0.152
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_5",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            },
+            {
+              "text": "SRC05_SECTION_5",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                0.226
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "EDGE_STRUCTURE",
+      "status": "PASS",
+      "pages": [
+        {
+          "page": 1,
+          "text": "EDGE FIRST HEADER 1 EDGE_STRUCTURE_SECTION_1",
+          "geometryDeltaPt": [
+            {
+              "text": "1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                -0.099
+              ]
+            },
+            {
+              "text": "1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                -0.099
+              ]
+            },
+            {
+              "text": "EDGE_STRUCTURE_SECTION_1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.029,
+                -0.045
+              ]
+            },
+            {
+              "text": "EDGE_STRUCTURE_SECTION_1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.029,
+                -0.045
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "text": "",
+          "geometryDeltaPt": []
+        },
+        {
+          "page": 3,
+          "text": "EDGE FIRST HEADER 1 EDGE_STRUCTURE_SECTION_2",
+          "geometryDeltaPt": [
+            {
+              "text": "1",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.005,
+                -0.075
+              ]
+            },
+            {
+              "text": "1",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.005,
+                -0.075
+              ]
+            },
+            {
+              "text": "EDGE_STRUCTURE_SECTION_2",
+              "reference": "nativeWord",
+              "deltaPt": [
+                -0.005,
+                -0.065
+              ]
+            },
+            {
+              "text": "EDGE_STRUCTURE_SECTION_2",
+              "reference": "exportedWord",
+              "deltaPt": [
+                -0.005,
+                -0.065
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

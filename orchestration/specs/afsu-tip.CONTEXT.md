@@ -1,7 +1,7 @@
 # afsu-tip — context pack
 ## Identity
 - Registry id(s): `afsu-tip-uzmanlik-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/afsu-tip.js` (exports: afsuTipUzmanlik)
+- Template module: `engine/src/templates/afsu-tip.js` (exports: afsuTipUzmanlik)
 - Spec: `orchestration/specs/afsu-tip.json`; checks: `orchestration/specs/afsu-tip.checks.json` (not yet); progress report: `orchestration/reports/afsu-tip.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf`

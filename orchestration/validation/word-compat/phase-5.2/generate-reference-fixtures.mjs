@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import generic from '../../../../TxtNote/frontend/src/thesis/templates/generic.js';
+import generic from '../../../../engine/src/templates/generic.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '../../../..');

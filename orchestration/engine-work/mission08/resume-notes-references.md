@@ -1,0 +1,14 @@
+# 11.10.2026 — Notlar, referanslar ve ölçüm devamı (kısmi)
+- `docx/xml.js`: EK/APPENDIX başlık regexinde kaybolmuş \s/\S kaçışları düzeltildi; gerçek DOCX ek yer işareti testi eklendi.
+- `generatedIndex.js`: Unicode hedef kimlikleri geri çözülebilir kodlanıyor; farklı kimlikler aynı ankora dönüşmüyor, taşıma kimliği koruyor.
+- `docx/fields.js`: alanların yalnız toplam sayısı değil başlangıç/ayırıcı/bitiş sırası ve iç içe yapısı denetleniyor; bozuk ithal alan görünür kayıt bırakıyor.
+- `docx/paragraphs.js`: nested Bookmark nesneleri düz başlangıç/çocuk/bitiş XML bileşenlerine açıldı; `bookmarkUniqueNumericId` geçersiz XML üretimi engellendi. Bağımsız fixture PASS; SRC08 yeniden SDK denetimi ana ajan/special_pages sorumluluğunda.
+- `academicDocument.js`: `endnotesFromHtml` içindeki gerçek U+0008 yerine regex sözcük sınırı kullanıldı.
+- `academicPdfLayout.js`: sonnotlar dipnot alanından ayrıldı; belge sonunda normal akışta sayfalara bölünüyor; 3000 sözcüklük not kayıpsız testi PASS.
+- `paragraphs.js`: başka ajanın yeni `equationRun` API'si bağlandı; OMML desteğinin sahipliği tables_media_equations ajanında.
+- `ThesisEditor.jsx`: 08-A ölçülen konum helper'ı geçici CSS/uyarı/sayfalama/DOCX seçeneklerine bağlandı; font loading başlangıcında ready iptal, geçici font ölçümünde yineleme bütçesi tüketmeme ve onay anında font durumunu denetleme eklendi.
+- Eski `_ref_main_source_0` test beklentisi, plain HTML artık kalıcı tn-1 kimliği aldığından kesin `tgt-tn-1` ve `_ref_tgt_tn_1` beklentisine düzeltildi; alan/kırık hedef kontrolleri korunuyor.
+- Hedefli sonuç: **60/60 PASS**, 0 atlama; `resume-notes-references-tests.log` (7 test dosyası, 6 yeni regresyon).
+- 13-C küçük izole Chrome fixture: yazma/undo/redo/seçim/gerçek Ctrl+C-V/gerçek IME composition+commit/kaydet-yeniden aç PASS; kaynak tam eşit, geçici markup yok, pageErrors=[]; `resume-interactions.mjs/json/png`.
+- 11-A ek tur: `sectionEndnoteViews` + memo props ile belge notları yalnız son editable gövdede, bölüm notları kaynak bölümünde. Taşıma/silme unit PASS; üç bölüm gerçek tarayıcı + numara/işaret + reload/source bütünlüğü PASS (`resume-endnotes.mjs/json/png`). İlk etkileşim denemesi yeni hook'un zoom TDZ hatasını yakaladı; zoomChoice bağımlılığıyla düzeltildi ve tekrar PASS. Eski kanıt dosyaları ezilmedi.
+- Açık: EDGE_NOTES 4→3 sayfa ve gerçek Word not düzenleme/alan güncellemesi; karışık bölüm/belge numaralandırması; SRC09 performans, 07-D gerçek Word başlık eşliği ve SBE CPU/yük altında kabul ana sessiz tura bırakıldı; tamamlandı sayılmadı.

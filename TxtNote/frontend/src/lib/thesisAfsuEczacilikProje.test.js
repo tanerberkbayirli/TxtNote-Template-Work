@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { blockDescriptors, gapBetween } from "../thesis/blockGap.js";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { afsuEczacilikProje } from "../thesis/templates/afsu-eczacilik-proje.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import { blockDescriptors, gapBetween } from "../../../../engine/src/blockGap.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { afsuEczacilikProje } from "../../../../engine/src/templates/afsu-eczacilik-proje.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 
 describe("AFSÜ Eczacılık research project template", () => {
   it("validates and centres every page number on the physical page", () => {

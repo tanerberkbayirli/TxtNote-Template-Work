@@ -3,12 +3,12 @@ import { describe, it } from "node:test";
 import { fixtureA as demoA } from "./thesisFixtures.js";
 import { fixtureB as demoB } from "./thesisFixtures.js";
 import { fixtureC as demoC } from "./thesisFixtures.js";
-import generic from "../thesis/templates/generic.js";
-import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
-import { buildThesisPageModel } from "../thesis/pageLayout.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { resolveSpecialPage, specialPageCss, specialPageHtml, specialPageRowWidths, validateSpecialPageBlocks, walkSpecialPage } from "../thesis/specialPages.js";
-import { splitLayoutNodes } from "../thesis/layoutDocx.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../../../../engine/src/engine.js";
+import { buildThesisPageModel } from "../../../../engine/src/pageLayout.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { resolveSpecialPage, specialPageCss, specialPageHtml, specialPageRowWidths, validateSpecialPageBlocks, walkSpecialPage } from "../../../../engine/src/specialPages.js";
+import { splitLayoutNodes } from "../../../../engine/src/layoutDocx.js";
 
 const page = (template, id, values = {}, extra = {}) => compileThesisDocument(template, { values, ...extra }, "Tez Başlığı", "").sections.find((section) => section.id === id);
 

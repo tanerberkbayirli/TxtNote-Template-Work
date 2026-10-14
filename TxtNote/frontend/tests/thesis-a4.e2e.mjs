@@ -249,7 +249,7 @@ try {
   // Every fixture template inherits the generic 10 mm first-line indent.
   assert.deepEqual([indents["KÖK"], indents["İKİ"], indents["PAR"]], [10, 10, 10]); assert.ok(indents.MADDE < 10, JSON.stringify(indents));
   const docxXml = await page.evaluate(async () => {
-    const [{ compileThesisDocument }, { buildThesisDocx }, { fixtureA: template }] = await Promise.all([import("/src/thesis/engine.js"), import("/src/thesis/export.js"), import("/src/lib/thesisFixtures.js")]);
+    const [{ compileThesisDocument }, { buildThesisDocx }, { fixtureA: template }] = await Promise.all([import("/engine/engine.js"), import("/engine/export.js"), import("/src/lib/thesisFixtures.js")]);
     const content = 'Satır <span class="fmt-bold">kalın</span> ve atıf<sup class="academic-footnote" contenteditable="false" data-fn-id="fn-1" data-fn-text="Yılmaz, 2024." data-fn-index="1">1</sup> sonu.\nİkinci satır<div class="fmt-align-left">Sola hizalı</div><p></p><p>Gerçek paragraf</p>';
     const blob = await buildThesisDocx(compileThesisDocument(template, {}, "T", content));
     return [...new Uint8Array(await blob.arrayBuffer())];

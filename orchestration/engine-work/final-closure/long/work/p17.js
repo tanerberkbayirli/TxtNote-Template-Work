@@ -1,0 +1,1 @@
+(()=>[...document.querySelectorAll('[data-thesis-fn-stamp]')].map(e=>({s:e.dataset.thesisFnStamp,r:e.dataset.thesisFnReserve,m:e.dataset.thesisFnMargin,t:e.textContent.slice(0,30),sp:!!e.querySelector('[data-thesis-fn-spacer]')})))()

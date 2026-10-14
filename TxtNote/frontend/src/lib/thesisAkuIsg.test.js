@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { resolveThesisTemplate } from "../thesis/registry.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { akuIsgTezsizProje as t } from "../thesis/templates/aku-isg.js";
+import { resolveThesisTemplate } from "../../../../engine/src/registry.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { akuIsgTezsizProje as t } from "../../../../engine/src/templates/aku-isg.js";
 
 describe("AKÜ FBE İş Güvenliği tezsiz dönem projesi template", () => {
   it("validates, is registered and carries the template values", async () => {

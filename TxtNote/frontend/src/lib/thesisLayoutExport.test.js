@@ -2,10 +2,10 @@ import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { buildThesisDocx, buildThesisPdf } from "../thesis/export.js";
-import { convertLength, mmToTwip, ptToTwip } from "../thesis/units.js";
-import generic from "../thesis/templates/generic.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { buildThesisDocx, buildThesisPdf } from "../../../../engine/src/export.js";
+import { convertLength, mmToTwip, ptToTwip } from "../../../../engine/src/units.js";
+import generic from "../../../../engine/src/templates/generic.js";
 
 const pixel = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAAAAAA6fptVAAAACklEQVR4nGNgAAAAAgABSK+kcQAAAABJRU5ErkJggg==";
 

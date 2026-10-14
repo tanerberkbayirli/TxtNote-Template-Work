@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { buildThesisCss, compileThesisDocument, thesisWordBaselineProbes } from "../thesis/engine.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { WORD_FONT_METRICS, wordBaselineCss, wordBaselineProbe } from "../thesis/wordBaseline.js";
-import { mcbuMaster } from "../thesis/templates/mcbu.js";
+import { buildThesisCss, compileThesisDocument, thesisWordBaselineProbes } from "../../../../engine/src/engine.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { WORD_FONT_METRICS, wordBaselineCss, wordBaselineProbe } from "../../../../engine/src/wordBaseline.js";
+import { mcbuMaster } from "../../../../engine/src/templates/mcbu.js";
 
 const word = { mode: "word", singleLineEm: 1.15, baseline: "word" };
 const withBaseline = { ...mcbuMaster, typography: { ...mcbuMaster.typography, lineSpacing: word } };

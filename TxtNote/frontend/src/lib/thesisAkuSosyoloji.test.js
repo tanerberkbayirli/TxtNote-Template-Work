@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { buildThesisCss, compileThesisDocument, groupThesisSections, templateFontFamilies } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { numberThesisPages } from "../thesis/pageLayout.js";
-import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/registry.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { akuSosyolojiLisans } from "../thesis/templates/aku-sosyoloji.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections, templateFontFamilies } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { numberThesisPages } from "../../../../engine/src/pageLayout.js";
+import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../../../../engine/src/registry.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { akuSosyolojiLisans } from "../../../../engine/src/templates/aku-sosyoloji.js";
 
 const docxXml = async (model) => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
 const values = { STUDENT_NAME: "Ayşe DEMİR", STUDENT_NUMBER: "140110006", THESIS_TITLE: "Kentleşme", ADVISOR_TITLE: "Prof. Dr.", ADVISOR_NAME: "Ali VELİ", SUBMISSION_YEAR: "2024" };

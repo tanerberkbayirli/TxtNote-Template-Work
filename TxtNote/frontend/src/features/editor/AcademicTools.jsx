@@ -582,7 +582,9 @@ export const AcademicTools = ({
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wide text-neutral-400">İçe / dışa aktar</p>
               <p className="mt-1 text-[12px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-                PDF veya Word içe aktarın: başlık, yazarlar ve özet tanınır. Kaynakça için sağdaki
+                PDF aktarımında sayfa, metin, tablo ve OCR önizlemesini inceleyip düzeltin.
+                PDF'nin tüm sayfaları tez düzenleyicisinde açılır. Word aktarımında başlık,
+                yazarlar ve özet tanınır. Kaynakça için sağdaki
                 «Kaynakça olsun» düğmesini kullanın.
               </p>
               <input

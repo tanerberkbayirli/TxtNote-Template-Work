@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { createRequire } from "node:module";
 import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
-import templateSource from "../src/thesis/templates/adu-ziraat-lisans.js";
+import templateSource from "../../../engine/src/templates/adu-ziraat-lisans.js";
 import { strFromU8, unzipSync } from "fflate";
 
 const require = createRequire(import.meta.url);

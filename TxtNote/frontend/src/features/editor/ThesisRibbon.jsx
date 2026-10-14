@@ -21,6 +21,8 @@ export default function ThesisRibbon({
   exporting,
   onExport,
   onPrint,
+  onImport,
+  onImportPdf,
   paginationReady,
   canUndo,
   canRedo,
@@ -186,6 +188,8 @@ export default function ThesisRibbon({
         )}
         {tab === "Dosya" && (
           <FileTab
+            onImport={onImport}
+            onImportPdf={onImportPdf}
             title={title}
             activeSection={activeSection}
             template={template}
@@ -258,6 +262,7 @@ export default function ThesisRibbon({
             setDetailsOpen={setDetailsOpen}
             citableItems={citableItems}
             onInsertCitation={onInsertCitation}
+            onInsertEndnote={(text) => invoke("insertEndnote", text)}
             citeText={citeText}
             setCiteText={setCiteText}
             citeOpen={citeOpen}

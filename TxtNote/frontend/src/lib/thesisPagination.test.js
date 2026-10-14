@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import generic from "../thesis/templates/generic.js";
+import generic from "../../../../engine/src/templates/generic.js";
 import { fixtureB as demoB } from "./thesisFixtures.js";
 import { fixtureC as demoC } from "./thesisFixtures.js";
-import { akuFbeMaster } from "../thesis/templates/aku-fbe.js";
-import { compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
-import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, PX_PER_MM, THESIS_MAX_PAGES, THESIS_PAGE_GAP_PX, thesisPagedCss, thesisGroupHasPageContent } from "../thesis/pageLayout.js";
+import { akuFbeMaster } from "../../../../engine/src/templates/aku-fbe.js";
+import { compileThesisDocument, groupThesisSections } from "../../../../engine/src/engine.js";
+import { buildThesisPageModel, pageCountFromFlowHeight, pageMetrics, pageStackHeightPx, PX_PER_MM, THESIS_MAX_PAGES, THESIS_PAGE_GAP_PX, thesisPagedCss, thesisGroupHasPageContent } from "../../../../engine/src/pageLayout.js";
 
 const groupsOf = (template, thesis = {}, content = "<p>Body content</p>") => groupThesisSections(compileThesisDocument(template, thesis, "Tez", content).sections);
 const flowHeight = (pages, metrics) => pages * metrics.contentHeightPx + (pages - 1) * metrics.rowGapPx;

@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { buildThesisDocx } from "../thesis/export.js";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { akuFbeMaster } from "../thesis/templates/aku-fbe.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { akuFbeMaster } from "../../../../engine/src/templates/aku-fbe.js";
 
 const values = { STUDENT_NAME: "Ada YILMAZ", ADVISOR_TITLE: "Prof. Dr.", ADVISOR_NAME: "Can KAYA", DEPARTMENT_NAME: "Biyoloji", YEAR: "2026", DEFENSE_YEAR: "2026", DEFENSE_MONTH: "Ocak", KEYWORDS: "a, b, c, d" };
 

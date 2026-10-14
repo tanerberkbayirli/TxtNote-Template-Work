@@ -1,0 +1,35 @@
+{
+  "id": "SRC10",
+  "wordPages": 91,
+  "editorPages": 91,
+  "wordTokens": 15590,
+  "editorTokens": 15457,
+  "matchedTokens": 15431,
+  "wordCharacters": 86811,
+  "wordCharactersFoundInOrder": 86433,
+  "textCoverage": 0.99565,
+  "editorExtraCharacters": 128,
+  "openingsChecked": 75,
+  "misalignedOpenings": 2,
+  "misalignedPhysicalPages": 2,
+  "misalignedStartsOnSamePage": 0,
+  "firstMisaligned": [
+    {
+      "wordPage": 57,
+      "editorPage": 56,
+      "offsetTokens": 305,
+      "wordOpening": "actually positive in this study if a real occurred damaged yes observation was predicted by the",
+      "editorOpening": "source javatpoint nd performance metrics the main objective of this study is to predict the container"
+    },
+    {
+      "wordPage": 75,
+      "editorPage": 74,
+      "offsetTokens": 375,
+      "wordOpening": "implemented to minimize the weight of repair scrap costs of the containers on the container owner",
+      "editorOpening": "maintenance phase of the model making changes to the model has become easier with the azure"
+    }
+  ],
+  "markerTolerance": 2,
+  "coverageMin": 0.995,
+  "status": "FAIL"
+}

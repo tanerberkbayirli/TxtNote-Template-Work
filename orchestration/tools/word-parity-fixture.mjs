@@ -1,7 +1,7 @@
 // Isolated engine acceptance fixture, never a university formatting source.
 // Run once to regenerate: node orchestration/tools/word-parity-fixture.mjs
 import { writeFile } from 'node:fs/promises';
-import generic from '../../TxtNote/frontend/src/thesis/templates/generic.js';
+import generic from '../../engine/src/templates/generic.js';
 const id = 'engine-word-parity';
 const sections = [], sectionContent = {}, checks = [];
 let index = 0;

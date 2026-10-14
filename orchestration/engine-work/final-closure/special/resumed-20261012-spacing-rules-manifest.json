@@ -1,0 +1,32 @@
+{
+  "startedAt": "2026-10-12T07:50:35.412Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "aku-matematik-lisans",
+      "exitCode": 0,
+      "commandSeconds": 66.968,
+      "report": "engine\\final-closure\\special\\resumed-20261012-spacing-rules\\aku-matematik-lisans\\check-20261012-1051.json",
+      "counts": {
+        "PASS": 60,
+        "INFO": 2
+      },
+      "measurementSeconds": 2.14,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 1,
+      "commandSeconds": 106.077,
+      "report": "engine\\final-closure\\special\\resumed-20261012-spacing-rules\\engine-word-structure\\check-20261012-1053.json",
+      "counts": {
+        "PASS": 132,
+        "FAIL": 4
+      },
+      "measurementSeconds": 7.047,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-12T07:53:28.459Z",
+  "commandSeconds": 173.049
+}

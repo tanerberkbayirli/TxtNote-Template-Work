@@ -82,13 +82,27 @@ def visual_lines(page, tol_mm=0.35):
                 break
         else:
             lines.append({"baseline": s["baseline"], "size": s["size"], "spans": [s]})
+    # Word may omit an encoded space at a font/style boundary and position the
+    # next run by its advance instead. Calibri's real space is only .226 em:
+    # a fixed .25 em threshold loses that word boundary. Read the embedded font
+    # program rather than guessing from the nominal point size.
+    space_em = {}
+    for xref, _, _, basefont, *_ in page.get_fonts(full=True):
+        try:
+            font = pymupdf.Font(fontbuffer=page.parent.extract_font(xref)[3])
+            space_em[basefont.split('+')[-1]] = font.text_length(' ', fontsize=1)
+        except Exception:
+            pass
     result = []
     for ln in lines:
         sp = sorted(ln["spans"], key=lambda s: s["x0"])
         text = ""
         prev = None
         for s in sp:
-            if prev is not None and s["x0"] - prev["x1"] > 0.25 * s["size"] * PT2MM and not text.endswith(" "):
+            threshold = 0.25
+            if prev is not None and prev['font'] != s['font']:
+                threshold = min(threshold, .9 * space_em.get(s['font'].split('+')[-1], threshold / .9))
+            if prev is not None and s["x0"] - prev["x1"] > threshold * s["size"] * PT2MM and not text.endswith(" ") and not s['text'].startswith(' '):
                 text += " "
             text += s["text"]
             prev = s

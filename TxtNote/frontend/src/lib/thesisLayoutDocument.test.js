@@ -8,8 +8,8 @@ import {
   resolveLayoutNodes,
   resolveLayoutPage,
   updateLayoutElements,
-} from "../thesis/layoutDocument.js";
-import { convertLength, MM_PER_PT, mmToTwip, ptToTwip } from "../thesis/units.js";
+} from "../../../../engine/src/layoutDocument.js";
+import { convertLength, MM_PER_PT, mmToTwip, ptToTwip } from "../../../../engine/src/units.js";
 
 test("convertLength uses physical CSS pixel, point, Word and EMU definitions", () => {
   assert.equal(convertLength(96, "px", "mm"), 25.4);

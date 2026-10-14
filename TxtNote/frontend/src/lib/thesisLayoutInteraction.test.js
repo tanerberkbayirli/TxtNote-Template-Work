@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { clampResizeRect, DRAG_THRESHOLD_PX, pageLocalRect, patchesForRects, textAlignmentPatch, toggleLayoutDecoration } from '../thesis/layoutInteraction.js';
-import { normalizeLayoutTextStyle } from '../thesis/layoutDocument.js';
+import { clampResizeRect, DRAG_THRESHOLD_PX, pageLocalRect, patchesForRects, textAlignmentPatch, toggleLayoutDecoration } from '../../../../engine/src/layoutInteraction.js';
+import { normalizeLayoutTextStyle } from '../../../../engine/src/layoutDocument.js';
 
 test('text alignment reaches page edges and preserves writing-area and box modes', () => {
   const item = { id: 'cover:text', type: 'text', editableLayout: true, editableContent: true, xMm: 70, yMm: 82, widthMm: 60,

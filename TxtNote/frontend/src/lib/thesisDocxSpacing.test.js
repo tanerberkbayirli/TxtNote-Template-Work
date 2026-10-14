@@ -1,10 +1,10 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { strFromU8, unzipSync } from "fflate";
-import cografya from "../thesis/templates/aku-cografya.js";
-import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
+import cografya from "../../../../engine/src/templates/aku-cografya.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
 
 const docXml = async (template, html) => {
   const blob = await buildThesisDocx(compileThesisDocument(template, {}, "T", html), {});

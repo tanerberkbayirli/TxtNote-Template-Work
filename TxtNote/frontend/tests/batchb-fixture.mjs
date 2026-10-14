@@ -5,7 +5,7 @@
 // The fixture carries its template (`__template`); thesis-batchb-fixture.jsx serves it to the real ThesisEditor.
 import { writeFile } from "node:fs/promises";
 import { deflateSync } from "node:zlib";
-import generic from "../src/thesis/templates/generic.js";
+import generic from "../../../engine/src/templates/generic.js";
 
 function png(width, height, paint) {
   const table = Array.from({ length: 256 }, (_, n) => { let c = n; for (let k = 0; k < 8; k += 1) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1; return c >>> 0; });

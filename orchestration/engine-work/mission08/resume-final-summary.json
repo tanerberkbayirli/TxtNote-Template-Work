@@ -1,0 +1,249 @@
+{
+  "status": "INCOMPLETE_USER_LIMIT",
+  "unit": {
+    "pass": 912,
+    "fail": 0,
+    "skipped": 0
+  },
+  "build": "PASS",
+  "finishedTargets": 25,
+  "plannedTargets": 25,
+  "failures": [
+    {
+      "target": "aku-sbe",
+      "counts": {
+        "PASS": 118,
+        "INFO": 2,
+        "FAIL": 3
+      },
+      "report": "engine/mission08/resume-final-r3/all/aku-sbe/check-20261011-1303.json"
+    }
+  ],
+  "rows": [
+    {
+      "target": "adu-sagbil",
+      "counts": {
+        "PASS": 154,
+        "SKIPPED": 147
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\adu-sagbil\\check-20261011-1258.json"
+    },
+    {
+      "target": "adu-ziraat-lisans",
+      "counts": {
+        "PASS": 14,
+        "INFO": 1
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\adu-ziraat-lisans\\check-20261011-1258.json"
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "counts": {
+        "INFO": 1,
+        "PASS": 22,
+        "SKIPPED": 3
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\afsu-eczacilik-proje\\check-20261011-1258.json"
+    },
+    {
+      "target": "afsu-lee",
+      "counts": {
+        "INFO": 1,
+        "PASS": 82,
+        "SKIPPED": 6
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\afsu-lee\\check-20261011-1259.json"
+    },
+    {
+      "target": "afsu-tip",
+      "counts": {
+        "INFO": 2,
+        "PASS": 46,
+        "SKIPPED": 3
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\afsu-tip\\check-20261011-1259.json"
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "counts": {
+        "INFO": 3,
+        "PASS": 42,
+        "SKIPPED": 6
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-cografya-lisans\\check-20261011-1259.json"
+    },
+    {
+      "target": "aku-fbe",
+      "counts": {
+        "INFO": 3,
+        "PASS": 18,
+        "SKIPPED": 27
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-fbe\\check-20261011-1300.json"
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "counts": {
+        "INFO": 4,
+        "PASS": 46,
+        "SKIPPED": 37
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-felsefe-lisans\\check-20261011-1300.json"
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "counts": {
+        "INFO": 4,
+        "PASS": 35,
+        "SKIPPED": 26
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-felsefe-seminer\\check-20261011-1300.json"
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "counts": {
+        "INFO": 1,
+        "PASS": 27,
+        "SKIPPED": 12
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-isg-tezsiz-proje\\check-20261011-1301.json"
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "counts": {
+        "INFO": 1,
+        "PASS": 27,
+        "SKIPPED": 21
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-kimya-lisans\\check-20261011-1301.json"
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "counts": {
+        "INFO": 2,
+        "PASS": 49,
+        "SKIPPED": 6
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-matematik-lisans\\check-20261011-1301.json"
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "counts": {
+        "INFO": 1,
+        "PASS": 29,
+        "SKIPPED": 21
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-mbg-lisans\\check-20261011-1302.json"
+    },
+    {
+      "target": "aku-sagbil",
+      "counts": {
+        "INFO": 1,
+        "PASS": 26,
+        "SKIPPED": 11
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-sagbil\\check-20261011-1302.json"
+    },
+    {
+      "target": "aku-sbe",
+      "counts": {
+        "INFO": 2,
+        "PASS": 118,
+        "FAIL": 3
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-sbe\\check-20261011-1303.json"
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "counts": {
+        "INFO": 4,
+        "PASS": 18,
+        "SKIPPED": 10
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\aku-sosyoloji-lisans\\check-20261011-1304.json"
+    },
+    {
+      "target": "engine-mission05-typography",
+      "counts": {
+        "PASS": 4,
+        "SKIPPED": 16
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\engine-mission05-typography\\check-20261011-1304.json"
+    },
+    {
+      "target": "engine-word-justify",
+      "counts": {
+        "PASS": 4,
+        "SKIPPED": 16
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\engine-word-justify\\check-20261011-1304.json"
+    },
+    {
+      "target": "engine-word-pagefit",
+      "counts": {
+        "PASS": 16,
+        "SKIPPED": 189
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\engine-word-pagefit\\check-20261011-1305.json"
+    },
+    {
+      "target": "engine-word-parity",
+      "counts": {
+        "PASS": 5,
+        "SKIPPED": 141
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\engine-word-parity\\check-20261011-1306.json"
+    },
+    {
+      "target": "engine-word-structure",
+      "counts": {
+        "PASS": 15,
+        "SKIPPED": 115
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\engine-word-structure\\check-20261011-1306.json"
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "counts": {
+        "PASS": 38,
+        "SKIPPED": 15
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\engine-word-style-precedence\\check-20261011-1307.json"
+    },
+    {
+      "target": "iyte",
+      "counts": {
+        "PASS": 70,
+        "SKIPPED": 44
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\iyte\\check-20261011-1307.json"
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "counts": {
+        "PASS": 47,
+        "INFO": 1
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\mcbu-tip-uzmanlik\\check-20261011-1308.json"
+    },
+    {
+      "target": "phase52-justify",
+      "counts": {
+        "PASS": 6,
+        "SKIPPED": 24
+      },
+      "report": "engine\\mission08\\resume-final-r3\\all\\phase52-justify\\check-20261011-1308.json"
+    }
+  ],
+  "pending": [
+    "SBE 3 unnumbered-page expectations: none x3 vs actual none x2; verify real Word before changing",
+    "six real Word groups",
+    "SBE normal/CPU 5 repeats each",
+    "fresh variable-content/title audit",
+    "SRC09/SRC10 page/performance comparison",
+    "final heldout Word/interactive editing acceptance"
+  ],
+  "reason": "User requested wrap-up because usage limit is exhausted; mission not marked complete.",
+  "generalAcceptance": "Finished 25 targets; overall command failed. Three explicit SBE FAIL checks; Word checks skipped without --word. See all.log for exit status summary.",
+  "ownedTestServer": "Stopped at user-requested wrap-up"
+}

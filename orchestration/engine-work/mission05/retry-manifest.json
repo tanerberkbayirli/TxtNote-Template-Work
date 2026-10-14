@@ -1,0 +1,59 @@
+{
+  "startedAt": "2026-10-09T20:24:50.980Z",
+  "wordRequested": false,
+  "targets": [
+    {
+      "target": "adu-ziraat-lisans",
+      "exitCode": 1,
+      "commandSeconds": 15.18,
+      "report": "engine\\mission05\\retry-regression\\adu-ziraat-lisans\\check-20261009-2325.json",
+      "counts": {
+        "PASS": 13,
+        "FAIL": 1,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.781,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "exitCode": 1,
+      "commandSeconds": 13.519,
+      "report": "engine\\mission05\\retry-regression\\aku-felsefe-lisans\\check-20261009-2325.json",
+      "counts": {
+        "PASS": 46,
+        "INFO": 4,
+        "SKIPPED": 37
+      },
+      "measurementSeconds": 0.703,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 1,
+      "commandSeconds": 72.172,
+      "report": "engine\\mission05\\retry-regression\\aku-sbe\\check-20261009-2326.json",
+      "counts": {
+        "PASS": 117,
+        "INFO": 2,
+        "FAIL": 4
+      },
+      "measurementSeconds": 5.484,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 1,
+      "commandSeconds": 72.607,
+      "report": "engine\\mission05\\retry-regression\\engine-word-pagefit\\check-20261009-2327.json",
+      "counts": {
+        "SKIPPED": 189,
+        "PASS": 16
+      },
+      "measurementSeconds": 2.047,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-09T20:27:44.432Z",
+  "commandSeconds": 173.481
+}

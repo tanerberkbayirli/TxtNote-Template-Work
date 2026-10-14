@@ -164,7 +164,7 @@ Independent review, 2026-09-28. I re-derived the rules from both official source
 **Status: PASS (self-check, real export) with the limits below.** Source check: KAYNAK.md sha256 of guide (`b631d3c7...`) and template (`33432d85...`) match the repo files; `document.xml` of the DOCX is byte-identical to the analysed copy. Spec corrections: source paths now include the `MBG_Lisans_Bitirme_Tezi/` subfolder; ethics page `İmza` baseline 171.40 -> 172.60 mm and name 178.70 -> 179.90 mm (XML has an empty 12 pt/1.5 paragraph between date and İmza; the LibreOffice value treated it as 10 pt).
 
 - Registry id: `aku-mbg-lisans-tr-v1` (instituteId `fef-mbg`, degreeType `undergraduate`, official).
-- Files: `TxtNote/frontend/src/thesis/templates/aku-mbg.js`, `.../templates/assets/akuMbgLogos.js` (the two seals of the official DOCX), `src/lib/thesisAkuMbg.test.js` (7 tests; full suite 549 pass), registry line, `orchestration/validation/aku-mbg-lisans/self-1/` (fixture, `mbg.pdf`, `mbg.docx`, `dump.py`).
+- Files: `engine/src/templates/aku-mbg.js`, `.../templates/assets/akuMbgLogos.js` (the two seals of the official DOCX), `src/lib/thesisAkuMbg.test.js` (7 tests; full suite 549 pass), registry line, `orchestration/validation/aku-mbg-lisans/self-1/` (fixture, `mbg.pdf`, `mbg.docx`, `dump.py`).
 - Engine: no changes; used existing capabilities (word line model, additive spacing, captionKinds, threeRule tables, continuation captions, equations, `titleNumbering: continueH1`, `textTransformExceptions`, derived page counts, tableNote style, image blocks in a row group).
 
 Measured on the real export (34 sheets, genuine TimesNewRomanPS-* and Cambria Math embedded; tolerance 0.25 mm):

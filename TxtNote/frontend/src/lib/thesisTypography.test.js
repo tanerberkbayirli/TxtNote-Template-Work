@@ -1,14 +1,14 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument, buildThesisCss } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { resolveIndent, resolveLineSpacing, paragraphGap } from "../thesis/typography.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { thesisSourceHtml } from "../thesis/sourceHtml.js";
-import { leaderGrid, wordLeaderAdvancePx } from "../thesis/paragraphTabs.js";
-import { emptyParagraphPitchMm } from "../thesis/wordBaseline.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument, buildThesisCss } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { resolveIndent, resolveLineSpacing, paragraphGap } from "../../../../engine/src/typography.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { thesisSourceHtml } from "../../../../engine/src/sourceHtml.js";
+import { leaderGrid, wordLeaderAdvancePx } from "../../../../engine/src/paragraphTabs.js";
+import { emptyParagraphPitchMm } from "../../../../engine/src/wordBaseline.js";
 
 const template = (style, spacing) => {
   const t = structuredClone(generic);

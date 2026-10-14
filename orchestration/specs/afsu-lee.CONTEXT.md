@@ -1,7 +1,7 @@
 # afsu-lee — context pack
 ## Identity
 - Registry id(s): `afsu-lee-master-tr-v1`, `afsu-lee-phd-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/afsu-lee.js` (exports: afsuLeeMaster, afsuLeePhd)
+- Template module: `engine/src/templates/afsu-lee.js` (exports: afsuLeeMaster, afsuLeePhd)
 - Spec: `orchestration/specs/afsu-lee.json`; checks: `orchestration/specs/afsu-lee.checks.json` ; progress report: `orchestration/reports/afsu-lee-source-rules.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx`

@@ -1,0 +1,12 @@
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { prepareThesisNote } from "../../../../engine/src/contentModel.js";
+import { createThesisDocument } from "../../../../engine/src/document.js";
+const html = `<h1>Bir</h1><p>Metin</p><figure><img src="data:image/png;base64,iVBORw0KGgo="><figcaption>Sekil bir</figcaption></figure>`;
+let note = createThesisDocument ? null : null;
+const base = { content: html, researchData: { thesis: { templateId: "generic", sectionContent: {} } } };
+const prepared = prepareThesisNote(base);
+console.log(JSON.stringify(prepared.researchData.thesis).slice(0,600));
+console.log(prepared.content.slice(0,400));
+const model = compileThesisDocument(generic, prepared.researchData.thesis, "Tez", prepared.content);
+console.log(model.sections.find(s=>s.id==="main").html.slice(0,400));

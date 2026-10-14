@@ -1,9 +1,9 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { withEngineDefaults } from "../thesis/engineDefaults.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { withEngineDefaults } from "../../../../engine/src/engineDefaults.js";
 
 const minimal = () => {
   const t = structuredClone(generic);

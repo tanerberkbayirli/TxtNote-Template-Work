@@ -1,6 +1,6 @@
 # ADÜ Ziraat Lisans — context
 
-- Registry: `adu-ziraat-lisans-tr-v1`; module: `TxtNote/frontend/src/thesis/templates/adu-ziraat-lisans.js`.
+- Registry: `adu-ziraat-lisans-tr-v1`; module: `engine/src/templates/adu-ziraat-lisans.js`.
 - Authority: cached `orchestration/artifacts/adu-ziraat-lisans/source/official.pdf`, its extracted `paragraphs.jsonl`, and official embedded example; source metadata verified 2026-10-04.
 - Run: `node orchestration/tools/check.mjs --target adu-ziraat-lisans --word` with root's serialized server/Word workflow. Fixture: `orchestration/specs/adu-ziraat-lisans.fixture.json`.
 

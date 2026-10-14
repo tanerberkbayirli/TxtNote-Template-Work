@@ -9,8 +9,8 @@
 
 | file | purpose |
 |---|---|
-| `TxtNote/frontend/src/thesis/templates/aku-cografya.js` | template module (`akuCografyaLisans`) |
-| `TxtNote/frontend/src/thesis/registry.js` | one new line (after the `aku-mbg-lisans` entry) |
+| `engine/src/templates/aku-cografya.js` | template module (`akuCografyaLisans`) |
+| `engine/src/registry.js` | one new line (after the `aku-mbg-lisans` entry) |
 | `TxtNote/frontend/src/lib/thesisAkuCografya.test.js` | 7 tests (load/validate/registry, page/body/heading values, captions, sections and numbering, lists, special pages, DOCX XML) |
 | `orchestration/specs/aku-cografya-lisans.json` | spec updated with template evidence (206 rules: 126 EXPLICIT, 41 TEMPLATE, 12 MEASURED, 20 INFERRED, 7 UNKNOWN; 26 conflicts) |
 | `orchestration/validation/aku-cografya-lisans/self-1/` | fixture, overrides, `cog.pdf`/`cog.docx`/`cog.layout.json`, `selfcheck.py`, `selfcheck.out.txt` |

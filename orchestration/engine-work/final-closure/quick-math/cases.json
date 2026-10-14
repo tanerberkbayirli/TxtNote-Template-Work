@@ -1,0 +1,55 @@
+[
+  {
+    "id": "DEFAULT",
+    "xml": "<m:d><m:dPr></m:dPr><m:e><m:r><m:t>a</m:t></m:r></m:e><m:e><m:r><m:t>b</m:t></m:r></m:e><m:e><m:r><m:t>c</m:t></m:r></m:e></m:d>",
+    "text": "(a|b|c)"
+  },
+  {
+    "id": "OPENEMPTY",
+    "xml": "<m:d><m:dPr><m:begChr/></m:dPr><m:e><m:r><m:t>a</m:t></m:r></m:e><m:e><m:r><m:t>b</m:t></m:r></m:e><m:e><m:r><m:t>c</m:t></m:r></m:e></m:d>",
+    "text": "a|b|c)"
+  },
+  {
+    "id": "CLOSEEMPTY",
+    "xml": "<m:d><m:dPr><m:endChr m:val=\"\"/></m:dPr><m:e><m:r><m:t>a</m:t></m:r></m:e><m:e><m:r><m:t>b</m:t></m:r></m:e><m:e><m:r><m:t>c</m:t></m:r></m:e></m:d>",
+    "text": "(a|b|c"
+  },
+  {
+    "id": "BOTHEMPTY",
+    "xml": "<m:d><m:dPr><m:begChr m:val=\"\"/><m:endChr/></m:dPr><m:e><m:r><m:t>a</m:t></m:r></m:e><m:e><m:r><m:t>b</m:t></m:r></m:e><m:e><m:r><m:t>c</m:t></m:r></m:e></m:d>",
+    "text": "a|b|c"
+  },
+  {
+    "id": "CUSTOM",
+    "xml": "<m:d><m:dPr><m:begChr m:val=\"[\"/><m:sepChr m:val=\";\"/><m:endChr m:val=\"]\"/></m:dPr><m:e><m:r><m:t>a</m:t></m:r></m:e><m:e><m:r><m:t>b</m:t></m:r></m:e><m:e><m:r><m:t>c</m:t></m:r></m:e></m:d>",
+    "text": "[a;b;c]"
+  },
+  {
+    "id": "NOSEPARATOR",
+    "xml": "<m:d><m:dPr><m:sepChr/></m:dPr><m:e><m:r><m:t>a</m:t></m:r></m:e><m:e><m:r><m:t>b</m:t></m:r></m:e><m:e><m:r><m:t>c</m:t></m:r></m:e></m:d>",
+    "text": "(abc)"
+  },
+  {
+    "id": "SINGLE",
+    "xml": "<m:d><m:dPr></m:dPr><m:e><m:r><m:t>x</m:t></m:r></m:e></m:d>",
+    "text": "(x)"
+  },
+  {
+    "id": "BAR",
+    "xml": "<m:f><m:fPr></m:fPr><m:num><m:r><m:t>a</m:t></m:r></m:num><m:den><m:r><m:t>b</m:t></m:r></m:den></m:f>",
+    "text": "ab",
+    "type": "bar"
+  },
+  {
+    "id": "NOBAR",
+    "xml": "<m:f><m:fPr><m:type m:val=\"noBar\"/></m:fPr><m:num><m:r><m:t>a</m:t></m:r></m:num><m:den><m:r><m:t>b</m:t></m:r></m:den></m:f>",
+    "text": "ab",
+    "type": "noBar"
+  },
+  {
+    "id": "LINEAR",
+    "xml": "<m:f><m:fPr><m:type m:val=\"lin\"/></m:fPr><m:num><m:r><m:t>a</m:t></m:r></m:num><m:den><m:r><m:t>b</m:t></m:r></m:den></m:f>",
+    "text": "a⁄b",
+    "type": "lin"
+  }
+]

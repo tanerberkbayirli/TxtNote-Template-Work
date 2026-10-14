@@ -1,0 +1,875 @@
+{
+ "target": "aku-fbe",
+ "stamp": "20261011-1106",
+ "counts": {
+  "SKIPPED": 27,
+  "PASS": 18,
+  "INFO": 3
+ },
+ "variants": {
+  "master": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-fbe\\run\\master.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-fbe\\run\\master.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-fbe\\run\\master.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-fbe.fixture.master.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "272b234d6bc191617856cae3de447419263f3ac61925f606cd450170b5f52c7d"
+  },
+  "phd": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-fbe\\run\\phd.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-fbe\\run\\phd.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-fbe\\run\\phd.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\aku-fbe.fixture.phd.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "21ead23f3e60f1b38d4aaf803401d6d7bee4dcb5b7fa2fd26cda04af7b659b3c"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 1.266,
+ "commandSeconds": 16.421,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "9bf8d9eaac44db23b6f0affd8e047d1535860522",
+  "trackedDiffSha256": "6ad39678e962496369f2193e219492d38756f70fbfd84e4c94fe94dfb2182689",
+  "diagnosticsSha256": "9d28054675c03fee9a65e2f2a73c545f973ee3123c6cdcf670a95e09b12c8242",
+  "startedAt": "2026-10-11T08:06:26.022Z",
+  "codeFingerprint": "3b489cdd90fee4fdf958c43206bdf2540db13b010b063c239de75da2f9974fee",
+  "officialSourceFingerprint": "cd67e3d40a60ceedb7bd1cc54e25e016f4e3f0ea5a690aae2fd2c4789bfd2e4f"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-fbe\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "master": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "phd": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "f2aac5bb76847565ee1e5c4c740653608539ed87a1489e15a934fb94edfd1b23",
+ "artifactSha256": {
+  "master": {
+   "fixture": "4a6c0e12ab382652a9619476a601af8476c5068e92bc8d44d6642383dfdf1490",
+   "pdf": "fe389fd448efc8332fbf6e51369e02d505562d3fcd3adfffedc5ba781af13cd6",
+   "docx": "63b07a3423f87c9734bb3d2b129d5e7254371fbbecab6c8da366b1eb0329078a",
+   "layout": "35279edef2d097f13b7f3f3f8cf610fe140073df10ad0d115afe8a0a34adf95f"
+  },
+  "phd": {
+   "fixture": "06efc9371ae981923c19ba3621554cf4c3d7d225b44dc364656ded411dda9956",
+   "pdf": "b0680757a312d77f754dcbc5a90e7880e5d24256b9a16e9b83142cdb1d3e5fe3",
+   "docx": "032a5a8cb05b6dceb5317a5495c7b415ece265dab7b47c0a5034d5dd3d8201cb",
+   "layout": "ec8034b7ec0ceac2654c29b623b632212e33e55420c01dd5d4bda765cfeafa1c"
+  }
+ },
+ "checks": [
+  {
+   "id": "page-size-master",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.1; corroborated by official template sectPr#1-#4"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "page-size-phd",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.1; corroborated by official template sectPr#1-#4"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "docx-top-master",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar top=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-bottom-master",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar bottom=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-left-master",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar left=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-right-master",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar right=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-top-phd",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar top=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-bottom-phd",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar bottom=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-left-phd",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar left=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-right-phd",
+   "kind": "docx_section",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx",
+    "locator": "word/document.xml sectPr#1-#4 w:pgMar right=1701 twips (30.004 mm); guide p.5 §2.3 states 3 cm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 30.004,
+   "delta": 0.004,
+   "note": "22 sections, range 30.004..30.004",
+   "status": "PASS"
+  },
+  {
+   "id": "body-left-master",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm left margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-right-master",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm right margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-left-phd",
+   "kind": "text_extent",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm left margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-right-phd",
+   "kind": "text_extent",
+   "expected": 180,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm right margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-font-master",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.2: Times New Roman is the prose font; equation/math font is not source-specified and is excluded by the prose-line filter"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-font-phd",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT",
+    "TimesNewRomanPS-ItalicMT",
+    "TimesNewRomanPS-BoldItalicMT"
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.2: Times New Roman is the prose font; equation/math font is not source-specified and is excluded by the prose-line filter"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-size-master",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-size-phd",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.2"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-pitch-master",
+   "kind": "line_pitch",
+   "expected": 7.302,
+   "tolerance": 0.071,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5-6 §2.4, 1.5 line spacing; 20.7 pt = 7.302 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "body-pitch-phd",
+   "kind": "line_pitch",
+   "expected": 7.302,
+   "tolerance": 0.071,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5-6 §2.4, 1.5 line spacing; 20.7 pt = 7.302 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-x-left-master",
+   "kind": "text_extent",
+   "expected": 55,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-x-right-master",
+   "kind": "text_extent",
+   "expected": 155,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-top-master",
+   "kind": "line_attr",
+   "expected": 210,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-bottom-master",
+   "kind": "line_attr",
+   "expected": 275,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-center-master",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, lines centred on x=105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-first-baseline-master",
+   "kind": "text_extent",
+   "expected": 215.53,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 diagram/model; inference from 210 mm top of print box plus 12 pt TNR ascent (spec outer-cover-box)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-x-left-phd",
+   "kind": "text_extent",
+   "expected": 55,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-x-right-phd",
+   "kind": "text_extent",
+   "expected": 155,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box x=55..155 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-top-phd",
+   "kind": "line_attr",
+   "expected": 210,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-bottom-phd",
+   "kind": "line_attr",
+   "expected": 275,
+   "tolerance": 0.25,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, text box y=210..275 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-center-phd",
+   "kind": "line_attr",
+   "expected": 105,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 outer-cover dimension diagram, lines centred on x=105 mm"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "cover-first-baseline-phd",
+   "kind": "text_extent",
+   "expected": 215.53,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.32 diagram/model; inference from 210 mm top of print box plus 12 pt TNR ascent (spec outer-cover-box)"
+   },
+   "evidence": "INFERRED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "approval-baselines-master",
+   "kind": "line_baselines",
+   "expected": [
+    33.96,
+    48.48,
+    92.3,
+    114.19
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.34 approval example + spec sections.approval.layout; template render comparison retained in validation/aku-fbe/word-evidence-2/report.md"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "approval-baselines-phd",
+   "kind": "line_baselines",
+   "expected": [
+    33.96,
+    48.48,
+    92.3,
+    114.19
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.34 approval example + spec sections.approval.layout; template render comparison retained in validation/aku-fbe/word-evidence-2/report.md"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "approval-seven-juror-flow-phd",
+   "kind": "line_baselines",
+   "expected": [
+    114.19,
+    128.48,
+    142.77,
+    157.06,
+    171.35,
+    185.64,
+    199.93
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "validation/aku-fbe/word-evidence-2/report.md",
+    "locator": "Seven-juror approval flow; all seven remain on p.3; juror pitch averages 14.29 mm; seven members required with a second advisor per guide p.34 callout"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "docx-validity-master",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0,
+   "source": {
+    "file": "TxtEngine export",
+    "locator": "DOCX package XML must have defined, balanced fields and no undefined tokens"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "docx-validity-phd",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0,
+   "source": {
+    "file": "TxtEngine export",
+    "locator": "DOCX package XML must have defined, balanced fields and no undefined tokens"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "note-outer-cover-source-conflict",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0,
+   "source": {
+    "file": "validation/aku-fbe/word-evidence-2/report.md",
+    "locator": "Results: Outer-cover title"
+   },
+   "evidence": "CONFLICT",
+   "ruling": null,
+   "required": false,
+   "status": "INFO",
+   "actual": "Official Word source cover title baseline is 208.39 mm (glyph top 204.62), outside the guide's explicit y=210..275 mm print box; retain both source measurements. The box is the governing explicit requirement; 215.53 mm is an inferred target, not a separate explicit rule."
+  },
+  {
+   "id": "note-approval-baseline-source-conflict",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0,
+   "source": {
+    "file": "validation/aku-fbe/word-evidence-2/report.md",
+    "locator": "Results: Approval geometry"
+   },
+   "evidence": "CONFLICT",
+   "ruling": null,
+   "required": false,
+   "status": "INFO",
+   "actual": "Official Word source baselines 34.55/49.16/92.98/114.87 mm differ from guide-derived spec 33.96/48.48/92.30/114.19 mm by +0.59/+0.68/+0.68/+0.68 mm. Preserve both; real output must be checked against the approved guide-derived spec."
+  },
+  {
+   "id": "note-approval-jury-size",
+   "kind": "note",
+   "expected": null,
+   "tolerance": 0,
+   "source": {
+    "file": "aku-fbe.json",
+    "locator": "variants and unknowns; guide p.34 callout; see two-tier policy"
+   },
+   "evidence": "UNKNOWN",
+   "ruling": null,
+   "required": false,
+   "status": "INFO",
+   "actual": "Master's jury size is UNKNOWN. Doctoral seven-member panel applies when a second advisor exists; use the PhD fixture to exercise rows 1–7. More than seven members is UNKNOWN."
+  },
+  {
+   "id": "layout.body-left-master",
+   "kind": "landmark_x",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm left margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 29.9971,
+   "delta": -0.0029,
+   "note": "84 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "layout.body-left-phd",
+   "kind": "landmark_x",
+   "expected": 30,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+    "locator": "p.5 §2.3 (3 cm left margin)"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 29.9971,
+   "delta": -0.0029,
+   "note": "84 landmarks measured from PDF draw operations",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-master",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-master",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "308 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-master",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-phd",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-phd",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "309 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-phd",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

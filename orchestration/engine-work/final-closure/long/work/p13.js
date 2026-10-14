@@ -1,0 +1,1 @@
+(()=>{const t=[...document.querySelectorAll(".thesis-body table")].find(t=>/^Yakın tedarikçi/.test(t.textContent.trim()));const cs=getComputedStyle(t);return {layout:cs.tableLayout,w:cs.width,cg:t.querySelector('colgroup')?.outerHTML.slice(0,400),cols:[...t.querySelectorAll('col')].map(c=>getComputedStyle(c).width)}})()

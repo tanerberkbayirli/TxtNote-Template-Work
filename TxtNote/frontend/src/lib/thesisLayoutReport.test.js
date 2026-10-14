@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { layoutLandmarkIndex, layoutPageBoxes, layoutPageReport } from '../thesis/layoutReport.js';
+import { layoutLandmarkIndex, layoutPageBoxes, layoutPageReport } from '../../../../engine/src/layoutReport.js';
 
 const text = (overrides = {}) => ({ type: 'text', text: 'Evidence', x: 20, top: 120,
   width: 30, baseline: 130, style: { fontFamily: '"Times New Roman", serif', fontSize: '16px' },

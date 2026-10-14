@@ -1,0 +1,700 @@
+{
+  "mission": "03",
+  "status": "COMPLETE_DOCX_STRUCTURAL_IMPORT",
+  "date": "2026-10-09",
+  "scope": "Production DOCX structural import, located preservation reports and legacy DOC conversion guidance. Native-object/Word/PDF visual parity remains in Missions 05–12.",
+  "sourceCases": 9,
+  "unitTests": 769,
+  "unitSkipped": 0,
+  "build": "PASS",
+  "workerBuild": "PASS",
+  "sourceParagraphs": 10916,
+  "sourceRuns": 28027,
+  "sourceTextNodes": 24655,
+  "packagePartsVerified": 346,
+  "sourceSections": 64,
+  "browserObjectsReparsed": 87897,
+  "browser": {
+    "status": "PASS",
+    "browser": "154.0.8037.98",
+    "nativeCases": [
+      {
+        "id": "EDGE_STRUCTURE",
+        "sections": 2,
+        "activeObjects": 994,
+        "status": "PASS"
+      },
+      {
+        "id": "EDGE_NOTES",
+        "sections": 1,
+        "activeObjects": 43,
+        "status": "PASS"
+      }
+    ],
+    "checks": [
+      "actual file input and Web Worker",
+      "preview cancellation leaves original intact",
+      "legacy DOC actionable conversion; original intact",
+      "atomic apply",
+      "all source sections visible",
+      "source font and alignment applied",
+      "actual contentEditable edit",
+      "JSON save/reload retains IDs and native styles",
+      "persistent located import report",
+      "independent native Word boundaries imported and reopened in actual editor"
+    ],
+    "pageErrors": []
+  },
+  "broaderRegressionCounts": {
+    "PASS": 881,
+    "SKIPPED": 836,
+    "FAIL": 6,
+    "INFO": 32
+  },
+  "wordRequested": false,
+  "regressionStatus": "23 targets unchanged from Mission 02; 6 existing failures and Word-only skips are not passes",
+  "retriedTargets": [
+    "aku-sbe"
+  ],
+  "retryExecution": "CHECK_EXPORT_JOBS=1; unchanged pagination gates and measurement tolerances",
+  "regressionComparisons": [
+    {
+      "target": "adu-sagbil",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 154,
+        "SKIPPED": 147
+      },
+      "failureIds": []
+    },
+    {
+      "target": "adu-ziraat-lisans",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 13,
+        "FAIL": 1,
+        "INFO": 1
+      },
+      "failureIds": [
+        "cover-inner-baselines"
+      ]
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 22,
+        "SKIPPED": 3,
+        "INFO": 1
+      },
+      "failureIds": []
+    },
+    {
+      "target": "afsu-lee",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 82,
+        "SKIPPED": 6,
+        "INFO": 1
+      },
+      "failureIds": []
+    },
+    {
+      "target": "afsu-tip",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 46,
+        "INFO": 2,
+        "SKIPPED": 3
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 42,
+        "SKIPPED": 6,
+        "INFO": 3
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-fbe",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "SKIPPED": 27,
+        "PASS": 18,
+        "INFO": 3
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 46,
+        "INFO": 4,
+        "SKIPPED": 37
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 35,
+        "INFO": 4,
+        "SKIPPED": 26
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 27,
+        "INFO": 1,
+        "SKIPPED": 12
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 27,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 49,
+        "SKIPPED": 6,
+        "INFO": 2
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 29,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "failureIds": []
+    },
+    {
+      "target": "aku-sagbil",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 25,
+        "SKIPPED": 11,
+        "FAIL": 1,
+        "INFO": 1
+      },
+      "failureIds": [
+        "toc-page-labels-editor"
+      ]
+    },
+    {
+      "target": "aku-sbe",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 117,
+        "INFO": 2,
+        "FAIL": 4
+      },
+      "failureIds": [
+        "page-labels-front-master-en",
+        "page-labels-front-phd-en",
+        "page-labels-unnumbered-master-en",
+        "page-labels-unnumbered-phd-en"
+      ]
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "INFO": 4,
+        "PASS": 18,
+        "SKIPPED": 10
+      },
+      "failureIds": []
+    },
+    {
+      "target": "engine-word-justify",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "SKIPPED": 16,
+        "PASS": 4
+      },
+      "failureIds": []
+    },
+    {
+      "target": "engine-word-pagefit",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "SKIPPED": 189,
+        "PASS": 16
+      },
+      "failureIds": []
+    },
+    {
+      "target": "engine-word-parity",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "SKIPPED": 141,
+        "PASS": 5
+      },
+      "failureIds": []
+    },
+    {
+      "target": "engine-word-structure",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "SKIPPED": 115,
+        "PASS": 15
+      },
+      "failureIds": []
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 38,
+        "SKIPPED": 15
+      },
+      "failureIds": []
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "PASS": 47,
+        "INFO": 1
+      },
+      "failureIds": []
+    },
+    {
+      "target": "phase52-justify",
+      "status": "UNCHANGED_FROM_MISSION02",
+      "counts": {
+        "SKIPPED": 24,
+        "PASS": 6
+      },
+      "failureIds": []
+    }
+  ],
+  "assets": [
+    {
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+      "sha256": "779245da7f25a8dc662a051cfd9897d318b41733e5b616b63e74553610821599"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+      "sha256": "f89164a95b38b0844afbaf988b01c927229af84e6af4cd14f101b998fa3ad153"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+      "sha256": "3a891f9fe8da0a9c4ad0d1f0b6b41c048d03e27d75dcfe1ba0b8c00e4c4520cd"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+      "sha256": "82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-09-04.docx",
+      "sha256": "f702932ff14bc464bb0500e4158a25c0a0abc37b4a0a42d20cf777bb37e16226"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+      "sha256": "1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+      "sha256": "a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b"
+    },
+    {
+      "path": "engine/close_mission03.py",
+      "sha256": "535d4658f5e371ef48a066a0cd54fb6ddc260bdd5c3da2475a7c4fad4bf79846"
+    },
+    {
+      "path": "engine/MISSION.md",
+      "sha256": "ccaebcae0d2bdc10d00cab4ea7bf150c6ab21400ea80d7e373f5cda80f8072e4"
+    },
+    {
+      "path": "engine/mission01/inputs/edge-long-notes-final.docx",
+      "sha256": "9ca7f552847d766db9e3a4d8d9aed888282bef81c003aa323ab089a20826ec86"
+    },
+    {
+      "path": "engine/mission01/inputs/edge-native-structure-final.docx",
+      "sha256": "9f0ec3fc18909d52738ed82cbfc43bcd68790dde921a7e3bbda0e1503fdaf8f8"
+    },
+    {
+      "path": "engine/mission02/final-regression/adu-sagbil/check-20261008-2321.json",
+      "sha256": "e0eb743e788d51479e04e47a6c32e8eac2145a51a234ac4588231879865333ba"
+    },
+    {
+      "path": "engine/mission02/final-regression/adu-ziraat-lisans/check-20261008-2321.json",
+      "sha256": "3582e0c15c2faef2d45e7d469f55e6a57ab73a30f7e111d39af66eea98bb265b"
+    },
+    {
+      "path": "engine/mission02/final-regression/afsu-eczacilik-proje/check-20261008-2322.json",
+      "sha256": "b4e2d250f977642a7f22c5164bcd68945d038ace7203e2a0c8e8b93071da0acc"
+    },
+    {
+      "path": "engine/mission02/final-regression/afsu-lee/check-20261008-2322.json",
+      "sha256": "109d70521bfa5e6ab28e78d3af2774bcbd50f3ba871b17b51aefc0b1661e6bb0"
+    },
+    {
+      "path": "engine/mission02/final-regression/afsu-tip/check-20261008-2322.json",
+      "sha256": "6a72a08a86fb8926b63cc3d7afd35a7a42b832b2827c7c8a784c873590417688"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-cografya-lisans/check-20261008-2323.json",
+      "sha256": "ecd64bb841b5644f1fe5443e16a2bda74d9ba707f4890b30d8f5a2cbd37450ac"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-fbe/check-20261008-2323.json",
+      "sha256": "d1e5283b843657d1aafd9e00a9bb69b48ecaf72f4582b4acc0d4cfbebcf3eed0"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-felsefe-lisans/check-20261008-2323.json",
+      "sha256": "f47503fa0e682d23edf14c29c6e1d3e5c72ef0ee740d3e88cac66bbb9993763f"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-felsefe-seminer/check-20261009-0931.json",
+      "sha256": "80a8ee2b9b615cc8588cec0359b2d7df790d42eff204da661e41d3354e71c3e6"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-isg-tezsiz-proje/check-20261009-0931.json",
+      "sha256": "696e128a22dcd1e1939d90884e1da0d377150b7c52afc586a9e2b1e45fe7d73c"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-kimya-lisans/check-20261009-0923.json",
+      "sha256": "1e559ce7a5b6ff500eb613041eadac116ed347140c34985b673db2c506afbbd9"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-matematik-lisans/check-20261009-0923.json",
+      "sha256": "28c334fbcb3ef7bcc07f69756f81670bc35f9fe3aa6a5f343ac4cf0b0540ec64"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-mbg-lisans/check-20261009-0923.json",
+      "sha256": "856089bd541ac6707021a0eb1888ae08e6ba869f3b73e60f58492c0a34d7a6e7"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-sagbil/check-20261009-0924.json",
+      "sha256": "47975bbd7f30a39b319edd295899ac5f5a26b7c1dfed52583ff590ca3d3ea509"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-sbe/check-20261009-0932.json",
+      "sha256": "a89a752e36abd3eee29edc7587926d7ec151b7e430c4eb1b4bd899a2026e9357"
+    },
+    {
+      "path": "engine/mission02/final-regression/aku-sosyoloji-lisans/check-20261009-0924.json",
+      "sha256": "c8db702a88b4b2156584c6f10b5b3f68a35e1b8eb8bca95a67fade26f4eaa1c1"
+    },
+    {
+      "path": "engine/mission02/final-regression/engine-word-justify/check-20261009-0925.json",
+      "sha256": "100adc3c2c0ce5b0d4c1b2b0f9ec38e1d01d4968bbefd9a4b995360ab34f2da5"
+    },
+    {
+      "path": "engine/mission02/final-regression/engine-word-pagefit/check-20261009-0925.json",
+      "sha256": "dc0a2b419ca78d8305e90bae2288e7f09d9929fcb8762fdb1839c41436046dc0"
+    },
+    {
+      "path": "engine/mission02/final-regression/engine-word-parity/check-20261009-0925.json",
+      "sha256": "d9ceaad1a7eaf3d5c6aacb89ea0cfe120342f697008fce7b9332f9ee32fb493a"
+    },
+    {
+      "path": "engine/mission02/final-regression/engine-word-structure/check-20261009-0926.json",
+      "sha256": "e19c4695e1d0f3126a7e383fb39b1e42b0f493ea62253e747defa1d1ca05f39d"
+    },
+    {
+      "path": "engine/mission02/final-regression/engine-word-style-precedence/check-20261009-0926.json",
+      "sha256": "6de7d8317bfc33d77adba02e15194d11a1694f7cb9cb3bf160dca1c661de07ff"
+    },
+    {
+      "path": "engine/mission02/final-regression/mcbu-tip-uzmanlik/check-20261009-0926.json",
+      "sha256": "a70de252804d4b23e84fb9fddf1cd961d5c8caa2c18af5d105fd22603790b1e1"
+    },
+    {
+      "path": "engine/mission02/final-regression/phase52-justify/check-20261009-0926.json",
+      "sha256": "e99b1dd69525b68a3a837f2a2a3225c03c9a300bdf08a13b11ef44df817ca10a"
+    },
+    {
+      "path": "engine/mission03/.gitignore",
+      "sha256": "979670bf0d0bacc06ed68faa7a11820326d9aadd729398d3ee2dc1de050c9f06"
+    },
+    {
+      "path": "engine/mission03/browser-EDGE_NOTES.png",
+      "sha256": "ca84cb78ec2fcd9e634928c26aa3aa45fe36f7c1ffeaa47b2a27bb89c56b5b24"
+    },
+    {
+      "path": "engine/mission03/browser-EDGE_STRUCTURE.png",
+      "sha256": "7b11390a9797a7cf4cb5627bbc73308916ebf4d5d85f028b32cad7ad202a998a"
+    },
+    {
+      "path": "engine/mission03/browser-final.png",
+      "sha256": "1db5e9b1227a54436c81caf133ce59be5fa0afcc03ad6f4503c0db259b43d9c0"
+    },
+    {
+      "path": "engine/mission03/browser-verification.json",
+      "sha256": "07220a17dc7469ce9fcc60730bc118fce082ef28d05a6a8e9a4fd9308c1abf03"
+    },
+    {
+      "path": "engine/mission03/build.log",
+      "sha256": "a33c605eb137a0ddc5abbc164cce75cb50b4df658f65c3d2bea2e2489cccaebe"
+    },
+    {
+      "path": "engine/mission03/dom-verification.json",
+      "sha256": "7bff7a8723add1efa5f67dc00c698e58b3d8b0f6f6ea24483a2032ff163d689d"
+    },
+    {
+      "path": "engine/mission03/README.md",
+      "sha256": "37fba437e789945f12da294860d17f711380a25f299a71abf90bbe9a6c0dfd4e"
+    },
+    {
+      "path": "engine/mission03/regression/adu-sagbil/check-20261009-1011.json",
+      "sha256": "3fa033136fcbfede8418fd3cabba03023b8c9c4e68bae026f85d148a4c6d88bd"
+    },
+    {
+      "path": "engine/mission03/regression/adu-ziraat-lisans/check-20261009-1011.json",
+      "sha256": "8f3662d002414fc1e1834eaa2aa332afbf5f2e54d9ea2b70006f1b098621397e"
+    },
+    {
+      "path": "engine/mission03/regression/afsu-eczacilik-proje/check-20261009-1011.json",
+      "sha256": "203e61bcc5d793a6780b1baa1e4b49c8e9be3ddd95adc2d57af342135d9a9f24"
+    },
+    {
+      "path": "engine/mission03/regression/afsu-lee/check-20261009-1012.json",
+      "sha256": "df2427f324e5bcad0f97302bb682b11aef96c66532592ceb68433fcf9f04564a"
+    },
+    {
+      "path": "engine/mission03/regression/afsu-tip/check-20261009-1013.json",
+      "sha256": "8289d08ebf3699687af1376559ea113bd6451736f044633ca31c0373c16d724c"
+    },
+    {
+      "path": "engine/mission03/regression/aku-cografya-lisans/check-20261009-1013.json",
+      "sha256": "9926c1ea1b551620b9bc011286bf4d5b0525db5740bbf7980260474ef91dce39"
+    },
+    {
+      "path": "engine/mission03/regression/aku-fbe/check-20261009-1013.json",
+      "sha256": "9e87c9f07d779df7de1baec8bd1c9319213e3c4ba2218a3d7673717a18c269af"
+    },
+    {
+      "path": "engine/mission03/regression/aku-felsefe-lisans/check-20261009-1014.json",
+      "sha256": "eccfa6aec732aa980c1cce69151ddc0ac9c893f27077c9bbaadf8d2b7da7a3c5"
+    },
+    {
+      "path": "engine/mission03/regression/aku-felsefe-seminer/check-20261009-1014.json",
+      "sha256": "4e3dee4aaaf2260e2dbc035a84958bdf2b07f2a4008f5e7663ce4bebd418dbaf"
+    },
+    {
+      "path": "engine/mission03/regression/aku-isg-tezsiz-proje/check-20261009-1014.json",
+      "sha256": "f4c912d6c145a9beec9e4bc71fec9e1414966e8fca29817603349c09317e2079"
+    },
+    {
+      "path": "engine/mission03/regression/aku-kimya-lisans/check-20261009-1015.json",
+      "sha256": "d091ff353e244c4d6a506981f72ee0cc47787eedc7ac1ec9761f53ead7925ea9"
+    },
+    {
+      "path": "engine/mission03/regression/aku-matematik-lisans/check-20261009-1015.json",
+      "sha256": "f608d28d8065e6cd91c63ee137c2c9cd32d74f7613f072fdbc4f8c415640fb0e"
+    },
+    {
+      "path": "engine/mission03/regression/aku-mbg-lisans/check-20261009-1015.json",
+      "sha256": "c1bff42cff5fbc17475dc47d9db4d66ee6ed756ea4d7d6d550ab0093018185c4"
+    },
+    {
+      "path": "engine/mission03/regression/aku-sagbil/check-20261009-1016.json",
+      "sha256": "ec2fc7442093a0d001bc08876daee6471f789996f05139dfad51c47845fdd51a"
+    },
+    {
+      "path": "engine/mission03/regression/aku-sosyoloji-lisans/check-20261009-1016.json",
+      "sha256": "ead2f88438e0bc1721457b1bd2b76773177e5b1ead0298964bdc5245df388e9b"
+    },
+    {
+      "path": "engine/mission03/regression/engine-word-justify/check-20261009-1017.json",
+      "sha256": "1b7958bf2ebb529ff75a98a494e532c38ed52e1aab6db732b7fcbe375393284f"
+    },
+    {
+      "path": "engine/mission03/regression/engine-word-pagefit/check-20261009-1017.json",
+      "sha256": "5a2a62454aff20fef4bb337009afe8eb7230907a2d75d19ccc7642da6dad476c"
+    },
+    {
+      "path": "engine/mission03/regression/engine-word-parity/check-20261009-1018.json",
+      "sha256": "21509df9949a4b27ebd3b53c0f8645e484b3e84d69dd1832ddef311f6489b2c4"
+    },
+    {
+      "path": "engine/mission03/regression/engine-word-structure/check-20261009-1018.json",
+      "sha256": "c8766eda098f51ce5a2de2c2572dc9b7aaf41e7dfe9aae8c8db25cd616e3ea6e"
+    },
+    {
+      "path": "engine/mission03/regression/engine-word-style-precedence/check-20261009-1018.json",
+      "sha256": "d37d7bef6256f5fec1c3aa6ea8d0c8849406ce3ad57a0dd67da19de2e20985fe"
+    },
+    {
+      "path": "engine/mission03/regression/mcbu-tip-uzmanlik/check-20261009-1018.json",
+      "sha256": "be6fcb723adaaa260833f9ba6f50f33fcc597e56d1712e9d13194886132fe40e"
+    },
+    {
+      "path": "engine/mission03/regression/phase52-justify/check-20261009-1018.json",
+      "sha256": "771b79a8f13b6390eaf8be177f0a8a3131a569705037dc0a3da675362eacca22"
+    },
+    {
+      "path": "engine/mission03/regression-manifest.json",
+      "sha256": "d7755dfb483b6535b8e73b0ca39e5d9c3bead5cc27bdff34a98517b495d9e8ee"
+    },
+    {
+      "path": "engine/mission03/regression.log",
+      "sha256": "9422b9c4cf0b96f156fedefdb0a249aed4351ce4f3e83da137ae3eed924716f2"
+    },
+    {
+      "path": "engine/mission03/retry-final-manifest.json",
+      "sha256": "44d124080d88c0247e9b15bcb444f9ab973cb8617f959a27fa3b422c40bb34c2"
+    },
+    {
+      "path": "engine/mission03/retry-final.log",
+      "sha256": "fcf47fe5058580ab6a264e4205699db3180a2a11a8d5822ac4a911d40e55410e"
+    },
+    {
+      "path": "engine/mission03/retry-manifest.json",
+      "sha256": "e2f91b7b679f3e96997541385c80e7c50e7991491eb5d8323565fcba436df9d3"
+    },
+    {
+      "path": "engine/mission03/retry-serial/aku-sbe/check-20261009-1029.json",
+      "sha256": "35b0535fb2cf0c59ec7c75a65d67c4b45fad66d85fb3805b7ba8e8e055540822"
+    },
+    {
+      "path": "engine/mission03/retry-serial-manifest.json",
+      "sha256": "da654fa76f13b92671a19e73e4da1c9009c7f72ff8d2d9c059c68da4930acf07"
+    },
+    {
+      "path": "engine/mission03/retry-serial.log",
+      "sha256": "b4188f0faebfff50366c0126d714535bc65ee16453b8065db46bf13acf1badb8"
+    },
+    {
+      "path": "engine/mission03/retry.log",
+      "sha256": "fcf47fe5058580ab6a264e4205699db3180a2a11a8d5822ac4a911d40e55410e"
+    },
+    {
+      "path": "engine/mission03/source-oracle.json",
+      "sha256": "b1bc1231d2ac99c59e79fb73430e83e97d89d49d46a0aa0431ae0136efd7a262"
+    },
+    {
+      "path": "engine/mission03/source-verification.json",
+      "sha256": "8e7ad84fb5cda76e7635e80f957df97da66ddbd75302e45527a21dd3d5b2d39a"
+    },
+    {
+      "path": "engine/mission03/unit-tests.log",
+      "sha256": "871548ef7d81870ab1141e9cf041f6b97ddf00faacfa5b5ca94d564c2829fb92"
+    },
+    {
+      "path": "engine/mission03_sources.py",
+      "sha256": "7cb170f40fa8ec1455d8cee85a2a656264905226183f4d6c07d4d8a626c9d746"
+    },
+    {
+      "path": "engine/verify_mission03_browser.mjs",
+      "sha256": "0e5704543d2ec9a0b1aaa217d649235e56c337de3d7e4a27af19f34d1544111b"
+    },
+    {
+      "path": "engine/verify_mission03_dom.mjs",
+      "sha256": "782c690fe5cbc5fbb69d789d07e384cc32c845a3e7304774f39be4c6a5ffa062"
+    },
+    {
+      "path": "engine/verify_mission03_sources.mjs",
+      "sha256": "bb6d2f53a2cb08c8bf5308a36a3977e40e7b5c55c609643ef283e781d39a98c7"
+    },
+    {
+      "path": "TxtNote/frontend/package-lock.json",
+      "sha256": "0a37262778448467417485c1d05f3ca49cf38fd9766245fcb82062f6c86a8a22"
+    },
+    {
+      "path": "TxtNote/frontend/package.json",
+      "sha256": "1678fec2357c479a1b1254725bcf607d217c516ac44982705e3a81fc4edc0999"
+    },
+    {
+      "path": "TxtNote/frontend/src/features/canvas/Canvas.jsx",
+      "sha256": "2ec1d6c16d3eb7b7afd210c18347fe3eb49e3ecf5d45b945d06e3ca4419bec05"
+    },
+    {
+      "path": "TxtNote/frontend/src/features/editor/ribbon/FileTab.jsx",
+      "sha256": "4340b48c87378d698071bb4e1e418af28e07bc713c4d847cc72e3eda352f3bbe"
+    },
+    {
+      "path": "TxtNote/frontend/src/features/editor/ThesisEditor.jsx",
+      "sha256": "81ddc24dcf181b304092c061b9d4219009e9f717e41c879188a7964d333b839a"
+    },
+    {
+      "path": "TxtNote/frontend/src/features/editor/ThesisRibbon.jsx",
+      "sha256": "8ab43d3f6eba048a1e73f708b4f19ad0397885f9df8c07fa15b3aaa4289529b1"
+    },
+    {
+      "path": "TxtNote/frontend/src/features/editor/WordImportReview.jsx",
+      "sha256": "c9270e25efdeea39dbb676aa5c71addf1b84fcac50e26d588bdf0f9e9bd4ae6c"
+    },
+    {
+      "path": "TxtNote/frontend/src/features/workarea/DocumentPane.jsx",
+      "sha256": "2d30358c437916d6bc45e15ed28e4b5e0d77745df6dc615ddb00b4c1ad09cb0e"
+    },
+    {
+      "path": "TxtNote/frontend/src/lib/fixtures/docxImportFixture.js",
+      "sha256": "8a290d87c45ef00b1a70755c4c3fbc264086214d4e53f36f1747ca887c1493c1"
+    },
+    {
+      "path": "TxtNote/frontend/src/lib/thesisDocxImport.test.js",
+      "sha256": "7be0358c7129e1931665aaca6f1a5ca9222c95811ba821dc62ffcf0b7064cd15"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/CAPABILITIES.md",
+      "sha256": "4c883481152d003a5e31b9edf622b38ab2065c8d879f3a5440a61ed13eceae2c"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/contentModel.js",
+      "sha256": "f8f2011c96d975f9c4ccecd90d9f9b5259782ba994d138d78fc0b21561c8b044"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/import.worker.js",
+      "sha256": "5ab6d01a813657aed9c1f5b409e4b5563aa685a41757877904e50faa28d6e30d"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/importPackage.js",
+      "sha256": "05b27030ed5ae55597556c24c80cfb5b8d61c5aaac0f5e8bcd4ad9013efeb7c2"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/projection.js",
+      "sha256": "557af7803e645246d9441169e9fc94eeeddf72504e146de8322716d9fee56db2"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/properties.js",
+      "sha256": "974e8c3e44afc7dea1e3e44cbe3df469a59258d77a731df321a148dc8b2cbc3c"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/engine.js",
+      "sha256": "50177e0928b2ac075278af86ef756c1a5c8ca9e1da24a928c18a2a94025a6a4f"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/importDocx.js",
+      "sha256": "2e7c7dc9adb57cb49e0210766bcf460686dee27de24d6311e16121067a69c097"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/README.md",
+      "sha256": "7f6da8bc8d8e0475439a8b0984385dd00a2eb80b0a036ad270b5498b941499bc"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/schema.d.ts",
+      "sha256": "b930bba5a1d51f31c5de54f86f5d25ba3ae64bf08e7c66443d8c384266d56d83"
+    },
+    {
+      "path": "TxtNote/frontend/tests/thesis-fixture.jsx",
+      "sha256": "7ba03cbbace9d86373c691af78d879f8e572dda7322d5a18917b7beb216cbf13"
+    }
+  ]
+}

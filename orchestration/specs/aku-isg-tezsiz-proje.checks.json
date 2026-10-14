@@ -202,11 +202,11 @@
     "id": "page-labels",
     "kind": "page_labels",
     "params": {},
-    "expected": "none x2, ii, iii, iv, v, vi, vii, viii, ix, x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22",
+    "expected": "none x2, ii, iii, iv, v, vi, vii, viii, ix, x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21",
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-      "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg: cover not counted, inner cover = i not printed, so first printed front page = ii; sectPr#3 decimal start=1 at GİRİŞ. Applied to this fixture's 34 pages (front: Etik..Simgeler = 9 pages)"
+      "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg: cover not counted, inner cover = i not printed, so first printed front page = ii; sectPr#3 decimal start=1 at GİRİŞ. Fixture pagination measured independently on 2026-10-12: editor PDF and real Word PDF both32pages (2unprinted +9Roman +21Arabic), with281/281 ordered body/cell text blocks and5/5 authored notes preserved (orchestration/engine-work/final-closure/resumed-20261012/isg-coverage.json). Original16page template ends atArabic6;22was an obsolete fixture measurement, not a source requirement. Old locator34pages also contradicted its33-label expected list."
     },
     "evidence": "MEASURED"
   },
@@ -579,11 +579,11 @@
     "params": {
       "source": "word"
     },
-    "expected": "none x2, ii, iii, iv, v, vi, vii, viii, ix, x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22",
+    "expected": "none x2, ii, iii, iv, v, vi, vii, viii, ix, x, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21",
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
-      "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg: cover not counted, inner cover = i not printed, so first printed front page = ii; sectPr#3 decimal start=1 at GİRİŞ. Applied to this fixture's 34 pages (front: Etik..Simgeler = 9 pages)"
+      "locator": "sectPr#2 pgNumType lowerRoman start=1 + titlePg: cover not counted, inner cover = i not printed, so first printed front page = ii; sectPr#3 decimal start=1 at GİRİŞ. Fixture pagination measured independently on 2026-10-12: editor PDF and real Word PDF both32pages (2unprinted +9Roman +21Arabic), with281/281 ordered body/cell text blocks and5/5 authored notes preserved (orchestration/engine-work/final-closure/resumed-20261012/isg-coverage.json). Original16page template ends atArabic6;22was an obsolete fixture measurement, not a source requirement. Old locator34pages also contradicted its33-label expected list."
     },
     "evidence": "MEASURED"
   },

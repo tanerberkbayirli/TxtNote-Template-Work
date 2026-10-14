@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { convertLength } from '../../thesis/units.js';
+import { convertLength } from '../../../../../engine/src/units.js';
 
 const cssPx = (mm, zoom) => convertLength(mm, 'mm', 'px') * zoom;
 const toMm = (px, zoom) => convertLength(px / zoom, 'px', 'mm');

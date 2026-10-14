@@ -1,0 +1,509 @@
+{
+ "45": {
+  "k": 0.6987268072783799,
+  "lines": [
+   {
+    "top": 80.3,
+    "bottom": 92.3,
+    "id": "docx-2982",
+    "text": "SERVICE"
+   },
+   {
+    "top": 111.7,
+    "bottom": 123.7,
+    "id": "docx-2995",
+    "text": "EQP SIZE"
+   },
+   {
+    "top": 143.2,
+    "bottom": 155.2,
+    "id": "docx-3008",
+    "text": "EQP TYPE"
+   },
+   {
+    "top": 174.7,
+    "bottom": 186.7,
+    "id": "docx-3021",
+    "text": "EMPTY/FULL (E/F)"
+   },
+   {
+    "top": 206.1,
+    "bottom": 218.1,
+    "id": "docx-3034",
+    "text": "TOTAL NET WEIGHT (KGs)"
+   },
+   {
+    "top": 225.1,
+    "bottom": 237.1,
+    "id": "docx-3034",
+    "text": "TOTAL NET WEIGHT (KGs)"
+   },
+   {
+    "top": 256.6,
+    "bottom": 268.6,
+    "id": "docx-3047",
+    "text": "NET WEIGHT CLASS"
+   },
+   {
+    "top": 288,
+    "bottom": 300,
+    "id": "docx-3060",
+    "text": "AGE"
+   },
+   {
+    "top": 319.5,
+    "bottom": 331.5,
+    "id": "docx-3073",
+    "text": "Features"
+   },
+   {
+    "top": 351,
+    "bottom": 363,
+    "id": "docx-3086",
+    "text": "AGE CLASS"
+   },
+   {
+    "top": 382.4,
+    "bottom": 394.4,
+    "id": "docx-3103",
+    "text": "MISCELLANEOUS"
+   },
+   {
+    "top": 391.9,
+    "bottom": 403.9,
+    "id": "docx-3099",
+    "text": "COMMODITY GROUP"
+   },
+   {
+    "top": 401.4,
+    "bottom": 413.4,
+    "id": "docx-3103",
+    "text": "MISCELLANEOUS"
+   },
+   {
+    "top": 432.9,
+    "bottom": 444.9,
+    "id": "docx-3112",
+    "text": "PREVIOUS DAMAGES"
+   },
+   {
+    "top": 464.3,
+    "bottom": 476.3,
+    "id": "docx-3125",
+    "text": "PREVIOUS FULL LOADS"
+   },
+   {
+    "top": 495.8,
+    "bottom": 507.8,
+    "id": "docx-3138",
+    "text": "PACKING PLACE"
+   },
+   {
+    "top": 527.3,
+    "bottom": 539.3,
+    "id": "docx-3151",
+    "text": "UNPACKING PLACE"
+   },
+   {
+    "top": 558.7,
+    "bottom": 570.7,
+    "id": "docx-3164",
+    "text": "DAMAGED"
+   },
+   {
+    "top": 587.9,
+    "bottom": 600.7,
+    "id": "docx-3179",
+    "text": "The initial data analysis step shows tha"
+   },
+   {
+    "top": 608.6,
+    "bottom": 621.4,
+    "id": "docx-3179",
+    "text": "examples. Therefore, initial data needs "
+   },
+   {
+    "top": 641.3,
+    "bottom": 654.1,
+    "id": "docx-3184",
+    "text": "Data Cleansing"
+   },
+   {
+    "top": 670,
+    "bottom": 682.7,
+    "id": "docx-3189",
+    "text": "In the data cleansing step, all features"
+   },
+   {
+    "top": 690.7,
+    "bottom": 703.4,
+    "id": "docx-3189",
+    "text": "methods, missing or wrong value data row"
+   },
+   {
+    "top": 718.2,
+    "bottom": 731,
+    "id": "docx-3192",
+    "text": "Records with null values in POR – DEL ha"
+   },
+   {
+    "top": 738.9,
+    "bottom": 751.7,
+    "id": "docx-3192",
+    "text": "cleaned."
+   }
+  ]
+ },
+ "46": {
+  "k": 0.6987268072783799,
+  "lines": [
+   {
+    "top": 72.4,
+    "bottom": 85.2,
+    "id": "docx-3195",
+    "text": "Records with null and negative Net weigh"
+   },
+   {
+    "top": 93.1,
+    "bottom": 105.9,
+    "id": "docx-3195",
+    "text": "logically, the net weight value must be "
+   },
+   {
+    "top": 114.7,
+    "bottom": 127.4,
+    "id": "docx-3198",
+    "text": "The observations with missing container "
+   },
+   {
+    "top": 136.2,
+    "bottom": 149,
+    "id": "docx-3201",
+    "text": "The confusion matrix has been examined a"
+   },
+   {
+    "top": 156.9,
+    "bottom": 169.7,
+    "id": "docx-3201",
+    "text": "learning model and the data which includ"
+   },
+   {
+    "top": 177.6,
+    "bottom": 190.4,
+    "id": "docx-3201",
+    "text": "been deleted by benchmarking the total c"
+   },
+   {
+    "top": 198.3,
+    "bottom": 211.1,
+    "id": "docx-3201",
+    "text": "versus the actual dataset."
+   },
+   {
+    "top": 219.9,
+    "bottom": 232.6,
+    "id": "docx-3204",
+    "text": "Only the “Net Cargo Weight” feature has "
+   },
+   {
+    "top": 240.5,
+    "bottom": 253.3,
+    "id": "docx-3204",
+    "text": "cleaning step. The data with a Net cargo"
+   },
+   {
+    "top": 261.2,
+    "bottom": 274,
+    "id": "docx-3204",
+    "text": "evaluated as an outlier since a full con"
+   },
+   {
+    "top": 281.9,
+    "bottom": 294.7,
+    "id": "docx-3204",
+    "text": "approximately 25.000 kgs. Therefore, the"
+   },
+   {
+    "top": 302.6,
+    "bottom": 315.4,
+    "id": "docx-3204",
+    "text": "from the dataset."
+   },
+   {
+    "top": 335.3,
+    "bottom": 348.1,
+    "id": "docx-3209",
+    "text": "Data Manipulation and Classification"
+   },
+   {
+    "top": 364,
+    "bottom": 376.8,
+    "id": "docx-3214",
+    "text": "In the data analysis step, the dataset’s"
+   },
+   {
+    "top": 384.7,
+    "bottom": 397.5,
+    "id": "docx-3214",
+    "text": "classification methods. The following fe"
+   },
+   {
+    "top": 405.4,
+    "bottom": 418.2,
+    "id": "docx-3214",
+    "text": "address and label the feature values. Ma"
+   },
+   {
+    "top": 426.1,
+    "bottom": 438.9,
+    "id": "docx-3214",
+    "text": "range are classified for increasing the "
+   },
+   {
+    "top": 453.6,
+    "bottom": 466.4,
+    "id": "docx-3217",
+    "text": "Net Cargo Weight: This feature includes "
+   },
+   {
+    "top": 474.3,
+    "bottom": 487.1,
+    "id": "docx-3217",
+    "text": "dataset. Therefore, the following ranges"
+   },
+   {
+    "top": 495,
+    "bottom": 507.8,
+    "id": "docx-3217",
+    "text": "business responsible for classifying thi"
+   },
+   {
+    "top": 515.7,
+    "bottom": 528.5,
+    "id": "docx-3217",
+    "text": "and the multi-label classification metho"
+   },
+   {
+    "top": 539.4,
+    "bottom": 552.1,
+    "id": "docx-3220",
+    "text": "Total Net Weight = 0, Gets “EMPTY” label"
+   },
+   {
+    "top": 566.1,
+    "bottom": 578.8,
+    "id": "docx-3223",
+    "text": "10000>= Total Net Weight >= 1, Gets “LIG"
+   },
+   {
+    "top": 592.8,
+    "bottom": 605.5,
+    "id": "docx-3226",
+    "text": "20000>= Total Net Weight >= 10001, Gets "
+   },
+   {
+    "top": 619.5,
+    "bottom": 632.2,
+    "id": "docx-3229",
+    "text": "Total Net Weight >= 20001, Gets “HEAVY” "
+   },
+   {
+    "top": 650.1,
+    "bottom": 662.8,
+    "id": "docx-3232",
+    "text": "Container Age: This numerical feature in"
+   },
+   {
+    "top": 670.8,
+    "bottom": 683.5,
+    "id": "docx-3232",
+    "text": "container in terms of the year. Since th"
+   },
+   {
+    "top": 691.4,
+    "bottom": 704.2,
+    "id": "docx-3232",
+    "text": "multi-label classification method is imp"
+   },
+   {
+    "top": 712.1,
+    "bottom": 724.9,
+    "id": "docx-3232",
+    "text": "responsible."
+   },
+   {
+    "top": 735.8,
+    "bottom": 748.5,
+    "id": "docx-3235",
+    "text": "5>= Container Age>=0, Gets “0-5” label"
+   }
+  ]
+ },
+ "47": {
+  "k": 0.6987268072783799,
+  "lines": [
+   {
+    "top": 68.6,
+    "bottom": 81.3,
+    "id": "docx-3238",
+    "text": "10>= Container Age>=6, Gets “6-10” label"
+   },
+   {
+    "top": 95.3,
+    "bottom": 108,
+    "id": "docx-3241",
+    "text": "15>= Container Age>=11, Gets “11-15” lab"
+   },
+   {
+    "top": 121.9,
+    "bottom": 134.7,
+    "id": "docx-3244",
+    "text": "Container Age> 15, Gets “>15” label."
+   },
+   {
+    "top": 152.5,
+    "bottom": 165.3,
+    "id": "docx-3247",
+    "text": "Commodity Group: Commodities show the go"
+   },
+   {
+    "top": 173.2,
+    "bottom": 186,
+    "id": "docx-3247",
+    "text": "in containers. There are approximately 1"
+   },
+   {
+    "top": 193.9,
+    "bottom": 206.7,
+    "id": "docx-3247",
+    "text": "standards. [HS Code link]. One hundred d"
+   },
+   {
+    "top": 214.6,
+    "bottom": 227.4,
+    "id": "docx-3247",
+    "text": "generate a complication in the ML model "
+   },
+   {
+    "top": 235.3,
+    "bottom": 248.1,
+    "id": "docx-3247",
+    "text": "Therefore, it should be classified as a "
+   },
+   {
+    "top": 256,
+    "bottom": 268.8,
+    "id": "docx-3247",
+    "text": "classification method is applied accordi"
+   },
+   {
+    "top": 276.7,
+    "bottom": 289.5,
+    "id": "docx-3253",
+    "text": "classification standards. (Foreign Trade"
+   },
+   {
+    "top": 294.4,
+    "bottom": 307.1,
+    "id": "docx-3256",
+    "text": "Commodity Group between 01-05, Gets "
+   },
+   {
+    "top": 315.1,
+    "bottom": 327.8,
+    "id": "docx-3263",
+    "text": "Commodity Group between 06-15, Gets "
+   },
+   {
+    "top": 335.7,
+    "bottom": 348.5,
+    "id": "docx-3270",
+    "text": "Commodity Group between 16-24, Gets "
+   },
+   {
+    "top": 356.4,
+    "bottom": 369.2,
+    "id": "docx-3277",
+    "text": "Commodity Group between 25-27, Gets "
+   },
+   {
+    "top": 377.1,
+    "bottom": 389.9,
+    "id": "docx-3284",
+    "text": "Commodity Group between 28-38, Gets "
+   },
+   {
+    "top": 397.8,
+    "bottom": 410.6,
+    "id": "docx-3288",
+    "text": "Chemicals & Allied Industries”"
+   },
+   {
+    "top": 418.5,
+    "bottom": 431.3,
+    "id": "docx-3291",
+    "text": "Commodity Group between 39-40, Gets "
+   },
+   {
+    "top": 439.2,
+    "bottom": 452,
+    "id": "docx-3298",
+    "text": "Commodity Group between 41-43, Gets "
+   },
+   {
+    "top": 459.9,
+    "bottom": 472.7,
+    "id": "docx-3302",
+    "text": "Raw Hides, Skins, Leather, & Furs”"
+   },
+   {
+    "top": 480.6,
+    "bottom": 493.4,
+    "id": "docx-3305",
+    "text": "Commodity Group between 44-49, Gets "
+   },
+   {
+    "top": 501.3,
+    "bottom": 514.1,
+    "id": "docx-3314",
+    "text": "Commodity Group between 50-63, Gets "
+   },
+   {
+    "top": 522,
+    "bottom": 534.8,
+    "id": "docx-3321",
+    "text": "Commodity Group between 64-67, Gets "
+   },
+   {
+    "top": 542.7,
+    "bottom": 555.5,
+    "id": "docx-3328",
+    "text": "Commodity Group between 68-71, Gets "
+   },
+   {
+    "top": 563.4,
+    "bottom": 576.2,
+    "id": "docx-3339",
+    "text": "Commodity Group between 72-83, Gets "
+   },
+   {
+    "top": 584.1,
+    "bottom": 596.9,
+    "id": "docx-3350",
+    "text": "Commodity Group between 84-85, Gets "
+   },
+   {
+    "top": 604.8,
+    "bottom": 617.5,
+    "id": "docx-3359",
+    "text": "Commodity Group between 86-89, Gets "
+   },
+   {
+    "top": 634.5,
+    "bottom": 647.3,
+    "id": "docx-3366",
+    "text": "Commodity Group between 90-97, Gets "
+   }
+  ]
+ }
+}

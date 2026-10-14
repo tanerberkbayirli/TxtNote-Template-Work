@@ -1,0 +1,314 @@
+{
+  "startedAt": "2026-10-11T08:03:40.461Z",
+  "wordRequested": false,
+  "targets": [
+    {
+      "target": "adu-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 15.426,
+      "report": "engine\\mission08\\sbe-verify\\all\\adu-sagbil\\check-20261011-1103.json",
+      "counts": {
+        "PASS": 154,
+        "SKIPPED": 147
+      },
+      "measurementSeconds": 1.063,
+      "error": null
+    },
+    {
+      "target": "adu-ziraat-lisans",
+      "exitCode": 0,
+      "commandSeconds": 15.107,
+      "report": "engine\\mission08\\sbe-verify\\all\\adu-ziraat-lisans\\check-20261011-1104.json",
+      "counts": {
+        "PASS": 14,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.141,
+      "error": null
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "exitCode": 1,
+      "commandSeconds": 27.37,
+      "report": "engine\\mission08\\sbe-verify\\all\\afsu-eczacilik-proje\\check-20261011-1104.json",
+      "counts": {
+        "PASS": 22,
+        "SKIPPED": 3,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.953,
+      "error": null
+    },
+    {
+      "target": "afsu-lee",
+      "exitCode": 1,
+      "commandSeconds": 43.394,
+      "report": "engine\\mission08\\sbe-verify\\all\\afsu-lee\\check-20261011-1105.json",
+      "counts": {
+        "PASS": 82,
+        "SKIPPED": 6,
+        "INFO": 1
+      },
+      "measurementSeconds": 5.687,
+      "error": null
+    },
+    {
+      "target": "afsu-tip",
+      "exitCode": 1,
+      "commandSeconds": 29.094,
+      "report": "engine\\mission08\\sbe-verify\\all\\afsu-tip\\check-20261011-1105.json",
+      "counts": {
+        "PASS": 46,
+        "INFO": 2,
+        "SKIPPED": 3
+      },
+      "measurementSeconds": 1.547,
+      "error": null
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "exitCode": 1,
+      "commandSeconds": 34.862,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-cografya-lisans\\check-20261011-1106.json",
+      "counts": {
+        "PASS": 42,
+        "SKIPPED": 6,
+        "INFO": 3
+      },
+      "measurementSeconds": 1.171,
+      "error": null
+    },
+    {
+      "target": "aku-fbe",
+      "exitCode": 1,
+      "commandSeconds": 17.106,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-fbe\\check-20261011-1106.json",
+      "counts": {
+        "SKIPPED": 27,
+        "PASS": 18,
+        "INFO": 3
+      },
+      "measurementSeconds": 1.266,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "exitCode": 1,
+      "commandSeconds": 19.653,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-felsefe-lisans\\check-20261011-1107.json",
+      "counts": {
+        "PASS": 46,
+        "INFO": 4,
+        "SKIPPED": 37
+      },
+      "measurementSeconds": 0.875,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "exitCode": 1,
+      "commandSeconds": 25.273,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-felsefe-seminer\\check-20261011-1107.json",
+      "counts": {
+        "PASS": 35,
+        "INFO": 4,
+        "SKIPPED": 26
+      },
+      "measurementSeconds": 1.015,
+      "error": null
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "exitCode": 3,
+      "commandSeconds": 255.276,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "export of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-isg-tezsiz-proje\\run\\check.log):\n===============\nwaiting for event \"download\"\n============================================================\n    at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\export.mjs:167:24\nconsole: You are calling ReactDOMClient.createRoot() on a container that has already been passed to createRoot() before. Instead, call root.render() on the existing root instead if you want to update it."
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "exitCode": 1,
+      "commandSeconds": 27.569,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-kimya-lisans\\check-20261011-1112.json",
+      "counts": {
+        "PASS": 27,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.437,
+      "error": null
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "exitCode": 1,
+      "commandSeconds": 34.922,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-matematik-lisans\\check-20261011-1112.json",
+      "counts": {
+        "PASS": 49,
+        "SKIPPED": 6,
+        "INFO": 2
+      },
+      "measurementSeconds": 2.25,
+      "error": null
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "exitCode": 1,
+      "commandSeconds": 26.06,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-mbg-lisans\\check-20261011-1113.json",
+      "counts": {
+        "PASS": 29,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.078,
+      "error": null
+    },
+    {
+      "target": "aku-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 43.81,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-sagbil\\check-20261011-1113.json",
+      "counts": {
+        "PASS": 26,
+        "SKIPPED": 11,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.61,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 3,
+      "commandSeconds": 40.845,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "\\engine\\mission08\\sbe-verify\\all\\aku-sbe\\run\\check.log):\n,\"stampDetails\":[{\"kind\":\"reserve\",\"tag\":\"P\",\"text\":\"Toplumsal değişim süreçlerinin yerel yönetimler üzerindeki etkisi, kurumsal kapasite ve ka\",\"marginTop\":\"16px\",\"breakBefore\":\"auto\"},{\"kind\":\"break\",\"tag\":\"H4\",\"text\":\"Üçüncü Düzey Alt Başlık\",\"marginTop\":\"0px\",\"breakBefore\":\"column\"}],\"spacers\":1}\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:179:13\nexport of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\sbe-verify\\all\\aku-sbe\\run\\check.log):\n,\"stampDetails\":[{\"kind\":\"reserve\",\"tag\":\"P\",\"text\":\"Toplumsal değişim süreçlerinin yerel yönetimler üzerindeki etkisi, kurumsal kapasite ve ka\",\"marginTop\":\"16px\",\"breakBefore\":\"auto\"},{\"kind\":\"break\",\"tag\":\"H4\",\"text\":\"Üçüncü Düzey Alt Başlık\",\"marginTop\":\"0px\",\"breakBefore\":\"column\"}],\"spacers\":1}\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:179:13"
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "exitCode": 1,
+      "commandSeconds": 40.496,
+      "report": "engine\\mission08\\sbe-verify\\all\\aku-sosyoloji-lisans\\check-20261011-1115.json",
+      "counts": {
+        "INFO": 4,
+        "PASS": 18,
+        "SKIPPED": 10
+      },
+      "measurementSeconds": 1.328,
+      "error": null
+    },
+    {
+      "target": "engine-mission05-typography",
+      "exitCode": 1,
+      "commandSeconds": 23.347,
+      "report": "engine\\mission08\\sbe-verify\\all\\engine-mission05-typography\\check-20261011-1115.json",
+      "counts": {
+        "SKIPPED": 16,
+        "PASS": 4
+      },
+      "measurementSeconds": 0.765,
+      "error": null
+    },
+    {
+      "target": "engine-word-justify",
+      "exitCode": 1,
+      "commandSeconds": 20.583,
+      "report": "engine\\mission08\\sbe-verify\\all\\engine-word-justify\\check-20261011-1116.json",
+      "counts": {
+        "SKIPPED": 16,
+        "PASS": 4
+      },
+      "measurementSeconds": 0.625,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 1,
+      "commandSeconds": 50.354,
+      "report": "engine\\mission08\\sbe-verify\\all\\engine-word-pagefit\\check-20261011-1116.json",
+      "counts": {
+        "SKIPPED": 189,
+        "PASS": 16
+      },
+      "measurementSeconds": 3.516,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 1,
+      "commandSeconds": 27.471,
+      "report": "engine\\mission08\\sbe-verify\\all\\engine-word-parity\\check-20261011-1117.json",
+      "counts": {
+        "SKIPPED": 141,
+        "PASS": 5
+      },
+      "measurementSeconds": 4.25,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 1,
+      "commandSeconds": 25.368,
+      "report": "engine\\mission08\\sbe-verify\\all\\engine-word-structure\\check-20261011-1117.json",
+      "counts": {
+        "SKIPPED": 115,
+        "PASS": 15
+      },
+      "measurementSeconds": 1.734,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 1,
+      "commandSeconds": 28.561,
+      "report": "engine\\mission08\\sbe-verify\\all\\engine-word-style-precedence\\check-20261011-1118.json",
+      "counts": {
+        "PASS": 38,
+        "SKIPPED": 15
+      },
+      "measurementSeconds": 0.688,
+      "error": null
+    },
+    {
+      "target": "iyte",
+      "exitCode": 1,
+      "commandSeconds": 47.024,
+      "report": "engine\\mission08\\sbe-verify\\all\\iyte\\check-20261011-1118.json",
+      "counts": {
+        "PASS": 70,
+        "SKIPPED": 44
+      },
+      "measurementSeconds": 2.031,
+      "error": null
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "exitCode": 0,
+      "commandSeconds": 21.732,
+      "report": "engine\\mission08\\sbe-verify\\all\\mcbu-tip-uzmanlik\\check-20261011-1119.json",
+      "counts": {
+        "PASS": 47,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.953,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 1,
+      "commandSeconds": 18.621,
+      "report": "engine\\mission08\\sbe-verify\\all\\phase52-justify\\check-20261011-1119.json",
+      "counts": {
+        "SKIPPED": 24,
+        "PASS": 6
+      },
+      "measurementSeconds": 0.297,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-11T08:19:39.711Z",
+  "commandSeconds": 959.329
+}

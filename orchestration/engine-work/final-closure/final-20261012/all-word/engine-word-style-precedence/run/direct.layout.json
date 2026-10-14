@@ -1,0 +1,135 @@
+{
+  "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-style-precedence.fixture.direct.json",
+  "exportedAt": "2026-10-12T14:17:57.439Z",
+  "chromium": "154.0.8037.98",
+  "pagedLayout": true,
+  "sheets": [
+    {
+      "label": "",
+      "group": ""
+    }
+  ],
+  "templateNotice": "",
+  "validation": [],
+  "warn": false,
+  "engineLayout": {
+    "version": 1,
+    "origin": "top-left",
+    "units": {
+      "geometry": "mm",
+      "fontSize": "pt"
+    },
+    "pages": [
+      {
+        "page": 1,
+        "groupId": "CHECK",
+        "sectionIds": [
+          "CHECK"
+        ],
+        "label": "",
+        "widthMm": 210,
+        "heightMm": 297,
+        "landmarks": [
+          {
+            "id": "CHECK:paragraph:1",
+            "kind": "paragraph",
+            "sectionId": "CHECK",
+            "text": "DIRECT_SIZE_TOKEN",
+            "fragments": [],
+            "xMm": 37.9966,
+            "yMm": 25.8258,
+            "widthMm": 53.2515,
+            "heightMm": 6.0854,
+            "firstBaselineMm": 31.91,
+            "lastBaselineMm": 31.91,
+            "linePitchMm": null,
+            "fontFamily": "Calibri",
+            "exportedFonts": [
+              "Calibri"
+            ],
+            "fontSizePt": 18,
+            "lineCount": 1
+          }
+        ],
+        "textOps": [
+          {
+            "id": "CHECK:paragraph:1:page:1:run:1",
+            "landmarkId": "CHECK:paragraph:1",
+            "text": "DIRECT_SIZE_TOKEN",
+            "spaceAfter": false,
+            "xMm": 37.9966,
+            "yMm": 25.8258,
+            "widthMm": 53.2515,
+            "heightMm": 6.0854,
+            "baselineMm": 31.9112,
+            "fontFamily": "Calibri",
+            "exportedFont": "Calibri",
+            "fontSizePt": 18,
+            "clipped": false,
+            "ancestorIds": []
+          }
+        ],
+        "firstBodyBaselineMm": 31.9112,
+        "lastBodyBaselineMm": 31.9112
+      }
+    ]
+  },
+  "timings": {
+    "browser": 0.497,
+    "editor": 0.786,
+    "pdf.settle": 0.102,
+    "pdf": 3.308,
+    "docx.settle": 0.044,
+    "docx": 0.233,
+    "final-settle": 0.004,
+    "totalSeconds": 4.974
+  },
+  "pagination": {
+    "ready": "true",
+    "targetCount": 0,
+    "missingTargets": [],
+    "mismatchedLabels": [],
+    "targets": []
+  },
+  "exportSnapshots": [
+    {
+      "button": "PDF",
+      "pagedLayout": true,
+      "sheets": [
+        {
+          "label": "",
+          "group": ""
+        }
+      ],
+      "templateNotice": "",
+      "validation": [],
+      "pagination": {
+        "ready": "true",
+        "targetCount": 0,
+        "missingTargets": [],
+        "mismatchedLabels": [],
+        "targets": []
+      }
+    },
+    {
+      "button": "Word",
+      "pagedLayout": true,
+      "sheets": [
+        {
+          "label": "",
+          "group": ""
+        }
+      ],
+      "templateNotice": "",
+      "validation": [],
+      "pagination": {
+        "ready": "true",
+        "targetCount": 0,
+        "missingTargets": [],
+        "mismatchedLabels": [],
+        "targets": []
+      }
+    }
+  ],
+  "errors": []
+}

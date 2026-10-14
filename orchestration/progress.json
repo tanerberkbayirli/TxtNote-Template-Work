@@ -129,7 +129,7 @@
       "specReview": "IN_PROGRESS",
       "note": "Attempt-1 records two implemented Turkish variants and its own 102/102 checks per variant; this is historical self-validation, not current independent PASS. Its claim that Sanatta Yeterlik/English variants lack source wording is superseded: the 2026 official guide confirms three unimplemented variants (aku-sbe-sanatta-yeterlik-tr-v1, aku-sbe-master-en-v1, aku-sbe-phd-en-v1), tracked as requiredVariantsPending in the manifest. Independent revalidation and the listed source/example conflicts remain pending. Engine additions include levelStyles.unnumbered, unnumberedAfterNumberedSpaceBeforePt, and the generic footnote-reserve spacing fix.",
       "validationPath": "orchestration/validation/aku-sbe/attempt-1.md",
-      "templatePath": "TxtNote/frontend/src/thesis/templates/aku-sbe.js",
+      "templatePath": "engine/src/templates/aku-sbe.js",
       "registryIds": [
         "aku-sbe-master-tr-v1",
         "aku-sbe-phd-tr-v1"
@@ -298,7 +298,7 @@
       "reportPath": "orchestration/reports/afsu-tip.md",
       "commit": "4ff8e65",
       "updatedAt": "2026-10-03",
-      "templatePath": "TxtNote/frontend/src/thesis/templates/afsu-tip.js"
+      "templatePath": "engine/src/templates/afsu-tip.js"
     },
     "afsu-dis-hekimligi": {
       "analysis": "DONE",
@@ -311,7 +311,7 @@
       "reportPath": "orchestration/reports/afsu-tip.md",
       "commit": "4ff8e65",
       "updatedAt": "2026-10-03",
-      "templatePath": "TxtNote/frontend/src/thesis/templates/afsu-tip.js"
+      "templatePath": "engine/src/templates/afsu-tip.js"
     },
     "afsu-eczacilik-proje": {
       "analysis": "DONE",
@@ -337,7 +337,7 @@
       "commit": null,
       "updatedAt": "2026-10-08",
       "extractionPath": "orchestration/specs/adu-sagbil.extracted.json",
-      "templatePath": "TxtNote/frontend/src/thesis/templates/adu-sagbil.js",
+      "templatePath": "engine/src/templates/adu-sagbil.js",
       "registryIds": [
         "adu-sagbil-master-tr-v1"
       ],
@@ -376,7 +376,7 @@
       "validation": "FAIL (self 52/52 on tested checks, but known source-backed gap: chapter-opening page numbers are not omitted; independent validation pending)",
       "attempts": 1,
       "status": "FAIL",
-      "lastError": "Template rule requires omission on chapter first pages; current shared engine/export still prints numbering there. Do not call target complete.",
+      "lastError": "Template rule requires omission on chapter first pages; current shared orchestration/engine-work/export still prints numbering there. Do not call target complete.",
       "specPath": "orchestration/specs/mcbu-tip-uzmanlik.json",
       "reportPath": "orchestration/reports/mcbu-tip-uzmanlik.md",
       "commit": "4b31444",

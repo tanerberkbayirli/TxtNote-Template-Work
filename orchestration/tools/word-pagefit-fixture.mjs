@@ -4,8 +4,8 @@
 // Regenerate from the repository root: node orchestration/tools/word-pagefit-fixture.mjs
 import { writeFile } from 'node:fs/promises';
 import { deflateSync } from 'node:zlib';
-import generic from '../../TxtNote/frontend/src/thesis/templates/generic.js';
-import { validateThesisTemplate } from '../../TxtNote/frontend/src/thesis/validation.js';
+import generic from '../../engine/src/templates/generic.js';
+import { validateThesisTemplate } from '../../engine/src/validation.js';
 
 const id = 'engine-word-pagefit';
 const checks = [];

@@ -1,0 +1,523 @@
+{
+ "target": "phase52-justify",
+ "stamp": "20261010-1821",
+ "counts": {
+  "SKIPPED": 24,
+  "PASS": 6
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression5\\phase52-justify\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression5\\phase52-justify\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression5\\phase52-justify\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\phase52-justify.fixture.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "91ac28c26797630d5daa7f8b5e938d5d9899cc33a5cbad1d5d697d81a663f98d"
+  },
+  "wide": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression5\\phase52-justify\\run\\wide.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression5\\phase52-justify\\run\\wide.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression5\\phase52-justify\\run\\wide.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\phase52-justify.fixture.wide.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "4060eb1be9bd4bb067842018cea6a7fa33fe74f3b2a5a53cbd6698941eb6812a"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.391,
+ "commandSeconds": 13.35,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "9bf8d9eaac44db23b6f0affd8e047d1535860522",
+  "trackedDiffSha256": "bbcad9a0a7c62d07fdacfd0cf268b14ad245c2521a10b18b69bcccf9983c5049",
+  "diagnosticsSha256": "9d28054675c03fee9a65e2f2a73c545f973ee3123c6cdcf670a95e09b12c8242",
+  "startedAt": "2026-10-10T15:21:25.903Z",
+  "codeFingerprint": "a4707a4c7df394afb4bd7aa4162f25371a5e2102736ff92d6d4c4cce6e8df2bb",
+  "officialSourceFingerprint": "7a0b3beba15f93bfc7fb1cdf03a931bb76eef67c4f00a28b4ae9a4a290cac6b6"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression5\\phase52-justify\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "default": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "wide": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "b3d104ea03324f74ac6b823160a985836cd7d9350dffdda706b575bb1beb5c0c",
+ "artifactSha256": {
+  "default": {
+   "fixture": "0522f17ac1f3d1d3818f4436817870d7dc85b583afa7e66337b3b679b5b7c6f3",
+   "pdf": "2370914ee696d0fc760b06e93357d000d9ae9dec130b97ec33ffd6349c6b8027",
+   "docx": "d6dfa2d9f4aa873fe9056ea966ac6cb70f3c264fac491fdebd0c8e00021effd9",
+   "layout": "e50cbc49720c7b7e0277ef7a6e968eb6dee18c46b84ca8e778968cd5ba972808"
+  },
+  "wide": {
+   "fixture": "9b24c49add43db2a7393c61893b4181b394f33739e71101dccde66b44cc262d6",
+   "pdf": "0dfde05f5ab9b204c7747637c4f3319c08fd6bafe869d1dde8c4cd360d908618",
+   "docx": "41324637adb2b1781c8d44c4bfa6cbec350b0c646a6045c2b096d8e19688f2a7",
+   "layout": "4c42204f35d3bcd1f90967dd224a87fc4b19f626e315364df2a44753bd9b6011"
+  }
+ },
+ "checks": [
+  {
+   "id": "T01-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T01: Arial 10 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "T01-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T01: Arial 10 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "T02-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T02: Times New Roman 12 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "T02-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T02: Times New Roman 12 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "T03-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T03: Calibri 11 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "T03-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T03: Calibri 11 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "T04-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T04: Arial 14 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "T04-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "T04: Arial 14 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V01-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V01: Times New Roman 10 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V01-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V01: Times New Roman 10 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V02-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V02: Calibri 12 pt, en-US, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V02-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V02: Calibri 12 pt, en-US, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V03-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V03: Arial 11 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V03-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V03: Arial 11 pt, tr-TR, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V04-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V04: Times New Roman 14 pt, en-US, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V04-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V04: Times New Roman 14 pt, en-US, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V05-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V05: Calibri 10 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V05-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V05: Calibri 10 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V06-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V06: Arial 12 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V06-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V06: Arial 12 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V07-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V07: Times New Roman 11 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V07-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V07: Times New Roman 11 pt, tr-TR, 240 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V08-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V08: Calibri 14 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "V08-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line glyph word x positions",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of phase 5.2 frozen corpus fixture",
+    "locator": "V08: Calibri 14 pt, en-US, 360 pt measure"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "engine-docx-package-default",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "7 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-default",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-wide",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-wide",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "7 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-wide",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

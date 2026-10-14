@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { afsuTipUzmanlik, afsuDisHekimligiUzmanlik } from "../thesis/templates/afsu-tip.js";
-import { compileThesisDocument, templateFontFamilies } from "../thesis/engine.js";
-import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/registry.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import { afsuTipUzmanlik, afsuDisHekimligiUzmanlik } from "../../../../engine/src/templates/afsu-tip.js";
+import { compileThesisDocument, templateFontFamilies } from "../../../../engine/src/engine.js";
+import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../../../../engine/src/registry.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 
 describe("AFSÜ Tıp / Diş Hekimliği uzmanlık tezi (one joint guide, Temmuz 2021)", () => {
   it("both variants are valid, registered, official and differ only in faculty/degree wording", async () => {

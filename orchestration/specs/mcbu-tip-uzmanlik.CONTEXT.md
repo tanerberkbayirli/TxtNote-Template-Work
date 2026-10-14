@@ -1,7 +1,7 @@
 # mcbu-tip-uzmanlik — context pack
 ## Identity
 - Registry id(s): `mcbu-tip-uzmanlik-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/mcbu-tip.js` (exports: mcbuTipUzmanlik)
+- Template module: `engine/src/templates/mcbu-tip.js` (exports: mcbuTipUzmanlik)
 - Spec: `orchestration/specs/mcbu-tip-uzmanlik.json`; checks: `orchestration/specs/mcbu-tip-uzmanlik.checks.json` (not yet); progress report: `orchestration/reports/mcbu-tip-uzmanlik.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf`

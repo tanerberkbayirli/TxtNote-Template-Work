@@ -2,13 +2,13 @@
 
 2026-10-04 · Dal: `integrate/aku-mcbu` · Doğrulanan motor checkpoint'i: `8176503db8688ec019a3304da7437ac135f72cbd`.
 
-MOTOR.md'de tanımlanan Faz 0–2 **zorunlu tamamlanma kapıları geçti**. Faz 2 B3.1–B3.5 tamamlandı. Önceden açıkça ertelenmiş B3.6/Arial işi ve aşağıdaki sınırlar açık tutuluyor; bütün Word davranışlarının veya bütün üniversite varyantlarının tamamlandığı iddia edilmiyor.
+orchestration/plans/MOTOR.md'de tanımlanan Faz 0–2 **zorunlu tamamlanma kapıları geçti**. Faz 2 B3.1–B3.5 tamamlandı. Önceden açıkça ertelenmiş B3.6/Arial işi ve aşağıdaki sınırlar açık tutuluyor; bütün Word davranışlarının veya bütün üniversite varyantlarının tamamlandığı iddia edilmiyor.
 
 ## Kapsam ve önceki fazlar
 
 Durulan `f8df108` checkpoint'inden devam edildi; yarım kalan yararlı kod korundu. İki ajan kullanıldı: dar kapsamlı motor/fixture geliştiricisi ve bağımsız kod/kapı denetçisi. Word dışa aktarımları tek sıra halinde çalıştırıldı.
 
-Faz 0'ın kaynak düzeltmeleri, checker kapısı ve Coğrafya/Matematik kapanışı; Faz 1'in katalog, katalog-senkronizasyon testi ve davranışı koruyan dosya ayrıştırma checkpoint'leri yeniden incelendi. Tarihsel kanıt: [Faz 0–1 raporu](C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/reports/MOTOR_FAZ0_FAZ1_RAPOR.md). Yeni genel regresyonda Coğrafya 49, Matematik 53 kontrolle iki kez PASS. Bekleyen üniversite varyantları ve kaynak incelemeleri bu motor raporuyla DONE yapılmadı.
+Faz 0'ın kaynak düzeltmeleri, checker kapısı ve Coğrafya/Matematik kapanışı; Faz 1'in katalog, katalog-senkronizasyon testi ve davranışı koruyan dosya ayrıştırma checkpoint'leri yeniden incelendi. Tarihsel kanıt: [Faz 0–1 raporu](./MOTOR_FAZ0_FAZ1_RAPOR.md). Yeni genel regresyonda Coğrafya 49, Matematik 53 kontrolle iki kez PASS. Bekleyen üniversite varyantları ve kaynak incelemeleri bu motor raporuyla DONE yapılmadı.
 
 ## Faz 2'de tamamlanan işler
 
@@ -28,8 +28,8 @@ Değişmeyen `8176503` koduyla `node orchestration/tools/check.mjs --all --word`
 
 Günlüklerde iki koşuya ait toplam 42 gerçek editör PDF/DOCX dışa aktarım denemesinin tümü `status 0`; hata veya retry yok. DOCX'ler gerçek Word ile render edildi. İki toplu komut da bilinen Arial FAIL'leri nedeniyle **çıkış kodu 1** verdi; küresel checker sonucu tümüyle yeşil olarak sunulmuyor.
 
-- [Birinci koşu manifesti](C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/validation/phase2-close/final-run-1.json): 16:14–16:25, 14 hedef.
-- [İkinci koşu manifesti](C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/validation/phase2-close/final-run-2.json): 16:26–16:35, 14 hedef; iki koşunun export günlük denetimi dahil.
+- [Birinci koşu manifesti](../validation/phase2-close/final-run-1.json): 16:14–16:25, 14 hedef.
+- [İkinci koşu manifesti](../validation/phase2-close/final-run-2.json): 16:26–16:35, 14 hedef; iki koşunun export günlük denetimi dahil.
 - Son kodda 711 ana frontend testi + 6 ek test, 14 checker testi ve 3 zaman aşımı tanı testi PASS; üretim derlemesi PASS. Derlemenin mevcut büyük chunk uyarısı hata değildir.
 
 Manifestler her hedefin ayrıntılı checker raporunu, rapor hash'ini, çıktı hash'lerini, ölçüm şartnamesi hash'ini, kod revision'ını ve Word ortamını kaydeder. Generated PDF/DOCX ve büyük render klasörleri Git checkpoint'ine alınmadı; tekrar üretilebilir fixture/checker kaynakları ve küçük kapanış kanıtları kaydedildi.
@@ -43,4 +43,4 @@ Manifestler her hedefin ayrıntılı checker raporunu, rapor hash'ini, çıktı 
 
 Bağımsız denetçi kod düzeltmelerini, ayrılmış reserve/break davranışını, dipnot alanı sınırını, kanıt manifestlerini ve zorunlu kapı kapsamını inceledi. Kapanış sonucu, yukarıdaki ertelemeler ve sınırlar korunarak **zorunlu motor kapısı PASS** olarak kaydedilir.
 
-Sonraki motor işi MOTOR.md Faz 3'tür. Üniversite kaynak/variant tamamlanma kuyruğu kendi kapılarıyla sürdürülmelidir.
+Sonraki motor işi orchestration/plans/MOTOR.md Faz 3'tür. Üniversite kaynak/variant tamamlanma kuyruğu kendi kapılarıyla sürdürülmelidir.

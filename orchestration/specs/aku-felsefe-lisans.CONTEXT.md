@@ -1,7 +1,7 @@
 # aku-felsefe-lisans — context pack
 ## Identity
 - Registry id(s): `aku-felsefe-lisans-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-felsefe.js` (exports: akuFelsefeLisans). Shares module aku-felsefe.js with aku-felsefe-seminer.
+- Template module: `engine/src/templates/aku-felsefe.js` (exports: akuFelsefeLisans). Shares module aku-felsefe.js with aku-felsefe-seminer.
 - Spec: `orchestration/specs/aku-felsefe-lisans.json`; checks: `orchestration/specs/aku-felsefe-lisans.checks.json` (not yet); progress report: `orchestration/reports/aku-felsefe-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx`

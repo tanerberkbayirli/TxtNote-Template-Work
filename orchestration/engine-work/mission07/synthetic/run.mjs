@@ -1,0 +1,12 @@
+import {createRequire} from 'node:module';import {readFileSync,writeFileSync} from 'node:fs';
+const{chromium}=createRequire(import.meta.url)('../../../tools/node_modules/playwright');
+const id=process.argv[2]||'synth';
+const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,args:['--enable-blink-features=MulticolColumnWrapping']});
+const c=await b.newContext({viewport:{width:1400,height:1000}});await c.grantPermissions(['local-fonts'],{origin:'http://127.0.0.1:5175'});
+const p=await c.newPage();
+await p.goto(`http://127.0.0.1:5175/tests/thesis-long.html?id=${id}`);
+await p.locator('.thesis-sheet').first().waitFor({timeout:120000});
+await p.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true',null,{timeout:120000});
+const code=readFileSync('orchestration/engine-work/mission07/extract.js','utf8').replace('document.querySelectorAll(\'.thesis-sheet\').length<50','false');
+const v=await p.evaluate(code);
+writeFileSync(`orchestration/engine-work/mission07/synthetic/${id}.pages.json`,JSON.stringify(v));console.log('pages',v.length);await b.close();

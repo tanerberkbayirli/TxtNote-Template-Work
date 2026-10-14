@@ -56,7 +56,7 @@ progress['enginePlan']['phase4'] = 'CLOSED (4.1-4.5 source pipeline, reviewed co
 progress['enginePlan']['phase4ReportPath'] = 'orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md'
 progress['enginePlan']['phase4AcceptancePath'] = 'orchestration/validation/phase4-close/acceptance.json'
 target = progress['targets']['adu-sagbil']
-target.update(analysis='DONE', implementation='DONE', validation='TIER1_PASS (303 actual PDF/DOCX/Word checks; Tier 2 variants and independent university-wide completion remain open)', attempts=1, status='IN_PROGRESS', lastError=None, specPath='orchestration/specs/adu-sagbil.json', reportPath='orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md', templatePath='TxtNote/frontend/src/thesis/templates/adu-sagbil.js', registryIds=['adu-sagbil-master-tr-v1'], note='Phase 4 pilot complete. Five exploratory checker iterations and a final fresh run are recorded locally; this is one source-template pilot, not approval of all ADU variants. Tier 2 UNKNOWN and 109 source-property review groups remain explicit.', validationPath=pilot['report'])
+target.update(analysis='DONE', implementation='DONE', validation='TIER1_PASS (303 actual PDF/DOCX/Word checks; Tier 2 variants and independent university-wide completion remain open)', attempts=1, status='IN_PROGRESS', lastError=None, specPath='orchestration/specs/adu-sagbil.json', reportPath='orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md', templatePath='engine/src/templates/adu-sagbil.js', registryIds=['adu-sagbil-master-tr-v1'], note='Phase 4 pilot complete. Five exploratory checker iterations and a final fresh run are recorded locally; this is one source-template pilot, not approval of all ADU variants. Tier 2 UNKNOWN and 109 source-property review groups remain explicit.', validationPath=pilot['report'])
 progress['lastCompletedValidation'] = {'target': 'adu-sagbil', 'attempt': 1, 'verdict': 'TIER1_PASS'}
 save(progress_path, progress)
 report = root / 'orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md'
@@ -75,7 +75,7 @@ report.write_text(f'''# Phase 4 closure — 2026-10-07
 - Evidence: orchestration/validation/phase4-close/acceptance.json; source-review/mapping/family inventories committed; generated exports/cache binaries remain local.
 - Next queue: remaining university variants, fixed-page long replacement text, source-property review and existing independent completion/deferred failures. This closure does not claim those complete.
 ''', encoding='utf-8')
-motor_path = root / 'MOTOR.md'
+motor_path = root / 'orchestration/plans/MOTOR.md'
 motor = motor_path.read_text(encoding='utf-8-sig')
 start = motor.index('2026-10-07 start: **Phase 4 OPEN**.')
 end = motor.index('\n---', start)

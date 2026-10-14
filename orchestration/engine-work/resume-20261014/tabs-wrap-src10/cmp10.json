@@ -1,0 +1,49 @@
+{
+  "id": "SRC10",
+  "wordPages": 91,
+  "editorPages": 91,
+  "wordTokens": 15590,
+  "editorTokens": 15457,
+  "matchedTokens": 15431,
+  "wordCharacters": 86811,
+  "wordCharactersFoundInOrder": 86442,
+  "textCoverage": 0.99575,
+  "editorExtraCharacters": 119,
+  "openingsChecked": 75,
+  "misalignedOpenings": 4,
+  "misalignedPhysicalPages": 2,
+  "misalignedStartsOnSamePage": 2,
+  "firstMisaligned": [
+    {
+      "wordPage": 57,
+      "editorPage": 56,
+      "offsetTokens": 305,
+      "wordOpening": "actually positive in this study if a real occurred damaged yes observation was predicted by the",
+      "editorOpening": "source javatpoint nd performance metrics the main objective of this study is to predict the container"
+    },
+    {
+      "wordPage": 75,
+      "editorPage": 74,
+      "offsetTokens": 375,
+      "wordOpening": "implemented to minimize the weight of repair scrap costs of the containers on the container owner",
+      "editorOpening": "maintenance phase of the model making changes to the model has become easier with the azure"
+    },
+    {
+      "wordPage": 85,
+      "editorPage": 85,
+      "offsetTokens": 8,
+      "wordOpening": "split ratio 9010 randomized split yes dataset stratified split yes 15 1 2 3 4 5",
+      "editorOpening": "f1 score 0341 0436 0586 0422 0563 0552 split ratio 9010 randomized split yes dataset stratified"
+    },
+    {
+      "wordPage": 86,
+      "editorPage": 86,
+      "offsetTokens": 8,
+      "wordOpening": "split ratio 7030 randomized split yes dataset stratified split yes 17 1 2 3 4 5",
+      "editorOpening": "f1 score 0345 0442 0581 0424 0566 0531 split ratio 7030 randomized split yes dataset stratified"
+    }
+  ],
+  "markerTolerance": 2,
+  "coverageMin": 0.995,
+  "status": "FAIL"
+}

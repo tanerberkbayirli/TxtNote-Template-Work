@@ -1,7 +1,7 @@
 # Engine extensions (generic, opt-in, backward compatible)
 
 Every capability below is required by at least one reviewed spec (target ids in brackets). Each is
-generic data in `schema.d.ts`, interpreted by the engine/editor CSS (the layout PDF reads the
+generic data in `schema.d.ts`, interpreted by the orchestration/engine-work/editor CSS (the layout PDF reads the
 editor DOM, so it follows automatically) and by the DOCX writer. Templates that do not use a key
 are unchanged; MCBÜ v1 and generic/demo templates keep their behaviour.
 

@@ -1,7 +1,7 @@
 # afsu-lee-proposal — context pack
 ## Identity
 - Registry id(s): `afsu-lee-proposal-master-tr-v1`, `afsu-lee-proposal-phd-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/afsu-lee-proposal.js` (exports: afsuLeeProposalMaster, afsuLeeProposalPhd)
+- Template module: `engine/src/templates/afsu-lee-proposal.js` (exports: afsuLeeProposalMaster, afsuLeeProposalPhd)
 - Spec: `orchestration/specs/afsu-lee-proposal.json`; checks: `orchestration/specs/afsu-lee-proposal.checks.json` (not yet); progress report: `orchestration/reports/afsu-lee-proposal.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf`

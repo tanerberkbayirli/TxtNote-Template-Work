@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-12",
+  "status": "RESUMED_NOT_COMPLETE",
+  "authority": "User resumed work on 2026-10-12; see resumed20261012b for the real result.",
+  "generalAcceptanceGranted": false,
+  "commitCreated": false,
+  "automaticContinuationAuthorized": false,
+  "record": "engine/final-closure/resumed-20261012/PAUSE.md",
+  "deferred": [
+    {
+      "id": "long-word-parity",
+      "status": "PAUSED_BY_USER",
+      "scope": "SRC09/SRC10 full Word page count and page-break parity, including exact/minimum table row fragmentation and merged cells"
+    },
+    {
+      "id": "remaining-exports",
+      "status": "PAUSED_BY_USER",
+      "scope": "Wingdings PDF font/glyph support and ChartEx real Word save/reopen failure"
+    },
+    {
+      "id": "final-serial-acceptance",
+      "status": "PAUSED_BY_USER",
+      "scope": "Fresh complete Word targets, SBE stress, special-page matrix, DOCX schema and complete long-document performance/export acceptance"
+    }
+  ],
+  "resumed20261012b": {
+    "updatedAt": "2026-10-12T14:37:48.916Z",
+    "status": "NOT_COMPLETE",
+    "run": "final-closure/final-20261012",
+    "inputsSha256": "d783dc0a3a17adb76af6fb95467fac623caba4428ae70de83fe2ac0010a50eef",
+    "closed": [
+      "afsu-lee 36/37 page flow (DOCX footnote separator)"
+    ],
+    "passed": {
+      "base": true,
+      "word": "25 targets, 1976 PASS/0 FAIL/0 skipped",
+      "sbe": "5 normal + 5 cpu4",
+      "schema": true,
+      "specialMatrix": "232 cases",
+      "specialFamilies": 7,
+      "longInteractionsSRC10": true
+    },
+    "open": [
+      "SRC09 178/180 pages, 43/157 openings misaligned, coverage 0.969",
+      "SRC10 91/91 pages, 8/75 openings misaligned, coverage 0.996",
+      "benchmark-SRC09 documentEqual=false and author content not restored after edit (heading attributes leak)"
+    ],
+    "verify": "FAIL",
+    "record": "engine/final-closure/resume2/RECORD.md"
+  },
+  "codexSaveResume": {
+    "updatedAt": "2026-10-12T14:55:21.8300673Z",
+    "status": "NOT_COMPLETE",
+    "record": "engine/final-closure/save-resume/RECORD.md",
+    "closed": [
+      "SRC09 edit/delete author-content restoration and save/reopen document equality"
+    ],
+    "evidence": {
+      "unit": "974 PASS / 0 FAIL",
+      "build": "PASS",
+      "keyboardSamples": 20,
+      "authorContentRestored": true,
+      "documentEqual": true,
+      "browserErrors": 0,
+      "actualDocxPdfExports": true
+    },
+    "open": [
+      "SRC09 full Word page count and page-break parity",
+      "SRC10 full Word page-break parity"
+    ],
+    "generalAcceptanceGranted": false
+  },
+  "codexMathResume": {
+    "updatedAt": "2026-10-12T15:14:04.6718153Z",
+    "status": "NOT_COMPLETE",
+    "record": "engine/final-closure/math-resume/RECORD.md",
+    "closed": [
+      "Fresh DOCX import n-ary limit placement and hidden-argument content relocation"
+    ],
+    "evidence": {
+      "unit": "978 PASS / 0 FAIL",
+      "build": "PASS",
+      "wordCases": 8,
+      "chromeCases": 8
+    },
+    "long": {
+      "SRC09": "178/180 pages, 44/157 openings misaligned (previous cached fixture: 43)",
+      "SRC10": "91/91 pages, 8/75 openings misaligned"
+    },
+    "generalAcceptanceGranted": false
+  },
+  "codexQuickMath": {
+    "updatedAt": "2026-10-12T15:28:48.279Z",
+    "status": "TARGETED_FIXES_PASS",
+    "record": "engine/final-closure/quick-math/RECORD.md",
+    "closed": [
+      "Empty delimiter fences",
+      "Multi-argument delimiter separators",
+      "No-bar and linear fraction preview"
+    ],
+    "evidence": {
+      "unit": "984 PASS / 0 FAIL",
+      "build": "PASS",
+      "wordCases": 10,
+      "chromeCases": 10,
+      "sourceOmmlUnchanged": true
+    },
+    "longDocumentsRerun": false,
+    "generalAcceptanceGranted": false
+  }
+}

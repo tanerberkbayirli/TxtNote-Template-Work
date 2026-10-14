@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "placementAndLabels": {
+    "A": {
+      "refs": [
+        "1"
+      ],
+      "notes": []
+    },
+    "B": {
+      "refs": [
+        "1"
+      ],
+      "notes": [
+        [
+          "1",
+          "1 Bölüm notu B"
+        ]
+      ]
+    },
+    "C": {
+      "refs": [
+        "2"
+      ],
+      "notes": [
+        [
+          "1",
+          "1 Belge notu A"
+        ],
+        [
+          "2",
+          "2 Belge notu C"
+        ]
+      ]
+    }
+  },
+  "reloadStable": true,
+  "sourceNotDuplicated": true,
+  "pageErrors": []
+}

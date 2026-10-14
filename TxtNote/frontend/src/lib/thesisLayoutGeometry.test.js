@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { alignLayoutElements, distributeLayoutElements, snapLayoutRect } from '../thesis/layoutGeometry.js';
+import { alignLayoutElements, distributeLayoutElements, snapLayoutRect } from '../../../../engine/src/layoutGeometry.js';
 
 const page = {
   widthMm: 210,

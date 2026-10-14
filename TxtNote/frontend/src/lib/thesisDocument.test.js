@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import generic from "../thesis/templates/generic.js";
+import generic from "../../../../engine/src/templates/generic.js";
 import { fixtureC as demoC } from "./thesisFixtures.js";
 import { fixtureA as demoA } from "./thesisFixtures.js";
-import { createThesisDocument, isThesisSectionEditable, orderedThesisSections, THESIS_METADATA_FIELDS, setThesisTextOverride, thesisSectionMode, thesisTextOverride, updateThesisMetadata, updateThesisNoteSection } from "../thesis/document.js";
+import { createThesisDocument, isThesisSectionEditable, orderedThesisSections, THESIS_METADATA_FIELDS, setThesisTextOverride, thesisSectionMode, thesisTextOverride, updateThesisMetadata, updateThesisNoteSection } from "../../../../engine/src/document.js";
 import { fixtureB as demoB } from "./thesisFixtures.js";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 import { migrateAcademicNote } from "./researchMigrate.js";
 import { buildNotePayload, noteFromPayload } from "../features/sync/payload.js";
 import { footnotesFromHtml } from "./academicDocument.js";

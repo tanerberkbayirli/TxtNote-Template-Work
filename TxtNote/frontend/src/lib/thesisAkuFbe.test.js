@@ -1,15 +1,16 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { thesisSourceHtml } from "../thesis/sourceHtml.js";
-import { buildThesisCss, compileThesisDocument, templateFontFamilies, thesisSectionCss } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { derivedThesisValues, equationPadAfter, generatedIndexHtml } from "../thesis/generatedIndex.js";
-import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../thesis/registry.js";
-import { positionedFlowTextBoxDocx } from "../thesis/layoutDocx.js";
-import { resolveSpecialPage, specialPageBlockVisible, validateSpecialPageBlocks } from "../thesis/specialPages.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { akuFbeMaster, akuFbePhd } from "../thesis/templates/aku-fbe.js";
+import { DOMParser } from "@xmldom/xmldom";
+import { thesisSourceHtml } from "../../../../engine/src/sourceHtml.js";
+import { buildThesisCss, compileThesisDocument, templateFontFamilies, thesisSectionCss } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { derivedThesisValues, equationPadAfter, generatedIndexHtml } from "../../../../engine/src/generatedIndex.js";
+import { resolveThesisTemplate, THESIS_TEMPLATE_REGISTRY } from "../../../../engine/src/registry.js";
+import { positionedFlowTextBoxDocx } from "../../../../engine/src/layoutDocx.js";
+import { resolveSpecialPage, specialPageBlockVisible, validateSpecialPageBlocks } from "../../../../engine/src/specialPages.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { akuFbeMaster, akuFbePhd } from "../../../../engine/src/templates/aku-fbe.js";
 
 const docxXml = async (model) => strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
 const figure = (caption, kind = "") => `<figure class="academic-figure" data-kind="figure"${kind ? ` data-caption-kind="${kind}"` : ""}><img src="data:image/png;base64,iVBORw0KGgo=" width="10" height="10"><figcaption>${caption}</figcaption></figure>`;
@@ -217,7 +218,7 @@ describe("aku-fbe validation attempt 1 fixes", () => {
   const note = `<p data-thesis-style="tableNote">Not.</p>`;
 
   it("blockGap: ONE table gives the gap between any two block kinds; CSS and DOCX both read it", async () => {
-    const { blockDescriptors, gapBetween } = await import("../thesis/blockGap.js");
+    const { blockDescriptors, gapBetween } = await import("../../../../engine/src/blockGap.js");
     const rules = section(compile(), "main").rules;
     const d = Object.fromEntries(blockDescriptors(rules).map((x) => [x.key, x]));
     const gap = (a, b) => gapBetween(rules, d[a], d[b]);
@@ -269,7 +270,7 @@ describe("aku-fbe validation attempt 1 fixes", () => {
 
   it("footnotes are numbered 1, 2, 3 in reading order across sections (document numbering), whatever the stored marks say", async () => {
     assert.equal(akuFbeMaster.typography.footnotes.numbering, "document");
-    const { thesisPresentationHtml } = await import("../thesis/generatedIndex.js");
+    const { thesisPresentationHtml } = await import("../../../../engine/src/generatedIndex.js");
     const fn = (id) => `<sup class="academic-footnote" data-fn-id="${id}" data-fn-text="t">1</sup>`;
     const model = compileThesisDocument(akuFbeMaster, { values, sectionContent: { introduction: `<p>a${fn("a")}</p>` } }, "T", `<h1>X</h1><p>b${fn("b")} c${fn("c")}</p>`);
     const html = thesisPresentationHtml(section(model, "main"), "tr");
@@ -317,12 +318,28 @@ describe("aku-fbe validation attempt 1 fixes", () => {
     assert.match(css, /data-thesis-eq\]::after\{[^}]*font-family:"Cambria Math","Times New Roman"/);
     assert.equal(thesisSourceHtml('<span data-thesis-eq="(1.1)" data-thesis-eq-pad-before="31.6" data-thesis-eq-pad-after="23.5" data-thesis-eq-lift="1" data-thesis-eq-drop="2" data-thesis-eq-base="14.9" data-thesis-eq-fit="0.8">x<span data-thesis-eq-probe="" style="display:inline-block"></span></span>'), "<span>x</span>");
     const xml = await docxXml(compileThesisDocument(akuFbeMaster, { values }, "T", `<h1>A</h1><span class="math-formula math-formula--block" data-display="block" data-latex="E=mc^2" data-eq-numbered="true">(E)</span>`));
-    assert.match(xml, /w:ascii="Cambria Math"[^>]*\/>[\s\S]{0,200}<w:sz w:val="24"\/>/);
-    assert.match(xml, /w:spacing w:after="414" w:before="414" w:line="360"[\s\S]{0,200}Cambria Math/);
+    const word = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+    const math = "http://schemas.openxmlformats.org/officeDocument/2006/math";
+    const parsed = new DOMParser().parseFromString(xml, "application/xml");
+    const formula = parsed.getElementsByTagNameNS(math, "oMath")[0];
+    assert.ok(formula, "equation is editable OMML");
+    const paragraph = formula.parentNode;
+    assert.equal(paragraph.namespaceURI, word); assert.equal(paragraph.localName, "p");
+    const spacing = paragraph.getElementsByTagNameNS(word, "spacing")[0];
+    assert.deepEqual(["after", "before", "line"].map((name) => spacing.getAttributeNS(word, name)), ["414", "414", "360"]);
+    assert.equal(spacing.getAttributeNS(word, "lineRule"), "auto");
+    // Persistent bookmark names may change XML length; inspect the actual math
+    // run rather than imposing a character distance between unrelated XML tags.
+    const mathRuns = Array.from(formula.getElementsByTagNameNS(math, "r"));
+    assert.equal(mathRuns.length, 5, "E=mc² retains all five editable math runs");
+    for (const run of mathRuns) {
+      assert.equal(run.getElementsByTagNameNS(word, "rFonts")[0].getAttributeNS(word, "ascii"), "Cambria Math");
+      assert.equal(run.getElementsByTagNameNS(word, "sz")[0].getAttributeNS(word, "val"), "24");
+    }
   });
 
   it("layout PDF glyph aliases replace symbols Times New Roman lacks by look-alikes it has", async () => {
-    const { PDF_GLYPH_ALIASES } = await import("../thesis/layoutPdf.js");
+    const { PDF_GLYPH_ALIASES } = await import("../../../../engine/src/layoutPdf.js");
     assert.equal(PDF_GLYPH_ALIASES["⋅"], "∙");
   });
   it("stamps the equation's caret pad from the flow's line height whenever the layout measurement is meaningless", () => {

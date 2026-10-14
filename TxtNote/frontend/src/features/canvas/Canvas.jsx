@@ -280,9 +280,10 @@ export const Canvas = ({
         onEntriesChange={(entries, reason) => onNoteChange(tab.id, { entries }, reason)}
       />
     );
-  } else if (tab.noteType === "thesis") {
+  } else if (tab.noteType === "thesis" || (tab.noteType === "academic" && note?.researchData?.thesis?.document?.source?.format === "pdf")) {
     editor = (
       <ThesisEditor key={tab.id} title={note?.title ?? ""} content={note?.content ?? ""}
+        onDocumentChange={(value) => onNoteChange(tab.id, value, "action")}
         researchData={note?.researchData}
         onTitleChange={(value, reason) => onTitleChange(tab.id, value, reason)}
         onContentChange={(value, reason) => onContentChange(tab.id, value, reason)}
@@ -291,6 +292,7 @@ export const Canvas = ({
   } else if (tab.noteType === "academic") {
     editor = (
       <AcademicEditor
+        onDocumentChange={(value)=>onNoteChange(tab.id,value,'action')}
         key={tab.id}
         title={note?.title ?? ""}
         content={note?.content ?? ""}

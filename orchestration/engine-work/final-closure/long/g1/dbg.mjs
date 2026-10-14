@@ -1,0 +1,12 @@
+import {readFileSync} from 'node:fs';
+import {largestRunBase} from '../../../../../engine/src/docx/projection.js';
+const d=JSON.parse(readFileSync('TxtNote/frontend/tests/generated/SRC09.fixture.json','utf8'));
+const rd=d.researchData;
+const find=(o,id)=>{if(o&&typeof o==='object'){if(o.id===id&&o.type)return o;for(const v of Object.values(o)){const r=find(v,id);if(r)return r}}};
+const n=find(rd,'docx-4444');
+console.log(Object.keys(rd.thesis||{}), rd.thesis?.document?.formatMode);
+const sec=rd.thesis.document.sections[0];
+console.log(JSON.stringify(sec.properties.rules?.body)?.slice(0,300));
+console.log(largestRunBase(n,sec.properties.rules?.body||{},rd.thesis.document.formatMode));
+const out=[];const visit=(nodes,d=0)=>{for(const c of nodes||[]){out.push(' '.repeat(d)+c.type+' '+(c.properties?.resolvedSource?.fontSizePt??'-')+' '+(c.text||'').slice(0,10));if(c.type!=='paragraph')visit(c.children,d+1)}};
+visit(n.children);console.log(out.join('\n'));

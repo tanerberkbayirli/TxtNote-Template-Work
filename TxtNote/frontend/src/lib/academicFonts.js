@@ -11,10 +11,10 @@ import { loadSystemPdfFonts, systemPdfFontFamily } from "./systemPdfFonts.js";
 const registeredFaces = new WeakMap();
 export const requiresTimesNewRoman = (templateId) => /^mcbu-lee-/.test(templateId || "");
 
-const FAMILY_NAMES = new Map([["tinos", ACADEMIC_PDF_FONT], ["arial", "Arial"], ["calibri", "Calibri"], ["times new roman", "Times New Roman"], ["cambria math", "Cambria Math"]]);
+const FAMILY_NAMES = new Map([["tinos", ACADEMIC_PDF_FONT]]);
 export function normalizeAcademicPdfFamily(value) {
   const first = String(value || "").split(",")[0].replace(/[\"']/g, "").trim().toLocaleLowerCase("en-US");
-  return FAMILY_NAMES.get(first) || null;
+  return FAMILY_NAMES.get(first) || systemPdfFontFamily(first);
 }
 
 /** Explicit custom document styles and resolved positioned nodes need their stated face. */

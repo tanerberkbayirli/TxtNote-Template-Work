@@ -10,6 +10,7 @@ export default function ReferencesTab({
   setDetailsOpen,
   citableItems,
   onInsertCitation,
+  onInsertEndnote,
   citeText,
   setCiteText,
   citeOpen,
@@ -36,6 +37,9 @@ export default function ReferencesTab({
           <div className="thesis-home-row is-boxed">
             <Tool type="submit" label="Dipnot ekle" disabled={!canInsertInline || !footnoteText.trim()} onMouseDown={keep}>
               Dipnot ekle
+            </Tool>
+            <Tool label="Sonnot ekle" disabled={!canInsertInline || !footnoteText.trim()} onMouseDown={keep} onClick={() => { const text = footnoteText.trim(); if (!canInsertInline || !text) return; onInsertEndnote?.(text); setFootnoteText(""); }}>
+              Sonnot ekle
             </Tool>
           </div>
         </form>

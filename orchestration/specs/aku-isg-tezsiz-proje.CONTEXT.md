@@ -1,7 +1,7 @@
 # aku-isg-tezsiz-proje — context pack
 ## Identity
 - Registry id(s): `aku-isg-tezsiz-proje-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-isg.js` (exports: akuIsgTezsizProje)
+- Template module: `engine/src/templates/aku-isg.js` (exports: akuIsgTezsizProje)
 - Spec: `orchestration/specs/aku-isg-tezsiz-proje.json`; checks: `orchestration/specs/aku-isg-tezsiz-proje.checks.json` (not yet); progress report: `orchestration/reports/aku-isg-tezsiz-proje.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje/AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc`

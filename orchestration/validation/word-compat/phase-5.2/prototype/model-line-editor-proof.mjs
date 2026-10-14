@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { chromium } from '../../../../tools/node_modules/playwright/index.mjs';
-import { plainThesisText, thesisSourceHtml } from '../../../../../TxtNote/frontend/src/thesis/sourceHtml.js';
+import { plainThesisText, thesisSourceHtml } from '../../../../../engine/src/sourceHtml.js';
 import { wordJustifyFitBudget, wordJustifyLineFits, wordJustifyLines } from './wordJustifyModel.js';
 
 const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe' });

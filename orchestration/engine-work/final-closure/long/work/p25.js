@@ -1,0 +1,1 @@
+(()=>{const out=[];for(const st of document.styleSheets){let rules;try{rules=st.cssRules}catch(e){continue}for(const r of rules){const tx=r.cssText||'';if(tx.includes('docx-15285')||tx.includes('docx-15284'))out.push(tx.slice(0,200));}}return out})()

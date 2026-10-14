@@ -1,0 +1,15 @@
+import generic from "../thesis/templates/generic.js";
+import { compileThesisDocument } from "../thesis/engine.js";
+import { buildThesisDocx } from "../thesis/export.js";
+import { strFromU8, unzipSync } from "fflate";
+const template = structuredClone(generic);
+const html = `<h1>Bir</h1><p>Metin</p><figure><img src="data:image/png;base64,iVBORw0KGgo="><figcaption>Sekil bir</figcaption></figure><table><caption>Tablo bir</caption><tr><td>a</td></tr></table><h2>Alt</h2><p><span class="academic-cite" data-source-id="s1" data-locator="12">(Yilmaz, 2020)</span> ve <span class="academic-xref" data-ref-id="fig1" data-ref-kind="figure">Şekil 1</span></p><p><b>EK 1. Anket</b></p>`;
+const model = compileThesisDocument(template, {enabledSections:["index-figures","index-tables"]}, "Tez", html);
+const entries = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
+const xml = strFromU8(entries["word/document.xml"]);
+console.log(model.indexSources.map(s=>s.kind+":"+s.anchor+":"+(s.title||"")).join("\n"));
+const bms = new Set([...xml.matchAll(/w:bookmarkStart[^>]*w:name="([^"]+)"/g)].map(m=>m[1]));
+const refs = [...xml.matchAll(/(?:PAGEREF|REF)\s+(\S+)/g)].map(m=>m[1]);
+console.log("bookmarks", [...bms]); console.log("dangling", refs.filter(r=>!bms.has(r)));
+console.log(xml.match(/Yilmaz[\s\S]{0,200}/)?.[0]);
+console.log(xml.includes("fldChar") , (xml.match(/ADDIN|CITATION|REF fig/g)||[]));

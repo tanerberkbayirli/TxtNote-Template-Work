@@ -1,0 +1,10 @@
+import {createRequire} from 'node:module';import{writeFileSync}from'node:fs';
+const{chromium}=createRequire(import.meta.url)('../../../tools/node_modules/playwright');
+const b=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--enable-blink-features=MulticolColumnWrapping']});const results=[];
+try{for(const twips of[360,708,1440,'tail']){
+ const page=await b.newPage();await page.goto(`http://127.0.0.1:5200/tests/thesis-long.html?id=TABS14_${twips}`);
+ await page.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true',null,{timeout:60000});
+ const result=await page.evaluate(()=>{const p=document.querySelector('.thesis-page-flow p'),sheet=document.querySelector('.thesis-sheet').getBoundingClientRect(),a=p.closest('.thesis-paper'),scale=a.getBoundingClientRect().width/a.offsetWidth,w=document.createTreeWalker(p,4),r=document.createRange(),chars=[];for(let n=w.nextNode();n;n=w.nextNode())for(let i=0;i<n.length;i++)if(/[ABC]/.test(n.data[i])){r.setStart(n,i);r.setEnd(n,i+1);const rect=r.getBoundingClientRect();chars.push({text:n.data[i],x:(rect.left-sheet.left)/scale*.75,y:(rect.top-sheet.top)/scale*.75})}return{chars,width:getComputedStyle(p).width,indent:getComputedStyle(p).textIndent,margin:getComputedStyle(p).margin,padding:getComputedStyle(p).padding,html:p.innerHTML,lines:Math.round(p.getBoundingClientRect().height/scale/parseFloat(getComputedStyle(p).lineHeight)),tabSize:getComputedStyle(p).tabSize,pages:document.querySelectorAll('.thesis-sheet').length}});
+ const expected=(twips==='tail'?708:twips)/20;const pass=result.pages===1&&result.lines===(twips==='tail'?2:1)&&result.chars.every((c,i)=>Math.abs(c.x-result.chars[0].x-i*expected)<.15);
+ results.push({twips,...result,pass});await page.close();
+}}finally{await b.close()}writeFileSync(new URL('./browser.json',import.meta.url),JSON.stringify(results,null,2));console.log(JSON.stringify(results));if(results.some(r=>!r.pass))process.exitCode=1;

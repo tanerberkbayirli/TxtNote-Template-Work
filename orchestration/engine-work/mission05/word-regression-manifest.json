@@ -1,0 +1,52 @@
+{
+  "startedAt": "2026-10-09T19:39:25.924Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "engine-word-justify",
+      "exitCode": 0,
+      "commandSeconds": 29.132,
+      "report": "engine\\mission05\\word-regression\\engine-word-justify\\check-20261009-2239.json",
+      "counts": {
+        "PASS": 22
+      },
+      "measurementSeconds": 0.438,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 0,
+      "commandSeconds": 31.302,
+      "report": "engine\\mission05\\word-regression\\engine-word-parity\\check-20261009-2240.json",
+      "counts": {
+        "PASS": 148
+      },
+      "measurementSeconds": 1.11,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 0,
+      "commandSeconds": 84.008,
+      "report": "engine\\mission05\\word-regression\\engine-word-style-precedence\\check-20261009-2241.json",
+      "counts": {
+        "PASS": 64
+      },
+      "measurementSeconds": 0.359,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 0,
+      "commandSeconds": 49.191,
+      "report": "engine\\mission05\\word-regression\\phase52-justify\\check-20261009-2242.json",
+      "counts": {
+        "PASS": 34
+      },
+      "measurementSeconds": 0.25,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-09T19:42:39.560Z",
+  "commandSeconds": 193.636
+}

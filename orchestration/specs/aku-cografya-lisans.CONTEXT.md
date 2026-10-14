@@ -1,7 +1,7 @@
 # aku-cografya-lisans — context pack
 ## Identity
 - Registry id(s): `aku-cografya-lisans-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-cografya.js` (exports: akuCografyaLisans)
+- Template module: `engine/src/templates/aku-cografya.js` (exports: akuCografyaLisans)
 - Spec: `orchestration/specs/aku-cografya-lisans.json`; checks: `orchestration/specs/aku-cografya-lisans.checks.json` (exists); progress report: `orchestration/reports/aku-cografya-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf`

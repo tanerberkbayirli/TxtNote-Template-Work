@@ -1,0 +1,5 @@
+()=>{const img=document.querySelector('.txn-docx-15961');const res=[];
+const walk=(rules)=>{for(const r of rules){if(r.cssRules&&r.constructor.name!=='CSSStyleRule'){walk(r.cssRules);continue}if(r.style&&(r.style.display||r.style.float)&&r.selectorText){try{if(img.matches(r.selectorText))res.push(r.selectorText.slice(0,200)+' {'+r.style.cssText.slice(0,200)+'}')}catch(e){}}}};
+for(const s of document.styleSheets){try{walk(s.cssRules)}catch(e){}}
+const p=img.closest('p');const pr=[];const walk2=(rules)=>{for(const r of rules){if(r.cssRules&&r.constructor.name!=='CSSStyleRule'){walk2(r.cssRules);continue}if(r.style&&r.selectorText){try{if(img.parentElement.matches(r.selectorText)&&r.style.cssText.includes('display'))pr.push(r.selectorText.slice(0,160)+'{'+r.style.cssText.slice(0,160)+'}')}catch(e){}}}};for(const s of document.styleSheets){try{walk2(s.cssRules)}catch(e){}}
+return {res,pr,chain:(()=>{const o=[];let e=img;while(e&&e!==document.body&&o.length<8){o.push(e.tagName+'.'+(e.className||'')+' '+getComputedStyle(e).display+' '+(e.getAttribute('hidden')!==null?'hidden':''));e=e.parentElement}return o})()}}

@@ -1,7 +1,7 @@
 # afsu-eczacilik-proje — context pack
 ## Identity
 - Registry id(s): `afsu-eczacilik-proje-lisans-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/afsu-eczacilik-proje.js` (exports: afsuEczacilikProje)
+- Template module: `engine/src/templates/afsu-eczacilik-proje.js` (exports: afsuEczacilikProje)
 - Spec: `orchestration/specs/afsu-eczacilik-proje.json`; checks: `orchestration/specs/afsu-eczacilik-proje.checks.json` (not yet); progress report: `orchestration/reports/afsu-eczacilik-proje-source.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Eczacilik_Arastirma_Projesi/AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf`

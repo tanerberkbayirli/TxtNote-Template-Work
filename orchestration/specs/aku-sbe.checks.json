@@ -324,7 +324,7 @@
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: the Turkish fixture title measures nine lines at unchanged 80 mm / TNR 12 pt bold uppercase; 14 total text lines plus 6 pt spacing require 70.27 mm, exceeding the available 62.6 mm. Outer cover therefore spans two physical pages, then hidden-number inner cover: none x3. Independent current PDF/Word agree. The earlier five-line/one-page assumption was incorrect; see orchestration/engine-work/final-closure/resumed-20261012/sbe-label-ruling.md and cover-probe.json."
     },
     "evidence": "INFERRED"
   },
@@ -666,7 +666,7 @@
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: the Turkish fixture title measures nine lines at unchanged 80 mm / TNR 12 pt bold uppercase; 14 total text lines plus 6 pt spacing require 70.27 mm, exceeding the available 62.6 mm. Outer cover therefore spans two physical pages, then hidden-number inner cover: none x3. Independent current PDF/Word agree. The earlier five-line/one-page assumption was incorrect; see orchestration/engine-work/final-closure/resumed-20261012/sbe-label-ruling.md and cover-probe.json."
     },
     "evidence": "INFERRED"
   },
@@ -975,11 +975,11 @@
       },
       "fixture": "master-en"
     },
-    "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+    "expected": "ii, iii, iv, v, vi, vii, viii",
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; the English fixture has a 73-character title, one table and no figures: front matter Etik..Simgeler = 7 printed pages (ethics, approval, abstract, özet, ön söz, içindekiler, simgeler); the table/figure/photo lists appear only from three captions (visibleWhen count>=3). The earlier 11-page value was copied from the long Turkish fixture (193-character title, many captions) and does not apply to this fixture."
     },
     "evidence": "EXPLICIT"
   },
@@ -992,11 +992,11 @@
       },
       "fixture": "master-en"
     },
-    "expected": "none x3",
+    "expected": "none x2",
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; the English fixture title (73 characters) fits the outer cover on one page, so two unnumbered pages. The earlier \"none x3\" came from the Turkish fixture whose 193-character title spills the outer cover onto a second page."
     },
     "evidence": "INFERRED"
   },
@@ -1305,11 +1305,11 @@
       },
       "fixture": "phd-en"
     },
-    "expected": "ii, iii, iv, v, vi, vii, viii, ix, x, xi, xii",
+    "expected": "ii, iii, iv, v, vi, vii, viii",
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; fixture front matter Etik..Simgeler = 11 printed pages"
+      "locator": "p.11 (printed 10) §5.3: inner cover = i (not printed), ethics declaration = ii, continues roman until GİRİŞ; the English fixture has a 73-character title, one table and no figures: front matter Etik..Simgeler = 7 printed pages (ethics, approval, abstract, özet, ön söz, içindekiler, simgeler); the table/figure/photo lists appear only from three captions (visibleWhen count>=3). The earlier 11-page value was copied from the long Turkish fixture (193-character title, many captions) and does not apply to this fixture."
     },
     "evidence": "EXPLICIT"
   },
@@ -1322,11 +1322,11 @@
       },
       "fixture": "phd-en"
     },
-    "expected": "none x3",
+    "expected": "none x2",
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; the English fixture title (73 characters) fits the outer cover on one page, so two unnumbered pages. The earlier \"none x3\" came from the Turkish fixture whose 193-character title spills the outer cover onto a second page."
     },
     "evidence": "INFERRED"
   },
@@ -1656,7 +1656,7 @@
     "tolerance": 0.5,
     "source": {
       "file": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-      "locator": "pagination.outerCover INFERRED + inner cover not printed: outer cover and inner cover unnumbered; fixture has outer cover spilling onto 2 pages (UNKNOWN wrap rule)"
+      "locator": "pagination.outerCover INFERRED + inner cover not printed: the Turkish fixture title measures nine lines at unchanged 80 mm / TNR 12 pt bold uppercase; 14 total text lines plus 6 pt spacing require 70.27 mm, exceeding the available 62.6 mm. Outer cover therefore spans two physical pages, then hidden-number inner cover: none x3. Independent current PDF/Word agree. The earlier five-line/one-page assumption was incorrect; see orchestration/engine-work/final-closure/resumed-20261012/sbe-label-ruling.md and cover-probe.json."
     },
     "evidence": "INFERRED"
   },

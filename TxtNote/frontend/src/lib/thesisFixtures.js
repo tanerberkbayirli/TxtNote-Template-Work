@@ -1,5 +1,5 @@
 // Test-only invented template fixtures (no university policy implied). Never import from production code.
-import generic from "../thesis/templates/generic.js";
+import generic from "../../../../engine/src/templates/generic.js";
 
 const fixtureA = (() => {
   

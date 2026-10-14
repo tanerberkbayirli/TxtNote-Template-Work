@@ -1,7 +1,7 @@
 # aku-fbe — context pack
 ## Identity
 - Registry id(s): `aku-fbe-master-tr-v1`, `aku-fbe-phd-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-fbe.js` (exports: akuFbeMaster, akuFbePhd)
+- Template module: `engine/src/templates/aku-fbe.js` (exports: akuFbeMaster, akuFbePhd)
 - Spec: `orchestration/specs/aku-fbe.json`; checks: `orchestration/specs/aku-fbe.checks.json`; progress report: `orchestration/reports/aku-fbe.md`
 ## Sources
 - `orchestration/official-sources/aku-fbe/AKU_FBE_Tez_Sablonu_online_2023.docx`

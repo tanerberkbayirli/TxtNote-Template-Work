@@ -1,0 +1,17 @@
+{
+  "sourceId": "EDGE_STRUCTURE",
+  "source": "engine/mission01/inputs/edge-native-structure-final.docx",
+  "sourceSha256": "9f0ec3fc18909d52738ed82cbfc43bcd68790dde921a7e3bbda0e1503fdaf8f8",
+  "startedAt": "2026-10-08T19:13:30.281Z",
+  "finishedAt": "2026-10-08T19:13:33.578Z",
+  "wordPid": null,
+  "timedOut": false,
+  "code": 1,
+  "status": "FAILED",
+  "pdf": "C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/validation/mission01/source-references/EDGE_STRUCTURE/word.pdf",
+  "pdfSha256": null,
+  "renderInfo": null,
+  "stdout": "",
+  "stderr": "Cannot establish one newly started Word process.\r\nAt C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\word2pdf.ps1:25 char:36\r\n+ ... nt -ne 1) { throw \"Cannot establish one newly started Word process.\"  ...\r\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : OperationStopped: (Cannot establis...d Word process.:String) [], RuntimeException\r\n    + FullyQualifiedErrorId : Cannot establish one newly started Word process.\r\n \r\n",
+  "acceptance": "Source reference only; no import/export conformance claimed."
+}

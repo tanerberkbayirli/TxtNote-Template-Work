@@ -1,0 +1,74 @@
+{
+  "startedAt": "2026-10-10T13:11:19.390Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "engine-word-justify",
+      "exitCode": 0,
+      "commandSeconds": 24.409,
+      "report": "engine\\mission07\\final-word\\engine-word-justify\\check-20261010-1611.json",
+      "counts": {
+        "PASS": 22
+      },
+      "measurementSeconds": 0.687,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 0,
+      "commandSeconds": 98.608,
+      "report": "engine\\mission07\\final-word\\engine-word-pagefit\\check-20261010-1613.json",
+      "counts": {
+        "PASS": 213
+      },
+      "measurementSeconds": 6.578,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 0,
+      "commandSeconds": 21.1,
+      "report": "engine\\mission07\\final-word\\engine-word-parity\\check-20261010-1613.json",
+      "counts": {
+        "PASS": 148
+      },
+      "measurementSeconds": 1.735,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 0,
+      "commandSeconds": 71.657,
+      "report": "engine\\mission07\\final-word\\engine-word-structure\\check-20261010-1614.json",
+      "counts": {
+        "PASS": 136
+      },
+      "measurementSeconds": 4.531,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 0,
+      "commandSeconds": 52.037,
+      "report": "engine\\mission07\\final-word\\engine-word-style-precedence\\check-20261010-1615.json",
+      "counts": {
+        "PASS": 64
+      },
+      "measurementSeconds": 0.594,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 0,
+      "commandSeconds": 28.053,
+      "report": "engine\\mission07\\final-word\\phase52-justify\\check-20261010-1616.json",
+      "counts": {
+        "PASS": 34
+      },
+      "measurementSeconds": 0.312,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-10T13:16:15.260Z",
+  "commandSeconds": 295.867
+}

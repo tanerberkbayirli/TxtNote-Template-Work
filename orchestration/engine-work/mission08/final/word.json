@@ -1,0 +1,75 @@
+{
+  "startedAt": "2026-10-11T08:34:11.465Z",
+  "wordRequested": true,
+  "targets": [
+    {
+      "target": "engine-word-justify",
+      "exitCode": 0,
+      "commandSeconds": 25.726,
+      "report": "engine\\mission08\\final\\word\\engine-word-justify\\check-20261011-1134.json",
+      "counts": {
+        "PASS": 22
+      },
+      "measurementSeconds": 0.719,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 0,
+      "commandSeconds": 124.315,
+      "report": "engine\\mission08\\final\\word\\engine-word-pagefit\\check-20261011-1136.json",
+      "counts": {
+        "PASS": 213
+      },
+      "measurementSeconds": 9.344,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 0,
+      "commandSeconds": 28.765,
+      "report": "engine\\mission08\\final\\word\\engine-word-parity\\check-20261011-1137.json",
+      "counts": {
+        "PASS": 148
+      },
+      "measurementSeconds": 1.75,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 1,
+      "commandSeconds": 91.913,
+      "report": "engine\\mission08\\final\\word\\engine-word-structure\\check-20261011-1138.json",
+      "counts": {
+        "PASS": 134,
+        "FAIL": 2
+      },
+      "measurementSeconds": 5.921,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 0,
+      "commandSeconds": 60.356,
+      "report": "engine\\mission08\\final\\word\\engine-word-style-precedence\\check-20261011-1139.json",
+      "counts": {
+        "PASS": 64
+      },
+      "measurementSeconds": 0.469,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 0,
+      "commandSeconds": 30.54,
+      "report": "engine\\mission08\\final\\word\\phase52-justify\\check-20261011-1140.json",
+      "counts": {
+        "PASS": 34
+      },
+      "measurementSeconds": 0.344,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-11T08:40:13.066Z",
+  "commandSeconds": 361.618
+}

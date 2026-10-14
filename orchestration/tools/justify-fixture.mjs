@@ -1,7 +1,7 @@
 // Isolated engine acceptance fixture (justified-text line breaking), never a university formatting source.
 // Regenerate: node orchestration/tools/justify-fixture.mjs
 import { writeFile } from 'node:fs/promises';
-import generic from '../../TxtNote/frontend/src/thesis/templates/generic.js';
+import generic from '../../engine/src/templates/generic.js';
 const id = 'engine-word-justify';
 const words = 'tezin hazırlanması sırasında üniversite öğrencileri tarafından kullanılan yöntemler ve bulgular değerlendirilmiş olup sonuçlar araştırmacılar için önemli katkılar sağlamaktadır bu çalışmada elde edilen veriler istatistiksel olarak analiz edilmiş the quick brown fox jumps over a lazy dog while committee members review each chapter of the dissertation carefully and thoroughly ÖZDOĞAN KABUL ONAY yüksek lisans doktora anabilim dalı'.split(' ');
 let seed = 20261004;

@@ -1,0 +1,130 @@
+{
+  "status": "REVIEWED",
+  "reviewedOn": "2026-10-08",
+  "syntheticAllPagesInspected": true,
+  "syntheticNativePages": 14,
+  "syntheticScanPages": 3,
+  "sourceRepresentativePages": 66,
+  "scope": "All 17 final synthetic pages inspected individually at original image detail. All 11 source sample sheets inspected; these cover 66 representative pages, not every source page. Full source PDFs remain canonical references.",
+  "observations": [
+    "Native structure: 11 pages, readable tables/equations/images, blank landscape transition page 10 preserved as Word behavior.",
+    "47-row table continues across pages; ROW_022 and ROW_034 split at page boundaries, preserved as observed source behavior.",
+    "Native long footnote: all 40 paragraph markers visible across 3 pages, body paragraphs retained.",
+    "Scans: three image-only pages, including low-resolution gray table and rotated equation page; ground truth recorded separately.",
+    "Official source annotations, watermarks and placeholder text preserved. SRC11 broken bookmark field messages and Word-statistics/PDF page discrepancy are an explicit negative control, not engine failures or geometry PASS evidence."
+  ],
+  "images": [
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-01.png",
+      "sha256": "d5b9df19e69496da8ec49af8494c64e0c2868b4c503a7f234a1158c0755cfc10"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-02.png",
+      "sha256": "730b2c8110376dab83a8ceb72814bfd9c77827961de05a7a9338ef0ac4560e41"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-03.png",
+      "sha256": "cf6aba3b9deb0b5c2f7919a9edd31480075902b66aa6c3ea4ef69d75b639f7cf"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-04.png",
+      "sha256": "45407ee55d099c25f298810f30cb0c86670f4c2821e75f8db7255b2e645ea488"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-05.png",
+      "sha256": "13e28489d3ea4a4b878ecf624cf147440e70bc0df1c52b82d4b8d864c2bd2fdc"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-06.png",
+      "sha256": "062790f87e207f3e46624de3d482d794442f362cae8e47bbd2a706c8d42864f3"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-07.png",
+      "sha256": "92e59511a45ec166ecb46b0c3f8c073b3f7485146528c62b76e917f0dcd08ae7"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-08.png",
+      "sha256": "faf4c49bd17807e2bc0a309bffae284a3b30d708e46456dac3d9ae13b24cd65a"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-09.png",
+      "sha256": "f83737b0f3b557a18de8345e68da06361cfb2179e44ff2c1f7cf38a0e723c394"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-10.png",
+      "sha256": "3ee0d4e8e3cf865d818ec2f74c969b1450af2216720565ecf89038bea0938551"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_STRUCTURE/page-11.png",
+      "sha256": "b96af52716f7efe913f6d5780a6f214d8ac49b561605b8bdef251c09ae07f3de"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_NOTES/page-01.png",
+      "sha256": "32cf6f51d2f18d0b9d2204f6eac0481c7145f269312cbca22a29889adc88a5f1"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_NOTES/page-02.png",
+      "sha256": "48e73ef808d03a8e13b51d3264313687d9361b9fa29ff3a5c6898444bb43f920"
+    },
+    {
+      "path": "engine/mission01/qa/EDGE_NOTES/page-03.png",
+      "sha256": "41131319c3470e5fd032c882e2a1cbcebb5c905c7c6d9aec6b12ec82cc6593af"
+    },
+    {
+      "path": "engine/mission01/qa/SCAN_FINAL/page-01.png",
+      "sha256": "781595c5679b3b201e3283287c901535bbd1dc5112df98ed14bfafa8eae300f9"
+    },
+    {
+      "path": "engine/mission01/qa/SCAN_FINAL/page-02.png",
+      "sha256": "9f2652d149b2029bda1916983df196ddcb3c5c96bd87118ce1535acffd282909"
+    },
+    {
+      "path": "engine/mission01/qa/SCAN_FINAL/page-03.png",
+      "sha256": "149b2c144cf43ffa7347ad2d68a53f8abe4865b03067340f334f63a26d60a688"
+    },
+    {
+      "path": "engine/mission01/qa/SRC01-samples.png",
+      "sha256": "6336ce54daed31476e80945d567d06ccef35bfdbf2c6be894b9e257b19532920"
+    },
+    {
+      "path": "engine/mission01/qa/SRC02-samples.png",
+      "sha256": "9c9af99bac19475b54638985d1634c7691f6296ce9f4df83d3f3e4b849a31a95"
+    },
+    {
+      "path": "engine/mission01/qa/SRC03-samples.png",
+      "sha256": "aff5fbf7eac23efb6cbf6d5af02c872cac9d37b91ac322ba56201047b7e524d7"
+    },
+    {
+      "path": "engine/mission01/qa/SRC04-samples.png",
+      "sha256": "4f3aae70faa710d0298b283c2deeae45bbf4a56ddafa39bad62b7e8156c328cf"
+    },
+    {
+      "path": "engine/mission01/qa/SRC05-samples.png",
+      "sha256": "e39e5acf0600ddd208c197da0dafd4a7997b30ba87f5aa09541f26233744c016"
+    },
+    {
+      "path": "engine/mission01/qa/SRC06-samples.png",
+      "sha256": "ed2170ed5110cd31d2c492a99afd5544e0054f75989325323ed9bba4454dbe97"
+    },
+    {
+      "path": "engine/mission01/qa/SRC07-samples.png",
+      "sha256": "6db6d896abd66fab322a01502f0ee4b1a43a7072b0bd3f431ccf8ba72d7d960f"
+    },
+    {
+      "path": "engine/mission01/qa/SRC08-samples.png",
+      "sha256": "e829322f5fba6070f614204c6cd7529fbcfe455ef3db717a384d864c1be14dac"
+    },
+    {
+      "path": "engine/mission01/qa/SRC09-samples.png",
+      "sha256": "86e3f23e3ecf015d21f8eae4d0130d2ec0018187683256acc7f2dd7728c4ac5f"
+    },
+    {
+      "path": "engine/mission01/qa/SRC10-samples.png",
+      "sha256": "2ed9e385f6209468536dbd9525e9f5c1a18df5acb56d5722a303a7bebf445043"
+    },
+    {
+      "path": "engine/mission01/qa/SRC11-samples.png",
+      "sha256": "6cece545066a4a22ab8dad79f0414fef0b46543861531ceb0e77cf67b08ac1a1"
+    }
+  ]
+}

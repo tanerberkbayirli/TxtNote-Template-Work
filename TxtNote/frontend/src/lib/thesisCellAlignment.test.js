@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { compileThesisDocument, buildThesisCss } from '../thesis/engine.js';
-import generic from '../thesis/templates/generic.js';
+import { compileThesisDocument, buildThesisCss } from '../../../../engine/src/engine.js';
+import generic from '../../../../engine/src/templates/generic.js';
 
 test('authored cell alignment retains table-cell geometry and overrides template defaults', () => {
   const model = compileThesisDocument(generic, {}, 'Cells', '<table><tr><td class="fmt-align-center">40</td></tr></table>');

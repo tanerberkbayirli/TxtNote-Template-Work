@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { chromium } from '../../../../tools/node_modules/playwright/index.mjs';
-import { thesisSourceHtml } from '../../../../../TxtNote/frontend/src/thesis/sourceHtml.js';
+import { thesisSourceHtml } from '../../../../../engine/src/sourceHtml.js';
 
 const browser = await chromium.launch({ headless: true, executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe' });
 try {

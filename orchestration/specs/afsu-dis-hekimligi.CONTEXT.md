@@ -1,7 +1,7 @@
 # afsu-dis-hekimligi — context pack
 ## Identity
 - Registry id(s): `afsu-dis-hekimligi-uzmanlik-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/afsu-tip.js` (exports: afsuDisHekimligiUzmanlik). Variant of the afsu-tip family (module afsu-tip.js, export afsuDisHekimligiUzmanlik). Spec file orchestration/specs/afsu-dis-hekimligi.json does NOT exist although progress.json points at it; use afsu-tip.json (covers both guide copies).
+- Template module: `engine/src/templates/afsu-tip.js` (exports: afsuDisHekimligiUzmanlik). Variant of the afsu-tip family (module afsu-tip.js, export afsuDisHekimligiUzmanlik). Spec file orchestration/specs/afsu-dis-hekimligi.json does NOT exist although progress.json points at it; use afsu-tip.json (covers both guide copies).
 - Spec: `orchestration/specs/afsu-dis-hekimligi.json` (NOT PRESENT); checks: `orchestration/specs/afsu-dis-hekimligi.checks.json` (not yet); progress report: `orchestration/reports/afsu-tip.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf`

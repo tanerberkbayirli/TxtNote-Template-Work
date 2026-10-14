@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 // ESM-native — package.json has "type": "module", so don't rely on __dirname.
 const here = path.dirname(fileURLToPath(import.meta.url)) // <repo>/frontend
 const repoRoot = path.resolve(here, '..')                 // <repo>
+const engineRoot = path.resolve(repoRoot, '../engine')
 
 const host = process.env.TAURI_DEV_HOST
 
@@ -28,10 +29,14 @@ export default defineConfig({
   clearScreen: false,
 
   resolve: {
+    // The application and the external engine must share runtime identities.
+    dedupe: ['react', 'react-dom', 'docx', 'jspdf', 'fflate', '@xmldom/xmldom'],
     // Most specific first. Vite matches an alias only on an exact hit or on
     // `alias + "/"`, so '@' will not swallow '@services', but ordering is
     // still the safe habit.
     alias: {
+      '/engine': path.resolve(engineRoot, 'src'),
+      '@engine': path.resolve(engineRoot, 'src'),
       '@shared/types': path.resolve(repoRoot, 'types/index.ts'),
       '@shared/services': path.resolve(repoRoot, 'services/index.ts'),
       '@services': path.resolve(repoRoot, 'services'),
@@ -56,7 +61,7 @@ export default defineConfig({
     fs: {
       // services/ and types/ sit ABOVE the Vite root. Without this, Vite
       // refuses to serve them: "outside of Vite serving allow list".
-      allow: [repoRoot],
+      allow: [repoRoot, engineRoot],
     },
   },
 })

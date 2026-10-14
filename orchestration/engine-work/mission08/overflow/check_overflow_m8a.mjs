@@ -1,0 +1,22 @@
+import {readFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+const require=createRequire(new URL('../../../tools/package.json',import.meta.url));
+const {chromium}=require('playwright');
+const base=JSON.parse(readFileSync('orchestration/specs/aku-sagbil.fixture.master.json','utf8'));
+const KEY='txtnote-thesis-regression';
+const run=async(label,title)=>{
+  const doc=structuredClone(base);for(const k of ['THESIS_TITLE','THESIS_TITLE_EN','ADVISOR_NAME','STUDENT_NAME'])if(title.length>20)doc.researchData.thesis.values[k]=title;else if(k==='THESIS_TITLE')doc.researchData.thesis.values[k]=title;
+  const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--enable-blink-features=MulticolColumnWrapping']});
+  const page=await browser.newPage({viewport:{width:1400,height:1000}});
+  await page.addInitScript(([k,v])=>{if(location.origin!=='http://127.0.0.1:5175')return;localStorage.clear();localStorage.setItem(k,v);},[KEY,JSON.stringify(doc)]);
+  await page.goto('http://127.0.0.1:5175/tests/thesis.html');
+  await page.locator('.thesis-sheet').first().waitFor({timeout:60000});
+  await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(2500);
+  const text=await page.evaluate(()=>[...document.querySelectorAll('.thesis-ribbon-warning p')].map(p=>p.textContent).join(' | '));
+  const hits=text.split(' | ').filter(l=>/taşıyor|üst üste/.test(l));
+  console.log(label,JSON.stringify(hits),'ALL:',text.slice(0,600));
+  await page.screenshot({path:`orchestration/engine-work/mission08/overflow/${label}.png`});
+  await browser.close();
+};
+await run('short','Kısa Başlık');
+await run('long','Çok uzun bir tez başlığı '.repeat(25));

@@ -1,0 +1,34 @@
+{
+  "samples": 20,
+  "status": "PASS",
+  "loadMs": 32605.8969,
+  "reopenMs": 33211.07290000003,
+  "settleMs": {
+    "min": 10806.39480000001,
+    "median": 12137.639799999997,
+    "p95": 14275.173100000015,
+    "max": 14969.890700000047
+  },
+  "undoMs": {
+    "min": 12100.537699999986,
+    "median": 13849.159100000034,
+    "p95": 15061.657500000001,
+    "max": 16080.833699999988
+  },
+  "inputFrameMs": {
+    "min": 9986.371199999994,
+    "median": 11140.797749999998,
+    "p95": 13168.8554,
+    "max": 13936.07640000002
+  },
+  "save": {
+    "authorRestored": true,
+    "documentEqual": true,
+    "presentationNotSaved": true
+  },
+  "reopen": {
+    "documentEqual": true,
+    "contentEqual": true,
+    "pages": 180
+  }
+}

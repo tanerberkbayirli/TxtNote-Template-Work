@@ -21,11 +21,39 @@ export const CAMBRIA_MATH_FACES = {
   // Cambria Math is face 1 in Windows' installed cambria.ttc collection.
   normal: { file: "cambria.ttc", postscript: "CambriaMath", collectionIndex: 1 },
 };
+export const CONSOLAS_FACES = {
+  normal: { file: "consola.ttf", postscript: "Consolas" },
+  bold: { file: "consolab.ttf", postscript: "Consolas-Bold" },
+  italic: { file: "consolai.ttf", postscript: "Consolas-Italic" },
+  bolditalic: { file: "consolaz.ttf", postscript: "Consolas-BoldItalic" },
+};
+export const COURIER_NEW_FACES = {
+  normal: { file: "cour.ttf", postscript: "CourierNewPSMT" },
+  bold: { file: "courbd.ttf", postscript: "CourierNewPS-BoldMT" },
+  italic: { file: "couri.ttf", postscript: "CourierNewPS-ItalicMT" },
+  bolditalic: { file: "courbi.ttf", postscript: "CourierNewPS-BoldItalicMT" },
+};
+// Symbol-encoded (Microsoft "symbol" cmap 3,0) fonts: one face, text lives at U+F020..U+F0FF.
+export const WINGDINGS_FACES = { normal: { file: "wingding.ttf", postscript: "Wingdings-Regular" } };
+export const WINGDINGS_2_FACES = { normal: { file: "WINGDNG2.TTF", postscript: "Wingdings2" } };
+export const WINGDINGS_3_FACES = { normal: { file: "WINGDNG3.TTF", postscript: "Wingdings3" } };
+export const SYMBOL_FACES = { normal: { file: "symbol.ttf", postscript: "SymbolMT" } };
+export const WEBDINGS_FACES = { normal: { file: "webdings.ttf", postscript: "Webdings" } };
 /**
  * Families an official template may require in its PDF, keyed by their exact family name.
  * The PDF then embeds these genuine programs (never a metric-compatible substitute).
  */
-export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, Calibri: CALIBRI_FACES, "Cambria Math": CAMBRIA_MATH_FACES });
+export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, Calibri: CALIBRI_FACES, "Cambria Math": CAMBRIA_MATH_FACES, Consolas: CONSOLAS_FACES, "Courier New": COURIER_NEW_FACES, Wingdings: WINGDINGS_FACES, "Wingdings 2": WINGDINGS_2_FACES, "Wingdings 3": WINGDINGS_3_FACES, Symbol: SYMBOL_FACES, Webdings: WEBDINGS_FACES });
+/** Families whose glyphs are addressed through the symbol cmap (code points U+F020..U+F0FF). */
+export const SYMBOL_ENCODED_FAMILIES = Object.freeze(new Set(["Wingdings", "Wingdings 2", "Wingdings 3", "Symbol", "Webdings"]));
+export const isSymbolEncodedFamily = (value) => SYMBOL_ENCODED_FAMILIES.has(systemPdfFontFamily(value));
+/**
+ * Word stores symbol-font characters at U+F0xx, but plain 0x20..0xFF characters in such a run select the same glyphs.
+ * Map both to the PUA code points the font's symbol cmap declares; anything else is left untouched.
+ */
+export function symbolFontText(text) {
+  return String(text).replace(/[ -ÿ]/g, (char) => String.fromCharCode(0xF000 + char.charCodeAt(0)));
+}
 /** Canonical family name for a CSS/template family (case-insensitive), or null when not a system PDF family. */
 export function systemPdfFontFamily(value) {
   const name = String(value || "").split(",")[0].replace(/["']/g, "").trim().toLowerCase();
@@ -128,6 +156,42 @@ export function extractTrueTypeCollectionFace(input, faceIndex) {
   return output;
 }
 
+/**
+ * jsPDF only accepts a Unicode cmap (platform 3, encoding 1). Symbol fonts declare (3,0) with the same format-4 subtable,
+ * so re-label that record as (3,1); glyph mapping is unchanged and the cmap table checksum is refreshed.
+ */
+export function symbolCmapAsUnicode(input) {
+  const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
+  const view = new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength);
+  const tableCount = view.getUint16(4);
+  for (let i = 0; i < tableCount; i += 1) {
+    const record = 12 + i * 16;
+    if (String.fromCharCode(...bytes.subarray(record, record + 4)) !== "cmap") continue;
+    const offset = view.getUint32(record + 8), length = view.getUint32(record + 12);
+    const count = view.getUint16(offset + 2);
+    let has31 = false, symbolRecord = -1;
+    for (let k = 0; k < count; k += 1) {
+      const entry = offset + 4 + k * 8;
+      const platform = view.getUint16(entry), encoding = view.getUint16(entry + 2);
+      if (platform === 3 && encoding === 1) has31 = true;
+      if (platform === 3 && encoding === 0) symbolRecord = entry;
+    }
+    if (has31 || symbolRecord < 0) return bytes;
+    const output = new Uint8Array(bytes);
+    const target = new DataView(output.buffer);
+    target.setUint16(symbolRecord + 2, 1);
+    let checksum = 0;
+    for (let at = 0; at < length; at += 4) {
+      let word = 0;
+      for (let j = 0; j < 4; j += 1) word = (word << 8) | (at + j < length ? output[offset + at + j] : 0);
+      checksum = (checksum + (word >>> 0)) >>> 0;
+    }
+    target.setUint32(record + 4, checksum);
+    return output;
+  }
+  return bytes;
+}
+
 const cachedFamilies = new Map();
 /** Genuine regular/bold/italic/bolditalic programs of `family`, verified by their name table. */
 export async function loadSystemFontFamily(family) {
@@ -146,6 +210,7 @@ export async function loadSystemFontFamily(family) {
         // jsPDF embeds subsets; reject restricted, bitmap-only or no-subsetting fonts.
         if (identity.fsType & (0x0002 | 0x0100 | 0x0200)) throw new Error(`${family} fontunun PDF embedding izni yok.`);
         font.identity = identity;
+        if (SYMBOL_ENCODED_FAMILIES.has(family)) font.bytes = symbolCmapAsUnicode(font.bytes);
       }
       return fonts;
     }).catch((error) => { cachedFamilies.delete(family); throw error; }));

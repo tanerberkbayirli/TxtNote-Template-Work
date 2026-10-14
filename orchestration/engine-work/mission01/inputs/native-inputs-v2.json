@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "authoring": "Independent Python DOCX and native OOXML; no TxtEngine output is a source.",
+  "sources": [
+    {
+      "id": "EDGE01R",
+      "path": "engine/mission01/inputs/edge-native-structure-v2.docx",
+      "sha256": "ba9fe034b83c9bac9b8f79e259fae84e2d2b39706b2240e45782c5e6ded3054e",
+      "role": "synthetic-boundary",
+      "partition": "development"
+    },
+    {
+      "id": "EDGE02",
+      "path": "engine/mission01/inputs/edge-long-notes.docx",
+      "sha256": "d8534156a32ab32e478fe58b855e12ee570739f33ed6f7bed6f9bbf279a8fcb2",
+      "role": "synthetic-boundary",
+      "partition": "development"
+    }
+  ],
+  "revisionReason": "Correct tblLook SDK compatibility and sectPr pgNumType ordering; rejected EDGE01 is preserved."
+}

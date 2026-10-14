@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 2,
+  "reviewedOn": "2026-10-08",
+  "status": "PARTIAL_REFERENCE_PREPARATION",
+  "baseCorpus": {
+    "path": "engine/mission01/corpus.json",
+    "sha256": "31a372394a2838cd92e3b6ef6c33f00ed2fe3eb08f8e29feb6d7fe8186a5fbaf"
+  },
+  "reason": "User identified thesis examples in Ege. Filename-based initial role classification understated filled content and archive examples.",
+  "contentReview": {
+    "path": "engine/mission01/content-review.json",
+    "sha256": "fd3333cf85fb5215d8f8a11b4d700e4f5c17a73cbaa51a99b07d9123254e2aaf"
+  },
+  "archiveReview": {
+    "path": "engine/mission01/archive-review.json",
+    "sha256": "b8c9692bb62e4da4235ce4a2adf4483c422e9bf5fe65ace4b906ba78fd0159c4"
+  },
+  "wordReferences": [
+    {
+      "sourceId": "SRC09",
+      "sourceSha256": "a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b",
+      "role": "long-template-with-filled-research-content",
+      "physicalPages": 180,
+      "pdf": {
+        "path": "orchestration/validation/mission01/source-references/SRC09/word.pdf",
+        "sha256": "f673ca1ff16c62429515559c1a8a770015d049d099a6cb79eda853dd17f78185"
+      },
+      "record": {
+        "path": "orchestration/validation/mission01/source-references/SRC09/record.json",
+        "sha256": "7e01b83714df3452c74c9c3a40b651b980cdd9f9cb8f2ebc4eee8c98b300d337"
+      },
+      "pageIndex": {
+        "path": "engine/mission01/src09-word-page-index.json",
+        "sha256": "028ee0905a6948f4b507dfb9c931c17b472729ca51b932613325e99e4eb00a92"
+      },
+      "wordVersion": "16.0",
+      "wordBuild": "16.0.20430",
+      "fullDepositedThesisVerified": false
+    },
+    {
+      "sourceId": "SRC10",
+      "sourceSha256": "f4d763b85dab95ba3287e3e24b17e585c2d3468b257a4882eab1c58e7d962e6e",
+      "role": "long-template-with-filled-research-content",
+      "physicalPages": 91,
+      "pdf": {
+        "path": "orchestration/validation/mission01/source-references/SRC10/word.pdf",
+        "sha256": "0791e6ba3400b0acae4115effc7d6afe19fdec2bdee520e675f9a8c46c96d4e3"
+      },
+      "record": {
+        "path": "orchestration/validation/mission01/source-references/SRC10/record.json",
+        "sha256": "24646cb16fc4c94fff557e65724ab2ee9df47b4f927afd005bb470b1f76ceb54"
+      },
+      "pageIndex": {
+        "path": "engine/mission01/src10-word-page-index.json",
+        "sha256": "cf96c3f906f0f51fe553059cda6b4a886667440ae87324168ccda6189fa3c73d"
+      },
+      "wordVersion": "16.0",
+      "wordBuild": "16.0.20430",
+      "fullDepositedThesisVerified": false
+    }
+  ],
+  "corrections": [
+    "Long filled research examples exist locally. SRC09 is 180 physical Word pages; do not report local long-document material as missing.",
+    "SRC03 contains filled health research passages; Uşak contains filled engineering example passages.",
+    "Seven archives were inspected; five source PDFs inside four archives were indexed. They were omitted from the initial 198 loose-file count.",
+    "A 100-page minimum, two complete deposited theses, and numeric performance measurements were additional proposed criteria, not explicit Mission 01 requirements.",
+    "Mission 01 prepares examples and references. OCR implementation and full engine/IME/performance acceptance belong to later missions; do not make their implementation a Mission 01 blocker.",
+    "Keep the distinction between a filled official template/example and a verified deposited full thesis. The latter remains unverified, not proven absent."
+  ],
+  "gapReassessment": {
+    "G01": {
+      "status": "LOCAL_LONG_EXAMPLES_CONFIRMED",
+      "remaining": "Map language/degree/field and source features; establish reference adequacy. Deposited full-thesis provenance remains unverified."
+    },
+    "G02": {
+      "status": "PARTITION_REVIEW_PENDING",
+      "remaining": "Reserve suitable existing filled examples before engine implementation. Original two-deposited-thesis criterion is a proposal, not mandatory Mission 01 wording."
+    },
+    "G03": {
+      "status": "BOUNDARY_REFERENCE_PENDING",
+      "remaining": "Choose or prepare scan boundary inputs and reviewed ground truth. OCR implementation belongs to Mission 04."
+    },
+    "G04": {
+      "status": "REFERENCE_WORK_PENDING",
+      "remaining": "Use local native equation/table/note examples first; add synthetic boundary inputs only where genuinely absent."
+    },
+    "G05": {
+      "status": "LATER_ACCEPTANCE_WORK",
+      "remaining": "Record a future performance/editing validation protocol now; long-document optimization and real IME acceptance belong to Missions 07/13."
+    }
+  },
+  "nextAction": "Continue source/reference preparation from existing Ege materials; no request for additional user files is currently justified.",
+  "acceptance": "Source rendering and hash recording only; Mission 01 is not yet complete, and no engine import/export acceptance is claimed."
+}

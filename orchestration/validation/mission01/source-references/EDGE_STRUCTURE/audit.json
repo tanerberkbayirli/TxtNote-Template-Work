@@ -1,0 +1,236 @@
+﻿{
+    "featureCollectionCounts":  {
+                                    "Endnotes":  1,
+                                    "InlineShapes":  1,
+                                    "Shapes":  1,
+                                    "Sections":  2,
+                                    "Footnotes":  0,
+                                    "OMaths":  4,
+                                    "Fields":  2,
+                                    "Tables":  3
+                                },
+    "wordBuild":  "16.0.20430",
+    "paragraphs":  295,
+    "sampling":  "First four and final object of each Word collection; complete native XML positions are indexed separately.",
+    "features":  [
+                     {
+                         "textPrefix":  "HORIZONTAL_MERGE\r\u0007MERGE_0_2\r\u0007\r\u0007VERTICAL_MERGE\r\u0007MERGE_1_1\r\u0007MERGE_1_2\r\u0007\r\u0007\r\u0007MERGE_2_1\r\u0007MERGE_2_2\r\u0007\r\u0007MERGE_3_0\r\u0007MERGE_3_1\rNESTED_0_0\r\u0007NESTED_0_1\r\u0007\r\u0007NESTED_1_0\r\u0007NESTED_1_1\r\u0007\r\u0007\r\u0007MERGE_3_",
+                         "kind":  "Tables",
+                         "locator":  "Word.Tables[1]",
+                         "nestingLevel":  1,
+                         "ordinal":  1,
+                         "location":  {
+                                          "lastPhysicalPage":  3,
+                                          "firstPhysicalPage":  3,
+                                          "end":  1236,
+                                          "storyType":  1,
+                                          "start":  1072
+                                      }
+                     },
+                     {
+                         "textPrefix":  "REPEAT_HEADER ID\r\u0007Description\r\u0007Value\r\u0007\r\u0007ROW_001\r\u0007A wrapped description with Turkish characters şğıöçü and English words.\r\u00077\r\u0007\r\u0007ROW_002\r\u0007A wrapped description with Turkish character",
+                         "kind":  "Tables",
+                         "locator":  "Word.Tables[2]",
+                         "nestingLevel":  1,
+                         "ordinal":  2,
+                         "location":  {
+                                          "lastPhysicalPage":  7,
+                                          "firstPhysicalPage":  3,
+                                          "end":  5299,
+                                          "storyType":  1,
+                                          "start":  1283
+                                      }
+                     },
+                     {
+                         "textPrefix":  "WIDE_0_0\r\u0007WIDE_0_1\r\u0007WIDE_0_2\r\u0007WIDE_0_3\r\u0007WIDE_0_4\r\u0007WIDE_0_5\r\u0007\r\u0007WIDE_1_0\r\u0007WIDE_1_1\r\u0007WIDE_1_2\r\u0007WIDE_1_3\r\u0007WIDE_1_4\r\u0007WIDE_1_5\r\u0007\r\u0007WIDE_2_0\r\u0007WIDE_2_1\r\u0007WIDE_2_2\r\u0007WIDE_2_3\r\u0007WIDE_2_4\r\u0007WIDE_2",
+                         "kind":  "Tables",
+                         "locator":  "Word.Tables[3]",
+                         "nestingLevel":  1,
+                         "ordinal":  3,
+                         "location":  {
+                                          "lastPhysicalPage":  11,
+                                          "firstPhysicalPage":  11,
+                                          "end":  6005,
+                                          "storyType":  1,
+                                          "start":  5730
+                                      }
+                     },
+                     {
+                         "locator":  "Word.OMaths[1]",
+                         "textPrefix":  "\r𝑥\r2\r",
+                         "ordinal":  1,
+                         "location":  {
+                                          "lastPhysicalPage":  8,
+                                          "firstPhysicalPage":  8,
+                                          "end":  5369,
+                                          "storyType":  1,
+                                          "start":  5363
+                                      },
+                         "kind":  "OMaths"
+                     },
+                     {
+                         "locator":  "Word.OMaths[2]",
+                         "textPrefix":  "\r\r1\r2\r3\r4\r\r",
+                         "ordinal":  2,
+                         "location":  {
+                                          "lastPhysicalPage":  8,
+                                          "firstPhysicalPage":  8,
+                                          "end":  5411,
+                                          "storyType":  1,
+                                          "start":  5400
+                                      },
+                         "kind":  "OMaths"
+                     },
+                     {
+                         "locator":  "Word.OMaths[3]",
+                         "textPrefix":  "\r0\r1\r\r𝑥\r2\r𝑑𝑥\r=\r1\r3\r",
+                         "ordinal":  3,
+                         "location":  {
+                                          "lastPhysicalPage":  8,
+                                          "firstPhysicalPage":  8,
+                                          "end":  5474,
+                                          "storyType":  1,
+                                          "start":  5452
+                                      },
+                         "kind":  "OMaths"
+                     },
+                     {
+                         "locator":  "Word.OMaths[4]",
+                         "textPrefix":  "\r𝑣\r",
+                         "ordinal":  4,
+                         "location":  {
+                                          "lastPhysicalPage":  8,
+                                          "firstPhysicalPage":  8,
+                                          "end":  5505,
+                                          "storyType":  1,
+                                          "start":  5501
+                                      },
+                         "kind":  "OMaths"
+                     },
+                     {
+                         "locator":  "Word.InlineShapes[1]",
+                         "textPrefix":  "/",
+                         "ordinal":  1,
+                         "location":  {
+                                          "lastPhysicalPage":  9,
+                                          "firstPhysicalPage":  9,
+                                          "end":  5588,
+                                          "storyType":  1,
+                                          "start":  5587
+                                      },
+                         "kind":  "InlineShapes"
+                     },
+                     {
+                         "textPrefix":  "ENDNOTE_TEXT Native endnote retained as a linked note.",
+                         "kind":  "Endnotes",
+                         "locator":  "Word.Endnotes[1]",
+                         "ordinal":  1,
+                         "location":  {
+                                          "lastPhysicalPage":  2,
+                                          "firstPhysicalPage":  2,
+                                          "end":  55,
+                                          "storyType":  3,
+                                          "start":  1
+                                      },
+                         "referenceLocation":  {
+                                                   "lastPhysicalPage":  2,
+                                                   "firstPhysicalPage":  2,
+                                                   "end":  1005,
+                                                   "storyType":  1,
+                                                   "start":  1004
+                                               }
+                     },
+                     {
+                         "textPrefix":  "BOOKMARK_TARGET Native paragraph identity",
+                         "kind":  "Fields",
+                         "locator":  "Word.Fields[1]",
+                         "ordinal":  1,
+                         "location":  {
+                                          "lastPhysicalPage":  2,
+                                          "firstPhysicalPage":  2,
+                                          "end":  946,
+                                          "storyType":  1,
+                                          "start":  905
+                                      },
+                         "code":  " REF BoundaryTarget "
+                     },
+                     {
+                         "textPrefix":  "2",
+                         "kind":  "Fields",
+                         "locator":  "Word.Fields[2]",
+                         "ordinal":  2,
+                         "location":  {
+                                          "lastPhysicalPage":  2,
+                                          "firstPhysicalPage":  2,
+                                          "end":  990,
+                                          "storyType":  1,
+                                          "start":  989
+                                      },
+                         "code":  " PAGEREF BoundaryTarget "
+                     },
+                     {
+                         "textPrefix":  "Native thesis boundary reference\rEDGE COVER Long title and two advisors\rTürkçe ve English içeriklerin uzun başlıklar, karmaşık tablolar, düzenlenebilir denklemler ve kalıcı belge r",
+                         "kind":  "Sections",
+                         "locator":  "Word.Sections[1]",
+                         "ordinal":  1,
+                         "geometry":  {
+                                          "leftPt":  61.200000762939453,
+                                          "bottomPt":  57.599998474121094,
+                                          "rightPt":  61.200000762939453,
+                                          "topPt":  57.599998474121094,
+                                          "heightPt":  792,
+                                          "widthPt":  612
+                                      },
+                         "location":  {
+                                          "lastPhysicalPage":  11,
+                                          "firstPhysicalPage":  1,
+                                          "end":  5682,
+                                          "storyType":  1,
+                                          "start":  0
+                                      }
+                     },
+                     {
+                         "textPrefix":  "EDGE LANDSCAPE Wide table and numbering restart\rWIDE_0_0\r\u0007WIDE_0_1\r\u0007WIDE_0_2\r\u0007WIDE_0_3\r\u0007WIDE_0_4\r\u0007WIDE_0_5\r\u0007\r\u0007WIDE_1_0\r\u0007WIDE_1_1\r\u0007WIDE_1_2\r\u0007WIDE_1_3\r\u0007WIDE_1_4\r\u0007WIDE_1_5\r\u0007\r\u0007WIDE_2_0",
+                         "kind":  "Sections",
+                         "locator":  "Word.Sections[2]",
+                         "ordinal":  2,
+                         "geometry":  {
+                                          "leftPt":  61.200000762939453,
+                                          "bottomPt":  57.599998474121094,
+                                          "rightPt":  61.200000762939453,
+                                          "topPt":  57.599998474121094,
+                                          "heightPt":  612,
+                                          "widthPt":  792
+                                      },
+                         "location":  {
+                                          "lastPhysicalPage":  11,
+                                          "firstPhysicalPage":  11,
+                                          "end":  6006,
+                                          "storyType":  1,
+                                          "start":  5682
+                                      }
+                     },
+                     {
+                         "locator":  "Word.Shapes[1].Anchor",
+                         "ordinal":  1,
+                         "location":  {
+                                          "lastPhysicalPage":  9,
+                                          "firstPhysicalPage":  9,
+                                          "end":  5632,
+                                          "storyType":  1,
+                                          "start":  5631
+                                      },
+                         "kind":  "Shapes"
+                     }
+                 ],
+    "auditedAt":  "2026-10-08T19:19:26.9479278Z",
+    "listParagraphs":  3,
+    "source":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission01\\inputs\\edge-native-structure-final.docx",
+    "status":  "AUDITED",
+    "wordPid":  29792,
+    "pageDefinition":  "Word WdInformation=3 physical page from document start; not adjusted displayed page label",
+    "wordVersion":  "16.0",
+    "acceptance":  "Read-only source feature/page reference; no TxtEngine acceptance",
+    "physicalPages":  11,
+    "sha256":  "9f0ec3fc18909d52738ed82cbfc43bcd68790dde921a7e3bbda0e1503fdaf8f8"
+}

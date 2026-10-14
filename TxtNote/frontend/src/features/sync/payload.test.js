@@ -16,7 +16,11 @@ describe("note payload", () => {
   it("round-trips thesis metadata through the existing extras payload", () => {
     const thesis = { templateId: "demo", templateVersion: "1.0.0", values: { STUDENT_NAME: "Ada" }, sectionContent: { abstract: "<p>Özet</p>" } };
     const payload = buildNotePayload({ noteId: "note", workspaceId: "ws", note: { title: "Tez", content: "<h1>Giriş</h1>", researchData: { thesis } }, deviceId: "device" });
-    assert.deepEqual(noteFromPayload(payload).researchData.thesis, thesis);
+    const restored = noteFromPayload(payload).researchData.thesis;
+    const { document, ...compatible } = restored;
+    assert.deepEqual(compatible, thesis);
+    assert.equal(document.version, 1);
+    assert.equal(document.sections.length, 2);
   });
   it("preserves research fields and quote edits across JSON sync round-trips", () => {
     const researchData = {

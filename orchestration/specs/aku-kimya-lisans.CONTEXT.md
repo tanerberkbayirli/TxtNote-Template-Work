@@ -1,7 +1,7 @@
 # aku-kimya-lisans — context pack
 ## Identity
 - Registry id(s): `aku-kimya-lisans-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-kimya.js` (exports: akuKimyaLisans)
+- Template module: `engine/src/templates/aku-kimya.js` (exports: akuKimyaLisans)
 - Spec: `orchestration/specs/aku-kimya-lisans.json`; checker files now present: `orchestration/specs/aku-kimya-lisans.checks.json` and `.fixture.json`; progress report: `orchestration/reports/aku-kimya-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf`

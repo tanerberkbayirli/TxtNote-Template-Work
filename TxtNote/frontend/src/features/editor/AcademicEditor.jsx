@@ -22,6 +22,8 @@ import { AcademicTools } from "./AcademicTools";
 import { NoteSearch } from "./NoteSearch";
 import { RichTextBody } from "./RichTextBody";
 import { useNoteSearch } from "./useNoteSearch";
+import {PdfImportSetup,PdfImportReview} from './PdfImportReview.jsx';
+import genericThesis from '../../../../../engine/src/templates/generic.js';
 
 const NO_SOURCES = [];
 
@@ -47,6 +49,7 @@ export const AcademicEditor = ({
   onTitleChange,
   onContentChange,
   onResearchDataChange,
+  onDocumentChange,
   onCreateFromTemplate,
 }) => {
   const titleRef = useRef(null);
@@ -62,6 +65,21 @@ export const AcademicEditor = ({
   const [exporting, setExporting] = useState("");
   const [exportError, setExportError] = useState("");
   const [exportResult, setExportResult] = useState("");
+  const [pdfFile,setPdfFile]=useState(null),[pendingPdf,setPendingPdf]=useState(null);
+  const pdfAbort=useRef(null);
+  useEffect(()=>()=>pdfAbort.current?.abort(),[]);
+  const importPdf=async options=>{
+    const file=pdfFile;setPdfFile(null);if(!file)return;
+    const controller=new AbortController();pdfAbort.current?.abort();pdfAbort.current=controller;
+    setExporting('import');setExportError('');
+    try{
+      const {importThesisPdfFile}=await import('../../../../../engine/src/importPdf.js');
+      const next=await importThesisPdfFile(file,{title,content,researchData:{...researchData,thesis:{...researchData?.thesis,templateId:researchData?.thesis?.templateId||genericThesis.id}}},{...options,signal:controller.signal,
+        onProgress:p=>{if(!controller.signal.aborted)setExportResult(`${p.stage} · ${p.page}/${p.total}`);}});
+      if(!controller.signal.aborted){setPendingPdf(next);setExportResult('');}
+    }catch(error){if(error.name!=='AbortError')setExportError(error.message||'PDF içe aktarılamadı');}
+    finally{if(!controller.signal.aborted)setExporting('');}
+  };
   const [pageCount, setPageCount] = useState(1);
   const savedSources = researchData?.sources;
   const sources = useMemo(
@@ -274,6 +292,10 @@ export const AcademicEditor = ({
 
   const handleImport = useCallback(
     async (file) => {
+      if(/\.pdf$/i.test(file?.name||'')){
+        if(!onDocumentChange){setExportError('Kontrollü PDF aktarımı için belgeyi çalışma alanında açın.');return;}
+        setPdfFile(file);setToolsOpen(false);return;
+      }
       setExportError("");
       setExportResult("");
       setExporting("import");
@@ -296,7 +318,7 @@ export const AcademicEditor = ({
         setExporting("");
       }
     },
-    [onContentChange, onTitleChange, persistResearch],
+    [onContentChange, onTitleChange, persistResearch,onDocumentChange],
   );
 
   const isBlankNote = !plainTitle.trim() && !htmlToPlainText(content).trim() && !docAuthors && !docAbstract;
@@ -575,6 +597,10 @@ export const AcademicEditor = ({
         </div>
       </div>
 
+      {pdfFile?<PdfImportSetup file={pdfFile} onCancel={()=>setPdfFile(null)} onStart={options=>void importPdf(options)}/>:null}
+      {pendingPdf?<PdfImportReview note={pendingPdf} onChange={setPendingPdf} onCancel={()=>setPendingPdf(null)} onApply={next=>{onDocumentChange(next);setPendingPdf(null);}}/>:null}
+      {exporting==='import'?<div className="p-2 text-xs" role="status">{exportResult}<button type="button" className="mx-2 border p-1" onClick={()=>{pdfAbort.current?.abort();setExporting('');setExportResult('İçe aktarma iptal edildi.');}}>İçe aktarmayı iptal et</button></div>:null}
+      {exportError?<p role="alert" className="p-2 text-sm">{exportError}</p>:null}
       {toolsOpen ? (
         <AcademicTools
           activeFormat={activeFormat}

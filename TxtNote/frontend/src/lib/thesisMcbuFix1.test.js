@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { mcbuMaster } from "../thesis/templates/mcbu.js";
-import { buildThesisCss, compileThesisDocument } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { generatedLabelX } from "../thesis/layoutPdf.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
-import { specialPageBoxCss } from "../thesis/specialPages.js";
-import generic from "../thesis/templates/generic.js";
+import { mcbuMaster } from "../../../../engine/src/templates/mcbu.js";
+import { buildThesisCss, compileThesisDocument } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { generatedLabelX } from "../../../../engine/src/layoutPdf.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
+import { specialPageBoxCss } from "../../../../engine/src/specialPages.js";
+import generic from "../../../../engine/src/templates/generic.js";
 
 const image = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aMr8AAAAASUVORK5CYII=";
 const main = `<h1>Bölüm</h1><p>Metin</p><table data-kind="table"><caption>Bir tablo</caption><tr><td>a</td></tr></table><figure><img src="${image}" width="120" height="80"><figcaption>Bir şekil</figcaption></figure>`;

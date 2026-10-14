@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { strFromU8, unzipSync } from "fflate";
-import { compileThesisDocument, groupThesisSections } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { buildThesisPageModel, numberThesisPages } from "../thesis/pageLayout.js";
-import { mcbuTipUzmanlik } from "../thesis/templates/mcbu-tip.js";
-import { mcbuMaster } from "../thesis/templates/mcbu.js";
-import { validateThesisTemplate } from "../thesis/validation.js";
+import { compileThesisDocument, groupThesisSections } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { buildThesisPageModel, numberThesisPages } from "../../../../engine/src/pageLayout.js";
+import { mcbuTipUzmanlik } from "../../../../engine/src/templates/mcbu-tip.js";
+import { mcbuMaster } from "../../../../engine/src/templates/mcbu.js";
+import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 
 const html = "<h1>Giriş</h1><p>Bir.</p><h1>Genel Bilgiler</h1><p>İki.</p><h1>Bulgular</h1><p>Üç.</p>";
 const compile = (template) => compileThesisDocument(template, { values: {}, sectionContent: {}, enabledSections: [] }, "Başlık", html, []);

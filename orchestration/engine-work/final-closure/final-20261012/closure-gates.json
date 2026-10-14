@@ -1,0 +1,116 @@
+{
+  "measuredAt": "2026-10-12T14:37:27.699Z",
+  "root": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\final-closure\\final-20261012",
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "base",
+      "status": "PASS",
+      "details": {
+        "commands": 5
+      }
+    },
+    {
+      "name": "browser",
+      "status": "FAIL",
+      "error": "A required command failed or is missing"
+    },
+    {
+      "name": "word",
+      "status": "PASS",
+      "details": {
+        "commands": 1
+      }
+    },
+    {
+      "name": "sbe",
+      "status": "PASS",
+      "details": {
+        "commands": 10
+      }
+    },
+    {
+      "name": "schema",
+      "status": "PASS",
+      "details": {
+        "commands": 55
+      }
+    },
+    {
+      "name": "same-code-across-stages",
+      "status": "PASS",
+      "details": {
+        "sha256": "d783dc0a3a17adb76af6fb95467fac623caba4428ae70de83fe2ac0010a50eef"
+      }
+    },
+    {
+      "name": "word-targets",
+      "status": "PASS",
+      "details": {
+        "targets": 25,
+        "pass": 1976
+      }
+    },
+    {
+      "name": "docx-schema",
+      "status": "PASS",
+      "details": {
+        "documents": 55
+      }
+    },
+    {
+      "name": "special-matrix",
+      "status": "PASS",
+      "details": {
+        "applicable": 167,
+        "unsupportedSlots": 65
+      }
+    },
+    {
+      "name": "special-word-families",
+      "status": "PASS",
+      "details": {
+        "families": 7
+      }
+    },
+    {
+      "name": "long-SRC09",
+      "status": "FAIL",
+      "error": "Expected 180 pages without browser errors"
+    },
+    {
+      "name": "long-SRC10",
+      "status": "PASS",
+      "details": {
+        "pages": 91,
+        "loadMs": 9804
+      }
+    },
+    {
+      "name": "long-breaks-SRC09",
+      "status": "FAIL",
+      "error": "Page totals differ: editor 178, Word 180"
+    },
+    {
+      "name": "long-breaks-SRC10",
+      "status": "FAIL",
+      "error": "8 of 75 Word page openings are not an editor page opening (first: {\"wordPage\":57,\"editorPage\":56,\"offsetTokens\":305})"
+    },
+    {
+      "name": "performance-SRC09",
+      "status": "FAIL",
+      "error": "Expected 20 completed keyboard samples"
+    },
+    {
+      "name": "long-interactions-SRC10",
+      "status": "PASS",
+      "details": {
+        "timings": {
+          "openMs": 8851,
+          "typeToSaveMs": 1335,
+          "reopenMs": 11719
+        }
+      }
+    }
+  ]
+}

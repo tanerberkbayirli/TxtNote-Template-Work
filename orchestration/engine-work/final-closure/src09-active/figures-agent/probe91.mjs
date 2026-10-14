@@ -1,0 +1,20 @@
+import {writeFileSync} from "node:fs";
+import {createRequire} from 'node:module';
+const {chromium}=createRequire(import.meta.url)('../../../../tools/node_modules/playwright');
+const base='http://127.0.0.1:5222';
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--enable-blink-features=MulticolColumnWrapping']});
+const context=await browser.newContext({viewport:{width:1400,height:1000}});
+await context.grantPermissions(['local-fonts'],{origin:base});
+import {pathToFileURL} from 'node:url';import {resolve} from 'node:path';
+const patches=[];for(const f of (process.env.PATCHES||'').split(',').filter(Boolean))patches.push(...(await import(pathToFileURL(resolve(f)).href)).default);
+const byFile={};for(const p of patches)(byFile[p.file]??=[]).push(p);for(const [file,list] of Object.entries(byFile)){await context.route(u=>u.pathname===('/'+file),async route=>{const r=await route.fetch();let t=await r.text();for(const p of list){if(p.apply)t=p.apply(t);else if(!t.includes(p.find))console.error('PATCH MISS',file);else t=t.replace(p.find,()=>p.replace);}await route.fulfill({response:r,body:t});});}
+const page=await context.newPage();page.on("console",m=>{if(m.text().startsWith("CARRIER"))console.error(m.text())});
+if(process.env.CSS)await page.addInitScript(css=>{document.addEventListener('DOMContentLoaded',()=>{const s=document.createElement('style');s.textContent=css;document.head.appendChild(s)})},process.env.CSS);
+await page.goto(`${base}/tests/thesis-long.html?id=${process.env.FIX||'SRC09_ACTIVE'}`);
+await page.locator('.thesis-sheet').first().waitFor({timeout:300000});
+await page.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true',null,{timeout:900000});
+await page.waitForTimeout(+process.env.WAIT||0);await page.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true');
+const code=process.argv[2];
+const r=await page.evaluate(eval(code));
+console.log(JSON.stringify(r));
+await browser.close();

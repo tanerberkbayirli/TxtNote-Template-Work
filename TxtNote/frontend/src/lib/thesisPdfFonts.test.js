@@ -5,10 +5,10 @@ import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { academicPdfFont, collectAcademicPdfFontRequests, embedAcademicPdfFonts } from "./academicFonts.js";
 import { loadSystemPdfFonts, loadSystemTimesNewRoman, SYSTEM_PDF_FAMILIES, TIMES_NEW_ROMAN_FACES } from "./systemPdfFonts.js";
 import { assertTimesNewRomanEmbedded, embeddedPdfFonts } from "../../tests/pdf-font-compliance.mjs";
-import { buildThesisDocx, buildThesisPdf } from "../thesis/export.js";
-import { compileThesisDocument } from "../thesis/engine.js";
-import { mcbuMaster, mcbuPhd } from "../thesis/templates/mcbu.js";
-import generic from "../thesis/templates/generic.js";
+import { buildThesisDocx, buildThesisPdf } from "../../../../engine/src/export.js";
+import { compileThesisDocument } from "../../../../engine/src/engine.js";
+import { mcbuMaster, mcbuPhd } from "../../../../engine/src/templates/mcbu.js";
+import generic from "../../../../engine/src/templates/generic.js";
 
 const turkish = "İ ı Ş ş Ğ ğ Ü ü Ö ö Ç ç";
 describe("allowlisted installed PDF fonts", () => {

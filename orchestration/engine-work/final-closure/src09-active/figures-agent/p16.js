@@ -1,0 +1,3 @@
+()=>{const sh=[...document.querySelectorAll('.thesis-sheet')];const r=sh[96].getBoundingClientRect();const k=841.9/r.height;
+const ps=[...document.querySelectorAll('.thesis-page-flow p')].filter(p=>{const b=p.getBoundingClientRect();return b.top>=r.top-1&&b.top<r.bottom&&!p.closest('[data-native-object]')});
+return ps.map(p=>{const b=p.getBoundingClientRect();const c=getComputedStyle(p);return [p.dataset.txtNodeId,+((b.top-r.top)*k).toFixed(1),+(b.height*k).toFixed(1),c.top,c.marginTop,c.marginBottom,c.lineHeight,c.position,p.textContent.slice(0,20),p.querySelectorAll('[data-native-object=drawing]').length]})}

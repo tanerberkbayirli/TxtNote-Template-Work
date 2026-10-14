@@ -2,7 +2,7 @@
 
 Engine acceptance fixture, not a university template. Values are synthetic boundary probes; the exported DOCX rendered by Word is the comparison reference (MEASURED).
 
-- Scope: MOTOR.md §2.11 B3.1–B3.3: own terminal leading for paragraph styles, non-text/keep guards, and 100-line paragraphs spanning 3+ fragments with page-bottom notes.
+- Scope: orchestration/plans/MOTOR.md §2.11 B3.1–B3.3: own terminal leading for paragraph styles, non-text/keep guards, and 100-line paragraphs spanning 3+ fragments with page-bottom notes.
 - Sources: `orchestration/tools/word-pagefit-fixture.mjs`; fixture variants default/styles/tab/notes; `engine-word-pagefit.checks.json`. Do not read unrelated university sources or old full reports.
 - Cases: 80 style sweeps (single/double/10/16 pt/exact/atLeast/mixed18pt runs), 40 heading/keep/figure cases, 23 table cases including one-page controls, 9 note cases (three combine single-spacing guards with long notes or kept-paragraph breaks). Shift steps 0–27pt probe both sides of page-fit boundaries.
 - Model: auto multiple terminal allowance = pitch minus measured single line; single/exact/atLeast allowance 0. Column uses largest allowance; styles with smaller allowance guard each fragment. Measured per-style `singleLineEm` takes precedence over global metrics, matching the line-spacing resolver.

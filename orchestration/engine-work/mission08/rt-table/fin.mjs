@@ -1,0 +1,12 @@
+import { readFileSync } from "node:fs";
+import { unzipSync, strFromU8 } from "file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/TxtNote/frontend/node_modules/fflate/esm/browser.js";
+const { finalizeThesisDocx } = await import("file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/TxtNote/frontend/src/thesis/docx/package.js");
+const buf = readFileSync("cover/aku-sagbil-master-tr-v1__title400.docx");
+const out = await finalizeThesisDocx(new Blob([buf]));
+const x = strFromU8(unzipSync(new Uint8Array(await out.arrayBuffer()))["word/document.xml"]);
+console.log(x.includes("w:line=\"20\""), x.split('lineRule="exact"/><w:sectPr').length-1);
+console.log(x.match(/<w:p><w:pPr>.{0,200}<w:sectPr/)[0]);
+const f = unzipSync(new Uint8Array(readFileSync("cover/aku-sagbil-master-tr-v1__title400.docx")));
+const y = strFromU8(f["word/document.xml"]);
+console.log(y.slice(y.indexOf("<w:sectPr")-60, y.indexOf("<w:sectPr")+20));
+console.log(/<w:p><w:pPr>(<w:sectPr)/.test(y));

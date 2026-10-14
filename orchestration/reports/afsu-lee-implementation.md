@@ -4,7 +4,7 @@
 
 ## Current implementation
 
-- `TxtNote/frontend/src/thesis/templates/afsu-lee.js` provides `afsu-lee-master-tr-v1` and `afsu-lee-phd-tr-v1`, with degree-specific jury layouts, source cover art, special pages, and measured page-number geometry.
+- `engine/src/templates/afsu-lee.js` provides `afsu-lee-master-tr-v1` and `afsu-lee-phd-tr-v1`, with degree-specific jury layouts, source cover art, special pages, and measured page-number geometry.
 - Department/program metadata now takes plain names; source cover/inner-cover suffixes are template-owned, while the approval prose keeps its fixed institutional terms. Fixture helper fields follow that contract.
 - Generic engine changes add page-number baseline/box controls across editor, PDF, and DOCX; retain absent header/footer fields as optional in validation while applying a 12.5 mm runtime distance to omitted chrome; preserve explicit zero; and size/stretch framed row children through their actual flex wrappers.
 - Source rules/spec and fixture helpers: `orchestration/specs/afsu-lee.json`, `orchestration/reports/afsu-lee-source-rules.md`, `orchestration/validation/afsu-lee/prepare-fixture.py`.

@@ -1,0 +1,235 @@
+{
+  "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-style-precedence.fixture.base.json",
+  "exportedAt": "2026-10-11T08:18:09.320Z",
+  "chromium": "154.0.8037.98",
+  "pagedLayout": true,
+  "sheets": [
+    {
+      "label": "",
+      "group": ""
+    }
+  ],
+  "templateNotice": "",
+  "validation": [],
+  "warn": false,
+  "engineLayout": {
+    "version": 1,
+    "origin": "top-left",
+    "units": {
+      "geometry": "mm",
+      "fontSize": "pt"
+    },
+    "pages": [
+      {
+        "page": 1,
+        "groupId": "CHECK",
+        "sectionIds": [
+          "CHECK"
+        ],
+        "label": "",
+        "widthMm": 210,
+        "heightMm": 297,
+        "landmarks": [
+          {
+            "id": "CHECK:paragraph:1",
+            "kind": "paragraph",
+            "sectionId": "CHECK",
+            "text": "BASE_ROW_1 anchored paragraph",
+            "fragments": [],
+            "xMm": 33.9948,
+            "yMm": 25.1147,
+            "widthMm": 51.321,
+            "heightMm": 3.175,
+            "firstBaselineMm": 28.29,
+            "lastBaselineMm": 28.29,
+            "linePitchMm": null,
+            "fontFamily": "Times New Roman",
+            "exportedFonts": [
+              "TimesNewRomanPSMT"
+            ],
+            "fontSizePt": 10,
+            "lineCount": 1
+          },
+          {
+            "id": "CHECK:paragraph:2",
+            "kind": "paragraph",
+            "sectionId": "CHECK",
+            "text": "BASE_ROW_2 anchored paragraph",
+            "fragments": [],
+            "xMm": 33.9948,
+            "yMm": 29.1662,
+            "widthMm": 51.321,
+            "heightMm": 3.175,
+            "firstBaselineMm": 32.34,
+            "lastBaselineMm": 32.34,
+            "linePitchMm": null,
+            "fontFamily": "Times New Roman",
+            "exportedFonts": [
+              "TimesNewRomanPSMT"
+            ],
+            "fontSizePt": 10,
+            "lineCount": 1
+          }
+        ],
+        "textOps": [
+          {
+            "id": "CHECK:paragraph:1:page:1:run:1",
+            "landmarkId": "CHECK:paragraph:1",
+            "text": "BASE_ROW_1",
+            "spaceAfter": true,
+            "xMm": 33.9948,
+            "yMm": 25.1147,
+            "widthMm": 22.5351,
+            "heightMm": 3.175,
+            "baselineMm": 28.2897,
+            "fontFamily": "Times New Roman",
+            "exportedFont": "TimesNewRomanPSMT",
+            "fontSizePt": 10,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:1:page:1:run:2",
+            "landmarkId": "CHECK:paragraph:1",
+            "text": "anchored",
+            "spaceAfter": true,
+            "xMm": 57.4063,
+            "yMm": 25.1147,
+            "widthMm": 12.9315,
+            "heightMm": 3.175,
+            "baselineMm": 28.2897,
+            "fontFamily": "Times New Roman",
+            "exportedFont": "TimesNewRomanPSMT",
+            "fontSizePt": 10,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:1:page:1:run:3",
+            "landmarkId": "CHECK:paragraph:1",
+            "text": "paragraph",
+            "spaceAfter": false,
+            "xMm": 71.2143,
+            "yMm": 25.1147,
+            "widthMm": 14.1015,
+            "heightMm": 3.175,
+            "baselineMm": 28.2897,
+            "fontFamily": "Times New Roman",
+            "exportedFont": "TimesNewRomanPSMT",
+            "fontSizePt": 10,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:2:page:1:run:1",
+            "landmarkId": "CHECK:paragraph:2",
+            "text": "BASE_ROW_2",
+            "spaceAfter": true,
+            "xMm": 33.9948,
+            "yMm": 29.1662,
+            "widthMm": 22.5351,
+            "heightMm": 3.175,
+            "baselineMm": 32.3412,
+            "fontFamily": "Times New Roman",
+            "exportedFont": "TimesNewRomanPSMT",
+            "fontSizePt": 10,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:2:page:1:run:2",
+            "landmarkId": "CHECK:paragraph:2",
+            "text": "anchored",
+            "spaceAfter": true,
+            "xMm": 57.4063,
+            "yMm": 29.1662,
+            "widthMm": 12.9315,
+            "heightMm": 3.175,
+            "baselineMm": 32.3412,
+            "fontFamily": "Times New Roman",
+            "exportedFont": "TimesNewRomanPSMT",
+            "fontSizePt": 10,
+            "clipped": false,
+            "ancestorIds": []
+          },
+          {
+            "id": "CHECK:paragraph:2:page:1:run:3",
+            "landmarkId": "CHECK:paragraph:2",
+            "text": "paragraph",
+            "spaceAfter": false,
+            "xMm": 71.2143,
+            "yMm": 29.1662,
+            "widthMm": 14.1015,
+            "heightMm": 3.175,
+            "baselineMm": 32.3412,
+            "fontFamily": "Times New Roman",
+            "exportedFont": "TimesNewRomanPSMT",
+            "fontSizePt": 10,
+            "clipped": false,
+            "ancestorIds": []
+          }
+        ],
+        "firstBodyBaselineMm": 28.2897,
+        "lastBodyBaselineMm": 32.3412
+      }
+    ]
+  },
+  "timings": {
+    "browser": 1.133,
+    "editor": 5.479,
+    "pdf.settle": 0.363,
+    "pdf": 15.409,
+    "docx.settle": 0.089,
+    "docx": 0.57,
+    "final-settle": 0.022,
+    "totalSeconds": 23.064
+  },
+  "pagination": {
+    "ready": "true",
+    "targetCount": 0,
+    "missingTargets": [],
+    "mismatchedLabels": [],
+    "targets": []
+  },
+  "exportSnapshots": [
+    {
+      "button": "PDF",
+      "pagedLayout": true,
+      "sheets": [
+        {
+          "label": "",
+          "group": ""
+        }
+      ],
+      "templateNotice": "",
+      "validation": [],
+      "pagination": {
+        "ready": "true",
+        "targetCount": 0,
+        "missingTargets": [],
+        "mismatchedLabels": [],
+        "targets": []
+      }
+    },
+    {
+      "button": "Word",
+      "pagedLayout": true,
+      "sheets": [
+        {
+          "label": "",
+          "group": ""
+        }
+      ],
+      "templateNotice": "",
+      "validation": [],
+      "pagination": {
+        "ready": "true",
+        "targetCount": 0,
+        "missingTargets": [],
+        "mismatchedLabels": [],
+        "targets": []
+      }
+    }
+  ],
+  "errors": []
+}

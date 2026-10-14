@@ -9,6 +9,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
+      "@engine/*": ["../engine/src/*"],
       "@shared/types": ["types/index.ts"],
       "@shared/services": ["services/index.ts"],
       "@services/*": ["services/*"],
@@ -16,6 +17,6 @@
       "@/*": ["frontend/src/*"]
     }
   },
-  "include": ["frontend/src", "services", "types"],
+  "include": ["frontend/src", "../engine/src", "services", "types"],
   "exclude": ["node_modules", "backend"]
 }

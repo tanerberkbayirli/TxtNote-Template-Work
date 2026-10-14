@@ -1,0 +1,285 @@
+{
+  "startedAt": "2026-10-09T20:09:37.740Z",
+  "wordRequested": false,
+  "targets": [
+    {
+      "target": "adu-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 14.316,
+      "report": "engine\\mission05\\regression\\adu-sagbil\\check-20261009-2309.json",
+      "counts": {
+        "PASS": 154,
+        "SKIPPED": 147
+      },
+      "measurementSeconds": 0.609,
+      "error": null
+    },
+    {
+      "target": "adu-ziraat-lisans",
+      "exitCode": 3,
+      "commandSeconds": 8.662,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "note: no cached reference at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\adu-ziraat-lisans\\source\\reference (create with --build-reference)\nexport of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission05\\regression\\adu-ziraat-lisans\\run\\check.log):\nmiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri;\",\"marginTop\":\"0px\",\"breakBefore\":\"auto\"},{\"kind\":\"reserve\",\"tag\":\"P\",\"text\":\"5.1 2. Çevrimiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri;\",\"marginTop\":\"0px\",\"breakBefore\":\"auto\"}],\"spacers\":0}\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:179:13"
+    },
+    {
+      "target": "afsu-eczacilik-proje",
+      "exitCode": 1,
+      "commandSeconds": 21.574,
+      "report": "engine\\mission05\\regression\\afsu-eczacilik-proje\\check-20261009-2310.json",
+      "counts": {
+        "PASS": 22,
+        "SKIPPED": 3,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.719,
+      "error": null
+    },
+    {
+      "target": "afsu-lee",
+      "exitCode": 1,
+      "commandSeconds": 33.618,
+      "report": "engine\\mission05\\regression\\afsu-lee\\check-20261009-2310.json",
+      "counts": {
+        "PASS": 82,
+        "SKIPPED": 6,
+        "INFO": 1
+      },
+      "measurementSeconds": 2.531,
+      "error": null
+    },
+    {
+      "target": "afsu-tip",
+      "exitCode": 1,
+      "commandSeconds": 54.402,
+      "report": "engine\\mission05\\regression\\afsu-tip\\check-20261009-2311.json",
+      "counts": {
+        "PASS": 46,
+        "INFO": 2,
+        "SKIPPED": 3
+      },
+      "measurementSeconds": 0.891,
+      "error": null
+    },
+    {
+      "target": "aku-cografya-lisans",
+      "exitCode": 1,
+      "commandSeconds": 18.677,
+      "report": "engine\\mission05\\regression\\aku-cografya-lisans\\check-20261009-2312.json",
+      "counts": {
+        "PASS": 42,
+        "SKIPPED": 6,
+        "INFO": 3
+      },
+      "measurementSeconds": 1.094,
+      "error": null
+    },
+    {
+      "target": "aku-fbe",
+      "exitCode": 1,
+      "commandSeconds": 37.998,
+      "report": "engine\\mission05\\regression\\aku-fbe\\check-20261009-2312.json",
+      "counts": {
+        "SKIPPED": 27,
+        "PASS": 18,
+        "INFO": 3
+      },
+      "measurementSeconds": 1,
+      "error": null
+    },
+    {
+      "target": "aku-felsefe-lisans",
+      "exitCode": 3,
+      "commandSeconds": 14.977,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "note: no cached reference at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\aku-felsefe-lisans\\source\\reference (create with --build-reference)\nexport of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission05\\regression\\aku-felsefe-lisans\\run\\check.log):\nmiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri;\",\"marginTop\":\"8px\",\"breakBefore\":\"auto\"},{\"kind\":\"reserve\",\"tag\":\"P\",\"text\":\"5.2 1. Çevrimiçi öğrenme ortamlarında öğretmen adaylarının dijital okuryazarlık düzeyleri;\",\"marginTop\":\"8px\",\"breakBefore\":\"auto\"}],\"spacers\":0}\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:179:13"
+    },
+    {
+      "target": "aku-felsefe-seminer",
+      "exitCode": 1,
+      "commandSeconds": 18.365,
+      "report": "engine\\mission05\\regression\\aku-felsefe-seminer\\check-20261009-2313.json",
+      "counts": {
+        "PASS": 35,
+        "INFO": 4,
+        "SKIPPED": 26
+      },
+      "measurementSeconds": 0.828,
+      "error": null
+    },
+    {
+      "target": "aku-isg-tezsiz-proje",
+      "exitCode": 1,
+      "commandSeconds": 16.061,
+      "report": "engine\\mission05\\regression\\aku-isg-tezsiz-proje\\check-20261009-2313.json",
+      "counts": {
+        "PASS": 27,
+        "INFO": 1,
+        "SKIPPED": 12
+      },
+      "measurementSeconds": 0.969,
+      "error": null
+    },
+    {
+      "target": "aku-kimya-lisans",
+      "exitCode": 1,
+      "commandSeconds": 24.003,
+      "report": "engine\\mission05\\regression\\aku-kimya-lisans\\check-20261009-2314.json",
+      "counts": {
+        "PASS": 27,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.766,
+      "error": null
+    },
+    {
+      "target": "aku-matematik-lisans",
+      "exitCode": 1,
+      "commandSeconds": 34.869,
+      "report": "engine\\mission05\\regression\\aku-matematik-lisans\\check-20261009-2314.json",
+      "counts": {
+        "PASS": 49,
+        "SKIPPED": 6,
+        "INFO": 2
+      },
+      "measurementSeconds": 1.563,
+      "error": null
+    },
+    {
+      "target": "aku-mbg-lisans",
+      "exitCode": 1,
+      "commandSeconds": 18.858,
+      "report": "engine\\mission05\\regression\\aku-mbg-lisans\\check-20261009-2314.json",
+      "counts": {
+        "PASS": 29,
+        "SKIPPED": 21,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.797,
+      "error": null
+    },
+    {
+      "target": "aku-sagbil",
+      "exitCode": 1,
+      "commandSeconds": 43.772,
+      "report": "engine\\mission05\\regression\\aku-sagbil\\check-20261009-2315.json",
+      "counts": {
+        "PASS": 25,
+        "SKIPPED": 11,
+        "FAIL": 1,
+        "INFO": 1
+      },
+      "measurementSeconds": 1.454,
+      "error": null
+    },
+    {
+      "target": "aku-sbe",
+      "exitCode": 3,
+      "commandSeconds": 61.58,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "note: no cached reference at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\aku-sbe\\source\\reference (create with --build-reference)\nexport of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission05\\regression\\aku-sbe\\run\\check.log):\nError: PDF export did not supply its engine layout report\n    at file:///C:/Users/CASPER/Desktop/TxtNote-Template-Work/orchestration/tools/export.mjs:184:47"
+    },
+    {
+      "target": "aku-sosyoloji-lisans",
+      "exitCode": 1,
+      "commandSeconds": 15.13,
+      "report": "engine\\mission05\\regression\\aku-sosyoloji-lisans\\check-20261009-2316.json",
+      "counts": {
+        "INFO": 4,
+        "PASS": 18,
+        "SKIPPED": 10
+      },
+      "measurementSeconds": 0.703,
+      "error": null
+    },
+    {
+      "target": "engine-word-justify",
+      "exitCode": 1,
+      "commandSeconds": 12.996,
+      "report": "engine\\mission05\\regression\\engine-word-justify\\check-20261009-2317.json",
+      "counts": {
+        "SKIPPED": 16,
+        "PASS": 4
+      },
+      "measurementSeconds": 0.391,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 3,
+      "commandSeconds": 296.041,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "note: no cached reference at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\engine-word-pagefit\\source\\reference (create with --build-reference)\nexport of variant 'default' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission05\\regression\\engine-word-pagefit\\run\\check.log):\npage.waitForEvent: Timeout 240000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n    at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\export.mjs:167:24"
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 1,
+      "commandSeconds": 17.485,
+      "report": "engine\\mission05\\regression\\engine-word-parity\\check-20261009-2322.json",
+      "counts": {
+        "SKIPPED": 141,
+        "PASS": 5
+      },
+      "measurementSeconds": 1.219,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 1,
+      "commandSeconds": 29.232,
+      "report": "engine\\mission05\\regression\\engine-word-structure\\check-20261009-2322.json",
+      "counts": {
+        "SKIPPED": 115,
+        "PASS": 15
+      },
+      "measurementSeconds": 1.141,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 1,
+      "commandSeconds": 31.537,
+      "report": "engine\\mission05\\regression\\engine-word-style-precedence\\check-20261009-2323.json",
+      "counts": {
+        "PASS": 38,
+        "SKIPPED": 15
+      },
+      "measurementSeconds": 0.438,
+      "error": null
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "exitCode": 0,
+      "commandSeconds": 15.355,
+      "report": "engine\\mission05\\regression\\mcbu-tip-uzmanlik\\check-20261009-2323.json",
+      "counts": {
+        "PASS": 47,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.672,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 1,
+      "commandSeconds": 17.374,
+      "report": "engine\\mission05\\regression\\phase52-justify\\check-20261009-2323.json",
+      "counts": {
+        "SKIPPED": 24,
+        "PASS": 6
+      },
+      "measurementSeconds": 0.172,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-09T20:23:54.472Z",
+  "commandSeconds": 856.885
+}

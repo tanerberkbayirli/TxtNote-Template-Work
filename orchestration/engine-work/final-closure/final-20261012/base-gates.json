@@ -1,0 +1,70 @@
+﻿[
+    {
+        "log":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\final-closure\\final-20261012\\unit.log",
+        "seconds":  16.599612699999998,
+        "exitCode":  0,
+        "arguments":  [
+                          "test"
+                      ],
+        "startedAt":  "2026-10-12T13:23:34.5841263Z",
+        "name":  "unit",
+        "executable":  "npm.cmd",
+        "workingDirectory":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\TxtNote\\frontend"
+    },
+    {
+        "log":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\final-closure\\final-20261012\\extra-unit.log",
+        "seconds":  0.2535989,
+        "exitCode":  0,
+        "arguments":  [
+                          "--test",
+                          "src/thesis/layoutPdfMathbb.test.js",
+                          "src/thesis/templates/afsu-lee.test.js"
+                      ],
+        "startedAt":  "2026-10-12T13:23:51.2680154Z",
+        "name":  "extra-unit",
+        "executable":  "node",
+        "workingDirectory":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\TxtNote\\frontend"
+    },
+    {
+        "log":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\final-closure\\final-20261012\\build.log",
+        "seconds":  5.4246609999999995,
+        "exitCode":  0,
+        "arguments":  [
+                          "run",
+                          "build"
+                      ],
+        "startedAt":  "2026-10-12T13:23:51.5386489Z",
+        "name":  "build",
+        "executable":  "npm.cmd",
+        "workingDirectory":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\TxtNote\\frontend"
+    },
+    {
+        "log":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\final-closure\\final-20261012\\desktop-font-unit.log",
+        "seconds":  2.6540763,
+        "exitCode":  0,
+        "arguments":  [
+                          "test",
+                          "--offline",
+                          "--lib",
+                          "system_fonts::tests"
+                      ],
+        "startedAt":  "2026-10-12T13:23:56.9785419Z",
+        "name":  "desktop-font-unit",
+        "executable":  "cargo",
+        "workingDirectory":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\TxtNote\\src-tauri"
+    },
+    {
+        "log":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\final-closure\\final-20261012\\checker-unit.log",
+        "seconds":  2.1361403,
+        "exitCode":  0,
+        "arguments":  [
+                          "-m",
+                          "unittest",
+                          "orchestration/tools/test_conformance.py"
+                      ],
+        "startedAt":  "2026-10-12T13:23:59.6416954Z",
+        "name":  "checker-unit",
+        "executable":  "C:/Users/CASPER/AppData/Local/Programs/Python/Python313/python.exe",
+        "workingDirectory":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work"
+    }
+]

@@ -1,0 +1,626 @@
+{
+ "44": {
+  "k": 0.6987268072783799,
+  "lines": [
+   {
+    "top": 71.6,
+    "bottom": 85.9,
+    "id": "docx-2771",
+    "text": "Data Analysis"
+   },
+   {
+    "top": 102,
+    "bottom": 114.8,
+    "id": "docx-2776",
+    "text": "In the data analysis step, initial data "
+   },
+   {
+    "top": 122.7,
+    "bottom": 135.5,
+    "id": "docx-2776",
+    "text": "company’s ERP software. The SQL query ha"
+   },
+   {
+    "top": 143.4,
+    "bottom": 156.2,
+    "id": "docx-2776",
+    "text": "determined feature inputs and according "
+   },
+   {
+    "top": 164.1,
+    "bottom": 176.9,
+    "id": "docx-2776",
+    "text": "observations have been tagged with 0 and"
+   },
+   {
+    "top": 184.8,
+    "bottom": 197.5,
+    "id": "docx-2776",
+    "text": "respectively. The SQL transformation of "
+   },
+   {
+    "top": 264.1,
+    "bottom": 276.9,
+    "id": "docx-2785",
+    "text": "Figure "
+   },
+   {
+    "top": 295.9,
+    "bottom": 308.7,
+    "id": "docx-2824",
+    "text": "Source: Author"
+   },
+   {
+    "top": 331.5,
+    "bottom": 344.2,
+    "id": "docx-2827",
+    "text": "Between 2016-2020, more than 3 million d"
+   },
+   {
+    "top": 352.2,
+    "bottom": 364.9,
+    "id": "docx-2827",
+    "text": "Therefore, big, and raw data for running"
+   },
+   {
+    "top": 372.9,
+    "bottom": 385.6,
+    "id": "docx-2827",
+    "text": "examined in Table 4.1."
+   },
+   {
+    "top": 407.8,
+    "bottom": 420.6,
+    "id": "docx-2831",
+    "text": "Table "
+   },
+   {
+    "top": 440.4,
+    "bottom": 452.4,
+    "id": "docx-2865",
+    "text": " Features"
+   },
+   {
+    "top": 471.9,
+    "bottom": 483.9,
+    "id": "docx-2878",
+    "text": "SAIL YEAR"
+   },
+   {
+    "top": 503.3,
+    "bottom": 515.3,
+    "id": "docx-2891",
+    "text": "SAIL MONTH"
+   },
+   {
+    "top": 534.8,
+    "bottom": 546.8,
+    "id": "docx-2904",
+    "text": "POR HAULAGE (Y/N)"
+   },
+   {
+    "top": 566.3,
+    "bottom": 578.3,
+    "id": "docx-2917",
+    "text": "DEL HAULAGE (Y/N) "
+   },
+   {
+    "top": 597.7,
+    "bottom": 609.7,
+    "id": "docx-2930",
+    "text": "POL COUNTRY CODE"
+   },
+   {
+    "top": 629.2,
+    "bottom": 641.2,
+    "id": "docx-2943",
+    "text": "POD COUNTRY CODE"
+   },
+   {
+    "top": 660.7,
+    "bottom": 672.7,
+    "id": "docx-2956",
+    "text": "NUMBER OF TRANSSHIPMENT"
+   },
+   {
+    "top": 692.1,
+    "bottom": 704.1,
+    "id": "docx-2969",
+    "text": "VESSEL"
+   },
+   {
+    "top": 723.6,
+    "bottom": 735.6,
+    "id": "docx-2982",
+    "text": "SERVICE"
+   }
+  ]
+ },
+ "45": {
+  "k": 0.6987268072783799,
+  "lines": [
+   {
+    "top": 80.3,
+    "bottom": 92.3,
+    "id": "docx-2995",
+    "text": "EQP SIZE"
+   },
+   {
+    "top": 111.7,
+    "bottom": 123.7,
+    "id": "docx-3008",
+    "text": "EQP TYPE"
+   },
+   {
+    "top": 143.2,
+    "bottom": 155.2,
+    "id": "docx-3021",
+    "text": "EMPTY/FULL (E/F)"
+   },
+   {
+    "top": 174.7,
+    "bottom": 186.7,
+    "id": "docx-3034",
+    "text": "TOTAL NET WEIGHT (KGs)"
+   },
+   {
+    "top": 206.1,
+    "bottom": 218.1,
+    "id": "docx-3047",
+    "text": "NET WEIGHT CLASS"
+   },
+   {
+    "top": 237.6,
+    "bottom": 249.6,
+    "id": "docx-3060",
+    "text": "AGE"
+   },
+   {
+    "top": 269.1,
+    "bottom": 281.1,
+    "id": "docx-3073",
+    "text": "Features"
+   },
+   {
+    "top": 300.5,
+    "bottom": 312.5,
+    "id": "docx-3086",
+    "text": "AGE CLASS"
+   },
+   {
+    "top": 332,
+    "bottom": 344,
+    "id": "docx-3099",
+    "text": "COMMODITY GROUP"
+   },
+   {
+    "top": 363.5,
+    "bottom": 375.5,
+    "id": "docx-3112",
+    "text": "PREVIOUS DAMAGES"
+   },
+   {
+    "top": 394.9,
+    "bottom": 406.9,
+    "id": "docx-3125",
+    "text": "PREVIOUS FULL LOADS"
+   },
+   {
+    "top": 426.4,
+    "bottom": 438.4,
+    "id": "docx-3138",
+    "text": "PACKING PLACE"
+   },
+   {
+    "top": 457.9,
+    "bottom": 469.9,
+    "id": "docx-3151",
+    "text": "UNPACKING PLACE"
+   },
+   {
+    "top": 489.3,
+    "bottom": 501.3,
+    "id": "docx-3164",
+    "text": "DAMAGED"
+   },
+   {
+    "top": 518.5,
+    "bottom": 531.2,
+    "id": "docx-3179",
+    "text": "The initial data analysis step shows tha"
+   },
+   {
+    "top": 539.2,
+    "bottom": 551.9,
+    "id": "docx-3179",
+    "text": "examples. Therefore, initial data needs "
+   },
+   {
+    "top": 571.9,
+    "bottom": 584.6,
+    "id": "docx-3184",
+    "text": "Data Cleansing"
+   },
+   {
+    "top": 600.6,
+    "bottom": 613.3,
+    "id": "docx-3189",
+    "text": "In the data cleansing step, all features"
+   },
+   {
+    "top": 621.3,
+    "bottom": 634,
+    "id": "docx-3189",
+    "text": "methods, missing or wrong value data row"
+   },
+   {
+    "top": 648.8,
+    "bottom": 661.6,
+    "id": "docx-3192",
+    "text": "Records with null values in POR – DEL ha"
+   },
+   {
+    "top": 669.5,
+    "bottom": 682.3,
+    "id": "docx-3192",
+    "text": "cleaned."
+   },
+   {
+    "top": 691,
+    "bottom": 703.8,
+    "id": "docx-3195",
+    "text": "Records with null and negative Net weigh"
+   },
+   {
+    "top": 711.7,
+    "bottom": 724.5,
+    "id": "docx-3195",
+    "text": "logically, the net weight value must be "
+   },
+   {
+    "top": 733.3,
+    "bottom": 746,
+    "id": "docx-3198",
+    "text": "The observations with missing container "
+   }
+  ]
+ },
+ "46": {
+  "k": 0.6987268072783799,
+  "lines": [
+   {
+    "top": 72.4,
+    "bottom": 85.2,
+    "id": "docx-3201",
+    "text": "The confusion matrix has been examined a"
+   },
+   {
+    "top": 93.1,
+    "bottom": 105.9,
+    "id": "docx-3201",
+    "text": "learning model and the data which includ"
+   },
+   {
+    "top": 113.8,
+    "bottom": 126.6,
+    "id": "docx-3201",
+    "text": "been deleted by benchmarking the total c"
+   },
+   {
+    "top": 134.5,
+    "bottom": 147.3,
+    "id": "docx-3201",
+    "text": "versus the actual dataset."
+   },
+   {
+    "top": 156.1,
+    "bottom": 168.8,
+    "id": "docx-3204",
+    "text": "Only the “Net Cargo Weight” feature has "
+   },
+   {
+    "top": 176.8,
+    "bottom": 189.5,
+    "id": "docx-3204",
+    "text": "cleaning step. The data with a Net cargo"
+   },
+   {
+    "top": 197.5,
+    "bottom": 210.2,
+    "id": "docx-3204",
+    "text": "evaluated as an outlier since a full con"
+   },
+   {
+    "top": 218.2,
+    "bottom": 230.9,
+    "id": "docx-3204",
+    "text": "approximately 25.000 kgs. Therefore, the"
+   },
+   {
+    "top": 238.9,
+    "bottom": 251.6,
+    "id": "docx-3204",
+    "text": "from the dataset."
+   },
+   {
+    "top": 271.6,
+    "bottom": 284.3,
+    "id": "docx-3209",
+    "text": "Data Manipulation and Classification"
+   },
+   {
+    "top": 300.2,
+    "bottom": 313,
+    "id": "docx-3214",
+    "text": "In the data analysis step, the dataset’s"
+   },
+   {
+    "top": 320.9,
+    "bottom": 333.7,
+    "id": "docx-3214",
+    "text": "classification methods. The following fe"
+   },
+   {
+    "top": 341.6,
+    "bottom": 354.4,
+    "id": "docx-3214",
+    "text": "address and label the feature values. Ma"
+   },
+   {
+    "top": 362.3,
+    "bottom": 375.1,
+    "id": "docx-3214",
+    "text": "range are classified for increasing the "
+   },
+   {
+    "top": 389.9,
+    "bottom": 402.6,
+    "id": "docx-3217",
+    "text": "Net Cargo Weight: This feature includes "
+   },
+   {
+    "top": 410.6,
+    "bottom": 423.3,
+    "id": "docx-3217",
+    "text": "dataset. Therefore, the following ranges"
+   },
+   {
+    "top": 431.3,
+    "bottom": 444,
+    "id": "docx-3217",
+    "text": "business responsible for classifying thi"
+   },
+   {
+    "top": 452,
+    "bottom": 464.7,
+    "id": "docx-3217",
+    "text": "and the multi-label classification metho"
+   },
+   {
+    "top": 475.6,
+    "bottom": 488.4,
+    "id": "docx-3220",
+    "text": "Total Net Weight = 0, Gets “EMPTY” label"
+   },
+   {
+    "top": 502.3,
+    "bottom": 515.1,
+    "id": "docx-3223",
+    "text": "10000>= Total Net Weight >= 1, Gets “LIG"
+   },
+   {
+    "top": 529,
+    "bottom": 541.7,
+    "id": "docx-3226",
+    "text": "20000>= Total Net Weight >= 10001, Gets "
+   },
+   {
+    "top": 555.7,
+    "bottom": 568.4,
+    "id": "docx-3229",
+    "text": "Total Net Weight >= 20001, Gets “HEAVY” "
+   },
+   {
+    "top": 586.3,
+    "bottom": 599,
+    "id": "docx-3232",
+    "text": "Container Age: This numerical feature in"
+   },
+   {
+    "top": 607,
+    "bottom": 619.7,
+    "id": "docx-3232",
+    "text": "container in terms of the year. Since th"
+   },
+   {
+    "top": 627.7,
+    "bottom": 640.4,
+    "id": "docx-3232",
+    "text": "multi-label classification method is imp"
+   },
+   {
+    "top": 648.4,
+    "bottom": 661.1,
+    "id": "docx-3232",
+    "text": "responsible."
+   },
+   {
+    "top": 672,
+    "bottom": 684.8,
+    "id": "docx-3235",
+    "text": "5>= Container Age>=0, Gets “0-5” label"
+   },
+   {
+    "top": 698.7,
+    "bottom": 711.5,
+    "id": "docx-3238",
+    "text": "10>= Container Age>=6, Gets “6-10” label"
+   },
+   {
+    "top": 725.4,
+    "bottom": 738.2,
+    "id": "docx-3241",
+    "text": "15>= Container Age>=11, Gets “11-15” lab"
+   }
+  ]
+ },
+ "47": {
+  "k": 0.6987268072783799,
+  "lines": [
+   {
+    "top": 68.6,
+    "bottom": 81.3,
+    "id": "docx-3244",
+    "text": "Container Age> 15, Gets “>15” label."
+   },
+   {
+    "top": 99.1,
+    "bottom": 111.9,
+    "id": "docx-3247",
+    "text": "Commodity Group: Commodities show the go"
+   },
+   {
+    "top": 119.8,
+    "bottom": 132.6,
+    "id": "docx-3247",
+    "text": "in containers. There are approximately 1"
+   },
+   {
+    "top": 140.5,
+    "bottom": 153.3,
+    "id": "docx-3247",
+    "text": "standards. [HS Code link]. One hundred d"
+   },
+   {
+    "top": 161.2,
+    "bottom": 174,
+    "id": "docx-3247",
+    "text": "generate a complication in the ML model "
+   },
+   {
+    "top": 181.9,
+    "bottom": 194.7,
+    "id": "docx-3247",
+    "text": "Therefore, it should be classified as a "
+   },
+   {
+    "top": 202.6,
+    "bottom": 215.4,
+    "id": "docx-3247",
+    "text": "classification method is applied accordi"
+   },
+   {
+    "top": 223.3,
+    "bottom": 236.1,
+    "id": "docx-3253",
+    "text": "classification standards. (Foreign Trade"
+   },
+   {
+    "top": 241,
+    "bottom": 253.7,
+    "id": "docx-3256",
+    "text": "Commodity Group between 01-05, Gets "
+   },
+   {
+    "top": 261.7,
+    "bottom": 274.4,
+    "id": "docx-3263",
+    "text": "Commodity Group between 06-15, Gets "
+   },
+   {
+    "top": 282.4,
+    "bottom": 295.1,
+    "id": "docx-3270",
+    "text": "Commodity Group between 16-24, Gets "
+   },
+   {
+    "top": 303.1,
+    "bottom": 315.8,
+    "id": "docx-3277",
+    "text": "Commodity Group between 25-27, Gets "
+   },
+   {
+    "top": 323.7,
+    "bottom": 336.5,
+    "id": "docx-3284",
+    "text": "Commodity Group between 28-38, Gets "
+   },
+   {
+    "top": 344.4,
+    "bottom": 357.2,
+    "id": "docx-3288",
+    "text": "Chemicals & Allied Industries”"
+   },
+   {
+    "top": 365.1,
+    "bottom": 377.9,
+    "id": "docx-3291",
+    "text": "Commodity Group between 39-40, Gets "
+   },
+   {
+    "top": 385.8,
+    "bottom": 398.6,
+    "id": "docx-3298",
+    "text": "Commodity Group between 41-43, Gets "
+   },
+   {
+    "top": 406.5,
+    "bottom": 419.3,
+    "id": "docx-3302",
+    "text": "Raw Hides, Skins, Leather, & Furs”"
+   },
+   {
+    "top": 427.2,
+    "bottom": 440,
+    "id": "docx-3305",
+    "text": "Commodity Group between 44-49, Gets "
+   },
+   {
+    "top": 447.9,
+    "bottom": 460.7,
+    "id": "docx-3314",
+    "text": "Commodity Group between 50-63, Gets "
+   },
+   {
+    "top": 468.6,
+    "bottom": 481.4,
+    "id": "docx-3321",
+    "text": "Commodity Group between 64-67, Gets "
+   },
+   {
+    "top": 489.3,
+    "bottom": 502.1,
+    "id": "docx-3328",
+    "text": "Commodity Group between 68-71, Gets "
+   },
+   {
+    "top": 510,
+    "bottom": 522.8,
+    "id": "docx-3339",
+    "text": "Commodity Group between 72-83, Gets "
+   },
+   {
+    "top": 530.7,
+    "bottom": 543.5,
+    "id": "docx-3350",
+    "text": "Commodity Group between 84-85, Gets "
+   },
+   {
+    "top": 551.4,
+    "bottom": 564.2,
+    "id": "docx-3359",
+    "text": "Commodity Group between 86-89, Gets "
+   },
+   {
+    "top": 581.1,
+    "bottom": 593.9,
+    "id": "docx-3366",
+    "text": "Commodity Group between 90-97, Gets "
+   }
+  ]
+ },
+ "48": {
+  "k": 0.6987268072783799,
+  "lines": []
+ }
+}

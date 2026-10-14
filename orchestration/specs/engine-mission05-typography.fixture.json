@@ -1,0 +1,405 @@
+{
+  "title": "Justify line breaking matrix",
+  "__template": {
+    "schemaVersion": 1,
+    "templateVersion": "1.0.0",
+    "id": "engine-mission05-typography",
+    "universityId": "engine-test",
+    "universityName": "Engine acceptance test",
+    "degreeType": "master",
+    "language": "tr",
+    "status": "generic",
+    "source": {
+      "type": "manual",
+      "documentName": "Isolated justified line-breaking acceptance matrix (no university values)"
+    },
+    "page": {
+      "size": "A4",
+      "widthMm": 210,
+      "heightMm": 297,
+      "orientation": "portrait",
+      "margins": {
+        "topMm": 25,
+        "bottomMm": 25,
+        "leftMm": 30,
+        "rightMm": 25
+      },
+      "header": {
+        "heightMm": 8,
+        "distanceMm": 12,
+        "content": "",
+        "firstPage": "same"
+      },
+      "footer": {
+        "heightMm": 8,
+        "distanceMm": 12,
+        "content": "",
+        "firstPage": "same"
+      },
+      "numbering": {
+        "enabled": false,
+        "position": "bottom",
+        "align": "center",
+        "format": "arabic",
+        "startAt": 1,
+        "restart": false
+      }
+    },
+    "typography": {
+      "body": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "align": "justify",
+        "lineHeight": 1.5,
+        "spaceAfterPt": 6,
+        "firstLineIndentMm": 0
+      },
+      "headings": {
+        "1": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 14,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 18,
+          "spaceAfterPt": 12,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}"
+          }
+        },
+        "2": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 12,
+          "spaceAfterPt": 8,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}.{2}"
+          }
+        },
+        "3": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 10,
+          "spaceAfterPt": 6,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}.{2}.{3}"
+          }
+        },
+        "4": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 700,
+          "align": "left",
+          "lineHeight": 1.3,
+          "spaceBeforePt": 10,
+          "spaceAfterPt": 6,
+          "keepWithNext": true,
+          "numbering": {
+            "enabled": true,
+            "format": "{1}.{2}.{3}.{4}"
+          }
+        }
+      }
+    },
+    "placeholders": {},
+    "sections": [
+      {
+        "id": "J01",
+        "type": "mainContent",
+        "title": "J01",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 10,
+            "align": "justify",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      },
+      {
+        "id": "J02",
+        "type": "custom",
+        "title": "J02",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "align": "justify",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      },
+      {
+        "id": "J03",
+        "type": "custom",
+        "title": "J03",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Arial",
+            "fontSizePt": 10,
+            "align": "justify",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      },
+      {
+        "id": "J04",
+        "type": "custom",
+        "title": "J04",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Arial",
+            "fontSizePt": 12,
+            "align": "justify",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      },
+      {
+        "id": "J05",
+        "type": "custom",
+        "title": "J05",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Calibri",
+            "fontSizePt": 10,
+            "align": "justify",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      },
+      {
+        "id": "J06",
+        "type": "custom",
+        "title": "J06",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Calibri",
+            "fontSizePt": 12,
+            "align": "justify",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      },
+      {
+        "id": "J07",
+        "type": "custom",
+        "title": "J07",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "align": "left",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      },
+      {
+        "id": "J08",
+        "type": "custom",
+        "title": "J08",
+        "status": "required",
+        "group": "body",
+        "mode": "editable",
+        "pageBreakBefore": true,
+        "showTitle": false,
+        "tocEntry": "none",
+        "overrides": {
+          "body": {
+            "fontFamily": "Arial",
+            "fontSizePt": 10,
+            "align": "left",
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 6,
+            "lineSpacing": {
+              "rule": "auto",
+              "value": 1,
+              "baseline": "word"
+            }
+          }
+        }
+      }
+    ],
+    "tables": {
+      "label": "Tablo",
+      "position": "above",
+      "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 10,
+        "italic": true,
+        "align": "center",
+        "lineHeight": 1.25
+      },
+      "numbering": {
+        "scope": "chapter",
+        "format": "{chapter}.{n}",
+        "sequence": "arabic"
+      },
+      "spacingBeforePt": 8,
+      "spacingAfterPt": 6,
+      "align": "center"
+    },
+    "figures": {
+      "label": "Şekil",
+      "position": "below",
+      "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 10,
+        "italic": true,
+        "align": "center",
+        "lineHeight": 1.25
+      },
+      "numbering": {
+        "scope": "chapter",
+        "format": "{chapter}.{n}",
+        "sequence": "arabic"
+      },
+      "spacingBeforePt": 6,
+      "spacingAfterPt": 8,
+      "align": "center"
+    },
+    "bibliography": {
+      "heading": "Kaynakça",
+      "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "align": "left",
+        "lineHeight": 1.5
+      },
+      "hangingIndentMm": 10
+    },
+    "toc": {
+      "heading": "İçindekiler",
+      "levels": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "showPageNumbers": true
+    }
+  },
+  "content": "<p>J01-1 <span>Araştırmada, “KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engeller nelerdir?” ve “Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) uygulamalarında karşılaşılan engeller yapısal olarak birbirini nasıl etkilemektedir?” sorunsalı çerçevesinde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’nde KOBİ’ </span><span>lerdeki</span><span> engellerin incelenmesi amaçlanmaktadır. Bu amaç çerçevesinde öncelikle araştırmanın konusunu oluşturan unsurların belirlenmesi aşamasında derinlemesine bir literatür incelemesi gerçekleştirilmiştir. </span></p><p>J01-2 <span>Native thesis boundary reference</span></p><p>J01-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J01-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+  "researchData": {
+    "thesis": {
+      "templateId": "engine-mission05-typography",
+      "templateVersion": "1.0.0",
+      "values": {},
+      "sectionContent": {
+        "J01": "<p>J01-1 <span>Araştırmada, “KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engeller nelerdir?” ve “Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) uygulamalarında karşılaşılan engeller yapısal olarak birbirini nasıl etkilemektedir?” sorunsalı çerçevesinde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’nde KOBİ’ </span><span>lerdeki</span><span> engellerin incelenmesi amaçlanmaktadır. Bu amaç çerçevesinde öncelikle araştırmanın konusunu oluşturan unsurların belirlenmesi aşamasında derinlemesine bir literatür incelemesi gerçekleştirilmiştir. </span></p><p>J01-2 <span>Native thesis boundary reference</span></p><p>J01-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J01-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+        "J02": "<p>J02-1 <span>Bu doğrultuda Kayseri’de sürdürülebilirlik konusunda çalışmalar yürüten işletmeler ve 2022 yılı ISO birinci ve ikinci 500 işletmelerinin sektörel bazlı kümelenmesi gerçekleştirilerek, sürdürülebilirlik konusunda çalışmalar yürüten üst düzey yöneticilerinden 15 engel unsurunu ikili olarak karşılaştırmaları istenmiştir. </span></p><p>J02-2 <span>EDGE COVER Long title and two advisors</span></p><p>J02-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J02-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+        "J03": "<p>J03-1 <span>Elde edilen bulgular, KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engellerden </span><span class=\"fmt-italic\">stratejilerin </span><span>en yüksek önem düzeyinde olduğunu göstermektedir. Bununla birlikte KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engel unsurları etkileyen ve etkilenen olmak üzere iki şekilde </span></p><p>J03-2 <span>Türkçe ve English içeriklerin uzun başlıklar, karmaşık tablolar, düzenlenebilir denklemler ve kalıcı belge referansları ile aktarılmasının incelenmesi</span></p><p>J03-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J03-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+        "J04": "<p>J04-1 <span>In</span><span> </span><span>the</span><span> </span><span>research</span><span>, </span><span>“</span><span>What</span><span> </span><span>are</span><span> </span><span>the</span><span> </span><span>barriers</span><span> </span><span>to</span><span> </span><span>Sustainable</span><span> </span><span>Lean</span><span> </span><span>Supply</span><span> </span><span>Chain</span><span> (SLSC) Management in </span><span>SMEs</span><span>?</span><span>”</span><span> </span><span>and</span><span> </span><span>“</span><span>How do </span><span>the</span><span> </span><span>barriers</span><span> </span><span>encountered</span><span> in </span><span>Sustainable</span><span> </span><span>Lean</span><span> </span><span>Supply</span><span> </span><span>Chain</span><span> (SLSC) </span><span>implementations</span><span> </span><span>affect</span><span> </span><span>each</span><span> </span><span>other</span><span> </span><span>structurally</span><span>?</span><span>”</span><span> </span><span>within</span><span> </span><span>the</span><span> </span><span>framework</span><span> of </span><span>the</span><span> </span><span>problematic</span><span>, it is </span><span>aimed</span><span> </span><span>to</span><span> </span><span>examine</span><span> </span><span>the</span><span> </span><span>barriers</span><span> in </span><span>SMEs</span><span> in </span><span>Sustainable</span><span> </span><span>Lean</span><span> </span><span>Supply</span><span> </span><span>Chain</span><span> (SLSC) Management. </span><span>Within</span><span> </span><span>the</span><span> </span><span>framework</span><span> of </span><span>this</span><span> </span><span>purpose</span><span>, an in-</span><span>depth</span><span> </span><span>literature</span><span> </span><span>review</span><span> </span><span>was</span><span> </span><span>carried</span><span> </span><span>out</span><span> at </span><span>the</span><span> </span><span>stage</span><span> of </span><span>determining</span><span> </span><span>the</span><span> </span><span>elements</span><span> </span><span>constituting</span><span> </span><span>the</span><span> </span><span>subject</span><span> of </span><span>the</span><span> </span><span>research</span><span>. </span></p><p>J04-2 <span>Researcher Ada Example</span></p><p>J04-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J04-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+        "J05": "<p>J05-1 <span>Araştırmada, “KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engeller nelerdir?” ve “Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) uygulamalarında karşılaşılan engeller yapısal olarak birbirini nasıl etkilemektedir?” sorunsalı çerçevesinde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’nde KOBİ’ </span><span>lerdeki</span><span> engellerin incelenmesi amaçlanmaktadır. Bu amaç çerçevesinde öncelikle araştırmanın konusunu oluşturan unsurların belirlenmesi aşamasında derinlemesine bir literatür incelemesi gerçekleştirilmiştir. </span></p><p>J05-2 <span>Native thesis boundary reference</span></p><p>J05-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J05-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+        "J06": "<p>J06-1 <span>Bu doğrultuda Kayseri’de sürdürülebilirlik konusunda çalışmalar yürüten işletmeler ve 2022 yılı ISO birinci ve ikinci 500 işletmelerinin sektörel bazlı kümelenmesi gerçekleştirilerek, sürdürülebilirlik konusunda çalışmalar yürüten üst düzey yöneticilerinden 15 engel unsurunu ikili olarak karşılaştırmaları istenmiştir. </span></p><p>J06-2 <span>EDGE COVER Long title and two advisors</span></p><p>J06-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J06-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+        "J07": "<p>J07-1 <span>Elde edilen bulgular, KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engellerden </span><span class=\"fmt-italic\">stratejilerin </span><span>en yüksek önem düzeyinde olduğunu göstermektedir. Bununla birlikte KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engel unsurları etkileyen ve etkilenen olmak üzere iki şekilde </span></p><p>J07-2 <span>Türkçe ve English içeriklerin uzun başlıklar, karmaşık tablolar, düzenlenebilir denklemler ve kalıcı belge referansları ile aktarılmasının incelenmesi</span></p><p>J07-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J07-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>",
+        "J08": "<p>J08-1 <span>In</span><span> </span><span>the</span><span> </span><span>research</span><span>, </span><span>“</span><span>What</span><span> </span><span>are</span><span> </span><span>the</span><span> </span><span>barriers</span><span> </span><span>to</span><span> </span><span>Sustainable</span><span> </span><span>Lean</span><span> </span><span>Supply</span><span> </span><span>Chain</span><span> (SLSC) Management in </span><span>SMEs</span><span>?</span><span>”</span><span> </span><span>and</span><span> </span><span>“</span><span>How do </span><span>the</span><span> </span><span>barriers</span><span> </span><span>encountered</span><span> in </span><span>Sustainable</span><span> </span><span>Lean</span><span> </span><span>Supply</span><span> </span><span>Chain</span><span> (SLSC) </span><span>implementations</span><span> </span><span>affect</span><span> </span><span>each</span><span> </span><span>other</span><span> </span><span>structurally</span><span>?</span><span>”</span><span> </span><span>within</span><span> </span><span>the</span><span> </span><span>framework</span><span> of </span><span>the</span><span> </span><span>problematic</span><span>, it is </span><span>aimed</span><span> </span><span>to</span><span> </span><span>examine</span><span> </span><span>the</span><span> </span><span>barriers</span><span> in </span><span>SMEs</span><span> in </span><span>Sustainable</span><span> </span><span>Lean</span><span> </span><span>Supply</span><span> </span><span>Chain</span><span> (SLSC) Management. </span><span>Within</span><span> </span><span>the</span><span> </span><span>framework</span><span> of </span><span>this</span><span> </span><span>purpose</span><span>, an in-</span><span>depth</span><span> </span><span>literature</span><span> </span><span>review</span><span> </span><span>was</span><span> </span><span>carried</span><span> </span><span>out</span><span> at </span><span>the</span><span> </span><span>stage</span><span> of </span><span>determining</span><span> </span><span>the</span><span> </span><span>elements</span><span> </span><span>constituting</span><span> </span><span>the</span><span> </span><span>subject</span><span> of </span><span>the</span><span> </span><span>research</span><span>. </span></p><p>J08-2 <span>Researcher Ada Example</span></p><p>J08-3 <span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span><span class=\"fmt-bold fmt-italic\">Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </span></p><p>J08-4 Kaynak: https://example.invalid/research/unbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenTokenunbrokenToken ardından Türkçe karakterler ve karışık <b>kalın araştırma</b> <i>italik yöntem</i> metni. Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler Çığ ışık İZMİR ÖZDOĞAN AVATAR WAVY Ta To a of ve bu I önemli yöntemler </p>"
+      }
+    }
+  }
+}

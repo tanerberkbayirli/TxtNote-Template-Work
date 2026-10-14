@@ -1,0 +1,2799 @@
+{
+  "status": "COMPLETE",
+  "mission": "06",
+  "closedAt": "2026-10-10T10:53:41.607Z",
+  "unitTests": 818,
+  "wordChecks": 617,
+  "generalCounts": {
+    "PASS": 881,
+    "SKIPPED": 836,
+    "FAIL": 6,
+    "INFO": 32
+  },
+  "sourceGeometryChecks": 314,
+  "sourceSections": 16,
+  "sourcePages": 17,
+  "matrixPages": 19,
+  "inputs": [
+    {
+      "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
+      "sha256": "779245da7f25a8dc662a051cfd9897d318b41733e5b616b63e74553610821599"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+      "sha256": "3a891f9fe8da0a9c4ad0d1f0b6b41c048d03e27d75dcfe1ba0b8c00e4c4520cd"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+      "sha256": "f89164a95b38b0844afbaf988b01c927229af84e6af4cd14f101b998fa3ad153"
+    },
+    {
+      "path": "engine/mission01/inputs/edge-native-structure-final.docx",
+      "sha256": "9f0ec3fc18909d52738ed82cbfc43bcd68790dde921a7e3bbda0e1503fdaf8f8"
+    },
+    {
+      "path": "orchestration/specs/engine-word-structure.fixture.json",
+      "sha256": "04476a103c4c56d1ead2fb5fb88de525559a9549e75313c2b832aecf87c32fa8"
+    },
+    {
+      "path": "orchestration/specs/engine-word-structure.fixture.fields.json",
+      "sha256": "92118eb73cb98ca38606b8973f5e3b9ecef27607eb918bf7c72f44b437fe4490"
+    },
+    {
+      "path": "orchestration/specs/engine-word-structure.fixture.footer.json",
+      "sha256": "4d6c214345145401ca0b76a6469730d16e91bb61704f8870b917731ef247e8d7"
+    },
+    {
+      "path": "orchestration/specs/engine-word-structure.checks.json",
+      "sha256": "a29640993d79628203b4f81a3a6178ef460a8fa56baf70d6a701b25f1514730a"
+    }
+  ],
+  "limitations": [
+    "Geometry excerpts are not full long-thesis pagination acceptance.",
+    "Six pre-existing general failures remain unchanged; skipped checks are not passes.",
+    "Complex unsupported source chrome retains located notices."
+  ],
+  "nextMission": "07 — awaiting explicit user instruction",
+  "inventory": [
+    {
+      "path": "TxtNote/frontend/src/features/editor/ThesisSectionPages.jsx",
+      "sha256": "8ca2425f86ba8e12ed723fb5b7685d5b37e87437fdb53434b9129625679b4f55"
+    },
+    {
+      "path": "TxtNote/frontend/src/lib/thesisEngine.test.js",
+      "sha256": "274dbcfd76f0922bf347e0062480fcb65e35fbfa40d5d384bf6b940758e33a5f"
+    },
+    {
+      "path": "TxtNote/frontend/src/lib/thesisSectionGeometry.test.js",
+      "sha256": "70e8621558e760d4ed982e28caddb716f610a1bc3ff414fee60f103be053304a"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/CAPABILITIES.md",
+      "sha256": "664f0761bd349bbb606fd6bc3cccad65ead3478ba859a6d7a5c9854d4cb48e0d"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/LAYOUT.md",
+      "sha256": "569f9268dc893b0f2b6195b578969563c7ec0fed76ce4880befc2bd1ed446f4b"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/README.md",
+      "sha256": "f6c2b855ff458c371d8f1cb545981b8417e04b7542ced0540ef14250f8b70328"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/blockGap.js",
+      "sha256": "e3d6785b6f69205941f52839bfd382349d245dd1c14cb1c709d4f6390f645a07"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/contentMarkup.js",
+      "sha256": "9429444ce96d81f89c2493cf011255ae96b28d653fa2a8f52227b82f6f15a4d9"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/contentModel.js",
+      "sha256": "b940e3320b96efe2745e7e8d8eb5754bbb89327b81057c1d2f7d5edc00931f20"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/document.js",
+      "sha256": "2885512801c50c783b0a63994d7d2b2a2c7e92c77f2a1067ca5fd2da22a10da9"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/body.js",
+      "sha256": "30aa9155e45c16be5ce89020e477226d145dc490f52e026ec19472a445c35ad5"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/chromeImport.js",
+      "sha256": "31f95cb765e4969a20a3cea7814c475a7102fbe6a8b402e56aaaa9f703eddf06"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/fields.js",
+      "sha256": "1228bbf7f69f34f257fd7a93e9a7e97965760a53170d20a74066962b3e0743ab"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/import.worker.js",
+      "sha256": "5ab6d01a813657aed9c1f5b409e4b5563aa685a41757877904e50faa28d6e30d"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/importPackage.js",
+      "sha256": "05b27030ed5ae55597556c24c80cfb5b8d61c5aaac0f5e8bcd4ad9013efeb7c2"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/package.js",
+      "sha256": "ca7883db96de47d7a9e6696036805db5907c56843ea5575597578dc9571445fd"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/paragraphs.js",
+      "sha256": "117cabae8dde13a261f0592c1afc016207ffe0fde7bf5546f8978f3fb83c9da0"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/projection.js",
+      "sha256": "f067f7d9899953cefbae527b3c523fc1475856deee1d04fc0f50301595ac4b2d"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/properties.js",
+      "sha256": "4a692a8b1f6d3fb3d618014687f5c325cda6615da7f5bf4a23e8582615292eab"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/sections.js",
+      "sha256": "3cf37ba6191a6860dbdac493438d397777cbd662fcf6c3f8de5cd0e0636cd0c2"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/specialPages.js",
+      "sha256": "54237b2cd39377b68b409446a5f76775a148b873b17942e71d788a150eb42758"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/tables.js",
+      "sha256": "d347fe12e789b238bac02a31689c0e44aa78b4d0436e210844d10e9d90397047"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/docx/xml.js",
+      "sha256": "f6a0b4d2091b0ec93972b549e98d303605699c424c2294e883c6b2e1a9e3d91d"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/engine.js",
+      "sha256": "96cf6d820e6edc37113a4af85179ae53012094c1aad564393bd9e92c59845ea1"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/engineCss.js",
+      "sha256": "882699e4ec2b5a546069c50f38793812ebdd337b321477cb8493fa817a56a283"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/engineDefaults.js",
+      "sha256": "efb920b95b754449d00afe8219de47dd14243012922a02df4cedb9bbd1270ef3"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/export.js",
+      "sha256": "4aaf324f7e2ae7e390b090995f961075d5ded65e652234df5506601575e0edf1"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/exportPagination.js",
+      "sha256": "353a6f0ddec567a4f6206d66df8cb5ed98dd7952b2da7e10d0296a6e661eee98"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/footnotes.js",
+      "sha256": "5f4d04a6e37f75cad1d414aa0f2c429e8111f245e61d132b08bf37e7114f8c9f"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/generatedIndex.js",
+      "sha256": "c3771092bbe4cc16680f61a3f3ddcacb724ee5c7d30b014f634aaf88016d2026"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/importDocx.js",
+      "sha256": "0b6d9273f3db967ca3a63f962b2be16146be739b81645bddb2e2a4a3dc8d872d"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/importPdf.js",
+      "sha256": "538bdaf264e5f98e002629a87eb6844573e377b84e124a182c41e7f97a47ffe3"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/justifyLastLine.js",
+      "sha256": "cf35d1f8d5eb5893dedddfe52e06686f6a5052526a6a835754e6915881711895"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutDocument.js",
+      "sha256": "37be489063ec4588bc20e4b21dc54c596c65a69d2f1a6becafb6a44706406b1e"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutDocx.js",
+      "sha256": "0999c428cd1d870cde7306833979e16265b5963e3ef238a7a59a0018e70e8476"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutGeometry.js",
+      "sha256": "a562e1ebc57f2c95308ea61c01006af84e6f839bf2e50805f6341c37dde04a0b"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutInteraction.js",
+      "sha256": "39738119454255487cd5076e8e682ab4f01d73d90733eec5181629089cff4191"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutPdf.js",
+      "sha256": "ee7b7ca33b5b067ecabdb5c181361c4d70d07d9d7b2ccd09a1222c5ae9cf53bb"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutPdfMathbb.test.js",
+      "sha256": "d0eb18410ac780531829e8e8c8a9b7b1dd41a1a2129f5ec861ed727792d9755a"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutProperties.js",
+      "sha256": "d51f29d813fe638d1fe998a5e07f7642d93bb94a00810c6c6bc82740d91033e8"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/layoutReport.js",
+      "sha256": "fdae813ad807462104f597b612f0d2b0baad59089204c8882b62bad294f44816"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/metadataPanel.js",
+      "sha256": "c9eea062c57fbd2af86930b73327046c6adace2966efb1c854fd31ca35a29b63"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/pageLayout.js",
+      "sha256": "825b2cf5e1877754bd3c7583d3a346d5c7b506b4244f2da1d9ab9052b94ff292"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/paragraphMirror.js",
+      "sha256": "ed08533500cb6171009c9fee7c866d50e222f66905a8835d8bb4688ec8a4139e"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/paragraphTabs.js",
+      "sha256": "32750bca5614b8d05333bf65ee1f0f4f50011be083f02c4b8eed44c372d56188"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/pdf/model.js",
+      "sha256": "748544cf6956cecb3fb3cc61de599925b63add1fa22a80512d235f6369f32e6f"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/pdf/structure.js",
+      "sha256": "f186fba0794c19ccff89ecc227fe1472f3f878723c0e0b2cba3789e819133751"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/pdfFallback.js",
+      "sha256": "9e229a73ade161eb791e84614f37585db26596caeba159388e42d4843d18e118"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/registry.js",
+      "sha256": "72bd2cbac079e82445eee9ef2753de04c5a3a4ded2b61437d76b8a343a6a82bf"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/renderedFonts.js",
+      "sha256": "e1c0bd8015b4ebe6d22cef5f342d750c7c6f50d651a15d98b01f2815c34f621a"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/schema.d.ts",
+      "sha256": "f5efe208a505799b19eb50a92601c6d55e3655285d831d51fc0a07f675b4754b"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/sourceHtml.js",
+      "sha256": "f46e2fb91a7ca9d82995e64fe4349e65bda6152a144ca391610da685afdf7e94"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/sourcePageFrame.js",
+      "sha256": "9dc6ef13ed2cd973d80accdccba4acdfdba148ab9fa46cca1af2ea99ba7dcca9"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/specialPages.js",
+      "sha256": "0999aa391f9206e10101ea753c1e631a78eb3a6117725d6eecf8d285f78008b5"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/staticFormat.js",
+      "sha256": "62b202dcc05d51cee38b20d01bebb664a458506874f30e4f1764b75c58b48cc2"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/tableContinuation.js",
+      "sha256": "f55c278661efe75ab1040ec8fc9e028fc4be9ec511a29a02f19bd0680c27f125"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/tableSemantics.js",
+      "sha256": "c104103fe15c9d6f4466444eed1dfedc01b079fd5c231efeb1b0c7bf75f112ca"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/adu-sagbil.js",
+      "sha256": "d5a982de2c8c6be915325e40ad13e7752f27f526c358ba2c7ae47af6fd09cfea"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/adu-ziraat-lisans.js",
+      "sha256": "1dc729ce321e3c85671296ea4b03a9d56276b4b9107c2a73ddd758a066b5ff02"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/afsu-eczacilik-proje.js",
+      "sha256": "ba41bbb73ecaf45f6afe97ca5a3ebae90286bd6dae9fa9f7094735df2e4b0ade"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/afsu-lee-proposal.js",
+      "sha256": "2d127c2f92183ea5e69052c04877b9c7659717e03c2a80d82c4925c418fae9d9"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/afsu-lee.js",
+      "sha256": "ac886387b6d530414b0c76f4ee2af247e28fff0f1909406392979d9d6a2a841c"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/afsu-lee.test.js",
+      "sha256": "f6a466446cca7f9daf28e558d51b3b1f1b7e6df04c951f927604916d4d616777"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/afsu-tip.js",
+      "sha256": "268c8cbc084422595f30c08a11c30582cff316993c6384c2bec6f6e299ba47bf"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-cografya.js",
+      "sha256": "00c23a9e1fc4f1d456942c9d341d101c492d77f6fc9c2e478501816b8b727a17"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-fbe.js",
+      "sha256": "a44570e87967a2c83d7a23423253f2de09b7c5aeabf96f1fd4f09fa0de64679b"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-felsefe.js",
+      "sha256": "ead049f4c2d04e1a45771aa55ce06af7e3d2fd877bf7a8f7805f8884929cf372"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-isg.js",
+      "sha256": "b7eb0cfb9ed05d74c21537d77fe92950f068f51b96658e7b9861d9eef350ada2"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-kimya.js",
+      "sha256": "5a848c9c2dfdd195e11b8ffe1613a9b7fd625d7fb9621d3074f64fe31e1b8af9"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-matematik.js",
+      "sha256": "6b2ff6ba4034c3c5c390c7af734974ddd8175f424533d8ed69d7c2135c312bb4"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-mbg.js",
+      "sha256": "6b599e746bf8404262787be0a4b926ed364bb4398058d59d314ad79ad86b36cc"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-sagbil.js",
+      "sha256": "f404dbd6a487490663d1a3f4b30b8d0cf926032fe639ca4c9a9d3265ac76b4bd"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-sbe.js",
+      "sha256": "c6b5f1889d27127aafa54ef1027b2f709b4b942901f796459820402cfbfeb042"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/aku-sosyoloji.js",
+      "sha256": "2e5b0e9f204a495cafb98397a88b687bd078fd92109559b6f2579bdfff9349ad"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/afsu-cover-band-master.png",
+      "sha256": "7f6863db0c7ce356f313328c54b977222e2608452c2363851378b97323e17910"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/afsu-cover-band-phd.png",
+      "sha256": "0a5d0cf645005af71d498703478b4f43208245ecb10c971fc7f1764e78fc15fb"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/afsu-cover-top-master.png",
+      "sha256": "6a992f40924ec13374630ac172203d7100783e165b8f640ea6559bb06d706112"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/afsu-cover-top-phd.png",
+      "sha256": "403bc15692db92d56312c5d7e6af8bdca7e18c772a30e29bbd45032f765b6fc3"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/afsu-cover-top.png",
+      "sha256": "ca6df08df388adc22d2b170f0b53806fe0b6d9aac07793d72e17bcd260e8debe"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/afsuCoverArt.js",
+      "sha256": "b5f395b257b292602a4437b74cc428c06675d4e9cff22e77fddcb6bf9bce75af"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/afsuEczacilikLogos.js",
+      "sha256": "e8ce502b43a45fb4d46bb8be343e81e83156edf412e951c3cd7691f731127fc6"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/akuKimyaLogo.js",
+      "sha256": "b2728de941b62616b303a56aebd130fc9092d1af6be15ca9ab70791b2c2cfa59"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/akuMbgLogos.js",
+      "sha256": "df7fa17ad95202127289a03b6b74c5cecaf4403352bbe7613bf66784195826aa"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/iyteLogo.js",
+      "sha256": "8ad63c0a30539ae1f9a498545f1a5ea9ab6fc3f57ab263d0665aa1f7cd0aac5d"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/mcbuLogo.js",
+      "sha256": "5309ad59a0d2826c7a49a5a13f9dd97f1bb87b47de0f5a8703d1a3d0265b1964"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/generic.js",
+      "sha256": "745765d937a07f18b9c151394d122ccd76b05237824ae16d5efc405098f8701c"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/iyte.js",
+      "sha256": "b71a2af4b2e0eb00ca715d2f15d9a5cf464c9381c86e9307e595793f196cdc45"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/mcbu-tip.js",
+      "sha256": "85f1e13c723a3342dc0b4ee3ae3d40862ebde89bb281fde7a869e08932b038af"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/mcbu.js",
+      "sha256": "307b27f925b1c44353d82dfcea0f6a368c4430f9dbd3d1ef14fd9d686c8f7ae2"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/transformExceptions.js",
+      "sha256": "9701e3652500daff0bc9ef9894d1c60d321041ac3d85cb0e9f8f85cfab3659ab"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/typography.js",
+      "sha256": "a17920dc866b019f43457e9e2fef99ddd3c154775c571791f1695412783701e6"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/units.js",
+      "sha256": "448f95695c388891dabfe948ca556bd03ddab2029e032880cc8f11e24263e7c7"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/validation.js",
+      "sha256": "b3bc92b533a7e16471be50ee36a7a78105fbb36d93844d29637c3d2eb95249aa"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/wordBaseline.js",
+      "sha256": "0a13a1e29cbd112972a1fa624c3f25674bbca70e19233e65830efc19fcc7ecc4"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/wordLineFit.js",
+      "sha256": "d6ae0ab3e55a86917aff507e48e425eb2f9b7183e123d97867ac935e8152e1dc"
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/wordLineLayout.js",
+      "sha256": "5fae23c11b8922fef4f67baafde00d02ebb44c2c0f332757dd0656192fa0171d"
+    },
+    {
+      "path": "engine/MISSION.md",
+      "sha256": "8e1f0ce766cda61eea07072be5dfdf7f45b3f3f11de19cdfc14b6cb60e9c775b"
+    },
+    {
+      "path": "engine/close_mission06.mjs",
+      "sha256": "0e22ddf88709b066105651ab7fa7133232a424a541da53b681a8ab83808241d8"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-complete.docx",
+      "sha256": "06faace199422ca597c056423597b821eb3cefca2d18b216efce8894afe5501d"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-complete.layout.json",
+      "sha256": "b6a15f59dba067f5eeceaf49e72da75c03fdf0ad0211251e341ad421ab1ba88d"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-complete.pdf",
+      "sha256": "2223f30ca1f96f33768439cb74b817f6bc66f2a4ee23a966be6d685bddb96f20"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-editor.docx",
+      "sha256": "528a2c980a9093859015a039055a5553da124daec26a03c669648989a3d8b8cd"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-editor.layout.json",
+      "sha256": "82cef44d210d9c1448545278b0035c0c67106ab826a3e0859ff0d5f00611e8cb"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-editor.pdf",
+      "sha256": "929c15071e7373904b1bf43dd4610529e52ef53c1464724b8f5f6bbae18b4e72"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-exported.refreshed.pdf",
+      "sha256": "c2daff8486edc6ba3a61cf9bb059ee57eed00f4d51304826fd07260fe3a0c7e6"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-exported.word.json",
+      "sha256": "894f50781a7526e6ce56589a6867fc5ae7a738a3c71adf2879e41c054cd252f8"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-exported.word.pdf",
+      "sha256": "f125b99326ca23c70aea53743a61f698b742a40a22ba759962d59c4615f96169"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-final.docx",
+      "sha256": "5e506d6fe4f394b09dd05f522dfef1403f26b3afd8da6140f61629d85b7732ac"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-final.layout.json",
+      "sha256": "4cfbb9cdf75b181a85437bbfee019ff977b3ebf8df638683cf87cfe89b815cad"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-final.pdf",
+      "sha256": "1a6a2afb56b0342446dfc93457fb429bb637ace5d14967b678ce4a4709645674"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-frame.docx",
+      "sha256": "5119f1ae9fe54f498994b8e5ad8626eda41a4b41786fa4ae6b5ab2099209cda6"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-frame.layout.json",
+      "sha256": "16e429486d245671189049a3f2b663b85f12915c6860a007965f6a9bdb21a663"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-frame.pdf",
+      "sha256": "e33af2ae992aa959b36f69e26aac913816d827434f0fc8c4f05d72501e756a26"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-geometry-export.docx",
+      "sha256": "d59638c9b04bb2783328dbebe8c9af075648041515e85d625b1b2a65dac87612"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-geometry.docx",
+      "sha256": "2ca1de2198155897829a121ecb207775b1f89503199005e58ef51dc3c56ff21e"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-geometry.fixture.json",
+      "sha256": "c9add280c39cb656350ef1581ead827c51aaee101fb971c8106399818c8592db"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-native.refreshed.pdf",
+      "sha256": "14678aa44ccb3770cf7a2bd959ae3df51d3eca3d280b542b092d715bbb4a935d"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-native.word.json",
+      "sha256": "3b491877b4fa7819ce598c306530fc75c56c3b6d8b32352be089cb5967964eed"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-native.word.pdf",
+      "sha256": "3e8c8da9ebd1baafb49333e1664463060e3f04497f5d878ded66454c0a3b05fc"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-paragraphs.docx",
+      "sha256": "6ab148bba04d4d3830f99a59c018f7e188d3971ca36cbf30e6b650f830d9839f"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-paragraphs.layout.json",
+      "sha256": "102fe048a49fe89aef76f50bfa149e5642d10e2258681570725c7cee5a0d0c90"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE-paragraphs.pdf",
+      "sha256": "7db38fa9705e207fc724fb9c1459d05024cff8a0a7b4e5a81b918d0f97ce3a82"
+    },
+    {
+      "path": "engine/mission06/EDGE_STRUCTURE.fixture.json",
+      "sha256": "59812c65e145bd8e2a3939f947197f3e2eaedf9ecc1bd2133ac7a4672b8c771c"
+    },
+    {
+      "path": "engine/mission06/README.md",
+      "sha256": "4e72d6f3075a6e0771553c17257cb5c1ac7e2392a48993f8a18a99982d3ef569"
+    },
+    {
+      "path": "engine/mission06/SRC01-complete.docx",
+      "sha256": "0e5c5a416b9362fd8072ce7a91529bf7879aa0d7f678b852ee2dba2c201c8557"
+    },
+    {
+      "path": "engine/mission06/SRC01-complete.layout.json",
+      "sha256": "873742867a48ba02c711f618a379b008af7cf583d6dcc5205e3381ae07b327c8"
+    },
+    {
+      "path": "engine/mission06/SRC01-complete.pdf",
+      "sha256": "2bdba3701514ec325abb73c09aa9efb63d3596f0e095f6b0301068d1f58f8ff8"
+    },
+    {
+      "path": "engine/mission06/SRC01-editor.docx",
+      "sha256": "a12039f48b5c62a69ca18666a03cb84b30cfcf2e43ad1ca96df28b546e176a33"
+    },
+    {
+      "path": "engine/mission06/SRC01-editor.layout.json",
+      "sha256": "d419266f5420cd44ec70cd73ef5f4e6d1f2b2c7f2c607e23a6f257486ee4be5e"
+    },
+    {
+      "path": "engine/mission06/SRC01-editor.pdf",
+      "sha256": "208a24d992084ae182dc2297606665544f372070dbf862c0cb55dd30a847a440"
+    },
+    {
+      "path": "engine/mission06/SRC01-exported.refreshed.pdf",
+      "sha256": "312bb90cbb0d8e0bb009c3ba08cef1ad688215d4491f79ad7cfb55a1e8a212f7"
+    },
+    {
+      "path": "engine/mission06/SRC01-exported.word.json",
+      "sha256": "c4cf82e6488d0003b1418de05cacf256081b37fd14c1d2f5a81c490c507c2360"
+    },
+    {
+      "path": "engine/mission06/SRC01-exported.word.pdf",
+      "sha256": "e82a58ba51961c3efa0cfd2701c82ab8f4cbbca1093ee67847c18e8209c07f14"
+    },
+    {
+      "path": "engine/mission06/SRC01-final.docx",
+      "sha256": "e20beb653e043e941fd2ff4d568d0795d867e50043fe48bbbf94c1f87ce4bd65"
+    },
+    {
+      "path": "engine/mission06/SRC01-final.layout.json",
+      "sha256": "dc27e1e0ccafac4e70b0acc69b58cbb8e202d664339b05e576e77ff510c540c6"
+    },
+    {
+      "path": "engine/mission06/SRC01-final.pdf",
+      "sha256": "4acef8ba36a4192b5aace86a38dde1f5810c7f9809ced2841c990245e1de4617"
+    },
+    {
+      "path": "engine/mission06/SRC01-frame.docx",
+      "sha256": "917c618d5ebe082e5acea59bca8dd51db4d52624a03f09440af91b336b2c76aa"
+    },
+    {
+      "path": "engine/mission06/SRC01-frame.layout.json",
+      "sha256": "2aa645ca161f05d3381fdc01acb0d339ef4fcc8c2815639baace633b005752e6"
+    },
+    {
+      "path": "engine/mission06/SRC01-frame.pdf",
+      "sha256": "fe90d14deb07183aeb591f65e9bb5eba3aa9e01d5d2ad968b09a53468c705102"
+    },
+    {
+      "path": "engine/mission06/SRC01-geometry-export.docx",
+      "sha256": "d8172f382245b9db025569448170c017b6b59fb98747613113237ff2e7d0fbef"
+    },
+    {
+      "path": "engine/mission06/SRC01-geometry.docx",
+      "sha256": "dda20f78cf08851702fba1dc268f9090e9c750e4716dc60dd28d2e69245ced86"
+    },
+    {
+      "path": "engine/mission06/SRC01-geometry.fixture.json",
+      "sha256": "dadce570df7dba037b16726c556007ca09ba8b808cf24590e4c89ef3cb666b91"
+    },
+    {
+      "path": "engine/mission06/SRC01-native.refreshed.pdf",
+      "sha256": "5a4da2f46720e3954b728a7aa08a46f12b77ec23b30edfc96adf5844a0566816"
+    },
+    {
+      "path": "engine/mission06/SRC01-native.word.json",
+      "sha256": "9c2235b11726d3ec44c26e392f0dcca208f9524d0b91af2ebd38f6b5654a7d0e"
+    },
+    {
+      "path": "engine/mission06/SRC01-native.word.pdf",
+      "sha256": "76b28f95f57d9c50142d49cf9a17b860bbe7cdc01d86e1a221b0fde94498c157"
+    },
+    {
+      "path": "engine/mission06/SRC01-paragraphs.docx",
+      "sha256": "c592b054fd004011ded9d4996af055b04f5b4d1e1031c9c7ea0fbcc8584d89f2"
+    },
+    {
+      "path": "engine/mission06/SRC01-paragraphs.layout.json",
+      "sha256": "17e531a3a3898d27f566fe5c1b09c516728a8ebf9344e2ccdd7fe5e1393f4ace"
+    },
+    {
+      "path": "engine/mission06/SRC01-paragraphs.pdf",
+      "sha256": "84986e40a92ea0bd88dda667d37de65afde63871b73ec42b921cf38cb68f2735"
+    },
+    {
+      "path": "engine/mission06/SRC01.fixture.json",
+      "sha256": "19b5d1caa76609dd9272c1d8ec0471718bdcae6e1d765bcfd68bcc94836dde21"
+    },
+    {
+      "path": "engine/mission06/SRC04-complete.docx",
+      "sha256": "dace5c628b90231fe11f9d9b8d55492c9ea72dec33d669a2b511e35f338a94d0"
+    },
+    {
+      "path": "engine/mission06/SRC04-complete.layout.json",
+      "sha256": "2beb1d22a0b01dc2e0dc038ca3b53b653aa5bf2706763bf441590011161413b5"
+    },
+    {
+      "path": "engine/mission06/SRC04-complete.pdf",
+      "sha256": "f9d3724ff2640a0df97497c4219420f1939d2ac2780e2c87bb5934aef870d95e"
+    },
+    {
+      "path": "engine/mission06/SRC04-editor.docx",
+      "sha256": "30f5fe64ca04764e568890b9cb827d867c80fccb8c1b5cddb7c8d044b1e79cc2"
+    },
+    {
+      "path": "engine/mission06/SRC04-editor.layout.json",
+      "sha256": "1c96f8aeb22289c1a7107f59d123fc28828b73a53f33abf1c025b0ade2f80ebf"
+    },
+    {
+      "path": "engine/mission06/SRC04-editor.pdf",
+      "sha256": "60e44e5f93abf581db4e4864824a8dce0303ca911cfc95b93248994b5a9771a4"
+    },
+    {
+      "path": "engine/mission06/SRC04-exported.refreshed.pdf",
+      "sha256": "c13b1a81d1ad5ce03353b305e0353b7c106fda2bfea219a176ba18e7ab135e2c"
+    },
+    {
+      "path": "engine/mission06/SRC04-exported.word.json",
+      "sha256": "a8e15efdc7ee06203d886f59cfb0ebac4f2cb038b55219ffab23cbe19cf4a74d"
+    },
+    {
+      "path": "engine/mission06/SRC04-exported.word.pdf",
+      "sha256": "b073ff5b820bd4f2d4de77ebc9a1a58417f653b73e646450c71d36a5920cb8b2"
+    },
+    {
+      "path": "engine/mission06/SRC04-final.docx",
+      "sha256": "1b15aec3f23844d71500102702258156fe013c53a0c1add0dd5f08c09a6310ad"
+    },
+    {
+      "path": "engine/mission06/SRC04-final.layout.json",
+      "sha256": "04bd8d8fd2aac5632d1c2c996d154cf54cb6b368bd549a34850d3046c1a356e3"
+    },
+    {
+      "path": "engine/mission06/SRC04-final.pdf",
+      "sha256": "0967e371c18dd6e5b6f5e8de8c5274c77ffba1eb0077ef2c5d92308dc0b2c683"
+    },
+    {
+      "path": "engine/mission06/SRC04-frame.docx",
+      "sha256": "310a5657e33ad090eb0f0b3855eaf18ee730a39e371ab70507d8bd4311319fec"
+    },
+    {
+      "path": "engine/mission06/SRC04-frame.layout.json",
+      "sha256": "db0a4a5705e99de0a2c2ca82a0d6a78b3a5e95b97ea7c1d57d3395157e5c3d9b"
+    },
+    {
+      "path": "engine/mission06/SRC04-frame.pdf",
+      "sha256": "28bfc97373ee2d1517b36d32c3bfac9871cf80256a8c63cf73f8b02dbbf5a863"
+    },
+    {
+      "path": "engine/mission06/SRC04-geometry-export.docx",
+      "sha256": "354cdbcd0d44d1b8e756838ac403d90c473e6d466c3354e5185801d7aa3eb3d0"
+    },
+    {
+      "path": "engine/mission06/SRC04-geometry.docx",
+      "sha256": "aa77bed8007c014eb13ebed291593711aca31d917c87ea9aad85f3d4e224a3ef"
+    },
+    {
+      "path": "engine/mission06/SRC04-geometry.fixture.json",
+      "sha256": "5bdf5828c45f22e04ee5f2b237e7b01b789393de62164e4705d4c58269398abb"
+    },
+    {
+      "path": "engine/mission06/SRC04-native.refreshed.pdf",
+      "sha256": "8aafd124e0057e5f65832334d5e80cdf0f0c5d2cde74e2b323f92d97273f2cf2"
+    },
+    {
+      "path": "engine/mission06/SRC04-native.word.json",
+      "sha256": "5a977d7cca6d53301cc74730c6b40ef33287af1b751779c006ee02184b744c12"
+    },
+    {
+      "path": "engine/mission06/SRC04-native.word.pdf",
+      "sha256": "7c56becd1eed04deedb717ee19a45bfbc3226057471d2584d78070fc093574a5"
+    },
+    {
+      "path": "engine/mission06/SRC04-paragraphs.docx",
+      "sha256": "2ceae685bc6433052d1dfd79ed85f42e0fa50679031ec6dcb7f9e74adbb9c238"
+    },
+    {
+      "path": "engine/mission06/SRC04-paragraphs.layout.json",
+      "sha256": "e4051cc2ec35cefb64e430d708da6a60ace79ff6ccd5ad48877d44af5fd72618"
+    },
+    {
+      "path": "engine/mission06/SRC04-paragraphs.pdf",
+      "sha256": "2a9fbba5e32f364f3a20e02d148860140db01b7895679c168798d70312750a72"
+    },
+    {
+      "path": "engine/mission06/SRC04.fixture.json",
+      "sha256": "bcff5bbddc01c39b9b4e20c958eb468a5c25e9483af685c52632a1e662d2435a"
+    },
+    {
+      "path": "engine/mission06/SRC05-complete.docx",
+      "sha256": "5b33120a062e4d1db9e37f92658c52ded554f9af85e04e72b832e59b8328542c"
+    },
+    {
+      "path": "engine/mission06/SRC05-complete.layout.json",
+      "sha256": "f0ffeddc40372fe07bb48770bbb02fc8471ff69134cca1fe8cc5715e8d239a8d"
+    },
+    {
+      "path": "engine/mission06/SRC05-complete.pdf",
+      "sha256": "0f93daaf19b7b9d6afde1d0ef61fde538f62474d45bb95b8cd52de216ca2abf9"
+    },
+    {
+      "path": "engine/mission06/SRC05-editor.docx",
+      "sha256": "265ce869b64374e2e2a9cf94aef0cde4f6f08f7dde8a568d3c2a8a008b73ce43"
+    },
+    {
+      "path": "engine/mission06/SRC05-editor.layout.json",
+      "sha256": "92abb6c8c7364b743282ba148572cc2e7e3113920eaba3e64ac3f22ea440ae60"
+    },
+    {
+      "path": "engine/mission06/SRC05-editor.pdf",
+      "sha256": "17815d61e623c4654bffe5d6dba75cdfbb6ac7ec4f19758d8b6df4f80864ce78"
+    },
+    {
+      "path": "engine/mission06/SRC05-exported.refreshed.pdf",
+      "sha256": "c2571de3a3ae05c4bad18a2ec348d5cbeee430063553fd0190891181473b074a"
+    },
+    {
+      "path": "engine/mission06/SRC05-exported.word.json",
+      "sha256": "e175e5e42dd48a2a07d3d9b0b206ee86b32195253e782e59f6f89e3968246c79"
+    },
+    {
+      "path": "engine/mission06/SRC05-exported.word.pdf",
+      "sha256": "086bac21d67e1e54eaeac0ca4adf1eb0929f7ae0fc296ea3a83998f6fa6a488b"
+    },
+    {
+      "path": "engine/mission06/SRC05-final.docx",
+      "sha256": "c877cff08ea1e39e9556a1103ef1351e1540dfebb4bebc6097453d2b993a407e"
+    },
+    {
+      "path": "engine/mission06/SRC05-final.layout.json",
+      "sha256": "6af25031be65c31d67bcdc3eaebc41a5e388937e30d5d4945910a7f8f09a1a3a"
+    },
+    {
+      "path": "engine/mission06/SRC05-final.pdf",
+      "sha256": "26b0de71a1797a4dd5aea0dcd79585e5001e275d1e2e5055c3db1305cc3d6364"
+    },
+    {
+      "path": "engine/mission06/SRC05-frame.docx",
+      "sha256": "43a96e5be87060a75a22a7e3a2ab51df2dc7b6c18b117e0406ee2c8ed9f540db"
+    },
+    {
+      "path": "engine/mission06/SRC05-frame.layout.json",
+      "sha256": "132b84ac113da61d0c55ce6c3da01afda2058236bb6c2a0c529f509ccd75594e"
+    },
+    {
+      "path": "engine/mission06/SRC05-frame.pdf",
+      "sha256": "24933da9cfa082abbf3e3cd75b651b77543a0e9f73817ec0f78fe18a09916abe"
+    },
+    {
+      "path": "engine/mission06/SRC05-geometry-export.docx",
+      "sha256": "397d578ded4dc825299784c425d493ead3469d73c38c6ee603cd9dbe15092bd0"
+    },
+    {
+      "path": "engine/mission06/SRC05-geometry.docx",
+      "sha256": "caeafc22f0f9a3dce6535c4c41c6731a79960bd62a1dcc970dc66be2015eaca7"
+    },
+    {
+      "path": "engine/mission06/SRC05-geometry.fixture.json",
+      "sha256": "046e342d43a2cc1188977e0f8012dcf7f01424ea48596f442efe2fd4f1b6066a"
+    },
+    {
+      "path": "engine/mission06/SRC05-native.refreshed.pdf",
+      "sha256": "6697cadcf4c05b378adaf3a518db6ecdcc2b9c83f3397a3ba0273f58ae27b7ea"
+    },
+    {
+      "path": "engine/mission06/SRC05-native.word.json",
+      "sha256": "b9fee87553e36b080eba7cb64829599c9ab528ba7b1ac0297476b47a1b1cca26"
+    },
+    {
+      "path": "engine/mission06/SRC05-native.word.pdf",
+      "sha256": "561a46c6e6e6c14a7e17f6fcf8a729a8e071e042e0dba8abade1d8d37be111cb"
+    },
+    {
+      "path": "engine/mission06/SRC05-paragraphs.docx",
+      "sha256": "478676d45ce7000edf81e9ab085e428217e02e78884ee958575623650ed70c90"
+    },
+    {
+      "path": "engine/mission06/SRC05-paragraphs.layout.json",
+      "sha256": "2de14115edf6602f52f8e073178b910415c09b2e9a2dbdf0fe27acae11403c65"
+    },
+    {
+      "path": "engine/mission06/SRC05-paragraphs.pdf",
+      "sha256": "d28b912967c59e79411050e9a18ae26f1e489cad647843e79d2663112df40a6f"
+    },
+    {
+      "path": "engine/mission06/SRC05.fixture.json",
+      "sha256": "2bbdcc7406957fc66b5b975ef216774f76ae1eac8ac6bc0e2316eca4f5a856c3"
+    },
+    {
+      "path": "engine/mission06/browser-verification.json",
+      "sha256": "65c44dd89a96aa4ab7cc37e2043a5a3da2235fc55b591d6a4dfd84fa2ee07841"
+    },
+    {
+      "path": "engine/mission06/build-complete.log",
+      "sha256": "181b7f3e928ba20551b371b42d3c39375694dbb6e8a635ac2ec26d85ab87436a"
+    },
+    {
+      "path": "engine/mission06/build-final-code.log",
+      "sha256": "09aad612fae1f8bfbd825c60fb9cd8898a707b106ab930f17d872da12d36fc49"
+    },
+    {
+      "path": "engine/mission06/build-final.log",
+      "sha256": "b35a3840e208ee010c713dd1b4c8ed592ab810a7c263797456caeda93e1953bc"
+    },
+    {
+      "path": "engine/mission06/build-verified.log",
+      "sha256": "2911f3492e7767703f97ac7b7d43ff02dba0dbfa4bf00a453bb3ffe06ad2358c"
+    },
+    {
+      "path": "engine/mission06/build.log",
+      "sha256": "f8953891ccaaef9fb4ba40d36fd59b816b6f755bf3943167bcaa90f192147b0c"
+    },
+    {
+      "path": "engine/mission06/conflict-browser.png",
+      "sha256": "dc62c38901fb793e8aa8dbf5e2e4db2f0eaca19134028a6d67954c36f1a90363"
+    },
+    {
+      "path": "engine/mission06/even-pad.docx",
+      "sha256": "2fb53f83c8cb9bbc156e4aff1ddd9915b559283d1284073b3f1aac59719a9a94"
+    },
+    {
+      "path": "engine/mission06/even-pad.fixture.json",
+      "sha256": "13d0cfec236b7f863dc6f0f9adce0c06a670c5f105f5f929f9ef16c53de2db99"
+    },
+    {
+      "path": "engine/mission06/even-pad.layout.json",
+      "sha256": "4803d89e59aa6c6a1409469d77c73966498e7b202f6a624c02b433f50a890265"
+    },
+    {
+      "path": "engine/mission06/even-pad.pdf",
+      "sha256": "d24512a14fa3563d423f03c032365e90108ec67e5bb94c24dc98177e32c21c14"
+    },
+    {
+      "path": "engine/mission06/even-pad.word.pdf",
+      "sha256": "71e7fc7f4808bb9723f645e2d688d0c46ee567721cf1c0eabf6d29b2626c4c97"
+    },
+    {
+      "path": "engine/mission06/export-final.log",
+      "sha256": "be94d4c22c16931cbdb7df3274247f395ac87fb831f0b86ff02e1ac43a31d5b9"
+    },
+    {
+      "path": "engine/mission06/export-geometry-final.log",
+      "sha256": "40d1bec15ca3c670e101e6a2c00c24ee905e7d31042da75bd310ecb2076365b2"
+    },
+    {
+      "path": "engine/mission06/export-geometry-v2.log",
+      "sha256": "988d204c0a277fd88a43901743ea95eeda36a73e93a2b8e80e0ae52375771f11"
+    },
+    {
+      "path": "engine/mission06/export-geometry.log",
+      "sha256": "cffdc17515c7ba0f75675aa49aaedb132a4867e6ea74f343cd3d2cba0e200d7f"
+    },
+    {
+      "path": "engine/mission06/export-retry.log",
+      "sha256": "ab09a925fe5d5825e8eee1c2bfb1089573a319e067ad5c7c1639700464d2554e"
+    },
+    {
+      "path": "engine/mission06/export.log",
+      "sha256": "87c674d41d3a59fad5d5af7e953d8f507bab18ba7f4c91a1c4fc5de7b2c28206"
+    },
+    {
+      "path": "engine/mission06/final-word-manifest.json",
+      "sha256": "e5d8a739e00a0cb44e1fa9623b64b65f93097f47c84c029b615d75c4c6b52b20"
+    },
+    {
+      "path": "engine/mission06/final-word.log",
+      "sha256": "f3d4660fca644f2fb4efb7b0b48310b92935da2bdd3c2a99eddf34402fb9f37e"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/check-20261010-1328.json",
+      "sha256": "9ee1311a4d32993f49340bdbd3108b3a4a0121de8adf00ee5a9aa537b60440c9"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/check-20261010-1328.md",
+      "sha256": "60ed3188a495014fc24072516a4287a62969e198bf7f542688aaa75dc3312c31"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/run/check.log",
+      "sha256": "7313a11a5d065a92fe848c22ae8f8e3c4f9406b5d76ea4cd9694dd91a5741c2d"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/run/default.docx",
+      "sha256": "0a7ecd8a48d6b770cbebcf7be2d35d562f00ed9be3d6f967a39c6d146b326b5a"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/run/default.layout.json",
+      "sha256": "01723d5924660e194b3c8b9b8a59f2fe4859904f294c68defbda94e8a2fc61a6"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/run/default.pdf",
+      "sha256": "588629e7e17515bbdafeb0d027c134c488c9e60e905adbef46d4b9d968d50c88"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/run/default.word.pdf",
+      "sha256": "5e8c5e190039a9bbba4696c09b45db025200be870860cb1144a0e61fc4c085f0"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/run/default.word.render.json",
+      "sha256": "3bef256095abd3940edbe346e3182c434efbcbd3640b311ef9d354843807ca7a"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-justify/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/check-20261010-1331.json",
+      "sha256": "fee30d9f0e9513bfea6431dd3fefa4d2c1694c027c9865074ed98916228d3354"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/check-20261010-1331.md",
+      "sha256": "1ce227d91e566a80c3cfc54d19f18a5c70cb77fe4ac4426d234da6bd8bdabad0"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/check.log",
+      "sha256": "04f5151679df7a7cd2b60fd1359a36e1f2a6244801f8d2767fb263f108aba2f7"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/default.docx",
+      "sha256": "900da3b14401c1489cb8d92397080a84e8642a95e8668ee2230fb0bedb7cd1c6"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/default.layout.json",
+      "sha256": "bd5a40f1574ad8a1390820df5b76b1d557ff391adc9ec3a02bc984873bd18879"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/default.pdf",
+      "sha256": "c93815fd52807d7a47741b70a2d2aa8514549005bd8ea84f023342bd043887d6"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/default.word.pdf",
+      "sha256": "b9e344d342ff4432a4d18f9e8f829b838e86d924c029cf178f9c1a3f8a39cf72"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/default.word.render.json",
+      "sha256": "ae0251aefd12a53bbd1876e0fe4451b95a9292e1734680148cc587dd61b291c1"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/notes.docx",
+      "sha256": "ea0d911124deca3b5341bf0c3d664aeb8a2c7539880168d54d1911e93f9565a0"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/notes.layout.json",
+      "sha256": "3a5ed6fff9964a8cfdc3a0d08d11d988836ff35ccfd8065d32d2a99009dc7682"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/notes.pdf",
+      "sha256": "782a64b906b5e2b63b88faebad1ca4f08ceacaf754e9195564ff1b84467a8542"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/notes.word.pdf",
+      "sha256": "7bc15d7b90360abfef100cc5b4d55fb99d226df2c1e5efcab79dbba8db659ef3"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/notes.word.render.json",
+      "sha256": "ad3d1850aeec33768b2db1f4468090f33797b5d7913a4ec00ca506d8cb9c441a"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/styles.docx",
+      "sha256": "6b90c62932fbd7b940ec9186687114c666f3aafb9484885cb90ba7f7d2f4fc75"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/styles.layout.json",
+      "sha256": "7849a860473db0a7c1bebe97c07123dc0363a7871bda8bbd00a61a3fbefb103e"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/styles.pdf",
+      "sha256": "ada7fd394eb3cd508401d09cd69c579a647d32eb197a8775f7e536ac49444c92"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/styles.word.pdf",
+      "sha256": "2bcdf2716bc96dc1c6886980f37c7dc1290c9e471a7f3345e163ca3a58aad6d9"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/styles.word.render.json",
+      "sha256": "57edf4fa24f7c3b34a6bc3dbc92d90040f04aea5a78eb31fbd1f5380ff481641"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/tab.docx",
+      "sha256": "ccc9d4e3bb4f3671351b6b7543a9ff5935bfc748b1de54f6efb44a0ad56d3343"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/tab.layout.json",
+      "sha256": "b3493f99f60112b41684fc9e638bca457448eb25fee2921cb1a0c5ce3d5f5591"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/tab.pdf",
+      "sha256": "a28ad6f2c62835d3d0ae9598a22a1f4311f39d4732a7b43364081c742e078a07"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/tab.word.pdf",
+      "sha256": "f8731a96d92f713f765730e2e2056adc6881fd89d3efd7cc07202ea09366e8ca"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-pagefit/run/tab.word.render.json",
+      "sha256": "802fa26d7e9e6f680554a263b7754590c91d8fb5fd4f3ad0a084a02b47e920bc"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/check-20261010-1331.json",
+      "sha256": "261e1e1486c8d47c468cdf0e591f69e957fd3298ff34d6a97e098acf1cde6a43"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/check-20261010-1331.md",
+      "sha256": "1eb73bdb8e46babe911669be28ada2b0d4409545912f3884b0ae000b40be5f21"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/run/check.log",
+      "sha256": "84ba5eb36f7444afa131ba7637d5e30a70d73d298d061eac544624f0cf773bfb"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/run/default.docx",
+      "sha256": "c76086b1af18331a3d64db4ce70f2b99a8457a965dec1a95305e9bbea34528fd"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/run/default.layout.json",
+      "sha256": "18444d5927e994288f3b88a9cc9c32c13252e4fbb436b27488ac6763617b3993"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/run/default.pdf",
+      "sha256": "1a9c34b3b748dee4a23e521c6a17860cb7448e18c0e1ef43b939f8510bb2e3dc"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/run/default.word.pdf",
+      "sha256": "bde0f43217688774a235842a0047257923b2cced60c55337b69e9fec8930598b"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/run/default.word.render.json",
+      "sha256": "1c1b8c4302aa97878cf72b9e3b81dc2067e89bb980e229e08014125de8018228"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-parity/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/check-20261010-1332.json",
+      "sha256": "12959a3615148ea74a9590c9d5bd28ac9a4336cbcd96c26c580b045eb0e1e77e"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/check-20261010-1332.md",
+      "sha256": "8b035bf518b44f74b3b6a26c31ce70fbdd5e97d63b636a790a35f70339e4f741"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/check.log",
+      "sha256": "512309dfd3f036abaf62a4dcd0dda8af77b9ac629b4412106b77f759edbeb99d"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/default.docx",
+      "sha256": "b4d2c90e923e904ac205e0838253c897a2328cafce9cdc0f0cda842d09609519"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/default.layout.json",
+      "sha256": "8ad0e8c4200ea176d748dcb59e57d135f47a211b32c802ef31ebadcc6e2521f4"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/default.pdf",
+      "sha256": "4d1385641e7ab27a1a4e02e7fe51739d2f17fccb81ba44bedf3a29c0ef6ca367"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/default.word-fields.json",
+      "sha256": "3e2f5621a9f5799127603afc095ea3dee0b0ba995214aa97a8318dead99906a7"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/default.word-refreshed.pdf",
+      "sha256": "4690622aadb729d3340cfc68ed3341e6cdb89887376c2dbe63b145092cf381b5"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/default.word.pdf",
+      "sha256": "9c044bc40a3d7ef0fc6bf3d0283101b78aef0eacc1c03329ab5070dc35f986b3"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/default.word.render.json",
+      "sha256": "3eeb06a0c110d8614c097299ecbee4fb20f98c359be3d6488bbbfb39ce834697"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/fields.docx",
+      "sha256": "7c52e17e57303e8eea39226c594ca486c540b6ae259dd33ea0c3ee5d9e7678e2"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/fields.layout.json",
+      "sha256": "a09190a939a2419ff9faea44539f1445ca317245d70610212f278db257c68411"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/fields.pdf",
+      "sha256": "bfdf0a23fe197bbb496a54a1a05bde393f0c91bb57fcd893eb504198eeb056c6"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/fields.word-fields.json",
+      "sha256": "80037613ab6e2b7800a25f485a4edf9b42e2a4b45d681f90c2e0ebe54b42afbb"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/fields.word-refreshed.pdf",
+      "sha256": "608faa09a056ab0b619b94fb695df526a5f3de423953990b77e742ef8835d612"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/fields.word.pdf",
+      "sha256": "c9f15cd153985d1fa90f90f0a08e6fcce65c8e30f181134aab0046c81eb8b532"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/fields.word.render.json",
+      "sha256": "4da2113395d35307f057c2089b1c4eafcd1f576ecc1f5efb2e4f65d6f5a52353"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/footer.docx",
+      "sha256": "a3e80263fcb5fe31e1aa71c7a6716e2eb4a38edec263a287e98c5b101a4d2b1c"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/footer.layout.json",
+      "sha256": "624ab88be055f60c9bc92356c4a277d4eed865194a43a0c35e382855c18062cb"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/footer.pdf",
+      "sha256": "d68d411808b184a96e474fe593dceccc081a14b52a9bbfe3ee442cab1bc432ca"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/footer.word-fields.json",
+      "sha256": "fb2c0010b668fe1bf99d7ed5753cc74248bcf250543bcbe8c935355495186a8d"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/footer.word-refreshed.pdf",
+      "sha256": "463cb74b407cbcdfa12631a7a0177105893ec7f996870f10d4a6349763f948f1"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/footer.word.pdf",
+      "sha256": "62471f57da489497e6ddb4ba9102193ec6b7ae1ec7c4f2f7b34616bc5bbab4ec"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-structure/run/footer.word.render.json",
+      "sha256": "a760af795efb1a336db3f66c36504a31eafcdba134a9c1a5919b05df1f591a9d"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/check-20261010-1333.json",
+      "sha256": "da766420295880ecc1117454c298035f4c250e11b26447c5fad89ad3fa54ff5e"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/check-20261010-1333.md",
+      "sha256": "4f7a375b9d327989cb6eadaad13b496b17cc019bdc926c47d14bfb5af66f9fa0"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/base.docx",
+      "sha256": "7ba126cfb7ad4fe95c3165f4c02769144116420ae984e6186e8bbf204e3de1c7"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/base.layout.json",
+      "sha256": "932c55f06d5fe2e2d8c281badbc405dd3eced0477a3f96535d3debc4b8fef558"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/base.pdf",
+      "sha256": "93e89028655073ce0a9e552d307583159a416386115aacf7e9ee69b2d697a8b3"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/base.word.pdf",
+      "sha256": "8ca46d3415e24b2324460f1b777404432543625304bafa144a88d7872f67f7b5"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/base.word.render.json",
+      "sha256": "f32440c0523c15fe0fbb39643e7a8b3f1e15f52af93445b949d8df2b214801de"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/check.log",
+      "sha256": "0a285b7476fe4da7142695c8e3f8a38386e97f1d5376788a3559cddc50e808a6"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/direct.docx",
+      "sha256": "2dd5d8243a08c37bb297185368957af9bdf5d9e9c7e77f58bfe5ba6168868748"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/direct.layout.json",
+      "sha256": "2f2697a040011c39a0c6181c06ce558410c132d8ff3d9835322850511c6ff683"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/direct.pdf",
+      "sha256": "b3ad2e8c1ebaf145228789ca54943f61b1549e8b96294d01cd70e87f954f480e"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/direct.word.pdf",
+      "sha256": "20f50d1272077e6b4a2feeca289339b77e78a50b3737e38c25161b799d55e3e0"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/direct.word.render.json",
+      "sha256": "1d1c5b0bf957ef5f73b9283698e034d19d449121fb55accb99fcee5fdc445871"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/named.docx",
+      "sha256": "9decd11909047a9465c9cda0285637a0e4626f607ee11cd52e219e151ed9e7b1"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/named.layout.json",
+      "sha256": "59a996e0fd57258fc19f7b4e3125c1833c1cd220ffed6b4a0357dc54bc46714a"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/named.pdf",
+      "sha256": "b15ee367f5503aee4a2bde3a942fd46f13c3dfffc90fea89746675475079522d"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/named.word.pdf",
+      "sha256": "272461b64b5abc88ce7add1697ff4a8d7f86bb23abc271258bef2198fe051c8e"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/named.word.render.json",
+      "sha256": "b5807decfe1f4ab98fe18eff016119ede6528555f5d373bc378546cd69b0a504"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/section.docx",
+      "sha256": "ef747790f0b930aae716b8b7d7dfe067f04dd73da931917a2a3592d8b67a0c99"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/section.layout.json",
+      "sha256": "ca307bb68e4066d0279cc28a545367c664017db904e1b791f75b637a77ab97cc"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/section.pdf",
+      "sha256": "65504549c97cc9be0fba7dd0c0be8a309c509887b3c018eeeb8c4871ecf505d1"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/section.word.pdf",
+      "sha256": "87417446dc26833dfa7679920aeaedb38e877c50453f18fa0916234eba400186"
+    },
+    {
+      "path": "engine/mission06/final-word/engine-word-style-precedence/run/section.word.render.json",
+      "sha256": "f8539edd591e75e414ceca4daac059ff9b79ba566ec80f6c3f54e9d4dd843077"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/check-20261010-1334.json",
+      "sha256": "6b408e2c231e8e31746d308ee0cca4d082d8b3f3d4f894fc8110570a9c0c6e8d"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/check-20261010-1334.md",
+      "sha256": "05dce518994b169151bf47ff2b2f46e0aa50eb0ad71267dc7cb301d441bb52a0"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/check.log",
+      "sha256": "05a608f421921a7cf5af864560ddcf78d336be903252db1270c99a6aa4f22836"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/default.docx",
+      "sha256": "c8db3869e895869512522d60a42ed1a11ddc262a47947f6cf1321847887486f3"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/default.layout.json",
+      "sha256": "24bdc67b4808b04f1b2733ec7c90e323968913cbfca5dae475c16141a5fb44a0"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/default.pdf",
+      "sha256": "a74718e0bca300af25a6d1a064060c523a64146f0114e9950c9201d0eb0d1ebf"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/default.word.pdf",
+      "sha256": "1400ba9e07658c0f6c8a07537e1617ea23977a399bca0c3e3ea0c5aaacc7f10e"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/default.word.render.json",
+      "sha256": "3bfa135fc54fa84e36c9720e9420e5dd3d7af0ea46235b9372bfff0818e0285f"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/wide.docx",
+      "sha256": "b4cef736414bb0484091f98f2cbfbd22549924cc1e9e2661e126019e892168db"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/wide.layout.json",
+      "sha256": "91fa16969d348fe56b148e12a096edfe1fbd99513e2a5860e1b75b66dfca3431"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/wide.pdf",
+      "sha256": "ed13f6087864c821ee43c734b2d5320132a7f3bb037fe999c978897e8e582ef5"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/wide.word.pdf",
+      "sha256": "cd75a1f796482902544fdbec1721c2a4e251b5d80c264905d111dde06028105c"
+    },
+    {
+      "path": "engine/mission06/final-word/phase52-justify/run/wide.word.render.json",
+      "sha256": "c774e04800330d0f37b28f7b01c91a87edbb34e7cccbf96514a1dd70ddd20ec6"
+    },
+    {
+      "path": "engine/mission06/frame-tests-verified.log",
+      "sha256": "8fde68db2e891ff8a1eb1ebbd804ebf7b56cf641b18c6678c907e0699fd053e1"
+    },
+    {
+      "path": "engine/mission06/frame-tests.log",
+      "sha256": "5d9f7a6319963b998d7194b2e3a3ebca4927e8248085a09344934dae647eb6f5"
+    },
+    {
+      "path": "engine/mission06/general-manifest.json",
+      "sha256": "a82b6152f1402d2de844f8be68bec272c94ab6d0f6e9567cdf876125fd9d0efd"
+    },
+    {
+      "path": "engine/mission06/general-regression.log",
+      "sha256": "151d593c127074630f20df9cf8c76713c5177ca36a14d63321265209cfc5e527"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-sagbil/check-20261010-1340.json",
+      "sha256": "f6b34581905d27a5f61c84d8073c595047ec6789b2711a67b22b9b1b698be844"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-sagbil/check-20261010-1340.md",
+      "sha256": "fe631e1e617d4867bfe7eca6ea5aa9b2fbd485537f414a01e07b5baad981d5fe"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-sagbil/run/check.log",
+      "sha256": "444f05490f87850a3d6926ff1e730cfabe9c404dd8255d87dac64737813aac13"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-sagbil/run/default.docx",
+      "sha256": "82129412bebe352e9a3c77588a5be049b57c6c5f24ebeb10017b7187ead88857"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-sagbil/run/default.layout.json",
+      "sha256": "f273ff56b8043267ee41204e2a52e12e441c7ce865659858b636f71ec8770d03"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-sagbil/run/default.pdf",
+      "sha256": "7c0802e4d3707cddc38d2f4123c59a4b955bf33431675b9e3b06e69ad33db0be"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-sagbil/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-ziraat-lisans/check-20261010-1340.json",
+      "sha256": "92be2f7419b8a05766c3fc467a38f43123cabf7fa1e49a5afcc5805f3c925f91"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-ziraat-lisans/check-20261010-1340.md",
+      "sha256": "89e5350af0fce7fe43a04c3d5580e1db7d35de109f6142d22a41a6bf8c7262bd"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-ziraat-lisans/run/check.log",
+      "sha256": "28a707d4db6f620e9aac7d513d91ad575aa3663ee751312fc012ede891cff78d"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-ziraat-lisans/run/default.docx",
+      "sha256": "b0ec25f93b51e1d92bc039aaec338d297fba8fb05757a2454c2497d27d540656"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-ziraat-lisans/run/default.layout.json",
+      "sha256": "4f06ca0a73552b8a19f6c2f8e2981f8cd18326ec18e23db669216b1604bf478c"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-ziraat-lisans/run/default.pdf",
+      "sha256": "084f629c86381c305c2cc4efc11cab9a7fc7277e306fa732d3d988a2f0b92dcb"
+    },
+    {
+      "path": "engine/mission06/general-regression/adu-ziraat-lisans/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-eczacilik-proje/check-20261010-1340.json",
+      "sha256": "2be791637d00dac99bc25dd92a4534170f67f528f1adcfc6381fdb426ff3826b"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-eczacilik-proje/check-20261010-1340.md",
+      "sha256": "a38ada832ba89195d72f38394ed81214e59afabe93d9f58144b3a492435b0c26"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-eczacilik-proje/run/check.log",
+      "sha256": "77095a8dfe24ccd5bf80eaf2176b38a84bc69dce91e737e09e113b0a1edb7adb"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-eczacilik-proje/run/default.docx",
+      "sha256": "343573447ea2610458b4df3730f64664aaa1fe5fff021553f46355f559f2cdcd"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-eczacilik-proje/run/default.layout.json",
+      "sha256": "c3d0d26e54e98a61fa1f826752256fb65523e3314e9674647d2d1a10e27aaf66"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-eczacilik-proje/run/default.pdf",
+      "sha256": "6d89600fbdc2830dd5c482297063b4d23998268414e96bb7cb494ced4184d6af"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-eczacilik-proje/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/check-20261010-1341.json",
+      "sha256": "c8a4cf3e87aa51b0e8a4519ea348ac82bc80aa307f07395572b7fa0d87ded92e"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/check-20261010-1341.md",
+      "sha256": "410a2917331ac6dcb46e63ab1304b3b3927a6909bd01a95f29577d77f8408b21"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/check.log",
+      "sha256": "8f69ca7aa3eca99b4ad16a14461ea9e1309c8d96b658028a7c4d2422b99bc1e4"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/default.docx",
+      "sha256": "de1b259f51cc63d986b0fb899c707988948b9aed40f3154f2063160cf53738aa"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/default.layout.json",
+      "sha256": "a7a3791ee65a0cffae94c097a5288a7965dda0f6e374aef2669535a091f0bd6f"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/default.pdf",
+      "sha256": "5926e03513318b82a05cd9081e3f6221e5f89a941484293efdf0b357d9049e72"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/phd.docx",
+      "sha256": "554b1593d572615d844d83930617ed40f2d0cf1cd9140f9f74ded0fbe48d543b"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/phd.layout.json",
+      "sha256": "a750002d9c09146b8a6afb9270753ecd4085b0de142b7848ff02bd9f443d1401"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-lee/run/phd.pdf",
+      "sha256": "d64b4688eb13d4c87aa0de6a08bb62b64c154fdc3d5e08477564a542d39b8dc8"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-tip/check-20261010-1341.json",
+      "sha256": "a509009775a023b61f8721cfd485bd0456d540ce92cbb2a1423fded48bd8502e"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-tip/check-20261010-1341.md",
+      "sha256": "b84eba6e2b276fb46e2034826c177bed408fe5b1508c538f87700275f1f265ac"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-tip/run/check.log",
+      "sha256": "d411618d8f5596a344590f27e610bdab62cb96e560dedd3ec67cdf19f83c64e0"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-tip/run/default.docx",
+      "sha256": "5a7dd02071652c3a0fce705a5e16ab9302ecd117807f426bd139337f1c2f63f9"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-tip/run/default.layout.json",
+      "sha256": "4cd82a4e56d4246e1c5a07bdcfb67cd250f776aeea56a5f67d98b73b5ec37f37"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-tip/run/default.pdf",
+      "sha256": "0cd2c177bc0754fc0af08feda7762960b1ff93edee07044ebe3dcbf04bb9cc12"
+    },
+    {
+      "path": "engine/mission06/general-regression/afsu-tip/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-cografya-lisans/check-20261010-1341.json",
+      "sha256": "72dafc11b62b37d75c838dbff0145fe467f12d147476beda3b5688541ed137f4"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-cografya-lisans/check-20261010-1341.md",
+      "sha256": "29160b7de13a9fb0085c6c48baa8f207eb497d45420c08852ddf4bfb06e425aa"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-cografya-lisans/run/check.log",
+      "sha256": "d7e60b8f94b32a27c1a481529b645c4da3b383251fc83df84993c4f9968cf925"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-cografya-lisans/run/default.docx",
+      "sha256": "492fe9e21e05d24bcc3bb7a5a36149ffda1302efe0aad4a6a1b9972613f99093"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-cografya-lisans/run/default.layout.json",
+      "sha256": "0efa8dbe0c46ad6bddbe8ed9d21c0408df13d86f791e530afc7124ac623357aa"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-cografya-lisans/run/default.pdf",
+      "sha256": "39e4f9c84c906bbf1fedcb0fe5040b116c4a11e95b2867512e074179853bd50f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-cografya-lisans/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/check-20261010-1342.json",
+      "sha256": "3b2c8801c17b6b010fe247e6c0f24ab2704d7f3b51ad526bb78a88dbbea2bc80"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/check-20261010-1342.md",
+      "sha256": "074f04d51e881012f7151d5bf5fd795633b6688f77bb45bae240349f272dbed7"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/check.log",
+      "sha256": "f3707dcee7e033d76df4da932c57cce03fbc24d61678d8d50cbd69779050b0df"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/master.docx",
+      "sha256": "4f75c7068f9d49880d1dbfaf6a77e58d09a029cb32ae7d3957faecf5512942cf"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/master.layout.json",
+      "sha256": "c9a4011e2bdbdff538a525e32a91c9181a2956c5e84015eab4ac1b07b94aaaec"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/master.pdf",
+      "sha256": "c940a0a39aab8f896df77dd58bbe45437bffacfa346f42852c3f8201791b8573"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/phd.docx",
+      "sha256": "6ab30c1811add83e4722998a1a716dd7529d4f6acef261db5ef2ba0a3a2c9d6d"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/phd.layout.json",
+      "sha256": "7d79f37dd7efba475453c13b419c4574194dbc5b51170deef60602a9ce5e1ea6"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-fbe/run/phd.pdf",
+      "sha256": "e8fe68380bae8f64e93899b1c9212dee1152749808da475b9785c7a0064cfa30"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-lisans/check-20261010-1342.json",
+      "sha256": "5765091f9980fe4c58d72aa17213710c8c66ee32bc903c86e88b70c2389b46d8"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-lisans/check-20261010-1342.md",
+      "sha256": "7b9b6e87b62c361aa1995966ca99ece87ec7bf6cc5c200383ef007318843b266"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-lisans/run/check.log",
+      "sha256": "6c068d86743e8ccb06fb32b0003dffd9f96bef6a124712324682bb06ea87bcbe"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-lisans/run/default.docx",
+      "sha256": "06702b8b522131c3177ba0bb7d50a12dec0375518c3dfa8ba56f923e22711670"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-lisans/run/default.layout.json",
+      "sha256": "54fad6b3235fce0bdd37ffbca2961c9fb80d50b59968c304899b0144aa93be2f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-lisans/run/default.pdf",
+      "sha256": "9b27db688bd3797e8048f35025e34b60811cc15cd09c7b7501091641683ce1e5"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-lisans/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-seminer/check-20261010-1342.json",
+      "sha256": "d1bbce00bf440e1f85292b98514e75a6e1d8892a0041d8ffa25d98ec109a85a2"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-seminer/check-20261010-1342.md",
+      "sha256": "017996d10aa7efdcf66a12d636a43e06d44a5ba5cf8488e8d368aebd7e944dce"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-seminer/run/check.log",
+      "sha256": "3aa8fd9ff071cc3c605a6485d9d79983c253835eddab3c05486f8f3d3c9a7fd1"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-seminer/run/default.docx",
+      "sha256": "ed5bbd2eb14147e07211989406f9f1f7e7e887f4c0420605c6a3a8d039a06069"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-seminer/run/default.layout.json",
+      "sha256": "f8919872a5baca2928d8b02468c607f9afc66558159fd6bfc4821d2d08d75f23"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-seminer/run/default.pdf",
+      "sha256": "11fe3336190d6aad4f2ff4c356861ac5d4d501b145924ed1e6731d7a15e0ce63"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-felsefe-seminer/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-isg-tezsiz-proje/check-20261010-1343.json",
+      "sha256": "fd24d1147899293d59b1839a67366c651aa2f41aaf5f85c6dd83645f6862cd76"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-isg-tezsiz-proje/check-20261010-1343.md",
+      "sha256": "5d858324905cfba62c2ad2f20f1558161ef791e78e1106b67f2b3b5223ea664b"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-isg-tezsiz-proje/run/check.log",
+      "sha256": "b7216502abfbfe555729f92c1c27fe486c204b9fcb670f7f768536f02d7c8498"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-isg-tezsiz-proje/run/default.docx",
+      "sha256": "a19c5c251958f9a44a9199e9e0d7df0acb14acae9fc736f25fdddc7b57795844"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-isg-tezsiz-proje/run/default.layout.json",
+      "sha256": "b16b2514305d1c2bc2b4c10756c064758c7d489d3696e7f961a4b8a6cf77021c"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-isg-tezsiz-proje/run/default.pdf",
+      "sha256": "9d1b47fb12d16f44913a228b1e4b0413df46e7052bf3fa0725562bd0aff3647b"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-isg-tezsiz-proje/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-kimya-lisans/check-20261010-1343.json",
+      "sha256": "fddabab4ab6b324195b1ea476af48d65755870a810eb0b94c41d49988e03c805"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-kimya-lisans/check-20261010-1343.md",
+      "sha256": "63ad76f7b5ad94424ef9a3e110129715d60e60b18615a42bdb5fc4b4f1ac1ee3"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-kimya-lisans/run/check.log",
+      "sha256": "f7053d3cc303ee02e54729427707b03398ba744a9cad20ec9c351977743b94dd"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-kimya-lisans/run/default.docx",
+      "sha256": "730034baf28031c37087b51bf5a1bc078a0545a2d47a28c453a0b975319a7e2b"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-kimya-lisans/run/default.layout.json",
+      "sha256": "f1846ff276ada0553a79b6dc7be3cb5cf7bdaaa6f6f86f0a7a4f322d8ac69c40"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-kimya-lisans/run/default.pdf",
+      "sha256": "59b01149508a18bafeef77c2f3b54531660e5abd3edf53237a8122dfcd3f476f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-kimya-lisans/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/check-20261010-1344.json",
+      "sha256": "218c8df7872ecb2986ad66ff7d79491af9ad529ccc879cf65cff581472b06f25"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/check-20261010-1344.md",
+      "sha256": "31bf4e4f8c867d20e37b01eed49e447b076fdcac2bec72f23e4e60923d909430"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/check.log",
+      "sha256": "00391afe72b0024364b21bb91296d913e648beff93a1b56c8af397dfb55cb9c8"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/default.docx",
+      "sha256": "abbe8b24b9a2de8a96e7a355bf0c8d6820f5af72afec449f405342ecdf17264c"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/default.layout.json",
+      "sha256": "784bde4f0f1aab0bf9d079d7d3fba13256501148e92ee999dd771eb3231c892a"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/default.pdf",
+      "sha256": "316346a6f732815ad2014ea0e5faa1c94c9c9657a17faca65cbda418c0da90b3"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/tables.docx",
+      "sha256": "8e1a381f47457016dbc9072de73302c82f81c1051f41910b95e3e3d1b99e01f9"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/tables.layout.json",
+      "sha256": "08f4f98b2a6276e4198762bf918e407bb17ba1a71aad292489284b88920f2848"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-matematik-lisans/run/tables.pdf",
+      "sha256": "c556a548652b26b8aafa812da3d9d50713d29d4c7264e6406cfac5610586eb0d"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-mbg-lisans/check-20261010-1344.json",
+      "sha256": "6a74ed0803aaa7fb329c492917e79cec343b852c39976f5850b0af188737acf7"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-mbg-lisans/check-20261010-1344.md",
+      "sha256": "c1c314d0f98f2cd0e5e72e4466fe26eb1d969707f6ab5189829bc10530fe621d"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-mbg-lisans/run/check.log",
+      "sha256": "33607b28bc02b3883274f591e13202637f85142dc1f52904d1a41560cee273a2"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-mbg-lisans/run/default.docx",
+      "sha256": "10f97a4839d2550f0715c5332cee3faa29c153ccad513be0e05421da4d46d486"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-mbg-lisans/run/default.layout.json",
+      "sha256": "61c82cab75db5bda47658b62adbc4e34fb5ce77827bf718c24685dc14d02f528"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-mbg-lisans/run/default.pdf",
+      "sha256": "2b34e74d40314fffcdc477f76b00581d4f2f9cab26d09a4450b4e7fd05e1deed"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-mbg-lisans/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/check-20261010-1345.json",
+      "sha256": "30b21c4a6970f402183df2a1cc7adf061548c19345fa6c3d45066ab022413a01"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/check-20261010-1345.md",
+      "sha256": "addc10d9e9ee4ed643d6cfdb1c695f28947962cc2963dab1d65bb31945df0806"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/check.log",
+      "sha256": "1562bcc8eff6ac2acae91c68ec094a55393b3e73e90dba4ef56f3e66b272540e"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/master.docx",
+      "sha256": "92ee1249232771865d26c97e61299c0379a826678f3087023319cc8059545d7d"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/master.layout.json",
+      "sha256": "3f85b54e95d4708206f25a8ba4e1669d6e9f804bc5bb4943bd7fa8f9c3dde451"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/master.pdf",
+      "sha256": "3f849809d398081ab592a6d21cd4ddfe9034fbd4832673a32bc29d86e3182cb3"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/phd.docx",
+      "sha256": "e8f485a77c58567db46fdb536227d4a735c87ff296aa201bc4396051ae1509ef"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/phd.layout.json",
+      "sha256": "a0ffbbfff4d287f5e9deb37f04bb93057716e514cd8c1fb2de93cc97203aeb05"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/phd.pdf",
+      "sha256": "05cee5f5cc5ee65b5bb0d2556c7b3b4d8ba2639f7bcad0f3b779980ada0d6f2d"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/t80.docx",
+      "sha256": "af05b3dc1510da767c90aad3621232b8a96afc7dbf6b7a8c419de8ab96c0ad7c"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/t80.layout.json",
+      "sha256": "c742ed28a3a96a8cc07a35dfb7177561cad71507ea780a4f4212adc521f97d3b"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sagbil/run/t80.pdf",
+      "sha256": "2c2992b8f508ce5acd92904363061222ef2ffcc6f7de8f1bc2240df24c601aa3"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/check-20261010-1346.json",
+      "sha256": "9596c3c424f667503de7908ec7d332110d3618366b7358a586c4179923c246bd"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/check-20261010-1346.md",
+      "sha256": "dba837aeddb6b3aea2fafac1e8d461f4f334152e87de5b51008915a65b1c3f0b"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/check.log",
+      "sha256": "22edc7b4cbcba21b797f962ef63191105f9c404ae32c4804f274bb798ecf9a51"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/default.docx",
+      "sha256": "1e974f90334aec469f3fa13e87a2a3112b9c226b12ed76bb6d590f30618050e0"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/default.layout.json",
+      "sha256": "9f8113f63b0aaaf74e8a4510a1de634054460ac4cb725cf90c6d0fd50dbf4a6f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/default.pdf",
+      "sha256": "d993d6dded7f941fdae5848ab388c8265dd392d26902b9a2231001e2b61c7323"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/master-en.docx",
+      "sha256": "129f628648c45656affdea62b829000c096ce27124fdf730b972af283b0fe3b7"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/master-en.layout.json",
+      "sha256": "9772b691591ce828c104b1128f686eada7f74068bd79d24b494dd53de1b79641"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/master-en.pdf",
+      "sha256": "10a17dd92f6ab7ff48eae6abf7dbc5c893c65d351dac537a3c7c60afeaadd897"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/phd-en.docx",
+      "sha256": "24b3880f16c9588f7f43c46bf5514a4a92db28c08fc88b2939adb84e96214fa0"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/phd-en.layout.json",
+      "sha256": "e19ed582c1525a8634e4fb20f4522cea966ff841fd31131ae2d68abff1352b78"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/phd-en.pdf",
+      "sha256": "e6aeb718ddc6eaa15e45469c2227203296514ecdf7544120602c553e8a7660ee"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/phd-tr.docx",
+      "sha256": "ec5a71fbe6e39bab92ad008974e942c22cfcf5f87ade944dc5864daa85a30f3a"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/phd-tr.layout.json",
+      "sha256": "688ebf2ad46f12422cb663c1810441d1ad4a7df8f1581c2b2b02ab96fe5c1c7c"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/phd-tr.pdf",
+      "sha256": "b53225a7d776abc72bb898a894e791d3d2c4c6c310d7b8ce3b149ed71c1901f8"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/sanatta-yeterlik-tr.docx",
+      "sha256": "be40b65d8f61ae7f01221a485b118d20cccda7f62a7e37dada1c67529b807ec0"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/sanatta-yeterlik-tr.layout.json",
+      "sha256": "63e9c7be6039cc84ddf8115d498fbbdb16da2817495974569664f4d9661236e9"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sbe/run/sanatta-yeterlik-tr.pdf",
+      "sha256": "0c0280247fb047c8f303e103ae1d728ebda7c71194cb8dc5f9df244b7205c209"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sosyoloji-lisans/check-20261010-1346.json",
+      "sha256": "434185aa52ac7ffcaa83109774e83db4dfa753264cc6af339a94e6b1e636a80d"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sosyoloji-lisans/check-20261010-1346.md",
+      "sha256": "3f5ce02fb08dd3f37ebde632bd499a5d0a9b5e07a56971945db69047ce11dd2b"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sosyoloji-lisans/run/check.log",
+      "sha256": "94d0863e88eb80632838a5adc4c773b9596ac3480ab0269c627881b346436e8e"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sosyoloji-lisans/run/default.docx",
+      "sha256": "481a70a832feedd034fbc4d2c4f6c732ebb2aedf0d3a63e0b066f3ecb091bbac"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sosyoloji-lisans/run/default.layout.json",
+      "sha256": "cec78d73cf1a31c3a74071e8b5d938f6363d196913b0cbe456e2e337bf33021e"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sosyoloji-lisans/run/default.pdf",
+      "sha256": "3ae6dc3353d137920489f1e8da90377b8e0b4d21481c18e388475be5b454a15e"
+    },
+    {
+      "path": "engine/mission06/general-regression/aku-sosyoloji-lisans/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-justify/check-20261010-1346.json",
+      "sha256": "4700d53e8e6b53885da45136ab045b2fe536469186885cd4b1eeef4ed20cb363"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-justify/check-20261010-1346.md",
+      "sha256": "be5ef3a394a50aa0e1ed3e3b370feb5a1cd8a008f2807f2ed0f9ab4de545a969"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-justify/run/check.log",
+      "sha256": "c6ebfd38c2d77b8f066f2e665544e5bf82e12f31d5bbb3ea310214727ea1a6ff"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-justify/run/default.docx",
+      "sha256": "1efa98469f9172f80c211b9f26052b84c39cb01e407f539d5ab52e8c301c5e3f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-justify/run/default.layout.json",
+      "sha256": "46e937c116246fafeb12621a87ec269b58c61cf580b85da17bafd817be67f6ba"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-justify/run/default.pdf",
+      "sha256": "0e56f86bce7e7634ded4f6c0d65b71ce80054b4e0ec01a818bbbe96a9a3770c6"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-justify/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/check-20261010-1347.json",
+      "sha256": "6f18adfc28c4379b537f96ed70eebb88388857d9908b8bb4f16c7e8cbeea1f85"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/check-20261010-1347.md",
+      "sha256": "bdc2f9af64f6505488c1664dd70c9a61cf279c9467e2cc8f6e638d20965a348e"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/check.log",
+      "sha256": "1421473419123e0d9975689d7d1cabb96644d18a48e6b0702802e6154b0865ca"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/default.docx",
+      "sha256": "6d576dfadd8fd24b42a8947046366b3d74765c6ab3705e9a4d901b3d8ae7be1e"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/default.layout.json",
+      "sha256": "8a25a3db805420f583e262b4f5aa29461a77ea4bc3c48ff84565e95c5a684516"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/default.pdf",
+      "sha256": "87586881134866f8231cdd43a19aaa669969e051b1712cc801806ba8cf7556f0"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/notes.docx",
+      "sha256": "45c424c2b53dff4d45fe757dd1554d63df25c37490937ca27f574567357813ed"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/notes.layout.json",
+      "sha256": "8177819481e6e6ce1b4bb8842dede498a5c8db3e38b7462c387847caf36da570"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/notes.pdf",
+      "sha256": "d7de3eea2a2303074ec2f68487b7decf65d019dad6ec7c881b3f7548b16d3736"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/styles.docx",
+      "sha256": "4a4a58bc1b18cea02c8fc46b50920e1f3165d0cffb001258571bd5c76340b471"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/styles.layout.json",
+      "sha256": "9c9593d63ea14b716e793b6cda6f3da80f4e3de40fe3606916ea1026e8c64b65"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/styles.pdf",
+      "sha256": "bb56d6760bfd03d162fb2eb2db6e83ed0efa07bacb47a58b7a72b14a7a7e3a75"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/tab.docx",
+      "sha256": "f69a3678efdaddd9213eda290ca99d23d0ebdb0ef9daa2684b1aa99bc45b6bff"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/tab.layout.json",
+      "sha256": "b858fd3820ad89bee54653a5fb5100192c2f94dac1a4f345c48737935faa7d06"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-pagefit/run/tab.pdf",
+      "sha256": "559612fc9250fbf4ebdc800472f8d111a77254da56d08d218f5488e992251b5e"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-parity/check-20261010-1348.json",
+      "sha256": "66458231c90a3ae514a0cd660a7af2d11a78d43a87932eb5aa29908355ea544b"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-parity/check-20261010-1348.md",
+      "sha256": "02b1f593ada22d4eeba19aeb953c9e51bbf9adc17b3a28e9e4ed107d38a6e974"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-parity/run/check.log",
+      "sha256": "acd2a45c450f23dc6e57d8eb1ed6abfc2ff371049a11cca771faac2b2e35f446"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-parity/run/default.docx",
+      "sha256": "bd66cb3c7225628c43f0961e3a9eabf10c6b249224b601efc91792374ccce6bb"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-parity/run/default.layout.json",
+      "sha256": "72f156b5cb447e3bddef1ca720934174e4ea301232b764db0ab00df1a176618f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-parity/run/default.pdf",
+      "sha256": "61160debf9bc3f0cf48b4b31363e743a88d36aa8f3307ce07f836ad88ef29352"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-parity/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/check-20261010-1348.json",
+      "sha256": "1c4dd6d278d9d2df569e976195fa85155976ed0a9588911ff2402d12af4ef8c5"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/check-20261010-1348.md",
+      "sha256": "4dd9f998c155b75df3a1092946596abb342c37de2a6b340d1be3f41f307822cd"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/check.log",
+      "sha256": "d36682d3168c783e1c4c4fca520062123f8394c29c95e5bd90aef25fc99c67cc"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/default.docx",
+      "sha256": "930000d837ee3e5079fe30a033e0da2ac7edaa1650c77d6aec7feab9f1e069b1"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/default.layout.json",
+      "sha256": "418ec1a143c0fa4e2ee275b4d5d05f784cf0f8cdf1725ac4028fd1239c26d38a"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/default.pdf",
+      "sha256": "1ef17e43a7053be2e3a28ba6008f5a5fe3f5222bdfc22a6631df1caa1a48bc06"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/fields.docx",
+      "sha256": "8af8f4aca3080ec9d9a6a480300493c4a4d74215f5a9065789d734dd251c9eb0"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/fields.layout.json",
+      "sha256": "f30b9bea8e691465f40ecc019b8f82e23e26b7271f81af726bc77372a288a901"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/fields.pdf",
+      "sha256": "04503fac8d04014d5964f0fe971302c37e93e94316724ce96f1093f0b7304755"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/footer.docx",
+      "sha256": "7f4e895dc7ca170c17e136e7a20a6f864173f3b560692c195e914067ed567ac4"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/footer.layout.json",
+      "sha256": "804443165576fdd962698b5c7d7884f21a4e59e55b2e5a9473dd3c679b07dbac"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-structure/run/footer.pdf",
+      "sha256": "25fbef435951b1763fac692ae9843e9143916ba775e237c0958dc734ad02bd04"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/check-20261010-1349.json",
+      "sha256": "e8e958984d369a686127b7622b859c10cdf5378f79ec5b2ecf6b2da70810184c"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/check-20261010-1349.md",
+      "sha256": "9c762a3f2c6909f68b50c9d320614bbeaf60ca202326b4688f9ded7238e3dac4"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/base.docx",
+      "sha256": "adee30c9d154be9d5ff3203f2bed07ac1e4f7a8cb94f918096bf3cb5cd25b739"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/base.layout.json",
+      "sha256": "3722b288efd4defe04ff780f26bfe99154af3a6cad58f333a69098f4d99a5ec1"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/base.pdf",
+      "sha256": "330d4943e7b55eb371cb472fbc8892baee33717c9131b529b950d265c2a394d6"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/check.log",
+      "sha256": "947ec94355d12a19fb48c5c1bfe6eb69910a5ef42945b3f9f1afadfcc0332742"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/direct.docx",
+      "sha256": "c71f749adbdbc5dde950a83dc09a7684f4aee345882a45fe5e8fdce52dfd801e"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/direct.layout.json",
+      "sha256": "c082c2333596104bcb312c9c30f00ef07cdf432c43c6540c8a58b430da75c473"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/direct.pdf",
+      "sha256": "3ae327788177dd3cdc5d58344ff3a21dff33901ff7d0adabdc3cdd0941ade580"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/named.docx",
+      "sha256": "ccb14e0546a0070452907d51edc0decbdb97234ec5c6524e6db9aa0cc72fafbd"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/named.layout.json",
+      "sha256": "c7f8c998da14d117cdb48858fae7548c46338c0f65d7746563ffe1e33af1a1b7"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/named.pdf",
+      "sha256": "8de6e567ab997a347703cb8886a78d895c06371fbd6b5fdb195433d879a98647"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/section.docx",
+      "sha256": "312e60e6b6d2c59b6eeb374d4e1e626380599a0da07cc3ab6dee4dfadfc3f5e1"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/section.layout.json",
+      "sha256": "9c9002f55bc26c1e6b8d9d0cec6e37a3cc912da694d062f1c3b385b306fd9716"
+    },
+    {
+      "path": "engine/mission06/general-regression/engine-word-style-precedence/run/section.pdf",
+      "sha256": "ed61d6e45781a1c204fc3a2ed52c9120ab272e303005b0a685cc301fb1f1e980"
+    },
+    {
+      "path": "engine/mission06/general-regression/mcbu-tip-uzmanlik/check-20261010-1349.json",
+      "sha256": "05eb5d789d4715c8ced334d5615cfdf4ad5fb0f54a688633e426dd462c2e4312"
+    },
+    {
+      "path": "engine/mission06/general-regression/mcbu-tip-uzmanlik/check-20261010-1349.md",
+      "sha256": "7c5ff9a10d67b410b49a2ba837497f6c6a4f76ef959a4b50ee03286043333e81"
+    },
+    {
+      "path": "engine/mission06/general-regression/mcbu-tip-uzmanlik/run/check.log",
+      "sha256": "e412404bdba72230bddd6944d0dffe5a08fa90bea70c2121cc660727bd172b2e"
+    },
+    {
+      "path": "engine/mission06/general-regression/mcbu-tip-uzmanlik/run/default.docx",
+      "sha256": "896dd3693bad5651d1f0e3d78959c6b74fa663ab5b524a7c87bdfc4556d8ff45"
+    },
+    {
+      "path": "engine/mission06/general-regression/mcbu-tip-uzmanlik/run/default.layout.json",
+      "sha256": "674b9d078571b9ab899a0d9183d502de3ede044e4abe396f85014f2e1ebbf2a5"
+    },
+    {
+      "path": "engine/mission06/general-regression/mcbu-tip-uzmanlik/run/default.pdf",
+      "sha256": "d5b3bdc7e08a56391d3b2dbc918b7b3990147f121390f604c3068da922c12cc9"
+    },
+    {
+      "path": "engine/mission06/general-regression/mcbu-tip-uzmanlik/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/check-20261010-1349.json",
+      "sha256": "8dc4379f7dd48a52952092a8c9cc7cb1bc68db349216e187188859b7e40c9a02"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/check-20261010-1349.md",
+      "sha256": "a35ec4c58f9a99426a3b9d153e098fa8528bad2366912c63c58184177bea20a8"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/check.log",
+      "sha256": "52175cb847eeba30fb8b487b520dba9bcd7cbe812ed03c8aee50c6e7cb98e537"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/default.docx",
+      "sha256": "2442ac043753b2d85e91d3c4ad76f60a0b2a9f581ddb2d8f3410a3112da38e02"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/default.layout.json",
+      "sha256": "d2e6f139925bd228b97f052740359de3a6f6815951b6ea592405861a486fc5e8"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/default.pdf",
+      "sha256": "315bbbef09c180fbbf54dadaefa4a4af021d039b2f5fc019a3de2699d75b8a6c"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/wide.docx",
+      "sha256": "7c4464cc482978980306e910505d9815692a9ecbb71199ba8830af7a08d6e4d1"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/wide.layout.json",
+      "sha256": "054785cc9d7d42e29a4c981d647f0d1d80c17c5477fd4830fd700dd2e434b943"
+    },
+    {
+      "path": "engine/mission06/general-regression/phase52-justify/run/wide.pdf",
+      "sha256": "1773d9f55d0dace4ebce2b1bb5dc314c515c3ecf90a1c9357baf71a767687f24"
+    },
+    {
+      "path": "engine/mission06/geometry-browser.png",
+      "sha256": "b3e39411c09bc21a10b23dab99ec06c9c213b5b673237e5e3dbc179b48751287"
+    },
+    {
+      "path": "engine/mission06/geometry-final.docx",
+      "sha256": "4ea7b851e63c13595fc7751a767ea7fe9b88bfd9e51dfa92335efe0ce15e9911"
+    },
+    {
+      "path": "engine/mission06/geometry-final.layout.json",
+      "sha256": "86701da73f9de754759f50102278e8a46ad564e9f919f9380eec6e1004b97f17"
+    },
+    {
+      "path": "engine/mission06/geometry-final.pdf",
+      "sha256": "047181250419fe8b49cce01de04e23a4ef5c44c7ead3b21540827e2a169ecb22"
+    },
+    {
+      "path": "engine/mission06/geometry-tests-complete.log",
+      "sha256": "42ec53eef42a3a7b2bbee8fb6cd4104cea1181e5f0c94764a204e2930a7bea88"
+    },
+    {
+      "path": "engine/mission06/geometry-tests-final.log",
+      "sha256": "25a057234b3068901923eb1200a1a362d9156eaa8c927ff7c01ed596b4254e08"
+    },
+    {
+      "path": "engine/mission06/geometry-tests-verified.log",
+      "sha256": "70a8286281f8953ea52b245257ad221329d05da52b337fec7bdaf3ea5c365ed3"
+    },
+    {
+      "path": "engine/mission06/geometry-tests-verified2.log",
+      "sha256": "8661faccbe479c59cc4ccee3ee5e04d01bd5c65771ae410383ad08a22169c04f"
+    },
+    {
+      "path": "engine/mission06/geometry-tests.log",
+      "sha256": "2ee4a7d751221cd60946efd41a42cdb7961e24853e1e81b61e62d3640ee560dc"
+    },
+    {
+      "path": "engine/mission06/geometry-v2.docx",
+      "sha256": "490b6e952f64f5f1688e4e80108d30f1677db6f67dd8a914fe41a24b47ba93bf"
+    },
+    {
+      "path": "engine/mission06/geometry-v2.layout.json",
+      "sha256": "bd51c5d236e76c3256aafe0531a3e70dcf5cd99b251bfa2bb1239e0c346bd797"
+    },
+    {
+      "path": "engine/mission06/geometry-v2.pdf",
+      "sha256": "076b5ff7da3eb538b7d7da67866e95281987c6384a439e7273b41b74ea210d95"
+    },
+    {
+      "path": "engine/mission06/geometry-verified.docx",
+      "sha256": "fed8e4e1376cffd469cb884fd7e4fda4109e2c10736edf87cb9f8c9ea3b4f463"
+    },
+    {
+      "path": "engine/mission06/geometry-verified.layout.json",
+      "sha256": "1fc351ae643615b2c2131558280c6422f5c3ecbfbf1a51b1d7fbb8043b649bed"
+    },
+    {
+      "path": "engine/mission06/geometry-verified.pdf",
+      "sha256": "72a459ef402e4d396de1fc0daf7222a70ad675cb007b5f203c488a73fb488049"
+    },
+    {
+      "path": "engine/mission06/geometry.docx",
+      "sha256": "242fe0627495e7c3ea25a104781faac00cf537bbf2232b891eaa96b9ea723453"
+    },
+    {
+      "path": "engine/mission06/geometry.failure.png",
+      "sha256": "89765c422a7dc4cb81a2fd5072208195d31455c368a577f795c65565e6d27287"
+    },
+    {
+      "path": "engine/mission06/geometry.fixture.json",
+      "sha256": "8d53b744d4d7fbf677d3212b456cd66a59280dda4a896f2ac15bfbbe9ecc5031"
+    },
+    {
+      "path": "engine/mission06/geometry.layout.json",
+      "sha256": "938ee24816dd47d0db02da46ce896948968e3e99c2351f168b5bc9b4084f0d33"
+    },
+    {
+      "path": "engine/mission06/geometry.pdf",
+      "sha256": "36fcbd8e9d134f160fb8f1ffc59b1e955985d1d160095df74efdbc32024221ee"
+    },
+    {
+      "path": "engine/mission06/geometry.word.json",
+      "sha256": "521a328fe3023721bbe55f2021ea74ff6459c9a64ec9f038bab99fb3f293b02c"
+    },
+    {
+      "path": "engine/mission06/geometry.word.pdf",
+      "sha256": "cb9e4f4321cd055abd62a037579f50631e316dbe64e776446408b764f63ed7cf"
+    },
+    {
+      "path": "engine/mission06/initial.png",
+      "sha256": "578b60688d250ea238d268bdfb257091161b1a7e833efdc260008e40b02c9ad7"
+    },
+    {
+      "path": "engine/mission06/matrix-verification.json",
+      "sha256": "36c1d37fedc7ae5a85b7c8a1e76493ab133b9d6c4e3a3c60e12c54f7fda26d44"
+    },
+    {
+      "path": "engine/mission06/native-browser.png",
+      "sha256": "f316d5bc7e034faf021972f8647de2c7a1a7921c3bdb1e234e7fdcb43addc4fc"
+    },
+    {
+      "path": "engine/mission06/parity-conflict-verified.docx",
+      "sha256": "481028eeec7b923053c24a143170ddc06ee99b920a318cb6b0e13069ffbffc41"
+    },
+    {
+      "path": "engine/mission06/parity-conflict-verified.layout.json",
+      "sha256": "271433c559e1ceda380fad08fb805b6f0cf20e22158348e814c638ada0d98a81"
+    },
+    {
+      "path": "engine/mission06/parity-conflict-verified.pdf",
+      "sha256": "005c5655bfbea69d15c3690c8bc6c30a8e4c8d744cc1e663cd7ec5d5332a9d04"
+    },
+    {
+      "path": "engine/mission06/parity-conflict.docx",
+      "sha256": "3523f76877cbf2da5b129ed3762b48787a12cd643aa0a462037dc6ff486ee1e9"
+    },
+    {
+      "path": "engine/mission06/parity-conflict.fixture.json",
+      "sha256": "adc92f8d3cbae659e1404a1dbfd1af72c95845fd0e1606917d39987751e0d3d5"
+    },
+    {
+      "path": "engine/mission06/parity-conflict.layout.json",
+      "sha256": "2aa7b5235cf93eb8b8e8c16005684acb0e1c3b0d03f6c58b4ca59e931e3fe100"
+    },
+    {
+      "path": "engine/mission06/parity-conflict.pdf",
+      "sha256": "fd2a12801b1d210a2e3d1905e267837230929a65f74a61b405461faeacf687c0"
+    },
+    {
+      "path": "engine/mission06/parity-conflict.word.pdf",
+      "sha256": "0dbfd0b7589551ce180821a0f23093ddca8f9ee48e6c20472c250e186f2a9aa8"
+    },
+    {
+      "path": "engine/mission06/section-tests.log",
+      "sha256": "26374075896a0bcd7ac5e73f8f14f0dce260662acf5ae8a6106c6a19131f71a9"
+    },
+    {
+      "path": "engine/mission06/source-audit.json",
+      "sha256": "d1571f6b063c28cee72aea17d95f76a593fe1ae91faf54fa328872acd8532be9"
+    },
+    {
+      "path": "engine/mission06/source-excerpts.json",
+      "sha256": "d45b158794952570ca919f5c79b1152d266550bfcc1c9063f7934fb22b46670e"
+    },
+    {
+      "path": "engine/mission06/source-frame-tests.log",
+      "sha256": "66fff0994b8ae9ceca3eb94aa4616a31e906c281b8ac68fc107407207b7ec7f2"
+    },
+    {
+      "path": "engine/mission06/source-geometry-verification.json",
+      "sha256": "2be347d9de5a525a8fd82d47b739d7e1d85ecd4759ab15f9f40bb3a8d1be3dad"
+    },
+    {
+      "path": "engine/mission06/source-pdf-verification.json",
+      "sha256": "13e1d6d7d777370da9adda01af2c246b61a72d50e0a765de51207d1df6b6ef1c"
+    },
+    {
+      "path": "engine/mission06/source-visual.png",
+      "sha256": "4eaf81117603f537ebbce6b6421b777e9c2f5a38286d6db1ba2575225afd707e"
+    },
+    {
+      "path": "engine/mission06/style-tests.log",
+      "sha256": "3b9577b6e2865c4a658ce36fe59ad5c1b91aa0085b1d335b87faaeef9b97be4c"
+    },
+    {
+      "path": "engine/mission06/unit-tests-complete.log",
+      "sha256": "e307ac5d3191c27715f72c25d173600ccc0c18dd93f6d1b76de6a549135f3ded"
+    },
+    {
+      "path": "engine/mission06/unit-tests-final-code.log",
+      "sha256": "a12b122339e39ea80e3372dd17f33e0b22b139f2148105700a315c66111b123b"
+    },
+    {
+      "path": "engine/mission06/unit-tests-final.log",
+      "sha256": "e1c580919c55ca9dd2bd876ba20d20903469fd23a88edfdf2fedfeebe1cafd8e"
+    },
+    {
+      "path": "engine/mission06/unit-tests-verified.log",
+      "sha256": "ec150df659c5079d20557af9be80b2cea74af5a4737929f7a3aecb51ec5e0af4"
+    },
+    {
+      "path": "engine/mission06/unit-tests.log",
+      "sha256": "01fea87e19d9f4fb6f76d90f743a3f9e4cbe45371bd1593172e123903b099ae0"
+    },
+    {
+      "path": "engine/mission06/word-manifest.json",
+      "sha256": "fa0e22b83cea94760e18b96a04693e83588271f8524bbf2e702d5c80319a898d"
+    },
+    {
+      "path": "engine/mission06/word-regression.log",
+      "sha256": "50e4c4a1259277aa1f50302941efa120f91c7c8494f02b955a4615e2785d2db4"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/check-20261010-1312.json",
+      "sha256": "d4f392aacfd1bdb20bd1c9a558e6dbbe94ea02b1cf7b8f87eaed3f360d47701d"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/check-20261010-1312.md",
+      "sha256": "e473c9ca49ba15aa324fc2b85ec7ad52d9789a69b37b38658222faab929d6c81"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/run/check.log",
+      "sha256": "19ef1ce7c9d7093f2d52541939eda66ed6b3dfcf541bd65ff8d17ce7f1492936"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/run/default.docx",
+      "sha256": "7ce205cdbc173f106e74326c8c530225535c89f5bc8c336e5194741fb06e3a1c"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/run/default.layout.json",
+      "sha256": "f85035766522aacf6acb2fb2a16e93f35a3168acf764aa5b8a547edc19dbc6ef"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/run/default.pdf",
+      "sha256": "efe6e7fbd23098e03eeb7de04604c7d63805a310e466b6c887bd03e71d0f4d10"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/run/default.word.pdf",
+      "sha256": "8a136bcece3c737b430f8dbb38608b229dda603d181eb0cc1e69f8a8fef20b9a"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/run/default.word.render.json",
+      "sha256": "1c875514b594d4c863e02fa001bb91252e0f3c87bedf6cd3264d03763f475da5"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-justify/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/check.log",
+      "sha256": "176faf6a1ab7cdcac54c168bef3ea13b4707c2911a12ebe72d9d723605525360"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/default.failure.png",
+      "sha256": "ad2a2fbc679d9e6a02100ce3db1d31dda74d365afa3738003a678a949493e225"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/notes.docx",
+      "sha256": "84f2035bd28d6a6e974c0c4ce35f4db4d77bf7e06f242f42023a51ee7a019a07"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/notes.layout.json",
+      "sha256": "aa02a7c2dc26964e3871c2e51b6c2438b298393ba63cab7bc5ac413a9fe0131c"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/notes.pdf",
+      "sha256": "d615a295d7d96a198fa744c5c71b753e4a7fb05021437920c709f1e94f4cc7a3"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/styles.docx",
+      "sha256": "b38e672d803d38f6ee576031d8a97a3ce7c2ba6b1c8d5cc2a56d522dc029296c"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/styles.layout.json",
+      "sha256": "f53447a693695e99a100f1fb51d1ca96e5fb011a307eea57b76e1f9d6f00cb35"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/styles.pdf",
+      "sha256": "1f2a92ecd75399458c740d2ac745f5400b0f41c512f083915f164a2acb1057c5"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/tab.docx",
+      "sha256": "62d7a5e1a07d737e5b5a62d5642e8124c377558c6abc3075746cc1f5fa33e3e1"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/tab.layout.json",
+      "sha256": "1a8cc9a597e1d308f32502aaaff3f18758f74d766d2dc1bab0217822904fa9f8"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-pagefit/run/tab.pdf",
+      "sha256": "f3327146ff7dc7bad57a0204c5da951913aadb18acabdf32b91790896a6ddbe4"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/check-20261010-1313.json",
+      "sha256": "a4c81dee4221d52ebb616db68bbf2b1b6b3ba9d97428af75cf875e73cc0a51a5"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/check-20261010-1313.md",
+      "sha256": "870d32ea0e3607b7c0b4d97d2955506e2250104ab808eb263b6ed2c3cd64a5ea"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/run/check.log",
+      "sha256": "23d2e8d9913ba43acf80092c70625424b12eaa71ab1e946dc9f1793c5622cf2b"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/run/default.docx",
+      "sha256": "69c2f3996d9889c6ab8c00f06e7999356ffb02bdc48e491e727fa08031c238c8"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/run/default.layout.json",
+      "sha256": "07ffb2e9c971c3e3bcc992b747f88a9c90aecb59e69a4cd1a39c0c043626787c"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/run/default.pdf",
+      "sha256": "78d1573d35f6de82d79c04779371cea23daf857f0b8b5db6bb95269bd2257d56"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/run/default.word.pdf",
+      "sha256": "0e9f9661c248d2e3011ac1ef7c5c243c3e3b2b3fbc19f3631f75c9668938ee00"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/run/default.word.render.json",
+      "sha256": "012ebf93ac9af68345b5dd8f0ae98dd567db56523dc98f7f4385145ad224ed0e"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-parity/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/check-20261010-1315.json",
+      "sha256": "a1343a526f6bb13f3b0eb7a06b3349fa1b95b65bbc518a3841ce8d983b0bbb02"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/check-20261010-1315.md",
+      "sha256": "14f5f1ccc3dd38223afd439311cbb6d0a8c78dc9a0ec20b2bbe364f56e07809f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/check.log",
+      "sha256": "19d7573b94c30a202134c2c21c02bfb6684c35d96fa0a0a587ba1e9a32ca94e6"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/default.docx",
+      "sha256": "54c3c36237df0f7de3631c825222cb451af947ddae8c245c09713f88c98f7889"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/default.layout.json",
+      "sha256": "abe7c425cb381ab4da7b0c74f85bf8ad394ddd4e9cf64bb70d8d632402ae64cd"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/default.pdf",
+      "sha256": "67f267c3cf23114c828d36822604566df933b8a17a9074d2877455db19881fa4"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/default.word-fields.json",
+      "sha256": "3e2f5621a9f5799127603afc095ea3dee0b0ba995214aa97a8318dead99906a7"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/default.word-refreshed.pdf",
+      "sha256": "d16bc7681bb3017d804b343ce4e0b4a75ecfa209a244155d68ea8774b167224b"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/default.word.pdf",
+      "sha256": "d0db93e5f23d80ebd8a4527ad6175b376b7d1bc481a07eccbcb2ff965a08649f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/default.word.render.json",
+      "sha256": "5e8595fd4ef891bebba5be5b45b34d55e64c2b432f73c0ef3bb85b351cd8426f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/fields.docx",
+      "sha256": "2503df04b2d8d2e8adbee1ae62858fa804cfc6c276844190304d2bb91b215149"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/fields.layout.json",
+      "sha256": "832e81561ae04f9ef70e17c93a5b9b66ae08c4e3fefeaf74da8c9a749851cdce"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/fields.pdf",
+      "sha256": "7bf28b5dc33689481d7dcd257447e7ba4718653093043820573c6d9c331b1065"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/fields.word-fields.json",
+      "sha256": "1751950924bdb655737f464ff380a4220ef876e6f3bc8338d35920ba5089d683"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/fields.word-refreshed.pdf",
+      "sha256": "521a814e9c22c54cbbfde612b936867bffdf9430f94b162e9de6d7430b877472"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/fields.word.pdf",
+      "sha256": "4231947ba4ca37a14a9ba7e388ec06f8b6342a8f33f4c514785c0166874ac607"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/fields.word.render.json",
+      "sha256": "09a37bd9f34634a68819c9ce8a6492d8a7d8c4ae264f2ef0864510d0d1f1b486"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/footer.docx",
+      "sha256": "371aabd20578527cf70b0c47830a7301f6877adc4155aa191eecd2f945efc7d7"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/footer.layout.json",
+      "sha256": "8b0730525469118433b39e1dfaefc60a30b86517dc3b10d20dbc9a77ae73976f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/footer.pdf",
+      "sha256": "0ddcc1c4fade99566badea9879ac45ec9a2337fc650ee1b3f41727c5ac2b2948"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/footer.word-fields.json",
+      "sha256": "fb2c0010b668fe1bf99d7ed5753cc74248bcf250543bcbe8c935355495186a8d"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/footer.word-refreshed.pdf",
+      "sha256": "6f779ca459d6afe6287701dd7b7df2f704762a591932c4ef026b8f340f335451"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/footer.word.pdf",
+      "sha256": "ff725d2f50348eb8c2320f113f3ab5216da0654334782b4576fa0376d0c1b2d3"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-structure/run/footer.word.render.json",
+      "sha256": "f3d10799f201ab250719df80dfa1364cd0632815b1673df1ac674d8feb42c822"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/check-20261010-1316.json",
+      "sha256": "f638ac5948068ea1cfea19385e2c980fb9d1ed4dd0fa291767a5899991abc806"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/check-20261010-1316.md",
+      "sha256": "753b13fdbe32dcadc55de57a11d93bb79cfe75845127d36dbb20f646b6276878"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/base.docx",
+      "sha256": "deced59c28cc1f4ec8b1a97bc1a5591cc34407ceb9d7c83a1cbd375e409c68c6"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/base.layout.json",
+      "sha256": "20368e231402ccf24d8023aacf45ccaa4a1e3d84be91b4c233711a811c91796f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/base.pdf",
+      "sha256": "819598e6d5b47e2282699859d2ba5e3f9532763fc1fb744f639b8a6de75c680c"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/base.word.pdf",
+      "sha256": "788e12e9426af6e8a1145a4ecc9c40b6715ac28e2a34483623e36e8ce0aa3768"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/base.word.render.json",
+      "sha256": "591a9e0fda3cdf735e3cbff74aca58742a95b4f320a4cf5c2a0e6a4929d02e2e"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/check.log",
+      "sha256": "171804baa511211d28694b805428d79560d591ea37bd8e6e7fb428e2ce1cf65d"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/direct.docx",
+      "sha256": "2cf555aea7e804ef8c3b6ad75c90067138d79fa8ec407ee49adb9bd5f96ce019"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/direct.layout.json",
+      "sha256": "705256812e20a664a033863cd2697e4592bb42ce04a1d1daadfd3f7480212a48"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/direct.pdf",
+      "sha256": "8cbd356b0115729065ed5a6e946b22fcceea9a0f831cb34b49786b795ebca331"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/direct.word.pdf",
+      "sha256": "61860b0a6dabf234ab978e2824eaf202c5d2163c6c72fcffecf50b94375ff087"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/direct.word.render.json",
+      "sha256": "a58b6784b5cd9a320507f8f007449371ae99313dc0c72a18c6c9c5e7c3bb06ea"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/named.docx",
+      "sha256": "6a2507828c29169af56c324d0b169555e368e9b3837bc043a1bb868c392db4d4"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/named.layout.json",
+      "sha256": "34ee0b6a28a5d73882181898b557c3f3da4369880bb5c6dac4db5a89f02ce64b"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/named.pdf",
+      "sha256": "0b51a331f51cc535ed21680d6b48e44f47e9f0d2faae0bdcd1c21df429a040ec"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/named.word.pdf",
+      "sha256": "ecc3e7c875948671bb7bbe659e665541e2cd5591bb75101fa628be7c0093ce4b"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/named.word.render.json",
+      "sha256": "9601eb146e3b881d52e22952a6cd809574eaf50b18c545d433fd193906487383"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/section.docx",
+      "sha256": "b9fdd3e98d65bd8c4ddd6dde4d3e955b13d99c84a6c3905c5692667fa8d3b7d8"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/section.layout.json",
+      "sha256": "b176a982effb77eb5a675c28c9f1b7d9420c61c5d1c7091e50c47d5c74496634"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/section.pdf",
+      "sha256": "f93b9adae78d1773fa226cd12237bfccbb54978a9e21e07ae3af52385c10731d"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/section.word.pdf",
+      "sha256": "f3513795fb54b183e7c588c12320bdc51aa94db3ebcdf19617b8e4c929439664"
+    },
+    {
+      "path": "engine/mission06/word-regression/engine-word-style-precedence/run/section.word.render.json",
+      "sha256": "d129d8a3610c6e894907c9aaa6191f4e01bfafb81cbf992da8286bc3a91fe500"
+    },
+    {
+      "path": "engine/mission06/word-regression/phase52-justify/run/check.log",
+      "sha256": "a32880857404d199b62874260ffe0ffacf0431f66a67f02e9ef45e2a0354bd54"
+    },
+    {
+      "path": "engine/mission06/word-regression/phase52-justify/run/default.failure.png",
+      "sha256": "2b8dec4f4a39c5387945ac271db51238018b0da8d9a09b507f1fcb2cd94c9999"
+    },
+    {
+      "path": "engine/mission06/word-regression/phase52-justify/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+    },
+    {
+      "path": "engine/mission06/word-regression/phase52-justify/run/wide.docx",
+      "sha256": "470d991170344f3e2a48ba2d8f87cfb5362525e02e217591b3e765a9d889b244"
+    },
+    {
+      "path": "engine/mission06/word-regression/phase52-justify/run/wide.layout.json",
+      "sha256": "33651274d512ad2753f228ede09af0a3a80b17d7c7678917a5b604d943249cc0"
+    },
+    {
+      "path": "engine/mission06/word-regression/phase52-justify/run/wide.pdf",
+      "sha256": "deb793790f8bd4029ead6829d8953693a25d0b04ca82c7a6b8ab6919db3c3f80"
+    },
+    {
+      "path": "engine/mission06/word-render.log",
+      "sha256": "1c020eb3e7698fd3bc99e92c200e45b19118b72cef582a85cf8ed60d9984641f"
+    },
+    {
+      "path": "engine/mission06_excerpts.mjs",
+      "sha256": "f3182e8424ddd3802bab196c50ec2f933b1f7e88c7384f83b88eafc8b15f4928"
+    },
+    {
+      "path": "engine/mission06_fixture.mjs",
+      "sha256": "a3929fc1a6a820099edd3c1a7bc3c5f9ab820411ab8bc93c2225c72a0377d8b2"
+    },
+    {
+      "path": "engine/mission06_render_qa.py",
+      "sha256": "bb733dd6936eac62fdda66efdf64e35245070a4de3fc298fb1185f5f2c9d770c"
+    },
+    {
+      "path": "engine/mission06_sources.mjs",
+      "sha256": "e3cf71af15d4844c07c0a6a2ad313d6c62fe003b4799435211ac2d443d207e0c"
+    },
+    {
+      "path": "engine/mission06_variants.mjs",
+      "sha256": "5b31f3de76a1a247706a911ef537f66f2b56264f4427bfc6dd15dea2eed45f5a"
+    },
+    {
+      "path": "engine/verify_mission06_browser.mjs",
+      "sha256": "cca5fba268540bd781aa18fde1244a9e9e52f366b1ae09e8d5e8f311552365df"
+    },
+    {
+      "path": "engine/verify_mission06_pdfs.py",
+      "sha256": "e37482efb9e0d098699f405ab7ec22b4e073cc555a2c9bc0d8359602ca7b6302"
+    },
+    {
+      "path": "engine/verify_mission06_sources.mjs",
+      "sha256": "036bf11fb802c73bebd01999114b78fddfd2a4794baadc07c99adfcf8c17d658"
+    }
+  ]
+}

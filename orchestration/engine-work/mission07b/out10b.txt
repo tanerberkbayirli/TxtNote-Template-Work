@@ -1,0 +1,85 @@
+READY 23455
+{"ok":true,"sawNotReady":true,"ms":4122,"before":97,"after":97,"text":"TheZZ  maritime tran"}
+{"ok":true,"sawNotReady":true,"ms":4163,"before":97,"after":97,"text":"TheZZ ZZ  maritime t"}
+INCL
+4871ms (root) :-1
+2003ms performWorkOnRoot react-dom_client.js:7937
+1991ms run :-1
+1987ms runWithFiberInDEV react-dom_client.js:845
+1956ms performSyncWorkOnRoot react-dom_client.js:9060
+1956ms flushSyncWorkAcrossRoots_impl react-dom_client.js:8965
+1956ms processRootScheduleInMicrotask react-dom_client.js:8992
+1956ms  react-dom_client.js:9074
+1364ms layoutWordJustification wordLineLayout.js:53
+1334ms querySelectorAll :-1
+1283ms measure ThesisEditor.jsx:511
+1259ms performUnitOfWork react-dom_client.js:8424
+1259ms workLoopSync react-dom_client.js:8321
+1259ms renderRootSync react-dom_client.js:8265
+1248ms beginWork react-dom_client.js:6078
+1119ms measure ThesisEditor.jsx:319
+1107ms renderWithHooks react-dom_client.js:4198
+1106ms react_stack_bottom_frame react-dom_client.js:12859
+1073ms updateFunctionComponent react-dom_client.js:5558
+987ms ThesisEditor ThesisEditor.jsx:88
+945ms updateMemo react-dom_client.js:4940
+945ms useMemo react-dom_client.js:13265
+945ms exports.useMemo react.js:734
+773ms (program) :-1
+744ms commitRoot react-dom_client.js:8529
+744ms commitRootWhenReady react-dom_client.js:8056
+702ms react_stack_bottom_frame react-dom_client.js:12896
+702ms commitHookEffectListMount react-dom_client.js:6607
+656ms commitLayoutEffectOnFiber react-dom_client.js:6949
+656ms recursivelyTraverseLayoutEffects react-dom_client.js:7475
+656ms flushLayoutEffects react-dom_client.js:8647
+651ms commitHookLayoutEffects react-dom_client.js:6601
+650ms probe ThesisEditor.jsx:535
+635ms confirmCommittedPagination generatedIndex.js:653
+633ms readMeasurement ThesisEditor.jsx:590
+599ms compileThesisDocument engine.js:450
+599ms  ThesisEditor.jsx:239
+564ms measureParagraphTabsCss paragraphTabs.js:21
+561ms  ThesisEditor.jsx:315
+423ms prepareThesisNote contentModel.js:283
+328ms buildThesisCss engine.js:622
+328ms  ThesisEditor.jsx:275
+325ms thesisSectionCss engineCss.js:103
+317ms tableSemanticsCss tableSemantics.js:41
+313ms parseAcademicHtml academicDocument.js:654
+QS
+174ms querySelectorAll <- layoutWordJustification wordLineLayout.js:53 < measure ThesisEditor.jsx:319 < (root) :-1
+161ms querySelectorAll <- layoutWordJustification wordLineLayout.js:53 < measure ThesisEditor.jsx:511 < probe ThesisEditor.jsx:535
+152ms querySelectorAll <- layoutWordJustification wordLineLayout.js:53 < measure ThesisEditor.jsx:319 <  ThesisEditor.jsx:315
+150ms querySelectorAll <- layoutWordJustification wordLineLayout.js:53 < measure ThesisEditor.jsx:511 < readMeasurement ThesisEditor.jsx:590
+144ms querySelectorAll <- measureParagraphTabsCss paragraphTabs.js:21 < measure ThesisEditor.jsx:319 <  ThesisEditor.jsx:315
+138ms querySelectorAll <- measureParagraphTabsCss paragraphTabs.js:21 < measure ThesisEditor.jsx:511 < readMeasurement ThesisEditor.jsx:590
+136ms querySelectorAll <- measureParagraphTabsCss paragraphTabs.js:21 < measure ThesisEditor.jsx:319 < (root) :-1
+134ms querySelectorAll <- measureParagraphTabsCss paragraphTabs.js:21 < measure ThesisEditor.jsx:511 < probe ThesisEditor.jsx:535
+95ms closest <- renderedFontFamilies renderedFonts.js:2 < missingRenderedFonts renderedFonts.js:21 < inspect ThesisEditor.jsx:285
+64ms querySelectorAll <- readRefs footnotes.js:381 < layoutGroupFootnotes footnotes.js:750 < layoutThesisFootnotes footnotes.js:886
+1334ms querySelectorAll :-1
+773ms (program) :-1
+333ms layoutWordJustification thesis/wordLineLayout.js?t=1791641294716:53
+195ms thesisSourceHtml thesis/sourceHtml.js:15
+179ms plainThesisText thesis/sourceHtml.js:0
+142ms closest :-1
+131ms  editor/ThesisSectionPages.jsx?t=1791640776218:815
+131ms contentNodesFromHtml thesis/contentModel.js:62
+121ms prepareThesisNote thesis/contentModel.js:283
+105ms exports.jsxDEV deps/react_jsx-dev-runtime.js?v=4f16d7c2:190
+102ms runsFromNode lib/academicDocument.js:108
+89ms getClientRects :-1
+86ms assertContentDocument thesis/contentModel.js:236
+82ms stripMathPresentation thesis/contentMarkup.js:6
+70ms parseAcademicHtml lib/academicDocument.js:654
+67ms canvasRunFont thesis/wordLineLayout.js?t=1791641294716:12
+63ms (garbage collector) :-1
+53ms renderedFontFamilies thesis/renderedFonts.js:2
+51ms get ready :-1
+47ms querySelector :-1
+45ms parseNodeList lib/academicDocument.js:257
+38ms getComputedStyle :-1
+36ms isAppendixItemNode thesis/generatedIndex.js?t=1791640776218:86
+30ms exports.createElement deps/react.js?v=4f16d7c2:590
+28ms contains :-1

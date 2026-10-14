@@ -4,7 +4,7 @@ Status: **PASS (self-check)** for every source-backed, engine-expressible check 
 
 ## Result
 - Registry id: `mcbu-tip-uzmanlik-tr-v1` (universityId `mcbu`, instituteId `tip`, degreeType `specialization` - allowed by `schema.d.ts`/`validation.js`), inserted after `mcbu-lee-phd-tr-v1` in `registry.js`.
-- Files: `TxtNote/frontend/src/thesis/templates/mcbu-tip.js`, `TxtNote/frontend/src/lib/thesisMcbuTip.test.js` (7 tests), `orchestration/specs/mcbu-tip-uzmanlik.json` (58 rules: EXPLICIT 33, MEASURED 4, INFERRED 14, UNKNOWN 7; 10 conflicts, 12 unknowns, 2 engine gaps), `orchestration/validation/mcbu-tip-uzmanlik/self-1/` (fixture, `tip.pdf`, `tip.docx`, `selfcheck.py`, `selfcheck.out.txt`), `orchestration/artifacts/mcbu-tip-uzmanlik/source/` (text-line dump, 3 page renders).
+- Files: `engine/src/templates/mcbu-tip.js`, `TxtNote/frontend/src/lib/thesisMcbuTip.test.js` (7 tests), `orchestration/specs/mcbu-tip-uzmanlik.json` (58 rules: EXPLICIT 33, MEASURED 4, INFERRED 14, UNKNOWN 7; 10 conflicts, 12 unknowns, 2 engine gaps), `orchestration/validation/mcbu-tip-uzmanlik/self-1/` (fixture, `tip.pdf`, `tip.docx`, `selfcheck.py`, `selfcheck.out.txt`), `orchestration/artifacts/mcbu-tip-uzmanlik/source/` (text-line dump, 3 page renders).
 - Source: only `MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf` (6 pages, PDF metadata 2014-08-27, undated text, former name "Celal Bayar Üniversitesi"; still the guide linked on the faculty page). No Word template. Nothing taken from `templates/mcbu.js` (LEE) or any AKÜ template (structure only).
 - Tests: `npm test` 563 tests, 562 pass, **1 fail outside this unit**: `src/lib/thesisMcbu.test.js` "A: both variants are valid official templates..." filters the registry by `universityId === "mcbu"` and expects exactly the two LEE entries. The new entry (universityId `mcbu`, as requested) makes it 3. Not edited (other unit's test); one-line fix for its owner: filter `entry.universityId === "mcbu" && entry.instituteId === "lee"`. (The engine test "distinct H1/H2/H3 numbers" also constrains sub-heading labels; see H2 numbering below.)
 
@@ -45,7 +45,7 @@ Dış kapak, İç kapak (same layout, "birbirinin benzeri"), ÖNSÖZ, İÇİNDEK
 - "Paragraflar normal satır aralıklarıyla ayrılırlar" = no extra paragraph spacing.
 - Heading weight/size (bold, 12 pt, capitals for chapters: from the guide's own headings and Ek-2). Sub-heading numbers "1.1." (the guide prints "1. 1."; the unspaced form is also what the shared engine test requires). H3/H4 continue the same pattern.
 
-## UNKNOWN (not invented; engine/Word neutral value or general 12 pt rule used and named in `source.notes`)
+## UNKNOWN (not invented; orchestration/engine-work/Word neutral value or general 12 pt rule used and named in `source.notes`)
 Header/footer distance (12.5 mm Word default as a technical placeholder), page-number typography, sub-heading spacing (0, like the guide's own pages), caption separator/size/weight, table typography and borders, footnote size, equations, abstract page layout (heading block, keywords, word limit), absolute cover top distance, relation to the LEE guide, whether a newer guide exists (document is from 2014).
 
 ## Engine gaps (not worked around, engine untouched)

@@ -1,0 +1,2 @@
+(()=>{const t=[...document.querySelectorAll(".thesis-body table")].find(t=>/^Önem Derecesi/.test(t.textContent.trim()));const c=t.rows[1].cells[0];const p=c.querySelector('p');const cs=getComputedStyle(p),cc=getComputedStyle(c);
+return {mt:cs.marginTop,mb:cs.marginBottom,lh:cs.lineHeight,pad:cc.padding,bt:cc.borderTopWidth,bb:cc.borderBottomWidth,bc:getComputedStyle(t).borderCollapse,h:t.rows[1].getBoundingClientRect().height/0.759,ph:p.getBoundingClientRect().height/0.759,fs:cs.fontSize}})()

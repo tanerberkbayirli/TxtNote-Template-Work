@@ -1,0 +1,117 @@
+{
+ "target": "adu-ziraat-lisans",
+ "stamp": "20261010-1901",
+ "counts": {
+  "PASS": 4
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\aw_t6nofund\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\aw_t6nofund\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\aw_t6nofund\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\v_t6nofund.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "87023a79771687151c9615a0f57faecdda2fee1f3a17f789daef7b6f13ff60cc"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.531,
+ "commandSeconds": 24.041,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "9bf8d9eaac44db23b6f0affd8e047d1535860522",
+  "trackedDiffSha256": "a42fb64d2ebb30435f8845d4fd7d884e9f873750a26bb15c86fd4c99c079ec85",
+  "diagnosticsSha256": "9d28054675c03fee9a65e2f2a73c545f973ee3123c6cdcf670a95e09b12c8242",
+  "startedAt": "2026-10-10T16:00:49.849Z",
+  "codeFingerprint": "3a33300911df4d9ab3fbd8a5f434ad2128c0f052179b96b8556047b1a4745765",
+  "officialSourceFingerprint": "90104e87001c519c62d25b7f9bf123cb70fd7c76dd59c0ab75fc1772046913a6"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission08\\aw_t6nofund\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "default": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "c7561323fabe099044ba696be3292b00f527d0f9ec314b303aebf9569ea29f15",
+ "artifactSha256": {
+  "default": {
+   "fixture": "74c0cc3a5e1a11ad964734a0c82f7592baf1ce73904b0c94899b43d2859e4c51",
+   "pdf": "4db084318f5e49ce244845254eb21b03a77d3fe922b2fc70f225c1ac5090d5f3",
+   "docx": "087a0b6cf6a4ded1054c46d87590d72993222c61979d8232dadfbffb9c52e6ab",
+   "layout": "f14d67f1e884e4464947cd57fadac8bea16875efd0a53d87acbf9dae40c2c35f"
+  }
+ },
+ "checks": [
+  {
+   "id": "cover-font",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPS-BoldMT"
+   ],
+   "tolerance": 0.5,
+   "source": {
+    "file": "orchestration/artifacts/adu-ziraat-lisans/source/official.pdf",
+    "locator": "physical p.30; paragraphs 464, 472, 476; font face Times New Roman and title/student bold"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "TimesNewRomanPS-BoldMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-default",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "282 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-default",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

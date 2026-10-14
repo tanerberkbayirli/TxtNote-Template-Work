@@ -1,0 +1,35 @@
+{
+  "scope": "Independent PDF text anchors plus native Word collection locations. Ambiguous/cached fields are not silently mapped.",
+  "features": [
+    {
+      "sourceLocator": "Word.Footnotes[1]",
+      "kind": "Footnotes",
+      "wordRange": {
+        "lastPhysicalPage": 1,
+        "firstPhysicalPage": 1,
+        "end": 6151,
+        "storyType": 2,
+        "start": 1
+      },
+      "pdfPhysicalPageCandidates": [
+        1
+      ],
+      "ruling": "UNIQUE_SOURCE_TEXT_ANCHOR"
+    },
+    {
+      "sourceLocator": "Word.Sections[1]",
+      "kind": "Sections",
+      "wordRange": {
+        "lastPhysicalPage": 3,
+        "firstPhysicalPage": 1,
+        "end": 1501,
+        "storyType": 1,
+        "start": 0
+      },
+      "pdfPhysicalPageCandidates": [
+        1
+      ],
+      "ruling": "UNIQUE_SOURCE_TEXT_ANCHOR"
+    }
+  ]
+}

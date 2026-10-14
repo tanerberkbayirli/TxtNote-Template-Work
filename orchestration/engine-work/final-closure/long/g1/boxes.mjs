@@ -1,0 +1,20 @@
+import {createRequire} from 'node:module';
+const {chromium}=createRequire(import.meta.url)('../../../../tools/node_modules/playwright');
+const base='http://127.0.0.1:5190';const needle=process.argv[2];const n=+process.argv[3]||5;
+const browser=await chromium.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--enable-blink-features=MulticolColumnWrapping']});
+const ctx=await browser.newContext({viewport:{width:1400,height:1000}});await ctx.grantPermissions(['local-fonts'],{origin:base});
+const page=await ctx.newPage();
+await page.goto(`${base}/tests/thesis-long.html?id=${process.env.ID||'SRC09'}`);
+await page.locator('.thesis-sheet').first().waitFor({timeout:300000});
+await page.evaluate(()=>document.fonts.ready);
+await page.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true',null,{timeout:900000});
+const r=await page.evaluate(([needle,n])=>{
+ const sheets=[...document.querySelectorAll('.thesis-sheet')].map(s=>{const r=s.getBoundingClientRect();return [r.top+scrollY,r.height]});
+ const k=841.92/sheets[0][1];const pageOf=y=>sheets.findIndex(([t,h])=>y>=t&&y<t+h+20)+1;
+ const ps=[...document.querySelectorAll('p')].filter(e=>e.textContent.trim().startsWith(needle));const p=ps[ps.length-1];
+ let e=p.previousElementSibling;const out=[];e=p;
+ for(let i=0;i<n&&e;i++,e=e.nextElementSibling){const r=e.getBoundingClientRect();const pg=pageOf(r.top+scrollY);const s=getComputedStyle(e);
+   const row=e.tagName==='TABLE'?[...e.rows].slice(0,3).map(x=>+((x.getBoundingClientRect().top+scrollY-sheets[pg-1][0])*k).toFixed(2)):null;
+   out.push({tag:e.tagName,text:e.textContent.slice(0,22),top:+((r.top+scrollY-sheets[pg-1][0])*k).toFixed(2),bottom:+((r.bottom+scrollY-sheets[pg-1][0])*k).toFixed(2),mt:s.marginTop,mb:s.marginBottom,rows:row})}
+ return out;},[needle,n]);
+for(const x of r)console.log(JSON.stringify(x));await browser.close();

@@ -1,0 +1,90 @@
+{
+  "startedAt": "2026-10-09T14:00:16.938Z",
+  "wordRequested": false,
+  "targets": [
+    {
+      "target": "aku-fbe",
+      "exitCode": 1,
+      "commandSeconds": 58.903,
+      "report": "engine\\mission04\\resume-regression\\aku-fbe\\check-20261009-1701.json",
+      "counts": {
+        "SKIPPED": 27,
+        "PASS": 18,
+        "INFO": 3
+      },
+      "measurementSeconds": 2,
+      "error": null
+    },
+    {
+      "target": "engine-word-pagefit",
+      "exitCode": 1,
+      "commandSeconds": 83.319,
+      "report": "engine\\mission04\\resume-regression\\engine-word-pagefit\\check-20261009-1702.json",
+      "counts": {
+        "SKIPPED": 189,
+        "PASS": 16
+      },
+      "measurementSeconds": 2.547,
+      "error": null
+    },
+    {
+      "target": "engine-word-parity",
+      "exitCode": 1,
+      "commandSeconds": 19.487,
+      "report": "engine\\mission04\\resume-regression\\engine-word-parity\\check-20261009-1702.json",
+      "counts": {
+        "SKIPPED": 141,
+        "PASS": 5
+      },
+      "measurementSeconds": 0.859,
+      "error": null
+    },
+    {
+      "target": "engine-word-structure",
+      "exitCode": 1,
+      "commandSeconds": 42.439,
+      "report": "engine\\mission04\\resume-regression\\engine-word-structure\\check-20261009-1703.json",
+      "counts": {
+        "SKIPPED": 115,
+        "PASS": 15
+      },
+      "measurementSeconds": 1.454,
+      "error": null
+    },
+    {
+      "target": "engine-word-style-precedence",
+      "exitCode": 3,
+      "commandSeconds": 272.789,
+      "report": null,
+      "counts": {},
+      "measurementSeconds": null,
+      "error": "note: no cached reference at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\artifacts\\engine-word-style-precedence\\source\\reference (create with --build-reference)\nexport of variant 'base' failed (see C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission04\\resume-regression\\engine-word-style-precedence\\run\\check.log):\npage.waitForEvent: Timeout 240000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================\n    at C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\tools\\export.mjs:167:24"
+    },
+    {
+      "target": "mcbu-tip-uzmanlik",
+      "exitCode": 0,
+      "commandSeconds": 18.724,
+      "report": "engine\\mission04\\resume-regression\\mcbu-tip-uzmanlik\\check-20261009-1708.json",
+      "counts": {
+        "PASS": 47,
+        "INFO": 1
+      },
+      "measurementSeconds": 0.765,
+      "error": null
+    },
+    {
+      "target": "phase52-justify",
+      "exitCode": 1,
+      "commandSeconds": 16.765,
+      "report": "engine\\mission04\\resume-regression\\phase52-justify\\check-20261009-1708.json",
+      "counts": {
+        "SKIPPED": 24,
+        "PASS": 6
+      },
+      "measurementSeconds": 0.141,
+      "error": null
+    }
+  ],
+  "finishedAt": "2026-10-09T14:08:49.363Z",
+  "commandSeconds": 512.445
+}

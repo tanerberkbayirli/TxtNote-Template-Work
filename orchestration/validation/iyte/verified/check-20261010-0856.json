@@ -1,0 +1,2124 @@
+{
+ "target": "iyte",
+ "stamp": "20261010-0856",
+ "counts": {
+  "PASS": 96,
+  "FAIL": 8
+ },
+ "variants": {
+  "master": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\master.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\master.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\master.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\iyte.fixture.master.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\master.word.pdf",
+   "wordRenderInfoPath": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\master.word.render.json",
+   "wordRenderInfo": {
+    "pid": 3244,
+    "printFieldCodes": false,
+    "uiCulture": "tr-TR",
+    "printBackground": true,
+    "compatibilityMode": 15,
+    "updateFieldsAtPrint": false,
+    "activePrinter": "Microsoft Print to PDF",
+    "culture": "tr-TR",
+    "build": "16.0.20430",
+    "version": "16.0",
+    "printHiddenText": false,
+    "renderedAt": "2026-10-10T05:56:11.6103499Z",
+    "updateLinksAtPrint": false
+   },
+   "acceptanceFingerprint": "108f08700538fc689aa08248c9db6702c4fbd0eee62dc91aee10c8a06157eacb"
+  },
+  "phd": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\phd.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\phd.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\phd.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\iyte.fixture.phd.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\phd.word.pdf",
+   "wordRenderInfoPath": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\phd.word.render.json",
+   "wordRenderInfo": {
+    "pid": 25916,
+    "printFieldCodes": false,
+    "uiCulture": "tr-TR",
+    "printBackground": true,
+    "compatibilityMode": 15,
+    "updateFieldsAtPrint": false,
+    "activePrinter": "Microsoft Print to PDF",
+    "culture": "tr-TR",
+    "build": "16.0.20430",
+    "version": "16.0",
+    "printHiddenText": false,
+    "renderedAt": "2026-10-10T05:56:20.1022812Z",
+    "updateLinksAtPrint": false
+   },
+   "acceptanceFingerprint": "afe5e5a0fb997142cf8836ea2df3a85725ab179e7b01f2a8bf18fd9b7c8d9d8a"
+  },
+  "articles-master": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-master.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-master.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-master.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\iyte.fixture.articles-master.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-master.word.pdf",
+   "wordRenderInfoPath": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-master.word.render.json",
+   "wordRenderInfo": {
+    "pid": 30648,
+    "printFieldCodes": false,
+    "uiCulture": "tr-TR",
+    "printBackground": true,
+    "compatibilityMode": 15,
+    "updateFieldsAtPrint": false,
+    "activePrinter": "Microsoft Print to PDF",
+    "culture": "tr-TR",
+    "build": "16.0.20430",
+    "version": "16.0",
+    "printHiddenText": false,
+    "renderedAt": "2026-10-10T05:56:26.8414662Z",
+    "updateLinksAtPrint": false
+   },
+   "acceptanceFingerprint": "68f77d3bf231de699350b20ac29f8d57a00dfe43c2512be04ccd9ce89280eb70"
+  },
+  "articles-phd": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-phd.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-phd.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-phd.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\iyte.fixture.articles-phd.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-phd.word.pdf",
+   "wordRenderInfoPath": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\articles-phd.word.render.json",
+   "wordRenderInfo": {
+    "pid": 26556,
+    "printFieldCodes": false,
+    "uiCulture": "tr-TR",
+    "printBackground": true,
+    "compatibilityMode": 15,
+    "updateFieldsAtPrint": false,
+    "activePrinter": "Microsoft Print to PDF",
+    "culture": "tr-TR",
+    "build": "16.0.20430",
+    "version": "16.0",
+    "printHiddenText": false,
+    "renderedAt": "2026-10-10T05:56:36.0300274Z",
+    "updateLinksAtPrint": false
+   },
+   "acceptanceFingerprint": "f34e7567dbc69d1a90711812e612ff2a8967f2427190660f7f284113782e1f16"
+  },
+  "eee": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\eee.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\eee.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\eee.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\iyte.fixture.eee.json",
+   "wordPdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\eee.word.pdf",
+   "wordRenderInfoPath": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\eee.word.render.json",
+   "wordRenderInfo": {
+    "pid": 31672,
+    "printFieldCodes": false,
+    "uiCulture": "tr-TR",
+    "printBackground": true,
+    "compatibilityMode": 15,
+    "updateFieldsAtPrint": false,
+    "activePrinter": "Microsoft Print to PDF",
+    "culture": "tr-TR",
+    "build": "16.0.20430",
+    "version": "16.0",
+    "printHiddenText": false,
+    "renderedAt": "2026-10-10T05:56:44.6706322Z",
+    "updateLinksAtPrint": false
+   },
+   "acceptanceFingerprint": "4bc9a1e52f08594a9af1c3e69d4b830b5fd8dbc0151b789fafa07b5d7a490b39"
+  }
+ },
+ "wordRequested": true,
+ "measurementSeconds": 1.891,
+ "commandSeconds": 81.804,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "9bf8d9eaac44db23b6f0affd8e047d1535860522",
+  "trackedDiffSha256": "484ad35df767e64b22a31977fc75fa5ca8db3e869641d5f56fb8f0b57f89193e",
+  "diagnosticsSha256": "9d28054675c03fee9a65e2f2a73c545f973ee3123c6cdcf670a95e09b12c8242",
+  "startedAt": "2026-10-10T05:55:29.524Z",
+  "codeFingerprint": "2a7bdb59109cee4ca4241b173e91be59de0dc26d73d5062af124cf7937552f7a",
+  "officialSourceFingerprint": "d08fa54134adb4fc3fc5f3a5a000dfbcf51dd772ef913e57e8a35be9093e11e2"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\iyte\\verified\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "master": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "phd": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "articles-master": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "articles-phd": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ],
+  "eee": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "0caa1cf650971107650ee0b740ee1b371bd2fab671342a42d77a8868e39082a5",
+ "artifactSha256": {
+  "master": {
+   "fixture": "743620ce2a004d3e5cd6a29d93b4a54967e263aa82a340a39a572e00e94edfaf",
+   "pdf": "5beb16a33ac1b7b02a29cb8710559da0b3ba54e057274436e7712d3d64738660",
+   "docx": "dde62d001e4a76a41759552c3484dfcfac12b60dc07db489a586bd38ecd91c6c",
+   "layout": "db0e5bf2e393f65bce1592215e6670d4c6b851a19ffff3f281b1686839e7644e",
+   "wordPdf": "bb63dda5e6ce6300b835d2d1c6f807509de6987145e027697d9610fa4c6d3155",
+   "wordRenderInfoPath": "cb41f83f05d466a6fc8a030962ae0de6c93c22dbbc2f855dfee0fc23bb1688e7"
+  },
+  "phd": {
+   "fixture": "b01426040b192cad8a2d8609dfdd2d7e090f318131f2a2d8597d42df6a98cff2",
+   "pdf": "d73ca9026dd7bd1ec53a5077c1b31c62b98ea626e2d576466c263fb18e84b84e",
+   "docx": "796016e48fa086094605ec3867411d0dde9c128302c4bd9ed4eabb6b0c9db57c",
+   "layout": "b5910e5d54d3ce8936bbb974ccaaf824d01cee918bacc6a5f23bc44f845b9070",
+   "wordPdf": "d3b7e3479456eede57ec96917dc3237d38083887a93d845f0d95381ca53c2796",
+   "wordRenderInfoPath": "a37b80e723095fecbe34a33aeb947438695c416d51e79144ed4e08973d21247d"
+  },
+  "articles-master": {
+   "fixture": "c63a9dd24b7fff7c368e3cf6c1e8ee51dd184532b039cfbedd6c9fca83784b75",
+   "pdf": "2b82ed82377b04635d94559e47f7ad7b85d8879953b02b5ef39ae2c825ace65a",
+   "docx": "e31ec839ae6fd521eefdd7a06f351ceefe898ad647fc1dbaade77b9253356eba",
+   "layout": "f3d126f3acbe549a012b6b43e4e05f7e617d347130eac306353a03febe5d8639",
+   "wordPdf": "16edd373a18b80268a0958131d59aa687bf4a31a7d84ef56eeb1c58dc4eab8ee",
+   "wordRenderInfoPath": "4621b9f6b505e0df169b9a8976c6633986528ee297690ba174dac2d5181a0406"
+  },
+  "articles-phd": {
+   "fixture": "3e0a0bf4536461197f2679c44c4e931a7a08a3274191d448b2d1e2683d8d146b",
+   "pdf": "785a5b454ff3deb9b801b4e608fdf37e9ba50778fdac76ea5631dd24b9e20c77",
+   "docx": "5b4c3a2615c7c88816693b106540fb13cda5401866b7f4c6025ab8caa13c88b3",
+   "layout": "7a80ea0ddc76f9c972504738cb405806a4dad4dbf7747a5dc565f1e4e814173d",
+   "wordPdf": "2bed166ce867ee371ad6554597c729e3f4763bc529845ac3b3d4d5c1026fa4b0",
+   "wordRenderInfoPath": "dedaea547568414af1c255d3dc99137340f18ea837a489e9576bbacc69ba95df"
+  },
+  "eee": {
+   "fixture": "29ea47c76d6edae7ce1c29bb28b4346f8952214df426519a0624b6dfc92cca50",
+   "pdf": "000e63b7fdc97e6ddb4157963bf95a742b3be4704a3c2b6a25db4705d26178c7",
+   "docx": "62a6886075b522b56955dcdad40a5b227d6268da0d95f0035c5d9afd099e039a",
+   "layout": "4fcba86a36cf9e8483a491e32063887b324d8b9dc49dfd35820bc51c1f4c0261",
+   "wordPdf": "89612960abc3674fd5328c06600d83857ee685d496d566fdeee8bcc1578980ef",
+   "wordRenderInfoPath": "5a3c5215dc8731a337139559b2fa8d2d88db3935c9285c7fb149eb6a8fed7f57"
+  }
+ },
+ "checks": [
+  {
+   "id": "master-page_size-0",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "13 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "master-fonts-1",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "master-font_size-2",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "master-first-line-indent-3",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 47.699,
+   "delta": -0.001,
+   "note": "6 lines, pages [4, 9, 11]",
+   "status": "PASS"
+  },
+  {
+   "id": "master-page_size-4",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    210.02,
+    297.01
+   ],
+   "delta": [
+    0.02,
+    0.01
+   ],
+   "note": "13 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "master-fonts-5",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "master-font_size-6",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "master-first-line-indent-7",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 47.717,
+   "delta": 0.017,
+   "note": "6 lines, pages [4, 9, 11]",
+   "status": "PASS"
+  },
+  {
+   "id": "master-docx_section-8",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "13 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "master-docx_section-9",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "13 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "master-docx_section-10",
+   "kind": "docx_section",
+   "expected": 35,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 34.996,
+   "delta": -0.004,
+   "note": "13 sections, range 34.996..34.996",
+   "status": "PASS"
+  },
+  {
+   "id": "master-docx_section-11",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "13 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "master-word_opens-12",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": "opened and exported",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-page_size-13",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "14 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-fonts-14",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "phd-font_size-15",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-first-line-indent-16",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 47.699,
+   "delta": -0.001,
+   "note": "6 lines, pages [4, 9, 11]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-page_size-17",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    210.02,
+    297.01
+   ],
+   "delta": [
+    0.02,
+    0.01
+   ],
+   "note": "14 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-fonts-18",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "phd-font_size-19",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-first-line-indent-20",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 47.717,
+   "delta": 0.017,
+   "note": "6 lines, pages [4, 9, 11]",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx_section-21",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "14 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx_section-22",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "14 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx_section-23",
+   "kind": "docx_section",
+   "expected": 35,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 34.996,
+   "delta": -0.004,
+   "note": "14 sections, range 34.996..34.996",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-docx_section-24",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "14 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "phd-word_opens-25",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": "opened and exported",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-page_size-26",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "16 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-fonts-27",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-font_size-28",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-first-line-indent-29",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 47.699,
+   "delta": -0.001,
+   "note": "6 lines, pages [6, 10, 11, 12, 13, 14]",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-page_size-30",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    210.02,
+    297.01
+   ],
+   "delta": [
+    0.02,
+    0.01
+   ],
+   "note": "16 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-fonts-31",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-font_size-32",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-first-line-indent-33",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 47.717,
+   "delta": 0.017,
+   "note": "6 lines, pages [6, 10, 11, 12, 13, 14]",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-docx_section-34",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-docx_section-35",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-docx_section-36",
+   "kind": "docx_section",
+   "expected": 35,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 34.996,
+   "delta": -0.004,
+   "note": "18 sections, range 34.996..34.996",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-docx_section-37",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-word_opens-38",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": "opened and exported",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-page_size-39",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    210.0,
+    297.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "16 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-fonts-40",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-font_size-41",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-first-line-indent-42",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 47.699,
+   "delta": -0.001,
+   "note": "6 lines, pages [6, 10, 11, 12, 13, 14]",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-page_size-43",
+   "kind": "page_size",
+   "expected": [
+    210,
+    297
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    210.02,
+    297.01
+   ],
+   "delta": [
+    0.02,
+    0.01
+   ],
+   "note": "16 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-fonts-44",
+   "kind": "fonts",
+   "expected": [
+    "TimesNewRomanPSMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "TimesNewRomanPSMT",
+    "TimesNewRomanPSMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-font_size-45",
+   "kind": "font_size",
+   "expected": 12,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 12.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {12.0: 468}",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-first-line-indent-46",
+   "kind": "line_attr",
+   "expected": 47.7,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 47.717,
+   "delta": 0.017,
+   "note": "6 lines, pages [6, 10, 11, 12, 13, 14]",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-docx_section-47",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-docx_section-48",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-docx_section-49",
+   "kind": "docx_section",
+   "expected": 35,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 34.996,
+   "delta": -0.004,
+   "note": "18 sections, range 34.996..34.996",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-docx_section-50",
+   "kind": "docx_section",
+   "expected": 25,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": 24.994,
+   "delta": -0.006,
+   "note": "18 sections, range 24.994..24.994",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-word_opens-51",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.1–2.9, §3.1–3.3"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": "opened and exported",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-page_size-52",
+   "kind": "page_size",
+   "expected": [
+    215.9,
+    279.4
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    215.9,
+    279.4
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "13 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-fonts-53",
+   "kind": "fonts",
+   "expected": [
+    "ArialMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "ArialMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "eee-font_size-54",
+   "kind": "font_size",
+   "expected": 11,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 11.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {11.0: 546}",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-first-line-indent-55",
+   "kind": "line_attr",
+   "expected": 37.9069,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 37.906,
+   "delta": -0.0009,
+   "note": "6 lines, pages [2, 7, 8, 9, 10, 11]",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-page_size-56",
+   "kind": "page_size",
+   "expected": [
+    215.9,
+    279.4
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    215.9,
+    279.4
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "13 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-fonts-57",
+   "kind": "fonts",
+   "expected": [
+    "ArialMT"
+   ],
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "ArialMT",
+    "ArialMT"
+   ],
+   "status": "PASS"
+  },
+  {
+   "id": "eee-font_size-58",
+   "kind": "font_size",
+   "expected": 11,
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 11.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {11.0: 546}",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-first-line-indent-59",
+   "kind": "line_attr",
+   "expected": 37.9069,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 37.895,
+   "delta": -0.0119,
+   "note": "6 lines, pages [2, 7, 8, 9, 10, 11]",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-docx_section-60",
+   "kind": "docx_section",
+   "expected": 25.4,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 25.4,
+   "delta": 0.0,
+   "note": "13 sections, range 25.4..25.4",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-docx_section-61",
+   "kind": "docx_section",
+   "expected": 25.4,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 25.4,
+   "delta": 0.0,
+   "note": "13 sections, range 25.4..25.4",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-docx_section-62",
+   "kind": "docx_section",
+   "expected": 25.4,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 25.4,
+   "delta": 0.0,
+   "note": "13 sections, range 25.4..25.4",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-docx_section-63",
+   "kind": "docx_section",
+   "expected": 25.4,
+   "tolerance": 0.05,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 25.4,
+   "delta": 0.0,
+   "note": "13 sections, range 25.4..25.4",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-word_opens-64",
+   "kind": "word_opens",
+   "expected": "opens in Word",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+    "locator": "sectPr and source Word render"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "opened and exported",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-bound-cover-pdf",
+   "kind": "page_size",
+   "expected": [
+    205,
+    290
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.11: bound dimensions 205×290 mm; 2026 article directive §4: outer cover"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    205.0,
+    290.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "1 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-master-bound-cover-word",
+   "kind": "page_size",
+   "expected": [
+    205,
+    290
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.11: bound dimensions 205×290 mm; 2026 article directive §4: outer cover"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    205.02,
+    289.98
+   ],
+   "delta": [
+    0.02,
+    -0.02
+   ],
+   "note": "1 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-bound-cover-pdf",
+   "kind": "page_size",
+   "expected": [
+    205,
+    290
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.11: bound dimensions 205×290 mm; 2026 article directive §4: outer cover"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    205.0,
+    290.0
+   ],
+   "delta": [
+    0.0,
+    0.0
+   ],
+   "note": "1 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "articles-phd-bound-cover-word",
+   "kind": "page_size",
+   "expected": [
+    205,
+    290
+   ],
+   "tolerance": 0.1,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.11: bound dimensions 205×290 mm; 2026 article directive §4: outer cover"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    205.02,
+    289.98
+   ],
+   "delta": [
+    0.02,
+    -0.02
+   ],
+   "note": "1 pages",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-abstract-second-page-pdf",
+   "kind": "font_size",
+   "expected": 11,
+   "tolerance": 0.1,
+   "source": {
+    "file": "orchestration/artifacts/iyte/source/eee-word/official-word.pdf",
+    "locator": "p2 ABSTRACT; fixed cover occupies exactly one page"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 11.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {11.0: 8}",
+   "status": "PASS"
+  },
+  {
+   "id": "eee-abstract-second-page-word",
+   "kind": "font_size",
+   "expected": 11,
+   "tolerance": 0.1,
+   "source": {
+    "file": "orchestration/artifacts/iyte/source/eee-word/official-word.pdf",
+    "locator": "p2 ABSTRACT; fixed cover occupies exactly one page"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": 11.0,
+   "delta": 0.0,
+   "note": "sizes by chars: {11.0: 9}",
+   "status": "PASS"
+  },
+  {
+   "id": "master-references-arabic-pdf",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "4"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "master-references-arabic-word",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "4"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "phd-references-arabic-pdf",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "4"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "phd-references-arabic-word",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "4"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "articles-master-references-arabic-pdf",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "6"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "articles-master-references-arabic-word",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "6"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "articles-phd-references-arabic-pdf",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": [
+    "6"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "articles-phd-references-arabic-word",
+   "kind": "page_labels",
+   "expected": "arabic",
+   "tolerance": 0,
+   "source": {
+    "file": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+    "locator": "§2.9: Arabic numbering continues through references and appendices"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "viaWord": true,
+   "actual": [
+    "6"
+   ],
+   "status": "FAIL"
+  },
+  {
+   "id": "engine-docx-package-master",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-master",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "67 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-master",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-master",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "pdf=13 word=13",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-master",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "pdf": "none x3, iv, v, vi, vii, viii, 1, 2, 3, 4, 5",
+    "word": "none x3, iv, v, vi, vii, viii, 1, 2, 3, 4, 5"
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-phd",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-phd",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0001,
+   "note": "69 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-phd",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-phd",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "pdf=14 word=14",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-phd",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "pdf": "none x3, iv, v, vi, vii, viii, 1, 2, 3, 4, 5, none",
+    "word": "none x3, iv, v, vi, vii, viii, 1, 2, 3, 4, 5, none"
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-articles-master",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-articles-master",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0001,
+   "note": "86 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-articles-master",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-articles-master",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "pdf=17 word=17",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-articles-master",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "pdf": "none x3, iii, none, v, vi, vii, viii, 1, 2, 3, 4, 5, 6, 7, none",
+    "word": "none x3, iii, none, v, vi, vii, viii, 1, 2, 3, 4, 5, 6, 7, none"
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-articles-phd",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-articles-phd",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0001,
+   "note": "86 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-articles-phd",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-articles-phd",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "pdf=17 word=17",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-articles-phd",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "pdf": "none x3, iii, none, v, vi, vii, viii, 1, 2, 3, 4, 5, 6, 7, none",
+    "word": "none x3, iii, none, v, vi, vii, viii, 1, 2, 3, 4, 5, 6, 7, none"
+   },
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-eee",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-eee",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "50 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-eee",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_count_match-eee",
+   "kind": "page_count_match",
+   "expected": "equal page counts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "pdf=13 word=13",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-page_labels_match-eee",
+   "kind": "page_labels_match",
+   "expected": "identical labels on every physical page",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real exports",
+    "locator": "PDF vs Word-rendered DOCX"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": {
+    "pdf": "none, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12",
+    "word": "none, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12"
+   },
+   "status": "PASS"
+  }
+ ]
+}

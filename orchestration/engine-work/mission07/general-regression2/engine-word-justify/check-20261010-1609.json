@@ -1,0 +1,353 @@
+{
+ "target": "engine-word-justify",
+ "stamp": "20261010-1609",
+ "counts": {
+  "SKIPPED": 16,
+  "PASS": 4
+ },
+ "variants": {
+  "default": {
+   "pdf": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression2\\engine-word-justify\\run\\default.pdf",
+   "docx": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression2\\engine-word-justify\\run\\default.docx",
+   "layout": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression2\\engine-word-justify\\run\\default.layout.json",
+   "fixture": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\specs\\engine-word-justify.fixture.json",
+   "wordNote": "Word render not requested (run with --word)",
+   "acceptanceFingerprint": "723dfeeaf1618b0f072240abf52fe14569c85fe529b9638cd0ae705a21a06802"
+  }
+ },
+ "wordRequested": false,
+ "measurementSeconds": 0.406,
+ "commandSeconds": 9.553,
+ "exportMode": "fresh",
+ "sourceProvenance": {
+  "revision": "9bf8d9eaac44db23b6f0affd8e047d1535860522",
+  "trackedDiffSha256": "bbcad9a0a7c62d07fdacfd0cf268b14ad245c2521a10b18b69bcccf9983c5049",
+  "diagnosticsSha256": "9d28054675c03fee9a65e2f2a73c545f973ee3123c6cdcf670a95e09b12c8242",
+  "startedAt": "2026-10-10T13:09:11.659Z",
+  "codeFingerprint": "811eb327054fcc4883ef1df8f21a82221236e1de5cbd9a3126ed46ec7de3dca3",
+  "officialSourceFingerprint": "90a6156dcb7f48e04a8aa73dc20bfeda0e68a8ccf76da4fb9becbf3a7ba208e5"
+ },
+ "rendererEnvironment": {
+  "path": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\mission07\\general-regression2\\engine-word-justify\\run\\environment.json",
+  "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f"
+ },
+ "wordDocumentSettings": {
+  "default": [
+   "<ns0:updateFields xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:val=\"0\" />",
+   "<ns0:compat xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\"><ns0:compatSetting ns0:val=\"15\" ns0:name=\"compatibilityMode\" ns0:uri=\"http://schemas.microsoft.com/office/word\" /></ns0:compat>"
+  ]
+ },
+ "checksSha256": "b753311f67d6b55cb2c7561c00b59c3006757b65cf49104c70d6ebb6a8febcc2",
+ "artifactSha256": {
+  "default": {
+   "fixture": "c95c5a351381128f45db24cf6c6f4d4dcfa62188828bbfc0d0de4aa79f1d3300",
+   "pdf": "e78f3a23aac4a2f8db27454aef4322edd5c7a64ba9fd212f27b2361bd90fcf99",
+   "docx": "2c766115f3ff51d7a76fcc5d69a2523503112251e1d7ec14c6bfeff7d625a7d6",
+   "layout": "822ad6a7028ad2547c91629e39df17595740ffc495c9b246812a971134fc4c0e"
+  }
+ },
+ "checks": [
+  {
+   "id": "J01-Times-New-Roman-10-justify-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J01: Times New Roman 10 pt justify"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J01-Times-New-Roman-10-justify-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line word x positions (natural spaces)",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J01: last line of each paragraph, Times New Roman 10 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J02-Times-New-Roman-12-justify-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J02: Times New Roman 12 pt justify"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J02-Times-New-Roman-12-justify-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line word x positions (natural spaces)",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J02: last line of each paragraph, Times New Roman 12 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J03-Arial-10-justify-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J03: Arial 10 pt justify"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J03-Arial-10-justify-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line word x positions (natural spaces)",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J03: last line of each paragraph, Arial 10 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J04-Arial-12-justify-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J04: Arial 12 pt justify"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J04-Arial-12-justify-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line word x positions (natural spaces)",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J04: last line of each paragraph, Arial 12 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J05-Calibri-10-justify-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J05: Calibri 10 pt justify"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J05-Calibri-10-justify-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line word x positions (natural spaces)",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J05: last line of each paragraph, Calibri 10 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J06-Calibri-12-justify-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J06: Calibri 12 pt justify"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J06-Calibri-12-justify-last-line-words",
+   "kind": "last_line_words_match",
+   "expected": "Word last-line word x positions (natural spaces)",
+   "tolerance": 0.25,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J06: last line of each paragraph, Calibri 12 pt"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J07-Times-New-Roman-12-left-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J07: Times New Roman 12 pt left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "J08-Arial-10-left-line-breaks",
+   "kind": "line_breaks_match",
+   "expected": "Word line texts",
+   "tolerance": 0.5,
+   "source": {
+    "file": "real Word render of exported fixture DOCX",
+    "locator": "J08: Arial 10 pt left"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "word_opens",
+   "kind": "word_opens",
+   "expected": true,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Word engine acceptance fixture",
+    "locator": "physical page sequence and OOXML validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "page_count_match",
+   "kind": "page_count_match",
+   "expected": true,
+   "tolerance": 0.5,
+   "source": {
+    "file": "Word engine acceptance fixture",
+    "locator": "physical page sequence and OOXML validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "status": "SKIPPED",
+   "reason": "Word render not requested (run with --word)"
+  },
+  {
+   "id": "docx_no_undefined",
+   "kind": "docx_no_undefined",
+   "expected": "none",
+   "tolerance": 0.5,
+   "source": {
+    "file": "Word engine acceptance fixture",
+    "locator": "physical page sequence and OOXML validity"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-docx-package-default",
+   "kind": "docx_package_relationships",
+   "expected": "well-formed XML and resolvable package relationships; schema validation separate",
+   "tolerance": 0,
+   "source": {
+    "file": "DOCX package",
+    "locator": "XML parse and internal relationship targets"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": "none",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-pdf-default",
+   "kind": "layout_pdf_consistency",
+   "expected": "<=0.25 mm; all sampled text present",
+   "tolerance": 0.25,
+   "source": {
+    "file": "exported PDF",
+    "locator": "independent PyMuPDF glyph origins vs engine report"
+   },
+   "evidence": "MEASURED",
+   "ruling": null,
+   "required": true,
+   "actual": 0.0,
+   "note": "32 independent PDF glyph samples; ",
+   "status": "PASS"
+  },
+  {
+   "id": "engine-layout-report-default",
+   "kind": "layout_report_valid",
+   "expected": true,
+   "tolerance": 0,
+   "source": {
+    "file": "schema.d.ts",
+    "locator": "ThesisLayoutReport version 1"
+   },
+   "evidence": "EXPLICIT",
+   "ruling": null,
+   "required": true,
+   "actual": true,
+   "note": "version-1 layout contract valid",
+   "status": "PASS"
+  }
+ ]
+}

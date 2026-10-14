@@ -1,0 +1,134 @@
+{
+  "id": "SRC10",
+  "status": "MEASURED",
+  "pageErrors": [],
+  "loadMs": 8208,
+  "pages": 91,
+  "probe": [
+    {
+      "id": "docx-3929",
+      "lines": [
+        {
+          "page": 56,
+          "x": 141.54231343388366,
+          "y": 684.8080721477432,
+          "text": "False Negative: This value is calculated by finding the model’s “False"
+        },
+        {
+          "page": 56,
+          "x": 149.44354205399387,
+          "y": 705.5091972784126,
+          "text": "Negative” predictions while comparing the real occurred observations and it"
+        },
+        {
+          "page": 56,
+          "x": 149.44354205399387,
+          "y": 726.2157830065839,
+          "text": "contains examples that have been incorrectly classified as negative and are"
+        },
+        {
+          "page": 56,
+          "x": 149.44354205399387,
+          "y": 746.916908137253,
+          "text": "therefore actually positive. In this study, if a real occurred Damaged = YES"
+        },
+        {
+          "page": 57,
+          "x": 149.44354205399387,
+          "y": 71.62665743576576,
+          "text": "observation was predicted by the ML Classification algorithm correctly as"
+        },
+        {
+          "page": 57,
+          "x": 149.44354205399387,
+          "y": 92.32778256643496,
+          "text": "Damaged = NO, then this performance observation can be counted as “True"
+        },
+        {
+          "page": 57,
+          "x": 149.44354205399387,
+          "y": 113.03436829460634,
+          "text": "Negative”."
+        }
+      ],
+      "paragraph": {
+        "tag": "P",
+        "font": "\"Times New Roman\"",
+        "size": "16px",
+        "line": "27.5976px",
+        "indent": "-10.5335px",
+        "left": "24px",
+        "padding": "0px",
+        "width": "500px"
+      },
+      "item": {
+        "tag": "LI",
+        "font": "\"Times New Roman\"",
+        "size": "16px",
+        "line": "27.5976px",
+        "indent": "0px",
+        "left": "0px",
+        "padding": "0px",
+        "width": "524px"
+      },
+      "list": {
+        "tag": "UL",
+        "font": "\"Times New Roman\"",
+        "size": "16px",
+        "line": "27.5984px",
+        "indent": "0px",
+        "left": "0px",
+        "padding": "24px",
+        "width": "548px"
+      }
+    },
+    {
+      "id": "docx-4209",
+      "lines": [
+        {
+          "page": 58,
+          "x": 113.43081620544638,
+          "y": 695.762030737066,
+          "text": "An increase in the F1 score indicates that our model's performance has improved in"
+        },
+        {
+          "page": 58,
+          "x": 113.43081620544638,
+          "y": 716.4631558677352,
+          "text": "accuracy, recall, or both. Eventually, the F1 score performance metric will be the most"
+        },
+        {
+          "page": 58,
+          "x": 113.43081620544638,
+          "y": 737.1697415959065,
+          "text": "appropriate and effective performance metric for two-class classification ML models."
+        },
+        {
+          "page": 59,
+          "x": 113.43081620544638,
+          "y": 71.62665743576576,
+          "text": "With these advantages, the F1 score metric has been selected as the primary"
+        },
+        {
+          "page": 59,
+          "x": 113.43081620544638,
+          "y": 92.32778256643496,
+          "text": "performance metric for this study’s classification-based ML algorithms."
+        }
+      ],
+      "paragraph": {
+        "tag": "P",
+        "font": "\"Times New Roman\"",
+        "size": "16px",
+        "line": "27.5976px",
+        "indent": "0px",
+        "left": "0px",
+        "padding": "0px",
+        "width": "548px"
+      },
+      "item": null,
+      "list": null
+    }
+  ],
+  "editMeasurement": "Read-only layout control"
+}

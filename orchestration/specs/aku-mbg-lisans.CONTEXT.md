@@ -1,7 +1,7 @@
 # aku-mbg-lisans — context pack
 ## Identity
 - Registry id(s): `aku-mbg-lisans-tr-v1`
-- Template module: `TxtNote/frontend/src/thesis/templates/aku-mbg.js` (exports: akuMbgLisans)
+- Template module: `engine/src/templates/aku-mbg.js` (exports: akuMbgLisans)
 - Spec: `orchestration/specs/aku-mbg-lisans.json`; checker files now present: `orchestration/specs/aku-mbg-lisans.checks.json` and `.fixture.json`; progress report: `orchestration/reports/aku-mbg-lisans.md`
 ## Sources
 - `Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf`

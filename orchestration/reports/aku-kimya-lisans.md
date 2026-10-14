@@ -8,7 +8,7 @@ Status: **PASS (self-check)** with the documented deviations below. Registry id 
 - Word COM rendered the official DOCX to `orchestration/artifacts/aku-kimya-lisans/source/template.pdf` (measured geometry). LibreOffice was not needed.
 
 ## Files
-`TxtNote/frontend/src/thesis/templates/aku-kimya.js`, `templates/assets/akuKimyaLogo.js` (template `image1.jpg`, md5 2cc4f4f4…), `src/lib/thesisAkuKimya.test.js` (7 tests), one Edit in `registry.js`, `orchestration/specs/aku-kimya-lisans.json` (34 rules: 22 EXPLICIT, 5 TEMPLATE, 5 MEASURED, 1 INFERRED, 1 UNKNOWN; 7 conflicts, 7 unknowns, 3 engine gaps), this report, `orchestration/validation/aku-kimya-lisans/self-1/` (fixture, real exports `kimya.pdf`/`kimya.docx`, Word render of the exported DOCX `kimya_word.pdf`, `compare.py`, compare outputs).
+`engine/src/templates/aku-kimya.js`, `templates/assets/akuKimyaLogo.js` (template `image1.jpg`, md5 2cc4f4f4…), `src/lib/thesisAkuKimya.test.js` (7 tests), one Edit in `registry.js`, `orchestration/specs/aku-kimya-lisans.json` (34 rules: 22 EXPLICIT, 5 TEMPLATE, 5 MEASURED, 1 INFERRED, 1 UNKNOWN; 7 conflicts, 7 unknowns, 3 engine gaps), this report, `orchestration/validation/aku-kimya-lisans/self-1/` (fixture, real exports `kimya.pdf`/`kimya.docx`, Word render of the exported DOCX `kimya_word.pdf`, `compare.py`, compare outputs).
 
 ## Real-export measurement (template Word render vs exported PDF vs Word render of the exported DOCX)
 Template p.N compared with the same page of each output (tolerance 0.5 mm; `compare-*.txt`):

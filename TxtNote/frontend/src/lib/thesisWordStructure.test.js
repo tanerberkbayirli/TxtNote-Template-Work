@@ -1,12 +1,12 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { strFromU8, unzipSync } from "fflate";
-import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument, groupThesisSections, buildThesisCss } from "../thesis/engine.js";
-import { buildThesisDocx } from "../thesis/export.js";
-import { buildThesisPageModel, thesisPagedCss } from "../thesis/pageLayout.js";
-import { tableSemanticsCss } from "../thesis/tableSemantics.js";
-import { thesisSourceHtml } from "../thesis/sourceHtml.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument, groupThesisSections, buildThesisCss } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { buildThesisPageModel, thesisPagedCss } from "../../../../engine/src/pageLayout.js";
+import { tableSemanticsCss } from "../../../../engine/src/tableSemantics.js";
+import { thesisSourceHtml } from "../../../../engine/src/sourceHtml.js";
 
 const table = '<table><colgroup><col data-col-width="25"><col data-col-width="75"></colgroup><thead><tr><th>A</th><th>B</th></tr></thead><tbody><tr><td>a</td><td>b</td></tr></tbody></table>';
 const compile = (template, html = table) => compileThesisDocument(template, {}, "T", html);

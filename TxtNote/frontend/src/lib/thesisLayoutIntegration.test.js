@@ -1,9 +1,9 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import generic from "../thesis/templates/generic.js";
-import { compileThesisDocument, buildThesisCss } from "../thesis/engine.js";
-import { walkSpecialPage } from "../thesis/specialPages.js";
-import { resolveGeneratedIndexes } from "../thesis/generatedIndex.js";
+import generic from "../../../../engine/src/templates/generic.js";
+import { compileThesisDocument, buildThesisCss } from "../../../../engine/src/engine.js";
+import { walkSpecialPage } from "../../../../engine/src/specialPages.js";
+import { resolveGeneratedIndexes } from "../../../../engine/src/generatedIndex.js";
 
 test("template layout overrides drive canonical compiler and CSP-safe rendering", () => {
   const original = JSON.stringify(generic);

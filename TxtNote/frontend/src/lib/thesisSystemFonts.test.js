@@ -4,11 +4,11 @@ import { existsSync } from "node:fs";
 import { jsPDF } from "jspdf";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { academicPdfFont, academicPdfFontFace, embedAcademicPdfFonts, hasSystemPdfFont } from "./academicFonts.js";
-import { ARIAL_FACES, CALIBRI_FACES, CAMBRIA_MATH_FACES, loadSystemFontFamily, systemPdfFontFamily, TIMES_NEW_ROMAN_FACES } from "./systemPdfFonts.js";
+import { ARIAL_FACES, CALIBRI_FACES, CAMBRIA_MATH_FACES, isSymbolEncodedFamily, loadSystemFontFamily, symbolCmapAsUnicode, symbolFontText, systemPdfFontFamily, TIMES_NEW_ROMAN_FACES } from "./systemPdfFonts.js";
 import { embeddedPdfFonts } from "../../tests/pdf-font-compliance.mjs";
-import { compileThesisDocument, templateFontFamilies } from "../thesis/engine.js";
-import { mcbuMaster } from "../thesis/templates/mcbu.js";
-import generic from "../thesis/templates/generic.js";
+import { compileThesisDocument, templateFontFamilies } from "../../../../engine/src/engine.js";
+import { mcbuMaster } from "../../../../engine/src/templates/mcbu.js";
+import generic from "../../../../engine/src/templates/generic.js";
 
 const turkish = "İ ı Ş ş Ğ ğ Ü ü Ö ö Ç ç";
 const haveCoreFonts = process.platform === "win32" || existsSync("/usr/share/fonts/truetype/msttcorefonts/arial.ttf");
@@ -93,5 +93,74 @@ describe("template-driven genuine PDF fonts", () => {
     assert.equal(academicPdfFont(pdf, "normal", "Calibri"), CALIBRI_FACES.normal.postscript);
     assert.equal(academicPdfFont(pdf, "bold", "Calibri"), CALIBRI_FACES.bold.postscript);
     await assert.rejects(() => embedAcademicPdfFonts(new jsPDF(), { templateId: "x", systemFonts: ["Comic Sans MS"] }), /izin verilen/);
+  });
+
+  for (const family of ["Consolas", "Courier New"]) it(`embeds all genuine ${family} faces and preserves monospaced Turkish text`, { skip: process.platform !== "win32" }, async () => {
+    const fonts = await loadSystemFontFamily(family);
+    const pdf = new jsPDF({ compress: true, putOnlyUsedFonts: true });
+    await embedAcademicPdfFonts(pdf, { extraFontFamilies: [family] });
+    for (const [index, style] of ["normal", "bold", "italic", "bolditalic"].entries()) {
+      const face = academicPdfFontFace(pdf, style, family);
+      assert.equal(face.name, fonts[style].identity.postscript);
+      assert.equal(fonts[style].identity.family, family);
+      assert.equal(fonts[style].identity.fsType & (0x0002 | 0x0100 | 0x0200), 0);
+      pdf.setFont(face.name, face.style);
+      assert.ok(Math.abs(pdf.getTextWidth("iiii") - pdf.getTextWidth("WWWW")) < 0.001, "actual monospaced advances are used");
+      pdf.text(`${style} ${turkish}`, 20, 30 + index * 20);
+    }
+    const bytes = new Uint8Array(pdf.output("arraybuffer"));
+    const embedded = embeddedPdfFonts(bytes);
+    assert.equal(embedded.filter(font => font.family === family).length, 4);
+    const task = getDocument({ data: bytes, useSystemFonts: false, disableFontFace: true });
+    try {
+      const doc = await task.promise;
+      // PDF.js may add geometric whitespace between monospaced glyph runs.
+      const text = (await (await doc.getPage(1)).getTextContent()).items.map(item => item.str).join(" ").replace(/\s+/g, " ");
+      for (const style of ["normal", "bold", "italic", "bolditalic"]) assert.ok(text.includes(`${style} ${turkish}`), JSON.stringify(text));
+    } finally { await task.destroy(); }
+  });
+
+  it("maps symbol-font families and their plain 0x20..0xFF characters to the PUA code points", () => {
+    for (const name of ["Wingdings", "wingdings 2", "Wingdings 3", "Symbol"]) assert.ok(isSymbolEncodedFamily(name), name);
+    assert.equal(isSymbolEncodedFamily("Arial"), false);
+    assert.equal(symbolFontText(""), "");
+    assert.equal(symbolFontText("ü A"), "");
+    assert.equal(symbolFontText("•"), "•", "characters outside the symbol range are not guessed");
+  });
+
+  for (const [family, sample] of [["Wingdings", ""], ["Wingdings 2", ""], ["Wingdings 3", ""], ["Symbol", ""]]) {
+    it(`embeds genuine ${family} (symbol cmap) and draws its PUA glyphs`, { skip: process.platform !== "win32" }, async () => {
+      const fonts = await loadSystemFontFamily(family);
+      assert.deepEqual(Object.keys(fonts), ["normal"]);
+      assert.equal(fonts.normal.identity.family, family);
+      assert.equal(fonts.normal.identity.fsType & (0x0002 | 0x0100 | 0x0200), 0);
+      const pdf = new jsPDF({ compress: true, putOnlyUsedFonts: true });
+      await embedAcademicPdfFonts(pdf, { extraFontFamilies: [family] });
+      assert.ok(hasSystemPdfFont(pdf, family));
+      const face = academicPdfFontFace(pdf, "bold", family);
+      assert.equal(face.style, "normal", "single-face family never asks for a missing bold program");
+      pdf.setFont(face.name, face.style);
+      const codeMap = pdf.getFont().metadata.cmap.unicode.codeMap;
+      for (const char of sample) assert.ok(codeMap[char.charCodeAt(0)] > 0, `glyph for U+${char.charCodeAt(0).toString(16)}`);
+      assert.ok(pdf.getTextWidth(sample) > 0);
+      pdf.text(sample, 20, 30);
+      const bytes = new Uint8Array(pdf.output("arraybuffer"));
+      assert.ok(embeddedPdfFonts(bytes).some((font) => font.family === family), "program is embedded in the PDF");
+      const task = getDocument({ data: bytes, useSystemFonts: false, disableFontFace: true });
+      try {
+        const text = (await (await (await task.promise).getPage(1)).getTextContent()).items.map((item) => item.str).join("");
+        assert.equal(text.replace(/\s+/g, ""), sample, "ToUnicode keeps the symbol code points");
+      } finally { await task.destroy(); }
+    });
+  }
+
+  it("re-labels only a symbol-only cmap and leaves Unicode fonts untouched", { skip: process.platform !== "win32" }, async () => {
+    const wingdings = (await loadSystemFontFamily("Wingdings")).normal.bytes;
+    const view = new DataView(wingdings.buffer, wingdings.byteOffset, wingdings.byteLength);
+    const arial = new Uint8Array((await import("node:fs")).readFileSync("C:/Windows/Fonts/arial.ttf"));
+    assert.equal(symbolCmapAsUnicode(arial), arial);
+    const again = symbolCmapAsUnicode(wingdings);
+    assert.equal(again, wingdings, "idempotent once re-labelled");
+    assert.ok(view.byteLength > 0);
   });
 });

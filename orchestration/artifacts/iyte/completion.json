@@ -1,0 +1,330 @@
+{
+  "status": "PASS",
+  "completedAt": "2026-10-10T06:14:14.506757+00:00",
+  "templateIds": [
+    "iyte-lee-master-en-v1",
+    "iyte-lee-phd-en-v1",
+    "iyte-lee-articles-master-en-v1",
+    "iyte-lee-articles-phd-en-v1",
+    "iyte-eee-undergraduate-en-v1"
+  ],
+  "sourcesUnchanged": true,
+  "sources": [
+    {
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Elektrik_Elektronik_Muhendisligi_Bitirme/IYTE_EEE_BSc_Project_Final_Report_Format_2025-12.docx",
+      "bytes": 101260,
+      "sha256": "4480072e4523910d3127f9ce294801db0534899359f33e5125ef5ea9ca053bd8"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Doctoral_Theses_from_Articles_Guidelines_EN_2024-08.pdf",
+      "bytes": 121754,
+      "sha256": "43302403c95123b4f3824e1f81ae987d5837d37332bb897bcfd8c7f520cd8f76"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Kaynak_Gosterme_Yontemleri_2026.pdf",
+      "bytes": 1350810,
+      "sha256": "66e1d8ba8260845d2931a20517bb9e1187a0a3e1ac3c075b034c7986121777f0"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+      "bytes": 1373668,
+      "sha256": "0364854d1bbadd00c4bb65829cf7d1f431a74e61c7093515ce7c9703ef19eefb"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Makale_Tez_Yonergesi_2026.pdf",
+      "bytes": 539934,
+      "sha256": "5dddbaa4b41118cf63a96c14a64ea8c87758b0adeb5573c472fc63b8968ee824"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Referans_Sistemleri_Senato_Karari_2024.pdf",
+      "bytes": 51311,
+      "sha256": "11a218602be63103163b0f95020f75377051f4f90769594fb39467fa06d74de0"
+    },
+    {
+      "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Senate_Decision_Reference_System_EN_2024-08.pdf",
+      "bytes": 377934,
+      "sha256": "fdbd220279dc363d041fad14b1867e29c0a16298eb1085a78af6c719f286a831"
+    }
+  ],
+  "verification": {
+    "unitTestsPassed": 795,
+    "conformanceChecksPassed": 124,
+    "browserFlowsPassed": 5,
+    "productionBuild": "PASS",
+    "visualReview": "All pages of five final editor PDFs and five final Word PDFs reviewed",
+    "measurementMode": "existing-artifacts; fresh final-code exports; corrected actual-chapter selector; unchanged source tolerances"
+  },
+  "verificationFiles": [
+    {
+      "path": "orchestration/validation/iyte/acceptance-final/check-20261010-0913.json",
+      "sha256": "652a75bc5a18eb1fcc6c12e926d878b37cfadc19cdcaa35d807fc495132b53d6",
+      "bytes": 78810
+    },
+    {
+      "path": "orchestration/validation/iyte/ui/report.json",
+      "sha256": "818c11b15d908d09505443b03485d43259d4f3e1bd79c2a9a2bef7a8d79045f0",
+      "bytes": 1491
+    },
+    {
+      "path": "orchestration/validation/iyte/unit-tests-completed.log",
+      "sha256": "e8db686046c39291fc0eaca1e31063c0a1d9044ef734f3518740f767eb2d4df3",
+      "bytes": 199234
+    },
+    {
+      "path": "orchestration/validation/iyte/build-completed.log",
+      "sha256": "702fc36e26d4bc54b3755302df83ed14fd49bf4cf2cf7b9f9dc5082f528543aa",
+      "bytes": 15510
+    }
+  ],
+  "implementationFiles": [
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/iyte.js",
+      "sha256": "b71a2af4b2e0eb00ca715d2f15d9a5cf464c9381c86e9307e595793f196cdc45",
+      "bytes": 21411
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/templates/assets/iyteLogo.js",
+      "sha256": "8ad63c0a30539ae1f9a498545f1a5ea9ab6fc3f57ab263d0665aa1f7cd0aac5d",
+      "bytes": 31086
+    },
+    {
+      "path": "TxtNote/frontend/src/thesis/registry.js",
+      "sha256": "72bd2cbac079e82445eee9ef2753de04c5a3a4ded2b61437d76b8a343a6a82bf",
+      "bytes": 19969
+    },
+    {
+      "path": "TxtNote/frontend/src/features/editor/ThesisEditor.jsx",
+      "sha256": "6995b9cefabbc9b1bc75bb6f80ff646c51887323560df96883bbfc3df90456f5",
+      "bytes": 64825
+    },
+    {
+      "path": "TxtNote/frontend/src/features/editor/ThesisStatusBar.jsx",
+      "sha256": "31dae625f47e57252448c38a1ab84d95da95625c8e175707adecfe7c51560c8e",
+      "bytes": 2627
+    },
+    {
+      "path": "TxtNote/frontend/src/lib/thesisIyte.test.js",
+      "sha256": "bd4daa0982513b208473b3898e0e88ec9a73552bea83e4779ba29c817417ed38",
+      "bytes": 8871
+    },
+    {
+      "path": "TxtNote/frontend/src/lib/thesisEngine.test.js",
+      "sha256": "3e51578ded4089efdc811069deddf3a8cfdc6479952fa86ac07ec5d9bbcef859",
+      "bytes": 28993
+    },
+    {
+      "path": "orchestration/specs/iyte.checks.json",
+      "sha256": "a6a579a92043e97ebd859b388068d601cbba19ce2f04537fa2d19d58815b0255",
+      "bytes": 60721
+    },
+    {
+      "path": "orchestration/specs/iyte.CONTEXT.md",
+      "sha256": "db4d7936a36a196d6a72e87eb6e140ece3401a6117ff6382a9c58245215aa197",
+      "bytes": 9935
+    },
+    {
+      "path": "orchestration/tools/iyte-ui.mjs",
+      "sha256": "c0dab3be6de4442d78909bc5b7a51e55790d0a3ff49846e7edde48e9be904ca1",
+      "bytes": 3360
+    },
+    {
+      "path": "TxtNote/frontend/tests/iyte.html",
+      "sha256": "36177ff719a6db439d1a430b858ca9cfc6f2e47709a4b48fa9caf4177416dfb9",
+      "bytes": 219
+    },
+    {
+      "path": "TxtNote/frontend/tests/iyte-fixture.jsx",
+      "sha256": "770ea71865ad912eb462487a29bc014d54b145f6cd2323923c02e67b3858d506",
+      "bytes": 1573
+    }
+  ],
+  "exports": [
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-master.docx",
+      "sha256": "4d1012d0c07cfe109c3df6f1d27ed72c32bd48d8bfd0369fdc08d1312840acca",
+      "bytes": 36004
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-master.layout.json",
+      "sha256": "567c2f548ecdb1765c3d6f0271443ff0dea15dd6e65a269692c10399decd4fa6",
+      "bytes": 398397
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-master.pdf",
+      "sha256": "183fc7a070c1e412ea5b9c04b8ea7a97fcd215a8ec810f798f937062c478c584",
+      "bytes": 149520
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-master.word.pdf",
+      "sha256": "f227dc4f7a071d0faedf4f484bc4544da7698daf6beaed7ed78c3f74ae6e9841",
+      "bytes": 136756
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-master.word.render.json",
+      "sha256": "a02d5574a7e2f6559b64649e299a5c3d446609722123129d51579a1940928152",
+      "bytes": 434
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-phd.docx",
+      "sha256": "85181a32637df2c29f10c80b0c13748dd5a0a051305ffa42d2bc6c14a56272a6",
+      "bytes": 36012
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-phd.layout.json",
+      "sha256": "78de28f466f54cdb01b38f04825fbec3f60b0dd9d81ca58160edb46058224330",
+      "bytes": 398402
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-phd.pdf",
+      "sha256": "1aacd00fd26a7ce9499424a61f25989acc2f502d89be22c124e981ce47bc6bcf",
+      "bytes": 149802
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-phd.word.pdf",
+      "sha256": "0ca48d0e2bab39b797c4d2828d354263730d596d783e339e431c9ebef2f43292",
+      "bytes": 136990
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/articles-phd.word.render.json",
+      "sha256": "33e98533c906b00f861ee996665925d949219c0de65d024dcc70557eadea8dd4",
+      "bytes": 434
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/check.log",
+      "sha256": "ebb9fa40d2c1551cde3c06e2c0b05c4c3bedb5f77a21582ac0c7e78c3bd7c6ce",
+      "bytes": 1177
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/eee.docx",
+      "sha256": "7bb4062a68f6d8e2830fc7187be3841c5c5b522cc5333719120152fc97794e37",
+      "bytes": 30467
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/eee.layout.json",
+      "sha256": "123345ebbe5da2560e121326b62c451dfae78c502396c9526c026f257b699455",
+      "bytes": 268333
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/eee.pdf",
+      "sha256": "c339c84d23800e1f52f30ce5f225315b8eb16c1d3cb9dbd2abf3b90d82694fad",
+      "bytes": 309290
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/eee.word.pdf",
+      "sha256": "cbc17ac4c1a56db4d4a52de8eb3e9f1757ac8d575996633ac7016cf4f785b19f",
+      "bytes": 186390
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/eee.word.render.json",
+      "sha256": "5d2809fe2f756fdc8fedf7b0c143f4ac898718d1cb4ea61d9e706975b53a9daf",
+      "bytes": 434
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/environment.json",
+      "sha256": "03a416e7c02c095fd0f9f188dafdab6bbd19364fd6404da7ecef6551699e907f",
+      "bytes": 69117
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/master.docx",
+      "sha256": "5752d95c4e70b91bcfd10c250a583cf4fbfb6100383ad78ee7f6b13ef6818945",
+      "bytes": 28880
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/master.layout.json",
+      "sha256": "535008cae362a5b3389f6552d5fe9fbc275dbad4230cbc4af7ca11e590dfd28d",
+      "bytes": 339106
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/master.pdf",
+      "sha256": "caa72a0e2552cac390baeb1721c8daf1de0c332875f5e9f0a72657616eaab86c",
+      "bytes": 141497
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/master.word.pdf",
+      "sha256": "13ee80728c859efd0972366d67a1d282625a0c7c921827b1df6e796778bc5f89",
+      "bytes": 127113
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/master.word.render.json",
+      "sha256": "28f226a27a5a469c1ae41473123c6db42cd797bb17485fc593502911d8c8e89f",
+      "bytes": 434
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/phd.docx",
+      "sha256": "a781dd500a74b9df16a1e139bd5c5e841c30486de609cfe6ef5af9f3faf2d4ea",
+      "bytes": 29648
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/phd.layout.json",
+      "sha256": "883314e9b2c1dafb9d3e48665dce89cbc3095cf65a7ea857f2c9c511a490be54",
+      "bytes": 346716
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/phd.pdf",
+      "sha256": "2edfa01dfd57235e9d1864aaaea25d59e31f74b3eeaaf455fe82af1a8b33e5c9",
+      "bytes": 142566
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/phd.word.pdf",
+      "sha256": "58514cb70853f9e03507a9ca2913c7fe02f8b6c23e467ce825ab9bdbc390b692",
+      "bytes": 128450
+    },
+    {
+      "path": "orchestration/validation/iyte/completed/run/phd.word.render.json",
+      "sha256": "e2dcac1e5aebe791881c2d3b6f980c979ef531b0add6620b10e324e1bad7a275",
+      "bytes": 434
+    }
+  ],
+  "visuals": [
+    {
+      "path": "orchestration/validation/iyte/visual/articles-master-pdf-all.png",
+      "sha256": "ea1074f1f7a9fe3a8de8145a69e92e11e714b5fa7264076f55e55b99ad13c617",
+      "bytes": 118806
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/articles-master-word.pdf-all.png",
+      "sha256": "422be27817e28befd9ab23379cb5a4276544b98dfc3a47427d2688320c60b7ab",
+      "bytes": 119926
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/articles-phd-pdf-all.png",
+      "sha256": "de0e76504440f1feb51ebcdbd0c47bbf8dabae99a15bc0de4a0f15640707ffb6",
+      "bytes": 118801
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/articles-phd-word.pdf-all.png",
+      "sha256": "08cfa9d029220fb3be789e117e3e2b64893f2a8962482d56a56accc1107c42fd",
+      "bytes": 119881
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/eee-pdf-all.png",
+      "sha256": "bae6c2106645b84a1e63c88cf75cf8498a71881ee664e2a34cac7e57e6288d28",
+      "bytes": 57133
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/eee-word.pdf-all.png",
+      "sha256": "a796c67d1cd165b27438a70ab81e57c0a6bcf5bde869df5deb1ef63274f00c38",
+      "bytes": 57302
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/master-pdf-all.png",
+      "sha256": "2b0dfde4c426e15f443a188ee99101d265bf61029224a668421c0909f55a6d84",
+      "bytes": 106424
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/master-word.pdf-all.png",
+      "sha256": "3ac60f05549caf0bad124b7d4ff8854d551a91ebfc32b28e4bc7644caf203148",
+      "bytes": 106779
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/phd-pdf-all.png",
+      "sha256": "e1acdfb44605972ee983469fddc6b0dde2af90529fd3eef097955d9fa70337c8",
+      "bytes": 107290
+    },
+    {
+      "path": "orchestration/validation/iyte/visual/phd-word.pdf-all.png",
+      "sha256": "9e1016d9cc5ee96959b107df34f9ee06ebdfed5e59da885aaeb8773985171299",
+      "bytes": 108004
+    }
+  ]
+}
