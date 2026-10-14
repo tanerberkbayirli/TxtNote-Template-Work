@@ -1,4 +1,6 @@
 # mcbu-tip-uzmanlik — context pack
+## Current checkpoint — 2026-10-15
+Fresh real editor/Word validation: 94 PASS, 0 FAIL, 1 required UNKNOWN (guide currency/conflicts), 1 INFO. Chapter-opening number suppression is verified in PDF, Word and refreshed Word. Added English thesis title, required chapter/citation/bibliography checks and measured preface/Turkish-abstract page-limit warnings. TOC refresh no longer creates a blank page (30/30/30 pages). The 2026-10-02 status/open-issue notes below are historical; no claim is made for the fallback PDF writer. Evidence: `orchestration/validation/mcbu-final2-20261015/mcbu-tip-uzmanlik/`. Current report: `orchestration/reports/MCBU_DUZELTMELER_VE_KABUL_2026-10-15.md`. University confirmation remains required; the old guide PDF could not be downloaded again (403).
 ## Identity
 - Registry id(s): `mcbu-tip-uzmanlik-tr-v1`
 - Template module: `engine/src/templates/mcbu-tip.js` (exports: mcbuTipUzmanlik)

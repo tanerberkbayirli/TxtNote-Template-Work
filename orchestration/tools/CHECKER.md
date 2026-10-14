@@ -53,6 +53,8 @@ python orchestration/tools/conformance.py inspect-docx --docx source.docx --styl
 `toc_labels` accepts `params.leader:"none"` for source-required rows without dotted leaders; the default remains dotted rows.
 
 ## Check kinds
+
+`text_sequence` verifies ordered visible lines by source-backed regexes, without fixed fixture page numbers. `section_page_count` counts physical pages from a unique `params.start` heading to a unique later `params.end` heading, exclusive of the latter; missing/ambiguous/reversed boundaries fail. Use `cmp: le` for an explicit maximum. Both support independent PDF/Word/Word-refreshed sources. Shared header/footer PAGE fields are checked against actual printed label sequences when COM context values differ; absent render evidence, removed fields, body PAGE changes and real printed-number changes still fail.
 PDF: `page_size`, `page_count`, `text_extent` (x0min|x1max|firstBaseline|lastBaseline, agg, min_size, ignore),
 `fonts` (embedded names exact + font-program family; only fonts actually drawn), `font_size` (dominant),
 `line_pitch` (modal baseline delta), `delta_present` (a given baseline gap occurs), `line_baselines`

@@ -1,4 +1,4 @@
-import { BookOpen } from "lucide-react";
+import { BookOpen, ListTree, ClipboardCheck, Sparkles } from "lucide-react";
 import Tool from "./Tool.jsx";
 import Group from "./Group.jsx";
 import { control } from "./shared.js";
@@ -6,25 +6,27 @@ import { control } from "./shared.js";
 export default function ReferencesTab({
   activeSection,
   canInsertInline = Boolean(activeSection),
-  detailsOpen,
-  setDetailsOpen,
   citableItems,
   onInsertCitation,
   onInsertEndnote,
-  citeText,
-  setCiteText,
-  citeOpen,
-  setCiteOpen,
   navigationOpen,
   setNavigationOpen,
   footnoteText,
   setFootnoteText,
   remember,
   keep,
-  submitCitation,
+  onManageSources,
+  onCheckDocument,
+  numeric,
 }) {
   return (
     <>
+      <Group label="Kaynakça ve atıflar" className="thesis-home-group">
+        <div className="thesis-home-rows">
+          <div className="thesis-reference-summary"><BookOpen size={22} aria-hidden="true"/><div><strong>{citableItems.length} kaynak</strong><span>{numeric ? 'Metin içi sayısal atıf: (1), (2)…' : 'Metin içi atıf ve dipnot seçenekleri'}</span></div></div>
+          <Tool label="Kaynakları ve atıfları yönet" onMouseDown={keep} onClick={onManageSources}>Kaynak ekle / Atıf yap</Tool>
+        </div>
+      </Group>
       <Group label="Dipnotlar" className="thesis-home-group">
         <form className="thesis-home-rows" onSubmit={(event) => {
           event.preventDefault();
@@ -44,83 +46,23 @@ export default function ReferencesTab({
           </div>
         </form>
       </Group>
-      <Group label="Kaynak atfı (dipnot)" className="thesis-home-group">
-        <div className="thesis-home-rows">
-          <div className="thesis-home-row is-boxed">
-            <Tool label="Kaynak atfı ekle" disabled={!canInsertInline} pressed={citeOpen} onMouseDown={keep} onClick={() => setCiteOpen(!citeOpen)}>
-              Atıf (dipnot)
-            </Tool>
-          </div>
-          {citableItems.length ? (
-            <select
-              aria-label="Kaynakçadan atıf seç"
-              className={`${control} thesis-wide-input`}
-              disabled={!canInsertInline}
-              defaultValue=""
-              onMouseDown={remember}
-              onChange={(event) => {
-                const value = event.target.value;
-                event.target.value = "";
-                if (canInsertInline && value) onInsertCitation(value);
-              }}
-            >
-              <option value="">Kaynakçadan seç</option>
-              {citableItems.map((item, index) => (
-                <option key={index} value={item}>
-                  {item}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <span className="thesis-ribbon-hint">Kaynak eklemek için Tez bilgileri panelini açın.</span>
-          )}
-        </div>
-      </Group>
-      <Group label="Kaynakça araçları" className="thesis-home-group">
+      <Group label="İçindekiler ve başlıklar" className="thesis-home-group">
         <div className="thesis-home-rows">
           <div className="thesis-reference-summary">
-            <BookOpen size={22} aria-hidden="true" />
+            <Sparkles size={22} aria-hidden="true" />
             <div>
-              <strong>{citableItems.length} kaynak</strong>
-              <span>Kaynak atıfları dipnot olarak eklenir.</span>
+              <strong>İçindekiler otomatik güncellenir</strong>
+              <span>Başlıkları metin içinde düzenleyin.</span>
             </div>
           </div>
           <div className="thesis-home-row is-boxed">
-            <Tool label="Tez bilgileri" onMouseDown={keep} onClick={() => setDetailsOpen(!detailsOpen)} pressed={detailsOpen}>
-              Kaynakçayı yönet
-            </Tool>
             <Tool label="Bölüm gezintisini aç veya kapat" onClick={() => setNavigationOpen(!navigationOpen)} pressed={navigationOpen}>
-              Başlıklara git
+              <ListTree size={15} aria-hidden="true"/> Yazım planı
             </Tool>
+            <Tool label="Belgeyi kontrol et" onClick={onCheckDocument}><ClipboardCheck size={15} aria-hidden="true"/> Kontrol et</Tool>
           </div>
         </div>
       </Group>
-      {citeOpen && (
-        <form
-          className="thesis-citation-popover"
-          aria-label="Kaynak atfını dipnot olarak ekle"
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (canInsertInline && citeText.trim()) onInsertCitation(citeText.trim());
-          }}
-        >
-          <input
-            autoFocus
-            className={control}
-            aria-label="Kaynak atfı metni"
-            placeholder="Atıf metni (dipnot)"
-            value={citeText}
-            onChange={(event) => setCiteText(event.target.value)}
-            onFocus={remember}
-            onKeyDown={(event) => {
-              if (event.key === "Escape") setCiteOpen(false);
-            }}
-          />
-          <Tool type="submit" label="Kaynak atfını dipnot olarak ekle" disabled={!canInsertInline || !citeText.trim()} onMouseDown={keep}>
-            Ekle
-          </Tool>
-        </form>
-      )}
     </>
   );
 }

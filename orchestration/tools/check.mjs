@@ -87,7 +87,7 @@ mkdirSync(runDir, { recursive: true });
 const log = (s) => appendFileSync(logFile, s + "\n");
 const env = { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" };
 const revision = spawnSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" });
-const codeDiff = spawnSync("git", ["diff", "HEAD", "--", "TxtNote/frontend/src", "orchestration/tools", "orchestration/specs"], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+const codeDiff = spawnSync("git", ["diff", "HEAD", "--", "engine/src", "TxtNote/frontend/src", "orchestration/tools", "orchestration/specs"], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
 if (revision.status !== 0 || codeDiff.status !== 0) throw new Error("Cannot record validation source revision");
 env.CHECK_SOURCE_PROVENANCE = JSON.stringify({ revision: revision.stdout.trim(),
   trackedDiffSha256: createHash("sha256").update(codeDiff.stdout).digest("hex"),
@@ -281,7 +281,7 @@ for (const v of variants) {
 // ---------------------------------------------------------------- evaluate
 const sourceProvenance = JSON.parse(env.CHECK_SOURCE_PROVENANCE);
 const officialSourceFingerprint = sourceFingerprint(root, id);
-const sourceFiles = spawnSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '--', 'TxtNote/frontend/src', 'orchestration/tools'],
+const sourceFiles = spawnSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '--', 'engine/src', 'TxtNote/frontend/src', 'orchestration/tools'],
   { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
 if (sourceFiles.status !== 0) throw new Error('Cannot fingerprint current code files');
 const codeHash = createHash('sha256');

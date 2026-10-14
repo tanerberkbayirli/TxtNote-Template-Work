@@ -3,6 +3,7 @@
  */
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { citationWithSpacing, escapeWritingText } from '../../lib/thesisWriting.js';
 import { createTextHistory } from "../../lib/textHistory";
 import { AcademicImageControls } from "./AcademicImageControls";
 import { BODY_PLACEHOLDER } from "../../config/strings";
@@ -245,6 +246,19 @@ export const RichTextBody = forwardRef(({
         fitBody();
       }
       emitChange("insert");
+    },
+    insertInlineCitation: (text) => {
+      withRange((root, range) => {
+        if (!range) return;
+        const element = range.startContainer.nodeType === 1 ? range.startContainer : range.startContainer.parentElement;
+        const block = element.closest?.('p,h1,h2,h3,h4,h5,h6,li,td,th') || root;
+        const before = document.createRange(); before.selectNodeContents(block); before.setEnd(range.startContainer, range.startOffset);
+        const endElement = range.endContainer.nodeType === 1 ? range.endContainer : range.endContainer.parentElement;
+        const endBlock = endElement.closest?.('p,h1,h2,h3,h4,h5,h6,li,td,th') || root;
+        const after = document.createRange(); after.selectNodeContents(endBlock); after.setStart(range.endContainer, range.endOffset);
+        insertHtmlAtSelection(escapeWritingText(citationWithSpacing(text, before.toString(), after.toString())), root);
+      });
+      emitChange('insert');
     },
     insertHeading: (level) => {
       withRange((root) => {

@@ -1,4 +1,4 @@
-import { Paragraph, ImportedXmlComponent, TextRun } from "./runtime.js";
+import { Paragraph, ImportedXmlComponent, TextRun, LineRuleType } from "./runtime.js";
 import { fieldXmlText } from "./xml.js";
 
 export function complexFieldMarker(instruction, edge, properties = {}) {
@@ -23,16 +23,22 @@ export function wrapParagraphsInField(paragraphs, instruction) {
   // Paragraph.root starts with paragraph properties. Keeping the field begin in
   // the first cached row avoids adding a blank line to university index pages.
   first.root.splice(1, 0, complexFieldMarker(instruction, "begin"));
-  paragraphs[paragraphs.length - 1].root.push(complexFieldMarker(instruction, "end"));
+  // Word moves the field end into a terminal paragraph when rebuilding a TOC.
+  // If it starts in the last row, that new paragraph inherits the row's before
+  // spacing and Normal's line height, sometimes spilling onto a blank page.
+  // Give the field its own explicit, non-visible one-twip terminal paragraph.
+  paragraphs.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, keepNext: false, children: [complexFieldMarker(instruction, "end")] }));
   return paragraphs;
 }
 export function emptyComplexFieldParagraph(instruction) {
   return new Paragraph({ spacing: { before: 0, after: 0 }, children: [complexFieldMarker(instruction, "begin"), complexFieldMarker(instruction, "end")] });
 }
 // Word reads the 	 style list with the machine's list separator: ";" on tr-TR (a "," makes the field update drop every heading), "," elsewhere.
-export function indexFieldInstruction(rule, styleLevels, noPageLevels = [], listSeparator = ",") {
+export function indexFieldInstruction(rule, styleLevels, noPageLevels = [], listSeparator = ",", preserveLineBreaks = false) {
   const parts = ["TOC", "\\h", '\\f "A"'];
   if (styleLevels.length) parts.push(`\\t "${styleLevels.map(({ id, level }) => `${id}${listSeparator}${level}`).join(listSeparator)}"`);
+  // Word otherwise flattens an own-line chapter label into its title on refresh.
+  if (preserveLineBreaks) parts.push("\\x");
   if (noPageLevels.length) {
     const ordered = [...new Set(noPageLevels)].sort((a, b) => a - b);
     if (ordered.some((level, index) => index && level !== ordered[index - 1] + 1)) throw new Error("This thesis TOC needs non-contiguous Word page-number exclusions, which the field format cannot represent safely.");

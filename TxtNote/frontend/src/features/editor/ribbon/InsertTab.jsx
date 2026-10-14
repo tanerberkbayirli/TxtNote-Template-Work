@@ -2,6 +2,7 @@ import { FilePlus2, Image as ImageIcon, Link2, Minus, SquareDashed, Table2 } fro
 import Tool from "./Tool.jsx";
 import Group from "./Group.jsx";
 import { control } from "./shared.js";
+import { headingLabels } from '../../../lib/thesisWriting.js';
 
 export default function InsertTab({
   activeSection,
@@ -62,7 +63,7 @@ export default function InsertTab({
             </option>
             {headingOptions.map((level) => (
               <option key={level} value={level}>
-                Başlık {level}
+                Başlık {level} · {headingLabels[level]}
               </option>
             ))}
           </select>

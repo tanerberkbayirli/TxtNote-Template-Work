@@ -1,5 +1,7 @@
 # MCBÜ şablonları: bekleyen kararlar ve doğrulanamayanlar
 
+**15.10.2026 güncel durum:** Gerçek PDF/Word indirme, Word alan güncellemesi ve kaydet–yeniden aç kontrolleri artık yapıldı. LEE 100 ve Tıp 94 kontrol geçti; 0 FAIL. Üniversite teyidi gerektiren güncel sorular [görüşme notunda](../reports/MCBU_GORUSME_SORULARI_2026-10-15.md), kaynak/çıktı kanıtları ve ayrı Word şema konusu [son raporda](../reports/MCBU_DUZELTMELER_VE_KABUL_2026-10-15.md). Aşağıdaki “doğrulanamayanlar” listesi önceki incelemenin tarihsel kaydıdır; güncel test sonucu olarak kullanılmamalıdır.
+
 Karar bekleyenler (düzeltilmedi, sizin onayınız gerekiyor):
 1. Bölüm başlığı hizası (Yüksek Lisans/Doktora): "BİRİNCİ BÖLÜM" iki yana yaslı olduğu için sola dayalı. Kılavuz açılış sayfası örneği vermiyor, içindekiler örneği ortalı. Ortalansın mı?
 2. Tıp içindekiler görünümü: Roma rakamı ayrı sütunda (kılavuz Ek-2) mı olsun, mevcut akış mı kalsın? Kılavuz metni sütunu zorunlu kılmıyor.

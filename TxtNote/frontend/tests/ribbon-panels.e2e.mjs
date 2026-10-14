@@ -76,10 +76,11 @@ try {
     await page.getByLabel("Cetvel birimi", { exact: true }).selectOption("cm");
     assert.equal(await page.getByLabel("Cetvel birimi", { exact: true }).inputValue(), "cm");
     const rulers = page.getByRole("button", { name: "Cetvelleri göster veya gizle", exact: true });
-    await rulers.click();
-    assert.equal(await page.locator(".thesis-ruler-horizontal").count(), 0);
+    assert.equal(await page.locator(".thesis-ruler-horizontal").count(), 0, "rulers start hidden to leave more room for writing");
     await rulers.click();
     assert.ok(await page.locator(".thesis-ruler-horizontal").count() > 0);
+    await rulers.click();
+    assert.equal(await page.locator(".thesis-ruler-horizontal").count(), 0);
     await shortcuts.getByRole("button", { name: "Sayfa düzeni", exact: true }).click();
     const inspector = page.getByRole("complementary", { name: "Sayfa düzeni denetçisi" });
     const topMargin = inspector.getByLabel("Üst", { exact: true });

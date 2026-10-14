@@ -6,6 +6,19 @@ from pdfmeasure import open_pdf, MM2PT, spans
 
 
 class CompareTests(unittest.TestCase):
+    def test_section_counts_and_ordered_lines_require_independent_unique_rendered_anchors(self):
+        from unittest.mock import patch
+        from conformance import k_section_page_count, k_text_sequence
+        class Fixture:
+            n = 4
+            def pages(self, selector): return [1,2,3,4]
+            def lines(self, page): return [{'text': value} for value in {1:['TOC'],2:['VII. ÖZET','Text'],3:['Continuation'],4:['VIII. İNGİLİZCE ÖZET']}[page]]
+        with patch('conformance.get_doc', return_value=Fixture()):
+            result=k_section_page_count({}, {'params':{'start':'^VII\\. ÖZET$','end':'^VIII\\. İNGİLİZCE ÖZET$'}})
+            self.assertEqual(result['actual'],2)
+            self.assertIsNone(k_section_page_count({}, {'params':{'start':'missing','end':'VIII'}})['actual'])
+            self.assertTrue(k_text_sequence({}, {'params':{},'expected':['^VII\\. ÖZET$','^VIII\\. İNGİLİZCE ÖZET$']})['pass'])
+            self.assertFalse(k_text_sequence({}, {'params':{},'expected':['^VIII\\. İNGİLİZCE ÖZET$','^VII\\. ÖZET$']})['pass'])
     def test_font_size_scopes_text_and_missing_scope_fails(self):
         from unittest.mock import patch
         from conformance import k_font_size
@@ -472,7 +485,7 @@ class LandmarkTests(unittest.TestCase):
 
 class FieldDumpTests(unittest.TestCase):
     """fields_cached_match compares per kind: TOC text, SEQ/PAGE in order, PAGEREF per bookmark; TOC-internal PAGEREF rebuilds are ignored."""
-    def run_dump(self, before, after, np_cached='7', np_after='7'):
+    def run_dump(self, before, after, np_cached='7', np_after='7', printed_labels=None):
         import conformance
         with tempfile.TemporaryDirectory() as tmp:
             dump, docx = os.path.join(tmp, 'f.json'), os.path.join(tmp, 'a.docx')
@@ -483,6 +496,13 @@ class FieldDumpTests(unittest.TestCase):
             with zipfile.ZipFile(docx, 'w') as z:
                 z.writestr('word/footer1.xml', footer)
             ctx = {'variants': {'default': {'wordFieldDump': dump, 'docx': docx}}}
+            if printed_labels:
+                from unittest.mock import patch
+                from types import SimpleNamespace
+                ctx['variants']['default'].update(wordPdf='cached.pdf', wordRefreshedPdf='refreshed.pdf')
+                docs = [SimpleNamespace(n=len(labels), label=lambda p, seq=labels: seq[p-1]) for labels in printed_labels]
+                with patch('conformance.get_doc', side_effect=docs):
+                    return conformance.k_fields_cached_match(ctx, {'params': {}})
             return conformance.k_fields_cached_match(ctx, {'params': {}})
 
     def row(self, code, result, part='body'):
@@ -496,6 +516,13 @@ class FieldDumpTests(unittest.TestCase):
     def test_changed_seq_or_numpages_fail(self):
         self.assertFalse(self.run_dump([self.row('SEQ Tablo', '1')], [self.row('SEQ Tablo', '2')])['pass'])
         self.assertFalse(self.run_dump([self.row('PAGE', '1', 'footer1.1')], [self.row('PAGE', '1', 'footer1.1'), self.row('NUMPAGES', '9', 'footer1.1')], np_cached='7')['pass'])
+
+    def test_shared_footer_page_context_uses_printed_labels_and_still_rejects_real_changes(self):
+        before = [self.row('PAGE', '', 'footer1.4')]
+        after = [self.row('PAGE', 'I', 'footer1.4'), self.row('NUMPAGES', '7', 'footer1.1')]
+        self.assertTrue(self.run_dump(before, after, printed_labels=(['I','II','1'], ['I','II','1']))['pass'])
+        self.assertFalse(self.run_dump(before, after, printed_labels=(['I','II','1'], ['I','I','1']))['pass'])
+        self.assertFalse(self.run_dump(before, after)['pass'], 'no rendered evidence must not excuse a changed result')
 
 
 class PackageTests(unittest.TestCase):

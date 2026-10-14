@@ -1,4 +1,6 @@
 # mcbu-lee — context pack
+## Current checkpoint — 2026-10-15
+Fresh real editor/Word validation: 100 PASS, 0 FAIL, 1 required UNKNOWN (source conflicts). Checks and master/phd stress fixtures now exist. Generated index titles remain in Word's live TOC, own-line chapter labels survive refresh, and the TOC terminal paragraph is explicit. The 2026-10-02 status/open-issue notes below are historical. Current evidence: `orchestration/validation/mcbu-final2-20261015/mcbu-lee/`; current report: `orchestration/reports/MCBU_DUZELTMELER_VE_KABUL_2026-10-15.md`. Next required external step: university clarification and sample-output acceptance. No university approval or global engine acceptance has been granted.
 ## Identity
 - Registry id(s): `mcbu-lee-master-tr-v1`, `mcbu-lee-phd-tr-v1`
 - Template module: `engine/src/templates/mcbu.js` (exports: mcbuMaster, mcbuPhd)

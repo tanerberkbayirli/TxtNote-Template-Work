@@ -19,7 +19,13 @@ export function docxChildren(section, context) {
   context.bodyWidthPx = Math.round(widthMm * PX_PER_MM);
   if (section.generatedIndex) {
     const rule = section.generatedIndex;
-    children.push(docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context, { anchor: section.indexSources?.find((entry) => entry.tocTitle)?.anchor }));
+    const titleEntry = section.indexSources?.find((entry) => entry.tocTitle);
+    const titleRow = context.tocRowsByAnchor?.get(titleEntry?.anchor);
+    const title = docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context, { anchor: titleEntry?.anchor });
+    // Generated list/TOC titles need the same live TC source as other indexed
+    // special-page titles. A cached TOC row alone disappears on Word refresh.
+    if (titleRow) title.root.push(...tocSpecialField({ ...titleRow, title: rule.title }));
+    children.push(title);
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
     const indexParagraphStart = children.length;
     let previousRow = null;

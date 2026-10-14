@@ -19,6 +19,7 @@ import ColorSplitButton from "./ColorSplitButton.jsx";
 import Tool from "./Tool.jsx";
 import Group from "./Group.jsx";
 import { control } from "./shared.js";
+import { headingLabels } from '../../../lib/thesisWriting.js';
 import "./home.css";
 
 const aligns = [
@@ -51,7 +52,7 @@ export default function HomeTab({
   const currentSize = format?.sizePt ?? format?.sizeComputedPt;
   const styles = [
     { id: "normal", label: "Normal", level: 0, sample: "Gövde metni" },
-    ...headingOptions.map((level) => ({ id: `heading-${level}`, label: `Başlık ${level}`, level: Number(level), sample: `Bölüm ${level}` })),
+    ...headingOptions.map((level) => ({ id: `heading-${level}`, label: `Başlık ${level}`, level: Number(level), sample: headingLabels[level] || `Başlık ${level}` })),
     ...paragraphOptions.map((id) => ({ id: `style-${id}`, label: id, style: id, sample: "Şablon stili" })),
   ];
   const setStyle = (style) =>
@@ -149,7 +150,7 @@ export default function HomeTab({
               <option value="0">Normal</option>
               {headingOptions.map((level) => (
                 <option key={level} value={level}>
-                  Başlık {level}
+                  Başlık {level} · {headingLabels[level]}
                 </option>
               ))}
               {paragraphOptions.map((id) => (

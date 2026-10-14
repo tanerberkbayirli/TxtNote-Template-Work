@@ -431,6 +431,32 @@ def k_page_count(ctx, c):
     return {"actual": get_doc(ctx, c["params"]).n}
 
 
+def k_section_page_count(ctx, c):
+    """Count physical pages between unique rendered section-heading anchors."""
+    params = c['params']
+    doc = get_doc(ctx, params)
+    starts = [(page, line) for page in range(1, doc.n+1) for line in doc.lines(page)
+              if re.search(params['start'], line['text'])]
+    stops = [(page, line) for page in range(1, doc.n+1) for line in doc.lines(page)
+             if re.search(params['end'], line['text'])]
+    if len(starts) != 1 or len(stops) != 1 or stops[0][0] <= starts[0][0]:
+        return {'actual': None, 'note': 'missing, ambiguous or non-forward section boundaries'}
+    return {'actual': stops[0][0]-starts[0][0], 'note': f'physical pages {starts[0][0]}..{stops[0][0]-1}'}
+
+
+def k_text_sequence(ctx, c):
+    """Require ordered visible lines by regex, independent of fixed page numbers."""
+    doc = get_doc(ctx, c['params'])
+    lines = [line['text'] for page in doc.pages(c['params'].get('pages')) for line in doc.lines(page)]
+    found, position = [], 0
+    for pattern in c['expected']:
+        index = next((i for i in range(position, len(lines)) if re.search(pattern, lines[i])), None)
+        if index is None:
+            return {'actual': found, 'pass': False, 'note': f'missing ordered line: {pattern}'}
+        found.append(lines[index]); position = index+1
+    return {'actual': found, 'pass': bool(found), 'expected_override':'all source-required lines present in order'}
+
+
 def k_text_extent(ctx, c):
     P = c["params"]
     d = get_doc(ctx, P)
@@ -1008,18 +1034,35 @@ def k_fields_cached_match(ctx, c):
     seen["NUMPAGES(cached xml)"] = len(cached_np)
     if set(cached_np) - set(updated_np) or (cached_np and not updated_np):
         diffs.append(("NUMPAGES", sorted(set(cached_np)), updated_np))
+    page_context = []
     for k in ("TOC", "SEQ", "PAGE"):
         x = [(r["part"], norm(r["result"])) for r in before if kind(r) == k]
         y = [(r["part"], norm(r["result"])) for r in after if kind(r) == k]
         seen[k] = len(x)
         if x != y:
-            diffs.append((k, x[:3], y[:3]))
+            # A header/footer PAGE field is shared by many physical pages. COM's
+            # Result.Text reflects its current selection context (sometimes
+            # blank before refresh), not all the numbers actually printed.
+            # Compare the two independently rendered page-label sequences;
+            # still reject removed fields and changes to body PAGE fields.
+            shared_page = k == 'PAGE' and [r[0] for r in x] == [r[0] for r in y] and all(
+                part.startswith(('header', 'footer')) for part, _ in x)
+            if shared_page and var.get('wordPdf') and var.get('wordRefreshedPdf'):
+                a = get_doc(ctx, {**c['params'], 'source': 'word'})
+                b = get_doc(ctx, {**c['params'], 'source': 'word-refreshed'})
+                labels_a = [a.label(p) for p in range(1, a.n + 1)]
+                labels_b = [b.label(p) for p in range(1, b.n + 1)]
+                page_context = [('COM context', x[:3], y[:3])]
+                if labels_a != labels_b:
+                    diffs.append(('PAGE rendered', labels_a, labels_b))
+            else:
+                diffs.append((k, x[:3], y[:3]))
     pb = {r["code"]: norm(r["result"]) for r in before if kind(r) == "PAGEREF"}
     pa = {r["code"]: norm(r["result"]) for r in after if kind(r) == "PAGEREF"}
     common = [code for code in pb if code in pa]
     seen["PAGEREF(common)"] = len(common)
     diffs += [("PAGEREF", code, pb[code], pa[code]) for code in common if pb[code] != pa[code]]
-    return {"actual": {"fields": len(before), "kinds": seen, "diffs": diffs[:4]}, "pass": bool(before) and not diffs,
+    return {"actual": {"fields": len(before), "kinds": seen, "diffs": diffs[:4], **({'pageContextDiagnostics': page_context} if page_context else {})}, "pass": bool(before) and not diffs,
             "expected_override": "cached results identical to Word-updated results"}
 
 

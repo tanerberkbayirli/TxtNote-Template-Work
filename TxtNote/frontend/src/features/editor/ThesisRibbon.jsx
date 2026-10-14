@@ -1,7 +1,6 @@
 import { useId, useState } from "react";
-import { Settings, NotebookPen } from "lucide-react";
+import { BookOpen, CircleHelp, ListTree, Settings, NotebookPen } from "lucide-react";
 import { tabs } from "./ribbon/shared.js";
-import Tool from "./ribbon/Tool.jsx";
 import HomeTab from "./ribbon/HomeTab.jsx";
 import FileTab from "./ribbon/FileTab.jsx";
 import InsertTab from "./ribbon/InsertTab.jsx";
@@ -51,10 +50,6 @@ export default function ThesisRibbon({
   onEquationNumber,
   citableItems,
   onInsertCitation,
-  citeText,
-  setCiteText,
-  citeOpen,
-  setCiteOpen,
   onAddFrame,
   rulersVisible,
   setRulersVisible,
@@ -65,6 +60,10 @@ export default function ThesisRibbon({
   canNavigate,
   fontFamily,
   page,
+  workspacePanel,
+  onOpenWorkspace,
+  onCheckDocument,
+  sourceCount,
 }) {
   const [tab, setTab] = useState("Giriş");
   const [alignmentScope, setAlignmentScope] = useState("page");
@@ -98,11 +97,6 @@ export default function ThesisRibbon({
   const invoke = (name, ...args) => actions.runSaved((body) => body?.[name]?.(...args));
   const headingOptions = Object.keys(activeSection?.rules.headings || template.typography.headings || {});
   const paragraphOptions = Object.keys(template.typography.paragraphStyles || {});
-  const submitCitation = (event) => {
-    event.preventDefault();
-    onInsertCitation(footnoteText);
-    setFootnoteText("");
-  };
 
   return (
     <header className="thesis-ribbon" aria-label="Tez belge araçları">
@@ -148,6 +142,8 @@ export default function ThesisRibbon({
         )}
       </div>
       <div className="thesis-ribbon-shortcuts" role="group" aria-label="Belge panelleri">
+        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep} aria-expanded={workspacePanel === 'outline'} onClick={() => onOpenWorkspace('outline')}><ListTree size={15} aria-hidden="true"/> Yazım planı</button>
+        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep} aria-expanded={workspacePanel === 'sources'} onClick={() => onOpenWorkspace('sources')}><BookOpen size={15} aria-hidden="true"/> Kaynaklar <span className="thesis-source-count">{sourceCount}</span></button>
         <button type="button" className="thesis-ribbon-tool" onMouseDown={keep}
           onClick={() => setDetailsOpen((open) => !open)} aria-expanded={detailsOpen}>
           <NotebookPen size={15} aria-hidden="true" /> Tez bilgileri
@@ -157,6 +153,7 @@ export default function ThesisRibbon({
           aria-label="Sayfa düzeni" title="Sayfa düzeni ayarları">
           <Settings size={15} aria-hidden="true" /> Ayarlar
         </button>
+        <button type="button" className="thesis-ribbon-tool thesis-shortcut-icon" aria-label="Yazım rehberi" title="Yazım rehberi" onClick={() => onOpenWorkspace('guide')}><CircleHelp size={16} aria-hidden="true"/></button>
       </div>
       </div>
       <div
@@ -258,22 +255,18 @@ export default function ThesisRibbon({
           <ReferencesTab
             activeSection={activeSection}
             canInsertInline={actions.canInsertInline}
-            detailsOpen={detailsOpen}
-            setDetailsOpen={setDetailsOpen}
             citableItems={citableItems}
             onInsertCitation={onInsertCitation}
             onInsertEndnote={(text) => invoke("insertEndnote", text)}
-            citeText={citeText}
-            setCiteText={setCiteText}
-            citeOpen={citeOpen}
-            setCiteOpen={setCiteOpen}
             navigationOpen={navigationOpen}
             setNavigationOpen={setNavigationOpen}
             footnoteText={footnoteText}
             setFootnoteText={setFootnoteText}
             remember={remember}
             keep={keep}
-            submitCitation={submitCitation}
+            onManageSources={() => onOpenWorkspace('sources')}
+            onCheckDocument={onCheckDocument}
+            numeric={template.bibliography?.citationStyle === 'numeric'}
           />
         )}
         {tab === "Görünüm" && (
@@ -309,7 +302,7 @@ export default function ThesisRibbon({
               {missingFields?.length ? <p>Eksik tez bilgisi: {missingFields.join(", ")}</p> : null}
               {indexWarning && <p>{indexWarning}</p>}
               {validationIssues.map((issue, index) => (
-                <p key={index}>{issue.message}</p>
+                <p key={index}>{issue.message}{template.placeholders?.[issue.field] ? <button type="button" className="thesis-panel-link" onClick={() => setDetailsOpen(true)}>Bilgiyi tamamla</button> : null}</p>
               ))}
             </div>
           </details>

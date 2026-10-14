@@ -1,0 +1,1626 @@
+[
+  {
+    "id": "master-page-size",
+    "kind": "page_size",
+    "params": {
+      "fixture": "master"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "word/document.xml final sectPr pgSz"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-docx-margin-left",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.left"
+    },
+    "expected": 40,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-margin-right",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.right"
+    },
+    "expected": 25,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-margin-top",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.top"
+    },
+    "expected": 25,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-margin-bottom",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.bottom"
+    },
+    "expected": 25,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-header-distance",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.header"
+    },
+    "expected": 12.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "final sectPr pgMar header=footer=709 twips"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-docx-footer-distance",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "master",
+      "field": "margins.footer"
+    },
+    "expected": 12.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "final sectPr pgMar header=footer=709 twips"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-docx-font",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "master",
+      "tag": "rFonts",
+      "attrs": [
+        "ascii",
+        "hAnsi"
+      ]
+    },
+    "expected": [
+      "Times New Roman"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331], G[345], G[346]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-single-and-body-spacing-present",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "master",
+      "tag": "spacing",
+      "attrs": [
+        "line"
+      ],
+      "mode": "has",
+      "numeric_tol": 1
+    },
+    "expected": [
+      "240",
+      "360"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331] body 1.5; G[341], G[345] single (presence only)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-indent-present",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "master",
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 1
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[333] 1.25 cm (presence only)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-paragraph-gap-present",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "master",
+      "tag": "spacing",
+      "attrs": [
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 1
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[333] 6 pt (presence only)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-docx-clean-fields",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "master"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "Package integrity; supplemental engineering check"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-word-opens",
+    "kind": "word_opens",
+    "params": {
+      "fixture": "master"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "DOCX must open and render in Microsoft Word"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-pdf-fonts",
+    "kind": "fonts",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "families": [
+        "Times New Roman"
+      ],
+      "regex": "Çevrimiçi|öğrenme|ÖZET|KAYNAKÇA|Anahtar Kelimeler|İÇİNDEKİLER"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT",
+      "TimesNewRomanPSMT-Bold",
+      "TimesNewRomanPSMT-Italic",
+      "TimesNewRomanPSMT-BoldItalic",
+      "TimesNewRomanPSBoldMT",
+      "TimesNewRomanPSItalicMT",
+      "TimesNewRomanPSBoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]; G[346]; scope excludes equation glyphs"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-pdf-body-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "Çevrimiçi öğrenme|okuryazarlık düzeyleri"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-pdf-body-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3025,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331] 1.5 lines; TNR 12 single 13.8 pt, derived pitch 20.7 pt"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-pdf-body-left",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 40,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-pdf-body-right-bound",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 185,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT",
+    "cmp": "le"
+  },
+  {
+    "id": "master-pdf-cover-no-number",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": [
+        1,
+        1
+      ],
+      "each": true
+    },
+    "expected": "",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[342] (each-page label API represents no printed label as empty string)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-pdf-abstract-start-I",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "each": true
+    },
+    "expected": "I",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290] example ÖZET I"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-pdf-intro-start-1",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "find": "^GİRİŞ$"
+      },
+      "each": true
+    },
+    "expected": "1",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290]-G[297] example GİRİŞ 1"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-pdf-footer-center",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "attr": "cx",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 112.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "word/footer1.xml jc=center within 40..185 mm text area"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-pdf-footnote-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "regex": "Açıklama dipnotu"
+    },
+    "expected": 10,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[346]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-pdf-keyword-year-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": "uzaktan eğitim",
+      "b": "^2026,.*sayfa"
+    },
+    "expected": 9.7367,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[100]-G[102]: one blank single line after the last keyword line"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-pdf-chapter-bold",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "regex": "^KURAMSAL ÇERÇEVE$",
+      "attr": "bold"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[332]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-pdf-toc-labels",
+    "kind": "toc_labels",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "leader": "none"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[288]-G[318] page references must point to actual headings"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-word-fonts",
+    "kind": "fonts",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "families": [
+        "Times New Roman"
+      ],
+      "regex": "Çevrimiçi|öğrenme|ÖZET|KAYNAKÇA|Anahtar Kelimeler|İÇİNDEKİLER"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT",
+      "TimesNewRomanPSMT-Bold",
+      "TimesNewRomanPSMT-Italic",
+      "TimesNewRomanPSMT-BoldItalic",
+      "TimesNewRomanPSBoldMT",
+      "TimesNewRomanPSItalicMT",
+      "TimesNewRomanPSBoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]; G[346]; scope excludes equation glyphs"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-word-body-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "Çevrimiçi öğrenme|okuryazarlık düzeyleri"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-word-body-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3025,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331] 1.5 lines; TNR 12 single 13.8 pt, derived pitch 20.7 pt"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-word-body-left",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 40,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-word-body-right-bound",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 185,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT",
+    "cmp": "le"
+  },
+  {
+    "id": "master-word-cover-no-number",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": [
+        1,
+        1
+      ],
+      "each": true
+    },
+    "expected": "",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[342] (each-page label API represents no printed label as empty string)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-word-abstract-start-I",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "each": true
+    },
+    "expected": "I",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290] example ÖZET I"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-word-intro-start-1",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "find": "^GİRİŞ$"
+      },
+      "each": true
+    },
+    "expected": "1",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290]-G[297] example GİRİŞ 1"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-word-footer-center",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "attr": "cx",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 112.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "word/footer1.xml jc=center within 40..185 mm text area"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-word-footnote-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "regex": "Açıklama dipnotu"
+    },
+    "expected": 10,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[346]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-word-keyword-year-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": "uzaktan eğitim",
+      "b": "^2026,.*sayfa"
+    },
+    "expected": 9.7367,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[100]-G[102]: one blank single line after the last keyword line"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "master-word-chapter-bold",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "regex": "^KURAMSAL ÇERÇEVE$",
+      "attr": "bold"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[332]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "master-word-toc-labels",
+    "kind": "toc_labels",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "leader": "none"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[288]-G[318] page references must point to actual headings"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-fields-after-word-refresh",
+    "kind": "fields_refresh_match",
+    "params": {
+      "fixture": "master"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "Output robustness: PAGE/TOC/PAGEREF/NUMPAGES refresh must preserve layout"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-cached-fields",
+    "kind": "fields_cached_match",
+    "params": {
+      "fixture": "master"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "Output robustness: cached field values must match Word refresh"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-page-size",
+    "kind": "page_size",
+    "params": {
+      "fixture": "phd"
+    },
+    "expected": [
+      210,
+      297
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "word/document.xml final sectPr pgSz"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-docx-margin-left",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "field": "margins.left"
+    },
+    "expected": 40,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-margin-right",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "field": "margins.right"
+    },
+    "expected": 25,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-margin-top",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "field": "margins.top"
+    },
+    "expected": 25,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-margin-bottom",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "field": "margins.bottom"
+    },
+    "expected": 25,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-header-distance",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "field": "margins.header"
+    },
+    "expected": 12.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "final sectPr pgMar header=footer=709 twips"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-docx-footer-distance",
+    "kind": "docx_section",
+    "params": {
+      "fixture": "phd",
+      "field": "margins.footer"
+    },
+    "expected": 12.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "final sectPr pgMar header=footer=709 twips"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-docx-font",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "phd",
+      "tag": "rFonts",
+      "attrs": [
+        "ascii",
+        "hAnsi"
+      ]
+    },
+    "expected": [
+      "Times New Roman"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331], G[345], G[346]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-single-and-body-spacing-present",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "phd",
+      "tag": "spacing",
+      "attrs": [
+        "line"
+      ],
+      "mode": "has",
+      "numeric_tol": 1
+    },
+    "expected": [
+      "240",
+      "360"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331] body 1.5; G[341], G[345] single (presence only)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-indent-present",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "phd",
+      "tag": "ind",
+      "attrs": [
+        "firstLine"
+      ],
+      "mode": "has",
+      "numeric_tol": 1
+    },
+    "expected": [
+      "709"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[333] 1.25 cm (presence only)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-paragraph-gap-present",
+    "kind": "docx_attr",
+    "params": {
+      "fixture": "phd",
+      "tag": "spacing",
+      "attrs": [
+        "after"
+      ],
+      "mode": "has",
+      "numeric_tol": 1
+    },
+    "expected": [
+      "120"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[333] 6 pt (presence only)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-docx-clean-fields",
+    "kind": "docx_no_undefined",
+    "params": {
+      "fixture": "phd"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "Package integrity; supplemental engineering check"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-word-opens",
+    "kind": "word_opens",
+    "params": {
+      "fixture": "phd"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "DOCX must open and render in Microsoft Word"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-pdf-fonts",
+    "kind": "fonts",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "families": [
+        "Times New Roman"
+      ],
+      "regex": "Çevrimiçi|öğrenme|ÖZET|KAYNAKÇA|Anahtar Kelimeler|İÇİNDEKİLER"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT",
+      "TimesNewRomanPSMT-Bold",
+      "TimesNewRomanPSMT-Italic",
+      "TimesNewRomanPSMT-BoldItalic",
+      "TimesNewRomanPSBoldMT",
+      "TimesNewRomanPSItalicMT",
+      "TimesNewRomanPSBoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]; G[346]; scope excludes equation glyphs"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-body-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "Çevrimiçi öğrenme|okuryazarlık düzeyleri"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-body-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3025,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331] 1.5 lines; TNR 12 single 13.8 pt, derived pitch 20.7 pt"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-pdf-body-left",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 40,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-body-right-bound",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 185,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT",
+    "cmp": "le"
+  },
+  {
+    "id": "phd-pdf-cover-no-number",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": [
+        1,
+        1
+      ],
+      "each": true
+    },
+    "expected": "",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[342] (each-page label API represents no printed label as empty string)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-abstract-start-I",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "each": true
+    },
+    "expected": "I",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290] example ÖZET I"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-pdf-intro-start-1",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "find": "^GİRİŞ$"
+      },
+      "each": true
+    },
+    "expected": "1",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290]-G[297] example GİRİŞ 1"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-pdf-footer-center",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "attr": "cx",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 112.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "word/footer1.xml jc=center within 40..185 mm text area"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-pdf-footnote-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "regex": "Açıklama dipnotu"
+    },
+    "expected": 10,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[346]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-keyword-year-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": "uzaktan eğitim",
+      "b": "^2026,.*sayfa"
+    },
+    "expected": 9.7367,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[100]-G[102]: one blank single line after the last keyword line"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-pdf-chapter-bold",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "regex": "^KURAMSAL ÇERÇEVE$",
+      "attr": "bold"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[332]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-toc-labels",
+    "kind": "toc_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "leader": "none"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[288]-G[318] page references must point to actual headings"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-pdf-cv-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "regex": "^ÖZGEÇMİŞ$"
+    },
+    "expected": 14,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[348]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-cv-bold",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "regex": "^ÖZGEÇMİŞ$",
+      "attr": "bold"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[348]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-pdf-cv-center",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "regex": "^ÖZGEÇMİŞ$",
+      "attr": "cx"
+    },
+    "expected": 112.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[348]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-fonts",
+    "kind": "fonts",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "families": [
+        "Times New Roman"
+      ],
+      "regex": "Çevrimiçi|öğrenme|ÖZET|KAYNAKÇA|Anahtar Kelimeler|İÇİNDEKİLER"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT",
+      "TimesNewRomanPSMT-Bold",
+      "TimesNewRomanPSMT-Italic",
+      "TimesNewRomanPSMT-BoldItalic",
+      "TimesNewRomanPSBoldMT",
+      "TimesNewRomanPSItalicMT",
+      "TimesNewRomanPSBoldItalicMT"
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]; G[346]; scope excludes equation glyphs"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-body-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "Çevrimiçi öğrenme|okuryazarlık düzeyleri"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-body-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3025,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[331] 1.5 lines; TNR 12 single 13.8 pt, derived pitch 20.7 pt"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-word-body-left",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x0min"
+    },
+    "expected": 40,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-body-right-bound",
+    "kind": "text_extent",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "metric": "x1max"
+    },
+    "expected": 185,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[330]"
+    },
+    "evidence": "EXPLICIT",
+    "cmp": "le"
+  },
+  {
+    "id": "phd-word-cover-no-number",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": [
+        1,
+        1
+      ],
+      "each": true
+    },
+    "expected": "",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[342] (each-page label API represents no printed label as empty string)"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-abstract-start-I",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "find": "^ÖZET$"
+      },
+      "each": true
+    },
+    "expected": "I",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290] example ÖZET I"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-word-intro-start-1",
+    "kind": "page_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "find": "^GİRİŞ$"
+      },
+      "each": true
+    },
+    "expected": "1",
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[290]-G[297] example GİRİŞ 1"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-word-footer-center",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "attr": "cx",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 112.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "word/footer1.xml jc=center within 40..185 mm text area"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-word-footnote-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "regex": "Açıklama dipnotu"
+    },
+    "expected": 10,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[346]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-keyword-year-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": "uzaktan eğitim",
+      "b": "^2026,.*sayfa"
+    },
+    "expected": 9.7367,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[100]-G[102]: one blank single line after the last keyword line"
+    },
+    "evidence": "MEASURED"
+  },
+  {
+    "id": "phd-word-chapter-bold",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "regex": "^KURAMSAL ÇERÇEVE$",
+      "attr": "bold"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[332]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-toc-labels",
+    "kind": "toc_labels",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "leader": "none"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[288]-G[318] page references must point to actual headings"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-word-cv-size",
+    "kind": "font_size",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "regex": "^ÖZGEÇMİŞ$"
+    },
+    "expected": 14,
+    "tolerance": 0.1,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[348]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-cv-bold",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "regex": "^ÖZGEÇMİŞ$",
+      "attr": "bold"
+    },
+    "expected": 1,
+    "tolerance": 0,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[348]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-word-cv-center",
+    "kind": "line_attr",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "regex": "^ÖZGEÇMİŞ$",
+      "attr": "cx"
+    },
+    "expected": 112.5,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[348]"
+    },
+    "evidence": "EXPLICIT"
+  },
+  {
+    "id": "phd-fields-after-word-refresh",
+    "kind": "fields_refresh_match",
+    "params": {
+      "fixture": "phd"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "Output robustness: PAGE/TOC/PAGEREF/NUMPAGES refresh must preserve layout"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-cached-fields",
+    "kind": "fields_cached_match",
+    "params": {
+      "fixture": "phd"
+    },
+    "expected": null,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "Output robustness: cached field values must match Word refresh"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "source-conflicts-required",
+    "kind": "note",
+    "params": {
+      "text": "University confirmation pending: abstract single vs 1.5; cover gaps notes vs XML; chapter alignment prose vs TOC example; page count meaning; English degree/institute names. Existing source precedence is an implementation choice, not university approval."
+    },
+    "expected": null,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96],G[104],G[130]; G[10],G[32]; G[299]-G[300],G[332]; G[102],G[128]"
+    },
+    "evidence": "UNKNOWN",
+    "required": true
+  }
+]

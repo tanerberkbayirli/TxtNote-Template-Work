@@ -1,5 +1,15 @@
 # Thesis ribbon browser smoke
 
+15 October 2026: source management now uses a dedicated workspace panel. The smoke exercises inline citations through that panel and checks that static text cannot receive an inline citation. Rulers start hidden. The writing workflow and its limits are described in [THESIS_WRITING_UX.md](../THESIS_WRITING_UX.md).
+
+Targeted MCBÜ UX checks, including required chapter placement, existing rich bibliography preservation, mobile citation drafts, real downloads and pagination-wrapper highlight removal:
+
+```powershell
+node orchestration/validation/thesis-ux-20261015/ux.e2e.mjs
+```
+
+Run this targeted script from the repository root with Vite listening on port 5175. Evidence is saved under `orchestration/validation/thesis-ux-20261015/`.
+
 With the frontend Vite server running, run from `TxtNote/frontend`:
 
 ```powershell

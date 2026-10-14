@@ -79,7 +79,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
     totalPages: totalPages ?? model.values?.TOTAL_PAGES,
     captionAlignments, captionHangs, indexHangs, elasticSpacers, elasticContentMm, specialPagePositions, tableContinuations, blockPageBreaks: new Set(blockPageBreaks),
     tocRowsByAnchor, targets: indexTargetMap(model.indexSources),
-    nativeTocField: nativeToc ? { instruction: indexFieldInstruction(nativeToc.generatedIndex, tocStyleLevels, [...tocNoPageLevels], (model.language || "tr") === "tr" ? ";" : ",") } : null,
+    nativeTocField: nativeToc ? { instruction: indexFieldInstruction(nativeToc.generatedIndex, tocStyleLevels, [...tocNoPageLevels], (model.language || "tr") === "tr" ? ";" : ",", nativeToc.indexRows.some(row => row.labelLine)) } : null,
     nativeTocLevels: new Set((nativeToc?.indexRows || []).filter((row) => row.kind === "toc" && !row.tocTitle).map((row) => Number(row.level || 1))),
     thesisHeadingStyles: new Map(),
     tocParagraphStyles: new Map(),

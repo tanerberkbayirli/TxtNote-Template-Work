@@ -382,6 +382,8 @@ export interface ThesisSection {
     | { count: "tables" | "figures" | "equations" | (string & {}); gte: number };
   /** Advisory minimum of visible words for an editable section. */
   minWords?: number;
+  /** Advisory physical-page limit, measured after pagination settles. */
+  maxPages?: number;
   content?: string;
   /**
    * Special page layout (cover, approval, declaration, ...). A section with `blocks`
@@ -504,7 +506,7 @@ export interface ThesisTemplate {
   equations?: { /** Browser-only extra space (pt) before/after the block, compensating the formula renderer's baseline placement; Word ignores it. */ layoutAdjust?: { beforePt?: number; afterPt?: number }; numbering: { scope: "chapter" | "document"; format: string }; numberAlign?: "left" | "right"; /** fontSizePt, fontFamily/Weight/Italic of the number; lineHeight (Word lines) and spaceBeforePt/spaceAfterPt make the block one paragraph-like line. */ style?: Partial<TextStyle> };
   bibliography: { heading: string; style: TextStyle; hangingIndentMm?: Length; citationStyle?: string; numbered?: boolean };
   toc: { heading: string; levels: number[]; showPageNumbers: boolean };
-  validation?: Record<string, { minItems: number; separator?: string; severity?: "error" | "warning"; message?: string }>;
+  validation?: Record<string, { minItems?: number; separator?: string; severity?: "error" | "warning"; message?: string; headingSequence?: Array<string | string[]>; headingLevel?: number; numericCitations?: boolean; numberedEntries?: boolean }>;
   /**
    * Figure/table numbering methods the author may choose for the whole document (stored as
    * thesis.captionNumbering = id). The first entry should equal the template's default numbering.

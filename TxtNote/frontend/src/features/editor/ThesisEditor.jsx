@@ -3,10 +3,12 @@ import { bibliographyItemsFromResearch, normalizeBibliographyItems } from "../..
 import { endnotesFromHtml } from "../../lib/academicDocument.js";
 import { figureHtml, imageDimensions, readImageAsDataUrl } from "../../lib/academicMedia.js";
 import { htmlToPlainText } from "../../lib/richText.js";
+import { appendAuthoredReference, authoredReferences, escapeWritingText, normalizeWritingHeading } from "../../lib/thesisWriting.js";
 import { FORMAT_COLORS, FORMAT_HIGHLIGHTS } from "../../config/format.js";
 import { trustedStyleNonce } from "../../lib/cspStyles.js";
 import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../../../../engine/src/engine.js";
 import { measureMirroredIndentsCss } from "../../../../../engine/src/paragraphMirror.js";
+import { validateThesisPageCounts } from "../../../../../engine/src/contentConformance.js";
 import { measureParagraphTabsCss } from "../../../../../engine/src/paragraphTabs.js";
 import { layoutWordJustification } from "../../../../../engine/src/wordLineLayout.js";
 import { layoutShortParagraphKeeps } from "../../../../../engine/src/shortParagraphs.js";
@@ -40,6 +42,7 @@ import ThesisRibbon from "./ThesisRibbon.jsx";
 import ThesisNavigation from "./ThesisNavigation.jsx";
 import ThesisStatusBar from "./ThesisStatusBar.jsx";
 import "./ThesisEditor.css";
+import "./thesisWorkspace.css";
 import {PdfImportSetup, PdfImportReview, PdfImportReport} from './PdfImportReview.jsx';
 
 // Tailwind's reset removes list markers; the stored ul/ol structure is unchanged.
@@ -64,15 +67,6 @@ const metadataHints = {
   USED_PROGRAMS: "Örnek: MATLAB R2026a, Python 3.13, SPSS 29",
 };
 
-function collectThesisHeadings(root) {
-  if (!root) return [];
-  return [...root.querySelectorAll(".thesis-flow-section h1, .thesis-flow-section h2, .thesis-flow-section h3, .thesis-flow-section h4")].flatMap((node) => {
-    const section = node.closest("[data-thesis-flow-section]");
-    const text = node.textContent?.trim();
-    return section && text ? [{ sectionId: section.dataset.thesisFlowSection, id: node.getAttribute("data-academic-id"), text, level: Number(node.tagName.slice(1)) }] : [];
-  });
-}
-
 export function ThesisEditor({ title, content, researchData, onTitleChange, onContentChange, onResearchDataChange, onDocumentChange, templateRegistry }) {
   const thesis = researchData?.thesis && typeof researchData.thesis === "object" ? researchData.thesis : EMPTY_THESIS;
   const selectionKey = JSON.stringify([thesis.templateId, thesis.selection?.universityId, thesis.selection?.instituteId, thesis.selection?.degreeType, thesis.selection?.language]);
@@ -84,14 +78,14 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [zoomChoice, setZoomChoice] = useState("fit");
   const [viewportWidth, setViewportWidth] = useState(900);
   const [activeSectionId, setActiveSectionId] = useState("");
-  const [citeOpen, setCiteOpen] = useState(false);
-  const [citeText, setCiteText] = useState("");
   const [pageSettingsOpen, setPageSettingsOpen] = useState(false);
   const [addMenuOpen, setAddMenuOpen] = useState(false);
   const [warningsOpen, setWarningsOpen] = useState(false);
-  const [rulersVisible, setRulersVisible] = useState(true);
+  const [rulersVisible, setRulersVisible] = useState(false);
   const [rulerUnit, setRulerUnit] = useState("mm");
-  const [navigationOpen, setNavigationOpen] = useState(false);
+  const [workspacePanel, setWorkspacePanel] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 1100px)').matches ? 'outline' : null);
+  const navigationOpen = workspacePanel === 'outline';
+  const setNavigationOpen = (next) => setWorkspacePanel(current => (typeof next === 'function' ? next(current === 'outline') : next) ? 'outline' : null);
   const [activeFormat, setActiveFormat] = useState({});
   // Template-owned text (section title / fixed paragraph) the toolbar currently targets instead of a body: { sectionId, kind, take }.
   const [activeStatic, setActiveStatic] = useState(null);
@@ -154,20 +148,6 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     void resolveThesisTemplate(selection, templateRegistry).then((result) => { if (live) setResolution({ key: selectionKey, result }); });
     return () => { live = false; };
   }, [selectionKey]);
-
-  useEffect(() => {
-    const viewport = viewportRef.current;
-    if (!viewport) return undefined;
-    let frame;
-    const measure = () => setViewportWidth(viewport.clientWidth);
-    measure();
-    const observer = new ResizeObserver(() => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(measure);
-    });
-    observer.observe(viewport);
-    return () => { cancelAnimationFrame(frame); observer.disconnect(); };
-  }, [resolved]);
 
   const template = resolved?.template;
   const plainTitle = useMemo(() => htmlToPlainText(title), [title]);
@@ -274,6 +254,18 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const warning = resolved?.fallback ? resolved.reason : thesis.fallback ? thesis.fallbackReason : "";
   const missingFields = model ? [...new Set(model.sections.flatMap((section) => section.missingPlaceholders))] : [];
   const documentWidth = model ? Math.max(...model.sections.map((section) => pageMetrics(section.rules.page).widthPx)) : 794;
+  // Template resolution precedes the first compiled render. Attach the observer
+  // only once the actual canvas exists, including after a note/template switch.
+  useLayoutEffect(() => {
+    const viewport = viewportRef.current;
+    if (!viewport) return undefined;
+    let frame;
+    const measure = () => setViewportWidth(viewport.clientWidth);
+    measure();
+    const observer = new ResizeObserver(() => { cancelAnimationFrame(frame); frame = requestAnimationFrame(measure); });
+    observer.observe(viewport);
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); };
+  }, [model?.templateId]);
   const zoom = zoomChoice === "fit" ? Math.min(1.25, Math.max(0.1, (viewportWidth - 48) / documentWidth)) : Number(zoomChoice) / 100;
   const canStepZoom = (direction) => {
     const percentage = Math.round(zoom * 100);
@@ -306,7 +298,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const captionKinds = Object.entries(template?.captionKinds || {});
   const metadataPanel = template ? thesisMetadataPanel(template, model?.sections || []) : { fields: [], hasPrimaryTitle: false };
   const metadataFields = metadataPanel.fields;
-  const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings, ...fontWarnings, ...fitWarnings].filter(issue => !template.placeholders?.[issue.field] || metadataFields.some(([key]) => key === issue.field) || (issue.field === "THESIS_TITLE" && metadataPanel.hasPrimaryTitle)) : [];
+  const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings, ...validateThesisPageCounts(model, pageCounts), ...fontWarnings, ...fitWarnings].filter(issue => !template.placeholders?.[issue.field] || metadataFields.some(([key]) => key === issue.field) || (issue.field === "THESIS_TITLE" && metadataPanel.hasPrimaryTitle)) : [];
   const metadataByKey = new Map(metadataFields);
   const groupedKeys = new Set(metadataGroups.flatMap(([, keys]) => keys));
   const extraMetadataFields = metadataFields.filter(([key]) => !groupedKeys.has(key));
@@ -692,15 +684,86 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const trackSectionPointer = (event) => {
     setPickedFigure(event.target.closest?.("figure.academic-figure") || null);
     setPickedEquation(event.target.closest?.(".math-formula--block") || null);
-    const flow = event.target.closest?.(".thesis-flow-section");
-    if (flow && flow.getAttribute("data-thesis-section-mode") !== "editable") setCiteOpen(false);
   };
-  const citableItems = bibliographyItems.map((item) => item.trim()).filter(Boolean);
+  const bibliographySection = model?.sections.find(section => section.type === 'bibliography');
+  const authoredSources = authoredReferences(bibliographySection?.editableHtml);
+  const numericCitations = template?.bibliography?.citationStyle === 'numeric';
+  const canInsertCitation = Boolean(activeSectionId && activeSection?.editable && !activeStatic && !interaction.selectedElements.length && activeBody());
+  const citableItems = [...authoredSources.map(item => item.text), ...bibliographyItems.map(item => item.trim()).filter(Boolean)];
+  const openWorkspace = panel => { setWorkspacePanel(panel); setDetailsOpen(false); setPageSettingsOpen(false); };
+  const workspaceWidth = () => viewportRef.current?.parentElement?.clientWidth || window.innerWidth;
+  const openDetails = () => { setDetailsOpen(true); setPageSettingsOpen(false); if (workspaceWidth() < 1100) setWorkspacePanel(null); };
+  const changePageSettings = next => {
+    const value = typeof next === 'function' ? next(pageSettingsOpen) : next;
+    setPageSettingsOpen(value);
+    if (value) {setDetailsOpen(false); if (workspaceWidth() < 1100) setWorkspacePanel(null);}
+  };
+  const navigateTo = (sectionId, headingId) => {
+    const sectionNode = papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(sectionId)}"]`);
+    const headingNode = headingId ? sectionNode?.querySelector(`[data-thesis-anchor="${CSS.escape(headingId)}"]`) : null;
+    const target = headingNode || sectionNode?.querySelector('h1, .rich-text-body') || sectionNode;
+    const editable = sectionNode?.querySelector('.rich-text-body[contenteditable="true"]');
+    interaction.selectIds([]); setActiveStatic(null); setActiveSectionId(sectionId);
+    const selectedSection = model.sections.find(section => section.id === sectionId);
+    if (selectedSection?.mode === 'generated') setMessage('Bu dizin başlıklardan ve sayfa düzeninden otomatik hazırlanır. Değişiklikleri ilgili metin bölümünde yapın.');
+    else if (selectedSection?.mode === 'static') setMessage('Bu sayfanın bilgilerini Tez bilgileri panelinden tamamlayabilirsiniz.');
+    if (workspaceWidth() <= 760) setWorkspacePanel(null);
+    requestAnimationFrame(() => {
+      target?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      if (editable) {
+        editable.focus({preventScroll: true});
+        const range = document.createRange();
+        range.selectNodeContents(headingNode && editable.contains(headingNode) ? headingNode : editable);
+        range.collapse(true);
+        window.getSelection()?.removeAllRanges(); window.getSelection()?.addRange(range);
+        bodyRefs.current[sectionId]?.rememberSelection?.();
+      }
+    });
+  };
+  const addHeading = (sectionId, level, text, options = {}) => {
+    const section = model.sections.find(item => item.id === sectionId && item.editable);
+    const root = papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(sectionId)}"] .rich-text-body[contenteditable="true"]`);
+    const body = bodyRefs.current[sectionId];
+    if (!section || !root || !body || !text.trim()) return false;
+    interaction.selectIds([]); setActiveStatic(null); setActiveSectionId(sectionId);
+    root.focus({preventScroll: true});
+    const before = [...root.querySelectorAll(`h${level}`)].find(node => options.beforeTitles?.some(title => normalizeWritingHeading(node.textContent) === normalizeWritingHeading(title)));
+    const range = document.createRange();
+    if (before) range.setStartBefore(before);
+    else range.selectNodeContents(root);
+    range.collapse(Boolean(before));
+    window.getSelection()?.removeAllRanges(); window.getSelection()?.addRange(range); body.rememberSelection();
+    body.insertHtml(`<h${level}>${escapeWritingText(text.trim())}</h${level}><p><br></p>`);
+    const selectedNode = window.getSelection()?.anchorNode;
+    (selectedNode?.nodeType === 1 ? selectedNode : selectedNode?.parentElement)?.scrollIntoView({block: 'center', behavior: 'smooth'});
+    setMessage('Başlık eklendi. İçindekiler otomatik güncelleniyor.');
+    if (workspaceWidth() <= 760) setWorkspacePanel(null);
+    return true;
+  };
+  const addSource = text => {
+    if (!bibliographySection) return false;
+    if (htmlToPlainText(bibliographySection.editableHtml).trim()) {
+      const html = appendAuthoredReference(bibliographySection.editableHtml, text, numericCitations);
+      if (html === null) {setMessage('Önce mevcut kaynakçanın numara sırasını düzenleyin.'); return false;}
+      onTextChange(bibliographySection, html, 'action');
+    } else setBibliography([...bibliographyItems.filter(item => item.trim()), text]);
+    setMessage('Kaynak kaynakçaya eklendi. Metinde atıf yapacağınız yeri seçebilirsiniz.');
+    return true;
+  };
+  const insertSourceCitation = (text, mode = 'inline') => {
+    if (!canInsertCitation || !text.trim()) return;
+    if (mode === 'footnote') activeBody().insertFootnote(text.trim());
+    else activeBody().insertInlineCitation(text.trim());
+    setMessage(mode === 'footnote' ? 'Kaynak atfı dipnot olarak eklendi.' : 'Atıf seçtiğiniz konuma eklendi.');
+  };
+  const checkDocument = () => {
+    setWarningsOpen(true);
+    setMessage(validationIssues.length || missingFields.length || warning || indexWarning ? 'Belge uyarılarını inceleyin; eksik bilgileri Tez bilgileri panelinden tamamlayabilirsiniz.' : 'Mevcut otomatik kontrollerde uyarı bulunmadı. Son çıktıyı da gözden geçirin.');
+  };
   const insertCitation = (text) => {
     const value = String(text || "").trim();
     if (!value) return;
     activeBody()?.insertFootnote(value);
-    setCiteText(""); setCiteOpen(false);
   };
 
   /** Measured indent (unscaled px) of each index row's title after its label, for Word's hanging indent. */
@@ -809,7 +872,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   // After a template switch the previous model lingers for a render while the new template resolves asynchronously: wait for both.
   if (!model || !template) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
 
-  return <div className="flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
+  return <div className="thesis-editor-workspace flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
     <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS}</style>
     <style nonce={trustedStyleNonce()} data-thesis-measured-styles>{baselineCss + tabsCss + mirrorCss + specialPositionsCss}</style>
     <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
@@ -820,9 +883,10 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     {pendingImport?.researchData.thesis.document.source.format==='pdf'?<PdfImportReview note={pendingImport} onChange={setPendingImport} onCancel={()=>setPendingImport(null)} onApply={next=>{onDocumentChange(next);setPendingImport(null);setMessage('PDF içeriği aktarıldı. Kalan bildirimler aktarım raporunda.');}}/>:pendingImport ? <WordImportReview note={pendingImport} onChange={setPendingImport} onCancel={() => setPendingImport(null)} onApply={() => { onDocumentChange(pendingImport); setPendingImport(null); setMessage("Word belgesi içe aktarıldı. Aktarım raporunu inceleyebilirsiniz."); }} /> : null}
     <WordImportReport document={thesis.document} />
     <PdfImportReport document={thesis.document}/>
-    <ThesisRibbon title={plainTitle} activeSection={activeSection} template={template}
-      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, canFormatText: !interaction.selectedElements.length || Boolean(activeLayoutText?.editableContent && activeLayoutText?.editableLayout && !activeLayoutText?.locked), isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: Boolean(activeSection && !activeStatic && !interaction.selectedElements.length) }}
-      detailsOpen={detailsOpen} setDetailsOpen={setDetailsOpen} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={setPageSettingsOpen}
+    <ThesisRibbon title={plainTitle} activeSection={activeSectionId || activeStatic || activeLayoutText ? activeSection : null} template={template}
+      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, canFormatText: !interaction.selectedElements.length || Boolean(activeLayoutText?.editableContent && activeLayoutText?.editableLayout && !activeLayoutText?.locked), isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: canInsertCitation }}
+      detailsOpen={detailsOpen} setDetailsOpen={next => { const value = typeof next === 'function' ? next(detailsOpen) : next; if (value) openDetails(); else setDetailsOpen(false); }} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={changePageSettings}
+      workspacePanel={workspacePanel} onOpenWorkspace={openWorkspace} onCheckDocument={checkDocument} sourceCount={citableItems.length}
       canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
       onImport={onDocumentChange ? () => wordInputRef.current?.click() : undefined} onImportPdf={onDocumentChange?()=>pdfInputRef.current?.click():undefined} exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
       zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} zoom={zoom} stepZoom={stepZoom} canStepZoom={canStepZoom} zoomLevels={ZOOM_LEVELS} totalPages={totalPages}
@@ -831,18 +895,13 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       onImage={(kind = "") => { imageKindRef.current = kind; imageInputRef.current?.click(); }} captionKinds={captionKinds} pickedFigure={pickedFigure}
       onFigureKind={(kind) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) bodyRefs.current[owner]?.setFigureKind(figure, kind); }}
       pickedEquation={pickedEquation} onEquationNumber={() => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) bodyRefs.current[owner]?.setEquationNumbered(math, math.getAttribute("data-eq-numbered") !== "true"); }}
-      citableItems={citableItems} onInsertCitation={insertCitation} citeText={citeText} setCiteText={setCiteText} citeOpen={citeOpen} setCiteOpen={setCiteOpen}
+      citableItems={citableItems} onInsertCitation={insertCitation}
       onAddFrame={addFrame} rulersVisible={rulersVisible} setRulersVisible={setRulersVisible} rulerUnit={rulerUnit} setRulerUnit={setRulerUnit}
       navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeLayoutText ? (activeLayoutText.style?.fontFamily || getComputedStyle(activeLayoutText.element).fontFamily) : (activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily)} page={layoutSection?.rules.page} />
-    <div className="flex min-h-0 flex-1">
-      {navigationOpen ? <ThesisNavigation sections={model.sections.map((section) => ({ id: section.id, title: section.title }))} headings={collectThesisHeadings(papersRef.current)} onClose={() => setNavigationOpen(false)} onNavigate={(sectionId, headingId) => {
-        const sectionNode = papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(sectionId)}"]`);
-        const headingNode = headingId ? sectionNode?.querySelector(`[data-academic-id="${CSS.escape(headingId)}"]`) : null;
-        const target = headingNode || sectionNode;
-        target?.scrollIntoView({ block: "center", behavior: "smooth" });
-        setActiveSectionId(sectionId);
-        sectionNode?.querySelector('[contenteditable="true"]')?.focus({ preventScroll: true });
-      }} /> : null}
+    <div className="thesis-workspace-body flex min-h-0 flex-1">
+      <ThesisNavigation template={template} hidden={!workspacePanel} panel={workspacePanel || 'outline'} onPanelChange={openWorkspace} sections={model.sections} sectionGroups={pageGroups} activeSectionId={activeSectionId} headings={(model.indexSources || []).filter(item => item.kind === 'toc').map(item => ({sectionId:item.sectionId, id:item.anchor, text:[item.label,item.title].filter(Boolean).join(' '), level:item.level, unnumbered:item.unnumbered}))}
+        key={model.templateId} onDetails={openDetails} onCheck={checkDocument} missingCount={missingFields.length} onAddHeading={addHeading} onNavigate={navigateTo} onClose={() => setWorkspacePanel(null)}
+        sourcesProps={{items:bibliographyItems, authored:authoredSources, authoredHtml:Boolean(htmlToPlainText(bibliographySection?.editableHtml).trim()), bibliographyId:bibliographySection?.id, numeric:numericCitations, canInsert:canInsertCitation, onAdd:addSource, onUpdate:(index,text) => setBibliography(bibliographyItems.map((item,i) => i === index ? text : item)), onRemove:index => setBibliography(bibliographyItems.filter((_,i) => i !== index)), onCite:insertSourceCitation, onPickPosition:() => {navigateTo(model.sections.find(section=>section.id===activeSectionId&&section.editable)?.id || model.sections.find(section=>section.type==='mainContent')?.id);setWorkspacePanel(null);}}}/>
       <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
         <div ref={papersRef} data-thesis-template-id={model.templateId} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
         {pageGroups.map((group, index) => {
@@ -852,10 +911,10 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           })}
         </div>
       </div>
-      {!detailsOpen && (pageSettingsOpen || interaction.selectedElements.length > 0) ? <div className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white" data-thesis-editor-only="true">
+      {!detailsOpen && (pageSettingsOpen || interaction.selectedElements.length > 0) ? <div className="thesis-layout-panel w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white" data-thesis-editor-only="true">
         {pageSettingsOpen && layoutSection ? <><div className="flex items-center gap-2 border-b border-neutral-100 px-3 py-2"><button type="button" onClick={() => setRulersVisible((visible) => !visible)} aria-pressed={rulersVisible} className={toolClass}>Cetveller {rulersVisible ? "açık" : "kapalı"}</button><label className="ml-auto text-xs text-neutral-500">Birim <select aria-label="Cetvel birimi" value={rulerUnit} onChange={(event) => setRulerUnit(event.target.value)} className="ml-1 rounded border border-neutral-300 bg-white px-2 py-1 text-xs text-neutral-900"><option value="mm">mm</option><option value="cm">cm</option><option value="pt">pt</option></select></label></div><PageLayoutInspector page={layoutSection.rules.page} sectionId={layoutSectionId} sectionTitle={layoutSection.title} typography={pageTypography} pageScopeSupported={pageGroups.find((g) => g.sections.some((s) => s.id === layoutSectionId))?.sections.length === 1 && (pageCounts[layoutSectionId] || 1) <= 1} onApply={(patch, scope) => { try { interaction.commitThesis(applyLayoutPage(thesis, patch, { scope, sectionId: layoutSectionId, pageIndex: 0 }), "action"); setMessage("Sayfa düzeni uygulandı."); } catch (error) { setMessage(error.message); } }} onApplyTypography={(patch, scope) => { try { interaction.commitThesis(applyLayoutTypography(thesis, patch, { scope, sectionId: layoutSectionId }), "action"); setMessage("Metin biçimi uygulandı."); } catch (error) { setMessage(error.message); } }} /></> : <LayoutInspector elements={interaction.selectedElements} geometry={Array.isArray(interaction.geometry) ? Object.fromEntries(interaction.geometry.map((item) => [item.id, item])) : interaction.geometry} onPatch={interaction.patchElements} onAction={interaction.performAction} />}
       </div> : null}
-      {detailsOpen ? <aside className="w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
+      {detailsOpen ? <aside className="thesis-details-panel w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
         <div className="mb-4 flex items-center justify-between"><h3 className="text-sm font-semibold">Tez bilgileri</h3><button type="button" onClick={() => setDetailsOpen(false)} aria-label="Tez bilgilerini kapat" className="rounded px-2 py-1 text-lg">×</button></div>
         <div className="space-y-5">
           <section><label className="block text-xs font-medium">Belge biçimi<select aria-label="Belge biçimi" value={thesis.document?.formatMode || "template"} onChange={(event) => changeFormatMode(event.target.value)} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900"><option value="template">Üniversite şablonuna uyarla</option><option value="source">Kaynak biçimini koru</option></select></label><p className="mt-2 text-[11px] leading-snug text-neutral-500">Kaynak biçimi, belgedeki kayıtlı biçim ve bölüm ayarlarını kullanır. Seçiminiz kaynak verisini silmez.</p></section>
@@ -867,7 +926,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           {metadataSection("TAAHHÜTNAME", ["USED_PROGRAMS"])}
           {extraMetadataFields.length ? metadataSection("DİĞER BİLGİLER", extraMetadataFields.map(([key]) => key)) : null}
           {optionalSections.length ? <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">İSTEĞE BAĞLI BÖLÜMLER</h4>{optionalSections.map((section) => <label key={section.id} className="block py-1"><input type="checkbox" checked={thesisEnabledSections(thesis).includes(section.id)} onChange={() => toggleOptional(section.id)} /> {section.title}</label>)}</section> : null}
-          {model?.sections.some(section => section.type === "bibliography") ? <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-3 text-[11px] font-semibold tracking-wide text-neutral-600 dark:text-neutral-300">KAYNAKÇA</h4><p className="mb-2 font-medium">Kaynakça maddeleri</p><div className="grid gap-2">{bibliographyItems.map((item, index) => <input key={index} className="w-full min-w-0 rounded border border-neutral-300 bg-transparent p-2 text-sm dark:border-neutral-700" aria-label={`Kaynakça maddesi ${index + 1}`} value={item} onChange={(event) => setBibliography(bibliographyItems.map((entry, i) => i === index ? event.target.value : entry))} />)}<button type="button" className="w-fit rounded border px-2 py-1" onClick={() => setBibliography([...bibliographyItems, ""])}>+ Kaynak ekle</button></div></section> : null}
+          {bibliographySection ? <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-2 font-semibold">KAYNAKLAR</h4><p className="mb-2 text-neutral-500">Kaynak ekleme ve atıfları ayrı çalışma panelinden yönetin.</p><button type="button" className="thesis-primary-button" onClick={() => openWorkspace('sources')}>Kaynakları aç · {citableItems.length}</button></section> : null}
         </div>
       </aside> : null}
     </div>

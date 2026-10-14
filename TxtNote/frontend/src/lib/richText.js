@@ -422,6 +422,10 @@ function sliceBounds(textNode, range) {
 function isLiftableHost(node) {
   return (
     isFormatSpan(node) ||
+    // Pagination may insert a transparent word-fitting span between the text
+    // and its authored formatting. It must not trap a replacement format under
+    // the old bold/highlight ancestors. The next layout pass rebuilds this span.
+    (node instanceof HTMLElement && node.tagName === "SPAN" && node.hasAttribute("data-thesis-word-fit")) ||
     (node instanceof HTMLElement && /^(S|STRIKE|DEL|U|B|STRONG|I|EM)$/.test(node.tagName))
   );
 }

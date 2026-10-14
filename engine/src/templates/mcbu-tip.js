@@ -75,7 +75,7 @@ const sections = () => [
   coverSection("outer-cover", "outerCover", "DIŞ KAPAK"),
   coverSection("inner-cover", "innerCover", "İÇ KAPAK"),
   // IV. ÖNSÖZ (guide p. 2): "İlk sayfa niteliğinde yazılır ve bir sayfayı geçmez." Not numbered (§1.4) and not listed in the sample contents (Ek-2).
-  { id: "preface", type: "preface", title: "ÖNSÖZ", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "none",
+  { id: "preface", type: "preface", title: "ÖNSÖZ", status: "required", group: "front", mode: "editable", showTitle: true, tocEntry: "none", maxPages: 1,
     overrides: { page: frontPage, headings: unnumberedTitle } },
   // V. İÇİNDEKİLER (p. 3, Ek-2 on p. 4): starts at the left edge, no leader/dash beside the page numbers, a bold "Sayfa" column heading, main headings 1.5 lines
   // apart, sub-headings one (single) line apart. ÖNSÖZ and İÇİNDEKİLER themselves are not listed in the Ek-2 example. Not numbered (§1.4).
@@ -91,8 +91,8 @@ const sections = () => [
   { id: "main", type: "mainContent", title: "Bölümler", status: "required", group: "body", mode: "editable",
     overrides: { page: { numbering: { format: "arabic", startAt: 1, restart: true } } } },
   // XII-XV continue the Roman chapter numbers exactly as in the Ek-2 list (VII. ÖZET, VIII. İNGİLİZCE ÖZET, IX. EKLER (Gerekiyorsa), X. KAYNAKLAR).
-  { id: "abstract", type: "abstract", title: "ÖZET", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1" },
-  { id: "abstract-en", type: "englishAbstract", title: "İNGİLİZCE ÖZET", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1" },
+  { id: "abstract", type: "abstract", title: "ÖZET", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1", maxPages: 1 },
+  { id: "abstract-en", type: "englishAbstract", title: "İNGİLİZCE ÖZET", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1", content: "{{THESIS_TITLE_EN}}" },
   { id: "appendices", type: "appendices", title: "EKLER", status: "optional", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1" },
   { id: "bibliography", type: "bibliography", title: "KAYNAKLAR", status: "required", group: "back", mode: "editable", showTitle: true, titleNumbering: "continueH1" },
 ];
@@ -174,12 +174,20 @@ const base = {
     UNIVERSITY_FACULTY_LINE: { label: "Kapak üst satırı (kılavuz örneği: eski ad)", type: "text", defaultValue: "CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ" },
     DEPARTMENT_NAME: { label: "Anabilim Dalı adı (… Anabilim Dalı)", type: "text", required: true },
     THESIS_TITLE: { label: "Tezin başlığı", type: "text", required: true },
+    THESIS_TITLE_EN: { label: "İngilizce tez başlığı", type: "text", required: true },
     STUDENT_NAME: { label: "Araştırma Görevlisinin Adı SOYADI", type: "text", required: true },
     ADVISOR_TITLE: { label: "Tez danışmanının unvanı", type: "text", required: true },
     ADVISOR_NAME: { label: "Tez danışmanının Adı SOYADI", type: "text", required: true },
     YEAR: { label: "Tezin yapıldığı yıl (kapak)", type: "number", required: true },
   },
   tables: caption("Tablo", "above"),
+  // Guide IV, VI-XI, XII-XIII and XV. Missing/incorrect author content is
+  // reported without silently changing citations, chapter titles or prose.
+  validation: {
+    THESIS_TITLE_EN: { minItems: 1, severity: "error", message: "İngilizce özette kullanılacak İngilizce tez başlığını doldurun (kılavuz XIII)." },
+    main: { headingSequence: ["GİRİŞ", "GENEL BİLGİLER", "GEREÇ VE YÖNTEM", "BULGULAR", "TARTIŞMA", ["SONUÇ VE ÖNERİLER", "SONUÇLAR VE ÖNERİLER"]], headingLevel: 1, numericCitations: true, severity: "error" },
+    bibliography: { minItems: 1, numberedEntries: true, severity: "error", message: "Kaynakça bölümünü doldurun (kılavuz XV)." },
+  },
   figures: { ...caption("Şekil", "below"), box: { align: "center", spaceBeforePt: 0, spaceAfterPt: 0 } },
   // Ek-2 reference examples (pp. 4-5, MEASURED): single spacing, 6.35 mm hanging indent, ~17.7 pt between entries; numeric citations, numbered in order of appearance (§XV).
   bibliography: { heading: "KAYNAKLAR", style: { fontFamily: FONT, fontSizePt: 12, align: "left", lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 17.7, firstLineIndentMm: 0, hangingIndentMm: 6.35 }, hangingIndentMm: 0, citationStyle: "numeric", numbered: true },

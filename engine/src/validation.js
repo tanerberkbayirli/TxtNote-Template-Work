@@ -3,6 +3,7 @@ import { MM_PER_PT } from "./units.js";
 import { validateFootnoteRule } from "./footnotes.js";
 import { withEngineDefaults } from "./engineDefaults.js";
 import { plainThesisText } from "./sourceHtml.js";
+import { contentRuleIssues } from "./contentConformance.js";
 
 export const THESIS_SCHEMA_VERSION = 1;
 /** Values a placeholder may take from the laid-out document instead of user input (never stored). */
@@ -182,12 +183,15 @@ function validateIndex(index, body, headings, path, captionKinds = {}) {
 }
 
 /** Advisory rules never block saving or exporting. Fields resolve from metadata or editable section text. */
-export function validateThesisContent(template, thesis, values = thesis?.values || {}) {
+export function validateThesisContent(template, thesis, values = thesis?.values || {}, compiledSections = []) {
   const result = { errors: [], warnings: [] };
   for (const [field, rule] of Object.entries(template.validation || {})) {
-    const raw = values[field] ?? thesis?.sectionContent?.[field] ?? "";
-    const items = Array.isArray(raw) ? raw.filter((item) => String(item).trim()) : String(raw).split(rule.separator || /[,;\n]/).map((item) => item.trim()).filter(Boolean);
+    const section = compiledSections.find(entry => entry.id === field);
+    const content = section ? `${section.editableHtml || ""}${section.suffixHtml || ""}` : thesis?.sectionContent?.[field];
+    const raw = values[field] ?? content ?? "";
+    const items = Array.isArray(raw) ? raw.filter((item) => String(item).trim()) : plainThesisText(raw).split(rule.separator || /[,;\n]/).map((item) => item.trim()).filter(Boolean);
     if (rule.minItems !== undefined && items.length < rule.minItems) result[rule.severity === "error" ? "errors" : "warnings"].push({ code: "minItems", field, expected: rule.minItems, actual: items.length, message: rule.message || `${field}: en az ${rule.minItems} öğe gerekli (${items.length}).` });
+    result[rule.severity === "error" ? "errors" : "warnings"].push(...contentRuleIssues(field, rule, raw));
   }
   return result;
 }
@@ -231,9 +235,12 @@ export function validateThesisTemplate(rawTemplate) {
   if (template.validation !== undefined) {
     if (!object(template.validation)) errors.push("validation nesne olmalı");
     else for (const [field, rule] of Object.entries(template.validation)) {
-      if (!object(rule) || !Number.isInteger(rule.minItems) || rule.minItems < 0) errors.push(`validation.${field}.minItems geçersiz`);
+      if (!object(rule) || (rule.minItems !== undefined && (!Number.isInteger(rule.minItems) || rule.minItems < 0))) errors.push(`validation.${field}.minItems geçersiz`);
       if (rule?.separator !== undefined && (typeof rule.separator !== "string" || !rule.separator)) errors.push(`validation.${field}.separator geçersiz`);
       if (rule?.severity !== undefined && !["error", "warning"].includes(rule.severity)) errors.push(`validation.${field}.severity geçersiz`);
+      if (rule?.headingSequence !== undefined && (!Array.isArray(rule.headingSequence) || !rule.headingSequence.length || rule.headingSequence.some(group => !(Array.isArray(group) ? group.length && group.every(text) : text(group))))) errors.push(`validation.${field}.headingSequence geçersiz`);
+      if (rule?.headingLevel !== undefined && (!Number.isInteger(rule.headingLevel) || rule.headingLevel < 1 || rule.headingLevel > 6)) errors.push(`validation.${field}.headingLevel geçersiz`);
+      for (const key of ["numericCitations", "numberedEntries"]) if (rule?.[key] !== undefined && typeof rule[key] !== "boolean") errors.push(`validation.${field}.${key} geçersiz`);
     }
   }
   const headings = template.typography?.headings;
@@ -267,6 +274,7 @@ export function validateThesisTemplate(rawTemplate) {
       if (sectionModes.has(section.mode) && typeof section.editable === "boolean" && section.editable !== (section.mode === "editable")) errors.push(`section ${section.id}.mode ile editable çelişiyor`);
       if (section.order !== undefined && !Number.isFinite(section.order)) errors.push(`section ${section.id}.order geçersiz`);
       if (section.minWords !== undefined && (!Number.isInteger(section.minWords) || section.minWords < 1)) errors.push(`section ${section.id}.minWords pozitif tam sayı olmalı`);
+      if (section.maxPages !== undefined && (!Number.isInteger(section.maxPages) || section.maxPages < 1)) errors.push(`section ${section.id}.maxPages pozitif tam sayı olmalı`);
       if (section.minWordsByHeading !== undefined && (!Array.isArray(section.minWordsByHeading) || section.minWordsByHeading.some((rule) => !object(rule) || !text(rule.heading) || !Number.isInteger(rule.minWords) || rule.minWords < 1))) errors.push(`section ${section.id}.minWordsByHeading geçersiz`);
       if (section.showTitle !== undefined && typeof section.showTitle !== "boolean") errors.push(`section ${section.id}.showTitle geçersiz`);
       if (section.type === "mainContent" && section.mode !== undefined && section.mode !== "editable") errors.push(`section ${section.id}: mainContent düzenlenebilir olmalı`);

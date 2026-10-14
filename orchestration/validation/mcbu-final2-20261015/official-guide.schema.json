@@ -1,0 +1,53 @@
+﻿{
+    "input":  "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\orchestration\\validation\\mcbu-review-20261014\\official-live-lee.docx",
+    "errorCount":  7,
+    "sdkPath":  "C:/Program Files/Microsoft Office/root/Office16/ADDINS/Microsoft Power Query for Excel Integrated/bin/DocumentFormat.OpenXml.dll",
+    "sdkVersion":  "2.9.1.0",
+    "errors":  [
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:firstRow\u0027 attribute is not declared.",
+                       "id":  "Sch_UndeclaredAttribute",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblLook[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:lastRow\u0027 attribute is not declared.",
+                       "id":  "Sch_UndeclaredAttribute",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblLook[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:firstColumn\u0027 attribute is not declared.",
+                       "id":  "Sch_UndeclaredAttribute",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblLook[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:lastColumn\u0027 attribute is not declared.",
+                       "id":  "Sch_UndeclaredAttribute",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblLook[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:noHBand\u0027 attribute is not declared.",
+                       "id":  "Sch_UndeclaredAttribute",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblLook[1]"
+                   },
+                   {
+                       "part":  "/word/document.xml",
+                       "description":  "The \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:noVBand\u0027 attribute is not declared.",
+                       "id":  "Sch_UndeclaredAttribute",
+                       "xpath":  "/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblLook[1]"
+                   },
+                   {
+                       "part":  "/word/settings.xml",
+                       "description":  "The attribute \u0027http://schemas.openxmlformats.org/wordprocessingml/2006/main:name\u0027 has invalid value \u0027useWord2013TrackBottomHyphenation\u0027. The Enumeration constraint failed.",
+                       "id":  "Sch_AttributeValueDataTypeDetailed",
+                       "xpath":  "/w:settings[1]/w:compat[1]/w:compatSetting[6]"
+                   }
+               ],
+    "inputSha256":  "e607f8f7405ae10eee4880e7d52f660517fb595625f065088ec5f437f08238c7",
+    "schema":  "Office2016",
+    "status":  "FAIL"
+}

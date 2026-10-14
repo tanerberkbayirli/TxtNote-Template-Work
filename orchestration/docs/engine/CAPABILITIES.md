@@ -67,6 +67,9 @@ checker gates validate the contract and independent PDF glyph samples. See READM
 | official source reference | `source.type`, `source.url`, `source.documentName`, `source.verifiedAt` (official needs url or documentName + verifiedAt) | strings | required | - | AfsuTip |
 | fill-in values on special pages | `placeholders` (label/type/required/defaultValue), `derived` = `totalPages` / `frontLastLabel` / `mainPageCount` | text/date/number/multiline | - | ✓✓✓ | AkuFbe, EngineExtensions, Mcbu |
 | content rules (e.g. min. keywords) | `validation` with `minItems`, `separator`, `severity`, `message` | error/warning | - | editor only | Extensions |
+| required ordered chapter titles, with source-backed alternatives | `validation.<sectionId>.headingSequence`, `headingLevel` | array of titles or arrays of allowed titles; heading level 1..6 | opt-in | editor warnings/errors, no rewriting | contentConformance |
+| detect author-year citations / out-of-order first numeric references; check numbered reference rows | `validation.<sectionId>.numericCitations`, `numberedEntries` | boolean; structural checks, no bibliographic or semantic certification | opt-in | editor warnings/errors | contentConformance |
+| physical page limit for a section | `sections[].maxPages` | positive integer; settled page-group count required | opt-in | editor advisory, no export blocking | contentConformance |
 | optional rules get engine defaults | `engineDefaults.js` (headings, tables, figures, bibliography, toc) | - | applied | ✓✓✓ | EngineDefaults |
 | ids / order on any object | `id`, `type`, `order`, `title`, `label`, `kind`, `field`, `format`, `position`, `scope`, `sequence`, `number`, `mode`, `content`, `style`, `table`, `figure`, `equation`, `document`, `page`, `body`, `paragraph`, `sections`, `overrides` | see schema | - | - | AfsuLeeProposal |
 

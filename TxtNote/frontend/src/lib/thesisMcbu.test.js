@@ -22,6 +22,18 @@ const mm = (pt) => pt * 25.4 / 72;
 const flat = (nodes) => nodes.flatMap((node) => node.type === "group" ? flat(node.blocks) : [node]);
 
 describe("Task 10B.2 final details", () => {
+  it("keeps generated index titles as live TOC sources and preserves chapter line breaks on refresh", async () => {
+    const model = compile(mcbuMaster);
+    const entries = unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()));
+    const xml = strFromU8(entries["word/document.xml"]);
+    for (const title of ["ŞEKİLLER DİZİNİ", "TABLOLAR DİZİNİ", "İÇİNDEKİLER"]) {
+      const fields = [...xml.matchAll(/<w:instrText[^>]*>([\s\S]*?)<\/w:instrText>/g)].map(match => match[1]);
+      assert.equal(fields.filter(field => field.startsWith(` TC &quot;${title}&quot;`)).length, 1, title);
+    }
+    const tocInstruction = xml.match(/<w:instrText[^>]*>(TOC [\s\S]*?)<\/w:instrText>/)?.[1];
+    assert.match(tocInstruction, /\\x(?:\s|$)/);
+    assert.match(xml, /<w:p><w:pPr><w:keepNext w:val="0"\/><w:spacing w:after="0" w:before="0" w:line="1" w:lineRule="exact"\/><\/w:pPr><w:r><w:fldChar w:fldCharType="end"\/><\/w:r><\/w:p>/, "TOC terminal paragraph must not inherit row spacing on Word refresh");
+  });
   it("old metadata without English department opens with an advisory warning and neutral placeholder", () => {
     const legacy = { ...values }; delete legacy.DEPARTMENT_NAME_EN;
     const model = compile(mcbuMaster, thesis({ values: legacy }));
