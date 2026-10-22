@@ -1613,14 +1613,167 @@
     "id": "source-conflicts-required",
     "kind": "note",
     "params": {
-      "text": "University confirmation pending: abstract single vs 1.5; cover gaps notes vs XML; chapter alignment prose vs TOC example; page count meaning; English degree/institute names. Existing source precedence is an implementation choice, not university approval."
+      "text": "RESOLVED 2026-10-15: cover gaps 9/1 per guide G[10]/G[32] corroborated by Bölükbaşı 2025 p.1; abstract page count = total physical PDF pages (88 printed / 88 physical, last Arabic 76). Both abstracts 1.5 per prior user decision. See validation/mcbu-thesis-research-20261015/decisions-v2.json."
     },
     "expected": null,
     "source": {
       "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
-      "locator": "G[96],G[104],G[130]; G[10],G[32]; G[299]-G[300],G[332]; G[102],G[128]"
+      "locator": "G[10],G[32]; Bölükbaşı 2025 pp.1,4-5 and 88-page PDF; source-measurements.json"
     },
-    "evidence": "UNKNOWN",
-    "required": true
+    "evidence": "INFERRED",
+    "required": true,
+    "ruling": "User-authorized example-based decision 2026-10-15; published examples corroborate/complete source rules; not institutional approval."
+  },
+  {
+    "id": "master-pdf-cover-program-title-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "page": 1,
+      "a": "PROGRAMI$",
+      "b": "^ÇEVRİMİÇİ ÖĞRENME"
+    },
+    "expected": 49.308,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 program-to-first-title-line; guide G[10] 9 blank lines"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "master-pdf-cover-advisor-city-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "page": 1,
+      "a": "^Doç\\. Dr\\. İlknur ÇİÇEK$",
+      "b": "^MANİSA[–-]2026$"
+    },
+    "expected": 9.797,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 advisor-to-city; guide G[32] 1 blank line; source-measurements-v2.json (exact city/year selector)"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "master-word-cover-program-title-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "page": 1,
+      "a": "PROGRAMI$",
+      "b": "^ÇEVRİMİÇİ ÖĞRENME"
+    },
+    "expected": 49.308,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 program-to-first-title-line; guide G[10] 9 blank lines"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "master-word-cover-advisor-city-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "page": 1,
+      "a": "^Doç\\. Dr\\. İlknur ÇİÇEK$",
+      "b": "^MANİSA[–-]2026$"
+    },
+    "expected": 9.797,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 advisor-to-city; guide G[32] 1 blank line; source-measurements-v2.json (exact city/year selector)"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "phd-pdf-cover-program-title-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "page": 1,
+      "a": "PROGRAMI$",
+      "b": "^ÇEVRİMİÇİ ÖĞRENME"
+    },
+    "expected": 49.308,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 program-to-first-title-line; guide G[10] 9 blank lines"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "phd-pdf-cover-advisor-city-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "page": 1,
+      "a": "^Doç\\. Dr\\. İlknur ÇİÇEK$",
+      "b": "^MANİSA[–-]2026$"
+    },
+    "expected": 9.797,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 advisor-to-city; guide G[32] 1 blank line; source-measurements-v2.json (exact city/year selector)"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "phd-word-cover-program-title-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "page": 1,
+      "a": "PROGRAMI$",
+      "b": "^ÇEVRİMİÇİ ÖĞRENME"
+    },
+    "expected": 49.308,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 program-to-first-title-line; guide G[10] 9 blank lines"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "phd-word-cover-advisor-city-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "page": 1,
+      "a": "^Doç\\. Dr\\. İlknur ÇİÇEK$",
+      "b": "^MANİSA[–-]2026$"
+    },
+    "expected": 9.797,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration\\validation\\mcbu-thesis-research-20261015\\sources\\lee-bolukbasi-2025.pdf",
+      "locator": "p.1 advisor-to-city; guide G[32] 1 blank line; source-measurements-v2.json (exact city/year selector)"
+    },
+    "evidence": "MEASURED",
+    "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
   }
 ]

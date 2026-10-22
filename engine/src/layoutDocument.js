@@ -118,7 +118,7 @@ function normalizePageOverride(value) {
 function normalizeElementFields(value, { addition = false } = {}) {
   if (!isRecord(value)) return {};
   const result = {};
-  for (const key of ["xMm", "yMm"]) if (finite(value[key])) result[key] = value[key];
+  for (const key of ["xMm", "yMm", "originXMm", "originYMm", "flowMarginTopMm", "flowMarginBottomMm"]) if (finite(value[key])) result[key] = value[key];
   for (const key of ["widthMm", "heightMm"]) if (finite(value[key]) && value[key] > 0) result[key] = value[key];
   if (finite(value.flowHeightMm) && value.flowHeightMm >= 0) result.flowHeightMm = value.flowHeightMm;
   if (LAYOUT_MODES.has(value.layoutMode)) result.layoutMode = value.layoutMode;

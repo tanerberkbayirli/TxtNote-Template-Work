@@ -1,4 +1,4 @@
-import { blockDescriptors, blockGapActive, describeBlock, gapBetween } from "../blockGap.js";
+import { blockDescriptors, describeBlock, figureAlign, figureMargins, gapBetween } from "../blockGap.js";
 import { Bookmark, LineRuleType, PageBreak, Paragraph, TextRun, TabStopType, LeaderType } from "./runtime.js";
 import { ACADEMIC_FIGURE_MARGIN_PT } from "../../../TxtNote/frontend/src/lib/academicDocument.js";
 import { PX_PER_MM } from "../pageLayout.js";
@@ -6,10 +6,11 @@ import { indexRowStyle } from "../generatedIndex.js";
 import { positionedLayoutDocx, splitLayoutNodes } from "../layoutDocx.js";
 import { imageRun } from "./imageRuns.js";
 import { alignDocx, asBlocks, halfPointSize, imageBytes, plainRuns, pt, twip } from "./xml.js";
-import { bookmarkName, captionParagraph, captionStyle, docxParagraph, listParagraphs, thesisHeadingStyleId } from "./paragraphs.js";
+import { bookmarkName, captionParagraph, captionStyle, docxParagraph, listParagraphs, thesisHeadingStyleId, spacerParagraph } from "./paragraphs.js";
 import { emptyComplexFieldParagraph, tocSpecialField, wrapParagraphsInField } from "./fields.js";
 import { tableDocx } from "./tables.js";
 import { positionedSpecialPageDocx, specialPageDocx, specialPageWordSlackMm } from "./specialPages.js";
+import { presentationId } from "../presentationLayout.js";
 const SPECIAL_PAGE_WORD_SLACK_MM = 1.5;
 
 export function docxChildren(section, context) {
@@ -17,14 +18,32 @@ export function docxChildren(section, context) {
   const widthMm = context.naturalSpecialPageFlow ? page.docxContentFrame.widthMm : page.widthMm - page.margins.leftMm - page.margins.rightMm;
   const children = [];
   context.bodyWidthPx = Math.round(widthMm * PX_PER_MM);
+  // The editor styles these model-backed paragraphs with CSS. Preserve the
+  // same saved override in Word instead of falling back to the template style.
+  const presentation = new Map((section.presentationElements || []).map(node => [node.id, node]));
+  const presentationStyle = (id, style) => ({ ...style, ...presentation.get(id)?.override?.style });
+  const frameFor = id => {
+    const node = presentation.get(id);
+    return node && ['absolute', 'anchored'].includes(node.layoutMode) ? context.presentationGeometry?.[id] || node : undefined;
+  };
+  const pushPresentation = (paragraph, id) => {
+    children.push(paragraph);
+    const node = presentation.get(id);
+    if (frameFor(id) && node?.override?.flowHeightMm > 0) children.push(spacerParagraph(node.override.flowHeightMm + (node.override.flowMarginTopMm || 0) + (node.override.flowMarginBottomMm || 0)));
+  };
+  const presentationText = (id, fallback) => {
+    const override = presentation.get(id)?.override;
+    return typeof override?.content === 'string' ? override.content : typeof override?.text === 'string' ? override.text : fallback;
+  };
   if (section.generatedIndex) {
     const rule = section.generatedIndex;
     const titleEntry = section.indexSources?.find((entry) => entry.tocTitle);
     const titleRow = context.tocRowsByAnchor?.get(titleEntry?.anchor);
-    const title = docxParagraph(plainRuns(rule.title), { ...headings[1], pageBreakBefore: false }, context, { anchor: titleEntry?.anchor });
+    const titleId = presentationId(section.id, 'generated', 'h1:0');
+    const title = docxParagraph(plainRuns(presentationText(titleId, rule.title)), presentationStyle(titleId, { ...headings[1], pageBreakBefore: false }), context, { anchor: titleEntry?.anchor });
     // Generated list/TOC titles need the same live TC source as other indexed
     // special-page titles. A cached TOC row alone disappears on Word refresh.
-    if (titleRow) title.root.push(...tocSpecialField({ ...titleRow, title: rule.title }));
+    if (titleRow) title.root.push(...tocSpecialField({ ...titleRow, title: titleRow.tocTextOverride ?? rule.title }));
     children.push(title);
     if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
     const indexParagraphStart = children.length;
@@ -35,12 +54,14 @@ export function docxChildren(section, context) {
       if (rule.unnumberedAfterNumberedSpaceBeforePt > 0 && row.unnumbered && previousRow && !previousRow.unnumbered) levelStyle.spaceBeforePt = (levelStyle.spaceBeforePt ?? rule.style?.spaceBeforePt ?? 0) + rule.unnumberedAfterNumberedSpaceBeforePt;
       previousRow = row;
       const hangMm = rule.hanging === "label" ? (context.indexHangs?.[row.anchor] || 0) / PX_PER_MM : rule.hanging > 0 ? rule.hanging : 0;
-      const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) };
+      const rowId = presentationId(section.id, 'generated', `row:${row.anchor}`);
+      const style = presentationStyle(rowId, { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...(hangMm > 0 ? { hangingIndentMm: hangMm } : {}) });
       const bold = (rule.labelStyle?.fontWeight || 0) >= 600;
       // A numbered chapter TOC row is one Word paragraph with an explicit line break, matching the
       // editor/PDF row block so before/after spacing surrounds the block instead of its two lines.
       const lineLabel = row.labelLine && row.label && row.rowTitle !== undefined;
-      const runs = lineLabel
+      const labelOverride = presentationText(rowId, null);
+      const runs = labelOverride !== null ? plainRuns(labelOverride) : lineLabel
         ? [{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }, { type: "break" }, ...plainRuns(row.rowTitle)]
         : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
       const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
@@ -59,7 +80,7 @@ export function docxChildren(section, context) {
   const titleAnchor = titleEntry?.anchor;
   if (titleAnchor) {
     const row = context.tocRowsByAnchor?.get(titleAnchor);
-    const tc = row ? [...tocSpecialField({ ...titleEntry, wordTocLevel: row.includePageNumber === false ? 9 : row.level, includePageNumber: row.includePageNumber })] : [];
+    const tc = row ? [...tocSpecialField({ ...titleEntry, title: row.tocTextOverride ?? titleEntry.title, wordTocLevel: row.wordTocLevel, includePageNumber: row.includePageNumber })] : [];
     children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] }), ...tc] }));
   }
   if (section.layout) {
@@ -76,10 +97,10 @@ export function docxChildren(section, context) {
     children.push(...positionedLayoutDocx(positioned, { language: context.language, lineSpacing: context.lineSpacing, pageMargins: page.margins }));
   }
   let afterHeading = false;
-  // lineSpacing.blockGap: the gap between two blocks comes from the block-gap table (blockGap.js), the same one the editor CSS uses;
-  // Word adds previous space-after and next space-before, so the next block's space-before is gap - previous space-after.
-  const useGap = blockGapActive(section.rules);
-  const descriptors = useGap ? blockDescriptors(section.rules, section.type === "bibliography" ? section.rules.bibliography.style : body, "figure") : [];
+  // The gap between two blocks comes from one table (blockGap.js) for every template: the opt-in paragraph-pitch rule or the editor's block
+  // margins (CSS collapse, additive paragraph pairs, contextual spacing). The whole gap goes on the next block's space-before.
+  const useGap = true;
+  const descriptors = blockDescriptors(section.rules, section.type === "bibliography" ? section.rules.bibliography.style : body, "figure");
   let previous = null;
   let pendingAfter = null;
   const sectionBlocks = asBlocks(section);
@@ -104,7 +125,7 @@ export function docxChildren(section, context) {
     };
     const chain = (style) => { pendingAfter = style.spaceAfterPt || 0; return style; };
     if (block.type === "heading") {
-      const style = headings[block.level] || headings[1] || body;
+      const style = presentationStyle(block.layoutId, headings[block.level] || headings[1] || body);
       // A number on its own line stays in the heading paragraph, after a line break (same style, one block as in the editor).
       // Inline character formatting (e.g. a coloured section title) travels as runs when they spell exactly the heading text; plain headings keep the single-run path.
       const inlineFormatted = block.runs?.length && block.runs.map((run) => run.text || "").join("") === block.text
@@ -115,7 +136,7 @@ export function docxChildren(section, context) {
       const indent = block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {};
       const indexedRow = context.tocRowsByAnchor?.get(block.thesisAnchor);
       const noPage = indexedRow?.includePageNumber === false;
-      const isMappedHeading = Boolean(indexedRow && !indexedRow.tocTitle);
+      const isMappedHeading = Boolean(indexedRow && !indexedRow.tocTitle && !indexedRow.customToc);
       const level = Number(block.level);
       const nativeMappedLevel = context.nativeTocLevels?.has(level);
       // Keep ordinary, non-indexed outline levels on their normal Word heading
@@ -139,24 +160,31 @@ export function docxChildren(section, context) {
       let headStyle = headingBreaks ? { ...style, ...indent } : { ...style, ...indent, pageBreakBefore: false };
       if (context.blockPageBreaks.has(block.thesisAnchor)) headStyle = { ...headStyle, pageBreakBefore: true };
       // numbering.omitOnChapterStart: a page-breaking level-1 heading opens a Word section of its own (next page, number-free first page).
-      if (Number(block.level) === 1 && page.numbering?.omitOnChapterStart) {
+      // The same section split keeps a chapter heading's space-before at the top of its page: the editor keeps that margin after the forced
+      // break, but Word drops space-before after a page break (pageBreakBefore or a hard break) and honours it only after a section break.
+      let sectionStart = false;
+      const keepsTopSpace = headStyle.pageBreakBefore && withGap(headStyle).spaceBeforePt > 0;
+      if (Number(block.level) === 1 && (page.numbering?.omitOnChapterStart || keepsTopSpace)) {
         if (children.length === 0) children.startsWithChapter = true;
-        else if (headStyle.pageBreakBefore) { (children.chapterSplits ||= []).push(children.length); headStyle = { ...headStyle, pageBreakBefore: false }; }
+        else if (headStyle.pageBreakBefore) { (children.chapterSplits ||= []).push(children.length); sectionStart = true; }
       }
-      const paragraph = docxParagraph(runs, chain(withGap(headStyle)), context, { style: sourceStyleId, anchor: [block.thesisAnchor, block.appendixAnchor] });
-      if (indexedRow?.tocTitle) paragraph.root.push(...tocSpecialField({ ...indexedRow, title: indexedRow.rowTitle || indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
-      children.push(paragraph);
+      // Spacing is resolved while the heading still counts as page-breaking (an additive gap never adds the previous space-after to a page's first
+      // paragraph); the Word section break then replaces the page-break property.
+      const spacedHead = withGap(headStyle);
+      const paragraph = docxParagraph(runs, chain(sectionStart ? { ...spacedHead, pageBreakBefore: false } : spacedHead), context, { style: sourceStyleId, anchor: [block.thesisAnchor, block.appendixAnchor], presentationFrame: frameFor(block.layoutId) });
+      if (indexedRow?.tocTitle || indexedRow?.customToc) paragraph.root.push(...tocSpecialField({ ...indexedRow, title: indexedRow.tocTextOverride ?? indexedRow.rowTitle ?? indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
+      pushPresentation(paragraph, block.layoutId);
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];
-      const style = named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body;
+      const style = presentationStyle(block.layoutId, named ? { ...body, ...named } : section.type === "bibliography" ? section.rules.bibliography.style : previousHeading && body.firstAfterHeading ? { ...body, ...body.firstAfterHeading } : body);
       // Only an alignment the user chose (explicit left included) overrides the template. Lines
       // ended by Enter have no paragraph spacing in the editor; <p> paragraphs do.
       // Line-flow blocks (browser) report no alignment for "template"; the regex fallback says "left".
-      const align = typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined;
+      const align = presentation.get(block.layoutId)?.override?.style?.align || (typeof block.line === "boolean" ? block.align : block.align !== "left" ? block.align : undefined);
       const spacing = block.line ? { spaceBeforePt: 0, spaceAfterPt: 0 } : {};
       const namedStyleId = named ? `ThesisParagraph_${section.id.replace(/[^A-Za-z0-9_]/g, "_")}_${block.thesisStyle.replace(/[^A-Za-z0-9_]/g, "_")}` : undefined;
       if (namedStyleId) (context.namedParagraphStyles ||= new Map()).set(namedStyleId, { id: namedStyleId, name: namedStyleId, basedOn: "Normal", quickFormat: false });
-      children.push(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), chain(withGap({ ...style, ...(block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {}), ...spacing, align: align || style.align })), context, { ...(namedStyleId ? { style: namedStyleId } : {}), ...(block.appendixAnchor ? { anchor: block.appendixAnchor } : {}) }));
+      pushPresentation(docxParagraph(block.runs?.length ? block.runs : plainRuns(block.text), chain(withGap({ ...style, ...(block.indentMm ? { leftIndentMm: (style.leftIndentMm || 0) + block.indentMm } : {}), ...spacing, align: align || style.align })), context, { ...(namedStyleId ? { style: namedStyleId } : {}), ...(block.appendixAnchor ? { anchor: block.appendixAnchor } : {}), presentationFrame: frameFor(block.layoutId) }), block.layoutId);
     } else if (block.type === "list") {
       children.push(...listParagraphs(block, section, context, 0, before));
     } else if (block.type === "table") {
@@ -165,19 +193,21 @@ export function docxChildren(section, context) {
       // A figure of a template caption kind ("Resim") uses that kind's rule.
       const figures = block.captionKind && section.rules.captionKinds?.[block.captionKind] || section.rules.figures;
       // Without a template block-gap table the figure keeps the editor's own figure margin around image and caption.
-      const figureMargin = before === null ? ACADEMIC_FIGURE_MARGIN_PT : 0;
+      const margins = before === null ? figureMargins(figures, ACADEMIC_FIGURE_MARGIN_PT) : { before: 0, after: 0 };
       const figureCaptionStyle = captionStyle(figures, block, context);
       const caption = block.caption ? captionParagraph({ ...figures, spacingBeforePt: undefined, spacingAfterPt: undefined, style: { ...figureCaptionStyle,
-        ...(figures.position === "above" ? { spaceBeforePt: (figureCaptionStyle.spaceBeforePt || 0) + figureMargin } : { spaceAfterPt: (figureCaptionStyle.spaceAfterPt || 0) + figureMargin }) } }, block, context, { keepNext: figures.position === "above" }) : null;
+        // With a gap from the block table the caption above starts the figure, so it carries the whole gap; the caption below keeps its own
+        // space after and the next block's space-before carries the rest.
+        ...(figures.position === "above" ? { spaceBeforePt: before !== null ? before : (figureCaptionStyle.spaceBeforePt || 0) + margins.before } : { spaceAfterPt: (figureCaptionStyle.spaceAfterPt || 0) + margins.after }) } }, block, context, { keepNext: figures.position === "above" }) : null;
       if (caption && figures.position === "above") children.push(caption);
       const image = imageBytes(block.src);
       if (image) {
         const width = Math.min(block.width || 400, Math.round(widthMm * PX_PER_MM));
         const height = Math.max(1, Math.round(width * ((block.height || 250) / (block.width || 400))));
         const spacing = before === null
-          ? { before: caption && figures.position === "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT), after: caption && figures.position !== "above" ? 0 : pt(ACADEMIC_FIGURE_MARGIN_PT) }
-          : { before: pt(before) };
-        children.push(new Paragraph({ alignment: alignDocx(figures.box?.align || "center"), pageBreakBefore: context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id), keepNext: Boolean(caption && figures.position !== "above"), spacing, children: [imageRun({ src: block.src, width, height, alt: block.alt || block.caption, title: block.title, crop: block.crop })] }));
+          ? { before: caption && figures.position === "above" ? 0 : pt(margins.before), after: caption && figures.position !== "above" ? 0 : pt(margins.after) }
+          : { before: caption && figures.position === "above" ? 0 : pt(before) };
+        children.push(new Paragraph({ alignment: alignDocx(figureAlign(figures)), pageBreakBefore: context.blockPageBreaks.has(block.captionAnchor) || context.blockPageBreaks.has(block.id), keepNext: Boolean(caption && figures.position !== "above"), spacing, children: [imageRun({ src: block.src, width, height, alt: block.alt || block.caption, title: block.title, crop: block.crop })] }));
       }
       if (caption && figures.position !== "above") children.push(caption);
     } else if (block.type === "pageBreak") {
@@ -194,6 +224,15 @@ export function docxChildren(section, context) {
     } else if (block.type === "code" || block.type === "math") {
       children.push(docxParagraph(block.type === "math" && block.omml ? [{ type: "math", omml: block.omml, text: block.text }] : plainRuns(block.text || ""), { ...body, firstLineIndentMm: 0 }, context));
     }
+  }
+  // A blank editing host after a static section title still occupies one body
+  // line in the browser (caret/placeholder). Keep that line in Word so the next
+  // continuous section, such as a signature, does not jump upwards. The
+  // placeholder text itself is UI and must never enter the document.
+  if (section.editable && !section.fixedContent && section.prefixHtml && !section.editableHtml?.trim() && !section.suffixHtml && !section.layout) {
+    const prefixGap = section.rules.lineSpacing?.paragraphSpacing === 'additive'
+      ? (body.spaceBeforePt || 0) + (pendingAfter || 0) : 0;
+    children.push(docxParagraph([], { ...body, spaceBeforePt: prefixGap, spaceAfterPt: 0 }, context));
   }
   return children.length ? children : [docxParagraph([], body, context)];
 }

@@ -9,7 +9,7 @@ import { readChromeText, projectSourceChrome, readPositionedPage } from "./docx/
 import { readDrawingShape } from "./docx/shapes.js";
 import { readPictureAttributes } from "./docx/images.js";
 import { equationPreview, equationMathSettings, inlineEquationContext } from "./docx/equationPreview.js";
-import { chartPreview, drawingGroupPreview, drawingTheme } from "./docx/drawingPreview.js";
+import { chartPreview, chartUserShapesPreview, drawingGroupPreview, drawingShapePreview, drawingTheme } from "./docx/drawingPreview.js";
 
 const textNode = text => ({ type: "text", text: escapeHtml(text) });
 const localAttr = (node, name) => Array.from(node?.attributes || []).find(a => a.localName === name)?.value || "";
@@ -161,7 +161,13 @@ export async function importThesisDocx(buffer, { fileName = "belge.docx", format
           const res = resource(part, localAttr(chart, "id"), chart);
           source = pkg.xml(res?.part)?.documentElement;
           if (res?.part && Object.values(pkg.relationships(res.part)).some((r) => r.external && /\/(?:package|oleObject)$/.test(r.type))) report("chart-external-data", chart, "Dış çalışma kitabı otomatik bağlanmaz; DOCX'te önbellek serileri düzenlenebilir kalır, özgün bağlantı kaynak paketinde korunur");
-          view = chartPreview(source, shape, shapeTheme);
+          const override=res?.part && Object.values(pkg.relationships(res.part)).find(r=>!r.external && /\/themeOverride$/.test(r.type));
+          const chartTheme={...shapeTheme,...drawingTheme(pkg.xml(override?.part)?.documentElement)};
+          view = chartPreview(source, shape, chartTheme);
+          if(view && res?.part){
+            const overlay=Object.values(pkg.relationships(res.part)).find(r=>!r.external && /\/chartUserShapes$/.test(r.type));
+            if(overlay)view.children.push(...chartUserShapesPreview(pkg.xml(overlay.part)?.documentElement,shape,shapeTheme));
+          }
           report("chart-preview", chart, view ? "Grafik önbelleğindeki veri çizildi; eksen/stil eşliği doğrulanmadı" : "Bu grafik türünün yerleşimi desteklenmiyor; önbellek içeriği gösteriliyor, Word nesnesi korunuyor");
         } else if (diagram) {
           const res = resource(part, localAttr(diagram, "dm"), diagram);
@@ -173,6 +179,11 @@ export async function importThesisDocx(buffer, { fileName = "belge.docx", format
           view = drawingGroupPreview(source, shape, shapeTheme);
           report("smartart-preview", diagram, view ? "SmartArt önbellek çizimi gösteriliyor; yerleşim eşliği doğrulanmadı" : "SmartArt çizim önbelleği yok; düğüm metinleri gösteriliyor, Word nesnesi korunuyor");
         } else if (shape.shapes > 1 || /Group/.test(shape.graphic || "")) view = drawingGroupPreview(source, shape, shapeTheme);
+        if (!chart && !diagram && shape.shapes === 1) {
+          const geometry = drawingShapePreview(shape);
+          if (geometry && shape.hasText) shape.geometryPreview = "background";
+          else if (geometry) { imageKids.unshift(previewNode(geometry)); shape.geometryPreview = true; }
+        }
         if (view) { imageKids.splice(0, imageKids.length, previewNode(view)); shape.hasPreview = true; }
         else if (chart || diagram) {
           const content = descendants(source, (n) => ["t", "v"].includes(n.localName)).map((n) => n.textContent || "").filter(Boolean);

@@ -1,11 +1,29 @@
 import { specialPageCss, specialPageElasticCss } from "./specialPages.js";
-import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../../TxtNote/frontend/src/lib/academicDocument.js";
+import { ENGINE_DEFAULT_TAB_STOP_MM } from "./engineDefaults.js";
+import { presentationLayoutCss } from "./presentationLayout.js";
+import { ACADEMIC_FIGURE_MARGIN_PT, ACADEMIC_TABLE_CELL_PADDING_PT } from "../../TxtNote/frontend/src/lib/academicDocument.js";
 
 import { WORD_JUSTIFY_COMPRESSION, WORD_SPACE_EM, wordBaselineCss, wordBaselineProbe } from "./wordBaseline.js";
 import { tableSemanticsCss } from "./tableSemantics.js";
 import { resolveLineSpacing, resolveIndent } from "./typography.js";
 import { exceptionSet } from "./transformExceptions.js";
-import { blockDescriptors, blockGapActive, gapBetween } from "./blockGap.js";
+import { TABLE_WRAP_MARGIN_PT, blockDescriptors, blockGapActive, figureAlign, gapBetween, marginsGap } from "./blockGap.js";
+import { indexRowStyle } from "./generatedIndex.js";
+import { presentationId } from "./presentationLayout.js";
+
+// A generated list carries its base baseline adjustment on the parent. Saved
+// row typography needs its own adjustment relative to that parent, just as
+// template level styles do. Register the same effective style for DOM probes.
+function presentationIndexStyles(section) {
+  if (!section.generatedIndex) return [];
+  const nodes = new Map((section.presentationElements || []).map(node => [node.id, node]));
+  return (section.indexRows || []).flatMap(row => {
+    const node = nodes.get(presentationId(section.id, 'generated', `row:${row.anchor}`));
+    const override = node?.override?.style;
+    if (!override || !['fontFamily', 'fontSizePt', 'fontWeight', 'italic', 'lineHeight'].some(key => key in override)) return [];
+    return [{ node, style: { ...section.generatedIndex.style, ...indexRowStyle(section.generatedIndex, row), ...override } }];
+  });
+}
 
 /** CSS generation for thesis sections (moved out of engine.js; engine.js re-exports the public names). */
 export const escapeHtml = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -77,6 +95,7 @@ export function sectionTextStyles(section) {
   const styles = [text, bibliography.style, tables.style, figures.style, ...Object.values(headings), ...Object.values(captionKinds || {}).map((rule) => rule.style), ...Object.values(paragraphStyles || {}).map((style) => ({ ...text, ...style }))];
   if (tables.cellStyle) styles.push({ ...text, ...tables.cellStyle });
   if (section.generatedIndex) styles.push(section.generatedIndex.style, { ...section.generatedIndex.style, ...section.generatedIndex.pageHeadingStyle });
+  styles.push(...presentationIndexStyles(section).map(entry => entry.style));
   if (footnotes?.style) styles.push(footnotes.style);
   const visit = (nodes) => { for (const node of nodes || []) { if (node.type === "text") styles.push(node.style); visit(node.blocks); } };
   visit(section.layout);
@@ -113,13 +132,17 @@ export function thesisSectionCss(section) {
     `${scope} .thesis-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lineHeightCss(text, lineSpacing)};text-align:${text.align || "left"};margin:0;padding:0;text-indent:${text.firstLineIndentMm || 0}mm each-line;white-space:pre-wrap;overflow-wrap:break-word;}`,
     `${scope} .thesis-body [data-thesis-tab]{display:inline-block;width:0;position:relative;vertical-align:baseline;text-indent:0;white-space:pre}${scope} .thesis-body [data-thesis-tab]>i{position:absolute;inset:0;font:inherit;white-space:nowrap;pointer-events:none}`,
     `${scope} .thesis-body :is(ul,ol,table,figure,pre,.academic-code,.academic-table-wrap,.math-formula){text-indent:0;}`,
-    `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lineHeightCss(text, lineSpacing)};text-align:${text.align || "left"};color:${text.color || "#000"};min-height:0;padding:0;margin:0;overflow:visible;}`,
-    `${scope} .thesis-body p{margin:${text.spaceBeforePt || 0}pt 0 ${text.spaceAfterPt || 0}pt;text-indent:${indentMm(text).first}mm;${text.indent || text.hangingIndentMm > 0 ? `padding-left:${indentMm(text).left}mm;` : ""}${text.indent ? `padding-right:${indentMm(text).right}mm;` : ""}${text.tabStopMm > 0 ? `tab-size:${text.tabStopMm}mm;` : ""}${lift(text)}}`,
+    `${scope} .thesis-body .rich-text-body{font-family:${cssFamily(text.fontFamily)};font-size:${text.fontSizePt}pt;line-height:${lineHeightCss(text, lineSpacing)};text-align:${text.align || "left"};color:${text.color || "#000"};min-height:0;padding:0;margin:0;overflow:visible;tab-size:${text.tabStopMm > 0 ? text.tabStopMm : ENGINE_DEFAULT_TAB_STOP_MM}mm;}`,
+    `${scope} .thesis-body p{margin:${text.spaceBeforePt || 0}pt 0 ${text.spaceAfterPt || 0}pt;text-indent:${indentMm(text).first}mm;${text.indent || text.hangingIndentMm > 0 ? `padding-left:${indentMm(text).left}mm;` : ""}${text.indent ? `padding-right:${indentMm(text).right}mm;` : ""}tab-size:${text.tabStopMm > 0 ? text.tabStopMm : ENGINE_DEFAULT_TAB_STOP_MM}mm;${lift(text)}}`,
     ...(lift(text) ? [`${scope} .thesis-body :is(ul,ol):not(.thesis-bibliography,.thesis-toc)>li{${lift(text)}}`, `${scope} .thesis-body :is(li,td,th,figcaption,caption) p{top:0}`] : []),
     // Named paragraph styles (typography.paragraphStyles): <p data-thesis-style="id"> is the body paragraph with the style's keys on top.
     ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => `${scope} .thesis-body p[data-thesis-style="${id}"]{${textCss({ ...text, ...style })}${style.keepWithNext ? "break-after:avoid;" : ""}}`),
     // First paragraph after a heading (Word's separate "first body" style), e.g. without indent.
     ...(text.firstAfterHeading ? [`${scope} .thesis-body :is(h1,h2,h3,h4,h5,h6)+p{text-indent:${indentMm({ ...text, ...text.firstAfterHeading }).first}mm}`] : []),
+    // Outer margins of the table wrapper and of a figure without a template box: the same constants the DOCX writer's gap table reads
+    // (blockGap.js); a template `box` and the paragraph-pitch table override them below.
+    `${scope} .thesis-body .academic-table-wrap{margin:${TABLE_WRAP_MARGIN_PT}pt 0}`,
+    `${scope} .thesis-body figure{margin:${ACADEMIC_FIGURE_MARGIN_PT}pt 0}`,
     `${scope} .thesis-body img{max-width:100%;max-height:${page.heightMm - page.margins.topMm - page.margins.bottomMm}mm;height:auto;object-fit:contain;}`,
     `${scope} .thesis-body table{width:100%;border-collapse:collapse;}`,
     ...(["threeRule", "headerRules", "none"].includes(tables.borders?.preset) ? [
@@ -153,8 +176,12 @@ export function thesisSectionCss(section) {
     // Figure box (opt-in `box`): image alignment and the figure's own outer spacing (the editor stylesheet's default margin is dropped).
     ...[[plainFigure ? plainFigure.trim() : "figure", figures], ...Object.entries(section.rules.captionKinds || {}).map(([kind, rule]) => [`figure[data-caption-kind="${kind}"]`, rule])].filter(([, rule]) => rule.box).flatMap(([sel, rule]) => [
       `${scope} .thesis-body ${sel}{margin:${rule.box.spaceBeforePt || 0}pt 0 ${rule.box.spaceAfterPt || 0}pt;}`,
-      `${scope} .thesis-body ${sel} img{display:block;margin-left:${rule.box.align === "left" ? 0 : "auto"};margin-right:${rule.box.align === "right" ? 0 : "auto"};}`,
+      `${scope} .thesis-body ${sel} img{display:block;margin-left:${figureAlign(rule) === "left" ? 0 : "auto"};margin-right:${figureAlign(rule) === "right" ? 0 : "auto"};}`,
     ]),
+    // Without a `box` only the horizontal position changes (vertical layout unchanged); the image sits where the DOCX writer puts it: the figure
+    // paragraph is centred unless the rule says otherwise (`figures.align`), so the editor/PDF must not leave it at the left edge.
+    ...[[plainFigure ? plainFigure.trim() : "figure", figures], ...Object.entries(section.rules.captionKinds || {}).map(([kind, rule]) => [`figure[data-caption-kind="${kind}"]`, rule])].filter(([, rule]) => !rule.box).map(([sel, rule]) =>
+      `${scope} .thesis-body ${sel} img{margin-left:${figureAlign(rule) === "left" ? 0 : "auto"};margin-right:${figureAlign(rule) === "right" ? 0 : "auto"};}`),
     // Template caption kinds ("photo"): a figure marked data-caption-kind gets its own caption typography.
     ...Object.entries(section.rules.captionKinds || {}).flatMap(([kind, rule]) => {
       const sel = `${scope} .thesis-body figure[data-caption-kind="${kind}"] figcaption`;
@@ -211,7 +238,8 @@ export function thesisSectionCss(section) {
       // With the line-grid opt-in the formula wraps at its break points inside gutters the width of the number, so it never runs under it.
       `${block} .math-formula__render{padding:${eq.style?.lineHeight ? "0 3.6em" : "0"}}`,
       ...(eq.style?.lineHeight ? [`${block} .katex{white-space:normal}`] : []),
-      ...(eq.style?.lineHeight ? [`${block} .katex-display{margin:0}`] : []),
+      // KaTeX's default display margin (1 em above and below) is not part of the Word equation paragraph in either mode.
+      `${block} .katex-display{margin:0}`,
       // fontSizePt is the size of the formula itself (KaTeX scales its glyphs by 1.21 em by default).
       ...(eq.style?.fontSizePt ? [`${block} .katex{font-size:1em}`] : []),
       // The formula search / copy toolbar stays available on hover but takes no space in the page.
@@ -296,22 +324,21 @@ export function thesisSectionCss(section) {
     // Rows whose heading number is on its own line (numbering.placement "ownLine"): number line, then the title line.
     if (Object.values(headings).some((style) => style.numbering?.placement === "ownLine")) rules.push(`${scope} .thesis-toc li[data-index-label-line] .thesis-index-text{display:block}${scope} .thesis-toc li[data-index-label-line] .thesis-index-label{display:block}`);
   }
-  // Opt-in Word paragraph spacing: the gap between two paragraphs/headings is after(prev) + before(next)
-  // instead of CSS's collapsed max(). The next block's top margin carries the sum, so the collapse
-  // yields exactly the sum; unforced page breaks still truncate it (Word drops space at a page top).
+  // Opt-in Word paragraph spacing: the gap between two paragraphs/headings is after(prev) + before(next) instead of CSS's collapsed max().
+  // The value comes from the same margins model the DOCX writer reads (blockGap.js marginsGap); the next block's top margin carries it, so
+  // the collapse yields exactly that gap; unforced page breaks still truncate it (Word drops space at a page top). A heading that starts a page
+  // (pageBreakBefore) keeps only its own space-before (marginsGap gives no pair gap).
   if (lineSpacing?.paragraphSpacing === "additive") {
-    const blocks = [["p", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }]), ...Object.entries(headings).map(([level, style]) => [`h${level}`, style])];
-    for (const [previous, before] of blocks) {
-      for (const [next, after] of blocks) {
-        // A heading that starts a page (pageBreakBefore) keeps only its own space-before: the previous block's space-after stays on the page before (a forced break does not truncate the margin).
-        if (/^h\d$/.test(next) && after.pageBreakBefore) continue;
-        rules.push(`${scope} .thesis-body ${previous}+${next}{margin-top:${Math.round(((before.spaceAfterPt || 0) + (after.spaceBeforePt || 0)) * 1000) / 1000}pt}`);
-      }
+    const textKinds = blockDescriptors(section.rules, text).filter((d) => d.kind === "p" || d.kind === "h" || d.kind === "note");
+    for (const prev of textKinds) for (const next of textKinds) {
+      const gap = marginsGap(section.rules, prev, next);
+      if (gap !== null) rules.push(`${scope} .thesis-body ${prev.selector}+${next.selector}{margin-top:${gap}pt}`);
     }
     // A fixed-prefix section heading sits in its own wrapper, so `h+p` never reaches the first body paragraph; the heading's bottom margin
-    // (collapsing with that paragraph's top margin) carries the same sum Word renders.
+    // (collapsing with that paragraph's top margin) carries the same gap Word renders.
     const firstBody = { ...text, ...(text.firstAfterHeading || {}) };
-    for (const [level, style] of Object.entries(headings)) rules.push(`${scope} .thesis-body>div:not(.thesis-content):not(.rich-text-body)>h${level}:last-child{margin-bottom:${Math.round(((style.spaceAfterPt || 0) + (firstBody.spaceBeforePt || 0)) * 1000) / 1000}pt}`);
+    const firstBodyBlock = { key: "p:first", kind: "p", entry: {}, margins: { top: firstBody.spaceBeforePt || 0, bottom: firstBody.spaceAfterPt || 0, contextual: false } };
+    for (const head of textKinds.filter((d) => d.kind === "h")) rules.push(`${scope} .thesis-body>div:not(.thesis-content):not(.rich-text-body)>${head.selector}:last-child{margin-bottom:${marginsGap(section.rules, head, firstBodyBlock)}pt}`);
   }
   const paragraphStyles = [["p:not([data-thesis-style])", text], ...Object.entries(section.rules.paragraphStyles || {}).map(([id, style]) => [`p[data-thesis-style="${id}"]`, { ...text, ...style }])];
   for (const [selector, style] of paragraphStyles) {
@@ -377,7 +404,16 @@ export function thesisSectionCss(section) {
     const blocks = ":is(p,h1,h2,h3,h4,h5,h6,div,li)";
     rules.push(`${scope} .thesis-body ${blocks}.fmt-align-${align},${scope} .thesis-body div.fmt-align-${align}>:is(p,h1,h2,h3,h4,h5,h6):not([class*="fmt-align-"]){text-align:${align};${["center", "right"].includes(align) ? "text-indent:0;" : ""}}`);
   }
-  return rules.join("\n");
+  const rowOverrides = presentationIndexStyles(section).map(({ node, style }) => {
+    const own = wordBaselineProbe(style, lineSpacing, effectiveLineHeight(style.lineHeight, lineSpacing, style));
+    const parentStyle = section.generatedIndex.style;
+    const inherited = wordBaselineProbe(parentStyle, lineSpacing, effectiveLineHeight(parentStyle.lineHeight, lineSpacing, parentStyle));
+    const selector = `${paperScope} [data-layout-id=${JSON.stringify(node.id)}][data-layout-presentation]`;
+    const offset = own && !['absolute', 'anchored'].includes(node.layoutMode)
+      ? `position:relative;top:calc(-1 * var(--thesis-wb-${own.id}, ${own.fallbackPt}pt)${inherited ? ` + var(--thesis-wb-${inherited.id}, ${inherited.fallbackPt}pt)` : ''}) !important;` : '';
+    return `${selector}{line-height:${lineHeightCss(style, lineSpacing)} !important;${offset}}`;
+  });
+  return rules.join("\n") + "\n" + presentationLayoutCss(section.presentationElements) + '\n' + rowOverrides.join('\n');
 }
 
 /** Page-bottom note area of one page group: drawn on its sheets, measured by a hidden twin. */

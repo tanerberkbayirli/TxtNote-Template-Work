@@ -1,0 +1,1698 @@
+{
+ "schemaVersion": 1,
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 35,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "roman-lower",
+   "startAt": 1,
+   "restart": false,
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12
+   },
+   "baselineFromTopMm": 277,
+   "xMm": 170,
+   "widthMm": 20
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 0,
+   "content": ""
+  },
+  "footer": {
+   "heightMm": 0,
+   "distanceMm": 20,
+   "content": ""
+  }
+ },
+ "tables": {
+  "label": "Table",
+  "position": "above",
+  "align": "center",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceAfterPt": 0,
+   "lineHeight": 1,
+   "spaceBeforePt": 0,
+   "firstLineIndentMm": 0,
+   "widowControl": true
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  },
+  "spacingBeforePt": 18,
+  "spacingAfterPt": 18
+ },
+ "figures": {
+  "label": "Figure",
+  "position": "below",
+  "align": "center",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceAfterPt": 0,
+   "lineHeight": 1,
+   "spaceBeforePt": 0,
+   "firstLineIndentMm": 0,
+   "widowControl": true
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  },
+  "spacingBeforePt": 18,
+  "spacingAfterPt": 18
+ },
+ "bibliography": {
+  "heading": "REFERENCES",
+  "hangingIndentMm": 0,
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceAfterPt": 12,
+   "lineHeight": 1,
+   "firstLineIndentMm": 0,
+   "spaceBeforePt": 0,
+   "widowControl": true
+  }
+ },
+ "toc": {
+  "heading": "TABLE OF CONTENTS",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true,
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1,
+   "firstLineIndentMm": 0,
+   "spaceBeforePt": 0,
+   "spaceAfterPt": 0,
+   "widowControl": true
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceAfterPt": 0,
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 12.7,
+   "spaceBeforePt": 0,
+   "widowControl": true
+  },
+  "paragraph": {
+   "align": "justify",
+   "spaceAfterPt": 0,
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 12.7,
+   "spaceBeforePt": 0,
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "widowControl": true
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word",
+   "paragraphSpacing": "collapse"
+  },
+  "footnotes": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "lineHeight": 1,
+   "leftIndentMm": 10,
+   "separator": {
+    "widthPercent": 33.333333333333336
+   }
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 16,
+    "fontWeight": 400,
+    "align": "center",
+    "spaceAfterPt": 0,
+    "lineHeight": 3,
+    "firstLineIndentMm": 0,
+    "pageBreakBefore": true,
+    "textTransform": "uppercase",
+    "spaceBeforePt": 0,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "CHAPTER {1}",
+     "placement": "ownLine"
+    },
+    "widowControl": true
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceAfterPt": 24.15,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 24.15,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "widowControl": true
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceAfterPt": 24.15,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 24.15,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}."
+    },
+    "widowControl": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceAfterPt": 24.15,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "keepWithNext": true,
+    "spaceBeforePt": 24.15,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}."
+    },
+    "widowControl": true
+   }
+  },
+  "justify": "word",
+  "paragraphStyles": {
+   "blockQuote": {
+    "fontSizePt": 10,
+    "align": "justify",
+    "lineHeight": 1,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0,
+    "firstLineIndentMm": 0,
+    "leftIndentMm": 10,
+    "fontFamily": "Times New Roman",
+    "widowControl": true
+   }
+  }
+ },
+ "placeholders": {
+  "THESIS_TITLE": {
+   "label": "Thesis title (English)",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_TR": {
+   "label": "Türkçe tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NAME": {
+   "label": "Author (surname in CAPITALS)",
+   "type": "text",
+   "required": true
+  },
+  "PROGRAM_NAME": {
+   "label": "Programme name (English)",
+   "type": "text",
+   "required": true
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year (e.g. October 2026)",
+   "type": "text",
+   "required": true
+  },
+  "CITY": {
+   "label": "City",
+   "type": "text",
+   "required": false,
+   "defaultValue": "İZMİR"
+  },
+  "ADVISOR_NAME": {
+   "label": "Supervisor: title and name",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_AFFILIATION": {
+   "label": "Supervisor: department / institution",
+   "type": "text",
+   "required": false
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "Co-supervisor (if any)",
+   "type": "text",
+   "required": false
+  },
+  "CO_ADVISOR_AFFILIATION": {
+   "label": "Co-supervisor: department / institution",
+   "type": "text",
+   "required": false
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date (e.g. 10 October 2026)",
+   "type": "text",
+   "required": false
+  },
+  "HEAD_NAME": {
+   "label": "Head of department: title and name",
+   "type": "text",
+   "required": false
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Department name",
+   "type": "text",
+   "required": false
+  },
+  "DEAN_NAME": {
+   "label": "Graduate school dean: title and name",
+   "type": "text",
+   "required": false
+  },
+  "REFERENCE_SYSTEM": {
+   "label": "Citation system: ACS or Chicago (choose with your advisor)",
+   "type": "text",
+   "required": false,
+   "defaultValue": "ACS"
+  },
+  "JURY_1_NAME": {
+   "label": "Committee member 1: title and name",
+   "type": "text",
+   "required": false
+  },
+  "JURY_1_AFFILIATION": {
+   "label": "Committee member 1: department / institution",
+   "type": "text",
+   "required": false
+  },
+  "JURY_2_NAME": {
+   "label": "Committee member 2: title and name",
+   "type": "text",
+   "required": false
+  },
+  "JURY_2_AFFILIATION": {
+   "label": "Committee member 2: department / institution",
+   "type": "text",
+   "required": false
+  },
+  "JURY_3_NAME": {
+   "label": "Committee member 3: title and name",
+   "type": "text",
+   "required": false
+  },
+  "JURY_3_AFFILIATION": {
+   "label": "Committee member 3: department / institution",
+   "type": "text",
+   "required": false
+  },
+  "JURY_4_NAME": {
+   "label": "Committee member 4: title and name",
+   "type": "text",
+   "required": false
+  },
+  "JURY_4_AFFILIATION": {
+   "label": "Committee member 4: department / institution",
+   "type": "text",
+   "required": false
+  },
+  "JURY_5_NAME": {
+   "label": "Committee member 5: title and name",
+   "type": "text",
+   "required": false
+  },
+  "JURY_5_AFFILIATION": {
+   "label": "Committee member 5: department / institution",
+   "type": "text",
+   "required": false
+  },
+  "ARTICLE_DOIS": {
+   "label": "Accepted / published article DOIs (at least 3; separate with semicolons)",
+   "type": "text",
+   "required": true
+  }
+ },
+ "templateVersion": "1.0.0",
+ "universityId": "iyte",
+ "universityName": "İzmir Yüksek Teknoloji Enstitüsü",
+ "instituteId": "lee-articles",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü · Makalelerden Tez",
+ "language": "en",
+ "status": "official",
+ "source": {
+  "type": "official",
+  "documentName": "IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf; local Senate and article-thesis guidelines 2024–2026",
+  "verifiedAt": "2026-10-10",
+  "notes": [
+   "Local archived sources; websites were not reverified. Full source coverage and conflicts: engine/specs/iyte.CONTEXT.md.",
+   "English thesis and Turkish ÖZET; each abstract is limited to 250 words and must omit references, equations, tables and footnotes (guide §3.1.3–4). Review content before submission.",
+   "ACS or Chicago is required by the Senate decision (document dated 19 September 2017 despite archive filename 2024). Choose consistently with your advisor; this template does not automatically validate citation syntax.",
+   "Approval example has five signature positions but does not state degree-specific jury counts. Members 4–5 and co-supervisor appear only when filled; confirm the actual committee.",
+   "Optional bound cover: 205×290 mm, 20 pt; black hard binding / gold lettering and spine require the binder. Export contains the front artwork only.",
+   "Figure 3.3 contains obsolete overlapping labels; the visible corrected labels specify ABSTRACT 16 pt bold / thesis title 14 pt regular.",
+   "2026 directive supersedes the older doctorate-only scope: master and doctorate eligible; at least 3 articles, English, student first author, advisor co-author, publisher permissions and advisor approval. Each article is a new chapter, preceded by its publication citation. Use INTRODUCTION, one H1 per article, and the separate conclusion section; unpublished submitted work is optional. VITA applies to both degrees under Article 4."
+  ],
+  "usage": [
+   "Tez İngilizce yazılır; ABSTRACT ve Türkçe ÖZET ayrı ayrı en fazla 250 sözcük olmalıdır. Özetlere tablo, denklem, dipnot veya kaynakça eklemeyin.",
+   "Kaynak göstermede danışmanınızla ACS ya da Chicago sistemini seçip tutarlı uygulayın. Şablon kaynakça yazımını otomatik doğrulamaz.",
+   "Jüri üye sayısını kendi kurul kararınıza göre doldurun. Dördüncü/beşinci üye ve ikinci danışman alanları boşsa basılmaz.",
+   "Her makalenin yayın künyesini bölümün ilk paragrafına yazın. En az üç uygun yayın, öğrencinin birinci yazarlığı, danışmanın ortak yazarlığı, yayıncı izinleri ve danışman onayı gerekir. Dış kapak bu tez türünde zorunludur; cilt ve sırt baskısını basımevi hazırlar."
+  ]
+ },
+ "id": "iyte-lee-articles-phd-en-v1",
+ "degreeType": "phd",
+ "sections": [
+  {
+   "id": "outer-cover",
+   "type": "outerCover",
+   "title": "BOUND COPY FRONT COVER",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 55
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "style": {
+      "textTransform": "uppercase"
+     },
+     "heightMm": 50
+    },
+    {
+     "type": "spacer",
+     "heightMm": 50
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "heightMm": 30
+    },
+    {
+     "type": "text",
+     "value": "İzmir Institute of Technology\n{{MONTH_YEAR}}",
+     "layoutMode": "absolute",
+     "flowHeightMm": 0,
+     "xMm": 25,
+     "yMm": 240,
+     "widthMm": 155,
+     "heightMm": 30
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 20,
+     "widowControl": true,
+     "fontWeight": 700
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     },
+     "size": "custom",
+     "widthMm": 205,
+     "heightMm": 290,
+     "margins": {
+      "topMm": 25,
+      "bottomMm": 25,
+      "leftMm": 25,
+      "rightMm": 25
+     }
+    }
+   }
+  },
+  {
+   "id": "title-page",
+   "type": "innerCover",
+   "title": "TITLE PAGE",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 14.8
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "style": {
+      "fontSizePt": 18,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 49.4
+    },
+    {
+     "type": "text",
+     "value": "A Thesis Submitted to"
+    },
+    {
+     "type": "text",
+     "value": "the Graduate School of Engineering and Sciences of"
+    },
+    {
+     "type": "text",
+     "value": "İzmir Institute of Technology"
+    },
+    {
+     "type": "text",
+     "value": "in Partial Fulfillment of the Requirements for the Degree of"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5
+    },
+    {
+     "type": "text",
+     "value": "DOCTOR OF PHILOSOPHY"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "prefix": "in "
+    },
+    {
+     "type": "spacer",
+     "heightMm": 19.8
+    },
+    {
+     "type": "text",
+     "value": "by"
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 34.6
+    },
+    {
+     "type": "metadata",
+     "field": "MONTH_YEAR"
+    },
+    {
+     "type": "metadata",
+     "field": "CITY"
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "fontWeight": 700,
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "widowControl": true
+    },
+    "page": {
+     "numbering": {
+      "enabled": false,
+      "format": "roman-lower",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "APPROVAL",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "We approve the thesis of {{STUDENT_NAME}}",
+     "heightMm": 15
+    },
+    {
+     "type": "text",
+     "value": "Examining Committee Members:",
+     "style": {
+      "fontWeight": 700
+     },
+     "heightMm": 16
+    },
+    {
+     "type": "group",
+     "direction": "column",
+     "gapMm": 0,
+     "minHeightMm": 25,
+     "blocks": [
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 100,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 70,
+         "align": "left"
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_1_NAME",
+         "fallback": "Title Name LASTNAME",
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_1_AFFILIATION",
+         "heightMm": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "column",
+     "gapMm": 0,
+     "minHeightMm": 25,
+     "blocks": [
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 100,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 70,
+         "align": "left"
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_2_NAME",
+         "fallback": "Title Name LASTNAME",
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_2_AFFILIATION",
+         "heightMm": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "column",
+     "gapMm": 0,
+     "minHeightMm": 25,
+     "blocks": [
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 100,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 70,
+         "align": "left"
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_3_NAME",
+         "fallback": "Title Name LASTNAME",
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_3_AFFILIATION",
+         "heightMm": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "column",
+     "gapMm": 0,
+     "minHeightMm": 25,
+     "blocks": [
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 100,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 70,
+         "align": "left",
+         "visibleWhen": {
+          "anyFilled": [
+           "JURY_4_NAME"
+          ]
+         }
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_4_NAME",
+         "fallback": "Title Name LASTNAME",
+         "visibleWhen": {
+          "anyFilled": [
+           "JURY_4_NAME"
+          ]
+         },
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_4_AFFILIATION",
+         "visibleWhen": {
+          "anyFilled": [
+           "JURY_4_NAME"
+          ]
+         },
+         "heightMm": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "column",
+     "gapMm": 0,
+     "minHeightMm": 25,
+     "blocks": [
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 100,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 70,
+         "align": "left",
+         "visibleWhen": {
+          "anyFilled": [
+           "JURY_5_NAME"
+          ]
+         }
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_5_NAME",
+         "fallback": "Title Name LASTNAME",
+         "visibleWhen": {
+          "anyFilled": [
+           "JURY_5_NAME"
+          ]
+         },
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "JURY_5_AFFILIATION",
+         "visibleWhen": {
+          "anyFilled": [
+           "JURY_5_NAME"
+          ]
+         },
+         "heightMm": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "column",
+     "gapMm": 0,
+     "minHeightMm": 32,
+     "blocks": [
+      {
+       "type": "spacer",
+       "heightMm": 11
+      },
+      {
+       "type": "metadata",
+       "field": "DEFENSE_DATE",
+       "style": {
+        "leftIndentMm": 80
+       },
+       "widthMm": 150,
+       "heightMm": 8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "gapMm": 0,
+     "minHeightMm": 38,
+     "blocks": [
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 52,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 66.41025641025641,
+         "align": "left"
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "ADVISOR_NAME",
+         "fallback": "Title Name LASTNAME",
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "text",
+         "value": "Supervisor",
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "ADVISOR_AFFILIATION",
+         "heightMm": 9
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 48,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 70,
+         "align": "left",
+         "visibleWhen": {
+          "anyFilled": [
+           "CO_ADVISOR_NAME"
+          ]
+         }
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "CO_ADVISOR_NAME",
+         "fallback": "Title Name LASTNAME",
+         "visibleWhen": {
+          "anyFilled": [
+           "CO_ADVISOR_NAME"
+          ]
+         },
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "text",
+         "value": "Co-Supervisor",
+         "visibleWhen": {
+          "anyFilled": [
+           "CO_ADVISOR_NAME"
+          ]
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "CO_ADVISOR_AFFILIATION",
+         "visibleWhen": {
+          "anyFilled": [
+           "CO_ADVISOR_NAME"
+          ]
+         },
+         "heightMm": 9
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "gapMm": 0,
+     "minHeightMm": 0,
+     "blocks": [
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 52,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 66.41025641025641,
+         "align": "left"
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "HEAD_NAME",
+         "fallback": "Title Name LASTNAME",
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "text",
+         "value": "Head of the Department",
+         "heightMm": 5
+        },
+        {
+         "type": "metadata",
+         "field": "DEPARTMENT_NAME",
+         "heightMm": 9
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "direction": "column",
+       "gapMm": 0,
+       "widthPercent": 48,
+       "blocks": [
+        {
+         "type": "separator",
+         "thicknessPt": 0.5,
+         "widthPercent": 70,
+         "align": "left"
+        },
+        {
+         "type": "spacer",
+         "heightMm": 1.8236
+        },
+        {
+         "type": "metadata",
+         "field": "DEAN_NAME",
+         "fallback": "Title Name LASTNAME",
+         "style": {
+          "fontWeight": 700
+         },
+         "heightMm": 5
+        },
+        {
+         "type": "text",
+         "value": "Dean of the Graduate School of Engineering and Sciences",
+         "heightMm": 5
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "overrides": {
+    "body": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "align": "left",
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "widowControl": true
+    },
+    "page": {
+     "numbering": {
+      "enabled": false,
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "PREFACE",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "numbering": {
+       "enabled": false
+      },
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 36,
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   }
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "ACKNOWLEDGMENTS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": false,
+      "indexLabelWhenHidden": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "numbering": {
+       "enabled": false
+      },
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "lineHeight": 1,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 36,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract-heading",
+   "type": "custom",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "showTitle": false,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "lineHeight": 1,
+      "numbering": {
+       "enabled": false
+      },
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 36,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   },
+   "standalone": false,
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ABSTRACT",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "align": "center",
+      "lineHeight": 1,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 18,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "align": "center",
+      "lineHeight": 1,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 18,
+      "widowControl": true,
+      "textTransform": "uppercase"
+     }
+    }
+   ]
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "pageBreakBefore": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": true
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "align": "center",
+      "lineHeight": 1,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 36,
+      "widowControl": true,
+      "fontWeight": 700,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "tocEntry": "none",
+   "showTitle": false
+  },
+  {
+   "id": "ozet-heading",
+   "type": "custom",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "showTitle": false,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "lineHeight": 1,
+      "numbering": {
+       "enabled": false
+      },
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 36,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   },
+   "standalone": false,
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ÖZET",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "align": "center",
+      "lineHeight": 1,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 18,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE_TR",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "align": "center",
+      "lineHeight": 1,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 18,
+      "widowControl": true,
+      "textTransform": "uppercase"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ozet",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "pageBreakBefore": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": true
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "align": "center",
+      "lineHeight": 1,
+      "firstLineIndentMm": 0,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 36,
+      "widowControl": true,
+      "fontWeight": 700,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "tocEntry": "none",
+   "showTitle": false
+  },
+  {
+   "id": "dedication",
+   "type": "dedication",
+   "title": "DEDICATION",
+   "group": "front",
+   "status": "optional",
+   "mode": "editable",
+   "showTitle": false,
+   "tocEntry": "none",
+   "overrides": {
+    "body": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "center",
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "widowControl": true
+    },
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "toc",
+   "type": "tableOfContents",
+   "title": "TABLE OF CONTENTS",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 36,
+      "lineHeight": 1,
+      "numbering": {
+       "enabled": false
+      },
+      "spaceBeforePt": 0,
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   },
+   "showTitle": true
+  },
+  {
+   "id": "figures",
+   "type": "listOfFigures",
+   "title": "LIST OF FIGURES",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "visibleWhen": {
+    "count": "figures",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 36,
+      "lineHeight": 1,
+      "numbering": {
+       "enabled": false
+      },
+      "spaceBeforePt": 0,
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   },
+   "showTitle": true
+  },
+  {
+   "id": "tables",
+   "type": "listOfTables",
+   "title": "LIST OF TABLES",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "visibleWhen": {
+    "count": "tables",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 36,
+      "lineHeight": 1,
+      "numbering": {
+       "enabled": false
+      },
+      "spaceBeforePt": 0,
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   },
+   "showTitle": true
+  },
+  {
+   "id": "symbols",
+   "type": "listOfAbbreviations",
+   "title": "SYMBOLS AND ABBREVIATIONS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "enabled": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 36,
+      "lineHeight": 1,
+      "numbering": {
+       "enabled": false
+      },
+      "spaceBeforePt": 0,
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "widowControl": true,
+      "fontWeight": 700
+     }
+    }
+   }
+  },
+  {
+   "id": "introduction",
+   "type": "introduction",
+   "title": "INTRODUCTION",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "titleNumbering": "continueH1",
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true,
+      "enabled": true
+     }
+    }
+   }
+  },
+  {
+   "id": "main",
+   "type": "mainContent",
+   "title": "ARTICLE 1",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "article-2",
+   "type": "custom",
+   "title": "ARTICLE 2",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "article-3",
+   "type": "custom",
+   "title": "ARTICLE 3",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "additional-articles",
+   "type": "custom",
+   "title": "ADDITIONAL ARTICLES / SUBMITTED WORK",
+   "status": "optional",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "tocEntry": "headings",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "conclusions",
+   "type": "custom",
+   "title": "CONCLUSIONS AND RECOMMENDATIONS",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "REFERENCES",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "body": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceAfterPt": 12
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 36,
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "firstLineIndentMm": 0,
+      "widowControl": true,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "APPENDIX A",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "body": {
+     "lineHeight": 1
+    },
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "vita",
+   "type": "curriculumVitae",
+   "title": "VITA",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false,
+      "format": "arabic",
+      "restart": false
+     }
+    }
+   }
+  }
+ ],
+ "validation": {
+  "ARTICLE_DOIS": {
+   "minItems": 3,
+   "severity": "warning",
+   "message": "2026 yönergesi: en az üç yayımlanmış/kabul edilmiş makale; öğrenci birinci yazar, danışman ortak yazar olmalı. Yayın izinlerini ve danışman onayını ayrıca doğrulayın."
+  }
+ }
+}

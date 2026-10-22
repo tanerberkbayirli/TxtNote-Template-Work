@@ -1,0 +1,685 @@
+{
+ "schemaVersion": 1,
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic"
+  }
+ },
+ "tables": {
+  "label": "Tablo",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "lineHeight": 1
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  },
+  "captionAlignment": "left"
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "lineHeight": 1
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  },
+  "captionAlignment": "center"
+ },
+ "bibliography": {
+  "heading": "Kaynaklar",
+  "citationStyle": "apa",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "spaceAfterPt": 6,
+   "lineHeight": 1,
+   "firstLineIndentMm": 0
+  }
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceAfterPt": 6,
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 0,
+   "spaceBeforePt": 6
+  },
+  "paragraph": {
+   "firstLineIndentMm": 0
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word",
+   "paragraphSpacing": "collapse"
+  },
+  "footnotes": {
+   "placement": "pageBottom",
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "lineHeight": 1,
+   "firstLineIndentMm": 0
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "align": "center",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "pageBreakBefore": true,
+    "textTransform": "uppercase",
+    "spaceBeforePt": 6,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 6,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.",
+     "sequence": "arabic"
+    },
+    "textTransform": "capitalize",
+    "textTransformExceptions": [
+     "ve",
+     "veya",
+     "ile"
+    ]
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 6,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.",
+     "sequence": "arabic"
+    },
+    "textTransform": "none"
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "keepWithNext": true,
+    "spaceBeforePt": 6,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}.{2}.{3}.{4}.",
+     "sequence": "arabic"
+    },
+    "italic": true,
+    "textTransform": "none"
+   }
+  }
+ },
+ "templateVersion": "1.0.0",
+ "id": "afsu-lee-proposal-master-tr-v1",
+ "universityId": "afsu",
+ "universityName": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+ "instituteId": "lee-proposal",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü · Tez Önerisi",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "official",
+ "displayName": "Afyonkarahisar Sağlık Bilimleri Üniversitesi · Lisansüstü Eğitim Enstitüsü · Yüksek Lisans Tez Önerisi",
+ "source": {
+  "type": "official",
+  "documentName": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+  "revisionDate": "2025-12",
+  "verifiedAt": "2026-10-03",
+  "notes": [
+   "Evidence and UNKNOWNs: engine/specs/afsu-lee-proposal.json; report engine/docs/reports/afsu-lee-proposal.md.",
+   "The guide is not a format specification: it defines the cover example (Şekil 1) and the content outline (§1.3-§1.12). Page, body, heading, footnote, caption and reference rules are EXPLICIT-by-reference: proposal §1.1/§1.2 defer to the AFSÜ LEE thesis writing guide (rules taken from engine/specs/afsu-lee.json, not from afsu-lee.js). Proposal-specific cover sizes, outline, APA and Kaynaklar placement win. Page-number start, heading-level mapping, sub-heading number formats are INFERRED.",
+   "The cover parenthetical is stated only for the doctorate ('(Doktora Tez Önerisi)'); the master's wording is INFERRED by substitution (the Şekil 1 caption names 'Yüksek Lisans/Doktora').",
+   "Engine gap: the 'ÖRNEK ÇALIŞMA TAKVİMİ' landscape fill-in grid (13 rows x 19 month columns, merged AYLAR header) cannot be expressed by static blocks; not reproduced. Authors insert their own table in the 'Çalışma Takvimi' section."
+  ]
+ },
+ "placeholders": {
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı adı (yalnız adı; ANABİLİM DALI eki şablondan gelir)",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE": {
+   "label": "Tezin adı",
+   "type": "multiline",
+   "required": true
+  },
+  "STUDENT_NAME": {
+   "label": "Hazırlayan (Adı ve SOYADI)",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman (Unvanı, Adı ve SOYADI)",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_YEAR": {
+   "label": "Yıl",
+   "type": "number",
+   "required": true
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "KAPAK",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 5
+    },
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "text",
+     "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "text",
+     "value": "ÜNİVERSİTESİ LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "…..................... ANABİLİM DALI",
+     "suffix": " ANABİLİM DALI",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 28.2
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "TEZİN ADI",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "text",
+     "value": "(Yüksek Lisans Tez Önerisi)",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 32.5
+    },
+    {
+     "type": "text",
+     "value": "Hazırlayan",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Adı ve SOYADI",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 33.4
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "ADVISOR_NAME",
+     "fallback": "Unvanı, Adı ve SOYADI",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 66.8
+    },
+    {
+     "type": "text",
+     "value": "{{THESIS_YEAR}} –AFYONKARAHİSAR",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12
+    },
+    "page": {
+     "numbering": {
+      "enabled": false,
+      "position": "bottom",
+      "align": "right",
+      "format": "arabic"
+     },
+     "margins": {
+      "topMm": 25,
+      "bottomMm": 25,
+      "leftMm": 25,
+      "rightMm": 25
+     }
+    }
+   }
+  },
+  {
+   "id": "purpose-scope",
+   "type": "mainContent",
+   "title": "Tezin Amacı ve Kapsamı",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "titleNumbering": "continueH1",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "position": "bottom",
+      "align": "right",
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "general-information",
+   "type": "custom",
+   "title": "Tez ile İlgili Genel Bilgi",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "method",
+   "type": "custom",
+   "title": "Tez Çalışmasının Yöntemi",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "success-criteria",
+   "type": "custom",
+   "title": "Başarı Ölçütleri ve B Planı",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "originality",
+   "type": "custom",
+   "title": "Özgün Değeri",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "impact",
+   "type": "custom",
+   "title": "Yaygın Etki/Katma Değer",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "facilities",
+   "type": "custom",
+   "title": "Araştırma Olanakları",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "schedule",
+   "type": "custom",
+   "title": "Çalışma Takvimi",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "other-projects",
+   "type": "custom",
+   "title": "Tez Yürütücüsünün Diğer Projeleri",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "ethics-permits",
+   "type": "custom",
+   "title": "Etik Kurul Belgesi ve/veya Diğer İzin Belgeleri",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  },
+  {
+   "id": "budget",
+   "type": "custom",
+   "title": "Tez Bütçesi",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false,
+      "position": "bottom",
+      "align": "right"
+     }
+    }
+   },
+   "titleNumbering": "continueH1"
+  }
+ ]
+}

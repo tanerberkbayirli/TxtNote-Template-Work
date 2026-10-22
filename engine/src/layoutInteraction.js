@@ -2,6 +2,19 @@
 
 export const DRAG_THRESHOLD_PX = 3;
 export const MIN_LAYOUT_MM = 1;
+export const DEFAULT_TEXT_ALIGNMENT_SCOPE = "box";
+
+/** Resolve overlapping layout objects in paint order. Empty text-frame space
+ * yields to visible content underneath, but remains selectable on its own.
+ * `paintRects` are client-space text fragment rectangles supplied by the renderer.
+ */
+export function layoutHitTarget(candidates, point) {
+  const contains = (rect) => point.x >= rect.left && point.x <= rect.right
+    && point.y >= rect.top && point.y <= rect.bottom;
+  const selectable = candidates.filter((item) => item && !["group", "spacer"].includes(item.type));
+  return selectable.find((item) => item.type !== "text" || item.paintRects?.some(contains))
+    || selectable[0] || null;
+}
 
 /** Toggle one decoration without clearing another active decoration. */
 export function toggleLayoutDecoration(value, line, enabled) {
@@ -11,12 +24,12 @@ export function toggleLayoutDecoration(value, line, enabled) {
   return ["underline", "overline", "line-through"].filter((part) => lines.has(part)).join(" ") || "none";
 }
 
-/** A user's text alignment can target the page, its writing area or the existing box.
- * Template geometry is untouched until the user issues the command.
+/** Align inside the existing frame by default. Page and writing-area alignment
+ * change geometry only when the caller explicitly requests that scope.
  */
-export function textAlignmentPatch(item, align, scope = "page") {
+export function textAlignmentPatch(item, align, scope = DEFAULT_TEXT_ALIGNMENT_SCOPE) {
   if (!["left", "center", "right", "justify"].includes(align) || !["page", "content", "box"].includes(scope)
-    || !item || item.type !== "text" || item.locked || !item.editableLayout || !item.editableContent) return null;
+    || !item || item.type !== "text" || item.locked || !item.editableLayout) return null;
   const patch = { id: item.id, style: { align } };
   if (scope === "box") return patch;
   const page = item.page;

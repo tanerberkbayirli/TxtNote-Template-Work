@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-// Deterministic conformance checker driver. See orchestration/tools/CHECKER.md.
-//   node orchestration/tools/check.mjs --target <id> [--fixture <path>] [--word] [--only <ids>|failed]
+// Deterministic conformance checker driver. See engine/tools/CHECKER.md.
+//   node engine/tools/check.mjs --target <id> [--fixture <path>] [--word] [--only <ids>|failed]
 //        [--out <dir>] [--no-export <pdf> <docx>] [--build-reference] [--official-docx <path>]
 // Flow: checks.json -> real export (export.mjs, per fixture variant) -> optional Word render
 //       -> conformance.py (PyMuPDF / DOCX XML) -> check-<stamp>.json/.md. Exit 0 only if no FAIL.
@@ -26,7 +26,7 @@ if (args.includes("--all")) {
   const manifestIndex = rest.indexOf('--manifest');
   const manifestPath = manifestIndex < 0 ? null : resolve(root, rest.splice(manifestIndex, 2)[1]);
   const manifest = { startedAt: new Date().toISOString(), wordRequested: rest.includes('--word'), targets: [] };
-  let ids = readdirSync(join(root, "orchestration/specs")).filter((f) => f.endsWith(".checks.json")).map((f) => f.replace(/\.checks\.json$/, "")).sort();
+  let ids = readdirSync(join(root, "engine/specs")).filter((f) => f.endsWith(".checks.json")).map((f) => f.replace(/\.checks\.json$/, "")).sort();
   const targetIndex = rest.indexOf('--targets');
   if (targetIndex >= 0) {
     const requested = rest.splice(targetIndex, 2)[1]?.split(',') || [];
@@ -78,16 +78,16 @@ if (opt.verifyLayoutIds && opt.noExport) {
   process.exit(2);
 }
 const id = opt.target;
-const specs = join(root, "orchestration/specs");
-const outDir = resolve(root, opt.out || `orchestration/validation/${id}`);
+const specs = join(root, "engine/specs");
+const outDir = resolve(root, opt.out || `.test-tmp/validation/${id}`);
 const runDir = join(outDir, "run");
-const refDir = join(root, `orchestration/artifacts/${id}/source/reference`);
+const refDir = join(root, `engine/references/${id}/source/reference`);
 const logFile = join(runDir, "check.log");
 mkdirSync(runDir, { recursive: true });
 const log = (s) => appendFileSync(logFile, s + "\n");
 const env = { ...process.env, PYTHONUTF8: "1", PYTHONIOENCODING: "utf-8" };
 const revision = spawnSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" });
-const codeDiff = spawnSync("git", ["diff", "HEAD", "--", "engine/src", "TxtNote/frontend/src", "orchestration/tools", "orchestration/specs"], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
+const codeDiff = spawnSync("git", ["diff", "HEAD", "--", "engine/src", "TxtNote/frontend/src", "engine/tools", "engine/specs"], { cwd: root, encoding: "utf8", maxBuffer: 16 * 1024 * 1024 });
 if (revision.status !== 0 || codeDiff.status !== 0) throw new Error("Cannot record validation source revision");
 env.CHECK_SOURCE_PROVENANCE = JSON.stringify({ revision: revision.stdout.trim(),
   trackedDiffSha256: createHash("sha256").update(codeDiff.stdout).digest("hex"),
@@ -182,7 +182,7 @@ async function ensureBase() {
   log("no dev server; starting via devserver.sh (port 5175)");
   spawnSync("bash", [join(here, "devserver.sh"), "start"], { stdio: "ignore", cwd: root, timeout: 60000 });
   if (await up("http://127.0.0.1:5175")) return "http://127.0.0.1:5175";
-  console.error("TxtNote frontend dev server not reachable (tried :5173 and :5175). Start it: bash orchestration/tools/devserver.sh start");
+  console.error("TxtNote frontend dev server not reachable (tried :5173 and :5175). Start it: bash engine/tools/devserver.sh start");
   process.exit(3);
 }
 function fixtureFor(variant) {
@@ -281,7 +281,7 @@ for (const v of variants) {
 // ---------------------------------------------------------------- evaluate
 const sourceProvenance = JSON.parse(env.CHECK_SOURCE_PROVENANCE);
 const officialSourceFingerprint = sourceFingerprint(root, id);
-const sourceFiles = spawnSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '--', 'engine/src', 'TxtNote/frontend/src', 'orchestration/tools'],
+const sourceFiles = spawnSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '--', 'engine/src', 'TxtNote/frontend/src', 'engine/tools'],
   { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
 if (sourceFiles.status !== 0) throw new Error('Cannot fingerprint current code files');
 const codeHash = createHash('sha256');

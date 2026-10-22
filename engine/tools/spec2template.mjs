@@ -78,7 +78,7 @@ export function generate(extracted, profile) {
     const source = paragraphProperties(index), style = mappedText(source, `typography.headings.${i + 1}`);
     let blankCount = 0;
     for (let n = index + 1; extracted.paragraphs[n - 1] && !extracted.paragraphs[n - 1].text.trim(); n++) blankCount++;
-    style.spaceAfterPt = fact(`typography.headings.${i + 1}.spaceAfterPtIncludingBlankParagraphs`, (style.spaceAfterPt || 0) + blankCount * pitch, source.paragraph.locator + '; following empty paragraphs');
+    style.spaceAfterPt = fact(`typography.headings.${i + 1}.spaceAfterPt`, (style.spaceAfterPt || 0) + blankCount * pitch, source.paragraph.locator + '; following empty paragraphs');
     style.numbering = { enabled: true, format: Array.from({ length: i + 1 }, (_, n) => `{${n + 1}}`).join('.') + '.' };
     if (i === 0) style.pageBreakBefore = true; // reviewed chapter boundaries in Word page inventory
     headings[i + 1] = style;
@@ -87,14 +87,16 @@ export function generate(extracted, profile) {
   const m = section.measurements.pgMar, size = section.measurements.pgSz;
   const margins = Object.fromEntries(['top', 'bottom', 'left', 'right'].map(k => [`${k}Mm`, fact(`page.margins.${k}Mm`, m[k].value, m[k].locator)]));
   const page = { size: 'A4', widthMm: fact('page.widthMm', size.w.value, size.w.locator), heightMm: fact('page.heightMm', size.h.value, size.h.locator), orientation: 'portrait', margins,
-    header: { heightMm: 0, distanceMm: m.header.value }, footer: { heightMm: 0, distanceMm: m.footer.value },
+    header: { heightMm: 0, distanceMm: fact('page.header.distanceMm', m.header.value, m.header.locator) }, footer: { heightMm: 0, distanceMm: fact('page.footer.distanceMm', m.footer.value, m.footer.locator) },
     numbering: { enabled: true, position: 'bottom', align: 'right', format: 'arabic', startAt: 1, restart: true, style: { fontFamily: body.fontFamily, fontSizePt: body.fontSizePt } } };
   const sourceBodyPage = extracted.wordRender.pages[profile.bodySourcePage - 1];
   const sourceNumber = sourceBodyPage.lines.at(-1);
   if (!/^\d+$/.test(sourceNumber.text)) throw new Error('Body source page has no numeric footer');
   page.numbering.baselineFromTopMm = fact('page.numbering.baselineFromTopMm', sourceNumber.baseline, sourceNumber.locator);
   const sourceJc = extracted.pageFields.flatMap(f => child(f.paragraphProperties.pPr, 'jc') || []);
-  if (!sourceJc.some(n => val(n) === page.numbering.align)) throw new Error('Footer PAGE alignment must be source-backed');
+  const sourceJcNode = sourceJc.find(n => val(n) === page.numbering.align);
+  if (!sourceJcNode) throw new Error('Footer PAGE alignment must be source-backed');
+  fact('page.numbering.align', page.numbering.align, sourceJcNode.locator);
   const checks = [];
   const check = (id, kind, params, expected, locator, tolerance = .5, category = 'geometry') => checks.push({ id, kind, params, expected, tolerance, source: { file: extracted.source.file, locator }, evidence: 'MEASURED', tier: 1, category });
   check('page-a4', 'page_size', { pages: 'all' }, [page.widthMm, page.heightMm], section.locator);

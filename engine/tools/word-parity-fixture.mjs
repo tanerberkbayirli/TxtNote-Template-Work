@@ -1,5 +1,5 @@
 // Isolated engine acceptance fixture, never a university formatting source.
-// Run once to regenerate: node orchestration/tools/word-parity-fixture.mjs
+// Run once to regenerate: node engine/tools/word-parity-fixture.mjs
 import { writeFile } from 'node:fs/promises';
 import generic from '../../engine/src/templates/generic.js';
 const id = 'engine-word-parity';
@@ -36,7 +36,7 @@ checks.push({ id: 'exact-embedded-font-programs', kind: 'fonts', params: { famil
   expected: ['TimesNewRomanPSMT', 'ArialMT', 'Calibri'], source: { file: 'word-parity-fixture.mjs', locator: 'explicit canonical font families; PDF font-program family names' }, evidence: 'EXPLICIT' });
 checks.push(...['word_opens', 'page_count_match', 'page_labels_match', 'docx_no_undefined'].map(kind => ({ id: kind, kind, params: {}, expected: true,
   source: { file: 'Word engine acceptance fixture', locator: 'physical page sequence and OOXML validity' }, evidence: 'MEASURED' })));
-await writeFile(`orchestration/specs/${id}.fixture.json`, JSON.stringify({ title: 'Word semantics matrix', __template: template,
+await writeFile(`engine/specs/${id}.fixture.json`, JSON.stringify({ title: 'Word semantics matrix', __template: template,
   content: sectionContent.LP001, researchData: { thesis: { templateId: id, templateVersion: template.templateVersion, values: {}, sectionContent } } }, null, 1));
-await writeFile(`orchestration/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
+await writeFile(`engine/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
 console.log(`${id}: ${sections.length} typography cases, ${checks.length} checks`);

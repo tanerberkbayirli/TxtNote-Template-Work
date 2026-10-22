@@ -32,6 +32,8 @@ export function thesisSourceHtml(html) {
 
 function computeThesisSourceHtml(html) {
   return stripMathPresentation(html)
+    .replace(/<g\b[^>]*\sdata-thesis-group-text-layer(?:=["'][^"']*["'])?[^>]*>[\s\S]*?<\/g>/gi, '')
+    .replace(/\svisibility=["']hidden["']\sdata-thesis-group-text-source(?:=["'][^"']*["'])?/gi, '')
     .replace(/(\sclass=)(["'])([^"']*)\2/gi, (all, head, quote, value) => {
       if (!value.includes("txn-")) return all;
       const kept = value.split(/\s+/).filter((token) => token && !token.startsWith("txn-")).join(" ");

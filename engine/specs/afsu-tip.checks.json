@@ -109,6 +109,7 @@
   "id": "body-font",
   "kind": "fonts",
   "params": {
+   "ignore": "^(?:[ivxlcdmIVXLCDM]+|[0-9]+)$",
    "families": [
     "Times New Roman"
    ]
@@ -465,11 +466,11 @@
    "source": "layout",
    "kind": "page-number"
   },
-  "expected": 105,
+  "expected": 115,
   "tolerance": 0.5,
   "source": {
-   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
-   "locator": "p.4 §2.3 alt orta; centre of the sheet 105 mm INFERRED (spec page.numbering)"
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 physical pp.3/10/20/30/50; measured centre 115.0±0.05 mm, user-authorized example decision supersedes prior sheet-centre inference."
   },
   "evidence": "INFERRED"
  },
@@ -876,7 +877,7 @@
   "id": "note-unknown",
   "kind": "note",
   "params": {
-   "text": "UNKNOWN (spec unknowns, no check): page-number font/size and baseline/footer distance; header distance; footnote size; table borders/cell padding; ethics page content; outer cover (EK 6 schematic) vertical positions; DHF English wording. NOT CHECKED here though spec EXPLICIT: caption spacing 6/12 pt, table note 10 pt, bibliography 6 nk, TOC H4 indent, abstract/teşekkür header geometry (EK 10-12)."
+   "text": "PARTIALLY RESOLVED 2026-10-15: medicine printed page numbers follow Yılmaz 2025: Calibri nominal 11 pt (source PDF glyph size 11.04 pt), baseline y=278.757 mm, centre x=115 mm. Raw Word header/footer distances, footnote size, table borders/padding, ethics-page content, outer-cover vertical positions remain UNKNOWN. Dentistry has no matching recent example and is unchanged. Previously unmeasured explicit caption/table-note/bibliography/TOC rules remain unverified."
   },
   "expected": null,
   "tolerance": 0.5,
@@ -885,5 +886,313 @@
    "locator": "spec unknowns"
   },
   "evidence": "UNKNOWN"
+ },
+ {
+  "id": "example-number-pdf-roman-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-roman-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-roman-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-roman-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
  }
 ]

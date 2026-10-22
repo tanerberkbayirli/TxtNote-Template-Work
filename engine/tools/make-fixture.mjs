@@ -1,6 +1,6 @@
 // Deterministic validation document for any registered thesis template.
 //
-// usage: node orchestration/tools/make-fixture.mjs <registryId> <out.json> [overrides.json]
+// usage: node engine/tools/make-fixture.mjs <registryId> <out.json> [overrides.json]
 //
 // Every editable section of the template receives deterministic content chosen by its
 // section `type`; every placeholder receives a deterministic value (overrides.json may

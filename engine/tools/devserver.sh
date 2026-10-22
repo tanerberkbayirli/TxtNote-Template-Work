@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Start/stop the TxtNote frontend Vite dev server used by export.mjs (port 5175).
-# usage: orchestration/tools/devserver.sh start|stop|restart
+# usage: engine/tools/devserver.sh start|stop|restart
 set -u
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 PIDFILE="${TMPDIR:-/tmp}/txtnote-vite.pid"

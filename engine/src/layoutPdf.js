@@ -15,6 +15,7 @@ import { lastLineShifts } from "./justifyLastLine.js";
 import { renderedFontFamilies } from "./renderedFonts.js";
 import { PX_PER_MM, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 import { layoutLandmarkIndex, layoutPageBoxes, layoutPageReport } from "./layoutReport.js";
+import { orientedTextGeometry, insetRotatedRect } from './pdfTextGeometry.js';
 
 const MM = 1 / PX_PER_MM;
 // KaTeX keeps a visually hidden MathML copy next to the drawn formula; only the drawn one is exported.
@@ -37,13 +38,21 @@ function textWidth(style, text) {
 }
 
 /** Plain copy of the typography a text op needs (computed style objects are live). */
-const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, backgroundColor: style.backgroundColor, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign, wordSpacing: style.wordSpacing });
+const textStyle = (style) => ({ fontStyle: style.fontStyle, fontWeight: style.fontWeight, fontSize: style.fontSize, fontFamily: style.fontFamily, color: style.color, backgroundColor: style.backgroundColor, letterSpacing: style.letterSpacing, textTransform: style.textTransform, textAlign: style.textAlign, wordSpacing: style.wordSpacing, writingMode: style.writingMode });
 function pdfTextStyle(element, style, language) {
   const equation = element.closest?.(".math-formula--block");
   const equationFamily = equation && getComputedStyle(equation).getPropertyValue("--thesis-pdf-equation-font").trim();
   const highlight = element.closest?.(".fmt-highlight-yellow,.fmt-highlight-green,.fmt-highlight-cyan,.fmt-highlight-magenta,[data-fmt-bg]");
   const backgroundColor = highlight ? getComputedStyle(highlight).backgroundColor : style.backgroundColor;
-  return { ...textStyle(style), backgroundColor, ...(equationFamily ? { fontFamily: equationFamily, pdfMetricsFontFamily: style.fontFamily } : {}), lang: element.closest?.("[lang]")?.getAttribute("lang") || language };
+  return { ...textStyle(style), rotationDeg:cssRotation(element), backgroundColor, ...(equationFamily ? { fontFamily: equationFamily, pdfMetricsFontFamily: style.fontFamily } : {}), lang: element.closest?.("[lang]")?.getAttribute("lang") || language };
+}
+function cssRotation(element){
+  let angle=0;
+  for(let node=element;node&&!node.matches('.thesis-page-stack,.academic-stack,.academic-export-stack');node=node.parentElement){
+    const transform=getComputedStyle(node).transform;
+    if(transform&&transform!=='none'){const m=new DOMMatrixReadOnly(transform);angle+=Math.atan2(m.b,m.a)*180/Math.PI;}
+  }
+  return angle;
 }
 
 function color(value) {
@@ -87,7 +96,7 @@ export function doubleStruckMathText(text) {
   }).join("");
 }
 
-function pdfFace(pdf, style, text, exactFamily = false) {
+export function measuredPdfFontFace(pdf, style, text, exactFamily = false) {
   const family = String(style.fontFamily).split(",")[0].replace(/["']/g, "").trim().toLowerCase();
   const bold = Number(style.fontWeight) >= 600;
   const italic = style.fontStyle === "italic" || style.fontStyle.startsWith("oblique");
@@ -95,7 +104,11 @@ function pdfFace(pdf, style, text, exactFamily = false) {
   if (exactFamily) {
     const canonical = normalizeAcademicPdfFamily(family);
     if (!canonical) throw new Error(`Konumlandırılmış metin için PDF yazı tipi ${family || "(belirtilmemiş)"} izin verilen ailelerden biri değil`);
-    return { name: exactAcademicPdfFont(pdf, faceStyle, canonical), style: faceStyle };
+    // Validate the exact family first, then select a face it actually embeds.
+    // Single-face fonts (Mincho, Symbol, Cambria Math) have no bold/italic
+    // program: asking jsPDF for that nonexistent style silently substitutes it.
+    exactAcademicPdfFont(pdf, faceStyle, canonical);
+    return academicPdfFontFace(pdf, faceStyle, canonical);
   }
   // A genuine system family embedded for this template draws every word of that family.
   if (hasSystemPdfFont(pdf, family)) return academicPdfFontFace(pdf, faceStyle, family);
@@ -135,7 +148,7 @@ function markerText(li, type) {
 }
 
 /** Draw operations of one page group, in CSS px relative to its unscaled page stack. */
-function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex = null) {
+function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex = null, graphics = new Map()) {
   const origin = stack.getBoundingClientRect();
   // The exact display scale; offsetWidth is rounded to whole pixels (793.7 → 794 for A4),
   // which would stretch every position by ~0.04%.
@@ -161,10 +174,20 @@ function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex 
     const fill = color(style.color);
     if (!text || !fill) return;
     const intersects = (clip) => box.top < clip.top + clip.height && box.top + box.height > clip.top && box.left < clip.left + clip.width && box.left + box.width > clip.left;
-    const clip = extra?.clipRects ? extra.clipRects.find(intersects) : extra?.clip;
+    let clip = extra?.clipRects ? extra.clipRects.find(intersects) : extra?.clip;
     if ((extra?.clipRects && !clip) || (clip && !intersects(clip))) return;
+    for(const group of extra?.clipGroups || []){
+      const next=group.find(intersects);if(!next)return;
+      if(!clip)clip=next;
+      else {const left=Math.max(clip.left,next.left),top=Math.max(clip.top,next.top),right=Math.min(clip.left+clip.width,next.left+next.width),bottom=Math.min(clip.top+clip.height,next.top+next.height);if(right<=left||bottom<=top)return;clip={left,top,width:right-left,height:bottom-top};}
+    }
     const metricsStyle = style.pdfMetricsFontFamily ? { ...style, fontFamily: style.pdfMetricsFontFamily } : style;
-    ops.push({ type: "text", text, x: box.left, top: box.top, width: box.width, baseline: box.top + fontAscent(metricsStyle), style, color: fill, ...extra, ...(clip ? { clip } : {}) });
+    const ascent=fontAscent(metricsStyle);
+    const vertical=/^(vertical|sideways)-/.test(style.writingMode || "");
+    const upwards=style.writingMode === "sideways-lr";
+    const angle=(style.rotationDeg||0)+(vertical ? upwards ? -90 : 90 : 0);
+    const geometry=angle ? orientedTextGeometry(box,angle,ascent,textWidth(metricsStyle,text)) : {x:box.left,width:box.width,baseline:box.top+ascent};
+    ops.push({ type: "text", text, ...geometry, top: box.top, style, color: fill, ...extra, ...(clip ? { clip } : {}) });
   };
 
   // Per block: x shift of every word on the last line of a justified paragraph drawn with Word's negative word-spacing.
@@ -307,6 +330,13 @@ function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex 
     // Opt-in (border.collapse frames): browsers draw borders at least one device pixel wide, so the stroke uses the declared rule width, centred on the drawn border.
     const nominalRule = Number.parseFloat(element.getAttribute?.("data-thesis-rule-pt")) * 96 / 72 || 0;
     const rects = [...element.getClientRects()].map(local);
+    const radius=parseFloat(style.borderTopLeftRadius)||0;
+    if(radius>0 && rects.length===1 && sides.every(s=>s.visible&&s.width===sides[0].width&&String(s.color)===String(sides[0].color))){
+      const box=rects[0],half=sides[0].width/2;
+      const rx=String(style.borderTopLeftRadius).includes('%') ? box.width*radius/100 : radius;
+      const ry=String(style.borderTopLeftRadius).includes('%') ? box.height*radius/100 : radius;
+      ops.push({type:'roundedRect',x:box.left+half,top:box.top+half,width:box.width-2*half,height:box.height-2*half,rx,ry,color:sides[0].color,strokeWidth:sides[0].width,zIndex});return;
+    }
     rects.forEach((box, index) => {
       for (const entry of sides) {
         if (!(entry.width > 0 && entry.visible && entry.color)) continue;
@@ -348,6 +378,20 @@ function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex 
         const fallback = native.parentElement?.parentElement?.querySelector(':scope > [hidden] img');
         const box = local(element.getBoundingClientRect());
         if (fallback && box.width > 0 && box.height > 0) ops.push({ type: "image", element: fallback, x: box.left, top: box.top, width: box.width, height: box.height, zIndex: 0 });
+        // The cached picture remains the visible source rendering. Its known
+        // native chart preview supplies an image text layer, as in a searchable
+        // scanned PDF; never paint a second visible copy over the picture.
+        for (const label of graphics.get(element)?.texts || []) {
+          ops.push({type:'text',text:label.text,x:(label.x-origin.left)/zoom,baseline:(label.baseline-origin.top)/zoom,top:(label.top-origin.top)/zoom,height:label.height/zoom,width:label.width/zoom,angle:label.angle,style:{...label.style,fontSize:`${parseFloat(label.style.fontSize)*label.scale/zoom}px`},color:color(label.style.color),decoration:[],clip:local(label.clip),exactFont:true,spaceAfter:label.spaceAfter,imageText:true,zIndex:1});
+        }
+      } else if(graphics.has(element)) {
+        const box=local(element.getBoundingClientRect());
+        const graphic=graphics.get(element),zIndex=Number.parseInt(getComputedStyle(element).zIndex)||0;
+        ops.push({type:'image',element:graphic.image || graphic,x:box.left,top:box.top,width:box.width,height:box.height,zIndex});
+        for(const label of graphic.texts || []) {
+          const fill=color(label.style.color);if(!fill)continue;
+          ops.push({type:'text',text:label.text,x:(label.x-origin.left)/zoom,baseline:(label.baseline-origin.top)/zoom,top:(label.top-origin.top)/zoom,height:label.height/zoom,width:label.width/zoom,angle:label.angle,style:{...label.style,fontSize:`${parseFloat(label.style.fontSize)*label.scale/zoom}px`},color:fill,decoration:[],clip:local(label.clip),exactFont:true,spaceAfter:label.spaceAfter,zIndex:zIndex+1});
+        }
       }
       return;
     }
@@ -366,20 +410,33 @@ function collectGroup(stack, language, exactFamilies = new Set(), landmarkIndex 
     const canonicalFamily = normalizeAcademicPdfFamily(style.fontFamily);
     const exactFont = positioned || (canonicalFamily && exactFamilies.has(canonicalFamily));
     borders(element, style, zIndex);
+    if(graphics.has(element)){
+      const box=local(element.getBoundingClientRect());
+      ops.push({type:'image',element:graphics.get(element),x:box.left,top:box.top,width:box.width,height:box.height,zIndex:zIndex-1});
+    }
     if (element.tagName === "IMG") {
       const box = local(element.getBoundingClientRect());
       if (box.width > 0 && box.height > 0) ops.push({ type: "image", element, x: box.left, top: box.top, width: box.width, height: box.height, zIndex });
       return;
     }
     const first = ops.length;
-    const clipElement = element.closest('txt-table-cell-content') || element.closest('p');
-    const clipRects = clipElement && ['hidden', 'clip'].includes(getComputedStyle(clipElement).overflow) ? [...clipElement.getClientRects()].map(local) : null;
+    const clipGroups=[];
+    for(let ancestor=element;ancestor&&ancestor!==stack;ancestor=ancestor.parentElement){
+      const cs=getComputedStyle(ancestor);
+      if(!['hidden','clip'].includes(cs.overflow))continue;
+      const contentBox=cs.overflowClipMargin?.includes('content-box');
+      clipGroups.push([...ancestor.getClientRects()].map(local).map(box=>{
+        if(!contentBox)return box;
+        const left=parseFloat(cs.paddingLeft)||0,right=parseFloat(cs.paddingRight)||0,top=parseFloat(cs.paddingTop)||0,bottom=parseFloat(cs.paddingBottom)||0;
+        return insetRotatedRect(box,cssRotation(ancestor),{left,top,right,bottom});
+      }));
+    }
     // text-transform follows the language the browser used for this element.
     const typography = pdfTextStyle(element, style, language);
     const decoration = element.firstChild ? decorations(element) : [];
     for (const child of element.childNodes) {
       if (child.nodeType === 1) visit(child);
-      else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration, positioned, exactFont: Boolean(exactFont), zIndex, landmark: landmarkIndex?.forElement(element), ...(clipRects ? { clipRects } : {}) });
+      else if (child.nodeType === 3 && child.data.trim()) words(child, typography, { decoration, positioned, exactFont: Boolean(exactFont), zIndex, landmark: landmarkIndex?.forElement(element), ...(clipGroups.length ? { clipGroups } : {}) });
     }
     const firstText = ops.slice(first).find((op) => op.type === "text" && !op.label);
     // Generated content the editor shows: heading numbers (::before) and list markers (::marker).
@@ -496,6 +553,10 @@ function drawOp(pdf, op, pageTop, templateId, pageHeight) {
 }
 
 function drawUnclippedOp(pdf, op, pageTop, templateId, pageHeight) {
+  if(op.type === 'roundedRect'){
+    pdf.setDrawColor(...op.color);pdf.setLineWidth(op.strokeWidth*MM);
+    pdf.roundedRect(op.x*MM,(op.top-pageTop)*MM,op.width*MM,op.height*MM,Math.min(op.rx,op.width/2)*MM,Math.min(op.ry,op.height/2)*MM,'S');return;
+  }
   if (op.type === "line") {
     const [x1, y1, x2, y2] = op.points;
     pdf.setDrawColor(...op.color); pdf.setLineWidth(op.width * MM);
@@ -515,7 +576,7 @@ function drawUnclippedOp(pdf, op, pageTop, templateId, pageHeight) {
     return;
   }
   if (op.exactFont || op.positioned) assertPositionedFont(op.style, op.text, templateId);
-  const face = pdfFace(pdf, op.style, op.text, op.exactFont || op.positioned);
+  const face = measuredPdfFontFace(pdf, op.style, op.text, op.exactFont || op.positioned);
   pdf.setFont(face.name, face.style);
   pdf.setFontSize(parseFloat(op.style.fontSize) * 0.75);
   pdf.setTextColor(...op.color);
@@ -532,8 +593,9 @@ function drawUnclippedOp(pdf, op, pageTop, templateId, pageHeight) {
   // Only for a genuine embedded family (the browser draws the same font); a substitute face keeps its natural advances.
   const fit = op.width > 0 && glyphs > 1 && hasSystemPdfFont(pdf, String(op.style.fontFamily).split(",")[0].replace(/["']/g, "").trim()) ? (op.width * MM - pdf.getTextWidth(text)) / glyphs : NaN;
   const charSpace = Number.isFinite(fit) && Math.abs(fit) <= size * 0.352778 * 0.1 ? fit : spacing * MM;
-  pdf.text(text, op.x * MM, y, { baseline: "alphabetic", ...(charSpace ? { charSpace } : {}) });
-  if (op.spaceAfter) pdf.text(" ", (op.x + op.width) * MM, y, { baseline: "alphabetic" });
+  const rendering = op.imageText ? {renderingMode:'invisible'} : {};
+  pdf.text(text, op.x * MM, y, { baseline: "alphabetic", ...rendering, ...(op.angle ? {angle:op.angle} : {}), ...(charSpace ? { charSpace } : {}) });
+  if (op.spaceAfter) pdf.text(" ", (op.x + op.width) * MM, y, { baseline: "alphabetic", ...rendering });
   for (const line of op.decoration || []) {
     const size = parseFloat(op.style.fontSize);
     const offset = line === "underline" ? size * 0.12 : -size * 0.28;
@@ -562,11 +624,108 @@ export function thesisLayoutPages(root, groups) {
   return thesisPageStacks(root, groups).flatMap(({ group, pages }) => Array.from({ length: pages }, (_, index) => ({ groupId: group.id, index })));
 }
 
+/** Rasterize individual vector objects at print resolution; body text stays
+ * searchable. Freeze computed SVG paint/typography, so CSS inheritance is not
+ * lost when the object is decoded outside the live DOM. */
+async function prepareLayoutGraphics(root) {
+  const prepared=new Map();
+  const decodeImage=async src=>{const image=new Image();image.src=src;await image.decode();return image;};
+  await Promise.all([...root.querySelectorAll('img')].filter(img=>!img.complete).map(img=>img.decode()));
+  for(const element of root.querySelectorAll('svg,[data-native-object="drawing"]')){
+    if(element.closest('[hidden],.katex-mathml,[data-export-ignore]'))continue;
+    const rect=element.getBoundingClientRect(),cs=getComputedStyle(element);
+    if(!rect.width||!rect.height||cs.display==='none'||cs.visibility==='hidden')continue;
+    let src=null, svgTexts=null;
+    if(element.tagName.toLowerCase()==='svg'){
+      if(element.closest('.katex-html .sqrt'))continue;
+      if(element.closest('[data-docx-drawing]')?.getAttribute('data-docx-drawing')?.includes('drawing/2014/chartex')){
+        const fallback=element.closest('[data-docx-drawing]').parentElement?.parentElement?.querySelector(':scope > [hidden] img');
+        const texts=fallback && measuredSvgTexts(element,{imageText:true});
+        if(texts)prepared.set(element,{texts});
+        continue;
+      }
+      const clone=element.cloneNode(true),originals=[element,...element.querySelectorAll('*')],copies=[clone,...clone.querySelectorAll('*')];
+      originals.forEach((node,i)=>{
+        const computed=getComputedStyle(node);
+        for(const prop of ['fill','fill-opacity','stroke','stroke-width','stroke-opacity','stroke-dasharray','stroke-linecap','stroke-linejoin','opacity','color','font-family','font-size','font-weight','font-style','letter-spacing','text-anchor','dominant-baseline','direction','writing-mode'])copies[i].style.setProperty(prop,computed.getPropertyValue(prop));
+      });
+      // Paint supported SVG text with the embedded font, rather than baking
+      // visible chart labels into pixels. Keep complex SVG typography in the
+      // raster fallback; removing text is atomic for the whole SVG.
+      svgTexts=measuredSvgTexts(element);
+      if(svgTexts)clone.querySelectorAll('text').forEach(node=>node.remove());
+      clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+      clone.setAttribute('width',String(parseFloat(cs.width)||rect.width));clone.setAttribute('height',String(parseFloat(cs.height)||rect.height));
+      src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(clone));
+    }else{
+      const match=cs.backgroundImage.match(/^url\(["']?(data:image\/svg\+xml[^"']+)["']?\)$/);
+      if(match)src=match[1];
+    }
+    if(!src)continue;
+    const image=await decodeImage(src);
+    const canvas=document.createElement('canvas');
+    canvas.width=Math.max(1,Math.ceil((parseFloat(cs.width)||rect.width)*3));canvas.height=Math.max(1,Math.ceil((parseFloat(cs.height)||rect.height)*3));
+    canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height);
+    const renderedImage=await decodeImage(canvas.toDataURL('image/png'));
+    prepared.set(element,svgTexts ? {image:renderedImage,texts:svgTexts} : renderedImage);
+  }
+  return prepared;
+}
+
+/** Flat SVG labels with a uniform transform have exact browser baseline and
+ * advance APIs. Unsupported text remains in the rasterized SVG unchanged. */
+export function measuredSvgTexts(svg, {imageText = false} = {}) {
+  const result=[];
+  for(const element of svg.querySelectorAll('text')){
+    const raw=element.textContent || '',style=getComputedStyle(element),matrix=element.getScreenCTM();
+    // SVG's addressable characters follow rendered white-space collapsing;
+    // DOM text offsets can include duplicate or trailing source spaces.
+    const count=element.getNumberOfChars();
+    const text=count===raw.length ? raw : raw.replace(/[\t\r\n ]+/g,' ').trim();
+    if(!text.trim() || style.display==='none' || style.visibility==='hidden' || style.fill==='none')continue;
+    if(element.children.length || element.hasAttribute('rotate') || (!imageText && element.hasAttribute('textLength')) || style.writingMode!=='horizontal-tb' || !color(style.fill) || !matrix || !normalizeAcademicPdfFamily(style.fontFamily) || /[^\u0000-\uFFFF]/u.test(text) || count!==text.length)return null;
+    for(let parent=element;parent;parent=parent.parentElement){
+      const paint=getComputedStyle(parent);
+      if(Number(paint.opacity)<1 || paint.clipPath!=='none' || paint.maskImage!=='none')return null;
+      if(parent===svg)break;
+    }
+    const scale=Math.hypot(matrix.a,matrix.b),other=Math.hypot(matrix.c,matrix.d);
+    if(!(scale>0) || Math.abs(scale-other)>scale*.0001 || Math.abs(matrix.a*matrix.c+matrix.b*matrix.d)>scale*scale*.0001 || Number(style.opacity)<1 || Number(style.fillOpacity)<1)return null;
+    for(const match of text.matchAll(/\S+/g)){
+      const start=element.getStartPositionOfChar(match.index),point=new DOMPoint(start.x,start.y).matrixTransform(matrix);
+      const rect=element.getBoundingClientRect();
+      result.push({text:match[0],x:point.x,baseline:point.y,top:rect.top,height:rect.height,width:element.getSubStringLength(match.index,match[0].length)*scale,scale,angle:-Math.atan2(matrix.b,matrix.a)*180/Math.PI,style:{...textStyle(style),color:style.fill},clip:svg.getBoundingClientRect().toJSON(),spaceAfter:match.index+match[0].length<text.length});
+    }
+  }
+  return result;
+}
+
+/** Shared measured writer for the normal academic editor's frozen page stack. */
+export async function buildMeasuredAcademicPdf({root,pages=1,pagePitchPx,widthMm=210,heightMm=297,title='',language='tr',drawPage}) {
+  await document.fonts?.ready;
+  const graphics=await prepareLayoutGraphics(root);
+  const pdf=new jsPDF({unit:'mm',format:[widthMm,heightMm],orientation:'p',compress:true});
+  pdf.setProperties({title,creator:'TxtNote'});
+  const fonts=[...new Set([...renderedFontFamilies(root),...[...graphics.values()].flatMap(g=>(g.texts || []).map(t=>t.style.fontFamily))])];
+  await embedAcademicPdfFonts(pdf,{extraFontFamilies:fonts,systemFonts:fonts});
+  const ops=collectGroup(root,language,new Set(),null,graphics);
+  const pitch=pagePitchPx || heightMm*PX_PER_MM;
+  for(let page=0;page<pages;page++){
+    if(page)pdf.addPage([widthMm,heightMm],'p');
+    const selected=ops.filter(op=>Math.max(0,Math.floor((op.top+(op.height??(op.baseline-op.top))/2)/pitch))===page);
+    selected.sort((a,b)=>(a.zIndex||0)-(b.zIndex||0)||Number(a.type==='text')-Number(b.type==='text'));
+    for(const op of selected)drawOp(pdf,op,page*pitch,null,heightMm*PX_PER_MM);
+    drawPage?.(pdf,page);
+  }
+  return pdf.output('blob');
+}
+
 export async function buildThesisLayoutPdf({ root, groups, title = "", language = "tr", templateId, documentLayout, systemFonts = [], onLayoutReport }) {
   await document.fonts?.ready;
+  const graphics=await prepareLayoutGraphics(root);
   const stacks = thesisPageStacks(root, groups);
   const sections = groups.flatMap(group => group.sections || []);
-  const fontRequests = [...new Set([...collectAcademicPdfFontRequests(documentLayout, sections),...renderedFontFamilies(root)])];
+  const fontRequests = [...new Set([...collectAcademicPdfFontRequests(documentLayout, sections),...renderedFontFamilies(root),...[...graphics.values()].flatMap(g=>(g.texts || []).map(t=>t.style.fontFamily))])];
   const exactFamilies = new Set(fontRequests.map(value => normalizeAcademicPdfFamily(value) || value));
   let pdf = null;
   const report = { version: 1, origin: 'top-left', units: { geometry: 'mm', fontSize: 'pt' }, pages: [] };
@@ -579,7 +738,7 @@ export async function buildThesisLayoutPdf({ root, groups, title = "", language 
     const origin = stack.getBoundingClientRect();
     const zoom = new DOMMatrixReadOnly(getComputedStyle(stack).transform).a || 1;
     const boxes = landmarkIndex.boxes((rect) => ({ left: (rect.left - origin.left) / zoom, top: (rect.top - origin.top) / zoom, width: rect.width / zoom, height: rect.height / zoom }));
-    for (const op of collectGroup(stack, language, exactFamilies, landmarkIndex)) {
+    for (const op of collectGroup(stack, language, exactFamilies, landmarkIndex, graphics)) {
       const middle = op.top + (op.height ?? (op.baseline - op.top)) / 2;
       byPage[Math.min(pages - 1, Math.max(0, Math.floor(middle / flowPagePitchPx(metrics))))].push(op);
     }

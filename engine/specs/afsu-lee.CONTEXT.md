@@ -1,4 +1,13 @@
 # afsu-lee — context pack
+
+## 15.10.2026 kalan kaynakların yeniden incelemesi
+
+Üç eski kaynak belirsizliği kapandı: altbilgi punto/mesafesi, içindekiler 1–3 seviye girinti/noktalı sekmeleri, jüri tablosu asgari satır yükseklikleri. Kaynak XML ve hash: `validation/resizeobserver-source-review-20261015/source-audit.json`; kararlar `source-disposition.json`. Etik liste Symbol işareti kaynakta biliniyor; font yedeği ayrı uygulama sınırı. Beş genel kaynak belirsizliği korunuyor; dördüncü içindekiler seviyesi ve keyfî uzun tablo devamı bu örneklerle kesinleşmedi. Tarihsel çıktı kabulleri yeniden çalıştırılmış sayılmadı.
+
+
+## 15.10.2026 örnek tez araştırması
+
+Güncel kararlar: `orchestration/validation/template-thesis-research-20261015/decisions.json`; kaynak ölçümleri `measurements.json`. Kullanıcı güncel örnekleri esas alma ve bulunamayanları pas geçme talimatı verdi. Yalnız kayıtlı maddeler çözüldü; aşağıdaki eski notlarda bu maddelere ilişkin kararlar tarihsel kabul edilir. Yeni üretim çıktısı kabulü çalıştırılmadı.
 ## Identity
 - Registry id(s): `afsu-lee-master-tr-v1`, `afsu-lee-phd-tr-v1`
 - Template module: `engine/src/templates/afsu-lee.js` (exports: afsuLeeMaster, afsuLeePhd)

@@ -1,4 +1,4 @@
-"""Minimal unit tests for the comparison / tolerance logic: python -m unittest orchestration/tools/test_conformance.py"""
+"""Minimal unit tests for the comparison / tolerance logic: python -m unittest engine/tools/test_conformance.py"""
 import json, os, sys, tempfile, unittest, zipfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from conformance import compare, drawn_font_names, open_end, rle, run_check

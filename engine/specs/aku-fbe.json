@@ -15629,9 +15629,10 @@
      "value": "text → year, pages → Anahtar Kelimeler"
     }
    ],
-   "decision": "Keywords → one empty 1.5 line → year/pages line (explicit guide text). needsConfirmation.",
-   "needsConfirmation": true,
-   "reviewDecision": "FLIPPED by reviewer: keywords first, then the year/pages line. Policy order puts explicit guide text above template XML and example geometry; p.18 §4.2.5 states the order explicitly ('Özet/Abstract metninden sonra 1 satır aralığı ... Anahtar Kelimeler ... Ardından yine 1 satır aralığı bırakılarak ... yıl ve sayfa sayısı'); the '(Örnek 5 ve 6)' reference is attached to the format of the year line. The analyzer's choice (template + example order) contradicts the policy. Kept needsConfirmation because 2 official artifacts show the other order."
+   "decision": "User-authorized July 2026 examples + official DOCX/examples: year/pages before keywords. See exampleResearch20261015; conflicting prose retained as counterevidence.",
+   "needsConfirmation": false,
+   "reviewDecision": "Superseded on 2026-10-15 by the explicitly user-authorized thesis-example ruling.",
+   "previousDecisionBefore20261015": "Keywords → one empty 1.5 line → year/pages line (explicit guide text). needsConfirmation."
   },
   {
    "topic": "Inner cover: line spacing of the 2nd title line",
@@ -15910,10 +15911,6 @@
   {
    "key": "approval.coAdvisorRowSlotWhenAbsent",
    "why": "Not stated whether the İkinci Danışman row space is kept."
-  },
-  {
-   "key": "approval.masterJurySize",
-   "why": "Only \"5 (example)\" and \"PhD with 2nd advisor: 7\" are given."
   },
   {
    "key": "signaturePlaceholders.print",
@@ -16879,5 +16876,75 @@
   "renderEvidence": "orchestration/artifacts/aku-fbe/review/aku_template.pdf (LibreOffice 33 pages; supporting evidence only — LO misplaces some page breaks and table offsets by ~0.6 mm, but line pitches, footer baseline 283.72 mm and relative approval-page geometry match the analyzer's Word-model computations)"
  },
  "annotatedAt": "2026-09-30",
- "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md"
+ "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md",
+ "exampleResearch20261015": {
+  "authority": "User authorized current published thesis examples on 2026-10-15; skip when no suitable accessible example exists.",
+  "decisions": [
+   {
+    "id": "aku-fbe-master-jury",
+    "target": "aku-fbe",
+    "key": "approval.masterJurySize",
+    "value": 3,
+    "evidence": [
+     {
+      "sourceId": "aku-fbe-bilgehan-2026",
+      "url": "https://acikerisim.aku.edu.tr/bitstreams/4444a2a6-c09b-4f74-9542-6451c5e46b99/download",
+      "path": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-bilgehan-2026-0.pdf",
+      "sha256": "5ad7f127ed75ba776fe8db8ebd023f3e28b31c6d6e29b59703ec1f1b5c1f758e",
+      "physicalPages": [
+       3
+      ]
+     },
+     {
+      "sourceId": "aku-fbe-cakal-2026",
+      "url": "https://acikerisim.aku.edu.tr/bitstreams/4366e926-4052-4217-83b5-06cd9c857768/download",
+      "path": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "sha256": "33395c9bf6578325d6b7481a105fcb64dc2c34bfea1e4b1cb4581f3098bd7a0e",
+      "physicalPages": [
+       3
+      ]
+     }
+    ],
+    "reason": "Both July 2026 thesis approval pages have one chair and two members, including the advisor. The advisor caption repeats the same juror and is not a fourth member.",
+    "implementation": "Master default three rows; rows 4–7 appear when filled. PhD defaults/rules unchanged.",
+    "confidence": "INFERRED"
+   },
+   {
+    "id": "aku-fbe-abstract-order",
+    "target": "aku-fbe",
+    "key": "abstract.footerOrder",
+    "value": [
+     "year/pages",
+     "keywords"
+    ],
+    "evidence": [
+     {
+      "sourceId": "aku-fbe-bilgehan-2026",
+      "url": "https://acikerisim.aku.edu.tr/bitstreams/4444a2a6-c09b-4f74-9542-6451c5e46b99/download",
+      "path": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-bilgehan-2026-0.pdf",
+      "sha256": "5ad7f127ed75ba776fe8db8ebd023f3e28b31c6d6e29b59703ec1f1b5c1f758e",
+      "physicalPages": [
+       6,
+       8
+      ]
+     },
+     {
+      "sourceId": "aku-fbe-cakal-2026",
+      "url": "https://acikerisim.aku.edu.tr/bitstreams/4366e926-4052-4217-83b5-06cd9c857768/download",
+      "path": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "sha256": "33395c9bf6578325d6b7481a105fcb64dc2c34bfea1e4b1cb4581f3098bd7a0e",
+      "physicalPages": [
+       6,
+       8
+      ]
+     }
+    ],
+    "reason": "Two July 2026 theses agree with the official DOCX and guide example order. User authorized taking published theses as examples. Conflicting prose is retained.",
+    "implementation": "Year/pages line before keyword line in both abstracts, preserving the existing blank-line pitch.",
+    "confidence": "INFERRED"
+   }
+  ],
+  "sourceRecord": "orchestration/validation/template-thesis-research-20261015/downloads-v2.json",
+  "outputAcceptance": "NOT_RERUN; source measurements are not new generated-output acceptance."
+ }
 }

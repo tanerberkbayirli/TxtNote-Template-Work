@@ -2,8 +2,9 @@ import { Footer, Header, NumberFormat, PageNumber, Paragraph, TextRun } from "./
 import { resolveChromeText, resolvePageNumberStyle } from "../engine.js";
 import { positionedPageNumberDocx } from "../layoutDocx.js";
 import { wordBaselineProbe } from "../wordBaseline.js";
-import { alignDocx, mmPerPt, plainRuns, twip } from "./xml.js";
+import { alignDocx, halfPointSize, mmPerPt, plainRuns, twip } from "./xml.js";
 import { docxParagraph, runProps } from "./paragraphs.js";
+import { conditionalPageNumberRuns } from './pageNumberFields.js';
 
 export const pageFormat = (value) => ({ "roman-lower": NumberFormat.LOWER_ROMAN, "roman-upper": NumberFormat.UPPER_ROMAN, "alpha-lower": NumberFormat.LOWER_LETTER, "alpha-upper": NumberFormat.UPPER_LETTER }[value] || NumberFormat.DECIMAL);
 /**
@@ -17,6 +18,9 @@ export function chromeDocx(section, values, context, groupStart, omitNumberOnFir
   const chromeStyle = { ...body, fontSizePt: 10, align: "left", firstLineIndentMm: 0, leftIndentMm: 0, rightIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0, lineHeight: 1.1, textTransform: "none", fontWeight: 400, italic: false };
   const number = page.numbering;
   const numberEdge = number.position === "top" ? "top" : "bottom";
+  const groupId = context.groupBySection?.get(section.id) || section.id;
+  const customNumbers = Object.entries(context.presentationGeometry || {}).filter(([id, geometry]) => geometry.groupId === groupId && id.includes(':chrome:') && id.endsWith('%3Anumber') && context.documentLayout?.elements?.[id]).map(([id, geometry]) => ({ ...geometry, override: context.documentLayout.elements[id] }));
+  const excludedLabels = customNumbers.map(node => node.label).filter(Boolean);
   // Page numbers use the template's numbering style (e.g. 10 pt) when given, else the body type.
   const numberParagraph = () => {
     const style = resolvePageNumberStyle(body, number);
@@ -28,13 +32,21 @@ export function chromeDocx(section, values, context, groupStart, omitNumberOnFir
       if (!baseline) throw new Error("DOCX PAGE baseline measurement is unsupported for " + (style.fontFamily || "the configured font"));
       const baselineAscentMm = baseline.targetPt * mmPerPt;
       const heightMm = fontSizePt * 1.25 * mmPerPt;
-      return positionedPageNumberDocx({ xMm, yMm: number.baselineFromTopMm - baselineAscentMm, widthMm, heightMm, fontFamily: style.fontFamily, fontSizePt, align: number.align }, context.language);
+      return positionedPageNumberDocx({ xMm, yMm: number.baselineFromTopMm - baselineAscentMm, widthMm, heightMm, fontFamily: style.fontFamily, fontSizePt, align: number.align, excludeLabels: excludedLabels }, context.language);
     }
     // centerOnPage: shift the centred text frame so its centre is the physical page centre (right indent = leftMargin - rightMargin).
     const pageShiftMm = number.centerOnPage && number.align === "center" ? page.margins.leftMm - page.margins.rightMm : 0;
     const shiftIndent = pageShiftMm > 0 ? { right: twip(pageShiftMm) } : pageShiftMm < 0 ? { left: twip(-pageShiftMm) } : null;
-    return new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, ...(shiftIndent ? { indent: shiftIndent } : {}), children: [new TextRun({ ...runProps(style, context.language), children: [PageNumber.CURRENT] })] });
+    // The paragraph mark carries the number's font: Word sizes the line from it as well, so a 10 pt number would otherwise sit on a 12 pt line.
+    return new Paragraph({ alignment: alignDocx(number.align), spacing: { before: 0, after: 0 }, run: { font: style.fontFamily, size: halfPointSize(style.fontSizePt) }, ...(shiftIndent ? { indent: shiftIndent } : {}), children: excludedLabels.length ? conditionalPageNumberRuns(style, undefined, excludedLabels) : [new TextRun({ ...runProps(style, context.language), children: [PageNumber.CURRENT] })] });
   };
+  const numbers = () => [numberParagraph(), ...customNumbers.filter(node => node.label).map(node => {
+    const style = { ...resolvePageNumberStyle(body, number), ...node.style, ...node.override.style };
+    const fontSizePt = Math.round(style.fontSizePt * 2) / 2;
+    const probe = wordBaselineProbe({ ...style, fontSizePt }, { mode: 'word', baseline: 'word', singleLineEm: 1 }, 1);
+    if (!probe || !Number.isFinite(node.baselineMm)) throw new Error('Sayfa numarasının Word konumu için görünür font ölçümü gerekli.');
+    return positionedPageNumberDocx({ ...node, ...style, fontSizePt, yMm: node.baselineMm - probe.targetPt*25.4/72, onlyLabel: node.label }, context.language);
+  })];
   const part = (edge, text, withNumber = true, slot = "default") => {
     const chrome = edge === "top" ? page.header : page.footer;
     const textStyle = { ...chromeStyle, ...(slot === "first" ? chrome?.firstStyle : slot === "even" ? chrome?.evenStyle : chrome?.style) };
@@ -43,11 +55,11 @@ export function chromeDocx(section, values, context, groupStart, omitNumberOnFir
     const position = slot === "first" ? chrome?.firstPosition : slot === "even" ? chrome?.evenPosition : chrome?.position;
     if (position && text === "{{PAGE}}") return [positionedPageNumberDocx({ ...position, fontFamily: textStyle.fontFamily, fontSizePt: textStyle.fontSizePt, align: textStyle.align }, context.language)];
     const children = [];
-    if (withNumber && number.enabled && numberEdge === edge && edge === "top") children.push(numberParagraph());
+    if (withNumber && number.enabled && numberEdge === edge && edge === "top") children.push(...numbers());
     // Chrome text keeps the editor's fixed 1.1 line box in every template.
     if (paragraphs) for (const p of paragraphs) children.push(docxParagraph(chromeRuns(resolveText(p.text)), { ...chromeStyle, ...p.style }, { ...context, lineSpacing: null }));
     else if (text) children.push(docxParagraph(chromeRuns(text), textStyle, { ...context, lineSpacing: null }));
-    if (withNumber && number.enabled && numberEdge === edge && edge === "bottom") children.push(numberParagraph());
+    if (withNumber && number.enabled && numberEdge === edge && edge === "bottom") children.push(...numbers());
     for (let i = 0; i < (chrome?.trailingBlankLines || 0); i += 1) children.push(docxParagraph([], { ...body, lineHeight: 1, spaceBeforePt: 0, spaceAfterPt: 0, firstLineIndentMm: 0 }, context));
     return children.length ? children : [new Paragraph({ children: [] })];
   };

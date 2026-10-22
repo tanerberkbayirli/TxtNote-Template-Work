@@ -53,7 +53,8 @@ test("self-4 geometry: ethics bullets, approval frame, English abstract position
   const approvalMargins = master.sections.find((entry) => entry.id === "approval").overrides.page.margins;
   assert.ok(Math.abs(approvalMargins.leftMm - 100.7 * 25.4 / 72) < 1e-6);
   assert.ok(Math.abs(approvalMargins.rightMm - 69.05 * 25.4 / 72) < 1e-6);
-  const ethics = [...walkSpecialPage(section("ethics").layout)].filter((node) => node.type === "text" && node.text.startsWith("•"));
+  // Imported Word text can retain the Symbol-font bullet U+F0B7.
+  const ethics = [...walkSpecialPage(section("ethics").layout)].filter((node) => node.type === "text" && /^[•\uF0B7]/u.test(node.text));
   assert.equal(ethics.length, 6);
   const english = [...walkSpecialPage(section("abstract-en-header").layout)].find((node) => node.text === "ABSTRACT");
   assert.ok(english.yMm > ([...walkSpecialPage(section("abstract-header").layout)].find((node) => node.text === "ÖZET").yMm));

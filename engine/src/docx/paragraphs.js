@@ -7,7 +7,9 @@ import { equationRun } from "./equations.js";
 import { indentMm, transformThesisText } from "../engine.js";
 import { PX_PER_MM } from "../pageLayout.js";
 import { continuationParts } from "../tableContinuation.js";
+import { LIST_SPACE_AFTER_PT } from "../blockGap.js";
 import { alignDocx, halfPointSize, plainRuns, pt, twip } from "./xml.js";
+import { wordBaselineProbe } from '../wordBaseline.js';
 
 // Legacy footnote size, used only when a model carries no resolved footnote rule.
 const FOOTNOTE_PT = 9;
@@ -26,6 +28,7 @@ function textRun(text, style, context, inline = {}) {
   return new TextRun({
     ...runProps(style, context.language), text: transformThesisText(text, style, context.language),
     ...(inline.fontSizePt ? { size: halfPointSize(inline.fontSizePt) } : {}),
+    ...(inline.fontFamily ? { font: inline.fontFamily } : {}),
     ...(inline.valign === "superscript" ? { superScript: true } : inline.valign === "subscript" ? { subScript: true } : {}),
     ...(inline.bold ? { bold: true } : {}), ...(inline.italic ? { italics: true } : {}),
     ...(inlineColor ? { color: inlineColor } : {}),
@@ -142,10 +145,24 @@ function bookmarkRuns(name, children) {
   return [bookmark.start, ...children, bookmark.end];
 }
 const bookmarked = (anchor, children) => [].concat(anchor || []).filter(Boolean).reduceRight((inner, name) => bookmarkRuns(bookmarkName(name), inner), children);
-export function docxParagraph(runs, style, context, { anchor, ...options } = {}) {
+export function docxParagraph(runs, style, context, { anchor, presentationFrame, ...options } = {}) {
+  if (presentationFrame) {
+    const probe = wordBaselineProbe(style, { mode: 'word', baseline: 'word', ...context.lineSpacing }, style.lineHeight || 1.5);
+    const yMm = Number.isFinite(presentationFrame.baselineMm) && probe
+      ? presentationFrame.baselineMm - probe.targetPt * 25.4 / 72 : presentationFrame.yMm;
+    if (![presentationFrame.xMm, yMm, presentationFrame.widthMm].every(Number.isFinite) || presentationFrame.widthMm <= 0) throw new Error('Word metin çerçevesi için görünür konum ölçümü gerekli.');
+    style = { ...style, spaceBeforePt: 0, spaceAfterPt: 0, keepWithNext: false };
+    options.frame = { type: 'absolute', position: { x: twip(presentationFrame.xMm), y: twip(yMm) },
+      width: twip(presentationFrame.widthMm), height: twip(presentationFrame.heightMm || 1),
+      anchor: { horizontal: 'page', vertical: 'page' }, wrap: 'none', rule: 'atLeast' };
+  }
   style = consumeTableWrapGap(style, context);
   const children = docxRuns(runs, style, context);
-  const paragraph = new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
+  // Word sizes a paragraph without visible text (an empty table cell) from its paragraph mark, not from an empty run; without mark
+  // properties it falls back to the document default (12 pt) and the row grows when the cell font is smaller.
+  const blank = !(runs || []).some((item) => item.type !== "text" || item.text);
+  const markProps = blank ? { run: { font: style.fontFamily, size: halfPointSize(style.fontSizePt), bold: style.fontWeight >= 600, italics: Boolean(style.italic) } } : {};
+  const paragraph = new Paragraph({ ...paragraphProps(style, options, context.lineSpacing), ...markProps, children: bookmarked(anchor, children.length ? children : [textRun("", style, context)]) });
   if (indentMm(style).mirror) {
     const alignment = paragraph.properties.root.findIndex((item) => item?.rootKey === "w:jc");
     paragraph.properties.root.splice(alignment < 0 ? paragraph.properties.root.length : alignment, 0, new ImportedXmlComponent("w:mirrorIndents"));
@@ -157,7 +174,7 @@ export const thesisHeadingStyleId = (level, included, noPage = false) => `Thesis
 export function spacerParagraph(heightMm) {
   return new Paragraph({ spacing: { before: 0, after: 0, line: Math.max(1, twip(heightMm)), lineRule: LineRuleType.EXACT }, children: [new TextRun({ text: "", size: 2 })] });
 }
-export function listParagraphs(block, section, context, level = 0, before = null) {
+export function listParagraphs(block, section, context, level = 0, before = null, exitAfterPt = level === 0 && before === null ? LIST_SPACE_AFTER_PT : 0) {
   const { body } = section.rules;
   const out = [];
   const toc = section.type === "tableOfContents" || /\bthesis-toc\b/.test(block.className || "");
@@ -174,11 +191,13 @@ export function listParagraphs(block, section, context, level = 0, before = null
     } else if (toc) {
       out.push(docxParagraph(runs, { ...body, align: "left", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 4 }, context));
     } else {
-      out.push(docxParagraph(runs, { ...body, firstLineIndentMm: 0, spaceBeforePt: position === 0 && before !== null ? before : 0, spaceAfterPt: 0 }, context, {
+      // The list's exit space sits on its very last paragraph (the last item, or the last item of its last nested list).
+      const lastItem = position === block.items.length - 1;
+      out.push(docxParagraph(runs, { ...body, firstLineIndentMm: 0, spaceBeforePt: position === 0 && before !== null ? before : 0, spaceAfterPt: lastItem && !item.lists?.length ? exitAfterPt : 0 }, context, {
         numbering: { reference: block.ordered ? "thesis-ordered" : "thesis-bullet", level: Math.min(level, 2), instance },
       }));
     }
-    for (const nested of item.lists || []) out.push(...listParagraphs(nested, section, context, level + 1));
+    for (const [index, nested] of (item.lists || []).entries()) out.push(...listParagraphs(nested, section, context, level + 1, null, position === block.items.length - 1 && index === item.lists.length - 1 ? exitAfterPt : 0));
   }
   return out;
 }

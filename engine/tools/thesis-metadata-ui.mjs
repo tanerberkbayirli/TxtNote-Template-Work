@@ -6,7 +6,7 @@ import { compileThesisDocument } from "../../engine/src/engine.js";
 import { thesisMetadataPanel } from "../../engine/src/metadataPanel.js";
 const { chromium } = createRequire(import.meta.url)("./node_modules/playwright");
 const base = "http://127.0.0.1:5176";
-const out = process.env.THESIS_UI_OUT || "orchestration/validation/metadata-panel";
+const out = process.env.THESIS_UI_OUT || ".test-tmp/validation/metadata-panel";
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: "C:/Program Files/Google/Chrome/Application/chrome.exe" });
 const results = [];

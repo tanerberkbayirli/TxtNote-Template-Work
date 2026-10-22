@@ -120,6 +120,14 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
       const text = String(value).trim() ? `${block.prefix || ""}${value}${suffixApplies(block, value) ? block.suffix || "" : ""}` : block.fallback ?? `${block.prefix || ""}${block.suffix || ""}`;
       return { ...box, type: "text", field: block.field, text, style };
     }
+    if (Array.isArray(block.runs)) {
+      const runs = block.runs.map((run) => {
+        const value = resolvePlaceholders(run.text, definitions, values);
+        value.missing.forEach((key) => missing.add(key));
+        return { text: value.text, ...(run.bold === true ? { bold: true } : {}), ...(run.fontFamily ? { fontFamily: run.fontFamily } : {}) };
+      });
+      return { ...box, type: "text", text: runs.map((run) => run.text).join(""), runs, style };
+    }
     // markup "inline": template text may mark bold runs with **…** ("**Danışman:** {{ADVISOR_NAME}}").
     // Only the template's own text is parsed; metadata values are never read as markup.
     if (block.markup === "inline") {
@@ -166,7 +174,11 @@ export function specialPageHtml(nodes) {
       return node.border ? `<div class="thesis-layout-frame" data-thesis-frame="${node.path}"${node.border.collapse ? ` data-thesis-rule-pt="${node.border.outerPt}"` : ""}>${node.border.innerPt > 0 ? `<div class="thesis-layout-frame-inner" data-thesis-frame-inner="${node.path}">${group}</div>` : group}</div>` : group;
     }
     const marginSpacer = node.marginTopMm > 0 ? `<div class="thesis-layout-spacer" data-thesis-block="${escapeHtml(node.path)}${SPECIAL_PAGE_MARGIN_SUFFIX}" data-thesis-margin="true" aria-hidden="true"></div>` : "";
-    const content = node.runs ? node.runs.map((run) => (run.bold ? `<b class="thesis-layout-strong">${escapeHtml(run.text)}</b>` : escapeHtml(run.text))).join("").replace(/\n/g, "<br>") : escapeHtml(node.text).replace(/\n/g, "<br>");
+    const content = node.runs ? node.runs.map((run) => {
+      const text = escapeHtml(run.text);
+      const formatted = run.bold ? `<b class="thesis-layout-strong">${text}</b>` : text;
+      return run.fontFamily ? `<span style="font-family:${escapeHtml(JSON.stringify(run.fontFamily))}">${formatted}</span>` : formatted;
+    }).join("").replace(/\n/g, "<br>") : escapeHtml(node.text).replace(/\n/g, "<br>");
     const formatOpen = node.style?.highlight ? staticFormatOpenTag({ highlight: node.style.highlight }) : "";
     const formatted = formatOpen ? `${formatOpen}${content || "&nbsp;"}</span>` : (content || "&nbsp;");
     return `${marginSpacer}<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${formatted}</div>`;
@@ -356,6 +368,14 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
     } else if (block.type === "text") {
       if (typeof block.value !== "string") errors.push(`${at}.value gerekli`);
       if (block.markup !== undefined && block.markup !== "inline") errors.push(`${at}.markup geçersiz`);
+      if (block.runs !== undefined) {
+        if (!Array.isArray(block.runs) || !block.runs.length || block.runs.some((run) => !run || typeof run.text !== "string" || (run.bold !== undefined && typeof run.bold !== "boolean") || (run.fontFamily !== undefined && (typeof run.fontFamily !== "string" || !run.fontFamily.trim())))) errors.push(`${at}.runs geçersiz`);
+        else {
+          if (block.runs.map((run) => run.text).join("") !== block.value) errors.push(`${at}.runs metni value ile aynı olmalı`);
+          if (block.markup !== undefined) errors.push(`${at}.runs ve markup birlikte kullanılamaz`);
+          for (const [i, run] of block.runs.entries()) if (run.fontFamily && validateStyle) errors.push(...validateStyle({ ...style, fontFamily: run.fontFamily }, `${at}.runs.${i}`));
+        }
+      }
       for (const match of String(block.value || "").matchAll(/\{\{([A-Z][A-Z0-9_]*)\}\}/g)) {
         if (!placeholders[match[1]]) errors.push(`${at}: ${match[1]} placeholder tanımı eksik`);
       }

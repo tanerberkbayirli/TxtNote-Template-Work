@@ -1,6 +1,11 @@
 # Thesis template engine
 
-Current locations (13 October 2026): production sources are in `engine/src/` at the project root; documentation is here under `orchestration/docs/engine/`. Use [the current mission](../../MISSION.md) for status. Dated acceptance statements below are historical and do not supersede that mission.
+19 October 2026: SRC09 source Word/editor A1/A2 gates closed (180/180, 0/157, identical blank sheets, corrected coverage 0.99511). Native cached-index tabs, content-control section marks and logical floating-frame height are corrected. Supported SVG labels export as visible searchable text with their real font/baseline. This is scoped acceptance; overall SRC09 certification is not granted. [Evidence and method distinction](../../reports/SRC09_A1_A2_KAPANIS_2026-10-19.md); current tasks are only in [Missions.md](../../Missions.md).
+
+
+16 October 2026 export update: source DOCX export preserves source formatting while writing live edits; cross-section fields and source header pictures survive export. PDF graphics, clipping and orthogonal rotated labels are transferred, and normal academic PDF keeps measured editor typography. Fresh saved SRC09 exports are 180 pages in editor, PDF and Word before/after field update. This is scoped export validation; broader source-import/coverage acceptance remains open. See [implementation and evidence](../../reports/EXPORT_DUZELTMELERI_2026-10-16.md).
+
+Current locations (13 October 2026): production sources are in `engine/src/` at the project root; documentation is here under `engine/docs/`. Use [GOREVLER.md](../../orchestration/GOREVLER.md) for status. Dated acceptance statements below are historical and do not supersede that mission.
 
 The engine retains its existing dependencies on application helpers in `TxtNote/frontend/src/lib/` and `config/`. Its DOCX runtime bridge uses the application's `docx` classes so Node exporters and imported components keep the same identities; Vite also deduplicates shared runtime packages.
 
@@ -36,7 +41,7 @@ These are implementation capabilities, not a blanket claim of matching every Wor
 feature. Source notices still identify unsupported layout/properties. SmartArt/chart
 style equivalence, complex floating-object placement and arbitrary PDF reconstruction
 require the documented acceptance scope. Full long-document pagination and final
-acceptance results are recorded in `orchestration/engine-work/motor.md`, `orchestration/MISSION.md` and
+acceptance results are recorded in `orchestration/engine-work/motor.md`, `orchestration/GOREVLER.md` and
 `orchestration/engine-work/final-closure/`; older phase counts below are historical evidence.
 
 During typing, authored DOM and save callbacks update immediately; whole-document

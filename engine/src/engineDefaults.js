@@ -6,12 +6,15 @@
  *   body font/size, document-wide arabic numbering "{n}"; an absent `position` / `style` / `numbering` of a given rule gets the same default;
  * - `bibliography` absent -> heading "Kaynakça"/"References", body font/size; an absent `style` likewise;
  * - `page.header` / `page.footer` without `heightMm` / `distanceMm` -> 0 / 12.5 mm (Word's own default header/footer distance).
+ * - no `tabStopMm` -> default tab stops every 12.5 mm (Word's default for a Turkish/metric document, 709 twips); the editor's tab-size and the
+ *   DOCX `w:defaultTabStop` both read ENGINE_DEFAULT_TAB_STOP_MM, so a typed tab lands at the same place in both.
  * - a wholly omitted header/footer remains absent in source and validation, but resolved section rules use the same 0 / 12.5 mm runtime geometry.
  * Only ABSENT keys are filled, never keys a template sets, so a fully specified template is returned unchanged (same object).
  */
 const isObject = (value) => value !== null && typeof value === "object" && !Array.isArray(value);
 
 export const ENGINE_DEFAULT_HEADER_DISTANCE_MM = 12.5;
+export const ENGINE_DEFAULT_TAB_STOP_MM = 12.5;
 
 export function withEngineDefaults(template) {
   if (!isObject(template) || !isObject(template.typography?.body)) return template;

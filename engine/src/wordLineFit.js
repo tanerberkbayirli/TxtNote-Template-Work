@@ -2,7 +2,7 @@ import {mmToTwip} from './units.js';
 /** Word's measured justification budget, expressed in CSS px. It depends on the
  * final word, so one paragraph-wide negative word-spacing cannot reproduce it.
  * Values are font-independent for the measured TNR/Arial/Calibri programs.
- * Word probe: orchestration/tools/word-justify-probe.ps1. No university constants.
+ * Word probe: engine/tools/word-justify-probe.ps1. No university constants.
  * 11.10.2026 re-probe (82 random TNR/Arial lines, 10–12 pt): the 25 % space
  * branch is exact (Word breaks 0.002 pt past it); the short-final-word branch
  * was 0.33–0.43 pt too strict, i.e. it lacked a constant half CSS pixel. */

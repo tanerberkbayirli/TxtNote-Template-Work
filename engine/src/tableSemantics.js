@@ -42,7 +42,8 @@ export function tableSemanticsCss(scope, section) {
     `${table}:not(:has(>thead))>tbody:first-of-type>tr:first-child>*`,
     `${table} tr[${FRAG_FIRST_ROW}]>`,
   ].map((selector) => `${selector}*`);
-  out.push(`${table} :is(td,th)>:is(ul,ol)[${LIST_FLUSH}]{margin-bottom:0 !important}`);
+  // Exact-height rows hold their cell text in a presentation wrapper (txt-table-cell-content): the list is its child, not the cell's.
+  out.push(`${table} :is(td,th)>:is(ul,ol)[${LIST_FLUSH}],${table} :is(td,th)>txt-table-cell-content>:is(ul,ol)[${LIST_FLUSH}]{margin-bottom:0 !important}`);
   // Rows the continuation pass found not to fit at a page foot (exact-height rows carry no per-row rule of their own).
   out.push(`${table} tr[data-thesis-row-min-break]{break-before:column !important}`);
   if (rule.cantSplit !== undefined) out.push(`${table} tr{break-inside:${rule.cantSplit ? "avoid" : "auto"}}`);

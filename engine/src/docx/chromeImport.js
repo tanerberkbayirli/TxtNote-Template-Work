@@ -91,3 +91,26 @@ export function projectSourceChrome(sections, evenAndOdd, mirrored = false) {
     Object.assign(page, resolveSourcePageFrame(page));
   }
 }
+
+/** Safe raster pictures from retained header/footer nodes. Coordinates are
+ * physical page mm; inline pictures use their paragraph's source spacing and
+ * alignment. This also hydrates documents saved before rich chrome support. */
+export function sourceChromeImages(ref, page, kind = "header") {
+  const found=[];
+  const images=nodes=>(nodes||[]).flatMap(n=>n.attributes && Object.hasOwn(n.attributes,"hidden") ? [] : n.tag === "img" ? [n] : images(n.children));
+  let cursor=0;
+  const paragraphs=nodes=>{for(const n of nodes||[]){if(n.properties?.nativeName === "p" || n.type === "paragraph"){
+    const style=n.properties?.resolvedSource||{},pics=images(n.children);
+    cursor+=(style.spaceBeforePt||0)*25.4/72;
+    const widthMm=page.widthMm-page.margins.leftMm-page.margins.rightMm;
+    const sizes=pics.map(p=>({node:p,widthMm:Number(p.attributes.width)*25.4/96,heightMm:Number(p.attributes.height)*25.4/96})).filter(p=>p.widthMm>0&&p.heightMm>0);
+    const total=sizes.reduce((sum,p)=>sum+p.widthMm,0);
+    let x=page.margins.leftMm+(style.align === "center" ? (widthMm-total)/2 : style.align === "right" ? widthMm-total : 0);
+    for(const pic of sizes){found.push({src:pic.node.attributes.src,alt:pic.node.attributes.alt||"",xMm:x,yMm:cursor,widthMm:pic.widthMm,heightMm:pic.heightMm});x+=pic.widthMm;}
+    const line=(style.fontSizePt||12)*1.15*(style.lineSpacing?.rule === "auto" ? style.lineSpacing.value : 1)*25.4/72;
+    cursor+=Math.max(line,...sizes.map(p=>p.heightMm))+(style.spaceAfterPt||0)*25.4/72;
+  }else paragraphs(n.children);}};
+  paragraphs(ref?.nodes);
+  const origin=kind === "header" ? page.header?.distanceMm ?? 12.7 : page.heightMm-(page.footer?.distanceMm ?? 12.7)-cursor;
+  return found.map(image=>({...image,yMm:image.yMm+origin}));
+}

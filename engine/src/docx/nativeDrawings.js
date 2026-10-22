@@ -3,6 +3,7 @@ import { DOMParser, XMLSerializer } from "@xmldom/xmldom";
 import { ImportedXmlComponent } from "./runtime.js";
 import { strFromU8, strToU8 } from "fflate";
 import { readDocxPackage } from "./importPackage.js";
+import { nativeXmlComponent } from './xmlComponent.js';
 
 const R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships";
 const W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
@@ -64,7 +65,7 @@ export function nativeDrawingRun(item, context) {
   walk(root);
   (context.nativeDrawings ||= []).push({ part: item.part || context.nativeDocument.source.mainPart, links });
   const run = new ImportedXmlComponent("w:r");
-  run.push(ImportedXmlComponent.fromXmlString(serializer.serializeToString(chartExRequiresAlternate(doc, root))).root[0]);
+  run.push(nativeXmlComponent(chartExRequiresAlternate(doc, root)));
   return run;
 }
 

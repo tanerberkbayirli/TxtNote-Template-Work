@@ -2,13 +2,15 @@ import { Document, Packer, PageOrientation, SectionType, TabStopType, LeaderType
 import { groupThesisSections, resolveChromeText } from "./engine.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { indexRowStyle, indexTargetMap } from "./generatedIndex.js";
-import { ENGINE_DEFAULT_HEADER_DISTANCE_MM } from "./engineDefaults.js";
+import { ENGINE_DEFAULT_HEADER_DISTANCE_MM, ENGINE_DEFAULT_TAB_STOP_MM } from "./engineDefaults.js";
 import { halfPointSize, twip } from "./docx/xml.js";
 import { headingStyle, listLevels, paragraphProps, runProps, thesisHeadingStyleId } from "./docx/paragraphs.js";
 import { auditDocxFields, indexFieldInstruction } from "./docx/fields.js";
 import { chromeDocx, pageFormat } from "./docx/sections.js";
 import { docxChildren } from "./docx/body.js";
 import { finalizeThesisDocx } from "./docx/package.js";
+import { buildSourceDocx } from "./docx/sourceExport.js";
+import { tocOverrides, allocateTocOverrides } from './docx/tocOverrides.js';
 export { buildThesisPdf } from "./pdfFallback.js";
 export { bookmarkName } from "./docx/paragraphs.js";
 
@@ -18,7 +20,9 @@ export { bookmarkName } from "./docx/paragraphs.js";
  * flow use continuous breaks. Number format and restarts are Word section
  * properties (pgNumType), so cover → roman → arabic restarts are real Word numbering.
  */
-export async function buildThesisDocx(model, { captionAlignments = {}, captionHangs = {}, indexHangs = {}, elasticSpacers = {}, elasticContentMm = {}, specialPagePositions = {}, tableContinuations = {}, blockPageBreaks = [], totalPages } = {}) {
+export async function buildThesisDocx(model, { presentationGeometry = {}, captionAlignments = {}, captionHangs = {}, indexHangs = {}, elasticSpacers = {}, elasticContentMm = {}, specialPagePositions = {}, tableContinuations = {}, blockPageBreaks = [], totalPages } = {}) {
+  const sourceDocx = await buildSourceDocx(model);
+  if (sourceDocx) return sourceDocx;
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
   const nativeToc = model.sections.find((section) => section.generatedIndex?.kind === "toc");
@@ -27,7 +31,8 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
   const tocNoPageLevels = new Set();
   if (nativeToc) {
     const rule = nativeToc.generatedIndex;
-    const sourceProfiles = (nativeToc.indexRows || []).filter((row) => row.kind === "toc" && !row.tocTitle).map((row) => ({
+    const overrides = tocOverrides(nativeToc);
+    const sourceProfiles = (nativeToc.indexRows || []).filter((row) => row.kind === "toc" && !row.tocTitle && !overrides.has(row.anchor)).map((row) => ({
       row,
       includePageNumber: Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false,
     }));
@@ -39,12 +44,16 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       outputLevelByProfile.set(`${sourceLevel}:page`, sourceLevel);
     }
     noPageProfiles.forEach((profile, index) => outputLevelByProfile.set(`${Number(profile.row.level || 1)}:noPage`, 9 - index));
+    const withPage = row => Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false;
+    const normalLevel = row => row.tocTitle ? (withPage(row) ? Number(row.level || 1) : 9) : outputLevelByProfile.get(`${Number(row.level || 1)}:${withPage(row) ? 'page' : 'noPage'}`) || Number(row.level || 1);
+    const customRows = allocateTocOverrides(nativeToc.indexRows || [], overrides, (nativeToc.indexRows || []).filter(row => !overrides.has(row.anchor)).map(normalLevel), withPage);
     for (const row of nativeToc.indexRows || []) {
       if (!row.anchor) continue;
       const includePageNumber = Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false;
-      const wordTocLevel = row.tocTitle ? (includePageNumber ? Number(row.level || 1) : 9) : outputLevelByProfile.get(`${Number(row.level || 1)}:${includePageNumber ? "page" : "noPage"}`) || Number(row.level || 1);
-      tocRowsByAnchor.set(row.anchor, { ...row, includePageNumber, wordTocLevel });
-      if (!row.tocTitle && row.kind === "toc") {
+      const custom = customRows.get(row.anchor);
+      const wordTocLevel = custom?.wordTocLevel || normalLevel(row);
+      tocRowsByAnchor.set(row.anchor, { ...row, includePageNumber, wordTocLevel, ...custom });
+      if (!custom && !row.tocTitle && row.kind === "toc") {
         const id = thesisHeadingStyleId(row.level || 1, true, !includePageNumber);
         if (!tocStyleLevels.some((entry) => entry.id === id && entry.level === wordTocLevel)) tocStyleLevels.push({ id, level: wordTocLevel });
       }
@@ -72,6 +81,8 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
     return hasText || Boolean(header.paragraphs?.length) || Number(header.trailingBlankLines) > 0 || topNumber;
   });
   const context = {
+    presentationGeometry, documentLayout: model.documentLayout,
+    groupBySection: new Map(groupThesisSections(model.sections).flatMap(group => group.sections.map(section => [section.id, group.id]))),
     nativeDocument: model.nativeDocument, nativeDrawings: [],
     language: model.language || "tr", body: base?.body || {}, footnotes: {}, nextFootnote: 1, endnotes: {}, nextEndnote: 1, nextList: 1,
     evenAndOddHeaders: model.sections.some((section) => section.rules.page.header?.evenContent !== undefined || section.rules.page.footer?.evenContent !== undefined),
@@ -146,7 +157,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
       if (!fieldRow) continue;
       const outputLevel = fieldRow.wordTocLevel;
       const levelStyle = indexRowStyle(rule, row) || {};
-      const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm };
+      const style = { ...rule.style, ...levelStyle, leftIndentMm: Number.isFinite(levelStyle.leftIndentMm) ? levelStyle.leftIndentMm : (row.level - 1 || 0) * rule.indentMm, ...fieldRow.tocStyleOverride };
       const id = `TOC${outputLevel}`;
       if (!context.tocParagraphStyles.has(id)) {
         const widthMm = nativeToc.rules.page.widthMm - nativeToc.rules.page.margins.leftMm - nativeToc.rules.page.margins.rightMm;
@@ -165,7 +176,7 @@ export async function buildThesisDocx(model, { captionAlignments = {}, captionHa
   } : undefined;
   const blob = await finalizeThesisDocx(await Packer.toBlob(new Document({
     // Preserve cached results on opening; explicit Word field updates remain available.
-    title: model.title || "Tez", creator: "TxtNote", features: { updateFields: false }, evenAndOddHeaderAndFooters: context.evenAndOddHeaders, styles,
+    title: model.title || "Tez", creator: "TxtNote", features: { updateFields: false }, defaultTabStop: twip(ENGINE_DEFAULT_TAB_STOP_MM), evenAndOddHeaderAndFooters: context.evenAndOddHeaders, styles,
     numbering: { config: [{ reference: "thesis-ordered", levels: listLevels(true) }, { reference: "thesis-bullet", levels: listLevels(false) }] },
     footnotes: context.footnotes, ...(Object.keys(context.endnotes).length ? { endnotes: context.endnotes } : {}), sections,
   })), { noteRestarts, noteSeparator, nativeDocument: context.nativeDocument, nativeDrawings: context.nativeDrawings });

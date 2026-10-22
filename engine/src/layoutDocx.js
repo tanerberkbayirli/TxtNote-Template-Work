@@ -6,6 +6,7 @@ import {
 import { convertLength, mmToTwip, ptToTwip } from "./units.js";
 import { transformThesisText } from "./engine.js";
 import { FORMAT_HIGHLIGHTS } from "../../TxtNote/frontend/src/config/format.js";
+import { conditionalPageNumberRuns } from './docx/pageNumberFields.js';
 
 const aligned = (value) => ({ center: AlignmentType.CENTER, right: AlignmentType.RIGHT, justify: AlignmentType.JUSTIFIED }[value] || AlignmentType.LEFT);
 const validGeometry = (node) => Number.isFinite(node.xMm) && Number.isFinite(node.yMm) && Number.isFinite(node.widthMm) && node.widthMm > 0;
@@ -177,7 +178,7 @@ export function positionedFlowTextBoxDocx(paragraphs, frame) {
 }
 
 /** A real PAGE field inside a page-anchored editable text box. */
-export function positionedPageNumberDocx({ xMm, yMm, widthMm, heightMm, fontFamily, fontSizePt, align = "right" }, language = "tr") {
+export function positionedPageNumberDocx({ xMm, yMm, widthMm, heightMm, fontFamily, fontSizePt, fontWeight, italic, color, onlyLabel, excludeLabels, align = "right" }, language = "tr") {
   if (![xMm, yMm, widthMm, heightMm, fontSizePt].every(Number.isFinite) || xMm < 0 || yMm < 0 || widthMm <= 0 || heightMm <= 0 || fontSizePt <= 0 || !fontFamily) {
     throw new Error("Pozisyonlu sayfa numarası için kutu geometrisi ve tipografi gerekli");
   }
@@ -185,7 +186,7 @@ export function positionedPageNumberDocx({ xMm, yMm, widthMm, heightMm, fontFami
   const content = new Paragraph({
     alignment: aligned(align),
     spacing: { before: 0, after: 0, line: 240, lineRule: LineRuleType.AUTO },
-    children: [new TextRun({ font: fontFamily, size: fontSizePt * 2, language: { value: language }, children: [PageNumber.CURRENT] })],
+    children: onlyLabel !== undefined || excludeLabels?.length ? conditionalPageNumberRuns({ fontFamily, fontSizePt, fontWeight, italic, color }, onlyLabel, excludeLabels) : [new TextRun({ font: fontFamily, size: fontSizePt * 2, language: { value: language }, children: [PageNumber.CURRENT] })],
   });
   const shape = new WpsShapeRun({
     type: "wps",

@@ -1,0 +1,581 @@
+{
+ "schemaVersion": 1,
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 35,
+   "rightMm": 20
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  },
+  "header": {},
+  "footer": {}
+ },
+ "bibliography": {
+  "heading": "KAYNAKÇA",
+  "citationStyle": "author-year"
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceAfterPt": 6,
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 12.5,
+   "fontWeight": 400,
+   "spaceBeforePt": 6
+  },
+  "paragraph": {
+   "align": "justify",
+   "spaceAfterPt": 6,
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 12.5,
+   "spaceBeforePt": 6
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word",
+   "paragraphSpacing": "collapse"
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700
+   }
+  },
+  "paragraphStyles": {
+   "blockQuote": {
+    "fontSizePt": 11,
+    "lineHeight": 1,
+    "leftIndentMm": 10,
+    "rightIndentMm": 10
+   }
+  }
+ },
+ "templateVersion": "1.0.0",
+ "id": "aku-felsefe-lisans-tr-v1",
+ "universityId": "aku",
+ "universityName": "Afyon Kocatepe Üniversitesi",
+ "instituteId": "fef-felsefe",
+ "instituteName": "Fen Edebiyat Fakültesi · Felsefe Bölümü",
+ "degreeType": "undergraduate",
+ "language": "tr",
+ "status": "official",
+ "displayName": "Afyon Kocatepe Üniversitesi · Fen Edebiyat Fakültesi · Felsefe Bölümü · Lisans Bitirme Tezi",
+ "source": {
+  "type": "official",
+  "documentName": "AKÜ Felsefe Bölümü Lisans Bitirme Tezi (Projesi) Yazım Kılavuzu 2019 — AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+  "revisionDate": "2019 (Akademik Kurul 01.08.2019 / 5; core.xml 2019-09-22)",
+  "verifiedAt": "2026-10-02",
+  "notes": [
+   "Kaynak yalnız düz yazılı bir DOCX kılavuzudur (şablon veya örnek tez sayfası yok). Kılavuzun kendi sectPr'ı (üst/alt/sol 30, sağ 25 mm), stilleri ve kapağı kılavuz belgesini tanımlar, tez kuralı sayılmadı; kenar boşlukları kılavuz metninden alındı: üst 3, alt 3, sol 3,5, sağ 2 cm (EXPLICIT). Kılavuzun sectPr'ı ile metin çelişir (sol 30 ve sağ 25 mm'ye karşı 35 ve 20 mm): metin izlendi.",
+   "Gövde (EXPLICIT): Times New Roman, 12 punto, 1,5 satır aralığı, 1,25 cm paragraf başı girintisi, her paragrafta önce 6 nk ve sonra 6 nk, iki yana hizalı. Export bunu doğrudan 6/6 nk yazar; ardışık paragraf görsel birleşimi hedef alınmaz.",
+   "Doğrudan alıntı (EXPLICIT): üç satırı veya 40 kelimeyi aşarsa 11 punto, 1 satır aralığı, sağdan ve soldan 1 cm daraltılmış paragraf (blockQuote paragraf biçimi). İlk satır girintisi ve alıntı öncesi/sonrası aralık belirtilmemiştir (UNKNOWN; gövde değerleri miras).",
+   "Sayfa numarası (EXPLICIT): önsözden itibaren 1'den başlayarak Arapça rakam, tüm bölümlerde altta ortada, yanında başka işaret yok. Dış ve iç kapak numarasızdır; Önsöz sayfa 1 olur (restart startAt 1). Numara yazı boyutu UNKNOWN (motor varsayılanı).",
+   "Bölümler sırası (EXPLICIT): Dış Kapak, İç Kapak, Önsöz, İçindekiler, Simgeler veya Kısaltmalar, Giriş, Birinci Bölüm, İkinci Bölüm, Sonuç, Kaynakça; gerekliyse Ekler, Tablolar Listesi, Şekiller Listesi. Tez iki veya üç bölümden oluşur. İçindekiler ve listeler yazılımla otomatik hazırlanır (EXPLICIT). Simgeler/Kısaltmalar sequence entry is not marked optional; author supplies its content and empty-list behavior remains UNKNOWN.",
+   "Kapak örneği (MEASURED from labeled guide VML example, para 130): centered rows and field order are shown; institutional rows/purpose line use bold Times 14 pt and the sample work title bold Times 18 pt. Author/advisor/city-year font sizes are not specified by run properties. Example's VML page position/border cannot be treated as output geometry because it is anchored to guide characters/lines. Cover pages (Dış Kapak and İç Kapak, one shared example) are generated: row text/sizes/sequence and vertical row positions are MEASURED from the guide render (baselines within 0.05 mm of the guide page, Word and editor). The horizontal centre (guide page 113.7 mm, anchored to the guide margins 30/25 mm) and the drawn 158.75 x 228.6 mm frame are guide-anchored: centring is on the thesis text frame (112.5 mm; Word 113.07) and the frame (wider than the 155 mm text frame) is not reproduced (UNKNOWN).",
+   "İçindekiler hierarchy (MEASURED from labeled example, para 131): at least four levels are shown (chapter title, 1., 1.1, 2.1.1); no maximum depth or consistent cross-chapter numbering progression is established. Entry typography beyond displayed sample remains UNKNOWN.",
+   "Atıf ve kaynakça (EXPLICIT): metin içinde APA alıntı sistemi, yazar-yıl: (Turhan, 2003: 40-51); kaynakça tezin sonunda KAYNAKÇA başlığı altında yazar soyadına göre alfabetik, yalnız tezde yararlanılanlar; açıklama için dipnot kullanılabilir. Kılavuzun kaynak örnekleri 'SOYAD, Ad. (Yıl), Başlık ...' biçimindedir; liste girintisi ve punto değerleri kılavuzda kural olarak verilmemiştir (UNKNOWN).",
+   "UNKNOWN (üretilmez/uydurulmaz): Kapak çerçevesi (frame) ve yatay ortalama tabanı; source-defined heading typography/numbering (levels 1–4 use generic engine fallback of inherited body font/size, bold, unnumbered, not a source requirement); table/figure caption format and position; footnote style; page-number size; appendix layout; abstract (not in guide). Decimal numbering (1. / 1.1 / 1.1.1) is not a source requirement and is not imposed by this template.",
+   "Teslim/fiziksel kurallar (A4 çıktı, A5 fotokopi ve cilt, danışman ve bölüm nüshası, değerlendirme puanları) belge biçimi değildir ve uygulanmadı."
+  ]
+ },
+ "sections": [
+  {
+   "id": "outer-cover",
+   "type": "outerCover",
+   "title": "DIŞ KAPAK",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 21
+    },
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "AFYON KOCATEPE ÜNİVERSİTESİ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "FEN EDEBİYAT FAKÜLTESİ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "FELSEFE BÖLÜMÜ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "LİSANS BİTİRME TEZİ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "spacer",
+     "heightMm": 32.09
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "ESERİN BAŞLIĞI",
+     "style": {
+      "fontSizePt": 18,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 28.03
+    },
+    {
+     "type": "text",
+     "value": "Hazırlayan",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrencinin Adı SOYADI",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "spacer",
+     "heightMm": 16.84
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "spacer",
+     "heightMm": 18.29
+    },
+    {
+     "type": "text",
+     "value": "AFYONKARAHİSAR",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 3.528
+    },
+    {
+     "type": "metadata",
+     "field": "SUBMISSION_YEAR",
+     "fallback": "YIL",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1.15,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İÇ KAPAK",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 21
+    },
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "AFYON KOCATEPE ÜNİVERSİTESİ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "FEN EDEBİYAT FAKÜLTESİ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "FELSEFE BÖLÜMÜ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "LİSANS BİTİRME TEZİ",
+     "style": {
+      "fontSizePt": 14,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "spacer",
+     "heightMm": 32.09
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "ESERİN BAŞLIĞI",
+     "style": {
+      "fontSizePt": 18,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 28.03
+    },
+    {
+     "type": "text",
+     "value": "Hazırlayan",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrencinin Adı SOYADI",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "spacer",
+     "heightMm": 16.84
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 2.117
+    },
+    {
+     "type": "spacer",
+     "heightMm": 18.29
+    },
+    {
+     "type": "text",
+     "value": "AFYONKARAHİSAR",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     },
+     "marginBottomMm": 3.528
+    },
+    {
+     "type": "metadata",
+     "field": "SUBMISSION_YEAR",
+     "fallback": "YIL",
+     "style": {
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1.15,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "toc",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "leader": "dots",
+    "indentMm": 5,
+    "leaderFlow": "inline"
+   }
+  },
+  {
+   "id": "symbols",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VEYA KISALTMALAR",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title"
+  },
+  {
+   "id": "introduction",
+   "type": "introduction",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main",
+   "type": "mainContent",
+   "title": "Bölümler",
+   "status": "required",
+   "group": "body",
+   "mode": "editable"
+  },
+  {
+   "id": "conclusion",
+   "type": "conclusion",
+   "title": "SONUÇ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKÇA",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title"
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title"
+  },
+  {
+   "id": "list-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR LİSTESİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "tables",
+    "leader": "dots",
+    "indentMm": 0,
+    "title": "TABLOLAR LİSTESİ",
+    "leaderFlow": "inline"
+   }
+  },
+  {
+   "id": "list-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER LİSTESİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER LİSTESİ",
+    "leader": "dots",
+    "indentMm": 0,
+    "leaderFlow": "inline"
+   }
+  }
+ ],
+ "placeholders": {
+  "THESIS_TITLE": {
+   "label": "Başlık",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrencinin Adı SOYADI",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı (Prof. Dr. / Doç. Dr. / Dr. Öğr. Üyesi)",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman Adı SOYADI",
+   "type": "text",
+   "required": true
+  },
+  "SUBMISSION_YEAR": {
+   "label": "Yıl (kapak)",
+   "type": "number",
+   "required": true
+  }
+ }
+}

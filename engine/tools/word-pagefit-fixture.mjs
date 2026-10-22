@@ -1,7 +1,7 @@
 // Isolated engine acceptance fixture (MOTOR 2.10 follow-up): Word's last-line fit (page.lastLineFit "word") for blocks that are not
 // the 1.5-spaced body (single-spaced paragraphs, other sizes, exact), plus guard cases (heading, figure, table, keep-with-next, footnote note
 // page) landing at the column bottom with different offsets. ENGINE test values, not university requirements.
-// Regenerate from the repository root: node orchestration/tools/word-pagefit-fixture.mjs
+// Regenerate from the repository root: node engine/tools/word-pagefit-fixture.mjs
 import { writeFile } from 'node:fs/promises';
 import { deflateSync } from 'node:zlib';
 import generic from '../../engine/src/templates/generic.js';
@@ -147,7 +147,7 @@ for (const [name, v] of Object.entries(variants)) {
   Object.assign(template, { id: tid, universityId: 'engine-test', universityName: 'Word page-fit acceptance', placeholders: {}, sections: v.sections, source: { type: 'manual', documentName: 'Isolated Word last-line fit (no university values)' } });
   const errors = validateThesisTemplate(template);
   if (errors.length) throw new Error(`${tid}: ${errors.join('; ')}`);
-  await writeFile(`orchestration/specs/${id}.fixture${name === 'default' ? '' : `.${name}`}.json`, JSON.stringify({ title: `Word page-fit acceptance (${name})`, __template: template, content: v.content[v.sections[0].id], researchData: { thesis: { templateId: tid, templateVersion: template.templateVersion, values: {}, sectionContent: v.content } } }, null, 1));
+  await writeFile(`engine/specs/${id}.fixture${name === 'default' ? '' : `.${name}`}.json`, JSON.stringify({ title: `Word page-fit acceptance (${name})`, __template: template, content: v.content[v.sections[0].id], researchData: { thesis: { templateId: tid, templateVersion: template.templateVersion, values: {}, sectionContent: v.content } } }, null, 1));
 }
-await writeFile(`orchestration/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
+await writeFile(`engine/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
 console.log(`${id}: ${Object.entries(variants).map(([k, v]) => `${k}=${v.sections.length}`).join(' ')}, ${checks.length} checks`);

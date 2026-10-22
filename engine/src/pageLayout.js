@@ -167,6 +167,8 @@ export function buildThesisPageModel(groups, pageCounts = {}, chapterStarts = {}
       showFooter: !blankIndexes.has(index) && !(index === firstContentIndex && footer?.firstPage === "omit"),
       headerContent: blankIndexes.has(index) ? undefined : index === firstContentIndex && header?.firstContent !== undefined ? header.firstContent : (physicalIndex % 2 === 0 && header?.evenContent !== undefined ? header.evenContent : header?.content),
       headerParagraphs: index === firstContentIndex && header?.firstContent !== undefined ? header.firstParagraphs : physicalIndex % 2 === 0 && header?.evenContent !== undefined ? header.evenParagraphs : header?.paragraphs,
+      headerImages: index === firstContentIndex && header?.firstContent !== undefined ? header.firstImages : physicalIndex % 2 === 0 && header?.evenContent !== undefined ? header.evenImages : header?.images,
+      footerImages: index === firstContentIndex && footer?.firstContent !== undefined ? footer.firstImages : physicalIndex % 2 === 0 && footer?.evenContent !== undefined ? footer.evenImages : footer?.images,
       footerParagraphs: index === firstContentIndex && footer?.firstContent !== undefined ? footer.firstParagraphs : physicalIndex % 2 === 0 && footer?.evenContent !== undefined ? footer.evenParagraphs : footer?.paragraphs,
       headerPosition: index === firstContentIndex && header?.firstContent !== undefined ? header.firstPosition : physicalIndex % 2 === 0 && header?.evenContent !== undefined ? header.evenPosition : header?.position,
       footerPosition: index === firstContentIndex && footer?.firstContent !== undefined ? footer.firstPosition : physicalIndex % 2 === 0 && footer?.evenContent !== undefined ? footer.evenPosition : footer?.position,
@@ -250,6 +252,9 @@ export function thesisPagedCss(groups) {
     }
     for (const section of group.sections) {
       const fragment = `${FLOW} .thesis-flow-section[data-thesis-flow-section=${cssString(section.id)}] .thesis-body`;
+      // The terminal-leading guard (above) models a heading that must stay with the text after it. A heading without keepWithNext is an
+      // ordinary paragraph for Word: its line may use the leading below the last line like running text, so it gets no extra room requirement.
+      if (lead > 0) for (const [level, style] of Object.entries(section.rules.headings)) if (!style.keepWithNext) rules.push(`${fragment} h${level}::after{display:none !important}`);
       const flags = (style) => `${style.keepLines === undefined ? "" : `break-inside:${style.keepLines ? "avoid" : "auto"};`}${style.widowControl === undefined ? "" : `orphans:${style.widowControl ? 2 : 1};widows:${style.widowControl ? 2 : 1};`}${style.keepWithNext === undefined ? "" : `break-after:${style.keepWithNext ? "avoid" : "auto"};`}${style.pageBreakBefore ? "break-before:column;" : ""}`;
       rules.push(`${fragment} p{${flags(section.rules.body)}}`);
       // Per-style terminal leading (engine.js wordLastLineLeadings, MEASURED vs Word): the column carries the largest allowance; a paragraph

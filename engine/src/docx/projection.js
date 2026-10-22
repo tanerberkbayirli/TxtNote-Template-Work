@@ -1,7 +1,8 @@
 import { resolveLineSpacing } from "../typography.js";
-import { WORD_FONT_METRICS } from "../wordBaseline.js";
+import { WORD_FONT_METRICS, wordBaselineProbe } from "../wordBaseline.js";
 import { importedShapeCss } from "./shapes.js";
 import { importedRowRules } from "./tableRows.js";
+import { sourceScriptRunFont } from './scriptFonts.js';
 /** Word draws notes in the document's footnote paragraph style (else Normal) and never caps the note area, so an imported
  * .docx takes that style plus the schema-maximum cap instead of the authored defaults (9 pt, 50 %). */
 export function importedFootnoteRule(document) {
@@ -113,6 +114,13 @@ function ownTerminalLeadingMm(merged) {
   const single = spacing.singleLineEm ?? (metrics ? metrics.ascent + metrics.descent + metrics.lineGap : null);
   if (!(single > 0)) return null;
   return Math.round((spacing.value - 1) * single * (merged.fontSizePt || 12) * 25.4 / 72 * 1000) / 1000;
+}
+/** Paragraphs a table cell stacks, list items included (a nested table's cells count their own). */
+function cellParagraphCount(cell) {
+  let count = 0;
+  const visit = (nodes) => { for (const child of nodes || []) { if (child.type === "paragraph") count += 1; else if (child.type !== "table") visit(child.children); } };
+  visit(cell.children);
+  return count;
 }
 /** True when the last content of the paragraph is a manual page break (w:br w:type="page"). */
 function endsWithPageBreak(node) {
@@ -294,7 +302,9 @@ function bordersOf(xml, block) {
 const noBorder = (b) => !b || b.val === "nil" || b.val === "none";
 /** Chrome draws a border a whole number of CSS px wide (at least 1 px): the width the browser really lays out, in pt. */
 const snappedBorderPt = (widthPt) => (widthPt > 0 ? Math.max(1, Math.floor(widthPt * 4 / 3 + 1e-6)) * 0.75 : 0);
-const borderWidthPt = (b) => (noBorder(b) ? 0 : Math.max(b.sz, 2) / 8);
+// A Word "double" border is two lines of sz/8 pt around a gap of the same width (measured: sz 6 = 0.7 + 0.7 + 0.7 pt); Chrome only draws two
+// lines from 3 px, so the declared width is the whole band.
+const borderWidthPt = (b) => (noBorder(b) ? 0 : Math.max(b.sz, 2) / 8 * (b.val === "double" ? 3 : 1));
 function borderDecl(side, b) {
   if (noBorder(b)) return `border-${side}:0 none !important`;
   const style = { double: "double", dotted: "dotted", dashed: "dashed", dashSmallGap: "dashed", dotDash: "dashed", dotDotDash: "dashed", inset: "inset", outset: "outset" }[b.val] || "solid";
@@ -305,6 +315,34 @@ function tableBorders(tblPr, styleId, styles) {
   const chain = [];
   for (let id = styleId, guard = 0; id && styles?.[id] && guard < 8; id = styles[id].basedOn, guard++) chain.unshift(styles[id].ooxml || "");
   return Object.assign({}, ...chain.map((xml) => bordersOf(xml, "tblBorders")), bordersOf(tblPr, "tblBorders"));
+}
+/**
+ * Borders a table style's conditional formatting gives one cell (w:tblStylePr firstRow / lastRow / firstCol / lastCol and the corner cells),
+ * switched on by w:tblLook. They sit between the table's own w:tblBorders (lower) and the cell's w:tcBorders (higher): SRC09 Tablo 2.7 draws the
+ * style's 2.25 pt rule under its last row although the table itself declares a 0.5 pt bottom border. Banding is not read.
+ */
+function conditionalBorders(tblPr, styleId, styles, position) {
+  if (!styleId || !styles?.[styleId]) return {};
+  const look = /<w:tblLook\b([^>]*)\/?>/.exec(tblPr || "")?.[1] || "";
+  const bits = Number.parseInt(/w:val="([0-9a-fA-F]+)"/.exec(look)?.[1] ?? "0", 16) || 0;
+  const flag = (name, bit) => { const m = new RegExp(`w:${name}="(\\w+)"`).exec(look)?.[1]; return m !== undefined ? m === "1" || m === "true" : Boolean(bits & bit); };
+  const on = { firstRow: flag("firstRow", 0x20), lastRow: flag("lastRow", 0x40), firstCol: flag("firstColumn", 0x80), lastCol: flag("lastColumn", 0x100) };
+  const kinds = [];
+  if (position.first && on.firstRow && position.firstCol && on.firstCol) kinds.push("nwCell");
+  if (position.first && on.firstRow && position.lastCol && on.lastCol) kinds.push("neCell");
+  const order = ["firstCol", "lastCol", "firstRow", "lastRow"].filter((k) => on[k] && ({ firstCol: position.firstCol, lastCol: position.lastCol, firstRow: position.first, lastRow: position.last })[k]);
+  kinds.unshift(...order);
+  if (!kinds.length) return {};
+  const chain = [];
+  for (let id = styleId, guard = 0; id && styles?.[id] && guard < 8; id = styles[id].basedOn, guard++) chain.unshift(styles[id].ooxml || "");
+  const out = {};
+  // lowest precedence first: columns, rows, then corners (the order above already runs columns -> rows; corners were unshifted, so re-sort)
+  const ranked = ["firstCol", "lastCol", "firstRow", "lastRow", "nwCell", "neCell"].filter((k) => kinds.includes(k));
+  for (const xml of chain) for (const kind of ranked) {
+    const part = new RegExp(`<w:tblStylePr\\b[^>]*w:type="${kind}"[^>]*>([\\s\\S]*?)</w:tblStylePr>`).exec(xml)?.[1];
+    if (part) Object.assign(out, bordersOf(part, "tcBorders"));
+  }
+  return out;
 }
 /** `w:trHeight` of a row: the minimum (atLeast, the default) or fixed (exact) content height in mm. */
 function rowHeight(row) {
@@ -351,7 +389,8 @@ export function importedTableCss(table, styles) {
       const rowAt = rowNodes.indexOf(row), spans = Number(node.attributes?.rowspan) > 1 ? Number(node.attributes.rowspan) : 1;
       const cellBorders = bordersOf(node.properties?.cellPropertiesXml, "tcBorders");
       const edge = { top: rowAt <= 0 ? tblBorders.top : tblBorders.insideH, bottom: rowAt + spans >= rowNodes.length ? tblBorders.bottom : tblBorders.insideH, left: !(col > 0) ? tblBorders.left : tblBorders.insideV, right: Number.isInteger(col) && col + span >= lastCol ? tblBorders.right : tblBorders.insideV };
-      const sides = ["top", "right", "bottom", "left"].map((side) => cellBorders[side] ?? edge[side]);
+      const conditional = conditionalBorders(tblPr, table.properties?.styleId, styles, { first: rowAt <= 0, last: rowAt + spans >= rowNodes.length, firstCol: !(col > 0), lastCol: Number.isInteger(col) && col + span >= lastCol });
+      const sides = ["top", "right", "bottom", "left"].map((side) => cellBorders[side] ?? conditional[side] ?? edge[side]);
       const heightRule = rowHeight(row);
       if (heightRule && !heightRule.exact && row?.id) {
         // trHeight describes content, but the physical minimum also includes
@@ -373,6 +412,9 @@ export function importedTableCss(table, styles) {
       const exactInnerMm = exactRow ? Math.max(0,heightRule.mm-m.top-(snappedBorderPt(Math.max(borderWidthPt(sides[0]),adjacentBorder(rowAt-1,'bottom')))+snappedBorderPt(Math.max(borderWidthPt(sides[2]),adjacentBorder(rowAt+1,'top'))))/2*PT_MM) : heightRule?.mm;
       const height = heightRule && spans === 1 ? `;height:${mm3(exactRow ? heightRule.mm+m.bottom : heightRule.mm + m.top + m.bottom + (borderWidthPt(sides[0]) + borderWidthPt(sides[2])) / 2 * PT_MM)};box-sizing:border-box${heightRule.exact ? ";overflow:hidden" : ""}` : "";
       const valign = /<w:vAlign\b[^>]*w:val="(top|center|bottom)"/.exec(node.properties?.cellPropertiesXml || "")?.[1];
+      // Direct cell shading (w:shd, solid fill): Word draws it behind the cell. A theme tint is already resolved into w:fill by Word itself.
+      const shade = /<w:shd\b[^>]*>/.exec(node.properties?.cellPropertiesXml || "")?.[0];
+      const fill = shade && /w:val="(?:clear|solid)"/.test(shade) ? /w:fill="([0-9a-fA-F]{6})"/.exec(shade)?.[1] : undefined;
       // w:noWrap: in an autofit table the cell text never wraps and the column grows to hold it (SRC09 Tablo 3.2: the 33.8 pt "Literatür"
       // header); a fixed-layout table keeps its column widths and wraps anyway (Word ignores noWrap there, SRC09 Tablo 2.8).
       const noWrap = /<w:noWrap\b(?![^>]*w:val="(?:0|false|off)")/.test(node.properties?.cellPropertiesXml || "") && !fixed;
@@ -384,7 +426,7 @@ export function importedTableCss(table, styles) {
       const direction = node.attributes?.["data-docx-text-dir"];
       if ((direction === "btLr" || direction === "tbRl") && spans === 1) rules.push(`${sel(node.id)}>txt-table-cell-content{display:block;writing-mode:${direction === "btLr" ? "sideways-lr" : "vertical-rl"};${heightRule ? `height:${mm3(exactInnerMm)};` : ""}${heightRule?.exact ? "overflow:hidden;" : ""}box-sizing:border-box}`);
       else if (heightRule?.exact && spans === 1) rules.push(`${sel(node.id)}>txt-table-cell-content{display:${valign === "center" || valign === "bottom" ? "flex;flex-direction:column;justify-content:safe " + (valign === "center" ? "center" : "flex-end") : "block"};height:${mm3(exactInnerMm)};overflow:hidden;box-sizing:border-box}`);
-      rules.push(`${sel(node.id)}{padding:${mm3(m.top)} ${mm3(m.right)} ${mm3(m.bottom)} ${mm3(m.left)} !important${cellWidth > 0 ? `;width:${mm3(cellWidth)};box-sizing:border-box` : ""}${height}${valign ? `;vertical-align:${valign === "center" ? "middle" : valign}` : ""}${noWrap ? ";white-space:nowrap !important" : ""};${["top", "right", "bottom", "left"].map((side, at) => borderDecl(side, sides[at])).join(";")}}`);
+      rules.push(`${sel(node.id)}{padding:${mm3(m.top)} ${mm3(m.right)} ${mm3(m.bottom)} ${mm3(m.left)} !important${cellWidth > 0 ? `;width:${mm3(cellWidth)};box-sizing:border-box` : ""}${height}${valign ? `;vertical-align:${valign === "center" ? "middle" : valign}` : ""}${fill ? `;background-color:#${fill}` : ""}${noWrap ? ";white-space:nowrap !important" : ""};${["top", "right", "bottom", "left"].map((side, at) => borderDecl(side, sides[at])).join(";")}}`);
       // Word adds the border at its declared width (0.5 pt) to the row; the browser rounds it to a whole CSS px (0.75 pt). The last paragraph
       // of the cell gives the difference back so every row advances like Word's (31.47 pt, not 31.72 pt, for a 11 pt line + 6 pt spaces).
       const rule0 = borderWidthPt(sides[2]), tail = snappedBorderPt(rule0) - rule0;
@@ -571,11 +613,17 @@ export function importedContentCss(document) {
     }
     previousParagraph = current;
   };
+  // Anchored drawings position against the nearest positioned ancestor: a paragraph that carries one is never offset itself.
+  const holdsDrawing = (node) => (node.children || []).some((child) => child.type === "drawing" || child.type === "image" || child.tag === "img" || holdsDrawing(child));
   const BREAKS_CHAIN = new Set(["table", "tableBody", "row", "cell", "container"]);
   // `inDrawing`: paragraphs of a text box belong to the shape, not to the body's paragraph chain (contextual spacing, adjacency).
   const walk = (nodes, base, itemEdge = null, inCell = false, inDrawing = false) => {
-    for (const node of nodes) {
-      if (BREAKS_CHAIN.has(node.type) && !inDrawing) previousParagraph = null;
+    for (const [position, node] of nodes.entries()) {
+      // Word chains contextual spacing through the cells of one row: the first paragraph of a cell follows the last paragraph of the cell
+      // before it in document order (measured in Word 16: a ListeParagraf cell loses its space before, and the previous cell its space after,
+      // when both end/start in the same style). Only the first cell of a row, tables, bodies and containers start a new chain.
+      const continuesRow = node.type === "cell" && position > 0 && nodes[position - 1]?.type === "cell";
+      if (BREAKS_CHAIN.has(node.type) && !inDrawing && !continuesRow) previousParagraph = null;
       if (node.type === "paragraph" && !inDrawing && node.id && /^[\w:-]+$/.test(node.id) && !vanishesInWord(node)) markContextual(node);
       if (node.type === "paragraph" && node.id && /^[\w:-]+$/.test(node.id) && !vanishesInWord(node) && !paragraphHasContent(node)) emptyParagraphs.push(node.id);
       // A paragraph whose mark is hidden and that holds nothing but anchors vanishes with its spacing in Word.
@@ -594,8 +642,23 @@ export function importedContentCss(document) {
         const tail = pictureLine ? pictureTailPt(node, style, base) : 0;
         const effect = pictureLine ? pictureEffectPt(node) : null;
         const bottom = Math.round(((effect?.bottom || 0) + tail) * 100) / 100, top = effect?.top || 0;
-        const css = [style ? declarations(style, lineBase) : "", cellMark > 0 ? `font-size:${cellMark}pt` : "", smallRuns, top ? `padding-top:${top}pt` : "", bottom ? `padding-bottom:${bottom}pt` : "", startMargins.has(node.id) ? `margin-top:${startMargins.get(node.id)}pt` : ""].filter(Boolean).join(";");
+        const scriptFont = document.formatMode === 'source' ? sourceScriptRunFont(node) : null;
+        const css = [style ? declarations(style, lineBase) : "", scriptFont && font(scriptFont) ? `font-family:${font(scriptFont)}` : '', cellMark > 0 ? `font-size:${cellMark}pt` : "", smallRuns, top ? `padding-top:${top}pt` : "", bottom ? `padding-bottom:${bottom}pt` : "", startMargins.has(node.id) ? `margin-top:${startMargins.get(node.id)}pt` : ""].filter(Boolean).join(";");
         if (css) rules.push(`.thesis-paper .thesis-body [data-txt-node-id="${node.id}"][data-txt-node-id]{${css}}`);
+        // Word puts the extra space of "multiple" line spacing BELOW each line; CSS centres it. Body paragraphs get their own paint offset
+        // from the paragraph writer, but the section rule `td p { top: 0 }` removes it inside cells, so a 1.5-spaced cell next to a 1.15-spaced
+        // one drifted by half the difference (measured: Word draws the first line of all three cells at one height, the editor 3.0/0.8/0 pt
+        // lower). Cell paragraphs get the offset of their own style; boxes and pagination are untouched. A paragraph that carries an anchored
+        // drawing is never offset itself: it is the drawing's containing block.
+        if (document.formatMode === "source" && document.source.format === "docx" && !inDrawing && node.type === "paragraph" && !pictureLine && !holdsDrawing(node) && style?.lineSpacing?.rule === "auto") {
+          const effective = { ...lineBase, ...style };
+          let probe = null;
+          try { probe = wordBaselineProbe(effective, { mode: "word", baseline: "word", ...base?.lineSpacing, ...style.lineSpacing }, resolveLineSpacing(effective, { mode: "word", ...base?.lineSpacing, ...style.lineSpacing }).em); } catch { /* unknown font metrics: keep the CSS placement */ }
+          // A list paragraph's glyphs and marker belong to its <li>, which the section rule lifts by the BODY style's offset: the cell's own
+          // offset replaces that one instead of being added to it.
+          const host = listItemIds.has(node.id) ? `li[data-txt-node-id="${listItemIds.get(node.id)}"]` : `p[data-txt-node-id="${node.id}"]`;
+          if (probe) rules.push(`.thesis-paper .thesis-body ${host}[data-txt-node-id]{position:relative;top:calc(-1 * var(--thesis-wb-${probe.id},${probe.fallbackPt}pt)) !important}`);
+        }
         // pre-wrap hangs trailing tabs outside the line. Word advances them
         // to the next stop and wraps when that stop is beyond the text edge.
         // An empty inline box permits the break BEFORE the tab as Word does;
@@ -623,7 +686,7 @@ export function importedContentCss(document) {
         if (node.type === "paragraph" && !inDrawing && endsWithPageBreak(node)) rules.push(`.thesis-paper .thesis-body p[data-txt-node-id="${node.id}"][data-txt-node-id]{break-after:column}`);
         // Own terminal leading smaller than the column's (a single-spaced caption/source line in a 1.5-spaced body): the paragraph needs
         // the difference as extra room before its lines may sit at the page end. Body paragraphs only: cells (td::after guards the cell end), list items, text boxes and pictures keep theirs.
-        if (node.type === "paragraph" && !inDrawing && itemEdge === null && !pictureOnlyParagraph(node) && style) {
+        if (node.type === "paragraph" && !inDrawing && (itemEdge === null || inCell === "multi") && !pictureOnlyParagraph(node) && style) {
           const own = ownTerminalLeadingMm({ ...lineBase, ...style });
           if (own !== null) {
             const guard = `max(0mm,calc(var(--thesis-col-lead,0mm) - ${own}mm))`;
@@ -632,7 +695,8 @@ export function importedContentCss(document) {
             // Word grants a table-cell line no terminal leading at all (measured: SRC09 s.121 "(C)" box bottom 760.7 pt > 759.74 pt moves to s.122), so the whole column allowance guards it.
             if (inCell === "multi") {
               // The paragraph's space after takes part in the fit as well (measured: SRC09 s.81, a 6 pt space-after line whose box ends 2 pt above the page bottom still goes to s.82).
-              const room = `calc(var(--thesis-col-lead,0mm) + ${Math.max(0, Number(style.spaceAfterPt) || 0)}pt)`;
+              // A contextual-spacing (list) paragraph owns no space after except behind its last sibling, which the cell's own guard covers.
+              const room = `calc(var(--thesis-col-lead,0mm) + ${style.contextualSpacing === true && itemEdge !== null ? 0 : Math.max(0, Number(style.spaceAfterPt) || 0)}pt)`;
               rules.push(`${target}::after{content:"";display:block;height:${room};margin:0 0 calc(-1 * ${room});break-before:avoid;break-inside:avoid}`);
             }
             else if (!inCell) rules.push(`${target}{box-decoration-break:clone;padding-bottom:${guard} !important}`, `${target}::after{content:"";display:block;height:0;margin:0 0 calc(-1 * ${guard});break-before:avoid}`);
@@ -678,6 +742,20 @@ export function importedContentCss(document) {
         const lead = markerLeadingPt(node, base);
         const tabShift = listTabShift(node, document.formatMode === "source" ? node.properties?.resolvedSource : node.properties?.direct, textEdge, base);
         if (Number.isFinite(textEdge)) rules.push(`.thesis-paper .thesis-body [data-txt-node-id="${node.id}"][data-txt-node-id]{margin-left:${mmText(Math.max(0, textEdge - itemEdge))};text-indent:${tabShift ? mmText(-tabShift.shiftMm) : "0"}${tabShift ? ";position:relative" : ""}${lead ? `;padding-top:${lead}pt` : ""}}`);
+        // Blink's line boxes round down to 1/64 CSS px. At the exact column
+        // boundary it can accept a list line that Word's integer-twip fit rejects.
+        // Reserve one Word layout unit on each fragment, cancelling it in flow;
+        // this changes neither the stored spacing nor the following paragraph.
+        if (document.formatMode === 'source' && document.source.format === 'docx' && !inCell && !inDrawing && node.properties.resolvedSource?.lineSpacing?.rule === 'auto') {
+          const target = `.thesis-paper .thesis-body p[data-txt-node-id="${node.id}"][data-txt-node-id]`;
+          rules.push(`${target}{box-decoration-break:clone;padding-bottom:0.05pt}`, `${target}::after{content:"";display:block;height:0;margin-bottom:-0.05pt;break-before:avoid}`);
+          // The Symbol marker raises only the first line. Cloning the paragraph
+          // guard must not clone that first-line padding onto continuation pages.
+          const firstRun = node.children?.find(child => child.type === 'run' && paragraphHasContent(child));
+          const effective = { ...base, ...node.properties.resolvedSource };
+          const probe = wordBaselineProbe(effective, { mode:'word', baseline:'word', ...base?.lineSpacing }, resolveLineSpacing(effective, base?.lineSpacing).em);
+          if (lead && firstRun && probe) rules.push(`${target}{padding-top:0}`, `.thesis-paper .thesis-body [data-txt-node-id="${firstRun.id}"][data-txt-node-id]::before{content:"";display:inline-block;width:0;height:calc(${probe.targetPt + lead}pt + var(--thesis-wb-${probe.id},${probe.fallbackPt}pt));vertical-align:baseline;line-height:0}`);
+        }
         // The native outside marker sits at the text edge, where the shifted first line now starts: draw it at the hanging position instead.
         if (tabShift && listItemIds.has(node.id)) {
           const { hidden: _hidden, ...run } = tabShift.run;
@@ -694,20 +772,29 @@ export function importedContentCss(document) {
             `.thesis-paper .thesis-body p[data-txt-node-id="${last.id}"][data-txt-node-id]::before,.thesis-paper .thesis-body p[data-txt-node-id="${last.id}"][data-txt-node-id]::after{display:none !important}`);
         }
       }
-      walk(node.children || [], base, childEdge, node.type === "cell" ? ((node.children || []).filter((child) => child.type === "paragraph").length >= 4 ? "multi" : true) : inCell, inDrawing || node.type === "drawing");
-      if (BREAKS_CHAIN.has(node.type) && !inDrawing) previousParagraph = null;
+      // Every paragraph of a multi-paragraph cell can be its last line on a
+      // physical page. Counting only four-or-more paragraphs left a three-
+      // paragraph cell's final line using the body's extra terminal leading
+      // (a split row then kept that line above its continuation in Blink).
+      walk(node.children || [], base, childEdge, node.type === "cell" ? (cellParagraphCount(node) >= 2 ? "multi" : true) : inCell, inDrawing || node.type === "drawing");
+      if (BREAKS_CHAIN.has(node.type) && !inDrawing && !(node.type === "cell" && nodes[position + 1]?.type === "cell")) previousParagraph = null;
     }
   };
   document.sections.forEach(s => { previousParagraph = null; walk(s.nodes, s.properties?.rules?.body || {}); });
   if (document.formatMode === 'source' && document.source.format === 'docx') {
     document.sections.forEach((section, index) => {
-      const next = document.sections[index + 1], nodes = section.nodes || [];
+      // Content controls do not add a Word paragraph/line at their boundary.
+      // Inspect their logical flow tail as well as a section's direct children.
+      const flowNodes = nodes => (nodes || []).flatMap(node => node.type === 'container' && ['sdt','sdtContent','customXml','smartTag'].includes(node.properties?.nativeName) ? flowNodes(node.children) : [node]);
+      const next = document.sections[index + 1], nodes = flowNodes(section.nodes);
       const last = nodes.at(-1), before = nodes.at(-2);
       // Word places a pure next-page section mark on the preceding paragraph's
       // line (0/1/3 blank-paragraph controls). It does not create another empty
       // line. Keep the native paragraph/XML for saving and editable DOCX export.
-      // Table tails and continuous breaks have different layout; leave them alone.
-      if (next && next.properties?.breakType !== 'continuous' && before?.type === 'paragraph'
+      // A section mark immediately after a table also consumes no additional
+      // line (independent 650/680 pt table controls). Ordinary table-tail
+      // paragraphs and continuous section breaks keep their native height.
+      if (next && next.properties?.breakType !== 'continuous' && ['paragraph','table'].includes(before?.type)
           && last?.type === 'paragraph' && /^[\w:-]+$/.test(last.id || '')
           && /<w:sectPr\b/.test(last.properties?.paragraphPropertiesXml || '') && !paragraphHasContent(last)) {
         rules.push(`.thesis-paper .thesis-body p[data-txt-node-id="${last.id}"][data-txt-node-id]{display:none !important}`);

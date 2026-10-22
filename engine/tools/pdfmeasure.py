@@ -8,7 +8,7 @@ grouping is not trusted. `visual_lines` re-groups spans by baseline (and size)
 into the visual lines a reader sees.
 
 Usage (python3):
-    import sys; sys.path.insert(0, "orchestration/tools")
+    import sys; sys.path.insert(0, "engine/tools")
     from pdfmeasure import *
     doc = open_pdf("x.pdf")
     for ln in visual_lines(doc[0]): print(ln["baseline"], ln["x0"], ln["text"])

@@ -1,9 +1,11 @@
 # Conformance checker (AGENTS.md 24A)
 
+> Tarihsel not: başlıktaki "AGENTS.md 24A" eski AGENTS sürümüne aittir; güncel kurallar [../BASLA.md](../BASLA.md).
+
 ```
-node orchestration/tools/check.mjs --target <id> [--fixture <path>] [--word] [--only <id,id>|failed]
+node engine/tools/check.mjs --target <id> [--fixture <path>] [--word] [--only <id,id>|failed]
      [--out <dir>] [--verify-layout-ids] [--no-export <pdf> <docx>] [--build-reference [--official-docx <path>]]
-node orchestration/tools/check.mjs --all [--targets <id,id>] [--word] [--out <parent-dir>] [--manifest <file>]
+node engine/tools/check.mjs --all [--targets <id,id>] [--word] [--out <parent-dir>] [--manifest <file>]
 ```
 Flow: `specs/<id>.checks.json` -> real export (`export.mjs`, one export per fixture variant) -> optional Word
 render (`--word`) -> `conformance.py` (PyMuPDF + DOCX XML) -> `validation/<id>/check-<YYYYMMDD-HHMM>.json` + `.md`.
@@ -11,8 +13,8 @@ Stdout shows only counts and FAIL/SKIPPED/CONFLICT rows. Exit 0 only if there is
 `--only failed` reruns FAIL/CONFLICT ids of the latest `check-*.json`. Exports land in `validation/<id>/run/`
 (generated; do not commit). Needs the frontend dev server (found at :5173 or :5175, else `devserver.sh start`);
 env `THESIS_BASE_URL`, `THESIS_BROWSER_EXECUTABLE` (default: local Chrome), `PLAYWRIGHT_MODULE` override defaults.
-Unit tests: `python -m unittest orchestration/tools/test_conformance.py`.
-Regression gate: `node orchestration/tools/check.mjs --all [--word]` runs every target with a `specs/<id>.checks.json`,
+Unit tests: `python -m unittest engine/tools/test_conformance.py`.
+Regression gate: `node engine/tools/check.mjs --all [--word]` runs every target with a `specs/<id>.checks.json`,
 prints one summary line per target and exits 1 if any target has a FAIL or errors (orchestration/plans/MOTOR.md 0.4).
 With `--all`, `--out` creates a separate child directory per target; `--manifest`
 records exact child-command wall times, report paths, counts and export errors.
@@ -42,9 +44,9 @@ Text extents use the bounds of non-whitespace characters. Word PDF exports can c
 
 Read-only inspection reuses the same measurement implementation:
 ```
-python orchestration/tools/conformance.py inspect --pdf output.pdf --extrema x1
-python orchestration/tools/conformance.py inspect-docx --docx source.docx --regex "cover|approval"
-python orchestration/tools/conformance.py inspect-docx --docx source.docx --styles
+python engine/tools/conformance.py inspect --pdf output.pdf --extrema x1
+python engine/tools/conformance.py inspect-docx --docx source.docx --regex "cover|approval"
+python engine/tools/conformance.py inspect-docx --docx source.docx --styles
 ```
 `inspect --extrema` reports the minimum/maximum matching visible line geometry over all pages (or `--page`). DOCX inspection reports one-based paragraph locators, text and direct XML properties; inherited style properties are available separately with `--styles`.
 `inspect --images --page N` reports drawn image bounds using the shared PDF measurement code.
@@ -123,9 +125,9 @@ Schema FAIL/UNAVAILABLE is reported independently, with input SHA256, version an
 Compare against preserved baseline DOCX using the same profile; Word opening never overrides schema FAIL.
 
 Phase 5.1 local regression sequence (Word runs must be serial):
-`node orchestration/tools/check.mjs --all --word --out orchestration/validation/word-compat/phase-5.1/regression --manifest orchestration/validation/word-compat/phase-5.1/regression-manifest.json`,
-then `powershell -NoProfile -ExecutionPolicy Bypass -File orchestration/tools/validate-schema-regression.ps1`,
-then `python orchestration/tools/phase51_record.py --manifest orchestration/validation/word-compat/phase-5.1/regression-manifest.json`.
+`node engine/tools/check.mjs --all --word --out .test-tmp/validation/word-compat/phase-5.1/regression --manifest .test-tmp/validation/word-compat/phase-5.1/regression-manifest.json`,
+then `powershell -NoProfile -ExecutionPolicy Bypass -File engine/tools/validate-schema-regression.ps1`,
+then `python engine/tools/(silindi) --manifest .test-tmp/validation/word-compat/phase-5.1/regression-manifest.json`.
 The recorder rejects missing checks, lost PASS and changed retained FAIL measurements. Its regression gate
 does not override separate schema FAIL or source UNKNOWN, and rerunning it replaces the diagnostic acceptance
 record; phase closure requires reviewing the resulting evidence and updating the status ledger.
@@ -140,3 +142,26 @@ Own instance via `word2pdf.ps1`; the new WINWORD PID is recorded, 120 s timeout 
 `finally`, only that PID is killed on timeout. On failure the Word checks are SKIPPED with the reason.
 
 `font_size` accepts optional `params.regex`/`ignore` to scope dominant size to selected lines; missing matches fail. `line_attr` accepts explicit zero-based nonnegative integer `params.nth` to select repeated matching lines in document order; out-of-range occurrences fail. Omitting it retains existing aggregation.
+
+## Long-document Word parity gate (`parity.mjs` + `parity.py`)
+
+```
+node engine/tools/parity.mjs [--templates id,id] [--copies 2] [--out dir] [--no-word] [--baseline <summary.json>] [--keep-going]
+```
+Template-independent. For each registry id: `make-fixture.mjs` -> main body repeated `--copies` times (2 = 50-58 pages, 3 = ~76) -> real editor export (`export.mjs`)
+-> Word render of that DOCX (own instance, PID recorded, timeout) -> `parity.py` (editor PDF vs Word PDF, page by page). Default set = seven reference templates.
+Reports per template: page counts, lines placed sideways (unique line text whose left edge differs by > 1 pt: table columns, alignment, tab stops), pages where >= 6 words sit on another page (`shiftedPages`; a 2-3 word delta is PDF text-extraction noise), moved-word fraction,
+long-table rows on another page, figure pages/bbox offsets, caption pages, page-label differences, first divergent line per page with the line before it.
+`--baseline` fails (exit 1) when any template got worse. Committed baseline: `engine/docs/reports/parity-baseline-2026-10-21-adim6.json` (13 templates; adds the horizontal metric `horizontalLines`; after equal fixed table columns, template cell alignment, the shared default tab stop, the footnote-page clearance fix and the table-margin, empty-cell paragraph-mark, figure-alignment, list-exit, figure-margin, chapter-opener-section, template-language, text-min-height, heading-guard, equation-margin and page-number paragraph-mark fixes; `-adim5`, `-adim4`, `-adim3`, `-adim2` and `parity-baseline-2026-10-20.json` are earlier ones, kept for history). Output: `<out>/summary.{json,md}` and `<out>/<id>/{fixture.json,export.pdf,export.docx,word.pdf,parity.json}` (generated; do not commit).
+It measures editor/PDF vs Word of one synthetic body; it does not replace the source-backed `check.mjs` targets.
+
+## Golden comparison for no-change refactors (`golden.mjs`)
+
+```
+node engine/tools/golden.mjs --save <dir> [--templates id,id|all] [--copies 1]
+node engine/tools/golden.mjs --compare <dir> --out <dir> [--templates id,id|all] [--tolerance-mm 0.05]
+```
+No Word. Per template: make-fixture -> real editor export; saves every text run of the editor layout report (page, text, x, baseline) and the
+DOCX layout parts (document/styles/numbering/footnotes.xml). `--compare` exports again and reports moved/missing/added runs and differing DOCX
+parts; exit 1 on any difference. Use it before/after a refactor that must not change output; a DOCX XML difference that Word renders the same
+(e.g. a gap moved from w:after to w:before) still needs the Word parity gate (`parity.mjs`).

@@ -1014,7 +1014,7 @@
      "quote": "Sayfa numaraları, bütün bölümlerde sayfaların alt ortasına yazılmalıdır ve Times New Roman karakteri (12 punto) ile yazılmalıdır."
     }
    ],
-   "notes": "Not stated (see page.footer.distanceMm).",
+   "notes": "Guide silent. User-authorized Kocatürk July 2026 example selects the printed baseline y=283.549 mm; engine stores page.numbering.baselineFromTopMm. Do not equate the PDF baseline gap to Word footer distance. See exampleResearch20261015.",
    "canonicalKey": "pagination.distanceFromEdgeMm",
    "category": "pagination",
    "check": "measure",
@@ -15323,5 +15323,37 @@
   ]
  },
  "annotatedAt": "2026-09-30",
- "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md"
+ "schemaNote": "v3: v3 alanlari (canonicalKey, category, check, rejectionRisk, tolerance) spec_annotate_v3.py tarafindan otomatik eklendi; Analyzer duzeltmeye aciktir. Kural sozlugu: orchestration/reports/KURAL_SOZLUGU.md",
+ "exampleResearch20261015": {
+  "authority": "User authorized current published thesis examples on 2026-10-15; skip when no suitable accessible example exists.",
+  "decisions": [
+   {
+    "id": "aku-sbe-number-baseline",
+    "target": "aku-sbe",
+    "key": "page.numbering.baselineFromTopMm",
+    "value": 283.549,
+    "evidence": [
+     {
+      "sourceId": "aku-sbe-kocaturk-2026",
+      "url": "https://acikerisim.aku.edu.tr/bitstreams/0717577f-13df-412c-9d11-7171324eed32/download",
+      "path": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "sha256": "350f9e3752690d6c1ec039739f74fe3d5b1267f0d21bcac8e92cd8a762e66c84",
+      "physicalPages": [
+       3,
+       10,
+       20,
+       30,
+       50
+      ]
+     }
+    ],
+    "reason": "12 pt Times New Roman, bottom centre, consistent baseline on Roman and Arabic pages. PDF page height is 297.0107 mm; baseline gap to edge is about 13.462 mm. A nominal A4 implementation uses y=283.549. Word footer distance is a different property and cannot be measured from PDF alone.",
+    "implementation": "Explicit number baseline; existing header/footer defaults retained and remain source-undefined.",
+    "confidence": "INFERRED"
+   }
+  ],
+  "sourceRecord": "orchestration/validation/template-thesis-research-20261015/downloads-v2.json",
+  "outputAcceptance": "NOT_RERUN; source measurements are not new generated-output acceptance.",
+  "remaining": "Word footer/header distance remains unknown; the baseline decision closes visible number placement only. Other source conflicts are unaffected."
+ }
 }

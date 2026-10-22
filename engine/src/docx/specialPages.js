@@ -22,6 +22,26 @@ export function measuredSpacerMm(node, context) {
 }
 
 /**
+ * The editor gives a special-page text block `min-height: heightMm` (specialPages.js), so the next block starts after that box even when the
+ * text is shorter. (Group `minHeightMm` boxes are not applied here: the IYTE approval page's groups already overflow the bottom margin in the editor,
+ * and Word would push the page onto a second sheet.) Word has no minimum height for paragraphs: a borderless one-cell row of at-least height is the same box.
+ */
+function atLeastBox(children, heightMm, widthMm) {
+  const body = children.length ? children : [spacerParagraph(0.1)];
+  // A Word cell always ends in a paragraph.
+  const last = body.at(-1);
+  if (!(last instanceof Paragraph)) body.push(spacerParagraph(0.1));
+  return new Table({
+    width: { size: twip(widthMm), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [twip(widthMm)],
+    borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER, insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
+    rows: [new TableRow({ cantSplit: true, height: { value: twip(heightMm), rule: HeightRule.ATLEAST }, children: [new TableCell({
+      width: { size: twip(widthMm), type: WidthType.DXA }, margins: { top: 0, bottom: 0, left: 0, right: 0 },
+      borders: { top: NO_BORDER, bottom: NO_BORDER, left: NO_BORDER, right: NO_BORDER }, children: body,
+    })] })],
+  });
+}
+
+/**
  * Special page render tree (specialPages.js) → closest Word structures: text →
  * paragraph, spacer → exact-height paragraph, separator → bordered paragraph,
  * column group → stacked blocks, row group → borderless fixed table.
@@ -45,7 +65,7 @@ export function specialPageDocx(nodes, context, widthMm) {
       out.push(new Paragraph({ alignment: alignDocx(node.align), ...(node.leftIndentMm || node.rightIndentMm ? { indent: { left: twip(node.leftIndentMm || 0), right: twip(node.rightIndentMm || 0) } } : {}), spacing: { before: 0, after: 0, line: twip(node.heightMm), lineRule: LineRuleType.AT_LEAST }, children: [new ImageRun({ ...image, transformation: { width: node.widthMm * PX_PER_MM, height: node.heightMm * PX_PER_MM } })] }));
       gap(node.marginBottomMm);
     } else if (node.type === "text") {
-      const baseRuns = node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold })) : plainRuns(node.text);
+      const baseRuns = node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold, ...(run.fontFamily ? { fontFamily: run.fontFamily } : {}) })) : plainRuns(node.text);
       // A "\n" in template or metadata text is a forced line break inside the same paragraph (the editor renders <br>):
       // every line keeps the paragraph's alignment. A raw newline in <w:t> would be read by Word as a space.
       const runs = baseRuns.flatMap((run) => (run.type === "text" && /\n/.test(run.text)
@@ -56,7 +76,13 @@ export function specialPageDocx(nodes, context, widthMm) {
       const marginKey = `${context.sectionId}:${node.path}${SPECIAL_PAGE_MARGIN_SUFFIX}`;
       const marginShrinkMm = node.marginTopMm > 0 && Number.isFinite(context?.elasticSpacers?.[marginKey]) ? Math.max(0, node.marginTopMm - Math.max(specialPageSpacerMinMm({ heightMm: node.marginTopMm }), context.elasticSpacers[marginKey])) : 0;
       const style = marginShrinkMm > 0.01 ? { ...node.style, spaceBeforePt: Math.max(0, (node.style?.spaceBeforePt || 0) - marginShrinkMm * 72 / 25.4) } : node.style;
-      out.push(docxParagraph(runs, style, context));
+      if (Number.isFinite(node.heightMm) && node.heightMm > 0) {
+        // The block's own space-before/after stay outside the box, as the editor's margins do.
+        const before = (style?.spaceBeforePt || 0) * 25.4 / 72, after = (style?.spaceAfterPt || 0) * 25.4 / 72;
+        gap(before);
+        out.push(atLeastBox([docxParagraph(runs, { ...style, spaceBeforePt: 0, spaceAfterPt: 0 }, context)], node.heightMm, widthMm));
+        gap(after);
+      } else out.push(docxParagraph(runs, style, context));
     } else if (node.type === "spacer") {
       gap(node.marginTopMm); gap(measuredSpacerMm(node, context) - (nodeIndex === slackIndex ? slackMm : 0)); gap(node.marginBottomMm);
     } else if (node.type === "separator") {

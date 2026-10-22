@@ -2,6 +2,7 @@ import { BorderStyle, HeightRule, Table, TableCell, TableRow, WidthType, Vertica
 import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../../../TxtNote/frontend/src/lib/academicDocument.js";
 import { effectiveLineHeight } from "../engine.js";
 import { CELL_BORDER, NO_BORDER, plainRuns, pt, twip } from "./xml.js";
+import { TABLE_WRAP_MARGIN_PT } from "../blockGap.js";
 import { captionParagraph, continuationParagraph, docxParagraph, listParagraphs } from "./paragraphs.js";
 
 // The editor stylesheet wraps every table in `.academic-table-wrap` (index.css) whose 12 pt outer
@@ -11,7 +12,6 @@ import { captionParagraph, continuationParagraph, docxParagraph, listParagraphs 
 // margin, and the far margin is handed to the next block (paragraphs.js) as space-before. Both
 // sides collapse exactly like CSS (a paragraph gap is max(wrap, own spacing)), so the rendered gap
 // is identical to the editor's.
-const TABLE_WRAP_MARGIN_PT = 12;
 
 export function tableDocx(block, section, context, before = null, { atPageTop = false } = {}) {
   const { body, tables } = section.rules;
@@ -27,7 +27,7 @@ export function tableDocx(block, section, context, before = null, { atPageTop = 
   // Likewise for a table that opens a section Word starts on a new page (the section break, not pageBreakBefore, moves it).
   const atTop = startsPage || atPageTop;
   const wrapNear = atTop ? 0 : wrapMargin;
-  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above", keepLines: tables.position === "above", pageBreakBefore: startsPage }, before === null ? Math.max(wrapNear + (tables.spacingBeforePt ?? tables.style?.spaceBeforePt ?? 0), atTop ? 0 : pendingIn) : before) : null;
+  const caption = block.caption ? captionParagraph(tables, block, context, { keepNext: tables.position === "above", keepLines: tables.position === "above", pageBreakBefore: startsPage }, before === null ? Math.max(wrapNear + (tables.spacingBeforePt ?? tables.style?.spaceBeforePt ?? 0), atTop ? 0 : pendingIn) : atTop ? 0 : before) : null;
   if (caption && tables.position === "above") out.push(caption);
   const preset = tables.borders?.preset;
   const rule = { style: BorderStyle.SINGLE, size: Math.round((tables.borders?.widthPt || 0.5) * 8), color: "000000" };
@@ -59,7 +59,10 @@ export function tableDocx(block, section, context, before = null, { atPageTop = 
   const gridExtent = sourceRows.reduce((max, row, r) => Math.max(max, ...row.map((cell, i) => startCols[r][i] + span(cell))), 0);
   const useWidths = gridCols > 0 && gridExtent === gridCols;
   const textWidthTw = context.tableCellWidthTw || twip(section.rules.page.widthMm - section.rules.page.margins.leftMm - section.rules.page.margins.rightMm);
-  const colTw = useWidths ? (() => { const total = block.colWidths.reduce((a, b) => a + b, 0); return block.colWidths.map((w) => Math.round(textWidthTw * w / total)); })() : null;
+  // Without authored widths the editor lays the table out with `table-layout: fixed; width: 100%`, i.e. equal columns. Word would autofit
+  // the columns to their content instead (MEASURED: up to 87 pt sideways), so the same equal grid is written as fixed widths.
+  const colTw = useWidths ? (() => { const total = block.colWidths.reduce((a, b) => a + b, 0); return block.colWidths.map((w) => Math.round(textWidthTw * w / total)); })()
+    : gridExtent > 0 ? Array.from({ length: gridExtent }, () => Math.round(textWidthTw / gridExtent)) : null;
   // Keep-with-next model mirroring the paged layout's `table{break-inside:avoid}`. A table the
   // layout fits on one page chains EVERY row, so Word moves it whole like the PDF. A page-tall
   // table (spansPages: repeated-header clones mark its measured page starts) chains only caption +

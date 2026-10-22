@@ -10,6 +10,7 @@ import { countEndnoteRefs, countFootnoteRefs, resolveFootnoteRule } from "./foot
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { resolveLayoutNodes, resolveLayoutPage } from "./layoutDocument.js";
 import { resolveLayoutTypography } from "./layoutProperties.js";
+import { resolvePresentationHtml } from "./presentationLayout.js";
 import { wordBaselineProbe, WORD_FONT_METRICS } from "./wordBaseline.js";
 import { resolveLineSpacing } from "./typography.js";
 import { exceptionSet, isExceptionToken } from "./transformExceptions.js";
@@ -278,7 +279,7 @@ const usesFields = (blocks, keys) => keys.length > 0 && (blocks || []).some((blo
 export function templateFontFamilies(template) {
   const families = new Set();
   const add = (style) => { if (style?.fontFamily) families.add(String(style.fontFamily)); };
-  const blocks = (list) => { for (const block of list || []) { add(block.style); blocks(block.blocks); } };
+  const blocks = (list) => { for (const block of list || []) { add(block.style); (block.runs || []).forEach(add); blocks(block.blocks); } };
   const typography = template.typography || {};
   Object.values(typography.paragraphStyles || {}).forEach(add);
   [typography.body, typography.paragraph, typography.footnotes, template.tables?.style, template.tables?.cellStyle, template.tables?.labelStyle, template.figures?.style, template.figures?.labelStyle, template.bibliography?.style, template.page?.numbering?.style, template.equations?.style].forEach(add);
@@ -354,9 +355,11 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const bibliographyHtml = section.type === "bibliography" && bibliographyItems.some((item) => String(item).trim())
       ? `<ul class="thesis-bibliography">${bibliographyItems.filter((item) => String(item).trim()).map((item, index) => `<li>${escapeHtml(rules.bibliography?.numbered ? `${index + 1}. ${String(item).trim().replace(/^\d+\s*[.)]\s*/, "")}` : item)}</li>`).join("")}</ul>` : "";
     const additions = !layout ? resolveLayoutNodes([], section.id, thesis.layout, rules.body) : [];
-    const prefixHtml = layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}${specialPageHtml(additions)}`;
-    const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${bibliographyHtml}`;
-    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, ...(section.verticalAlign ? { verticalAlign: section.verticalAlign } : {}), status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: ["oddPage", "evenPage"].includes(section.pageBreakBefore) ? section.pageBreakBefore : section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: bibliographyHtml, editableHtml: source, layout: layout?.blocks || (additions.length ? additions : null), layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language, sectionId: section.id, documentLayout: thesis.layout } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
+    const prefix = resolvePresentationHtml(layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}${specialPageHtml(additions)}`, { id: section.id, rules }, thesis.layout, "prefix");
+    const suffix = resolvePresentationHtml(bibliographyHtml, { id: section.id, rules }, thesis.layout, "suffix");
+    const prefixHtml = prefix.html;
+    const html = mode === "generated" ? "" : `${prefixHtml}${source || ""}${suffix.html}`;
+    sections.push({ id: section.id, type: section.type, title: section.title, group: section.group, ...(section.verticalAlign ? { verticalAlign: section.verticalAlign } : {}), status: section.status, required: section.status === "required", order: sections.length, mode, editable, pageBreakBefore: ["oddPage", "evenPage"].includes(section.pageBreakBefore) ? section.pageBreakBefore : section.pageBreakBefore !== false, specialPage, standalone: specialPage ? section.standalone !== false : false, tocEntry, fixedContent: Boolean(section.content || section.blocks?.length), html, prefixHtml, suffixHtml: suffix.html, presentationElements: [...prefix.elements, ...suffix.elements], editableHtml: source, layout: layout?.blocks || (additions.length ? additions : null), layoutBlocks: layout ? flattenSpecialPage(layout.blocks) : null, derivedLayout: layout && usesFields(section.blocks, Object.keys(derivedFields)) ? { blocks: section.blocks, definitions: template.placeholders, baseStyle: rules.body, language: template.language, sectionId: section.id, documentLayout: thesis.layout } : null, missingPlaceholders: [...new Set([...fixed.missing, ...(layout?.missing || [])])], rules });
   }
   // footnotes.numbering "document": references count on through the sections (default; "section" restarts each body at 1).
   for (const section of sections) {

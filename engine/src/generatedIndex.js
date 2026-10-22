@@ -1,6 +1,7 @@
 import { chapterNumberSequence, formatNumber, groupThesisSections, transformThesisText } from "./engine.js";
 import { flattenSpecialPage, resolveSpecialPage, specialPageHtml } from "./specialPages.js";
 import { resolveLayoutNodes } from "./layoutDocument.js";
+import { resolvePresentationHtml } from "./presentationLayout.js";
 import { buildThesisPageModel, flowPagePitchPx, pageCountFromFlowHeight, pageMetrics, thesisGroupHasPageContent } from "./pageLayout.js";
 
 const escape = (value) => String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -306,9 +307,11 @@ export function resolveGeneratedIndexes(model, pages = {}, counts = {}) {
   const values = { ...model.values, ...derived };
   return { ...model, values, indexPages: pages, sections: model.sections.map((current) => {
     const section = current.derivedLayout ? withDerivedLayout(current, values) : current;
-    if (!section.generatedIndex) return section;
+    if (!section.generatedIndex) return { ...section, documentLayout: model.documentLayout };
     const indexRows = indexEntries(model.indexSources, section.generatedIndex, pages, model.language);
-    return { ...section, indexRows, html: generatedIndexHtml(indexRows, section.generatedIndex) };
+    const presentation = resolvePresentationHtml(generatedIndexHtml(indexRows, section.generatedIndex), section, model.documentLayout, "generated");
+    return { ...section, documentLayout: model.documentLayout, indexRows, presentationElements: presentation.elements,
+      html: presentation.html + specialPageHtml(section.layout || []) };
   }) };
 }
 

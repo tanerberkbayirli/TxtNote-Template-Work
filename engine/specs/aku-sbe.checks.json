@@ -270,7 +270,7 @@
     "id": "note-pagenum-distance-unknown",
     "kind": "note",
     "params": {
-      "text": "Page-number baseline / distance from page edge and footer distance are UNKNOWN (spec pagination.distanceFromEdgeMm, page.footer.distanceMm)"
+      "text": "PARTIALLY RESOLVED 2026-10-15: printed number baseline y=283.549 mm follows Kocatürk July 2026 physical pp.3/10/20/30/50, Times New Roman 12 pt. Word footer/header distances remain UNKNOWN; PDF baseline gap does not establish those XML values. Other source gaps remain open."
     },
     "expected": null,
     "tolerance": 0.5,
@@ -2099,5 +2099,825 @@
       "locator": "source guide table: numeric/header cells centred; fixture third-column center is 155 mm"
     },
     "evidence": "EXPLICIT"
+  },
+  {
+    "id": "example-number-default-pdf-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "default",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-default-pdf-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "default",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-default-pdf-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "default",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-default-pdf-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "default",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-default-word-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "default",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-default-word-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "default",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-default-word-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "default",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-default-word-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "default",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-pdf-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-pdf-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-pdf-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-pdf-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-word-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-word-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-word-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-tr-word-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-tr",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-pdf-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-pdf-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-pdf-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-pdf-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-word-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-word-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-word-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-sanatta-yeterlik-tr-word-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "sanatta-yeterlik-tr",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-pdf-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "master-en",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-pdf-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "master-en",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-pdf-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "master-en",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-pdf-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "master-en",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-word-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "master-en",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-word-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "master-en",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-word-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "master-en",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-master-en-word-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "master-en",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-pdf-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-en",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-pdf-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-en",
+      "source": "pdf",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-pdf-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-en",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-pdf-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-en",
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-word-roman-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-en",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-word-roman-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-en",
+      "source": "word",
+      "pages": {
+        "label": "roman"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-word-arabic-baseline",
+    "kind": "page_number_attr",
+    "params": {
+      "fixture": "phd-en",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 283.549,
+    "tolerance": 0.25,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-number-phd-en-word-arabic-font",
+    "kind": "page_number_font",
+    "params": {
+      "fixture": "phd-en",
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": [
+      "TimesNewRomanPSMT"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-sbe-kocaturk-2026-0.pdf",
+      "locator": "Kocatürk July 2026 pp.3/10/20/30/50, user-authorized example decision; baseline=283.549 mm, 12 pt TNR."
+    },
+    "evidence": "INFERRED",
+    "required": true
   }
 ]

@@ -3,6 +3,7 @@
  * Native adapters attach JSON properties/parts to this model, never to rendered pages.
  */
 import { thesisSourceHtml } from "./sourceHtml.js";
+import { sourceChromeImages } from "./docx/chromeImport.js";
 
 export const CONTENT_MODEL_VERSION = 1;
 export const CONTENT_NODE_ID = "data-txt-node-id";
@@ -304,6 +305,10 @@ export function applySourceSectionRules(rules, thesis, sectionId) {
     if (!source.page.docxContentFrame) delete result.page.docxContentFrame;
     for (const kind of ["header", "footer"]) if (source.page[kind]) {
       result.page[kind] = { heightMm: 0, distanceMm: rules.page[kind]?.distanceMm ?? 12.7, ...source.page[kind] };
+      const refs=sourceContentSection(thesis,sectionId)?.properties?.headerFooterReferences?.[kind] || {};
+      result.page[kind].images=sourceChromeImages(refs.default,result.page,kind);
+      result.page[kind].firstImages=sourceChromeImages(refs.first,result.page,kind);
+      result.page[kind].evenImages=sourceChromeImages(refs.even,result.page,kind);
     }
   }
   return result;

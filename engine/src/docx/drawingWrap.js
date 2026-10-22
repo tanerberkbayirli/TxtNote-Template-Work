@@ -1,6 +1,7 @@
 import { layoutImportedDrawingAnchors, drawingPageIndex } from './drawingAnchors.js';
 import { pageMetrics, flowPagePitchPx } from '../pageLayout.js';
 import { blocksTextBeside } from './shapes.js';
+import { layoutImportedGroupText } from './drawingTextLayout.js';
 const applied = new WeakMap();
 function geometryKey(root) {
   return [...root.querySelectorAll('.thesis-page-flow [data-native-object="drawing"]')].filter(el => !el.closest('[hidden],table') && getComputedStyle(el).position === 'absolute').map(el => {
@@ -34,6 +35,19 @@ export function anchorOverflowsPage(anchorY, extentBelowAnchor, pageTop, pageBot
   return extentBelowAnchor > 0 && extentBelowAnchor <= height && anchorY > pageTop+.5 && anchorY+extentBelowAnchor > pageBottom+.5;
 }
 
+/** The empty anchor excludes drawings and hidden fallback branches. Inspect
+ * the authored nodes without cloning/removing a potentially large drawing DOM. */
+export function paragraphIsEmptyAnchor(paragraph) {
+  const content=node=>{
+    if(node.nodeType===3)return Boolean(node.data.trim() || node.data.includes('\t'));
+    if(node.nodeType!==1)return false;
+    if(node.hasAttribute('hidden') || node.getAttribute('data-native-object')==='drawing')return false;
+    if(['img','math','br'].includes(node.tagName.toLowerCase()) || node.hasAttribute('data-native-object') || node.hasAttribute('data-docx-tab'))return true;
+    return Array.from(node.childNodes).some(content);
+  };
+  return !Array.from(paragraph.childNodes).some(content);
+}
+
 /** Word keeps a drawing's paragraph anchor at the paragraph top even when its
  * lines wrap below the drawing. Reserve those displaced lines INSIDE the
  * paragraph; moving its margin would incorrectly move the drawing with it.
@@ -41,6 +55,7 @@ export function anchorOverflowsPage(anchorY, extentBelowAnchor, pageTop, pageBot
  * line fragments; this pass handles empty marks and fully blocked text lines. */
 export function layoutImportedShapeLines(root, groups, nativeDocument) {
   if (!root) return '';
+  layoutImportedGroupText(root);
   let sheet = root.querySelector('style[data-thesis-shape-lines]');
   if (nativeDocument?.source?.format !== 'docx') { sheet?.remove(); applied.delete(root); return ''; }
   const last = applied.get(root);
@@ -66,9 +81,7 @@ export function layoutImportedShapeLines(root, groups, nativeDocument) {
       // Most body paragraphs have no own or preceding drawing: do not clone
       // their entire inline DOM merely to discard that result below.
       if (!drawings.length && !preceding.length) continue;
-      const clone = p.cloneNode(true);
-      clone.querySelectorAll('[data-native-object="drawing"],[hidden]').forEach(n => n.remove());
-      const emptyMark = !clone.textContent.trim() && !clone.textContent.includes('\t') && !clone.querySelector('img,math,br,[data-native-object],[data-docx-tab]');
+      const emptyMark = paragraphIsEmptyAnchor(p);
       if (emptyMark && metrics && pitch) {
         const a = article.getBoundingClientRect(), box = p.getBoundingClientRect(), y = (box.top-a.top)/scale;
         const pageIndex = drawingPageIndex(y,pitch);
@@ -76,7 +89,10 @@ export function layoutImportedShapeLines(root, groups, nativeDocument) {
         const overflows = drawings.some(el => {
           const s = shapes.get(el.dataset.txtNodeId), v = s.vertical || {};
           return s.kind === 'anchor' && (s.graphic === 'picture' || !s.hasText || blocksTextBeside(s,box.width/scale*.75)) && !s.behind && ['paragraph','line','text',''].includes(v.relativeFrom || '') && !v.align && getComputedStyle(el).position === 'absolute'
-            && anchorOverflowsPage(y,(el.getBoundingClientRect().bottom-box.top)/scale,top,bottom);
+            // A column-fragmented absolute frame's bounding rectangle includes
+            // the gap between physical sheets. Its logical extent still fits
+            // one page: use the unfragmented box against its paragraph anchor.
+            && anchorOverflowsPage(y,el.offsetParent === p ? el.offsetTop + parseFloat(getComputedStyle(el).height) : (el.getBoundingClientRect().bottom-box.top)/scale,top,bottom);
         });
         if (overflows && /^[\w:-]+$/.test(p.dataset.txtNodeId || '')) {
           rules.push(`.thesis-paper .thesis-body [data-txt-node-id="${p.dataset.txtNodeId}"][data-txt-node-id]{break-before:column!important;margin-top:0!important}`);

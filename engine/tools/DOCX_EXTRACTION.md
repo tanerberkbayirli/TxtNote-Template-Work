@@ -3,10 +3,10 @@
 Run from the repository root, with the frontend preview running for the checker:
 
 ```sh
-node orchestration/tools/cache-official-source.mjs official.docx orchestration/artifacts/target/source/reference
-python orchestration/tools/docx2spec.py --docx official.docx --target target --word-manifest orchestration/artifacts/target/source/reference/render-manifest.json --out orchestration/specs/target.extracted.json
-node orchestration/tools/spec2template.mjs orchestration/specs/target.extracted.json orchestration/specs/target.generation.json draft
-node orchestration/tools/check.mjs --target target --word --out validation-directory
+node engine/tools/cache-official-source.mjs official.docx engine/references/target/source/reference
+python engine/tools/docx2spec.py --docx official.docx --target target --word-manifest engine/references/target/source/reference/render-manifest.json --out engine/specs/target.extracted.json
+node engine/tools/spec2template.mjs engine/specs/target.extracted.json engine/specs/target.generation.json draft
+node engine/tools/check.mjs --target target --word --out validation-directory
 ```
 
 Use an official template/example, never an app export as a source. Legacy `.doc`
@@ -45,3 +45,6 @@ and Word flow semantics only. Never share university numeric requirements.
 Validation: Python test_docx2spec.py/test_conformance.py; Node test_spec2template.mjs;
 frontend tests/build; full actual Word regression after shared-engine changes.
 See the Phase 4 closure report for selected evidence and measured cost.
+
+## One-step addition (22.10.2026)
+`node engine/tools/template-add.mjs --extracted target.extracted.json --profile target.generation.json [--write]` runs the generation, checks that the template survives JSON storage and passes the schema, writes it as flat data of this one source (no `extends`, no shared base, no value borrowed from another university; the engine supplies behaviour and neutral defaults for absent keys), and records the provenance of every value (MEASURED / GEOMETRY / GENERATED; keys left to the engine are listed as ENGINE_DEFAULT; unapplied property groups are UNKNOWN). See engine/docs/ALTYAPI.md, "Üretim hattı". The generation profile is still written by hand.

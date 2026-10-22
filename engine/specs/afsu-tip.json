@@ -624,5 +624,43 @@
    "whyEngineCannot": "shared engine items, out of scope for this template fix",
    "suggestedGenericCapability": "see engine task"
   }
- ]
+ ],
+ "exampleResearch20261015": {
+  "authority": "User authorized current published thesis examples on 2026-10-15; skip when no suitable accessible example exists.",
+  "decisions": [
+   {
+    "id": "afsu-tip-number-style",
+    "target": "afsu-tip",
+    "key": "page.numbering",
+    "value": {
+     "baselineFromTopMm": 278.757,
+     "centerMm": 115,
+     "fontFamily": "Calibri",
+     "fontSizePt": 11
+    },
+    "evidence": [
+     {
+      "sourceId": "afsu-tip-esaglik-2025",
+      "url": "https://acikerisim.afsu.edu.tr/bitstreams/694a5720-ed9f-447a-8e3b-3bb04435cfa9/download",
+      "path": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+      "sha256": "1c02f40d4e224bad471704cde2e3cd5b5ec8e52c17749421971819985af39fd1",
+      "physicalPages": [
+       3,
+       10,
+       20,
+       30,
+       50
+      ]
+     }
+    ],
+    "reason": "2025 medicine thesis, official AFSÜ repository. Guide specifies bottom/centre but leaves number typography and exact coordinates undefined; previous sheet-centre x=105 was an inference. Number centre measured 115.0±0.05 mm. Adopt this example for medicine only; body font remains the guide font.",
+    "implementation": "Medicine number style/box/baseline set explicitly; dentistry untouched. Corrected to legal nominal Word size 11 pt; measured source glyph size 11.04 pt is retained separately (0.1 pt output tolerance).",
+    "confidence": "INFERRED",
+    "observedPdfFontSizePt": 11.04
+   }
+  ],
+  "sourceRecord": "orchestration/validation/template-thesis-research-20261015/downloads-v2.json",
+  "outputAcceptance": "NOT_RERUN; source measurements are not new generated-output acceptance.",
+  "decisionRecord": "orchestration/validation/template-thesis-research-20261015/decisions-v2.json"
+ }
 }

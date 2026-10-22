@@ -10,9 +10,9 @@ export function stableWordEnvironment(info) {
   return settings;
 }
 export function sourceFingerprint(root, target) {
-  const specification = join(root, 'orchestration/specs', `${target}.json`);
+  const specification = join(root, 'engine/specs', `${target}.json`);
   if (!existsSync(specification)) return sha256(JSON.stringify({ target, authority: 'engine fixture',
-    checks: fileHash(join(root, 'orchestration/specs', `${target}.checks.json`)) }));
+    checks: fileHash(join(root, 'engine/specs', `${target}.checks.json`)) }));
   const spec = JSON.parse(readFileSync(specification, 'utf8'));
   const index = new Map();
   function visit(dir) {

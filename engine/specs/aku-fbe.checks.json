@@ -752,7 +752,7 @@
     "id": "note-approval-jury-size",
     "kind": "note",
     "params": {
-      "text": "Master's jury size is UNKNOWN. Doctoral seven-member panel applies when a second advisor exists; use the PhD fixture to exercise rows 1–7. More than seven members is UNKNOWN."
+      "text": "RESOLVED 2026-10-15: master default three jurors follows Bilgehan and Çakal July 2026 approval pages (physical p.3). Additional named rows remain available. Doctoral co-advisor seven-row rule preserved; >7 members remain undefined. See template-thesis-research-20261015/decisions.json. This note is not output acceptance."
     },
     "expected": null,
     "tolerance": 0,
@@ -760,7 +760,7 @@
       "file": "aku-fbe.json",
       "locator": "variants and unknowns; guide p.34 callout; see two-tier policy"
     },
-    "evidence": "UNKNOWN"
+    "evidence": "INFERRED"
   },
 {
   "id": "layout.body-left-master",
@@ -803,5 +803,332 @@
     "locator": "p.5 §2.3 (3 cm left margin)"
   },
   "evidence": "EXPLICIT"
-}
+},
+  {
+    "id": "example-abstract-order-master-pdf-sayfa",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": [
+      "^2026, .+sayfa$",
+      "^Anahtar Kelimeler:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-master-pdf-pages",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "pages": {
+        "find": "^ABSTRACT$"
+      }
+    },
+    "expected": [
+      "^2026, .+pages$",
+      "^Keywords:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-master-word-sayfa",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": [
+      "^2026, .+sayfa$",
+      "^Anahtar Kelimeler:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-master-word-pages",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "pages": {
+        "find": "^ABSTRACT$"
+      }
+    },
+    "expected": [
+      "^2026, .+pages$",
+      "^Keywords:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-phd-pdf-sayfa",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": [
+      "^2026, .+sayfa$",
+      "^Anahtar Kelimeler:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-phd-pdf-pages",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "pages": {
+        "find": "^ABSTRACT$"
+      }
+    },
+    "expected": [
+      "^2026, .+pages$",
+      "^Keywords:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-phd-word-sayfa",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": [
+      "^2026, .+sayfa$",
+      "^Anahtar Kelimeler:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-phd-word-pages",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "pages": {
+        "find": "^ABSTRACT$"
+      }
+    },
+    "expected": [
+      "^2026, .+pages$",
+      "^Keywords:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-master-three-pdf-sayfa",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master-three",
+      "source": "pdf",
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": [
+      "^2026, .+sayfa$",
+      "^Anahtar Kelimeler:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-master-three-pdf-pages",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master-three",
+      "source": "pdf",
+      "pages": {
+        "find": "^ABSTRACT$"
+      }
+    },
+    "expected": [
+      "^2026, .+pages$",
+      "^Keywords:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-master-three-word-sayfa",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master-three",
+      "source": "word",
+      "pages": {
+        "find": "^ÖZET$"
+      }
+    },
+    "expected": [
+      "^2026, .+sayfa$",
+      "^Anahtar Kelimeler:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-abstract-order-master-three-word-pages",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master-three",
+      "source": "word",
+      "pages": {
+        "find": "^ABSTRACT$"
+      }
+    },
+    "expected": [
+      "^2026, .+pages$",
+      "^Keywords:"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-three-jurors-pdf",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master-three",
+      "source": "pdf",
+      "pages": {
+        "find": "^TEZ ONAY SAYFASI$"
+      }
+    },
+    "expected": [
+      "^Başkan.*Jüri ÜYESİ 1",
+      "^Üye.*Jüri ÜYESİ 2",
+      "^Üye.*Jüri ÜYESİ 3",
+      "^Afyon Kocatepe Üniversitesi$"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-three-jurors-word",
+    "kind": "text_sequence",
+    "params": {
+      "fixture": "master-three",
+      "source": "word",
+      "pages": {
+        "find": "^TEZ ONAY SAYFASI$"
+      }
+    },
+    "expected": [
+      "^Başkan.*Jüri ÜYESİ 1",
+      "^Üye.*Jüri ÜYESİ 2",
+      "^Üye.*Jüri ÜYESİ 3",
+      "^Afyon Kocatepe Üniversitesi$"
+    ],
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  },
+  {
+    "id": "example-three-jurors-word-opens",
+    "kind": "word_opens",
+    "params": {
+      "fixture": "master-three"
+    },
+    "expected": "opened and exported",
+    "tolerance": 0,
+    "source": {
+      "file": "orchestration/validation/template-thesis-research-20261015/sources/aku-fbe-cakal-2026-0.pdf",
+      "locator": "Çakal July 2026 p.3 three jurors; pp.6/8 year/pages before keywords, corroborated by Bilgehan July 2026 pp.3/6/8."
+    },
+    "evidence": "INFERRED",
+    "required": true
+  }
 ]

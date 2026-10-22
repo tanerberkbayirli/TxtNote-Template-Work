@@ -4,6 +4,8 @@ const own = (o, k, v) => { if (v !== "" && v !== undefined) Object.definePropert
 export function readRunProperties(pr, theme = {}) {
   const result = {}, font = child(pr, "rFonts"), size = val(pr, "sz");
   own(result, "fontFamily", attr(font, "ascii") || attr(font, "hAnsi") || theme[attr(font, "asciiTheme")] || theme[attr(font, "hAnsiTheme")]);
+  own(result, "fontHint", attr(font, "hint"));
+  own(result, "eastAsiaFontFamily", attr(font, "eastAsia"));
   if (size !== "") result.fontSizePt = Number(size) / 2;
   for (const [tag, key] of [["b", "bold"], ["i", "italic"], ["strike", "strike"], ["caps", "caps"], ["smallCaps", "smallCaps"], ["vanish", "hidden"]]) {
     const node = child(pr, tag); if (node) result[key] = on(node);

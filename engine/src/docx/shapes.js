@@ -9,6 +9,7 @@
  * note.content: the rules are generated from the model like the other imported-content CSS. */
 
 import { resolveLineSpacing } from "../typography.js";
+import { drawingShapeBackground } from "./drawingPreview.js";
 
 const EMU_PT = 12700;
 const elementsOf = (node) => Array.from(node?.childNodes || []).filter(n => n.nodeType === 1);
@@ -18,6 +19,8 @@ const emuPt = (value) => { const n = Number(value); return Number.isFinite(n) ? 
 // Text/background aliases of the theme's dark/light slots (DrawingML schemeClr values).
 const SCHEME_ALIAS = { tx1: "dk1", bg1: "lt1", tx2: "dk2", bg2: "lt2" };
 const color = (fillNode, theme = {}) => {
+  const system = kid(fillNode, "sysClr")?.getAttribute("lastClr");
+  if (/^[0-9a-f]{6}$/i.test(system || "")) return "#"+system.toLowerCase();
   const rgb = kid(fillNode, "srgbClr")?.getAttribute("val");
   if (/^[0-9a-f]{6}$/i.test(rgb || "")) return "#"+rgb.toLowerCase();
   const scheme = kid(fillNode, "schemeClr")?.getAttribute("val");
@@ -28,6 +31,19 @@ function readSpPr(spPr, theme) {
   if (!spPr) return {};
   const out = {}, geom = kid(spPr, "prstGeom")?.getAttribute("prst");
   if (geom) out.geometry = geom;
+  const adjustments = {};
+  for (const guide of elementsOf(kid(kid(spPr, "prstGeom"), "avLst"))) {
+    const match = /^val\s+(-?\d+(?:\.\d+)?)$/.exec(guide.getAttribute("fmla") || "");
+    if (match) adjustments[guide.getAttribute("name")] = Number(match[1]);
+    else out.unsupportedGeometryAdjustment = true;
+  }
+  if (Object.keys(adjustments).length) out.geometryAdjustments = adjustments;
+  const transform = kid(spPr, "xfrm");
+  if (transform?.hasAttribute("rot")) {
+    const rotation = Number(transform.getAttribute("rot"));
+    if (Number.isFinite(rotation)) out.rotationDeg = rotation / 60000;
+  }
+  for (const name of ["flipH", "flipV"]) if (/^(?:1|true)$/.test(transform?.getAttribute(name) || "")) out[name] = true;
   if (kid(spPr, "noFill")) out.fill = "none";
   else { const c = color(kid(spPr, "solidFill"), theme); if (c) out.fill = c; }
   const ln = kid(spPr, "ln");
@@ -35,6 +51,10 @@ function readSpPr(spPr, theme) {
     if (kid(ln, "noFill")) out.line = "none";
     else { const c = color(kid(ln, "solidFill"), theme); if (c) out.line = c; }
     const w = emuPt(ln.getAttribute("w")); if (w !== undefined) out.lineWidthPt = w;
+    for (const end of ['headEnd','tailEnd']) {
+      const marker=kid(ln,end),type=marker?.getAttribute('type');
+      if (['triangle','stealth','arrow','diamond','oval'].includes(type))out[end]={type,width:marker.getAttribute('w') || 'med',length:marker.getAttribute('len') || 'med'};
+    }
   }
   return out;
 }
@@ -67,6 +87,10 @@ function readDrawingMl(container, theme) {
     const style = kid(shapes[0], "style");
     if (style && !shape.fill && Number(kid(style, "fillRef")?.getAttribute("idx")) > 0) { const c = color(kid(style, "fillRef"), theme); if (c) shape.fill = c; }
     if (style && !shape.line && Number(kid(style, "lnRef")?.getAttribute("idx")) > 0) shape.line = color(kid(style, "lnRef"), theme) || "style";
+    // The shape's font reference supplies automatic story ink, including
+    // light text on a no-fill shape. Explicit source run colours override it.
+    const fontColor = style ? color(kid(style, "fontRef"), theme) : undefined;
+    if (fontColor) shape.textColor = fontColor;
     const body = kid(shapes[0], "bodyPr");
     if (body) {
       const inset = (name, fallback) => body.hasAttribute(name) ? emuPt(body.getAttribute(name)) : fallback;
@@ -138,17 +162,33 @@ export const floatsOutOfFlow = (shape) => shape?.kind === "anchor" && shape.wrap
 
 function frameDecl(shape) {
   const out = ["box-sizing:border-box", "text-indent:0"];
+  if (Number.isFinite(shape.rotationDeg) && shape.rotationDeg % 360) out.push(`transform:rotate(${shape.rotationDeg}deg)`, "transform-origin:50% 50%");
   const lineWidth = shape.lineWidthPt > 0 ? shape.lineWidthPt : 0.75;
-  if (shape.fill && shape.fill !== "none") out.push(`background-color:${shape.fill}`);
+  if (!shape.geometryPreview && shape.fill && shape.fill !== "none") out.push(`background-color:${shape.fill}`);
   const line = shape.line === "style" ? "#4472c4" : shape.line;
   const lineGeometry = /line|Connector/i.test(shape.geometry || "");
-  if (line && line !== "none") out.push(lineGeometry ? `border-${shape.heightPt > shape.widthPt ? "left" : "top"}:${pt(lineWidth)} solid ${line}` : `border:${pt(lineWidth)} solid ${line}`);
+  if (shape.geometryPreview) out.push("border:0");
+  else if (line && line !== "none") out.push(lineGeometry ? `border-${shape.heightPt > shape.widthPt ? "left" : "top"}:${pt(lineWidth)} solid ${line}` : `border:${pt(lineWidth)} solid ${line}`);
   else if (!shape.hasPreview && (!shape.shapes || shape.shapes > 1 || (!shape.hasText && shape.graphic !== "picture" && shape.graphic !== "wordprocessingShape"))) out.push("outline:0.5pt dashed #9aa0a6");
   if (shape.geometry === "ellipse") out.push("border-radius:50%");
   else if (/^round/.test(shape.geometry || "")) out.push("border-radius:12%");
-  if (shape.insetPt) out.push(`padding:${shape.insetPt.map(pt).join(" ")}`);
+  if (shape.textColor && shape.hasText) out.push(`color:${shape.textColor}`);
+  if (shape.geometryPreview === true) out.push("isolation:isolate");
+  else if (shape.geometryPreview === "background") { const background = drawingShapeBackground(shape); if (background) out.push(`background:${background}`); }
+  if (shape.insetPt) {
+    // A preset's text rectangle is smaller than its bounding box (DrawingML presetShapeDefinitions: diamond w/4 h/4, ellipse the inscribed rectangle).
+    const w = shape.widthPt, h = shape.heightPt;
+    const [dx, dy] = shape.geometry === "diamond" ? [w / 4, h / 4] : shape.geometry === "ellipse" ? [w * 0.14645, h * 0.14645]
+      : [0, 0];
+    const [t, r, b, l] = shape.insetPt;
+    out.push(`padding:${[t + dy, r + dx, b + dy, l + dx].map(pt).join(" ")}`);
+  }
   if (shape.placeholder) out.push("overflow:hidden");
-  if (shape.hasText && !shape.hasPreview) out.push(`overflow:${shape.textOverflow === "overflow" ? "visible" : "hidden"}`, "display:flex", "flex-direction:column", `justify-content:${shape.textAnchor === "ctr" ? "center" : shape.textAnchor === "b" ? "flex-end" : "flex-start"}`);
+  if (shape.hasText && !shape.hasPreview) {
+    // Word clips a text box's story at its text rectangle even when bodyPr says vertOverflow="overflow" (SRC09 s.97: the fourth and fifth line of a
+  // three-line box are not drawn), and an overfull centred story starts at the top ("safe" alignment) instead of overflowing both edges.
+    out.push("overflow:clip", `overflow-clip-margin:${['diamond','ellipse'].includes(shape.geometry)?'content-box':'padding-box'}`, "display:flex", "flex-direction:column", `justify-content:${shape.textAnchor === "ctr" ? "safe center" : shape.textAnchor === "b" ? "safe flex-end" : "flex-start"}`);
+  }
   return out;
 }
 
@@ -198,11 +238,34 @@ export function importedShapeCss(document) {
           decl.unshift("display:block", "position:relative", h.align === "center" ? "margin-left:auto;margin-right:auto" : h.align === "right" ? "margin-left:auto;margin-right:0" : `margin-left:${pt(h.offsetPt || 0)}`,
             `margin-top:${pt(fromParagraph ? v.offsetPt || 0 : 0)}`, `margin-bottom:${pt(dist[2] || 0)}`);
         } else if (!deep_has_image(node)) {
-          decl.unshift("display:inline-block", "vertical-align:baseline");
+          decl.unshift("display:inline-block", "vertical-align:baseline", ...(shape.geometryPreview === true ? ["position:relative"] : []));
         } else { walk(node.children, paragraph); continue; }
         rules.push(`${sel(node.id)}{${decl.join(";")}}`);
+        // Sanitized note HTML deliberately drops inline CSS. Generated shape
+        // rules isolate SVG text from its anchoring Word run's case and style.
+        if (shape.hasPreview) rules.push(`${sel(node.id)} svg{text-transform:none;font-variant:normal;font-style:normal;font-weight:normal;letter-spacing:normal}`);
+        // The geometry layer sits behind the frame's own text and fills its border box (the text insets are padding on the frame).
+        const geometryLayer = shape.geometryPreview === true ? (node.children || []).find((child) => child.attributes && Object.hasOwn(child.attributes, "data-docx-shape-geometry")) : null;
+        if (geometryLayer?.id && SAFE_ID.test(geometryLayer.id)) rules.push(`${sel(geometryLayer.id)}{position:absolute;left:0;top:0;width:${pt(Math.max(.75,shape.widthPt))};height:${pt(Math.max(.75,shape.heightPt))};overflow:visible;pointer-events:none;z-index:-1}`);
         if (shape.hasText) rules.push(`${sel(node.id)} [data-docx-box-block]{display:block}`);
-        if (shape.spaceFirstLastParagraph === false) rules.push(`${sel(node.id)} > [data-docx-box-block]:first-child{margin-top:0!important}`, `${sel(node.id)} > [data-docx-box-block]:last-child{margin-bottom:0!important}`);
+        // Flex text stories do not collapse CSS margins. Word takes the larger
+        // adjacent paragraph spacing, including in anchored text boxes.
+        if (shape.hasText && document.formatMode === 'source') {
+          let previous;
+          for (const paragraph of node.children || []) {
+            if (paragraph.type !== 'paragraph') { previous=undefined; continue; }
+            const spacing=styleOf(paragraph) || {}, before=spacing.spaceBeforePt || 0;
+            if (previous && SAFE_ID.test(paragraph.id || '')) {
+              const after=(styleOf(previous) || {}).spaceAfterPt || 0;
+              if (before >= 0 && after >= 0) rules.push(`${sel(paragraph.id)}{margin-top:${pt(Math.max(0,before-after))}}`);
+            }
+            previous=paragraph;
+          }
+        }
+        // WordprocessingML stories keep their own paragraph spacing. Word's
+        // native WPS control gives the same result with spcFirstLastPara absent,
+        // false or true; that DrawingML switch applies to a:txBody stories.
+        if (shape.spaceFirstLastParagraph === false && shape.graphic !== 'wordprocessingShape') rules.push(`${sel(node.id)} > [data-docx-box-block]:first-child{margin-top:0!important}`, `${sel(node.id)} > [data-docx-box-block]:last-child{margin-bottom:0!important}`);
       }
       walk(node.children, node.type === "paragraph" && !paragraph ? node : paragraph);
     }

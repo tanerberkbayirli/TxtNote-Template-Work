@@ -1607,14 +1607,15 @@
     "id": "source-currency-and-conflicts",
     "kind": "note",
     "params": {
-      "text": "University confirmation required for current medical guide, numbering position and cover name/size conflicts. Live PDF download not verified."
+      "text": "RESOLVED 2026-10-15: bottom-centre numbers and 14 pt cover title per guide general prose, corroborated by Çöldür 2018 thesis. Current guide downloaded/hash verified; university name updated by user decision. See validation/mcbu-thesis-research-20261015/decisions.json. Other source-silent properties remain documented INFO."
     },
     "expected": null,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "Source provenance; §1.4 and Ek-1"
+      "locator": "Guide §1.4/§II; Çöldür 2018 cover p.1 (14.04 pt), physical pp.9/10/20/50 bottom-centre labels; source-measurements.json"
     },
-    "evidence": "UNKNOWN",
-    "required": true
+    "evidence": "INFERRED",
+    "required": true,
+    "ruling": "User-authorized example-based decision 2026-10-15; published examples corroborate/complete source rules; not institutional approval."
   }
 ]

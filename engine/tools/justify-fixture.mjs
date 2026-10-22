@@ -1,5 +1,5 @@
 // Isolated engine acceptance fixture (justified-text line breaking), never a university formatting source.
-// Regenerate: node orchestration/tools/justify-fixture.mjs
+// Regenerate: node engine/tools/justify-fixture.mjs
 import { writeFile } from 'node:fs/promises';
 import generic from '../../engine/src/templates/generic.js';
 const id = 'engine-word-justify';
@@ -33,7 +33,7 @@ const template = { ...generic, id, universityId: 'engine-test', universityName: 
   page: { ...generic.page, header: { ...generic.page.header, content: '' }, footer: { ...generic.page.footer, content: '' }, numbering: { ...generic.page.numbering, enabled: false } }, sections };
 checks.push(...['word_opens', 'page_count_match', 'docx_no_undefined'].map(kind => ({ id: kind, kind, params: {}, expected: true,
   source: { file: 'Word engine acceptance fixture', locator: 'physical page sequence and OOXML validity' }, evidence: 'MEASURED' })));
-await writeFile(`orchestration/specs/${id}.fixture.json`, JSON.stringify({ title: 'Justify line breaking matrix', __template: template,
+await writeFile(`engine/specs/${id}.fixture.json`, JSON.stringify({ title: 'Justify line breaking matrix', __template: template,
   content: sectionContent.J01, researchData: { thesis: { templateId: id, templateVersion: template.templateVersion, values: {}, sectionContent } } }, null, 1));
-await writeFile(`orchestration/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
+await writeFile(`engine/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
 console.log(`${id}: ${sections.length} cases, ${checks.length} checks`);

@@ -68,6 +68,7 @@ export interface NumberingRule {
 }
 export interface PageChromePosition { xMm: Length; yMm: Length; widthMm: Length; heightMm: Length; }
 export interface PageChromeParagraph { text: string; style: Partial<TextStyle>; }
+export interface PageChromeImage extends PageChromePosition { src: string; alt?: string; }
 export interface PageChromeRule {
   heightMm: Length;
   distanceMm: Length;
@@ -82,6 +83,9 @@ export interface PageChromeRule {
   paragraphs?: PageChromeParagraph[];
   firstParagraphs?: PageChromeParagraph[];
   evenParagraphs?: PageChromeParagraph[];
+  images?: PageChromeImage[];
+  firstImages?: PageChromeImage[];
+  evenImages?: PageChromeImage[];
   position?: PageChromePosition;
   firstPosition?: PageChromePosition;
   evenPosition?: PageChromePosition;
@@ -115,6 +119,11 @@ export type PageOverride = Partial<Omit<PageRule, "margins" | "header" | "footer
 export type LayoutMode = "flow" | "anchored" | "absolute";
 export type ThesisLayoutTextStyle = Partial<TextStyle> & { /** Restricted to #RRGGBB when imported. */ color?: string };
 export interface ThesisLayoutElementOverride {
+  /** Containing-block origin for page-coordinate presentation frames in static output. */
+  originXMm?: number;
+  originYMm?: number;
+  flowMarginTopMm?: number;
+  flowMarginBottomMm?: number;
   xMm?: Length;
   yMm?: Length;
   widthMm?: Length;
@@ -418,7 +427,7 @@ interface LayoutBox {
 export type SpecialPageBlock =
   | (LayoutBox & { type: "image"; source: string; widthMm: Length; heightMm: Length; align?: "left" | "center" | "right" })
   /** Static template text; `{{KEY}}` placeholders are accepted for older templates. */
-  | (LayoutBox & { type: "text"; value: string; /** "inline": `**bold**` runs in the template text (metadata values are never parsed). */ markup?: "inline"; style?: Partial<TextStyle> })
+  | (LayoutBox & { type: "text"; value: string; /** "inline": `**bold**` runs in the template text (metadata values are never parsed). */ markup?: "inline"; /** Optional explicit template runs; concatenated text must equal value. */ runs?: Array<{ text: string; fontFamily?: string; bold?: boolean }>; style?: Partial<TextStyle> })
   /** One metadata value from thesis.values (placeholder key). prefix/suffix are static; fallback replaces an empty value. */
   | (LayoutBox & { type: "metadata"; field: string; prefix?: string; suffix?: string; fallback?: string; style?: Partial<TextStyle> })
   | (LayoutBox & { type: "spacer"; heightMm: Length })

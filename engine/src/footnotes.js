@@ -374,6 +374,23 @@ const REPLACED = /^(IMG|SVG|CANVAS|VIDEO|IFRAME|OBJECT)$/i;
 const blockDisplay = (display) => !/^(inline|contents|none)/.test(display) && display !== "ruby";
 
 /**
+ * Word keeps a body line's full box above the note area: text bottom + the 6.9 pt leading under the last line (page.lastLineLeadingMm) + the
+ * separator's 6 pt space-before, i.e. >= 12.3-13.5 pt between the last line's text and the separator rule (MEASURED in Word with a 0.5 pt
+ * note-height sweep, independent of the notes' typography). The editor's limit leaves 9.55 pt + half of the extra leading inside the notes' line
+ * boxes (lineHeight above 1; fitted on AFSÜ lh 1.2 = 13.3 pt and İYTE lh 1.0 = 9.85 pt, both measured as the smallest clearance the editor
+ * keeps), so a paragraph on a page with notes holds back what is missing up to Word's value. Zero when the notes' leading already gives it.
+ */
+const WORD_NOTE_CLEARANCE_PT = 12.9;
+const EDITOR_NOTE_CLEARANCE_PT = 9.55;
+function noteClearanceShortfallPx(rule, allocationHeightPx) {
+  const separator = rule.separator?.enabled ? ((rule.separator.spaceBeforePt || 0) + (rule.separator.thicknessPt || 0) + (rule.separator.spaceAfterPt || 0)) * 96 / 72 : 0;
+  const lineHeight = Math.max(1, Number(rule.style?.lineHeight) || 1);
+  const leading = Math.max(0, allocationHeightPx - separator) * (lineHeight - 1) / lineHeight;
+  return Math.max(0, (WORD_NOTE_CLEARANCE_PT - EDITOR_NOTE_CLEARANCE_PT) * 96 / 72 - leading / 2);
+}
+const lineTailShortfall = (element, ctx) => (element.tagName === "P" ? ctx.noteExtra || 0 : 0);
+
+/**
  * The block to stamp so that page `index` ends above `limit`, or null when nothing
  * on that page reaches below it. Children are in flow order, so a binary search
  * finds the first one reaching below the limit without reading every paragraph.
@@ -382,8 +399,29 @@ function cutTarget(container, index, limit, ctx) {
   const pageTop = index * ctx.stride;
   const pageEnd = pageTop + ctx.contentHeight;
   const kids = [...container.children].filter((child) => !child.matches(NO_CUT));
+  // Word keeps a paragraph's space after (the gap to the next block) above the notes too, not only its last line box: on a page with notes a
+  // paragraph that ends on the page counts with that gap (MEASURED in Word with single-line paragraphs: clearance = 12.9 pt + space after for
+  // 6 / 12 / 20.7 pt; real documents of the additive-spacing templates AKÜ Matematik / MBG / FBE agree: 22 -> 0 shifted pages). Only for
+  // `paragraphSpacing: "additive"` templates (ctx.trailingSpace): AKÜ Coğrafya (collapse, 6/6 pt) loses a line Word keeps with it, so collapse
+  // templates stay on the line-box rule until a measurement says otherwise. Only paragraphs; a gap to a block on another page is the larger
+  // of the two margins.
+  const trailingGap = (i) => {
+    const child = kids[i];
+    if (!ctx.trailingSpace || child?.tagName !== "P") return 0;
+    const list = fragments(child, ctx);
+    if (!list.length) return 0;
+    const end = list[list.length - 1];
+    const next = kids[i + 1] ? fragments(kids[i + 1], ctx) : [];
+    if (next.length && pageIndexOf(next[0].top, ctx) === pageIndexOf(end.top, ctx) && next[0].top > end.bottom) return next[0].top - end.bottom;
+    // Next block on another page (or none): Word's gap is still the larger of this paragraph's space after and the next block's space before.
+    const own = parseFloat(getComputedStyle(child).marginBottom) || 0;
+    if (!kids[i + 1]) return own;
+    // A block that starts a new page by a forced break loses its space before there (Word drops it at the top of a page): only the paragraph's own space counts.
+    if (/^(page|column|always|left|right)$/.test(getComputedStyle(kids[i + 1]).breakBefore)) return own;
+    return Math.max(own, parseFloat(getComputedStyle(kids[i + 1]).marginTop) || 0);
+  };
   const lastBottom = (i) => {
-    for (let j = i; j >= 0; j -= 1) { const list = fragments(kids[j], ctx); if (list.length) return list[list.length - 1].bottom; }
+    for (let j = i; j >= 0; j -= 1) { const list = fragments(kids[j], ctx); if (list.length) return list[list.length - 1].bottom + trailingGap(j) + lineTailShortfall(kids[j], ctx); }
     return -Infinity;
   };
   let low = 0, high = kids.length;
@@ -394,7 +432,10 @@ function cutTarget(container, index, limit, ctx) {
     if (!list.length) continue;
     const here = list.find((fragment) => onPage(fragment, index, ctx));
     if (!here) { if (pageIndexOf(list[0].top, ctx) > index) return null; continue; }
-    if (here.bottom <= limit + 0.5) continue;
+    // Only the paragraph's last fragment is followed by its gap; a paragraph that goes on to the next page ends this page on a plain line.
+    const trailing = here === list[list.length - 1] ? trailingGap(i) : 0;
+    const tail = lineTailShortfall(child, ctx);
+    if (here.bottom + trailing + tail <= limit + 0.5) continue;
     const style = getComputedStyle(child);
     // The note area leaves less than one line on this page and the block already starts it: moving the block cannot be done by a
     // break (it is already after one), so it keeps its place and is pushed down by a full page of top padding.
@@ -426,7 +467,7 @@ function cutTarget(container, index, limit, ctx) {
       // limit means nothing by itself; only its own loose text (legacy notes) can cross.
       if (![...child.childNodes].some((node) => node.nodeType === 3 && node.data.replace(/[​-‍⁠﻿]/g, "").trim())) return null;
     }
-    return { element: child, kind: "reserve", amount: pageEnd - limit, limit, pageEnd };
+    return { element: child, kind: "reserve", amount: pageEnd - limit + trailing + tail, limit, pageEnd };
   }
   return null;
 }
@@ -548,6 +589,7 @@ function recordState(record, index, refs, carry, ctx) {
   if (record.stamp?.kind === "reserve" && [...(reserves.get(record.stamp.element)?.spacers.values() || [])].some((node) => !node.isConnected)) return false;
   if (record.stamp && (!record.stamp.element.isConnected || record.stamp.element.getAttribute(record.stamp.kind === "push" ? PUSH : STAMP) !== (record.stamp.kind === "push" ? String(round(ctx.contentHeight)) : record.stamp.kind) || !ctx.flow.contains(record.stamp.element))) return false;
   if (record.limit >= ctx.contentHeight - 0.5) return "valid";
+  ctx.noteExtra = record.noteExtra || 0;
   const cut = cutTarget(ctx.flow, index, index * ctx.stride + record.limit, ctx);
   if (!cut) return "valid";
   if (cut.kind === "push" && record.stamp?.kind === "push" && cut.element === record.stamp.element) return "valid";
@@ -561,6 +603,7 @@ function recordState(record, index, refs, carry, ctx) {
 function retargetPage(ctx, index, record) {
   const owner = `${ctx.groupId}:${index}`;
   releaseStamp(record.stamp, owner);
+  ctx.noteExtra = record.noteExtra || 0;
   const cut = cutTarget(ctx.flow, index, index * ctx.stride + record.limit, ctx);
   const next = { ...record, stamp: cut ? applyStamp(cut, owner, ctx) : null };
   if (next.ownSig === refSig(readRefs(ctx).filter((ref) => ref.page === index))) return next;
@@ -584,10 +627,12 @@ function layoutPage(ctx, index, carry, previous) {
     // page's first line (pushing it would empty the page and repeat there).
     // The limit is the middle of the reference glyph, which lies inside its own line: the raised glyph's top can sit above the line box and would push the line above it too.
     if (pushedRef && pushedRef.offset > pushedRef.lineHeight) limit = Math.min(limit, pushedRef.mid);
+    const noteExtra = allocation.items.length ? noteClearanceShortfallPx(ctx.rule, allocation.height) : 0;
     const record = {
-      limit, cap, ownSig: refSig(onPage), carrySig: noteSig(carry), items: allocation.items, pending: allocation.pending, height: allocation.height,
+      limit, noteExtra, cap, ownSig: refSig(onPage), carrySig: noteSig(carry), items: allocation.items, pending: allocation.pending, height: allocation.height,
       pushed: pushedRef ? { key: pushedRef.key, offset: 0 } : null, stamp: null,
     };
+    ctx.noteExtra = noteExtra;
     if (limit < ctx.contentHeight - 0.5) {
       const cut = cutTarget(ctx.flow, index, index * ctx.stride + limit, ctx);
       if (cut) record.stamp = applyStamp(cut, owner, ctx);
@@ -620,7 +665,7 @@ export function layoutGroupFootnotes({ article, group, rule, state, deadline = I
   const view = { pages: {}, tail: 0, incomplete: false };
   if (!flow || !measure) return view;
   const scale = new DOMMatrixReadOnly(getComputedStyle(stack).transform).a || 1;
-  const ctx = { groupId: group.id, flow, measure, rule, scale, heights: state.heights ||= new Map(), top: flow.getBoundingClientRect().top, stride: flowPagePitchPx(metrics), rowGap: metrics.rowGapPx, contentHeight: Math.floor(metrics.contentHeightPx * 64) / 64, noteHeight: Math.floor((metrics.contentHeightPx - metrics.trailingLeadingPx) * 64) / 64 };
+  const ctx = { groupId: group.id, trailingSpace: group.rules?.lineSpacing?.paragraphSpacing === "additive", flow, measure, rule, scale, heights: state.heights ||= new Map(), top: flow.getBoundingClientRect().top, stride: flowPagePitchPx(metrics), rowGap: metrics.rowGapPx, contentHeight: Math.floor(metrics.contentHeightPx * 64) / 64, noteHeight: Math.floor((metrics.contentHeightPx - metrics.trailingLeadingPx) * 64) / 64 };
   const ruleSig = JSON.stringify([rule, metrics.contentHeightPx, metrics.contentWidthPx]);
   if (state.ruleSig !== ruleSig) {
     for (const record of state.pages || []) releaseStamp(record?.stamp, `${group.id}:${state.pages.indexOf(record)}`);

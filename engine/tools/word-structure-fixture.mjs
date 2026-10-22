@@ -14,7 +14,7 @@ const words = (name, regex, tolerance = .5, extra = {}) => check(name, 'line_wor
 const exact = (name, regex, attr, value, tolerance = .25) => {
   for (const output of ['layout', 'word']) {
     check(`${name}-${output}`, 'line_attr', { source: output, regex, attr }, value, tolerance);
-    Object.assign(checks.at(-1), { source: { file: 'orchestration/tools/word-structure-fixture.mjs', locator: `${name}: explicit engine input ${attr}=${value}` }, evidence: 'EXPLICIT' });
+    Object.assign(checks.at(-1), { source: { file: 'engine/tools/word-structure-fixture.mjs', locator: `${name}: explicit engine input ${attr}=${value}` }, evidence: 'EXPLICIT' });
   }
 };
 const add = (code, html, overrides = {}, extra = {}) => {
@@ -82,7 +82,7 @@ for (const code of ['001', '055', '110', '115']) {
 }
 for (const output of ['layout', 'word']) {
   check(`number-baseline-${output}`, 'page_number_attr', { source: output, pages: { until: '^LAND_LINE 001' }, attr: 'baseline' }, 276, .25);
-  Object.assign(checks.at(-1), { source: { file: 'orchestration/tools/word-structure-fixture.mjs', locator: 'page.numbering.baselineFromTopMm=276' }, evidence: 'EXPLICIT' });
+  Object.assign(checks.at(-1), { source: { file: 'engine/tools/word-structure-fixture.mjs', locator: 'page.numbering.baselineFromTopMm=276' }, evidence: 'EXPLICIT' });
 }
 for (const marker of ['CHROME_FIRST', 'CHROME_EVEN', 'CHROME_ODD']) match(`${marker}-baseline`, `^${marker}`);
 
@@ -169,7 +169,7 @@ const template = buildTemplate(id, sections);
 // number baseline in Word; the editor/PDF must put it at the same y. Each section is one page (pageBreakBefore) with its own footer geometry.
 const writeVariant = async (name, tid, secs, content, tweak = (tpl) => tpl) => {
   const tpl = tweak(buildTemplate(tid, secs, false));
-  await writeFile(`orchestration/specs/${id}.fixture.${name}.json`, JSON.stringify({ title: `Word structure acceptance (${name})`, __template: tpl, content: content[secs.find((section) => section.type === 'mainContent').id], researchData: { thesis: { templateId: tid, templateVersion: tpl.templateVersion, values: {}, sectionContent: content } } }, null, 1));
+  await writeFile(`engine/specs/${id}.fixture.${name}.json`, JSON.stringify({ title: `Word structure acceptance (${name})`, __template: tpl, content: content[secs.find((section) => section.type === 'mainContent').id], researchData: { thesis: { templateId: tid, templateVersion: tpl.templateVersion, values: {}, sectionContent: content } } }, null, 1));
 };
 const variantSections = (list, content) => (code, html, overrides = {}, extra = {}) => {
   list.push({ id: code, type: list.length ? 'custom' : 'mainContent', title: code, status: 'required', group: 'body', mode: 'editable', pageBreakBefore: true, showTitle: false, tocEntry: 'none', overrides, ...extra });
@@ -207,6 +207,6 @@ variant = null;
 await writeVariant('fields', `${id}-fields`, fieldSections, fieldContent, (tpl) => { tpl.page.footer = { ...tpl.page.footer, content: 'FIELD_TOTAL {{NUMPAGES}}' }; return tpl; });
 
 for (const kind of ['word_opens', 'page_count_match', 'page_labels_match', 'docx_no_undefined']) check(kind, kind, {}, true);
-await writeFile(`orchestration/specs/${id}.fixture.json`, JSON.stringify({ title: 'Word structure acceptance', __template: template, content: sectionContent.TABLE_AUTO, researchData: { thesis: { templateId: id, templateVersion: template.templateVersion, values: {}, sectionContent } } }, null, 1));
-await writeFile(`orchestration/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
+await writeFile(`engine/specs/${id}.fixture.json`, JSON.stringify({ title: 'Word structure acceptance', __template: template, content: sectionContent.TABLE_AUTO, researchData: { thesis: { templateId: id, templateVersion: template.templateVersion, values: {}, sectionContent } } }, null, 1));
+await writeFile(`engine/specs/${id}.checks.json`, JSON.stringify(checks, null, 1));
 console.log(`${id}: ${sections.length} sections, ${checks.length} checks; real export still required`);

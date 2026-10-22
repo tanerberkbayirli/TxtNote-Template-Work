@@ -88,15 +88,20 @@ export function layoutWordJustification(root,model){
   for(const [id,hosts] of hostsBySection){
     const section=sections.get(id);
     for(const p of hosts){
+      // Opaque drawing paragraphs can contain megabytes of image/XML markup.
+      // They never enter this line fitter, so do not serialize innerHTML or
+      // measure their computed typography for an unused fast-cache key.
+      if(p.tagName!=='P'||section.rules.justify==='browser'||p.querySelector('br,img,svg,math,.math-formula,[data-thesis-tab],[data-thesis-mirror-narrow],[contenteditable="false"]')||p.closest('[data-thesis-generated]')){todo.push(()=>unwrap(p));continue;}
       // A paragraph whose markup and governing style are unchanged since its last settled layout is skipped outright.
       let fastKey=null;
       if(p.tagName==='P'){const c=getComputedStyle(p);fastKey=[version,styleEpoch,environmentState.version,c.width,c.textIndent,c.textAlign,c.fontFamily,c.fontSize,c.fontWeight,c.fontStyle,c.letterSpacing,c.wordSpacing,c.textTransform,c.direction,c.paddingLeft,c.paddingRight,section.rules.justify].join('|');
         const done=appliedFast.get(p);if(done&&done.key===fastKey&&done.html===p.innerHTML)continue;}
       // Nested table paragraphs belong to their own layout; tabs, equations and
       // page-fragment mirror floats keep their existing specialized paths.
-      if(p.tagName!=='P'||section.rules.justify==='browser'||p.querySelector('br,img,svg,math,.math-formula,[data-thesis-tab],[data-thesis-mirror-narrow],[contenteditable="false"]')||p.closest('[data-thesis-generated]')){todo.push(()=>unwrap(p));continue;}
       // A no-wrap paragraph (w:noWrap cell) never breaks, so there is no line fit to compute.
-      const css=getComputedStyle(p);if(css.textAlign!=='justify'||css.whiteSpace==='nowrap'||!KNOWN.has(family(css.fontFamily))){todo.push(()=>unwrap(p));continue;}
+      // A vertical-writing paragraph (w:textDirection btLr/tbRl cell) has its measure on the block axis: css.width is the cell's thickness, not
+      // the line length. Fitting against it cut words mid-word ("Faa|aliyet"); the browser lays these lines out natively.
+      const css=getComputedStyle(p);if(css.textAlign!=='justify'||css.whiteSpace==='nowrap'||/^(vertical|sideways)/.test(css.writingMode)||!KNOWN.has(family(css.fontFamily))){todo.push(()=>unwrap(p));continue;}
       const width=parseFloat(css.width)-parseFloat(css.paddingLeft)-parseFloat(css.paddingRight)-parseFloat(css.borderLeftWidth)-parseFloat(css.borderRightWidth);
       if(!(width>0)){todo.push(()=>unwrap(p));continue;}
       const entries=[];let text='';const walker=doc.createTreeWalker(p,4);

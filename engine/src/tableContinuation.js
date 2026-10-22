@@ -90,7 +90,7 @@ export function layoutTableContinuations(root, groups, model) {
         // Word: paragraphs of one style with "don't add space between paragraphs of the same style" sit flush, a list
         // included (SRC09 EK-2: empty list-style paragraphs follow the bullets at the plain line pitch). The paragraph
         // chain already zeroes both outer margins; the list container's own bottom margin must not bring the gap back.
-        for (const list of table.querySelectorAll("td>:is(ul,ol),th>:is(ul,ol)")) {
+        for (const list of table.querySelectorAll("td>:is(ul,ol),th>:is(ul,ol),td>txt-table-cell-content>:is(ul,ol),th>txt-table-cell-content>:is(ul,ol)")) {
           const lastParagraph = list.lastElementChild?.querySelector("p");
           const next = list.nextElementSibling;
           // A list that ends its cell is flush when its last paragraph carries no space after (Word drops it at a cell's end).
@@ -168,7 +168,12 @@ export function layoutTableContinuations(root, groups, model) {
           if (index < from) continue;
           const value = getComputedStyle(row).getPropertyValue("--thesis-source-row-min").trim();
           const minimum = value.endsWith("mm") ? parseFloat(value) * 96 / 25.4 : 0;
-          const rowTop = row.getClientRects()[0]?.top;
+          // Without a declared minimum or an exact-height constraint, this
+          // pass cannot reserve space or move the row. Avoid forcing a full
+          // fragmented-table layout just to discover that there is no work.
+          if (!(minimum > 0) && !row.hasAttribute('data-docx-exact')) continue;
+          const rects = row.getClientRects();
+          const rowTop = rects[0]?.top;
           if (rowTop === undefined) continue;
           const y = (rowTop - origin) / zoom;
           const inPage = ((y % stride) + stride) % stride;
@@ -178,7 +183,6 @@ export function layoutTableContinuations(root, groups, model) {
           // An exact-height row cannot split and must end inside the page frame (the frame already stops above the footer, as
           // Word's body does). Chrome leaves such a row at the page foot with its bottom past the frame (SRC09 EK-2's 22.7 pt
           // header: 3.7 pt past it, where Word starts it on the next page); the row moves whole.
-          const rects = row.getClientRects();
           const exactNeed = row.hasAttribute("data-docx-exact") && rects.length === 1 ? rects[0].height / zoom : 0;
           const minimumFits = minimum > 0 && minimum <= metrics.contentHeightPx;
           if (inPage > metrics.topMarginPx + 1 && ((minimumFits && remaining + 0.5 < minimum) || (exactNeed > 0 && exactNeed <= metrics.contentHeightPx && remaining < exactNeed))) {

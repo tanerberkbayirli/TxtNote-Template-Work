@@ -857,21 +857,13 @@
           "value": "regular weight entries, single (1.15) line + 5 pt after (20.88 pt pitch), level indents 0/11/22 pt, right tab 410.5 pt, 'Sayfa' column label 11 pt"
         }
       ],
-      "decision": "RESOLVED by user rule (official template wins over guide prose): implemented T1/T2/T3 styles (regular weight, 1.15 line + 5 pt after, 11 pt per level, 'Sayfa' 11 pt label). Overridden guide values: bold level-1 entries, 1.5 spacing, 1.25 cm indent. Measured vs official render: 'Sayfa' 109.12 vs 109.10 pt, first entry 123.62 vs 123.62, pitch 20.86 vs 20.88, level indents 0/11/22 pt (editor and Word)."
+      "decision": "RESOLVED by user rule (official template wins over guide prose): implemented T1/T2/T3 styles (regular weight, 1.15 line + 5 pt after, 11 pt indent increment per level, entry text 12 pt, 'Sayfa' 11 pt label). Overridden guide values: bold level-1 entries, 1.5 spacing, 1.25 cm indent. Measured vs official render: 'Sayfa' 109.12 vs 109.10 pt, first entry 123.62 vs 123.62, pitch 20.86 vs 20.88, level indents 0/11/22 pt (editor and Word)."
     }
   ],
   "unknowns": [
     {
       "key": "language.fullThesisEnglish",
       "why": "Only English ABSTRACT requirements are established; no English-language full-thesis variant is present in the supplied LEE sources."
-    },
-    {
-      "key": "pagination.footerFontSize",
-      "why": "Guide states same font character as body and bottom-right position, but does not establish page-number point size or exact footer distance in guide prose."
-    },
-    {
-      "key": "toc.leadersAndSublevelIndents",
-      "why": "Guide specifies 1.25 cm heading indent and aligned page numbers, but not dot leaders, tab stops, or exact indent depth per subheading level."
     },
     {
       "key": "abstract.exactPresentationBeyondProse",
@@ -888,14 +880,6 @@
     {
       "key": "citations.maximumQuotationLength",
       "why": "The guide says quotations beyond reasonable limits are an ethical violation, but states no numeric quotation-length/page limit."
-    },
-    {
-      "key": "ethics.bulletGlyph",
-      "why": "Template ethics list uses a Symbol-font bullet (numId 3, left 720 / hanging 360 twips). Export uses U+2022 in Times New Roman (Symbol glyph not available through the text engine); geometry matches, glyph font differs."
-    },
-    {
-      "key": "approval.rowHeights",
-      "why": "Template rows have trHeight 1127/939 twips with centred cells and mixed after-spacing (first member row 48.1 pt, others 58.1 pt); the guide gives no row-height rule."
     }
   ],
   "engineGaps": [],
@@ -914,5 +898,104 @@
     "date": "2026-10-03",
     "dir": "orchestration/validation/afsu-lee/self-6",
     "summary": "H2/H3 blank lines implemented (gaps 43.31/48.36 and 41.44/46.78 vs source 43.32/48.36 and 41.4/46.83). PhD cover number now Calibri 11 pt (embedded font name Calibri, baseline 766.17 vs 766.18). Table rules stroke 0.5 pt in the PDF (declared width via data-thesis-rule-pt, opt-in with border.collapse); Word rules sz 4 = 0.5 pt."
+  },
+  "exampleResearch20261015": {
+    "authority": "User authorized current published thesis examples on 2026-10-15; skip when no suitable accessible example exists.",
+    "decisions": [],
+    "sourceRecord": "orchestration/validation/template-thesis-research-20261015/downloads-v2.json",
+    "outputAcceptance": "NOT_RERUN; source measurements are not new generated-output acceptance.",
+    "currentOfficialTemplates": [
+      {
+        "online": {
+          "url": "https://legens.afsu.edu.tr/wp-content/uploads/sites/18/2026/02/Doktora-Tez-Yazim-Sablonu-5.docx",
+          "path": "orchestration/validation/template-thesis-research-20261015/sources/afsu-lee-current-2026-0.docx",
+          "sha256": "f89164a95b38b0844afbaf988b01c927229af84e6af4cd14f101b998fa3ad153",
+          "bytes": 467187
+        },
+        "local": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx"
+      },
+      {
+        "online": {
+          "url": "https://legens.afsu.edu.tr/wp-content/uploads/sites/18/2026/02/Yuksek-Lisans-Tez-Yazim-Sablonu-6.docx",
+          "path": "orchestration/validation/template-thesis-research-20261015/sources/afsu-lee-current-2026-1.docx",
+          "sha256": "3a891f9fe8da0a9c4ad0d1f0b6b41c048d03e27d75dcfe1ba0b8c00e4c4520cd",
+          "bytes": 428179
+        },
+        "local": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx"
+      }
+    ],
+    "rejectedOlderExample": {
+      "sourceId": "afsu-lee-ozgul-2025",
+      "reason": "2025 example predates the February 2026 official templates. Its number centre x≈115 mm differs from the current template. Do not replace current geometry with the older thesis."
+    }
+  },
+  "sourceReview20261015": {
+    "evidence": "orchestration/validation/resizeobserver-source-review-20261015/source-audit.json",
+    "sourceCurrency": "Official current-source downloads and SHA-256 comparisons already recorded on 2026-10-15 in template-thesis-research-20261015/downloads-v2.json; this review re-reads the same local bytes, without claiming another download.",
+    "resolved": [
+      {
+        "key": "pagination.footerFontSize",
+        "previousUnknown": "Guide states same font character as body and bottom-right position, but does not establish page-number point size or exact footer distance in guide prose.",
+        "value": "Nominal 11 pt; linked footer character style AltBilgiChar w:sz=22. Common body footer distance 709 twips; doctorate Roman footer is a separately anchored variant.",
+        "locator": "word/styles.xml AltBilgiChar; word/document.xml sectPr; source template-structure-evidence.json footer_fields_and_rendered_positions",
+        "status": "RESOLVED_FROM_CURRENT_OFFICIAL_TEMPLATE",
+        "confidence": "MEASURED",
+        "sourceFiles": [
+          {
+            "file": "Butun-Sablonlar\\Ege\\Afyonkarahisar Sağlık Bilimleri Üniversitesi\\Lisansustu_Egitim_Enstitusu_Tez\\AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+            "sha256": "3a891f9fe8da0a9c4ad0d1f0b6b41c048d03e27d75dcfe1ba0b8c00e4c4520cd"
+          },
+          {
+            "file": "Butun-Sablonlar\\Ege\\Afyonkarahisar Sağlık Bilimleri Üniversitesi\\Lisansustu_Egitim_Enstitusu_Tez\\AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+            "sha256": "f89164a95b38b0844afbaf988b01c927229af84e6af4cd14f101b998fa3ad153"
+          }
+        ]
+      },
+      {
+        "key": "toc.leadersAndSublevelIndents",
+        "previousUnknown": "Guide specifies 1.25 cm heading indent and aligned page numbers, but not dot leaders, tab stops, or exact indent depth per subheading level.",
+        "value": "Level indents 0/220/440 twips (0/11/22 pt); right-aligned dot-leader tab at 8210 twips (410.5 pt). T1/T2 define tabs in styles; T3 sample defines its dot-leader tab directly in paragraph properties. Applies to observed levels 1–3; level 4 is not established by these examples.",
+        "locator": "word/styles.xml T1/T2/T3; word/document.xml T3 paragraphs w:pPr/w:tabs",
+        "status": "RESOLVED_FROM_CURRENT_OFFICIAL_TEMPLATE",
+        "confidence": "MEASURED",
+        "sourceFiles": [
+          {
+            "file": "Butun-Sablonlar\\Ege\\Afyonkarahisar Sağlık Bilimleri Üniversitesi\\Lisansustu_Egitim_Enstitusu_Tez\\AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+            "sha256": "3a891f9fe8da0a9c4ad0d1f0b6b41c048d03e27d75dcfe1ba0b8c00e4c4520cd"
+          },
+          {
+            "file": "Butun-Sablonlar\\Ege\\Afyonkarahisar Sağlık Bilimleri Üniversitesi\\Lisansustu_Egitim_Enstitusu_Tez\\AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+            "sha256": "f89164a95b38b0844afbaf988b01c927229af84e6af4cd14f101b998fa3ad153"
+          }
+        ]
+      },
+      {
+        "key": "approval.rowHeights",
+        "previousUnknown": "Template rows have trHeight 1127/939 twips with centred cells and mixed after-spacing (first member row 48.1 pt, others 58.1 pt); the guide gives no row-height rule.",
+        "value": "Table header minimum 1127 twips (56.35 pt), member rows minimum 939 twips (46.95 pt); no exact hRule, so these are minimums, not fixed row heights. Master one chair + two members, doctorate one chair + four members. Long replacement content may expand rows.",
+        "locator": "word/document.xml jury table w:trPr/w:trHeight; absence of w:hRule",
+        "status": "RESOLVED_FROM_CURRENT_OFFICIAL_TEMPLATE",
+        "confidence": "MEASURED",
+        "sourceFiles": [
+          {
+            "file": "Butun-Sablonlar\\Ege\\Afyonkarahisar Sağlık Bilimleri Üniversitesi\\Lisansustu_Egitim_Enstitusu_Tez\\AFSU_Lisansustu_Yuksek_Lisans_Tez_Sablonu_2026.docx",
+            "sha256": "3a891f9fe8da0a9c4ad0d1f0b6b41c048d03e27d75dcfe1ba0b8c00e4c4520cd"
+          },
+          {
+            "file": "Butun-Sablonlar\\Ege\\Afyonkarahisar Sağlık Bilimleri Üniversitesi\\Lisansustu_Egitim_Enstitusu_Tez\\AFSU_Lisansustu_Doktora_Tez_Sablonu_2026.docx",
+            "sha256": "f89164a95b38b0844afbaf988b01c927229af84e6af4cd14f101b998fa3ad153"
+          }
+        ]
+      }
+    ],
+    "implementationLimitations": [
+      {
+        "key": "ethics.bulletGlyph",
+        "why": "Template ethics list uses a Symbol-font bullet (numId 3, left 720 / hanging 360 twips). Export uses U+2022 in Times New Roman (Symbol glyph not available through the text engine); geometry matches, glyph font differs.",
+        "status": "KNOWN_SOURCE_IMPLEMENTATION_DIFFERENCE",
+        "reason": "Symbol source glyph is known; rendered fallback font is an implementation limitation, not missing source evidence."
+      }
+    ],
+    "scope": "Source reconciliation only; historical output acceptance remains historical. Fourth-level TOC and arbitrary table continuation not established."
   }
 }

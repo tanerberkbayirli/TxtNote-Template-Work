@@ -1,4 +1,12 @@
 # afsu-tip — context pack
+
+## Güncel çıktı kabulü — 15.10.2026 devamı
+
+Dört örnek-tez kararı gerçek çıktılarda doğrulandı. Üç hedef/dokuz örnek: 315 PASS, 0 FAIL/UNKNOWN/SKIPPED, 7 INFO; ilgili 39 birim testi ve derleme PASS. Güncel kanıt `orchestration/validation/template-thesis-research-20261015/acceptance-summary.json`, karar düzeltmesi `decisions-v2.json`. Tıp için PDF ölçümü 11,04 pt; Word nominali 11 pt. Aşağıdaki mola ve ilk araştırma notları kendi checkpointlerinin tarihçesidir; JSON spec içindeki NOT_RERUN kaydı ilk kaynak-kararı checkpointine aittir. Diğer kaynak belirsizlikleri ve pas geçilen şablonlar açık kalır.
+
+## 15.10.2026 örnek tez araştırması
+
+Güncel kararlar: `orchestration/validation/template-thesis-research-20261015/decisions.json`; kaynak ölçümleri `measurements.json`. Kullanıcı güncel örnekleri esas alma ve bulunamayanları pas geçme talimatı verdi. Yalnız kayıtlı maddeler çözüldü; aşağıdaki eski notlarda bu maddelere ilişkin kararlar tarihsel kabul edilir. Yeni üretim çıktısı kabulü çalıştırılmadı.
 ## Identity
 - Registry id(s): `afsu-tip-uzmanlik-tr-v1`
 - Template module: `engine/src/templates/afsu-tip.js` (exports: afsuTipUzmanlik)

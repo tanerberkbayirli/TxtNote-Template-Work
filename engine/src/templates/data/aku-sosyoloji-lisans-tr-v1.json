@@ -1,0 +1,845 @@
+{
+ "schemaVersion": 1,
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 45,
+   "bottomMm": 45,
+   "leftMm": 45,
+   "rightMm": 30
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false,
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12
+   }
+  },
+  "header": {},
+  "footer": {}
+ },
+ "tables": {
+  "label": "Tablo"
+ },
+ "figures": {
+  "label": "Şekil"
+ },
+ "bibliography": {
+  "heading": "KAYNAKÇA",
+  "citationStyle": "author-year"
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceAfterPt": 6,
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 12.5,
+   "fontWeight": 400,
+   "spaceBeforePt": 6
+  },
+  "paragraph": {
+   "align": "justify",
+   "spaceAfterPt": 6,
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 12.5,
+   "spaceBeforePt": 6
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word",
+   "paragraphSpacing": "additive"
+  },
+  "footnotes": {
+   "placement": "pageBottom",
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "numbering": "document"
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "center",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "textTransform": "uppercase",
+    "spaceBeforePt": 6,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1} BÖLÜM",
+     "sequence": "ordinal-tr-upper",
+     "placement": "ownLine"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 400,
+    "align": "left",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 6,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{2}.",
+     "sequence": "arabic"
+    },
+    "textTransform": "uppercase"
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 400,
+    "align": "left",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 6,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{2}.{3}.",
+     "sequence": "arabic"
+    },
+    "textTransform": "uppercase"
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceAfterPt": 6,
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 0,
+    "keepWithNext": true,
+    "spaceBeforePt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{2}.{3}.{4}.",
+     "sequence": "arabic"
+    },
+    "textTransform": "capitalize"
+   }
+  },
+  "paragraphStyles": {
+   "blockQuote": {
+    "fontSizePt": 11,
+    "lineHeight": 1,
+    "leftIndentMm": 10,
+    "rightIndentMm": 10
+   }
+  }
+ },
+ "templateVersion": "1.0.0",
+ "id": "aku-sosyoloji-lisans-tr-v1",
+ "universityId": "aku",
+ "universityName": "Afyon Kocatepe Üniversitesi",
+ "instituteId": "fef-sosyoloji",
+ "instituteName": "Fen Edebiyat Fakültesi · Sosyoloji Bölümü",
+ "degreeType": "undergraduate",
+ "language": "tr",
+ "status": "official",
+ "displayName": "Afyon Kocatepe Üniversitesi · Fen Edebiyat Fakültesi · Sosyoloji Bölümü · Bitirme Tezi",
+ "source": {
+  "type": "official",
+  "documentName": "AKÜ Sosyoloji Bölümü Lisans Bitirme Tezi Yazım Kılavuzu — AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+  "revisionDate": "2022-04 (dosya Last-Modified 2022-04-05; core.xml 2014-11 / 2015-06; kılavuz kapağı: AFYONKARAHİSAR-2014)",
+  "verifiedAt": "2026-10-02",
+  "notes": [
+   "Kural önceliği (kullanıcı kararı): kılavuzun açık metni EXPLICIT; kılavuzun biçimlendirilmiş ek örnek sayfaları (Ek-1 ... Ek-6; Word tuvali metin kutuları) XML paragraf/çalıştırma özellikleri ve Word çıktısıyla MEASURED ve metinle çeliştiğinde örnek sayfa üstündür. Kılavuz belgesinin kendi sectPr/stilleri (25 mm kenar, 1,15 satır, 10 nk sonra) tezin kuralı değil kılavuzun kendi sayfa düzenidir ve kullanılmadı. Örnek sayfa çerçeveleri (450 pt x 9 inç tuval) sayfa geometrisi olarak kullanılmadı; yalnız yazı boyutu, hizalama, satır aralığı ve boş paragraf yapısı alındı.",
+   "EXPLICIT (metin): Times New Roman, 12 punto, 1,5 satır, 1,25 cm paragraf başı girintisi, paragraflar arası önce 6 nk + sonra 6 nk (Word toplamlı), iki yana yaslı; kenar boşlukları üst 4,5 / alt 4,5 / sol 4,5 / sağ 3 cm; tablo ve içindeki yazı için daha küçük punto/satır aralığı serbest; 3 satırı veya 40 kelimeyi aşan doğrudan alıntı 11 punto, tek satır, sağdan ve soldan 1 cm daraltılmış; içindekiler ve listeler yazılıma hazırlatılır; en az 60 sayfa, en az 40 kaynak; sayfa numaraları altta ortada, yanında başka işaret yok; Giriş'e kadar ön bölüm küçük Romen (i, ii, iii), ana ve arka bölüm 1'den Arapça; atıf metin içinde (Soyad, yıl: sayfa), kaynakça arka bölümde yazar soyadına göre alfabetik, yalnız yararlanılan eserler.",
+   "Bölüm sırası (metin): Dış Kapak, İç Kapak, [Ön Bölüm: Önsöz (isteğe bağlı), İçindekiler, Tablolar Listesi, Şekiller Listesi, Simgeler ve Kısaltmalar], [Ana Bölüm: Giriş, Tez Metni, Sonuç ve Öneriler], [Arka Bölüm: Kaynakça, Ekler]. Dış/İç Kapak listede Ön Bölümden ayrı bir liste grubundadır (numbering.xml): numarasız sayılır (INFERRED); Önsöz = i. Onay, bildirim, özet/abstract, teşekkür, özgeçmiş sayfaları kaynakta tanımlı DEĞİL: üretilmedi.",
+   "Dış Kapak (Ek-1): 14 pt koyu ortalı dört satır (6 nk sonra), iki boş 14 pt paragraf, 18 pt koyu başlık, Hazırlayan/Danışman blokları, AFYONKARAHİSAR yıl; tüm paragraflar 1,5 satır, açık 'sonra' yazılmamış paragraflarda Word varsayılanı 10 nk (Word çıktısında taban çizgisi aralıklarıyla doğrulandı). İç Kapak (Ek-2): 'T.C.' + dört 12 pt satır, iki boş 14 pt paragraf, 14 pt başlık, öğrenci numarası. Örneklerin başlık satırları 'Times' yazı tipi adıyla yazılmıştır; kılavuz metni tüm metin için Times New Roman der: Times New Roman uygulandı (ÇELİŞKİ kaydı).",
+   "Başlıklar: kılavuz metni başlık biçimi tanımlamaz. Yalnız Ek-3 örneği düzeyleri gösterir: 'BİRİNCİ BÖLÜM' + bölüm adı ortalı koyu; '1. ORTA BAŞLIK' ve '1.1. YAN BAŞLIK' büyük harf, normal ağırlık; '2.1.1. Alt Başlık' Baş Harfleri Büyük koyu; numaralar her bölümde yeniden başlar. İçindekiler satırı ağırlıkları başlığa yansıtıldı (INFERRED). Başlık aralığı UNKNOWN: genel paragraf kuralı (1,5 satır, 6/6 nk) uygulandı. Bölümlerin yeni sayfada başlaması UNKNOWN (zorlanmadı). Ek-3'te 3. düzey '3.1 YANBAŞLIK1' sonu noktasız yazılmıştır, diğerleri noktalıdır: noktalı (çoğunluk).",
+   "CONFLICT (table-list title): prose paragraph 45 and the Ek-3 TOC row say 'TABLOLAR LİSTESİ'; the dedicated actual list-page example Ek-4 is headed 'TABLOLAR DİZİNİ'. Applied 'TABLOLAR DİZİNİ' because the dedicated example is more specific to the generated page than its TOC label and prose section name; the counter-evidence remains explicit.",
+   "Listeler (Ek-4/Ek-5): başlık 12 pt koyu ortalı; 'Sayfa' 11,5 pt normal tek satır (Ek-4'te ortalı, Ek-5'te sağa yaslı: ÇELİŞKİ, sağa yaslı seçildi); satırlar 11,5 pt KOYU (etiket, başlık, noktalar, sayfa), tek satır, 0 nk, iki yana yaslı, noktalı kılavuz. Örnek sayfalardaki 11,5 pt metindeki '12 punto' kuralına aykırıdır (ÇELİŞKİ; kullanıcı kararı gereği örnek sayfa). Başlık ile 'Sayfa' arasında bir boş Normal paragraf (Ek-4 ölçümü 51,7 pt). Ek-6: başlık 11,5 pt koyu, satırlar 11,5 pt normal 1,5 satır, 15,9 mm (902 tw) ilk satır girintisi; örnekte 'Bkz' ve 'SBE' satırları elle kaydırılmıştır (kural değil, atlandı). Örnek sayfaların başındaki boş paragraf sayısı (Ek-4: 1, Ek-5: 2, Ek-6: 2) kendi içinde tutarsız ve sayfa konumu çizimin parçası: üretilmedi (UNKNOWN).",
+   "İçindekiler (Ek-3): başlık 12 pt koyu ortalı, satırlar 12 pt; ÖNSÖZ/GİRİŞ/liste/SONUÇ/KAYNAKÇA/EKLER satırları koyu; bölüm satırları ('BİRİNCİ BÖLÜM', bölüm adı) koyu ortalı sayfa numarasız; ORTA/YAN BAŞLIK normal, Alt Başlık koyu; örnekte alt düzeyler 4,3 mm basamakla boşlukla kaydırılmıştır (ölçüm). Örnek sayfa satır aralığı (koyu üst satırlar 1,15 satır + 10 nk, numaralı satırlar tek satır 0 nk) uygulandı. Örnekteki sayfa numaraları hatalıdır (şekiller 'vi', kısaltmalar 'v'): kural değil, görsel örnek.",
+   "UNKNOWN (missing evidence): page-number font/size (12 pt INFERRED from general text-size rule) and bottom distance; thesis header/footer geometry; footnote style; preface layout; caption position, typography, alignment and style (Ek-4/Ek-5 show list rows only); table rules; equations; block-quote first-line indent and spacing; bibliography-specific indent/spacing beyond the general paragraph rule; appendices; abstract (absent). Caption labels and document-wide Arabic number pattern are INFERRED from the official index rows 'Tablo 1.' / 'Şekil 1.'; no caption paragraphs were found. General paragraph rule applies to reference entries only as an INFERRED fallback. The guide's page/source-count and writing-format examples are not document rules.",
+   "Kılavuz belgesinin kendi paragrafları (1,15 satır, ilk satır 1,0 cm, 10 nk sonra, iki yana yaslı) kendi metin kuralına (1,5 satır, 1,25 cm, 6/6 nk) uymaz: ÇELİŞKİ kaydı; metin kuralı uygulandı (örnek sayfa değil, kılavuz belgesinin kendi gövdesi)."
+  ]
+ },
+ "placeholders": {
+  "THESIS_TITLE": {
+   "label": "Bitirme tezi başlığı",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrencinin Adı SOYADI",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası (iç kapak)",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı (Prof. Dr. / Doç. Dr. / Dr. Öğr. Üyesi)",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman Adı SOYADI",
+   "type": "text",
+   "required": true
+  },
+  "SUBMISSION_YEAR": {
+   "label": "Tezin teslim yılı (kapak)",
+   "type": "number",
+   "required": true
+  }
+ },
+ "sections": [
+  {
+   "id": "outer-cover",
+   "type": "outerCover",
+   "title": "DIŞ KAPAK",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "AFYON KOCATEPE ÜNİVERSİTESİ",
+     "style": {
+      "fontSizePt": 14,
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "FEN EDEBİYAT FAKÜLTESİ",
+     "style": {
+      "fontSizePt": 14,
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "SOSYOLOJİ BÖLÜMÜ",
+     "style": {
+      "fontSizePt": 14,
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "LİSANS BİTİRME TEZİ",
+     "style": {
+      "fontSizePt": 14,
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 12.04736111111111
+    },
+    {
+     "type": "spacer",
+     "heightMm": 12.04736111111111
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "TEZ BAŞLIĞI",
+     "style": {
+      "textTransform": "uppercase",
+      "fontSizePt": 18,
+      "spaceAfterPt": 10
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.830277777777777
+    },
+    {
+     "type": "text",
+     "value": "Hazırlayan",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Ad SOYAD",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.830277777777777
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.830277777777777
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.830277777777777
+    },
+    {
+     "type": "text",
+     "value": "AFYONKARAHİSAR {{SUBMISSION_YEAR}}"
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "fontWeight": 700
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İÇ KAPAK",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "AFYON KOCATEPE ÜNİVERSİTESİ",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "FEN EDEBİYAT FAKÜLTESİ",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "SOSYOLOJİ BÖLÜMÜ",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "LİSANS BİTİRME TEZİ",
+     "style": {
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 12.04736111111111
+    },
+    {
+     "type": "spacer",
+     "heightMm": 12.04736111111111
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "TEZ BAŞLIĞI",
+     "style": {
+      "textTransform": "uppercase",
+      "fontSizePt": 14,
+      "spaceAfterPt": 10
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.830277777777777
+    },
+    {
+     "type": "text",
+     "value": "Hazırlayan",
+     "style": {
+      "spaceAfterPt": 10
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Ad SOYAD",
+     "style": {
+      "spaceAfterPt": 10
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NUMBER",
+     "fallback": "Öğrenci No",
+     "style": {
+      "spaceAfterPt": 10
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.830277777777777
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "spaceAfterPt": 10
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "spaceAfterPt": 10
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.830277777777777
+    },
+    {
+     "type": "text",
+     "value": "AFYONKARAHİSAR {{SUBMISSION_YEAR}}"
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "fontWeight": 700,
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "startAt": 1,
+      "restart": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "numbering": {
+       "enabled": false
+      },
+      "textTransform": "none",
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6
+     }
+    }
+   }
+  },
+  {
+   "id": "toc",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "leader": "dots",
+    "matchHeadingTransform": true,
+    "style": {
+     "align": "left",
+     "spaceAfterPt": 0,
+     "lineHeight": 1,
+     "spaceBeforePt": 0
+    },
+    "indentMm": 0,
+    "leaderFlow": "inline",
+    "levelStyles": {
+     "1": {
+      "fontWeight": 700,
+      "align": "center",
+      "includePageNumber": false,
+      "lineHeight": 1.15,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 10
+     },
+     "2": {
+      "fontWeight": 400,
+      "leftIndentMm": 0
+     },
+     "3": {
+      "fontWeight": 400,
+      "leftIndentMm": 4.3
+     },
+     "4": {
+      "fontWeight": 700,
+      "leftIndentMm": 8.5
+     },
+     "unnumbered": {
+      "fontWeight": 700,
+      "align": "left",
+      "includePageNumber": true,
+      "lineHeight": 1.15,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 10
+     }
+    }
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 10,
+      "lineHeight": 1.15,
+      "numbering": {
+       "enabled": false
+      },
+      "textTransform": "none",
+      "spaceBeforePt": 0
+     }
+    }
+   }
+  },
+  {
+   "id": "list-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "tables",
+    "leader": "dots",
+    "pageHeading": "Sayfa",
+    "indentMm": 0,
+    "style": {
+     "align": "justify",
+     "spaceAfterPt": 0,
+     "lineHeight": 1,
+     "spaceBeforePt": 0,
+     "fontSizePt": 11.5,
+     "fontWeight": 700
+    },
+    "pageHeadingStyle": {
+     "fontWeight": 400,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "fontSizePt": 11.5,
+     "lineHeight": 1,
+     "align": "right"
+    },
+    "title": "TABLOLAR DİZİNİ",
+    "leaderFlow": "inline"
+   },
+   "visibleWhen": {
+    "count": "tables",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 35.87,
+      "lineHeight": 1.15,
+      "textTransform": "none",
+      "numbering": {
+       "enabled": false
+      },
+      "spaceBeforePt": 0,
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    }
+   }
+  },
+  {
+   "id": "list-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER LİSTESİ",
+    "leader": "dots",
+    "pageHeading": "Sayfa",
+    "indentMm": 0,
+    "style": {
+     "align": "justify",
+     "spaceAfterPt": 0,
+     "lineHeight": 1,
+     "spaceBeforePt": 0,
+     "fontSizePt": 11.5,
+     "fontWeight": 700
+    },
+    "pageHeadingStyle": {
+     "fontWeight": 400,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "fontSizePt": 11.5,
+     "lineHeight": 1,
+     "align": "right"
+    },
+    "leaderFlow": "inline"
+   },
+   "visibleWhen": {
+    "count": "figures",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 35.87,
+      "lineHeight": 1.15,
+      "numbering": {
+       "enabled": false
+      },
+      "textTransform": "none",
+      "spaceBeforePt": 0,
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    }
+   }
+  },
+  {
+   "id": "symbols",
+   "type": "listOfAbbreviations",
+   "title": "KISALTMALAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "paragraph": {
+     "firstLineIndentMm": 15.9,
+     "lineHeight": 1.5,
+     "align": "justify",
+     "fontSizePt": 11.5,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0
+    },
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "spaceAfterPt": 19.8375,
+      "lineHeight": 1,
+      "numbering": {
+       "enabled": false
+      },
+      "textTransform": "none",
+      "spaceBeforePt": 0,
+      "fontSizePt": 11.5
+     }
+    }
+   }
+  },
+  {
+   "id": "introduction",
+   "type": "introduction",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center",
+      "textTransform": "none",
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "tocEntry": "title"
+  },
+  {
+   "id": "main",
+   "type": "mainContent",
+   "title": "Bölümler",
+   "status": "required",
+   "group": "body",
+   "mode": "editable"
+  },
+  {
+   "id": "conclusion",
+   "type": "conclusion",
+   "title": "SONUÇ VE ÖNERİLER",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "headings": {
+     "1": {
+      "align": "center",
+      "textTransform": "none",
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKÇA",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "headings": {
+     "1": {
+      "align": "center",
+      "textTransform": "none",
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "headings": {
+     "1": {
+      "numbering": {
+       "enabled": false
+      },
+      "align": "center",
+      "textTransform": "none",
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6
+     }
+    }
+   }
+  }
+ ]
+}

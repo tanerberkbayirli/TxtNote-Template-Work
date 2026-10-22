@@ -6,7 +6,7 @@
 // presses the editor's own "PDF" and "Word" buttons and saves the downloads.
 // Nothing here builds a PDF itself: the files are exactly what a user gets.
 //
-// Usage: node orchestration/tools/export.mjs <fixture.json> <outPrefix> [baseUrl]
+// Usage: node engine/tools/export.mjs <fixture.json> <outPrefix> [baseUrl]
 //   fixture.json = { title, content, researchData: { thesis: {...} } }
 //   writes <outPrefix>.pdf, <outPrefix>.docx, <outPrefix>.layout.json
 //
@@ -177,7 +177,7 @@ try {
     await page.getByRole("button", { name: button, exact: true }).click();
     // The editor reports a failed export as a message instead of a download.
     const failure = page.waitForFunction((before) => {
-      const busy = [...document.querySelectorAll("button")].some((b) => b.textContent.trim() === "Hazırlanıyor…");
+      const busy = [...document.querySelectorAll("button")].some((b) => b.textContent.includes("Hazırlanıyor…"));
       const message = document.querySelector('.thesis-ribbon-message[role="status"]')?.textContent?.trim();
       return !busy && message && message !== before && !/indirildi|Kaydedildi/.test(message) ? message : false;
     }, messageBefore, { timeout: 240000, polling: 500 }).then((handle) => handle.jsonValue());
