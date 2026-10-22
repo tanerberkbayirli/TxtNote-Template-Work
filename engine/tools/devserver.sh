@@ -5,7 +5,18 @@ set -u
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 PIDFILE="${TMPDIR:-/tmp}/txtnote-vite.pid"
 LOG="${TMPDIR:-/tmp}/txtnote-vite.log"
-stop() { [ -f "$PIDFILE" ] && kill "$(cat "$PIDFILE")" 2>/dev/null; rm -f "$PIDFILE"; for p in $(ps -eo pid,comm,args | awk '$2=="node" && /vite/ {print $1}'); do kill "$p" 2>/dev/null; done; }
+# Stops only the server this script started (its PID file) and that process's children (esbuild); other vite
+# servers on the machine keep running (HE-TS-06).
+stop() {
+  [ -f "$PIDFILE" ] || return 0
+  pid="$(cat "$PIDFILE")"
+  if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null; then
+    pkill -P "$pid" 2>/dev/null
+    kill "$pid" 2>/dev/null
+    for _ in $(seq 1 20); do kill -0 "$pid" 2>/dev/null || break; sleep 0.25; done
+  fi
+  rm -f "$PIDFILE"
+}
 start() {
   cd "$ROOT/TxtNote/frontend" && nohup node node_modules/vite/bin/vite.js --port 5175 --strictPort --host 127.0.0.1 > "$LOG" 2>&1 &
   echo $! > "$PIDFILE"

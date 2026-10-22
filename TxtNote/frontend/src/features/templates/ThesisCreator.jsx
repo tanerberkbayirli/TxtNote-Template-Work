@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { THESIS_TEMPLATE_REGISTRY } from "../../../../../engine/src/registry.js";
 
-const labelForDegree = { undergraduate: "Lisans", master: "Yüksek lisans", phd: "Doktora", specialization: "Uzmanlık" };
+const labelForDegree = { undergraduate: "Lisans", master: "Yüksek lisans", phd: "Doktora", specialization: "Uzmanlık", "sanatta-yeterlik": "Sanatta yeterlik" };
 
 export function ThesisCreator({ onCreate }) {
   const [universityId, setUniversityId] = useState(THESIS_TEMPLATE_REGISTRY[0].universityId);

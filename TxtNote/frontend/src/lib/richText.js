@@ -14,6 +14,7 @@ import {
   validCustomFormatAttr,
 } from "../config/format";
 import { withoutInlineStyleAttributes } from "./cspStyles.js";
+import { isDangerousUrl } from "../../../../engine/src/safeUrl.js";
 import {
   beginCodeEdit,
   codeMarkerAt,
@@ -82,16 +83,26 @@ export function sanitizeHtml(html) {
     "BASE",
     "FORM",
     "STYLE",
-    "SVG",
-    "MATH",
     "TEMPLATE",
     "APPLET",
+    "FRAME",
+    "FRAMESET",
+    // SVG/MathML stay (drawings imported from Word are SVG); their script-bearing parts do not. Animation elements
+    // can rewrite an href to a script URL at run time.
+    "ANIMATE",
+    "ANIMATEMOTION",
+    "ANIMATETRANSFORM",
+    "SET",
+    "HANDLER",
+    "LISTENER",
   ]);
   const urlAttrs = new Set(["href", "src", "xlink:href", "action", "formaction", "poster", "background", "cite"]);
   const walk = (root) => {
     [...root.childNodes].forEach((child) => {
-      if (!(child instanceof HTMLElement)) return;
-      if (banned.has(child.tagName)) {
+      // Every element, not only HTML ones: SVG/MathML elements are not HTMLElements and used to pass unchecked,
+      // event handlers and script URLs included (HE-GV-01).
+      if (child.nodeType !== 1) return;
+      if (banned.has(child.tagName.toUpperCase())) {
         child.remove();
         return;
       }
@@ -123,10 +134,7 @@ export function sanitizeHtml(html) {
           child.removeAttribute(attr.name);
           return;
         }
-        if (
-          urlAttrs.has(name) &&
-          /^\s*(javascript|vbscript|data\s*:\s*(text\/html|image\/svg|application\/xhtml))/i.test(value)
-        ) {
+        if (urlAttrs.has(name) && isDangerousUrl(value)) {
           child.removeAttribute(attr.name);
         }
       });

@@ -98,11 +98,66 @@ export async function finalizeThesisDocx(blob, { noteRestart = false, noteRestar
       }
     }
     // Word stretches a justified line that ends in a manual line break ("BİRİNCİ ..... BÖLÜM"); LibreOffice and the preview never do.
-    if (name === "word/settings.xml" && !/<w:doNotExpandShiftReturn/.test(xml)) xml = xml.replace(/<w:compat>/, "<w:compat><w:doNotExpandShiftReturn/>");
+    if (name === "word/settings.xml" && !/<w:doNotExpandShiftReturn\b/.test(xml)) xml = xml.replace(/<w:compat>/, "<w:compat><w:doNotExpandShiftReturn/>");
+    if (name === "word/settings.xml") xml = orderSettingsChildren(xml);
     files[name] = strToU8(xml);
   }
   const result = new Blob([zipSync(files)], { type: blob.type });
   // Written XML parts, for the field/bookmark audit of the export (not part of the package).
   result.wordXmlParts = Object.keys(files).filter((name) => /^word\/.*\.xml$/.test(name)).map((name) => strFromU8(files[name]));
   return result;
+}
+
+/**
+ * ECMA-376 Part 1, CT_Settings (§17.15.1.78): the children of w:settings form a sequence. The docx library writes
+ * evenAndOddHeaders/updateFields before defaultTabStop, which strict readers (Open XML SDK) reject (HE-DX-01).
+ */
+const SETTINGS_ORDER = ["writeProtection", "view", "zoom", "removePersonalInformation", "removeDateAndTime", "doNotDisplayPageBoundaries",
+  "displayBackgroundShape", "printPostScriptOverText", "printFractionalCharacterWidth", "printFormsData", "embedTrueTypeFonts",
+  "embedSystemFonts", "saveSubsetFonts", "saveFormsData", "mirrorMargins", "alignBordersAndEdges", "bordersDoNotSurroundHeader",
+  "bordersDoNotSurroundFooter", "gutterAtTop", "hideSpellingErrors", "hideGrammaticalErrors", "activeWritingStyle", "proofState",
+  "formsDesign", "attachedTemplate", "linkStyles", "stylePaneFormatFilter", "stylePaneSortMethod", "documentType", "mailMerge",
+  "revisionView", "trackRevisions", "doNotTrackMoves", "doNotTrackFormatting", "documentProtection", "autoFormatOverride",
+  "styleLockTheme", "styleLockQFSet", "defaultTabStop", "autoHyphenation", "consecutiveHyphenLimit", "hyphenationZone",
+  "doNotHyphenateCaps", "showEnvelope", "summaryLength", "clickAndTypeStyle", "defaultTableStyle", "evenAndOddHeaders",
+  "bookFoldRevPrinting", "bookFoldPrinting", "bookFoldPrintingSheets", "drawingGridHorizontalSpacing", "drawingGridVerticalSpacing",
+  "displayHorizontalDrawingGridEvery", "displayVerticalDrawingGridEvery", "doNotUseMarginsForDrawingGridOrigin",
+  "drawingGridHorizontalOrigin", "drawingGridVerticalOrigin", "doNotShadeFormData", "noPunctuationKerning", "characterSpacingControl",
+  "printTwoOnOne", "strictFirstAndLastChars", "noLineBreaksAfter", "noLineBreaksBefore", "savePreviewPicture",
+  "doNotValidateAgainstSchema", "saveInvalidXml", "ignoreMixedContent", "alwaysShowPlaceholderText", "doNotDemarcateInvalidXml",
+  "saveXmlDataOnly", "useXSLTWhenSaving", "saveThroughXslt", "showXMLTags", "alwaysMergeEmptyNamespace", "updateFields",
+  "hdrShapeDefaults", "footnotePr", "endnotePr", "compat", "docVars", "rsids", "m:mathPr", "attachedSchema", "themeFontLang",
+  "clrSchemeMapping", "doNotIncludeSubdocsInStats", "doNotAutoCompressPictures", "forceUpgrade", "captions", "readModeInkLockDown",
+  "smartTagType", "sl:schemaLibrary", "shapeDefaults", "doNotEmbedSmartTags", "decimalSymbol", "listSeparator"]
+  .map((name) => (name.includes(":") ? name : `w:${name}`));
+const SETTINGS_RANK = new Map(SETTINGS_ORDER.map((name, index) => [name, index]));
+
+/** Top-level children of an element's XML body (each a complete element string). */
+function xmlChildren(body) {
+  const children = [];
+  const tag = /<(\/?)([\w:.-]+)(?:[^"'>]|"[^"]*"|'[^']*')*?(\/?)>/g;
+  let depth = 0, start = -1, name = "";
+  for (let match; (match = tag.exec(body));) {
+    const [text, closing, tagName, selfClosing] = match;
+    if (closing) {
+      depth -= 1;
+      if (depth === 0) children.push({ name, xml: body.slice(start, match.index + text.length) });
+      continue;
+    }
+    if (depth === 0) { start = match.index; name = tagName; }
+    if (selfClosing) { if (depth === 0) children.push({ name, xml: text }); } else depth += 1;
+  }
+  return children;
+}
+
+export function orderSettingsChildren(xml) {
+  const open = xml.match(/<w:settings\b[^>]*>/);
+  const end = xml.lastIndexOf("</w:settings>");
+  if (!open || end < 0) return xml;
+  const bodyStart = open.index + open[0].length;
+  const children = xmlChildren(xml.slice(bodyStart, end));
+  // Known elements in schema order; extension elements (w14:, w15:, …) keep their order after them, as Word writes them.
+  const rank = (child) => SETTINGS_RANK.get(child.name) ?? SETTINGS_ORDER.length;
+  const ordered = children.map((child, index) => ({ child, index })).sort((a, b) => rank(a.child) - rank(b.child) || a.index - b.index).map(({ child }) => child.xml);
+  return xml.slice(0, bodyStart) + ordered.join("") + xml.slice(end);
 }

@@ -866,6 +866,8 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     if (!ready) { setMessage(indexWarning || "Sayfalama henüz doğrulanmadı; yazdırma/dışa aktarma engellendi."); return; }
     const frame = document.createElement("iframe");
     frame.style.cssText = "position:fixed;width:0;height:0;border:0;visibility:hidden";
+    // No scripts in the print copy (HE-GV-02): same origin so this window can style and print it, modals for print().
+    frame.setAttribute("sandbox", "allow-same-origin allow-modals");
     frame.srcdoc = buildThesisPrintHtml(model, { nonce: trustedStyleNonce() });
     frame.onload = async () => {
       if (paginationActive && (generation !== paginationEpochRef.current || paginationReadyEpochRef.current !== generation)) {

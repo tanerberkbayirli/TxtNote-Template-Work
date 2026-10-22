@@ -12,14 +12,30 @@ import {
 } from "../config/limits.js";
 import { shouldSkipArchiveEntry, splitSafePath } from "./filePath.js";
 
-const unzipFromFflate = async (bytes) => {
+const unzipFromFflate = async (bytes, filter) => {
   const { unzip } = await import("fflate");
   return new Promise((resolve, reject) => {
-    unzip(bytes, (error, result) => {
+    unzip(bytes, filter ? { filter } : {}, (error, result) => {
       if (error) reject(error);
       else resolve(result || {});
     });
   });
+};
+
+/** The archive's directory (names and declared sizes) without inflating a single entry. */
+const scanZip = async (bytes) => {
+  const files = [];
+  await unzipFromFflate(bytes, (file) => {
+    files.push({ name: file.name, originalSize: file.originalSize });
+    return false;
+  });
+  return files;
+};
+
+const entryParts = (rawName) => splitSafePath(String(rawName).replace(/\\/g, "/").replace(/\/+$/, ""));
+const isKeptEntry = (rawName) => {
+  const parts = entryParts(rawName);
+  return Boolean(parts) && !shouldSkipArchiveEntry(parts);
 };
 
 const asUint8 = (bytes) => {
@@ -43,6 +59,7 @@ export async function extractZipEntries(bytes, meta = {}) {
   const data = asUint8(bytes);
   const compressedSize = Number.isFinite(meta.compressedSize) ? meta.compressedSize : data.length;
   const errors = [];
+  let skippedBeforeRead = 0;
 
   if (data.length === 0) {
     return { entries: [], skipped: 0, errors: ["Arşiv boş veya okunamadı."] };
@@ -55,25 +72,42 @@ export async function extractZipEntries(bytes, meta = {}) {
     };
   }
 
+  // Limits first, from the archive's own directory: nothing is inflated until they pass (HE-VB-07). The sizes are
+  // what the archive declares; the real sizes are checked again below while reading the entries.
+  let directory;
+  try {
+    directory = await scanZip(data);
+  } catch {
+    return { entries: [], skipped: 0, errors: ["Arşiv açılamadı. Dosya bozuk olabilir."] };
+  }
+  if (directory.length > UPLOAD_ZIP_MAX_ENTRIES) {
+    return {
+      entries: [],
+      skipped: directory.length,
+      errors: [`Arşivde çok fazla öğe var (en fazla ${UPLOAD_ZIP_MAX_ENTRIES}).`],
+    };
+  }
+  const declared = directory.filter((file) => isKeptEntry(file.name)).reduce((sum, file) => sum + (Number(file.originalSize) || 0), 0);
+  if (declared > UPLOAD_ZIP_MAX_UNCOMPRESSED) {
+    return { entries: [], skipped: directory.length, errors: ["Arşiv açılınca çok büyüyor. İçindekiler yüklenmedi."] };
+  }
+  if (compressedSize > 0 && declared / compressedSize > UPLOAD_ZIP_MAX_RATIO) {
+    return { entries: [], skipped: directory.length, errors: ["Arşiv şüpheli ölçüde sıkıştırılmış. Güvenlik için açılmadı."] };
+  }
+
   let unzipped;
   try {
-    unzipped = await unzipFromFflate(data);
+    unzipped = await unzipFromFflate(data, (file) => isKeptEntry(file.name));
   } catch {
     return { entries: [], skipped: 0, errors: ["Arşiv açılamadı. Dosya bozuk olabilir."] };
   }
 
   const names = Object.keys(unzipped);
-  if (names.length > UPLOAD_ZIP_MAX_ENTRIES) {
-    return {
-      entries: [],
-      skipped: names.length,
-      errors: [`Arşivde çok fazla öğe var (en fazla ${UPLOAD_ZIP_MAX_ENTRIES}).`],
-    };
-  }
+  skippedBeforeRead = directory.length - names.length;
 
   let uncompressed = 0;
   const entries = [];
-  let skipped = 0;
+  let skipped = skippedBeforeRead;
 
   for (const rawName of names) {
     const payload = asUint8(unzipped[rawName]);

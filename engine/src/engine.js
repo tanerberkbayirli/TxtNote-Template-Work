@@ -6,6 +6,7 @@ import { styleNonceAttribute, withoutInlineStyleAttributes } from "../../TxtNote
 import { flattenSpecialPage, isSpecialPageSection, resolveSpecialPage, specialPageHtml } from "./specialPages.js";
 import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesisPresentationHtml } from "./generatedIndex.js";
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
+import { stripActiveMarkup } from "./activeMarkup.js";
 import { countEndnoteRefs, countFootnoteRefs, resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { resolveLayoutNodes, resolveLayoutPage } from "./layoutDocument.js";
@@ -336,7 +337,8 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     rules.body = resolveLayoutTypography(rules.body, section.id, thesis.layout);
     const mode = thesisSectionMode(section);
     const editable = mode === "editable";
-    const source = thesisSourceHtml(thesisSectionContent(section, thesis, mainContent));
+    // Stored note HTML reaches the model, print and exports without the editor's sanitizer (HE-GV-02).
+    const source = thesisSourceHtml(stripActiveMarkup(thesisSectionContent(section, thesis, mainContent)));
     const fixed = resolvePlaceholders(section.content || "", template.placeholders, values);
     const fixedOverride = thesisTextOverride(thesis, section.id, "fixed");
     if (fixedOverride !== undefined && !isSpecialPageSection(section)) fixed.text = fixedOverride;
