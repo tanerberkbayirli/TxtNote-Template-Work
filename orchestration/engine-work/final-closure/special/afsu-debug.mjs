@@ -1,4 +1,0 @@
-import { readFile } from 'node:fs/promises';import {chromium}from '../../../tools/node_modules/playwright/index.mjs';const b=await chromium.launch({channel:'chrome',args:['--enable-blink-features=MulticolColumnWrapping']});try{const p=await b.newPage();const d=JSON.parse(await readFile('orchestration/specs/afsu-eczacilik-proje.fixture.json','utf8'));d.content='<p>Araştırma metni.</p>';d.researchData.thesis.sectionContent=Object.fromEntries(Object.keys(d.researchData.thesis.sectionContent||{}).map(k=>[k,'<p>Özel sayfa denetimi.</p>']));await p.addInitScript(d=>{localStorage.clear();localStorage.setItem('txtnote-thesis-regression',JSON.stringify(d))},d);p.on('pageerror',e=>console.log(e.stack));await p.goto('http://127.0.0.1:5194/tests/thesis.html');await p.waitForTimeout(3000);console.log((await p.locator('body').innerText()).slice(-3500));}finally{await b.close()}
-
-
-

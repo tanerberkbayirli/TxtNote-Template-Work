@@ -13,29 +13,20 @@ Thumbs.db
 .test-tmp/
 .claude/
 .cladue/
-/orchestration/bugs/
-/orchestration/bugs.md
-/orchestration/relocation-backups/
 
 __pycache__/
 *.pyc
-/orchestration/tools/runtime-packages/
-/orchestration/tools/python-packages/
-/orchestration/tools/runtime-wheels/
-/orchestration/tools/measurement-packages/
+/engine/tools/runtime-packages/
+/engine/tools/python-packages/
+/engine/tools/runtime-wheels/
+/engine/tools/measurement-packages/
 
 # Word/Office lock files
 ~$*
 
 # Local workflow notes and reproducible export outputs
-/orchestration/WORKFLOW_LOCAL.md
-/orchestration/*RESUME*.md
-/orchestration/*BRIEF*.md
-/orchestration/*HANDOFF*.md
-/orchestration/*AUDIT_TASK*.md
-/orchestration/reports/*RESUME*.md
-/orchestration/artifacts/*/export/
-/orchestration/artifacts/*/exports/
+/engine/references/*/export/
+/engine/references/*/exports/
 /orchestration/validation/**/*.pdf
 /orchestration/validation/**/*.docx
 /orchestration/validation/**/*.png

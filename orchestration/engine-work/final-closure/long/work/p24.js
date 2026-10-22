@@ -1,4 +1,0 @@
-(()=>{const f=document.querySelector('[data-thesis-flow-section="docx-section-23"]').closest('.thesis-page-flow');const r=f.getBoundingClientRect();
- const body=document.querySelector('[data-thesis-flow-section="docx-section-23"] .rich-text-body');const last=body.lastElementChild;const lr=last.getBoundingClientRect();
- const sh=[...document.querySelectorAll('.thesis-sheet')].slice(86,91).map(s=>{const q=s.getBoundingClientRect();return [Math.round(q.top+scrollY),Math.round(q.bottom+scrollY)]});
- return {flowTop:r.top+scrollY,flowH:r.height,flowBottom:r.bottom+scrollY,lastTop:lr.top+scrollY,lastBottom:lr.bottom+scrollY,sh,lastcs:getComputedStyle(last).marginBottom,parents:[last.parentElement.className,last.parentElement.parentElement.className,last.parentElement.parentElement.parentElement.className]}})()

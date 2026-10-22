@@ -1,2 +1,0 @@
-(()=>{const ts=[...document.querySelectorAll('.thesis-page-flow table')].filter(t=>t.textContent.includes('#9'));const t=ts[ts.length-1];
-const rows=[...t.rows];const i=rows.findIndex(r=>r.textContent.includes('F1 Score'));return rows.slice(i,i+3).map(r=>({h:r.getBoundingClientRect().height*0.6,txt:r.textContent.slice(0,30),cells:[...r.cells].map(c=>{const s=getComputedStyle(c);const p=c.querySelector('p');const ps=p&&getComputedStyle(p);return [s.paddingTop,s.height,ps&&ps.fontSize,ps&&ps.lineHeight,ps&&ps.marginTop,c.outerHTML.slice(0,200)]}).slice(0,2)}));})()

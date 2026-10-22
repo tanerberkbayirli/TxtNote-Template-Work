@@ -1,1 +1,0 @@
-import {THESIS_TEMPLATE_REGISTRY} from '../../../engine/src/registry.js';const t=(await THESIS_TEMPLATE_REGISTRY.find(x=>x.id==='afsu-lee-master-tr-v1').load()).default; for(const s of t.sections.filter(x=>x.id.startsWith('abstract'))) console.log(s.id,JSON.stringify(s.overrides?.page));

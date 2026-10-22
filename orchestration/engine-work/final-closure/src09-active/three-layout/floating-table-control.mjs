@@ -1,7 +1,0 @@
-import{createRequire}from'node:module';import{writeFileSync}from'node:fs';
-const{chromium}=createRequire(import.meta.url)('../../../../tools/node_modules/playwright');
-const b=await chromium.launch({channel:'chrome',args:['--enable-blink-features=MulticolColumnWrapping']});const out=[];
-try{const c=await b.newContext({viewport:{width:1400,height:1000}});await c.grantPermissions(['local-fonts'],{origin:'http://127.0.0.1:5193'});
-for(const count of [0,2,4,8]){const p=await c.newPage();await p.goto('http://127.0.0.1:5193/tests/thesis-long.html?id=SRC09_FLOAT_'+count);await p.waitForFunction(()=>document.querySelector('[aria-label="Belge sayfaları"]')?.dataset.thesisPaginationReady==='true',null,{timeout:60000});out.push({count,...await p.evaluate(()=>{const s=document.querySelector('.thesis-sheet').getBoundingClientRect(),z=new DOMMatrix(getComputedStyle(document.querySelector('.thesis-page-stack')).transform).a;const n=[...document.querySelectorAll('.thesis-page-flow p')].find(n=>n.textContent==='END');const r=document.createRange();r.selectNodeContents(n);return{pages:document.querySelectorAll('.thesis-sheet').length,endPt:(r.getBoundingClientRect().top-s.top)/z*.75,css:document.querySelector('style[data-thesis-floating-tables]')?.textContent};})});await p.close();}
-writeFileSync('orchestration/engine-work/final-closure/src09-active/floating-table-cases/chrome.json',JSON.stringify(out,null,2));console.log(out);
-}finally{await b.close()}
