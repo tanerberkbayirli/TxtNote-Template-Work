@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "39adf1bf-086c-4c06-aecf-b0f9332a081c-5762e22d-0a9a-46dd-989a-173b93560447-c6c8095b-87e2-4348-8f53-262a73f34cfa-ingilizce_taslak_2023-3-2.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 97625ac43a2c31345e6482af3a35f5d42b80d2d8d1c151aef1d02e908ab938bb",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -80,7 +80,14 @@
    ],
    "conflicts": [],
    "guide": null,
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 25
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -166,7 +173,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

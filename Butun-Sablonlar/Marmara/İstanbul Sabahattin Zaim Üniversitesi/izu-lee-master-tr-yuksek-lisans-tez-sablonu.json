@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "yuksek-lisans-tez-sablonu.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 157b3a7cbcf2cfa59176d9bd5eddf073984f809dc25a162eee7f9204d3b9ff46",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
@@ -77,7 +77,14 @@
    ],
    "conflicts": [],
    "guide": null,
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 25
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -172,7 +179,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

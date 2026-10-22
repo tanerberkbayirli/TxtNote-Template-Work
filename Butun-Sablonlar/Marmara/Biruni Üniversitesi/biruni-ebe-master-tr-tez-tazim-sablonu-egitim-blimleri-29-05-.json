@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "Tez-tazim-sablonu-EGITIM-BLIMLERI-29-05-2025.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 b53b611eb1daa72872ed0efd46dd2f040fbbe5d902e3089986c59a386cd1ccea",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -141,7 +141,15 @@
     }
    ],
    "guide": "SON-Lisansustu-Egitim-Enstitusu-Tez-Yazim-Kilavuzu.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 30,
+     "CONFLICT": 3
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -227,7 +235,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10

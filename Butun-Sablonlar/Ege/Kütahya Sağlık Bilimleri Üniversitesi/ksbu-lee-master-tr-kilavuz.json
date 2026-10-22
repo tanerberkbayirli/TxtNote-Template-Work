@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -70,7 +70,14 @@
    ],
    "conflicts": [],
    "guide": "KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 37
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

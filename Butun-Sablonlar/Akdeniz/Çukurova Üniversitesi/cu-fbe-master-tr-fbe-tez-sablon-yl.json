@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "FBE_Tez_Şablon_YL.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 29eb4ad704cd6fc4b64a80dbb2025cd4871f25b04e958902490f5aafff6f511a",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -165,7 +165,15 @@
     }
    ],
    "guide": "Tez yazım kılavuzu.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 26,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -270,7 +278,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "lineHeight": 1

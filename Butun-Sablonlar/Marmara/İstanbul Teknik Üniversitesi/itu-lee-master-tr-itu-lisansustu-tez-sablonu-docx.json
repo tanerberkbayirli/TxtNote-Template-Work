@@ -94,7 +94,14 @@
     }
    ],
    "guide": "ıtu_lısansustu_tez_yazım_kılavuzu37f0c24aceeb6433bf21ff0000f8c30df81fdd4b2ea84744bda8ab79887e00d4.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 30
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -187,7 +194,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

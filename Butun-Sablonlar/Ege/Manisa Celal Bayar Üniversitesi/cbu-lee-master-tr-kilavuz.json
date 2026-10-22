@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -110,7 +110,15 @@
    ],
    "conflicts": [],
    "guide": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 31,
+     "UNKNOWN": 2
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

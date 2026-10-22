@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "tez-şablonu-türkçe-4-12-2024.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 88d7b3f21aa5578328c3e4ebfded82016080b305844e52fc7edb373f911b5f27",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -122,7 +122,15 @@
     }
    ],
    "guide": "tez-yazim-kilavuzu-tr.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 32,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -226,7 +234,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10

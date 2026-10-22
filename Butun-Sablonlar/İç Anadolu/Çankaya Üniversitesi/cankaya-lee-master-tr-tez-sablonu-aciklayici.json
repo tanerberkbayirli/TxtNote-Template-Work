@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "Tez-Sablonu-Aciklayici.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 83fba9c0fd0c4c3485abdb67549b4779f33bc709d625dd7d13f39d05edeaa48c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -92,7 +92,15 @@
     }
    ],
    "guide": "TEZ-YAZIM-KILAVUZU.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 32,
+     "CONFLICT": 2
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -203,7 +211,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

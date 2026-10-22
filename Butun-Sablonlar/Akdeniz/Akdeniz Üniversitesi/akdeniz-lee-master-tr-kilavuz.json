@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "TezYazimKilavuzu2022-0.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -96,7 +96,14 @@
    ],
    "conflicts": [],
    "guide": "TezYazimKilavuzu2022-0.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 35
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

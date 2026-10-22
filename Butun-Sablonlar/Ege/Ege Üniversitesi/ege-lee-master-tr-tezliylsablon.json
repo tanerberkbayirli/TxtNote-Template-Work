@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "TezliYLSablon.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 9d63104584bb2f61458ad6d1a0d61e7b19df7fc07dc131e37b7ad64e40b4a200",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -72,7 +72,15 @@
     }
    ],
    "guide": "Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 34,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -179,7 +187,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

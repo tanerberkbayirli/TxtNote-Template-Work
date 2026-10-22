@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "TEZ ŞABLONU DR-YL .docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a81a492c97dcce4ef08f23efb49fc44062304d8763e14874fdc18a749d4f42ec",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -139,7 +139,15 @@
     }
    ],
    "guide": "Tez Yazım Kılavuzu.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 30,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -258,7 +266,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

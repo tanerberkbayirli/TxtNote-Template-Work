@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "MSKU_Egitim_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-10-06.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 3ab752c1e1e8cc2d147307a28ca7aaaf9ddb4167bcdd74418aa5c015d038eff6",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -136,7 +136,15 @@
     }
    ],
    "guide": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 29,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -245,7 +253,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

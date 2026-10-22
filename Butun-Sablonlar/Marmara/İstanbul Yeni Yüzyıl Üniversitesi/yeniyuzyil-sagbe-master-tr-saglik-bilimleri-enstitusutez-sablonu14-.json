@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "Saglik-Bilimleri-EnstitusuTez-sablonu14-01-2026.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 d98fa27df6b031a5ac00e26ef60eb39839b9f49ead04e437e4bdd1f623430b9f",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -115,7 +115,14 @@
    ],
    "conflicts": [],
    "guide": "SAgLIK-BiLiMLERi-ENSTiTuSu-TEZ-YAZIM-KILAVUZU17-09-2024.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 36
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -227,7 +234,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

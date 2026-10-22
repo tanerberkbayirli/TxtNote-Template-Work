@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "tez-yazim-sablonu-word-98.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 6150ca15a34539b0df159a9755b8db74820f51b0eac6ac0ca67cb9b94aef241e",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -99,7 +99,13 @@
     }
    ],
    "guide": "gsu_sbe_-yeni-tez-yazim-kilavuzu_2024-767.pdf",
-   "gate": null
+   "gate": {
+    "overall": "BLOCKED",
+    "results": {},
+    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Cambria izin verilen font ailelerinden biri değil",
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -179,7 +185,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10

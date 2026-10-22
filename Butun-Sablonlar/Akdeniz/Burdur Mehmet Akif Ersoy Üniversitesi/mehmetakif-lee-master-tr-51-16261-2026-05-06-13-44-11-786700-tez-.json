@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "51_16261_2026-05-06-13-44-11-786700_tez-hazir-sablon.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 90eb58d33eccc1f88ab36d63ffe4917a72b553f3d2d89f3159d82ebd8de4fafa",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -133,7 +133,15 @@
     }
    ],
    "guide": "83_16465_2024-07-05-13-23-11-69224_egitim-bilimleri-enstitusu-tez-yazim-kilavuzu.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 34,
+     "CONFLICT": 2
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -214,7 +222,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "tez-word-sablon-2020_WEB_icin-2-1.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 e067eb268e9e9696158f8aa9bd7c061c65cc998d3c0e7ef83a18eee05b6d7adc",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -212,7 +212,15 @@
     }
    ],
    "guide": "AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 29,
+     "CONFLICT": 4
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -317,7 +325,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "paragraph": {
    "spaceBeforePt": 6,

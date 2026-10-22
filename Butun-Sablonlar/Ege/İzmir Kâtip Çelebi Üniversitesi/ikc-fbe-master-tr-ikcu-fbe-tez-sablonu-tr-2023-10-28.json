@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 bed453dd2a4d7420bc2d636818a4490ba1604acb16b9cf0103b7c9716a8ec008",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -68,7 +68,13 @@
    ],
    "conflicts": [],
    "guide": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
-   "gate": null
+   "gate": {
+    "overall": "BLOCKED",
+    "results": {},
+    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Calibri Light izin verilen font ailelerinden biri değil",
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -157,7 +163,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

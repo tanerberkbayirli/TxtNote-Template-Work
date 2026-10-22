@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "1786108667-Ek-3b_FBE_Thesis Template.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 d9ef13720e9fce0afde1874675f7d5fa4535d7cea4363b408922334c90b8584a",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -127,7 +127,15 @@
     }
    ],
    "guide": "1786108572-Ek-2a_FBE_Tez Yazım Kılavuzu.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 29,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -205,7 +213,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "i13txa2ss1kbn-lee-tez-sablonu-2.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 6d0e7540e7d28affb4da4450d3d64de58416fc36c743209f7c27c6414c4f627c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -105,7 +105,15 @@
     }
    ],
    "guide": "kp3x2lqxba5yi-tez-yazim-kilavuzu.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 32,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -185,7 +193,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

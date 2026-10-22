@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "hukuk-project-sablonu.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 9ad580b30575a26f7fef40b40d6145fb3a55b325d967873996a7c3f47fa46e3c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -109,7 +109,13 @@
     }
    ],
    "guide": "lisansustu-tez-yazim-kilavuzurev05.docx",
-   "gate": null
+   "gate": {
+    "overall": "BLOCKED",
+    "results": {},
+    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Cambria izin verilen font ailelerinden biri değil",
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -199,7 +205,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10,

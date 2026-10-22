@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "0ef62dd9d1fa4dcfb7a7a60e8d12beb4_DÜ_FBE_Tez_Şablonu.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 7f7c1199d53a05454b8bcd238f94038729f6ea27e342da48206e3f320dcbea03",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -78,7 +78,14 @@
    ],
    "conflicts": [],
    "guide": "365cadf5a5fc45fd9414610a01cc2c25_DÜ FBE Tez Yazım Kılavuzu.pdf",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 29
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -193,7 +200,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

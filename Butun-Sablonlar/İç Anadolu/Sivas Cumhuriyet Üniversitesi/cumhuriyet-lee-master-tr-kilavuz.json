@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "217_tez_yazim_kilavuzu3d657c7fb8fa416870a82369d462407d.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -106,7 +106,14 @@
    ],
    "conflicts": [],
    "guide": "217_tez_yazim_kilavuzu3d657c7fb8fa416870a82369d462407d.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 34
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

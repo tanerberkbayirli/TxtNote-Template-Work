@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "PAU_Fen_Bilimleri_Tez_Sablonu.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a882327535da896c93d97bc0936e866443fd2bec589af22cdac7d9be8e668b94",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -115,7 +115,15 @@
     }
    ],
    "guide": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 30,
+     "CONFLICT": 6
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -226,7 +234,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10

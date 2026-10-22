@@ -12,13 +12,13 @@
  "source": {
   "type": "official",
   "documentName": "1182_1_sablon_yuksek_lisans-1.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 27448acf96781658e384b63b1c9566d4b17ec2c02f2fb5aff2d1408a3cf22b31",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
    "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: 1182_1_doctoral_thesis_guideline-1.docx (4 alan, 3 çelişki)"
+   "Kılavuz kuralları birleştirildi: 1182_1_doctoral_thesis_guideline-1.docx (5 alan, 3 çelişki)"
   ],
   "guideDocumentName": "1182_1_doctoral_thesis_guideline-1.docx",
   "review": {
@@ -43,7 +43,7 @@
    "inferred": [
     {
      "field": "typography.body",
-     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":14,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":14,\"lineHeight\":1.5}",
      "reasoning": "Uzun paragrafların en sık biçimi alındı (1/3 paragraf (≥200 karakter)); diğer 2 varyant doğrudan biçimlendirme"
     },
     {
@@ -153,7 +153,13 @@
     }
    ],
    "guide": "1182_1_doctoral_thesis_guideline-1.docx",
-   "gate": null
+   "gate": {
+    "overall": "BLOCKED",
+    "results": {},
+    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Calibri Light izin verilen font ailelerinden biri değil",
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -190,8 +196,8 @@
   "body": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 14,
-   "align": "justify",
-   "lineHeight": 1.5
+   "lineHeight": 1.5,
+   "align": "justify"
   },
   "paragraph": {
    "firstLineIndentMm": 10,
@@ -243,7 +249,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 18
@@ -1111,8 +1118,8 @@
   "style": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 14,
-   "align": "left",
-   "lineHeight": 1.5
+   "lineHeight": 1.5,
+   "align": "left"
   },
   "hangingIndentMm": 0
  },

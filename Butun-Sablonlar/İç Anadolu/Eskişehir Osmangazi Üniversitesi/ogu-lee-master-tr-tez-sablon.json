@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "Tez_Şablon.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 4e6ea579b6bf91e30a269e7858d42a918681c3af1e4c163d286603728d5ae374",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -144,7 +144,13 @@
    ],
    "conflicts": [],
    "guide": "tez_yazim_kilavuzu_yl(2).docx",
-   "gate": null
+   "gate": {
+    "overall": "BLOCKED",
+    "results": {},
+    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Calibri Light izin verilen font ailelerinden biri değil",
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -224,7 +230,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

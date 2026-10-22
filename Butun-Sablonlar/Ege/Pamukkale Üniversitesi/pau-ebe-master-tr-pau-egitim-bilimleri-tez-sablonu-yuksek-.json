@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 0a1ce00b6a409c66597c63a424a5672766cdeb86aec3ee751f62328b42766c39",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -139,7 +139,15 @@
     }
    ],
    "guide": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 33,
+     "CONFLICT": 2
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -245,7 +253,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10

@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "tez-sablonu-2024.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 72d4d794306105e1fd8afcce5b9db0cf96009d7d8dcacbc65f80433b5ed829c9",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -141,7 +141,15 @@
     }
    ],
    "guide": "tez-yazim-klavuzusablonu-2-1.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 30,
+     "CONFLICT": 2
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -245,7 +253,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

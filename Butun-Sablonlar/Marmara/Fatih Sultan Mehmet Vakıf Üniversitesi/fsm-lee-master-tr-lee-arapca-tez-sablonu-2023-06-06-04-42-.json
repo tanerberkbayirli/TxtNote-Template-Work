@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "LEE_Arapca_Tez_Sablonu_2023-06-06-04-42-15pm.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 032a7538a13cdaa3876901792314cb13c7d644af64cd44bbeb408715aaf13f58",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -160,7 +160,13 @@
     }
    ],
    "guide": "LEE_Tez_Yazim_Kilavuzu_v012019-11-15-04-43-54pm.pdf",
-   "gate": null
+   "gate": {
+    "overall": "BLOCKED",
+    "results": {},
+    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Traditional Arabic izin verilen font ailelerinden biri değil",
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

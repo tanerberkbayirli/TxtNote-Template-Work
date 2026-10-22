@@ -28,7 +28,7 @@ motordan bağımsızdır.
 
 Yeni motora taşındı (2026-10-22): `install-template-draft.mjs` taslağı `Butun-Sablonlar/<bölge>/<üniversite>/<id>.json`
 olarak yazar, modülünü ve kaydını `engine/src/templates/generated/` altında üretir; `batch-gate.py` gerçek dışa aktarımı
-`engine/tools/export.mjs` ile alır; `pass-gate.py` ölçümü aynı kalır. Arşivdeki taslaklardan 165'i bu yolla kuruldu; aynı resmî
+`engine/tools/export.mjs` ile alır; `pass-gate.py` ölçümü aynı kalır. Arşivdeki taslaklardan 165'i bu yolla kuruldu ve gerçek dışa aktarımla yeniden ölçüldü: 47 PASS, 95 CONFLICT, 21 BLOCKED (gerekli yazı tipi — Calibri, Calibri Light, Cambria, Traditional Arabic — macOS'ta gömülemiyor), 2 FAIL kaldırıldı (DPÜ sol kenar 40,53/40 mm; Erbakan son satır 30,97 mm, üst sınır 30,7 mm); 163 kurulu. Rapor: orchestration/raporlar/TASLAK_KAPI_YENI_MOTOR_2026-10-22.md; aynı resmî
 kaynaktan `main`'de doğrulanmış resmî şablonu olan 5 taslak kurulmadı (AKÜ FBE 2025, AKÜ MBG 2025, AFSÜ LEE YL/Doktora 2026,
 İYTE kılavuzu). Yamadaki "düzenlenebilir özel sayfa" (seed HTML) taşınmadı: yeni motorda özel sayfalar `static` olup düzen
 denetçisiyle düzenlenir. Denetim paneli (`compliance.js`) taşınmadı.

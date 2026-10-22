@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "bnffrvse6xf1m-tez-yazim-kilavuzu-1-1-1.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -116,7 +116,14 @@
    ],
    "conflicts": [],
    "guide": "bnffrvse6xf1m-tez-yazim-kilavuzu-1-1-1.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 33
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

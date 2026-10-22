@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "TEZ ŞABLONU(2025_12).docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 cf0bffa2e476445eb2a88ea6ee16bcf75c2c1db16b69ffd841028a36826b747c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -104,7 +104,15 @@
    ],
    "conflicts": [],
    "guide": null,
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 22,
+     "UNKNOWN": 2
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

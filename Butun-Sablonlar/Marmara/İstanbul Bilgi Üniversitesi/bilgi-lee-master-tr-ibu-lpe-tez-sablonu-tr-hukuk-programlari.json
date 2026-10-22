@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "ibu_lpe_tez_sablonu_tr_hukuk_programlari_2026.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 6951b10028af7bed384fed3010d51b7a86a41649b5e2eeb8ccd116d84ad5d90d",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -108,7 +108,14 @@
     }
    ],
    "guide": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 34
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -215,7 +222,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10

@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "tez-yazim-kilavuzu.pdf",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -98,7 +98,15 @@
    ],
    "conflicts": [],
    "guide": "tez-yazim-kilavuzu.pdf",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 31,
+     "CONFLICT": 3
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

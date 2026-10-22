@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "lpe_2026_tezyazimsablonu_turkceprogramlar.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f67bedc3b10266f7119aff1fa7f25ad6c7814511a8e3fead7773ea2cbb173fb6",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -85,7 +85,14 @@
     }
    ],
    "guide": "lpe-2026_tezyazimkilavuzu_turkceprogramlar.pdf",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 34
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -195,7 +202,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10

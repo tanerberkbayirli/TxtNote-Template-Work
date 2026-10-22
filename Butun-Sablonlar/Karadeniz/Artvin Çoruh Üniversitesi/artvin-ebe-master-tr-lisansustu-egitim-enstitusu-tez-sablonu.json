@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "Lisansüstü Eğitim Enstitüsü Tez Şablonu.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 021b6066c2ee3bc2f6e4a0205eb354a58f0f4e5b86c3c07484ef4ef358a519b8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -117,7 +117,14 @@
    ],
    "conflicts": [],
    "guide": "tez yazım kılavuzu-yayınlanacak-v2.docx",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 33
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -225,7 +232,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

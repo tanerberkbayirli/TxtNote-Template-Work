@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "SBE_Tez_Sablonu_YL_-TR.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 27f31961b41ec099913317df735a87f6c131a97a0a9cdb625dfb92be70d5fd11",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -84,7 +84,14 @@
    ],
    "conflicts": [],
    "guide": "Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu.pdf",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 28
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -151,7 +158,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   },
   "footnotes": {
    "fontSizePt": 10,

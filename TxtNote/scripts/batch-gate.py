@@ -7,8 +7,8 @@ Steps: batch-template-drafts.py → batch-guide-merge.py (unless --skip-regenera
 drafts that validate (status generic, "(taslak)") with install-template-draft.mjs; for each, the
 engine's real export harness engine/tools/export.mjs (the editor's own PDF and Word buttons) on a
 deterministic document, then pass-gate.py (with the university's guide rules when available).
-Templates whose gate result is FAIL are uninstalled again; PASS, LIMIT and CONFLICT stay installed
-as drafts and carry their gate result. Writes output/pass-gate/batch-gate-report.{json,md}.
+Templates whose gate result is FAIL are uninstalled again; PASS, LIMIT, CONFLICT and BLOCKED (a required
+font that cannot be embedded on this machine) stay installed as drafts and carry their gate result. Writes output/pass-gate/batch-gate-report.{json,md}.
 The Vite dev server must be running: engine/tools/devserver.sh start.
 """
 
@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -100,7 +101,14 @@ def main() -> int:
         reuse = args.reuse_exports and (out_dir / "export.pdf").exists() and (out_dir / "export.docx").exists()
         exported = subprocess.CompletedProcess([], 0, "", "") if reuse else export(template_id, out_dir, args.base, env)
         record = {"templateId": template_id, "university": row["university"], "file": row["file"], "seconds": round(time.time() - started)}
-        if exported.returncode:
+        font = re.search(r"PDF yazı tipi [^.;]* izin verilen font ailelerinden biri değil|[^.;:]* sistemde bulunamadı", (exported.stderr or "") + (exported.stdout or "")) if exported.returncode else None
+        if font:
+            # The required font cannot be embedded on this machine: BLOCKED (AGENTS.md §10/§16), not a template failure; it stays installed.
+            reason = f"Gerekli yazı tipi bu makinede PDF'e gömülemiyor: {font.group(0).strip()}"
+            (out_dir / "gate-report.json").write_text(json.dumps({"templateId": template_id, "overall": "BLOCKED", "results": {}, "reason": reason, "checks": []}, ensure_ascii=False, indent=1), encoding="utf-8")
+            (out_dir / "export-meta.json").write_text(json.dumps({"templateId": template_id, "exportTool": EXPORT_TOOL, "base": args.base, "generatedAt": time.strftime("%Y-%m-%dT%H:%M:%S")}, ensure_ascii=False, indent=1), encoding="utf-8")
+            record.update({"overall": "BLOCKED", "error": reason[:200]})
+        elif exported.returncode:
             record.update({"overall": "EXPORT-FAIL", "error": (exported.stderr or exported.stdout).strip().splitlines()[-1][:200] if (exported.stderr or exported.stdout).strip() else "dışa aktarım başarısız"})
         else:
             draft = json.loads(Path(drafts[index - 1]).read_text(encoding="utf-8"))
@@ -121,7 +129,7 @@ def main() -> int:
         if not wanted:
             (ROOT / "output" / "pass-gate" / "batch-gate-report.json").write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
     # This run's templates stay installed only when they passed (PASS/LIMIT/CONFLICT); templates outside the run are untouched.
-    keep = {r["templateId"] for r in results if r["overall"] in ("PASS", "LIMIT", "CONFLICT")}
+    keep = {r["templateId"] for r in results if r["overall"] in ("PASS", "LIMIT", "CONFLICT", "BLOCKED")}
     judged = {r["templateId"] for r in results}
     dropped = sorted(judged - keep)
     if dropped:

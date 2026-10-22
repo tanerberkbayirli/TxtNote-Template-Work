@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "OKÜ_LEE_Tez_yazım_şablonu_2026.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 62ccdd8ca7a08deb3e26aef7efb58418ce59157e35f4c1af6323795438171b46",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -100,7 +100,15 @@
     }
    ],
    "guide": "OKÜ_LEE_Tez_yazım_Kılavuzu_2026.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 34,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -218,7 +226,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

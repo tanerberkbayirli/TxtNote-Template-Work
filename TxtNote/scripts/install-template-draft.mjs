@@ -28,6 +28,11 @@ const DEGREE_LABEL = { master: "Yüksek Lisans", phd: "Doktora", undergraduate: 
 /** Special pages with blocks are static in this engine; the user edits them through layout overrides, not as seeded HTML. */
 export function toEngineTemplate(template) {
   const out = structuredClone(template);
+  // Drafts measure Word documents (lineSpacing mode "word"); the old engine drew Word's baseline (extra leading below the text)
+  // without a key for it. This engine needs it stated, as the official templates do; without it the leading is centred (CSS)
+  // and every line sits half a leading lower than in Word.
+  const spacing = out.typography?.lineSpacing;
+  if (spacing?.mode === "word" && spacing.baseline === undefined) spacing.baseline = "word";
   for (const section of out.sections || []) {
     if (!Array.isArray(section.blocks)) continue;
     delete section.layoutMode;
@@ -63,7 +68,7 @@ function gateResult(id) {
   if (!fs.existsSync(meta) || !fs.existsSync(report)) return null;
   if (JSON.parse(fs.readFileSync(meta, "utf8")).exportTool !== EXPORT_TOOL) return null;
   const gate = JSON.parse(fs.readFileSync(report, "utf8"));
-  return { overall: gate.overall, results: gate.results, checkedAt: gate.checkedAt || fs.statSync(report).mtime.toISOString().slice(0, 10), exportTool: EXPORT_TOOL };
+  return { overall: gate.overall, results: gate.results, ...(gate.reason ? { reason: gate.reason } : {}), checkedAt: gate.checkedAt || fs.statSync(report).mtime.toISOString().slice(0, 10), exportTool: EXPORT_TOOL };
 }
 
 function review(draft, template) {

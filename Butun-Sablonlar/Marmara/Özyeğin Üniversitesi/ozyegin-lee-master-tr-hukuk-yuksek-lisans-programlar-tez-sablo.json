@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "hukuk_yuksek_lisans_programlar-_tez_sablonu-revize_2026.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 74a0b434263a0528acdf86b6c84cbfc119603f6baba2f0f507b6164e5ccb305c",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -124,7 +124,15 @@
     }
    ],
    "guide": "tez_yazim_kilavuzu-turkce-sbe-revize_2026.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 28,
+     "CONFLICT": 2
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -241,7 +249,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {

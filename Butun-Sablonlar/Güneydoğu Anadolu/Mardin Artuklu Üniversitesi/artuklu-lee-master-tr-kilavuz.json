@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "TYDE TEZ YAZIM KILAVUZU.pdf",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -90,7 +90,14 @@
    ],
    "conflicts": [],
    "guide": "TYDE TEZ YAZIM KILAVUZU.pdf",
-   "gate": null
+   "gate": {
+    "overall": "PASS",
+    "results": {
+     "PASS": 36
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {

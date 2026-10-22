@@ -12,7 +12,7 @@
  "source": {
   "type": "official",
   "documentName": "tez_sablonu_2026.docx",
-  "verifiedAt": "2026-10-06",
+  "verifiedAt": "2026-10-07",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 551208aa1f2ff89dd5831703423d2877d8f42e1d87cf17fdcd8d2f25d3fa42b1",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
@@ -118,7 +118,15 @@
     }
    ],
    "guide": "DIS- KAPAK-yazi kurallari-24072026.docx",
-   "gate": null
+   "gate": {
+    "overall": "CONFLICT",
+    "results": {
+     "PASS": 26,
+     "CONFLICT": 1
+    },
+    "checkedAt": "2026-10-22",
+    "exportTool": "engine/tools/export.mjs"
+   }
   }
  },
  "page": {
@@ -236,7 +244,8 @@
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.15
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
  "placeholders": {
