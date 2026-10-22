@@ -72,13 +72,102 @@ fn allowlisted_family(
     }
 }
 
+/// Font folders searched outside Windows, most specific first.
+#[cfg_attr(target_os = "windows", allow(dead_code))]
+fn unix_font_directories(home: Option<&std::path::Path>) -> Vec<std::path::PathBuf> {
+    let mut directories: Vec<std::path::PathBuf> = [
+        "/System/Library/Fonts/Supplemental",
+        "/Library/Fonts",
+        "/System/Library/Fonts",
+        "/usr/share/fonts/truetype/msttcorefonts",
+        "/usr/share/fonts/truetype/mscorefonts",
+        "/usr/share/fonts/truetype/liberation",
+        "/usr/share/fonts/truetype/liberation2",
+        "/usr/local/share/fonts",
+    ]
+    .iter()
+    .map(std::path::PathBuf::from)
+    .collect();
+    if let Some(home) = home {
+        directories.insert(0, home.join("Library/Fonts"));
+        directories.push(home.join(".fonts"));
+        directories.push(home.join(".local/share/fonts"));
+    }
+    directories
+}
+
+/// macOS ships the Microsoft core fonts under their full names ("Times New Roman Bold.ttf").
+#[cfg_attr(target_os = "windows", allow(dead_code))]
+fn mac_font_file(family: &str, style: &str) -> Option<String> {
+    let suffix = match style {
+        "normal" => "",
+        "bold" => " Bold",
+        "italic" => " Italic",
+        "bolditalic" => " Bold Italic",
+        _ => return None,
+    };
+    match family {
+        "Times New Roman" | "Arial" | "Courier New" => Some(format!("{family}{suffix}.ttf")),
+        "Wingdings" | "Wingdings 2" | "Wingdings 3" | "Webdings" if style == "normal" => Some(format!("{family}.ttf")),
+        _ => None,
+    }
+}
+
+#[cfg_attr(target_os = "windows", allow(dead_code))]
+fn unix_font_candidates(
+    family: &str,
+    style: &str,
+    file: &str,
+    directories: &[std::path::PathBuf],
+) -> Vec<std::path::PathBuf> {
+    let mut names = vec![file.to_string()];
+    let mut capitalized = file.chars();
+    if let Some(first) = capitalized.next() {
+        names.push(first.to_uppercase().collect::<String>() + capitalized.as_str());
+    }
+    if let Some(mac) = mac_font_file(family, style) {
+        names.push(mac);
+    }
+    names.dedup();
+    directories
+        .iter()
+        .flat_map(|directory| names.iter().map(move |name| directory.join(name)))
+        .collect()
+}
+
 async fn read_families(requested: Vec<String>) -> Result<Vec<SystemFont>, String> {
     #[cfg(not(target_os = "windows"))]
     {
-        let _ = requested;
-        return Err(
-            "PDF export requires an installed Windows Arial or Times New Roman font.".into(),
-        );
+        // macOS/Linux: the same allowlisted families from the system font folders. The frontend still checks each
+        // program's name table, so a look-alike under the same file name is rejected there.
+        let home = std::env::var_os("HOME").map(std::path::PathBuf::from);
+        let directories = unix_font_directories(home.as_deref());
+        let mut fonts = Vec::new();
+        let mut seen = std::collections::HashSet::new();
+        for requested_family in requested {
+            let (family, faces) = allowlisted_family(&requested_family).ok_or_else(|| {
+                format!("System PDF font family is not allowlisted: {requested_family}")
+            })?;
+            if !seen.insert(family) {
+                continue;
+            }
+            for &(style, file) in faces {
+                let path = unix_font_candidates(family, style, file, &directories)
+                    .into_iter()
+                    .find(|path| path.is_file())
+                    .ok_or_else(|| format!("{family} {style} font is not installed ({file})."))?;
+                let bytes = std::fs::read(&path).map_err(|error| {
+                    format!("{family} {style} font could not be read ({}): {error}", path.display())
+                })?;
+                fonts.push(SystemFont {
+                    family: family.to_string(),
+                    style,
+                    source: path.to_string_lossy().into_owned(),
+                    bytes,
+                });
+            }
+        }
+        return Ok(fonts);
     }
 
     #[cfg(target_os = "windows")]
@@ -151,7 +240,20 @@ pub async fn read_times_new_roman_fonts() -> Result<Vec<SystemFont>, String> {
 
 #[cfg(test)]
 mod tests {
-    use super::allowlisted_family;
+    use super::{allowlisted_family, mac_font_file, unix_font_candidates, unix_font_directories};
+
+    #[test]
+    fn finds_macos_and_linux_font_files() {
+        let directories = unix_font_directories(Some(std::path::Path::new("/Users/u")));
+        assert_eq!(directories[0], std::path::PathBuf::from("/Users/u/Library/Fonts"));
+        assert!(directories.contains(&std::path::PathBuf::from("/System/Library/Fonts/Supplemental")));
+        assert_eq!(mac_font_file("Times New Roman", "bolditalic").as_deref(), Some("Times New Roman Bold Italic.ttf"));
+        assert_eq!(mac_font_file("Wingdings 2", "normal").as_deref(), Some("Wingdings 2.ttf"));
+        assert_eq!(mac_font_file("Calibri", "normal"), None);
+        let candidates = unix_font_candidates("Arial", "bold", "arialbd.ttf", &directories);
+        assert!(candidates.contains(&std::path::PathBuf::from("/System/Library/Fonts/Supplemental/Arial Bold.ttf")));
+        assert!(candidates.contains(&std::path::PathBuf::from("/usr/share/fonts/truetype/msttcorefonts/Arialbd.ttf")));
+    }
 
     #[test]
     fn only_allows_named_installed_families() {
