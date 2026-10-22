@@ -127,7 +127,28 @@ function registryLine(template, target) {
   return `  { ${body}, selectors: {}, load: () => import("./templates/${target}.js").then((module) => ({ default: module.default })) },`;
 }
 
+/**
+ * The official file a working copy was taken from (same SHA-256) under Butun-Sablonlar, so the template names the source
+ * itself, not "official.docx" (HE-SB-02). Identical copies: the one filed deepest (an institute folder) wins.
+ */
+export function originalSourceFile(source, base = templatesRoot) {
+  if (!source?.sha256 || String(source.file || "").startsWith("Butun-Sablonlar/") || !existsSync(base)) return null;
+  const matches = [];
+  const walk = (dir) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      const path = join(dir, entry.name);
+      if (entry.isDirectory()) walk(path);
+      else if (/\.(docx?|dotx?|pdf|odt)$/i.test(entry.name) && createHash("sha256").update(readFileSync(path)).digest("hex") === source.sha256) matches.push(relative(repoRoot, path).split(sep).join("/"));
+    }
+  };
+  walk(base);
+  matches.sort((a, b) => b.split("/").length - a.split("/").length || a.localeCompare(b));
+  return matches[0] ?? null;
+}
+
 export function addTemplate({ extracted, profile, replace = false, stored = loadStoredTemplates() }) {
+  const originalFile = originalSourceFile(extracted.source);
+  if (originalFile) extracted = { ...extracted, source: { ...extracted.source, originalFile } };
   const { template, checks, fixture, mapping } = generate(extracted, profile);
   if (stored.has(template.id) && !replace) throw new Error(`Şablon zaten var: ${template.id} (--replace ile yeniden üretilir)`);
   // Data gate: storage is JSON; what is stored must be exactly what was generated, and valid.

@@ -30,10 +30,12 @@ test("the template and the checks generated from the suggested profile equal tho
   const reviewed = generate(extracted, truth);
   const suggested = generate(extracted, profile);
   assert.ok(isDeepStrictEqual(suggested.checks, reviewed.checks), "all Tier 1 checks identical");
-  // Two known differences: the review date, and the CV page title spacing (measured from the source paragraph; see the tool header).
+  // Two known differences: the verification record (status official + verifiedAt, set by a person once the checks passed; never
+  // suggested from the source), and the CV page title spacing (measured from the source paragraph; see the tool header).
   const normalize = (template) => {
     const copy = structuredClone(template);
-    copy.source.verifiedAt = "";
+    copy.status = "";
+    delete copy.source.verifiedAt;
     copy.sections.find((s) => s.id === "cv").overrides.headings[1].spaceAfterPt = 0;
     return copy;
   };
