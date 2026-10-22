@@ -54,6 +54,9 @@ export const TRASH_TICK_MS = 30000;
 /** How often expired entries are swept out of the bin. */
 export const TRASH_SWEEP_MS = 60000;
 
+/** While a local save keeps failing, how often it is tried again. */
+export const SAVE_RETRY_MS = 5000;
+
 /* -- sync / backup --------------------------------------------------------- */
 
 /** Lane A: write the latest note to local storage this often while dirty. */

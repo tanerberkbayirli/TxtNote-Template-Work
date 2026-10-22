@@ -25,11 +25,12 @@ import {
   writeMedia,
   saveNote,
   rememberFileHandle,
+  onSaveStatus,
 } from "@shared/services";
 import { isCryptoAuthSession, isCryptoProfile, readAuthSession } from "../features/auth/authSession";
 import { useAutoLock } from "../hooks/useAutoLock";
 import { endUserSession } from "../lib/sessionLock.js";
-import { DEFAULT_TRASH_ENABLED, TRASH_RETENTION_DAYS, TRASH_SWEEP_MS } from "../config/limits";
+import { DEFAULT_TRASH_ENABLED, SAVE_RETRY_MS, TRASH_RETENTION_DAYS, TRASH_SWEEP_MS } from "../config/limits";
 import { NAV_LINKS } from "../config/navigation";
 import { UNTITLED_NOTE } from "../config/strings";
 import { collectSubtree, isFolderItem } from "../lib/folder";
@@ -56,6 +57,7 @@ import {
 } from "../features/workarea/layout";
 import { useNoteSync } from "../features/sync/useNoteSync";
 import { SyncNetworkToast } from "../features/sync/SyncNetworkToast";
+import { SaveErrorToast } from "../features/sync/SaveErrorToast";
 import { loadAllLocalBackups, notesMapFromBackups, peekLocalBackup, deleteLocalBackup } from "../features/sync/localBackup";
 import { buildNotePayload, getDeviceId, noteFromPayload } from "../features/sync/payload";
 import { useUndoHistory } from "../hooks/useUndoHistory";
@@ -228,6 +230,7 @@ export default function App() {
   const persistEnabledRef = useRef(false);
   const hadDiskDataRef = useRef(false);
   const persistBlockedRef = useRef(false);
+  const [saveError, setSaveError] = useState(null);
   const skipHydrationPersistRef = useRef(true);
   const persistNeededRef = useRef(false);
   const notesRef = useRef(notes);
@@ -421,7 +424,7 @@ export default function App() {
     hidden.forEach((item) => {
       if (typeof item.url === "string" && item.url.startsWith("blob:")) revokePreviewUrl(item);
       const note = notesRef.current[item.id];
-      if (note && isTextEditableFile(item)) void saveNote(item.id, note);
+      if (note && isTextEditableFile(item)) saveNote(item.id, note).catch(() => undefined); // reported via onSaveStatus
     });
     setItems((current) => {
       let changed = false;
@@ -475,8 +478,26 @@ export default function App() {
     }
     persistEnabledRef.current = true;
     persistNeededRef.current = false;
-    await saveSnapshot(snapshot);
+    try {
+      await saveSnapshot(snapshot);
+    } catch {
+      // Not saved: keep it due so the retry below (and the next change) writes it again. The service reports the
+      // failure to the save-status listener, which shows it (HE-VB-05).
+      persistNeededRef.current = true;
+    }
   }, []);
+
+  useEffect(() => onSaveStatus((status) => setSaveError(status.ok ? null : status.error)), []);
+
+  // While saving fails, keep retrying; a success clears the notice.
+  useEffect(() => {
+    if (!saveError) return undefined;
+    const id = window.setInterval(() => {
+      persistNeededRef.current = true;
+      void persistNow();
+    }, SAVE_RETRY_MS);
+    return () => window.clearInterval(id);
+  }, [saveError, persistNow]);
 
   const persistHistory = useCallback(async () => {
     const snapshot = snapshotRef.current;
@@ -1410,9 +1431,13 @@ export default function App() {
     });
   }, []);
 
-  /** Lets go of the text behind items that are never coming back. */
+  /**
+   * Lets go of the text behind items that are never coming back. Storage drops it at once, so this is never undoable:
+   * the undo history is cleared, or a later Ctrl+Z would bring an item back empty (HE-VB-04).
+   */
   const forgetNotes = useCallback((ids) => {
     if (ids.length === 0) return;
+    undoHistory.reset();
     ids.forEach((id) => {
       void deleteLocalBackup(id);
       void forgetNote(id);
@@ -1423,7 +1448,7 @@ export default function App() {
       ids.forEach((id) => delete next[id]);
       return next;
     });
-  }, []);
+  }, [undoHistory.reset]);
 
   // Deleting the file also drops its tab.
   const handleItemDelete = useCallback(
@@ -1504,20 +1529,18 @@ export default function App() {
       if (!entry) return;
       const deleted = isFolderItem(entry) ? collectSubtree(trash, entryId) : [entry];
       const deletedIds = new Set(deleted.map((row) => row.id));
-      undoHistory.begin("shell");
       deleted.forEach(revokePreviewUrl);
       setTrash((current) => current.filter((row) => !deletedIds.has(row.id)));
       forgetNotes([...deletedIds]);
     },
-    [trash, forgetNotes, undoHistory.begin],
+    [trash, forgetNotes],
   );
 
   const emptyTrash = useCallback(() => {
-    undoHistory.begin("shell");
     trash.forEach(revokePreviewUrl);
     forgetNotes(trash.map((row) => row.id));
     setTrash([]);
-  }, [trash, forgetNotes, undoHistory.begin]);
+  }, [trash, forgetNotes]);
 
   /**
    * Switching the bin off is itself a delete: whatever is inside goes now, and
@@ -1525,11 +1548,12 @@ export default function App() {
    */
   const toggleTrash = useCallback(
     (next) => {
-      undoHistory.begin("shell");
+      // Switching the bin off empties it for good (not undoable); switching it on is an ordinary step.
+      if (next || trash.length === 0) undoHistory.begin("shell");
       setIsTrashEnabled(next);
       if (!next) emptyTrash();
     },
-    [emptyTrash, undoHistory.begin],
+    [emptyTrash, trash.length, undoHistory.begin],
   );
 
   // Anything past its 30 days leaves on its own. The updater hands back the same
@@ -1735,6 +1759,13 @@ export default function App() {
         installing={updateStatus === "downloading" || updateStatus === "installing"}
         onInstall={installUpdate}
         onDismiss={() => setUpdateToastDismissed(true)}
+      />
+      <SaveErrorToast
+        error={saveError}
+        onRetry={() => {
+          persistNeededRef.current = true;
+          void persistNow();
+        }}
       />
       <SyncNetworkToast
         visible={

@@ -47,6 +47,17 @@ export const getDeviceId = () => {
   }
 };
 
+/**
+ * Fields of a note opened from a text/code file (HE-VB-03). They ride in `extras` so every lane that rebuilds a note
+ * from its payload (the local SQLite/IndexedDB backup among them) keeps the file's encoding and chosen language.
+ * The folder link (`fileId`) is not one of them: storage derives it from the item tree.
+ */
+const pickNoteFileFields = (note) => ({
+  ...(typeof note?.encoding === "string" ? { encoding: note.encoding } : {}),
+  ...(typeof note?.languageId === "string" ? { languageId: note.languageId } : {}),
+  ...(typeof note?.languageLocked === "boolean" ? { languageLocked: note.languageLocked } : {}),
+});
+
 export const noteFromPayload = (payload) => {
   const flashcards = sanitizeDeck(payload.extras?.flashcards);
   return prepareThesisNote({
@@ -58,6 +69,7 @@ export const noteFromPayload = (payload) => {
     ...(payload.extras?.researchData != null ? { researchData: payload.extras.researchData } : {}),
     ...(flashcards ? { flashcards } : {}),
     ...pickTodoDailyFields(payload.extras ?? {}),
+    ...pickNoteFileFields(payload.extras),
   });
 };
 
@@ -71,6 +83,7 @@ export const buildNotePayload = ({ noteId, workspaceId, note, deviceId, updatedA
     ...(note?.researchData != null ? { researchData: note.researchData } : {}),
     ...(flashcards ? { flashcards } : {}),
     ...pickTodoDailyFields(note),
+    ...pickNoteFileFields(note),
   };
   const body = {
     noteId,

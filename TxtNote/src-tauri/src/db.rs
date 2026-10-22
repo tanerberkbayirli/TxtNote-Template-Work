@@ -85,6 +85,15 @@ CREATE TABLE IF NOT EXISTS media (
   mime TEXT NOT NULL,
   path TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS quarantine (
+  table_name TEXT NOT NULL,
+  id TEXT NOT NULL,
+  data TEXT NOT NULL,
+  reason TEXT NOT NULL,
+  quarantined_at INTEGER NOT NULL,
+  PRIMARY KEY (table_name, id)
+);
 "#;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -348,7 +357,8 @@ fn attach_media_paths(conn: &Connection, items: &mut [Value]) -> Result<(), Stri
 fn load_workspaces(conn: &Connection) -> Result<Vec<Value>, String> {
     let mut stmt = conn
         .prepare(
-            "SELECT id, name, created_at, updated_at, data FROM workspaces ORDER BY sort_order, rowid",
+            "SELECT id, COALESCE(name, ''), CAST(COALESCE(created_at, 0) AS INTEGER), CAST(COALESCE(updated_at, 0) AS INTEGER),
+                    COALESCE(data, '') FROM workspaces ORDER BY sort_order, rowid",
         )
         .map_err(|error| error.to_string())?;
     let rows = stmt
@@ -371,6 +381,7 @@ fn load_workspaces(conn: &Connection) -> Result<Vec<Value>, String> {
                 continue;
             }
         };
+        let raw = readable_data(conn, "workspaces", &id, &raw);
         match hydrate_workspace(&id, &name, created_at, updated_at, &raw) {
             Ok(value) => out.push(value),
             Err(error) => eprintln!("TxtNote çalışma alanı çözülemedi ({id}): {error}"),
@@ -382,7 +393,8 @@ fn load_workspaces(conn: &Connection) -> Result<Vec<Value>, String> {
 fn load_items(conn: &Connection) -> Result<Vec<Value>, String> {
     let mut stmt = conn
         .prepare(
-            "SELECT id, workspace_id, parent_id, name, item_kind, created_at, updated_at, data
+            "SELECT id, COALESCE(workspace_id, ''), parent_id, COALESCE(name, ''), COALESCE(item_kind, 'document'),
+                    CAST(COALESCE(created_at, 0) AS INTEGER), CAST(COALESCE(updated_at, 0) AS INTEGER), COALESCE(data, '')
              FROM items ORDER BY sort_order, rowid",
         )
         .map_err(|error| error.to_string())?;
@@ -409,6 +421,7 @@ fn load_items(conn: &Connection) -> Result<Vec<Value>, String> {
                 continue;
             }
         };
+        let raw = readable_data(conn, "items", &id, &raw);
         match hydrate_item(
             &id,
             &workspace_id,
@@ -429,7 +442,8 @@ fn load_items(conn: &Connection) -> Result<Vec<Value>, String> {
 fn load_trash_rows(conn: &Connection) -> Result<Vec<Value>, String> {
     let mut stmt = conn
         .prepare(
-            "SELECT id, workspace_id, deleted_at, data FROM trash ORDER BY deleted_at DESC, rowid",
+            "SELECT id, workspace_id, CAST(COALESCE(deleted_at, 0) AS INTEGER), COALESCE(data, '')
+             FROM trash ORDER BY deleted_at DESC, rowid",
         )
         .map_err(|error| error.to_string())?;
     let rows = stmt
@@ -451,6 +465,7 @@ fn load_trash_rows(conn: &Connection) -> Result<Vec<Value>, String> {
                 continue;
             }
         };
+        let raw = readable_data(conn, "trash", &id, &raw);
         match hydrate_trash(&id, workspace_id.as_deref(), deleted_at, &raw) {
             Ok(value) => out.push(value),
             Err(error) => eprintln!("TxtNote çöp çözülemedi ({id}): {error}"),
@@ -480,6 +495,7 @@ fn load_shell_inner(conn: &Connection) -> Result<Snapshot, String> {
 }
 
 fn read_note_row(
+    conn: &Connection,
     id: String,
     workspace_id: Option<String>,
     file_id: Option<String>,
@@ -490,6 +506,7 @@ fn read_note_row(
     revision: i64,
     raw: String,
 ) -> Result<(String, Value), String> {
+    let raw = readable_data(conn, "notes", &id, &raw);
     let note = hydrate_note(
         &id,
         workspace_id.as_deref(),
@@ -506,8 +523,9 @@ fn read_note_row(
 
 fn load_notes_inner(conn: &Connection, ids: Option<&[String]>) -> Result<Map<String, Value>, String> {
     let mut map = Map::new();
-    const NOTE_COLS: &str =
-        "id, workspace_id, file_id, title, content, created_at, updated_at, revision, data";
+    const NOTE_COLS: &str = "id, workspace_id, file_id, COALESCE(title, ''), COALESCE(content, ''),
+        CAST(COALESCE(created_at, 0) AS INTEGER), CAST(COALESCE(updated_at, 0) AS INTEGER),
+        CAST(COALESCE(revision, 1) AS INTEGER), COALESCE(data, '')";
     if let Some(ids) = ids {
         if ids.is_empty() {
             return Ok(map);
@@ -519,18 +537,23 @@ fn load_notes_inner(conn: &Connection, ids: Option<&[String]>) -> Result<Map<Str
             .query(params_from_iter(ids.iter()))
             .map_err(|error| error.to_string())?;
         while let Some(row) = rows.next().map_err(|error| error.to_string())? {
-            let (id, note) = read_note_row(
-                row.get(0).map_err(|error| error.to_string())?,
-                row.get(1).map_err(|error| error.to_string())?,
-                row.get(2).map_err(|error| error.to_string())?,
-                row.get(3).map_err(|error| error.to_string())?,
-                row.get(4).map_err(|error| error.to_string())?,
-                row.get(5).map_err(|error| error.to_string())?,
-                row.get(6).map_err(|error| error.to_string())?,
-                row.get(7).map_err(|error| error.to_string())?,
-                row.get(8).map_err(|error| error.to_string())?,
-            )?;
-            map.insert(id, note);
+            // One unreadable row never fails the others (HE-VB-02).
+            let fields = (|| -> rusqlite::Result<_> {
+                Ok((row.get(0)?, row.get(1)?, row.get(2)?, row.get(3)?, row.get(4)?, row.get(5)?, row.get(6)?, row.get(7)?, row.get(8)?))
+            })();
+            let (id, workspace_id, file_id, title, content, created_at, updated_at, revision, raw) = match fields {
+                Ok(value) => value,
+                Err(error) => {
+                    eprintln!("TxtNote not satırı okunamadı: {error}");
+                    continue;
+                }
+            };
+            match read_note_row(conn, id, workspace_id, file_id, title, content, created_at, updated_at, revision, raw) {
+                Ok((id, note)) => {
+                    map.insert(id, note);
+                }
+                Err(error) => eprintln!("TxtNote not çözülemedi: {error}"),
+            }
         }
         return Ok(map);
     }
@@ -554,20 +577,19 @@ fn load_notes_inner(conn: &Connection, ids: Option<&[String]>) -> Result<Map<Str
         })
         .map_err(|error| error.to_string())?;
     for row in rows {
-        let (id, workspace_id, file_id, title, content, created_at, updated_at, revision, raw) =
-            row.map_err(|error| error.to_string())?;
-        let (id, note) = read_note_row(
-            id,
-            workspace_id,
-            file_id,
-            title,
-            content,
-            created_at,
-            updated_at,
-            revision,
-            raw,
-        )?;
-        map.insert(id, note);
+        let (id, workspace_id, file_id, title, content, created_at, updated_at, revision, raw) = match row {
+            Ok(value) => value,
+            Err(error) => {
+                eprintln!("TxtNote not satırı okunamadı: {error}");
+                continue;
+            }
+        };
+        match read_note_row(conn, id, workspace_id, file_id, title, content, created_at, updated_at, revision, raw) {
+            Ok((id, note)) => {
+                map.insert(id, note);
+            }
+            Err(error) => eprintln!("TxtNote not çözülemedi: {error}"),
+        }
     }
     Ok(map)
 }
@@ -768,6 +790,28 @@ fn parse_object(raw: &str) -> Result<Map<String, Value>, String> {
     }
 }
 
+/// The JSON `data` of a stored row, or — when it cannot be parsed — a stand-in object marked `unreadableData`.
+/// The unreadable text is copied to `quarantine` first (the first copy wins), so the row is still loaded from its
+/// columns: a later save keeps the row and the note body it owns instead of dropping them, and the raw text survives.
+fn readable_data(conn: &Connection, table: &str, id: &str, raw: &str) -> String {
+    let reason = match serde_json::from_str::<Value>(raw) {
+        Ok(_) => return raw.to_string(),
+        Err(error) => error.to_string(),
+    };
+    quarantine_raw(conn, table, id, raw, &reason);
+    json!({ "unreadableData": true }).to_string()
+}
+
+fn quarantine_raw(conn: &Connection, table: &str, id: &str, raw: &str, reason: &str) {
+    match conn.execute(
+        "INSERT OR IGNORE INTO quarantine (table_name, id, data, reason, quarantined_at) VALUES (?1, ?2, ?3, ?4, ?5)",
+        params![table, id, raw, reason, now_millis()],
+    ) {
+        Ok(_) => eprintln!("TxtNote {table} satırı okunamadı ({id}): {reason}; ham veri karantinaya alındı"),
+        Err(error) => eprintln!("TxtNote {table} satırı ({id}) karantinaya alınamadı: {error}"),
+    }
+}
+
 fn json_str<'a>(value: &'a Value, keys: &[&str]) -> Option<&'a str> {
     for key in keys {
         if let Some(text) = value.get(*key).and_then(Value::as_str).filter(|text| !text.is_empty()) {
@@ -786,8 +830,9 @@ fn json_time(value: &Value, key: &str, fallback: i64) -> i64 {
 }
 
 fn note_fingerprint(note: &Value) -> String {
+    // Every field a note carries counts (HE-VB-08): a text file's encoding and language are part of what was saved.
     format!(
-        "{}|{}|{}|{}|{}|{}|{}|{}",
+        "{}|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}",
         note.get("title").and_then(Value::as_str).unwrap_or(""),
         note.get("content").and_then(Value::as_str).unwrap_or(""),
         note.get("todos").cloned().unwrap_or_else(|| json!([])),
@@ -798,6 +843,9 @@ fn note_fingerprint(note: &Value) -> String {
         note.get("vault").cloned().unwrap_or(Value::Null),
         note.get("researchData").cloned().unwrap_or(Value::Null),
         note.get("flashcards").cloned().unwrap_or(Value::Null),
+        note.get("encoding").cloned().unwrap_or(Value::Null),
+        note.get("languageId").cloned().unwrap_or(Value::Null),
+        note.get("languageLocked").cloned().unwrap_or(Value::Null),
     )
 }
 
@@ -1102,6 +1150,10 @@ fn upsert_note(conn: &Connection, id: &str, note: &Value) -> Result<(), String> 
     let existing_note = existing
         .as_ref()
         .and_then(|(raw, _, _, _, _, _)| serde_json::from_str::<Value>(raw).ok());
+    // An unreadable stored body is kept in quarantine before anything is written over it.
+    if let (Some((raw, ..)), None) = (existing.as_ref(), existing_note.as_ref()) {
+        quarantine_raw(conn, "notes", id, raw, "üzerine yazılmadan önce okunamayan not verisi");
+    }
     let changed = existing_note
         .as_ref()
         .map(|previous| note_fingerprint(previous) != note_fingerprint(note))
@@ -1613,7 +1665,7 @@ fn wipe_local_database_inner(conn: &Connection) -> Result<(), String> {
         .map_err(|error| error.to_string())?;
     tx.execute_batch("PRAGMA defer_foreign_keys = ON")
         .map_err(|error| error.to_string())?;
-    for table in ["note_versions", "notes", "items", "trash", "workspaces", "media", "kv"] {
+    for table in ["note_versions", "notes", "items", "trash", "workspaces", "media", "kv", "quarantine"] {
         tx.execute(&format!("DELETE FROM {table}"), [])
             .map_err(|error| error.to_string())?;
     }
@@ -1656,6 +1708,89 @@ mod tests {
         conn.execute_batch(SCHEMA).expect("schema");
         migrate_schema(&conn).expect("migrate");
         conn
+    }
+
+    fn two_note_snapshot() -> Snapshot {
+        let mut notes = Map::new();
+        notes.insert("n1".into(), json!({"title": "Bir", "content": "birinci gövde"}));
+        notes.insert("n2".into(), json!({"title": "İki", "content": "ikinci gövde", "encoding": "utf-16le"}));
+        Snapshot {
+            workspaces: vec![json!({"id": "w1", "name": "A"})],
+            items: vec![json!({"id": "n1", "workspaceId": "w1", "title": "Bir"}), json!({"id": "n2", "workspaceId": "w1", "title": "İki"})],
+            notes,
+            ..Snapshot::default()
+        }
+    }
+
+    fn count(conn: &Connection, sql: &str) -> i64 {
+        conn.query_row(sql, [], |row| row.get(0)).unwrap()
+    }
+
+    // HE-VB-01: an item row whose data is unreadable is loaded from its columns; saving the loaded shell back
+    // (as the app does on its first change) keeps the item and its note body, and the raw text is quarantined.
+    #[test]
+    fn unreadable_item_row_survives_load_and_save() {
+        let conn = memory_db();
+        save_snapshot_inner(&conn, two_note_snapshot()).expect("first save");
+        conn.execute("UPDATE items SET data = 'not json' WHERE id = 'n2'", []).unwrap();
+
+        let shell = load_shell_inner(&conn).expect("load shell");
+        assert_eq!(shell.items.len(), 2);
+        let n2 = shell.items.iter().find(|item| json_id(item).as_deref() == Some("n2")).expect("n2 loaded");
+        assert_eq!(n2.get("unreadableData"), Some(&json!(true)));
+        assert_eq!(n2.get("title"), Some(&json!("İki")));
+
+        save_snapshot_inner(&conn, shell).expect("save loaded shell");
+        assert_eq!(count(&conn, "SELECT COUNT(*) FROM items"), 2);
+        assert_eq!(count(&conn, "SELECT COUNT(*) FROM notes WHERE id = 'n2' AND content = 'ikinci gövde'"), 1);
+        let raw: String = conn
+            .query_row("SELECT data FROM quarantine WHERE table_name = 'items' AND id = 'n2'", [], |row| row.get(0))
+            .unwrap();
+        assert_eq!(raw, "not json");
+    }
+
+    // HE-VB-02: one unreadable note row neither fails the snapshot nor the other notes; its columns still load,
+    // and writing over it keeps the raw text in quarantine.
+    #[test]
+    fn unreadable_note_row_does_not_fail_other_notes() {
+        let conn = memory_db();
+        save_snapshot_inner(&conn, two_note_snapshot()).expect("first save");
+        conn.execute("UPDATE notes SET data = '{broken' WHERE id = 'n1'", []).unwrap();
+
+        let snapshot = load_snapshot_inner(&conn).expect("snapshot loads");
+        assert_eq!(snapshot.notes.len(), 2);
+        assert_eq!(snapshot.notes["n1"].get("content"), Some(&json!("birinci gövde")));
+        assert_eq!(snapshot.notes["n1"].get("unreadableData"), Some(&json!(true)));
+        assert_eq!(snapshot.notes["n2"].get("encoding"), Some(&json!("utf-16le")));
+        assert_eq!(load_notes_inner(&conn, Some(&["n1".to_string()])).expect("n1 alone").len(), 1);
+
+        upsert_note(&conn, "n1", &json!({"title": "Bir", "content": ""})).expect("overwrite");
+        let raw: String = conn
+            .query_row("SELECT data FROM quarantine WHERE table_name = 'notes' AND id = 'n1'", [], |row| row.get(0))
+            .unwrap();
+        assert_eq!(raw, "{broken");
+
+        // Written over without being loaded first: the guard in upsert_note keeps the raw text too.
+        conn.execute("UPDATE notes SET data = '[[' WHERE id = 'n2'", []).unwrap();
+        upsert_note(&conn, "n2", &json!({"title": "İki", "content": ""})).expect("overwrite unloaded");
+        let raw: String = conn
+            .query_row("SELECT data FROM quarantine WHERE table_name = 'notes' AND id = 'n2'", [], |row| row.get(0))
+            .unwrap();
+        assert_eq!(raw, "[[");
+    }
+
+    // HE-VB-03/08: a text file's encoding and language survive a save and a change to them is a new revision.
+    #[test]
+    fn note_file_fields_survive_and_count_as_a_change() {
+        let conn = memory_db();
+        save_snapshot_inner(&conn, two_note_snapshot()).expect("first save");
+        upsert_note(&conn, "n2", &json!({"title": "İki", "content": "ikinci gövde", "encoding": "utf-16le", "languageId": "python", "languageLocked": true})).unwrap();
+        let first = load_notes_inner(&conn, Some(&["n2".to_string()])).unwrap()["n2"].clone();
+        assert_eq!(first.get("languageLocked"), Some(&json!(true)));
+        upsert_note(&conn, "n2", &json!({"title": "İki", "content": "ikinci gövde", "encoding": "utf-8", "languageId": "python", "languageLocked": true})).unwrap();
+        let second = load_notes_inner(&conn, Some(&["n2".to_string()])).unwrap()["n2"].clone();
+        assert_eq!(second.get("encoding"), Some(&json!("utf-8")));
+        assert_eq!(second["revision"].as_i64().unwrap(), first["revision"].as_i64().unwrap() + 1);
     }
 
     #[test]

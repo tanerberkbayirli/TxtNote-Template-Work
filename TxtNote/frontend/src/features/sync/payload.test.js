@@ -80,6 +80,16 @@ describe("note payload", () => {
     });
   });
 
+  it("keeps a text file's encoding and chosen language through the local backup lane (HE-VB-03)", () => {
+    const note = { title: "a.py", content: "print(1)\nprint(2)", encoding: "utf-16le", languageId: "python", languageLocked: true, fileId: "folder-1" };
+    const restored = noteFromPayload(buildNotePayload({ noteId: "n1", workspaceId: "w1", note, deviceId: "d" }));
+    assert.equal(restored.encoding, "utf-16le");
+    assert.equal(restored.languageId, "python");
+    assert.equal(restored.languageLocked, true);
+    assert.equal(restored.fileId, undefined, "the folder link comes from the item tree, not the payload");
+    assert.notEqual(hashNote("n1", "w1", note), hashNote("n1", "w1", { ...note, encoding: "utf-8" }));
+  });
+
   it("does not throw on an empty payload", () => {
     assert.deepEqual(noteFromPayload({}), {
       title: "",

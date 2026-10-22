@@ -19,7 +19,7 @@ export const services: AppServices = localServices;
 
 export type { AppServices } from "./contracts";
 export * from "./contracts";
-export { loadSnapshot, loadShell, loadNotes, saveSnapshot, saveNote, flushWrites, writeMedia, rememberFileHandle, hydrateFileUrl, forgetNote, isTauriRuntime } from "./local";
+export { loadSnapshot, loadShell, loadNotes, saveSnapshot, saveNote, flushWrites, writeMedia, rememberFileHandle, hydrateFileUrl, forgetNote, isTauriRuntime, onSaveStatus } from "./local";
 export { localPackageSource, fileUuidForItem, nextNoteRevision } from "./local/packageSource.js";
 export { buildEncryptedPackage } from "./local/encryptedPackage.js";
 export { bindDatabaseOwner, loadDbOwner } from "./local/dbOwner.js";

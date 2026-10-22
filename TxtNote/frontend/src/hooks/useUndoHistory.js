@@ -109,6 +109,18 @@ export function useUndoHistory({ getSnapshot, applySlice, enabled = true }) {
 
   const isApplying = useCallback(() => applyingRef.current, []);
 
+  /**
+   * Forget every step. Used after an irreversible action (permanent delete): each step holds whole item/trash lists,
+   * so undoing any earlier one would bring the deleted entry back without the text and files storage has already
+   * dropped (HE-VB-04).
+   */
+  const reset = useCallback(() => {
+    if (pendingRef.current) window.clearTimeout(pendingRef.current.timer);
+    pendingRef.current = null;
+    pastRef.current = [];
+    futureRef.current = [];
+  }, []);
+
   useEffect(() => {
     if (!enabled) return undefined;
 
@@ -133,5 +145,5 @@ export function useUndoHistory({ getSnapshot, applySlice, enabled = true }) {
     [],
   );
 
-  return { begin, undo, redo, isApplying, flushPending };
+  return { begin, undo, redo, isApplying, flushPending, reset };
 }

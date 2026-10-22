@@ -120,14 +120,42 @@ const invoke = async <T,>(command: string, args?: Record<string, unknown>): Prom
 
 let writeChain: Promise<void> = Promise.resolve();
 
+export type SaveStatus = { ok: true } | { ok: false; error: string; at: number };
+const saveStatusListeners = new Set<(status: SaveStatus) => void>();
+let lastSaveStatus: SaveStatus = { ok: true };
+
+/** Every local write reports here, so a failed save is shown to the user instead of only logged (HE-VB-05). */
+export const onSaveStatus = (listener: (status: SaveStatus) => void): (() => void) => {
+  saveStatusListeners.add(listener);
+  listener(lastSaveStatus);
+  return () => {
+    saveStatusListeners.delete(listener);
+  };
+};
+
+const reportSaveStatus = (status: SaveStatus) => {
+  if (status.ok && lastSaveStatus.ok) return;
+  lastSaveStatus = status;
+  saveStatusListeners.forEach((listener) => listener(status));
+};
+
+const errorText = (error: unknown) => (error instanceof Error ? error.message : String(error ?? "bilinmeyen hata"));
+
+/**
+ * Writes run one after another. A failed write rejects for its caller and is reported; the chain itself keeps going,
+ * so the next write is still attempted.
+ */
 const enqueueWrite = (work: () => Promise<void>): Promise<void> => {
-  writeChain = writeChain
-    .catch(() => undefined)
-    .then(work)
-    .catch((error) => {
+  const run = writeChain.then(work).then(
+    () => reportSaveStatus({ ok: true }),
+    (error) => {
       console.error("Yerel kayıt yazılamadı", error);
-    });
-  return writeChain;
+      reportSaveStatus({ ok: false, error: errorText(error), at: Date.now() });
+      throw error;
+    },
+  );
+  writeChain = run.catch(() => undefined);
+  return run;
 };
 
 export const isTauriRuntime = () => isTauri();
@@ -208,11 +236,14 @@ const readLocalStorageSnapshot = (): Snapshot | null => {
   }
 };
 
-const writeLocalStorageSnapshot = (snapshot: Snapshot) => {
+/** @returns the error when localStorage refused the write (quota), otherwise null. */
+const writeLocalStorageSnapshot = (snapshot: Snapshot): unknown => {
   try {
     window.localStorage.setItem(LS_SNAPSHOT, JSON.stringify(snapshot));
+    return null;
   } catch (error) {
     console.error("localStorage yazılamadı", error);
+    return error ?? new Error("localStorage yazılamadı");
   }
 };
 
@@ -399,6 +430,7 @@ const writeSqliteSnapshot = async (snapshot: Snapshot): Promise<void> => {
       await invoke("save_snapshot_json", { json: JSON.stringify(snapshot) });
     } catch (fallbackError) {
       console.error("SQLite json yazılamadı", fallbackError);
+      throw new Error(`Veritabanına yazılamadı: ${errorText(fallbackError)}`);
     }
   }
 };
@@ -414,7 +446,12 @@ const adoptBrowserSnapshotIfSqliteEmpty = async (sqlite: Snapshot): Promise<Snap
   const browser = sanitize(pickRichest(fromMemory, fromIdb));
   if (richness(browser) === 0) return sqlite;
 
-  await enqueueWrite(() => writeSqliteSnapshot(browser));
+  try {
+    await enqueueWrite(() => writeSqliteSnapshot(browser));
+  } catch {
+    // The browser mirrors are the only copy until SQLite takes them: keep them.
+    return browser;
+  }
   queueMicrotask(dropBrowserMirrors);
   return browser;
 };
@@ -505,7 +542,7 @@ export const saveSnapshot = async (snapshot: Snapshot): Promise<void> => {
         serializable.trash,
       ),
     };
-    writeLocalStorageSnapshot(merged);
+    const memoryError = writeLocalStorageSnapshot(merged);
 
     try {
       const stored = (await idbGet<Snapshot>(IDB_STATE, "snapshot")) ?? emptySnapshot();
@@ -521,6 +558,8 @@ export const saveSnapshot = async (snapshot: Snapshot): Promise<void> => {
       });
     } catch (error) {
       console.error("IndexedDB yazılamadı", error);
+      // One mirror holding the data is a save; neither is a failure.
+      if (memoryError) throw new Error(`Tarayıcı depolamasına yazılamadı: ${errorText(error)}`);
     }
   });
 };
@@ -537,6 +576,7 @@ export const saveNote = async (id: string, note: unknown): Promise<void> => {
       await invoke("save_note", { id, note: await sealNoteRecord(id, incoming) });
     } catch (error) {
       console.error("SQLite not yazılamadı", error);
+      throw new Error(`Not veritabanına yazılamadı: ${errorText(error)}`);
     }
     return;
   }
@@ -566,14 +606,14 @@ export const saveNote = async (id: string, note: unknown): Promise<void> => {
       revision,
     });
     existing.notes = { ...existing.notes, [id]: storedNote };
-    writeLocalStorageSnapshot(existing);
+    const memoryError = writeLocalStorageSnapshot(existing);
 
     try {
       const stored = (await idbGet<Snapshot>(IDB_STATE, "snapshot")) ?? emptySnapshot();
       stored.notes = { ...stored.notes, [id]: storedNote };
       await idbSet(IDB_STATE, "snapshot", stored);
-    } catch {
-      // ignore
+    } catch (error) {
+      if (memoryError) throw new Error(`Tarayıcı depolamasına yazılamadı: ${errorText(error)}`);
     }
   });
 };
