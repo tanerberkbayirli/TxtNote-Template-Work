@@ -1,0 +1,5555 @@
+[
+  {
+    "id": "page-a4",
+    "kind": "page_size",
+    "params": {
+      "pages": "all"
+    },
+    "expected": [
+      210.008611,
+      297.003611
+    ],
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "docx-margin-top",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.top",
+      "sections": "all"
+    },
+    "expected": 30.00375,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:top"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "docx-margin-bottom",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.bottom",
+      "sections": "all"
+    },
+    "expected": 30.00375,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:bottom"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "docx-margin-left",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.left",
+      "sections": "all"
+    },
+    "expected": 40.005,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:left"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "docx-margin-right",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.right",
+      "sections": "all"
+    },
+    "expected": 25.011944,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:right"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "docx-margin-header",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.header",
+      "sections": "all"
+    },
+    "expected": 12.505972,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:header"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "docx-margin-footer",
+    "kind": "docx_section",
+    "params": {
+      "field": "margins.footer",
+      "sections": "all"
+    },
+    "expected": 12.505972,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:footer"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "word-opens",
+    "kind": "word_opens",
+    "params": {},
+    "expected": true,
+    "tolerance": 0,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "official DOCX; valid editable Word output"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "structure"
+  },
+  {
+    "id": "page-count-parity",
+    "kind": "page_count_match",
+    "params": {},
+    "expected": true,
+    "tolerance": 0,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "official document structure; editor/Word physical-page parity"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "structure"
+  },
+  {
+    "id": "page-label-parity",
+    "kind": "page_labels_match",
+    "params": {},
+    "expected": true,
+    "tolerance": 0,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "official pgNumType/front/body structure"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "structure"
+  },
+  {
+    "id": "pdf-body-font",
+    "kind": "fonts",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Çalışma alanının"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "pdf-body-size",
+    "kind": "font_size",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Çalışma alanının"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "pdf-body-first-indent",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Çalışma alanının",
+      "attr": "x0",
+      "agg": "first"
+    },
+    "expected": 45.01444444444445,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "pdf-page-number-y",
+    "kind": "page_number_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 275.201,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=10;line=19"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "pdf-body-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3018798828125,
+    "tolerance": 0.25,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "pdf-heading-1-size",
+    "kind": "font_size",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "bölüm bİr- GİRİŞ"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "pdf-heading-2-size",
+    "kind": "font_size",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "Çalışma Alanı"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "pdf-heading-3-size",
+    "kind": "font_size",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "1 Topoğrafya"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[136]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "word-body-font",
+    "kind": "fonts",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Çalışma alanının"
+    },
+    "expected": [
+      "TimesNewRomanPSMT",
+      "TimesNewRomanPS-BoldMT",
+      "TimesNewRomanPS-ItalicMT",
+      "TimesNewRomanPS-BoldItalicMT"
+    ],
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "word-body-size",
+    "kind": "font_size",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Çalışma alanının"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "word-body-first-indent",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "^Çalışma alanının",
+      "attr": "x0",
+      "agg": "first"
+    },
+    "expected": 45.01444444444445,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "word-page-number-y",
+    "kind": "page_number_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "baseline"
+    },
+    "expected": 275.201,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=10;line=19"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "geometry"
+  },
+  {
+    "id": "word-body-pitch",
+    "kind": "line_pitch",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 7.3018798828125,
+    "tolerance": 0.25,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "word-heading-1-size",
+    "kind": "font_size",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "bölüm bİr- GİRİŞ"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "word-heading-2-size",
+    "kind": "font_size",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "Çalışma Alanı"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "word-heading-3-size",
+    "kind": "font_size",
+    "params": {
+      "source": "word",
+      "pages": {
+        "label": "arabic"
+      },
+      "regex": "1 Topoğrafya"
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[136]"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "pdf-heading-body-gap",
+    "kind": "line_gap",
+    "params": {
+      "source": "pdf",
+      "page": {
+        "find": "^bölüm bİr- GİRİŞ",
+        "within": {
+          "label": "arabic"
+        }
+      },
+      "a": "^bölüm bİr- GİRİŞ",
+      "b": "^Çalışma alanının"
+    },
+    "expected": 7.282000000000004,
+    "tolerance": 0.25,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=10;line=1; C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=10;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "word-heading-body-gap",
+    "kind": "line_gap",
+    "params": {
+      "source": "word",
+      "page": {
+        "find": "^bölüm bİr- GİRİŞ",
+        "within": {
+          "label": "arabic"
+        }
+      },
+      "a": "^bölüm bİr- GİRİŞ",
+      "b": "^Çalışma alanının"
+    },
+    "expected": 7.282000000000004,
+    "tolerance": 0.25,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=10;line=1; C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=10;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "typography"
+  },
+  {
+    "id": "cover-line-1-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^DOKUZ\\s*EYLÜL\\s*ÜNİVERSİTESİ$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 33.874,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-1-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^DOKUZ\\s*EYLÜL\\s*ÜNİVERSİTESİ$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 68.513,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-1-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^DOKUZ\\s*EYLÜL\\s*ÜNİVERSİTESİ$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-1-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^DOKUZ\\s*EYLÜL\\s*ÜNİVERSİTESİ$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 33.874,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-1-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^DOKUZ\\s*EYLÜL\\s*ÜNİVERSİTESİ$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 68.513,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-1-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^DOKUZ\\s*EYLÜL\\s*ÜNİVERSİTESİ$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-2-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^FEN\\s*BİLİMLERİ\\s*ENSTİTÜSÜ$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 43.78,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-2-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^FEN\\s*BİLİMLERİ\\s*ENSTİTÜSÜ$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 71.265,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-2-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^FEN\\s*BİLİMLERİ\\s*ENSTİTÜSÜ$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-2-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^FEN\\s*BİLİMLERİ\\s*ENSTİTÜSÜ$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 43.78,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-2-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^FEN\\s*BİLİMLERİ\\s*ENSTİTÜSÜ$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 71.265,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-2-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^FEN\\s*BİLİMLERİ\\s*ENSTİTÜSÜ$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-3-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 101.194,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-3-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.732,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-3-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-3-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 101.194,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-3-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.732,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-3-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-4-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 112.159,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-4-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 38.53,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-4-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-4-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 112.159,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-4-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 38.53,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-4-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-5-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 123.123,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-5-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 90.653,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-5-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-5-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 123.123,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-5-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 90.653,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-5-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-6-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 183.074,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-6-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 39.081,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-6-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-6-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 183.074,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-6-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 39.081,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-6-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-7-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 191.583,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-7-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 81.34,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-7-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-7-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 191.583,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-7-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 81.34,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-7-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-8-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*12\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 249.844,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-8-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*12\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 42.806,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-8-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*12\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-8-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*12\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 249.844,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-8-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*12\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 42.806,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-8-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*12\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-9-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^buraya\\s*yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 254.713,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-9-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^buraya\\s*yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 91.119,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-9-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^buraya\\s*yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-9-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^buraya\\s*yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 254.713,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-9-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^buraya\\s*yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 91.119,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-9-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^buraya\\s*yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-10-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^İZMİR$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 263.813,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-10-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^İZMİR$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 98.443,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-10-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^İZMİR$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-10-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^İZMİR$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 263.813,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-10-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^İZMİR$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 98.443,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "cover-line-10-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 1
+      },
+      "regex": "^İZMİR$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=1;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-1-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 35.99,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-1-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 48.225,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-1-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-1-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 35.99,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-1-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 48.225,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-1-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^TEZ\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*18\\s*PUNTO,$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-2-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 46.912,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-2-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 46.023,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-2-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-2-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 46.912,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-2-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 46.023,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-2-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^KOYU\\s*VE\\s*ORTALANMIŞ\\s*OLARAK\\s*BURAYA$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-3-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 57.877,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-3-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 98.146,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-3-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-3-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 57.877,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-3-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 98.146,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-3-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^YAZINIZ\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 18,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-4-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Dokuz\\s*Eylül\\s*Üniversitesi\\s*Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 105.639,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-4-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Dokuz\\s*Eylül\\s*Üniversitesi\\s*Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 70.926,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-4-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Dokuz\\s*Eylül\\s*Üniversitesi\\s*Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-4-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Dokuz\\s*Eylül\\s*Üniversitesi\\s*Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 105.639,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-4-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Dokuz\\s*Eylül\\s*Üniversitesi\\s*Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 70.926,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-4-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Dokuz\\s*Eylül\\s*Üniversitesi\\s*Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-5-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Yüksek\\s*Lisans\\s*Tezi$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 112.963,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-5-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Yüksek\\s*Lisans\\s*Tezi$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 97.342,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-5-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Yüksek\\s*Lisans\\s*Tezi$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-5-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Yüksek\\s*Lisans\\s*Tezi$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 112.963,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-5-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Yüksek\\s*Lisans\\s*Tezi$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 97.342,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-5-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Yüksek\\s*Lisans\\s*Tezi$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-6-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Anabilim\\s*Dalını\\s*seçiniz\\.\\s*Anabilim\\s*Dalı\\s*Program\\s*bilgisi\\s*giriniz\\.\\s*Programı$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 120.244,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-6-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Anabilim\\s*Dalını\\s*seçiniz\\.\\s*Anabilim\\s*Dalı\\s*Program\\s*bilgisi\\s*giriniz\\.\\s*Programı$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 50.976,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-6-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Anabilim\\s*Dalını\\s*seçiniz\\.\\s*Anabilim\\s*Dalı\\s*Program\\s*bilgisi\\s*giriniz\\.\\s*Programı$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-6-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Anabilim\\s*Dalını\\s*seçiniz\\.\\s*Anabilim\\s*Dalı\\s*Program\\s*bilgisi\\s*giriniz\\.\\s*Programı$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 120.244,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-6-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Anabilim\\s*Dalını\\s*seçiniz\\.\\s*Anabilim\\s*Dalı\\s*Program\\s*bilgisi\\s*giriniz\\.\\s*Programı$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 50.976,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-6-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Anabilim\\s*Dalını\\s*seçiniz\\.\\s*Anabilim\\s*Dalı\\s*Program\\s*bilgisi\\s*giriniz\\.\\s*Programı$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-7-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 182.143,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-7-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 46.574,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-7-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-7-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 182.143,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-7-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 46.574,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-7-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*Yazarı\\s*Soyadı\\s*büyük\\s*harflerle,\\s*14\\s*punto,\\s*koyu\\s*ve\\s*ortalanmış$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-8-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 190.652,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-8-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 88.833,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-8-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-8-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 190.652,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-8-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 88.833,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-8-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^olarak\\s*buraya\\s*yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 14.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-9-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak\\s*buraya$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 248.913,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-9-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak\\s*buraya$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 52.331,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-9-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak\\s*buraya$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-9-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak\\s*buraya$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 248.913,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-9-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak\\s*buraya$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 52.331,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-9-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^Tez\\s*basım\\s*tarihini\\s*ay\\s*ve\\s*yıl\\s*olarak,\\s*koyu\\s*ve\\s*ortalanmış\\s*olarak\\s*buraya$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-10-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 253.781,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-10-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 105.639,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-10-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-10-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^yazınız\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 253.781,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-10-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^yazınız\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 105.639,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-10-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^yazınız\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-11-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^İZMİR$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 262.882,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-11-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^İZMİR$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 105.936,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-11-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^İZMİR$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-11-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^İZMİR$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 262.882,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-11-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^İZMİR$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 105.936,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "inner-cover-line-11-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "page": 2
+      },
+      "regex": "^İZMİR$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=2;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-1-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 33.958,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-1-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 68.725,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-1-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-1-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 33.958,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-1-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 68.725,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-1-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=1"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-2-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^TEZ\\s*YAZARI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO,\\s*KOYU\\s*tarafından\\s*UNVAN$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 45.473,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-2-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^TEZ\\s*YAZARI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO,\\s*KOYU\\s*tarafından\\s*UNVAN$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-2-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^TEZ\\s*YAZARI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO,\\s*KOYU\\s*tarafından\\s*UNVAN$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-2-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^TEZ\\s*YAZARI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO,\\s*KOYU\\s*tarafından\\s*UNVAN$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 45.473,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-2-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^TEZ\\s*YAZARI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO,\\s*KOYU\\s*tarafından\\s*UNVAN$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-2-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^TEZ\\s*YAZARI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO,\\s*KOYU\\s*tarafından\\s*UNVAN$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=2"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-3-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^SEÇİNİZ\\.\\s*DANIŞMAN\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 52.797,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-3-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^SEÇİNİZ\\.\\s*DANIŞMAN\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-3-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^SEÇİNİZ\\.\\s*DANIŞMAN\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-3-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^SEÇİNİZ\\.\\s*DANIŞMAN\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 52.797,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-3-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^SEÇİNİZ\\.\\s*DANIŞMAN\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-3-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^SEÇİNİZ\\.\\s*DANIŞMAN\\s*ADINI\\s*BÜYÜK\\s*HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=3"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-4-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^OLARAK\\s*BURAYA\\s*YAZINIZ\\.\\s*yönetiminde\\s*hazırlanan\\s*“TEZ\\s*ADINI\\s*BÜYÜK$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 60.078,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-4-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^OLARAK\\s*BURAYA\\s*YAZINIZ\\.\\s*yönetiminde\\s*hazırlanan\\s*“TEZ\\s*ADINI\\s*BÜYÜK$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-4-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^OLARAK\\s*BURAYA\\s*YAZINIZ\\.\\s*yönetiminde\\s*hazırlanan\\s*“TEZ\\s*ADINI\\s*BÜYÜK$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-4-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^OLARAK\\s*BURAYA\\s*YAZINIZ\\.\\s*yönetiminde\\s*hazırlanan\\s*“TEZ\\s*ADINI\\s*BÜYÜK$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 60.078,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-4-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^OLARAK\\s*BURAYA\\s*YAZINIZ\\.\\s*yönetiminde\\s*hazırlanan\\s*“TEZ\\s*ADINI\\s*BÜYÜK$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-4-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^OLARAK\\s*BURAYA\\s*YAZINIZ\\.\\s*yönetiminde\\s*hazırlanan\\s*“TEZ\\s*ADINI\\s*BÜYÜK$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=4"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-5-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU\\s*OLARAK\\s*BURAYA\\s*YAZINIZ\\.”\\s*başlıklı$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 67.402,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-5-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU\\s*OLARAK\\s*BURAYA\\s*YAZINIZ\\.”\\s*başlıklı$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-5-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU\\s*OLARAK\\s*BURAYA\\s*YAZINIZ\\.”\\s*başlıklı$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-5-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU\\s*OLARAK\\s*BURAYA\\s*YAZINIZ\\.”\\s*başlıklı$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 67.402,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-5-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU\\s*OLARAK\\s*BURAYA\\s*YAZINIZ\\.”\\s*başlıklı$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-5-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^HARFLERLE,\\s*12\\s*PUNTO\\s*VE\\s*KOYU\\s*OLARAK\\s*BURAYA\\s*YAZINIZ\\.”\\s*başlıklı$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-6-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^tez\\s*tarafımızdan\\s*okunmuş,\\s*kapsamı\\s*ve\\s*niteliği\\s*açısından\\s*bir\\s*Yüksek\\s*Lisans\\s*tezi\\s*olarak$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 74.683,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-6-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^tez\\s*tarafımızdan\\s*okunmuş,\\s*kapsamı\\s*ve\\s*niteliği\\s*açısından\\s*bir\\s*Yüksek\\s*Lisans\\s*tezi\\s*olarak$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-6-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^tez\\s*tarafımızdan\\s*okunmuş,\\s*kapsamı\\s*ve\\s*niteliği\\s*açısından\\s*bir\\s*Yüksek\\s*Lisans\\s*tezi\\s*olarak$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-6-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^tez\\s*tarafımızdan\\s*okunmuş,\\s*kapsamı\\s*ve\\s*niteliği\\s*açısından\\s*bir\\s*Yüksek\\s*Lisans\\s*tezi\\s*olarak$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 74.683,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-6-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^tez\\s*tarafımızdan\\s*okunmuş,\\s*kapsamı\\s*ve\\s*niteliği\\s*açısından\\s*bir\\s*Yüksek\\s*Lisans\\s*tezi\\s*olarak$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-6-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^tez\\s*tarafımızdan\\s*okunmuş,\\s*kapsamı\\s*ve\\s*niteliği\\s*açısından\\s*bir\\s*Yüksek\\s*Lisans\\s*tezi\\s*olarak$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=6"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-7-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^kabul\\s*edilmiştir\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 82.007,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-7-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^kabul\\s*edilmiştir\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-7-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^kabul\\s*edilmiştir\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-7-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^kabul\\s*edilmiştir\\.$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 82.007,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-7-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^kabul\\s*edilmiştir\\.$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 40.012,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-7-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^kabul\\s*edilmiştir\\.$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=7"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-8-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Unvan\\s*Seçiniz\\.Danışman\\s*bilgisi\\s*SOYADI\\s*BÜYÜK\\s*HARFLERLE\\s*ve\\s*12\\s*Punto$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 116.604,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-8-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Unvan\\s*Seçiniz\\.Danışman\\s*bilgisi\\s*SOYADI\\s*BÜYÜK\\s*HARFLERLE\\s*ve\\s*12\\s*Punto$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 47.124,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-8-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Unvan\\s*Seçiniz\\.Danışman\\s*bilgisi\\s*SOYADI\\s*BÜYÜK\\s*HARFLERLE\\s*ve\\s*12\\s*Punto$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-8-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Unvan\\s*Seçiniz\\.Danışman\\s*bilgisi\\s*SOYADI\\s*BÜYÜK\\s*HARFLERLE\\s*ve\\s*12\\s*Punto$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 116.604,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-8-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Unvan\\s*Seçiniz\\.Danışman\\s*bilgisi\\s*SOYADI\\s*BÜYÜK\\s*HARFLERLE\\s*ve\\s*12\\s*Punto$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 47.124,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-8-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Unvan\\s*Seçiniz\\.Danışman\\s*bilgisi\\s*SOYADI\\s*BÜYÜK\\s*HARFLERLE\\s*ve\\s*12\\s*Punto$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=8"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-9-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Danışman$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 128.161,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-9-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Danışman$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 106.401,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-9-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Danışman$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-9-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Danışman$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 128.161,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-9-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Danışman$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 106.401,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-9-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Danışman$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=9"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-10-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Jüri\\s*Üyesi\\s*Jüri\\s*Üyesi$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 185.826,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-10-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Jüri\\s*Üyesi\\s*Jüri\\s*Üyesi$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 52.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-10-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Jüri\\s*Üyesi\\s*Jüri\\s*Üyesi$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-10-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Jüri\\s*Üyesi\\s*Jüri\\s*Üyesi$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 185.826,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-10-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Jüri\\s*Üyesi\\s*Jüri\\s*Üyesi$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 52.5,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-10-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Jüri\\s*Üyesi\\s*Jüri\\s*Üyesi$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=10"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-11-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Prof\\.\\s*Dr\\.\\s*Abdullah\\s*SEÇGİN$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 243.494,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-11-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Prof\\.\\s*Dr\\.\\s*Abdullah\\s*SEÇGİN$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 90.95,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-11-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Prof\\.\\s*Dr\\.\\s*Abdullah\\s*SEÇGİN$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-11-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Prof\\.\\s*Dr\\.\\s*Abdullah\\s*SEÇGİN$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 243.494,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-11-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Prof\\.\\s*Dr\\.\\s*Abdullah\\s*SEÇGİN$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 90.95,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-11-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Prof\\.\\s*Dr\\.\\s*Abdullah\\s*SEÇGİN$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=11"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-12-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Müdür$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 250.818,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=12"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-12-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Müdür$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 109.238,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=12"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-12-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Müdür$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=12"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-12-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Müdür$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 250.818,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=12"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-12-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Müdür$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 109.238,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=12"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-12-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Müdür$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=12"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-13-pdf-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 258.099,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=13"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-13-pdf-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 95.268,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=13"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-13-pdf-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=13"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-13-word-baseline",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "baseline",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 258.099,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=13"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-13-word-x0",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "x0",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 95.268,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=13"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "approval-line-13-word-size",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "pages": {
+        "find": "^YÜKSEK\\s*LİSANS\\s*TEZİ\\s*SINAV\\s*SONUÇ\\s*FORMU",
+        "within": {
+          "label": "roman"
+        }
+      },
+      "regex": "^Fen\\s*Bilimleri\\s*Enstitüsü$",
+      "attr": "size",
+      "agg": "first",
+      "nth": 0
+    },
+    "expected": 12,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=3;line=13"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "fixed-pages"
+  },
+  {
+    "id": "pdf-table-cell-left",
+    "kind": "line_attr",
+    "params": {
+      "source": "pdf",
+      "regex": "^Province",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "x0",
+      "agg": "first"
+    },
+    "expected": 41.578,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=19;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "tables"
+  },
+  {
+    "id": "pdf-table-cell-size",
+    "kind": "font_size",
+    "params": {
+      "source": "pdf",
+      "regex": "^Province",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 8.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=19;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "tables"
+  },
+  {
+    "id": "word-table-cell-left",
+    "kind": "line_attr",
+    "params": {
+      "source": "word",
+      "regex": "^Province",
+      "pages": {
+        "label": "arabic"
+      },
+      "attr": "x0",
+      "agg": "first"
+    },
+    "expected": 41.578,
+    "tolerance": 0.5,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=19;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "tables"
+  },
+  {
+    "id": "word-table-cell-size",
+    "kind": "font_size",
+    "params": {
+      "source": "word",
+      "regex": "^Province",
+      "pages": {
+        "label": "arabic"
+      }
+    },
+    "expected": 8.04,
+    "tolerance": 0.1,
+    "source": {
+      "file": "engine/references/deu-fbe/source/reference/official.docx",
+      "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=19;line=5"
+    },
+    "evidence": "MEASURED",
+    "tier": 1,
+    "category": "tables"
+  }
+]

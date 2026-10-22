@@ -49,6 +49,37 @@ describe("engine defaults for rules a source does not define", () => {
     assert.equal(filled.tables, t.tables);
     assert.equal(filled.figures, t.figures);
   });
+  it("treats an absent page orientation as portrait and still rejects an invalid one", () => {
+    const t = structuredClone(generic);
+    delete t.page.orientation;
+    assert.equal(withEngineDefaults(t).page.orientation, "portrait");
+    assert.deepEqual(validateThesisTemplate(t), []);
+    assert.equal(compileThesisDocument(t, {}, "T", "<h1>Bir</h1>").sections[0].rules.page.orientation, "portrait");
+
+    const landscape = structuredClone(generic);
+    landscape.page.orientation = "landscape";
+    assert.equal(withEngineDefaults(landscape), landscape, "an explicit orientation keeps the very same object");
+    const invalid = structuredClone(generic);
+    invalid.page.orientation = "sideways";
+    assert.equal(withEngineDefaults(invalid).page.orientation, "sideways");
+    assert.ok(validateThesisTemplate(invalid).some((e) => /orientation geçersiz/.test(e)));
+  });
+  it("fills only the missing sequence of a caption numbering and never guesses its scope or format", () => {
+    const t = structuredClone(generic);
+    t.tables.numbering = { scope: "chapter", format: "{chapter}.{n}" };
+    const filled = withEngineDefaults(t);
+    assert.deepEqual(filled.tables.numbering, { scope: "chapter", format: "{chapter}.{n}", sequence: "arabic" });
+    assert.equal(filled.figures, t.figures, "an untouched rule keeps its identity");
+    assert.deepEqual(validateThesisTemplate(t), []);
+
+    const noScope = structuredClone(generic);
+    noScope.figures.numbering = { format: "{n}" };
+    assert.ok(validateThesisTemplate(noScope).some((e) => /figures.numbering geçersiz/.test(e)), "a missing scope is still an error");
+    const invalid = structuredClone(generic);
+    invalid.tables.numbering = { scope: "document", format: "{n}", sequence: "roman-x" };
+    assert.equal(withEngineDefaults(invalid).tables.numbering.sequence, "roman-x");
+    assert.ok(validateThesisTemplate(invalid).some((e) => /tables.numbering geçersiz/.test(e)));
+  });
   it("still rejects a malformed value the template does set", () => {
     const t = structuredClone(generic);
     t.page.header = { heightMm: -1 };

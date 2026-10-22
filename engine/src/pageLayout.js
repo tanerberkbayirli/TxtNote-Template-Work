@@ -1,6 +1,7 @@
 import { formatNumber } from "./engine.js";
 import { plainThesisText } from "./sourceHtml.js";
 import { convertLength } from "./units.js";
+import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../../TxtNote/frontend/src/lib/academicDocument.js";
 
 /** Empty editing scaffolds are not physical pages. Explicit breaks and media are. */
 export function thesisGroupHasPageContent(group) {
@@ -13,10 +14,33 @@ export function thesisGroupHasPageContent(group) {
 }
 
 export const PX_PER_MM = convertLength(1, "mm", "px");
+
+/**
+ * The room a table cell keeps below its text, in mm: its bottom padding and the rule of its row. Word fits a table row on a page only
+ * when the whole row fits (text, bottom padding and rule), while the terminal-leading guard below measures from the end of the cell's
+ * text. Without this room a row whose text ends within the padding of the page bottom stays on the page in the editor and moves to the
+ * next page in Word, and every following row then sits one row apart (measured: MCBÜ, last row of a table at 272.45 mm on a 272.0 mm
+ * text area; the editor's own row boxes). The padding is the template's `tables.cellPadding` (a string shorthand is read too) or the
+ * editor default; the rule is the default 1 px cell border, the width of a per-edge border, or 0 for the rule-only presets.
+ */
+export function tableCellBottomExtraMm(tables) {
+  const toMm = (value, unit) => convertLength(value, unit === "px" ? "px" : unit === "pt" ? "pt" : "mm", "mm");
+  const padding = tables?.cellPadding;
+  let paddingMm = toMm(ACADEMIC_TABLE_CELL_PADDING_PT.vertical, "pt");
+  if (padding && typeof padding === "object") paddingMm = Number(padding.bottomMm) || 0;
+  else if (typeof padding === "string") {
+    const parts = padding.trim().split(/\s+/);
+    const token = /^(-?[\d.]+)(mm|pt|px)?$/.exec(parts[2] ?? parts[0] ?? "");
+    if (token) paddingMm = toMm(Number(token[1]), token[2] || "px");
+  }
+  const edge = tables?.borders?.insideHorizontal ?? tables?.borders?.bottom;
+  const ruleMm = edge && Number.isFinite(edge.widthPt) ? toMm(edge.widthPt, "pt")
+    : ["threeRule", "headerRules", "none"].includes(tables?.borders?.preset) ? 0 : toMm(1, "px");
+  return Math.max(0, Math.round((paddingMm + ruleMm) * 10000) / 10000);
+}
 export const THESIS_PAGE_GAP_PX = 28;
 /** Fail-safe for pathological content: never render more physical sheets than this per group. */
 export const THESIS_MAX_PAGES = 2000;
-
 export function pageMetrics(page) {
   const margins = page.margins;
   const widthPx = page.widthMm * PX_PER_MM;
@@ -215,6 +239,9 @@ export function thesisPagedCss(groups) {
     `${FLOW} txt-table-flow{display:block;box-decoration-break:clone;padding-bottom:var(--thesis-col-lead,0mm);margin-bottom:calc(-1 * var(--thesis-col-lead,0mm))}`,
     `${FLOW} txt-table-flow :is(td,th,.academic-table-wrap)::after{display:none}`,
     `${FLOW} thead{display:table-header-group}`,
+    // Word never leaves a header row alone at the bottom of a page: it moves with the first body row (measured: MCBÜ Tıp, caption and header
+    // row at the bottom of a page in the editor, caption, header and first rows on the next page in Word).
+    `${FLOW} :is(thead,thead>tr){break-after:avoid}`,
     // Scroll containers are monolithic for fragmentation; keep wrappers/code splittable.
     `${FLOW} :is(.academic-table-wrap,pre,.academic-code){overflow:visible}`,
     `${FLOW} .academic-page-break{break-after:column}`,
@@ -255,6 +282,14 @@ export function thesisPagedCss(groups) {
       // The terminal-leading guard (above) models a heading that must stay with the text after it. A heading without keepWithNext is an
       // ordinary paragraph for Word: its line may use the leading below the last line like running text, so it gets no extra room requirement.
       if (lead > 0) for (const [level, style] of Object.entries(section.rules.headings)) if (!style.keepWithNext) rules.push(`${fragment} h${level}::after{display:none !important}`);
+      // A caption above its table is "keep with next" in Word: it stays with the table's header and first rows.
+      if (section.rules.tables?.position === "above") rules.push(`${fragment} table>caption{break-after:avoid}`);
+      // A table row needs its whole height (padding and rule included) above the page bottom, not only its text: the cell's guard block
+      // is that much taller (see tableCellBottomExtraMm).
+      if (lead > 0) {
+        const room = `${lead}mm + ${tableCellBottomExtraMm(section.rules.tables)}mm`;
+        rules.push(`${fragment} :is(td,th)::after{height:calc(${room});margin:0 0 calc(-1 * (${room}))}`);
+      }
       const flags = (style) => `${style.keepLines === undefined ? "" : `break-inside:${style.keepLines ? "avoid" : "auto"};`}${style.widowControl === undefined ? "" : `orphans:${style.widowControl ? 2 : 1};widows:${style.widowControl ? 2 : 1};`}${style.keepWithNext === undefined ? "" : `break-after:${style.keepWithNext ? "avoid" : "auto"};`}${style.pageBreakBefore ? "break-before:column;" : ""}`;
       rules.push(`${fragment} p{${flags(section.rules.body)}}`);
       // Per-style terminal leading (engine.js wordLastLineLeadings, MEASURED vs Word): the column carries the largest allowance; a paragraph

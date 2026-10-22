@@ -1,0 +1,2322 @@
+{
+  "schemaVersion": 1,
+  "target": "deu-fbe",
+  "sourceSha256": "a35615a80abb06f87e75aa8f6e25d18628a94341637dbcbec00dfdcb518d18b2",
+  "facts": [
+    {
+      "key": "typography.body.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.align",
+      "value": "justify",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[118]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.body.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.color",
+      "value": "#FFFFFF",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]/w:r[3]/w:rPr[1]/w:color[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.align",
+      "value": "center",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.pageBreakBefore",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:pageBreakBefore[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.1.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[116]; following empty paragraphs"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[4]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[4]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.align",
+      "value": "left",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[4]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[4]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[4]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.2.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[117]; following empty paragraphs"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[5]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[5]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.italic",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[5]/w:rPr[1]/w:i[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.align",
+      "value": "left",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[5]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[136]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[136]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[136]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[136]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[5]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[5]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.headings.3.spaceAfterPt",
+      "value": 32.6982421875,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[136]; following empty paragraphs"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.topMm",
+      "value": 30.00375,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:top"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.bottomMm",
+      "value": 30.00375,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:bottom"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.leftMm",
+      "value": 40.005,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:left"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.margins.rightMm",
+      "value": 25.011944,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:right"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.widthMm",
+      "value": 210.008611,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgSz[1]/@w:w"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.heightMm",
+      "value": 297.003611,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgSz[1]/@w:h"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.header.distanceMm",
+      "value": 12.505972,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:header"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.footer.distanceMm",
+      "value": 12.505972,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sectPr[1]/w:pgMar[1]/@w:footer"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.numbering.baselineFromTopMm",
+      "value": 275.201,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "C:\\Users\\CASPER\\Desktop\\TxtNote-Template-Work\\engine\\references\\deu-fbe\\source\\reference\\official-word.pdf#page=10;line=19"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "page.numbering.align",
+      "value": "center",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/footer1.xml#/w:ftr[1]/w:sdt[1]/w:sdtContent[1]/w:p[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[55]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.align",
+      "value": "center",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[55]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[55]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[55]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[55]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.thanks.title.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.align",
+      "value": "center",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[70]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[70]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[70]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[70]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.abstract.title.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.align",
+      "value": "center",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[76]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[76]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[76]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[76]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.english-abstract.title.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.align",
+      "value": "left",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:sdt[2]/w:sdtContent[1]/w:p[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.spaceBeforePt",
+      "value": 10,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.spaceAfterPt",
+      "value": 10,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.title.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[3]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[19]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.align",
+      "value": "justify",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.spaceBeforePt",
+      "value": 15,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[19]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.spaceAfterPt",
+      "value": 10,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[19]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[19]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[19]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.toc.index.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.align",
+      "value": "justify",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[173]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[173]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[173]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[173]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[173]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.keepWithNext",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:keepNext[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.keepLines",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:keepLines[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "sections.bibliography.title.pageBreakBefore",
+      "value": true,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:pageBreakBefore[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.fontSizePt",
+      "value": 10,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[31]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.align",
+      "value": "justify",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.style.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[151]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.fontSizePt",
+      "value": 10,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[31]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.align",
+      "value": "center",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[31]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[122]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[122]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[122]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[122]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "figures.style.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.topMm",
+      "value": 0,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:top[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.bottomMm",
+      "value": 0,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:bottom[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.leftMm",
+      "value": 1.9049999999999998,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:left[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "tables.cellPadding.rightMm",
+      "value": 1.9049999999999998,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:right[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.fontFamily",
+      "value": "Arial",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.fontSizePt",
+      "value": 8,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:r[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.fontWeight",
+      "value": 700,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:r[1]/w:rPr[1]/w:b[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.align",
+      "value": "center",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.lineHeight",
+      "value": 1,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "typography.paragraphStyles.sourceTable.firstLineIndentMm",
+      "value": 0,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:p[1]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.fontFamily",
+      "value": "Times New Roman",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:r[1]/w:rPr[1]/w:rFonts[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.fontSizePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rPr[1]/w:sz[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.align",
+      "value": "justify",
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:pPr[1]/w:jc[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.spaceBeforePt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.spaceAfterPt",
+      "value": 12,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.lineSpacing",
+      "value": {
+        "rule": "auto",
+        "value": 1.5
+      },
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.lineHeight",
+      "value": 1.5,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:pPr[1]/w:spacing[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.firstLineIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.leftIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    },
+    {
+      "key": "bibliography.style.hangingIndentMm",
+      "value": 5.009444444444444,
+      "source": {
+        "file": "engine/references/deu-fbe/source/reference/official.docx",
+        "locator": "word/document.xml#/w:document[1]/w:body[1]/w:p[174]/w:pPr[1]/w:ind[1]"
+      },
+      "evidence": "MEASURED"
+    }
+  ],
+  "engineGaps": [
+    {
+      "key": "w:style:w:default,w:styleId,w:type",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[1]",
+      "attributes": {
+        "w:default": "1",
+        "w:styleId": "Normal",
+        "w:type": "paragraph"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:name:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:name[1]",
+      "attributes": {
+        "w:val": "Normal"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:rsid:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[1]/w:rsid[1]",
+      "attributes": {
+        "w:val": "005272C2"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:style:w:styleId,w:type",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]",
+      "attributes": {
+        "w:styleId": "Balk1",
+        "w:type": "paragraph"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:aliases:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:aliases[1]",
+      "attributes": {
+        "w:val": "Heading 1"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:basedOn:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:basedOn[1]",
+      "attributes": {
+        "w:val": "Normal"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:next:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:next[1]",
+      "attributes": {
+        "w:val": "Normal"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:link:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:link[1]",
+      "attributes": {
+        "w:val": "Balk1Char"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:uiPriority:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:uiPriority[1]",
+      "attributes": {
+        "w:val": "9"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:numId:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:numPr[1]/w:numId[1]",
+      "attributes": {
+        "w:val": "30"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:outlineLvl:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:pPr[1]/w:outlineLvl[1]",
+      "attributes": {
+        "w:val": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:szCs:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:szCs[1]",
+      "attributes": {
+        "w:val": "28"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:lang:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[2]/w:rPr[1]/w:lang[1]",
+      "attributes": {
+        "w:val": "en-US"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:ilvl:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[4]/w:pPr[1]/w:numPr[1]/w:ilvl[1]",
+      "attributes": {
+        "w:val": "1"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:tblInd:w:type,w:w",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblInd[1]",
+      "attributes": {
+        "w:type": "dxa",
+        "w:w": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:top:w:type,w:w",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:top[1]",
+      "attributes": {
+        "w:type": "dxa",
+        "w:w": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:left:w:type,w:w",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:left[1]",
+      "attributes": {
+        "w:type": "dxa",
+        "w:w": "108"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:bottom:w:type,w:w",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:bottom[1]",
+      "attributes": {
+        "w:type": "dxa",
+        "w:w": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:right:w:type,w:w",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[9]/w:tblPr[1]/w:tblCellMar[1]/w:right[1]",
+      "attributes": {
+        "w:type": "dxa",
+        "w:w": "108"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:style:w:customStyle,w:styleId,w:type",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[11]",
+      "attributes": {
+        "w:customStyle": "1",
+        "w:styleId": "Balk1Char",
+        "w:type": "character"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:tab:w:leader,w:pos,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[19]/w:pPr[1]/w:tabs[1]/w:tab[1]",
+      "attributes": {
+        "w:leader": "dot",
+        "w:pos": "8210",
+        "w:val": "right"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:u:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[21]/w:rPr[1]/w:u[1]",
+      "attributes": {
+        "w:val": "single"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:tab:w:pos,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[26]/w:pPr[1]/w:tabs[1]/w:tab[1]",
+      "attributes": {
+        "w:pos": "4536",
+        "w:val": "center"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:top:w:color,w:space,w:sz,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[30]/w:tblPr[1]/w:tblBorders[1]/w:top[1]",
+      "attributes": {
+        "w:color": "auto",
+        "w:space": "0",
+        "w:sz": "4",
+        "w:val": "single"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:left:w:color,w:space,w:sz,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[30]/w:tblPr[1]/w:tblBorders[1]/w:left[1]",
+      "attributes": {
+        "w:color": "auto",
+        "w:space": "0",
+        "w:sz": "4",
+        "w:val": "single"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:bottom:w:color,w:space,w:sz,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[30]/w:tblPr[1]/w:tblBorders[1]/w:bottom[1]",
+      "attributes": {
+        "w:color": "auto",
+        "w:space": "0",
+        "w:sz": "4",
+        "w:val": "single"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:right:w:color,w:space,w:sz,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[30]/w:tblPr[1]/w:tblBorders[1]/w:right[1]",
+      "attributes": {
+        "w:color": "auto",
+        "w:space": "0",
+        "w:sz": "4",
+        "w:val": "single"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:insideH:w:color,w:space,w:sz,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[30]/w:tblPr[1]/w:tblBorders[1]/w:insideH[1]",
+      "attributes": {
+        "w:color": "auto",
+        "w:space": "0",
+        "w:sz": "4",
+        "w:val": "single"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:insideV:w:color,w:space,w:sz,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[30]/w:tblPr[1]/w:tblBorders[1]/w:insideV[1]",
+      "attributes": {
+        "w:color": "auto",
+        "w:space": "0",
+        "w:sz": "4",
+        "w:val": "single"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:autoSpaceDE:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[42]/w:pPr[1]/w:autoSpaceDE[1]",
+      "attributes": {
+        "w:val": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:autoSpaceDN:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[42]/w:pPr[1]/w:autoSpaceDN[1]",
+      "attributes": {
+        "w:val": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:adjustRightInd:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[42]/w:pPr[1]/w:adjustRightInd[1]",
+      "attributes": {
+        "w:val": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:vertAlign:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[48]/w:rPr[1]/w:vertAlign[1]",
+      "attributes": {
+        "w:val": "superscript"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:iCs:w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[49]/w:rPr[1]/w:iCs[1]",
+      "attributes": {
+        "w:val": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:shd:w:color,w:fill,w:val",
+      "locator": "word/styles.xml#/w:styles[1]/w:style[71]/w:rPr[1]/w:shd[1]",
+      "attributes": {
+        "w:color": "auto",
+        "w:fill": "E1DFDD",
+        "w:val": "clear"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:tblW:w:type,w:w",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblW[1]",
+      "attributes": {
+        "w:type": "pct",
+        "w:w": "5024"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:tblLook:w:firstColumn,w:firstRow,w:lastColumn,w:lastRow,w:noHBand,w:noVBand,w:val",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tblPr[1]/w:tblLook[1]",
+      "attributes": {
+        "w:firstColumn": "1",
+        "w:firstRow": "1",
+        "w:lastColumn": "0",
+        "w:lastRow": "0",
+        "w:noHBand": "0",
+        "w:noVBand": "1",
+        "w:val": "04A0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:gridCol:w:w",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tblGrid[1]/w:gridCol[1]",
+      "attributes": {
+        "w:w": "849"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:trHeight:w:val",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:trPr[1]/w:trHeight[1]",
+      "attributes": {
+        "w:val": "215"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:tcW:w:type,w:w",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:tcPr[1]/w:tcW[1]",
+      "attributes": {
+        "w:type": "pct",
+        "w:w": "515"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:vMerge:w:val",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:tcPr[1]/w:vMerge[1]",
+      "attributes": {
+        "w:val": "restart"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:vAlign:w:val",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[1]/w:tcPr[1]/w:vAlign[1]",
+      "attributes": {
+        "w:val": "center"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:gridSpan:w:val",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[4]/w:tcPr[1]/w:gridSpan[1]",
+      "attributes": {
+        "w:val": "9"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:left:w:val",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[1]/w:tc[4]/w:tcPr[1]/w:tcBorders[1]/w:left[1]",
+      "attributes": {
+        "w:val": "nil"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:top:w:val",
+      "locator": "word/document.xml#/w:document[1]/w:body[1]/w:tbl[1]/w:tr[2]/w:tc[4]/w:tcPr[1]/w:tcBorders[1]/w:top[1]",
+      "attributes": {
+        "w:val": "nil"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:numbering:{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable",
+      "locator": "word/numbering.xml#/w:numbering[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "w14 w15 w16se w16cid w16 w16cex w16sdtdh w16sdtfl w16du wp14"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:abstractNum:{http://schemas.microsoft.com/office/word/2012/wordml}restartNumberingAfterBreak,w:abstractNumId",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]",
+      "attributes": {
+        "{http://schemas.microsoft.com/office/word/2012/wordml}restartNumberingAfterBreak": "0",
+        "w:abstractNumId": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:nsid:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:nsid[1]",
+      "attributes": {
+        "w:val": "03481F28"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:multiLevelType:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:multiLevelType[1]",
+      "attributes": {
+        "w:val": "hybridMultilevel"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:tmpl:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:tmpl[1]",
+      "attributes": {
+        "w:val": "85324198"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:lvl:w:ilvl,w:tplc",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:lvl[1]",
+      "attributes": {
+        "w:ilvl": "0",
+        "w:tplc": "041F0017"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:start:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:lvl[1]/w:start[1]",
+      "attributes": {
+        "w:val": "1"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:numFmt:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:lvl[1]/w:numFmt[1]",
+      "attributes": {
+        "w:val": "lowerLetter"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:lvlText:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:lvl[1]/w:lvlText[1]",
+      "attributes": {
+        "w:val": "%1)"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:lvlJc:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:lvl[1]/w:lvlJc[1]",
+      "attributes": {
+        "w:val": "left"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:lvl:w:ilvl,w:tentative,w:tplc",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[1]/w:lvl[2]",
+      "attributes": {
+        "w:ilvl": "1",
+        "w:tentative": "1",
+        "w:tplc": "041F0019"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:lvl:w:ilvl",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[5]/w:lvl[1]",
+      "attributes": {
+        "w:ilvl": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:pStyle:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:abstractNum[14]/w:lvl[1]/w:pStyle[1]",
+      "attributes": {
+        "w:val": "Balk1"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:num:{http://schemas.microsoft.com/office/word/2016/wordml/cid}durableId,w:numId",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:num[1]",
+      "attributes": {
+        "{http://schemas.microsoft.com/office/word/2016/wordml/cid}durableId": "573590281",
+        "w:numId": "1"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:abstractNumId:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:num[1]/w:abstractNumId[1]",
+      "attributes": {
+        "w:val": "26"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:lvlOverride:w:ilvl",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:num[31]/w:lvlOverride[1]",
+      "attributes": {
+        "w:ilvl": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:startOverride:w:val",
+      "locator": "word/numbering.xml#/w:numbering[1]/w:num[31]/w:lvlOverride[1]/w:startOverride[1]",
+      "attributes": {
+        "w:val": "3"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:settings:{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable",
+      "locator": "word/settings.xml#/w:settings[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/markup-compatibility/2006}Ignorable": "w14 w15 w16se w16cid w16 w16cex w16sdtdh w16sdtfl w16du"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:zoom:w:percent",
+      "locator": "word/settings.xml#/w:settings[1]/w:zoom[1]",
+      "attributes": {
+        "w:percent": "100"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:proofState:w:grammar,w:spelling",
+      "locator": "word/settings.xml#/w:settings[1]/w:proofState[1]",
+      "attributes": {
+        "w:grammar": "clean",
+        "w:spelling": "clean"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:documentProtection:w:edit,w:enforcement",
+      "locator": "word/settings.xml#/w:settings[1]/w:documentProtection[1]",
+      "attributes": {
+        "w:edit": "readOnly",
+        "w:enforcement": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:defaultTabStop:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:defaultTabStop[1]",
+      "attributes": {
+        "w:val": "709"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:hyphenationZone:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:hyphenationZone[1]",
+      "attributes": {
+        "w:val": "425"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:drawingGridHorizontalSpacing:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:drawingGridHorizontalSpacing[1]",
+      "attributes": {
+        "w:val": "119"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:drawingGridVerticalSpacing:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:drawingGridVerticalSpacing[1]",
+      "attributes": {
+        "w:val": "181"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:displayHorizontalDrawingGridEvery:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:displayHorizontalDrawingGridEvery[1]",
+      "attributes": {
+        "w:val": "2"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:characterSpacingControl:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:characterSpacingControl[1]",
+      "attributes": {
+        "w:val": "doNotCompress"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{urn:schemas-microsoft-com:office:office}shapedefaults:spidmax,{urn:schemas-microsoft-com:vml}ext",
+      "locator": "word/settings.xml#/w:settings[1]/w:hdrShapeDefaults[1]/{urn:schemas-microsoft-com:office:office}shapedefaults[1]",
+      "attributes": {
+        "spidmax": "2050",
+        "{urn:schemas-microsoft-com:vml}ext": "edit"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:footnote:w:id",
+      "locator": "word/settings.xml#/w:settings[1]/w:footnotePr[1]/w:footnote[1]",
+      "attributes": {
+        "w:id": "-1"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:endnote:w:id",
+      "locator": "word/settings.xml#/w:settings[1]/w:endnotePr[1]/w:endnote[1]",
+      "attributes": {
+        "w:id": "-1"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:compatSetting:w:name,w:uri,w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:compat[1]/w:compatSetting[1]",
+      "attributes": {
+        "w:name": "compatibilityMode",
+        "w:uri": "http://schemas.microsoft.com/office/word",
+        "w:val": "15"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:rsidRoot:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:rsids[1]/w:rsidRoot[1]",
+      "attributes": {
+        "w:val": "00212B3A"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}mathFont:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathFont[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "Cambria Math"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}brkBin:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}brkBin[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "before"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}brkBinSub:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}brkBinSub[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "--"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}lMargin:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}lMargin[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}rMargin:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}rMargin[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "0"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}defJc:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}defJc[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "centerGroup"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}wrapIndent:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}wrapIndent[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "1440"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}intLim:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}intLim[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "subSup"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.openxmlformats.org/officeDocument/2006/math}naryLim:{http://schemas.openxmlformats.org/officeDocument/2006/math}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}mathPr[1]/{http://schemas.openxmlformats.org/officeDocument/2006/math}naryLim[1]",
+      "attributes": {
+        "{http://schemas.openxmlformats.org/officeDocument/2006/math}val": "undOvr"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:themeFontLang:w:eastAsia,w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:themeFontLang[1]",
+      "attributes": {
+        "w:eastAsia": "ja-JP",
+        "w:val": "tr-TR"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:clrSchemeMapping:w:accent1,w:accent2,w:accent3,w:accent4,w:accent5,w:accent6,w:bg1,w:bg2,w:followedHyperlink,w:hyperlink,w:t1,w:t2",
+      "locator": "word/settings.xml#/w:settings[1]/w:clrSchemeMapping[1]",
+      "attributes": {
+        "w:accent1": "accent1",
+        "w:accent2": "accent2",
+        "w:accent3": "accent3",
+        "w:accent4": "accent4",
+        "w:accent5": "accent5",
+        "w:accent6": "accent6",
+        "w:bg1": "light1",
+        "w:bg2": "light2",
+        "w:followedHyperlink": "followedHyperlink",
+        "w:hyperlink": "hyperlink",
+        "w:t1": "dark1",
+        "w:t2": "dark2"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{urn:schemas-microsoft-com:office:office}shapelayout:{urn:schemas-microsoft-com:vml}ext",
+      "locator": "word/settings.xml#/w:settings[1]/w:shapeDefaults[1]/{urn:schemas-microsoft-com:office:office}shapelayout[1]",
+      "attributes": {
+        "{urn:schemas-microsoft-com:vml}ext": "edit"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{urn:schemas-microsoft-com:office:office}idmap:data,{urn:schemas-microsoft-com:vml}ext",
+      "locator": "word/settings.xml#/w:settings[1]/w:shapeDefaults[1]/{urn:schemas-microsoft-com:office:office}shapelayout[1]/{urn:schemas-microsoft-com:office:office}idmap[1]",
+      "attributes": {
+        "data": "2",
+        "{urn:schemas-microsoft-com:vml}ext": "edit"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:decimalSymbol:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:decimalSymbol[1]",
+      "attributes": {
+        "w:val": ","
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "w:listSeparator:w:val",
+      "locator": "word/settings.xml#/w:settings[1]/w:listSeparator[1]",
+      "attributes": {
+        "w:val": ";"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.microsoft.com/office/word/2010/wordml}docId:{http://schemas.microsoft.com/office/word/2010/wordml}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.microsoft.com/office/word/2010/wordml}docId[1]",
+      "attributes": {
+        "{http://schemas.microsoft.com/office/word/2010/wordml}val": "24FFC6E2"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    },
+    {
+      "key": "{http://schemas.microsoft.com/office/word/2012/wordml}docId:{http://schemas.microsoft.com/office/word/2012/wordml}val",
+      "locator": "word/settings.xml#/w:settings[1]/{http://schemas.microsoft.com/office/word/2012/wordml}docId[1]",
+      "attributes": {
+        "{http://schemas.microsoft.com/office/word/2012/wordml}val": "{C4BB3E58-8786-4238-9F2E-BA6AEEED455F}"
+      },
+      "disposition": "REVIEW: source property preserved; not silently applied as a university rule"
+    }
+  ],
+  "limitations": [
+    "Fixed pages reproduce reviewed source sample as editable positioned text; replacement titles/jury names require layout review.",
+    "Theme and conditional table styles not used as universal rules. Additional variants and Tier 2 cases require source review."
+  ],
+  "extractedSha256": "4f8cef50e250bff5d96c4eb8b798b2188a8ecc4b0df75ec0fa9053885f798058",
+  "profileSha256": "6d334273aea3307d190ba5df1c34b03bc5554e33c54080fecef6645513bf2533"
+}

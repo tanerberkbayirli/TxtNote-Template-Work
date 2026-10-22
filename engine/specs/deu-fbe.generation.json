@@ -1,0 +1,134 @@
+{
+  "target": "deu-fbe",
+  "reviewedAt": "2026-10-22",
+  "identity": {
+    "id": "deu-fbe-master-tr-v1",
+    "universityId": "deu",
+    "universityName": "Dokuz Eylül Üniversitesi",
+    "instituteId": "fbe",
+    "instituteName": "Fen Bilimleri Enstitüsü",
+    "degreeType": "master",
+    "language": "tr"
+  },
+  "bodyStyle": "Normal",
+  "bodyParagraph": 144,
+  "bodySection": 3,
+  "bodySourcePage": 10,
+  "headingParagraphs": [
+    142,
+    143,
+    162
+  ],
+  "chapterParagraphs": [
+    142,
+    154,
+    157,
+    850
+  ],
+  "tableCaption": 177,
+  "figureCaption": 148,
+  "bibliographyParagraph": 852,
+  "tableProbe": {
+    "table": 1,
+    "firstCellParagraph": 178
+  },
+  "fixedPages": [
+    {
+      "id": "cover",
+      "type": "outerCover",
+      "title": "KAPAK",
+      "group": "cover",
+      "sourcePage": 1
+    },
+    {
+      "id": "inner-cover",
+      "type": "innerCover",
+      "title": "İÇ KAPAK",
+      "group": "cover",
+      "sourcePage": 2
+    },
+    {
+      "id": "approval",
+      "type": "approval",
+      "title": "YÜKSEK LİSANS TEZİ SINAV SONUÇ FORMU",
+      "group": "front",
+      "sourcePage": 3
+    }
+  ],
+  "sections": [
+    {
+      "id": "cover"
+    },
+    {
+      "id": "inner-cover"
+    },
+    {
+      "id": "approval"
+    },
+    {
+      "id": "thanks",
+      "type": "acknowledgements",
+      "title": "TEŞEKKÜR",
+      "titleParagraph": 55,
+      "paragraphs": [
+        61
+      ]
+    },
+    {
+      "id": "abstract",
+      "type": "abstract",
+      "title": "ÖZ",
+      "titleParagraph": 72,
+      "paragraphs": [
+        73
+      ]
+    },
+    {
+      "id": "english-abstract",
+      "type": "englishAbstract",
+      "title": "ABSTRACT",
+      "titleParagraph": 78,
+      "paragraphs": [
+        79
+      ]
+    },
+    {
+      "id": "toc",
+      "type": "tableOfContents",
+      "title": "İÇİNDEKİLER",
+      "indexKind": "toc",
+      "styleId": "T1",
+      "titleParagraph": 92
+    },
+    {
+      "id": "main",
+      "title": "ANA METİN"
+    },
+    {
+      "id": "figures",
+      "type": "listOfFigures",
+      "title": "ŞEKİLLER LİSTESİ",
+      "indexKind": "figures"
+    },
+    {
+      "id": "tables",
+      "type": "listOfTables",
+      "title": "TABLOLAR LİSTESİ",
+      "indexKind": "tables"
+    },
+    {
+      "id": "bibliography",
+      "type": "bibliography",
+      "title": "KAYNAKLAR",
+      "group": "back",
+      "titleParagraph": 851,
+      "paragraphs": [
+        852,
+        853,
+        854,
+        855,
+        856
+      ]
+    }
+  ]
+}

@@ -261,7 +261,7 @@ describe("Batch B5 continuous footnote numbering", () => {
   };
   const state = { sectionContent: { annex: `<p>Ek${ref("c")}${ref("d", 2)}</p>` } };
   const main = `<p>Bir${ref("a")} iki${ref("b", 2)}</p>`;
-  it("numbers references on through the sections only when the template asks for it", () => {
+  it("numbers references on through the sections by default and restarts per body only for numbering section", () => {
     const model = compile(setup("document"), main, state);
     assert.deepEqual(model.sections.filter((s) => s.mode === "editable" && s.id !== "abstract").map((s) => [s.id, s.footnoteOffset]), [["main", 0], ["annex", 2], ["bibliography", 4]]);
     assert.equal(model.sections.find((s) => s.id === "main").rules.footnotes.numbering, "document");

@@ -96,7 +96,8 @@ export interface PageRule {
   heightMm: Length;
   /** Default "word" under the Word line-spacing model ("off" opts out): lets a body page accept its last line when it fits without its extra leading (Word); the engine derives `lastLineLeadingMm` from the body style. Headings, figures and tables are guarded; special pages ignore it. */
   lastLineFit?: "word" | "off";
-  orientation: "portrait" | "landscape";
+  /** Optional: absent means "portrait" (filled by engineDefaults.js); "landscape" swaps widthMm/heightMm on export. */
+  orientation?: "portrait" | "landscape";
   margins: { topMm: Length; bottomMm: Length; leftMm: Length; rightMm: Length };
   /** Word-only page-anchored content frame, independent of section text margins. Height opts into fixed-frame flow text. */
   docxMargins?: Partial<PageRule["margins"]>;
@@ -265,7 +266,8 @@ export interface CaptionRule {
   label: string;
   position: "above" | "below";
   style: TextStyle;
-  numbering: { scope: "document" | "chapter"; format: string; sequence: NumberFormat; liveField?: boolean };
+  /** `sequence` is optional: absent means "arabic" (filled by engineDefaults.js). `scope` and `format` are never guessed. */
+  numbering: { scope: "document" | "chapter"; format: string; sequence?: NumberFormat; liveField?: boolean };
   spacingBeforePt?: number;
   spacingAfterPt?: number;
   align?: "left" | "center" | "right";
@@ -318,7 +320,7 @@ export interface CaptionRule {
 export interface FootnoteRule extends Partial<Pick<TextStyle, "fontFamily" | "fontSizePt" | "fontWeight" | "italic" | "lineHeight" | "lineSpacing" | "align" | "characterSpacingPt" | "spaceBeforePt" | "spaceAfterPt" | "firstLineIndentMm" | "leftIndentMm" | "rightIndentMm">> {
   /** pageBottom (default): notes at the bottom of the physical page of their reference. sectionEnd: legacy list after the section. */
   placement?: "pageBottom" | "sectionEnd";
-  /** "section" (default): every editable section numbers its notes from 1. "document": one running number through all sections (Word already numbers its notes that way). */
+  /** "document" (default; also when absent): one running number through all sections (Word already numbers its notes that way). "section": every editable section numbers its notes from 1 (editor and PDF only; Word keeps its single stream). */
   numbering?: "section" | "document";
   /** Largest share of the page body the note area may take, 10–90. Longer notes continue on the next page. */
   maxAreaPercent?: number;

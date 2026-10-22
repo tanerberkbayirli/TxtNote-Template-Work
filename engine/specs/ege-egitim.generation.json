@@ -1,0 +1,168 @@
+{
+  "target": "ege-egitim",
+  "reviewedAt": "2026-10-22",
+  "identity": {
+    "id": "ege-egitim-master-tr-v1",
+    "universityId": "ege",
+    "universityName": "Ege Üniversitesi",
+    "instituteId": "egitim-bilimleri",
+    "instituteName": "Eğitim Bilimleri Enstitüsü",
+    "degreeType": "master",
+    "language": "tr"
+  },
+  "bodyStyle": "tanaMetin",
+  "bodyParagraph": 219,
+  "bodySection": 4,
+  "bodySourcePage": 14,
+  "headingParagraphs": [
+    218,
+    220,
+    242,
+    246
+  ],
+  "chapterParagraphs": [
+    218,
+    238,
+    253,
+    276,
+    382
+  ],
+  "tableCaption": 280,
+  "figureCaption": 245,
+  "bibliographyParagraph": 395,
+  "tableProbe": {
+    "table": 2,
+    "firstCellParagraph": 281
+  },
+  "fixedPages": [
+    {
+      "id": "cover",
+      "type": "outerCover",
+      "title": "KAPAK",
+      "group": "cover",
+      "sourcePage": 1
+    },
+    {
+      "id": "inner-cover",
+      "type": "innerCover",
+      "title": "İÇ KAPAK",
+      "group": "cover",
+      "sourcePage": 3
+    },
+    {
+      "id": "approval",
+      "type": "approval",
+      "title": "TEZ SAVUNMA TUTANAĞI",
+      "group": "front",
+      "sourcePage": 5
+    },
+    {
+      "id": "ethics",
+      "type": "ethicsDeclaration",
+      "title": "ETİK KURALLARA UYGUNLUK BEYANI",
+      "group": "front",
+      "sourcePage": 4
+    }
+  ],
+  "sections": [
+    {
+      "id": "cover"
+    },
+    {
+      "id": "inner-cover"
+    },
+    {
+      "id": "ethics"
+    },
+    {
+      "id": "approval"
+    },
+    {
+      "id": "thanks",
+      "type": "acknowledgements",
+      "title": "TEŞEKKÜR",
+      "titleParagraph": 127,
+      "paragraphs": [
+        128,
+        130
+      ]
+    },
+    {
+      "id": "toc",
+      "type": "tableOfContents",
+      "title": "İÇİNDEKİLER",
+      "indexKind": "toc",
+      "styleId": "T1",
+      "titleParagraph": 132
+    },
+    {
+      "id": "tables",
+      "type": "listOfTables",
+      "title": "TABLO LİSTESİ",
+      "indexKind": "tables"
+    },
+    {
+      "id": "figures",
+      "type": "listOfFigures",
+      "title": "ŞEKİL LİSTESİ",
+      "indexKind": "figures"
+    },
+    {
+      "id": "abstract",
+      "type": "abstract",
+      "title": "ÖZET",
+      "titleParagraph": 186,
+      "paragraphs": [
+        187,
+        188
+      ]
+    },
+    {
+      "id": "english-abstract",
+      "type": "englishAbstract",
+      "title": "ABSTRACT",
+      "titleParagraph": 190,
+      "paragraphs": [
+        191
+      ]
+    },
+    {
+      "id": "symbols",
+      "type": "listOfAbbreviations",
+      "title": "SİMGELER VE KISALTMALAR DİZİNİ",
+      "titleParagraph": 200,
+      "paragraphs": [
+        201,
+        202,
+        203,
+        204,
+        205,
+        206
+      ]
+    },
+    {
+      "id": "main",
+      "title": "ANA METİN"
+    },
+    {
+      "id": "bibliography",
+      "type": "bibliography",
+      "title": "Kaynakça",
+      "group": "back",
+      "titleParagraph": 394,
+      "paragraphs": [
+        395
+      ]
+    },
+    {
+      "id": "appendices",
+      "type": "appendices",
+      "title": "EKLER DİZİNİ",
+      "group": "back",
+      "titleParagraph": 414,
+      "paragraphs": [
+        415
+      ]
+    }
+  ]
+}
