@@ -1,0 +1,852 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.1.0-draft",
+ "id": "firat-lee-master-tr-1-i-ngi-li-zce-tez-sablonu",
+ "universityId": "firat",
+ "universityName": "Fırat Üniversitesi",
+ "instituteId": "lee",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "1- İNGİLİZCE TEZ ŞABLONU.docx",
+  "verifiedAt": "2026-10-06",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 1fc53d38d719448b7e43abf9aa4778b5f651997125a71ed52b753046406f058f",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Şablon yönergesi (Dış Kapak): Erasable Lines",
+   "Şablon yönergesi (İç Kapak): ERASABLE LINES",
+   "Şablon yönergesi (İç Kapak): ERASABLE LINES",
+   "Şablon yönergesi (Ön sayfa 4): If there is no Table in your thesis, delete this page with the hidden phrase “End of Page”",
+   "Şablon yönergesi (Ön sayfa 5): If there is no Appendices in your thesis, delete this page with the hidden phrase “End of Page”",
+   "Şablon yönergesi (Ön sayfa 6): Symbols and Abbreviations is written in alphabetical order. There are 6 pt spaces before the first line.",
+   "Şablon yönergesi (Ön sayfa 6): Attention! If the symbols and abbreviations do not fit within the same page, first the Symbols page and then the Abbreviations page is used. In this case, delete small headings with underlines. For ti",
+   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
+   "Kılavuz kuralları birleştirildi: 166926925728.yazım kuralları.pdf (3 alan, 5 çelişki)"
+  ],
+  "guideDocumentName": "166926925728.yazım kuralları.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.06",
+     "reasoning": "Sayfa numarası yazısı 10.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":10,\"align\":\"justify\",\"lineHeight\":1.15}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (6/32 paragraf (≥200 karakter)); diğer 10 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[1,2,3]",
+     "reasoning": "DOCX bölümleri [1, 2, 3] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "10",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "tables.style.fontSizePt",
+     "value": "10",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "tables.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "value": "0",
+     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.15",
+     "guide": "2",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 16: “Öncesinde boşluk bulunmaz sonrasında 10 punto tek aralık ayarlı 2 satır (toplamda 24 nk) boşluk bulunur.”"
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "0",
+     "guide": "6",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 26: “Her iki sistemde de her bir kaynak arasında 6 nk boşluk (Paragraf→Aralık: sonra = 6 nk) bırakılır.”"
+    },
+    {
+     "field": "typography.headings.4.fontSizePt",
+     "measured": "10",
+     "guide": "11",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 51: “Dördüncü Derece Alt Başlık (11 punto, kalın, ilk harfler büyük, Numaralama yapılmaz) Başlıktan önce bir satır boşluk (12 nk) bulunur.”"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "measured": "11",
+     "guide": "9",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 23: “Dipnotlar Times New Roman, 9 punto, tek aralık ve İtalik stil ile yazılmalıdır.”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.15",
+     "guide": "1.5",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 17: “Giriş ile Kaynaklar Bölümleri arasında kalan tüm metinlerde 11 punto büyüklük ve 1,5 satır aralığı kullanılır.  Pencere Altı Kapak, İç Kapak, Onay Sayfası ve B”"
+    }
+   ],
+   "guide": "166926925728.yazım kuralları.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 25.01,
+   "leftMm": 32.51,
+   "rightMm": 25.01
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "omit"
+  },
+  "footer": {
+   "heightMm": 4.06,
+   "distanceMm": 14.99,
+   "content": "",
+   "firstPage": "omit"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "align": "justify",
+   "lineHeight": 1.15
+  },
+  "paragraph": {
+   "spaceBeforePt": 3,
+   "spaceAfterPt": 0,
+   "firstLineIndentMm": 10
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 16,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1,
+    "spaceAfterPt": 24,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}."
+    },
+    "keepWithNext": true
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1,
+    "spaceBeforePt": 20,
+    "spaceAfterPt": 12,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "keepWithNext": true
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 11,
+    "fontWeight": 700,
+    "align": "left",
+    "lineHeight": 1,
+    "spaceBeforePt": 20,
+    "spaceAfterPt": 12,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}."
+    },
+    "keepWithNext": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "fontWeight": 700,
+    "align": "left",
+    "lineHeight": 1.25,
+    "spaceAfterPt": 3,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}.{2}.{3}.{4}",
+     "sequence": "arabic"
+    }
+   }
+  },
+  "footnotes": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 11,
+   "lineHeight": 1,
+   "align": "justify",
+   "placement": "pageBottom"
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 8.52
+    },
+    {
+     "type": "text",
+     "value": "Co-Supervisor",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11
+     }
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İç Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Co-Supervisor:Title Name SURNAMEApproved",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Firat University, Faculty of",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.06
+    },
+    {
+     "type": "text",
+     "value": "Member:Title Name SURNAMEApproved",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "... University, Faculty of .......",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.06
+    },
+    {
+     "type": "text",
+     "value": "Member:Title Name SURNAMEApproved",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "... University, Faculty of .......",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11
+     }
+    }
+   ]
+  },
+  {
+   "id": "front-page-2",
+   "type": "custom",
+   "title": "Ön sayfa 3",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Member:Title Name SURNAMEApproved",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "... University, Faculty of .......",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11
+     }
+    }
+   ]
+  },
+  {
+   "id": "front-page-3-2",
+   "type": "custom",
+   "title": "Ön sayfa 4",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Lıst of Tables",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "spaceAfterPt": 12
+     }
+    },
+    {
+     "type": "text",
+     "value": "Page",
+     "style": {
+      "align": "right",
+      "fontSizePt": 11
+     }
+    }
+   ]
+  },
+  {
+   "id": "front-page-4-3",
+   "type": "custom",
+   "title": "Ön sayfa 5",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "List of Appendices",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "spaceAfterPt": 12
+     }
+    },
+    {
+     "type": "text",
+     "value": "Page",
+     "style": {
+      "align": "right",
+      "fontSizePt": 11
+     }
+    }
+   ]
+  },
+  {
+   "id": "front-page-5-4",
+   "type": "custom",
+   "title": "Ön sayfa 6",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Symbols and Abbreviations",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "spaceAfterPt": 12
+     }
+    },
+    {
+     "type": "text",
+     "value": "Symbols",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "spaceAfterPt": 3
+     }
+    },
+    {
+     "type": "text",
+     "value": "Here are a few examples. See the description file and examples. Don't forget to delete this note!",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "spaceBeforePt": 6,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "text",
+     "value": ": Photocurrent",
+     "style": {
+      "align": "justify",
+      "spaceBeforePt": 6,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "text",
+     "value": "VOC: Open Circuit Voltage",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 8.11
+    },
+    {
+     "type": "text",
+     "value": "Abbreviations",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "CIGS: Copper Indium Gallium Di-Selenite (Cu(InGe))",
+     "style": {
+      "align": "justify",
+      "spaceBeforePt": 6,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "text",
+     "value": "DSSCs: Dye Sensitized Solar Cells",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5.58
+    },
+    {
+     "type": "text",
+     "value": "The bottom line contains the End of Section (Next Page) secret information. Delete this red line.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.25
+     }
+    }
+   ]
+  },
+  {
+   "id": "front-page-6-5",
+   "type": "custom",
+   "title": "Ön sayfa 7",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Introduction",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "spaceAfterPt": 24
+     }
+    },
+    {
+     "type": "text",
+     "value": "............... .. ...... .... .... .... ..... ..... .... ..... .... . ....... .......... ........ .... ... ................ ...... ..... .... ...... .. ...... ........ ....... . .... .",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Do not start writing the thesis without reviewing the template description file!",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "The Graduate School cannot be held responsible for any errors caused by the wrong use of the template!",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "............... .......... ...... .... .... .... ..... ..... .... ..... .... . ....... .......... ........ ....... ................ ...... ..... .... ...... .. ...... ........ ....... . .... .",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "It is not recommended to use elements such as figures, tables and equations and various sub-section headings in the introduction. It is recommended that the paragraphs be listed in relation to each other and that the last paragraph contains brief information about the scope of the thesis study.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "............... .......... ...... .... .... .... ..... ..... .... ..... .... . ....... .......... ........ ....... ................ ...... ..... .... ...... .. ...... ........ ....... . .... .",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "In this Chapter, it is useful to write paragraphs that contain the answers to the first 7 questions on the first page of the template.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "............... .......... ...... .... .... .... ..... ..... .... ..... .... . ....... .......... ........ ....... ................ ...... ..... .... ...... .. ...... ........ ....... . .... .",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 8.11
+    },
+    {
+     "type": "text",
+     "value": "The bottom line contains the End of Section (Next Page) hidden information. Delete this red line.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  }
+ ],
+ "tables": {
+  "label": "Tablo",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "align": "center",
+   "lineHeight": 2
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "align": "center",
+   "lineHeight": 2
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKLAR",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "align": "left",
+   "lineHeight": 1.15
+  },
+  "hangingIndentMm": 0
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ }
+}

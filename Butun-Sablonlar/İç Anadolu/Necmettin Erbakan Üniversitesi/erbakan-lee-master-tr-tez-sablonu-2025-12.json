@@ -1,0 +1,1039 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.1.0-draft",
+ "id": "erbakan-lee-master-tr-tez-sablonu-2025-12",
+ "universityId": "erbakan",
+ "universityName": "Necmettin Erbakan Üniversitesi",
+ "instituteId": "lee",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "TEZ ŞABLONU(2025_12).docx",
+  "verifiedAt": "2026-10-06",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 cf0bffa2e476445eb2a88ea6ee16bcf75c2c1db16b69ffd841028a36826b747c",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Şablon yönergesi (Dış Kapak): Dikkat! Ünvan yazılmayacak. Sadece Ad SOYAD Bu bilgi notunu çıktı almadan önce siliniz.",
+   "Şablon yönergesi (Dış Kapak): Dikkat! Tez savunma ayını ve yılını yazınız. (Örnek: Ekim-2025) Bu bilgi notunu çıktı almadan önce siliniz.",
+   "Şablon yönergesi (Onay Sayfası): Dikkat! Başlık sayfa başında olmalıdır. Bu bilgi notunu çıktı almadan önce siliniz.",
+   "Şablon yönergesi (Onay Sayfası): Dikkat! Tez savunması yapılıp, jüri tarafından kabul edildikten sonra birini siliniz. Bu bilgi notunu çıktı almadan önce siliniz.",
+   "Şablon yönergesi (Onay Sayfası): Dikkat! Tezin ilk tesliminde boş bırakınız. Tez savunması yapılıp, jüri tarafından kabul edildikten sonra tez savunması tarihini yazınız. Bu bilgi notunu çıktı almadan önce siliniz.",
+   "Şablon yönergesi (Onay Sayfası): Dikkat! Tezin ilk tesliminde jüri üyeleri yazılmamalıdır. Jüri üyesi Yüksek Lisans için 3 doktora için ise 5 kişidir. Uygun şekilde düzenleyiniz Bu bilgi notunu çıktı almadan önce siliniz.",
+   "Şablon yönergesi (Etik Beyan): Dikkat! Başlık sayfa başında olmalıdır. Bu bilgi notunu çıktı almadan önce siliniz.",
+   "Şablon yönergesi (Etik Beyan): Dikkat! Öğrenci tarafından imzalanmalıdır. Çıktı almadan önce “İmza” yazısını siliniz. Bu bilgi notunu çıktı almadan önce siliniz."
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.body.lineHeight",
+     "reason": "Satır aralığı ne paragraf ne stil düzeyinde belirtilmiş (Word tek aralık varsayar; kılavuz teyidi gerekli)"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 7, 'Çizelge': 6}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\"}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (13/39 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "13 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1. İkinci Bölüm İk”)"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. İkinci bölüm ”)"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “4.1.1.1. Denklem yaz”)"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[1]",
+     "reasoning": "DOCX bölümleri [1] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "sections.cover.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: cover › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "………………… Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: cover › “………………… Anabilim Dalı”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "Ay-Yıl",
+     "reasoning": "Şehir–yıl satırı: cover › “Ay-Yıl”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYADI",
+     "reasoning": "Yer tutucu satır: declaration › “Öğrencinin Adı SOYADI”"
+    },
+    {
+     "field": "typography.headings.1.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    }
+   ],
+   "conflicts": [],
+   "guide": null,
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25.01,
+   "bottomMm": 25.01,
+   "leftMm": 35.01,
+   "rightMm": 25.01
+  },
+  "header": {
+   "heightMm": 4.87,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "top",
+   "align": "left",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify"
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 6,
+    "textTransform": "uppercase",
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 12,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}",
+     "suffix": "."
+    },
+    "keepWithNext": true
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 12,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}",
+     "suffix": "."
+    },
+    "keepWithNext": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 12,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}",
+     "suffix": "."
+    },
+    "keepWithNext": true
+   }
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 22.9
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "T.C.",
+         "style": {
+          "align": "center",
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "NECMETTİN ERBAKAN ÜNİVERSİTESİ",
+         "style": {
+          "align": "center",
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "FEN BİLİMLERİ ENSTİTÜSÜ",
+         "style": {
+          "align": "center",
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 54.1
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 22.9
+      }
+     ]
+    },
+    {
+     "type": "spacer",
+     "heightMm": 87.63
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 18
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "TEZ BAŞLIĞINI BURAYA YAZINIZ",
+         "style": {
+          "align": "center",
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "metadata",
+         "field": "STUDENT_NAME",
+         "fallback": "Öğrencinin Adı SOYADI",
+         "style": {
+          "align": "center",
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "YÜKSEK LİSANS TEZİ / DOKTORA TEZİ",
+         "style": {
+          "align": "center",
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "metadata",
+         "field": "DEPARTMENT_NAME",
+         "fallback": "………………… Anabilim Dalı",
+         "style": {
+          "align": "center",
+          "fontWeight": 700
+         },
+         "suffix": " Anabilim Dalı"
+        }
+       ],
+       "widthPercent": 66.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 15.3
+      }
+     ]
+    },
+    {
+     "type": "spacer",
+     "heightMm": 38.95
+    },
+    {
+     "type": "text",
+     "value": "{{CITY}}-{{YEAR}}",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "KONYA",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Her Hakkı Saklıdır",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    }
+   ]
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "TEZ KABUL VE ONAYI",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.74
+    },
+    {
+     "type": "text",
+     "value": "................................. tarafından hazırlanan “…………………………………..” adlı tez çalışması …/…/… tarihinde aşağıdaki jüri tarafından oy birliği / oy çokluğu ile Necmettin Erbakan Üniversitesi Fen Bilimleri Enstitüsü ………………….................................... Anabilim Dalı’nda YÜKSEK LİSANS/DOKTORA TEZİ olarak kabul edilmiştir.",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 34.08
+    },
+    {
+     "type": "text",
+     "value": "Jüri Üyeleri İmza",
+     "style": {
+      "align": "justify",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Başkan",
+     "style": {
+      "align": "justify",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Unvanı Adı SOYADI…………………..",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "align": "justify",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Unvanı Adı SOYADI…………………..",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Üye",
+     "style": {
+      "align": "justify",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Unvanı Adı SOYADI…………………..",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Üye",
+     "style": {
+      "align": "justify",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Unvanı Adı SOYADI…………………..",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Üye",
+     "style": {
+      "align": "justify",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Unvanı Adı SOYADI…………………..",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 14.6
+    },
+    {
+     "type": "text",
+     "value": "Fen Bilimleri Enstitüsü Yönetim Kurulu’nun …./…/20.. gün ve …….. sayılı kararıyla onaylanmıştır.",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.74
+    },
+    {
+     "type": "text",
+     "value": "Prof. Dr. Havvanur UÇBEYİAY",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "text",
+     "value": "FBE Müdürü",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 14.6
+    },
+    {
+     "type": "text",
+     "value": "Bu tez çalışması ……………. tarafından …………. nolu proje ile desteklenmiştir. *",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Prof. Dr / Doç. Dr. / Dr. Öğr. Üyesi / Dr. …..…… bu tez çalışmasının ikinci danışmanıdır. **",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "* Bu ifade tez çalışması yapılırken bir destek alındıysa yazılmalı aksi takdirde silinmedir.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 9
+     }
+    },
+    {
+     "type": "text",
+     "value": "** Bu ifade ikinci danışman varsa yazılmalı aksi takdirde silinmelidir.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 9
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "TEZ BİLDİRİMİ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.74
+    },
+    {
+     "type": "text",
+     "value": "Bu tezdeki bütün bilgilerin etik davranış ve akademik kurallar çerçevesinde elde edildiğini ve tez yazım kurallarına uygun olarak hazırlanan bu çalışmada bana ait olmayan her türlü ifade ve bilginin kaynağına eksiksiz atıf yapıldığını bildiririm.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.91
+    },
+    {
+     "type": "text",
+     "value": "DECLARATION PAGE",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "I hereby declare that all information in this document has been obtained and presented in accordance with academic rules and ethical conduct. I also declare that, as required by these rules and conduct, I have fully cited and referenced all material and results that are not original to this work.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 19.47
+    },
+    {
+     "type": "text",
+     "value": "İmza",
+     "style": {
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrencinin Adı SOYADI",
+     "style": {
+      "align": "right"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Tarih:",
+     "style": {
+      "align": "center"
+     }
+    }
+   ]
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots",
+    "levels": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER LİSTESİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "ÇİZELGELER/TABLOLAR LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "ÇİZELGELER/TABLOLAR LİSTESİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "left"
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "left"
+     }
+    }
+   }
+  }
+ ],
+ "tables": {
+  "label": "Çizelge",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "center"
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "left"
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKLAR",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left"
+  }
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ }
+}

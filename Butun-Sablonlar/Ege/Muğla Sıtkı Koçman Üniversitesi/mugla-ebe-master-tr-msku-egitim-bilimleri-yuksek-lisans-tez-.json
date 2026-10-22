@@ -1,0 +1,2770 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.1.0-draft",
+ "id": "mugla-ebe-master-tr-msku-egitim-bilimleri-yuksek-lisans-tez-",
+ "universityId": "mugla",
+ "universityName": "Muğla Sıtkı Koçman Üniversitesi",
+ "instituteId": "ebe",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "MSKU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-10-06.docx",
+  "verifiedAt": "2026-10-06",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 5afb598c78e6f9d573ab6af6bcaee0a1ea631b1b10c5bede9eaf4071810e20a0",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Şablon yönergesi (Etik Beyan): Etik Beyanı sayfasının ıslak imzalı hali tezin basılı kopyalarında kullanılacaktır. Tezin dijital halinde ıslak imza yer almamalıdır; sadece Ad SOYAD bilgisi yer almalıdır. Bu açıklama kutusunu silini",
+   "Şablon yönergesi (Etik Beyan): Etik Beyanı sayfasının ıslak imzalı hali tezin basılı kopyalarında kullanılacaktır. Tezin dijital halinde ıslak imza yer almamalıdır; sadece Ad SOYAD bilgisi yer almalıdır. Bu açıklama kutusunu silini",
+   "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
+   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
+   "Kılavuz kuralları birleştirildi: MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf (1 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (35/58 paragraf (≥200 karakter)); diğer 8 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. Kuramsal Çerç”)"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[1]",
+     "reasoning": "DOCX bölümleri [1] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "………………. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “………………. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "OCAK, 2021",
+     "reasoning": "Şehir–yıl satırı: cover › “OCAK, 2021”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "………………. ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “………………. ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "OCAK, 2021",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “OCAK, 2021”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………….. Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “…………….. Anabilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………….. Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “…………….. Anabilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………….. Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “…………….. Anabilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………….. Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “…………….. Anabilim Dalı”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "…………….. Anabilim Dalı",
+     "reasoning": "Yer tutucu satır: approval › “…………….. Anabilim Dalı”"
+    },
+    {
+     "field": "sections.declaration-2.STUDENT_NAME",
+     "value": "Öğrencinin Adı SOYAD",
+     "reasoning": "Yer tutucu satır: declaration-2 › “Öğrencinin Adı SOYAD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "value": "0",
+     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "typography.headings.1.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf › sayfa 15: “On the starting pages up to the introduction section, the numbers should be placed centered at the bottom of the page, and the page numbers from the introductio”"
+    }
+   ],
+   "guide": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25.01,
+   "bottomMm": 25.01,
+   "leftMm": 35.01,
+   "rightMm": 25.01
+  },
+  "header": {
+   "heightMm": 4.87,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "top",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.51,
+   "spaceAfterPt": 6
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 60,
+    "spaceAfterPt": 36,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 36,
+    "spaceAfterPt": 24,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}.{2}",
+     "sequence": "arabic"
+    }
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 24,
+    "spaceAfterPt": 18,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}",
+     "suffix": "."
+    },
+    "keepWithNext": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 18,
+    "spaceAfterPt": 18,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}.{2}.{3}.{4}",
+     "sequence": "arabic"
+    }
+   }
+  },
+  "footnotes": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "lineHeight": 1,
+   "align": "justify",
+   "placement": "pageBottom"
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "image",
+     "source": "data:image/png;base64,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",
+     "widthMm": 28.17,
+     "heightMm": 40,
+     "align": "center"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5.6
+    },
+    {
+     "type": "text",
+     "value": "T. C.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUĞLA SITKI KOÇMAN ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "EĞİTİM BİLİMLERİ ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "………………. ANABİLİM DALI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15,
+      "textTransform": "uppercase"
+     },
+     "suffix": " ANABİLİM DALI"
+    },
+    {
+     "type": "text",
+     "value": "………………. BİLİM DALI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 27.99
+    },
+    {
+     "type": "text",
+     "value": "TEZİN ADI TEZİN ADI TEZİN ADI TEZİN ADI TEZİN ADI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "TEZİN ADI TEZİN ADI TEZİN ADI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 27.99
+    },
+    {
+     "type": "text",
+     "value": "TEZ YAZARININ ADI SOYADI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 22.39
+    },
+    {
+     "type": "text",
+     "value": "YÜKSEK LİSANS TEZİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 22.39
+    },
+    {
+     "type": "text",
+     "value": "{{CITY}}, {{YEAR}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUĞLA",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İç Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T. C.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUĞLA SITKI KOÇMAN ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "EĞİTİM BİLİMLERİ ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "………………. ANABİLİM DALI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15,
+      "textTransform": "uppercase"
+     },
+     "suffix": " ANABİLİM DALI"
+    },
+    {
+     "type": "text",
+     "value": "………………. BİLİM DALI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 22.39
+    },
+    {
+     "type": "text",
+     "value": "TEZİN ADI TEZİN ADI TEZİN ADI TEZİN ADI TEZİN ADI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "TEZİN ADI TEZİN ADI TEZİN ADI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 22.39
+    },
+    {
+     "type": "text",
+     "value": "TEZ YAZARININ ADI SOYADI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "ORCID NO: XXXX-XXXX-XXXX-XXXX",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 27.99
+    },
+    {
+     "type": "text",
+     "value": "TEZ DANIŞMANI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "UNVANI ADI SOYADI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "UNVANI ADI SOYADI (TEZ İKİNCİ DANIŞMANI) - Varsa",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 33.59
+    },
+    {
+     "type": "text",
+     "value": "YÜKSEK LİSANS TEZİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 22.39
+    },
+    {
+     "type": "text",
+     "value": "{{CITY}}, {{YEAR}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUĞLA",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    }
+   ]
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "JÜRİ ONAY SAYFASI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 36,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "…………………………………. tarafından hazırlanan “………………………… …………………………………………” başlıklı tez çalışması aşağıdaki jüri tarafından oy birliği / oy çokluğu (Uygun olan kalacak şekilde düzenleyiniz. Resmi evrak olması nedeniyle üzeri çizilmiş formlar kabul edilmeyecektir. Düzenledikten sonra parantez içinde yer alan açıklamayı siliniz.) ile …………………… Anabilim Dalı, ………………………. Bilim Dalı’nda Yüksek Lisans Tezi olarak kabul edilmiştir.",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 15.02
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Unvanı Adı SOYADI",
+       "style": {
+        "align": "center"
+       }
+      },
+      {
+       "type": "metadata",
+       "field": "DEPARTMENT_NAME",
+       "fallback": "…………….. Anabilim Dalı",
+       "style": {
+        "align": "center"
+       },
+       "suffix": " Anabilim Dalı"
+      },
+      {
+       "type": "text",
+       "value": "Jüri Başkanı",
+       "style": {
+        "align": "center"
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Unvanı Adı SOYADI",
+         "style": {
+          "align": "center"
+         }
+        },
+        {
+         "type": "metadata",
+         "field": "DEPARTMENT_NAME",
+         "fallback": "…………….. Anabilim Dalı",
+         "style": {
+          "align": "center"
+         },
+         "suffix": " Anabilim Dalı"
+        },
+        {
+         "type": "text",
+         "value": "Tez Danışmanı",
+         "style": {
+          "align": "center"
+         }
+        }
+       ],
+       "widthPercent": 50
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Unvanı Adı SOYADI",
+         "style": {
+          "align": "center"
+         }
+        },
+        {
+         "type": "metadata",
+         "field": "DEPARTMENT_NAME",
+         "fallback": "…………….. Anabilim Dalı",
+         "style": {
+          "align": "center"
+         },
+         "suffix": " Anabilim Dalı"
+        },
+        {
+         "type": "text",
+         "value": "Üye",
+         "style": {
+          "align": "center"
+         }
+        }
+       ],
+       "widthPercent": 50
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Unvanı Adı SOYADI",
+         "style": {
+          "align": "center"
+         }
+        },
+        {
+         "type": "metadata",
+         "field": "DEPARTMENT_NAME",
+         "fallback": "…………….. Anabilim Dalı",
+         "style": {
+          "align": "center"
+         },
+         "suffix": " Anabilim Dalı"
+        },
+        {
+         "type": "text",
+         "value": "Üye",
+         "style": {
+          "align": "center"
+         }
+        }
+       ],
+       "widthPercent": 50
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Unvanı Adı SOYADI",
+         "style": {
+          "align": "center"
+         }
+        },
+        {
+         "type": "metadata",
+         "field": "DEPARTMENT_NAME",
+         "fallback": "…………….. Anabilim Dalı",
+         "style": {
+          "align": "center"
+         },
+         "suffix": " Anabilim Dalı"
+        },
+        {
+         "type": "text",
+         "value": "Üye",
+         "style": {
+          "align": "center"
+         }
+        }
+       ],
+       "widthPercent": 50
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "İkinci danışmanın bulunması ve tez savunmasına girmesi durumunda tez savunma jürisi 5 kişiden oluşmalıdır. 3 kişiden oluşan jürilerin yer aldığı tezlerde diğer iki alan çıkartılmalıdır. Düzenleme esnasında bu açıklamayı siliniz.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 9,
+      "italic": true,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 8.08
+    },
+    {
+     "type": "text",
+     "value": "Tez savunma tarihi: xx/xx/xxxx",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.12
+    },
+    {
+     "type": "text",
+     "value": "Bu tez …………………………….. Bilim Dalı’nda Yüksek Lisans Tezi olması için gerekli şartları yerine getirmektedir.",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.12
+    },
+    {
+     "type": "text",
+     "value": "Unvanı Adı SOYADI",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Eğitim Bilimleri Enstitüsü Müdürü",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ETİK BEYAN METNİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11.5,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "Kendi gerçekleştirdiğim araştırmanın bir sonucu olan ve Muğla Sıtkı Koçman Üniversitesi …………. Bilimleri Enstitüsü Tez Yazım Kılavuzuna göre yazılan “…………” başlıklı bu yüksek lisans/doktora tezinin planlanmasından yazımına kadar tüm süreçlerde etik ilkelere bağlı kaldığımı, tezime ilişkin bilgi ve belgeleri akademik ve bilimsel etik kurallar çerçevesinde elde ettiğimi, kullandığım verilerde herhangi bir tahrifat yapmadığımı, tezimde kullandığım tüm görsel ve yazılı materyallerin kaynağını gösterdiğimi, yararlandığım eserlerin tümünün kaynaklar bölümünde yer aldığını ve tezde yapay zekâ (YZ) araçlarının kullanımına dair açıklamaların aşağıda belirttiğim şekilde olduğunu beyan ederim.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "YAPAY ZEKÂ (YZ) KULLANIMINA DAİR BEYANNAME *",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11,
+      "fontWeight": 700,
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "text",
+     "value": "Tez çalışmasının hiçbir bölümünde YZ araçlarının kullanılmadığı durumlarda aşağıdaki beyan istenir.",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "text",
+     "value": "☐ Bu tez çalışması kapsamında herhangi bir YZ aracı kullanmadığımı beyan ederim.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "spaceBeforePt": 0.9,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Tez çalışmasında YZ araçlarının kullanıldığı durumlarda aşağıdaki beyan istenir.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "spaceBeforePt": 0.05
+     }
+    },
+    {
+     "type": "text",
+     "value": "☐ Tezin bazı bölümlerini düzenlemek için aşağıdaki tabloda belirtiğim bölümlerde YZ aracı kullandığımı beyan ederim. Kullandığım YZ araç (lar)ının isimleri, versiyonları, erişim tarihleri, çalışmanın hangi aşamasında kullanıldığı ve bağlantıları tezin “Yapay Zekâ (YZ) Kullanım Yöntemi” başlığıyla Yöntem kısmında verilmiştir. Ayrıca tezde aşağıda beyan etiğim bölümlerde YZ kullanımı uygun atıf ve kaynak gösterimi ile de belirtilmiştir.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "spaceBeforePt": 0.85,
+      "lineHeight": 1.008
+     }
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "YZ KULLANIMINA DAİR BEYANAME",
+       "style": {
+        "align": "center",
+        "fontSizePt": 11,
+        "fontWeight": 700,
+        "spaceBeforePt": 1
+       }
+      },
+      {
+       "type": "text",
+       "value": "(Her maddeyi okuyun ve kabul ettiğinize dair yandaki kutucuklara tik işareti bırakın**)",
+       "style": {
+        "align": "center",
+        "fontSizePt": 11,
+        "fontWeight": 700,
+        "italic": true
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Tezin özet bölümünün gözden geçirilmesinde kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Literatür taraması ve ilgili kaynakların bulunmasında kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Araştırma hipotezi /hipotezlerin belirlenmesinde kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Örneklem büyüklüğü tespiti/güç̧ analizi hesaplamasında kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Veri toplamada kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Veri depolamada kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Verilerin istatistiksel analizi, görselleştirilmesi veya yorumlanmasında kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Kaynakların istenen formata göre uygun olarak düzenlenmesinde ve doğrulanmasında kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Dilbilgisi ve yazım kontrolünde kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Akademik metinlerin çevirisi veya yabancı dilde ifadelerin kontrolü için kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Tez başlığının belirlenmesi veya şekillendirilmesinde kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Araştırma sorularının belirlenmesi veya optimize edilmesinde kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Tablo, şekil veya grafik oluşturulmasında kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "İntihal ve benzerlik oranlarının kontrol edilmesinde kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Anket veya mülakat sorularının oluşturulmasında kullanılmıştır.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Diğer kullanımlar (açıklayınız)…………….",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 91.4
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 8.6
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "…../……/ 20…..(İmza) Öğrencinin Adı SOYAD",
+     "style": {
+      "align": "right",
+      "fontSizePt": 10,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "*Beyan metinleri, YÖK'ün yayınladığı belgede de altı çizilen \"Yapay Zekâ (YZ) araçlarından faydalanma durumunda tüm sorumluluğun tez yazarına ait olduğu\" ve \"hangi YZ aracının, ne zaman, çalışmanın hangi aşamasında veya bölümünde kullanıldığı ve ilgili aracın versiyonu belirtilmek durumunda olduğu\" ndan hareketle kaleme alınmıştır.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 8,
+      "italic": true,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration-2",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "BEYAN METNİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceBeforePt": 60,
+      "spaceAfterPt": 36,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "(Toplumsal Katkı / Sürdürülebilir Kalkınma)",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceAfterPt": 24,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Yüksek lisans/doktora tezi olarak sunduğum “Tezin Adı……………………” başlıklı çalışmanın kapsamında yer alan Toplumsal Katkı ve Sürdürülebilir Kalkınma Temel Amaçları aşağıdaki tablolarda yer alan ilgili kısımlar işaretlenerek gösterilmiştir.",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 6
+     }
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "TOPLUMSAL KATKI",
+       "style": {
+        "align": "center",
+        "fontSizePt": 10,
+        "fontWeight": 700,
+        "spaceBeforePt": 2.25
+       }
+      },
+      {
+       "type": "text",
+       "value": "(Her maddeyi okuyun ve uygun kutucuklara tik işareti bırakın**)",
+       "style": {
+        "align": "center",
+        "fontSizePt": 10,
+        "fontWeight": 700,
+        "italic": true,
+        "spaceBeforePt": 0.05
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Toplumun Öncelikli İhtiyaçlarının Belirlenmesi ve Analizi",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Topluma Katkı Sağlayan Bilimsel Araştırma ve Geliştirme Çalışmaları",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Toplum İçin Eğitim, Bilgilendirme ve Farkındalık Çalışmaları",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Toplumun Öncelikli Sorunlarına Yönelik Bilimsel ve Yenilikçi Çözümler",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Toplum İçin Kamu, Özel Sektör ve Sivil Toplum Kuruluşları Gibi Paydaşlarla İş Birliği",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Yerel, Ulusal ve Küresel Tarihi ve Kültürel Değerlere Katkı",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Toplum Yararına Yürütülen Sosyal Sorumluluk ve Kültürel Etkinlikler",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Diğer (açıklayınız)………………..",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "** Birden fazla işaretleme yapılabilir.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 8,
+      "italic": true,
+      "spaceBeforePt": 0.2,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "SÜRDÜRÜLEBİLİR KALKINMA TEMEL AMAÇLARI",
+       "style": {
+        "align": "center",
+        "fontSizePt": 10,
+        "fontWeight": 700,
+        "spaceBeforePt": 1.65
+       }
+      },
+      {
+       "type": "text",
+       "value": "(Her maddeyi okuyun ve uygun kutucuklara tik işareti bırakın**)",
+       "style": {
+        "align": "center",
+        "fontSizePt": 10,
+        "fontWeight": 700,
+        "italic": true,
+        "spaceBeforePt": 0.05
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 1: Yoksulluğa Son",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 2: Açlığa Son",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 3: Sağlık ve Kaliteli Yaşam",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 4: Nitelikli Eğitim",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 5: Toplumsal Cinsiyet Eşitliği",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 6: Temiz Su ve Sanitasyon",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 7: Erişilebilir ve Temiz Enerji",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 8: İnsana Yakışır İş ve Ekonomik Büyüme",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 9: Sanayi, Yenilikçilik ve altyapı",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 10: Eşitsizliklerin Azaltılması",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 11: Sürdürülebilir Şehirler ve Topluluklar",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 12: Sorumlu Üretim ve Tüketim",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 13: İklim Eylemi",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 14: Sudaki Yaşam",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 15: Karasal Yaşam",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 16: Barış, Adalet ve Güçlü Kurumlar",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Amaç 17: Amaçlar İçin Ortaklıklar",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Diğer (açıklayınız)…………….",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 89.7
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 10.3
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "** Birden fazla işaretleme yapılabilir.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 8,
+      "italic": true,
+      "spaceBeforePt": 0.6,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "…../…./ 20…..",
+     "style": {
+      "align": "right",
+      "fontSizePt": 10,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "(İmza)",
+     "style": {
+      "align": "right",
+      "fontSizePt": 10,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrencinin Adı SOYAD",
+     "style": {
+      "align": "right",
+      "fontSizePt": 10,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖN SÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots",
+    "levels": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "KISALTMALAR DİZİNİ",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER DİZİNİ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKÇA",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "tables": {
+  "label": "Tablo",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "center"
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKÇA",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left",
+   "lineHeight": 1.5
+  },
+  "hangingIndentMm": 0
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ }
+}

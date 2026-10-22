@@ -1,0 +1,2770 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.1.0-draft",
+ "id": "mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-thesis-tem",
+ "universityId": "mugla",
+ "universityName": "Muğla Sıtkı Koçman Üniversitesi",
+ "instituteId": "ebe",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "phd",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
+  "verifiedAt": "2026-10-06",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a6f8bcc57d515d100930dadca2c8cad9510e7212eaec57fa5c0c4a96f3d0b20e",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Şablon yönergesi (Ön sayfa 3): Wet signed version of the Jury Approval Page will be used in hard copies of the thesis. Wet signatures should not be included in the digital version of the thesis. Delete this comment box.",
+   "Şablon yönergesi (Etik Beyan): Wet signed version of the Ethics Statement page will be used in hard copies of the thesis. Wet signature should not be included in the digital version of the thesis; only Name and SURNAME information ",
+   "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
+   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
+   "Kılavuz kuralları birleştirildi: MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf (1 alan, 1 çelişki)"
+  ],
+  "guideDocumentName": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+    },
+    {
+     "field": "figures.position",
+     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.header.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (39/60 paragraf (≥200 karakter)); diğer 7 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “2.1.1. Theoretical F”)"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[1]",
+     "reasoning": "DOCX bölümleri [1] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "…………… PROGRAM",
+     "reasoning": "Yer tutucu satır: cover › “…………… PROGRAM”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TITLE OF THE THESIS",
+     "reasoning": "Yer tutucu satır: cover › “TITLE OF THE THESIS”"
+    },
+    {
+     "field": "sections.cover.CITY_YEAR",
+     "value": "JANUARY, 2021",
+     "reasoning": "Şehir–yıl satırı: cover › “JANUARY, 2021”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "…………… PROGRAM",
+     "reasoning": "Yer tutucu satır: inner-cover › “…………… PROGRAM”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TITLE OF THE THESIS",
+     "reasoning": "Yer tutucu satır: inner-cover › “TITLE OF THE THESIS”"
+    },
+    {
+     "field": "sections.inner-cover.CITY_YEAR",
+     "value": "JANUARY, 2021",
+     "reasoning": "Şehir–yıl satırı: inner-cover › “JANUARY, 2021”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "figures.position",
+     "value": "below",
+     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "figures.style.fontSizePt",
+     "value": "12",
+     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+    },
+    {
+     "field": "figures.numbering",
+     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
+     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "value": "0",
+     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "typography.headings.1.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf › sayfa 15: “On the starting pages up to the introduction section, the numbers should be placed centered at the bottom of the page, and the page numbers from the introductio”"
+    }
+   ],
+   "guide": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25.01,
+   "bottomMm": 25.01,
+   "leftMm": 35.01,
+   "rightMm": 25.01
+  },
+  "header": {
+   "heightMm": 4.87,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "top",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.51,
+   "spaceAfterPt": 6
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 60,
+    "spaceAfterPt": 36,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 36,
+    "spaceAfterPt": 24,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}"
+    },
+    "keepWithNext": true
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 24,
+    "spaceAfterPt": 18,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}",
+     "suffix": "."
+    },
+    "keepWithNext": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 18,
+    "spaceAfterPt": 18,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}.{2}.{3}.{4}",
+     "sequence": "arabic"
+    }
+   }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "image",
+     "source": "data:image/png;base64,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",
+     "widthMm": 29.62,
+     "heightMm": 40,
+     "align": "center"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5.6
+    },
+    {
+     "type": "text",
+     "value": "THE REPUBLIC OF TURKEY",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUĞLA SITKI KOÇMAN UNIVERSITY",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "INSTITUTE OF EDUCATION SCIENCES",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "DEPARTMENT OF ……………………",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "fallback": "…………… PROGRAM",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 27.99
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "TITLE OF THE THESIS",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 39.19
+    },
+    {
+     "type": "text",
+     "value": "NAME AND SURNAME OF THE WRITER",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 27.99
+    },
+    {
+     "type": "text",
+     "value": "DOCTORAL DISSERTATION",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 22.39
+    },
+    {
+     "type": "text",
+     "value": "{{CITY}}, {{YEAR}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUGLA",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İç Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "THE REPUBLIC OF TURKEY",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUĞLA SITKI KOÇMAN UNIVERSITY",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "INSTITUTE OF EDUCATION SCIENCES",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "DEPARTMENT OF ……………………",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "fallback": "…………… PROGRAM",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 16.8
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "TITLE OF THE THESIS",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 16.8
+    },
+    {
+     "type": "text",
+     "value": "NAME AND SURNAME OF THE WRITER",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "ORCID ID: XXXX-XXXX-XXXX-XXXX",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 27.99
+    },
+    {
+     "type": "text",
+     "value": "THESIS SUPERVISOR",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "ACADEMIC TITLE, NAME AND SURNAME",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "ACADEMIC TITLE, NAME AND SURNAME",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "(SECONDARY SUPERVISOR) – IF AVAILABLE",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 33.59
+    },
+    {
+     "type": "text",
+     "value": "DOCTORAL DISSERTATION",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 33.59
+    },
+    {
+     "type": "text",
+     "value": "{{CITY}}, {{YEAR}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    },
+    {
+     "type": "text",
+     "value": "MUGLA",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    }
+   ]
+  },
+  {
+   "id": "front-page-2",
+   "type": "custom",
+   "title": "Ön sayfa 3",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "JURY CONFIRMATION PAGE",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 36,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "This dissertation with the title of “………………………” written by ………………………………………… accepted as a Doctoral Dissertation in the Department of ……………………, and ………………………. Program by unanimous vote / a majority of votes. (Just choose one. After editing, delete the explanation in the parentheses.)",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 15.02
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Academic Title, Name and SURNAME",
+       "style": {
+        "align": "center",
+        "fontSizePt": 11
+       }
+      },
+      {
+       "type": "text",
+       "value": "Department of …………",
+       "style": {
+        "align": "center",
+        "fontSizePt": 11
+       }
+      },
+      {
+       "type": "text",
+       "value": "Chairman of the Jury",
+       "style": {
+        "align": "center",
+        "fontSizePt": 11
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Academic Title, Name and SURNAME",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Department of …………",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Supervisor",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 50
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Academic Title, Name and SURNAME",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Department of …………",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Member",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 50
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Academic Title, Name and SURNAME",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Department of …………",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Member",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 50
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Academic Title, Name and SURNAME",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Department of …………",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        },
+        {
+         "type": "text",
+         "value": "Member",
+         "style": {
+          "align": "center",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 50
+      }
+     ]
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.75
+    },
+    {
+     "type": "text",
+     "value": "Date of defense: xx/xx/xxxx",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 10.12
+    },
+    {
+     "type": "text",
+     "value": "This thesis meets the necessary conditions of a Doctoral Dissertation in the ……………………….. Program.",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 20.25
+    },
+    {
+     "type": "text",
+     "value": "Academic Title, Name and SURNAME",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Director of Institute of Education Sciences",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ETHICAL DECLARATION TEXT",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "I hereby declare that in my MA thesis/PhD dissertation, which I wrote through my own research and which was written in accordance with the Muğla Sıtkı Koçman University ………..Institute’s Thesis/Dissertation Writing Rules, with the title “………………………………………”",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "text",
+     "value": "I adhered to ethical principles in all processes from planning to writing my thesis/dissertation, that I have obtained the information and documents related to my thesis/dissertation within the framework of academic and scientific ethical rules, that I did not tamper with the data I used, that I cited the source of all visual and written materials I used in my thesis/dissertation, and that all of the works I have used are included in the references section and the explanations regarding the use of artificial intelligence (AI) tools in the thesis/dissertation are as stated below.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "DECLARATION ON THE USE OF ARTIFICIAL INTELLIGENCE (AI) *",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5.68
+    },
+    {
+     "type": "text",
+     "value": "In cases where AI tools are not used in any part of the thesis/dissertation study, the following declaration is required.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "☐ I declare that I did not use any AI tools within the scope of this thesis/dissertation.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "In cases where AI tools are used in the thesis/dissertation study, the following declaration is requested.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11
+     }
+    },
+    {
+     "type": "text",
+     "value": "☐ I declare that I used an AI tool to edit some sections of the thesis/dissertation, as specified in the table below. The names of the AI ​​tools I used, their versions, access dates, at which stage of the study they were used, and their links are given in the Method section of the thesis/ dissertation under the title “Artificial Intelligence (AI) Usage Method”. In addition, the use of AI in the sections I have declared below in the thesis/dissertation is also indicated with appropriate citation and source indication.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "DECLARATION ON THE USE OF AI",
+       "style": {
+        "align": "center",
+        "fontSizePt": 10,
+        "fontWeight": 700
+       }
+      },
+      {
+       "type": "text",
+       "value": "(Read each article and mark the boxes next to it to show that you accept it**)",
+       "style": {
+        "align": "center",
+        "fontSizePt": 10,
+        "fontWeight": 700,
+        "italic": true
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used in the review of the abstract section of the thesis/dissertation.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used in the literature review and for finding relevant resources.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used to determine the research hypothesis/hypotheses.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used in sample size determination/power analysis calculation.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used in data collection.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used for data storage.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used in statistical analysis, visualization or interpretation of data.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used to properly organize and verify the sources according to the required format.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used for grammar and spelling check.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used for the translation of academic texts or for checking expressions in foreign languages.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used to determine or shape the thesis/dissertation title.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used to identify or optimize research questions.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used in creating tables, figures or graphs.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used to check plagiarism and similarity rates.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "It was used in creating survey or interview questions.",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Other uses (explain)…………….",
+         "style": {
+          "align": "left",
+          "fontSizePt": 10
+         }
+        }
+       ],
+       "widthPercent": 92.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 7.8
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "** More than one marking is possible.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 8,
+      "italic": true,
+      "spaceBeforePt": 0.55,
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "../…./ 20…..",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 10,
+      "spaceBeforePt": 0.55
+     }
+    },
+    {
+     "type": "text",
+     "value": "(Signature)",
+     "style": {
+      "align": "left",
+      "fontSizePt": 10
+     }
+    },
+    {
+     "type": "text",
+     "value": "Student's Name SURNAME",
+     "style": {
+      "align": "left",
+      "fontSizePt": 10
+     }
+    },
+    {
+     "type": "text",
+     "value": "*The declaration texts were written based on the principle that \"in case of using Artificial Intelligence (AI) tools, all responsibility belongs to the thesis/dissertation author\" and \"which AI tool was used, when, at which stage or section of the study, and the version of the relevant tool must be specified\", as underlined in the document published by YÖK.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 10,
+      "italic": true
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration-2",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "DECLARATION TEXT",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.74
+    },
+    {
+     "type": "text",
+     "value": "(Social Contribution / Sustainable Development)",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "The Social Contribution and Sustainable Development Fundamental Goals within the scope of the study titled “Thesis/dissertation Name……………………” that I submitted as my master’s/ thesis/dissertation are shown by marking the relevant sections in the tables below.",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11,
+      "spaceBeforePt": 2.35
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5.7
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "SOCIAL CONTRIBUTION",
+       "style": {
+        "align": "center",
+        "fontWeight": 700,
+        "spaceBeforePt": 2.25
+       }
+      },
+      {
+       "type": "text",
+       "value": "(Read each item and tick the appropriate boxes**)",
+       "style": {
+        "align": "center",
+        "fontWeight": 700,
+        "spaceBeforePt": 0.05
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Determination and Analysis of Priority Needs of the Society",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Scientific Research and Development Studies Contributing to the Society",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Education, Information and Awareness Studies for the Society",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Scientific and Innovative Solutions to Priority Problems of the Society",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Collaboration with Stakeholders such as Public, Private Sector and Civil Society Organizations for the Society",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Contribution to Local, National and Global Historical and Cultural Values",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Social Responsibility and Cultural Activities Conducted for the Benefit of the Society",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Other (please explain)………………..",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "** More than one marking is possible.",
+     "style": {
+      "align": "left",
+      "fontSizePt": 10,
+      "italic": true,
+      "spaceBeforePt": 0.2
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 5.06
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "SUSTAINABLE DEVELOPMENT BASIC GOALS",
+       "style": {
+        "align": "center",
+        "fontWeight": 700,
+        "spaceBeforePt": 1.65
+       }
+      },
+      {
+       "type": "text",
+       "value": "(Read each item and tick the appropriate boxes**)",
+       "style": {
+        "align": "center",
+        "fontWeight": 700,
+        "spaceBeforePt": 0.05
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 1: No Poverty",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 2: Zero Hunger",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 3: Good Health and Wellbeing",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 4: Quality Education",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 5: Gender Equality",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 6: Clean Water and Sanitation",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 7: Affordable and Clean Energy",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 8: Decent Work and Economic Growth",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 9: Industry, Innovation and Infrastructure",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 10: Reduced Inequalities",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 11: Sustainable Cities and Communities",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 12: Responsible Production and Consumption",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 13: Climate Action",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 14: Life Below Water",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 15: Life on Land",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 16: Peace, Justice and Strong Institutions",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Goal 17: Partnerships for the Goals",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Other (please explain)…………….",
+         "style": {
+          "align": "left",
+          "fontSizePt": 11
+         }
+        }
+       ],
+       "widthPercent": 93.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 6.7
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "** More than one marking is possible.",
+     "style": {
+      "align": "left",
+      "italic": true,
+      "spaceBeforePt": 0.6
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "text",
+     "value": "…../…./ 20…..",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 10
+     }
+    },
+    {
+     "type": "text",
+     "value": "(Signature)",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 10
+     }
+    },
+    {
+     "type": "text",
+     "value": "Student's Name SURNAME",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 10
+     }
+    }
+   ]
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "ACKNOWLEDGEMENT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "CONTENTS",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "CONTENTS",
+    "includePageNumbers": true,
+    "leader": "dots",
+    "levels": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "LIST OF TABLES",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "LIST OF TABLES",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "LIST OF FIGURES",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "LIST OF FIGURES",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "LIST OF ABBREVIATIONS",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "INTRODUCTION",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "REFERENCES",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "headings": {
+     "1": {
+      "align": "left"
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "APPENDICES",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "tables": {
+  "label": "Table",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "center"
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "REFERENCES",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left",
+   "lineHeight": 1.5
+  },
+  "hangingIndentMm": 0
+ },
+ "toc": {
+  "heading": "CONTENTS",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ }
+}

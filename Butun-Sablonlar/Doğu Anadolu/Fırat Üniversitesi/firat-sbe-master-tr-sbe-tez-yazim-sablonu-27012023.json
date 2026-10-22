@@ -1,0 +1,1523 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.1.0-draft",
+ "id": "firat-sbe-master-tr-sbe-tez-yazim-sablonu-27012023",
+ "universityId": "firat",
+ "universityName": "Fırat Üniversitesi",
+ "instituteId": "sbe",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "SBE_Tez_Yazım_ŞABLONU_27012023.docx",
+  "verifiedAt": "2026-10-06",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f0ccd31316997796e323c5aaf9960e108247d6b5bfc8a11b2d6b85f10324fcc6",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Şablon yönergesi (Dış Kapak): Dikkat! Bu alanları kendi çalışmalarınıza uygun olarak doldurunuz. Sonra bu şekil üzerine tıklayarak açıklamayı silebilirsiniz",
+   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
+   "Kılavuz kuralları birleştirildi: 166926925728.yazım kuralları.pdf (1 alan, 8 çelişki)"
+  ],
+  "guideDocumentName": "166926925728.yazım kuralları.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":11,\"align\":\"justify\",\"lineHeight\":1.25}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (30/46 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "20 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[1,2,3,6]",
+     "reasoning": "DOCX bölümleri [1, 2, 3, 6] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "COĞRAFYA ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “COĞRAFYA ANABİLİM DALI”"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "Fiziki Coğrafya Programı",
+     "reasoning": "Yer tutucu satır: cover › “Fiziki Coğrafya Programı”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "COĞRAFYA ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “COĞRAFYA ANA BİLİM DALI”"
+    },
+    {
+     "field": "sections.approval.DEPARTMENT_NAME",
+     "value": "COĞRAFYA ANA BİLİM DALI",
+     "reasoning": "Yer tutucu satır: approval › “COĞRAFYA ANA BİLİM DALI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "value": "0",
+     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.margins.topMm",
+     "measured": "25.01",
+     "guide": "30",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 15: “Sayfa Yapısı Kâğıdın üst kenarından 3 cm ve sol kenarından 3,25 cm, diğer kenarlarından 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "page.margins.leftMm",
+     "measured": "30",
+     "guide": "32.5",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 15: “Sayfa Yapısı Kâğıdın üst kenarından 3 cm ve sol kenarından 3,25 cm, diğer kenarlarından 2,5 cm boşluk bırakılmalıdır.”"
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "measured": "11",
+     "guide": "10",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 9: “BOŞLK : 10 punto büyüklük ve tek satır aralığı ile bırakılan bir boş satırı ifade eder”"
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "measured": "1.25",
+     "guide": "2",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 16: “Öncesinde boşluk bulunmaz sonrasında 10 punto tek aralık ayarlı 2 satır (toplamda 24 nk) boşluk bulunur.”"
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "measured": "0",
+     "guide": "6",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 26: “Her iki sistemde de her bir kaynak arasında 6 nk boşluk (Paragraf→Aralık: sonra = 6 nk) bırakılır.”"
+    },
+    {
+     "field": "typography.headings.3.fontSizePt",
+     "measured": "12",
+     "guide": "11",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 16: “Üçüncü derece alt bölüm başlıklarında yazı büyüklüğü 11 punto, diğer özellikler ikinci derece alt başlıklar ile aynıdır.”"
+    },
+    {
+     "field": "typography.headings.4.fontSizePt",
+     "measured": "12",
+     "guide": "11",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 51: “Dördüncü Derece Alt Başlık (11 punto, kalın, ilk harfler büyük, Numaralama yapılmaz) Başlıktan önce bir satır boşluk (12 nk) bulunur.”"
+    },
+    {
+     "field": "bibliography.lineHeight",
+     "measured": "1.25",
+     "guide": "1.5",
+     "guideSource": "166926925728.yazım kuralları.pdf › sayfa 17: “Giriş ile Kaynaklar Bölümleri arasında kalan tüm metinlerde 11 punto büyüklük ve 1,5 satır aralığı kullanılır.  Pencere Altı Kapak, İç Kapak, Onay Sayfası ve B”"
+    }
+   ],
+   "guide": "166926925728.yazım kuralları.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25.01,
+   "bottomMm": 25.01,
+   "leftMm": 30,
+   "rightMm": 25.01
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 4.46,
+   "distanceMm": 14.99,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 11,
+   "align": "justify",
+   "lineHeight": 1.25
+  },
+  "paragraph": {
+   "firstLineIndentMm": 10,
+   "spaceAfterPt": 0
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 0,
+    "textTransform": "uppercase",
+    "numbering": {
+     "enabled": true,
+     "format": "{1}."
+    },
+    "keepWithNext": true
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.25,
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "keepWithNext": true
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.25,
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}."
+    },
+    "keepWithNext": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.25,
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}."
+    },
+    "keepWithNext": true
+   }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 9
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "FIRAT ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "SOSYAL BİLİMLER ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.74
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "KANGAL HAVZASI’NIN (SİVAS) JEOMORFOLOJİSİ",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12,
+        "fontWeight": 700
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Murat SUNKAR",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Doktora Tezi",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12,
+        "fontWeight": 700
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "metadata",
+       "field": "DEPARTMENT_NAME",
+       "fallback": "COĞRAFYA ANABİLİM DALI",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12,
+        "fontWeight": 700,
+        "textTransform": "uppercase"
+       },
+       "suffix": " ANABİLİM DALI"
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "metadata",
+       "field": "PROGRAM_NAME",
+       "fallback": "Fiziki Coğrafya Programı",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12
+       },
+       "suffix": " Programı"
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "KASIM 2021",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12,
+        "fontWeight": 700,
+        "spaceBeforePt": 8
+       }
+      }
+     ],
+     "widthPercent": 100
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İç Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "FIRAT ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "SOSYAL BİLİMLER ENSTİTÜSÜ",
+     "style": {
+      "align": "left",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.06
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "COĞRAFYA ANA BİLİM DALI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.06
+    },
+    {
+     "type": "text",
+     "value": "Doktora Tezi",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 24.34
+    },
+    {
+     "type": "text",
+     "value": "kangal havzası’nın (sivas) jeomorfolojisi",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 24.34
+    },
+    {
+     "type": "text",
+     "value": "Tez Yazarı",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "text",
+     "value": "Murat SUNKAR",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 64.91
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "KASIM 2021",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12,
+        "fontWeight": 700
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "group",
+     "blocks": [
+      {
+       "type": "text",
+       "value": "ELAZIĞ",
+       "style": {
+        "align": "center",
+        "fontSizePt": 12,
+        "fontWeight": 700
+       }
+      }
+     ],
+     "widthPercent": 100
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "text",
+     "value": "Prof. Dr. Murat SUNKAR",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.15
+     }
+    }
+   ]
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "text",
+     "value": "FIRAT ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "SOSYAL BİLİMLER ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.87
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "COĞRAFYA ANA BİLİM DALI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "text",
+     "value": "Doktora Tezi",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Başlığı:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 22.6
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "KANGAL HAVZASI’NIN (SİVAS) JEOMORFOLOJİSİ",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 77.4
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Yazarı:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 22.6
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Murat SUNKAR",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 77.4
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Tez Öneri Tarihi:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 22.6
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "01.11.2021",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 77.4
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Savunma Tarihi:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 22.6
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "01.11.2021",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 77.4
+      }
+     ]
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "text",
+     "value": "TEZ ONAYI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Fırat Üniversitesi Sosyal Bilimleri Enstitüsü tez yazım kurallarına göre hazırlanan bu tez aşağıda imzaları bulunan jüri üyeleri tarafından değerlendirilmiş ve akademik dinleyicilere açık yapılan savunma sonucunda OYBİRLİĞİ/OYÇOKLUĞU ile kabul edilmiştir.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 10,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 6.09
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 78.5
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "İmza",
+         "style": {
+          "align": "center",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 21.5
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Danışman:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 15.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Prof. Dr. Murat SUNKAR",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "Fırat Üniversitesi İnsani ve Sosyal Bilimler Fakültesi",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 63.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 21.5
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Başkan:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 15.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Prof. Dr. Murat SUNKAR",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "Fırat Üniversitesi İnsani ve Sosyal Bilimler Fakültesi",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 63.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 21.5
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Üye:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 15.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Prof. Dr. Murat SUNKAR",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "Fırat Üniversitesi İnsani ve Sosyal Bilimler Fakültesi",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 63.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 21.5
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Üye:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 15.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Prof. Dr. Murat SUNKAR",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "Fırat Üniversitesi İnsani ve Sosyal Bilimler Fakültesi",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 63.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 21.5
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Üye:",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 15.2
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "Prof. Dr. Murat SUNKAR",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12,
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "Fırat Üniversitesi İnsani ve Sosyal Bilimler Fakültesi",
+         "style": {
+          "align": "left",
+          "fontSizePt": 12
+         }
+        }
+       ],
+       "widthPercent": 63.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 21.5
+      }
+     ]
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "text",
+     "value": "Bu tez, Enstitü Yönetim Kurulunun ......./......../20....... tarihli toplantısında tescillenmiştir.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "text",
+     "value": "Prof. Dr. Murat SUNKAR",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Enstitü Müdürü",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "BEYAN",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Fırat Üniversitesi Sosyal Bilimleri Enstitüsü tez yazım kurallarına uygun olarak hazırladığım “KANGAL HAVZASI’NIN (SİVAS) JEOMORFOLOJİSİ” Başlıklı Doktora Tezi’min içindeki bütün bilgilerin doğru olduğunu, bilgilerin üretilmesi ve sunulmasında bilimsel etik kurallarına uygun davrandığımı, kullandığım bütün kaynakları atıf yaparak belirttiğimi, maddi ve manevi desteği olan tüm kurum/kuruluş ve kişileri belirttiğimi, burada sunduğum veri ve bilgileri unvan almak amacıyla daha önce hiçbir şekilde kullanmadığımı beyan ederim.",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 10,
+      "lineHeight": 1.25
+     }
+    },
+    {
+     "type": "text",
+     "value": "01.11.2021",
+     "style": {
+      "align": "right",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Murat SUNKAR",
+     "style": {
+      "align": "right",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖN SÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots",
+    "levels": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER LİSTESİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR LİSTESİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER LİSTESİ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-upper"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "tables": {
+  "label": "Tablo",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "fontWeight": 700,
+   "align": "center",
+   "lineHeight": 1.258
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "fontWeight": 700,
+   "align": "center",
+   "lineHeight": 1.25
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKLAR",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 11,
+   "align": "left",
+   "lineHeight": 1.25
+  },
+  "hangingIndentMm": 0
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ }
+}

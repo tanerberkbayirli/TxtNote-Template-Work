@@ -1,4 +1,5 @@
 import generic from "./templates/generic.js";
+import { GENERATED_THESIS_TEMPLATES } from "./templates/generated/index.js";
 import { withEngineDefaults } from "./engineDefaults.js";
 import { validateThesisRegistry, validateThesisTemplate } from "./validation.js";
 
@@ -42,6 +43,8 @@ export const THESIS_TEMPLATE_REGISTRY = Object.freeze([
   { id: "iyte-lee-articles-master-en-v1", templateVersion: "1.0.0", universityId: "iyte", universityName: "İzmir Yüksek Teknoloji Enstitüsü", instituteId: "lee-articles", instituteName: "Lisansüstü Eğitim Enstitüsü · Makalelerden Tez", degreeType: "master", language: "en", status: "official", displayName: "İYTE · Makalelerden Yüksek Lisans (English)", selectors: {}, load: () => import("./templates/iyte.js").then(module => ({ default: module.iyteArticlesMaster })) },
   { id: "iyte-lee-articles-phd-en-v1", templateVersion: "1.0.0", universityId: "iyte", universityName: "İzmir Yüksek Teknoloji Enstitüsü", instituteId: "lee-articles", instituteName: "Lisansüstü Eğitim Enstitüsü · Makalelerden Tez", degreeType: "phd", language: "en", status: "official", displayName: "İYTE · Makalelerden Doktora (English)", selectors: {}, load: () => import("./templates/iyte.js").then(module => ({ default: module.iyteArticlesPhd })) },
   { id: "iyte-eee-undergraduate-en-v1", templateVersion: "1.0.0", universityId: "iyte", universityName: "İzmir Yüksek Teknoloji Enstitüsü", instituteId: "eee", instituteName: "Elektrik-Elektronik Mühendisliği · Bitirme Projesi", degreeType: "undergraduate", language: "en", status: "official", displayName: "İYTE · EEE Lisans Bitirme Projesi (English)", selectors: {}, load: () => import("./templates/iyte.js").then(module => ({ default: module.iyteEee })) },
+  // Drafts generated from measured official sources (TxtNote/scripts/install-template-draft.mjs); status generic.
+  ...GENERATED_THESIS_TEMPLATES,
 ]);
 
 const cache = new Map();

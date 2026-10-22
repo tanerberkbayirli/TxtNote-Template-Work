@@ -1,9 +1,9 @@
 // Licensed system fonts are read at runtime, never bundled with the application.
 export const TIMES_NEW_ROMAN_FACES = {
-  normal: { file: "times.ttf", postscript: "TimesNewRomanPSMT" },
-  bold: { file: "timesbd.ttf", postscript: "TimesNewRomanPS-BoldMT" },
-  italic: { file: "timesi.ttf", postscript: "TimesNewRomanPS-ItalicMT" },
-  bolditalic: { file: "timesbi.ttf", postscript: "TimesNewRomanPS-BoldItalicMT" },
+  normal: { file: "times.ttf", mac: "Times New Roman.ttf", postscript: "TimesNewRomanPSMT" },
+  bold: { file: "timesbd.ttf", mac: "Times New Roman Bold.ttf", postscript: "TimesNewRomanPS-BoldMT" },
+  italic: { file: "timesi.ttf", mac: "Times New Roman Italic.ttf", postscript: "TimesNewRomanPS-ItalicMT" },
+  bolditalic: { file: "timesbi.ttf", mac: "Times New Roman Bold Italic.ttf", postscript: "TimesNewRomanPS-BoldItalicMT" },
 };
 // Liberation Serif (SIL OFL) is read from the user's installed fonts, never bundled; it is not a Times alias.
 export const LIBERATION_SERIF_FACES = {
@@ -13,10 +13,10 @@ export const LIBERATION_SERIF_FACES = {
   bolditalic: { file: "LiberationSerif-BoldItalic.ttf", postscript: "LiberationSerif-BoldItalic" },
 };
 export const ARIAL_FACES = {
-  normal: { file: "arial.ttf", postscript: "ArialMT" },
-  bold: { file: "arialbd.ttf", postscript: "Arial-BoldMT" },
-  italic: { file: "ariali.ttf", postscript: "Arial-ItalicMT" },
-  bolditalic: { file: "arialbi.ttf", postscript: "Arial-BoldItalicMT" },
+  normal: { file: "arial.ttf", mac: "Arial.ttf", postscript: "ArialMT" },
+  bold: { file: "arialbd.ttf", mac: "Arial Bold.ttf", postscript: "Arial-BoldMT" },
+  italic: { file: "ariali.ttf", mac: "Arial Italic.ttf", postscript: "Arial-ItalicMT" },
+  bolditalic: { file: "arialbi.ttf", mac: "Arial Bold Italic.ttf", postscript: "Arial-BoldItalicMT" },
 };
 export const CALIBRI_FACES = {
   normal: { file: "calibri.ttf", postscript: "Calibri" },
@@ -35,17 +35,17 @@ export const CONSOLAS_FACES = {
   bolditalic: { file: "consolaz.ttf", postscript: "Consolas-BoldItalic" },
 };
 export const COURIER_NEW_FACES = {
-  normal: { file: "cour.ttf", postscript: "CourierNewPSMT" },
-  bold: { file: "courbd.ttf", postscript: "CourierNewPS-BoldMT" },
-  italic: { file: "couri.ttf", postscript: "CourierNewPS-ItalicMT" },
-  bolditalic: { file: "courbi.ttf", postscript: "CourierNewPS-BoldItalicMT" },
+  normal: { file: "cour.ttf", mac: "Courier New.ttf", postscript: "CourierNewPSMT" },
+  bold: { file: "courbd.ttf", mac: "Courier New Bold.ttf", postscript: "CourierNewPS-BoldMT" },
+  italic: { file: "couri.ttf", mac: "Courier New Italic.ttf", postscript: "CourierNewPS-ItalicMT" },
+  bolditalic: { file: "courbi.ttf", mac: "Courier New Bold Italic.ttf", postscript: "CourierNewPS-BoldItalicMT" },
 };
 // Symbol-encoded (Microsoft "symbol" cmap 3,0) fonts: one face, text lives at U+F020..U+F0FF.
-export const WINGDINGS_FACES = { normal: { file: "wingding.ttf", postscript: "Wingdings-Regular" } };
-export const WINGDINGS_2_FACES = { normal: { file: "WINGDNG2.TTF", postscript: "Wingdings2" } };
-export const WINGDINGS_3_FACES = { normal: { file: "WINGDNG3.TTF", postscript: "Wingdings3" } };
+export const WINGDINGS_FACES = { normal: { file: "wingding.ttf", mac: "Wingdings.ttf", postscript: "Wingdings-Regular" } };
+export const WINGDINGS_2_FACES = { normal: { file: "WINGDNG2.TTF", mac: "Wingdings 2.ttf", postscript: "Wingdings2" } };
+export const WINGDINGS_3_FACES = { normal: { file: "WINGDNG3.TTF", mac: "Wingdings 3.ttf", postscript: "Wingdings3" } };
 export const SYMBOL_FACES = { normal: { file: "symbol.ttf", postscript: "SymbolMT" } };
-export const WEBDINGS_FACES = { normal: { file: "webdings.ttf", postscript: "Webdings" } };
+export const WEBDINGS_FACES = { normal: { file: "webdings.ttf", mac: "Webdings.ttf", postscript: "Webdings" } };
 export const MS_MINCHO_FACES = { normal: { file: 'msmincho.ttc', postscript: 'MS-Mincho', collectionIndex: 0 } };
 /**
  * Families an official template may require in its PDF, keyed by their exact family name.
@@ -238,8 +238,8 @@ export async function loadSystemPdfFonts(families = []) {
 
 export const loadSystemTimesNewRoman = () => loadSystemFontFamily("Times New Roman");
 
-/** Font directories searched outside Windows (tests, Linux/macOS builds). */
-const UNIX_FONT_DIRS = ["/usr/share/fonts/truetype/msttcorefonts", "/usr/share/fonts/truetype/mscorefonts", "/usr/share/fonts/truetype/liberation", "/usr/share/fonts/truetype/liberation2", "/usr/local/share/fonts", "/Library/Fonts", "/System/Library/Fonts/Supplementary"];
+/** Font directories searched outside Windows (tests, Linux/macOS builds). macOS ships its fonts under their full names (`mac`). */
+const UNIX_FONT_DIRS = ["/usr/share/fonts/truetype/msttcorefonts", "/usr/share/fonts/truetype/mscorefonts", "/usr/share/fonts/truetype/liberation", "/usr/share/fonts/truetype/liberation2", "/usr/local/share/fonts", "/Library/Fonts", "/System/Library/Fonts/Supplemental"];
 
 async function readSystemFonts(family, faces) {
   if (typeof document === "undefined") {
@@ -251,7 +251,7 @@ async function readSystemFonts(family, faces) {
     if (!dirs.length) throw new Error("Windows font dizini bulunamadı.");
     return Object.fromEntries(await Promise.all(Object.entries(faces).map(async ([style, face]) => {
       for (const dir of dirs) {
-        for (const name of [face.file, face.file.replace(/^./, (c) => c.toUpperCase())]) {
+        for (const name of [face.file, face.file.replace(/^./, (c) => c.toUpperCase()), ...(face.mac ? [face.mac] : [])]) {
           const source = join(dir, name);
           try { return [style, { source, bytes: new Uint8Array(await readFile(source)) }]; } catch { /* next */ }
         }

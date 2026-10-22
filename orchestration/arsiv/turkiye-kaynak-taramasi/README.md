@@ -26,9 +26,12 @@ dışa aktarmada DOCX bölüm sırası ve numara onarımı (`export.js`).
 `merge-guide-rules.py`, `docx-spec-to-template.py`, `batch-template-drafts.py`, `guide-only-drafts.py`)
 motordan bağımsızdır.
 
-Eski motora bağlı olanlar (yeni motora taşınana kadar çalışmaz): `install-template-draft.mjs`
-(çıktıyı `frontend/src/thesis/templates/generated/` altına yazar), `batch-gate.py` ve `pass-gate.py`
-(`tests/thesis-export-gate.e2e.mjs` üzerinden dışa aktarır).
+Yeni motora taşındı (2026-10-22): `install-template-draft.mjs` taslağı `Butun-Sablonlar/<bölge>/<üniversite>/<id>.json`
+olarak yazar, modülünü ve kaydını `engine/src/templates/generated/` altında üretir; `batch-gate.py` gerçek dışa aktarımı
+`engine/tools/export.mjs` ile alır; `pass-gate.py` ölçümü aynı kalır. Arşivdeki taslaklardan 165'i bu yolla kuruldu; aynı resmî
+kaynaktan `main`'de doğrulanmış resmî şablonu olan 5 taslak kurulmadı (AKÜ FBE 2025, AKÜ MBG 2025, AFSÜ LEE YL/Doktora 2026,
+İYTE kılavuzu). Yamadaki "düzenlenebilir özel sayfa" (seed HTML) taşınmadı: yeni motorda özel sayfalar `static` olup düzen
+denetçisiyle düzenlenir. Denetim paneli (`compliance.js`) taşınmadı.
 
 ## Ham kaynaklar
 

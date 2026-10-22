@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Install every valid draft, export it through the real editor and run the PASS gate.
 
-  python3 scripts/batch-gate.py [--only id1,id2] [--skip-regenerate] [--base http://localhost:5173]
+  python3 TxtNote/scripts/batch-gate.py [--only id1,id2] [--skip-regenerate] [--base http://127.0.0.1:5175]
 
 Steps: batch-template-drafts.py → batch-guide-merge.py (unless --skip-regenerate); install the
-drafts that validate (status generic, "(taslak)"); for each, tests/thesis-export-gate.e2e.mjs
-then pass-gate.py (with the university's guide rules when available). Templates whose gate
-result is FAIL are uninstalled again; PASS and LIMIT stay installed as drafts. Writes
-output/pass-gate/batch-gate-report.{json,md}. Vite must be serving tests/thesis-editable.html.
+drafts that validate (status generic, "(taslak)") with install-template-draft.mjs; for each, the
+engine's real export harness engine/tools/export.mjs (the editor's own PDF and Word buttons) on a
+deterministic document, then pass-gate.py (with the university's guide rules when available).
+Templates whose gate result is FAIL are uninstalled again; PASS, LIMIT and CONFLICT stay installed
+as drafts and carry their gate result. Writes output/pass-gate/batch-gate-report.{json,md}.
+The Vite dev server must be running: engine/tools/devserver.sh start.
 """
 
 from __future__ import annotations
@@ -21,8 +23,44 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-GENERATED = ROOT / "frontend" / "src" / "thesis" / "templates" / "generated"
+REPO = ROOT.parent
+INSTALL = ROOT / "scripts" / "install-template-draft.mjs"
+EXPORT_TOOL = "engine/tools/export.mjs"
 PLAYWRIGHT = os.environ.get("PLAYWRIGHT_MODULE")
+
+# Deterministic gate document: headings, multi-page paragraphs, a captioned figure and table, metadata, abstracts.
+PNG = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
+LOREM = "Bu paragraf, dışa aktarım kapısının satır aralığını, kenar boşluklarını ve iki yana yaslamayı ölçebilmesi için yeterince uzun tutulmuştur; cümleler sayfanın sağ kenarına kadar akar ve böylece metin bloğunun gerçek genişliği ölçülebilir. "
+
+
+def gate_fixture(template_id: str) -> dict:
+    paragraph = lambda n: f"<p>{LOREM * n}</p>"
+    content = "".join([
+        "<h1>Giriş</h1>", paragraph(4), paragraph(5), paragraph(4),
+        "<h2>Amaç ve Kapsam</h2>", paragraph(5), paragraph(4),
+        f'<figure class="academic-figure fmt-align-center" data-kind="figure" contenteditable="false"><img src="{PNG}" width="240" height="120" alt=""><figcaption>Ölçüm için örnek şekil yazısı</figcaption></figure>',
+        paragraph(5),
+        "<table><caption>Ölçüm için örnek tablo yazısı</caption><tbody><tr><th>Değişken</th><th>Değer</th></tr><tr><td>A</td><td>1</td></tr><tr><td>B</td><td>2</td></tr></tbody></table>",
+        *[paragraph(5)] * 5, "<h1>Yöntem</h1>", *[paragraph(5)] * 4,
+    ])
+    values = {"YEAR": "2026", "STUDENT_NAME": "Ayşe Yılmaz", "ADVISOR_NAME": "Prof. Dr. Ali Veli", "CITY": "Afyonkarahisar", "DEPARTMENT_NAME": "Moleküler Biyoloji ve Genetik",
+              "KEYWORDS": "ölçüm, kapı, şablon, tez", "KEYWORDS_EN": "measurement, gate, template, thesis"}
+    sections = {"abstract": f"<p>{LOREM * 3}</p>", "english-abstract": f"<p>{LOREM * 3}</p>", "bibliography": "<p>Yazar, A. (2026). Örnek kaynak. Yayınevi.</p>"}
+    return {"title": "Dışa Aktarım Kapısı Test Tezi", "content": content,
+            "researchData": {"thesis": {"templateId": template_id, "selection": {}, "values": values, "sectionContent": sections, "enabledSections": []}}}
+
+
+def export(template_id: str, out_dir: Path, base: str, env: dict) -> subprocess.CompletedProcess:
+    """Real export through the editor (engine/tools/export.mjs) → out_dir/export.{pdf,docx}; export-meta.json names the export path."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for stale in ("export.pdf", "export.docx", "export-meta.json", "gate-report.json", "gate-report.md"):
+        (out_dir / stale).unlink(missing_ok=True)
+    fixture = out_dir / "fixture.json"
+    fixture.write_text(json.dumps(gate_fixture(template_id), ensure_ascii=False), encoding="utf-8")
+    result = subprocess.run(["node", str(REPO / EXPORT_TOOL), str(fixture), str(out_dir / "export"), base], cwd=REPO, capture_output=True, text=True, timeout=900, env=env)
+    if result.returncode == 0:
+        (out_dir / "export-meta.json").write_text(json.dumps({"templateId": template_id, "exportTool": EXPORT_TOOL, "base": base, "generatedAt": time.strftime("%Y-%m-%dT%H:%M:%S")}, ensure_ascii=False, indent=1), encoding="utf-8")
+    return result
 
 
 def run(cmd, timeout=900, cwd=ROOT):
@@ -33,7 +71,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--only")
     parser.add_argument("--skip-regenerate", action="store_true")
-    parser.add_argument("--base", default="http://localhost:5173")
+    parser.add_argument("--base", default="http://127.0.0.1:5175")
     parser.add_argument("--reuse-exports", action="store_true", help="Var olan export.docx/pdf dosyalarını yeniden üretmeden kullan")
     args = parser.parse_args()
     if not args.skip_regenerate:
@@ -49,7 +87,7 @@ def main() -> int:
     candidates = [r for r in rows if r.get("statusAfterGuide") == "ok" and (not wanted or r["templateId"] in wanted)]
     drafts = [str(ROOT / "output" / "template-drafts" / f"{r['templateId']}.draft.json") for r in candidates]
     print(f"{len(candidates)} geçerli taslak kuruluyor…", flush=True)
-    install = run(["node", str(ROOT / "scripts" / "install-template-draft.mjs"), *drafts, "--status", "generic"], timeout=600)
+    install = run(["node", str(INSTALL), *drafts, "--status", "generic"], timeout=600)
     if install.returncode:
         print(install.stderr[-500:]); return 2
     time.sleep(4)  # Vite picks up the new modules
@@ -60,10 +98,10 @@ def main() -> int:
         out_dir = ROOT / "output" / "pass-gate" / template_id
         started = time.time()
         reuse = args.reuse_exports and (out_dir / "export.pdf").exists() and (out_dir / "export.docx").exists()
-        export = subprocess.CompletedProcess([], 0, "", "") if reuse else subprocess.run(["node", str(ROOT / "frontend" / "tests" / "thesis-export-gate.e2e.mjs"), template_id, str(out_dir), args.base], cwd=ROOT / "frontend", capture_output=True, text=True, timeout=600, env=env)
+        exported = subprocess.CompletedProcess([], 0, "", "") if reuse else export(template_id, out_dir, args.base, env)
         record = {"templateId": template_id, "university": row["university"], "file": row["file"], "seconds": round(time.time() - started)}
-        if export.returncode:
-            record.update({"overall": "EXPORT-FAIL", "error": (export.stderr or export.stdout).strip().splitlines()[-1][:200] if (export.stderr or export.stdout).strip() else "dışa aktarım başarısız"})
+        if exported.returncode:
+            record.update({"overall": "EXPORT-FAIL", "error": (exported.stderr or exported.stdout).strip().splitlines()[-1][:200] if (exported.stderr or exported.stdout).strip() else "dışa aktarım başarısız"})
         else:
             draft = json.loads(Path(drafts[index - 1]).read_text(encoding="utf-8"))
             guide = draft.get("guideMerge", {}).get("guide")
@@ -82,19 +120,16 @@ def main() -> int:
         print(f"[{index}/{len(candidates)}] {record['overall']:12} {row['university'][:28]:28} {row['file'][:40]:40} {record.get('fails') or record.get('error', '')}"[:160], flush=True)
         if not wanted:
             (ROOT / "output" / "pass-gate" / "batch-gate-report.json").write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf-8")
-    # Modules of this run's candidates stay only when they passed (PASS/LIMIT/CONFLICT); with --only, templates outside
-    # the run are untouched. Without --only the whole generated/ set is this run's, so stale modules go too.
+    # This run's templates stay installed only when they passed (PASS/LIMIT/CONFLICT); templates outside the run are untouched.
     keep = {r["templateId"] for r in results if r["overall"] in ("PASS", "LIMIT", "CONFLICT")}
     judged = {r["templateId"] for r in results}
-    for module in GENERATED.glob("*.js"):
-        if module.name != "index.js" and module.stem not in keep and (not wanted or module.stem in judged):
-            module.unlink()
+    dropped = sorted(judged - keep)
+    if dropped:
+        run(["node", str(INSTALL), "--remove", *dropped], timeout=600)
+    # Reinstalling the kept drafts records their gate result in source.review (status stays generic) and rebuilds the index.
     kept_drafts = [d for d, r in zip(drafts, results) if r["templateId"] in keep]
-    # Gate results are recorded in the installed module's header through the draft (status stays generic).
     if kept_drafts:
-        run(["node", str(ROOT / "scripts" / "install-template-draft.mjs"), kept_drafts[0], "--status", "generic"], timeout=600)  # rebuilds index.js from the remaining modules
-    else:
-        (GENERATED / "index.js").write_text("// Generated by scripts/install-template-draft.mjs — do not edit by hand.\nexport const GENERATED_THESIS_TEMPLATES = Object.freeze([]);\n", encoding="utf-8")
+        run(["node", str(INSTALL), *kept_drafts, "--status", "generic"], timeout=600)
     # With --only the run re-judges a few templates: their records replace the old ones in the batch report, the rest stay.
     report_json = ROOT / "output" / "pass-gate" / "batch-gate-report.json"
     if wanted and report_json.exists():

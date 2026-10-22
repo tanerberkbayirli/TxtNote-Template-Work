@@ -1,0 +1,666 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.1.0-draft",
+ "id": "deu-fbe-phd-tr-deu-fen-bilimleri-doktora-thesis-templat",
+ "universityId": "deu",
+ "universityName": "Dokuz Eylül Üniversitesi",
+ "instituteId": "fbe",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "phd",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
+  "verifiedAt": "2026-10-06",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f08f908ce05137c4f917fee11fc02f839ccd582b5d7b9169c96725906d9b7a4c",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
+   "Kılavuz kuralları birleştirildi: DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf (3 alan, 2 çelişki)"
+  ],
+  "guideDocumentName": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+  "review": {
+   "unknown": [
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (6/15 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{1}.{2}' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\"\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “3.2.1 Topography”)"
+    },
+    {
+     "field": "typography.headings.4.numbering.format",
+     "value": "{1}.{2}.{3}.{4}",
+     "reasoning": "Ölçülen biçim '{1}.{2}.{3}' 4. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[1]",
+     "reasoning": "DOCX bölümleri [1] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "In Partial Fulfillment of the Requirements for the Degree of Doctor of Philosophy in Department of Select Department., Enter the program information. Program",
+     "reasoning": "Yer tutucu satır: inner-cover › “In Partial Fulfillment of the Requiremen”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "value": "0",
+     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+    },
+    {
+     "field": "typography.headings.1.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    },
+    {
+     "field": "typography.headings.2.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "tables.position",
+     "measured": "above",
+     "guide": "below",
+     "guideSource": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf › sayfa 15: “• Tablo başlıklarının bir satıra sığmadığı durumlarda başlık alt satırda satır başından değil, tablo başlık yazısının başlama hizasından itibaren yazılmaya deva”"
+    },
+    {
+     "field": "page.numbering.align",
+     "measured": "center",
+     "guide": "right",
+     "guideSource": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf › sayfa 14: “• Sayfa numaraları sağa dayalı yazılmalıdır.”"
+    }
+   ],
+   "guide": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 40,
+   "rightMm": 25.01
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 4.87,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 5.01,
+   "spaceBeforePt": 10,
+   "spaceAfterPt": 10
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0,
+    "keepWithNext": true,
+    "textTransform": "uppercase",
+    "numbering": {
+     "enabled": false,
+     "format": "{1}",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}.{2}",
+     "sequence": "arabic"
+    }
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 10,
+    "spaceAfterPt": 0,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}"
+    },
+    "keepWithNext": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 10,
+    "spaceAfterPt": 0,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}",
+     "suffix": ""
+    },
+    "keepWithNext": true
+   }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15
+  },
+  "footnotes": {
+   "fontSizePt": 10,
+   "lineHeight": 1
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "DOKUZ EYLÜL UNIVERSITY",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 184.36
+    },
+    {
+     "type": "text",
+     "value": "İZMİR",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12
+     }
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İç Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 31.54
+    },
+    {
+     "type": "text",
+     "value": "A Thesis Submitted to the",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Graduate School of Natural and Applied Sciences of Dokuz Eylül University",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "fallback": "In Partial Fulfillment of the Requirements for the Degree of Doctor of Philosophy in Department of Select Department., Enter the program information. Program",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 44.87
+    },
+    {
+     "type": "text",
+     "value": "by",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 63.08
+    },
+    {
+     "type": "text",
+     "value": "Write the thesis publication date as month and year, 12 pt, bold and centered.",
+     "style": {
+      "align": "center",
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12
+     }
+    },
+    {
+     "type": "text",
+     "value": "İZMİR",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12
+     }
+    }
+   ]
+  },
+  {
+   "id": "front-page-2",
+   "type": "custom",
+   "title": "Ön sayfa 3",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Ph.D. THESIS EXAMINATION RESULT FORM",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 10,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "We have read the thesis entitled “WRITE THE NAME OF THE THESIS IN CAPITAL, 12 POINT AND BOLD HERE.” completed by THESIS AUTHOR IN CAPITAL, 12 POINT, BOLD under supervision of SELECT TITLE. WRITE THE NAME OF THE SUPERVISOR IN CAPITAL, 12 POINT AND BOLD HERE. and we certify that in our opinion it is fully adequate, in scope and in quality, as a thesis for the degree of Doctor of Philosophy.",
+     "style": {
+      "align": "justify",
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 10,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 14.36
+    },
+    {
+     "type": "text",
+     "value": "Select Title. Enter the Supervisor’s name, 12 pt and centered, SURNAME in capital letters",
+     "style": {
+      "align": "center",
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 10,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Supervisor",
+     "style": {
+      "align": "center",
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 10,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 14.36
+    },
+    {
+     "type": "text",
+     "value": "Enter jury member info.Enter jury member info.",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Thesis Committee MemberThesis Committee Member",
+     "style": {
+      "align": "center",
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 10,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 36.02
+    },
+    {
+     "type": "text",
+     "value": "Examining Committee MemberExamining Committee Member",
+     "style": {
+      "align": "center",
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 10,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 53.9
+    },
+    {
+     "type": "text",
+     "value": "Prof. Dr. Abdullah SEÇGİN",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Director",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Graduate School of Natural and Applied Sciences",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "REFERENCES",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "headings": {
+     "1": {
+      "align": "justify"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  }
+ ],
+ "tables": {
+  "label": "Table",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "fontWeight": 400,
+   "align": "justify",
+   "lineHeight": 1
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Figure",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "fontWeight": 400,
+   "align": "center",
+   "lineHeight": 1
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "REFERENCES",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left",
+   "lineHeight": 1.5
+  },
+  "hangingIndentMm": 0
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ }
+}

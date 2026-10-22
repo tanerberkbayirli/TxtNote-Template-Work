@@ -163,8 +163,12 @@ describe("thesis engine", () => {
       // Only templates that enable heading numbering (a source may define none; the engine then renders unnumbered headings).
       if (!Object.values(template.typography.headings).some((style) => style.numbering)) continue;
       const model = compileThesisDocument(template, {}, "T", "<h1>Bir</h1><h2>İki</h2><h3>Üç</h3><h3>Dört</h3>");
-      const labels = model.headings.map((heading) => heading.label);
+      // A level a template marks unnumbered (numbering.enabled false) has no label; numbered levels never repeat a number.
+      // Only levels the template defines (the editor offers no others).
+      const labels = model.headings.filter((heading) => template.typography.headings[heading.level]).map((heading) => heading.label).filter(Boolean);
       assert.equal(new Set(labels).size, labels.length, `${entry.id}: ${labels}`);
+      const h3Numbering = template.typography.headings[3]?.numbering;
+      if (!h3Numbering || h3Numbering.enabled === false) continue;
       // Preliminary numbered sections can precede the editable body (e.g. IYTE article theses).
       // Derive the chapter from the actual heading counter; still require both subordinate counters.
       const h3 = model.headings.find((heading) => heading.level === 3);

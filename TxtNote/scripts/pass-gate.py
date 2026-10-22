@@ -86,13 +86,17 @@ def pdf_lines(page):
     """Text lines as drawn: fragments on one baseline are one line even when MuPDF split them (a face
     change, a wide justified gap), so a line's extent is its real extent."""
     raw = []
-    for block in page.get_text("dict")["blocks"]:
+    # Extents are those of the visible glyphs: a writer may draw the space that ends a line, which is no ink and
+    # would push the measured right edge out by one space width.
+    for block in page.get_text("rawdict")["blocks"]:
         for line in block.get("lines", []):
-            spans = [s for s in line["spans"] if s["text"].strip()]
+            spans = [{**s, "text": "".join(c["c"] for c in s["chars"])} for s in line["spans"]]
+            spans = [s for s in spans if s["text"].strip()]
             if not spans:
                 continue
+            ink = [c["bbox"] for s in spans for c in s["chars"] if not c["c"].isspace()]
             raw.append({
-                "x0": min(s["bbox"][0] for s in spans) * PT2MM, "x1": max(s["bbox"][2] for s in spans) * PT2MM,
+                "x0": min(b[0] for b in ink) * PT2MM, "x1": max(b[2] for b in ink) * PT2MM,
                 "y0": min(s["bbox"][1] for s in spans) * PT2MM, "y1": max(s["bbox"][3] for s in spans) * PT2MM,
                 "baseline": spans[0]["origin"][1] * PT2MM,
                 "font": pdf_font_family(spans[0]["font"]), "size": round(spans[0]["size"], 2), "text": "".join(s["text"] for s in spans).strip(),
