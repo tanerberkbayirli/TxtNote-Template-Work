@@ -1,0 +1,68 @@
+# Unit tests, engine tool tests, type check, production build and Rust tests on every push/PR (HE-TS-04).
+# Windows: the PDF font tests need the installed Times New Roman/Arial/Calibri/... programs; elsewhere they skip.
+# A skipped test fails the run, so a missing font cannot pass as "green" (HE-TS-03).
+# Word parity (parity.mjs, check.mjs --word) and Open XML SDK validation need Microsoft Office and are not run here.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            TxtNote/package-lock.json
+            TxtNote/frontend/package-lock.json
+            engine/package-lock.json
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          npm ci --prefix engine
+          npm ci --prefix TxtNote
+          npm ci --prefix TxtNote/frontend
+          python -m pip install pymupdf
+
+      - name: Type check
+        run: npm run typecheck --prefix TxtNote
+
+      - name: Unit tests (frontend, engine, services)
+        run: |
+          npm test --prefix TxtNote 2>&1 | tee unit-tests.log
+          test "${PIPESTATUS[0]}" -eq 0
+
+      - name: No skipped tests
+        run: |
+          skipped=$(grep -E '^ℹ skipped [0-9]+' unit-tests.log | awk '{sum += $3} END {print sum + 0}')
+          echo "skipped tests: $skipped"
+          grep -E '# SKIP' unit-tests.log || true
+          test "$skipped" -eq 0
+
+      - name: Engine tool tests
+        run: |
+          node --test engine/tools/test_*.mjs
+          cd engine/tools && python -m unittest -q test_conformance test_docx2spec
+
+      - name: Production build
+        run: npm run build --prefix TxtNote
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Rust tests
+        # tauri::generate_context! embeds TxtNote/frontend/dist, so this runs after the build.
+        run: cargo test --lib --manifest-path TxtNote/src-tauri/Cargo.toml

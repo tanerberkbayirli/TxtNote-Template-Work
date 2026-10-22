@@ -17,7 +17,7 @@
 //                  ENGINE_DEFAULT. Property groups the engine could not apply are UNKNOWN (mapping.engineGaps).
 // Without --write nothing is written. Written (under --out-root, default the repository): templates/data/<id>.json, the module
 // templates/<target>.js, specs/<target>.{checks,fixture,mapping,provenance}.json. The registry line is printed, not inserted.
-import { readFileSync, writeFileSync, mkdirSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
 import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
@@ -33,7 +33,12 @@ const repoRoot = resolve(engineRoot, "..");
 // Templates live in Butun-Sablonlar/<region>/<university>/<id>.json (the fallback template in Genel/); the engine reads them from there.
 const templatesRoot = join(repoRoot, "Butun-Sablonlar");
 const DEFAULT_REGION = "Ege";
-export const templateJsonPath = (template, base = templatesRoot) => join(base, template.id === "generic" ? "Genel" : join(DEFAULT_REGION, template.universityName), `${template.id}.json`);
+// The university's folder decides the region (Butun-Sablonlar/<region>/<university>); a university without one goes under DEFAULT_REGION.
+const regionOf = (universityName, base) => {
+  if (!existsSync(base)) return DEFAULT_REGION;
+  return readdirSync(base, { withFileTypes: true }).find((entry) => entry.isDirectory() && existsSync(join(base, entry.name, universityName)))?.name ?? DEFAULT_REGION;
+};
+export const templateJsonPath = (template, base = templatesRoot) => join(base, template.id === "generic" ? "Genel" : join(regionOf(template.universityName, base), template.universityName), `${template.id}.json`);
 // Identity of a template: not a rule value.
 const IDENTITY = new Set(["id", "displayName", "universityId", "universityName", "instituteId", "instituteName", "source", "templateVersion", "degreeType", "language", "status", "metadata", "schemaVersion"]);
 const DEGREE_LABEL = { master: "Yüksek Lisans", phd: "Doktora", undergraduate: "Lisans Tezi", specialization: "Uzmanlık Tezi", "sanatta-yeterlik": "Sanatta Yeterlik" };

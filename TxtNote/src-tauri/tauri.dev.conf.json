@@ -1,0 +1,10 @@
+{
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "http://localhost:3000/updates/latest.json"
+      ],
+      "dangerousInsecureTransportProtocol": true
+    }
+  }
+}

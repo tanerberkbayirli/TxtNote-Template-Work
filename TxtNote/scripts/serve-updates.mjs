@@ -1,6 +1,8 @@
 /**
  * Serves signed installer artifacts so the desktop updater (and a browser)
  * can download them from http://localhost:3000/updates/...
+ * Only builds that poll it use it: `npm run desktop` (src-tauri/tauri.dev.conf.json) or a release built with
+ * TXTNOTE_UPDATE_ORIGIN=http://localhost:3000. The production config has no update endpoint.
  */
 
 import http from "node:http";

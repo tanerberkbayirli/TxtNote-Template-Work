@@ -457,7 +457,7 @@ const adoptBrowserSnapshotIfSqliteEmpty = async (sqlite: Snapshot): Promise<Snap
 };
 
 const openSnapshot = async (snapshot: Snapshot): Promise<Snapshot> => {
-  const notes = await unsealNotesMap(snapshot.notes as Record<string, unknown>);
+  const notes = (await unsealNotesMap(snapshot.notes as Record<string, unknown>)) as Record<string, unknown>;
   return hydrateUrls({ ...snapshot, notes });
 };
 
@@ -501,7 +501,7 @@ export const loadNotes = async (ids: string[] = []): Promise<Record<string, unkn
   if (isTauri()) {
     try {
       const raw = (await invoke<Record<string, unknown>>("load_notes", { ids: unique })) ?? {};
-      return unsealNotesMap(raw);
+      return (await unsealNotesMap(raw)) as Record<string, unknown>;
     } catch (error) {
       console.error("SQLite notlar okunamadı", error);
       return {};
@@ -521,7 +521,7 @@ export const saveSnapshot = async (snapshot: Snapshot): Promise<void> => {
   if (isTauri() && !isVaultReady()) {
     serializable.notes = {};
   } else {
-    serializable.notes = await sealNotesMap(serializable.notes as Record<string, unknown>);
+    serializable.notes = (await sealNotesMap(serializable.notes as Record<string, unknown>)) as Record<string, unknown>;
   }
 
   if (isTauri()) {
@@ -540,7 +540,7 @@ export const saveSnapshot = async (snapshot: Snapshot): Promise<void> => {
         serializable.notes,
         serializable.items,
         serializable.trash,
-      ),
+      ) as Record<string, unknown>,
     };
     const memoryError = writeLocalStorageSnapshot(merged);
 

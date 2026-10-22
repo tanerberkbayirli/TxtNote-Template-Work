@@ -27,7 +27,12 @@ run(process.platform==='win32'?'npm.cmd':'npm',['run','build'],{shell:process.pl
 if(sourceIdentity(root).fingerprint!==frontendSource) throw Error('Source changed during frontend build');
 const identity=writeIdentity(root);
 fs.writeFileSync(path.join(output,'build-identity.json'),JSON.stringify(identity,null,2)+'\n');
-const config=JSON.stringify({build:{beforeBuildCommand:''},bundle:{createUpdaterArtifacts:mode==='signed'}});
+// The production config has no update endpoint (HE-GV-03). A build that should poll one (the local update server of
+// scripts/serve-updates.mjs, or the real HTTPS host) names it in TXTNOTE_UPDATE_ORIGIN; plain HTTP only for localhost.
+const updateOrigin=(process.env.TXTNOTE_UPDATE_ORIGIN||'').replace(/\/$/,'');
+const updaterConfig=updateOrigin?{plugins:{updater:{endpoints:[`${updateOrigin}/updates/latest.json`],...(/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(updateOrigin)?{dangerousInsecureTransportProtocol:true}:{})}}}:{};
+if(updateOrigin&&!/^https:\/\//.test(updateOrigin)&&!updaterConfig.plugins.updater.dangerousInsecureTransportProtocol)throw new Error(`TXTNOTE_UPDATE_ORIGIN must be https:// (or http://localhost): ${updateOrigin}`);
+const config=JSON.stringify({build:{beforeBuildCommand:''},bundle:{createUpdaterArtifacts:mode==='signed'},...updaterConfig});
 run(process.execPath,[tauri,'build','--no-bundle','--ci','--config',config]);
 const executable=path.join(target,'release/txtnote.exe'),embedded=verifyEmbeddedAssets(root,target,executable,identity),applicationBytes=fs.readFileSync(executable);
 run(process.execPath,[tauri,'bundle','--bundles','nsis','--ci','--config',config,...(mode==='unsigned'?['--no-sign']:[])]);
