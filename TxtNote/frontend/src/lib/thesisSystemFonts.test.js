@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { jsPDF } from "jspdf";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { academicPdfFont, academicPdfFontFace, embedAcademicPdfFonts, hasSystemPdfFont } from "./academicFonts.js";
-import { ARIAL_FACES, CALIBRI_FACES, CAMBRIA_MATH_FACES, isSymbolEncodedFamily, loadSystemFontFamily, symbolCmapAsUnicode, symbolFontText, systemPdfFontFamily, TIMES_NEW_ROMAN_FACES } from "./systemPdfFonts.js";
+import { ARIAL_FACES, CALIBRI_FACES, CAMBRIA_MATH_FACES, isSymbolEncodedFamily, loadSystemFontFamily, symbolCmapAsUnicode, symbolFontText, SYSTEM_PDF_FONT_FAMILIES, systemPdfFontFamily, TIMES_NEW_ROMAN_FACES } from "./systemPdfFonts.js";
 import { embeddedPdfFonts } from "../../tests/pdf-font-compliance.mjs";
 import { compileThesisDocument, templateFontFamilies } from "../../../../engine/src/engine.js";
 import { mcbuMaster } from "../../../../engine/src/templates/mcbu.js";
@@ -139,7 +140,10 @@ describe("template-driven genuine PDF fonts", () => {
   });
 
   for (const [family, sample] of [["Wingdings", ""], ["Wingdings 2", ""], ["Wingdings 3", ""], ["Symbol", ""]]) {
-    it(`embeds genuine ${family} (symbol cmap) and draws its PUA glyphs`, { skip: process.platform !== "win32" }, async () => {
+    // Wingdings 2/3 come with Microsoft Office, not with Windows: a machine without Office (CI) skips them by name.
+    const fontFile = join(process.env.WINDIR || "C:/Windows", "Fonts", SYSTEM_PDF_FONT_FAMILIES[family].normal.file);
+    const skip = process.platform !== "win32" ? true : existsSync(fontFile) ? false : `${family} yüklü değil (${fontFile})`;
+    it(`embeds genuine ${family} (symbol cmap) and draws its PUA glyphs`, { skip }, async () => {
       const fonts = await loadSystemFontFamily(family);
       assert.deepEqual(Object.keys(fonts), ["normal"]);
       assert.equal(fonts.normal.identity.family, family);

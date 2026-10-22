@@ -31,6 +31,13 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install Liberation Serif (SIL OFL; the source-document PDF font tests need it)
+        run: |
+          curl -sSL -o liberation.tgz https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
+          echo "7191c669bf38899f73a2094ed00f7b800553364f90e2637010a69c0e268f25d0  liberation.tgz" | sha256sum -c -
+          tar xzf liberation.tgz
+          cp liberation-fonts-ttf-2.1.5/LiberationSerif-*.ttf /c/Windows/Fonts/
+
       - name: Install dependencies
         run: |
           npm ci --prefix engine
@@ -47,11 +54,12 @@ jobs:
           test "${PIPESTATUS[0]}" -eq 0
 
       - name: No skipped tests
+        # Every "# SKIP" line counts (a skipped describe block is not in the "skipped" total). The only allowed skips
+        # are fonts that ship with Microsoft Office, not with Windows, so the runner cannot have them.
         run: |
-          skipped=$(grep -E '^ℹ skipped [0-9]+' unit-tests.log | awk '{sum += $3} END {print sum + 0}')
-          echo "skipped tests: $skipped"
+          grep -E '# SKIP' unit-tests.log | grep -vE 'embeds genuine Wingdings [23] \(symbol cmap\)' > unexpected-skips.log || true
           grep -E '# SKIP' unit-tests.log || true
-          test "$skipped" -eq 0
+          if [ -s unexpected-skips.log ]; then echo "Unexpected skipped tests:"; cat unexpected-skips.log; exit 1; fi
 
       - name: Engine tool tests
         run: |
