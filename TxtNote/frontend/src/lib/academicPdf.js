@@ -3,9 +3,11 @@
  */
 
 import { jsPDF } from "jspdf";
-import { academicFileStem, academicPaperFields, downloadBlob } from "./academicExport.js";
+import { academicFileStem, academicPaperFields, downloadBlob, A4_CSS } from "./academicExport.js";
+import { snapshotAcademicStack, EXPORT_WIDGET_CSS } from "./academicSnapshot.js";
+import { customFormatCss } from "../config/format.js";
 import { collectFootnotes, numberAcademicBlocks, parseAcademicHtml, tocEntries } from "./academicDocument.js";
-import { ACADEMIC_PDF_FONT, embedAcademicPdfFonts, pdfFontStyle } from "./academicFonts.js";
+import { ACADEMIC_PDF_FONT, embedAcademicPdfFonts, pdfFontStyle, academicPdfFont } from "./academicFonts.js";
 import {
   PDF_TYPE,
   PT_MM,
@@ -15,7 +17,7 @@ import {
   contentSize,
   paginateBoxes,
 } from "./academicPdfLayout.js";
-import { PAGE } from "./academicLayout.js";
+import { PAGE, PAGE_HEIGHT_PX, PAGE_GAP_PX, layoutAcademicPages } from "./academicLayout.js";
 
 function measureWithPdf(pdf) {
   return (text, fontSizePt, style = {}) => {
@@ -161,6 +163,27 @@ function drawFootnotes(pdf, notes, x, y, width) {
 
 export async function buildAcademicPdf(doc) {
   const paper = academicPaperFields(doc);
+  if(doc?.article && typeof document !== 'undefined'){
+    await document.fonts?.ready;
+    const snapshot=await snapshotAcademicStack(doc.article);
+    if(!snapshot)throw new Error('Akademik belge görünümü hazırlanamadı');
+    const host=document.createElement('div'),style=document.createElement('style');
+    host.style.cssText='position:fixed;left:-100000px;top:0;width:210mm;background:white;';
+    style.textContent=A4_CSS+EXPORT_WIDGET_CSS+customFormatCss(snapshot.article.outerHTML);
+    host.append(style,snapshot.root);document.body.appendChild(host);
+    try{
+      const pages=doc.article.closest('.academic-stack') ? (doc.measuredPageCount || snapshot.sheetCount) : layoutAcademicPages(snapshot.article);
+      const pitch=PAGE_HEIGHT_PX+PAGE_GAP_PX;
+      const firstBreak=snapshot.article.querySelector('.academic-page-break');
+      const boundary=firstBreak ? Math.max(1,Math.ceil((firstBreak.getBoundingClientRect().top-snapshot.root.getBoundingClientRect().top)/pitch)) : pages;
+      const labels=applyPageNumbering(Array.from({length:pages},(_,i)=>({frontMatter:i<boundary})),doc.pageNumbering||{});
+      const {buildMeasuredAcademicPdf}=await import('../../../../engine/src/layoutPdf.js');
+      return await buildMeasuredAcademicPdf({root:snapshot.root,pages,pagePitchPx:pitch,title:paper.title,drawPage(pdf,i){
+        const point=pageNumberPoint(doc.pageNumberPosition||'bottom-center',PAGE.marginMm);
+        pdf.setFont(academicPdfFont(pdf),'normal');pdf.setFontSize(PDF_TYPE.pageNumber);pdf.setTextColor(17,17,17);pdf.text(labels[i].numberLabel||String(i+1),point.x,point.y,{align:point.align,baseline:'middle'});
+      }});
+    }finally{host.remove();}
+  }
   const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait", compress: true });
   pdf.setProperties({ title: paper.title, creator: "TxtNote" });
   await embedAcademicPdfFonts(pdf);

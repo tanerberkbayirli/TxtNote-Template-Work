@@ -56,3 +56,10 @@ describe('Word justification decisions and source preservation',()=>{
   assert.equal(thesisSourceHtml('<p><span data-thesis-word-fit="0">https://a</span><wbr data-thesis-word-fit-break=""><span data-thesis-word-fit="1">bc</span></p>'),'<p>https://abc</p>');
  });
 });
+
+it("word-fit never measures vertical-writing paragraphs against the cell thickness", async () => {
+  // Needs a live layout engine to exercise; the guard itself is the contract (btLr/tbRl header cells were cut mid-word: "Faa|aliyet").
+  const { readFile } = await import("node:fs/promises");
+  const source = await readFile(new URL("../../../../engine/src/wordLineLayout.js", import.meta.url), "utf8");
+  assert.match(source, /\/\^\(vertical\|sideways\)\/\.test\(css\.writingMode\)/);
+});

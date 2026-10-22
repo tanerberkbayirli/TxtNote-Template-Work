@@ -26,26 +26,26 @@ try {
   await page.locator('[data-thesis-flow-section="main"] [role="textbox"]').waitFor();
   await page.waitForFunction(() => document.querySelector('[data-thesis-pagination-ready="true"]'), { timeout: 60000 });
   assert.equal(await page.locator(".thesis-titlebar").count(), 0);
-  const shortcuts = page.getByRole("group", { name: "Belge panelleri" });
+  const shortcuts = page.getByRole("tablist", { name: "Şerit sekmeleri" });
   for (const name of ["Dosya", "Giriş", "Ekle", "Düzen", "Başvurular", "Görünüm"]) {
     await page.getByRole("tab", { name, exact: true }).click();
-    const details = shortcuts.getByRole("button", { name: "Tez bilgileri", exact: true });
+    const details = shortcuts.getByRole("tab", { name: "Tez bilgileri", exact: true });
     await details.click();
-    assert.equal(await details.getAttribute("aria-expanded"), "true");
+    assert.equal(await details.getAttribute("aria-selected"), "true");
     await page.getByRole("textbox", { name: "Tez başlığı", exact: true }).waitFor();
-    await details.click();
-    assert.equal(await details.getAttribute("aria-expanded"), "false");
-    const settings = shortcuts.getByRole("button", { name: "Sayfa düzeni", exact: true });
+    await page.getByRole("tab", { name, exact: true }).click();
+    assert.equal(await details.getAttribute("aria-selected"), "false");
+    const settings = shortcuts.getByRole("tab", { name: "Sayfa ayarları", exact: true });
     await settings.click();
-    assert.equal(await settings.getAttribute("aria-expanded"), "true");
-    await settings.click();
-    assert.equal(await settings.getAttribute("aria-expanded"), "false");
+    assert.equal(await settings.getAttribute("aria-selected"), "true");
+    await page.getByRole("tab", { name, exact: true }).click();
+    assert.equal(await settings.getAttribute("aria-selected"), "false");
   }
   await page.waitForTimeout(700);
   const before = await page.evaluate(() => window.editableTextReads);
   const durations = [];
   for (let i = 0; i < 12; i++) {
-    const button = shortcuts.getByRole("button", { name: "Tez bilgileri", exact: true });
+    const button = shortcuts.getByRole("tab", { name: i % 2 ? "Giriş" : "Tez bilgileri", exact: true });
     const start = performance.now();
     await button.click();
     durations.push(performance.now() - start);
@@ -53,13 +53,13 @@ try {
   const reads = await page.evaluate(() => window.editableTextReads) - before;
   if (process.env.PANEL_BASELINE !== "1") assert.equal(reads, 0, "opening panels must not scan document text");
   // Metadata remains editable and persists across reloads.
-  await shortcuts.getByRole("button", { name: "Tez bilgileri", exact: true }).click();
+  await shortcuts.getByRole("tab", { name: "Tez bilgileri", exact: true }).click();
   await page.getByRole("textbox", { name: "Tez başlığı", exact: true }).fill("Panel testi başlığı");
   await page.reload();
   await page.locator('[data-thesis-flow-section="main"] [role="textbox"]').waitFor();
-  await shortcuts.getByRole("button", { name: "Tez bilgileri", exact: true }).click();
+  await shortcuts.getByRole("tab", { name: "Tez bilgileri", exact: true }).click();
   assert.equal(await page.getByRole("textbox", { name: "Tez başlığı", exact: true }).inputValue(), "Panel testi başlığı");
-  await shortcuts.getByRole("button", { name: "Tez bilgileri", exact: true }).click();
+  await shortcuts.getByRole("tab", { name: "Tez bilgileri", exact: true }).click();
   await page.getByRole("tab", { name: "Giriş", exact: true }).click();
   if (process.env.PANEL_BASELINE !== "1") {
     const counter = page.locator("[data-thesis-word-count]");
@@ -81,7 +81,7 @@ try {
     assert.ok(await page.locator(".thesis-ruler-horizontal").count() > 0);
     await rulers.click();
     assert.equal(await page.locator(".thesis-ruler-horizontal").count(), 0);
-    await shortcuts.getByRole("button", { name: "Sayfa düzeni", exact: true }).click();
+    await shortcuts.getByRole("tab", { name: "Sayfa ayarları", exact: true }).click();
     const inspector = page.getByRole("complementary", { name: "Sayfa düzeni denetçisi" });
     const topMargin = inspector.getByLabel("Üst", { exact: true });
     await topMargin.fill("-1");
@@ -89,11 +89,12 @@ try {
     await topMargin.fill("31");
     await inspector.getByRole("button", { name: "Sayfa ayarlarını uygula" }).click();
     assert.equal(await page.evaluate(() => window.thesisTest.getDoc().researchData.thesis.layout.page.margins.topMm), 31);
+    await page.getByRole("tab", { name: "Düzen", exact: true }).click();
     await page.getByRole("button", { name: "Düzen değişikliğini geri al" }).click();
     assert.notEqual(await page.evaluate(() => window.thesisTest.getDoc().researchData.thesis.layout?.page?.margins?.topMm), 31);
     await page.getByRole("button", { name: "Düzen değişikliğini yinele" }).click();
     assert.equal(await page.evaluate(() => window.thesisTest.getDoc().researchData.thesis.layout.page.margins.topMm), 31);
-    await shortcuts.getByRole("button", { name: "Sayfa düzeni", exact: true }).click();
+    await shortcuts.getByRole("tab", { name: "Sayfa ayarları", exact: true }).click();
     await page.getByRole("tab", { name: "Görünüm", exact: true }).click();
     // The status slider and View dropdown both control the same saved zoom.
     await page.locator('select[aria-label="Yakınlaştırma düzeyi"]').selectOption("75");

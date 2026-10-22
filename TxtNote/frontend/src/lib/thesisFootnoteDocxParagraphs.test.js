@@ -24,7 +24,7 @@ describe("DOCX footnotes keep imported note paragraphs", () => {
     assert.equal((bodies[1].match(/<w:footnoteRef\/>/g) || []).length, (bodies[0].match(/<w:footnoteRef\/>/g) || []).length);
   });
 
-  const input = fileURLToPath(new URL("../../../../orchestration/engine-work/mission01/inputs/edge-long-notes-final.docx", import.meta.url));
+  const input = fileURLToPath(new URL("../../tests/fixtures/edge-long-notes-final.docx", import.meta.url));
   it("round-trips the EDGE_NOTES Word fixture", { skip: !existsSync(input) }, async () => {
     const d = await importThesisDocx(readFileSync(input));
     const multi = Object.values(d.notes || {}).filter((n) => n?.kind === "footnote" && n.type === "normal");

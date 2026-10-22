@@ -7,6 +7,7 @@ import { appendAuthoredReference, authoredReferences, escapeWritingText, normali
 import { FORMAT_COLORS, FORMAT_HIGHLIGHTS } from "../../config/format.js";
 import { trustedStyleNonce } from "../../lib/cspStyles.js";
 import { buildThesisCss, buildThesisPrintHtml, compileThesisDocument, groupThesisSections, thesisWordBaselineProbes } from "../../../../../engine/src/engine.js";
+import { LIST_SPACE_AFTER_PT } from "../../../../../engine/src/blockGap.js";
 import { measureMirroredIndentsCss } from "../../../../../engine/src/paragraphMirror.js";
 import { validateThesisPageCounts } from "../../../../../engine/src/contentConformance.js";
 import { measureParagraphTabsCss } from "../../../../../engine/src/paragraphTabs.js";
@@ -18,6 +19,7 @@ import { buildThesisPageModel, pageMetrics, thesisPagedCss } from "../../../../.
 import { measureElasticSpecialPages, measurePositionedSpecialPages, measureSpecialPageFit } from "../../../../../engine/src/specialPageFit.js";
 import { THESIS_TEMPLATE_REGISTRY, resolveThesisTemplate } from "../../../../../engine/src/registry.js";
 import { thesisMetadataPanel } from "../../../../../engine/src/metadataPanel.js";
+import { measurePresentationGeometry } from '../../../../../engine/src/presentationGeometry.js';
 import { orderedThesisSections, thesisEnabledSections, setThesisTextFormat, setThesisTextOverride, thesisMetadataValue, thesisTextFormat, thesisSectionConditionMet, updateThesisMetadata, updateThesisNoteSection } from "../../../../../engine/src/document.js";
 import { THESIS_PAGE_FOOTNOTES, THESIS_PAGED_LAYOUT, ThesisSectionPages } from "./ThesisSectionPages";
 import { confirmCommittedPagination, decorateThesisSources, generatedIndexPageTargets, INDEX_ITERATION_CAP, missingGeneratedIndexPages, renderedIndexPages, resolveGeneratedIndexes, waitForStableEquationLayout } from "../../../../../engine/src/generatedIndex.js";
@@ -43,10 +45,13 @@ import ThesisNavigation from "./ThesisNavigation.jsx";
 import ThesisStatusBar from "./ThesisStatusBar.jsx";
 import "./ThesisEditor.css";
 import "./thesisWorkspace.css";
+import "./thesisRibbonPanels.css";
 import {PdfImportSetup, PdfImportReview, PdfImportReport} from './PdfImportReview.jsx';
+import { sourceScriptFontRequests } from '../../../../../engine/src/docx/scriptFonts.js';
+import { ensureSourceScriptFonts } from '../../lib/sourceScriptFonts.js';
 
 // Tailwind's reset removes list markers; the stored ul/ol structure is unchanged.
-const EDITOR_CSS = ".thesis-paper.thesis-editor-surface{background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.13);overflow:visible}.thesis-editor-surface .rich-text-body{caret-color:#111}.thesis-body .rich-text-body ul{list-style:disc;padding-left:24pt;margin:0 0 6pt}.thesis-body .rich-text-body ol{list-style:decimal;padding-left:24pt;margin:0 0 6pt}.thesis-body .rich-text-body li{white-space:pre-wrap}";
+const EDITOR_CSS = ".thesis-paper.thesis-editor-surface{background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.13);overflow:visible}.thesis-editor-surface .rich-text-body{caret-color:#111}.thesis-body .rich-text-body ul{list-style:disc;padding-left:24pt;margin:0 0 " + LIST_SPACE_AFTER_PT + "pt}.thesis-body .rich-text-body ol{list-style:decimal;padding-left:24pt;margin:0 0 " + LIST_SPACE_AFTER_PT + "pt}.thesis-body .rich-text-body li{white-space:pre-wrap}";
 const ZOOM_LEVELS = [50, 75, 100, 125, 150];
 const EMPTY_THESIS = Object.freeze({});
 const THESIS_IMAGE_MAX_EDGE = 1200;
@@ -73,19 +78,27 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [resolution, setResolution] = useState(null);
   const resolved = resolution?.key === selectionKey ? resolution.result : null;
   const [exporting, setExporting] = useState("");
+  const exportBusyRef = useRef(false);
   const [message, setMessage] = useState("");
-  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [ribbonTab, setRibbonTab] = useState("Giriş");
+  const detailsOpen = ribbonTab === "Tez bilgileri";
+  const setDetailsOpen = next => setRibbonTab(current => (typeof next === "function" ? next(current === "Tez bilgileri") : next) ? "Tez bilgileri" : current === "Tez bilgileri" ? "Giriş" : current);
   const [zoomChoice, setZoomChoice] = useState("fit");
   const [viewportWidth, setViewportWidth] = useState(900);
   const [activeSectionId, setActiveSectionId] = useState("");
-  const [pageSettingsOpen, setPageSettingsOpen] = useState(false);
+  const pageSettingsOpen = ribbonTab === "Sayfa ayarları";
+  const setPageSettingsOpen = next => setRibbonTab(current => (typeof next === "function" ? next(current === "Sayfa ayarları") : next) ? "Sayfa ayarları" : current === "Sayfa ayarları" ? "Giriş" : current);
   const [addMenuOpen, setAddMenuOpen] = useState(false);
   const [warningsOpen, setWarningsOpen] = useState(false);
   const [rulersVisible, setRulersVisible] = useState(false);
   const [rulerUnit, setRulerUnit] = useState("mm");
-  const [workspacePanel, setWorkspacePanel] = useState(() => typeof window !== 'undefined' && window.matchMedia('(min-width: 1100px)').matches ? 'outline' : null);
+  const workspaceTabs = { outline: "Yazım planı", sources: "Kaynaklar", guide: "Rehber" };
+  const workspacePanel = Object.keys(workspaceTabs).find(key => workspaceTabs[key] === ribbonTab) || null;
+  const lastWorkspacePanel = useRef("outline");
+  if (workspacePanel) lastWorkspacePanel.current = workspacePanel;
+  const setWorkspacePanel = panel => setRibbonTab(workspaceTabs[panel] || "Giriş");
   const navigationOpen = workspacePanel === 'outline';
-  const setNavigationOpen = (next) => setWorkspacePanel(current => (typeof next === 'function' ? next(current === 'outline') : next) ? 'outline' : null);
+  const setNavigationOpen = next => setRibbonTab(current => (typeof next === "function" ? next(current === "Yazım planı") : next) ? "Yazım planı" : current === "Yazım planı" ? "Giriş" : current);
   const [activeFormat, setActiveFormat] = useState({});
   // Template-owned text (section title / fixed paragraph) the toolbar currently targets instead of a body: { sectionId, kind, take }.
   const [activeStatic, setActiveStatic] = useState(null);
@@ -111,7 +124,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const [pendingImport, setPendingImport] = useState(null);
   useEffect(() => () => importAbortRef.current?.abort(), []);
   const importWord = async (file) => {
-    if (!file) return;
+    if (!file || exportBusyRef.current || exporting) return;
     importAbortRef.current?.abort();
     const controller = new AbortController(); importAbortRef.current = controller;
     setExporting("import"); setMessage("Word belgesi okunuyor…");
@@ -123,6 +136,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     finally { if (!controller.signal.aborted) setExporting(""); }
   };
   const importPdf = async (options) => {
+    if (exportBusyRef.current || exporting) return;
     const file=pdfFile;setPdfFile(null);if(!file)return;
     importAbortRef.current?.abort();
     const controller=new AbortController();importAbortRef.current=controller;
@@ -172,6 +186,23 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     return () => clearTimeout(timer);
   },[compilationInput,renderInput]);
   const sourceModel = useMemo(() => renderInput.template ? compileThesisDocument(renderInput.template, renderInput.thesis, renderInput.plainTitle, renderInput.content, renderInput.bibliographyItems) : null, [renderInput]);
+  const scriptFonts = useMemo(() => sourceScriptFontRequests(sourceModel?.nativeDocument), [sourceModel]);
+  const scriptFontKey = JSON.stringify(scriptFonts);
+  const scriptFontPending = useRef(false);
+  const [scriptFontRevision, setScriptFontRevision] = useState(0);
+  const [scriptFontError, setScriptFontError] = useState(null);
+  useLayoutEffect(() => {
+    let alive = true;
+    scriptFontPending.current = scriptFonts.length > 0;
+    setScriptFontError(null);
+    if (scriptFontPending.current) {
+      if (papersRef.current) papersRef.current.dataset.thesisPaginationReady = 'false';
+      ensureSourceScriptFonts(scriptFonts).catch(error => { if (alive) setScriptFontError(error.message); }).finally(() => {
+        if (alive) { scriptFontPending.current = false; setScriptFontRevision(value => value + 1); }
+      });
+    }
+    return () => { alive = false; };
+  }, [scriptFontKey]);
   // No model while the template of a switch is still resolving (the stale model would be read against an undefined template).
   const model = useMemo(() => sourceModel && template ? resolveGeneratedIndexes(sourceModel, indexResolution.pages || {}, indexResolution.counts) : null, [sourceModel, indexResolution, template]);
   const generatedPageTargets = useMemo(() => sourceModel ? generatedIndexPageTargets(sourceModel) : [], [sourceModel]);
@@ -298,7 +329,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const captionKinds = Object.entries(template?.captionKinds || {});
   const metadataPanel = template ? thesisMetadataPanel(template, model?.sections || []) : { fields: [], hasPrimaryTitle: false };
   const metadataFields = metadataPanel.fields;
-  const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings, ...validateThesisPageCounts(model, pageCounts), ...fontWarnings, ...fitWarnings].filter(issue => !template.placeholders?.[issue.field] || metadataFields.some(([key]) => key === issue.field) || (issue.field === "THESIS_TITLE" && metadataPanel.hasPrimaryTitle)) : [];
+  const validationIssues = model ? [...model.validation.errors, ...model.validation.warnings, ...validateThesisPageCounts(model, pageCounts), ...fontWarnings, ...fitWarnings, ...(scriptFontError ? [{ code: 'source-script-font', message: scriptFontError }] : [])].filter(issue => !template.placeholders?.[issue.field] || metadataFields.some(([key]) => key === issue.field) || (issue.field === "THESIS_TITLE" && metadataPanel.hasPrimaryTitle)) : [];
   const metadataByKey = new Map(metadataFields);
   const groupedKeys = new Set(metadataGroups.flatMap(([, keys]) => keys));
   const extraMetadataFields = metadataFields.filter(([key]) => !groupedKeys.has(key));
@@ -360,7 +391,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     };
     const probe = () => {
       if (disposed) return;
-      if (compilePendingRef.current) { frame = requestAnimationFrame(probe); return; }
+      if (compilePendingRef.current || scriptFontPending.current) { frame = requestAnimationFrame(probe); return; }
       // Font loading can begin again after fonts.ready resolved (a newly inserted
       // run introduces another face). Do not spend the fixed-point budget on
       // provisional glyph metrics or confirm an earlier ready generation.
@@ -512,7 +543,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   useLayoutEffect(() => {
     if (!paginationActive) return;
     paginationRef.current?.();
-  }, [sourceModel, zoom, paginationActive, tabsCss, specialPositionsCss]);
+  }, [sourceModel, zoom, paginationActive, tabsCss, specialPositionsCss, scriptFontRevision]);
 
   const saveThesis = (patch) => onResearchDataChange?.({ ...researchData, thesis: { ...thesis, ...patch } });
   const setValue = (key, value) => onResearchDataChange?.({ ...researchData, thesis: updateThesisMetadata(thesis, key, value) });
@@ -638,7 +669,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
         patchStyle((style) => ({ ...style, highlight }));
       },
       applySize: (value) => { const pt = Number(String(value).replace(/^pt/i, "")); if (Number.isFinite(pt) && pt >= 1 && pt <= 400) patchStyle((style) => ({ ...style, fontSizePt: Math.round(pt * 2) / 2 })); },
-      applyAlign: (align, scope = "page") => {
+      applyAlign: (align, scope) => {
         const patch = textAlignmentPatch(target, align, scope);
         if (patch) interaction.patchElements([patch]);
       },
@@ -690,13 +721,11 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   const numericCitations = template?.bibliography?.citationStyle === 'numeric';
   const canInsertCitation = Boolean(activeSectionId && activeSection?.editable && !activeStatic && !interaction.selectedElements.length && activeBody());
   const citableItems = [...authoredSources.map(item => item.text), ...bibliographyItems.map(item => item.trim()).filter(Boolean)];
-  const openWorkspace = panel => { setWorkspacePanel(panel); setDetailsOpen(false); setPageSettingsOpen(false); };
-  const workspaceWidth = () => viewportRef.current?.parentElement?.clientWidth || window.innerWidth;
-  const openDetails = () => { setDetailsOpen(true); setPageSettingsOpen(false); if (workspaceWidth() < 1100) setWorkspacePanel(null); };
+  const openWorkspace = panel => setWorkspacePanel(panel);
+  const openDetails = () => setRibbonTab("Tez bilgileri");
   const changePageSettings = next => {
     const value = typeof next === 'function' ? next(pageSettingsOpen) : next;
     setPageSettingsOpen(value);
-    if (value) {setDetailsOpen(false); if (workspaceWidth() < 1100) setWorkspacePanel(null);}
   };
   const navigateTo = (sectionId, headingId) => {
     const sectionNode = papersRef.current?.querySelector(`[data-thesis-flow-section="${CSS.escape(sectionId)}"]`);
@@ -707,7 +736,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     const selectedSection = model.sections.find(section => section.id === sectionId);
     if (selectedSection?.mode === 'generated') setMessage('Bu dizin başlıklardan ve sayfa düzeninden otomatik hazırlanır. Değişiklikleri ilgili metin bölümünde yapın.');
     else if (selectedSection?.mode === 'static') setMessage('Bu sayfanın bilgilerini Tez bilgileri panelinden tamamlayabilirsiniz.');
-    if (workspaceWidth() <= 760) setWorkspacePanel(null);
+    setRibbonTab("Giriş");
     requestAnimationFrame(() => {
       target?.scrollIntoView({ block: 'start', behavior: 'smooth' });
       if (editable) {
@@ -737,7 +766,7 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     const selectedNode = window.getSelection()?.anchorNode;
     (selectedNode?.nodeType === 1 ? selectedNode : selectedNode?.parentElement)?.scrollIntoView({block: 'center', behavior: 'smooth'});
     setMessage('Başlık eklendi. İçindekiler otomatik güncelleniyor.');
-    if (workspaceWidth() <= 760) setWorkspacePanel(null);
+    setRibbonTab("Giriş");
     return true;
   };
   const addSource = text => {
@@ -774,21 +803,27 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
     return [[row.dataset.indexTarget, (title.getBoundingClientRect().left - text.getBoundingClientRect().left) / scale]];
   }));
   const exportFile = async (kind) => {
-    if (!model) return;
+    if (!model || exporting || exportBusyRef.current || !["pdf", "docx"].includes(kind)) return;
     const exportGeneration = paginationEpochRef.current;
     const assertPaginationReady = () => {
+      if (scriptFontError) throw new Error(scriptFontError);
+      if (scriptFontPending.current) throw new Error('Kaynak belgenin yazı tipi yükleniyor; tamamlanınca tekrar deneyin.');
       if (paginationActive && (paginationReadyEpochRef.current !== exportGeneration || exportGeneration !== paginationEpochRef.current)) {
         throw new Error(indexWarning || "Sayfalama henüz son ölçüm ve dizin eşlemesiyle doğrulanmadı; dışa aktarma engellendi.");
       }
     };
     try { assertPaginationReady(); } catch (error) { setMessage(error.message); return; }
-    setExporting(kind); setMessage("");
+    exportBusyRef.current = true;
+    const formatName = kind === "pdf" ? "PDF" : "Word";
+    setExporting(kind); setMessage(`${formatName} dışa aktarımı başlatılıyor…`);
     try {
       const [{ buildThesisDocx, buildThesisPdf }, { buildThesisLayoutPdf }, { academicFileStem, downloadBlob }, { collectThesisBlockPageBreaks }] = await Promise.all([
         import("../../../../../engine/src/export.js"), import("../../../../../engine/src/layoutPdf.js"), import("../../lib/academicExport.js"),
         import("../../../../../engine/src/exportPagination.js"),
       ]);
       assertPaginationReady();
+      setMessage(`${formatName} belgesi hazırlanıyor… Büyük belgelerde bu işlem zaman alabilir.`);
+      await new Promise(resolve => requestAnimationFrame(() => setTimeout(resolve, 0)));
       const equationRoot = papersRef.current;
       if (kind === "pdf" && THESIS_PAGED_LAYOUT && equationRoot?.querySelector(".thesis-body .math-formula--block")) {
         await waitForStableEquationLayout(equationRoot, { prepare: () => decorateThesisSources(equationRoot, model) });
@@ -797,18 +832,19 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
       // The PDF is drawn from the editor's own paged layout; engines without it keep the model-based writer.
       const blob = kind === "pdf"
         ? (THESIS_PAGED_LAYOUT && papersRef.current ? await buildThesisLayoutPdf({ root: papersRef.current, groups: pageGroups, title: model.title, language: model.language, templateId: model.templateId, documentLayout: model.documentLayout, systemFonts: model.systemFonts || [], onLayoutReport: (report) => { papersRef.current.__thesisLayoutReport = report; } }) : await buildThesisPdf(model))
-        : await buildThesisDocx(model, { totalPages, specialPagePositions: measurePositionedSpecialPages(papersRef.current, model).positions, blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), ...(() => { const elastic = measureElasticSpecialPages(papersRef.current); return { elasticSpacers: elastic.spacers, elasticContentMm: elastic.contentMm }; })(), tableContinuations: tableContinuationRows(papersRef.current) });
+        : await buildThesisDocx(model, { presentationGeometry: measurePresentationGeometry(papersRef.current), totalPages, specialPagePositions: measurePositionedSpecialPages(papersRef.current, model).positions, blockPageBreaks: collectThesisBlockPageBreaks(papersRef.current, pageGroups), captionAlignments: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-auto][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, node.dataset.thesisCaptionAuto])), captionHangs: Object.fromEntries([...(papersRef.current?.querySelectorAll("[data-thesis-caption-hang][data-thesis-anchor]") || [])].map((node) => [node.dataset.thesisAnchor, Number(node.dataset.thesisCaptionHang)])), indexHangs: thesisIndexHangs(papersRef.current), ...(() => { const elastic = measureElasticSpecialPages(papersRef.current); return { elasticSpacers: elastic.spacers, elasticContentMm: elastic.contentMm }; })(), tableContinuations: tableContinuationRows(papersRef.current) });
       assertPaginationReady();
+      setMessage(`${formatName} dosyası hazır; indirme başlatılıyor…`);
       const path = await downloadBlob(blob, `${academicFileStem(plainTitle || "tez")}.${kind}`);
       // Fields that could not be kept live (missing cross-reference targets, broken Word fields) are named, never silent.
       const fieldNotes = blob.exportIssues ? [...new Set([...blob.exportIssues.fieldIssues.filter((record) => record.code !== "field-unknown-preserved").map((record) => record.message), ...blob.exportIssues.fieldAudit.dangling.map((entry) => `Kırık alan hedefi: ${entry.target}`)])] : [];
-      setMessage((path ? `Kaydedildi: ${path}` : `${kind.toUpperCase()} indirildi.`) + (fieldNotes.length ? ` Uyarı: ${fieldNotes.slice(0, 3).join("; ")}${fieldNotes.length > 3 ? ` (+${fieldNotes.length - 3})` : ""}` : ""));
-    } catch (error) { setMessage(error?.message || "Dışa aktarma başarısız."); }
-    finally { setExporting(""); }
+      setMessage((path ? `Kaydedildi: ${path}` : `${formatName} hazır; indirme tarayıcıya gönderildi.`) + (fieldNotes.length ? ` Uyarı: ${fieldNotes.slice(0, 3).join("; ")}${fieldNotes.length > 3 ? ` (+${fieldNotes.length - 3})` : ""}` : ""));
+    } catch (error) { setMessage(`${formatName} dışa aktarılamadı. ${error?.message || "Yeniden deneyin."}`); }
+    finally { exportBusyRef.current = false; setExporting(""); }
   };
 
   const print = () => {
-    if (!model) return;
+    if (!model || exporting || exportBusyRef.current) return;
     const generation = paginationEpochRef.current;
     const ready = !paginationActive || paginationReadyEpochRef.current === generation;
     if (!ready) { setMessage(indexWarning || "Sayfalama henüz doğrulanmadı; yazdırma/dışa aktarma engellendi."); return; }
@@ -872,49 +908,14 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
   // After a template switch the previous model lingers for a render while the new template resolves asynchronously: wait for both.
   if (!model || !template) return <div className="flex h-full items-center justify-center text-sm text-neutral-500">Tez şablonu yükleniyor…</div>;
 
-  return <div className="thesis-editor-workspace flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
-    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS}</style>
-    <style nonce={trustedStyleNonce()} data-thesis-measured-styles>{baselineCss + tabsCss + mirrorCss + specialPositionsCss}</style>
-    <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
-    <input ref={wordInputRef} type="file" accept=".docx,.doc" aria-label="Word dosyası" className="hidden" onChange={(event) => { void importWord(event.target.files?.[0]); event.target.value = ""; }} />
-    <input ref={pdfInputRef} type="file" accept=".pdf,application/pdf" aria-label="PDF dosyası" className="hidden" onChange={e=>{setPdfFile(e.target.files?.[0]||null);e.target.value='';}} />
-    {pdfFile?<PdfImportSetup file={pdfFile} onCancel={()=>setPdfFile(null)} onStart={options=>void importPdf(options)}/>:null}
-    {exporting === "import" ? <button type="button" className="border p-2 text-xs" onClick={() => { importAbortRef.current?.abort(); setExporting(""); setMessage("İçe aktarma iptal edildi."); }}>İçe aktarmayı iptal et</button> : null}
-    {pendingImport?.researchData.thesis.document.source.format==='pdf'?<PdfImportReview note={pendingImport} onChange={setPendingImport} onCancel={()=>setPendingImport(null)} onApply={next=>{onDocumentChange(next);setPendingImport(null);setMessage('PDF içeriği aktarıldı. Kalan bildirimler aktarım raporunda.');}}/>:pendingImport ? <WordImportReview note={pendingImport} onChange={setPendingImport} onCancel={() => setPendingImport(null)} onApply={() => { onDocumentChange(pendingImport); setPendingImport(null); setMessage("Word belgesi içe aktarıldı. Aktarım raporunu inceleyebilirsiniz."); }} /> : null}
-    <WordImportReport document={thesis.document} />
-    <PdfImportReport document={thesis.document}/>
-    <ThesisRibbon title={plainTitle} activeSection={activeSectionId || activeStatic || activeLayoutText ? activeSection : null} template={template}
-      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, canFormatText: !interaction.selectedElements.length || Boolean(activeLayoutText?.editableContent && activeLayoutText?.editableLayout && !activeLayoutText?.locked), isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: canInsertCitation }}
-      detailsOpen={detailsOpen} setDetailsOpen={next => { const value = typeof next === 'function' ? next(detailsOpen) : next; if (value) openDetails(); else setDetailsOpen(false); }} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={changePageSettings}
-      workspacePanel={workspacePanel} onOpenWorkspace={openWorkspace} onCheckDocument={checkDocument} sourceCount={citableItems.length}
-      canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
-      onImport={onDocumentChange ? () => wordInputRef.current?.click() : undefined} onImportPdf={onDocumentChange?()=>pdfInputRef.current?.click():undefined} exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
-      zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} zoom={zoom} stepZoom={stepZoom} canStepZoom={canStepZoom} zoomLevels={ZOOM_LEVELS} totalPages={totalPages}
-      warningCount={(warning ? 1 : 0) + missingFields.length + (indexWarning ? 1 : 0) + validationIssues.length} warningsOpen={warningsOpen} setWarningsOpen={setWarningsOpen}
-      validationIssues={validationIssues} missingFields={missingFields.map((key) => template.placeholders[key]?.label || key)} warning={warning} indexWarning={indexWarning} message={message}
-      onImage={(kind = "") => { imageKindRef.current = kind; imageInputRef.current?.click(); }} captionKinds={captionKinds} pickedFigure={pickedFigure}
-      onFigureKind={(kind) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) bodyRefs.current[owner]?.setFigureKind(figure, kind); }}
-      pickedEquation={pickedEquation} onEquationNumber={() => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) bodyRefs.current[owner]?.setEquationNumbered(math, math.getAttribute("data-eq-numbered") !== "true"); }}
-      citableItems={citableItems} onInsertCitation={insertCitation}
-      onAddFrame={addFrame} rulersVisible={rulersVisible} setRulersVisible={setRulersVisible} rulerUnit={rulerUnit} setRulerUnit={setRulerUnit}
-      navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeLayoutText ? (activeLayoutText.style?.fontFamily || getComputedStyle(activeLayoutText.element).fontFamily) : (activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily)} page={layoutSection?.rules.page} />
-    <div className="thesis-workspace-body flex min-h-0 flex-1">
-      <ThesisNavigation template={template} hidden={!workspacePanel} panel={workspacePanel || 'outline'} onPanelChange={openWorkspace} sections={model.sections} sectionGroups={pageGroups} activeSectionId={activeSectionId} headings={(model.indexSources || []).filter(item => item.kind === 'toc').map(item => ({sectionId:item.sectionId, id:item.anchor, text:[item.label,item.title].filter(Boolean).join(' '), level:item.level, unnumbered:item.unnumbered}))}
+  const ribbonPanelContent = <>
+    <ThesisNavigation template={template} ribbon hidden={!workspacePanel} panel={workspacePanel || lastWorkspacePanel.current} onPanelChange={openWorkspace} sections={model.sections} sectionGroups={pageGroups} activeSectionId={activeSectionId} headings={(model.indexSources || []).filter(item => item.kind === 'toc').map(item => ({sectionId:item.sectionId, id:item.anchor, text:[item.label,item.title].filter(Boolean).join(' '), level:item.level, unnumbered:item.unnumbered}))}
         key={model.templateId} onDetails={openDetails} onCheck={checkDocument} missingCount={missingFields.length} onAddHeading={addHeading} onNavigate={navigateTo} onClose={() => setWorkspacePanel(null)}
         sourcesProps={{items:bibliographyItems, authored:authoredSources, authoredHtml:Boolean(htmlToPlainText(bibliographySection?.editableHtml).trim()), bibliographyId:bibliographySection?.id, numeric:numericCitations, canInsert:canInsertCitation, onAdd:addSource, onUpdate:(index,text) => setBibliography(bibliographyItems.map((item,i) => i === index ? text : item)), onRemove:index => setBibliography(bibliographyItems.filter((_,i) => i !== index)), onCite:insertSourceCitation, onPickPosition:() => {navigateTo(model.sections.find(section=>section.id===activeSectionId&&section.editable)?.id || model.sections.find(section=>section.type==='mainContent')?.id);setWorkspacePanel(null);}}}/>
-      <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
-        <div ref={papersRef} data-thesis-template-id={model.templateId} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
-        {pageGroups.map((group, index) => {
-            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={pageHandlers.onSectionFocus} onFormatChange={pageHandlers.onFormatChange} onTextChange={pageHandlers.onTextChange} onTextOverride={pageHandlers.onTextOverride} onStaticFocus={pageHandlers.onStaticFocus} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} endnotes={Object.fromEntries(group.sections.map((section) => [section.id, endnoteViews[section.id] || []]))} />;
-            const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);
-            return rulersVisible ? <div key={`${model.templateId}:${group.id}`} className="mx-auto"><LayoutRulers page={group.rules.page} zoom={zoom} unit={rulerUnit} guides={guides} onGuidesChange={(next) => interaction.commitThesis({ ...thesis, layout: { ...layoutState, guides: [...layoutState.guides.filter((guide) => guide.sectionId && guide.sectionId !== group.id), ...next.map((guide) => ({ ...guide, sectionId: group.id }))] } }, "action")}>{sheet}</LayoutRulers></div> : sheet;
-          })}
-        </div>
-      </div>
-      {!detailsOpen && (pageSettingsOpen || interaction.selectedElements.length > 0) ? <div className="thesis-layout-panel w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white" data-thesis-editor-only="true">
+    {(pageSettingsOpen || ribbonTab === "Öğe") ? <div className="thesis-ribbon-inspector" data-thesis-editor-only="true">
         {pageSettingsOpen && layoutSection ? <><div className="flex items-center gap-2 border-b border-neutral-100 px-3 py-2"><button type="button" onClick={() => setRulersVisible((visible) => !visible)} aria-pressed={rulersVisible} className={toolClass}>Cetveller {rulersVisible ? "açık" : "kapalı"}</button><label className="ml-auto text-xs text-neutral-500">Birim <select aria-label="Cetvel birimi" value={rulerUnit} onChange={(event) => setRulerUnit(event.target.value)} className="ml-1 rounded border border-neutral-300 bg-white px-2 py-1 text-xs text-neutral-900"><option value="mm">mm</option><option value="cm">cm</option><option value="pt">pt</option></select></label></div><PageLayoutInspector page={layoutSection.rules.page} sectionId={layoutSectionId} sectionTitle={layoutSection.title} typography={pageTypography} pageScopeSupported={pageGroups.find((g) => g.sections.some((s) => s.id === layoutSectionId))?.sections.length === 1 && (pageCounts[layoutSectionId] || 1) <= 1} onApply={(patch, scope) => { try { interaction.commitThesis(applyLayoutPage(thesis, patch, { scope, sectionId: layoutSectionId, pageIndex: 0 }), "action"); setMessage("Sayfa düzeni uygulandı."); } catch (error) { setMessage(error.message); } }} onApplyTypography={(patch, scope) => { try { interaction.commitThesis(applyLayoutTypography(thesis, patch, { scope, sectionId: layoutSectionId }), "action"); setMessage("Metin biçimi uygulandı."); } catch (error) { setMessage(error.message); } }} /></> : <LayoutInspector elements={interaction.selectedElements} geometry={Array.isArray(interaction.geometry) ? Object.fromEntries(interaction.geometry.map((item) => [item.id, item])) : interaction.geometry} onPatch={interaction.patchElements} onAction={interaction.performAction} />}
       </div> : null}
-      {detailsOpen ? <aside className="thesis-details-panel w-80 shrink-0 overflow-y-auto border-l border-neutral-200 bg-white p-4 text-neutral-900 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
+      {detailsOpen ? <aside className="thesis-details-panel thesis-ribbon-details text-neutral-900 dark:text-neutral-100" aria-label="Tez bilgileri">
         <div className="mb-4 flex items-center justify-between"><h3 className="text-sm font-semibold">Tez bilgileri</h3><button type="button" onClick={() => setDetailsOpen(false)} aria-label="Tez bilgilerini kapat" className="rounded px-2 py-1 text-lg">×</button></div>
         <div className="space-y-5">
           <section><label className="block text-xs font-medium">Belge biçimi<select aria-label="Belge biçimi" value={thesis.document?.formatMode || "template"} onChange={(event) => changeFormatMode(event.target.value)} className="mt-1 block w-full rounded border border-neutral-300 bg-white p-2 text-sm text-neutral-900"><option value="template">Üniversite şablonuna uyarla</option><option value="source">Kaynak biçimini koru</option></select></label><p className="mt-2 text-[11px] leading-snug text-neutral-500">Kaynak biçimi, belgedeki kayıtlı biçim ve bölüm ayarlarını kullanır. Seçiminiz kaynak verisini silmez.</p></section>
@@ -929,8 +930,47 @@ export function ThesisEditor({ title, content, researchData, onTitleChange, onCo
           {bibliographySection ? <section className="border-t border-neutral-200 pt-4 text-xs dark:border-neutral-800"><h4 className="mb-2 font-semibold">KAYNAKLAR</h4><p className="mb-2 text-neutral-500">Kaynak ekleme ve atıfları ayrı çalışma panelinden yönetin.</p><button type="button" className="thesis-primary-button" onClick={() => openWorkspace('sources')}>Kaynakları aç · {citableItems.length}</button></section> : null}
         </div>
       </aside> : null}
+  </>;
+
+  return <div className="thesis-editor-workspace flex h-full min-h-0 flex-col bg-[#e9eaec] dark:bg-neutral-950">
+    <style nonce={trustedStyleNonce()} data-thesis-styles>{css + EDITOR_CSS}</style>
+    <style nonce={trustedStyleNonce()} data-thesis-measured-styles>{baselineCss + tabsCss + mirrorCss + specialPositionsCss}</style>
+    <input ref={imageInputRef} type="file" accept="image/*" aria-label="Görsel dosyası" className="hidden" onChange={(event) => { void insertImage(event.target.files?.[0], imageKindRef.current); event.target.value = ""; }} />
+    <input ref={wordInputRef} type="file" accept=".docx,.doc" aria-label="Word dosyası" className="hidden" onChange={(event) => { void importWord(event.target.files?.[0]); event.target.value = ""; }} />
+    <input ref={pdfInputRef} type="file" accept=".pdf,application/pdf" aria-label="PDF dosyası" className="hidden" onChange={e=>{setPdfFile(e.target.files?.[0]||null);e.target.value='';}} />
+    {pdfFile?<PdfImportSetup file={pdfFile} onCancel={()=>setPdfFile(null)} onStart={options=>void importPdf(options)}/>:null}
+    {exporting === "import" ? <button type="button" className="border p-2 text-xs" onClick={() => { importAbortRef.current?.abort(); setExporting(""); setMessage("İçe aktarma iptal edildi."); }}>İçe aktarmayı iptal et</button> : null}
+    {pendingImport?.researchData.thesis.document.source.format==='pdf'?<PdfImportReview note={pendingImport} onChange={setPendingImport} onCancel={()=>setPendingImport(null)} onApply={next=>{onDocumentChange(next);setPendingImport(null);setMessage('PDF içeriği aktarıldı. Kalan bildirimler aktarım raporunda.');}}/>:pendingImport ? <WordImportReview note={pendingImport} onChange={setPendingImport} onCancel={() => setPendingImport(null)} onApply={() => { onDocumentChange(pendingImport); setPendingImport(null); setMessage("Word belgesi içe aktarıldı. Aktarım raporunu inceleyebilirsiniz."); }} /> : null}
+    <WordImportReport document={thesis.document} />
+    <PdfImportReport document={thesis.document}/>
+    <ThesisRibbon tab={ribbonTab} setTab={setRibbonTab} panelContent={ribbonPanelContent} title={plainTitle} activeSection={activeSectionId || activeStatic || activeLayoutText ? activeSection : null} template={template}
+      actions={{ runSaved, keepSelection, saveSelection: rememberSelection, activeFormat: ribbonFormat, canFormatText: !interaction.selectedElements.length || Boolean(activeLayoutText?.editableLayout && !activeLayoutText?.locked), isStaticTarget: Boolean(activeStatic || activeLayoutText), isLayoutTextTarget: Boolean(activeLayoutText), canTextUndo: activeLayoutText ? interaction.canUndo : Boolean(!activeStatic && activeBody()?.canUndo?.()), canTextRedo: activeLayoutText ? interaction.canRedo : Boolean(!activeStatic && activeBody()?.canRedo?.()), canInsertInline: canInsertCitation }}
+      detailsOpen={detailsOpen} setDetailsOpen={next => { const value = typeof next === 'function' ? next(detailsOpen) : next; if (value) openDetails(); else setDetailsOpen(false); }} pageSettingsOpen={pageSettingsOpen} setPageSettingsOpen={changePageSettings}
+      workspacePanel={workspacePanel} onOpenWorkspace={openWorkspace} onCheckDocument={checkDocument} sourceCount={citableItems.length}
+      canUndo={interaction.canUndo} canRedo={interaction.canRedo} onUndo={interaction.undo} onRedo={interaction.redo}
+      onImport={onDocumentChange ? () => wordInputRef.current?.click() : undefined} onImportPdf={onDocumentChange?()=>pdfInputRef.current?.click():undefined} exporting={exporting} onExport={(kind) => void exportFile(kind)} onPrint={print} paginationReady={!paginationActive || paginationReady}
+      zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} zoom={zoom} stepZoom={stepZoom} canStepZoom={canStepZoom} zoomLevels={ZOOM_LEVELS} totalPages={totalPages}
+      warningCount={(warning ? 1 : 0) + missingFields.length + (indexWarning ? 1 : 0) + validationIssues.length} warningsOpen={warningsOpen} setWarningsOpen={setWarningsOpen}
+      validationIssues={validationIssues} missingFields={missingFields.map((key) => template.placeholders[key]?.label || key)} warning={warning} indexWarning={indexWarning} message={message}
+      onImage={(kind = "") => { imageKindRef.current = kind; imageInputRef.current?.click(); }} captionKinds={captionKinds} pickedFigure={pickedFigure}
+      onFigureKind={(kind) => { const figure = pickedFigure; const owner = figure?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (figure?.isConnected && owner) bodyRefs.current[owner]?.setFigureKind(figure, kind); }}
+      pickedEquation={pickedEquation} onEquationNumber={() => { const math = pickedEquation; const owner = math?.closest("[data-thesis-flow-section]")?.getAttribute("data-thesis-flow-section"); if (math?.isConnected && owner) bodyRefs.current[owner]?.setEquationNumbered(math, math.getAttribute("data-eq-numbered") !== "true"); }}
+      citableItems={citableItems} onInsertCitation={insertCitation}
+      onAddFrame={addFrame} rulersVisible={rulersVisible} setRulersVisible={setRulersVisible} rulerUnit={rulerUnit} setRulerUnit={setRulerUnit}
+      navigationOpen={navigationOpen} setNavigationOpen={setNavigationOpen} canNavigate={Boolean(model.sections.length)} fontFamily={activeLayoutText ? (activeLayoutText.style?.fontFamily || getComputedStyle(activeLayoutText.element).fontFamily) : (activeSection?.rules.body.fontFamily || template.typography.body?.fontFamily)} page={layoutSection?.rules.page} />
+    <div className="thesis-workspace-body flex min-h-0 flex-1">
+      <div ref={viewportRef} className="min-w-0 flex-1 overflow-auto px-4 py-7">
+        <div ref={papersRef} lang={model.language} data-thesis-template-id={model.templateId} data-thesis-pagination-ready={paginationActive ? (paginationReady ? "true" : "false") : "fallback"} data-thesis-pagination-map={JSON.stringify(indexResolution.pages || {})} data-thesis-pagination-targets={JSON.stringify(generatedPageTargets)} onPointerDownCapture={trackSectionPointer} aria-label="Belge sayfaları" className="flex w-max min-w-full flex-col gap-7 outline-none">
+        {pageGroups.map((group, index) => {
+            const sheet = <ThesisSectionPages key={`${model.templateId}:${group.id}`} group={group} pages={pageModel[index].pages} values={model.values} zoom={zoom} bodyRefs={bodyRefs} onSectionFocus={pageHandlers.onSectionFocus} onFormatChange={pageHandlers.onFormatChange} onTextChange={pageHandlers.onTextChange} onTextOverride={pageHandlers.onTextOverride} onStaticFocus={pageHandlers.onStaticFocus} onPageCount={onPageCount} onChapterStarts={onChapterStarts} footnotes={footnoteViews[group.id]} endnotes={Object.fromEntries(group.sections.map((section) => [section.id, endnoteViews[section.id] || []]))} />;
+            const guides = layoutState.guides.filter((guide) => !guide.sectionId || guide.sectionId === group.id);
+            return rulersVisible ? <div key={`${model.templateId}:${group.id}`} className="mx-auto"><LayoutRulers page={group.rules.page} zoom={zoom} unit={rulerUnit} guides={guides} onGuidesChange={(next) => interaction.commitThesis({ ...thesis, layout: { ...layoutState, guides: [...layoutState.guides.filter((guide) => guide.sectionId && guide.sectionId !== group.id), ...next.map((guide) => ({ ...guide, sectionId: group.id }))] } }, "action")}>{sheet}</LayoutRulers></div> : sheet;
+          })}
+        </div>
+      </div>
+
     </div>
     <ThesisStatusBar pageSize={template.page.size || ""} papersRef={papersRef} title={plainTitle} totalPages={totalPages} zoom={zoom} zoomChoice={zoomChoice} setZoomChoice={setZoomChoice} stepZoom={stepZoom} keepSelection={keepSelection} saveSelection={rememberSelection} />
-    <LayoutSelectionOverlay {...interaction.overlayProps} onPatch={interaction.patchElements} onOpenInspector={() => { setDetailsOpen(false); setPageSettingsOpen(false); }} />
+    <LayoutSelectionOverlay {...interaction.overlayProps} onPatch={interaction.patchElements} onOpenInspector={() => setRibbonTab("Öğe")} />
   </div>;
 }

@@ -25,8 +25,10 @@ const spacing = (xml, text) => {
 describe("space before at the top of a page (suppressSpaceBeforeAtPageTop)", () => {
   it("DOCX keeps the first paragraph's space before and leaves a forced break to Word (which drops it after pageBreakBefore)", async () => {
     const xml = strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model(), {})).arrayBuffer()))["word/document.xml"]);
+    // FIRST opens the section: its own space before. SECOND carries the collapsed gap max(previous after 10, own before 8) on
+    // space-before; Word renders max(after, before) = the same 10 pt.
     assert.deepEqual(spacing(xml, "FIRST"), { before: 160, pageBreakBefore: false });
-    assert.deepEqual(spacing(xml, "SECOND"), { before: 160, pageBreakBefore: false });
+    assert.deepEqual(spacing(xml, "SECOND"), { before: 200, pageBreakBefore: false });
     assert.deepEqual(spacing(xml, "FORCED"), { before: 320, pageBreakBefore: true });
   });
 

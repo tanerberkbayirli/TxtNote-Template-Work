@@ -1,0 +1,42 @@
+/* All tools share the upper ribbon; the paper viewport has no side panels. */
+.thesis-editor-workspace .thesis-ribbon-toprow{display:flex;flex-wrap:nowrap;padding:0;min-width:0}
+.thesis-editor-workspace .thesis-ribbon-toprow .thesis-tabs{flex:1 1 auto;flex-basis:auto;min-width:0;width:100%;height:36px;padding:0 10px;gap:0;scrollbar-width:thin}
+.thesis-editor-workspace .thesis-tabs [role=tab]{padding:0 13px;white-space:nowrap}
+.thesis-ribbon .thesis-ribbon-panel--workspace[data-ribbon-tab]{display:block;height:auto;min-height:0;max-height:min(36vh,300px);overflow:auto;padding:0;overscroll-behavior:contain;scrollbar-width:thin}
+.thesis-ribbon-workspace-body{width:100%;min-width:0;color:var(--work-text);background:var(--work-bg)}
+.thesis-ribbon-workspace-body[hidden]{display:none!important}
+.thesis-ribbon-workspace-title{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:7px 16px;border-bottom:1px solid var(--work-border);background:var(--work-subtle);font-size:11px}
+.thesis-ribbon-workspace-title button{display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:4px;color:var(--work-muted)}
+.thesis-ribbon-workspace-title button:hover{background:var(--work-tint);color:var(--work-accent)}
+.thesis-ribbon .thesis-ribbon-workspace{width:100%;border:0;padding:0;background:var(--work-bg);color:var(--work-text);font:12px/1.5 'Segoe UI',sans-serif}
+.thesis-ribbon-workspace .thesis-workspace-content{padding:12px 16px 16px;overflow:visible}
+.thesis-ribbon-workspace[data-workspace-panel=outline] .thesis-workspace-content{display:grid;grid-template-columns:minmax(230px,280px) minmax(0,1fr);gap:12px 20px;align-items:start}
+.thesis-ribbon-workspace[data-workspace-panel=outline] .thesis-plan-list{grid-column:2;grid-row:1 / span 8;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px 14px;align-items:start;padding:0}
+.thesis-ribbon-workspace[data-workspace-panel=outline] .thesis-workspace-content>:not(.thesis-plan-list){grid-column:1;margin-top:0;margin-bottom:0}
+.thesis-ribbon-workspace .thesis-plan-list>li{min-width:0}
+.thesis-ribbon-workspace .thesis-plan-headings{max-height:150px;overflow:auto}
+.thesis-ribbon-workspace .thesis-guide-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px;margin:12px 0 0;padding:0}
+.thesis-ribbon-workspace .thesis-guide-steps>li{margin:0;align-items:start}
+.thesis-ribbon-workspace .thesis-panel-intro{margin:0}
+.thesis-ribbon-workspace .thesis-panel-intro h3{font-size:13px}
+.thesis-ribbon-workspace .thesis-panel-intro p{margin-top:4px}
+.thesis-ribbon-workspace[data-workspace-panel=guide] .thesis-info-card{margin-top:12px;padding:10px}
+.thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-workspace-content>div:not([hidden]){display:grid;grid-template-columns:repeat(3,minmax(200px,1fr));gap:12px 20px;align-items:start}
+.thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-source-list{grid-column:1 / -1;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));margin:0;padding:0}
+.thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-panel-search,.thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-source-actions{margin:0}
+.thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-panel-footnote{grid-column:1 / -1}
+.thesis-editor-workspace .thesis-ribbon .thesis-ribbon-details{position:static;inset:auto;width:100%;padding:12px 16px;box-shadow:none;border:0;overflow:visible;font-size:12px}
+.thesis-ribbon-details>div:first-child{display:none}
+.thesis-ribbon-details>.space-y-5{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px 24px;align-items:start}
+.thesis-ribbon-details>.space-y-5>*{margin:0;padding-top:0;border-top:0;min-width:0}
+.thesis-ribbon-details input,.thesis-ribbon-details select{min-width:0;max-width:100%}
+.thesis-ribbon-inspector>aside{grid-template-columns:repeat(auto-fit,minmax(210px,1fr));align-items:start;overflow:visible!important;gap:16px 22px!important;padding:12px 16px!important;background:var(--work-bg)}
+.thesis-ribbon-inspector>aside>div:first-child,.thesis-ribbon-inspector>aside>details{grid-column:1 / -1}
+.thesis-ribbon-inspector>aside>details>div{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+@container(max-width:760px){
+  .thesis-editor-workspace .thesis-ribbon-toprow .thesis-tabs{height:34px}
+  .thesis-ribbon .thesis-ribbon-panel--workspace[data-ribbon-tab]{max-height:38vh}
+  .thesis-ribbon-workspace[data-workspace-panel=outline] .thesis-workspace-content{grid-template-columns:1fr}
+  .thesis-ribbon-workspace[data-workspace-panel=outline] .thesis-plan-list{grid-column:1;grid-row:auto;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-workspace-content>div:not([hidden]){grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+}

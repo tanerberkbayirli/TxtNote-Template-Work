@@ -1,5 +1,7 @@
 # REFACTORING.md
 
+Current status, 18 October 2026: Phase 3 below is the original migration plan. The active adapter in `TxtNote/services/index.ts` is now `localServices` (SQLite in Tauri, IndexedDB in the browser); frontend components import the shared service entry point. Remaining `DEFAULT_*` exports are initial defaults, not evidence that the mock adapter is active. A real remote backend and device synchronization remain open. Phase 5 incremental TypeScript migration remains a separate unfinished task. The historical starting point below describes the original code, not today's storage behavior.
+
 Completed and started work, and the rules that keep it from re-collapsing. Unstarted Sidebar and shell-hook extraction tasks were removed at user request on 2026-10-08.
 
 ---

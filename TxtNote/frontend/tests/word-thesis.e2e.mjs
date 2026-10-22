@@ -197,7 +197,7 @@ async function main() {
     const exportButton = page.getByRole("button", { name: label, exact: true });
     try { await page.waitForFunction((name) => { const button = document.querySelector(`.thesis-export-tile[aria-label="${name}"]`); return button && !button.disabled; }, label, { timeout: 120000 }); }
     catch (error) {
-      const diagnostics = await import("../../../orchestration/tools/export-diagnostics.mjs");
+      const diagnostics = await import("../../../engine/tools/export-diagnostics.mjs");
       const snapshot = { readiness: await page.locator(".thesis-export-ready").innerText().catch(() => ""), warnings: await page.locator(".thesis-ribbon-warning").innerText().catch(() => ""), status: await page.getByRole("status").innerText().catch(() => ""), pagination: await diagnostics.paginationDiagnostics(page), blockGaps: await diagnostics.blockGapDiagnostics(page, "List and indent probe|Ribbon format selection persists"), errors };
       await writeFile(path.join(output, `export-readiness-${kind}.json`), JSON.stringify(snapshot, null, 2));
       await page.screenshot({ path: path.join(output, `export-readiness-${kind}.png`), fullPage: true });
@@ -212,7 +212,7 @@ async function main() {
     try { download = await downloadPromise; }
     catch (error) {
       const status = await page.getByRole("status").innerText().catch(() => "");
-      const diagnostics = await import("../../../orchestration/tools/export-diagnostics.mjs");
+      const diagnostics = await import("../../../engine/tools/export-diagnostics.mjs");
       const pagination = await diagnostics.paginationDiagnostics(page);
       const gaps = await diagnostics.blockGapDiagnostics(page, "List and indent probe|Ribbon format selection persists");
       const snapshot = { status, readiness: readyText, warnings: warningText, pagination, blockGaps: gaps, errors };

@@ -17,6 +17,12 @@ fn allowlisted_family(
         ("italic", "timesi.ttf"),
         ("bolditalic", "timesbi.ttf"),
     ];
+    const LIBERATION_SERIF: &[(&str, &str)] = &[
+        ("normal", "LiberationSerif-Regular.ttf"),
+        ("bold", "LiberationSerif-Bold.ttf"),
+        ("italic", "LiberationSerif-Italic.ttf"),
+        ("bolditalic", "LiberationSerif-BoldItalic.ttf"),
+    ];
     const ARIAL: &[(&str, &str)] = &[
         ("normal", "arial.ttf"),
         ("bold", "arialbd.ttf"),
@@ -47,8 +53,10 @@ fn allowlisted_family(
     const WINGDINGS_3: &[(&str, &str)] = &[("normal", "WINGDNG3.TTF")];
     const SYMBOL: &[(&str, &str)] = &[("normal", "symbol.ttf")];
     const WEBDINGS: &[(&str, &str)] = &[("normal", "webdings.ttf")];
+    const MS_MINCHO: &[(&str, &str)] = &[("normal", "msmincho.ttc")];
     match value.trim().to_ascii_lowercase().as_str() {
         "times new roman" => Some(("Times New Roman", TIMES_NEW_ROMAN)),
+        "liberation serif" => Some(("Liberation Serif", LIBERATION_SERIF)),
         "arial" => Some(("Arial", ARIAL)),
         "calibri" => Some(("Calibri", CALIBRI)),
         "cambria math" => Some(("Cambria Math", CAMBRIA_MATH)),
@@ -59,6 +67,7 @@ fn allowlisted_family(
         "wingdings 3" => Some(("Wingdings 3", WINGDINGS_3)),
         "symbol" => Some(("Symbol", SYMBOL)),
         "webdings" => Some(("Webdings", WEBDINGS)),
+        "ms mincho" => Some(("MS Mincho", MS_MINCHO)),
         _ => None,
     }
 }
@@ -88,7 +97,22 @@ async fn read_families(requested: Vec<String>) -> Result<Vec<SystemFont>, String
                 continue;
             }
             for &(style, file) in faces {
-                let path = directory.join(file);
+                let mut path = directory.join(file);
+                // Office cloud fonts are installed for Word without registering
+                // in Windows Fonts or Chromium's local-font enumeration.
+                if family == "MS Mincho" && !path.is_file() {
+                    if let Some(local) = std::env::var_os("LOCALAPPDATA") {
+                        let cache = std::path::PathBuf::from(local)
+                            .join("Microsoft/FontCache/4/CloudFonts/MS Mincho");
+                        let mut candidates: Vec<_> = std::fs::read_dir(cache)
+                            .into_iter().flatten().filter_map(Result::ok)
+                            .map(|entry| entry.path())
+                            .filter(|p| p.extension().and_then(|e| e.to_str()).is_some_and(|e| e.eq_ignore_ascii_case("ttf")))
+                            .collect();
+                        candidates.sort();
+                        if let Some(candidate) = candidates.into_iter().next() { path = candidate; }
+                    }
+                }
                 let bytes = std::fs::read(&path).map_err(|error| {
                     format!(
                         "{family} {style} font could not be read ({}): {error}",
@@ -138,6 +162,9 @@ mod tests {
         );
         assert!(allowlisted_family("../arial.ttf").is_none());
         assert!(allowlisted_family("Liberation Sans").is_none());
+        assert_eq!(allowlisted_family(" liberation SERIF ").unwrap().1.len(), 4);
+        assert_eq!(allowlisted_family("Liberation Serif").unwrap().1[0].1, "LiberationSerif-Regular.ttf");
+        assert!(allowlisted_family("../LiberationSerif-Regular.ttf").is_none());
         assert_eq!(allowlisted_family(" CONSolAS ").unwrap().1.len(), 4);
         assert_eq!(allowlisted_family("courier new").unwrap().1.len(), 4);
         assert!(allowlisted_family("../consola.ttf").is_none());
@@ -145,6 +172,8 @@ mod tests {
         assert_eq!(allowlisted_family("wingdings 2").unwrap().0, "Wingdings 2");
         assert_eq!(allowlisted_family("Wingdings 3").unwrap().0, "Wingdings 3");
         assert_eq!(allowlisted_family("symbol").unwrap().0, "Symbol");
+        assert_eq!(allowlisted_family("MS Mincho").unwrap().1[0].1, "msmincho.ttc");
+        assert!(allowlisted_family("../MS Mincho").is_none());
         assert!(allowlisted_family("../wingding.ttf").is_none());
     }
 }

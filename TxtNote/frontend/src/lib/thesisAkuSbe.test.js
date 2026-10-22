@@ -67,7 +67,7 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
   it("keeps the English-programme fixture's extended Turkish summary at all EK 12 minima", () => {
     const minima = [200, 300, 200, 300, 500, 500];
     for (const fixtureName of ["master-en", "phd-en"]) {
-      const fixture = JSON.parse(readFileSync(new URL(`../../../../orchestration/specs/aku-sbe.fixture.${fixtureName}.json`, import.meta.url), "utf8"));
+      const fixture = JSON.parse(readFileSync(new URL(`../../../../engine/specs/aku-sbe.fixture.${fixtureName}.json`, import.meta.url), "utf8"));
       const html = fixture.researchData.thesis.sectionContent["extended-turkish-summary"];
       const parts = [...html.matchAll(/<h2>(.*?)<\/h2>(.*?)(?=<h2>|$)/gs)];
       assert.equal(parts.length, 6, fixtureName);
@@ -132,7 +132,7 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     const toc = section(model, "toc").html;
     for (const title of ["ETİK VE BİLİMSEL İLKELER SORUMLULUK BEYANI", "ENSTİTÜ ONAYI", "ÖZET", "ABSTRACT", "ÖN SÖZ", "İÇİNDEKİLER", "SİMGELER VE KISALTMALAR DİZİNİ", "GİRİŞ", "TARTIŞMA, SONUÇ VE ÖNERİLER", "KAYNAKÇA"]) assert.match(toc, new RegExp(`thesis-index-title">${title}<`), title);
     assert.doesNotMatch(toc, /BAŞLIK SAYFASI/, "the inner cover is not listed");
-    assert.match(toc, /data-index-level="1"[^>]*data-index-label-line="true"><span class="thesis-index-text"><span class="thesis-index-label">BİRİNCİ BÖLÜM<\/span> <span class="thesis-index-title">KURAM<\/span>/);
+    assert.match(toc, /data-index-level="1"[^>]*data-index-label-line="true"[^>]*><span class="thesis-index-text"[^>]*><span class="thesis-index-label">BİRİNCİ BÖLÜM<\/span> <span class="thesis-index-title">KURAM<\/span>/);
   });
 
   it("TOC rows: chapter rows centred without page number, title rows (levelStyles.unnumbered) bold from the left with a number", async () => {
@@ -142,7 +142,7 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     assert.match(css, /\.thesis-toc li\[data-index-unnumbered\]\{font-weight:700;margin-top:0pt;margin-bottom:0pt;text-align:left;\}/);
     assert.ok(css.indexOf('li[data-index-unnumbered]') > css.indexOf('li[data-index-level="5"]'), "the unnumbered rule comes last and wins");
     const toc = section(model, "toc");
-    assert.match(toc.html, /<li data-index-level="1" data-index-target="[^"]+" data-index-unnumbered="true"><span class="thesis-index-text"><span class="thesis-index-title">ÖZET<span class="thesis-index-leader">/);
+    assert.match(toc.html, /<li data-index-level="1" data-index-target="[^"]+" data-index-unnumbered="true"[^>]*><span class="thesis-index-text"[^>]*><span class="thesis-index-title">ÖZET<span class="thesis-index-leader">/);
     const chapterIndexRow = toc.indexRows.find((row) => row.labelLine);
     assert.equal(indexRowStyle(toc.generatedIndex, chapterIndexRow).includePageNumber, false);
     assert.equal(indexRowStyle(toc.generatedIndex, toc.indexRows.find((row) => row.unnumbered)).includePageNumber, true);
@@ -165,7 +165,7 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     assert.equal(indexRowStyle(rule, { level: 1 }).includePageNumber, false);
     assert.equal(indexRowStyle({ kind: "toc", levelStyles: { 1: { fontWeight: 700 } } }, { level: 1, unnumbered: true }).fontWeight, 700, "without the key the level style applies as before");
     const html = generatedIndexHtml(indexEntries([{ kind: "toc", level: 1, unnumbered: true, tocTitle: true, title: "ÖZET", label: "", anchor: "a" }], { kind: "toc", maxDepth: Infinity }, { a: { label: "iv" } }), { kind: "toc", title: "T", includePageNumbers: true, leader: "dots", levelStyles: { 1: { includePageNumber: false }, unnumbered: {} } });
-    assert.match(html, /data-index-unnumbered="true"><span class="thesis-index-text">ÖZET<\/span><span class="thesis-index-leader">/, "title rows keep their page number although level 1 rows do not");
+    assert.match(html, /data-index-unnumbered="true"[^>]*><span class="thesis-index-text"[^>]*>ÖZET<\/span><span class="thesis-index-leader">/, "title rows keep their page number although level 1 rows do not");
     const rule2 = structuredClone(akuSbeMaster); rule2.sections.find((s) => s.id === "toc").generatedIndex.unnumberedAfterNumberedSpaceBeforePt = -1;
     assert.match(validateThesisTemplate(rule2).join(), /unnumberedAfterNumberedSpaceBeforePt/);
     const bad = structuredClone(akuSbeMaster); bad.sections.find((s) => s.id === "toc").generatedIndex.levelStyles.unnumbered.includePageNumber = "yes";

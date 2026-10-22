@@ -1,5 +1,4 @@
 import { memo, useCallback, useLayoutEffect, useRef, useState } from "react";
-import { flushSync } from "react-dom";
 import { registerCustomFormatRules } from "../../config/format.js";
 import { footnotesFromHtml } from "../../lib/academicDocument.js";
 import { focusEditableStart } from "../../lib/richText.js";
@@ -8,6 +7,7 @@ import { chapterStartPageIndexes, flowPagePitchPx, pageCountFromFlowHeight, page
 import { pageFootnotesSupported } from "../../../../../engine/src/footnotes.js";
 import { cssLineBaselineOffset, emptyParagraphPitchMm, wordBaselineProbe } from "../../../../../engine/src/wordBaseline.js";
 import { resolveLineSpacing } from "../../../../../engine/src/typography.js";
+import { chromePresentationProps, presentationId } from "../../../../../engine/src/presentationLayout.js";
 import { RichTextBody } from "./RichTextBody";
 
 /** Pages come from the browser's fragmentation engine; engines without multicol row wrapping keep the Task 6 continuous surface. */
@@ -45,7 +45,8 @@ function SourceChromeParagraphs({ paragraphs, values }) {
 }
 
 /** Header, footer and page number of one physical sheet; never editable body content. */
-function SheetChrome({ rules, values, page }) {
+function SheetChrome({ rules, values, page, sectionId, layout, pageTopMm }) {
+  const chrome = (kind, style) => chromePresentationProps(presentationId(sectionId, "chrome", `${page.index}:${kind}`), sectionId, style, layout, pageTopMm);
   const { page: rule, body } = rules;
   const { margins, header, footer } = rule;
   const chromeValues = { ...values, PAGE: page.countedLabel, NUMPAGES: page.totalPages };
@@ -65,8 +66,10 @@ function SheetChrome({ rules, values, page }) {
   // A number on the same edge as header/footer text stays nearest the paper edge; the text moves one line inward.
   const shift = (edge) => (page.label && page.numberPosition === edge ? 6 : 0);
   return <>
-    {headerText ? <div className="thesis-page-header absolute" style={{ ...box, fontSize: "10pt", top: `${topMm + shift("top") + (page.headerParagraphs ? 0 : chromeShiftMm)}mm`, ...chromeCss(page.headerStyle), ...positionedCss(page.headerPosition), ...(page.headerParagraphs ? { display: "flex", flexDirection: "column" } : {}) }}>{page.headerParagraphs ? <SourceChromeParagraphs paragraphs={page.headerParagraphs} values={chromeValues} /> : headerText}</div> : null}
-    {footerText ? <div className="thesis-page-footer absolute" style={{ ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom") - (page.footerParagraphs ? 0 : chromeShiftMm)}mm`, ...chromeCss(page.footerStyle), ...positionedCss(page.footerPosition), ...(page.footerParagraphs ? { display: "flex", flexDirection: "column" } : {}) }}>{page.footerParagraphs ? <SourceChromeParagraphs paragraphs={page.footerParagraphs} values={chromeValues} /> : footerText}</div> : null}
+    {page.showHeader ? (page.headerImages || []).map((image,i)=><img key={'header-image-'+i} src={image.src} alt={image.alt} draggable={false} style={{position:'absolute',left:image.xMm+'mm',top:image.yMm+'mm',width:image.widthMm+'mm',height:image.heightMm+'mm'}} />) : null}
+    {page.showFooter ? (page.footerImages || []).map((image,i)=><img key={'footer-image-'+i} src={image.src} alt={image.alt} draggable={false} style={{position:'absolute',left:image.xMm+'mm',top:image.yMm+'mm',width:image.widthMm+'mm',height:image.heightMm+'mm'}} />) : null}
+    {headerText ? <div className="thesis-page-header absolute" {...chrome("header", { ...box, fontSize: "10pt", top: `${topMm + shift("top") + (page.headerParagraphs ? 0 : chromeShiftMm)}mm`, ...chromeCss(page.headerStyle), ...positionedCss(page.headerPosition), ...(page.headerParagraphs ? { display: "flex", flexDirection: "column" } : {}) })}>{page.headerParagraphs ? <SourceChromeParagraphs paragraphs={page.headerParagraphs} values={chromeValues} /> : headerText}</div> : null}
+    {footerText ? <div className="thesis-page-footer absolute" {...chrome("footer", { ...box, fontSize: "10pt", bottom: `${bottomMm + shift("bottom") - (page.footerParagraphs ? 0 : chromeShiftMm)}mm`, ...chromeCss(page.footerStyle), ...positionedCss(page.footerPosition), ...(page.footerParagraphs ? { display: "flex", flexDirection: "column" } : {}) })}>{page.footerParagraphs ? <SourceChromeParagraphs paragraphs={page.footerParagraphs} values={chromeValues} /> : footerText}</div> : null}
   {page.label ? (() => {
     const number = rule.numbering || {};
     const numberStyle = resolvePageNumberStyle(body, number);
@@ -84,7 +87,7 @@ function SheetChrome({ rules, values, page }) {
     const baselineStyle = Number.isFinite(baselineTopMm)
       ? { top: `${baselineTopMm - cssBaselinePx * 25.4 / 96}mm`, lineHeight: 1 }
       : (page.numberPosition === "top" ? { top: `${topMm}mm` } : { bottom: `${bottomMm}mm` });
-    return <div className="thesis-page-number absolute" style={{ ...box, ...numberBox, fontFamily, fontSize: `${fontSizePt}pt`, fontWeight: numberStyle.fontWeight || 400, fontStyle: numberStyle.italic ? "italic" : "normal", textAlign: page.numberAlign, ...baselineStyle }}>{page.label}</div>;
+    return <div className="thesis-page-number absolute" {...chrome("number", { ...box, ...numberBox, fontFamily, fontSize: `${fontSizePt}pt`, fontWeight: numberStyle.fontWeight || 400, fontStyle: numberStyle.italic ? "italic" : "normal", textAlign: page.numberAlign, ...baselineStyle })}>{page.label}</div>;
   })() : null}
   </>;
 }
@@ -243,23 +246,36 @@ function ThesisSectionPagesView({ group, pages, values, zoom, bodyRefs, onSectio
     if (!flow || !article) return undefined;
     if (!THESIS_PAGED_LAYOUT) {
       setSurfaceHeight(article.offsetHeight);
-      const observer = new ResizeObserver(([entry]) => setSurfaceHeight(entry.borderBoxSize?.[0]?.blockSize ?? article.offsetHeight));
+      let resizeFrame = 0;
+      let measuredHeight = article.offsetHeight;
+      const observer = new ResizeObserver(([entry]) => {
+        measuredHeight = entry.borderBoxSize?.[0]?.blockSize ?? article.offsetHeight;
+        cancelAnimationFrame(resizeFrame);
+        resizeFrame = requestAnimationFrame(() => setSurfaceHeight(measuredHeight));
+      });
       observer.observe(article);
-      return () => observer.disconnect();
+      return () => { observer.disconnect(); cancelAnimationFrame(resizeFrame); };
     }
     // Only the unscaled flow height is read; the browser has already fragmented the
     // content, so a keystroke costs one comparison unless the page count changes.
     let reported = 0;
-    const report = (height, sync) => {
+    const report = (height) => {
       const next = emptyFlow ? 0 : pageCountFromFlowHeight(height, metrics);
       if (next === reported) return;
       reported = next;
-      // Sync so a new sheet is painted in the same frame as the text that needs it.
-      if (sync) flushSync(() => onPageCount(group.id, next));
-      else onPageCount(group.id, next);
+      onPageCount(group.id, next);
     };
-    report(flow.offsetHeight, false);
-    const observer = new ResizeObserver(([entry]) => report(entry.borderBoxSize?.[0]?.blockSize ?? flow.offsetHeight, true));
+    report(flow.offsetHeight);
+    let resizeFrame = 0;
+    let measuredHeight = flow.offsetHeight;
+    // Reporting changes the sheet stack and ancestor geometry. Defer React writes
+    // beyond ResizeObserver delivery so those ancestors can be observed next frame.
+    // Coalesce deliveries, retaining the latest unscaled fractional border-box size.
+    const observer = new ResizeObserver(([entry]) => {
+      measuredHeight = entry.borderBoxSize?.[0]?.blockSize ?? flow.offsetHeight;
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => report(measuredHeight));
+    });
     observer.observe(flow);
     // numbering.omitOnChapterStart: which pages open a chapter is measured from the rendered flow (re-read when the content changes).
     let frame = 0, mutations = null;
@@ -270,7 +286,7 @@ function ThesisSectionPagesView({ group, pages, values, zoom, bodyRefs, onSectio
       mutations = new MutationObserver(() => { if (!frame) frame = requestAnimationFrame(readStarts); });
       mutations.observe(flow, { childList: true, subtree: true, characterData: true });
     } else onChapterStarts?.(group.id, null);
-    return () => { observer.disconnect(); mutations?.disconnect(); if (frame) cancelAnimationFrame(frame); };
+    return () => { observer.disconnect(); cancelAnimationFrame(resizeFrame); mutations?.disconnect(); if (frame) cancelAnimationFrame(frame); };
   }, [group.id, emptyFlow, metrics.contentHeightPx, metrics.rowGapPx, onPageCount, onChapterStarts, group.rules.page.numbering?.omitOnChapterStart]);
 
   return <div className="thesis-display-frame mx-auto shrink-0" style={{ width: `${metrics.widthPx * zoom}px`, height: `${stackHeight * zoom}px` }}>
@@ -279,7 +295,7 @@ function ThesisSectionPagesView({ group, pages, values, zoom, bodyRefs, onSectio
         {emptyFlow ? <div className="thesis-sheet-placeholder" data-thesis-placeholder="" data-export-ignore="" style={{ position: "absolute", left: 0, top: 0, background: "#fff", boxShadow: "0 8px 28px rgba(0,0,0,.13)", overflow: "hidden", pointerEvents: "none", width: `${page.widthMm}mm`, height: `${page.heightMm}mm` }} /> : null}
         {pages.map((entry) => <div key={entry.index} className="thesis-sheet" data-thesis-page={entry.physicalIndex + 1} data-thesis-page-label={entry.label || undefined}
           style={{ top: `${entry.index * flowPagePitchPx(metrics)}px`, width: `${page.widthMm}mm`, height: `${page.heightMm}mm` }}>
-          <SheetChrome rules={group.rules} values={values} page={entry} />
+          <SheetChrome rules={group.rules} values={values} page={entry} sectionId={group.id} layout={section.documentLayout} pageTopMm={entry.index * flowPagePitchPx(metrics) / (96 / 25.4)} />
         </div>)}
       </div> : null}
       {pageNotes ? <>

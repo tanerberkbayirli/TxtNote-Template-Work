@@ -265,7 +265,9 @@ function tableBlock(node) {
       header: cell.tagName === "TH" || row.parentElement?.tagName === "THEAD",
       colspan: cell.colSpan || 1,
       rowspan: cell.rowSpan || 1,
-      align: alignOf(cell),
+      // Only an alignment set on the cell itself; otherwise the template's cell style decides (the editor draws it so, and a
+      // default "left" here would override a centred template cell in Word).
+      align: /\bfmt-align-(left|center|right|justify)\b/.test(cell.getAttribute?.("class") || "") || cell.style?.textAlign ? alignOf(cell) : undefined,
       runs: runsFromNode(cell),
       ...(cell.querySelector?.("table") || cell.querySelectorAll?.("p").length > 1 ? { blocks: parseLineFlow(cell.childNodes) } : {}),
     })),
@@ -367,6 +369,7 @@ function parseNodeList(nodes) {
         runs: [...node.childNodes].flatMap(runsFromNode),
         unnumbered,
         id: node.getAttribute("data-academic-id") || newId("h"),
+        ...(node.getAttribute("data-layout-id") ? { layoutId: node.getAttribute("data-layout-id") } : {}),
         ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}),
         keepWithNext: true,
       });
@@ -378,7 +381,7 @@ function parseNodeList(nodes) {
         continue;
       }
       const runs = runsFromNode(node);
-      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs });
+      if (runs.length) blocks.push({ type: tag === "BLOCKQUOTE" ? "quote" : "paragraph", align: alignOf(node), ...(node.getAttribute("data-layout-id") ? { layoutId: node.getAttribute("data-layout-id") } : {}), ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs });
     }
   }
   return blocks;
@@ -432,7 +435,7 @@ function parseLineFlow(nodes, align) {
       // A trailing <br> draws no extra line; an empty <p></p> draws nothing at all.
       const drawsLine = paragraphRuns.some((run) => run.type === "break") || node.textContent.length > 0;
       while (paragraphRuns.at(-1)?.type === "break") paragraphRuns.pop();
-      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs: paragraphRuns });
+      if (paragraphRuns.length || drawsLine) blocks.push({ type: node.tagName === "P" ? "paragraph" : "quote", align: explicitAlign(node) ?? align, line: false, ...(node.getAttribute("data-layout-id") ? { layoutId: node.getAttribute("data-layout-id") } : {}), ...(indentForNode(node) ? { indentMm: indentForNode(node) } : {}), ...(node.getAttribute("data-thesis-style") ? { thesisStyle: node.getAttribute("data-thesis-style") } : {}), runs: paragraphRuns });
     } else {
       blocks.push(...parseNodeList([node]));
     }
@@ -560,6 +563,7 @@ function parseWithRegex(html) {
         runs: runsFromHtmlFragment(inner),
         unnumbered,
         id: attr(rawAttr, "data-academic-id") || newId("h"),
+        ...(attr(rawAttr, "data-layout-id") ? { layoutId: attr(rawAttr, "data-layout-id") } : {}),
         ...(indentForRawAttributes(rawAttr) ? { indentMm: indentForRawAttributes(rawAttr) } : {}),
         keepWithNext: true,
       });
@@ -620,6 +624,7 @@ function parseWithRegex(html) {
         type: tag === "blockquote" ? "quote" : "paragraph",
         align: /fmt-align-center/.test(rawAttr) ? "center" : /fmt-align-right/.test(rawAttr) ? "right" : /fmt-align-justify/.test(rawAttr) ? "justify" : /fmt-align-left/.test(rawAttr) ? "left" : undefined,
         line: false,
+        ...(attr(rawAttr, "data-layout-id") ? { layoutId: attr(rawAttr, "data-layout-id") } : {}),
         ...(indentForRawAttributes(rawAttr) ? { indentMm: indentForRawAttributes(rawAttr) } : {}),
         ...(attr(rawAttr, "data-thesis-style") ? { thesisStyle: attr(rawAttr, "data-thesis-style") } : {}),
         runs: runs.length ? runs : [{ type: "text", text: stripTags(inner) }],

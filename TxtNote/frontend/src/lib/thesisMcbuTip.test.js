@@ -87,7 +87,7 @@ describe("MCBÜ Tıp Fakültesi tıpta uzmanlık tezi template (mcbu-tip-uzmanli
       const cover = section(model, id);
       assert.deepEqual([cover.rules.body.fontFamily, cover.rules.body.align, cover.rules.page.margins.leftMm], ["Arial", "center", 40]);
       const text = JSON.stringify(cover.layout);
-      for (const part of ["CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ", "Kulak Burun Boğaz Hastalıkları Anabilim Dalı", "Test Başlığı", "UZMANLIK TEZİ", "Ayşe DEMİR", "Tez Danışmanı", "Prof. Dr. Ali VELİ", "Manisa, 2026"]) assert.ok(text.includes(part), `${id}: ${part}`);
+      for (const part of ["MANİSA CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ", "Kulak Burun Boğaz Hastalıkları Anabilim Dalı", "Test Başlığı", "UZMANLIK TEZİ", "Ayşe DEMİR", "Tez Danışmanı", "Prof. Dr. Ali VELİ", "Manisa, 2026"]) assert.ok(text.includes(part), `${id}: ${part}`);
     }
     const gaps = mcbuTipUzmanlik.sections[0].blocks.filter((b) => b.type === "spacer").map((b) => b.heightMm);
     assert.deepEqual(gaps, [5.372, 41.72, 35.04, 0.492, 33.482, 3.852, 36.622], "baseline-to-baseline 10.24 / 47.25 / 43.56 / 5.51 / 38.35 / 8.72 / 41.49 mm in the guide example");

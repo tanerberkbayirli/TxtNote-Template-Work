@@ -15,6 +15,16 @@ const haveCoreFonts = process.platform === "win32" || existsSync("/usr/share/fon
 const haveCambriaMath = process.platform === "win32" && existsSync("C:/Windows/Fonts/cambria.ttc");
 
 describe("template-driven genuine PDF fonts", () => {
+  it('selects the embedded regular program for an exact bold request to a single-face family', {skip:!haveCambriaMath}, async()=>{
+    const pdf=new jsPDF({compress:true,putOnlyUsedFonts:true});
+    await embedAcademicPdfFonts(pdf,{systemFonts:['Cambria Math']});
+    const face=measuredPdfFontFace(pdf,{fontFamily:'Cambria Math',fontWeight:'700',fontStyle:'normal'},'∑',true);
+    pdf.setFont(face.name,face.style);pdf.text('∑',20,30);
+    assert.equal(face.style,'normal');
+    assert.ok(pdf.getFont().metadata.cmap.unicode.codeMap[0x2211]>0);
+    assert.ok(embeddedPdfFonts(new Uint8Array(pdf.output('arraybuffer'))).some(font=>font.family==='Cambria Math'));
+    assert.throws(()=>measuredPdfFontFace(pdf,{fontFamily:'Arial',fontWeight:'700',fontStyle:'normal'},'A',true),/yüklenmedi/);
+  });
   it("maps template family names to known system families", () => {
     assert.equal(systemPdfFontFamily('"Times New Roman", serif'), "Times New Roman");
     assert.equal(systemPdfFontFamily("arial"), "Arial");
@@ -164,3 +174,28 @@ describe("template-driven genuine PDF fonts", () => {
     assert.ok(view.byteLength > 0);
   });
 });
+
+describe("Liberation Serif source-document PDF font", { skip: !existsSync("C:/Windows/Fonts/LiberationSerif-Regular.ttf") && !existsSync("/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf") }, () => {
+  it("is an allowlisted family of its own, never an alias of Times New Roman or Tinos", () => {
+    assert.equal(systemPdfFontFamily('"Liberation Serif", serif'), "Liberation Serif");
+    assert.equal(systemPdfFontFamily("Liberation Sans"), null);
+  });
+  it("verifies all four genuine faces by SFNT name and embeds them with Turkish text intact", async () => {
+    const fonts = await loadSystemFontFamily("Liberation Serif");
+    for (const style of ["normal", "bold", "italic", "bolditalic"]) {
+      assert.equal(fonts[style].identity.family, "Liberation Serif");
+      assert.equal(fonts[style].identity.fsType & (0x0002 | 0x0100 | 0x0200), 0);
+    }
+    const pdf = new jsPDF({ compress: true, putOnlyUsedFonts: true });
+    await embedAcademicPdfFonts(pdf, { extraFontFamilies: ["Liberation Serif"] });
+    assert.ok(hasSystemPdfFont(pdf, "Liberation Serif"));
+    for (const [index, style] of ["normal", "bold", "italic", "bolditalic"].entries()) {
+      const name = academicPdfFont(pdf, style, "Liberation Serif");
+      assert.match(name, /^LiberationSerif/);
+      pdf.setFont(name, style); pdf.text("Liberation " + style + " " + turkish, 18, 25 + index * 12);
+    }
+    const embedded = embeddedPdfFonts(new Uint8Array(pdf.output("arraybuffer")));
+    assert.deepEqual(embedded.filter(font => font.family === "Liberation Serif").map(font => font.postscript).sort(), ["LiberationSerif", "LiberationSerif-Bold", "LiberationSerif-BoldItalic", "LiberationSerif-Italic"]);
+  });
+});
+import {measuredPdfFontFace} from '../../../../engine/src/layoutPdf.js';

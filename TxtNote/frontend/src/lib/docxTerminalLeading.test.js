@@ -82,9 +82,13 @@ describe("imported table cell paragraphs (measured in Word: a cell line gets no 
     const css = importedContentCss(doc([table(cellOf("long", ["a", "b", "c", "d"].map(cellPara)))]));
     assert.match(rules(css, "d").join("\n"), /::after\{content:"";display:block;height:calc\(var\(--thesis-col-lead,0mm\) \+ 6pt\);margin:0 0 calc\(-1 \* calc\(var\(--thesis-col-lead,0mm\) \+ 6pt\)\);break-before:avoid;break-inside:avoid\}/);
   });
-  it("leaves short cells to the cell-end guard (a result-table row that fits must not move)", () => {
-    const css = importedContentCss(doc([table(cellOf("short", ["a", "b", "c"].map(cellPara)))]));
-    assert.ok(!rules(css, "c").join("\n").includes("--thesis-col-lead"));
+  it("guards a three-paragraph cell too (EK-2 rows: each paragraph can be the last line on a page)", () => {
+    const css = importedContentCss(doc([table(cellOf("three", ["a", "b", "c"].map(cellPara)))]));
+    assert.match(rules(css, "c").join("\n"), /::after\{content:"";display:block;height:calc\(var\(--thesis-col-lead,0mm\) \+ 6pt\)/);
+  });
+  it("leaves a single-paragraph cell to the cell-end guard (a result-table row that fits must not move)", () => {
+    const css = importedContentCss(doc([table(cellOf("short", [cellPara("a")]))]));
+    assert.ok(!rules(css, "a").join("\n").includes("--thesis-col-lead"));
   });
   it("gives the single empty paragraph that ends a cell after a nested table no height (Word measurement)", () => {
     const inner = { id: "inner", type: "table", children: [{ type: "tableBody", children: [{ id: "irow", type: "row", children: [cellOf("icell", [cellPara("ip")])] }] }], properties: { gridWidthsMm: [20] } };

@@ -97,3 +97,34 @@ describe("long imported documents: floating drawings", () => {
     assert.match(css, /\[data-txt-node-id="p"\]::before\{content:"\\200b"\}/);
   });
 });
+
+describe("contextual spacing chains through the cells of one table row (measured in Word 16)", () => {
+  const lp = (id) => para(id, [run(`${id}r`, 10)], { contextualSpacing: true, spaceBeforePt: 6, spaceAfterPt: 6 }, { styleId: "ListeParagraf" });
+  const np = (id) => para(id, [run(`${id}r`, 10)], { spaceBeforePt: 6, spaceAfterPt: 6 });
+  const cell = (id, paragraphs) => ({ id, type: "cell", children: paragraphs, properties: {} });
+  const table = (cells) => ({ id: "t", type: "table", children: [{ id: "tb", type: "tableBody", children: [{ id: "r", type: "row", children: cells, properties: {} }] }], properties: {} });
+  it("drops the space before a cell's first paragraph and the space after the previous cell's last, when both share a contextual style", () => {
+    const css = importedContentCss(doc([{ nodes: [table([cell("c1", [lp("a1"), lp("a2")]), cell("c2", [lp("b1"), lp("b2")]), cell("c3", [lp("d1")])])] }]));
+    assert.match(rule(css, "b1"), /margin-top:0/, "second cell follows the first cell's last paragraph");
+    assert.match(rule(css, "a2"), /margin-bottom:0/);
+    assert.match(rule(css, "d1"), /margin-top:0/);
+    assert.ok(!/margin-top:0/.test(rule(css, "a1")), "the first cell of a row starts a new chain");
+  });
+  it("keeps the space when the neighbouring cell's paragraph has another style", () => {
+    const css = importedContentCss(doc([{ nodes: [table([cell("c1", [lp("a1")]), cell("c2", [np("b1")]), cell("c3", [lp("d1")])])] }]));
+    assert.ok(!/margin-top:0/.test(rule(css, "b1")));
+    assert.ok(!/margin-top:0/.test(rule(css, "d1")), "after a plain paragraph the contextual chain is broken");
+  });
+});
+
+describe("multiple line spacing inside table cells (Word draws the extra space below the text)", () => {
+  const cellPara = (id, value) => para(id, [run(`${id}r`, 10)], { fontFamily: "Times New Roman", fontSizePt: 10, lineSpacing: { rule: "auto", value } });
+  const cellOf = (id, paragraphs) => ({ id, type: "cell", children: paragraphs, properties: {} });
+  it("gives every cell paragraph the paint offset of its OWN line spacing, so columns of one row start level", () => {
+    const row = { id: "r", type: "row", children: [cellOf("c1", [cellPara("p15", 1.5)]), cellOf("c2", [cellPara("p115", 1.15)]), cellOf("c3", [cellPara("p10", 1)])], properties: {} };
+    const css = importedContentCss(doc([{ nodes: [{ id: "t", type: "table", children: [{ id: "tb", type: "tableBody", children: [row] }], properties: {} }] }]));
+    const lift = (id) => Number(/top:calc\(-1 \* var\(--thesis-wb-[\w]+,(-?[\d.]+)pt\)\)/.exec(rule(css, id))?.[1]);
+    assert.ok(lift("p15") > lift("p115") && lift("p115") > lift("p10"), "a looser line puts the glyphs higher in CSS, so it needs the larger lift");
+    assert.ok(Math.abs(lift("p15") - 2.9) < 0.3, `1.5 x 10 pt TNR lifts about half the extra 5.75 pt (${lift("p15")})`);
+  });
+});

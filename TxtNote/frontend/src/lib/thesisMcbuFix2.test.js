@@ -15,7 +15,7 @@ const flat = (nodes) => nodes.flatMap((node) => node.type === "group" ? flat(nod
 describe("MCBÜ LEE fix 2: official example XML decisions", () => {
   it("template validates", () => assert.deepEqual(validateThesisTemplate(mcbuMaster), []));
 
-  it("C3/C4: cover lines G[1]–G[31] indent 567 tw, gaps are the example's empty paragraphs, no leading blank", () => {
+  it("C3/C4: cover indent and source-backed 9/1 blank-line gaps, no leading annotation blank", () => {
     const layout = section(compile(), "inner-cover").layout;
     assert.equal(layout[0].type, "group", "no leading blank line for the red label G[0]");
     const inner = layout[0].blocks;
@@ -25,7 +25,7 @@ describe("MCBÜ LEE fix 2: official example XML decisions", () => {
     assert.ok(!(texts.at(-1).style.leftIndentMm > 0), "city line G[40] has no indent");
     assert.ok(inner.find((node) => node.type === "image").leftIndentMm > 9.99, "logo is centred in the same indented box");
     const pt = (node) => Math.round(node.heightMm * 72 / 25.4 * 100) / 100;
-    assert.deepEqual(flat(layout).filter((node) => node.type === "spacer").map(pt), [16.1, 13.8, 96.6, 80.5, 69, 110.4]);
+    assert.deepEqual(flat(layout).filter((node) => node.type === "spacer").map(pt), [16.1, 13.8, 124.2, 80.5, 69, 13.8]);
   });
 
   it("C2: ÖZET and ABSTRACT bodies as the two example paragraphs show", () => {

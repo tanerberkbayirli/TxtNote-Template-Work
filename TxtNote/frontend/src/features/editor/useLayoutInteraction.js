@@ -1,11 +1,25 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { measurePresentationOrigins } from "../../../../../engine/src/presentationLayout.js";
 import { alignLayoutElements, distributeLayoutElements, snapLayoutRect } from "../../../../../engine/src/layoutGeometry.js";
 import { updateLayoutElements, deleteLayoutElement, duplicateLayoutElement } from "../../../../../engine/src/layoutDocument.js";
-import { clampResizeRect, DRAG_THRESHOLD_PX, patchesForRects } from "../../../../../engine/src/layoutInteraction.js";
+import { clampResizeRect, DRAG_THRESHOLD_PX, patchesForRects, layoutHitTarget } from "../../../../../engine/src/layoutInteraction.js";
 import { PX_PER_MM } from "../../../../../engine/src/pageLayout.js";
 import { selectionClipPath } from "./LayoutSelectionOverlay.jsx";
 
 const editable = (node) => node?.getAttribute("data-layout-id") && node.getAttribute("data-layout-type") !== "group" && node.getAttribute("data-layout-type") !== "spacer";
+
+function layoutNodeFromPoint(root, event) {
+  const nodeAt = target => target?.closest?.("[data-layout-id][data-layout-section][data-layout-type]");
+  const candidates = [...new Set(document.elementsFromPoint(event.clientX, event.clientY)
+    .filter(node => root.contains(node)).map(nodeAt).filter(editable))];
+  const hits = candidates.map(node => {
+    const type = node.getAttribute("data-layout-type");
+    const range = document.createRange();
+    if (type === "text") range.selectNodeContents(node);
+    return { node, type, paintRects: type === "text" ? [...range.getClientRects()] : [] };
+  });
+  return layoutHitTarget(hits, { x: event.clientX, y: event.clientY })?.node || nodeAt(event.target);
+}
 
 function sectionFor(model, id) { return model?.sections?.find((section) => section.id === id); }
 
@@ -18,18 +32,19 @@ function canonicalFor(section, id) {
     }
     return null;
   };
-  return visit(section?.layout) || visit(section?.layoutBlocks) || null;
+  return visit(section?.layout) || visit(section?.layoutBlocks) || visit(section?.presentationElements) || null;
 }
 
 /** Transforms on a page element live inside the zoomed page stack, so they use unzoomed px per mm. */
 const localPxPerMm = (item) => item.scale / (item.zoom || 1);
 
 function readRect(node, root, model, zoom, sheetCache) {
-  const paper = node.closest(".thesis-paper[data-thesis-section]");
+  const paper = node.closest(".thesis-paper[data-thesis-section]")
+    || node.closest(".thesis-page-stack")?.querySelector(".thesis-paper[data-thesis-section]");
   if (!paper) return null;
   const sectionId = node.getAttribute("data-layout-section") || paper.getAttribute("data-thesis-section");
   const section = sectionFor(model, sectionId);
-  const canonical = canonicalFor(section, node.getAttribute("data-layout-id"));
+  let canonical = canonicalFor(section, node.getAttribute("data-layout-id"));
   const page = section?.rules?.page;
   if (!page?.widthMm || !page?.heightMm) return null;
   const stack = paper.closest(".thesis-page-stack");
@@ -40,6 +55,19 @@ function readRect(node, root, model, zoom, sheetCache) {
   const yMm = (box.top - paperBox.top) / scale;
   const widthMm = box.width / scale;
   const heightMm = box.height / scale;
+  const effectiveStyle = () => {
+    const computed = getComputedStyle(node);
+    return { fontFamily: computed.fontFamily.replace(/^(["'])(.*)\1$/, "$2"), fontSizePt: parseFloat(computed.fontSize) * .75,
+      fontWeight: Number(computed.fontWeight), italic: computed.fontStyle === "italic", align: computed.textAlign };
+  };
+  if (canonical?.presentation) canonical = { ...canonical, style: { ...canonical.style, ...effectiveStyle(), ...canonical.override?.style } };
+  if (!canonical) {
+    const stored = model.documentLayout?.elements?.[node.getAttribute("data-layout-id")] || {};
+    canonical = { id: node.getAttribute("data-layout-id"), sectionId, type: node.getAttribute("data-layout-type"),
+      layoutMode: node.getAttribute("data-layout-mode") || "flow", xMm, yMm, widthMm, heightMm,
+      editableLayout: true, editableContent: node.getAttribute("data-layout-editable-content") !== "false", text: node.innerText,
+      ...stored, style: { ...effectiveStyle(), ...stored.style } };
+  }
   const flow = node.closest(".thesis-flow-section");
   const sectionMode = flow?.getAttribute("data-thesis-section-mode");
   const explicitLock = canonical?.locked ?? node.getAttribute("data-layout-locked") === "true";
@@ -131,11 +159,22 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     const bounds = measureAll(rootRef.current, latestRef.current.model, latestRef.current.zoom, patches.map((patch) => patch.id));
     const materialized = patches.flatMap((patch) => {
       const measured = bounds.find((item) => item.id === patch.id);
+      if (measured?.canonical?.presentation && ["absolute", "anchored"].includes(patch.layoutMode)) {
+        const parent = measured.element.offsetParent;
+        if (parent) {
+          const box = parent.getBoundingClientRect(), paper = measured.paper.getBoundingClientRect(), border = getComputedStyle(parent);
+          patch = { ...patch, originXMm: (box.left - paper.left) / measured.scale + (parseFloat(border.borderLeftWidth) || 0) * 25.4 / 96,
+            originYMm: (box.top - paper.top) / measured.scale + (parseFloat(border.borderTopWidth) || 0) * 25.4 / 96 };
+        }
+      }
       if (measured?.locked) return typeof patch.locked === "boolean" ? [{ id: patch.id, locked: patch.locked }] : [];
       if (measured && !measured.editableLayout && Object.keys(patch).some((key) => !["id", "locked", "content", "text"].includes(key))) return [];
       if (measured && !measured.editableContent && ("content" in patch || "text" in patch)) return [];
       if (!["absolute", "anchored"].includes(patch.layoutMode) || !measured || measured.canonical?.layoutMode !== "flow") return patch;
-      return { xMm: measured.xMm, yMm: measured.yMm, widthMm: measured.widthMm, heightMm: measured.heightMm, flowHeightMm: measured.heightMm, ...patch };
+      const computed = getComputedStyle(measured.element);
+      return { xMm: measured.xMm, yMm: measured.yMm, widthMm: measured.widthMm, heightMm: measured.heightMm, flowHeightMm: measured.heightMm,
+        ...(measured.canonical.presentation ? { flowMarginTopMm: (parseFloat(computed.marginTop) || 0) * 25.4 / 96,
+          flowMarginBottomMm: (parseFloat(computed.marginBottom) || 0) * 25.4 / 96 } : {}), ...patch };
     });
     if (!materialized.length) return;
     const next = updateLayoutElements(current, materialized);
@@ -211,12 +250,13 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
 
   // Re-attach when the page root mounts or changes, not on every model change.
   const mountedRoot = rootRef.current;
+  useLayoutEffect(() => { measurePresentationOrigins(rootRef.current); }, [model, mountedRoot, zoom]);
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
     if (!root.hasAttribute("tabindex")) root.tabIndex = 0;
     root.setAttribute("data-undo-owner", "local");
-    let geometryFrame = 0, moveFrame = 0, pendingMove = null;
+    let geometryFrame = 0, moveFrame = 0, pendingMove = null, objectPointerDown = false;
     const updateGeometry = () => {
       if (geometryFrame) return;
       geometryFrame = requestAnimationFrame(() => { geometryFrame = 0; setGeometry(measureAll(root, latestRef.current.model, latestRef.current.zoom, selectionRef.current)); });
@@ -264,6 +304,10 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       });
     };
     const nodeAt = (target) => target?.closest?.("[data-layout-id][data-layout-section][data-layout-type]");
+    // A transparent, page-wide text frame can cover another line or an image.
+    // Prefer the painted content under the pointer, then fall back to the frame
+    // so its empty area can still be used to select and move it.
+    const nodeFromPoint = event => layoutNodeFromPoint(root, event);
     const findSheetPage = (target, clientY) => {
       const paper = target.closest?.(".thesis-paper");
       const stack = paper?.closest(".thesis-page-stack");
@@ -273,11 +317,17 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       return sheet?.getAttribute("data-thesis-page") || "1";
     };
     const pointerDown = (event) => {
+      objectPointerDown = false;
       if (event.button !== 0 || event.target.closest("[data-thesis-editor-only]")) return;
-      const node = nodeAt(event.target);
+      const node = nodeFromPoint(event);
       if (node && editable(node)) {
-        if (editRef.current?.node === node) return;
+        if (editRef.current?.node === node || editRef.current?.node.closest("[data-layout-id]") === node) return;
         const rect = readRect(node, root, latestRef.current.model, latestRef.current.zoom);
+        if (!rect) return;
+        objectPointerDown = true;
+        // Also suppress native focus for locked/fixed objects; otherwise the
+        // enclosing text editor receives focus and immediately clears selection.
+        event.preventDefault();
         const additive = event.shiftKey;
         const ids = additive ? [...selectionRef.current, rect.id] : selectionRef.current.includes(rect.id) ? selectionRef.current : [rect.id];
         selectIds(ids);
@@ -289,7 +339,6 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
         const peers = everything.filter((item) => item.sectionId === rect.sectionId && item.pageIndex === rect.pageIndex && !ids.includes(item.id));
         gestureRef.current = { kind: "move", startX: event.clientX, startY: event.clientY, node, rect, snapshot, peers, ids, pageKey: `${rect.sectionId}:${findSheetPage(node, event.clientY)}`, moved: false,
           inlineStyles: new Map(snapshot.map((item) => [item.id, { transform: item.element.style.transform, width: item.element.style.width, height: item.element.style.height }])) };
-        event.preventDefault();
         return;
       }
       if (event.target.closest(".thesis-paper")) {
@@ -393,19 +442,24 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       }
     };
     const onDoubleClick = (event) => {
-      const node = nodeAt(event.target);
+      const node = nodeFromPoint(event);
       if (!editable(node) || node.getAttribute("data-layout-type") !== "text") return;
       const rect = readRect(node, root, latestRef.current.model, latestRef.current.zoom);
       if (!rect?.editableContent || rect.locked) return;
       selectIds([rect.id]);
-      node.setAttribute("contenteditable", "plaintext-only");
-      node.setAttribute("data-layout-editing", "true");
-      node.setAttribute("data-undo-owner", "local");
-      node.focus({ preventScroll: true });
-      setEditingId(rect.id); editRef.current = { node, id: rect.id, original: node.innerText };
-      node.addEventListener("blur", blurText, { once: true });
+      const contentNode = node.querySelector("[data-layout-content]") || node;
+      // Inline index leaders may live inside the label span. Preserve these
+      // generated fields separately so typing edits only the row's label.
+      const fields = [...contentNode.querySelectorAll(".thesis-index-leader,.thesis-index-page")];
+      for (const field of fields) field.remove();
+      contentNode.setAttribute("contenteditable", "plaintext-only");
+      contentNode.setAttribute("data-layout-editing", "true");
+      contentNode.setAttribute("data-undo-owner", "local");
+      contentNode.focus({ preventScroll: true });
+      setEditingId(rect.id); editRef.current = { node: contentNode, id: rect.id, original: contentNode.innerText, fields };
+      contentNode.addEventListener("blur", blurText, { once: true });
       const selection = document.getSelection();
-      const range = document.createRange(); range.selectNodeContents(node); range.collapse(false); selection?.removeAllRanges(); selection?.addRange(range);
+      const range = document.createRange(); range.selectNodeContents(contentNode); range.collapse(false); selection?.removeAllRanges(); selection?.addRange(range);
       event.stopPropagation();
     };
     const finishTextEdit = (commit) => {
@@ -414,6 +468,7 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       edit.node.removeAttribute("contenteditable"); edit.node.removeAttribute("data-layout-editing"); edit.node.removeAttribute("data-undo-owner");
       edit.node.removeEventListener("blur", blurText);
       const content = edit.node.innerText.replace(/\r\n?/g, "\n");
+      for (const field of edit.fields || []) edit.node.append(field);
       editRef.current = null; setEditingId("");
       if (commit && content !== edit.original) patchElements([{ id: edit.id, text: content, content }], "text");
       else if (!commit) edit.node.innerText = edit.original;
@@ -445,14 +500,21 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
       } else if (["Delete", "Backspace"].includes(event.key) && selectionRef.current.length) { event.preventDefault(); performAction("delete"); }
     };
     const onContextMenu = (event) => {
-      const node = nodeAt(event.target);
+      const node = nodeFromPoint(event);
       if (!editable(node)) return;
       event.preventDefault();
       const id = node.getAttribute("data-layout-id");
       if (!selectionRef.current.includes(id)) selectIds([id]);
       setContextMenu({ x: event.clientX, y: event.clientY, id });
     };
-    const suppressObjectClick = (event) => { if (editable(nodeAt(event.target))) event.stopPropagation(); };
+    const suppressObjectClick = (event) => {
+      // Opening the inspector can move the paper between down and up. The browser
+      // then targets their common ancestor for click, whose caret handler would
+      // otherwise discard the object we just selected.
+      const handled = objectPointerDown || editable(nodeAt(event.target));
+      objectPointerDown = false;
+      if (handled) event.stopPropagation();
+    };
     root.addEventListener("pointerdown", pointerDown);
     root.addEventListener("click", suppressObjectClick, true);
     window.addEventListener("pointermove", pointerMove);
@@ -465,6 +527,9 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
     window.addEventListener("resize", updateGeometry);
     document.addEventListener("scroll", followScroll, true);
     const observer = new ResizeObserver(updateGeometry); observer.observe(root);
+    // Ribbon panels change the viewport height while the document itself keeps
+    // its dimensions. Reposition and clip selection chrome after that change.
+    if (root.parentElement) observer.observe(root.parentElement);
     return () => {
       root.removeEventListener("pointerdown", pointerDown); root.removeEventListener("click", suppressObjectClick, true); window.removeEventListener("pointermove", pointerMove); window.removeEventListener("pointerup", pointerUp); window.removeEventListener("pointercancel", pointerCancel);
       root.removeEventListener("dblclick", onDoubleClick); root.removeEventListener("keydown", onKeyDown, true); root.removeEventListener("contextmenu", onContextMenu);
@@ -486,6 +551,13 @@ export function useLayoutInteraction({ rootRef, model, thesis, onThesisChange, z
   const selectedElements = useMemo(() => geometry.map((item) => ({ ...item.canonical, id: item.id, locked: item.locked, editableLayout: item.editableLayout, editableContent: item.editableContent,
     measuredGeometry: item.measuredGeometry, canonical: item.canonical, page: item.page, element: item.element, pageIndex: item.pageIndex, sectionId: item.sectionId })), [geometry]);
   const overlayProps = { selectedElements, selectedIds, overlayRef, editingId, onResizeStart: (id, handle, event) => {
+    const underneath = layoutNodeFromPoint(rootRef.current, event);
+    if (editable(underneath) && underneath.getAttribute("data-layout-id") !== id) {
+      // Handles must not make an adjacent narrow text frame impossible to pick.
+      event.preventDefault(); event.stopPropagation();
+      selectIds([underneath.getAttribute("data-layout-id")]);
+      return;
+    }
     const item = geometry.find((entry) => entry.id === id);
     if (!item?.editableLayout || item.locked) return;
     event.preventDefault(); event.stopPropagation();

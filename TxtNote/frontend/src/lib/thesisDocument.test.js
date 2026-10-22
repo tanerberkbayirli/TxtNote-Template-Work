@@ -56,7 +56,7 @@ describe("thesis document state", () => {
     const edited = setThesisTextOverride(setThesisTextOverride(base, "abstract", "title", "ÖZ"), "abstract", "fixed", "Not satırı");
     const after = compileThesisDocument(demoC, edited, "Tez", "").sections.find((item) => item.id === "abstract");
     assert.match(after.prefixHtml, /<h1[^>]*>ÖZ<\/h1>/);
-    assert.match(after.prefixHtml, /<p class="thesis-fixed">Not satırı<\/p>/);
+    assert.match(after.prefixHtml, /<p class="thesis-fixed"[^>]*>Not satırı<\/p>/);
     assert.notEqual(after.prefixHtml, abstract.prefixHtml);
     assert.equal(thesisTextOverride(base, "abstract", "title"), undefined);
     const reset = setThesisTextOverride(setThesisTextOverride(edited, "abstract", "title", undefined), "abstract", "fixed", undefined);

@@ -17,14 +17,14 @@ describe("AFSÜ Tıp / Diş Hekimliği uzmanlık tezi (one joint guide, Temmuz 2
     }
     assert.deepEqual(THESIS_TEMPLATE_REGISTRY.filter((e) => e.id.startsWith("afsu-tip") || e.id.startsWith("afsu-dis")).map((e) => e.id), ["afsu-tip-uzmanlik-tr-v1", "afsu-dis-hekimligi-uzmanlik-tr-v1"]);
     // The two guide copies print DIFFERENT example-page geometry (recorded conflict): special-page blocks and the İÇİNDEKİLER title/Sayfa spacing follow each copy's own examples, so they are excluded from this wording-only comparison.
-    const geometryFree = (template) => ({ ...template, sections: template.sections.map((s) => (s.id === "toc" ? { ...s, overrides: undefined, generatedIndex: { ...s.generatedIndex, pageHeadingStyle: undefined } } : s.blocks ? { ...s, blocks: undefined } : s)) });
+    const geometryFree = (template) => ({ ...template, page: { ...template.page, numbering: { ...template.page.numbering, baselineFromTopMm: undefined, xMm: undefined, widthMm: undefined, style: undefined } }, sections: template.sections.map((s) => (s.id === "toc" ? { ...s, overrides: undefined, generatedIndex: { ...s.generatedIndex, pageHeadingStyle: undefined } } : s.blocks ? { ...s, blocks: undefined } : s)) });
     const normalise = (template, words) => words.reduce((json, [from, to]) => json.replaceAll(from, to), JSON.stringify({ ...geometryFree(template), id: "x", instituteId: "x", instituteName: "x", displayName: "x", source: null }));
     const tip = normalise(afsuTipUzmanlik, [["TIPTA UZMANLIK TEZİ", "DEGREE"], ["Tıpta Uzmanlık Tezi", "Degree"], ["TIP FAKÜLTESİ", "FAC"], ["Tıp Fakültesi", "Fac"], ["Faculty of Medicine", "FacEn"]]);
     const dhf = normalise(afsuDisHekimligiUzmanlik, [["DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ", "DEGREE"], ["Diş Hekimliğinde Uzmanlık Tezi", "Degree"], ["DİŞ HEKİMLİĞİ FAKÜLTESİ", "FAC"], ["Diş Hekimliği Fakültesi", "Fac"]]);
     // the DHF English faculty has no default (UNKNOWN in the guide); every other value is shared
     assert.equal(dhf.replace(/"FACULTY_EN":\{[^}]*\}/, "FE"), tip.replace(/"FACULTY_EN":\{[^}]*\}/, "FE"));
     assert.deepEqual(afsuTipUzmanlik.source, afsuDisHekimligiUzmanlik.source, "one joint guide, one source record");
-    assert.deepEqual(templateFontFamilies(afsuTipUzmanlik), ["Times New Roman"]);
+    assert.deepEqual(templateFontFamilies(afsuTipUzmanlik), ["Times New Roman", "Calibri"]);
   });
 
   it("carries the source values: A4, 25/25/40/25 mm, TNR 12, 1.5 lines, 12.5 mm indent, centred bottom Roman/Arabic numbers", () => {

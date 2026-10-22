@@ -6,6 +6,7 @@ export default function Tool({
   onClick,
   onMouseDown,
   disabled = false,
+  disabledReason,
   pressed,
   title,
   type = "button",
@@ -15,7 +16,8 @@ export default function Tool({
       type={type}
       className={tool}
       aria-label={label}
-      title={title || label}
+      title={disabled && disabledReason ? `${title || label} · ${disabledReason}` : title || label}
+      aria-description={disabled ? disabledReason : undefined}
       aria-pressed={pressed}
       disabled={disabled}
       onMouseDown={onMouseDown}

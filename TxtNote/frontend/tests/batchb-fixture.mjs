@@ -1,7 +1,7 @@
 // Deterministic real-browser fixtures for the Batch B engine extensions (custom templates, no university).
 //
 // usage: node tests/batchb-fixture.mjs <scenario> <out.json>
-//        THESIS_FIXTURE_PAGE=/tests/thesis-batchb.html node ../../orchestration/tools/export.mjs <out.json> <prefix>
+//        THESIS_FIXTURE_PAGE=/tests/thesis-batchb.html node ../../engine/tools/export.mjs <out.json> <prefix>
 // The fixture carries its template (`__template`); thesis-batchb-fixture.jsx serves it to the real ThesisEditor.
 import { writeFile } from "node:fs/promises";
 import { deflateSync } from "node:zlib";

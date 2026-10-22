@@ -32,6 +32,7 @@ export function collectAcademicPdfFontRequests(documentLayout, sections = []) {
   const visit = nodes => {
     for (const node of nodes || []) {
       if (node?.layoutMode === "absolute" || node?.layoutMode === "anchored") addStyle(node.style);
+      for (const run of node?.runs || []) addStyle(run);
       if (node?.type === "group") visit(node.blocks);
     }
   };

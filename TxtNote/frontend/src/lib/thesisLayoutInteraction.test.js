@@ -1,13 +1,36 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { clampResizeRect, DRAG_THRESHOLD_PX, pageLocalRect, patchesForRects, textAlignmentPatch, toggleLayoutDecoration } from '../../../../engine/src/layoutInteraction.js';
+import { clampResizeRect, DRAG_THRESHOLD_PX, pageLocalRect, patchesForRects, textAlignmentPatch, toggleLayoutDecoration, layoutHitTarget } from '../../../../engine/src/layoutInteraction.js';
 import { normalizeLayoutTextStyle } from '../../../../engine/src/layoutDocument.js';
+
+test('engine alignment defaults to the existing frame without changing geometry or template indents', () => {
+  for (const layoutMode of ['flow', 'absolute', 'anchored']) {
+    const item = { id: 'text', type: 'text', editableLayout: true, editableContent: true,
+      layoutMode, xMm: 48, yMm: 56, widthMm: 96, style: { leftIndentMm: 10 } };
+    for (const align of ['left', 'center', 'right', 'center']) {
+      assert.deepEqual(textAlignmentPatch(item, align), { id: item.id, style: { align } });
+    }
+  }
+});
+
+test('engine hit testing selects visible content through empty overlapping frames', () => {
+  const rect = { left: 10, right: 30, top: 10, bottom: 20 };
+  const text = { id: 'text', type: 'text', paintRects: [rect] };
+  const image = { id: 'image', type: 'image' };
+  const underneath = { id: 'underneath', type: 'text', paintRects: [{ ...rect, left: 40, right: 60 }] };
+  assert.equal(layoutHitTarget([text, image], { x: 20, y: 15 }), text);
+  assert.equal(layoutHitTarget([text, image], { x: 50, y: 15 }), image);
+  assert.equal(layoutHitTarget([text, underneath], { x: 50, y: 15 }), underneath);
+  assert.equal(layoutHitTarget([text], { x: 50, y: 15 }), text);
+  assert.equal(layoutHitTarget([image, text], { x: 20, y: 15 }), image);
+  assert.equal(layoutHitTarget([{ type: 'group' }, { type: 'spacer' }], { x: 20, y: 15 }), null);
+});
 
 test('text alignment reaches page edges and preserves writing-area and box modes', () => {
   const item = { id: 'cover:text', type: 'text', editableLayout: true, editableContent: true, xMm: 70, yMm: 82, widthMm: 60,
     page: { widthMm: 210, margins: { leftMm: 35, rightMm: 25 } } };
   for (const align of ['left', 'center', 'right', 'justify']) {
-    const patch = textAlignmentPatch(item, align);
+    const patch = textAlignmentPatch(item, align, 'page');
     assert.equal(patch.xMm, 0);
     assert.equal(patch.widthMm, 210);
     assert.equal(patch.yMm, 82);
@@ -19,10 +42,10 @@ test('text alignment reaches page edges and preserves writing-area and box modes
   }
   assert.equal(textAlignmentPatch({ ...item, locked: true }, 'right'), null);
   assert.equal(textAlignmentPatch({ ...item, editableLayout: false }, 'right'), null);
-  assert.equal(textAlignmentPatch({ ...item, editableContent: false }, 'right'), null);
-  assert.equal(textAlignmentPatch({ ...item, page: {} }, 'right'), null);
+  assert.deepEqual(textAlignmentPatch({ ...item, editableContent: false }, 'right'), { id: item.id, style: { align: 'right' } });
+  assert.equal(textAlignmentPatch({ ...item, page: {} }, 'right', 'page'), null);
   assert.equal(textAlignmentPatch(item, 'invalid'), null);
-  assert.equal(textAlignmentPatch({ ...item, yMm: undefined, measuredGeometry: { yMm: 95 } }, 'left').yMm, 95);
+  assert.equal(textAlignmentPatch({ ...item, yMm: undefined, measuredGeometry: { yMm: 95 } }, 'left', 'page').yMm, 95);
 });
 
 test('alignment never accumulates a positioned block baseline paint offset', () => {
@@ -30,7 +53,7 @@ test('alignment never accumulates a positioned block baseline paint offset', () 
     layoutMode: 'absolute', xMm: 40, yMm: 30, widthMm: 145, wordBaseline: true,
     page: { widthMm: 210, margins: { leftMm: 40, rightMm: 25 } } };
   for (const align of ['right', 'center', 'left', 'center', 'right', 'center']) {
-    const patch = textAlignmentPatch({ ...item, canonical: item, measuredGeometry: { yMm: item.yMm - 1.075 } }, align);
+    const patch = textAlignmentPatch({ ...item, canonical: item, measuredGeometry: { yMm: item.yMm - 1.075 } }, align, 'page');
     assert.equal(patch.yMm, 30);
     assert.equal(patch.xMm + patch.widthMm / 2, 105);
     item = { ...item, ...patch };

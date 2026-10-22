@@ -89,7 +89,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     const body = section(model, "main").rules.body;
     assert.deepEqual([body.fontFamily, body.fontSizePt, body.lineHeight, body.align, body.firstLineIndentMm, body.spaceAfterPt], ["Times New Roman", 12, 1.5, "justify", 12.5, 6]);
     const css = buildThesisCss(model);
-    assert.match(css, /data-thesis-flow-section="main"\]\) \.thesis-body p\{margin:0pt 0 6pt;text-indent:12\.5mm;(?:position:relative;top:calc\([^;]*\);)?\}/);
+    assert.match(css, /data-thesis-flow-section="main"\]\) \.thesis-body p\{margin:0pt 0 6pt;text-indent:12\.5mm;tab-size:12\.5mm;(?:position:relative;top:calc\([^;]*\);)?\}/);
   });
 
   it("E: inner cover is data (metadata, order, typography, spacers); no visible number", () => {
@@ -99,7 +99,9 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     const nodes = flat(cover.layout);
     const spacers = nodes.filter((node) => node.type === "spacer").map((node) => Math.round(node.heightMm * 100) / 100);
     // "n satır boşluk" = n empty Word lines (1.15 em per line of Times New Roman).
-    assert.deepEqual(spacers, [16.1, 13.8, 96.6, 80.5, 69, 110.4].map((pt) => Math.round(mm(pt) * 100) / 100));
+    const expectedSpacers = [16.1, 13.8, 124.2, 80.5, 69, 13.8].map(mm);
+    assert.equal(spacers.length, expectedSpacers.length);
+    spacers.forEach((value, i) => assert.ok(Math.abs(value - expectedSpacers[i]) <= 0.011, `spacer ${i}: ${value} mm`));
     const logo = nodes.find((node) => node.type === "image");
     assert.ok(logo.source.startsWith("data:image/png;base64,"));
     assert.ok(Math.abs(logo.heightMm - mm(105.74)) < 1e-9);
@@ -155,7 +157,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.ok(section(resolved, "toc").indexRows.every((row) => row.page === pages[row.anchor].label));
     assert.deepEqual(section(resolved, "index-figures").indexRows.map((row) => row.text), ["Şekil 1. Bir şekil", "Şekil 2. İkinci şekil"]);
     assert.deepEqual(section(resolved, "index-tables").indexRows.map((row) => row.text), ["Tablo 1. Bir tablo"]);
-    assert.match(section(resolved, "index-figures").html, /<div class="thesis-index-page-heading">Sayfa<\/div>/);
+    assert.match(section(resolved, "index-figures").html, /<div class="thesis-index-page-heading"[^>]*>Sayfa<\/div>/);
     assert.equal(section(resolved, "toc").generatedIndex.leader, "none");
   });
 
@@ -182,7 +184,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.equal(section(compile(mcbuMaster), "cv"), undefined);
     const model = compile();
     const cv = section(model, "cv");
-    assert.match(cv.html, /<h1 data-unnumbered="true">ÖZGEÇMİŞ<\/h1>/);
+    assert.match(cv.html, /<h1 data-unnumbered="true"[^>]*>ÖZGEÇMİŞ<\/h1>/);
     assert.deepEqual([cv.rules.headings[1].align, cv.rules.headings[1].fontSizePt, cv.rules.headings[1].fontWeight], ["center", 14, 700]);
     assert.ok(!resolveGeneratedIndexes(model).sections.find((item) => item.id === "toc").indexRows.some((row) => /ÖZGEÇMİŞ/.test(row.text)));
     const withHeading = compileThesisDocument(mcbuPhd, thesis({ sectionContent: { cv: "<h2>Eğitim</h2><p>x</p>" } }), "T", main);
@@ -200,7 +202,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.ok([...xml.matchAll(/<w:pgMar [^>]*>/g)].every((m) => m[0].includes(`w:left="${mmToTwip(40)}"`) && m[0].includes(`w:top="${mmToTwip(25)}"`) && m[0].includes(`w:right="${mmToTwip(25)}"`) && m[0].includes(`w:bottom="${mmToTwip(25)}"`)));
     const has = (text, pattern, label) => assert.ok(pattern.test(text), label);
     has(xml, /<w:ind [^>]*w:firstLine="709"/, "1.25 cm first-line indent");
-    has(xml, /<w:spacing (?=[^>]*w:after="120")(?=[^>]*w:before="0")(?=[^>]*w:line="360")(?=[^>]*w:lineRule="auto")[^>]*\/>/, "6 pt after, Word 1.5 lines");
+    has(xml, /<w:spacing (?=[^>]*w:after="120")(?=[^>]*w:before="(?:0|120)")(?=[^>]*w:line="360")(?=[^>]*w:lineRule="auto")[^>]*\/>/, "6 pt after, Word 1.5 lines");
     has(xml, /w:ascii="Times New Roman"/, "Times New Roman runs");
     has(styles, /w:styleId="Heading4"/, "Heading4 style");
     const numbering = [...xml.matchAll(/<w:pgNumType([^>]*)\/>/g)].map((m) => m[1]);

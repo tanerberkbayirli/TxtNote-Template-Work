@@ -19,6 +19,8 @@ export async function layoutEditorChecks(page, pass, { reload } = {}) {
   const id = await text.getAttribute('data-layout-id');
   const object = page.locator(`[data-layout-id="${id}"]`);
   const initial = await nodeRect(object);
+  await page.getByRole('tab',{name:'Öğe',exact:true}).click();
+  await settle(page);
   assert.ok(await page.getByLabel('Yazı tipi',{exact:true}).inputValue());
   assert.ok(Number(await page.getByLabel('Punto',{exact:true}).inputValue()) > 0);
   pass('1: template text selected and canonical font/point properties inspected');
@@ -57,21 +59,23 @@ export async function layoutEditorChecks(page, pass, { reload } = {}) {
   }
   await object.scrollIntoViewIfNeeded();await object.click({button:'right'});await page.getByRole('menu').waitFor();await page.keyboard.press('Escape');
   pass('7: object context menus open');
-  await page.getByRole('button',{name:'Sayfa düzeni',exact:true}).click();
+  await page.getByRole('tab',{name:'Sayfa ayarları',exact:true}).click();
   await page.getByLabel('Uygulama kapsamı',{exact:true}).selectOption('document');
   await page.getByLabel('Alt',{exact:true}).fill('25');await page.getByLabel('Sol',{exact:true}).fill('30');
   await page.getByRole('button',{name:'Sayfa ayarlarını uygula',exact:true}).click();await settle(page);
   const margins=await page.locator('.thesis-paper').evaluateAll(ns=>ns.map(n=>({bottom:parseFloat(getComputedStyle(n).paddingBottom)*25.4/96,left:parseFloat(getComputedStyle(n).paddingLeft)*25.4/96,empty:n.dataset.thesisEmptyFlow==='true'})));
   for(const margin of margins.filter(m=>!m.empty)){near(margin.bottom,25,'global bottom');near(margin.left,30,'global left');}
   pass('8: entire-document bottom25/left30 mm applied');
-  await page.getByLabel('Geri al',{exact:true}).click();await settle(page);
+  await page.getByRole('tab',{name:'Düzen',exact:true}).click();
+  await page.getByRole('button',{name:'Düzen değişikliğini geri al',exact:true}).click();await settle(page);
   assert.ok(await page.locator('.thesis-paper').evaluateAll(ns=>ns.some(n=>Math.abs(parseFloat(getComputedStyle(n).paddingLeft)*25.4/96-30)>.5)));
-  await page.getByLabel('Yinele',{exact:true}).click();await settle(page);
+  await page.getByRole('button',{name:'Düzen değişikliğini yinele',exact:true}).click();await settle(page);
   for(const margin of await page.locator('.thesis-paper').evaluateAll(ns=>ns.filter(n=>n.dataset.thesisEmptyFlow!=='true').map(n=>parseFloat(getComputedStyle(n).paddingLeft)*25.4/96)))near(margin,30,'page redo');
+  await page.getByRole('button',{name:'Cetvelleri göster veya gizle',exact:true}).click();
   await page.getByLabel('Cetvel birimi',{exact:true}).selectOption('pt');assert.match(await page.locator('[data-ruler-axis="x"]').first().getAttribute('aria-label'),/pt/);
   await page.getByLabel('Cetvel birimi',{exact:true}).selectOption('mm');
   pass('page geometry undo/redo and ruler unit conversion');
-  await page.getByRole('button',{name:'Sayfa düzeni',exact:true}).click();
+  await page.getByRole('tab',{name:'Giriş',exact:true}).click();
   await object.click();await settle(page);const saved=await nodeRect(object);
   if(reload){await reload();await page.getByLabel('Yakınlaştır',{exact:true}).selectOption('100');await settle(page);const reopened=await nodeRect(page.locator(`[data-layout-id="${id}"]`));for(const key of ['xMm','yMm','widthMm'])near(reopened[key],saved[key],`reload ${key}`, .02);assert.equal(await page.locator(`[data-layout-id="${id}"]`).innerText(),'Canonical editable text');pass('12: persisted layout/content survive reload');}
   return {id,initial,saved,margins,imageGeometry};

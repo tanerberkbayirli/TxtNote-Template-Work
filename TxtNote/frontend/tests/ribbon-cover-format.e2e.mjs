@@ -104,7 +104,7 @@ async function main() {
   for (const [kind, label, suffix, signature] of [["pdf", "PDF", ".pdf", "%PDF"], ["docx", "Word", ".docx", "PK"]]) {
     try { await page.waitForFunction((name) => { const button = document.querySelector(`.thesis-export-tile[aria-label="${name}"]`); return button && !button.disabled; }, label, { timeout: 120000 }); }
     catch (error) {
-      const diagnostics = await import("../../../orchestration/tools/export-diagnostics.mjs");
+      const diagnostics = await import("../../../engine/tools/export-diagnostics.mjs");
       const snapshot = { readiness: await page.locator(".thesis-export-ready").innerText().catch(() => ""), warnings: await page.locator(".thesis-ribbon-warning").innerText().catch(() => ""), status: await page.getByRole("status").innerText().catch(() => ""), pagination: await diagnostics.paginationDiagnostics(page), blockGaps: await diagnostics.blockGapDiagnostics(page, originalUniversity), browserErrors };
       await writeFile(path.join(output, `export-readiness-${kind}.json`), JSON.stringify(snapshot, null, 2));
       await page.screenshot({ path: path.join(output, `export-readiness-${kind}.png`), fullPage: true });

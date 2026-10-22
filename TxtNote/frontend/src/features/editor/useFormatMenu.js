@@ -17,6 +17,12 @@ import { applyAlignToRange, readAlignFromRange } from "../../lib/richTextAlign";
 
 /** Academic and thesis bodies keep the selection after a format so marks can be stacked (B then I). */
 const keepsSelection = (root) => root.classList.contains("academic-body") || root.classList.contains("thesis-content");
+const listFromRange = (range, root) => {
+  const start = range?.startContainer;
+  const element = start?.nodeType === 3 ? start.parentElement : start;
+  const list = element?.closest?.('ul,ol');
+  return list && root?.contains(list) ? list.tagName.toLowerCase() : null;
+};
 
 const computeSizeFromStart = (range, root) => {
   if (!range || !root) return undefined;
@@ -64,7 +70,7 @@ export const useFormatMenu = (rootRef, emitChange) => {
       if (!range) return;
       const sizeComputedPt = !readFormatFromRange(range).sizePt ? computeSizeFromStart(range, root) : undefined;
       const block = computeBlock(range);
-      setActiveFormat({ ...readFormatFromRange(range), align: readAlignFromRange(range, root), sizeComputedPt, block });
+      setActiveFormat({ ...readFormatFromRange(range), align: readAlignFromRange(range, root), sizeComputedPt, block, list: listFromRange(range, root) });
       savedRangeRef.current = range.cloneRange();
       hadSelectionRef.current = hadSelection;
       if (hadSelection) lastNonCollapsedRangeRef.current = range;
@@ -89,6 +95,7 @@ export const useFormatMenu = (rootRef, emitChange) => {
       ...readFormatFromRange(range),
       align: readAlignFromRange(range, root),
       block: computeBlock(range),
+      list: listFromRange(range, root),
     };
   }, [rootRef, computeBlock]);
 

@@ -4,7 +4,11 @@ import { fixtureA as demoA } from "./thesisFixtures.js";
 import { fixtureB as demoB } from "./thesisFixtures.js";
 import { fixtureC as demoC } from "./thesisFixtures.js";
 import generic from "../../../../engine/src/templates/generic.js";
-import { buildThesisCss, compileThesisDocument, groupThesisSections } from "../../../../engine/src/engine.js";
+import { buildThesisCss, compileThesisDocument, groupThesisSections, templateFontFamilies } from "../../../../engine/src/engine.js";
+import { buildThesisDocx } from "../../../../engine/src/export.js";
+import { strFromU8, unzipSync } from "fflate";
+import { afsuLeeMaster } from "../../../../engine/src/templates/afsu-lee.js";
+import { collectAcademicPdfFontRequests } from "./academicFonts.js";
 import { buildThesisPageModel } from "../../../../engine/src/pageLayout.js";
 import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 import { resolveSpecialPage, specialPageCss, specialPageHtml, specialPageRowWidths, validateSpecialPageBlocks, walkSpecialPage } from "../../../../engine/src/specialPages.js";
@@ -13,6 +17,22 @@ import { splitLayoutNodes } from "../../../../engine/src/layoutDocx.js";
 const page = (template, id, values = {}, extra = {}) => compileThesisDocument(template, { values, ...extra }, "Tez Başlığı", "").sections.find((section) => section.id === id);
 
 describe("data-driven special pages", () => {
+  it("keeps explicit marker fonts in their own HTML/PDF requests and Word runs", async () => {
+    const raw = { type: "text", value: "\uF0B7\tMetin", runs: [{ text: "\uF0B7", fontFamily: "Symbol" }, { text: "\tMetin" }] };
+    assert.deepEqual(validateSpecialPageBlocks([raw], { path: "test" }), []);
+    assert.match(validateSpecialPageBlocks([{ ...raw, value: "different" }], { path: "test" }).join(), /value/);
+    assert.match(validateSpecialPageBlocks([{ ...raw, markup: "inline" }], { path: "test" }).join(), /birlikte/);
+    const nodes = resolveSpecialPage([raw], { baseStyle: { fontFamily: "Times New Roman" } }).blocks;
+    assert.equal(nodes[0].style.fontFamily, "Times New Roman");
+    assert.equal(nodes[0].runs[0].fontFamily, "Symbol");
+    assert.match(specialPageHtml(nodes), /font-family:&quot;Symbol&quot;/);
+    assert.deepEqual(collectAcademicPdfFontRequests({}, [{ layout: nodes }]), ["Symbol"]);
+    assert.ok(templateFontFamilies(afsuLeeMaster).includes("Symbol"));
+    const model = compileThesisDocument(afsuLeeMaster, { values: {} }, "Deneme", "<p>Metin.</p>");
+    const xml = strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
+    assert.match(xml, /w:rFonts[^>]*w:ascii="Symbol"/);
+    assert.equal(model.sections.find((section) => section.id === "ethics").layout.filter((node) => node.runs?.[0]?.fontFamily === "Symbol").length, 6);
+  });
   it("keeps page anchors while applying Word baseline paint correction to positioned text", () => {
     const nodes = [{ path: "0", type: "text", layoutMode: "absolute", wordBaseline: true, xMm: 30, yMm: 40, widthMm: 50, style: {} },
       { path: "1", type: "text", layoutMode: "flow", style: {} }];

@@ -4,7 +4,6 @@ import {
   CalendarCheck,
   CalendarDays,
   FileText,
-  GraduationCap,
   Layers3,
   ListTodo,
   Waypoints,
@@ -95,15 +94,6 @@ export const TEMPLATES = [
       title: "Flashcards",
       flashcards: { cards: [] },
     }),
-  },
-  {
-    id: "academic-writing",
-    name: "Akademik Yazı",
-    description: "Makale veya tezini akademik araçlarla yapılandır.",
-    category: "academic",
-    noteType: "academic",
-    icon: GraduationCap,
-    seed: () => ({}),
   },
   {
     id: "mapped-note",

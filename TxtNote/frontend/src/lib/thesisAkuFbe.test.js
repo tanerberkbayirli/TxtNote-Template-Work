@@ -21,7 +21,7 @@ const compile = (template = akuFbeMaster, extra = {}) => compileThesisDocument(t
 const section = (model, id) => model.sections.find((item) => item.id === id);
 
 describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
-  it("is valid, registered and differs between the degrees only in its degree strings", async () => {
+  it("is valid, registered and shares rules outside degree strings and approval jury rows", async () => {
     for (const template of [akuFbeMaster, akuFbePhd]) {
       assert.deepEqual(validateThesisTemplate(template), []);
       const { fallback, template: resolved } = await resolveThesisTemplate({ templateId: template.id });
@@ -32,7 +32,7 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     }
     assert.equal(THESIS_TEMPLATE_REGISTRY.find((entry) => entry.id === "aku-fbe-phd-tr-v1").displayName, "Afyon Kocatepe Üniversitesi · Fen Bilimleri Enstitüsü · Doktora");
     assert.equal(akuFbeMaster.displayName, "Afyon Kocatepe Üniversitesi · Fen Bilimleri Enstitüsü · Yüksek Lisans");
-    const normalise = (template, [cover, tr, en]) => JSON.stringify({ ...template, id: "x", degreeType: "x", displayName: "x" }).replaceAll(cover, "C").replaceAll(tr, "T").replaceAll(en, "E");
+    const normalise = (template, [cover, tr, en]) => JSON.stringify({ ...template, id: "x", degreeType: "x", displayName: "x", sections: template.sections.filter((s) => s.id !== "approval") }).replaceAll(cover, "C").replaceAll(tr, "T").replaceAll(en, "E");
     assert.equal(normalise(akuFbeMaster, ["YÜKSEK LİSANS TEZİ", "Yüksek Lisans Tezi", "M.Sc. Thesis"]), normalise(akuFbePhd, ["DOKTORA TEZİ", "Doktora Tezi", "Ph.D. Thesis"]));
     assert.deepEqual(templateFontFamilies(akuFbeMaster), ["Times New Roman", "Cambria Math"]);
     assert.deepEqual(compile().systemFonts, ["Times New Roman", "Cambria Math"]);
@@ -81,7 +81,7 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     assert.match(section(compile(), "abstract-footer").layoutBlocks.map((b) => b.text || "").join("|"), /2026, [ivx]+ \+ \d+ sayfa/);
   });
 
-  it("special pages: measured spacers, optional lines through visibleWhen, jury rows 6-7 only when filled", () => {
+  it("special pages: optional lines and seven doctoral jurors with a second advisor", () => {
     const withCo = compile(akuFbePhd, { values: { CO_ADVISOR_NAME: "Deniz AY", CO_ADVISOR_TITLE: "Dr. Öğr. Üyesi", JURY_6_TITLE_NAME: "Prof. Dr. Ali", JURY_7_TITLE_NAME: "Prof. Dr. Veli", PROJECT_NUMBER: "1", PROJECT_FUNDER: "BAP" } });
     const without = compile(akuFbeMaster);
     const text = (model, id) => JSON.stringify(section(model, id).layout);
@@ -89,8 +89,13 @@ describe("AKÜ FBE template (aku-fbe-master-tr-v1, aku-fbe-phd-tr-v1)", () => {
     assert.match(text(withCo, "inner-cover"), /desteklenmiştir/);
     assert.doesNotMatch(text(without, "inner-cover"), /İkinci Danışman|desteklenmiştir/);
     assert.match(text(withCo, "approval"), /JURY_7_AFFILIATION/);
+    const coWithoutNames = compile(akuFbePhd, { values: { CO_ADVISOR_NAME: "Deniz AY" } });
+    assert.match(text(coWithoutNames, "approval"), /JURY_6_AFFILIATION/);
+    assert.match(text(coWithoutNames, "approval"), /JURY_7_AFFILIATION/);
+    assert.doesNotMatch(text(compile(akuFbePhd), "approval"), /JURY_6_AFFILIATION|JURY_7_AFFILIATION/);
     assert.doesNotMatch(text(without, "approval"), /JURY_6_AFFILIATION|JURY_7_AFFILIATION/);
-    assert.match(text(without, "approval"), /JURY_5_AFFILIATION/);
+    assert.match(text(without, "approval"), /JURY_3_AFFILIATION/);
+    assert.doesNotMatch(text(without, "approval"), /JURY_4_AFFILIATION|JURY_5_AFFILIATION/);
     // The source blank line above the institute frame remains for both jury counts.
     const spacers = (model) => section(model, "approval").layout.filter((node) => node.type === "spacer" || (node.type === "group" && node.blocks.every((b) => b.type === "spacer"))).length;
     assert.equal(spacers(without), spacers(withCo));

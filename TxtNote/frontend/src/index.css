@@ -1422,6 +1422,11 @@ html.theme-black .code-block .hljs-symbol {
   color: #000;
 }
 
+/* The wrap's 12 pt margins are a table's only outer spacing (the DOCX writer hands exactly that to the adjacent paragraphs); a margin on the table itself would push the next block 2 pt below Word's. */
+.academic-table-wrap > table {
+  margin-bottom: 0;
+}
+
 .academic-table-wrap thead,
 .academic-page thead,
 .academic-document thead {

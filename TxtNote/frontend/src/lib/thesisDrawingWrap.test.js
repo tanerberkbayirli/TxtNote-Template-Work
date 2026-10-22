@@ -1,7 +1,15 @@
 import {describe,it} from 'node:test';
 import assert from 'node:assert/strict';
-import {firstShapeLineY,anchorOverflowsPage} from '../../../../engine/src/docx/drawingWrap.js';
+import {firstShapeLineY,anchorOverflowsPage,paragraphIsEmptyAnchor} from '../../../../engine/src/docx/drawingWrap.js';
+import {DOMParser} from '@xmldom/xmldom';
 describe('Word empty anchor line clearance',()=>{
+ it('inspects empty anchors without cloning or mutating native drawings and hidden fallbacks',()=>{
+  const p=html=>new DOMParser().parseFromString(`<p>${html}</p>`,'text/xml').documentElement;
+  const node=p('<span data-native-object="drawing"><span>Chart label</span></span><span hidden=""><img/></span> '),before=node.toString();
+  node.cloneNode=()=>{throw new Error('Large native subtree must not be cloned')};
+  assert.equal(paragraphIsEmptyAnchor(node),true);assert.equal(node.toString(),before);
+  for(const html of ['real text','&#9;','<span data-docx-tab=""/>','<br/>','<img/>','<math/>','<span data-native-object="equation"/>'])assert.equal(paragraphIsEmptyAnchor(p(html)),false,html);
+ });
  it('moves a paragraph-relative frame which fits a page but overflows the remaining room',()=>{
   assert.equal(anchorOverflowsPage(720,202,71,760),true);
   assert.equal(anchorOverflowsPage(71,202,71,760),false);

@@ -55,13 +55,25 @@ describe("page.numbering.omitOnChapterStart", () => {
     assert.ok(noChapterBreak > 4);
   });
 
+  // A chapter heading's space-before is kept at the top of its page by giving the heading a Word section of its own (Word drops space-before after a
+  // page break but honours it after a section break); isolate the option itself by taking the space-before out.
+  const withoutSpaceBefore = (template) => { const clone = structuredClone(template); clone.typography.headings["1"].spaceBeforePt = 0; return clone; };
+  const sectionCount = async (template) => (strFromU8((await docx(compile(template)))["word/document.xml"]).match(/<w:sectPr\b/g) || []).length;
+
   it("DOCX output is unchanged without the option", async () => {
-    const plain = structuredClone(mcbuTipUzmanlik);
+    const plain = withoutSpaceBefore(mcbuTipUzmanlik);
     delete plain.page.numbering.omitOnChapterStart;
     const xml = strFromU8((await docx(compile(plain)))["word/document.xml"]);
-    const withOption = strFromU8((await docx(compile(mcbuTipUzmanlik)))["word/document.xml"]);
-    assert.ok((withOption.match(/<w:sectPr\b/g) || []).length > (xml.match(/<w:sectPr\b/g) || []).length);
+    assert.ok(await sectionCount(withoutSpaceBefore(mcbuTipUzmanlik)) > await sectionCount(plain));
     assert.match(xml, /w:pageBreakBefore/);
   });
-});
 
+  it("a page-breaking chapter heading with space-before opens its own Word section even without the option", async () => {
+    const spaced = structuredClone(mcbuTipUzmanlik);
+    delete spaced.page.numbering.omitOnChapterStart;
+    spaced.typography.headings["1"].spaceBeforePt = 12;
+    const flat = withoutSpaceBefore(mcbuTipUzmanlik);
+    delete flat.page.numbering.omitOnChapterStart;
+    assert.ok(await sectionCount(spaced) > await sectionCount(flat), "each later chapter becomes a Word section so its space-before survives the page start");
+  });
+});

@@ -5,6 +5,13 @@ export const TIMES_NEW_ROMAN_FACES = {
   italic: { file: "timesi.ttf", postscript: "TimesNewRomanPS-ItalicMT" },
   bolditalic: { file: "timesbi.ttf", postscript: "TimesNewRomanPS-BoldItalicMT" },
 };
+// Liberation Serif (SIL OFL) is read from the user's installed fonts, never bundled; it is not a Times alias.
+export const LIBERATION_SERIF_FACES = {
+  normal: { file: "LiberationSerif-Regular.ttf", postscript: "LiberationSerif" },
+  bold: { file: "LiberationSerif-Bold.ttf", postscript: "LiberationSerif-Bold" },
+  italic: { file: "LiberationSerif-Italic.ttf", postscript: "LiberationSerif-Italic" },
+  bolditalic: { file: "LiberationSerif-BoldItalic.ttf", postscript: "LiberationSerif-BoldItalic" },
+};
 export const ARIAL_FACES = {
   normal: { file: "arial.ttf", postscript: "ArialMT" },
   bold: { file: "arialbd.ttf", postscript: "Arial-BoldMT" },
@@ -39,11 +46,12 @@ export const WINGDINGS_2_FACES = { normal: { file: "WINGDNG2.TTF", postscript: "
 export const WINGDINGS_3_FACES = { normal: { file: "WINGDNG3.TTF", postscript: "Wingdings3" } };
 export const SYMBOL_FACES = { normal: { file: "symbol.ttf", postscript: "SymbolMT" } };
 export const WEBDINGS_FACES = { normal: { file: "webdings.ttf", postscript: "Webdings" } };
+export const MS_MINCHO_FACES = { normal: { file: 'msmincho.ttc', postscript: 'MS-Mincho', collectionIndex: 0 } };
 /**
  * Families an official template may require in its PDF, keyed by their exact family name.
  * The PDF then embeds these genuine programs (never a metric-compatible substitute).
  */
-export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, Calibri: CALIBRI_FACES, "Cambria Math": CAMBRIA_MATH_FACES, Consolas: CONSOLAS_FACES, "Courier New": COURIER_NEW_FACES, Wingdings: WINGDINGS_FACES, "Wingdings 2": WINGDINGS_2_FACES, "Wingdings 3": WINGDINGS_3_FACES, Symbol: SYMBOL_FACES, Webdings: WEBDINGS_FACES });
+export const SYSTEM_PDF_FONT_FAMILIES = Object.freeze({ "Times New Roman": TIMES_NEW_ROMAN_FACES, Arial: ARIAL_FACES, Calibri: CALIBRI_FACES, "Cambria Math": CAMBRIA_MATH_FACES, Consolas: CONSOLAS_FACES, "Courier New": COURIER_NEW_FACES, Wingdings: WINGDINGS_FACES, "Wingdings 2": WINGDINGS_2_FACES, "Wingdings 3": WINGDINGS_3_FACES, Symbol: SYMBOL_FACES, Webdings: WEBDINGS_FACES, 'MS Mincho': MS_MINCHO_FACES, 'Liberation Serif': LIBERATION_SERIF_FACES });
 /** Families whose glyphs are addressed through the symbol cmap (code points U+F020..U+F0FF). */
 export const SYMBOL_ENCODED_FAMILIES = Object.freeze(new Set(["Wingdings", "Wingdings 2", "Wingdings 3", "Symbol", "Webdings"]));
 export const isSymbolEncodedFamily = (value) => SYMBOL_ENCODED_FAMILIES.has(systemPdfFontFamily(value));
@@ -231,7 +239,7 @@ export async function loadSystemPdfFonts(families = []) {
 export const loadSystemTimesNewRoman = () => loadSystemFontFamily("Times New Roman");
 
 /** Font directories searched outside Windows (tests, Linux/macOS builds). */
-const UNIX_FONT_DIRS = ["/usr/share/fonts/truetype/msttcorefonts", "/usr/share/fonts/truetype/mscorefonts", "/usr/local/share/fonts", "/Library/Fonts", "/System/Library/Fonts/Supplementary"];
+const UNIX_FONT_DIRS = ["/usr/share/fonts/truetype/msttcorefonts", "/usr/share/fonts/truetype/mscorefonts", "/usr/share/fonts/truetype/liberation", "/usr/share/fonts/truetype/liberation2", "/usr/local/share/fonts", "/Library/Fonts", "/System/Library/Fonts/Supplementary"];
 
 async function readSystemFonts(family, faces) {
   if (typeof document === "undefined") {
@@ -246,6 +254,16 @@ async function readSystemFonts(family, faces) {
         for (const name of [face.file, face.file.replace(/^./, (c) => c.toUpperCase())]) {
           const source = join(dir, name);
           try { return [style, { source, bytes: new Uint8Array(await readFile(source)) }]; } catch { /* next */ }
+        }
+      }
+      if (process.platform === 'win32' && family === 'MS Mincho' && process.env.LOCALAPPDATA) {
+        const { readdir } = await import('node:fs/promises');
+        const dir = join(process.env.LOCALAPPDATA, 'Microsoft', 'FontCache', '4', 'CloudFonts', 'MS Mincho');
+        for (const name of (await readdir(dir).catch(() => [])).sort()) {
+          if (!/\.ttf$/i.test(name)) continue;
+          const source = join(dir, name), bytes = new Uint8Array(await readFile(source));
+          const identity = systemFontIdentity(bytes);
+          if (identity.family === family && identity.postscript === face.postscript) return [style, { source, bytes }];
         }
       }
       throw new Error(`Sistemde ${family} (${face.file}) gerekli.`);

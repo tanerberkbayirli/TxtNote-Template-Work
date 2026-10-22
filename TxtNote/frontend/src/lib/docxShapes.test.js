@@ -13,6 +13,24 @@ const textBox = `<w:drawing><wp:anchor behindDoc="0"><wp:positionH relativeFrom=
 const chart = `<w:drawing><wp:inline><wp:extent cx="5270500" cy="3175000"/><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/chart"/></a:graphic></wp:inline></w:drawing>`;
 
 describe("imported Word shapes", () => {
+  it('isolates measured SVG charts from their anchoring Word run typography',()=>{
+    const doc={source:{format:'docx'},sections:[{nodes:[{id:'chart',type:'drawing',properties:{shape:{kind:'inline',widthPt:200,heightPt:100,hasPreview:true}}}]}]};
+    const css=importedShapeCss(doc).join('\n');
+    assert.match(css,/svg\{text-transform:none;font-variant:normal;font-style:normal;font-weight:normal;letter-spacing:normal\}/);
+  });
+  it("reads the saved Windows system colours of Word shapes", () => {
+    const xml=textBox.replace('<a:srgbClr val="FFEE00"/>','<a:sysClr val="window" lastClr="FFFFFF"/>').replace('<a:srgbClr val="000000"/>','<a:sysClr val="windowText" lastClr="000000"/>');
+    const shape=readDrawingShape(parse(xml));
+    assert.equal(shape.fill,'#ffffff');assert.equal(shape.line,'#000000');
+  });
+  it("uses the larger adjacent spacing inside a flex text story without changing source", () => {
+    const first={id:'one',type:'paragraph',properties:{resolvedSource:{spaceAfterPt:6}}},second={id:'two',type:'paragraph',properties:{resolvedSource:{spaceBeforePt:6}}};
+    const doc={source:{format:'docx'},formatMode:'source',sections:[{nodes:[{id:'shape',type:'drawing',properties:{shape:{kind:'inline',widthPt:100,heightPt:70,hasText:true}},children:[first,second]}]}]};
+    const before=JSON.stringify(doc),css=importedShapeCss(doc).join('\n');
+    assert.match(css,/two[^}]+margin-top:0pt/);assert.equal(JSON.stringify(doc),before);
+    second.properties.resolvedSource.spaceBeforePt=10;
+    assert.match(importedShapeCss(doc).join('\n'),/two[^}]+margin-top:4pt/);
+  });
   it("keeps a text box's document-default font independent of its bold body anchor", async () => {
     const body = `<w:p><w:r><w:rPr><w:b/><w:i/></w:rPr>${textBox.replace('<w:drawing>', `<w:drawing ${NS}>`)}</w:r></w:p>`;
     const doc = await importThesisDocx(docxImportFixture({ body }));
@@ -42,13 +60,14 @@ describe("imported Word shapes", () => {
     const drawings=[];const collect=n=>{if(n.type==='drawing')drawings.push(n);(n.children||[]).forEach(collect);};found[0].children[1].children.forEach(collect);
     for(const drawing of drawings)assert.ok(!css.includes(`"${drawing.id}"`),'hidden fallback must not produce a second frame');
   });
-  it("honors explicit overflow and suppression of outer text-box paragraph spacing", () => {
+  it("clips an overfull Word story at its padded frame and retains Word paragraph spacing", () => {
     const shape=readDrawingShape(parse(textBox.replace('anchor="ctr"','anchor="ctr" vertOverflow="overflow" spcFirstLastPara="0"')));
     assert.equal(shape.textOverflow,'overflow');assert.equal(shape.spaceFirstLastParagraph,false);
     const doc={source:{format:'docx'},sections:[{nodes:[{id:'box',type:'drawing',properties:{shape},children:[]}]}]};
     const css=importedShapeCss(doc).join('\n');
-    assert.match(css,/overflow:visible/);assert.match(css,/:first-child\{margin-top:0!important\}/);assert.match(css,/:last-child\{margin-bottom:0!important\}/);
-    shape.textOverflow='clip';assert.match(importedShapeCss(doc).join('\n'),/overflow:hidden/);
+    assert.match(css,/overflow:clip;overflow-clip-margin:content-box/);assert.match(css,/justify-content:safe center/);assert.doesNotMatch(css,/:first-child\{margin-top:0!important\}/);assert.doesNotMatch(css,/:last-child\{margin-bottom:0!important\}/);
+    shape.geometry='rect';assert.match(importedShapeCss(doc).join('\n'),/overflow-clip-margin:padding-box/);
+    shape.textOverflow='clip';assert.match(importedShapeCss(doc).join('\n'),/overflow:clip/);
   });
   it("reads the frame of a floating DrawingML text box (extent, offsets, wrap, fill, line, insets)", () => {
     const shape = readDrawingShape(parse(textBox));

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { BookOpen, Check, ChevronRight, CircleHelp, ListTree, Plus, Search, Sparkles, X } from 'lucide-react';
 import { headingLabels, requiredHeadingChoices } from '../../lib/thesisWriting.js';
 import ThesisSources from './ThesisSources.jsx';
+import { buildThesisGuide } from '../../lib/thesisGuide.js';
 
-export default function ThesisNavigation({ sections = [], sectionGroups = [], headings = [], activeSectionId, template, panel = 'outline', hidden, onPanelChange, onNavigate, onClose, onAddHeading, onDetails, onCheck, missingCount = 0, sourcesProps }) {
+export default function ThesisNavigation({ sections = [], sectionGroups = [], headings = [], activeSectionId, template, panel = 'outline', hidden, ribbon = false, onPanelChange, onNavigate, onClose, onAddHeading, onDetails, onCheck, missingCount = 0, sourcesProps }) {
   const [query, setQuery] = useState('');
   const [adding, setAdding] = useState(false);
   const [heading, setHeading] = useState('');
@@ -23,24 +24,31 @@ export default function ThesisNavigation({ sections = [], sectionGroups = [], he
     if (!heading.trim() || !target) return;
     if (onAddHeading(target.id, Number(effectiveLevel), heading.trim())) { setHeading(''); setAdding(false); }
   };
-  return <aside hidden={hidden} className="thesis-navigation thesis-workspace-panel" aria-label="Tez çalışma paneli" data-thesis-editor-only="true">
-    <div className="thesis-workspace-heading"><div><span className="thesis-eyebrow">TEZ ÇALIŞMA ALANI</span><h2>Adım adım yazın</h2></div><button type="button" className="thesis-icon-button" aria-label="Çalışma panelini kapat" onClick={onClose}><X size={17}/></button></div>
+  return <section hidden={hidden} className={`thesis-workspace-panel ${ribbon ? 'thesis-ribbon-workspace' : 'thesis-navigation'}`} aria-label="Tez çalışma paneli" data-workspace-panel={panel} data-thesis-editor-only="true">
+    {!ribbon ? <><div className="thesis-workspace-heading"><div><span className="thesis-eyebrow">TEZ ÇALIŞMA ALANI</span><h2>Adım adım yazın</h2></div><button type="button" className="thesis-icon-button" aria-label="Çalışma panelini kapat" onClick={onClose}><X size={17}/></button></div>
     <nav className="thesis-workspace-tabs" aria-label="Çalışma panelleri">
       {[['outline', ListTree, 'Yazım planı'], ['sources', BookOpen, 'Kaynaklar'], ['guide', CircleHelp, 'Rehber']].map(([id, Icon, label]) => <button key={id} type="button" aria-current={panel === id ? 'page' : undefined} onClick={() => onPanelChange(id)}><Icon size={16} aria-hidden="true"/>{label}</button>)}
-    </nav>
+    </nav></> : null}
     <div className="thesis-workspace-content">
       <div hidden={panel !== 'sources'}><ThesisSources {...sourcesProps} onNavigate={onNavigate}/></div>
-      {panel === 'sources' ? null : panel === 'guide' ? <>
-        <div className="thesis-panel-intro"><span className="thesis-eyebrow">NEREDEN BAŞLAMALI?</span><h3>Biçime değil, tezinize odaklanın.</h3><p>Sayfa düzeni ve başlık biçimleri seçtiğiniz şablondan gelir.</p></div>
+      {panel === 'sources' ? null : panel === 'guide' ? (() => {
+        const guide = buildThesisGuide(template);
+        const rows = items => <dl className="thesis-guide-rules">{items.map(item => <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl>;
+        return <>
+        <div className="thesis-panel-intro"><span className="thesis-eyebrow">BU ŞABLONUN REHBERİ</span><h3>{guide.title}</h3><p>Aşağıdaki kurallar seçtiğiniz şablondan okunur; biçimi uygulama sizin yerinize uygular.</p></div>
         <ol className="thesis-guide-steps">
-          <li><b>1</b><div><strong>Tez bilgilerinizi tamamlayın</strong><p>Başlık, öğrenci ve danışman bilgileri kapaklara ve ilgili sayfalara yansır.</p><button type="button" onClick={onDetails}>Tez bilgilerini aç <ChevronRight size={13}/></button></div></li>
-          <li><b>2</b><div><strong>Bölümlere geçip yazın</strong><p>Yazım planında bir bölüm seçin. Metninizi sayfa üzerinde düzenleyin.</p><button type="button" onClick={() => onPanelChange('outline')}>Yazım planına git <ChevronRight size={13}/></button></div></li>
-          <li><b>3</b><div><strong>Başlık düzeylerini kullanın</strong><p>Ana bölüm için Başlık 1, alt başlık için Başlık 2 seçin. Numaraları başlığın içine yazmayın; şablon numaralandırır.</p></div></li>
-          <li><b>4</b><div><strong>Kaynağı ekleyin, ardından atıf yapın</strong><p>Kaynaklar panelinde kaydı ekleyin. Metinde atıf yapılacak yere tıklayıp atfı yerleştirin.</p><button type="button" onClick={() => onPanelChange('sources')}>Kaynakları aç <ChevronRight size={13}/></button></div></li>
-          <li><b>5</b><div><strong>Kontrol edip dışa aktarın</strong><p>Eksik bilgileri ve belge uyarılarını gözden geçirin. Word veya PDF çıktısını Dosya sekmesinden alın.</p><button type="button" onClick={onCheck}>Belgeyi kontrol et <ChevronRight size={13}/></button></div></li>
+          <li><b>1</b><div><strong>Tez bilgilerinizi tamamlayın</strong><p>Başlık, öğrenci ve danışman bilgileri {guide.infoPages.length ? guide.infoPages.join(', ') + ' ve ilgili' : 'kapak ve ilgili'} sayfalara yansır.</p>{guide.fieldRules.length > 0 && <ul className="thesis-guide-notes">{guide.fieldRules.map(rule => <li key={rule}>{rule}</li>)}</ul>}<button type="button" onClick={onDetails}>Tez bilgilerini aç <ChevronRight size={13}/></button></div></li>
+          <li><b>2</b><div><strong>Bölümlere geçip yazın</strong><p>Siz yalnızca şu bölümleri yazarsınız: {guide.writable.map(item => item.name + (item.optional ? ' (isteğe bağlı)' : '')).join(', ')}.</p><button type="button" onClick={() => onPanelChange('outline')}>Yazım planına git <ChevronRight size={13}/></button></div></li>
+          <li><b>3</b><div><strong>Başlık düzeylerini kullanın</strong><p>Numaraları başlığın içine yazmayın; şablon numaralandırır.</p>{rows(guide.headingRules)}{guide.expected.length > 0 && <p>Ana bölümde beklenen başlıklar: {guide.expected.join(' → ')}.</p>}</div></li>
+          <li><b>4</b><div><strong>Kaynağı ekleyin, ardından atıf yapın</strong><p>{guide.citation.method}</p><p>Kaynakça başlığı “{guide.citation.heading}”{guide.citation.typography ? `; ${guide.citation.typography}` : ''}.</p><button type="button" onClick={() => onPanelChange('sources')}>Kaynakları aç <ChevronRight size={13}/></button></div></li>
+          <li><b>5</b><div><strong>Tablo, şekil ve denklemleri düzenleyin</strong>{guide.captions.length ? <ul className="thesis-guide-notes">{guide.captions.map(item => <li key={item}>{item}</li>)}</ul> : <p>Bu şablon açıklama biçimi tanımlamıyor.</p>}</div></li>
+          <li><b>6</b><div><strong>Kontrol edip dışa aktarın</strong><p>Eksik bilgileri ve belge uyarılarını gözden geçirin. Word veya PDF çıktısını Dosya sekmesinden alın.</p><button type="button" onClick={onCheck}>Belgeyi kontrol et <ChevronRight size={13}/></button></div></li>
         </ol>
-        <div className="thesis-info-card"><Sparkles size={17} aria-hidden="true"/><div><strong>İçindekiler otomatik hazırlanır</strong><p>Başlıkları metinde değiştirin. İçindekiler ve sayfa numaraları yerleşim tamamlandığında güncellenir.</p></div></div>
-      </> : <>
+        <h4 className="thesis-guide-heading">Sayfa ve yazı kuralları</h4>
+        {rows(guide.layout)}
+        <div className="thesis-info-card"><Sparkles size={17} aria-hidden="true"/><div><strong>Otomatik hazırlananlar</strong><p>{guide.generated.length ? guide.generated.join(', ') + ' kendiliğinden hazırlanır; başlıkları metinde değiştirmeniz yeterlidir.' : 'İçindekiler başlıklardan kendiliğinden hazırlanır.'}</p></div></div>
+        </>;
+      })() : <>
         {missingCount > 0 && <button type="button" className="thesis-setup-card" onClick={onDetails}><span><strong>Tez bilgilerini tamamlayın</strong><small>{missingCount} bilgi eksik · Kapak ve ön sayfalar için</small></span><ChevronRight size={16}/></button>}
         <label className="thesis-panel-search"><Search size={15} aria-hidden="true"/><input aria-label="Bölüm veya başlık ara" placeholder="Bölüm veya başlık ara…" value={query} onChange={event => setQuery(event.target.value)}/></label>
         <div className="thesis-panel-section-title"><h3>Belge planı</h3><button type="button" className="thesis-panel-link" onClick={() => setAdding(value => !value)} aria-expanded={adding}><Plus size={14}/> Başlık ekle</button></div>
@@ -65,5 +73,5 @@ export default function ThesisNavigation({ sections = [], sectionGroups = [], he
         <div className="thesis-info-card"><Sparkles size={17} aria-hidden="true"/><div><strong>İçindekiler kendiliğinden güncellenir</strong><p>Başlık metnini veya düzeyini değiştirmeniz yeterli.</p>{toc && <button type="button" onClick={() => onNavigate(toc.id)}>İçindekileri göster <ChevronRight size={13}/></button>}</div></div>
       </>}
     </div>
-  </aside>;
+  </section>;
 }

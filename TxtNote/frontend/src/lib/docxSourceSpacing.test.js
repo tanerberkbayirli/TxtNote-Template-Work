@@ -38,11 +38,25 @@ describe('imported source paragraph spacing',()=>{
   marker.children=[];d.sections[1].properties.breakType='continuous';
   assert.doesNotMatch(importedContentCss(d),/p\[data-txt-node-id="section-end"\]\[data-txt-node-id\]\{display:none/);
   d.sections[1].properties.breakType='nextPage';d.sections[0].nodes[0]={type:'table',children:[]};
+  assert.match(importedContentCss(d),/p\[data-txt-node-id="section-end"\]\[data-txt-node-id\]\{display:none/);
+  marker.properties.paragraphPropertiesXml='<w:pPr/>';
   assert.doesNotMatch(importedContentCss(d),/p\[data-txt-node-id="section-end"\]\[data-txt-node-id\]\{display:none/);
  });
  it('restores ordinary word spaces for explicitly non-justified source paragraphs',()=>{
   const css=importedContentCss(doc([paragraph('p',{resolvedSource:{align:'center'}},[{type:'text',text:'İnsan Kaynakları Müdürü'}])]));
   assert.match(css,/"p"\]\[data-txt-node-id\]\{text-align:center;word-spacing:0/);
+ });
+ it('does not add a line for a section mark inside a content control, while keeping ordinary table tails and native data',()=>{
+  const marker=paragraph('sdt-end',{paragraphPropertiesXml:'<w:pPr><w:sectPr/></w:pPr>'});
+  const control={id:'control',type:'container',properties:{nativeName:'sdt'},children:[paragraph('entry',{},[{type:'text',text:'Last index entry'}]),marker]};
+  const d=doc([control]);d.sections.push({properties:{breakType:'oddPage'},nodes:[paragraph('next')]});
+  const before=JSON.stringify(d);
+  assert.match(importedContentCss(d),/p\[data-txt-node-id="sdt-end"\]\[data-txt-node-id\]\{display:none !important\}/);
+  assert.equal(JSON.stringify(d),before);
+  control.children[0]={type:'table',children:[]};
+  assert.match(importedContentCss(d),/p\[data-txt-node-id="sdt-end"\]\[data-txt-node-id\]\{display:none/);
+  marker.properties.paragraphPropertiesXml='';
+  assert.doesNotMatch(importedContentCss(d),/p\[data-txt-node-id="sdt-end"\]\[data-txt-node-id\]\{display:none/);
  });
  it('preserves Caption spacing at a section boundary while retaining plain paragraph suppression',()=>{
   const d=doc([paragraph('old',{resolvedSource:{spaceAfterPt:6}})],{C:{name:'caption'}});

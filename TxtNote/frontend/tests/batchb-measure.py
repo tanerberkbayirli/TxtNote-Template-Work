@@ -2,12 +2,12 @@
 """Real-export proofs of the Batch B engine extensions (custom demo templates, no university).
 
 usage: python3 tests/batchb-measure.py <scenario> [scenario ...]     (from TxtNote/frontend; needs the vite dev server:
-       orchestration/tools/devserver.sh start). Each scenario builds a fixture (tests/batchb-fixture.mjs), presses the real
-       editor's PDF and Word buttons (orchestration/tools/export.mjs) and asserts on the PDF (PyMuPDF) and the DOCX XML.
+       engine/tools/devserver.sh start). Each scenario builds a fixture (tests/batchb-fixture.mjs), presses the real
+       editor's PDF and Word buttons (engine/tools/export.mjs) and asserts on the PDF (PyMuPDF) and the DOCX XML.
 """
 import os, re, subprocess, sys, zipfile, tempfile
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".."))
-sys.path.insert(0, os.path.join(ROOT, "orchestration", "tools"))
+sys.path.insert(0, os.path.join(ROOT, "engine", "tools"))
 from pdfmeasure import open_pdf, visual_lines  # noqa: E402
 
 OUT = os.environ.get("BATCHB_OUT") or tempfile.mkdtemp(prefix="batchb-")
@@ -17,7 +17,7 @@ def export(name):
     fixture, prefix = f"{OUT}/{name}.json", f"{OUT}/{name}"
     subprocess.run(["node", "tests/batchb-fixture.mjs", name, fixture], cwd=os.path.join(ROOT, "TxtNote", "frontend"), check=True)
     env = dict(os.environ, THESIS_FIXTURE_PAGE="/tests/thesis-batchb.html")
-    subprocess.run(["node", "orchestration/tools/export.mjs", fixture, prefix], cwd=ROOT, env=env, check=True)
+    subprocess.run(["node", "engine/tools/export.mjs", fixture, prefix], cwd=ROOT, env=env, check=True)
     return open_pdf(prefix + ".pdf"), zipfile.ZipFile(prefix + ".docx").read("word/document.xml").decode()
 
 

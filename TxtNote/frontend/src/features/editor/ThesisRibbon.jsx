@@ -1,5 +1,6 @@
-import { useId, useState } from "react";
-import { BookOpen, CircleHelp, ListTree, Settings, NotebookPen } from "lucide-react";
+import { useEffect, useId, useRef, useState } from "react";
+import { DEFAULT_TEXT_ALIGNMENT_SCOPE } from "../../../../../engine/src/layoutInteraction.js";
+import { AlertTriangle, PanelRightOpen, Redo2, Undo2, X } from "lucide-react";
 import { tabs } from "./ribbon/shared.js";
 import HomeTab from "./ribbon/HomeTab.jsx";
 import FileTab from "./ribbon/FileTab.jsx";
@@ -9,6 +10,9 @@ import ReferencesTab from "./ribbon/ReferencesTab.jsx";
 import ViewTab from "./ribbon/ViewTab.jsx";
 import "./ribbon/home.css";
 export default function ThesisRibbon({
+  tab,
+  setTab,
+  panelContent,
   title,
   activeSection,
   template,
@@ -65,8 +69,35 @@ export default function ThesisRibbon({
   onCheckDocument,
   sourceCount,
 }) {
-  const [tab, setTab] = useState("Giriş");
-  const [alignmentScope, setAlignmentScope] = useState("page");
+  const ribbonTabs = tabs;
+  const sidePanels = ["Yazım planı", "Kaynaklar", "Rehber", "Sayfa ayarları", "Öğe", "Tez bilgileri"];
+  const extendedPanel = !tabs.includes(tab);
+  // Side panels open in a drawer; the ribbon keeps showing the last regular tab.
+  const lastMainTab = useRef("Giriş");
+  if (!extendedPanel) lastMainTab.current = tab;
+  const shownTab = extendedPanel ? lastMainTab.current : tab;
+  const lastSidePanel = useRef(sidePanels[0]);
+  if (extendedPanel) lastSidePanel.current = tab;
+  const closeDrawer = () => setTab(lastMainTab.current);
+  const drawerRef = useRef(null);
+  const panelToggleRef = useRef(null);
+  const returnFocusRef = useRef(null);
+  useEffect(() => {
+    if (!extendedPanel) return;
+    returnFocusRef.current = document.activeElement === document.body ? panelToggleRef.current : document.activeElement;
+    drawerRef.current?.querySelector('button')?.focus({ preventScroll: true });
+    return () => {
+      // Keep deliberate focus moves to the ribbon or document; only restore
+      // focus when closing would otherwise leave it inside the hidden drawer.
+      if (document.activeElement !== document.body && !drawerRef.current?.contains(document.activeElement)) return;
+      const target = returnFocusRef.current;
+      const destination = target?.isConnected && !target.closest('[hidden]') ? target : panelToggleRef.current;
+      destination?.focus({ preventScroll: true });
+    };
+  }, [extendedPanel]);
+  // Alignment changes the paragraph inside its existing template frame unless
+  // the writer explicitly chooses the page or writing area.
+  const [alignmentScope, setAlignmentScope] = useState(DEFAULT_TEXT_ALIGNMENT_SCOPE);
   const [tableRows, setTableRows] = useState("3");
   const [tableCols, setTableCols] = useState("3");
   const clampInt = (str, min, max, fallback) => {
@@ -97,20 +128,21 @@ export default function ThesisRibbon({
   const invoke = (name, ...args) => actions.runSaved((body) => body?.[name]?.(...args));
   const headingOptions = Object.keys(activeSection?.rules.headings || template.typography.headings || {});
   const paragraphOptions = Object.keys(template.typography.paragraphStyles || {});
+  const quickOff = !activeSection || actions.canFormatText === false || (actions.isStaticTarget && !actions.isLayoutTextTarget);
 
   return (
     <header className="thesis-ribbon" aria-label="Tez belge araçları">
       <div className="thesis-ribbon-toprow">
       <div role="tablist" aria-label="Şerit sekmeleri" className="thesis-tabs">
-        {tabs.map((item) => (
+        {ribbonTabs.map((item) => (
           <button
             key={item}
             role="tab"
-            id={`${ids}-thesis-tab-${item}`}
-            aria-selected={tab === item}
+            id={`${ids}-thesis-tab-${encodeURIComponent(item)}`}
+            aria-selected={shownTab === item}
             aria-controls={`${ids}-thesis-ribbon-panel`}
-            tabIndex={tab === item ? 0 : -1}
-            className={tab === item ? "is-active" : ""}
+            tabIndex={shownTab === item ? 0 : -1}
+            className={shownTab === item ? "is-active" : ""}
             onMouseDown={keep}
             onClick={(event) => {
               event.currentTarget.focus();
@@ -119,51 +151,53 @@ export default function ThesisRibbon({
             onKeyDown={(event) => {
               if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
               event.preventDefault();
-              const index = tabs.indexOf(tab);
+              const index = ribbonTabs.indexOf(shownTab);
               const next =
                 event.key === "Home"
                   ? 0
                   : event.key === "End"
-                    ? tabs.length - 1
-                    : (index + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
-              setTab(tabs[next]);
+                    ? ribbonTabs.length - 1
+                    : (index + (event.key === "ArrowRight" ? 1 : -1) + ribbonTabs.length) % ribbonTabs.length;
+              setTab(ribbonTabs[next]);
+              event.currentTarget.parentElement?.querySelectorAll('[role="tab"]')[next]?.scrollIntoView({ block: "nearest", inline: "nearest" });
               event.currentTarget.parentElement?.querySelectorAll('[role="tab"]')[next]?.focus();
             }}
           >
             {item}
           </button>
         ))}
-        {activeSection ? (
-          <span className="thesis-active-section" title={activeSection.title}>
-            {activeSection.title}
-          </span>
-        ) : (
-          <span className="thesis-active-section is-muted">Düzenlemek için bir metin bölümüne tıklayın</span>
-        )}
       </div>
-      <div className="thesis-ribbon-shortcuts" role="group" aria-label="Belge panelleri">
-        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep} aria-expanded={workspacePanel === 'outline'} onClick={() => onOpenWorkspace('outline')}><ListTree size={15} aria-hidden="true"/> Yazım planı</button>
-        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep} aria-expanded={workspacePanel === 'sources'} onClick={() => onOpenWorkspace('sources')}><BookOpen size={15} aria-hidden="true"/> Kaynaklar <span className="thesis-source-count">{sourceCount}</span></button>
-        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep}
-          onClick={() => setDetailsOpen((open) => !open)} aria-expanded={detailsOpen}>
-          <NotebookPen size={15} aria-hidden="true" /> Tez bilgileri
-        </button>
-        <button type="button" className="thesis-ribbon-tool" onMouseDown={keep}
-          onClick={() => setPageSettingsOpen((open) => !open)} aria-expanded={pageSettingsOpen}
-          aria-label="Sayfa düzeni" title="Sayfa düzeni ayarları">
-          <Settings size={15} aria-hidden="true" /> Ayarlar
-        </button>
-        <button type="button" className="thesis-ribbon-tool thesis-shortcut-icon" aria-label="Yazım rehberi" title="Yazım rehberi" onClick={() => onOpenWorkspace('guide')}><CircleHelp size={16} aria-hidden="true"/></button>
+      <div className="thesis-ribbon-quick">
+        <button type="button" className="thesis-quick-btn" title="Geri al (Ctrl+Z)" aria-label="Geri al (Ctrl+Z)" disabled={quickOff || !actions.canTextUndo} onMouseDown={keep} onClick={() => invoke("undo")}><Undo2 size={16} aria-hidden="true" /></button>
+        <button type="button" className="thesis-quick-btn" title="Yinele (Ctrl+Y)" aria-label="Yinele (Ctrl+Y)" disabled={quickOff || !actions.canTextRedo} onMouseDown={keep} onClick={() => invoke("redo")}><Redo2 size={16} aria-hidden="true" /></button>
+        {warningCount > 0 && (
+          <div className="thesis-ribbon-warning">
+            <details open={warningsOpen} onToggle={(event) => setWarningsOpen(event.currentTarget.open)}>
+              <summary title="Belge uyarılarını göster">
+                <AlertTriangle size={14} aria-hidden="true" />
+                {validationIssues.length ? `${validationIssues.length} uyarı` : `${warningCount} uyarı`}
+              </summary>
+              <div>
+                {warning && <p>{warning}</p>}
+                {missingFields?.length ? <p>Eksik tez bilgisi: {missingFields.join(", ")}</p> : null}
+                {indexWarning && <p>{indexWarning}</p>}
+                {validationIssues.map((issue, index) => (
+                  <p key={index}>{issue.message}{template.placeholders?.[issue.field] ? <button type="button" className="thesis-panel-link" onClick={() => setDetailsOpen(true)}>Bilgiyi tamamla</button> : null}</p>
+                ))}
+              </div>
+            </details>
+          </div>
+        )}
       </div>
       </div>
       <div
         id={`${ids}-thesis-ribbon-panel`}
         role="tabpanel"
-        aria-labelledby={`${ids}-thesis-tab-${tab}`}
-        className={`thesis-ribbon-panel thesis-ribbon-panel--${tabs.indexOf(tab)}`}
-        data-ribbon-tab={tab}
+        aria-labelledby={`${ids}-thesis-tab-${encodeURIComponent(shownTab)}`}
+        className={`thesis-ribbon-panel thesis-ribbon-panel--${tabs.indexOf(shownTab)}`}
+        data-ribbon-tab={shownTab}
       >
-        {tab === "Giriş" && (
+        {shownTab === "Giriş" && (
           <HomeTab
             title={title}
             activeSection={activeSection}
@@ -183,7 +217,7 @@ export default function ThesisRibbon({
             setAlignmentScope={setAlignmentScope}
           />
         )}
-        {tab === "Dosya" && (
+        {shownTab === "Dosya" && (
           <FileTab
             onImport={onImport}
             onImportPdf={onImportPdf}
@@ -199,7 +233,7 @@ export default function ThesisRibbon({
             keep={keep}
           />
         )}
-        {tab === "Ekle" && (
+        {shownTab === "Ekle" && (
           <InsertTab
             activeSection={activeSection}
             canInsertInline={actions.canInsertInline}
@@ -232,7 +266,7 @@ export default function ThesisRibbon({
             headingOptions={headingOptions}
           />
         )}
-        {tab === "Düzen" && (
+        {shownTab === "Düzen" && (
           <LayoutTab
             actions={actions}
             pageSettingsOpen={pageSettingsOpen}
@@ -251,7 +285,7 @@ export default function ThesisRibbon({
             page={page}
           />
         )}
-        {tab === "Başvurular" && (
+        {shownTab === "Başvurular" && (
           <ReferencesTab
             activeSection={activeSection}
             canInsertInline={actions.canInsertInline}
@@ -269,7 +303,7 @@ export default function ThesisRibbon({
             numeric={template.bibliography?.citationStyle === 'numeric'}
           />
         )}
-        {tab === "Görünüm" && (
+        {shownTab === "Görünüm" && (
           <ViewTab
             activeSection={activeSection}
             pageSettingsOpen={pageSettingsOpen}
@@ -291,28 +325,33 @@ export default function ThesisRibbon({
           />
         )}
       </div>
-      {warningCount > 0 && (
-        <div className="thesis-ribbon-warning">
-          <details open={warningsOpen} onToggle={(event) => setWarningsOpen(event.currentTarget.open)}>
-            <summary>
-              {validationIssues.length ? `${validationIssues.length} belge uyarısı` : `${warningCount} uyarı`}
-            </summary>
-            <div>
-              {warning && <p>{warning}</p>}
-              {missingFields?.length ? <p>Eksik tez bilgisi: {missingFields.join(", ")}</p> : null}
-              {indexWarning && <p>{indexWarning}</p>}
-              {validationIssues.map((issue, index) => (
-                <p key={index}>{issue.message}{template.placeholders?.[issue.field] ? <button type="button" className="thesis-panel-link" onClick={() => setDetailsOpen(true)}>Bilgiyi tamamla</button> : null}</p>
-              ))}
-            </div>
-          </details>
-        </div>
-      )}
       {message ? (
-        <div className="thesis-ribbon-message" role="status">
-          {message}
+        <div className="thesis-ribbon-message" role="status" aria-atomic="true">
+          <span>{message}</span>
         </div>
       ) : null}
+      <button ref={panelToggleRef} type="button" className={`thesis-side-fab ${extendedPanel ? "is-open" : ""}`} aria-expanded={extendedPanel} aria-controls={`${ids}-side-drawer`} title="Yan panelleri aç/kapat" onMouseDown={keep} onClick={() => (extendedPanel ? closeDrawer() : setTab(lastSidePanel.current))}>
+        <PanelRightOpen size={18} aria-hidden="true" />
+        <span>Paneller</span>
+      </button>
+      <aside ref={drawerRef} id={`${ids}-side-drawer`} className="thesis-side-drawer" hidden={!extendedPanel} aria-label="Yan paneller" data-ribbon-tab={extendedPanel ? tab : undefined} onKeyDown={(event) => {
+        if (event.key === "Escape" && !event.defaultPrevented) {
+          event.preventDefault();
+          event.stopPropagation();
+          closeDrawer();
+        }
+      }}>
+        <div className="thesis-side-drawer-head">
+          <strong>{extendedPanel ? tab : lastSidePanel.current}</strong>
+          <button type="button" aria-label="Paneli kapat" title="Paneli kapat" onClick={closeDrawer}><X size={16} aria-hidden="true" /></button>
+        </div>
+        <nav className="thesis-side-drawer-nav" aria-label="Panel seç">
+          {sidePanels.map((item) => (
+            <button key={item} type="button" className={tab === item ? "is-active" : ""} aria-current={tab === item ? "page" : undefined} onMouseDown={keep} onClick={() => setTab(item)}>{item}</button>
+          ))}
+        </nav>
+        <div className="thesis-side-drawer-body thesis-ribbon-workspace-body">{panelContent}</div>
+      </aside>
     </header>
   );
 }

@@ -11,8 +11,6 @@ import {
   ListTree,
   Lock,
   Printer,
-  Redo2,
-  Undo2,
 } from "lucide-react";
 import FontSizeBox, { stepFontSize } from "./FontSizeBox.jsx";
 import ColorSplitButton from "./ColorSplitButton.jsx";
@@ -49,6 +47,8 @@ export default function HomeTab({
   const off = !activeSection || actions.canFormatText === false;
   const blockOff = off || (actions.isStaticTarget && !actions.isLayoutTextTarget);
   const format = actions.activeFormat;
+  const textUnavailable = !activeSection ? "Önce belgede düzenlenecek metni seçin." : "Seçili öğenin metni düzenlenemiyor; yazılabilir bir metin seçin.";
+  const paragraphUnavailable = off ? textUnavailable : "Paragraf araçları gövde metninde kullanılabilir.";
   const currentSize = format?.sizePt ?? format?.sizeComputedPt;
   const styles = [
     { id: "normal", label: "Normal", level: 0, sample: "Gövde metni" },
@@ -58,23 +58,14 @@ export default function HomeTab({
   const setStyle = (style) =>
     style.style ? actions.runSaved((body) => body?.setBlockType?.(0, style.style)) : invoke("setBlockType", style.level);
   const toggle = (key, label, title, glyph) => (
-    <Tool label={label} title={title} disabled={off} pressed={!!format?.[key]} onMouseDown={keep} onClick={() => invoke("toggleStyle", key)}>
+    <Tool label={label} title={title} disabled={off} disabledReason={textUnavailable} pressed={!off && !!format?.[key]} onMouseDown={keep} onClick={() => invoke("toggleStyle", key)}>
       {glyph}
     </Tool>
   );
 
   return (
     <>
-      <Group label="Geri al" className="thesis-home-group">
-        <div className="thesis-home-rows is-compact">
-          <Tool label="Geri al (Ctrl+Z)" disabled={blockOff || !actions.canTextUndo} onMouseDown={keep} onClick={() => invoke("undo")}>
-            <Undo2 size={16} aria-hidden="true" />
-          </Tool>
-          <Tool label="Yinele (Ctrl+Y)" disabled={blockOff || !actions.canTextRedo} onMouseDown={keep} onClick={() => invoke("redo")}>
-            <Redo2 size={16} aria-hidden="true" />
-          </Tool>
-        </div>
-      </Group>
+      {off ? <p className="thesis-ribbon-hint" role="status">{textUnavailable}</p> : actions.isLayoutTextTarget ? <p className="thesis-ribbon-hint">Seçili metin kutusunu biçimlendiriyorsunuz. Liste ve paragraf stilleri gövde metninde kullanılabilir.</p> : null}
       <Group label="Yazı tipi" className="thesis-home-group">
         <div className="thesis-home-rows">
           <div className="thesis-home-row">
@@ -83,10 +74,10 @@ export default function HomeTab({
               <Lock size={11} aria-hidden="true" />
             </span>
             <FontSizeBox activeFormat={format} remember={remember} keep={keep} invoke={invoke} disabled={off} />
-            <Tool label="Yazı boyutunu büyüt" disabled={off} onMouseDown={keep} onClick={() => invoke("applySize", stepFontSize(currentSize, 1))}>
+            <Tool label="Yazı boyutunu büyüt" disabled={off} disabledReason={textUnavailable} onMouseDown={keep} onClick={() => invoke("applySize", stepFontSize(currentSize, 1))}>
               <span className="thesis-grow">A<sup>▲</sup></span>
             </Tool>
-            <Tool label="Yazı boyutunu küçült" disabled={off} onMouseDown={keep} onClick={() => invoke("applySize", stepFontSize(currentSize, -1))}>
+            <Tool label="Yazı boyutunu küçült" disabled={off} disabledReason={textUnavailable} onMouseDown={keep} onClick={() => invoke("applySize", stepFontSize(currentSize, -1))}>
               <span className="thesis-grow is-small">A<sup>▼</sup></span>
             </Tool>
           </div>
@@ -99,7 +90,7 @@ export default function HomeTab({
             <ColorSplitButton mode="color" activeFormat={format} remember={remember} keep={keep} invoke={invoke} disabled={off} />
             <ColorSplitButton mode="highlight" activeFormat={format} remember={remember} keep={keep} invoke={invoke} disabled={off} />
             <span className="thesis-home-sep" aria-hidden="true" />
-            <Tool label="Biçimi temizle" title="Tüm biçimlendirmeyi temizle" disabled={off} onMouseDown={keep} onClick={() => invoke("clearFormatting")}>
+            <Tool label="Biçimi temizle" title="Tüm biçimlendirmeyi temizle" disabled={off} disabledReason={textUnavailable} onMouseDown={keep} onClick={() => invoke("clearFormatting")}>
               <Eraser size={15} aria-hidden="true" />
             </Tool>
           </div>
@@ -108,23 +99,23 @@ export default function HomeTab({
       <Group label="Paragraf" className="thesis-home-group">
         <div className="thesis-home-rows">
           <div className="thesis-home-row">
-            <Tool label="Madde işaretli liste" disabled={blockOff || actions.isLayoutTextTarget} onMouseDown={keep} onClick={() => invoke("toggleList", false)}>
+            <Tool label="Madde işaretli liste" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} pressed={!blockOff && !actions.isLayoutTextTarget && format?.list === 'ul'} onMouseDown={keep} onClick={() => invoke("toggleList", false)}>
               <List size={16} aria-hidden="true" />
             </Tool>
-            <Tool label="Numaralı liste" disabled={blockOff || actions.isLayoutTextTarget} onMouseDown={keep} onClick={() => invoke("toggleList", true)}>
+            <Tool label="Numaralı liste" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} pressed={!blockOff && !actions.isLayoutTextTarget && format?.list === 'ol'} onMouseDown={keep} onClick={() => invoke("toggleList", true)}>
               <ListOrdered size={16} aria-hidden="true" />
             </Tool>
             <span className="thesis-home-sep" aria-hidden="true" />
-            <Tool label="Girintiyi azalt" disabled={blockOff || actions.isLayoutTextTarget} onMouseDown={keep} onClick={() => invoke("changeIndent", "decrease")}>
+            <Tool label="Girintiyi azalt" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} onMouseDown={keep} onClick={() => invoke("changeIndent", "decrease")}>
               <IndentDecrease size={16} aria-hidden="true" />
             </Tool>
-            <Tool label="Girintiyi artır" disabled={blockOff || actions.isLayoutTextTarget} onMouseDown={keep} onClick={() => invoke("changeIndent", "increase")}>
+            <Tool label="Girintiyi artır" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} onMouseDown={keep} onClick={() => invoke("changeIndent", "increase")}>
               <IndentIncrease size={16} aria-hidden="true" />
             </Tool>
           </div>
           <div className="thesis-home-row">
             {aligns.map(([value, label, Icon]) => (
-              <Tool key={value} label={label} title={actions.isLayoutTextTarget ? `${label} · ${{ page: "sayfa kenarları", content: "sayfanın yazı alanı", box: "metin kutusu" }[alignmentScope]}` : label} disabled={blockOff} pressed={format?.align === value} onMouseDown={keep} onClick={() => invoke("applyAlign", value, alignmentScope)}>
+              <Tool key={value} label={label} title={actions.isLayoutTextTarget ? `${label} · ${{ page: "sayfa kenarları", content: "sayfanın yazı alanı", box: "metin kutusu" }[alignmentScope]}` : label} disabled={blockOff} disabledReason={paragraphUnavailable} pressed={!blockOff && format?.align === value} onMouseDown={keep} onClick={() => invoke("applyAlign", value, alignmentScope)}>
                 <Icon size={16} aria-hidden="true" />
               </Tool>
             ))}
@@ -165,7 +156,7 @@ export default function HomeTab({
       <Group label="Stiller" className="thesis-home-group thesis-home-styles">
         <div className="thesis-style-gallery" role="listbox" aria-label="Stil galerisi">
           {styles.map((style) => {
-            const isActive = style.style ? format?.block === `style:${style.style}` : format?.block === String(style.level);
+            const isActive = !blockOff && !actions.isLayoutTextTarget && (style.style ? format?.block === `style:${style.style}` : format?.block === String(style.level));
             return (
               <button
                 key={style.id}
@@ -178,8 +169,7 @@ export default function HomeTab({
                 onMouseDown={keep}
                 onClick={() => setStyle(style)}
               >
-                <span>{style.sample}</span>
-                <small>{style.label}</small>
+                <span>{style.label}</span>
               </button>
             );
           })}

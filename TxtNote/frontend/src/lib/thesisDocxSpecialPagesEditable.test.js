@@ -6,7 +6,7 @@ import { compileThesisDocument } from "../../../../engine/src/engine.js";
 import { buildThesisDocx } from "../../../../engine/src/export.js";
 import { resolveThesisTemplate } from "../../../../engine/src/registry.js";
 
-const spec = (name) => JSON.parse(readFileSync(new URL(`../../../../orchestration/specs/${name}`, import.meta.url), "utf8"));
+const spec = (name) => JSON.parse(readFileSync(new URL(`../../../../engine/specs/${name}`, import.meta.url), "utf8"));
 const firstPages = async (name, title) => {
   const d = spec(name);
   const thesis = { ...d.researchData.thesis, values: { ...d.researchData.thesis.values, THESIS_TITLE: title } };

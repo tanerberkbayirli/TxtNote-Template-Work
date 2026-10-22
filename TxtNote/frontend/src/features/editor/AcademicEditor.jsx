@@ -258,8 +258,8 @@ export const AcademicEditor = ({
 
   const liveExportDoc = useCallback(() => {
     const article = articleRef.current;
-    if (article) layoutAcademicPages(article);
-    return { ...exportDoc(), article };
+    const measuredPageCount = article ? layoutAcademicPages(article) : undefined;
+    return { ...exportDoc(), article, measuredPageCount };
   }, [exportDoc]);
 
   const handleExportPdf = useCallback(async () => {

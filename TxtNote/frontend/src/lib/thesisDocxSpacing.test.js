@@ -29,9 +29,9 @@ describe("DOCX paragraph spacing (Word renders max(after, before), not the sum)"
     assert.deepEqual(spacingOf(xml, "AAA"), { before: 120, after: 200 });
     assert.deepEqual(spacingOf(xml, "BBB"), { before: 320, after: 200 });
   });
-  it("collapse (default) is unchanged", async () => {
+  it("collapse (default): the next paragraph carries the collapsed gap max(after, before), which Word's max renders unchanged", async () => {
     const xml = await docXml(withSpacing(null), "<p>AAA</p><p>BBB</p>");
-    assert.deepEqual(spacingOf(xml, "BBB"), { before: 120, after: 200 });
+    assert.deepEqual(spacingOf(xml, "BBB"), { before: 200, after: 200 });
   });
   it("a caption below a table keeps with the table's last row (keep-with-next on every row)", async () => {
     const t = structuredClone(generic);

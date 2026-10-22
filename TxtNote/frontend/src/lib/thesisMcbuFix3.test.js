@@ -32,11 +32,11 @@ describe("MCBÜ fix 3: found-in-testing bugs", () => {
   it("Tıp reference list is numbered in order and never double-numbered", () => {
     const html = (items) => compileThesisDocument(mcbuTipUzmanlik, { values: {} }, "T", "<h1>Giriş</h1>", items).sections.find((s) => s.type === "bibliography").html;
     const out = html(["Kaya B. Kitap. 2020.", "2. Yılmaz A. Makale. 2021."]);
-    assert.match(out, /<li>1\. Kaya B\./);
-    assert.match(out, /<li>2\. Yılmaz A\./);
+    assert.match(out, /<li[^>]*>1\. Kaya B\./);
+    assert.match(out, /<li[^>]*>2\. Yılmaz A\./);
     assert.doesNotMatch(out, /2\. 2\./);
     // Other templates stay unnumbered.
-    assert.doesNotMatch(compileThesisDocument(mcbuMaster, { values: {} }, "T", "<h1>G</h1>", ["Kaya B. Kitap."]).sections.find((s) => s.type === "bibliography").html, /<li>1\. /);
+    assert.doesNotMatch(compileThesisDocument(mcbuMaster, { values: {} }, "T", "<h1>G</h1>", ["Kaya B. Kitap."]).sections.find((s) => s.type === "bibliography").html, /<li[^>]*>1\. /);
   });
 
   it("Doktora: an excluded heading with a different size gets its own Word style, not the shared one", async () => {
