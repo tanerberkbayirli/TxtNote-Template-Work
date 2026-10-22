@@ -54,11 +54,13 @@ jobs:
           test "${PIPESTATUS[0]}" -eq 0
 
       - name: No skipped tests
-        # Every "# SKIP" line counts (a skipped describe block is not in the "skipped" total). The only allowed skips
-        # are fonts that ship with Microsoft Office, not with Windows, so the runner cannot have them.
+        # Every line the spec reporter marks "﹣" counts: skipped tests and skipped describe blocks alike, whatever reason
+        # text follows (a reason replaces "# SKIP"; a skipped describe is not in the "skipped" total). The only allowed
+        # skips are fonts that ship with Microsoft Office, not with Windows, so the runner cannot have them.
         run: |
-          grep -E '# SKIP' unit-tests.log | grep -vE 'embeds genuine Wingdings [23] \(symbol cmap\)' > unexpected-skips.log || true
-          grep -E '# SKIP' unit-tests.log || true
+          grep -E '^\s*﹣ ' unit-tests.log > skips.log || true
+          cat skips.log
+          grep -vE 'embeds genuine Wingdings [23] \(symbol cmap\)' skips.log > unexpected-skips.log || true
           if [ -s unexpected-skips.log ]; then echo "Unexpected skipped tests:"; cat unexpected-skips.log; exit 1; fi
 
       - name: Engine tool tests
