@@ -1,0 +1,17 @@
+<!-- organize-scan-sources -->
+# İstanbul 29 Mayıs Üniversitesi — tez kaynakları (otomatik tarama)
+
+Alan adı: `29mayis.edu.tr` · İstanbul · vakif · tarama durumu: kısmi (108/112 sayfa) · 2026-10-04
+
+Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
+
+## Şablonlar
+
+- **İstanbul 29 Mayıs Üniversitesi Tez Öneri Raporu – Türkçe Örnek** — DOC. Kaynak sayfa: [Tez Yazım Kılavuzu ve Şablonları](https://sbe.29mayis.edu.tr/tr/tez-yazim-kilavuzu-ve-sablonlari) · [dosya](https://filehost.29mayis.edu.tr/upload/2026/07/27/template_dosya_istanbul_29_mayis_universitesi_tez_oneri_raporu_-turkce_ornek.doc). Yerel: [template_dosya_istanbul_29_mayis_universitesi_tez_oneri_raporu_-turkce_ornek.doc](./template_dosya_istanbul_29_mayis_universitesi_tez_oneri_raporu_-turkce_ornek.doc) (SHA-256 `ca17ca9ab77905cd495cea80dd7746a3507b3436533eca2266fb07ce8fd8eb85`).
+- **İstanbul 29 Mayıs Üniversitesi Tez Yazım – Arapça Örnek** — DOC. Kaynak sayfa: [Tez Yazım Kılavuzu ve Şablonları](https://sbe.29mayis.edu.tr/tr/tez-yazim-kilavuzu-ve-sablonlari) · [dosya](https://filehost.29mayis.edu.tr/upload/2026/07/27/template_dosya_istanbul_29_mayis_universitesi_tez_yazim_-arapca_ornek.doc). Yerel: [template_dosya_istanbul_29_mayis_universitesi_tez_yazim_-arapca_ornek.doc](./template_dosya_istanbul_29_mayis_universitesi_tez_yazim_-arapca_ornek.doc) (SHA-256 `4d0e0a7a2947de978a84af0443228017e978b14dc8e56fd9754a7fc06e035974`).
+- **İstanbul 29 Mayıs Üniversitesi Tez Yazım – Türkçe Örnek** — DOC. Kaynak sayfa: [Tez Yazım Kılavuzu ve Şablonları](https://sbe.29mayis.edu.tr/tr/tez-yazim-kilavuzu-ve-sablonlari) · [dosya](https://filehost.29mayis.edu.tr/upload/2026/07/27/template_dosya_istanbul_29_mayis_universitesi_tez_yazim_-turkce_ornek.doc). Yerel: [template_dosya_istanbul_29_mayis_universitesi_tez_yazim_-turkce_ornek.doc](./template_dosya_istanbul_29_mayis_universitesi_tez_yazim_-turkce_ornek.doc) (SHA-256 `0544da9616462247921baa8577510b4f7b6ec40213dc4963fc461f5f7ad265bb`).
+
+## Yazım kılavuzları
+
+- **buradan** — DOCX. Kaynak sayfa: [Tez Yazım Kılavuzu ve Şablonları](https://sbe.29mayis.edu.tr/tr/tez-yazim-kilavuzu-ve-sablonlari) · [dosya](https://filehost.29mayis.edu.tr/upload/2023/03/23/sbe_tez_yazim_kilavuzu_11-12-2018_15c9241ba97c0c.docx). Yerel: [sbe_tez_yazim_kilavuzu_11-12-2018_15c9241ba97c0c.docx](./sbe_tez_yazim_kilavuzu_11-12-2018_15c9241ba97c0c.docx) (SHA-256 `30aa34b92532c4697dce028ed6d5c94f909ecbf9e7f156a69c2130a3db8e8692`).
+- **İstanbul 29 Mayıs Üniversitesi Tez Yazım Kılavuzu** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu ve Şablonları](https://sbe.29mayis.edu.tr/tr/tez-yazim-kilavuzu-ve-sablonlari) · [dosya](https://filehost.29mayis.edu.tr/upload/2026/07/27/istanbul_29_mayis_universitesi_tez_yazim_kilavuzu.pdf). Yerel: [istanbul_29_mayis_universitesi_tez_yazim_kilavuzu.pdf](./istanbul_29_mayis_universitesi_tez_yazim_kilavuzu.pdf) (SHA-256 `0ea6fcfa199f1715d68dbd45d77b0e06c4c3e83c32f25c94cc0baa62ca5e4101`).

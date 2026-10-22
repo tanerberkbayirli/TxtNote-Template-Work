@@ -1,0 +1,18 @@
+<!-- organize-scan-sources -->
+# İstanbul Esenyurt Üniversitesi — tez kaynakları (otomatik tarama)
+
+Alan adı: `esenyurt.edu.tr` · İstanbul · vakif · tarama durumu: kısmi (68/68 sayfa) · 2026-10-04
+
+Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
+
+## Şablonlar
+
+- **Thesis Template 1 Outer Cover - Inner Cover** — DOCX. Kaynak sayfa: [Graduate School of Education - Project/Thesis Writing Guide | İstanbul Esenyurt Üniversitesi](https://www.esenyurt.edu.tr/content/1350-graduate-school-of-education-project-thesis-writing-guide) · [dosya](https://www.esenyurt.edu.tr/uploads/2026/06/nyf61srmruobz-thesis-template-1_outer-cover-inner-cover.docx). Yerel: [nyf61srmruobz-thesis-template-1_outer-cover-inner-cover.docx](./nyf61srmruobz-thesis-template-1_outer-cover-inner-cover.docx) (SHA-256 `90fb6ee42a5742a98e7d304e8c9f4cb10bcf81a10d73f5539044c2aed5f53a47`).
+- **Lisansüstü Eğitim Enstitüsü Tez Şablonu 2** — DOCX. Kaynak sayfa: [Lisansüstü Eğitim Enstitüsü - Proje/Tez Yazım Kılavuzu | İstanbul Esenyurt Üniversitesi](https://www.esenyurt.edu.tr/icerik/1079-lisansustu-egitim-enstitusu-proje-tez-yazim-kilavuzu) · [dosya](https://www.esenyurt.edu.tr/uploads/2026/07/i13txa2ss1kbn-lee-tez-sablonu-2.docx). Yerel: [i13txa2ss1kbn-lee-tez-sablonu-2.docx](./i13txa2ss1kbn-lee-tez-sablonu-2.docx) (SHA-256 `6d0e7540e7d28affb4da4450d3d64de58416fc36c743209f7c27c6414c4f627c`).
+- **Thesis Template 2** — DOCX. Kaynak sayfa: [Graduate School of Education - Project/Thesis Writing Guide | İstanbul Esenyurt Üniversitesi](https://www.esenyurt.edu.tr/content/1350-graduate-school-of-education-project-thesis-writing-guide) · [dosya](https://www.esenyurt.edu.tr/uploads/2026/07/wfolismenia9b-thesis-template-2-4-7.docx). Yerel: [wfolismenia9b-thesis-template-2-4-7.docx](./wfolismenia9b-thesis-template-2-4-7.docx) (SHA-256 `7bdde874dd74b9eeb0782fbac985ffc35f361a1d0416bbb43bc52ec2376e2bc7`).
+- **Lisansüstü Eğitim Enstitüsü Tez Şablonu 1-Dış Kapak-İç Kapak** — DOCX. Kaynak sayfa: [Lisansüstü Eğitim Enstitüsü - Proje/Tez Yazım Kılavuzu | İstanbul Esenyurt Üniversitesi](https://www.esenyurt.edu.tr/icerik/1079-lisansustu-egitim-enstitusu-proje-tez-yazim-kilavuzu) · [dosya](https://www.esenyurt.edu.tr/uploads/2026/08/nampblwdv4qtj-dis-kapak-ic-kapak-sablon.docx). Yerel: [nampblwdv4qtj-dis-kapak-ic-kapak-sablon.docx](./nampblwdv4qtj-dis-kapak-ic-kapak-sablon.docx) (SHA-256 `87ba2ae79b4391cbe8c31da9d1a16b369d6b86bc690d71a1ee03ae14c930bc58`).
+
+## Yazım kılavuzları
+
+- **Istanbul Esenyurt Unıversıty Graduate Educatıon Instıtute Thesıs Wrıtıng Guıde** — DOCX. Kaynak sayfa: [Graduate School of Education - Project/Thesis Writing Guide | İstanbul Esenyurt Üniversitesi](https://www.esenyurt.edu.tr/content/1350-graduate-school-of-education-project-thesis-writing-guide) · [dosya](https://www.esenyurt.edu.tr/uploads/2026/07/27u1sitj0mmzl-thesis-writing-guide-4.docx). Yerel: [27u1sitj0mmzl-thesis-writing-guide-4.docx](./27u1sitj0mmzl-thesis-writing-guide-4.docx) (SHA-256 `607c44e7ce5443d28681a8b3421847adc0fdaa8b7e35192a6abeb2bfcc4d6b33`).
+- **İstanbul Esenyurt Üniversitesi Lisansüstü Eğitim Enstitüsü Tez Yazım Kılavuzu** — DOCX. Kaynak sayfa: [Lisansüstü Eğitim Enstitüsü - Proje/Tez Yazım Kılavuzu | İstanbul Esenyurt Üniversitesi](https://www.esenyurt.edu.tr/icerik/1079-lisansustu-egitim-enstitusu-proje-tez-yazim-kilavuzu) · [dosya](https://www.esenyurt.edu.tr/uploads/2026/07/kp3x2lqxba5yi-tez-yazim-kilavuzu.docx). Yerel: [kp3x2lqxba5yi-tez-yazim-kilavuzu.docx](./kp3x2lqxba5yi-tez-yazim-kilavuzu.docx) (SHA-256 `ab9b361caf0b56413f721b1fd11f074542edd4b6ad02b1deff5bf7bc21f4693e`).

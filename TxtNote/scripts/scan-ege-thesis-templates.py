@@ -16,7 +16,10 @@ import hashlib
 import html
 import json
 import re
+import socket
+import ssl
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -36,7 +39,7 @@ USER_AGENT = "TxtEngineThesisTemplateInventory/1.0 (public institutional templat
 MAX_HTML_BYTES = 3 * 1024 * 1024
 MAX_SITEMAP_BYTES = 8 * 1024 * 1024
 MAX_TEMPLATE_BYTES = 25 * 1024 * 1024
-REQUEST_TIMEOUT = 6
+REQUEST_TIMEOUT = 15
 FILE_EXTENSIONS = {".doc", ".docx", ".dot", ".dotx", ".odt", ".tex", ".pdf", ".zip"}
 TEMPLATE_MARKERS = ("şablon", "sablon", "template", "taslak")
 POSSIBLE_TEMPLATE_TERMS = (
@@ -53,6 +56,46 @@ GUIDE_TERMS = (
     "tez yazım kuralları", "tez yazim kurallari", "referans sistemleri",
     "reference systems", "latex kılavuz", "latex kilavuz", "latex klavuz", "latex guide",
 )
+# Downloads that live next to thesis guides but are not thesis-writing sources.
+EXCLUDED_TERMS = (
+    "dönem projesi", "donem projesi", "term project", "staj", "internship",
+    "faaliyet raporu", "stratejik plan", "akademik takvim", "takvim", "calendar",
+    "el kitabı", "el kitabi", "handbook", "ders planı", "ders plani", "müfredat", "mufredat",
+    "kontenjan", "tezsiz", "non-thesis", "tez önerisi", "tez onerisi", "thesis proposal",
+    "bitirme projesi", "seminer", "seminar", "proje yazım", "proje yazim",
+)
+# Linked from a guide page, these still describe thesis layout without saying "tez".
+LAYOUT_TERMS = ("yazım", "yazim", "kapak", "cover", "format", "biçim", "bicim", "şablon", "sablon", "template", "kılavuz", "kilavuz", "klavuz", "guide")
+# Graduate institutes usually sit on one of these subdomains; many university
+# home pages build their menus with JavaScript, so the crawler would not reach them.
+INSTITUTE_SUBDOMAINS = (
+    "lee", "lisansustu", "lisansustuegitim", "lisansustuegitimenstitusu", "enstitu", "enstituler",
+    "fbe", "sbe", "sabe", "saglikbe", "sagbe", "ebe", "gse", "sosbe", "fenbe",
+    "fenbilimleri", "sosyalbilimler", "saglikbilimleri", "egitimbilimleri",
+    "fen", "sosyal", "saglik", "fenbil", "sosbil", "graduate", "gradschool", "grad", "gradschool",
+    "lisansustuegitim-enstitusu", "lisansustu-egitim-enstitusu", "lee-enstitu",
+)
+
+
+def build_ssl_contexts() -> tuple[ssl.SSLContext, ssl.SSLContext]:
+    """Verified context (certifi when installed), plus an unverified fallback.
+
+    Several university sites send incomplete certificate chains. Public thesis
+    guides are not secrets, so after a verification failure the request is
+    retried unverified and the item records that it was."""
+    verified = ssl.create_default_context()
+    try:
+        import certifi  # noqa: WPS433 — optional
+        verified.load_verify_locations(certifi.where())
+    except Exception:
+        pass
+    unverified = ssl.create_default_context()
+    unverified.check_hostname = False
+    unverified.verify_mode = ssl.CERT_NONE
+    return verified, unverified
+
+
+SSL_VERIFIED, SSL_UNVERIFIED = build_ssl_contexts()
 PAGE_TERMS = (
     "tez", "thesis", "lisansüstü", "lisansustu", "graduate", "enstitü",
     "enstitu", "kilavuz", "kılavuz", "sablon", "şablon", "tez-yazim",
@@ -61,7 +104,8 @@ PAGE_TERMS = (
 
 
 def normalize_text(value: str) -> str:
-    value = html.unescape(value or "").lower()
+    # str.lower() turns "İ" into "i" + combining dot, which breaks every match on uppercase Turkish text.
+    value = html.unescape(value or "").replace("İ", "i").lower()
     value = value.translate(str.maketrans({"ı": "i", "İ": "i", "ş": "s", "ğ": "g", "ü": "u", "ö": "o", "ç": "c"}))
     return re.sub(r"\s+", " ", value).strip()
 
@@ -95,6 +139,15 @@ def canonical_url(url: str) -> str:
         if not key.lower().startswith(("utm_", "fbclid", "gclid"))
     ])
     return urllib.parse.urlunsplit((parsed.scheme.lower(), parsed.netloc.lower(), parsed.path or "/", clean_query, ""))
+
+
+def request_url(url: str) -> str:
+    """Percent-encode non-ASCII path/query characters so urllib can send the request."""
+    parsed = urllib.parse.urlsplit(url)
+    netloc = parsed.netloc.encode("idna").decode("ascii") if not parsed.netloc.isascii() else parsed.netloc
+    path = urllib.parse.quote(parsed.path, safe="/%:@!$&'()*+,;=-._~")
+    query = urllib.parse.quote(parsed.query, safe="=&%:@!$'()*+,;/?-._~")
+    return urllib.parse.urlunsplit((parsed.scheme, netloc, path, query, ""))
 
 
 def hostname(url: str) -> str:
@@ -151,11 +204,13 @@ class PageParser(HTMLParser):
 
 
 class SiteCrawler:
-    def __init__(self, university: dict, max_pages: int, delay: float):
+    def __init__(self, university: dict, max_pages: int, delay: float, max_seconds: float = 0):
         self.university = university
-        self.domain = university["domain"].lower()
+        self.domain = university["domain"].strip().lower()
         self.max_pages = max_pages
         self.delay = delay
+        self.deadline = time.monotonic() + max_seconds if max_seconds > 0 else None
+        self.deadline_reached = False
         self.robot_parsers: dict[str, urllib.robotparser.RobotFileParser] = {}
         self.robots_checked: set[str] = set()
         self.sitemaps_by_origin: dict[str, list[str]] = {}
@@ -165,6 +220,10 @@ class SiteCrawler:
         self.pages_fetched: set[str] = set()
         self.candidates: dict[str, dict[str, str]] = {}
         self.guides: dict[str, dict[str, str]] = {}
+        # Crawl order: best URL/link-text relevance first, so the page budget is
+        # not spent on news and menus before the thesis pages are reached.
+        self.priority: dict[str, int] = {}
+        self.unverified_hosts: set[str] = set()
 
     def fetch_raw(self, url: str, limit: int) -> tuple[bytes | None, str, str]:
         url = canonical_url(url)
@@ -173,17 +232,26 @@ class SiteCrawler:
         elapsed = time.monotonic() - self.last_request
         if elapsed < self.delay:
             time.sleep(self.delay - elapsed)
-        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xml,text/xml,*/*;q=0.5"})
+        request = urllib.request.Request(request_url(url), headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xml,text/xml,*/*;q=0.5"})
         self.last_request = time.monotonic()
-        try:
-            with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT) as response:
-                final_url = canonical_url(response.geturl())
-                data = response.read(limit + 1)
-                if len(data) > limit:
-                    return data[:limit], final_url, "boyut sınırı nedeniyle kısaltıldı"
-                return data, final_url, ""
-        except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
-            return None, url, str(error)[:240]
+        contexts = [SSL_VERIFIED, SSL_UNVERIFIED]
+        while contexts:
+            context = contexts.pop(0)
+            try:
+                with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT, context=context) as response:
+                    final_url = canonical_url(response.geturl())
+                    data = response.read(limit + 1)
+                    if context is SSL_UNVERIFIED:
+                        self.unverified_hosts.add(hostname(url))
+                    if len(data) > limit:
+                        return data[:limit], final_url, "boyut sınırı nedeniyle kısaltıldı"
+                    return data, final_url, ""
+            except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
+                text = str(error)
+                if contexts and ("CERTIFICATE_VERIFY_FAILED" in text or "SSL" in text or "ssl" in text):
+                    continue
+                return None, url, text[:240]
+        return None, url, "SSL bağlantısı kurulamadı"
 
     def load_robots(self, page_url: str) -> list[str]:
         parsed = urllib.parse.urlsplit(page_url)
@@ -286,8 +354,11 @@ class SiteCrawler:
         decoded_url = urllib.parse.unquote(file_url)
         link_context = " ".join((label, decoded_url))
         template_match = has_thesis_topic(link_context) and is_match(link_context, TEMPLATE_MARKERS)
+        if is_match(link_context, EXCLUDED_TERMS):
+            return
         guide_page = is_match(page_title, GUIDE_TERMS)
-        guide_match = is_match(link_context, GUIDE_TERMS) or (guide_page and not template_match)
+        guide_page_link = guide_page and (has_thesis_topic(link_context) or is_match(link_context, LAYOUT_TERMS) or is_generic_download_label(label))
+        guide_match = is_match(link_context, GUIDE_TERMS) or (guide_page_link and not template_match)
         page_template = has_thesis_topic(page_title) and is_match(page_title, TEMPLATE_MARKERS)
         has_form_context = is_match(link_context, FORM_TERMS)
         possible_match = not guide_match and (
@@ -341,20 +412,42 @@ class SiteCrawler:
             if in_domain(linked_url, self.domain) and not file_extension(linked_url):
                 link_relevant = is_match(" ".join((linked_url, label)), PAGE_TERMS)
                 if link_relevant or (page_relevant and self.relevance(linked_url) >= 3):
+                    score = self.relevance(f"{linked_url} {label}")
+                    if score > self.priority.get(linked_url, -1):
+                        self.priority[linked_url] = score
                     queue.append(linked_url)
 
+    def institute_seeds(self) -> list[str]:
+        seeds = []
+        for label in INSTITUTE_SUBDOMAINS:
+            host = f"{label}.{self.domain}"
+            try:
+                socket.getaddrinfo(host, 443)
+            except (socket.gaierror, UnicodeError, OSError):
+                continue
+            seeds.append(f"https://{host}/")
+        return seeds
+
     def scan(self) -> dict:
-        page_seeds = [self.university["start_url"], *self.university.get("seed_urls", [])]
+        page_seeds = [self.university["start_url"], *self.university.get("seed_urls", []), *self.institute_seeds()]
         sitemap_urls = []
         for page_url in page_seeds:
             sitemap_urls.extend(self.load_robots(page_url))
         sitemap_pages = self.read_sitemap(sitemap_urls)
         queue: deque[str] = deque(page_seeds)
         queue.extend(sitemap_pages[: self.max_pages])
+        for seed in page_seeds:
+            self.priority[canonical_url(seed)] = 100
         while queue and len(self.pages_visited) < self.max_pages:
-            self.parse_page(queue.popleft(), queue)
+            if self.deadline and time.monotonic() > self.deadline:
+                self.deadline_reached = True
+                break
+            best = max(range(len(queue)), key=lambda index: (self.priority.get(canonical_url(queue[index]), self.relevance(queue[index])), -index))
+            url = queue[best]
+            del queue[best]
+            self.parse_page(url, queue)
         homepage_reachable = canonical_url(self.university["start_url"]) in self.pages_fetched
-        page_limit_reached = len(self.pages_visited) >= self.max_pages and bool(queue)
+        page_limit_reached = (len(self.pages_visited) >= self.max_pages or self.deadline_reached) and bool(queue)
         scan_status = "erişilemedi" if not self.pages_fetched else ("kısmi" if self.errors or page_limit_reached or not homepage_reachable else "tarandı")
         return {
             "university_id": self.university["id"],
@@ -365,6 +458,8 @@ class SiteCrawler:
             "pages_fetched": len(self.pages_fetched),
             "homepage_reachable": homepage_reachable,
             "page_limit_reached": page_limit_reached,
+            "deadline_reached": self.deadline_reached,
+            "ssl_unverified_hosts": sorted(self.unverified_hosts),
             "scan_status": scan_status,
             "template_candidates": sorted(self.candidates.values(), key=lambda item: item["document_url"]),
             "guides": sorted(self.guides.values(), key=lambda item: item["document_url"]),
@@ -390,15 +485,34 @@ def write_reports(report: dict, output_base: Path) -> tuple[Path, Path]:
     return json_path, csv_path
 
 
-def download_templates(report: dict, config: dict, output_base: Path, delay: float) -> Path:
+def download_templates(report: dict, config: dict, output_base: Path, delay: float, include_guides: bool = False) -> Path:
     download_root = output_base.parent / f"{output_base.stem}-files"
     download_root.mkdir(parents=True, exist_ok=True)
     universities = {item["id"]: item for item in config["universities"]}
     crawlers: dict[str, SiteCrawler] = {}
     hashes_by_university: dict[str, dict[str, str]] = {}
 
-    for item in report["template_candidates"]:
+    # Files downloaded by an earlier run of the same output are reused when still on disk.
+    previous: dict[str, dict] = {}
+    previous_path = output_base.with_suffix(".json")
+    if previous_path.exists():
+        try:
+            earlier = json.loads(previous_path.read_text(encoding="utf-8"))
+            for item in earlier.get("template_candidates", []) + earlier.get("guides", []):
+                if item.get("download_status") == "indirildi" and item.get("local_path") and Path(item["local_path"]).is_file():
+                    previous[item["document_url"]] = item
+        except (OSError, json.JSONDecodeError):
+            previous = {}
+
+    items = report["template_candidates"] + (report["guides"] if include_guides else [])
+    for item in items:
         university_id = item["university_id"]
+        earlier_item = previous.get(item["document_url"])
+        if earlier_item:
+            for key in ("download_status", "local_path", "sha256", "file_size_bytes", "final_url"):
+                item[key] = earlier_item.get(key)
+            hashes_by_university.setdefault(university_id, {})[item["sha256"]] = item["local_path"]
+            continue
         university = universities[university_id]
         crawler = crawlers.setdefault(university_id, SiteCrawler(university, max_pages=1, delay=max(delay, 0.5)))
         data, final_url, error = crawler.fetch(item["document_url"], MAX_TEMPLATE_BYTES)
@@ -425,7 +539,11 @@ def download_templates(report: dict, config: dict, output_base: Path, delay: flo
         file_name = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "_", parsed_name).strip(" .")
         if not file_name:
             file_name = f"template-{digest[:12]}.{item['file_type']}"
-        file_name = file_name[:160]
+        if len(file_name) > 160:  # shorten the stem, never the extension
+            suffix = Path(file_name).suffix if len(Path(file_name).suffix) <= 8 else ""
+            file_name = file_name[: 160 - len(suffix)].rstrip(" .") + suffix
+        if not Path(file_name).suffix:
+            file_name = f"{file_name}.{item['file_type']}"
         safe_id = re.sub(r"[^a-zA-Z0-9_-]", "_", university_id)
         target = download_root / safe_id / file_name
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -443,18 +561,38 @@ def download_templates(report: dict, config: dict, output_base: Path, delay: flo
         item["final_url"] = final_url
 
     report["download_directory"] = str(download_root.resolve())
+    if include_guides:
+        report["downloaded_guide_link_count"] = sum(item.get("download_status") == "indirildi" for item in report["guides"])
+        report["failed_guide_download_count"] = sum(item.get("download_status") == "başarısız" for item in report["guides"])
     report["downloaded_template_link_count"] = sum(item.get("download_status") == "indirildi" for item in report["template_candidates"])
     report["duplicate_template_link_count"] = sum(item.get("download_status") == "yinelenen dosya" for item in report["template_candidates"])
     report["failed_template_download_count"] = sum(item.get("download_status") == "başarısız" for item in report["template_candidates"])
     return download_root
 
 
-def build_report(config: dict, max_pages: int, delay: float) -> dict:
+def load_checkpoint(path: Path | None) -> dict[str, dict]:
+    done: dict[str, dict] = {}
+    if path and path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            try:
+                result = json.loads(line)
+            except json.JSONDecodeError:
+                continue  # a line cut off by an interrupted write
+            done[result["university_id"]] = result
+    return done
+
+
+def build_report(config: dict, max_pages: int, delay: float, workers: int = 4, checkpoint: Path | None = None, max_seconds: float = 0) -> dict:
     universities = config["universities"]
+    results_by_id = {key: value for key, value in load_checkpoint(checkpoint).items() if key in {u["id"] for u in universities}}
+    if results_by_id:
+        print(f"Ara kayıttan {len(results_by_id)} üniversite alındı; kalanlar taranacak.", file=sys.stderr, flush=True)
+    checkpoint_lock = threading.Lock()
+
     def scan_one(index: int, university: dict) -> dict:
         print(f"[{index}/{len(universities)}] {university['name']} taranıyor...", file=sys.stderr, flush=True)
         try:
-            result = SiteCrawler(university, max_pages, delay).scan()
+            result = SiteCrawler(university, max_pages, delay, max_seconds).scan()
         except KeyboardInterrupt:
             raise
         except Exception as error:
@@ -473,12 +611,17 @@ def build_report(config: dict, max_pages: int, delay: float) -> dict:
                 "errors": [{"url": university["start_url"], "error": str(error)[:240]}],
             }
         print(f"    tamamlandı: {result['pages_fetched']}/{result['pages_scanned']} sayfa yüklendi, {len(result['template_candidates'])} aday", file=sys.stderr, flush=True)
+        if checkpoint:
+            with checkpoint_lock, checkpoint.open("a", encoding="utf-8") as output_file:
+                output_file.write(json.dumps(result, ensure_ascii=False) + "\n")
         return result
 
-    results_by_id = {}
-    workers = min(4, len(universities))
+    pending = [(index, university) for index, university in enumerate(universities, 1) if university["id"] not in results_by_id]
+    workers = max(1, min(workers, len(pending) or 1))
+    if checkpoint:
+        checkpoint.parent.mkdir(parents=True, exist_ok=True)
     with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = [executor.submit(scan_one, index, university) for index, university in enumerate(universities, 1)]
+        futures = [executor.submit(scan_one, index, university) for index, university in pending]
         for future in concurrent.futures.as_completed(futures):
             result = future.result()
             results_by_id[result["university_id"]] = result
@@ -508,20 +651,37 @@ def build_report(config: dict, max_pages: int, delay: float) -> dict:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Ege Bölgesi üniversitelerinin resmî sitelerinde tez şablonu dosyalarını ara.")
+    parser = argparse.ArgumentParser(description="Üniversitelerin resmî sitelerinde tez şablonu ve yazım kılavuzu dosyalarını ara.")
     parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG, help="Üniversite ve resmî alan adı listesi (JSON).")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help="Çıktı dosyalarının uzantısız yolu.")
     parser.add_argument("--max-pages", type=int, default=40, help="Üniversite başına taranacak en fazla sayfa.")
     parser.add_argument("--delay", type=float, default=0.35, help="Aynı üniversite sitesine istekler arasındaki saniye.")
     parser.add_argument("--download-files", action="store_true", help="Bulunan şablon dosyalarını kurum klasörlerine indir.")
+    parser.add_argument("--download-guides", action="store_true", help="--download-files ile birlikte tez yazım kılavuzlarını da indir.")
+    parser.add_argument("--region", help="Yalnız bu bölgedeki üniversiteleri tara (yapılandırmadaki region alanı).")
+    parser.add_argument("--only", help="Virgülle ayrılmış üniversite id listesi.")
+    parser.add_argument("--workers", type=int, default=4, help="Aynı anda taranan üniversite sayısı (her siteye istekler yine sıralı).")
+    parser.add_argument("--max-seconds", type=float, default=600, help="Üniversite başına en uzun tarama süresi (saniye, 0 = sınırsız).")
+    parser.add_argument("--no-checkpoint", action="store_true", help="Her üniversiteden sonra <output>.partial.jsonl ara kaydını yazma/okuma.")
     args = parser.parse_args()
     if args.max_pages < 1 or args.delay < 0:
         parser.error("--max-pages en az 1, --delay en az 0 olmalı.")
     try:
         config = json.loads(args.config.read_text(encoding="utf-8"))
-        report = build_report(config, args.max_pages, args.delay)
+        if args.region:
+            config["universities"] = [u for u in config["universities"] if u.get("region") == args.region]
+            config["region"] = args.region
+            config["provinces"] = config.get("regions", {}).get(args.region, config["provinces"])
+        if args.only:
+            wanted = {value.strip() for value in args.only.split(",") if value.strip()}
+            config["universities"] = [u for u in config["universities"] if u["id"] in wanted]
+        if not config["universities"]:
+            print("Seçime uyan üniversite yok.", file=sys.stderr)
+            return 2
+        checkpoint = None if args.no_checkpoint else args.output.with_name(args.output.name + ".partial.jsonl")
+        report = build_report(config, args.max_pages, args.delay, args.workers, checkpoint, args.max_seconds)
         if args.download_files:
-            download_templates(report, config, args.output, args.delay)
+            download_templates(report, config, args.output, args.delay, args.download_guides)
         json_path, csv_path = write_reports(report, args.output)
     except KeyboardInterrupt:
         print("Tarama kullanıcı tarafından durduruldu.", file=sys.stderr)
@@ -529,13 +689,15 @@ def main() -> int:
     except (OSError, json.JSONDecodeError, KeyError, TypeError) as error:
         print(f"Tarama başlatılamadı: {error}", file=sys.stderr)
         return 2
-    print(f"\nEge Bölgesi: {report['university_count']} üniversite")
+    print(f"\n{report['region']}: {report['university_count']} üniversite")
     print(f"Açıkça şablon olarak etiketlenen dosyalar: {report['explicit_template_file_count']}")
     print(f"Ek doğrulama isteyen şablon adayları: {report['possible_template_file_count']}")
     print(f"Toplam şablon adayı dosya: {report['template_candidate_file_count']}")
     print(f"Ayrı tutulan tez yazım kılavuzları: {report['guide_file_count_separate']}")
     if args.download_files:
         print(f"İndirilen şablon bağlantısı: {report['downloaded_template_link_count']}; yinelenen dosya: {report['duplicate_template_link_count']}; başarısız indirme: {report['failed_template_download_count']}")
+        if args.download_guides:
+            print(f"İndirilen kılavuz bağlantısı: {report['downloaded_guide_link_count']}; başarısız: {report['failed_guide_download_count']}")
         print(f"Dosyalar: {report['download_directory']}")
     print(f"Sayfa: {report['pages_fetched']}/{report['pages_scanned']} başarıyla yüklendi; ana sitesi erişilen kurum: {report['universities_with_reachable_homepage']}/{report['university_count']}; hata görülen kurum: {report['university_records_with_scan_errors']}")
     print("\nKurum bazında bulunan şablon adayları:")

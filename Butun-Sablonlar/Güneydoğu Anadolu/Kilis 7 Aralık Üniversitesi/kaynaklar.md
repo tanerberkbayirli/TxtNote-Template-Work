@@ -1,0 +1,18 @@
+<!-- organize-scan-sources -->
+# Kilis 7 Aralık Üniversitesi — tez kaynakları (otomatik tarama)
+
+Alan adı: `kilis.edu.tr` · Kilis · devlet · tarama durumu: kısmi (60/70 sayfa) · 2026-10-04
+
+Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
+
+## Yazım kılavuzları
+
+- **Lisansüstü Eğitim Enstitüsü Kurumsal Adres ve Bağlantı Kullanımı** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/subdomain_files/enstitu/files/73/Formlar/Tez%20Yazım/Yayınlarda%20Kurumsal%20Adres%20ve%20Bağlantı%20Kullanımı.pdf). Yerel: [Yayınlarda Kurumsal Adres ve Bağlantı Kullanımı.pdf](./Yayınlarda%20Kurumsal%20Adres%20ve%20Bağlantı%20Kullanımı.pdf) (SHA-256 `b9d2328bf3ef4c1f7df48b3b6885a79f7d9225f6ad6adefef9f6eb2b2bb8c2e0`).
+- **Başvuru Kılavuzu** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/subdomain_files/enstitu/files/73/Öğrenci/başvuru%20rehberi-2.pdf). Yerel: [başvuru rehberi-2.pdf](./başvuru%20rehberi-2.pdf) (SHA-256 `c6e6bb95079e2c5ee7649f457391b232aea4494ec60652b44c8617a868ee8fec`).
+- **Tez Savunma Öncesi ve Sonrası İstenilen Belgeler** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/tr/page/%20%20https:/enstitu.kilis.edu.tr/subdomain_files/enstitu/files/73/Öğrenci/TEZ%20SAVUNMA%20ÖNCESİ%20VE%20SONRASI%20İSTENEN%20BELGELER.pdf). İndirilemedi: HTTP Error 404: Not Found.
+- **Tez Benzerlik Raporu** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/tr/page/%20%20https:/enstitu.kilis.edu.tr/subdomain_files/enstitu1/files/73/Öğrenci/Benzerlikkural2.pdf). İndirilemedi: HTTP Error 404: Not Found.
+- **Tez Teslim** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/tr/page/%20%20https:/enstitu.kilis.edu.tr/subdomain_files/enstitu1/files/73/Öğrenci/TezTeslimib2.pdf). İndirilemedi: HTTP Error 404: Not Found.
+- **Tez Savunma Öncesi ve Sonrası İstenilen Belgeler** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/tr/page/%20https:/enstitu.kilis.edu.tr/subdomain_files/enstitu/files/73/Öğrenci/TEZ%20SAVUNMA%20ÖNCESİ%20VE%20SONRASI%20İSTENEN%20BELGELER.pdf). İndirilemedi: HTTP Error 404: Not Found.
+- **Başvuru Kılavuzu** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/tr/page/%20https:/enstitu.kilis.edu.tr/subdomain_files/enstitu/files/73/Öğrenci/başvuru%20rehberi-2.pdf). İndirilemedi: HTTP Error 404: Not Found.
+- **Tez Benzerlik Raporu** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/tr/page/%20https:/enstitu.kilis.edu.tr/subdomain_files/enstitu1/files/73/Öğrenci/Benzerlikkural2.pdf). İndirilemedi: HTTP Error 404: Not Found.
+- **Tez Teslim** — PDF. Kaynak sayfa: [Tez Yazım Kılavuzu | Kilis 7 Aralık Üniversitesi](https://enstitu.kilis.edu.tr/tr/page/4543) · [dosya](https://enstitu.kilis.edu.tr/tr/page/%20https:/enstitu.kilis.edu.tr/subdomain_files/enstitu1/files/73/Öğrenci/TezTeslimib2.pdf). İndirilemedi: HTTP Error 404: Not Found.

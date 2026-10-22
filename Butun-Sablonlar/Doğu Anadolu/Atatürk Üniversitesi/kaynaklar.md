@@ -1,0 +1,17 @@
+<!-- organize-scan-sources -->
+# Atatürk Üniversitesi — tez kaynakları (otomatik tarama)
+
+Alan adı: `atauni.edu.tr` · Erzurum · devlet · tarama durumu: kısmi (43/44 sayfa) · 2026-10-04
+
+Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
+
+## Şablonlar
+
+- **Tez Öneri Şablonu_24.03.2021** — DOCX. Kaynak sayfa: [Öneri ve Tez Yazım Kılavuzları – Eğitim Bilimleri Enstitüsü](https://atauni.edu.tr/egitim-bilimleri-enstitusu/oneri-ve-tez-yazim-kilavuzlari/) · [dosya](https://birimler.atauni.edu.tr/egitim-bilimleri-enstitusu/wp-content/uploads/sites/788/2020/07/Tez-Oneri-Sablonu_24.03.2021.docx). Yerel: [Tez-Oneri-Sablonu_24.03.2021.docx](./Tez-Oneri-Sablonu_24.03.2021.docx) (SHA-256 `fbe01be4785c9af0e3ebdfdad4c9d75b0b5be33f299036614676ab13489e338c`).
+- **Tez Şablonu - Doktora_24.03.2021** — DOCX. Kaynak sayfa: [Öneri ve Tez Yazım Kılavuzları – Eğitim Bilimleri Enstitüsü](https://atauni.edu.tr/egitim-bilimleri-enstitusu/oneri-ve-tez-yazim-kilavuzlari/) · [dosya](https://birimler.atauni.edu.tr/egitim-bilimleri-enstitusu/wp-content/uploads/sites/788/2025/02/Tez-Sablonu-Doktora_20.02.2025.docx). Yerel: [Tez-Sablonu-Doktora_20.02.2025.docx](./Tez-Sablonu-Doktora_20.02.2025.docx) (SHA-256 `02fd51d5bc64fc864f52a9412e6d9ffa5b227240ee40fd360f00e1c7115629f2`).
+- **Tez Şablonu - Yüksek Lisans_24.03.2021** — DOCX. Kaynak sayfa: [Öneri ve Tez Yazım Kılavuzları – Eğitim Bilimleri Enstitüsü](https://atauni.edu.tr/egitim-bilimleri-enstitusu/oneri-ve-tez-yazim-kilavuzlari/) · [dosya](https://birimler.atauni.edu.tr/egitim-bilimleri-enstitusu/wp-content/uploads/sites/788/2025/02/Tez-Sablonu-Yuksek-Lisans_20.02.2025.docx). Yerel: [Tez-Sablonu-Yuksek-Lisans_20.02.2025.docx](./Tez-Sablonu-Yuksek-Lisans_20.02.2025.docx) (SHA-256 `006fc9bbf956ac0b966a7656ceaa314a207b2ae644fd23d30ef7acc9418bb61a`).
+
+## Yazım kılavuzları
+
+- **APA 6 ile APA 7 Arasındaki Farklar ve Tez Yazım Kılavuzunda Yapılan Değişiklikler** — DOCX. Kaynak sayfa: [Öneri ve Tez Yazım Kılavuzları – Eğitim Bilimleri Enstitüsü](https://atauni.edu.tr/egitim-bilimleri-enstitusu/oneri-ve-tez-yazim-kilavuzlari/) · [dosya](https://birimler.atauni.edu.tr/egitim-bilimleri-enstitusu/wp-content/uploads/sites/788/2020/07/APA-6-ile-APA-7-Arasindaki-Farklar-ve-Tez-Yazim-Kilavuzunda-Yapilan-Degisiklikler.docx). Yerel: [APA-6-ile-APA-7-Arasindaki-Farklar-ve-Tez-Yazim-Kilavuzunda-Yapilan-Degisiklikler.docx](./APA-6-ile-APA-7-Arasindaki-Farklar-ve-Tez-Yazim-Kilavuzunda-Yapilan-Degisiklikler.docx) (SHA-256 `1916ba7524508378729808ce9a8ff6c773c0fae37bae1ec75c02ad4d1da22425`).
+- **EBE_Tez Yazım Kılavuzu_V9_24.05.2021** — PDF. Kaynak sayfa: [Öneri ve Tez Yazım Kılavuzları – Eğitim Bilimleri Enstitüsü](https://atauni.edu.tr/egitim-bilimleri-enstitusu/oneri-ve-tez-yazim-kilavuzlari/) · [dosya](https://birimler.atauni.edu.tr/egitim-bilimleri-enstitusu/wp-content/uploads/sites/788/2020/07/EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf). Yerel: [EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf](./EBE_Tez-Yazim-Kilavuzu_V9_24.05.2021.pdf) (SHA-256 `1d6070855a0ca7648efc8877d18f169a2aa2d7f026fb28c29447ced5aae17a6c`).
