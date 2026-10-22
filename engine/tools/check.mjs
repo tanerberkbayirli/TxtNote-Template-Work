@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Deterministic conformance checker driver. See engine/tools/CHECKER.md.
+// Deterministic conformance checker driver. See orchestration/motor/CHECKER.md.
 //   node engine/tools/check.mjs --target <id> [--fixture <path>] [--word] [--only <ids>|failed]
 //        [--out <dir>] [--no-export <pdf> <docx>] [--build-reference] [--official-docx <path>]
 // Flow: checks.json -> real export (export.mjs, per fixture variant) -> optional Word render

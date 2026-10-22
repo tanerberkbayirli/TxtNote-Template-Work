@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 const here = path.dirname(fileURLToPath(import.meta.url)) // <repo>/frontend
 const repoRoot = path.resolve(here, '..')                 // <repo>
 const engineRoot = path.resolve(repoRoot, '../engine')
+const templatesRoot = path.resolve(repoRoot, '../Butun-Sablonlar') // template data (JSON) the engine imports
 
 const host = process.env.TAURI_DEV_HOST
 
@@ -61,7 +62,7 @@ export default defineConfig({
     fs: {
       // services/ and types/ sit ABOVE the Vite root. Without this, Vite
       // refuses to serve them: "outside of Vite serving allow list".
-      allow: [repoRoot, engineRoot],
+      allow: [repoRoot, engineRoot, templatesRoot],
     },
   },
 })

@@ -19,6 +19,8 @@ const fixedRegex = s => regex(s).replace(/\s+/g, '\\s*');
 const cleanTitle = s => s.trim().replace(/^\d+(?:\.\d+)*\.\s*/, '');
 const bool = node => node && !['0', 'false', 'off'].includes(val(node));
 
+const headingParagraphsLevels = profile => Array.from({ length: profile.headingParagraphs.length }, (_, i) => i + 1);
+
 export function generate(extracted, profile) {
   if (extracted.target !== profile.target || !extracted.wordRender?.pages?.length) throw new Error('Target mismatch or verified Word geometry missing');
   if (extracted.source.sha256 !== extracted.wordRender.provenance.sourceSha256) throw new Error('Source and Word hashes differ');
@@ -83,20 +85,25 @@ export function generate(extracted, profile) {
     if (i === 0) style.pageBreakBefore = true; // reviewed chapter boundaries in Word page inventory
     headings[i + 1] = style;
   });
+  // The table of contents lists the heading levels the source really has.
+  const tocLevels = headingParagraphsLevels(profile);
   const section = extracted.sections[profile.bodySection - 1]; if (!section) throw new Error('Missing body section');
   const m = section.measurements.pgMar, size = section.measurements.pgSz;
+  // Page number placement comes from the source: the footer paragraph that holds the PAGE field and its justification.
+  const footerField = extracted.pageFields.find(f => /footer/i.test(f.locator));
+  if (!footerField) throw new Error('Page number must be in a footer (no footer PAGE field in the source)');
+  const numberJc = child(footerField.paragraphProperties.pPr, 'jc');
+  const sourceNumberAlign = ({ left: 'left', start: 'left', center: 'center', right: 'right', end: 'right' })[val(numberJc)];
+  if (!sourceNumberAlign) throw new Error('Footer PAGE alignment must be source-backed');
   const margins = Object.fromEntries(['top', 'bottom', 'left', 'right'].map(k => [`${k}Mm`, fact(`page.margins.${k}Mm`, m[k].value, m[k].locator)]));
   const page = { size: 'A4', widthMm: fact('page.widthMm', size.w.value, size.w.locator), heightMm: fact('page.heightMm', size.h.value, size.h.locator), orientation: 'portrait', margins,
     header: { heightMm: 0, distanceMm: fact('page.header.distanceMm', m.header.value, m.header.locator) }, footer: { heightMm: 0, distanceMm: fact('page.footer.distanceMm', m.footer.value, m.footer.locator) },
-    numbering: { enabled: true, position: 'bottom', align: 'right', format: 'arabic', startAt: 1, restart: true, style: { fontFamily: body.fontFamily, fontSizePt: body.fontSizePt } } };
+    numbering: { enabled: true, position: 'bottom', align: sourceNumberAlign, format: 'arabic', startAt: 1, restart: true, style: { fontFamily: body.fontFamily, fontSizePt: body.fontSizePt } } };
   const sourceBodyPage = extracted.wordRender.pages[profile.bodySourcePage - 1];
   const sourceNumber = sourceBodyPage.lines.at(-1);
   if (!/^\d+$/.test(sourceNumber.text)) throw new Error('Body source page has no numeric footer');
   page.numbering.baselineFromTopMm = fact('page.numbering.baselineFromTopMm', sourceNumber.baseline, sourceNumber.locator);
-  const sourceJc = extracted.pageFields.flatMap(f => child(f.paragraphProperties.pPr, 'jc') || []);
-  const sourceJcNode = sourceJc.find(n => val(n) === page.numbering.align);
-  if (!sourceJcNode) throw new Error('Footer PAGE alignment must be source-backed');
-  fact('page.numbering.align', page.numbering.align, sourceJcNode.locator);
+  fact('page.numbering.align', page.numbering.align, numberJc.locator);
   const checks = [];
   const check = (id, kind, params, expected, locator, tolerance = .5, category = 'geometry') => checks.push({ id, kind, params, expected, tolerance, source: { file: extracted.source.file, locator }, evidence: 'MEASURED', tier: 1, category });
   check('page-a4', 'page_size', { pages: 'all' }, [page.widthMm, page.heightMm], section.locator);
@@ -141,14 +148,14 @@ export function generate(extracted, profile) {
       });
       // Every measured fixed-page line is checked against both real exports.
       for (const source of ['pdf', 'word']) for (const attr of ['baseline', 'x0', 'size']) {
-        const selector = rule.id === 'cover' ? { page: 1 } : { find: '^' + fixedRegex(rule.title), within: rule.group === 'back' ? { label: 'arabic' } : { label: 'roman' } };
+        const selector = rule.group === 'cover' ? { page: rule.sourcePage } : { find: '^' + fixedRegex(rule.title), within: rule.group === 'back' ? { label: 'arabic' } : { label: 'roman' } };
         const locator = line.locator;
         const nth = sourcePage.lines.slice(0, lineIndex).filter(prior => prior.text.trim() === line.text.trim()).length;
         check(`${rule.id}-line-${lineIndex + 1}-${source}-${attr}`, 'line_attr', { source, pages: selector, regex: '^' + fixedRegex(line.text.trim()) + '$', attr, agg: 'first', nth }, line[attr], locator, attr === 'size' ? .1 : .5, 'fixed-pages');
       }
     });
-    return { id: rule.id, type: rule.type, title: rule.title, status: 'required', group: rule.group, mode: 'static', tocEntry: rule.id === 'cover' ? 'none' : 'title', blocks,
-      overrides: { page: { numbering: rule.id === 'cover' ? { enabled: false } : { enabled: true, format: rule.group === 'back' ? 'arabic' : 'roman-lower', ...(rule.id === 'approval' ? { startAt: 1, restart: true } : { restart: false }) } } } };
+    return { id: rule.id, type: rule.type, title: rule.title, status: 'required', group: rule.group, mode: 'static', tocEntry: rule.group === 'cover' ? 'none' : 'title', blocks,
+      overrides: { page: { numbering: rule.group === 'cover' ? { enabled: false } : { enabled: true, format: rule.group === 'back' ? 'arabic' : 'roman-lower', ...(rule.id === 'approval' ? { startAt: 1, restart: true } : { restart: false }) } } } };
   }
   const sectionContent = {};
   for (const rule of profile.sections) {
@@ -162,7 +169,7 @@ export function generate(extracted, profile) {
     const indexStyle = rule.styleId ? mappedText(styleProperties(rule.styleId), `sections.${rule.id}.index`) : body;
     sections.push({ id: rule.id, type: rule.type, title: rule.title, status: 'required', group: rule.group || 'front', mode: rule.indexKind ? 'generated' : 'editable', showTitle: true,
       tocEntry: rule.indexKind ? 'none' : 'title',
-      ...(rule.indexKind ? { generatedIndex: { kind: rule.indexKind, title: rule.title, levels: [1, 2, 3, 4], includePageNumbers: true, leader: 'dots', style: indexStyle } } : {}),
+      ...(rule.indexKind ? { generatedIndex: { kind: rule.indexKind, title: rule.title, levels: tocLevels, includePageNumbers: true, leader: 'dots', style: indexStyle } } : {}),
       overrides: { page: { numbering: { enabled: true, format: rule.group === 'back' ? 'arabic' : 'roman-lower', restart: false } },
         headings: { 1: { ...titleStyle, numbering: { enabled: false }, firstLineIndentMm: 0, pageBreakBefore: false } } } });
     if (rule.paragraphs) sectionContent[rule.id] = rule.paragraphs.map(index => `<p>${escape(extracted.paragraphs[index - 1].text)}</p>`).join('');
@@ -215,7 +222,7 @@ export function generate(extracted, profile) {
   const template = { schemaVersion: 1, templateVersion: '1.0.0', ...profile.identity, status: 'official', source: { type: 'official', documentName: extracted.source.file.split('/').at(-1), verifiedAt: profile.reviewedAt, notes: ['Source-derived Phase 4 pilot. XML/example structure has precedence; unresolved source properties are retained in the mapping inventory. Fixed-page text nodes remain editable in layout and Word; long replacement text needs layout review.'] },
     page, typography: { body, paragraph: body, headings, paragraphStyles, lineSpacing: wordFlowPreset(body.fontFamily) }, placeholders: {}, sections, tables, figures,
     captionKinds: { photo: { ...figures, label: 'Resim' } }, bibliography: { heading: 'KAYNAKLAR', style: mappedText(paragraphProperties(profile.bibliographyParagraph), 'bibliography.style') },
-    toc: { heading: 'İÇİNDEKİLER', levels: [1, 2, 3, 4], showPageNumbers: true } };
+    toc: { heading: 'İÇİNDEKİLER', levels: tocLevels, showPageNumbers: true } };
   const errors = validateThesisTemplate(template); if (errors.length) throw new Error(errors.join('\n'));
   const fixture = { title: 'ADÜ Sağlık Bilimleri kaynak temelli doğrulama pilotu', content: main,
     researchData: { thesis: { templateId: template.id, templateVersion: template.templateVersion, selection: { universityId: template.universityId, instituteId: template.instituteId, degreeType: template.degreeType, language: template.language }, values: {}, sectionContent, enabledSections: [] } } };

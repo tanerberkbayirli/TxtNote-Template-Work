@@ -33,3 +33,28 @@ test('provenance mismatch and unreviewed missing source roles fail closed', () =
   assert.throws(() => generate(extracted, { ...profile, bodyParagraph: 999999 }), /Missing source paragraph/);
   assert.throws(() => generate(extracted, { ...profile, bodyStyle: 'missing' }), /Missing style/);
 });
+
+test('page number alignment and the table-of-contents levels come from the source, not from constants', () => {
+  const centered = structuredClone(extracted);
+  for (const field of centered.pageFields) {
+    const jc = field.paragraphProperties.pPr.children.find(c => c.tag === 'w:jc');
+    jc.attributes['w:val'] = 'center';
+  }
+  const { template, mapping } = generate(centered, profile);
+  assert.equal(template.page.numbering.align, 'center');
+  assert.ok(mapping.facts.some(f => f.key === 'page.numbering.align' && f.value === 'center'));
+  const three = generate(extracted, { ...profile, headingParagraphs: profile.headingParagraphs.slice(0, 3) }).template;
+  assert.deepEqual(three.toc.levels, [1, 2, 3]);
+  assert.ok(three.sections.filter(s => s.generatedIndex).every(s => s.generatedIndex.levels.length === 3));
+  const noFooter = structuredClone(extracted);
+  noFooter.pageFields = noFooter.pageFields.map(f => ({ ...f, locator: f.locator.replace('footer', 'header') }));
+  assert.throws(() => generate(noFooter, profile), /footer PAGE field/);
+});
+
+test('an inner cover is a fixed page of the cover group: no page number, not in the contents', () => {
+  const inner = { id: 'inner-cover', type: 'innerCover', title: 'İÇ KAPAK', group: 'cover', sourcePage: 2 };
+  const withInner = { ...profile, fixedPages: [...profile.fixedPages, inner], sections: [profile.sections[0], { id: 'inner-cover' }, ...profile.sections.slice(1)] };
+  const section = generate(extracted, withInner).template.sections.find(s => s.id === 'inner-cover');
+  assert.equal(section.tocEntry, 'none');
+  assert.deepEqual(section.overrides.page.numbering, { enabled: false });
+});

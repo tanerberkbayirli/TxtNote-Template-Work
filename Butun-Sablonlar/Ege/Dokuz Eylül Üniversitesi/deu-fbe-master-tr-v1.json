@@ -1,0 +1,4956 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "1.0.0",
+ "id": "deu-fbe-master-tr-v1",
+ "universityId": "deu",
+ "universityName": "Dokuz Eylül Üniversitesi",
+ "instituteId": "fbe",
+ "instituteName": "Fen Bilimleri Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "official",
+ "source": {
+  "type": "official",
+  "documentName": "official.docx",
+  "verifiedAt": "2026-10-22",
+  "notes": [
+   "Source-derived Phase 4 pilot. XML/example structure has precedence; unresolved source properties are retained in the mapping inventory. Fixed-page text nodes remain editable in layout and Word; long replacement text needs layout review."
+  ]
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210.008611,
+  "heightMm": 297.003611,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 30.00375,
+   "bottomMm": 30.00375,
+   "leftMm": 40.005,
+   "rightMm": 25.011944
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.505972
+  },
+  "footer": {
+   "heightMm": 0,
+   "distanceMm": 12.505972
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": true,
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12
+   },
+   "baselineFromTopMm": 275.201
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceBeforePt": 12,
+   "spaceAfterPt": 12,
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1.5
+   },
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 5.009444444444444
+  },
+  "paragraph": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceBeforePt": 12,
+   "spaceAfterPt": 12,
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1.5
+   },
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 5.009444444444444
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "color": "#FFFFFF",
+    "align": "center",
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 12,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1.5
+    },
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 5.009444444444444,
+    "keepWithNext": true,
+    "keepLines": true,
+    "pageBreakBefore": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}."
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "left",
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 12,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1.5
+    },
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 5.009444444444444,
+    "keepWithNext": true,
+    "keepLines": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    }
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "italic": true,
+    "align": "left",
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 32.6982421875,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1.5
+    },
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 5.009444444444444,
+    "keepWithNext": true,
+    "keepLines": true,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}."
+    }
+   }
+  },
+  "paragraphStyles": {
+   "sourceTable": {
+    "fontFamily": "Arial",
+    "fontSizePt": 8,
+    "fontWeight": 400,
+    "align": "center",
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 12,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1
+    },
+    "lineHeight": 1,
+    "firstLineIndentMm": 0
+   }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.14990234375,
+   "baseline": "word",
+   "paragraphSpacing": "additive"
+  }
+ },
+ "placeholders": {},
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "KAPAK",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "id": "cover-l1-w1",
+     "type": "text",
+     "value": "DOKUZ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 68.51297459072536,
+     "yMm": 29.262791781955293,
+     "widthMm": 19.147799470689563,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l1-w2",
+     "type": "text",
+     "value": "EYLÜL",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 87.89902212354872,
+     "yMm": 29.262791781955293,
+     "widthMm": 17.99372478061251,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l1-w3",
+     "type": "text",
+     "value": "ÜNİVERSİTESİ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 106.07651401095919,
+     "yMm": 29.262791781955293,
+     "widthMm": 36.38419893052844,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l2-w1",
+     "type": "text",
+     "value": "FEN",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 71.26463695102267,
+     "yMm": 39.16879781087239,
+     "widthMm": 10.876286697387698,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l2-w2",
+     "type": "text",
+     "value": "BİLİMLERİ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 82.39402868482802,
+     "yMm": 39.16879781087239,
+     "widthMm": 28.142437786526145,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l2-w3",
+     "type": "text",
+     "value": "ENSTİTÜSÜ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 110.7895768907335,
+     "yMm": 39.16879781087239,
+     "widthMm": 28.97451985677084,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l3-w1",
+     "type": "text",
+     "value": "TEZ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 40.73172189924452,
+     "yMm": 95.26597663031683,
+     "widthMm": 13.706349203321665,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l3-w2",
+     "type": "text",
+     "value": "ADINI",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 55.02557110256618,
+     "yMm": 95.26597663031683,
+     "widthMm": 19.668999354044594,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l3-w3",
+     "type": "text",
+     "value": "BÜYÜK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 75.26936666700574,
+     "yMm": 95.26597663031683,
+     "widthMm": 23.936191516452368,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l3-w4",
+     "type": "text",
+     "value": "HARFLERLE,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 99.80576197306314,
+     "yMm": 95.26597663031683,
+     "widthMm": 42.10356343587239,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l3-w5",
+     "type": "text",
+     "value": "18",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 142.5158703274197,
+     "yMm": 95.26597663031683,
+     "widthMm": 7.349999999999994,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l3-w6",
+     "type": "text",
+     "value": "PUNTO,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 150.46607411702473,
+     "yMm": 95.26597663031683,
+     "widthMm": 24.761695607503242,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l4-w1",
+     "type": "text",
+     "value": "KOYU",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 38.530389319525824,
+     "yMm": 106.23031599256726,
+     "widthMm": 20.06905030144585,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l4-w2",
+     "type": "text",
+     "value": "VE",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 59.17423583136664,
+     "yMm": 106.23031599256726,
+     "widthMm": 9.820149612426754,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l4-w3",
+     "type": "text",
+     "value": "ORTALANMIŞ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 69.61363953484428,
+     "yMm": 106.23031599256726,
+     "widthMm": 44.694355985853406,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l4-w4",
+     "type": "text",
+     "value": "OLARAK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 114.8954955206977,
+     "yMm": 106.23031599256726,
+     "widthMm": 28.84475818210177,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l4-w5",
+     "type": "text",
+     "value": "BURAYA",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 144.3813572353787,
+     "yMm": 106.23031599256726,
+     "widthMm": 28.158958095974384,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l5-w1",
+     "type": "text",
+     "value": "YAZINIZ.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 90.65330598619248,
+     "yMm": 117.19464458889429,
+     "widthMm": 29.7302230834961,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w1",
+     "type": "text",
+     "value": "Tez",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 39.08072179158528,
+     "yMm": 178.46309475368923,
+     "widthMm": 8.701914681328667,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w2",
+     "type": "text",
+     "value": "Yazarı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 48.02088453504774,
+     "yMm": 178.46309475368923,
+     "widthMm": 15.225019963582355,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w3",
+     "type": "text",
+     "value": "Soyadı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 63.49900953504774,
+     "yMm": 178.46309475368923,
+     "widthMm": 15.279506301879884,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w4",
+     "type": "text",
+     "value": "büyük",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 79.03162087334526,
+     "yMm": 178.46309475368923,
+     "widthMm": 14.412725660536026,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w5",
+     "type": "text",
+     "value": "harflerle,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 93.66774300469292,
+     "yMm": 178.46309475368923,
+     "widthMm": 20.63367453681097,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w6",
+     "type": "text",
+     "value": "14",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 114.51986168755424,
+     "yMm": 178.46309475368923,
+     "widthMm": 5.933182949490018,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w7",
+     "type": "text",
+     "value": "punto,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 120.7061550564236,
+     "yMm": 178.46309475368923,
+     "widthMm": 14.586078559027783,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w8",
+     "type": "text",
+     "value": "koyu",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 135.5106777615017,
+     "yMm": 178.46309475368923,
+     "widthMm": 11.455778672960093,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w9",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 147.15022354125975,
+     "yMm": 178.46309475368923,
+     "widthMm": 5.690486738416894,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l6-w10",
+     "type": "text",
+     "value": "ortalanmış",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 153.0789637247721,
+     "yMm": 178.46309475368923,
+     "widthMm": 23.74911744859486,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l7-w1",
+     "type": "text",
+     "value": "olarak",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 81.33997480604383,
+     "yMm": 186.9720930311415,
+     "widthMm": 14.74457448323568,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l7-w2",
+     "type": "text",
+     "value": "buraya",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 96.32280273437499,
+     "yMm": 186.9720930311415,
+     "widthMm": 16.071969774034287,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l7-w3",
+     "type": "text",
+     "value": "yazınız.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 112.64788292778861,
+     "yMm": 186.9720930311415,
+     "widthMm": 17.032849968804257,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w1",
+     "type": "text",
+     "value": "Tez",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 42.80605426364475,
+     "yMm": 245.8920539008246,
+     "widthMm": 7.5743672264946795,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w2",
+     "type": "text",
+     "value": "basım",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 50.421820025973844,
+     "yMm": 245.8920539008246,
+     "widthMm": 11.83309737311469,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w3",
+     "type": "text",
+     "value": "tarihini",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 62.35135133531358,
+     "yMm": 245.8920539008246,
+     "widthMm": 14.618629328409824,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w4",
+     "type": "text",
+     "value": "ay",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 77.02831399705674,
+     "yMm": 245.8920539008246,
+     "widthMm": 5.233333333333334,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w5",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 82.35597114562988,
+     "yMm": 245.8920539008246,
+     "widthMm": 4.953936089409723,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w6",
+     "type": "text",
+     "value": "yıl",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 87.35130577087402,
+     "yMm": 245.8920539008246,
+     "widthMm": 5.470404349433039,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w7",
+     "type": "text",
+     "value": "olarak,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 92.89696748521592,
+     "yMm": 245.8920539008246,
+     "widthMm": 13.818532816569004,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w8",
+     "type": "text",
+     "value": "12",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 106.78230641682941,
+     "yMm": 245.8920539008246,
+     "widthMm": 5.233333333333334,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w9",
+     "type": "text",
+     "value": "punto,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 112.07397308349609,
+     "yMm": 245.8920539008246,
+     "widthMm": 12.684009043375653,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w10",
+     "type": "text",
+     "value": "koyu",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 124.8233563741048,
+     "yMm": 245.8920539008246,
+     "widthMm": 9.915401119656025,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w11",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 134.8097946166992,
+     "yMm": 245.8920539008246,
+     "widthMm": 4.996267700195318,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w12",
+     "type": "text",
+     "value": "ortalanmış",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 139.84746085272894,
+     "yMm": 245.8920539008246,
+     "widthMm": 20.53682428995768,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l8-w13",
+     "type": "text",
+     "value": "olarak",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 160.4786089579264,
+     "yMm": 245.8920539008246,
+     "widthMm": 12.709395090738951,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l9-w1",
+     "type": "text",
+     "value": "buraya",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 91.11897523668077,
+     "yMm": 250.76038292778858,
+     "widthMm": 13.945538414849167,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l9-w2",
+     "type": "text",
+     "value": "yazınız.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 105.12284698486327,
+     "yMm": 250.76038292778858,
+     "widthMm": 14.762564341227218,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "cover-l10-w1",
+     "type": "text",
+     "value": "İZMİR",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 98.44263458251952,
+     "yMm": 259.8606457180447,
+     "widthMm": 14.165669250488278,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İÇ KAPAK",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "id": "inner-cover-l1-w1",
+     "type": "text",
+     "value": "TEZ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 48.22472114562988,
+     "yMm": 30.062053934733072,
+     "widthMm": 13.70634651184082,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l1-w2",
+     "type": "text",
+     "value": "ADINI",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 62.5185676574707,
+     "yMm": 30.062053934733072,
+     "widthMm": 19.6689993540446,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l1-w3",
+     "type": "text",
+     "value": "BÜYÜK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 82.76236322191026,
+     "yMm": 30.062053934733072,
+     "widthMm": 23.936202282375746,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l1-w4",
+     "type": "text",
+     "value": "HARFLERLE,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 107.29876929389106,
+     "yMm": 30.062053934733072,
+     "widthMm": 42.103563435872374,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l1-w5",
+     "type": "text",
+     "value": "18",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 150.0088776482476,
+     "yMm": 30.062053934733072,
+     "widthMm": 7.349999999999994,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l1-w6",
+     "type": "text",
+     "value": "PUNTO,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 157.95908143785263,
+     "yMm": 30.062053934733072,
+     "widthMm": 24.761695607503242,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l2-w1",
+     "type": "text",
+     "value": "KOYU",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 46.023391257392035,
+     "yMm": 40.98406168619791,
+     "widthMm": 20.069050301445856,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l2-w2",
+     "type": "text",
+     "value": "VE",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 66.66723776923286,
+     "yMm": 40.98406168619791,
+     "widthMm": 9.820149612426746,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l2-w3",
+     "type": "text",
+     "value": "ORTALANMIŞ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 77.10664147271049,
+     "yMm": 40.98406168619791,
+     "widthMm": 44.69436136881511,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l2-w4",
+     "type": "text",
+     "value": "OLARAK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 122.3885028415256,
+     "yMm": 40.98406168619791,
+     "widthMm": 28.84475818210177,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l2-w5",
+     "type": "text",
+     "value": "BURAYA",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 151.8743645562066,
+     "yMm": 40.98406168619791,
+     "widthMm": 28.158958095974384,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l3-w1",
+     "type": "text",
+     "value": "YAZINIZ.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 98.146302541097,
+     "yMm": 51.948401048448346,
+     "widthMm": 29.727423943413626,
+     "heightMm": 8.3018798828125,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 18,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l4-w1",
+     "type": "text",
+     "value": "Dokuz",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 70.92597329881455,
+     "yMm": 101.68709632025823,
+     "widthMm": 12.781365288628479,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l4-w2",
+     "type": "text",
+     "value": "Eylül",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 83.74873712327745,
+     "yMm": 101.68709632025823,
+     "widthMm": 10.677397028605142,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l4-w3",
+     "type": "text",
+     "value": "Üniversitesi",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 94.5056440565321,
+     "yMm": 101.68709632025823,
+     "widthMm": 22.368452368842227,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l4-w4",
+     "type": "text",
+     "value": "Fen",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 116.93242975870767,
+     "yMm": 101.68709632025823,
+     "widthMm": 7.819900258382162,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l4-w5",
+     "type": "text",
+     "value": "Bilimleri",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 124.81066335042317,
+     "yMm": 101.68709632025823,
+     "widthMm": 16.989301808675123,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l4-w6",
+     "type": "text",
+     "value": "Enstitüsü",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 141.85829849243163,
+     "yMm": 101.68709632025823,
+     "widthMm": 18.16616795857746,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l5-w1",
+     "type": "text",
+     "value": "Yüksek",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 97.3419696384006,
+     "yMm": 109.0107449001736,
+     "widthMm": 14.65249354044596,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l5-w2",
+     "type": "text",
+     "value": "Lisans",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 112.06550030178492,
+     "yMm": 109.0107449001736,
+     "widthMm": 12.75595770941841,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l5-w3",
+     "type": "text",
+     "value": "Tezi",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 124.90803036159939,
+     "yMm": 109.0107449001736,
+     "widthMm": 8.734293195936417,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w1",
+     "type": "text",
+     "value": "Anabilim",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 50.976388888888884,
+     "yMm": 116.29208340115017,
+     "widthMm": 16.98082902696398,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w2",
+     "type": "text",
+     "value": "Dalını",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 68.02824965582953,
+     "yMm": 116.29208340115017,
+     "widthMm": 11.570629543728302,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w3",
+     "type": "text",
+     "value": "seçiniz.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 79.65721253289117,
+     "yMm": 116.29208340115017,
+     "widthMm": 13.788899612426746,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w4",
+     "type": "text",
+     "value": "Anabilim",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 93.53197394476996,
+     "yMm": 116.29208340115017,
+     "widthMm": 17.937564341227215,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w5",
+     "type": "text",
+     "value": "Dalı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 111.55326843261717,
+     "yMm": 116.29208340115017,
+     "widthMm": 8.526866149902347,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w6",
+     "type": "text",
+     "value": "Program",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 121.2250295003255,
+     "yMm": 116.29208340115017,
+     "widthMm": 15.549973212348092,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w7",
+     "type": "text",
+     "value": "bilgisi",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 136.7994664510091,
+     "yMm": 116.29208340115017,
+     "widthMm": 11.600268130832262,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w8",
+     "type": "text",
+     "value": "giriniz.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 148.4750027126736,
+     "yMm": 116.29208340115017,
+     "widthMm": 13.103094143337671,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l6-w9",
+     "type": "text",
+     "value": "Programı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 161.6639478895399,
+     "yMm": 116.29208340115017,
+     "widthMm": 18.38629879421657,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w1",
+     "type": "text",
+     "value": "Tez",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 46.573723729451494,
+     "yMm": 177.53177778455947,
+     "widthMm": 8.701920064290363,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w2",
+     "type": "text",
+     "value": "Yazarı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 55.51389185587565,
+     "yMm": 177.53177778455947,
+     "widthMm": 15.225019963582348,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w3",
+     "type": "text",
+     "value": "Soyadı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 70.99201685587565,
+     "yMm": 177.53177778455947,
+     "widthMm": 15.279506301879877,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w4",
+     "type": "text",
+     "value": "büyük",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 86.52462819417318,
+     "yMm": 177.53177778455947,
+     "widthMm": 14.412725660536012,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w5",
+     "type": "text",
+     "value": "harflerle,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 101.16075032552082,
+     "yMm": 177.53177778455947,
+     "widthMm": 20.633674536810986,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w6",
+     "type": "text",
+     "value": "14",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 122.01286900838215,
+     "yMm": 177.53177778455947,
+     "widthMm": 5.933182949490018,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w7",
+     "type": "text",
+     "value": "punto,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 128.1991623772515,
+     "yMm": 177.53177778455947,
+     "widthMm": 14.586078559027783,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w8",
+     "type": "text",
+     "value": "koyu",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 143.00368508232964,
+     "yMm": 177.53177778455947,
+     "widthMm": 11.455778672960065,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w9",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 154.64323086208765,
+     "yMm": 177.53177778455947,
+     "widthMm": 5.690486738416894,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l7-w10",
+     "type": "text",
+     "value": "ortalanmış",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 160.57197104560004,
+     "yMm": 177.53177778455947,
+     "widthMm": 23.74911744859483,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l8-w1",
+     "type": "text",
+     "value": "olarak",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 88.83297136094835,
+     "yMm": 186.0407760620117,
+     "widthMm": 14.744552951388883,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l8-w2",
+     "type": "text",
+     "value": "buraya",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 103.81577775743271,
+     "yMm": 186.0407760620117,
+     "widthMm": 16.071969774034287,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l8-w3",
+     "type": "text",
+     "value": "yazınız.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 120.14085795084634,
+     "yMm": 186.0407760620117,
+     "widthMm": 17.032849968804243,
+     "heightMm": 6.679239908854167,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w1",
+     "type": "text",
+     "value": "Tez",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 52.331054263644745,
+     "yMm": 244.96071539984806,
+     "widthMm": 7.5743672264946795,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w2",
+     "type": "text",
+     "value": "basım",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 59.94682002597384,
+     "yMm": 244.96071539984806,
+     "widthMm": 11.83309737311469,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w3",
+     "type": "text",
+     "value": "tarihini",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 71.87635133531357,
+     "yMm": 244.96071539984806,
+     "widthMm": 14.618629328409838,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w4",
+     "type": "text",
+     "value": "ay",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 86.55331399705675,
+     "yMm": 244.96071539984806,
+     "widthMm": 5.233327950371631,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w5",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 91.88097652859157,
+     "yMm": 244.96071539984806,
+     "widthMm": 4.953936089409723,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w6",
+     "type": "text",
+     "value": "yıl",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 96.87630038791232,
+     "yMm": 244.96071539984806,
+     "widthMm": 5.47039896647135,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w7",
+     "type": "text",
+     "value": "olarak,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 102.42196748521592,
+     "yMm": 244.96071539984806,
+     "widthMm": 13.818532816569018,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w8",
+     "type": "text",
+     "value": "koyu",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 116.31435809665255,
+     "yMm": 244.96071539984806,
+     "widthMm": 9.953501722547742,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w9",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 126.33889694213866,
+     "yMm": 244.96071539984806,
+     "widthMm": 4.996267700195318,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w10",
+     "type": "text",
+     "value": "ortalanmış",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 131.3765631781684,
+     "yMm": 244.96071539984806,
+     "widthMm": 20.50295469495984,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w11",
+     "type": "text",
+     "value": "olarak",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 151.93785120646157,
+     "yMm": 244.96071539984806,
+     "widthMm": 12.751726701524518,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l9-w12",
+     "type": "text",
+     "value": "buraya",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 164.76061503092447,
+     "yMm": 244.96071539984806,
+     "widthMm": 13.907437811957465,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l10-w1",
+     "type": "text",
+     "value": "yazınız.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 105.6393098619249,
+     "yMm": 249.82906595865882,
+     "widthMm": 14.762564341227218,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "inner-cover-l11-w1",
+     "type": "text",
+     "value": "İZMİR",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 105.93564190334743,
+     "yMm": 258.92930721706813,
+     "widthMm": 14.165669250488278,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "YÜKSEK LİSANS TEZİ SINAV SONUÇ FORMU",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "title",
+   "blocks": [
+    {
+     "id": "approval-l1-w1",
+     "type": "text",
+     "value": "YÜKSEK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 68.72463802761501,
+     "yMm": 30.006178792317705,
+     "widthMm": 18.890063264634875,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l1-w2",
+     "type": "text",
+     "value": "LİSANS",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 87.67303462558321,
+     "yMm": 30.006178792317705,
+     "widthMm": 16.307738113403317,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l1-w3",
+     "type": "text",
+     "value": "TEZİ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 104.00947825113931,
+     "yMm": 30.006178792317705,
+     "widthMm": 11.10494952731662,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l1-w4",
+     "type": "text",
+     "value": "SINAV",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 115.17276111178927,
+     "yMm": 30.006178792317705,
+     "widthMm": 14.17413126627605,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l1-w5",
+     "type": "text",
+     "value": "SONUÇ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 129.40522571139863,
+     "yMm": 30.006178792317705,
+     "widthMm": 15.812435658772813,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l1-w6",
+     "type": "text",
+     "value": "FORMU",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 145.27599470350475,
+     "yMm": 30.006178792317705,
+     "widthMm": 16.95966322157119,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w1",
+     "type": "text",
+     "value": "TEZ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 40.012054909600145,
+     "yMm": 41.520829094780815,
+     "widthMm": 9.487832472059466,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w2",
+     "type": "text",
+     "value": "YAZARI",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 49.985789362589514,
+     "yMm": 41.520829094780815,
+     "widthMm": 17.670865503946942,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w3",
+     "type": "text",
+     "value": "BÜYÜK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 68.13832045661078,
+     "yMm": 41.520829094780815,
+     "widthMm": 16.278099526299357,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w4",
+     "type": "text",
+     "value": "HARFLERLE,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 84.89385456509059,
+     "yMm": 41.520829094780815,
+     "widthMm": 28.419283506605368,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w5",
+     "type": "text",
+     "value": "12",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 113.7905672709147,
+     "yMm": 41.520829094780815,
+     "widthMm": 5.301793840196396,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w6",
+     "type": "text",
+     "value": "PUNTO,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 119.57403208414712,
+     "yMm": 41.520829094780815,
+     "widthMm": 16.819964599609392,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w7",
+     "type": "text",
+     "value": "KOYU",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 136.8798986646864,
+     "yMm": 41.520829094780815,
+     "widthMm": 13.71270378960503,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w8",
+     "type": "text",
+     "value": "tarafından",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 151.0700316535102,
+     "yMm": 41.520829094780815,
+     "widthMm": 18.140771145290785,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l2-w9",
+     "type": "text",
+     "value": "UNVAN",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 169.7072769165039,
+     "yMm": 41.520829094780815,
+     "widthMm": 16.28655615912541,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w1",
+     "type": "text",
+     "value": "SEÇİNİZ.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 40.012054909600145,
+     "yMm": 48.84449920654296,
+     "widthMm": 19.4869691212972,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w2",
+     "type": "text",
+     "value": "DANIŞMAN",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 59.824056201510956,
+     "yMm": 48.84449920654296,
+     "widthMm": 24.249469121297196,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w3",
+     "type": "text",
+     "value": "ADINI",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 84.38797459072536,
+     "yMm": 48.84449920654296,
+     "widthMm": 13.445994186401364,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w4",
+     "type": "text",
+     "value": "BÜYÜK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 98.14207153320312,
+     "yMm": 48.84449920654296,
+     "widthMm": 16.27809414333767,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w5",
+     "type": "text",
+     "value": "HARFLERLE,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 114.72826843261717,
+     "yMm": 48.84449920654296,
+     "widthMm": 28.41928888956707,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w6",
+     "type": "text",
+     "value": "12",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 143.45566007826062,
+     "yMm": 48.84449920654296,
+     "widthMm": 5.23333333333332,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w7",
+     "type": "text",
+     "value": "PUNTO",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 148.99709616767035,
+     "yMm": 48.84449920654296,
+     "widthMm": 15.803962877061622,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w8",
+     "type": "text",
+     "value": "VE",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 165.07529220581054,
+     "yMm": 48.84449920654296,
+     "widthMm": 6.88009974161784,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l3-w9",
+     "type": "text",
+     "value": "KOYU",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 172.26772571139864,
+     "yMm": 48.84449920654296,
+     "widthMm": 13.712693023681652,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w1",
+     "type": "text",
+     "value": "OLARAK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 40.012054909600145,
+     "yMm": 56.12583770751953,
+     "widthMm": 19.580099741617836,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w2",
+     "type": "text",
+     "value": "BURAYA",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 60.28125267028808,
+     "yMm": 56.12583770751953,
+     "widthMm": 19.080566279093418,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w3",
+     "type": "text",
+     "value": "YAZINIZ.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 80.08055017259385,
+     "yMm": 56.12583770751953,
+     "widthMm": 20.210869810316296,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w4",
+     "type": "text",
+     "value": "yönetiminde",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 101.02497049967447,
+     "yMm": 56.12583770751953,
+     "widthMm": 22.17513944837782,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w5",
+     "type": "text",
+     "value": "hazırlanan",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 123.87227316962347,
+     "yMm": 56.12583770751953,
+     "widthMm": 18.606429629855683,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w6",
+     "type": "text",
+     "value": "“",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 143.23836068047416,
+     "yMm": 56.12583770751953,
+     "widthMm": 3.1166666666666742,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w7",
+     "type": "text",
+     "value": "TEZ",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 145.35502734714083,
+     "yMm": 56.12583770751953,
+     "widthMm": 9.48782170613606,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w8",
+     "type": "text",
+     "value": "ADINI",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 155.54040908813477,
+     "yMm": 56.12583770751953,
+     "widthMm": 13.445999569363039,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l4-w9",
+     "type": "text",
+     "value": "BÜYÜK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 169.7136072794596,
+     "yMm": 56.12583770751953,
+     "widthMm": 16.278094143337682,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w1",
+     "type": "text",
+     "value": "HARFLERLE,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 40.012054909600145,
+     "yMm": 63.44950781928168,
+     "widthMm": 28.419299655490455,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w2",
+     "type": "text",
+     "value": "12",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 68.61245710584852,
+     "yMm": 63.44950781928168,
+     "widthMm": 5.233333333333334,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w3",
+     "type": "text",
+     "value": "PUNTO",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 74.02689297993977,
+     "yMm": 63.44950781928168,
+     "widthMm": 15.803968260023325,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w4",
+     "type": "text",
+     "value": "VE",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 90.02043117947048,
+     "yMm": 63.44950781928168,
+     "widthMm": 6.88009974161784,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w5",
+     "type": "text",
+     "value": "KOYU",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 97.08585908677841,
+     "yMm": 63.44950781928168,
+     "widthMm": 13.712703789605044,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w6",
+     "type": "text",
+     "value": "OLARAK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 110.96272523668077,
+     "yMm": 63.44950781928168,
+     "widthMm": 19.58009974161783,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w7",
+     "type": "text",
+     "value": "BURAYA",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 130.7239221360948,
+     "yMm": 63.44950781928168,
+     "widthMm": 19.080560896131743,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w8",
+     "type": "text",
+     "value": "YAZINIZ.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 149.97711817423502,
+     "yMm": 63.44950781928168,
+     "widthMm": 20.206622653537323,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w9",
+     "type": "text",
+     "value": "”",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 169.2839392768012,
+     "yMm": 63.44950781928168,
+     "widthMm": 3.1166666666666742,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l5-w10",
+     "type": "text",
+     "value": "başlıklı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 172.58594487508137,
+     "yMm": 63.44950781928168,
+     "widthMm": 13.467165374755865,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w1",
+     "type": "text",
+     "value": "tez",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 40.012054909600145,
+     "yMm": 70.73084632025824,
+     "widthMm": 5.93606821695964,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w2",
+     "type": "text",
+     "value": "tarafımızdan",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 45.896385659111864,
+     "yMm": 70.73084632025824,
+     "widthMm": 22.36986808776856,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w3",
+     "type": "text",
+     "value": "okunmuş,",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 68.23991847568088,
+     "yMm": 70.73084632025824,
+     "widthMm": 17.59043329026963,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w4",
+     "type": "text",
+     "value": "kapsamı",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 85.80401649475097,
+     "yMm": 70.73084632025824,
+     "widthMm": 15.080056805080844,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w5",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 100.870447201199,
+     "yMm": 70.73084632025824,
+     "widthMm": 4.996267700195304,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w6",
+     "type": "text",
+     "value": "niteliği",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 105.82345021565754,
+     "yMm": 70.73084632025824,
+     "widthMm": 13.005737898084845,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w7",
+     "type": "text",
+     "value": "açısından",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 118.81132024129231,
+     "yMm": 70.73084632025824,
+     "widthMm": 16.955432213677298,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w8",
+     "type": "text",
+     "value": "bir",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 135.74042256673175,
+     "yMm": 70.73084632025824,
+     "widthMm": 5.703233591715502,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w9",
+     "type": "text",
+     "value": "Yüksek",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 141.46035766601562,
+     "yMm": 70.73084632025824,
+     "widthMm": 13.911668819851343,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w10",
+     "type": "text",
+     "value": "Lisans",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 155.34569659762911,
+     "yMm": 70.73084632025824,
+     "widthMm": 12.053233591715497,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w11",
+     "type": "text",
+     "value": "tezi",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 167.37894142998587,
+     "yMm": 70.73084632025824,
+     "widthMm": 7.0875375535753165,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l6-w12",
+     "type": "text",
+     "value": "olarak",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 174.4486111111111,
+     "yMm": 70.73084632025824,
+     "widthMm": 11.541001722547747,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l7-w1",
+     "type": "text",
+     "value": "kabul",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 40.012054909600145,
+     "yMm": 78.05449490017361,
+     "widthMm": 10.389537768893774,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l7-w2",
+     "type": "text",
+     "value": "edilmiştir.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 50.45992601182725,
+     "yMm": 78.05449490017361,
+     "widthMm": 18.31856498718261,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w1",
+     "type": "text",
+     "value": "Unvan",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 47.12405620151095,
+     "yMm": 112.65141415066188,
+     "widthMm": 12.260666020711263,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w2",
+     "type": "text",
+     "value": "Seçiniz.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 59.44305555555555,
+     "yMm": 112.65141415066188,
+     "widthMm": 14.514915805392796,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w3",
+     "type": "text",
+     "value": "Danışman",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 74.01630469428167,
+     "yMm": 112.65141415066188,
+     "widthMm": 18.183102756076394,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w4",
+     "type": "text",
+     "value": "bilgisi",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 92.26197179158528,
+     "yMm": 112.65141415066188,
+     "widthMm": 11.600268130832248,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w5",
+     "type": "text",
+     "value": "SOYADI",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 103.94597006903753,
+     "yMm": 112.65141415066188,
+     "widthMm": 16.96813600328234,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w6",
+     "type": "text",
+     "value": "BÜYÜK",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 120.92869745890299,
+     "yMm": 112.65141415066188,
+     "widthMm": 16.079129113091355,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w7",
+     "type": "text",
+     "value": "HARFLERLE",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 137.04922510782876,
+     "yMm": 112.65141415066188,
+     "widthMm": 25.42632988823786,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w8",
+     "type": "text",
+     "value": "ve",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 162.5529440138075,
+     "yMm": 112.65141415066188,
+     "widthMm": 5.0385993109809135,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w9",
+     "type": "text",
+     "value": "12",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 167.63294186062282,
+     "yMm": 112.65141415066188,
+     "widthMm": 5.23333333333332,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l8-w10",
+     "type": "text",
+     "value": "Punto",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 172.9627091301812,
+     "yMm": 112.65141415066188,
+     "widthMm": 10.901775021023212,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l9-w1",
+     "type": "text",
+     "value": "Danışman",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 106.40130038791231,
+     "yMm": 124.20841759575738,
+     "widthMm": 18.1407711452908,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l10-w1",
+     "type": "text",
+     "value": "Jüri",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 52.5003914727105,
+     "yMm": 181.87348090277774,
+     "widthMm": 7.341532601250542,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l10-w2",
+     "type": "text",
+     "value": "Üyesi",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 59.90872480604383,
+     "yMm": 181.87348090277774,
+     "widthMm": 10.850965245564787,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l10-w3",
+     "type": "text",
+     "value": "Jüri",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 152.5940234714084,
+     "yMm": 181.87348090277774,
+     "widthMm": 7.3521208869086365,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l10-w4",
+     "type": "text",
+     "value": "Üyesi",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 160.01293970743814,
+     "yMm": 181.87348090277774,
+     "widthMm": 10.850970628526483,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l11-w1",
+     "type": "text",
+     "value": "Prof.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 90.94963802761501,
+     "yMm": 239.5420539008246,
+     "widthMm": 9.335440826416018,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l11-w2",
+     "type": "text",
+     "value": "Dr.",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 100.34341218736435,
+     "yMm": 239.5420539008246,
+     "widthMm": 6.5033354865180115,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l11-w3",
+     "type": "text",
+     "value": "Abdullah",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 106.90930124918619,
+     "yMm": 239.5420539008246,
+     "widthMm": 16.756467183430985,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l11-w4",
+     "type": "text",
+     "value": "SEÇGİN",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 123.72410176595051,
+     "yMm": 239.5420539008246,
+     "widthMm": 16.273873901367182,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l12-w1",
+     "type": "text",
+     "value": "Müdür",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 109.2376367357042,
+     "yMm": 246.86572401258678,
+     "widthMm": 12.52313385009765,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l13-w1",
+     "type": "text",
+     "value": "Fen",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 95.26763458251952,
+     "yMm": 254.14706251356333,
+     "widthMm": 7.307668389214413,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l13-w2",
+     "type": "text",
+     "value": "Bilimleri",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 102.63363630506727,
+     "yMm": 254.14706251356333,
+     "widthMm": 16.303501722547736,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    },
+    {
+     "id": "approval-l13-w3",
+     "type": "text",
+     "value": "Enstitüsü",
+     "layoutMode": "absolute",
+     "wordBaseline": true,
+     "xMm": 118.99547136094834,
+     "yMm": 254.14706251356333,
+     "widthMm": 16.786105770534945,
+     "heightMm": 5.867919921875,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "italic": false,
+      "align": "left",
+      "firstLineIndentMm": 0,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0
+     }
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "thanks",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5
+      },
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 0,
+      "keepWithNext": true,
+      "keepLines": true,
+      "numbering": {
+       "enabled": false
+      },
+      "pageBreakBefore": false
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZ",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5
+      },
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 0,
+      "keepWithNext": true,
+      "keepLines": true,
+      "numbering": {
+       "enabled": false
+      },
+      "pageBreakBefore": false
+     }
+    }
+   }
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5
+      },
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 0,
+      "keepWithNext": true,
+      "keepLines": true,
+      "numbering": {
+       "enabled": false
+      },
+      "pageBreakBefore": false
+     }
+    }
+   }
+  },
+  {
+   "id": "toc",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "none",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "levels": [
+     1,
+     2,
+     3
+    ],
+    "includePageNumbers": true,
+    "leader": "dots",
+    "style": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "spaceBeforePt": 15,
+     "spaceAfterPt": 10,
+     "lineSpacing": {
+      "rule": "auto",
+      "value": 1.5
+     },
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 5.009444444444444
+    }
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 10,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5
+      },
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 0,
+      "keepWithNext": true,
+      "keepLines": true,
+      "numbering": {
+       "enabled": false
+      },
+      "pageBreakBefore": false
+     }
+    }
+   }
+  },
+  {
+   "id": "main",
+   "type": "mainContent",
+   "title": "ANA METİN",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "none",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER LİSTESİ",
+    "levels": [
+     1,
+     2,
+     3
+    ],
+    "includePageNumbers": true,
+    "leader": "dots",
+    "style": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 12,
+     "lineSpacing": {
+      "rule": "auto",
+      "value": 1.5
+     },
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 5.009444444444444
+    }
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "color": "#FFFFFF",
+      "align": "center",
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5
+      },
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 0,
+      "keepWithNext": true,
+      "keepLines": true,
+      "pageBreakBefore": false,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "none",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR LİSTESİ",
+    "levels": [
+     1,
+     2,
+     3
+    ],
+    "includePageNumbers": true,
+    "leader": "dots",
+    "style": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 12,
+     "lineSpacing": {
+      "rule": "auto",
+      "value": 1.5
+     },
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 5.009444444444444
+    }
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "color": "#FFFFFF",
+      "align": "center",
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5
+      },
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 0,
+      "keepWithNext": true,
+      "keepLines": true,
+      "pageBreakBefore": false,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "arabic",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "justify",
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 12,
+      "lineSpacing": {
+       "rule": "auto",
+       "value": 1.5
+      },
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 0,
+      "keepWithNext": true,
+      "keepLines": true,
+      "pageBreakBefore": false,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  }
+ ],
+ "tables": {
+  "label": "Tablo",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "align": "justify",
+   "spaceBeforePt": 12,
+   "spaceAfterPt": 12,
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1.5
+   },
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 0
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  },
+  "cellPadding": {
+   "topMm": 0,
+   "bottomMm": 0,
+   "leftMm": 1.9049999999999998,
+   "rightMm": 1.9049999999999998
+  },
+  "cellStyle": {
+   "fontFamily": "Arial",
+   "fontSizePt": 8,
+   "fontWeight": 400,
+   "align": "center",
+   "spaceBeforePt": 12,
+   "spaceAfterPt": 12,
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1
+   },
+   "lineHeight": 1,
+   "firstLineIndentMm": 0
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "align": "center",
+   "spaceBeforePt": 12,
+   "spaceAfterPt": 12,
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1.5
+   },
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 5.009444444444444
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "captionKinds": {
+  "photo": {
+   "label": "Resim",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10,
+    "align": "center",
+    "spaceBeforePt": 12,
+    "spaceAfterPt": 12,
+    "lineSpacing": {
+     "rule": "auto",
+     "value": 1.5
+    },
+    "lineHeight": 1.5,
+    "firstLineIndentMm": 5.009444444444444
+   },
+   "numbering": {
+    "scope": "document",
+    "format": "{n}",
+    "sequence": "arabic"
+   }
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKLAR",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "spaceBeforePt": 12,
+   "spaceAfterPt": 12,
+   "lineSpacing": {
+    "rule": "auto",
+    "value": 1.5
+   },
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 5.009444444444444,
+   "leftIndentMm": 5.009444444444444,
+   "hangingIndentMm": 5.009444444444444
+  }
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

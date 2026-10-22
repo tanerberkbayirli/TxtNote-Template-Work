@@ -4,7 +4,7 @@ import { describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
 
 const thesisDir = fileURLToPath(new URL("../../../../engine/src/", import.meta.url));
-const catalogPath = new URL("../../../../engine/docs/CAPABILITIES.md", import.meta.url);
+const catalogPath = new URL("../../../../orchestration/motor/CAPABILITIES.md", import.meta.url);
 
 /** Enum values, JS members and internals that appear in validation.js but are not template keys. */
 const NOT_KEYS = new Set((

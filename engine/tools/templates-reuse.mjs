@@ -1,5 +1,5 @@
 // How much of the cover-family sections (outer/inner cover, approval, ethics declaration) is shared between different universities.
-// Answers whether a pattern library can replace per-template blocks (engine/docs/ALTYAPI.md, "Kapak ailesi ölçümü").
+// Answers whether a pattern library can replace per-template blocks (orchestration/motor/ALTYAPI.md, "Kapak ailesi ölçümü").
 //
 // usage: node engine/tools/templates-reuse.mjs
 // A block counts as reused when some section of the same type from ANOTHER university holds an equal block, compared

@@ -1,4 +1,4 @@
-// Template data: engine/src/templates/data/*.json. A template is data only (engine/docs/ALTYAPI.md); edit the JSON, not this file.
-// The former JavaScript source of these templates, with its source citations, is kept unchanged in ./legacy-js/ (not loaded).
-import template_generic from "./data/generic.json" with { type: "json" };
+// Template data lives in Butun-Sablonlar (the complete template of each university, only values its official source states).
+// Absent keys are filled by the engine (engineDefaults.js), never by another template. Edit the JSON, not this file.
+import template_generic from "../../../Butun-Sablonlar/Genel/generic.json" with { type: "json" };
 export default template_generic;

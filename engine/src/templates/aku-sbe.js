@@ -1,10 +1,10 @@
-// Template data: engine/src/templates/data/*.json holds the complete template (only values the official source states; engine/docs/ALTYAPI.md).
+// Template data lives in Butun-Sablonlar (the complete template of each university, only values its official source states).
 // Absent keys are filled by the engine (engineDefaults.js), never by another template. Edit the JSON, not this file.
-import akuSbeMasterData from "./data/aku-sbe-master-tr-v1.json" with { type: "json" };
-import akuSbePhdData from "./data/aku-sbe-phd-tr-v1.json" with { type: "json" };
-import akuSbeSanattaYeterlikData from "./data/aku-sbe-sanatta-yeterlik-tr-v1.json" with { type: "json" };
-import akuSbeMasterEnData from "./data/aku-sbe-master-en-v1.json" with { type: "json" };
-import akuSbePhdEnData from "./data/aku-sbe-phd-en-v1.json" with { type: "json" };
+import akuSbeMasterData from "../../../Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/aku-sbe-master-tr-v1.json" with { type: "json" };
+import akuSbePhdData from "../../../Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/aku-sbe-phd-tr-v1.json" with { type: "json" };
+import akuSbeSanattaYeterlikData from "../../../Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/aku-sbe-sanatta-yeterlik-tr-v1.json" with { type: "json" };
+import akuSbeMasterEnData from "../../../Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/aku-sbe-master-en-v1.json" with { type: "json" };
+import akuSbePhdEnData from "../../../Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/aku-sbe-phd-en-v1.json" with { type: "json" };
 const akuSbeMaster = akuSbeMasterData;
 const akuSbePhd = akuSbePhdData;
 const akuSbePhdEn = akuSbePhdEnData;

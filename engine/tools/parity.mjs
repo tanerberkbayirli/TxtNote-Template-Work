@@ -1,7 +1,7 @@
 // Long-document editor/PDF vs Word parity gate (engine/tools/parity.py does the measuring).
 //
 // usage: node engine/tools/parity.mjs [--templates id,id,...] [--copies 2] [--out dir] [--no-word]
-//                                     [--baseline <summary.json>] [--keep-going]
+//                                     [--baseline <summary.json>] [--keep-going] [--pad N]
 //   --templates  registry ids (engine/src/registry.js); default: the reference set below
 //   --copies     times the deterministic main body of make-fixture.mjs is repeated (2 = 50-58 pages, 3 = 75-80)
 //   --baseline   an earlier summary.json; exit 1 when a template got worse (more shifted pages, more moved words,
@@ -24,6 +24,10 @@ const flag = (name) => args.includes(`--${name}`);
 const value = (name, fallback) => { const i = args.indexOf(`--${name}`); return i >= 0 ? args[i + 1] : fallback; };
 const templates = value("templates", REFERENCE_SET.join(",")).split(",").filter(Boolean);
 const copies = Number(value("copies", "2"));
+// --pad N: N one-line filler paragraphs right after every chapter heading. Chapters start on a new page, so this moves everything in a
+// chapter down by N lines against the page bottoms: the same content meets every page-end decision (does the caption and table fit?) at
+// a different place. Used to tell a rule that is wrong for every layout from one that happens to agree on the default text.
+const pad = Number(value("pad", "0"));
 const stamp = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
 const outDir = resolve(root, value("out", `.test-tmp/validation/parity-${stamp}`));
 const baselinePath = value("baseline", null);
@@ -70,7 +74,8 @@ function run(command, commandArgs, options = {}) {
 function repeatBody(fixture) {
   const parts = [fixture.content];
   for (let copy = 1; copy < copies; copy += 1) parts.push(fixture.content.replace(/data-fn-id="([^"]+)"/g, `data-fn-id="$1_r${copy}"`));
-  return { ...fixture, content: parts.join("") };
+  const joined = parts.join("");
+  return { ...fixture, content: pad > 0 ? joined.replace(/<\/h1>/g, (heading) => heading + "<p>Dolgu satırı.</p>".repeat(pad)) : joined };
 }
 
 const base = await ensureBase();

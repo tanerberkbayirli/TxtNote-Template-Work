@@ -1,0 +1,13 @@
+---
+description: Always rebuild the desktop installer after app changes
+alwaysApply: true
+---
+
+# Always package the desktop installer
+
+After finishing code changes that affect the running app, rebuild the installer without asking.
+
+- Command: `npm run desktop:build` from the repo root
+- Output: `dist-installer/TxtNote_0.1.0_x64-setup.exe`
+- Do this even if the user did not mention packaging
+- Tell the user the installer path when the build finishes

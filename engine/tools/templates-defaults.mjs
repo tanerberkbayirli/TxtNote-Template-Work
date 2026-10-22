@@ -1,10 +1,11 @@
-// Which values do templates write that the engine would supply anyway? (engine/docs/ALTYAPI.md, "Motor varsayılanları")
+// Which values do templates write that the engine would supply anyway? (orchestration/motor/ALTYAPI.md, "Motor varsayılanları")
 //
 // usage: node engine/tools/templates-defaults.mjs [--only <template id>] [--out <report.json>]
 //
 // For every rule value of every registered template (page, typography, tables, figures, captionKinds, equations, bibliography, toc,
 // footnotes, and every section's `overrides`) the value is removed from a copy of the template and the real compiler is run again
-// on a probe document (headings 1–4, footnote, list, table with caption, figure with caption, two chapters):
+// on a probe document (headings 1–4, footnote, list, table with caption, figure with caption, two chapters, and a footnote in each of
+// the first two editable sections, so that behaviour that depends on several sections, such as running footnote numbers, shows):
 //   NO_EFFECT   the compiled document model is identical without the value: the engine already does the same when the key is absent.
 //   DIFFERENT   the compiled model changes: the value is consequential (a university requirement, or behaviour the engine would not
 //               choose on its own).
@@ -55,9 +56,16 @@ const without = (template, path) => {
 };
 const getAt = (template, path) => path.reduce((node, part) => node?.[part], template);
 const label = (template, path) => (path[0] === "sections" ? `sections.*.overrides.${path.slice(3).join(".")}` : path.join("."));
+// Key order carries no meaning here: a value the engine fills in afterwards lands at the end of its object.
+const canonical = (value) => JSON.stringify(value, (key, v) => (isObject(v) ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))) : v));
+const sectionNote = (id) => `<p>Metin<sup class="academic-footnote" data-fn-id="${id}" data-fn-text="Not">1</sup>.</p>`;
+// A footnote in each of the first two editable sections other than the main body.
+const thesisFor = (template) => ({
+  sectionContent: Object.fromEntries((template.sections ?? []).filter((s) => (s.mode ?? "editable") === "editable" && s.type !== "mainContent" && !s.blocks).slice(0, 2).map((s, i) => [s.id, sectionNote(`p${i}`)])),
+});
 const compile = (template) => {
-  const model = compileThesisDocument(template, {}, "Başlık", PROBE);
-  return JSON.stringify(model) + buildThesisCss(model);
+  const model = compileThesisDocument(template, thesisFor(template), "Başlık", PROBE);
+  return canonical(model) + buildThesisCss(model);
 };
 
 const rows = new Map();

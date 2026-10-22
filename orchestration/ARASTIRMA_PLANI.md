@@ -1,6 +1,6 @@
 # TxtNote araştırma planı (ayrıntılı sürüm) — 17.10.2026
 
-18.10.2026 kapsam notu: Kullanıcı ortak editör için dört genel düzen işini seçip uygulama yetkisi verdi; yan panel klavye/odak davranışı, araç durumları, dışa aktarım geri bildirimi ve görev kaydı bakımı [raporlanan kapsamda](../engine/docs/reports/GENEL_DUZEN_2026-10-18.md) tamamlandı. Bu sonuç W1/W2/W3/W8/W10'un ilgili alt maddelerini kapsar; aşağıdaki araştırma planının tamamını veya MCBÜ simülasyonunu kapatmaz. Aşağıdaki “henüz çalıştırılmadı/kod değiştirmeyeceğim” ifadeleri 17 Ekim planının tarihsel başlangıç durumudur.
+18.10.2026 kapsam notu: Kullanıcı ortak editör için dört genel düzen işini seçip uygulama yetkisi verdi; yan panel klavye/odak davranışı, araç durumları, dışa aktarım geri bildirimi ve görev kaydı bakımı [raporlanan kapsamda](raporlar/GENEL_DUZEN_2026-10-18.md) tamamlandı. Bu sonuç W1/W2/W3/W8/W10'un ilgili alt maddelerini kapsar; aşağıdaki araştırma planının tamamını veya MCBÜ simülasyonunu kapatmaz. Aşağıdaki “henüz çalıştırılmadı/kod değiştirmeyeceğim” ifadeleri 17 Ekim planının tarihsel başlangıç durumudur.
 
 Bu belge bir **plandır, bulgu raporu değil.** Uygulama kod ve belgelerden incelendi; aşağıdaki maddelerin hiçbiri henüz çalıştırılıp doğrulanmadı. Çalışmaya sizin komutunuzla başlayacağım (örn. `P4'ü yap`, `W2'yi yap`, `S'yi başlat`). Siz söylemeden kod değiştirmeyeceğim.
 

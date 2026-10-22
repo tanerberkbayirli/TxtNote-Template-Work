@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import { withEngineDefaults } from "../src/engineDefaults.js";
-import { addTemplate, classify, loadStoredTemplates, moduleSource } from "./template-add.mjs";
+import { addTemplate, classify, loadStoredTemplates, moduleSource, templateJsonPath } from "./template-add.mjs";
 
 const read = (name) => JSON.parse(readFileSync(new URL(`../specs/${name}`, import.meta.url), "utf8"));
 const extracted = read("adu-sagbil.extracted.json");
@@ -11,12 +11,19 @@ const profile = read("adu-sagbil.generation.json");
 const stored = loadStoredTemplates();
 
 test("the engine is the shared part: no stored template extends another template or a shared base", () => {
-  const directory = new URL("../src/templates/data/", import.meta.url);
-  const files = readdirSync(directory).filter((name) => name.endsWith(".json"));
-  assert.ok(files.length >= 34);
-  for (const name of files) assert.equal(JSON.parse(readFileSync(new URL(name, directory), "utf8")).extends, undefined, `${name} must be flat data`);
+  assert.ok(stored.size >= 34);
+  for (const [id, template] of stored) assert.equal(template.extends, undefined, `${id} must be flat data`);
   assert.equal(existsSync(new URL("../src/templates/base/thesis-base.json", import.meta.url)), false, "no voted base of other universities' values");
   assert.equal(existsSync(new URL("../src/templates/compose.js", import.meta.url)), false);
+});
+
+test("all templates live in Butun-Sablonlar and nowhere else", () => {
+  for (const [id, template] of stored) assert.ok(existsSync(templateJsonPath(template)), `${id} is at ${templateJsonPath(template)}`);
+  assert.ok(existsSync(new URL("../../Butun-Sablonlar/Genel/generic.json", import.meta.url)), "the fallback template");
+  const engineJson = (directory) => readdirSync(directory, { withFileTypes: true }).flatMap((entry) => (entry.isDirectory() ? engineJson(new URL(`${entry.name}/`, directory)) : entry.name.endsWith(".json") ? [entry.name] : []));
+  assert.deepEqual(engineJson(new URL("../src/templates/", import.meta.url)), [], "no template data under engine/src/templates");
+  assert.equal(existsSync(new URL("../src/templates/data", import.meta.url)), false);
+  assert.equal(existsSync(new URL("../src/templates/legacy-js", import.meta.url)), false);
 });
 
 test("regenerating a stored template from its source gives the stored template", () => {
@@ -64,8 +71,8 @@ test("a fact with another value never claims a template value", () => {
 });
 
 test("module wrapper re-exports the one data file", () => {
-  const source = moduleSource("some-uni-lee-master-tr-v1");
-  assert.match(source, /import template_some_uni_lee_master_tr_v1Data from "\.\/data\/some-uni-lee-master-tr-v1\.json"/);
+  const source = moduleSource("some-uni-lee-master-tr-v1", "../../../Butun-Sablonlar/Ege/Some Üniversitesi/some-uni-lee-master-tr-v1.json");
+  assert.match(source, /import template_some_uni_lee_master_tr_v1Data from "\.\.\/\.\.\/\.\.\/Butun-Sablonlar\/Ege\/Some Üniversitesi\/some-uni-lee-master-tr-v1\.json"/);
   assert.match(source, /export default template_some_uni_lee_master_tr_v1;/);
   assert.doesNotMatch(source, /compose|extends|variants/);
 });

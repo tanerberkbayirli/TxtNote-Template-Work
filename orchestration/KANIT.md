@@ -5,15 +5,18 @@
 ## Yerler
 | Ne | Nerede |
 |---|---|
-| Üretim motoru | `engine/src/` |
-| Motor belgeleri (README, [yetenek kataloğu](../engine/docs/CAPABILITIES.md), LAYOUT) | `engine/docs/` |
-| Tarihli kapanış/teşhis raporları, hedef başına kaynak raporları, `KURAL_SOZLUGU.md`, AKÜ-FBE başarısızlık kayıtları | `engine/docs/reports/` |
-| Kaynaktan çıkarılan biçim kuralları (`<hedef>.json`), bağlam paketleri (`<hedef>.CONTEXT.md`), fixture'lar, hedef envanteri `manifest.json` | `engine/specs/` |
-| Kontrol/ölçüm/dışa aktarım araçları (`check.mjs`, `export.mjs`, `docx2spec.py`, `word2pdf.ps1`, …), [CHECKER.md](../engine/tools/CHECKER.md), [DOCX_EXTRACTION.md](../engine/tools/DOCX_EXTRACTION.md) | `engine/tools/` |
+| Motor: çalışma zamanı (otomasyon ve kapı araçları aşağıda `engine/tools/`) | `engine/src/` |
+| Motor belgeleri (README, ALTYAPI, [yetenek kataloğu](motor/CAPABILITIES.md), LAYOUT, araç kılavuzları) | `orchestration/motor/` |
+| Tarihli kapanış/teşhis raporları, hedef başına kaynak raporları, `KURAL_SOZLUGU.md`, AKÜ-FBE başarısızlık kayıtları | `orchestration/raporlar/` |
+| Kaynaktan çıkarılan biçim kuralları (`<hedef>.json`), fixture'lar, hedef envanteri `manifest.json` | `engine/specs/` |
+| Hedef bağlam paketleri (`<hedef>.CONTEXT.md`), referans kılavuz dökümleri | `orchestration/hedefler/` |
+| Kontrol/ölçüm/dışa aktarım araçları (`check.mjs`, `export.mjs`, `docx2spec.py`, `word2pdf.ps1`, …), [CHECKER.md](motor/CHECKER.md), [DOCX_EXTRACTION.md](motor/DOCX_EXTRACTION.md) | `engine/tools/` |
 | Resmî kaynaktan türetilmiş referans render/ölçüm önbelleği (`<hedef>/source/`) | `engine/references/` |
-| Uygulama (arayüz, backend, Tauri) ve belgeleri | `TxtNote/`, `TxtNote/docs/` |
+| Uygulama (arayüz, backend, Tauri) ve belgeleri | `TxtNote/`, `orchestration/uygulama/` |
 | Test girdileri (fixture'lar, örnek DOCX) | `TxtNote/frontend/tests/` (`generated/`, `fixtures/`) |
-| Resmî üniversite şablonları/kılavuzları ve her birinin köken notu (`KAYNAK.md`, `README.md`, `kaynaklar.md`) | `Butun-Sablonlar/` |
+| **Bütün şablonlar:** resmî üniversite belgeleri, motorun yüklediği şablon JSON'ları (`Ege/<üniversite>/<kimlik>.json`, `Genel/generic.json`), eski şablon kaynakları (`eski-js/`) | `Butun-Sablonlar/` |
+| Her şablon klasörünün künyesi ve köken notu (`KAYNAK.md`, `README.md`, `metadata.json`) | `orchestration/sablon-kaynaklari/` |
+| Yapay zekâ komutları | `orchestration/prompts/` (Cursor kuralı dahil) |
 | Doğrulama çıktıları (üretilir, depoya girmez) | `.test-tmp/validation/<iş>-<tarih>/` |
 
 ## Doğrulama yöntemi (özet)
